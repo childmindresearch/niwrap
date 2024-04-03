@@ -1,0 +1,124 @@
+{
+    "name": "ImageMaths",
+    "command-line": "ImageMaths [OUT_FILE] [IN_FILE] [OP_STRING] [IN_FILE2] [OUT_DATA_TYPE] [ARGS] [ENVIRON] [MASK_FILE] [OUTPUT_TYPE] [SUFFIX]",
+    "author": "Nipype (interface)",
+    "description": "ImageMaths, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ImageMaths).\n\nUse FSL fslmaths command to allow mathematical manipulation of images\n    `FSL info <http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils>`_\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces import fsl\n    >>> from nipype.testing import anatfile\n    >>> maths = fsl.ImageMaths(in_file=anatfile, op_string= '-add 5',\n    ...                        out_file='foo_maths.nii')\n    >>> maths.cmdline == 'fslmaths %s -add 5 foo_maths.nii' % anatfile\n    True\n\n\n    ",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "description": "A pathlike object or string representing an existing file. No description provided.",
+            "optional": false
+        },
+        {
+            "id": "in_file2",
+            "name": "In file2",
+            "type": "File",
+            "value-key": "[IN_FILE2]",
+            "description": "A pathlike object or string representing an existing file. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "mask_file",
+            "name": "Mask file",
+            "type": "File",
+            "value-key": "[MASK_FILE]",
+            "command-line-flag": "-mas",
+            "description": "A pathlike object or string representing an existing file. Use (following image>0) to mask current image.",
+            "optional": true
+        },
+        {
+            "id": "op_string",
+            "name": "Op string",
+            "type": "String",
+            "value-key": "[OP_STRING]",
+            "description": "A string. String defining the operation, i. e. -add.",
+            "optional": true
+        },
+        {
+            "id": "out_data_type",
+            "name": "Out data type",
+            "type": "String",
+            "value-key": "[OUT_DATA_TYPE]",
+            "command-line-flag": "-odt",
+            "description": "'char' or 'short' or 'int' or 'float' or 'double' or 'input'. Output datatype, one of (char, short, int, float, double, input).",
+            "optional": true,
+            "value-choices": [
+                "char",
+                "short",
+                "int",
+                "float",
+                "double",
+                "input"
+            ]
+        },
+        {
+            "id": "out_file",
+            "name": "Out file",
+            "type": "File",
+            "value-key": "[OUT_FILE]",
+            "description": "A pathlike object or string representing a file. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "suffix",
+            "name": "Suffix",
+            "type": "String",
+            "value-key": "[SUFFIX]",
+            "description": "A string. Out_file suffix.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out file",
+            "id": "out_file_outfile",
+            "path-template": "[OUT_FILE]",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. No description provided."
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

@@ -1,0 +1,162 @@
+{
+    "name": "Calc",
+    "command-line": "Calc [IN_FILE_A] [IN_FILE_B] [IN_FILE_C] [EXPR] [ARGS] [ENVIRON] [NUM_THREADS] [OTHER] [OUT_FILE] [OUTPUTTYPE] [OVERWRITE] [SINGLE_IDX] [START_IDX] [STOP_IDX]",
+    "author": "Nipype (interface)",
+    "description": "Calc, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: Calc).\n\nThis program does voxel-by-voxel arithmetic on 3D datasets.\n\n    For complete details, see the `3dcalc Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcalc.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> calc = afni.Calc()\n    >>> calc.inputs.in_file_a = 'functional.nii'\n    >>> calc.inputs.in_file_b = 'functional2.nii'\n    >>> calc.inputs.expr='a*b'\n    >>> calc.inputs.out_file =  'functional_calc.nii.gz'\n    >>> calc.inputs.outputtype = 'NIFTI'\n    >>> calc.cmdline  # doctest: +ELLIPSIS\n    '3dcalc -a functional.nii -b functional2.nii -expr \"a*b\" -prefix functional_calc.nii.gz'\n    >>> res = calc.run()  # doctest: +SKIP\n\n    >>> from nipype.interfaces import afni\n    >>> calc = afni.Calc()\n    >>> calc.inputs.in_file_a = 'functional.nii'\n    >>> calc.inputs.expr = '1'\n    >>> calc.inputs.out_file = 'rm.epi.all1'\n    >>> calc.inputs.overwrite = True\n    >>> calc.cmdline\n    '3dcalc -a functional.nii -expr \"1\" -prefix rm.epi.all1 -overwrite'\n    >>> res = calc.run() # doctest: +SKIP\n\n    ",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "expr",
+            "name": "Expr",
+            "type": "String",
+            "value-key": "[EXPR]",
+            "command-line-flag": "-expr \"",
+            "description": "A string. Expr.",
+            "optional": false
+        },
+        {
+            "id": "in_file_a",
+            "name": "In file a",
+            "type": "File",
+            "value-key": "[IN_FILE_A]",
+            "command-line-flag": "-a",
+            "description": "A pathlike object or string representing an existing file. Input file to 3dcalc.",
+            "optional": false
+        },
+        {
+            "id": "in_file_b",
+            "name": "In file b",
+            "type": "File",
+            "value-key": "[IN_FILE_B]",
+            "command-line-flag": "-b",
+            "description": "A pathlike object or string representing an existing file. Operand file to 3dcalc.",
+            "optional": true
+        },
+        {
+            "id": "in_file_c",
+            "name": "In file c",
+            "type": "File",
+            "value-key": "[IN_FILE_C]",
+            "command-line-flag": "-c",
+            "description": "A pathlike object or string representing an existing file. Operand file to 3dcalc.",
+            "optional": true
+        },
+        {
+            "id": "num_threads",
+            "name": "Num threads",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[NUM_THREADS]",
+            "description": "An integer. Set number of threads.",
+            "optional": true,
+            "default-value": 1
+        },
+        {
+            "id": "other",
+            "name": "Other",
+            "type": "File",
+            "value-key": "[OTHER]",
+            "description": "A pathlike object or string representing a file. Other options.",
+            "optional": true
+        },
+        {
+            "id": "outputtype",
+            "name": "Outputtype",
+            "type": "String",
+            "value-key": "[OUTPUTTYPE]",
+            "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "AFNI",
+                "NIFTI_GZ"
+            ]
+        },
+        {
+            "id": "overwrite",
+            "name": "Overwrite",
+            "type": "Flag",
+            "value-key": "[OVERWRITE]",
+            "command-line-flag": "-overwrite",
+            "description": "A boolean. Overwrite output.",
+            "optional": true
+        },
+        {
+            "id": "single_idx",
+            "name": "Single idx",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[SINGLE_IDX]",
+            "description": "An integer. Volume index for in_file_a.",
+            "optional": true
+        },
+        {
+            "id": "start_idx",
+            "name": "Start idx",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[START_IDX]",
+            "description": "An integer. Start index for in_file_a.",
+            "optional": true,
+            "requires-inputs": [
+                "stop_idx"
+            ]
+        },
+        {
+            "id": "stop_idx",
+            "name": "Stop idx",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[STOP_IDX]",
+            "description": "An integer. Stop index for in_file_a.",
+            "optional": true,
+            "requires-inputs": [
+                "start_idx"
+            ]
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out file",
+            "id": "out_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Output image file name.",
+            "path-template": "[IN_FILE_A]_calc",
+            "value-key": "[OUT_FILE]",
+            "command-line-flag": "-prefix"
+        },
+        {
+            "name": "Out file",
+            "id": "out_file",
+            "path-template": "out_file",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Output file."
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

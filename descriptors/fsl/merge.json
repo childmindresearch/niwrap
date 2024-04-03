@@ -1,0 +1,99 @@
+{
+    "name": "Merge",
+    "command-line": "Merge [DIMENSION] [MERGED_FILE] [IN_FILES] [TR] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
+    "author": "Nipype (interface)",
+    "description": "Merge, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: Merge).\n\nUse fslmerge to concatenate images\n\n    Images can be concatenated across time, x, y, or z dimensions. Across the\n    time (t) dimension the TR is set by default to 1 sec.\n\n    Note: to set the TR to a different value, specify 't' for dimension and\n    specify the TR value in seconds for the tr input. The dimension will be\n    automatically updated to 'tr'.\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import Merge\n    >>> merger = Merge()\n    >>> merger.inputs.in_files = ['functional2.nii', 'functional3.nii']\n    >>> merger.inputs.dimension = 't'\n    >>> merger.inputs.output_type = 'NIFTI_GZ'\n    >>> merger.cmdline\n    'fslmerge -t functional2_merged.nii.gz functional2.nii functional3.nii'\n    >>> merger.inputs.tr = 2.25\n    >>> merger.cmdline\n    'fslmerge -tr functional2_merged.nii.gz functional2.nii functional3.nii 2.25'\n\n\n    ",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "dimension",
+            "name": "Dimension",
+            "type": "String",
+            "value-key": "[DIMENSION]",
+            "command-line-flag": "-",
+            "description": "'t' or 'x' or 'y' or 'z' or 'a'. Dimension along which to merge, optionally set tr input when dimension is t.",
+            "optional": false,
+            "value-choices": [
+                "t",
+                "x",
+                "y",
+                "z",
+                "a"
+            ]
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_files",
+            "name": "In files",
+            "type": "File",
+            "list": true,
+            "value-key": "[IN_FILES]",
+            "description": "A list of items which are a pathlike object or string representing an existing file. No description provided.",
+            "optional": false
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "tr",
+            "name": "Tr",
+            "type": "Number",
+            "value-key": "[TR]",
+            "description": "A float. Use to specify tr in seconds (default is 1.00 sec), overrides dimension and sets it to tr.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Merged file",
+            "id": "merged_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. No description provided.",
+            "path-template": "[IN_FILES]_merged",
+            "value-key": "[MERGED_FILE]"
+        },
+        {
+            "name": "Merged file",
+            "id": "merged_file",
+            "path-template": "merged_file",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. No description provided."
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

@@ -1,0 +1,324 @@
+{
+    "name": "BET",
+    "command-line": "BET [IN_FILE] [OUT_FILE] [ARGS] [CENTER] [ENVIRON] [FRAC] [FUNCTIONAL] [MASK] [MESH] [NO_OUTPUT] [OUTLINE] [OUTPUT_TYPE] [PADDING] [RADIUS] [REDUCE_BIAS] [REMOVE_EYES] [ROBUST] [SKULL] [SURFACES] [T2_GUIDED] [THRESHOLD] [VERTICAL_GRADIENT]",
+    "author": "Nipype (interface)",
+    "description": "BET, as implemented in Nipype (module: nipype.interfaces.fsl, interface: BET).\n\nFSL BET wrapper for skull stripping\n\n    For complete details, see the `BET Documentation.\n    <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET/UserGuide>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import fsl\n    >>> btr = fsl.BET()\n    >>> btr.inputs.in_file = 'structural.nii'\n    >>> btr.inputs.frac = 0.7\n    >>> btr.inputs.out_file = 'brain_anat.nii'\n    >>> btr.cmdline\n    'bet structural.nii brain_anat.nii -f 0.70'\n    >>> res = btr.run() # doctest: +SKIP\n\n    ",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "center",
+            "name": "Center",
+            "type": "Number",
+            "list": true,
+            "integer": true,
+            "max-list-entries": 3,
+            "value-key": "[CENTER]",
+            "command-line-flag": "-c",
+            "description": "A list of at most 3 items which are an integer. Center of gravity in voxels.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "frac",
+            "name": "Frac",
+            "type": "Number",
+            "value-key": "[FRAC]",
+            "command-line-flag": "-f",
+            "description": "A float. Fractional intensity threshold.",
+            "optional": true
+        },
+        {
+            "id": "functional",
+            "name": "Functional",
+            "type": "Flag",
+            "value-key": "[FUNCTIONAL]",
+            "command-line-flag": "-F",
+            "description": "A boolean. Apply to 4d fmri data.",
+            "optional": true
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "description": "A pathlike object or string representing an existing file. Input file to skull strip.",
+            "optional": false
+        },
+        {
+            "id": "mask",
+            "name": "Mask",
+            "type": "Flag",
+            "value-key": "[MASK]",
+            "command-line-flag": "-m",
+            "description": "A boolean. Create binary mask image.",
+            "optional": true
+        },
+        {
+            "id": "mesh",
+            "name": "Mesh",
+            "type": "Flag",
+            "value-key": "[MESH]",
+            "command-line-flag": "-e",
+            "description": "A boolean. Generate a vtk mesh brain surface.",
+            "optional": true
+        },
+        {
+            "id": "no_output",
+            "name": "No output",
+            "type": "Flag",
+            "value-key": "[NO_OUTPUT]",
+            "command-line-flag": "-n",
+            "description": "A boolean. Don't generate segmented output.",
+            "optional": true
+        },
+        {
+            "id": "out_file",
+            "name": "Out file",
+            "type": "File",
+            "value-key": "[OUT_FILE]",
+            "description": "A pathlike object or string representing a file. Name of output skull stripped image.",
+            "optional": true
+        },
+        {
+            "id": "outline",
+            "name": "Outline",
+            "type": "Flag",
+            "value-key": "[OUTLINE]",
+            "command-line-flag": "-o",
+            "description": "A boolean. Create surface outline image.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "padding",
+            "name": "Padding",
+            "type": "Flag",
+            "value-key": "[PADDING]",
+            "command-line-flag": "-Z",
+            "description": "A boolean. Improve bet if fov is very small in z (by temporarily padding end slices).",
+            "optional": true
+        },
+        {
+            "id": "radius",
+            "name": "Radius",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[RADIUS]",
+            "command-line-flag": "-r",
+            "description": "An integer. Head radius.",
+            "optional": true
+        },
+        {
+            "id": "reduce_bias",
+            "name": "Reduce bias",
+            "type": "Flag",
+            "value-key": "[REDUCE_BIAS]",
+            "command-line-flag": "-B",
+            "description": "A boolean. Bias field and neck cleanup.",
+            "optional": true
+        },
+        {
+            "id": "remove_eyes",
+            "name": "Remove eyes",
+            "type": "Flag",
+            "value-key": "[REMOVE_EYES]",
+            "command-line-flag": "-S",
+            "description": "A boolean. Eye & optic nerve cleanup (can be useful in siena).",
+            "optional": true
+        },
+        {
+            "id": "robust",
+            "name": "Robust",
+            "type": "Flag",
+            "value-key": "[ROBUST]",
+            "command-line-flag": "-R",
+            "description": "A boolean. Robust brain centre estimation (iterates bet several times).",
+            "optional": true
+        },
+        {
+            "id": "skull",
+            "name": "Skull",
+            "type": "Flag",
+            "value-key": "[SKULL]",
+            "command-line-flag": "-s",
+            "description": "A boolean. Create skull image.",
+            "optional": true
+        },
+        {
+            "id": "surfaces",
+            "name": "Surfaces",
+            "type": "Flag",
+            "value-key": "[SURFACES]",
+            "command-line-flag": "-A",
+            "description": "A boolean. Run bet2 and then betsurf to get additional skull and scalp surfaces (includes registrations).",
+            "optional": true
+        },
+        {
+            "id": "t2_guided",
+            "name": "T2 guided",
+            "type": "File",
+            "value-key": "[T2_GUIDED]",
+            "command-line-flag": "-A2",
+            "description": "A pathlike object or string representing a file. As with creating surfaces, when also feeding in non-brain-extracted t2 (includes registrations).",
+            "optional": true
+        },
+        {
+            "id": "threshold",
+            "name": "Threshold",
+            "type": "Flag",
+            "value-key": "[THRESHOLD]",
+            "command-line-flag": "-t",
+            "description": "A boolean. Apply thresholding to segmented brain image and mask.",
+            "optional": true
+        },
+        {
+            "id": "vertical_gradient",
+            "name": "Vertical gradient",
+            "type": "Number",
+            "value-key": "[VERTICAL_GRADIENT]",
+            "command-line-flag": "-g",
+            "description": "A float. Vertical gradient in fractional intensity threshold (-1, 1).",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Inskull mask file",
+            "id": "inskull_mask_file",
+            "path-template": "inskull_mask_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of inskull mask (if generated)."
+        },
+        {
+            "name": "Inskull mesh file",
+            "id": "inskull_mesh_file",
+            "path-template": "inskull_mesh_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of inskull mesh outline (if generated)."
+        },
+        {
+            "name": "Mask file",
+            "id": "mask_file",
+            "path-template": "mask_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of binary brain mask (if generated)."
+        },
+        {
+            "name": "Meshfile",
+            "id": "meshfile",
+            "path-template": "meshfile",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of vtk mesh file (if generated)."
+        },
+        {
+            "name": "Out file",
+            "id": "out_file_outfile",
+            "path-template": "[OUT_FILE]",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of skullstripped file (if generated)."
+        },
+        {
+            "name": "Outline file",
+            "id": "outline_file",
+            "path-template": "outline_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of outline file (if generated)."
+        },
+        {
+            "name": "Outskin mask file",
+            "id": "outskin_mask_file",
+            "path-template": "outskin_mask_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of outskin mask (if generated)."
+        },
+        {
+            "name": "Outskin mesh file",
+            "id": "outskin_mesh_file",
+            "path-template": "outskin_mesh_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of outskin mesh outline (if generated)."
+        },
+        {
+            "name": "Outskull mask file",
+            "id": "outskull_mask_file",
+            "path-template": "outskull_mask_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of outskull mask (if generated)."
+        },
+        {
+            "name": "Outskull mesh file",
+            "id": "outskull_mesh_file",
+            "path-template": "outskull_mesh_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of outskull mesh outline (if generated)."
+        },
+        {
+            "name": "Skull file",
+            "id": "skull_file",
+            "path-template": "skull_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of skull file (if generated)."
+        },
+        {
+            "name": "Skull mask file",
+            "id": "skull_mask_file",
+            "path-template": "skull_mask_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Path/name of skull mask (if generated)."
+        }
+    ],
+    "groups": [
+        {
+            "id": "mutex_group",
+            "name": "Mutex group",
+            "members": [
+                "functional",
+                "surfaces",
+                "robust",
+                "reduce_bias",
+                "padding",
+                "remove_eyes",
+                "t2_guided"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

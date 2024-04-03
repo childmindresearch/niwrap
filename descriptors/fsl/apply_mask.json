@@ -1,0 +1,126 @@
+{
+    "name": "ApplyMask",
+    "command-line": "ApplyMask [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [MASK_FILE] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
+    "author": "Nipype (interface)",
+    "description": "ApplyMask, as implemented in Nipype (module: nipype.interfaces.fsl.maths, interface: ApplyMask).\n\nUse fslmaths to apply a binary mask to another image.",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "description": "A pathlike object or string representing an existing file. Image to operate on.",
+            "optional": false
+        },
+        {
+            "id": "internal_datatype",
+            "name": "Internal datatype",
+            "type": "String",
+            "value-key": "[INTERNAL_DATATYPE]",
+            "command-line-flag": "-dt",
+            "description": "'float' or 'char' or 'int' or 'short' or 'double' or 'input'. Datatype to use for calculations (default is float).",
+            "optional": true,
+            "value-choices": [
+                "float",
+                "char",
+                "int",
+                "short",
+                "double",
+                "input"
+            ]
+        },
+        {
+            "id": "mask_file",
+            "name": "Mask file",
+            "type": "File",
+            "value-key": "[MASK_FILE]",
+            "command-line-flag": "-mas",
+            "description": "A pathlike object or string representing an existing file. Binary image defining mask space.",
+            "optional": false
+        },
+        {
+            "id": "nan2zeros",
+            "name": "Nan2zeros",
+            "type": "Flag",
+            "value-key": "[NAN2ZEROS]",
+            "command-line-flag": "-nan",
+            "description": "A boolean. Change nans to zeros before doing anything.",
+            "optional": true
+        },
+        {
+            "id": "out_file",
+            "name": "Out file",
+            "type": "File",
+            "value-key": "[OUT_FILE]",
+            "description": "A pathlike object or string representing a file. Image to write.",
+            "optional": true
+        },
+        {
+            "id": "output_datatype",
+            "name": "Output datatype",
+            "type": "String",
+            "value-key": "[OUTPUT_DATATYPE]",
+            "command-line-flag": "-odt",
+            "description": "'float' or 'char' or 'int' or 'short' or 'double' or 'input'. Datatype to use for output (default uses input type).",
+            "optional": true,
+            "value-choices": [
+                "float",
+                "char",
+                "int",
+                "short",
+                "double",
+                "input"
+            ]
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out file",
+            "id": "out_file_outfile",
+            "path-template": "[OUT_FILE]",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Image written after calculations."
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

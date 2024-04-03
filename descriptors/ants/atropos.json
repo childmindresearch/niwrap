@@ -1,0 +1,306 @@
+{
+    "name": "Atropos",
+    "command-line": "Atropos [ARGS] [CONVERGENCE_THRESHOLD] [DIMENSION] [ENVIRON] [ICM_USE_SYNCHRONOUS_UPDATE] [INITIALIZATION] [INTENSITY_IMAGES] [KMEANS_INIT_CENTERS] [LIKELIHOOD_MODEL] [MASK_IMAGE] [MAXIMUM_NUMBER_OF_ICM_TERATIONS] [MRF_RADIUS] [MRF_SMOOTHING_FACTOR] [N_ITERATIONS] [NUM_THREADS] [NUMBER_OF_TISSUE_CLASSES] [OUT_CLASSIFIED_IMAGE_NAME] [OUTPUT_POSTERIORS_NAME_TEMPLATE] [POSTERIOR_FORMULATION] [PRIOR_IMAGE] [PRIOR_PROBABILITY_THRESHOLD] [PRIOR_WEIGHTING] [SAVE_POSTERIORS] [USE_MIXTURE_MODEL_PROPORTIONS] [USE_RANDOM_SEED]",
+    "author": "Nipype (interface)",
+    "description": "Atropos, as implemented in Nipype (module: nipype.interfaces.ants.segmentation, interface: Atropos).\n\n\n    A multivariate n-class segmentation algorithm.\n\n    A finite mixture modeling (FMM) segmentation approach with possibilities for\n    specifying prior constraints. These prior constraints include the specification\n    of a prior label image, prior probability images (one for each class), and/or an\n    MRF prior to enforce spatial smoothing of the labels. Similar algorithms include\n    FAST and SPM.\n\n    Examples\n    --------\n    >>> from nipype.interfaces.ants import Atropos\n    >>> at = Atropos(\n    ...     dimension=3, intensity_images='structural.nii', mask_image='mask.nii',\n    ...     number_of_tissue_classes=2, likelihood_model='Gaussian', save_posteriors=True,\n    ...     mrf_smoothing_factor=0.2, mrf_radius=[1, 1, 1], icm_use_synchronous_update=True,\n    ...     maximum_number_of_icm_terations=1, n_iterations=5, convergence_threshold=0.000001,\n    ...     posterior_formulation='Socrates', use_mixture_model_proportions=True)\n    >>> at.inputs.initialization = 'Random'\n    >>> at.cmdline\n    'Atropos --image-dimensionality 3 --icm [1,1]\n    --initialization Random[2] --intensity-image structural.nii\n    --likelihood-model Gaussian --mask-image mask.nii --mrf [0.2,1x1x1] --convergence [5,1e-06]\n    --output [structural_labeled.nii,POSTERIOR_%02d.nii.gz] --posterior-formulation Socrates[1]\n    --use-random-seed 1'\n\n    >>> at = Atropos(\n    ...     dimension=3, intensity_images='structural.nii', mask_image='mask.nii',\n    ...     number_of_tissue_classes=2, likelihood_model='Gaussian', save_posteriors=True,\n    ...     mrf_smoothing_factor=0.2, mrf_radius=[1, 1, 1], icm_use_synchronous_update=True,\n    ...     maximum_number_of_icm_terations=1, n_iterations=5, convergence_threshold=0.000001,\n    ...     posterior_formulation='Socrates', use_mixture_model_proportions=True)\n    >>> at.inputs.initialization = 'KMeans'\n    >>> at.inputs.kmeans_init_centers = [100, 200]\n    >>> at.cmdline\n    'Atropos --image-dimensionality 3 --icm [1,1]\n    --initialization KMeans[2,100,200] --intensity-image structural.nii\n    --likelihood-model Gaussian --mask-image mask.nii --mrf [0.2,1x1x1] --convergence [5,1e-06]\n    --output [structural_labeled.nii,POSTERIOR_%02d.nii.gz] --posterior-formulation Socrates[1]\n    --use-random-seed 1'\n\n    >>> at = Atropos(\n    ...     dimension=3, intensity_images='structural.nii', mask_image='mask.nii',\n    ...     number_of_tissue_classes=2, likelihood_model='Gaussian', save_posteriors=True,\n    ...     mrf_smoothing_factor=0.2, mrf_radius=[1, 1, 1], icm_use_synchronous_update=True,\n    ...     maximum_number_of_icm_terations=1, n_iterations=5, convergence_threshold=0.000001,\n    ...     posterior_formulation='Socrates', use_mixture_model_proportions=True)\n    >>> at.inputs.initialization = 'PriorProbabilityImages'\n    >>> at.inputs.prior_image = 'BrainSegmentationPrior%02d.nii.gz'\n    >>> at.inputs.prior_weighting = 0.8\n    >>> at.inputs.prior_probability_threshold = 0.0000001\n    >>> at.cmdline\n    'Atropos --image-dimensionality 3 --icm [1,1]\n    --initialization PriorProbabilityImages[2,BrainSegmentationPrior%02d.nii.gz,0.8,1e-07]\n    --intensity-image structural.nii --likelihood-model Gaussian --mask-image mask.nii\n    --mrf [0.2,1x1x1] --convergence [5,1e-06]\n    --output [structural_labeled.nii,POSTERIOR_%02d.nii.gz]\n    --posterior-formulation Socrates[1] --use-random-seed 1'\n\n    >>> at = Atropos(\n    ...     dimension=3, intensity_images='structural.nii', mask_image='mask.nii',\n    ...     number_of_tissue_classes=2, likelihood_model='Gaussian', save_posteriors=True,\n    ...     mrf_smoothing_factor=0.2, mrf_radius=[1, 1, 1], icm_use_synchronous_update=True,\n    ...     maximum_number_of_icm_terations=1, n_iterations=5, convergence_threshold=0.000001,\n    ...     posterior_formulation='Socrates', use_mixture_model_proportions=True)\n    >>> at.inputs.initialization = 'PriorLabelImage'\n    >>> at.inputs.prior_image = 'segmentation0.nii.gz'\n    >>> at.inputs.number_of_tissue_classes = 2\n    >>> at.inputs.prior_weighting = 0.8\n    >>> at.cmdline\n    'Atropos --image-dimensionality 3 --icm [1,1]\n    --initialization PriorLabelImage[2,segmentation0.nii.gz,0.8] --intensity-image structural.nii\n    --likelihood-model Gaussian --mask-image mask.nii --mrf [0.2,1x1x1] --convergence [5,1e-06]\n    --output [structural_labeled.nii,POSTERIOR_%02d.nii.gz] --posterior-formulation Socrates[1]\n    --use-random-seed 1'\n\n    ",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "convergence_threshold",
+            "name": "Convergence threshold",
+            "type": "Number",
+            "value-key": "[CONVERGENCE_THRESHOLD]",
+            "description": "A float. No description provided.",
+            "optional": true,
+            "requires-inputs": [
+                "n_iterations"
+            ]
+        },
+        {
+            "id": "dimension",
+            "name": "Dimension",
+            "type": "Number",
+            "value-key": "[DIMENSION]",
+            "command-line-flag": "--image-dimensionality",
+            "description": "3 or 2 or 4. Image dimension (2, 3, or 4).",
+            "optional": true,
+            "default-value": 3,
+            "integer": true,
+            "value-choices": [
+                3,
+                2,
+                4
+            ]
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "icm_use_synchronous_update",
+            "name": "Icm use synchronous update",
+            "type": "Flag",
+            "value-key": "[ICM_USE_SYNCHRONOUS_UPDATE]",
+            "description": "A boolean. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "initialization",
+            "name": "Initialization",
+            "type": "String",
+            "value-key": "[INITIALIZATION]",
+            "description": "'random' or 'otsu' or 'kmeans' or 'priorprobabilityimages' or 'priorlabelimage'. No description provided.",
+            "optional": false,
+            "requires-inputs": [
+                "number_of_tissue_classes"
+            ],
+            "value-choices": [
+                "Random",
+                "Otsu",
+                "KMeans",
+                "PriorProbabilityImages",
+                "PriorLabelImage"
+            ]
+        },
+        {
+            "id": "intensity_images",
+            "name": "Intensity images",
+            "type": "File",
+            "list": true,
+            "value-key": "[INTENSITY_IMAGES]",
+            "command-line-flag": "--intensity-image",
+            "description": "A list of items which are a pathlike object or string representing an existing file. No description provided.",
+            "optional": false
+        },
+        {
+            "id": "kmeans_init_centers",
+            "name": "Kmeans init centers",
+            "type": "String",
+            "list": true,
+            "min-list-entries": 1,
+            "value-key": "[KMEANS_INIT_CENTERS]",
+            "description": "A list of at least 1 items which are an integer or a float. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "likelihood_model",
+            "name": "Likelihood model",
+            "type": "String",
+            "value-key": "[LIKELIHOOD_MODEL]",
+            "command-line-flag": "--likelihood-model",
+            "description": "A string. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "mask_image",
+            "name": "Mask image",
+            "type": "File",
+            "value-key": "[MASK_IMAGE]",
+            "command-line-flag": "--mask-image",
+            "description": "A pathlike object or string representing an existing file. No description provided.",
+            "optional": false
+        },
+        {
+            "id": "maximum_number_of_icm_terations",
+            "name": "Maximum number of icm terations",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[MAXIMUM_NUMBER_OF_ICM_TERATIONS]",
+            "description": "An integer. No description provided.",
+            "optional": true,
+            "requires-inputs": [
+                "icm_use_synchronous_update"
+            ]
+        },
+        {
+            "id": "mrf_radius",
+            "name": "Mrf radius",
+            "type": "Number",
+            "list": true,
+            "integer": true,
+            "value-key": "[MRF_RADIUS]",
+            "description": "A list of items which are an integer. No description provided.",
+            "optional": true,
+            "requires-inputs": [
+                "mrf_smoothing_factor"
+            ]
+        },
+        {
+            "id": "mrf_smoothing_factor",
+            "name": "Mrf smoothing factor",
+            "type": "Number",
+            "value-key": "[MRF_SMOOTHING_FACTOR]",
+            "description": "A float. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "n_iterations",
+            "name": "N iterations",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[N_ITERATIONS]",
+            "description": "An integer. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "num_threads",
+            "name": "Num threads",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[NUM_THREADS]",
+            "description": "An integer. Number of itk threads to use.",
+            "optional": true,
+            "default-value": 1
+        },
+        {
+            "id": "number_of_tissue_classes",
+            "name": "Number of tissue classes",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[NUMBER_OF_TISSUE_CLASSES]",
+            "description": "An integer. No description provided.",
+            "optional": false
+        },
+        {
+            "id": "out_classified_image_name",
+            "name": "Out classified image name",
+            "type": "File",
+            "value-key": "[OUT_CLASSIFIED_IMAGE_NAME]",
+            "description": "A pathlike object or string representing a file. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "output_posteriors_name_template",
+            "name": "Output posteriors name template",
+            "type": "String",
+            "value-key": "[OUTPUT_POSTERIORS_NAME_TEMPLATE]",
+            "description": "A string. No description provided.",
+            "optional": true,
+            "default-value": "POSTERIOR_%02d.nii.gz"
+        },
+        {
+            "id": "posterior_formulation",
+            "name": "Posterior formulation",
+            "type": "String",
+            "value-key": "[POSTERIOR_FORMULATION]",
+            "description": "A string. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "prior_image",
+            "name": "Prior image",
+            "type": "File",
+            "value-key": "[PRIOR_IMAGE]",
+            "description": "A pathlike object or string representing an existing file or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
+            "optional": true
+        },
+        {
+            "id": "prior_image_2",
+            "name": "Prior image",
+            "type": "String",
+            "value-key": "[PRIOR_IMAGE]",
+            "description": "A pathlike object or string representing an existing file or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
+            "optional": true
+        },
+        {
+            "id": "prior_probability_threshold",
+            "name": "Prior probability threshold",
+            "type": "Number",
+            "value-key": "[PRIOR_PROBABILITY_THRESHOLD]",
+            "description": "A float. No description provided.",
+            "optional": true,
+            "requires-inputs": [
+                "prior_weighting"
+            ]
+        },
+        {
+            "id": "prior_weighting",
+            "name": "Prior weighting",
+            "type": "Number",
+            "value-key": "[PRIOR_WEIGHTING]",
+            "description": "A float. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "save_posteriors",
+            "name": "Save posteriors",
+            "type": "Flag",
+            "value-key": "[SAVE_POSTERIORS]",
+            "command-line-flag": "--save_posteriors",
+            "description": "A boolean. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "use_mixture_model_proportions",
+            "name": "Use mixture model proportions",
+            "type": "Flag",
+            "value-key": "[USE_MIXTURE_MODEL_PROPORTIONS]",
+            "command-line-flag": "--use_mixture_model_proportions",
+            "description": "A boolean. No description provided.",
+            "optional": true,
+            "requires-inputs": [
+                "posterior_formulation"
+            ]
+        },
+        {
+            "id": "use_random_seed",
+            "name": "Use random seed",
+            "type": "Flag",
+            "value-key": "[USE_RANDOM_SEED]",
+            "command-line-flag": "--use-random-seed",
+            "description": "A boolean. Use random seed value over constant.",
+            "optional": true,
+            "default-value": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Classified image",
+            "id": "classified_image",
+            "path-template": "classified_image",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. No description provided."
+        },
+        {
+            "name": "Posteriors",
+            "id": "posteriors",
+            "path-template": "posteriors",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing a file. No description provided.",
+            "list": true
+        }
+    ],
+    "groups": [
+        {
+            "id": "prior_image_group",
+            "name": "Prior image group",
+            "members": [
+                "prior_image",
+                "prior_image_2"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

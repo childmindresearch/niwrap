@@ -1,0 +1,273 @@
+{
+    "name": "ApplyVolTransform",
+    "command-line": "ApplyVolTransform [ARGS] [ENVIRON] [FS_TARGET] [FSL_REG_FILE] [INTERP] [INVERSE] [INVERT_MORPH] [LTA_FILE] [LTA_INV_FILE] [M3Z_FILE] [MNI_152_REG] [NO_DED_M3Z_PATH] [NO_RESAMPLE] [REG_FILE] [REG_HEADER] [SOURCE_FILE] [SUBJECT] [SUBJECTS_DIR] [TAL] [TAL_RESOLUTION] [TARGET_FILE] [TRANSFORMED_FILE] [XFM_REG_FILE]",
+    "author": "Nipype (interface)",
+    "description": "ApplyVolTransform, as implemented in Nipype (module: nipype.interfaces.freesurfer.preprocess, interface: ApplyVolTransform).\n\nUse FreeSurfer mri_vol2vol to apply a transform.\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.freesurfer import ApplyVolTransform\n    >>> applyreg = ApplyVolTransform()\n    >>> applyreg.inputs.source_file = 'structural.nii'\n    >>> applyreg.inputs.reg_file = 'register.dat'\n    >>> applyreg.inputs.transformed_file = 'struct_warped.nii'\n    >>> applyreg.inputs.fs_target = True\n    >>> applyreg.cmdline\n    'mri_vol2vol --fstarg --reg register.dat --mov structural.nii --o struct_warped.nii'\n\n    ",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "fs_target",
+            "name": "Fs target",
+            "type": "Flag",
+            "value-key": "[FS_TARGET]",
+            "command-line-flag": "--fstarg",
+            "description": "A boolean. Use orig.mgz from subject in regfile as target.",
+            "optional": false,
+            "requires-inputs": [
+                "reg_file"
+            ]
+        },
+        {
+            "id": "fsl_reg_file",
+            "name": "Fsl reg file",
+            "type": "File",
+            "value-key": "[FSL_REG_FILE]",
+            "command-line-flag": "--fsl",
+            "description": "A pathlike object or string representing an existing file. Fslras-to-fslras matrix (fsl format).",
+            "optional": false
+        },
+        {
+            "id": "interp",
+            "name": "Interp",
+            "type": "String",
+            "value-key": "[INTERP]",
+            "command-line-flag": "--interp",
+            "description": "'trilin' or 'nearest' or 'cubic'. Interpolation method (<trilin> or nearest).",
+            "optional": true,
+            "value-choices": [
+                "trilin",
+                "nearest",
+                "cubic"
+            ]
+        },
+        {
+            "id": "inverse",
+            "name": "Inverse",
+            "type": "Flag",
+            "value-key": "[INVERSE]",
+            "command-line-flag": "--inv",
+            "description": "A boolean. Sample from target to source.",
+            "optional": true
+        },
+        {
+            "id": "invert_morph",
+            "name": "Invert morph",
+            "type": "Flag",
+            "value-key": "[INVERT_MORPH]",
+            "command-line-flag": "--inv-morph",
+            "description": "A boolean. Compute and use the inverse of the non-linear morph to resample the input volume. to be used by --m3z.",
+            "optional": true,
+            "requires-inputs": [
+                "m3z_file"
+            ]
+        },
+        {
+            "id": "lta_file",
+            "name": "Lta file",
+            "type": "File",
+            "value-key": "[LTA_FILE]",
+            "command-line-flag": "--lta",
+            "description": "A pathlike object or string representing an existing file. Linear transform array file.",
+            "optional": false
+        },
+        {
+            "id": "lta_inv_file",
+            "name": "Lta inv file",
+            "type": "File",
+            "value-key": "[LTA_INV_FILE]",
+            "command-line-flag": "--lta-inv",
+            "description": "A pathlike object or string representing an existing file. Lta, invert.",
+            "optional": false
+        },
+        {
+            "id": "m3z_file",
+            "name": "M3z file",
+            "type": "File",
+            "value-key": "[M3Z_FILE]",
+            "command-line-flag": "--m3z",
+            "description": "A pathlike object or string representing a file. This is the morph to be applied to the volume. unless the morph is in mri/transforms (eg.: for talairach.m3z computed by reconall), you will need to specify the full path to this morph and use the --nodefm3zpath flag.",
+            "optional": true
+        },
+        {
+            "id": "mni_152_reg",
+            "name": "Mni 152 reg",
+            "type": "Flag",
+            "value-key": "[MNI_152_REG]",
+            "command-line-flag": "--regheader",
+            "description": "A boolean. Target mni152 space.",
+            "optional": false
+        },
+        {
+            "id": "no_ded_m3z_path",
+            "name": "No ded m3z path",
+            "type": "Flag",
+            "value-key": "[NO_DED_M3Z_PATH]",
+            "command-line-flag": "--noDefM3zPath",
+            "description": "A boolean. To be used with the m3z flag. instructs the code not to look for them3z morph in the default location (subjects_dir/subj/mri/transforms), but instead just use the path indicated in --m3z.",
+            "optional": true,
+            "requires-inputs": [
+                "m3z_file"
+            ]
+        },
+        {
+            "id": "no_resample",
+            "name": "No resample",
+            "type": "Flag",
+            "value-key": "[NO_RESAMPLE]",
+            "command-line-flag": "--no-resample",
+            "description": "A boolean. Do not resample; just change vox2ras matrix.",
+            "optional": true
+        },
+        {
+            "id": "reg_file",
+            "name": "Reg file",
+            "type": "File",
+            "value-key": "[REG_FILE]",
+            "command-line-flag": "--reg",
+            "description": "A pathlike object or string representing an existing file. Tkras-to-tkras matrix   (tkregister2 format).",
+            "optional": false
+        },
+        {
+            "id": "reg_header",
+            "name": "Reg header",
+            "type": "Flag",
+            "value-key": "[REG_HEADER]",
+            "command-line-flag": "--regheader",
+            "description": "A boolean. Scannerras-to-scannerras matrix = identity.",
+            "optional": false
+        },
+        {
+            "id": "source_file",
+            "name": "Source file",
+            "type": "File",
+            "value-key": "[SOURCE_FILE]",
+            "command-line-flag": "--mov",
+            "description": "A pathlike object or string representing an existing file. Input volume you wish to transform.",
+            "optional": false
+        },
+        {
+            "id": "subject",
+            "name": "Subject",
+            "type": "String",
+            "value-key": "[SUBJECT]",
+            "command-line-flag": "--s",
+            "description": "A string. Set matrix = identity and use subject for any templates.",
+            "optional": false
+        },
+        {
+            "id": "subjects_dir",
+            "name": "Subjects dir",
+            "type": "File",
+            "value-key": "[SUBJECTS_DIR]",
+            "description": "A pathlike object or string representing an existing directory. Subjects directory.",
+            "optional": true
+        },
+        {
+            "id": "tal",
+            "name": "Tal",
+            "type": "Flag",
+            "value-key": "[TAL]",
+            "command-line-flag": "--tal",
+            "description": "A boolean. Map to a sub fov of mni305 (with --reg only).",
+            "optional": false
+        },
+        {
+            "id": "tal_resolution",
+            "name": "Tal resolution",
+            "type": "Number",
+            "value-key": "[TAL_RESOLUTION]",
+            "command-line-flag": "--talres",
+            "description": "A float. Resolution to sample when using tal.",
+            "optional": true
+        },
+        {
+            "id": "target_file",
+            "name": "Target file",
+            "type": "File",
+            "value-key": "[TARGET_FILE]",
+            "command-line-flag": "--targ",
+            "description": "A pathlike object or string representing an existing file. Output template volume.",
+            "optional": false
+        },
+        {
+            "id": "transformed_file",
+            "name": "Transformed file",
+            "type": "File",
+            "value-key": "[TRANSFORMED_FILE]",
+            "command-line-flag": "--o",
+            "description": "A pathlike object or string representing a file. Output volume.",
+            "optional": true
+        },
+        {
+            "id": "xfm_reg_file",
+            "name": "Xfm reg file",
+            "type": "File",
+            "value-key": "[XFM_REG_FILE]",
+            "command-line-flag": "--xfm",
+            "description": "A pathlike object or string representing an existing file. Scannerras-to-scannerras matrix (mni format).",
+            "optional": false
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Transformed file",
+            "id": "transformed_file_outfile",
+            "path-template": "[TRANSFORMED_FILE]",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Path to output file if used normally."
+        }
+    ],
+    "groups": [
+        {
+            "id": "mutex_group",
+            "name": "Mutex group",
+            "members": [
+                "tal",
+                "fs_target",
+                "target_file"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_2",
+            "name": "Mutex group 2",
+            "members": [
+                "subject",
+                "lta_file",
+                "xfm_reg_file",
+                "mni_152_reg",
+                "reg_file",
+                "lta_inv_file",
+                "reg_header",
+                "fsl_reg_file"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

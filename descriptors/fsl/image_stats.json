@@ -1,0 +1,100 @@
+{
+    "name": "ImageStats",
+    "command-line": "ImageStats [SPLIT_4D] [INDEX_MASK_FILE] [IN_FILE] [OP_STRING] [ARGS] [ENVIRON] [MASK_FILE] [OUTPUT_TYPE]",
+    "author": "Nipype (interface)",
+    "description": "ImageStats, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ImageStats).\n\nUse FSL fslstats command to calculate stats from images\n    `FSL info\n    <http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils>`_\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import ImageStats\n    >>> from nipype.testing import funcfile\n    >>> stats = ImageStats(in_file=funcfile, op_string= '-M')\n    >>> stats.cmdline == 'fslstats %s -M'%funcfile\n    True\n\n\n    ",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "description": "A pathlike object or string representing an existing file. Input file to generate stats of.",
+            "optional": false
+        },
+        {
+            "id": "index_mask_file",
+            "name": "Index mask file",
+            "type": "File",
+            "value-key": "[INDEX_MASK_FILE]",
+            "command-line-flag": "-K",
+            "description": "A pathlike object or string representing an existing file. Generate separate n submasks from indexmask, for indexvalues 1..n where n is the maximum index value in indexmask, and generate statistics for each submask.",
+            "optional": true
+        },
+        {
+            "id": "mask_file",
+            "name": "Mask file",
+            "type": "File",
+            "value-key": "[MASK_FILE]",
+            "description": "A pathlike object or string representing an existing file. Mask file used for option -k %s.",
+            "optional": true
+        },
+        {
+            "id": "op_string",
+            "name": "Op string",
+            "type": "String",
+            "value-key": "[OP_STRING]",
+            "description": "A string. String defining the operation, options are applied in order, e.g. -m -l 10 -m will report the non-zero mean, apply a threshold and then report the new nonzero mean.",
+            "optional": false
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "split_4d",
+            "name": "Split 4d",
+            "type": "Flag",
+            "value-key": "[SPLIT_4D]",
+            "command-line-flag": "-t",
+            "description": "A boolean. Give a separate output line for each 3d volume of a 4d timeseries.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out stat",
+            "id": "out_stat",
+            "path-template": "out_stat",
+            "optional": true,
+            "description": "Any value. Stats output."
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

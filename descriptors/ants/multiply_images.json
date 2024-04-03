@@ -1,0 +1,110 @@
+{
+    "name": "MultiplyImages",
+    "command-line": "MultiplyImages [DIMENSION] [FIRST_INPUT] [SECOND_INPUT] [OUTPUT_PRODUCT_IMAGE] [ARGS] [ENVIRON] [NUM_THREADS]",
+    "author": "Nipype (interface)",
+    "description": "MultiplyImages, as implemented in Nipype (module: nipype.interfaces.ants, interface: MultiplyImages).\n\n\n    Examples\n    --------\n    >>> from nipype.interfaces.ants import MultiplyImages\n    >>> test = MultiplyImages()\n    >>> test.inputs.dimension = 3\n    >>> test.inputs.first_input = 'moving2.nii'\n    >>> test.inputs.second_input = 0.25\n    >>> test.inputs.output_product_image = \"out.nii\"\n    >>> test.cmdline\n    'MultiplyImages 3 moving2.nii 0.25 out.nii'\n    ",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "dimension",
+            "name": "Dimension",
+            "type": "Number",
+            "value-key": "[DIMENSION]",
+            "description": "3 or 2. Image dimension (2 or 3).",
+            "optional": false,
+            "integer": true,
+            "value-choices": [
+                3,
+                2
+            ]
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "first_input",
+            "name": "First input",
+            "type": "File",
+            "value-key": "[FIRST_INPUT]",
+            "description": "A pathlike object or string representing an existing file. Image 1.",
+            "optional": false
+        },
+        {
+            "id": "num_threads",
+            "name": "Num threads",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[NUM_THREADS]",
+            "description": "An integer. Number of itk threads to use.",
+            "optional": true,
+            "default-value": 1
+        },
+        {
+            "id": "output_product_image",
+            "name": "Output product image",
+            "type": "File",
+            "value-key": "[OUTPUT_PRODUCT_IMAGE]",
+            "description": "A pathlike object or string representing a file. Outputfname.nii.gz: the name of the resulting image.",
+            "optional": false
+        },
+        {
+            "id": "second_input",
+            "name": "Second input",
+            "type": "File",
+            "value-key": "[SECOND_INPUT]",
+            "description": "A pathlike object or string representing an existing file or a float. Image 2 or multiplication weight.",
+            "optional": true
+        },
+        {
+            "id": "second_input_2",
+            "name": "Second input",
+            "type": "Number",
+            "value-key": "[SECOND_INPUT]",
+            "description": "A pathlike object or string representing an existing file or a float. Image 2 or multiplication weight.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Output product image",
+            "id": "output_product_image_outfile",
+            "path-template": "[OUTPUT_PRODUCT_IMAGE]",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Average image file."
+        }
+    ],
+    "groups": [
+        {
+            "id": "second_input_group",
+            "name": "Second input group",
+            "members": [
+                "second_input",
+                "second_input_2"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

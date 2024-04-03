@@ -1,0 +1,232 @@
+{
+    "name": "ApplyWarp",
+    "command-line": "ApplyWarp [INTERP] [IN_FILE] [REF_FILE] [OUT_FILE] [RELWARP] [ABSWARP] [ARGS] [DATATYPE] [ENVIRON] [FIELD_FILE] [MASK_FILE] [OUTPUT_TYPE] [POSTMAT] [PREMAT] [SUPERLEVEL] [SUPERSAMPLE]",
+    "author": "Nipype (interface)",
+    "description": "ApplyWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ApplyWarp).\n\nFSL's applywarp wrapper to apply the results of a FNIRT registration\n\n    Examples\n    --------\n    >>> from nipype.interfaces import fsl\n    >>> from nipype.testing import example_data\n    >>> aw = fsl.ApplyWarp()\n    >>> aw.inputs.in_file = example_data('structural.nii')\n    >>> aw.inputs.ref_file = example_data('mni.nii')\n    >>> aw.inputs.field_file = 'my_coefficients_filed.nii' #doctest: +SKIP\n    >>> res = aw.run() #doctest: +SKIP\n\n\n    ",
+    "inputs": [
+        {
+            "id": "abswarp",
+            "name": "Abswarp",
+            "type": "Flag",
+            "value-key": "[ABSWARP]",
+            "command-line-flag": "--abs",
+            "description": "A boolean. Treat warp field as absolute: x' = w(x).",
+            "optional": true
+        },
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "datatype",
+            "name": "Datatype",
+            "type": "String",
+            "value-key": "[DATATYPE]",
+            "command-line-flag": "--datatype",
+            "command-line-flag-separator": "=",
+            "description": "'char' or 'short' or 'int' or 'float' or 'double'. Force output data type [char short int float double].",
+            "optional": true,
+            "value-choices": [
+                "char",
+                "short",
+                "int",
+                "float",
+                "double"
+            ]
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "field_file",
+            "name": "Field file",
+            "type": "File",
+            "value-key": "[FIELD_FILE]",
+            "command-line-flag": "--warp",
+            "command-line-flag-separator": "=",
+            "description": "A pathlike object or string representing an existing file. File containing warp field.",
+            "optional": true
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "command-line-flag": "--in",
+            "command-line-flag-separator": "=",
+            "description": "A pathlike object or string representing an existing file. Image to be warped.",
+            "optional": false
+        },
+        {
+            "id": "interp",
+            "name": "Interp",
+            "type": "String",
+            "value-key": "[INTERP]",
+            "command-line-flag": "--interp",
+            "command-line-flag-separator": "=",
+            "description": "'nn' or 'trilinear' or 'sinc' or 'spline'. Interpolation method.",
+            "optional": true,
+            "value-choices": [
+                "nn",
+                "trilinear",
+                "sinc",
+                "spline"
+            ]
+        },
+        {
+            "id": "mask_file",
+            "name": "Mask file",
+            "type": "File",
+            "value-key": "[MASK_FILE]",
+            "command-line-flag": "--mask",
+            "command-line-flag-separator": "=",
+            "description": "A pathlike object or string representing an existing file. Filename for mask image (in reference space).",
+            "optional": true
+        },
+        {
+            "id": "out_file",
+            "name": "Out file",
+            "type": "File",
+            "value-key": "[OUT_FILE]",
+            "command-line-flag": "--out",
+            "command-line-flag-separator": "=",
+            "description": "A pathlike object or string representing a file. Output filename.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "postmat",
+            "name": "Postmat",
+            "type": "File",
+            "value-key": "[POSTMAT]",
+            "command-line-flag": "--postmat",
+            "command-line-flag-separator": "=",
+            "description": "A pathlike object or string representing an existing file. Filename for post-transform (affine matrix).",
+            "optional": true
+        },
+        {
+            "id": "premat",
+            "name": "Premat",
+            "type": "File",
+            "value-key": "[PREMAT]",
+            "command-line-flag": "--premat",
+            "command-line-flag-separator": "=",
+            "description": "A pathlike object or string representing an existing file. Filename for pre-transform (affine matrix).",
+            "optional": true
+        },
+        {
+            "id": "ref_file",
+            "name": "Ref file",
+            "type": "File",
+            "value-key": "[REF_FILE]",
+            "command-line-flag": "--ref",
+            "command-line-flag-separator": "=",
+            "description": "A pathlike object or string representing an existing file. Reference image.",
+            "optional": false
+        },
+        {
+            "id": "relwarp",
+            "name": "Relwarp",
+            "type": "Flag",
+            "value-key": "[RELWARP]",
+            "command-line-flag": "--rel",
+            "description": "A boolean. Treat warp field as relative: x' = x + w(x).",
+            "optional": true
+        },
+        {
+            "id": "superlevel",
+            "name": "Superlevel",
+            "type": "String",
+            "value-key": "[SUPERLEVEL]",
+            "command-line-flag": "--superlevel",
+            "command-line-flag-separator": "=",
+            "description": "'a' or an integer. Level of intermediary supersampling, a for 'automatic' or integer level. default = 2.",
+            "optional": true,
+            "value-choices": [
+                "a"
+            ]
+        },
+        {
+            "id": "superlevel_2",
+            "name": "Superlevel",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[SUPERLEVEL]",
+            "command-line-flag": "--superlevel",
+            "command-line-flag-separator": "=",
+            "description": "'a' or an integer. Level of intermediary supersampling, a for 'automatic' or integer level. default = 2.",
+            "optional": true
+        },
+        {
+            "id": "supersample",
+            "name": "Supersample",
+            "type": "Flag",
+            "value-key": "[SUPERSAMPLE]",
+            "command-line-flag": "--super",
+            "description": "A boolean. Intermediary supersampling of output, default is off.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out file",
+            "id": "out_file_outfile",
+            "path-template": "[OUT_FILE]",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Warped output file."
+        }
+    ],
+    "groups": [
+        {
+            "id": "superlevel_group",
+            "name": "Superlevel group",
+            "members": [
+                "superlevel",
+                "superlevel_2"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group",
+            "name": "Mutex group",
+            "members": [
+                "relwarp",
+                "abswarp"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

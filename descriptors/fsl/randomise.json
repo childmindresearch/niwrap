@@ -1,0 +1,350 @@
+{
+    "name": "Randomise",
+    "command-line": "Randomise [IN_FILE] [BASE_NAME] [DESIGN_MAT] [TCON] [ARGS] [C_THRESH] [CM_THRESH] [DEMEAN] [ENVIRON] [F_C_THRESH] [F_CM_THRESH] [F_ONLY] [FCON] [MASK] [NUM_PERM] [ONE_SAMPLE_GROUP_MEAN] [OUTPUT_TYPE] [P_VEC_N_DIST_FILES] [RAW_STATS_IMGS] [SEED] [SHOW_INFO_PARALLEL_MODE] [SHOW_TOTAL_PERMS] [TFCE] [TFCE2D] [TFCE_C] [TFCE_E] [TFCE_H] [VAR_SMOOTH] [VOX_P_VALUES] [X_BLOCK_LABELS]",
+    "author": "Nipype (interface)",
+    "description": "Randomise, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Randomise).\n\nFSL Randomise: feeds the 4D projected FA data into GLM\n    modelling and thresholding\n    in order to find voxels which correlate with your model\n\n    Example\n    -------\n    >>> import nipype.interfaces.fsl as fsl\n    >>> rand = fsl.Randomise(in_file='allFA.nii', mask = 'mask.nii', tcon='design.con', design_mat='design.mat')\n    >>> rand.cmdline\n    'randomise -i allFA.nii -o \"randomise\" -d design.mat -t design.con -m mask.nii'\n\n    ",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "base_name",
+            "name": "Base name",
+            "type": "String",
+            "value-key": "[BASE_NAME]",
+            "command-line-flag": "-o \"",
+            "description": "A string. The rootname that all generated files will have.",
+            "optional": true,
+            "default-value": "randomise"
+        },
+        {
+            "id": "c_thresh",
+            "name": "C thresh",
+            "type": "Number",
+            "value-key": "[C_THRESH]",
+            "command-line-flag": "-c",
+            "description": "A float. Carry out cluster-based thresholding.",
+            "optional": true
+        },
+        {
+            "id": "cm_thresh",
+            "name": "Cm thresh",
+            "type": "Number",
+            "value-key": "[CM_THRESH]",
+            "command-line-flag": "-C",
+            "description": "A float. Carry out cluster-mass-based thresholding.",
+            "optional": true
+        },
+        {
+            "id": "demean",
+            "name": "Demean",
+            "type": "Flag",
+            "value-key": "[DEMEAN]",
+            "command-line-flag": "-D",
+            "description": "A boolean. Demean data temporally before model fitting.",
+            "optional": true
+        },
+        {
+            "id": "design_mat",
+            "name": "Design mat",
+            "type": "File",
+            "value-key": "[DESIGN_MAT]",
+            "command-line-flag": "-d",
+            "description": "A pathlike object or string representing an existing file. Design matrix file.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "f_c_thresh",
+            "name": "F c thresh",
+            "type": "Number",
+            "value-key": "[F_C_THRESH]",
+            "command-line-flag": "-F",
+            "description": "A float. Carry out f cluster thresholding.",
+            "optional": true
+        },
+        {
+            "id": "f_cm_thresh",
+            "name": "F cm thresh",
+            "type": "Number",
+            "value-key": "[F_CM_THRESH]",
+            "command-line-flag": "-S",
+            "description": "A float. Carry out f cluster-mass thresholding.",
+            "optional": true
+        },
+        {
+            "id": "f_only",
+            "name": "F only",
+            "type": "Flag",
+            "value-key": "[F_ONLY]",
+            "command-line-flag": "--fonly",
+            "description": "A boolean. Calculate f-statistics only.",
+            "optional": true
+        },
+        {
+            "id": "fcon",
+            "name": "Fcon",
+            "type": "File",
+            "value-key": "[FCON]",
+            "command-line-flag": "-f",
+            "description": "A pathlike object or string representing an existing file. F contrasts file.",
+            "optional": true
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "command-line-flag": "-i",
+            "description": "A pathlike object or string representing an existing file. 4d input file.",
+            "optional": false
+        },
+        {
+            "id": "mask",
+            "name": "Mask",
+            "type": "File",
+            "value-key": "[MASK]",
+            "command-line-flag": "-m",
+            "description": "A pathlike object or string representing an existing file. Mask image.",
+            "optional": true
+        },
+        {
+            "id": "num_perm",
+            "name": "Num perm",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[NUM_PERM]",
+            "command-line-flag": "-n",
+            "description": "An integer. Number of permutations (default 5000, set to 0 for exhaustive).",
+            "optional": true
+        },
+        {
+            "id": "one_sample_group_mean",
+            "name": "One sample group mean",
+            "type": "Flag",
+            "value-key": "[ONE_SAMPLE_GROUP_MEAN]",
+            "command-line-flag": "-1",
+            "description": "A boolean. Perform 1-sample group-mean test instead of generic permutation test.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "p_vec_n_dist_files",
+            "name": "P vec n dist files",
+            "type": "Flag",
+            "value-key": "[P_VEC_N_DIST_FILES]",
+            "command-line-flag": "-P",
+            "description": "A boolean. Output permutation vector and null distribution text files.",
+            "optional": true
+        },
+        {
+            "id": "raw_stats_imgs",
+            "name": "Raw stats imgs",
+            "type": "Flag",
+            "value-key": "[RAW_STATS_IMGS]",
+            "command-line-flag": "-R",
+            "description": "A boolean. Output raw ( unpermuted ) statistic images.",
+            "optional": true
+        },
+        {
+            "id": "seed",
+            "name": "Seed",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[SEED]",
+            "command-line-flag": "--seed",
+            "command-line-flag-separator": "=",
+            "description": "An integer. Specific integer seed for random number generator.",
+            "optional": true
+        },
+        {
+            "id": "show_info_parallel_mode",
+            "name": "Show info parallel mode",
+            "type": "Flag",
+            "value-key": "[SHOW_INFO_PARALLEL_MODE]",
+            "command-line-flag": "-Q",
+            "description": "A boolean. Print out information required for parallel mode and exit.",
+            "optional": true
+        },
+        {
+            "id": "show_total_perms",
+            "name": "Show total perms",
+            "type": "Flag",
+            "value-key": "[SHOW_TOTAL_PERMS]",
+            "command-line-flag": "-q",
+            "description": "A boolean. Print out how many unique permutations would be generated and exit.",
+            "optional": true
+        },
+        {
+            "id": "tcon",
+            "name": "Tcon",
+            "type": "File",
+            "value-key": "[TCON]",
+            "command-line-flag": "-t",
+            "description": "A pathlike object or string representing an existing file. T contrasts file.",
+            "optional": true
+        },
+        {
+            "id": "tfce",
+            "name": "Tfce",
+            "type": "Flag",
+            "value-key": "[TFCE]",
+            "command-line-flag": "-T",
+            "description": "A boolean. Carry out threshold-free cluster enhancement.",
+            "optional": true
+        },
+        {
+            "id": "tfce2D",
+            "name": "Tfce2d",
+            "type": "Flag",
+            "value-key": "[TFCE2D]",
+            "command-line-flag": "--T2",
+            "description": "A boolean. Carry out threshold-free cluster enhancement with 2d optimisation.",
+            "optional": true
+        },
+        {
+            "id": "tfce_C",
+            "name": "Tfce c",
+            "type": "Number",
+            "value-key": "[TFCE_C]",
+            "command-line-flag": "--tfce_C",
+            "command-line-flag-separator": "=",
+            "description": "A float. Tfce connectivity (6 or 26; default=6).",
+            "optional": true
+        },
+        {
+            "id": "tfce_E",
+            "name": "Tfce e",
+            "type": "Number",
+            "value-key": "[TFCE_E]",
+            "command-line-flag": "--tfce_E",
+            "command-line-flag-separator": "=",
+            "description": "A float. Tfce extent parameter (default=0.5).",
+            "optional": true
+        },
+        {
+            "id": "tfce_H",
+            "name": "Tfce h",
+            "type": "Number",
+            "value-key": "[TFCE_H]",
+            "command-line-flag": "--tfce_H",
+            "command-line-flag-separator": "=",
+            "description": "A float. Tfce height parameter (default=2).",
+            "optional": true
+        },
+        {
+            "id": "var_smooth",
+            "name": "Var smooth",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[VAR_SMOOTH]",
+            "command-line-flag": "-v",
+            "description": "An integer. Use variance smoothing (std is in mm).",
+            "optional": true
+        },
+        {
+            "id": "vox_p_values",
+            "name": "Vox p values",
+            "type": "Flag",
+            "value-key": "[VOX_P_VALUES]",
+            "command-line-flag": "-x",
+            "description": "A boolean. Output voxelwise (corrected and uncorrected) p-value images.",
+            "optional": true
+        },
+        {
+            "id": "x_block_labels",
+            "name": "X block labels",
+            "type": "File",
+            "value-key": "[X_BLOCK_LABELS]",
+            "command-line-flag": "-e",
+            "description": "A pathlike object or string representing an existing file. Exchangeability block labels file.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "F corrected p files",
+            "id": "f_corrected_p_files",
+            "path-template": "f_corrected_p_files",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. F contrast fwe (family-wise error) corrected p values files.",
+            "list": true
+        },
+        {
+            "name": "F p files",
+            "id": "f_p_files",
+            "path-template": "f_p_files",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. F contrast uncorrected p values files.",
+            "list": true
+        },
+        {
+            "name": "Fstat files",
+            "id": "fstat_files",
+            "path-template": "fstat_files",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. F contrast raw statistic.",
+            "list": true
+        },
+        {
+            "name": "T corrected p files",
+            "id": "t_corrected_p_files",
+            "path-template": "t_corrected_p_files",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. T contrast fwe (family-wise error) corrected p values files.",
+            "list": true
+        },
+        {
+            "name": "T p files",
+            "id": "t_p_files",
+            "path-template": "t_p_files",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. F contrast uncorrected p values files.",
+            "list": true
+        },
+        {
+            "name": "Tstat files",
+            "id": "tstat_files",
+            "path-template": "tstat_files",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. T contrast raw statistic.",
+            "list": true
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

@@ -1,0 +1,109 @@
+{
+    "name": "TCat",
+    "command-line": "TCat [RLT] [IN_FILES] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [VERBOSE]",
+    "author": "Nipype (interface)",
+    "description": "TCat, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: TCat).\n\nConcatenate sub-bricks from input datasets into one big 3D+time dataset.\n\n    TODO Replace InputMultiPath in_files with Traits.List, if possible. Current\n    version adds extra whitespace.\n\n    For complete details, see the `3dTcat Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcat.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> tcat = afni.TCat()\n    >>> tcat.inputs.in_files = ['functional.nii', 'functional2.nii']\n    >>> tcat.inputs.out_file= 'functional_tcat.nii'\n    >>> tcat.inputs.rlt = '+'\n    >>> tcat.cmdline\n    '3dTcat -rlt+ -prefix functional_tcat.nii functional.nii functional2.nii'\n    >>> res = tcat.run()  # doctest: +SKIP\n\n    ",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_files",
+            "name": "In files",
+            "type": "File",
+            "list": true,
+            "value-key": "[IN_FILES]",
+            "command-line-flag": "",
+            "description": "A list of items which are a pathlike object or string representing an existing file. Input file to 3dtcat.",
+            "optional": false
+        },
+        {
+            "id": "num_threads",
+            "name": "Num threads",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[NUM_THREADS]",
+            "description": "An integer. Set number of threads.",
+            "optional": true,
+            "default-value": 1
+        },
+        {
+            "id": "outputtype",
+            "name": "Outputtype",
+            "type": "String",
+            "value-key": "[OUTPUTTYPE]",
+            "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "AFNI",
+                "NIFTI_GZ"
+            ]
+        },
+        {
+            "id": "rlt",
+            "name": "Rlt",
+            "type": "String",
+            "value-key": "[RLT]",
+            "command-line-flag": "-rlt",
+            "description": "'' or '+' or '++'. Remove linear trends in each voxel time series loaded from each input dataset, separately. option -rlt removes the least squares fit of 'a+b*t' to each voxel time series. option -rlt+ adds dataset mean back in. option -rlt++ adds overall mean of all dataset timeseries back in.",
+            "optional": true,
+            "value-choices": [
+                "",
+                "+",
+                "++"
+            ]
+        },
+        {
+            "id": "verbose",
+            "name": "Verbose",
+            "type": "Flag",
+            "value-key": "[VERBOSE]",
+            "command-line-flag": "-verb",
+            "description": "A boolean. Print out some verbose output as the program.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out file",
+            "id": "out_file",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Output image file name.",
+            "path-template": "[IN_FILES]_tcat",
+            "value-key": "[OUT_FILE]",
+            "command-line-flag": "-prefix"
+        },
+        {
+            "name": "Out file",
+            "id": "out_file",
+            "path-template": "out_file",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Output file."
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

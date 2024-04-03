@@ -1,0 +1,167 @@
+{
+    "name": "InvWarp",
+    "command-line": "InvWarp [ABSOLUTE] [ARGS] [ENVIRON] [INVERSE_WARP] [JACOBIAN_MAX] [JACOBIAN_MIN] [NITER] [NOCONSTRAINT] [OUTPUT_TYPE] [REFERENCE] [REGULARISE] [RELATIVE] [WARP]",
+    "author": "Nipype (interface)",
+    "description": "InvWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: InvWarp).\n\n\n    Use FSL Invwarp to invert a FNIRT warp\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import InvWarp\n    >>> invwarp = InvWarp()\n    >>> invwarp.inputs.warp = \"struct2mni.nii\"\n    >>> invwarp.inputs.reference = \"anatomical.nii\"\n    >>> invwarp.inputs.output_type = \"NIFTI_GZ\"\n    >>> invwarp.cmdline\n    'invwarp --out=struct2mni_inverse.nii.gz --ref=anatomical.nii --warp=struct2mni.nii'\n    >>> res = invwarp.run() # doctest: +SKIP\n\n\n    ",
+    "inputs": [
+        {
+            "id": "absolute",
+            "name": "Absolute",
+            "type": "Flag",
+            "value-key": "[ABSOLUTE]",
+            "command-line-flag": "--abs",
+            "description": "A boolean. If set it indicates that the warps in --warp should be interpreted as absolute, provided that it is not created by fnirt (which always uses relative warps). if set it also indicates that the output --out should be absolute.",
+            "optional": true
+        },
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "jacobian_max",
+            "name": "Jacobian max",
+            "type": "Number",
+            "value-key": "[JACOBIAN_MAX]",
+            "command-line-flag": "--jmax",
+            "command-line-flag-separator": "=",
+            "description": "A float. Maximum acceptable jacobian value for constraint (default 100.0).",
+            "optional": true
+        },
+        {
+            "id": "jacobian_min",
+            "name": "Jacobian min",
+            "type": "Number",
+            "value-key": "[JACOBIAN_MIN]",
+            "command-line-flag": "--jmin",
+            "command-line-flag-separator": "=",
+            "description": "A float. Minimum acceptable jacobian value for constraint (default 0.01).",
+            "optional": true
+        },
+        {
+            "id": "niter",
+            "name": "Niter",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[NITER]",
+            "command-line-flag": "--niter",
+            "command-line-flag-separator": "=",
+            "description": "An integer. Determines how many iterations of the gradient-descent search that should be run.",
+            "optional": true
+        },
+        {
+            "id": "noconstraint",
+            "name": "Noconstraint",
+            "type": "Flag",
+            "value-key": "[NOCONSTRAINT]",
+            "command-line-flag": "--noconstraint",
+            "description": "A boolean. Do not apply jacobian constraint.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "reference",
+            "name": "Reference",
+            "type": "File",
+            "value-key": "[REFERENCE]",
+            "command-line-flag": "--ref",
+            "command-line-flag-separator": "=",
+            "description": "A pathlike object or string representing an existing file. Name of a file in target space. note that the target space is now different from the target space that was used to create the --warp file. it would typically be the file that was specified with the --in argument when running fnirt.",
+            "optional": false
+        },
+        {
+            "id": "regularise",
+            "name": "Regularise",
+            "type": "Number",
+            "value-key": "[REGULARISE]",
+            "command-line-flag": "--regularise",
+            "command-line-flag-separator": "=",
+            "description": "A float. Regularization strength (default=1.0).",
+            "optional": true
+        },
+        {
+            "id": "relative",
+            "name": "Relative",
+            "type": "Flag",
+            "value-key": "[RELATIVE]",
+            "command-line-flag": "--rel",
+            "description": "A boolean. If set it indicates that the warps in --warp should be interpreted as relative. i.e. the values in --warp are displacements from the coordinates in the --ref space. if set it also indicates that the output --out should be relative.",
+            "optional": true
+        },
+        {
+            "id": "warp",
+            "name": "Warp",
+            "type": "File",
+            "value-key": "[WARP]",
+            "command-line-flag": "--warp",
+            "command-line-flag-separator": "=",
+            "description": "A pathlike object or string representing an existing file. Name of file containing warp-coefficients/fields. this would typically be the output from the --cout switch of fnirt (but can also use fields, like the output from --fout).",
+            "optional": false
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Inverse warp",
+            "id": "inverse_warp",
+            "optional": true,
+            "description": "A pathlike object or string representing a file. Name of output file, containing warps that are the \"reverse\" of those in --warp. this will be a field-file (rather than a file of spline coefficients), and it will have any affine component included as part of the displacements.",
+            "path-template": "[WARP]_inverse",
+            "value-key": "[INVERSE_WARP]",
+            "command-line-flag": "--out",
+            "command-line-flag-separator": "="
+        },
+        {
+            "name": "Inverse warp",
+            "id": "inverse_warp",
+            "path-template": "inverse_warp",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Name of output file, containing warps that are the \"reverse\" of those in --warp."
+        }
+    ],
+    "groups": [
+        {
+            "id": "mutex_group",
+            "name": "Mutex group",
+            "members": [
+                "absolute",
+                "relative"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

@@ -1,0 +1,1001 @@
+{
+    "name": "ReconAll",
+    "command-line": "ReconAll [DIRECTIVE] [FLAIR_FILE] [T1_FILES] [T2_FILE] [ARGS] [BIG_VENTRICLES] [BRAINSTEM] [ENVIRON] [EXPERT] [FLAGS] [HEMI] [HIPPOCAMPAL_SUBFIELDS_T1] [HIPPOCAMPAL_SUBFIELDS_T2] [HIRES] [MPRAGE] [MRI_APARC2ASEG] [MRI_CA_LABEL] [MRI_CA_NORMALIZE] [MRI_CA_REGISTER] [MRI_EDIT_WM_WITH_ASEG] [MRI_EM_REGISTER] [MRI_FILL] [MRI_MASK] [MRI_NORMALIZE] [MRI_PRETESS] [MRI_REMOVE_NECK] [MRI_SEGMENT] [MRI_SEGSTATS] [MRI_TESSELLATE] [MRI_WATERSHED] [MRIS_ANATOMICAL_STATS] [MRIS_CA_LABEL] [MRIS_FIX_TOPOLOGY] [MRIS_INFLATE] [MRIS_MAKE_SURFACES] [MRIS_REGISTER] [MRIS_SMOOTH] [MRIS_SPHERE] [MRIS_SURF2VOL] [MRISP_PAINT] [OPENMP] [PARALLEL] [SUBJECT_ID] [SUBJECTS_DIR] [TALAIRACH] [USE_FLAIR] [USE_T2] [XOPTS]",
+    "author": "Nipype (interface)",
+    "description": "ReconAll, as implemented in Nipype (module: nipype.interfaces.freesurfer.preprocess, interface: ReconAll).\n\nUses recon-all to generate surfaces and parcellations of structural data\n    from anatomical images of a subject.\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.freesurfer import ReconAll\n    >>> reconall = ReconAll()\n    >>> reconall.inputs.subject_id = 'foo'\n    >>> reconall.inputs.directive = 'all'\n    >>> reconall.inputs.subjects_dir = '.'\n    >>> reconall.inputs.T1_files = 'structural.nii'\n    >>> reconall.cmdline\n    'recon-all -all -i structural.nii -subjid foo -sd .'\n    >>> reconall.inputs.flags = \"-qcache\"\n    >>> reconall.cmdline\n    'recon-all -all -i structural.nii -qcache -subjid foo -sd .'\n    >>> reconall.inputs.flags = [\"-cw256\", \"-qcache\"]\n    >>> reconall.cmdline\n    'recon-all -all -i structural.nii -cw256 -qcache -subjid foo -sd .'\n\n    Hemisphere may be specified regardless of directive:\n\n    >>> reconall.inputs.flags = []\n    >>> reconall.inputs.hemi = 'lh'\n    >>> reconall.cmdline\n    'recon-all -all -i structural.nii -hemi lh -subjid foo -sd .'\n\n    ``-autorecon-hemi`` uses the ``-hemi`` input to specify the hemisphere\n    to operate upon:\n\n    >>> reconall.inputs.directive = 'autorecon-hemi'\n    >>> reconall.cmdline\n    'recon-all -autorecon-hemi lh -i structural.nii -subjid foo -sd .'\n\n    Hippocampal subfields can accept T1 and T2 images:\n\n    >>> reconall_subfields = ReconAll()\n    >>> reconall_subfields.inputs.subject_id = 'foo'\n    >>> reconall_subfields.inputs.directive = 'all'\n    >>> reconall_subfields.inputs.subjects_dir = '.'\n    >>> reconall_subfields.inputs.T1_files = 'structural.nii'\n    >>> reconall_subfields.inputs.hippocampal_subfields_T1 = True\n    >>> reconall_subfields.cmdline\n    'recon-all -all -i structural.nii -hippocampal-subfields-T1 -subjid foo -sd .'\n    >>> reconall_subfields.inputs.hippocampal_subfields_T2 = (\n    ... 'structural.nii', 'test')\n    >>> reconall_subfields.cmdline\n    'recon-all -all -i structural.nii -hippocampal-subfields-T1T2 structural.nii test -subjid foo -sd .'\n    >>> reconall_subfields.inputs.hippocampal_subfields_T1 = False\n    >>> reconall_subfields.cmdline\n    'recon-all -all -i structural.nii -hippocampal-subfields-T2 structural.nii test -subjid foo -sd .'\n    ",
+    "inputs": [
+        {
+            "id": "FLAIR_file",
+            "name": "Flair file",
+            "type": "File",
+            "value-key": "[FLAIR_FILE]",
+            "command-line-flag": "-FLAIR",
+            "description": "A pathlike object or string representing an existing file. Convert flair image to orig directory.",
+            "optional": true
+        },
+        {
+            "id": "T1_files",
+            "name": "T1 files",
+            "type": "File",
+            "list": true,
+            "value-key": "[T1_FILES]",
+            "command-line-flag": "-i",
+            "description": "A list of items which are a pathlike object or string representing an existing file. Name of t1 file to process.",
+            "optional": true
+        },
+        {
+            "id": "T2_file",
+            "name": "T2 file",
+            "type": "File",
+            "value-key": "[T2_FILE]",
+            "command-line-flag": "-T2",
+            "description": "A pathlike object or string representing an existing file. Convert t2 image to orig directory.",
+            "optional": true
+        },
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "big_ventricles",
+            "name": "Big ventricles",
+            "type": "Flag",
+            "value-key": "[BIG_VENTRICLES]",
+            "command-line-flag": "-bigventricles",
+            "description": "A boolean. For use in subjects with enlarged ventricles.",
+            "optional": true
+        },
+        {
+            "id": "brainstem",
+            "name": "Brainstem",
+            "type": "Flag",
+            "value-key": "[BRAINSTEM]",
+            "command-line-flag": "-brainstem-structures",
+            "description": "A boolean. Segment brainstem structures.",
+            "optional": true
+        },
+        {
+            "id": "directive",
+            "name": "Directive",
+            "type": "String",
+            "value-key": "[DIRECTIVE]",
+            "command-line-flag": "-",
+            "description": "'all' or 'autorecon1' or 'autorecon2' or 'autorecon2-volonly' or 'autorecon2-perhemi' or 'autorecon2-inflate1' or 'autorecon2-cp' or 'autorecon2-wm' or 'autorecon3' or 'autorecon3-t2pial' or 'autorecon-pial' or 'autorecon-hemi' or 'localgi' or 'qcache'. Process directive.",
+            "optional": true,
+            "default-value": "all",
+            "value-choices": [
+                "all",
+                "autorecon1",
+                "autorecon2",
+                "autorecon2-volonly",
+                "autorecon2-perhemi",
+                "autorecon2-inflate1",
+                "autorecon2-cp",
+                "autorecon2-wm",
+                "autorecon3",
+                "autorecon3-T2pial",
+                "autorecon-pial",
+                "autorecon-hemi",
+                "localGI",
+                "qcache"
+            ]
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "expert",
+            "name": "Expert",
+            "type": "File",
+            "value-key": "[EXPERT]",
+            "command-line-flag": "-expert",
+            "description": "A pathlike object or string representing an existing file. Set parameters using expert file.",
+            "optional": true
+        },
+        {
+            "id": "flags",
+            "name": "Flags",
+            "type": "File",
+            "list": true,
+            "value-key": "[FLAGS]",
+            "description": "A list of items which are a string. Additional parameters.",
+            "optional": true
+        },
+        {
+            "id": "hemi",
+            "name": "Hemi",
+            "type": "String",
+            "value-key": "[HEMI]",
+            "command-line-flag": "-hemi",
+            "description": "'lh' or 'rh'. Hemisphere to process.",
+            "optional": true,
+            "value-choices": [
+                "lh",
+                "rh"
+            ]
+        },
+        {
+            "id": "hippocampal_subfields_T1",
+            "name": "Hippocampal subfields t1",
+            "type": "Flag",
+            "value-key": "[HIPPOCAMPAL_SUBFIELDS_T1]",
+            "command-line-flag": "-hippocampal-subfields-T1",
+            "description": "A boolean. Segment hippocampal subfields using input t1 scan.",
+            "optional": true
+        },
+        {
+            "id": "hippocampal_subfields_T2",
+            "name": "Hippocampal subfields t2",
+            "type": "String",
+            "list": true,
+            "min-list-entries": 2,
+            "max-list-entries": 2,
+            "value-key": "[HIPPOCAMPAL_SUBFIELDS_T2]",
+            "command-line-flag": "-hippocampal-subfields-T2",
+            "description": "A tuple of the form: (a pathlike object or string representing an existing file, a string). Segment hippocampal subfields using t2 scan, identified by id (may be combined with hippocampal_subfields_t1).",
+            "optional": true
+        },
+        {
+            "id": "hires",
+            "name": "Hires",
+            "type": "Flag",
+            "value-key": "[HIRES]",
+            "command-line-flag": "-hires",
+            "description": "A boolean. Conform to minimum voxel size (for voxels < 1mm).",
+            "optional": true
+        },
+        {
+            "id": "mprage",
+            "name": "Mprage",
+            "type": "Flag",
+            "value-key": "[MPRAGE]",
+            "command-line-flag": "-mprage",
+            "description": "A boolean. Assume scan parameters are mgh mp-rage protocol, which produces darker gray matter.",
+            "optional": true
+        },
+        {
+            "id": "mri_aparc2aseg",
+            "name": "Mri aparc2aseg",
+            "type": "String",
+            "value-key": "[MRI_APARC2ASEG]",
+            "description": "A string. Flags to pass to mri_aparc2aseg commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_ca_label",
+            "name": "Mri ca label",
+            "type": "String",
+            "value-key": "[MRI_CA_LABEL]",
+            "description": "A string. Flags to pass to mri_ca_label commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_ca_normalize",
+            "name": "Mri ca normalize",
+            "type": "String",
+            "value-key": "[MRI_CA_NORMALIZE]",
+            "description": "A string. Flags to pass to mri_ca_normalize commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_ca_register",
+            "name": "Mri ca register",
+            "type": "String",
+            "value-key": "[MRI_CA_REGISTER]",
+            "description": "A string. Flags to pass to mri_ca_register commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_edit_wm_with_aseg",
+            "name": "Mri edit wm with aseg",
+            "type": "String",
+            "value-key": "[MRI_EDIT_WM_WITH_ASEG]",
+            "description": "A string. Flags to pass to mri_edit_wm_with_aseg commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_em_register",
+            "name": "Mri em register",
+            "type": "String",
+            "value-key": "[MRI_EM_REGISTER]",
+            "description": "A string. Flags to pass to mri_em_register commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_fill",
+            "name": "Mri fill",
+            "type": "String",
+            "value-key": "[MRI_FILL]",
+            "description": "A string. Flags to pass to mri_fill commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_mask",
+            "name": "Mri mask",
+            "type": "String",
+            "value-key": "[MRI_MASK]",
+            "description": "A string. Flags to pass to mri_mask commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_normalize",
+            "name": "Mri normalize",
+            "type": "String",
+            "value-key": "[MRI_NORMALIZE]",
+            "description": "A string. Flags to pass to mri_normalize commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_pretess",
+            "name": "Mri pretess",
+            "type": "String",
+            "value-key": "[MRI_PRETESS]",
+            "description": "A string. Flags to pass to mri_pretess commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_remove_neck",
+            "name": "Mri remove neck",
+            "type": "String",
+            "value-key": "[MRI_REMOVE_NECK]",
+            "description": "A string. Flags to pass to mri_remove_neck commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_segment",
+            "name": "Mri segment",
+            "type": "String",
+            "value-key": "[MRI_SEGMENT]",
+            "description": "A string. Flags to pass to mri_segment commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_segstats",
+            "name": "Mri segstats",
+            "type": "String",
+            "value-key": "[MRI_SEGSTATS]",
+            "description": "A string. Flags to pass to mri_segstats commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_tessellate",
+            "name": "Mri tessellate",
+            "type": "String",
+            "value-key": "[MRI_TESSELLATE]",
+            "description": "A string. Flags to pass to mri_tessellate commands.",
+            "optional": true
+        },
+        {
+            "id": "mri_watershed",
+            "name": "Mri watershed",
+            "type": "String",
+            "value-key": "[MRI_WATERSHED]",
+            "description": "A string. Flags to pass to mri_watershed commands.",
+            "optional": true
+        },
+        {
+            "id": "mris_anatomical_stats",
+            "name": "Mris anatomical stats",
+            "type": "String",
+            "value-key": "[MRIS_ANATOMICAL_STATS]",
+            "description": "A string. Flags to pass to mris_anatomical_stats commands.",
+            "optional": true
+        },
+        {
+            "id": "mris_ca_label",
+            "name": "Mris ca label",
+            "type": "String",
+            "value-key": "[MRIS_CA_LABEL]",
+            "description": "A string. Flags to pass to mris_ca_label commands.",
+            "optional": true
+        },
+        {
+            "id": "mris_fix_topology",
+            "name": "Mris fix topology",
+            "type": "String",
+            "value-key": "[MRIS_FIX_TOPOLOGY]",
+            "description": "A string. Flags to pass to mris_fix_topology commands.",
+            "optional": true
+        },
+        {
+            "id": "mris_inflate",
+            "name": "Mris inflate",
+            "type": "String",
+            "value-key": "[MRIS_INFLATE]",
+            "description": "A string. Flags to pass to mri_inflate commands.",
+            "optional": true
+        },
+        {
+            "id": "mris_make_surfaces",
+            "name": "Mris make surfaces",
+            "type": "String",
+            "value-key": "[MRIS_MAKE_SURFACES]",
+            "description": "A string. Flags to pass to mris_make_surfaces commands.",
+            "optional": true
+        },
+        {
+            "id": "mris_register",
+            "name": "Mris register",
+            "type": "String",
+            "value-key": "[MRIS_REGISTER]",
+            "description": "A string. Flags to pass to mris_register commands.",
+            "optional": true
+        },
+        {
+            "id": "mris_smooth",
+            "name": "Mris smooth",
+            "type": "String",
+            "value-key": "[MRIS_SMOOTH]",
+            "description": "A string. Flags to pass to mri_smooth commands.",
+            "optional": true
+        },
+        {
+            "id": "mris_sphere",
+            "name": "Mris sphere",
+            "type": "String",
+            "value-key": "[MRIS_SPHERE]",
+            "description": "A string. Flags to pass to mris_sphere commands.",
+            "optional": true
+        },
+        {
+            "id": "mris_surf2vol",
+            "name": "Mris surf2vol",
+            "type": "String",
+            "value-key": "[MRIS_SURF2VOL]",
+            "description": "A string. Flags to pass to mris_surf2vol commands.",
+            "optional": true
+        },
+        {
+            "id": "mrisp_paint",
+            "name": "Mrisp paint",
+            "type": "String",
+            "value-key": "[MRISP_PAINT]",
+            "description": "A string. Flags to pass to mrisp_paint commands.",
+            "optional": true
+        },
+        {
+            "id": "openmp",
+            "name": "Openmp",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[OPENMP]",
+            "command-line-flag": "-openmp",
+            "description": "An integer. Number of processors to use in parallel.",
+            "optional": true
+        },
+        {
+            "id": "parallel",
+            "name": "Parallel",
+            "type": "Flag",
+            "value-key": "[PARALLEL]",
+            "command-line-flag": "-parallel",
+            "description": "A boolean. Enable parallel execution.",
+            "optional": true
+        },
+        {
+            "id": "subject_id",
+            "name": "Subject id",
+            "type": "String",
+            "value-key": "[SUBJECT_ID]",
+            "command-line-flag": "-subjid",
+            "description": "A string. Subject name.",
+            "optional": true,
+            "default-value": "recon_all"
+        },
+        {
+            "id": "subjects_dir",
+            "name": "Subjects dir",
+            "type": "File",
+            "value-key": "[SUBJECTS_DIR]",
+            "command-line-flag": "-sd",
+            "description": "A pathlike object or string representing an existing directory. Path to subjects directory.",
+            "optional": true
+        },
+        {
+            "id": "talairach",
+            "name": "Talairach",
+            "type": "String",
+            "value-key": "[TALAIRACH]",
+            "description": "A string. Flags to pass to talairach commands.",
+            "optional": true
+        },
+        {
+            "id": "use_FLAIR",
+            "name": "Use flair",
+            "type": "Flag",
+            "value-key": "[USE_FLAIR]",
+            "command-line-flag": "-FLAIRpial",
+            "description": "A boolean. Use flair image to refine the pial surface.",
+            "optional": true
+        },
+        {
+            "id": "use_T2",
+            "name": "Use t2",
+            "type": "Flag",
+            "value-key": "[USE_T2]",
+            "command-line-flag": "-T2pial",
+            "description": "A boolean. Use t2 image to refine the pial surface.",
+            "optional": true
+        },
+        {
+            "id": "xopts",
+            "name": "Xopts",
+            "type": "String",
+            "value-key": "[XOPTS]",
+            "command-line-flag": "-xopts-",
+            "description": "'use' or 'clean' or 'overwrite'. Use, delete or overwrite existing expert options file.",
+            "optional": true,
+            "value-choices": [
+                "use",
+                "clean",
+                "overwrite"
+            ]
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Ba stats",
+            "id": "BA_stats",
+            "path-template": "BA_stats",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Brodmann area statistics files.",
+            "list": true
+        },
+        {
+            "name": "T1",
+            "id": "T1",
+            "path-template": "T1",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Intensity normalized whole-head volume."
+        },
+        {
+            "name": "Annot",
+            "id": "annot",
+            "path-template": "annot",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Surface annotation files.",
+            "list": true
+        },
+        {
+            "name": "Aparc a2009s stats",
+            "id": "aparc_a2009s_stats",
+            "path-template": "aparc_a2009s_stats",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Aparc a2009s parcellation statistics files.",
+            "list": true
+        },
+        {
+            "name": "Aparc aseg",
+            "id": "aparc_aseg",
+            "path-template": "aparc_aseg",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Aparc parcellation projected into aseg volume.",
+            "list": true
+        },
+        {
+            "name": "Aparc stats",
+            "id": "aparc_stats",
+            "path-template": "aparc_stats",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Aparc parcellation statistics files.",
+            "list": true
+        },
+        {
+            "name": "Area pial",
+            "id": "area_pial",
+            "path-template": "area_pial",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Mean area of triangles each vertex on the pial surface is associated with.",
+            "list": true
+        },
+        {
+            "name": "Aseg",
+            "id": "aseg",
+            "path-template": "aseg",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Volumetric map of regions from automatic segmentation."
+        },
+        {
+            "name": "Aseg stats",
+            "id": "aseg_stats",
+            "path-template": "aseg_stats",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Automated segmentation statistics file.",
+            "list": true
+        },
+        {
+            "name": "Avg curv",
+            "id": "avg_curv",
+            "path-template": "avg_curv",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Average atlas curvature, sampled to subject.",
+            "list": true
+        },
+        {
+            "name": "Brain",
+            "id": "brain",
+            "path-template": "brain",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Intensity normalized brain-only volume."
+        },
+        {
+            "name": "Brainmask",
+            "id": "brainmask",
+            "path-template": "brainmask",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Skull-stripped (brain-only) volume."
+        },
+        {
+            "name": "Curv",
+            "id": "curv",
+            "path-template": "curv",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Maps of surface curvature.",
+            "list": true
+        },
+        {
+            "name": "Curv pial",
+            "id": "curv_pial",
+            "path-template": "curv_pial",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Curvature of pial surface.",
+            "list": true
+        },
+        {
+            "name": "Curv stats",
+            "id": "curv_stats",
+            "path-template": "curv_stats",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Curvature statistics files.",
+            "list": true
+        },
+        {
+            "name": "Entorhinal exvivo stats",
+            "id": "entorhinal_exvivo_stats",
+            "path-template": "entorhinal_exvivo_stats",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Entorhinal exvivo statistics files.",
+            "list": true
+        },
+        {
+            "name": "Filled",
+            "id": "filled",
+            "path-template": "filled",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Subcortical mass volume."
+        },
+        {
+            "name": "Graymid",
+            "id": "graymid",
+            "path-template": "graymid",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Graymid/midthickness surface meshes.",
+            "list": true
+        },
+        {
+            "name": "Inflated",
+            "id": "inflated",
+            "path-template": "inflated",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Inflated surface meshes.",
+            "list": true
+        },
+        {
+            "name": "Jacobian white",
+            "id": "jacobian_white",
+            "path-template": "jacobian_white",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Distortion required to register to spherical atlas.",
+            "list": true
+        },
+        {
+            "name": "Label",
+            "id": "label",
+            "path-template": "label",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Volume and surface label files.",
+            "list": true
+        },
+        {
+            "name": "Norm",
+            "id": "norm",
+            "path-template": "norm",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Normalized skull-stripped volume."
+        },
+        {
+            "name": "Nu",
+            "id": "nu",
+            "path-template": "nu",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Non-uniformity corrected whole-head volume."
+        },
+        {
+            "name": "Orig",
+            "id": "orig",
+            "path-template": "orig",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Base image conformed to freesurfer space."
+        },
+        {
+            "name": "Pial",
+            "id": "pial",
+            "path-template": "pial",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Gray matter/pia mater surface meshes.",
+            "list": true
+        },
+        {
+            "name": "Rawavg",
+            "id": "rawavg",
+            "path-template": "rawavg",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Volume formed by averaging input images."
+        },
+        {
+            "name": "Ribbon",
+            "id": "ribbon",
+            "path-template": "ribbon",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Volumetric maps of cortical ribbons.",
+            "list": true
+        },
+        {
+            "name": "Smoothwm",
+            "id": "smoothwm",
+            "path-template": "smoothwm",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Smoothed original surface meshes.",
+            "list": true
+        },
+        {
+            "name": "Sphere",
+            "id": "sphere",
+            "path-template": "sphere",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Spherical surface meshes.",
+            "list": true
+        },
+        {
+            "name": "Sphere reg",
+            "id": "sphere_reg",
+            "path-template": "sphere_reg",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Spherical registration file.",
+            "list": true
+        },
+        {
+            "name": "Subject id",
+            "id": "subject_id_outfile",
+            "path-template": "recon_all",
+            "optional": true,
+            "description": "A string. Subject name for whom to retrieve data."
+        },
+        {
+            "name": "Subjects dir",
+            "id": "subjects_dir_outfile",
+            "path-template": ".",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing directory. Freesurfer subjects directory."
+        },
+        {
+            "name": "Sulc",
+            "id": "sulc",
+            "path-template": "sulc",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Surface maps of sulcal depth.",
+            "list": true
+        },
+        {
+            "name": "Thickness",
+            "id": "thickness",
+            "path-template": "thickness",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Surface maps of cortical thickness.",
+            "list": true
+        },
+        {
+            "name": "Volume",
+            "id": "volume",
+            "path-template": "volume",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. Surface maps of cortical volume.",
+            "list": true
+        },
+        {
+            "name": "White",
+            "id": "white",
+            "path-template": "white",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. White/gray matter surface meshes.",
+            "list": true
+        },
+        {
+            "name": "Wm",
+            "id": "wm",
+            "path-template": "wm",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Segmented white-matter volume."
+        },
+        {
+            "name": "Wmparc",
+            "id": "wmparc",
+            "path-template": "wmparc",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Aparc parcellation projected into subcortical white matter."
+        },
+        {
+            "name": "Wmparc stats",
+            "id": "wmparc_stats",
+            "path-template": "wmparc_stats",
+            "optional": true,
+            "description": "A list of items which are a pathlike object or string representing an existing file. White matter parcellation statistics file.",
+            "list": true
+        }
+    ],
+    "groups": [
+        {
+            "id": "mutex_group",
+            "name": "Mutex group",
+            "members": [
+                "use_T2",
+                "use_FLAIR"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_2",
+            "name": "Mutex group 2",
+            "members": [
+                "talairach",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_3",
+            "name": "Mutex group 3",
+            "members": [
+                "mri_normalize",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_4",
+            "name": "Mutex group 4",
+            "members": [
+                "expert",
+                "mri_watershed"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_5",
+            "name": "Mutex group 5",
+            "members": [
+                "mri_em_register",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_6",
+            "name": "Mutex group 6",
+            "members": [
+                "mri_ca_normalize",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_7",
+            "name": "Mutex group 7",
+            "members": [
+                "mri_ca_register",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_8",
+            "name": "Mutex group 8",
+            "members": [
+                "mri_remove_neck",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_9",
+            "name": "Mutex group 9",
+            "members": [
+                "expert",
+                "mri_ca_label"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_10",
+            "name": "Mutex group 10",
+            "members": [
+                "mri_segstats",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_11",
+            "name": "Mutex group 11",
+            "members": [
+                "expert",
+                "mri_mask"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_12",
+            "name": "Mutex group 12",
+            "members": [
+                "expert",
+                "mri_segment"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_13",
+            "name": "Mutex group 13",
+            "members": [
+                "expert",
+                "mri_edit_wm_with_aseg"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_14",
+            "name": "Mutex group 14",
+            "members": [
+                "mri_pretess",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_15",
+            "name": "Mutex group 15",
+            "members": [
+                "mri_fill",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_16",
+            "name": "Mutex group 16",
+            "members": [
+                "mri_tessellate",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_17",
+            "name": "Mutex group 17",
+            "members": [
+                "mris_smooth",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_18",
+            "name": "Mutex group 18",
+            "members": [
+                "expert",
+                "mris_inflate"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_19",
+            "name": "Mutex group 19",
+            "members": [
+                "expert",
+                "mris_sphere"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_20",
+            "name": "Mutex group 20",
+            "members": [
+                "mris_fix_topology",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_21",
+            "name": "Mutex group 21",
+            "members": [
+                "expert",
+                "mris_make_surfaces"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_22",
+            "name": "Mutex group 22",
+            "members": [
+                "expert",
+                "mris_surf2vol"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_23",
+            "name": "Mutex group 23",
+            "members": [
+                "mris_register",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_24",
+            "name": "Mutex group 24",
+            "members": [
+                "expert",
+                "mrisp_paint"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_25",
+            "name": "Mutex group 25",
+            "members": [
+                "mris_ca_label",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_26",
+            "name": "Mutex group 26",
+            "members": [
+                "mris_anatomical_stats",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_27",
+            "name": "Mutex group 27",
+            "members": [
+                "mri_aparc2aseg",
+                "expert"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}

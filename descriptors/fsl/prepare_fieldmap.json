@@ -1,0 +1,110 @@
+{
+    "name": "PrepareFieldmap",
+    "command-line": "PrepareFieldmap [DELTA_TE] [SCANNER] [IN_PHASE] [IN_MAGNITUDE] [OUT_FIELDMAP] [NOCHECK] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
+    "author": "Nipype (interface)",
+    "description": "PrepareFieldmap, as implemented in Nipype (module: nipype.interfaces.fsl.epi, interface: PrepareFieldmap).\n\n\n    Interface for the fsl_prepare_fieldmap script (FSL 5.0)\n\n    Prepares a fieldmap suitable for FEAT from SIEMENS data - saves output in\n    rad/s format (e.g. ```fsl_prepare_fieldmap SIEMENS\n    images_3_gre_field_mapping images_4_gre_field_mapping fmap_rads 2.65```).\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import PrepareFieldmap\n    >>> prepare = PrepareFieldmap()\n    >>> prepare.inputs.in_phase = \"phase.nii\"\n    >>> prepare.inputs.in_magnitude = \"magnitude.nii\"\n    >>> prepare.inputs.output_type = \"NIFTI_GZ\"\n    >>> prepare.cmdline # doctest: +ELLIPSIS\n    'fsl_prepare_fieldmap SIEMENS phase.nii magnitude.nii .../phase_fslprepared.nii.gz 2.460000'\n    >>> res = prepare.run() # doctest: +SKIP\n\n\n    ",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "delta_TE",
+            "name": "Delta te",
+            "type": "Number",
+            "value-key": "[DELTA_TE]",
+            "description": "A float. Echo time difference of the fieldmap sequence in ms. (usually 2.46ms in siemens).",
+            "optional": false,
+            "default-value": 2.46
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_magnitude",
+            "name": "In magnitude",
+            "type": "File",
+            "value-key": "[IN_MAGNITUDE]",
+            "description": "A pathlike object or string representing an existing file. Magnitude difference map, brain extracted.",
+            "optional": false
+        },
+        {
+            "id": "in_phase",
+            "name": "In phase",
+            "type": "File",
+            "value-key": "[IN_PHASE]",
+            "description": "A pathlike object or string representing an existing file. Phase difference map, in siemens format range from 0-4096 or 0-8192).",
+            "optional": false
+        },
+        {
+            "id": "nocheck",
+            "name": "Nocheck",
+            "type": "Flag",
+            "value-key": "[NOCHECK]",
+            "command-line-flag": "--nocheck",
+            "description": "A boolean. Do not perform sanity checks for image size/range/dimensions.",
+            "optional": true,
+            "default-value": false
+        },
+        {
+            "id": "out_fieldmap",
+            "name": "Out fieldmap",
+            "type": "File",
+            "value-key": "[OUT_FIELDMAP]",
+            "description": "A pathlike object or string representing a file. Output name for prepared fieldmap.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "scanner",
+            "name": "Scanner",
+            "type": "String",
+            "value-key": "[SCANNER]",
+            "description": "A string. Must be siemens.",
+            "optional": true,
+            "default-value": "SIEMENS"
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out fieldmap",
+            "id": "out_fieldmap_outfile",
+            "path-template": "[OUT_FIELDMAP]",
+            "optional": true,
+            "description": "A pathlike object or string representing an existing file. Output name for prepared fieldmap."
+        }
+    ],
+    "tool-version": "1.0.0",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "container/image",
+        "type": "docker"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
+    }
+}
