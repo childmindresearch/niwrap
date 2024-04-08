@@ -1,6 +1,4 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "http://github.com/boutiques/boutiques-schema",
     "type": "object",
     "title": "Tool",
     "properties": {
