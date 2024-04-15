@@ -22,3 +22,5 @@ jobs:
           json_schema: schemas/descriptor.schema.json
           json_schema_version: draft-07
           ajv_strict_mode: false
+          use_gitignore: false
+          json_exclude_regex: ''
