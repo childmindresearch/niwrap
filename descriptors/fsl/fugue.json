@@ -1,437 +1,408 @@
 {
-    "name": "FUGUE",
-    "command-line": "FUGUE [ARGS] [ASYM_SE_TIME] [DESPIKE_2DFILTER] [DESPIKE_THRESHOLD] [DWELL_TIME] [DWELL_TO_ASYM_RATIO] [ENVIRON] [FMAP_IN_FILE] [FMAP_OUT_FILE] [FORWARD_WARPING] [FOURIER_ORDER] [ICORR] [ICORR_ONLY] [IN_FILE] [MASK_FILE] [MEDIAN_2DFILTER] [NO_EXTEND] [NO_GAP_FILL] [NOKSPACE] [OUTPUT_TYPE] [PAVA] [PHASE_CONJUGATE] [PHASEMAP_IN_FILE] [POLY_ORDER] [SAVE_FMAP] [SAVE_SHIFT] [SAVE_UNMASKED_FMAP] [SAVE_UNMASKED_SHIFT] [SHIFT_IN_FILE] [SHIFT_OUT_FILE] [SMOOTH2D] [SMOOTH3D] [UNWARP_DIRECTION] [UNWARPED_FILE] [WARPED_FILE]",
-    "author": "Nipype (interface)",
-    "description": "FUGUE, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FUGUE).\n\nFSL FUGUE set of tools for EPI distortion correction\n\n    `FUGUE <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE>`_ is, most generally,\n    a set of tools for EPI distortion correction.\n\n    Distortions may be corrected for\n        1. improving registration with non-distorted images (e.g. structurals),\n           or\n        2. dealing with motion-dependent changes.\n\n    FUGUE is designed to deal only with the first case -\n    improving registration.\n\n\n    Examples\n    --------\n\n\n    Unwarping an input image (shift map is known):\n\n    >>> from nipype.interfaces.fsl.preprocess import FUGUE\n    >>> fugue = FUGUE()\n    >>> fugue.inputs.in_file = 'epi.nii'\n    >>> fugue.inputs.mask_file = 'epi_mask.nii'\n    >>> fugue.inputs.shift_in_file = 'vsm.nii'  # Previously computed with fugue as well\n    >>> fugue.inputs.unwarp_direction = 'y'\n    >>> fugue.inputs.output_type = \"NIFTI_GZ\"\n    >>> fugue.cmdline # doctest: +ELLIPSIS\n    'fugue --in=epi.nii --mask=epi_mask.nii --loadshift=vsm.nii --unwarpdir=y --unwarp=epi_unwarped.nii.gz'\n    >>> fugue.run() #doctest: +SKIP\n\n\n    Warping an input image (shift map is known):\n\n    >>> from nipype.interfaces.fsl.preprocess import FUGUE\n    >>> fugue = FUGUE()\n    >>> fugue.inputs.in_file = 'epi.nii'\n    >>> fugue.inputs.forward_warping = True\n    >>> fugue.inputs.mask_file = 'epi_mask.nii'\n    >>> fugue.inputs.shift_in_file = 'vsm.nii'  # Previously computed with fugue as well\n    >>> fugue.inputs.unwarp_direction = 'y'\n    >>> fugue.inputs.output_type = \"NIFTI_GZ\"\n    >>> fugue.cmdline # doctest: +ELLIPSIS\n    'fugue --in=epi.nii --mask=epi_mask.nii --loadshift=vsm.nii --unwarpdir=y --warp=epi_warped.nii.gz'\n    >>> fugue.run() #doctest: +SKIP\n\n\n    Computing the vsm (unwrapped phase map is known):\n\n    >>> from nipype.interfaces.fsl.preprocess import FUGUE\n    >>> fugue = FUGUE()\n    >>> fugue.inputs.phasemap_in_file = 'epi_phasediff.nii'\n    >>> fugue.inputs.mask_file = 'epi_mask.nii'\n    >>> fugue.inputs.dwell_to_asym_ratio = (0.77e-3 * 3) / 2.46e-3\n    >>> fugue.inputs.unwarp_direction = 'y'\n    >>> fugue.inputs.save_shift = True\n    >>> fugue.inputs.output_type = \"NIFTI_GZ\"\n    >>> fugue.cmdline # doctest: +ELLIPSIS\n    'fugue --dwelltoasym=0.9390243902 --mask=epi_mask.nii --phasemap=epi_phasediff.nii --saveshift=epi_phasediff_vsm.nii.gz --unwarpdir=y'\n    >>> fugue.run() #doctest: +SKIP\n\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "asym_se_time",
-            "name": "Asym se time",
-            "type": "Number",
-            "value-key": "[ASYM_SE_TIME]",
-            "command-line-flag": "--asym",
-            "command-line-flag-separator": "=",
-            "description": "A float. Set the fieldmap asymmetric spin echo time (sec).",
-            "optional": true
-        },
-        {
-            "id": "despike_2dfilter",
-            "name": "Despike 2dfilter",
-            "type": "Flag",
-            "value-key": "[DESPIKE_2DFILTER]",
-            "command-line-flag": "--despike",
-            "description": "A boolean. Apply a 2d de-spiking filter.",
-            "optional": true
-        },
-        {
-            "id": "despike_threshold",
-            "name": "Despike threshold",
-            "type": "Number",
-            "value-key": "[DESPIKE_THRESHOLD]",
-            "command-line-flag": "--despikethreshold",
-            "command-line-flag-separator": "=",
-            "description": "A float. Specify the threshold for de-spiking (default=3.0).",
-            "optional": true
-        },
-        {
-            "id": "dwell_time",
-            "name": "Dwell time",
-            "type": "Number",
-            "value-key": "[DWELL_TIME]",
-            "command-line-flag": "--dwell",
-            "command-line-flag-separator": "=",
-            "description": "A float. Set the epi dwell time per phase-encode line - same as echo spacing - (sec).",
-            "optional": true
-        },
-        {
-            "id": "dwell_to_asym_ratio",
-            "name": "Dwell to asym ratio",
-            "type": "Number",
-            "value-key": "[DWELL_TO_ASYM_RATIO]",
-            "command-line-flag": "--dwelltoasym",
-            "command-line-flag-separator": "=",
-            "description": "A float. Set the dwell to asym time ratio.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "fmap_in_file",
-            "name": "Fmap in file",
-            "type": "File",
-            "value-key": "[FMAP_IN_FILE]",
-            "command-line-flag": "--loadfmap",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Filename for loading fieldmap (rad/s).",
-            "optional": true
-        },
-        {
-            "id": "fmap_out_file",
-            "name": "Fmap out file",
-            "type": "File",
-            "value-key": "[FMAP_OUT_FILE]",
-            "command-line-flag": "--savefmap",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Filename for saving fieldmap (rad/s).",
-            "optional": true
-        },
-        {
-            "id": "forward_warping",
-            "name": "Forward warping",
-            "type": "Flag",
-            "value-key": "[FORWARD_WARPING]",
-            "command-line-flag": "--forward_warping",
-            "description": "A boolean. Apply forward warping instead of unwarping.",
-            "optional": true,
-            "default-value": false
-        },
-        {
-            "id": "fourier_order",
-            "name": "Fourier order",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[FOURIER_ORDER]",
-            "command-line-flag": "--fourier",
-            "command-line-flag-separator": "=",
-            "description": "An integer. Apply fourier (sinusoidal) fitting of order n.",
-            "optional": true
-        },
-        {
-            "id": "icorr",
-            "name": "Icorr",
-            "type": "Flag",
-            "value-key": "[ICORR]",
-            "command-line-flag": "--icorr",
-            "description": "A boolean. Apply intensity correction to unwarping (pixel shift method only).",
-            "optional": true,
-            "requires-inputs": [
-                "shift_in_file"
-            ]
-        },
-        {
-            "id": "icorr_only",
-            "name": "Icorr only",
-            "type": "Flag",
-            "value-key": "[ICORR_ONLY]",
-            "command-line-flag": "--icorronly",
-            "description": "A boolean. Apply intensity correction only.",
-            "optional": true,
-            "requires-inputs": [
-                "unwarped_file"
-            ]
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "command-line-flag": "--in",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Filename of input volume.",
-            "optional": true
-        },
-        {
-            "id": "mask_file",
-            "name": "Mask file",
-            "type": "File",
-            "value-key": "[MASK_FILE]",
-            "command-line-flag": "--mask",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Filename for loading valid mask.",
-            "optional": true
-        },
-        {
-            "id": "median_2dfilter",
-            "name": "Median 2dfilter",
-            "type": "Flag",
-            "value-key": "[MEDIAN_2DFILTER]",
-            "command-line-flag": "--median",
-            "description": "A boolean. Apply 2d median filtering.",
-            "optional": true
-        },
-        {
-            "id": "no_extend",
-            "name": "No extend",
-            "type": "Flag",
-            "value-key": "[NO_EXTEND]",
-            "command-line-flag": "--noextend",
-            "description": "A boolean. Do not apply rigid-body extrapolation to the fieldmap.",
-            "optional": true
-        },
-        {
-            "id": "no_gap_fill",
-            "name": "No gap fill",
-            "type": "Flag",
-            "value-key": "[NO_GAP_FILL]",
-            "command-line-flag": "--nofill",
-            "description": "A boolean. Do not apply gap-filling measure to the fieldmap.",
-            "optional": true
-        },
-        {
-            "id": "nokspace",
-            "name": "Nokspace",
-            "type": "Flag",
-            "value-key": "[NOKSPACE]",
-            "command-line-flag": "--nokspace",
-            "description": "A boolean. Do not use k-space forward warping.",
-            "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
-        },
-        {
-            "id": "pava",
-            "name": "Pava",
-            "type": "Flag",
-            "value-key": "[PAVA]",
-            "command-line-flag": "--pava",
-            "description": "A boolean. Apply monotonic enforcement via pava.",
-            "optional": true
-        },
-        {
-            "id": "phase_conjugate",
-            "name": "Phase conjugate",
-            "type": "Flag",
-            "value-key": "[PHASE_CONJUGATE]",
-            "command-line-flag": "--phaseconj",
-            "description": "A boolean. Apply phase conjugate method of unwarping.",
-            "optional": true
-        },
-        {
-            "id": "phasemap_in_file",
-            "name": "Phasemap in file",
-            "type": "File",
-            "value-key": "[PHASEMAP_IN_FILE]",
-            "command-line-flag": "--phasemap",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Filename for input phase image.",
-            "optional": true
-        },
-        {
-            "id": "poly_order",
-            "name": "Poly order",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[POLY_ORDER]",
-            "command-line-flag": "--poly",
-            "command-line-flag-separator": "=",
-            "description": "An integer. Apply polynomial fitting of order n.",
-            "optional": true
-        },
-        {
-            "id": "save_fmap",
-            "name": "Save fmap",
-            "type": "Flag",
-            "value-key": "[SAVE_FMAP]",
-            "command-line-flag": "--save_fmap",
-            "description": "A boolean. Write field map volume.",
-            "optional": true
-        },
-        {
-            "id": "save_shift",
-            "name": "Save shift",
-            "type": "Flag",
-            "value-key": "[SAVE_SHIFT]",
-            "command-line-flag": "--save_shift",
-            "description": "A boolean. Write pixel shift volume.",
-            "optional": true
-        },
-        {
-            "id": "save_unmasked_fmap",
-            "name": "Save unmasked fmap",
-            "type": "Flag",
-            "value-key": "[SAVE_UNMASKED_FMAP]",
-            "command-line-flag": "--unmaskfmap",
-            "description": "A boolean. Saves the unmasked fieldmap when using --savefmap.",
-            "optional": true
-        },
-        {
-            "id": "save_unmasked_shift",
-            "name": "Save unmasked shift",
-            "type": "Flag",
-            "value-key": "[SAVE_UNMASKED_SHIFT]",
-            "command-line-flag": "--unmaskshift",
-            "description": "A boolean. Saves the unmasked shiftmap when using --saveshift.",
-            "optional": true
-        },
-        {
-            "id": "shift_in_file",
-            "name": "Shift in file",
-            "type": "File",
-            "value-key": "[SHIFT_IN_FILE]",
-            "command-line-flag": "--loadshift",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Filename for reading pixel shift volume.",
-            "optional": true
-        },
-        {
-            "id": "shift_out_file",
-            "name": "Shift out file",
-            "type": "File",
-            "value-key": "[SHIFT_OUT_FILE]",
-            "command-line-flag": "--saveshift",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Filename for saving pixel shift volume.",
-            "optional": true
-        },
-        {
-            "id": "smooth2d",
-            "name": "Smooth2d",
-            "type": "Number",
-            "value-key": "[SMOOTH2D]",
-            "command-line-flag": "--smooth2",
-            "command-line-flag-separator": "=",
-            "description": "A float. Apply 2d gaussian smoothing of sigma n (in mm).",
-            "optional": true
-        },
-        {
-            "id": "smooth3d",
-            "name": "Smooth3d",
-            "type": "Number",
-            "value-key": "[SMOOTH3D]",
-            "command-line-flag": "--smooth3",
-            "command-line-flag-separator": "=",
-            "description": "A float. Apply 3d gaussian smoothing of sigma n (in mm).",
-            "optional": true
-        },
-        {
-            "id": "unwarp_direction",
-            "name": "Unwarp direction",
-            "type": "String",
-            "value-key": "[UNWARP_DIRECTION]",
-            "command-line-flag": "--unwarpdir",
-            "command-line-flag-separator": "=",
-            "description": "'x' or 'y' or 'z' or 'x-' or 'y-' or 'z-'. Specifies direction of warping (default y).",
-            "optional": true,
-            "value-choices": [
-                "x",
-                "y",
-                "z",
-                "x-",
-                "y-",
-                "z-"
-            ]
-        },
-        {
-            "id": "unwarped_file",
-            "name": "Unwarped file",
-            "type": "File",
-            "value-key": "[UNWARPED_FILE]",
-            "command-line-flag": "--unwarp",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Apply unwarping and save as filename.",
-            "optional": true,
-            "requires-inputs": [
-                "in_file"
-            ]
-        },
-        {
-            "id": "warped_file",
-            "name": "Warped file",
-            "type": "File",
-            "value-key": "[WARPED_FILE]",
-            "command-line-flag": "--warp",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Apply forward warping and save as filename.",
-            "optional": true,
-            "requires-inputs": [
-                "in_file"
-            ]
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Fmap out file",
-            "id": "fmap_out_file_outfile",
-            "path-template": "[FMAP_OUT_FILE]",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Fieldmap file."
-        },
-        {
-            "name": "Shift out file",
-            "id": "shift_out_file_outfile",
-            "path-template": "[SHIFT_OUT_FILE]",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Voxel shift map file."
-        },
-        {
-            "name": "Unwarped file",
-            "id": "unwarped_file_outfile",
-            "path-template": "[UNWARPED_FILE]",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Unwarped file."
-        },
-        {
-            "name": "Warped file",
-            "id": "warped_file_outfile",
-            "path-template": "[WARPED_FILE]",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Forward warped file."
-        }
-    ],
-    "groups": [
-        {
-            "id": "mutex_group",
-            "name": "Mutex group",
-            "members": [
-                "warped_file",
-                "unwarped_file"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "mutex_group_2",
-            "name": "Mutex group 2",
-            "members": [
-                "save_unmasked_shift",
-                "save_shift"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "mutex_group_3",
-            "name": "Mutex group 3",
-            "members": [
-                "save_fmap",
-                "save_unmasked_fmap"
-            ],
-            "mutually-exclusive": true
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "FUGUE",
+  "command-line": "FUGUE [ARGS] [ASYM_SE_TIME] [DESPIKE_2DFILTER] [DESPIKE_THRESHOLD] [DWELL_TIME] [DWELL_TO_ASYM_RATIO] [ENVIRON] [FMAP_IN_FILE] [FMAP_OUT_FILE] [FORWARD_WARPING] [FOURIER_ORDER] [ICORR] [ICORR_ONLY] [IN_FILE] [MASK_FILE] [MEDIAN_2DFILTER] [NO_EXTEND] [NO_GAP_FILL] [NOKSPACE] [OUTPUT_TYPE] [PAVA] [PHASE_CONJUGATE] [PHASEMAP_IN_FILE] [POLY_ORDER] [SAVE_FMAP] [SAVE_SHIFT] [SAVE_UNMASKED_FMAP] [SAVE_UNMASKED_SHIFT] [SHIFT_IN_FILE] [SHIFT_OUT_FILE] [SMOOTH2D] [SMOOTH3D] [UNWARP_DIRECTION] [UNWARPED_FILE] [WARPED_FILE]",
+  "author": "Nipype (interface)",
+  "description": "FUGUE, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FUGUE).\n\nFSL FUGUE set of tools for EPI distortion correction\n\n    `FUGUE <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE>`_ is, most generally,\n    a set of tools for EPI distortion correction.\n\n    Distortions may be corrected for\n        1. improving registration with non-distorted images (e.g. structurals),\n           or\n        2. dealing with motion-dependent changes.\n\n    FUGUE is designed to deal only with the first case -\n    improving registration.\n\n\n    Examples\n    --------\n\n\n    Unwarping an input image (shift map is known):\n\n    >>> from nipype.interfaces.fsl.preprocess import FUGUE\n    >>> fugue = FUGUE()\n    >>> fugue.inputs.in_file = 'epi.nii'\n    >>> fugue.inputs.mask_file = 'epi_mask.nii'\n    >>> fugue.inputs.shift_in_file = 'vsm.nii'  # Previously computed with fugue as well\n    >>> fugue.inputs.unwarp_direction = 'y'\n    >>> fugue.inputs.output_type = \"NIFTI_GZ\"\n    >>> fugue.cmdline # doctest: +ELLIPSIS\n    'fugue --in=epi.nii --mask=epi_mask.nii --loadshift=vsm.nii --unwarpdir=y --unwarp=epi_unwarped.nii.gz'\n    >>> fugue.run() #doctest: +SKIP\n\n\n    Warping an input image (shift map is known):\n\n    >>> from nipype.interfaces.fsl.preprocess import FUGUE\n    >>> fugue = FUGUE()\n    >>> fugue.inputs.in_file = 'epi.nii'\n    >>> fugue.inputs.forward_warping = True\n    >>> fugue.inputs.mask_file = 'epi_mask.nii'\n    >>> fugue.inputs.shift_in_file = 'vsm.nii'  # Previously computed with fugue as well\n    >>> fugue.inputs.unwarp_direction = 'y'\n    >>> fugue.inputs.output_type = \"NIFTI_GZ\"\n    >>> fugue.cmdline # doctest: +ELLIPSIS\n    'fugue --in=epi.nii --mask=epi_mask.nii --loadshift=vsm.nii --unwarpdir=y --warp=epi_warped.nii.gz'\n    >>> fugue.run() #doctest: +SKIP\n\n\n    Computing the vsm (unwrapped phase map is known):\n\n    >>> from nipype.interfaces.fsl.preprocess import FUGUE\n    >>> fugue = FUGUE()\n    >>> fugue.inputs.phasemap_in_file = 'epi_phasediff.nii'\n    >>> fugue.inputs.mask_file = 'epi_mask.nii'\n    >>> fugue.inputs.dwell_to_asym_ratio = (0.77e-3 * 3) / 2.46e-3\n    >>> fugue.inputs.unwarp_direction = 'y'\n    >>> fugue.inputs.save_shift = True\n    >>> fugue.inputs.output_type = \"NIFTI_GZ\"\n    >>> fugue.cmdline # doctest: +ELLIPSIS\n    'fugue --dwelltoasym=0.9390243902 --mask=epi_mask.nii --phasemap=epi_phasediff.nii --saveshift=epi_phasediff_vsm.nii.gz --unwarpdir=y'\n    >>> fugue.run() #doctest: +SKIP\n\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "asym_se_time",
+      "name": "Asym se time",
+      "type": "Number",
+      "value-key": "[ASYM_SE_TIME]",
+      "command-line-flag": "--asym",
+      "command-line-flag-separator": "=",
+      "description": "A float. Set the fieldmap asymmetric spin echo time (sec).",
+      "optional": true
+    },
+    {
+      "id": "despike_2dfilter",
+      "name": "Despike 2dfilter",
+      "type": "Flag",
+      "value-key": "[DESPIKE_2DFILTER]",
+      "command-line-flag": "--despike",
+      "description": "A boolean. Apply a 2d de-spiking filter.",
+      "optional": true
+    },
+    {
+      "id": "despike_threshold",
+      "name": "Despike threshold",
+      "type": "Number",
+      "value-key": "[DESPIKE_THRESHOLD]",
+      "command-line-flag": "--despikethreshold",
+      "command-line-flag-separator": "=",
+      "description": "A float. Specify the threshold for de-spiking (default=3.0).",
+      "optional": true
+    },
+    {
+      "id": "dwell_time",
+      "name": "Dwell time",
+      "type": "Number",
+      "value-key": "[DWELL_TIME]",
+      "command-line-flag": "--dwell",
+      "command-line-flag-separator": "=",
+      "description": "A float. Set the epi dwell time per phase-encode line - same as echo spacing - (sec).",
+      "optional": true
+    },
+    {
+      "id": "dwell_to_asym_ratio",
+      "name": "Dwell to asym ratio",
+      "type": "Number",
+      "value-key": "[DWELL_TO_ASYM_RATIO]",
+      "command-line-flag": "--dwelltoasym",
+      "command-line-flag-separator": "=",
+      "description": "A float. Set the dwell to asym time ratio.",
+      "optional": true
+    },
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "fmap_in_file",
+      "name": "Fmap in file",
+      "type": "File",
+      "value-key": "[FMAP_IN_FILE]",
+      "command-line-flag": "--loadfmap",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Filename for loading fieldmap (rad/s).",
+      "optional": true
+    },
+    {
+      "id": "fmap_out_file",
+      "name": "Fmap out file",
+      "type": "File",
+      "value-key": "[FMAP_OUT_FILE]",
+      "command-line-flag": "--savefmap",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Filename for saving fieldmap (rad/s).",
+      "optional": true
+    },
+    {
+      "id": "forward_warping",
+      "name": "Forward warping",
+      "type": "Flag",
+      "value-key": "[FORWARD_WARPING]",
+      "command-line-flag": "--forward_warping",
+      "description": "A boolean. Apply forward warping instead of unwarping.",
+      "optional": true,
+      "default-value": false
+    },
+    {
+      "id": "fourier_order",
+      "name": "Fourier order",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[FOURIER_ORDER]",
+      "command-line-flag": "--fourier",
+      "command-line-flag-separator": "=",
+      "description": "An integer. Apply fourier (sinusoidal) fitting of order n.",
+      "optional": true
+    },
+    {
+      "id": "icorr",
+      "name": "Icorr",
+      "type": "Flag",
+      "value-key": "[ICORR]",
+      "command-line-flag": "--icorr",
+      "description": "A boolean. Apply intensity correction to unwarping (pixel shift method only).",
+      "optional": true,
+      "requires-inputs": ["shift_in_file"]
+    },
+    {
+      "id": "icorr_only",
+      "name": "Icorr only",
+      "type": "Flag",
+      "value-key": "[ICORR_ONLY]",
+      "command-line-flag": "--icorronly",
+      "description": "A boolean. Apply intensity correction only.",
+      "optional": true,
+      "requires-inputs": ["unwarped_file"]
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "command-line-flag": "--in",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Filename of input volume.",
+      "optional": true
+    },
+    {
+      "id": "mask_file",
+      "name": "Mask file",
+      "type": "File",
+      "value-key": "[MASK_FILE]",
+      "command-line-flag": "--mask",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Filename for loading valid mask.",
+      "optional": true
+    },
+    {
+      "id": "median_2dfilter",
+      "name": "Median 2dfilter",
+      "type": "Flag",
+      "value-key": "[MEDIAN_2DFILTER]",
+      "command-line-flag": "--median",
+      "description": "A boolean. Apply 2d median filtering.",
+      "optional": true
+    },
+    {
+      "id": "no_extend",
+      "name": "No extend",
+      "type": "Flag",
+      "value-key": "[NO_EXTEND]",
+      "command-line-flag": "--noextend",
+      "description": "A boolean. Do not apply rigid-body extrapolation to the fieldmap.",
+      "optional": true
+    },
+    {
+      "id": "no_gap_fill",
+      "name": "No gap fill",
+      "type": "Flag",
+      "value-key": "[NO_GAP_FILL]",
+      "command-line-flag": "--nofill",
+      "description": "A boolean. Do not apply gap-filling measure to the fieldmap.",
+      "optional": true
+    },
+    {
+      "id": "nokspace",
+      "name": "Nokspace",
+      "type": "Flag",
+      "value-key": "[NOKSPACE]",
+      "command-line-flag": "--nokspace",
+      "description": "A boolean. Do not use k-space forward warping.",
+      "optional": true
+    },
+    {
+      "id": "output_type",
+      "name": "Output type",
+      "type": "String",
+      "value-key": "[OUTPUT_TYPE]",
+      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+      "optional": true,
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+    },
+    {
+      "id": "pava",
+      "name": "Pava",
+      "type": "Flag",
+      "value-key": "[PAVA]",
+      "command-line-flag": "--pava",
+      "description": "A boolean. Apply monotonic enforcement via pava.",
+      "optional": true
+    },
+    {
+      "id": "phase_conjugate",
+      "name": "Phase conjugate",
+      "type": "Flag",
+      "value-key": "[PHASE_CONJUGATE]",
+      "command-line-flag": "--phaseconj",
+      "description": "A boolean. Apply phase conjugate method of unwarping.",
+      "optional": true
+    },
+    {
+      "id": "phasemap_in_file",
+      "name": "Phasemap in file",
+      "type": "File",
+      "value-key": "[PHASEMAP_IN_FILE]",
+      "command-line-flag": "--phasemap",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Filename for input phase image.",
+      "optional": true
+    },
+    {
+      "id": "poly_order",
+      "name": "Poly order",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[POLY_ORDER]",
+      "command-line-flag": "--poly",
+      "command-line-flag-separator": "=",
+      "description": "An integer. Apply polynomial fitting of order n.",
+      "optional": true
+    },
+    {
+      "id": "save_fmap",
+      "name": "Save fmap",
+      "type": "Flag",
+      "value-key": "[SAVE_FMAP]",
+      "command-line-flag": "--save_fmap",
+      "description": "A boolean. Write field map volume.",
+      "optional": true
+    },
+    {
+      "id": "save_shift",
+      "name": "Save shift",
+      "type": "Flag",
+      "value-key": "[SAVE_SHIFT]",
+      "command-line-flag": "--save_shift",
+      "description": "A boolean. Write pixel shift volume.",
+      "optional": true
+    },
+    {
+      "id": "save_unmasked_fmap",
+      "name": "Save unmasked fmap",
+      "type": "Flag",
+      "value-key": "[SAVE_UNMASKED_FMAP]",
+      "command-line-flag": "--unmaskfmap",
+      "description": "A boolean. Saves the unmasked fieldmap when using --savefmap.",
+      "optional": true
+    },
+    {
+      "id": "save_unmasked_shift",
+      "name": "Save unmasked shift",
+      "type": "Flag",
+      "value-key": "[SAVE_UNMASKED_SHIFT]",
+      "command-line-flag": "--unmaskshift",
+      "description": "A boolean. Saves the unmasked shiftmap when using --saveshift.",
+      "optional": true
+    },
+    {
+      "id": "shift_in_file",
+      "name": "Shift in file",
+      "type": "File",
+      "value-key": "[SHIFT_IN_FILE]",
+      "command-line-flag": "--loadshift",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Filename for reading pixel shift volume.",
+      "optional": true
+    },
+    {
+      "id": "shift_out_file",
+      "name": "Shift out file",
+      "type": "File",
+      "value-key": "[SHIFT_OUT_FILE]",
+      "command-line-flag": "--saveshift",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Filename for saving pixel shift volume.",
+      "optional": true
+    },
+    {
+      "id": "smooth2d",
+      "name": "Smooth2d",
+      "type": "Number",
+      "value-key": "[SMOOTH2D]",
+      "command-line-flag": "--smooth2",
+      "command-line-flag-separator": "=",
+      "description": "A float. Apply 2d gaussian smoothing of sigma n (in mm).",
+      "optional": true
+    },
+    {
+      "id": "smooth3d",
+      "name": "Smooth3d",
+      "type": "Number",
+      "value-key": "[SMOOTH3D]",
+      "command-line-flag": "--smooth3",
+      "command-line-flag-separator": "=",
+      "description": "A float. Apply 3d gaussian smoothing of sigma n (in mm).",
+      "optional": true
+    },
+    {
+      "id": "unwarp_direction",
+      "name": "Unwarp direction",
+      "type": "String",
+      "value-key": "[UNWARP_DIRECTION]",
+      "command-line-flag": "--unwarpdir",
+      "command-line-flag-separator": "=",
+      "description": "'x' or 'y' or 'z' or 'x-' or 'y-' or 'z-'. Specifies direction of warping (default y).",
+      "optional": true,
+      "value-choices": ["x", "y", "z", "x-", "y-", "z-"]
+    },
+    {
+      "id": "unwarped_file",
+      "name": "Unwarped file",
+      "type": "File",
+      "value-key": "[UNWARPED_FILE]",
+      "command-line-flag": "--unwarp",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Apply unwarping and save as filename.",
+      "optional": true,
+      "requires-inputs": ["in_file"]
+    },
+    {
+      "id": "warped_file",
+      "name": "Warped file",
+      "type": "File",
+      "value-key": "[WARPED_FILE]",
+      "command-line-flag": "--warp",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Apply forward warping and save as filename.",
+      "optional": true,
+      "requires-inputs": ["in_file"]
     }
+  ],
+  "output-files": [
+    {
+      "name": "Fmap out file",
+      "id": "fmap_out_file_outfile",
+      "path-template": "[FMAP_OUT_FILE]",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Fieldmap file."
+    },
+    {
+      "name": "Shift out file",
+      "id": "shift_out_file_outfile",
+      "path-template": "[SHIFT_OUT_FILE]",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Voxel shift map file."
+    },
+    {
+      "name": "Unwarped file",
+      "id": "unwarped_file_outfile",
+      "path-template": "[UNWARPED_FILE]",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Unwarped file."
+    },
+    {
+      "name": "Warped file",
+      "id": "warped_file_outfile",
+      "path-template": "[WARPED_FILE]",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Forward warped file."
+    }
+  ],
+  "groups": [
+    {
+      "id": "mutex_group",
+      "name": "Mutex group",
+      "members": ["warped_file", "unwarped_file"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group_2",
+      "name": "Mutex group 2",
+      "members": ["save_unmasked_shift", "save_shift"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group_3",
+      "name": "Mutex group 3",
+      "members": ["save_fmap", "save_unmasked_fmap"],
+      "mutually-exclusive": true
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

@@ -1,130 +1,126 @@
 {
-    "name": "BlurToFWHM",
-    "command-line": "BlurToFWHM [ARGS] [AUTOMASK] [BLURMASTER] [ENVIRON] [FWHM] [FWHMXY] [IN_FILE] [MASK] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
-    "author": "Nipype (interface)",
-    "description": "BlurToFWHM, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: BlurToFWHM).\n\nBlurs a 'master' dataset until it reaches a specified FWHM smoothness\n    (approximately).\n\n    For complete details, see the `3dBlurToFWHM Documentation\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> blur = afni.preprocess.BlurToFWHM()\n    >>> blur.inputs.in_file = 'epi.nii'\n    >>> blur.inputs.fwhm = 2.5\n    >>> blur.cmdline  # doctest: +ELLIPSIS\n    '3dBlurToFWHM -FWHM 2.500000 -input epi.nii -prefix epi_afni'\n    >>> res = blur.run()  # doctest: +SKIP\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "automask",
-            "name": "Automask",
-            "type": "Flag",
-            "value-key": "[AUTOMASK]",
-            "command-line-flag": "-automask",
-            "description": "A boolean. Create an automask from the input dataset.",
-            "optional": true
-        },
-        {
-            "id": "blurmaster",
-            "name": "Blurmaster",
-            "type": "File",
-            "value-key": "[BLURMASTER]",
-            "command-line-flag": "-blurmaster",
-            "description": "A pathlike object or string representing an existing file. The dataset whose smoothness controls the process.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "fwhm",
-            "name": "Fwhm",
-            "type": "Number",
-            "value-key": "[FWHM]",
-            "command-line-flag": "-FWHM",
-            "description": "A float. Blur until the 3d fwhm reaches this value (in mm).",
-            "optional": true
-        },
-        {
-            "id": "fwhmxy",
-            "name": "Fwhmxy",
-            "type": "Number",
-            "value-key": "[FWHMXY]",
-            "command-line-flag": "-FWHMxy",
-            "description": "A float. Blur until the 2d (x,y)-plane fwhm reaches this value (in mm).",
-            "optional": true
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "command-line-flag": "-input",
-            "description": "A pathlike object or string representing an existing file. The dataset that will be smoothed.",
-            "optional": false
-        },
-        {
-            "id": "mask",
-            "name": "Mask",
-            "type": "File",
-            "value-key": "[MASK]",
-            "command-line-flag": "-mask",
-            "description": "A pathlike object or string representing an existing file. Mask dataset, if desired. voxels not in mask will be set to zero in output.",
-            "optional": true
-        },
-        {
-            "id": "num_threads",
-            "name": "Num threads",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[NUM_THREADS]",
-            "description": "An integer. Set number of threads.",
-            "optional": true,
-            "default-value": 1
-        },
-        {
-            "id": "outputtype",
-            "name": "Outputtype",
-            "type": "String",
-            "value-key": "[OUTPUTTYPE]",
-            "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "AFNI",
-                "NIFTI_GZ"
-            ]
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Output image file name.",
-            "path-template": "[IN_FILE]_afni",
-            "value-key": "[OUT_FILE]",
-            "command-line-flag": "-prefix"
-        },
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "path-template": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. Output file."
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "BlurToFWHM",
+  "command-line": "BlurToFWHM [ARGS] [AUTOMASK] [BLURMASTER] [ENVIRON] [FWHM] [FWHMXY] [IN_FILE] [MASK] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
+  "author": "Nipype (interface)",
+  "description": "BlurToFWHM, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: BlurToFWHM).\n\nBlurs a 'master' dataset until it reaches a specified FWHM smoothness\n    (approximately).\n\n    For complete details, see the `3dBlurToFWHM Documentation\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> blur = afni.preprocess.BlurToFWHM()\n    >>> blur.inputs.in_file = 'epi.nii'\n    >>> blur.inputs.fwhm = 2.5\n    >>> blur.cmdline  # doctest: +ELLIPSIS\n    '3dBlurToFWHM -FWHM 2.500000 -input epi.nii -prefix epi_afni'\n    >>> res = blur.run()  # doctest: +SKIP\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "automask",
+      "name": "Automask",
+      "type": "Flag",
+      "value-key": "[AUTOMASK]",
+      "command-line-flag": "-automask",
+      "description": "A boolean. Create an automask from the input dataset.",
+      "optional": true
+    },
+    {
+      "id": "blurmaster",
+      "name": "Blurmaster",
+      "type": "File",
+      "value-key": "[BLURMASTER]",
+      "command-line-flag": "-blurmaster",
+      "description": "A pathlike object or string representing an existing file. The dataset whose smoothness controls the process.",
+      "optional": true
+    },
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "fwhm",
+      "name": "Fwhm",
+      "type": "Number",
+      "value-key": "[FWHM]",
+      "command-line-flag": "-FWHM",
+      "description": "A float. Blur until the 3d fwhm reaches this value (in mm).",
+      "optional": true
+    },
+    {
+      "id": "fwhmxy",
+      "name": "Fwhmxy",
+      "type": "Number",
+      "value-key": "[FWHMXY]",
+      "command-line-flag": "-FWHMxy",
+      "description": "A float. Blur until the 2d (x,y)-plane fwhm reaches this value (in mm).",
+      "optional": true
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "command-line-flag": "-input",
+      "description": "A pathlike object or string representing an existing file. The dataset that will be smoothed.",
+      "optional": false
+    },
+    {
+      "id": "mask",
+      "name": "Mask",
+      "type": "File",
+      "value-key": "[MASK]",
+      "command-line-flag": "-mask",
+      "description": "A pathlike object or string representing an existing file. Mask dataset, if desired. voxels not in mask will be set to zero in output.",
+      "optional": true
+    },
+    {
+      "id": "num_threads",
+      "name": "Num threads",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUM_THREADS]",
+      "description": "An integer. Set number of threads.",
+      "optional": true,
+      "default-value": 1
+    },
+    {
+      "id": "outputtype",
+      "name": "Outputtype",
+      "type": "String",
+      "value-key": "[OUTPUTTYPE]",
+      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+      "optional": true,
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Output image file name.",
+      "path-template": "[IN_FILE]_afni",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "path-template": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. Output file."
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

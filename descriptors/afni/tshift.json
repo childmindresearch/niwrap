@@ -1,263 +1,238 @@
 {
-    "name": "TShift",
-    "command-line": "TShift [IN_FILE] [ARGS] [ENVIRON] [IGNORE] [INTERP] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [RLT] [RLTPLUS] [SLICE_ENCODING_DIRECTION] [SLICE_TIMING] [TPATTERN] [TR] [TSLICE] [TZERO]",
-    "author": "Nipype (interface)",
-    "description": "TShift, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: TShift).\n\nShifts voxel time series from input so that separate slices are aligned\n    to the same temporal origin.\n\n    For complete details, see the `3dTshift Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTshift.html>`_\n\n    Examples\n    --------\n    Slice timing details may be specified explicitly via the ``slice_timing``\n    input:\n\n    >>> from nipype.interfaces import afni\n    >>> TR = 2.5\n    >>> tshift = afni.TShift()\n    >>> tshift.inputs.in_file = 'functional.nii'\n    >>> tshift.inputs.tzero = 0.0\n    >>> tshift.inputs.tr = '%.1fs' % TR\n    >>> tshift.inputs.slice_timing = list(np.arange(40) / TR)\n    >>> tshift.cmdline\n    '3dTshift -prefix functional_tshift -tpattern @slice_timing.1D -TR 2.5s -tzero 0.0 functional.nii'\n\n    When the ``slice_timing`` input is used, the ``timing_file`` output is populated,\n    in this case with the generated file.\n\n    >>> tshift._list_outputs()['timing_file']  # doctest: +ELLIPSIS\n    '.../slice_timing.1D'\n\n    >>> np.loadtxt(tshift._list_outputs()['timing_file']).tolist()[:5]\n    [0.0, 0.4, 0.8, 1.2, 1.6]\n\n    If ``slice_encoding_direction`` is set to ``'k-'``, the slice timing is reversed:\n\n    >>> tshift.inputs.slice_encoding_direction = 'k-'\n    >>> tshift.cmdline\n    '3dTshift -prefix functional_tshift -tpattern @slice_timing.1D -TR 2.5s -tzero 0.0 functional.nii'\n    >>> np.loadtxt(tshift._list_outputs()['timing_file']).tolist()[:5]\n    [15.6, 15.2, 14.8, 14.4, 14.0]\n\n    This method creates a ``slice_timing.1D`` file to be passed to ``3dTshift``.\n    A pre-existing slice-timing file may be used in the same way:\n\n    >>> tshift = afni.TShift()\n    >>> tshift.inputs.in_file = 'functional.nii'\n    >>> tshift.inputs.tzero = 0.0\n    >>> tshift.inputs.tr = '%.1fs' % TR\n    >>> tshift.inputs.slice_timing = 'slice_timing.1D'\n    >>> tshift.cmdline\n    '3dTshift -prefix functional_tshift -tpattern @slice_timing.1D -TR 2.5s -tzero 0.0 functional.nii'\n\n    When a pre-existing file is provided, ``timing_file`` is simply passed through.\n\n    >>> tshift._list_outputs()['timing_file']  # doctest: +ELLIPSIS\n    '.../slice_timing.1D'\n\n    Alternatively, pre-specified slice timing patterns may be specified with the\n    ``tpattern`` input.\n    For example, to specify an alternating, ascending slice timing pattern:\n\n    >>> tshift = afni.TShift()\n    >>> tshift.inputs.in_file = 'functional.nii'\n    >>> tshift.inputs.tzero = 0.0\n    >>> tshift.inputs.tr = '%.1fs' % TR\n    >>> tshift.inputs.tpattern = 'alt+z'\n    >>> tshift.cmdline\n    '3dTshift -prefix functional_tshift -tpattern alt+z -TR 2.5s -tzero 0.0 functional.nii'\n\n    For backwards compatibility, ``tpattern`` may also take filenames prefixed\n    with ``@``.\n    However, in this case, filenames are not validated, so this usage will be\n    deprecated in future versions of Nipype.\n\n    >>> tshift = afni.TShift()\n    >>> tshift.inputs.in_file = 'functional.nii'\n    >>> tshift.inputs.tzero = 0.0\n    >>> tshift.inputs.tr = '%.1fs' % TR\n    >>> tshift.inputs.tpattern = '@slice_timing.1D'\n    >>> tshift.cmdline\n    '3dTshift -prefix functional_tshift -tpattern @slice_timing.1D -TR 2.5s -tzero 0.0 functional.nii'\n\n    In these cases, ``timing_file`` is undefined.\n\n    >>> tshift._list_outputs()['timing_file']  # doctest: +ELLIPSIS\n    <undefined>\n\n    In any configuration, the interface may be run as usual:\n\n    >>> res = tshift.run()  # doctest: +SKIP\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "ignore",
-            "name": "Ignore",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[IGNORE]",
-            "command-line-flag": "-ignore",
-            "description": "An integer. Ignore the first set of points specified.",
-            "optional": true
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "description": "A pathlike object or string representing an existing file. Input file to 3dtshift.",
-            "optional": false
-        },
-        {
-            "id": "interp",
-            "name": "Interp",
-            "type": "String",
-            "value-key": "[INTERP]",
-            "command-line-flag": "-",
-            "description": "'fourier' or 'linear' or 'cubic' or 'quintic' or 'heptic'. Different interpolation methods (see 3dtshift for details) default = fourier.",
-            "optional": true,
-            "value-choices": [
-                "Fourier",
-                "linear",
-                "cubic",
-                "quintic",
-                "heptic"
-            ]
-        },
-        {
-            "id": "num_threads",
-            "name": "Num threads",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[NUM_THREADS]",
-            "description": "An integer. Set number of threads.",
-            "optional": true,
-            "default-value": 1
-        },
-        {
-            "id": "outputtype",
-            "name": "Outputtype",
-            "type": "String",
-            "value-key": "[OUTPUTTYPE]",
-            "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "AFNI",
-                "NIFTI_GZ"
-            ]
-        },
-        {
-            "id": "rlt",
-            "name": "Rlt",
-            "type": "Flag",
-            "value-key": "[RLT]",
-            "command-line-flag": "-rlt",
-            "description": "A boolean. Before shifting, remove the mean and linear trend.",
-            "optional": true
-        },
-        {
-            "id": "rltplus",
-            "name": "Rltplus",
-            "type": "Flag",
-            "value-key": "[RLTPLUS]",
-            "command-line-flag": "-rlt+",
-            "description": "A boolean. Before shifting, remove the mean and linear trend and later put back the mean.",
-            "optional": true
-        },
-        {
-            "id": "slice_encoding_direction",
-            "name": "Slice encoding direction",
-            "type": "String",
-            "value-key": "[SLICE_ENCODING_DIRECTION]",
-            "description": "'k' or 'k-'. Direction in which slice_timing is specified (default: k). if negative,slice_timing is defined in reverse order, that is, the first entry corresponds to the slice with the largest index, and the final entry corresponds to slice index zero. only in effect when slice_timing is passed as list, not when it is passed as file.",
-            "optional": true,
-            "default-value": "k",
-            "value-choices": [
-                "k",
-                "k-"
-            ]
-        },
-        {
-            "id": "slice_timing",
-            "name": "Slice timing",
-            "type": "File",
-            "value-key": "[SLICE_TIMING]",
-            "command-line-flag": "-tpattern @",
-            "description": "A pathlike object or string representing an existing file or a list of items which are a float. Time offsets from the volume acquisition onset for each slice.",
-            "optional": true
-        },
-        {
-            "id": "slice_timing_2",
-            "name": "Slice timing",
-            "type": "Number",
-            "list": true,
-            "value-key": "[SLICE_TIMING]",
-            "command-line-flag": "-tpattern @",
-            "description": "A pathlike object or string representing an existing file or a list of items which are a float. Time offsets from the volume acquisition onset for each slice.",
-            "optional": true
-        },
-        {
-            "id": "tpattern",
-            "name": "Tpattern",
-            "type": "String",
-            "value-key": "[TPATTERN]",
-            "command-line-flag": "-tpattern",
-            "description": "'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus' or 'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a string. Use specified slice time pattern rather than one in header.",
-            "optional": true,
-            "value-choices": [
-                "alt+z",
-                "altplus",
-                "alt+z2",
-                "alt-z",
-                "altminus",
-                "alt-z2",
-                "seq+z",
-                "seqplus",
-                "seq-z",
-                "seqminus"
-            ]
-        },
-        {
-            "id": "tpattern_2",
-            "name": "Tpattern",
-            "type": "String",
-            "value-key": "[TPATTERN]",
-            "command-line-flag": "-tpattern",
-            "description": "'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus' or 'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a string. Use specified slice time pattern rather than one in header.",
-            "optional": true
-        },
-        {
-            "id": "tr",
-            "name": "Tr",
-            "type": "String",
-            "value-key": "[TR]",
-            "command-line-flag": "-TR",
-            "description": "A string. Manually set the tr. you can attach suffix \"s\" for seconds or \"ms\" for milliseconds.",
-            "optional": true
-        },
-        {
-            "id": "tslice",
-            "name": "Tslice",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[TSLICE]",
-            "command-line-flag": "-slice",
-            "description": "An integer. Align each slice to time offset of given slice.",
-            "optional": true
-        },
-        {
-            "id": "tzero",
-            "name": "Tzero",
-            "type": "Number",
-            "value-key": "[TZERO]",
-            "command-line-flag": "-tzero",
-            "description": "A float. Align each slice to given time offset.",
-            "optional": true
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Output image file name.",
-            "path-template": "[IN_FILE]_tshift",
-            "value-key": "[OUT_FILE]",
-            "command-line-flag": "-prefix"
-        },
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "path-template": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. Output file."
-        },
-        {
-            "name": "Timing file",
-            "id": "timing_file",
-            "path-template": "timing_file",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Afni formatted timing file, if ``slice_timing`` is a list."
-        }
-    ],
-    "groups": [
-        {
-            "id": "slice_timing_group",
-            "name": "Slice timing group",
-            "members": [
-                "slice_timing",
-                "slice_timing_2"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "tpattern_group",
-            "name": "Tpattern group",
-            "members": [
-                "tpattern",
-                "tpattern_2"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "mutex_group",
-            "name": "Mutex group",
-            "members": [
-                "tzero",
-                "tslice"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "mutex_group_2",
-            "name": "Mutex group 2",
-            "members": [
-                "slice_timing",
-                "tpattern"
-            ],
-            "mutually-exclusive": true
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "TShift",
+  "command-line": "TShift [IN_FILE] [ARGS] [ENVIRON] [IGNORE] [INTERP] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [RLT] [RLTPLUS] [SLICE_ENCODING_DIRECTION] [SLICE_TIMING] [TPATTERN] [TR] [TSLICE] [TZERO]",
+  "author": "Nipype (interface)",
+  "description": "TShift, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: TShift).\n\nShifts voxel time series from input so that separate slices are aligned\n    to the same temporal origin.\n\n    For complete details, see the `3dTshift Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTshift.html>`_\n\n    Examples\n    --------\n    Slice timing details may be specified explicitly via the ``slice_timing``\n    input:\n\n    >>> from nipype.interfaces import afni\n    >>> TR = 2.5\n    >>> tshift = afni.TShift()\n    >>> tshift.inputs.in_file = 'functional.nii'\n    >>> tshift.inputs.tzero = 0.0\n    >>> tshift.inputs.tr = '%.1fs' % TR\n    >>> tshift.inputs.slice_timing = list(np.arange(40) / TR)\n    >>> tshift.cmdline\n    '3dTshift -prefix functional_tshift -tpattern @slice_timing.1D -TR 2.5s -tzero 0.0 functional.nii'\n\n    When the ``slice_timing`` input is used, the ``timing_file`` output is populated,\n    in this case with the generated file.\n\n    >>> tshift._list_outputs()['timing_file']  # doctest: +ELLIPSIS\n    '.../slice_timing.1D'\n\n    >>> np.loadtxt(tshift._list_outputs()['timing_file']).tolist()[:5]\n    [0.0, 0.4, 0.8, 1.2, 1.6]\n\n    If ``slice_encoding_direction`` is set to ``'k-'``, the slice timing is reversed:\n\n    >>> tshift.inputs.slice_encoding_direction = 'k-'\n    >>> tshift.cmdline\n    '3dTshift -prefix functional_tshift -tpattern @slice_timing.1D -TR 2.5s -tzero 0.0 functional.nii'\n    >>> np.loadtxt(tshift._list_outputs()['timing_file']).tolist()[:5]\n    [15.6, 15.2, 14.8, 14.4, 14.0]\n\n    This method creates a ``slice_timing.1D`` file to be passed to ``3dTshift``.\n    A pre-existing slice-timing file may be used in the same way:\n\n    >>> tshift = afni.TShift()\n    >>> tshift.inputs.in_file = 'functional.nii'\n    >>> tshift.inputs.tzero = 0.0\n    >>> tshift.inputs.tr = '%.1fs' % TR\n    >>> tshift.inputs.slice_timing = 'slice_timing.1D'\n    >>> tshift.cmdline\n    '3dTshift -prefix functional_tshift -tpattern @slice_timing.1D -TR 2.5s -tzero 0.0 functional.nii'\n\n    When a pre-existing file is provided, ``timing_file`` is simply passed through.\n\n    >>> tshift._list_outputs()['timing_file']  # doctest: +ELLIPSIS\n    '.../slice_timing.1D'\n\n    Alternatively, pre-specified slice timing patterns may be specified with the\n    ``tpattern`` input.\n    For example, to specify an alternating, ascending slice timing pattern:\n\n    >>> tshift = afni.TShift()\n    >>> tshift.inputs.in_file = 'functional.nii'\n    >>> tshift.inputs.tzero = 0.0\n    >>> tshift.inputs.tr = '%.1fs' % TR\n    >>> tshift.inputs.tpattern = 'alt+z'\n    >>> tshift.cmdline\n    '3dTshift -prefix functional_tshift -tpattern alt+z -TR 2.5s -tzero 0.0 functional.nii'\n\n    For backwards compatibility, ``tpattern`` may also take filenames prefixed\n    with ``@``.\n    However, in this case, filenames are not validated, so this usage will be\n    deprecated in future versions of Nipype.\n\n    >>> tshift = afni.TShift()\n    >>> tshift.inputs.in_file = 'functional.nii'\n    >>> tshift.inputs.tzero = 0.0\n    >>> tshift.inputs.tr = '%.1fs' % TR\n    >>> tshift.inputs.tpattern = '@slice_timing.1D'\n    >>> tshift.cmdline\n    '3dTshift -prefix functional_tshift -tpattern @slice_timing.1D -TR 2.5s -tzero 0.0 functional.nii'\n\n    In these cases, ``timing_file`` is undefined.\n\n    >>> tshift._list_outputs()['timing_file']  # doctest: +ELLIPSIS\n    <undefined>\n\n    In any configuration, the interface may be run as usual:\n\n    >>> res = tshift.run()  # doctest: +SKIP\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "ignore",
+      "name": "Ignore",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[IGNORE]",
+      "command-line-flag": "-ignore",
+      "description": "An integer. Ignore the first set of points specified.",
+      "optional": true
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "description": "A pathlike object or string representing an existing file. Input file to 3dtshift.",
+      "optional": false
+    },
+    {
+      "id": "interp",
+      "name": "Interp",
+      "type": "String",
+      "value-key": "[INTERP]",
+      "command-line-flag": "-",
+      "description": "'fourier' or 'linear' or 'cubic' or 'quintic' or 'heptic'. Different interpolation methods (see 3dtshift for details) default = fourier.",
+      "optional": true,
+      "value-choices": ["Fourier", "linear", "cubic", "quintic", "heptic"]
+    },
+    {
+      "id": "num_threads",
+      "name": "Num threads",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUM_THREADS]",
+      "description": "An integer. Set number of threads.",
+      "optional": true,
+      "default-value": 1
+    },
+    {
+      "id": "outputtype",
+      "name": "Outputtype",
+      "type": "String",
+      "value-key": "[OUTPUTTYPE]",
+      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+      "optional": true,
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+    },
+    {
+      "id": "rlt",
+      "name": "Rlt",
+      "type": "Flag",
+      "value-key": "[RLT]",
+      "command-line-flag": "-rlt",
+      "description": "A boolean. Before shifting, remove the mean and linear trend.",
+      "optional": true
+    },
+    {
+      "id": "rltplus",
+      "name": "Rltplus",
+      "type": "Flag",
+      "value-key": "[RLTPLUS]",
+      "command-line-flag": "-rlt+",
+      "description": "A boolean. Before shifting, remove the mean and linear trend and later put back the mean.",
+      "optional": true
+    },
+    {
+      "id": "slice_encoding_direction",
+      "name": "Slice encoding direction",
+      "type": "String",
+      "value-key": "[SLICE_ENCODING_DIRECTION]",
+      "description": "'k' or 'k-'. Direction in which slice_timing is specified (default: k). if negative,slice_timing is defined in reverse order, that is, the first entry corresponds to the slice with the largest index, and the final entry corresponds to slice index zero. only in effect when slice_timing is passed as list, not when it is passed as file.",
+      "optional": true,
+      "default-value": "k",
+      "value-choices": ["k", "k-"]
+    },
+    {
+      "id": "slice_timing",
+      "name": "Slice timing",
+      "type": "File",
+      "value-key": "[SLICE_TIMING]",
+      "command-line-flag": "-tpattern @",
+      "description": "A pathlike object or string representing an existing file or a list of items which are a float. Time offsets from the volume acquisition onset for each slice.",
+      "optional": true
+    },
+    {
+      "id": "slice_timing_2",
+      "name": "Slice timing",
+      "type": "Number",
+      "list": true,
+      "value-key": "[SLICE_TIMING]",
+      "command-line-flag": "-tpattern @",
+      "description": "A pathlike object or string representing an existing file or a list of items which are a float. Time offsets from the volume acquisition onset for each slice.",
+      "optional": true
+    },
+    {
+      "id": "tpattern",
+      "name": "Tpattern",
+      "type": "String",
+      "value-key": "[TPATTERN]",
+      "command-line-flag": "-tpattern",
+      "description": "'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus' or 'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a string. Use specified slice time pattern rather than one in header.",
+      "optional": true,
+      "value-choices": [
+        "alt+z",
+        "altplus",
+        "alt+z2",
+        "alt-z",
+        "altminus",
+        "alt-z2",
+        "seq+z",
+        "seqplus",
+        "seq-z",
+        "seqminus"
+      ]
+    },
+    {
+      "id": "tpattern_2",
+      "name": "Tpattern",
+      "type": "String",
+      "value-key": "[TPATTERN]",
+      "command-line-flag": "-tpattern",
+      "description": "'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus' or 'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a string. Use specified slice time pattern rather than one in header.",
+      "optional": true
+    },
+    {
+      "id": "tr",
+      "name": "Tr",
+      "type": "String",
+      "value-key": "[TR]",
+      "command-line-flag": "-TR",
+      "description": "A string. Manually set the tr. you can attach suffix \"s\" for seconds or \"ms\" for milliseconds.",
+      "optional": true
+    },
+    {
+      "id": "tslice",
+      "name": "Tslice",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[TSLICE]",
+      "command-line-flag": "-slice",
+      "description": "An integer. Align each slice to time offset of given slice.",
+      "optional": true
+    },
+    {
+      "id": "tzero",
+      "name": "Tzero",
+      "type": "Number",
+      "value-key": "[TZERO]",
+      "command-line-flag": "-tzero",
+      "description": "A float. Align each slice to given time offset.",
+      "optional": true
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Output image file name.",
+      "path-template": "[IN_FILE]_tshift",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "path-template": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. Output file."
+    },
+    {
+      "name": "Timing file",
+      "id": "timing_file",
+      "path-template": "timing_file",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Afni formatted timing file, if ``slice_timing`` is a list."
+    }
+  ],
+  "groups": [
+    {
+      "id": "slice_timing_group",
+      "name": "Slice timing group",
+      "members": ["slice_timing", "slice_timing_2"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "tpattern_group",
+      "name": "Tpattern group",
+      "members": ["tpattern", "tpattern_2"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group",
+      "name": "Mutex group",
+      "members": ["tzero", "tslice"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group_2",
+      "name": "Mutex group 2",
+      "members": ["slice_timing", "tpattern"],
+      "mutually-exclusive": true
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

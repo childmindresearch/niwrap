@@ -1,171 +1,141 @@
 {
-    "name": "ErodeImage",
-    "command-line": "ErodeImage [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [KERNEL_SHAPE] [KERNEL_SIZE] [MINIMUM_FILTER] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
-    "author": "Nipype (interface)",
-    "description": "ErodeImage, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ErodeImage).\n\nUse fslmaths to perform a spatial erosion of an image.",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "description": "A pathlike object or string representing an existing file. Image to operate on.",
-            "optional": false
-        },
-        {
-            "id": "internal_datatype",
-            "name": "Internal datatype",
-            "type": "String",
-            "value-key": "[INTERNAL_DATATYPE]",
-            "command-line-flag": "-dt",
-            "description": "'float' or 'char' or 'int' or 'short' or 'double' or 'input'. Datatype to use for calculations (default is float).",
-            "optional": true,
-            "value-choices": [
-                "float",
-                "char",
-                "int",
-                "short",
-                "double",
-                "input"
-            ]
-        },
-        {
-            "id": "kernel_file",
-            "name": "Kernel file",
-            "type": "File",
-            "value-key": "[KERNEL_FILE]",
-            "description": "A pathlike object or string representing an existing file. Use external file for kernel.",
-            "optional": true
-        },
-        {
-            "id": "kernel_shape",
-            "name": "Kernel shape",
-            "type": "String",
-            "value-key": "[KERNEL_SHAPE]",
-            "command-line-flag": "-kernel",
-            "description": "'3d' or '2d' or 'box' or 'boxv' or 'gauss' or 'sphere' or 'file'. Kernel shape to use.",
-            "optional": true,
-            "value-choices": [
-                "3D",
-                "2D",
-                "box",
-                "boxv",
-                "gauss",
-                "sphere",
-                "file"
-            ]
-        },
-        {
-            "id": "kernel_size",
-            "name": "Kernel size",
-            "type": "Number",
-            "value-key": "[KERNEL_SIZE]",
-            "description": "A float. Kernel size - voxels for box/boxv, mm for sphere, mm sigma for gauss.",
-            "optional": true
-        },
-        {
-            "id": "minimum_filter",
-            "name": "Minimum filter",
-            "type": "Flag",
-            "value-key": "[MINIMUM_FILTER]",
-            "description": "A boolean. If true, minimum filter rather than erosion by zeroing-out.",
-            "optional": true,
-            "default-value": false
-        },
-        {
-            "id": "nan2zeros",
-            "name": "Nan2zeros",
-            "type": "Flag",
-            "value-key": "[NAN2ZEROS]",
-            "command-line-flag": "-nan",
-            "description": "A boolean. Change nans to zeros before doing anything.",
-            "optional": true
-        },
-        {
-            "id": "out_file",
-            "name": "Out file",
-            "type": "File",
-            "value-key": "[OUT_FILE]",
-            "description": "A pathlike object or string representing a file. Image to write.",
-            "optional": true
-        },
-        {
-            "id": "output_datatype",
-            "name": "Output datatype",
-            "type": "String",
-            "value-key": "[OUTPUT_DATATYPE]",
-            "command-line-flag": "-odt",
-            "description": "'float' or 'char' or 'int' or 'short' or 'double' or 'input'. Datatype to use for output (default uses input type).",
-            "optional": true,
-            "value-choices": [
-                "float",
-                "char",
-                "int",
-                "short",
-                "double",
-                "input"
-            ]
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file_outfile",
-            "path-template": "[OUT_FILE]",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Image written after calculations."
-        }
-    ],
-    "groups": [
-        {
-            "id": "mutex_group",
-            "name": "Mutex group",
-            "members": [
-                "kernel_size",
-                "kernel_file"
-            ],
-            "mutually-exclusive": true
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "ErodeImage",
+  "command-line": "ErodeImage [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [KERNEL_SHAPE] [KERNEL_SIZE] [MINIMUM_FILTER] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
+  "author": "Nipype (interface)",
+  "description": "ErodeImage, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ErodeImage).\n\nUse fslmaths to perform a spatial erosion of an image.",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "description": "A pathlike object or string representing an existing file. Image to operate on.",
+      "optional": false
+    },
+    {
+      "id": "internal_datatype",
+      "name": "Internal datatype",
+      "type": "String",
+      "value-key": "[INTERNAL_DATATYPE]",
+      "command-line-flag": "-dt",
+      "description": "'float' or 'char' or 'int' or 'short' or 'double' or 'input'. Datatype to use for calculations (default is float).",
+      "optional": true,
+      "value-choices": ["float", "char", "int", "short", "double", "input"]
+    },
+    {
+      "id": "kernel_file",
+      "name": "Kernel file",
+      "type": "File",
+      "value-key": "[KERNEL_FILE]",
+      "description": "A pathlike object or string representing an existing file. Use external file for kernel.",
+      "optional": true
+    },
+    {
+      "id": "kernel_shape",
+      "name": "Kernel shape",
+      "type": "String",
+      "value-key": "[KERNEL_SHAPE]",
+      "command-line-flag": "-kernel",
+      "description": "'3d' or '2d' or 'box' or 'boxv' or 'gauss' or 'sphere' or 'file'. Kernel shape to use.",
+      "optional": true,
+      "value-choices": ["3D", "2D", "box", "boxv", "gauss", "sphere", "file"]
+    },
+    {
+      "id": "kernel_size",
+      "name": "Kernel size",
+      "type": "Number",
+      "value-key": "[KERNEL_SIZE]",
+      "description": "A float. Kernel size - voxels for box/boxv, mm for sphere, mm sigma for gauss.",
+      "optional": true
+    },
+    {
+      "id": "minimum_filter",
+      "name": "Minimum filter",
+      "type": "Flag",
+      "value-key": "[MINIMUM_FILTER]",
+      "description": "A boolean. If true, minimum filter rather than erosion by zeroing-out.",
+      "optional": true,
+      "default-value": false
+    },
+    {
+      "id": "nan2zeros",
+      "name": "Nan2zeros",
+      "type": "Flag",
+      "value-key": "[NAN2ZEROS]",
+      "command-line-flag": "-nan",
+      "description": "A boolean. Change nans to zeros before doing anything.",
+      "optional": true
+    },
+    {
+      "id": "out_file",
+      "name": "Out file",
+      "type": "File",
+      "value-key": "[OUT_FILE]",
+      "description": "A pathlike object or string representing a file. Image to write.",
+      "optional": true
+    },
+    {
+      "id": "output_datatype",
+      "name": "Output datatype",
+      "type": "String",
+      "value-key": "[OUTPUT_DATATYPE]",
+      "command-line-flag": "-odt",
+      "description": "'float' or 'char' or 'int' or 'short' or 'double' or 'input'. Datatype to use for output (default uses input type).",
+      "optional": true,
+      "value-choices": ["float", "char", "int", "short", "double", "input"]
+    },
+    {
+      "id": "output_type",
+      "name": "Output type",
+      "type": "String",
+      "value-key": "[OUTPUT_TYPE]",
+      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+      "optional": true,
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file_outfile",
+      "path-template": "[OUT_FILE]",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Image written after calculations."
+    }
+  ],
+  "groups": [
+    {
+      "id": "mutex_group",
+      "name": "Mutex group",
+      "members": ["kernel_size", "kernel_file"],
+      "mutually-exclusive": true
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

@@ -1,244 +1,224 @@
 {
-    "name": "ConvertWarp",
-    "command-line": "ConvertWarp [REFERENCE] [OUT_FILE] [ABSWARP] [ARGS] [CONS_JACOBIAN] [ENVIRON] [JACOBIAN_MAX] [JACOBIAN_MIN] [MIDMAT] [OUT_ABSWARP] [OUT_RELWARP] [OUTPUT_TYPE] [POSTMAT] [PREMAT] [RELWARP] [SHIFT_DIRECTION] [SHIFT_IN_FILE] [WARP1] [WARP2]",
-    "author": "Nipype (interface)",
-    "description": "ConvertWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ConvertWarp).\n\nUse FSL `convertwarp <http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html>`_\n    for combining multiple transforms into one.\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import ConvertWarp\n    >>> warputils = ConvertWarp()\n    >>> warputils.inputs.warp1 = \"warpfield.nii\"\n    >>> warputils.inputs.reference = \"T1.nii\"\n    >>> warputils.inputs.relwarp = True\n    >>> warputils.inputs.output_type = \"NIFTI_GZ\"\n    >>> warputils.cmdline # doctest: +ELLIPSIS\n    'convertwarp --ref=T1.nii --rel --warp1=warpfield.nii --out=T1_concatwarp.nii.gz'\n    >>> res = warputils.run() # doctest: +SKIP\n\n\n    ",
-    "inputs": [
-        {
-            "id": "abswarp",
-            "name": "Abswarp",
-            "type": "Flag",
-            "value-key": "[ABSWARP]",
-            "command-line-flag": "--abs",
-            "description": "A boolean. If set it indicates that the warps in --warp1 and --warp2 should be interpreted as absolute. i.e. the values in --warp1/2 are the coordinates in the next space, rather than displacements. this flag is ignored if --warp1/2 was created by fnirt, which always creates relative displacements.",
-            "optional": true
-        },
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "cons_jacobian",
-            "name": "Cons jacobian",
-            "type": "Flag",
-            "value-key": "[CONS_JACOBIAN]",
-            "command-line-flag": "--constrainj",
-            "description": "A boolean. Constrain the jacobian of the warpfield to lie within specified min/max limits.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "jacobian_max",
-            "name": "Jacobian max",
-            "type": "Number",
-            "value-key": "[JACOBIAN_MAX]",
-            "command-line-flag": "--jmax",
-            "command-line-flag-separator": "=",
-            "description": "A float. Maximum acceptable jacobian value for constraint (default 100.0).",
-            "optional": true
-        },
-        {
-            "id": "jacobian_min",
-            "name": "Jacobian min",
-            "type": "Number",
-            "value-key": "[JACOBIAN_MIN]",
-            "command-line-flag": "--jmin",
-            "command-line-flag-separator": "=",
-            "description": "A float. Minimum acceptable jacobian value for constraint (default 0.01).",
-            "optional": true
-        },
-        {
-            "id": "midmat",
-            "name": "Midmat",
-            "type": "File",
-            "value-key": "[MIDMAT]",
-            "command-line-flag": "--midmat",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Name of file containing mid-warp-affine transform.",
-            "optional": true
-        },
-        {
-            "id": "out_abswarp",
-            "name": "Out abswarp",
-            "type": "Flag",
-            "value-key": "[OUT_ABSWARP]",
-            "command-line-flag": "--absout",
-            "description": "A boolean. If set it indicates that the warps in --out should be absolute, i.e. the values in --out are displacements from the coordinates in --ref.",
-            "optional": true
-        },
-        {
-            "id": "out_relwarp",
-            "name": "Out relwarp",
-            "type": "Flag",
-            "value-key": "[OUT_RELWARP]",
-            "command-line-flag": "--relout",
-            "description": "A boolean. If set it indicates that the warps in --out should be relative, i.e. the values in --out are displacements from the coordinates in --ref.",
-            "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
-        },
-        {
-            "id": "postmat",
-            "name": "Postmat",
-            "type": "File",
-            "value-key": "[POSTMAT]",
-            "command-line-flag": "--postmat",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Name of file containing an affine transform (applied last). it could e.g. be an affine transform that maps the mni152-space into a better approximation to the talairach-space (if indeed there is one).",
-            "optional": true
-        },
-        {
-            "id": "premat",
-            "name": "Premat",
-            "type": "File",
-            "value-key": "[PREMAT]",
-            "command-line-flag": "--premat",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Filename for pre-transform (affine matrix).",
-            "optional": true
-        },
-        {
-            "id": "reference",
-            "name": "Reference",
-            "type": "File",
-            "value-key": "[REFERENCE]",
-            "command-line-flag": "--ref",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Name of a file in target space of the full transform.",
-            "optional": false
-        },
-        {
-            "id": "relwarp",
-            "name": "Relwarp",
-            "type": "Flag",
-            "value-key": "[RELWARP]",
-            "command-line-flag": "--rel",
-            "description": "A boolean. If set it indicates that the warps in --warp1/2 should be interpreted as relative. i.e. the values in --warp1/2 are displacements from the coordinates in the next space.",
-            "optional": true
-        },
-        {
-            "id": "shift_direction",
-            "name": "Shift direction",
-            "type": "String",
-            "value-key": "[SHIFT_DIRECTION]",
-            "command-line-flag": "--shiftdir",
-            "command-line-flag-separator": "=",
-            "description": "'y-' or 'y' or 'x' or 'x-' or 'z' or 'z-'. Indicates the direction that the distortions from --shiftmap goes. it depends on the direction and polarity of the phase-encoding in the epi sequence.",
-            "optional": true,
-            "requires-inputs": [
-                "shift_in_file"
-            ],
-            "value-choices": [
-                "y-",
-                "y",
-                "x",
-                "x-",
-                "z",
-                "z-"
-            ]
-        },
-        {
-            "id": "shift_in_file",
-            "name": "Shift in file",
-            "type": "File",
-            "value-key": "[SHIFT_IN_FILE]",
-            "command-line-flag": "--shiftmap",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Name of file containing a \"shiftmap\", a non-linear transform with displacements only in one direction (applied first, before premat). this would typically be a fieldmap that has been pre-processed using fugue that maps a subjects functional (epi) data onto an undistorted space (i.e. a space that corresponds to his/her true anatomy).",
-            "optional": true
-        },
-        {
-            "id": "warp1",
-            "name": "Warp1",
-            "type": "File",
-            "value-key": "[WARP1]",
-            "command-line-flag": "--warp1",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Name of file containing initial warp-fields/coefficients (follows premat). this could e.g. be a fnirt-transform from a subjects structural scan to an average of a group of subjects.",
-            "optional": true
-        },
-        {
-            "id": "warp2",
-            "name": "Warp2",
-            "type": "File",
-            "value-key": "[WARP2]",
-            "command-line-flag": "--warp2",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing an existing file. Name of file containing secondary warp-fields/coefficients (after warp1/midmat but before postmat). this could e.g. be a fnirt-transform from the average of a group of subjects to some standard space (e.g. mni152).",
-            "optional": true
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Name of output file, containing warps that are the combination of all those given as arguments. the format of this will be a field-file (rather than spline coefficients) with any affine components included.",
-            "path-template": "[REFERENCE]_concatwarp",
-            "value-key": "[OUT_FILE]",
-            "command-line-flag": "--out",
-            "command-line-flag-separator": "="
-        },
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "path-template": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. Name of output file, containing the warp as field or coefficients."
-        }
-    ],
-    "groups": [
-        {
-            "id": "mutex_group",
-            "name": "Mutex group",
-            "members": [
-                "relwarp",
-                "abswarp"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "mutex_group_2",
-            "name": "Mutex group 2",
-            "members": [
-                "out_abswarp",
-                "out_relwarp"
-            ],
-            "mutually-exclusive": true
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "ConvertWarp",
+  "command-line": "ConvertWarp [REFERENCE] [OUT_FILE] [ABSWARP] [ARGS] [CONS_JACOBIAN] [ENVIRON] [JACOBIAN_MAX] [JACOBIAN_MIN] [MIDMAT] [OUT_ABSWARP] [OUT_RELWARP] [OUTPUT_TYPE] [POSTMAT] [PREMAT] [RELWARP] [SHIFT_DIRECTION] [SHIFT_IN_FILE] [WARP1] [WARP2]",
+  "author": "Nipype (interface)",
+  "description": "ConvertWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ConvertWarp).\n\nUse FSL `convertwarp <http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html>`_\n    for combining multiple transforms into one.\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import ConvertWarp\n    >>> warputils = ConvertWarp()\n    >>> warputils.inputs.warp1 = \"warpfield.nii\"\n    >>> warputils.inputs.reference = \"T1.nii\"\n    >>> warputils.inputs.relwarp = True\n    >>> warputils.inputs.output_type = \"NIFTI_GZ\"\n    >>> warputils.cmdline # doctest: +ELLIPSIS\n    'convertwarp --ref=T1.nii --rel --warp1=warpfield.nii --out=T1_concatwarp.nii.gz'\n    >>> res = warputils.run() # doctest: +SKIP\n\n\n    ",
+  "inputs": [
+    {
+      "id": "abswarp",
+      "name": "Abswarp",
+      "type": "Flag",
+      "value-key": "[ABSWARP]",
+      "command-line-flag": "--abs",
+      "description": "A boolean. If set it indicates that the warps in --warp1 and --warp2 should be interpreted as absolute. i.e. the values in --warp1/2 are the coordinates in the next space, rather than displacements. this flag is ignored if --warp1/2 was created by fnirt, which always creates relative displacements.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
+    },
+    {
+      "id": "cons_jacobian",
+      "name": "Cons jacobian",
+      "type": "Flag",
+      "value-key": "[CONS_JACOBIAN]",
+      "command-line-flag": "--constrainj",
+      "description": "A boolean. Constrain the jacobian of the warpfield to lie within specified min/max limits.",
+      "optional": true
+    },
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "jacobian_max",
+      "name": "Jacobian max",
+      "type": "Number",
+      "value-key": "[JACOBIAN_MAX]",
+      "command-line-flag": "--jmax",
+      "command-line-flag-separator": "=",
+      "description": "A float. Maximum acceptable jacobian value for constraint (default 100.0).",
+      "optional": true
+    },
+    {
+      "id": "jacobian_min",
+      "name": "Jacobian min",
+      "type": "Number",
+      "value-key": "[JACOBIAN_MIN]",
+      "command-line-flag": "--jmin",
+      "command-line-flag-separator": "=",
+      "description": "A float. Minimum acceptable jacobian value for constraint (default 0.01).",
+      "optional": true
+    },
+    {
+      "id": "midmat",
+      "name": "Midmat",
+      "type": "File",
+      "value-key": "[MIDMAT]",
+      "command-line-flag": "--midmat",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Name of file containing mid-warp-affine transform.",
+      "optional": true
+    },
+    {
+      "id": "out_abswarp",
+      "name": "Out abswarp",
+      "type": "Flag",
+      "value-key": "[OUT_ABSWARP]",
+      "command-line-flag": "--absout",
+      "description": "A boolean. If set it indicates that the warps in --out should be absolute, i.e. the values in --out are displacements from the coordinates in --ref.",
+      "optional": true
+    },
+    {
+      "id": "out_relwarp",
+      "name": "Out relwarp",
+      "type": "Flag",
+      "value-key": "[OUT_RELWARP]",
+      "command-line-flag": "--relout",
+      "description": "A boolean. If set it indicates that the warps in --out should be relative, i.e. the values in --out are displacements from the coordinates in --ref.",
+      "optional": true
+    },
+    {
+      "id": "output_type",
+      "name": "Output type",
+      "type": "String",
+      "value-key": "[OUTPUT_TYPE]",
+      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+      "optional": true,
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+    },
+    {
+      "id": "postmat",
+      "name": "Postmat",
+      "type": "File",
+      "value-key": "[POSTMAT]",
+      "command-line-flag": "--postmat",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Name of file containing an affine transform (applied last). it could e.g. be an affine transform that maps the mni152-space into a better approximation to the talairach-space (if indeed there is one).",
+      "optional": true
+    },
+    {
+      "id": "premat",
+      "name": "Premat",
+      "type": "File",
+      "value-key": "[PREMAT]",
+      "command-line-flag": "--premat",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Filename for pre-transform (affine matrix).",
+      "optional": true
+    },
+    {
+      "id": "reference",
+      "name": "Reference",
+      "type": "File",
+      "value-key": "[REFERENCE]",
+      "command-line-flag": "--ref",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Name of a file in target space of the full transform.",
+      "optional": false
+    },
+    {
+      "id": "relwarp",
+      "name": "Relwarp",
+      "type": "Flag",
+      "value-key": "[RELWARP]",
+      "command-line-flag": "--rel",
+      "description": "A boolean. If set it indicates that the warps in --warp1/2 should be interpreted as relative. i.e. the values in --warp1/2 are displacements from the coordinates in the next space.",
+      "optional": true
+    },
+    {
+      "id": "shift_direction",
+      "name": "Shift direction",
+      "type": "String",
+      "value-key": "[SHIFT_DIRECTION]",
+      "command-line-flag": "--shiftdir",
+      "command-line-flag-separator": "=",
+      "description": "'y-' or 'y' or 'x' or 'x-' or 'z' or 'z-'. Indicates the direction that the distortions from --shiftmap goes. it depends on the direction and polarity of the phase-encoding in the epi sequence.",
+      "optional": true,
+      "requires-inputs": ["shift_in_file"],
+      "value-choices": ["y-", "y", "x", "x-", "z", "z-"]
+    },
+    {
+      "id": "shift_in_file",
+      "name": "Shift in file",
+      "type": "File",
+      "value-key": "[SHIFT_IN_FILE]",
+      "command-line-flag": "--shiftmap",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Name of file containing a \"shiftmap\", a non-linear transform with displacements only in one direction (applied first, before premat). this would typically be a fieldmap that has been pre-processed using fugue that maps a subjects functional (epi) data onto an undistorted space (i.e. a space that corresponds to his/her true anatomy).",
+      "optional": true
+    },
+    {
+      "id": "warp1",
+      "name": "Warp1",
+      "type": "File",
+      "value-key": "[WARP1]",
+      "command-line-flag": "--warp1",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Name of file containing initial warp-fields/coefficients (follows premat). this could e.g. be a fnirt-transform from a subjects structural scan to an average of a group of subjects.",
+      "optional": true
+    },
+    {
+      "id": "warp2",
+      "name": "Warp2",
+      "type": "File",
+      "value-key": "[WARP2]",
+      "command-line-flag": "--warp2",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing an existing file. Name of file containing secondary warp-fields/coefficients (after warp1/midmat but before postmat). this could e.g. be a fnirt-transform from the average of a group of subjects to some standard space (e.g. mni152).",
+      "optional": true
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Name of output file, containing warps that are the combination of all those given as arguments. the format of this will be a field-file (rather than spline coefficients) with any affine components included.",
+      "path-template": "[REFERENCE]_concatwarp",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "--out",
+      "command-line-flag-separator": "="
+    },
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "path-template": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. Name of output file, containing the warp as field or coefficients."
+    }
+  ],
+  "groups": [
+    {
+      "id": "mutex_group",
+      "name": "Mutex group",
+      "members": ["relwarp", "abswarp"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group_2",
+      "name": "Mutex group 2",
+      "members": ["out_abswarp", "out_relwarp"],
+      "mutually-exclusive": true
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

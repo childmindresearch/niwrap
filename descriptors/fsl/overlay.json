@@ -1,201 +1,186 @@
 {
-    "name": "Overlay",
-    "command-line": "Overlay [TRANSPARENCY] [OUT_TYPE] [USE_CHECKERBOARD] [BACKGROUND_IMAGE] [FULL_BG_RANGE] [STAT_IMAGE] [STAT_THRESH] [SHOW_NEGATIVE_STATS] [STAT_IMAGE2] [STAT_THRESH2] [OUT_FILE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
-    "author": "Nipype (interface)",
-    "description": "Overlay, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Overlay).\n\nUse FSL's overlay command to combine background and statistical images\n        into one volume\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces import fsl\n    >>> combine = fsl.Overlay()\n    >>> combine.inputs.background_image = 'mean_func.nii.gz'\n    >>> combine.inputs.auto_thresh_bg = True\n    >>> combine.inputs.stat_image = 'zstat1.nii.gz'\n    >>> combine.inputs.stat_thresh = (3.5, 10)\n    >>> combine.inputs.show_negative_stats = True\n    >>> res = combine.run() #doctest: +SKIP\n\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "auto_thresh_bg",
-            "name": "Auto thresh bg",
-            "type": "Flag",
-            "value-key": "[AUTO_THRESH_BG]",
-            "command-line-flag": "-a",
-            "description": "A boolean. Automatically threshold the background image.",
-            "optional": false
-        },
-        {
-            "id": "background_image",
-            "name": "Background image",
-            "type": "File",
-            "value-key": "[BACKGROUND_IMAGE]",
-            "description": "A pathlike object or string representing an existing file. Image to use as background.",
-            "optional": false
-        },
-        {
-            "id": "bg_thresh",
-            "name": "Bg thresh",
-            "type": "Number",
-            "list": true,
-            "min-list-entries": 2,
-            "max-list-entries": 2,
-            "value-key": "[BG_THRESH]",
-            "description": "A tuple of the form: (a float, a float). Min and max values for background intensity.",
-            "optional": false
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "full_bg_range",
-            "name": "Full bg range",
-            "type": "Flag",
-            "value-key": "[FULL_BG_RANGE]",
-            "command-line-flag": "-A",
-            "description": "A boolean. Use full range of background image.",
-            "optional": false
-        },
-        {
-            "id": "out_file",
-            "name": "Out file",
-            "type": "File",
-            "value-key": "[OUT_FILE]",
-            "description": "A pathlike object or string representing a file. Combined image volume.",
-            "optional": true
-        },
-        {
-            "id": "out_type",
-            "name": "Out type",
-            "type": "String",
-            "value-key": "[OUT_TYPE]",
-            "description": "'float' or 'int'. Write output with float or int.",
-            "optional": true,
-            "default-value": "float",
-            "value-choices": [
-                "float",
-                "int"
-            ]
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
-        },
-        {
-            "id": "show_negative_stats",
-            "name": "Show negative stats",
-            "type": "Flag",
-            "value-key": "[SHOW_NEGATIVE_STATS]",
-            "description": "A boolean. Display negative statistics in overlay.",
-            "optional": true
-        },
-        {
-            "id": "stat_image",
-            "name": "Stat image",
-            "type": "File",
-            "value-key": "[STAT_IMAGE]",
-            "description": "A pathlike object or string representing an existing file. Statistical image to overlay in color.",
-            "optional": false
-        },
-        {
-            "id": "stat_image2",
-            "name": "Stat image2",
-            "type": "File",
-            "value-key": "[STAT_IMAGE2]",
-            "description": "A pathlike object or string representing an existing file. Second statistical image to overlay in color.",
-            "optional": true
-        },
-        {
-            "id": "stat_thresh",
-            "name": "Stat thresh",
-            "type": "Number",
-            "list": true,
-            "min-list-entries": 2,
-            "max-list-entries": 2,
-            "value-key": "[STAT_THRESH]",
-            "description": "A tuple of the form: (a float, a float). Min and max values for the statistical overlay.",
-            "optional": false
-        },
-        {
-            "id": "stat_thresh2",
-            "name": "Stat thresh2",
-            "type": "Number",
-            "list": true,
-            "min-list-entries": 2,
-            "max-list-entries": 2,
-            "value-key": "[STAT_THRESH2]",
-            "description": "A tuple of the form: (a float, a float). Min and max values for second statistical overlay.",
-            "optional": true
-        },
-        {
-            "id": "transparency",
-            "name": "Transparency",
-            "type": "Flag",
-            "value-key": "[TRANSPARENCY]",
-            "description": "A boolean. Make overlay colors semi-transparent.",
-            "optional": true,
-            "default-value": true
-        },
-        {
-            "id": "use_checkerboard",
-            "name": "Use checkerboard",
-            "type": "Flag",
-            "value-key": "[USE_CHECKERBOARD]",
-            "command-line-flag": "-c",
-            "description": "A boolean. Use checkerboard mask for overlay.",
-            "optional": true
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file_outfile",
-            "path-template": "[OUT_FILE]",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. Combined image volume."
-        }
-    ],
-    "groups": [
-        {
-            "id": "mutex_group",
-            "name": "Mutex group",
-            "members": [
-                "bg_thresh",
-                "full_bg_range",
-                "auto_thresh_bg"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "mutex_group_2",
-            "name": "Mutex group 2",
-            "members": [
-                "stat_image2",
-                "show_negative_stats"
-            ],
-            "mutually-exclusive": true
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "Overlay",
+  "command-line": "Overlay [TRANSPARENCY] [OUT_TYPE] [USE_CHECKERBOARD] [BACKGROUND_IMAGE] [FULL_BG_RANGE] [STAT_IMAGE] [STAT_THRESH] [SHOW_NEGATIVE_STATS] [STAT_IMAGE2] [STAT_THRESH2] [OUT_FILE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
+  "author": "Nipype (interface)",
+  "description": "Overlay, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Overlay).\n\nUse FSL's overlay command to combine background and statistical images\n        into one volume\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces import fsl\n    >>> combine = fsl.Overlay()\n    >>> combine.inputs.background_image = 'mean_func.nii.gz'\n    >>> combine.inputs.auto_thresh_bg = True\n    >>> combine.inputs.stat_image = 'zstat1.nii.gz'\n    >>> combine.inputs.stat_thresh = (3.5, 10)\n    >>> combine.inputs.show_negative_stats = True\n    >>> res = combine.run() #doctest: +SKIP\n\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "auto_thresh_bg",
+      "name": "Auto thresh bg",
+      "type": "Flag",
+      "value-key": "[AUTO_THRESH_BG]",
+      "command-line-flag": "-a",
+      "description": "A boolean. Automatically threshold the background image.",
+      "optional": false
+    },
+    {
+      "id": "background_image",
+      "name": "Background image",
+      "type": "File",
+      "value-key": "[BACKGROUND_IMAGE]",
+      "description": "A pathlike object or string representing an existing file. Image to use as background.",
+      "optional": false
+    },
+    {
+      "id": "bg_thresh",
+      "name": "Bg thresh",
+      "type": "Number",
+      "list": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2,
+      "value-key": "[BG_THRESH]",
+      "description": "A tuple of the form: (a float, a float). Min and max values for background intensity.",
+      "optional": false
+    },
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "full_bg_range",
+      "name": "Full bg range",
+      "type": "Flag",
+      "value-key": "[FULL_BG_RANGE]",
+      "command-line-flag": "-A",
+      "description": "A boolean. Use full range of background image.",
+      "optional": false
+    },
+    {
+      "id": "out_file",
+      "name": "Out file",
+      "type": "File",
+      "value-key": "[OUT_FILE]",
+      "description": "A pathlike object or string representing a file. Combined image volume.",
+      "optional": true
+    },
+    {
+      "id": "out_type",
+      "name": "Out type",
+      "type": "String",
+      "value-key": "[OUT_TYPE]",
+      "description": "'float' or 'int'. Write output with float or int.",
+      "optional": true,
+      "default-value": "float",
+      "value-choices": ["float", "int"]
+    },
+    {
+      "id": "output_type",
+      "name": "Output type",
+      "type": "String",
+      "value-key": "[OUTPUT_TYPE]",
+      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+      "optional": true,
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+    },
+    {
+      "id": "show_negative_stats",
+      "name": "Show negative stats",
+      "type": "Flag",
+      "value-key": "[SHOW_NEGATIVE_STATS]",
+      "description": "A boolean. Display negative statistics in overlay.",
+      "optional": true
+    },
+    {
+      "id": "stat_image",
+      "name": "Stat image",
+      "type": "File",
+      "value-key": "[STAT_IMAGE]",
+      "description": "A pathlike object or string representing an existing file. Statistical image to overlay in color.",
+      "optional": false
+    },
+    {
+      "id": "stat_image2",
+      "name": "Stat image2",
+      "type": "File",
+      "value-key": "[STAT_IMAGE2]",
+      "description": "A pathlike object or string representing an existing file. Second statistical image to overlay in color.",
+      "optional": true
+    },
+    {
+      "id": "stat_thresh",
+      "name": "Stat thresh",
+      "type": "Number",
+      "list": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2,
+      "value-key": "[STAT_THRESH]",
+      "description": "A tuple of the form: (a float, a float). Min and max values for the statistical overlay.",
+      "optional": false
+    },
+    {
+      "id": "stat_thresh2",
+      "name": "Stat thresh2",
+      "type": "Number",
+      "list": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2,
+      "value-key": "[STAT_THRESH2]",
+      "description": "A tuple of the form: (a float, a float). Min and max values for second statistical overlay.",
+      "optional": true
+    },
+    {
+      "id": "transparency",
+      "name": "Transparency",
+      "type": "Flag",
+      "value-key": "[TRANSPARENCY]",
+      "description": "A boolean. Make overlay colors semi-transparent.",
+      "optional": true,
+      "default-value": true
+    },
+    {
+      "id": "use_checkerboard",
+      "name": "Use checkerboard",
+      "type": "Flag",
+      "value-key": "[USE_CHECKERBOARD]",
+      "command-line-flag": "-c",
+      "description": "A boolean. Use checkerboard mask for overlay.",
+      "optional": true
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file_outfile",
+      "path-template": "[OUT_FILE]",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. Combined image volume."
+    }
+  ],
+  "groups": [
+    {
+      "id": "mutex_group",
+      "name": "Mutex group",
+      "members": ["bg_thresh", "full_bg_range", "auto_thresh_bg"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group_2",
+      "name": "Mutex group 2",
+      "members": ["stat_image2", "show_negative_stats"],
+      "mutually-exclusive": true
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

@@ -1,203 +1,199 @@
 {
-    "name": "ECM",
-    "command-line": "ECM [IN_FILE] [ARGS] [AUTOCLIP] [AUTOMASK] [ENVIRON] [EPS] [FECM] [FULL] [MASK] [MAX_ITER] [MEMORY] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [POLORT] [SCALE] [SHIFT] [SPARSITY] [THRESH]",
-    "author": "Nipype (interface)",
-    "description": "ECM, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: ECM).\n\nPerforms degree centrality on a dataset using a given maskfile\n    via the 3dECM command\n\n    For complete details, see the `3dECM Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dECM.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> ecm = afni.ECM()\n    >>> ecm.inputs.in_file = 'functional.nii'\n    >>> ecm.inputs.mask = 'mask.nii'\n    >>> ecm.inputs.sparsity = 0.1 # keep top 0.1% of connections\n    >>> ecm.inputs.out_file = 'out.nii'\n    >>> ecm.cmdline\n    '3dECM -mask mask.nii -prefix out.nii -sparsity 0.100000 functional.nii'\n    >>> res = ecm.run()  # doctest: +SKIP\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "autoclip",
-            "name": "Autoclip",
-            "type": "Flag",
-            "value-key": "[AUTOCLIP]",
-            "command-line-flag": "-autoclip",
-            "description": "A boolean. Clip off low-intensity regions in the dataset.",
-            "optional": true
-        },
-        {
-            "id": "automask",
-            "name": "Automask",
-            "type": "Flag",
-            "value-key": "[AUTOMASK]",
-            "command-line-flag": "-automask",
-            "description": "A boolean. Mask the dataset to target brain-only voxels.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "eps",
-            "name": "Eps",
-            "type": "Number",
-            "value-key": "[EPS]",
-            "command-line-flag": "-eps",
-            "description": "A float. Sets the stopping criterion for the power iteration; :math:`l2\\|v_\\text{old} - v_\\text{new}\\| < eps\\|v_\\text{old}\\|`; default = 0.001.",
-            "optional": true
-        },
-        {
-            "id": "fecm",
-            "name": "Fecm",
-            "type": "Flag",
-            "value-key": "[FECM]",
-            "command-line-flag": "-fecm",
-            "description": "A boolean. Fast centrality method; substantial speed increase but cannot accommodate thresholding; automatically selected if -thresh or -sparsity are not set.",
-            "optional": true
-        },
-        {
-            "id": "full",
-            "name": "Full",
-            "type": "Flag",
-            "value-key": "[FULL]",
-            "command-line-flag": "-full",
-            "description": "A boolean. Full power method; enables thresholding; automatically selected if -thresh or -sparsity are set.",
-            "optional": true
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "description": "A pathlike object or string representing an existing file. Input file to 3decm.",
-            "optional": false
-        },
-        {
-            "id": "mask",
-            "name": "Mask",
-            "type": "File",
-            "value-key": "[MASK]",
-            "command-line-flag": "-mask",
-            "description": "A pathlike object or string representing an existing file. Mask file to mask input data.",
-            "optional": true
-        },
-        {
-            "id": "max_iter",
-            "name": "Max iter",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[MAX_ITER]",
-            "command-line-flag": "-max_iter",
-            "description": "An integer. Sets the maximum number of iterations to use in the power iteration; default = 1000.",
-            "optional": true
-        },
-        {
-            "id": "memory",
-            "name": "Memory",
-            "type": "Number",
-            "value-key": "[MEMORY]",
-            "command-line-flag": "-memory",
-            "description": "A float. Limit memory consumption on system by setting the amount of gb to limit the algorithm to; default = 2gb.",
-            "optional": true
-        },
-        {
-            "id": "num_threads",
-            "name": "Num threads",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[NUM_THREADS]",
-            "description": "An integer. Set number of threads.",
-            "optional": true,
-            "default-value": 1
-        },
-        {
-            "id": "outputtype",
-            "name": "Outputtype",
-            "type": "String",
-            "value-key": "[OUTPUTTYPE]",
-            "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "AFNI",
-                "NIFTI_GZ"
-            ]
-        },
-        {
-            "id": "polort",
-            "name": "Polort",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[POLORT]",
-            "command-line-flag": "-polort",
-            "description": "An integer. No description provided.",
-            "optional": true
-        },
-        {
-            "id": "scale",
-            "name": "Scale",
-            "type": "Number",
-            "value-key": "[SCALE]",
-            "command-line-flag": "-scale",
-            "description": "A float. Scale correlation coefficients in similarity matrix to after shifting, x >= 0.0; default = 1.0 for -full, 0.5 for -fecm.",
-            "optional": true
-        },
-        {
-            "id": "shift",
-            "name": "Shift",
-            "type": "Number",
-            "value-key": "[SHIFT]",
-            "command-line-flag": "-shift",
-            "description": "A float. Shift correlation coefficients in similarity matrix to enforce non-negativity, s >= 0.0; default = 0.0 for -full, 1.0 for -fecm.",
-            "optional": true
-        },
-        {
-            "id": "sparsity",
-            "name": "Sparsity",
-            "type": "Number",
-            "value-key": "[SPARSITY]",
-            "command-line-flag": "-sparsity",
-            "description": "A float. Only take the top percent of connections.",
-            "optional": true
-        },
-        {
-            "id": "thresh",
-            "name": "Thresh",
-            "type": "Number",
-            "value-key": "[THRESH]",
-            "command-line-flag": "-thresh",
-            "description": "A float. Threshold to exclude connections where corr <= thresh.",
-            "optional": true
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Output image file name.",
-            "path-template": "[IN_FILE]_afni",
-            "value-key": "[OUT_FILE]",
-            "command-line-flag": "-prefix"
-        },
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "path-template": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. Output file."
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "ECM",
+  "command-line": "ECM [IN_FILE] [ARGS] [AUTOCLIP] [AUTOMASK] [ENVIRON] [EPS] [FECM] [FULL] [MASK] [MAX_ITER] [MEMORY] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [POLORT] [SCALE] [SHIFT] [SPARSITY] [THRESH]",
+  "author": "Nipype (interface)",
+  "description": "ECM, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: ECM).\n\nPerforms degree centrality on a dataset using a given maskfile\n    via the 3dECM command\n\n    For complete details, see the `3dECM Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dECM.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> ecm = afni.ECM()\n    >>> ecm.inputs.in_file = 'functional.nii'\n    >>> ecm.inputs.mask = 'mask.nii'\n    >>> ecm.inputs.sparsity = 0.1 # keep top 0.1% of connections\n    >>> ecm.inputs.out_file = 'out.nii'\n    >>> ecm.cmdline\n    '3dECM -mask mask.nii -prefix out.nii -sparsity 0.100000 functional.nii'\n    >>> res = ecm.run()  # doctest: +SKIP\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "autoclip",
+      "name": "Autoclip",
+      "type": "Flag",
+      "value-key": "[AUTOCLIP]",
+      "command-line-flag": "-autoclip",
+      "description": "A boolean. Clip off low-intensity regions in the dataset.",
+      "optional": true
+    },
+    {
+      "id": "automask",
+      "name": "Automask",
+      "type": "Flag",
+      "value-key": "[AUTOMASK]",
+      "command-line-flag": "-automask",
+      "description": "A boolean. Mask the dataset to target brain-only voxels.",
+      "optional": true
+    },
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "eps",
+      "name": "Eps",
+      "type": "Number",
+      "value-key": "[EPS]",
+      "command-line-flag": "-eps",
+      "description": "A float. Sets the stopping criterion for the power iteration; :math:`l2\\|v_\\text{old} - v_\\text{new}\\| < eps\\|v_\\text{old}\\|`; default = 0.001.",
+      "optional": true
+    },
+    {
+      "id": "fecm",
+      "name": "Fecm",
+      "type": "Flag",
+      "value-key": "[FECM]",
+      "command-line-flag": "-fecm",
+      "description": "A boolean. Fast centrality method; substantial speed increase but cannot accommodate thresholding; automatically selected if -thresh or -sparsity are not set.",
+      "optional": true
+    },
+    {
+      "id": "full",
+      "name": "Full",
+      "type": "Flag",
+      "value-key": "[FULL]",
+      "command-line-flag": "-full",
+      "description": "A boolean. Full power method; enables thresholding; automatically selected if -thresh or -sparsity are set.",
+      "optional": true
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "description": "A pathlike object or string representing an existing file. Input file to 3decm.",
+      "optional": false
+    },
+    {
+      "id": "mask",
+      "name": "Mask",
+      "type": "File",
+      "value-key": "[MASK]",
+      "command-line-flag": "-mask",
+      "description": "A pathlike object or string representing an existing file. Mask file to mask input data.",
+      "optional": true
+    },
+    {
+      "id": "max_iter",
+      "name": "Max iter",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[MAX_ITER]",
+      "command-line-flag": "-max_iter",
+      "description": "An integer. Sets the maximum number of iterations to use in the power iteration; default = 1000.",
+      "optional": true
+    },
+    {
+      "id": "memory",
+      "name": "Memory",
+      "type": "Number",
+      "value-key": "[MEMORY]",
+      "command-line-flag": "-memory",
+      "description": "A float. Limit memory consumption on system by setting the amount of gb to limit the algorithm to; default = 2gb.",
+      "optional": true
+    },
+    {
+      "id": "num_threads",
+      "name": "Num threads",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUM_THREADS]",
+      "description": "An integer. Set number of threads.",
+      "optional": true,
+      "default-value": 1
+    },
+    {
+      "id": "outputtype",
+      "name": "Outputtype",
+      "type": "String",
+      "value-key": "[OUTPUTTYPE]",
+      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+      "optional": true,
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+    },
+    {
+      "id": "polort",
+      "name": "Polort",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[POLORT]",
+      "command-line-flag": "-polort",
+      "description": "An integer. No description provided.",
+      "optional": true
+    },
+    {
+      "id": "scale",
+      "name": "Scale",
+      "type": "Number",
+      "value-key": "[SCALE]",
+      "command-line-flag": "-scale",
+      "description": "A float. Scale correlation coefficients in similarity matrix to after shifting, x >= 0.0; default = 1.0 for -full, 0.5 for -fecm.",
+      "optional": true
+    },
+    {
+      "id": "shift",
+      "name": "Shift",
+      "type": "Number",
+      "value-key": "[SHIFT]",
+      "command-line-flag": "-shift",
+      "description": "A float. Shift correlation coefficients in similarity matrix to enforce non-negativity, s >= 0.0; default = 0.0 for -full, 1.0 for -fecm.",
+      "optional": true
+    },
+    {
+      "id": "sparsity",
+      "name": "Sparsity",
+      "type": "Number",
+      "value-key": "[SPARSITY]",
+      "command-line-flag": "-sparsity",
+      "description": "A float. Only take the top percent of connections.",
+      "optional": true
+    },
+    {
+      "id": "thresh",
+      "name": "Thresh",
+      "type": "Number",
+      "value-key": "[THRESH]",
+      "command-line-flag": "-thresh",
+      "description": "A float. Threshold to exclude connections where corr <= thresh.",
+      "optional": true
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Output image file name.",
+      "path-template": "[IN_FILE]_afni",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "path-template": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. Output file."
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

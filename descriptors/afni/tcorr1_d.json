@@ -1,143 +1,134 @@
 {
-    "name": "TCorr1D",
-    "command-line": "TCorr1D [XSET] [SPEARMAN] [Y_1D] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
-    "author": "Nipype (interface)",
-    "description": "TCorr1D, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: TCorr1D).\n\nComputes the correlation coefficient between each voxel time series\n    in the input 3D+time dataset.\n\n    For complete details, see the `3dTcorr1D Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html>`_\n\n    >>> from nipype.interfaces import afni\n    >>> tcorr1D = afni.TCorr1D()\n    >>> tcorr1D.inputs.xset= 'u_rc1s1_Template.nii'\n    >>> tcorr1D.inputs.y_1d = 'seed.1D'\n    >>> tcorr1D.cmdline\n    '3dTcorr1D -prefix u_rc1s1_Template_correlation.nii.gz  u_rc1s1_Template.nii  seed.1D'\n    >>> res = tcorr1D.run()  # doctest: +SKIP\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "ktaub",
-            "name": "Ktaub",
-            "type": "Flag",
-            "value-key": "[KTAUB]",
-            "command-line-flag": "-ktaub",
-            "description": "A boolean. Correlation is the kendall's tau_b correlation coefficient.",
-            "optional": true
-        },
-        {
-            "id": "num_threads",
-            "name": "Num threads",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[NUM_THREADS]",
-            "description": "An integer. Set number of threads.",
-            "optional": true,
-            "default-value": 1
-        },
-        {
-            "id": "outputtype",
-            "name": "Outputtype",
-            "type": "String",
-            "value-key": "[OUTPUTTYPE]",
-            "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "AFNI",
-                "NIFTI_GZ"
-            ]
-        },
-        {
-            "id": "pearson",
-            "name": "Pearson",
-            "type": "Flag",
-            "value-key": "[PEARSON]",
-            "command-line-flag": "-pearson",
-            "description": "A boolean. Correlation is the normal pearson correlation coefficient.",
-            "optional": true
-        },
-        {
-            "id": "quadrant",
-            "name": "Quadrant",
-            "type": "Flag",
-            "value-key": "[QUADRANT]",
-            "command-line-flag": "-quadrant",
-            "description": "A boolean. Correlation is the quadrant correlation coefficient.",
-            "optional": true
-        },
-        {
-            "id": "spearman",
-            "name": "Spearman",
-            "type": "Flag",
-            "value-key": "[SPEARMAN]",
-            "command-line-flag": "-spearman",
-            "description": "A boolean. Correlation is the spearman (rank) correlation coefficient.",
-            "optional": true
-        },
-        {
-            "id": "xset",
-            "name": "Xset",
-            "type": "File",
-            "value-key": "[XSET]",
-            "command-line-flag": "",
-            "description": "A pathlike object or string representing an existing file. 3d+time dataset input.",
-            "optional": false
-        },
-        {
-            "id": "y_1d",
-            "name": "Y 1d",
-            "type": "File",
-            "value-key": "[Y_1D]",
-            "command-line-flag": "",
-            "description": "A pathlike object or string representing an existing file. 1d time series file input.",
-            "optional": false
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Output filename prefix.",
-            "path-template": "[XSET]_correlation.nii.gz",
-            "value-key": "[OUT_FILE]",
-            "command-line-flag": "-prefix"
-        },
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "path-template": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. Output file containing correlations."
-        }
-    ],
-    "groups": [
-        {
-            "id": "mutex_group",
-            "name": "Mutex group",
-            "members": [
-                "ktaub",
-                "spearman",
-                "quadrant",
-                "pearson"
-            ],
-            "mutually-exclusive": true
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "TCorr1D",
+  "command-line": "TCorr1D [XSET] [SPEARMAN] [Y_1D] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
+  "author": "Nipype (interface)",
+  "description": "TCorr1D, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: TCorr1D).\n\nComputes the correlation coefficient between each voxel time series\n    in the input 3D+time dataset.\n\n    For complete details, see the `3dTcorr1D Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html>`_\n\n    >>> from nipype.interfaces import afni\n    >>> tcorr1D = afni.TCorr1D()\n    >>> tcorr1D.inputs.xset= 'u_rc1s1_Template.nii'\n    >>> tcorr1D.inputs.y_1d = 'seed.1D'\n    >>> tcorr1D.cmdline\n    '3dTcorr1D -prefix u_rc1s1_Template_correlation.nii.gz  u_rc1s1_Template.nii  seed.1D'\n    >>> res = tcorr1D.run()  # doctest: +SKIP\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "ktaub",
+      "name": "Ktaub",
+      "type": "Flag",
+      "value-key": "[KTAUB]",
+      "command-line-flag": "-ktaub",
+      "description": "A boolean. Correlation is the kendall's tau_b correlation coefficient.",
+      "optional": true
+    },
+    {
+      "id": "num_threads",
+      "name": "Num threads",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUM_THREADS]",
+      "description": "An integer. Set number of threads.",
+      "optional": true,
+      "default-value": 1
+    },
+    {
+      "id": "outputtype",
+      "name": "Outputtype",
+      "type": "String",
+      "value-key": "[OUTPUTTYPE]",
+      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+      "optional": true,
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+    },
+    {
+      "id": "pearson",
+      "name": "Pearson",
+      "type": "Flag",
+      "value-key": "[PEARSON]",
+      "command-line-flag": "-pearson",
+      "description": "A boolean. Correlation is the normal pearson correlation coefficient.",
+      "optional": true
+    },
+    {
+      "id": "quadrant",
+      "name": "Quadrant",
+      "type": "Flag",
+      "value-key": "[QUADRANT]",
+      "command-line-flag": "-quadrant",
+      "description": "A boolean. Correlation is the quadrant correlation coefficient.",
+      "optional": true
+    },
+    {
+      "id": "spearman",
+      "name": "Spearman",
+      "type": "Flag",
+      "value-key": "[SPEARMAN]",
+      "command-line-flag": "-spearman",
+      "description": "A boolean. Correlation is the spearman (rank) correlation coefficient.",
+      "optional": true
+    },
+    {
+      "id": "xset",
+      "name": "Xset",
+      "type": "File",
+      "value-key": "[XSET]",
+      "command-line-flag": "",
+      "description": "A pathlike object or string representing an existing file. 3d+time dataset input.",
+      "optional": false
+    },
+    {
+      "id": "y_1d",
+      "name": "Y 1d",
+      "type": "File",
+      "value-key": "[Y_1D]",
+      "command-line-flag": "",
+      "description": "A pathlike object or string representing an existing file. 1d time series file input.",
+      "optional": false
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Output filename prefix.",
+      "path-template": "[XSET]_correlation.nii.gz",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "path-template": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. Output file containing correlations."
+    }
+  ],
+  "groups": [
+    {
+      "id": "mutex_group",
+      "name": "Mutex group",
+      "members": ["ktaub", "spearman", "quadrant", "pearson"],
+      "mutually-exclusive": true
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

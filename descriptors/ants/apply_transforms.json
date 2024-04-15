@@ -1,220 +1,206 @@
 {
-    "name": "ApplyTransforms",
-    "command-line": "ApplyTransforms [ARGS] [DEFAULT_VALUE] [DIMENSION] [ENVIRON] [FLOAT] [INPUT_IMAGE] [INPUT_IMAGE_TYPE] [INTERPOLATION] [INTERPOLATION_PARAMETERS] [INVERT_TRANSFORM_FLAGS] [NUM_THREADS] [OUT_POSTFIX] [OUTPUT_IMAGE] [PRINT_OUT_COMPOSITE_WARP_FILE] [REFERENCE_IMAGE] [TRANSFORMS]",
-    "author": "Nipype (interface)",
-    "description": "ApplyTransforms, as implemented in Nipype (module: nipype.interfaces.ants.resampling, interface: ApplyTransforms).\n\nApplyTransforms, applied to an input image, transforms it according to a\n    reference image and a transform (or a set of transforms).\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.ants import ApplyTransforms\n    >>> at = ApplyTransforms()\n    >>> at.inputs.input_image = 'moving1.nii'\n    >>> at.inputs.reference_image = 'fixed1.nii'\n    >>> at.inputs.transforms = 'identity'\n    >>> at.cmdline\n    'antsApplyTransforms --default-value 0 --float 0 --input moving1.nii --interpolation Linear --output moving1_trans.nii --reference-image fixed1.nii --transform identity'\n\n    >>> at = ApplyTransforms()\n    >>> at.inputs.dimension = 3\n    >>> at.inputs.input_image = 'moving1.nii'\n    >>> at.inputs.reference_image = 'fixed1.nii'\n    >>> at.inputs.output_image = 'deformed_moving1.nii'\n    >>> at.inputs.interpolation = 'Linear'\n    >>> at.inputs.default_value = 0\n    >>> at.inputs.transforms = ['ants_Warp.nii.gz', 'trans.mat']\n    >>> at.inputs.invert_transform_flags = [False, True]\n    >>> at.cmdline\n    'antsApplyTransforms --default-value 0 --dimensionality 3 --float 0 --input moving1.nii --interpolation Linear --output deformed_moving1.nii --reference-image fixed1.nii --transform ants_Warp.nii.gz --transform [ trans.mat, 1 ]'\n\n    >>> at1 = ApplyTransforms()\n    >>> at1.inputs.dimension = 3\n    >>> at1.inputs.input_image = 'moving1.nii'\n    >>> at1.inputs.reference_image = 'fixed1.nii'\n    >>> at1.inputs.output_image = 'deformed_moving1.nii'\n    >>> at1.inputs.interpolation = 'BSpline'\n    >>> at1.inputs.interpolation_parameters = (5,)\n    >>> at1.inputs.default_value = 0\n    >>> at1.inputs.transforms = ['ants_Warp.nii.gz', 'trans.mat']\n    >>> at1.inputs.invert_transform_flags = [False, False]\n    >>> at1.cmdline\n    'antsApplyTransforms --default-value 0 --dimensionality 3 --float 0 --input moving1.nii --interpolation BSpline[ 5 ] --output deformed_moving1.nii --reference-image fixed1.nii --transform ants_Warp.nii.gz --transform trans.mat'\n\n    Identity transforms may be used as part of a chain:\n\n    >>> at2 = ApplyTransforms()\n    >>> at2.inputs.dimension = 3\n    >>> at2.inputs.input_image = 'moving1.nii'\n    >>> at2.inputs.reference_image = 'fixed1.nii'\n    >>> at2.inputs.output_image = 'deformed_moving1.nii'\n    >>> at2.inputs.interpolation = 'BSpline'\n    >>> at2.inputs.interpolation_parameters = (5,)\n    >>> at2.inputs.default_value = 0\n    >>> at2.inputs.transforms = ['identity', 'ants_Warp.nii.gz', 'trans.mat']\n    >>> at2.cmdline\n    'antsApplyTransforms --default-value 0 --dimensionality 3 --float 0 --input moving1.nii --interpolation BSpline[ 5 ] --output deformed_moving1.nii --reference-image fixed1.nii --transform identity --transform ants_Warp.nii.gz --transform trans.mat'\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "default_value",
-            "name": "Default value",
-            "type": "Number",
-            "value-key": "[DEFAULT_VALUE]",
-            "command-line-flag": "--default-value",
-            "description": "A float. No description provided.",
-            "optional": true,
-            "default-value": 0.0
-        },
-        {
-            "id": "dimension",
-            "name": "Dimension",
-            "type": "Number",
-            "value-key": "[DIMENSION]",
-            "command-line-flag": "--dimensionality",
-            "description": "2 or 3 or 4. This option forces the image to be treated as a specified-dimensional image. if not specified, antswarp tries to infer the dimensionality from the input image.",
-            "optional": true,
-            "integer": true,
-            "value-choices": [
-                2,
-                3,
-                4
-            ]
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "float",
-            "name": "Float",
-            "type": "Flag",
-            "value-key": "[FLOAT]",
-            "command-line-flag": "--float",
-            "description": "A boolean. Use float instead of double for computations.",
-            "optional": true,
-            "default-value": false
-        },
-        {
-            "id": "input_image",
-            "name": "Input image",
-            "type": "File",
-            "value-key": "[INPUT_IMAGE]",
-            "command-line-flag": "--input",
-            "description": "A pathlike object or string representing an existing file. Image to apply transformation to (generally a coregistered functional).",
-            "optional": false
-        },
-        {
-            "id": "input_image_type",
-            "name": "Input image type",
-            "type": "Number",
-            "value-key": "[INPUT_IMAGE_TYPE]",
-            "command-line-flag": "--input-image-type",
-            "description": "0 or 1 or 2 or 3. Option specifying the input image type of scalar (default), vector, tensor, or time series.",
-            "optional": true,
-            "integer": true,
-            "value-choices": [
-                0,
-                1,
-                2,
-                3
-            ]
-        },
-        {
-            "id": "interpolation",
-            "name": "Interpolation",
-            "type": "String",
-            "value-key": "[INTERPOLATION]",
-            "description": "'linear' or 'nearestneighbor' or 'cosinewindowedsinc' or 'welchwindowedsinc' or 'hammingwindowedsinc' or 'lanczoswindowedsinc' or 'multilabel' or 'gaussian' or 'bspline'. No description provided.",
-            "optional": true,
-            "default-value": "Linear",
-            "value-choices": [
-                "Linear",
-                "NearestNeighbor",
-                "CosineWindowedSinc",
-                "WelchWindowedSinc",
-                "HammingWindowedSinc",
-                "LanczosWindowedSinc",
-                "MultiLabel",
-                "Gaussian",
-                "BSpline"
-            ]
-        },
-        {
-            "id": "interpolation_parameters",
-            "name": "Interpolation parameters",
-            "type": "String",
-            "list": true,
-            "value-key": "[INTERPOLATION_PARAMETERS]",
-            "description": "A tuple of the form: (an integer) or a tuple of the form: (a float, a float). No description provided.",
-            "optional": true
-        },
-        {
-            "id": "interpolation_parameters_2",
-            "name": "Interpolation parameters",
-            "type": "String",
-            "list": true,
-            "value-key": "[INTERPOLATION_PARAMETERS]",
-            "description": "A tuple of the form: (an integer) or a tuple of the form: (a float, a float). No description provided.",
-            "optional": true
-        },
-        {
-            "id": "invert_transform_flags",
-            "name": "Invert transform flags",
-            "type": "File",
-            "list": true,
-            "value-key": "[INVERT_TRANSFORM_FLAGS]",
-            "description": "A list of items which are a boolean. No description provided.",
-            "optional": true
-        },
-        {
-            "id": "num_threads",
-            "name": "Num threads",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[NUM_THREADS]",
-            "description": "An integer. Number of itk threads to use.",
-            "optional": true,
-            "default-value": 1
-        },
-        {
-            "id": "out_postfix",
-            "name": "Out postfix",
-            "type": "String",
-            "value-key": "[OUT_POSTFIX]",
-            "description": "A string. Postfix that is appended to all output files (default = _trans).",
-            "optional": true,
-            "default-value": "_trans"
-        },
-        {
-            "id": "output_image",
-            "name": "Output image",
-            "type": "String",
-            "value-key": "[OUTPUT_IMAGE]",
-            "command-line-flag": "--output",
-            "description": "A string. Output file name.",
-            "optional": true
-        },
-        {
-            "id": "print_out_composite_warp_file",
-            "name": "Print out composite warp file",
-            "type": "Flag",
-            "value-key": "[PRINT_OUT_COMPOSITE_WARP_FILE]",
-            "command-line-flag": "--print_out_composite_warp_file",
-            "description": "A boolean. Output a composite warp file instead of a transformed image.",
-            "optional": true,
-            "requires-inputs": [
-                "output_image"
-            ]
-        },
-        {
-            "id": "reference_image",
-            "name": "Reference image",
-            "type": "File",
-            "value-key": "[REFERENCE_IMAGE]",
-            "command-line-flag": "--reference-image",
-            "description": "A pathlike object or string representing an existing file. Reference image space that you wish to warp into.",
-            "optional": false
-        },
-        {
-            "id": "transforms",
-            "name": "Transforms",
-            "type": "File",
-            "list": true,
-            "value-key": "[TRANSFORMS]",
-            "description": "A list of items which are a pathlike object or string representing an existing file or 'identity'. Transform files: will be applied in reverse order. for example, the last specified transform will be applied first.",
-            "optional": false
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Output image",
-            "id": "output_image_outfile",
-            "path-template": "[OUTPUT_IMAGE]",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. Warped image."
-        }
-    ],
-    "groups": [
-        {
-            "id": "interpolation_parameters_group",
-            "name": "Interpolation parameters group",
-            "members": [
-                "interpolation_parameters",
-                "interpolation_parameters_2"
-            ],
-            "mutually-exclusive": true
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "ApplyTransforms",
+  "command-line": "ApplyTransforms [ARGS] [DEFAULT_VALUE] [DIMENSION] [ENVIRON] [FLOAT] [INPUT_IMAGE] [INPUT_IMAGE_TYPE] [INTERPOLATION] [INTERPOLATION_PARAMETERS] [INVERT_TRANSFORM_FLAGS] [NUM_THREADS] [OUT_POSTFIX] [OUTPUT_IMAGE] [PRINT_OUT_COMPOSITE_WARP_FILE] [REFERENCE_IMAGE] [TRANSFORMS]",
+  "author": "Nipype (interface)",
+  "description": "ApplyTransforms, as implemented in Nipype (module: nipype.interfaces.ants.resampling, interface: ApplyTransforms).\n\nApplyTransforms, applied to an input image, transforms it according to a\n    reference image and a transform (or a set of transforms).\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.ants import ApplyTransforms\n    >>> at = ApplyTransforms()\n    >>> at.inputs.input_image = 'moving1.nii'\n    >>> at.inputs.reference_image = 'fixed1.nii'\n    >>> at.inputs.transforms = 'identity'\n    >>> at.cmdline\n    'antsApplyTransforms --default-value 0 --float 0 --input moving1.nii --interpolation Linear --output moving1_trans.nii --reference-image fixed1.nii --transform identity'\n\n    >>> at = ApplyTransforms()\n    >>> at.inputs.dimension = 3\n    >>> at.inputs.input_image = 'moving1.nii'\n    >>> at.inputs.reference_image = 'fixed1.nii'\n    >>> at.inputs.output_image = 'deformed_moving1.nii'\n    >>> at.inputs.interpolation = 'Linear'\n    >>> at.inputs.default_value = 0\n    >>> at.inputs.transforms = ['ants_Warp.nii.gz', 'trans.mat']\n    >>> at.inputs.invert_transform_flags = [False, True]\n    >>> at.cmdline\n    'antsApplyTransforms --default-value 0 --dimensionality 3 --float 0 --input moving1.nii --interpolation Linear --output deformed_moving1.nii --reference-image fixed1.nii --transform ants_Warp.nii.gz --transform [ trans.mat, 1 ]'\n\n    >>> at1 = ApplyTransforms()\n    >>> at1.inputs.dimension = 3\n    >>> at1.inputs.input_image = 'moving1.nii'\n    >>> at1.inputs.reference_image = 'fixed1.nii'\n    >>> at1.inputs.output_image = 'deformed_moving1.nii'\n    >>> at1.inputs.interpolation = 'BSpline'\n    >>> at1.inputs.interpolation_parameters = (5,)\n    >>> at1.inputs.default_value = 0\n    >>> at1.inputs.transforms = ['ants_Warp.nii.gz', 'trans.mat']\n    >>> at1.inputs.invert_transform_flags = [False, False]\n    >>> at1.cmdline\n    'antsApplyTransforms --default-value 0 --dimensionality 3 --float 0 --input moving1.nii --interpolation BSpline[ 5 ] --output deformed_moving1.nii --reference-image fixed1.nii --transform ants_Warp.nii.gz --transform trans.mat'\n\n    Identity transforms may be used as part of a chain:\n\n    >>> at2 = ApplyTransforms()\n    >>> at2.inputs.dimension = 3\n    >>> at2.inputs.input_image = 'moving1.nii'\n    >>> at2.inputs.reference_image = 'fixed1.nii'\n    >>> at2.inputs.output_image = 'deformed_moving1.nii'\n    >>> at2.inputs.interpolation = 'BSpline'\n    >>> at2.inputs.interpolation_parameters = (5,)\n    >>> at2.inputs.default_value = 0\n    >>> at2.inputs.transforms = ['identity', 'ants_Warp.nii.gz', 'trans.mat']\n    >>> at2.cmdline\n    'antsApplyTransforms --default-value 0 --dimensionality 3 --float 0 --input moving1.nii --interpolation BSpline[ 5 ] --output deformed_moving1.nii --reference-image fixed1.nii --transform identity --transform ants_Warp.nii.gz --transform trans.mat'\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "default_value",
+      "name": "Default value",
+      "type": "Number",
+      "value-key": "[DEFAULT_VALUE]",
+      "command-line-flag": "--default-value",
+      "description": "A float. No description provided.",
+      "optional": true,
+      "default-value": 0.0
+    },
+    {
+      "id": "dimension",
+      "name": "Dimension",
+      "type": "Number",
+      "value-key": "[DIMENSION]",
+      "command-line-flag": "--dimensionality",
+      "description": "2 or 3 or 4. This option forces the image to be treated as a specified-dimensional image. if not specified, antswarp tries to infer the dimensionality from the input image.",
+      "optional": true,
+      "integer": true,
+      "value-choices": [2, 3, 4]
+    },
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "float",
+      "name": "Float",
+      "type": "Flag",
+      "value-key": "[FLOAT]",
+      "command-line-flag": "--float",
+      "description": "A boolean. Use float instead of double for computations.",
+      "optional": true,
+      "default-value": false
+    },
+    {
+      "id": "input_image",
+      "name": "Input image",
+      "type": "File",
+      "value-key": "[INPUT_IMAGE]",
+      "command-line-flag": "--input",
+      "description": "A pathlike object or string representing an existing file. Image to apply transformation to (generally a coregistered functional).",
+      "optional": false
+    },
+    {
+      "id": "input_image_type",
+      "name": "Input image type",
+      "type": "Number",
+      "value-key": "[INPUT_IMAGE_TYPE]",
+      "command-line-flag": "--input-image-type",
+      "description": "0 or 1 or 2 or 3. Option specifying the input image type of scalar (default), vector, tensor, or time series.",
+      "optional": true,
+      "integer": true,
+      "value-choices": [0, 1, 2, 3]
+    },
+    {
+      "id": "interpolation",
+      "name": "Interpolation",
+      "type": "String",
+      "value-key": "[INTERPOLATION]",
+      "description": "'linear' or 'nearestneighbor' or 'cosinewindowedsinc' or 'welchwindowedsinc' or 'hammingwindowedsinc' or 'lanczoswindowedsinc' or 'multilabel' or 'gaussian' or 'bspline'. No description provided.",
+      "optional": true,
+      "default-value": "Linear",
+      "value-choices": [
+        "Linear",
+        "NearestNeighbor",
+        "CosineWindowedSinc",
+        "WelchWindowedSinc",
+        "HammingWindowedSinc",
+        "LanczosWindowedSinc",
+        "MultiLabel",
+        "Gaussian",
+        "BSpline"
+      ]
+    },
+    {
+      "id": "interpolation_parameters",
+      "name": "Interpolation parameters",
+      "type": "String",
+      "list": true,
+      "value-key": "[INTERPOLATION_PARAMETERS]",
+      "description": "A tuple of the form: (an integer) or a tuple of the form: (a float, a float). No description provided.",
+      "optional": true
+    },
+    {
+      "id": "interpolation_parameters_2",
+      "name": "Interpolation parameters",
+      "type": "String",
+      "list": true,
+      "value-key": "[INTERPOLATION_PARAMETERS]",
+      "description": "A tuple of the form: (an integer) or a tuple of the form: (a float, a float). No description provided.",
+      "optional": true
+    },
+    {
+      "id": "invert_transform_flags",
+      "name": "Invert transform flags",
+      "type": "File",
+      "list": true,
+      "value-key": "[INVERT_TRANSFORM_FLAGS]",
+      "description": "A list of items which are a boolean. No description provided.",
+      "optional": true
+    },
+    {
+      "id": "num_threads",
+      "name": "Num threads",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUM_THREADS]",
+      "description": "An integer. Number of itk threads to use.",
+      "optional": true,
+      "default-value": 1
+    },
+    {
+      "id": "out_postfix",
+      "name": "Out postfix",
+      "type": "String",
+      "value-key": "[OUT_POSTFIX]",
+      "description": "A string. Postfix that is appended to all output files (default = _trans).",
+      "optional": true,
+      "default-value": "_trans"
+    },
+    {
+      "id": "output_image",
+      "name": "Output image",
+      "type": "String",
+      "value-key": "[OUTPUT_IMAGE]",
+      "command-line-flag": "--output",
+      "description": "A string. Output file name.",
+      "optional": true
+    },
+    {
+      "id": "print_out_composite_warp_file",
+      "name": "Print out composite warp file",
+      "type": "Flag",
+      "value-key": "[PRINT_OUT_COMPOSITE_WARP_FILE]",
+      "command-line-flag": "--print_out_composite_warp_file",
+      "description": "A boolean. Output a composite warp file instead of a transformed image.",
+      "optional": true,
+      "requires-inputs": ["output_image"]
+    },
+    {
+      "id": "reference_image",
+      "name": "Reference image",
+      "type": "File",
+      "value-key": "[REFERENCE_IMAGE]",
+      "command-line-flag": "--reference-image",
+      "description": "A pathlike object or string representing an existing file. Reference image space that you wish to warp into.",
+      "optional": false
+    },
+    {
+      "id": "transforms",
+      "name": "Transforms",
+      "type": "File",
+      "list": true,
+      "value-key": "[TRANSFORMS]",
+      "description": "A list of items which are a pathlike object or string representing an existing file or 'identity'. Transform files: will be applied in reverse order. for example, the last specified transform will be applied first.",
+      "optional": false
     }
+  ],
+  "output-files": [
+    {
+      "name": "Output image",
+      "id": "output_image_outfile",
+      "path-template": "[OUTPUT_IMAGE]",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. Warped image."
+    }
+  ],
+  "groups": [
+    {
+      "id": "interpolation_parameters_group",
+      "name": "Interpolation parameters group",
+      "members": ["interpolation_parameters", "interpolation_parameters_2"],
+      "mutually-exclusive": true
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

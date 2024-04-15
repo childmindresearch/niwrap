@@ -1,134 +1,115 @@
 {
-    "name": "MultiImageMaths",
-    "command-line": "MultiImageMaths [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [OP_STRING] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OPERAND_FILES] [OUTPUT_TYPE]",
-    "author": "Nipype (interface)",
-    "description": "MultiImageMaths, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MultiImageMaths).\n\nUse fslmaths to perform a sequence of mathematical operations.\n\n    Examples\n    --------\n    >>> from nipype.interfaces.fsl import MultiImageMaths\n    >>> maths = MultiImageMaths()\n    >>> maths.inputs.in_file = \"functional.nii\"\n    >>> maths.inputs.op_string = \"-add %s -mul -1 -div %s\"\n    >>> maths.inputs.operand_files = [\"functional2.nii\", \"functional3.nii\"]\n    >>> maths.inputs.out_file = \"functional4.nii\"\n    >>> maths.cmdline\n    'fslmaths functional.nii -add functional2.nii -mul -1 -div functional3.nii functional4.nii'\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "description": "A pathlike object or string representing an existing file. Image to operate on.",
-            "optional": false
-        },
-        {
-            "id": "internal_datatype",
-            "name": "Internal datatype",
-            "type": "String",
-            "value-key": "[INTERNAL_DATATYPE]",
-            "command-line-flag": "-dt",
-            "description": "'float' or 'char' or 'int' or 'short' or 'double' or 'input'. Datatype to use for calculations (default is float).",
-            "optional": true,
-            "value-choices": [
-                "float",
-                "char",
-                "int",
-                "short",
-                "double",
-                "input"
-            ]
-        },
-        {
-            "id": "nan2zeros",
-            "name": "Nan2zeros",
-            "type": "Flag",
-            "value-key": "[NAN2ZEROS]",
-            "command-line-flag": "-nan",
-            "description": "A boolean. Change nans to zeros before doing anything.",
-            "optional": true
-        },
-        {
-            "id": "op_string",
-            "name": "Op string",
-            "type": "String",
-            "value-key": "[OP_STRING]",
-            "description": "A string. Python formatted string of operations to perform.",
-            "optional": false
-        },
-        {
-            "id": "operand_files",
-            "name": "Operand files",
-            "type": "File",
-            "list": true,
-            "value-key": "[OPERAND_FILES]",
-            "description": "A list of items which are a pathlike object or string representing an existing file. List of file names to plug into op string.",
-            "optional": false
-        },
-        {
-            "id": "out_file",
-            "name": "Out file",
-            "type": "File",
-            "value-key": "[OUT_FILE]",
-            "description": "A pathlike object or string representing a file. Image to write.",
-            "optional": true
-        },
-        {
-            "id": "output_datatype",
-            "name": "Output datatype",
-            "type": "String",
-            "value-key": "[OUTPUT_DATATYPE]",
-            "command-line-flag": "-odt",
-            "description": "'float' or 'char' or 'int' or 'short' or 'double' or 'input'. Datatype to use for output (default uses input type).",
-            "optional": true,
-            "value-choices": [
-                "float",
-                "char",
-                "int",
-                "short",
-                "double",
-                "input"
-            ]
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file_outfile",
-            "path-template": "[OUT_FILE]",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Image written after calculations."
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "MultiImageMaths",
+  "command-line": "MultiImageMaths [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [OP_STRING] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OPERAND_FILES] [OUTPUT_TYPE]",
+  "author": "Nipype (interface)",
+  "description": "MultiImageMaths, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MultiImageMaths).\n\nUse fslmaths to perform a sequence of mathematical operations.\n\n    Examples\n    --------\n    >>> from nipype.interfaces.fsl import MultiImageMaths\n    >>> maths = MultiImageMaths()\n    >>> maths.inputs.in_file = \"functional.nii\"\n    >>> maths.inputs.op_string = \"-add %s -mul -1 -div %s\"\n    >>> maths.inputs.operand_files = [\"functional2.nii\", \"functional3.nii\"]\n    >>> maths.inputs.out_file = \"functional4.nii\"\n    >>> maths.cmdline\n    'fslmaths functional.nii -add functional2.nii -mul -1 -div functional3.nii functional4.nii'\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "description": "A pathlike object or string representing an existing file. Image to operate on.",
+      "optional": false
+    },
+    {
+      "id": "internal_datatype",
+      "name": "Internal datatype",
+      "type": "String",
+      "value-key": "[INTERNAL_DATATYPE]",
+      "command-line-flag": "-dt",
+      "description": "'float' or 'char' or 'int' or 'short' or 'double' or 'input'. Datatype to use for calculations (default is float).",
+      "optional": true,
+      "value-choices": ["float", "char", "int", "short", "double", "input"]
+    },
+    {
+      "id": "nan2zeros",
+      "name": "Nan2zeros",
+      "type": "Flag",
+      "value-key": "[NAN2ZEROS]",
+      "command-line-flag": "-nan",
+      "description": "A boolean. Change nans to zeros before doing anything.",
+      "optional": true
+    },
+    {
+      "id": "op_string",
+      "name": "Op string",
+      "type": "String",
+      "value-key": "[OP_STRING]",
+      "description": "A string. Python formatted string of operations to perform.",
+      "optional": false
+    },
+    {
+      "id": "operand_files",
+      "name": "Operand files",
+      "type": "File",
+      "list": true,
+      "value-key": "[OPERAND_FILES]",
+      "description": "A list of items which are a pathlike object or string representing an existing file. List of file names to plug into op string.",
+      "optional": false
+    },
+    {
+      "id": "out_file",
+      "name": "Out file",
+      "type": "File",
+      "value-key": "[OUT_FILE]",
+      "description": "A pathlike object or string representing a file. Image to write.",
+      "optional": true
+    },
+    {
+      "id": "output_datatype",
+      "name": "Output datatype",
+      "type": "String",
+      "value-key": "[OUTPUT_DATATYPE]",
+      "command-line-flag": "-odt",
+      "description": "'float' or 'char' or 'int' or 'short' or 'double' or 'input'. Datatype to use for output (default uses input type).",
+      "optional": true,
+      "value-choices": ["float", "char", "int", "short", "double", "input"]
+    },
+    {
+      "id": "output_type",
+      "name": "Output type",
+      "type": "String",
+      "value-key": "[OUTPUT_TYPE]",
+      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+      "optional": true,
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file_outfile",
+      "path-template": "[OUT_FILE]",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Image written after calculations."
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

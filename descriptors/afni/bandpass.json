@@ -1,210 +1,206 @@
 {
-    "name": "Bandpass",
-    "command-line": "Bandpass [HIGHPASS] [LOWPASS] [OUT_FILE] [MASK] [IN_FILE] [ARGS] [AUTOMASK] [BLUR] [DESPIKE] [ENVIRON] [LOCALPV] [NFFT] [NO_DETREND] [NORMALIZE] [NOTRANS] [NUM_THREADS] [ORTHOGONALIZE_DSET] [ORTHOGONALIZE_FILE] [OUTPUTTYPE] [TR]",
-    "author": "Nipype (interface)",
-    "description": "Bandpass, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Bandpass).\n\nProgram to lowpass and/or highpass each voxel time series in a\n    dataset, offering more/different options than Fourier\n\n    For complete details, see the `3dBandpass Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBandpass.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> from nipype.testing import  example_data\n    >>> bandpass = afni.Bandpass()\n    >>> bandpass.inputs.in_file = 'functional.nii'\n    >>> bandpass.inputs.highpass = 0.005\n    >>> bandpass.inputs.lowpass = 0.1\n    >>> bandpass.cmdline\n    '3dBandpass -prefix functional_bp 0.005000 0.100000 functional.nii'\n    >>> res = bandpass.run()  # doctest: +SKIP\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "automask",
-            "name": "Automask",
-            "type": "Flag",
-            "value-key": "[AUTOMASK]",
-            "command-line-flag": "-automask",
-            "description": "A boolean. Create a mask from the input dataset.",
-            "optional": true
-        },
-        {
-            "id": "blur",
-            "name": "Blur",
-            "type": "Number",
-            "value-key": "[BLUR]",
-            "command-line-flag": "-blur",
-            "description": "A float. Blur (inside the mask only) with a filter width (fwhm) of 'fff' millimeters.",
-            "optional": true
-        },
-        {
-            "id": "despike",
-            "name": "Despike",
-            "type": "Flag",
-            "value-key": "[DESPIKE]",
-            "command-line-flag": "-despike",
-            "description": "A boolean. Despike each time series before other processing. hopefully, you don't actually need to do this, which is why it is optional.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "highpass",
-            "name": "Highpass",
-            "type": "Number",
-            "value-key": "[HIGHPASS]",
-            "description": "A float. Highpass.",
-            "optional": false
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "description": "A pathlike object or string representing an existing file. Input file to 3dbandpass.",
-            "optional": false
-        },
-        {
-            "id": "localPV",
-            "name": "Localpv",
-            "type": "Number",
-            "value-key": "[LOCALPV]",
-            "command-line-flag": "-localPV",
-            "description": "A float. Replace each vector by the local principal vector (aka first singular vector) from a neighborhood of radius 'rrr' millimeters. note that the pv time series is l2 normalized. this option is mostly for bob cox to have fun with.",
-            "optional": true
-        },
-        {
-            "id": "lowpass",
-            "name": "Lowpass",
-            "type": "Number",
-            "value-key": "[LOWPASS]",
-            "description": "A float. Lowpass.",
-            "optional": false
-        },
-        {
-            "id": "mask",
-            "name": "Mask",
-            "type": "File",
-            "value-key": "[MASK]",
-            "command-line-flag": "-mask",
-            "description": "A pathlike object or string representing an existing file. Mask file.",
-            "optional": true
-        },
-        {
-            "id": "nfft",
-            "name": "Nfft",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[NFFT]",
-            "command-line-flag": "-nfft",
-            "description": "An integer. Set the fft length [must be a legal value].",
-            "optional": true
-        },
-        {
-            "id": "no_detrend",
-            "name": "No detrend",
-            "type": "Flag",
-            "value-key": "[NO_DETREND]",
-            "command-line-flag": "-nodetrend",
-            "description": "A boolean. Skip the quadratic detrending of the input that occurs before the fft-based bandpassing. you would only want to do this if the dataset had been detrended already in some other program.",
-            "optional": true
-        },
-        {
-            "id": "normalize",
-            "name": "Normalize",
-            "type": "Flag",
-            "value-key": "[NORMALIZE]",
-            "command-line-flag": "-norm",
-            "description": "A boolean. Make all output time series have l2 norm = 1 (i.e., sum of squares = 1).",
-            "optional": true
-        },
-        {
-            "id": "notrans",
-            "name": "Notrans",
-            "type": "Flag",
-            "value-key": "[NOTRANS]",
-            "command-line-flag": "-notrans",
-            "description": "A boolean. Don't check for initial positive transients in the data. the test is a little slow, so skipping it is ok, if you know the data time series are transient-free.",
-            "optional": true
-        },
-        {
-            "id": "num_threads",
-            "name": "Num threads",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[NUM_THREADS]",
-            "description": "An integer. Set number of threads.",
-            "optional": true,
-            "default-value": 1
-        },
-        {
-            "id": "orthogonalize_dset",
-            "name": "Orthogonalize dset",
-            "type": "File",
-            "value-key": "[ORTHOGONALIZE_DSET]",
-            "command-line-flag": "-dsort",
-            "description": "A pathlike object or string representing an existing file. Orthogonalize each voxel to the corresponding voxel time series in dataset 'fset', which must have the same spatial and temporal grid structure as the main input dataset. at present, only one '-dsort' option is allowed.",
-            "optional": true
-        },
-        {
-            "id": "orthogonalize_file",
-            "name": "Orthogonalize file",
-            "type": "File",
-            "list": true,
-            "value-key": "[ORTHOGONALIZE_FILE]",
-            "command-line-flag": "-ort",
-            "description": "A list of items which are a pathlike object or string representing an existing file. Also orthogonalize input to columns in f.1d. multiple '-ort' options are allowed.",
-            "optional": true
-        },
-        {
-            "id": "outputtype",
-            "name": "Outputtype",
-            "type": "String",
-            "value-key": "[OUTPUTTYPE]",
-            "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "AFNI",
-                "NIFTI_GZ"
-            ]
-        },
-        {
-            "id": "tr",
-            "name": "Tr",
-            "type": "Number",
-            "value-key": "[TR]",
-            "command-line-flag": "-dt",
-            "description": "A float. Set time step (tr) in sec [default=from dataset header].",
-            "optional": true
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Output file from 3dbandpass.",
-            "path-template": "[IN_FILE]_bp",
-            "value-key": "[OUT_FILE]",
-            "command-line-flag": "-prefix"
-        },
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "path-template": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. Output file."
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "Bandpass",
+  "command-line": "Bandpass [HIGHPASS] [LOWPASS] [OUT_FILE] [MASK] [IN_FILE] [ARGS] [AUTOMASK] [BLUR] [DESPIKE] [ENVIRON] [LOCALPV] [NFFT] [NO_DETREND] [NORMALIZE] [NOTRANS] [NUM_THREADS] [ORTHOGONALIZE_DSET] [ORTHOGONALIZE_FILE] [OUTPUTTYPE] [TR]",
+  "author": "Nipype (interface)",
+  "description": "Bandpass, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Bandpass).\n\nProgram to lowpass and/or highpass each voxel time series in a\n    dataset, offering more/different options than Fourier\n\n    For complete details, see the `3dBandpass Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBandpass.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> from nipype.testing import  example_data\n    >>> bandpass = afni.Bandpass()\n    >>> bandpass.inputs.in_file = 'functional.nii'\n    >>> bandpass.inputs.highpass = 0.005\n    >>> bandpass.inputs.lowpass = 0.1\n    >>> bandpass.cmdline\n    '3dBandpass -prefix functional_bp 0.005000 0.100000 functional.nii'\n    >>> res = bandpass.run()  # doctest: +SKIP\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "automask",
+      "name": "Automask",
+      "type": "Flag",
+      "value-key": "[AUTOMASK]",
+      "command-line-flag": "-automask",
+      "description": "A boolean. Create a mask from the input dataset.",
+      "optional": true
+    },
+    {
+      "id": "blur",
+      "name": "Blur",
+      "type": "Number",
+      "value-key": "[BLUR]",
+      "command-line-flag": "-blur",
+      "description": "A float. Blur (inside the mask only) with a filter width (fwhm) of 'fff' millimeters.",
+      "optional": true
+    },
+    {
+      "id": "despike",
+      "name": "Despike",
+      "type": "Flag",
+      "value-key": "[DESPIKE]",
+      "command-line-flag": "-despike",
+      "description": "A boolean. Despike each time series before other processing. hopefully, you don't actually need to do this, which is why it is optional.",
+      "optional": true
+    },
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "highpass",
+      "name": "Highpass",
+      "type": "Number",
+      "value-key": "[HIGHPASS]",
+      "description": "A float. Highpass.",
+      "optional": false
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "description": "A pathlike object or string representing an existing file. Input file to 3dbandpass.",
+      "optional": false
+    },
+    {
+      "id": "localPV",
+      "name": "Localpv",
+      "type": "Number",
+      "value-key": "[LOCALPV]",
+      "command-line-flag": "-localPV",
+      "description": "A float. Replace each vector by the local principal vector (aka first singular vector) from a neighborhood of radius 'rrr' millimeters. note that the pv time series is l2 normalized. this option is mostly for bob cox to have fun with.",
+      "optional": true
+    },
+    {
+      "id": "lowpass",
+      "name": "Lowpass",
+      "type": "Number",
+      "value-key": "[LOWPASS]",
+      "description": "A float. Lowpass.",
+      "optional": false
+    },
+    {
+      "id": "mask",
+      "name": "Mask",
+      "type": "File",
+      "value-key": "[MASK]",
+      "command-line-flag": "-mask",
+      "description": "A pathlike object or string representing an existing file. Mask file.",
+      "optional": true
+    },
+    {
+      "id": "nfft",
+      "name": "Nfft",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NFFT]",
+      "command-line-flag": "-nfft",
+      "description": "An integer. Set the fft length [must be a legal value].",
+      "optional": true
+    },
+    {
+      "id": "no_detrend",
+      "name": "No detrend",
+      "type": "Flag",
+      "value-key": "[NO_DETREND]",
+      "command-line-flag": "-nodetrend",
+      "description": "A boolean. Skip the quadratic detrending of the input that occurs before the fft-based bandpassing. you would only want to do this if the dataset had been detrended already in some other program.",
+      "optional": true
+    },
+    {
+      "id": "normalize",
+      "name": "Normalize",
+      "type": "Flag",
+      "value-key": "[NORMALIZE]",
+      "command-line-flag": "-norm",
+      "description": "A boolean. Make all output time series have l2 norm = 1 (i.e., sum of squares = 1).",
+      "optional": true
+    },
+    {
+      "id": "notrans",
+      "name": "Notrans",
+      "type": "Flag",
+      "value-key": "[NOTRANS]",
+      "command-line-flag": "-notrans",
+      "description": "A boolean. Don't check for initial positive transients in the data. the test is a little slow, so skipping it is ok, if you know the data time series are transient-free.",
+      "optional": true
+    },
+    {
+      "id": "num_threads",
+      "name": "Num threads",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUM_THREADS]",
+      "description": "An integer. Set number of threads.",
+      "optional": true,
+      "default-value": 1
+    },
+    {
+      "id": "orthogonalize_dset",
+      "name": "Orthogonalize dset",
+      "type": "File",
+      "value-key": "[ORTHOGONALIZE_DSET]",
+      "command-line-flag": "-dsort",
+      "description": "A pathlike object or string representing an existing file. Orthogonalize each voxel to the corresponding voxel time series in dataset 'fset', which must have the same spatial and temporal grid structure as the main input dataset. at present, only one '-dsort' option is allowed.",
+      "optional": true
+    },
+    {
+      "id": "orthogonalize_file",
+      "name": "Orthogonalize file",
+      "type": "File",
+      "list": true,
+      "value-key": "[ORTHOGONALIZE_FILE]",
+      "command-line-flag": "-ort",
+      "description": "A list of items which are a pathlike object or string representing an existing file. Also orthogonalize input to columns in f.1d. multiple '-ort' options are allowed.",
+      "optional": true
+    },
+    {
+      "id": "outputtype",
+      "name": "Outputtype",
+      "type": "String",
+      "value-key": "[OUTPUTTYPE]",
+      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+      "optional": true,
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+    },
+    {
+      "id": "tr",
+      "name": "Tr",
+      "type": "Number",
+      "value-key": "[TR]",
+      "command-line-flag": "-dt",
+      "description": "A float. Set time step (tr) in sec [default=from dataset header].",
+      "optional": true
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Output file from 3dbandpass.",
+      "path-template": "[IN_FILE]_bp",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "path-template": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. Output file."
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

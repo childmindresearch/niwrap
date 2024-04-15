@@ -1,111 +1,107 @@
 {
-    "name": "TCorrelate",
-    "command-line": "TCorrelate [XSET] [YSET] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [PEARSON] [POLORT]",
-    "author": "Nipype (interface)",
-    "description": "TCorrelate, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: TCorrelate).\n\nComputes the correlation coefficient between corresponding voxel\n    time series in two input 3D+time datasets 'xset' and 'yset'\n\n    For complete details, see the `3dTcorrelate Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorrelate.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> tcorrelate = afni.TCorrelate()\n    >>> tcorrelate.inputs.xset= 'u_rc1s1_Template.nii'\n    >>> tcorrelate.inputs.yset = 'u_rc1s2_Template.nii'\n    >>> tcorrelate.inputs.out_file = 'functional_tcorrelate.nii.gz'\n    >>> tcorrelate.inputs.polort = -1\n    >>> tcorrelate.inputs.pearson = True\n    >>> tcorrelate.cmdline\n    '3dTcorrelate -prefix functional_tcorrelate.nii.gz -pearson -polort -1 u_rc1s1_Template.nii u_rc1s2_Template.nii'\n    >>> res = tcarrelate.run()  # doctest: +SKIP\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "num_threads",
-            "name": "Num threads",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[NUM_THREADS]",
-            "description": "An integer. Set number of threads.",
-            "optional": true,
-            "default-value": 1
-        },
-        {
-            "id": "outputtype",
-            "name": "Outputtype",
-            "type": "String",
-            "value-key": "[OUTPUTTYPE]",
-            "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "AFNI",
-                "NIFTI_GZ"
-            ]
-        },
-        {
-            "id": "pearson",
-            "name": "Pearson",
-            "type": "Flag",
-            "value-key": "[PEARSON]",
-            "command-line-flag": "-pearson",
-            "description": "A boolean. Correlation is the normal pearson correlation coefficient.",
-            "optional": true
-        },
-        {
-            "id": "polort",
-            "name": "Polort",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[POLORT]",
-            "command-line-flag": "-polort",
-            "description": "An integer. Remove polynomical trend of order m.",
-            "optional": true
-        },
-        {
-            "id": "xset",
-            "name": "Xset",
-            "type": "File",
-            "value-key": "[XSET]",
-            "description": "A pathlike object or string representing an existing file. Input xset.",
-            "optional": false
-        },
-        {
-            "id": "yset",
-            "name": "Yset",
-            "type": "File",
-            "value-key": "[YSET]",
-            "description": "A pathlike object or string representing an existing file. Input yset.",
-            "optional": false
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Output image file name.",
-            "path-template": "[XSET]_tcorr",
-            "value-key": "[OUT_FILE]",
-            "command-line-flag": "-prefix"
-        },
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "path-template": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. Output file."
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "TCorrelate",
+  "command-line": "TCorrelate [XSET] [YSET] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [PEARSON] [POLORT]",
+  "author": "Nipype (interface)",
+  "description": "TCorrelate, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: TCorrelate).\n\nComputes the correlation coefficient between corresponding voxel\n    time series in two input 3D+time datasets 'xset' and 'yset'\n\n    For complete details, see the `3dTcorrelate Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorrelate.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> tcorrelate = afni.TCorrelate()\n    >>> tcorrelate.inputs.xset= 'u_rc1s1_Template.nii'\n    >>> tcorrelate.inputs.yset = 'u_rc1s2_Template.nii'\n    >>> tcorrelate.inputs.out_file = 'functional_tcorrelate.nii.gz'\n    >>> tcorrelate.inputs.polort = -1\n    >>> tcorrelate.inputs.pearson = True\n    >>> tcorrelate.cmdline\n    '3dTcorrelate -prefix functional_tcorrelate.nii.gz -pearson -polort -1 u_rc1s1_Template.nii u_rc1s2_Template.nii'\n    >>> res = tcarrelate.run()  # doctest: +SKIP\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "num_threads",
+      "name": "Num threads",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUM_THREADS]",
+      "description": "An integer. Set number of threads.",
+      "optional": true,
+      "default-value": 1
+    },
+    {
+      "id": "outputtype",
+      "name": "Outputtype",
+      "type": "String",
+      "value-key": "[OUTPUTTYPE]",
+      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+      "optional": true,
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+    },
+    {
+      "id": "pearson",
+      "name": "Pearson",
+      "type": "Flag",
+      "value-key": "[PEARSON]",
+      "command-line-flag": "-pearson",
+      "description": "A boolean. Correlation is the normal pearson correlation coefficient.",
+      "optional": true
+    },
+    {
+      "id": "polort",
+      "name": "Polort",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[POLORT]",
+      "command-line-flag": "-polort",
+      "description": "An integer. Remove polynomical trend of order m.",
+      "optional": true
+    },
+    {
+      "id": "xset",
+      "name": "Xset",
+      "type": "File",
+      "value-key": "[XSET]",
+      "description": "A pathlike object or string representing an existing file. Input xset.",
+      "optional": false
+    },
+    {
+      "id": "yset",
+      "name": "Yset",
+      "type": "File",
+      "value-key": "[YSET]",
+      "description": "A pathlike object or string representing an existing file. Input yset.",
+      "optional": false
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Output image file name.",
+      "path-template": "[XSET]_tcorr",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "path-template": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. Output file."
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

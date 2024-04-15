@@ -1,85 +1,80 @@
 {
-    "name": "SwapDimensions",
-    "command-line": "SwapDimensions [IN_FILE] [ARGS] [ENVIRON] [NEW_DIMS] [OUT_FILE] [OUTPUT_TYPE]",
-    "author": "Nipype (interface)",
-    "description": "SwapDimensions, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SwapDimensions).\n\nUse fslswapdim to alter the orientation of an image.\n\n    This interface accepts a three-tuple corresponding to the new\n    orientation.  You may either provide dimension ids in the form of\n    (-)x, (-)y, or (-z), or nifti-syle dimension codes\n    (RL, LR, AP, PA, IS, SI).\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "description": "A pathlike object or string representing an existing file. Input image.",
-            "optional": false
-        },
-        {
-            "id": "new_dims",
-            "name": "New dims",
-            "type": "String",
-            "list": true,
-            "min-list-entries": 3,
-            "max-list-entries": 3,
-            "value-key": "[NEW_DIMS]",
-            "description": "A tuple of the form: ('x' or '-x' or 'y' or '-y' or 'z' or '-z' or 'rl' or 'lr' or 'ap' or 'pa' or 'is' or 'si', 'x' or '-x' or 'y' or '-y' or 'z' or '-z' or 'rl' or 'lr' or 'ap' or 'pa' or 'is' or 'si', 'x' or '-x' or 'y' or '-y' or 'z' or '-z' or 'rl' or 'lr' or 'ap' or 'pa' or 'is' or 'si'). 3-tuple of new dimension order.",
-            "optional": false
-        },
-        {
-            "id": "out_file",
-            "name": "Out file",
-            "type": "File",
-            "value-key": "[OUT_FILE]",
-            "description": "A pathlike object or string representing a file. Image to write.",
-            "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file_outfile",
-            "path-template": "[OUT_FILE]",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. Image with new dimensions."
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "SwapDimensions",
+  "command-line": "SwapDimensions [IN_FILE] [ARGS] [ENVIRON] [NEW_DIMS] [OUT_FILE] [OUTPUT_TYPE]",
+  "author": "Nipype (interface)",
+  "description": "SwapDimensions, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SwapDimensions).\n\nUse fslswapdim to alter the orientation of an image.\n\n    This interface accepts a three-tuple corresponding to the new\n    orientation.  You may either provide dimension ids in the form of\n    (-)x, (-)y, or (-z), or nifti-syle dimension codes\n    (RL, LR, AP, PA, IS, SI).\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "description": "A pathlike object or string representing an existing file. Input image.",
+      "optional": false
+    },
+    {
+      "id": "new_dims",
+      "name": "New dims",
+      "type": "String",
+      "list": true,
+      "min-list-entries": 3,
+      "max-list-entries": 3,
+      "value-key": "[NEW_DIMS]",
+      "description": "A tuple of the form: ('x' or '-x' or 'y' or '-y' or 'z' or '-z' or 'rl' or 'lr' or 'ap' or 'pa' or 'is' or 'si', 'x' or '-x' or 'y' or '-y' or 'z' or '-z' or 'rl' or 'lr' or 'ap' or 'pa' or 'is' or 'si', 'x' or '-x' or 'y' or '-y' or 'z' or '-z' or 'rl' or 'lr' or 'ap' or 'pa' or 'is' or 'si'). 3-tuple of new dimension order.",
+      "optional": false
+    },
+    {
+      "id": "out_file",
+      "name": "Out file",
+      "type": "File",
+      "value-key": "[OUT_FILE]",
+      "description": "A pathlike object or string representing a file. Image to write.",
+      "optional": true
+    },
+    {
+      "id": "output_type",
+      "name": "Output type",
+      "type": "String",
+      "value-key": "[OUTPUT_TYPE]",
+      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+      "optional": true,
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file_outfile",
+      "path-template": "[OUT_FILE]",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. Image with new dimensions."
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

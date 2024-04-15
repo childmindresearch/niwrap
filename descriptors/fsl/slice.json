@@ -1,75 +1,70 @@
 {
-    "name": "Slice",
-    "command-line": "Slice [IN_FILE] [OUT_BASE_NAME] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
-    "author": "Nipype (interface)",
-    "description": "Slice, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Slice).\n\nUse fslslice to split a 3D file into lots of 2D files (along z-axis).\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import Slice\n    >>> slice = Slice()\n    >>> slice.inputs.in_file = 'functional.nii'\n    >>> slice.inputs.out_base_name = 'sl'\n    >>> slice.cmdline\n    'fslslice functional.nii sl'\n\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "description": "A pathlike object or string representing an existing file. Input filename.",
-            "optional": false
-        },
-        {
-            "id": "out_base_name",
-            "name": "Out base name",
-            "type": "String",
-            "value-key": "[OUT_BASE_NAME]",
-            "description": "A string. Outputs prefix.",
-            "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out files",
-            "id": "out_files",
-            "path-template": "out_files",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. No description provided.",
-            "list": true
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "Slice",
+  "command-line": "Slice [IN_FILE] [OUT_BASE_NAME] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
+  "author": "Nipype (interface)",
+  "description": "Slice, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Slice).\n\nUse fslslice to split a 3D file into lots of 2D files (along z-axis).\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import Slice\n    >>> slice = Slice()\n    >>> slice.inputs.in_file = 'functional.nii'\n    >>> slice.inputs.out_base_name = 'sl'\n    >>> slice.cmdline\n    'fslslice functional.nii sl'\n\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "description": "A pathlike object or string representing an existing file. Input filename.",
+      "optional": false
+    },
+    {
+      "id": "out_base_name",
+      "name": "Out base name",
+      "type": "String",
+      "value-key": "[OUT_BASE_NAME]",
+      "description": "A string. Outputs prefix.",
+      "optional": true
+    },
+    {
+      "id": "output_type",
+      "name": "Output type",
+      "type": "String",
+      "value-key": "[OUTPUT_TYPE]",
+      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+      "optional": true,
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out files",
+      "id": "out_files",
+      "path-template": "out_files",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. No description provided.",
+      "list": true
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

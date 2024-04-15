@@ -1,225 +1,205 @@
 {
-    "name": "ICA_AROMA",
-    "command-line": "ICA_AROMA [TR] [ARGS] [DENOISE_TYPE] [DIM] [ENVIRON] [FEAT_DIR] [FNIRT_WARP_FILE] [IN_FILE] [MASK] [MAT_FILE] [MELODIC_DIR] [MOTION_PARAMETERS] [OUT_DIR]",
-    "author": "Nipype (interface)",
-    "description": "ICA_AROMA, as implemented in Nipype (module: nipype.interfaces.fsl.aroma, interface: ICA_AROMA).\n\n\n    Interface for the ICA_AROMA.py script.\n\n    ICA-AROMA (i.e. 'ICA-based Automatic Removal Of Motion Artifacts') concerns\n    a data-driven method to identify and remove motion-related independent\n    components from fMRI data. To that end it exploits a small, but robust\n    set of theoretically motivated features, preventing the need for classifier\n    re-training and therefore providing direct and easy applicability.\n\n    See link for further documentation: https://github.com/rhr-pruim/ICA-AROMA\n\n    Example\n    -------\n\n    >>> from nipype.interfaces.fsl import ICA_AROMA\n    >>> from nipype.testing import example_data\n    >>> AROMA_obj = ICA_AROMA()\n    >>> AROMA_obj.inputs.in_file = 'functional.nii'\n    >>> AROMA_obj.inputs.mat_file = 'func_to_struct.mat'\n    >>> AROMA_obj.inputs.fnirt_warp_file = 'warpfield.nii'\n    >>> AROMA_obj.inputs.motion_parameters = 'fsl_mcflirt_movpar.txt'\n    >>> AROMA_obj.inputs.mask = 'mask.nii.gz'\n    >>> AROMA_obj.inputs.denoise_type = 'both'\n    >>> AROMA_obj.inputs.out_dir = 'ICA_testout'\n    >>> AROMA_obj.cmdline  # doctest: +ELLIPSIS\n    'ICA_AROMA.py -den both -warp warpfield.nii -i functional.nii -m mask.nii.gz -affmat func_to_struct.mat -mc fsl_mcflirt_movpar.txt -o .../ICA_testout'\n    ",
-    "inputs": [
-        {
-            "id": "TR",
-            "name": "Tr",
-            "type": "Number",
-            "value-key": "[TR]",
-            "command-line-flag": "-tr",
-            "description": "A float. Tr in seconds. if this is not specified the tr will be extracted from the header of the fmri nifti file.",
-            "optional": true
-        },
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "denoise_type",
-            "name": "Denoise type",
-            "type": "String",
-            "value-key": "[DENOISE_TYPE]",
-            "command-line-flag": "-den",
-            "description": "'nonaggr' or 'aggr' or 'both' or 'no'. Type of denoising strategy:-no: only classification, no denoising-nonaggr (default): non-aggresssive denoising, i.e. partial component regression-aggr: aggressive denoising, i.e. full component regression-both: both aggressive and non-aggressive denoising (two outputs).",
-            "optional": false,
-            "default-value": "nonaggr",
-            "value-choices": [
-                "nonaggr",
-                "aggr",
-                "both",
-                "no"
-            ]
-        },
-        {
-            "id": "dim",
-            "name": "Dim",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[DIM]",
-            "command-line-flag": "-dim",
-            "description": "An integer. Dimensionality reduction when running melodic (default is automatic estimation).",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "feat_dir",
-            "name": "Feat dir",
-            "type": "File",
-            "value-key": "[FEAT_DIR]",
-            "command-line-flag": "-feat",
-            "description": "A pathlike object or string representing an existing directory. If a feat directory exists and temporal filtering has not been run yet, ica_aroma can use the files in this directory.",
-            "optional": false
-        },
-        {
-            "id": "fnirt_warp_file",
-            "name": "Fnirt warp file",
-            "type": "File",
-            "value-key": "[FNIRT_WARP_FILE]",
-            "command-line-flag": "-warp",
-            "description": "A pathlike object or string representing an existing file. File name of the warp-file describing the non-linear registration (e.g. fsl fnirt) of the structural data to mni152 space (.nii.gz).",
-            "optional": true
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "command-line-flag": "-i",
-            "description": "A pathlike object or string representing an existing file. Volume to be denoised.",
-            "optional": false
-        },
-        {
-            "id": "mask",
-            "name": "Mask",
-            "type": "File",
-            "value-key": "[MASK]",
-            "command-line-flag": "-m",
-            "description": "A pathlike object or string representing an existing file. Path/name volume mask.",
-            "optional": true
-        },
-        {
-            "id": "mat_file",
-            "name": "Mat file",
-            "type": "File",
-            "value-key": "[MAT_FILE]",
-            "command-line-flag": "-affmat",
-            "description": "A pathlike object or string representing an existing file. Path/name of the mat-file describing the affine registration (e.g. fsl flirt) of the functional data to structural space (.mat file).",
-            "optional": true
-        },
-        {
-            "id": "melodic_dir",
-            "name": "Melodic dir",
-            "type": "File",
-            "value-key": "[MELODIC_DIR]",
-            "command-line-flag": "-meldir",
-            "description": "A pathlike object or string representing an existing directory. Path to melodic directory if melodic has already been run.",
-            "optional": true
-        },
-        {
-            "id": "motion_parameters",
-            "name": "Motion parameters",
-            "type": "File",
-            "value-key": "[MOTION_PARAMETERS]",
-            "command-line-flag": "-mc",
-            "description": "A pathlike object or string representing an existing file. Motion parameters file.",
-            "optional": false
-        },
-        {
-            "id": "out_dir",
-            "name": "Out dir",
-            "type": "File",
-            "value-key": "[OUT_DIR]",
-            "command-line-flag": "-o",
-            "description": "A pathlike object or string representing a directory. Output directory.",
-            "optional": false,
-            "default-value": "out"
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Aggr denoised file",
-            "id": "aggr_denoised_file",
-            "path-template": "out\\denoised_func_data_aggr.nii.gz",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. If generated: aggressively denoised volume."
-        },
-        {
-            "name": "Nonaggr denoised file",
-            "id": "nonaggr_denoised_file",
-            "path-template": "out\\denoised_func_data_nonaggr.nii.gz",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. If generated: non aggressively denoised volume."
-        },
-        {
-            "name": "Out dir",
-            "id": "out_dir_outfile",
-            "path-template": "out",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing directory. Directory contains (in addition to the denoised files): melodic.ica + classified_motion_components + classification_overview + feature_scores + melodic_ic_mni)."
-        }
-    ],
-    "groups": [
-        {
-            "id": "mutex_group",
-            "name": "Mutex group",
-            "members": [
-                "fnirt_warp_file",
-                "motion_parameters",
-                "mat_file",
-                "in_file",
-                "feat_dir"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "mutex_group_2",
-            "name": "Mutex group 2",
-            "members": [
-                "in_file",
-                "feat_dir"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "mutex_group_3",
-            "name": "Mutex group 3",
-            "members": [
-                "mask",
-                "feat_dir"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "mutex_group_4",
-            "name": "Mutex group 4",
-            "members": [
-                "feat_dir",
-                "mat_file"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "mutex_group_5",
-            "name": "Mutex group 5",
-            "members": [
-                "fnirt_warp_file",
-                "feat_dir"
-            ],
-            "mutually-exclusive": true
-        },
-        {
-            "id": "mutex_group_6",
-            "name": "Mutex group 6",
-            "members": [
-                "feat_dir",
-                "motion_parameters"
-            ],
-            "mutually-exclusive": true
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "ICA_AROMA",
+  "command-line": "ICA_AROMA [TR] [ARGS] [DENOISE_TYPE] [DIM] [ENVIRON] [FEAT_DIR] [FNIRT_WARP_FILE] [IN_FILE] [MASK] [MAT_FILE] [MELODIC_DIR] [MOTION_PARAMETERS] [OUT_DIR]",
+  "author": "Nipype (interface)",
+  "description": "ICA_AROMA, as implemented in Nipype (module: nipype.interfaces.fsl.aroma, interface: ICA_AROMA).\n\n\n    Interface for the ICA_AROMA.py script.\n\n    ICA-AROMA (i.e. 'ICA-based Automatic Removal Of Motion Artifacts') concerns\n    a data-driven method to identify and remove motion-related independent\n    components from fMRI data. To that end it exploits a small, but robust\n    set of theoretically motivated features, preventing the need for classifier\n    re-training and therefore providing direct and easy applicability.\n\n    See link for further documentation: https://github.com/rhr-pruim/ICA-AROMA\n\n    Example\n    -------\n\n    >>> from nipype.interfaces.fsl import ICA_AROMA\n    >>> from nipype.testing import example_data\n    >>> AROMA_obj = ICA_AROMA()\n    >>> AROMA_obj.inputs.in_file = 'functional.nii'\n    >>> AROMA_obj.inputs.mat_file = 'func_to_struct.mat'\n    >>> AROMA_obj.inputs.fnirt_warp_file = 'warpfield.nii'\n    >>> AROMA_obj.inputs.motion_parameters = 'fsl_mcflirt_movpar.txt'\n    >>> AROMA_obj.inputs.mask = 'mask.nii.gz'\n    >>> AROMA_obj.inputs.denoise_type = 'both'\n    >>> AROMA_obj.inputs.out_dir = 'ICA_testout'\n    >>> AROMA_obj.cmdline  # doctest: +ELLIPSIS\n    'ICA_AROMA.py -den both -warp warpfield.nii -i functional.nii -m mask.nii.gz -affmat func_to_struct.mat -mc fsl_mcflirt_movpar.txt -o .../ICA_testout'\n    ",
+  "inputs": [
+    {
+      "id": "TR",
+      "name": "Tr",
+      "type": "Number",
+      "value-key": "[TR]",
+      "command-line-flag": "-tr",
+      "description": "A float. Tr in seconds. if this is not specified the tr will be extracted from the header of the fmri nifti file.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
+    },
+    {
+      "id": "denoise_type",
+      "name": "Denoise type",
+      "type": "String",
+      "value-key": "[DENOISE_TYPE]",
+      "command-line-flag": "-den",
+      "description": "'nonaggr' or 'aggr' or 'both' or 'no'. Type of denoising strategy:-no: only classification, no denoising-nonaggr (default): non-aggresssive denoising, i.e. partial component regression-aggr: aggressive denoising, i.e. full component regression-both: both aggressive and non-aggressive denoising (two outputs).",
+      "optional": false,
+      "default-value": "nonaggr",
+      "value-choices": ["nonaggr", "aggr", "both", "no"]
+    },
+    {
+      "id": "dim",
+      "name": "Dim",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[DIM]",
+      "command-line-flag": "-dim",
+      "description": "An integer. Dimensionality reduction when running melodic (default is automatic estimation).",
+      "optional": true
+    },
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "feat_dir",
+      "name": "Feat dir",
+      "type": "File",
+      "value-key": "[FEAT_DIR]",
+      "command-line-flag": "-feat",
+      "description": "A pathlike object or string representing an existing directory. If a feat directory exists and temporal filtering has not been run yet, ica_aroma can use the files in this directory.",
+      "optional": false
+    },
+    {
+      "id": "fnirt_warp_file",
+      "name": "Fnirt warp file",
+      "type": "File",
+      "value-key": "[FNIRT_WARP_FILE]",
+      "command-line-flag": "-warp",
+      "description": "A pathlike object or string representing an existing file. File name of the warp-file describing the non-linear registration (e.g. fsl fnirt) of the structural data to mni152 space (.nii.gz).",
+      "optional": true
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "command-line-flag": "-i",
+      "description": "A pathlike object or string representing an existing file. Volume to be denoised.",
+      "optional": false
+    },
+    {
+      "id": "mask",
+      "name": "Mask",
+      "type": "File",
+      "value-key": "[MASK]",
+      "command-line-flag": "-m",
+      "description": "A pathlike object or string representing an existing file. Path/name volume mask.",
+      "optional": true
+    },
+    {
+      "id": "mat_file",
+      "name": "Mat file",
+      "type": "File",
+      "value-key": "[MAT_FILE]",
+      "command-line-flag": "-affmat",
+      "description": "A pathlike object or string representing an existing file. Path/name of the mat-file describing the affine registration (e.g. fsl flirt) of the functional data to structural space (.mat file).",
+      "optional": true
+    },
+    {
+      "id": "melodic_dir",
+      "name": "Melodic dir",
+      "type": "File",
+      "value-key": "[MELODIC_DIR]",
+      "command-line-flag": "-meldir",
+      "description": "A pathlike object or string representing an existing directory. Path to melodic directory if melodic has already been run.",
+      "optional": true
+    },
+    {
+      "id": "motion_parameters",
+      "name": "Motion parameters",
+      "type": "File",
+      "value-key": "[MOTION_PARAMETERS]",
+      "command-line-flag": "-mc",
+      "description": "A pathlike object or string representing an existing file. Motion parameters file.",
+      "optional": false
+    },
+    {
+      "id": "out_dir",
+      "name": "Out dir",
+      "type": "File",
+      "value-key": "[OUT_DIR]",
+      "command-line-flag": "-o",
+      "description": "A pathlike object or string representing a directory. Output directory.",
+      "optional": false,
+      "default-value": "out"
     }
+  ],
+  "output-files": [
+    {
+      "name": "Aggr denoised file",
+      "id": "aggr_denoised_file",
+      "path-template": "out\\denoised_func_data_aggr.nii.gz",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. If generated: aggressively denoised volume."
+    },
+    {
+      "name": "Nonaggr denoised file",
+      "id": "nonaggr_denoised_file",
+      "path-template": "out\\denoised_func_data_nonaggr.nii.gz",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. If generated: non aggressively denoised volume."
+    },
+    {
+      "name": "Out dir",
+      "id": "out_dir_outfile",
+      "path-template": "out",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing directory. Directory contains (in addition to the denoised files): melodic.ica + classified_motion_components + classification_overview + feature_scores + melodic_ic_mni)."
+    }
+  ],
+  "groups": [
+    {
+      "id": "mutex_group",
+      "name": "Mutex group",
+      "members": [
+        "fnirt_warp_file",
+        "motion_parameters",
+        "mat_file",
+        "in_file",
+        "feat_dir"
+      ],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group_2",
+      "name": "Mutex group 2",
+      "members": ["in_file", "feat_dir"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group_3",
+      "name": "Mutex group 3",
+      "members": ["mask", "feat_dir"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group_4",
+      "name": "Mutex group 4",
+      "members": ["feat_dir", "mat_file"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group_5",
+      "name": "Mutex group 5",
+      "members": ["fnirt_warp_file", "feat_dir"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group_6",
+      "name": "Mutex group 6",
+      "members": ["feat_dir", "motion_parameters"],
+      "mutually-exclusive": true
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

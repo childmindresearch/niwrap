@@ -1,348 +1,343 @@
 {
-    "name": "GLM",
-    "command-line": "GLM [IN_FILE] [DESIGN] [OUT_FILE] [ARGS] [CONTRASTS] [DAT_NORM] [DEMEAN] [DES_NORM] [DOF] [ENVIRON] [MASK] [OUT_COPE] [OUT_DATA_NAME] [OUT_F_NAME] [OUT_P_NAME] [OUT_PF_NAME] [OUT_RES_NAME] [OUT_SIGSQ_NAME] [OUT_T_NAME] [OUT_VARCB_NAME] [OUT_VNSCALES_NAME] [OUT_Z_NAME] [OUTPUT_TYPE] [VAR_NORM]",
-    "author": "Nipype (interface)",
-    "description": "GLM, as implemented in Nipype (module: nipype.interfaces.fsl, interface: GLM).\n\n\n    FSL GLM:\n\n    Example\n    -------\n    >>> import nipype.interfaces.fsl as fsl\n    >>> glm = fsl.GLM(in_file='functional.nii', design='maps.nii', output_type='NIFTI')\n    >>> glm.cmdline\n    'fsl_glm -i functional.nii -d maps.nii -o functional_glm.nii'\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "contrasts",
-            "name": "Contrasts",
-            "type": "File",
-            "value-key": "[CONTRASTS]",
-            "command-line-flag": "-c",
-            "description": "A pathlike object or string representing an existing file. Matrix of t-statics contrasts.",
-            "optional": true
-        },
-        {
-            "id": "dat_norm",
-            "name": "Dat norm",
-            "type": "Flag",
-            "value-key": "[DAT_NORM]",
-            "command-line-flag": "--dat_norm",
-            "description": "A boolean. Switch on normalization of the data time series to unit std deviation.",
-            "optional": true
-        },
-        {
-            "id": "demean",
-            "name": "Demean",
-            "type": "Flag",
-            "value-key": "[DEMEAN]",
-            "command-line-flag": "--demean",
-            "description": "A boolean. Switch on demeaining of design and data.",
-            "optional": true
-        },
-        {
-            "id": "des_norm",
-            "name": "Des norm",
-            "type": "Flag",
-            "value-key": "[DES_NORM]",
-            "command-line-flag": "--des_norm",
-            "description": "A boolean. Switch on normalization of the design matrix columns to unit std deviation.",
-            "optional": true
-        },
-        {
-            "id": "design",
-            "name": "Design",
-            "type": "File",
-            "value-key": "[DESIGN]",
-            "command-line-flag": "-d",
-            "description": "A pathlike object or string representing an existing file. File name of the glm design matrix (text time courses for temporal regression or an image file for spatial regression).",
-            "optional": false
-        },
-        {
-            "id": "dof",
-            "name": "Dof",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[DOF]",
-            "command-line-flag": "--dof",
-            "command-line-flag-separator": "=",
-            "description": "An integer. Set degrees of freedom explicitly.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "command-line-flag": "-i",
-            "description": "A pathlike object or string representing an existing file. Input file name (text matrix or 3d/4d image file).",
-            "optional": false
-        },
-        {
-            "id": "mask",
-            "name": "Mask",
-            "type": "File",
-            "value-key": "[MASK]",
-            "command-line-flag": "-m",
-            "description": "A pathlike object or string representing an existing file. Mask image file name if input is image.",
-            "optional": true
-        },
-        {
-            "id": "out_cope",
-            "name": "Out cope",
-            "type": "File",
-            "value-key": "[OUT_COPE]",
-            "command-line-flag": "--out_cope",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Output file name for cope (either as txt or image.",
-            "optional": true
-        },
-        {
-            "id": "out_data_name",
-            "name": "Out data name",
-            "type": "File",
-            "value-key": "[OUT_DATA_NAME]",
-            "command-line-flag": "--out_data",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Output file name for pre-processed data.",
-            "optional": true
-        },
-        {
-            "id": "out_f_name",
-            "name": "Out f name",
-            "type": "File",
-            "value-key": "[OUT_F_NAME]",
-            "command-line-flag": "--out_f",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Output file name for f-value of full model fit.",
-            "optional": true
-        },
-        {
-            "id": "out_p_name",
-            "name": "Out p name",
-            "type": "File",
-            "value-key": "[OUT_P_NAME]",
-            "command-line-flag": "--out_p",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Output file name for p-values of z-stats (either as text file or image).",
-            "optional": true
-        },
-        {
-            "id": "out_pf_name",
-            "name": "Out pf name",
-            "type": "File",
-            "value-key": "[OUT_PF_NAME]",
-            "command-line-flag": "--out_pf",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Output file name for p-value for full model fit.",
-            "optional": true
-        },
-        {
-            "id": "out_res_name",
-            "name": "Out res name",
-            "type": "File",
-            "value-key": "[OUT_RES_NAME]",
-            "command-line-flag": "--out_res",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Output file name for residuals.",
-            "optional": true
-        },
-        {
-            "id": "out_sigsq_name",
-            "name": "Out sigsq name",
-            "type": "File",
-            "value-key": "[OUT_SIGSQ_NAME]",
-            "command-line-flag": "--out_sigsq",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Output file name for residual noise variance sigma-square.",
-            "optional": true
-        },
-        {
-            "id": "out_t_name",
-            "name": "Out t name",
-            "type": "File",
-            "value-key": "[OUT_T_NAME]",
-            "command-line-flag": "--out_t",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Output file name for t-stats (either as txt or image.",
-            "optional": true
-        },
-        {
-            "id": "out_varcb_name",
-            "name": "Out varcb name",
-            "type": "File",
-            "value-key": "[OUT_VARCB_NAME]",
-            "command-line-flag": "--out_varcb",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Output file name for variance of copes.",
-            "optional": true
-        },
-        {
-            "id": "out_vnscales_name",
-            "name": "Out vnscales name",
-            "type": "File",
-            "value-key": "[OUT_VNSCALES_NAME]",
-            "command-line-flag": "--out_vnscales",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Output file name for scaling factors for variance normalisation.",
-            "optional": true
-        },
-        {
-            "id": "out_z_name",
-            "name": "Out z name",
-            "type": "File",
-            "value-key": "[OUT_Z_NAME]",
-            "command-line-flag": "--out_z",
-            "command-line-flag-separator": "=",
-            "description": "A pathlike object or string representing a file. Output file name for z-stats (either as txt or image.",
-            "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
-        },
-        {
-            "id": "var_norm",
-            "name": "Var norm",
-            "type": "Flag",
-            "value-key": "[VAR_NORM]",
-            "command-line-flag": "--vn",
-            "description": "A boolean. Perform melodic variance-normalisation on data.",
-            "optional": true
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Filename for glm parameter estimates (glm betas).",
-            "path-template": "[IN_FILE]_glm",
-            "value-key": "[OUT_FILE]",
-            "command-line-flag": "-o"
-        },
-        {
-            "name": "Out cope",
-            "id": "out_cope_outfile",
-            "path-template": "[OUT_COPE]",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for copes (either as text file or image).",
-            "list": true
-        },
-        {
-            "name": "Out data",
-            "id": "out_data",
-            "path-template": "out_data",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. Output file for preprocessed data.",
-            "list": true
-        },
-        {
-            "name": "Out f",
-            "id": "out_f",
-            "path-template": "out_f",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for f-value of full model fit.",
-            "list": true
-        },
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "path-template": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. File name of glm parameters (if generated)."
-        },
-        {
-            "name": "Out p",
-            "id": "out_p",
-            "path-template": "out_p",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for p-values of z-stats (either as text file or image).",
-            "list": true
-        },
-        {
-            "name": "Out pf",
-            "id": "out_pf",
-            "path-template": "out_pf",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for p-value for full model fit.",
-            "list": true
-        },
-        {
-            "name": "Out res",
-            "id": "out_res",
-            "path-template": "out_res",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for residuals.",
-            "list": true
-        },
-        {
-            "name": "Out sigsq",
-            "id": "out_sigsq",
-            "path-template": "out_sigsq",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for residual noise variance sigma-square.",
-            "list": true
-        },
-        {
-            "name": "Out t",
-            "id": "out_t",
-            "path-template": "out_t",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for t-stats (either as text file or image).",
-            "list": true
-        },
-        {
-            "name": "Out varcb",
-            "id": "out_varcb",
-            "path-template": "out_varcb",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for variance of copes.",
-            "list": true
-        },
-        {
-            "name": "Out vnscales",
-            "id": "out_vnscales",
-            "path-template": "out_vnscales",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for scaling factors for variance normalisation.",
-            "list": true
-        },
-        {
-            "name": "Out z",
-            "id": "out_z",
-            "path-template": "out_z",
-            "optional": true,
-            "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for copes (either as text file or image).",
-            "list": true
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "GLM",
+  "command-line": "GLM [IN_FILE] [DESIGN] [OUT_FILE] [ARGS] [CONTRASTS] [DAT_NORM] [DEMEAN] [DES_NORM] [DOF] [ENVIRON] [MASK] [OUT_COPE] [OUT_DATA_NAME] [OUT_F_NAME] [OUT_P_NAME] [OUT_PF_NAME] [OUT_RES_NAME] [OUT_SIGSQ_NAME] [OUT_T_NAME] [OUT_VARCB_NAME] [OUT_VNSCALES_NAME] [OUT_Z_NAME] [OUTPUT_TYPE] [VAR_NORM]",
+  "author": "Nipype (interface)",
+  "description": "GLM, as implemented in Nipype (module: nipype.interfaces.fsl, interface: GLM).\n\n\n    FSL GLM:\n\n    Example\n    -------\n    >>> import nipype.interfaces.fsl as fsl\n    >>> glm = fsl.GLM(in_file='functional.nii', design='maps.nii', output_type='NIFTI')\n    >>> glm.cmdline\n    'fsl_glm -i functional.nii -d maps.nii -o functional_glm.nii'\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "contrasts",
+      "name": "Contrasts",
+      "type": "File",
+      "value-key": "[CONTRASTS]",
+      "command-line-flag": "-c",
+      "description": "A pathlike object or string representing an existing file. Matrix of t-statics contrasts.",
+      "optional": true
+    },
+    {
+      "id": "dat_norm",
+      "name": "Dat norm",
+      "type": "Flag",
+      "value-key": "[DAT_NORM]",
+      "command-line-flag": "--dat_norm",
+      "description": "A boolean. Switch on normalization of the data time series to unit std deviation.",
+      "optional": true
+    },
+    {
+      "id": "demean",
+      "name": "Demean",
+      "type": "Flag",
+      "value-key": "[DEMEAN]",
+      "command-line-flag": "--demean",
+      "description": "A boolean. Switch on demeaining of design and data.",
+      "optional": true
+    },
+    {
+      "id": "des_norm",
+      "name": "Des norm",
+      "type": "Flag",
+      "value-key": "[DES_NORM]",
+      "command-line-flag": "--des_norm",
+      "description": "A boolean. Switch on normalization of the design matrix columns to unit std deviation.",
+      "optional": true
+    },
+    {
+      "id": "design",
+      "name": "Design",
+      "type": "File",
+      "value-key": "[DESIGN]",
+      "command-line-flag": "-d",
+      "description": "A pathlike object or string representing an existing file. File name of the glm design matrix (text time courses for temporal regression or an image file for spatial regression).",
+      "optional": false
+    },
+    {
+      "id": "dof",
+      "name": "Dof",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[DOF]",
+      "command-line-flag": "--dof",
+      "command-line-flag-separator": "=",
+      "description": "An integer. Set degrees of freedom explicitly.",
+      "optional": true
+    },
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "command-line-flag": "-i",
+      "description": "A pathlike object or string representing an existing file. Input file name (text matrix or 3d/4d image file).",
+      "optional": false
+    },
+    {
+      "id": "mask",
+      "name": "Mask",
+      "type": "File",
+      "value-key": "[MASK]",
+      "command-line-flag": "-m",
+      "description": "A pathlike object or string representing an existing file. Mask image file name if input is image.",
+      "optional": true
+    },
+    {
+      "id": "out_cope",
+      "name": "Out cope",
+      "type": "File",
+      "value-key": "[OUT_COPE]",
+      "command-line-flag": "--out_cope",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Output file name for cope (either as txt or image.",
+      "optional": true
+    },
+    {
+      "id": "out_data_name",
+      "name": "Out data name",
+      "type": "File",
+      "value-key": "[OUT_DATA_NAME]",
+      "command-line-flag": "--out_data",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Output file name for pre-processed data.",
+      "optional": true
+    },
+    {
+      "id": "out_f_name",
+      "name": "Out f name",
+      "type": "File",
+      "value-key": "[OUT_F_NAME]",
+      "command-line-flag": "--out_f",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Output file name for f-value of full model fit.",
+      "optional": true
+    },
+    {
+      "id": "out_p_name",
+      "name": "Out p name",
+      "type": "File",
+      "value-key": "[OUT_P_NAME]",
+      "command-line-flag": "--out_p",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Output file name for p-values of z-stats (either as text file or image).",
+      "optional": true
+    },
+    {
+      "id": "out_pf_name",
+      "name": "Out pf name",
+      "type": "File",
+      "value-key": "[OUT_PF_NAME]",
+      "command-line-flag": "--out_pf",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Output file name for p-value for full model fit.",
+      "optional": true
+    },
+    {
+      "id": "out_res_name",
+      "name": "Out res name",
+      "type": "File",
+      "value-key": "[OUT_RES_NAME]",
+      "command-line-flag": "--out_res",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Output file name for residuals.",
+      "optional": true
+    },
+    {
+      "id": "out_sigsq_name",
+      "name": "Out sigsq name",
+      "type": "File",
+      "value-key": "[OUT_SIGSQ_NAME]",
+      "command-line-flag": "--out_sigsq",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Output file name for residual noise variance sigma-square.",
+      "optional": true
+    },
+    {
+      "id": "out_t_name",
+      "name": "Out t name",
+      "type": "File",
+      "value-key": "[OUT_T_NAME]",
+      "command-line-flag": "--out_t",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Output file name for t-stats (either as txt or image.",
+      "optional": true
+    },
+    {
+      "id": "out_varcb_name",
+      "name": "Out varcb name",
+      "type": "File",
+      "value-key": "[OUT_VARCB_NAME]",
+      "command-line-flag": "--out_varcb",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Output file name for variance of copes.",
+      "optional": true
+    },
+    {
+      "id": "out_vnscales_name",
+      "name": "Out vnscales name",
+      "type": "File",
+      "value-key": "[OUT_VNSCALES_NAME]",
+      "command-line-flag": "--out_vnscales",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Output file name for scaling factors for variance normalisation.",
+      "optional": true
+    },
+    {
+      "id": "out_z_name",
+      "name": "Out z name",
+      "type": "File",
+      "value-key": "[OUT_Z_NAME]",
+      "command-line-flag": "--out_z",
+      "command-line-flag-separator": "=",
+      "description": "A pathlike object or string representing a file. Output file name for z-stats (either as txt or image.",
+      "optional": true
+    },
+    {
+      "id": "output_type",
+      "name": "Output type",
+      "type": "String",
+      "value-key": "[OUTPUT_TYPE]",
+      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+      "optional": true,
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+    },
+    {
+      "id": "var_norm",
+      "name": "Var norm",
+      "type": "Flag",
+      "value-key": "[VAR_NORM]",
+      "command-line-flag": "--vn",
+      "description": "A boolean. Perform melodic variance-normalisation on data.",
+      "optional": true
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Filename for glm parameter estimates (glm betas).",
+      "path-template": "[IN_FILE]_glm",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-o"
+    },
+    {
+      "name": "Out cope",
+      "id": "out_cope_outfile",
+      "path-template": "[OUT_COPE]",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for copes (either as text file or image).",
+      "list": true
+    },
+    {
+      "name": "Out data",
+      "id": "out_data",
+      "path-template": "out_data",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. Output file for preprocessed data.",
+      "list": true
+    },
+    {
+      "name": "Out f",
+      "id": "out_f",
+      "path-template": "out_f",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for f-value of full model fit.",
+      "list": true
+    },
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "path-template": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. File name of glm parameters (if generated)."
+    },
+    {
+      "name": "Out p",
+      "id": "out_p",
+      "path-template": "out_p",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for p-values of z-stats (either as text file or image).",
+      "list": true
+    },
+    {
+      "name": "Out pf",
+      "id": "out_pf",
+      "path-template": "out_pf",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for p-value for full model fit.",
+      "list": true
+    },
+    {
+      "name": "Out res",
+      "id": "out_res",
+      "path-template": "out_res",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for residuals.",
+      "list": true
+    },
+    {
+      "name": "Out sigsq",
+      "id": "out_sigsq",
+      "path-template": "out_sigsq",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for residual noise variance sigma-square.",
+      "list": true
+    },
+    {
+      "name": "Out t",
+      "id": "out_t",
+      "path-template": "out_t",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for t-stats (either as text file or image).",
+      "list": true
+    },
+    {
+      "name": "Out varcb",
+      "id": "out_varcb",
+      "path-template": "out_varcb",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for variance of copes.",
+      "list": true
+    },
+    {
+      "name": "Out vnscales",
+      "id": "out_vnscales",
+      "path-template": "out_vnscales",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for scaling factors for variance normalisation.",
+      "list": true
+    },
+    {
+      "name": "Out z",
+      "id": "out_z",
+      "path-template": "out_z",
+      "optional": true,
+      "description": "A list of items which are a pathlike object or string representing an existing file. Output file name for copes (either as text file or image).",
+      "list": true
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }

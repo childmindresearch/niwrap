@@ -1,155 +1,151 @@
 {
-    "name": "DegreeCentrality",
-    "command-line": "DegreeCentrality [IN_FILE] [ARGS] [AUTOCLIP] [AUTOMASK] [ENVIRON] [MASK] [NUM_THREADS] [ONED_FILE] [OUT_FILE] [OUTPUTTYPE] [POLORT] [SPARSITY] [THRESH]",
-    "author": "Nipype (interface)",
-    "description": "DegreeCentrality, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: DegreeCentrality).\n\nPerforms degree centrality on a dataset using a given maskfile\n    via 3dDegreeCentrality\n\n    For complete details, see the `3dDegreeCentrality Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> degree = afni.DegreeCentrality()\n    >>> degree.inputs.in_file = 'functional.nii'\n    >>> degree.inputs.mask = 'mask.nii'\n    >>> degree.inputs.sparsity = 1 # keep the top one percent of connections\n    >>> degree.inputs.out_file = 'out.nii'\n    >>> degree.cmdline\n    '3dDegreeCentrality -mask mask.nii -prefix out.nii -sparsity 1.000000 functional.nii'\n    >>> res = degree.run()  # doctest: +SKIP\n\n    ",
-    "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "autoclip",
-            "name": "Autoclip",
-            "type": "Flag",
-            "value-key": "[AUTOCLIP]",
-            "command-line-flag": "-autoclip",
-            "description": "A boolean. Clip off low-intensity regions in the dataset.",
-            "optional": true
-        },
-        {
-            "id": "automask",
-            "name": "Automask",
-            "type": "Flag",
-            "value-key": "[AUTOMASK]",
-            "command-line-flag": "-automask",
-            "description": "A boolean. Mask the dataset to target brain-only voxels.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "description": "A pathlike object or string representing an existing file. Input file to 3ddegreecentrality.",
-            "optional": false
-        },
-        {
-            "id": "mask",
-            "name": "Mask",
-            "type": "File",
-            "value-key": "[MASK]",
-            "command-line-flag": "-mask",
-            "description": "A pathlike object or string representing an existing file. Mask file to mask input data.",
-            "optional": true
-        },
-        {
-            "id": "num_threads",
-            "name": "Num threads",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[NUM_THREADS]",
-            "description": "An integer. Set number of threads.",
-            "optional": true,
-            "default-value": 1
-        },
-        {
-            "id": "oned_file",
-            "name": "Oned file",
-            "type": "String",
-            "value-key": "[ONED_FILE]",
-            "command-line-flag": "-out1D",
-            "description": "A string. Output filepath to text dump of correlation matrix.",
-            "optional": true
-        },
-        {
-            "id": "outputtype",
-            "name": "Outputtype",
-            "type": "String",
-            "value-key": "[OUTPUTTYPE]",
-            "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "AFNI",
-                "NIFTI_GZ"
-            ]
-        },
-        {
-            "id": "polort",
-            "name": "Polort",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[POLORT]",
-            "command-line-flag": "-polort",
-            "description": "An integer. No description provided.",
-            "optional": true
-        },
-        {
-            "id": "sparsity",
-            "name": "Sparsity",
-            "type": "Number",
-            "value-key": "[SPARSITY]",
-            "command-line-flag": "-sparsity",
-            "description": "A float. Only take the top percent of connections.",
-            "optional": true
-        },
-        {
-            "id": "thresh",
-            "name": "Thresh",
-            "type": "Number",
-            "value-key": "[THRESH]",
-            "command-line-flag": "-thresh",
-            "description": "A float. Threshold to exclude connections where corr <= thresh.",
-            "optional": true
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. Output image file name.",
-            "path-template": "[IN_FILE]_afni",
-            "value-key": "[OUT_FILE]",
-            "command-line-flag": "-prefix"
-        },
-        {
-            "name": "Oned file",
-            "id": "oned_file_outfile",
-            "path-template": "[ONED_FILE]",
-            "optional": true,
-            "description": "A pathlike object or string representing a file. The text output of the similarity matrix computed after thresholding with one-dimensional and ijk voxel indices, correlations, image extents, and affine matrix."
-        },
-        {
-            "name": "Out file",
-            "id": "out_file",
-            "path-template": "out_file",
-            "optional": true,
-            "description": "A pathlike object or string representing an existing file. Output file."
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "container/image",
-        "type": "docker"
+  "name": "DegreeCentrality",
+  "command-line": "DegreeCentrality [IN_FILE] [ARGS] [AUTOCLIP] [AUTOMASK] [ENVIRON] [MASK] [NUM_THREADS] [ONED_FILE] [OUT_FILE] [OUTPUTTYPE] [POLORT] [SPARSITY] [THRESH]",
+  "author": "Nipype (interface)",
+  "description": "DegreeCentrality, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: DegreeCentrality).\n\nPerforms degree centrality on a dataset using a given maskfile\n    via 3dDegreeCentrality\n\n    For complete details, see the `3dDegreeCentrality Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> degree = afni.DegreeCentrality()\n    >>> degree.inputs.in_file = 'functional.nii'\n    >>> degree.inputs.mask = 'mask.nii'\n    >>> degree.inputs.sparsity = 1 # keep the top one percent of connections\n    >>> degree.inputs.out_file = 'out.nii'\n    >>> degree.cmdline\n    '3dDegreeCentrality -mask mask.nii -prefix out.nii -sparsity 1.000000 functional.nii'\n    >>> res = degree.run()  # doctest: +SKIP\n\n    ",
+  "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
     },
-    "tags": {
-        "domain": "neuroinformatics",
-        "source": "nipype-interface"
+    {
+      "id": "autoclip",
+      "name": "Autoclip",
+      "type": "Flag",
+      "value-key": "[AUTOCLIP]",
+      "command-line-flag": "-autoclip",
+      "description": "A boolean. Clip off low-intensity regions in the dataset.",
+      "optional": true
+    },
+    {
+      "id": "automask",
+      "name": "Automask",
+      "type": "Flag",
+      "value-key": "[AUTOMASK]",
+      "command-line-flag": "-automask",
+      "description": "A boolean. Mask the dataset to target brain-only voxels.",
+      "optional": true
+    },
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": {}
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "description": "A pathlike object or string representing an existing file. Input file to 3ddegreecentrality.",
+      "optional": false
+    },
+    {
+      "id": "mask",
+      "name": "Mask",
+      "type": "File",
+      "value-key": "[MASK]",
+      "command-line-flag": "-mask",
+      "description": "A pathlike object or string representing an existing file. Mask file to mask input data.",
+      "optional": true
+    },
+    {
+      "id": "num_threads",
+      "name": "Num threads",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUM_THREADS]",
+      "description": "An integer. Set number of threads.",
+      "optional": true,
+      "default-value": 1
+    },
+    {
+      "id": "oned_file",
+      "name": "Oned file",
+      "type": "String",
+      "value-key": "[ONED_FILE]",
+      "command-line-flag": "-out1D",
+      "description": "A string. Output filepath to text dump of correlation matrix.",
+      "optional": true
+    },
+    {
+      "id": "outputtype",
+      "name": "Outputtype",
+      "type": "String",
+      "value-key": "[OUTPUTTYPE]",
+      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+      "optional": true,
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+    },
+    {
+      "id": "polort",
+      "name": "Polort",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[POLORT]",
+      "command-line-flag": "-polort",
+      "description": "An integer. No description provided.",
+      "optional": true
+    },
+    {
+      "id": "sparsity",
+      "name": "Sparsity",
+      "type": "Number",
+      "value-key": "[SPARSITY]",
+      "command-line-flag": "-sparsity",
+      "description": "A float. Only take the top percent of connections.",
+      "optional": true
+    },
+    {
+      "id": "thresh",
+      "name": "Thresh",
+      "type": "Number",
+      "value-key": "[THRESH]",
+      "command-line-flag": "-thresh",
+      "description": "A float. Threshold to exclude connections where corr <= thresh.",
+      "optional": true
     }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. Output image file name.",
+      "path-template": "[IN_FILE]_afni",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "name": "Oned file",
+      "id": "oned_file_outfile",
+      "path-template": "[ONED_FILE]",
+      "optional": true,
+      "description": "A pathlike object or string representing a file. The text output of the similarity matrix computed after thresholding with one-dimensional and ijk voxel indices, correlations, image extents, and affine matrix."
+    },
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "path-template": "out_file",
+      "optional": true,
+      "description": "A pathlike object or string representing an existing file. Output file."
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "container/image",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
 }
