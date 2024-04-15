@@ -11,7 +11,7 @@
             "type": "string"
         },
         "tool-version": {
-            "$id": "http://github.com/boutiques/boutiques-schema/description",
+            "$id": "http://github.com/boutiques/boutiques-schema/tool-version",
             "minLength": 1,
             "description": "Tool version.",
             "type": "string"
