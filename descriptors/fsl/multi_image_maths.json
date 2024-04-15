@@ -2,7 +2,7 @@
   "name": "MultiImageMaths",
   "command-line": "MultiImageMaths [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [OP_STRING] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OPERAND_FILES] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "MultiImageMaths, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MultiImageMaths).\n\nUse fslmaths to perform a sequence of mathematical operations.",
+  "description": "MultiImageMaths, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MultiImageMaths).\nUse fslmaths to perform a sequence of mathematical operations.",
   "inputs": [
     {
       "id": "args",

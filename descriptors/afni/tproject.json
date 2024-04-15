@@ -2,7 +2,7 @@
   "name": "TProject",
   "command-line": "TProject [IN_FILE] [OUT_FILE] [TR] [ARGS] [AUTOMASK] [BANDPASS] [BLUR] [CENMODE] [CENSOR] [CENSORTR] [CONCAT] [DSORT] [ENVIRON] [MASK] [NOBLOCK] [NORM] [NUM_THREADS] [ORT] [OUTPUTTYPE] [POLORT] [STOPBAND]",
   "author": "Nipype (interface)",
-  "description": "TProject, as implemented in Nipype (module: nipype.interfaces.afni, interface: TProject).\n\n\n    This program projects (detrends) out various 'nuisance' time series from\n    each voxel in the input dataset.  Note that all the projections are done\n    via linear regression, including the frequency-based options such\n    as ``-passband``.  In this way, you can bandpass time-censored data, and at\n    the same time, remove other time series of no interest\n    (e.g., physiological estimates, motion parameters).\n    Shifts voxel time series from input so that separate slices are aligned to\n    the same temporal origin.",
+  "description": "TProject, as implemented in Nipype (module: nipype.interfaces.afni, interface: TProject).\n\nThis program projects (detrends) out various 'nuisance' time series from each voxel in the input dataset. Note that all the projections are done via linear regression, including the frequency-based options such as ``-passband``. In this way, you can bandpass time-censored data, and at the same time, remove other time series of no interest (e.g., physiological estimates, motion parameters). Shifts voxel time series from input so that separate slices are aligned to the same temporal origin.",
   "inputs": [
     {
       "id": "TR",

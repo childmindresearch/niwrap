@@ -2,7 +2,7 @@
   "name": "ReconAll",
   "command-line": "ReconAll [DIRECTIVE] [FLAIR_FILE] [T1_FILES] [T2_FILE] [ARGS] [BIG_VENTRICLES] [BRAINSTEM] [ENVIRON] [EXPERT] [FLAGS] [HEMI] [HIPPOCAMPAL_SUBFIELDS_T1] [HIPPOCAMPAL_SUBFIELDS_T2] [HIRES] [MPRAGE] [MRI_APARC2ASEG] [MRI_CA_LABEL] [MRI_CA_NORMALIZE] [MRI_CA_REGISTER] [MRI_EDIT_WM_WITH_ASEG] [MRI_EM_REGISTER] [MRI_FILL] [MRI_MASK] [MRI_NORMALIZE] [MRI_PRETESS] [MRI_REMOVE_NECK] [MRI_SEGMENT] [MRI_SEGSTATS] [MRI_TESSELLATE] [MRI_WATERSHED] [MRIS_ANATOMICAL_STATS] [MRIS_CA_LABEL] [MRIS_FIX_TOPOLOGY] [MRIS_INFLATE] [MRIS_MAKE_SURFACES] [MRIS_REGISTER] [MRIS_SMOOTH] [MRIS_SPHERE] [MRIS_SURF2VOL] [MRISP_PAINT] [OPENMP] [PARALLEL] [SUBJECT_ID] [SUBJECTS_DIR] [TALAIRACH] [USE_FLAIR] [USE_T2] [XOPTS]",
   "author": "Nipype (interface)",
-  "description": "ReconAll, as implemented in Nipype (module: nipype.interfaces.freesurfer.preprocess, interface: ReconAll).\n\nUses recon-all to generate surfaces and parcellations of structural data\n    from anatomical images of a subject.",
+  "description": "ReconAll, as implemented in Nipype (module: nipype.interfaces.freesurfer.preprocess, interface: ReconAll).\nUses recon-all to generate surfaces and parcellations of structural data from anatomical images of a subject.",
   "inputs": [
     {
       "id": "FLAIR_file",

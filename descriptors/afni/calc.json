@@ -2,7 +2,7 @@
   "name": "Calc",
   "command-line": "Calc [IN_FILE_A] [IN_FILE_B] [IN_FILE_C] [EXPR] [ARGS] [ENVIRON] [NUM_THREADS] [OTHER] [OUT_FILE] [OUTPUTTYPE] [OVERWRITE] [SINGLE_IDX] [START_IDX] [STOP_IDX]",
   "author": "Nipype (interface)",
-  "description": "Calc, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: Calc).\n\nThis program does voxel-by-voxel arithmetic on 3D datasets.\n\n    For complete details, see the `3dcalc Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcalc.html>`_",
+  "description": "Calc, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: Calc).\nThis program does voxel-by-voxel arithmetic on 3D datasets.\nFor complete details, see the `3dcalc Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcalc.html>`_",
   "inputs": [
     {
       "id": "args",

@@ -2,7 +2,7 @@
   "name": "FAST",
   "command-line": "FAST [IN_FILES] [ARGS] [BIAS_ITERS] [BIAS_LOWPASS] [ENVIRON] [HYPER] [IMG_TYPE] [INIT_SEG_SMOOTH] [INIT_TRANSFORM] [ITERS_AFTERBIAS] [MANUAL_SEG] [MIXEL_SMOOTH] [NO_BIAS] [NO_PVE] [NUMBER_CLASSES] [OTHER_PRIORS] [OUT_BASENAME] [OUTPUT_BIASCORRECTED] [OUTPUT_BIASFIELD] [OUTPUT_TYPE] [PROBABILITY_MAPS] [SEGMENT_ITERS] [SEGMENTS] [USE_PRIORS] [VERBOSE]",
   "author": "Nipype (interface)",
-  "description": "FAST, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FAST).\n\nFSL FAST wrapper for segmentation and bias correction\n\n    For complete details, see the `FAST Documentation.\n    <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FAST>`_",
+  "description": "FAST, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FAST).\nFSL FAST wrapper for segmentation and bias correction\nFor complete details, see the `FAST Documentation. <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FAST>`_",
   "inputs": [
     {
       "id": "args",

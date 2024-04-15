@@ -2,7 +2,7 @@
   "name": "UnaryMaths",
   "command-line": "UnaryMaths [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [OPERATION] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "UnaryMaths, as implemented in Nipype (module: nipype.interfaces.fsl.maths, interface: UnaryMaths).\n\nUse fslmaths to perorm a variety of mathematical operations on an image.",
+  "description": "UnaryMaths, as implemented in Nipype (module: nipype.interfaces.fsl.maths, interface: UnaryMaths).\nUse fslmaths to perorm a variety of mathematical operations on an image.",
   "inputs": [
     {
       "id": "args",

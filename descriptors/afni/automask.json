@@ -2,7 +2,7 @@
   "name": "Automask",
   "command-line": "Automask [IN_FILE] [ARGS] [BRAIN_FILE] [CLFRAC] [DILATE] [ENVIRON] [ERODE] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "Automask, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Automask).\n\nCreate a brain-only mask of the image using AFNI 3dAutomask command\n\n    For complete details, see the `3dAutomask Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html>`_",
+  "description": "Automask, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Automask).\nCreate a brain-only mask of the image using AFNI 3dAutomask command\nFor complete details, see the `3dAutomask Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html>`_",
   "inputs": [
     {
       "id": "args",

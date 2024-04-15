@@ -2,7 +2,7 @@
   "name": "SkullStrip",
   "command-line": "SkullStrip [IN_FILE] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "SkullStrip, as implemented in Nipype (module: nipype.interfaces.afni, interface: SkullStrip).\n\nA program to extract the brain from surrounding tissue from MRI\n    T1-weighted images.\n    TODO Add optional arguments.\n\n    For complete details, see the `3dSkullStrip Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSkullStrip.html>`_",
+  "description": "SkullStrip, as implemented in Nipype (module: nipype.interfaces.afni, interface: SkullStrip).\nA program to extract the brain from surrounding tissue from MRI T1-weighted images. TODO Add optional arguments.\nFor complete details, see the `3dSkullStrip Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSkullStrip.html>`_",
   "inputs": [
     {
       "id": "args",

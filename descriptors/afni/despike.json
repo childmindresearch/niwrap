@@ -2,7 +2,7 @@
   "name": "Despike",
   "command-line": "Despike [IN_FILE] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "Despike, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Despike).\n\nRemoves 'spikes' from the 3D+time input dataset\n\n    For complete details, see the `3dDespike Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDespike.html>`_",
+  "description": "Despike, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Despike).\nRemoves 'spikes' from the 3D+time input dataset\nFor complete details, see the `3dDespike Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDespike.html>`_",
   "inputs": [
     {
       "id": "args",

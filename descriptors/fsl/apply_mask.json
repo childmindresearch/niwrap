@@ -2,7 +2,7 @@
   "name": "ApplyMask",
   "command-line": "ApplyMask [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [MASK_FILE] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "ApplyMask, as implemented in Nipype (module: nipype.interfaces.fsl.maths, interface: ApplyMask).\n\nUse fslmaths to apply a binary mask to another image.",
+  "description": "ApplyMask, as implemented in Nipype (module: nipype.interfaces.fsl.maths, interface: ApplyMask).\nUse fslmaths to apply a binary mask to another image.",
   "inputs": [
     {
       "id": "args",

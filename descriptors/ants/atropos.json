@@ -2,7 +2,7 @@
   "name": "Atropos",
   "command-line": "Atropos [ARGS] [CONVERGENCE_THRESHOLD] [DIMENSION] [ENVIRON] [ICM_USE_SYNCHRONOUS_UPDATE] [INITIALIZATION] [INTENSITY_IMAGES] [KMEANS_INIT_CENTERS] [LIKELIHOOD_MODEL] [MASK_IMAGE] [MAXIMUM_NUMBER_OF_ICM_TERATIONS] [MRF_RADIUS] [MRF_SMOOTHING_FACTOR] [N_ITERATIONS] [NUM_THREADS] [NUMBER_OF_TISSUE_CLASSES] [OUT_CLASSIFIED_IMAGE_NAME] [OUTPUT_POSTERIORS_NAME_TEMPLATE] [POSTERIOR_FORMULATION] [PRIOR_IMAGE] [PRIOR_PROBABILITY_THRESHOLD] [PRIOR_WEIGHTING] [SAVE_POSTERIORS] [USE_MIXTURE_MODEL_PROPORTIONS] [USE_RANDOM_SEED]",
   "author": "Nipype (interface)",
-  "description": "Atropos, as implemented in Nipype (module: nipype.interfaces.ants.segmentation, interface: Atropos).\n\n\n    A multivariate n-class segmentation algorithm.\n\n    A finite mixture modeling (FMM) segmentation approach with possibilities for\n    specifying prior constraints. These prior constraints include the specification\n    of a prior label image, prior probability images (one for each class), and/or an\n    MRF prior to enforce spatial smoothing of the labels. Similar algorithms include\n    FAST and SPM.",
+  "description": "Atropos, as implemented in Nipype (module: nipype.interfaces.ants.segmentation, interface: Atropos).\n\nA multivariate n-class segmentation algorithm.\nA finite mixture modeling (FMM) segmentation approach with possibilities for specifying prior constraints. These prior constraints include the specification of a prior label image, prior probability images (one for each class), and/or an MRF prior to enforce spatial smoothing of the labels. Similar algorithms include FAST and SPM.",
   "inputs": [
     {
       "id": "args",

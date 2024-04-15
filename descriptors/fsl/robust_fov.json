@@ -2,7 +2,7 @@
   "name": "RobustFOV",
   "command-line": "RobustFOV [IN_FILE] [ARGS] [BRAINSIZE] [ENVIRON] [OUT_ROI] [OUT_TRANSFORM] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "RobustFOV, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: RobustFOV).\n\nAutomatically crops an image removing lower head and neck.\n\n    Interface is stable 5.0.0 to 5.0.9, but default brainsize changed from\n    150mm to 170mm.",
+  "description": "RobustFOV, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: RobustFOV).\nAutomatically crops an image removing lower head and neck.\nInterface is stable 5.0.0 to 5.0.9, but default brainsize changed from 150mm to 170mm.",
   "inputs": [
     {
       "id": "args",

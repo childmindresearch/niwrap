@@ -2,7 +2,7 @@
   "name": "MCFLIRT",
   "command-line": "MCFLIRT [IN_FILE] [ARGS] [BINS] [COST] [DOF] [ENVIRON] [INIT] [INTERPOLATION] [MEAN_VOL] [OUT_FILE] [OUTPUT_TYPE] [REF_FILE] [REF_VOL] [ROTATION] [SAVE_MATS] [SAVE_PLOTS] [SAVE_RMS] [SCALING] [SMOOTH] [STAGES] [STATS_IMGS] [USE_CONTOUR] [USE_GRADIENT]",
   "author": "Nipype (interface)",
-  "description": "MCFLIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MCFLIRT).\n\nFSL MCFLIRT wrapper for within-modality motion correction\n\n    For complete details, see the `MCFLIRT Documentation.\n    <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT>`_",
+  "description": "MCFLIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MCFLIRT).\nFSL MCFLIRT wrapper for within-modality motion correction\nFor complete details, see the `MCFLIRT Documentation. <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT>`_",
   "inputs": [
     {
       "id": "args",

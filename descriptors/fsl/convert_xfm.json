@@ -2,7 +2,7 @@
   "name": "ConvertXFM",
   "command-line": "ConvertXFM [INVERT_XFM] [IN_FILE2] [OUT_FILE] [IN_FILE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "ConvertXFM, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ConvertXFM).\n\nUse the FSL utility convert_xfm to modify FLIRT transformation matrices.",
+  "description": "ConvertXFM, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ConvertXFM).\nUse the FSL utility convert_xfm to modify FLIRT transformation matrices.",
   "inputs": [
     {
       "id": "args",

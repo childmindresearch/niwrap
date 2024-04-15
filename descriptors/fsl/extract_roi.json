@@ -2,7 +2,7 @@
   "name": "ExtractROI",
   "command-line": "ExtractROI [IN_FILE] [ROI_FILE] [X_MIN] [X_SIZE] [Y_MIN] [Y_SIZE] [Z_MIN] [Z_SIZE] [T_MIN] [T_SIZE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "ExtractROI, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ExtractROI).\n\nUses FSL Fslroi command to extract region of interest (ROI)\n    from an image.\n\n    You can a) take a 3D ROI from a 3D data set (or if it is 4D, the\n    same ROI is taken from each time point and a new 4D data set is\n    created), b) extract just some time points from a 4D data set, or\n    c) control time and space limits to the ROI.  Note that the\n    arguments are minimum index and size (not maximum index).  So to\n    extract voxels 10 to 12 inclusive you would specify 10 and 3 (not\n    10 and 12).",
+  "description": "ExtractROI, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ExtractROI).\nUses FSL Fslroi command to extract region of interest (ROI) from an image.\nYou can a) take a 3D ROI from a 3D data set (or if it is 4D, the same ROI is taken from each time point and a new 4D data set is created), b) extract just some time points from a 4D data set, or c) control time and space limits to the ROI. Note that the arguments are minimum index and size (not maximum index). So to extract voxels 10 to 12 inclusive you would specify 10 and 3 (not 10 and 12).",
   "inputs": [
     {
       "id": "args",

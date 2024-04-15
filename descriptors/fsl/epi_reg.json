@@ -2,7 +2,7 @@
   "name": "EpiReg",
   "command-line": "EpiReg [EPI] [T1_HEAD] [T1_BRAIN] [OUT_BASE] [ARGS] [ECHOSPACING] [ENVIRON] [FMAP] [FMAPMAG] [FMAPMAGBRAIN] [NO_CLEAN] [NO_FMAPREG] [OUTPUT_TYPE] [PEDIR] [WEIGHT_IMAGE] [WMSEG]",
   "author": "Nipype (interface)",
-  "description": "EpiReg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: EpiReg).\n\n\n\n    Runs FSL epi_reg script for simultaneous coregistration and fieldmap\n    unwarping.",
+  "description": "EpiReg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: EpiReg).\n\n\nRuns FSL epi_reg script for simultaneous coregistration and fieldmap unwarping.",
   "inputs": [
     {
       "id": "args",

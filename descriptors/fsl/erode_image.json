@@ -2,7 +2,7 @@
   "name": "ErodeImage",
   "command-line": "ErodeImage [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [KERNEL_SHAPE] [KERNEL_SIZE] [MINIMUM_FILTER] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "ErodeImage, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ErodeImage).\n\nUse fslmaths to perform a spatial erosion of an image.",
+  "description": "ErodeImage, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ErodeImage).\nUse fslmaths to perform a spatial erosion of an image.",
   "inputs": [
     {
       "id": "args",

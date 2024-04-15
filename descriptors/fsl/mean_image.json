@@ -2,7 +2,7 @@
   "name": "MeanImage",
   "command-line": "MeanImage [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [DIMENSION] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "MeanImage, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MeanImage).\n\nUse fslmaths to generate a mean image across a given dimension.",
+  "description": "MeanImage, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MeanImage).\nUse fslmaths to generate a mean image across a given dimension.",
   "inputs": [
     {
       "id": "args",

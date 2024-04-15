@@ -2,7 +2,7 @@
   "name": "DilateImage",
   "command-line": "DilateImage [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [KERNEL_SHAPE] [KERNEL_SIZE] [OPERATION] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "DilateImage, as implemented in Nipype (module: nipype.interfaces.fsl, interface: DilateImage).\n\nUse fslmaths to perform a spatial dilation of an image.",
+  "description": "DilateImage, as implemented in Nipype (module: nipype.interfaces.fsl, interface: DilateImage).\nUse fslmaths to perform a spatial dilation of an image.",
   "inputs": [
     {
       "id": "args",

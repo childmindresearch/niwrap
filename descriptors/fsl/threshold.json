@@ -2,7 +2,7 @@
   "name": "Threshold",
   "command-line": "Threshold [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [THRESH] [OUTPUT_DATATYPE] [ARGS] [DIRECTION] [ENVIRON] [OUTPUT_TYPE] [USE_NONZERO_VOXELS] [USE_ROBUST_RANGE]",
   "author": "Nipype (interface)",
-  "description": "Threshold, as implemented in Nipype (module: nipype.interfaces.fsl.maths, interface: Threshold).\n\nUse fslmaths to apply a threshold to an image in a variety of ways.",
+  "description": "Threshold, as implemented in Nipype (module: nipype.interfaces.fsl.maths, interface: Threshold).\nUse fslmaths to apply a threshold to an image in a variety of ways.",
   "inputs": [
     {
       "id": "args",

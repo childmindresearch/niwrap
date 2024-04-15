@@ -2,7 +2,7 @@
   "name": "TCorrelate",
   "command-line": "TCorrelate [XSET] [YSET] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [PEARSON] [POLORT]",
   "author": "Nipype (interface)",
-  "description": "TCorrelate, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: TCorrelate).\n\nComputes the correlation coefficient between corresponding voxel\n    time series in two input 3D+time datasets 'xset' and 'yset'\n\n    For complete details, see the `3dTcorrelate Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorrelate.html>`_",
+  "description": "TCorrelate, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: TCorrelate).\nComputes the correlation coefficient between corresponding voxel time series in two input 3D+time datasets 'xset' and 'yset'\nFor complete details, see the `3dTcorrelate Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorrelate.html>`_",
   "inputs": [
     {
       "id": "args",

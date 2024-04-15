@@ -2,7 +2,7 @@
   "name": "ConvertWarp",
   "command-line": "ConvertWarp [REFERENCE] [OUT_FILE] [ABSWARP] [ARGS] [CONS_JACOBIAN] [ENVIRON] [JACOBIAN_MAX] [JACOBIAN_MIN] [MIDMAT] [OUT_ABSWARP] [OUT_RELWARP] [OUTPUT_TYPE] [POSTMAT] [PREMAT] [RELWARP] [SHIFT_DIRECTION] [SHIFT_IN_FILE] [WARP1] [WARP2]",
   "author": "Nipype (interface)",
-  "description": "ConvertWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ConvertWarp).\n\nUse FSL `convertwarp <http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html>`_\n    for combining multiple transforms into one.",
+  "description": "ConvertWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ConvertWarp).\nUse FSL `convertwarp <http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html>`_ for combining multiple transforms into one.",
   "inputs": [
     {
       "id": "abswarp",

@@ -2,7 +2,7 @@
   "name": "Split",
   "command-line": "Split [IN_FILE] [OUT_BASE_NAME] [DIMENSION] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "Split, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Split).\n\nUses FSL Fslsplit command to separate a volume into images in\n    time, x, y or z dimension.",
+  "description": "Split, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Split).\nUses FSL Fslsplit command to separate a volume into images in time, x, y or z dimension.",
   "inputs": [
     {
       "id": "args",
