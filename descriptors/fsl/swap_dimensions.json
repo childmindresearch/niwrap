@@ -2,7 +2,7 @@
   "name": "SwapDimensions",
   "command-line": "SwapDimensions [IN_FILE] [ARGS] [ENVIRON] [NEW_DIMS] [OUT_FILE] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "SwapDimensions, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SwapDimensions).\n\nUse fslswapdim to alter the orientation of an image.\n\n    This interface accepts a three-tuple corresponding to the new\n    orientation.  You may either provide dimension ids in the form of\n    (-)x, (-)y, or (-z), or nifti-syle dimension codes\n    (RL, LR, AP, PA, IS, SI).\n\n    ",
+  "description": "SwapDimensions, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SwapDimensions).\n\nUse fslswapdim to alter the orientation of an image.\n\n    This interface accepts a three-tuple corresponding to the new\n    orientation.  You may either provide dimension ids in the form of\n    (-)x, (-)y, or (-z), or nifti-syle dimension codes\n    (RL, LR, AP, PA, IS, SI).",
   "inputs": [
     {
       "id": "args",

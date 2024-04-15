@@ -2,7 +2,7 @@
   "name": "TStat",
   "command-line": "TStat [IN_FILE] [ARGS] [ENVIRON] [MASK] [NUM_THREADS] [OPTIONS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "TStat, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: TStat).\n\nCompute voxel-wise statistics using AFNI 3dTstat command\n\n    For complete details, see the `3dTstat Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTstat.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> tstat = afni.TStat()\n    >>> tstat.inputs.in_file = 'functional.nii'\n    >>> tstat.inputs.args = '-mean'\n    >>> tstat.inputs.out_file = 'stats'\n    >>> tstat.cmdline\n    '3dTstat -mean -prefix stats functional.nii'\n    >>> res = tstat.run()  # doctest: +SKIP\n\n    ",
+  "description": "TStat, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: TStat).\n\nCompute voxel-wise statistics using AFNI 3dTstat command\n\n    For complete details, see the `3dTstat Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTstat.html>`_",
   "inputs": [
     {
       "id": "args",

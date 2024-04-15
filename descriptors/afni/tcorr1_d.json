@@ -2,7 +2,7 @@
   "name": "TCorr1D",
   "command-line": "TCorr1D [XSET] [SPEARMAN] [Y_1D] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "TCorr1D, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: TCorr1D).\n\nComputes the correlation coefficient between each voxel time series\n    in the input 3D+time dataset.\n\n    For complete details, see the `3dTcorr1D Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html>`_\n\n    >>> from nipype.interfaces import afni\n    >>> tcorr1D = afni.TCorr1D()\n    >>> tcorr1D.inputs.xset= 'u_rc1s1_Template.nii'\n    >>> tcorr1D.inputs.y_1d = 'seed.1D'\n    >>> tcorr1D.cmdline\n    '3dTcorr1D -prefix u_rc1s1_Template_correlation.nii.gz  u_rc1s1_Template.nii  seed.1D'\n    >>> res = tcorr1D.run()  # doctest: +SKIP\n\n    ",
+  "description": "TCorr1D, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: TCorr1D).\n\nComputes the correlation coefficient between each voxel time series\n    in the input 3D+time dataset.\n\n    For complete details, see the `3dTcorr1D Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html>`_\n\n    >>> from nipype.interfaces import afni\n    >>> tcorr1D = afni.TCorr1D()\n    >>> tcorr1D.inputs.xset= 'u_rc1s1_Template.nii'\n    >>> tcorr1D.inputs.y_1d = 'seed.1D'\n    >>> tcorr1D.cmdline\n    '3dTcorr1D -prefix u_rc1s1_Template_correlation.nii.gz  u_rc1s1_Template.nii  seed.1D'\n    >>> res = tcorr1D.run()  # doctest: +SKIP",
   "inputs": [
     {
       "id": "args",

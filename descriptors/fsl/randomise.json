@@ -2,7 +2,7 @@
   "name": "Randomise",
   "command-line": "Randomise [IN_FILE] [BASE_NAME] [DESIGN_MAT] [TCON] [ARGS] [C_THRESH] [CM_THRESH] [DEMEAN] [ENVIRON] [F_C_THRESH] [F_CM_THRESH] [F_ONLY] [FCON] [MASK] [NUM_PERM] [ONE_SAMPLE_GROUP_MEAN] [OUTPUT_TYPE] [P_VEC_N_DIST_FILES] [RAW_STATS_IMGS] [SEED] [SHOW_INFO_PARALLEL_MODE] [SHOW_TOTAL_PERMS] [TFCE] [TFCE2D] [TFCE_C] [TFCE_E] [TFCE_H] [VAR_SMOOTH] [VOX_P_VALUES] [X_BLOCK_LABELS]",
   "author": "Nipype (interface)",
-  "description": "Randomise, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Randomise).\n\nFSL Randomise: feeds the 4D projected FA data into GLM\n    modelling and thresholding\n    in order to find voxels which correlate with your model\n\n    Example\n    -------\n    >>> import nipype.interfaces.fsl as fsl\n    >>> rand = fsl.Randomise(in_file='allFA.nii', mask = 'mask.nii', tcon='design.con', design_mat='design.mat')\n    >>> rand.cmdline\n    'randomise -i allFA.nii -o \"randomise\" -d design.mat -t design.con -m mask.nii'\n\n    ",
+  "description": "Randomise, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Randomise).\n\nFSL Randomise: feeds the 4D projected FA data into GLM\n    modelling and thresholding\n    in order to find voxels which correlate with your model\n\n    Example\n    -------\n    >>> import nipype.interfaces.fsl as fsl\n    >>> rand = fsl.Randomise(in_file='allFA.nii', mask = 'mask.nii', tcon='design.con', design_mat='design.mat')\n    >>> rand.cmdline\n    'randomise -i allFA.nii -o \"randomise\" -d design.mat -t design.con -m mask.nii'",
   "inputs": [
     {
       "id": "args",

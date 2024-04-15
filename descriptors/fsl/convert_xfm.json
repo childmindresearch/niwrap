@@ -2,7 +2,7 @@
   "name": "ConvertXFM",
   "command-line": "ConvertXFM [INVERT_XFM] [IN_FILE2] [OUT_FILE] [IN_FILE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "ConvertXFM, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ConvertXFM).\n\nUse the FSL utility convert_xfm to modify FLIRT transformation matrices.\n\n    Examples\n    --------\n\n    >>> import nipype.interfaces.fsl as fsl\n    >>> invt = fsl.ConvertXFM()\n    >>> invt.inputs.in_file = \"flirt.mat\"\n    >>> invt.inputs.invert_xfm = True\n    >>> invt.inputs.out_file = 'flirt_inv.mat'\n    >>> invt.cmdline\n    'convert_xfm -omat flirt_inv.mat -inverse flirt.mat'\n\n\n    ",
+  "description": "ConvertXFM, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ConvertXFM).\n\nUse the FSL utility convert_xfm to modify FLIRT transformation matrices.",
   "inputs": [
     {
       "id": "args",

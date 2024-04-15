@@ -2,7 +2,7 @@
   "name": "EpiReg",
   "command-line": "EpiReg [EPI] [T1_HEAD] [T1_BRAIN] [OUT_BASE] [ARGS] [ECHOSPACING] [ENVIRON] [FMAP] [FMAPMAG] [FMAPMAGBRAIN] [NO_CLEAN] [NO_FMAPREG] [OUTPUT_TYPE] [PEDIR] [WEIGHT_IMAGE] [WMSEG]",
   "author": "Nipype (interface)",
-  "description": "EpiReg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: EpiReg).\n\n\n\n    Runs FSL epi_reg script for simultaneous coregistration and fieldmap\n    unwarping.\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import EpiReg\n    >>> epireg = EpiReg()\n    >>> epireg.inputs.epi='epi.nii'\n    >>> epireg.inputs.t1_head='T1.nii'\n    >>> epireg.inputs.t1_brain='T1_brain.nii'\n    >>> epireg.inputs.out_base='epi2struct'\n    >>> epireg.inputs.fmap='fieldmap_phase_fslprepared.nii'\n    >>> epireg.inputs.fmapmag='fieldmap_mag.nii'\n    >>> epireg.inputs.fmapmagbrain='fieldmap_mag_brain.nii'\n    >>> epireg.inputs.echospacing=0.00067\n    >>> epireg.inputs.pedir='y'\n    >>> epireg.cmdline # doctest: +ELLIPSIS\n    'epi_reg --echospacing=0.000670 --fmap=fieldmap_phase_fslprepared.nii --fmapmag=fieldmap_mag.nii --fmapmagbrain=fieldmap_mag_brain.nii --noclean --pedir=y --epi=epi.nii --t1=T1.nii --t1brain=T1_brain.nii --out=epi2struct'\n    >>> epireg.run() # doctest: +SKIP\n\n    ",
+  "description": "EpiReg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: EpiReg).\n\n\n\n    Runs FSL epi_reg script for simultaneous coregistration and fieldmap\n    unwarping.",
   "inputs": [
     {
       "id": "args",

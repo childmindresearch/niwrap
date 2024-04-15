@@ -2,7 +2,7 @@
   "name": "ApplyWarp",
   "command-line": "ApplyWarp [INTERP] [IN_FILE] [REF_FILE] [OUT_FILE] [RELWARP] [ABSWARP] [ARGS] [DATATYPE] [ENVIRON] [FIELD_FILE] [MASK_FILE] [OUTPUT_TYPE] [POSTMAT] [PREMAT] [SUPERLEVEL] [SUPERSAMPLE]",
   "author": "Nipype (interface)",
-  "description": "ApplyWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ApplyWarp).\n\nFSL's applywarp wrapper to apply the results of a FNIRT registration\n\n    Examples\n    --------\n    >>> from nipype.interfaces import fsl\n    >>> from nipype.testing import example_data\n    >>> aw = fsl.ApplyWarp()\n    >>> aw.inputs.in_file = example_data('structural.nii')\n    >>> aw.inputs.ref_file = example_data('mni.nii')\n    >>> aw.inputs.field_file = 'my_coefficients_filed.nii' #doctest: +SKIP\n    >>> res = aw.run() #doctest: +SKIP\n\n\n    ",
+  "description": "ApplyWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ApplyWarp).\n\nFSL's applywarp wrapper to apply the results of a FNIRT registration",
   "inputs": [
     {
       "id": "abswarp",

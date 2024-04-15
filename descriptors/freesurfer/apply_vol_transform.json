@@ -2,7 +2,7 @@
   "name": "ApplyVolTransform",
   "command-line": "ApplyVolTransform [ARGS] [ENVIRON] [FS_TARGET] [FSL_REG_FILE] [INTERP] [INVERSE] [INVERT_MORPH] [LTA_FILE] [LTA_INV_FILE] [M3Z_FILE] [MNI_152_REG] [NO_DED_M3Z_PATH] [NO_RESAMPLE] [REG_FILE] [REG_HEADER] [SOURCE_FILE] [SUBJECT] [SUBJECTS_DIR] [TAL] [TAL_RESOLUTION] [TARGET_FILE] [TRANSFORMED_FILE] [XFM_REG_FILE]",
   "author": "Nipype (interface)",
-  "description": "ApplyVolTransform, as implemented in Nipype (module: nipype.interfaces.freesurfer.preprocess, interface: ApplyVolTransform).\n\nUse FreeSurfer mri_vol2vol to apply a transform.\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.freesurfer import ApplyVolTransform\n    >>> applyreg = ApplyVolTransform()\n    >>> applyreg.inputs.source_file = 'structural.nii'\n    >>> applyreg.inputs.reg_file = 'register.dat'\n    >>> applyreg.inputs.transformed_file = 'struct_warped.nii'\n    >>> applyreg.inputs.fs_target = True\n    >>> applyreg.cmdline\n    'mri_vol2vol --fstarg --reg register.dat --mov structural.nii --o struct_warped.nii'\n\n    ",
+  "description": "ApplyVolTransform, as implemented in Nipype (module: nipype.interfaces.freesurfer.preprocess, interface: ApplyVolTransform).\n\nUse FreeSurfer mri_vol2vol to apply a transform.",
   "inputs": [
     {
       "id": "args",

@@ -2,7 +2,7 @@
   "name": "Binarize",
   "command-line": "Binarize [ABS] [ARGS] [BIN_COL_NUM] [BIN_VAL] [BIN_VAL_NOT] [BINARY_FILE] [COUNT_FILE] [DILATE] [ENVIRON] [ERODE] [ERODE2D] [FRAME_NO] [IN_FILE] [INVERT] [MASK_FILE] [MASK_THRESH] [MATCH] [MAX] [MERGE_FILE] [MIN] [OUT_TYPE] [RMAX] [RMIN] [SUBJECTS_DIR] [VENTRICLES] [WM] [WM_VEN_CSF] [ZERO_EDGES] [ZERO_SLICE_EDGE]",
   "author": "Nipype (interface)",
-  "description": "Binarize, as implemented in Nipype (module: nipype.interfaces.freesurfer.model, interface: Binarize).\n\nUse FreeSurfer mri_binarize to threshold an input volume\n\n    Examples\n    --------\n    >>> binvol = Binarize(in_file='structural.nii', min=10, binary_file='foo_out.nii')\n    >>> binvol.cmdline\n    'mri_binarize --o foo_out.nii --i structural.nii --min 10.000000'\n\n    ",
+  "description": "Binarize, as implemented in Nipype (module: nipype.interfaces.freesurfer.model, interface: Binarize).\n\nUse FreeSurfer mri_binarize to threshold an input volume",
   "inputs": [
     {
       "id": "abs",

@@ -2,7 +2,7 @@
   "name": "BinaryMaths",
   "command-line": "BinaryMaths [OUT_FILE] [INTERNAL_DATATYPE] [IN_FILE] [NAN2ZEROS] [OPERATION] [OPERAND_VALUE] [OUTPUT_DATATYPE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "BinaryMaths, as implemented in Nipype (module: nipype.interfaces.fsl.maths, interface: BinaryMaths).\n\nUse fslmaths to perform mathematical operations using a second image or\n    a numeric value.\n\n    ",
+  "description": "BinaryMaths, as implemented in Nipype (module: nipype.interfaces.fsl.maths, interface: BinaryMaths).\n\nUse fslmaths to perform mathematical operations using a second image or\n    a numeric value.",
   "inputs": [
     {
       "id": "args",

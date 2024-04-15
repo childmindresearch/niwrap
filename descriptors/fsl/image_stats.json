@@ -2,7 +2,7 @@
   "name": "ImageStats",
   "command-line": "ImageStats [SPLIT_4D] [INDEX_MASK_FILE] [IN_FILE] [OP_STRING] [ARGS] [ENVIRON] [MASK_FILE] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "ImageStats, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ImageStats).\n\nUse FSL fslstats command to calculate stats from images\n    `FSL info\n    <http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils>`_\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import ImageStats\n    >>> from nipype.testing import funcfile\n    >>> stats = ImageStats(in_file=funcfile, op_string= '-M')\n    >>> stats.cmdline == 'fslstats %s -M'%funcfile\n    True\n\n\n    ",
+  "description": "ImageStats, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ImageStats).\n\nUse FSL fslstats command to calculate stats from images\n    `FSL info\n    <http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils>`_",
   "inputs": [
     {
       "id": "args",

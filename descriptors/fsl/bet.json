@@ -2,7 +2,7 @@
   "name": "BET",
   "command-line": "BET [IN_FILE] [OUT_FILE] [ARGS] [CENTER] [ENVIRON] [FRAC] [FUNCTIONAL] [MASK] [MESH] [NO_OUTPUT] [OUTLINE] [OUTPUT_TYPE] [PADDING] [RADIUS] [REDUCE_BIAS] [REMOVE_EYES] [ROBUST] [SKULL] [SURFACES] [T2_GUIDED] [THRESHOLD] [VERTICAL_GRADIENT]",
   "author": "Nipype (interface)",
-  "description": "BET, as implemented in Nipype (module: nipype.interfaces.fsl, interface: BET).\n\nFSL BET wrapper for skull stripping\n\n    For complete details, see the `BET Documentation.\n    <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET/UserGuide>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import fsl\n    >>> btr = fsl.BET()\n    >>> btr.inputs.in_file = 'structural.nii'\n    >>> btr.inputs.frac = 0.7\n    >>> btr.inputs.out_file = 'brain_anat.nii'\n    >>> btr.cmdline\n    'bet structural.nii brain_anat.nii -f 0.70'\n    >>> res = btr.run() # doctest: +SKIP\n\n    ",
+  "description": "BET, as implemented in Nipype (module: nipype.interfaces.fsl, interface: BET).\n\nFSL BET wrapper for skull stripping\n\n    For complete details, see the `BET Documentation.\n    <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET/UserGuide>`_",
   "inputs": [
     {
       "id": "args",

@@ -2,7 +2,7 @@
   "name": "Overlay",
   "command-line": "Overlay [TRANSPARENCY] [OUT_TYPE] [USE_CHECKERBOARD] [BACKGROUND_IMAGE] [FULL_BG_RANGE] [STAT_IMAGE] [STAT_THRESH] [SHOW_NEGATIVE_STATS] [STAT_IMAGE2] [STAT_THRESH2] [OUT_FILE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "Overlay, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Overlay).\n\nUse FSL's overlay command to combine background and statistical images\n        into one volume\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces import fsl\n    >>> combine = fsl.Overlay()\n    >>> combine.inputs.background_image = 'mean_func.nii.gz'\n    >>> combine.inputs.auto_thresh_bg = True\n    >>> combine.inputs.stat_image = 'zstat1.nii.gz'\n    >>> combine.inputs.stat_thresh = (3.5, 10)\n    >>> combine.inputs.show_negative_stats = True\n    >>> res = combine.run() #doctest: +SKIP\n\n\n    ",
+  "description": "Overlay, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Overlay).\n\nUse FSL's overlay command to combine background and statistical images\n        into one volume",
   "inputs": [
     {
       "id": "args",

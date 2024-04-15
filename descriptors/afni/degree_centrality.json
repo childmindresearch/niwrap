@@ -2,7 +2,7 @@
   "name": "DegreeCentrality",
   "command-line": "DegreeCentrality [IN_FILE] [ARGS] [AUTOCLIP] [AUTOMASK] [ENVIRON] [MASK] [NUM_THREADS] [ONED_FILE] [OUT_FILE] [OUTPUTTYPE] [POLORT] [SPARSITY] [THRESH]",
   "author": "Nipype (interface)",
-  "description": "DegreeCentrality, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: DegreeCentrality).\n\nPerforms degree centrality on a dataset using a given maskfile\n    via 3dDegreeCentrality\n\n    For complete details, see the `3dDegreeCentrality Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> degree = afni.DegreeCentrality()\n    >>> degree.inputs.in_file = 'functional.nii'\n    >>> degree.inputs.mask = 'mask.nii'\n    >>> degree.inputs.sparsity = 1 # keep the top one percent of connections\n    >>> degree.inputs.out_file = 'out.nii'\n    >>> degree.cmdline\n    '3dDegreeCentrality -mask mask.nii -prefix out.nii -sparsity 1.000000 functional.nii'\n    >>> res = degree.run()  # doctest: +SKIP\n\n    ",
+  "description": "DegreeCentrality, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: DegreeCentrality).\n\nPerforms degree centrality on a dataset using a given maskfile\n    via 3dDegreeCentrality\n\n    For complete details, see the `3dDegreeCentrality Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html>`_",
   "inputs": [
     {
       "id": "args",

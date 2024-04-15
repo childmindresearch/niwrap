@@ -2,7 +2,7 @@
   "name": "MaskTool",
   "command-line": "MaskTool [COUNT] [IN_FILE] [ARGS] [DATUM] [DILATE_INPUTS] [DILATE_RESULTS] [ENVIRON] [FILL_DIRS] [FILL_HOLES] [FRAC] [INTER] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [UNION] [VERBOSE]",
   "author": "Nipype (interface)",
-  "description": "MaskTool, as implemented in Nipype (module: nipype.interfaces.afni, interface: MaskTool).\n\n3dmask_tool - for combining/dilating/eroding/filling masks\n\n    For complete details, see the `3dmask_tool Documentation.\n    <https://afni.nimh.nih.gov/pub../pub/dist/doc/program_help/3dmask_tool.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> masktool = afni.MaskTool()\n    >>> masktool.inputs.in_file = 'functional.nii'\n    >>> masktool.inputs.outputtype = 'NIFTI'\n    >>> masktool.cmdline\n    '3dmask_tool -prefix functional_mask.nii -input functional.nii'\n    >>> res = automask.run()  # doctest: +SKIP\n\n    ",
+  "description": "MaskTool, as implemented in Nipype (module: nipype.interfaces.afni, interface: MaskTool).\n\n3dmask_tool - for combining/dilating/eroding/filling masks\n\n    For complete details, see the `3dmask_tool Documentation.\n    <https://afni.nimh.nih.gov/pub../pub/dist/doc/program_help/3dmask_tool.html>`_",
   "inputs": [
     {
       "id": "args",

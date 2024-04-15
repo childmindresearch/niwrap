@@ -2,7 +2,7 @@
   "name": "Maskave",
   "command-line": "Maskave [IN_FILE] [MASK] [QUIET] [OUT_FILE] [ARGS] [ENVIRON] [NUM_THREADS] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "Maskave, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Maskave).\n\nComputes average of all voxels in the input dataset\n    which satisfy the criterion in the options list\n\n    For complete details, see the `3dmaskave Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskave.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> maskave = afni.Maskave()\n    >>> maskave.inputs.in_file = 'functional.nii'\n    >>> maskave.inputs.mask= 'seed_mask.nii'\n    >>> maskave.inputs.quiet= True\n    >>> maskave.cmdline  # doctest: +ELLIPSIS\n    '3dmaskave -mask seed_mask.nii -quiet functional.nii > functional_maskave.1D'\n    >>> res = maskave.run()  # doctest: +SKIP\n\n    ",
+  "description": "Maskave, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Maskave).\n\nComputes average of all voxels in the input dataset\n    which satisfy the criterion in the options list\n\n    For complete details, see the `3dmaskave Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskave.html>`_",
   "inputs": [
     {
       "id": "args",

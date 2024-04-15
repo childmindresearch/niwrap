@@ -2,7 +2,7 @@
   "name": "ROIStats",
   "command-line": "ROIStats [IN_FILE] [MASK] [OUT_FILE] [ARGS] [DEBUG] [ENVIRON] [FORMAT1D] [FORMAT1DR] [MASK_F2SHORT] [MASK_FILE] [NOBRIKLAB] [NOMEANOUT] [NUM_ROI] [QUIET] [ROISEL] [STAT] [ZEROFILL]",
   "author": "Nipype (interface)",
-  "description": "ROIStats, as implemented in Nipype (module: nipype.interfaces.afni, interface: ROIStats).\n\nDisplay statistics over masked regions\n\n    For complete details, see the `3dROIstats Documentation\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dROIstats.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> roistats = afni.ROIStats()\n    >>> roistats.inputs.in_file = 'functional.nii'\n    >>> roistats.inputs.mask_file = 'skeleton_mask.nii.gz'\n    >>> roistats.inputs.stat = ['mean', 'median', 'voxels']\n    >>> roistats.inputs.nomeanout = True\n    >>> roistats.cmdline\n    '3dROIstats -mask skeleton_mask.nii.gz -nomeanout -nzmean -nzmedian -nzvoxels functional.nii > functional_roistat.1D'\n    >>> res = roistats.run()  # doctest: +SKIP\n\n    ",
+  "description": "ROIStats, as implemented in Nipype (module: nipype.interfaces.afni, interface: ROIStats).\n\nDisplay statistics over masked regions\n\n    For complete details, see the `3dROIstats Documentation\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dROIstats.html>`_",
   "inputs": [
     {
       "id": "args",

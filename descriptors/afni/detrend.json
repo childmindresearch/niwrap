@@ -2,7 +2,7 @@
   "name": "Detrend",
   "command-line": "Detrend [IN_FILE] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "Detrend, as implemented in Nipype (module: nipype.interfaces.afni, interface: Detrend).\n\nThis program removes components from voxel time series using\n    linear least squares\n\n    For complete details, see the `3dDetrend Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDetrend.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> detrend = afni.Detrend()\n    >>> detrend.inputs.in_file = 'functional.nii'\n    >>> detrend.inputs.args = '-polort 2'\n    >>> detrend.inputs.outputtype = 'AFNI'\n    >>> detrend.cmdline\n    '3dDetrend -polort 2 -prefix functional_detrend functional.nii'\n    >>> res = detrend.run()  # doctest: +SKIP\n\n    ",
+  "description": "Detrend, as implemented in Nipype (module: nipype.interfaces.afni, interface: Detrend).\n\nThis program removes components from voxel time series using\n    linear least squares\n\n    For complete details, see the `3dDetrend Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDetrend.html>`_",
   "inputs": [
     {
       "id": "args",

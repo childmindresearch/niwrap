@@ -2,7 +2,7 @@
   "name": "ECM",
   "command-line": "ECM [IN_FILE] [ARGS] [AUTOCLIP] [AUTOMASK] [ENVIRON] [EPS] [FECM] [FULL] [MASK] [MAX_ITER] [MEMORY] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [POLORT] [SCALE] [SHIFT] [SPARSITY] [THRESH]",
   "author": "Nipype (interface)",
-  "description": "ECM, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: ECM).\n\nPerforms degree centrality on a dataset using a given maskfile\n    via the 3dECM command\n\n    For complete details, see the `3dECM Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dECM.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> ecm = afni.ECM()\n    >>> ecm.inputs.in_file = 'functional.nii'\n    >>> ecm.inputs.mask = 'mask.nii'\n    >>> ecm.inputs.sparsity = 0.1 # keep top 0.1% of connections\n    >>> ecm.inputs.out_file = 'out.nii'\n    >>> ecm.cmdline\n    '3dECM -mask mask.nii -prefix out.nii -sparsity 0.100000 functional.nii'\n    >>> res = ecm.run()  # doctest: +SKIP\n\n    ",
+  "description": "ECM, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: ECM).\n\nPerforms degree centrality on a dataset using a given maskfile\n    via the 3dECM command\n\n    For complete details, see the `3dECM Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dECM.html>`_",
   "inputs": [
     {
       "id": "args",

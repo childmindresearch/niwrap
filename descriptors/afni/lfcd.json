@@ -2,7 +2,7 @@
   "name": "LFCD",
   "command-line": "LFCD [IN_FILE] [ARGS] [AUTOCLIP] [AUTOMASK] [ENVIRON] [MASK] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [POLORT] [THRESH]",
   "author": "Nipype (interface)",
-  "description": "LFCD, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: LFCD).\n\nPerforms degree centrality on a dataset using a given maskfile\n    via the 3dLFCD command\n\n    For complete details, see the `3dLFCD Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLFCD.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> lfcd = afni.LFCD()\n    >>> lfcd.inputs.in_file = 'functional.nii'\n    >>> lfcd.inputs.mask = 'mask.nii'\n    >>> lfcd.inputs.thresh = 0.8 # keep all connections with corr >= 0.8\n    >>> lfcd.inputs.out_file = 'out.nii'\n    >>> lfcd.cmdline\n    '3dLFCD -mask mask.nii -prefix out.nii -thresh 0.800000 functional.nii'\n    >>> res = lfcd.run()  # doctest: +SKIP\n    ",
+  "description": "LFCD, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: LFCD).\n\nPerforms degree centrality on a dataset using a given maskfile\n    via the 3dLFCD command\n\n    For complete details, see the `3dLFCD Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLFCD.html>`_",
   "inputs": [
     {
       "id": "args",

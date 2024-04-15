@@ -2,7 +2,7 @@
   "name": "Bandpass",
   "command-line": "Bandpass [HIGHPASS] [LOWPASS] [OUT_FILE] [MASK] [IN_FILE] [ARGS] [AUTOMASK] [BLUR] [DESPIKE] [ENVIRON] [LOCALPV] [NFFT] [NO_DETREND] [NORMALIZE] [NOTRANS] [NUM_THREADS] [ORTHOGONALIZE_DSET] [ORTHOGONALIZE_FILE] [OUTPUTTYPE] [TR]",
   "author": "Nipype (interface)",
-  "description": "Bandpass, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Bandpass).\n\nProgram to lowpass and/or highpass each voxel time series in a\n    dataset, offering more/different options than Fourier\n\n    For complete details, see the `3dBandpass Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBandpass.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> from nipype.testing import  example_data\n    >>> bandpass = afni.Bandpass()\n    >>> bandpass.inputs.in_file = 'functional.nii'\n    >>> bandpass.inputs.highpass = 0.005\n    >>> bandpass.inputs.lowpass = 0.1\n    >>> bandpass.cmdline\n    '3dBandpass -prefix functional_bp 0.005000 0.100000 functional.nii'\n    >>> res = bandpass.run()  # doctest: +SKIP\n\n    ",
+  "description": "Bandpass, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Bandpass).\n\nProgram to lowpass and/or highpass each voxel time series in a\n    dataset, offering more/different options than Fourier\n\n    For complete details, see the `3dBandpass Documentation.\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBandpass.html>`_",
   "inputs": [
     {
       "id": "args",

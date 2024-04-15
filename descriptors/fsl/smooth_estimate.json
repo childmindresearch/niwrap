@@ -2,7 +2,7 @@
   "name": "SmoothEstimate",
   "command-line": "SmoothEstimate [ARGS] [DOF] [ENVIRON] [MASK_FILE] [OUTPUT_TYPE] [RESIDUAL_FIT_FILE] [ZSTAT_FILE]",
   "author": "Nipype (interface)",
-  "description": "SmoothEstimate, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SmoothEstimate).\n\nEstimates the smoothness of an image\n\n    Examples\n    --------\n\n    >>> est = SmoothEstimate()\n    >>> est.inputs.zstat_file = 'zstat1.nii.gz'\n    >>> est.inputs.mask_file = 'mask.nii'\n    >>> est.cmdline\n    'smoothest --mask=mask.nii --zstat=zstat1.nii.gz'\n\n    ",
+  "description": "SmoothEstimate, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SmoothEstimate).\n\nEstimates the smoothness of an image",
   "inputs": [
     {
       "id": "args",

@@ -2,7 +2,7 @@
   "name": "C3dAffineTool",
   "command-line": "C3dAffineTool [REFERENCE_FILE] [SOURCE_FILE] [TRANSFORM_FILE] [FSL2RAS] [ITK_TRANSFORM] [ARGS] [ENVIRON]",
   "author": "Nipype (interface)",
-  "description": "C3dAffineTool, as implemented in Nipype (module: nipype.interfaces.c3, interface: C3dAffineTool).\n\nConverts fsl-style Affine registration into ANTS compatible itk format\n\n    Example\n    =======\n\n    >>> from nipype.interfaces.c3 import C3dAffineTool\n    >>> c3 = C3dAffineTool()\n    >>> c3.inputs.source_file = 'cmatrix.mat'\n    >>> c3.inputs.itk_transform = 'affine.txt'\n    >>> c3.inputs.fsl2ras = True\n    >>> c3.cmdline\n    'c3d_affine_tool -src cmatrix.mat -fsl2ras -oitk affine.txt'\n    ",
+  "description": "C3dAffineTool, as implemented in Nipype (module: nipype.interfaces.c3, interface: C3dAffineTool).\n\nConverts fsl-style Affine registration into ANTS compatible itk format\n\n    Example\n    =======\n\n    >>> from nipype.interfaces.c3 import C3dAffineTool\n    >>> c3 = C3dAffineTool()\n    >>> c3.inputs.source_file = 'cmatrix.mat'\n    >>> c3.inputs.itk_transform = 'affine.txt'\n    >>> c3.inputs.fsl2ras = True\n    >>> c3.cmdline\n    'c3d_affine_tool -src cmatrix.mat -fsl2ras -oitk affine.txt'",
   "inputs": [
     {
       "id": "args",

@@ -2,7 +2,7 @@
   "name": "Slice",
   "command-line": "Slice [IN_FILE] [OUT_BASE_NAME] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "Slice, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Slice).\n\nUse fslslice to split a 3D file into lots of 2D files (along z-axis).\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import Slice\n    >>> slice = Slice()\n    >>> slice.inputs.in_file = 'functional.nii'\n    >>> slice.inputs.out_base_name = 'sl'\n    >>> slice.cmdline\n    'fslslice functional.nii sl'\n\n\n    ",
+  "description": "Slice, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Slice).\n\nUse fslslice to split a 3D file into lots of 2D files (along z-axis).",
   "inputs": [
     {
       "id": "args",

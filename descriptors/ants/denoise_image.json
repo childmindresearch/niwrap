@@ -2,7 +2,7 @@
   "name": "DenoiseImage",
   "command-line": "DenoiseImage [ARGS] [DIMENSION] [ENVIRON] [INPUT_IMAGE] [NOISE_IMAGE] [NOISE_MODEL] [NUM_THREADS] [OUTPUT_IMAGE] [SAVE_NOISE] [SHRINK_FACTOR] [VERBOSE]",
   "author": "Nipype (interface)",
-  "description": "DenoiseImage, as implemented in Nipype (module: nipype.interfaces.ants, interface: DenoiseImage).\n\n\n    Examples\n    --------\n    >>> import copy\n    >>> from nipype.interfaces.ants import DenoiseImage\n    >>> denoise = DenoiseImage()\n    >>> denoise.inputs.dimension = 3\n    >>> denoise.inputs.input_image = 'im1.nii'\n    >>> denoise.cmdline\n    'DenoiseImage -d 3 -i im1.nii -n Gaussian -o im1_noise_corrected.nii -s 1'\n\n    >>> denoise_2 = copy.deepcopy(denoise)\n    >>> denoise_2.inputs.output_image = 'output_corrected_image.nii.gz'\n    >>> denoise_2.inputs.noise_model = 'Rician'\n    >>> denoise_2.inputs.shrink_factor = 2\n    >>> denoise_2.cmdline\n    'DenoiseImage -d 3 -i im1.nii -n Rician -o output_corrected_image.nii.gz -s 2'\n\n    >>> denoise_3 = DenoiseImage()\n    >>> denoise_3.inputs.input_image = 'im1.nii'\n    >>> denoise_3.inputs.save_noise = True\n    >>> denoise_3.cmdline\n    'DenoiseImage -i im1.nii -n Gaussian -o [ im1_noise_corrected.nii, im1_noise.nii ] -s 1'\n\n    ",
+  "description": "DenoiseImage, as implemented in Nipype (module: nipype.interfaces.ants, interface: DenoiseImage).",
   "inputs": [
     {
       "id": "args",

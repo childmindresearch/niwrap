@@ -2,7 +2,7 @@
   "name": "Slicer",
   "command-line": "Slicer [IMAGE_WIDTH] [SCALING] [IN_FILE] [IMAGE_EDGES] [LABEL_SLICES] [COLOUR_MAP] [INTENSITY_RANGE] [THRESHOLD_EDGES] [DITHER_EDGES] [NEAREST_NEIGHBOUR] [SHOW_ORIENTATION] [SINGLE_SLICE] [SLICE_NUMBER] [OUT_FILE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
-  "description": "Slicer, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Slicer).\n\nUse FSL's slicer command to output a png image from a volume.\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces import fsl\n    >>> from nipype.testing import example_data\n    >>> slice = fsl.Slicer()\n    >>> slice.inputs.in_file = example_data('functional.nii')\n    >>> slice.inputs.all_axial = True\n    >>> slice.inputs.image_width = 750\n    >>> res = slice.run() #doctest: +SKIP\n\n\n    ",
+  "description": "Slicer, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Slicer).\n\nUse FSL's slicer command to output a png image from a volume.",
   "inputs": [
     {
       "id": "all_axial",

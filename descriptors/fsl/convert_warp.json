@@ -2,7 +2,7 @@
   "name": "ConvertWarp",
   "command-line": "ConvertWarp [REFERENCE] [OUT_FILE] [ABSWARP] [ARGS] [CONS_JACOBIAN] [ENVIRON] [JACOBIAN_MAX] [JACOBIAN_MIN] [MIDMAT] [OUT_ABSWARP] [OUT_RELWARP] [OUTPUT_TYPE] [POSTMAT] [PREMAT] [RELWARP] [SHIFT_DIRECTION] [SHIFT_IN_FILE] [WARP1] [WARP2]",
   "author": "Nipype (interface)",
-  "description": "ConvertWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ConvertWarp).\n\nUse FSL `convertwarp <http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html>`_\n    for combining multiple transforms into one.\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces.fsl import ConvertWarp\n    >>> warputils = ConvertWarp()\n    >>> warputils.inputs.warp1 = \"warpfield.nii\"\n    >>> warputils.inputs.reference = \"T1.nii\"\n    >>> warputils.inputs.relwarp = True\n    >>> warputils.inputs.output_type = \"NIFTI_GZ\"\n    >>> warputils.cmdline # doctest: +ELLIPSIS\n    'convertwarp --ref=T1.nii --rel --warp1=warpfield.nii --out=T1_concatwarp.nii.gz'\n    >>> res = warputils.run() # doctest: +SKIP\n\n\n    ",
+  "description": "ConvertWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ConvertWarp).\n\nUse FSL `convertwarp <http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html>`_\n    for combining multiple transforms into one.",
   "inputs": [
     {
       "id": "abswarp",

@@ -2,7 +2,7 @@
   "name": "BlurToFWHM",
   "command-line": "BlurToFWHM [ARGS] [AUTOMASK] [BLURMASTER] [ENVIRON] [FWHM] [FWHMXY] [IN_FILE] [MASK] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "BlurToFWHM, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: BlurToFWHM).\n\nBlurs a 'master' dataset until it reaches a specified FWHM smoothness\n    (approximately).\n\n    For complete details, see the `3dBlurToFWHM Documentation\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html>`_\n\n    Examples\n    --------\n    >>> from nipype.interfaces import afni\n    >>> blur = afni.preprocess.BlurToFWHM()\n    >>> blur.inputs.in_file = 'epi.nii'\n    >>> blur.inputs.fwhm = 2.5\n    >>> blur.cmdline  # doctest: +ELLIPSIS\n    '3dBlurToFWHM -FWHM 2.500000 -input epi.nii -prefix epi_afni'\n    >>> res = blur.run()  # doctest: +SKIP\n\n    ",
+  "description": "BlurToFWHM, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: BlurToFWHM).\n\nBlurs a 'master' dataset until it reaches a specified FWHM smoothness\n    (approximately).\n\n    For complete details, see the `3dBlurToFWHM Documentation\n    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html>`_",
   "inputs": [
     {
       "id": "args",

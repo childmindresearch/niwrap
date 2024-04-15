@@ -2,7 +2,7 @@
   "name": "ImageMaths",
   "command-line": "ImageMaths [OUT_FILE] [IN_FILE] [OP_STRING] [IN_FILE2] [OUT_DATA_TYPE] [ARGS] [ENVIRON] [MASK_FILE] [OUTPUT_TYPE] [SUFFIX]",
   "author": "Nipype (interface)",
-  "description": "ImageMaths, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ImageMaths).\n\nUse FSL fslmaths command to allow mathematical manipulation of images\n    `FSL info <http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils>`_\n\n\n    Examples\n    --------\n\n    >>> from nipype.interfaces import fsl\n    >>> from nipype.testing import anatfile\n    >>> maths = fsl.ImageMaths(in_file=anatfile, op_string= '-add 5',\n    ...                        out_file='foo_maths.nii')\n    >>> maths.cmdline == 'fslmaths %s -add 5 foo_maths.nii' % anatfile\n    True\n\n\n    ",
+  "description": "ImageMaths, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ImageMaths).\n\nUse FSL fslmaths command to allow mathematical manipulation of images\n    `FSL info <http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils>`_",
   "inputs": [
     {
       "id": "args",

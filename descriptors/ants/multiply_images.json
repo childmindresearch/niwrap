@@ -2,7 +2,7 @@
   "name": "MultiplyImages",
   "command-line": "MultiplyImages [DIMENSION] [FIRST_INPUT] [SECOND_INPUT] [OUTPUT_PRODUCT_IMAGE] [ARGS] [ENVIRON] [NUM_THREADS]",
   "author": "Nipype (interface)",
-  "description": "MultiplyImages, as implemented in Nipype (module: nipype.interfaces.ants, interface: MultiplyImages).\n\n\n    Examples\n    --------\n    >>> from nipype.interfaces.ants import MultiplyImages\n    >>> test = MultiplyImages()\n    >>> test.inputs.dimension = 3\n    >>> test.inputs.first_input = 'moving2.nii'\n    >>> test.inputs.second_input = 0.25\n    >>> test.inputs.output_product_image = \"out.nii\"\n    >>> test.cmdline\n    'MultiplyImages 3 moving2.nii 0.25 out.nii'\n    ",
+  "description": "MultiplyImages, as implemented in Nipype (module: nipype.interfaces.ants, interface: MultiplyImages).",
   "inputs": [
     {
       "id": "args",
