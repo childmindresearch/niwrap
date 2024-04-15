@@ -8,7 +8,13 @@
         "type": "docker",
         "image": "dummy/dummy"
     },
-    "inputs": [],
+    "inputs": [
+        {
+            "id": "dummy_input",
+            "name": "Dummy input",
+            "type": "File"
+        }
+    ],
     "output-files": [
         {
             "id": "dummy_output",

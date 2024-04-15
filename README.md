@@ -14,6 +14,23 @@ This repository contains a collection of Boutiques descriptors for all command l
 - [Freesurfer wiki](https://surfer.nmr.mgh.harvard.edu/fswiki)
 - [AFNI documentation](https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/index.html)
 
+## VSCode JSON schema
+
+Add the following entry to your `./.vscode/settings.json` file to enable in-editor JSON schema validation for this project for VSCode.
+
+```json
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "descriptors/**/*.json"
+            ],
+            "url": "./schemas/descriptor.schema.json"
+        }
+    ]
+}
+``
+
 ## Index
 
 | Framework | Interface |
