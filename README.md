@@ -29,7 +29,7 @@ Add the following entry to your `./.vscode/settings.json` file to enable in-edit
         }
     ]
 }
-``
+```
 
 ## Index
 
