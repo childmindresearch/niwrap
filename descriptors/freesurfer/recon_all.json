@@ -625,7 +625,7 @@
       "id": "pial",
       "path-template": "pial",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing an existing file. Gray matter/pia mater surface meshes.",
+      "description": "A list of items which are a pathlike object or string representing an existing file. Gray matter/pia matter surface meshes.",
       "list": true
     },
     {

@@ -56,7 +56,7 @@
       "integer": true,
       "value-key": "[POLORT]",
       "command-line-flag": "-polort",
-      "description": "An integer. Remove polynomical trend of order m.",
+      "description": "An integer. Remove polynomial trend of order m.",
       "optional": true
     },
     {

@@ -14,7 +14,7 @@
     },
     {
       "id": "delta_TE",
-      "name": "Delta te",
+      "name": "Delta echo time",
       "type": "Number",
       "value-key": "[DELTA_TE]",
       "description": "A float. Echo time difference of the fieldmap sequence in ms. (usually 2.46ms in siemens).",

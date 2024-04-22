@@ -57,7 +57,7 @@
       "type": "String",
       "value-key": "[CENMODE]",
       "command-line-flag": "-cenmode",
-      "description": "'kill' or 'zero' or 'ntrp'. Specifies how censored time points are treated inthe output dataset:* mode = zero -- put zero values in their place;  output dataset is same length as input* mode = kill -- remove those time points;  output dataset is shorter than input* mode = ntrp -- censored values are replaced by interpolated  neighboring (in time) non-censored values,  before any projections, and then the  analysis proceeds without actual removal  of any time points -- this feature is to  keep the spanish inquisition happy.* the default mode is kill !!!.",
+      "description": "'kill' or 'zero' or 'ntrp'. Specifies how censored time points are treated in the output dataset:* mode = zero -- put zero values in their place; output dataset is same length as input* mode = kill -- remove those time points;  output dataset is shorter than input* mode = ntrp -- censored values are replaced by interpolated  neighboring (in time) non-censored values,  before any projections, and then the  analysis proceeds without actual removal  of any time points -- this feature is to  keep the spanish inquisition happy.* the default mode is kill !!!.",
       "optional": true,
       "value-choices": ["KILL", "ZERO", "NTRP"]
     },

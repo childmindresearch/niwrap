@@ -1,6 +1,6 @@
 {
   "name": "ApplyVolTransform",
-  "command-line": "ApplyVolTransform [ARGS] [ENVIRON] [FS_TARGET] [FSL_REG_FILE] [INTERP] [INVERSE] [INVERT_MORPH] [LTA_FILE] [LTA_INV_FILE] [M3Z_FILE] [MNI_152_REG] [NO_DED_M3Z_PATH] [NO_RESAMPLE] [REG_FILE] [REG_HEADER] [SOURCE_FILE] [SUBJECT] [SUBJECTS_DIR] [TAL] [TAL_RESOLUTION] [TARGET_FILE] [TRANSFORMED_FILE] [XFM_REG_FILE]",
+  "command-line": "mri_vol2vol [ARGS] [ENVIRON] [FS_TARGET] [FSL_REG_FILE] [INTERP] [INVERSE] [INVERT_MORPH] [LTA_FILE] [LTA_INV_FILE] [M3Z_FILE] [MNI_152_REG] [NO_DEF_M3Z_PATH] [NO_RESAMPLE] [REG_FILE] [REG_HEADER] [SOURCE_FILE] [SUBJECT] [SUBJECTS_DIR] [TAL] [TAL_RESOLUTION] [TARGET_FILE] [TRANSFORMED_FILE] [XFM_REG_FILE]",
   "author": "Nipype (interface)",
   "description": "ApplyVolTransform, as implemented in Nipype (module: nipype.interfaces.freesurfer.preprocess, interface: ApplyVolTransform).\nUse FreeSurfer mri_vol2vol to apply a transform.",
   "inputs": [
@@ -106,12 +106,12 @@
       "optional": false
     },
     {
-      "id": "no_ded_m3z_path",
-      "name": "No ded m3z path",
+      "id": "no_def_m3z_path",
+      "name": "No def m3z path",
       "type": "Flag",
-      "value-key": "[NO_DED_M3Z_PATH]",
+      "value-key": "[NO_DEF_M3Z_PATH]",
       "command-line-flag": "--noDefM3zPath",
-      "description": "A boolean. To be used with the m3z flag. instructs the code not to look for them3z morph in the default location (subjects_dir/subj/mri/transforms), but instead just use the path indicated in --m3z.",
+      "description": "A boolean. To be used with the m3z flag. Instructs the code not to look for the non-linear m3z morph in the default location (subjects_dir/subj/mri/transforms), but instead just use the path indicated in --m3z.",
       "optional": true,
       "requires-inputs": ["m3z_file"]
     },
