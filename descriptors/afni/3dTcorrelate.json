@@ -159,7 +159,15 @@
     {
       "id": "correlationtype",
       "name": "correlation type",
-      "members": ["pearson", "spearman", "quadrant", "ktaub", "covariance", "partial", "ycoef"],
+      "members": [
+        "pearson",
+        "spearman",
+        "quadrant",
+        "ktaub",
+        "covariance",
+        "partial",
+        "ycoef"
+      ],
       "mutually-exclusive": true
     }
   ],
