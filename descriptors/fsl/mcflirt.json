@@ -1,275 +1,268 @@
 {
-    "name": "MCFLIRT",
-    "command-line": "mcflirt [IN_FILE] [BINS] [COST] [DOF] [INIT] [INTERPOLATION] [MEAN_VOL] [OUT_FILE] [REF_FILE] [REF_VOL] [ROTATION] [SAVE_MATS] [SAVE_PLOTS] [SAVE_RMS] [SCALING] [SMOOTH] [STAGES] [STATS_IMGS] [USE_CONTOUR] [USE_GRADIENT]",
-    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
-    "description": "MCFLIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MCFLIRT).",
-    "inputs": [
-        {
-            "id": "bins",
-            "name": "Bins",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[BINS]",
-            "command-line-flag": "-bins",
-            "description": "An integer (int or long). Number of histogram bins.",
-            "optional": true
-        },
-        {
-            "id": "cost",
-            "name": "Cost",
-            "type": "String",
-            "value-key": "[COST]",
-            "command-line-flag": "-cost",
-            "description": "'mutualinfo' or 'woods' or 'corratio' or 'normcorr' or 'normmi' or 'leastsquares'. Cost function to optimize.",
-            "optional": true,
-            "value-choices": [
-                "mutualinfo",
-                "woods",
-                "corratio",
-                "normcorr",
-                "normmi",
-                "leastsquares"
-            ]
-        },
-        {
-            "id": "dof",
-            "name": "Dof",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[DOF]",
-            "command-line-flag": "-dof",
-            "description": "An integer (int or long). Degrees of freedom for the transformation.",
-            "optional": true
-        },
-        {
-            "id": "in_file",
-            "name": "In file",
-            "type": "File",
-            "value-key": "[IN_FILE]",
-            "command-line-flag": "-in",
-            "description": "An existing file name. Timeseries to motion-correct.",
-            "optional": false
-        },
-        {
-            "id": "init",
-            "name": "Init",
-            "type": "File",
-            "value-key": "[INIT]",
-            "command-line-flag": "-init",
-            "description": "An existing file name. Initial transformation matrix.",
-            "optional": true
-        },
-        {
-            "id": "interpolation",
-            "name": "Interpolation",
-            "type": "String",
-            "value-key": "[INTERPOLATION]",
-            "command-line-flag": "-",
-            "command-line-flag-separator": "",
-            "description": "'spline' or 'nn' or 'sinc'. Interpolation method for transformation.",
-            "optional": true,
-            "value-choices": [
-                "spline_final",
-                "nn_final",
-                "sinc_final"
-            ]
-        },
-        {
-            "id": "mean_vol",
-            "name": "Mean vol",
-            "type": "Flag",
-            "value-key": "[MEAN_VOL]",
-            "command-line-flag": "-meanvol",
-            "description": "A boolean. Register to mean volume.",
-            "optional": true
-        },
-        {
-            "id": "out_file",
-            "name": "Out file",
-            "type": "File",
-            "value-key": "[OUT_FILE]",
-            "command-line-flag": "-out",
-            "description": "A file name. File to write.",
-            "optional": true
-        },
-        {
-            "id": "ref_file",
-            "name": "Ref file",
-            "type": "File",
-            "value-key": "[REF_FILE]",
-            "command-line-flag": "-reffile",
-            "description": "An existing file name. Target image for motion correction.",
-            "optional": true
-        },
-        {
-            "id": "ref_vol",
-            "name": "Ref vol",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[REF_VOL]",
-            "command-line-flag": "-refvol",
-            "description": "An integer (int or long). Volume to align frames to.",
-            "optional": true
-        },
-        {
-            "id": "rotation",
-            "name": "Rotation",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[ROTATION]",
-            "command-line-flag": "-rotation",
-            "description": "An integer (int or long). Scaling factor for rotation tolerances.",
-            "optional": true
-        },
-        {
-            "id": "save_mats",
-            "name": "Save mats",
-            "type": "Flag",
-            "value-key": "[SAVE_MATS]",
-            "command-line-flag": "-mats",
-            "description": "A boolean. Save transformation matrices.",
-            "optional": true
-        },
-        {
-            "id": "save_plots",
-            "name": "Save plots",
-            "type": "Flag",
-            "value-key": "[SAVE_PLOTS]",
-            "command-line-flag": "-plots",
-            "description": "A boolean. Save transformation parameters.",
-            "optional": true
-        },
-        {
-            "id": "save_rms",
-            "name": "Save rms",
-            "type": "Flag",
-            "value-key": "[SAVE_RMS]",
-            "command-line-flag": "-rmsabs -rmsrel",
-            "description": "A boolean. Save rms displacement parameters.",
-            "optional": true
-        },
-        {
-            "id": "scaling",
-            "name": "Scaling",
-            "type": "Number",
-            "value-key": "[SCALING]",
-            "command-line-flag": "-scaling",
-            "description": "A float. Scaling factor to use.",
-            "optional": true
-        },
-        {
-            "id": "smooth",
-            "name": "Smooth",
-            "type": "Number",
-            "value-key": "[SMOOTH]",
-            "command-line-flag": "-smooth",
-            "description": "A float. Smoothing factor for the cost function.",
-            "optional": true
-        },
-        {
-            "id": "stages",
-            "name": "Stages",
-            "type": "Number",
-            "integer": true,
-            "value-key": "[STAGES]",
-            "command-line-flag": "-stages",
-            "description": "An integer (int or long). Stages (if 4, perform final search with sinc interpolation.",
-            "optional": true
-        },
-        {
-            "id": "stats_imgs",
-            "name": "Stats imgs",
-            "type": "Flag",
-            "value-key": "[STATS_IMGS]",
-            "command-line-flag": "-stats",
-            "description": "A boolean. Produce variance and std. dev. images.",
-            "optional": true
-        },
-        {
-            "id": "use_contour",
-            "name": "Use contour",
-            "type": "Flag",
-            "value-key": "[USE_CONTOUR]",
-            "command-line-flag": "-edge",
-            "description": "A boolean. Run search on contour images.",
-            "optional": true
-        },
-        {
-            "id": "use_gradient",
-            "name": "Use gradient",
-            "type": "Flag",
-            "value-key": "[USE_GRADIENT]",
-            "command-line-flag": "-gdt",
-            "description": "A boolean. Run search on gradient images.",
-            "optional": true
-        }
-    ],
-    "output-files": [
-        {
-            "name": "Mat file",
-            "id": "mat_file",
-            "path-template": "MAT_*",
-            "optional": true,
-            "description": "A list of items which are an existing file name. Transformation matrices.",
-            "list": true
-        },
-        {
-            "name": "Mean img",
-            "id": "mean_img",
-            "path-template": "[OUT_FILE]_mean_reg.ext",
-            "optional": true,
-            "description": "An existing file name. Mean timeseries image (if mean_vol=true)."
-        },
-        {
-            "name": "Out file",
-            "id": "out_file_outfile",
-            "path-template": "[OUT_FILE]",
-            "optional": true,
-            "description": "An existing file name. Motion-corrected timeseries."
-        },
-        {
-            "name": "Par file",
-            "id": "par_file",
-            "path-template": "[OUT_FILE].par",
-            "optional": true,
-            "description": "An existing file name. Text-file with motion parameters."
-        },
-        {
-            "name": "Rms files",
-            "id": "rms_files",
-            "path-template": "[OUT_FILE]_*.rms",
-            "optional": true,
-            "description": "A list of items which are an existing file name. Absolute and relative displacement parameters.",
-            "list": true
-        },
-        {
-            "name": "Std img",
-            "id": "std_img",
-            "path-template": "[OUT_FILE]_sigma.ext",
-            "optional": true,
-            "description": "An existing file name. Standard deviation image."
-        },
-        {
-            "name": "Variance img",
-            "id": "variance_img",
-            "path-template": "[OUT_FILE]_variance.ext",
-            "optional": true,
-            "description": "An existing file name. Variance image."
-        }
-    ],
-    "tool-version": "1.0.0",
-    "schema-version": "0.5",
-    "container-image": {
-        "image": "mcin/docker-fsl:latest",
-        "type": "docker",
-        "index": "index.docker.io"
+  "name": "MCFLIRT",
+  "command-line": "mcflirt [IN_FILE] [BINS] [COST] [DOF] [INIT] [INTERPOLATION] [MEAN_VOL] [OUT_FILE] [REF_FILE] [REF_VOL] [ROTATION] [SAVE_MATS] [SAVE_PLOTS] [SAVE_RMS] [SCALING] [SMOOTH] [STAGES] [STATS_IMGS] [USE_CONTOUR] [USE_GRADIENT]",
+  "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
+  "description": "MCFLIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MCFLIRT).",
+  "inputs": [
+    {
+      "id": "bins",
+      "name": "Bins",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[BINS]",
+      "command-line-flag": "-bins",
+      "description": "An integer (int or long). Number of histogram bins.",
+      "optional": true
     },
-    "tags": {
-        "domain": [
-            "neuroinformatics",
-            "mri"
-        ],
-        "source": "nipype-interface"
+    {
+      "id": "cost",
+      "name": "Cost",
+      "type": "String",
+      "value-key": "[COST]",
+      "command-line-flag": "-cost",
+      "description": "'mutualinfo' or 'woods' or 'corratio' or 'normcorr' or 'normmi' or 'leastsquares'. Cost function to optimize.",
+      "optional": true,
+      "value-choices": [
+        "mutualinfo",
+        "woods",
+        "corratio",
+        "normcorr",
+        "normmi",
+        "leastsquares"
+      ]
     },
-    "url": "https://github.com/nipy/nipype/blob/master/nipype/interfaces/fsl/preprocess.py"
+    {
+      "id": "dof",
+      "name": "Dof",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[DOF]",
+      "command-line-flag": "-dof",
+      "description": "An integer (int or long). Degrees of freedom for the transformation.",
+      "optional": true
+    },
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "command-line-flag": "-in",
+      "description": "An existing file name. Timeseries to motion-correct.",
+      "optional": false
+    },
+    {
+      "id": "init",
+      "name": "Init",
+      "type": "File",
+      "value-key": "[INIT]",
+      "command-line-flag": "-init",
+      "description": "An existing file name. Initial transformation matrix.",
+      "optional": true
+    },
+    {
+      "id": "interpolation",
+      "name": "Interpolation",
+      "type": "String",
+      "value-key": "[INTERPOLATION]",
+      "command-line-flag": "-",
+      "command-line-flag-separator": "",
+      "description": "'spline' or 'nn' or 'sinc'. Interpolation method for transformation.",
+      "optional": true,
+      "value-choices": ["spline_final", "nn_final", "sinc_final"]
+    },
+    {
+      "id": "mean_vol",
+      "name": "Mean vol",
+      "type": "Flag",
+      "value-key": "[MEAN_VOL]",
+      "command-line-flag": "-meanvol",
+      "description": "A boolean. Register to mean volume.",
+      "optional": true
+    },
+    {
+      "id": "out_file",
+      "name": "Out file",
+      "type": "File",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-out",
+      "description": "A file name. File to write.",
+      "optional": true
+    },
+    {
+      "id": "ref_file",
+      "name": "Ref file",
+      "type": "File",
+      "value-key": "[REF_FILE]",
+      "command-line-flag": "-reffile",
+      "description": "An existing file name. Target image for motion correction.",
+      "optional": true
+    },
+    {
+      "id": "ref_vol",
+      "name": "Ref vol",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[REF_VOL]",
+      "command-line-flag": "-refvol",
+      "description": "An integer (int or long). Volume to align frames to.",
+      "optional": true
+    },
+    {
+      "id": "rotation",
+      "name": "Rotation",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[ROTATION]",
+      "command-line-flag": "-rotation",
+      "description": "An integer (int or long). Scaling factor for rotation tolerances.",
+      "optional": true
+    },
+    {
+      "id": "save_mats",
+      "name": "Save mats",
+      "type": "Flag",
+      "value-key": "[SAVE_MATS]",
+      "command-line-flag": "-mats",
+      "description": "A boolean. Save transformation matrices.",
+      "optional": true
+    },
+    {
+      "id": "save_plots",
+      "name": "Save plots",
+      "type": "Flag",
+      "value-key": "[SAVE_PLOTS]",
+      "command-line-flag": "-plots",
+      "description": "A boolean. Save transformation parameters.",
+      "optional": true
+    },
+    {
+      "id": "save_rms",
+      "name": "Save rms",
+      "type": "Flag",
+      "value-key": "[SAVE_RMS]",
+      "command-line-flag": "-rmsabs -rmsrel",
+      "description": "A boolean. Save rms displacement parameters.",
+      "optional": true
+    },
+    {
+      "id": "scaling",
+      "name": "Scaling",
+      "type": "Number",
+      "value-key": "[SCALING]",
+      "command-line-flag": "-scaling",
+      "description": "A float. Scaling factor to use.",
+      "optional": true
+    },
+    {
+      "id": "smooth",
+      "name": "Smooth",
+      "type": "Number",
+      "value-key": "[SMOOTH]",
+      "command-line-flag": "-smooth",
+      "description": "A float. Smoothing factor for the cost function.",
+      "optional": true
+    },
+    {
+      "id": "stages",
+      "name": "Stages",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[STAGES]",
+      "command-line-flag": "-stages",
+      "description": "An integer (int or long). Stages (if 4, perform final search with sinc interpolation.",
+      "optional": true
+    },
+    {
+      "id": "stats_imgs",
+      "name": "Stats imgs",
+      "type": "Flag",
+      "value-key": "[STATS_IMGS]",
+      "command-line-flag": "-stats",
+      "description": "A boolean. Produce variance and std. dev. images.",
+      "optional": true
+    },
+    {
+      "id": "use_contour",
+      "name": "Use contour",
+      "type": "Flag",
+      "value-key": "[USE_CONTOUR]",
+      "command-line-flag": "-edge",
+      "description": "A boolean. Run search on contour images.",
+      "optional": true
+    },
+    {
+      "id": "use_gradient",
+      "name": "Use gradient",
+      "type": "Flag",
+      "value-key": "[USE_GRADIENT]",
+      "command-line-flag": "-gdt",
+      "description": "A boolean. Run search on gradient images.",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "name": "Mat file",
+      "id": "mat_file",
+      "path-template": "MAT_*",
+      "optional": true,
+      "description": "A list of items which are an existing file name. Transformation matrices.",
+      "list": true
+    },
+    {
+      "name": "Mean img",
+      "id": "mean_img",
+      "path-template": "[OUT_FILE]_mean_reg.ext",
+      "optional": true,
+      "description": "An existing file name. Mean timeseries image (if mean_vol=true)."
+    },
+    {
+      "name": "Out file",
+      "id": "out_file_outfile",
+      "path-template": "[OUT_FILE]",
+      "optional": true,
+      "description": "An existing file name. Motion-corrected timeseries."
+    },
+    {
+      "name": "Par file",
+      "id": "par_file",
+      "path-template": "[OUT_FILE].par",
+      "optional": true,
+      "description": "An existing file name. Text-file with motion parameters."
+    },
+    {
+      "name": "Rms files",
+      "id": "rms_files",
+      "path-template": "[OUT_FILE]_*.rms",
+      "optional": true,
+      "description": "A list of items which are an existing file name. Absolute and relative displacement parameters.",
+      "list": true
+    },
+    {
+      "name": "Std img",
+      "id": "std_img",
+      "path-template": "[OUT_FILE]_sigma.ext",
+      "optional": true,
+      "description": "An existing file name. Standard deviation image."
+    },
+    {
+      "name": "Variance img",
+      "id": "variance_img",
+      "path-template": "[OUT_FILE]_variance.ext",
+      "optional": true,
+      "description": "An existing file name. Variance image."
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker",
+    "index": "index.docker.io"
+  },
+  "tags": {
+    "domain": ["neuroinformatics", "mri"],
+    "source": "nipype-interface"
+  },
+  "url": "https://github.com/nipy/nipype/blob/master/nipype/interfaces/fsl/preprocess.py"
 }
