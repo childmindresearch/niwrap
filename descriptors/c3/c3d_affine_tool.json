@@ -1,60 +1,16 @@
 {
   "name": "C3dAffineTool",
-  "command-line": "C3dAffineTool [REFERENCE_FILE] [SOURCE_FILE] [TRANSFORM_FILE] [FSL2RAS] [ITK_TRANSFORM] [ARGS] [ENVIRON]",
+  "command-line": "c3d_affine_tool [REFERENCE_FILE] [SOURCE_FILE] [TRANSFORM_FILE] [SFORM_FILE] [OUT_MATFILE] [FSL2RAS] [RAS2FSL] [INV] [DET] [MULT] [SQRT] [ITK_TRANSFORM] [OUT_ITK_TRANSFORM] [IRTK_TRANSFORM] [OUT_IRTK_TRANSFORM] [INFO] [INFO_FULL]",
   "author": "Nipype (interface)",
   "description": "C3dAffineTool, as implemented in Nipype (module: nipype.interfaces.c3, interface: C3dAffineTool).\nConverts fsl-style Affine registration into ANTS compatible itk format\nExample =======\n>>> from nipype.interfaces.c3 import C3dAffineTool >>> c3 = C3dAffineTool() >>> c3.inputs.source_file = 'cmatrix.mat' >>> c3.inputs.itk_transform = 'affine.txt' >>> c3.inputs.fsl2ras = True >>> c3.cmdline 'c3d_affine_tool -src cmatrix.mat -fsl2ras -oitk affine.txt'",
   "inputs": [
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
-    {
-      "id": "fsl2ras",
-      "name": "Fsl2ras",
-      "type": "Flag",
-      "value-key": "[FSL2RAS]",
-      "command-line-flag": "-fsl2ras",
-      "description": "A boolean. No description provided.",
-      "optional": true
-    },
-    {
-      "id": "itk_transform",
-      "name": "Itk transform",
-      "type": "Flag",
-      "value-key": "[ITK_TRANSFORM]",
-      "command-line-flag": "-oitk",
-      "description": "A boolean or a pathlike object or string representing a file. Export itk transform.",
-      "optional": true
-    },
-    {
-      "id": "itk_transform_2",
-      "name": "Itk transform",
-      "type": "File",
-      "value-key": "[ITK_TRANSFORM]",
-      "command-line-flag": "-oitk",
-      "description": "A boolean or a pathlike object or string representing a file. Export itk transform.",
-      "optional": true
-    },
     {
       "id": "reference_file",
       "name": "Reference file",
       "type": "File",
       "value-key": "[REFERENCE_FILE]",
       "command-line-flag": "-ref",
-      "description": "A pathlike object or string representing an existing file. No description provided.",
+      "description": "Set reference (fixed) image - only for -fsl2ras and -ras2fsl.",
       "optional": true
     },
     {
@@ -63,7 +19,7 @@
       "type": "File",
       "value-key": "[SOURCE_FILE]",
       "command-line-flag": "-src",
-      "description": "A pathlike object or string representing an existing file. No description provided.",
+      "description": "Set source (moving) image - only for -fsl2ras and -ras2fsl.",
       "optional": true
     },
     {
@@ -71,25 +27,157 @@
       "name": "Transform file",
       "type": "File",
       "value-key": "[TRANSFORM_FILE]",
-      "description": "A pathlike object or string representing an existing file. No description provided.",
+      "description": "A pathlike object or string representing the transform.",
+      "optional": false
+    },
+    {
+      "id": "fsl2ras",
+      "name": "Fsl2ras",
+      "type": "Flag",
+      "value-key": "[FSL2RAS]",
+      "command-line-flag": "-fsl2ras",
+      "description": "Convert FSL to RAS.",
+      "optional": true
+    },
+    {
+      "id": "ras2fsl",
+      "name": "Ras2fsl",
+      "type": "Flag",
+      "value-key": "[RAS2FSL]",
+      "command-line-flag": "-ras2fsl",
+      "description": "Convert RAS to FSL.",
+      "optional": true
+    },
+    {
+      "id": "determinant",
+      "name": "Determinant",
+      "type": "Flag",
+      "value-key": "[DET]",
+      "command-line-flag": "-det",
+      "description": "Print the determinant.",
+      "optional": true
+    },
+    {
+      "id": "invert",
+      "name": "Invert",
+      "type": "Flag",
+      "value-key": "[INV]",
+      "command-line-flag": "-inv",
+      "description": "Invert matrix.",
+      "optional": true
+    },
+    {
+      "id": "multiply",
+      "name": "Multiply",
+      "type": "Flag",
+      "value-key": "[MULT]",
+      "command-line-flag": "-mult",
+      "description": "Multiply matrices.",
+      "optional": true
+    },
+    {
+      "id": "sqrt",
+      "name": "Square root",
+      "type": "Flag",
+      "value-key": "[SQRT]",
+      "command-line-flag": "-sqrt",
+      "description": "Matrix square root (i.e., Q s.t. A = Q * Q).",
+      "optional": true
+    },
+    {
+      "id": "out_matfile",
+      "name": "Output matrix",
+      "type": "String",
+      "value-key": "[OUT_MATFILE]",
+      "command-line-flag": "-o",
+      "description": "Write output matrix.",
+      "optional": true
+    },
+    {
+      "id": "sform_file",
+      "name": "Sform file",
+      "type": "File",
+      "value-key": "[SFORM_FILE]",
+      "command-line-flag": "-sform",
+      "description": "Read matrix from NifTI sform.",
+      "optional": true
+    },
+    {
+      "id": "itk_transform",
+      "name": "ITK transform",
+      "type": "File",
+      "value-key": "[ITK_TRANSFORM]",
+      "command-line-flag": "-itk",
+      "description": "Import ITK transform.",
+      "optional": true
+    },
+    {
+      "id": "out_itk_transform",
+      "name": "Output ITK transform",
+      "type": "String",
+      "value-key": "[OUT_ITK_TRANSFORM]",
+      "command-line-flag": "-oitk",
+      "description": "Export ITK transform.",
+      "optional": true
+    },
+    {
+      "id": "irtk_transform",
+      "name": "IRTK transform",
+      "type": "File",
+      "value-key": "[IRTK_TRANSFORM]",
+      "command-line-flag": "-irtk",
+      "description": "Import IRTK .dof format transform.",
+      "optional": true
+    },
+    {
+      "id": "out_irtk_transform",
+      "name": "Output IRTK transform",
+      "type": "String",
+      "value-key": "[OUT_IRTK_TRANSFORM]",
+      "command-line-flag": "-oirtk",
+      "description": "Export IRTK .dof format transform.",
+      "optional": true
+    },
+    {
+      "id": "info",
+      "name": "Info",
+      "type": "Flag",
+      "value-key": "[INFO]",
+      "command-line-flag": "-info",
+      "description": "Print matrix.",
+      "optional": true
+    },
+    {
+      "id": "info_full",
+      "name": "Info full",
+      "type": "Flag",
+      "value-key": "[INFO_FULL]",
+      "command-line-flag": "-info-full",
+      "description": "Print matrix and more detail about the transform.",
       "optional": true
     }
   ],
   "output-files": [
     {
-      "name": "Itk transform",
+      "name": "Output ITK transform",
       "id": "itk_transform_outfile",
-      "path-template": "affine.txt",
+      "path-template": "[OUT_ITK_TRANSFORM].txt",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. No description provided."
-    }
-  ],
-  "groups": [
+      "description": "Output ITK transform file."
+    },
     {
-      "id": "itk_transform_group",
-      "name": "Itk transform group",
-      "members": ["itk_transform", "itk_transform_2"],
-      "mutually-exclusive": true
+      "name": "Output ITK transform",
+      "id": "irtk_transform_outfile",
+      "path-template": "[OUT_IRTK_TRANSFORM].dof",
+      "optional": true,
+      "description": "Output IRTK transform file."
+    },
+    {
+      "name": "Output ITK transform",
+      "id": "matrix_transform_outfile",
+      "path-template": "[OUT_MATFILE].mat",
+      "optional": true,
+      "description": "Write output matrix."
     }
   ],
   "tool-version": "1.0.0",
