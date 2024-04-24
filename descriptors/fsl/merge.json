@@ -1,35 +1,28 @@
 {
   "name": "Merge",
-  "command-line": "Merge [DIMENSION] [MERGED_FILE] [IN_FILES] [TR] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
+  "command-line": "fslmerge [DIMENSION] [DIMENSION_TR] [MERGED_FILE] [IN_FILES] [TR] [N]",
   "author": "Nipype (interface)",
   "description": "Merge, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: Merge).\nUse fslmerge to concatenate images\nImages can be concatenated across time, x, y, or z dimensions. Across the time (t) dimension the TR is set by default to 1 sec.\nNote: to set the TR to a different value, specify 't' for dimension and specify the TR value in seconds for the tr input. The dimension will be automatically updated to 'tr'.",
   "inputs": [
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
     {
       "id": "dimension",
       "name": "Dimension",
       "type": "String",
       "value-key": "[DIMENSION]",
       "command-line-flag": "-",
+      "command-line-flag-separator": "",
       "description": "'t' or 'x' or 'y' or 'z' or 'a'. Dimension along which to merge, optionally set tr input when dimension is t.",
-      "optional": false,
-      "value-choices": ["t", "x", "y", "z", "a"]
+      "value-choices": ["t", "x", "y", "z", "a"],
+      "optional": true
     },
     {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
+      "id": "dimension_tr",
+      "name": "Dimension TR",
+      "type": "Flag",
+      "value-key": "[DIMENSION_TR]",
+      "command-line-flag": "-tr",
+      "description": "Concatenate images in time and set out image tr to final option value",
+      "optional": true
     },
     {
       "id": "in_files",
@@ -37,17 +30,16 @@
       "type": "File",
       "list": true,
       "value-key": "[IN_FILES]",
-      "description": "A list of items which are a pathlike object or string representing an existing file. No description provided.",
+      "description": "A list of images to merge together.",
       "optional": false
     },
     {
-      "id": "output_type",
-      "name": "Output type",
+      "id": "merged_file",
+      "name": "Merged file",
       "type": "String",
-      "value-key": "[OUTPUT_TYPE]",
-      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-      "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+      "value-key": "[MERGED_FILE]",
+      "description": "Merged output file.",
+      "optional": false
     },
     {
       "id": "tr",
@@ -55,24 +47,44 @@
       "type": "Number",
       "value-key": "[TR]",
       "description": "A float. Use to specify tr in seconds (default is 1.00 sec), overrides dimension and sets it to tr.",
+      "requires-inputs": ["dimension_tr"],
+      "optional": true
+    },
+    {
+      "id": "volume_number",
+      "name": "Volume number",
+      "type": "Number",
+      "integer": true,
+      "command-line-flag": "-n",
+      "value-key": "[N]",
+      "description": "Only use volume <N> from each input file (first volume is 0 and not 1).",
       "optional": true
     }
   ],
   "output-files": [
     {
       "name": "Merged file",
-      "id": "merged_file",
-      "optional": true,
-      "description": "A pathlike object or string representing a file. No description provided.",
-      "path-template": "[IN_FILES]_merged",
-      "value-key": "[MERGED_FILE]"
+      "id": "output_file",
+      "description": "Merged output file.",
+      "path-template": "[MERGED_FILE]",
+      "optional": true
+    }
+  ],
+  "groups": [
+    {
+      "id": "tr_args",
+      "name": "TR arguments",
+      "description": "Argument for setting TR when concatenating across time.",
+      "members": ["dimension_tr", "tr"],
+      "all-or-none": true
     },
     {
-      "name": "Merged file",
-      "id": "merged_file",
-      "path-template": "merged_file",
-      "optional": true,
-      "description": "A pathlike object or string representing an existing file. No description provided."
+      "id": "mutex_dims",
+      "name": "Dimension arguments",
+      "description": "Mutually exclusive dimension arguments.",
+      "members": ["dimension", "dimension_tr"],
+      "mutually-exclusive": true,
+      "one-is-required": true
     }
   ],
   "tool-version": "1.0.0",
