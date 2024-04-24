@@ -5,19 +5,12 @@
   "description": "MeanImage, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MeanImage).\nUse fslmaths to generate a mean image across a given dimension.",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "dimension",
       "name": "Dimension",
       "type": "String",
       "value-key": "[DIMENSION]",
       "command-line-flag": "-",
+      "command-line-flag-separator": "",
       "description": "'t' or 'x' or 'y' or 'z'. Dimension to mean across.",
       "optional": true,
       "default-value": "T",
@@ -99,7 +92,7 @@
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {
