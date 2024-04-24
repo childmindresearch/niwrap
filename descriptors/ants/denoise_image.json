@@ -1,147 +1,128 @@
 {
   "name": "DenoiseImage",
-  "command-line": "DenoiseImage [ARGS] [DIMENSION] [ENVIRON] [INPUT_IMAGE] [NOISE_IMAGE] [NOISE_MODEL] [NUM_THREADS] [OUTPUT_IMAGE] [SAVE_NOISE] [SHRINK_FACTOR] [VERBOSE]",
-  "author": "Nipype (interface)",
-  "description": "DenoiseImage, as implemented in Nipype (module: nipype.interfaces.ants, interface: DenoiseImage).",
+  "command-line": "DenoiseImage [IMAGE_DIMENSIONALITY] [NOISE_MODEL] [SHRINK_FACTOR] [MASK_IMAGE] [PATCH_RADIUS] [SEARCH_RADIUS] [VERBOSE] [INPUT_IMAGE]   --output [[CORRECTED_IMAGE],[NOISE_IMAGE]]",
+  "author": "ANTs authors",
+  "description": "Denoise an image using a spatially adaptive filter originally described in J. V.  Manjon, P. Coupe, Luis Marti-Bonmati, D. L. Collins, and M. Robles. Adaptive Non-Local Means Denoising of MR Images With Spatially Varying Noise Levels, Journal of Magnetic Resonance Imaging, 31:192-203, June 2010.",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "v2.4.3-gcaa60eb",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
-      "id": "dimension",
-      "name": "Dimension",
+      "id": "image_dimensionality",
+      "name": "Image dimensionality",
+      "value-key": "[IMAGE_DIMENSIONALITY]",
       "type": "Number",
-      "value-key": "[DIMENSION]",
-      "command-line-flag": "-d",
-      "description": "2 or 3 or 4. This option forces the image to be treated as a specified-dimensional image. if not specified, the program tries to infer the dimensionality from the input image.",
-      "optional": true,
       "integer": true,
-      "value-choices": [2, 3, 4]
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
       "optional": true,
-      "default-value": {}
-    },
-    {
-      "id": "input_image",
-      "name": "Input image",
-      "type": "File",
-      "value-key": "[INPUT_IMAGE]",
-      "command-line-flag": "-i",
-      "description": "A pathlike object or string representing an existing file. A scalar image is expected as input for noise correction.",
-      "optional": false
+      "value-choices": [2, 3, 4],
+      "command-line-flag": "--image-dimensionality",
+      "description": "-d, --image-dimensionality 2/3/4. This option forces the image to be treated as a specified-dimensional image. If not specified, the program tries to infer the dimensionality from the input image."
     },
     {
       "id": "noise_model",
       "name": "Noise model",
-      "type": "String",
       "value-key": "[NOISE_MODEL]",
-      "command-line-flag": "-n",
-      "description": "'gaussian' or 'rician'. Employ a rician or gaussian noise model.",
+      "type": "String",
       "optional": true,
-      "default-value": "Gaussian",
-      "value-choices": ["Gaussian", "Rician"]
-    },
-    {
-      "id": "num_threads",
-      "name": "Num threads",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[NUM_THREADS]",
-      "description": "An integer. Number of itk threads to use.",
-      "optional": true,
-      "default-value": 1
-    },
-    {
-      "id": "save_noise",
-      "name": "Save noise",
-      "type": "Flag",
-      "value-key": "[SAVE_NOISE]",
-      "command-line-flag": "--save_noise",
-      "description": "A boolean. True if the estimated noise should be saved to file.",
-      "optional": false,
-      "default-value": false
+      "value-choices": ["Gaussian", "Rician"],
+      "command-line-flag": "--noise-model",
+      "description": "-n, --noise-model Rician/(Gaussian). Employ a Rician or Gaussian noise model."
     },
     {
       "id": "shrink_factor",
       "name": "Shrink factor",
+      "value-key": "[SHRINK_FACTOR]",
       "type": "Number",
       "integer": true,
-      "value-key": "[SHRINK_FACTOR]",
-      "command-line-flag": "-s",
-      "description": "An integer. Running noise correction on large images can be time consuming. to lessen computation time, the input image can be resampled. the shrink factor, specified as a single integer, describes this resampling. shrink factor = 1 is the default.",
       "optional": true,
-      "default-value": 1
+      "command-line-flag": "--shrink-factor",
+      "description": "-s, --shrink-factor (1)/2/3/... Running noise correction on large images can be time consuming. To lessen computation time, the input image can be resampled. The shrink factor, specified as a single integer, describes this resampling. Shrink factor = 1 is the default."
+    },
+    {
+      "id": "mask_image",
+      "name": "Mask image",
+      "value-key": "[MASK_IMAGE]",
+      "type": "File",
+      "optional": true,
+      "command-line-flag": "--mask-image",
+      "description": "-x, --mask-image maskImageFilename. If a mask image is specified, denoising is only performed in the mask region."
+    },
+    {
+      "id": "patch_radius",
+      "name": "Patch radius",
+      "value-key": "[PATCH_RADIUS]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "--patch-radius",
+      "description": "-p, --patch-radius 1x1x1. Patch radius. Default is 1x1x1."
+    },
+    {
+      "id": "search_radius",
+      "name": "Search radius",
+      "value-key": "[SEARCH_RADIUS]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "--search-radius",
+      "description": "-r, --search-radius 2x2x2. Search radius. Default is 2x2x2."
     },
     {
       "id": "verbose",
       "name": "Verbose",
-      "type": "Flag",
       "value-key": "[VERBOSE]",
-      "command-line-flag": "-v",
-      "description": "A boolean. Verbose output.",
-      "optional": true
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [0, 1],
+      "command-line-flag": "--verbose",
+      "description": "Verbose output."
+    },
+    {
+      "id": "input_image",
+      "name": "Input image",
+      "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "command-line-flag": "--input-image",
+      "description": "-i, --input-image inputImageFilename. A scalar image is expected as input for noise correction."
+    },
+    {
+      "id": "corrected_image_path",
+      "name": "Corrected image path",
+      "value-key": "[CORRECTED_IMAGE]",
+      "type": "String",
+      "optional": false,
+      "description": "The noise corrected version of the input image."
+    },
+    {
+      "id": "noise_image_path",
+      "name": "Noise image path",
+      "value-key": "[NOISE_IMAGE]",
+      "type": "String",
+      "optional": false,
+      "description": "Estimated noise image."
     }
   ],
   "output-files": [
     {
-      "name": "Noise image",
+      "id": "corrected_image",
+      "name": "Corrected image",
+      "path-template": "[CORRECTED_IMAGE]",
+      "description": "The noise corrected version of the input image.",
+      "optional": false
+    },
+    {
       "id": "noise_image",
-      "optional": true,
-      "description": "A pathlike object or string representing a file. Filename for the estimated noise.",
-      "path-template": "[INPUT_IMAGE]_noise",
-      "value-key": "[NOISE_IMAGE]"
-    },
-    {
-      "name": "Output image",
-      "id": "output_image",
-      "optional": true,
-      "description": "A pathlike object or string representing a file. The output consists of the noise corrected version of the input image.",
-      "path-template": "[INPUT_IMAGE]_noise_corrected",
-      "value-key": "[OUTPUT_IMAGE]",
-      "command-line-flag": "-o"
-    },
-    {
       "name": "Noise image",
-      "id": "noise_image",
-      "path-template": "noise_image",
-      "optional": true,
-      "description": "A pathlike object or string representing a file. No description provided."
-    },
-    {
-      "name": "Output image",
-      "id": "output_image",
-      "path-template": "output_image",
-      "optional": true,
-      "description": "A pathlike object or string representing an existing file. No description provided."
+      "path-template": "[NOISE_IMAGE]",
+      "description": "Estimated noise image.",
+      "optional": false
     }
   ],
-  "groups": [
-    {
-      "id": "mutex_group",
-      "name": "Mutex group",
-      "members": ["noise_image", "save_noise"],
-      "mutually-exclusive": true
-    }
-  ],
-  "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }
