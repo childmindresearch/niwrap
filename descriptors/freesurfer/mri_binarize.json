@@ -1,8 +1,8 @@
 {
-  "name": "Binarize",
-  "command-line": "Binarize [ABS] [ARGS] [BIN_COL_NUM] [BIN_VAL] [BIN_VAL_NOT] [BINARY_FILE] [COUNT_FILE] [DILATE] [ENVIRON] [ERODE] [ERODE2D] [FRAME_NO] [IN_FILE] [INVERT] [MASK_FILE] [MASK_THRESH] [MATCH] [MAX] [MERGE_FILE] [MIN] [OUT_TYPE] [RMAX] [RMIN] [SUBJECTS_DIR] [VENTRICLES] [WM] [WM_VEN_CSF] [ZERO_EDGES] [ZERO_SLICE_EDGE]",
+  "name": "mri binarize",
+  "command-line": "mri_binarize [ABS] [BIN_COL_NUM] [BIN_VAL] [BIN_VAL_NOT] [BINARY_FILE] [COUNT_FILE] [DILATE] [ERODE] [ERODE2D] [FRAME_NO] [IN_FILE] [INVERT] [MASK_FILE] [MASK_THRESH] [MATCH] [MAX] [MERGE_FILE] [MIN] [OUT_TYPE] [RMAX] [RMIN] [SUBJECTS_DIR] [VENTRICLES] [WM] [WM_VEN_CSF] [ZERO_EDGES] [ZERO_SLICE_EDGE]",
   "author": "Nipype (interface)",
-  "description": "Binarize, as implemented in Nipype (module: nipype.interfaces.freesurfer.model, interface: Binarize).\nUse FreeSurfer mri_binarize to threshold an input volume",
+  "description": "mri_binarize, as implemented in Nipype (module: nipype.interfaces.freesurfer.model, interface: mri_binarize).\nUse FreeSurfer mri_binarize to threshold an input volume",
   "inputs": [
     {
       "id": "abs",
@@ -11,14 +11,6 @@
       "value-key": "[ABS]",
       "command-line-flag": "--abs",
       "description": "A boolean. Take abs of invol first (ie, make unsigned).",
-      "optional": true
-    },
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
       "optional": true
     },
     {
@@ -57,7 +49,7 @@
       "value-key": "[BINARY_FILE]",
       "command-line-flag": "--o",
       "description": "A pathlike object or string representing a file. Binary output volume.",
-      "optional": true
+      "optional": false
     },
     {
       "id": "count_file",
@@ -86,15 +78,6 @@
       "command-line-flag": "--dilate",
       "description": "An integer. Niters: dilate binarization in 3d.",
       "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
     },
     {
       "id": "erode",
@@ -287,14 +270,14 @@
       "id": "binary_file_outfile",
       "path-template": "[BINARY_FILE]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Binarized output volume."
+      "description": "Binarized output volume."
     },
     {
       "name": "Count file",
       "id": "count_file_outfile",
-      "path-template": "[COUNT_FILE]",
+      "path-template": "[COUNT_FILE].txt",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Ascii file containing number of hits."
+      "description": "Ascii file containing number of hits."
     }
   ],
   "groups": [
@@ -321,12 +304,17 @@
       "name": "Mutex group 3",
       "members": ["max", "min", "wm_ven_csf"],
       "mutually-exclusive": true
+    },
+    {
+      "id": "one_is_required", 
+      "name": "One is required",
+      "members": ["max", "min", "match"]
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
+    "image": "container/image",
     "type": "docker"
   },
   "tags": {
