@@ -1,6 +1,6 @@
 {
-  "name": "FNIRT",
-  "command-line": "FNIRT [AFFINE_FILE] [CONFIG_FILE] [FIELD_FILE] [FIELDCOEFF_FILE] [IN_FILE] [JACOBIAN_FILE] [MODULATEDREF_FILE] [REF_FILE] [REFMASK_FILE]",
+  "name": "fnirt",
+  "command-line": "fnirt [AFFINE_FILE] [CONFIG_FILE] [FIELD_FILE] [FIELDCOEFF_FILE] [IN_FILE] [JACOBIAN_FILE] [LOG_FILE] [MODULATEDREF_FILE] [REF_FILE] [REFMASK_FILE] [WARPED_FILE]",
   "author": "Nipype (interface)",
   "description": "FNIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FNIRT).\nFSL FNIRT wrapper for non-linear registration\nFor complete details, see the `FNIRT Documentation. <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT>`_",
   "inputs": [
@@ -11,7 +11,7 @@
       "value-key": "[AFFINE_FILE]",
       "command-line-flag": "--aff",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file containing affine transform.",
+      "description": "Name of file containing affine transform.",
       "optional": true
     },
     {
@@ -28,21 +28,21 @@
     {
       "id": "field_file",
       "name": "Field file",
-      "type": "Flag",
+      "type": "File",
       "value-key": "[FIELD_FILE]",
       "command-line-flag": "--fout",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Name of output file with field or true.",
+      "description": "a pathlike object or string representing a file. Name of output file with field.",
       "optional": true
     },
     {
       "id": "fieldcoeff_file",
       "name": "Fieldcoeff file",
-      "type": "Flag",
+      "type": "File",
       "value-key": "[FIELDCOEFF_FILE]",
       "command-line-flag": "--cout",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Name of output file with field coefficients or true.",
+      "description": "string representing a file. Name of output file with field coefficients.",
       "optional": true
     },
     {
@@ -66,13 +66,23 @@
       "optional": true
     },
     {
+      "id": "log_file",
+      "name": "Log file",
+      "type": "File",
+      "value-key": "[LOG_FILE]",
+      "command-line-flag": "--logout",
+      "command-line-flag-separator": "=",
+      "description": "Name of log-file.",
+      "optional": true
+    },
+    {
       "id": "modulatedref_file",
       "name": "Modulatedref file",
       "type": "Flag",
       "value-key": "[MODULATEDREF_FILE]",
       "command-line-flag": "--refout",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Name of file for writing out intensity modulated --ref (for diagnostic purposes).",
+      "description": "string representing a file. Name of file for writing out intensity modulated --ref (for diagnostic purposes).",
       "optional": true
     },
     {
@@ -94,56 +104,66 @@
       "command-line-flag-separator": "=",
       "description": "A pathlike object or string representing an existing file. Name of file with mask in reference space.",
       "optional": true
+    },
+    {
+      "id": "warped_file",
+      "name": "Warped file",
+      "type": "File",
+      "value-key": "[WARPED_FILE]",
+      "command-line-flag": "--iout",
+      "command-line-flag-separator": "=",
+      "description": "Name of output-file containing the --in image after it has been warped to the --ref image",
+      "optional": true
     }
   ],
   "output-files": [
     {
       "name": "Field file",
       "id": "field_file_outfile",
-      "path-template": "[FIELD_FILE]",
+      "path-template": "[FIELD_FILE].nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing a file. File with warp field."
     },
     {
       "name": "Fieldcoeff file",
       "id": "fieldcoeff_file_outfile",
-      "path-template": "[FIELDCOEFF_FILE]",
+      "path-template": "[FIELDCOEFF_FILE].nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. File with field coefficients."
     },
     {
       "name": "Jacobian file",
       "id": "jacobian_file_outfile",
-      "path-template": "[JACOBIAN_FILE]",
+      "path-template": "[JACOBIAN_FILE].mat",
       "optional": true,
-      "description": "A pathlike object or string representing a file. File containing jacobian of the field."
+      "description": "File containing jacobian of the field."
     },
     {
       "name": "Log file",
       "id": "log_file_outfile",
-      "path-template": "[LOG_FILE]",
+      "path-template": "[LOG_FILE].txt",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Name of log-file."
+      "description": "Name of log-file."
     },
     {
       "name": "Modulatedref file",
       "id": "modulatedref_file_outfile",
-      "path-template": "[MODULATEDREF_FILE]",
+      "path-template": "[MODULATEDREF_FILE].nii.gz",
       "optional": true,
-      "description": "A pathlike object or string representing a file. File containing intensity modulated --ref."
+      "description": "File containing intensity modulated --ref."
     },
     {
       "name": "Out intensitymap file",
       "id": "out_intensitymap_file_outfile",
       "path-template": "[OUT_INTENSITYMAP_FILE]",
       "optional": true,
-      "description": "A list of from 2 to 2 items which are a pathlike object or string representing a file. Files containing info pertaining to intensity mapping.",
+      "description": "Files containing info pertaining to intensity mapping.",
       "list": true
     },
     {
       "name": "Warped file",
       "id": "warped_file_outfile",
-      "path-template": "[WARPED_FILE]",
+      "path-template": "[WARPED_FILE].nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Warped image."
     }
@@ -151,7 +171,7 @@
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
+    "image": "container/image",
     "type": "docker"
   },
   "tags": {
