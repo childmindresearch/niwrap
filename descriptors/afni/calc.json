@@ -1,32 +1,14 @@
 {
-  "name": "Calc",
-  "command-line": "Calc [IN_FILE_A] [IN_FILE_B] [IN_FILE_C] [EXPR] [ARGS] [ENVIRON] [NUM_THREADS] [OTHER] [OUT_FILE] [OUTPUTTYPE] [OVERWRITE] [SINGLE_IDX] [START_IDX] [STOP_IDX]",
+  "name": "3dCalc",
+  "command-line": "3dCalc [IN_FILE_A] [IN_FILE_B] [IN_FILE_C] -expr \"[EXPR]\" [OTHER] [OUT_FILE] [OVERWRITE] [SINGLE_IDX] [START_IDX] [STOP_IDX]",
   "author": "Nipype (interface)",
-  "description": "Calc, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: Calc).\nThis program does voxel-by-voxel arithmetic on 3D datasets.\nFor complete details, see the `3dcalc Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcalc.html>`_",
+  "description": "3dCalc, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: Calc).\nThis program does voxel-by-voxel arithmetic on 3D datasets.\nFor complete details, see the `3dcalc Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcalc.html>`_",
   "inputs": [
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
     {
       "id": "expr",
       "name": "Expr",
       "type": "String",
       "value-key": "[EXPR]",
-      "command-line-flag": "-expr \"",
       "description": "A string. Expr.",
       "optional": false
     },
@@ -58,31 +40,12 @@
       "optional": true
     },
     {
-      "id": "num_threads",
-      "name": "Num threads",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[NUM_THREADS]",
-      "description": "An integer. Set number of threads.",
-      "optional": true,
-      "default-value": 1
-    },
-    {
       "id": "other",
       "name": "Other",
       "type": "File",
       "value-key": "[OTHER]",
       "description": "A pathlike object or string representing a file. Other options.",
       "optional": true
-    },
-    {
-      "id": "outputtype",
-      "name": "Outputtype",
-      "type": "String",
-      "value-key": "[OUTPUTTYPE]",
-      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
-      "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
     },
     {
       "id": "overwrite",
@@ -129,22 +92,15 @@
       "id": "out_file",
       "optional": true,
       "description": "A pathlike object or string representing a file. Output image file name.",
-      "path-template": "[IN_FILE_A]_calc",
+      "path-template": "[IN_FILE_A]",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
-    },
-    {
-      "name": "Out file",
-      "id": "out_file",
-      "path-template": "out_file",
-      "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output file."
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

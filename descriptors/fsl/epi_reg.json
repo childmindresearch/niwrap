@@ -1,17 +1,9 @@
 {
-  "name": "EpiReg",
-  "command-line": "EpiReg [EPI] [T1_HEAD] [T1_BRAIN] [OUT_BASE] [ARGS] [ECHOSPACING] [ENVIRON] [FMAP] [FMAPMAG] [FMAPMAGBRAIN] [NO_CLEAN] [NO_FMAPREG] [OUTPUT_TYPE] [PEDIR] [WEIGHT_IMAGE] [WMSEG]",
-  "author": "Nipype (interface)",
-  "description": "EpiReg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: EpiReg).\n\n\nRuns FSL epi_reg script for simultaneous coregistration and fieldmap unwarping.",
+  "name": "epi_reg",
+  "command-line": "epi_reg [EPI] [T1_HEAD] [T1_BRAIN] [OUT_BASE_NAME] [ECHOSPACING] [FMAP] [FMAPMAG] [FMAPMAGBRAIN] [NO_CLEAN] [NO_FMAPREG] [PEDIR] [WEIGHT_IMAGE] [WMSEG]",
+  "author": "FMRIB",
+  "description": "epi_reg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: EpiReg). Runs FSL epi_reg script for simultaneous coregistration and fieldmap unwarping.",
   "inputs": [
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
     {
       "id": "echospacing",
       "name": "Echospacing",
@@ -19,17 +11,8 @@
       "value-key": "[ECHOSPACING]",
       "command-line-flag": "--echospacing",
       "command-line-flag-separator": "=",
-      "description": "A float. Effective epi echo spacing                                 (sometimes called dwell time) - in seconds.",
+      "description": "A float. Effective epi echo spacing (sometimes called dwell time) - in seconds.",
       "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
     },
     {
       "id": "epi",
@@ -38,7 +21,7 @@
       "value-key": "[EPI]",
       "command-line-flag": "--epi",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Epi image.",
+      "description": "A pathlike object or string representing an existing file. EPI Nifti image.",
       "optional": false
     },
     {
@@ -78,8 +61,7 @@
       "value-key": "[NO_CLEAN]",
       "command-line-flag": "--noclean",
       "description": "A boolean. Do not clean up intermediate files.",
-      "optional": true,
-      "default-value": true
+      "optional": true
     },
     {
       "id": "no_fmapreg",
@@ -87,28 +69,18 @@
       "type": "Flag",
       "value-key": "[NO_FMAPREG]",
       "command-line-flag": "--nofmapreg",
-      "description": "A boolean. Do not perform registration of fmap to t1                         (use if fmap already registered).",
+      "description": "A boolean. Do not perform registration of fmap to t1 (use if fmap already registered).",
       "optional": true
     },
     {
-      "id": "out_base",
-      "name": "Out base",
+      "id": "out_base_name",
+      "name": "Output files base name",
       "type": "String",
-      "value-key": "[OUT_BASE]",
+      "value-key": "[OUT_BASE_NAME]",
       "command-line-flag": "--out",
       "command-line-flag-separator": "=",
       "description": "A string. Output base name.",
-      "optional": true,
-      "default-value": "epi2struct"
-    },
-    {
-      "id": "output_type",
-      "name": "Output type",
-      "type": "String",
-      "value-key": "[OUTPUT_TYPE]",
-      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-      "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+      "optional": false
     },
     {
       "id": "pedir",
@@ -128,7 +100,7 @@
       "value-key": "[T1_BRAIN]",
       "command-line-flag": "--t1brain",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Brain extracted t1 image.",
+      "description": "A pathlike object or string representing an existing file. Brain-extracted T1 image.",
       "optional": false
     },
     {
@@ -138,7 +110,7 @@
       "value-key": "[T1_HEAD]",
       "command-line-flag": "--t1",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Wholehead t1 image.",
+      "description": "A pathlike object or string representing an existing file. Wholehead T1 image.",
       "optional": false
     },
     {
@@ -166,7 +138,7 @@
     {
       "name": "Epi2str inv",
       "id": "epi2str_inv",
-      "path-template": "epi2str_inv",
+      "path-template": "epi2str_inv.mat",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Rigid structural-to-epi transform."
     },
@@ -180,96 +152,97 @@
     {
       "name": "Fmap2epi mat",
       "id": "fmap2epi_mat",
-      "path-template": "fmap2epi_mat",
+      "path-template": "fmap2epi.mat",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Rigid fieldmap-to-epi transform."
     },
     {
       "name": "Fmap2str mat",
       "id": "fmap2str_mat",
-      "path-template": "fmap2str_mat",
+      "path-template": "fmap2str.mat",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Rigid fieldmap-to-structural transform."
     },
     {
       "name": "Fmap epi",
       "id": "fmap_epi",
-      "path-template": "fmap_epi",
+      "path-template": "fmap_epi.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Fieldmap in epi space."
     },
     {
       "name": "Fmap str",
       "id": "fmap_str",
-      "path-template": "fmap_str",
+      "path-template": "fmap_str.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Fieldmap in structural space."
     },
     {
       "name": "Fmapmag str",
       "id": "fmapmag_str",
-      "path-template": "fmapmag_str",
+      "path-template": "fmapmag_str.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Fieldmap magnitude image in structural space."
     },
     {
       "name": "Fullwarp",
       "id": "fullwarp",
-      "path-template": "fullwarp",
+      "path-template": "fullwarp.nii.gz",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Warpfield to unwarp epi and transform into                     structural space."
+      "description": "A pathlike object or string representing an existing file. Warpfield to unwarp epi and transform into structural space."
     },
     {
       "name": "Out 1vol",
       "id": "out_1vol",
-      "path-template": "out_1vol",
+      "path-template": "out_1vol.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Unwarped and coregistered single volume."
     },
     {
       "name": "Out file",
       "id": "out_file",
-      "path-template": "epi2struct.nii.gz",
+      "path-template": "[OUT_BASE_NAME].nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Unwarped and coregistered epi input."
     },
     {
       "name": "Seg",
       "id": "seg",
-      "path-template": "epi2struct_fast_seg.nii.gz",
+      "path-template": "[OUT_BASE_NAME]_fast_seg.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. White matter, gray matter, csf segmentation."
     },
     {
       "name": "Shiftmap",
       "id": "shiftmap",
-      "path-template": "shiftmap",
+      "path-template": "shiftmap.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Shiftmap in epi space."
     },
     {
       "name": "Wmedge",
       "id": "wmedge",
-      "path-template": "epi2struct_fast_wmedge.nii.gz",
+      "path-template": "[OUT_BASE_NAME]_fast_wmedge.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. White matter edges for visualization."
     },
     {
       "name": "Wmseg",
       "id": "wmseg_outfile",
-      "path-template": "epi2struct_fast_wmseg.nii.gz",
+      "path-template": "[OUT_BASE_NAME]_fast_wmseg.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. White matter segmentation used in flirt bbr."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "5.0.9",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcp-indi/c-pac:nightly",
     "type": "docker"
   },
   "tags": {
     "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "source": "nipype-interface",
+    "package": "fsl"
   }
 }

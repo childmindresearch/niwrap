@@ -1,0 +1,115 @@
+{
+  "name": "FSL roi",
+  "command-line": "fslroi [IN_FILE] [ROI_FILE] [X_MIN] [X_SIZE] [Y_MIN] [Y_SIZE] [Z_MIN] [Z_SIZE] [T_MIN] [T_SIZE]",
+  "author": "Nipype (interface)",
+  "description": "fslroi, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ExtractROI).\nUses FSL Fslroi command to extract region of interest (ROI) from an image.\nYou can a) take a 3D ROI from a 3D data set (or if it is 4D, the same ROI is taken from each time point and a new 4D data set is created), b) extract just some time points from a 4D data set, or c) control time and space limits to the ROI. Note that the arguments are minimum index and size (not maximum index). So to extract voxels 10 to 12 inclusive you would specify 10 and 3 (not 10 and 12).",
+  "inputs": [
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "description": "Input image to extract ROI from.",
+      "optional": false
+    },
+    {
+      "id": "roi_file",
+      "name": "Roi file",
+      "type": "String",
+      "value-key": "[ROI_FILE]",
+      "description": "Output ROI file.",
+      "optional": false
+    },
+    {
+      "id": "t_min",
+      "name": "T min",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[T_MIN]",
+      "description": "Minimum index for t-dimension.",
+      "optional": true
+    },
+    {
+      "id": "t_size",
+      "name": "T size",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[T_SIZE]",
+      "description": "Size of ROI in t-dimension.",
+      "optional": true
+    },
+    {
+      "id": "x_min",
+      "name": "X min",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[X_MIN]",
+      "description": "Minimum index for x-dimension.",
+      "optional": true
+    },
+    {
+      "id": "x_size",
+      "name": "X size",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[X_SIZE]",
+      "description": "Size of ROI for x-dimension.",
+      "optional": true
+    },
+    {
+      "id": "y_min",
+      "name": "Y min",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[Y_MIN]",
+      "description": "Minimum index for y-dimension.",
+      "optional": true
+    },
+    {
+      "id": "y_size",
+      "name": "Y size",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[Y_SIZE]",
+      "description": "Size of ROI for y-dimension.",
+      "optional": true
+    },
+    {
+      "id": "z_min",
+      "name": "Z min",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[Z_MIN]",
+      "description": "Minimum index for z-dimension.",
+      "optional": true
+    },
+    {
+      "id": "z_size",
+      "name": "Z size",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[Z_SIZE]",
+      "description": "Size of ROI for z-dimension.",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "name": "Roi file",
+      "id": "roi_file_outfile",
+      "path-template": "[ROI_FILE].nii.gz",
+      "optional": true,
+      "description": "Output ROI file."
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
+}

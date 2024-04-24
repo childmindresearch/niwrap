@@ -317,7 +317,7 @@
   "tool-version": "5.0.9",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcp-indi/c-pac",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

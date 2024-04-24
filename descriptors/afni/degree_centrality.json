@@ -1,17 +1,9 @@
 {
-  "name": "DegreeCentrality",
-  "command-line": "DegreeCentrality [IN_FILE] [ARGS] [AUTOCLIP] [AUTOMASK] [ENVIRON] [MASK] [NUM_THREADS] [ONED_FILE] [OUT_FILE] [OUTPUTTYPE] [POLORT] [SPARSITY] [THRESH]",
+  "name": "3dDegreeCentrality",
+  "command-line": "3dDegreeCentrality [IN_FILE] [AUTOCLIP] [AUTOMASK] [MASK] [ONED_FILE] [OUT_FILE] [POLORT] [SPARSITY] [THRESH]",
   "author": "Nipype (interface)",
-  "description": "DegreeCentrality, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: DegreeCentrality).\nPerforms degree centrality on a dataset using a given maskfile via 3dDegreeCentrality\nFor complete details, see the `3dDegreeCentrality Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html>`_",
+  "description": "3dDegreeCentrality, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: DegreeCentrality).\nPerforms degree centrality on a dataset using a given maskfile via 3dDegreeCentrality\nFor complete details, see the `3dDegreeCentrality Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html>`_",
   "inputs": [
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
     {
       "id": "autoclip",
       "name": "Autoclip",
@@ -31,15 +23,6 @@
       "optional": true
     },
     {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
-    {
       "id": "in_file",
       "name": "In file",
       "type": "File",
@@ -57,16 +40,6 @@
       "optional": true
     },
     {
-      "id": "num_threads",
-      "name": "Num threads",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[NUM_THREADS]",
-      "description": "An integer. Set number of threads.",
-      "optional": true,
-      "default-value": 1
-    },
-    {
       "id": "oned_file",
       "name": "Oned file",
       "type": "String",
@@ -74,15 +47,6 @@
       "command-line-flag": "-out1D",
       "description": "A string. Output filepath to text dump of correlation matrix.",
       "optional": true
-    },
-    {
-      "id": "outputtype",
-      "name": "Outputtype",
-      "type": "String",
-      "value-key": "[OUTPUTTYPE]",
-      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
-      "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
     },
     {
       "id": "polort",
@@ -119,7 +83,7 @@
       "id": "out_file",
       "optional": true,
       "description": "A pathlike object or string representing a file. Output image file name.",
-      "path-template": "[IN_FILE]_afni",
+      "path-template": "[IN_FILE]",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
     },
@@ -129,19 +93,12 @@
       "path-template": "[ONED_FILE]",
       "optional": true,
       "description": "A pathlike object or string representing a file. The text output of the similarity matrix computed after thresholding with one-dimensional and ijk voxel indices, correlations, image extents, and affine matrix."
-    },
-    {
-      "name": "Out file",
-      "id": "out_file",
-      "path-template": "out_file",
-      "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output file."
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

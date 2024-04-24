@@ -1,61 +1,84 @@
 {
   "name": "SwapDimensions",
-  "command-line": "SwapDimensions [IN_FILE] [ARGS] [ENVIRON] [NEW_DIMS] [OUT_FILE] [OUTPUT_TYPE]",
+  "command-line": "fslswapdim [IN_FILE] [A_CART] [A_RAS] [B_CART] [B_RAS] [C_CART] [C_RAS] [OUT_FILE]",
   "author": "Nipype (interface)",
   "description": "SwapDimensions, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SwapDimensions).\nUse fslswapdim to alter the orientation of an image.\nThis interface accepts a three-tuple corresponding to the new orientation. You may either provide dimension ids in the form of (-)x, (-)y, or (-z), or nifti-syle dimension codes (RL, LR, AP, PA, IS, SI).",
   "inputs": [
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
     {
       "id": "in_file",
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input image.",
+      "description": "Input image to swap dimensions of",
       "optional": false
     },
     {
-      "id": "new_dims",
-      "name": "New dims",
+      "id": "x_dims_cart",
+      "name": "New X dimension",
       "type": "String",
-      "list": true,
-      "min-list-entries": 3,
-      "max-list-entries": 3,
-      "value-key": "[NEW_DIMS]",
-      "description": "A tuple of the form: ('x' or '-x' or 'y' or '-y' or 'z' or '-z' or 'rl' or 'lr' or 'ap' or 'pa' or 'is' or 'si', 'x' or '-x' or 'y' or '-y' or 'z' or '-z' or 'rl' or 'lr' or 'ap' or 'pa' or 'is' or 'si', 'x' or '-x' or 'y' or '-y' or 'z' or '-z' or 'rl' or 'lr' or 'ap' or 'pa' or 'is' or 'si'). 3-tuple of new dimension order.",
-      "optional": false
+      "value-key": "[A_CART]",
+      "description": "Representation of new x axes in terms of old cartesian axes.",
+      "optional": true,
+      "value-choices": ["x", "-x", "y", "-y", "z", "-z"],
+      "disables-inputs": ["x_dims_ras", "y_dims_ras", "z_dims_ras"]
+    },
+    {
+      "id": "y_dims_cart",
+      "name": "New y dimension",
+      "type": "String",
+      "value-key": "[B_CART]",
+      "description": "Representation of new y axes in terms of old cartesian axes.",
+      "optional": true,
+      "value-choices": ["x", "-x", "y", "-y", "z", "-z"],
+      "disables-inputs": ["x_dims_ras", "y_dims_ras", "z_dims_ras"]
+    },
+    {
+      "id": "z_dims_cart",
+      "name": "New Z dimension",
+      "type": "String",
+      "value-key": "[C_CART]",
+      "description": "Representation of new z axes in terms of old cartesian axes.",
+      "optional": true,
+      "value-choices": ["x", "-x", "y", "-y", "z", "-z"],
+      "disables-inputs": ["x_dims_ras", "y_dims_ras", "z_dims_ras"]
+    },
+    {
+      "id": "x_dims_ras",
+      "name": "New X dimension",
+      "type": "String",
+      "value-key": "[A_RAS]",
+      "description": "Representation of new x axes in terms of old anatomical axes.",
+      "optional": true,
+      "value-choices": ["LR", "RL", "AP", "PA", "SI", "IS"],
+      "disables-inputs": ["x_dims_cart", "y_dims_cart", "z_dims_cart"]
+    },
+    {
+      "id": "y_dims_ras",
+      "name": "New y dimension",
+      "type": "String",
+      "value-key": "[B_CART]",
+      "description": "Representation of new y axes in terms of old anatomical axes.",
+      "optional": true,
+      "value-choices": ["LR", "RL", "AP", "PA", "SI", "IS"],
+      "disables-inputs": ["x_dims_cart", "y_dims_cart", "z_dims_cart"]
+    },
+    {
+      "id": "z_dims_ras",
+      "name": "New Z dimension",
+      "type": "String",
+      "value-key": "[C_RAS]",
+      "description": "Representation of new z axes in terms of old anatomical axes.",
+      "optional": true,
+      "value-choices": ["LR", "RL", "AP", "PA", "SI", "IS"],
+      "disables-inputs": ["x_dims_cart", "y_dims_cart", "z_dims_cart"]
     },
     {
       "id": "out_file",
       "name": "Out file",
-      "type": "File",
-      "value-key": "[OUT_FILE]",
-      "description": "A pathlike object or string representing a file. Image to write.",
-      "optional": true
-    },
-    {
-      "id": "output_type",
-      "name": "Output type",
       "type": "String",
-      "value-key": "[OUTPUT_TYPE]",
-      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-      "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+      "value-key": "[OUT_FILE]",
+      "description": "Output name of image, if not provided, writes to standard output.",
+      "optional": true
     }
   ],
   "output-files": [
@@ -64,13 +87,39 @@
       "id": "out_file_outfile",
       "path-template": "[OUT_FILE]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Image with new dimensions."
+      "description": "Output name of image, if not provided, writes to standard output."
+    }
+  ],
+  "groups": [
+    {
+      "id": "x_dim_group",
+      "name": "X dimension group",
+      "members": ["x_dims_cart", "x_dims_ras"],
+      "description": "New x dimension",
+      "mutually-exclusive": true,
+      "one-is-required": true
+    },
+    {
+      "id": "y_dim_group",
+      "name": "Y dimension group",
+      "members": ["y_dims_cart", "y_dims_ras"],
+      "description": "New y dimension",
+      "mutually-exclusive": true,
+      "one-is-required": true
+    },
+    {
+      "id": "z_dim_group",
+      "name": "Z dimension group",
+      "members": ["z_dims_cart", "z_dims_ras"],
+      "description": "New z dimension",
+      "mutually-exclusive": true,
+      "one-is-required": true
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

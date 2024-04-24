@@ -1,12 +1,13 @@
 {
   "name": "FLIRT",
-  "command-line": "FLIRT [IN_FILE] [REFERENCE] [OUT_FILE] [OUT_MATRIX_FILE] [ANGLE_REP] [APPLY_ISOXFM] [APPLY_XFM] [ARGS] [BBRSLOPE] [BBRTYPE] [BGVALUE] [BINS] [COARSE_SEARCH] [COST] [COST_FUNC] [DATATYPE] [DISPLAY_INIT] [DOF] [ECHOSPACING] [ENVIRON] [FIELDMAP] [FIELDMAPMASK] [FINE_SEARCH] [FORCE_SCALING] [IN_MATRIX_FILE] [IN_WEIGHT] [INTERP] [MIN_SAMPLING] [NO_CLAMP] [NO_RESAMPLE] [NO_RESAMPLE_BLUR] [NO_SEARCH] [OUT_LOG] [OUTPUT_TYPE] [PADDING_SIZE] [PEDIR] [REF_WEIGHT] [RIGID2D] [SAVE_LOG] [SCHEDULE] [SEARCHR_X] [SEARCHR_Y] [SEARCHR_Z] [SINC_WIDTH] [SINC_WINDOW] [USES_QFORM] [VERBOSE] [WM_SEG] [WMCOORDS] [WMNORMS]",
+  "command-line": "FLIRT [IN_FILE] [REFERENCE] [OUT_FILE] [OUT_MATRIX_FILE] [ANGLE_REP] [APPLY_ISOXFM] [APPLY_XFM] [BBRSLOPE] [BBRTYPE] [BGVALUE] [BINS] [COARSE_SEARCH] [COST] [COST_FUNC] [DATATYPE] [DISPLAY_INIT] [DOF] [ECHOSPACING] [FIELDMAP] [FIELDMAPMASK] [FINE_SEARCH] [FORCE_SCALING] [IN_MATRIX_FILE] [IN_WEIGHT] [INTERP] [MIN_SAMPLING] [NO_CLAMP] [NO_RESAMPLE] [NO_RESAMPLE_BLUR] [NO_SEARCH] [PADDING_SIZE] [PEDIR] [REF_WEIGHT] [RIGID2D] [SCHEDULE] [SEARCHR_X] [SEARCHR_Y] [SEARCHR_Z] [SINC_WIDTH] [SINC_WINDOW] [USES_QFORM] [VERBOSE] [WM_SEG] [WMCOORDS] [WMNORMS]",
   "author": "Nipype (interface)",
   "description": "FLIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FLIRT).\nFSL FLIRT wrapper for coregistration\nFor complete details, see the `FLIRT Documentation. <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT>`_\nTo print out the command line help, use: fsl.FLIRT().inputs_help()",
   "inputs": [
     {
       "id": "angle_rep",
       "name": "Angle rep",
+      "default-value": "euler",
       "type": "String",
       "value-key": "[ANGLE_REP]",
       "command-line-flag": "-anglerep",
@@ -33,14 +34,6 @@
       "optional": true
     },
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "bbrslope",
       "name": "Bbrslope",
       "type": "Number",
@@ -53,6 +46,7 @@
       "id": "bbrtype",
       "name": "Bbrtype",
       "type": "String",
+      "default-value": "signed",
       "value-key": "[BBRTYPE]",
       "command-line-flag": "-bbrtype",
       "description": "'signed' or 'global_abs' or 'local_abs'. Type of bbr cost function: signed [default], global_abs, local_abs.",
@@ -82,6 +76,7 @@
       "id": "coarse_search",
       "name": "Coarse search",
       "type": "Number",
+      "default-value": 60,
       "integer": true,
       "value-key": "[COARSE_SEARCH]",
       "command-line-flag": "-coarsesearch",
@@ -94,6 +89,7 @@
       "type": "String",
       "value-key": "[COST]",
       "command-line-flag": "-cost",
+      "default-value": "corratio",
       "description": "'mutualinfo' or 'corratio' or 'normcorr' or 'normmi' or 'leastsq' or 'labeldiff' or 'bbr'. Cost function.",
       "optional": true,
       "value-choices": [
@@ -110,6 +106,7 @@
       "id": "cost_func",
       "name": "Cost func",
       "type": "String",
+      "default-value": "corratio",
       "value-key": "[COST_FUNC]",
       "command-line-flag": "-searchcost",
       "description": "'mutualinfo' or 'corratio' or 'normcorr' or 'normmi' or 'leastsq' or 'labeldiff' or 'bbr'. Cost function.",
@@ -147,6 +144,7 @@
       "id": "dof",
       "name": "Dof",
       "type": "Number",
+      "default-value": 12,
       "integer": true,
       "value-key": "[DOF]",
       "command-line-flag": "-dof",
@@ -161,15 +159,6 @@
       "command-line-flag": "-echospacing",
       "description": "A float. Value of epi echo spacing - units of seconds.",
       "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
     },
     {
       "id": "fieldmap",
@@ -193,6 +182,7 @@
       "id": "fine_search",
       "name": "Fine search",
       "type": "Number",
+      "default-value": 18,
       "integer": true,
       "value-key": "[FINE_SEARCH]",
       "command-line-flag": "-finesearch",
@@ -240,6 +230,7 @@
       "name": "Interp",
       "type": "String",
       "value-key": "[INTERP]",
+      "default-value": "trilinear",
       "command-line-flag": "-interp",
       "description": "'trilinear' or 'nearestneighbour' or 'sinc' or 'spline'. Final interpolation method used in reslicing.",
       "optional": true,
@@ -291,15 +282,6 @@
       "optional": true
     },
     {
-      "id": "output_type",
-      "name": "Output type",
-      "type": "String",
-      "value-key": "[OUTPUT_TYPE]",
-      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-      "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
-    },
-    {
       "id": "padding_size",
       "name": "Padding size",
       "type": "Number",
@@ -344,15 +326,6 @@
       "value-key": "[RIGID2D]",
       "command-line-flag": "-2D",
       "description": "A boolean. Use 2d rigid body mode - ignores dof.",
-      "optional": true
-    },
-    {
-      "id": "save_log",
-      "name": "Save log",
-      "type": "Flag",
-      "value-key": "[SAVE_LOG]",
-      "command-line-flag": "--save_log",
-      "description": "A boolean. Save to log file.",
       "optional": true
     },
     {
@@ -408,6 +381,7 @@
       "name": "Sinc width",
       "type": "Number",
       "integer": true,
+      "default-value": 7,
       "value-key": "[SINC_WIDTH]",
       "command-line-flag": "-sincwidth",
       "description": "An integer. Full-width in voxels.",
@@ -436,6 +410,7 @@
       "id": "verbose",
       "name": "Verbose",
       "type": "Number",
+      "default-value": 0,
       "integer": true,
       "value-key": "[VERBOSE]",
       "command-line-flag": "-verbose",
@@ -476,17 +451,10 @@
       "id": "out_file",
       "optional": true,
       "description": "A pathlike object or string representing a file. Registered output file.",
-      "path-template": "[IN_FILE]_flirt",
+      "path-template": "[IN_FILE]_flirt.nii",
+      "path-template-stripped-extensions": [".nii.gz", ".nii"],
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-out"
-    },
-    {
-      "name": "Out log",
-      "id": "out_log",
-      "optional": true,
-      "description": "A pathlike object or string representing a file. Output log.",
-      "path-template": "[IN_FILE]_flirt.log",
-      "value-key": "[OUT_LOG]"
     },
     {
       "name": "Out matrix file",
@@ -494,29 +462,9 @@
       "optional": true,
       "description": "A pathlike object or string representing a file. Output affine matrix in 4x4 asciii format.",
       "path-template": "[IN_FILE]_flirt.mat",
+      "path-template-stripped-extensions": [".nii.gz", ".nii"],
       "value-key": "[OUT_MATRIX_FILE]",
       "command-line-flag": "-omat"
-    },
-    {
-      "name": "Out file",
-      "id": "out_file",
-      "path-template": "out_file",
-      "optional": true,
-      "description": "A pathlike object or string representing an existing file. Path/name of registered file (if generated)."
-    },
-    {
-      "name": "Out log",
-      "id": "out_log",
-      "path-template": "out_log",
-      "optional": true,
-      "description": "A pathlike object or string representing a file. Path/name of output log (if generated)."
-    },
-    {
-      "name": "Out matrix file",
-      "id": "out_matrix_file",
-      "path-template": "out_matrix_file",
-      "optional": true,
-      "description": "A pathlike object or string representing an existing file. Path/name of calculated affine transform (if generated)."
     }
   ],
   "groups": [
@@ -530,7 +478,7 @@
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

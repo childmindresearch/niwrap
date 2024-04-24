@@ -1,15 +1,23 @@
 {
   "name": "Split",
-  "command-line": "Split [IN_FILE] [OUT_BASE_NAME] [DIMENSION] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
+  "command-line": "fslsplit [IN_FILE] out/[OUT_BASE_NAME] [DIMENSION]",
   "author": "Nipype (interface)",
   "description": "Split, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Split).\nUses FSL Fslsplit command to separate a volume into images in time, x, y or z dimension.",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "description": "Input image to split along dimension (default: time).",
+      "optional": false
+    },
+    {
+      "id": "out_base_name",
+      "name": "Out base name",
       "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "value-key": "[OUT_BASE_NAME]",
+      "description": "Output prefix",
       "optional": true
     },
     {
@@ -18,59 +26,26 @@
       "type": "String",
       "value-key": "[DIMENSION]",
       "command-line-flag": "-",
-      "description": "'t' or 'x' or 'y' or 'z'. Dimension along which the file will be split.",
+      "command-line-flag-separator": "",
+      "description": "'t' or 'x' or 'y' or 'z'. Dimension to mean across.",
       "optional": false,
+      "default-value": "t",
       "value-choices": ["t", "x", "y", "z"]
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
-    {
-      "id": "in_file",
-      "name": "In file",
-      "type": "File",
-      "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input filename.",
-      "optional": false
-    },
-    {
-      "id": "out_base_name",
-      "name": "Out base name",
-      "type": "String",
-      "value-key": "[OUT_BASE_NAME]",
-      "description": "A string. Outputs prefix.",
-      "optional": true
-    },
-    {
-      "id": "output_type",
-      "name": "Output type",
-      "type": "String",
-      "value-key": "[OUTPUT_TYPE]",
-      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-      "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     }
   ],
   "output-files": [
     {
-      "name": "Out files",
-      "id": "out_files",
-      "path-template": "out_files",
-      "optional": true,
-      "description": "A list of items which are a pathlike object or string representing an existing file. No description provided.",
-      "list": true
+      "name": "Out folder",
+      "id": "out_folder",
+      "path-template": "out/",
+      "description": "Output folder with multiple files.",
+      "optional": false
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

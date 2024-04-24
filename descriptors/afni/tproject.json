@@ -1,8 +1,8 @@
 {
-  "name": "TProject",
-  "command-line": "TProject [IN_FILE] [OUT_FILE] [TR] [ARGS] [AUTOMASK] [BANDPASS] [BLUR] [CENMODE] [CENSOR] [CENSORTR] [CONCAT] [DSORT] [ENVIRON] [MASK] [NOBLOCK] [NORM] [NUM_THREADS] [ORT] [OUTPUTTYPE] [POLORT] [STOPBAND]",
+  "name": "3dTProject",
+  "command-line": "3dTProject [IN_FILE] [OUT_FILE] [TR] [AUTOMASK] [BANDPASS] [BLUR] [CENMODE] [CENSOR] [CENSORTR] [CONCAT] [DSORT] [MASK] [NOBLOCK] [NORM] [ORT] [POLORT] [STOPBAND]",
   "author": "Nipype (interface)",
-  "description": "TProject, as implemented in Nipype (module: nipype.interfaces.afni, interface: TProject).\n\nThis program projects (detrends) out various 'nuisance' time series from each voxel in the input dataset. Note that all the projections are done via linear regression, including the frequency-based options such as ``-passband``. In this way, you can bandpass time-censored data, and at the same time, remove other time series of no interest (e.g., physiological estimates, motion parameters). Shifts voxel time series from input so that separate slices are aligned to the same temporal origin.",
+  "description": "3dTProject, as implemented in Nipype (module: nipype.interfaces.afni, interface: TProject).\n\nThis program projects (detrends) out various 'nuisance' time series from each voxel in the input dataset. Note that all the projections are done via linear regression, including the frequency-based options such as ``-passband``. In this way, you can bandpass time-censored data, and at the same time, remove other time series of no interest (e.g., physiological estimates, motion parameters). Shifts voxel time series from input so that separate slices are aligned to the same temporal origin.",
   "inputs": [
     {
       "id": "TR",
@@ -11,14 +11,6 @@
       "value-key": "[TR]",
       "command-line-flag": "-TR",
       "description": "A float. Use time step dd for the frequency calculations,rather than the value stored in the dataset header.",
-      "optional": true
-    },
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
       "optional": true
     },
     {
@@ -100,15 +92,6 @@
       "optional": true
     },
     {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
-    {
       "id": "in_file",
       "name": "In file",
       "type": "File",
@@ -145,16 +128,6 @@
       "optional": true
     },
     {
-      "id": "num_threads",
-      "name": "Num threads",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[NUM_THREADS]",
-      "description": "An integer. Set number of threads.",
-      "optional": true,
-      "default-value": 1
-    },
-    {
       "id": "ort",
       "name": "Ort",
       "type": "File",
@@ -162,15 +135,6 @@
       "command-line-flag": "-ort",
       "description": "A pathlike object or string representing an existing file. Remove each column in file.each column will have its mean removed.",
       "optional": true
-    },
-    {
-      "id": "outputtype",
-      "name": "Outputtype",
-      "type": "String",
-      "value-key": "[OUTPUTTYPE]",
-      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
-      "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
     },
     {
       "id": "polort",
@@ -199,16 +163,9 @@
     {
       "name": "Out file",
       "id": "out_file",
-      "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
-      "path-template": "[IN_FILE]_tproject",
+      "path-template": "[IN_FILE]",
       "value-key": "[OUT_FILE]",
-      "command-line-flag": "-prefix"
-    },
-    {
-      "name": "Out file",
-      "id": "out_file",
-      "path-template": "out_file",
+      "command-line-flag": "-prefix",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Output file."
     }
@@ -224,7 +181,7 @@
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {
