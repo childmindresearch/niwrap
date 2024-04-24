@@ -1,9 +1,26 @@
 {
   "name": "Resample",
-  "command-line": "3dresample [ORIENTATION] [IN_FILE] [OUT_FILE]",
+  "command-line": "Resample [IN_FILE] [ARGS] [ENVIRON] [MASTER] [NUM_THREADS] [ORIENTATION] [OUT_FILE] [OUTPUTTYPE] [RESAMPLE_MODE] [VOXEL_SIZE]",
   "author": "Nipype (interface)",
   "description": "Resample, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: Resample).\nResample or reorient an image using AFNI 3dresample command\nFor complete details, see the `3dresample Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dresample.html>`_",
   "inputs": [
+    {
+      "id": "args",
+      "name": "Args",
+      "type": "String",
+      "value-key": "[ARGS]",
+      "description": "A string. Additional parameters to the command.",
+      "optional": true
+    },
+    {
+      "id": "environ",
+      "name": "Environ",
+      "type": "String",
+      "value-key": "[ENVIRON]",
+      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+      "optional": true,
+      "default-value": "None"
+    },
     {
       "id": "in_file",
       "name": "In file",
@@ -14,14 +31,72 @@
       "optional": false
     },
     {
+      "id": "master",
+      "name": "Master",
+      "type": "File",
+      "value-key": "[MASTER]",
+      "command-line-flag": "-master",
+      "description": "A pathlike object or string representing a file. Align dataset grid to a reference file.",
+      "optional": true
+    },
+    {
+      "id": "num_threads",
+      "name": "Num threads",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUM_THREADS]",
+      "description": "An integer. Set number of threads.",
+      "optional": true,
+      "default-value": 1
+    },
+    {
       "id": "orientation",
       "name": "Orientation",
       "type": "String",
       "value-key": "[ORIENTATION]",
       "command-line-flag": "-orient",
-      "description": "A string. New orientation code. [RPI, LPI, ARI, LPI, RAI, LAI, RSA, LSA, ASA, PSA, RSP, LSP, ASP, PSP, RAI, LAI, RPI, LPI, RAI, LAI]",
-      "optional": false,
-      "default-value": "RPI"
+      "description": "A string. New orientation code.",
+      "optional": true
+    },
+    {
+      "id": "outputtype",
+      "name": "Outputtype",
+      "type": "String",
+      "value-key": "[OUTPUTTYPE]",
+      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+      "optional": true,
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
+    },
+    {
+      "id": "resample_mode",
+      "name": "Resample mode",
+      "type": "String",
+      "value-key": "[RESAMPLE_MODE]",
+      "command-line-flag": "-rmode",
+      "description": "'nn' or 'li' or 'cu' or 'bk'. Resampling method from set {\"nn\", \"li\", \"cu\", \"bk\"}. these are for \"nearest neighbor\", \"linear\", \"cubic\" and \"blocky\"interpolation, respectively. default is nn.",
+      "optional": true,
+      "value-choices": [
+        "NN",
+        "Li",
+        "Cu",
+        "Bk"
+      ]
+    },
+    {
+      "id": "voxel_size",
+      "name": "Voxel size",
+      "type": "Number",
+      "list": true,
+      "min-list-entries": 3,
+      "max-list-entries": 3,
+      "value-key": "[VOXEL_SIZE]",
+      "command-line-flag": "-dxyz",
+      "description": "A tuple of the form: (a float, a float, a float). Resample to new dx, dy and dz.",
+      "optional": true
     }
   ],
   "output-files": [
@@ -38,7 +113,7 @@
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {
