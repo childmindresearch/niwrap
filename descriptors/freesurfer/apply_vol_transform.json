@@ -1,26 +1,9 @@
 {
   "name": "ApplyVolTransform",
-  "command-line": "mri_vol2vol [ARGS] [ENVIRON] [FS_TARGET] [FSL_REG_FILE] [INTERP] [INVERSE] [INVERT_MORPH] [LTA_FILE] [LTA_INV_FILE] [M3Z_FILE] [MNI_152_REG] [NO_DEF_M3Z_PATH] [NO_RESAMPLE] [REG_FILE] [REG_HEADER] [SOURCE_FILE] [SUBJECT] [SUBJECTS_DIR] [TAL] [TAL_RESOLUTION] [TARGET_FILE] [TRANSFORMED_FILE] [XFM_REG_FILE]",
+  "command-line": "mri_vol2vol [FS_TARGET] [FSL_REG_FILE] [INTERP] [INVERSE] [INVERT_MORPH] [LTA_FILE] [LTA_INV_FILE] [M3Z_FILE] [MNI_152_REG] [NO_DEF_M3Z_PATH] [NO_RESAMPLE] [REG_FILE] [REG_HEADER] [SOURCE_FILE] [SUBJECT] [SUBJECTS_DIR] [TAL] [TAL_RESOLUTION] [TARGET_FILE] [TRANSFORMED_FILE] [XFM_REG_FILE]",
   "author": "Nipype (interface)",
   "description": "ApplyVolTransform, as implemented in Nipype (module: nipype.interfaces.freesurfer.preprocess, interface: ApplyVolTransform).\nUse FreeSurfer mri_vol2vol to apply a transform.",
   "inputs": [
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
     {
       "id": "fs_target",
       "name": "Fs target",
@@ -28,7 +11,7 @@
       "value-key": "[FS_TARGET]",
       "command-line-flag": "--fstarg",
       "description": "A boolean. Use orig.mgz from subject in regfile as target.",
-      "optional": false,
+      "optional": true,
       "requires-inputs": ["reg_file"]
     },
     {
@@ -38,7 +21,7 @@
       "value-key": "[FSL_REG_FILE]",
       "command-line-flag": "--fsl",
       "description": "A pathlike object or string representing an existing file. Fslras-to-fslras matrix (fsl format).",
-      "optional": false
+      "optional": true
     },
     {
       "id": "interp",
@@ -76,7 +59,7 @@
       "value-key": "[LTA_FILE]",
       "command-line-flag": "--lta",
       "description": "A pathlike object or string representing an existing file. Linear transform array file.",
-      "optional": false
+      "optional": true
     },
     {
       "id": "lta_inv_file",
@@ -85,7 +68,7 @@
       "value-key": "[LTA_INV_FILE]",
       "command-line-flag": "--lta-inv",
       "description": "A pathlike object or string representing an existing file. Lta, invert.",
-      "optional": false
+      "optional": true
     },
     {
       "id": "m3z_file",
@@ -103,7 +86,7 @@
       "value-key": "[MNI_152_REG]",
       "command-line-flag": "--regheader",
       "description": "A boolean. Target mni152 space.",
-      "optional": false
+      "optional": true
     },
     {
       "id": "no_def_m3z_path",
@@ -131,7 +114,7 @@
       "value-key": "[REG_FILE]",
       "command-line-flag": "--reg",
       "description": "A pathlike object or string representing an existing file. Tkras-to-tkras matrix   (tkregister2 format).",
-      "optional": false
+      "optional": true
     },
     {
       "id": "reg_header",
@@ -140,7 +123,7 @@
       "value-key": "[REG_HEADER]",
       "command-line-flag": "--regheader",
       "description": "A boolean. Scannerras-to-scannerras matrix = identity.",
-      "optional": false
+      "optional": true
     },
     {
       "id": "source_file",
@@ -149,7 +132,7 @@
       "value-key": "[SOURCE_FILE]",
       "command-line-flag": "--mov",
       "description": "A pathlike object or string representing an existing file. Input volume you wish to transform.",
-      "optional": false
+      "optional": true
     },
     {
       "id": "subject",
@@ -158,7 +141,7 @@
       "value-key": "[SUBJECT]",
       "command-line-flag": "--s",
       "description": "A string. Set matrix = identity and use subject for any templates.",
-      "optional": false
+      "optional": true
     },
     {
       "id": "subjects_dir",
@@ -175,7 +158,7 @@
       "value-key": "[TAL]",
       "command-line-flag": "--tal",
       "description": "A boolean. Map to a sub fov of mni305 (with --reg only).",
-      "optional": false
+      "optional": true
     },
     {
       "id": "tal_resolution",
@@ -193,7 +176,7 @@
       "value-key": "[TARGET_FILE]",
       "command-line-flag": "--targ",
       "description": "A pathlike object or string representing an existing file. Output template volume.",
-      "optional": false
+      "optional": true
     },
     {
       "id": "transformed_file",
@@ -211,14 +194,14 @@
       "value-key": "[XFM_REG_FILE]",
       "command-line-flag": "--xfm",
       "description": "A pathlike object or string representing an existing file. Scannerras-to-scannerras matrix (mni format).",
-      "optional": false
+      "optional": true
     }
   ],
   "output-files": [
     {
       "name": "Transformed file",
       "id": "transformed_file_outfile",
-      "path-template": "[TRANSFORMED_FILE]",
+      "path-template": "[TRANSFORMED_FILE].nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Path to output file if used normally."
     }
@@ -244,12 +227,33 @@
         "fsl_reg_file"
       ],
       "mutually-exclusive": true
+    },
+    {
+      "id": "required_group1",
+      "name": "Required group",
+      "members": ["tal", "fs_target", "target_file"],
+      "one-is-required": true
+    },
+    {
+      "id": "required_group2",
+      "name": "Required group 2",
+      "members": [
+        "subject",
+        "lta_file",
+        "xfm_reg_file",
+        "mni_152_reg",
+        "reg_file",
+        "lta_inv_file",
+        "reg_header",
+        "fsl_reg_file"
+      ],
+      "one-is-required": true
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
+    "image": "container/image",
     "type": "docker"
   },
   "tags": {
