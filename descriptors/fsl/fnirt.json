@@ -148,62 +148,6 @@
       "description": "A pathlike object or string representing an existing file. Warped image."
     }
   ],
-  "groups": [
-    {
-      "id": "config_file_group",
-      "name": "Config file group",
-      "members": ["config_file", "config_file_2"],
-      "mutually-exclusive": true
-    },
-    {
-      "id": "field_file_group",
-      "name": "Field file group",
-      "members": ["field_file", "field_file_2"],
-      "mutually-exclusive": true
-    },
-    {
-      "id": "fieldcoeff_file_group",
-      "name": "Fieldcoeff file group",
-      "members": ["fieldcoeff_file", "fieldcoeff_file_2"],
-      "mutually-exclusive": true
-    },
-    {
-      "id": "jacobian_file_group",
-      "name": "Jacobian file group",
-      "members": ["jacobian_file", "jacobian_file_2"],
-      "mutually-exclusive": true
-    },
-    {
-      "id": "modulatedref_file_group",
-      "name": "Modulatedref file group",
-      "members": ["modulatedref_file", "modulatedref_file_2"],
-      "mutually-exclusive": true
-    },
-    {
-      "id": "out_intensitymap_file_group",
-      "name": "Out intensitymap file group",
-      "members": ["out_intensitymap_file", "out_intensitymap_file_2"],
-      "mutually-exclusive": true
-    },
-    {
-      "id": "mutex_group",
-      "name": "Mutex group",
-      "members": ["apply_refmask", "skip_refmask"],
-      "mutually-exclusive": true
-    },
-    {
-      "id": "mutex_group_2",
-      "name": "Mutex group 2",
-      "members": ["apply_inmask", "skip_inmask"],
-      "mutually-exclusive": true
-    },
-    {
-      "id": "mutex_group_3",
-      "name": "Mutex group 3",
-      "members": ["apply_intensity_mapping", "skip_intensity_mapping"],
-      "mutually-exclusive": true
-    }
-  ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
