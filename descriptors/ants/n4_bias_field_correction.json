@@ -7,15 +7,15 @@
   "tool-version": "v2.4.3-gcaa60eb",
   "inputs": [
     {
-        "id": "image_dimensionality",
-        "name": "Image dimensionality",
-        "value-key": "[IMAGE_DIMENSIONALITY]",
-        "type": "Number",
-        "integer": true,
-        "optional": true,
-        "value-choices": [2, 3, 4],
-        "command-line-flag": "--image-dimensionality",
-        "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, N4 tries to infer the dimensionality from the input image."
+      "id": "image_dimensionality",
+      "name": "Image dimensionality",
+      "value-key": "[IMAGE_DIMENSIONALITY]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [2, 3, 4],
+      "command-line-flag": "--image-dimensionality",
+      "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, N4 tries to infer the dimensionality from the input image."
     },
     {
       "id": "input_image",
