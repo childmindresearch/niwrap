@@ -306,7 +306,7 @@
       "mutually-exclusive": true
     },
     {
-      "id": "one_is_required", 
+      "id": "one_is_required",
       "name": "One is required",
       "members": ["max", "min", "match"]
     }
