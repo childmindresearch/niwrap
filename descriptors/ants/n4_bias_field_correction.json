@@ -1,209 +1,143 @@
 {
   "name": "N4BiasFieldCorrection",
-  "command-line": "N4BiasFieldCorrection [ARGS] [BIAS_IMAGE] [BSPLINE_FITTING_DISTANCE] [BSPLINE_ORDER] [CONVERGENCE_THRESHOLD] [COPY_HEADER] [DIMENSION] [ENVIRON] [HISTOGRAM_SHARPENING] [INPUT_IMAGE] [MASK_IMAGE] [N_ITERATIONS] [NUM_THREADS] [OUTPUT_IMAGE] [RESCALE_INTENSITIES] [SAVE_BIAS] [SHRINK_FACTOR] [WEIGHT_IMAGE]",
-  "author": "Nipype (interface)",
-  "description": "N4BiasFieldCorrection, as implemented in Nipype (module: nipype.interfaces.ants, interface: N4BiasFieldCorrection).\n\nBias field correction.\nN4 is a variant of the popular N3 (nonparameteric nonuniform normalization) retrospective bias correction algorithm. Based on the assumption that the corruption of the low frequency bias field can be modeled as a convolution of the intensity histogram by a Gaussian, the basic algorithmic protocol is to iterate between deconvolving the intensity histogram by a Gaussian, remapping the intensities, and then spatially smoothing this result by a B-spline modeling of the bias field itself. The modifications from and improvements obtained over the original N3 algorithm are described in [Tustison2010]_.\n.. [Tustison2010] N. Tustison et al., N4ITK: Improved N3 Bias Correction, IEEE Transactions on Medical Imaging, 29(6):1310-1320, June 2010.",
+  "command-line": "N4BiasFieldCorrection [IMAGE_DIMENSIONALITY] [SHRINK_FACTOR] [MASK_IMAGE] [RESCALE_INTENSITIES] [WEIGHT_IMAGE] [SHRINK_FACTOR] [CONVERGENCE] [BSPLINE_FITTING] [HISTOGRAM_SHARPENING] [VERBOSE] [INPUT_IMAGE] --output [[CORRECTED_IMAGE],[BIAS_FIELD]]",
+  "author": "ANTs authors",
+  "description": "N4 is a variant of the popular N3 (nonparameteric nonuniform normalization) retrospective bias correction algorithm. Based on the assumption that the corruption of the low frequency bias field can be modeled as a convolution of the intensity histogram by a Gaussian, the basic algorithmic protocol is to iterate between deconvolving the intensity histogram by a Gaussian, remapping the intensities, and then spatially smoothing this result by a B-spline modeling of the bias field itself. The modifications from and improvements obtained over the original N3 algorithm are described in the following paper: N. Tustison et al., N4ITK: Improved N3 Bias Correction, IEEE Transactions on Medical Imaging, 29(6):1310-1320, June 2010.",
+  "url": "https://github.com/ANTsX/ANTs/wiki/N4BiasFieldCorrection",
+  "tool-version": "v2.4.3-gcaa60eb",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
-      "id": "bias_image",
-      "name": "Bias image",
-      "type": "File",
-      "value-key": "[BIAS_IMAGE]",
-      "description": "A pathlike object or string representing a file. Filename for the estimated bias.",
-      "optional": true
-    },
-    {
-      "id": "bspline_fitting_distance",
-      "name": "Bspline fitting distance",
-      "type": "Number",
-      "value-key": "[BSPLINE_FITTING_DISTANCE]",
-      "command-line-flag": "--bspline-fitting",
-      "description": "A float. No description provided.",
-      "optional": true
-    },
-    {
-      "id": "bspline_order",
-      "name": "Bspline order",
+      "id": "image_dimensionality",
+      "name": "Image dimensionality",
+      "value-key": "[IMAGE_DIMENSIONALITY]",
       "type": "Number",
       "integer": true,
-      "value-key": "[BSPLINE_ORDER]",
-      "description": "An integer. No description provided.",
       "optional": true,
-      "requires-inputs": ["bspline_fitting_distance"]
-    },
-    {
-      "id": "convergence_threshold",
-      "name": "Convergence threshold",
-      "type": "Number",
-      "value-key": "[CONVERGENCE_THRESHOLD]",
-      "description": "A float. No description provided.",
-      "optional": true,
-      "requires-inputs": ["n_iterations"]
-    },
-    {
-      "id": "copy_header",
-      "name": "Copy header",
-      "type": "Flag",
-      "value-key": "[COPY_HEADER]",
-      "command-line-flag": "--copy_header",
-      "description": "A boolean. Copy headers of the original image into the output (corrected) file.",
-      "optional": false,
-      "default-value": false
-    },
-    {
-      "id": "dimension",
-      "name": "Dimension",
-      "type": "Number",
-      "value-key": "[DIMENSION]",
-      "command-line-flag": "-d",
-      "description": "3 or 2 or 4. Image dimension (2, 3 or 4).",
-      "optional": true,
-      "default-value": 3,
-      "integer": true,
-      "value-choices": [3, 2, 4]
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
-    {
-      "id": "histogram_sharpening",
-      "name": "Histogram sharpening",
-      "type": "Number",
-      "list": true,
-      "min-list-entries": 3,
-      "max-list-entries": 3,
-      "value-key": "[HISTOGRAM_SHARPENING]",
-      "command-line-flag": "--histogram-sharpening [",
-      "description": "A tuple of the form: (a float, a float, an integer). Three-values tuple of histogram sharpening parameters (fwhm, wienernose, numberofhistogrambins).these options describe the histogram sharpening parameters, i.e. the deconvolution step parameters described in the original n3 algorithm.the default values have been shown to work fairly well.",
-      "optional": true
+      "value-choices": [2, 3, 4],
+      "command-line-flag": "--image-dimensionality",
+      "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, N4 tries to infer the dimensionality from the input image."
     },
     {
       "id": "input_image",
       "name": "Input image",
-      "type": "File",
       "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
       "command-line-flag": "--input-image",
-      "description": "A pathlike object or string representing a file. Input for bias correction. negative values or values close to zero should be processed prior to correction.",
-      "optional": false
+      "description": "A scalar image is expected as input for bias correction. Since N4 log transforms the intensities, negative values or values close to zero should be processed prior to correction."
     },
     {
       "id": "mask_image",
       "name": "Mask image",
-      "type": "File",
       "value-key": "[MASK_IMAGE]",
-      "command-line-flag": "--mask-image",
-      "description": "A pathlike object or string representing a file. Image to specify region to perform final bias correction in.",
-      "optional": true
-    },
-    {
-      "id": "n_iterations",
-      "name": "N iterations",
-      "type": "Number",
-      "list": true,
-      "integer": true,
-      "value-key": "[N_ITERATIONS]",
-      "command-line-flag": "--convergence",
-      "description": "A list of items which are an integer. No description provided.",
-      "optional": true
-    },
-    {
-      "id": "num_threads",
-      "name": "Num threads",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[NUM_THREADS]",
-      "description": "An integer. Number of itk threads to use.",
+      "type": "File",
       "optional": true,
-      "default-value": 1
+      "command-line-flag": "--mask-image",
+      "description": "If a mask image is specified, the final bias correction is only performed in the mask region. If a weight image is not specified, only intensity values inside the masked region are used during the execution of the algorithm. If a weight image is specified, only the non-zero weights are used in the execution of the algorithm although the mask region defines where bias correction is performed in the final output. Otherwise bias correction occurs over the entire image domain.  See also the option description for the weight image. If a mask image is *not* specified then the entire image region will be used as the mask region. Note that this is different than the N3 implementation which uses the results of Otsu thresholding to define a mask. However, this leads to unknown anatomical regions being included and excluded during the bias correction."
     },
     {
       "id": "rescale_intensities",
       "name": "Rescale intensities",
-      "type": "Flag",
       "value-key": "[RESCALE_INTENSITIES]",
-      "command-line-flag": "-r",
-      "description": "A boolean. [note: only ants>=2.1.0]at each iteration, a new intensity mapping is calculated and applied but thereis nothing which constrains the new intensity range to be within certain values.the result is that the range can \"drift\" from the original at each iteration.this option rescales to the [min,max] range of the original image intensitieswithin the user-specified mask.",
-      "optional": true,
-      "default-value": false
-    },
-    {
-      "id": "save_bias",
-      "name": "Save bias",
-      "type": "Flag",
-      "value-key": "[SAVE_BIAS]",
-      "command-line-flag": "--save_bias",
-      "description": "A boolean. True if the estimated bias should be saved to file.",
-      "optional": false,
-      "default-value": false
-    },
-    {
-      "id": "shrink_factor",
-      "name": "Shrink factor",
       "type": "Number",
       "integer": true,
-      "value-key": "[SHRINK_FACTOR]",
-      "command-line-flag": "--shrink-factor",
-      "description": "An integer. No description provided.",
-      "optional": true
+      "value-choices": [0, 1],
+      "optional": true,
+      "requires-inputs": ["mask_image"],
+      "command-line-flag": "--rescale-intensities",
+      "description": "At each iteration, a new intensity mapping is calculated and applied but there is nothing which constrains the new intensity range to be within certain values.  The result is that the range can \"drift\" from the original at each iteration.  This option rescales to the [min,max] range of the original image intensities within the user-specified mask. A mask is required to perform rescaling."
     },
     {
       "id": "weight_image",
       "name": "Weight image",
-      "type": "File",
       "value-key": "[WEIGHT_IMAGE]",
+      "type": "File",
+      "optional": true,
       "command-line-flag": "--weight-image",
-      "description": "A pathlike object or string representing a file. Image for relative weighting (e.g. probability map of the white matter) of voxels during the b-spline fitting. .",
-      "optional": true
+      "description": "The weight image allows the user to perform a relative weighting of specific voxels during the B-spline fitting. For example, some studies have shown that N3 performed on white matter segmentations improves performance. If one has a spatial probability map of the white matter, one can use this map to weight the b-spline fitting towards those voxels which are more probabilistically classified as white matter. See also the option description for the mask image."
+    },
+    {
+      "id": "shrink_factor",
+      "name": "Shrink factor",
+      "value-key": "[SHRINK_FACTOR]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [1, 2, 3, 4],
+      "command-line-flag": "--shrink-factor",
+      "description": "Running N4 on large images can be time consuming. To lessen computation time, the input image can be resampled. The shrink factor, specified as a single integer, describes this resampling. Shrink factors <= 4 are commonly used.Note that the shrink factor is only applied to the first two or three dimensions which we assume are spatial."
+    },
+    {
+      "id": "convergence",
+      "name": "Convergence",
+      "value-key": "[CONVERGENCE]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "--convergence",
+      "description": "--convergence [<numberOfIterations=50x50x50x50>,<convergenceThreshold=0.0>]. Convergence is determined by calculating the coefficient of variation between subsequent iterations. When this value is less than the specified threshold from the previous iteration or the maximum number of iterations is exceeded the program terminates. Multiple resolutions can be specified by using 'x' between the number of iterations at each resolution, e.g. 100x50x50."
+    },
+    {
+      "id": "bspline_fitting",
+      "name": "Bspline fitting",
+      "value-key": "[BSPLINE_FITTING]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "--bspline-fitting",
+      "description": "--bspline-fitting [splineDistance,<splineOrder=3>]. These options describe the b-spline fitting parameters. The initial b-spline mesh at the coarsest resolution is specified either as the number of elements in each dimension, e.g. 2x2x3 for 3-D images, or it can be specified as a single scalar parameter which describes the isotropic sizing of the mesh elements. The latter option is typically preferred. For each subsequent level, the spline distance decreases in half, or equivalently, the number of mesh elements doubles Cubic splines (order = 3) are typically used. The default setting is to employ a single mesh element over the entire domain, i.e., -b [1x1x1,3]."
+    },
+    {
+      "id": "histogram_sharpening",
+      "name": "Histogram sharpening",
+      "value-key": "[HISTOGRAM_SHARPENING]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "--histogram-sharpening",
+      "description": "--histogram-sharpening [<FWHM=0.15>,<wienerNoise=0.01>,<numberOfHistogramBins=200>]. These options describe the histogram sharpening parameters, i.e. the deconvolution step parameters described in the original N3 algorithm. The default values have been shown to work fairly well."
+    },
+    {
+      "id": "corrected_image_path",
+      "name": "Corrected image path",
+      "value-key": "[CORRECTED_IMAGE]",
+      "type": "String",
+      "optional": false,
+      "description": "The bias corrected version of the input image."
+    },
+    {
+      "id": "bias_field_path",
+      "name": "Bias field path",
+      "value-key": "[BIAS_FIELD]",
+      "type": "String",
+      "optional": false,
+      "description": "Estimated bias field image."
+    },
+    {
+      "id": "verbose",
+      "name": "Verbose",
+      "value-key": "[VERBOSE]",
+      "type": "Number",
+      "integer": true,
+      "value-choices": [0, 1],
+      "default-value": 0,
+      "command-line-flag": "--verbose",
+      "description": "Verbose output."
     }
   ],
   "output-files": [
     {
-      "name": "Output image",
-      "id": "output_image",
-      "optional": true,
-      "description": "A string. Output file name.",
-      "path-template": "[INPUT_IMAGE]_corrected",
-      "value-key": "[OUTPUT_IMAGE]",
-      "command-line-flag": "--output"
+      "id": "corrected_image",
+      "name": "Corrected image",
+      "path-template": "[CORRECTED_IMAGE]",
+      "description": "The bias corrected version of the input image.",
+      "optional": false
     },
     {
-      "name": "Bias image",
-      "id": "bias_image_outfile",
-      "path-template": "[BIAS_IMAGE]",
-      "optional": true,
-      "description": "A pathlike object or string representing an existing file. Estimated bias."
-    },
-    {
-      "name": "Output image",
-      "id": "output_image",
-      "path-template": "output_image",
-      "optional": true,
-      "description": "A pathlike object or string representing an existing file. Warped image."
+      "id": "bias_field",
+      "name": "Bias field",
+      "path-template": "[BIAS_FIELD]",
+      "description": "Estimated bias field image.",
+      "optional": false
     }
   ],
-  "groups": [
-    {
-      "id": "mutex_group",
-      "name": "Mutex group",
-      "members": ["bias_image", "save_bias"],
-      "mutually-exclusive": true
-    }
-  ],
-  "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
