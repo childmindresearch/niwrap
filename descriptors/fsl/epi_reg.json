@@ -138,7 +138,7 @@
     {
       "name": "Epi2str inv",
       "id": "epi2str_inv",
-      "path-template": "epi2str_inv",
+      "path-template": "epi2str_inv.mat",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Rigid structural-to-epi transform."
     },
@@ -152,49 +152,49 @@
     {
       "name": "Fmap2epi mat",
       "id": "fmap2epi_mat",
-      "path-template": "fmap2epi_mat",
+      "path-template": "fmap2epi.mat",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Rigid fieldmap-to-epi transform."
     },
     {
       "name": "Fmap2str mat",
       "id": "fmap2str_mat",
-      "path-template": "fmap2str_mat",
+      "path-template": "fmap2str.mat",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Rigid fieldmap-to-structural transform."
     },
     {
       "name": "Fmap epi",
       "id": "fmap_epi",
-      "path-template": "fmap_epi",
+      "path-template": "fmap_epi.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Fieldmap in epi space."
     },
     {
       "name": "Fmap str",
       "id": "fmap_str",
-      "path-template": "fmap_str",
+      "path-template": "fmap_str.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Fieldmap in structural space."
     },
     {
       "name": "Fmapmag str",
       "id": "fmapmag_str",
-      "path-template": "fmapmag_str",
+      "path-template": "fmapmag_str.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Fieldmap magnitude image in structural space."
     },
     {
       "name": "Fullwarp",
       "id": "fullwarp",
-      "path-template": "fullwarp",
+      "path-template": "fullwarp.nii.gz",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Warpfield to unwarp epi and transform into                     structural space."
+      "description": "A pathlike object or string representing an existing file. Warpfield to unwarp epi and transform into structural space."
     },
     {
       "name": "Out 1vol",
       "id": "out_1vol",
-      "path-template": "out_1vol",
+      "path-template": "out_1vol.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Unwarped and coregistered single volume."
     },
@@ -215,7 +215,7 @@
     {
       "name": "Shiftmap",
       "id": "shiftmap",
-      "path-template": "shiftmap",
+      "path-template": "shiftmap.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Shiftmap in epi space."
     },
