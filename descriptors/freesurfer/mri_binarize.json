@@ -306,9 +306,10 @@
       "mutually-exclusive": true
     },
     {
-      "id": "one_is_required",
-      "name": "One is required",
-      "members": ["max", "min", "match"]
+      "id": "at_least_one",
+      "name": "At least one",
+      "members": ["max", "min", "match"],
+      "one-is-required": true
     }
   ],
   "tool-version": "1.0.0",
