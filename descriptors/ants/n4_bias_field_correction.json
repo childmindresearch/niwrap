@@ -42,10 +42,10 @@
       "type": "Number",
       "integer": true,
       "value-choices": [0, 1],
-      "default-value": 0,
+      "optional": true,
+      "requires-inputs": ["mask_image"],
       "command-line-flag": "--rescale-intensities",
-      "description": "At each iteration, a new intensity mapping is calculated and applied but there is nothing which constrains the new intensity range to be within certain values.  The result is that the range can \"drift\" from the original at each iteration.  This option rescales to the [min,max] range of the original image intensities within the user-specified mask. A mask is required to perform rescaling.",
-      "requires-inputs": ["mask_image"]
+      "description": "At each iteration, a new intensity mapping is calculated and applied but there is nothing which constrains the new intensity range to be within certain values.  The result is that the range can \"drift\" from the original at each iteration.  This option rescales to the [min,max] range of the original image intensities within the user-specified mask. A mask is required to perform rescaling."
     },
     {
       "id": "weight_image",
@@ -95,16 +95,16 @@
       "description": "--histogram-sharpening [<FWHM=0.15>,<wienerNoise=0.01>,<numberOfHistogramBins=200>]. These options describe the histogram sharpening parameters, i.e. the deconvolution step parameters described in the original N3 algorithm. The default values have been shown to work fairly well."
     },
     {
-      "id": "corrected_image",
-      "name": "Corrected image",
+      "id": "corrected_image_path",
+      "name": "Corrected image path",
       "value-key": "[CORRECTED_IMAGE]",
       "type": "String",
       "optional": false,
       "description": "The bias corrected version of the input image."
     },
     {
-      "id": "bias_field",
-      "name": "Bias field",
+      "id": "bias_field_path",
+      "name": "Bias field path",
       "value-key": "[BIAS_FIELD]",
       "type": "String",
       "optional": false,
