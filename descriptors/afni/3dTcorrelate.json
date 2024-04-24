@@ -84,7 +84,7 @@
       "integer": true,
       "value-key": "[POLORT]",
       "command-line-flag": "-polort",
-      "description": "An integer. Remove polynomial trend of order m. Using m=-1 mean no detrending; this is only useful fro data that has been preprocessed.",
+      "description": "An integer. Remove polynomial trend of order m. Using m=-1 mean no detrending; this is only useful for data that has been preprocessed.",
       "default-value": 1,
       "maximum": 9,
       "minimum": -1,
