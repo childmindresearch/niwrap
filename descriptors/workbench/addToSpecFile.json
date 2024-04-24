@@ -1,0 +1,48 @@
+{
+  "name": "-add-to-spec-file",
+  "tool-version": "1.5.0",
+  "command-line": "wb_command -add-to-spec-file [SPECFILE] [STRUCTURE] [FILENAME]",
+  "description": "Add a file to a specification file.",
+  "descriptor-url": "https://github.com/childmindresearch/nopype/blob/main/descriptors/workbench/addToSpecFile.json",
+  "schema-version": "0.5",
+  "shell": "/bin/bash",
+  "container-image": {
+    "type": "docker",
+    "image": "ghcr.io/fcp-indi/c-pac/connectome-workbench:1.5.0.neurodebian-jammy"
+  },
+  "inputs": [
+    {
+      "id": "specfile",
+      "name": "Specfile",
+      "type": "File",
+      "value-key": "[SPECFILE]",
+      "description": "A file with extension \".spec\". The specification file to add to.\nThe resulting spec file overwrites the existing spec file.\nIf the spec file doesn't exist, it is created with default metadata.",
+      "optional": false
+    },
+    {
+      "id": "structure",
+      "name": "Structure",
+      "type": "String",
+      "value-key": "[STRUCTURE]",
+      "optional": false,
+      "value-choices": ["CORTEX_LEFT", "CORTEX_RIGHT", "CEREBELLUM", "ACCUMBENS_LEFT", "ACCUMBENS_RIGHT", "ALL_GREY_MATTER", "ALL_WHITE_MATTER", "AMYGDALA_LEFT", "AMYGDALA_RIGHT", "BRAIN_STEM", "CAUDATE_LEFT", "CAUDATE_RIGHT", "CEREBELLAR_WHITE_MATTER_LEFT", "CEREBELLAR_WHITE_MATTER_RIGHT", "CEREBELLUM_LEFT", "CEREBELLUM_RIGHT", "CEREBRAL_WHITE_MATTER_LEFT", "CEREBRAL_WHITE_MATTER_RIGHT", "CORTEX", "DIENCEPHALON_VENTRAL_LEFT", "DIENCEPHALON_VENTRAL_RIGHT", "HIPPOCAMPUS_LEFT", "HIPPOCAMPUS_RIGHT", "INVALID", "OTHER", "OTHER_GREY_MATTER", "OTHER_WHITE_MATTER", "PALLIDUM_LEFT", "PALLIDUM_RIGHT", "PUTAMEN_LEFT", "PUTAMEN_RIGHT", "THALAMUS_LEFT", "THALAMUS_RIGHT"]
+    },
+    {
+      "id": "filename",
+      "name": "Filename",
+      "type": "File",
+      "value-key": "[FILENAME]",
+      "description": "A File. The path to the file.",
+      "optional": false
+    }
+  ],
+  "output-files": [
+    {
+      "id": "specfile_out",
+      "name": "Specfile",
+      "path-template": "[SPECFILE]",
+      "description": "A File. The specification file to add to.\nThe resulting spec file overwrites the existing spec file.\nIf the spec file doesn't exist, it is created with default metadata.",
+      "optional": false
+    }
+  ]
+}
