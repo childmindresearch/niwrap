@@ -56,7 +56,7 @@
             "type": "File",
             "value-key": "[INIT]",
             "command-line-flag": "-init",
-            "description": "An existing file name. Inital transformation matrix.",
+            "description": "An existing file name. Initial transformation matrix.",
             "optional": true
         },
         {
