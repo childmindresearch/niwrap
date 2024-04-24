@@ -7,6 +7,8 @@ This repository contains a collection of Boutiques descriptors for all command l
 
 ## Helpful resources
 
+- [Greg's Intro to Boutiques slideshow](https://docs.google.com/presentation/d/17ktohcT1iH6MX1DNklljlHnNaD8YH8u-FauKuopmugY/edit?usp=sharing)
+- [Flo's Boutiques Tutorial slideshow](https://docs.google.com/presentation/d/1pVjWzubcoY1WuE0g09xV6K8yx7asklMGJKyMS2rDZ_w/edit?usp=sharing)
 - [Boutiques documentation](https://boutiques.github.io/)
 - [Boutiques schema](https://github.com/boutiques/boutiques/blob/master/boutiques/schema/descriptor.schema.json)
 - [FSL help pages](https://childmindresearch.github.io/help-pages-fsl/)
