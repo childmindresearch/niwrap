@@ -4,7 +4,7 @@
   "author": "FMRIB",
   "description": "convert_xfm, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ConvertXFM). Use the FSL utility convert_xfm to modify FLIRT transformation matrices.",
   "inputs": [
-     {
+    {
       "id": "concat_xfm",
       "name": "Concat xfm",
       "type": "File",
