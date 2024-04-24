@@ -1,26 +1,9 @@
 {
-  "name": "SkullStrip",
-  "command-line": "SkullStrip [IN_FILE] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
+  "name": "3dSkullStrip",
+  "command-line": "3dSkullStrip [IN_FILE] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
   "description": "SkullStrip, as implemented in Nipype (module: nipype.interfaces.afni, interface: SkullStrip).\nA program to extract the brain from surrounding tissue from MRI T1-weighted images. TODO Add optional arguments.\nFor complete details, see the `3dSkullStrip Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSkullStrip.html>`_",
   "inputs": [
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
     {
       "id": "in_file",
       "name": "In file",
@@ -56,22 +39,15 @@
       "id": "out_file",
       "optional": true,
       "description": "A pathlike object or string representing a file. Output image file name.",
-      "path-template": "[IN_FILE]_skullstrip",
+      "path-template": "[IN_FILE]_skullstrip.nii.gz",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
-    },
-    {
-      "name": "Out file",
-      "id": "out_file",
-      "path-template": "out_file",
-      "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output file."
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
+    "image": "container/image",
     "type": "docker"
   },
   "tags": {
