@@ -87,7 +87,7 @@
       "value-key": "[ERODE]",
       "command-line-flag": "--erode",
       "description": "An integer. Nerode: erode binarization in 3d (after any dilation).",
-      "optional": false
+      "optional": true
     },
     {
       "id": "erode2d",
@@ -270,7 +270,14 @@
       "id": "binary_file_outfile",
       "path-template": "[BINARY_FILE]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Binarized output volume."
+      "description": "Binarized output volume."
+    },
+    {
+      "name": "Count file",
+      "id": "count_file_outfile",
+      "path-template": "[COUNT_FILE].txt",
+      "optional": true,
+      "description": "Ascii file containing number of hits."
     }
   ],
   "groups": [
@@ -297,6 +304,11 @@
       "name": "Mutex group 3",
       "members": ["max", "min", "wm_ven_csf"],
       "mutually-exclusive": true
+    },
+    {
+      "id": "one_is_required", 
+      "name": "One is required",
+      "members": ["max", "min", "match"]
     }
   ],
   "tool-version": "1.0.0",
