@@ -10,7 +10,7 @@
       "type": "Flag",
       "value-key": "[FS_TARGET]",
       "command-line-flag": "--fstarg",
-      "description": "A boolean. Use orig.mgz from subject in regfile as target.",
+      "description": "Use orig.mgz from subject in regfile as target.",
       "optional": true,
       "requires-inputs": ["reg_file"]
     },
@@ -39,7 +39,7 @@
       "type": "Flag",
       "value-key": "[INVERSE]",
       "command-line-flag": "--inv",
-      "description": "A boolean. Sample from target to source.",
+      "description": "Sample from target to source.",
       "optional": true
     },
     {
@@ -48,7 +48,7 @@
       "type": "Flag",
       "value-key": "[INVERT_MORPH]",
       "command-line-flag": "--inv-morph",
-      "description": "A boolean. Compute and use the inverse of the non-linear morph to resample the input volume. to be used by --m3z.",
+      "description": "Compute and use the inverse of the non-linear morph to resample the input volume. to be used by --m3z.",
       "optional": true,
       "requires-inputs": ["m3z_file"]
     },
@@ -85,7 +85,7 @@
       "type": "Flag",
       "value-key": "[MNI_152_REG]",
       "command-line-flag": "--regheader",
-      "description": "A boolean. Target mni152 space.",
+      "description": "Target mni152 space.",
       "optional": true
     },
     {
@@ -94,7 +94,7 @@
       "type": "Flag",
       "value-key": "[NO_DEF_M3Z_PATH]",
       "command-line-flag": "--noDefM3zPath",
-      "description": "A boolean. To be used with the m3z flag. Instructs the code not to look for the non-linear m3z morph in the default location (subjects_dir/subj/mri/transforms), but instead just use the path indicated in --m3z.",
+      "description": "To be used with the m3z flag. Instructs the code not to look for the non-linear m3z morph in the default location (subjects_dir/subj/mri/transforms), but instead just use the path indicated in --m3z.",
       "optional": true,
       "requires-inputs": ["m3z_file"]
     },
@@ -104,7 +104,7 @@
       "type": "Flag",
       "value-key": "[NO_RESAMPLE]",
       "command-line-flag": "--no-resample",
-      "description": "A boolean. Do not resample; just change vox2ras matrix.",
+      "description": "Do not resample; just change vox2ras matrix.",
       "optional": true
     },
     {
@@ -122,7 +122,7 @@
       "type": "Flag",
       "value-key": "[REG_HEADER]",
       "command-line-flag": "--regheader",
-      "description": "A boolean. Scannerras-to-scannerras matrix = identity.",
+      "description": "Scannerras-to-scannerras matrix = identity.",
       "optional": true
     },
     {
@@ -140,7 +140,7 @@
       "type": "String",
       "value-key": "[SUBJECT]",
       "command-line-flag": "--s",
-      "description": "A string. Set matrix = identity and use subject for any templates.",
+      "description": "Set matrix = identity and use subject for any templates.",
       "optional": true
     },
     {
@@ -157,7 +157,7 @@
       "type": "Flag",
       "value-key": "[TAL]",
       "command-line-flag": "--tal",
-      "description": "A boolean. Map to a sub fov of mni305 (with --reg only).",
+      "description": "Map to a sub fov of mni305 (with --reg only).",
       "optional": true
     },
     {
@@ -166,7 +166,7 @@
       "type": "Number",
       "value-key": "[TAL_RESOLUTION]",
       "command-line-flag": "--talres",
-      "description": "A float. Resolution to sample when using tal.",
+      "description": "Resolution to sample when using tal.",
       "optional": true
     },
     {

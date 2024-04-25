@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -19,7 +19,7 @@
       "integer": true,
       "value-key": "[IGNORE]",
       "command-line-flag": "-ignore",
-      "description": "An integer. Ignore the first set of points specified.",
+      "description": "Ignore the first set of points specified.",
       "optional": true
     },
     {
@@ -46,7 +46,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Set number of threads.",
+      "description": "Set number of threads.",
       "optional": true,
       "default-value": 1
     },
@@ -65,7 +65,7 @@
       "type": "Flag",
       "value-key": "[RLT]",
       "command-line-flag": "-rlt",
-      "description": "A boolean. Before shifting, remove the mean and linear trend.",
+      "description": "Before shifting, remove the mean and linear trend.",
       "optional": true
     },
     {
@@ -74,7 +74,7 @@
       "type": "Flag",
       "value-key": "[RLTPLUS]",
       "command-line-flag": "-rlt+",
-      "description": "A boolean. Before shifting, remove the mean and linear trend and later put back the mean.",
+      "description": "Before shifting, remove the mean and linear trend and later put back the mean.",
       "optional": true
     },
     {
@@ -142,7 +142,7 @@
       "type": "String",
       "value-key": "[TR]",
       "command-line-flag": "-TR",
-      "description": "A string. Manually set the tr. you can attach suffix \"s\" for seconds or \"ms\" for milliseconds.",
+      "description": "Manually set the tr. you can attach suffix \"s\" for seconds or \"ms\" for milliseconds.",
       "optional": true
     },
     {
@@ -152,7 +152,7 @@
       "integer": true,
       "value-key": "[TSLICE]",
       "command-line-flag": "-slice",
-      "description": "An integer. Align each slice to time offset of given slice.",
+      "description": "Align each slice to time offset of given slice.",
       "optional": true
     },
     {
@@ -161,7 +161,7 @@
       "type": "Number",
       "value-key": "[TZERO]",
       "command-line-flag": "-tzero",
-      "description": "A float. Align each slice to given time offset.",
+      "description": "Align each slice to given time offset.",
       "optional": true
     }
   ],

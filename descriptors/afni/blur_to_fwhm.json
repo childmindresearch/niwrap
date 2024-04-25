@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -18,7 +18,7 @@
       "type": "Flag",
       "value-key": "[AUTOMASK]",
       "command-line-flag": "-automask",
-      "description": "A boolean. Create an automask from the input dataset.",
+      "description": "Create an automask from the input dataset.",
       "optional": true
     },
     {
@@ -36,7 +36,7 @@
       "type": "Number",
       "value-key": "[FWHM]",
       "command-line-flag": "-FWHM",
-      "description": "A float. Blur until the 3d fwhm reaches this value (in mm).",
+      "description": "Blur until the 3d fwhm reaches this value (in mm).",
       "optional": true
     },
     {
@@ -45,7 +45,7 @@
       "type": "Number",
       "value-key": "[FWHMXY]",
       "command-line-flag": "-FWHMxy",
-      "description": "A float. Blur until the 2d (x,y)-plane fwhm reaches this value (in mm).",
+      "description": "Blur until the 2d (x,y)-plane fwhm reaches this value (in mm).",
       "optional": true
     },
     {
@@ -72,7 +72,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Set number of threads.",
+      "description": "Set number of threads.",
       "optional": true,
       "default-value": 1
     },

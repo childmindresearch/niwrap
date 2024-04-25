@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -18,7 +18,7 @@
       "type": "Flag",
       "value-key": "[AUTO_THRESH_BG]",
       "command-line-flag": "-a",
-      "description": "A boolean. Automatically threshold the background image.",
+      "description": "Automatically threshold the background image.",
       "optional": false
     },
     {
@@ -37,7 +37,7 @@
       "min-list-entries": 2,
       "max-list-entries": 2,
       "value-key": "[BG_THRESH]",
-      "description": "A tuple of the form: (a float, a float). Min and max values for background intensity.",
+      "description": "(a float, a float). Min and max values for background intensity.",
       "optional": false
     },
     {
@@ -46,7 +46,7 @@
       "type": "Flag",
       "value-key": "[FULL_BG_RANGE]",
       "command-line-flag": "-A",
-      "description": "A boolean. Use full range of background image.",
+      "description": "Use full range of background image.",
       "optional": false
     },
     {
@@ -81,7 +81,7 @@
       "name": "Show negative stats",
       "type": "Flag",
       "value-key": "[SHOW_NEGATIVE_STATS]",
-      "description": "A boolean. Display negative statistics in overlay.",
+      "description": "Display negative statistics in overlay.",
       "optional": true
     },
     {
@@ -108,7 +108,7 @@
       "min-list-entries": 2,
       "max-list-entries": 2,
       "value-key": "[STAT_THRESH]",
-      "description": "A tuple of the form: (a float, a float). Min and max values for the statistical overlay.",
+      "description": "(a float, a float). Min and max values for the statistical overlay.",
       "optional": false
     },
     {
@@ -119,7 +119,7 @@
       "min-list-entries": 2,
       "max-list-entries": 2,
       "value-key": "[STAT_THRESH2]",
-      "description": "A tuple of the form: (a float, a float). Min and max values for second statistical overlay.",
+      "description": "(a float, a float). Min and max values for second statistical overlay.",
       "optional": true
     },
     {
@@ -127,7 +127,7 @@
       "name": "Transparency",
       "type": "Flag",
       "value-key": "[TRANSPARENCY]",
-      "description": "A boolean. Make overlay colors semi-transparent.",
+      "description": "Make overlay colors semi-transparent.",
       "optional": true,
       "default-value": true
     },
@@ -137,7 +137,7 @@
       "type": "Flag",
       "value-key": "[USE_CHECKERBOARD]",
       "command-line-flag": "-c",
-      "description": "A boolean. Use checkerboard mask for overlay.",
+      "description": "Use checkerboard mask for overlay.",
       "optional": true
     }
   ],

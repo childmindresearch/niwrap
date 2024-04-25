@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -18,7 +18,7 @@
       "type": "Flag",
       "value-key": "[AUTOCLIP]",
       "command-line-flag": "-autoclip",
-      "description": "A boolean. Clip off low-intensity regions in the dataset.",
+      "description": "Clip off low-intensity regions in the dataset.",
       "optional": true
     },
     {
@@ -27,7 +27,7 @@
       "type": "Flag",
       "value-key": "[AUTOMASK]",
       "command-line-flag": "-automask",
-      "description": "A boolean. Mask the dataset to target brain-only voxels.",
+      "description": "Mask the dataset to target brain-only voxels.",
       "optional": true
     },
     {
@@ -36,7 +36,7 @@
       "type": "Number",
       "value-key": "[EPS]",
       "command-line-flag": "-eps",
-      "description": "A float. Sets the stopping criterion for the power iteration; :math:`l2\\|v_\\text{old} - v_\\text{new}\\| < eps\\|v_\\text{old}\\|`; default = 0.001.",
+      "description": "Sets the stopping criterion for the power iteration; :math:`l2\\|v_\\text{old} - v_\\text{new}\\| < eps\\|v_\\text{old}\\|`; default = 0.001.",
       "optional": true
     },
     {
@@ -45,7 +45,7 @@
       "type": "Flag",
       "value-key": "[FECM]",
       "command-line-flag": "-fecm",
-      "description": "A boolean. Fast centrality method; substantial speed increase but cannot accommodate thresholding; automatically selected if -thresh or -sparsity are not set.",
+      "description": "Fast centrality method; substantial speed increase but cannot accommodate thresholding; automatically selected if -thresh or -sparsity are not set.",
       "optional": true
     },
     {
@@ -54,7 +54,7 @@
       "type": "Flag",
       "value-key": "[FULL]",
       "command-line-flag": "-full",
-      "description": "A boolean. Full power method; enables thresholding; automatically selected if -thresh or -sparsity are set.",
+      "description": "Full power method; enables thresholding; automatically selected if -thresh or -sparsity are set.",
       "optional": true
     },
     {
@@ -81,7 +81,7 @@
       "integer": true,
       "value-key": "[MAX_ITER]",
       "command-line-flag": "-max_iter",
-      "description": "An integer. Sets the maximum number of iterations to use in the power iteration; default = 1000.",
+      "description": "Sets the maximum number of iterations to use in the power iteration; default = 1000.",
       "optional": true
     },
     {
@@ -90,7 +90,7 @@
       "type": "Number",
       "value-key": "[MEMORY]",
       "command-line-flag": "-memory",
-      "description": "A float. Limit memory consumption on system by setting the amount of gb to limit the algorithm to; default = 2gb.",
+      "description": "Limit memory consumption on system by setting the amount of gb to limit the algorithm to; default = 2gb.",
       "optional": true
     },
     {
@@ -99,7 +99,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Set number of threads.",
+      "description": "Set number of threads.",
       "optional": true,
       "default-value": 1
     },
@@ -119,7 +119,7 @@
       "integer": true,
       "value-key": "[POLORT]",
       "command-line-flag": "-polort",
-      "description": "An integer. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -128,7 +128,7 @@
       "type": "Number",
       "value-key": "[SCALE]",
       "command-line-flag": "-scale",
-      "description": "A float. Scale correlation coefficients in similarity matrix to after shifting, x >= 0.0; default = 1.0 for -full, 0.5 for -fecm.",
+      "description": "Scale correlation coefficients in similarity matrix to after shifting, x >= 0.0; default = 1.0 for -full, 0.5 for -fecm.",
       "optional": true
     },
     {
@@ -137,7 +137,7 @@
       "type": "Number",
       "value-key": "[SHIFT]",
       "command-line-flag": "-shift",
-      "description": "A float. Shift correlation coefficients in similarity matrix to enforce non-negativity, s >= 0.0; default = 0.0 for -full, 1.0 for -fecm.",
+      "description": "Shift correlation coefficients in similarity matrix to enforce non-negativity, s >= 0.0; default = 0.0 for -full, 1.0 for -fecm.",
       "optional": true
     },
     {
@@ -146,7 +146,7 @@
       "type": "Number",
       "value-key": "[SPARSITY]",
       "command-line-flag": "-sparsity",
-      "description": "A float. Only take the top percent of connections.",
+      "description": "Only take the top percent of connections.",
       "optional": true
     },
     {
@@ -155,7 +155,7 @@
       "type": "Number",
       "value-key": "[THRESH]",
       "command-line-flag": "-thresh",
-      "description": "A float. Threshold to exclude connections where corr <= thresh.",
+      "description": "Threshold to exclude connections where corr <= thresh.",
       "optional": true
     }
   ],

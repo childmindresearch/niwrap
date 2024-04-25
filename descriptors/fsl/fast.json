@@ -258,7 +258,7 @@
       "id": "bias_field",
       "path-template": "[OUT_BASENAME]_bias.nii.gz",
       "optional": true,
-      "description": "A list of items which are No description provided.",
+      "description": "No description provided.",
       "list": true
     },
     {
@@ -266,7 +266,7 @@
       "id": "partial_volume_files",
       "path-template": "[OUT_BASENAME]_pve_*.nii.gz",
       "optional": true,
-      "description": "A list of items which are No description provided.",
+      "description": "No description provided.",
       "list": true
     },
     {
@@ -281,7 +281,7 @@
       "id": "probability_maps_outfile",
       "path-template": "[OUT_BASENAME]_prob_*.nii.gz",
       "optional": true,
-      "description": "A list of items which are No description provided.",
+      "description": "No description provided.",
       "list": true
     },
     {
@@ -289,7 +289,7 @@
       "id": "restored_image",
       "path-template": "[OUT_BASENAME]_restore.nii.gz",
       "optional": true,
-      "description": "A list of items which are No description provided.",
+      "description": "No description provided.",
       "list": true
     },
     {
@@ -297,7 +297,7 @@
       "id": "tissue_class_files",
       "path-template": "[OUT_BASENAME]_seg_*.nii.gz",
       "optional": true,
-      "description": "A list of items which are No description provided.",
+      "description": "No description provided.",
       "list": true
     },
     {

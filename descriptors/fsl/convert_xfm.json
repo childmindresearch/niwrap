@@ -36,7 +36,7 @@
       "type": "Flag",
       "value-key": "[INVERT_XFM]",
       "command-line-flag": "-inverse",
-      "description": "A boolean. Invert input transformation.",
+      "description": "Invert input transformation.",
       "optional": true
     },
     {

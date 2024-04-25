@@ -9,7 +9,7 @@
       "name": "Expr",
       "type": "String",
       "value-key": "[EXPR]",
-      "description": "A string. Expr.",
+      "description": "Expr.",
       "optional": false
     },
     {
@@ -53,7 +53,7 @@
       "type": "Flag",
       "value-key": "[OVERWRITE]",
       "command-line-flag": "-overwrite",
-      "description": "A boolean. Overwrite output.",
+      "description": "Overwrite output.",
       "optional": true
     },
     {
@@ -62,7 +62,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[SINGLE_IDX]",
-      "description": "An integer. Volume index for in_file_a.",
+      "description": "Volume index for in_file_a.",
       "optional": true
     },
     {
@@ -71,7 +71,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[START_IDX]",
-      "description": "An integer. Start index for in_file_a.",
+      "description": "Start index for in_file_a.",
       "optional": true,
       "requires-inputs": ["stop_idx"]
     },
@@ -81,7 +81,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[STOP_IDX]",
-      "description": "An integer. Stop index for in_file_a.",
+      "description": "Stop index for in_file_a.",
       "optional": true,
       "requires-inputs": ["start_idx"]
     }

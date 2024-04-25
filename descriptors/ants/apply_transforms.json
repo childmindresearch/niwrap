@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -18,7 +18,7 @@
       "type": "Number",
       "value-key": "[DEFAULT_VALUE]",
       "command-line-flag": "--default-value",
-      "description": "A float. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "default-value": 0.0
     },
@@ -39,7 +39,7 @@
       "type": "Flag",
       "value-key": "[FLOAT]",
       "command-line-flag": "--float",
-      "description": "A boolean. Use float instead of double for computations.",
+      "description": "Use float instead of double for computations.",
       "optional": true,
       "default-value": false
     },
@@ -89,7 +89,7 @@
       "type": "String",
       "list": true,
       "value-key": "[INTERPOLATION_PARAMETERS]",
-      "description": "A tuple of the form: (an integer) or a tuple of the form: (a float, a float). No description provided.",
+      "description": "(an integer) or a tuple of the form: (a float, a float). No description provided.",
       "optional": true
     },
     {
@@ -98,7 +98,7 @@
       "type": "String",
       "list": true,
       "value-key": "[INTERPOLATION_PARAMETERS]",
-      "description": "A tuple of the form: (an integer) or a tuple of the form: (a float, a float). No description provided.",
+      "description": "(an integer) or a tuple of the form: (a float, a float). No description provided.",
       "optional": true
     },
     {
@@ -116,7 +116,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Number of itk threads to use.",
+      "description": "Number of itk threads to use.",
       "optional": true,
       "default-value": 1
     },
@@ -125,7 +125,7 @@
       "name": "Out postfix",
       "type": "String",
       "value-key": "[OUT_POSTFIX]",
-      "description": "A string. Postfix that is appended to all output files (default = _trans).",
+      "description": "Postfix that is appended to all output files (default = _trans).",
       "optional": true,
       "default-value": "_trans"
     },
@@ -135,7 +135,7 @@
       "type": "String",
       "value-key": "[OUTPUT_IMAGE]",
       "command-line-flag": "--output",
-      "description": "A string. Output file name.",
+      "description": "Output file name.",
       "optional": true
     },
     {
@@ -144,7 +144,7 @@
       "type": "Flag",
       "value-key": "[PRINT_OUT_COMPOSITE_WARP_FILE]",
       "command-line-flag": "--print_out_composite_warp_file",
-      "description": "A boolean. Output a composite warp file instead of a transformed image.",
+      "description": "Output a composite warp file instead of a transformed image.",
       "optional": true,
       "requires-inputs": ["output_image"]
     },

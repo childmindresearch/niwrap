@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -18,7 +18,7 @@
       "type": "Number",
       "value-key": "[CLFRAC]",
       "command-line-flag": "-clfrac",
-      "description": "A float. Sets the clip level fraction (must be 0.1-0.9). a small value will tend to make the mask larger [default = 0.5].",
+      "description": "Sets the clip level fraction (must be 0.1-0.9). a small value will tend to make the mask larger [default = 0.5].",
       "optional": true
     },
     {
@@ -28,7 +28,7 @@
       "integer": true,
       "value-key": "[DILATE]",
       "command-line-flag": "-dilate",
-      "description": "An integer. Dilate the mask outwards.",
+      "description": "Dilate the mask outwards.",
       "optional": true
     },
     {
@@ -38,7 +38,7 @@
       "integer": true,
       "value-key": "[ERODE]",
       "command-line-flag": "-erode",
-      "description": "An integer. Erode the mask inwards.",
+      "description": "Erode the mask inwards.",
       "optional": true
     },
     {
@@ -55,7 +55,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Set number of threads.",
+      "description": "Set number of threads.",
       "optional": true,
       "default-value": 1
     },

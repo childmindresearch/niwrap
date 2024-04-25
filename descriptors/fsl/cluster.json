@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -20,7 +20,7 @@
       "value-key": "[CONNECTIVITY]",
       "command-line-flag": "--connectivity",
       "command-line-flag-separator": "=",
-      "description": "An integer. The connectivity of voxels (default 26).",
+      "description": "The connectivity of voxels (default 26).",
       "optional": true
     },
     {
@@ -40,7 +40,7 @@
       "value-key": "[DLH]",
       "command-line-flag": "--dlh",
       "command-line-flag-separator": "=",
-      "description": "A float. Smoothness estimate = sqrt(det(lambda)).",
+      "description": "Smoothness estimate = sqrt(det(lambda)).",
       "optional": true
     },
     {
@@ -49,7 +49,7 @@
       "type": "Flag",
       "value-key": "[FIND_MIN]",
       "command-line-flag": "--min",
-      "description": "A boolean. Find minima instead of maxima.",
+      "description": "Find minima instead of maxima.",
       "optional": true,
       "default-value": false
     },
@@ -59,7 +59,7 @@
       "type": "Flag",
       "value-key": "[FRACTIONAL]",
       "command-line-flag": "--fractional",
-      "description": "A boolean. Interprets the threshold as a fraction of the robust range.",
+      "description": "Interprets the threshold as a fraction of the robust range.",
       "optional": true,
       "default-value": false
     },
@@ -79,7 +79,7 @@
       "type": "Flag",
       "value-key": "[MINCLUSTERSIZE]",
       "command-line-flag": "--minclustersize",
-      "description": "A boolean. Prints out minimum significant cluster size.",
+      "description": "Prints out minimum significant cluster size.",
       "optional": true,
       "default-value": false
     },
@@ -89,7 +89,7 @@
       "type": "Flag",
       "value-key": "[NO_TABLE]",
       "command-line-flag": "--no_table",
-      "description": "A boolean. Suppresses printing of the table info.",
+      "description": "Suppresses printing of the table info.",
       "optional": true,
       "default-value": false
     },
@@ -101,7 +101,7 @@
       "value-key": "[NUM_MAXIMA]",
       "command-line-flag": "--num",
       "command-line-flag-separator": "=",
-      "description": "An integer. No of local maxima to report.",
+      "description": "No of local maxima to report.",
       "optional": true
     },
     {
@@ -280,7 +280,7 @@
       "value-key": "[PEAK_DISTANCE]",
       "command-line-flag": "--peakdist",
       "command-line-flag-separator": "=",
-      "description": "A float. Minimum distance between local maxima/minima, in mm (default 0).",
+      "description": "Minimum distance between local maxima/minima, in mm (default 0).",
       "optional": true
     },
     {
@@ -290,7 +290,7 @@
       "value-key": "[PTHRESHOLD]",
       "command-line-flag": "--pthresh",
       "command-line-flag-separator": "=",
-      "description": "A float. P-threshold for clusters.",
+      "description": "P-threshold for clusters.",
       "optional": true,
       "requires-inputs": ["dlh", "volume"]
     },
@@ -311,7 +311,7 @@
       "value-key": "[THRESHOLD]",
       "command-line-flag": "--thresh",
       "command-line-flag-separator": "=",
-      "description": "A float. Threshold for input volume.",
+      "description": "Threshold for input volume.",
       "optional": false
     },
     {
@@ -320,7 +320,7 @@
       "type": "Flag",
       "value-key": "[USE_MM]",
       "command-line-flag": "--mm",
-      "description": "A boolean. Use mm, not voxel, coordinates.",
+      "description": "Use mm, not voxel, coordinates.",
       "optional": true,
       "default-value": false
     },
@@ -332,7 +332,7 @@
       "value-key": "[VOLUME]",
       "command-line-flag": "--volume",
       "command-line-flag-separator": "=",
-      "description": "An integer. Number of voxels in the mask.",
+      "description": "Number of voxels in the mask.",
       "optional": true
     },
     {

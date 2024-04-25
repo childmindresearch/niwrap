@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -18,7 +18,7 @@
       "type": "Flag",
       "value-key": "[AUTOCLIP]",
       "command-line-flag": "-autoclip",
-      "description": "A boolean. Clip off low-intensity regions in the dataset.",
+      "description": "Clip off low-intensity regions in the dataset.",
       "optional": true
     },
     {
@@ -27,7 +27,7 @@
       "type": "Flag",
       "value-key": "[AUTOMASK]",
       "command-line-flag": "-automask",
-      "description": "A boolean. Mask the dataset to target brain-only voxels.",
+      "description": "Mask the dataset to target brain-only voxels.",
       "optional": true
     },
     {
@@ -53,7 +53,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Set number of threads.",
+      "description": "Set number of threads.",
       "optional": true,
       "default-value": 1
     },
@@ -73,7 +73,7 @@
       "integer": true,
       "value-key": "[POLORT]",
       "command-line-flag": "-polort",
-      "description": "An integer. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -82,7 +82,7 @@
       "type": "Number",
       "value-key": "[THRESH]",
       "command-line-flag": "-thresh",
-      "description": "A float. Threshold to exclude connections where corr <= thresh.",
+      "description": "Threshold to exclude connections where corr <= thresh.",
       "optional": true
     }
   ],

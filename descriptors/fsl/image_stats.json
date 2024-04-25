@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -42,7 +42,7 @@
       "name": "Op string",
       "type": "String",
       "value-key": "[OP_STRING]",
-      "description": "A string. String defining the operation, options are applied in order, e.g. -m -l 10 -m will report the non-zero mean, apply a threshold and then report the new nonzero mean.",
+      "description": "String defining the operation, options are applied in order, e.g. -m -l 10 -m will report the non-zero mean, apply a threshold and then report the new nonzero mean.",
       "optional": false
     },
     {
@@ -60,7 +60,7 @@
       "type": "Flag",
       "value-key": "[SPLIT_4D]",
       "command-line-flag": "-t",
-      "description": "A boolean. Give a separate output line for each 3d volume of a 4d timeseries.",
+      "description": "Give a separate output line for each 3d volume of a 4d timeseries.",
       "optional": true
     }
   ],

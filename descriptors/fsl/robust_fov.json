@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -19,7 +19,7 @@
       "integer": true,
       "value-key": "[BRAINSIZE]",
       "command-line-flag": "-b",
-      "description": "An integer. Size of brain in z-dimension (default 170mm/150mm).",
+      "description": "Size of brain in z-dimension (default 170mm/150mm).",
       "optional": true
     },
     {

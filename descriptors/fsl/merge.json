@@ -46,7 +46,7 @@
       "name": "Tr",
       "type": "Number",
       "value-key": "[TR]",
-      "description": "A float. Use to specify tr in seconds (default is 1.00 sec), overrides dimension and sets it to tr.",
+      "description": "Use to specify tr in seconds (default is 1.00 sec), overrides dimension and sets it to tr.",
       "requires-inputs": ["dimension_tr"],
       "optional": true
     },

@@ -11,7 +11,7 @@
       "integer": true,
       "value-key": "[BINS]",
       "command-line-flag": "-bins",
-      "description": "An integer (int or long). Number of histogram bins.",
+      "description": "Number of histogram bins.",
       "optional": true
     },
     {
@@ -38,7 +38,7 @@
       "integer": true,
       "value-key": "[DOF]",
       "command-line-flag": "-dof",
-      "description": "An integer (int or long). Degrees of freedom for the transformation.",
+      "description": "Degrees of freedom for the transformation.",
       "optional": true
     },
     {
@@ -47,7 +47,7 @@
       "type": "File",
       "value-key": "[IN_FILE]",
       "command-line-flag": "-in",
-      "description": "An existing file name. Timeseries to motion-correct.",
+      "description": "Timeseries to motion-correct.",
       "optional": false
     },
     {
@@ -56,7 +56,7 @@
       "type": "File",
       "value-key": "[INIT]",
       "command-line-flag": "-init",
-      "description": "An existing file name. Initial transformation matrix.",
+      "description": "Initial transformation matrix.",
       "optional": true
     },
     {
@@ -76,7 +76,7 @@
       "type": "Flag",
       "value-key": "[MEAN_VOL]",
       "command-line-flag": "-meanvol",
-      "description": "A boolean. Register to mean volume.",
+      "description": "Register to mean volume.",
       "optional": true
     },
     {
@@ -85,7 +85,7 @@
       "type": "File",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-out",
-      "description": "A file name. File to write.",
+      "description": "File to write.",
       "optional": true
     },
     {
@@ -94,7 +94,7 @@
       "type": "File",
       "value-key": "[REF_FILE]",
       "command-line-flag": "-reffile",
-      "description": "An existing file name. Target image for motion correction.",
+      "description": "Target image for motion correction.",
       "optional": true
     },
     {
@@ -104,7 +104,7 @@
       "integer": true,
       "value-key": "[REF_VOL]",
       "command-line-flag": "-refvol",
-      "description": "An integer (int or long). Volume to align frames to.",
+      "description": "Volume to align frames to.",
       "optional": true
     },
     {
@@ -114,7 +114,7 @@
       "integer": true,
       "value-key": "[ROTATION]",
       "command-line-flag": "-rotation",
-      "description": "An integer (int or long). Scaling factor for rotation tolerances.",
+      "description": "Scaling factor for rotation tolerances.",
       "optional": true
     },
     {
@@ -123,7 +123,7 @@
       "type": "Flag",
       "value-key": "[SAVE_MATS]",
       "command-line-flag": "-mats",
-      "description": "A boolean. Save transformation matrices.",
+      "description": "Save transformation matrices.",
       "optional": true
     },
     {
@@ -132,7 +132,7 @@
       "type": "Flag",
       "value-key": "[SAVE_PLOTS]",
       "command-line-flag": "-plots",
-      "description": "A boolean. Save transformation parameters.",
+      "description": "Save transformation parameters.",
       "optional": true
     },
     {
@@ -141,7 +141,7 @@
       "type": "Flag",
       "value-key": "[SAVE_RMS]",
       "command-line-flag": "-rmsabs -rmsrel",
-      "description": "A boolean. Save rms displacement parameters.",
+      "description": "Save rms displacement parameters.",
       "optional": true
     },
     {
@@ -150,7 +150,7 @@
       "type": "Number",
       "value-key": "[SCALING]",
       "command-line-flag": "-scaling",
-      "description": "A float. Scaling factor to use.",
+      "description": "Scaling factor to use.",
       "optional": true
     },
     {
@@ -159,7 +159,7 @@
       "type": "Number",
       "value-key": "[SMOOTH]",
       "command-line-flag": "-smooth",
-      "description": "A float. Smoothing factor for the cost function.",
+      "description": "Smoothing factor for the cost function.",
       "optional": true
     },
     {
@@ -169,7 +169,7 @@
       "integer": true,
       "value-key": "[STAGES]",
       "command-line-flag": "-stages",
-      "description": "An integer (int or long). Stages (if 4, perform final search with sinc interpolation.",
+      "description": "Stages (if 4, perform final search with sinc interpolation.",
       "optional": true
     },
     {
@@ -178,7 +178,7 @@
       "type": "Flag",
       "value-key": "[STATS_IMGS]",
       "command-line-flag": "-stats",
-      "description": "A boolean. Produce variance and std. dev. images.",
+      "description": "Produce variance and std. dev. images.",
       "optional": true
     },
     {
@@ -187,7 +187,7 @@
       "type": "Flag",
       "value-key": "[USE_CONTOUR]",
       "command-line-flag": "-edge",
-      "description": "A boolean. Run search on contour images.",
+      "description": "Run search on contour images.",
       "optional": true
     },
     {
@@ -196,7 +196,7 @@
       "type": "Flag",
       "value-key": "[USE_GRADIENT]",
       "command-line-flag": "-gdt",
-      "description": "A boolean. Run search on gradient images.",
+      "description": "Run search on gradient images.",
       "optional": true
     }
   ],
@@ -214,21 +214,21 @@
       "id": "mean_img",
       "path-template": "[OUT_FILE]_mean_reg.ext",
       "optional": true,
-      "description": "An existing file name. Mean timeseries image (if mean_vol=true)."
+      "description": "Mean timeseries image (if mean_vol=true)."
     },
     {
       "name": "Out file",
       "id": "out_file_outfile",
       "path-template": "[OUT_FILE]",
       "optional": true,
-      "description": "An existing file name. Motion-corrected timeseries."
+      "description": "Motion-corrected timeseries."
     },
     {
       "name": "Par file",
       "id": "par_file",
       "path-template": "[OUT_FILE].par",
       "optional": true,
-      "description": "An existing file name. Text-file with motion parameters."
+      "description": "Text-file with motion parameters."
     },
     {
       "name": "Rms files",
@@ -243,14 +243,14 @@
       "id": "std_img",
       "path-template": "[OUT_FILE]_sigma.ext",
       "optional": true,
-      "description": "An existing file name. Standard deviation image."
+      "description": "Standard deviation image."
     },
     {
       "name": "Variance img",
       "id": "variance_img",
       "path-template": "[OUT_FILE]_variance.ext",
       "optional": true,
-      "description": "An existing file name. Variance image."
+      "description": "Variance image."
     }
   ],
   "tool-version": "1.0.0",

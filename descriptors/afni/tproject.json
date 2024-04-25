@@ -10,7 +10,7 @@
       "type": "Number",
       "value-key": "[TR]",
       "command-line-flag": "-TR",
-      "description": "A float. Use time step dd for the frequency calculations,rather than the value stored in the dataset header.",
+      "description": "Use time step dd for the frequency calculations,rather than the value stored in the dataset header.",
       "optional": true
     },
     {
@@ -19,7 +19,7 @@
       "type": "Flag",
       "value-key": "[AUTOMASK]",
       "command-line-flag": "-automask",
-      "description": "A boolean. Generate a mask automatically.",
+      "description": "Generate a mask automatically.",
       "optional": true
     },
     {
@@ -31,7 +31,7 @@
       "max-list-entries": 2,
       "value-key": "[BANDPASS]",
       "command-line-flag": "-bandpass",
-      "description": "A tuple of the form: (a float, a float). Remove all frequencies except those in the range.",
+      "description": "(a float, a float). Remove all frequencies except those in the range.",
       "optional": true
     },
     {
@@ -40,7 +40,7 @@
       "type": "Number",
       "value-key": "[BLUR]",
       "command-line-flag": "-blur",
-      "description": "A float. Blur (inside the mask only) with a filter that haswidth (fwhm) of fff millimeters.spatial blurring (if done) is after the timeseries filtering.",
+      "description": "Blur (inside the mask only) with a filter that haswidth (fwhm) of fff millimeters.spatial blurring (if done) is after the timeseries filtering.",
       "optional": true
     },
     {
@@ -69,7 +69,7 @@
       "list": true,
       "value-key": "[CENSORTR]",
       "command-line-flag": "-CENSORTR",
-      "description": "A list of items which are a string. List of strings that specify time indexesto be removed from the analysis.  each string isof one of the following forms:* ``37`` => remove global time index #37* ``2:37`` => remove time index #37 in run #2* ``37..47`` => remove global time indexes #37-47* ``37-47`` => same as above* ``2:37..47`` => remove time indexes #37-47 in run #2* ``*:0-2`` => remove time indexes #0-2 in all runs  * time indexes within each run start at 0.  * run indexes start at 1 (just be to confusing).  * n.b.: 2:37,47 means index #37 in run #2 and    global time index 47; it does not mean    index #37 in run #2 and index #47 in run #2.",
+      "description": "List of strings that specify time indexes to be removed from the analysis.  each string isof one of the following forms:* ``37`` => remove global time index #37* ``2:37`` => remove time index #37 in run #2* ``37..47`` => remove global time indexes #37-47* ``37-47`` => same as above* ``2:37..47`` => remove time indexes #37-47 in run #2* ``*:0-2`` => remove time indexes #0-2 in all runs  * time indexes within each run start at 0.  * run indexes start at 1 (just be to confusing).  * n.b.: 2:37,47 means index #37 in run #2 and    global time index 47; it does not mean    index #37 in run #2 and index #47 in run #2.",
       "optional": true
     },
     {
@@ -115,7 +115,7 @@
       "type": "Flag",
       "value-key": "[NOBLOCK]",
       "command-line-flag": "-noblock",
-      "description": "A boolean. Also as in 3ddeconvolve, if you want the program to treatan auto-catenated dataset as one long run, use this option.however, '-noblock' will not affect catenation if you usethe '-concat' option.",
+      "description": "Also as in 3ddeconvolve, if you want the program to treatan auto-catenated dataset as one long run, use this option.however, '-noblock' will not affect catenation if you usethe '-concat' option.",
       "optional": true
     },
     {
@@ -124,7 +124,7 @@
       "type": "Flag",
       "value-key": "[NORM]",
       "command-line-flag": "-norm",
-      "description": "A boolean. normalize each output time series to have sum ofsquares = 1. this is the last operation.",
+      "description": "normalize each output time series to have sum ofsquares = 1. this is the last operation.",
       "optional": true
     },
     {
@@ -143,7 +143,7 @@
       "integer": true,
       "value-key": "[POLORT]",
       "command-line-flag": "-polort",
-      "description": "An integer. Remove polynomials up to and including degree pp.* default value is 2.* it makes no sense to use a value of pp greater than  2, if you are bandpassing out the lower frequencies!* for catenated datasets, each run gets a separate set  set of pp+1 legendre polynomial regressors.* use of -polort -1 is not advised (if data mean != 0),  even if -ort contains constant terms, as all means are  removed.",
+      "description": "Remove polynomials up to and including degree pp.* default value is 2.* it makes no sense to use a value of pp greater than  2, if you are bandpassing out the lower frequencies!* for catenated datasets, each run gets a separate set  set of pp+1 legendre polynomial regressors.* use of -polort -1 is not advised (if data mean != 0),  even if -ort contains constant terms, as all means are  removed.",
       "optional": true
     },
     {
@@ -155,7 +155,7 @@
       "max-list-entries": 2,
       "value-key": "[STOPBAND]",
       "command-line-flag": "-stopband",
-      "description": "A tuple of the form: (a float, a float). Remove all frequencies in the range.",
+      "description": "(a float, a float). Remove all frequencies in the range.",
       "optional": true
     }
   ],

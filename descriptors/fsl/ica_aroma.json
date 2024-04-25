@@ -10,7 +10,7 @@
       "type": "Number",
       "value-key": "[TR]",
       "command-line-flag": "-tr",
-      "description": "A float. Tr in seconds. if this is not specified the tr will be extracted from the header of the fmri nifti file.",
+      "description": "Tr in seconds. if this is not specified the tr will be extracted from the header of the fmri nifti file.",
       "optional": true
     },
     {
@@ -18,7 +18,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -39,7 +39,7 @@
       "integer": true,
       "value-key": "[DIM]",
       "command-line-flag": "-dim",
-      "description": "An integer. Dimensionality reduction when running melodic (default is automatic estimation).",
+      "description": "Dimensionality reduction when running melodic (default is automatic estimation).",
       "optional": true
     },
     {

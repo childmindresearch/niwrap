@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -25,7 +25,7 @@
       "name": "Out base name",
       "type": "String",
       "value-key": "[OUT_BASE_NAME]",
-      "description": "A string. Outputs prefix.",
+      "description": "Outputs prefix.",
       "optional": true
     },
     {

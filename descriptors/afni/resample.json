@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -36,7 +36,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Set number of threads.",
+      "description": "Set number of threads.",
       "optional": true,
       "default-value": 1
     },
@@ -46,7 +46,7 @@
       "type": "String",
       "value-key": "[ORIENTATION]",
       "command-line-flag": "-orient",
-      "description": "A string. New orientation code.",
+      "description": "New orientation code.",
       "optional": true
     },
     {
@@ -77,7 +77,7 @@
       "max-list-entries": 3,
       "value-key": "[VOXEL_SIZE]",
       "command-line-flag": "-dxyz",
-      "description": "A tuple of the form: (a float, a float, a float). Resample to new dx, dy and dz.",
+      "description": "(a float, a float, a float). Resample to new dx, dy and dz.",
       "optional": true
     }
   ],

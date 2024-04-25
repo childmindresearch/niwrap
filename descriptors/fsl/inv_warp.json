@@ -59,7 +59,7 @@
       "value-key": "[JACOBIAN_MAX]",
       "command-line-flag": "--jmax",
       "command-line-flag-separator": "=",
-      "description": "A float. Maximum acceptable jacobian value for constraint (default 100.0).",
+      "description": "Maximum acceptable jacobian value for constraint (default 100.0).",
       "optional": true
     },
     {
@@ -69,7 +69,7 @@
       "value-key": "[JACOBIAN_MIN]",
       "command-line-flag": "--jmin",
       "command-line-flag-separator": "=",
-      "description": "A float. Minimum acceptable jacobian value for constraint (default 0.01).",
+      "description": "Minimum acceptable jacobian value for constraint (default 0.01).",
       "optional": true
     },
     {

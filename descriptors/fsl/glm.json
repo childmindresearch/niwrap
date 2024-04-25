@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -27,7 +27,7 @@
       "type": "Flag",
       "value-key": "[DAT_NORM]",
       "command-line-flag": "--dat_norm",
-      "description": "A boolean. Switch on normalization of the data time series to unit std deviation.",
+      "description": "Switch on normalization of the data time series to unit std deviation.",
       "optional": true
     },
     {
@@ -36,7 +36,7 @@
       "type": "Flag",
       "value-key": "[DEMEAN]",
       "command-line-flag": "--demean",
-      "description": "A boolean. Switch on demeaining of design and data.",
+      "description": "Switch on demeaining of design and data.",
       "optional": true
     },
     {
@@ -45,7 +45,7 @@
       "type": "Flag",
       "value-key": "[DES_NORM]",
       "command-line-flag": "--des_norm",
-      "description": "A boolean. Switch on normalization of the design matrix columns to unit std deviation.",
+      "description": "Switch on normalization of the design matrix columns to unit std deviation.",
       "optional": true
     },
     {
@@ -65,7 +65,7 @@
       "value-key": "[DOF]",
       "command-line-flag": "--dof",
       "command-line-flag-separator": "=",
-      "description": "An integer. Set degrees of freedom explicitly.",
+      "description": "Set degrees of freedom explicitly.",
       "optional": true
     },
     {
@@ -211,7 +211,7 @@
       "type": "Flag",
       "value-key": "[VAR_NORM]",
       "command-line-flag": "--vn",
-      "description": "A boolean. Perform melodic variance-normalisation on data.",
+      "description": "Perform melodic variance-normalisation on data.",
       "optional": true
     }
   ],

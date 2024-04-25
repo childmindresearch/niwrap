@@ -10,7 +10,7 @@
       "type": "Flag",
       "value-key": "[ABS]",
       "command-line-flag": "--abs",
-      "description": "A boolean. Take abs of invol first (ie, make unsigned).",
+      "description": "Take abs of invol first (ie, make unsigned).",
       "optional": true
     },
     {
@@ -19,7 +19,7 @@
       "type": "Flag",
       "value-key": "[BIN_COL_NUM]",
       "command-line-flag": "--bincol",
-      "description": "A boolean. Set binarized voxel value to its column number.",
+      "description": "Set binarized voxel value to its column number.",
       "optional": true
     },
     {
@@ -29,7 +29,7 @@
       "integer": true,
       "value-key": "[BIN_VAL]",
       "command-line-flag": "--binval",
-      "description": "An integer. Set vox within thresh to val (default is 1).",
+      "description": "Set vox within thresh to val (default is 1).",
       "optional": true
     },
     {
@@ -39,7 +39,7 @@
       "integer": true,
       "value-key": "[BIN_VAL_NOT]",
       "command-line-flag": "--binvalnot",
-      "description": "An integer. Set vox outside range to val (default is 0).",
+      "description": "Set vox outside range to val (default is 0).",
       "optional": true
     },
     {
@@ -76,7 +76,7 @@
       "integer": true,
       "value-key": "[DILATE]",
       "command-line-flag": "--dilate",
-      "description": "An integer. Niters: dilate binarization in 3d.",
+      "description": "Niters: dilate binarization in 3d.",
       "optional": true
     },
     {
@@ -86,7 +86,7 @@
       "integer": true,
       "value-key": "[ERODE]",
       "command-line-flag": "--erode",
-      "description": "An integer. Nerode: erode binarization in 3d (after any dilation).",
+      "description": "Nerode: erode binarization in 3d (after any dilation).",
       "optional": true
     },
     {
@@ -96,7 +96,7 @@
       "integer": true,
       "value-key": "[ERODE2D]",
       "command-line-flag": "--erode2d",
-      "description": "An integer. Nerode2d: erode binarization in 2d (after any 3d erosion).",
+      "description": "Nerode2d: erode binarization in 2d (after any 3d erosion).",
       "optional": true
     },
     {
@@ -106,7 +106,7 @@
       "integer": true,
       "value-key": "[FRAME_NO]",
       "command-line-flag": "--frame",
-      "description": "An integer. Use 0-based frame of input (default is 0).",
+      "description": "Use 0-based frame of input (default is 0).",
       "optional": true
     },
     {
@@ -124,7 +124,7 @@
       "type": "Flag",
       "value-key": "[INVERT]",
       "command-line-flag": "--inv",
-      "description": "A boolean. Set binval=0, binvalnot=1.",
+      "description": "Set binval=0, binvalnot=1.",
       "optional": true
     },
     {
@@ -142,7 +142,7 @@
       "type": "Number",
       "value-key": "[MASK_THRESH]",
       "command-line-flag": "--mask-thresh",
-      "description": "A float. Set thresh for mask.",
+      "description": "Set thresh for mask.",
       "optional": true
     },
     {
@@ -153,7 +153,7 @@
       "integer": true,
       "value-key": "[MATCH]",
       "command-line-flag": "--match",
-      "description": "A list of items which are an integer. Match instead of threshold.",
+      "description": "Match instead of threshold.",
       "optional": true
     },
     {
@@ -162,7 +162,7 @@
       "type": "Number",
       "value-key": "[MAX]",
       "command-line-flag": "--max",
-      "description": "A float. Max thresh.",
+      "description": "Max thresh.",
       "optional": true
     },
     {
@@ -180,7 +180,7 @@
       "type": "Number",
       "value-key": "[MIN]",
       "command-line-flag": "--min",
-      "description": "A float. Min thresh.",
+      "description": "Min thresh.",
       "optional": true
     },
     {
@@ -198,7 +198,7 @@
       "type": "Number",
       "value-key": "[RMAX]",
       "command-line-flag": "--rmax",
-      "description": "A float. Compute max based on rmax*globalmean.",
+      "description": "Compute max based on rmax*globalmean.",
       "optional": true
     },
     {
@@ -207,7 +207,7 @@
       "type": "Number",
       "value-key": "[RMIN]",
       "command-line-flag": "--rmin",
-      "description": "A float. Compute min based on rmin*globalmean.",
+      "description": "Compute min based on rmin*globalmean.",
       "optional": true
     },
     {
@@ -224,7 +224,7 @@
       "type": "Flag",
       "value-key": "[VENTRICLES]",
       "command-line-flag": "--ventricles",
-      "description": "A boolean. Set match vals those for aseg ventricles+choroid (not 4th).",
+      "description": "Set match vals those for aseg ventricles+choroid (not 4th).",
       "optional": true
     },
     {
@@ -233,7 +233,7 @@
       "type": "Flag",
       "value-key": "[WM]",
       "command-line-flag": "--wm",
-      "description": "A boolean. Set match vals to 2 and 41 (aseg for cerebral wm).",
+      "description": "Set match vals to 2 and 41 (aseg for cerebral wm).",
       "optional": true
     },
     {
@@ -242,7 +242,7 @@
       "type": "Flag",
       "value-key": "[WM_VEN_CSF]",
       "command-line-flag": "--wm+vcsf",
-      "description": "A boolean. Wm and ventricular csf, including choroid (not 4th).",
+      "description": "Wm and ventricular csf, including choroid (not 4th).",
       "optional": true
     },
     {
@@ -251,7 +251,7 @@
       "type": "Flag",
       "value-key": "[ZERO_EDGES]",
       "command-line-flag": "--zero-edges",
-      "description": "A boolean. Zero the edge voxels.",
+      "description": "Zero the edge voxels.",
       "optional": true
     },
     {
@@ -260,7 +260,7 @@
       "type": "Flag",
       "value-key": "[ZERO_SLICE_EDGE]",
       "command-line-flag": "--zero-slice-edges",
-      "description": "A boolean. Zero the edge slice voxels.",
+      "description": "Zero the edge slice voxels.",
       "optional": true
     }
   ],

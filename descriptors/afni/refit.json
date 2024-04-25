@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -21,7 +21,7 @@
       "max-list-entries": 2,
       "value-key": "[ATRCOPY]",
       "command-line-flag": "-atrcopy",
-      "description": "A tuple of the form: (file, string). Copy afni header attribute from the given file into the header of the dataset(s) being modified. for more information on afni header attributes, see documentation file readme.attributes. more than one '-atrcopy' option can be used. for afni advanced users only. do not use -atrcopy or -atrstring with other modification options. see also -copyaux.",
+      "description": "(file, string). Copy afni header attribute from the given file into the header of the dataset(s) being modified. for more information on afni header attributes, see documentation file readme.attributes. more than one '-atrcopy' option can be used. for afni advanced users only. do not use -atrcopy or -atrstring with other modification options. see also -copyaux.",
       "optional": true
     },
     {
@@ -33,7 +33,7 @@
       "max-list-entries": 2,
       "value-key": "[ATRFLOAT]",
       "command-line-flag": "-atrfloat",
-      "description": "A tuple of the form: (a string, a string). Create or modify floating point attributes. the input values may be specified as a single string in quotes or as a 1d filename or string, example '1 0.2 0 0 -0.2 1 0 0 0 0 1 0' or flipz.1d or '1d:1,0.2,2@0,-0.2,1,2@0,2@0,1,0'.",
+      "description": "(a string, a string). Create or modify floating point attributes. the input values may be specified as a single string in quotes or as a 1d filename or string, example '1 0.2 0 0 -0.2 1 0 0 0 0 1 0' or flipz.1d or '1d:1,0.2,2@0,-0.2,1,2@0,2@0,1,0'.",
       "optional": true
     },
     {
@@ -45,7 +45,7 @@
       "max-list-entries": 2,
       "value-key": "[ATRINT]",
       "command-line-flag": "-atrint",
-      "description": "A tuple of the form: (a string, a string). Create or modify integer attributes. the input values may be specified as a single string in quotes or as a 1d filename or string, example '1 0 0 0 0 1 0 0 0 0 1 0' or flipz.1d or '1d:1,0,2@0,-0,1,2@0,2@0,1,0'.",
+      "description": "(a string, a string). Create or modify integer attributes. the input values may be specified as a single string in quotes or as a 1d filename or string, example '1 0 0 0 0 1 0 0 0 0 1 0' or flipz.1d or '1d:1,0,2@0,-0,1,2@0,2@0,1,0'.",
       "optional": true
     },
     {
@@ -57,7 +57,7 @@
       "max-list-entries": 2,
       "value-key": "[ATRSTRING]",
       "command-line-flag": "-atrstring",
-      "description": "A tuple of the form: (a string, a string). Copy the last given string into the dataset(s) being modified, giving it the attribute name given by the last string.to be safe, the last string should be in quotes.",
+      "description": "(a string, a string). Copy the last given string into the dataset(s) being modified, giving it the attribute name given by the last string.to be safe, the last string should be in quotes.",
       "optional": true
     },
     {
@@ -66,7 +66,7 @@
       "type": "Flag",
       "value-key": "[DEOBLIQUE]",
       "command-line-flag": "-deoblique",
-      "description": "A boolean. Replace current transformation matrix with cardinal matrix.",
+      "description": "Replace current transformation matrix with cardinal matrix.",
       "optional": true
     },
     {
@@ -92,7 +92,7 @@
       "type": "Flag",
       "value-key": "[NOSAVEATR]",
       "command-line-flag": "-nosaveatr",
-      "description": "A boolean. Opposite of -saveatr.",
+      "description": "Opposite of -saveatr.",
       "optional": true
     },
     {
@@ -101,7 +101,7 @@
       "type": "Flag",
       "value-key": "[SAVEATR]",
       "command-line-flag": "-saveatr",
-      "description": "A boolean. (default) copy the attributes that are known to afni into the dset->dblk structure thereby forcing changes to known attributes to be present in the output. this option only makes sense with -atrcopy.",
+      "description": "(default) copy the attributes that are known to afni into the dset->dblk structure thereby forcing changes to known attributes to be present in the output. this option only makes sense with -atrcopy.",
       "optional": true
     },
     {
@@ -120,7 +120,7 @@
       "type": "Number",
       "value-key": "[XDEL]",
       "command-line-flag": "-xdel",
-      "description": "A float. New x voxel dimension in mm.",
+      "description": "New x voxel dimension in mm.",
       "optional": true
     },
     {
@@ -129,7 +129,7 @@
       "type": "String",
       "value-key": "[XORIGIN]",
       "command-line-flag": "-xorigin",
-      "description": "A string. X distance for edge voxel offset.",
+      "description": "X distance for edge voxel offset.",
       "optional": true
     },
     {
@@ -138,7 +138,7 @@
       "type": "Number",
       "value-key": "[XYZSCALE]",
       "command-line-flag": "-xyzscale",
-      "description": "A float. Scale the size of the dataset voxels by the given factor.",
+      "description": "Scale the size of the dataset voxels by the given factor.",
       "optional": true
     },
     {
@@ -147,7 +147,7 @@
       "type": "Number",
       "value-key": "[YDEL]",
       "command-line-flag": "-ydel",
-      "description": "A float. New y voxel dimension in mm.",
+      "description": "New y voxel dimension in mm.",
       "optional": true
     },
     {
@@ -156,7 +156,7 @@
       "type": "String",
       "value-key": "[YORIGIN]",
       "command-line-flag": "-yorigin",
-      "description": "A string. Y distance for edge voxel offset.",
+      "description": "Y distance for edge voxel offset.",
       "optional": true
     },
     {
@@ -165,7 +165,7 @@
       "type": "Number",
       "value-key": "[ZDEL]",
       "command-line-flag": "-zdel",
-      "description": "A float. New z voxel dimension in mm.",
+      "description": "New z voxel dimension in mm.",
       "optional": true
     },
     {
@@ -174,7 +174,7 @@
       "type": "String",
       "value-key": "[ZORIGIN]",
       "command-line-flag": "-zorigin",
-      "description": "A string. Z distance for edge voxel offset.",
+      "description": "Z distance for edge voxel offset.",
       "optional": true
     }
   ],

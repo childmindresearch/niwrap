@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -19,7 +19,7 @@
       "value-key": "[ASYM_SE_TIME]",
       "command-line-flag": "--asym",
       "command-line-flag-separator": "=",
-      "description": "A float. Set the fieldmap asymmetric spin echo time (sec).",
+      "description": "Set the fieldmap asymmetric spin echo time (sec).",
       "optional": true
     },
     {
@@ -28,7 +28,7 @@
       "type": "Flag",
       "value-key": "[DESPIKE_2DFILTER]",
       "command-line-flag": "--despike",
-      "description": "A boolean. Apply a 2d de-spiking filter.",
+      "description": "Apply a 2d de-spiking filter.",
       "optional": true
     },
     {
@@ -38,7 +38,7 @@
       "value-key": "[DESPIKE_THRESHOLD]",
       "command-line-flag": "--despikethreshold",
       "command-line-flag-separator": "=",
-      "description": "A float. Specify the threshold for de-spiking (default=3.0).",
+      "description": "Specify the threshold for de-spiking (default=3.0).",
       "optional": true
     },
     {
@@ -48,7 +48,7 @@
       "value-key": "[DWELL_TIME]",
       "command-line-flag": "--dwell",
       "command-line-flag-separator": "=",
-      "description": "A float. Set the epi dwell time per phase-encode line - same as echo spacing - (sec).",
+      "description": "Set the epi dwell time per phase-encode line - same as echo spacing - (sec).",
       "optional": true
     },
     {
@@ -58,7 +58,7 @@
       "value-key": "[DWELL_TO_ASYM_RATIO]",
       "command-line-flag": "--dwelltoasym",
       "command-line-flag-separator": "=",
-      "description": "A float. Set the dwell to asym time ratio.",
+      "description": "Set the dwell to asym time ratio.",
       "optional": true
     },
     {
@@ -87,7 +87,7 @@
       "type": "Flag",
       "value-key": "[FORWARD_WARPING]",
       "command-line-flag": "--forward_warping",
-      "description": "A boolean. Apply forward warping instead of unwarping.",
+      "description": "Apply forward warping instead of unwarping.",
       "optional": true,
       "default-value": false
     },
@@ -99,7 +99,7 @@
       "value-key": "[FOURIER_ORDER]",
       "command-line-flag": "--fourier",
       "command-line-flag-separator": "=",
-      "description": "An integer. Apply fourier (sinusoidal) fitting of order n.",
+      "description": "Apply fourier (sinusoidal) fitting of order n.",
       "optional": true
     },
     {
@@ -108,7 +108,7 @@
       "type": "Flag",
       "value-key": "[ICORR]",
       "command-line-flag": "--icorr",
-      "description": "A boolean. Apply intensity correction to unwarping (pixel shift method only).",
+      "description": "Apply intensity correction to unwarping (pixel shift method only).",
       "optional": true,
       "requires-inputs": ["shift_in_file"]
     },
@@ -118,7 +118,7 @@
       "type": "Flag",
       "value-key": "[ICORR_ONLY]",
       "command-line-flag": "--icorronly",
-      "description": "A boolean. Apply intensity correction only.",
+      "description": "Apply intensity correction only.",
       "optional": true,
       "requires-inputs": ["unwarped_file"]
     },
@@ -148,7 +148,7 @@
       "type": "Flag",
       "value-key": "[MEDIAN_2DFILTER]",
       "command-line-flag": "--median",
-      "description": "A boolean. Apply 2d median filtering.",
+      "description": "Apply 2d median filtering.",
       "optional": true
     },
     {
@@ -157,7 +157,7 @@
       "type": "Flag",
       "value-key": "[NO_EXTEND]",
       "command-line-flag": "--noextend",
-      "description": "A boolean. Do not apply rigid-body extrapolation to the fieldmap.",
+      "description": "Do not apply rigid-body extrapolation to the fieldmap.",
       "optional": true
     },
     {
@@ -166,7 +166,7 @@
       "type": "Flag",
       "value-key": "[NO_GAP_FILL]",
       "command-line-flag": "--nofill",
-      "description": "A boolean. Do not apply gap-filling measure to the fieldmap.",
+      "description": "Do not apply gap-filling measure to the fieldmap.",
       "optional": true
     },
     {
@@ -175,7 +175,7 @@
       "type": "Flag",
       "value-key": "[NOKSPACE]",
       "command-line-flag": "--nokspace",
-      "description": "A boolean. Do not use k-space forward warping.",
+      "description": "Do not use k-space forward warping.",
       "optional": true
     },
     {
@@ -193,7 +193,7 @@
       "type": "Flag",
       "value-key": "[PAVA]",
       "command-line-flag": "--pava",
-      "description": "A boolean. Apply monotonic enforcement via pava.",
+      "description": "Apply monotonic enforcement via pava.",
       "optional": true
     },
     {
@@ -202,7 +202,7 @@
       "type": "Flag",
       "value-key": "[PHASE_CONJUGATE]",
       "command-line-flag": "--phaseconj",
-      "description": "A boolean. Apply phase conjugate method of unwarping.",
+      "description": "Apply phase conjugate method of unwarping.",
       "optional": true
     },
     {
@@ -223,7 +223,7 @@
       "value-key": "[POLY_ORDER]",
       "command-line-flag": "--poly",
       "command-line-flag-separator": "=",
-      "description": "An integer. Apply polynomial fitting of order n.",
+      "description": "Apply polynomial fitting of order n.",
       "optional": true
     },
     {
@@ -232,7 +232,7 @@
       "type": "Flag",
       "value-key": "[SAVE_FMAP]",
       "command-line-flag": "--save_fmap",
-      "description": "A boolean. Write field map volume.",
+      "description": "Write field map volume.",
       "optional": true
     },
     {
@@ -241,7 +241,7 @@
       "type": "Flag",
       "value-key": "[SAVE_SHIFT]",
       "command-line-flag": "--save_shift",
-      "description": "A boolean. Write pixel shift volume.",
+      "description": "Write pixel shift volume.",
       "optional": true
     },
     {
@@ -250,7 +250,7 @@
       "type": "Flag",
       "value-key": "[SAVE_UNMASKED_FMAP]",
       "command-line-flag": "--unmaskfmap",
-      "description": "A boolean. Saves the unmasked fieldmap when using --savefmap.",
+      "description": "Saves the unmasked fieldmap when using --savefmap.",
       "optional": true
     },
     {
@@ -259,7 +259,7 @@
       "type": "Flag",
       "value-key": "[SAVE_UNMASKED_SHIFT]",
       "command-line-flag": "--unmaskshift",
-      "description": "A boolean. Saves the unmasked shiftmap when using --saveshift.",
+      "description": "Saves the unmasked shiftmap when using --saveshift.",
       "optional": true
     },
     {
@@ -289,7 +289,7 @@
       "value-key": "[SMOOTH2D]",
       "command-line-flag": "--smooth2",
       "command-line-flag-separator": "=",
-      "description": "A float. Apply 2d gaussian smoothing of sigma n (in mm).",
+      "description": "Apply 2d gaussian smoothing of sigma n (in mm).",
       "optional": true
     },
     {
@@ -299,7 +299,7 @@
       "value-key": "[SMOOTH3D]",
       "command-line-flag": "--smooth3",
       "command-line-flag-separator": "=",
-      "description": "A float. Apply 3d gaussian smoothing of sigma n (in mm).",
+      "description": "Apply 3d gaussian smoothing of sigma n (in mm).",
       "optional": true
     },
     {

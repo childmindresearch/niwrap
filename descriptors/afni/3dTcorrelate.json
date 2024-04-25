@@ -10,7 +10,7 @@
       "type": "Flag",
       "value-key": "[PEARSON]",
       "command-line-flag": "-pearson",
-      "description": "A boolean. Correlation is the normal pearson correlation coefficient.",
+      "description": "Correlation is the normal pearson correlation coefficient.",
       "optional": true
     },
     {
@@ -19,7 +19,7 @@
       "type": "Flag",
       "value-key": "[SPEARMAN]",
       "command-line-flag": "-spearman",
-      "description": "A boolean. Correlation is the Spearman (rank) correlation coefficient.",
+      "description": "Correlation is the Spearman (rank) correlation coefficient.",
       "optional": true
     },
     {
@@ -28,7 +28,7 @@
       "type": "Flag",
       "value-key": "[QUADRANT]",
       "command-line-flag": "-quadrant",
-      "description": "A boolean. Correlation is the quadrant coefficient.",
+      "description": "Correlation is the quadrant coefficient.",
       "optional": true
     },
     {
@@ -37,7 +37,7 @@
       "type": "Flag",
       "value-key": "[KTAUB]",
       "command-line-flag": "-ktaub",
-      "description": "A boolean. Correlation is Kendall's tau_b coefficient. For continuous or finely discretized data, tau_b and rank correlation are nearly equivalent.",
+      "description": "Correlation is Kendall's tau_b coefficient. For continuous or finely discretized data, tau_b and rank correlation are nearly equivalent.",
       "optional": true
     },
     {
@@ -46,7 +46,7 @@
       "type": "Flag",
       "value-key": "[COVARIANCE]",
       "command-line-flag": "-covariance",
-      "description": "A boolean. Covariance instead of correlation. That would be Pearson correlation without scaling by the product of the standard deviations.",
+      "description": "Covariance instead of correlation. That would be Pearson correlation without scaling by the product of the standard deviations.",
       "optional": true
     },
     {
@@ -55,7 +55,7 @@
       "type": "File",
       "value-key": "[PARTIAL]",
       "command-line-flag": "-partial",
-      "description": "A File. Partial Pearson's correlation of X & Y, adjusting for Z (the dataset provided here).",
+      "description": "Partial Pearson's correlation of X & Y, adjusting for Z (the dataset provided here).",
       "optional": true
     },
     {
@@ -64,7 +64,7 @@
       "type": "Flag",
       "value-key": "[YCOEF]",
       "command-line-flag": "-ycoef",
-      "description": "A boolean. Least squares coefficient that best fits y(t) to x(t), after detrending. That is, if yd(t) is the detrended y(t) and xd(t) is the detrended x(t), then the ycoef value is from the OLSQ fit to xd(t) = ycoef & y(t) + error.",
+      "description": "Least squares coefficient that best fits y(t) to x(t), after detrending. That is, if yd(t) is the detrended y(t) and xd(t) is the detrended x(t), then the ycoef value is from the OLSQ fit to xd(t) = ycoef & y(t) + error.",
       "optional": true
     },
     {
@@ -73,7 +73,7 @@
       "type": "Flag",
       "value-key": "[FISHER]",
       "command-line-flag": "-Fisher",
-      "description": "A boolean. Apply the Fisher (inverse hyperbolic tangent) transformation to correlation results. Does not make sense with ktaub, covariance, or ycoef.",
+      "description": "Apply the Fisher (inverse hyperbolic tangent) transformation to correlation results. Does not make sense with ktaub, covariance, or ycoef.",
       "optional": true,
       "disables-inputs": ["ktaub", "covariance", "ycoef"]
     },
@@ -84,7 +84,7 @@
       "integer": true,
       "value-key": "[POLORT]",
       "command-line-flag": "-polort",
-      "description": "An integer. Remove polynomial trend of order m. Using m=-1 mean no detrending; this is only useful fro data that has been preprocessed.",
+      "description": "Remove polynomial trend of order m. Using m=-1 mean no detrending; this is only useful fro data that has been preprocessed.",
       "default-value": 1,
       "maximum": 9,
       "minimum": -1,
@@ -105,7 +105,7 @@
       "type": "Flag",
       "value-key": "[AUTOCLIP]",
       "command-line-flag": "-autoclip",
-      "description": "A boolean. Clip off low-intensity regions in the two datasets, so that the correlation is only computed between high-intensity (presumably brain) voxels. The intensity level is determined the same way that 3dClipLevel works.",
+      "description": "Clip off low-intensity regions in the two datasets, so that the correlation is only computed between high-intensity (presumably brain) voxels. The intensity level is determined the same way that 3dClipLevel works.",
       "optional": true,
       "disables-inputs": ["automask"]
     },
@@ -115,7 +115,7 @@
       "type": "Flag",
       "value-key": "[AUTOMASK]",
       "command-line-flag": "-automask",
-      "description": "A boolean. Clip off low-intensity regions in the two datasets, so that the correlation is only computed between high-intensity (presumably brain) voxels. The intensity level is determined the same way that 3dClipLevel works.",
+      "description": "Clip off low-intensity regions in the two datasets, so that the correlation is only computed between high-intensity (presumably brain) voxels. The intensity level is determined the same way that 3dClipLevel works.",
       "optional": true,
       "disables-inputs": ["autoclip"]
     },

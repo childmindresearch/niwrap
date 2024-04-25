@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -18,7 +18,7 @@
       "type": "Flag",
       "value-key": "[KTAUB]",
       "command-line-flag": "-ktaub",
-      "description": "A boolean. Correlation is the kendall's tau_b correlation coefficient.",
+      "description": "Correlation is the kendall's tau_b correlation coefficient.",
       "optional": true
     },
     {
@@ -27,7 +27,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Set number of threads.",
+      "description": "Set number of threads.",
       "optional": true,
       "default-value": 1
     },
@@ -46,7 +46,7 @@
       "type": "Flag",
       "value-key": "[PEARSON]",
       "command-line-flag": "-pearson",
-      "description": "A boolean. Correlation is the normal pearson correlation coefficient.",
+      "description": "Correlation is the normal pearson correlation coefficient.",
       "optional": true
     },
     {
@@ -55,7 +55,7 @@
       "type": "Flag",
       "value-key": "[QUADRANT]",
       "command-line-flag": "-quadrant",
-      "description": "A boolean. Correlation is the quadrant correlation coefficient.",
+      "description": "Correlation is the quadrant correlation coefficient.",
       "optional": true
     },
     {
@@ -64,7 +64,7 @@
       "type": "Flag",
       "value-key": "[SPEARMAN]",
       "command-line-flag": "-spearman",
-      "description": "A boolean. Correlation is the spearman (rank) correlation coefficient.",
+      "description": "Correlation is the spearman (rank) correlation coefficient.",
       "optional": true
     },
     {

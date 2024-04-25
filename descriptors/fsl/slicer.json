@@ -10,7 +10,7 @@
       "type": "Flag",
       "value-key": "[ALL_AXIAL]",
       "command-line-flag": "-A",
-      "description": "A boolean. Output all axial slices into one picture.",
+      "description": "Output all axial slices into one picture.",
       "optional": true,
       "requires-inputs": ["image_width"]
     },
@@ -19,7 +19,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -37,7 +37,7 @@
       "type": "Flag",
       "value-key": "[DITHER_EDGES]",
       "command-line-flag": "-t",
-      "description": "A boolean. Produce semi-transparent (dithered) edges.",
+      "description": "Produce semi-transparent (dithered) edges.",
       "optional": true
     },
     {
@@ -54,7 +54,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[IMAGE_WIDTH]",
-      "description": "An integer. Max picture width.",
+      "description": "Max picture width.",
       "optional": true
     },
     {
@@ -74,7 +74,7 @@
       "max-list-entries": 2,
       "value-key": "[INTENSITY_RANGE]",
       "command-line-flag": "-i",
-      "description": "A tuple of the form: (a float, a float). Min and max intensities to display.",
+      "description": "(a float, a float). Min and max intensities to display.",
       "optional": true
     },
     {
@@ -83,7 +83,7 @@
       "type": "Flag",
       "value-key": "[LABEL_SLICES]",
       "command-line-flag": "-L",
-      "description": "A boolean. Display slice number.",
+      "description": "Display slice number.",
       "optional": true,
       "default-value": true
     },
@@ -93,7 +93,7 @@
       "type": "Flag",
       "value-key": "[MIDDLE_SLICES]",
       "command-line-flag": "-a",
-      "description": "A boolean. Output picture of mid-sagittal, axial, and coronal slices.",
+      "description": "Output picture of mid-sagittal, axial, and coronal slices.",
       "optional": true
     },
     {
@@ -102,7 +102,7 @@
       "type": "Flag",
       "value-key": "[NEAREST_NEIGHBOUR]",
       "command-line-flag": "-n",
-      "description": "A boolean. Use nearest neighbor interpolation for output.",
+      "description": "Use nearest neighbor interpolation for output.",
       "optional": true
     },
     {
@@ -129,7 +129,7 @@
       "integer": true,
       "value-key": "[SAMPLE_AXIAL]",
       "command-line-flag": "-S",
-      "description": "An integer. Output every n axial slices into one picture.",
+      "description": "Output every n axial slices into one picture.",
       "optional": true,
       "requires-inputs": ["image_width"]
     },
@@ -139,7 +139,7 @@
       "type": "Number",
       "value-key": "[SCALING]",
       "command-line-flag": "-s",
-      "description": "A float. Image scale.",
+      "description": "Image scale.",
       "optional": true
     },
     {
@@ -147,7 +147,7 @@
       "name": "Show orientation",
       "type": "Flag",
       "value-key": "[SHOW_ORIENTATION]",
-      "description": "A boolean. Label left-right orientation.",
+      "description": "Label left-right orientation.",
       "optional": true,
       "default-value": true
     },
@@ -169,7 +169,7 @@
       "integer": true,
       "value-key": "[SLICE_NUMBER]",
       "command-line-flag": "-",
-      "description": "An integer. Slice number to save in picture.",
+      "description": "Slice number to save in picture.",
       "optional": true
     },
     {
@@ -178,7 +178,7 @@
       "type": "Number",
       "value-key": "[THRESHOLD_EDGES]",
       "command-line-flag": "-e",
-      "description": "A float. Use threshold for edges.",
+      "description": "Use threshold for edges.",
       "optional": true
     }
   ],

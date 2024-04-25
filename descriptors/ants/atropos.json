@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -17,7 +17,7 @@
       "name": "Convergence threshold",
       "type": "Number",
       "value-key": "[CONVERGENCE_THRESHOLD]",
-      "description": "A float. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "requires-inputs": ["n_iterations"]
     },
@@ -38,7 +38,7 @@
       "name": "Icm use synchronous update",
       "type": "Flag",
       "value-key": "[ICM_USE_SYNCHRONOUS_UPDATE]",
-      "description": "A boolean. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -70,11 +70,11 @@
     {
       "id": "kmeans_init_centers",
       "name": "Kmeans init centers",
-      "type": "String",
+      "type": "Number",
       "list": true,
       "min-list-entries": 1,
       "value-key": "[KMEANS_INIT_CENTERS]",
-      "description": "A list of at least 1 items which are an integer or a float. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -83,7 +83,7 @@
       "type": "String",
       "value-key": "[LIKELIHOOD_MODEL]",
       "command-line-flag": "--likelihood-model",
-      "description": "A string. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -101,7 +101,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[MAXIMUM_NUMBER_OF_ICM_TERATIONS]",
-      "description": "An integer. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "requires-inputs": ["icm_use_synchronous_update"]
     },
@@ -121,7 +121,7 @@
       "name": "Mrf smoothing factor",
       "type": "Number",
       "value-key": "[MRF_SMOOTHING_FACTOR]",
-      "description": "A float. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -130,7 +130,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[N_ITERATIONS]",
-      "description": "An integer. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -139,7 +139,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Number of itk threads to use.",
+      "description": "Number of itk threads to use.",
       "optional": true,
       "default-value": 1
     },
@@ -149,7 +149,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUMBER_OF_TISSUE_CLASSES]",
-      "description": "An integer. No description provided.",
+      "description": "No description provided.",
       "optional": false
     },
     {
@@ -165,7 +165,7 @@
       "name": "Output posteriors name template",
       "type": "String",
       "value-key": "[OUTPUT_POSTERIORS_NAME_TEMPLATE]",
-      "description": "A string. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "default-value": "POSTERIOR_%02d.nii.gz"
     },
@@ -174,7 +174,7 @@
       "name": "Posterior formulation",
       "type": "String",
       "value-key": "[POSTERIOR_FORMULATION]",
-      "description": "A string. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -198,7 +198,7 @@
       "name": "Prior probability threshold",
       "type": "Number",
       "value-key": "[PRIOR_PROBABILITY_THRESHOLD]",
-      "description": "A float. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "requires-inputs": ["prior_weighting"]
     },
@@ -207,7 +207,7 @@
       "name": "Prior weighting",
       "type": "Number",
       "value-key": "[PRIOR_WEIGHTING]",
-      "description": "A float. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -216,7 +216,7 @@
       "type": "Flag",
       "value-key": "[SAVE_POSTERIORS]",
       "command-line-flag": "--save_posteriors",
-      "description": "A boolean. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -225,7 +225,7 @@
       "type": "Flag",
       "value-key": "[USE_MIXTURE_MODEL_PROPORTIONS]",
       "command-line-flag": "--use_mixture_model_proportions",
-      "description": "A boolean. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "requires-inputs": ["posterior_formulation"]
     },
@@ -235,7 +235,7 @@
       "type": "Flag",
       "value-key": "[USE_RANDOM_SEED]",
       "command-line-flag": "--use-random-seed",
-      "description": "A boolean. Use random seed value over constant.",
+      "description": "Use random seed value over constant.",
       "optional": true,
       "default-value": true
     }

@@ -10,7 +10,7 @@
       "type": "Flag",
       "value-key": "[ABSWARP]",
       "command-line-flag": "--abs",
-      "description": "A boolean. Treat warp field as absolute: x' = w(x).",
+      "description": "Treat warp field as absolute: x' = w(x).",
       "optional": true
     },
     {
@@ -18,7 +18,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -128,7 +128,7 @@
       "type": "Flag",
       "value-key": "[RELWARP]",
       "command-line-flag": "--rel",
-      "description": "A boolean. Treat warp field as relative: x' = x + w(x).",
+      "description": "Treat warp field as relative: x' = x + w(x).",
       "optional": true
     },
     {
@@ -159,7 +159,7 @@
       "type": "Flag",
       "value-key": "[SUPERSAMPLE]",
       "command-line-flag": "--super",
-      "description": "A boolean. Intermediary supersampling of output, default is off.",
+      "description": "Intermediary supersampling of output, default is off.",
       "optional": true
     }
   ],

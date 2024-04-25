@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -18,7 +18,7 @@
       "type": "Flag",
       "value-key": "[AUTOMASK]",
       "command-line-flag": "-automask",
-      "description": "A boolean. Create a mask from the input dataset.",
+      "description": "Create a mask from the input dataset.",
       "optional": true
     },
     {
@@ -27,7 +27,7 @@
       "type": "Number",
       "value-key": "[BLUR]",
       "command-line-flag": "-blur",
-      "description": "A float. Blur (inside the mask only) with a filter width (fwhm) of 'fff' millimeters.",
+      "description": "Blur (inside the mask only) with a filter width (fwhm) of 'fff' millimeters.",
       "optional": true
     },
     {
@@ -36,7 +36,7 @@
       "type": "Flag",
       "value-key": "[DESPIKE]",
       "command-line-flag": "-despike",
-      "description": "A boolean. Despike each time series before other processing. hopefully, you don't actually need to do this, which is why it is optional.",
+      "description": "Despike each time series before other processing. hopefully, you don't actually need to do this, which is why it is optional.",
       "optional": true
     },
     {
@@ -44,7 +44,7 @@
       "name": "Highpass",
       "type": "Number",
       "value-key": "[HIGHPASS]",
-      "description": "A float. Highpass.",
+      "description": "Highpass.",
       "optional": false
     },
     {
@@ -61,7 +61,7 @@
       "type": "Number",
       "value-key": "[LOCALPV]",
       "command-line-flag": "-localPV",
-      "description": "A float. Replace each vector by the local principal vector (aka first singular vector) from a neighborhood of radius 'rrr' millimeters. note that the pv time series is l2 normalized. this option is mostly for bob cox to have fun with.",
+      "description": "Replace each vector by the local principal vector (aka first singular vector) from a neighborhood of radius 'rrr' millimeters. note that the pv time series is l2 normalized. this option is mostly for bob cox to have fun with.",
       "optional": true
     },
     {
@@ -69,7 +69,7 @@
       "name": "Lowpass",
       "type": "Number",
       "value-key": "[LOWPASS]",
-      "description": "A float. Lowpass.",
+      "description": "Lowpass.",
       "optional": false
     },
     {
@@ -88,7 +88,7 @@
       "integer": true,
       "value-key": "[NFFT]",
       "command-line-flag": "-nfft",
-      "description": "An integer. Set the fft length [must be a legal value].",
+      "description": "Set the fft length [must be a legal value].",
       "optional": true
     },
     {
@@ -97,7 +97,7 @@
       "type": "Flag",
       "value-key": "[NO_DETREND]",
       "command-line-flag": "-nodetrend",
-      "description": "A boolean. Skip the quadratic detrending of the input that occurs before the fft-based bandpassing. you would only want to do this if the dataset had been detrended already in some other program.",
+      "description": "Skip the quadratic detrending of the input that occurs before the fft-based bandpassing. you would only want to do this if the dataset had been detrended already in some other program.",
       "optional": true
     },
     {
@@ -106,7 +106,7 @@
       "type": "Flag",
       "value-key": "[NORMALIZE]",
       "command-line-flag": "-norm",
-      "description": "A boolean. Make all output time series have l2 norm = 1 (i.e., sum of squares = 1).",
+      "description": "Make all output time series have l2 norm = 1 (i.e., sum of squares = 1).",
       "optional": true
     },
     {
@@ -115,7 +115,7 @@
       "type": "Flag",
       "value-key": "[NOTRANS]",
       "command-line-flag": "-notrans",
-      "description": "A boolean. Don't check for initial positive transients in the data. the test is a little slow, so skipping it is ok, if you know the data time series are transient-free.",
+      "description": "Don't check for initial positive transients in the data. the test is a little slow, so skipping it is ok, if you know the data time series are transient-free.",
       "optional": true
     },
     {
@@ -124,7 +124,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Set number of threads.",
+      "description": "Set number of threads.",
       "optional": true,
       "default-value": 1
     },
@@ -162,7 +162,7 @@
       "type": "Number",
       "value-key": "[TR]",
       "command-line-flag": "-dt",
-      "description": "A float. Set time step (tr) in sec [default=from dataset header].",
+      "description": "Set time step (tr) in sec [default=from dataset header].",
       "optional": true
     }
   ],

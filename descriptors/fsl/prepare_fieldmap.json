@@ -9,7 +9,7 @@
       "name": "Args",
       "type": "String",
       "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "Additional parameters to the command.",
       "optional": true
     },
     {
@@ -17,7 +17,7 @@
       "name": "Delta echo time",
       "type": "Number",
       "value-key": "[DELTA_TE]",
-      "description": "A float. Echo time difference of the fieldmap sequence in ms. (usually 2.46ms in siemens).",
+      "description": "Echo time difference of the fieldmap sequence in ms. (usually 2.46ms in siemens).",
       "optional": false,
       "default-value": 2.46
     },
@@ -43,7 +43,7 @@
       "type": "Flag",
       "value-key": "[NOCHECK]",
       "command-line-flag": "--nocheck",
-      "description": "A boolean. Do not perform sanity checks for image size/range/dimensions.",
+      "description": "Do not perform sanity checks for image size/range/dimensions.",
       "optional": true,
       "default-value": false
     },
@@ -69,7 +69,7 @@
       "name": "Scanner",
       "type": "String",
       "value-key": "[SCANNER]",
-      "description": "A string. Must be siemens.",
+      "description": "Must be siemens.",
       "optional": true,
       "default-value": "SIEMENS"
     }

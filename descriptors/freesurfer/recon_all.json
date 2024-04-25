@@ -38,7 +38,7 @@
       "type": "Flag",
       "value-key": "[BIG_VENTRICLES]",
       "command-line-flag": "-bigventricles",
-      "description": "A boolean. For use in subjects with enlarged ventricles.",
+      "description": "For use in subjects with enlarged ventricles.",
       "optional": true
     },
     {
@@ -47,7 +47,7 @@
       "type": "Flag",
       "value-key": "[BRAINSTEM]",
       "command-line-flag": "-brainstem-structures",
-      "description": "A boolean. Segment brainstem structures.",
+      "description": "Segment brainstem structures.",
       "optional": true
     },
     {
@@ -110,7 +110,7 @@
       "type": "Flag",
       "value-key": "[HIPPOCAMPAL_SUBFIELDS_T1]",
       "command-line-flag": "-hippocampal-subfields-T1",
-      "description": "A boolean. Segment hippocampal subfields using input t1 scan.",
+      "description": "Segment hippocampal subfields using input t1 scan.",
       "optional": true
     },
     {
@@ -122,7 +122,7 @@
       "max-list-entries": 2,
       "value-key": "[HIPPOCAMPAL_SUBFIELDS_T2]",
       "command-line-flag": "-hippocampal-subfields-T2",
-      "description": "A tuple of the form: (file or string, a string). Segment hippocampal subfields using t2 scan, identified by id (may be combined with hippocampal_subfields_t1).",
+      "description": "(file or string, a string). Segment hippocampal subfields using t2 scan, identified by id (may be combined with hippocampal_subfields_t1).",
       "optional": true
     },
     {
@@ -131,7 +131,7 @@
       "type": "Flag",
       "value-key": "[HIRES]",
       "command-line-flag": "-hires",
-      "description": "A boolean. Conform to minimum voxel size (for voxels < 1mm).",
+      "description": "Conform to minimum voxel size (for voxels < 1mm).",
       "optional": true
     },
     {
@@ -140,7 +140,7 @@
       "type": "Flag",
       "value-key": "[MPRAGE]",
       "command-line-flag": "-mprage",
-      "description": "A boolean. Assume scan parameters are mgh mp-rage protocol, which produces darker gray matter.",
+      "description": "Assume scan parameters are mgh mp-rage protocol, which produces darker gray matter.",
       "optional": true
     },
     {
@@ -150,7 +150,7 @@
       "integer": true,
       "value-key": "[OPENMP]",
       "command-line-flag": "-openmp",
-      "description": "An integer. Number of processors to use in parallel.",
+      "description": "Number of processors to use in parallel.",
       "optional": true
     },
     {
@@ -159,7 +159,7 @@
       "type": "Flag",
       "value-key": "[PARALLEL]",
       "command-line-flag": "-parallel",
-      "description": "A boolean. Enable parallel execution.",
+      "description": "Enable parallel execution.",
       "optional": true
     },
     {
@@ -168,7 +168,7 @@
       "type": "String",
       "value-key": "[SUBJECT_ID]",
       "command-line-flag": "-subjid",
-      "description": "A string. Subject name.",
+      "description": "Subject name.",
       "optional": true,
       "default-value": "recon_all"
     },
@@ -186,7 +186,7 @@
       "name": "Talairach",
       "type": "String",
       "value-key": "[TALAIRACH]",
-      "description": "A string. Flags to pass to talairach commands.",
+      "description": "Flags to pass to talairach commands.",
       "optional": true
     },
     {
@@ -195,7 +195,7 @@
       "type": "Flag",
       "value-key": "[USE_FLAIR]",
       "command-line-flag": "-FLAIRpial",
-      "description": "A boolean. Use flair image to refine the pial surface.",
+      "description": "Use flair image to refine the pial surface.",
       "optional": true
     },
     {
@@ -204,7 +204,7 @@
       "type": "Flag",
       "value-key": "[USE_T2]",
       "command-line-flag": "-T2pial",
-      "description": "A boolean. Use t2 image to refine the pial surface.",
+      "description": "Use t2 image to refine the pial surface.",
       "optional": true
     },
     {
