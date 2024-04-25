@@ -5,14 +5,6 @@
   "description": "Randomise, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Randomise).\nFSL Randomise: feeds the 4D projected FA data into GLM modelling and thresholding in order to find voxels which correlate with your model\nExample ------- >>> import nipype.interfaces.fsl as fsl >>> rand = fsl.Randomise(in_file='allFA.nii', mask = 'mask.nii', tcon='design.con', design_mat='design.mat') >>> rand.cmdline 'randomise -i allFA.nii -o \"randomise\" -d design.mat -t design.con -m mask.nii'",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "base_name",
       "name": "Base name",
       "type": "String",

@@ -5,14 +5,6 @@
   "description": "FUGUE, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FUGUE).\nFSL FUGUE set of tools for EPI distortion correction\n`FUGUE <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE>`_ is, most generally, a set of tools for EPI distortion correction.\nDistortions may be corrected for 1. improving registration with non-distorted images (e.g. structurals), or 2. dealing with motion-dependent changes.\nFUGUE is designed to deal only with the first case - improving registration.",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "asym_se_time",
       "name": "Asym se time",
       "type": "Number",

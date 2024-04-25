@@ -5,14 +5,6 @@
   "description": "ImageStats, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ImageStats).\nUse FSL fslstats command to calculate stats from images `FSL info <http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils>`_",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "in_file",
       "name": "In file",
       "type": "File",

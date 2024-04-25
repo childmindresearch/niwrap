@@ -5,14 +5,6 @@
   "description": "PrepareFieldmap, as implemented in Nipype (module: nipype.interfaces.fsl.epi, interface: PrepareFieldmap).\n\nInterface for the fsl_prepare_fieldmap script (FSL 5.0)\nPrepares a fieldmap suitable for FEAT from SIEMENS data - saves output in rad/s format (e.g. ```fsl_prepare_fieldmap SIEMENS images_3_gre_field_mapping images_4_gre_field_mapping fmap_rads 2.65```).",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "delta_TE",
       "name": "Delta echo time",
       "type": "Number",

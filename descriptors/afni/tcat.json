@@ -5,14 +5,6 @@
   "description": "TCat, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: TCat).\nConcatenate sub-bricks from input datasets into one big 3D+time dataset.\nTODO Replace InputMultiPath in_files with Traits.List, if possible. Current version adds extra whitespace.\nFor complete details, see the `3dTcat Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcat.html>`_",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "in_files",
       "name": "In files",
       "type": "File",

@@ -5,14 +5,6 @@
   "description": "GLM, as implemented in Nipype (module: nipype.interfaces.fsl, interface: GLM).\n\nFSL GLM:\nExample ------- >>> import nipype.interfaces.fsl as fsl >>> glm = fsl.GLM(in_file='functional.nii', design='maps.nii', output_type='NIFTI') >>> glm.cmdline 'fsl_glm -i functional.nii -d maps.nii -o functional_glm.nii'",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "contrasts",
       "name": "Contrasts",
       "type": "File",

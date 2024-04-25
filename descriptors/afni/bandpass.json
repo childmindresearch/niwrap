@@ -5,14 +5,6 @@
   "description": "Bandpass, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Bandpass).\nProgram to lowpass and/or highpass each voxel time series in a dataset, offering more/different options than Fourier\nFor complete details, see the `3dBandpass Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBandpass.html>`_",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "automask",
       "name": "Automask",
       "type": "Flag",

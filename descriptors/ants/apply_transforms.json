@@ -5,14 +5,6 @@
   "description": "ApplyTransforms, as implemented in Nipype (module: nipype.interfaces.ants.resampling, interface: ApplyTransforms).\nApplyTransforms, applied to an input image, transforms it according to a reference image and a transform (or a set of transforms).",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "default_value",
       "name": "Default value",
       "type": "Number",

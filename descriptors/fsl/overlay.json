@@ -5,14 +5,6 @@
   "description": "Overlay, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Overlay).\nUse FSL's overlay command to combine background and statistical images into one volume",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "auto_thresh_bg",
       "name": "Auto thresh bg",
       "type": "Flag",

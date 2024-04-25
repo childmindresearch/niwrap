@@ -5,14 +5,6 @@
   "description": "MultiplyImages, as implemented in Nipype (module: nipype.interfaces.ants, interface: MultiplyImages).",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "dimension",
       "name": "Dimension",
       "type": "Number",

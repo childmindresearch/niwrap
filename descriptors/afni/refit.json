@@ -5,14 +5,6 @@
   "description": "Refit, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: Refit).\nChanges some of the information inside a 3D dataset's header\nFor complete details, see the `3drefit Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drefit.html>`_",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "atrcopy",
       "name": "Atrcopy",
       "type": "String",

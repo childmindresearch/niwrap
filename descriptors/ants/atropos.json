@@ -5,14 +5,6 @@
   "description": "Atropos, as implemented in Nipype (module: nipype.interfaces.ants.segmentation, interface: Atropos).\n\nA multivariate n-class segmentation algorithm.\nA finite mixture modeling (FMM) segmentation approach with possibilities for specifying prior constraints. These prior constraints include the specification of a prior label image, prior probability images (one for each class), and/or an MRF prior to enforce spatial smoothing of the labels. Similar algorithms include FAST and SPM.",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "convergence_threshold",
       "name": "Convergence threshold",
       "type": "Number",

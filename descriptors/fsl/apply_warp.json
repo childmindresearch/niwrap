@@ -14,14 +14,6 @@
       "optional": true
     },
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "datatype",
       "name": "Datatype",
       "type": "String",

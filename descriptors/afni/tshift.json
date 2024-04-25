@@ -5,14 +5,6 @@
   "description": "TShift, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: TShift).\nShifts voxel time series from input so that separate slices are aligned to the same temporal origin.\nFor complete details, see the `3dTshift Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTshift.html>`_",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "ignore",
       "name": "Ignore",
       "type": "Number",

@@ -15,14 +15,6 @@
       "requires-inputs": ["image_width"]
     },
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "colour_map",
       "name": "Colour map",
       "type": "File",

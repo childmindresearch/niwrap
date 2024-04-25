@@ -5,14 +5,6 @@
   "description": "Automask, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Automask).\nCreate a brain-only mask of the image using AFNI 3dAutomask command\nFor complete details, see the `3dAutomask Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html>`_",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "clfrac",
       "name": "Clfrac",
       "type": "Number",
