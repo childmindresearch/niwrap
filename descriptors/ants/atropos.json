@@ -34,14 +34,6 @@
       "value-choices": [3, 2, 4]
     },
     {
-      "id": "icm_use_synchronous_update",
-      "name": "Icm use synchronous update",
-      "type": "Flag",
-      "value-key": "[ICM_USE_SYNCHRONOUS_UPDATE]",
-      "description": "No description provided.",
-      "optional": true
-    },
-    {
       "id": "initialization",
       "name": "Initialization",
       "type": "String",

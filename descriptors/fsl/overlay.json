@@ -77,14 +77,6 @@
       "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     },
     {
-      "id": "show_negative_stats",
-      "name": "Show negative stats",
-      "type": "Flag",
-      "value-key": "[SHOW_NEGATIVE_STATS]",
-      "description": "Display negative statistics in overlay.",
-      "optional": true
-    },
-    {
       "id": "stat_image",
       "name": "Stat image",
       "type": "File",
@@ -123,15 +115,6 @@
       "optional": true
     },
     {
-      "id": "transparency",
-      "name": "Transparency",
-      "type": "Flag",
-      "value-key": "[TRANSPARENCY]",
-      "description": "Make overlay colors semi-transparent.",
-      "optional": true,
-      "default-value": true
-    },
-    {
       "id": "use_checkerboard",
       "name": "Use checkerboard",
       "type": "Flag",
@@ -160,7 +143,7 @@
     {
       "id": "mutex_group_2",
       "name": "Mutex group 2",
-      "members": ["stat_image2", "show_negative_stats"],
+      "members": ["stat_image2"],
       "mutually-exclusive": true
     }
   ],

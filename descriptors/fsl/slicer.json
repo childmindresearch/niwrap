@@ -147,6 +147,7 @@
       "name": "Show orientation",
       "type": "Flag",
       "value-key": "[SHOW_ORIENTATION]",
+      "command-line-flag": "-u",
       "description": "Label left-right orientation.",
       "optional": true,
       "default-value": true
