@@ -1,69 +1,245 @@
 {
   "name": "FAST",
-  "command-line": "FAST [IN_FILES] [ARGS] [BIAS_ITERS] [BIAS_LOWPASS] [ENVIRON] [HYPER] [IMG_TYPE] [INIT_SEG_SMOOTH] [INIT_TRANSFORM] [ITERS_AFTERBIAS] [MANUAL_SEG] [MIXEL_SMOOTH] [NO_BIAS] [NO_PVE] [NUMBER_CLASSES] [OTHER_PRIORS] [OUT_BASENAME] [OUTPUT_BIASCORRECTED] [OUTPUT_BIASFIELD] [OUTPUT_TYPE] [PROBABILITY_MAPS] [SEGMENT_ITERS] [SEGMENTS] [USE_PRIORS] [VERBOSE]",
+  "command-line": "FAST [NUMBER_CLASSES] [BIAS_ITERS] [BIAS_LOWPASS] [IMG_TYPE] [INIT_SEG_SMOOTH] [SEGMENTS] [INIT_TRANSFORM] [OTHER_PRIORS] [OUTPUT_BIASFIELD] [OUTPUT_BIASCORRECTED] [NO_BIAS] [CHANNELS] [OUT_BASENAME] [USE_PRIORS] [NO_PVE] [SEGMENT_ITERS] [MIXEL_SMOOTH] [HYPER] [VERBOSE] [MANUAL_SEG] [ITERS_AFTERBIAS] [PROBABILITY_MAPS] [IN_FILES]",
   "author": "Nipype (interface)",
   "description": "FAST, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FAST).\nFSL FAST wrapper for segmentation and bias correction\nFor complete details, see the `FAST Documentation. <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FAST>`_",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
-      "id": "bias_iters",
-      "name": "Bias iters",
+      "name": "Number classes",
+      "id": "number_classes",
       "type": "Number",
+      "value-key": "[NUMBER_CLASSES]",
+      "description": "number of tissue-type classes; default=3",
       "minimum": 1,
-      "maximum": 10,
+      "default-value": 3,
+      "integer": true,
+      "command-line-flag": "-n",
+      "optional": true
+    },
+    {
+      "name": "Bias iters",
+      "id": "bias_iters",
+      "type": "Number",
       "value-key": "[BIAS_ITERS]",
+      "description": "number of main-loop iterations during bias-field removal; default=4",
+      "minimum": 1,
+      "default-value": 3,
+      "integer": true,
       "command-line-flag": "-I",
-      "description": "1 <= an integer <= 10. Number of main-loop iterations during bias-field removal.",
       "optional": true
     },
     {
-      "id": "bias_lowpass",
       "name": "Bias lowpass",
+      "id": "bias_lowpass",
       "type": "Number",
-      "minimum": 4,
-      "maximum": 40,
       "value-key": "[BIAS_LOWPASS]",
+      "description": "bias field smoothing extent (FWHM) in mm; default=20",
+      "minimum": 0,
+      "default-value": 20,
       "command-line-flag": "-l",
-      "description": "4 <= an integer <= 40. Bias field smoothing extent (fwhm) in mm.",
       "optional": true
     },
     {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
-    {
-      "id": "hyper",
-      "name": "Hyper",
-      "type": "Number",
-      "minimum": 0.0,
-      "maximum": 1.0,
-      "value-key": "[HYPER]",
-      "command-line-flag": "-H",
-      "description": "0.0 <= a floating point number <= 1.0. Segmentation spatial smoothness.",
-      "optional": true
-    },
-    {
-      "id": "img_type",
       "name": "Img type",
+      "id": "img_type",
       "type": "Number",
       "value-key": "[IMG_TYPE]",
+      "description": "type of image 1=T1, 2=T2, 3=PD; default=T1",
       "command-line-flag": "-t",
-      "description": "1 or 2 or 3. Int specifying type of image: (1 = t1, 2 = t2, 3 = pd).",
       "optional": true,
       "integer": true,
-      "value-choices": [1, 2, 3]
+      "value-choices": [
+        1,
+        2,
+        3
+      ],
+      "default-value": 1
+    },
+    {
+      "name": "Init seg smooth",
+      "id": "init_seg_smooth",
+      "type": "Number",
+      "value-key": "[INIT_SEG_SMOOTH]",
+      "description": "initial segmentation spatial smoothness (during bias field estimation); default=0.02",
+      "default-value": 0.02,
+      "minimum": 0.0001,
+      "maximum": 0.1,
+      "command-line-flag": "-f",
+      "optional": true
+    },
+    {
+      "name": "Segments",
+      "id": "segments",
+      "type": "Flag",
+      "value-key": "[SEGMENTS]",
+      "description": "outputs a separate binary image for each tissue type",
+      "command-line-flag": "-g",
+      "optional": true
+    },
+    {
+      "name": "Init transform",
+      "id": "init_transform",
+      "type": "File",
+      "value-key": "[INIT_TRANSFORM]",
+      "description": "initialise using priors; you must supply a FLIRT transform",
+      "command-line-flag": "-a",
+      "optional": true
+    },
+    {
+      "name": "Other priors",
+      "id": "other_priors",
+      "type": "File",
+      "value-key": "[OTHER_PRIORS]",
+      "description": "Alternative prior images.",
+      "list": true,
+      "command-line-flag": "-A",
+      "optional": true
+    },
+    {
+      "name": "Output biasfield",
+      "id": "output_biasfield",
+      "type": "Flag",
+      "value-key": "[OUTPUT_BIASFIELD]",
+      "description": "Output estimated bias field.",
+      "command-line-flag": "-b",
+      "optional": true
+    },
+    {
+      "name": "Output biascorrected",
+      "id": "output_biascorrected",
+      "type": "Flag",
+      "value-key": "[OUTPUT_BIASCORRECTED]",
+      "description": "Output restored image (bias-corrected image).",
+      "command-line-flag": "-B",
+      "optional": true
+    },
+    {
+      "name": "No bias",
+      "id": "no_bias",
+      "type": "Flag",
+      "value-key": "[NO_BIAS]",
+      "description": "Do not remove bias field.",
+      "command-line-flag": "-N",
+      "optional": true
+    },
+    {
+      "name": "Channels",
+      "id": "channels",
+      "type": "Number",
+      "value-key": "[CHANNELS]",
+      "description": "number of input images (channels); default 1",
+      "command-line-flag": "-S",
+      "minimum": 1,
+      "default-value": 1,
+      "integer": true,
+      "optional": true
+    },
+    {
+      "name": "Out basename",
+      "id": "out_basename",
+      "type": "File",
+      "value-key": "[OUT_BASENAME]",
+      "description": "Base name of output files.",
+      "command-line-flag": "-o",
+      "default-value": "BrainExtractionBrain",
+      "optional": true
+    },
+    {
+      "name": "Use priors",
+      "id": "use_priors",
+      "type": "Flag",
+      "value-key": "[USE_PRIORS]",
+      "description": "Use priors throughout.",
+      "command-line-flag": "-P",
+      "optional": true,
+      "requires-inputs": [
+        "init_transform"
+      ]
+    },
+    {
+      "name": "No pve",
+      "id": "no_pve",
+      "type": "Flag",
+      "value-key": "[NO_PVE]",
+      "description": "Turn off pve (partial volume estimation).",
+      "command-line-flag": "--nopve",
+      "optional": true
+    },
+    {
+      "name": "Segment iters",
+      "id": "segment_iters",
+      "type": "Number",
+      "value-key": "[SEGMENT_ITERS]",
+      "description": "number of segmentation-initialisation iterations; default=15",
+      "integer": true,
+      "minimum": 1,
+      "default-value": 15,
+      "command-line-flag": "-W",
+      "optional": true
+    },
+    {
+      "name": "Mixel smooth",
+      "id": "mixel_smooth",
+      "type": "Number",
+      "value-key": "[MIXEL_SMOOTH]",
+      "description": "spatial smoothness for mixeltype; default=0.3",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "default-value": 0.3,
+      "command-line-flag": "-R",
+      "optional": true
+    },
+    {
+      "name": "Iters afterbias",
+      "id": "iters_afterbias",
+      "type": "Number",
+      "value-key": "[ITERS_AFTERBIAS]",
+      "description": "number of main-loop iterations after bias-field removal; default=4",
+      "minimum": 1,
+      "maximum": 20,
+      "default-value": 4,
+      "integer": true,
+      "command-line-flag": "-O",
+      "optional": true
+    },
+    {
+      "name": "Hyper",
+      "id": "hyper",
+      "type": "Number",
+      "value-key": "[HYPER]",
+      "description": "0.0 <= a floating point number <= 1.0. segmentation spatial smoothness; default=0.1",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "default-value": 0.1,
+      "command-line-flag": "-H",
+      "optional": true
+    },
+    {
+      "name": "Verbose",
+      "id": "verbose",
+      "type": "Flag",
+      "value-key": "[VERBOSE]",
+      "description": "Switch on diagnostic messages.",
+      "command-line-flag": "-v",
+      "optional": true
+    },
+    {
+      "name": "Manual seg",
+      "id": "manual_seg",
+      "type": "File",
+      "value-key": "[MANUAL_SEG]",
+      "description": "Filename containing intensities.",
+      "command-line-flag": "-s",
+      "optional": true
+    },
+    {
+      "name": "Probability maps",
+      "id": "probability_maps",
+      "type": "Flag",
+      "value-key": "[OUT_BASENAME]_prob_*.nii.gz",
+      "description": "Outputs individual probability maps.",
+      "command-line-flag": "-p",
+      "optional": true
     },
     {
       "id": "in_files",
@@ -71,247 +247,74 @@
       "type": "File",
       "list": true,
       "value-key": "[IN_FILES]",
-      "description": "A list of items which are a pathlike object or string representing an existing file. Image, or multi-channel set of images, to be segmented.",
+      "description": "Image, or multi-channel set of images, to be segmented.",
       "optional": false
-    },
-    {
-      "id": "init_seg_smooth",
-      "name": "Init seg smooth",
-      "type": "Number",
-      "minimum": 0.0001,
-      "maximum": 0.1,
-      "value-key": "[INIT_SEG_SMOOTH]",
-      "command-line-flag": "-f",
-      "description": "0.0001 <= a floating point number <= 0.1. Initial segmentation spatial smoothness (during bias field estimation).",
-      "optional": true
-    },
-    {
-      "id": "init_transform",
-      "name": "Init transform",
-      "type": "File",
-      "value-key": "[INIT_TRANSFORM]",
-      "command-line-flag": "-a",
-      "description": "A pathlike object or string representing an existing file. <standard2input.mat> initialise using priors.",
-      "optional": true
-    },
-    {
-      "id": "iters_afterbias",
-      "name": "Iters afterbias",
-      "type": "Number",
-      "minimum": 1,
-      "maximum": 20,
-      "value-key": "[ITERS_AFTERBIAS]",
-      "command-line-flag": "-O",
-      "description": "1 <= an integer <= 20. Number of main-loop iterations after bias-field removal.",
-      "optional": true
-    },
-    {
-      "id": "manual_seg",
-      "name": "Manual seg",
-      "type": "File",
-      "value-key": "[MANUAL_SEG]",
-      "command-line-flag": "-s",
-      "description": "A pathlike object or string representing an existing file. Filename containing intensities.",
-      "optional": true
-    },
-    {
-      "id": "mixel_smooth",
-      "name": "Mixel smooth",
-      "type": "Number",
-      "minimum": 0.0,
-      "maximum": 1.0,
-      "value-key": "[MIXEL_SMOOTH]",
-      "command-line-flag": "-R",
-      "description": "0.0 <= a floating point number <= 1.0. Spatial smoothness for mixeltype.",
-      "optional": true
-    },
-    {
-      "id": "no_bias",
-      "name": "No bias",
-      "type": "Flag",
-      "value-key": "[NO_BIAS]",
-      "command-line-flag": "-N",
-      "description": "A boolean. Do not remove bias field.",
-      "optional": true
-    },
-    {
-      "id": "no_pve",
-      "name": "No pve",
-      "type": "Flag",
-      "value-key": "[NO_PVE]",
-      "command-line-flag": "--nopve",
-      "description": "A boolean. Turn off pve (partial volume estimation).",
-      "optional": true
-    },
-    {
-      "id": "number_classes",
-      "name": "Number classes",
-      "type": "Number",
-      "minimum": 1,
-      "maximum": 10,
-      "value-key": "[NUMBER_CLASSES]",
-      "command-line-flag": "-n",
-      "description": "1 <= an integer <= 10. Number of tissue-type classes.",
-      "optional": true
-    },
-    {
-      "id": "other_priors",
-      "name": "Other priors",
-      "type": "File",
-      "list": true,
-      "value-key": "[OTHER_PRIORS]",
-      "command-line-flag": "-A",
-      "description": "A list of from 3 to 3 items which are a pathlike object or string representing a file. Alternative prior images.",
-      "optional": true
-    },
-    {
-      "id": "out_basename",
-      "name": "Out basename",
-      "type": "File",
-      "value-key": "[OUT_BASENAME]",
-      "command-line-flag": "-o",
-      "description": "A pathlike object or string representing a file. Base name of output files.",
-      "optional": true
-    },
-    {
-      "id": "output_biascorrected",
-      "name": "Output biascorrected",
-      "type": "Flag",
-      "value-key": "[OUTPUT_BIASCORRECTED]",
-      "command-line-flag": "-B",
-      "description": "A boolean. Output restored image (bias-corrected image).",
-      "optional": true
-    },
-    {
-      "id": "output_biasfield",
-      "name": "Output biasfield",
-      "type": "Flag",
-      "value-key": "[OUTPUT_BIASFIELD]",
-      "command-line-flag": "-b",
-      "description": "A boolean. Output estimated bias field.",
-      "optional": true
-    },
-    {
-      "id": "output_type",
-      "name": "Output type",
-      "type": "String",
-      "value-key": "[OUTPUT_TYPE]",
-      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-      "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
-    },
-    {
-      "id": "probability_maps",
-      "name": "Probability maps",
-      "type": "Flag",
-      "value-key": "[PROBABILITY_MAPS]",
-      "command-line-flag": "-p",
-      "description": "A boolean. Outputs individual probability maps.",
-      "optional": true
-    },
-    {
-      "id": "segment_iters",
-      "name": "Segment iters",
-      "type": "Number",
-      "minimum": 1,
-      "maximum": 50,
-      "value-key": "[SEGMENT_ITERS]",
-      "command-line-flag": "-W",
-      "description": "1 <= an integer <= 50. Number of segmentation-initialisation iterations.",
-      "optional": true
-    },
-    {
-      "id": "segments",
-      "name": "Segments",
-      "type": "Flag",
-      "value-key": "[SEGMENTS]",
-      "command-line-flag": "-g",
-      "description": "A boolean. Outputs a separate binary image for each tissue type.",
-      "optional": true
-    },
-    {
-      "id": "use_priors",
-      "name": "Use priors",
-      "type": "Flag",
-      "value-key": "[USE_PRIORS]",
-      "command-line-flag": "-P",
-      "description": "A boolean. Use priors throughout.",
-      "optional": true
-    },
-    {
-      "id": "verbose",
-      "name": "Verbose",
-      "type": "Flag",
-      "value-key": "[VERBOSE]",
-      "command-line-flag": "-v",
-      "description": "A boolean. Switch on diagnostic messages.",
-      "optional": true
     }
   ],
   "output-files": [
     {
-      "name": "Bias field",
-      "id": "bias_field",
-      "path-template": "bias_field",
-      "optional": true,
-      "description": "A list of items which are a pathlike object or string representing a file. No description provided.",
-      "list": true
-    },
-    {
       "name": "Mixeltype",
       "id": "mixeltype",
-      "path-template": "mixeltype",
+      "path-template": "[OUT_BASENAME]_mixeltype.nii.gz",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Path/name of mixeltype volume file _mixeltype."
+      "description": "Path/name of mixeltype volume file _mixeltype."
+    },
+    {
+      "name": "Bias field",
+      "id": "bias_field",
+      "path-template": "[OUT_BASENAME]_bias.nii.gz",
+      "optional": true,
+      "description": "A list of items which are No description provided.",
+      "list": true
     },
     {
       "name": "Partial volume files",
       "id": "partial_volume_files",
-      "path-template": "partial_volume_files",
+      "path-template": "[OUT_BASENAME]_pve_*.nii.gz",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing a file. No description provided.",
+      "description": "A list of items which are No description provided.",
       "list": true
     },
     {
       "name": "Partial volume map",
       "id": "partial_volume_map",
-      "path-template": "partial_volume_map",
+      "path-template": "[OUT_BASENAME]_pveseg.nii.gz",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Path/name of partial volume file _pveseg."
+      "description": "Path/name of partial volume file _pveseg."
     },
     {
       "name": "Probability maps",
       "id": "probability_maps_outfile",
-      "path-template": "[PROBABILITY_MAPS]",
+      "path-template": "[OUT_BASENAME]_prob_*.nii.gz",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing a file. No description provided.",
+      "description": "A list of items which are No description provided.",
       "list": true
     },
     {
       "name": "Restored image",
       "id": "restored_image",
-      "path-template": "restored_image",
+      "path-template": "[OUT_BASENAME]_restore.nii.gz",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing a file. No description provided.",
+      "description": "A list of items which are No description provided.",
       "list": true
     },
     {
       "name": "Tissue class files",
       "id": "tissue_class_files",
-      "path-template": "tissue_class_files",
+      "path-template": "[OUT_BASENAME]_seg_*.nii.gz",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing a file. No description provided.",
+      "description": "A list of items which are No description provided.",
       "list": true
     },
     {
       "name": "Tissue class map",
       "id": "tissue_class_map",
-      "path-template": "tissue_class_map",
+      "path-template": "[OUT_BASENAME]_seg.nii.gz",
       "optional": true,
       "description": "A pathlike object or string representing an existing file. Path/name of binary segmented volume file one val for each class  _seg."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "5.0.9",
   "schema-version": "0.5",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
@@ -319,6 +322,7 @@
   },
   "tags": {
     "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "source": "nipype-interface",
+    "package": "fsl"
   }
 }
