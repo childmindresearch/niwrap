@@ -18,7 +18,7 @@
       "type": "File",
       "value-key": "[BASEFILE]",
       "command-line-flag": "-base",
-      "description": "A pathlike object or string representing an existing file. Base file for registration.",
+      "description": "Base file for registration.",
       "optional": true
     },
     {
@@ -35,7 +35,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input file to 3dvolreg.",
+      "description": "Input file to 3dvolreg.",
       "optional": false
     },
     {
@@ -45,7 +45,7 @@
       "list": true,
       "value-key": "[IN_WEIGHT_VOLUME]",
       "command-line-flag": "-weight '",
-      "description": "A tuple of the form: (a pathlike object or string representing an existing file, an integer) or a pathlike object or string representing an existing file. Weights for each voxel specified by a file with an optional volume number (defaults to 0).",
+      "description": "A tuple of the form: (file or string, an integer) or file or string. Weights for each voxel specified by a file with an optional volume number (defaults to 0).",
       "optional": true
     },
     {
@@ -54,7 +54,7 @@
       "type": "File",
       "value-key": "[IN_WEIGHT_VOLUME]",
       "command-line-flag": "-weight '",
-      "description": "A tuple of the form: (a pathlike object or string representing an existing file, an integer) or a pathlike object or string representing an existing file. Weights for each voxel specified by a file with an optional volume number (defaults to 0).",
+      "description": "A tuple of the form: (file or string, an integer) or file or string. Weights for each voxel specified by a file with an optional volume number (defaults to 0).",
       "optional": true
     },
     {
@@ -120,7 +120,7 @@
       "name": "Md1d file",
       "id": "md1d_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Max displacement output file.",
+      "description": "Max displacement output file.",
       "path-template": "[IN_FILE]_md.1D",
       "value-key": "[MD1D_FILE]",
       "command-line-flag": "-maxdisp1D"
@@ -129,7 +129,7 @@
       "name": "Oned file",
       "id": "oned_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. 1d movement parameters output file.",
+      "description": "1d movement parameters output file.",
       "path-template": "[IN_FILE].1D",
       "value-key": "[ONED_FILE]",
       "command-line-flag": "-1Dfile"
@@ -138,7 +138,7 @@
       "name": "Oned matrix save",
       "id": "oned_matrix_save",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Save the matrix transformation.",
+      "description": "Save the matrix transformation.",
       "path-template": "[IN_FILE].aff12.1D",
       "value-key": "[ONED_MATRIX_SAVE]",
       "command-line-flag": "-1Dmatrix_save"
@@ -147,7 +147,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
+      "description": "Output image file name.",
       "path-template": "[IN_FILE]_volreg",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
@@ -157,28 +157,28 @@
       "id": "md1d_file",
       "path-template": "md1d_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Max displacement info file."
+      "description": "Max displacement info file."
     },
     {
       "name": "Oned file",
       "id": "oned_file",
       "path-template": "oned_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Movement parameters info file."
+      "description": "Movement parameters info file."
     },
     {
       "name": "Oned matrix save",
       "id": "oned_matrix_save",
       "path-template": "oned_matrix_save",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Matrix transformation from base to input."
+      "description": "Matrix transformation from base to input."
     },
     {
       "name": "Out file",
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Registered file."
+      "description": "Registered file."
     }
   ],
   "groups": [

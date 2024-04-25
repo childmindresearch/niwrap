@@ -49,7 +49,7 @@
       "type": "File",
       "value-key": "[INPUT_IMAGE]",
       "command-line-flag": "--input",
-      "description": "A pathlike object or string representing an existing file. Image to apply transformation to (generally a coregistered functional).",
+      "description": "Image to apply transformation to (generally a coregistered functional).",
       "optional": false
     },
     {
@@ -154,7 +154,7 @@
       "type": "File",
       "value-key": "[REFERENCE_IMAGE]",
       "command-line-flag": "--reference-image",
-      "description": "A pathlike object or string representing an existing file. Reference image space that you wish to warp into.",
+      "description": "Reference image space that you wish to warp into.",
       "optional": false
     },
     {
@@ -163,7 +163,7 @@
       "type": "File",
       "list": true,
       "value-key": "[TRANSFORMS]",
-      "description": "A list of items which are a pathlike object or string representing an existing file or 'identity'. Transform files: will be applied in reverse order. for example, the last specified transform will be applied first.",
+      "description": "A list of items which are file or string or 'identity'. Transform files: will be applied in reverse order. for example, the last specified transform will be applied first.",
       "optional": false
     }
   ],
@@ -173,7 +173,7 @@
       "id": "output_image_outfile",
       "path-template": "[OUTPUT_IMAGE]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Warped image."
+      "description": "Warped image."
     }
   ],
   "groups": [

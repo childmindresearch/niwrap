@@ -27,7 +27,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input file to 3dtshift.",
+      "description": "Input file to 3dtshift.",
       "optional": false
     },
     {
@@ -93,7 +93,7 @@
       "type": "File",
       "value-key": "[SLICE_TIMING]",
       "command-line-flag": "-tpattern @",
-      "description": "A pathlike object or string representing an existing file or a list of items which are a float. Time offsets from the volume acquisition onset for each slice.",
+      "description": "file or string or a list of items which are a float. Time offsets from the volume acquisition onset for each slice.",
       "optional": true
     },
     {
@@ -103,7 +103,7 @@
       "list": true,
       "value-key": "[SLICE_TIMING]",
       "command-line-flag": "-tpattern @",
-      "description": "A pathlike object or string representing an existing file or a list of items which are a float. Time offsets from the volume acquisition onset for each slice.",
+      "description": "file or string or a list of items which are a float. Time offsets from the volume acquisition onset for each slice.",
       "optional": true
     },
     {
@@ -170,7 +170,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
+      "description": "Output image file name.",
       "path-template": "[IN_FILE]_tshift",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
@@ -180,14 +180,14 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output file."
+      "description": "Output file."
     },
     {
       "name": "Timing file",
       "id": "timing_file",
       "path-template": "timing_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Afni formatted timing file, if ``slice_timing`` is a list."
+      "description": "Afni formatted timing file, if ``slice_timing`` is a list."
     }
   ],
   "groups": [

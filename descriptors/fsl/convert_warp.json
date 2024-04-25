@@ -57,7 +57,7 @@
       "value-key": "[MIDMAT]",
       "command-line-flag": "--midmat",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file containing mid-warp-affine transform.",
+      "description": "Name of file containing mid-warp-affine transform.",
       "optional": true
     },
     {
@@ -94,7 +94,7 @@
       "value-key": "[POSTMAT]",
       "command-line-flag": "--postmat",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file containing an affine transform (applied last). it could e.g. be an affine transform that maps the mni152-space into a better approximation to the talairach-space (if indeed there is one).",
+      "description": "Name of file containing an affine transform (applied last). it could e.g. be an affine transform that maps the mni152-space into a better approximation to the talairach-space (if indeed there is one).",
       "optional": true
     },
     {
@@ -104,7 +104,7 @@
       "value-key": "[PREMAT]",
       "command-line-flag": "--premat",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Filename for pre-transform (affine matrix).",
+      "description": "Filename for pre-transform (affine matrix).",
       "optional": true
     },
     {
@@ -114,7 +114,7 @@
       "value-key": "[REFERENCE]",
       "command-line-flag": "--ref",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of a file in target space of the full transform.",
+      "description": "Name of a file in target space of the full transform.",
       "optional": false
     },
     {
@@ -145,7 +145,7 @@
       "value-key": "[SHIFT_IN_FILE]",
       "command-line-flag": "--shiftmap",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file containing a \"shiftmap\", a non-linear transform with displacements only in one direction (applied first, before premat). this would typically be a fieldmap that has been pre-processed using fugue that maps a subjects functional (epi) data onto an undistorted space (i.e. a space that corresponds to his/her true anatomy).",
+      "description": "Name of file containing a \"shiftmap\", a non-linear transform with displacements only in one direction (applied first, before premat). this would typically be a fieldmap that has been pre-processed using fugue that maps a subjects functional (epi) data onto an undistorted space (i.e. a space that corresponds to his/her true anatomy).",
       "optional": true
     },
     {
@@ -155,7 +155,7 @@
       "value-key": "[WARP1]",
       "command-line-flag": "--warp1",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file containing initial warp-fields/coefficients (follows premat). this could e.g. be a fnirt-transform from a subjects structural scan to an average of a group of subjects.",
+      "description": "Name of file containing initial warp-fields/coefficients (follows premat). this could e.g. be a fnirt-transform from a subjects structural scan to an average of a group of subjects.",
       "optional": true
     },
     {
@@ -165,7 +165,7 @@
       "value-key": "[WARP2]",
       "command-line-flag": "--warp2",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file containing secondary warp-fields/coefficients (after warp1/midmat but before postmat). this could e.g. be a fnirt-transform from the average of a group of subjects to some standard space (e.g. mni152).",
+      "description": "Name of file containing secondary warp-fields/coefficients (after warp1/midmat but before postmat). this could e.g. be a fnirt-transform from the average of a group of subjects to some standard space (e.g. mni152).",
       "optional": true
     }
   ],
@@ -174,7 +174,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Name of output file, containing warps that are the combination of all those given as arguments. the format of this will be a field-file (rather than spline coefficients) with any affine components included.",
+      "description": "Name of output file, containing warps that are the combination of all those given as arguments. the format of this will be a field-file (rather than spline coefficients) with any affine components included.",
       "path-template": "[REFERENCE]_concatwarp",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "--out",
@@ -185,7 +185,7 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Name of output file, containing the warp as field or coefficients."
+      "description": "Name of output file, containing the warp as field or coefficients."
     }
   ],
   "groups": [

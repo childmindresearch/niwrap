@@ -27,7 +27,7 @@
       "name": "Transform file",
       "type": "File",
       "value-key": "[TRANSFORM_FILE]",
-      "description": "A pathlike object or string representing the transform.",
+      "description": "file or string representing the transform.",
       "optional": false
     },
     {

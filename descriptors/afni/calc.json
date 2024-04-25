@@ -18,7 +18,7 @@
       "type": "File",
       "value-key": "[IN_FILE_A]",
       "command-line-flag": "-a",
-      "description": "A pathlike object or string representing an existing file. Input file to 3dcalc.",
+      "description": "Input file to 3dcalc.",
       "optional": false
     },
     {
@@ -27,7 +27,7 @@
       "type": "File",
       "value-key": "[IN_FILE_B]",
       "command-line-flag": "-b",
-      "description": "A pathlike object or string representing an existing file. Operand file to 3dcalc.",
+      "description": "Operand file to 3dcalc.",
       "optional": true
     },
     {
@@ -36,7 +36,7 @@
       "type": "File",
       "value-key": "[IN_FILE_C]",
       "command-line-flag": "-c",
-      "description": "A pathlike object or string representing an existing file. Operand file to 3dcalc.",
+      "description": "Operand file to 3dcalc.",
       "optional": true
     },
     {
@@ -44,7 +44,7 @@
       "name": "Other",
       "type": "File",
       "value-key": "[OTHER]",
-      "description": "A pathlike object or string representing a file. Other options.",
+      "description": "Other options.",
       "optional": true
     },
     {
@@ -91,7 +91,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
+      "description": "Output image file name.",
       "path-template": "[IN_FILE_A]",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"

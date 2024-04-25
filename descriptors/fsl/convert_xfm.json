@@ -27,7 +27,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input transformation matrix.",
+      "description": "Input transformation matrix.",
       "optional": false
     },
     {
@@ -45,7 +45,7 @@
       "type": "File",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-omat",
-      "description": "A pathlike object or string representing a file. Final transformation matrix.",
+      "description": "Final transformation matrix.",
       "optional": true
     }
   ],
@@ -55,7 +55,7 @@
       "id": "output_trasnformation",
       "path-template": "[OUT_FILE]",
       "optional": false,
-      "description": "A pathlike object or string representing an existing file. Output transformation matrix."
+      "description": "Output transformation matrix."
     }
   ],
   "groups": [

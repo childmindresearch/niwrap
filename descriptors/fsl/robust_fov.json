@@ -28,7 +28,7 @@
       "type": "File",
       "value-key": "[IN_FILE]",
       "command-line-flag": "-i",
-      "description": "A pathlike object or string representing an existing file. Input filename.",
+      "description": "Input filename.",
       "optional": false
     },
     {
@@ -46,7 +46,7 @@
       "name": "Out roi",
       "id": "out_roi",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Roi volume output name.",
+      "description": "Roi volume output name.",
       "path-template": "[IN_FILE]_ROI",
       "value-key": "[OUT_ROI]",
       "command-line-flag": "-r"
@@ -55,7 +55,7 @@
       "name": "Out transform",
       "id": "out_transform",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Transformation matrix in_file to out_roi output name.",
+      "description": "Transformation matrix in_file to out_roi output name.",
       "path-template": "[IN_FILE]_to_ROI",
       "value-key": "[OUT_TRANSFORM]",
       "command-line-flag": "-m"
@@ -65,14 +65,14 @@
       "id": "out_roi",
       "path-template": "out_roi",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Roi volume output name."
+      "description": "Roi volume output name."
     },
     {
       "name": "Out transform",
       "id": "out_transform",
       "path-template": "out_transform",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Transformation matrix in_file to out_roi output name."
+      "description": "Transformation matrix in_file to out_roi output name."
     }
   ],
   "tool-version": "1.0.0",

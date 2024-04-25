@@ -21,7 +21,7 @@
       "value-key": "[CONFIG_FILE]",
       "command-line-flag": "--config",
       "command-line-flag-separator": "=",
-      "description": "'t1_2_mni152_2mm' or 'fa_2_fmrib58_1mm' or a pathlike object or string representing an existing file. Name of config file specifying command line arguments.",
+      "description": "'t1_2_mni152_2mm' or 'fa_2_fmrib58_1mm' or file or string. Name of config file specifying command line arguments.",
       "optional": true,
       "value-choices": ["T1_2_MNI152_2mm", "FA_2_FMRIB58_1mm"]
     },
@@ -32,7 +32,7 @@
       "value-key": "[FIELD_FILE]",
       "command-line-flag": "--fout",
       "command-line-flag-separator": "=",
-      "description": "a pathlike object or string representing a file. Name of output file with field.",
+      "description": "file. Name of output file with field.",
       "optional": true
     },
     {
@@ -52,7 +52,7 @@
       "value-key": "[IN_FILE]",
       "command-line-flag": "--in",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of input image.",
+      "description": "Name of input image.",
       "optional": false
     },
     {
@@ -62,7 +62,7 @@
       "value-key": "[JACOBIAN_FILE]",
       "command-line-flag": "--jout",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Name of file for writing out the jacobian of the field (for diagnostic or vbm purposes).",
+      "description": "A boolean or file. Name of file for writing out the jacobian of the field (for diagnostic or vbm purposes).",
       "optional": true
     },
     {
@@ -92,7 +92,7 @@
       "value-key": "[REF_FILE]",
       "command-line-flag": "--ref",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of reference image.",
+      "description": "Name of reference image.",
       "optional": false
     },
     {
@@ -102,7 +102,7 @@
       "value-key": "[REFMASK_FILE]",
       "command-line-flag": "--refmask",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file with mask in reference space.",
+      "description": "Name of file with mask in reference space.",
       "optional": true
     },
     {
@@ -122,14 +122,14 @@
       "id": "field_file_outfile",
       "path-template": "[FIELD_FILE].nii.gz",
       "optional": true,
-      "description": "A pathlike object or string representing a file. File with warp field."
+      "description": "File with warp field."
     },
     {
       "name": "Fieldcoeff file",
       "id": "fieldcoeff_file_outfile",
       "path-template": "[FIELDCOEFF_FILE].nii.gz",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. File with field coefficients."
+      "description": "File with field coefficients."
     },
     {
       "name": "Jacobian file",
@@ -165,7 +165,7 @@
       "id": "warped_file_outfile",
       "path-template": "[WARPED_FILE].nii.gz",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Warped image."
+      "description": "Warped image."
     }
   ],
   "tool-version": "1.0.0",

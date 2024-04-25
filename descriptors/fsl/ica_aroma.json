@@ -48,7 +48,7 @@
       "type": "File",
       "value-key": "[FEAT_DIR]",
       "command-line-flag": "-feat",
-      "description": "A pathlike object or string representing an existing directory. If a feat directory exists and temporal filtering has not been run yet, ica_aroma can use the files in this directory.",
+      "description": "file or string representing an existing directory. If a feat directory exists and temporal filtering has not been run yet, ica_aroma can use the files in this directory.",
       "optional": false
     },
     {
@@ -57,7 +57,7 @@
       "type": "File",
       "value-key": "[FNIRT_WARP_FILE]",
       "command-line-flag": "-warp",
-      "description": "A pathlike object or string representing an existing file. File name of the warp-file describing the non-linear registration (e.g. fsl fnirt) of the structural data to mni152 space (.nii.gz).",
+      "description": "File name of the warp-file describing the non-linear registration (e.g. fsl fnirt) of the structural data to mni152 space (.nii.gz).",
       "optional": true
     },
     {
@@ -66,7 +66,7 @@
       "type": "File",
       "value-key": "[IN_FILE]",
       "command-line-flag": "-i",
-      "description": "A pathlike object or string representing an existing file. Volume to be denoised.",
+      "description": "Volume to be denoised.",
       "optional": false
     },
     {
@@ -75,7 +75,7 @@
       "type": "File",
       "value-key": "[MASK]",
       "command-line-flag": "-m",
-      "description": "A pathlike object or string representing an existing file. Path/name volume mask.",
+      "description": "Path/name volume mask.",
       "optional": true
     },
     {
@@ -84,7 +84,7 @@
       "type": "File",
       "value-key": "[MAT_FILE]",
       "command-line-flag": "-affmat",
-      "description": "A pathlike object or string representing an existing file. Path/name of the mat-file describing the affine registration (e.g. fsl flirt) of the functional data to structural space (.mat file).",
+      "description": "Path/name of the mat-file describing the affine registration (e.g. fsl flirt) of the functional data to structural space (.mat file).",
       "optional": true
     },
     {
@@ -93,7 +93,7 @@
       "type": "File",
       "value-key": "[MELODIC_DIR]",
       "command-line-flag": "-meldir",
-      "description": "A pathlike object or string representing an existing directory. Path to melodic directory if melodic has already been run.",
+      "description": "file or string representing an existing directory. Path to melodic directory if melodic has already been run.",
       "optional": true
     },
     {
@@ -102,7 +102,7 @@
       "type": "File",
       "value-key": "[MOTION_PARAMETERS]",
       "command-line-flag": "-mc",
-      "description": "A pathlike object or string representing an existing file. Motion parameters file.",
+      "description": "Motion parameters file.",
       "optional": false
     },
     {
@@ -111,7 +111,7 @@
       "type": "File",
       "value-key": "[OUT_DIR]",
       "command-line-flag": "-o",
-      "description": "A pathlike object or string representing a directory. Output directory.",
+      "description": "file or string representing a directory. Output directory.",
       "optional": false,
       "default-value": "out"
     }
@@ -122,21 +122,21 @@
       "id": "aggr_denoised_file",
       "path-template": "out\\denoised_func_data_aggr.nii.gz",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. If generated: aggressively denoised volume."
+      "description": "If generated: aggressively denoised volume."
     },
     {
       "name": "Nonaggr denoised file",
       "id": "nonaggr_denoised_file",
       "path-template": "out\\denoised_func_data_nonaggr.nii.gz",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. If generated: non aggressively denoised volume."
+      "description": "If generated: non aggressively denoised volume."
     },
     {
       "name": "Out dir",
       "id": "out_dir_outfile",
       "path-template": "out",
       "optional": true,
-      "description": "A pathlike object or string representing an existing directory. Directory contains (in addition to the denoised files): melodic.ica + classified_motion_components + classification_overview + feature_scores + melodic_ic_mni)."
+      "description": "file or string representing an existing directory. Directory contains (in addition to the denoised files): melodic.ica + classified_motion_components + classification_overview + feature_scores + melodic_ic_mni)."
     }
   ],
   "groups": [

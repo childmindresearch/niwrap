@@ -30,7 +30,7 @@
       "value-key": "[COPE_FILE]",
       "command-line-flag": "--cope",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing a file. Cope volume.",
+      "description": "Cope volume.",
       "optional": true
     },
     {
@@ -70,7 +70,7 @@
       "value-key": "[IN_FILE]",
       "command-line-flag": "--in",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Input volume.",
+      "description": "Input volume.",
       "optional": false
     },
     {
@@ -111,7 +111,7 @@
       "value-key": "[OUT_INDEX_FILE]",
       "command-line-flag": "--oindex",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Output of cluster index (in size order).",
+      "description": "A boolean or file. Output of cluster index (in size order).",
       "optional": true
     },
     {
@@ -121,7 +121,7 @@
       "value-key": "[OUT_INDEX_FILE]",
       "command-line-flag": "--oindex",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Output of cluster index (in size order).",
+      "description": "A boolean or file. Output of cluster index (in size order).",
       "optional": true
     },
     {
@@ -131,7 +131,7 @@
       "value-key": "[OUT_LOCALMAX_TXT_FILE]",
       "command-line-flag": "--olmax",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Local maxima text file.",
+      "description": "A boolean or file. Local maxima text file.",
       "optional": true
     },
     {
@@ -141,7 +141,7 @@
       "value-key": "[OUT_LOCALMAX_TXT_FILE]",
       "command-line-flag": "--olmax",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Local maxima text file.",
+      "description": "A boolean or file. Local maxima text file.",
       "optional": true
     },
     {
@@ -151,7 +151,7 @@
       "value-key": "[OUT_LOCALMAX_VOL_FILE]",
       "command-line-flag": "--olmaxim",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Output of local maxima volume.",
+      "description": "A boolean or file. Output of local maxima volume.",
       "optional": true
     },
     {
@@ -161,7 +161,7 @@
       "value-key": "[OUT_LOCALMAX_VOL_FILE]",
       "command-line-flag": "--olmaxim",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Output of local maxima volume.",
+      "description": "A boolean or file. Output of local maxima volume.",
       "optional": true
     },
     {
@@ -171,7 +171,7 @@
       "value-key": "[OUT_MAX_FILE]",
       "command-line-flag": "--omax",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Filename for output of max image.",
+      "description": "A boolean or file. Filename for output of max image.",
       "optional": true
     },
     {
@@ -181,7 +181,7 @@
       "value-key": "[OUT_MAX_FILE]",
       "command-line-flag": "--omax",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Filename for output of max image.",
+      "description": "A boolean or file. Filename for output of max image.",
       "optional": true
     },
     {
@@ -191,7 +191,7 @@
       "value-key": "[OUT_MEAN_FILE]",
       "command-line-flag": "--omean",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Filename for output of mean image.",
+      "description": "A boolean or file. Filename for output of mean image.",
       "optional": true
     },
     {
@@ -201,7 +201,7 @@
       "value-key": "[OUT_MEAN_FILE]",
       "command-line-flag": "--omean",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Filename for output of mean image.",
+      "description": "A boolean or file. Filename for output of mean image.",
       "optional": true
     },
     {
@@ -211,7 +211,7 @@
       "value-key": "[OUT_PVAL_FILE]",
       "command-line-flag": "--opvals",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Filename for image output of log pvals.",
+      "description": "A boolean or file. Filename for image output of log pvals.",
       "optional": true
     },
     {
@@ -221,7 +221,7 @@
       "value-key": "[OUT_PVAL_FILE]",
       "command-line-flag": "--opvals",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Filename for image output of log pvals.",
+      "description": "A boolean or file. Filename for image output of log pvals.",
       "optional": true
     },
     {
@@ -231,7 +231,7 @@
       "value-key": "[OUT_SIZE_FILE]",
       "command-line-flag": "--osize",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Filename for output of size image.",
+      "description": "A boolean or file. Filename for output of size image.",
       "optional": true
     },
     {
@@ -241,7 +241,7 @@
       "value-key": "[OUT_SIZE_FILE]",
       "command-line-flag": "--osize",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Filename for output of size image.",
+      "description": "A boolean or file. Filename for output of size image.",
       "optional": true
     },
     {
@@ -251,7 +251,7 @@
       "value-key": "[OUT_THRESHOLD_FILE]",
       "command-line-flag": "--othresh",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Thresholded image.",
+      "description": "A boolean or file. Thresholded image.",
       "optional": true
     },
     {
@@ -261,7 +261,7 @@
       "value-key": "[OUT_THRESHOLD_FILE]",
       "command-line-flag": "--othresh",
       "command-line-flag-separator": "=",
-      "description": "A boolean or a pathlike object or string representing a file. Thresholded image.",
+      "description": "A boolean or file. Thresholded image.",
       "optional": true
     },
     {
@@ -301,7 +301,7 @@
       "value-key": "[STD_SPACE_FILE]",
       "command-line-flag": "--stdvol",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing a file. Filename for standard-space volume.",
+      "description": "Filename for standard-space volume.",
       "optional": true
     },
     {
@@ -342,7 +342,7 @@
       "value-key": "[WARPFIELD_FILE]",
       "command-line-flag": "--warpvol",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing a file. File containing warpfield.",
+      "description": "File containing warpfield.",
       "optional": true
     },
     {
@@ -352,7 +352,7 @@
       "value-key": "[XFM_FILE]",
       "command-line-flag": "--xfm",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing a file. Filename for linear: input->standard-space transform. non-linear: input->highres transform.",
+      "description": "Filename for linear: input->standard-space transform. non-linear: input->highres transform.",
       "optional": true
     }
   ],
@@ -362,56 +362,56 @@
       "id": "index_file",
       "path-template": "index_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output of cluster index (in size order)."
+      "description": "Output of cluster index (in size order)."
     },
     {
       "name": "Localmax txt file",
       "id": "localmax_txt_file",
       "path-template": "localmax_txt_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Local maxima text file."
+      "description": "Local maxima text file."
     },
     {
       "name": "Localmax vol file",
       "id": "localmax_vol_file",
       "path-template": "localmax_vol_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output of local maxima volume."
+      "description": "Output of local maxima volume."
     },
     {
       "name": "Max file",
       "id": "max_file",
       "path-template": "max_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Filename for output of max image."
+      "description": "Filename for output of max image."
     },
     {
       "name": "Mean file",
       "id": "mean_file",
       "path-template": "mean_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Filename for output of mean image."
+      "description": "Filename for output of mean image."
     },
     {
       "name": "Pval file",
       "id": "pval_file",
       "path-template": "pval_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Filename for image output of log pvals."
+      "description": "Filename for image output of log pvals."
     },
     {
       "name": "Size file",
       "id": "size_file",
       "path-template": "size_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Filename for output of size image."
+      "description": "Filename for output of size image."
     },
     {
       "name": "Threshold file",
       "id": "threshold_file",
       "path-template": "threshold_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Thresholded image."
+      "description": "Thresholded image."
     }
   ],
   "groups": [

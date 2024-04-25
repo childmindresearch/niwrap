@@ -44,7 +44,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input dataset.",
+      "description": "Input dataset.",
       "optional": false
     },
     {
@@ -53,7 +53,7 @@
       "type": "File",
       "value-key": "[MASK]",
       "command-line-flag": "-mask",
-      "description": "A pathlike object or string representing an existing file. Input mask.",
+      "description": "Input mask.",
       "optional": true
     },
     {
@@ -71,7 +71,7 @@
       "type": "File",
       "value-key": "[MASK_FILE]",
       "command-line-flag": "-mask",
-      "description": "A pathlike object or string representing an existing file. Input mask.",
+      "description": "Input mask.",
       "optional": true
     },
     {
@@ -117,7 +117,7 @@
       "type": "File",
       "value-key": "[ROISEL]",
       "command-line-flag": "-roisel",
-      "description": "A pathlike object or string representing an existing file. Only considers rois denoted by values found in the specified file. note that the order of the rois as specified in the file is not preserved. so an sel.1d of '2 8 20' produces the same output as '8 20 2'.",
+      "description": "Only considers rois denoted by values found in the specified file. note that the order of the rois as specified in the file is not preserved. so an sel.1d of '2 8 20' produces the same output as '8 20 2'.",
       "optional": true
     },
     {
@@ -145,7 +145,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output file.",
+      "description": "Output file.",
       "path-template": "[IN_FILE]_roistat.1D",
       "value-key": "[OUT_FILE]",
       "command-line-flag": ">"
@@ -155,7 +155,7 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output tab-separated values file."
+      "description": "Output tab-separated values file."
     }
   ],
   "groups": [

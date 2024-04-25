@@ -17,7 +17,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input file to 3ddetrend.",
+      "description": "Input file to 3ddetrend.",
       "optional": false
     },
     {
@@ -45,7 +45,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
+      "description": "Output image file name.",
       "path-template": "[IN_FILE]_detrend",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
@@ -55,7 +55,7 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output file."
+      "description": "Output file."
     }
   ],
   "tool-version": "1.0.0",

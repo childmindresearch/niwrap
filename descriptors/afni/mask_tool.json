@@ -84,7 +84,7 @@
       "list": true,
       "value-key": "[IN_FILE]",
       "command-line-flag": "-input",
-      "description": "A list of items which are a pathlike object or string representing an existing file. Input file or files to 3dmask_tool.",
+      "description": "Input file or files to 3dmask_tool.",
       "optional": false
     },
     {
@@ -140,7 +140,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
+      "description": "Output image file name.",
       "path-template": "[IN_FILE]_mask",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
@@ -150,7 +150,7 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Mask file."
+      "description": "Mask file."
     }
   ],
   "tool-version": "1.0.0",

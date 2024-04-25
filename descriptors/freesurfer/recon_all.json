@@ -10,7 +10,7 @@
       "type": "File",
       "value-key": "[FLAIR_FILE]",
       "command-line-flag": "-FLAIR",
-      "description": "A pathlike object or string representing an existing file. Convert flair image to orig directory.",
+      "description": "Convert flair image to orig directory.",
       "optional": true
     },
     {
@@ -20,7 +20,7 @@
       "list": true,
       "value-key": "[T1_FILES]",
       "command-line-flag": "-i",
-      "description": "A list of items which are a pathlike object or string representing an existing file. Name of t1 file to process.",
+      "description": "Name of t1 file to process.",
       "optional": true
     },
     {
@@ -29,7 +29,7 @@
       "type": "File",
       "value-key": "[T2_FILE]",
       "command-line-flag": "-T2",
-      "description": "A pathlike object or string representing an existing file. Convert t2 image to orig directory.",
+      "description": "Convert t2 image to orig directory.",
       "optional": true
     },
     {
@@ -82,7 +82,7 @@
       "type": "File",
       "value-key": "[EXPERT]",
       "command-line-flag": "-expert",
-      "description": "A pathlike object or string representing an existing file. Set parameters using expert file.",
+      "description": "Set parameters using expert file.",
       "optional": true
     },
     {
@@ -122,7 +122,7 @@
       "max-list-entries": 2,
       "value-key": "[HIPPOCAMPAL_SUBFIELDS_T2]",
       "command-line-flag": "-hippocampal-subfields-T2",
-      "description": "A tuple of the form: (a pathlike object or string representing an existing file, a string). Segment hippocampal subfields using t2 scan, identified by id (may be combined with hippocampal_subfields_t1).",
+      "description": "A tuple of the form: (file or string, a string). Segment hippocampal subfields using t2 scan, identified by id (may be combined with hippocampal_subfields_t1).",
       "optional": true
     },
     {
@@ -178,7 +178,7 @@
       "type": "File",
       "value-key": "[SUBJECTS_DIR]",
       "command-line-flag": "-sd",
-      "description": "A pathlike object or string representing an existing directory. Path to subjects directory.",
+      "description": "file or string representing an existing directory. Path to subjects directory.",
       "optional": false
     },
     {
@@ -224,7 +224,7 @@
       "id": "subjects_dir_outfile",
       "path-template": "file",
       "optional": false,
-      "description": "A pathlike object or string representing an existing directory. Freesurfer subjects directory."
+      "description": "file or string representing an existing directory. Freesurfer subjects directory."
     }
   ],
   "groups": [

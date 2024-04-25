@@ -26,7 +26,7 @@
       "name": "Background image",
       "type": "File",
       "value-key": "[BACKGROUND_IMAGE]",
-      "description": "A pathlike object or string representing an existing file. Image to use as background.",
+      "description": "Image to use as background.",
       "optional": false
     },
     {
@@ -54,7 +54,7 @@
       "name": "Out file",
       "type": "File",
       "value-key": "[OUT_FILE]",
-      "description": "A pathlike object or string representing a file. Combined image volume.",
+      "description": "Combined image volume.",
       "optional": true
     },
     {
@@ -89,7 +89,7 @@
       "name": "Stat image",
       "type": "File",
       "value-key": "[STAT_IMAGE]",
-      "description": "A pathlike object or string representing an existing file. Statistical image to overlay in color.",
+      "description": "Statistical image to overlay in color.",
       "optional": false
     },
     {
@@ -97,7 +97,7 @@
       "name": "Stat image2",
       "type": "File",
       "value-key": "[STAT_IMAGE2]",
-      "description": "A pathlike object or string representing an existing file. Second statistical image to overlay in color.",
+      "description": "Second statistical image to overlay in color.",
       "optional": true
     },
     {
@@ -147,7 +147,7 @@
       "id": "out_file_outfile",
       "path-template": "[OUT_FILE]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Combined image volume."
+      "description": "Combined image volume."
     }
   ],
   "groups": [

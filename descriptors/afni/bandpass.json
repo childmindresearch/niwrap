@@ -52,7 +52,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input file to 3dbandpass.",
+      "description": "Input file to 3dbandpass.",
       "optional": false
     },
     {
@@ -78,7 +78,7 @@
       "type": "File",
       "value-key": "[MASK]",
       "command-line-flag": "-mask",
-      "description": "A pathlike object or string representing an existing file. Mask file.",
+      "description": "Mask file.",
       "optional": true
     },
     {
@@ -134,7 +134,7 @@
       "type": "File",
       "value-key": "[ORTHOGONALIZE_DSET]",
       "command-line-flag": "-dsort",
-      "description": "A pathlike object or string representing an existing file. Orthogonalize each voxel to the corresponding voxel time series in dataset 'fset', which must have the same spatial and temporal grid structure as the main input dataset. at present, only one '-dsort' option is allowed.",
+      "description": "Orthogonalize each voxel to the corresponding voxel time series in dataset 'fset', which must have the same spatial and temporal grid structure as the main input dataset. at present, only one '-dsort' option is allowed.",
       "optional": true
     },
     {
@@ -144,7 +144,7 @@
       "list": true,
       "value-key": "[ORTHOGONALIZE_FILE]",
       "command-line-flag": "-ort",
-      "description": "A list of items which are a pathlike object or string representing an existing file. Also orthogonalize input to columns in f.1d. multiple '-ort' options are allowed.",
+      "description": "Also orthogonalize input to columns in f.1d. multiple '-ort' options are allowed.",
       "optional": true
     },
     {
@@ -171,7 +171,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output file from 3dbandpass.",
+      "description": "Output file from 3dbandpass.",
       "path-template": "[IN_FILE]_bp",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
@@ -181,7 +181,7 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output file."
+      "description": "Output file."
     }
   ],
   "tool-version": "1.0.0",

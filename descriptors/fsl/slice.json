@@ -17,7 +17,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input filename.",
+      "description": "Input filename.",
       "optional": false
     },
     {
@@ -44,7 +44,7 @@
       "id": "out_files",
       "path-template": "out_files",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing an existing file. No description provided.",
+      "description": "No description provided.",
       "list": true
     }
   ],

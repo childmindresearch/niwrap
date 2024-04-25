@@ -166,7 +166,7 @@
       "type": "File",
       "value-key": "[FIELDMAP]",
       "command-line-flag": "-fieldmap",
-      "description": "A pathlike object or string representing a file. Fieldmap image in rads/s - must be already registered to the reference image.",
+      "description": "Fieldmap image in rads/s - must be already registered to the reference image.",
       "optional": true
     },
     {
@@ -175,7 +175,7 @@
       "type": "File",
       "value-key": "[FIELDMAPMASK]",
       "command-line-flag": "-fieldmapmask",
-      "description": "A pathlike object or string representing a file. Mask for fieldmap image.",
+      "description": "Mask for fieldmap image.",
       "optional": true
     },
     {
@@ -204,7 +204,7 @@
       "type": "File",
       "value-key": "[IN_FILE]",
       "command-line-flag": "-in",
-      "description": "A pathlike object or string representing an existing file. Input file.",
+      "description": "Input file.",
       "optional": false
     },
     {
@@ -213,7 +213,7 @@
       "type": "File",
       "value-key": "[IN_MATRIX_FILE]",
       "command-line-flag": "-init",
-      "description": "A pathlike object or string representing a file. Input 4x4 affine matrix.",
+      "description": "Input 4x4 affine matrix.",
       "optional": true
     },
     {
@@ -222,7 +222,7 @@
       "type": "File",
       "value-key": "[IN_WEIGHT]",
       "command-line-flag": "-inweight",
-      "description": "A pathlike object or string representing an existing file. File for input weighting volume.",
+      "description": "File for input weighting volume.",
       "optional": true
     },
     {
@@ -307,7 +307,7 @@
       "type": "File",
       "value-key": "[REF_WEIGHT]",
       "command-line-flag": "-refweight",
-      "description": "A pathlike object or string representing an existing file. File for reference weighting volume.",
+      "description": "File for reference weighting volume.",
       "optional": true
     },
     {
@@ -316,7 +316,7 @@
       "type": "File",
       "value-key": "[REFERENCE]",
       "command-line-flag": "-ref",
-      "description": "A pathlike object or string representing an existing file. Reference file.",
+      "description": "Reference file.",
       "optional": false
     },
     {
@@ -334,7 +334,7 @@
       "type": "File",
       "value-key": "[SCHEDULE]",
       "command-line-flag": "-schedule",
-      "description": "A pathlike object or string representing an existing file. Replaces default schedule.",
+      "description": "Replaces default schedule.",
       "optional": true
     },
     {
@@ -423,7 +423,7 @@
       "type": "File",
       "value-key": "[WM_SEG]",
       "command-line-flag": "-wmseg",
-      "description": "A pathlike object or string representing a file. White matter segmentation volume needed by bbr cost function.",
+      "description": "White matter segmentation volume needed by bbr cost function.",
       "optional": true
     },
     {
@@ -432,7 +432,7 @@
       "type": "File",
       "value-key": "[WMCOORDS]",
       "command-line-flag": "-wmcoords",
-      "description": "A pathlike object or string representing a file. White matter boundary coordinates for bbr cost function.",
+      "description": "White matter boundary coordinates for bbr cost function.",
       "optional": true
     },
     {
@@ -441,7 +441,7 @@
       "type": "File",
       "value-key": "[WMNORMS]",
       "command-line-flag": "-wmnorms",
-      "description": "A pathlike object or string representing a file. White matter boundary normals for bbr cost function.",
+      "description": "White matter boundary normals for bbr cost function.",
       "optional": true
     }
   ],
@@ -450,7 +450,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Registered output file.",
+      "description": "Registered output file.",
       "path-template": "[IN_FILE]_flirt.nii",
       "path-template-stripped-extensions": [".nii.gz", ".nii"],
       "value-key": "[OUT_FILE]",
@@ -460,7 +460,7 @@
       "name": "Out matrix file",
       "id": "out_matrix_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output affine matrix in 4x4 asciii format.",
+      "description": "Output affine matrix in 4x4 asciii format.",
       "path-template": "[IN_FILE]_flirt.mat",
       "path-template-stripped-extensions": [".nii.gz", ".nii"],
       "value-key": "[OUT_MATRIX_FILE]",

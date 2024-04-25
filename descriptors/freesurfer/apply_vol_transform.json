@@ -20,7 +20,7 @@
       "type": "File",
       "value-key": "[FSL_REG_FILE]",
       "command-line-flag": "--fsl",
-      "description": "A pathlike object or string representing an existing file. Fslras-to-fslras matrix (fsl format).",
+      "description": "Fslras-to-fslras matrix (fsl format).",
       "optional": true
     },
     {
@@ -58,7 +58,7 @@
       "type": "File",
       "value-key": "[LTA_FILE]",
       "command-line-flag": "--lta",
-      "description": "A pathlike object or string representing an existing file. Linear transform array file.",
+      "description": "Linear transform array file.",
       "optional": true
     },
     {
@@ -67,7 +67,7 @@
       "type": "File",
       "value-key": "[LTA_INV_FILE]",
       "command-line-flag": "--lta-inv",
-      "description": "A pathlike object or string representing an existing file. Lta, invert.",
+      "description": "Lta, invert.",
       "optional": true
     },
     {
@@ -76,7 +76,7 @@
       "type": "File",
       "value-key": "[M3Z_FILE]",
       "command-line-flag": "--m3z",
-      "description": "A pathlike object or string representing a file. This is the morph to be applied to the volume. unless the morph is in mri/transforms (eg.: for talairach.m3z computed by reconall), you will need to specify the full path to this morph and use the --nodefm3zpath flag.",
+      "description": "This is the morph to be applied to the volume. unless the morph is in mri/transforms (eg.: for talairach.m3z computed by reconall), you will need to specify the full path to this morph and use the --nodefm3zpath flag.",
       "optional": true
     },
     {
@@ -113,7 +113,7 @@
       "type": "File",
       "value-key": "[REG_FILE]",
       "command-line-flag": "--reg",
-      "description": "A pathlike object or string representing an existing file. Tkras-to-tkras matrix   (tkregister2 format).",
+      "description": "Tkras-to-tkras matrix   (tkregister2 format).",
       "optional": true
     },
     {
@@ -131,7 +131,7 @@
       "type": "File",
       "value-key": "[SOURCE_FILE]",
       "command-line-flag": "--mov",
-      "description": "A pathlike object or string representing an existing file. Input volume you wish to transform.",
+      "description": "Input volume you wish to transform.",
       "optional": true
     },
     {
@@ -148,7 +148,7 @@
       "name": "Subjects dir",
       "type": "File",
       "value-key": "[SUBJECTS_DIR]",
-      "description": "A pathlike object or string representing an existing directory. Subjects directory.",
+      "description": "file or string representing an existing directory. Subjects directory.",
       "optional": true
     },
     {
@@ -175,7 +175,7 @@
       "type": "File",
       "value-key": "[TARGET_FILE]",
       "command-line-flag": "--targ",
-      "description": "A pathlike object or string representing an existing file. Output template volume.",
+      "description": "Output template volume.",
       "optional": true
     },
     {
@@ -184,7 +184,7 @@
       "type": "File",
       "value-key": "[TRANSFORMED_FILE]",
       "command-line-flag": "--o",
-      "description": "A pathlike object or string representing a file. Output volume.",
+      "description": "Output volume.",
       "optional": true
     },
     {
@@ -193,7 +193,7 @@
       "type": "File",
       "value-key": "[XFM_REG_FILE]",
       "command-line-flag": "--xfm",
-      "description": "A pathlike object or string representing an existing file. Scannerras-to-scannerras matrix (mni format).",
+      "description": "Scannerras-to-scannerras matrix (mni format).",
       "optional": true
     }
   ],
@@ -203,7 +203,7 @@
       "id": "transformed_file_outfile",
       "path-template": "[TRANSFORMED_FILE].nii.gz",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Path to output file if used normally."
+      "description": "Path to output file if used normally."
     }
   ],
   "groups": [

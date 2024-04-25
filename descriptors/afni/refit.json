@@ -21,7 +21,7 @@
       "max-list-entries": 2,
       "value-key": "[ATRCOPY]",
       "command-line-flag": "-atrcopy",
-      "description": "A tuple of the form: (a pathlike object or string representing an existing file, a string). Copy afni header attribute from the given file into the header of the dataset(s) being modified. for more information on afni header attributes, see documentation file readme.attributes. more than one '-atrcopy' option can be used. for afni advanced users only. do not use -atrcopy or -atrstring with other modification options. see also -copyaux.",
+      "description": "A tuple of the form: (file, string). Copy afni header attribute from the given file into the header of the dataset(s) being modified. for more information on afni header attributes, see documentation file readme.attributes. more than one '-atrcopy' option can be used. for afni advanced users only. do not use -atrcopy or -atrstring with other modification options. see also -copyaux.",
       "optional": true
     },
     {
@@ -75,7 +75,7 @@
       "type": "File",
       "value-key": "[DUPORIGIN_FILE]",
       "command-line-flag": "-duporigin",
-      "description": "A pathlike object or string representing an existing file. Copies the xorigin, yorigin, and zorigin values from the header of the given dataset.",
+      "description": "Copies the xorigin, yorigin, and zorigin values from the header of the given dataset.",
       "optional": true
     },
     {
@@ -83,7 +83,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input file to 3drefit.",
+      "description": "Input file to 3drefit.",
       "optional": false
     },
     {
@@ -184,7 +184,7 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output file."
+      "description": "Output file."
     }
   ],
   "tool-version": "1.0.0",

@@ -27,7 +27,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input file to 3ddegreecentrality.",
+      "description": "Input file to 3ddegreecentrality.",
       "optional": false
     },
     {
@@ -36,7 +36,7 @@
       "type": "File",
       "value-key": "[MASK]",
       "command-line-flag": "-mask",
-      "description": "A pathlike object or string representing an existing file. Mask file to mask input data.",
+      "description": "Mask file to mask input data.",
       "optional": true
     },
     {
@@ -82,7 +82,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
+      "description": "Output image file name.",
       "path-template": "[IN_FILE]",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
@@ -92,7 +92,7 @@
       "id": "oned_file_outfile",
       "path-template": "[ONED_FILE]",
       "optional": true,
-      "description": "A pathlike object or string representing a file. The text output of the similarity matrix computed after thresholding with one-dimensional and ijk voxel indices, correlations, image extents, and affine matrix."
+      "description": "The text output of the similarity matrix computed after thresholding with one-dimensional and ijk voxel indices, correlations, image extents, and affine matrix."
     }
   ],
   "tool-version": "1.0.0",

@@ -27,7 +27,7 @@
       "type": "File",
       "value-key": "[BLURMASTER]",
       "command-line-flag": "-blurmaster",
-      "description": "A pathlike object or string representing an existing file. The dataset whose smoothness controls the process.",
+      "description": "The dataset whose smoothness controls the process.",
       "optional": true
     },
     {
@@ -54,7 +54,7 @@
       "type": "File",
       "value-key": "[IN_FILE]",
       "command-line-flag": "-input",
-      "description": "A pathlike object or string representing an existing file. The dataset that will be smoothed.",
+      "description": "The dataset that will be smoothed.",
       "optional": false
     },
     {
@@ -63,7 +63,7 @@
       "type": "File",
       "value-key": "[MASK]",
       "command-line-flag": "-mask",
-      "description": "A pathlike object or string representing an existing file. Mask dataset, if desired. voxels not in mask will be set to zero in output.",
+      "description": "Mask dataset, if desired. voxels not in mask will be set to zero in output.",
       "optional": true
     },
     {
@@ -91,7 +91,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
+      "description": "Output image file name.",
       "path-template": "[IN_FILE]_afni",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
@@ -101,7 +101,7 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output file."
+      "description": "Output file."
     }
   ],
   "tool-version": "1.0.0",

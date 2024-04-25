@@ -143,7 +143,7 @@
       "name": "Xset",
       "type": "File",
       "value-key": "[XSET]",
-      "description": "A pathlike object or string representing an existing file. Input xset.",
+      "description": "Input xset.",
       "optional": false
     },
     {
@@ -151,7 +151,7 @@
       "name": "Yset",
       "type": "File",
       "value-key": "[YSET]",
-      "description": "A pathlike object or string representing an existing file. Input yset.",
+      "description": "Input yset.",
       "optional": false
     }
   ],
@@ -176,7 +176,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
+      "description": "Output image file name.",
       "path-template": "[PREFIX]"
     }
   ],

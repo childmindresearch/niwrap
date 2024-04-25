@@ -9,7 +9,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input file to 3ddespike.",
+      "description": "Input file to 3ddespike.",
       "optional": false
     }
   ],
@@ -21,7 +21,7 @@
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output file."
+      "description": "Output file."
     }
   ],
   "tool-version": "1.0.0",

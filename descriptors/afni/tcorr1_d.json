@@ -73,7 +73,7 @@
       "type": "File",
       "value-key": "[XSET]",
       "command-line-flag": "",
-      "description": "A pathlike object or string representing an existing file. 3d+time dataset input.",
+      "description": "3d+time dataset input.",
       "optional": false
     },
     {
@@ -82,7 +82,7 @@
       "type": "File",
       "value-key": "[Y_1D]",
       "command-line-flag": "",
-      "description": "A pathlike object or string representing an existing file. 1d time series file input.",
+      "description": "1d time series file input.",
       "optional": false
     }
   ],
@@ -91,7 +91,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output filename prefix.",
+      "description": "Output filename prefix.",
       "path-template": "[XSET]_correlation.nii.gz",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
@@ -101,7 +101,7 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output file containing correlations."
+      "description": "Output file containing correlations."
     }
   ],
   "groups": [

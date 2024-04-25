@@ -26,7 +26,7 @@
       "name": "In magnitude",
       "type": "File",
       "value-key": "[IN_MAGNITUDE]",
-      "description": "A pathlike object or string representing an existing file. Magnitude difference map, brain extracted.",
+      "description": "Magnitude difference map, brain extracted.",
       "optional": false
     },
     {
@@ -34,7 +34,7 @@
       "name": "In phase",
       "type": "File",
       "value-key": "[IN_PHASE]",
-      "description": "A pathlike object or string representing an existing file. Phase difference map, in siemens format range from 0-4096 or 0-8192).",
+      "description": "Phase difference map, in siemens format range from 0-4096 or 0-8192).",
       "optional": false
     },
     {
@@ -52,7 +52,7 @@
       "name": "Out fieldmap",
       "type": "File",
       "value-key": "[OUT_FIELDMAP]",
-      "description": "A pathlike object or string representing a file. Output name for prepared fieldmap.",
+      "description": "Output name for prepared fieldmap.",
       "optional": true
     },
     {
@@ -80,7 +80,7 @@
       "id": "out_fieldmap_outfile",
       "path-template": "[OUT_FIELDMAP]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output name for prepared fieldmap."
+      "description": "Output name for prepared fieldmap."
     }
   ],
   "tool-version": "1.0.0",

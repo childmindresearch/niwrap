@@ -46,7 +46,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input file to 3dautomask.",
+      "description": "Input file to 3dautomask.",
       "optional": false
     },
     {
@@ -74,7 +74,7 @@
       "name": "Brain file",
       "id": "brain_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output file from 3dautomask.",
+      "description": "Output file from 3dautomask.",
       "path-template": "[IN_FILE]_masked",
       "value-key": "[BRAIN_FILE]",
       "command-line-flag": "-apply_prefix"
@@ -83,7 +83,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
+      "description": "Output image file name.",
       "path-template": "[IN_FILE]_mask",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
@@ -93,14 +93,14 @@
       "id": "brain_file",
       "path-template": "brain_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Brain file (skull stripped)."
+      "description": "Brain file (skull stripped)."
     },
     {
       "name": "Out file",
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Mask file."
+      "description": "Mask file."
     }
   ],
   "tool-version": "1.0.0",

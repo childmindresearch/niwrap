@@ -46,7 +46,7 @@
       "type": "File",
       "value-key": "[IN_FILE]",
       "command-line-flag": "-input",
-      "description": "A pathlike object or string representing an existing file. Input file to 3dunifize.",
+      "description": "Input file to 3dunifize.",
       "optional": false
     },
     {
@@ -104,7 +104,7 @@
       "type": "File",
       "value-key": "[SCALE_FILE]",
       "command-line-flag": "-ssave",
-      "description": "A pathlike object or string representing a file. Output file name to save the scale factor used at each voxel .",
+      "description": "Output file name to save the scale factor used at each voxel .",
       "optional": true
     },
     {
@@ -140,7 +140,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
+      "description": "Output image file name.",
       "path-template": "[IN_FILE]_unifized",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
@@ -150,14 +150,14 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Unifized file."
+      "description": "Unifized file."
     },
     {
       "name": "Scale file",
       "id": "scale_file_outfile",
       "path-template": "[SCALE_FILE]",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Scale factor file."
+      "description": "Scale factor file."
     }
   ],
   "groups": [

@@ -39,7 +39,7 @@
       "value-key": "[FIELD_FILE]",
       "command-line-flag": "--warp",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. File containing warp field.",
+      "description": "File containing warp field.",
       "optional": true
     },
     {
@@ -49,7 +49,7 @@
       "value-key": "[IN_FILE]",
       "command-line-flag": "--in",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Image to be warped.",
+      "description": "Image to be warped.",
       "optional": false
     },
     {
@@ -70,7 +70,7 @@
       "value-key": "[MASK_FILE]",
       "command-line-flag": "--mask",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Filename for mask image (in reference space).",
+      "description": "Filename for mask image (in reference space).",
       "optional": true
     },
     {
@@ -80,7 +80,7 @@
       "value-key": "[OUT_FILE]",
       "command-line-flag": "--out",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing a file. Output filename.",
+      "description": "Output filename.",
       "optional": true
     },
     {
@@ -99,7 +99,7 @@
       "value-key": "[POSTMAT]",
       "command-line-flag": "--postmat",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Filename for post-transform (affine matrix).",
+      "description": "Filename for post-transform (affine matrix).",
       "optional": true
     },
     {
@@ -109,7 +109,7 @@
       "value-key": "[PREMAT]",
       "command-line-flag": "--premat",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Filename for pre-transform (affine matrix).",
+      "description": "Filename for pre-transform (affine matrix).",
       "optional": true
     },
     {
@@ -119,7 +119,7 @@
       "value-key": "[REF_FILE]",
       "command-line-flag": "--ref",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Reference image.",
+      "description": "Reference image.",
       "optional": false
     },
     {
@@ -169,7 +169,7 @@
       "id": "out_file_outfile",
       "path-template": "[OUT_FILE]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Warped output file."
+      "description": "Warped output file."
     }
   ],
   "groups": [

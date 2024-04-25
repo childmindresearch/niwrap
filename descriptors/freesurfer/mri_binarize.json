@@ -48,7 +48,7 @@
       "type": "File",
       "value-key": "[BINARY_FILE]",
       "command-line-flag": "--o",
-      "description": "A pathlike object or string representing a file. Binary output volume.",
+      "description": "Binary output volume.",
       "optional": false
     },
     {
@@ -57,7 +57,7 @@
       "type": "Flag",
       "value-key": "[COUNT_FILE]",
       "command-line-flag": "--count",
-      "description": "A boolean or a pathlike object or string representing a file. Save number of hits in ascii file (hits, ntotvox, pct).",
+      "description": "A boolean or file. Save number of hits in ascii file (hits, ntotvox, pct).",
       "optional": true
     },
     {
@@ -66,7 +66,7 @@
       "type": "File",
       "value-key": "[COUNT_FILE]",
       "command-line-flag": "--count",
-      "description": "A boolean or a pathlike object or string representing a file. Save number of hits in ascii file (hits, ntotvox, pct).",
+      "description": "A boolean or file. Save number of hits in ascii file (hits, ntotvox, pct).",
       "optional": true
     },
     {
@@ -115,7 +115,7 @@
       "type": "File",
       "value-key": "[IN_FILE]",
       "command-line-flag": "--i",
-      "description": "A pathlike object or string representing an existing file. Input volume.",
+      "description": "Input volume.",
       "optional": false
     },
     {
@@ -133,7 +133,7 @@
       "type": "File",
       "value-key": "[MASK_FILE]",
       "command-line-flag": "--mask maskvol",
-      "description": "A pathlike object or string representing an existing file. Must be within mask.",
+      "description": "Must be within mask.",
       "optional": true
     },
     {
@@ -171,7 +171,7 @@
       "type": "File",
       "value-key": "[MERGE_FILE]",
       "command-line-flag": "--merge",
-      "description": "A pathlike object or string representing an existing file. Merge with mergevol.",
+      "description": "Merge with mergevol.",
       "optional": true
     },
     {
@@ -215,7 +215,7 @@
       "name": "Subjects dir",
       "type": "File",
       "value-key": "[SUBJECTS_DIR]",
-      "description": "A pathlike object or string representing an existing directory. Subjects directory.",
+      "description": "file or string representing an existing directory. Subjects directory.",
       "optional": true
     },
     {

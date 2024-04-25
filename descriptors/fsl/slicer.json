@@ -28,7 +28,7 @@
       "type": "File",
       "value-key": "[COLOUR_MAP]",
       "command-line-flag": "-l",
-      "description": "A pathlike object or string representing an existing file. Use different colour map from that stored in nifti header.",
+      "description": "Use different colour map from that stored in nifti header.",
       "optional": true
     },
     {
@@ -45,7 +45,7 @@
       "name": "Image edges",
       "type": "File",
       "value-key": "[IMAGE_EDGES]",
-      "description": "A pathlike object or string representing an existing file. Volume to display edge overlay for (useful for checking registration.",
+      "description": "Volume to display edge overlay for (useful for checking registration.",
       "optional": true
     },
     {
@@ -62,7 +62,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input volume.",
+      "description": "Input volume.",
       "optional": false
     },
     {
@@ -110,7 +110,7 @@
       "name": "Out file",
       "type": "File",
       "value-key": "[OUT_FILE]",
-      "description": "A pathlike object or string representing a file. Picture to write.",
+      "description": "Picture to write.",
       "optional": true
     },
     {
@@ -188,7 +188,7 @@
       "id": "out_file_outfile",
       "path-template": "[OUT_FILE]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Picture to write."
+      "description": "Picture to write."
     }
   ],
   "groups": [

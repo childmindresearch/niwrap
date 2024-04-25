@@ -64,7 +64,7 @@
       "list": true,
       "value-key": "[INTENSITY_IMAGES]",
       "command-line-flag": "--intensity-image",
-      "description": "A list of items which are a pathlike object or string representing an existing file. No description provided.",
+      "description": "No description provided.",
       "optional": false
     },
     {
@@ -92,7 +92,7 @@
       "type": "File",
       "value-key": "[MASK_IMAGE]",
       "command-line-flag": "--mask-image",
-      "description": "A pathlike object or string representing an existing file. No description provided.",
+      "description": "No description provided.",
       "optional": false
     },
     {
@@ -157,7 +157,7 @@
       "name": "Out classified image name",
       "type": "File",
       "value-key": "[OUT_CLASSIFIED_IMAGE_NAME]",
-      "description": "A pathlike object or string representing a file. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -182,7 +182,7 @@
       "name": "Prior image",
       "type": "File",
       "value-key": "[PRIOR_IMAGE]",
-      "description": "A pathlike object or string representing an existing file or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
+      "description": "file or string or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
       "optional": true
     },
     {
@@ -190,7 +190,7 @@
       "name": "Prior image",
       "type": "String",
       "value-key": "[PRIOR_IMAGE]",
-      "description": "A pathlike object or string representing an existing file or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
+      "description": "file or string or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
       "optional": true
     },
     {
@@ -246,14 +246,14 @@
       "id": "classified_image",
       "path-template": "classified_image",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. No description provided."
+      "description": "No description provided."
     },
     {
       "name": "Posteriors",
       "id": "posteriors",
       "path-template": "posteriors",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing a file. No description provided.",
+      "description": "A list of items which are file. No description provided.",
       "list": true
     }
   ],

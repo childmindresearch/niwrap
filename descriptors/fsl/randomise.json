@@ -55,7 +55,7 @@
       "type": "File",
       "value-key": "[DESIGN_MAT]",
       "command-line-flag": "-d",
-      "description": "A pathlike object or string representing an existing file. Design matrix file.",
+      "description": "Design matrix file.",
       "optional": true
     },
     {
@@ -91,7 +91,7 @@
       "type": "File",
       "value-key": "[FCON]",
       "command-line-flag": "-f",
-      "description": "A pathlike object or string representing an existing file. F contrasts file.",
+      "description": "F contrasts file.",
       "optional": true
     },
     {
@@ -100,7 +100,7 @@
       "type": "File",
       "value-key": "[IN_FILE]",
       "command-line-flag": "-i",
-      "description": "A pathlike object or string representing an existing file. 4d input file.",
+      "description": "4d input file.",
       "optional": false
     },
     {
@@ -109,7 +109,7 @@
       "type": "File",
       "value-key": "[MASK]",
       "command-line-flag": "-m",
-      "description": "A pathlike object or string representing an existing file. Mask image.",
+      "description": "Mask image.",
       "optional": true
     },
     {
@@ -193,7 +193,7 @@
       "type": "File",
       "value-key": "[TCON]",
       "command-line-flag": "-t",
-      "description": "A pathlike object or string representing an existing file. T contrasts file.",
+      "description": "T contrasts file.",
       "optional": true
     },
     {
@@ -269,7 +269,7 @@
       "type": "File",
       "value-key": "[X_BLOCK_LABELS]",
       "command-line-flag": "-e",
-      "description": "A pathlike object or string representing an existing file. Exchangeability block labels file.",
+      "description": "Exchangeability block labels file.",
       "optional": true
     }
   ],
@@ -279,7 +279,7 @@
       "id": "f_corrected_p_files",
       "path-template": "f_corrected_p_files",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing an existing file. F contrast fwe (family-wise error) corrected p values files.",
+      "description": "F contrast fwe (family-wise error) corrected p values files.",
       "list": true
     },
     {
@@ -287,7 +287,7 @@
       "id": "f_p_files",
       "path-template": "f_p_files",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing an existing file. F contrast uncorrected p values files.",
+      "description": "F contrast uncorrected p values files.",
       "list": true
     },
     {
@@ -295,7 +295,7 @@
       "id": "fstat_files",
       "path-template": "fstat_files",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing an existing file. F contrast raw statistic.",
+      "description": "F contrast raw statistic.",
       "list": true
     },
     {
@@ -303,7 +303,7 @@
       "id": "t_corrected_p_files",
       "path-template": "t_corrected_p_files",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing an existing file. T contrast fwe (family-wise error) corrected p values files.",
+      "description": "T contrast fwe (family-wise error) corrected p values files.",
       "list": true
     },
     {
@@ -311,7 +311,7 @@
       "id": "t_p_files",
       "path-template": "t_p_files",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing an existing file. F contrast uncorrected p values files.",
+      "description": "F contrast uncorrected p values files.",
       "list": true
     },
     {
@@ -319,7 +319,7 @@
       "id": "tstat_files",
       "path-template": "tstat_files",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing an existing file. T contrast raw statistic.",
+      "description": "T contrast raw statistic.",
       "list": true
     }
   ],

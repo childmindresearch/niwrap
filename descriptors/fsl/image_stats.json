@@ -17,7 +17,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input file to generate stats of.",
+      "description": "Input file to generate stats of.",
       "optional": false
     },
     {
@@ -26,7 +26,7 @@
       "type": "File",
       "value-key": "[INDEX_MASK_FILE]",
       "command-line-flag": "-K",
-      "description": "A pathlike object or string representing an existing file. Generate separate n submasks from indexmask, for indexvalues 1..n where n is the maximum index value in indexmask, and generate statistics for each submask.",
+      "description": "Generate separate n submasks from indexmask, for indexvalues 1..n where n is the maximum index value in indexmask, and generate statistics for each submask.",
       "optional": true
     },
     {
@@ -34,7 +34,7 @@
       "name": "Mask file",
       "type": "File",
       "value-key": "[MASK_FILE]",
-      "description": "A pathlike object or string representing an existing file. Mask file used for option -k %s.",
+      "description": "Mask file used for option -k %s.",
       "optional": true
     },
     {

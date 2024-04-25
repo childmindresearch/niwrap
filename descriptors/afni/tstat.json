@@ -17,7 +17,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input file to 3dtstat.",
+      "description": "Input file to 3dtstat.",
       "optional": false
     },
     {
@@ -26,7 +26,7 @@
       "type": "File",
       "value-key": "[MASK]",
       "command-line-flag": "-mask",
-      "description": "A pathlike object or string representing an existing file. Mask file.",
+      "description": "Mask file.",
       "optional": true
     },
     {
@@ -62,7 +62,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Output image file name.",
+      "description": "Output image file name.",
       "path-template": "[IN_FILE]_tstat",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
@@ -72,7 +72,7 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output file."
+      "description": "Output file."
     }
   ],
   "tool-version": "1.0.0",
