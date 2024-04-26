@@ -1,39 +1,50 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "add-to-spec-file",
-  "author": "Washington University School of Medicin",
+  "tool-version": "1.5.0",
+  "author": "Washington University School of Medicine",
   "command-line": "wb_command -add-to-spec-file [SPECFILE] [STRUCTURE] [FILENAME]",
-  "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "type": "docker"
-  },
-  "description": "ADD A FILE TO A SPECIFICATION FILE.\n\nThe resulting spec file overwrites the existing spec file.  If the spec file doesn't exist, it is created with default metadata.  The structure argument must be one of the following:\n\nCORTEX_LEFT\nCORTEX_RIGHT\nCEREBELLUM\nACCUMBENS_LEFT\nACCUMBENS_RIGHT\nALL_GREY_MATTER\nALL_WHITE_MATTER\nAMYGDALA_LEFT\nAMYGDALA_RIGHT\nBRAIN_STEM\nCAUDATE_LEFT\nCAUDATE_RIGHT\nCEREBELLAR_WHITE_MATTER_LEFT\nCEREBELLAR_WHITE_MATTER_RIGHT\nCEREBELLUM_LEFT\nCEREBELLUM_RIGHT\nCEREBRAL_WHITE_MATTER_LEFT\nCEREBRAL_WHITE_MATTER_RIGHT\nCORTEX\nDIENCEPHALON_VENTRAL_LEFT\nDIENCEPHALON_VENTRAL_RIGHT\nHIPPOCAMPUS_LEFT\nHIPPOCAMPUS_RIGHT\nINVALID\nOTHER\nOTHER_GREY_MATTER\nOTHER_WHITE_MATTER\nPALLIDUM_LEFT\nPALLIDUM_RIGHT\nPUTAMEN_LEFT\nPUTAMEN_RIGHT\nTHALAMUS_LEFT\nTHALAMUS_RIGHT\n",
+  "description": "Add a file to a specification file.",
+  "descriptor-url": "https://github.com/childmindresearch/nopype/blob/main/descriptors/workbench/addToSpecFile.json",
   "schema-version": "0.5",
-  "tags": {},
+  "shell": "/bin/bash",
+  "container-image": {
+    "type": "docker",
+    "image": "ghcr.io/fcp-indi/c-pac/connectome-workbench:1.5.0.neurodebian-jammy"
+  },
   "inputs": [
     {
       "id": "specfile",
       "name": "specfile",
-      "description": "the specification file to add to",
-      "type": "String",
-      "optional": false,
-      "value-key": "[SPECFILE]"
+      "type": "File",
+      "value-key": "[SPECFILE]",
+      "description": "A file with extension \".spec\". The specification file to add to.\nThe resulting spec file overwrites the existing spec file.\nIf the spec file doesn't exist, it is created with default metadata.",
+      "optional": false
     },
     {
       "id": "structure",
       "name": "structure",
       "description": "the structure of the data file",
       "type": "String",
+      "value-key": "[STRUCTURE]",
       "optional": false,
-      "value-key": "[STRUCTURE]"
+      "value-choices": ["CORTEX_LEFT", "CORTEX_RIGHT", "CEREBELLUM", "ACCUMBENS_LEFT", "ACCUMBENS_RIGHT", "ALL_GREY_MATTER", "ALL_WHITE_MATTER", "AMYGDALA_LEFT", "AMYGDALA_RIGHT", "BRAIN_STEM", "CAUDATE_LEFT", "CAUDATE_RIGHT", "CEREBELLAR_WHITE_MATTER_LEFT", "CEREBELLAR_WHITE_MATTER_RIGHT", "CEREBELLUM_LEFT", "CEREBELLUM_RIGHT", "CEREBRAL_WHITE_MATTER_LEFT", "CEREBRAL_WHITE_MATTER_RIGHT", "CORTEX", "DIENCEPHALON_VENTRAL_LEFT", "DIENCEPHALON_VENTRAL_RIGHT", "HIPPOCAMPUS_LEFT", "HIPPOCAMPUS_RIGHT", "INVALID", "OTHER", "OTHER_GREY_MATTER", "OTHER_WHITE_MATTER", "PALLIDUM_LEFT", "PALLIDUM_RIGHT", "PUTAMEN_LEFT", "PUTAMEN_RIGHT", "THALAMUS_LEFT", "THALAMUS_RIGHT"]
     },
     {
       "id": "filename",
       "name": "filename",
-      "description": "the path to the file",
-      "type": "String",
-      "optional": false,
-      "value-key": "[FILENAME]"
+      "type": "File",
+      "value-key": "[FILENAME]",
+      "description": "A File. The path to the file.",
+      "optional": false
+    }
+  ],
+  "output-files": [
+    {
+      "id": "specfile_out",
+      "name": "Specfile",
+      "path-template": "[SPECFILE]",
+      "description": "A file with extension \".spec\".  The specification file to add to.\nThe resulting spec file overwrites the existing spec file.\nIf the spec file doesn't exist, it is created with default metadata.",
+      "optional": false
     }
   ]
 }
