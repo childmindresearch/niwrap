@@ -1,0 +1,57 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-label-modify-keys",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-label-modify-keys [VOLUME-IN] [REMAP-FILE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "CHANGE KEY VALUES IN A VOLUME LABEL FILE.\n\n<remap-file> should have lines of the form 'oldkey newkey', like so:\n\n3 5\n5 8\n8 2\n\nThis would change the current label with key '3' to use the key '5' instead, 5 would use 8, and 8 would use 2.  Any collision in key values results in the label that was not specified in the remap file getting remapped to an otherwise unused key.  Remapping more than one key to the same new key, or the same key to more than one new key, results in an error.  This will not change the appearance of the file when displayed, as it will change the key values in the data at the same time.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume-in",
+      "name": "volume-in",
+      "description": "the input volume label file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME-IN]"
+    },
+    {
+      "id": "remap-file",
+      "name": "remap-file",
+      "description": "text file with old and new key values",
+      "type": "String",
+      "optional": false,
+      "value-key": "[REMAP-FILE]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "the output volume label file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_subvolume_subvolume",
+      "name": "opt_subvolume_subvolume",
+      "command-line-flag": "-subvolume",
+      "description": "select a single subvolume: the subvolume number or name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_SUBVOLUME_SUBVOLUME]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "the output volume label file",
+      "optional": false
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "metric-tfce",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -metric-tfce [SURFACE] [METRIC-IN]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "DO TFCE ON A METRIC FILE.\n\nThis command does not do any statistical analysis.  Please use something like PALM if you are just trying to do statistics on your data.\n\nThreshold-free cluster enhancement is a method to increase the relative value of regions that would form clusters in a standard thresholding test.  This is accomplished by evaluating the integral of:\n\ne(h, p)^E * h^H * dh\n\nat each vertex p, where h ranges from 0 to the maximum value in the data, and e(h, p) is the extent of the cluster containing vertex p at threshold h.  Negative values are similarly enhanced by negating the data, running the same process, and negating the result.\n\nWhen using -presmooth with -corrected-areas, note that it is an approximate correction within the smoothing algorithm (the TFCE correction is exact).  Doing smoothing on individual surfaces before averaging/TFCE is preferred, when possible, in order to better tie the smoothing kernel size to the original feature size.\n\nThe TFCE method is explained in: Smith SM, Nichols TE., \"Threshold-free cluster enhancement: addressing problems of smoothing, threshold dependence and localisation in cluster inference.\" Neuroimage. 2009 Jan 1;44(1):83-98. PMID: 18501637",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "surface",
+      "name": "surface",
+      "description": "the surface to compute on",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE]"
+    },
+    {
+      "id": "metric-in",
+      "name": "metric-in",
+      "description": "the metric to run TFCE on",
+      "type": "File",
+      "optional": false,
+      "value-key": "[METRIC-IN]"
+    },
+    {
+      "id": "metric_out",
+      "name": "metric_out",
+      "description": "the output metric",
+      "type": "File",
+      "optional": false,
+      "value-key": "[METRIC_OUT]"
+    },
+    {
+      "id": "opt_presmooth_kernel",
+      "name": "opt_presmooth_kernel",
+      "command-line-flag": "-presmooth",
+      "description": "smooth the metric before running TFCE: the size of the gaussian smoothing kernel in mm, as sigma by default",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[OPT_PRESMOOTH_KERNEL]"
+    },
+    {
+      "id": "opt_roi_roi_metric",
+      "name": "opt_roi_roi_metric",
+      "command-line-flag": "-roi",
+      "description": "select a region of interest to run TFCE on: the area to run TFCE on, as a metric",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_ROI_ROI_METRIC]"
+    },
+    {
+      "id": "opt_column_column",
+      "name": "opt_column_column",
+      "command-line-flag": "-column",
+      "description": "select a single column: the column number or name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_COLUMN_COLUMN]"
+    },
+    {
+      "id": "opt_corrected_areas_area_metric",
+      "name": "opt_corrected_areas_area_metric",
+      "command-line-flag": "-corrected-areas",
+      "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "metric_out",
+      "name": "metric_out",
+      "path-template": "[METRIC_OUT]",
+      "description": "the output metric",
+      "optional": false
+    }
+  ]
+}

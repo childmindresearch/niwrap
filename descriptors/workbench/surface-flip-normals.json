@@ -1,0 +1,40 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-flip-normals",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-flip-normals [SURFACE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "FLIP ALL TILES ON A SURFACE.\n\nFlips all triangles on a surface, resulting in surface normals being flipped the other direction (inward vs outward).  If you transform a surface with an affine that has negative determinant, or a warpfield that similarly flips the surface, you may end up with a surface that has normals pointing inwards, which may have display problems.  Using this command will solve that problem.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "surface",
+      "name": "surface",
+      "description": "the surface to flip the normals of",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE]"
+    },
+    {
+      "id": "surface_out",
+      "name": "surface_out",
+      "description": "the output surface",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE_OUT]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "surface_out",
+      "name": "surface_out",
+      "path-template": "[SURFACE_OUT]",
+      "description": "the output surface",
+      "optional": false
+    }
+  ]
+}

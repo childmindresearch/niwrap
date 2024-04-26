@@ -1,0 +1,49 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-merge-dense",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-merge-dense [DIRECTION]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "MERGE CIFTI FILES ALONG DENSE DIMENSION.\n\nThe input cifti files must have matching mappings along the direction not specified, and the mapping along the specified direction must be brain models.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "direction",
+      "name": "direction",
+      "description": "which dimension to merge along, ROW or COLUMN",
+      "type": "String",
+      "optional": false,
+      "value-key": "[DIRECTION]"
+    },
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "the output cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_label_collision_action",
+      "name": "opt_label_collision_action",
+      "command-line-flag": "-label-collision",
+      "description": "how to handle conflicts between label keys: 'ERROR', 'FIRST', or 'LEGACY', default 'ERROR', use 'LEGACY' to match v1.4.2 and earlier",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_LABEL_COLLISION_ACTION]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "the output cifti file",
+      "optional": false
+    }
+  ]
+}

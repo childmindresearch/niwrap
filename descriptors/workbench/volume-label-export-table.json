@@ -1,0 +1,39 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-label-export-table",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-label-export-table [LABEL-IN] [MAP] [TABLE-OUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "EXPORT LABEL TABLE FROM VOLUME AS TEXT.\n\nTakes the label table from the volume label map, and writes it to a text format matching what is expected by -volume-label-import.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "label-in",
+      "name": "label-in",
+      "description": "the input volume label file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[LABEL-IN]"
+    },
+    {
+      "id": "map",
+      "name": "map",
+      "description": "the number or name of the label map to use",
+      "type": "String",
+      "optional": false,
+      "value-key": "[MAP]"
+    },
+    {
+      "id": "table-out",
+      "name": "table-out",
+      "description": "output - the output text file",
+      "type": "String",
+      "optional": false,
+      "value-key": "[TABLE-OUT]"
+    }
+  ]
+}

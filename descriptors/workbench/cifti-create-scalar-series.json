@@ -1,0 +1,58 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-create-scalar-series",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-create-scalar-series [INPUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "IMPORT SERIES DATA INTO CIFTI.\n\nConvert a text file containing series of equal length into a cifti file.  The text file should have lines made up of numbers separated by whitespace, with no extra newlines between lines.\n\nThe <unit> argument must be one of the following:\n\nSECOND\nHERTZ\nMETER\nRADIAN",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "input",
+      "name": "input",
+      "description": "input file",
+      "type": "String",
+      "optional": false,
+      "value-key": "[INPUT]"
+    },
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "output cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_transpose",
+      "name": "opt_transpose",
+      "command-line-flag": "-transpose",
+      "description": "use if the rows of the text file are along the scalar dimension",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_TRANSPOSE]"
+    },
+    {
+      "id": "opt_name_file_file",
+      "name": "opt_name_file_file",
+      "command-line-flag": "-name-file",
+      "description": "use a text file to set names on scalar dimension: text file containing names, one per line",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_NAME_FILE_FILE]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "output cifti file",
+      "optional": false
+    }
+  ]
+}

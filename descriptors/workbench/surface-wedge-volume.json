@@ -1,0 +1,48 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-wedge-volume",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-wedge-volume [INNER-SURFACE] [OUTER-SURFACE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "MEASURE PER-VERTEX VOLUME BETWEEN SURFACES.\n\nCompute the volume of each vertex's area from one surface to another.  The surfaces must have vertex correspondence, and have consistent triangle orientation.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "inner-surface",
+      "name": "inner-surface",
+      "description": "the inner surface",
+      "type": "File",
+      "optional": false,
+      "value-key": "[INNER-SURFACE]"
+    },
+    {
+      "id": "outer-surface",
+      "name": "outer-surface",
+      "description": "the outer surface",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OUTER-SURFACE]"
+    },
+    {
+      "id": "metric",
+      "name": "metric",
+      "description": "the output metric",
+      "type": "File",
+      "optional": false,
+      "value-key": "[METRIC]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "metric",
+      "name": "metric",
+      "path-template": "[METRIC]",
+      "description": "the output metric",
+      "optional": false
+    }
+  ]
+}

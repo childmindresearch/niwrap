@@ -1,0 +1,79 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "fiber-dot-products",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -fiber-dot-products [WHITE-SURF] [FIBER-FILE] [MAX-DIST] [DIRECTION]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "COMPUTE DOT PRODUCTS OF FIBER ORIENTATIONS WITH SURFACE NORMALS.\n\nFor each vertex, this command finds the closest fiber population that satisfies the <direction> test, and computes the absolute value of the dot product of the surface normal and the normalized mean direction of each fiber.  The <direction> test must be one of INSIDE, OUTSIDE, or ANY, which causes the command to only use fiber populations that are inside the surface, outside the surface, or to not care which direction it is from the surface.  Each fiber population is output in a separate metric column.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "white-surf",
+      "name": "white-surf",
+      "description": "the white/gray boundary surface",
+      "type": "File",
+      "optional": false,
+      "value-key": "[WHITE-SURF]"
+    },
+    {
+      "id": "fiber-file",
+      "name": "fiber-file",
+      "description": "the fiber orientation file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[FIBER-FILE]"
+    },
+    {
+      "id": "max-dist",
+      "name": "max-dist",
+      "description": "the maximum distance from any surface vertex a fiber population may be, in mm",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[MAX-DIST]"
+    },
+    {
+      "id": "direction",
+      "name": "direction",
+      "description": "test against surface for whether a fiber population should be used",
+      "type": "String",
+      "optional": false,
+      "value-key": "[DIRECTION]"
+    },
+    {
+      "id": "dot_metric",
+      "name": "dot_metric",
+      "description": "the metric of dot products",
+      "type": "File",
+      "optional": false,
+      "value-key": "[DOT_METRIC]"
+    },
+    {
+      "id": "f_metric",
+      "name": "f_metric",
+      "description": "a metric of the f values of the fiber distributions",
+      "type": "File",
+      "optional": false,
+      "value-key": "[F_METRIC]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "dot_metric",
+      "name": "dot_metric",
+      "path-template": "[DOT_METRIC]",
+      "description": "the metric of dot products",
+      "optional": false
+    },
+    {
+      "id": "f_metric",
+      "name": "f_metric",
+      "path-template": "[F_METRIC]",
+      "description": "a metric of the f values of the fiber distributions",
+      "optional": false
+    }
+  ]
+}

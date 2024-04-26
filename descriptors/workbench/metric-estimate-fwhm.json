@@ -1,0 +1,58 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "metric-estimate-fwhm",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -metric-estimate-fwhm [SURFACE] [METRIC-IN]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "ESTIMATE FWHM SMOOTHNESS OF A METRIC FILE.\n\nEstimates the smoothness of the metric columns, printing the estimates to standard output.  These estimates ignore variation in vertex spacing.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "surface",
+      "name": "surface",
+      "description": "the surface to use for distance and neighbor information",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE]"
+    },
+    {
+      "id": "metric-in",
+      "name": "metric-in",
+      "description": "the input metric",
+      "type": "File",
+      "optional": false,
+      "value-key": "[METRIC-IN]"
+    },
+    {
+      "id": "opt_roi_roi_metric",
+      "name": "opt_roi_roi_metric",
+      "command-line-flag": "-roi",
+      "description": "use only data within an ROI: the metric file to use as an ROI",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_ROI_ROI_METRIC]"
+    },
+    {
+      "id": "opt_column_column",
+      "name": "opt_column_column",
+      "command-line-flag": "-column",
+      "description": "select a single column to estimate smoothness of: the column number or name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_COLUMN_COLUMN]"
+    },
+    {
+      "id": "opt_whole_file",
+      "name": "opt_whole_file",
+      "command-line-flag": "-whole-file",
+      "description": "estimate for the whole file at once, not each column separately",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_WHOLE_FILE]"
+    }
+  ]
+}

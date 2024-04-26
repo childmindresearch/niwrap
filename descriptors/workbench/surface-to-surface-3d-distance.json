@@ -1,0 +1,57 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-to-surface-3d-distance",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-to-surface-3d-distance [SURFACE-COMP] [SURFACE-REF]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "COMPUTE DISTANCE BETWEEN CORRESPONDING VERTICES.\n\nComputes the vector difference between the vertices of each surface with the same index, as (comp - ref), and output the magnitudes, and optionally the displacement vectors.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "surface-comp",
+      "name": "surface-comp",
+      "description": "the surface to compare to the reference",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE-COMP]"
+    },
+    {
+      "id": "surface-ref",
+      "name": "surface-ref",
+      "description": "the surface to use as the reference",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE-REF]"
+    },
+    {
+      "id": "dists_out",
+      "name": "dists_out",
+      "description": "the output distances",
+      "type": "File",
+      "optional": false,
+      "value-key": "[DISTS_OUT]"
+    },
+    {
+      "id": "opt_vectors",
+      "name": "opt_vectors",
+      "command-line-flag": "-vectors",
+      "description": "output the displacement vectors",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_VECTORS]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "dists_out",
+      "name": "dists_out",
+      "path-template": "[DISTS_OUT]",
+      "description": "the output distances",
+      "optional": false
+    }
+  ]
+}

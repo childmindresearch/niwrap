@@ -1,0 +1,104 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-weighted-stats",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-weighted-stats [CIFTI-IN]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "WEIGHTED STATISTICS ALONG CIFTI COLUMNS.\n\nIf the mapping along column is brain models, for each column of the input, the specified operation is done on each surface and across all voxels, and the results are printed on separate lines.  For other mapping types, the operation is done on each column, and one line per map is printed.  Exactly one of -spatial-weights or -cifti-weights must be specified.  Use -column to only give output for a single column.  If the -roi option is used without -match-maps, then each line will contain as many numbers as there are maps in the ROI file, separated by tab characters.  Exactly one of -mean, -stdev, -percentile or -sum must be specified.\n\nUsing -sum with -spatial-weights (or with -cifti-weights and a cifti containing weights of similar meaning) is equivalent to integrating with respect to area and volume.  When the input is binary ROIs, this will therefore output the area or volume of each ROI.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti-in",
+      "name": "cifti-in",
+      "description": "the input cifti",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI-IN]"
+    },
+    {
+      "id": "opt_spatial_weights",
+      "name": "opt_spatial_weights",
+      "command-line-flag": "-spatial-weights",
+      "description": "use vertex area and voxel volume as weights",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_SPATIAL_WEIGHTS]"
+    },
+    {
+      "id": "opt_cifti_weights_weight_cifti",
+      "name": "opt_cifti_weights_weight_cifti",
+      "command-line-flag": "-cifti-weights",
+      "description": "use a cifti file containing weights: the weights to use, as a cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_CIFTI_WEIGHTS_WEIGHT_CIFTI]"
+    },
+    {
+      "id": "opt_column_column",
+      "name": "opt_column_column",
+      "command-line-flag": "-column",
+      "description": "only display output for one column: the column to use (1-based)",
+      "type": "Integer",
+      "optional": false,
+      "value-key": "[OPT_COLUMN_COLUMN]"
+    },
+    {
+      "id": "opt_roi_roi_cifti",
+      "name": "opt_roi_roi_cifti",
+      "command-line-flag": "-roi",
+      "description": "only consider data inside an roi: the roi, as a cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_ROI_ROI_CIFTI]"
+    },
+    {
+      "id": "opt_mean",
+      "name": "opt_mean",
+      "command-line-flag": "-mean",
+      "description": "compute weighted mean",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_MEAN]"
+    },
+    {
+      "id": "opt_stdev",
+      "name": "opt_stdev",
+      "command-line-flag": "-stdev",
+      "description": "compute weighted standard deviation",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_STDEV]"
+    },
+    {
+      "id": "opt_percentile_percent",
+      "name": "opt_percentile_percent",
+      "command-line-flag": "-percentile",
+      "description": "compute weighted percentile: the percentile to find, must be between 0 and 100",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[OPT_PERCENTILE_PERCENT]"
+    },
+    {
+      "id": "opt_sum",
+      "name": "opt_sum",
+      "command-line-flag": "-sum",
+      "description": "compute weighted sum",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_SUM]"
+    },
+    {
+      "id": "opt_show_map_name",
+      "name": "opt_show_map_name",
+      "command-line-flag": "-show-map-name",
+      "description": "print map index and name before each output",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_SHOW_MAP_NAME]"
+    }
+  ]
+}

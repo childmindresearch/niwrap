@@ -1,0 +1,66 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "label-to-border",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -label-to-border [SURFACE] [LABEL-IN]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "DRAW BORDERS AROUND LABELS.\n\nFor each label, finds all edges on the mesh that cross the boundary of the label, and draws borders through them.  By default, this is done on all columns in the input file, using the map name as the class name for the border.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "surface",
+      "name": "surface",
+      "description": "the surface to use for neighbor information",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE]"
+    },
+    {
+      "id": "label-in",
+      "name": "label-in",
+      "description": "the input label file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[LABEL-IN]"
+    },
+    {
+      "id": "border_out",
+      "name": "border_out",
+      "description": "the output border file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[BORDER_OUT]"
+    },
+    {
+      "id": "opt_placement_fraction",
+      "name": "opt_placement_fraction",
+      "command-line-flag": "-placement",
+      "description": "set how far along the edge border points are drawn: fraction along edge from inside vertex (default 0.33)",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[OPT_PLACEMENT_FRACTION]"
+    },
+    {
+      "id": "opt_column_column",
+      "name": "opt_column_column",
+      "command-line-flag": "-column",
+      "description": "select a single column: the column number or name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_COLUMN_COLUMN]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "border_out",
+      "name": "border_out",
+      "path-template": "[BORDER_OUT]",
+      "description": "the output border file",
+      "optional": false
+    }
+  ]
+}

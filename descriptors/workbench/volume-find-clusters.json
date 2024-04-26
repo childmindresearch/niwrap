@@ -1,0 +1,110 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-find-clusters",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-find-clusters [VOLUME-IN] [VALUE-THRESHOLD] [MINIMUM-VOLUME]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "FILTER CLUSTERS BY VOLUME.\n\nOutputs a volume with nonzero integers for all voxels within a large enough cluster, and zeros elsewhere.  The integers denote cluster membership (by default, first cluster found will use value 1, second cluster 2, etc).  Cluster values are not reused across frames of the output, but instead keep counting up.  By default, values greater than <value-threshold> are considered to be in a cluster, use -less-than to test for values less than the threshold.  To apply this as a mask to the data, or to do more complicated thresholding, see -volume-math.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume-in",
+      "name": "volume-in",
+      "description": "the input volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME-IN]"
+    },
+    {
+      "id": "value-threshold",
+      "name": "value-threshold",
+      "description": "threshold for data values",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[VALUE-THRESHOLD]"
+    },
+    {
+      "id": "minimum-volume",
+      "name": "minimum-volume",
+      "description": "threshold for cluster volume, in mm^3",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[MINIMUM-VOLUME]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "the output volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_less_than",
+      "name": "opt_less_than",
+      "command-line-flag": "-less-than",
+      "description": "find values less than <value-threshold>, rather than greater",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_LESS_THAN]"
+    },
+    {
+      "id": "opt_roi_roi_volume",
+      "name": "opt_roi_roi_volume",
+      "command-line-flag": "-roi",
+      "description": "select a region of interest: the roi, as a volume file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_ROI_ROI_VOLUME]"
+    },
+    {
+      "id": "opt_subvolume_subvol",
+      "name": "opt_subvolume_subvol",
+      "command-line-flag": "-subvolume",
+      "description": "select a single subvolume: the subvolume number or name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_SUBVOLUME_SUBVOL]"
+    },
+    {
+      "id": "opt_size_ratio_ratio",
+      "name": "opt_size_ratio_ratio",
+      "command-line-flag": "-size-ratio",
+      "description": "ignore clusters smaller than a given fraction of the largest cluster in map: fraction of the largest cluster's volume",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[OPT_SIZE_RATIO_RATIO]"
+    },
+    {
+      "id": "opt_distance_distance",
+      "name": "opt_distance_distance",
+      "command-line-flag": "-distance",
+      "description": "ignore clusters further than a given distance from the largest cluster: how far from the largest cluster a cluster can be, edge to edge, in mm",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[OPT_DISTANCE_DISTANCE]"
+    },
+    {
+      "id": "opt_start_startval",
+      "name": "opt_start_startval",
+      "command-line-flag": "-start",
+      "description": "start labeling clusters from a value other than 1: the value to give the first cluster found",
+      "type": "Integer",
+      "optional": false,
+      "value-key": "[OPT_START_STARTVAL]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "the output volume",
+      "optional": false
+    }
+  ]
+}

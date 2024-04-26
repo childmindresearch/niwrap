@@ -1,0 +1,91 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-false-correlation",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-false-correlation [CIFTI-IN] [3D-DIST] [GEO-OUTER] [GEO-INNER]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "COMPARE CORRELATION LOCALLY AND ACROSS/THROUGH SULCI/GYRI.\n\nFor each vertex, compute the average correlation within a range of geodesic distances that don't cross a sulcus/gyrus, and the correlation to the closest vertex crossing a sulcus/gyrus.  A vertex is considered to cross a sulcus/gyrus if the 3D distance is less than a third of the geodesic distance.  The output file contains the ratio between these correlations, and some additional maps to help explain the ratio.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti-in",
+      "name": "cifti-in",
+      "description": "the cifti file to use for correlation",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI-IN]"
+    },
+    {
+      "id": "3D-dist",
+      "name": "3D-dist",
+      "description": "maximum 3D distance to check around each vertex",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[3D-DIST]"
+    },
+    {
+      "id": "geo-outer",
+      "name": "geo-outer",
+      "description": "maximum geodesic distance to use for neighboring correlation",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[GEO-OUTER]"
+    },
+    {
+      "id": "geo-inner",
+      "name": "geo-inner",
+      "description": "minimum geodesic distance to use for neighboring correlation",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[GEO-INNER]"
+    },
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "the output cifti dscalar file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_left_surface_surface",
+      "name": "opt_left_surface_surface",
+      "command-line-flag": "-left-surface",
+      "description": "specify the left surface to use: the left surface file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
+    },
+    {
+      "id": "opt_right_surface_surface",
+      "name": "opt_right_surface_surface",
+      "command-line-flag": "-right-surface",
+      "description": "specify the right surface to use: the right surface file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
+    },
+    {
+      "id": "opt_cerebellum_surface_surface",
+      "name": "opt_cerebellum_surface_surface",
+      "command-line-flag": "-cerebellum-surface",
+      "description": "specify the cerebellum surface to use: the cerebellum surface file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "the output cifti dscalar file",
+      "optional": false
+    }
+  ]
+}

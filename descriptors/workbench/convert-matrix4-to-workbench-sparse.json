@@ -1,0 +1,72 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "convert-matrix4-to-workbench-sparse",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -convert-matrix4-to-workbench-sparse [MATRIX4_1] [MATRIX4_2] [MATRIX4_3] [ORIENTATION-FILE] [VOXEL-LIST] [WB-SPARSE-OUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "CONVERT A 3-FILE MATRIX4 TO A WORKBENCH SPARSE FILE.\n\nConverts the matrix 4 output of probtrackx to workbench sparse file format.  Exactly one of -surface-seeds and -volume-seeds must be specified.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "matrix4_1",
+      "name": "matrix4_1",
+      "description": "the first matrix4 file",
+      "type": "String",
+      "optional": false,
+      "value-key": "[MATRIX4_1]"
+    },
+    {
+      "id": "matrix4_2",
+      "name": "matrix4_2",
+      "description": "the second matrix4 file",
+      "type": "String",
+      "optional": false,
+      "value-key": "[MATRIX4_2]"
+    },
+    {
+      "id": "matrix4_3",
+      "name": "matrix4_3",
+      "description": "the third matrix4 file",
+      "type": "String",
+      "optional": false,
+      "value-key": "[MATRIX4_3]"
+    },
+    {
+      "id": "orientation-file",
+      "name": "orientation-file",
+      "description": "the .fiberTEMP.nii file this trajectory file applies to",
+      "type": "File",
+      "optional": false,
+      "value-key": "[ORIENTATION-FILE]"
+    },
+    {
+      "id": "voxel-list",
+      "name": "voxel-list",
+      "description": "list of white matter voxel index triplets as used in the trajectory matrix",
+      "type": "String",
+      "optional": false,
+      "value-key": "[VOXEL-LIST]"
+    },
+    {
+      "id": "wb-sparse-out",
+      "name": "wb-sparse-out",
+      "description": "output - the output workbench sparse file",
+      "type": "String",
+      "optional": false,
+      "value-key": "[WB-SPARSE-OUT]"
+    },
+    {
+      "id": "opt_surface_seeds_seed_roi",
+      "name": "opt_surface_seeds_seed_roi",
+      "command-line-flag": "-surface-seeds",
+      "description": "specify the surface seed space: metric roi file of all vertices used in the seed space",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_SURFACE_SEEDS_SEED_ROI]"
+    }
+  ]
+}

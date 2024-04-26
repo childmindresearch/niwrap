@@ -1,0 +1,32 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "label-merge",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -label-merge",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "MERGE LABEL FILES INTO A NEW FILE.\n\nTakes one or more label files and constructs a new label file by concatenating columns from them.  The input files must have the same number of vertices and the same structure.\n\nExample: wb_command -label-merge out.label.gii -label first.label.gii -column 1 -label second.label.gii\n\nThis example would take the first column from first.label.gii and all subvolumes from second.label.gii, and write these to out.label.gii.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "label_out",
+      "name": "label_out",
+      "description": "the output label",
+      "type": "File",
+      "optional": false,
+      "value-key": "[LABEL_OUT]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "label_out",
+      "name": "label_out",
+      "path-template": "[LABEL_OUT]",
+      "description": "the output label",
+      "optional": false
+    }
+  ]
+}

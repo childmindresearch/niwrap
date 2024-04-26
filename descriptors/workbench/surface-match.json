@@ -1,0 +1,39 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-match",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-match [MATCH SURFACE FILE] [INPUT SURFACE FILE] [OUTPUT SURFACE NAME]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "SURFACE MATCH.\n\nThe Input Surface File will be transformed so that its coordinate ranges (bounding box) match that of the Match Surface File",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "Match Surface File",
+      "name": "Match Surface File",
+      "description": "Match (Reference) Surface",
+      "type": "File",
+      "optional": false,
+      "value-key": "[MATCH SURFACE FILE]"
+    },
+    {
+      "id": "Input Surface File",
+      "name": "Input Surface File",
+      "description": "File containing surface that will be transformed",
+      "type": "File",
+      "optional": false,
+      "value-key": "[INPUT SURFACE FILE]"
+    },
+    {
+      "id": "Output Surface Name",
+      "name": "Output Surface Name",
+      "description": "Surface File after transformation",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OUTPUT SURFACE NAME]"
+    }
+  ]
+}

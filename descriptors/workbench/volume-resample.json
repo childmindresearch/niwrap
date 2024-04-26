@@ -1,0 +1,56 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-resample",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-resample [VOLUME-IN] [VOLUME-SPACE] [METHOD]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "TRANSFORM AND RESAMPLE A VOLUME FILE.\n\nResample a volume file with an arbitrary list of transformations.  You may specify -affine, -warp, and -affine-series multiple times each, and they will be used in the order specified.  For instance, for rigid motion correction followed by nonlinear atlas registration, specify -affine-series first, then -warp.  The recommended methods are CUBIC (cubic spline) for most data, and ENCLOSING_VOXEL for label data.  The parameter <method> must be one of:\n\nCUBIC\nENCLOSING_VOXEL\nTRILINEAR",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume-in",
+      "name": "volume-in",
+      "description": "volume to resample",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME-IN]"
+    },
+    {
+      "id": "volume-space",
+      "name": "volume-space",
+      "description": "a volume file in the volume space you want for the output",
+      "type": "String",
+      "optional": false,
+      "value-key": "[VOLUME-SPACE]"
+    },
+    {
+      "id": "method",
+      "name": "method",
+      "description": "the resampling method",
+      "type": "String",
+      "optional": false,
+      "value-key": "[METHOD]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "the output volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "the output volume",
+      "optional": false
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-find-clusters",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-find-clusters [CIFTI] [SURFACE-VALUE-THRESHOLD] [SURFACE-MINIMUM-AREA] [VOLUME-VALUE-THRESHOLD] [VOLUME-MINIMUM-SIZE] [DIRECTION]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "FILTER CLUSTERS BY AREA/VOLUME.\n\nOutputs a cifti file with nonzero integers for all brainordinates within a large enough cluster, and zeros elsewhere.  The integers denote cluster membership (by default, first cluster found will use value 1, second cluster 2, etc).  Cluster values are not reused across maps of the output, but instead keep counting up.  The input cifti file must have a brain models mapping on the chosen dimension, columns for .dtseries, and either for .dconn.  The ROI should have a brain models mapping along columns, exactly matching the mapping of the chosen direction in the input file.  Data outside the ROI is ignored.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti",
+      "name": "cifti",
+      "description": "the input cifti",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI]"
+    },
+    {
+      "id": "surface-value-threshold",
+      "name": "surface-value-threshold",
+      "description": "threshold for surface data values",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[SURFACE-VALUE-THRESHOLD]"
+    },
+    {
+      "id": "surface-minimum-area",
+      "name": "surface-minimum-area",
+      "description": "threshold for surface cluster area, in mm^2",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[SURFACE-MINIMUM-AREA]"
+    },
+    {
+      "id": "volume-value-threshold",
+      "name": "volume-value-threshold",
+      "description": "threshold for volume data values",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[VOLUME-VALUE-THRESHOLD]"
+    },
+    {
+      "id": "volume-minimum-size",
+      "name": "volume-minimum-size",
+      "description": "threshold for volume cluster size, in mm^3",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[VOLUME-MINIMUM-SIZE]"
+    },
+    {
+      "id": "direction",
+      "name": "direction",
+      "description": "which dimension to use for spatial information, ROW or COLUMN",
+      "type": "String",
+      "optional": false,
+      "value-key": "[DIRECTION]"
+    },
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "the output cifti",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_less_than",
+      "name": "opt_less_than",
+      "command-line-flag": "-less-than",
+      "description": "find values less than <value-threshold>, rather than greater",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_LESS_THAN]"
+    },
+    {
+      "id": "opt_left_surface_surface",
+      "name": "opt_left_surface_surface",
+      "command-line-flag": "-left-surface",
+      "description": "specify the left surface to use: the left surface file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
+    },
+    {
+      "id": "opt_right_surface_surface",
+      "name": "opt_right_surface_surface",
+      "command-line-flag": "-right-surface",
+      "description": "specify the right surface to use: the right surface file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
+    },
+    {
+      "id": "opt_cerebellum_surface_surface",
+      "name": "opt_cerebellum_surface_surface",
+      "command-line-flag": "-cerebellum-surface",
+      "description": "specify the cerebellum surface to use: the cerebellum surface file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
+    },
+    {
+      "id": "opt_cifti_roi_roi_cifti",
+      "name": "opt_cifti_roi_roi_cifti",
+      "command-line-flag": "-cifti-roi",
+      "description": "search only within regions of interest: the regions to search within, as a cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_CIFTI_ROI_ROI_CIFTI]"
+    },
+    {
+      "id": "opt_merged_volume",
+      "name": "opt_merged_volume",
+      "command-line-flag": "-merged-volume",
+      "description": "treat volume components as if they were a single component",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_MERGED_VOLUME]"
+    },
+    {
+      "id": "opt_start_startval",
+      "name": "opt_start_startval",
+      "command-line-flag": "-start",
+      "description": "start labeling clusters from a value other than 1: the value to give the first cluster found",
+      "type": "Integer",
+      "optional": false,
+      "value-key": "[OPT_START_STARTVAL]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "the output cifti",
+      "optional": false
+    }
+  ]
+}

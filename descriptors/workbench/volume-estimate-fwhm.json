@@ -1,0 +1,50 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-estimate-fwhm",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-estimate-fwhm [VOLUME]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "ESTIMATE FWHM SMOOTHNESS OF A VOLUME.\n\nEstimates the smoothness of the input volume in X, Y, and Z directions separately, printing the estimates to standard output, in mm as FWHM.  If -subvolume or -whole-file are not specified, each subvolume is estimated and displayed separately.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume",
+      "name": "volume",
+      "description": "the input volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME]"
+    },
+    {
+      "id": "opt_roi_roivol",
+      "name": "opt_roi_roivol",
+      "command-line-flag": "-roi",
+      "description": "use only data within an ROI: the volume to use as an ROI",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_ROI_ROIVOL]"
+    },
+    {
+      "id": "opt_subvolume_subvol",
+      "name": "opt_subvolume_subvol",
+      "command-line-flag": "-subvolume",
+      "description": "select a single subvolume to estimate smoothness of: the subvolume number or name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_SUBVOLUME_SUBVOL]"
+    },
+    {
+      "id": "opt_whole_file",
+      "name": "opt_whole_file",
+      "command-line-flag": "-whole-file",
+      "description": "estimate for the whole file at once, not each subvolume separately",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_WHOLE_FILE]"
+    }
+  ]
+}

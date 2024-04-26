@@ -1,0 +1,57 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-apply-warpfield",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-apply-warpfield [IN-SURF] [WARPFIELD]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "APPLY WARPFIELD TO SURFACE FILE.\n\nNOTE: warping a surface requires the INVERSE of the warpfield used to warp the volume it lines up with.  The header of the forward warp is needed by the -fnirt option in order to correctly interpret the displacements in the fnirt warpfield.\n\nIf the -fnirt option is not present, the warpfield must be a nifti 'world' warpfield, which can be obtained with the -convert-warpfield command.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "in-surf",
+      "name": "in-surf",
+      "description": "the surface to transform",
+      "type": "File",
+      "optional": false,
+      "value-key": "[IN-SURF]"
+    },
+    {
+      "id": "warpfield",
+      "name": "warpfield",
+      "description": "the INVERSE warpfield",
+      "type": "String",
+      "optional": false,
+      "value-key": "[WARPFIELD]"
+    },
+    {
+      "id": "out_surf",
+      "name": "out_surf",
+      "description": "the output transformed surface",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OUT_SURF]"
+    },
+    {
+      "id": "opt_fnirt_forward_warp",
+      "name": "opt_fnirt_forward_warp",
+      "command-line-flag": "-fnirt",
+      "description": "MUST be used if using a fnirt warpfield: the forward warpfield",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_FNIRT_FORWARD_WARP]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "out_surf",
+      "name": "out_surf",
+      "path-template": "[OUT_SURF]",
+      "description": "the output transformed surface",
+      "optional": false
+    }
+  ]
+}

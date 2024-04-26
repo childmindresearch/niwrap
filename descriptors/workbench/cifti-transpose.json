@@ -1,0 +1,49 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-transpose",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-transpose [CIFTI-IN]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "TRANSPOSE A CIFTI FILE.\n\nThe input must be a 2-dimensional cifti file.  The output is a cifti file where every row in the input is a column in the output.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti-in",
+      "name": "cifti-in",
+      "description": "the input cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI-IN]"
+    },
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "the output cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_mem_limit_limit_GB",
+      "name": "opt_mem_limit_limit_GB",
+      "command-line-flag": "-mem-limit",
+      "description": "restrict memory usage: memory limit in gigabytes",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[OPT_MEM_LIMIT_LIMIT_GB]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "the output cifti file",
+      "optional": false
+    }
+  ]
+}

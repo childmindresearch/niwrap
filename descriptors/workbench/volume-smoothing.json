@@ -1,0 +1,84 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-smoothing",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-smoothing [VOLUME-IN] [KERNEL]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "SMOOTH A VOLUME FILE.\n\nGaussian smoothing for volumes.  By default, smooths all subvolumes with no ROI, if ROI is given, only positive voxels in the ROI volume have their values used, and all other voxels are set to zero.  Smoothing a non-orthogonal volume will be significantly slower, because the operation cannot be separated into 1-dimensional smoothings without distorting the kernel shape.\n\nThe -fix-zeros option causes the smoothing to not use an input value if it is zero, but still write a smoothed value to the voxel.  This is useful for zeros that indicate lack of information, preventing them from pulling down the intensity of nearby voxels, while giving the zero an extrapolated value.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume-in",
+      "name": "volume-in",
+      "description": "the volume to smooth",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME-IN]"
+    },
+    {
+      "id": "kernel",
+      "name": "kernel",
+      "description": "the size of the gaussian smoothing kernel in mm, as sigma by default",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[KERNEL]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "the output volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_fwhm",
+      "name": "opt_fwhm",
+      "command-line-flag": "-fwhm",
+      "description": "kernel size is FWHM, not sigma",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_FWHM]"
+    },
+    {
+      "id": "opt_roi_roivol",
+      "name": "opt_roi_roivol",
+      "command-line-flag": "-roi",
+      "description": "smooth only from data within an ROI: the volume to use as an ROI",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_ROI_ROIVOL]"
+    },
+    {
+      "id": "opt_fix_zeros",
+      "name": "opt_fix_zeros",
+      "command-line-flag": "-fix-zeros",
+      "description": "treat zero values as not being data",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_FIX_ZEROS]"
+    },
+    {
+      "id": "opt_subvolume_subvol",
+      "name": "opt_subvolume_subvol",
+      "command-line-flag": "-subvolume",
+      "description": "select a single subvolume to smooth: the subvolume number or name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_SUBVOLUME_SUBVOL]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "the output volume",
+      "optional": false
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "border-resample",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -border-resample [BORDER-IN] [CURRENT-SPHERE] [NEW-SPHERE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "RESAMPLE A BORDER FILE TO A DIFFERENT MESH.\n\nResamples a border file, given two spherical surfaces that are in register.  Only borders that have the same structure as current-sphere will be resampled.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "border-in",
+      "name": "border-in",
+      "description": "the border file to resample",
+      "type": "File",
+      "optional": false,
+      "value-key": "[BORDER-IN]"
+    },
+    {
+      "id": "current-sphere",
+      "name": "current-sphere",
+      "description": "a sphere surface with the mesh that the metric is currently on",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CURRENT-SPHERE]"
+    },
+    {
+      "id": "new-sphere",
+      "name": "new-sphere",
+      "description": "a sphere surface that is in register with <current-sphere> and has the desired output mesh",
+      "type": "File",
+      "optional": false,
+      "value-key": "[NEW-SPHERE]"
+    },
+    {
+      "id": "border_out",
+      "name": "border_out",
+      "description": "the output border file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[BORDER_OUT]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "border_out",
+      "name": "border_out",
+      "path-template": "[BORDER_OUT]",
+      "description": "the output border file",
+      "optional": false
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-information",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-information [SURFACE FILE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "DISPLAY INFORMATION ABOUT A SURFACE.\n\nInformation about surface is displayed including vertices, \ntriangles, bounding box, and spacing.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "Surface File",
+      "name": "Surface File",
+      "description": "Surface for which information is displayed",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE FILE]"
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-extrema",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-extrema [CIFTI] [SURFACE-DISTANCE] [VOLUME-DISTANCE] [DIRECTION]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "FIND EXTREMA IN A CIFTI FILE.\n\nFinds spatial locations in a cifti file that have more extreme values than all nearby locations in the same component (surface or volume structure).  The input cifti file must have a brain models mapping along the specified direction.  COLUMN is the direction that works on dtseries and dscalar.  For dconn, if it is symmetric use COLUMN, otherwise use ROW.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti",
+      "name": "cifti",
+      "description": "the input cifti",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI]"
+    },
+    {
+      "id": "surface-distance",
+      "name": "surface-distance",
+      "description": "the minimum distance between extrema of the same type, for surface components",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[SURFACE-DISTANCE]"
+    },
+    {
+      "id": "volume-distance",
+      "name": "volume-distance",
+      "description": "the minimum distance between extrema of the same type, for volume components",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[VOLUME-DISTANCE]"
+    },
+    {
+      "id": "direction",
+      "name": "direction",
+      "description": "which dimension to find extrema along, ROW or COLUMN",
+      "type": "String",
+      "optional": false,
+      "value-key": "[DIRECTION]"
+    },
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "the output cifti",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_left_surface_surface",
+      "name": "opt_left_surface_surface",
+      "command-line-flag": "-left-surface",
+      "description": "specify the left surface to use: the left surface file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
+    },
+    {
+      "id": "opt_right_surface_surface",
+      "name": "opt_right_surface_surface",
+      "command-line-flag": "-right-surface",
+      "description": "specify the right surface to use: the right surface file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
+    },
+    {
+      "id": "opt_cerebellum_surface_surface",
+      "name": "opt_cerebellum_surface_surface",
+      "command-line-flag": "-cerebellum-surface",
+      "description": "specify the cerebellum surface to use: the cerebellum surface file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
+    },
+    {
+      "id": "opt_surface_presmooth_surface_kernel",
+      "name": "opt_surface_presmooth_surface_kernel",
+      "command-line-flag": "-surface-presmooth",
+      "description": "smooth on the surface before finding extrema: the size of the gaussian surface smoothing kernel in mm, as sigma by default",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[OPT_SURFACE_PRESMOOTH_SURFACE_KERNEL]"
+    },
+    {
+      "id": "opt_volume_presmooth_volume_kernel",
+      "name": "opt_volume_presmooth_volume_kernel",
+      "command-line-flag": "-volume-presmooth",
+      "description": "smooth volume components before finding extrema: the size of the gaussian volume smoothing kernel in mm, as sigma by default",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[OPT_VOLUME_PRESMOOTH_VOLUME_KERNEL]"
+    },
+    {
+      "id": "opt_presmooth_fwhm",
+      "name": "opt_presmooth_fwhm",
+      "command-line-flag": "-presmooth-fwhm",
+      "description": "smoothing kernel distances are FWHM, not sigma",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_PRESMOOTH_FWHM]"
+    },
+    {
+      "id": "opt_merged_volume",
+      "name": "opt_merged_volume",
+      "command-line-flag": "-merged-volume",
+      "description": "treat volume components as if they were a single component",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_MERGED_VOLUME]"
+    },
+    {
+      "id": "opt_sum_maps",
+      "name": "opt_sum_maps",
+      "command-line-flag": "-sum-maps",
+      "description": "output the sum of the extrema maps instead of each map separately",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_SUM_MAPS]"
+    },
+    {
+      "id": "opt_consolidate_mode",
+      "name": "opt_consolidate_mode",
+      "command-line-flag": "-consolidate-mode",
+      "description": "use consolidation of local minima instead of a large neighborhood",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_CONSOLIDATE_MODE]"
+    },
+    {
+      "id": "opt_only_maxima",
+      "name": "opt_only_maxima",
+      "command-line-flag": "-only-maxima",
+      "description": "only find the maxima",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_ONLY_MAXIMA]"
+    },
+    {
+      "id": "opt_only_minima",
+      "name": "opt_only_minima",
+      "command-line-flag": "-only-minima",
+      "description": "only find the minima",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_ONLY_MINIMA]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "the output cifti",
+      "optional": false
+    }
+  ]
+}

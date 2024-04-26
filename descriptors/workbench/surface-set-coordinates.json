@@ -1,0 +1,48 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-set-coordinates",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-set-coordinates [SURFACE-IN] [COORD-METRIC]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "MODIFY COORDINATES OF A SURFACE.\n\nTakes the topology from an existing surface file, and uses values from a metric file as coordinates to construct a new surface file.\n\nSee -surface-coordinates-to-metric for how to get surface coordinates as a metric file, such that you can then modify them via metric commands, etc.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "surface-in",
+      "name": "surface-in",
+      "description": "the surface to use for the topology",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE-IN]"
+    },
+    {
+      "id": "coord-metric",
+      "name": "coord-metric",
+      "description": "the new coordinates, as a 3-column metric file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[COORD-METRIC]"
+    },
+    {
+      "id": "surface_out",
+      "name": "surface_out",
+      "description": "the new surface",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE_OUT]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "surface_out",
+      "name": "surface_out",
+      "path-template": "[SURFACE_OUT]",
+      "description": "the new surface",
+      "optional": false
+    }
+  ]
+}

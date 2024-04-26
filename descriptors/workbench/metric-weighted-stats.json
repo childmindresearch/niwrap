@@ -1,0 +1,104 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "metric-weighted-stats",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -metric-weighted-stats [METRIC-IN]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "WEIGHTED SPATIAL STATISTICS ON A METRIC FILE.\n\nFor each column of the input, a line of text is printed, resulting from the specified operation.  You must specify exactly one of -area-surface or -weight-metric.  Use -column to only give output for a single column.  If the -roi option is used without -match-maps, then each line will contain as many numbers as there are maps in the ROI file, separated by tab characters.  Exactly one of -mean, -stdev, -percentile or -sum must be specified.\n\nUsing -sum with -area-surface (or -weight-metric with a metric containing similar data) is equivalent to integrating with respect to surface area.  For example, if you want to find the surface area within an roi, do this:\n\n$ wb_command -metric-weighted-stats roi.func.gii -sum -area-surface midthickness.surf.gii",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "metric-in",
+      "name": "metric-in",
+      "description": "the input metric",
+      "type": "File",
+      "optional": false,
+      "value-key": "[METRIC-IN]"
+    },
+    {
+      "id": "opt_area_surface_area_surface",
+      "name": "opt_area_surface_area_surface",
+      "command-line-flag": "-area-surface",
+      "description": "use vertex areas as weights: the surface to use for vertex areas",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_AREA_SURFACE_AREA_SURFACE]"
+    },
+    {
+      "id": "opt_weight_metric_weight_metric",
+      "name": "opt_weight_metric_weight_metric",
+      "command-line-flag": "-weight-metric",
+      "description": "use weights from a metric file: metric file containing the weights",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_WEIGHT_METRIC_WEIGHT_METRIC]"
+    },
+    {
+      "id": "opt_column_column",
+      "name": "opt_column_column",
+      "command-line-flag": "-column",
+      "description": "only display output for one column: the column number or name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_COLUMN_COLUMN]"
+    },
+    {
+      "id": "opt_roi_roi_metric",
+      "name": "opt_roi_roi_metric",
+      "command-line-flag": "-roi",
+      "description": "only consider data inside an roi: the roi, as a metric file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_ROI_ROI_METRIC]"
+    },
+    {
+      "id": "opt_mean",
+      "name": "opt_mean",
+      "command-line-flag": "-mean",
+      "description": "compute weighted mean",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_MEAN]"
+    },
+    {
+      "id": "opt_stdev",
+      "name": "opt_stdev",
+      "command-line-flag": "-stdev",
+      "description": "compute weighted standard deviation",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_STDEV]"
+    },
+    {
+      "id": "opt_percentile_percent",
+      "name": "opt_percentile_percent",
+      "command-line-flag": "-percentile",
+      "description": "compute weighted percentile: the percentile to find, must be between 0 and 100",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[OPT_PERCENTILE_PERCENT]"
+    },
+    {
+      "id": "opt_sum",
+      "name": "opt_sum",
+      "command-line-flag": "-sum",
+      "description": "compute weighted sum",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_SUM]"
+    },
+    {
+      "id": "opt_show_map_name",
+      "name": "opt_show_map_name",
+      "command-line-flag": "-show-map-name",
+      "description": "print map index and name before each output",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_SHOW_MAP_NAME]"
+    }
+  ]
+}

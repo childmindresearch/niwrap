@@ -1,0 +1,57 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "label-mask",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -label-mask [LABEL] [MASK]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "MASK A LABEL FILE.\n\nBy default, the output label is a copy of the input label, but with the 'unused' label wherever the mask metric is zero or negative.  if -column is specified, the output contains only one column, the masked version of the specified input column.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "label",
+      "name": "label",
+      "description": "the label file to mask",
+      "type": "File",
+      "optional": false,
+      "value-key": "[LABEL]"
+    },
+    {
+      "id": "mask",
+      "name": "mask",
+      "description": "the mask metric",
+      "type": "File",
+      "optional": false,
+      "value-key": "[MASK]"
+    },
+    {
+      "id": "label_out",
+      "name": "label_out",
+      "description": "the output label file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[LABEL_OUT]"
+    },
+    {
+      "id": "opt_column_column",
+      "name": "opt_column_column",
+      "command-line-flag": "-column",
+      "description": "select a single column: the column number or name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_COLUMN_COLUMN]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "label_out",
+      "name": "label_out",
+      "path-template": "[LABEL_OUT]",
+      "description": "the output label file",
+      "optional": false
+    }
+  ]
+}

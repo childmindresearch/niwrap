@@ -1,0 +1,57 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-copy-extensions",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-copy-extensions [DATA-VOLUME] [EXTENSION-VOLUME]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "COPY EXTENDED DATA TO ANOTHER VOLUME FILE.\n\nThis command copies the information in a volume file that isn't a critical part of the standard header or data matrix, e.g. map names, palette settings, label tables.  If -drop-unknown is not specified, it also copies similar kinds of information set by other software.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "data-volume",
+      "name": "data-volume",
+      "description": "the volume file containing the voxel data to use",
+      "type": "File",
+      "optional": false,
+      "value-key": "[DATA-VOLUME]"
+    },
+    {
+      "id": "extension-volume",
+      "name": "extension-volume",
+      "description": "the volume file containing the extensions to use",
+      "type": "File",
+      "optional": false,
+      "value-key": "[EXTENSION-VOLUME]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "the output volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_drop_unknown",
+      "name": "opt_drop_unknown",
+      "command-line-flag": "-drop-unknown",
+      "description": "don't copy extensions that workbench doesn't understand",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_DROP_UNKNOWN]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "the output volume",
+      "optional": false
+    }
+  ]
+}

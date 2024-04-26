@@ -1,0 +1,67 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-tfce",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-tfce [VOLUME-IN]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "DO TFCE ON A VOLUME FILE.\n\nThis command does not do any statistical analysis.  Please use something like PALM if you are just trying to do statistics on your data.\n\nThreshold-free cluster enhancement is a method to increase the relative value of regions that would form clusters in a standard thresholding test.  This is accomplished by evaluating the integral of:\n\ne(h, p)^E * h^H * dh\n\nat each voxel p, where h ranges from 0 to the maximum value in the data, and e(h, p) is the extent of the cluster containing voxel p at threshold h.  Negative values are similarly enhanced by negating the data, running the same process, and negating the result.\n\nThis method is explained in: Smith SM, Nichols TE., \"Threshold-free cluster enhancement: addressing problems of smoothing, threshold dependence and localisation in cluster inference.\" Neuroimage. 2009 Jan 1;44(1):83-98. PMID: 18501637",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume-in",
+      "name": "volume-in",
+      "description": "the volume to run TFCE on",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME-IN]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "the output volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_presmooth_kernel",
+      "name": "opt_presmooth_kernel",
+      "command-line-flag": "-presmooth",
+      "description": "smooth the volume before running TFCE: the size of the gaussian smoothing kernel in mm, as sigma by default",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[OPT_PRESMOOTH_KERNEL]"
+    },
+    {
+      "id": "opt_roi_roi_volume",
+      "name": "opt_roi_roi_volume",
+      "command-line-flag": "-roi",
+      "description": "select a region of interest to run TFCE on: the area to run TFCE on, as a volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_ROI_ROI_VOLUME]"
+    },
+    {
+      "id": "opt_subvolume_subvolume",
+      "name": "opt_subvolume_subvolume",
+      "command-line-flag": "-subvolume",
+      "description": "select a single subvolume: the subvolume number or name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_SUBVOLUME_SUBVOLUME]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "the output volume",
+      "optional": false
+    }
+  ]
+}

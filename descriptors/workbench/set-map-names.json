@@ -1,0 +1,41 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "set-map-names",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -set-map-names [DATA-FILE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "SET THE NAME OF ONE OR MORE MAPS IN A FILE.\n\nSets the name of one or more maps for metric, shape, label, volume, cifti scalar or cifti label files.  You must specify either -name-file, or -from-data-file, or at least one -map option.  The three option types are mutually exclusive.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "data-file",
+      "name": "data-file",
+      "description": "the file to set the map names of",
+      "type": "String",
+      "optional": false,
+      "value-key": "[DATA-FILE]"
+    },
+    {
+      "id": "opt_name_file_file",
+      "name": "opt_name_file_file",
+      "command-line-flag": "-name-file",
+      "description": "use a text file to replace all map names: text file containing map names, one per line",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_NAME_FILE_FILE]"
+    },
+    {
+      "id": "opt_from_data_file_file",
+      "name": "opt_from_data_file_file",
+      "command-line-flag": "-from-data-file",
+      "description": "use the map names from another data file: a data file with the same number of maps",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_FROM_DATA_FILE_FILE]"
+    }
+  ]
+}

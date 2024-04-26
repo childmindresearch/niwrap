@@ -1,0 +1,76 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-gradient",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-gradient [VOLUME-IN]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "GRADIENT OF A VOLUME FILE.\n\nComputes the gradient of the volume by doing linear regressions for each voxel, considering only its face neighbors unless too few face neighbors exist.  The gradient vector is constructed from the partial derivatives of the resulting linear function, and the magnitude of this vector is the output.  If specified, the volume vector output is arranged with the x, y, and z components from a subvolume as consecutive subvolumes.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume-in",
+      "name": "volume-in",
+      "description": "the input volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME-IN]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "the output gradient magnitude volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_presmooth_kernel",
+      "name": "opt_presmooth_kernel",
+      "command-line-flag": "-presmooth",
+      "description": "smooth the volume before computing the gradient: the size of the gaussian smoothing kernel in mm, as sigma by default",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[OPT_PRESMOOTH_KERNEL]"
+    },
+    {
+      "id": "opt_roi_roi_volume",
+      "name": "opt_roi_roi_volume",
+      "command-line-flag": "-roi",
+      "description": "select a region of interest to take the gradient of: the region to take the gradient within",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_ROI_ROI_VOLUME]"
+    },
+    {
+      "id": "opt_vectors",
+      "name": "opt_vectors",
+      "command-line-flag": "-vectors",
+      "description": "output vectors",
+      "type": "Flag",
+      "optional": false,
+      "value-key": "[OPT_VECTORS]"
+    },
+    {
+      "id": "opt_subvolume_subvol",
+      "name": "opt_subvolume_subvol",
+      "command-line-flag": "-subvolume",
+      "description": "select a single subvolume to take the gradient of: the subvolume number or name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_SUBVOLUME_SUBVOL]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "the output gradient magnitude volume",
+      "optional": false
+    }
+  ]
+}

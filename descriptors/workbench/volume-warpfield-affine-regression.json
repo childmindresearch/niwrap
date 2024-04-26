@@ -1,0 +1,49 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-warpfield-affine-regression",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-warpfield-affine-regression [WARPFIELD] [AFFINE-OUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "REGRESS AFFINE FROM WARPFIELD.\n\nFor all voxels in the warpfield, do a regression that predicts the post-warp coordinate from the source coordinate.  When -roi is specified, only consider voxels with a value greater than 0 in <roi-vol>.\n\nThe default is to expect the warpfield to be in relative world coordinates (mm space), and to write the output as a world affine (mm space to mm space).  If you are using FSL-created files and utilities, specify -fnirt and -flirt as needed, as their coordinate conventions are different.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "warpfield",
+      "name": "warpfield",
+      "description": "the input warpfield",
+      "type": "String",
+      "optional": false,
+      "value-key": "[WARPFIELD]"
+    },
+    {
+      "id": "affine-out",
+      "name": "affine-out",
+      "description": "output - the output affine file",
+      "type": "String",
+      "optional": false,
+      "value-key": "[AFFINE-OUT]"
+    },
+    {
+      "id": "opt_roi_roi_vol",
+      "name": "opt_roi_roi_vol",
+      "command-line-flag": "-roi",
+      "description": "only consider voxels within a mask (e.g., a brain mask): the mask volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_ROI_ROI_VOL]"
+    },
+    {
+      "id": "opt_fnirt_source_volume",
+      "name": "opt_fnirt_source_volume",
+      "command-line-flag": "-fnirt",
+      "description": "input is a fnirt warpfield: the source volume used when generating the fnirt warpfield",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_FNIRT_SOURCE_VOLUME]"
+    }
+  ]
+}
