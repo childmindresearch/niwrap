@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-parcel-smoothing",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-parcel-smoothing [DATA-VOLUME] [LABEL-VOLUME] [KERNEL]",
+  "command-line": "wb_command -volume-parcel-smoothing [DATA_VOLUME] [LABEL_VOLUME] [KERNEL] [VOLUME_OUT] [OPT_FWHM] [OPT_FIX_ZEROS] [OPT_SUBVOLUME_SUBVOL]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "data-volume",
-      "name": "data-volume",
+      "id": "data_volume",
+      "name": "data_volume",
       "description": "the volume to smooth",
       "type": "File",
       "optional": false,
-      "value-key": "[DATA-VOLUME]"
+      "value-key": "[DATA_VOLUME]"
     },
     {
-      "id": "label-volume",
-      "name": "label-volume",
+      "id": "label_volume",
+      "name": "label_volume",
       "description": "a label volume containing the parcels to smooth",
       "type": "File",
       "optional": false,
-      "value-key": "[LABEL-VOLUME]"
+      "value-key": "[LABEL_VOLUME]"
     },
     {
       "id": "kernel",

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-separate",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-separate [CIFTI-IN] [DIRECTION]",
+  "command-line": "wb_command -cifti-separate [CIFTI_IN] [DIRECTION] [OPT_VOLUME_ALL] [OPT_LABEL_STRUCTURE] [OPT_METRIC_STRUCTURE] [OPT_VOLUME_STRUCTURE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the cifti to separate a component of",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
       "id": "direction",
@@ -35,6 +35,33 @@
       "type": "Flag",
       "optional": false,
       "value-key": "[OPT_VOLUME_ALL]"
+    },
+    {
+      "id": "opt_label_structure",
+      "name": "opt_label_structure",
+      "command-line-flag": "-label",
+      "description": "separate a surface model into a surface label file: the structure to output",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_LABEL_STRUCTURE]"
+    },
+    {
+      "id": "opt_metric_structure",
+      "name": "opt_metric_structure",
+      "command-line-flag": "-metric",
+      "description": "separate a surface model into a metric file: the structure to output",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_METRIC_STRUCTURE]"
+    },
+    {
+      "id": "opt_volume_structure",
+      "name": "opt_volume_structure",
+      "command-line-flag": "-volume",
+      "description": "separate a volume structure into a volume file: the structure to output",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_VOLUME_STRUCTURE]"
     }
   ]
 }

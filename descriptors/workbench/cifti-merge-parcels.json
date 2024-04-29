@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-merge-parcels",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-merge-parcels [DIRECTION]",
+  "command-line": "wb_command -cifti-merge-parcels [DIRECTION] [CIFTI_OUT] [OPT_CIFTI_CIFTI_IN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -26,6 +26,15 @@
       "type": "File",
       "optional": false,
       "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_cifti_cifti_in",
+      "name": "opt_cifti_cifti_in",
+      "command-line-flag": "-cifti",
+      "description": "specify an input cifti file: a cifti file to merge",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_CIFTI_CIFTI_IN]"
     }
   ],
   "output-files": [

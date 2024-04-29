@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-merge",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-merge",
+  "command-line": "wb_command -volume-merge [VOLUME_OUT] [OPT_VOLUME_VOLUME_IN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -18,6 +18,15 @@
       "type": "File",
       "optional": false,
       "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_volume_volume_in",
+      "name": "opt_volume_volume_in",
+      "command-line-flag": "-volume",
+      "description": "specify an input volume file: a volume file to use subvolumes from",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_VOLUME_VOLUME_IN]"
     }
   ],
   "output-files": [

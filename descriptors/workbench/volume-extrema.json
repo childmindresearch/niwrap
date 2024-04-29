@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-extrema",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-extrema [VOLUME-IN] [DISTANCE]",
+  "command-line": "wb_command -volume-extrema [VOLUME_IN] [DISTANCE] [VOLUME_OUT] [OPT_PRESMOOTH_KERNEL] [OPT_ROI_ROI_VOLUME] [OPT_SUM_SUBVOLS] [OPT_CONSOLIDATE_MODE] [OPT_ONLY_MAXIMA] [OPT_ONLY_MINIMA] [OPT_SUBVOLUME_SUBVOLUME]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "volume-in",
-      "name": "volume-in",
+      "id": "volume_in",
+      "name": "volume_in",
       "description": "volume file to find the extrema of",
       "type": "File",
       "optional": false,
-      "value-key": "[VOLUME-IN]"
+      "value-key": "[VOLUME_IN]"
     },
     {
       "id": "distance",

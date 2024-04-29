@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-resample",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-resample [METRIC-IN] [CURRENT-SPHERE] [NEW-SPHERE] [METHOD]",
+  "command-line": "wb_command -metric-resample [METRIC_IN] [CURRENT_SPHERE] [NEW_SPHERE] [METHOD] [METRIC_OUT] [OPT_CURRENT_ROI_ROI_METRIC] [OPT_VALID_ROI_OUT] [OPT_LARGEST] [OPT_BYPASS_SPHERE_CHECK]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "metric-in",
-      "name": "metric-in",
+      "id": "metric_in",
+      "name": "metric_in",
       "description": "the metric file to resample",
       "type": "File",
       "optional": false,
-      "value-key": "[METRIC-IN]"
+      "value-key": "[METRIC_IN]"
     },
     {
-      "id": "current-sphere",
-      "name": "current-sphere",
+      "id": "current_sphere",
+      "name": "current_sphere",
       "description": "a sphere surface with the mesh that the metric is currently on",
       "type": "File",
       "optional": false,
-      "value-key": "[CURRENT-SPHERE]"
+      "value-key": "[CURRENT_SPHERE]"
     },
     {
-      "id": "new-sphere",
-      "name": "new-sphere",
+      "id": "new_sphere",
+      "name": "new_sphere",
       "description": "a sphere surface that is in register with <current-sphere> and has the desired output mesh",
       "type": "File",
       "optional": false,
-      "value-key": "[NEW-SPHERE]"
+      "value-key": "[NEW_SPHERE]"
     },
     {
       "id": "method",

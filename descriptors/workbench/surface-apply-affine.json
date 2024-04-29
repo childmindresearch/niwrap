@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-apply-affine",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-apply-affine [IN-SURF] [AFFINE]",
+  "command-line": "wb_command -surface-apply-affine [IN_SURF] [AFFINE] [OUT_SURF]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "in-surf",
-      "name": "in-surf",
+      "id": "in_surf",
+      "name": "in_surf",
       "description": "the surface to transform",
       "type": "File",
       "optional": false,
-      "value-key": "[IN-SURF]"
+      "value-key": "[IN_SURF]"
     },
     {
       "id": "affine",

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "scene-file-merge",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -scene-file-merge [SCENE-FILE-OUT]",
+  "command-line": "wb_command -scene-file-merge [SCENE_FILE_OUT] [OPT_SCENE_FILE_SCENE_FILE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,21 @@
   "tags": {},
   "inputs": [
     {
-      "id": "scene-file-out",
-      "name": "scene-file-out",
+      "id": "scene_file_out",
+      "name": "scene_file_out",
       "description": "output - the output scene file",
       "type": "String",
       "optional": false,
-      "value-key": "[SCENE-FILE-OUT]"
+      "value-key": "[SCENE_FILE_OUT]"
+    },
+    {
+      "id": "opt_scene_file_scene_file",
+      "name": "opt_scene_file_scene_file",
+      "command-line-flag": "-scene-file",
+      "description": "specify a scene file to use scenes from: the input scene file",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_SCENE_FILE_SCENE_FILE]"
     }
   ]
 }

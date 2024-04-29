@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "foci-list-coords",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -foci-list-coords [FOCI-FILE] [COORD-FILE-OUT]",
+  "command-line": "wb_command -foci-list-coords [FOCI_FILE] [COORD_FILE_OUT] [OPT_NAMES_OUT_NAMES_FILE_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "foci-file",
-      "name": "foci-file",
+      "id": "foci_file",
+      "name": "foci_file",
       "description": "input foci file",
       "type": "File",
       "optional": false,
-      "value-key": "[FOCI-FILE]"
+      "value-key": "[FOCI_FILE]"
     },
     {
-      "id": "coord-file-out",
-      "name": "coord-file-out",
+      "id": "coord_file_out",
+      "name": "coord_file_out",
       "description": "output - the output coordinate text file",
       "type": "String",
       "optional": false,
-      "value-key": "[COORD-FILE-OUT]"
+      "value-key": "[COORD_FILE_OUT]"
     },
     {
       "id": "opt_names_out_names_file_out",

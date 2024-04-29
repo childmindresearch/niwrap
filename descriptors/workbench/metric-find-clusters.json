@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-find-clusters",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-find-clusters [SURFACE] [METRIC-IN] [VALUE-THRESHOLD] [MINIMUM-AREA]",
+  "command-line": "wb_command -metric-find-clusters [SURFACE] [METRIC_IN] [VALUE_THRESHOLD] [MINIMUM_AREA] [METRIC_OUT] [OPT_LESS_THAN] [OPT_ROI_ROI_METRIC] [OPT_CORRECTED_AREAS_AREA_METRIC] [OPT_COLUMN_COLUMN] [OPT_SIZE_RATIO_RATIO] [OPT_DISTANCE_DISTANCE] [OPT_START_STARTVAL]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,28 +20,28 @@
       "value-key": "[SURFACE]"
     },
     {
-      "id": "metric-in",
-      "name": "metric-in",
+      "id": "metric_in",
+      "name": "metric_in",
       "description": "the input metric",
       "type": "File",
       "optional": false,
-      "value-key": "[METRIC-IN]"
+      "value-key": "[METRIC_IN]"
     },
     {
-      "id": "value-threshold",
-      "name": "value-threshold",
+      "id": "value_threshold",
+      "name": "value_threshold",
       "description": "threshold for data values",
       "type": "Number",
       "optional": false,
-      "value-key": "[VALUE-THRESHOLD]"
+      "value-key": "[VALUE_THRESHOLD]"
     },
     {
-      "id": "minimum-area",
-      "name": "minimum-area",
+      "id": "minimum_area",
+      "name": "minimum_area",
       "description": "threshold for cluster area, in mm^2",
       "type": "Number",
       "optional": false,
-      "value-key": "[MINIMUM-AREA]"
+      "value-key": "[MINIMUM_AREA]"
     },
     {
       "id": "metric_out",

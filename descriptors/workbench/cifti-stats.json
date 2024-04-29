@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-stats",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-stats [CIFTI-IN]",
+  "command-line": "wb_command -cifti-stats [CIFTI_IN] [OPT_REDUCE_OPERATION] [OPT_PERCENTILE_PERCENT] [OPT_COLUMN_COLUMN] [OPT_ROI_ROI_CIFTI] [OPT_SHOW_MAP_NAME]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the input cifti",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
       "id": "opt_reduce_operation",

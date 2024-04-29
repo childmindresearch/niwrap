@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-label-to-roi",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-label-to-roi [LABEL-IN]",
+  "command-line": "wb_command -volume-label-to-roi [LABEL_IN] [VOLUME_OUT] [OPT_NAME_LABEL_NAME] [OPT_KEY_LABEL_KEY] [OPT_MAP_MAP]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "label-in",
-      "name": "label-in",
+      "id": "label_in",
+      "name": "label_in",
       "description": "the input volume label file",
       "type": "File",
       "optional": false,
-      "value-key": "[LABEL-IN]"
+      "value-key": "[LABEL_IN]"
     },
     {
       "id": "volume_out",

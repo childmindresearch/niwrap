@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-extrema",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-extrema [SURFACE] [METRIC-IN] [DISTANCE]",
+  "command-line": "wb_command -metric-extrema [SURFACE] [METRIC_IN] [DISTANCE] [METRIC_OUT] [OPT_PRESMOOTH_KERNEL] [OPT_ROI_ROI_METRIC] [OPT_SUM_COLUMNS] [OPT_CONSOLIDATE_MODE] [OPT_ONLY_MAXIMA] [OPT_ONLY_MINIMA] [OPT_COLUMN_COLUMN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,12 +20,12 @@
       "value-key": "[SURFACE]"
     },
     {
-      "id": "metric-in",
-      "name": "metric-in",
+      "id": "metric_in",
+      "name": "metric_in",
       "description": "the metric to find the extrema of",
       "type": "File",
       "optional": false,
-      "value-key": "[METRIC-IN]"
+      "value-key": "[METRIC_IN]"
     },
     {
       "id": "distance",

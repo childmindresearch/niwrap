@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "label-dilate",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -label-dilate [LABEL] [SURFACE] [DILATE-DIST]",
+  "command-line": "wb_command -label-dilate [LABEL] [SURFACE] [DILATE_DIST] [LABEL_OUT] [OPT_BAD_VERTEX_ROI_ROI_METRIC] [OPT_COLUMN_COLUMN] [OPT_CORRECTED_AREAS_AREA_METRIC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -28,12 +28,12 @@
       "value-key": "[SURFACE]"
     },
     {
-      "id": "dilate-dist",
-      "name": "dilate-dist",
+      "id": "dilate_dist",
+      "name": "dilate_dist",
       "description": "distance in mm to dilate the labels",
       "type": "Number",
       "optional": false,
-      "value-key": "[DILATE-DIST]"
+      "value-key": "[DILATE_DIST]"
     },
     {
       "id": "label_out",

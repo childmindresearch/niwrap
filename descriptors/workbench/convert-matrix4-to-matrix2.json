@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "convert-matrix4-to-matrix2",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -convert-matrix4-to-matrix2 [MATRIX4-WBSPARSE]",
+  "command-line": "wb_command -convert-matrix4-to-matrix2 [MATRIX4_WBSPARSE] [COUNTS_OUT] [OPT_DISTANCES] [OPT_INDIVIDUAL_FIBERS]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "matrix4-wbsparse",
-      "name": "matrix4-wbsparse",
+      "id": "matrix4_wbsparse",
+      "name": "matrix4_wbsparse",
       "description": "a wbsparse matrix4 file",
       "type": "String",
       "optional": false,
-      "value-key": "[MATRIX4-WBSPARSE]"
+      "value-key": "[MATRIX4_WBSPARSE]"
     },
     {
       "id": "counts_out",

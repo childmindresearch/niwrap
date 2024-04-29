@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-to-surface-mapping",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-to-surface-mapping [VOLUME] [SURFACE]",
+  "command-line": "wb_command -volume-to-surface-mapping [VOLUME] [SURFACE] [METRIC_OUT] [OPT_TRILINEAR] [OPT_ENCLOSING] [OPT_CUBIC] [OPT_SUBVOL_SELECT_SUBVOL]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

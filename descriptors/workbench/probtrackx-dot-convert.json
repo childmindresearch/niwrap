@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "probtrackx-dot-convert",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -probtrackx-dot-convert [DOT-FILE]",
+  "command-line": "wb_command -probtrackx-dot-convert [DOT_FILE] [CIFTI_OUT] [OPT_ROW_SURFACE_ROI_METRIC] [OPT_COL_SURFACE_ROI_METRIC] [OPT_TRANSPOSE] [OPT_MAKE_SYMMETRIC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "dot-file",
-      "name": "dot-file",
+      "id": "dot_file",
+      "name": "dot_file",
       "description": "input .dot file",
       "type": "String",
       "optional": false,
-      "value-key": "[DOT-FILE]"
+      "value-key": "[DOT_FILE]"
     },
     {
       "id": "cifti_out",

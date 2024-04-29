@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "convert-matrix4-to-workbench-sparse",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -convert-matrix4-to-workbench-sparse [MATRIX4_1] [MATRIX4_2] [MATRIX4_3] [ORIENTATION-FILE] [VOXEL-LIST] [WB-SPARSE-OUT]",
+  "command-line": "wb_command -convert-matrix4-to-workbench-sparse [MATRIX4_1] [MATRIX4_2] [MATRIX4_3] [ORIENTATION_FILE] [VOXEL_LIST] [WB_SPARSE_OUT] [OPT_SURFACE_SEEDS_SEED_ROI]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -36,28 +36,28 @@
       "value-key": "[MATRIX4_3]"
     },
     {
-      "id": "orientation-file",
-      "name": "orientation-file",
+      "id": "orientation_file",
+      "name": "orientation_file",
       "description": "the .fiberTEMP.nii file this trajectory file applies to",
       "type": "File",
       "optional": false,
-      "value-key": "[ORIENTATION-FILE]"
+      "value-key": "[ORIENTATION_FILE]"
     },
     {
-      "id": "voxel-list",
-      "name": "voxel-list",
+      "id": "voxel_list",
+      "name": "voxel_list",
       "description": "list of white matter voxel index triplets as used in the trajectory matrix",
       "type": "String",
       "optional": false,
-      "value-key": "[VOXEL-LIST]"
+      "value-key": "[VOXEL_LIST]"
     },
     {
-      "id": "wb-sparse-out",
-      "name": "wb-sparse-out",
+      "id": "wb_sparse_out",
+      "name": "wb_sparse_out",
       "description": "output - the output workbench sparse file",
       "type": "String",
       "optional": false,
-      "value-key": "[WB-SPARSE-OUT]"
+      "value-key": "[WB_SPARSE_OUT]"
     },
     {
       "id": "opt_surface_seeds_seed_roi",

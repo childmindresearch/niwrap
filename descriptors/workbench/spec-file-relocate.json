@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "spec-file-relocate",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -spec-file-relocate [INPUT-SPEC] [OUTPUT-SPEC]",
+  "command-line": "wb_command -spec-file-relocate [INPUT_SPEC] [OUTPUT_SPEC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "input-spec",
-      "name": "input-spec",
+      "id": "input_spec",
+      "name": "input_spec",
       "description": "the spec file to use",
       "type": "String",
       "optional": false,
-      "value-key": "[INPUT-SPEC]"
+      "value-key": "[INPUT_SPEC]"
     },
     {
-      "id": "output-spec",
-      "name": "output-spec",
+      "id": "output_spec",
+      "name": "output_spec",
       "description": "output - the new spec file to create",
       "type": "String",
       "optional": false,
-      "value-key": "[OUTPUT-SPEC]"
+      "value-key": "[OUTPUT_SPEC]"
     }
   ]
 }

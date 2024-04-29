@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-find-clusters",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-find-clusters [CIFTI] [SURFACE-VALUE-THRESHOLD] [SURFACE-MINIMUM-AREA] [VOLUME-VALUE-THRESHOLD] [VOLUME-MINIMUM-SIZE] [DIRECTION]",
+  "command-line": "wb_command -cifti-find-clusters [CIFTI] [SURFACE_VALUE_THRESHOLD] [SURFACE_MINIMUM_AREA] [VOLUME_VALUE_THRESHOLD] [VOLUME_MINIMUM_SIZE] [DIRECTION] [CIFTI_OUT] [OPT_LESS_THAN] [OPT_LEFT_SURFACE_SURFACE] [OPT_RIGHT_SURFACE_SURFACE] [OPT_CEREBELLUM_SURFACE_SURFACE] [OPT_CIFTI_ROI_ROI_CIFTI] [OPT_MERGED_VOLUME] [OPT_START_STARTVAL]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,36 +20,36 @@
       "value-key": "[CIFTI]"
     },
     {
-      "id": "surface-value-threshold",
-      "name": "surface-value-threshold",
+      "id": "surface_value_threshold",
+      "name": "surface_value_threshold",
       "description": "threshold for surface data values",
       "type": "Number",
       "optional": false,
-      "value-key": "[SURFACE-VALUE-THRESHOLD]"
+      "value-key": "[SURFACE_VALUE_THRESHOLD]"
     },
     {
-      "id": "surface-minimum-area",
-      "name": "surface-minimum-area",
+      "id": "surface_minimum_area",
+      "name": "surface_minimum_area",
       "description": "threshold for surface cluster area, in mm^2",
       "type": "Number",
       "optional": false,
-      "value-key": "[SURFACE-MINIMUM-AREA]"
+      "value-key": "[SURFACE_MINIMUM_AREA]"
     },
     {
-      "id": "volume-value-threshold",
-      "name": "volume-value-threshold",
+      "id": "volume_value_threshold",
+      "name": "volume_value_threshold",
       "description": "threshold for volume data values",
       "type": "Number",
       "optional": false,
-      "value-key": "[VOLUME-VALUE-THRESHOLD]"
+      "value-key": "[VOLUME_VALUE_THRESHOLD]"
     },
     {
-      "id": "volume-minimum-size",
-      "name": "volume-minimum-size",
+      "id": "volume_minimum_size",
+      "name": "volume_minimum_size",
       "description": "threshold for volume cluster size, in mm^3",
       "type": "Number",
       "optional": false,
-      "value-key": "[VOLUME-MINIMUM-SIZE]"
+      "value-key": "[VOLUME_MINIMUM_SIZE]"
     },
     {
       "id": "direction",

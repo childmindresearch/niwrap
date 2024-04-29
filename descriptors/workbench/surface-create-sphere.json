@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-create-sphere",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-create-sphere [NUM-VERTICES]",
+  "command-line": "wb_command -surface-create-sphere [NUM_VERTICES] [SPHERE_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "num-vertices",
-      "name": "num-vertices",
+      "id": "num_vertices",
+      "name": "num_vertices",
       "description": "desired number of vertices",
       "type": "Integer",
       "optional": false,
-      "value-key": "[NUM-VERTICES]"
+      "value-key": "[NUM_VERTICES]"
     },
     {
       "id": "sphere_out",

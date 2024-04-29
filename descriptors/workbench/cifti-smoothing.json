@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-smoothing",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-smoothing [CIFTI] [SURFACE-KERNEL] [VOLUME-KERNEL] [DIRECTION]",
+  "command-line": "wb_command -cifti-smoothing [CIFTI] [SURFACE_KERNEL] [VOLUME_KERNEL] [DIRECTION] [CIFTI_OUT] [OPT_FWHM] [OPT_LEFT_SURFACE_SURFACE] [OPT_RIGHT_SURFACE_SURFACE] [OPT_CEREBELLUM_SURFACE_SURFACE] [OPT_CIFTI_ROI_ROI_CIFTI] [OPT_FIX_ZEROS_VOLUME] [OPT_FIX_ZEROS_SURFACE] [OPT_MERGED_VOLUME]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,20 +20,20 @@
       "value-key": "[CIFTI]"
     },
     {
-      "id": "surface-kernel",
-      "name": "surface-kernel",
+      "id": "surface_kernel",
+      "name": "surface_kernel",
       "description": "the size of the gaussian surface smoothing kernel in mm, as sigma by default",
       "type": "Number",
       "optional": false,
-      "value-key": "[SURFACE-KERNEL]"
+      "value-key": "[SURFACE_KERNEL]"
     },
     {
-      "id": "volume-kernel",
-      "name": "volume-kernel",
+      "id": "volume_kernel",
+      "name": "volume_kernel",
       "description": "the size of the gaussian volume smoothing kernel in mm, as sigma by default",
       "type": "Number",
       "optional": false,
-      "value-key": "[VOLUME-KERNEL]"
+      "value-key": "[VOLUME_KERNEL]"
     },
     {
       "id": "direction",

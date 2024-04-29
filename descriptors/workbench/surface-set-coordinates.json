@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-set-coordinates",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-set-coordinates [SURFACE-IN] [COORD-METRIC]",
+  "command-line": "wb_command -surface-set-coordinates [SURFACE_IN] [COORD_METRIC] [SURFACE_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "surface-in",
-      "name": "surface-in",
+      "id": "surface_in",
+      "name": "surface_in",
       "description": "the surface to use for the topology",
       "type": "File",
       "optional": false,
-      "value-key": "[SURFACE-IN]"
+      "value-key": "[SURFACE_IN]"
     },
     {
-      "id": "coord-metric",
-      "name": "coord-metric",
+      "id": "coord_metric",
+      "name": "coord_metric",
       "description": "the new coordinates, as a 3-column metric file",
       "type": "File",
       "optional": false,
-      "value-key": "[COORD-METRIC]"
+      "value-key": "[COORD_METRIC]"
     },
     {
       "id": "surface_out",

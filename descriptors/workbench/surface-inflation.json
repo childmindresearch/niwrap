@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-inflation",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-inflation [ANATOMICAL-SURFACE-IN] [SURFACE-IN] [NUMBER-OF-SMOOTHING-CYCLES] [SMOOTHING-STRENGTH] [SMOOTHING-ITERATIONS] [INFLATION-FACTOR]",
+  "command-line": "wb_command -surface-inflation [ANATOMICAL_SURFACE_IN] [SURFACE_IN] [NUMBER_OF_SMOOTHING_CYCLES] [SMOOTHING_STRENGTH] [SMOOTHING_ITERATIONS] [INFLATION_FACTOR] [SURFACE_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,52 +12,52 @@
   "tags": {},
   "inputs": [
     {
-      "id": "anatomical-surface-in",
-      "name": "anatomical-surface-in",
+      "id": "anatomical_surface_in",
+      "name": "anatomical_surface_in",
       "description": "the anatomical surface",
       "type": "File",
       "optional": false,
-      "value-key": "[ANATOMICAL-SURFACE-IN]"
+      "value-key": "[ANATOMICAL_SURFACE_IN]"
     },
     {
-      "id": "surface-in",
-      "name": "surface-in",
+      "id": "surface_in",
+      "name": "surface_in",
       "description": "the surface file to inflate",
       "type": "File",
       "optional": false,
-      "value-key": "[SURFACE-IN]"
+      "value-key": "[SURFACE_IN]"
     },
     {
-      "id": "number-of-smoothing-cycles",
-      "name": "number-of-smoothing-cycles",
+      "id": "number_of_smoothing_cycles",
+      "name": "number_of_smoothing_cycles",
       "description": "number of smoothing cycles",
       "type": "Integer",
       "optional": false,
-      "value-key": "[NUMBER-OF-SMOOTHING-CYCLES]"
+      "value-key": "[NUMBER_OF_SMOOTHING_CYCLES]"
     },
     {
-      "id": "smoothing-strength",
-      "name": "smoothing-strength",
+      "id": "smoothing_strength",
+      "name": "smoothing_strength",
       "description": "smoothing strength (ranges [0.0 - 1.0])",
       "type": "Number",
       "optional": false,
-      "value-key": "[SMOOTHING-STRENGTH]"
+      "value-key": "[SMOOTHING_STRENGTH]"
     },
     {
-      "id": "smoothing-iterations",
-      "name": "smoothing-iterations",
+      "id": "smoothing_iterations",
+      "name": "smoothing_iterations",
       "description": "smoothing iterations",
       "type": "Integer",
       "optional": false,
-      "value-key": "[SMOOTHING-ITERATIONS]"
+      "value-key": "[SMOOTHING_ITERATIONS]"
     },
     {
-      "id": "inflation-factor",
-      "name": "inflation-factor",
+      "id": "inflation_factor",
+      "name": "inflation_factor",
       "description": "inflation factor",
       "type": "Number",
       "optional": false,
-      "value-key": "[INFLATION-FACTOR]"
+      "value-key": "[INFLATION_FACTOR]"
     },
     {
       "id": "surface_out",

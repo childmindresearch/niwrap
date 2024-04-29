@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-apply-warpfield",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-apply-warpfield [IN-SURF] [WARPFIELD]",
+  "command-line": "wb_command -surface-apply-warpfield [IN_SURF] [WARPFIELD] [OUT_SURF] [OPT_FNIRT_FORWARD_WARP]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "in-surf",
-      "name": "in-surf",
+      "id": "in_surf",
+      "name": "in_surf",
       "description": "the surface to transform",
       "type": "File",
       "optional": false,
-      "value-key": "[IN-SURF]"
+      "value-key": "[IN_SURF]"
     },
     {
       "id": "warpfield",

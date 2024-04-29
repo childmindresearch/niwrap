@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-label-export-table",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-label-export-table [LABEL-IN] [MAP] [TABLE-OUT]",
+  "command-line": "wb_command -cifti-label-export-table [LABEL_IN] [MAP] [TABLE_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "label-in",
-      "name": "label-in",
+      "id": "label_in",
+      "name": "label_in",
       "description": "the input cifti label file",
       "type": "File",
       "optional": false,
-      "value-key": "[LABEL-IN]"
+      "value-key": "[LABEL_IN]"
     },
     {
       "id": "map",
@@ -28,12 +28,12 @@
       "value-key": "[MAP]"
     },
     {
-      "id": "table-out",
-      "name": "table-out",
+      "id": "table_out",
+      "name": "table_out",
       "description": "output - the output text file",
       "type": "String",
       "optional": false,
-      "value-key": "[TABLE-OUT]"
+      "value-key": "[TABLE_OUT]"
     }
   ]
 }

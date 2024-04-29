@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-geodesic-distance-all-to-all",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-geodesic-distance-all-to-all [SURFACE]",
+  "command-line": "wb_command -surface-geodesic-distance-all-to-all [SURFACE] [CIFTI_OUT] [OPT_ROI_ROI_METRIC] [OPT_LIMIT_LIMIT_MM] [OPT_CORRECTED_AREAS_AREA_METRIC] [OPT_NAIVE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

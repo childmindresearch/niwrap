@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-create-dense-scalar",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-create-dense-scalar",
+  "command-line": "wb_command -cifti-create-dense-scalar [CIFTI_OUT] [OPT_LEFT_METRIC_METRIC] [OPT_RIGHT_METRIC_METRIC] [OPT_CEREBELLUM_METRIC_METRIC] [OPT_NAME_FILE_FILE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

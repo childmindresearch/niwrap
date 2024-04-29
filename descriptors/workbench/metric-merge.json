@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-merge",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-merge",
+  "command-line": "wb_command -metric-merge [METRIC_OUT] [OPT_METRIC_METRIC_IN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -18,6 +18,15 @@
       "type": "File",
       "optional": false,
       "value-key": "[METRIC_OUT]"
+    },
+    {
+      "id": "opt_metric_metric_in",
+      "name": "opt_metric_metric_in",
+      "command-line-flag": "-metric",
+      "description": "specify an input metric: a metric file to use columns from",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_METRIC_METRIC_IN]"
     }
   ],
   "output-files": [

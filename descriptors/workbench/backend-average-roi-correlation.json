@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "backend-average-roi-correlation",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -backend-average-roi-correlation [INDEX-LIST] [OUT-FILE]",
+  "command-line": "wb_command -backend-average-roi-correlation [INDEX_LIST] [OUT_FILE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "index-list",
-      "name": "index-list",
+      "id": "index_list",
+      "name": "index_list",
       "description": "comma separated list of cifti indexes to average and then correlate",
       "type": "String",
       "optional": false,
-      "value-key": "[INDEX-LIST]"
+      "value-key": "[INDEX_LIST]"
     },
     {
-      "id": "out-file",
-      "name": "out-file",
+      "id": "out_file",
+      "name": "out_file",
       "description": "file to write the average row to",
       "type": "String",
       "optional": false,
-      "value-key": "[OUT-FILE]"
+      "value-key": "[OUT_FILE]"
     }
   ]
 }

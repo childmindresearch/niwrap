@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-parcellate",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-parcellate [CIFTI-IN] [CIFTI-LABEL] [DIRECTION]",
+  "command-line": "wb_command -cifti-parcellate [CIFTI_IN] [CIFTI_LABEL] [DIRECTION] [CIFTI_OUT] [OPT_SPATIAL_WEIGHTS] [OPT_CIFTI_WEIGHTS_WEIGHT_CIFTI] [OPT_METHOD_METHOD] [OPT_ONLY_NUMERIC] [OPT_FILL_VALUE_VALUE] [OPT_NONEMPTY_MASK_OUT] [OPT_LEGACY_MODE] [OPT_INCLUDE_EMPTY]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the cifti file to parcellate",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
-      "id": "cifti-label",
-      "name": "cifti-label",
+      "id": "cifti_label",
+      "name": "cifti_label",
       "description": "a cifti label file to use for the parcellation",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-LABEL]"
+      "value-key": "[CIFTI_LABEL]"
     },
     {
       "id": "direction",

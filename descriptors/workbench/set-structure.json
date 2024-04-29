@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "set-structure",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -set-structure [DATA-FILE] [STRUCTURE]",
+  "command-line": "wb_command -set-structure [DATA_FILE] [STRUCTURE] [OPT_SURFACE_TYPE_TYPE] [OPT_SURFACE_SECONDARY_TYPE_SECONDARY_TYPE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "data-file",
-      "name": "data-file",
+      "id": "data_file",
+      "name": "data_file",
       "description": "the file to set the structure of",
       "type": "String",
       "optional": false,
-      "value-key": "[DATA-FILE]"
+      "value-key": "[DATA_FILE]"
     },
     {
       "id": "structure",
@@ -37,13 +37,13 @@
       "value-key": "[OPT_SURFACE_TYPE_TYPE]"
     },
     {
-      "id": "opt_surface_secondary_type_secondary type",
-      "name": "opt_surface_secondary_type_secondary type",
+      "id": "opt_surface_secondary_type_secondary_type",
+      "name": "opt_surface_secondary_type_secondary_type",
       "command-line-flag": "-surface-secondary-type",
       "description": "set the secondary type of a surface (only used if file is a surface file): name of surface secondary type",
       "type": "String",
       "optional": false,
-      "value-key": "[OPT_SURFACE_SECONDARY_TYPE_SECONDARY TYPE]"
+      "value-key": "[OPT_SURFACE_SECONDARY_TYPE_SECONDARY_TYPE]"
     }
   ]
 }

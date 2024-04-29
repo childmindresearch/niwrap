@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-merge",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-merge",
+  "command-line": "wb_command -cifti-merge [CIFTI_OUT] [OPT_DIRECTION_DIRECTION] [OPT_MEM_LIMIT_LIMIT_GB] [OPT_CIFTI_CIFTI_IN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -29,13 +29,22 @@
       "value-key": "[OPT_DIRECTION_DIRECTION]"
     },
     {
-      "id": "opt_mem_limit_limit_GB",
-      "name": "opt_mem_limit_limit_GB",
+      "id": "opt_mem_limit_limit_gb",
+      "name": "opt_mem_limit_limit_gb",
       "command-line-flag": "-mem-limit",
       "description": "restrict memory used for file reading efficiency: memory limit in gigabytes",
       "type": "Number",
       "optional": false,
       "value-key": "[OPT_MEM_LIMIT_LIMIT_GB]"
+    },
+    {
+      "id": "opt_cifti_cifti_in",
+      "name": "opt_cifti_cifti_in",
+      "command-line-flag": "-cifti",
+      "description": "specify an input cifti file: a cifti file to use data from",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_CIFTI_CIFTI_IN]"
     }
   ],
   "output-files": [

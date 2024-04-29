@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-generate-inflated",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-generate-inflated [ANATOMICAL-SURFACE-IN]",
+  "command-line": "wb_command -surface-generate-inflated [ANATOMICAL_SURFACE_IN] [INFLATED_SURFACE_OUT] [VERY_INFLATED_SURFACE_OUT] [OPT_ITERATIONS_SCALE_ITERATIONS_SCALE_VALUE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "anatomical-surface-in",
-      "name": "anatomical-surface-in",
+      "id": "anatomical_surface_in",
+      "name": "anatomical_surface_in",
       "description": "the anatomical surface",
       "type": "File",
       "optional": false,
-      "value-key": "[ANATOMICAL-SURFACE-IN]"
+      "value-key": "[ANATOMICAL_SURFACE_IN]"
     },
     {
       "id": "inflated_surface_out",

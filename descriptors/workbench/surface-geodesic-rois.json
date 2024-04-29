@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-geodesic-rois",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-geodesic-rois [SURFACE] [LIMIT] [VERTEX-LIST-FILE]",
+  "command-line": "wb_command -surface-geodesic-rois [SURFACE] [LIMIT] [VERTEX_LIST_FILE] [METRIC_OUT] [OPT_GAUSSIAN_SIGMA] [OPT_OVERLAP_LOGIC_METHOD] [OPT_NAMES_NAME_LIST_FILE] [OPT_CORRECTED_AREAS_AREA_METRIC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -28,12 +28,12 @@
       "value-key": "[LIMIT]"
     },
     {
-      "id": "vertex-list-file",
-      "name": "vertex-list-file",
+      "id": "vertex_list_file",
+      "name": "vertex_list_file",
       "description": "a text file containing the vertices to draw ROIs around",
       "type": "String",
       "optional": false,
-      "value-key": "[VERTEX-LIST-FILE]"
+      "value-key": "[VERTEX_LIST_FILE]"
     },
     {
       "id": "metric_out",

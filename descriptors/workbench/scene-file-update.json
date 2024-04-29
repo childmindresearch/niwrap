@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "scene-file-update",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -scene-file-update [INPUT-SCENE-FILE] [OUTPUT-SCENE-FILE] [SCENE-NAME-OR-NUMBER]",
+  "command-line": "wb_command -scene-file-update [INPUT_SCENE_FILE] [OUTPUT_SCENE_FILE] [SCENE_NAME_OR_NUMBER] [OPT_FIX_MAP_PALETTE_SETTINGS] [OPT_REMOVE_MISSING_FILES] [OPT_ERROR] [OPT_VERBOSE] [OPT_COPY_MAP_ONE_PALETTE_DATA_FILE_NAME_SUFFIX] [OPT_DATA_FILE_ADD_NAME_OF_DATA_FILE] [OPT_DATA_FILE_REMOVE_NAME_OF_DATA_FILE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "input-scene-file",
-      "name": "input-scene-file",
+      "id": "input_scene_file",
+      "name": "input_scene_file",
       "description": "the input scene file",
       "type": "String",
       "optional": false,
-      "value-key": "[INPUT-SCENE-FILE]"
+      "value-key": "[INPUT_SCENE_FILE]"
     },
     {
-      "id": "output-scene-file",
-      "name": "output-scene-file",
+      "id": "output_scene_file",
+      "name": "output_scene_file",
       "description": "the new scene file to create",
       "type": "String",
       "optional": false,
-      "value-key": "[OUTPUT-SCENE-FILE]"
+      "value-key": "[OUTPUT_SCENE_FILE]"
     },
     {
-      "id": "scene-name-or-number",
-      "name": "scene-name-or-number",
+      "id": "scene_name_or_number",
+      "name": "scene_name_or_number",
       "description": "name or number (starting at one) of the scene in the scene file",
       "type": "String",
       "optional": false,
-      "value-key": "[SCENE-NAME-OR-NUMBER]"
+      "value-key": "[SCENE_NAME_OR_NUMBER]"
     },
     {
       "id": "opt_fix_map_palette_settings",
@@ -70,6 +70,33 @@
       "type": "Flag",
       "optional": false,
       "value-key": "[OPT_VERBOSE]"
+    },
+    {
+      "id": "opt_copy_map_one_palette_data_file_name_suffix",
+      "name": "opt_copy_map_one_palette_data_file_name_suffix",
+      "command-line-flag": "-copy-map-one-palette",
+      "description": "Copy palettes settings from first map to all maps in a data file: Name of palette mapped data file (cifti, metric, volume)",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_COPY_MAP_ONE_PALETTE_DATA_FILE_NAME_SUFFIX]"
+    },
+    {
+      "id": "opt_data_file_add_name_of_data_file",
+      "name": "opt_data_file_add_name_of_data_file",
+      "command-line-flag": "-data-file-add",
+      "description": "Add a data file to scene's loaded files: Name of data file.  If a data file not in the current directory, it is best to use an absolute path (a relative path may work).  Instead of a data file, this value may be the name of a text file (must end in \".txt\") that contains the names of one or more data files, one per line.\nExample on UNIX to create a text file containing all CIFTI scalar files in the current directory with absolute paths:\n   ls -d $PWD/*dscalar.nii  > file.txt",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_DATA_FILE_ADD_NAME_OF_DATA_FILE]"
+    },
+    {
+      "id": "opt_data_file_remove_name_of_data_file",
+      "name": "opt_data_file_remove_name_of_data_file",
+      "command-line-flag": "-data-file-remove",
+      "description": "Remove a data file from scene's loaded files: Name of data file.  If a data file not in the current directory, it is best to use an absolute path (a relative path may work).  Instead of a data file, this value may be the name of a text file (must end in \".txt\") that contains the names of one or more data files, one per line.\nExample on UNIX to create a text file containing all CIFTI scalar files in the current directory with absolute paths:\n   ls -d $PWD/*dscalar.nii  > file.txt",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_DATA_FILE_REMOVE_NAME_OF_DATA_FILE]"
     }
   ]
 }

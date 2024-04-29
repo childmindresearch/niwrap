@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-closest-vertex",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-closest-vertex [SURFACE] [COORD-LIST-FILE] [VERTEX-LIST-OUT]",
+  "command-line": "wb_command -surface-closest-vertex [SURFACE] [COORD_LIST_FILE] [VERTEX_LIST_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,20 +20,20 @@
       "value-key": "[SURFACE]"
     },
     {
-      "id": "coord-list-file",
-      "name": "coord-list-file",
+      "id": "coord_list_file",
+      "name": "coord_list_file",
       "description": "text file with coordinates",
       "type": "String",
       "optional": false,
-      "value-key": "[COORD-LIST-FILE]"
+      "value-key": "[COORD_LIST_FILE]"
     },
     {
-      "id": "vertex-list-out",
-      "name": "vertex-list-out",
+      "id": "vertex_list_out",
+      "name": "vertex_list_out",
       "description": "output - the output text file with vertex numbers",
       "type": "String",
       "optional": false,
-      "value-key": "[VERTEX-LIST-OUT]"
+      "value-key": "[VERTEX_LIST_OUT]"
     }
   ]
 }

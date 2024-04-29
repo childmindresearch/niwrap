@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "nifti-information",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -nifti-information [NIFTI-FILE]",
+  "command-line": "wb_command -nifti-information [NIFTI_FILE] [OPT_PRINT_HEADER] [OPT_PRINT_MATRIX] [OPT_PRINT_XML]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "nifti-file",
-      "name": "nifti-file",
+      "id": "nifti_file",
+      "name": "nifti_file",
       "description": "the nifti/cifti file to examine",
       "type": "String",
       "optional": false,
-      "value-key": "[NIFTI-FILE]"
+      "value-key": "[NIFTI_FILE]"
     },
     {
       "id": "opt_print_header",

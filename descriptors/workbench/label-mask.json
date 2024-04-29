@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "label-mask",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -label-mask [LABEL] [MASK]",
+  "command-line": "wb_command -label-mask [LABEL] [MASK] [LABEL_OUT] [OPT_COLUMN_COLUMN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

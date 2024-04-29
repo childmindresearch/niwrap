@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-modify-sphere",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-modify-sphere [SPHERE-IN] [RADIUS]",
+  "command-line": "wb_command -surface-modify-sphere [SPHERE_IN] [RADIUS] [SPHERE_OUT] [OPT_RECENTER]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "sphere-in",
-      "name": "sphere-in",
+      "id": "sphere_in",
+      "name": "sphere_in",
       "description": "the sphere to modify",
       "type": "File",
       "optional": false,
-      "value-key": "[SPHERE-IN]"
+      "value-key": "[SPHERE_IN]"
     },
     {
       "id": "radius",

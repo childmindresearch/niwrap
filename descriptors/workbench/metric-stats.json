@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-stats",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-stats [METRIC-IN]",
+  "command-line": "wb_command -metric-stats [METRIC_IN] [OPT_REDUCE_OPERATION] [OPT_PERCENTILE_PERCENT] [OPT_COLUMN_COLUMN] [OPT_ROI_ROI_METRIC] [OPT_SHOW_MAP_NAME]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "metric-in",
-      "name": "metric-in",
+      "id": "metric_in",
+      "name": "metric_in",
       "description": "the input metric",
       "type": "File",
       "optional": false,
-      "value-key": "[METRIC-IN]"
+      "value-key": "[METRIC_IN]"
     },
     {
       "id": "opt_reduce_operation",

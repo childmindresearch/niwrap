@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "label-to-volume-mapping",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -label-to-volume-mapping [LABEL] [SURFACE] [VOLUME-SPACE]",
+  "command-line": "wb_command -label-to-volume-mapping [LABEL] [SURFACE] [VOLUME_SPACE] [VOLUME_OUT] [OPT_NEAREST_VERTEX_DISTANCE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -28,12 +28,12 @@
       "value-key": "[SURFACE]"
     },
     {
-      "id": "volume-space",
-      "name": "volume-space",
+      "id": "volume_space",
+      "name": "volume_space",
       "description": "a volume file in the desired output volume space",
       "type": "File",
       "optional": false,
-      "value-key": "[VOLUME-SPACE]"
+      "value-key": "[VOLUME_SPACE]"
     },
     {
       "id": "volume_out",

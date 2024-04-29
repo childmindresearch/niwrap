@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-sphere-triangular-patches",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-sphere-triangular-patches [SPHERE] [DIVISIONS] [TEXT-OUT]",
+  "command-line": "wb_command -surface-sphere-triangular-patches [SPHERE] [DIVISIONS] [TEXT_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -28,12 +28,12 @@
       "value-key": "[DIVISIONS]"
     },
     {
-      "id": "text-out",
-      "name": "text-out",
+      "id": "text_out",
+      "name": "text_out",
       "description": "output - text file for the vertex numbers of the patches",
       "type": "String",
       "optional": false,
-      "value-key": "[TEXT-OUT]"
+      "value-key": "[TEXT_OUT]"
     }
   ]
 }

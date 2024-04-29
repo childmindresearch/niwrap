@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "gifti-convert",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -gifti-convert [GIFTI-ENCODING] [INPUT-GIFTI-FILE] [OUTPUT-GIFTI-FILE]",
+  "command-line": "wb_command -gifti-convert [GIFTI_ENCODING] [INPUT_GIFTI_FILE] [OUTPUT_GIFTI_FILE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "gifti-encoding",
-      "name": "gifti-encoding",
+      "id": "gifti_encoding",
+      "name": "gifti_encoding",
       "description": "what the output encoding should be",
       "type": "String",
       "optional": false,
-      "value-key": "[GIFTI-ENCODING]"
+      "value-key": "[GIFTI_ENCODING]"
     },
     {
-      "id": "input-gifti-file",
-      "name": "input-gifti-file",
+      "id": "input_gifti_file",
+      "name": "input_gifti_file",
       "description": "the input gifti file",
       "type": "String",
       "optional": false,
-      "value-key": "[INPUT-GIFTI-FILE]"
+      "value-key": "[INPUT_GIFTI_FILE]"
     },
     {
-      "id": "output-gifti-file",
-      "name": "output-gifti-file",
+      "id": "output_gifti_file",
+      "name": "output_gifti_file",
       "description": "output - the output gifti file",
       "type": "String",
       "optional": false,
-      "value-key": "[OUTPUT-GIFTI-FILE]"
+      "value-key": "[OUTPUT_GIFTI_FILE]"
     }
   ]
 }

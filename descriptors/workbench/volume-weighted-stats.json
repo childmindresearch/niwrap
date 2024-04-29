@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-weighted-stats",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-weighted-stats [VOLUME-IN]",
+  "command-line": "wb_command -volume-weighted-stats [VOLUME_IN] [OPT_WEIGHT_VOLUME_WEIGHT_VOLUME] [OPT_SUBVOLUME_SUBVOLUME] [OPT_ROI_ROI_VOLUME] [OPT_MEAN] [OPT_STDEV] [OPT_PERCENTILE_PERCENT] [OPT_SUM] [OPT_SHOW_MAP_NAME]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "volume-in",
-      "name": "volume-in",
+      "id": "volume_in",
+      "name": "volume_in",
       "description": "the input volume",
       "type": "File",
       "optional": false,
-      "value-key": "[VOLUME-IN]"
+      "value-key": "[VOLUME_IN]"
     },
     {
       "id": "opt_weight_volume_weight_volume",

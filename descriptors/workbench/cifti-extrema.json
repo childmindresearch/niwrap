@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-extrema",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-extrema [CIFTI] [SURFACE-DISTANCE] [VOLUME-DISTANCE] [DIRECTION]",
+  "command-line": "wb_command -cifti-extrema [CIFTI] [SURFACE_DISTANCE] [VOLUME_DISTANCE] [DIRECTION] [CIFTI_OUT] [OPT_LEFT_SURFACE_SURFACE] [OPT_RIGHT_SURFACE_SURFACE] [OPT_CEREBELLUM_SURFACE_SURFACE] [OPT_SURFACE_PRESMOOTH_SURFACE_KERNEL] [OPT_VOLUME_PRESMOOTH_VOLUME_KERNEL] [OPT_PRESMOOTH_FWHM] [OPT_MERGED_VOLUME] [OPT_SUM_MAPS] [OPT_CONSOLIDATE_MODE] [OPT_ONLY_MAXIMA] [OPT_ONLY_MINIMA]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,20 +20,20 @@
       "value-key": "[CIFTI]"
     },
     {
-      "id": "surface-distance",
-      "name": "surface-distance",
+      "id": "surface_distance",
+      "name": "surface_distance",
       "description": "the minimum distance between extrema of the same type, for surface components",
       "type": "Number",
       "optional": false,
-      "value-key": "[SURFACE-DISTANCE]"
+      "value-key": "[SURFACE_DISTANCE]"
     },
     {
-      "id": "volume-distance",
-      "name": "volume-distance",
+      "id": "volume_distance",
+      "name": "volume_distance",
       "description": "the minimum distance between extrema of the same type, for volume components",
       "type": "Number",
       "optional": false,
-      "value-key": "[VOLUME-DISTANCE]"
+      "value-key": "[VOLUME_DISTANCE]"
     },
     {
       "id": "direction",

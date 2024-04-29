@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-create-parcellated-from-template",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-create-parcellated-from-template [CIFTI-TEMPLATE] [MODIFY-DIRECTION]",
+  "command-line": "wb_command -cifti-create-parcellated-from-template [CIFTI_TEMPLATE] [MODIFY_DIRECTION] [CIFTI_OUT] [OPT_FILL_VALUE_VALUE] [OPT_CIFTI_CIFTI_IN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-template",
-      "name": "cifti-template",
+      "id": "cifti_template",
+      "name": "cifti_template",
       "description": "a cifti file with the template parcel mapping along column",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-TEMPLATE]"
+      "value-key": "[CIFTI_TEMPLATE]"
     },
     {
-      "id": "modify-direction",
-      "name": "modify-direction",
+      "id": "modify_direction",
+      "name": "modify_direction",
       "description": "which dimension of the output file should match the template (integer, 'ROW', or 'COLUMN')",
       "type": "String",
       "optional": false,
-      "value-key": "[MODIFY-DIRECTION]"
+      "value-key": "[MODIFY_DIRECTION]"
     },
     {
       "id": "cifti_out",
@@ -43,6 +43,15 @@
       "type": "Number",
       "optional": false,
       "value-key": "[OPT_FILL_VALUE_VALUE]"
+    },
+    {
+      "id": "opt_cifti_cifti_in",
+      "name": "opt_cifti_cifti_in",
+      "command-line-flag": "-cifti",
+      "description": "specify an input cifti file: the input parcellated cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_CIFTI_CIFTI_IN]"
     }
   ],
   "output-files": [

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "fiber-dot-products",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -fiber-dot-products [WHITE-SURF] [FIBER-FILE] [MAX-DIST] [DIRECTION]",
+  "command-line": "wb_command -fiber-dot-products [WHITE_SURF] [FIBER_FILE] [MAX_DIST] [DIRECTION] [DOT_METRIC] [F_METRIC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "white-surf",
-      "name": "white-surf",
+      "id": "white_surf",
+      "name": "white_surf",
       "description": "the white/gray boundary surface",
       "type": "File",
       "optional": false,
-      "value-key": "[WHITE-SURF]"
+      "value-key": "[WHITE_SURF]"
     },
     {
-      "id": "fiber-file",
-      "name": "fiber-file",
+      "id": "fiber_file",
+      "name": "fiber_file",
       "description": "the fiber orientation file",
       "type": "File",
       "optional": false,
-      "value-key": "[FIBER-FILE]"
+      "value-key": "[FIBER_FILE]"
     },
     {
-      "id": "max-dist",
-      "name": "max-dist",
+      "id": "max_dist",
+      "name": "max_dist",
       "description": "the maximum distance from any surface vertex a fiber population may be, in mm",
       "type": "Number",
       "optional": false,
-      "value-key": "[MAX-DIST]"
+      "value-key": "[MAX_DIST]"
     },
     {
       "id": "direction",

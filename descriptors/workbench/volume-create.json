@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-create",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-create [I-DIM] [J-DIM] [K-DIM]",
+  "command-line": "wb_command -volume-create [I_DIM] [J_DIM] [K_DIM] [VOLUME_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "i-dim",
-      "name": "i-dim",
+      "id": "i_dim",
+      "name": "i_dim",
       "description": "length of first dimension",
       "type": "Integer",
       "optional": false,
-      "value-key": "[I-DIM]"
+      "value-key": "[I_DIM]"
     },
     {
-      "id": "j-dim",
-      "name": "j-dim",
+      "id": "j_dim",
+      "name": "j_dim",
       "description": "length of second dimension",
       "type": "Integer",
       "optional": false,
-      "value-key": "[J-DIM]"
+      "value-key": "[J_DIM]"
     },
     {
-      "id": "k-dim",
-      "name": "k-dim",
+      "id": "k_dim",
+      "name": "k_dim",
       "description": "length of third dimension",
       "type": "Integer",
       "optional": false,
-      "value-key": "[K-DIM]"
+      "value-key": "[K_DIM]"
     },
     {
       "id": "volume_out",

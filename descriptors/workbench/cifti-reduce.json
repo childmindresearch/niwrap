@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-reduce",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-reduce [CIFTI-IN] [OPERATION]",
+  "command-line": "wb_command -cifti-reduce [CIFTI_IN] [OPERATION] [CIFTI_OUT] [OPT_DIRECTION_DIRECTION] [OPT_ONLY_NUMERIC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the cifti file to reduce",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
       "id": "operation",

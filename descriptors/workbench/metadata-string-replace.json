@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metadata-string-replace",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metadata-string-replace [INPUT-FILE] [FIND-STRING] [REPLACE-STRING] [OUTPUT-FILE]",
+  "command-line": "wb_command -metadata-string-replace [INPUT_FILE] [FIND_STRING] [REPLACE_STRING] [OUTPUT_FILE] [OPT_CASE_INSENSITIVE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,36 +12,36 @@
   "tags": {},
   "inputs": [
     {
-      "id": "input-file",
-      "name": "input-file",
+      "id": "input_file",
+      "name": "input_file",
       "description": "the file to replace metadata in",
       "type": "String",
       "optional": false,
-      "value-key": "[INPUT-FILE]"
+      "value-key": "[INPUT_FILE]"
     },
     {
-      "id": "find-string",
-      "name": "find-string",
+      "id": "find_string",
+      "name": "find_string",
       "description": "the string to find",
       "type": "String",
       "optional": false,
-      "value-key": "[FIND-STRING]"
+      "value-key": "[FIND_STRING]"
     },
     {
-      "id": "replace-string",
-      "name": "replace-string",
+      "id": "replace_string",
+      "name": "replace_string",
       "description": "the string to replace <find-string> with",
       "type": "String",
       "optional": false,
-      "value-key": "[REPLACE-STRING]"
+      "value-key": "[REPLACE_STRING]"
     },
     {
-      "id": "output-file",
-      "name": "output-file",
+      "id": "output_file",
+      "name": "output_file",
       "description": "output - the name to save the modified file as",
       "type": "String",
       "optional": false,
-      "value-key": "[OUTPUT-FILE]"
+      "value-key": "[OUTPUT_FILE]"
     },
     {
       "id": "opt_case_insensitive",

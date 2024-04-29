@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-affine-regression",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-affine-regression [SOURCE] [TARGET] [AFFINE-OUT]",
+  "command-line": "wb_command -surface-affine-regression [SOURCE] [TARGET] [AFFINE_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -28,12 +28,12 @@
       "value-key": "[TARGET]"
     },
     {
-      "id": "affine-out",
-      "name": "affine-out",
+      "id": "affine_out",
+      "name": "affine_out",
       "description": "output - the output affine file",
       "type": "String",
       "optional": false,
-      "value-key": "[AFFINE-OUT]"
+      "value-key": "[AFFINE_OUT]"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-false-correlation",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-false-correlation [CIFTI-IN] [3D-DIST] [GEO-OUTER] [GEO-INNER]",
+  "command-line": "wb_command -cifti-false-correlation [CIFTI_IN] [3D_DIST] [GEO_OUTER] [GEO_INNER] [CIFTI_OUT] [OPT_LEFT_SURFACE_SURFACE] [OPT_RIGHT_SURFACE_SURFACE] [OPT_CEREBELLUM_SURFACE_SURFACE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,36 +12,36 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the cifti file to use for correlation",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
-      "id": "3D-dist",
-      "name": "3D-dist",
+      "id": "3d_dist",
+      "name": "3d_dist",
       "description": "maximum 3D distance to check around each vertex",
       "type": "Number",
       "optional": false,
-      "value-key": "[3D-DIST]"
+      "value-key": "[3D_DIST]"
     },
     {
-      "id": "geo-outer",
-      "name": "geo-outer",
+      "id": "geo_outer",
+      "name": "geo_outer",
       "description": "maximum geodesic distance to use for neighboring correlation",
       "type": "Number",
       "optional": false,
-      "value-key": "[GEO-OUTER]"
+      "value-key": "[GEO_OUTER]"
     },
     {
-      "id": "geo-inner",
-      "name": "geo-inner",
+      "id": "geo_inner",
+      "name": "geo_inner",
       "description": "minimum geodesic distance to use for neighboring correlation",
       "type": "Number",
       "optional": false,
-      "value-key": "[GEO-INNER]"
+      "value-key": "[GEO_INNER]"
     },
     {
       "id": "cifti_out",

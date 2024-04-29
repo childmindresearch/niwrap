@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-convert",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-convert",
+  "command-line": "wb_command -metric-convert [OPT_TO_NIFTI_METRIC_IN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

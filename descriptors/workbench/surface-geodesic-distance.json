@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-geodesic-distance",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-geodesic-distance [SURFACE] [VERTEX]",
+  "command-line": "wb_command -surface-geodesic-distance [SURFACE] [VERTEX] [METRIC_OUT] [OPT_NAIVE] [OPT_LIMIT_LIMIT_MM] [OPT_CORRECTED_AREAS_AREA_METRIC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

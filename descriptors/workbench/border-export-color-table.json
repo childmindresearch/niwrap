@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "border-export-color-table",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -border-export-color-table [BORDER-FILE] [TABLE-OUT]",
+  "command-line": "wb_command -border-export-color-table [BORDER_FILE] [TABLE_OUT] [OPT_CLASS_COLORS]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "border-file",
-      "name": "border-file",
+      "id": "border_file",
+      "name": "border_file",
       "description": "the input border file",
       "type": "File",
       "optional": false,
-      "value-key": "[BORDER-FILE]"
+      "value-key": "[BORDER_FILE]"
     },
     {
-      "id": "table-out",
-      "name": "table-out",
+      "id": "table_out",
+      "name": "table_out",
       "description": "output - the output text file",
       "type": "String",
       "optional": false,
-      "value-key": "[TABLE-OUT]"
+      "value-key": "[TABLE_OUT]"
     },
     {
       "id": "opt_class_colors",

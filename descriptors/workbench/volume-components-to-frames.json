@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-components-to-frames",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-components-to-frames [INPUT]",
+  "command-line": "wb_command -volume-components-to-frames [INPUT] [OUTPUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-reduce",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-reduce [VOLUME-IN] [OPERATION]",
+  "command-line": "wb_command -volume-reduce [VOLUME_IN] [OPERATION] [VOLUME_OUT] [OPT_ONLY_NUMERIC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "volume-in",
-      "name": "volume-in",
+      "id": "volume_in",
+      "name": "volume_in",
       "description": "the volume file to reduce",
       "type": "File",
       "optional": false,
-      "value-key": "[VOLUME-IN]"
+      "value-key": "[VOLUME_IN]"
     },
     {
       "id": "operation",

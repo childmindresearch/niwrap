@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-capture-plane",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-capture-plane [VOLUME] [SUBVOLUME] [INTERP] [H-DIM] [V-DIM] [SCALE-MIN] [SCALE-MAX] [BOTTOM-LEFT-X] [BOTTOM-LEFT-Y] [BOTTOM-LEFT-Z] [BOTTOM-RIGHT-X] [BOTTOM-RIGHT-Y] [BOTTOM-RIGHT-Z] [TOP-LEFT-X] [TOP-LEFT-Y] [TOP-LEFT-Z] [IMAGE]",
+  "command-line": "wb_command -volume-capture-plane [VOLUME] [SUBVOLUME] [INTERP] [H_DIM] [V_DIM] [SCALE_MIN] [SCALE_MAX] [BOTTOM_LEFT_X] [BOTTOM_LEFT_Y] [BOTTOM_LEFT_Z] [BOTTOM_RIGHT_X] [BOTTOM_RIGHT_Y] [BOTTOM_RIGHT_Z] [TOP_LEFT_X] [TOP_LEFT_Y] [TOP_LEFT_Z] [IMAGE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -36,108 +36,108 @@
       "value-key": "[INTERP]"
     },
     {
-      "id": "h-dim",
-      "name": "h-dim",
+      "id": "h_dim",
+      "name": "h_dim",
       "description": "width of output image, in pixels",
       "type": "Integer",
       "optional": false,
-      "value-key": "[H-DIM]"
+      "value-key": "[H_DIM]"
     },
     {
-      "id": "v-dim",
-      "name": "v-dim",
+      "id": "v_dim",
+      "name": "v_dim",
       "description": "height of output image, in pixels",
       "type": "Integer",
       "optional": false,
-      "value-key": "[V-DIM]"
+      "value-key": "[V_DIM]"
     },
     {
-      "id": "scale-min",
-      "name": "scale-min",
+      "id": "scale_min",
+      "name": "scale_min",
       "description": "value to render as black",
       "type": "Number",
       "optional": false,
-      "value-key": "[SCALE-MIN]"
+      "value-key": "[SCALE_MIN]"
     },
     {
-      "id": "scale-max",
-      "name": "scale-max",
+      "id": "scale_max",
+      "name": "scale_max",
       "description": "value to render as white",
       "type": "Number",
       "optional": false,
-      "value-key": "[SCALE-MAX]"
+      "value-key": "[SCALE_MAX]"
     },
     {
-      "id": "bottom-left-x",
-      "name": "bottom-left-x",
+      "id": "bottom_left_x",
+      "name": "bottom_left_x",
       "description": "x-coordinate of the bottom left of the output image",
       "type": "Number",
       "optional": false,
-      "value-key": "[BOTTOM-LEFT-X]"
+      "value-key": "[BOTTOM_LEFT_X]"
     },
     {
-      "id": "bottom-left-y",
-      "name": "bottom-left-y",
+      "id": "bottom_left_y",
+      "name": "bottom_left_y",
       "description": "y-coordinate of the bottom left of the output image",
       "type": "Number",
       "optional": false,
-      "value-key": "[BOTTOM-LEFT-Y]"
+      "value-key": "[BOTTOM_LEFT_Y]"
     },
     {
-      "id": "bottom-left-z",
-      "name": "bottom-left-z",
+      "id": "bottom_left_z",
+      "name": "bottom_left_z",
       "description": "z-coordinate of the bottom left of the output image",
       "type": "Number",
       "optional": false,
-      "value-key": "[BOTTOM-LEFT-Z]"
+      "value-key": "[BOTTOM_LEFT_Z]"
     },
     {
-      "id": "bottom-right-x",
-      "name": "bottom-right-x",
+      "id": "bottom_right_x",
+      "name": "bottom_right_x",
       "description": "x-coordinate of the bottom right of the output image",
       "type": "Number",
       "optional": false,
-      "value-key": "[BOTTOM-RIGHT-X]"
+      "value-key": "[BOTTOM_RIGHT_X]"
     },
     {
-      "id": "bottom-right-y",
-      "name": "bottom-right-y",
+      "id": "bottom_right_y",
+      "name": "bottom_right_y",
       "description": "y-coordinate of the bottom right of the output image",
       "type": "Number",
       "optional": false,
-      "value-key": "[BOTTOM-RIGHT-Y]"
+      "value-key": "[BOTTOM_RIGHT_Y]"
     },
     {
-      "id": "bottom-right-z",
-      "name": "bottom-right-z",
+      "id": "bottom_right_z",
+      "name": "bottom_right_z",
       "description": "z-coordinate of the bottom right of the output image",
       "type": "Number",
       "optional": false,
-      "value-key": "[BOTTOM-RIGHT-Z]"
+      "value-key": "[BOTTOM_RIGHT_Z]"
     },
     {
-      "id": "top-left-x",
-      "name": "top-left-x",
+      "id": "top_left_x",
+      "name": "top_left_x",
       "description": "x-coordinate of the top left of the output image",
       "type": "Number",
       "optional": false,
-      "value-key": "[TOP-LEFT-X]"
+      "value-key": "[TOP_LEFT_X]"
     },
     {
-      "id": "top-left-y",
-      "name": "top-left-y",
+      "id": "top_left_y",
+      "name": "top_left_y",
       "description": "y-coordinate of the top left of the output image",
       "type": "Number",
       "optional": false,
-      "value-key": "[TOP-LEFT-Y]"
+      "value-key": "[TOP_LEFT_Y]"
     },
     {
-      "id": "top-left-z",
-      "name": "top-left-z",
+      "id": "top_left_z",
+      "name": "top_left_z",
       "description": "z-coordinate of the top left of the output image",
       "type": "Number",
       "optional": false,
-      "value-key": "[TOP-LEFT-Z]"
+      "value-key": "[TOP_LEFT_Z]"
     },
     {
       "id": "image",

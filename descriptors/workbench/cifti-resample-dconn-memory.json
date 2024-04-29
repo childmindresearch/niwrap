@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-resample-dconn-memory",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-resample-dconn-memory [CIFTI-IN] [CIFTI-TEMPLATE] [TEMPLATE-DIRECTION] [SURFACE-METHOD] [VOLUME-METHOD]",
+  "command-line": "wb_command -cifti-resample-dconn-memory [CIFTI_IN] [CIFTI_TEMPLATE] [TEMPLATE_DIRECTION] [SURFACE_METHOD] [VOLUME_METHOD] [CIFTI_OUT] [OPT_SURFACE_LARGEST] [OPT_VOLUME_PREDILATE_DILATE_MM] [OPT_SURFACE_POSTDILATE_DILATE_MM] [OPT_AFFINE_AFFINE_FILE] [OPT_WARPFIELD_WARPFIELD]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,44 +12,44 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the cifti file to resample",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
-      "id": "cifti-template",
-      "name": "cifti-template",
+      "id": "cifti_template",
+      "name": "cifti_template",
       "description": "a cifti file containing the cifti space to resample to",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-TEMPLATE]"
+      "value-key": "[CIFTI_TEMPLATE]"
     },
     {
-      "id": "template-direction",
-      "name": "template-direction",
+      "id": "template_direction",
+      "name": "template_direction",
       "description": "the direction of the template to use as the resampling space, ROW or COLUMN",
       "type": "String",
       "optional": false,
-      "value-key": "[TEMPLATE-DIRECTION]"
+      "value-key": "[TEMPLATE_DIRECTION]"
     },
     {
-      "id": "surface-method",
-      "name": "surface-method",
+      "id": "surface_method",
+      "name": "surface_method",
       "description": "specify a surface resampling method",
       "type": "String",
       "optional": false,
-      "value-key": "[SURFACE-METHOD]"
+      "value-key": "[SURFACE_METHOD]"
     },
     {
-      "id": "volume-method",
-      "name": "volume-method",
+      "id": "volume_method",
+      "name": "volume_method",
       "description": "specify a volume interpolation method",
       "type": "String",
       "optional": false,
-      "value-key": "[VOLUME-METHOD]"
+      "value-key": "[VOLUME_METHOD]"
     },
     {
       "id": "cifti_out",

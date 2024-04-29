@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-roi-average",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-roi-average [CIFTI-IN] [TEXT-OUT]",
+  "command-line": "wb_command -cifti-roi-average [CIFTI_IN] [TEXT_OUT] [OPT_CIFTI_ROI_ROI_CIFTI] [OPT_LEFT_ROI_ROI_METRIC] [OPT_RIGHT_ROI_ROI_METRIC] [OPT_CEREBELLUM_ROI_ROI_METRIC] [OPT_VOL_ROI_ROI_VOL]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the cifti file to average rows from",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
-      "id": "text-out",
-      "name": "text-out",
+      "id": "text_out",
+      "name": "text_out",
       "description": "output text file of the average values",
       "type": "String",
       "optional": false,
-      "value-key": "[TEXT-OUT]"
+      "value-key": "[TEXT_OUT]"
     },
     {
       "id": "opt_cifti_roi_roi_cifti",

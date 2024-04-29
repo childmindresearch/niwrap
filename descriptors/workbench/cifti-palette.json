@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-palette",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-palette [CIFTI-IN] [MODE]",
+  "command-line": "wb_command -cifti-palette [CIFTI_IN] [MODE] [CIFTI_OUT] [OPT_COLUMN_COLUMN] [OPT_INTERPOLATE_INTERPOLATE] [OPT_DISP_POS_DISPLAY] [OPT_DISP_NEG_DISPLAY] [OPT_DISP_ZERO_DISPLAY] [OPT_PALETTE_NAME_NAME] [OPT_INVERSION_TYPE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the cifti input",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
       "id": "mode",

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "file-information",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -file-information [DATA-FILE]",
+  "command-line": "wb_command -file-information [DATA_FILE] [OPT_NO_MAP_INFO] [OPT_ONLY_STEP_INTERVAL] [OPT_ONLY_NUMBER_OF_MAPS] [OPT_ONLY_MAP_NAMES] [OPT_ONLY_METADATA] [OPT_ONLY_CIFTI_XML] [OPT_CZI] [OPT_CZI_ALL_SUB_BLOCKS] [OPT_CZI_XML]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "data-file",
-      "name": "data-file",
+      "id": "data_file",
+      "name": "data_file",
       "description": "data file",
       "type": "String",
       "optional": false,
-      "value-key": "[DATA-FILE]"
+      "value-key": "[DATA_FILE]"
     },
     {
       "id": "opt_no_map_info",

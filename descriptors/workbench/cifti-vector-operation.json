@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-vector-operation",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-vector-operation [VECTORS-A] [VECTORS-B] [OPERATION]",
+  "command-line": "wb_command -cifti-vector-operation [VECTORS_A] [VECTORS_B] [OPERATION] [CIFTI_OUT] [OPT_NORMALIZE_A] [OPT_NORMALIZE_B] [OPT_NORMALIZE_OUTPUT] [OPT_MAGNITUDE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "vectors-a",
-      "name": "vectors-a",
+      "id": "vectors_a",
+      "name": "vectors_a",
       "description": "first vector input file",
       "type": "File",
       "optional": false,
-      "value-key": "[VECTORS-A]"
+      "value-key": "[VECTORS_A]"
     },
     {
-      "id": "vectors-b",
-      "name": "vectors-b",
+      "id": "vectors_b",
+      "name": "vectors_b",
       "description": "second vector input file",
       "type": "File",
       "optional": false,
-      "value-key": "[VECTORS-B]"
+      "value-key": "[VECTORS_B]"
     },
     {
       "id": "operation",

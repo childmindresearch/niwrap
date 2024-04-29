@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-cross-correlation",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-cross-correlation [CIFTI-A] [CIFTI-B]",
+  "command-line": "wb_command -cifti-cross-correlation [CIFTI_A] [CIFTI_B] [CIFTI_OUT] [OPT_WEIGHTS_WEIGHT_FILE] [OPT_FISHER_Z] [OPT_MEM_LIMIT_LIMIT_GB]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-a",
-      "name": "cifti-a",
+      "id": "cifti_a",
+      "name": "cifti_a",
       "description": "first input cifti file",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-A]"
+      "value-key": "[CIFTI_A]"
     },
     {
-      "id": "cifti-b",
-      "name": "cifti-b",
+      "id": "cifti_b",
+      "name": "cifti_b",
       "description": "second input cifti file",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-B]"
+      "value-key": "[CIFTI_B]"
     },
     {
       "id": "cifti_out",
@@ -54,8 +54,8 @@
       "value-key": "[OPT_FISHER_Z]"
     },
     {
-      "id": "opt_mem_limit_limit_GB",
-      "name": "opt_mem_limit_limit_GB",
+      "id": "opt_mem_limit_limit_gb",
+      "name": "opt_mem_limit_limit_gb",
       "command-line-flag": "-mem-limit",
       "description": "restrict memory usage: memory limit in gigabytes",
       "type": "Number",

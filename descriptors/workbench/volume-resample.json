@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-resample",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-resample [VOLUME-IN] [VOLUME-SPACE] [METHOD]",
+  "command-line": "wb_command -volume-resample [VOLUME_IN] [VOLUME_SPACE] [METHOD] [VOLUME_OUT] [OPT_AFFINE_AFFINE] [OPT_AFFINE_SERIES_AFFINE_SERIES] [OPT_WARP_WARPFIELD]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "volume-in",
-      "name": "volume-in",
+      "id": "volume_in",
+      "name": "volume_in",
       "description": "volume to resample",
       "type": "File",
       "optional": false,
-      "value-key": "[VOLUME-IN]"
+      "value-key": "[VOLUME_IN]"
     },
     {
-      "id": "volume-space",
-      "name": "volume-space",
+      "id": "volume_space",
+      "name": "volume_space",
       "description": "a volume file in the volume space you want for the output",
       "type": "String",
       "optional": false,
-      "value-key": "[VOLUME-SPACE]"
+      "value-key": "[VOLUME_SPACE]"
     },
     {
       "id": "method",
@@ -42,6 +42,33 @@
       "type": "File",
       "optional": false,
       "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_affine_affine",
+      "name": "opt_affine_affine",
+      "command-line-flag": "-affine",
+      "description": "add an affine transform: the affine file to use",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_AFFINE_AFFINE]"
+    },
+    {
+      "id": "opt_affine_series_affine_series",
+      "name": "opt_affine_series_affine_series",
+      "command-line-flag": "-affine-series",
+      "description": "add an independent affine per-frame: text file containing 12 or 16 numbers per line, each being a row-major flattened affine",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_AFFINE_SERIES_AFFINE_SERIES]"
+    },
+    {
+      "id": "opt_warp_warpfield",
+      "name": "opt_warp_warpfield",
+      "command-line-flag": "-warp",
+      "description": "add a nonlinear warpfield transform: the warpfield file",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OPT_WARP_WARPFIELD]"
     }
   ],
   "output-files": [

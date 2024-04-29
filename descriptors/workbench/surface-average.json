@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-average",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-average",
+  "command-line": "wb_command -surface-average [SURFACE_OUT] [OPT_STDDEV] [OPT_UNCERTAINTY] [OPT_SURF_SURFACE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -36,6 +36,15 @@
       "type": "Flag",
       "optional": false,
       "value-key": "[OPT_UNCERTAINTY]"
+    },
+    {
+      "id": "opt_surf_surface",
+      "name": "opt_surf_surface",
+      "command-line-flag": "-surf",
+      "description": "specify a surface to include in the average: a surface file to average",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_SURF_SURFACE]"
     }
   ],
   "output-files": [

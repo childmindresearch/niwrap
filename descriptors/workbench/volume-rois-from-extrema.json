@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-rois-from-extrema",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-rois-from-extrema [VOLUME-IN] [LIMIT]",
+  "command-line": "wb_command -volume-rois-from-extrema [VOLUME_IN] [LIMIT] [VOLUME_OUT] [OPT_GAUSSIAN_SIGMA] [OPT_ROI_ROI_VOLUME] [OPT_OVERLAP_LOGIC_METHOD] [OPT_SUBVOLUME_SUBVOL]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "volume-in",
-      "name": "volume-in",
+      "id": "volume_in",
+      "name": "volume_in",
       "description": "the input volume",
       "type": "File",
       "optional": false,
-      "value-key": "[VOLUME-IN]"
+      "value-key": "[VOLUME_IN]"
     },
     {
       "id": "limit",

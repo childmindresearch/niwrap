@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "zip-scene-file",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -zip-scene-file [SCENE-FILE] [EXTRACT-FOLDER] [ZIP-FILE]",
+  "command-line": "wb_command -zip-scene-file [SCENE_FILE] [EXTRACT_FOLDER] [ZIP_FILE] [OPT_BASE_DIR_DIRECTORY] [OPT_SKIP_MISSING] [OPT_WRITE_SCENE_FILE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "scene-file",
-      "name": "scene-file",
+      "id": "scene_file",
+      "name": "scene_file",
       "description": "the scene file to make the zip file from",
       "type": "String",
       "optional": false,
-      "value-key": "[SCENE-FILE]"
+      "value-key": "[SCENE_FILE]"
     },
     {
-      "id": "extract-folder",
-      "name": "extract-folder",
+      "id": "extract_folder",
+      "name": "extract_folder",
       "description": "the name of the folder created when the zip file is unzipped",
       "type": "String",
       "optional": false,
-      "value-key": "[EXTRACT-FOLDER]"
+      "value-key": "[EXTRACT_FOLDER]"
     },
     {
-      "id": "zip-file",
-      "name": "zip-file",
+      "id": "zip_file",
+      "name": "zip_file",
       "description": "out - the zip file that will be created",
       "type": "String",
       "optional": false,
-      "value-key": "[ZIP-FILE]"
+      "value-key": "[ZIP_FILE]"
     },
     {
       "id": "opt_base_dir_directory",

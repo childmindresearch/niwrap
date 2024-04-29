@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "annotation-resample",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -annotation-resample [ANNOTATION-IN] [ANNOTATION-OUT]",
+  "command-line": "wb_command -annotation-resample [ANNOTATION_IN] [ANNOTATION_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "annotation-in",
-      "name": "annotation-in",
+      "id": "annotation_in",
+      "name": "annotation_in",
       "description": "the annotation file to resample",
       "type": "File",
       "optional": false,
-      "value-key": "[ANNOTATION-IN]"
+      "value-key": "[ANNOTATION_IN]"
     },
     {
-      "id": "annotation-out",
-      "name": "annotation-out",
+      "id": "annotation_out",
+      "name": "annotation_out",
       "description": "name of resampled annotation file",
       "type": "String",
       "optional": false,
-      "value-key": "[ANNOTATION-OUT]"
+      "value-key": "[ANNOTATION_OUT]"
     }
   ]
 }

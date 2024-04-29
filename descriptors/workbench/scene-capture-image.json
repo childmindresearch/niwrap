@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "scene-capture-image",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -scene-capture-image [SCENE-FILE] [SCENE-NAME-OR-NUMBER] [IMAGE-FILE-NAME]",
+  "command-line": "wb_command -scene-capture-image [SCENE_FILE] [SCENE_NAME_OR_NUMBER] [IMAGE_FILE_NAME] [OPT_SIZE_WINDOW] [OPT_SIZE_CAPTURE] [OPT_SIZE_WIDTH_WIDTH] [OPT_SIZE_HEIGHT_HEIGHT] [OPT_UNITS_UNITS] [OPT_MARGIN_SIZE] [OPT_NO_SCENE_COLORS] [OPT_SHOW_CAPTURE_SETTINGS] [OPT_RENDERER_RENDERER] [OPT_PRINT_IMAGE_INFO]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "scene-file",
-      "name": "scene-file",
+      "id": "scene_file",
+      "name": "scene_file",
       "description": "scene file",
       "type": "String",
       "optional": false,
-      "value-key": "[SCENE-FILE]"
+      "value-key": "[SCENE_FILE]"
     },
     {
-      "id": "scene-name-or-number",
-      "name": "scene-name-or-number",
+      "id": "scene_name_or_number",
+      "name": "scene_name_or_number",
       "description": "name or number (starting at one) of the scene in the scene file",
       "type": "String",
       "optional": false,
-      "value-key": "[SCENE-NAME-OR-NUMBER]"
+      "value-key": "[SCENE_NAME_OR_NUMBER]"
     },
     {
-      "id": "image-file-name",
-      "name": "image-file-name",
+      "id": "image_file_name",
+      "name": "image_file_name",
       "description": "output - image file name\n   The file name must end with a valid extension that identifies the image file format.  Valid extensions on this system are: (.bmp .jpeg .jpg .png .ppm).\n\n   If there is more than one window in the scene, multiple image files are output with the window's number inserted into the name of the image file immediately before the image file's extension.",
       "type": "String",
       "optional": false,
-      "value-key": "[IMAGE-FILE-NAME]"
+      "value-key": "[IMAGE_FILE_NAME]"
     },
     {
       "id": "opt_size_window",
@@ -108,8 +108,8 @@
       "value-key": "[OPT_SHOW_CAPTURE_SETTINGS]"
     },
     {
-      "id": "opt_renderer_Renderer",
-      "name": "opt_renderer_Renderer",
+      "id": "opt_renderer_renderer",
+      "name": "opt_renderer_renderer",
       "command-line-flag": "-renderer",
       "description": "Select renderer for drawing image: Name of renderer to use for drawing image",
       "type": "String",

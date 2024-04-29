@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-parcel-resampling",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-parcel-resampling [VOLUME-IN] [CUR-PARCELS] [NEW-PARCELS] [KERNEL]",
+  "command-line": "wb_command -volume-parcel-resampling [VOLUME_IN] [CUR_PARCELS] [NEW_PARCELS] [KERNEL] [VOLUME_OUT] [OPT_FIX_ZEROS] [OPT_FWHM] [OPT_SUBVOLUME_SUBVOL]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "volume-in",
-      "name": "volume-in",
+      "id": "volume_in",
+      "name": "volume_in",
       "description": "the input data volume",
       "type": "File",
       "optional": false,
-      "value-key": "[VOLUME-IN]"
+      "value-key": "[VOLUME_IN]"
     },
     {
-      "id": "cur-parcels",
-      "name": "cur-parcels",
+      "id": "cur_parcels",
+      "name": "cur_parcels",
       "description": "label volume of where the parcels currently are",
       "type": "File",
       "optional": false,
-      "value-key": "[CUR-PARCELS]"
+      "value-key": "[CUR_PARCELS]"
     },
     {
-      "id": "new-parcels",
-      "name": "new-parcels",
+      "id": "new_parcels",
+      "name": "new_parcels",
       "description": "label volume of where the parcels should be",
       "type": "File",
       "optional": false,
-      "value-key": "[NEW-PARCELS]"
+      "value-key": "[NEW_PARCELS]"
     },
     {
       "id": "kernel",

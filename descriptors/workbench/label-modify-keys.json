@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "label-modify-keys",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -label-modify-keys [LABEL-IN] [REMAP-FILE]",
+  "command-line": "wb_command -label-modify-keys [LABEL_IN] [REMAP_FILE] [LABEL_OUT] [OPT_COLUMN_COLUMN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "label-in",
-      "name": "label-in",
+      "id": "label_in",
+      "name": "label_in",
       "description": "the input label file",
       "type": "File",
       "optional": false,
-      "value-key": "[LABEL-IN]"
+      "value-key": "[LABEL_IN]"
     },
     {
-      "id": "remap-file",
-      "name": "remap-file",
+      "id": "remap_file",
+      "name": "remap_file",
       "description": "text file with old and new key values",
       "type": "String",
       "optional": false,
-      "value-key": "[REMAP-FILE]"
+      "value-key": "[REMAP_FILE]"
     },
     {
       "id": "label_out",

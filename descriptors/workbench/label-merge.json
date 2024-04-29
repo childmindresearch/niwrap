@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "label-merge",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -label-merge",
+  "command-line": "wb_command -label-merge [LABEL_OUT] [OPT_LABEL_LABEL_IN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -18,6 +18,15 @@
       "type": "File",
       "optional": false,
       "value-key": "[LABEL_OUT]"
+    },
+    {
+      "id": "opt_label_label_in",
+      "name": "opt_label_label_in",
+      "command-line-flag": "-label",
+      "description": "specify an input label: a label file to use columns from",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_LABEL_LABEL_IN]"
     }
   ],
   "output-files": [

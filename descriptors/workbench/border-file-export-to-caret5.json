@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "border-file-export-to-caret5",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -border-file-export-to-caret5 [BORDER-FILE] [OUTPUT-FILE-PREFIX]",
+  "command-line": "wb_command -border-file-export-to-caret5 [BORDER_FILE] [OUTPUT_FILE_PREFIX] [OPT_SURFACE_SURFACE_IN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,29 @@
   "tags": {},
   "inputs": [
     {
-      "id": "border-file",
-      "name": "border-file",
+      "id": "border_file",
+      "name": "border_file",
       "description": "workbench border file",
       "type": "String",
       "optional": false,
-      "value-key": "[BORDER-FILE]"
+      "value-key": "[BORDER_FILE]"
     },
     {
-      "id": "output-file-prefix",
-      "name": "output-file-prefix",
+      "id": "output_file_prefix",
+      "name": "output_file_prefix",
       "description": "prefix for name of output caret5 border/borderproj/bordercolor files",
       "type": "String",
       "optional": false,
-      "value-key": "[OUTPUT-FILE-PREFIX]"
+      "value-key": "[OUTPUT_FILE_PREFIX]"
+    },
+    {
+      "id": "opt_surface_surface_in",
+      "name": "opt_surface_surface_in",
+      "command-line-flag": "-surface",
+      "description": "specify an input surface: a surface file for unprojection of borders",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_SURFACE_SURFACE_IN]"
     }
   ]
 }

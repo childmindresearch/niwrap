@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-reorient",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-reorient [VOLUME] [ORIENT-STRING] [VOLUME-OUT]",
+  "command-line": "wb_command -volume-reorient [VOLUME] [ORIENT_STRING] [VOLUME_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,20 +20,20 @@
       "value-key": "[VOLUME]"
     },
     {
-      "id": "orient-string",
-      "name": "orient-string",
+      "id": "orient_string",
+      "name": "orient_string",
       "description": "the desired orientation",
       "type": "String",
       "optional": false,
-      "value-key": "[ORIENT-STRING]"
+      "value-key": "[ORIENT_STRING]"
     },
     {
-      "id": "volume-out",
-      "name": "volume-out",
+      "id": "volume_out",
+      "name": "volume_out",
       "description": "out - the reoriented volume",
       "type": "String",
       "optional": false,
-      "value-key": "[VOLUME-OUT]"
+      "value-key": "[VOLUME_OUT]"
     }
   ]
 }

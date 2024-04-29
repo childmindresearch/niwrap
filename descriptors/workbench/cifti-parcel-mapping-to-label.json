@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-parcel-mapping-to-label",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-parcel-mapping-to-label [CIFTI-IN] [DIRECTION] [TEMPLATE-CIFTI]",
+  "command-line": "wb_command -cifti-parcel-mapping-to-label [CIFTI_IN] [DIRECTION] [TEMPLATE_CIFTI] [DLABEL_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the input parcellated file",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
       "id": "direction",
@@ -28,12 +28,12 @@
       "value-key": "[DIRECTION]"
     },
     {
-      "id": "template-cifti",
-      "name": "template-cifti",
+      "id": "template_cifti",
+      "name": "template_cifti",
       "description": "a cifti file with the desired dense mapping along column",
       "type": "File",
       "optional": false,
-      "value-key": "[TEMPLATE-CIFTI]"
+      "value-key": "[TEMPLATE_CIFTI]"
     },
     {
       "id": "dlabel_out",

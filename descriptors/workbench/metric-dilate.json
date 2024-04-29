@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-dilate",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-dilate [METRIC] [SURFACE] [DISTANCE]",
+  "command-line": "wb_command -metric-dilate [METRIC] [SURFACE] [DISTANCE] [METRIC_OUT] [OPT_BAD_VERTEX_ROI_ROI_METRIC] [OPT_DATA_ROI_ROI_METRIC] [OPT_COLUMN_COLUMN] [OPT_NEAREST] [OPT_LINEAR] [OPT_EXPONENT_EXPONENT] [OPT_CORRECTED_AREAS_AREA_METRIC] [OPT_LEGACY_CUTOFF]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

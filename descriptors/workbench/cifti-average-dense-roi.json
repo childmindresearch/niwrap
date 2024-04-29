@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-average-dense-roi",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-average-dense-roi",
+  "command-line": "wb_command -cifti-average-dense-roi [CIFTI_OUT] [OPT_CIFTI_ROI_ROI_CIFTI] [OPT_LEFT_ROI_ROI_METRIC] [OPT_RIGHT_ROI_ROI_METRIC] [OPT_CEREBELLUM_ROI_ROI_METRIC] [OPT_VOL_ROI_ROI_VOL] [OPT_LEFT_AREA_SURF_LEFT_SURF] [OPT_RIGHT_AREA_SURF_RIGHT_SURF] [OPT_CEREBELLUM_AREA_SURF_CEREBELLUM_SURF] [OPT_CIFTI_CIFTI_IN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -90,6 +90,15 @@
       "type": "File",
       "optional": false,
       "value-key": "[OPT_CEREBELLUM_AREA_SURF_CEREBELLUM_SURF]"
+    },
+    {
+      "id": "opt_cifti_cifti_in",
+      "name": "opt_cifti_cifti_in",
+      "command-line-flag": "-cifti",
+      "description": "specify an input cifti file: a cifti file to average across",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_CIFTI_CIFTI_IN]"
     }
   ],
   "output-files": [

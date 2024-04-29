@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-cut-resample",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-cut-resample [SURFACE-IN] [CURRENT-SPHERE] [NEW-SPHERE]",
+  "command-line": "wb_command -surface-cut-resample [SURFACE_IN] [CURRENT_SPHERE] [NEW_SPHERE] [SURFACE_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "surface-in",
-      "name": "surface-in",
+      "id": "surface_in",
+      "name": "surface_in",
       "description": "the surface file to resample",
       "type": "File",
       "optional": false,
-      "value-key": "[SURFACE-IN]"
+      "value-key": "[SURFACE_IN]"
     },
     {
-      "id": "current-sphere",
-      "name": "current-sphere",
+      "id": "current_sphere",
+      "name": "current_sphere",
       "description": "a sphere surface with the mesh that the input surface is currently on",
       "type": "File",
       "optional": false,
-      "value-key": "[CURRENT-SPHERE]"
+      "value-key": "[CURRENT_SPHERE]"
     },
     {
-      "id": "new-sphere",
-      "name": "new-sphere",
+      "id": "new_sphere",
+      "name": "new_sphere",
       "description": "a sphere surface that is in register with <current-sphere> and has the desired output mesh",
       "type": "File",
       "optional": false,
-      "value-key": "[NEW-SPHERE]"
+      "value-key": "[NEW_SPHERE]"
     },
     {
       "id": "surface_out",

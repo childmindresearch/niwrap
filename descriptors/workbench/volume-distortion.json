@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-distortion",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-distortion [WARPFIELD]",
+  "command-line": "wb_command -volume-distortion [WARPFIELD] [VOLUME_OUT] [OPT_FNIRT_SOURCE_VOLUME] [OPT_CIRCULAR] [OPT_LOG2]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-distortion",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-distortion [SURFACE-REFERENCE] [SURFACE-DISTORTED]",
+  "command-line": "wb_command -surface-distortion [SURFACE_REFERENCE] [SURFACE_DISTORTED] [METRIC_OUT] [OPT_SMOOTH_SIGMA] [OPT_CARET5_METHOD] [OPT_EDGE_METHOD] [OPT_LOCAL_AFFINE_METHOD]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "surface-reference",
-      "name": "surface-reference",
+      "id": "surface_reference",
+      "name": "surface_reference",
       "description": "the reference surface",
       "type": "File",
       "optional": false,
-      "value-key": "[SURFACE-REFERENCE]"
+      "value-key": "[SURFACE_REFERENCE]"
     },
     {
-      "id": "surface-distorted",
-      "name": "surface-distorted",
+      "id": "surface_distorted",
+      "name": "surface_distorted",
       "description": "the distorted surface",
       "type": "File",
       "optional": false,
-      "value-key": "[SURFACE-DISTORTED]"
+      "value-key": "[SURFACE_DISTORTED]"
     },
     {
       "id": "metric_out",

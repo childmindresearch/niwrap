@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "foci-get-projection-vertex",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -foci-get-projection-vertex [FOCI] [SURFACE]",
+  "command-line": "wb_command -foci-get-projection-vertex [FOCI] [SURFACE] [METRIC_OUT] [OPT_NAME_NAME]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

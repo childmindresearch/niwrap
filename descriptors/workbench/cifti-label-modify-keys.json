@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-label-modify-keys",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-label-modify-keys [CIFTI-IN] [REMAP-FILE]",
+  "command-line": "wb_command -cifti-label-modify-keys [CIFTI_IN] [REMAP_FILE] [CIFTI_OUT] [OPT_COLUMN_COLUMN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the input dlabel file",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
-      "id": "remap-file",
-      "name": "remap-file",
+      "id": "remap_file",
+      "name": "remap_file",
       "description": "text file with old and new key values",
       "type": "String",
       "optional": false,
-      "value-key": "[REMAP-FILE]"
+      "value-key": "[REMAP_FILE]"
     },
     {
       "id": "cifti_out",

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-smoothing",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-smoothing [SURFACE] [METRIC-IN] [SMOOTHING-KERNEL]",
+  "command-line": "wb_command -metric-smoothing [SURFACE] [METRIC_IN] [SMOOTHING_KERNEL] [METRIC_OUT] [OPT_FWHM] [OPT_ROI_ROI_METRIC] [OPT_FIX_ZEROS] [OPT_COLUMN_COLUMN] [OPT_CORRECTED_AREAS_AREA_METRIC] [OPT_METHOD_METHOD]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,20 +20,20 @@
       "value-key": "[SURFACE]"
     },
     {
-      "id": "metric-in",
-      "name": "metric-in",
+      "id": "metric_in",
+      "name": "metric_in",
       "description": "the metric to smooth",
       "type": "File",
       "optional": false,
-      "value-key": "[METRIC-IN]"
+      "value-key": "[METRIC_IN]"
     },
     {
-      "id": "smoothing-kernel",
-      "name": "smoothing-kernel",
+      "id": "smoothing_kernel",
+      "name": "smoothing_kernel",
       "description": "the size of the gaussian smoothing kernel in mm, as sigma by default",
       "type": "Number",
       "optional": false,
-      "value-key": "[SMOOTHING-KERNEL]"
+      "value-key": "[SMOOTHING_KERNEL]"
     },
     {
       "id": "metric_out",

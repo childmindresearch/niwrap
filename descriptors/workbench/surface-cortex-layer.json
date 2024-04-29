@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-cortex-layer",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-cortex-layer [WHITE-SURFACE] [PIAL-SURFACE] [LOCATION]",
+  "command-line": "wb_command -surface-cortex-layer [WHITE_SURFACE] [PIAL_SURFACE] [LOCATION] [OUT_SURFACE] [OPT_PLACEMENT_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "white-surface",
-      "name": "white-surface",
+      "id": "white_surface",
+      "name": "white_surface",
       "description": "the white matter surface",
       "type": "File",
       "optional": false,
-      "value-key": "[WHITE-SURFACE]"
+      "value-key": "[WHITE_SURFACE]"
     },
     {
-      "id": "pial-surface",
-      "name": "pial-surface",
+      "id": "pial_surface",
+      "name": "pial_surface",
       "description": "the pial surface",
       "type": "File",
       "optional": false,
-      "value-key": "[PIAL-SURFACE]"
+      "value-key": "[PIAL_SURFACE]"
     },
     {
       "id": "location",

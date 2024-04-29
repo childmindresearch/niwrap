@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-label-probability",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-label-probability [LABEL-MAPS]",
+  "command-line": "wb_command -volume-label-probability [LABEL_MAPS] [PROBABILITY_OUT] [OPT_EXCLUDE_UNLABELED]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "label-maps",
-      "name": "label-maps",
+      "id": "label_maps",
+      "name": "label_maps",
       "description": "volume label file containing individual label maps from many subjects",
       "type": "File",
       "optional": false,
-      "value-key": "[LABEL-MAPS]"
+      "value-key": "[LABEL_MAPS]"
     },
     {
       "id": "probability_out",

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-estimate-fwhm",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-estimate-fwhm [CIFTI]",
+  "command-line": "wb_command -cifti-estimate-fwhm [CIFTI] [OPT_MERGED_VOLUME] [OPT_COLUMN_COLUMN] [OPT_WHOLE_FILE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

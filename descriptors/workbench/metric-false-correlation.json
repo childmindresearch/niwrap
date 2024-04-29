@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-false-correlation",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-false-correlation [SURFACE] [METRIC-IN] [3D-DIST] [GEO-OUTER] [GEO-INNER]",
+  "command-line": "wb_command -metric-false-correlation [SURFACE] [METRIC_IN] [3D_DIST] [GEO_OUTER] [GEO_INNER] [METRIC_OUT] [OPT_ROI_ROI_METRIC] [OPT_DUMP_TEXT_TEXT_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,36 +20,36 @@
       "value-key": "[SURFACE]"
     },
     {
-      "id": "metric-in",
-      "name": "metric-in",
+      "id": "metric_in",
+      "name": "metric_in",
       "description": "the metric to correlate",
       "type": "File",
       "optional": false,
-      "value-key": "[METRIC-IN]"
+      "value-key": "[METRIC_IN]"
     },
     {
-      "id": "3D-dist",
-      "name": "3D-dist",
+      "id": "3d_dist",
+      "name": "3d_dist",
       "description": "maximum 3D distance to check around each vertex",
       "type": "Number",
       "optional": false,
-      "value-key": "[3D-DIST]"
+      "value-key": "[3D_DIST]"
     },
     {
-      "id": "geo-outer",
-      "name": "geo-outer",
+      "id": "geo_outer",
+      "name": "geo_outer",
       "description": "maximum geodesic distance to use for neighboring correlation",
       "type": "Number",
       "optional": false,
-      "value-key": "[GEO-OUTER]"
+      "value-key": "[GEO_OUTER]"
     },
     {
-      "id": "geo-inner",
-      "name": "geo-inner",
+      "id": "geo_inner",
+      "name": "geo_inner",
       "description": "minimum geodesic distance to use for neighboring correlation",
       "type": "Number",
       "optional": false,
-      "value-key": "[GEO-INNER]"
+      "value-key": "[GEO_INNER]"
     },
     {
       "id": "metric_out",

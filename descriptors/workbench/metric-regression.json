@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-regression",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-regression [METRIC-IN]",
+  "command-line": "wb_command -metric-regression [METRIC_IN] [METRIC_OUT] [OPT_ROI_ROI_METRIC] [OPT_COLUMN_COLUMN] [OPT_REMOVE_METRIC] [OPT_KEEP_METRIC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "metric-in",
-      "name": "metric-in",
+      "id": "metric_in",
+      "name": "metric_in",
       "description": "the metric to regress from",
       "type": "File",
       "optional": false,
-      "value-key": "[METRIC-IN]"
+      "value-key": "[METRIC_IN]"
     },
     {
       "id": "metric_out",
@@ -44,6 +44,24 @@
       "type": "String",
       "optional": false,
       "value-key": "[OPT_COLUMN_COLUMN]"
+    },
+    {
+      "id": "opt_remove_metric",
+      "name": "opt_remove_metric",
+      "command-line-flag": "-remove",
+      "description": "specify a metric to regress out: the metric file to use",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_REMOVE_METRIC]"
+    },
+    {
+      "id": "opt_keep_metric",
+      "name": "opt_keep_metric",
+      "command-line-flag": "-keep",
+      "description": "specify a metric to include in regression, but not remove: the metric file to use",
+      "type": "File",
+      "optional": false,
+      "value-key": "[OPT_KEEP_METRIC]"
     }
   ],
   "output-files": [

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-estimate-fwhm",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-estimate-fwhm [SURFACE] [METRIC-IN]",
+  "command-line": "wb_command -metric-estimate-fwhm [SURFACE] [METRIC_IN] [OPT_ROI_ROI_METRIC] [OPT_COLUMN_COLUMN] [OPT_WHOLE_FILE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,12 +20,12 @@
       "value-key": "[SURFACE]"
     },
     {
-      "id": "metric-in",
-      "name": "metric-in",
+      "id": "metric_in",
+      "name": "metric_in",
       "description": "the input metric",
       "type": "File",
       "optional": false,
-      "value-key": "[METRIC-IN]"
+      "value-key": "[METRIC_IN]"
     },
     {
       "id": "opt_roi_roi_metric",

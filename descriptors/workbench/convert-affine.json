@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "convert-affine",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -convert-affine",
+  "command-line": "wb_command -convert-affine [OPT_FROM_WORLD_INPUT] [OPT_FROM_ITK_INPUT] [OPT_TO_WORLD_OUTPUT] [OPT_TO_ITK_OUTPUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

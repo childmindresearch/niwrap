@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-to-surface-3d-distance",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-to-surface-3d-distance [SURFACE-COMP] [SURFACE-REF]",
+  "command-line": "wb_command -surface-to-surface-3d-distance [SURFACE_COMP] [SURFACE_REF] [DISTS_OUT] [OPT_VECTORS]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "surface-comp",
-      "name": "surface-comp",
+      "id": "surface_comp",
+      "name": "surface_comp",
       "description": "the surface to compare to the reference",
       "type": "File",
       "optional": false,
-      "value-key": "[SURFACE-COMP]"
+      "value-key": "[SURFACE_COMP]"
     },
     {
-      "id": "surface-ref",
-      "name": "surface-ref",
+      "id": "surface_ref",
+      "name": "surface_ref",
       "description": "the surface to use as the reference",
       "type": "File",
       "optional": false,
-      "value-key": "[SURFACE-REF]"
+      "value-key": "[SURFACE_REF]"
     },
     {
       "id": "dists_out",

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-transpose",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-transpose [CIFTI-IN]",
+  "command-line": "wb_command -cifti-transpose [CIFTI_IN] [CIFTI_OUT] [OPT_MEM_LIMIT_LIMIT_GB]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the input cifti file",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
       "id": "cifti_out",
@@ -28,8 +28,8 @@
       "value-key": "[CIFTI_OUT]"
     },
     {
-      "id": "opt_mem_limit_limit_GB",
-      "name": "opt_mem_limit_limit_GB",
+      "id": "opt_mem_limit_limit_gb",
+      "name": "opt_mem_limit_limit_gb",
       "command-line-flag": "-mem-limit",
       "description": "restrict memory usage: memory limit in gigabytes",
       "type": "Number",

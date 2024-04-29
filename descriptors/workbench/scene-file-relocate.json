@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "scene-file-relocate",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -scene-file-relocate [INPUT-SCENE] [OUTPUT-SCENE]",
+  "command-line": "wb_command -scene-file-relocate [INPUT_SCENE] [OUTPUT_SCENE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "input-scene",
-      "name": "input-scene",
+      "id": "input_scene",
+      "name": "input_scene",
       "description": "the scene file to use",
       "type": "String",
       "optional": false,
-      "value-key": "[INPUT-SCENE]"
+      "value-key": "[INPUT_SCENE]"
     },
     {
-      "id": "output-scene",
-      "name": "output-scene",
+      "id": "output_scene",
+      "name": "output_scene",
       "description": "output - the new scene file to create",
       "type": "String",
       "optional": false,
-      "value-key": "[OUTPUT-SCENE]"
+      "value-key": "[OUTPUT_SCENE]"
     }
   ]
 }

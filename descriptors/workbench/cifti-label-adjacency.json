@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-label-adjacency",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-label-adjacency [LABEL-IN]",
+  "command-line": "wb_command -cifti-label-adjacency [LABEL_IN] [ADJACENCY_OUT] [OPT_LEFT_SURFACE_SURFACE] [OPT_RIGHT_SURFACE_SURFACE] [OPT_CEREBELLUM_SURFACE_SURFACE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "label-in",
-      "name": "label-in",
+      "id": "label_in",
+      "name": "label_in",
       "description": "the input cifti label file",
       "type": "File",
       "optional": false,
-      "value-key": "[LABEL-IN]"
+      "value-key": "[LABEL_IN]"
     },
     {
       "id": "adjacency_out",

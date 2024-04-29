@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "border-to-vertices",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -border-to-vertices [SURFACE] [BORDER-FILE]",
+  "command-line": "wb_command -border-to-vertices [SURFACE] [BORDER_FILE] [METRIC_OUT] [OPT_BORDER_NAME]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,12 +20,12 @@
       "value-key": "[SURFACE]"
     },
     {
-      "id": "border-file",
-      "name": "border-file",
+      "id": "border_file",
+      "name": "border_file",
       "description": "the border file",
       "type": "File",
       "optional": false,
-      "value-key": "[BORDER-FILE]"
+      "value-key": "[BORDER_FILE]"
     },
     {
       "id": "metric_out",

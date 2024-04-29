@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-reorder",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-reorder [CIFTI-IN] [DIRECTION] [REORDER-LIST]",
+  "command-line": "wb_command -cifti-reorder [CIFTI_IN] [DIRECTION] [REORDER_LIST] [CIFTI_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "input cifti file",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
       "id": "direction",
@@ -28,12 +28,12 @@
       "value-key": "[DIRECTION]"
     },
     {
-      "id": "reorder-list",
-      "name": "reorder-list",
+      "id": "reorder_list",
+      "name": "reorder_list",
       "description": "a text file containing the desired order transformation",
       "type": "String",
       "optional": false,
-      "value-key": "[REORDER-LIST]"
+      "value-key": "[REORDER_LIST]"
     },
     {
       "id": "cifti_out",

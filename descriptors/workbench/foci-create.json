@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "foci-create",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -foci-create",
+  "command-line": "wb_command -foci-create [OUTPUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

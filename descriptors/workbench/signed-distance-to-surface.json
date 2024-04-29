@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "signed-distance-to-surface",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -signed-distance-to-surface [SURFACE-COMP] [SURFACE-REF]",
+  "command-line": "wb_command -signed-distance-to-surface [SURFACE_COMP] [SURFACE_REF] [METRIC] [OPT_WINDING_METHOD]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "surface-comp",
-      "name": "surface-comp",
+      "id": "surface_comp",
+      "name": "surface_comp",
       "description": "the comparison surface to measure the signed distance on",
       "type": "File",
       "optional": false,
-      "value-key": "[SURFACE-COMP]"
+      "value-key": "[SURFACE_COMP]"
     },
     {
-      "id": "surface-ref",
-      "name": "surface-ref",
+      "id": "surface_ref",
+      "name": "surface_ref",
       "description": "the reference surface that defines the signed distance function",
       "type": "File",
       "optional": false,
-      "value-key": "[SURFACE-REF]"
+      "value-key": "[SURFACE_REF]"
     },
     {
       "id": "metric",

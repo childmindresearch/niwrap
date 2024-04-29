@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "spec-file-merge",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -spec-file-merge [SPEC-1] [SPEC-2] [OUT-SPEC]",
+  "command-line": "wb_command -spec-file-merge [SPEC_1] [SPEC_2] [OUT_SPEC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "spec-1",
-      "name": "spec-1",
+      "id": "spec_1",
+      "name": "spec_1",
       "description": "first spec file to merge",
       "type": "String",
       "optional": false,
-      "value-key": "[SPEC-1]"
+      "value-key": "[SPEC_1]"
     },
     {
-      "id": "spec-2",
-      "name": "spec-2",
+      "id": "spec_2",
+      "name": "spec_2",
       "description": "second spec file to merge",
       "type": "String",
       "optional": false,
-      "value-key": "[SPEC-2]"
+      "value-key": "[SPEC_2]"
     },
     {
-      "id": "out-spec",
-      "name": "out-spec",
+      "id": "out_spec",
+      "name": "out_spec",
       "description": "output - output spec file",
       "type": "String",
       "optional": false,
-      "value-key": "[OUT-SPEC]"
+      "value-key": "[OUT_SPEC]"
     }
   ]
 }

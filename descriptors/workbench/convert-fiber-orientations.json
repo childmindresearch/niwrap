@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "convert-fiber-orientations",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -convert-fiber-orientations [LABEL-VOLUME]",
+  "command-line": "wb_command -convert-fiber-orientations [LABEL_VOLUME] [FIBER_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "label-volume",
-      "name": "label-volume",
+      "id": "label_volume",
+      "name": "label_volume",
       "description": "volume of cifti structure labels",
       "type": "File",
       "optional": false,
-      "value-key": "[LABEL-VOLUME]"
+      "value-key": "[LABEL_VOLUME]"
     },
     {
       "id": "fiber_out",

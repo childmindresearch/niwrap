@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-reduce",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-reduce [METRIC-IN] [OPERATION]",
+  "command-line": "wb_command -metric-reduce [METRIC_IN] [OPERATION] [METRIC_OUT] [OPT_ONLY_NUMERIC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "metric-in",
-      "name": "metric-in",
+      "id": "metric_in",
+      "name": "metric_in",
       "description": "the metric to reduce",
       "type": "File",
       "optional": false,
-      "value-key": "[METRIC-IN]"
+      "value-key": "[METRIC_IN]"
     },
     {
       "id": "operation",

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-rois-from-extrema",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-rois-from-extrema [CIFTI] [SURF-LIMIT] [VOL-LIMIT] [DIRECTION]",
+  "command-line": "wb_command -cifti-rois-from-extrema [CIFTI] [SURF_LIMIT] [VOL_LIMIT] [DIRECTION] [CIFTI_OUT] [OPT_LEFT_SURFACE_SURFACE] [OPT_RIGHT_SURFACE_SURFACE] [OPT_CEREBELLUM_SURFACE_SURFACE] [OPT_OVERLAP_LOGIC_METHOD] [OPT_MERGED_VOLUME]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,20 +20,20 @@
       "value-key": "[CIFTI]"
     },
     {
-      "id": "surf-limit",
-      "name": "surf-limit",
+      "id": "surf_limit",
+      "name": "surf_limit",
       "description": "geodesic distance limit from vertex, in mm",
       "type": "Number",
       "optional": false,
-      "value-key": "[SURF-LIMIT]"
+      "value-key": "[SURF_LIMIT]"
     },
     {
-      "id": "vol-limit",
-      "name": "vol-limit",
+      "id": "vol_limit",
+      "name": "vol_limit",
       "description": "euclidean distance limit from voxel center, in mm",
       "type": "Number",
       "optional": false,
-      "value-key": "[VOL-LIMIT]"
+      "value-key": "[VOL_LIMIT]"
     },
     {
       "id": "direction",

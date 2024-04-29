@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-wedge-volume",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-wedge-volume [INNER-SURFACE] [OUTER-SURFACE]",
+  "command-line": "wb_command -surface-wedge-volume [INNER_SURFACE] [OUTER_SURFACE] [METRIC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,20 +12,20 @@
   "tags": {},
   "inputs": [
     {
-      "id": "inner-surface",
-      "name": "inner-surface",
+      "id": "inner_surface",
+      "name": "inner_surface",
       "description": "the inner surface",
       "type": "File",
       "optional": false,
-      "value-key": "[INNER-SURFACE]"
+      "value-key": "[INNER_SURFACE]"
     },
     {
-      "id": "outer-surface",
-      "name": "outer-surface",
+      "id": "outer_surface",
+      "name": "outer_surface",
       "description": "the outer surface",
       "type": "File",
       "optional": false,
-      "value-key": "[OUTER-SURFACE]"
+      "value-key": "[OUTER_SURFACE]"
     },
     {
       "id": "metric",

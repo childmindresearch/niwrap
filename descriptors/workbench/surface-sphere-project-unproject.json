@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-sphere-project-unproject",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-sphere-project-unproject [SPHERE-IN] [SPHERE-PROJECT-TO] [SPHERE-UNPROJECT-FROM]",
+  "command-line": "wb_command -surface-sphere-project-unproject [SPHERE_IN] [SPHERE_PROJECT_TO] [SPHERE_UNPROJECT_FROM] [SPHERE_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "sphere-in",
-      "name": "sphere-in",
+      "id": "sphere_in",
+      "name": "sphere_in",
       "description": "a sphere with the desired output mesh",
       "type": "File",
       "optional": false,
-      "value-key": "[SPHERE-IN]"
+      "value-key": "[SPHERE_IN]"
     },
     {
-      "id": "sphere-project-to",
-      "name": "sphere-project-to",
+      "id": "sphere_project_to",
+      "name": "sphere_project_to",
       "description": "a sphere that aligns with sphere-in",
       "type": "File",
       "optional": false,
-      "value-key": "[SPHERE-PROJECT-TO]"
+      "value-key": "[SPHERE_PROJECT_TO]"
     },
     {
-      "id": "sphere-unproject-from",
-      "name": "sphere-unproject-from",
+      "id": "sphere_unproject_from",
+      "name": "sphere_unproject_from",
       "description": "<sphere-project-to> deformed to the desired output space",
       "type": "File",
       "optional": false,
-      "value-key": "[SPHERE-UNPROJECT-FROM]"
+      "value-key": "[SPHERE_UNPROJECT_FROM]"
     },
     {
       "id": "sphere_out",

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-erode",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-erode [CIFTI-IN] [DIRECTION] [SURFACE-DISTANCE] [VOLUME-DISTANCE]",
+  "command-line": "wb_command -cifti-erode [CIFTI_IN] [DIRECTION] [SURFACE_DISTANCE] [VOLUME_DISTANCE] [CIFTI_OUT] [OPT_LEFT_SURFACE_SURFACE] [OPT_RIGHT_SURFACE_SURFACE] [OPT_CEREBELLUM_SURFACE_SURFACE] [OPT_MERGED_VOLUME]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "cifti-in",
-      "name": "cifti-in",
+      "id": "cifti_in",
+      "name": "cifti_in",
       "description": "the input cifti file",
       "type": "File",
       "optional": false,
-      "value-key": "[CIFTI-IN]"
+      "value-key": "[CIFTI_IN]"
     },
     {
       "id": "direction",
@@ -28,20 +28,20 @@
       "value-key": "[DIRECTION]"
     },
     {
-      "id": "surface-distance",
-      "name": "surface-distance",
+      "id": "surface_distance",
+      "name": "surface_distance",
       "description": "the distance to dilate on surfaces, in mm",
       "type": "Number",
       "optional": false,
-      "value-key": "[SURFACE-DISTANCE]"
+      "value-key": "[SURFACE_DISTANCE]"
     },
     {
-      "id": "volume-distance",
-      "name": "volume-distance",
+      "id": "volume_distance",
+      "name": "volume_distance",
       "description": "the distance to dilate in the volume, in mm",
       "type": "Number",
       "optional": false,
-      "value-key": "[VOLUME-DISTANCE]"
+      "value-key": "[VOLUME_DISTANCE]"
     },
     {
       "id": "cifti_out",

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-convert",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-convert",
+  "command-line": "wb_command -cifti-convert [OPT_FROM_GIFTI_EXT_GIFTI_IN] [OPT_TO_NIFTI_CIFTI_IN]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"

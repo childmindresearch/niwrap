@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-find-clusters",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-find-clusters [VOLUME-IN] [VALUE-THRESHOLD] [MINIMUM-VOLUME]",
+  "command-line": "wb_command -volume-find-clusters [VOLUME_IN] [VALUE_THRESHOLD] [MINIMUM_VOLUME] [VOLUME_OUT] [OPT_LESS_THAN] [OPT_ROI_ROI_VOLUME] [OPT_SUBVOLUME_SUBVOL] [OPT_SIZE_RATIO_RATIO] [OPT_DISTANCE_DISTANCE] [OPT_START_STARTVAL]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,28 +12,28 @@
   "tags": {},
   "inputs": [
     {
-      "id": "volume-in",
-      "name": "volume-in",
+      "id": "volume_in",
+      "name": "volume_in",
       "description": "the input volume",
       "type": "File",
       "optional": false,
-      "value-key": "[VOLUME-IN]"
+      "value-key": "[VOLUME_IN]"
     },
     {
-      "id": "value-threshold",
-      "name": "value-threshold",
+      "id": "value_threshold",
+      "name": "value_threshold",
       "description": "threshold for data values",
       "type": "Number",
       "optional": false,
-      "value-key": "[VALUE-THRESHOLD]"
+      "value-key": "[VALUE_THRESHOLD]"
     },
     {
-      "id": "minimum-volume",
-      "name": "minimum-volume",
+      "id": "minimum_volume",
+      "name": "minimum_volume",
       "description": "threshold for cluster volume, in mm^3",
       "type": "Number",
       "optional": false,
-      "value-key": "[MINIMUM-VOLUME]"
+      "value-key": "[MINIMUM_VOLUME]"
     },
     {
       "id": "volume_out",

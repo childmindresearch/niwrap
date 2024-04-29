@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-vector-toward-roi",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-vector-toward-roi [SURFACE] [TARGET-ROI]",
+  "command-line": "wb_command -metric-vector-toward-roi [SURFACE] [TARGET_ROI] [METRIC_OUT] [OPT_ROI_ROI_METRIC]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -20,12 +20,12 @@
       "value-key": "[SURFACE]"
     },
     {
-      "id": "target-roi",
-      "name": "target-roi",
+      "id": "target_roi",
+      "name": "target_roi",
       "description": "the roi to find the shortest path to",
       "type": "File",
       "optional": false,
-      "value-key": "[TARGET-ROI]"
+      "value-key": "[TARGET_ROI]"
     },
     {
       "id": "metric_out",

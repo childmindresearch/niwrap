@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "estimate-fiber-binghams",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -estimate-fiber-binghams [MERGED_F1SAMPLES] [MERGED_TH1SAMPLES] [MERGED_PH1SAMPLES] [MERGED_F2SAMPLES] [MERGED_TH2SAMPLES] [MERGED_PH2SAMPLES] [MERGED_F3SAMPLES] [MERGED_TH3SAMPLES] [MERGED_PH3SAMPLES] [LABEL-VOLUME]",
+  "command-line": "wb_command -estimate-fiber-binghams [MERGED_F1SAMPLES] [MERGED_TH1SAMPLES] [MERGED_PH1SAMPLES] [MERGED_F2SAMPLES] [MERGED_TH2SAMPLES] [MERGED_PH2SAMPLES] [MERGED_F3SAMPLES] [MERGED_TH3SAMPLES] [MERGED_PH3SAMPLES] [LABEL_VOLUME] [CIFTI_OUT]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -84,12 +84,12 @@
       "value-key": "[MERGED_PH3SAMPLES]"
     },
     {
-      "id": "label-volume",
-      "name": "label-volume",
+      "id": "label_volume",
+      "name": "label_volume",
       "description": "volume of cifti structure labels",
       "type": "File",
       "optional": false,
-      "value-key": "[LABEL-VOLUME]"
+      "value-key": "[LABEL_VOLUME]"
     },
     {
       "id": "cifti_out",

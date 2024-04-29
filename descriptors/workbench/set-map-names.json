@@ -2,7 +2,7 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "set-map-names",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -set-map-names [DATA-FILE]",
+  "command-line": "wb_command -set-map-names [DATA_FILE] [OPT_NAME_FILE_FILE] [OPT_FROM_DATA_FILE_FILE]",
   "container-image": {
     "image": "mcin/docker-fsl:latest",
     "type": "docker"
@@ -12,12 +12,12 @@
   "tags": {},
   "inputs": [
     {
-      "id": "data-file",
-      "name": "data-file",
+      "id": "data_file",
+      "name": "data_file",
       "description": "the file to set the map names of",
       "type": "String",
       "optional": false,
-      "value-key": "[DATA-FILE]"
+      "value-key": "[DATA_FILE]"
     },
     {
       "id": "opt_name_file_file",
