@@ -25,7 +25,7 @@
       "command-line-flag": "-stddev",
       "description": "compute 3D sample standard deviation",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_STDDEV]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-uncertainty",
       "description": "compute caret5 'uncertainty'",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_UNCERTAINTY]"
     },
     {
@@ -43,7 +43,7 @@
       "command-line-flag": "-surf",
       "description": "specify a surface to include in the average: a surface file to average",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SURF_SURFACE]"
     }
   ],

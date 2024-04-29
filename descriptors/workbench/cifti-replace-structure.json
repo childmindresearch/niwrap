@@ -33,7 +33,7 @@
       "command-line-flag": "-volume-all",
       "description": "replace the data in all volume components: the input volume",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_VOLUME_ALL_VOLUME]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-discard-unused-labels",
       "description": "when operating on a dlabel file, drop any unused label keys from the label table",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DISCARD_UNUSED_LABELS]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-label-collision",
       "description": "how to handle conflicts between label keys: 'ERROR', 'LEFT_SURFACE_FIRST', or 'LEGACY', default 'ERROR', use 'LEGACY' to match v1.4.2 and earlier",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LABEL_COLLISION_ACTION]"
     }
   ]

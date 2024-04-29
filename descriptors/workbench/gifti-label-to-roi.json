@@ -33,7 +33,7 @@
       "command-line-flag": "-name",
       "description": "select label by name: the label name that you want an roi of",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NAME_LABEL_NAME]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-key",
       "description": "select label by key: the label key that you want an roi of",
       "type": "Integer",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_KEY_LABEL_KEY]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-map",
       "description": "select a single label map to use: the map number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MAP_MAP]"
     }
   ],

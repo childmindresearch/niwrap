@@ -49,7 +49,7 @@
       "command-line-flag": "-less-than",
       "description": "find values less than <value-threshold>, rather than greater",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LESS_THAN]"
     },
     {
@@ -58,7 +58,7 @@
       "command-line-flag": "-roi",
       "description": "select a region of interest: the roi, as a volume file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_VOLUME]"
     },
     {
@@ -67,7 +67,7 @@
       "command-line-flag": "-subvolume",
       "description": "select a single subvolume: the subvolume number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUBVOLUME_SUBVOL]"
     },
     {
@@ -76,7 +76,7 @@
       "command-line-flag": "-size-ratio",
       "description": "ignore clusters smaller than a given fraction of the largest cluster in map: fraction of the largest cluster's volume",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SIZE_RATIO_RATIO]"
     },
     {
@@ -85,7 +85,7 @@
       "command-line-flag": "-distance",
       "description": "ignore clusters further than a given distance from the largest cluster: how far from the largest cluster a cluster can be, edge to edge, in mm",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DISTANCE_DISTANCE]"
     },
     {
@@ -94,7 +94,7 @@
       "command-line-flag": "-start",
       "description": "start labeling clusters from a value other than 1: the value to give the first cluster found",
       "type": "Integer",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_START_STARTVAL]"
     }
   ],

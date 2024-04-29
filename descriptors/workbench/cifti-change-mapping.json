@@ -41,7 +41,7 @@
       "command-line-flag": "-scalar",
       "description": "set the mapping to scalar",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SCALAR]"
     }
   ],

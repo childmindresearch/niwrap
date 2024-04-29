@@ -49,7 +49,7 @@
       "command-line-flag": "-normalize-a",
       "description": "normalize vectors of first input",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NORMALIZE_A]"
     },
     {
@@ -58,7 +58,7 @@
       "command-line-flag": "-normalize-b",
       "description": "normalize vectors of second input",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NORMALIZE_B]"
     },
     {
@@ -67,7 +67,7 @@
       "command-line-flag": "-normalize-output",
       "description": "normalize output vectors (not valid for dot product)",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NORMALIZE_OUTPUT]"
     },
     {
@@ -76,7 +76,7 @@
       "command-line-flag": "-magnitude",
       "description": "output the magnitude of the result (not valid for dot product)",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MAGNITUDE]"
     }
   ],

@@ -41,7 +41,7 @@
       "command-line-flag": "-trilinear",
       "description": "use trilinear volume interpolation",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_TRILINEAR]"
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-enclosing",
       "description": "use value of the enclosing voxel",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ENCLOSING]"
     },
     {
@@ -59,7 +59,7 @@
       "command-line-flag": "-cubic",
       "description": "use cubic splines",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CUBIC]"
     },
     {
@@ -68,7 +68,7 @@
       "command-line-flag": "-subvol-select",
       "description": "select a single subvolume to map: the subvolume number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUBVOL_SELECT_SUBVOL]"
     }
   ],

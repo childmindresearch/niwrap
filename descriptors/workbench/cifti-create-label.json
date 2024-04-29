@@ -25,7 +25,7 @@
       "command-line-flag": "-left-label",
       "description": "label file for left surface: the label file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEFT_LABEL_LABEL]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-right-label",
       "description": "label for left surface: the label file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RIGHT_LABEL_LABEL]"
     },
     {
@@ -43,7 +43,7 @@
       "command-line-flag": "-cerebellum-label",
       "description": "label for the cerebellum: the label file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CEREBELLUM_LABEL_LABEL]"
     }
   ],

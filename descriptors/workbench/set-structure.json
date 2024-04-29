@@ -33,7 +33,7 @@
       "command-line-flag": "-surface-type",
       "description": "set the type of a surface (only used if file is a surface file): name of surface type",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SURFACE_TYPE_TYPE]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-surface-secondary-type",
       "description": "set the secondary type of a surface (only used if file is a surface file): name of surface secondary type",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SURFACE_SECONDARY_TYPE_SECONDARY_TYPE]"
     }
   ]

@@ -41,7 +41,7 @@
       "command-line-flag": "-presmooth",
       "description": "smooth the metric before computing the gradient: the size of the gaussian smoothing kernel in mm, as sigma by default",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PRESMOOTH_KERNEL]"
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-roi",
       "description": "select a region of interest to take the gradient of: the area to take the gradient within, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_METRIC]"
     },
     {
@@ -59,7 +59,7 @@
       "command-line-flag": "-vectors",
       "description": "output gradient vectors",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_VECTORS]"
     },
     {
@@ -68,7 +68,7 @@
       "command-line-flag": "-column",
       "description": "select a single column to compute the gradient of: the column number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -77,7 +77,7 @@
       "command-line-flag": "-corrected-areas",
       "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
     },
     {
@@ -86,7 +86,7 @@
       "command-line-flag": "-average-normals",
       "description": "average the normals of each vertex with its neighbors before using them to compute the gradient",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_AVERAGE_NORMALS]"
     }
   ],

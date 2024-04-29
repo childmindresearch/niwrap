@@ -25,7 +25,7 @@
       "command-line-flag": "-cifti-roi",
       "description": "cifti file containing combined weights: the roi cifti file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CIFTI_ROI_ROI_CIFTI]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-left-roi",
       "description": "weights to use for left hempsphere: the left roi as a metric file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEFT_ROI_ROI_METRIC]"
     },
     {
@@ -43,7 +43,7 @@
       "command-line-flag": "-right-roi",
       "description": "weights to use for right hempsphere: the right roi as a metric file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RIGHT_ROI_ROI_METRIC]"
     },
     {
@@ -52,7 +52,7 @@
       "command-line-flag": "-cerebellum-roi",
       "description": "weights to use for cerebellum surface: the cerebellum roi as a metric file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CEREBELLUM_ROI_ROI_METRIC]"
     },
     {
@@ -61,7 +61,7 @@
       "command-line-flag": "-vol-roi",
       "description": "voxel weights to use: the roi volume file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_VOL_ROI_ROI_VOL]"
     },
     {
@@ -70,7 +70,7 @@
       "command-line-flag": "-left-area-surf",
       "description": "specify the left surface for vertex area correction: the left surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEFT_AREA_SURF_LEFT_SURF]"
     },
     {
@@ -79,7 +79,7 @@
       "command-line-flag": "-right-area-surf",
       "description": "specify the right surface for vertex area correction: the right surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RIGHT_AREA_SURF_RIGHT_SURF]"
     },
     {
@@ -88,7 +88,7 @@
       "command-line-flag": "-cerebellum-area-surf",
       "description": "specify the cerebellum surface for vertex area correction: the cerebellum surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CEREBELLUM_AREA_SURF_CEREBELLUM_SURF]"
     },
     {
@@ -97,7 +97,7 @@
       "command-line-flag": "-cifti",
       "description": "specify an input cifti file: a cifti file to average across",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CIFTI_CIFTI_IN]"
     }
   ],

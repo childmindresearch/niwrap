@@ -41,7 +41,7 @@
       "command-line-flag": "-discard-others",
       "description": "set any values not mentioned in the label list to the ??? label",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DISCARD_OTHERS]"
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-unlabeled-value",
       "description": "set the value that will be interpreted as unlabeled: the numeric value for unlabeled (default 0)",
       "type": "Integer",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_UNLABELED_VALUE_VALUE]"
     },
     {
@@ -59,7 +59,7 @@
       "command-line-flag": "-column",
       "description": "select a single column to import: the column number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -68,7 +68,7 @@
       "command-line-flag": "-drop-unused-labels",
       "description": "remove any unused label values from the label table",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DROP_UNUSED_LABELS]"
     }
   ],

@@ -57,7 +57,7 @@
       "command-line-flag": "-left-surface",
       "description": "specify the left surface to use: the left surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
     },
     {
@@ -66,7 +66,7 @@
       "command-line-flag": "-right-surface",
       "description": "specify the right surface to use: the right surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
     },
     {
@@ -75,7 +75,7 @@
       "command-line-flag": "-cerebellum-surface",
       "description": "specify the cerebellum surface to use: the cerebellum surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
     },
     {
@@ -84,7 +84,7 @@
       "command-line-flag": "-overlap-logic",
       "description": "how to handle overlapping ROIs, default ALLOW: the method of resolving overlaps",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_OVERLAP_LOGIC_METHOD]"
     },
     {
@@ -93,7 +93,7 @@
       "command-line-flag": "-merged-volume",
       "description": "treat volume components as if they were a single component",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MERGED_VOLUME]"
     }
   ],

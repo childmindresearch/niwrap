@@ -33,7 +33,7 @@
       "command-line-flag": "-discard-distance-from-surface",
       "description": "ignore the distance the foci are above or below the current surface",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DISCARD_DISTANCE_FROM_SURFACE]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-restore-xyz",
       "description": "put the original xyz coordinates into the foci, rather than the coordinates obtained from unprojection",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RESTORE_XYZ]"
     }
   ],

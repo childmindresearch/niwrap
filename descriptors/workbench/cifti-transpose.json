@@ -33,7 +33,7 @@
       "command-line-flag": "-mem-limit",
       "description": "restrict memory usage: memory limit in gigabytes",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MEM_LIMIT_LIMIT_GB]"
     }
   ],

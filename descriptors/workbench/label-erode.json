@@ -49,7 +49,7 @@
       "command-line-flag": "-roi",
       "description": "assume values outside this roi are labeled: metric file, positive values denote vertices that have data",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_METRIC]"
     },
     {
@@ -58,7 +58,7 @@
       "command-line-flag": "-column",
       "description": "select a single column to erode: the column number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -67,7 +67,7 @@
       "command-line-flag": "-corrected-areas",
       "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
     }
   ],

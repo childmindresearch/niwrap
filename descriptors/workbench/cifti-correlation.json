@@ -33,7 +33,7 @@
       "command-line-flag": "-roi-override",
       "description": "perform correlation from a subset of rows to all rows",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_OVERRIDE]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-weights",
       "description": "specify column weights: text file containing one weight per column",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_WEIGHTS_WEIGHT_FILE]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-fisher-z",
       "description": "apply fisher small z transform (ie, artanh) to correlation",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FISHER_Z]"
     },
     {
@@ -60,7 +60,7 @@
       "command-line-flag": "-no-demean",
       "description": "instead of correlation, do dot product of rows, then normalize by diagonal",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NO_DEMEAN]"
     },
     {
@@ -69,7 +69,7 @@
       "command-line-flag": "-covariance",
       "description": "compute covariance instead of correlation",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COVARIANCE]"
     },
     {
@@ -78,7 +78,7 @@
       "command-line-flag": "-mem-limit",
       "description": "restrict memory usage: memory limit in gigabytes",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MEM_LIMIT_LIMIT_GB]"
     }
   ],

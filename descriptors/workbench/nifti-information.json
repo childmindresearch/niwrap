@@ -25,7 +25,7 @@
       "command-line-flag": "-print-header",
       "description": "display the header contents",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PRINT_HEADER]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-print-matrix",
       "description": "output the values in the matrix (cifti only)",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PRINT_MATRIX]"
     },
     {
@@ -43,7 +43,7 @@
       "command-line-flag": "-print-xml",
       "description": "print the cifti XML (cifti only)",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PRINT_XML]"
     }
   ]

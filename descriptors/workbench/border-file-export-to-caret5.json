@@ -33,7 +33,7 @@
       "command-line-flag": "-surface",
       "description": "specify an input surface: a surface file for unprojection of borders",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SURFACE_SURFACE_IN]"
     }
   ]

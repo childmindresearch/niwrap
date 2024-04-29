@@ -41,7 +41,7 @@
       "command-line-flag": "-fwhm",
       "description": "kernel size is FWHM, not sigma",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FWHM]"
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-roi",
       "description": "smooth only from data within an ROI: the volume to use as an ROI",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROIVOL]"
     },
     {
@@ -59,7 +59,7 @@
       "command-line-flag": "-fix-zeros",
       "description": "treat zero values as not being data",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FIX_ZEROS]"
     },
     {
@@ -68,7 +68,7 @@
       "command-line-flag": "-subvolume",
       "description": "select a single subvolume to smooth: the subvolume number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUBVOLUME_SUBVOL]"
     }
   ],

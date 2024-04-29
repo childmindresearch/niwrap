@@ -49,7 +49,7 @@
       "command-line-flag": "-affine",
       "description": "add an affine transform: the affine file to use",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_AFFINE_AFFINE]"
     },
     {
@@ -58,7 +58,7 @@
       "command-line-flag": "-affine-series",
       "description": "add an independent affine per-frame: text file containing 12 or 16 numbers per line, each being a row-major flattened affine",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_AFFINE_SERIES_AFFINE_SERIES]"
     },
     {
@@ -67,7 +67,7 @@
       "command-line-flag": "-warp",
       "description": "add a nonlinear warpfield transform: the warpfield file",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_WARP_WARPFIELD]"
     }
   ],

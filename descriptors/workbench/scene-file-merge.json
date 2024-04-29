@@ -25,7 +25,7 @@
       "command-line-flag": "-scene-file",
       "description": "specify a scene file to use scenes from: the input scene file",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SCENE_FILE_SCENE_FILE]"
     }
   ]

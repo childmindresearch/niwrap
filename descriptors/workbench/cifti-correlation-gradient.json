@@ -33,7 +33,7 @@
       "command-line-flag": "-left-surface",
       "description": "specify the left surface to use: the left surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-right-surface",
       "description": "specify the right surface to use: the right surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-cerebellum-surface",
       "description": "specify the cerebellum surface to use: the cerebellum surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
     },
     {
@@ -60,7 +60,7 @@
       "command-line-flag": "-surface-presmooth",
       "description": "smooth on the surface before computing the gradient: the size of the gaussian surface smoothing kernel in mm, as sigma by default",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SURFACE_PRESMOOTH_SURFACE_KERNEL]"
     },
     {
@@ -69,7 +69,7 @@
       "command-line-flag": "-volume-presmooth",
       "description": "smooth the volume before computing the gradient: the size of the gaussian volume smoothing kernel in mm, as sigma by default",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_VOLUME_PRESMOOTH_VOLUME_KERNEL]"
     },
     {
@@ -78,7 +78,7 @@
       "command-line-flag": "-presmooth-fwhm",
       "description": "smoothing kernel sizes are FWHM, not sigma",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PRESMOOTH_FWHM]"
     },
     {
@@ -87,7 +87,7 @@
       "command-line-flag": "-undo-fisher-z",
       "description": "apply the inverse fisher small z transform to the input",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_UNDO_FISHER_Z]"
     },
     {
@@ -96,7 +96,7 @@
       "command-line-flag": "-fisher-z",
       "description": "apply the fisher small z transform to the correlations before taking the gradient",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FISHER_Z]"
     },
     {
@@ -105,7 +105,7 @@
       "command-line-flag": "-surface-exclude",
       "description": "exclude vertices near each seed vertex from computation: geodesic distance from seed vertex for the exclusion zone, in mm",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SURFACE_EXCLUDE_DISTANCE]"
     },
     {
@@ -114,7 +114,7 @@
       "command-line-flag": "-volume-exclude",
       "description": "exclude voxels near each seed voxel from computation: distance from seed voxel for the exclusion zone, in mm",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_VOLUME_EXCLUDE_DISTANCE]"
     },
     {
@@ -123,7 +123,7 @@
       "command-line-flag": "-covariance",
       "description": "compute covariance instead of correlation",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COVARIANCE]"
     },
     {
@@ -132,7 +132,7 @@
       "command-line-flag": "-mem-limit",
       "description": "restrict memory usage: memory limit in gigabytes",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MEM_LIMIT_LIMIT_GB]"
     },
     {
@@ -141,7 +141,7 @@
       "command-line-flag": "-double-correlation",
       "description": "do two correlations before taking the gradient",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DOUBLE_CORRELATION]"
     }
   ],

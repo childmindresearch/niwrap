@@ -33,7 +33,7 @@
       "command-line-flag": "-corrected-areas",
       "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-separate-pieces",
       "description": "report lengths for multi-part borders as separate numbers",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SEPARATE_PIECES]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-hide-border-name",
       "description": "don't print border name before each output",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_HIDE_BORDER_NAME]"
     }
   ]

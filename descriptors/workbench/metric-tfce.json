@@ -41,7 +41,7 @@
       "command-line-flag": "-presmooth",
       "description": "smooth the metric before running TFCE: the size of the gaussian smoothing kernel in mm, as sigma by default",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PRESMOOTH_KERNEL]"
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-roi",
       "description": "select a region of interest to run TFCE on: the area to run TFCE on, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_METRIC]"
     },
     {
@@ -59,7 +59,7 @@
       "command-line-flag": "-column",
       "description": "select a single column: the column number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -68,7 +68,7 @@
       "command-line-flag": "-corrected-areas",
       "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
     }
   ],

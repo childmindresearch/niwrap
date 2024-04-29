@@ -33,7 +33,7 @@
       "command-line-flag": "-names-out",
       "description": "output the foci names: output - text file to put foci names in",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NAMES_OUT_NAMES_FILE_OUT]"
     }
   ]

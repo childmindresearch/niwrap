@@ -25,7 +25,7 @@
       "command-line-flag": "-left-metric",
       "description": "metric for left surface: the metric file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEFT_METRIC_METRIC]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-right-metric",
       "description": "metric for left surface: the metric file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RIGHT_METRIC_METRIC]"
     },
     {
@@ -43,7 +43,7 @@
       "command-line-flag": "-cerebellum-metric",
       "description": "metric for the cerebellum: the metric file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CEREBELLUM_METRIC_METRIC]"
     },
     {
@@ -52,7 +52,7 @@
       "command-line-flag": "-timestep",
       "description": "set the timestep: the timestep, in seconds (default 1.0)",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_TIMESTEP_INTERVAL]"
     },
     {
@@ -61,7 +61,7 @@
       "command-line-flag": "-timestart",
       "description": "set the start time: the time at the first frame, in seconds (default 0.0)",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_TIMESTART_START]"
     },
     {
@@ -70,7 +70,7 @@
       "command-line-flag": "-unit",
       "description": "use a unit other than time: unit identifier (default SECOND)",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_UNIT_UNIT]"
     }
   ],

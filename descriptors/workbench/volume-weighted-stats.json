@@ -25,7 +25,7 @@
       "command-line-flag": "-weight-volume",
       "description": "use weights from a volume file: volume file containing the weights",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_WEIGHT_VOLUME_WEIGHT_VOLUME]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-subvolume",
       "description": "only display output for one subvolume: the subvolume number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUBVOLUME_SUBVOLUME]"
     },
     {
@@ -43,7 +43,7 @@
       "command-line-flag": "-roi",
       "description": "only consider data inside an roi: the roi, as a volume file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_VOLUME]"
     },
     {
@@ -52,7 +52,7 @@
       "command-line-flag": "-mean",
       "description": "compute weighted mean",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MEAN]"
     },
     {
@@ -61,7 +61,7 @@
       "command-line-flag": "-stdev",
       "description": "compute weighted standard deviation",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_STDEV]"
     },
     {
@@ -70,7 +70,7 @@
       "command-line-flag": "-percentile",
       "description": "compute weighted percentile: the percentile to find, must be between 0 and 100",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PERCENTILE_PERCENT]"
     },
     {
@@ -79,7 +79,7 @@
       "command-line-flag": "-sum",
       "description": "compute weighted sum",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUM]"
     },
     {
@@ -88,7 +88,7 @@
       "command-line-flag": "-show-map-name",
       "description": "print map index and name before each output",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SHOW_MAP_NAME]"
     }
   ]

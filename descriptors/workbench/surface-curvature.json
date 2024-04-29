@@ -25,7 +25,7 @@
       "command-line-flag": "-mean",
       "description": "output mean curvature",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MEAN]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-gauss",
       "description": "output gaussian curvature",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_GAUSS]"
     }
   ]

@@ -25,7 +25,7 @@
       "command-line-flag": "-roi",
       "description": "use only data within an ROI: the volume to use as an ROI",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROIVOL]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-subvolume",
       "description": "select a single subvolume to estimate smoothness of: the subvolume number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUBVOLUME_SUBVOL]"
     },
     {
@@ -43,7 +43,7 @@
       "command-line-flag": "-whole-file",
       "description": "estimate for the whole file at once, not each subvolume separately",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_WHOLE_FILE]"
     }
   ]

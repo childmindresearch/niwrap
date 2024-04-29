@@ -73,7 +73,7 @@
       "command-line-flag": "-less-than",
       "description": "find values less than <value-threshold>, rather than greater",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LESS_THAN]"
     },
     {
@@ -82,7 +82,7 @@
       "command-line-flag": "-left-surface",
       "description": "specify the left surface to use: the left surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
     },
     {
@@ -91,7 +91,7 @@
       "command-line-flag": "-right-surface",
       "description": "specify the right surface to use: the right surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
     },
     {
@@ -100,7 +100,7 @@
       "command-line-flag": "-cerebellum-surface",
       "description": "specify the cerebellum surface to use: the cerebellum surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
     },
     {
@@ -109,7 +109,7 @@
       "command-line-flag": "-cifti-roi",
       "description": "search only within regions of interest: the regions to search within, as a cifti file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CIFTI_ROI_ROI_CIFTI]"
     },
     {
@@ -118,7 +118,7 @@
       "command-line-flag": "-merged-volume",
       "description": "treat volume components as if they were a single component",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MERGED_VOLUME]"
     },
     {
@@ -127,7 +127,7 @@
       "command-line-flag": "-start",
       "description": "start labeling clusters from a value other than 1: the value to give the first cluster found",
       "type": "Integer",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_START_STARTVAL]"
     }
   ],

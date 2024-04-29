@@ -41,7 +41,7 @@
       "command-line-flag": "-recenter",
       "description": "recenter the sphere by means of the bounding box",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RECENTER]"
     }
   ],

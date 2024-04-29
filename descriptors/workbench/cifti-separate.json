@@ -33,7 +33,7 @@
       "command-line-flag": "-volume-all",
       "description": "separate all volume structures into a volume file",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_VOLUME_ALL]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-label",
       "description": "separate a surface model into a surface label file: the structure to output",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LABEL_STRUCTURE]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-metric",
       "description": "separate a surface model into a metric file: the structure to output",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_METRIC_STRUCTURE]"
     },
     {
@@ -60,7 +60,7 @@
       "command-line-flag": "-volume",
       "description": "separate a volume structure into a volume file: the structure to output",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_VOLUME_STRUCTURE]"
     }
   ]

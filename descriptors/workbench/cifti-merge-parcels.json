@@ -33,7 +33,7 @@
       "command-line-flag": "-cifti",
       "description": "specify an input cifti file: a cifti file to merge",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CIFTI_CIFTI_IN]"
     }
   ],

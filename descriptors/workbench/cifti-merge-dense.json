@@ -33,7 +33,7 @@
       "command-line-flag": "-label-collision",
       "description": "how to handle conflicts between label keys: 'ERROR', 'FIRST', or 'LEGACY', default 'ERROR', use 'LEGACY' to match v1.4.2 and earlier",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LABEL_COLLISION_ACTION]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-cifti",
       "description": "specify an input cifti file: a cifti file to merge",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CIFTI_CIFTI_IN]"
     }
   ],

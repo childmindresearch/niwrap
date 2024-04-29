@@ -25,7 +25,7 @@
       "command-line-flag": "-placement",
       "description": "set how far along the edge border points are drawn: fraction along edge from inside vertex (default 0.33)",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PLACEMENT_FRACTION]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-column",
       "description": "select a single column: the column number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -43,7 +43,7 @@
       "command-line-flag": "-border",
       "description": "specify output file for a surface structure: the surface to use for neighbor and structure information",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_BORDER_SURFACE]"
     }
   ]

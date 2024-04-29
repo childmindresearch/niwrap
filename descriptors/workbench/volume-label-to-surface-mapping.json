@@ -41,7 +41,7 @@
       "command-line-flag": "-subvol-select",
       "description": "select a single subvolume to map: the subvolume number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUBVOL_SELECT_SUBVOL]"
     }
   ],

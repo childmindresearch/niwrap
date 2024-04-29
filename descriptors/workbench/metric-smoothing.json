@@ -49,7 +49,7 @@
       "command-line-flag": "-fwhm",
       "description": "kernel size is FWHM, not sigma",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FWHM]"
     },
     {
@@ -58,7 +58,7 @@
       "command-line-flag": "-roi",
       "description": "select a region of interest to smooth: the roi to smooth within, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_METRIC]"
     },
     {
@@ -67,7 +67,7 @@
       "command-line-flag": "-fix-zeros",
       "description": "treat zero values as not being data",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FIX_ZEROS]"
     },
     {
@@ -76,7 +76,7 @@
       "command-line-flag": "-column",
       "description": "select a single column to smooth: the column number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -85,7 +85,7 @@
       "command-line-flag": "-corrected-areas",
       "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
     },
     {
@@ -94,7 +94,7 @@
       "command-line-flag": "-method",
       "description": "select smoothing method, default GEO_GAUSS_AREA: the name of the smoothing method",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_METHOD_METHOD]"
     }
   ],

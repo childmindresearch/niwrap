@@ -33,7 +33,7 @@
       "command-line-flag": "-wbsparse",
       "description": "specify an input wbsparse file: a wbsparse file to merge",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_WBSPARSE_WBSPARSE_IN]"
     }
   ]

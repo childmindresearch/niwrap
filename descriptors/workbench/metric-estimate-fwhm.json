@@ -33,7 +33,7 @@
       "command-line-flag": "-roi",
       "description": "use only data within an ROI: the metric file to use as an ROI",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_METRIC]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-column",
       "description": "select a single column to estimate smoothness of: the column number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-whole-file",
       "description": "estimate for the whole file at once, not each column separately",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_WHOLE_FILE]"
     }
   ]

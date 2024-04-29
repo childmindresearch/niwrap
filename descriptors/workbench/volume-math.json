@@ -33,7 +33,7 @@
       "command-line-flag": "-fixnan",
       "description": "replace NaN results with a value: value to replace NaN with",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FIXNAN_REPLACE]"
     }
   ],

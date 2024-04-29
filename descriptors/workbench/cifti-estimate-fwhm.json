@@ -25,7 +25,7 @@
       "command-line-flag": "-merged-volume",
       "description": "treat volume components as if they were a single component",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MERGED_VOLUME]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-column",
       "description": "only output estimates for one column: the column number",
       "type": "Integer",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -43,7 +43,7 @@
       "command-line-flag": "-whole-file",
       "description": "estimate for the whole file at once, not each column separately",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_WHOLE_FILE]"
     }
   ]

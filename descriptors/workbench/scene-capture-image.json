@@ -41,7 +41,7 @@
       "command-line-flag": "-size-window",
       "description": "Output image is size of window's graphics region from when scene was created.",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SIZE_WINDOW]"
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-size-capture",
       "description": "Output image uses size from Capture Dialog when scene was created",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SIZE_CAPTURE]"
     },
     {
@@ -59,7 +59,7 @@
       "command-line-flag": "-size-width",
       "description": "Width for output image.  Height is computed using the aspect ratio from the window's width and height saved in the scene.: Width for output image",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SIZE_WIDTH_WIDTH]"
     },
     {
@@ -68,7 +68,7 @@
       "command-line-flag": "-size-height",
       "description": "Height for output image.  Width is computed using the aspect ratio from the window's width and height saved in the scene.: Height for output image",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SIZE_HEIGHT_HEIGHT]"
     },
     {
@@ -77,7 +77,7 @@
       "command-line-flag": "-units",
       "description": "Units for image width/height\n      Default is PIXELS: Name of units for image width/height.  Valid units are:\n   INCHES\n   CENTIMETERS\n   MILLIMETERS\n   METERS\n   PIXELS\n",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_UNITS_UNITS]"
     },
     {
@@ -86,7 +86,7 @@
       "command-line-flag": "-margin",
       "description": "Add a margin to sides of the image using the window's background color.: size of margin, in pixels, added to all sides of output image",
       "type": "Integer",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MARGIN_SIZE]"
     },
     {
@@ -95,7 +95,7 @@
       "command-line-flag": "-no-scene-colors",
       "description": "Do not use background and foreground colors in scene",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NO_SCENE_COLORS]"
     },
     {
@@ -104,7 +104,7 @@
       "command-line-flag": "-show-capture-settings",
       "description": "Print settings from Capture Dialog only, DO NOT create image file(s)",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SHOW_CAPTURE_SETTINGS]"
     },
     {
@@ -113,7 +113,7 @@
       "command-line-flag": "-renderer",
       "description": "Select renderer for drawing image: Name of renderer to use for drawing image",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RENDERER_RENDERER]"
     },
     {
@@ -122,7 +122,7 @@
       "command-line-flag": "-print-image-info",
       "description": "Print the size and other information about output images only and DO NOT create any output images",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PRINT_IMAGE_INFO]"
     }
   ]

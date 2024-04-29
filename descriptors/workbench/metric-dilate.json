@@ -49,7 +49,7 @@
       "command-line-flag": "-bad-vertex-roi",
       "description": "specify an roi of vertices to overwrite, rather than vertices with value zero: metric file, positive values denote vertices to have their values replaced",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_BAD_VERTEX_ROI_ROI_METRIC]"
     },
     {
@@ -58,7 +58,7 @@
       "command-line-flag": "-data-roi",
       "description": "specify an roi of where there is data: metric file, positive values denote vertices that have data",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DATA_ROI_ROI_METRIC]"
     },
     {
@@ -67,7 +67,7 @@
       "command-line-flag": "-column",
       "description": "select a single column to dilate: the column number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -76,7 +76,7 @@
       "command-line-flag": "-nearest",
       "description": "use the nearest good value instead of a weighted average",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NEAREST]"
     },
     {
@@ -85,7 +85,7 @@
       "command-line-flag": "-linear",
       "description": "fill in values with linear interpolation along strongest gradient",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LINEAR]"
     },
     {
@@ -94,7 +94,7 @@
       "command-line-flag": "-exponent",
       "description": "use a different exponent in the weighting function: exponent 'n' to use in (area / (distance ^ n)) as the weighting function (default 6)",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_EXPONENT_EXPONENT]"
     },
     {
@@ -103,7 +103,7 @@
       "command-line-flag": "-corrected-areas",
       "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
     },
     {
@@ -112,7 +112,7 @@
       "command-line-flag": "-legacy-cutoff",
       "description": "use the v1.3.2 method of choosing how many vertices to use when calulating the dilated value with weighted method",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEGACY_CUTOFF]"
     }
   ],

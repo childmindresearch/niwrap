@@ -41,7 +41,7 @@
       "command-line-flag": "-roi",
       "description": "don't compute for vertices outside an roi: the region to compute inside, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_METRIC]"
     }
   ],

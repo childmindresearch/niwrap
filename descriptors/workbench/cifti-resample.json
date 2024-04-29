@@ -73,7 +73,7 @@
       "command-line-flag": "-surface-largest",
       "description": "use largest weight instead of weighted average or popularity when doing surface resampling",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SURFACE_LARGEST]"
     },
     {
@@ -82,7 +82,7 @@
       "command-line-flag": "-volume-predilate",
       "description": "dilate the volume components before resampling: distance, in mm, to dilate",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_VOLUME_PREDILATE_DILATE_MM]"
     },
     {
@@ -91,7 +91,7 @@
       "command-line-flag": "-surface-postdilate",
       "description": "dilate the surface components after resampling: distance, in mm, to dilate",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SURFACE_POSTDILATE_DILATE_MM]"
     },
     {
@@ -100,7 +100,7 @@
       "command-line-flag": "-affine",
       "description": "use an affine transformation on the volume components: the affine file to use",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_AFFINE_AFFINE_FILE]"
     },
     {
@@ -109,7 +109,7 @@
       "command-line-flag": "-warpfield",
       "description": "use a warpfield on the volume components: the warpfield to use",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_WARPFIELD_WARPFIELD]"
     }
   ],

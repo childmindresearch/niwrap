@@ -49,7 +49,7 @@
       "command-line-flag": "-bad-vertex-roi",
       "description": "specify an roi of vertices to overwrite, rather than vertices with the unlabeled key: metric file, positive values denote vertices to have their values replaced",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_BAD_VERTEX_ROI_ROI_METRIC]"
     },
     {
@@ -58,7 +58,7 @@
       "command-line-flag": "-column",
       "description": "select a single column to dilate: the column number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -67,7 +67,7 @@
       "command-line-flag": "-corrected-areas",
       "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
     }
   ],

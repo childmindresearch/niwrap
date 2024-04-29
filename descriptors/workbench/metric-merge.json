@@ -25,7 +25,7 @@
       "command-line-flag": "-metric",
       "description": "specify an input metric: a metric file to use columns from",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_METRIC_METRIC_IN]"
     }
   ],

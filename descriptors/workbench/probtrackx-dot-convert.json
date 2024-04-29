@@ -33,7 +33,7 @@
       "command-line-flag": "-row-surface",
       "description": "the output mapping along a row will be surface vertices: a metric file with positive values on all vertices used",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROW_SURFACE_ROI_METRIC]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-col-surface",
       "description": "the output mapping along a column will be surface vertices: a metric file with positive values on all vertices used",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COL_SURFACE_ROI_METRIC]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-transpose",
       "description": "transpose the input matrix",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_TRANSPOSE]"
     },
     {
@@ -60,7 +60,7 @@
       "command-line-flag": "-make-symmetric",
       "description": "transform half-square input into full matrix output",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MAKE_SYMMETRIC]"
     }
   ],

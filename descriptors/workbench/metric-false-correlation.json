@@ -65,7 +65,7 @@
       "command-line-flag": "-roi",
       "description": "select a region of interest that has data: the region, as a metric file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_METRIC]"
     },
     {
@@ -74,7 +74,7 @@
       "command-line-flag": "-dump-text",
       "description": "dump the raw measures used to a text file: the output text file",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DUMP_TEXT_TEXT_OUT]"
     }
   ],

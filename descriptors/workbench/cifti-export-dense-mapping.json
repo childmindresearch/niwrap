@@ -33,7 +33,7 @@
       "command-line-flag": "-volume-all",
       "description": "export the the mapping of all voxels: output - the output text file",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_VOLUME_ALL_TEXT_OUT]"
     }
   ]

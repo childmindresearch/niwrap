@@ -33,7 +33,7 @@
       "command-line-flag": "-left-surface",
       "description": "specify the left surface to use: the left surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-right-surface",
       "description": "specify the right surface to use: the right surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-cerebellum-surface",
       "description": "specify the cerebellum surface to use: the cerebellum surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
     }
   ],

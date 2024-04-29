@@ -33,7 +33,7 @@
       "command-line-flag": "-fixnan",
       "description": "replace NaN results with a value: value to replace NaN with",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FIXNAN_REPLACE]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-override-mapping-check",
       "description": "don't check the mappings for compatibility, only check length",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_OVERRIDE_MAPPING_CHECK]"
     }
   ],

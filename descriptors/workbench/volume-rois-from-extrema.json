@@ -41,7 +41,7 @@
       "command-line-flag": "-gaussian",
       "description": "generate a gaussian kernel instead of a flat ROI: the sigma for the gaussian kernel, in mm",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_GAUSSIAN_SIGMA]"
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-roi",
       "description": "select a region of interest to use: the region to use",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_VOLUME]"
     },
     {
@@ -59,7 +59,7 @@
       "command-line-flag": "-overlap-logic",
       "description": "how to handle overlapping ROIs, default ALLOW: the method of resolving overlaps",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_OVERLAP_LOGIC_METHOD]"
     },
     {
@@ -68,7 +68,7 @@
       "command-line-flag": "-subvolume",
       "description": "select a single subvolume to take the gradient of: the subvolume number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUBVOLUME_SUBVOL]"
     }
   ],

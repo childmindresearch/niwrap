@@ -33,7 +33,7 @@
       "command-line-flag": "-column",
       "description": "select a single column: the column number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-interpolate",
       "description": "interpolate colors: boolean, whether to interpolate",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_INTERPOLATE_INTERPOLATE]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-disp-pos",
       "description": "display positive data: boolean, whether to display",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DISP_POS_DISPLAY]"
     },
     {
@@ -60,7 +60,7 @@
       "command-line-flag": "-disp-neg",
       "description": "display positive data: boolean, whether to display",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DISP_NEG_DISPLAY]"
     },
     {
@@ -69,7 +69,7 @@
       "command-line-flag": "-disp-zero",
       "description": "display data closer to zero than the min cutoff: boolean, whether to display",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DISP_ZERO_DISPLAY]"
     },
     {
@@ -78,7 +78,7 @@
       "command-line-flag": "-palette-name",
       "description": "set the palette used: the name of the palette",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PALETTE_NAME_NAME]"
     },
     {
@@ -87,7 +87,7 @@
       "command-line-flag": "-inversion",
       "description": "specify palette inversion: the type of inversion",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_INVERSION_TYPE]"
     }
   ]

@@ -41,7 +41,7 @@
       "command-line-flag": "-name",
       "description": "select a focus by name: the name of the focus",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NAME_NAME]"
     }
   ],

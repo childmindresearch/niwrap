@@ -17,7 +17,7 @@
       "command-line-flag": "-to-nifti",
       "description": "convert metric to nifti: the metric to convert",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_TO_NIFTI_METRIC_IN]"
     }
   ]

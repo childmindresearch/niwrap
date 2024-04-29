@@ -25,7 +25,7 @@
       "command-line-flag": "-name-file",
       "description": "use a text file to replace all map names: text file containing map names, one per line",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NAME_FILE_FILE]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-from-data-file",
       "description": "use the map names from another data file: a data file with the same number of maps",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FROM_DATA_FILE_FILE]"
     }
   ]

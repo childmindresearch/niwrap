@@ -25,7 +25,7 @@
       "command-line-flag": "-direction",
       "description": "merge in a direction other than along rows: the dimension to split/concatenate along, default ROW",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DIRECTION_DIRECTION]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-mem-limit",
       "description": "restrict memory used for file reading efficiency: memory limit in gigabytes",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MEM_LIMIT_LIMIT_GB]"
     },
     {
@@ -43,7 +43,7 @@
       "command-line-flag": "-cifti",
       "description": "specify an input cifti file: a cifti file to use data from",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CIFTI_CIFTI_IN]"
     }
   ],

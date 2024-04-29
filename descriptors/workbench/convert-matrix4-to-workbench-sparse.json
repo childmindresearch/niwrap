@@ -65,7 +65,7 @@
       "command-line-flag": "-surface-seeds",
       "description": "specify the surface seed space: metric roi file of all vertices used in the seed space",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SURFACE_SEEDS_SEED_ROI]"
     }
   ]

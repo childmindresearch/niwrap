@@ -41,7 +41,7 @@
       "command-line-flag": "-presmooth",
       "description": "smooth the volume before finding extrema: the size of the gaussian smoothing kernel in mm, as sigma by default",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PRESMOOTH_KERNEL]"
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-roi",
       "description": "ignore values outside the selected area: the area to find extrema in",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_VOLUME]"
     },
     {
@@ -59,7 +59,7 @@
       "command-line-flag": "-sum-subvols",
       "description": "output the sum of the extrema subvolumes instead of each subvolume separately",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUM_SUBVOLS]"
     },
     {
@@ -68,7 +68,7 @@
       "command-line-flag": "-consolidate-mode",
       "description": "use consolidation of local minima instead of a large neighborhood",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CONSOLIDATE_MODE]"
     },
     {
@@ -77,7 +77,7 @@
       "command-line-flag": "-only-maxima",
       "description": "only find the maxima",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ONLY_MAXIMA]"
     },
     {
@@ -86,7 +86,7 @@
       "command-line-flag": "-only-minima",
       "description": "only find the minima",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ONLY_MINIMA]"
     },
     {
@@ -95,7 +95,7 @@
       "command-line-flag": "-subvolume",
       "description": "select a single subvolume to find extrema in: the subvolume number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUBVOLUME_SUBVOLUME]"
     }
   ],

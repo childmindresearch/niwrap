@@ -33,7 +33,7 @@
       "command-line-flag": "-roi",
       "description": "only consider voxels within a mask (e.g., a brain mask): the mask volume",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_VOL]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-fnirt",
       "description": "input is a fnirt warpfield: the source volume used when generating the fnirt warpfield",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FNIRT_SOURCE_VOLUME]"
     }
   ]

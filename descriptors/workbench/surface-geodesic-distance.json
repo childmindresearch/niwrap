@@ -41,7 +41,7 @@
       "command-line-flag": "-naive",
       "description": "use only neighbors, don't crawl triangles (not recommended)",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NAIVE]"
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-limit",
       "description": "stop at a certain distance: distance in mm to stop at",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LIMIT_LIMIT_MM]"
     },
     {
@@ -59,7 +59,7 @@
       "command-line-flag": "-corrected-areas",
       "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
     }
   ],

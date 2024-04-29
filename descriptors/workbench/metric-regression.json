@@ -33,7 +33,7 @@
       "command-line-flag": "-roi",
       "description": "only regress inside an roi: the area to use for regression, as a metric",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_METRIC]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-column",
       "description": "select a single column to regress from: the column number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-remove",
       "description": "specify a metric to regress out: the metric file to use",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_REMOVE_METRIC]"
     },
     {
@@ -60,7 +60,7 @@
       "command-line-flag": "-keep",
       "description": "specify a metric to include in regression, but not remove: the metric file to use",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_KEEP_METRIC]"
     }
   ],

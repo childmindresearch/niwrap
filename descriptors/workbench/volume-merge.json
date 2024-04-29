@@ -25,7 +25,7 @@
       "command-line-flag": "-volume",
       "description": "specify an input volume file: a volume file to use subvolumes from",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_VOLUME_VOLUME_IN]"
     }
   ],

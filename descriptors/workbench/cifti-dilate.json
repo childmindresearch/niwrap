@@ -57,7 +57,7 @@
       "command-line-flag": "-left-surface",
       "description": "specify the left surface to use: the left surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
     },
     {
@@ -66,7 +66,7 @@
       "command-line-flag": "-right-surface",
       "description": "specify the right surface to use: the right surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
     },
     {
@@ -75,7 +75,7 @@
       "command-line-flag": "-cerebellum-surface",
       "description": "specify the cerebellum surface to use: the cerebellum surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
     },
     {
@@ -84,7 +84,7 @@
       "command-line-flag": "-bad-brainordinate-roi",
       "description": "specify an roi of brainordinates to overwrite, rather than zeros: cifti dscalar or dtseries file, positive values denote brainordinates to have their values replaced",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_BAD_BRAINORDINATE_ROI_ROI_CIFTI]"
     },
     {
@@ -93,7 +93,7 @@
       "command-line-flag": "-nearest",
       "description": "use nearest good value instead of a weighted average",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NEAREST]"
     },
     {
@@ -102,7 +102,7 @@
       "command-line-flag": "-merged-volume",
       "description": "treat volume components as if they were a single component",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MERGED_VOLUME]"
     },
     {
@@ -111,7 +111,7 @@
       "command-line-flag": "-legacy-mode",
       "description": "use the math from v1.3.2 and earlier for weighted dilation",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEGACY_MODE]"
     }
   ],

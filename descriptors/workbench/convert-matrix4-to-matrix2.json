@@ -33,7 +33,7 @@
       "command-line-flag": "-distances",
       "description": "output average trajectory distance",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_DISTANCES]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-individual-fibers",
       "description": "output files for each fiber direction",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_INDIVIDUAL_FIBERS]"
     }
   ],

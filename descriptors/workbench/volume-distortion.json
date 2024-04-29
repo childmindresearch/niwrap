@@ -33,7 +33,7 @@
       "command-line-flag": "-fnirt",
       "description": "MUST be used if using a fnirt warpfield: the source volume used when generating the warpfield",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FNIRT_SOURCE_VOLUME]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-circular",
       "description": "use the circle-based formula for the anisotropic measure",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CIRCULAR]"
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-log2",
       "description": "apply base-2 log transform",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LOG2]"
     }
   ],

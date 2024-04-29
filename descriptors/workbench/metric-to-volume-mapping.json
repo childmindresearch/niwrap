@@ -49,7 +49,7 @@
       "command-line-flag": "-nearest-vertex",
       "description": "use the value from the vertex closest to the voxel center: how far from the surface to map values to voxels, in mm",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NEAREST_VERTEX_DISTANCE]"
     }
   ],

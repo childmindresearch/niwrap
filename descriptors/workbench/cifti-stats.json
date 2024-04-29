@@ -25,7 +25,7 @@
       "command-line-flag": "-reduce",
       "description": "use a reduction operation: the reduction operation",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_REDUCE_OPERATION]"
     },
     {
@@ -34,7 +34,7 @@
       "command-line-flag": "-percentile",
       "description": "give the value at a percentile: the percentile to find, must be between 0 and 100",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PERCENTILE_PERCENT]"
     },
     {
@@ -43,7 +43,7 @@
       "command-line-flag": "-column",
       "description": "only display output for one column: the column index (starting from 1)",
       "type": "Integer",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },
     {
@@ -52,7 +52,7 @@
       "command-line-flag": "-roi",
       "description": "only consider data inside an roi: the roi, as a cifti file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ROI_ROI_CIFTI]"
     },
     {
@@ -61,7 +61,7 @@
       "command-line-flag": "-show-map-name",
       "description": "print column index and name before each output",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SHOW_MAP_NAME]"
     }
   ]

@@ -41,7 +41,7 @@
       "command-line-flag": "-fill-value",
       "description": "specify value to be used in parcels that don't match: value to use (default 0)",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FILL_VALUE_VALUE]"
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-cifti",
       "description": "specify an input cifti file: the input parcellated cifti file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CIFTI_CIFTI_IN]"
     }
   ],

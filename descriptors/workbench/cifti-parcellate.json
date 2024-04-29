@@ -49,7 +49,7 @@
       "command-line-flag": "-spatial-weights",
       "description": "use voxel volume and either vertex areas or metric files as weights",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SPATIAL_WEIGHTS]"
     },
     {
@@ -58,7 +58,7 @@
       "command-line-flag": "-cifti-weights",
       "description": "use a cifti file containing weights: the weights to use, as a cifti file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CIFTI_WEIGHTS_WEIGHT_CIFTI]"
     },
     {
@@ -67,7 +67,7 @@
       "command-line-flag": "-method",
       "description": "specify method of parcellation (default MEAN, or MODE if label data): the method to use to assign parcel values from the values of member brainordinates",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_METHOD_METHOD]"
     },
     {
@@ -76,7 +76,7 @@
       "command-line-flag": "-only-numeric",
       "description": "exclude non-numeric values",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ONLY_NUMERIC]"
     },
     {
@@ -85,7 +85,7 @@
       "command-line-flag": "-fill-value",
       "description": "specify value to use in empty parcels (default 0): the value to fill empty parcels with",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FILL_VALUE_VALUE]"
     },
     {
@@ -94,7 +94,7 @@
       "command-line-flag": "-nonempty-mask-out",
       "description": "output a matching pscalar file that has 0s in empty parcels, and 1s elsewhere",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NONEMPTY_MASK_OUT]"
     },
     {
@@ -103,7 +103,7 @@
       "command-line-flag": "-legacy-mode",
       "description": "use the old behavior, parcels are defined by the intersection between labels and valid data, and empty parcels are discarded",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEGACY_MODE]"
     },
     {
@@ -112,7 +112,7 @@
       "command-line-flag": "-include-empty",
       "description": "deprecated: now the default behavior",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_INCLUDE_EMPTY]"
     }
   ],

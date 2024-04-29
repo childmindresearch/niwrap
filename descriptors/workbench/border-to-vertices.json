@@ -41,7 +41,7 @@
       "command-line-flag": "-border",
       "description": "create ROI for only one border: the name of the border",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_BORDER_NAME]"
     }
   ],

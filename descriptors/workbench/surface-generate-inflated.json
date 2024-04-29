@@ -41,7 +41,7 @@
       "command-line-flag": "-iterations-scale",
       "description": "optional iterations scaling: iterations-scale value",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ITERATIONS_SCALE_ITERATIONS_SCALE_VALUE]"
     }
   ],

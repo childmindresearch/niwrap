@@ -33,7 +33,7 @@
       "command-line-flag": "-file",
       "description": "copy spacing info from volume file with matching dimensions: volume file to use for reference space",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_FILE_VOLUME_REF]"
     }
   ]

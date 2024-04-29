@@ -25,7 +25,7 @@
       "command-line-flag": "-border",
       "description": "specify an input border file: a border file to use borders from",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_BORDER_BORDER_FILE_IN]"
     }
   ],

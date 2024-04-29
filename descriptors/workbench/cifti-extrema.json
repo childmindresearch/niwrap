@@ -57,7 +57,7 @@
       "command-line-flag": "-left-surface",
       "description": "specify the left surface to use: the left surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
     },
     {
@@ -66,7 +66,7 @@
       "command-line-flag": "-right-surface",
       "description": "specify the right surface to use: the right surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
     },
     {
@@ -75,7 +75,7 @@
       "command-line-flag": "-cerebellum-surface",
       "description": "specify the cerebellum surface to use: the cerebellum surface file",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
     },
     {
@@ -84,7 +84,7 @@
       "command-line-flag": "-surface-presmooth",
       "description": "smooth on the surface before finding extrema: the size of the gaussian surface smoothing kernel in mm, as sigma by default",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SURFACE_PRESMOOTH_SURFACE_KERNEL]"
     },
     {
@@ -93,7 +93,7 @@
       "command-line-flag": "-volume-presmooth",
       "description": "smooth volume components before finding extrema: the size of the gaussian volume smoothing kernel in mm, as sigma by default",
       "type": "Number",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_VOLUME_PRESMOOTH_VOLUME_KERNEL]"
     },
     {
@@ -102,7 +102,7 @@
       "command-line-flag": "-presmooth-fwhm",
       "description": "smoothing kernel distances are FWHM, not sigma",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_PRESMOOTH_FWHM]"
     },
     {
@@ -111,7 +111,7 @@
       "command-line-flag": "-merged-volume",
       "description": "treat volume components as if they were a single component",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_MERGED_VOLUME]"
     },
     {
@@ -120,7 +120,7 @@
       "command-line-flag": "-sum-maps",
       "description": "output the sum of the extrema maps instead of each map separately",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUM_MAPS]"
     },
     {
@@ -129,7 +129,7 @@
       "command-line-flag": "-consolidate-mode",
       "description": "use consolidation of local minima instead of a large neighborhood",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_CONSOLIDATE_MODE]"
     },
     {
@@ -138,7 +138,7 @@
       "command-line-flag": "-only-maxima",
       "description": "only find the maxima",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ONLY_MAXIMA]"
     },
     {
@@ -147,7 +147,7 @@
       "command-line-flag": "-only-minima",
       "description": "only find the minima",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_ONLY_MINIMA]"
     }
   ],

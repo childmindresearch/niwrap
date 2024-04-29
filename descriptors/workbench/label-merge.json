@@ -25,7 +25,7 @@
       "command-line-flag": "-label",
       "description": "specify an input label: a label file to use columns from",
       "type": "File",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_LABEL_LABEL_IN]"
     }
   ],

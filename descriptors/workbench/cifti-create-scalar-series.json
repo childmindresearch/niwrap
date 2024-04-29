@@ -33,7 +33,7 @@
       "command-line-flag": "-transpose",
       "description": "use if the rows of the text file are along the scalar dimension",
       "type": "Flag",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_TRANSPOSE]"
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-name-file",
       "description": "use a text file to set names on scalar dimension: text file containing names, one per line",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_NAME_FILE_FILE]"
     }
   ],

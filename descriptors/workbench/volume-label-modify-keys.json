@@ -41,7 +41,7 @@
       "command-line-flag": "-subvolume",
       "description": "select a single subvolume: the subvolume number or name",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "value-key": "[OPT_SUBVOLUME_SUBVOLUME]"
     }
   ],
