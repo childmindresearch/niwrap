@@ -1,25 +1,16 @@
 {
-  "name": "Maskave",
-  "command-line": "Maskave [IN_FILE] [MASK] [QUIET] [OUT_FILE] [ARGS] [ENVIRON] [NUM_THREADS] [OUTPUTTYPE]",
+  "name": "3dDetrend",
+  "command-line": "3dDetrend [IN_FILE] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "Maskave, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Maskave).\nComputes average of all voxels in the input dataset which satisfy the criterion in the options list\nFor complete details, see the `3dmaskave Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskave.html>`_",
+  "description": "Detrend, as implemented in Nipype (module: nipype.interfaces.afni, interface: Detrend).\nThis program removes components from voxel time series using linear least squares\nFor complete details, see the `3dDetrend Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDetrend.html>`_",
   "inputs": [
     {
       "id": "in_file",
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "Input file to 3dmaskave.",
+      "description": "Input file to 3ddetrend.",
       "optional": false
-    },
-    {
-      "id": "mask",
-      "name": "Mask",
-      "type": "File",
-      "value-key": "[MASK]",
-      "command-line-flag": "-mask",
-      "description": "Matrix to align input file.",
-      "optional": true
     },
     {
       "id": "num_threads",
@@ -39,15 +30,6 @@
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
       "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
-    },
-    {
-      "id": "quiet",
-      "name": "Quiet",
-      "type": "Flag",
-      "value-key": "[QUIET]",
-      "command-line-flag": "-quiet",
-      "description": "Matrix to align input file.",
-      "optional": true
     }
   ],
   "output-files": [
@@ -56,9 +38,9 @@
       "id": "out_file",
       "optional": true,
       "description": "Output image file name.",
-      "path-template": "[IN_FILE]_maskave.1D",
+      "path-template": "[IN_FILE]_detrend",
       "value-key": "[OUT_FILE]",
-      "command-line-flag": ">"
+      "command-line-flag": "-prefix"
     },
     {
       "name": "Out file",

@@ -1,6 +1,6 @@
 {
-  "name": "LFCD",
-  "command-line": "LFCD [IN_FILE] [ARGS] [AUTOCLIP] [AUTOMASK] [ENVIRON] [MASK] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [POLORT] [THRESH]",
+  "name": "3dLFCD",
+  "command-line": "3dLFCD [IN_FILE] [ARGS] [AUTOCLIP] [AUTOMASK] [ENVIRON] [MASK] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [POLORT] [THRESH]",
   "author": "Nipype (interface)",
   "description": "LFCD, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: LFCD).\nPerforms degree centrality on a dataset using a given maskfile via the 3dLFCD command\nFor complete details, see the `3dLFCD Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLFCD.html>`_",
   "inputs": [

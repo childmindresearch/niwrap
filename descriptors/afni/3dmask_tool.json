@@ -1,6 +1,6 @@
 {
-  "name": "MaskTool",
-  "command-line": "MaskTool [COUNT] [IN_FILE] [ARGS] [DATUM] [DILATE_INPUTS] [DILATE_RESULTS] [ENVIRON] [FILL_DIRS] [FILL_HOLES] [FRAC] [INTER] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [UNION] [VERBOSE]",
+  "name": "3dmask_tool",
+  "command-line": "3dmask_tool [COUNT] [IN_FILE] [ARGS] [DATUM] [DILATE_INPUTS] [DILATE_RESULTS] [ENVIRON] [FILL_DIRS] [FILL_HOLES] [FRAC] [INTER] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [UNION] [VERBOSE]",
   "author": "Nipype (interface)",
   "description": "MaskTool, as implemented in Nipype (module: nipype.interfaces.afni, interface: MaskTool).\n3dmask_tool - for combining/dilating/eroding/filling masks\nFor complete details, see the `3dmask_tool Documentation. <https://afni.nimh.nih.gov/pub../pub/dist/doc/program_help/3dmask_tool.html>`_",
   "inputs": [

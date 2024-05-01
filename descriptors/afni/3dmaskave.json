@@ -1,17 +1,25 @@
 {
-  "name": "SkullStrip",
-  "command-line": "SkullStrip [IN_FILE] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
+  "name": "3dmaskave",
+  "command-line": "3dmaskave [IN_FILE] [MASK] [QUIET] [OUT_FILE] [ARGS] [ENVIRON] [NUM_THREADS] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "SkullStrip, as implemented in Nipype (module: nipype.interfaces.afni, interface: SkullStrip).\nA program to extract the brain from surrounding tissue from MRI T1-weighted images. TODO Add optional arguments.\nFor complete details, see the `3dSkullStrip Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSkullStrip.html>`_",
+  "description": "Maskave, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Maskave).\nComputes average of all voxels in the input dataset which satisfy the criterion in the options list\nFor complete details, see the `3dmaskave Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskave.html>`_",
   "inputs": [
     {
       "id": "in_file",
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "command-line-flag": "-input",
-      "description": "Input file to 3dskullstrip.",
+      "description": "Input file to 3dmaskave.",
       "optional": false
+    },
+    {
+      "id": "mask",
+      "name": "Mask",
+      "type": "File",
+      "value-key": "[MASK]",
+      "command-line-flag": "-mask",
+      "description": "Matrix to align input file.",
+      "optional": true
     },
     {
       "id": "num_threads",
@@ -31,6 +39,15 @@
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
       "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+    },
+    {
+      "id": "quiet",
+      "name": "Quiet",
+      "type": "Flag",
+      "value-key": "[QUIET]",
+      "command-line-flag": "-quiet",
+      "description": "Matrix to align input file.",
+      "optional": true
     }
   ],
   "output-files": [
@@ -39,9 +56,9 @@
       "id": "out_file",
       "optional": true,
       "description": "Output image file name.",
-      "path-template": "[IN_FILE]_skullstrip",
+      "path-template": "[IN_FILE]_maskave.1D",
       "value-key": "[OUT_FILE]",
-      "command-line-flag": "-prefix"
+      "command-line-flag": ">"
     },
     {
       "name": "Out file",

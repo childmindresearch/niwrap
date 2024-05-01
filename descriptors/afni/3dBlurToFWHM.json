@@ -1,6 +1,6 @@
 {
-  "name": "BlurToFWHM",
-  "command-line": "BlurToFWHM [ARGS] [AUTOMASK] [BLURMASTER] [ENVIRON] [FWHM] [FWHMXY] [IN_FILE] [MASK] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
+  "name": "3dBlurToFWHM",
+  "command-line": "3dBlurToFWHM [ARGS] [AUTOMASK] [BLURMASTER] [ENVIRON] [FWHM] [FWHMXY] [IN_FILE] [MASK] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
   "description": "BlurToFWHM, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: BlurToFWHM).\nBlurs a 'master' dataset until it reaches a specified FWHM smoothness (approximately).\nFor complete details, see the `3dBlurToFWHM Documentation <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html>`_",
   "inputs": [

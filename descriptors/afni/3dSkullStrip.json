@@ -1,25 +1,17 @@
 {
-  "name": "TStat",
-  "command-line": "TStat [IN_FILE] [ARGS] [ENVIRON] [MASK] [NUM_THREADS] [OPTIONS] [OUT_FILE] [OUTPUTTYPE]",
+  "name": "3dSkullStrip",
+  "command-line": "3dSkullStrip [IN_FILE] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "TStat, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: TStat).\nCompute voxel-wise statistics using AFNI 3dTstat command\nFor complete details, see the `3dTstat Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTstat.html>`_",
+  "description": "SkullStrip, as implemented in Nipype (module: nipype.interfaces.afni, interface: SkullStrip).\nA program to extract the brain from surrounding tissue from MRI T1-weighted images. TODO Add optional arguments.\nFor complete details, see the `3dSkullStrip Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSkullStrip.html>`_",
   "inputs": [
     {
       "id": "in_file",
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "Input file to 3dtstat.",
+      "command-line-flag": "-input",
+      "description": "Input file to 3dskullstrip.",
       "optional": false
-    },
-    {
-      "id": "mask",
-      "name": "Mask",
-      "type": "File",
-      "value-key": "[MASK]",
-      "command-line-flag": "-mask",
-      "description": "Mask file.",
-      "optional": true
     },
     {
       "id": "num_threads",
@@ -30,14 +22,6 @@
       "description": "Set number of threads.",
       "optional": true,
       "default-value": 1
-    },
-    {
-      "id": "options",
-      "name": "Options",
-      "type": "String",
-      "value-key": "[OPTIONS]",
-      "description": "Selected statistical output.",
-      "optional": true
     },
     {
       "id": "outputtype",
@@ -55,7 +39,7 @@
       "id": "out_file",
       "optional": true,
       "description": "Output image file name.",
-      "path-template": "[IN_FILE]_tstat",
+      "path-template": "[IN_FILE]_skullstrip",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
     },
