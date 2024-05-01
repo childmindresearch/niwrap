@@ -1,6 +1,6 @@
 {
-  "name": "Refit",
-  "command-line": "Refit [IN_FILE] [ARGS] [ATRCOPY] [ATRFLOAT] [ATRINT] [ATRSTRING] [DEOBLIQUE] [DUPORIGIN_FILE] [ENVIRON] [NOSAVEATR] [SAVEATR] [SPACE] [XDEL] [XORIGIN] [XYZSCALE] [YDEL] [YORIGIN] [ZDEL] [ZORIGIN]",
+  "name": "3drefit",
+  "command-line": "3drefit [IN_FILE] [ARGS] [ATRCOPY] [ATRFLOAT] [ATRINT] [ATRSTRING] [DEOBLIQUE] [DUPORIGIN_FILE] [ENVIRON] [NOSAVEATR] [SAVEATR] [SPACE] [XDEL] [XORIGIN] [XYZSCALE] [YDEL] [YORIGIN] [ZDEL] [ZORIGIN]",
   "author": "Nipype (interface)",
   "description": "Refit, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: Refit).\nChanges some of the information inside a 3D dataset's header\nFor complete details, see the `3drefit Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drefit.html>`_",
   "inputs": [
