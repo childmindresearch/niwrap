@@ -1,0 +1,175 @@
+{
+    "tool-version": "1.0.0",
+    "name": "antsBrainExtraction.sh",
+    "author": "Advanced Normalization Tools (ANTs) Contributors",
+    "descriptor-url": "https://github.com/ANTsX/ANTs",
+    "command-line": "export PATH=$PATH:/opt/ants/bin && antsBrainExtraction.sh -d [DIMENSION] -a [ANATOMICAL_IMAGE] -e [BRAIN_EXTRACTION_TEMPLATE] -m [BRAIN_EXTRACTION_PROBABILITY_MASK] [TISSUE_CLASSIFICATION] [BRAIN_EXTRACTION_REGISTRATION_MASK] [KEEP_TEMP] [SINGLE_FLOAT_PRECISION] [INITIAL_MOVING_TRANSFORM] [ROTATION_SEARCH] [IMAGE_SUFFIX] [TRANSLATION_SEARCH] [RANDOM_SEEDING] [DEBUG_MODE] -o [OUTPUT_PREFIX]",
+    "container-image": {
+      "image": "antsx/ants",
+      "type": "docker"
+    },
+    "inputs": [
+      {
+          "description": "Output prefix",
+          "value-key": "[OUTPUT_PREFIX]",
+          "type": "String",
+          "optional": true,
+          "id": "output_prefix",
+          "name": "Output Prefix",
+          "default-value": "output"
+      },
+      {
+        "description": "Image dimension (2 or 3)",
+        "value-key": "[DIMENSION]",
+        "type": "Number",
+        "optional": false,
+        "id": "image_dimension",
+        "name": "Image Dimension",
+        "default-value": 3,
+        "integer": true
+      },
+      {
+        "description": "Anatomical image (Structural image, typically T1)",
+        "value-key": "[ANATOMICAL_IMAGE]",
+        "type": "File",
+        "optional": false,
+        "id": "anatomical_image",
+        "name": "Anatomical Image"
+      },
+      {
+        "description": "Brain extraction template (Anatomical template)",
+        "value-key": "[BRAIN_EXTRACTION_TEMPLATE]",
+        "type": "File",
+        "optional": false,
+        "id": "template",
+        "name": "Brain Extraction Template"
+      },
+      {
+        "description": "Brain extraction probability mask",
+        "value-key": "[BRAIN_EXTRACTION_PROBABILITY_MASK]",
+        "type": "File",
+        "optional": false,
+        "id": "probability_mask",
+        "name": "Brain Extraction Probability Mask"
+      },
+      {
+        "command-line-flag": "-c",
+        "description": "Tissue classification",
+        "value-key": "[TISSUE_CLASSIFICATION]",
+        "type": "String",
+        "optional": true,
+        "id": "tissue_classification",
+        "name": "Tissue Classification"
+      },
+      {
+        "command-line-flag": "-f",
+        "description": "Brain extraction registration mask",
+        "value-key": "[BRAIN_EXTRACTION_REGISTRATION_MASK]",
+        "type": "File",
+        "optional": true,
+        "id": "brain_extraction_registration_mask",
+        "name": "Brain Extraction Registration Mask"
+      },
+      {
+        "command-line-flag": "-k",
+        "description": "Keep temporary files",
+        "value-key": "[KEEP_TEMP]",
+        "type": "Flag",
+        "optional": true,
+        "id": "keep_temporary_files",
+        "name": "Keep Temporary Files"
+      },
+      {
+        "command-line-flag": "-q",
+        "description": "Use single floating point precision",
+        "value-key": "[SINGLE_FLOAT_PRECISION]",
+        "type": "Flag",
+        "optional": true,
+        "id": "single_floating_point_precision",
+        "name": "Single Floating Point Precision"
+      },
+      {
+        "command-line-flag": "-r",
+        "description": "Initial moving transform",
+        "value-key": "[INITIAL_MOVING_TRANSFORM]",
+        "type": "File",
+        "optional": true,
+        "id": "initial_moving_transform",
+        "name": "Initial Moving Transform"
+      },
+      {
+        "command-line-flag": "-R",
+        "description": "Rotation search parameters",
+        "value-key": "[ROTATION_SEARCH]",
+        "type": "String",
+        "optional": true,
+        "id": "rotation_search_params",
+        "name": "Rotation Search Parameters"
+      },
+      {
+        "command-line-flag": "-s",
+        "description": "Image file suffix",
+        "value-key": "[IMAGE_SUFFIX]",
+        "type": "String",
+        "optional": true,
+        "id": "image_file_suffix",
+        "name": "Image File Suffix"
+      },
+      {
+        "command-line-flag": "-T",
+        "description": "Translation search parameters",
+        "value-key": "[TRANSLATION_SEARCH]",
+        "type": "String",
+        "optional": true,
+        "id": "translation_search_params",
+        "name": "Translation Search Parameters"
+      },
+      {
+        "command-line-flag": "-u",
+        "description": "Use random seeding",
+        "value-key": "[RANDOM_SEEDING]",
+        "type": "Flag",
+        "optional": true,
+        "id": "random_seeding",
+        "name": "Use Random Seeding"
+      },
+      {
+        "command-line-flag": "-z",
+        "description": "Test / debug mode",
+        "value-key": "[DEBUG_MODE]",
+        "type": "Flag",
+        "optional": true,
+        "id": "debug_mode",
+        "name": "Debug Mode"
+      }
+    ],
+    "output-files": [
+      {
+        "description": "Brain extracted image",
+        "id": "brain_extracted_image",
+        "name": "Brain Extracted Image",
+        "path-template": "[OUTPUT_PREFIX]BrainExtractionBrain.nii.gz"
+      },
+      {
+        "description": "Brain mask",
+        "id": "brain_mask",
+        "name": "Brain Mask",
+        "path-template": "[OUTPUT_PREFIX]BrainExtractionMask.nii.gz"
+      },
+      {
+        "description": "Brain probability mask",
+        "id": "brain_probability_mask",
+        "name": "Brain Probability Mask",
+        "path-template": "[OUTPUT_PREFIX]BrainExtractionPrior0GenericAffine.mat"
+      }
+    ],
+    "schema-version": "0.5",
+    "description": "antsBrainExtraction.sh is a script from Advanced Normalization Tools (ANTs) for template-based brain extraction.",
+    "tags": {
+      "domain": [
+        "neuroinformatics",
+        "mri",
+        "brain extraction"
+      ]
+    }
+  }
