@@ -1,25 +1,38 @@
 {
-  "name": "Registration",
-  "tool-version": "1.0",
-  "description": "Registration, as implemented in Nipype (module: nipype.interfaces.ants.registration, interface: Registration). Automatic nipype2boutiques conversion failed.",
-  "command-line": "dummy",
-  "schema-version": "0.5",
-  "container-image": {
-    "type": "docker",
-    "image": "dummy/dummy"
-  },
+  "name": "antsRegistration",
+  "command-line": "antsRegistration",
+  "description": "This program is a user-level registration application meant to utilize classes in ITK v4.0 and later. The user can specify any number of \"stages\" where a stage consists of a transform; an image metric; and iterations, shrink factors, and smoothing sigmas for each level. Note that explicitly setting the dimensionality, metric, transform, output, convergence, shrink-factors, and smoothing-sigmas parameters is mandatory.",
+  "author": "ANTs authors",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "v2.4.3-gcaa60eb",
   "inputs": [
     {
-      "id": "dummy_input",
-      "name": "Dummy input",
-      "type": "File"
-    }
-  ],
-  "output-files": [
+      "id": "dimensionality",
+      "name": "Dimensionality",
+      "value-key": "[DIMENSIONALITY]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [2, 3, 4],
+      "command-line-flag": "--image-dimensionality",
+      "description": "-d, --image-dimensionality 2/3/4. This option forces the image to be treated as a specified-dimensional image. If not specified, we try to infer the dimensionality from the input image."
+    },
     {
-      "id": "dummy_output",
-      "name": "Dummy output",
-      "path-template": "dummy_output.txt"
+      "id": "output_transform_prefix",
+      "name": "Output transform prefix",
+      "value-key": "[OUTPUT_TRANSFORM_PREFIX]",
+      "type": "String",
+      "optional": false,
+      "description": "Specify the output transform prefix (output format is .nii.gz )."
+    },
+    {
+      "id": "interpolation",
+      "name": "Interpolation",
+      "value-key": "[INTERPOLATION]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "--interpolation",
+      "description": "-n, --interpolation Linear NearestNeighbor MultiLabel[<sigma=imageSpacing>,<alpha=4.0>] Gaussian[<sigma=imageSpacing>,<alpha=1.0>] BSpline[<order=3>] CosineWindowedSinc WelchWindowedSinc HammingWindowedSinc LanczosWindowedSinc GenericLabel[<interpolator=Linear>]. Several interpolation options are available in ITK. These have all been made available. Currently the interpolator choice is only used to warp (and possibly inverse warp) the final output image(s)."
     }
   ]
 }
