@@ -1,0 +1,95 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-weighted-stats",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-weighted-stats [VOLUME_IN] [OPT_WEIGHT_VOLUME_WEIGHT_VOLUME] [OPT_SUBVOLUME_SUBVOLUME] [OPT_ROI_ROI_VOLUME] [OPT_MEAN] [OPT_STDEV] [OPT_PERCENTILE_PERCENT] [OPT_SUM] [OPT_SHOW_MAP_NAME]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "WEIGHTED SPATIAL STATISTICS ON A VOLUME FILE.\n\nFor each subvolume of the input, a line of text is printed, resulting from the specified operation.  If -weight-volume is not specified, each voxel's volume is used.  Use -subvolume to only give output for a single subvolume.  If the -roi option is used without -match-maps, then each line will contain as many numbers as there are maps in the ROI file, separated by tab characters.  Exactly one of -mean, -stdev, -percentile or -sum must be specified.\n\nUsing -sum without -weight-volume is equivalent to integrating with respect to volume.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume_in",
+      "name": "volume_in",
+      "description": "the input volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_IN]"
+    },
+    {
+      "id": "opt_weight_volume_weight_volume",
+      "name": "opt_weight_volume_weight_volume",
+      "command-line-flag": "-weight-volume",
+      "description": "use weights from a volume file: volume file containing the weights",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_WEIGHT_VOLUME_WEIGHT_VOLUME]"
+    },
+    {
+      "id": "opt_subvolume_subvolume",
+      "name": "opt_subvolume_subvolume",
+      "command-line-flag": "-subvolume",
+      "description": "only display output for one subvolume: the subvolume number or name",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPT_SUBVOLUME_SUBVOLUME]"
+    },
+    {
+      "id": "opt_roi_roi_volume",
+      "name": "opt_roi_roi_volume",
+      "command-line-flag": "-roi",
+      "description": "only consider data inside an roi: the roi, as a volume file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_ROI_ROI_VOLUME]"
+    },
+    {
+      "id": "opt_mean",
+      "name": "opt_mean",
+      "command-line-flag": "-mean",
+      "description": "compute weighted mean",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_MEAN]"
+    },
+    {
+      "id": "opt_stdev",
+      "name": "opt_stdev",
+      "command-line-flag": "-stdev",
+      "description": "compute weighted standard deviation",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_STDEV]"
+    },
+    {
+      "id": "opt_percentile_percent",
+      "name": "opt_percentile_percent",
+      "command-line-flag": "-percentile",
+      "description": "compute weighted percentile: the percentile to find, must be between 0 and 100",
+      "type": "Number",
+      "optional": true,
+      "value-key": "[OPT_PERCENTILE_PERCENT]"
+    },
+    {
+      "id": "opt_sum",
+      "name": "opt_sum",
+      "command-line-flag": "-sum",
+      "description": "compute weighted sum",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_SUM]"
+    },
+    {
+      "id": "opt_show_map_name",
+      "name": "opt_show_map_name",
+      "command-line-flag": "-show-map-name",
+      "description": "print map index and name before each output",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_SHOW_MAP_NAME]"
+    }
+  ]
+}

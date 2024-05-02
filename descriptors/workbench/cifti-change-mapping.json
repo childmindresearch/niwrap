@@ -1,0 +1,57 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-change-mapping",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-change-mapping [DATA_CIFTI] [DIRECTION] [CIFTI_OUT] [OPT_SCALAR]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "CONVERT TO SCALAR, COPY MAPPING, ETC.\n\nTake an existing cifti file and change one of the mappings.  Exactly one of -series, -scalar, or -from-cifti must be specified.  The direction can be either an integer starting from 1, or the strings 'ROW' or 'COLUMN'.\n\nThe argument to -unit must be one of the following:\n\nSECOND\nHERTZ\nMETER\nRADIAN",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "data_cifti",
+      "name": "data_cifti",
+      "description": "the cifti file to use the data from",
+      "type": "File",
+      "optional": false,
+      "value-key": "[DATA_CIFTI]"
+    },
+    {
+      "id": "direction",
+      "name": "direction",
+      "description": "which direction on <data-cifti> to replace the mapping",
+      "type": "String",
+      "optional": false,
+      "value-key": "[DIRECTION]"
+    },
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "the output cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_scalar",
+      "name": "opt_scalar",
+      "command-line-flag": "-scalar",
+      "description": "set the mapping to scalar",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_SCALAR]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "the output cifti file",
+      "optional": false
+    }
+  ]
+}

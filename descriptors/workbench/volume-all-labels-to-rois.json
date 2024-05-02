@@ -1,0 +1,48 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-all-labels-to-rois",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-all-labels-to-rois [LABEL_IN] [MAP] [VOLUME_OUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "MAKE ROIS FROM ALL LABELS IN A VOLUME FRAME.\n\nThe output volume has a frame for each label in the specified input frame, other than the ??? label, each of which contains an ROI of all voxels that are set to the corresponding label.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "label_in",
+      "name": "label_in",
+      "description": "the input volume label file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[LABEL_IN]"
+    },
+    {
+      "id": "map",
+      "name": "map",
+      "description": "the number or name of the label map to use",
+      "type": "String",
+      "optional": false,
+      "value-key": "[MAP]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "the output volume file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "the output volume file",
+      "optional": false
+    }
+  ]
+}

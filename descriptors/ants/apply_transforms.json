@@ -5,20 +5,12 @@
   "description": "ApplyTransforms, as implemented in Nipype (module: nipype.interfaces.ants.resampling, interface: ApplyTransforms).\nApplyTransforms, applied to an input image, transforms it according to a reference image and a transform (or a set of transforms).",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "default_value",
       "name": "Default value",
       "type": "Number",
       "value-key": "[DEFAULT_VALUE]",
       "command-line-flag": "--default-value",
-      "description": "A float. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "default-value": 0.0
     },
@@ -34,21 +26,12 @@
       "value-choices": [2, 3, 4]
     },
     {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
-    {
       "id": "float",
       "name": "Float",
       "type": "Flag",
       "value-key": "[FLOAT]",
       "command-line-flag": "--float",
-      "description": "A boolean. Use float instead of double for computations.",
+      "description": "Use float instead of double for computations.",
       "optional": true,
       "default-value": false
     },
@@ -58,7 +41,7 @@
       "type": "File",
       "value-key": "[INPUT_IMAGE]",
       "command-line-flag": "--input",
-      "description": "A pathlike object or string representing an existing file. Image to apply transformation to (generally a coregistered functional).",
+      "description": "Image to apply transformation to (generally a coregistered functional).",
       "optional": false
     },
     {
@@ -98,7 +81,7 @@
       "type": "String",
       "list": true,
       "value-key": "[INTERPOLATION_PARAMETERS]",
-      "description": "A tuple of the form: (an integer) or a tuple of the form: (a float, a float). No description provided.",
+      "description": "(an integer) or a tuple of the form: (a float, a float). No description provided.",
       "optional": true
     },
     {
@@ -107,7 +90,7 @@
       "type": "String",
       "list": true,
       "value-key": "[INTERPOLATION_PARAMETERS]",
-      "description": "A tuple of the form: (an integer) or a tuple of the form: (a float, a float). No description provided.",
+      "description": "(an integer) or a tuple of the form: (a float, a float). No description provided.",
       "optional": true
     },
     {
@@ -125,7 +108,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Number of itk threads to use.",
+      "description": "Number of itk threads to use.",
       "optional": true,
       "default-value": 1
     },
@@ -134,7 +117,7 @@
       "name": "Out postfix",
       "type": "String",
       "value-key": "[OUT_POSTFIX]",
-      "description": "A string. Postfix that is appended to all output files (default = _trans).",
+      "description": "Postfix that is appended to all output files (default = _trans).",
       "optional": true,
       "default-value": "_trans"
     },
@@ -144,7 +127,7 @@
       "type": "String",
       "value-key": "[OUTPUT_IMAGE]",
       "command-line-flag": "--output",
-      "description": "A string. Output file name.",
+      "description": "Output file name.",
       "optional": true
     },
     {
@@ -153,7 +136,7 @@
       "type": "Flag",
       "value-key": "[PRINT_OUT_COMPOSITE_WARP_FILE]",
       "command-line-flag": "--print_out_composite_warp_file",
-      "description": "A boolean. Output a composite warp file instead of a transformed image.",
+      "description": "Output a composite warp file instead of a transformed image.",
       "optional": true,
       "requires-inputs": ["output_image"]
     },
@@ -163,7 +146,7 @@
       "type": "File",
       "value-key": "[REFERENCE_IMAGE]",
       "command-line-flag": "--reference-image",
-      "description": "A pathlike object or string representing an existing file. Reference image space that you wish to warp into.",
+      "description": "Reference image space that you wish to warp into.",
       "optional": false
     },
     {
@@ -172,7 +155,7 @@
       "type": "File",
       "list": true,
       "value-key": "[TRANSFORMS]",
-      "description": "A list of items which are a pathlike object or string representing an existing file or 'identity'. Transform files: will be applied in reverse order. for example, the last specified transform will be applied first.",
+      "description": "A list of items which are file or string or 'identity'. Transform files: will be applied in reverse order. for example, the last specified transform will be applied first.",
       "optional": false
     }
   ],
@@ -182,7 +165,7 @@
       "id": "output_image_outfile",
       "path-template": "[OUTPUT_IMAGE]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Warped image."
+      "description": "Warped image."
     }
   ],
   "groups": [
@@ -196,7 +179,7 @@
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

@@ -1,0 +1,40 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "wbsparse-merge-dense",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -wbsparse-merge-dense [DIRECTION] [WBSPARSE_OUT] [OPT_WBSPARSE_WBSPARSE_IN]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "MERGE WBSPARSE FILES ALONG DENSE DIMENSION.\n\nThe input wbsparse files must have matching mappings along the direction not specified, and the mapping along the specified direction must be brain models.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "direction",
+      "name": "direction",
+      "description": "which dimension to merge along, ROW or COLUMN",
+      "type": "String",
+      "optional": false,
+      "value-key": "[DIRECTION]"
+    },
+    {
+      "id": "wbsparse_out",
+      "name": "wbsparse_out",
+      "description": "output - the output wbsparse file",
+      "type": "String",
+      "optional": false,
+      "value-key": "[WBSPARSE_OUT]"
+    },
+    {
+      "id": "opt_wbsparse_wbsparse_in",
+      "name": "opt_wbsparse_wbsparse_in",
+      "command-line-flag": "-wbsparse",
+      "description": "specify an input wbsparse file: a wbsparse file to merge",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPT_WBSPARSE_WBSPARSE_IN]"
+    }
+  ]
+}

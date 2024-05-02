@@ -5,28 +5,11 @@
   "description": "Slice, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Slice).\nUse fslslice to split a 3D file into lots of 2D files (along z-axis).",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
-    {
       "id": "in_file",
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input filename.",
+      "description": "Input filename.",
       "optional": false
     },
     {
@@ -34,7 +17,7 @@
       "name": "Out base name",
       "type": "String",
       "value-key": "[OUT_BASE_NAME]",
-      "description": "A string. Outputs prefix.",
+      "description": "Outputs prefix.",
       "optional": true
     },
     {
@@ -53,14 +36,14 @@
       "id": "out_files",
       "path-template": "out_files",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing an existing file. No description provided.",
+      "description": "No description provided.",
       "list": true
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

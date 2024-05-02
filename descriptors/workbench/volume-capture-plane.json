@@ -1,0 +1,151 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-capture-plane",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-capture-plane [VOLUME] [SUBVOLUME] [INTERP] [H_DIM] [V_DIM] [SCALE_MIN] [SCALE_MAX] [BOTTOM_LEFT_X] [BOTTOM_LEFT_Y] [BOTTOM_LEFT_Z] [BOTTOM_RIGHT_X] [BOTTOM_RIGHT_Y] [BOTTOM_RIGHT_Z] [TOP_LEFT_X] [TOP_LEFT_Y] [TOP_LEFT_Z] [IMAGE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "INTERPOLATE IMAGE FROM PLANE THROUGH VOLUME.\n\nNOTE: If you want to generate an image with all of the capabilities of the GUI rendering, see -show-scene.\n\nRenders an image of an arbitrary plane through the volume file, with a simple linear grayscale palette.  The parameter <interp> must be one of:\n\nCUBIC\nENCLOSING_VOXEL\nTRILINEAR",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume",
+      "name": "volume",
+      "description": "the volume file to interpolate from",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME]"
+    },
+    {
+      "id": "subvolume",
+      "name": "subvolume",
+      "description": "the name or number of the subvolume to use",
+      "type": "String",
+      "optional": false,
+      "value-key": "[SUBVOLUME]"
+    },
+    {
+      "id": "interp",
+      "name": "interp",
+      "description": "interpolation type",
+      "type": "String",
+      "optional": false,
+      "value-key": "[INTERP]"
+    },
+    {
+      "id": "h_dim",
+      "name": "h_dim",
+      "description": "width of output image, in pixels",
+      "type": "Integer",
+      "optional": false,
+      "value-key": "[H_DIM]"
+    },
+    {
+      "id": "v_dim",
+      "name": "v_dim",
+      "description": "height of output image, in pixels",
+      "type": "Integer",
+      "optional": false,
+      "value-key": "[V_DIM]"
+    },
+    {
+      "id": "scale_min",
+      "name": "scale_min",
+      "description": "value to render as black",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[SCALE_MIN]"
+    },
+    {
+      "id": "scale_max",
+      "name": "scale_max",
+      "description": "value to render as white",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[SCALE_MAX]"
+    },
+    {
+      "id": "bottom_left_x",
+      "name": "bottom_left_x",
+      "description": "x-coordinate of the bottom left of the output image",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[BOTTOM_LEFT_X]"
+    },
+    {
+      "id": "bottom_left_y",
+      "name": "bottom_left_y",
+      "description": "y-coordinate of the bottom left of the output image",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[BOTTOM_LEFT_Y]"
+    },
+    {
+      "id": "bottom_left_z",
+      "name": "bottom_left_z",
+      "description": "z-coordinate of the bottom left of the output image",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[BOTTOM_LEFT_Z]"
+    },
+    {
+      "id": "bottom_right_x",
+      "name": "bottom_right_x",
+      "description": "x-coordinate of the bottom right of the output image",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[BOTTOM_RIGHT_X]"
+    },
+    {
+      "id": "bottom_right_y",
+      "name": "bottom_right_y",
+      "description": "y-coordinate of the bottom right of the output image",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[BOTTOM_RIGHT_Y]"
+    },
+    {
+      "id": "bottom_right_z",
+      "name": "bottom_right_z",
+      "description": "z-coordinate of the bottom right of the output image",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[BOTTOM_RIGHT_Z]"
+    },
+    {
+      "id": "top_left_x",
+      "name": "top_left_x",
+      "description": "x-coordinate of the top left of the output image",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[TOP_LEFT_X]"
+    },
+    {
+      "id": "top_left_y",
+      "name": "top_left_y",
+      "description": "y-coordinate of the top left of the output image",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[TOP_LEFT_Y]"
+    },
+    {
+      "id": "top_left_z",
+      "name": "top_left_z",
+      "description": "z-coordinate of the top left of the output image",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[TOP_LEFT_Z]"
+    },
+    {
+      "id": "image",
+      "name": "image",
+      "description": "output - the output image",
+      "type": "String",
+      "optional": false,
+      "value-key": "[IMAGE]"
+    }
+  ]
+}

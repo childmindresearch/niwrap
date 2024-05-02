@@ -5,28 +5,11 @@
   "description": "ImageStats, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ImageStats).\nUse FSL fslstats command to calculate stats from images `FSL info <http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils>`_",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
-    {
       "id": "in_file",
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input file to generate stats of.",
+      "description": "Input file to generate stats of.",
       "optional": false
     },
     {
@@ -35,7 +18,7 @@
       "type": "File",
       "value-key": "[INDEX_MASK_FILE]",
       "command-line-flag": "-K",
-      "description": "A pathlike object or string representing an existing file. Generate separate n submasks from indexmask, for indexvalues 1..n where n is the maximum index value in indexmask, and generate statistics for each submask.",
+      "description": "Generate separate n submasks from indexmask, for indexvalues 1..n where n is the maximum index value in indexmask, and generate statistics for each submask.",
       "optional": true
     },
     {
@@ -43,7 +26,7 @@
       "name": "Mask file",
       "type": "File",
       "value-key": "[MASK_FILE]",
-      "description": "A pathlike object or string representing an existing file. Mask file used for option -k %s.",
+      "description": "Mask file used for option -k %s.",
       "optional": true
     },
     {
@@ -51,7 +34,7 @@
       "name": "Op string",
       "type": "String",
       "value-key": "[OP_STRING]",
-      "description": "A string. String defining the operation, options are applied in order, e.g. -m -l 10 -m will report the non-zero mean, apply a threshold and then report the new nonzero mean.",
+      "description": "String defining the operation, options are applied in order, e.g. -m -l 10 -m will report the non-zero mean, apply a threshold and then report the new nonzero mean.",
       "optional": false
     },
     {
@@ -69,7 +52,7 @@
       "type": "Flag",
       "value-key": "[SPLIT_4D]",
       "command-line-flag": "-t",
-      "description": "A boolean. Give a separate output line for each 3d volume of a 4d timeseries.",
+      "description": "Give a separate output line for each 3d volume of a 4d timeseries.",
       "optional": true
     }
   ],
@@ -85,7 +68,7 @@
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

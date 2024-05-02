@@ -1,0 +1,91 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-parcel-resampling-generic",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-parcel-resampling-generic [VOLUME_IN] [CUR_PARCELS] [NEW_PARCELS] [KERNEL] [VOLUME_OUT] [OPT_FWHM] [OPT_FIX_ZEROS] [OPT_SUBVOLUME_SUBVOL]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "SMOOTH AND RESAMPLE VOLUME PARCELS FROM DIFFERENT VOLUME SPACE.\n\nSmooths and resamples the region inside each label in cur-parcels to the region of the same label name in new-parcels.  Any voxels in the output label region but outside the input label region will be extrapolated from nearby data.  The -fix-zeros option causes the smoothing to not use an input value if it is zero, but still write a smoothed value to the voxel, and after smoothing is complete, it will check for any remaining values of zero, and fill them in with extrapolated values.  The output volume will use the volume space of new-parcels, which does not need to be in the same volume space as the input.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume_in",
+      "name": "volume_in",
+      "description": "the input data volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_IN]"
+    },
+    {
+      "id": "cur_parcels",
+      "name": "cur_parcels",
+      "description": "label volume of where the parcels currently are",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CUR_PARCELS]"
+    },
+    {
+      "id": "new_parcels",
+      "name": "new_parcels",
+      "description": "label volume of where the parcels should be",
+      "type": "File",
+      "optional": false,
+      "value-key": "[NEW_PARCELS]"
+    },
+    {
+      "id": "kernel",
+      "name": "kernel",
+      "description": "gaussian kernel size in mm to smooth by during resampling, as sigma by default",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[KERNEL]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "output volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_fwhm",
+      "name": "opt_fwhm",
+      "command-line-flag": "-fwhm",
+      "description": "smoothing kernel size is FWHM, not sigma",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_FWHM]"
+    },
+    {
+      "id": "opt_fix_zeros",
+      "name": "opt_fix_zeros",
+      "command-line-flag": "-fix-zeros",
+      "description": "treat zero values as not being data",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_FIX_ZEROS]"
+    },
+    {
+      "id": "opt_subvolume_subvol",
+      "name": "opt_subvolume_subvol",
+      "command-line-flag": "-subvolume",
+      "description": "select a single subvolume as input: the subvolume number or name",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPT_SUBVOLUME_SUBVOL]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "output volume",
+      "optional": false
+    }
+  ]
+}

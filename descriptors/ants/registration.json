@@ -5,6 +5,11 @@
   "author": "ANTs authors",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "v2.4.3-gcaa60eb",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "fcpindi/c-pac:latest"
+  },
   "inputs": [
     {
       "id": "dimensionality",

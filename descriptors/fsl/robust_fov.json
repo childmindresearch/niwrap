@@ -5,31 +5,14 @@
   "description": "RobustFOV, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: RobustFOV).\nAutomatically crops an image removing lower head and neck.\nInterface is stable 5.0.0 to 5.0.9, but default brainsize changed from 150mm to 170mm.",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "brainsize",
       "name": "Brainsize",
       "type": "Number",
       "integer": true,
       "value-key": "[BRAINSIZE]",
       "command-line-flag": "-b",
-      "description": "An integer. Size of brain in z-dimension (default 170mm/150mm).",
+      "description": "Size of brain in z-dimension (default 170mm/150mm).",
       "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
     },
     {
       "id": "in_file",
@@ -37,7 +20,7 @@
       "type": "File",
       "value-key": "[IN_FILE]",
       "command-line-flag": "-i",
-      "description": "A pathlike object or string representing an existing file. Input filename.",
+      "description": "Input filename.",
       "optional": false
     },
     {
@@ -55,7 +38,7 @@
       "name": "Out roi",
       "id": "out_roi",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Roi volume output name.",
+      "description": "Roi volume output name.",
       "path-template": "[IN_FILE]_ROI",
       "value-key": "[OUT_ROI]",
       "command-line-flag": "-r"
@@ -64,7 +47,7 @@
       "name": "Out transform",
       "id": "out_transform",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Transformation matrix in_file to out_roi output name.",
+      "description": "Transformation matrix in_file to out_roi output name.",
       "path-template": "[IN_FILE]_to_ROI",
       "value-key": "[OUT_TRANSFORM]",
       "command-line-flag": "-m"
@@ -74,20 +57,20 @@
       "id": "out_roi",
       "path-template": "out_roi",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Roi volume output name."
+      "description": "Roi volume output name."
     },
     {
       "name": "Out transform",
       "id": "out_transform",
       "path-template": "out_transform",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Transformation matrix in_file to out_roi output name."
+      "description": "Transformation matrix in_file to out_roi output name."
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

@@ -1,0 +1,57 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "foci-get-projection-vertex",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -foci-get-projection-vertex [FOCI] [SURFACE] [METRIC_OUT] [OPT_NAME_NAME]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "GET PROJECTION VERTEX FOR FOCI.\n\nFor each focus, a column is created in <metric-out>, and the vertex with the most influence on its projection is assigned a value of 1 in that column, with all other vertices 0.  If -name is used, only one focus will be used.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "foci",
+      "name": "foci",
+      "description": "the foci file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[FOCI]"
+    },
+    {
+      "id": "surface",
+      "name": "surface",
+      "description": "the surface related to the foci file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE]"
+    },
+    {
+      "id": "metric_out",
+      "name": "metric_out",
+      "description": "the output metric file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[METRIC_OUT]"
+    },
+    {
+      "id": "opt_name_name",
+      "name": "opt_name_name",
+      "command-line-flag": "-name",
+      "description": "select a focus by name: the name of the focus",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPT_NAME_NAME]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "metric_out",
+      "name": "metric_out",
+      "path-template": "[METRIC_OUT]",
+      "description": "the output metric file",
+      "optional": false
+    }
+  ]
+}

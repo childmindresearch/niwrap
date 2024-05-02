@@ -1,0 +1,84 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-rois-from-extrema",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-rois-from-extrema [VOLUME_IN] [LIMIT] [VOLUME_OUT] [OPT_GAUSSIAN_SIGMA] [OPT_ROI_ROI_VOLUME] [OPT_OVERLAP_LOGIC_METHOD] [OPT_SUBVOLUME_SUBVOL]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "CREATE VOLUME ROI MAPS FROM EXTREMA MAPS.\n\nFor each nonzero value in each map, make a map with an ROI around that location.  If the -gaussian option is specified, then normalized gaussian kernels are output instead of ROIs.  The <method> argument to -overlap-logic must be one of ALLOW, CLOSEST, or EXCLUDE.  ALLOW is the default, and means that ROIs are treated independently and may overlap.  CLOSEST means that ROIs may not overlap, and that no ROI contains vertices that are closer to a different seed vertex.  EXCLUDE means that ROIs may not overlap, and that any vertex within range of more than one ROI does not belong to any ROI.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume_in",
+      "name": "volume_in",
+      "description": "the input volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_IN]"
+    },
+    {
+      "id": "limit",
+      "name": "limit",
+      "description": "distance limit from voxel center, in mm",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[LIMIT]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "the output volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_gaussian_sigma",
+      "name": "opt_gaussian_sigma",
+      "command-line-flag": "-gaussian",
+      "description": "generate a gaussian kernel instead of a flat ROI: the sigma for the gaussian kernel, in mm",
+      "type": "Number",
+      "optional": true,
+      "value-key": "[OPT_GAUSSIAN_SIGMA]"
+    },
+    {
+      "id": "opt_roi_roi_volume",
+      "name": "opt_roi_roi_volume",
+      "command-line-flag": "-roi",
+      "description": "select a region of interest to use: the region to use",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_ROI_ROI_VOLUME]"
+    },
+    {
+      "id": "opt_overlap_logic_method",
+      "name": "opt_overlap_logic_method",
+      "command-line-flag": "-overlap-logic",
+      "description": "how to handle overlapping ROIs, default ALLOW: the method of resolving overlaps",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPT_OVERLAP_LOGIC_METHOD]"
+    },
+    {
+      "id": "opt_subvolume_subvol",
+      "name": "opt_subvolume_subvol",
+      "command-line-flag": "-subvolume",
+      "description": "select a single subvolume to take the gradient of: the subvolume number or name",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPT_SUBVOLUME_SUBVOL]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "the output volume",
+      "optional": false
+    }
+  ]
+}

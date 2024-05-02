@@ -5,20 +5,12 @@
   "description": "Overlay, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Overlay).\nUse FSL's overlay command to combine background and statistical images into one volume",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "auto_thresh_bg",
       "name": "Auto thresh bg",
       "type": "Flag",
       "value-key": "[AUTO_THRESH_BG]",
       "command-line-flag": "-a",
-      "description": "A boolean. Automatically threshold the background image.",
+      "description": "Automatically threshold the background image.",
       "optional": false
     },
     {
@@ -26,7 +18,7 @@
       "name": "Background image",
       "type": "File",
       "value-key": "[BACKGROUND_IMAGE]",
-      "description": "A pathlike object or string representing an existing file. Image to use as background.",
+      "description": "Image to use as background.",
       "optional": false
     },
     {
@@ -37,17 +29,8 @@
       "min-list-entries": 2,
       "max-list-entries": 2,
       "value-key": "[BG_THRESH]",
-      "description": "A tuple of the form: (a float, a float). Min and max values for background intensity.",
+      "description": "(a float, a float). Min and max values for background intensity.",
       "optional": false
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
     },
     {
       "id": "full_bg_range",
@@ -55,7 +38,7 @@
       "type": "Flag",
       "value-key": "[FULL_BG_RANGE]",
       "command-line-flag": "-A",
-      "description": "A boolean. Use full range of background image.",
+      "description": "Use full range of background image.",
       "optional": false
     },
     {
@@ -63,7 +46,7 @@
       "name": "Out file",
       "type": "File",
       "value-key": "[OUT_FILE]",
-      "description": "A pathlike object or string representing a file. Combined image volume.",
+      "description": "Combined image volume.",
       "optional": true
     },
     {
@@ -86,19 +69,11 @@
       "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     },
     {
-      "id": "show_negative_stats",
-      "name": "Show negative stats",
-      "type": "Flag",
-      "value-key": "[SHOW_NEGATIVE_STATS]",
-      "description": "A boolean. Display negative statistics in overlay.",
-      "optional": true
-    },
-    {
       "id": "stat_image",
       "name": "Stat image",
       "type": "File",
       "value-key": "[STAT_IMAGE]",
-      "description": "A pathlike object or string representing an existing file. Statistical image to overlay in color.",
+      "description": "Statistical image to overlay in color.",
       "optional": false
     },
     {
@@ -106,7 +81,7 @@
       "name": "Stat image2",
       "type": "File",
       "value-key": "[STAT_IMAGE2]",
-      "description": "A pathlike object or string representing an existing file. Second statistical image to overlay in color.",
+      "description": "Second statistical image to overlay in color.",
       "optional": true
     },
     {
@@ -117,7 +92,7 @@
       "min-list-entries": 2,
       "max-list-entries": 2,
       "value-key": "[STAT_THRESH]",
-      "description": "A tuple of the form: (a float, a float). Min and max values for the statistical overlay.",
+      "description": "(a float, a float). Min and max values for the statistical overlay.",
       "optional": false
     },
     {
@@ -128,17 +103,8 @@
       "min-list-entries": 2,
       "max-list-entries": 2,
       "value-key": "[STAT_THRESH2]",
-      "description": "A tuple of the form: (a float, a float). Min and max values for second statistical overlay.",
+      "description": "(a float, a float). Min and max values for second statistical overlay.",
       "optional": true
-    },
-    {
-      "id": "transparency",
-      "name": "Transparency",
-      "type": "Flag",
-      "value-key": "[TRANSPARENCY]",
-      "description": "A boolean. Make overlay colors semi-transparent.",
-      "optional": true,
-      "default-value": true
     },
     {
       "id": "use_checkerboard",
@@ -146,7 +112,7 @@
       "type": "Flag",
       "value-key": "[USE_CHECKERBOARD]",
       "command-line-flag": "-c",
-      "description": "A boolean. Use checkerboard mask for overlay.",
+      "description": "Use checkerboard mask for overlay.",
       "optional": true
     }
   ],
@@ -156,7 +122,7 @@
       "id": "out_file_outfile",
       "path-template": "[OUT_FILE]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Combined image volume."
+      "description": "Combined image volume."
     }
   ],
   "groups": [
@@ -169,14 +135,14 @@
     {
       "id": "mutex_group_2",
       "name": "Mutex group 2",
-      "members": ["stat_image2", "show_negative_stats"],
+      "members": ["stat_image2"],
       "mutually-exclusive": true
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

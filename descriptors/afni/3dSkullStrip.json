@@ -1,0 +1,64 @@
+{
+  "name": "3dSkullStrip",
+  "command-line": "3dSkullStrip [IN_FILE] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
+  "author": "Nipype (interface)",
+  "description": "SkullStrip, as implemented in Nipype (module: nipype.interfaces.afni, interface: SkullStrip).\nA program to extract the brain from surrounding tissue from MRI T1-weighted images. TODO Add optional arguments.\nFor complete details, see the `3dSkullStrip Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSkullStrip.html>`_",
+  "inputs": [
+    {
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "command-line-flag": "-input",
+      "description": "Input file to 3dskullstrip.",
+      "optional": false
+    },
+    {
+      "id": "num_threads",
+      "name": "Num threads",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUM_THREADS]",
+      "description": "Set number of threads.",
+      "optional": true,
+      "default-value": 1
+    },
+    {
+      "id": "outputtype",
+      "name": "Outputtype",
+      "type": "String",
+      "value-key": "[OUTPUTTYPE]",
+      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+      "optional": true,
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+    }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "optional": true,
+      "description": "Output image file name.",
+      "path-template": "[IN_FILE]_skullstrip",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "path-template": "out_file",
+      "optional": true,
+      "description": "Output file."
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-gradient",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-gradient [CIFTI] [DIRECTION] [CIFTI_OUT] [OPT_LEFT_SURFACE_SURFACE] [OPT_RIGHT_SURFACE_SURFACE] [OPT_CEREBELLUM_SURFACE_SURFACE] [OPT_SURFACE_PRESMOOTH_SURFACE_KERNEL] [OPT_VOLUME_PRESMOOTH_VOLUME_KERNEL] [OPT_PRESMOOTH_FWHM] [OPT_AVERAGE_OUTPUT] [OPT_VECTORS]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "TAKE GRADIENT OF A CIFTI FILE.\n\nPerforms gradient calculation on each component of the cifti file, and optionally averages the resulting gradients.  The -vectors and -average-output options may not be used together.  You must specify a surface for each surface structure in the cifti file.  The COLUMN direction should be faster, and is the direction that works on dtseries.  For dconn, you probably want ROW, unless you are using -average-output.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti",
+      "name": "cifti",
+      "description": "the input cifti",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI]"
+    },
+    {
+      "id": "direction",
+      "name": "direction",
+      "description": "which dimension to take the gradient along, ROW or COLUMN",
+      "type": "String",
+      "optional": false,
+      "value-key": "[DIRECTION]"
+    },
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "the output cifti",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_left_surface_surface",
+      "name": "opt_left_surface_surface",
+      "command-line-flag": "-left-surface",
+      "description": "specify the left surface to use: the left surface file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
+    },
+    {
+      "id": "opt_right_surface_surface",
+      "name": "opt_right_surface_surface",
+      "command-line-flag": "-right-surface",
+      "description": "specify the right surface to use: the right surface file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
+    },
+    {
+      "id": "opt_cerebellum_surface_surface",
+      "name": "opt_cerebellum_surface_surface",
+      "command-line-flag": "-cerebellum-surface",
+      "description": "specify the cerebellum surface to use: the cerebellum surface file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
+    },
+    {
+      "id": "opt_surface_presmooth_surface_kernel",
+      "name": "opt_surface_presmooth_surface_kernel",
+      "command-line-flag": "-surface-presmooth",
+      "description": "smooth on the surface before computing the gradient: the size of the gaussian surface smoothing kernel in mm, as sigma by default",
+      "type": "Number",
+      "optional": true,
+      "value-key": "[OPT_SURFACE_PRESMOOTH_SURFACE_KERNEL]"
+    },
+    {
+      "id": "opt_volume_presmooth_volume_kernel",
+      "name": "opt_volume_presmooth_volume_kernel",
+      "command-line-flag": "-volume-presmooth",
+      "description": "smooth on the surface before computing the gradient: the size of the gaussian volume smoothing kernel in mm, as sigma by default",
+      "type": "Number",
+      "optional": true,
+      "value-key": "[OPT_VOLUME_PRESMOOTH_VOLUME_KERNEL]"
+    },
+    {
+      "id": "opt_presmooth_fwhm",
+      "name": "opt_presmooth_fwhm",
+      "command-line-flag": "-presmooth-fwhm",
+      "description": "smoothing kernel sizes are FWHM, not sigma",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_PRESMOOTH_FWHM]"
+    },
+    {
+      "id": "opt_average_output",
+      "name": "opt_average_output",
+      "command-line-flag": "-average-output",
+      "description": "output the average of the gradient magnitude maps instead of each gradient map separately",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_AVERAGE_OUTPUT]"
+    },
+    {
+      "id": "opt_vectors",
+      "name": "opt_vectors",
+      "command-line-flag": "-vectors",
+      "description": "output gradient vectors",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_VECTORS]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "the output cifti",
+      "optional": false
+    }
+  ]
+}

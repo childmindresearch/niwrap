@@ -1,61 +1,34 @@
 {
-  "name": "ConvertXFM",
-  "command-line": "ConvertXFM [INVERT_XFM] [IN_FILE2] [OUT_FILE] [IN_FILE] [ARGS] [ENVIRON] [OUTPUT_TYPE]",
-  "author": "Nipype (interface)",
-  "description": "ConvertXFM, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ConvertXFM).\nUse the FSL utility convert_xfm to modify FLIRT transformation matrices.",
+  "name": "convert_xfm",
+  "command-line": "convert_xfm [IN_FILE] [INVERT_XFM] [CONCAT_XFM] [FIX_SCALE_SKEW] [OUT_FILE]",
+  "author": "FMRIB",
+  "description": "convert_xfm, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ConvertXFM). Use the FSL utility convert_xfm to modify FLIRT transformation matrices.",
   "inputs": [
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
     {
       "id": "concat_xfm",
       "name": "Concat xfm",
-      "type": "Flag",
+      "type": "File",
       "value-key": "[CONCAT_XFM]",
       "command-line-flag": "-concat",
-      "description": "A boolean. Write joint transformation of two input matrices.",
-      "optional": true,
-      "requires-inputs": ["in_file2"]
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
+      "description": "A File. Write joint transformation of two input matrices.",
+      "optional": true
     },
     {
       "id": "fix_scale_skew",
       "name": "Fix scale skew",
-      "type": "Flag",
+      "type": "File",
       "value-key": "[FIX_SCALE_SKEW]",
       "command-line-flag": "-fixscaleskew",
-      "description": "A boolean. Use secondary matrix to fix scale and skew.",
-      "optional": true,
-      "requires-inputs": ["in_file2"]
+      "description": "A File. Use secondary matrix to fix scale and skew.",
+      "optional": true
     },
     {
       "id": "in_file",
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input transformation matrix.",
+      "description": "Input transformation matrix.",
       "optional": false
-    },
-    {
-      "id": "in_file2",
-      "name": "In file2",
-      "type": "File",
-      "value-key": "[IN_FILE2]",
-      "description": "A pathlike object or string representing an existing file. Second input matrix (for use with fix_scale_skew or concat_xfm).",
-      "optional": true
     },
     {
       "id": "invert_xfm",
@@ -63,7 +36,7 @@
       "type": "Flag",
       "value-key": "[INVERT_XFM]",
       "command-line-flag": "-inverse",
-      "description": "A boolean. Invert input transformation.",
+      "description": "Invert input transformation.",
       "optional": true
     },
     {
@@ -72,44 +45,36 @@
       "type": "File",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-omat",
-      "description": "A pathlike object or string representing a file. Final transformation matrix.",
+      "description": "Final transformation matrix.",
       "optional": true
-    },
-    {
-      "id": "output_type",
-      "name": "Output type",
-      "type": "String",
-      "value-key": "[OUTPUT_TYPE]",
-      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-      "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     }
   ],
   "output-files": [
     {
-      "name": "Out file",
-      "id": "out_file_outfile",
+      "name": "Output transform",
+      "id": "output_trasnformation",
       "path-template": "[OUT_FILE]",
-      "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output transformation matrix."
+      "optional": false,
+      "description": "Output transformation matrix."
     }
   ],
   "groups": [
     {
-      "id": "mutex_group",
-      "name": "Mutex group",
+      "id": "operation_group",
+      "name": "operation group",
       "members": ["invert_xfm", "fix_scale_skew", "concat_xfm"],
       "mutually-exclusive": true
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "5.0.9",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcp-indi/c-pac:nightly",
     "type": "docker"
   },
   "tags": {
     "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "source": "nipype-interface",
+    "package": "fsl"
   }
 }

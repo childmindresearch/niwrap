@@ -1,17 +1,9 @@
 {
   "name": "SmoothEstimate",
-  "command-line": "SmoothEstimate [ARGS] [DOF] [ENVIRON] [MASK_FILE] [OUTPUT_TYPE] [RESIDUAL_FIT_FILE] [ZSTAT_FILE]",
+  "command-line": "smoothest [DOF] [MASK_FILE] [RESIDUAL_FIT_FILE] [ZSTAT_FILE]",
   "author": "Nipype (interface)",
   "description": "SmoothEstimate, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SmoothEstimate).\nEstimates the smoothness of an image",
   "inputs": [
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
     {
       "id": "dof",
       "name": "Dof",
@@ -20,17 +12,8 @@
       "value-key": "[DOF]",
       "command-line-flag": "--dof",
       "command-line-flag-separator": "=",
-      "description": "An integer. Number of degrees of freedom.",
-      "optional": false
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
+      "description": "Number of degrees of freedom.",
+      "optional": true
     },
     {
       "id": "mask_file",
@@ -39,17 +22,8 @@
       "value-key": "[MASK_FILE]",
       "command-line-flag": "--mask",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Brain mask volume.",
+      "description": "Brain mask volume.",
       "optional": false
-    },
-    {
-      "id": "output_type",
-      "name": "Output type",
-      "type": "String",
-      "value-key": "[OUTPUT_TYPE]",
-      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-      "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     },
     {
       "id": "residual_fit_file",
@@ -58,9 +32,8 @@
       "value-key": "[RESIDUAL_FIT_FILE]",
       "command-line-flag": "--res",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Residual-fit image file.",
-      "optional": true,
-      "requires-inputs": ["dof"]
+      "description": "Residual-fit image file.",
+      "optional": true
     },
     {
       "id": "zstat_file",
@@ -69,45 +42,45 @@
       "value-key": "[ZSTAT_FILE]",
       "command-line-flag": "--zstat",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Zstat image file.",
+      "description": "Zstat image file.",
       "optional": true
     }
   ],
   "output-files": [
     {
-      "name": "Dlh",
-      "id": "dlh",
-      "path-template": "dlh",
+      "name": "Residual fit volume",
+      "id": "res_volume",
+      "path-template": "[RESIDUAL_FIT_FILE]",
       "optional": true,
-      "description": "A float. Smoothness estimate sqrt(det(lambda))."
+      "description": "Residual fit image"
     },
     {
-      "name": "Resels",
-      "id": "resels",
-      "path-template": "resels",
+      "name": "Zstat volume",
+      "id": "zstat_volume",
+      "path-template": "[ZSTAT_FILE]",
       "optional": true,
-      "description": "A float. Volume of resel, in voxels, defined as fwhm_x * fwhm_y * fwhm_z."
-    },
-    {
-      "name": "Volume",
-      "id": "volume",
-      "path-template": "volume",
-      "optional": true,
-      "description": "An integer. Number of voxels in mask."
+      "description": "Zstat image"
     }
   ],
   "groups": [
     {
       "id": "mutex_group",
-      "name": "Mutex group",
+      "name": "Mutually exclusive arguments",
       "members": ["zstat_file", "dof"],
+      "one-is-required": true,
       "mutually-exclusive": true
+    },
+    {
+      "id": "grouped_args",
+      "name": "Grouped arguments",
+      "members": ["dof", "residual_fit_file"],
+      "all-or-none": true
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

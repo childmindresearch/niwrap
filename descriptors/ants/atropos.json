@@ -5,19 +5,11 @@
   "description": "Atropos, as implemented in Nipype (module: nipype.interfaces.ants.segmentation, interface: Atropos).\n\nA multivariate n-class segmentation algorithm.\nA finite mixture modeling (FMM) segmentation approach with possibilities for specifying prior constraints. These prior constraints include the specification of a prior label image, prior probability images (one for each class), and/or an MRF prior to enforce spatial smoothing of the labels. Similar algorithms include FAST and SPM.",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "convergence_threshold",
       "name": "Convergence threshold",
       "type": "Number",
       "value-key": "[CONVERGENCE_THRESHOLD]",
-      "description": "A float. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "requires-inputs": ["n_iterations"]
     },
@@ -32,23 +24,6 @@
       "default-value": 3,
       "integer": true,
       "value-choices": [3, 2, 4]
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
-    },
-    {
-      "id": "icm_use_synchronous_update",
-      "name": "Icm use synchronous update",
-      "type": "Flag",
-      "value-key": "[ICM_USE_SYNCHRONOUS_UPDATE]",
-      "description": "A boolean. No description provided.",
-      "optional": true
     },
     {
       "id": "initialization",
@@ -73,17 +48,17 @@
       "list": true,
       "value-key": "[INTENSITY_IMAGES]",
       "command-line-flag": "--intensity-image",
-      "description": "A list of items which are a pathlike object or string representing an existing file. No description provided.",
+      "description": "No description provided.",
       "optional": false
     },
     {
       "id": "kmeans_init_centers",
       "name": "Kmeans init centers",
-      "type": "String",
+      "type": "Number",
       "list": true,
       "min-list-entries": 1,
       "value-key": "[KMEANS_INIT_CENTERS]",
-      "description": "A list of at least 1 items which are an integer or a float. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -92,7 +67,7 @@
       "type": "String",
       "value-key": "[LIKELIHOOD_MODEL]",
       "command-line-flag": "--likelihood-model",
-      "description": "A string. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -101,7 +76,7 @@
       "type": "File",
       "value-key": "[MASK_IMAGE]",
       "command-line-flag": "--mask-image",
-      "description": "A pathlike object or string representing an existing file. No description provided.",
+      "description": "No description provided.",
       "optional": false
     },
     {
@@ -110,7 +85,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[MAXIMUM_NUMBER_OF_ICM_TERATIONS]",
-      "description": "An integer. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "requires-inputs": ["icm_use_synchronous_update"]
     },
@@ -130,7 +105,7 @@
       "name": "Mrf smoothing factor",
       "type": "Number",
       "value-key": "[MRF_SMOOTHING_FACTOR]",
-      "description": "A float. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -139,7 +114,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[N_ITERATIONS]",
-      "description": "An integer. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -148,7 +123,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUM_THREADS]",
-      "description": "An integer. Number of itk threads to use.",
+      "description": "Number of itk threads to use.",
       "optional": true,
       "default-value": 1
     },
@@ -158,7 +133,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[NUMBER_OF_TISSUE_CLASSES]",
-      "description": "An integer. No description provided.",
+      "description": "No description provided.",
       "optional": false
     },
     {
@@ -166,7 +141,7 @@
       "name": "Out classified image name",
       "type": "File",
       "value-key": "[OUT_CLASSIFIED_IMAGE_NAME]",
-      "description": "A pathlike object or string representing a file. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -174,7 +149,7 @@
       "name": "Output posteriors name template",
       "type": "String",
       "value-key": "[OUTPUT_POSTERIORS_NAME_TEMPLATE]",
-      "description": "A string. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "default-value": "POSTERIOR_%02d.nii.gz"
     },
@@ -183,7 +158,7 @@
       "name": "Posterior formulation",
       "type": "String",
       "value-key": "[POSTERIOR_FORMULATION]",
-      "description": "A string. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -191,7 +166,7 @@
       "name": "Prior image",
       "type": "File",
       "value-key": "[PRIOR_IMAGE]",
-      "description": "A pathlike object or string representing an existing file or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
+      "description": "file or string or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
       "optional": true
     },
     {
@@ -199,7 +174,7 @@
       "name": "Prior image",
       "type": "String",
       "value-key": "[PRIOR_IMAGE]",
-      "description": "A pathlike object or string representing an existing file or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
+      "description": "file or string or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
       "optional": true
     },
     {
@@ -207,7 +182,7 @@
       "name": "Prior probability threshold",
       "type": "Number",
       "value-key": "[PRIOR_PROBABILITY_THRESHOLD]",
-      "description": "A float. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "requires-inputs": ["prior_weighting"]
     },
@@ -216,7 +191,7 @@
       "name": "Prior weighting",
       "type": "Number",
       "value-key": "[PRIOR_WEIGHTING]",
-      "description": "A float. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -225,7 +200,7 @@
       "type": "Flag",
       "value-key": "[SAVE_POSTERIORS]",
       "command-line-flag": "--save_posteriors",
-      "description": "A boolean. No description provided.",
+      "description": "No description provided.",
       "optional": true
     },
     {
@@ -234,7 +209,7 @@
       "type": "Flag",
       "value-key": "[USE_MIXTURE_MODEL_PROPORTIONS]",
       "command-line-flag": "--use_mixture_model_proportions",
-      "description": "A boolean. No description provided.",
+      "description": "No description provided.",
       "optional": true,
       "requires-inputs": ["posterior_formulation"]
     },
@@ -244,7 +219,7 @@
       "type": "Flag",
       "value-key": "[USE_RANDOM_SEED]",
       "command-line-flag": "--use-random-seed",
-      "description": "A boolean. Use random seed value over constant.",
+      "description": "Use random seed value over constant.",
       "optional": true,
       "default-value": true
     }
@@ -255,14 +230,14 @@
       "id": "classified_image",
       "path-template": "classified_image",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. No description provided."
+      "description": "No description provided."
     },
     {
       "name": "Posteriors",
       "id": "posteriors",
       "path-template": "posteriors",
       "optional": true,
-      "description": "A list of items which are a pathlike object or string representing a file. No description provided.",
+      "description": "A list of items which are file. No description provided.",
       "list": true
     }
   ],
@@ -277,7 +252,7 @@
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

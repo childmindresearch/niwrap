@@ -1,0 +1,76 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-roi-average",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-roi-average [CIFTI_IN] [TEXT_OUT] [OPT_CIFTI_ROI_ROI_CIFTI] [OPT_LEFT_ROI_ROI_METRIC] [OPT_RIGHT_ROI_ROI_METRIC] [OPT_CEREBELLUM_ROI_ROI_METRIC] [OPT_VOL_ROI_ROI_VOL]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "AVERAGE ROWS IN A SINGLE CIFTI FILE.\n\nAverage the rows that are within the specified ROIs, and write the resulting average row to a text file, separated by newlines.  If -cifti-roi is specified, -left-roi, -right-roi, -cerebellum-roi, and -vol-roi must not be specified.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti_in",
+      "name": "cifti_in",
+      "description": "the cifti file to average rows from",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_IN]"
+    },
+    {
+      "id": "text_out",
+      "name": "text_out",
+      "description": "output text file of the average values",
+      "type": "String",
+      "optional": false,
+      "value-key": "[TEXT_OUT]"
+    },
+    {
+      "id": "opt_cifti_roi_roi_cifti",
+      "name": "opt_cifti_roi_roi_cifti",
+      "command-line-flag": "-cifti-roi",
+      "description": "cifti file containing combined rois: the rois as a cifti file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_CIFTI_ROI_ROI_CIFTI]"
+    },
+    {
+      "id": "opt_left_roi_roi_metric",
+      "name": "opt_left_roi_roi_metric",
+      "command-line-flag": "-left-roi",
+      "description": "vertices to use from left hemisphere: the left roi as a metric file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_LEFT_ROI_ROI_METRIC]"
+    },
+    {
+      "id": "opt_right_roi_roi_metric",
+      "name": "opt_right_roi_roi_metric",
+      "command-line-flag": "-right-roi",
+      "description": "vertices to use from right hemisphere: the right roi as a metric file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_RIGHT_ROI_ROI_METRIC]"
+    },
+    {
+      "id": "opt_cerebellum_roi_roi_metric",
+      "name": "opt_cerebellum_roi_roi_metric",
+      "command-line-flag": "-cerebellum-roi",
+      "description": "vertices to use from cerebellum: the cerebellum roi as a metric file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_CEREBELLUM_ROI_ROI_METRIC]"
+    },
+    {
+      "id": "opt_vol_roi_roi_vol",
+      "name": "opt_vol_roi_roi_vol",
+      "command-line-flag": "-vol-roi",
+      "description": "voxels to use: the roi volume file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_VOL_ROI_ROI_VOL]"
+    }
+  ]
+}

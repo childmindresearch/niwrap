@@ -1,0 +1,125 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-resample",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-resample [CIFTI_IN] [DIRECTION] [CIFTI_TEMPLATE] [TEMPLATE_DIRECTION] [SURFACE_METHOD] [VOLUME_METHOD] [CIFTI_OUT] [OPT_SURFACE_LARGEST] [OPT_VOLUME_PREDILATE_DILATE_MM] [OPT_SURFACE_POSTDILATE_DILATE_MM] [OPT_AFFINE_AFFINE_FILE] [OPT_WARPFIELD_WARPFIELD]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "RESAMPLE A CIFTI FILE TO A NEW CIFTI SPACE.\n\nResample cifti data to a different brainordinate space.  Use COLUMN for the direction to resample dscalar, dlabel, or dtseries.  Resampling both dimensions of a dconn requires running this command twice, once with COLUMN and once with ROW.  If you are resampling a dconn and your machine has a large amount of memory, you might consider using -cifti-resample-dconn-memory to avoid writing and rereading an intermediate file.  The <template-direction> argument should usually be COLUMN, as dtseries, dscalar, and dlabel all have brainordinates on that direction.  If spheres are not specified for a surface structure which exists in the cifti files, its data is copied without resampling or dilation.  Dilation is done with the 'nearest' method, and is done on <new-sphere> for surface data.  Volume components are padded before dilation so that dilation doesn't run into the edge of the component bounding box.  If neither -affine nor -warpfield are specified, the identity transform is assumed for the volume data.\n\nThe recommended resampling methods are ADAP_BARY_AREA and CUBIC (cubic spline), except for label data which should use ADAP_BARY_AREA and ENCLOSING_VOXEL.  Using ADAP_BARY_AREA requires specifying an area option to each used -*-spheres option.\n\nThe <volume-method> argument must be one of the following:\n\nCUBIC\nENCLOSING_VOXEL\nTRILINEAR\n\nThe <surface-method> argument must be one of the following:\n\nADAP_BARY_AREA\nBARYCENTRIC\n",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti_in",
+      "name": "cifti_in",
+      "description": "the cifti file to resample",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_IN]"
+    },
+    {
+      "id": "direction",
+      "name": "direction",
+      "description": "the direction of the input that should be resampled, ROW or COLUMN",
+      "type": "String",
+      "optional": false,
+      "value-key": "[DIRECTION]"
+    },
+    {
+      "id": "cifti_template",
+      "name": "cifti_template",
+      "description": "a cifti file containing the cifti space to resample to",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_TEMPLATE]"
+    },
+    {
+      "id": "template_direction",
+      "name": "template_direction",
+      "description": "the direction of the template to use as the resampling space, ROW or COLUMN",
+      "type": "String",
+      "optional": false,
+      "value-key": "[TEMPLATE_DIRECTION]"
+    },
+    {
+      "id": "surface_method",
+      "name": "surface_method",
+      "description": "specify a surface resampling method",
+      "type": "String",
+      "optional": false,
+      "value-key": "[SURFACE_METHOD]"
+    },
+    {
+      "id": "volume_method",
+      "name": "volume_method",
+      "description": "specify a volume interpolation method",
+      "type": "String",
+      "optional": false,
+      "value-key": "[VOLUME_METHOD]"
+    },
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "the output cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_surface_largest",
+      "name": "opt_surface_largest",
+      "command-line-flag": "-surface-largest",
+      "description": "use largest weight instead of weighted average or popularity when doing surface resampling",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_SURFACE_LARGEST]"
+    },
+    {
+      "id": "opt_volume_predilate_dilate_mm",
+      "name": "opt_volume_predilate_dilate_mm",
+      "command-line-flag": "-volume-predilate",
+      "description": "dilate the volume components before resampling: distance, in mm, to dilate",
+      "type": "Number",
+      "optional": true,
+      "value-key": "[OPT_VOLUME_PREDILATE_DILATE_MM]"
+    },
+    {
+      "id": "opt_surface_postdilate_dilate_mm",
+      "name": "opt_surface_postdilate_dilate_mm",
+      "command-line-flag": "-surface-postdilate",
+      "description": "dilate the surface components after resampling: distance, in mm, to dilate",
+      "type": "Number",
+      "optional": true,
+      "value-key": "[OPT_SURFACE_POSTDILATE_DILATE_MM]"
+    },
+    {
+      "id": "opt_affine_affine_file",
+      "name": "opt_affine_affine_file",
+      "command-line-flag": "-affine",
+      "description": "use an affine transformation on the volume components: the affine file to use",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPT_AFFINE_AFFINE_FILE]"
+    },
+    {
+      "id": "opt_warpfield_warpfield",
+      "name": "opt_warpfield_warpfield",
+      "command-line-flag": "-warpfield",
+      "description": "use a warpfield on the volume components: the warpfield to use",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPT_WARPFIELD_WARPFIELD]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "the output cifti file",
+      "optional": false
+    }
+  ]
+}

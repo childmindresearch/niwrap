@@ -1,0 +1,66 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-pairwise-correlation",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-pairwise-correlation [CIFTI_A] [CIFTI_B] [CIFTI_OUT] [OPT_FISHER_Z] [OPT_OVERRIDE_MAPPING_CHECK]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "CORRELATE PAIRED ROWS BETWEEN TWO CIFTI FILES.\n\nFor each row in <cifti-a>, correlate it with the same row in <cifti-b>, and put the result in the same row of <cifti-out>, which has only one column.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti_a",
+      "name": "cifti_a",
+      "description": "first input cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_A]"
+    },
+    {
+      "id": "cifti_b",
+      "name": "cifti_b",
+      "description": "second input cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_B]"
+    },
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "output cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_fisher_z",
+      "name": "opt_fisher_z",
+      "command-line-flag": "-fisher-z",
+      "description": "apply fisher small z transform (ie, artanh) to correlation",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_FISHER_Z]"
+    },
+    {
+      "id": "opt_override_mapping_check",
+      "name": "opt_override_mapping_check",
+      "command-line-flag": "-override-mapping-check",
+      "description": "don't check the mappings for compatibility, only check length",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_OVERRIDE_MAPPING_CHECK]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "output cifti file",
+      "optional": false
+    }
+  ]
+}

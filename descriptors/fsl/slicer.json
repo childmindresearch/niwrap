@@ -10,17 +10,9 @@
       "type": "Flag",
       "value-key": "[ALL_AXIAL]",
       "command-line-flag": "-A",
-      "description": "A boolean. Output all axial slices into one picture.",
+      "description": "Output all axial slices into one picture.",
       "optional": true,
       "requires-inputs": ["image_width"]
-    },
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
     },
     {
       "id": "colour_map",
@@ -28,7 +20,7 @@
       "type": "File",
       "value-key": "[COLOUR_MAP]",
       "command-line-flag": "-l",
-      "description": "A pathlike object or string representing an existing file. Use different colour map from that stored in nifti header.",
+      "description": "Use different colour map from that stored in nifti header.",
       "optional": true
     },
     {
@@ -37,24 +29,15 @@
       "type": "Flag",
       "value-key": "[DITHER_EDGES]",
       "command-line-flag": "-t",
-      "description": "A boolean. Produce semi-transparent (dithered) edges.",
+      "description": "Produce semi-transparent (dithered) edges.",
       "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
     },
     {
       "id": "image_edges",
       "name": "Image edges",
       "type": "File",
       "value-key": "[IMAGE_EDGES]",
-      "description": "A pathlike object or string representing an existing file. Volume to display edge overlay for (useful for checking registration.",
+      "description": "Volume to display edge overlay for (useful for checking registration.",
       "optional": true
     },
     {
@@ -63,7 +46,7 @@
       "type": "Number",
       "integer": true,
       "value-key": "[IMAGE_WIDTH]",
-      "description": "An integer. Max picture width.",
+      "description": "Max picture width.",
       "optional": true
     },
     {
@@ -71,7 +54,7 @@
       "name": "In file",
       "type": "File",
       "value-key": "[IN_FILE]",
-      "description": "A pathlike object or string representing an existing file. Input volume.",
+      "description": "Input volume.",
       "optional": false
     },
     {
@@ -83,7 +66,7 @@
       "max-list-entries": 2,
       "value-key": "[INTENSITY_RANGE]",
       "command-line-flag": "-i",
-      "description": "A tuple of the form: (a float, a float). Min and max intensities to display.",
+      "description": "(a float, a float). Min and max intensities to display.",
       "optional": true
     },
     {
@@ -92,7 +75,7 @@
       "type": "Flag",
       "value-key": "[LABEL_SLICES]",
       "command-line-flag": "-L",
-      "description": "A boolean. Display slice number.",
+      "description": "Display slice number.",
       "optional": true,
       "default-value": true
     },
@@ -102,7 +85,7 @@
       "type": "Flag",
       "value-key": "[MIDDLE_SLICES]",
       "command-line-flag": "-a",
-      "description": "A boolean. Output picture of mid-sagittal, axial, and coronal slices.",
+      "description": "Output picture of mid-sagittal, axial, and coronal slices.",
       "optional": true
     },
     {
@@ -111,7 +94,7 @@
       "type": "Flag",
       "value-key": "[NEAREST_NEIGHBOUR]",
       "command-line-flag": "-n",
-      "description": "A boolean. Use nearest neighbor interpolation for output.",
+      "description": "Use nearest neighbor interpolation for output.",
       "optional": true
     },
     {
@@ -119,7 +102,7 @@
       "name": "Out file",
       "type": "File",
       "value-key": "[OUT_FILE]",
-      "description": "A pathlike object or string representing a file. Picture to write.",
+      "description": "Picture to write.",
       "optional": true
     },
     {
@@ -138,7 +121,7 @@
       "integer": true,
       "value-key": "[SAMPLE_AXIAL]",
       "command-line-flag": "-S",
-      "description": "An integer. Output every n axial slices into one picture.",
+      "description": "Output every n axial slices into one picture.",
       "optional": true,
       "requires-inputs": ["image_width"]
     },
@@ -148,7 +131,7 @@
       "type": "Number",
       "value-key": "[SCALING]",
       "command-line-flag": "-s",
-      "description": "A float. Image scale.",
+      "description": "Image scale.",
       "optional": true
     },
     {
@@ -156,7 +139,8 @@
       "name": "Show orientation",
       "type": "Flag",
       "value-key": "[SHOW_ORIENTATION]",
-      "description": "A boolean. Label left-right orientation.",
+      "command-line-flag": "-u",
+      "description": "Label left-right orientation.",
       "optional": true,
       "default-value": true
     },
@@ -178,7 +162,7 @@
       "integer": true,
       "value-key": "[SLICE_NUMBER]",
       "command-line-flag": "-",
-      "description": "An integer. Slice number to save in picture.",
+      "description": "Slice number to save in picture.",
       "optional": true
     },
     {
@@ -187,7 +171,7 @@
       "type": "Number",
       "value-key": "[THRESHOLD_EDGES]",
       "command-line-flag": "-e",
-      "description": "A float. Use threshold for edges.",
+      "description": "Use threshold for edges.",
       "optional": true
     }
   ],
@@ -197,7 +181,7 @@
       "id": "out_file_outfile",
       "path-template": "[OUT_FILE]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Picture to write."
+      "description": "Picture to write."
     }
   ],
   "groups": [
@@ -211,7 +195,7 @@
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

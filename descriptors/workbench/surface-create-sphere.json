@@ -1,0 +1,40 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-create-sphere",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-create-sphere [NUM_VERTICES] [SPHERE_OUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "GENERATE A SPHERE WITH CONSISTENT VERTEX AREAS.\n\nGenerates a sphere by regularly dividing the triangles of an icosahedron, to come as close to the desired number of vertices as possible, and modifying it to have very similar vertex areas for all vertices.  To generate a pair of vertex-matched left and right spheres, use this command, then -surface-flip-lr to generate the other sphere, then -set-structure on each.  For example:\n\n$ wb_command -surface-create-sphere 6000 Sphere.6k.R.surf.gii\n$ wb_command -surface-flip-lr Sphere.6k.R.surf.gii Sphere.6k.L.surf.gii\n$ wb_command -set-structure Sphere.6k.R.surf.gii CORTEX_RIGHT\n$ wb_command -set-structure Sphere.6k.L.surf.gii CORTEX_LEFT",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "num_vertices",
+      "name": "num_vertices",
+      "description": "desired number of vertices",
+      "type": "Integer",
+      "optional": false,
+      "value-key": "[NUM_VERTICES]"
+    },
+    {
+      "id": "sphere_out",
+      "name": "sphere_out",
+      "description": "the output sphere",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SPHERE_OUT]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "sphere_out",
+      "name": "sphere_out",
+      "path-template": "[SPHERE_OUT]",
+      "description": "the output sphere",
+      "optional": false
+    }
+  ]
+}

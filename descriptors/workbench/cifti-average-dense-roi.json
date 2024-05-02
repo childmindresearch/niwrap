@@ -1,0 +1,113 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-average-dense-roi",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-average-dense-roi [CIFTI_OUT] [OPT_CIFTI_ROI_ROI_CIFTI] [OPT_LEFT_ROI_ROI_METRIC] [OPT_RIGHT_ROI_ROI_METRIC] [OPT_CEREBELLUM_ROI_ROI_METRIC] [OPT_VOL_ROI_ROI_VOL] [OPT_LEFT_AREA_SURF_LEFT_SURF] [OPT_RIGHT_AREA_SURF_RIGHT_SURF] [OPT_CEREBELLUM_AREA_SURF_CEREBELLUM_SURF] [OPT_CIFTI_CIFTI_IN]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "AVERAGE CIFTI ROWS ACROSS SUBJECTS BY ROI.\n\nAverages rows for each map of the ROI(s), across all files.  ROI maps are treated as weighting functions, including negative values.  For efficiency, ensure that everything that is not intended to be used is zero in the ROI map.  If -cifti-roi is specified, -left-roi, -right-roi, -cerebellum-roi, and -vol-roi must not be specified.  If multiple non-cifti ROI files are specified, they must have the same number of columns.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "output cifti dscalar file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_cifti_roi_roi_cifti",
+      "name": "opt_cifti_roi_roi_cifti",
+      "command-line-flag": "-cifti-roi",
+      "description": "cifti file containing combined weights: the roi cifti file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_CIFTI_ROI_ROI_CIFTI]"
+    },
+    {
+      "id": "opt_left_roi_roi_metric",
+      "name": "opt_left_roi_roi_metric",
+      "command-line-flag": "-left-roi",
+      "description": "weights to use for left hempsphere: the left roi as a metric file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_LEFT_ROI_ROI_METRIC]"
+    },
+    {
+      "id": "opt_right_roi_roi_metric",
+      "name": "opt_right_roi_roi_metric",
+      "command-line-flag": "-right-roi",
+      "description": "weights to use for right hempsphere: the right roi as a metric file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_RIGHT_ROI_ROI_METRIC]"
+    },
+    {
+      "id": "opt_cerebellum_roi_roi_metric",
+      "name": "opt_cerebellum_roi_roi_metric",
+      "command-line-flag": "-cerebellum-roi",
+      "description": "weights to use for cerebellum surface: the cerebellum roi as a metric file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_CEREBELLUM_ROI_ROI_METRIC]"
+    },
+    {
+      "id": "opt_vol_roi_roi_vol",
+      "name": "opt_vol_roi_roi_vol",
+      "command-line-flag": "-vol-roi",
+      "description": "voxel weights to use: the roi volume file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_VOL_ROI_ROI_VOL]"
+    },
+    {
+      "id": "opt_left_area_surf_left_surf",
+      "name": "opt_left_area_surf_left_surf",
+      "command-line-flag": "-left-area-surf",
+      "description": "specify the left surface for vertex area correction: the left surface file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_LEFT_AREA_SURF_LEFT_SURF]"
+    },
+    {
+      "id": "opt_right_area_surf_right_surf",
+      "name": "opt_right_area_surf_right_surf",
+      "command-line-flag": "-right-area-surf",
+      "description": "specify the right surface for vertex area correction: the right surface file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_RIGHT_AREA_SURF_RIGHT_SURF]"
+    },
+    {
+      "id": "opt_cerebellum_area_surf_cerebellum_surf",
+      "name": "opt_cerebellum_area_surf_cerebellum_surf",
+      "command-line-flag": "-cerebellum-area-surf",
+      "description": "specify the cerebellum surface for vertex area correction: the cerebellum surface file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_CEREBELLUM_AREA_SURF_CEREBELLUM_SURF]"
+    },
+    {
+      "id": "opt_cifti_cifti_in",
+      "name": "opt_cifti_cifti_in",
+      "command-line-flag": "-cifti",
+      "description": "specify an input cifti file: a cifti file to average across",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_CIFTI_CIFTI_IN]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "output cifti dscalar file",
+      "optional": false
+    }
+  ]
+}

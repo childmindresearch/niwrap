@@ -1,0 +1,83 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "label-dilate",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -label-dilate [LABEL] [SURFACE] [DILATE_DIST] [LABEL_OUT] [OPT_BAD_VERTEX_ROI_ROI_METRIC] [OPT_COLUMN_COLUMN] [OPT_CORRECTED_AREAS_AREA_METRIC]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "DILATE A LABEL FILE.\n\nFills in label information for all vertices designated as bad, up to the specified distance away from other labels.  If -bad-vertex-roi is specified, all vertices, including those with the unlabeled key, are good, except for vertices with a positive value in the ROI.  If it is not specified, only vertices with the unlabeled key are bad.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "label",
+      "name": "label",
+      "description": "the input label",
+      "type": "File",
+      "optional": false,
+      "value-key": "[LABEL]"
+    },
+    {
+      "id": "surface",
+      "name": "surface",
+      "description": "the surface to dilate on",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE]"
+    },
+    {
+      "id": "dilate_dist",
+      "name": "dilate_dist",
+      "description": "distance in mm to dilate the labels",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[DILATE_DIST]"
+    },
+    {
+      "id": "label_out",
+      "name": "label_out",
+      "description": "the output label file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[LABEL_OUT]"
+    },
+    {
+      "id": "opt_bad_vertex_roi_roi_metric",
+      "name": "opt_bad_vertex_roi_roi_metric",
+      "command-line-flag": "-bad-vertex-roi",
+      "description": "specify an roi of vertices to overwrite, rather than vertices with the unlabeled key: metric file, positive values denote vertices to have their values replaced",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_BAD_VERTEX_ROI_ROI_METRIC]"
+    },
+    {
+      "id": "opt_column_column",
+      "name": "opt_column_column",
+      "command-line-flag": "-column",
+      "description": "select a single column to dilate: the column number or name",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPT_COLUMN_COLUMN]"
+    },
+    {
+      "id": "opt_corrected_areas_area_metric",
+      "name": "opt_corrected_areas_area_metric",
+      "command-line-flag": "-corrected-areas",
+      "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "label_out",
+      "name": "label_out",
+      "path-template": "[LABEL_OUT]",
+      "description": "the output label file",
+      "optional": false
+    }
+  ]
+}

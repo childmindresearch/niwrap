@@ -1,0 +1,40 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-set-space",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-set-space [VOLUME_IN] [VOLUME_OUT] [OPT_FILE_VOLUME_REF]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "CHANGE VOLUME SPACE INFORMATION.\n\nWrites a copy of the volume file, with the spacing information changed as specified.  No reordering of the voxel data occurs, see -volume-reorient to change the volume indexing order and reorder the voxels to match.  Exactly one of -plumb, -sform, or -file must be specified.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume_in",
+      "name": "volume_in",
+      "description": "the input volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_IN]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "output - the output volume",
+      "type": "String",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_file_volume_ref",
+      "name": "opt_file_volume_ref",
+      "command-line-flag": "-file",
+      "description": "copy spacing info from volume file with matching dimensions: volume file to use for reference space",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPT_FILE_VOLUME_REF]"
+    }
+  ]
+}

@@ -5,37 +5,20 @@
   "description": "PrepareFieldmap, as implemented in Nipype (module: nipype.interfaces.fsl.epi, interface: PrepareFieldmap).\n\nInterface for the fsl_prepare_fieldmap script (FSL 5.0)\nPrepares a fieldmap suitable for FEAT from SIEMENS data - saves output in rad/s format (e.g. ```fsl_prepare_fieldmap SIEMENS images_3_gre_field_mapping images_4_gre_field_mapping fmap_rads 2.65```).",
   "inputs": [
     {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
-      "optional": true
-    },
-    {
       "id": "delta_TE",
       "name": "Delta echo time",
       "type": "Number",
       "value-key": "[DELTA_TE]",
-      "description": "A float. Echo time difference of the fieldmap sequence in ms. (usually 2.46ms in siemens).",
+      "description": "Echo time difference of the fieldmap sequence in ms. (usually 2.46ms in siemens).",
       "optional": false,
       "default-value": 2.46
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
     },
     {
       "id": "in_magnitude",
       "name": "In magnitude",
       "type": "File",
       "value-key": "[IN_MAGNITUDE]",
-      "description": "A pathlike object or string representing an existing file. Magnitude difference map, brain extracted.",
+      "description": "Magnitude difference map, brain extracted.",
       "optional": false
     },
     {
@@ -43,7 +26,7 @@
       "name": "In phase",
       "type": "File",
       "value-key": "[IN_PHASE]",
-      "description": "A pathlike object or string representing an existing file. Phase difference map, in siemens format range from 0-4096 or 0-8192).",
+      "description": "Phase difference map, in siemens format range from 0-4096 or 0-8192).",
       "optional": false
     },
     {
@@ -52,7 +35,7 @@
       "type": "Flag",
       "value-key": "[NOCHECK]",
       "command-line-flag": "--nocheck",
-      "description": "A boolean. Do not perform sanity checks for image size/range/dimensions.",
+      "description": "Do not perform sanity checks for image size/range/dimensions.",
       "optional": true,
       "default-value": false
     },
@@ -61,7 +44,7 @@
       "name": "Out fieldmap",
       "type": "File",
       "value-key": "[OUT_FIELDMAP]",
-      "description": "A pathlike object or string representing a file. Output name for prepared fieldmap.",
+      "description": "Output name for prepared fieldmap.",
       "optional": true
     },
     {
@@ -78,7 +61,7 @@
       "name": "Scanner",
       "type": "String",
       "value-key": "[SCANNER]",
-      "description": "A string. Must be siemens.",
+      "description": "Must be siemens.",
       "optional": true,
       "default-value": "SIEMENS"
     }
@@ -89,13 +72,13 @@
       "id": "out_fieldmap_outfile",
       "path-template": "[OUT_FIELDMAP]",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Output name for prepared fieldmap."
+      "description": "Output name for prepared fieldmap."
     }
   ],
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

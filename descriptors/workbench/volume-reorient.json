@@ -1,0 +1,39 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-reorient",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-reorient [VOLUME] [ORIENT_STRING] [VOLUME_OUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "CHANGE VOXEL ORDER OF A VOLUME FILE.\n\nChanges the voxel order and the header spacing/origin information such that the value of any spatial point is unchanged.  Orientation strings look like 'LPI', which means first index is left to right, second is posterior to anterior, and third is inferior to superior.  The valid characters are:\n\nL      left to right\nR      right to left\nP      posterior to anterior\nA      anterior to posterior\nI      inferior to superior\nS      superior to inferior",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume",
+      "name": "volume",
+      "description": "the volume to reorient",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME]"
+    },
+    {
+      "id": "orient_string",
+      "name": "orient_string",
+      "description": "the desired orientation",
+      "type": "String",
+      "optional": false,
+      "value-key": "[ORIENT_STRING]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "out - the reoriented volume",
+      "type": "String",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    }
+  ]
+}

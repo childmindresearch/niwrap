@@ -1,0 +1,50 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "nifti-information",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -nifti-information [NIFTI_FILE] [OPT_PRINT_HEADER] [OPT_PRINT_MATRIX] [OPT_PRINT_XML]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "DISPLAY INFORMATION ABOUT A NIFTI/CIFTI FILE.\n\nYou must specify at least one -print-* option.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "nifti_file",
+      "name": "nifti_file",
+      "description": "the nifti/cifti file to examine",
+      "type": "String",
+      "optional": false,
+      "value-key": "[NIFTI_FILE]"
+    },
+    {
+      "id": "opt_print_header",
+      "name": "opt_print_header",
+      "command-line-flag": "-print-header",
+      "description": "display the header contents",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_PRINT_HEADER]"
+    },
+    {
+      "id": "opt_print_matrix",
+      "name": "opt_print_matrix",
+      "command-line-flag": "-print-matrix",
+      "description": "output the values in the matrix (cifti only)",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_PRINT_MATRIX]"
+    },
+    {
+      "id": "opt_print_xml",
+      "name": "opt_print_xml",
+      "command-line-flag": "-print-xml",
+      "description": "print the cifti XML (cifti only)",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_PRINT_XML]"
+    }
+  ]
+}

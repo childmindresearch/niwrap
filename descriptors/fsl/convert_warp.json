@@ -10,15 +10,7 @@
       "type": "Flag",
       "value-key": "[ABSWARP]",
       "command-line-flag": "--abs",
-      "description": "A boolean. If set it indicates that the warps in --warp1 and --warp2 should be interpreted as absolute. i.e. the values in --warp1/2 are the coordinates in the next space, rather than displacements. this flag is ignored if --warp1/2 was created by fnirt, which always creates relative displacements.",
-      "optional": true
-    },
-    {
-      "id": "args",
-      "name": "Args",
-      "type": "String",
-      "value-key": "[ARGS]",
-      "description": "A string. Additional parameters to the command.",
+      "description": "If set it indicates that the warps in --warp1 and --warp2 should be interpreted as absolute. i.e. the values in --warp1/2 are the coordinates in the next space, rather than displacements. this flag is ignored if --warp1/2 was created by fnirt, which always creates relative displacements.",
       "optional": true
     },
     {
@@ -27,17 +19,8 @@
       "type": "Flag",
       "value-key": "[CONS_JACOBIAN]",
       "command-line-flag": "--constrainj",
-      "description": "A boolean. Constrain the jacobian of the warpfield to lie within specified min/max limits.",
+      "description": "Constrain the jacobian of the warpfield to lie within specified min/max limits.",
       "optional": true
-    },
-    {
-      "id": "environ",
-      "name": "Environ",
-      "type": "String",
-      "value-key": "[ENVIRON]",
-      "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-      "optional": true,
-      "default-value": {}
     },
     {
       "id": "jacobian_max",
@@ -46,7 +29,7 @@
       "value-key": "[JACOBIAN_MAX]",
       "command-line-flag": "--jmax",
       "command-line-flag-separator": "=",
-      "description": "A float. Maximum acceptable jacobian value for constraint (default 100.0).",
+      "description": "Maximum acceptable jacobian value for constraint (default 100.0).",
       "optional": true
     },
     {
@@ -56,7 +39,7 @@
       "value-key": "[JACOBIAN_MIN]",
       "command-line-flag": "--jmin",
       "command-line-flag-separator": "=",
-      "description": "A float. Minimum acceptable jacobian value for constraint (default 0.01).",
+      "description": "Minimum acceptable jacobian value for constraint (default 0.01).",
       "optional": true
     },
     {
@@ -66,7 +49,7 @@
       "value-key": "[MIDMAT]",
       "command-line-flag": "--midmat",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file containing mid-warp-affine transform.",
+      "description": "Name of file containing mid-warp-affine transform.",
       "optional": true
     },
     {
@@ -75,7 +58,7 @@
       "type": "Flag",
       "value-key": "[OUT_ABSWARP]",
       "command-line-flag": "--absout",
-      "description": "A boolean. If set it indicates that the warps in --out should be absolute, i.e. the values in --out are displacements from the coordinates in --ref.",
+      "description": "If set it indicates that the warps in --out should be absolute, i.e. the values in --out are displacements from the coordinates in --ref.",
       "optional": true
     },
     {
@@ -84,7 +67,7 @@
       "type": "Flag",
       "value-key": "[OUT_RELWARP]",
       "command-line-flag": "--relout",
-      "description": "A boolean. If set it indicates that the warps in --out should be relative, i.e. the values in --out are displacements from the coordinates in --ref.",
+      "description": "If set it indicates that the warps in --out should be relative, i.e. the values in --out are displacements from the coordinates in --ref.",
       "optional": true
     },
     {
@@ -103,7 +86,7 @@
       "value-key": "[POSTMAT]",
       "command-line-flag": "--postmat",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file containing an affine transform (applied last). it could e.g. be an affine transform that maps the mni152-space into a better approximation to the talairach-space (if indeed there is one).",
+      "description": "Name of file containing an affine transform (applied last). it could e.g. be an affine transform that maps the mni152-space into a better approximation to the talairach-space (if indeed there is one).",
       "optional": true
     },
     {
@@ -113,7 +96,7 @@
       "value-key": "[PREMAT]",
       "command-line-flag": "--premat",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Filename for pre-transform (affine matrix).",
+      "description": "Filename for pre-transform (affine matrix).",
       "optional": true
     },
     {
@@ -123,7 +106,7 @@
       "value-key": "[REFERENCE]",
       "command-line-flag": "--ref",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of a file in target space of the full transform.",
+      "description": "Name of a file in target space of the full transform.",
       "optional": false
     },
     {
@@ -132,7 +115,7 @@
       "type": "Flag",
       "value-key": "[RELWARP]",
       "command-line-flag": "--rel",
-      "description": "A boolean. If set it indicates that the warps in --warp1/2 should be interpreted as relative. i.e. the values in --warp1/2 are displacements from the coordinates in the next space.",
+      "description": "If set it indicates that the warps in --warp1/2 should be interpreted as relative. i.e. the values in --warp1/2 are displacements from the coordinates in the next space.",
       "optional": true
     },
     {
@@ -154,7 +137,7 @@
       "value-key": "[SHIFT_IN_FILE]",
       "command-line-flag": "--shiftmap",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file containing a \"shiftmap\", a non-linear transform with displacements only in one direction (applied first, before premat). this would typically be a fieldmap that has been pre-processed using fugue that maps a subjects functional (epi) data onto an undistorted space (i.e. a space that corresponds to his/her true anatomy).",
+      "description": "Name of file containing a \"shiftmap\", a non-linear transform with displacements only in one direction (applied first, before premat). this would typically be a fieldmap that has been pre-processed using fugue that maps a subjects functional (epi) data onto an undistorted space (i.e. a space that corresponds to his/her true anatomy).",
       "optional": true
     },
     {
@@ -164,7 +147,7 @@
       "value-key": "[WARP1]",
       "command-line-flag": "--warp1",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file containing initial warp-fields/coefficients (follows premat). this could e.g. be a fnirt-transform from a subjects structural scan to an average of a group of subjects.",
+      "description": "Name of file containing initial warp-fields/coefficients (follows premat). this could e.g. be a fnirt-transform from a subjects structural scan to an average of a group of subjects.",
       "optional": true
     },
     {
@@ -174,7 +157,7 @@
       "value-key": "[WARP2]",
       "command-line-flag": "--warp2",
       "command-line-flag-separator": "=",
-      "description": "A pathlike object or string representing an existing file. Name of file containing secondary warp-fields/coefficients (after warp1/midmat but before postmat). this could e.g. be a fnirt-transform from the average of a group of subjects to some standard space (e.g. mni152).",
+      "description": "Name of file containing secondary warp-fields/coefficients (after warp1/midmat but before postmat). this could e.g. be a fnirt-transform from the average of a group of subjects to some standard space (e.g. mni152).",
       "optional": true
     }
   ],
@@ -183,7 +166,7 @@
       "name": "Out file",
       "id": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing a file. Name of output file, containing warps that are the combination of all those given as arguments. the format of this will be a field-file (rather than spline coefficients) with any affine components included.",
+      "description": "Name of output file, containing warps that are the combination of all those given as arguments. the format of this will be a field-file (rather than spline coefficients) with any affine components included.",
       "path-template": "[REFERENCE]_concatwarp",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "--out",
@@ -194,7 +177,7 @@
       "id": "out_file",
       "path-template": "out_file",
       "optional": true,
-      "description": "A pathlike object or string representing an existing file. Name of output file, containing the warp as field or coefficients."
+      "description": "Name of output file, containing the warp as field or coefficients."
     }
   ],
   "groups": [
@@ -214,7 +197,7 @@
   "tool-version": "1.0.0",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "tags": {

@@ -1,0 +1,65 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "metric-to-volume-mapping",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -metric-to-volume-mapping [METRIC] [SURFACE] [VOLUME_SPACE] [VOLUME_OUT] [OPT_NEAREST_VERTEX_DISTANCE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "MAP METRIC FILE TO VOLUME.\n\nMaps values from a metric file into a volume file.  You must specify exactly one mapping method option.  The -nearest-vertex method uses the value from the vertex closest to the voxel center (useful for integer values).  The -ribbon-constrained method uses the same method as in -volume-to-surface-mapping, then uses the weights in reverse.  Mapping to lower resolutions than the mesh may require a larger -voxel-subdiv value in order to have all of the surface data participate.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "metric",
+      "name": "metric",
+      "description": "the input metric file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[METRIC]"
+    },
+    {
+      "id": "surface",
+      "name": "surface",
+      "description": "the surface to use coordinates from",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE]"
+    },
+    {
+      "id": "volume_space",
+      "name": "volume_space",
+      "description": "a volume file in the desired output volume space",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_SPACE]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "the output volume file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    },
+    {
+      "id": "opt_nearest_vertex_distance",
+      "name": "opt_nearest_vertex_distance",
+      "command-line-flag": "-nearest-vertex",
+      "description": "use the value from the vertex closest to the voxel center: how far from the surface to map values to voxels, in mm",
+      "type": "Number",
+      "optional": true,
+      "value-key": "[OPT_NEAREST_VERTEX_DISTANCE]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "the output volume file",
+      "optional": false
+    }
+  ]
+}

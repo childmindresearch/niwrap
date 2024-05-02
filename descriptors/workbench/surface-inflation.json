@@ -1,0 +1,80 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-inflation",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-inflation [ANATOMICAL_SURFACE_IN] [SURFACE_IN] [NUMBER_OF_SMOOTHING_CYCLES] [SMOOTHING_STRENGTH] [SMOOTHING_ITERATIONS] [INFLATION_FACTOR] [SURFACE_OUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "SURFACE INFLATION.\n\nInflate a surface by performing cycles that consist of smoothing  followed by inflation (to correct shrinkage caused by smoothing).",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "anatomical_surface_in",
+      "name": "anatomical_surface_in",
+      "description": "the anatomical surface",
+      "type": "File",
+      "optional": false,
+      "value-key": "[ANATOMICAL_SURFACE_IN]"
+    },
+    {
+      "id": "surface_in",
+      "name": "surface_in",
+      "description": "the surface file to inflate",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE_IN]"
+    },
+    {
+      "id": "number_of_smoothing_cycles",
+      "name": "number_of_smoothing_cycles",
+      "description": "number of smoothing cycles",
+      "type": "Integer",
+      "optional": false,
+      "value-key": "[NUMBER_OF_SMOOTHING_CYCLES]"
+    },
+    {
+      "id": "smoothing_strength",
+      "name": "smoothing_strength",
+      "description": "smoothing strength (ranges [0.0 - 1.0])",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[SMOOTHING_STRENGTH]"
+    },
+    {
+      "id": "smoothing_iterations",
+      "name": "smoothing_iterations",
+      "description": "smoothing iterations",
+      "type": "Integer",
+      "optional": false,
+      "value-key": "[SMOOTHING_ITERATIONS]"
+    },
+    {
+      "id": "inflation_factor",
+      "name": "inflation_factor",
+      "description": "inflation factor",
+      "type": "Number",
+      "optional": false,
+      "value-key": "[INFLATION_FACTOR]"
+    },
+    {
+      "id": "surface_out",
+      "name": "surface_out",
+      "description": "output surface file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE_OUT]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "surface_out",
+      "name": "surface_out",
+      "path-template": "[SURFACE_OUT]",
+      "description": "output surface file",
+      "optional": false
+    }
+  ]
+}

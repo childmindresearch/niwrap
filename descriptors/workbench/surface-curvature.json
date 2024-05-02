@@ -1,0 +1,41 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-curvature",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-curvature [SURFACE] [OPT_MEAN] [OPT_GAUSS]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "CALCULATE CURVATURE OF SURFACE.\n\nCompute the curvature of the surface, using the method from:\nInteractive Texture Mapping by J. Maillot, Yahia, and Verroust, 1993.\nACM-0-98791-601-8/93/008",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "surface",
+      "name": "surface",
+      "description": "the surface to compute the curvature of",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE]"
+    },
+    {
+      "id": "opt_mean",
+      "name": "opt_mean",
+      "command-line-flag": "-mean",
+      "description": "output mean curvature",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_MEAN]"
+    },
+    {
+      "id": "opt_gauss",
+      "name": "opt_gauss",
+      "command-line-flag": "-gauss",
+      "description": "output gaussian curvature",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_GAUSS]"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-affine-regression",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-affine-regression [SOURCE] [TARGET] [AFFINE_OUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "REGRESS THE AFFINE TRANSFORM BETWEEN SURFACES ON THE SAME MESH.\n\nUse linear regression to compute an affine that minimizes the sum of squares of the coordinate differences between the target surface and the warped source surface.  Note that this has a bias to shrink the surface that is being warped.  The output is written as a NIFTI 'world' matrix, see -convert-affine to convert it for use in other software.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "source",
+      "name": "source",
+      "description": "the surface to warp",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SOURCE]"
+    },
+    {
+      "id": "target",
+      "name": "target",
+      "description": "the surface to match the coordinates of",
+      "type": "File",
+      "optional": false,
+      "value-key": "[TARGET]"
+    },
+    {
+      "id": "affine_out",
+      "name": "affine_out",
+      "description": "output - the output affine file",
+      "type": "String",
+      "optional": false,
+      "value-key": "[AFFINE_OUT]"
+    }
+  ]
+}

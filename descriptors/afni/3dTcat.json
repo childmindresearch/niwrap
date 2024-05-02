@@ -1,0 +1,84 @@
+{
+  "name": "3dTcat",
+  "command-line": "3dTcat [RLT] [IN_FILES] [ARGS] [ENVIRON] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [VERBOSE]",
+  "author": "Nipype (interface)",
+  "description": "TCat, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: TCat).\nConcatenate sub-bricks from input datasets into one big 3D+time dataset.\nTODO Replace InputMultiPath in_files with Traits.List, if possible. Current version adds extra whitespace.\nFor complete details, see the `3dTcat Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcat.html>`_",
+  "inputs": [
+    {
+      "id": "in_files",
+      "name": "In files",
+      "type": "File",
+      "list": true,
+      "value-key": "[IN_FILES]",
+      "command-line-flag": "",
+      "description": "Input file to 3dtcat.",
+      "optional": false
+    },
+    {
+      "id": "num_threads",
+      "name": "Num threads",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUM_THREADS]",
+      "description": "Set number of threads.",
+      "optional": true,
+      "default-value": 1
+    },
+    {
+      "id": "outputtype",
+      "name": "Outputtype",
+      "type": "String",
+      "value-key": "[OUTPUTTYPE]",
+      "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
+      "optional": true,
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+    },
+    {
+      "id": "rlt",
+      "name": "Rlt",
+      "type": "String",
+      "value-key": "[RLT]",
+      "command-line-flag": "-rlt",
+      "description": "'' or '+' or '++'. Remove linear trends in each voxel time series loaded from each input dataset, separately. option -rlt removes the least squares fit of 'a+b*t' to each voxel time series. option -rlt+ adds dataset mean back in. option -rlt++ adds overall mean of all dataset timeseries back in.",
+      "optional": true,
+      "value-choices": ["", "+", "++"]
+    },
+    {
+      "id": "verbose",
+      "name": "Verbose",
+      "type": "Flag",
+      "value-key": "[VERBOSE]",
+      "command-line-flag": "-verb",
+      "description": "Print out some verbose output as the program.",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "optional": true,
+      "description": "Output image file name.",
+      "path-template": "[IN_FILES]_tcat",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "name": "Out file",
+      "id": "out_file",
+      "path-template": "out_file",
+      "optional": true,
+      "description": "Output file."
+    }
+  ],
+  "tool-version": "1.0.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics",
+    "source": "nipype-interface"
+  }
+}

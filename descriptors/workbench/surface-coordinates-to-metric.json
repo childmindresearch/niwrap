@@ -1,0 +1,40 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-coordinates-to-metric",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-coordinates-to-metric [SURFACE] [METRIC_OUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "MAKE METRIC FILE OF SURFACE COORDINATES.\n\nPuts the coordinates of the surface into a 3-map metric file, as x, y, z.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "surface",
+      "name": "surface",
+      "description": "the surface to use the coordinates of",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE]"
+    },
+    {
+      "id": "metric_out",
+      "name": "metric_out",
+      "description": "the output metric",
+      "type": "File",
+      "optional": false,
+      "value-key": "[METRIC_OUT]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "metric_out",
+      "name": "metric_out",
+      "path-template": "[METRIC_OUT]",
+      "description": "the output metric",
+      "optional": false
+    }
+  ]
+}

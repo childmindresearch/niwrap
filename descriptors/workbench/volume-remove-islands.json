@@ -1,0 +1,40 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "volume-remove-islands",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -volume-remove-islands [VOLUME_IN] [VOLUME_OUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "REMOVE ISLANDS FROM AN ROI VOLUME.\n\nFinds all face-connected parts of the ROI, and zeros out all but the largest one.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "volume_in",
+      "name": "volume_in",
+      "description": "the input ROI volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_IN]"
+    },
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "description": "the output ROI volume",
+      "type": "File",
+      "optional": false,
+      "value-key": "[VOLUME_OUT]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "volume_out",
+      "name": "volume_out",
+      "path-template": "[VOLUME_OUT]",
+      "description": "the output ROI volume",
+      "optional": false
+    }
+  ]
+}

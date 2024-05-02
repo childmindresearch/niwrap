@@ -1,0 +1,56 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-reorder",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-reorder [CIFTI_IN] [DIRECTION] [REORDER_LIST] [CIFTI_OUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "REORDER THE PARCELS OR SCALAR/LABEL MAPS IN A CIFTI FILE.\n\nThe mapping along the specified direction must be parcels, scalars, or labels.  For pscalar or ptseries, use COLUMN to reorder the parcels.  For dlabel, use ROW.  The <reorder-list> file must contain 1-based indices separated by whitespace (spaces, newlines, tabs, etc), with as many indices as <cifti-in> has along the specified dimension.  These indices specify which current index should end up in that position, for instance, if the current order is 'A B C D', and the desired order is 'D A B C', the text file should contain '4 1 2 3'.",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti_in",
+      "name": "cifti_in",
+      "description": "input cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_IN]"
+    },
+    {
+      "id": "direction",
+      "name": "direction",
+      "description": "which dimension to reorder along, ROW or COLUMN",
+      "type": "String",
+      "optional": false,
+      "value-key": "[DIRECTION]"
+    },
+    {
+      "id": "reorder_list",
+      "name": "reorder_list",
+      "description": "a text file containing the desired order transformation",
+      "type": "String",
+      "optional": false,
+      "value-key": "[REORDER_LIST]"
+    },
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "the reordered cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "the reordered cifti file",
+      "optional": false
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "surface-resample",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -surface-resample [SURFACE_IN] [CURRENT_SPHERE] [NEW_SPHERE] [METHOD] [SURFACE_OUT] [OPT_BYPASS_SPHERE_CHECK]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "RESAMPLE A SURFACE TO A DIFFERENT MESH.\n\nResamples a surface file, given two spherical surfaces that are in register.  If ADAP_BARY_AREA is used, exactly one of -area-surfs or -area-metrics must be specified.  This method is not generally recommended for surface resampling, but is provided for completeness.\n\nThe BARYCENTRIC method is generally recommended for anatomical surfaces, in order to minimize smoothing.\n\nFor cut surfaces (including flatmaps), use -surface-cut-resample.\n\nInstead of resampling a spherical surface, the -surface-sphere-project-unproject command is recommended.\n\nThe <method> argument must be one of the following:\n\nADAP_BARY_AREA\nBARYCENTRIC\n",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "surface_in",
+      "name": "surface_in",
+      "description": "the surface file to resample",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE_IN]"
+    },
+    {
+      "id": "current_sphere",
+      "name": "current_sphere",
+      "description": "a sphere surface with the mesh that the input surface is currently on",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CURRENT_SPHERE]"
+    },
+    {
+      "id": "new_sphere",
+      "name": "new_sphere",
+      "description": "a sphere surface that is in register with <current-sphere> and has the desired output mesh",
+      "type": "File",
+      "optional": false,
+      "value-key": "[NEW_SPHERE]"
+    },
+    {
+      "id": "method",
+      "name": "method",
+      "description": "the method name",
+      "type": "String",
+      "optional": false,
+      "value-key": "[METHOD]"
+    },
+    {
+      "id": "surface_out",
+      "name": "surface_out",
+      "description": "the output surface file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[SURFACE_OUT]"
+    },
+    {
+      "id": "opt_bypass_sphere_check",
+      "name": "opt_bypass_sphere_check",
+      "command-line-flag": "-bypass-sphere-check",
+      "description": "ADVANCED: allow the current and new 'spheres' to have arbitrary shape as long as they follow the same contour",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_BYPASS_SPHERE_CHECK]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "surface_out",
+      "name": "surface_out",
+      "path-template": "[SURFACE_OUT]",
+      "description": "the output surface file",
+      "optional": false
+    }
+  ]
+}

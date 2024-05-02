@@ -1,0 +1,68 @@
+{
+  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "name": "cifti-create-dense-scalar",
+  "author": "Washington University School of Medicin",
+  "command-line": "wb_command -cifti-create-dense-scalar [CIFTI_OUT] [OPT_LEFT_METRIC_METRIC] [OPT_RIGHT_METRIC_METRIC] [OPT_CEREBELLUM_METRIC_METRIC] [OPT_NAME_FILE_FILE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "type": "docker"
+  },
+  "description": "CREATE A CIFTI DENSE SCALAR FILE.\n\nAll input files must have the same number of columns/subvolumes.  Only the specified components will be in the output cifti file.  Map names will be taken from one of the input files.  At least one component must be specified.\n\nSee -volume-label-import and -volume-help for format details of label volume files.  The structure-label-volume should have some of the label names from this list, all other label names will be ignored:\n\nCORTEX_LEFT\nCORTEX_RIGHT\nCEREBELLUM\nACCUMBENS_LEFT\nACCUMBENS_RIGHT\nALL_GREY_MATTER\nALL_WHITE_MATTER\nAMYGDALA_LEFT\nAMYGDALA_RIGHT\nBRAIN_STEM\nCAUDATE_LEFT\nCAUDATE_RIGHT\nCEREBELLAR_WHITE_MATTER_LEFT\nCEREBELLAR_WHITE_MATTER_RIGHT\nCEREBELLUM_LEFT\nCEREBELLUM_RIGHT\nCEREBRAL_WHITE_MATTER_LEFT\nCEREBRAL_WHITE_MATTER_RIGHT\nCORTEX\nDIENCEPHALON_VENTRAL_LEFT\nDIENCEPHALON_VENTRAL_RIGHT\nHIPPOCAMPUS_LEFT\nHIPPOCAMPUS_RIGHT\nINVALID\nOTHER\nOTHER_GREY_MATTER\nOTHER_WHITE_MATTER\nPALLIDUM_LEFT\nPALLIDUM_RIGHT\nPUTAMEN_LEFT\nPUTAMEN_RIGHT\nTHALAMUS_LEFT\nTHALAMUS_RIGHT",
+  "schema-version": "0.5",
+  "tags": {},
+  "inputs": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "description": "the output cifti file",
+      "type": "File",
+      "optional": false,
+      "value-key": "[CIFTI_OUT]"
+    },
+    {
+      "id": "opt_left_metric_metric",
+      "name": "opt_left_metric_metric",
+      "command-line-flag": "-left-metric",
+      "description": "metric for left surface: the metric file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_LEFT_METRIC_METRIC]"
+    },
+    {
+      "id": "opt_right_metric_metric",
+      "name": "opt_right_metric_metric",
+      "command-line-flag": "-right-metric",
+      "description": "metric for right surface: the metric file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_RIGHT_METRIC_METRIC]"
+    },
+    {
+      "id": "opt_cerebellum_metric_metric",
+      "name": "opt_cerebellum_metric_metric",
+      "command-line-flag": "-cerebellum-metric",
+      "description": "metric for the cerebellum: the metric file",
+      "type": "File",
+      "optional": true,
+      "value-key": "[OPT_CEREBELLUM_METRIC_METRIC]"
+    },
+    {
+      "id": "opt_name_file_file",
+      "name": "opt_name_file_file",
+      "command-line-flag": "-name-file",
+      "description": "use a text file to set all map names: text file containing map names, one per line",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPT_NAME_FILE_FILE]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "cifti_out",
+      "name": "cifti_out",
+      "path-template": "[CIFTI_OUT]",
+      "description": "the output cifti file",
+      "optional": false
+    }
+  ]
+}
