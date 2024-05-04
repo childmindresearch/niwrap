@@ -42,7 +42,7 @@
       "name": "opt_column_column",
       "command-line-flag": "-column",
       "description": "only display output for one column: the column to use (1-based)",
-      "type": "Integer",
+      "type": "Number",
       "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },

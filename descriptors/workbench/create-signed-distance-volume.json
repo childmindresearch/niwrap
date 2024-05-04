@@ -76,7 +76,7 @@
       "name": "opt_approx_neighborhood_num",
       "command-line-flag": "-approx-neighborhood",
       "description": "voxel neighborhood for approximate calculation: size of neighborhood cube measured from center to face, in voxels (default 2 = 5x5x5)",
-      "type": "Integer",
+      "type": "Number",
       "optional": true,
       "value-key": "[OPT_APPROX_NEIGHBORHOOD_NUM]"
     },

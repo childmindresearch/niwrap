@@ -49,7 +49,7 @@
       "name": "opt_unlabeled_value_value",
       "command-line-flag": "-unlabeled-value",
       "description": "set the value that will be interpreted as unlabeled: the numeric value for unlabeled (default 0)",
-      "type": "Integer",
+      "type": "Number",
       "optional": true,
       "value-key": "[OPT_UNLABELED_VALUE_VALUE]"
     },

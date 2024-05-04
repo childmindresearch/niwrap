@@ -126,7 +126,7 @@
       "name": "opt_start_startval",
       "command-line-flag": "-start",
       "description": "start labeling clusters from a value other than 1: the value to give the first cluster found",
-      "type": "Integer",
+      "type": "Number",
       "optional": true,
       "value-key": "[OPT_START_STARTVAL]"
     }

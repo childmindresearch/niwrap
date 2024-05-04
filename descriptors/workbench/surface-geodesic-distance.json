@@ -23,7 +23,7 @@
       "id": "vertex",
       "name": "vertex",
       "description": "the vertex to compute geodesic distance from",
-      "type": "Integer",
+      "type": "Number",
       "optional": false,
       "value-key": "[VERTEX]"
     },

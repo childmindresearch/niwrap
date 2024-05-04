@@ -15,7 +15,7 @@
       "id": "i_dim",
       "name": "i_dim",
       "description": "length of first dimension",
-      "type": "Integer",
+      "type": "Number",
       "optional": false,
       "value-key": "[I_DIM]"
     },
@@ -23,7 +23,7 @@
       "id": "j_dim",
       "name": "j_dim",
       "description": "length of second dimension",
-      "type": "Integer",
+      "type": "Number",
       "optional": false,
       "value-key": "[J_DIM]"
     },
@@ -31,7 +31,7 @@
       "id": "k_dim",
       "name": "k_dim",
       "description": "length of third dimension",
-      "type": "Integer",
+      "type": "Number",
       "optional": false,
       "value-key": "[K_DIM]"
     },

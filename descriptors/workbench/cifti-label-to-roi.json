@@ -41,7 +41,7 @@
       "name": "opt_key_label_key",
       "command-line-flag": "-key",
       "description": "select label by key: the label key that you want an roi of",
-      "type": "Integer",
+      "type": "Number",
       "optional": true,
       "value-key": "[OPT_KEY_LABEL_KEY]"
     },

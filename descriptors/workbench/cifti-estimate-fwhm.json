@@ -33,7 +33,7 @@
       "name": "opt_column_column",
       "command-line-flag": "-column",
       "description": "only output estimates for one column: the column number",
-      "type": "Integer",
+      "type": "Number",
       "optional": true,
       "value-key": "[OPT_COLUMN_COLUMN]"
     },

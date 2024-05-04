@@ -39,7 +39,7 @@
       "id": "h_dim",
       "name": "h_dim",
       "description": "width of output image, in pixels",
-      "type": "Integer",
+      "type": "Number",
       "optional": false,
       "value-key": "[H_DIM]"
     },
@@ -47,7 +47,7 @@
       "id": "v_dim",
       "name": "v_dim",
       "description": "height of output image, in pixels",
-      "type": "Integer",
+      "type": "Number",
       "optional": false,
       "value-key": "[V_DIM]"
     },

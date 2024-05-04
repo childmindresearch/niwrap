@@ -23,7 +23,7 @@
       "id": "divisions",
       "name": "divisions",
       "description": "how many pieces to divide each icosahedral edge into, must divide perfectly into the given sphere",
-      "type": "Integer",
+      "type": "Number",
       "optional": false,
       "value-key": "[DIVISIONS]"
     },

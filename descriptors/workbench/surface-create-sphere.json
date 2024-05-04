@@ -15,7 +15,7 @@
       "id": "num_vertices",
       "name": "num_vertices",
       "description": "desired number of vertices",
-      "type": "Integer",
+      "type": "Number",
       "optional": false,
       "value-key": "[NUM_VERTICES]"
     },

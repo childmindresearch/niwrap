@@ -85,7 +85,7 @@
       "name": "opt_margin_size",
       "command-line-flag": "-margin",
       "description": "Add a margin to sides of the image using the window's background color.: size of margin, in pixels, added to all sides of output image",
-      "type": "Integer",
+      "type": "Number",
       "optional": true,
       "value-key": "[OPT_MARGIN_SIZE]"
     },

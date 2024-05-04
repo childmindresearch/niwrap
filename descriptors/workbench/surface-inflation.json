@@ -31,7 +31,7 @@
       "id": "number_of_smoothing_cycles",
       "name": "number_of_smoothing_cycles",
       "description": "number of smoothing cycles",
-      "type": "Integer",
+      "type": "Number",
       "optional": false,
       "value-key": "[NUMBER_OF_SMOOTHING_CYCLES]"
     },
@@ -47,7 +47,7 @@
       "id": "smoothing_iterations",
       "name": "smoothing_iterations",
       "description": "smoothing iterations",
-      "type": "Integer",
+      "type": "Number",
       "optional": false,
       "value-key": "[SMOOTHING_ITERATIONS]"
     },

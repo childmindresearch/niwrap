@@ -9,5 +9,12 @@
   },
   "description": "CHANGE VERSION OF FILE FORMAT.\n\nYou may only specify one top-level option.",
   "schema-version": "0.5",
-  "tags": {}
+  "tags": {},
+  "inputs": [
+    {
+      "id": "0",
+      "name": "in",
+      "type": "Flag"
+    }
+  ]
 }

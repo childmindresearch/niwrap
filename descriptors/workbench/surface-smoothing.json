@@ -31,7 +31,7 @@
       "id": "smoothing_iterations",
       "name": "smoothing_iterations",
       "description": "smoothing iterations",
-      "type": "Integer",
+      "type": "Number",
       "optional": false,
       "value-key": "[SMOOTHING_ITERATIONS]"
     },
