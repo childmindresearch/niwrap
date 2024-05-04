@@ -9,7 +9,7 @@
       "name": "Base name",
       "type": "String",
       "value-key": "[BASE_NAME]",
-      "command-line-flag": "-o \"",
+      "command-line-flag": "-o",
       "description": "The rootname that all generated files will have.",
       "optional": true,
       "default-value": "randomise"
