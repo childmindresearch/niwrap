@@ -12,6 +12,7 @@
     {
       "id": "dummy_input",
       "name": "Dummy input",
+      "value-key": "[DUMMY_INPUT]",
       "type": "File"
     }
   ],

@@ -14,7 +14,8 @@
     {
       "id": "0",
       "name": "in",
-      "type": "Flag"
+      "type": "Flag",
+      "value-key": "[IN]"
     }
   ]
 }
