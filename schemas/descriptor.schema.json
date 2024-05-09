@@ -1,6 +1,344 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "http://github.com/boutiques/boutiques-schema",
+    "definitions": {
+        "boutiques-input": {
+            "$id": "http://github.com/boutiques/boutiques-schema/input",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/id",
+                    "minLength": 1,
+                    "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+                    "type": "string",
+                    "pattern": "^[0-9,_,a-z,A-Z]*$"
+                },
+                "name": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/name",
+                    "minLength": 1,
+                    "description": "A human-readable input name. Example: 'Data file'.",
+                    "type": "string"
+                },
+                "type": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/type",
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "description": "Input type.",
+                            "enum": [
+                                "String",
+                                "File",
+                                "Flag",
+                                "Number"
+                            ]
+                        },
+                        {
+                            "type": "object",
+                            "description": "Sub-command type.",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "pattern": "^[0-9,_,a-z,A-Z]+$"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "command-line": {
+                                    "type": "string"
+                                },
+                                "inputs": {
+                                    "type": "array",
+                                    "description": "An array of input objects.",
+                                    "items": {
+                                        "$ref": "#/definitions/boutiques-input"
+                                    }
+                                },
+                                "output-files": {
+                                    "type": "array"
+                                },
+                                "groups": {
+                                    "type": "array"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        {
+                            "description": "Sub-command type union.",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "description": "Sub-command type.",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "pattern": "^[0-9,_,a-z,A-Z]+$"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "command-line": {
+                                        "type": "string"
+                                    },
+                                    "inputs": {
+                                        "type": "array",
+                                        "description": "An array of input objects.",
+                                        "items": {
+                                            "$ref": "#/definitions/boutiques-input"
+                                        }
+                                    },
+                                    "output-files": {
+                                        "type": "array"
+                                    },
+                                    "groups": {
+                                        "type": "array"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            "additionalProperties": false
+                        }
+                    ]
+                },
+                "description": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/description",
+                    "description": "Input description.",
+                    "type": "string"
+                },
+                "value-key": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/value-key",
+                    "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+                    "type": "string"
+                },
+                "list": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/list",
+                    "description": "True if input is a list of value. An input of type \"Flag\" cannot be a list.",
+                    "type": "boolean"
+                },
+                "list-separator": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/list-separator",
+                    "description": "Separator used between list items. Defaults to a single space.",
+                    "type": "string"
+                },
+                "optional": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/optional",
+                    "description": "True if input is optional.",
+                    "type": "boolean"
+                },
+                "command-line-flag": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/command-line-flag",
+                    "description": "Option flag of the input, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+                    "type": "string"
+                },
+                "requires-inputs": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/output/required-inputs",
+                    "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "disables-inputs": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/output/disabled-by-inputs",
+                    "description": "Ids of the inputs that are disabled when this input is active.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "command-line-flag-separator": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/command-line-flag-separator",
+                    "description": "Separator used between flags and their arguments. Defaults to a single space.",
+                    "type": "string"
+                },
+                "default-value": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/default-value",
+                    "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface."
+                },
+                "value-choices": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/value-choices",
+                    "description": "Permitted choices for input value. May not be used with the Flag type.",
+                    "type": "array",
+                    "items": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "number"
+                            }
+                        ]
+                    }
+                },
+                "value-requires": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/value-requires",
+                    "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true
+                },
+                "value-disables": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/value-disables",
+                    "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true
+                },
+                "integer": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/integer",
+                    "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
+                    "type": "boolean"
+                },
+                "minimum": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/minimum",
+                    "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+                    "type": "number"
+                },
+                "maximum": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/maximum",
+                    "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+                    "type": "number"
+                },
+                "exclusive-minimum": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/exclusive-minimum",
+                    "description": "Specify whether the minimum is exclusive or not. May only be used with Number type inputs.",
+                    "type": "boolean"
+                },
+                "exclusive-maximum": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/exclusive-maximum",
+                    "description": "Specify whether the maximum is exclusive or not. May only be used with Number type inputs.",
+                    "type": "boolean"
+                },
+                "min-list-entries": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/min-list-entries",
+                    "description": "Specify the minimum number of entries in the list. May only be used with List type inputs.",
+                    "type": "number"
+                },
+                "max-list-entries": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/max-list-entries",
+                    "description": "Specify the maximum number of entries in the list. May only be used with List type inputs.",
+                    "type": "number"
+                },
+                "uses-absolute-path": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/uses-absolute-path",
+                    "description": "Specifies that this input must be given as an absolute path. Only specifiable for File type inputs.",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "name",
+                "id",
+                "type"
+            ],
+            "anyOf": [
+                {
+                    "properties": {
+                        "type": {
+                            "const": "Flag"
+                        },
+                        "list": {
+                            "const": false
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "type": {
+                            "enum": [
+                                "String",
+                                "File",
+                                "Number"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "type": {
+                            "type": "object"
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "type": {
+                            "type": "array"
+                        }
+                    }
+                }
+            ],
+            "dependencies": {
+                "command-line-flag-separator": [
+                    "command-line-flag"
+                ],
+                "min-list-entries": [
+                    "list"
+                ],
+                "max-list-entries": [
+                    "list"
+                ],
+                "list-separator": [
+                    "list"
+                ],
+                "value-choices": {
+                    "properties": {
+                        "type": {
+                            "enum": [
+                                "String",
+                                "Number"
+                            ]
+                        }
+                    }
+                },
+                "integer": {
+                    "properties": {
+                        "type": {
+                            "const": "Number"
+                        }
+                    }
+                },
+                "minimum": {
+                    "properties": {
+                        "type": {
+                            "const": "Number"
+                        }
+                    }
+                },
+                "maximum": {
+                    "properties": {
+                        "type": {
+                            "const": "Number"
+                        }
+                    }
+                },
+                "uses-absolute-path": {
+                    "properties": {
+                        "type": {
+                            "const": "File"
+                        }
+                    }
+                },
+                "exclusive-minimum": [
+                    "minimum"
+                ],
+                "exclusive-maximum": [
+                    "maximum"
+                ],
+                "value-disables": [
+                    "value-choices"
+                ],
+                "value-enables": [
+                    "value-choices"
+                ]
+            },
+            "additionalProperties": false
+        }
+    },
     "type": "object",
     "title": "Tool",
     "properties": {
@@ -26,8 +364,13 @@
             "$id": "http://github.com/boutiques/boutiques-schema/deprecated-by-doi",
             "description": "doi of the tool that deprecates the current one. May be set to 'true' if the current tool is deprecated but no specific tool deprecates it.",
             "anyOf": [
-                { "type": "string", "minLength": 1 },
-                { "type": "boolean" }
+                {
+                    "type": "string",
+                    "minLength": 1
+                },
+                {
+                    "type": "boolean"
+                }
             ]
         },
         "author": {
@@ -268,252 +611,9 @@
         "inputs": {
             "$id": "http://github.com/boutiques/boutiques-schema/inputs",
             "type": "array",
+            "description": "An array of input objects.",
             "items": {
-                "$id": "http://github.com/boutiques/boutiques-schema/input",
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/id",
-                        "minLength": 1,
-                        "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
-                        "type": "string",
-                        "pattern": "^[0-9,_,a-z,A-Z]*$"
-                    },
-                    "name": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/name",
-                        "minLength": 1,
-                        "description": "A human-readable input name. Example: 'Data file'.",
-                        "type": "string"
-                    },
-                    "type": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/type",
-                        "type": "string",
-                        "description": "Input type.",
-                        "enum": [
-                            "String",
-                            "File",
-                            "Flag",
-                            "Number"
-                        ]
-                    },
-                    "description": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/description",
-                        "description": "Input description.",
-                        "type": "string"
-                    },
-                    "value-key": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/value-key",
-                        "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
-                        "type": "string"
-                    },
-                    "list": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/list",
-                        "description": "True if input is a list of value. An input of type \"Flag\" cannot be a list.",
-                        "type": "boolean"
-                    },
-                    "list-separator": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/list-separator",
-                        "description": "Separator used between list items. Defaults to a single space.",
-                        "type": "string"
-                    },
-                    "optional": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/optional",
-                        "description": "True if input is optional.",
-                        "type": "boolean"
-                    },
-                    "command-line-flag": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/command-line-flag",
-                        "description": "Option flag of the input, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
-                        "type": "string"
-                    },
-                    "requires-inputs": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/output/required-inputs",
-                        "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "disables-inputs": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/output/disabled-by-inputs",
-                        "description": "Ids of the inputs that are disabled when this input is active.",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "command-line-flag-separator": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/command-line-flag-separator",
-                        "description": "Separator used between flags and their arguments. Defaults to a single space.",
-                        "type": "string"
-                    },
-                    "default-value": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/default-value",
-                        "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface."
-                    },
-                    "value-choices": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/value-choices",
-                        "description": "Permitted choices for input value. May not be used with the Flag type.",
-                        "type": "array",
-                        "items": {
-                            "oneOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ]
-                        }
-                    },
-                    "value-requires": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/value-requires",
-                        "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
-                        "type": "object",
-                        "properties": {},
-                        "additionalProperties": true
-                    },
-                    "value-disables": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/value-disables",
-                        "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
-                        "type": "object",
-                        "properties": {},
-                        "additionalProperties": true
-                    },
-                    "integer": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/integer",
-                        "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
-                        "type": "boolean"
-                    },
-                    "minimum": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/minimum",
-                        "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
-                        "type": "number"
-                    },
-                    "maximum": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/maximum",
-                        "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
-                        "type": "number"
-                    },
-                    "exclusive-minimum": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/exclusive-minimum",
-                        "description": "Specify whether the minimum is exclusive or not. May only be used with Number type inputs.",
-                        "type": "boolean"
-                    },
-                    "exclusive-maximum": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/exclusive-maximum",
-                        "description": "Specify whether the maximum is exclusive or not. May only be used with Number type inputs.",
-                        "type": "boolean"
-                    },
-                    "min-list-entries": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/min-list-entries",
-                        "description": "Specify the minimum number of entries in the list. May only be used with List type inputs.",
-                        "type": "number"
-                    },
-                    "max-list-entries": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/max-list-entries",
-                        "description": "Specify the maximum number of entries in the list. May only be used with List type inputs.",
-                        "type": "number"
-                    },
-                    "uses-absolute-path": {
-                        "$id": "http://github.com/boutiques/boutiques-schema/input/uses-absolute-path",
-                        "description": "Specifies that this input must be given as an absolute path. Only specifiable for File type inputs.",
-                        "type": "boolean"
-                    }
-                },
-                "required": [
-                    "name",
-                    "id",
-                    "type"
-                ],
-                "anyOf": [
-                    {
-                        "properties": {
-                            "type": {
-                                "const": "Flag"
-                            },
-                            "list": {
-                                "const": false
-                            }
-                        }
-                    },
-                    {
-                        "properties": {
-                            "type": {
-                                "enum": [
-                                    "String",
-                                    "File",
-                                    "Number"
-                                ]
-                            }
-                        }
-                    }
-                ],
-                "dependencies": {
-                    "command-line-flag-separator": [
-                        "command-line-flag"
-                    ],
-                    "min-list-entries": [
-                        "list"
-                    ],
-                    "max-list-entries": [
-                        "list"
-                    ],
-                    "list-separator": [
-                        "list"
-                    ],
-                    "value-choices": {
-                        "properties": {
-                            "type": {
-                                "enum": [
-                                    "String",
-                                    "Number"
-                                ]
-                            }
-                        }
-                    },
-                    "integer": {
-                        "properties": {
-                            "type": {
-                                "const": "Number"
-                            }
-                        }
-                    },
-                    "minimum": {
-                        "properties": {
-                            "type": {
-                                "const": "Number"
-                            }
-                        }
-                    },
-                    "maximum": {
-                        "properties": {
-                            "type": {
-                                "const": "Number"
-                            }
-                        }
-                    },
-                    "uses-absolute-path": {
-                        "properties": {
-                            "type": {
-                                "const": "File"
-                            }
-                        }
-                    },
-                    "exclusive-minimum": [
-                        "minimum"
-                    ],
-                    "exclusive-maximum": [
-                        "maximum"
-                    ],
-                    "value-disables": [
-                        "value-choices"
-                    ],
-                    "value-enables": [
-                        "value-choices"
-                    ]
-                },
-                "additionalProperties": false
+                "$ref": "#/definitions/boutiques-input"
             },
             "minItems": 1,
             "uniqueItems": true
@@ -795,9 +895,18 @@
             "description": "A set of key-value pairs specifying tags describing the pipeline. The tag names are open, they might be more constrained in the future.",
             "additionalProperties": {
                 "anyOf": [
-                    {"type": "string"},
-                    {"type": "array", "items": {"type": "string"}},
-                    {"type": "boolean"}
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "type": "boolean"
+                    }
                 ],
                 "description": "Tag values"
             }
