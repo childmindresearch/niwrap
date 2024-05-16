@@ -23,4 +23,3 @@ jobs:
           ajv_strict_mode: false
           use_gitignore: false
           json_exclude_regex: ''
-          allow_multiple_documents: 
