@@ -3,7 +3,6 @@
     "$id": "http://github.com/boutiques/boutiques-schema",
     "definitions": {
         "boutiques-input": {
-            "$id": "http://github.com/boutiques/boutiques-schema/input",
             "type": "object",
             "properties": {
                 "id": {
