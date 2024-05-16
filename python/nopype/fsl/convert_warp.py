@@ -6,17 +6,17 @@ import typing
 from ..styxdefs import *
 
 
-CONVERT_WARP_METADATA = Metadata(
-    id="be2b1fd02ed4b1b8c6ec0b5f454e8a6f0273d463",
-    name="ConvertWarp",
+CONVERTWARP_METADATA = Metadata(
+    id="d309510ba97b4244a6915497cd4bc70859fe4045",
+    name="convertwarp",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
 )
 
 
-class ConvertWarpOutputs(typing.NamedTuple):
+class ConvertwarpOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `convert_warp(...)`.
+    Output object returned when calling `convertwarp(...)`.
     """
     out_file: OutputPathType
     """Name of output file, containing warps that are the combination of all those given as arguments. the format of this will be a field-file (rather than spline coefficients) with any affine components included."""
@@ -24,7 +24,7 @@ class ConvertWarpOutputs(typing.NamedTuple):
     """Name of output file, containing the warp as field or coefficients."""
 
 
-def convert_warp(
+def convertwarp(
     runner: Runner,
     reference: InputPathType,
     abswarp: bool = False,
@@ -42,9 +42,9 @@ def convert_warp(
     shift_in_file: InputPathType | None = None,
     warp1: InputPathType | None = None,
     warp2: InputPathType | None = None,
-) -> ConvertWarpOutputs:
+) -> ConvertwarpOutputs:
     """
-    ConvertWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
+    convertwarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
     ConvertWarp).
     Use FSL `convertwarp
     <http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html>`_ for
@@ -97,7 +97,7 @@ def convert_warp(
             from the average of a group of subjects to some standard space (e.g.
             mni152).
     Returns:
-        NamedTuple of outputs (described in `ConvertWarpOutputs`).
+        NamedTuple of outputs (described in `ConvertwarpOutputs`).
     """
     if (
         relwarp +
@@ -117,9 +117,9 @@ def convert_warp(
             "out_abswarp,\n"
             "out_relwarp"
         )
-    execution = runner.start_execution(CONVERT_WARP_METADATA)
+    execution = runner.start_execution(CONVERTWARP_METADATA)
     cargs = []
-    cargs.append("ConvertWarp")
+    cargs.append("convertwarp")
     cargs.append(("--ref=" + execution.input_file(reference)))
     cargs.append("[OUT_FILE]")
     if abswarp:
@@ -154,7 +154,7 @@ def convert_warp(
         cargs.append(("--warp1=" + execution.input_file(warp1)))
     if warp2 is not None:
         cargs.append(("--warp2=" + execution.input_file(warp2)))
-    ret = ConvertWarpOutputs(
+    ret = ConvertwarpOutputs(
         out_file=execution.output_file(f"{reference}_concatwarp", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),
     )
