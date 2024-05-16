@@ -42,7 +42,7 @@ jobs:
       - name: Compile
         run: |
             rm -rf python/
-            mkdir python
+            mkdir -p python/nopype/
             poetry --directory styx run styx
             git add python/
             git commit -m "Compile"
