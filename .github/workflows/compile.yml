@@ -44,7 +44,7 @@ jobs:
             rm -rf python/
             mkdir python
             cd styx
-            poetry run --directory=.. styx
+            poetry run --directory=.. -- styx
             git add python/
             git commit -m "Compile"
             git push
