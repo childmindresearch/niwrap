@@ -1,0 +1,49 @@
+name: Styx compile
+
+# This action works with pull requests and pushes
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  styx:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Checkout styx
+        uses: actions/checkout@v4
+        with:
+          repository: 'childmindresearch/styx'
+          path: 'styx'
+    
+      - name: Install poetry
+        run: pipx install poetry
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: styx/pyproject.toml
+          cache: poetry
+
+      - name: Install styx
+        run: poetry install --directory=styx
+
+      - name: Set up Git
+        run: |
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git config --global user.name "GitHub Actions"
+
+      - name: Compile
+        run: |
+            rm -rf python/
+            mkdir -p python/nopype/
+            poetry --directory styx run styx
+            git add python/
+            git commit -m "Compile"
+            git push
