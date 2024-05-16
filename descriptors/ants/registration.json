@@ -18,11 +18,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        2,
-        3,
-        4
-      ],
+      "value-choices": [2, 3, 4],
       "command-line-flag": "--dimensionality",
       "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, we try to infer the dimensionality from the input image."
     },
@@ -60,10 +56,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "-a",
       "description": "Boolean specifying whether or not the composite transform (and its inverse, if it exists) should be written to an hdf5 composite file. This is false by default so that only the transform for each stage is written to file."
     },
@@ -95,10 +88,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        1,
-        0
-      ],
+      "value-choices": [1, 0],
       "command-line-flag": "--collapse-output-transforms",
       "description": "Collapse output transforms. Specifically, enabling this option combines all adjacent transforms where possible. All adjacent linear transforms are written to disk in the form of an itk affine transform (called xxxGenericAffine.mat).\nSimilarly, all adjacent displacement field transforms are combined when written to disk (e.g. xxxWarp.nii.gz and xxxInverseWarp.nii.gz (if available)). Also, an output composite transform including the collapsed transforms is written to the disk (called outputCollapsed(Inverse)Composite)."
     },
@@ -109,10 +99,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        1,
-        0
-      ],
+      "value-choices": [1, 0],
       "command-line-flag": "-i",
       "description": "Initialize linear transforms from the previous stage. By enabling this option, the current linear stage transform is directly intialized from the previous stage's linear transform; this allows multiple linear stages to be run where each stage directly updates the estimated linear transform from the previous stage. (e.g. Translation -> Rigid -> Affine)."
     },
@@ -147,10 +134,7 @@
       "list-separator": "x",
       "min-list-entries": 3,
       "max-list-entries": 6,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "optional": true,
       "command-line-flag": "-g",
       "description": "This option allows the user to restrict the optimization of the displacement field, translation, rigid or affine transform on a per-component basis. For example, if one wants to limit the deformation or rotation of 3-D volume to the first two dimensions, this is possible by specifying a weight vector of '1x1x0' for a deformation field or '1x1x0x1x1x0' for a rigid transformation. Low-dimensional restriction only works if there are no preceding transformations.All stages up to and including the desired stage must have this option specified,even if they should not be restricted (in which case specify 1x1x1...)"
@@ -202,10 +186,7 @@
               "type": "Number",
               "integer": true,
               "optional": true,
-              "value-choices": [
-                0,
-                1
-              ],
+              "value-choices": [0, 1],
               "command-line-flag": ",",
               "command-line-flag-separator": "",
               "description": "Use the inverse of the initial moving transform."
@@ -239,11 +220,7 @@
               "integer": true,
               "optional": false,
               "description": "Initialization feature. 0: Geometric center of images, 1: Image intensities, 2: Origin of images",
-              "value-choices": [
-                0,
-                1,
-                2
-              ]
+              "value-choices": [0, 1, 2]
             }
           ]
         }
@@ -721,11 +698,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "None",
-                      "Regular",
-                      "Random"
-                    ]
+                    "value-choices": ["None", "Regular", "Random"]
                   },
                   {
                     "id": "sampling_percentage",
@@ -746,10 +719,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "true",
-                      "false"
-                    ]
+                    "value-choices": ["true", "false"]
                   }
                 ]
               },
@@ -794,11 +764,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "None",
-                      "Regular",
-                      "Random"
-                    ]
+                    "value-choices": ["None", "Regular", "Random"]
                   },
                   {
                     "id": "sampling_percentage",
@@ -819,10 +785,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "true",
-                      "false"
-                    ]
+                    "value-choices": ["true", "false"]
                   }
                 ]
               },
@@ -867,11 +830,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "None",
-                      "Regular",
-                      "Random"
-                    ]
+                    "value-choices": ["None", "Regular", "Random"]
                   },
                   {
                     "id": "sampling_percentage",
@@ -892,10 +851,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "true",
-                      "false"
-                    ]
+                    "value-choices": ["true", "false"]
                   }
                 ]
               },
@@ -940,11 +896,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "None",
-                      "Regular",
-                      "Random"
-                    ]
+                    "value-choices": ["None", "Regular", "Random"]
                   },
                   {
                     "id": "sampling_percentage",
@@ -965,10 +917,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "true",
-                      "false"
-                    ]
+                    "value-choices": ["true", "false"]
                   }
                 ]
               },
@@ -1013,11 +962,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "None",
-                      "Regular",
-                      "Random"
-                    ]
+                    "value-choices": ["None", "Regular", "Random"]
                   },
                   {
                     "id": "sampling_percentage",
@@ -1038,10 +983,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "true",
-                      "false"
-                    ]
+                    "value-choices": ["true", "false"]
                   }
                 ]
               },
@@ -1086,11 +1028,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "None",
-                      "Regular",
-                      "Random"
-                    ]
+                    "value-choices": ["None", "Regular", "Random"]
                   },
                   {
                     "id": "sampling_percentage",
@@ -1111,10 +1049,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "true",
-                      "false"
-                    ]
+                    "value-choices": ["true", "false"]
                   }
                 ]
               },
@@ -1163,9 +1098,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "0"
-                    ]
+                    "value-choices": ["0"]
                   }
                 ]
               },
@@ -1214,9 +1147,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "0"
-                    ]
+                    "value-choices": ["0"]
                   },
                   {
                     "id": "point_set_sigma",
@@ -1283,9 +1214,7 @@
                     "command-line-flag-separator": "",
                     "type": "String",
                     "optional": true,
-                    "value-choices": [
-                      "0"
-                    ]
+                    "value-choices": ["0"]
                   },
                   {
                     "id": "point_set_sigma",
@@ -1458,10 +1387,7 @@
             "type": "Number",
             "integer": true,
             "optional": true,
-            "value-choices": [
-              0,
-              1
-            ],
+            "value-choices": [0, 1],
             "command-line-flag": "--use-histogram-matching",
             "description": "Use histogram matching."
           }
@@ -1531,10 +1457,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--minc",
       "description": "Use MINC file formats for transformations."
     },
@@ -1556,10 +1479,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "-v",
       "description": "Verbose output."
     },
@@ -1570,10 +1490,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--float",
       "description": "Use 'float' instead of 'double' for computations."
     }
