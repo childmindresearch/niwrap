@@ -19,7 +19,6 @@
                     "type": "string"
                 },
                 "type": {
-                    "$id": "http://github.com/boutiques/boutiques-schema/input/type",
                     "anyOf": [
                         {
                             "type": "string",
@@ -608,7 +607,6 @@
             "uniqueItems": true
         },
         "inputs": {
-            "$id": "http://github.com/boutiques/boutiques-schema/inputs",
             "type": "array",
             "description": "An array of input objects.",
             "items": {
