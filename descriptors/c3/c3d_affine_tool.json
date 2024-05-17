@@ -1,8 +1,8 @@
 {
   "name": "C3dAffineTool",
   "command-line": "c3d_affine_tool [REFERENCE_FILE] [SOURCE_FILE] [TRANSFORM_FILE] [SFORM_FILE] [OUT_MATFILE] [FSL2RAS] [RAS2FSL] [INV] [DET] [MULT] [SQRT] [ITK_TRANSFORM] [OUT_ITK_TRANSFORM] [IRTK_TRANSFORM] [OUT_IRTK_TRANSFORM] [INFO] [INFO_FULL]",
-  "author": "Nipype (interface)",
-  "description": "C3dAffineTool, as implemented in Nipype (module: nipype.interfaces.c3, interface: C3dAffineTool).\nConverts fsl-style Affine registration into ANTS compatible itk format.'",
+  "author": "ITK-Snap Team",
+  "description": "RAS affine transform tool",
   "inputs": [
     {
       "id": "reference_file",
@@ -187,7 +187,6 @@
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }
