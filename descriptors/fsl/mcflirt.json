@@ -1,8 +1,9 @@
 {
   "name": "MCFLIRT",
   "command-line": "mcflirt [IN_FILE] [BINS] [COST] [DOF] [INIT] [INTERPOLATION] [MEAN_VOL] [OUT_FILE] [REF_FILE] [REF_VOL] [ROTATION] [SAVE_MATS] [SAVE_PLOTS] [SAVE_RMS] [SCALING] [SMOOTH] [STAGES] [STATS_IMGS] [USE_CONTOUR] [USE_GRADIENT]",
-  "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
-  "description": "MCFLIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MCFLIRT).",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "MCFLIRT is an intra-modal motion correction tool designed for use on fMRI time series and based on optimization and registration techniques used in FLIRT, a fully automated robust and accurate tool for linear (affine) inter- and inter-modal brain image registration.",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT",
   "inputs": [
     {
       "id": "bins",
@@ -261,8 +262,6 @@
     "index": "index.docker.io"
   },
   "tags": {
-    "domain": ["neuroinformatics", "mri"],
-    "source": "nipype-interface"
-  },
-  "url": "https://github.com/nipy/nipype/blob/master/nipype/interfaces/fsl/preprocess.py"
+    "domain": ["neuroinformatics", "mri"]
+  }
 }
