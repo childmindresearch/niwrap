@@ -1,8 +1,9 @@
 {
   "name": "convert_xfm",
   "command-line": "convert_xfm [IN_FILE] [INVERT_XFM] [CONCAT_XFM] [FIX_SCALE_SKEW] [OUT_FILE]",
-  "author": "FMRIB",
-  "description": "convert_xfm, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface: ConvertXFM). Use the FSL utility convert_xfm to modify FLIRT transformation matrices.",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "convert_xfm is a utility that is used to convert between different transformation file formats. It can read and write ascii 4x4 matrices. In addition, it can be used to concatenate two transforms (using -concat with the second transform) or to find the inverse transformation (using -inverse).",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/UserGuide#convert_xfm",
   "inputs": [
     {
       "id": "concat_xfm",
@@ -74,7 +75,6 @@
   },
   "tags": {
     "domain": "neuroinformatics",
-    "source": "nipype-interface",
     "package": "fsl"
   }
 }
