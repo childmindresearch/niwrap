@@ -1,8 +1,9 @@
 {
   "name": "3dDespike",
   "command-line": "3dDespike [IN_FILE] [OUT_FILE]",
-  "author": "Nipype (interface)",
-  "description": "AFNI 3dDespike, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Despike).\nRemoves 'spikes' from the 3D+time input dataset\nFor complete details, see the `3dDespike Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDespike.html>`_",
+  "author": "AFNI",
+  "description": "Removes 'spikes' from the 3D+time input dataset and writes a new dataset with the spike values replaced by something more pleasing to the eye.",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDespike.html",
   "inputs": [
     {
       "id": "in_file",
@@ -31,7 +32,6 @@
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }

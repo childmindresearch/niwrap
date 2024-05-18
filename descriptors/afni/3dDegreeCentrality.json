@@ -1,8 +1,9 @@
 {
   "name": "3dDegreeCentrality",
   "command-line": "3dDegreeCentrality [IN_FILE] [AUTOCLIP] [AUTOMASK] [MASK] [ONED_FILE] [OUT_FILE] [POLORT] [SPARSITY] [THRESH]",
-  "author": "Nipype (interface)",
-  "description": "3dDegreeCentrality, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: DegreeCentrality).\nPerforms degree centrality on a dataset using a given maskfile via 3dDegreeCentrality\nFor complete details, see the `3dDegreeCentrality Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html>`_",
+  "author": "RWCox @ AFNI",
+  "description": "Computes voxelwise weighted and binary degree centrality and stores the result in a new 3D bucket dataset as floats to preserve their values. Degree centrality reflects the strength and extent of the correlation of a voxel with every other voxel in the brain. ",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html",
   "inputs": [
     {
       "id": "autoclip",
@@ -102,7 +103,6 @@
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }
