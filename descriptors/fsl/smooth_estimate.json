@@ -1,8 +1,8 @@
 {
   "name": "SmoothEstimate",
   "command-line": "smoothest [DOF] [MASK_FILE] [RESIDUAL_FIT_FILE] [ZSTAT_FILE]",
-  "author": "Nipype (interface)",
-  "description": "SmoothEstimate, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SmoothEstimate).\nEstimates the smoothness of an image",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Estimates the smoothness of an image",
   "inputs": [
     {
       "id": "dof",
@@ -84,7 +84,6 @@
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }
