@@ -1,8 +1,9 @@
 {
   "name": "fnirt",
   "command-line": "fnirt [AFFINE_FILE] [CONFIG_FILE] [FIELD_FILE] [FIELDCOEFF_FILE] [IN_FILE] [JACOBIAN_FILE] [LOG_FILE] [MODULATEDREF_FILE] [REF_FILE] [REFMASK_FILE] [WARPED_FILE]",
-  "author": "Nipype (interface)",
-  "description": "FNIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FNIRT).\nFSL FNIRT wrapper for non-linear registration\nFor complete details, see the `FNIRT Documentation. <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT>`_",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "FSL non-linear registration",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT",
   "inputs": [
     {
       "id": "affine_file",
@@ -175,7 +176,6 @@
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }
