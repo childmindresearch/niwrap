@@ -1,8 +1,9 @@
 {
   "name": "mri binarize",
   "command-line": "mri_binarize [ABS] [BIN_COL_NUM] [BIN_VAL] [BIN_VAL_NOT] [BINARY_FILE] [COUNT_FILE] [DILATE] [ERODE] [ERODE2D] [FRAME_NO] [IN_FILE] [INVERT] [MASK_FILE] [MASK_THRESH] [MATCH] [MAX] [MERGE_FILE] [MIN] [OUT_TYPE] [RMAX] [RMIN] [SUBJECTS_DIR] [VENTRICLES] [WM] [WM_VEN_CSF] [ZERO_EDGES] [ZERO_SLICE_EDGE]",
-  "author": "Nipype (interface)",
-  "description": "mri_binarize, as implemented in Nipype (module: nipype.interfaces.freesurfer.model, interface: mri_binarize).\nUse FreeSurfer mri_binarize to threshold an input volume",
+  "author": "Members of the Laboratories for Computational Neuroimaging (LCN) at the Athinoula A. Martinos Center for Biomedical Imaging",
+  "description": "Program to binarize a volume (or volume-encoded surface file). Can also be used to merge with other binarizations. Binarization can be done based on threshold or on matched values.",
+  "url": "https://surfer.nmr.mgh.harvard.edu/fswiki/mri_binarize",
   "inputs": [
     {
       "id": "abs",
@@ -319,7 +320,6 @@
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }

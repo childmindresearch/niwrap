@@ -1,8 +1,9 @@
 {
   "name": "ReconAll",
   "command-line": "ReconAll [DIRECTIVE] [FLAIR_FILE] [T1_FILES] [T2_FILE] [BIG_VENTRICLES] [BRAINSTEM] [EXPERT] [FLAGS] [HEMI] [HIPPOCAMPAL_SUBFIELDS_T1] [HIPPOCAMPAL_SUBFIELDS_T2] [HIRES] [MPRAGE] [OPENMP] [PARALLEL] [SUBJECT_ID] [SUBJECTS_DIR] [TALAIRACH] [USE_FLAIR] [USE_T2] [XOPTS]",
-  "author": "Nipype (interface)",
-  "description": "ReconAll, as implemented in Nipype (module: nipype.interfaces.freesurfer.preprocess, interface: ReconAll).\nUses recon-all to generate surfaces and parcellations of structural data from anatomical images of a subject.",
+  "author": "Members of the Laboratories for Computational Neuroimaging (LCN) at the Athinoula A. Martinos Center for Biomedical Imaging",
+  "description": "Performs all, or any part of, the FreeSurfer cortical reconstruction process.",
+  "url": "https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all",
   "inputs": [
     {
       "id": "FLAIR_file",
@@ -248,7 +249,6 @@
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }
