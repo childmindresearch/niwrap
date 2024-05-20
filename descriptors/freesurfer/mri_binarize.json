@@ -272,13 +272,6 @@
       "path-template": "[BINARY_FILE]",
       "optional": true,
       "description": "Binarized output volume."
-    },
-    {
-      "name": "Count file",
-      "id": "count_file_outfile",
-      "path-template": "[COUNT_FILE].txt",
-      "optional": true,
-      "description": "Ascii file containing number of hits."
     }
   ],
   "groups": [
