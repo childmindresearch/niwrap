@@ -20,7 +20,7 @@ class ApplyVolTransformOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    transformed_file_outfile: OutputPathType
+    transformed_file_outfile: OutputPathType | None
     """Path to output file if used normally."""
 
 
@@ -198,7 +198,7 @@ def apply_vol_transform(
         cargs.extend(["--xfm", execution.input_file(xfm_reg_file)])
     ret = ApplyVolTransformOutputs(
         root=execution.output_file("."),
-        transformed_file_outfile=execution.output_file(f"{pathlib.Path(transformed_file).stem}.nii.gz", optional=True),
+        transformed_file_outfile=execution.output_file(f"{pathlib.Path(transformed_file).stem}.nii.gz", optional=True) if transformed_file is not None else None,
     )
     execution.run(cargs)
     return ret

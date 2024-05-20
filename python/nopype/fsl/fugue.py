@@ -20,13 +20,13 @@ class FugueOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    fmap_out_file_outfile: OutputPathType
+    fmap_out_file_outfile: OutputPathType | None
     """Fieldmap file."""
-    shift_out_file_outfile: OutputPathType
+    shift_out_file_outfile: OutputPathType | None
     """Voxel shift map file."""
-    unwarped_file_outfile: OutputPathType
+    unwarped_file_outfile: OutputPathType | None
     """Unwarped file."""
-    warped_file_outfile: OutputPathType
+    warped_file_outfile: OutputPathType | None
     """Forward warped file."""
 
 
@@ -219,10 +219,10 @@ def fugue(
         cargs.append(("--warp=" + execution.input_file(warped_file)))
     ret = FugueOutputs(
         root=execution.output_file("."),
-        fmap_out_file_outfile=execution.output_file(f"{pathlib.Path(fmap_out_file).stem}", optional=True),
-        shift_out_file_outfile=execution.output_file(f"{pathlib.Path(shift_out_file).stem}", optional=True),
-        unwarped_file_outfile=execution.output_file(f"{pathlib.Path(unwarped_file).stem}", optional=True),
-        warped_file_outfile=execution.output_file(f"{pathlib.Path(warped_file).stem}", optional=True),
+        fmap_out_file_outfile=execution.output_file(f"{pathlib.Path(fmap_out_file).stem}", optional=True) if fmap_out_file is not None else None,
+        shift_out_file_outfile=execution.output_file(f"{pathlib.Path(shift_out_file).stem}", optional=True) if shift_out_file is not None else None,
+        unwarped_file_outfile=execution.output_file(f"{pathlib.Path(unwarped_file).stem}", optional=True) if unwarped_file is not None else None,
+        warped_file_outfile=execution.output_file(f"{pathlib.Path(warped_file).stem}", optional=True) if warped_file is not None else None,
     )
     execution.run(cargs)
     return ret

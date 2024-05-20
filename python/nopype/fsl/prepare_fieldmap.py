@@ -20,7 +20,7 @@ class PrepareFieldmapOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_fieldmap_outfile: OutputPathType
+    out_fieldmap_outfile: OutputPathType | None
     """Output name for prepared fieldmap."""
 
 
@@ -76,7 +76,7 @@ def prepare_fieldmap(
         cargs.append(output_type)
     ret = PrepareFieldmapOutputs(
         root=execution.output_file("."),
-        out_fieldmap_outfile=execution.output_file(f"{pathlib.Path(out_fieldmap).stem}", optional=True),
+        out_fieldmap_outfile=execution.output_file(f"{pathlib.Path(out_fieldmap).stem}", optional=True) if out_fieldmap is not None else None,
     )
     execution.run(cargs)
     return ret

@@ -22,7 +22,7 @@ class V3dDegreeCentralityOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output image file name."""
-    oned_file_outfile: OutputPathType
+    oned_file_outfile: OutputPathType | None
     """The text output of the similarity matrix computed after thresholding with one-dimensional and ijk voxel indices, correlations, image extents, and affine matrix."""
 
 
@@ -78,7 +78,7 @@ def v_3d_degree_centrality(
     ret = V3dDegreeCentralityOutputs(
         root=execution.output_file("."),
         out_file=execution.output_file(f"{pathlib.Path(in_file).stem}", optional=True),
-        oned_file_outfile=execution.output_file(f"{oned_file}", optional=True),
+        oned_file_outfile=execution.output_file(f"{oned_file}", optional=True) if oned_file is not None else None,
     )
     execution.run(cargs)
     return ret

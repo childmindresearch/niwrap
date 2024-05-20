@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 FAST_METADATA = Metadata(
-    id="6c4007fce6c62e5ece23b7d2a4fa8f1f973768c7",
+    id="ae80f76ab518e5af78abbedeb400e1687400674e",
     name="FAST",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -20,21 +20,21 @@ class FastOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    mixeltype: OutputPathType
+    mixeltype: OutputPathType | None
     """Path/name of mixeltype volume file _mixeltype."""
-    bias_field: OutputPathType
+    bias_field: OutputPathType | None
     """No description provided."""
-    partial_volume_files: OutputPathType
+    partial_volume_files: OutputPathType | None
     """No description provided."""
-    partial_volume_map: OutputPathType
+    partial_volume_map: OutputPathType | None
     """Path/name of partial volume file _pveseg."""
-    probability_maps_outfile: OutputPathType
+    probability_maps_outfile: OutputPathType | None
     """No description provided."""
-    restored_image: OutputPathType
+    restored_image: OutputPathType | None
     """No description provided."""
-    tissue_class_files: OutputPathType
+    tissue_class_files: OutputPathType | None
     """No description provided."""
-    tissue_class_map: OutputPathType
+    tissue_class_map: OutputPathType | None
     """Path/name of binary segmented volume file one val for each class  _seg."""
 
 
@@ -62,7 +62,6 @@ def fast(
     hyper: float | int | None = 0.1,
     verbose: bool = False,
     manual_seg: InputPathType | None = None,
-    probability_maps: bool = False,
 ) -> FastOutputs:
     """
     FAST (FMRIB's Automated Segmentation Tool) segments a 3D image of the brain into
@@ -105,7 +104,6 @@ def fast(
             smoothness; default=0.1
         verbose: Switch on diagnostic messages.
         manual_seg: Filename containing intensities.
-        probability_maps: Outputs individual probability maps.
     Returns:
         NamedTuple of outputs (described in `FastOutputs`).
     """
@@ -176,14 +174,14 @@ def fast(
     cargs.extend([execution.input_file(f) for f in in_files])
     ret = FastOutputs(
         root=execution.output_file("."),
-        mixeltype=execution.output_file(f"{pathlib.Path(out_basename).stem}_mixeltype.nii.gz", optional=True),
-        bias_field=execution.output_file(f"{pathlib.Path(out_basename).stem}_bias.nii.gz", optional=True),
-        partial_volume_files=execution.output_file(f"{pathlib.Path(out_basename).stem}_pve_*.nii.gz", optional=True),
-        partial_volume_map=execution.output_file(f"{pathlib.Path(out_basename).stem}_pveseg.nii.gz", optional=True),
-        probability_maps_outfile=execution.output_file(f"{pathlib.Path(out_basename).stem}_prob_*.nii.gz", optional=True),
-        restored_image=execution.output_file(f"{pathlib.Path(out_basename).stem}_restore.nii.gz", optional=True),
-        tissue_class_files=execution.output_file(f"{pathlib.Path(out_basename).stem}_seg_*.nii.gz", optional=True),
-        tissue_class_map=execution.output_file(f"{pathlib.Path(out_basename).stem}_seg.nii.gz", optional=True),
+        mixeltype=execution.output_file(f"{pathlib.Path(out_basename).stem}_mixeltype.nii.gz", optional=True) if out_basename is not None else None,
+        bias_field=execution.output_file(f"{pathlib.Path(out_basename).stem}_bias.nii.gz", optional=True) if out_basename is not None else None,
+        partial_volume_files=execution.output_file(f"{pathlib.Path(out_basename).stem}_pve_*.nii.gz", optional=True) if out_basename is not None else None,
+        partial_volume_map=execution.output_file(f"{pathlib.Path(out_basename).stem}_pveseg.nii.gz", optional=True) if out_basename is not None else None,
+        probability_maps_outfile=execution.output_file(f"{pathlib.Path(out_basename).stem}_prob_*.nii.gz", optional=True) if out_basename is not None else None,
+        restored_image=execution.output_file(f"{pathlib.Path(out_basename).stem}_restore.nii.gz", optional=True) if out_basename is not None else None,
+        tissue_class_files=execution.output_file(f"{pathlib.Path(out_basename).stem}_seg_*.nii.gz", optional=True) if out_basename is not None else None,
+        tissue_class_map=execution.output_file(f"{pathlib.Path(out_basename).stem}_seg.nii.gz", optional=True) if out_basename is not None else None,
     )
     execution.run(cargs)
     return ret

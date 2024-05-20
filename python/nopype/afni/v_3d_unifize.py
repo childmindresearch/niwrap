@@ -24,7 +24,7 @@ class V3dUnifizeOutputs(typing.NamedTuple):
     """Output image file name."""
     out_file_: OutputPathType
     """Unifized file."""
-    scale_file_outfile: OutputPathType
+    scale_file_outfile: OutputPathType | None
     """Scale factor file."""
 
 
@@ -154,7 +154,7 @@ def v_3d_unifize(
         root=execution.output_file("."),
         out_file=execution.output_file(f"{pathlib.Path(in_file).stem}_unifized", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),
-        scale_file_outfile=execution.output_file(f"{pathlib.Path(scale_file).stem}", optional=True),
+        scale_file_outfile=execution.output_file(f"{pathlib.Path(scale_file).stem}", optional=True) if scale_file is not None else None,
     )
     execution.run(cargs)
     return ret

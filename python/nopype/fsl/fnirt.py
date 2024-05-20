@@ -20,19 +20,19 @@ class FnirtOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    field_file_outfile: OutputPathType
+    field_file_outfile: OutputPathType | None
     """File with warp field."""
-    fieldcoeff_file_outfile: OutputPathType
+    fieldcoeff_file_outfile: OutputPathType | None
     """File with field coefficients."""
-    jacobian_file_outfile: OutputPathType
+    jacobian_file_outfile: OutputPathType | None
     """File containing jacobian of the field."""
-    log_file_outfile: OutputPathType
+    log_file_outfile: OutputPathType | None
     """Name of log-file."""
-    modulatedref_file_outfile: OutputPathType
+    modulatedref_file_outfile: OutputPathType | None
     """File containing intensity modulated --ref."""
     out_intensitymap_file_outfile: OutputPathType
     """Files containing info pertaining to intensity mapping."""
-    warped_file_outfile: OutputPathType
+    warped_file_outfile: OutputPathType | None
     """Warped image."""
 
 
@@ -99,13 +99,13 @@ def fnirt(
         cargs.append(("--iout=" + execution.input_file(warped_file)))
     ret = FnirtOutputs(
         root=execution.output_file("."),
-        field_file_outfile=execution.output_file(f"{pathlib.Path(field_file).stem}.nii.gz", optional=True),
-        fieldcoeff_file_outfile=execution.output_file(f"{pathlib.Path(fieldcoeff_file).stem}.nii.gz", optional=True),
-        jacobian_file_outfile=execution.output_file(f"{pathlib.Path(jacobian_file).stem}.mat", optional=True),
-        log_file_outfile=execution.output_file(f"{pathlib.Path(log_file).stem}.txt", optional=True),
-        modulatedref_file_outfile=execution.output_file(f"{modulatedref_file}.nii.gz", optional=True),
+        field_file_outfile=execution.output_file(f"{pathlib.Path(field_file).stem}.nii.gz", optional=True) if field_file is not None else None,
+        fieldcoeff_file_outfile=execution.output_file(f"{pathlib.Path(fieldcoeff_file).stem}.nii.gz", optional=True) if fieldcoeff_file is not None else None,
+        jacobian_file_outfile=execution.output_file(f"{pathlib.Path(jacobian_file).stem}.mat", optional=True) if jacobian_file is not None else None,
+        log_file_outfile=execution.output_file(f"{pathlib.Path(log_file).stem}.txt", optional=True) if log_file is not None else None,
+        modulatedref_file_outfile=execution.output_file(f"{modulatedref_file}.nii.gz", optional=True) if modulatedref_file is not None else None,
         out_intensitymap_file_outfile=execution.output_file(f"[OUT_INTENSITYMAP_FILE]", optional=True),
-        warped_file_outfile=execution.output_file(f"{pathlib.Path(warped_file).stem}.nii.gz", optional=True),
+        warped_file_outfile=execution.output_file(f"{pathlib.Path(warped_file).stem}.nii.gz", optional=True) if warped_file is not None else None,
     )
     execution.run(cargs)
     return ret

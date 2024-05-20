@@ -20,15 +20,15 @@ class SlicerOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    sagittal_slice_outfile: OutputPathType
+    sagittal_slice_outfile: OutputPathType | None
     """Output sagittal slice."""
-    axial_slice_outfile: OutputPathType
+    axial_slice_outfile: OutputPathType | None
     """Output axial slice."""
-    coronal_slice_outfile: OutputPathType
+    coronal_slice_outfile: OutputPathType | None
     """Output coronal slice."""
-    single_image_outfile: OutputPathType
+    single_image_outfile: OutputPathType | None
     """Output mid-sagittal, -coronal, and -axial slices into one image."""
-    all_axial_slices_outfile: OutputPathType
+    all_axial_slices_outfile: OutputPathType | None
     """File name of every <sample'th> axial slice output image."""
 
 
@@ -200,11 +200,11 @@ def slicer(
         cargs.append(output_sample_axial_slices_fname)
     ret = SlicerOutputs(
         root=execution.output_file("."),
-        sagittal_slice_outfile=execution.output_file(f"{output_sagittal_slice_fname}", optional=True),
-        axial_slice_outfile=execution.output_file(f"{output_axial_slice_fname}", optional=True),
-        coronal_slice_outfile=execution.output_file(f"{output_coronal_slice_fname}", optional=True),
-        single_image_outfile=execution.output_file(f"{output_single_image}", optional=True),
-        all_axial_slices_outfile=execution.output_file(f"{output_sample_axial_slices_fname}", optional=True),
+        sagittal_slice_outfile=execution.output_file(f"{output_sagittal_slice_fname}", optional=True) if output_sagittal_slice_fname is not None else None,
+        axial_slice_outfile=execution.output_file(f"{output_axial_slice_fname}", optional=True) if output_axial_slice_fname is not None else None,
+        coronal_slice_outfile=execution.output_file(f"{output_coronal_slice_fname}", optional=True) if output_coronal_slice_fname is not None else None,
+        single_image_outfile=execution.output_file(f"{output_single_image}", optional=True) if output_single_image is not None else None,
+        all_axial_slices_outfile=execution.output_file(f"{output_sample_axial_slices_fname}", optional=True) if output_sample_axial_slices_fname is not None else None,
     )
     execution.run(cargs)
     return ret
