@@ -228,15 +228,6 @@
       "optional": true
     },
     {
-      "name": "Probability maps",
-      "id": "probability_maps",
-      "type": "Flag",
-      "value-key": "[OUT_BASENAME]_prob_*.nii.gz",
-      "description": "Outputs individual probability maps.",
-      "command-line-flag": "-p",
-      "optional": true
-    },
-    {
       "id": "in_files",
       "name": "In files",
       "type": "File",
