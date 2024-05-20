@@ -1,8 +1,9 @@
 {
   "name": "Split",
   "command-line": "fslsplit [IN_FILE] out/[OUT_BASE_NAME] [DIMENSION]",
-  "author": "Nipype (interface)",
-  "description": "Split, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Split).\nUses FSL Fslsplit command to separate a volume into images in time, x, y or z dimension.",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "split a 4D file into lots of 3D files (eg for inputting to SPM).",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
   "inputs": [
     {
       "id": "in_file",
@@ -49,7 +50,6 @@
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }

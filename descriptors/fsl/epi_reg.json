@@ -1,8 +1,9 @@
 {
   "name": "epi_reg",
   "command-line": "epi_reg [EPI] [T1_HEAD] [T1_BRAIN] [OUT_BASE_NAME] [ECHOSPACING] [FMAP] [FMAPMAG] [FMAPMAGBRAIN] [NO_CLEAN] [NO_FMAPREG] [PEDIR] [WEIGHT_IMAGE] [WMSEG]",
-  "author": "FMRIB",
-  "description": "epi_reg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: EpiReg). Runs FSL epi_reg script for simultaneous coregistration and fieldmap unwarping.",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Runs FSL epi_reg script for simultaneous coregistration and fieldmap unwarping.",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/UserGuide#epi_reg",
   "inputs": [
     {
       "id": "echospacing",
@@ -242,7 +243,6 @@
   },
   "tags": {
     "domain": "neuroinformatics",
-    "source": "nipype-interface",
     "package": "fsl"
   }
 }

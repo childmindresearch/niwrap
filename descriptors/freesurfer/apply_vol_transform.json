@@ -1,8 +1,9 @@
 {
   "name": "ApplyVolTransform",
   "command-line": "mri_vol2vol [FS_TARGET] [FSL_REG_FILE] [INTERP] [INVERSE] [INVERT_MORPH] [LTA_FILE] [LTA_INV_FILE] [M3Z_FILE] [MNI_152_REG] [NO_DEF_M3Z_PATH] [NO_RESAMPLE] [REG_FILE] [REG_HEADER] [SOURCE_FILE] [SUBJECT] [SUBJECTS_DIR] [TAL] [TAL_RESOLUTION] [TARGET_FILE] [TRANSFORMED_FILE] [XFM_REG_FILE]",
-  "author": "Nipype (interface)",
-  "description": "ApplyVolTransform, as implemented in Nipype (module: nipype.interfaces.freesurfer.preprocess, interface: ApplyVolTransform).\nUse FreeSurfer mri_vol2vol to apply a transform.",
+  "author": "Members of the Laboratories for Computational Neuroimaging (LCN) at the Athinoula A. Martinos Center for Biomedical Imaging",
+  "description": "Resamples a volume into another field-of-view using varous types of matrices (FreeSurfer, FSL, SPM, and MNI).",
+  "url": "https://surfer.nmr.mgh.harvard.edu/fswiki/mri_vol2vol",
   "inputs": [
     {
       "id": "fs_target",
@@ -257,7 +258,6 @@
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }

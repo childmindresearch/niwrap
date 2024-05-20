@@ -1,8 +1,9 @@
 {
   "name": "SwapDimensions",
   "command-line": "fslswapdim [IN_FILE] [A_CART] [A_RAS] [B_CART] [B_RAS] [C_CART] [C_RAS] [OUT_FILE]",
-  "author": "Nipype (interface)",
-  "description": "SwapDimensions, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SwapDimensions).\nUse fslswapdim to alter the orientation of an image.\nThis interface accepts a three-tuple corresponding to the new orientation. You may either provide dimension ids in the form of (-)x, (-)y, or (-z), or nifti-syle dimension codes (RL, LR, AP, PA, IS, SI).",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "this is an advanced tool that re-orders the data storage to permit changes between axial, sagittal and coronal slicing. When used in this mode the same left-right convention (also called coordinate handedness or radiological/neurological convention) will be maintained as long as no warning is printed.",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
   "inputs": [
     {
       "id": "in_file",
@@ -123,7 +124,6 @@
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }
