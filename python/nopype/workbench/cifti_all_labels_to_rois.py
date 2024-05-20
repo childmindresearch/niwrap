@@ -18,6 +18,8 @@ class CiftiAllLabelsToRoisOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_all_labels_to_rois(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
 
@@ -54,7 +56,8 @@ def cifti_all_labels_to_rois(
     cargs.append(map_)
     cargs.append(execution.input_file(cifti_out))
     ret = CiftiAllLabelsToRoisOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

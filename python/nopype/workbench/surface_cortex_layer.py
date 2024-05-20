@@ -18,6 +18,8 @@ class SurfaceCortexLayerOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_cortex_layer(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_surface: OutputPathType
     """the output surface"""
 
@@ -62,7 +64,8 @@ def surface_cortex_layer(
     if opt_placement_out:
         cargs.append("-placement-out")
     ret = SurfaceCortexLayerOutputs(
-        out_surface=execution.output_file(f"{out_surface}"),
+        root=execution.output_file("."),
+        out_surface=execution.output_file(f"{pathlib.Path(out_surface).stem}"),
     )
     execution.run(cargs)
     return ret

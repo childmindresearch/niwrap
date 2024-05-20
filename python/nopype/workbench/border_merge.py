@@ -18,6 +18,8 @@ class BorderMergeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `border_merge(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     border_file_out: OutputPathType
     """the output border file"""
 
@@ -55,7 +57,8 @@ def border_merge(
     if opt_border_border_file_in is not None:
         cargs.extend(["-border", execution.input_file(opt_border_border_file_in)])
     ret = BorderMergeOutputs(
-        border_file_out=execution.output_file(f"{border_file_out}"),
+        root=execution.output_file("."),
+        border_file_out=execution.output_file(f"{pathlib.Path(border_file_out).stem}"),
     )
     execution.run(cargs)
     return ret

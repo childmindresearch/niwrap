@@ -18,6 +18,8 @@ class MultiplyImagesOutputs(typing.NamedTuple):
     """
     Output object returned when calling `multiply_images(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     output_product_image_outfile: OutputPathType
     """Average image file."""
 
@@ -71,7 +73,8 @@ def multiply_images(
     if num_threads is not None:
         cargs.append(str(num_threads))
     ret = MultiplyImagesOutputs(
-        output_product_image_outfile=execution.output_file(f"{output_product_image}", optional=True),
+        root=execution.output_file("."),
+        output_product_image_outfile=execution.output_file(f"{pathlib.Path(output_product_image).stem}", optional=True),
     )
     execution.run(cargs)
     return ret

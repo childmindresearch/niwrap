@@ -18,6 +18,8 @@ class SceneFileUpdateOutputs(typing.NamedTuple):
     """
     Output object returned when calling `scene_file_update(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def scene_file_update(
@@ -127,6 +129,7 @@ def scene_file_update(
     if opt_data_file_remove_name_of_data_file is not None:
         cargs.extend(["-data-file-remove", opt_data_file_remove_name_of_data_file])
     ret = SceneFileUpdateOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

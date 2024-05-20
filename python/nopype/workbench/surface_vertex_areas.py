@@ -18,6 +18,8 @@ class SurfaceVertexAreasOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_vertex_areas(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric: OutputPathType
     """the output metric"""
 
@@ -47,7 +49,8 @@ def surface_vertex_areas(
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(metric))
     ret = SurfaceVertexAreasOutputs(
-        metric=execution.output_file(f"{metric}"),
+        root=execution.output_file("."),
+        metric=execution.output_file(f"{pathlib.Path(metric).stem}"),
     )
     execution.run(cargs)
     return ret

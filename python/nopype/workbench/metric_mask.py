@@ -18,6 +18,8 @@ class MetricMaskOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_mask(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
 
@@ -56,7 +58,8 @@ def metric_mask(
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     ret = MetricMaskOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class MetricRegressionOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_regression(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
 
@@ -70,7 +72,8 @@ def metric_regression(
     if opt_keep_metric is not None:
         cargs.extend(["-keep", execution.input_file(opt_keep_metric)])
     ret = MetricRegressionOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

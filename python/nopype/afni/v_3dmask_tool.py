@@ -18,6 +18,8 @@ class V3dmaskToolOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3dmask_tool(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output image file name."""
     out_file_: OutputPathType
@@ -106,7 +108,8 @@ def v_3dmask_tool(
     if verbose is not None:
         cargs.extend(["-verb", str(verbose)])
     ret = V3dmaskToolOutputs(
-        out_file=execution.output_file(f"{in_file}_mask", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(in_file).stem}_mask", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),
     )
     execution.run(cargs)

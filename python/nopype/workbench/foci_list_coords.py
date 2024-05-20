@@ -18,6 +18,8 @@ class FociListCoordsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `foci_list_coords(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def foci_list_coords(
@@ -50,6 +52,7 @@ def foci_list_coords(
     if opt_names_out_names_file_out is not None:
         cargs.extend(["-names-out", opt_names_out_names_file_out])
     ret = FociListCoordsOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

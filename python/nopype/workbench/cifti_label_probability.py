@@ -18,6 +18,8 @@ class CiftiLabelProbabilityOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_label_probability(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     probability_dscalar_out: OutputPathType
     """the relative frequencies of each label at each vertex/voxel"""
 
@@ -54,7 +56,8 @@ def cifti_label_probability(
     if opt_exclude_unlabeled:
         cargs.append("-exclude-unlabeled")
     ret = CiftiLabelProbabilityOutputs(
-        probability_dscalar_out=execution.output_file(f"{probability_dscalar_out}"),
+        root=execution.output_file("."),
+        probability_dscalar_out=execution.output_file(f"{pathlib.Path(probability_dscalar_out).stem}"),
     )
     execution.run(cargs)
     return ret

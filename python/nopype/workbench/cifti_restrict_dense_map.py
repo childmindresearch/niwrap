@@ -18,6 +18,8 @@ class CiftiRestrictDenseMapOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_restrict_dense_map(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti"""
 
@@ -79,7 +81,8 @@ def cifti_restrict_dense_map(
     if opt_vol_roi_roi_vol is not None:
         cargs.extend(["-vol-roi", execution.input_file(opt_vol_roi_roi_vol)])
     ret = CiftiRestrictDenseMapOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class CiftiCorrelationGradientOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_correlation_gradient(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti"""
 
@@ -113,7 +115,8 @@ def cifti_correlation_gradient(
     if opt_double_correlation:
         cargs.append("-double-correlation")
     ret = CiftiCorrelationGradientOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

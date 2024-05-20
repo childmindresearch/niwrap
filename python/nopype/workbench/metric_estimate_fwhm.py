@@ -18,6 +18,8 @@ class MetricEstimateFwhmOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_estimate_fwhm(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def metric_estimate_fwhm(
@@ -60,6 +62,7 @@ def metric_estimate_fwhm(
     if opt_whole_file:
         cargs.append("-whole-file")
     ret = MetricEstimateFwhmOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

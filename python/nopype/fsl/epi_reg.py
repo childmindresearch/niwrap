@@ -18,6 +18,8 @@ class EpiRegOutputs(typing.NamedTuple):
     """
     Output object returned when calling `epi_reg(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     epi2str_inv: OutputPathType
     """Rigid structural-to-epi transform."""
     epi2str_mat: OutputPathType
@@ -115,6 +117,7 @@ def epi_reg(
     if wmseg is not None:
         cargs.append(("--wmseg=" + execution.input_file(wmseg)))
     ret = EpiRegOutputs(
+        root=execution.output_file("."),
         epi2str_inv=execution.output_file(f"epi2str_inv.mat", optional=True),
         epi2str_mat=execution.output_file(f"epi2struct.mat", optional=True),
         fmap2epi_mat=execution.output_file(f"fmap2epi.mat", optional=True),

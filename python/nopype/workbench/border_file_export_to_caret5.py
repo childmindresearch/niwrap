@@ -18,6 +18,8 @@ class BorderFileExportToCaret5Outputs(typing.NamedTuple):
     """
     Output object returned when calling `border_file_export_to_caret5(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def border_file_export_to_caret5(
@@ -73,6 +75,7 @@ def border_file_export_to_caret5(
     if opt_surface_surface_in is not None:
         cargs.extend(["-surface", execution.input_file(opt_surface_surface_in)])
     ret = BorderFileExportToCaret5Outputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

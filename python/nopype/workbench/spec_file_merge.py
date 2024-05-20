@@ -18,6 +18,8 @@ class SpecFileMergeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `spec_file_merge(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def spec_file_merge(
@@ -48,6 +50,7 @@ def spec_file_merge(
     cargs.append(spec_2)
     cargs.append(out_spec)
     ret = SpecFileMergeOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

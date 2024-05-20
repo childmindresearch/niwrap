@@ -18,6 +18,8 @@ class FastOutputs(typing.NamedTuple):
     """
     Output object returned when calling `fast(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     mixeltype: OutputPathType
     """Path/name of mixeltype volume file _mixeltype."""
     bias_field: OutputPathType
@@ -173,14 +175,15 @@ def fast(
     cargs.append("[PROBABILITY_MAPS]")
     cargs.extend([execution.input_file(f) for f in in_files])
     ret = FastOutputs(
-        mixeltype=execution.output_file(f"{out_basename}_mixeltype.nii.gz", optional=True),
-        bias_field=execution.output_file(f"{out_basename}_bias.nii.gz", optional=True),
-        partial_volume_files=execution.output_file(f"{out_basename}_pve_*.nii.gz", optional=True),
-        partial_volume_map=execution.output_file(f"{out_basename}_pveseg.nii.gz", optional=True),
-        probability_maps_outfile=execution.output_file(f"{out_basename}_prob_*.nii.gz", optional=True),
-        restored_image=execution.output_file(f"{out_basename}_restore.nii.gz", optional=True),
-        tissue_class_files=execution.output_file(f"{out_basename}_seg_*.nii.gz", optional=True),
-        tissue_class_map=execution.output_file(f"{out_basename}_seg.nii.gz", optional=True),
+        root=execution.output_file("."),
+        mixeltype=execution.output_file(f"{pathlib.Path(out_basename).stem}_mixeltype.nii.gz", optional=True),
+        bias_field=execution.output_file(f"{pathlib.Path(out_basename).stem}_bias.nii.gz", optional=True),
+        partial_volume_files=execution.output_file(f"{pathlib.Path(out_basename).stem}_pve_*.nii.gz", optional=True),
+        partial_volume_map=execution.output_file(f"{pathlib.Path(out_basename).stem}_pveseg.nii.gz", optional=True),
+        probability_maps_outfile=execution.output_file(f"{pathlib.Path(out_basename).stem}_prob_*.nii.gz", optional=True),
+        restored_image=execution.output_file(f"{pathlib.Path(out_basename).stem}_restore.nii.gz", optional=True),
+        tissue_class_files=execution.output_file(f"{pathlib.Path(out_basename).stem}_seg_*.nii.gz", optional=True),
+        tissue_class_map=execution.output_file(f"{pathlib.Path(out_basename).stem}_seg.nii.gz", optional=True),
     )
     execution.run(cargs)
     return ret

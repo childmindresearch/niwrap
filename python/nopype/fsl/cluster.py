@@ -18,6 +18,8 @@ class ClusterOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cluster(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     index_file: OutputPathType
     """Output of cluster index (in size order)."""
     localmax_txt_file: OutputPathType
@@ -253,6 +255,7 @@ def cluster(
     if xfm_file is not None:
         cargs.append(("--xfm=" + execution.input_file(xfm_file)))
     ret = ClusterOutputs(
+        root=execution.output_file("."),
         index_file=execution.output_file(f"index_file", optional=True),
         localmax_txt_file=execution.output_file(f"localmax_txt_file", optional=True),
         localmax_vol_file=execution.output_file(f"localmax_vol_file", optional=True),

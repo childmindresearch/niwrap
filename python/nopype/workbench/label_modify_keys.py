@@ -18,6 +18,8 @@ class LabelModifyKeysOutputs(typing.NamedTuple):
     """
     Output object returned when calling `label_modify_keys(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     label_out: OutputPathType
     """output label file"""
 
@@ -66,7 +68,8 @@ def label_modify_keys(
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     ret = LabelModifyKeysOutputs(
-        label_out=execution.output_file(f"{label_out}"),
+        root=execution.output_file("."),
+        label_out=execution.output_file(f"{pathlib.Path(label_out).stem}"),
     )
     execution.run(cargs)
     return ret

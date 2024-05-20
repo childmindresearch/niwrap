@@ -18,6 +18,8 @@ class SurfaceResampleOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_resample(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     surface_out: OutputPathType
     """the output surface file"""
 
@@ -78,7 +80,8 @@ def surface_resample(
     if opt_bypass_sphere_check:
         cargs.append("-bypass-sphere-check")
     ret = SurfaceResampleOutputs(
-        surface_out=execution.output_file(f"{surface_out}"),
+        root=execution.output_file("."),
+        surface_out=execution.output_file(f"{pathlib.Path(surface_out).stem}"),
     )
     execution.run(cargs)
     return ret

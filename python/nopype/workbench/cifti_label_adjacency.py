@@ -18,6 +18,8 @@ class CiftiLabelAdjacencyOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_label_adjacency(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     adjacency_out: OutputPathType
     """the output cifti pconn adjacency matrix"""
 
@@ -64,7 +66,8 @@ def cifti_label_adjacency(
     if opt_cerebellum_surface_surface is not None:
         cargs.extend(["-cerebellum-surface", execution.input_file(opt_cerebellum_surface_surface)])
     ret = CiftiLabelAdjacencyOutputs(
-        adjacency_out=execution.output_file(f"{adjacency_out}"),
+        root=execution.output_file("."),
+        adjacency_out=execution.output_file(f"{pathlib.Path(adjacency_out).stem}"),
     )
     execution.run(cargs)
     return ret

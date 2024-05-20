@@ -18,6 +18,8 @@ class V3dRoistatsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3d_roistats(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output file."""
     out_file_: OutputPathType
@@ -139,7 +141,8 @@ def v_3d_roistats(
     if zerofill is not None:
         cargs.extend(["-zerofill", zerofill])
     ret = V3dRoistatsOutputs(
-        out_file=execution.output_file(f"{in_file}_roistat.1D", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(in_file).stem}_roistat.1D", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),
     )
     execution.run(cargs)

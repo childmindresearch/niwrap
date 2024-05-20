@@ -18,6 +18,8 @@ class CiftiMergeParcelsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_merge_parcels(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
 
@@ -53,7 +55,8 @@ def cifti_merge_parcels(
     if opt_cifti_cifti_in is not None:
         cargs.extend(["-cifti", execution.input_file(opt_cifti_cifti_in)])
     ret = CiftiMergeParcelsOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class V3dBandpassOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3d_bandpass(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output file from 3dbandpass."""
     out_file_: OutputPathType
@@ -126,7 +128,8 @@ def v_3d_bandpass(
     if tr is not None:
         cargs.extend(["-dt", str(tr)])
     ret = V3dBandpassOutputs(
-        out_file=execution.output_file(f"{in_file}_bp", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(in_file).stem}_bp", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),
     )
     execution.run(cargs)

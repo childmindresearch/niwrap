@@ -18,6 +18,8 @@ class C3dAffineToolOutputs(typing.NamedTuple):
     """
     Output object returned when calling `c3d_affine_tool(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     itk_transform_outfile: OutputPathType
     """Output ITK transform file."""
     irtk_transform_outfile: OutputPathType
@@ -109,6 +111,7 @@ def c3d_affine_tool(
     if info_full:
         cargs.append("-info-full")
     ret = C3dAffineToolOutputs(
+        root=execution.output_file("."),
         itk_transform_outfile=execution.output_file(f"{out_itk_transform}.txt", optional=True),
         irtk_transform_outfile=execution.output_file(f"{out_irtk_transform}.dof", optional=True),
         matrix_transform_outfile=execution.output_file(f"{out_matfile}.mat", optional=True),

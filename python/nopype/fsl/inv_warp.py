@@ -18,6 +18,8 @@ class InvWarpOutputs(typing.NamedTuple):
     """
     Output object returned when calling `inv_warp(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     inverse_warp: OutputPathType
     """Name of output file, containing warps that are the "reverse" of those in --warp. this will be a field-file (rather than a file of spline coefficients), and it will have any affine component included as part of the displacements."""
 
@@ -84,6 +86,7 @@ def inv_warp(
     if debug:
         cargs.append("--debug")
     ret = InvWarpOutputs(
+        root=execution.output_file("."),
         inverse_warp=execution.output_file(f"{out_img}", optional=True),
     )
     execution.run(cargs)

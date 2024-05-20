@@ -18,6 +18,8 @@ class ConvertAffineOutputs(typing.NamedTuple):
     """
     Output object returned when calling `convert_affine(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def convert_affine(
@@ -66,6 +68,7 @@ def convert_affine(
     if opt_to_itk_output is not None:
         cargs.extend(["-to-itk", opt_to_itk_output])
     ret = ConvertAffineOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

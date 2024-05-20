@@ -18,6 +18,8 @@ class CiftiCreateDenseScalarOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_create_dense_scalar(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
 
@@ -100,7 +102,8 @@ def cifti_create_dense_scalar(
     if opt_name_file_file is not None:
         cargs.extend(["-name-file", opt_name_file_file])
     ret = CiftiCreateDenseScalarOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class VolumeAllLabelsToRoisOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_all_labels_to_rois(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume file"""
 
@@ -51,7 +53,8 @@ def volume_all_labels_to_rois(
     cargs.append(map_)
     cargs.append(execution.input_file(volume_out))
     ret = VolumeAllLabelsToRoisOutputs(
-        volume_out=execution.output_file(f"{volume_out}"),
+        root=execution.output_file("."),
+        volume_out=execution.output_file(f"{pathlib.Path(volume_out).stem}"),
     )
     execution.run(cargs)
     return ret

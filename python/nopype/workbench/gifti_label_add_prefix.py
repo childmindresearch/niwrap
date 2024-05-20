@@ -18,6 +18,8 @@ class GiftiLabelAddPrefixOutputs(typing.NamedTuple):
     """
     Output object returned when calling `gifti_label_add_prefix(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     label_out: OutputPathType
     """the output label file"""
 
@@ -49,7 +51,8 @@ def gifti_label_add_prefix(
     cargs.append(prefix)
     cargs.append(execution.input_file(label_out))
     ret = GiftiLabelAddPrefixOutputs(
-        label_out=execution.output_file(f"{label_out}"),
+        root=execution.output_file("."),
+        label_out=execution.output_file(f"{pathlib.Path(label_out).stem}"),
     )
     execution.run(cargs)
     return ret

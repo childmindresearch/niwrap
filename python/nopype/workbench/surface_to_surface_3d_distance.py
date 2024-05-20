@@ -18,6 +18,8 @@ class SurfaceToSurface3dDistanceOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_to_surface_3d_distance(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     dists_out: OutputPathType
     """the output distances"""
 
@@ -55,7 +57,8 @@ def surface_to_surface_3d_distance(
     if opt_vectors:
         cargs.append("-vectors")
     ret = SurfaceToSurface3dDistanceOutputs(
-        dists_out=execution.output_file(f"{dists_out}"),
+        root=execution.output_file("."),
+        dists_out=execution.output_file(f"{pathlib.Path(dists_out).stem}"),
     )
     execution.run(cargs)
     return ret

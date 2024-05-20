@@ -18,6 +18,8 @@ class ProbtrackxDotConvertOutputs(typing.NamedTuple):
     """
     Output object returned when calling `probtrackx_dot_convert(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti file"""
 
@@ -110,7 +112,8 @@ def probtrackx_dot_convert(
     if opt_make_symmetric:
         cargs.append("-make-symmetric")
     ret = ProbtrackxDotConvertOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

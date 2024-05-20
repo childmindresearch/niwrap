@@ -18,6 +18,8 @@ class NiftiInformationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `nifti_information(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def nifti_information(
@@ -53,6 +55,7 @@ def nifti_information(
     if opt_print_xml:
         cargs.append("-print-xml")
     ret = NiftiInformationOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

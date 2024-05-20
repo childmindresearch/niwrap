@@ -18,6 +18,8 @@ class V3dAutomaskOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3d_automask(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     brain_file: OutputPathType
     """Output file from 3dautomask."""
     out_file: OutputPathType
@@ -75,8 +77,9 @@ def v_3d_automask(
     if outputtype is not None:
         cargs.append(outputtype)
     ret = V3dAutomaskOutputs(
-        brain_file=execution.output_file(f"{in_file}_masked", optional=True),
-        out_file=execution.output_file(f"{in_file}_mask", optional=True),
+        root=execution.output_file("."),
+        brain_file=execution.output_file(f"{pathlib.Path(in_file).stem}_masked", optional=True),
+        out_file=execution.output_file(f"{pathlib.Path(in_file).stem}_mask", optional=True),
         brain_file_=execution.output_file(f"brain_file", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),
     )

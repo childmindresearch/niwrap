@@ -18,6 +18,8 @@ class MetricRoisFromExtremaOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_rois_from_extrema(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric file"""
 
@@ -79,7 +81,8 @@ def metric_rois_from_extrema(
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     ret = MetricRoisFromExtremaOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class MetricPaletteOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_palette(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def metric_palette(
@@ -147,6 +149,7 @@ def metric_palette(
     if opt_inversion_type is not None:
         cargs.extend(["-inversion", opt_inversion_type])
     ret = MetricPaletteOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class AtroposOutputs(typing.NamedTuple):
     """
     Output object returned when calling `atropos(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     classified_image: OutputPathType
     """No description provided."""
     posteriors: OutputPathType
@@ -151,6 +153,7 @@ def atropos(
     if use_random_seed:
         cargs.append("--use-random-seed")
     ret = AtroposOutputs(
+        root=execution.output_file("."),
         classified_image=execution.output_file(f"classified_image", optional=True),
         posteriors=execution.output_file(f"posteriors", optional=True),
     )

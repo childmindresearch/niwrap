@@ -18,6 +18,8 @@ class AntsBrainExtractionShOutputs(typing.NamedTuple):
     """
     Output object returned when calling `ants_brain_extraction_sh(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     brain_extracted_image: OutputPathType
     """Brain extracted image"""
     brain_mask: OutputPathType
@@ -106,6 +108,7 @@ def ants_brain_extraction_sh(
     if output_prefix is not None:
         cargs.append(output_prefix)
     ret = AntsBrainExtractionShOutputs(
+        root=execution.output_file("."),
         brain_extracted_image=execution.output_file(f"{output_prefix}BrainExtractionBrain.nii.gz"),
         brain_mask=execution.output_file(f"{output_prefix}BrainExtractionMask.nii.gz"),
         brain_probability_mask=execution.output_file(f"{output_prefix}BrainExtractionPrior0GenericAffine.mat"),

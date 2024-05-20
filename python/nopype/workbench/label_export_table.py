@@ -18,6 +18,8 @@ class LabelExportTableOutputs(typing.NamedTuple):
     """
     Output object returned when calling `label_export_table(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def label_export_table(
@@ -45,6 +47,7 @@ def label_export_table(
     cargs.append(execution.input_file(label_in))
     cargs.append(table_out)
     ret = LabelExportTableOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

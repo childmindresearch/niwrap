@@ -18,6 +18,8 @@ class EstimateFiberBinghamsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `estimate_fiber_binghams(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti fiber distributons file"""
 
@@ -110,7 +112,8 @@ def estimate_fiber_binghams(
     cargs.append(execution.input_file(label_volume))
     cargs.append(execution.input_file(cifti_out))
     ret = EstimateFiberBinghamsOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class SetMapNamesOutputs(typing.NamedTuple):
     """
     Output object returned when calling `set_map_names(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def set_map_names(
@@ -54,6 +56,7 @@ def set_map_names(
     if opt_from_data_file_file is not None:
         cargs.extend(["-from-data-file", opt_from_data_file_file])
     ret = SetMapNamesOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

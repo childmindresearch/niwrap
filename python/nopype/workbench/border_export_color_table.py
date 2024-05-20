@@ -18,6 +18,8 @@ class BorderExportColorTableOutputs(typing.NamedTuple):
     """
     Output object returned when calling `border_export_color_table(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def border_export_color_table(
@@ -51,6 +53,7 @@ def border_export_color_table(
     if opt_class_colors:
         cargs.append("-class-colors")
     ret = BorderExportColorTableOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

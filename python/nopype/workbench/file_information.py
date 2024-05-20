@@ -18,6 +18,8 @@ class FileInformationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `file_information(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def file_information(
@@ -121,6 +123,7 @@ def file_information(
     if opt_czi_xml:
         cargs.append("-czi-xml")
     ret = FileInformationOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

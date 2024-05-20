@@ -18,6 +18,8 @@ class SurfaceAffineRegressionOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_affine_regression(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def surface_affine_regression(
@@ -51,6 +53,7 @@ def surface_affine_regression(
     cargs.append(execution.input_file(target))
     cargs.append(affine_out)
     ret = SurfaceAffineRegressionOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class SurfaceClosestVertexOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_closest_vertex(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def surface_closest_vertex(
@@ -52,6 +54,7 @@ def surface_closest_vertex(
     cargs.append(coord_list_file)
     cargs.append(vertex_list_out)
     ret = SurfaceClosestVertexOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

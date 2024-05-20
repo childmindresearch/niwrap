@@ -18,6 +18,8 @@ class FiberDotProductsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `fiber_dot_products(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     dot_metric: OutputPathType
     """the metric of dot products"""
     f_metric: OutputPathType
@@ -68,8 +70,9 @@ def fiber_dot_products(
     cargs.append(execution.input_file(dot_metric))
     cargs.append(execution.input_file(f_metric))
     ret = FiberDotProductsOutputs(
-        dot_metric=execution.output_file(f"{dot_metric}"),
-        f_metric=execution.output_file(f"{f_metric}"),
+        root=execution.output_file("."),
+        dot_metric=execution.output_file(f"{pathlib.Path(dot_metric).stem}"),
+        f_metric=execution.output_file(f"{pathlib.Path(f_metric).stem}"),
     )
     execution.run(cargs)
     return ret

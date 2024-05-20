@@ -18,6 +18,8 @@ class VolumeWeightedStatsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_weighted_stats(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def volume_weighted_stats(
@@ -86,6 +88,7 @@ def volume_weighted_stats(
     if opt_show_map_name:
         cargs.append("-show-map-name")
     ret = VolumeWeightedStatsOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

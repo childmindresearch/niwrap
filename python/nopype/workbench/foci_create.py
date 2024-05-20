@@ -18,6 +18,8 @@ class FociCreateOutputs(typing.NamedTuple):
     """
     Output object returned when calling `foci_create(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output foci file"""
 
@@ -60,7 +62,8 @@ def foci_create(
     cargs.append("-foci-create")
     cargs.append(execution.input_file(output))
     ret = FociCreateOutputs(
-        output=execution.output_file(f"{output}"),
+        root=execution.output_file("."),
+        output=execution.output_file(f"{pathlib.Path(output).stem}"),
     )
     execution.run(cargs)
     return ret

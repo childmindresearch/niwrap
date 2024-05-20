@@ -18,6 +18,8 @@ class ApplywarpOutputs(typing.NamedTuple):
     """
     Output object returned when calling `applywarp(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file_outfile: OutputPathType
     """Warped output file."""
 
@@ -117,7 +119,8 @@ def applywarp(
     if supersample:
         cargs.append("--super")
     ret = ApplywarpOutputs(
-        out_file_outfile=execution.output_file(f"{out_file}", optional=True),
+        root=execution.output_file("."),
+        out_file_outfile=execution.output_file(f"{pathlib.Path(out_file).stem}", optional=True),
     )
     execution.run(cargs)
     return ret

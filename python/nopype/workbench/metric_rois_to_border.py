@@ -18,6 +18,8 @@ class MetricRoisToBorderOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_rois_to_border(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     border_out: OutputPathType
     """the output border file"""
 
@@ -63,7 +65,8 @@ def metric_rois_to_border(
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     ret = MetricRoisToBorderOutputs(
-        border_out=execution.output_file(f"{border_out}"),
+        root=execution.output_file("."),
+        border_out=execution.output_file(f"{pathlib.Path(border_out).stem}"),
     )
     execution.run(cargs)
     return ret

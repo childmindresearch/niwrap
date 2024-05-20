@@ -18,6 +18,8 @@ class LabelErodeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `label_erode(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     label_out: OutputPathType
     """the output label file"""
 
@@ -72,7 +74,8 @@ def label_erode(
     if opt_corrected_areas_area_metric is not None:
         cargs.extend(["-corrected-areas", execution.input_file(opt_corrected_areas_area_metric)])
     ret = LabelErodeOutputs(
-        label_out=execution.output_file(f"{label_out}"),
+        root=execution.output_file("."),
+        label_out=execution.output_file(f"{pathlib.Path(label_out).stem}"),
     )
     execution.run(cargs)
     return ret

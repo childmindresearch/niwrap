@@ -18,6 +18,8 @@ class CiftiPairwiseCorrelationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_pairwise_correlation(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti file"""
 
@@ -59,7 +61,8 @@ def cifti_pairwise_correlation(
     if opt_override_mapping_check:
         cargs.append("-override-mapping-check")
     ret = CiftiPairwiseCorrelationOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

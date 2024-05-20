@@ -18,6 +18,8 @@ class FlirtOutputs(typing.NamedTuple):
     """
     Output object returned when calling `flirt(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Registered output file."""
     out_matrix_file: OutputPathType
@@ -240,8 +242,9 @@ def flirt(
                 return s[: -len(postfix)]
         return s
     ret = FlirtOutputs(
-        out_file=execution.output_file(f"{_rstrip(in_file, ['.nii.gz', '.nii'])}_flirt.nii", optional=True),
-        out_matrix_file=execution.output_file(f"{_rstrip(in_file, ['.nii.gz', '.nii'])}_flirt.mat", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{_rstrip(pathlib.Path(in_file).stem, ['.nii.gz', '.nii'])}_flirt.nii", optional=True),
+        out_matrix_file=execution.output_file(f"{_rstrip(pathlib.Path(in_file).stem, ['.nii.gz', '.nii'])}_flirt.mat", optional=True),
     )
     execution.run(cargs)
     return ret

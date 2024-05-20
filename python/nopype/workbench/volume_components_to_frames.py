@@ -18,6 +18,8 @@ class VolumeComponentsToFramesOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_components_to_frames(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the input volume converted to multiple frames of scalar type"""
 
@@ -47,7 +49,8 @@ def volume_components_to_frames(
     cargs.append(execution.input_file(input_))
     cargs.append(execution.input_file(output))
     ret = VolumeComponentsToFramesOutputs(
-        output=execution.output_file(f"{output}"),
+        root=execution.output_file("."),
+        output=execution.output_file(f"{pathlib.Path(output).stem}"),
     )
     execution.run(cargs)
     return ret

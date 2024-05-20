@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 FNIRT_METADATA = Metadata(
-    id="75c8049d85c6ea94dec7bb97bb2e2bc6c55d290e",
+    id="d1491d495030412d180d0709226cf8d346e62753",
     name="fnirt",
     container_image_type="docker",
     container_image_tag="container/image",
@@ -18,6 +18,8 @@ class FnirtOutputs(typing.NamedTuple):
     """
     Output object returned when calling `fnirt(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     field_file_outfile: OutputPathType
     """File with warp field."""
     fieldcoeff_file_outfile: OutputPathType
@@ -42,9 +44,9 @@ def fnirt(
     config_file: typing.Literal["T1_2_MNI152_2mm", "FA_2_FMRIB58_1mm"] | None = None,
     field_file: InputPathType | None = None,
     fieldcoeff_file: InputPathType | None = None,
-    jacobian_file: bool = False,
+    jacobian_file: InputPathType | None = None,
     log_file: InputPathType | None = None,
-    modulatedref_file: bool = False,
+    modulatedref_file: str | None = None,
     refmask_file: InputPathType | None = None,
     warped_file: InputPathType | None = None,
 ) -> FnirtOutputs:
@@ -61,8 +63,8 @@ def fnirt(
         field_file: file. Name of output file with field.
         fieldcoeff_file: string representing a file. Name of output file with
             field coefficients.
-        jacobian_file: A boolean or file. Name of file for writing out the
-            jacobian of the field (for diagnostic or vbm purposes).
+        jacobian_file: A file. Name of file for writing out the jacobian of the
+            field (for diagnostic or vbm purposes).
         log_file: Name of log-file.
         modulatedref_file: string representing a file. Name of file for writing
             out intensity modulated --ref (for diagnostic purposes).
@@ -84,25 +86,26 @@ def fnirt(
     if fieldcoeff_file is not None:
         cargs.append(("--cout=" + execution.input_file(fieldcoeff_file)))
     cargs.append(("--in=" + execution.input_file(in_file)))
-    if jacobian_file:
-        cargs.append("--jout")
+    if jacobian_file is not None:
+        cargs.append(("--jout=" + execution.input_file(jacobian_file)))
     if log_file is not None:
         cargs.append(("--logout=" + execution.input_file(log_file)))
-    if modulatedref_file:
-        cargs.append("--refout")
+    if modulatedref_file is not None:
+        cargs.append(("--refout=" + modulatedref_file))
     cargs.append(("--ref=" + execution.input_file(ref_file)))
     if refmask_file is not None:
         cargs.append(("--refmask=" + execution.input_file(refmask_file)))
     if warped_file is not None:
         cargs.append(("--iout=" + execution.input_file(warped_file)))
     ret = FnirtOutputs(
-        field_file_outfile=execution.output_file(f"{field_file}.nii.gz", optional=True),
-        fieldcoeff_file_outfile=execution.output_file(f"{fieldcoeff_file}.nii.gz", optional=True),
-        jacobian_file_outfile=execution.output_file(f"{jacobian_file}.mat", optional=True),
-        log_file_outfile=execution.output_file(f"{log_file}.txt", optional=True),
+        root=execution.output_file("."),
+        field_file_outfile=execution.output_file(f"{pathlib.Path(field_file).stem}.nii.gz", optional=True),
+        fieldcoeff_file_outfile=execution.output_file(f"{pathlib.Path(fieldcoeff_file).stem}.nii.gz", optional=True),
+        jacobian_file_outfile=execution.output_file(f"{pathlib.Path(jacobian_file).stem}.mat", optional=True),
+        log_file_outfile=execution.output_file(f"{pathlib.Path(log_file).stem}.txt", optional=True),
         modulatedref_file_outfile=execution.output_file(f"{modulatedref_file}.nii.gz", optional=True),
         out_intensitymap_file_outfile=execution.output_file(f"[OUT_INTENSITYMAP_FILE]", optional=True),
-        warped_file_outfile=execution.output_file(f"{warped_file}.nii.gz", optional=True),
+        warped_file_outfile=execution.output_file(f"{pathlib.Path(warped_file).stem}.nii.gz", optional=True),
     )
     execution.run(cargs)
     return ret

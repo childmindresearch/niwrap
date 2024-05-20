@@ -18,6 +18,8 @@ class SurfaceCutResampleOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_cut_resample(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     surface_out: OutputPathType
     """the output surface file"""
 
@@ -56,7 +58,8 @@ def surface_cut_resample(
     cargs.append(execution.input_file(new_sphere))
     cargs.append(execution.input_file(surface_out))
     ret = SurfaceCutResampleOutputs(
-        surface_out=execution.output_file(f"{surface_out}"),
+        root=execution.output_file("."),
+        surface_out=execution.output_file(f"{pathlib.Path(surface_out).stem}"),
     )
     execution.run(cargs)
     return ret

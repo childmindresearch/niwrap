@@ -18,6 +18,8 @@ class VolumeCopyExtensionsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_copy_extensions(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume"""
 
@@ -57,7 +59,8 @@ def volume_copy_extensions(
     if opt_drop_unknown:
         cargs.append("-drop-unknown")
     ret = VolumeCopyExtensionsOutputs(
-        volume_out=execution.output_file(f"{volume_out}"),
+        root=execution.output_file("."),
+        volume_out=execution.output_file(f"{pathlib.Path(volume_out).stem}"),
     )
     execution.run(cargs)
     return ret

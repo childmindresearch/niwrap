@@ -18,6 +18,8 @@ class CiftiFalseCorrelationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_false_correlation(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti dscalar file"""
 
@@ -75,7 +77,8 @@ def cifti_false_correlation(
     if opt_cerebellum_surface_surface is not None:
         cargs.extend(["-cerebellum-surface", execution.input_file(opt_cerebellum_surface_surface)])
     ret = CiftiFalseCorrelationOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

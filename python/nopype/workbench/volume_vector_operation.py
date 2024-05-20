@@ -18,6 +18,8 @@ class VolumeVectorOperationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_vector_operation(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output file"""
 
@@ -80,7 +82,8 @@ def volume_vector_operation(
     if opt_magnitude:
         cargs.append("-magnitude")
     ret = VolumeVectorOperationOutputs(
-        volume_out=execution.output_file(f"{volume_out}"),
+        root=execution.output_file("."),
+        volume_out=execution.output_file(f"{pathlib.Path(volume_out).stem}"),
     )
     execution.run(cargs)
     return ret

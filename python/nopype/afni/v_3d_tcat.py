@@ -18,6 +18,8 @@ class V3dTcatOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3d_tcat(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output image file name."""
     out_file_: OutputPathType
@@ -71,7 +73,8 @@ def v_3d_tcat(
     if verbose:
         cargs.append("-verb")
     ret = V3dTcatOutputs(
-        out_file=execution.output_file(f"{in_files}_tcat", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(in_files).stem}_tcat", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),
     )
     execution.run(cargs)

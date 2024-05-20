@@ -18,6 +18,8 @@ class FlameoOutputs(typing.NamedTuple):
     """
     Output object returned when calling `flameo(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     dummy_output: OutputPathType
     """Description missing"""
 
@@ -40,6 +42,7 @@ def flameo(
     cargs = []
     cargs.append("dummy")
     ret = FlameoOutputs(
+        root=execution.output_file("."),
         dummy_output=execution.output_file(f"dummy_output.txt"),
     )
     execution.run(cargs)

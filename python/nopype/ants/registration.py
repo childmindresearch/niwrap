@@ -1305,6 +1305,8 @@ class AntsRegistrationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `ants_registration(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     output_transform: OutputPathType
     """The output transform file."""
 
@@ -1499,6 +1501,7 @@ def ants_registration(
     if verbose is not None:
         cargs.extend(["-v", str(verbose)])
     ret = AntsRegistrationOutputs(
+        root=execution.output_file("."),
         output_transform=execution.output_file(f"{output}"),
     )
     execution.run(cargs)

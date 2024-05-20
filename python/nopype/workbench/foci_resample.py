@@ -18,6 +18,8 @@ class FociResampleOutputs(typing.NamedTuple):
     """
     Output object returned when calling `foci_resample(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     foci_out: OutputPathType
     """the output foci file"""
 
@@ -60,7 +62,8 @@ def foci_resample(
     if opt_restore_xyz:
         cargs.append("-restore-xyz")
     ret = FociResampleOutputs(
-        foci_out=execution.output_file(f"{foci_out}"),
+        root=execution.output_file("."),
+        foci_out=execution.output_file(f"{pathlib.Path(foci_out).stem}"),
     )
     execution.run(cargs)
     return ret

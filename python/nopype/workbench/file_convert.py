@@ -18,6 +18,8 @@ class FileConvertOutputs(typing.NamedTuple):
     """
     Output object returned when calling `file_convert(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def file_convert(
@@ -40,6 +42,7 @@ def file_convert(
     cargs.append("wb_command")
     cargs.append("-file-convert")
     ret = FileConvertOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

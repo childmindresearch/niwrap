@@ -19,6 +19,8 @@ class McflirtOutputs(typing.NamedTuple):
     """
     Output object returned when calling `mcflirt(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     mat_file: OutputPathType
     """A list of items which are an existing file name. Transformation matrices."""
     mean_img: OutputPathType
@@ -134,13 +136,14 @@ def mcflirt(
     if use_gradient:
         cargs.append("-gdt")
     ret = McflirtOutputs(
+        root=execution.output_file("."),
         mat_file=execution.output_file(f"MAT_*", optional=True),
-        mean_img=execution.output_file(f"{out_file}_mean_reg.ext", optional=True),
-        out_file_outfile=execution.output_file(f"{out_file}", optional=True),
-        par_file=execution.output_file(f"{out_file}.par", optional=True),
-        rms_files=execution.output_file(f"{out_file}_*.rms", optional=True),
-        std_img=execution.output_file(f"{out_file}_sigma.ext", optional=True),
-        variance_img=execution.output_file(f"{out_file}_variance.ext", optional=True),
+        mean_img=execution.output_file(f"{pathlib.Path(out_file).stem}_mean_reg.ext", optional=True),
+        out_file_outfile=execution.output_file(f"{pathlib.Path(out_file).stem}", optional=True),
+        par_file=execution.output_file(f"{pathlib.Path(out_file).stem}.par", optional=True),
+        rms_files=execution.output_file(f"{pathlib.Path(out_file).stem}_*.rms", optional=True),
+        std_img=execution.output_file(f"{pathlib.Path(out_file).stem}_sigma.ext", optional=True),
+        variance_img=execution.output_file(f"{pathlib.Path(out_file).stem}_variance.ext", optional=True),
     )
     execution.run(cargs)
     return ret

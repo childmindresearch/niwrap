@@ -18,6 +18,8 @@ class BorderLengthOutputs(typing.NamedTuple):
     """
     Output object returned when calling `border_length(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def border_length(
@@ -64,6 +66,7 @@ def border_length(
     if opt_hide_border_name:
         cargs.append("-hide-border-name")
     ret = BorderLengthOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class V3dresampleOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3dresample(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output image file name."""
     out_file_: OutputPathType
@@ -74,7 +76,8 @@ def v_3dresample(
     if voxel_size is not None:
         cargs.extend(["-dxyz", *map(str, voxel_size)])
     ret = V3dresampleOutputs(
-        out_file=execution.output_file(f"{in_file}_resample", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(in_file).stem}_resample", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),
     )
     execution.run(cargs)

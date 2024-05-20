@@ -18,6 +18,8 @@ class MetadataRemoveProvenanceOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metadata_remove_provenance(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def metadata_remove_provenance(
@@ -44,6 +46,7 @@ def metadata_remove_provenance(
     cargs.append(input_file)
     cargs.append(output_file)
     ret = MetadataRemoveProvenanceOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

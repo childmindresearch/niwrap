@@ -18,6 +18,8 @@ class SurfaceGenerateInflatedOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_generate_inflated(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     inflated_surface_out: OutputPathType
     """the output inflated surface"""
     very_inflated_surface_out: OutputPathType
@@ -60,8 +62,9 @@ def surface_generate_inflated(
     if opt_iterations_scale_iterations_scale_value is not None:
         cargs.extend(["-iterations-scale", str(opt_iterations_scale_iterations_scale_value)])
     ret = SurfaceGenerateInflatedOutputs(
-        inflated_surface_out=execution.output_file(f"{inflated_surface_out}"),
-        very_inflated_surface_out=execution.output_file(f"{very_inflated_surface_out}"),
+        root=execution.output_file("."),
+        inflated_surface_out=execution.output_file(f"{pathlib.Path(inflated_surface_out).stem}"),
+        very_inflated_surface_out=execution.output_file(f"{pathlib.Path(very_inflated_surface_out).stem}"),
     )
     execution.run(cargs)
     return ret

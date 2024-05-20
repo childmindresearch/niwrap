@@ -18,6 +18,8 @@ class BackendAverageDenseRoiOutputs(typing.NamedTuple):
     """
     Output object returned when calling `backend_average_dense_roi(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def backend_average_dense_roi(
@@ -47,6 +49,7 @@ def backend_average_dense_roi(
     cargs.append(index_list)
     cargs.append(out_file)
     ret = BackendAverageDenseRoiOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

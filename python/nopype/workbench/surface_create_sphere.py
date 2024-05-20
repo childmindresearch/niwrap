@@ -18,6 +18,8 @@ class SurfaceCreateSphereOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_create_sphere(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     sphere_out: OutputPathType
     """the output sphere"""
 
@@ -56,7 +58,8 @@ def surface_create_sphere(
     cargs.append(str(num_vertices))
     cargs.append(execution.input_file(sphere_out))
     ret = SurfaceCreateSphereOutputs(
-        sphere_out=execution.output_file(f"{sphere_out}"),
+        root=execution.output_file("."),
+        sphere_out=execution.output_file(f"{pathlib.Path(sphere_out).stem}"),
     )
     execution.run(cargs)
     return ret

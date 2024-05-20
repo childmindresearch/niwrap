@@ -18,6 +18,8 @@ class V3drefitOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3drefit(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output file."""
 
@@ -135,6 +137,7 @@ def v_3drefit(
     if zorigin is not None:
         cargs.extend(["-zorigin", zorigin])
     ret = V3drefitOutputs(
+        root=execution.output_file("."),
         out_file=execution.output_file(f"out_file", optional=True),
     )
     execution.run(cargs)

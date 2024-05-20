@@ -18,6 +18,8 @@ class ImageStatsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `image_stats(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_stat: OutputPathType
     """Any value. Stats output."""
 
@@ -70,6 +72,7 @@ def image_stats(
     if output_type is not None:
         cargs.append(output_type)
     ret = ImageStatsOutputs(
+        root=execution.output_file("."),
         out_stat=execution.output_file(f"out_stat", optional=True),
     )
     execution.run(cargs)

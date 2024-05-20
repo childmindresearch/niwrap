@@ -18,6 +18,8 @@ class CiftiConvertOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_convert(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def cifti_convert(
@@ -74,6 +76,7 @@ def cifti_convert(
     if opt_to_nifti_cifti_in is not None:
         cargs.extend(["-to-nifti", execution.input_file(opt_to_nifti_cifti_in)])
     ret = CiftiConvertOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

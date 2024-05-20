@@ -18,6 +18,8 @@ class V3dDespikeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3d_despike(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output file."""
 
@@ -42,7 +44,8 @@ def v_3d_despike(
     cargs.append(execution.input_file(in_file))
     cargs.append("[OUT_FILE]")
     ret = V3dDespikeOutputs(
-        out_file=execution.output_file(f"{in_file}", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(in_file).stem}", optional=True),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class CiftiCrossCorrelationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_cross_correlation(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti file"""
 
@@ -69,7 +71,8 @@ def cifti_cross_correlation(
     if opt_mem_limit_limit_gb is not None:
         cargs.extend(["-mem-limit", str(opt_mem_limit_limit_gb)])
     ret = CiftiCrossCorrelationOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

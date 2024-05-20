@@ -18,6 +18,8 @@ class MetricToVolumeMappingOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_to_volume_mapping(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume file"""
 
@@ -64,7 +66,8 @@ def metric_to_volume_mapping(
     if opt_nearest_vertex_distance is not None:
         cargs.extend(["-nearest-vertex", str(opt_nearest_vertex_distance)])
     ret = MetricToVolumeMappingOutputs(
-        volume_out=execution.output_file(f"{volume_out}"),
+        root=execution.output_file("."),
+        volume_out=execution.output_file(f"{pathlib.Path(volume_out).stem}"),
     )
     execution.run(cargs)
     return ret

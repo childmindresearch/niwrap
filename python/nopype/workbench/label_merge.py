@@ -18,6 +18,8 @@ class LabelMergeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `label_merge(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     label_out: OutputPathType
     """the output label"""
 
@@ -56,7 +58,8 @@ def label_merge(
     if opt_label_label_in is not None:
         cargs.extend(["-label", execution.input_file(opt_label_label_in)])
     ret = LabelMergeOutputs(
-        label_out=execution.output_file(f"{label_out}"),
+        root=execution.output_file("."),
+        label_out=execution.output_file(f"{pathlib.Path(label_out).stem}"),
     )
     execution.run(cargs)
     return ret

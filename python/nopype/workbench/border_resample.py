@@ -18,6 +18,8 @@ class BorderResampleOutputs(typing.NamedTuple):
     """
     Output object returned when calling `border_resample(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     border_out: OutputPathType
     """the output border file"""
 
@@ -56,7 +58,8 @@ def border_resample(
     cargs.append(execution.input_file(new_sphere))
     cargs.append(execution.input_file(border_out))
     ret = BorderResampleOutputs(
-        border_out=execution.output_file(f"{border_out}"),
+        root=execution.output_file("."),
+        border_out=execution.output_file(f"{pathlib.Path(border_out).stem}"),
     )
     execution.run(cargs)
     return ret

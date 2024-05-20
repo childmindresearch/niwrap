@@ -18,6 +18,8 @@ class V3dTcorr1DOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3d_tcorr1_d(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output filename prefix."""
     out_file_: OutputPathType
@@ -89,7 +91,8 @@ def v_3d_tcorr1_d(
     if outputtype is not None:
         cargs.append(outputtype)
     ret = V3dTcorr1DOutputs(
-        out_file=execution.output_file(f"{xset}_correlation.nii.gz", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(xset).stem}_correlation.nii.gz", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),
     )
     execution.run(cargs)

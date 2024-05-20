@@ -18,6 +18,8 @@ class SurfaceGeodesicDistanceAllToAllOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_geodesic_distance_all_to_all(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """single-hemisphere dconn containing the distances"""
 
@@ -83,7 +85,8 @@ def surface_geodesic_distance_all_to_all(
     if opt_naive:
         cargs.append("-naive")
     ret = SurfaceGeodesicDistanceAllToAllOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

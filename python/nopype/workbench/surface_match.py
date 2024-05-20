@@ -18,6 +18,8 @@ class SurfaceMatchOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_match(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def surface_match(
@@ -48,6 +50,7 @@ def surface_match(
     cargs.append(execution.input_file(input_surface_file))
     cargs.append(output_surface_name)
     ret = SurfaceMatchOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

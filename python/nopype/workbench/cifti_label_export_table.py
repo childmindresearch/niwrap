@@ -18,6 +18,8 @@ class CiftiLabelExportTableOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_label_export_table(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def cifti_label_export_table(
@@ -48,6 +50,7 @@ def cifti_label_export_table(
     cargs.append(map_)
     cargs.append(table_out)
     ret = CiftiLabelExportTableOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

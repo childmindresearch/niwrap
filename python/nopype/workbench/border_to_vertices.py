@@ -18,6 +18,8 @@ class BorderToVerticesOutputs(typing.NamedTuple):
     """
     Output object returned when calling `border_to_vertices(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric file"""
 
@@ -54,7 +56,8 @@ def border_to_vertices(
     if opt_border_name is not None:
         cargs.extend(["-border", opt_border_name])
     ret = BorderToVerticesOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

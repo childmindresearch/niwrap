@@ -18,6 +18,8 @@ class CiftiReorderOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_reorder(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the reordered cifti file"""
 
@@ -59,7 +61,8 @@ def cifti_reorder(
     cargs.append(reorder_list)
     cargs.append(execution.input_file(cifti_out))
     ret = CiftiReorderOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class LabelProbabilityOutputs(typing.NamedTuple):
     """
     Output object returned when calling `label_probability(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     probability_metric_out: OutputPathType
     """the relative frequencies of each label at each vertex"""
 
@@ -54,7 +56,8 @@ def label_probability(
     if opt_exclude_unlabeled:
         cargs.append("-exclude-unlabeled")
     ret = LabelProbabilityOutputs(
-        probability_metric_out=execution.output_file(f"{probability_metric_out}"),
+        root=execution.output_file("."),
+        probability_metric_out=execution.output_file(f"{pathlib.Path(probability_metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

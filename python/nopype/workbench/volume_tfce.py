@@ -18,6 +18,8 @@ class VolumeTfceOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_tfce(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume"""
 
@@ -78,7 +80,8 @@ def volume_tfce(
     if opt_subvolume_subvolume is not None:
         cargs.extend(["-subvolume", opt_subvolume_subvolume])
     ret = VolumeTfceOutputs(
-        volume_out=execution.output_file(f"{volume_out}"),
+        root=execution.output_file("."),
+        volume_out=execution.output_file(f"{pathlib.Path(volume_out).stem}"),
     )
     execution.run(cargs)
     return ret

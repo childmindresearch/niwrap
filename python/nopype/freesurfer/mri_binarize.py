@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 MRI_BINARIZE_METADATA = Metadata(
-    id="a4e79d079b2da4f0240163e0efbfdb406414c795",
+    id="ff8383ab748feefab4beb7a1b820c6284bf0c1e2",
     name="mri binarize",
     container_image_type="docker",
     container_image_tag="container/image",
@@ -18,10 +18,10 @@ class MriBinarizeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `mri_binarize(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     binary_file_outfile: OutputPathType
     """Binarized output volume."""
-    count_file_outfile: OutputPathType
-    """Ascii file containing number of hits."""
 
 
 def mri_binarize(
@@ -201,8 +201,8 @@ def mri_binarize(
     if zero_slice_edge:
         cargs.append("--zero-slice-edges")
     ret = MriBinarizeOutputs(
-        binary_file_outfile=execution.output_file(f"{binary_file}", optional=True),
-        count_file_outfile=execution.output_file(f"{count_file}.txt", optional=True),
+        root=execution.output_file("."),
+        binary_file_outfile=execution.output_file(f"{pathlib.Path(binary_file).stem}", optional=True),
     )
     execution.run(cargs)
     return ret

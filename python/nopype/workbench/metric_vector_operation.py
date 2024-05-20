@@ -18,6 +18,8 @@ class MetricVectorOperationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_vector_operation(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output file"""
 
@@ -80,7 +82,8 @@ def metric_vector_operation(
     if opt_magnitude:
         cargs.append("-magnitude")
     ret = MetricVectorOperationOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret
