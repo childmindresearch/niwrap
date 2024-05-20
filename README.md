@@ -16,6 +16,45 @@ This repository contains a collection of Boutiques descriptors for all command l
 - [Freesurfer wiki](https://surfer.nmr.mgh.harvard.edu/fswiki)
 - [AFNI documentation](https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/index.html)
 
+## Style guide
+
+### Output file prefixes
+
+Hardcode the output file names/prefixes in the descriptor.
+
+Exposing the output file prefixes as inputs in the descriptor will result in meaningless verbosity of the interface. Users will grab the output file paths from the output tuple so there is no value in being able to change them.
+
+Don't do this:
+
+```json
+{
+    "command-line": "tool [IN] [OUT]",
+    "inputs": [{
+        "id": "output_file_prefix",
+        "type": "string",
+        "value-key": "[OUT]",
+        "command-line-flag": "-o",
+        "optional": false
+    }],
+    "output-files": [{
+        "id": "output_file",
+        "path-template": "[OUT].nii.gz"
+    }]
+}
+```
+
+Do this:
+
+```json
+{
+    "command-line": "tool [IN] -o out",
+    "output-files": [{
+        "id": "output_file",
+        "path-template": "out.nii.gz"
+    }]
+}
+```
+
 ## VSCode JSON schema
 
 Add the following entry to your `./.vscode/settings.json` file to enable in-editor JSON schema validation for this project for VSCode.
