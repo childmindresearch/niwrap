@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 MRI_BINARIZE_METADATA = Metadata(
-    id="1d48d56c840a798d28630240a2526248656086ed",
+    id="a4e79d079b2da4f0240163e0efbfdb406414c795",
     name="mri binarize",
     container_image_type="docker",
     container_image_tag="container/image",
@@ -56,9 +56,9 @@ def mri_binarize(
     zero_slice_edge: bool = False,
 ) -> MriBinarizeOutputs:
     """
-    mri_binarize, as implemented in Nipype (module:
-    nipype.interfaces.freesurfer.model, interface: mri_binarize).
-    Use FreeSurfer mri_binarize to threshold an input volume
+    Program to binarize a volume (or volume-encoded surface file). Can also be used
+    to merge with other binarizations. Binarization can be done based on threshold
+    or on matched values.
     
     Args:
         runner: Command runner

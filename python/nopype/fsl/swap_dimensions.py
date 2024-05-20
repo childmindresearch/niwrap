@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 SWAP_DIMENSIONS_METADATA = Metadata(
-    id="f24e94bff374478fde43367eff82d52fa876b3d3",
+    id="33d08885dfdcaa07b997128f89ff9b23447bb9dd",
     name="SwapDimensions",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -34,12 +34,11 @@ def swap_dimensions(
     out_file: str | None = None,
 ) -> SwapDimensionsOutputs:
     """
-    SwapDimensions, as implemented in Nipype (module: nipype.interfaces.fsl,
-    interface: SwapDimensions).
-    Use fslswapdim to alter the orientation of an image.
-    This interface accepts a three-tuple corresponding to the new orientation.
-    You may either provide dimension ids in the form of (-)x, (-)y, or (-z), or
-    nifti-syle dimension codes (RL, LR, AP, PA, IS, SI).
+    this is an advanced tool that re-orders the data storage to permit changes
+    between axial, sagittal and coronal slicing. When used in this mode the same
+    left-right convention (also called coordinate handedness or
+    radiological/neurological convention) will be maintained as long as no warning
+    is printed.
     
     Args:
         runner: Command runner

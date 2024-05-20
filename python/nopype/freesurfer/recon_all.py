@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 RECON_ALL_METADATA = Metadata(
-    id="3b7d42a5a27134d3666b6a96685ce616d6d9f921",
+    id="ee663cac5173cb998300fb7b99af88242bc7dd39",
     name="ReconAll",
     container_image_type="docker",
     container_image_tag="container/image",
@@ -47,10 +47,7 @@ def recon_all(
     xopts: typing.Literal["use", "clean", "overwrite"] | None = None,
 ) -> ReconAllOutputs:
     """
-    ReconAll, as implemented in Nipype (module:
-    nipype.interfaces.freesurfer.preprocess, interface: ReconAll).
-    Uses recon-all to generate surfaces and parcellations of structural data
-    from anatomical images of a subject.
+    Performs all, or any part of, the FreeSurfer cortical reconstruction process.
     
     Args:
         runner: Command runner

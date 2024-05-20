@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 FNIRT_METADATA = Metadata(
-    id="86fa56260abb70199c45df4f7b2c704a62deccad",
+    id="75c8049d85c6ea94dec7bb97bb2e2bc6c55d290e",
     name="fnirt",
     container_image_type="docker",
     container_image_tag="container/image",
@@ -49,11 +49,7 @@ def fnirt(
     warped_file: InputPathType | None = None,
 ) -> FnirtOutputs:
     """
-    FNIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    FNIRT).
-    FSL FNIRT wrapper for non-linear registration
-    For complete details, see the `FNIRT Documentation.
-    <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT>`_
+    FSL non-linear registration
     
     Args:
         runner: Command runner

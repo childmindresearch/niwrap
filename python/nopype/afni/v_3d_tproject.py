@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_TPROJECT_METADATA = Metadata(
-    id="4574317b83608382b8ab96808a150aafbcffa71d",
+    id="6c89567bfec08b5cbc2237c1370d4b9cd4aba847",
     name="3dTproject",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -42,16 +42,11 @@ def v_3d_tproject(
     stopband: list[float | int] = None,
 ) -> V3dTprojectOutputs:
     """
-    3dTproject, as implemented in Nipype (module: nipype.interfaces.afni, interface:
-    TProject).
-    
-    This program projects (detrends) out various 'nuisance' time series from
-    each voxel in the input dataset. Note that all the projections are done via
-    linear regression, including the frequency-based options such as
-    ``-passband``. In this way, you can bandpass time-censored data, and at the
-    same time, remove other time series of no interest (e.g., physiological
-    estimates, motion parameters). Shifts voxel time series from input so that
-    separate slices are aligned to the same temporal origin.
+    This program projects (detrends) out various 'nuisance' time series from each
+    voxel in the input dataset. Note that all the projections are done via linear
+    regression, including the frequency-based options such as '-passband'. In this
+    way, you can bandpass time-censored data, and at the same time, remove other
+    time series of no interest (e.g., physiological estimates, motion parameters).
     
     Args:
         runner: Command runner

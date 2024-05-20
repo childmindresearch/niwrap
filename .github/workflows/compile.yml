@@ -45,5 +45,5 @@ jobs:
             mkdir -p python/nopype/
             poetry --directory styx run styx
             git add python/
-            git diff --quiet || git commit -m "Compile"
+            git diff --quiet HEAD || git commit -m "Compile"
             git push

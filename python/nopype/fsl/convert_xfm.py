@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 CONVERT_XFM_METADATA = Metadata(
-    id="222f751c82f9bc46bed0e86abade5828223e11ff",
+    id="48d9ebaa0f317be0039ff6ce316c83701317a1be",
     name="convert_xfm",
     container_image_type="docker",
     container_image_tag="fcp-indi/c-pac:nightly",
@@ -31,9 +31,10 @@ def convert_xfm(
     out_file: InputPathType | None = None,
 ) -> ConvertXfmOutputs:
     """
-    convert_xfm, as implemented in Nipype (module: nipype.interfaces.fsl.utils,
-    interface: ConvertXFM). Use the FSL utility convert_xfm to modify FLIRT
-    transformation matrices.
+    convert_xfm is a utility that is used to convert between different
+    transformation file formats. It can read and write ascii 4x4 matrices. In
+    addition, it can be used to concatenate two transforms (using -concat with the
+    second transform) or to find the inverse transformation (using -inverse).
     
     Args:
         runner: Command runner

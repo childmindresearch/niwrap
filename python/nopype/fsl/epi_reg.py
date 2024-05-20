@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 EPI_REG_METADATA = Metadata(
-    id="37cb7269b8203daa1607d21f01257d8871072881",
+    id="ee79285d198e01081af9b39a0df8f3c6c8438ad5",
     name="epi_reg",
     container_image_type="docker",
     container_image_tag="fcp-indi/c-pac:nightly",
@@ -65,9 +65,7 @@ def epi_reg(
     wmseg: InputPathType | None = None,
 ) -> EpiRegOutputs:
     """
-    epi_reg, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    EpiReg). Runs FSL epi_reg script for simultaneous coregistration and fieldmap
-    unwarping.
+    Runs FSL epi_reg script for simultaneous coregistration and fieldmap unwarping.
     
     Args:
         runner: Command runner

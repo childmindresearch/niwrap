@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_DESPIKE_METADATA = Metadata(
-    id="032f135d6190a0876b7bb73e9fdcce826b3c2f88",
+    id="f26825d96f198db6575668ac21d15d5619826051",
     name="3dDespike",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,11 +27,8 @@ def v_3d_despike(
     in_file: InputPathType,
 ) -> V3dDespikeOutputs:
     """
-    AFNI 3dDespike, as implemented in Nipype (module:
-    nipype.interfaces.afni.preprocess, interface: Despike).
-    Removes 'spikes' from the 3D+time input dataset
-    For complete details, see the `3dDespike Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDespike.html>`_
+    Removes 'spikes' from the 3D+time input dataset and writes a new dataset with
+    the spike values replaced by something more pleasing to the eye.
     
     Args:
         runner: Command runner

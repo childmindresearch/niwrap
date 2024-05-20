@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DCALC_METADATA = Metadata(
-    id="768a098ec7a5c7e26f7e0ed7bfd8944628785a4b",
+    id="51d63664df19d5ce9cfa8fe819a3a96c79c6650c",
     name="3dcalc",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -35,11 +35,7 @@ def v_3dcalc(
     stop_idx: int | None = None,
 ) -> V3dcalcOutputs:
     """
-    3dcalc, as implemented in Nipype (module: nipype.interfaces.afni.utils,
-    interface: Calc).
-    This program does voxel-by-voxel arithmetic on 3D datasets.
-    For complete details, see the `3dcalc Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcalc.html>`_
+    AFNI's calculator program.
     
     Args:
         runner: Command runner

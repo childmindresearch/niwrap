@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 MCFLIRT_METADATA = Metadata(
-    id="a50172792373f492eab1c8b09b1bfbb664b09dde",
+    id="c3e4c3ae27d26e48c70cea714c10eac0d4ffbf44",
     name="MCFLIRT",
     container_image_type="docker",
     container_image_index="index.docker.io",
@@ -59,8 +59,10 @@ def mcflirt(
     use_gradient: bool = False,
 ) -> McflirtOutputs:
     """
-    MCFLIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    MCFLIRT).
+    MCFLIRT is an intra-modal motion correction tool designed for use on fMRI time
+    series and based on optimization and registration techniques used in FLIRT, a
+    fully automated robust and accurate tool for linear (affine) inter- and
+    inter-modal brain image registration.
     
     Args:
         runner: Command runner

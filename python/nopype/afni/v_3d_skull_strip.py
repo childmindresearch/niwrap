@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_SKULL_STRIP_METADATA = Metadata(
-    id="30f74de7ba6470fad4f7b78ec10daf9e366e0a32",
+    id="007e686776f36f21fa2495fa88429784cca895ba",
     name="3dSkullStrip",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -31,12 +31,8 @@ def v_3d_skull_strip(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
 ) -> V3dSkullStripOutputs:
     """
-    SkullStrip, as implemented in Nipype (module: nipype.interfaces.afni, interface:
-    SkullStrip).
     A program to extract the brain from surrounding tissue from MRI T1-weighted
-    images. TODO Add optional arguments.
-    For complete details, see the `3dSkullStrip Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSkullStrip.html>`_
+    images.
     
     Args:
         runner: Command runner

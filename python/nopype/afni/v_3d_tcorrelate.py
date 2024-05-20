@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_TCORRELATE_METADATA = Metadata(
-    id="dad6ad860441568693af3dc276385260500f34ae",
+    id="b8f4eacf1b550e460e8daf02851bb7bde537653a",
     name="3dTCorrelate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -43,9 +43,7 @@ def v_3d_tcorrelate(
 ) -> V3dTcorrelateOutputs:
     """
     3dTCorrelate. Computes the correlation coefficient between corresponding voxel
-    time series in two input 3D+time datasets 'xset' and 'yset'. For complete
-    details, see the `3dTcorrelate Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorrelate.html>
+    time series in two input 3D+time datasets 'xset' and 'yset'.
     
     Args:
         runner: Command runner

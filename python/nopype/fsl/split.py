@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 SPLIT_METADATA = Metadata(
-    id="862ef8a3c22ea14581181f7076b9e56f4a7ac890",
+    id="cf36dea6bdf65684cffa0415751f7699357f5aea",
     name="Split",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -29,10 +29,7 @@ def split(
     dimension: typing.Literal["t", "x", "y", "z"] = "t",
 ) -> SplitOutputs:
     """
-    Split, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    Split).
-    Uses FSL Fslsplit command to separate a volume into images in time, x, y or
-    z dimension.
+    split a 4D file into lots of 3D files (eg for inputting to SPM).
     
     Args:
         runner: Command runner

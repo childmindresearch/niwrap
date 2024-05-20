@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 BET_METADATA = Metadata(
-    id="7b21286ae19235bb781d12a64a8845b6d94b93ee",
+    id="a82c114929d9dd7ec1c55558ac12d78b41062a71",
     name="bet",
     container_image_type="docker",
     container_image_index="index.docker.io",

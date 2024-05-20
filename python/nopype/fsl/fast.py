@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 FAST_METADATA = Metadata(
-    id="5bfc2c134152d012a7efb4a14d50c3f1450fa269",
+    id="6c4007fce6c62e5ece23b7d2a4fa8f1f973768c7",
     name="FAST",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -63,10 +63,15 @@ def fast(
     probability_maps: bool = False,
 ) -> FastOutputs:
     """
-    FAST, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FAST).
-    FSL FAST wrapper for segmentation and bias correction
-    For complete details, see the `FAST Documentation.
-    <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FAST>`_
+    FAST (FMRIB's Automated Segmentation Tool) segments a 3D image of the brain into
+    different tissue types (Grey Matter, White Matter, CSF, etc.), whilst also
+    correcting for spatial intensity variations (also known as bias field or RF
+    inhomogeneities). The underlying method is based on a hidden Markov random field
+    model and an associated Expectation-Maximization algorithm. The whole process is
+    fully automated and can also produce a bias field-corrected input image and a
+    probabilistic and/or partial volume tissue segmentation. It is robust and
+    reliable, compared to most finite mixture model-based methods, which are
+    sensitive to noise.
     
     Args:
         runner: Command runner
