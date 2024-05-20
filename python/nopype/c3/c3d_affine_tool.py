@@ -20,11 +20,11 @@ class C3dAffineToolOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    itk_transform_outfile: OutputPathType
+    itk_transform_outfile: OutputPathType | None
     """Output ITK transform file."""
-    irtk_transform_outfile: OutputPathType
+    irtk_transform_outfile: OutputPathType | None
     """Output IRTK transform file."""
-    matrix_transform_outfile: OutputPathType
+    matrix_transform_outfile: OutputPathType | None
     """Write output matrix."""
 
 
@@ -112,9 +112,9 @@ def c3d_affine_tool(
         cargs.append("-info-full")
     ret = C3dAffineToolOutputs(
         root=execution.output_file("."),
-        itk_transform_outfile=execution.output_file(f"{out_itk_transform}.txt", optional=True),
-        irtk_transform_outfile=execution.output_file(f"{out_irtk_transform}.dof", optional=True),
-        matrix_transform_outfile=execution.output_file(f"{out_matfile}.mat", optional=True),
+        itk_transform_outfile=execution.output_file(f"{out_itk_transform}.txt", optional=True) if out_itk_transform is not None else None,
+        irtk_transform_outfile=execution.output_file(f"{out_irtk_transform}.dof", optional=True) if out_irtk_transform is not None else None,
+        matrix_transform_outfile=execution.output_file(f"{out_matfile}.mat", optional=True) if out_matfile is not None else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DMASK_TOOL_METADATA = Metadata(
-    id="56fe502e82c965e3e9e167330f352c57a171d14f",
+    id="b1e1ee405dbd76821fd01f1dd30c63652b4b4af3",
     name="3dmask_tool",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -28,7 +28,7 @@ class V3dmaskToolOutputs(typing.NamedTuple):
 
 def v_3dmask_tool(
     runner: Runner,
-    in_file: list[InputPathType],
+    in_file: InputPathType,
     count: bool = False,
     datum: typing.Literal["byte", "short", "float"] | None = None,
     dilate_inputs: str | None = None,
@@ -51,7 +51,7 @@ def v_3dmask_tool(
     
     Args:
         runner: Command runner
-        in_file: Input file or files to 3dmask_tool.
+        in_file: Input file to 3dmask_tool.
         count: Instead of created a binary 0/1 mask dataset, create one with
             counts of voxel overlap, i.e., each voxel will contain the number of
             masks that it is set in.
@@ -81,7 +81,7 @@ def v_3dmask_tool(
     cargs.append("3dmask_tool")
     if count:
         cargs.append("-count")
-    cargs.extend(["-input", *[execution.input_file(f) for f in in_file]])
+    cargs.extend(["-input", execution.input_file(in_file)])
     cargs.append("[ARGS]")
     if datum is not None:
         cargs.extend(["-datum", datum])

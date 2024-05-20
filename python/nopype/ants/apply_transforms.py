@@ -20,7 +20,7 @@ class ApplyTransformsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_image_outfile: OutputPathType
+    output_image_outfile: OutputPathType | None
     """Warped image."""
 
 
@@ -122,7 +122,7 @@ def apply_transforms(
     cargs.extend([execution.input_file(f) for f in transforms])
     ret = ApplyTransformsOutputs(
         root=execution.output_file("."),
-        output_image_outfile=execution.output_file(f"{output_image}", optional=True),
+        output_image_outfile=execution.output_file(f"{output_image}", optional=True) if output_image is not None else None,
     )
     execution.run(cargs)
     return ret

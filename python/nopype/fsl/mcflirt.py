@@ -23,17 +23,17 @@ class McflirtOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     mat_file: OutputPathType
     """A list of items which are an existing file name. Transformation matrices."""
-    mean_img: OutputPathType
+    mean_img: OutputPathType | None
     """Mean timeseries image (if mean_vol=true)."""
-    out_file_outfile: OutputPathType
+    out_file_outfile: OutputPathType | None
     """Motion-corrected timeseries."""
-    par_file: OutputPathType
+    par_file: OutputPathType | None
     """Text-file with motion parameters."""
-    rms_files: OutputPathType
+    rms_files: OutputPathType | None
     """A list of items which are an existing file name. Absolute and relative displacement parameters."""
-    std_img: OutputPathType
+    std_img: OutputPathType | None
     """Standard deviation image."""
-    variance_img: OutputPathType
+    variance_img: OutputPathType | None
     """Variance image."""
 
 
@@ -138,12 +138,12 @@ def mcflirt(
     ret = McflirtOutputs(
         root=execution.output_file("."),
         mat_file=execution.output_file(f"MAT_*", optional=True),
-        mean_img=execution.output_file(f"{pathlib.Path(out_file).stem}_mean_reg.ext", optional=True),
-        out_file_outfile=execution.output_file(f"{pathlib.Path(out_file).stem}", optional=True),
-        par_file=execution.output_file(f"{pathlib.Path(out_file).stem}.par", optional=True),
-        rms_files=execution.output_file(f"{pathlib.Path(out_file).stem}_*.rms", optional=True),
-        std_img=execution.output_file(f"{pathlib.Path(out_file).stem}_sigma.ext", optional=True),
-        variance_img=execution.output_file(f"{pathlib.Path(out_file).stem}_variance.ext", optional=True),
+        mean_img=execution.output_file(f"{pathlib.Path(out_file).stem}_mean_reg.ext", optional=True) if out_file is not None else None,
+        out_file_outfile=execution.output_file(f"{pathlib.Path(out_file).stem}", optional=True) if out_file is not None else None,
+        par_file=execution.output_file(f"{pathlib.Path(out_file).stem}.par", optional=True) if out_file is not None else None,
+        rms_files=execution.output_file(f"{pathlib.Path(out_file).stem}_*.rms", optional=True) if out_file is not None else None,
+        std_img=execution.output_file(f"{pathlib.Path(out_file).stem}_sigma.ext", optional=True) if out_file is not None else None,
+        variance_img=execution.output_file(f"{pathlib.Path(out_file).stem}_variance.ext", optional=True) if out_file is not None else None,
     )
     execution.run(cargs)
     return ret

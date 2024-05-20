@@ -20,7 +20,7 @@ class OverlayOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file_outfile: OutputPathType
+    out_file_outfile: OutputPathType | None
     """Combined image volume."""
 
 
@@ -116,7 +116,7 @@ def overlay(
         cargs.append(output_type)
     ret = OverlayOutputs(
         root=execution.output_file("."),
-        out_file_outfile=execution.output_file(f"{pathlib.Path(out_file).stem}", optional=True),
+        out_file_outfile=execution.output_file(f"{pathlib.Path(out_file).stem}", optional=True) if out_file is not None else None,
     )
     execution.run(cargs)
     return ret

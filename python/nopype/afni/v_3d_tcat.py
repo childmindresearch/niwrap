@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_TCAT_METADATA = Metadata(
-    id="903c68a2e804c65264f0fb8c33a808c8721d2afd",
+    id="f4dc93c54d278c0a1c7a65754d9c9459a8db0776",
     name="3dTcat",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -28,7 +28,7 @@ class V3dTcatOutputs(typing.NamedTuple):
 
 def v_3d_tcat(
     runner: Runner,
-    in_files: list[InputPathType],
+    in_files: InputPathType,
     num_threads: int | None = 1,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     rlt: typing.Literal["", "+", "++"] | None = None,
@@ -62,7 +62,7 @@ def v_3d_tcat(
     cargs.append("3dTcat")
     if rlt is not None:
         cargs.extend(["-rlt", rlt])
-    cargs.extend(["", *[execution.input_file(f) for f in in_files]])
+    cargs.extend(["", execution.input_file(in_files)])
     cargs.append("[ARGS]")
     cargs.append("[ENVIRON]")
     if num_threads is not None:

@@ -1307,7 +1307,7 @@ class AntsRegistrationOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_transform: OutputPathType
+    output_transform: OutputPathType | None
     """The output transform file."""
 
 
@@ -1502,7 +1502,7 @@ def ants_registration(
         cargs.extend(["-v", str(verbose)])
     ret = AntsRegistrationOutputs(
         root=execution.output_file("."),
-        output_transform=execution.output_file(f"{output}"),
+        output_transform=execution.output_file(f"{output}") if output is not None else None,
     )
     execution.run(cargs)
     return ret

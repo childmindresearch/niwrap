@@ -22,7 +22,7 @@ class GlmOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Filename for glm parameter estimates (glm betas)."""
-    out_cope_outfile: OutputPathType
+    out_cope_outfile: OutputPathType | None
     """Output file name for copes (either as text file or image)."""
     out_data: OutputPathType
     """Output file for preprocessed data."""
@@ -163,7 +163,7 @@ def glm(
     ret = GlmOutputs(
         root=execution.output_file("."),
         out_file=execution.output_file(f"{pathlib.Path(in_file).stem}_glm", optional=True),
-        out_cope_outfile=execution.output_file(f"{pathlib.Path(out_cope).stem}", optional=True),
+        out_cope_outfile=execution.output_file(f"{pathlib.Path(out_cope).stem}", optional=True) if out_cope is not None else None,
         out_data=execution.output_file(f"out_data", optional=True),
         out_f=execution.output_file(f"out_f", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),
