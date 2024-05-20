@@ -18,6 +18,8 @@ class MetricVectorTowardRoiOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_vector_toward_roi(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
 
@@ -55,7 +57,8 @@ def metric_vector_toward_roi(
     if opt_roi_roi_metric is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_metric)])
     ret = MetricVectorTowardRoiOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

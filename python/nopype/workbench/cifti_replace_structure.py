@@ -18,6 +18,8 @@ class CiftiReplaceStructureOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_replace_structure(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def cifti_replace_structure(
@@ -104,6 +106,7 @@ def cifti_replace_structure(
     if opt_label_collision_action is not None:
         cargs.extend(["-label-collision", opt_label_collision_action])
     ret = CiftiReplaceStructureOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

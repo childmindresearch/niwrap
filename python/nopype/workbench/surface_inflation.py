@@ -18,6 +18,8 @@ class SurfaceInflationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_inflation(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     surface_out: OutputPathType
     """output surface file"""
 
@@ -62,7 +64,8 @@ def surface_inflation(
     cargs.append(str(inflation_factor))
     cargs.append(execution.input_file(surface_out))
     ret = SurfaceInflationOutputs(
-        surface_out=execution.output_file(f"{surface_out}"),
+        root=execution.output_file("."),
+        surface_out=execution.output_file(f"{pathlib.Path(surface_out).stem}"),
     )
     execution.run(cargs)
     return ret

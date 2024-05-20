@@ -18,6 +18,8 @@ class RandomiseOutputs(typing.NamedTuple):
     """
     Output object returned when calling `randomise(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     f_corrected_p_files: OutputPathType
     """F contrast fwe (family-wise error) corrected p values files."""
     f_p_files: OutputPathType
@@ -175,6 +177,7 @@ def randomise(
     if x_block_labels is not None:
         cargs.extend(["-e", execution.input_file(x_block_labels)])
     ret = RandomiseOutputs(
+        root=execution.output_file("."),
         f_corrected_p_files=execution.output_file(f"f_corrected_p_files", optional=True),
         f_p_files=execution.output_file(f"f_p_files", optional=True),
         fstat_files=execution.output_file(f"fstat_files", optional=True),

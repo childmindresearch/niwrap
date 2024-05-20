@@ -18,6 +18,8 @@ class CreateSignedDistanceVolumeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `create_signed_distance_volume(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     outvol: OutputPathType
     """the output volume"""
 
@@ -97,7 +99,8 @@ def create_signed_distance_volume(
     if opt_winding_method is not None:
         cargs.extend(["-winding", opt_winding_method])
     ret = CreateSignedDistanceVolumeOutputs(
-        outvol=execution.output_file(f"{outvol}"),
+        root=execution.output_file("."),
+        outvol=execution.output_file(f"{pathlib.Path(outvol).stem}"),
     )
     execution.run(cargs)
     return ret

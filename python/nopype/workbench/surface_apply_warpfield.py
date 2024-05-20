@@ -18,6 +18,8 @@ class SurfaceApplyWarpfieldOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_apply_warpfield(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_surf: OutputPathType
     """the output transformed surface"""
 
@@ -60,7 +62,8 @@ def surface_apply_warpfield(
     if opt_fnirt_forward_warp is not None:
         cargs.extend(["-fnirt", opt_fnirt_forward_warp])
     ret = SurfaceApplyWarpfieldOutputs(
-        out_surf=execution.output_file(f"{out_surf}"),
+        root=execution.output_file("."),
+        out_surf=execution.output_file(f"{pathlib.Path(out_surf).stem}"),
     )
     execution.run(cargs)
     return ret

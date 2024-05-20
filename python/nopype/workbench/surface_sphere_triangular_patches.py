@@ -18,6 +18,8 @@ class SurfaceSphereTriangularPatchesOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_sphere_triangular_patches(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def surface_sphere_triangular_patches(
@@ -49,6 +51,7 @@ def surface_sphere_triangular_patches(
     cargs.append(str(divisions))
     cargs.append(text_out)
     ret = SurfaceSphereTriangularPatchesOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

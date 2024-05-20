@@ -18,6 +18,8 @@ class SignedDistanceToSurfaceOutputs(typing.NamedTuple):
     """
     Output object returned when calling `signed_distance_to_surface(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric: OutputPathType
     """the output metric"""
 
@@ -71,7 +73,8 @@ def signed_distance_to_surface(
     if opt_winding_method is not None:
         cargs.extend(["-winding", opt_winding_method])
     ret = SignedDistanceToSurfaceOutputs(
-        metric=execution.output_file(f"{metric}"),
+        root=execution.output_file("."),
+        metric=execution.output_file(f"{pathlib.Path(metric).stem}"),
     )
     execution.run(cargs)
     return ret

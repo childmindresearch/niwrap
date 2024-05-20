@@ -18,6 +18,8 @@ class SceneFileMergeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `scene_file_merge(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def scene_file_merge(
@@ -53,6 +55,7 @@ def scene_file_merge(
     if opt_scene_file_scene_file is not None:
         cargs.extend(["-scene-file", opt_scene_file_scene_file])
     ret = SceneFileMergeOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

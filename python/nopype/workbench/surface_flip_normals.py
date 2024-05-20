@@ -18,6 +18,8 @@ class SurfaceFlipNormalsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_flip_normals(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     surface_out: OutputPathType
     """the output surface"""
 
@@ -51,7 +53,8 @@ def surface_flip_normals(
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(surface_out))
     ret = SurfaceFlipNormalsOutputs(
-        surface_out=execution.output_file(f"{surface_out}"),
+        root=execution.output_file("."),
+        surface_out=execution.output_file(f"{pathlib.Path(surface_out).stem}"),
     )
     execution.run(cargs)
     return ret

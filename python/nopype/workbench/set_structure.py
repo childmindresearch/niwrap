@@ -18,6 +18,8 @@ class SetStructureOutputs(typing.NamedTuple):
     """
     Output object returned when calling `set_structure(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def set_structure(
@@ -110,6 +112,7 @@ def set_structure(
     if opt_surface_secondary_type_secondary_type is not None:
         cargs.extend(["-surface-secondary-type", opt_surface_secondary_type_secondary_type])
     ret = SetStructureOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

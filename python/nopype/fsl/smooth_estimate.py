@@ -18,6 +18,8 @@ class SmoothEstimateOutputs(typing.NamedTuple):
     """
     Output object returned when calling `smooth_estimate(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     res_volume: OutputPathType
     """Residual fit image"""
     zstat_volume: OutputPathType
@@ -81,8 +83,9 @@ def smooth_estimate(
     if zstat_file is not None:
         cargs.append(("--zstat=" + execution.input_file(zstat_file)))
     ret = SmoothEstimateOutputs(
-        res_volume=execution.output_file(f"{residual_fit_file}", optional=True),
-        zstat_volume=execution.output_file(f"{zstat_file}", optional=True),
+        root=execution.output_file("."),
+        res_volume=execution.output_file(f"{pathlib.Path(residual_fit_file).stem}", optional=True),
+        zstat_volume=execution.output_file(f"{pathlib.Path(zstat_file).stem}", optional=True),
     )
     execution.run(cargs)
     return ret

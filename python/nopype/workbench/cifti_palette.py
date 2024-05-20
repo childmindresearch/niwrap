@@ -18,6 +18,8 @@ class CiftiPaletteOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_palette(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
 
@@ -154,7 +156,8 @@ def cifti_palette(
     if opt_inversion_type is not None:
         cargs.extend(["-inversion", opt_inversion_type])
     ret = CiftiPaletteOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

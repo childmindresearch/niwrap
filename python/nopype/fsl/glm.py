@@ -18,6 +18,8 @@ class GlmOutputs(typing.NamedTuple):
     """
     Output object returned when calling `glm(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Filename for glm parameter estimates (glm betas)."""
     out_cope_outfile: OutputPathType
@@ -159,8 +161,9 @@ def glm(
     if var_norm:
         cargs.append("--vn")
     ret = GlmOutputs(
-        out_file=execution.output_file(f"{in_file}_glm", optional=True),
-        out_cope_outfile=execution.output_file(f"{out_cope}", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(in_file).stem}_glm", optional=True),
+        out_cope_outfile=execution.output_file(f"{pathlib.Path(out_cope).stem}", optional=True),
         out_data=execution.output_file(f"out_data", optional=True),
         out_f=execution.output_file(f"out_f", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),

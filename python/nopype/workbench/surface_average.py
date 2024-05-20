@@ -18,6 +18,8 @@ class SurfaceAverageOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_average(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     surface_out: OutputPathType
     """the output averaged surface"""
 
@@ -63,7 +65,8 @@ def surface_average(
     if opt_surf_surface is not None:
         cargs.extend(["-surf", execution.input_file(opt_surf_surface)])
     ret = SurfaceAverageOutputs(
-        surface_out=execution.output_file(f"{surface_out}"),
+        root=execution.output_file("."),
+        surface_out=execution.output_file(f"{pathlib.Path(surface_out).stem}"),
     )
     execution.run(cargs)
     return ret

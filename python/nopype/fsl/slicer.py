@@ -18,6 +18,8 @@ class SlicerOutputs(typing.NamedTuple):
     """
     Output object returned when calling `slicer(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     sagittal_slice_outfile: OutputPathType
     """Output sagittal slice."""
     axial_slice_outfile: OutputPathType
@@ -197,6 +199,7 @@ def slicer(
     if output_sample_axial_slices_fname is not None:
         cargs.append(output_sample_axial_slices_fname)
     ret = SlicerOutputs(
+        root=execution.output_file("."),
         sagittal_slice_outfile=execution.output_file(f"{output_sagittal_slice_fname}", optional=True),
         axial_slice_outfile=execution.output_file(f"{output_axial_slice_fname}", optional=True),
         coronal_slice_outfile=execution.output_file(f"{output_coronal_slice_fname}", optional=True),

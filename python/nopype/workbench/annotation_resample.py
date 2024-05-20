@@ -18,6 +18,8 @@ class AnnotationResampleOutputs(typing.NamedTuple):
     """
     Output object returned when calling `annotation_resample(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def annotation_resample(
@@ -48,6 +50,7 @@ def annotation_resample(
     cargs.append(execution.input_file(annotation_in))
     cargs.append(annotation_out)
     ret = AnnotationResampleOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

@@ -19,6 +19,8 @@ class BetOutputs(typing.NamedTuple):
     """
     Output object returned when calling `bet(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """Main default mask output of BET"""
     binary_mask: OutputPathType
@@ -206,6 +208,7 @@ def bet(
     if debug_flag:
         cargs.append("-d")
     ret = BetOutputs(
+        root=execution.output_file("."),
         outfile=execution.output_file(f"{maskfile}.nii.gz", optional=True),
         binary_mask=execution.output_file(f"{maskfile}_mask.nii.gz", optional=True),
         overlay_file=execution.output_file(f"{maskfile}_overlay.nii.gz", optional=True),

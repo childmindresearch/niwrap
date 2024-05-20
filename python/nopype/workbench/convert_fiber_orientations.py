@@ -18,6 +18,8 @@ class ConvertFiberOrientationsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `convert_fiber_orientations(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     fiber_out: OutputPathType
     """the output fiber orientation file"""
 
@@ -83,7 +85,8 @@ def convert_fiber_orientations(
     cargs.append(execution.input_file(label_volume))
     cargs.append(execution.input_file(fiber_out))
     ret = ConvertFiberOrientationsOutputs(
-        fiber_out=execution.output_file(f"{fiber_out}"),
+        root=execution.output_file("."),
+        fiber_out=execution.output_file(f"{pathlib.Path(fiber_out).stem}"),
     )
     execution.run(cargs)
     return ret

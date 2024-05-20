@@ -18,6 +18,8 @@ class V3dcalcOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3dcalc(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output image file name."""
 
@@ -73,7 +75,8 @@ def v_3dcalc(
     if stop_idx is not None:
         cargs.append(str(stop_idx))
     ret = V3dcalcOutputs(
-        out_file=execution.output_file(f"{in_file_a}", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(in_file_a).stem}", optional=True),
     )
     execution.run(cargs)
     return ret

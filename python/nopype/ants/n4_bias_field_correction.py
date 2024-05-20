@@ -18,6 +18,8 @@ class N4BiasFieldCorrectionOutputs(typing.NamedTuple):
     """
     Output object returned when calling `n4_bias_field_correction(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     corrected_image: OutputPathType
     """The bias corrected version of the input image."""
     bias_field: OutputPathType
@@ -154,6 +156,7 @@ def n4_bias_field_correction(
         "]"
     )
     ret = N4BiasFieldCorrectionOutputs(
+        root=execution.output_file("."),
         corrected_image=execution.output_file(f"{corrected_image_path}"),
         bias_field=execution.output_file(f"{bias_field_path}"),
     )

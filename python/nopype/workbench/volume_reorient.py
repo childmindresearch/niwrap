@@ -18,6 +18,8 @@ class VolumeReorientOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_reorient(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def volume_reorient(
@@ -57,6 +59,7 @@ def volume_reorient(
     cargs.append(orient_string)
     cargs.append(volume_out)
     ret = VolumeReorientOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

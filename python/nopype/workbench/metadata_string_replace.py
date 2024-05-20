@@ -18,6 +18,8 @@ class MetadataStringReplaceOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metadata_string_replace(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def metadata_string_replace(
@@ -55,6 +57,7 @@ def metadata_string_replace(
     if opt_case_insensitive:
         cargs.append("-case-insensitive")
     ret = MetadataStringReplaceOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

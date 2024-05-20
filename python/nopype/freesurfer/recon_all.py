@@ -18,6 +18,8 @@ class ReconAllOutputs(typing.NamedTuple):
     """
     Output object returned when calling `recon_all(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     subjects_dir_outfile: OutputPathType
     """file or string representing an existing directory. Freesurfer subjects directory."""
 
@@ -150,6 +152,7 @@ def recon_all(
     if xopts is not None:
         cargs.extend(["-xopts-", xopts])
     ret = ReconAllOutputs(
+        root=execution.output_file("."),
         subjects_dir_outfile=execution.output_file(f"file"),
     )
     execution.run(cargs)

@@ -18,6 +18,8 @@ class SurfaceInformationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_information(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def surface_information(
@@ -42,6 +44,7 @@ def surface_information(
     cargs.append("-surface-information")
     cargs.append(execution.input_file(surface_file))
     ret = SurfaceInformationOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

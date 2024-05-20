@@ -18,6 +18,8 @@ class VolumeLabelToSurfaceMappingOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_label_to_surface_mapping(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     label_out: OutputPathType
     """the output gifti label file"""
 
@@ -69,7 +71,8 @@ def volume_label_to_surface_mapping(
     if opt_subvol_select_subvol is not None:
         cargs.extend(["-subvol-select", opt_subvol_select_subvol])
     ret = VolumeLabelToSurfaceMappingOutputs(
-        label_out=execution.output_file(f"{label_out}"),
+        root=execution.output_file("."),
+        label_out=execution.output_file(f"{pathlib.Path(label_out).stem}"),
     )
     execution.run(cargs)
     return ret

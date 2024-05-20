@@ -18,6 +18,8 @@ class V3dTcorrelateOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3d_tcorrelate(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output image file name."""
 
@@ -141,6 +143,7 @@ def v_3d_tcorrelate(
     if prefix is not None:
         cargs.extend(["-prefix", prefix])
     ret = V3dTcorrelateOutputs(
+        root=execution.output_file("."),
         out_file=execution.output_file(f"{prefix}", optional=True),
     )
     execution.run(cargs)

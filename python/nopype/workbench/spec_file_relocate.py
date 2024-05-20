@@ -18,6 +18,8 @@ class SpecFileRelocateOutputs(typing.NamedTuple):
     """
     Output object returned when calling `spec_file_relocate(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def spec_file_relocate(
@@ -47,6 +49,7 @@ def spec_file_relocate(
     cargs.append(input_spec)
     cargs.append(output_spec)
     ret = SpecFileRelocateOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

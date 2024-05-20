@@ -18,6 +18,8 @@ class MetricReduceOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_reduce(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
 
@@ -72,7 +74,8 @@ def metric_reduce(
     if opt_only_numeric:
         cargs.append("-only-numeric")
     ret = MetricReduceOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

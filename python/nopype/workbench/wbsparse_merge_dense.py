@@ -18,6 +18,8 @@ class WbsparseMergeDenseOutputs(typing.NamedTuple):
     """
     Output object returned when calling `wbsparse_merge_dense(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def wbsparse_merge_dense(
@@ -51,6 +53,7 @@ def wbsparse_merge_dense(
     if opt_wbsparse_wbsparse_in is not None:
         cargs.extend(["-wbsparse", opt_wbsparse_wbsparse_in])
     ret = WbsparseMergeDenseOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

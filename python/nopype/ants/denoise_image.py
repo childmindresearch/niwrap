@@ -18,6 +18,8 @@ class DenoiseImageOutputs(typing.NamedTuple):
     """
     Output object returned when calling `denoise_image(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     corrected_image: OutputPathType
     """The noise corrected version of the input image."""
     noise_image: OutputPathType
@@ -95,6 +97,7 @@ def denoise_image(
         "]"
     )
     ret = DenoiseImageOutputs(
+        root=execution.output_file("."),
         corrected_image=execution.output_file(f"{corrected_image_path}"),
         noise_image=execution.output_file(f"{noise_image_path}"),
     )

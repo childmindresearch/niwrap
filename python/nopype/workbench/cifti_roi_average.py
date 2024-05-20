@@ -18,6 +18,8 @@ class CiftiRoiAverageOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_roi_average(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def cifti_roi_average(
@@ -71,6 +73,7 @@ def cifti_roi_average(
     if opt_vol_roi_roi_vol is not None:
         cargs.extend(["-vol-roi", execution.input_file(opt_vol_roi_roi_vol)])
     ret = CiftiRoiAverageOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

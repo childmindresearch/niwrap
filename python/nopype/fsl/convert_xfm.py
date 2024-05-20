@@ -18,6 +18,8 @@ class ConvertXfmOutputs(typing.NamedTuple):
     """
     Output object returned when calling `convert_xfm(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     output_trasnformation: OutputPathType
     """Output transformation matrix."""
 
@@ -70,7 +72,8 @@ def convert_xfm(
     if out_file is not None:
         cargs.extend(["-omat", execution.input_file(out_file)])
     ret = ConvertXfmOutputs(
-        output_trasnformation=execution.output_file(f"{out_file}"),
+        root=execution.output_file("."),
+        output_trasnformation=execution.output_file(f"{pathlib.Path(out_file).stem}"),
     )
     execution.run(cargs)
     return ret

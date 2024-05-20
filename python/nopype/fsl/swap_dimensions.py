@@ -18,6 +18,8 @@ class SwapDimensionsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `swap_dimensions(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file_outfile: OutputPathType
     """Output name of image, if not provided, writes to standard output."""
 
@@ -132,6 +134,7 @@ def swap_dimensions(
     if out_file is not None:
         cargs.append(out_file)
     ret = SwapDimensionsOutputs(
+        root=execution.output_file("."),
         out_file_outfile=execution.output_file(f"{out_file}", optional=True),
     )
     execution.run(cargs)

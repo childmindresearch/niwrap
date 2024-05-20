@@ -18,6 +18,8 @@ class VolumeWarpfieldAffineRegressionOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_warpfield_affine_regression(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def volume_warpfield_affine_regression(
@@ -61,6 +63,7 @@ def volume_warpfield_affine_regression(
     if opt_fnirt_source_volume is not None:
         cargs.extend(["-fnirt", opt_fnirt_source_volume])
     ret = VolumeWarpfieldAffineRegressionOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

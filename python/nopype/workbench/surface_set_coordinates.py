@@ -18,6 +18,8 @@ class SurfaceSetCoordinatesOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_set_coordinates(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     surface_out: OutputPathType
     """the new surface"""
 
@@ -53,7 +55,8 @@ def surface_set_coordinates(
     cargs.append(execution.input_file(coord_metric))
     cargs.append(execution.input_file(surface_out))
     ret = SurfaceSetCoordinatesOutputs(
-        surface_out=execution.output_file(f"{surface_out}"),
+        root=execution.output_file("."),
+        surface_out=execution.output_file(f"{pathlib.Path(surface_out).stem}"),
     )
     execution.run(cargs)
     return ret

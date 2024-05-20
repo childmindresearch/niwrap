@@ -18,6 +18,8 @@ class FslRoiOutputs(typing.NamedTuple):
     """
     Output object returned when calling `fsl_roi(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     roi_file_outfile: OutputPathType
     """Output ROI file."""
 
@@ -75,6 +77,7 @@ def fsl_roi(
     if t_size is not None:
         cargs.append(str(t_size))
     ret = FslRoiOutputs(
+        root=execution.output_file("."),
         roi_file_outfile=execution.output_file(f"{roi_file}.nii.gz", optional=True),
     )
     execution.run(cargs)

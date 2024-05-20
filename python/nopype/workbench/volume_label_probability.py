@@ -18,6 +18,8 @@ class VolumeLabelProbabilityOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_label_probability(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     probability_out: OutputPathType
     """the relative frequencies of each label at each voxel"""
 
@@ -53,7 +55,8 @@ def volume_label_probability(
     if opt_exclude_unlabeled:
         cargs.append("-exclude-unlabeled")
     ret = VolumeLabelProbabilityOutputs(
-        probability_out=execution.output_file(f"{probability_out}"),
+        root=execution.output_file("."),
+        probability_out=execution.output_file(f"{pathlib.Path(probability_out).stem}"),
     )
     execution.run(cargs)
     return ret

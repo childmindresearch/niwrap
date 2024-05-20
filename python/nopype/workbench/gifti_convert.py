@@ -18,6 +18,8 @@ class GiftiConvertOutputs(typing.NamedTuple):
     """
     Output object returned when calling `gifti_convert(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def gifti_convert(
@@ -52,6 +54,7 @@ def gifti_convert(
     cargs.append(input_gifti_file)
     cargs.append(output_gifti_file)
     ret = GiftiConvertOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

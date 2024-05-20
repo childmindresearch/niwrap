@@ -18,6 +18,8 @@ class VolumeEstimateFwhmOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_estimate_fwhm(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def volume_estimate_fwhm(
@@ -58,6 +60,7 @@ def volume_estimate_fwhm(
     if opt_whole_file:
         cargs.append("-whole-file")
     ret = VolumeEstimateFwhmOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

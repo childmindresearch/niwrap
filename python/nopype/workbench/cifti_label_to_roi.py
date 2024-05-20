@@ -18,6 +18,8 @@ class CiftiLabelToRoiOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_label_to_roi(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     scalar_out: OutputPathType
     """the output cifti scalar file"""
 
@@ -63,7 +65,8 @@ def cifti_label_to_roi(
     if opt_map_map is not None:
         cargs.extend(["-map", opt_map_map])
     ret = CiftiLabelToRoiOutputs(
-        scalar_out=execution.output_file(f"{scalar_out}"),
+        root=execution.output_file("."),
+        scalar_out=execution.output_file(f"{pathlib.Path(scalar_out).stem}"),
     )
     execution.run(cargs)
     return ret

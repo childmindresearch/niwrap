@@ -18,6 +18,8 @@ class SurfaceCoordinatesToMetricOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_coordinates_to_metric(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
 
@@ -46,7 +48,8 @@ def surface_coordinates_to_metric(
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(metric_out))
     ret = SurfaceCoordinatesToMetricOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class CiftiParcelMappingToLabelOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_parcel_mapping_to_label(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     dlabel_out: OutputPathType
     """the output dense label file"""
 
@@ -56,7 +58,8 @@ def cifti_parcel_mapping_to_label(
     cargs.append(execution.input_file(template_cifti))
     cargs.append(execution.input_file(dlabel_out))
     ret = CiftiParcelMappingToLabelOutputs(
-        dlabel_out=execution.output_file(f"{dlabel_out}"),
+        root=execution.output_file("."),
+        dlabel_out=execution.output_file(f"{pathlib.Path(dlabel_out).stem}"),
     )
     execution.run(cargs)
     return ret

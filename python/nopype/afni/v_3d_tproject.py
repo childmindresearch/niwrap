@@ -18,6 +18,8 @@ class V3dTprojectOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3d_tproject(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output file."""
 
@@ -164,7 +166,8 @@ def v_3d_tproject(
     if stopband is not None:
         cargs.extend(["-stopband", *map(str, stopband)])
     ret = V3dTprojectOutputs(
-        out_file=execution.output_file(f"{in_file}", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(in_file).stem}", optional=True),
     )
     execution.run(cargs)
     return ret

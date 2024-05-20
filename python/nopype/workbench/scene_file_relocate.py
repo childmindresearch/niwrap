@@ -18,6 +18,8 @@ class SceneFileRelocateOutputs(typing.NamedTuple):
     """
     Output object returned when calling `scene_file_relocate(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def scene_file_relocate(
@@ -47,6 +49,7 @@ def scene_file_relocate(
     cargs.append(input_scene)
     cargs.append(output_scene)
     ret = SceneFileRelocateOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class VolumeRemoveIslandsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_remove_islands(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output ROI volume"""
 
@@ -47,7 +49,8 @@ def volume_remove_islands(
     cargs.append(execution.input_file(volume_in))
     cargs.append(execution.input_file(volume_out))
     ret = VolumeRemoveIslandsOutputs(
-        volume_out=execution.output_file(f"{volume_out}"),
+        root=execution.output_file("."),
+        volume_out=execution.output_file(f"{pathlib.Path(volume_out).stem}"),
     )
     execution.run(cargs)
     return ret

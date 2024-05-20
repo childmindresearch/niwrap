@@ -18,6 +18,8 @@ class RobustFovOutputs(typing.NamedTuple):
     """
     Output object returned when calling `robust_fov(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_roi: OutputPathType
     """Roi volume output name."""
     out_transform: OutputPathType
@@ -63,8 +65,9 @@ def robust_fov(
     if output_type is not None:
         cargs.append(output_type)
     ret = RobustFovOutputs(
-        out_roi=execution.output_file(f"{in_file}_ROI", optional=True),
-        out_transform=execution.output_file(f"{in_file}_to_ROI", optional=True),
+        root=execution.output_file("."),
+        out_roi=execution.output_file(f"{pathlib.Path(in_file).stem}_ROI", optional=True),
+        out_transform=execution.output_file(f"{pathlib.Path(in_file).stem}_to_ROI", optional=True),
         out_roi_=execution.output_file(f"out_roi", optional=True),
         out_transform_=execution.output_file(f"out_transform", optional=True),
     )

@@ -18,6 +18,8 @@ class CiftiLabelImportOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_label_import(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output cifti label file"""
 
@@ -86,7 +88,8 @@ def cifti_label_import(
     if opt_drop_unused_labels:
         cargs.append("-drop-unused-labels")
     ret = CiftiLabelImportOutputs(
-        output=execution.output_file(f"{output}"),
+        root=execution.output_file("."),
+        output=execution.output_file(f"{pathlib.Path(output).stem}"),
     )
     execution.run(cargs)
     return ret

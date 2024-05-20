@@ -18,6 +18,8 @@ class CiftiTransposeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_transpose(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
 
@@ -51,7 +53,8 @@ def cifti_transpose(
     if opt_mem_limit_limit_gb is not None:
         cargs.extend(["-mem-limit", str(opt_mem_limit_limit_gb)])
     ret = CiftiTransposeOutputs(
-        cifti_out=execution.output_file(f"{cifti_out}"),
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).stem}"),
     )
     execution.run(cargs)
     return ret

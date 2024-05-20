@@ -18,6 +18,8 @@ class V3dvolregOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3dvolreg(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     md1d_file: OutputPathType
     """Max displacement output file."""
     oned_file: OutputPathType
@@ -116,10 +118,11 @@ def v_3dvolreg(
     if verbose:
         cargs.append("-verbose")
     ret = V3dvolregOutputs(
-        md1d_file=execution.output_file(f"{in_file}_md.1D", optional=True),
-        oned_file=execution.output_file(f"{in_file}.1D", optional=True),
-        oned_matrix_save=execution.output_file(f"{in_file}.aff12.1D", optional=True),
-        out_file=execution.output_file(f"{in_file}_volreg", optional=True),
+        root=execution.output_file("."),
+        md1d_file=execution.output_file(f"{pathlib.Path(in_file).stem}_md.1D", optional=True),
+        oned_file=execution.output_file(f"{pathlib.Path(in_file).stem}.1D", optional=True),
+        oned_matrix_save=execution.output_file(f"{pathlib.Path(in_file).stem}.aff12.1D", optional=True),
+        out_file=execution.output_file(f"{pathlib.Path(in_file).stem}_volreg", optional=True),
         md1d_file_=execution.output_file(f"md1d_file", optional=True),
         oned_file_=execution.output_file(f"oned_file", optional=True),
         oned_matrix_save_=execution.output_file(f"oned_matrix_save", optional=True),

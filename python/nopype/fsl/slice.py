@@ -18,6 +18,8 @@ class SliceOutputs(typing.NamedTuple):
     """
     Output object returned when calling `slice_(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_files: OutputPathType
     """No description provided."""
 
@@ -53,6 +55,7 @@ def slice_(
     if output_type is not None:
         cargs.append(output_type)
     ret = SliceOutputs(
+        root=execution.output_file("."),
         out_files=execution.output_file(f"out_files", optional=True),
     )
     execution.run(cargs)

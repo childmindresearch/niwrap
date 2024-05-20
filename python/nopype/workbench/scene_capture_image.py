@@ -18,6 +18,8 @@ class SceneCaptureImageOutputs(typing.NamedTuple):
     """
     Output object returned when calling `scene_capture_image(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def scene_capture_image(
@@ -165,6 +167,7 @@ def scene_capture_image(
     if opt_print_image_info:
         cargs.append("-print-image-info")
     ret = SceneCaptureImageOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

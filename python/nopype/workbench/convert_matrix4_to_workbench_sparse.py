@@ -18,6 +18,8 @@ class ConvertMatrix4ToWorkbenchSparseOutputs(typing.NamedTuple):
     """
     Output object returned when calling `convert_matrix4_to_workbench_sparse(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def convert_matrix4_to_workbench_sparse(
@@ -64,6 +66,7 @@ def convert_matrix4_to_workbench_sparse(
     if opt_surface_seeds_seed_roi is not None:
         cargs.extend(["-surface-seeds", execution.input_file(opt_surface_seeds_seed_roi)])
     ret = ConvertMatrix4ToWorkbenchSparseOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class MergeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `merge(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Merged output file."""
 
@@ -93,6 +95,7 @@ def merge(
     if volume_number is not None:
         cargs.extend(["-n", str(volume_number)])
     ret = MergeOutputs(
+        root=execution.output_file("."),
         output_file=execution.output_file(f"{merged_file}", optional=True),
     )
     execution.run(cargs)

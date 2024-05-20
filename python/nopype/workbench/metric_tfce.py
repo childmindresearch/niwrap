@@ -18,6 +18,8 @@ class MetricTfceOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_tfce(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
 
@@ -91,7 +93,8 @@ def metric_tfce(
     if opt_corrected_areas_area_metric is not None:
         cargs.extend(["-corrected-areas", execution.input_file(opt_corrected_areas_area_metric)])
     ret = MetricTfceOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

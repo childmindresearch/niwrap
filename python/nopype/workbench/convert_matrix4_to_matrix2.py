@@ -18,6 +18,8 @@ class ConvertMatrix4ToMatrix2Outputs(typing.NamedTuple):
     """
     Output object returned when calling `convert_matrix4_to_matrix2(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     counts_out: OutputPathType
     """the total fiber counts, as a cifti file"""
 
@@ -58,7 +60,8 @@ def convert_matrix4_to_matrix2(
     if opt_individual_fibers:
         cargs.append("-individual-fibers")
     ret = ConvertMatrix4ToMatrix2Outputs(
-        counts_out=execution.output_file(f"{counts_out}"),
+        root=execution.output_file("."),
+        counts_out=execution.output_file(f"{pathlib.Path(counts_out).stem}"),
     )
     execution.run(cargs)
     return ret

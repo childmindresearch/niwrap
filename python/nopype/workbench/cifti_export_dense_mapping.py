@@ -18,6 +18,8 @@ class CiftiExportDenseMappingOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_export_dense_mapping(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def cifti_export_dense_mapping(
@@ -93,6 +95,7 @@ def cifti_export_dense_mapping(
     if opt_volume_all_text_out is not None:
         cargs.extend(["-volume-all", opt_volume_all_text_out])
     ret = CiftiExportDenseMappingOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

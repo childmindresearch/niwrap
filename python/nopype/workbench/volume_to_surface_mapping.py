@@ -18,6 +18,8 @@ class VolumeToSurfaceMappingOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_to_surface_mapping(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric file"""
 
@@ -102,7 +104,8 @@ def volume_to_surface_mapping(
     if opt_subvol_select_subvol is not None:
         cargs.extend(["-subvol-select", opt_subvol_select_subvol])
     ret = VolumeToSurfaceMappingOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class V3dDegreeCentralityOutputs(typing.NamedTuple):
     """
     Output object returned when calling `v_3d_degree_centrality(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output image file name."""
     oned_file_outfile: OutputPathType
@@ -74,7 +76,8 @@ def v_3d_degree_centrality(
     if thresh is not None:
         cargs.extend(["-thresh", str(thresh)])
     ret = V3dDegreeCentralityOutputs(
-        out_file=execution.output_file(f"{in_file}", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(in_file).stem}", optional=True),
         oned_file_outfile=execution.output_file(f"{oned_file}", optional=True),
     )
     execution.run(cargs)

@@ -18,6 +18,8 @@ class MetricFalseCorrelationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_false_correlation(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
 
@@ -73,7 +75,8 @@ def metric_false_correlation(
     if opt_dump_text_text_out is not None:
         cargs.extend(["-dump-text", opt_dump_text_text_out])
     ret = MetricFalseCorrelationOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

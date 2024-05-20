@@ -18,6 +18,8 @@ class GiftiLabelToRoiOutputs(typing.NamedTuple):
     """
     Output object returned when calling `gifti_label_to_roi(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric file"""
 
@@ -63,7 +65,8 @@ def gifti_label_to_roi(
     if opt_map_map is not None:
         cargs.extend(["-map", opt_map_map])
     ret = GiftiLabelToRoiOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

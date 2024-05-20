@@ -18,6 +18,8 @@ class ZipSceneFileOutputs(typing.NamedTuple):
     """
     Output object returned when calling `zip_scene_file(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def zip_scene_file(
@@ -67,6 +69,7 @@ def zip_scene_file(
     if opt_write_scene_file:
         cargs.append("-write-scene-file")
     ret = ZipSceneFileOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

@@ -682,6 +682,8 @@ class FslmathsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `fslmaths(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """The main output file produced by fslmaths"""
 
@@ -718,6 +720,7 @@ def fslmaths(
     if output_datatype is not None:
         cargs.extend(["-odt", output_datatype])
     ret = FslmathsOutputs(
+        root=execution.output_file("."),
         output_file=execution.output_file(f"{output}"),
     )
     execution.run(cargs)

@@ -18,6 +18,8 @@ class ConvertwarpOutputs(typing.NamedTuple):
     """
     Output object returned when calling `convertwarp(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Name of output file, containing warps that are the combination of all those given as arguments. the format of this will be a field-file (rather than spline coefficients) with any affine components included."""
     out_file_: OutputPathType
@@ -155,7 +157,8 @@ def convertwarp(
     if warp2 is not None:
         cargs.append(("--warp2=" + execution.input_file(warp2)))
     ret = ConvertwarpOutputs(
-        out_file=execution.output_file(f"{reference}_concatwarp", optional=True),
+        root=execution.output_file("."),
+        out_file=execution.output_file(f"{pathlib.Path(reference).stem}_concatwarp", optional=True),
         out_file_=execution.output_file(f"out_file", optional=True),
     )
     execution.run(cargs)

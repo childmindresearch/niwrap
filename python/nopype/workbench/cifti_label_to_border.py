@@ -18,6 +18,8 @@ class CiftiLabelToBorderOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_label_to_border(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def cifti_label_to_border(
@@ -57,6 +59,7 @@ def cifti_label_to_border(
     if opt_border_surface is not None:
         cargs.extend(["-border", execution.input_file(opt_border_surface)])
     ret = CiftiLabelToBorderOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

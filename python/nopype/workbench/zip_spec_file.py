@@ -18,6 +18,8 @@ class ZipSpecFileOutputs(typing.NamedTuple):
     """
     Output object returned when calling `zip_spec_file(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def zip_spec_file(
@@ -64,6 +66,7 @@ def zip_spec_file(
     if opt_skip_missing:
         cargs.append("-skip-missing")
     ret = ZipSpecFileOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

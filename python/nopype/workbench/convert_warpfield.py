@@ -18,6 +18,8 @@ class ConvertWarpfieldOutputs(typing.NamedTuple):
     """
     Output object returned when calling `convert_warpfield(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def convert_warpfield(
@@ -68,6 +70,7 @@ def convert_warpfield(
     if opt_to_itk_output is not None:
         cargs.extend(["-to-itk", opt_to_itk_output])
     ret = ConvertWarpfieldOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

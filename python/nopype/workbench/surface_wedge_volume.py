@@ -18,6 +18,8 @@ class SurfaceWedgeVolumeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_wedge_volume(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric: OutputPathType
     """the output metric"""
 
@@ -51,7 +53,8 @@ def surface_wedge_volume(
     cargs.append(execution.input_file(outer_surface))
     cargs.append(execution.input_file(metric))
     ret = SurfaceWedgeVolumeOutputs(
-        metric=execution.output_file(f"{metric}"),
+        root=execution.output_file("."),
+        metric=execution.output_file(f"{pathlib.Path(metric).stem}"),
     )
     execution.run(cargs)
     return ret

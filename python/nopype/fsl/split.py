@@ -18,6 +18,8 @@ class SplitOutputs(typing.NamedTuple):
     """
     Output object returned when calling `split(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_folder: OutputPathType
     """Output folder with multiple files."""
 
@@ -51,6 +53,7 @@ def split(
         )
     cargs.append(("-" + dimension))
     ret = SplitOutputs(
+        root=execution.output_file("."),
         out_folder=execution.output_file(f"out/"),
     )
     execution.run(cargs)

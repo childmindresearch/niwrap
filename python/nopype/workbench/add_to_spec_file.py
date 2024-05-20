@@ -18,6 +18,8 @@ class AddToSpecFileOutputs(typing.NamedTuple):
     """
     Output object returned when calling `add_to_spec_file(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def add_to_spec_file(
@@ -83,6 +85,7 @@ def add_to_spec_file(
     cargs.append(structure)
     cargs.append(filename)
     ret = AddToSpecFileOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

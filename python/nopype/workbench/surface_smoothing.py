@@ -18,6 +18,8 @@ class SurfaceSmoothingOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_smoothing(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     surface_out: OutputPathType
     """output surface file"""
 
@@ -53,7 +55,8 @@ def surface_smoothing(
     cargs.append(str(smoothing_iterations))
     cargs.append(execution.input_file(surface_out))
     ret = SurfaceSmoothingOutputs(
-        surface_out=execution.output_file(f"{surface_out}"),
+        root=execution.output_file("."),
+        surface_out=execution.output_file(f"{pathlib.Path(surface_out).stem}"),
     )
     execution.run(cargs)
     return ret

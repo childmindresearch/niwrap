@@ -18,6 +18,8 @@ class BackendAverageRoiCorrelationOutputs(typing.NamedTuple):
     """
     Output object returned when calling `backend_average_roi_correlation(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def backend_average_roi_correlation(
@@ -48,6 +50,7 @@ def backend_average_roi_correlation(
     cargs.append(index_list)
     cargs.append(out_file)
     ret = BackendAverageRoiCorrelationOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

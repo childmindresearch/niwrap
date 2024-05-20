@@ -18,6 +18,8 @@ class MetricGradientOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_gradient(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the magnitude of the gradient"""
 
@@ -104,7 +106,8 @@ def metric_gradient(
     if opt_average_normals:
         cargs.append("-average-normals")
     ret = MetricGradientOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class SurfaceNormalsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_normals(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the normal vectors"""
 
@@ -47,7 +49,8 @@ def surface_normals(
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(metric_out))
     ret = SurfaceNormalsOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

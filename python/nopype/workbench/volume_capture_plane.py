@@ -18,6 +18,8 @@ class VolumeCapturePlaneOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_capture_plane(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def volume_capture_plane(
@@ -97,6 +99,7 @@ def volume_capture_plane(
     cargs.append(str(top_left_z))
     cargs.append(image)
     ret = VolumeCapturePlaneOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class VolumeLabelExportTableOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_label_export_table(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def volume_label_export_table(
@@ -48,6 +50,7 @@ def volume_label_export_table(
     cargs.append(map_)
     cargs.append(table_out)
     ret = VolumeLabelExportTableOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

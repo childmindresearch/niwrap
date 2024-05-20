@@ -18,6 +18,8 @@ class SurfaceCurvatureOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_curvature(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def surface_curvature(
@@ -51,6 +53,7 @@ def surface_curvature(
     if opt_gauss:
         cargs.append("-gauss")
     ret = SurfaceCurvatureOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

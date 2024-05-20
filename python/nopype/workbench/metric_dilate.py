@@ -18,6 +18,8 @@ class MetricDilateOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_dilate(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
 
@@ -110,7 +112,8 @@ def metric_dilate(
     if opt_legacy_cutoff:
         cargs.append("-legacy-cutoff")
     ret = MetricDilateOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

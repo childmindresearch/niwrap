@@ -18,6 +18,8 @@ class VolumeDistortionOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_distortion(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output distortion measures"""
 
@@ -70,7 +72,8 @@ def volume_distortion(
     if opt_log2:
         cargs.append("-log2")
     ret = VolumeDistortionOutputs(
-        volume_out=execution.output_file(f"{volume_out}"),
+        root=execution.output_file("."),
+        volume_out=execution.output_file(f"{pathlib.Path(volume_out).stem}"),
     )
     execution.run(cargs)
     return ret

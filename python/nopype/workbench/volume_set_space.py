@@ -18,6 +18,8 @@ class VolumeSetSpaceOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_set_space(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def volume_set_space(
@@ -52,6 +54,7 @@ def volume_set_space(
     if opt_file_volume_ref is not None:
         cargs.extend(["-file", opt_file_volume_ref])
     ret = VolumeSetSpaceOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

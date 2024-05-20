@@ -18,6 +18,8 @@ class SurfaceApplyAffineOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_apply_affine(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     out_surf: OutputPathType
     """the output transformed surface"""
 
@@ -53,7 +55,8 @@ def surface_apply_affine(
     cargs.append(affine)
     cargs.append(execution.input_file(out_surf))
     ret = SurfaceApplyAffineOutputs(
-        out_surf=execution.output_file(f"{out_surf}"),
+        root=execution.output_file("."),
+        out_surf=execution.output_file(f"{pathlib.Path(out_surf).stem}"),
     )
     execution.run(cargs)
     return ret

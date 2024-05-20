@@ -18,6 +18,8 @@ class FugueOutputs(typing.NamedTuple):
     """
     Output object returned when calling `fugue(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     fmap_out_file_outfile: OutputPathType
     """Fieldmap file."""
     shift_out_file_outfile: OutputPathType
@@ -216,10 +218,11 @@ def fugue(
     if warped_file is not None:
         cargs.append(("--warp=" + execution.input_file(warped_file)))
     ret = FugueOutputs(
-        fmap_out_file_outfile=execution.output_file(f"{fmap_out_file}", optional=True),
-        shift_out_file_outfile=execution.output_file(f"{shift_out_file}", optional=True),
-        unwarped_file_outfile=execution.output_file(f"{unwarped_file}", optional=True),
-        warped_file_outfile=execution.output_file(f"{warped_file}", optional=True),
+        root=execution.output_file("."),
+        fmap_out_file_outfile=execution.output_file(f"{pathlib.Path(fmap_out_file).stem}", optional=True),
+        shift_out_file_outfile=execution.output_file(f"{pathlib.Path(shift_out_file).stem}", optional=True),
+        unwarped_file_outfile=execution.output_file(f"{pathlib.Path(unwarped_file).stem}", optional=True),
+        warped_file_outfile=execution.output_file(f"{pathlib.Path(warped_file).stem}", optional=True),
     )
     execution.run(cargs)
     return ret

@@ -18,6 +18,8 @@ class IcaAromaOutputs(typing.NamedTuple):
     """
     Output object returned when calling `ica_aroma(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     aggr_denoised_file: OutputPathType
     """If generated: aggressively denoised volume."""
     nonaggr_denoised_file: OutputPathType
@@ -174,6 +176,7 @@ def ica_aroma(
     cargs.extend(["-mc", execution.input_file(motion_parameters)])
     cargs.extend(["-o", execution.input_file(out_dir)])
     ret = IcaAromaOutputs(
+        root=execution.output_file("."),
         aggr_denoised_file=execution.output_file(f"out\denoised_func_data_aggr.nii.gz", optional=True),
         nonaggr_denoised_file=execution.output_file(f"out\denoised_func_data_nonaggr.nii.gz", optional=True),
         out_dir_outfile=execution.output_file(f"out", optional=True),

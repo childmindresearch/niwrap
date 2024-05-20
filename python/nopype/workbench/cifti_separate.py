@@ -18,6 +18,8 @@ class CiftiSeparateOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_separate(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def cifti_separate(
@@ -106,6 +108,7 @@ def cifti_separate(
     if opt_volume_structure is not None:
         cargs.extend(["-volume", opt_volume_structure])
     ret = CiftiSeparateOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

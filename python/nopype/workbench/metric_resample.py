@@ -18,6 +18,8 @@ class MetricResampleOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_resample(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
 
@@ -97,7 +99,8 @@ def metric_resample(
     if opt_bypass_sphere_check:
         cargs.append("-bypass-sphere-check")
     ret = MetricResampleOutputs(
-        metric_out=execution.output_file(f"{metric_out}"),
+        root=execution.output_file("."),
+        metric_out=execution.output_file(f"{pathlib.Path(metric_out).stem}"),
     )
     execution.run(cargs)
     return ret

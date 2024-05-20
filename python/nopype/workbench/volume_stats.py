@@ -18,6 +18,8 @@ class VolumeStatsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_stats(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def volume_stats(
@@ -88,6 +90,7 @@ def volume_stats(
     if opt_show_map_name:
         cargs.append("-show-map-name")
     ret = VolumeStatsOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret

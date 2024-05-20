@@ -18,6 +18,8 @@ class MetricConvertOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_convert(...)`.
     """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
 
 
 def metric_convert(
@@ -44,6 +46,7 @@ def metric_convert(
     if opt_to_nifti_metric_in is not None:
         cargs.extend(["-to-nifti", execution.input_file(opt_to_nifti_metric_in)])
     ret = MetricConvertOutputs(
+        root=execution.output_file("."),
     )
     execution.run(cargs)
     return ret
