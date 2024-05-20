@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 APPLYWARP_METADATA = Metadata(
-    id="1e474be3426bdbc228c2be90eece8afabc9ffedb",
+    id="668355c86fba1346323156b0914186c000e55906",
     name="applywarp",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -41,9 +41,7 @@ def applywarp(
     supersample: bool = False,
 ) -> ApplywarpOutputs:
     """
-    applywarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    ApplyWarp).
-    FSL's applywarp wrapper to apply the results of a FNIRT registration
+    Apply warps estimated by FNIRT (or some other software) to some image.
     
     Args:
         runner: Command runner

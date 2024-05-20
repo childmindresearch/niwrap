@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 FSL_ROI_METADATA = Metadata(
-    id="8e13c16201a231462934e54bd82e0fbf91812293",
+    id="5ca25c7a534a575d6ef75dc12ed13d97ec4b0cbc",
     name="FSL roi",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -36,15 +36,7 @@ def fsl_roi(
     z_size: int | None = None,
 ) -> FslRoiOutputs:
     """
-    fslroi, as implemented in Nipype (module: nipype.interfaces.fsl.utils,
-    interface: ExtractROI).
-    Uses FSL Fslroi command to extract region of interest (ROI) from an image.
-    You can a) take a 3D ROI from a 3D data set (or if it is 4D, the same ROI is
-    taken from each time point and a new 4D data set is created), b) extract
-    just some time points from a 4D data set, or c) control time and space
-    limits to the ROI. Note that the arguments are minimum index and size (not
-    maximum index). So to extract voxels 10 to 12 inclusive you would specify 10
-    and 3 (not 10 and 12).
+    Extract region of interest (ROI) from an image.
     
     Args:
         runner: Command runner

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_DEGREE_CENTRALITY_METADATA = Metadata(
-    id="56d53bbda7521d3a0acb55f58c2d206d829cf5ed",
+    id="ed259d22b5331de010f683c90fb01c0fcb129871",
     name="3dDegreeCentrality",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -36,12 +36,10 @@ def v_3d_degree_centrality(
     thresh: float | int | None = None,
 ) -> V3dDegreeCentralityOutputs:
     """
-    3dDegreeCentrality, as implemented in Nipype (module:
-    nipype.interfaces.afni.preprocess, interface: DegreeCentrality).
-    Performs degree centrality on a dataset using a given maskfile via
-    3dDegreeCentrality
-    For complete details, see the `3dDegreeCentrality Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html>`_
+    Computes voxelwise weighted and binary degree centrality and stores the result
+    in a new 3D bucket dataset as floats to preserve their values. Degree centrality
+    reflects the strength and extent of the correlation of a voxel with every other
+    voxel in the brain.
     
     Args:
         runner: Command runner

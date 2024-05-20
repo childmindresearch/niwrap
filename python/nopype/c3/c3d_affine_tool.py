@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 C3D_AFFINE_TOOL_METADATA = Metadata(
-    id="614ba2ea5b01463cd238b679d9b58701b20958ca",
+    id="8d8ee864fd8cb9cd3fa4f3747a017ca95294bc58",
     name="C3dAffineTool",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -47,9 +47,7 @@ def c3d_affine_tool(
     info_full: bool = False,
 ) -> C3dAffineToolOutputs:
     """
-    C3dAffineTool, as implemented in Nipype (module: nipype.interfaces.c3,
-    interface: C3dAffineTool).
-    Converts fsl-style Affine registration into ANTS compatible itk format.'
+    RAS affine transform tool
     
     Args:
         runner: Command runner

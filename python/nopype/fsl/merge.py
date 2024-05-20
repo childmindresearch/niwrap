@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 MERGE_METADATA = Metadata(
-    id="084100eb6d83bec524e85d756d2d1f66892a7780",
+    id="f2741a6793083f114232e821972234f922edfe01",
     name="Merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -32,14 +32,10 @@ def merge(
     volume_number: int | None = None,
 ) -> MergeOutputs:
     """
-    Merge, as implemented in Nipype (module: nipype.interfaces.fsl.utils, interface:
-    Merge).
-    Use fslmerge to concatenate images
-    Images can be concatenated across time, x, y, or z dimensions. Across the
-    time (t) dimension the TR is set by default to 1 sec.
-    Note: to set the TR to a different value, specify 't' for dimension and
-    specify the TR value in seconds for the tr input. The dimension will be
-    automatically updated to 'tr'.
+    Concatenate image files into a single output. This concatenation can be in time,
+    or in X, Y or Z. All image dimensions (except for the one being concatenated
+    over) must be the same in all input images. For example, this can be used to
+    take multiple 3D files (eg as output by SPM) and create a single 4D image file.
     
     Args:
         runner: Command runner

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 FLIRT_METADATA = Metadata(
-    id="5a6670d6e94d71d202f5633155acca488f17fca5",
+    id="daedb1ca8cb8ef1d8c1c7c7e7e5669f9a7b7da62",
     name="FLIRT",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -71,12 +71,9 @@ def flirt(
     wmnorms: InputPathType | None = None,
 ) -> FlirtOutputs:
     """
-    FLIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    FLIRT).
-    FSL FLIRT wrapper for coregistration
-    For complete details, see the `FLIRT Documentation.
-    <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT>`_
-    To print out the command line help, use: fsl.FLIRT().inputs_help()
+    FLIRT (FMRIB's Linear Image Registration Tool) is a fully automated robust and
+    accurate tool for linear (affine) intra- and inter-modal brain image
+    registration.
     
     Args:
         runner: Command runner

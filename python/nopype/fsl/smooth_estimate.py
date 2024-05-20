@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 SMOOTH_ESTIMATE_METADATA = Metadata(
-    id="43c5a17623148d074c90f202493e9a65dccd7ac6",
+    id="9c582d4acc84adc255ff88503899d7c04ce755ac",
     name="SmoothEstimate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -32,8 +32,6 @@ def smooth_estimate(
     zstat_file: InputPathType | None = None,
 ) -> SmoothEstimateOutputs:
     """
-    SmoothEstimate, as implemented in Nipype (module: nipype.interfaces.fsl,
-    interface: SmoothEstimate).
     Estimates the smoothness of an image
     
     Args:

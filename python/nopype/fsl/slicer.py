@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 SLICER_METADATA = Metadata(
-    id="2fcd56bb3b69528ccce003210c1372bd723cf24a",
+    id="e29bda2d3989ff405f9246f4f13b3294b6506919",
     name="Slicer",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -57,9 +57,10 @@ def slicer(
     output_sample_axial_slices_fname: str | None = None,
 ) -> SlicerOutputs:
     """
-    Slicer, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    Slicer).
-    Use FSL's slicer command to output a png image from a volume.
+    the main program which takes in one or two input images and produces as many
+    separate output pictures of slices as are requested. The basic output options
+    (-x, -y and -z) produce single slice pictures. The more advanced options (-a, -A
+    and -S) produce montages of various slices. slicer outputs PPM format pictures
     
     Args:
         runner: Command runner

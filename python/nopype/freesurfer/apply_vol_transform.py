@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 APPLY_VOL_TRANSFORM_METADATA = Metadata(
-    id="df31fe40d2b44a80baa79f6f8a23083e8dd21105",
+    id="465660307dcc5a6670714a363e3aaad86063aa04",
     name="ApplyVolTransform",
     container_image_type="docker",
     container_image_tag="container/image",
@@ -47,9 +47,8 @@ def apply_vol_transform(
     xfm_reg_file: InputPathType | None = None,
 ) -> ApplyVolTransformOutputs:
     """
-    ApplyVolTransform, as implemented in Nipype (module:
-    nipype.interfaces.freesurfer.preprocess, interface: ApplyVolTransform).
-    Use FreeSurfer mri_vol2vol to apply a transform.
+    Resamples a volume into another field-of-view using varous types of matrices
+    (FreeSurfer, FSL, SPM, and MNI).
     
     Args:
         runner: Command runner
