@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_BLUR_TO_FWHM_METADATA = Metadata(
-    id="a9aac6f0866e30f5e7ed62748e0098f57fd2faf5",
+    id="723e5e2145d274825a8a1a8709a185bf037dc49b",
     name="3dBlurToFWHM",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,8 +38,6 @@ def v_3d_blur_to_fwhm(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
 ) -> V3dBlurToFwhmOutputs:
     """
-    BlurToFWHM, as implemented in Nipype (module: nipype.interfaces.afni.preprocess,
-    interface: BlurToFWHM).
     Blurs a 'master' dataset until it reaches a specified FWHM smoothness
     (approximately).
     For complete details, see the `3dBlurToFWHM Documentation
@@ -62,12 +60,10 @@ def v_3d_blur_to_fwhm(
     execution = runner.start_execution(V_3D_BLUR_TO_FWHM_METADATA)
     cargs = []
     cargs.append("3dBlurToFWHM")
-    cargs.append("[ARGS]")
     if automask:
         cargs.append("-automask")
     if blurmaster is not None:
         cargs.extend(["-blurmaster", execution.input_file(blurmaster)])
-    cargs.append("[ENVIRON]")
     if fwhm is not None:
         cargs.extend(["-FWHM", str(fwhm)])
     if fwhmxy is not None:

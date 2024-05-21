@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_TCAT_METADATA = Metadata(
-    id="f4dc93c54d278c0a1c7a65754d9c9459a8db0776",
+    id="33d3dd06aa8798bd2cc9215c3618d3ec5e9c2c53",
     name="3dTcat",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -35,8 +35,6 @@ def v_3d_tcat(
     verbose: bool = False,
 ) -> V3dTcatOutputs:
     """
-    TCat, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface:
-    TCat).
     Concatenate sub-bricks from input datasets into one big 3D+time dataset.
     TODO Replace InputMultiPath in_files with Traits.List, if possible. Current
     version adds extra whitespace.
@@ -63,8 +61,6 @@ def v_3d_tcat(
     if rlt is not None:
         cargs.extend(["-rlt", rlt])
     cargs.extend(["", execution.input_file(in_files)])
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if num_threads is not None:
         cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")

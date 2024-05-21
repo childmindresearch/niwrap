@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 CONVERTWARP_METADATA = Metadata(
-    id="d309510ba97b4244a6915497cd4bc70859fe4045",
+    id="85263285e8200df92f62b5a0a51bdb8dc9966a72",
     name="convertwarp",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -46,11 +46,9 @@ def convertwarp(
     warp2: InputPathType | None = None,
 ) -> ConvertwarpOutputs:
     """
-    convertwarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    ConvertWarp).
     Use FSL `convertwarp
-    <http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html>`_ for
-    combining multiple transforms into one.
+    <http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html>`_ for combining
+    multiple transforms into one.
     
     Args:
         runner: Command runner
@@ -126,10 +124,8 @@ def convertwarp(
     cargs.append("[OUT_FILE]")
     if abswarp:
         cargs.append("--abs")
-    cargs.append("[ARGS]")
     if cons_jacobian:
         cargs.append("--constrainj")
-    cargs.append("[ENVIRON]")
     if jacobian_max is not None:
         cargs.append(("--jmax=" + str(jacobian_max)))
     if jacobian_min is not None:

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 CLUSTER_METADATA = Metadata(
-    id="ddd89bf9420209d14bb775084670c196fd953958",
+    id="e7684e1f87a871bd106b15aa007a39ffbebfffb6",
     name="Cluster",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -76,8 +76,6 @@ def cluster(
     xfm_file: InputPathType | None = None,
 ) -> ClusterOutputs:
     """
-    Cluster, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    Cluster).
     Uses FSL cluster to perform clustering on statistical output
     
     Args:
@@ -202,14 +200,12 @@ def cluster(
     execution = runner.start_execution(CLUSTER_METADATA)
     cargs = []
     cargs.append("Cluster")
-    cargs.append("[ARGS]")
     if connectivity is not None:
         cargs.append(("--connectivity=" + str(connectivity)))
     if cope_file is not None:
         cargs.append(("--cope=" + execution.input_file(cope_file)))
     if dlh is not None:
         cargs.append(("--dlh=" + str(dlh)))
-    cargs.append("[ENVIRON]")
     if find_min:
         cargs.append("--min")
     if fractional:

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_ECM_METADATA = Metadata(
-    id="2451878998b675098e5305aa30ac6cf7e9bf71da",
+    id="17e5a9890522ecda83f5a05de23994df48556833",
     name="3dECM",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -46,8 +46,6 @@ def v_3d_ecm(
     thresh: float | int | None = None,
 ) -> V3dEcmOutputs:
     """
-    ECM, as implemented in Nipype (module: nipype.interfaces.afni.preprocess,
-    interface: ECM).
     Performs degree centrality on a dataset using a given maskfile via the 3dECM
     command
     For complete details, see the `3dECM Documentation.
@@ -87,12 +85,10 @@ def v_3d_ecm(
     cargs = []
     cargs.append("3dECM")
     cargs.append(execution.input_file(in_file))
-    cargs.append("[ARGS]")
     if autoclip:
         cargs.append("-autoclip")
     if automask:
         cargs.append("-automask")
-    cargs.append("[ENVIRON]")
     if eps is not None:
         cargs.extend(["-eps", str(eps)])
     if fecm:

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DREFIT_METADATA = Metadata(
-    id="a5aba9c7b2ccf2600bc353c47fe9c2315c086ca6",
+    id="774bbdb1a866db864290f2e8f2433675b6344d7a",
     name="3drefit",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -45,8 +45,6 @@ def v_3drefit(
     zorigin: str | None = None,
 ) -> V3drefitOutputs:
     """
-    Refit, as implemented in Nipype (module: nipype.interfaces.afni.utils,
-    interface: Refit).
     Changes some of the information inside a 3D dataset's header
     For complete details, see the `3drefit Documentation.
     <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drefit.html>`_
@@ -102,7 +100,6 @@ def v_3drefit(
     cargs = []
     cargs.append("3drefit")
     cargs.append(execution.input_file(in_file))
-    cargs.append("[ARGS]")
     if atrcopy is not None:
         cargs.extend(["-atrcopy", *atrcopy])
     if atrfloat is not None:
@@ -115,7 +112,6 @@ def v_3drefit(
         cargs.append("-deoblique")
     if duporigin_file is not None:
         cargs.extend(["-duporigin", execution.input_file(duporigin_file)])
-    cargs.append("[ENVIRON]")
     if nosaveatr:
         cargs.append("-nosaveatr")
     if saveatr:

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 FLAMEO_METADATA = Metadata(
-    id="429b46b8ae14b00327226a7334c2739f00079390",
+    id="5e27bb366f2f7207fc4a014aa45ef5c5dea0c053",
     name="FLAMEO",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -29,8 +29,7 @@ def flameo(
     dummy_input: InputPathType,
 ) -> FlameoOutputs:
     """
-    FLAMEO, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    FLAMEO). Automatic nipype2boutiques conversion failed.
+    Automatic nipype2boutiques conversion failed.
     
     Args:
         runner: Command runner

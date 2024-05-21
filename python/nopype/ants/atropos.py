@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 ATROPOS_METADATA = Metadata(
-    id="3ee29141fe5bf2bf14707abbb28b2cb7e991a165",
+    id="a3fe198eae3a480d2f2de7ff2c29bb1679f296c5",
     name="Atropos",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -53,8 +53,6 @@ def atropos(
     use_random_seed: bool = True,
 ) -> AtroposOutputs:
     """
-    Atropos, as implemented in Nipype (module: nipype.interfaces.ants.segmentation,
-    interface: Atropos).
     
     A multivariate n-class segmentation algorithm.
     A finite mixture modeling (FMM) segmentation approach with possibilities for
@@ -109,12 +107,10 @@ def atropos(
     execution = runner.start_execution(ATROPOS_METADATA)
     cargs = []
     cargs.append("Atropos")
-    cargs.append("[ARGS]")
     if convergence_threshold is not None:
         cargs.append(str(convergence_threshold))
     if dimension is not None:
         cargs.extend(["--image-dimensionality", str(dimension)])
-    cargs.append("[ENVIRON]")
     cargs.append("[ICM_USE_SYNCHRONOUS_UPDATE]")
     cargs.append(initialization)
     cargs.extend(["--intensity-image", *[execution.input_file(f) for f in intensity_images]])

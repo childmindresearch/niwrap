@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 APPLY_TRANSFORMS_METADATA = Metadata(
-    id="da6b5cb1ed938e590e0ba595899387c565a6f56f",
+    id="268cd966e05b235ee4033293179ef628c694c196",
     name="ApplyTransforms",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -43,8 +43,6 @@ def apply_transforms(
     print_out_composite_warp_file: bool = False,
 ) -> ApplyTransformsOutputs:
     """
-    ApplyTransforms, as implemented in Nipype (module:
-    nipype.interfaces.ants.resampling, interface: ApplyTransforms).
     ApplyTransforms, applied to an input image, transforms it according to a
     reference image and a transform (or a set of transforms).
     
@@ -93,12 +91,10 @@ def apply_transforms(
     execution = runner.start_execution(APPLY_TRANSFORMS_METADATA)
     cargs = []
     cargs.append("ApplyTransforms")
-    cargs.append("[ARGS]")
     if default_value is not None:
         cargs.extend(["--default-value", str(default_value)])
     if dimension is not None:
         cargs.extend(["--dimensionality", str(dimension)])
-    cargs.append("[ENVIRON]")
     if float_:
         cargs.append("--float")
     cargs.extend(["--input", execution.input_file(input_image)])

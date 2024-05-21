@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_SKULL_STRIP_METADATA = Metadata(
-    id="007e686776f36f21fa2495fa88429784cca895ba",
+    id="cec4d6b286a60e2b06b749217cb7e2290f12fbc9",
     name="3dSkullStrip",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -48,8 +48,6 @@ def v_3d_skull_strip(
     cargs = []
     cargs.append("3dSkullStrip")
     cargs.extend(["-input", execution.input_file(in_file)])
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if num_threads is not None:
         cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")

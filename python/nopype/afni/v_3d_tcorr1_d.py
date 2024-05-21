@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_TCORR1_D_METADATA = Metadata(
-    id="9e9f7ebf698960751b63b5f0e68b9e9a7750045f",
+    id="6190da71100511abf2228d7851b4d055410ad626",
     name="3dTcorr1D",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,17 +38,10 @@ def v_3d_tcorr1_d(
     spearman: bool = False,
 ) -> V3dTcorr1DOutputs:
     """
-    TCorr1D, as implemented in Nipype (module: nipype.interfaces.afni.preprocess,
-    interface: TCorr1D).
-    Computes the correlation coefficient between each voxel time series in the
-    input 3D+time dataset.
+    Computes the correlation coefficient between each voxel time series in the input
+    3D+time dataset.
     For complete details, see the `3dTcorr1D Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html>`_
-    >>> from nipype.interfaces import afni >>> tcorr1D = afni.TCorr1D() >>>
-    tcorr1D.inputs.xset= 'u_rc1s1_Template.nii' >>> tcorr1D.inputs.y_1d =
-    'seed.1D' >>> tcorr1D.cmdline '3dTcorr1D -prefix
-    u_rc1s1_Template_correlation.nii.gz u_rc1s1_Template.nii seed.1D' >>> res =
-    tcorr1D.run() # doctest: +SKIP
+    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html>
     
     Args:
         runner: Command runner
@@ -83,8 +76,6 @@ def v_3d_tcorr1_d(
     if spearman:
         cargs.append("-spearman")
     cargs.extend(["", execution.input_file(y_1d)])
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if num_threads is not None:
         cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")

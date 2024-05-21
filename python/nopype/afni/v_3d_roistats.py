@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_ROISTATS_METADATA = Metadata(
-    id="7209d96371ee03346c5abca5d8849228afb36a51",
+    id="67c996a3bfe192f2b89d6b9066a7a54ab7343e32",
     name="3dROIstats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -44,8 +44,6 @@ def v_3d_roistats(
     zerofill: str | None = None,
 ) -> V3dRoistatsOutputs:
     """
-    ROIStats, as implemented in Nipype (module: nipype.interfaces.afni, interface:
-    ROIStats).
     Display statistics over masked regions
     For complete details, see the `3dROIstats Documentation
     <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dROIstats.html>`_
@@ -114,10 +112,8 @@ def v_3d_roistats(
     if mask is not None:
         cargs.extend(["-mask", execution.input_file(mask)])
     cargs.append("[OUT_FILE]")
-    cargs.append("[ARGS]")
     if debug:
         cargs.append("-debug")
-    cargs.append("[ENVIRON]")
     if format1_d:
         cargs.append("-1Dformat")
     if format1_dr:

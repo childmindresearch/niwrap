@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 GLM_METADATA = Metadata(
-    id="87dd54f9bca4fc2ffa7fc2ba146aa54de874bdc1",
+    id="49f39f62107ec8ef0c8ea373492e82111791d870",
     name="GLM",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -73,13 +73,7 @@ def glm(
     var_norm: bool = False,
 ) -> GlmOutputs:
     """
-    GLM, as implemented in Nipype (module: nipype.interfaces.fsl, interface: GLM).
-    
-    FSL GLM:
-    Example ------- >>> import nipype.interfaces.fsl as fsl >>> glm =
-    fsl.GLM(in_file='functional.nii', design='maps.nii', output_type='NIFTI')
-    >>> glm.cmdline 'fsl_glm -i functional.nii -d maps.nii -o
-    functional_glm.nii'
+    FSL GLM
     
     Args:
         runner: Command runner
@@ -120,7 +114,6 @@ def glm(
     cargs.extend(["-i", execution.input_file(in_file)])
     cargs.extend(["-d", execution.input_file(design)])
     cargs.append("[OUT_FILE]")
-    cargs.append("[ARGS]")
     if contrasts is not None:
         cargs.extend(["-c", execution.input_file(contrasts)])
     if dat_norm:
@@ -131,7 +124,6 @@ def glm(
         cargs.append("--des_norm")
     if dof is not None:
         cargs.append(("--dof=" + str(dof)))
-    cargs.append("[ENVIRON]")
     if mask is not None:
         cargs.extend(["-m", execution.input_file(mask)])
     if out_cope is not None:

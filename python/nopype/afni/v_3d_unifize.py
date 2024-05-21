@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_UNIFIZE_METADATA = Metadata(
-    id="7296dd0df11175f22b8636df546ba24e92a715da",
+    id="7920f1f9eb4c5c4482417ad2b350c0891a9c2eb7",
     name="3dUnifize",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -45,8 +45,6 @@ def v_3d_unifize(
     urad: float | int | None = None,
 ) -> V3dUnifizeOutputs:
     """
-    Unifize, as implemented in Nipype (module: nipype.interfaces.afni.utils,
-    interface: Unifize).
     3dUnifize - for uniformizing image intensity
     * The input dataset is supposed to be a T1-weighted volume, possibly already
     skull-stripped (e.g., via 3dSkullStrip). However, this program can be a
@@ -123,10 +121,8 @@ def v_3d_unifize(
     cargs = []
     cargs.append("3dUnifize")
     cargs.extend(["-input", execution.input_file(in_file)])
-    cargs.append("[ARGS]")
     if cl_frac is not None:
         cargs.extend(["-clfrac", str(cl_frac)])
-    cargs.append("[ENVIRON]")
     if epi:
         cargs.append("-EPI")
     if gm:

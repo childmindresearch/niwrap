@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 ICA_AROMA_METADATA = Metadata(
-    id="de4547d02600becf49ef09b070f91bbb67382d0c",
+    id="c2b7358923f75a66e7f15f260756fa2dc7a27ff7",
     name="ICA_AROMA",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -43,8 +43,6 @@ def ica_aroma(
     out_dir: InputPathType = "out",
 ) -> IcaAromaOutputs:
     """
-    ICA_AROMA, as implemented in Nipype (module: nipype.interfaces.fsl.aroma,
-    interface: ICA_AROMA).
     
     Interface for the ICA_AROMA.py script.
     ICA-AROMA (i.e. 'ICA-based Automatic Removal Of Motion Artifacts') concerns
@@ -53,17 +51,6 @@ def ica_aroma(
     of theoretically motivated features, preventing the need for classifier
     re-training and therefore providing direct and easy applicability.
     See link for further documentation: https://github.com/rhr-pruim/ICA-AROMA
-    Example -------
-    >>> from nipype.interfaces.fsl import ICA_AROMA >>> from nipype.testing
-    import example_data >>> AROMA_obj = ICA_AROMA() >>> AROMA_obj.inputs.in_file
-    = 'functional.nii' >>> AROMA_obj.inputs.mat_file = 'func_to_struct.mat' >>>
-    AROMA_obj.inputs.fnirt_warp_file = 'warpfield.nii' >>>
-    AROMA_obj.inputs.motion_parameters = 'fsl_mcflirt_movpar.txt' >>>
-    AROMA_obj.inputs.mask = 'mask.nii.gz' >>> AROMA_obj.inputs.denoise_type =
-    'both' >>> AROMA_obj.inputs.out_dir = 'ICA_testout' >>> AROMA_obj.cmdline #
-    doctest: +ELLIPSIS 'ICA_AROMA.py -den both -warp warpfield.nii -i
-    functional.nii -m mask.nii.gz -affmat func_to_struct.mat -mc
-    fsl_mcflirt_movpar.txt -o .../ICA_testout'
     
     Args:
         runner: Command runner
@@ -158,11 +145,9 @@ def ica_aroma(
     cargs.append("ICA_AROMA")
     if tr is not None:
         cargs.extend(["-tr", str(tr)])
-    cargs.append("[ARGS]")
     cargs.extend(["-den", denoise_type])
     if dim is not None:
         cargs.extend(["-dim", str(dim)])
-    cargs.append("[ENVIRON]")
     cargs.extend(["-feat", execution.input_file(feat_dir)])
     if fnirt_warp_file is not None:
         cargs.extend(["-warp", execution.input_file(fnirt_warp_file)])

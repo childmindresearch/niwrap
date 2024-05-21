@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 APPLYWARP_METADATA = Metadata(
-    id="668355c86fba1346323156b0914186c000e55906",
+    id="99bb10ab56cb228a80482b910649b0251da26eb4",
     name="applywarp",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -100,10 +100,8 @@ def applywarp(
         cargs.append("--rel")
     if abswarp:
         cargs.append("--abs")
-    cargs.append("[ARGS]")
     if datatype is not None:
         cargs.append(("--datatype=" + datatype))
-    cargs.append("[ENVIRON]")
     if field_file is not None:
         cargs.append(("--warp=" + execution.input_file(field_file)))
     if mask_file is not None:

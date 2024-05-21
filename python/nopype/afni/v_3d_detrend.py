@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_DETREND_METADATA = Metadata(
-    id="a03c8d0f390196567c66c579c53da0153a2875c7",
+    id="c4f7b3e94512a55556f776f95cad0bd3c9005eaf",
     name="3dDetrend",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -33,8 +33,6 @@ def v_3d_detrend(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
 ) -> V3dDetrendOutputs:
     """
-    Detrend, as implemented in Nipype (module: nipype.interfaces.afni, interface:
-    Detrend).
     This program removes components from voxel time series using linear least
     squares
     For complete details, see the `3dDetrend Documentation.
@@ -52,8 +50,6 @@ def v_3d_detrend(
     cargs = []
     cargs.append("3dDetrend")
     cargs.append(execution.input_file(in_file))
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if num_threads is not None:
         cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")

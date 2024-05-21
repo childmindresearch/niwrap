@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 SLICE_METADATA = Metadata(
-    id="fc3c0f297d97fe1cd82fd8a036099e8b04f008fa",
+    id="14acbc34a5d5d43ae4d856ed7b69003552bebed3",
     name="Slice",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -31,8 +31,6 @@ def slice_(
     output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
 ) -> SliceOutputs:
     """
-    Slice, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    Slice).
     Use fslslice to split a 3D file into lots of 2D files (along z-axis).
     
     Args:
@@ -50,8 +48,6 @@ def slice_(
     cargs.append(execution.input_file(in_file))
     if out_base_name is not None:
         cargs.append(out_base_name)
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if output_type is not None:
         cargs.append(output_type)
     ret = SliceOutputs(

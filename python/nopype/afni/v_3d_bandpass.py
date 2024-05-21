@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_BANDPASS_METADATA = Metadata(
-    id="401da743678cfd93fa13ac5572e1547bbfaa8d74",
+    id="ea1e6f623b04efbee5d1d8c1af24c25a32314a96",
     name="3dBandpass",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -47,10 +47,8 @@ def v_3d_bandpass(
     tr: float | int | None = None,
 ) -> V3dBandpassOutputs:
     """
-    Bandpass, as implemented in Nipype (module: nipype.interfaces.afni.preprocess,
-    interface: Bandpass).
-    Program to lowpass and/or highpass each voxel time series in a dataset,
-    offering more/different options than Fourier
+    Program to lowpass and/or highpass each voxel time series in a dataset, offering
+    more/different options than Fourier
     For complete details, see the `3dBandpass Documentation.
     <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBandpass.html>`_
     
@@ -99,14 +97,12 @@ def v_3d_bandpass(
     if mask is not None:
         cargs.extend(["-mask", execution.input_file(mask)])
     cargs.append(execution.input_file(in_file))
-    cargs.append("[ARGS]")
     if automask:
         cargs.append("-automask")
     if blur is not None:
         cargs.extend(["-blur", str(blur)])
     if despike:
         cargs.append("-despike")
-    cargs.append("[ENVIRON]")
     if local_pv is not None:
         cargs.extend(["-localPV", str(local_pv)])
     if nfft is not None:

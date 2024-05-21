@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 ROBUST_FOV_METADATA = Metadata(
-    id="f54f9c0766500f35a66612f5a3d8d011035d27ac",
+    id="0169c09dbf20519f4ff464e2364a2ba28e878213",
     name="RobustFOV",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -37,8 +37,6 @@ def robust_fov(
     output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
 ) -> RobustFovOutputs:
     """
-    RobustFOV, as implemented in Nipype (module: nipype.interfaces.fsl.utils,
-    interface: RobustFOV).
     Automatically crops an image removing lower head and neck.
     Interface is stable 5.0.0 to 5.0.9, but default brainsize changed from 150mm
     to 170mm.
@@ -56,10 +54,8 @@ def robust_fov(
     cargs = []
     cargs.append("RobustFOV")
     cargs.extend(["-i", execution.input_file(in_file)])
-    cargs.append("[ARGS]")
     if brainsize is not None:
         cargs.extend(["-b", str(brainsize)])
-    cargs.append("[ENVIRON]")
     cargs.append("[OUT_ROI]")
     cargs.append("[OUT_TRANSFORM]")
     if output_type is not None:

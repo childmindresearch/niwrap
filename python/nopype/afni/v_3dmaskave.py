@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DMASKAVE_METADATA = Metadata(
-    id="f9b0df29f50dd8be27608bedc16e860e061759da",
+    id="c180f03d70fc28de82025396ba69bbf69195bace",
     name="3dmaskave",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -35,10 +35,8 @@ def v_3dmaskave(
     quiet: bool = False,
 ) -> V3dmaskaveOutputs:
     """
-    Maskave, as implemented in Nipype (module: nipype.interfaces.afni.preprocess,
-    interface: Maskave).
-    Computes average of all voxels in the input dataset which satisfy the
-    criterion in the options list
+    Computes average of all voxels in the input dataset which satisfy the criterion
+    in the options list
     For complete details, see the `3dmaskave Documentation.
     <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskave.html>`_
     
@@ -61,8 +59,6 @@ def v_3dmaskave(
     if quiet:
         cargs.append("-quiet")
     cargs.append("[OUT_FILE]")
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if num_threads is not None:
         cargs.append(str(num_threads))
     if outputtype is not None:

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_LFCD_METADATA = Metadata(
-    id="76d98209bce46f704233aa51f0b21f3581eed454",
+    id="5b0084be27cfb8e53839f2badfd43a3d30707bce",
     name="3dLFCD",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,10 +38,8 @@ def v_3d_lfcd(
     thresh: float | int | None = None,
 ) -> V3dLfcdOutputs:
     """
-    LFCD, as implemented in Nipype (module: nipype.interfaces.afni.preprocess,
-    interface: LFCD).
-    Performs degree centrality on a dataset using a given maskfile via the
-    3dLFCD command
+    Performs degree centrality on a dataset using a given maskfile via the 3dLFCD
+    command
     For complete details, see the `3dLFCD Documentation.
     <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLFCD.html>`_
     
@@ -62,12 +60,10 @@ def v_3d_lfcd(
     cargs = []
     cargs.append("3dLFCD")
     cargs.append(execution.input_file(in_file))
-    cargs.append("[ARGS]")
     if autoclip:
         cargs.append("-autoclip")
     if automask:
         cargs.append("-automask")
-    cargs.append("[ENVIRON]")
     if mask is not None:
         cargs.extend(["-mask", execution.input_file(mask)])
     if num_threads is not None:

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 PREPARE_FIELDMAP_METADATA = Metadata(
-    id="2231a5d83adb417b7d33f74216049429d0a1a84b",
+    id="c105e3dffd80ded0d15c0f07eb79f49e03fcd325",
     name="PrepareFieldmap",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -35,8 +35,6 @@ def prepare_fieldmap(
     scanner: str | None = "SIEMENS",
 ) -> PrepareFieldmapOutputs:
     """
-    PrepareFieldmap, as implemented in Nipype (module: nipype.interfaces.fsl.epi,
-    interface: PrepareFieldmap).
     
     Interface for the fsl_prepare_fieldmap script (FSL 5.0)
     Prepares a fieldmap suitable for FEAT from SIEMENS data - saves output in
@@ -70,8 +68,6 @@ def prepare_fieldmap(
         cargs.append(execution.input_file(out_fieldmap))
     if nocheck:
         cargs.append("--nocheck")
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if output_type is not None:
         cargs.append(output_type)
     ret = PrepareFieldmapOutputs(

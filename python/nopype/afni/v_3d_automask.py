@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_AUTOMASK_METADATA = Metadata(
-    id="f41cd3ff777cae728b23a3003744395430b9db9e",
+    id="8ff1f5cb12b314b20602a7a3be65602b29e26216",
     name="3dAutomask",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -40,8 +40,6 @@ def v_3d_automask(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
 ) -> V3dAutomaskOutputs:
     """
-    Automask, as implemented in Nipype (module: nipype.interfaces.afni.preprocess,
-    interface: Automask).
     Create a brain-only mask of the image using AFNI 3dAutomask command
     For complete details, see the `3dAutomask Documentation.
     <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html>`_
@@ -62,13 +60,11 @@ def v_3d_automask(
     cargs = []
     cargs.append("3dAutomask")
     cargs.append(execution.input_file(in_file))
-    cargs.append("[ARGS]")
     cargs.append("[BRAIN_FILE]")
     if clfrac is not None:
         cargs.extend(["-clfrac", str(clfrac)])
     if dilate is not None:
         cargs.extend(["-dilate", str(dilate)])
-    cargs.append("[ENVIRON]")
     if erode is not None:
         cargs.extend(["-erode", str(erode)])
     if num_threads is not None:

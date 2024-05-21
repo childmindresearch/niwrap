@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 RANDOMISE_METADATA = Metadata(
-    id="e178f3d3dafd5dfc1945cc679a26ca2b956a0973",
+    id="02b587cd55ca38e1221ffdfbf100a2a50f6f058d",
     name="Randomise",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -66,14 +66,8 @@ def randomise(
     x_block_labels: InputPathType | None = None,
 ) -> RandomiseOutputs:
     """
-    Randomise, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    Randomise).
     FSL Randomise: feeds the 4D projected FA data into GLM modelling and
     thresholding in order to find voxels which correlate with your model
-    Example ------- >>> import nipype.interfaces.fsl as fsl >>> rand =
-    fsl.Randomise(in_file='allFA.nii', mask = 'mask.nii', tcon='design.con',
-    design_mat='design.mat') >>> rand.cmdline 'randomise -i allFA.nii -o
-    "randomise" -d design.mat -t design.con -m mask.nii'
     
     Args:
         runner: Command runner
@@ -126,14 +120,12 @@ def randomise(
         cargs.extend(["-d", execution.input_file(design_mat)])
     if tcon is not None:
         cargs.extend(["-t", execution.input_file(tcon)])
-    cargs.append("[ARGS]")
     if c_thresh is not None:
         cargs.extend(["-c", str(c_thresh)])
     if cm_thresh is not None:
         cargs.extend(["-C", str(cm_thresh)])
     if demean:
         cargs.append("-D")
-    cargs.append("[ENVIRON]")
     if f_c_thresh is not None:
         cargs.extend(["-F", str(f_c_thresh)])
     if f_cm_thresh is not None:

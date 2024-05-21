@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_TSHIFT_METADATA = Metadata(
-    id="0b2c95afc9b600bfae218e543be95a0527bf5167",
+    id="cdb66d7141b310fd556998a2f6e0f967e2c773b2",
     name="3dTshift",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -47,10 +47,8 @@ def v_3d_tshift(
     tzero: float | int | None = None,
 ) -> V3dTshiftOutputs:
     """
-    TShift, as implemented in Nipype (module: nipype.interfaces.afni.preprocess,
-    interface: TShift).
-    Shifts voxel time series from input so that separate slices are aligned to
-    the same temporal origin.
+    Shifts voxel time series from input so that separate slices are aligned to the
+    same temporal origin.
     For complete details, see the `3dTshift Documentation.
     <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTshift.html>`_
     
@@ -129,8 +127,6 @@ def v_3d_tshift(
     cargs = []
     cargs.append("3dTshift")
     cargs.append(execution.input_file(in_file))
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if ignore is not None:
         cargs.extend(["-ignore", str(ignore)])
     if interp is not None:

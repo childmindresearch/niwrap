@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 INV_WARP_METADATA = Metadata(
-    id="a2b2b2e4aa4b70310b78c3e6d66137f90794e4c6",
+    id="ef3b1bef7e701e4967ab676b3a228c5251f7dcbf",
     name="InvWarp",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -37,8 +37,6 @@ def inv_warp(
     debug: bool = False,
 ) -> InvWarpOutputs:
     """
-    InvWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    InvWarp).
     
     Use FSL Invwarp to invert a FNIRT warp
     

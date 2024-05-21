@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 OVERLAY_METADATA = Metadata(
-    id="192f8f797c9d77d0bebe728d52daee84cda8319d",
+    id="08c461a1c1364a71fb120c4215e9f751f4996e20",
     name="Overlay",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -40,10 +40,8 @@ def overlay(
     use_checkerboard: bool = False,
 ) -> OverlayOutputs:
     """
-    Overlay, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    Overlay).
-    Use FSL's overlay command to combine background and statistical images into
-    one volume
+    Use FSL's overlay command to combine background and statistical images into one
+    volume
     
     Args:
         runner: Command runner
@@ -110,8 +108,6 @@ def overlay(
         cargs.extend(map(str, stat_thresh2))
     if out_file is not None:
         cargs.append(execution.input_file(out_file))
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if output_type is not None:
         cargs.append(output_type)
     ret = OverlayOutputs(

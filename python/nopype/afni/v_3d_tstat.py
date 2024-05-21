@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_TSTAT_METADATA = Metadata(
-    id="e596c024bf6f154b50ebebbe40d07abc5b674e50",
+    id="a51c053d3a8d4129056ef6d4f73c78b848c0eaab",
     name="3dTstat",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -35,8 +35,6 @@ def v_3d_tstat(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
 ) -> V3dTstatOutputs:
     """
-    TStat, as implemented in Nipype (module: nipype.interfaces.afni.utils,
-    interface: TStat).
     Compute voxel-wise statistics using AFNI 3dTstat command
     For complete details, see the `3dTstat Documentation.
     <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTstat.html>`_
@@ -55,8 +53,6 @@ def v_3d_tstat(
     cargs = []
     cargs.append("3dTstat")
     cargs.append(execution.input_file(in_file))
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if mask is not None:
         cargs.extend(["-mask", execution.input_file(mask)])
     if num_threads is not None:

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 IMAGE_STATS_METADATA = Metadata(
-    id="b420aa3204337c516b306b71a494d7783ea7ad5b",
+    id="efce8ade4d66f7319588ebacbfa01a59628b78ce",
     name="ImageStats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -34,8 +34,6 @@ def image_stats(
     split_4d: bool = False,
 ) -> ImageStatsOutputs:
     """
-    ImageStats, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    ImageStats).
     Use FSL fslstats command to calculate stats from images `FSL info
     <http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils>`_
     
@@ -65,8 +63,6 @@ def image_stats(
         cargs.extend(["-K", execution.input_file(index_mask_file)])
     cargs.append(execution.input_file(in_file))
     cargs.append(op_string)
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if mask_file is not None:
         cargs.append(execution.input_file(mask_file))
     if output_type is not None:

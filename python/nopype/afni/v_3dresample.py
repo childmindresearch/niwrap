@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DRESAMPLE_METADATA = Metadata(
-    id="62a370bb5aba09e22d071fc214b9cf4b41ed4149",
+    id="f0d2a8f0b5fc1ce2b583449deda23ddd43b9f3bb",
     name="3dresample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -36,8 +36,6 @@ def v_3dresample(
     voxel_size: list[float | int] = None,
 ) -> V3dresampleOutputs:
     """
-    Resample, as implemented in Nipype (module: nipype.interfaces.afni.utils,
-    interface: Resample).
     Resample or reorient an image using AFNI 3dresample command
     For complete details, see the `3dresample Documentation.
     <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dresample.html>`_
@@ -61,8 +59,6 @@ def v_3dresample(
     cargs = []
     cargs.append("3dresample")
     cargs.extend(["-inset", execution.input_file(in_file)])
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if master is not None:
         cargs.extend(["-master", execution.input_file(master)])
     cargs.append("[NUM_THREADS]")

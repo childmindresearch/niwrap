@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 MULTIPLY_IMAGES_METADATA = Metadata(
-    id="b776965974c9460f157eb1b9b00602d92e34a75a",
+    id="caea37918e8cd3ce060ab9e00b19c02e344bf21e",
     name="MultiplyImages",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -34,8 +34,7 @@ def multiply_images(
     second_input_2: float | int | None = None,
 ) -> MultiplyImagesOutputs:
     """
-    MultiplyImages, as implemented in Nipype (module: nipype.interfaces.ants,
-    interface: MultiplyImages).
+    No description provided.
     
     Args:
         runner: Command runner
@@ -68,8 +67,6 @@ def multiply_images(
     if second_input_2 is not None:
         cargs.append(str(second_input_2))
     cargs.append(execution.input_file(output_product_image))
-    cargs.append("[ARGS]")
-    cargs.append("[ENVIRON]")
     if num_threads is not None:
         cargs.append(str(num_threads))
     ret = MultiplyImagesOutputs(

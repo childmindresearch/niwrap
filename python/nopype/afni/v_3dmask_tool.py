@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DMASK_TOOL_METADATA = Metadata(
-    id="b1e1ee405dbd76821fd01f1dd30c63652b4b4af3",
+    id="71e769cdc79da17964899278f3beb5e7a75d33d6",
     name="3dmask_tool",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -43,8 +43,6 @@ def v_3dmask_tool(
     verbose: int | None = None,
 ) -> V3dmaskToolOutputs:
     """
-    MaskTool, as implemented in Nipype (module: nipype.interfaces.afni, interface:
-    MaskTool).
     3dmask_tool - for combining/dilating/eroding/filling masks
     For complete details, see the `3dmask_tool Documentation.
     <https://afni.nimh.nih.gov/pub../pub/dist/doc/program_help/3dmask_tool.html>`_
@@ -82,14 +80,12 @@ def v_3dmask_tool(
     if count:
         cargs.append("-count")
     cargs.extend(["-input", execution.input_file(in_file)])
-    cargs.append("[ARGS]")
     if datum is not None:
         cargs.extend(["-datum", datum])
     if dilate_inputs is not None:
         cargs.extend(["-dilate_inputs", dilate_inputs])
     if dilate_results is not None:
         cargs.extend(["-dilate_results", dilate_results])
-    cargs.append("[ENVIRON]")
     if fill_dirs is not None:
         cargs.extend(["-fill_dirs", fill_dirs])
     if fill_holes:

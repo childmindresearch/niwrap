@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 FUGUE_METADATA = Metadata(
-    id="30806a1150bbff318791a03c76e4b24c98eb7d9f",
+    id="8f8282cc43a57894f3b4c876a9ea40394abe87cd",
     name="FUGUE",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -67,8 +67,6 @@ def fugue(
     warped_file: InputPathType | None = None,
 ) -> FugueOutputs:
     """
-    FUGUE, as implemented in Nipype (module: nipype.interfaces.fsl, interface:
-    FUGUE).
     FSL FUGUE set of tools for EPI distortion correction
     `FUGUE <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE>`_ is, most generally, a
     set of tools for EPI distortion correction.
@@ -149,7 +147,6 @@ def fugue(
     execution = runner.start_execution(FUGUE_METADATA)
     cargs = []
     cargs.append("FUGUE")
-    cargs.append("[ARGS]")
     if asym_se_time is not None:
         cargs.append(("--asym=" + str(asym_se_time)))
     if despike_2dfilter:
@@ -160,7 +157,6 @@ def fugue(
         cargs.append(("--dwell=" + str(dwell_time)))
     if dwell_to_asym_ratio is not None:
         cargs.append(("--dwelltoasym=" + str(dwell_to_asym_ratio)))
-    cargs.append("[ENVIRON]")
     if fmap_in_file is not None:
         cargs.append(("--loadfmap=" + execution.input_file(fmap_in_file)))
     if fmap_out_file is not None:

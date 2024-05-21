@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DVOLREG_METADATA = Metadata(
-    id="a339444ae3607862ba884b4b742c84ec36053226",
+    id="f26bb5afb867aee867b737305ded487e5991d642",
     name="3dvolreg",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -53,8 +53,6 @@ def v_3dvolreg(
     zpad: int | None = None,
 ) -> V3dvolregOutputs:
     """
-    Volreg, as implemented in Nipype (module: nipype.interfaces.afni.preprocess,
-    interface: Volreg).
     Register input volumes to a base volume using AFNI 3dvolreg command
     For complete details, see the `3dvolreg Documentation.
     <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dvolreg.html>`_
@@ -98,10 +96,8 @@ def v_3dvolreg(
         cargs.extend(["-zpad", str(zpad)])
     cargs.append("[MD1D_FILE]")
     cargs.append(execution.input_file(in_file))
-    cargs.append("[ARGS]")
     if copyorigin:
         cargs.append("-twodup")
-    cargs.append("[ENVIRON]")
     if in_weight_volume_2 is not None:
         cargs.extend(["-weight '", execution.input_file(in_weight_volume_2)])
     if interp is not None:
