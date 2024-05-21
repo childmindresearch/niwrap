@@ -2,7 +2,8 @@
   "name": "3dBlurToFWHM",
   "command-line": "3dBlurToFWHM [AUTOMASK] [BLURMASTER] [FWHM] [FWHMXY] [IN_FILE] [MASK] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "Blurs a 'master' dataset until it reaches a specified FWHM smoothness (approximately).\nFor complete details, see the `3dBlurToFWHM Documentation <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html>`_",
+  "description": "Blurs a 'master' dataset until it reaches a specified FWHM smoothness (approximately).",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html",
   "inputs": [
     {
       "id": "automask",

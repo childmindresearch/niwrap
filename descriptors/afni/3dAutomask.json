@@ -2,7 +2,8 @@
   "name": "3dAutomask",
   "command-line": "3dAutomask [IN_FILE] [BRAIN_FILE] [CLFRAC] [DILATE] [ERODE] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "Create a brain-only mask of the image using AFNI 3dAutomask command\nFor complete details, see the `3dAutomask Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html>`_",
+  "description": "Create a brain-only mask of the image using AFNI 3dAutomask command.",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html",
   "inputs": [
     {
       "id": "clfrac",

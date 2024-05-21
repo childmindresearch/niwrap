@@ -2,7 +2,8 @@
   "name": "3dmask_tool",
   "command-line": "3dmask_tool [COUNT] [IN_FILE] [DATUM] [DILATE_INPUTS] [DILATE_RESULTS] [FILL_DIRS] [FILL_HOLES] [FRAC] [INTER] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [UNION] [VERBOSE]",
   "author": "Nipype (interface)",
-  "description": "3dmask_tool - for combining/dilating/eroding/filling masks\nFor complete details, see the `3dmask_tool Documentation. <https://afni.nimh.nih.gov/pub../pub/dist/doc/program_help/3dmask_tool.html>`_",
+  "description": "3dmask_tool - for combining/dilating/eroding/filling masks",
+  "url": "https://afni.nimh.nih.gov/pub../pub/dist/doc/program_help/3dmask_tool.html",
   "inputs": [
     {
       "id": "count",

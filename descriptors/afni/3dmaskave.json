@@ -2,7 +2,8 @@
   "name": "3dmaskave",
   "command-line": "3dmaskave [IN_FILE] [MASK] [QUIET] [OUT_FILE] [NUM_THREADS] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "Computes average of all voxels in the input dataset which satisfy the criterion in the options list\nFor complete details, see the `3dmaskave Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskave.html>`_",
+  "description": "Computes average of all voxels in the input dataset which satisfy the criterion in the options list",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskave.html",
   "inputs": [
     {
       "id": "in_file",

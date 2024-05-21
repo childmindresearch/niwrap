@@ -2,7 +2,8 @@
   "name": "3dECM",
   "command-line": "3dECM [IN_FILE] [AUTOCLIP] [AUTOMASK] [EPS] [FECM] [FULL] [MASK] [MAX_ITER] [MEMORY] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [POLORT] [SCALE] [SHIFT] [SPARSITY] [THRESH]",
   "author": "Nipype (interface)",
-  "description": "Performs degree centrality on a dataset using a given maskfile via the 3dECM command\nFor complete details, see the `3dECM Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dECM.html>`_",
+  "description": "Performs degree centrality on a dataset using a given maskfile via the 3dECM command",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dECM.html",
   "inputs": [
     {
       "id": "autoclip",

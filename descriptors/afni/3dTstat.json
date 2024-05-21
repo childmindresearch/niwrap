@@ -2,7 +2,8 @@
   "name": "3dTstat",
   "command-line": "3dTstat [IN_FILE] [MASK] [NUM_THREADS] [OPTIONS] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
-  "description": "Compute voxel-wise statistics using AFNI 3dTstat command\nFor complete details, see the `3dTstat Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTstat.html>`_",
+  "description": "Compute voxel-wise statistics using AFNI 3dTstat command",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTstat.html",
   "inputs": [
     {
       "id": "in_file",
