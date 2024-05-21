@@ -78,7 +78,11 @@ def bet(
     debug_flag: bool = False,
 ) -> BetOutputs:
     """
-    Automated brain extraction tool for FSL
+    bet by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
+    Automated brain extraction tool for FSL.
+    
+    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET
     
     Args:
         runner: Command runner

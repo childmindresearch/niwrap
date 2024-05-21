@@ -36,6 +36,8 @@ def volume_vector_operation(
     opt_magnitude: bool = False,
 ) -> VolumeVectorOperationOutputs:
     """
+    volume-vector-operation by Washington University School of Medicin.
+    
     DO A VECTOR OPERATION ON VOLUME FILES.
     
     Does a vector operation on two volume files (that must have a multiple of 3
@@ -48,7 +50,7 @@ def volume_vector_operation(
     DOT
     CROSS
     ADD
-    SUBTRACT
+    SUBTRACT.
     
     Args:
         runner: Command runner

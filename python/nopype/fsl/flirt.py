@@ -73,9 +73,13 @@ def flirt(
     wmnorms: InputPathType | None = None,
 ) -> FlirtOutputs:
     """
-    FLIRT (FMRIB's Linear Image Registration Tool) is a fully automated robust and
-    accurate tool for linear (affine) intra- and inter-modal brain image
+    FLIRT by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
+    FLIRT (FMRIB's Linear Image Registration Tool) is a fully automated robust
+    and accurate tool for linear (affine) intra- and inter-modal brain image
     registration.
+    
+    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT
     
     Args:
         runner: Command runner

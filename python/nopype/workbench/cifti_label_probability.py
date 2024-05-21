@@ -31,6 +31,8 @@ def cifti_label_probability(
     opt_exclude_unlabeled: bool = False,
 ) -> CiftiLabelProbabilityOutputs:
     """
+    cifti-label-probability by Washington University School of Medicin.
+    
     FIND FREQUENCY OF CIFTI LABELS.
     
     This command outputs a set of soft ROIs, one for each label in the input,

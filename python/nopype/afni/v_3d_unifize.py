@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_UNIFIZE_METADATA = Metadata(
-    id="7920f1f9eb4c5c4482417ad2b350c0891a9c2eb7",
+    id="6b0fd001354df1d28cc4e7373eee398e238c9790",
     name="3dUnifize",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -45,6 +45,8 @@ def v_3d_unifize(
     urad: float | int | None = None,
 ) -> V3dUnifizeOutputs:
     """
+    3dUnifize by Nipype (interface).
+    
     3dUnifize - for uniformizing image intensity
     * The input dataset is supposed to be a T1-weighted volume, possibly already
     skull-stripped (e.g., via 3dSkullStrip). However, this program can be a
@@ -62,9 +64,10 @@ def v_3d_unifize(
     script, and it may or may not be useful otherwise.
     * This program replaces the older (and very different) 3dUniformize, which
     is no longer maintained and may sublimate at any moment. (In other words, we
-    do not recommend the use of 3dUniformize.)
-    For complete details, see the `3dUnifize Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dUnifize.html>`_
+    do not recommend the use of 3dUniformize.).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dUnifize.html
     
     Args:
         runner: Command runner

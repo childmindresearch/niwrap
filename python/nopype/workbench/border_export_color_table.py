@@ -29,6 +29,8 @@ def border_export_color_table(
     opt_class_colors: bool = False,
 ) -> BorderExportColorTableOutputs:
     """
+    border-export-color-table by Washington University School of Medicin.
+    
     WRITE BORDER NAMES AND COLORS AS TEXT.
     
     Takes the names and colors of each border, and writes it to the same format

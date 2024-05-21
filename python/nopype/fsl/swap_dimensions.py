@@ -36,11 +36,15 @@ def swap_dimensions(
     out_file: str | None = None,
 ) -> SwapDimensionsOutputs:
     """
+    SwapDimensions by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
     this is an advanced tool that re-orders the data storage to permit changes
     between axial, sagittal and coronal slicing. When used in this mode the same
     left-right convention (also called coordinate handedness or
-    radiological/neurological convention) will be maintained as long as no warning
-    is printed.
+    radiological/neurological convention) will be maintained as long as no
+    warning is printed.
+    
+    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
         runner: Command runner

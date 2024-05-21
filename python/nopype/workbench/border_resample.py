@@ -32,6 +32,8 @@ def border_resample(
     border_out: InputPathType,
 ) -> BorderResampleOutputs:
     """
+    border-resample by Washington University School of Medicin.
+    
     RESAMPLE A BORDER FILE TO A DIFFERENT MESH.
     
     Resamples a border file, given two spherical surfaces that are in register.

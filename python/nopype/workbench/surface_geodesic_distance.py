@@ -34,6 +34,8 @@ def surface_geodesic_distance(
     opt_corrected_areas_area_metric: InputPathType | None = None,
 ) -> SurfaceGeodesicDistanceOutputs:
     """
+    surface-geodesic-distance by Washington University School of Medicin.
+    
     COMPUTE GEODESIC DISTANCE FROM ONE VERTEX TO THE ENTIRE SURFACE.
     
     Unless -limit is specified, computes the geodesic distance from the

@@ -33,6 +33,8 @@ def cifti_label_to_roi(
     opt_map_map: str | None = None,
 ) -> CiftiLabelToRoiOutputs:
     """
+    cifti-label-to-roi by Washington University School of Medicin.
+    
     MAKE A CIFTI LABEL INTO AN ROI.
     
     For each map in <label-in>, a map is created in <scalar-out> where all

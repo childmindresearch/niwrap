@@ -35,6 +35,8 @@ def volume_smoothing(
     opt_subvolume_subvol: str | None = None,
 ) -> VolumeSmoothingOutputs:
     """
+    volume-smoothing by Washington University School of Medicin.
+    
     SMOOTH A VOLUME FILE.
     
     Gaussian smoothing for volumes. By default, smooths all subvolumes with no

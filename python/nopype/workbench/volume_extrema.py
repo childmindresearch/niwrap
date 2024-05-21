@@ -38,6 +38,8 @@ def volume_extrema(
     opt_subvolume_subvolume: str | None = None,
 ) -> VolumeExtremaOutputs:
     """
+    volume-extrema by Washington University School of Medicin.
+    
     FIND EXTREMA IN A VOLUME FILE.
     
     Finds extrema in a volume file, such that no two extrema of the same type

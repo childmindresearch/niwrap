@@ -31,6 +31,8 @@ def cifti_average(
     opt_cifti_cifti_in: InputPathType | None = None,
 ) -> CiftiAverageOutputs:
     """
+    cifti-average by Washington University School of Medicin.
+    
     AVERAGE CIFTI FILES.
     
     Averages cifti files together. Files without -weight specified are given a

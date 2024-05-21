@@ -41,6 +41,8 @@ def cifti_smoothing(
     opt_merged_volume: bool = False,
 ) -> CiftiSmoothingOutputs:
     """
+    cifti-smoothing by Washington University School of Medicin.
+    
     SMOOTH A CIFTI FILE.
     
     The input cifti file must have a brain models mapping on the chosen

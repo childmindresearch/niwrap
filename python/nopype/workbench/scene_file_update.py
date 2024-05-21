@@ -36,6 +36,8 @@ def scene_file_update(
     opt_data_file_remove_name_of_data_file: str | None = None,
 ) -> SceneFileUpdateOutputs:
     """
+    scene-file-update by Washington University School of Medicin.
+    
     UPDATE SCENE FILE.
     
     This command will update a scene for specific changes in data files.
@@ -64,6 +66,7 @@ def scene_file_update(
     any of the scene operations, the command will immediately cease processing
     and the output scene file will not be created. Otherwise any errors will be
     listed after the command finishes.
+    .
     
     Args:
         runner: Command runner

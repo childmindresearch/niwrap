@@ -33,6 +33,9 @@ def cifti_create_parcellated_from_template(
     opt_cifti_cifti_in: InputPathType | None = None,
 ) -> CiftiCreateParcellatedFromTemplateOutputs:
     """
+    cifti-create-parcellated-from-template by Washington University School of
+    Medicin.
+    
     MATCH PARCELS TO TEMPLATE BY NAME.
     
     For each parcel name in the template mapping, find that name in an input

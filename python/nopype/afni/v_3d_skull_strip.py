@@ -33,8 +33,13 @@ def v_3d_skull_strip(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
 ) -> V3dSkullStripOutputs:
     """
+    3dSkullStrip by AFNI.
+    
     A program to extract the brain from surrounding tissue from MRI T1-weighted
     images.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSkullStrip.html
     
     Args:
         runner: Command runner

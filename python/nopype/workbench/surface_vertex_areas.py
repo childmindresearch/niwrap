@@ -30,6 +30,8 @@ def surface_vertex_areas(
     metric: InputPathType,
 ) -> SurfaceVertexAreasOutputs:
     """
+    surface-vertex-areas by Washington University School of Medicin.
+    
     MEASURE SURFACE AREA EACH VERTEX IS RESPONSIBLE FOR.
     
     Each vertex gets one third of the area of each triangle it is a part of.

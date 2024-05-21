@@ -30,6 +30,8 @@ def convert_fiber_orientations(
     fiber_out: InputPathType,
 ) -> ConvertFiberOrientationsOutputs:
     """
+    convert-fiber-orientations by Washington University School of Medicin.
+    
     CONVERT BINGHAM PARAMETER VOLUMES TO FIBER ORIENTATION FILE.
     
     Takes precomputed bingham parameters from volume files and converts them to
@@ -69,7 +71,7 @@ def convert_fiber_orientations(
     PUTAMEN_LEFT
     PUTAMEN_RIGHT
     THALAMUS_LEFT
-    THALAMUS_RIGHT
+    THALAMUS_RIGHT.
     
     Args:
         runner: Command runner

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_BLUR_TO_FWHM_METADATA = Metadata(
-    id="723e5e2145d274825a8a1a8709a185bf037dc49b",
+    id="bfa4a9cfcba16a02c729a45e50647d824f207141",
     name="3dBlurToFWHM",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,10 +38,13 @@ def v_3d_blur_to_fwhm(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
 ) -> V3dBlurToFwhmOutputs:
     """
+    3dBlurToFWHM by Nipype (interface).
+    
     Blurs a 'master' dataset until it reaches a specified FWHM smoothness
     (approximately).
-    For complete details, see the `3dBlurToFWHM Documentation
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html>`_
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html
     
     Args:
         runner: Command runner

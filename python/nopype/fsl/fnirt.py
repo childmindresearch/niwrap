@@ -51,7 +51,11 @@ def fnirt(
     warped_file: InputPathType | None = None,
 ) -> FnirtOutputs:
     """
-    FSL non-linear registration
+    fnirt by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
+    FSL non-linear registration.
+    
+    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT
     
     Args:
         runner: Command runner

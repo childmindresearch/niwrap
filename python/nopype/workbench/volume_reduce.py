@@ -32,6 +32,8 @@ def volume_reduce(
     opt_only_numeric: bool = False,
 ) -> VolumeReduceOutputs:
     """
+    volume-reduce by Washington University School of Medicin.
+    
     PERFORM REDUCTION OPERATION ACROSS SUBVOLUMES.
     
     For each voxel, takes the data across subvolumes as a vector, and performs
@@ -54,6 +56,7 @@ def volume_reduce(
     MEDIAN: the median of the data
     MODE: the mode of the data
     COUNT_NONZERO: the number of nonzero elements in the data
+    .
     
     Args:
         runner: Command runner

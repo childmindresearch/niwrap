@@ -34,6 +34,8 @@ def border_to_rois(
     opt_include_border: bool = False,
 ) -> BorderToRoisOutputs:
     """
+    border-to-rois by Washington University School of Medicin.
+    
     MAKE METRIC ROIS FROM BORDERS.
     
     By default, draws ROIs inside all borders in the border file, as separate

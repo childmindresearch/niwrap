@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 IMAGE_STATS_METADATA = Metadata(
-    id="efce8ade4d66f7319588ebacbfa01a59628b78ce",
+    id="f764a7c021354040cc7d42a36aa10e23a2f3233f",
     name="ImageStats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -34,8 +34,12 @@ def image_stats(
     split_4d: bool = False,
 ) -> ImageStatsOutputs:
     """
-    Use FSL fslstats command to calculate stats from images `FSL info
-    <http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils>`_
+    ImageStats by Nipype (interface).
+    
+    Use FSL fslstats command to calculate stats from images.
+    
+    More information:
+    http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils
     
     Args:
         runner: Command runner

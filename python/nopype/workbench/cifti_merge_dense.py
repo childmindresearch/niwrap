@@ -32,6 +32,8 @@ def cifti_merge_dense(
     opt_cifti_cifti_in: InputPathType | None = None,
 ) -> CiftiMergeDenseOutputs:
     """
+    cifti-merge-dense by Washington University School of Medicin.
+    
     MERGE CIFTI FILES ALONG DENSE DIMENSION.
     
     The input cifti files must have matching mappings along the direction not

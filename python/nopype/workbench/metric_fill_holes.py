@@ -32,6 +32,8 @@ def metric_fill_holes(
     opt_corrected_areas_area_metric: InputPathType | None = None,
 ) -> MetricFillHolesOutputs:
     """
+    metric-fill-holes by Washington University School of Medicin.
+    
     FILL HOLES IN AN ROI METRIC.
     
     Finds all connected areas that are not included in the ROI, and writes ones

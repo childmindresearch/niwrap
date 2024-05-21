@@ -34,6 +34,8 @@ def multiply_images(
     second_input_2: float | int | None = None,
 ) -> MultiplyImagesOutputs:
     """
+    MultiplyImages by Nipype (interface).
+    
     No description provided.
     
     Args:

@@ -29,10 +29,12 @@ def surface_match(
     output_surface_name: str,
 ) -> SurfaceMatchOutputs:
     """
+    surface-match by Washington University School of Medicin.
+    
     SURFACE MATCH.
     
     The Input Surface File will be transformed so that its coordinate ranges
-    (bounding box) match that of the Match Surface File
+    (bounding box) match that of the Match Surface File.
     
     Args:
         runner: Command runner

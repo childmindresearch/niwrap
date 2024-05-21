@@ -27,6 +27,8 @@ def surface_information(
     surface_file: InputPathType,
 ) -> SurfaceInformationOutputs:
     """
+    surface-information by Washington University School of Medicin.
+    
     DISPLAY INFORMATION ABOUT A SURFACE.
     
     Information about surface is displayed including vertices,

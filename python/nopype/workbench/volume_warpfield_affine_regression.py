@@ -30,6 +30,8 @@ def volume_warpfield_affine_regression(
     opt_fnirt_source_volume: str | None = None,
 ) -> VolumeWarpfieldAffineRegressionOutputs:
     """
+    volume-warpfield-affine-regression by Washington University School of Medicin.
+    
     REGRESS AFFINE FROM WARPFIELD.
     
     For all voxels in the warpfield, do a regression that predicts the post-warp

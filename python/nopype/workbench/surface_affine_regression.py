@@ -29,6 +29,8 @@ def surface_affine_regression(
     affine_out: str,
 ) -> SurfaceAffineRegressionOutputs:
     """
+    surface-affine-regression by Washington University School of Medicin.
+    
     REGRESS THE AFFINE TRANSFORM BETWEEN SURFACES ON THE SAME MESH.
     
     Use linear regression to compute an affine that minimizes the sum of squares

@@ -37,6 +37,8 @@ def metric_gradient(
     opt_average_normals: bool = False,
 ) -> MetricGradientOutputs:
     """
+    metric-gradient by Washington University School of Medicin.
+    
     SURFACE GRADIENT OF A METRIC FILE.
     
     At each vertex, the immediate neighbors are unfolded onto a plane tangent to

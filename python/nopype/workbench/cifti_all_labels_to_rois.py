@@ -31,6 +31,8 @@ def cifti_all_labels_to_rois(
     cifti_out: InputPathType,
 ) -> CiftiAllLabelsToRoisOutputs:
     """
+    cifti-all-labels-to-rois by Washington University School of Medicin.
+    
     MAKE ROIS FROM ALL LABELS IN A CIFTI LABEL MAP.
     
     The output cifti file is a dscalar file with a column (map) for each label

@@ -31,6 +31,8 @@ def border_length(
     opt_hide_border_name: bool = False,
 ) -> BorderLengthOutputs:
     """
+    border-length by Washington University School of Medicin.
+    
     REPORT LENGTH OF BORDERS.
     
     For each border, print its length along the surface, in mm. If a border has

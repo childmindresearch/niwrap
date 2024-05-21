@@ -36,6 +36,8 @@ def fiber_dot_products(
     f_metric: InputPathType,
 ) -> FiberDotProductsOutputs:
     """
+    fiber-dot-products by Washington University School of Medicin.
+    
     COMPUTE DOT PRODUCTS OF FIBER ORIENTATIONS WITH SURFACE NORMALS.
     
     For each vertex, this command finds the closest fiber population that

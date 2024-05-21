@@ -37,6 +37,8 @@ def label_resample(
     opt_bypass_sphere_check: bool = False,
 ) -> LabelResampleOutputs:
     """
+    label-resample by Washington University School of Medicin.
+    
     RESAMPLE A LABEL FILE TO A DIFFERENT MESH.
     
     Resamples a label file, given two spherical surfaces that are in register.
@@ -59,6 +61,7 @@ def label_resample(
     
     ADAP_BARY_AREA
     BARYCENTRIC
+    .
     
     Args:
         runner: Command runner

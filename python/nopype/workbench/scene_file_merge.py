@@ -28,6 +28,8 @@ def scene_file_merge(
     opt_scene_file_scene_file: str | None = None,
 ) -> SceneFileMergeOutputs:
     """
+    scene-file-merge by Washington University School of Medicin.
+    
     REARRANGE SCENES INTO A NEW FILE.
     
     Takes one or more scene files and constructs a new scene file by

@@ -37,8 +37,10 @@ def inv_warp(
     debug: bool = False,
 ) -> InvWarpOutputs:
     """
+    InvWarp by Nipype (interface).
     
-    Use FSL Invwarp to invert a FNIRT warp
+    
+    Use FSL Invwarp to invert a FNIRT warp.
     
     Args:
         runner: Command runner

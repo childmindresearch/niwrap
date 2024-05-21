@@ -29,6 +29,8 @@ def border_file_export_to_caret5(
     opt_surface_surface_in: InputPathType | None = None,
 ) -> BorderFileExportToCaret5Outputs:
     """
+    border-file-export-to-caret5 by Washington University School of Medicin.
+    
     EXPORT BORDER FILE TO CARET5 FILE FORMAT.
     
     A Workbench border file may contain borders for multiple structures and
@@ -54,7 +56,7 @@ def border_file_export_to_caret5(
     error message will be displayed and some output files will not be created.
     
     When writing new files, this command will overwrite a file with the same
-    name.
+    name. .
     
     Args:
         runner: Command runner

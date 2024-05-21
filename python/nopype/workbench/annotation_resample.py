@@ -28,6 +28,8 @@ def annotation_resample(
     annotation_out: str,
 ) -> AnnotationResampleOutputs:
     """
+    annotation-resample by Washington University School of Medicin.
+    
     RESAMPLE AN ANNOTATION FILE TO DIFFERENT MESHES.
     
     Resample an annotation file from the source mesh to the target mesh.

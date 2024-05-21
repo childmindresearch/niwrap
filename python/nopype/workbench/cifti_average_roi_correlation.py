@@ -38,6 +38,8 @@ def cifti_average_roi_correlation(
     opt_cifti_cifti_in: InputPathType | None = None,
 ) -> CiftiAverageRoiCorrelationOutputs:
     """
+    cifti-average-roi-correlation by Washington University School of Medicin.
+    
     CORRELATE ROI AVERAGE WITH ALL ROWS THEN AVERAGE ACROSS SUBJECTS.
     
     Averages rows for each map of the ROI(s), takes the correlation of each ROI

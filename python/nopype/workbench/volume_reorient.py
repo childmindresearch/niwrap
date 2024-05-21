@@ -29,6 +29,8 @@ def volume_reorient(
     volume_out: str,
 ) -> VolumeReorientOutputs:
     """
+    volume-reorient by Washington University School of Medicin.
+    
     CHANGE VOXEL ORDER OF A VOLUME FILE.
     
     Changes the voxel order and the header spacing/origin information such that
@@ -41,7 +43,7 @@ def volume_reorient(
     P posterior to anterior
     A anterior to posterior
     I inferior to superior
-    S superior to inferior
+    S superior to inferior.
     
     Args:
         runner: Command runner

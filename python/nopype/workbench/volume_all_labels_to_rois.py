@@ -31,6 +31,8 @@ def volume_all_labels_to_rois(
     volume_out: InputPathType,
 ) -> VolumeAllLabelsToRoisOutputs:
     """
+    volume-all-labels-to-rois by Washington University School of Medicin.
+    
     MAKE ROIS FROM ALL LABELS IN A VOLUME FRAME.
     
     The output volume has a frame for each label in the specified input frame,

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 CONVERTWARP_METADATA = Metadata(
-    id="85263285e8200df92f62b5a0a51bdb8dc9966a72",
+    id="575e0d71c10f27c1e159f9ac1206e9cf51085161",
     name="convertwarp",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -46,9 +46,12 @@ def convertwarp(
     warp2: InputPathType | None = None,
 ) -> ConvertwarpOutputs:
     """
-    Use FSL `convertwarp
-    <http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html>`_ for combining
-    multiple transforms into one.
+    convertwarp by Nipype (interface).
+    
+    Use FSL convertwarp for combining multiple transforms into one.
+    
+    More information:
+    http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html
     
     Args:
         runner: Command runner

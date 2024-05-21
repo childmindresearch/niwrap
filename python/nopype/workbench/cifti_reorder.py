@@ -32,6 +32,8 @@ def cifti_reorder(
     cifti_out: InputPathType,
 ) -> CiftiReorderOutputs:
     """
+    cifti-reorder by Washington University School of Medicin.
+    
     REORDER THE PARCELS OR SCALAR/LABEL MAPS IN A CIFTI FILE.
     
     The mapping along the specified direction must be parcels, scalars, or

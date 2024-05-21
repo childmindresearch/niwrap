@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_TSTAT_METADATA = Metadata(
-    id="a51c053d3a8d4129056ef6d4f73c78b848c0eaab",
+    id="ca52d908ade7d81481502867a636ebdc246a4e4d",
     name="3dTstat",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -35,9 +35,12 @@ def v_3d_tstat(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
 ) -> V3dTstatOutputs:
     """
-    Compute voxel-wise statistics using AFNI 3dTstat command
-    For complete details, see the `3dTstat Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTstat.html>`_
+    3dTstat by Nipype (interface).
+    
+    Compute voxel-wise statistics using AFNI 3dTstat command.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTstat.html
     
     Args:
         runner: Command runner

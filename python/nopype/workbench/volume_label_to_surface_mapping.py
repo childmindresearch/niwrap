@@ -32,6 +32,8 @@ def volume_label_to_surface_mapping(
     opt_subvol_select_subvol: str | None = None,
 ) -> VolumeLabelToSurfaceMappingOutputs:
     """
+    volume-label-to-surface-mapping by Washington University School of Medicin.
+    
     MAP A LABEL VOLUME TO A SURFACE LABEL FILE.
     
     Map label volume data to a surface. If -ribbon-constrained is not specified,

@@ -38,6 +38,8 @@ def metric_smoothing(
     opt_method_method: str | None = None,
 ) -> MetricSmoothingOutputs:
     """
+    metric-smoothing by Washington University School of Medicin.
+    
     SMOOTH A METRIC FILE.
     
     Smooth a metric file on a surface. By default, smooths all input columns on

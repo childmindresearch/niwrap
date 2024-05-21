@@ -30,6 +30,8 @@ def volume_estimate_fwhm(
     opt_whole_file: bool = False,
 ) -> VolumeEstimateFwhmOutputs:
     """
+    volume-estimate-fwhm by Washington University School of Medicin.
+    
     ESTIMATE FWHM SMOOTHNESS OF A VOLUME.
     
     Estimates the smoothness of the input volume in X, Y, and Z directions

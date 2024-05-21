@@ -34,6 +34,8 @@ def surface_geodesic_distance_all_to_all(
     opt_naive: bool = False,
 ) -> SurfaceGeodesicDistanceAllToAllOutputs:
     """
+    surface-geodesic-distance-all-to-all by Washington University School of Medicin.
+    
     COMPUTE GEODESIC DISTANCES FROM ALL VERTICES.
     
     Computes geodesic distance from every vertex to every vertex, outputting a

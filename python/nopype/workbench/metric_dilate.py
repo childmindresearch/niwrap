@@ -40,6 +40,8 @@ def metric_dilate(
     opt_legacy_cutoff: bool = False,
 ) -> MetricDilateOutputs:
     """
+    metric-dilate by Washington University School of Medicin.
+    
     DILATE A METRIC FILE.
     
     For all metric vertices that are designated as bad, if they neighbor a

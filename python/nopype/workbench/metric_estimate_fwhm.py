@@ -31,6 +31,8 @@ def metric_estimate_fwhm(
     opt_whole_file: bool = False,
 ) -> MetricEstimateFwhmOutputs:
     """
+    metric-estimate-fwhm by Washington University School of Medicin.
+    
     ESTIMATE FWHM SMOOTHNESS OF A METRIC FILE.
     
     Estimates the smoothness of the metric columns, printing the estimates to

@@ -28,6 +28,8 @@ def metadata_remove_provenance(
     output_file: str,
 ) -> MetadataRemoveProvenanceOutputs:
     """
+    metadata-remove-provenance by Washington University School of Medicin.
+    
     REMOVE PROVENANCE INFORMATION FROM FILE METADATA.
     
     Removes the provenance metadata fields added by workbench during processing.

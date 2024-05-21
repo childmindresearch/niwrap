@@ -36,6 +36,8 @@ def metric_weighted_stats(
     opt_show_map_name: bool = False,
 ) -> MetricWeightedStatsOutputs:
     """
+    metric-weighted-stats by Washington University School of Medicin.
+    
     WEIGHTED SPATIAL STATISTICS ON A METRIC FILE.
     
     For each column of the input, a line of text is printed, resulting from the
@@ -50,7 +52,7 @@ def metric_weighted_stats(
     example, if you want to find the surface area within an roi, do this:
     
     $ wb_command -metric-weighted-stats roi.func.gii -sum -area-surface
-    midthickness.surf.gii
+    midthickness.surf.gii.
     
     Args:
         runner: Command runner

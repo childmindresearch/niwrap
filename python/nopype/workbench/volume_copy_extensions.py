@@ -32,6 +32,8 @@ def volume_copy_extensions(
     opt_drop_unknown: bool = False,
 ) -> VolumeCopyExtensionsOutputs:
     """
+    volume-copy-extensions by Washington University School of Medicin.
+    
     COPY EXTENDED DATA TO ANOTHER VOLUME FILE.
     
     This command copies the information in a volume file that isn't a critical

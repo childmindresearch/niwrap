@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DREFIT_METADATA = Metadata(
-    id="774bbdb1a866db864290f2e8f2433675b6344d7a",
+    id="13f5b136c3dc5d8409a5fe765d3cbe9249866baf",
     name="3drefit",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -45,9 +45,12 @@ def v_3drefit(
     zorigin: str | None = None,
 ) -> V3drefitOutputs:
     """
-    Changes some of the information inside a 3D dataset's header
-    For complete details, see the `3drefit Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drefit.html>`_
+    3drefit by Nipype (interface).
+    
+    Changes some of the information inside a 3D dataset's header.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drefit.html
     
     Args:
         runner: Command runner

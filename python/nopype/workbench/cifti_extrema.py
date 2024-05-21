@@ -44,6 +44,8 @@ def cifti_extrema(
     opt_only_minima: bool = False,
 ) -> CiftiExtremaOutputs:
     """
+    cifti-extrema by Washington University School of Medicin.
+    
     FIND EXTREMA IN A CIFTI FILE.
     
     Finds spatial locations in a cifti file that have more extreme values than

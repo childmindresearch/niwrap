@@ -43,6 +43,8 @@ def apply_transforms(
     print_out_composite_warp_file: bool = False,
 ) -> ApplyTransformsOutputs:
     """
+    ApplyTransforms by Nipype (interface).
+    
     ApplyTransforms, applied to an input image, transforms it according to a
     reference image and a transform (or a set of transforms).
     

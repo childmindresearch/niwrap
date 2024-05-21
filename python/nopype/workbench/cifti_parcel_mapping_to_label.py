@@ -32,6 +32,8 @@ def cifti_parcel_mapping_to_label(
     dlabel_out: InputPathType,
 ) -> CiftiParcelMappingToLabelOutputs:
     """
+    cifti-parcel-mapping-to-label by Washington University School of Medicin.
+    
     CREATE DLABEL FROM PARCELLATED FILE.
     
     This command will output a dlabel file, useful for doing the same

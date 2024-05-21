@@ -34,6 +34,8 @@ def cifti_cross_correlation(
     opt_mem_limit_limit_gb: float | int | None = None,
 ) -> CiftiCrossCorrelationOutputs:
     """
+    cifti-cross-correlation by Washington University School of Medicin.
+    
     CORRELATE A CIFTI FILE WITH ANOTHER CIFTI FILE.
     
     Correlates every row in <cifti-a> with every row in <cifti-b>. The mapping

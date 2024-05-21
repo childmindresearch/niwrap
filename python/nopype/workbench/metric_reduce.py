@@ -32,6 +32,8 @@ def metric_reduce(
     opt_only_numeric: bool = False,
 ) -> MetricReduceOutputs:
     """
+    metric-reduce by Washington University School of Medicin.
+    
     PERFORM REDUCTION OPERATION ACROSS METRIC COLUMNS.
     
     For each surface vertex, takes the data across columns as a vector, and
@@ -54,6 +56,7 @@ def metric_reduce(
     MEDIAN: the median of the data
     MODE: the mode of the data
     COUNT_NONZERO: the number of nonzero elements in the data
+    .
     
     Args:
         runner: Command runner

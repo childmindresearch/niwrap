@@ -39,6 +39,8 @@ def metric_extrema(
     opt_column_column: str | None = None,
 ) -> MetricExtremaOutputs:
     """
+    metric-extrema by Washington University School of Medicin.
+    
     FIND EXTREMA IN A METRIC FILE.
     
     Finds extrema in a metric file, such that no two extrema of the same type

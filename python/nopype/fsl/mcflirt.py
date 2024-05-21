@@ -61,10 +61,14 @@ def mcflirt(
     use_gradient: bool = False,
 ) -> McflirtOutputs:
     """
-    MCFLIRT is an intra-modal motion correction tool designed for use on fMRI time
-    series and based on optimization and registration techniques used in FLIRT, a
-    fully automated robust and accurate tool for linear (affine) inter- and
-    inter-modal brain image registration.
+    MCFLIRT by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
+    MCFLIRT is an intra-modal motion correction tool designed for use on fMRI
+    time series and based on optimization and registration techniques used in
+    FLIRT, a fully automated robust and accurate tool for linear (affine) inter-
+    and inter-modal brain image registration.
+    
+    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT
     
     Args:
         runner: Command runner

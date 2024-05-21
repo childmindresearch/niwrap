@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DMASKAVE_METADATA = Metadata(
-    id="c180f03d70fc28de82025396ba69bbf69195bace",
+    id="5f0063fbadf1184c79700d33c6791df910894441",
     name="3dmaskave",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -35,10 +35,13 @@ def v_3dmaskave(
     quiet: bool = False,
 ) -> V3dmaskaveOutputs:
     """
-    Computes average of all voxels in the input dataset which satisfy the criterion
-    in the options list
-    For complete details, see the `3dmaskave Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskave.html>`_
+    3dmaskave by Nipype (interface).
+    
+    Computes average of all voxels in the input dataset which satisfy the
+    criterion in the options list.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskave.html
     
     Args:
         runner: Command runner

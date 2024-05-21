@@ -32,6 +32,8 @@ def metric_mask(
     opt_column_column: str | None = None,
 ) -> MetricMaskOutputs:
     """
+    metric-mask by Washington University School of Medicin.
+    
     MASK A METRIC FILE.
     
     By default, the output metric is a copy of the input metric, but with zeros

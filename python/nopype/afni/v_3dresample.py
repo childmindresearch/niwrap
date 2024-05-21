@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DRESAMPLE_METADATA = Metadata(
-    id="f0d2a8f0b5fc1ce2b583449deda23ddd43b9f3bb",
+    id="cbbd45e676566e627ffa7be53d9fb19a835f9e69",
     name="3dresample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -36,9 +36,12 @@ def v_3dresample(
     voxel_size: list[float | int] = None,
 ) -> V3dresampleOutputs:
     """
-    Resample or reorient an image using AFNI 3dresample command
-    For complete details, see the `3dresample Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dresample.html>`_
+    3dresample by Nipype (interface).
+    
+    Resample or reorient an image using AFNI 3dresample command.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dresample.html
     
     Args:
         runner: Command runner

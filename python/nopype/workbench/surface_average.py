@@ -32,6 +32,8 @@ def surface_average(
     opt_surf_surface: InputPathType | None = None,
 ) -> SurfaceAverageOutputs:
     """
+    surface-average by Washington University School of Medicin.
+    
     AVERAGE SURFACE FILES TOGETHER.
     
     The 3D sample standard deviation is computed as 'sqrt(sum(squaredlength(xyz

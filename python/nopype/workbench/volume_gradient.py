@@ -34,6 +34,8 @@ def volume_gradient(
     opt_subvolume_subvol: str | None = None,
 ) -> VolumeGradientOutputs:
     """
+    volume-gradient by Washington University School of Medicin.
+    
     GRADIENT OF A VOLUME FILE.
     
     Computes the gradient of the volume by doing linear regressions for each

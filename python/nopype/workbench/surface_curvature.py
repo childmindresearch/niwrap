@@ -29,11 +29,13 @@ def surface_curvature(
     opt_gauss: bool = False,
 ) -> SurfaceCurvatureOutputs:
     """
+    surface-curvature by Washington University School of Medicin.
+    
     CALCULATE CURVATURE OF SURFACE.
     
     Compute the curvature of the surface, using the method from:
     Interactive Texture Mapping by J. Maillot, Yahia, and Verroust, 1993.
-    ACM-0-98791-601-8/93/008
+    ACM-0-98791-601-8/93/008.
     
     Args:
         runner: Command runner

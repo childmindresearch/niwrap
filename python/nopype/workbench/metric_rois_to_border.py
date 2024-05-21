@@ -34,6 +34,8 @@ def metric_rois_to_border(
     opt_column_column: str | None = None,
 ) -> MetricRoisToBorderOutputs:
     """
+    metric-rois-to-border by Washington University School of Medicin.
+    
     DRAW BORDERS AROUND METRIC ROIS.
     
     For each ROI column, finds all edges on the mesh that cross the boundary of

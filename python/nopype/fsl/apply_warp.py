@@ -43,6 +43,8 @@ def applywarp(
     supersample: bool = False,
 ) -> ApplywarpOutputs:
     """
+    applywarp by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
     Apply warps estimated by FNIRT (or some other software) to some image.
     
     Args:

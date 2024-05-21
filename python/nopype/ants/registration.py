@@ -1335,12 +1335,16 @@ def ants_registration(
     float_: typing.Literal[0, 1] | None = None,
 ) -> AntsRegistrationOutputs:
     """
-    This program is a user-level registration application meant to utilize classes
-    in ITK v4.0 and later. The user can specify any number of "stages" where a stage
-    consists of a transform; an image metric; and iterations, shrink factors, and
-    smoothing sigmas for each level. Note that explicitly setting the
-    dimensionality, metric, transform, output, convergence, shrink-factors, and
-    smoothing-sigmas parameters is mandatory.
+    antsRegistration by ANTs authors.
+    
+    This program is a user-level registration application meant to utilize
+    classes in ITK v4.0 and later. The user can specify any number of "stages"
+    where a stage consists of a transform; an image metric; and iterations,
+    shrink factors, and smoothing sigmas for each level. Note that explicitly
+    setting the dimensionality, metric, transform, output, convergence,
+    shrink-factors, and smoothing-sigmas parameters is mandatory.
+    
+    More information: https://github.com/ANTsX/ANTs
     
     Args:
         runner: Command runner

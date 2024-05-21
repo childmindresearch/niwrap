@@ -35,6 +35,8 @@ def metric_label_import(
     opt_drop_unused_labels: bool = False,
 ) -> MetricLabelImportOutputs:
     """
+    metric-label-import by Washington University School of Medicin.
+    
     IMPORT A GIFTI LABEL FILE FROM A METRIC FILE.
     
     Creates a gifti label file from a metric file with label-like values. You

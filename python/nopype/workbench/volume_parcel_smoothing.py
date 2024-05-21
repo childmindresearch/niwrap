@@ -35,6 +35,8 @@ def volume_parcel_smoothing(
     opt_subvolume_subvol: str | None = None,
 ) -> VolumeParcelSmoothingOutputs:
     """
+    volume-parcel-smoothing by Washington University School of Medicin.
+    
     SMOOTH PARCELS IN A VOLUME SEPARATELY.
     
     The volume is smoothed within each label in the label volume using data only

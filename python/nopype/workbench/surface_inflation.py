@@ -35,6 +35,8 @@ def surface_inflation(
     surface_out: InputPathType,
 ) -> SurfaceInflationOutputs:
     """
+    surface-inflation by Washington University School of Medicin.
+    
     SURFACE INFLATION.
     
     Inflate a surface by performing cycles that consist of smoothing followed by

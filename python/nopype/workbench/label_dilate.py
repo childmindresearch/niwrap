@@ -35,6 +35,8 @@ def label_dilate(
     opt_corrected_areas_area_metric: InputPathType | None = None,
 ) -> LabelDilateOutputs:
     """
+    label-dilate by Washington University School of Medicin.
+    
     DILATE A LABEL FILE.
     
     Fills in label information for all vertices designated as bad, up to the

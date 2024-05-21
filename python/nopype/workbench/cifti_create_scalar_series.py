@@ -32,6 +32,8 @@ def cifti_create_scalar_series(
     opt_name_file_file: str | None = None,
 ) -> CiftiCreateScalarSeriesOutputs:
     """
+    cifti-create-scalar-series by Washington University School of Medicin.
+    
     IMPORT SERIES DATA INTO CIFTI.
     
     Convert a text file containing series of equal length into a cifti file. The
@@ -43,7 +45,7 @@ def cifti_create_scalar_series(
     SECOND
     HERTZ
     METER
-    RADIAN
+    RADIAN.
     
     Args:
         runner: Command runner

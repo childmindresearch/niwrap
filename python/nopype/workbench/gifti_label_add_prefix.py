@@ -31,6 +31,8 @@ def gifti_label_add_prefix(
     label_out: InputPathType,
 ) -> GiftiLabelAddPrefixOutputs:
     """
+    gifti-label-add-prefix by Washington University School of Medicin.
+    
     ADD PREFIX TO ALL LABEL NAMES IN A GIFTI LABEL FILE.
     
     For each label other than '???', prepend <prefix> to the label name.

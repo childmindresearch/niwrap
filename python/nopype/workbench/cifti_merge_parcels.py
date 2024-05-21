@@ -31,6 +31,8 @@ def cifti_merge_parcels(
     opt_cifti_cifti_in: InputPathType | None = None,
 ) -> CiftiMergeParcelsOutputs:
     """
+    cifti-merge-parcels by Washington University School of Medicin.
+    
     MERGE CIFTI FILES ALONG PARCELS DIMENSION.
     
     The input cifti files must have matching mappings along the direction not

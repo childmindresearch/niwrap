@@ -35,6 +35,8 @@ def volume_palette(
     opt_inversion_type: str | None = None,
 ) -> VolumePaletteOutputs:
     """
+    volume-palette by Washington University School of Medicin.
+    
     SET THE PALETTE OF A VOLUME FILE.
     
     The original volume file is overwritten with the modified version. By
@@ -111,6 +113,7 @@ def volume_palette(
     OFF
     POSITIVE_WITH_NEGATIVE
     POSITIVE_NEGATIVE_SEPARATE
+    .
     
     Args:
         runner: Command runner

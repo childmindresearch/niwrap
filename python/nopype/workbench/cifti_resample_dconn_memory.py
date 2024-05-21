@@ -39,6 +39,8 @@ def cifti_resample_dconn_memory(
     opt_warpfield_warpfield: str | None = None,
 ) -> CiftiResampleDconnMemoryOutputs:
     """
+    cifti-resample-dconn-memory by Washington University School of Medicin.
+    
     USE LOTS OF MEMORY TO RESAMPLE DCONN.
     
     This command does the same thing as running -cifti-resample twice, but uses
@@ -68,6 +70,7 @@ def cifti_resample_dconn_memory(
     
     ADAP_BARY_AREA
     BARYCENTRIC
+    .
     
     Args:
         runner: Command runner

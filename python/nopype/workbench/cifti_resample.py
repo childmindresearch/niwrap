@@ -40,6 +40,8 @@ def cifti_resample(
     opt_warpfield_warpfield: str | None = None,
 ) -> CiftiResampleOutputs:
     """
+    cifti-resample by Washington University School of Medicin.
+    
     RESAMPLE A CIFTI FILE TO A NEW CIFTI SPACE.
     
     Resample cifti data to a different brainordinate space. Use COLUMN for the
@@ -73,6 +75,7 @@ def cifti_resample(
     
     ADAP_BARY_AREA
     BARYCENTRIC
+    .
     
     Args:
         runner: Command runner

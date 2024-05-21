@@ -73,7 +73,9 @@ def glm(
     var_norm: bool = False,
 ) -> GlmOutputs:
     """
-    FSL GLM
+    GLM by Nipype (interface).
+    
+    FSL GLM.
     
     Args:
         runner: Command runner

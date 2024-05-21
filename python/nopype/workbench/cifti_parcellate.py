@@ -40,6 +40,8 @@ def cifti_parcellate(
     opt_include_empty: bool = False,
 ) -> CiftiParcellateOutputs:
     """
+    cifti-parcellate by Washington University School of Medicin.
+    
     PARCELLATE A CIFTI FILE.
     
     Each label (other than the unlabeled key) in the cifti label file will be

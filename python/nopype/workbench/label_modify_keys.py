@@ -32,6 +32,8 @@ def label_modify_keys(
     opt_column_column: str | None = None,
 ) -> LabelModifyKeysOutputs:
     """
+    label-modify-keys by Washington University School of Medicin.
+    
     CHANGE KEY VALUES IN A LABEL FILE.
     
     <remap-file> should have lines of the form 'oldkey newkey', like so:

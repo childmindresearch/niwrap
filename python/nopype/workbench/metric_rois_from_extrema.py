@@ -36,6 +36,8 @@ def metric_rois_from_extrema(
     opt_column_column: str | None = None,
 ) -> MetricRoisFromExtremaOutputs:
     """
+    metric-rois-from-extrema by Washington University School of Medicin.
+    
     CREATE METRIC ROI MAPS FROM EXTREMA MAPS.
     
     For each nonzero value in each map, make a map with an ROI around that

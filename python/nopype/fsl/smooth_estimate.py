@@ -34,7 +34,9 @@ def smooth_estimate(
     zstat_file: InputPathType | None = None,
 ) -> SmoothEstimateOutputs:
     """
-    Estimates the smoothness of an image
+    SmoothEstimate by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
+    Estimates the smoothness of an image.
     
     Args:
         runner: Command runner

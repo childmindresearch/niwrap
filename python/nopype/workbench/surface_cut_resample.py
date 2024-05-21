@@ -32,6 +32,8 @@ def surface_cut_resample(
     surface_out: InputPathType,
 ) -> SurfaceCutResampleOutputs:
     """
+    surface-cut-resample by Washington University School of Medicin.
+    
     RESAMPLE A CUT SURFACE.
     
     Resamples a surface file, given two spherical surfaces that are in register.

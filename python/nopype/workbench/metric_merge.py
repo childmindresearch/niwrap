@@ -30,6 +30,8 @@ def metric_merge(
     opt_metric_metric_in: InputPathType | None = None,
 ) -> MetricMergeOutputs:
     """
+    metric-merge by Washington University School of Medicin.
+    
     MERGE METRIC FILES INTO A NEW FILE.
     
     Takes one or more metric files and constructs a new metric file by

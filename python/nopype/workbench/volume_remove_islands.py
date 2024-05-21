@@ -30,6 +30,8 @@ def volume_remove_islands(
     volume_out: InputPathType,
 ) -> VolumeRemoveIslandsOutputs:
     """
+    volume-remove-islands by Washington University School of Medicin.
+    
     REMOVE ISLANDS FROM AN ROI VOLUME.
     
     Finds all face-connected parts of the ROI, and zeros out all but the largest

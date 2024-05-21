@@ -35,6 +35,8 @@ def metric_palette(
     opt_inversion_type: str | None = None,
 ) -> MetricPaletteOutputs:
     """
+    metric-palette by Washington University School of Medicin.
+    
     SET THE PALETTE OF A METRIC FILE.
     
     The original metric file is overwritten with the modified version. By
@@ -111,6 +113,7 @@ def metric_palette(
     OFF
     POSITIVE_WITH_NEGATIVE
     POSITIVE_NEGATIVE_SEPARATE
+    .
     
     Args:
         runner: Command runner

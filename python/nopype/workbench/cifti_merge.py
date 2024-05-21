@@ -32,6 +32,8 @@ def cifti_merge(
     opt_cifti_cifti_in: InputPathType | None = None,
 ) -> CiftiMergeOutputs:
     """
+    cifti-merge by Washington University School of Medicin.
+    
     MERGE OR SPLIT ON SERIES, SCALAR, OR LABEL DIMENSIONS.
     
     Given input CIFTI files for which mappings along the selected direction are
@@ -47,7 +49,7 @@ def cifti_merge(
     
     This example would take the first column from first.dtseries.nii, followed
     by all columns from second.dtseries.nii, and write these columns to
-    out.dtseries.nii.
+    out.dtseries.nii. .
     
     Args:
         runner: Command runner

@@ -30,6 +30,8 @@ def border_merge(
     opt_border_border_file_in: InputPathType | None = None,
 ) -> BorderMergeOutputs:
     """
+    border-merge by Washington University School of Medicin.
+    
     MERGE BORDER FILES INTO A NEW FILE.
     
     Takes one or more border files and makes a new border file from the borders

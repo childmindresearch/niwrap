@@ -30,6 +30,8 @@ def set_structure(
     opt_surface_secondary_type_secondary_type: str | None = None,
 ) -> SetStructureOutputs:
     """
+    set-structure by Washington University School of Medicin.
+    
     SET STRUCTURE OF A DATA FILE.
     
     The existing file is modified and rewritten to the same filename. Valid
@@ -88,6 +90,7 @@ def set_structure(
     GRAY_WHITE
     MIDTHICKNESS
     PIAL
+    .
     
     Args:
         runner: Command runner

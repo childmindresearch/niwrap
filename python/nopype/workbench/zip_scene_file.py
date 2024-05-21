@@ -32,6 +32,8 @@ def zip_scene_file(
     opt_write_scene_file: bool = False,
 ) -> ZipSceneFileOutputs:
     """
+    zip-scene-file by Washington University School of Medicin.
+    
     ZIP A SCENE FILE AND ITS DATA FILES.
     
     If zip-file already exists, it will be overwritten. If -base-dir is not

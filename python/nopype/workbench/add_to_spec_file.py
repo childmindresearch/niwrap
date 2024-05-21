@@ -29,6 +29,8 @@ def add_to_spec_file(
     filename: str,
 ) -> AddToSpecFileOutputs:
     """
+    add-to-spec-file by Washington University School of Medicin.
+    
     ADD A FILE TO A SPECIFICATION FILE.
     
     The resulting spec file overwrites the existing spec file. If the spec file
@@ -68,6 +70,7 @@ def add_to_spec_file(
     PUTAMEN_RIGHT
     THALAMUS_LEFT
     THALAMUS_RIGHT
+    .
     
     Args:
         runner: Command runner

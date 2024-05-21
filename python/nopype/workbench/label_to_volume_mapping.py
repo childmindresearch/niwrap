@@ -33,6 +33,8 @@ def label_to_volume_mapping(
     opt_nearest_vertex_distance: float | int | None = None,
 ) -> LabelToVolumeMappingOutputs:
     """
+    label-to-volume-mapping by Washington University School of Medicin.
+    
     MAP LABEL FILE TO VOLUME.
     
     Maps labels from a gifti label file into a volume file. You must specify

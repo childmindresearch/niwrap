@@ -33,10 +33,16 @@ def convert_xfm(
     out_file: InputPathType | None = None,
 ) -> ConvertXfmOutputs:
     """
+    convert_xfm by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
     convert_xfm is a utility that is used to convert between different
     transformation file formats. It can read and write ascii 4x4 matrices. In
-    addition, it can be used to concatenate two transforms (using -concat with the
-    second transform) or to find the inverse transformation (using -inverse).
+    addition, it can be used to concatenate two transforms (using -concat with
+    the second transform) or to find the inverse transformation (using
+    -inverse).
+    
+    More information:
+    https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/UserGuide#convert_xfm
     
     Args:
         runner: Command runner

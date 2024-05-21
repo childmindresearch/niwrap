@@ -33,6 +33,8 @@ def cifti_pairwise_correlation(
     opt_override_mapping_check: bool = False,
 ) -> CiftiPairwiseCorrelationOutputs:
     """
+    cifti-pairwise-correlation by Washington University School of Medicin.
+    
     CORRELATE PAIRED ROWS BETWEEN TWO CIFTI FILES.
     
     For each row in <cifti-a>, correlate it with the same row in <cifti-b>, and

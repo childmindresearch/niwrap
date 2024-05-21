@@ -35,6 +35,8 @@ def volume_label_import(
     opt_drop_unused_labels: bool = False,
 ) -> VolumeLabelImportOutputs:
     """
+    volume-label-import by Washington University School of Medicin.
+    
     IMPORT A LABEL VOLUME TO WORKBENCH FORMAT.
     
     Creates a label volume from an integer-valued volume file. The label name

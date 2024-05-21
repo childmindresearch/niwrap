@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_BANDPASS_METADATA = Metadata(
-    id="ea1e6f623b04efbee5d1d8c1af24c25a32314a96",
+    id="3fe63cdedb0a12b3606b55f4b73dcb3d07646ec9",
     name="3dBandpass",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -47,10 +47,13 @@ def v_3d_bandpass(
     tr: float | int | None = None,
 ) -> V3dBandpassOutputs:
     """
-    Program to lowpass and/or highpass each voxel time series in a dataset, offering
-    more/different options than Fourier
-    For complete details, see the `3dBandpass Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBandpass.html>`_
+    3dBandpass by Nipype (interface).
+    
+    Program to lowpass and/or highpass each voxel time series in a dataset,
+    offering more/different options than Fourier.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBandpass.html
     
     Args:
         runner: Command runner

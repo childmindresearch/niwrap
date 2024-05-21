@@ -35,6 +35,8 @@ def label_erode(
     opt_corrected_areas_area_metric: InputPathType | None = None,
 ) -> LabelErodeOutputs:
     """
+    label-erode by Washington University School of Medicin.
+    
     ERODE A LABEL FILE.
     
     Around each vertex that is unlabeled, set surrounding vertices to unlabeled.

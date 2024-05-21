@@ -32,6 +32,8 @@ def volume_label_modify_keys(
     opt_subvolume_subvolume: str | None = None,
 ) -> VolumeLabelModifyKeysOutputs:
     """
+    volume-label-modify-keys by Washington University School of Medicin.
+    
     CHANGE KEY VALUES IN A VOLUME LABEL FILE.
     
     <remap-file> should have lines of the form 'oldkey newkey', like so:

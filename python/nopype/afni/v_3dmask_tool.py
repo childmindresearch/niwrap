@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DMASK_TOOL_METADATA = Metadata(
-    id="71e769cdc79da17964899278f3beb5e7a75d33d6",
+    id="cbf01b2f7b4075038f6646036994946770b1c277",
     name="3dmask_tool",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -43,9 +43,12 @@ def v_3dmask_tool(
     verbose: int | None = None,
 ) -> V3dmaskToolOutputs:
     """
-    3dmask_tool - for combining/dilating/eroding/filling masks
-    For complete details, see the `3dmask_tool Documentation.
-    <https://afni.nimh.nih.gov/pub../pub/dist/doc/program_help/3dmask_tool.html>`_
+    3dmask_tool by Nipype (interface).
+    
+    3dmask_tool - for combining/dilating/eroding/filling masks.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub../pub/dist/doc/program_help/3dmask_tool.html
     
     Args:
         runner: Command runner

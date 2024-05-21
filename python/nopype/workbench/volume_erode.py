@@ -33,6 +33,8 @@ def volume_erode(
     opt_subvolume_subvol: str | None = None,
 ) -> VolumeErodeOutputs:
     """
+    volume-erode by Washington University School of Medicin.
+    
     ERODE A VOLUME FILE.
     
     Around each voxel with a value of zero, set surrounding voxels to zero. The

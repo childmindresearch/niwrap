@@ -33,6 +33,8 @@ def cifti_create_dense_from_template(
     opt_cifti_cifti_in: InputPathType | None = None,
 ) -> CiftiCreateDenseFromTemplateOutputs:
     """
+    cifti-create-dense-from-template by Washington University School of Medicin.
+    
     CREATE CIFTI WITH MATCHING DENSE MAP.
     
     This command helps you make a new dscalar, dtseries, or dlabel cifti file
@@ -90,7 +92,7 @@ def cifti_create_dense_from_template(
     SECOND
     HERTZ
     METER
-    RADIAN
+    RADIAN.
     
     Args:
         runner: Command runner

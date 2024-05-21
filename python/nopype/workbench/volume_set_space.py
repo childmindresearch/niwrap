@@ -29,6 +29,8 @@ def volume_set_space(
     opt_file_volume_ref: str | None = None,
 ) -> VolumeSetSpaceOutputs:
     """
+    volume-set-space by Washington University School of Medicin.
+    
     CHANGE VOLUME SPACE INFORMATION.
     
     Writes a copy of the volume file, with the spacing information changed as

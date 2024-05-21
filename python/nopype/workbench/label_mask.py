@@ -32,6 +32,8 @@ def label_mask(
     opt_column_column: str | None = None,
 ) -> LabelMaskOutputs:
     """
+    label-mask by Washington University School of Medicin.
+    
     MASK A LABEL FILE.
     
     By default, the output label is a copy of the input label, but with the

@@ -33,6 +33,8 @@ def cifti_reduce(
     opt_only_numeric: bool = False,
 ) -> CiftiReduceOutputs:
     """
+    cifti-reduce by Washington University School of Medicin.
+    
     PERFORM REDUCTION OPERATION ON A CIFTI FILE.
     
     For the specified direction (default ROW), perform a reduction operation
@@ -55,6 +57,7 @@ def cifti_reduce(
     MEDIAN: the median of the data
     MODE: the mode of the data
     COUNT_NONZERO: the number of nonzero elements in the data
+    .
     
     Args:
         runner: Command runner

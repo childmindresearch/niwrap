@@ -32,6 +32,8 @@ def cifti_math(
     opt_override_mapping_check: bool = False,
 ) -> CiftiMathOutputs:
     """
+    cifti-math by Washington University School of Medicin.
+    
     EVALUATE EXPRESSION ON CIFTI FILES.
     
     This command evaluates <expression> at each matrix element independently.
@@ -105,6 +107,7 @@ def cifti_math(
     max: 2 arguments, max(x, y) returns y if (x < y), x otherwise
     mod: 2 arguments, mod(x, y) = x - y * floor(x / y), or 0 if y == 0
     clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)
+    .
     
     Args:
         runner: Command runner

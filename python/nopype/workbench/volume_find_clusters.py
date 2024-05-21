@@ -38,6 +38,8 @@ def volume_find_clusters(
     opt_start_startval: float | int | None = None,
 ) -> VolumeFindClustersOutputs:
     """
+    volume-find-clusters by Washington University School of Medicin.
+    
     FILTER CLUSTERS BY VOLUME.
     
     Outputs a volume with nonzero integers for all voxels within a large enough

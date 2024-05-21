@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_LFCD_METADATA = Metadata(
-    id="5b0084be27cfb8e53839f2badfd43a3d30707bce",
+    id="5348e5d3e433abc790e56f66ed361abb2142b208",
     name="3dLFCD",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,10 +38,13 @@ def v_3d_lfcd(
     thresh: float | int | None = None,
 ) -> V3dLfcdOutputs:
     """
-    Performs degree centrality on a dataset using a given maskfile via the 3dLFCD
-    command
-    For complete details, see the `3dLFCD Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLFCD.html>`_
+    3dLFCD by Nipype (interface).
+    
+    Performs degree centrality on a dataset using a given maskfile via the
+    3dLFCD command.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLFCD.html
     
     Args:
         runner: Command runner

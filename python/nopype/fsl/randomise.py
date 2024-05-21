@@ -66,8 +66,10 @@ def randomise(
     x_block_labels: InputPathType | None = None,
 ) -> RandomiseOutputs:
     """
+    Randomise by Nipype (interface).
+    
     FSL Randomise: feeds the 4D projected FA data into GLM modelling and
-    thresholding in order to find voxels which correlate with your model
+    thresholding in order to find voxels which correlate with your model.
     
     Args:
         runner: Command runner

@@ -38,6 +38,8 @@ def cifti_average_dense_roi(
     opt_cifti_cifti_in: InputPathType | None = None,
 ) -> CiftiAverageDenseRoiOutputs:
     """
+    cifti-average-dense-roi by Washington University School of Medicin.
+    
     AVERAGE CIFTI ROWS ACROSS SUBJECTS BY ROI.
     
     Averages rows for each map of the ROI(s), across all files. ROI maps are

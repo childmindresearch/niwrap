@@ -37,6 +37,8 @@ def create_signed_distance_volume(
     opt_winding_method: str | None = None,
 ) -> CreateSignedDistanceVolumeOutputs:
     """
+    create-signed-distance-volume by Washington University School of Medicin.
+    
     CREATE SIGNED DISTANCE VOLUME FROM SURFACE.
     
     Computes the signed distance function of the surface. Exact distance is
