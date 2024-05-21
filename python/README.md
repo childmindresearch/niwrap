@@ -14,6 +14,8 @@ Supported frameworks include:
 
 ## Installation
 
+Install the current development version via:
+
 ```bash
-pip install niwrap
+pip install -e "git+https://github.com/childmindresearch/niwrap.git/#egg=niwrap&subdirectory=python"
 ```

@@ -7,11 +7,9 @@ This repository contains a collection of Boutiques descriptors for all command l
 
 ## Python package
 
-Install the `niwrap` Python package to use the generated Python wrappers for the descriptors.
+Install the `niwrap` Python package to use the generated Python wrappers.
 
-```bash
-pip install -e "git+https://github.com/childmindresearch/niwrap.git/#egg=niwrap&subdirectory=python"
-```
+See the [niwrap Python package README](./python/README.md) for more installation instructions and usage information.
 
 ## Style guide
 
