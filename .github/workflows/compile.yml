@@ -41,8 +41,8 @@ jobs:
 
       - name: Compile
         run: |
-            rm -rf python/
-            mkdir -p python/niwrap/
+            rm -rf python/src/
+            mkdir -p python/src/niwrap/
             poetry --directory styx run styx
             git add python/
             git diff --quiet HEAD || git commit -m "Compile"
