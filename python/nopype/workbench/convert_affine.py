@@ -30,6 +30,8 @@ def convert_affine(
     opt_to_itk_output: str | None = None,
 ) -> ConvertAffineOutputs:
     """
+    convert-affine by Washington University School of Medicin.
+    
     CONVERT AN AFFINE FILE BETWEEN CONVENTIONS.
     
     NIFTI world matrices can be used directly on mm coordinates via matrix

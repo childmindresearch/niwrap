@@ -32,6 +32,8 @@ def volume_stats(
     opt_show_map_name: bool = False,
 ) -> VolumeStatsOutputs:
     """
+    volume-stats by Washington University School of Medicin.
+    
     SPATIAL STATISTICS ON A VOLUME FILE.
     
     For each subvolume of the input, a line of text is printed, resulting from
@@ -59,6 +61,7 @@ def volume_stats(
     MEDIAN: the median of the data
     MODE: the mode of the data
     COUNT_NONZERO: the number of nonzero elements in the data
+    .
     
     Args:
         runner: Command runner

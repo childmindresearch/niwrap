@@ -33,6 +33,8 @@ def cifti_roi_average(
     opt_vol_roi_roi_vol: InputPathType | None = None,
 ) -> CiftiRoiAverageOutputs:
     """
+    cifti-roi-average by Washington University School of Medicin.
+    
     AVERAGE ROWS IN A SINGLE CIFTI FILE.
     
     Average the rows that are within the specified ROIs, and write the resulting

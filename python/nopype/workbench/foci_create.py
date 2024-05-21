@@ -29,6 +29,8 @@ def foci_create(
     output: InputPathType,
 ) -> FociCreateOutputs:
     """
+    foci-create by Washington University School of Medicin.
+    
     CREATE A FOCI FILE.
     
     Creates a foci file from names, coordinates, and RGB values in a text file.

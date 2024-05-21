@@ -33,6 +33,8 @@ def metric_to_volume_mapping(
     opt_nearest_vertex_distance: float | int | None = None,
 ) -> MetricToVolumeMappingOutputs:
     """
+    metric-to-volume-mapping by Washington University School of Medicin.
+    
     MAP METRIC FILE TO VOLUME.
     
     Maps values from a metric file into a volume file. You must specify exactly

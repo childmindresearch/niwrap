@@ -59,10 +59,15 @@ def slicer(
     output_sample_axial_slices_fname: str | None = None,
 ) -> SlicerOutputs:
     """
+    Slicer by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
     the main program which takes in one or two input images and produces as many
-    separate output pictures of slices as are requested. The basic output options
-    (-x, -y and -z) produce single slice pictures. The more advanced options (-a, -A
-    and -S) produce montages of various slices. slicer outputs PPM format pictures
+    separate output pictures of slices as are requested. The basic output
+    options (-x, -y and -z) produce single slice pictures. The more advanced
+    options (-a, -A and -S) produce montages of various slices. slicer outputs
+    PPM format pictures.
+    
+    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Miscvis
     
     Args:
         runner: Command runner

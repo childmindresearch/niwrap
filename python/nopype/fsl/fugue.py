@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 FUGUE_METADATA = Metadata(
-    id="8f8282cc43a57894f3b4c876a9ea40394abe87cd",
+    id="a1dd8e49120d2008d3547a7732e9b31202118809",
     name="FUGUE",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -67,13 +67,16 @@ def fugue(
     warped_file: InputPathType | None = None,
 ) -> FugueOutputs:
     """
+    FUGUE by Nipype (interface).
+    
     FSL FUGUE set of tools for EPI distortion correction
-    `FUGUE <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE>`_ is, most generally, a
-    set of tools for EPI distortion correction.
+    `FUGUE is, most generally, a set of tools for EPI distortion correction.
     Distortions may be corrected for 1. improving registration with
     non-distorted images (e.g. structurals), or 2. dealing with motion-dependent
     changes.
     FUGUE is designed to deal only with the first case - improving registration.
+    
+    More information: http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE
     
     Args:
         runner: Command runner

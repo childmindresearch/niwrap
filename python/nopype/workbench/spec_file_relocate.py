@@ -28,6 +28,8 @@ def spec_file_relocate(
     output_spec: str,
 ) -> SpecFileRelocateOutputs:
     """
+    spec-file-relocate by Washington University School of Medicin.
+    
     RECREATE SPEC FILE IN NEW LOCATION.
     
     Spec files contain internal relative paths, such that moving or copying a

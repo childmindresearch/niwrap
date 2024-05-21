@@ -34,6 +34,8 @@ def probtrackx_dot_convert(
     opt_make_symmetric: bool = False,
 ) -> ProbtrackxDotConvertOutputs:
     """
+    probtrackx-dot-convert by Washington University School of Medicin.
+    
     CONVERT A .DOT FILE FROM PROBTRACKX TO CIFTI.
     
     NOTE: exactly one -row option and one -col option must be used.
@@ -80,7 +82,7 @@ def probtrackx_dot_convert(
     PUTAMEN_LEFT
     PUTAMEN_RIGHT
     THALAMUS_LEFT
-    THALAMUS_RIGHT
+    THALAMUS_RIGHT.
     
     Args:
         runner: Command runner

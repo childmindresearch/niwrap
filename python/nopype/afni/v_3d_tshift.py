@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_TSHIFT_METADATA = Metadata(
-    id="cdb66d7141b310fd556998a2f6e0f967e2c773b2",
+    id="30f4565527ccf7831296694a1ffaa341bf120e4d",
     name="3dTshift",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -47,10 +47,13 @@ def v_3d_tshift(
     tzero: float | int | None = None,
 ) -> V3dTshiftOutputs:
     """
-    Shifts voxel time series from input so that separate slices are aligned to the
-    same temporal origin.
-    For complete details, see the `3dTshift Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTshift.html>`_
+    3dTshift by Nipype (interface).
+    
+    Shifts voxel time series from input so that separate slices are aligned to
+    the same temporal origin.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTshift.html
     
     Args:
         runner: Command runner

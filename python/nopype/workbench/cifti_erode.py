@@ -37,6 +37,8 @@ def cifti_erode(
     opt_merged_volume: bool = False,
 ) -> CiftiErodeOutputs:
     """
+    cifti-erode by Washington University School of Medicin.
+    
     ERODE A CIFTI FILE.
     
     For all data values that are empty (for label data, unlabeled, for other

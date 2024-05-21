@@ -32,6 +32,8 @@ def foci_resample(
     opt_restore_xyz: bool = False,
 ) -> FociResampleOutputs:
     """
+    foci-resample by Washington University School of Medicin.
+    
     PROJECT FOCI TO A DIFFERENT SURFACE.
     
     Unprojects foci from the <current-surf> for the structure, then projects

@@ -32,6 +32,8 @@ def surface_apply_warpfield(
     opt_fnirt_forward_warp: str | None = None,
 ) -> SurfaceApplyWarpfieldOutputs:
     """
+    surface-apply-warpfield by Washington University School of Medicin.
+    
     APPLY WARPFIELD TO SURFACE FILE.
     
     NOTE: warping a surface requires the INVERSE of the warpfield used to warp

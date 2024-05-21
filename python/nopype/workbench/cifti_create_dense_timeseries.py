@@ -35,6 +35,8 @@ def cifti_create_dense_timeseries(
     opt_unit_unit: str | None = None,
 ) -> CiftiCreateDenseTimeseriesOutputs:
     """
+    cifti-create-dense-timeseries by Washington University School of Medicin.
+    
     CREATE A CIFTI DENSE TIMESERIES.
     
     All input files must have the same number of columns/subvolumes. Only the
@@ -84,7 +86,7 @@ def cifti_create_dense_timeseries(
     SECOND
     HERTZ
     METER
-    RADIAN
+    RADIAN.
     
     Args:
         runner: Command runner

@@ -34,6 +34,8 @@ def surface_generate_inflated(
     opt_iterations_scale_iterations_scale_value: float | int | None = None,
 ) -> SurfaceGenerateInflatedOutputs:
     """
+    surface-generate-inflated by Washington University School of Medicin.
+    
     SURFACE GENERATE INFLATED.
     
     Generate inflated and very inflated surfaces. The output surfaces are

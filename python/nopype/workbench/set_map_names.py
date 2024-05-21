@@ -29,6 +29,8 @@ def set_map_names(
     opt_from_data_file_file: str | None = None,
 ) -> SetMapNamesOutputs:
     """
+    set-map-names by Washington University School of Medicin.
+    
     SET THE NAME OF ONE OR MORE MAPS IN A FILE.
     
     Sets the name of one or more maps for metric, shape, label, volume, cifti

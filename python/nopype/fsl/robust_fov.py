@@ -37,6 +37,8 @@ def robust_fov(
     output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
 ) -> RobustFovOutputs:
     """
+    RobustFOV by Nipype (interface).
+    
     Automatically crops an image removing lower head and neck.
     Interface is stable 5.0.0 to 5.0.9, but default brainsize changed from 150mm
     to 170mm.

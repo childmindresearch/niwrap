@@ -36,6 +36,8 @@ def volume_parcel_resampling(
     opt_subvolume_subvol: str | None = None,
 ) -> VolumeParcelResamplingOutputs:
     """
+    volume-parcel-resampling by Washington University School of Medicin.
+    
     SMOOTH AND RESAMPLE VOLUME PARCELS.
     
     Smooths and resamples the region inside each label in cur-parcels to the

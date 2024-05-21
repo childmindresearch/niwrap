@@ -34,6 +34,8 @@ def cifti_label_import(
     opt_drop_unused_labels: bool = False,
 ) -> CiftiLabelImportOutputs:
     """
+    cifti-label-import by Washington University School of Medicin.
+    
     MAKE A CIFTI LABEL FILE FROM A CIFTI FILE.
     
     Creates a cifti label file from a cifti file with label-like values. You may

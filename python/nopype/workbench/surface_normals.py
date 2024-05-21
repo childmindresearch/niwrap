@@ -30,6 +30,8 @@ def surface_normals(
     metric_out: InputPathType,
 ) -> SurfaceNormalsOutputs:
     """
+    surface-normals by Washington University School of Medicin.
+    
     OUTPUT VERTEX NORMALS AS METRIC FILE.
     
     Computes the normal vectors of the surface file, and outputs them as a 3

@@ -30,6 +30,8 @@ def surface_coordinates_to_metric(
     metric_out: InputPathType,
 ) -> SurfaceCoordinatesToMetricOutputs:
     """
+    surface-coordinates-to-metric by Washington University School of Medicin.
+    
     MAKE METRIC FILE OF SURFACE COORDINATES.
     
     Puts the coordinates of the surface into a 3-map metric file, as x, y, z.

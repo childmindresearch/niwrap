@@ -29,6 +29,8 @@ def cifti_export_dense_mapping(
     opt_volume_all_text_out: str | None = None,
 ) -> CiftiExportDenseMappingOutputs:
     """
+    cifti-export-dense-mapping by Washington University School of Medicin.
+    
     WRITE INDEX TO ELEMENT MAPPING AS TEXT.
     
     This command produces text files that describe the mapping from cifti
@@ -75,7 +77,7 @@ def cifti_export_dense_mapping(
     PUTAMEN_LEFT
     PUTAMEN_RIGHT
     THALAMUS_LEFT
-    THALAMUS_RIGHT
+    THALAMUS_RIGHT.
     
     Args:
         runner: Command runner

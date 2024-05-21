@@ -34,6 +34,8 @@ def metric_regression(
     opt_keep_metric: InputPathType | None = None,
 ) -> MetricRegressionOutputs:
     """
+    metric-regression by Washington University School of Medicin.
+    
     REGRESS SPATIAL MAP OUT OF A METRIC FILE.
     
     For each regressor, its mean across the surface is subtracted from its data.

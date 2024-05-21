@@ -30,6 +30,8 @@ def volume_fill_holes(
     volume_out: InputPathType,
 ) -> VolumeFillHolesOutputs:
     """
+    volume-fill-holes by Washington University School of Medicin.
+    
     FILL HOLES IN AN ROI VOLUME.
     
     Finds all face-connected parts that are not included in the ROI, and fills

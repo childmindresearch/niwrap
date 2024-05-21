@@ -29,6 +29,8 @@ def flameo(
     dummy_input: InputPathType,
 ) -> FlameoOutputs:
     """
+    FLAMEO.
+    
     Automatic nipype2boutiques conversion failed.
     
     Args:

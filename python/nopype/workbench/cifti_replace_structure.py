@@ -31,6 +31,8 @@ def cifti_replace_structure(
     opt_label_collision_action: str | None = None,
 ) -> CiftiReplaceStructureOutputs:
     """
+    cifti-replace-structure by Washington University School of Medicin.
+    
     REPLACE DATA IN A STRUCTURE IN A CIFTI FILE.
     
     This is a fairly low-level command, you probably want to use
@@ -77,7 +79,7 @@ def cifti_replace_structure(
     PUTAMEN_LEFT
     PUTAMEN_RIGHT
     THALAMUS_LEFT
-    THALAMUS_RIGHT
+    THALAMUS_RIGHT.
     
     Args:
         runner: Command runner

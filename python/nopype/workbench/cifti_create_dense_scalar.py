@@ -33,6 +33,8 @@ def cifti_create_dense_scalar(
     opt_name_file_file: str | None = None,
 ) -> CiftiCreateDenseScalarOutputs:
     """
+    cifti-create-dense-scalar by Washington University School of Medicin.
+    
     CREATE A CIFTI DENSE SCALAR FILE.
     
     All input files must have the same number of columns/subvolumes. Only the
@@ -75,7 +77,7 @@ def cifti_create_dense_scalar(
     PUTAMEN_LEFT
     PUTAMEN_RIGHT
     THALAMUS_LEFT
-    THALAMUS_RIGHT
+    THALAMUS_RIGHT.
     
     Args:
         runner: Command runner

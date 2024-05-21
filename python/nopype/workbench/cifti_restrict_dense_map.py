@@ -36,6 +36,8 @@ def cifti_restrict_dense_map(
     opt_vol_roi_roi_vol: InputPathType | None = None,
 ) -> CiftiRestrictDenseMapOutputs:
     """
+    cifti-restrict-dense-map by Washington University School of Medicin.
+    
     EXCLUDE BRAINORDINATES FROM A CIFTI FILE.
     
     Writes a modified version of <cifti-in>, where all brainordinates outside

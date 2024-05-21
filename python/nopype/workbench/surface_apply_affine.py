@@ -31,6 +31,8 @@ def surface_apply_affine(
     out_surf: InputPathType,
 ) -> SurfaceApplyAffineOutputs:
     """
+    surface-apply-affine by Washington University School of Medicin.
+    
     APPLY AFFINE TRANSFORM TO SURFACE FILE.
     
     For flirt matrices, you must use the -flirt option, because flirt matrices

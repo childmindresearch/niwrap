@@ -30,6 +30,8 @@ def surface_create_sphere(
     sphere_out: InputPathType,
 ) -> SurfaceCreateSphereOutputs:
     """
+    surface-create-sphere by Washington University School of Medicin.
+    
     GENERATE A SPHERE WITH CONSISTENT VERTEX AREAS.
     
     Generates a sphere by regularly dividing the triangles of an icosahedron, to
@@ -42,7 +44,7 @@ def surface_create_sphere(
     $ wb_command -surface-create-sphere 6000 Sphere.6k.R.surf.gii
     $ wb_command -surface-flip-lr Sphere.6k.R.surf.gii Sphere.6k.L.surf.gii
     $ wb_command -set-structure Sphere.6k.R.surf.gii CORTEX_RIGHT
-    $ wb_command -set-structure Sphere.6k.L.surf.gii CORTEX_LEFT
+    $ wb_command -set-structure Sphere.6k.L.surf.gii CORTEX_LEFT.
     
     Args:
         runner: Command runner

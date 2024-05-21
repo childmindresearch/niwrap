@@ -31,7 +31,11 @@ def split(
     dimension: typing.Literal["t", "x", "y", "z"] = "t",
 ) -> SplitOutputs:
     """
+    Split by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
     split a 4D file into lots of 3D files (eg for inputting to SPM).
+    
+    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
         runner: Command runner

@@ -35,6 +35,8 @@ def metric_erode(
     opt_corrected_areas_area_metric: InputPathType | None = None,
 ) -> MetricErodeOutputs:
     """
+    metric-erode by Washington University School of Medicin.
+    
     ERODE A METRIC FILE.
     
     Around each vertex with a value of zero, set surrounding vertices to zero.

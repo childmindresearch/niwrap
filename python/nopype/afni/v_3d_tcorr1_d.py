@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_TCORR1_D_METADATA = Metadata(
-    id="6190da71100511abf2228d7851b4d055410ad626",
+    id="10b7d3d570d9e43a0d7545f8685ae04a9441c403",
     name="3dTcorr1D",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,10 +38,13 @@ def v_3d_tcorr1_d(
     spearman: bool = False,
 ) -> V3dTcorr1DOutputs:
     """
-    Computes the correlation coefficient between each voxel time series in the input
-    3D+time dataset.
-    For complete details, see the `3dTcorr1D Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html>
+    3dTcorr1D by Nipype (interface).
+    
+    Computes the correlation coefficient between each voxel time series in the
+    input 3D+time dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html
     
     Args:
         runner: Command runner

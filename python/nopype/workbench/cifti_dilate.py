@@ -40,6 +40,8 @@ def cifti_dilate(
     opt_legacy_mode: bool = False,
 ) -> CiftiDilateOutputs:
     """
+    cifti-dilate by Washington University School of Medicin.
+    
     DILATE A CIFTI FILE.
     
     For all data values designated as bad, if they neighbor a good value or are

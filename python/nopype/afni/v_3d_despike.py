@@ -29,8 +29,13 @@ def v_3d_despike(
     in_file: InputPathType,
 ) -> V3dDespikeOutputs:
     """
-    Removes 'spikes' from the 3D+time input dataset and writes a new dataset with
-    the spike values replaced by something more pleasing to the eye.
+    3dDespike by AFNI.
+    
+    Removes 'spikes' from the 3D+time input dataset and writes a new dataset
+    with the spike values replaced by something more pleasing to the eye.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDespike.html
     
     Args:
         runner: Command runner

@@ -35,6 +35,8 @@ def metric_tfce(
     opt_corrected_areas_area_metric: InputPathType | None = None,
 ) -> MetricTfceOutputs:
     """
+    metric-tfce by Washington University School of Medicin.
+    
     DO TFCE ON A METRIC FILE.
     
     This command does not do any statistical analysis. Please use something like
@@ -60,7 +62,7 @@ def metric_tfce(
     The TFCE method is explained in: Smith SM, Nichols TE., "Threshold-free
     cluster enhancement: addressing problems of smoothing, threshold dependence
     and localisation in cluster inference." Neuroimage. 2009 Jan 1;44(1):83-98.
-    PMID: 18501637
+    PMID: 18501637.
     
     Args:
         runner: Command runner

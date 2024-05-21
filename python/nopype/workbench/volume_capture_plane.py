@@ -43,6 +43,8 @@ def volume_capture_plane(
     image: str,
 ) -> VolumeCapturePlaneOutputs:
     """
+    volume-capture-plane by Washington University School of Medicin.
+    
     INTERPOLATE IMAGE FROM PLANE THROUGH VOLUME.
     
     NOTE: If you want to generate an image with all of the capabilities of the
@@ -53,7 +55,7 @@ def volume_capture_plane(
     
     CUBIC
     ENCLOSING_VOXEL
-    TRILINEAR
+    TRILINEAR.
     
     Args:
         runner: Command runner

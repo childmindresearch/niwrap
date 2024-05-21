@@ -35,6 +35,8 @@ def volume_rois_from_extrema(
     opt_subvolume_subvol: str | None = None,
 ) -> VolumeRoisFromExtremaOutputs:
     """
+    volume-rois-from-extrema by Washington University School of Medicin.
+    
     CREATE VOLUME ROI MAPS FROM EXTREMA MAPS.
     
     For each nonzero value in each map, make a map with an ROI around that

@@ -39,6 +39,8 @@ def estimate_fiber_binghams(
     cifti_out: InputPathType,
 ) -> EstimateFiberBinghamsOutputs:
     """
+    estimate-fiber-binghams by Washington University School of Medicin.
+    
     ESTIMATE FIBER ORIENTATION DISTRIBUTIONS FROM BEDPOSTX SAMPLES.
     
     This command does an estimation of a bingham distribution for each fiber
@@ -78,7 +80,7 @@ def estimate_fiber_binghams(
     PUTAMEN_LEFT
     PUTAMEN_RIGHT
     THALAMUS_LEFT
-    THALAMUS_RIGHT
+    THALAMUS_RIGHT.
     
     Args:
         runner: Command runner

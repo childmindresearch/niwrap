@@ -39,6 +39,8 @@ def cifti_gradient(
     opt_vectors: bool = False,
 ) -> CiftiGradientOutputs:
     """
+    cifti-gradient by Washington University School of Medicin.
+    
     TAKE GRADIENT OF A CIFTI FILE.
     
     Performs gradient calculation on each component of the cifti file, and

@@ -28,6 +28,8 @@ def cifti_convert(
     opt_to_nifti_cifti_in: InputPathType | None = None,
 ) -> CiftiConvertOutputs:
     """
+    cifti-convert by Washington University School of Medicin.
+    
     DUMP CIFTI MATRIX INTO OTHER FORMATS.
     
     This command is used to convert a full CIFTI matrix to/from formats that can
@@ -57,7 +59,7 @@ def cifti_convert(
     SECOND
     HERTZ
     METER
-    RADIAN
+    RADIAN.
     
     Args:
         runner: Command runner

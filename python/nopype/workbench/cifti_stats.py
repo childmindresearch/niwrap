@@ -32,6 +32,8 @@ def cifti_stats(
     opt_show_map_name: bool = False,
 ) -> CiftiStatsOutputs:
     """
+    cifti-stats by Washington University School of Medicin.
+    
     STATISTICS ALONG CIFTI COLUMNS.
     
     For each column of the input, a line of text is printed, resulting from the
@@ -59,6 +61,7 @@ def cifti_stats(
     MEDIAN: the median of the data
     MODE: the mode of the data
     COUNT_NONZERO: the number of nonzero elements in the data
+    .
     
     Args:
         runner: Command runner

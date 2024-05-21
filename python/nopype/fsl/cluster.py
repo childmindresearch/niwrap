@@ -76,7 +76,9 @@ def cluster(
     xfm_file: InputPathType | None = None,
 ) -> ClusterOutputs:
     """
-    Uses FSL cluster to perform clustering on statistical output
+    Cluster by Nipype (interface).
+    
+    Uses FSL cluster to perform clustering on statistical output.
     
     Args:
         runner: Command runner

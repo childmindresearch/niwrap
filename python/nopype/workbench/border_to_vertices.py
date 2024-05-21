@@ -32,6 +32,8 @@ def border_to_vertices(
     opt_border_name: str | None = None,
 ) -> BorderToVerticesOutputs:
     """
+    border-to-vertices by Washington University School of Medicin.
+    
     DRAW BORDERS AS VERTICES IN A METRIC FILE.
     
     Outputs a metric with 1s on vertices that follow a border, and 0s elsewhere.

@@ -36,6 +36,8 @@ def cifti_false_correlation(
     opt_cerebellum_surface_surface: InputPathType | None = None,
 ) -> CiftiFalseCorrelationOutputs:
     """
+    cifti-false-correlation by Washington University School of Medicin.
+    
     COMPARE CORRELATION LOCALLY AND ACROSS/THROUGH SULCI/GYRI.
     
     For each vertex, compute the average correlation within a range of geodesic

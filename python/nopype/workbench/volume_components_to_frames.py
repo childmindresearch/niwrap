@@ -30,6 +30,8 @@ def volume_components_to_frames(
     output: InputPathType,
 ) -> VolumeComponentsToFramesOutputs:
     """
+    volume-components-to-frames by Washington University School of Medicin.
+    
     CONVERT RGB/COMPLEX VOLUME TO FRAMES.
     
     RGB and complex datatypes are not always well supported, this command allows

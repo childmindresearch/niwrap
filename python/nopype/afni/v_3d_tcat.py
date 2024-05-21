@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_TCAT_METADATA = Metadata(
-    id="33d3dd06aa8798bd2cc9215c3618d3ec5e9c2c53",
+    id="56e988f3745e66d3c04e67286b1f710c01c03196",
     name="3dTcat",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -35,11 +35,14 @@ def v_3d_tcat(
     verbose: bool = False,
 ) -> V3dTcatOutputs:
     """
+    3dTcat by Nipype (interface).
+    
     Concatenate sub-bricks from input datasets into one big 3D+time dataset.
     TODO Replace InputMultiPath in_files with Traits.List, if possible. Current
     version adds extra whitespace.
-    For complete details, see the `3dTcat Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcat.html>`_
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcat.html
     
     Args:
         runner: Command runner

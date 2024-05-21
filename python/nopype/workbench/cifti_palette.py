@@ -38,6 +38,8 @@ def cifti_palette(
     opt_inversion_type: str | None = None,
 ) -> CiftiPaletteOutputs:
     """
+    cifti-palette by Washington University School of Medicin.
+    
     SET PALETTE ON A CIFTI FILE.
     
     NOTE: The output file must be a different file than the input file.
@@ -115,6 +117,7 @@ def cifti_palette(
     OFF
     POSITIVE_WITH_NEGATIVE
     POSITIVE_NEGATIVE_SEPARATE
+    .
     
     Args:
         runner: Command runner

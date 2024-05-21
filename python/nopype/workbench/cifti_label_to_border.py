@@ -30,6 +30,8 @@ def cifti_label_to_border(
     opt_border_surface: InputPathType | None = None,
 ) -> CiftiLabelToBorderOutputs:
     """
+    cifti-label-to-border by Washington University School of Medicin.
+    
     DRAW BORDERS AROUND CIFTI LABELS.
     
     For each surface, takes the labels on the matching structure and draws

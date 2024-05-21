@@ -28,6 +28,8 @@ def label_export_table(
     table_out: str,
 ) -> LabelExportTableOutputs:
     """
+    label-export-table by Washington University School of Medicin.
+    
     EXPORT LABEL TABLE FROM GIFTI AS TEXT.
     
     Takes the label table from the gifti label file, and writes it to a text

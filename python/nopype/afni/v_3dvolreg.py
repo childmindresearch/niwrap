@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3DVOLREG_METADATA = Metadata(
-    id="f26bb5afb867aee867b737305ded487e5991d642",
+    id="68d364895153408a39ccf09c93b715944e33865d",
     name="3dvolreg",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -53,9 +53,12 @@ def v_3dvolreg(
     zpad: int | None = None,
 ) -> V3dvolregOutputs:
     """
-    Register input volumes to a base volume using AFNI 3dvolreg command
-    For complete details, see the `3dvolreg Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dvolreg.html>`_
+    3dvolreg by Nipype (interface).
+    
+    Register input volumes to a base volume using AFNI 3dvolreg command.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dvolreg.html
     
     Args:
         runner: Command runner

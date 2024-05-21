@@ -37,6 +37,8 @@ def metric_resample(
     opt_bypass_sphere_check: bool = False,
 ) -> MetricResampleOutputs:
     """
+    metric-resample by Washington University School of Medicin.
+    
     RESAMPLE A METRIC FILE TO A DIFFERENT MESH.
     
     Resamples a metric file, given two spherical surfaces that are in register.
@@ -61,6 +63,7 @@ def metric_resample(
     
     ADAP_BARY_AREA
     BARYCENTRIC
+    .
     
     Args:
         runner: Command runner

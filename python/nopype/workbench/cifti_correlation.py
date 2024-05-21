@@ -36,6 +36,8 @@ def cifti_correlation(
     opt_mem_limit_limit_gb: float | int | None = None,
 ) -> CiftiCorrelationOutputs:
     """
+    cifti-correlation by Washington University School of Medicin.
+    
     GENERATE CORRELATION OF ROWS IN A CIFTI FILE.
     
     For each row (or each row inside an roi if -roi-override is specified),

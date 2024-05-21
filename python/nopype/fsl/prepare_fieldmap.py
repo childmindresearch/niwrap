@@ -35,6 +35,8 @@ def prepare_fieldmap(
     scanner: str | None = "SIEMENS",
 ) -> PrepareFieldmapOutputs:
     """
+    PrepareFieldmap by Nipype (interface).
+    
     
     Interface for the fsl_prepare_fieldmap script (FSL 5.0)
     Prepares a fieldmap suitable for FEAT from SIEMENS data - saves output in

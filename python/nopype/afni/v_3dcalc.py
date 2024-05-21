@@ -37,7 +37,12 @@ def v_3dcalc(
     stop_idx: int | None = None,
 ) -> V3dcalcOutputs:
     """
+    3dcalc by RWCox @ AFNI.
+    
     AFNI's calculator program.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcalc.html
     
     Args:
         runner: Command runner

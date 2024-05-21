@@ -29,6 +29,8 @@ def spec_file_merge(
     out_spec: str,
 ) -> SpecFileMergeOutputs:
     """
+    spec-file-merge by Washington University School of Medicin.
+    
     MERGE TWO SPEC FILES INTO ONE.
     
     The output spec file contains every file that is in either of the input spec

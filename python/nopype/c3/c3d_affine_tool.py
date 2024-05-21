@@ -49,7 +49,9 @@ def c3d_affine_tool(
     info_full: bool = False,
 ) -> C3dAffineToolOutputs:
     """
-    RAS affine transform tool
+    C3dAffineTool by ITK-Snap Team.
+    
+    RAS affine transform tool.
     
     Args:
         runner: Command runner

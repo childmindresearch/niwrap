@@ -29,6 +29,8 @@ def surface_closest_vertex(
     vertex_list_out: str,
 ) -> SurfaceClosestVertexOutputs:
     """
+    surface-closest-vertex by Washington University School of Medicin.
+    
     FIND CLOSEST SURFACE VERTEX TO COORDINATES.
     
     For each coordinate XYZ triple, find the closest vertex in the surface, and
@@ -36,7 +38,7 @@ def surface_closest_vertex(
     whitespace to separate coordinates (spaces, newlines, tabs), for instance:
     
     20 30 25
-    30 -20 10
+    30 -20 10.
     
     Args:
         runner: Command runner

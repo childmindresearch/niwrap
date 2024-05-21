@@ -31,6 +31,8 @@ def surface_set_coordinates(
     surface_out: InputPathType,
 ) -> SurfaceSetCoordinatesOutputs:
     """
+    surface-set-coordinates by Washington University School of Medicin.
+    
     MODIFY COORDINATES OF A SURFACE.
     
     Takes the topology from an existing surface file, and uses values from a

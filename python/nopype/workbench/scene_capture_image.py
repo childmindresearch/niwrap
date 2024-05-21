@@ -39,6 +39,8 @@ def scene_capture_image(
     opt_print_image_info: bool = False,
 ) -> SceneCaptureImageOutputs:
     """
+    scene-capture-image by Washington University School of Medicin.
+    
     OFFSCREEN RENDERING OF SCENE TO AN IMAGE FILE.
     
     ----------------------------------------------------------------------
@@ -92,6 +94,7 @@ def scene_capture_image(
     was not available when this software was created. This command is not
     available for the Windows version of this software but should always be
     available in the Linux and MacOS versions.
+    .
     
     Args:
         runner: Command runner

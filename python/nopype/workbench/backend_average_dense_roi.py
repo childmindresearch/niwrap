@@ -28,6 +28,8 @@ def backend_average_dense_roi(
     out_file: str,
 ) -> BackendAverageDenseRoiOutputs:
     """
+    backend-average-dense-roi by Washington University School of Medicin.
+    
     CONNECTOME DB BACKEND COMMAND FOR CIFTI AVERAGE DENSE ROI.
     
     This command is probably not the one you are looking for, try

@@ -31,6 +31,8 @@ def surface_wedge_volume(
     metric: InputPathType,
 ) -> SurfaceWedgeVolumeOutputs:
     """
+    surface-wedge-volume by Washington University School of Medicin.
+    
     MEASURE PER-VERTEX VOLUME BETWEEN SURFACES.
     
     Compute the volume of each vertex's area from one surface to another. The

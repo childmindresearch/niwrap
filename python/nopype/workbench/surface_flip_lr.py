@@ -30,6 +30,8 @@ def surface_flip_lr(
     surface_out: InputPathType,
 ) -> SurfaceFlipLrOutputs:
     """
+    surface-flip-lr by Washington University School of Medicin.
+    
     MIRROR A SURFACE THROUGH THE YZ PLANE.
     
     This command negates the x coordinate of each vertex, and flips the surface

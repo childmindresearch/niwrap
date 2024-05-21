@@ -27,6 +27,8 @@ def file_convert(
     v_0: bool = False,
 ) -> FileConvertOutputs:
     """
+    file-convert by Washington University School of Medicin.
+    
     CHANGE VERSION OF FILE FORMAT.
     
     You may only specify one top-level option.

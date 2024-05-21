@@ -36,6 +36,8 @@ def cifti_weighted_stats(
     opt_show_map_name: bool = False,
 ) -> CiftiWeightedStatsOutputs:
     """
+    cifti-weighted-stats by Washington University School of Medicin.
+    
     WEIGHTED STATISTICS ALONG CIFTI COLUMNS.
     
     If the mapping along column is brain models, for each column of the input,

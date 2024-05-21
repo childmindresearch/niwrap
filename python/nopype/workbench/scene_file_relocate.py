@@ -28,6 +28,8 @@ def scene_file_relocate(
     output_scene: str,
 ) -> SceneFileRelocateOutputs:
     """
+    scene-file-relocate by Washington University School of Medicin.
+    
     RECREATE SCENE FILE IN NEW LOCATION.
     
     Scene files contain internal relative paths, such that moving or copying a

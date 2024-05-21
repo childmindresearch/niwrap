@@ -64,15 +64,19 @@ def fast(
     manual_seg: InputPathType | None = None,
 ) -> FastOutputs:
     """
-    FAST (FMRIB's Automated Segmentation Tool) segments a 3D image of the brain into
-    different tissue types (Grey Matter, White Matter, CSF, etc.), whilst also
-    correcting for spatial intensity variations (also known as bias field or RF
-    inhomogeneities). The underlying method is based on a hidden Markov random field
-    model and an associated Expectation-Maximization algorithm. The whole process is
-    fully automated and can also produce a bias field-corrected input image and a
-    probabilistic and/or partial volume tissue segmentation. It is robust and
-    reliable, compared to most finite mixture model-based methods, which are
-    sensitive to noise.
+    FAST by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
+    FAST (FMRIB's Automated Segmentation Tool) segments a 3D image of the brain
+    into different tissue types (Grey Matter, White Matter, CSF, etc.), whilst
+    also correcting for spatial intensity variations (also known as bias field
+    or RF inhomogeneities). The underlying method is based on a hidden Markov
+    random field model and an associated Expectation-Maximization algorithm. The
+    whole process is fully automated and can also produce a bias field-corrected
+    input image and a probabilistic and/or partial volume tissue segmentation.
+    It is robust and reliable, compared to most finite mixture model-based
+    methods, which are sensitive to noise.
+    
+    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FAST
     
     Args:
         runner: Command runner

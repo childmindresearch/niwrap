@@ -35,6 +35,8 @@ def volume_resample(
     opt_warp_warpfield: str | None = None,
 ) -> VolumeResampleOutputs:
     """
+    volume-resample by Washington University School of Medicin.
+    
     TRANSFORM AND RESAMPLE A VOLUME FILE.
     
     Resample a volume file with an arbitrary list of transformations. You may
@@ -47,7 +49,7 @@ def volume_resample(
     
     CUBIC
     ENCLOSING_VOXEL
-    TRILINEAR
+    TRILINEAR.
     
     Args:
         runner: Command runner

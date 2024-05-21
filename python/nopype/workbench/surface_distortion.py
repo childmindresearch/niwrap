@@ -35,6 +35,8 @@ def surface_distortion(
     opt_local_affine_method: bool = False,
 ) -> SurfaceDistortionOutputs:
     """
+    surface-distortion by Washington University School of Medicin.
+    
     MEASURE DISTORTION BETWEEN SURFACES.
     
     This command, when not using -caret5-method, -edge-method, or

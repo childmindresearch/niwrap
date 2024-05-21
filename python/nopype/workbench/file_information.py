@@ -36,6 +36,8 @@ def file_information(
     opt_czi_xml: bool = False,
 ) -> FileInformationOutputs:
     """
+    file-information by Washington University School of Medicin.
+    
     LIST INFORMATION ABOUT A FILE'S CONTENT.
     
     List information about the content of a data file. Only one -only option may
@@ -78,6 +80,7 @@ def file_information(
     Specification: spec, wb_spec
     Surface: surf.gii
     Volume: nii, nii.gz
+    .
     
     Args:
         runner: Command runner

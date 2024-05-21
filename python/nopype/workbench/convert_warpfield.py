@@ -30,6 +30,8 @@ def convert_warpfield(
     opt_to_itk_output: str | None = None,
 ) -> ConvertWarpfieldOutputs:
     """
+    convert-warpfield by Washington University School of Medicin.
+    
     CONVERT A WARPFIELD BETWEEN CONVENTIONS.
     
     NIFTI world warpfields can be used directly on mm coordinates via sampling

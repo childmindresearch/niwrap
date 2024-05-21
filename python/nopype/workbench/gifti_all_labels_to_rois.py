@@ -31,6 +31,8 @@ def gifti_all_labels_to_rois(
     metric_out: InputPathType,
 ) -> GiftiAllLabelsToRoisOutputs:
     """
+    gifti-all-labels-to-rois by Washington University School of Medicin.
+    
     MAKE ROIS FROM ALL LABELS IN A GIFTI COLUMN.
     
     The output metric file has a column for each label in the specified input

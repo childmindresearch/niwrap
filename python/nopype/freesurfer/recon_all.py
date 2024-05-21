@@ -49,7 +49,13 @@ def recon_all(
     xopts: typing.Literal["use", "clean", "overwrite"] | None = None,
 ) -> ReconAllOutputs:
     """
-    Performs all, or any part of, the FreeSurfer cortical reconstruction process.
+    ReconAll by Members of the Laboratories for Computational Neuroimaging (LCN) at
+    the Athinoula A. Martinos Center for Biomedical Imaging.
+    
+    Performs all, or any part of, the FreeSurfer cortical reconstruction
+    process.
+    
+    More information: https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all
     
     Args:
         runner: Command runner

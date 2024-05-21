@@ -33,6 +33,8 @@ def volume_distortion(
     opt_log2: bool = False,
 ) -> VolumeDistortionOutputs:
     """
+    volume-distortion by Washington University School of Medicin.
+    
     CALCULATE VOLUME WARPFIELD DISTORTION.
     
     Calculates isotropic and anisotropic distortions in the volume warpfield. At

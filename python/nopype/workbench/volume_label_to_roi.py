@@ -33,6 +33,8 @@ def volume_label_to_roi(
     opt_map_map: str | None = None,
 ) -> VolumeLabelToRoiOutputs:
     """
+    volume-label-to-roi by Washington University School of Medicin.
+    
     MAKE A VOLUME LABEL INTO AN ROI VOLUME.
     
     For each map in <label-in>, a map is created in <volume-out> where all

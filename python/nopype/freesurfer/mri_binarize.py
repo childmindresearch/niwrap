@@ -56,9 +56,14 @@ def mri_binarize(
     zero_slice_edge: bool = False,
 ) -> MriBinarizeOutputs:
     """
-    Program to binarize a volume (or volume-encoded surface file). Can also be used
-    to merge with other binarizations. Binarization can be done based on threshold
-    or on matched values.
+    mri binarize by Members of the Laboratories for Computational Neuroimaging (LCN)
+    at the Athinoula A. Martinos Center for Biomedical Imaging.
+    
+    Program to binarize a volume (or volume-encoded surface file). Can also be
+    used to merge with other binarizations. Binarization can be done based on
+    threshold or on matched values.
+    
+    More information: https://surfer.nmr.mgh.harvard.edu/fswiki/mri_binarize
     
     Args:
         runner: Command runner

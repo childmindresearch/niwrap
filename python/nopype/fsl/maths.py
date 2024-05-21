@@ -697,7 +697,9 @@ def fslmaths(
     output_datatype: typing.Literal["char", "short", "int", "float", "double", "input"] | None = None,
 ) -> FslmathsOutputs:
     """
-    FSL utility for image arithmetic, statistics, and mathematical operations
+    fslmaths by FSL Team.
+    
+    FSL utility for image arithmetic, statistics, and mathematical operations.
     
     Args:
         runner: Command runner

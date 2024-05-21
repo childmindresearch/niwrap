@@ -36,6 +36,8 @@ def cifti_vector_operation(
     opt_magnitude: bool = False,
 ) -> CiftiVectorOperationOutputs:
     """
+    cifti-vector-operation by Washington University School of Medicin.
+    
     DO A VECTOR OPERATION ON CIFTI FILES.
     
     Does a vector operation on two cifti files (that must have a multiple of 3
@@ -48,7 +50,7 @@ def cifti_vector_operation(
     DOT
     CROSS
     ADD
-    SUBTRACT
+    SUBTRACT.
     
     Args:
         runner: Command runner

@@ -35,6 +35,8 @@ def volume_weighted_stats(
     opt_show_map_name: bool = False,
 ) -> VolumeWeightedStatsOutputs:
     """
+    volume-weighted-stats by Washington University School of Medicin.
+    
     WEIGHTED SPATIAL STATISTICS ON A VOLUME FILE.
     
     For each subvolume of the input, a line of text is printed, resulting from

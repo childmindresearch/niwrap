@@ -38,6 +38,8 @@ def volume_dilate(
     opt_grad_extrapolate: bool = False,
 ) -> VolumeDilateOutputs:
     """
+    volume-dilate by Washington University School of Medicin.
+    
     DILATE A VOLUME FILE.
     
     For all voxels that are designated as bad, if they neighbor a non-bad voxel
@@ -56,7 +58,7 @@ def volume_dilate(
     Valid values for <method> are:
     
     NEAREST - use the value from the nearest good voxel
-    WEIGHTED - use a weighted average based on distance
+    WEIGHTED - use a weighted average based on distance.
     
     Args:
         runner: Command runner

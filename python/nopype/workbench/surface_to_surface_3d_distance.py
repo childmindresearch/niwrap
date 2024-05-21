@@ -32,6 +32,8 @@ def surface_to_surface_3d_distance(
     opt_vectors: bool = False,
 ) -> SurfaceToSurface3dDistanceOutputs:
     """
+    surface-to-surface-3d-distance by Washington University School of Medicin.
+    
     COMPUTE DISTANCE BETWEEN CORRESPONDING VERTICES.
     
     Computes the vector difference between the vertices of each surface with the

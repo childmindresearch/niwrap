@@ -67,7 +67,13 @@ def epi_reg(
     wmseg: InputPathType | None = None,
 ) -> EpiRegOutputs:
     """
-    Runs FSL epi_reg script for simultaneous coregistration and fieldmap unwarping.
+    epi_reg by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
+    Runs FSL epi_reg script for simultaneous coregistration and fieldmap
+    unwarping.
+    
+    More information:
+    https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/UserGuide#epi_reg
     
     Args:
         runner: Command runner

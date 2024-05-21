@@ -32,6 +32,8 @@ def surface_smoothing(
     surface_out: InputPathType,
 ) -> SurfaceSmoothingOutputs:
     """
+    surface-smoothing by Washington University School of Medicin.
+    
     SURFACE SMOOTHING.
     
     Smooths a surface by averaging vertex coordinates with those of the

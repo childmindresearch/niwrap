@@ -33,6 +33,8 @@ def surface_cortex_layer(
     opt_placement_out: bool = False,
 ) -> SurfaceCortexLayerOutputs:
     """
+    surface-cortex-layer by Washington University School of Medicin.
+    
     CREATE SURFACE APPROXIMATING A CORTICAL LAYER.
     
     The input surfaces must have vertex correspondence. The output surface is
@@ -40,7 +42,7 @@ def surface_cortex_layer(
     enclosed volume within any small patch of the new and white surfaces is the
     given fraction of the volume of the same patch between the pial and white
     surfaces (i.e., specifying 0 would give the white surface, 1 would give the
-    pial surface).
+    pial surface). .
     
     Args:
         runner: Command runner

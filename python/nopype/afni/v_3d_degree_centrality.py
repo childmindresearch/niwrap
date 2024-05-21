@@ -38,10 +38,15 @@ def v_3d_degree_centrality(
     thresh: float | int | None = None,
 ) -> V3dDegreeCentralityOutputs:
     """
-    Computes voxelwise weighted and binary degree centrality and stores the result
-    in a new 3D bucket dataset as floats to preserve their values. Degree centrality
-    reflects the strength and extent of the correlation of a voxel with every other
-    voxel in the brain.
+    3dDegreeCentrality by RWCox @ AFNI.
+    
+    Computes voxelwise weighted and binary degree centrality and stores the
+    result in a new 3D bucket dataset as floats to preserve their values. Degree
+    centrality reflects the strength and extent of the correlation of a voxel
+    with every other voxel in the brain. .
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html
     
     Args:
         runner: Command runner

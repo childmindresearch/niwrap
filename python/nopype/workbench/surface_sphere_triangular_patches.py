@@ -29,6 +29,8 @@ def surface_sphere_triangular_patches(
     text_out: str,
 ) -> SurfaceSphereTriangularPatchesOutputs:
     """
+    surface-sphere-triangular-patches by Washington University School of Medicin.
+    
     DIVIDE STANDARD SPHERE INTO PATCHES.
     
     Divide the given undistorted sphere into equally-sized triangular patches.

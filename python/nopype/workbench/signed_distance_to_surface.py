@@ -32,6 +32,8 @@ def signed_distance_to_surface(
     opt_winding_method: str | None = None,
 ) -> SignedDistanceToSurfaceOutputs:
     """
+    signed-distance-to-surface by Washington University School of Medicin.
+    
     COMPUTE SIGNED DISTANCE FROM ONE SURFACE TO ANOTHER.
     
     Compute the signed distance function of the reference surface at every

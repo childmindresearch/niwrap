@@ -33,6 +33,8 @@ def cifti_label_adjacency(
     opt_cerebellum_surface_surface: InputPathType | None = None,
 ) -> CiftiLabelAdjacencyOutputs:
     """
+    cifti-label-adjacency by Washington University School of Medicin.
+    
     MAKE ADJACENCY MATRIX OF A CIFTI LABEL FILE.
     
     Find face-adjacent voxels and connected vertices that have different label

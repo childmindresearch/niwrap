@@ -28,6 +28,8 @@ def backend_average_roi_correlation(
     out_file: str,
 ) -> BackendAverageRoiCorrelationOutputs:
     """
+    backend-average-roi-correlation by Washington University School of Medicin.
+    
     CONNECTOME DB BACKEND COMMAND FOR CIFTI AVERAGE ROI CORRELATION.
     
     This command is probably not the one you are looking for, try

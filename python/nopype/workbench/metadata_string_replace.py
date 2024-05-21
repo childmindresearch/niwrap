@@ -31,6 +31,8 @@ def metadata_string_replace(
     opt_case_insensitive: bool = False,
 ) -> MetadataStringReplaceOutputs:
     """
+    metadata-string-replace by Washington University School of Medicin.
+    
     REPLACE A STRING IN ALL METADATA OF A FILE.
     
     Replaces all occurrences of <find-string> in the metadata and map names of

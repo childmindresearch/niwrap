@@ -34,10 +34,15 @@ def merge(
     volume_number: int | None = None,
 ) -> MergeOutputs:
     """
-    Concatenate image files into a single output. This concatenation can be in time,
-    or in X, Y or Z. All image dimensions (except for the one being concatenated
-    over) must be the same in all input images. For example, this can be used to
-    take multiple 3D files (eg as output by SPM) and create a single 4D image file.
+    Merge by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
+    Concatenate image files into a single output. This concatenation can be in
+    time, or in X, Y or Z. All image dimensions (except for the one being
+    concatenated over) must be the same in all input images. For example, this
+    can be used to take multiple 3D files (eg as output by SPM) and create a
+    single 4D image file.
+    
+    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
         runner: Command runner

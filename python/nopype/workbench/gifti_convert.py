@@ -29,6 +29,8 @@ def gifti_convert(
     output_gifti_file: str,
 ) -> GiftiConvertOutputs:
     """
+    gifti-convert by Washington University School of Medicin.
+    
     CONVERT A GIFTI FILE TO A DIFFERENT ENCODING.
     
     The value of <gifti-encoding> must be one of the following:
@@ -36,7 +38,7 @@ def gifti_convert(
     ASCII
     BASE64_BINARY
     GZIP_BASE64_BINARY
-    EXTERNAL_FILE_BINARY
+    EXTERNAL_FILE_BINARY.
     
     Args:
         runner: Command runner

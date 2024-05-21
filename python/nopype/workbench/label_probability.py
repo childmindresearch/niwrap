@@ -31,6 +31,8 @@ def label_probability(
     opt_exclude_unlabeled: bool = False,
 ) -> LabelProbabilityOutputs:
     """
+    label-probability by Washington University School of Medicin.
+    
     FIND FREQUENCY OF SURFACE LABELS.
     
     This command outputs a set of soft ROIs, one for each label in the input,

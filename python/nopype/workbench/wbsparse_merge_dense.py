@@ -29,6 +29,8 @@ def wbsparse_merge_dense(
     opt_wbsparse_wbsparse_in: str | None = None,
 ) -> WbsparseMergeDenseOutputs:
     """
+    wbsparse-merge-dense by Washington University School of Medicin.
+    
     MERGE WBSPARSE FILES ALONG DENSE DIMENSION.
     
     The input wbsparse files must have matching mappings along the direction not

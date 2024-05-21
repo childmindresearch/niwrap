@@ -32,6 +32,8 @@ def cifti_separate(
     opt_volume_structure: str | None = None,
 ) -> CiftiSeparateOutputs:
     """
+    cifti-separate by Washington University School of Medicin.
+    
     WRITE A CIFTI STRUCTURE AS METRIC, LABEL OR VOLUME.
     
     For dtseries, dscalar, and dlabel, use COLUMN for <direction>, and if you
@@ -77,7 +79,7 @@ def cifti_separate(
     PUTAMEN_LEFT
     PUTAMEN_RIGHT
     THALAMUS_LEFT
-    THALAMUS_RIGHT
+    THALAMUS_RIGHT.
     
     Args:
         runner: Command runner

@@ -32,6 +32,8 @@ def surface_modify_sphere(
     opt_recenter: bool = False,
 ) -> SurfaceModifySphereOutputs:
     """
+    surface-modify-sphere by Washington University School of Medicin.
+    
     CHANGE RADIUS AND OPTIONALLY RECENTER A SPHERE.
     
     This command may be useful if you have used -surface-resample to resample a

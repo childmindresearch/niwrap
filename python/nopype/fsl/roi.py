@@ -38,7 +38,11 @@ def fsl_roi(
     z_size: int | None = None,
 ) -> FslRoiOutputs:
     """
+    FSL roi by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    
     Extract region of interest (ROI) from an image.
+    
+    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
         runner: Command runner

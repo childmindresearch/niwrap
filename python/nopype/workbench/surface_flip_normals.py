@@ -30,6 +30,8 @@ def surface_flip_normals(
     surface_out: InputPathType,
 ) -> SurfaceFlipNormalsOutputs:
     """
+    surface-flip-normals by Washington University School of Medicin.
+    
     FLIP ALL TILES ON A SURFACE.
     
     Flips all triangles on a surface, resulting in surface normals being flipped

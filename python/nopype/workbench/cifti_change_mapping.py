@@ -32,6 +32,8 @@ def cifti_change_mapping(
     opt_scalar: bool = False,
 ) -> CiftiChangeMappingOutputs:
     """
+    cifti-change-mapping by Washington University School of Medicin.
+    
     CONVERT TO SCALAR, COPY MAPPING, ETC.
     
     Take an existing cifti file and change one of the mappings. Exactly one of
@@ -43,7 +45,7 @@ def cifti_change_mapping(
     SECOND
     HERTZ
     METER
-    RADIAN
+    RADIAN.
     
     Args:
         runner: Command runner

@@ -33,6 +33,8 @@ def label_to_border(
     opt_column_column: str | None = None,
 ) -> LabelToBorderOutputs:
     """
+    label-to-border by Washington University School of Medicin.
+    
     DRAW BORDERS AROUND LABELS.
     
     For each label, finds all edges on the mesh that cross the boundary of the

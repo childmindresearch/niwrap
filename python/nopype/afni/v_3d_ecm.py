@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_ECM_METADATA = Metadata(
-    id="17e5a9890522ecda83f5a05de23994df48556833",
+    id="56e72dfe408e3e97f9457b31c03b72ed6862d377",
     name="3dECM",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -46,10 +46,13 @@ def v_3d_ecm(
     thresh: float | int | None = None,
 ) -> V3dEcmOutputs:
     """
+    3dECM by Nipype (interface).
+    
     Performs degree centrality on a dataset using a given maskfile via the 3dECM
-    command
-    For complete details, see the `3dECM Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dECM.html>`_
+    command.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dECM.html
     
     Args:
         runner: Command runner

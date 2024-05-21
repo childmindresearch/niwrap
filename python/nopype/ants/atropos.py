@@ -53,6 +53,8 @@ def atropos(
     use_random_seed: bool = True,
 ) -> AtroposOutputs:
     """
+    Atropos by Nipype (interface).
+    
     
     A multivariate n-class segmentation algorithm.
     A finite mixture modeling (FMM) segmentation approach with possibilities for

@@ -33,6 +33,8 @@ def gifti_label_to_roi(
     opt_map_map: str | None = None,
 ) -> GiftiLabelToRoiOutputs:
     """
+    gifti-label-to-roi by Washington University School of Medicin.
+    
     MAKE A GIFTI LABEL INTO AN ROI METRIC.
     
     For each map in <label-in>, a map is created in <metric-out> where all

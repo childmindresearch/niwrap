@@ -30,6 +30,8 @@ def volume_merge(
     opt_volume_volume_in: InputPathType | None = None,
 ) -> VolumeMergeOutputs:
     """
+    volume-merge by Washington University School of Medicin.
+    
     MERGE VOLUME FILES INTO A NEW FILE.
     
     Takes one or more volume files and constructs a new volume file by

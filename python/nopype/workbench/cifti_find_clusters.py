@@ -42,6 +42,8 @@ def cifti_find_clusters(
     opt_start_startval: float | int | None = None,
 ) -> CiftiFindClustersOutputs:
     """
+    cifti-find-clusters by Washington University School of Medicin.
+    
     FILTER CLUSTERS BY AREA/VOLUME.
     
     Outputs a cifti file with nonzero integers for all brainordinates within a

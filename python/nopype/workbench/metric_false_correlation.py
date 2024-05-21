@@ -36,6 +36,8 @@ def metric_false_correlation(
     opt_dump_text_text_out: str | None = None,
 ) -> MetricFalseCorrelationOutputs:
     """
+    metric-false-correlation by Washington University School of Medicin.
+    
     COMPARE CORRELATION LOCALLY AND ACROSS/THROUGH SULCI/GYRI.
     
     For each vertex, compute the average correlation within a range of geodesic

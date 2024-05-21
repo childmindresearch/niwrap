@@ -32,6 +32,8 @@ def metric_remove_islands(
     opt_corrected_areas_area_metric: InputPathType | None = None,
 ) -> MetricRemoveIslandsOutputs:
     """
+    metric-remove-islands by Washington University School of Medicin.
+    
     REMOVE ISLANDS FROM AN ROI METRIC.
     
     Finds all connected areas in the ROI, and zeros out all but the largest one,

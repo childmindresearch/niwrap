@@ -43,6 +43,8 @@ def cifti_correlation_gradient(
     opt_double_correlation: bool = False,
 ) -> CiftiCorrelationGradientOutputs:
     """
+    cifti-correlation-gradient by Washington University School of Medicin.
+    
     CORRELATE CIFTI ROWS AND TAKE GRADIENT.
     
     For each structure, compute the correlation of the rows in the structure,

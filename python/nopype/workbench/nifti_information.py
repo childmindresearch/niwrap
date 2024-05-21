@@ -30,6 +30,8 @@ def nifti_information(
     opt_print_xml: bool = False,
 ) -> NiftiInformationOutputs:
     """
+    nifti-information by Washington University School of Medicin.
+    
     DISPLAY INFORMATION ABOUT A NIFTI/CIFTI FILE.
     
     You must specify at least one -print-* option.

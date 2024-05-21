@@ -30,6 +30,8 @@ def cifti_estimate_fwhm(
     opt_whole_file: bool = False,
 ) -> CiftiEstimateFwhmOutputs:
     """
+    cifti-estimate-fwhm by Washington University School of Medicin.
+    
     ESTIMATE FWHM SMOOTHNESS OF A CIFTI FILE.
     
     Estimate the smoothness of the components of the cifti file, printing the
@@ -70,7 +72,7 @@ def cifti_estimate_fwhm(
     PUTAMEN_LEFT
     PUTAMEN_RIGHT
     THALAMUS_LEFT
-    THALAMUS_RIGHT
+    THALAMUS_RIGHT.
     
     Args:
         runner: Command runner

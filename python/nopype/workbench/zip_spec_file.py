@@ -31,6 +31,8 @@ def zip_spec_file(
     opt_skip_missing: bool = False,
 ) -> ZipSpecFileOutputs:
     """
+    zip-spec-file by Washington University School of Medicin.
+    
     ZIP A SPEC FILE AND ITS DATA FILES.
     
     If zip-file already exists, it will be overwritten. If -base-dir is not

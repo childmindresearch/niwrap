@@ -33,6 +33,8 @@ def convert_matrix4_to_workbench_sparse(
     opt_surface_seeds_seed_roi: InputPathType | None = None,
 ) -> ConvertMatrix4ToWorkbenchSparseOutputs:
     """
+    convert-matrix4-to-workbench-sparse by Washington University School of Medicin.
+    
     CONVERT A 3-FILE MATRIX4 TO A WORKBENCH SPARSE FILE.
     
     Converts the matrix 4 output of probtrackx to workbench sparse file format.

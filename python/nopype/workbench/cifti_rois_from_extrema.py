@@ -38,6 +38,8 @@ def cifti_rois_from_extrema(
     opt_merged_volume: bool = False,
 ) -> CiftiRoisFromExtremaOutputs:
     """
+    cifti-rois-from-extrema by Washington University School of Medicin.
+    
     CREATE CIFTI ROI MAPS FROM EXTREMA MAPS.
     
     For each nonzero value in each map, make a map with an ROI around that

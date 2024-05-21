@@ -27,6 +27,8 @@ def metric_convert(
     opt_to_nifti_metric_in: InputPathType | None = None,
 ) -> MetricConvertOutputs:
     """
+    metric-convert by Washington University School of Medicin.
+    
     CONVERT METRIC FILE TO FAKE NIFTI.
     
     The purpose of this command is to convert between metric files and nifti1 so

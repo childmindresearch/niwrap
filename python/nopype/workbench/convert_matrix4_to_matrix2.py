@@ -32,6 +32,8 @@ def convert_matrix4_to_matrix2(
     opt_individual_fibers: bool = False,
 ) -> ConvertMatrix4ToMatrix2Outputs:
     """
+    convert-matrix4-to-matrix2 by Washington University School of Medicin.
+    
     GENERATES A MATRIX2 CIFTI FROM MATRIX4 WBSPARSE.
     
     This command makes a cifti file from the fiber counts in a matrix4 wbsparse

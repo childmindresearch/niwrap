@@ -40,8 +40,10 @@ def overlay(
     use_checkerboard: bool = False,
 ) -> OverlayOutputs:
     """
-    Use FSL's overlay command to combine background and statistical images into one
-    volume
+    Overlay by Nipype (interface).
+    
+    Use FSL's overlay command to combine background and statistical images into
+    one volume.
     
     Args:
         runner: Command runner

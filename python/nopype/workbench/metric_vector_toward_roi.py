@@ -32,6 +32,8 @@ def metric_vector_toward_roi(
     opt_roi_roi_metric: InputPathType | None = None,
 ) -> MetricVectorTowardRoiOutputs:
     """
+    metric-vector-toward-roi by Washington University School of Medicin.
+    
     FIND IF VECTORS POINT TOWARD AN ROI.
     
     At each vertex, compute the vector along the start of the shortest path to

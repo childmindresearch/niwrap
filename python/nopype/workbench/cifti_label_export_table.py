@@ -29,6 +29,8 @@ def cifti_label_export_table(
     table_out: str,
 ) -> CiftiLabelExportTableOutputs:
     """
+    cifti-label-export-table by Washington University School of Medicin.
+    
     EXPORT LABEL TABLE FROM CIFTI AS TEXT.
     
     Takes the label table from the cifti label map, and writes it to a text

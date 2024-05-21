@@ -31,6 +31,8 @@ def slice_(
     output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
 ) -> SliceOutputs:
     """
+    Slice by Nipype (interface).
+    
     Use fslslice to split a 3D file into lots of 2D files (along z-axis).
     
     Args:

@@ -32,6 +32,8 @@ def cifti_create_label(
     opt_cerebellum_label_label: InputPathType | None = None,
 ) -> CiftiCreateLabelOutputs:
     """
+    cifti-create-label by Washington University School of Medicin.
+    
     CREATE A CIFTI LABEL FILE.
     
     All input files must have the same number of columns/subvolumes. Only the
@@ -80,7 +82,7 @@ def cifti_create_label(
     PUTAMEN_LEFT
     PUTAMEN_RIGHT
     THALAMUS_LEFT
-    THALAMUS_RIGHT
+    THALAMUS_RIGHT.
     
     Args:
         runner: Command runner

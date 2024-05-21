@@ -34,6 +34,8 @@ def surface_resample(
     opt_bypass_sphere_check: bool = False,
 ) -> SurfaceResampleOutputs:
     """
+    surface-resample by Washington University School of Medicin.
+    
     RESAMPLE A SURFACE TO A DIFFERENT MESH.
     
     Resamples a surface file, given two spherical surfaces that are in register.
@@ -53,6 +55,7 @@ def surface_resample(
     
     ADAP_BARY_AREA
     BARYCENTRIC
+    .
     
     Args:
         runner: Command runner

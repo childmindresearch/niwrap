@@ -29,6 +29,8 @@ def foci_list_coords(
     opt_names_out_names_file_out: str | None = None,
 ) -> FociListCoordsOutputs:
     """
+    foci-list-coords by Washington University School of Medicin.
+    
     OUTPUT FOCI COORDINATES IN A TEXT FILE.
     
     Output the coordinates for every focus in the foci file, and optionally the

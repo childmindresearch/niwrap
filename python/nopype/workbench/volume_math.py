@@ -31,6 +31,8 @@ def volume_math(
     opt_fixnan_replace: float | int | None = None,
 ) -> VolumeMathOutputs:
     """
+    volume-math by Washington University School of Medicin.
+    
     EVALUATE EXPRESSION ON VOLUME FILES.
     
     This command evaluates <expression> at each voxel independently. There must
@@ -100,6 +102,7 @@ def volume_math(
     max: 2 arguments, max(x, y) returns y if (x < y), x otherwise
     mod: 2 arguments, mod(x, y) = x - y * floor(x / y), or 0 if y == 0
     clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)
+    .
     
     Args:
         runner: Command runner

@@ -32,6 +32,8 @@ def surface_sphere_project_unproject(
     sphere_out: InputPathType,
 ) -> SurfaceSphereProjectUnprojectOutputs:
     """
+    surface-sphere-project-unproject by Washington University School of Medicin.
+    
     COPY REGISTRATION DEFORMATIONS TO DIFFERENT SPHERE.
     
     Background: A surface registration starts with an input sphere, and moves

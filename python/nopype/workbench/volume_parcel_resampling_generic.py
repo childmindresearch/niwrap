@@ -36,6 +36,8 @@ def volume_parcel_resampling_generic(
     opt_subvolume_subvol: str | None = None,
 ) -> VolumeParcelResamplingGenericOutputs:
     """
+    volume-parcel-resampling-generic by Washington University School of Medicin.
+    
     SMOOTH AND RESAMPLE VOLUME PARCELS FROM DIFFERENT VOLUME SPACE.
     
     Smooths and resamples the region inside each label in cur-parcels to the

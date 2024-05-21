@@ -33,6 +33,8 @@ def volume_tfce(
     opt_subvolume_subvolume: str | None = None,
 ) -> VolumeTfceOutputs:
     """
+    volume-tfce by Washington University School of Medicin.
+    
     DO TFCE ON A VOLUME FILE.
     
     This command does not do any statistical analysis. Please use something like
@@ -52,7 +54,7 @@ def volume_tfce(
     This method is explained in: Smith SM, Nichols TE., "Threshold-free cluster
     enhancement: addressing problems of smoothing, threshold dependence and
     localisation in cluster inference." Neuroimage. 2009 Jan 1;44(1):83-98.
-    PMID: 18501637
+    PMID: 18501637.
     
     Args:
         runner: Command runner

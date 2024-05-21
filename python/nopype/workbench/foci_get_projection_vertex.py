@@ -32,6 +32,8 @@ def foci_get_projection_vertex(
     opt_name_name: str | None = None,
 ) -> FociGetProjectionVertexOutputs:
     """
+    foci-get-projection-vertex by Washington University School of Medicin.
+    
     GET PROJECTION VERTEX FOR FOCI.
     
     For each focus, a column is created in <metric-out>, and the vertex with the

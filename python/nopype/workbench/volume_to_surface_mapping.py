@@ -35,6 +35,8 @@ def volume_to_surface_mapping(
     opt_subvol_select_subvol: str | None = None,
 ) -> VolumeToSurfaceMappingOutputs:
     """
+    volume-to-surface-mapping by Washington University School of Medicin.
+    
     MAP VOLUME TO SURFACE.
     
     You must specify exactly one mapping method. Enclosing voxel uses the value

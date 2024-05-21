@@ -32,6 +32,8 @@ def metric_stats(
     opt_show_map_name: bool = False,
 ) -> MetricStatsOutputs:
     """
+    metric-stats by Washington University School of Medicin.
+    
     SPATIAL STATISTICS ON A METRIC FILE.
     
     For each column of the input, a line of text is printed, resulting from the
@@ -59,6 +61,7 @@ def metric_stats(
     MEDIAN: the median of the data
     MODE: the mode of the data
     COUNT_NONZERO: the number of nonzero elements in the data
+    .
     
     Args:
         runner: Command runner

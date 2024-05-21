@@ -30,6 +30,8 @@ def label_merge(
     opt_label_label_in: InputPathType | None = None,
 ) -> LabelMergeOutputs:
     """
+    label-merge by Washington University School of Medicin.
+    
     MERGE LABEL FILES INTO A NEW FILE.
     
     Takes one or more label files and constructs a new label file by

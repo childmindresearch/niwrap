@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 V_3D_AUTOMASK_METADATA = Metadata(
-    id="8ff1f5cb12b314b20602a7a3be65602b29e26216",
+    id="5d88af61e27409727aa79d7a3803347975b4abb1",
     name="3dAutomask",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -40,9 +40,12 @@ def v_3d_automask(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
 ) -> V3dAutomaskOutputs:
     """
-    Create a brain-only mask of the image using AFNI 3dAutomask command
-    For complete details, see the `3dAutomask Documentation.
-    <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html>`_
+    3dAutomask by Nipype (interface).
+    
+    Create a brain-only mask of the image using AFNI 3dAutomask command.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html
     
     Args:
         runner: Command runner

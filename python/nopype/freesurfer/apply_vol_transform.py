@@ -49,8 +49,13 @@ def apply_vol_transform(
     xfm_reg_file: InputPathType | None = None,
 ) -> ApplyVolTransformOutputs:
     """
+    ApplyVolTransform by Members of the Laboratories for Computational Neuroimaging
+    (LCN) at the Athinoula A. Martinos Center for Biomedical Imaging.
+    
     Resamples a volume into another field-of-view using varous types of matrices
     (FreeSurfer, FSL, SPM, and MNI).
+    
+    More information: https://surfer.nmr.mgh.harvard.edu/fswiki/mri_vol2vol
     
     Args:
         runner: Command runner

@@ -7,7 +7,7 @@ from ..styxdefs import *
 
 
 ICA_AROMA_METADATA = Metadata(
-    id="c2b7358923f75a66e7f15f260756fa2dc7a27ff7",
+    id="bf8384733cdfc543a5805a7b686ef0b0129a9188",
     name="ICA_AROMA",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -43,6 +43,8 @@ def ica_aroma(
     out_dir: InputPathType = "out",
 ) -> IcaAromaOutputs:
     """
+    ICA_AROMA by Nipype (interface).
+    
     
     Interface for the ICA_AROMA.py script.
     ICA-AROMA (i.e. 'ICA-based Automatic Removal Of Motion Artifacts') concerns
@@ -50,7 +52,8 @@ def ica_aroma(
     components from fMRI data. To that end it exploits a small, but robust set
     of theoretically motivated features, preventing the need for classifier
     re-training and therefore providing direct and easy applicability.
-    See link for further documentation: https://github.com/rhr-pruim/ICA-AROMA
+    
+    More information: https://github.com/rhr-pruim/ICA-AROMA
     
     Args:
         runner: Command runner
