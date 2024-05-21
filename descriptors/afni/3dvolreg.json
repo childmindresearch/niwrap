@@ -1,8 +1,8 @@
 {
   "name": "3dvolreg",
-  "command-line": "3dvolreg [BASEFILE] [ZPAD] [MD1D_FILE] [IN_FILE] [ARGS] [COPYORIGIN] [ENVIRON] [IN_WEIGHT_VOLUME] [INTERP] [NUM_THREADS] [ONED_FILE] [ONED_MATRIX_SAVE] [OUT_FILE] [OUTPUTTYPE] [TIMESHIFT] [VERBOSE]",
+  "command-line": "3dvolreg [BASEFILE] [ZPAD] [MD1D_FILE] [IN_FILE] [COPYORIGIN] [IN_WEIGHT_VOLUME] [INTERP] [NUM_THREADS] [ONED_FILE] [ONED_MATRIX_SAVE] [OUT_FILE] [OUTPUTTYPE] [TIMESHIFT] [VERBOSE]",
   "author": "Nipype (interface)",
-  "description": "Volreg, as implemented in Nipype (module: nipype.interfaces.afni.preprocess, interface: Volreg).\nRegister input volumes to a base volume using AFNI 3dvolreg command\nFor complete details, see the `3dvolreg Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dvolreg.html>`_",
+  "description": "Register input volumes to a base volume using AFNI 3dvolreg command\nFor complete details, see the `3dvolreg Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dvolreg.html>`_",
   "inputs": [
     {
       "id": "basefile",

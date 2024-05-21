@@ -1,8 +1,8 @@
 {
   "name": "3dresample",
-  "command-line": "3dresample [IN_FILE] [ARGS] [ENVIRON] [MASTER] [NUM_THREADS] [ORIENTATION] [OUT_FILE] [OUTPUTTYPE] [RESAMPLE_MODE] [VOXEL_SIZE]",
+  "command-line": "3dresample [IN_FILE] [MASTER] [NUM_THREADS] [ORIENTATION] [OUT_FILE] [OUTPUTTYPE] [RESAMPLE_MODE] [VOXEL_SIZE]",
   "author": "Nipype (interface)",
-  "description": "Resample, as implemented in Nipype (module: nipype.interfaces.afni.utils, interface: Resample).\nResample or reorient an image using AFNI 3dresample command\nFor complete details, see the `3dresample Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dresample.html>`_",
+  "description": "Resample or reorient an image using AFNI 3dresample command\nFor complete details, see the `3dresample Documentation. <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dresample.html>`_",
   "inputs": [
     {
       "id": "in_file",

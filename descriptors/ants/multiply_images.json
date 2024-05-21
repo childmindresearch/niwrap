@@ -1,8 +1,8 @@
 {
   "name": "MultiplyImages",
-  "command-line": "MultiplyImages [DIMENSION] [FIRST_INPUT] [SECOND_INPUT] [OUTPUT_PRODUCT_IMAGE] [ARGS] [ENVIRON] [NUM_THREADS]",
+  "command-line": "MultiplyImages [DIMENSION] [FIRST_INPUT] [SECOND_INPUT] [OUTPUT_PRODUCT_IMAGE] [NUM_THREADS]",
   "author": "Nipype (interface)",
-  "description": "MultiplyImages, as implemented in Nipype (module: nipype.interfaces.ants, interface: MultiplyImages).",
+  "description": "No description provided.",
   "inputs": [
     {
       "id": "dimension",

@@ -1,8 +1,8 @@
 {
   "name": "3dROIstats",
-  "command-line": "3dROIstats [IN_FILE] [MASK] [OUT_FILE] [ARGS] [DEBUG] [ENVIRON] [FORMAT1D] [FORMAT1DR] [MASK_F2SHORT] [MASK_FILE] [NOBRIKLAB] [NOMEANOUT] [NUM_ROI] [QUIET] [ROISEL] [STAT] [ZEROFILL]",
+  "command-line": "3dROIstats [IN_FILE] [MASK] [OUT_FILE] [DEBUG] [FORMAT1D] [FORMAT1DR] [MASK_F2SHORT] [MASK_FILE] [NOBRIKLAB] [NOMEANOUT] [NUM_ROI] [QUIET] [ROISEL] [STAT] [ZEROFILL]",
   "author": "Nipype (interface)",
-  "description": "ROIStats, as implemented in Nipype (module: nipype.interfaces.afni, interface: ROIStats).\nDisplay statistics over masked regions\nFor complete details, see the `3dROIstats Documentation <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dROIstats.html>`_",
+  "description": "Display statistics over masked regions\nFor complete details, see the `3dROIstats Documentation <https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dROIstats.html>`_",
   "inputs": [
     {
       "id": "debug",

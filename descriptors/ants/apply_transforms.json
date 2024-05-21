@@ -1,8 +1,8 @@
 {
   "name": "ApplyTransforms",
-  "command-line": "ApplyTransforms [ARGS] [DEFAULT_VALUE] [DIMENSION] [ENVIRON] [FLOAT] [INPUT_IMAGE] [INPUT_IMAGE_TYPE] [INTERPOLATION] [INTERPOLATION_PARAMETERS] [INVERT_TRANSFORM_FLAGS] [NUM_THREADS] [OUT_POSTFIX] [OUTPUT_IMAGE] [PRINT_OUT_COMPOSITE_WARP_FILE] [REFERENCE_IMAGE] [TRANSFORMS]",
+  "command-line": "ApplyTransforms [DEFAULT_VALUE] [DIMENSION] [FLOAT] [INPUT_IMAGE] [INPUT_IMAGE_TYPE] [INTERPOLATION] [INTERPOLATION_PARAMETERS] [INVERT_TRANSFORM_FLAGS] [NUM_THREADS] [OUT_POSTFIX] [OUTPUT_IMAGE] [PRINT_OUT_COMPOSITE_WARP_FILE] [REFERENCE_IMAGE] [TRANSFORMS]",
   "author": "Nipype (interface)",
-  "description": "ApplyTransforms, as implemented in Nipype (module: nipype.interfaces.ants.resampling, interface: ApplyTransforms).\nApplyTransforms, applied to an input image, transforms it according to a reference image and a transform (or a set of transforms).",
+  "description": "ApplyTransforms, applied to an input image, transforms it according to a reference image and a transform (or a set of transforms).",
   "inputs": [
     {
       "id": "default_value",

@@ -2,7 +2,7 @@
   "name": "InvWarp",
   "command-line": "invwarp [WARP] [OUT] [REF] [ABSOLUTE] [RELATIVE] [NO_CONSTRAINT] [JACOBIAN_MIN] [JACOBIAN_MAX] [DEBUG]",
   "author": "Nipype (interface)",
-  "description": "InvWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: InvWarp).\n\nUse FSL Invwarp to invert a FNIRT warp",
+  "description": "\nUse FSL Invwarp to invert a FNIRT warp",
   "inputs": [
     {
       "id": "warp",

@@ -1,8 +1,8 @@
 {
   "name": "Cluster",
-  "command-line": "Cluster [ARGS] [CONNECTIVITY] [COPE_FILE] [DLH] [ENVIRON] [FIND_MIN] [FRACTIONAL] [IN_FILE] [MINCLUSTERSIZE] [NO_TABLE] [NUM_MAXIMA] [OUT_INDEX_FILE] [OUT_LOCALMAX_TXT_FILE] [OUT_LOCALMAX_VOL_FILE] [OUT_MAX_FILE] [OUT_MEAN_FILE] [OUT_PVAL_FILE] [OUT_SIZE_FILE] [OUT_THRESHOLD_FILE] [OUTPUT_TYPE] [PEAK_DISTANCE] [PTHRESHOLD] [STD_SPACE_FILE] [THRESHOLD] [USE_MM] [VOLUME] [WARPFIELD_FILE] [XFM_FILE]",
+  "command-line": "Cluster [CONNECTIVITY] [COPE_FILE] [DLH] [FIND_MIN] [FRACTIONAL] [IN_FILE] [MINCLUSTERSIZE] [NO_TABLE] [NUM_MAXIMA] [OUT_INDEX_FILE] [OUT_LOCALMAX_TXT_FILE] [OUT_LOCALMAX_VOL_FILE] [OUT_MAX_FILE] [OUT_MEAN_FILE] [OUT_PVAL_FILE] [OUT_SIZE_FILE] [OUT_THRESHOLD_FILE] [OUTPUT_TYPE] [PEAK_DISTANCE] [PTHRESHOLD] [STD_SPACE_FILE] [THRESHOLD] [USE_MM] [VOLUME] [WARPFIELD_FILE] [XFM_FILE]",
   "author": "Nipype (interface)",
-  "description": "Cluster, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Cluster).\nUses FSL cluster to perform clustering on statistical output",
+  "description": "Uses FSL cluster to perform clustering on statistical output",
   "inputs": [
     {
       "id": "connectivity",

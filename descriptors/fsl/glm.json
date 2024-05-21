@@ -1,8 +1,8 @@
 {
   "name": "GLM",
-  "command-line": "GLM [IN_FILE] [DESIGN] [OUT_FILE] [ARGS] [CONTRASTS] [DAT_NORM] [DEMEAN] [DES_NORM] [DOF] [ENVIRON] [MASK] [OUT_COPE] [OUT_DATA_NAME] [OUT_F_NAME] [OUT_P_NAME] [OUT_PF_NAME] [OUT_RES_NAME] [OUT_SIGSQ_NAME] [OUT_T_NAME] [OUT_VARCB_NAME] [OUT_VNSCALES_NAME] [OUT_Z_NAME] [OUTPUT_TYPE] [VAR_NORM]",
+  "command-line": "GLM [IN_FILE] [DESIGN] [OUT_FILE] [CONTRASTS] [DAT_NORM] [DEMEAN] [DES_NORM] [DOF] [MASK] [OUT_COPE] [OUT_DATA_NAME] [OUT_F_NAME] [OUT_P_NAME] [OUT_PF_NAME] [OUT_RES_NAME] [OUT_SIGSQ_NAME] [OUT_T_NAME] [OUT_VARCB_NAME] [OUT_VNSCALES_NAME] [OUT_Z_NAME] [OUTPUT_TYPE] [VAR_NORM]",
   "author": "Nipype (interface)",
-  "description": "GLM, as implemented in Nipype (module: nipype.interfaces.fsl, interface: GLM).\n\nFSL GLM:\nExample ------- >>> import nipype.interfaces.fsl as fsl >>> glm = fsl.GLM(in_file='functional.nii', design='maps.nii', output_type='NIFTI') >>> glm.cmdline 'fsl_glm -i functional.nii -d maps.nii -o functional_glm.nii'",
+  "description": "FSL GLM",
   "inputs": [
     {
       "id": "contrasts",
