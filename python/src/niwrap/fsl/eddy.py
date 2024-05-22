@@ -8,7 +8,7 @@ from styxdefs import *
 
 
 EDDY_METADATA = Metadata(
-    id="2d38626a9384397de5cd5fa50b5359129d4bfd59",
+    id="3f12b3805cc4367033501e895c5d3d2294d35116",
     name="eddy",
     container_image_type="docker",
     container_image_tag="fnndsc/fsl:6.0.5.1-cuda9.1",
@@ -32,7 +32,7 @@ def eddy(
     acqp: InputPathType,
     bvecs: InputPathType,
     bvals: InputPathType,
-    implementation: typing.Literal["", "_openmp", "_cuda", "_cuda10.2", "_cuda9.1", "_cuda8.0"] = "",
+    implementation: typing.Literal["openmp", "cuda", "cuda10.2", "cuda9.1", "cuda8.0"] | None = None,
     out: str = "eddy_corrected",
     mb: float | int | None = None,
     mb_offs: float | int | None = None,
@@ -152,11 +152,12 @@ def eddy(
     runner = runner or get_global_runner()
     execution = runner.start_execution(EDDY_METADATA)
     cargs = []
-    cargs.append(
-        "eddy" +
-        implementation +
-        ""
-    )
+    if implementation is not None:
+        cargs.append(
+            "eddy" +
+            ("_" + implementation) +
+            ""
+        )
     cargs.extend(["--imain", execution.input_file(imain)])
     cargs.extend(["--mask", execution.input_file(mask)])
     cargs.extend(["--index", execution.input_file(index)])
