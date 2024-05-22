@@ -14,7 +14,14 @@
       "description": "Choose the implementation to use",
       "type": "String",
       "default-value": "",
-      "value-choices": ["", "_openmp", "_cuda", "_cuda10.2", "_cuda9.1", "_cuda8.0"]
+      "value-choices": [
+        "",
+        "_openmp",
+        "_cuda",
+        "_cuda10.2",
+        "_cuda9.1",
+        "_cuda8.0"
+      ]
     },
     {
       "id": "imain",
