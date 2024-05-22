@@ -2,10 +2,10 @@ name: Styx compile
 
 # This action works with pull requests and pushes
 on:
-  pull_request:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Format Descriptors"]
+    types:
+      - completed
 
 jobs:
   styx:

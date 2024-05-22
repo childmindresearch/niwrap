@@ -1,4 +1,4 @@
-name: Validate JSON
+name: Validate & Spell-Check
 on:
   push:
       branches:
@@ -23,3 +23,9 @@ jobs:
           ajv_strict_mode: false
           use_gitignore: false
           json_exclude_regex: ''
+      - name: Spell-Check JSON
+        uses: codespell-project/actions-codespell@v2
+        with:
+            only_warn: 1
+            ignore_words_file: .codespellignore
+            path: descriptors

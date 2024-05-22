@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Format Descriptors
 
 # This action works with pull requests and pushes
 on:
