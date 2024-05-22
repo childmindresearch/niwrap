@@ -138,3 +138,10 @@ def scene_file_update(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SCENE_FILE_UPDATE_METADATA",
+    "SceneFileUpdateOutputs",
+    "scene_file_update",
+]

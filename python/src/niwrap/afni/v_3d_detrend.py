@@ -67,3 +67,10 @@ def v_3d_detrend(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dDetrendOutputs",
+    "V_3D_DETREND_METADATA",
+    "v_3d_detrend",
+]

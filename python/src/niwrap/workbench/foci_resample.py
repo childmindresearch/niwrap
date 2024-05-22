@@ -71,3 +71,10 @@ def foci_resample(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FOCI_RESAMPLE_METADATA",
+    "FociResampleOutputs",
+    "foci_resample",
+]

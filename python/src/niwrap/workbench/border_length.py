@@ -74,3 +74,10 @@ def border_length(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "BORDER_LENGTH_METADATA",
+    "BorderLengthOutputs",
+    "border_length",
+]

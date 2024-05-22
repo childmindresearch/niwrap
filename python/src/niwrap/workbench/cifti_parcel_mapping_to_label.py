@@ -67,3 +67,10 @@ def cifti_parcel_mapping_to_label(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA",
+    "CiftiParcelMappingToLabelOutputs",
+    "cifti_parcel_mapping_to_label",
+]

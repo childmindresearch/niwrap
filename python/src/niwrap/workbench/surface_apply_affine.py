@@ -64,3 +64,10 @@ def surface_apply_affine(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_APPLY_AFFINE_METADATA",
+    "SurfaceApplyAffineOutputs",
+    "surface_apply_affine",
+]

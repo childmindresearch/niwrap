@@ -84,3 +84,10 @@ def metric_false_correlation(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_FALSE_CORRELATION_METADATA",
+    "MetricFalseCorrelationOutputs",
+    "metric_false_correlation",
+]

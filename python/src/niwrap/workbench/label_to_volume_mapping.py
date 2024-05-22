@@ -73,3 +73,10 @@ def label_to_volume_mapping(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "LABEL_TO_VOLUME_MAPPING_METADATA",
+    "LabelToVolumeMappingOutputs",
+    "label_to_volume_mapping",
+]

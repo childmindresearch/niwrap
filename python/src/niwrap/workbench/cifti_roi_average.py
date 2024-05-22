@@ -81,3 +81,10 @@ def cifti_roi_average(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_ROI_AVERAGE_METADATA",
+    "CiftiRoiAverageOutputs",
+    "cifti_roi_average",
+]

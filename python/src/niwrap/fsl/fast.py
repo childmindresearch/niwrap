@@ -191,3 +191,10 @@ def fast(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FAST_METADATA",
+    "FastOutputs",
+    "fast",
+]

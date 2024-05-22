@@ -50,3 +50,10 @@ def flameo(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FLAMEO_METADATA",
+    "FlameoOutputs",
+    "flameo",
+]

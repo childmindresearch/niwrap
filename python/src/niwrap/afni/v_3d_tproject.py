@@ -179,3 +179,10 @@ def v_3d_tproject(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dTprojectOutputs",
+    "V_3D_TPROJECT_METADATA",
+    "v_3d_tproject",
+]

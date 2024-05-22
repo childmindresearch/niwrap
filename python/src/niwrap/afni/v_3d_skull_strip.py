@@ -67,3 +67,10 @@ def v_3d_skull_strip(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dSkullStripOutputs",
+    "V_3D_SKULL_STRIP_METADATA",
+    "v_3d_skull_strip",
+]

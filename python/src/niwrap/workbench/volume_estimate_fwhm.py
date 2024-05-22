@@ -68,3 +68,10 @@ def volume_estimate_fwhm(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_ESTIMATE_FWHM_METADATA",
+    "VolumeEstimateFwhmOutputs",
+    "volume_estimate_fwhm",
+]

@@ -58,3 +58,10 @@ def volume_fill_holes(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_FILL_HOLES_METADATA",
+    "VolumeFillHolesOutputs",
+    "volume_fill_holes",
+]

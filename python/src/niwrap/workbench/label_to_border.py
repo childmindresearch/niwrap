@@ -72,3 +72,10 @@ def label_to_border(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "LABEL_TO_BORDER_METADATA",
+    "LabelToBorderOutputs",
+    "label_to_border",
+]

@@ -122,3 +122,10 @@ def c3d_affine_tool(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "C3D_AFFINE_TOOL_METADATA",
+    "C3dAffineToolOutputs",
+    "c3d_affine_tool",
+]

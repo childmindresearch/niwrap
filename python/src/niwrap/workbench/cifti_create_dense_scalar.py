@@ -111,3 +111,10 @@ def cifti_create_dense_scalar(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_CREATE_DENSE_SCALAR_METADATA",
+    "CiftiCreateDenseScalarOutputs",
+    "cifti_create_dense_scalar",
+]

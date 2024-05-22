@@ -84,3 +84,10 @@ def volume_reduce(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_REDUCE_METADATA",
+    "VolumeReduceOutputs",
+    "volume_reduce",
+]

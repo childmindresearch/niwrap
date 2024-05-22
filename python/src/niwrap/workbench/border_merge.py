@@ -66,3 +66,10 @@ def border_merge(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "BORDER_MERGE_METADATA",
+    "BorderMergeOutputs",
+    "border_merge",
+]

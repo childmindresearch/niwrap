@@ -227,3 +227,10 @@ def fugue(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FUGUE_METADATA",
+    "FugueOutputs",
+    "fugue",
+]

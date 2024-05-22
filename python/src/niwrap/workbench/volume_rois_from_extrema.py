@@ -87,3 +87,10 @@ def volume_rois_from_extrema(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_ROIS_FROM_EXTREMA_METADATA",
+    "VolumeRoisFromExtremaOutputs",
+    "volume_rois_from_extrema",
+]

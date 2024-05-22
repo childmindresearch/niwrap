@@ -93,3 +93,10 @@ def v_3d_tcorr1_d(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dTcorr1DOutputs",
+    "V_3D_TCORR1_D_METADATA",
+    "v_3d_tcorr1_d",
+]

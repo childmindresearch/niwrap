@@ -82,3 +82,10 @@ def cifti_merge(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_MERGE_METADATA",
+    "CiftiMergeOutputs",
+    "cifti_merge",
+]

@@ -126,3 +126,10 @@ def cifti_extrema(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_EXTREMA_METADATA",
+    "CiftiExtremaOutputs",
+    "cifti_extrema",
+]

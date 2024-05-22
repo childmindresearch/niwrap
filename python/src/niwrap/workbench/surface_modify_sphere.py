@@ -71,3 +71,10 @@ def surface_modify_sphere(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_MODIFY_SPHERE_METADATA",
+    "SurfaceModifySphereOutputs",
+    "surface_modify_sphere",
+]

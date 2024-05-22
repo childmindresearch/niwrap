@@ -74,3 +74,10 @@ def surface_average(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_AVERAGE_METADATA",
+    "SurfaceAverageOutputs",
+    "surface_average",
+]

@@ -115,3 +115,10 @@ def v_3dmask_tool(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dmaskToolOutputs",
+    "V_3DMASK_TOOL_METADATA",
+    "v_3dmask_tool",
+]

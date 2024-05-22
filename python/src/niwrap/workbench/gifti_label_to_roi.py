@@ -74,3 +74,10 @@ def gifti_label_to_roi(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "GIFTI_LABEL_TO_ROI_METADATA",
+    "GiftiLabelToRoiOutputs",
+    "gifti_label_to_roi",
+]

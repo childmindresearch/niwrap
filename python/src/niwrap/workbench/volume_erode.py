@@ -72,3 +72,10 @@ def volume_erode(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_ERODE_METADATA",
+    "VolumeErodeOutputs",
+    "volume_erode",
+]

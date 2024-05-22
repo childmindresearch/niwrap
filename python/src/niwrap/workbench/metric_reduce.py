@@ -84,3 +84,10 @@ def metric_reduce(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_REDUCE_METADATA",
+    "MetricReduceOutputs",
+    "metric_reduce",
+]

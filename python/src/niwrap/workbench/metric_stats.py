@@ -99,3 +99,10 @@ def metric_stats(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_STATS_METADATA",
+    "MetricStatsOutputs",
+    "metric_stats",
+]

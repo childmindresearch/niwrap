@@ -117,3 +117,10 @@ def surface_sphere_project_unproject(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA",
+    "SurfaceSphereProjectUnprojectOutputs",
+    "surface_sphere_project_unproject",
+]

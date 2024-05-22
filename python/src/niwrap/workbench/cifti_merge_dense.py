@@ -69,3 +69,10 @@ def cifti_merge_dense(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_MERGE_DENSE_METADATA",
+    "CiftiMergeDenseOutputs",
+    "cifti_merge_dense",
+]

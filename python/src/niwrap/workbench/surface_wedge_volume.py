@@ -62,3 +62,10 @@ def surface_wedge_volume(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_WEDGE_VOLUME_METADATA",
+    "SurfaceWedgeVolumeOutputs",
+    "surface_wedge_volume",
+]

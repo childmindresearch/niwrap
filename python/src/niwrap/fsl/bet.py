@@ -233,3 +233,10 @@ def bet(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "BET_METADATA",
+    "BetOutputs",
+    "bet",
+]

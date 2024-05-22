@@ -113,3 +113,10 @@ def volume_extrema(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_EXTREMA_METADATA",
+    "VolumeExtremaOutputs",
+    "volume_extrema",
+]

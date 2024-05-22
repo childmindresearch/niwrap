@@ -64,3 +64,10 @@ def split(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SPLIT_METADATA",
+    "SplitOutputs",
+    "split",
+]

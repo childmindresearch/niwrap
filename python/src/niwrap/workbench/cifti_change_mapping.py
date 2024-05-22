@@ -73,3 +73,10 @@ def cifti_change_mapping(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_CHANGE_MAPPING_METADATA",
+    "CiftiChangeMappingOutputs",
+    "cifti_change_mapping",
+]

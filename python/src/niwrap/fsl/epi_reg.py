@@ -143,3 +143,10 @@ def epi_reg(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "EPI_REG_METADATA",
+    "EpiRegOutputs",
+    "epi_reg",
+]

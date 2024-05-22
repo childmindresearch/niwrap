@@ -176,3 +176,10 @@ def scene_capture_image(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SCENE_CAPTURE_IMAGE_METADATA",
+    "SceneCaptureImageOutputs",
+    "scene_capture_image",
+]

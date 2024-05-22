@@ -79,3 +79,10 @@ def multiply_images(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "MULTIPLY_IMAGES_METADATA",
+    "MultiplyImagesOutputs",
+    "multiply_images",
+]

@@ -148,3 +148,10 @@ def v_3d_roistats(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dRoistatsOutputs",
+    "V_3D_ROISTATS_METADATA",
+    "v_3d_roistats",
+]

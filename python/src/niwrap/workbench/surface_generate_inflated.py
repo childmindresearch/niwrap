@@ -72,3 +72,10 @@ def surface_generate_inflated(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_GENERATE_INFLATED_METADATA",
+    "SurfaceGenerateInflatedOutputs",
+    "surface_generate_inflated",
+]

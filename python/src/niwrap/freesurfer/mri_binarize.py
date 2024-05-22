@@ -213,3 +213,10 @@ def mri_binarize(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "MRI_BINARIZE_METADATA",
+    "MriBinarizeOutputs",
+    "mri_binarize",
+]

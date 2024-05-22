@@ -93,3 +93,10 @@ def cifti_erode(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_ERODE_METADATA",
+    "CiftiErodeOutputs",
+    "cifti_erode",
+]

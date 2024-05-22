@@ -80,3 +80,10 @@ def cifti_cross_correlation(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_CROSS_CORRELATION_METADATA",
+    "CiftiCrossCorrelationOutputs",
+    "cifti_cross_correlation",
+]

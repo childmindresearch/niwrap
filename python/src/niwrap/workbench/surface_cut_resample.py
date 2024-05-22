@@ -67,3 +67,10 @@ def surface_cut_resample(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_CUT_RESAMPLE_METADATA",
+    "SurfaceCutResampleOutputs",
+    "surface_cut_resample",
+]

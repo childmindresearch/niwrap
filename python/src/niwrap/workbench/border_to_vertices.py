@@ -65,3 +65,10 @@ def border_to_vertices(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "BORDER_TO_VERTICES_METADATA",
+    "BorderToVerticesOutputs",
+    "border_to_vertices",
+]

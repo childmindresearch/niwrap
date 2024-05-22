@@ -80,3 +80,10 @@ def fiber_dot_products(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FIBER_DOT_PRODUCTS_METADATA",
+    "FiberDotProductsOutputs",
+    "fiber_dot_products",
+]

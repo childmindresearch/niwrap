@@ -63,3 +63,10 @@ def nifti_information(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "NIFTI_INFORMATION_METADATA",
+    "NiftiInformationOutputs",
+    "nifti_information",
+]

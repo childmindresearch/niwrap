@@ -166,3 +166,10 @@ def cifti_palette(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_PALETTE_METADATA",
+    "CiftiPaletteOutputs",
+    "cifti_palette",
+]

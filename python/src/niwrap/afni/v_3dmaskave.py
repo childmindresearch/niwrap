@@ -75,3 +75,10 @@ def v_3dmaskave(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dmaskaveOutputs",
+    "V_3DMASKAVE_METADATA",
+    "v_3dmaskave",
+]

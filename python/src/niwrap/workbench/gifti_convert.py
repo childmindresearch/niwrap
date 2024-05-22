@@ -62,3 +62,10 @@ def gifti_convert(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "GIFTI_CONVERT_METADATA",
+    "GiftiConvertOutputs",
+    "gifti_convert",
+]

@@ -86,3 +86,10 @@ def cifti_false_correlation(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_FALSE_CORRELATION_METADATA",
+    "CiftiFalseCorrelationOutputs",
+    "cifti_false_correlation",
+]

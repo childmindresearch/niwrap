@@ -121,3 +121,10 @@ def set_structure(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SET_STRUCTURE_METADATA",
+    "SetStructureOutputs",
+    "set_structure",
+]

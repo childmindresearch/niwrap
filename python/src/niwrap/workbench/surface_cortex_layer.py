@@ -73,3 +73,10 @@ def surface_cortex_layer(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_CORTEX_LAYER_METADATA",
+    "SurfaceCortexLayerOutputs",
+    "surface_cortex_layer",
+]

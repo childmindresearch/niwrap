@@ -81,3 +81,10 @@ def metric_regression(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_REGRESSION_METADATA",
+    "MetricRegressionOutputs",
+    "metric_regression",
+]

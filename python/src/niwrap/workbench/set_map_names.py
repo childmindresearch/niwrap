@@ -64,3 +64,10 @@ def set_map_names(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SET_MAP_NAMES_METADATA",
+    "SetMapNamesOutputs",
+    "set_map_names",
+]

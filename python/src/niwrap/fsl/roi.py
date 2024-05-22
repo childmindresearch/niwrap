@@ -88,3 +88,10 @@ def fsl_roi(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FSL_ROI_METADATA",
+    "FslRoiOutputs",
+    "fsl_roi",
+]

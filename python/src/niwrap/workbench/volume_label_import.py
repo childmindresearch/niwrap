@@ -104,3 +104,10 @@ def volume_label_import(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_LABEL_IMPORT_METADATA",
+    "VolumeLabelImportOutputs",
+    "volume_label_import",
+]

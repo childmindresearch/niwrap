@@ -145,3 +145,10 @@ def swap_dimensions(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SWAP_DIMENSIONS_METADATA",
+    "SwapDimensionsOutputs",
+    "swap_dimensions",
+]

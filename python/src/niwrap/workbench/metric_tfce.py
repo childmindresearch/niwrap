@@ -102,3 +102,10 @@ def metric_tfce(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_TFCE_METADATA",
+    "MetricTfceOutputs",
+    "metric_tfce",
+]

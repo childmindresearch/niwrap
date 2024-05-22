@@ -65,3 +65,10 @@ def cifti_all_labels_to_rois(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_ALL_LABELS_TO_ROIS_METADATA",
+    "CiftiAllLabelsToRoisOutputs",
+    "cifti_all_labels_to_rois",
+]

@@ -64,3 +64,10 @@ def cifti_merge_parcels(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_MERGE_PARCELS_METADATA",
+    "CiftiMergeParcelsOutputs",
+    "cifti_merge_parcels",
+]

@@ -56,3 +56,10 @@ def v_3d_despike(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dDespikeOutputs",
+    "V_3D_DESPIKE_METADATA",
+    "v_3d_despike",
+]

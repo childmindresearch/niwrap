@@ -54,3 +54,10 @@ def metric_convert(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_CONVERT_METADATA",
+    "MetricConvertOutputs",
+    "metric_convert",
+]

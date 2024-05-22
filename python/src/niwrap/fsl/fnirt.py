@@ -115,3 +115,10 @@ def fnirt(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FNIRT_METADATA",
+    "FnirtOutputs",
+    "fnirt",
+]

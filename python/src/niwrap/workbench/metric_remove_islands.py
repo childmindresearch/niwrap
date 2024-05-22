@@ -66,3 +66,10 @@ def metric_remove_islands(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_REMOVE_ISLANDS_METADATA",
+    "MetricRemoveIslandsOutputs",
+    "metric_remove_islands",
+]

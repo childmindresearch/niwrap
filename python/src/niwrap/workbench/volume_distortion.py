@@ -81,3 +81,10 @@ def volume_distortion(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_DISTORTION_METADATA",
+    "VolumeDistortionOutputs",
+    "volume_distortion",
+]

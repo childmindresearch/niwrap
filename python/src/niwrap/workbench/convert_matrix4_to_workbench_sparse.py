@@ -74,3 +74,10 @@ def convert_matrix4_to_workbench_sparse(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA",
+    "ConvertMatrix4ToWorkbenchSparseOutputs",
+    "convert_matrix4_to_workbench_sparse",
+]

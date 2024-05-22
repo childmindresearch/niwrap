@@ -1512,3 +1512,41 @@ def ants_registration(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "ANTS_REGISTRATION_METADATA",
+    "AntsRegistrationConvergence",
+    "AntsRegistrationInitialMovingTransform",
+    "AntsRegistrationInitialMovingTransformInitializationFeature",
+    "AntsRegistrationInitialMovingTransformUseInverse",
+    "AntsRegistrationMasks",
+    "AntsRegistrationMetricAntsNeighbourhoodCrossCorrelation",
+    "AntsRegistrationMetricDemons",
+    "AntsRegistrationMetricEuclideanIcp",
+    "AntsRegistrationMetricGlobalCorrelation",
+    "AntsRegistrationMetricIgdm",
+    "AntsRegistrationMetricJensenHavrdaCharvetTsallis",
+    "AntsRegistrationMetricMattes",
+    "AntsRegistrationMetricMeanSquares",
+    "AntsRegistrationMetricMutualInformation",
+    "AntsRegistrationMetricPointSetExpectation",
+    "AntsRegistrationOutputs",
+    "AntsRegistrationStage",
+    "AntsRegistrationTransformAffine",
+    "AntsRegistrationTransformBspline",
+    "AntsRegistrationTransformBsplineDisplacementField",
+    "AntsRegistrationTransformBsplineExponential",
+    "AntsRegistrationTransformBsplineSyn",
+    "AntsRegistrationTransformCompositeAffine",
+    "AntsRegistrationTransformExponential",
+    "AntsRegistrationTransformGaussianDisplacementField",
+    "AntsRegistrationTransformRigid",
+    "AntsRegistrationTransformSimilarity",
+    "AntsRegistrationTransformSyn",
+    "AntsRegistrationTransformTimeVaryingBsplineVelocityField",
+    "AntsRegistrationTransformTimeVaryingVelocityField",
+    "AntsRegistrationTransformTranslation",
+    "AntsRegistrationWinsorizeImageIntensities",
+    "ants_registration",
+]

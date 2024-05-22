@@ -58,3 +58,10 @@ def surface_vertex_areas(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_VERTEX_AREAS_METADATA",
+    "SurfaceVertexAreasOutputs",
+    "surface_vertex_areas",
+]

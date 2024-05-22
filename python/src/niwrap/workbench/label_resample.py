@@ -107,3 +107,10 @@ def label_resample(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "LABEL_RESAMPLE_METADATA",
+    "LabelResampleOutputs",
+    "label_resample",
+]

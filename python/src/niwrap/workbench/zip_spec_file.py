@@ -74,3 +74,10 @@ def zip_spec_file(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "ZIP_SPEC_FILE_METADATA",
+    "ZipSpecFileOutputs",
+    "zip_spec_file",
+]

@@ -67,3 +67,10 @@ def metric_merge(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_MERGE_METADATA",
+    "MetricMergeOutputs",
+    "metric_merge",
+]

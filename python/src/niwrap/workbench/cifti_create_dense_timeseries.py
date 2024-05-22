@@ -128,3 +128,10 @@ def cifti_create_dense_timeseries(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_CREATE_DENSE_TIMESERIES_METADATA",
+    "CiftiCreateDenseTimeseriesOutputs",
+    "cifti_create_dense_timeseries",
+]

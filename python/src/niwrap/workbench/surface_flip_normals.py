@@ -62,3 +62,10 @@ def surface_flip_normals(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_FLIP_NORMALS_METADATA",
+    "SurfaceFlipNormalsOutputs",
+    "surface_flip_normals",
+]

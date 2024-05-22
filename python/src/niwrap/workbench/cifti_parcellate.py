@@ -137,3 +137,10 @@ def cifti_parcellate(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_PARCELLATE_METADATA",
+    "CiftiParcellateOutputs",
+    "cifti_parcellate",
+]

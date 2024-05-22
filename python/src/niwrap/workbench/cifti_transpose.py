@@ -62,3 +62,10 @@ def cifti_transpose(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_TRANSPOSE_METADATA",
+    "CiftiTransposeOutputs",
+    "cifti_transpose",
+]

@@ -71,3 +71,10 @@ def volume_warpfield_affine_regression(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA",
+    "VolumeWarpfieldAffineRegressionOutputs",
+    "volume_warpfield_affine_regression",
+]

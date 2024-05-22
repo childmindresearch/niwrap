@@ -65,3 +65,10 @@ def cifti_label_probability(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_LABEL_PROBABILITY_METADATA",
+    "CiftiLabelProbabilityOutputs",
+    "cifti_label_probability",
+]

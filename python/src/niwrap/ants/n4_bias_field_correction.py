@@ -168,3 +168,10 @@ def n4_bias_field_correction(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "N4BiasFieldCorrectionOutputs",
+    "N4_BIAS_FIELD_CORRECTION_METADATA",
+    "n4_bias_field_correction",
+]

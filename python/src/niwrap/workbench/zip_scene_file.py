@@ -77,3 +77,10 @@ def zip_scene_file(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "ZIP_SCENE_FILE_METADATA",
+    "ZipSceneFileOutputs",
+    "zip_scene_file",
+]

@@ -83,3 +83,10 @@ def label_dilate(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "LABEL_DILATE_METADATA",
+    "LabelDilateOutputs",
+    "label_dilate",
+]

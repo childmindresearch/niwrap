@@ -86,3 +86,10 @@ def v_3d_automask(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dAutomaskOutputs",
+    "V_3D_AUTOMASK_METADATA",
+    "v_3d_automask",
+]

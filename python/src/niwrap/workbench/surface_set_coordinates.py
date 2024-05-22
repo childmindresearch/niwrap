@@ -64,3 +64,10 @@ def surface_set_coordinates(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_SET_COORDINATES_METADATA",
+    "SurfaceSetCoordinatesOutputs",
+    "surface_set_coordinates",
+]

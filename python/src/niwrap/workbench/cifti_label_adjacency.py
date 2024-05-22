@@ -75,3 +75,10 @@ def cifti_label_adjacency(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_LABEL_ADJACENCY_METADATA",
+    "CiftiLabelAdjacencyOutputs",
+    "cifti_label_adjacency",
+]

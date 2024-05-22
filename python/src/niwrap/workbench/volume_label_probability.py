@@ -64,3 +64,10 @@ def volume_label_probability(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_LABEL_PROBABILITY_METADATA",
+    "VolumeLabelProbabilityOutputs",
+    "volume_label_probability",
+]

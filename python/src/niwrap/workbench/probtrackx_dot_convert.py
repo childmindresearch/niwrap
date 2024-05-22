@@ -121,3 +121,10 @@ def probtrackx_dot_convert(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "PROBTRACKX_DOT_CONVERT_METADATA",
+    "ProbtrackxDotConvertOutputs",
+    "probtrackx_dot_convert",
+]

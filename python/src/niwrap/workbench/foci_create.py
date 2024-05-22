@@ -71,3 +71,10 @@ def foci_create(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FOCI_CREATE_METADATA",
+    "FociCreateOutputs",
+    "foci_create",
+]

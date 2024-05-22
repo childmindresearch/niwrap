@@ -138,3 +138,10 @@ def cifti_math(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_MATH_METADATA",
+    "CiftiMathOutputs",
+    "cifti_math",
+]

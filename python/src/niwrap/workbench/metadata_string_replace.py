@@ -65,3 +65,10 @@ def metadata_string_replace(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METADATA_STRING_REPLACE_METADATA",
+    "MetadataStringReplaceOutputs",
+    "metadata_string_replace",
+]

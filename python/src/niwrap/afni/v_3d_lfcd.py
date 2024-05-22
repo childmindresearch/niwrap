@@ -87,3 +87,10 @@ def v_3d_lfcd(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dLfcdOutputs",
+    "V_3D_LFCD_METADATA",
+    "v_3d_lfcd",
+]

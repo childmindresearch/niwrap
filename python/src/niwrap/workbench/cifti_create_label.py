@@ -112,3 +112,10 @@ def cifti_create_label(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_CREATE_LABEL_METADATA",
+    "CiftiCreateLabelOutputs",
+    "cifti_create_label",
+]

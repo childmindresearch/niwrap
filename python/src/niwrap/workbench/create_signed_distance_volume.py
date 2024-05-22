@@ -108,3 +108,10 @@ def create_signed_distance_volume(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CREATE_SIGNED_DISTANCE_VOLUME_METADATA",
+    "CreateSignedDistanceVolumeOutputs",
+    "create_signed_distance_volume",
+]

@@ -60,3 +60,10 @@ def slice_(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SLICE_METADATA",
+    "SliceOutputs",
+    "slice_",
+]

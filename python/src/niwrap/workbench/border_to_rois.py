@@ -73,3 +73,10 @@ def border_to_rois(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "BORDER_TO_ROIS_METADATA",
+    "BorderToRoisOutputs",
+    "border_to_rois",
+]

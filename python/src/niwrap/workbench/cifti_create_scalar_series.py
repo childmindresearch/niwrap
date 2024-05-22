@@ -76,3 +76,10 @@ def cifti_create_scalar_series(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_CREATE_SCALAR_SERIES_METADATA",
+    "CiftiCreateScalarSeriesOutputs",
+    "cifti_create_scalar_series",
+]

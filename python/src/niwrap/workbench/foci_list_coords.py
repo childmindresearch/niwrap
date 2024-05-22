@@ -60,3 +60,10 @@ def foci_list_coords(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FOCI_LIST_COORDS_METADATA",
+    "FociListCoordsOutputs",
+    "foci_list_coords",
+]

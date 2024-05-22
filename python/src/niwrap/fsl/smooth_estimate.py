@@ -93,3 +93,10 @@ def smooth_estimate(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SMOOTH_ESTIMATE_METADATA",
+    "SmoothEstimateOutputs",
+    "smooth_estimate",
+]

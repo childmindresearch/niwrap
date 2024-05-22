@@ -57,3 +57,10 @@ def spec_file_relocate(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SPEC_FILE_RELOCATE_METADATA",
+    "SpecFileRelocateOutputs",
+    "spec_file_relocate",
+]

@@ -65,3 +65,10 @@ def label_probability(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "LABEL_PROBABILITY_METADATA",
+    "LabelProbabilityOutputs",
+    "label_probability",
+]

@@ -126,3 +126,10 @@ def applywarp(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "APPLYWARP_METADATA",
+    "ApplywarpOutputs",
+    "applywarp",
+]

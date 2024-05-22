@@ -102,3 +102,10 @@ def metric_label_import(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_LABEL_IMPORT_METADATA",
+    "MetricLabelImportOutputs",
+    "metric_label_import",
+]

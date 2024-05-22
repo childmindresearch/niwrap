@@ -99,3 +99,10 @@ def cifti_stats(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_STATS_METADATA",
+    "CiftiStatsOutputs",
+    "cifti_stats",
+]

@@ -64,3 +64,10 @@ def surface_smoothing(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_SMOOTHING_METADATA",
+    "SurfaceSmoothingOutputs",
+    "surface_smoothing",
+]

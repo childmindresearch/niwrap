@@ -58,3 +58,10 @@ def spec_file_merge(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SPEC_FILE_MERGE_METADATA",
+    "SpecFileMergeOutputs",
+    "spec_file_merge",
+]

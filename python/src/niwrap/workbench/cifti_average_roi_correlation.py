@@ -105,3 +105,10 @@ def cifti_average_roi_correlation(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_AVERAGE_ROI_CORRELATION_METADATA",
+    "CiftiAverageRoiCorrelationOutputs",
+    "cifti_average_roi_correlation",
+]

@@ -85,3 +85,10 @@ def convert_xfm(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CONVERT_XFM_METADATA",
+    "ConvertXfmOutputs",
+    "convert_xfm",
+]

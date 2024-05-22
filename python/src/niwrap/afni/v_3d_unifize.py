@@ -159,3 +159,10 @@ def v_3d_unifize(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dUnifizeOutputs",
+    "V_3D_UNIFIZE_METADATA",
+    "v_3d_unifize",
+]

@@ -74,3 +74,10 @@ def metric_rois_to_border(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_ROIS_TO_BORDER_METADATA",
+    "MetricRoisToBorderOutputs",
+    "metric_rois_to_border",
+]

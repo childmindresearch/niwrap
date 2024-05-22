@@ -80,3 +80,10 @@ def volume_parcel_smoothing(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_PARCEL_SMOOTHING_METADATA",
+    "VolumeParcelSmoothingOutputs",
+    "volume_parcel_smoothing",
+]

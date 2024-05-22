@@ -155,3 +155,10 @@ def v_3d_tcorrelate(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dTcorrelateOutputs",
+    "V_3D_TCORRELATE_METADATA",
+    "v_3d_tcorrelate",
+]

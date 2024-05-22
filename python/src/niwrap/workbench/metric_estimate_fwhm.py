@@ -70,3 +70,10 @@ def metric_estimate_fwhm(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_ESTIMATE_FWHM_METADATA",
+    "MetricEstimateFwhmOutputs",
+    "metric_estimate_fwhm",
+]

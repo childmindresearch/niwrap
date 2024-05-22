@@ -90,3 +90,10 @@ def cifti_restrict_dense_map(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_RESTRICT_DENSE_MAP_METADATA",
+    "CiftiRestrictDenseMapOutputs",
+    "cifti_restrict_dense_map",
+]

@@ -215,3 +215,10 @@ def slicer(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SLICER_METADATA",
+    "SlicerOutputs",
+    "slicer",
+]

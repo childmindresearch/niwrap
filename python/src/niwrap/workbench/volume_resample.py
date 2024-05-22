@@ -88,3 +88,10 @@ def volume_resample(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_RESAMPLE_METADATA",
+    "VolumeResampleOutputs",
+    "volume_resample",
+]

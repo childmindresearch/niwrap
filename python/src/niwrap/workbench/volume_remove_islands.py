@@ -58,3 +58,10 @@ def volume_remove_islands(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_REMOVE_ISLANDS_METADATA",
+    "VolumeRemoveIslandsOutputs",
+    "volume_remove_islands",
+]

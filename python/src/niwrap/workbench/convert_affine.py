@@ -76,3 +76,10 @@ def convert_affine(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CONVERT_AFFINE_METADATA",
+    "ConvertAffineOutputs",
+    "convert_affine",
+]

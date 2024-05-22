@@ -68,3 +68,10 @@ def cifti_average(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_AVERAGE_METADATA",
+    "CiftiAverageOutputs",
+    "cifti_average",
+]

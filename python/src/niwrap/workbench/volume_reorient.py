@@ -67,3 +67,10 @@ def volume_reorient(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_REORIENT_METADATA",
+    "VolumeReorientOutputs",
+    "volume_reorient",
+]

@@ -107,3 +107,10 @@ def metric_find_clusters(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_FIND_CLUSTERS_METADATA",
+    "MetricFindClustersOutputs",
+    "metric_find_clusters",
+]

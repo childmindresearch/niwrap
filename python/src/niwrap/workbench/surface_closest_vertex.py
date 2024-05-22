@@ -62,3 +62,10 @@ def surface_closest_vertex(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_CLOSEST_VERTEX_METADATA",
+    "SurfaceClosestVertexOutputs",
+    "surface_closest_vertex",
+]

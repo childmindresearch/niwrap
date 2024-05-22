@@ -107,3 +107,10 @@ def merge(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "MERGE_METADATA",
+    "MergeOutputs",
+    "merge",
+]

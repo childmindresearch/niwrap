@@ -124,3 +124,10 @@ def cifti_correlation_gradient(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_CORRELATION_GRADIENT_METADATA",
+    "CiftiCorrelationGradientOutputs",
+    "cifti_correlation_gradient",
+]

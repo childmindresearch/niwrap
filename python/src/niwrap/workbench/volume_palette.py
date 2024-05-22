@@ -159,3 +159,10 @@ def volume_palette(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_PALETTE_METADATA",
+    "VolumePaletteOutputs",
+    "volume_palette",
+]
