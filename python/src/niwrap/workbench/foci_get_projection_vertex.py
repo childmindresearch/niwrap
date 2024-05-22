@@ -66,3 +66,10 @@ def foci_get_projection_vertex(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FOCI_GET_PROJECTION_VERTEX_METADATA",
+    "FociGetProjectionVertexOutputs",
+    "foci_get_projection_vertex",
+]

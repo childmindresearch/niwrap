@@ -107,3 +107,10 @@ def volume_capture_plane(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_CAPTURE_PLANE_METADATA",
+    "VolumeCapturePlaneOutputs",
+    "volume_capture_plane",
+]

@@ -75,3 +75,10 @@ def metric_to_volume_mapping(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_TO_VOLUME_MAPPING_METADATA",
+    "MetricToVolumeMappingOutputs",
+    "metric_to_volume_mapping",
+]

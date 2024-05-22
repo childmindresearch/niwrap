@@ -83,3 +83,10 @@ def label_erode(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "LABEL_ERODE_METADATA",
+    "LabelErodeOutputs",
+    "label_erode",
+]

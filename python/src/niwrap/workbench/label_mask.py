@@ -67,3 +67,10 @@ def label_mask(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "LABEL_MASK_METADATA",
+    "LabelMaskOutputs",
+    "label_mask",
+]

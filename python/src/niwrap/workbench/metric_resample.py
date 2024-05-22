@@ -109,3 +109,10 @@ def metric_resample(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_RESAMPLE_METADATA",
+    "MetricResampleOutputs",
+    "metric_resample",
+]

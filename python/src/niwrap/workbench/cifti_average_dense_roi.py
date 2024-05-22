@@ -103,3 +103,10 @@ def cifti_average_dense_roi(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_AVERAGE_DENSE_ROI_METADATA",
+    "CiftiAverageDenseRoiOutputs",
+    "cifti_average_dense_roi",
+]

@@ -105,3 +105,10 @@ def cifti_gradient(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_GRADIENT_METADATA",
+    "CiftiGradientOutputs",
+    "cifti_gradient",
+]

@@ -77,3 +77,10 @@ def label_modify_keys(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "LABEL_MODIFY_KEYS_METADATA",
+    "LabelModifyKeysOutputs",
+    "label_modify_keys",
+]

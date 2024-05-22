@@ -173,3 +173,10 @@ def ica_aroma(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "ICA_AROMA_METADATA",
+    "IcaAromaOutputs",
+    "ica_aroma",
+]

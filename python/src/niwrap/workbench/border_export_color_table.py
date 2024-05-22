@@ -61,3 +61,10 @@ def border_export_color_table(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "BORDER_EXPORT_COLOR_TABLE_METADATA",
+    "BorderExportColorTableOutputs",
+    "border_export_color_table",
+]

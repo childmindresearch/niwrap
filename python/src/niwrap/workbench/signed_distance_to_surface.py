@@ -82,3 +82,10 @@ def signed_distance_to_surface(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SIGNED_DISTANCE_TO_SURFACE_METADATA",
+    "SignedDistanceToSurfaceOutputs",
+    "signed_distance_to_surface",
+]

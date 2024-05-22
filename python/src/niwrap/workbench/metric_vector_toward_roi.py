@@ -66,3 +66,10 @@ def metric_vector_toward_roi(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_VECTOR_TOWARD_ROI_METADATA",
+    "MetricVectorTowardRoiOutputs",
+    "metric_vector_toward_roi",
+]

@@ -98,3 +98,10 @@ def cifti_rois_from_extrema(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_ROIS_FROM_EXTREMA_METADATA",
+    "CiftiRoisFromExtremaOutputs",
+    "cifti_rois_from_extrema",
+]

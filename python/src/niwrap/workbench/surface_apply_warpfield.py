@@ -71,3 +71,10 @@ def surface_apply_warpfield(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_APPLY_WARPFIELD_METADATA",
+    "SurfaceApplyWarpfieldOutputs",
+    "surface_apply_warpfield",
+]

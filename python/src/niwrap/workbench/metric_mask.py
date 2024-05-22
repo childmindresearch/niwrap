@@ -67,3 +67,10 @@ def metric_mask(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_MASK_METADATA",
+    "MetricMaskOutputs",
+    "metric_mask",
+]

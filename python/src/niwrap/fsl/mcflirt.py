@@ -153,3 +153,10 @@ def mcflirt(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "MCFLIRT_METADATA",
+    "McflirtOutputs",
+    "mcflirt",
+]

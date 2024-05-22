@@ -88,3 +88,10 @@ def v_3d_blur_to_fwhm(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dBlurToFwhmOutputs",
+    "V_3D_BLUR_TO_FWHM_METADATA",
+    "v_3d_blur_to_fwhm",
+]

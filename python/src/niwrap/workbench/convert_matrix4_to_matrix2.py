@@ -69,3 +69,10 @@ def convert_matrix4_to_matrix2(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CONVERT_MATRIX4_TO_MATRIX2_METADATA",
+    "ConvertMatrix4ToMatrix2Outputs",
+    "convert_matrix4_to_matrix2",
+]

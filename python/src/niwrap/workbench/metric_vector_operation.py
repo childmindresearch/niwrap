@@ -91,3 +91,10 @@ def metric_vector_operation(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_VECTOR_OPERATION_METADATA",
+    "MetricVectorOperationOutputs",
+    "metric_vector_operation",
+]

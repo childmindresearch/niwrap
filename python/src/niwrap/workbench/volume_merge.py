@@ -67,3 +67,10 @@ def volume_merge(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_MERGE_METADATA",
+    "VolumeMergeOutputs",
+    "volume_merge",
+]

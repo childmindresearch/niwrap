@@ -52,3 +52,10 @@ def surface_information(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_INFORMATION_METADATA",
+    "SurfaceInformationOutputs",
+    "surface_information",
+]

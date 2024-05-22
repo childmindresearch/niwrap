@@ -165,3 +165,10 @@ def v_3d_tshift(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dTshiftOutputs",
+    "V_3D_TSHIFT_METADATA",
+    "v_3d_tshift",
+]

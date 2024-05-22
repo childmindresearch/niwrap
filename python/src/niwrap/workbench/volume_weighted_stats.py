@@ -96,3 +96,10 @@ def volume_weighted_stats(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_WEIGHTED_STATS_METADATA",
+    "VolumeWeightedStatsOutputs",
+    "volume_weighted_stats",
+]

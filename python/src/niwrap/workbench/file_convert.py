@@ -50,3 +50,10 @@ def file_convert(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FILE_CONVERT_METADATA",
+    "FileConvertOutputs",
+    "file_convert",
+]

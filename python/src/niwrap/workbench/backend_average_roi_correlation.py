@@ -58,3 +58,10 @@ def backend_average_roi_correlation(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "BACKEND_AVERAGE_ROI_CORRELATION_METADATA",
+    "BackendAverageRoiCorrelationOutputs",
+    "backend_average_roi_correlation",
+]

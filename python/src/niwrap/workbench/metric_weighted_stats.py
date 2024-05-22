@@ -104,3 +104,10 @@ def metric_weighted_stats(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_WEIGHTED_STATS_METADATA",
+    "MetricWeightedStatsOutputs",
+    "metric_weighted_stats",
+]

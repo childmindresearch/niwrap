@@ -54,3 +54,10 @@ def metadata_remove_provenance(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METADATA_REMOVE_PROVENANCE_METADATA",
+    "MetadataRemoveProvenanceOutputs",
+    "metadata_remove_provenance",
+]

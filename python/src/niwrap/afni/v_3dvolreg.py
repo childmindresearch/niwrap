@@ -131,3 +131,10 @@ def v_3dvolreg(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dvolregOutputs",
+    "V_3DVOLREG_METADATA",
+    "v_3dvolreg",
+]

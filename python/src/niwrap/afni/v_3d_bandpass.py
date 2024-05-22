@@ -135,3 +135,10 @@ def v_3d_bandpass(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dBandpassOutputs",
+    "V_3D_BANDPASS_METADATA",
+    "v_3d_bandpass",
+]

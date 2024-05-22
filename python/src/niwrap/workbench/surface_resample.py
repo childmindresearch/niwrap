@@ -90,3 +90,10 @@ def surface_resample(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_RESAMPLE_METADATA",
+    "SurfaceResampleOutputs",
+    "surface_resample",
+]

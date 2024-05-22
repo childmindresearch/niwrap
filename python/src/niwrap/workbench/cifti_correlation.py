@@ -96,3 +96,10 @@ def cifti_correlation(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_CORRELATION_METADATA",
+    "CiftiCorrelationOutputs",
+    "cifti_correlation",
+]

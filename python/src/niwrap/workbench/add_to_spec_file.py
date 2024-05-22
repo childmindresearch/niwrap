@@ -94,3 +94,10 @@ def add_to_spec_file(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "ADD_TO_SPEC_FILE_METADATA",
+    "AddToSpecFileOutputs",
+    "add_to_spec_file",
+]

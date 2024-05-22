@@ -59,3 +59,10 @@ def surface_sphere_triangular_patches(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA",
+    "SurfaceSphereTriangularPatchesOutputs",
+    "surface_sphere_triangular_patches",
+]

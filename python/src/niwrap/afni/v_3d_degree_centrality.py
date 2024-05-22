@@ -89,3 +89,10 @@ def v_3d_degree_centrality(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dDegreeCentralityOutputs",
+    "V_3D_DEGREE_CENTRALITY_METADATA",
+    "v_3d_degree_centrality",
+]

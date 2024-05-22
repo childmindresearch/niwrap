@@ -121,3 +121,10 @@ def metric_extrema(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_EXTREMA_METADATA",
+    "MetricExtremaOutputs",
+    "metric_extrema",
+]

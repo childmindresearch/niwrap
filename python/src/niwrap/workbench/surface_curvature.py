@@ -61,3 +61,10 @@ def surface_curvature(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_CURVATURE_METADATA",
+    "SurfaceCurvatureOutputs",
+    "surface_curvature",
+]

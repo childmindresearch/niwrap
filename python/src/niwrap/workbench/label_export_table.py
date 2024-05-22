@@ -55,3 +55,10 @@ def label_export_table(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "LABEL_EXPORT_TABLE_METADATA",
+    "LabelExportTableOutputs",
+    "label_export_table",
+]

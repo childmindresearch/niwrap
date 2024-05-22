@@ -61,3 +61,10 @@ def surface_flip_lr(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_FLIP_LR_METADATA",
+    "SurfaceFlipLrOutputs",
+    "surface_flip_lr",
+]

@@ -116,3 +116,10 @@ def cifti_separate(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_SEPARATE_METADATA",
+    "CiftiSeparateOutputs",
+    "cifti_separate",
+]

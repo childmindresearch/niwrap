@@ -132,3 +132,10 @@ def file_information(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FILE_INFORMATION_METADATA",
+    "FileInformationOutputs",
+    "file_information",
+]

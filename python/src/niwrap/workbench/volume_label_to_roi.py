@@ -74,3 +74,10 @@ def volume_label_to_roi(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_LABEL_TO_ROI_METADATA",
+    "VolumeLabelToRoiOutputs",
+    "volume_label_to_roi",
+]

@@ -80,3 +80,10 @@ def volume_label_to_surface_mapping(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_LABEL_TO_SURFACE_MAPPING_METADATA",
+    "VolumeLabelToSurfaceMappingOutputs",
+    "volume_label_to_surface_mapping",
+]

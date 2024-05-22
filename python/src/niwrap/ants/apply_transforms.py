@@ -126,3 +126,10 @@ def apply_transforms(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "APPLY_TRANSFORMS_METADATA",
+    "ApplyTransformsOutputs",
+    "apply_transforms",
+]

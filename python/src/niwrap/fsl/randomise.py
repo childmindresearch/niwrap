@@ -183,3 +183,10 @@ def randomise(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "RANDOMISE_METADATA",
+    "RandomiseOutputs",
+    "randomise",
+]

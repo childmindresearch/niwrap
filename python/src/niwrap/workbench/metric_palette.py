@@ -158,3 +158,10 @@ def metric_palette(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_PALETTE_METADATA",
+    "MetricPaletteOutputs",
+    "metric_palette",
+]

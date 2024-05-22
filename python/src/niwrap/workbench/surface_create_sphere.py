@@ -67,3 +67,10 @@ def surface_create_sphere(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_CREATE_SPHERE_METADATA",
+    "SurfaceCreateSphereOutputs",
+    "surface_create_sphere",
+]

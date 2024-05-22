@@ -209,3 +209,10 @@ def apply_vol_transform(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "APPLY_VOL_TRANSFORM_METADATA",
+    "ApplyVolTransformOutputs",
+    "apply_vol_transform",
+]

@@ -61,3 +61,10 @@ def surface_affine_regression(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_AFFINE_REGRESSION_METADATA",
+    "SurfaceAffineRegressionOutputs",
+    "surface_affine_regression",
+]

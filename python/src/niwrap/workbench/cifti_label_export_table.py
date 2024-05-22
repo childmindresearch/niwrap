@@ -58,3 +58,10 @@ def cifti_label_export_table(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_LABEL_EXPORT_TABLE_METADATA",
+    "CiftiLabelExportTableOutputs",
+    "cifti_label_export_table",
+]

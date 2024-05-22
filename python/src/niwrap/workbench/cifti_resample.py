@@ -130,3 +130,10 @@ def cifti_resample(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_RESAMPLE_METADATA",
+    "CiftiResampleOutputs",
+    "cifti_resample",
+]

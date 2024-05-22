@@ -97,3 +97,10 @@ def cifti_label_import(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_LABEL_IMPORT_METADATA",
+    "CiftiLabelImportOutputs",
+    "cifti_label_import",
+]

@@ -67,3 +67,10 @@ def label_merge(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "LABEL_MERGE_METADATA",
+    "LabelMergeOutputs",
+    "label_merge",
+]

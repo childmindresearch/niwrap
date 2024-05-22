@@ -68,3 +68,10 @@ def volume_copy_extensions(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_COPY_EXTENSIONS_METADATA",
+    "VolumeCopyExtensionsOutputs",
+    "volume_copy_extensions",
+]

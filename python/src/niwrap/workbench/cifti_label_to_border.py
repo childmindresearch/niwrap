@@ -67,3 +67,10 @@ def cifti_label_to_border(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_LABEL_TO_BORDER_METADATA",
+    "CiftiLabelToBorderOutputs",
+    "cifti_label_to_border",
+]

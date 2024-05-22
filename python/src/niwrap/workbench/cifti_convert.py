@@ -84,3 +84,10 @@ def cifti_convert(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_CONVERT_METADATA",
+    "CiftiConvertOutputs",
+    "cifti_convert",
+]

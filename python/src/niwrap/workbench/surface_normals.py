@@ -58,3 +58,10 @@ def surface_normals(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_NORMALS_METADATA",
+    "SurfaceNormalsOutputs",
+    "surface_normals",
+]

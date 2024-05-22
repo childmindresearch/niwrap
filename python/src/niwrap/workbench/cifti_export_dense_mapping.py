@@ -103,3 +103,10 @@ def cifti_export_dense_mapping(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_EXPORT_DENSE_MAPPING_METADATA",
+    "CiftiExportDenseMappingOutputs",
+    "cifti_export_dense_mapping",
+]

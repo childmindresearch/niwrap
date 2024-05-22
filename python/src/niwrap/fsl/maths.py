@@ -729,3 +729,11 @@ def fslmaths(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FSLMATHS_METADATA",
+    "FslmathsOperation",
+    "FslmathsOutputs",
+    "fslmaths",
+]

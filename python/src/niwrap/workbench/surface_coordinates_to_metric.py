@@ -57,3 +57,10 @@ def surface_coordinates_to_metric(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_COORDINATES_TO_METRIC_METADATA",
+    "SurfaceCoordinatesToMetricOutputs",
+    "surface_coordinates_to_metric",
+]

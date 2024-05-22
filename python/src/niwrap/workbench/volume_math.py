@@ -129,3 +129,10 @@ def volume_math(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_MATH_METADATA",
+    "VolumeMathOutputs",
+    "volume_math",
+]

@@ -115,3 +115,10 @@ def cifti_dilate(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_DILATE_METADATA",
+    "CiftiDilateOutputs",
+    "cifti_dilate",
+]

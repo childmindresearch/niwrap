@@ -130,3 +130,10 @@ def metric_math(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_MATH_METADATA",
+    "MetricMathOutputs",
+    "metric_math",
+]

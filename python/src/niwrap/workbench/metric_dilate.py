@@ -121,3 +121,10 @@ def metric_dilate(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_DILATE_METADATA",
+    "MetricDilateOutputs",
+    "metric_dilate",
+]

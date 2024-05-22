@@ -120,3 +120,10 @@ def overlay(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "OVERLAY_METADATA",
+    "OverlayOutputs",
+    "overlay",
+]

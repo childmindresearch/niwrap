@@ -165,3 +165,10 @@ def recon_all(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "RECON_ALL_METADATA",
+    "ReconAllOutputs",
+    "recon_all",
+]

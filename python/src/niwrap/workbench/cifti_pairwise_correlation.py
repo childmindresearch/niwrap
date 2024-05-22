@@ -70,3 +70,10 @@ def cifti_pairwise_correlation(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_PAIRWISE_CORRELATION_METADATA",
+    "CiftiPairwiseCorrelationOutputs",
+    "cifti_pairwise_correlation",
+]

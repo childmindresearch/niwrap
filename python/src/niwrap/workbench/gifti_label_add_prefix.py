@@ -60,3 +60,10 @@ def gifti_label_add_prefix(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "GIFTI_LABEL_ADD_PREFIX_METADATA",
+    "GiftiLabelAddPrefixOutputs",
+    "gifti_label_add_prefix",
+]

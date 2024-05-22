@@ -88,3 +88,10 @@ def volume_parcel_resampling_generic(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_PARCEL_RESAMPLING_GENERIC_METADATA",
+    "VolumeParcelResamplingGenericOutputs",
+    "volume_parcel_resampling_generic",
+]

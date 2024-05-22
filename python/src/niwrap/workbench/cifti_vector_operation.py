@@ -91,3 +91,10 @@ def cifti_vector_operation(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_VECTOR_OPERATION_METADATA",
+    "CiftiVectorOperationOutputs",
+    "cifti_vector_operation",
+]

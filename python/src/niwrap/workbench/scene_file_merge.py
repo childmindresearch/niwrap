@@ -63,3 +63,10 @@ def scene_file_merge(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SCENE_FILE_MERGE_METADATA",
+    "SceneFileMergeOutputs",
+    "scene_file_merge",
+]

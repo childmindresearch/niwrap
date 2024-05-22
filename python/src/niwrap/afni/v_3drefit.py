@@ -143,3 +143,10 @@ def v_3drefit(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3drefitOutputs",
+    "V_3DREFIT_METADATA",
+    "v_3drefit",
+]

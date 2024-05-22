@@ -128,3 +128,10 @@ def cifti_create_dense_from_template(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA",
+    "CiftiCreateDenseFromTemplateOutputs",
+    "cifti_create_dense_from_template",
+]

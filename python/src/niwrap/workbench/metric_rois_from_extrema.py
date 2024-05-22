@@ -90,3 +90,10 @@ def metric_rois_from_extrema(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_ROIS_FROM_EXTREMA_METADATA",
+    "MetricRoisFromExtremaOutputs",
+    "metric_rois_from_extrema",
+]

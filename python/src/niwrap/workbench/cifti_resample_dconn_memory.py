@@ -122,3 +122,10 @@ def cifti_resample_dconn_memory(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_RESAMPLE_DCONN_MEMORY_METADATA",
+    "CiftiResampleDconnMemoryOutputs",
+    "cifti_resample_dconn_memory",
+]

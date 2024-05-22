@@ -83,3 +83,10 @@ def metric_erode(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_ERODE_METADATA",
+    "MetricErodeOutputs",
+    "metric_erode",
+]

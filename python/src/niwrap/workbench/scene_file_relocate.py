@@ -57,3 +57,10 @@ def scene_file_relocate(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SCENE_FILE_RELOCATE_METADATA",
+    "SceneFileRelocateOutputs",
+    "scene_file_relocate",
+]

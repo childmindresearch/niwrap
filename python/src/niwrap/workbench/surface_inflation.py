@@ -73,3 +73,10 @@ def surface_inflation(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_INFLATION_METADATA",
+    "SurfaceInflationOutputs",
+    "surface_inflation",
+]

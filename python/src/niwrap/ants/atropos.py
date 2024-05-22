@@ -159,3 +159,10 @@ def atropos(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "ATROPOS_METADATA",
+    "AtroposOutputs",
+    "atropos",
+]

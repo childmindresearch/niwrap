@@ -96,3 +96,10 @@ def surface_distortion(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_DISTORTION_METADATA",
+    "SurfaceDistortionOutputs",
+    "surface_distortion",
+]

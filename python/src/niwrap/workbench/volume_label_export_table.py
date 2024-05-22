@@ -58,3 +58,10 @@ def volume_label_export_table(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_LABEL_EXPORT_TABLE_METADATA",
+    "VolumeLabelExportTableOutputs",
+    "volume_label_export_table",
+]

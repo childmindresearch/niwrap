@@ -111,3 +111,10 @@ def volume_dilate(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_DILATE_METADATA",
+    "VolumeDilateOutputs",
+    "volume_dilate",
+]

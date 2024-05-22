@@ -115,3 +115,10 @@ def cifti_find_clusters(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_FIND_CLUSTERS_METADATA",
+    "CiftiFindClustersOutputs",
+    "cifti_find_clusters",
+]

@@ -80,3 +80,10 @@ def v_3d_tcat(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dTcatOutputs",
+    "V_3D_TCAT_METADATA",
+    "v_3d_tcat",
+]

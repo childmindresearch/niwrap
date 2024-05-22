@@ -94,3 +94,10 @@ def convert_fiber_orientations(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CONVERT_FIBER_ORIENTATIONS_METADATA",
+    "ConvertFiberOrientationsOutputs",
+    "convert_fiber_orientations",
+]

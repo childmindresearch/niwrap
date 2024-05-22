@@ -77,3 +77,10 @@ def cifti_label_modify_keys(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_LABEL_MODIFY_KEYS_METADATA",
+    "CiftiLabelModifyKeysOutputs",
+    "cifti_label_modify_keys",
+]

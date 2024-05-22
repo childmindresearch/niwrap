@@ -70,3 +70,10 @@ def cifti_reorder(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_REORDER_METADATA",
+    "CiftiReorderOutputs",
+    "cifti_reorder",
+]

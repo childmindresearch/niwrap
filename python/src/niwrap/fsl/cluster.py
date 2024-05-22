@@ -267,3 +267,10 @@ def cluster(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CLUSTER_METADATA",
+    "ClusterOutputs",
+    "cluster",
+]

@@ -87,3 +87,10 @@ def v_3dcalc(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dcalcOutputs",
+    "V_3DCALC_METADATA",
+    "v_3dcalc",
+]

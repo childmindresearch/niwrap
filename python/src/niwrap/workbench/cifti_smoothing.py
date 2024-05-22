@@ -121,3 +121,10 @@ def cifti_smoothing(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_SMOOTHING_METADATA",
+    "CiftiSmoothingOutputs",
+    "cifti_smoothing",
+]

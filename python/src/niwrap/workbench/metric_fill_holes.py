@@ -66,3 +66,10 @@ def metric_fill_holes(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_FILL_HOLES_METADATA",
+    "MetricFillHolesOutputs",
+    "metric_fill_holes",
+]

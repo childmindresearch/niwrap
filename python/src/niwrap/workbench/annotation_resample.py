@@ -58,3 +58,10 @@ def annotation_resample(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "ANNOTATION_RESAMPLE_METADATA",
+    "AnnotationResampleOutputs",
+    "annotation_resample",
+]

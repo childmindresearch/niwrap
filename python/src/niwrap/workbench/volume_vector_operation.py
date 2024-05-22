@@ -91,3 +91,10 @@ def volume_vector_operation(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_VECTOR_OPERATION_METADATA",
+    "VolumeVectorOperationOutputs",
+    "volume_vector_operation",
+]

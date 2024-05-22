@@ -62,3 +62,10 @@ def volume_set_space(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_SET_SPACE_METADATA",
+    "VolumeSetSpaceOutputs",
+    "volume_set_space",
+]

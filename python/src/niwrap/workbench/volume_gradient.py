@@ -81,3 +81,10 @@ def volume_gradient(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_GRADIENT_METADATA",
+    "VolumeGradientOutputs",
+    "volume_gradient",
+]

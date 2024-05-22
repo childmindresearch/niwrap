@@ -94,3 +94,10 @@ def surface_geodesic_distance_all_to_all(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_GEODESIC_DISTANCE_ALL_TO_ALL_METADATA",
+    "SurfaceGeodesicDistanceAllToAllOutputs",
+    "surface_geodesic_distance_all_to_all",
+]

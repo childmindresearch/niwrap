@@ -254,3 +254,10 @@ def flirt(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "FLIRT_METADATA",
+    "FlirtOutputs",
+    "flirt",
+]

@@ -74,3 +74,10 @@ def v_3d_tstat(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dTstatOutputs",
+    "V_3D_TSTAT_METADATA",
+    "v_3d_tstat",
+]

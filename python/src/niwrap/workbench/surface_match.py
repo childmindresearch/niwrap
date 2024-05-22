@@ -58,3 +58,10 @@ def surface_match(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_MATCH_METADATA",
+    "SurfaceMatchOutputs",
+    "surface_match",
+]

@@ -121,3 +121,10 @@ def ants_brain_extraction_sh(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "ANTS_BRAIN_EXTRACTION_SH_METADATA",
+    "AntsBrainExtractionShOutputs",
+    "ants_brain_extraction_sh",
+]

@@ -109,3 +109,10 @@ def denoise_image(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "DENOISE_IMAGE_METADATA",
+    "DenoiseImageOutputs",
+    "denoise_image",
+]

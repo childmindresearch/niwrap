@@ -134,3 +134,10 @@ def metric_smoothing(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_SMOOTHING_METADATA",
+    "MetricSmoothingOutputs",
+    "metric_smoothing",
+]

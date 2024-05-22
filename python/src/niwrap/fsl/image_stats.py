@@ -79,3 +79,10 @@ def image_stats(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "IMAGE_STATS_METADATA",
+    "ImageStatsOutputs",
+    "image_stats",
+]

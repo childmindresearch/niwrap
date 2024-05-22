@@ -104,3 +104,10 @@ def cifti_estimate_fwhm(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_ESTIMATE_FWHM_METADATA",
+    "CiftiEstimateFwhmOutputs",
+    "cifti_estimate_fwhm",
+]

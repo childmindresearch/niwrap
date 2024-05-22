@@ -115,3 +115,10 @@ def metric_gradient(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "METRIC_GRADIENT_METADATA",
+    "MetricGradientOutputs",
+    "metric_gradient",
+]

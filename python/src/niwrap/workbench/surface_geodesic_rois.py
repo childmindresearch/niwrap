@@ -95,3 +95,10 @@ def surface_geodesic_rois(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "SURFACE_GEODESIC_ROIS_METADATA",
+    "SurfaceGeodesicRoisOutputs",
+    "surface_geodesic_rois",
+]

@@ -67,3 +67,10 @@ def border_resample(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "BORDER_RESAMPLE_METADATA",
+    "BorderResampleOutputs",
+    "border_resample",
+]

@@ -83,3 +83,10 @@ def v_3dresample(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dresampleOutputs",
+    "V_3DRESAMPLE_METADATA",
+    "v_3dresample",
+]

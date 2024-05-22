@@ -89,3 +89,10 @@ def cifti_reduce(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_REDUCE_METADATA",
+    "CiftiReduceOutputs",
+    "cifti_reduce",
+]

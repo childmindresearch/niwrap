@@ -128,3 +128,10 @@ def v_3d_ecm(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "V3dEcmOutputs",
+    "V_3D_ECM_METADATA",
+    "v_3d_ecm",
+]

@@ -99,3 +99,10 @@ def volume_stats(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_STATS_METADATA",
+    "VolumeStatsOutputs",
+    "volume_stats",
+]

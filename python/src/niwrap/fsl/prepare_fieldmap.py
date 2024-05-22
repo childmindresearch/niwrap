@@ -80,3 +80,10 @@ def prepare_fieldmap(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "PREPARE_FIELDMAP_METADATA",
+    "PrepareFieldmapOutputs",
+    "prepare_fieldmap",
+]

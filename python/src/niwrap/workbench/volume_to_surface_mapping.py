@@ -113,3 +113,10 @@ def volume_to_surface_mapping(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_TO_SURFACE_MAPPING_METADATA",
+    "VolumeToSurfaceMappingOutputs",
+    "volume_to_surface_mapping",
+]

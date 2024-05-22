@@ -57,3 +57,10 @@ def backend_average_dense_roi(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "BACKEND_AVERAGE_DENSE_ROI_METADATA",
+    "BackendAverageDenseRoiOutputs",
+    "backend_average_dense_roi",
+]

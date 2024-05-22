@@ -58,3 +58,10 @@ def volume_components_to_frames(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_COMPONENTS_TO_FRAMES_METADATA",
+    "VolumeComponentsToFramesOutputs",
+    "volume_components_to_frames",
+]

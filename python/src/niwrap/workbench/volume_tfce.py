@@ -89,3 +89,10 @@ def volume_tfce(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "VOLUME_TFCE_METADATA",
+    "VolumeTfceOutputs",
+    "volume_tfce",
+]

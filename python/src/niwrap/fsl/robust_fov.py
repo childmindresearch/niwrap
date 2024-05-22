@@ -73,3 +73,10 @@ def robust_fov(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "ROBUST_FOV_METADATA",
+    "RobustFovOutputs",
+    "robust_fov",
+]

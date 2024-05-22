@@ -114,3 +114,10 @@ def cifti_replace_structure(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "CIFTI_REPLACE_STRUCTURE_METADATA",
+    "CiftiReplaceStructureOutputs",
+    "cifti_replace_structure",
+]

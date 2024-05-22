@@ -61,3 +61,10 @@ def wbsparse_merge_dense(
     )
     execution.run(cargs)
     return ret
+
+
+__all__ = [
+    "WBSPARSE_MERGE_DENSE_METADATA",
+    "WbsparseMergeDenseOutputs",
+    "wbsparse_merge_dense",
+]
