@@ -8,8 +8,10 @@ from styxdefs import *
 
 
 EDDY_METADATA = Metadata(
-    id="03ef9d4710d51b755c310aea54678ebe73d49876",
+    id="2d38626a9384397de5cd5fa50b5359129d4bfd59",
     name="eddy",
+    container_image_type="docker",
+    container_image_tag="fnndsc/fsl:6.0.5.1-cuda9.1",
 )
 
 
