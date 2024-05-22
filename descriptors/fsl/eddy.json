@@ -20,13 +20,7 @@
       "description": "Choose the implementation to use",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "openmp",
-        "cuda",
-        "cuda10.2",
-        "cuda9.1",
-        "cuda8.0"
-      ]
+      "value-choices": ["openmp", "cuda", "cuda10.2", "cuda9.1", "cuda8.0"]
     },
     {
       "id": "imain",
