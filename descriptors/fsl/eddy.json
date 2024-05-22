@@ -15,16 +15,17 @@
       "id": "implementation",
       "name": "implementation",
       "value-key": "[IMPLEMENTATION]",
+      "command-line-flag": "_",
+      "command-line-flag-separator": "",
       "description": "Choose the implementation to use",
       "type": "String",
-      "default-value": "",
+      "optional": true,
       "value-choices": [
-        "",
-        "_openmp",
-        "_cuda",
-        "_cuda10.2",
-        "_cuda9.1",
-        "_cuda8.0"
+        "openmp",
+        "cuda",
+        "cuda10.2",
+        "cuda9.1",
+        "cuda8.0"
       ]
     },
     {
