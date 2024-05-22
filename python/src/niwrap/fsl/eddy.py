@@ -8,7 +8,7 @@ from styxdefs import *
 
 
 EDDY_METADATA = Metadata(
-    id="28614a309b34e51f0007580f91544a14560fb7bf",
+    id="03ef9d4710d51b755c310aea54678ebe73d49876",
     name="eddy",
 )
 
@@ -74,7 +74,7 @@ def eddy(
     """
     eddy by Jesper Andersson (University of Oxford).
     
-    Automated brain extraction tool for FSL.
+    A tool for correcting eddy currents and movements in diffusion data.
     
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy
     
