@@ -3,6 +3,7 @@ from .bet import *
 from .cluster import *
 from .convert_warp import *
 from .convert_xfm import *
+from .eddy import *
 from .epi_reg import *
 from .fast import *
 from .flameo import *
