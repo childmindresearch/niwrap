@@ -37,9 +37,7 @@
             "description": "output only the field specified. Multiple such options can be supplied if required. Choices are: mean, median, std, min, max, count. Useful for use in scripts.",
             "type": "String",
             "optional": false,
-            "value-choices": [
-              "field"
-            ]
+            "value-choices": ["field"]
           }
         ],
         "output-files": []

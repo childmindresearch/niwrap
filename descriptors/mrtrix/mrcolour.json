@@ -25,9 +25,7 @@
       "description": "the colourmap to apply; choices are: gray,hot,cool,jet,inferno,viridis,pet,colour,rgb",
       "type": "String",
       "optional": false,
-      "value-choices": [
-        "map"
-      ]
+      "value-choices": ["map"]
     },
     {
       "id": "output",
