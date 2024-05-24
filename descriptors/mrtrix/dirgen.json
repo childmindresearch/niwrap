@@ -13,7 +13,6 @@
     {
       "id": "ndir",
       "name": "ndir",
-      "command-line-flag": "",
       "value-key": "[NDIR]",
       "description": "the number of directions to generate.",
       "type": "Number",
@@ -23,7 +22,6 @@
     {
       "id": "dirs",
       "name": "dirs",
-      "command-line-flag": "",
       "value-key": "[DIRS]",
       "description": "the text file to write the directions to, as [ az el ] pairs.",
       "type": "File",

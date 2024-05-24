@@ -13,7 +13,6 @@
     {
       "id": "source",
       "name": "source",
-      "command-line-flag": "",
       "value-key": "[SOURCE]",
       "description": "the image containing the raw DWI data.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "response",
       "name": "response",
-      "command-line-flag": "",
       "value-key": "[RESPONSE]",
       "description": "the response of a track segment on the DWI signal.",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "tracks",
       "name": "tracks",
-      "command-line-flag": "",
       "value-key": "[TRACKS]",
       "description": "the output file containing the tracks generated.",
       "type": "File",

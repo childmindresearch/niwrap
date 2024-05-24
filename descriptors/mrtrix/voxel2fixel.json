@@ -13,7 +13,6 @@
     {
       "id": "image_in",
       "name": "image_in",
-      "command-line-flag": "",
       "value-key": "[IMAGE_IN]",
       "description": "the input image.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "fixel_directory_in",
       "name": "fixel_directory_in",
-      "command-line-flag": "",
       "value-key": "[FIXEL_DIRECTORY_IN]",
       "description": "the input fixel directory. Used to define the fixels and their directions",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "fixel_directory_out",
       "name": "fixel_directory_out",
-      "command-line-flag": "",
       "value-key": "[FIXEL_DIRECTORY_OUT]",
       "description": "the fixel directory where the output will be written. This can be the same as the input directory if desired",
       "type": "String",
@@ -40,7 +37,6 @@
     {
       "id": "fixel_data_out",
       "name": "fixel_data_out",
-      "command-line-flag": "",
       "value-key": "[FIXEL_DATA_OUT]",
       "description": "the name of the fixel data image.",
       "type": "String",

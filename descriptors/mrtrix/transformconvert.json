@@ -13,7 +13,6 @@
     {
       "id": "input",
       "name": "input",
-      "command-line-flag": "",
       "value-key": "[INPUT]",
       "description": "the input(s) for the specified operation",
       "type": "String",
@@ -23,17 +22,17 @@
     {
       "id": "operation",
       "name": "operation",
-      "command-line-flag": "",
       "value-key": "[OPERATION]",
       "description": "the operation to perform, one of:\nflirt_import, itk_import",
       "type": "String",
       "optional": false,
-      "value-choices": ["operation"]
+      "value-choices": [
+        "operation"
+      ]
     },
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output transformation matrix.",
       "type": "File",

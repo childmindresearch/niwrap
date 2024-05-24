@@ -13,17 +13,17 @@
     {
       "id": "type",
       "name": "type",
-      "command-line-flag": "",
       "value-key": "[TYPE]",
       "description": "type of histogram matching to perform; options are: scale,linear,nonlinear",
       "type": "String",
       "optional": false,
-      "value-choices": ["type"]
+      "value-choices": [
+        "type"
+      ]
     },
     {
       "id": "input",
       "name": "input",
-      "command-line-flag": "",
       "value-key": "[INPUT]",
       "description": "the input image to be modified",
       "type": "File",
@@ -32,7 +32,6 @@
     {
       "id": "target",
       "name": "target",
-      "command-line-flag": "",
       "value-key": "[TARGET]",
       "description": "the input image from which to derive the target histogram",
       "type": "File",
@@ -41,7 +40,6 @@
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output image",
       "type": "File",

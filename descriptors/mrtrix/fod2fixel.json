@@ -13,7 +13,6 @@
     {
       "id": "fod",
       "name": "fod",
-      "command-line-flag": "",
       "value-key": "[FOD]",
       "description": "the input fod image.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "fixel_directory",
       "name": "fixel_directory",
-      "command-line-flag": "",
       "value-key": "[FIXEL_DIRECTORY]",
       "description": "the output fixel directory",
       "type": "File",

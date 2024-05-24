@@ -13,7 +13,6 @@
     {
       "id": "odf_response",
       "name": "odf_response",
-      "command-line-flag": "",
       "value-key": "[ODF_RESPONSE]",
       "description": "pairs of input ODF image and corresponding responses",
       "type": "String",
@@ -23,7 +22,6 @@
     {
       "id": "SH_out",
       "name": "SH_out",
-      "command-line-flag": "",
       "value-key": "[SH_OUT]",
       "description": "the output spherical harmonics coefficients image.",
       "type": "File",
@@ -37,7 +35,9 @@
       "description": "specify output image data type. Valid choices are: float32, float32le, float32be, float64, float64le, float64be, int64, uint64, int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le, int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be, cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be, int8, uint8, bit.",
       "type": "String",
       "optional": true,
-      "value-choices": ["spec"]
+      "value-choices": [
+        "spec"
+      ]
     },
     {
       "id": "strides",

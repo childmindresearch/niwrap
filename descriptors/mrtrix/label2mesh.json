@@ -13,7 +13,6 @@
     {
       "id": "nodes_in",
       "name": "nodes_in",
-      "command-line-flag": "",
       "value-key": "[NODES_IN]",
       "description": "the input node parcellation image",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "mesh_out",
       "name": "mesh_out",
-      "command-line-flag": "",
       "value-key": "[MESH_OUT]",
       "description": "the output mesh file",
       "type": "File",

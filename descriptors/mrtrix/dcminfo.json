@@ -13,7 +13,6 @@
     {
       "id": "file",
       "name": "file",
-      "command-line-flag": "",
       "value-key": "[FILE]",
       "description": "the DICOM file to be scanned.",
       "type": "File",

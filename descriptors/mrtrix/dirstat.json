@@ -13,7 +13,6 @@
     {
       "id": "dirs",
       "name": "dirs",
-      "command-line-flag": "",
       "value-key": "[DIRS]",
       "description": "the text file or image containing the directions.",
       "type": "File",

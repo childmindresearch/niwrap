@@ -13,7 +13,6 @@
     {
       "id": "amp",
       "name": "amp",
-      "command-line-flag": "",
       "value-key": "[AMP]",
       "description": "the input amplitude image.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "SH",
       "name": "SH",
-      "command-line-flag": "",
       "value-key": "[SH]",
       "description": "the output spherical harmonics coefficients image.",
       "type": "File",

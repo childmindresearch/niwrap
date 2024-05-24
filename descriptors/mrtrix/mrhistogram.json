@@ -13,7 +13,6 @@
     {
       "id": "image",
       "name": "image",
-      "command-line-flag": "",
       "value-key": "[IMAGE]",
       "description": "the input image from which the histogram will be computed",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "hist",
       "name": "hist",
-      "command-line-flag": "",
       "value-key": "[HIST]",
       "description": "the output histogram file",
       "type": "File",

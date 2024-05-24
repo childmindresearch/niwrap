@@ -13,7 +13,6 @@
     {
       "id": "dwi",
       "name": "dwi",
-      "command-line-flag": "",
       "value-key": "[DWI]",
       "description": "the input dwi image.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "dt",
       "name": "dt",
-      "command-line-flag": "",
       "value-key": "[DT]",
       "description": "the output dt image.",
       "type": "File",

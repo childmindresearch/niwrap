@@ -13,7 +13,6 @@
     {
       "id": "source",
       "name": "source",
-      "command-line-flag": "",
       "value-key": "[SOURCE]",
       "description": "the mesh file; note vertices must be defined in realspace coordinates",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "template",
       "name": "template",
-      "command-line-flag": "",
       "value-key": "[TEMPLATE]",
       "description": "the template image",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output image",
       "type": "File",

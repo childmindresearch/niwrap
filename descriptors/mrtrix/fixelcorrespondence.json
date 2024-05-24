@@ -13,7 +13,6 @@
     {
       "id": "subject_data",
       "name": "subject_data",
-      "command-line-flag": "",
       "value-key": "[SUBJECT_DATA]",
       "description": "the input subject fixel data file. This should be a file inside the fixel directory",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "template_directory",
       "name": "template_directory",
-      "command-line-flag": "",
       "value-key": "[TEMPLATE_DIRECTORY]",
       "description": "the input template fixel directory.",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "output_directory",
       "name": "output_directory",
-      "command-line-flag": "",
       "value-key": "[OUTPUT_DIRECTORY]",
       "description": "the fixel directory where the output file will be written.",
       "type": "String",
@@ -40,7 +37,6 @@
     {
       "id": "output_data",
       "name": "output_data",
-      "command-line-flag": "",
       "value-key": "[OUTPUT_DATA]",
       "description": "the name of the output fixel data file. This will be placed in the output fixel directory",
       "type": "String",

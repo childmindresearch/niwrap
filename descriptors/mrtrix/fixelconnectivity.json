@@ -13,7 +13,6 @@
     {
       "id": "fixel_directory",
       "name": "fixel_directory",
-      "command-line-flag": "",
       "value-key": "[FIXEL_DIRECTORY]",
       "description": "the directory containing the fixels between which connectivity will be quantified",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "tracks",
       "name": "tracks",
-      "command-line-flag": "",
       "value-key": "[TRACKS]",
       "description": "the tracks used to determine fixel-fixel connectivity",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "matrix",
       "name": "matrix",
-      "command-line-flag": "",
       "value-key": "[MATRIX]",
       "description": "the output fixel-fixel connectivity matrix directory path",
       "type": "File",

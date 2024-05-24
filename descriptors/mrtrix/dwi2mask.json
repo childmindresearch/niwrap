@@ -13,7 +13,6 @@
     {
       "id": "input",
       "name": "input",
-      "command-line-flag": "",
       "value-key": "[INPUT]",
       "description": "the input DWI image containing volumes that are both diffusion weighted and b=0",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output whole-brain mask image",
       "type": "File",

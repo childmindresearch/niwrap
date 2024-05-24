@@ -13,7 +13,6 @@
     {
       "id": "input",
       "name": "input",
-      "command-line-flag": "",
       "value-key": "[INPUT]",
       "description": "the input transforms (either linear or non-linear warps).",
       "type": "File",
@@ -23,7 +22,6 @@
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output file (may be a linear transformation text file, or a deformation warp field image, depending on usage)",
       "type": "String",

@@ -13,7 +13,6 @@
     {
       "id": "tracks_in",
       "name": "tracks_in",
-      "command-line-flag": "",
       "value-key": "[TRACKS_IN]",
       "description": "the input track file",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "nodes_in",
       "name": "nodes_in",
-      "command-line-flag": "",
       "value-key": "[NODES_IN]",
       "description": "the input node parcellation image",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "connectome_out",
       "name": "connectome_out",
-      "command-line-flag": "",
       "value-key": "[CONNECTOME_OUT]",
       "description": "the output .csv file containing edge weights",
       "type": "File",
@@ -147,7 +144,9 @@
       "description": "statistic for combining the values from all streamlines in an edge into a single scale value for that edge (options are: sum,mean,min,max; default=sum)",
       "type": "String",
       "optional": true,
-      "value-choices": ["statistic"]
+      "value-choices": [
+        "statistic"
+      ]
     },
     {
       "id": "tck_weights_in",

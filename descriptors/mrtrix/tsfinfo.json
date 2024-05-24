@@ -13,7 +13,6 @@
     {
       "id": "tracks",
       "name": "tracks",
-      "command-line-flag": "",
       "value-key": "[TRACKS]",
       "description": "the input track scalar file.",
       "type": "File",

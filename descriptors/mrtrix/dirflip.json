@@ -13,7 +13,6 @@
     {
       "id": "in",
       "name": "in",
-      "command-line-flag": "",
       "value-key": "[IN]",
       "description": "the input files for the directions.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "out",
       "name": "out",
-      "command-line-flag": "",
       "value-key": "[OUT]",
       "description": "the output files for the directions.",
       "type": "File",

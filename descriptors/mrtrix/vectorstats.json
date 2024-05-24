@@ -13,7 +13,6 @@
     {
       "id": "input",
       "name": "input",
-      "command-line-flag": "",
       "value-key": "[INPUT]",
       "description": "a text file listing the file names of the input subject data",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "design",
       "name": "design",
-      "command-line-flag": "",
       "value-key": "[DESIGN]",
       "description": "the design matrix",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "contrast",
       "name": "contrast",
-      "command-line-flag": "",
       "value-key": "[CONTRAST]",
       "description": "the contrast matrix",
       "type": "File",
@@ -40,7 +37,6 @@
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the filename prefix for all output",
       "type": "String",
@@ -63,7 +59,9 @@
       "description": "specify nature of errors for shuffling; options are: ee,ise,both (default: ee)",
       "type": "String",
       "optional": true,
-      "value-choices": ["spec"]
+      "value-choices": [
+        "spec"
+      ]
     },
     {
       "id": "exchange_within",

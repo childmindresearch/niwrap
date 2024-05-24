@@ -13,7 +13,6 @@
     {
       "id": "in",
       "name": "in",
-      "command-line-flag": "",
       "value-key": "[IN]",
       "description": "the input warp image.",
       "type": "File",
@@ -22,17 +21,17 @@
     {
       "id": "type",
       "name": "type",
-      "command-line-flag": "",
       "value-key": "[TYPE]",
       "description": "the conversion type required. Valid choices are: deformation2displacement, displacement2deformation, warpfull2deformation, warpfull2displacement",
       "type": "String",
       "optional": false,
-      "value-choices": ["type"]
+      "value-choices": [
+        "type"
+      ]
     },
     {
       "id": "out",
       "name": "out",
-      "command-line-flag": "",
       "value-key": "[OUT]",
       "description": "the output warp image.",
       "type": "File",

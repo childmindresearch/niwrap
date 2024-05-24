@@ -13,7 +13,6 @@
     {
       "id": "input1",
       "name": "input1",
-      "command-line-flag": "",
       "value-key": "[INPUT1]",
       "description": "the first input track scalar file.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "input1",
       "name": "input1",
-      "command-line-flag": "",
       "value-key": "[INPUT1]",
       "description": "the second input track scalar file.",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output track scalar file",
       "type": "File",

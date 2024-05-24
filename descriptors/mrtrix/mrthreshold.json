@@ -13,7 +13,6 @@
     {
       "id": "input",
       "name": "input",
-      "command-line-flag": "",
       "value-key": "[INPUT]",
       "description": "the input image to be thresholded",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the (optional) output binary image mask",
       "type": "File",
@@ -103,7 +101,9 @@
       "description": "comparison operator to use when applying the threshold; options are: lt,le,ge,gt (default = \"le\" for -bottom; \"ge\" otherwise)",
       "type": "String",
       "optional": true,
-      "value-choices": ["choice"]
+      "value-choices": [
+        "choice"
+      ]
     },
     {
       "id": "invert",

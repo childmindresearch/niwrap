@@ -13,7 +13,6 @@
     {
       "id": "input",
       "name": "input",
-      "command-line-flag": "",
       "value-key": "[INPUT]",
       "description": "the input image.",
       "type": "File",
@@ -22,17 +21,17 @@
     {
       "id": "filter",
       "name": "filter",
-      "command-line-flag": "",
       "value-key": "[FILTER]",
       "description": "the type of filter to be applied (clean, connect, dilate, erode, median)",
       "type": "String",
       "optional": false,
-      "value-choices": ["filter"]
+      "value-choices": [
+        "filter"
+      ]
     },
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output image.",
       "type": "File",

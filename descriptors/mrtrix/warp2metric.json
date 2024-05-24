@@ -13,7 +13,6 @@
     {
       "id": "in",
       "name": "in",
-      "command-line-flag": "",
       "value-key": "[IN]",
       "description": "the input deformation field",
       "type": "File",

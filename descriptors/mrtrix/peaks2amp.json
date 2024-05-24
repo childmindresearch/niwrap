@@ -13,7 +13,6 @@
     {
       "id": "directions",
       "name": "directions",
-      "command-line-flag": "",
       "value-key": "[DIRECTIONS]",
       "description": "the input directions image. Each volume corresponds to the x, y & z component of each direction vector in turn.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "amplitudes",
       "name": "amplitudes",
-      "command-line-flag": "",
       "value-key": "[AMPLITUDES]",
       "description": "the output amplitudes image.",
       "type": "File",

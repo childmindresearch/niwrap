@@ -13,7 +13,6 @@
     {
       "id": "fixel_in",
       "name": "fixel_in",
-      "command-line-flag": "",
       "value-key": "[FIXEL_IN]",
       "description": "the input fixel data file.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "sh_out",
       "name": "sh_out",
-      "command-line-flag": "",
       "value-key": "[SH_OUT]",
       "description": "the output sh image.",
       "type": "File",

@@ -13,7 +13,6 @@
     {
       "id": "dirs",
       "name": "dirs",
-      "command-line-flag": "",
       "value-key": "[DIRS]",
       "description": "the text file containing the directions.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "out",
       "name": "out",
-      "command-line-flag": "",
       "value-key": "[OUT]",
       "description": "the output partitioned directions",
       "type": "File",

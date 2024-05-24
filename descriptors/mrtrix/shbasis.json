@@ -13,7 +13,6 @@
     {
       "id": "SH",
       "name": "SH",
-      "command-line-flag": "",
       "value-key": "[SH]",
       "description": "the input image(s) of SH coefficients.",
       "type": "File",
@@ -28,7 +27,9 @@
       "description": "convert the image data in-place to the desired basis; options are: old,new,force_oldtonew,force_newtoold.",
       "type": "String",
       "optional": true,
-      "value-choices": ["mode"]
+      "value-choices": [
+        "mode"
+      ]
     },
     {
       "id": "info",

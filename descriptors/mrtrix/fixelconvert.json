@@ -13,7 +13,6 @@
     {
       "id": "fixel_in",
       "name": "fixel_in",
-      "command-line-flag": "",
       "value-key": "[FIXEL_IN]",
       "description": "the input fixel file / directory.",
       "type": "String",
@@ -22,7 +21,6 @@
     {
       "id": "fixel_out",
       "name": "fixel_out",
-      "command-line-flag": "",
       "value-key": "[FIXEL_OUT]",
       "description": "the output fixel file / directory.",
       "type": "String",

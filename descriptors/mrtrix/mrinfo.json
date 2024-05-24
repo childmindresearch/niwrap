@@ -13,7 +13,6 @@
     {
       "id": "image",
       "name": "image",
-      "command-line-flag": "",
       "value-key": "[IMAGE]",
       "description": "the input image(s).",
       "type": "File",

@@ -13,7 +13,6 @@
     {
       "id": "input",
       "name": "input",
-      "command-line-flag": "",
       "value-key": "[INPUT]",
       "description": "the input mesh file",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output mesh file",
       "type": "File",
@@ -56,7 +54,9 @@
             "description": "transform vertices from one coordinate space to another, based on a template image; options are: first2real, real2first, voxel2real, real2voxel, fs2real",
             "type": "String",
             "optional": false,
-            "value-choices": ["mode"]
+            "value-choices": [
+              "mode"
+            ]
           },
           {
             "id": "image",

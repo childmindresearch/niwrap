@@ -13,7 +13,6 @@
     {
       "id": "image",
       "name": "image",
-      "command-line-flag": "",
       "value-key": "[IMAGE]",
       "description": "An image to be loaded.",
       "type": "File",
@@ -1042,7 +1041,9 @@
             "description": "The geometry type to use when rendering tractograms (options are: pseudotubes, lines, points)",
             "type": "String",
             "optional": false,
-            "value-choices": ["value"]
+            "value-choices": [
+              "value"
+            ]
           }
         ],
         "output-files": []

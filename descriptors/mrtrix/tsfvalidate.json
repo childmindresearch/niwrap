@@ -13,7 +13,6 @@
     {
       "id": "tsf",
       "name": "tsf",
-      "command-line-flag": "",
       "value-key": "[TSF]",
       "description": "the input track scalar file",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "tracks",
       "name": "tracks",
-      "command-line-flag": "",
       "value-key": "[TRACKS]",
       "description": "the track file on which the TSF is based",
       "type": "File",

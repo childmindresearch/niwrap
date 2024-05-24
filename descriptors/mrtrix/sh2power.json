@@ -13,7 +13,6 @@
     {
       "id": "SH",
       "name": "SH",
-      "command-line-flag": "",
       "value-key": "[SH]",
       "description": "the input spherical harmonics coefficients image.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "power",
       "name": "power",
-      "command-line-flag": "",
       "value-key": "[POWER]",
       "description": "the output power image.",
       "type": "File",

@@ -13,7 +13,6 @@
     {
       "id": "fixel_in",
       "name": "fixel_in",
-      "command-line-flag": "",
       "value-key": "[FIXEL_IN]",
       "description": "the input fixel data file",
       "type": "File",
@@ -22,17 +21,17 @@
     {
       "id": "operation",
       "name": "operation",
-      "command-line-flag": "",
       "value-key": "[OPERATION]",
       "description": "the operation to apply, one of: mean, sum, product, min, max, absmax, magmax, count, complexity, sf, dec_unit, dec_scaled, none.",
       "type": "String",
       "optional": false,
-      "value-choices": ["operation"]
+      "value-choices": [
+        "operation"
+      ]
     },
     {
       "id": "image_out",
       "name": "image_out",
-      "command-line-flag": "",
       "value-key": "[IMAGE_OUT]",
       "description": "the output scalar image.",
       "type": "File",

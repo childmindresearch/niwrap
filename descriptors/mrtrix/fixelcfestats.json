@@ -13,7 +13,6 @@
     {
       "id": "in_fixel_directory",
       "name": "in_fixel_directory",
-      "command-line-flag": "",
       "value-key": "[IN_FIXEL_DIRECTORY]",
       "description": "the fixel directory containing the data files for each subject (after obtaining fixel correspondence",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "subjects",
       "name": "subjects",
-      "command-line-flag": "",
       "value-key": "[SUBJECTS]",
       "description": "a text file listing the subject identifiers (one per line). This should correspond with the filenames in the fixel directory (including the file extension), and be listed in the same order as the rows of the design matrix.",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "design",
       "name": "design",
-      "command-line-flag": "",
       "value-key": "[DESIGN]",
       "description": "the design matrix",
       "type": "File",
@@ -40,7 +37,6 @@
     {
       "id": "contrast",
       "name": "contrast",
-      "command-line-flag": "",
       "value-key": "[CONTRAST]",
       "description": "the contrast matrix, specified as rows of weights",
       "type": "File",
@@ -49,7 +45,6 @@
     {
       "id": "connectivity",
       "name": "connectivity",
-      "command-line-flag": "",
       "value-key": "[CONNECTIVITY]",
       "description": "the fixel-fixel connectivity matrix",
       "type": "String",
@@ -58,7 +53,6 @@
     {
       "id": "out_fixel_directory",
       "name": "out_fixel_directory",
-      "command-line-flag": "",
       "value-key": "[OUT_FIXEL_DIRECTORY]",
       "description": "the output directory where results will be saved. Will be created if it does not exist",
       "type": "String",
@@ -90,7 +84,9 @@
       "description": "specify nature of errors for shuffling; options are: ee,ise,both (default: ee)",
       "type": "String",
       "optional": true,
-      "value-choices": ["spec"]
+      "value-choices": [
+        "spec"
+      ]
     },
     {
       "id": "exchange_within",

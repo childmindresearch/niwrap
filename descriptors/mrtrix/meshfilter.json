@@ -13,7 +13,6 @@
     {
       "id": "input",
       "name": "input",
-      "command-line-flag": "",
       "value-key": "[INPUT]",
       "description": "the input mesh file",
       "type": "File",
@@ -22,17 +21,17 @@
     {
       "id": "filter",
       "name": "filter",
-      "command-line-flag": "",
       "value-key": "[FILTER]",
       "description": "the filter to apply.Options are: smooth",
       "type": "String",
       "optional": false,
-      "value-choices": ["filter"]
+      "value-choices": [
+        "filter"
+      ]
     },
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output mesh file",
       "type": "File",

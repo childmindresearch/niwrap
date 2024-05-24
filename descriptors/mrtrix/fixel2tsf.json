@@ -13,7 +13,6 @@
     {
       "id": "fixel_in",
       "name": "fixel_in",
-      "command-line-flag": "",
       "value-key": "[FIXEL_IN]",
       "description": "the input fixel data file (within the fixel directory)",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "tracks",
       "name": "tracks",
-      "command-line-flag": "",
       "value-key": "[TRACKS]",
       "description": "the input track file ",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "tsf",
       "name": "tsf",
-      "command-line-flag": "",
       "value-key": "[TSF]",
       "description": "the output track scalar file",
       "type": "File",

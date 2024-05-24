@@ -13,7 +13,6 @@
     {
       "id": "path_in",
       "name": "path_in",
-      "command-line-flag": "",
       "value-key": "[PATH_IN]",
       "description": "the input image",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "lut_in",
       "name": "lut_in",
-      "command-line-flag": "",
       "value-key": "[LUT_IN]",
       "description": "the connectome lookup table corresponding to the input image",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "lut_out",
       "name": "lut_out",
-      "command-line-flag": "",
       "value-key": "[LUT_OUT]",
       "description": "the target connectome lookup table for the output image",
       "type": "File",
@@ -40,7 +37,6 @@
     {
       "id": "image_out",
       "name": "image_out",
-      "command-line-flag": "",
       "value-key": "[IMAGE_OUT]",
       "description": "the output image",
       "type": "File",

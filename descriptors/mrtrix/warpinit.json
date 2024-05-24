@@ -13,7 +13,6 @@
     {
       "id": "template",
       "name": "template",
-      "command-line-flag": "",
       "value-key": "[TEMPLATE]",
       "description": "the input template image.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "warp",
       "name": "warp",
-      "command-line-flag": "",
       "value-key": "[WARP]",
       "description": "the output warp image.",
       "type": "File",

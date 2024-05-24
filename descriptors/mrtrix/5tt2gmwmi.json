@@ -13,7 +13,6 @@
     {
       "id": "5tt_in",
       "name": "5tt_in",
-      "command-line-flag": "",
       "value-key": "[5TT_IN]",
       "description": "the input 5TT segmented anatomical image",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "mask_out",
       "name": "mask_out",
-      "command-line-flag": "",
       "value-key": "[MASK_OUT]",
       "description": "the output mask image",
       "type": "File",

@@ -13,7 +13,6 @@
     {
       "id": "tracks",
       "name": "tracks",
-      "command-line-flag": "",
       "value-key": "[TRACKS]",
       "description": "the input track file",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "image",
       "name": "image",
-      "command-line-flag": "",
       "value-key": "[IMAGE]",
       "description": "the image to be sampled",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "values",
       "name": "values",
-      "command-line-flag": "",
       "value-key": "[VALUES]",
       "description": "the output sampled values",
       "type": "File",
@@ -45,7 +42,9 @@
       "description": "compute some statistic from the values along each streamline (options are: mean,median,min,max)",
       "type": "String",
       "optional": true,
-      "value-choices": ["statistic"]
+      "value-choices": [
+        "statistic"
+      ]
     },
     {
       "id": "nointerp",

@@ -13,7 +13,6 @@
     {
       "id": "input_output",
       "name": "input_output",
-      "command-line-flag": "",
       "value-key": "[INPUT_OUTPUT]",
       "description": "list of all input and output tissue compartment files (see example usage).",
       "type": "String",
@@ -37,7 +36,9 @@
       "description": "the maximum order of the polynomial basis used to fit the normalisation field in the log-domain. An order of 0 is equivalent to not allowing spatial variance of the intensity normalisation factor. (default: 3)",
       "type": "String",
       "optional": true,
-      "value-choices": ["number"]
+      "value-choices": [
+        "number"
+      ]
     },
     {
       "id": "niter",

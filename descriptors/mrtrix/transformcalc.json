@@ -13,7 +13,6 @@
     {
       "id": "inputs",
       "name": "inputs",
-      "command-line-flag": "",
       "value-key": "[INPUTS]",
       "description": "the input(s) for the specified operation",
       "type": "String",
@@ -23,17 +22,17 @@
     {
       "id": "operation",
       "name": "operation",
-      "command-line-flag": "",
       "value-key": "[OPERATION]",
       "description": "the operation to perform, one of: invert, half, rigid, header, average, interpolate, decompose, align_vertices_rigid, align_vertices_rigid_scale (see description section for details).",
       "type": "String",
       "optional": false,
-      "value-choices": ["operation"]
+      "value-choices": [
+        "operation"
+      ]
     },
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output transformation matrix.",
       "type": "File",

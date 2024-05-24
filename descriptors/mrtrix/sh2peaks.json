@@ -13,7 +13,6 @@
     {
       "id": "SH",
       "name": "SH",
-      "command-line-flag": "",
       "value-key": "[SH]",
       "description": "the input image of SH coefficients.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output image. Each volume corresponds to the x, y & z component of each peak direction vector in turn.",
       "type": "File",

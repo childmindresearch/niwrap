@@ -13,17 +13,17 @@
     {
       "id": "algorithm",
       "name": "algorithm",
-      "command-line-flag": "",
       "value-key": "[ALGORITHM]",
       "description": "the algorithm to use for FOD estimation. (options are: csd,msmt_csd)",
       "type": "String",
       "optional": false,
-      "value-choices": ["algorithm"]
+      "value-choices": [
+        "algorithm"
+      ]
     },
     {
       "id": "dwi",
       "name": "dwi",
-      "command-line-flag": "",
       "value-key": "[DWI]",
       "description": "the input diffusion-weighted image",
       "type": "File",
@@ -32,7 +32,6 @@
     {
       "id": "response_odf",
       "name": "response_odf",
-      "command-line-flag": "",
       "value-key": "[RESPONSE_ODF]",
       "description": "pairs of input tissue response and output ODF images",
       "type": "String",

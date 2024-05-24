@@ -13,7 +13,6 @@
     {
       "id": "input_fixel_directory",
       "name": "input_fixel_directory",
-      "command-line-flag": "",
       "value-key": "[INPUT_FIXEL_DIRECTORY]",
       "description": "input fixel directory, all data files and directions file will be cropped and saved in the output fixel directory",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "input_fixel_mask",
       "name": "input_fixel_mask",
-      "command-line-flag": "",
       "value-key": "[INPUT_FIXEL_MASK]",
       "description": "the input fixel data file defining which fixels to crop. Fixels with zero values will be removed",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "output_fixel_directory",
       "name": "output_fixel_directory",
-      "command-line-flag": "",
       "value-key": "[OUTPUT_FIXEL_DIRECTORY]",
       "description": "the output directory to store the cropped directions and data files",
       "type": "File",

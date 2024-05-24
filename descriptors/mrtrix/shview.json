@@ -13,7 +13,6 @@
     {
       "id": "coefs",
       "name": "coefs",
-      "command-line-flag": "",
       "value-key": "[COEFS]",
       "description": "a text file containing the even order spherical harmonics coefficients to display.",
       "type": "File",

@@ -13,7 +13,6 @@
     {
       "id": "amps",
       "name": "amps",
-      "command-line-flag": "",
       "value-key": "[AMPS]",
       "description": "the amplitudes image",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "mask",
       "name": "mask",
-      "command-line-flag": "",
       "value-key": "[MASK]",
       "description": "the mask containing the voxels from which to estimate the response function",
       "type": "File",
@@ -31,7 +29,6 @@
     {
       "id": "directions",
       "name": "directions",
-      "command-line-flag": "",
       "value-key": "[DIRECTIONS]",
       "description": "a 4D image containing the estimated fibre directions",
       "type": "File",
@@ -40,7 +37,6 @@
     {
       "id": "response",
       "name": "response",
-      "command-line-flag": "",
       "value-key": "[RESPONSE]",
       "description": "the output zonal spherical harmonic coefficients",
       "type": "File",

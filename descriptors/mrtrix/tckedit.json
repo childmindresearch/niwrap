@@ -13,7 +13,6 @@
     {
       "id": "tracks_in",
       "name": "tracks_in",
-      "command-line-flag": "",
       "value-key": "[TRACKS_IN]",
       "description": "the input track file(s)",
       "type": "File",
@@ -23,7 +22,6 @@
     {
       "id": "tracks_out",
       "name": "tracks_out",
-      "command-line-flag": "",
       "value-key": "[TRACKS_OUT]",
       "description": "the output track file",
       "type": "File",

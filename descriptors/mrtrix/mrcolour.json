@@ -13,7 +13,6 @@
     {
       "id": "input",
       "name": "input",
-      "command-line-flag": "",
       "value-key": "[INPUT]",
       "description": "the input image",
       "type": "File",
@@ -22,17 +21,17 @@
     {
       "id": "map",
       "name": "map",
-      "command-line-flag": "",
       "value-key": "[MAP]",
       "description": "the colourmap to apply; choices are: gray,hot,cool,jet,inferno,viridis,pet,colour,rgb",
       "type": "String",
       "optional": false,
-      "value-choices": ["map"]
+      "value-choices": [
+        "map"
+      ]
     },
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "",
       "value-key": "[OUTPUT]",
       "description": "the output image",
       "type": "File",

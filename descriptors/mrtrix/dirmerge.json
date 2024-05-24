@@ -13,7 +13,6 @@
     {
       "id": "subsets",
       "name": "subsets",
-      "command-line-flag": "",
       "value-key": "[SUBSETS]",
       "description": "the number of subsets (eg. phase encoding directions) per b-value",
       "type": "Number",
@@ -23,7 +22,6 @@
     {
       "id": "bvalue_files",
       "name": "bvalue_files",
-      "command-line-flag": "",
       "value-key": "[BVALUE_FILES]",
       "description": "the b-value and sets of corresponding files, in order",
       "type": "String",
@@ -33,7 +31,6 @@
     {
       "id": "out",
       "name": "out",
-      "command-line-flag": "",
       "value-key": "[OUT]",
       "description": "the output directions file, with each row listing the X Y Z gradient directions, the b-value, and an index representing the phase encode direction",
       "type": "File",

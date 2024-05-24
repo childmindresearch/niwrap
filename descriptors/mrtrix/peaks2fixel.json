@@ -13,7 +13,6 @@
     {
       "id": "directions",
       "name": "directions",
-      "command-line-flag": "",
       "value-key": "[DIRECTIONS]",
       "description": "the input directions image; each volume corresponds to the x, y & z component of each direction vector in turn.",
       "type": "File",
@@ -22,7 +21,6 @@
     {
       "id": "fixels",
       "name": "fixels",
-      "command-line-flag": "",
       "value-key": "[FIXELS]",
       "description": "the output fixel directory.",
       "type": "File",
