@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 V_5TTCHECK_METADATA = Metadata(
-    id="7f29dd0e4a720eef6d61b21a85ad3e0cbc8d0754",
+    id="86ea5460dcc45100cfa6089b76793784e5cfbabf",
     name="5ttcheck",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -119,7 +119,7 @@ def v_5ttcheck(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

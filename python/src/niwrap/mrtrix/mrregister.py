@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRREGISTER_METADATA = Metadata(
-    id="9ee01eac3614c859dd3047d4eb31123b2eb651a8",
+    id="57524a2ad0ef09c6e5aeb80922dd72d24a2da4dd",
     name="mrregister",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -496,9 +496,9 @@ def mrregister(
     if type_ is not None:
         cargs.extend(["-type", type_])
     if transformed is not None:
-        cargs.extend(["-transformed", *[a for c in [s.run(execution) for s in transformed] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in transformed] for a in c])
     if transformed_midway is not None:
-        cargs.extend(["-transformed_midway", *[a for c in [s.run(execution) for s in transformed_midway] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in transformed_midway] for a in c])
     if mask1 is not None:
         cargs.extend(["-mask1", execution.input_file(mask1)])
     if mask2 is not None:
@@ -582,7 +582,7 @@ def mrregister(
     if linstage_diagnostics_prefix is not None:
         cargs.extend(["-linstage.diagnostics.prefix", linstage_diagnostics_prefix])
     if nl_warp is not None:
-        cargs.extend(["-nl_warp", *nl_warp.run(execution)])
+        cargs.extend(nl_warp.run(execution))
     if nl_warp_full is not None:
         cargs.extend(["-nl_warp_full", execution.input_file(nl_warp_full)])
     if nl_init is not None:
@@ -620,7 +620,7 @@ def mrregister(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

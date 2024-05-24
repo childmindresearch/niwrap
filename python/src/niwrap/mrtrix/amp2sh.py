@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 AMP2SH_METADATA = Metadata(
-    id="7352c7fa6cc8b5ca8d8d056eb86d44d5fac5f8d8",
+    id="5a7e18dfae025a1a8e1541e64035fe9cd59d3420",
     name="amp2sh",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -210,7 +210,7 @@ def amp2sh(
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:
-        cargs.extend(["-fslgrad", *fslgrad.run(execution)])
+        cargs.extend(fslgrad.run(execution))
     if shells is not None:
         cargs.extend(["-shells", *map(str, shells)])
     if strides is not None:
@@ -226,7 +226,7 @@ def amp2sh(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

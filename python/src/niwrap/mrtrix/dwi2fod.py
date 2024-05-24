@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWI2FOD_METADATA = Metadata(
-    id="6e29d382dd6e7aae19ec7c0ecd1ab1e9370ef2da",
+    id="5f259f3f6c87bbb61a1d2371399958a9799bb353",
     name="dwi2fod",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -236,7 +236,7 @@ def dwi2fod(
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:
-        cargs.extend(["-fslgrad", *fslgrad.run(execution)])
+        cargs.extend(fslgrad.run(execution))
     if shells is not None:
         cargs.extend(["-shells", *map(str, shells)])
     if directions is not None:
@@ -274,7 +274,7 @@ def dwi2fod(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

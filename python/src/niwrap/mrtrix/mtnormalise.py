@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MTNORMALISE_METADATA = Metadata(
-    id="0e0913a295dbaea473df7cbaeb4c7148d0a2c8b3",
+    id="9ca89ce5a0632c5f1da8d72833aad6993dfad4bf",
     name="mtnormalise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -193,7 +193,7 @@ def mtnormalise(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

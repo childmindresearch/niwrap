@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKRESAMPLE_METADATA = Metadata(
-    id="a062770acedc5bedd7f713a4598007ea015420ab",
+    id="86fa3eefbc88d8c1bd99e382d350629c63c7cd4b",
     name="tckresample",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -233,9 +233,9 @@ def tckresample(
     if endpoints:
         cargs.append("-endpoints")
     if line is not None:
-        cargs.extend(["-line", *line.run(execution)])
+        cargs.extend(line.run(execution))
     if arc is not None:
-        cargs.extend(["-arc", *arc.run(execution)])
+        cargs.extend(arc.run(execution))
     if info:
         cargs.append("-info")
     if quiet:
@@ -247,7 +247,7 @@ def tckresample(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SH2POWER_METADATA = Metadata(
-    id="efe67f6971db3c3e9f24cb22fff1446973e1cb2f",
+    id="78a8e43ef71371584670638ba2c946b5f9b9d1b5",
     name="sh2power",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -127,7 +127,7 @@ def sh2power(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

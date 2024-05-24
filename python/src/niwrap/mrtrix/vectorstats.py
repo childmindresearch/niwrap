@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 VECTORSTATS_METADATA = Metadata(
-    id="dc381345783b0ef980015dbf62652d743fac4b8f",
+    id="acbbb4ae59a834a945141f8e71794f67d02567d6",
     name="vectorstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -213,7 +213,7 @@ def vectorstats(
     if fonly:
         cargs.append("-fonly")
     if column is not None:
-        cargs.extend(["-column", *[a for c in [s.run(execution) for s in column] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in column] for a in c])
     if info:
         cargs.append("-info")
     if quiet:
@@ -225,7 +225,7 @@ def vectorstats(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

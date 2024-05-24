@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWIEXTRACT_METADATA = Metadata(
-    id="19a51fc17b94fd7985ddfd4de7dbf5029587f628",
+    id="3e2947ef17460135d7ea86678e9d6e51644337d5",
     name="dwiextract",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -274,17 +274,17 @@ def dwiextract(
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:
-        cargs.extend(["-fslgrad", *fslgrad.run(execution)])
+        cargs.extend(fslgrad.run(execution))
     if shells is not None:
         cargs.extend(["-shells", *map(str, shells)])
     if export_grad_mrtrix is not None:
         cargs.extend(["-export_grad_mrtrix", execution.input_file(export_grad_mrtrix)])
     if export_grad_fsl is not None:
-        cargs.extend(["-export_grad_fsl", *export_grad_fsl.run(execution)])
+        cargs.extend(export_grad_fsl.run(execution))
     if import_pe_table is not None:
         cargs.extend(["-import_pe_table", execution.input_file(import_pe_table)])
     if import_pe_eddy is not None:
-        cargs.extend(["-import_pe_eddy", *import_pe_eddy.run(execution)])
+        cargs.extend(import_pe_eddy.run(execution))
     if pe is not None:
         cargs.extend(["-pe", *map(str, pe)])
     if strides is not None:
@@ -300,7 +300,7 @@ def dwiextract(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

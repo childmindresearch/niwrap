@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRFLIP_METADATA = Metadata(
-    id="54f2e7aa0b27a0d753826fde4fdfe92229458e94",
+    id="642277342aa0f8a9b9635ea297693546bc00ba0c",
     name="dirflip",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -129,7 +129,7 @@ def dirflip(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

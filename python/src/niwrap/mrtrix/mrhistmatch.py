@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRHISTMATCH_METADATA = Metadata(
-    id="e4897e06ec33ae448ea49aa022df30a84be3ecd8",
+    id="7dabfbef7ea58a22e32d7ae72666ed85490a5b07",
     name="mrhistmatch",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -141,7 +141,7 @@ def mrhistmatch(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

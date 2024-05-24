@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 WARPINIT_METADATA = Metadata(
-    id="ee0097fc34a25d1fe15f23451979ed900073589d",
+    id="1950bdafd48d2fd0ddec175da82381fd832ad0c0",
     name="warpinit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -129,7 +129,7 @@ def warpinit(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

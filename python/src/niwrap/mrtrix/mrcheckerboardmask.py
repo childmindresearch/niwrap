@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCHECKERBOARDMASK_METADATA = Metadata(
-    id="c6e613bf2af3af35b1b00d583e932bacb3e99665",
+    id="dd53cfdb601934fb2636c4929272db61cadccc98",
     name="mrcheckerboardmask",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -129,7 +129,7 @@ def mrcheckerboardmask(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

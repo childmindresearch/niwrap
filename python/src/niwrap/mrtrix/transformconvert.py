@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TRANSFORMCONVERT_METADATA = Metadata(
-    id="aa246c5c4ce73676ea40f8230f3b72adeb42a476",
+    id="3dc62e523409f78f7034e106bf2d34b1f4d72699",
     name="transformconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -122,7 +122,7 @@ def transformconvert(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 V_5TTEDIT_METADATA = Metadata(
-    id="f2a53e06302b6e529dc9adc627deba36ceaa1006",
+    id="144f1f5ef30a386e894b5013a730462f60401515",
     name="5ttedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -144,7 +144,7 @@ def v_5ttedit(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

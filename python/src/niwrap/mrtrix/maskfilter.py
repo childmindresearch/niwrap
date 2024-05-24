@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MASKFILTER_METADATA = Metadata(
-    id="0ecada98c84f7c6c9b82efb33b891f44e4ac3e14",
+    id="e4c9f234a1122fc216915195dadd660dad18fb02",
     name="maskfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -161,7 +161,7 @@ def maskfilter(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

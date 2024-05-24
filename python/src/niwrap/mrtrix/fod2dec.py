@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FOD2DEC_METADATA = Metadata(
-    id="d7b90048042b7e3d27019a569a83713bd8996cc2",
+    id="05d6b6df8e2bf56201817ff1038be3ab0342f659",
     name="fod2dec",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -174,7 +174,7 @@ def fod2dec(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

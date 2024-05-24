@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRGRID_METADATA = Metadata(
-    id="7dc660639fe1d1189b1618976a07d41f32bcba90",
+    id="4ac9b071c7beae7d37c3af32557bf63d94385f08",
     name="mrgrid",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -273,7 +273,7 @@ def mrgrid(
     if crop_unbound:
         cargs.append("-crop_unbound")
     if axis is not None:
-        cargs.extend(["-axis", *[a for c in [s.run(execution) for s in axis] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in axis] for a in c])
     if all_axes:
         cargs.append("-all_axes")
     if fill is not None:
@@ -293,7 +293,7 @@ def mrgrid(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

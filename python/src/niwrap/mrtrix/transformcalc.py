@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TRANSFORMCALC_METADATA = Metadata(
-    id="efe6be94ddb085cdaf44be7d2aec06c7f16f2d45",
+    id="9e99fd568e51dd1a6a0c59040654e58e985e1de8",
     name="transformcalc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -121,7 +121,7 @@ def transformcalc(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

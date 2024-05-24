@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRVIEW_METADATA = Metadata(
-    id="cc0ebcdb86a4e3e486ea6e971254e91867d8cf50",
+    id="81df42fe67810655369b897dee52033b248c23f9",
     name="mrview",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -1758,51 +1758,51 @@ def mrview(
     cargs = []
     cargs.append("mrview")
     if mode is not None:
-        cargs.extend(["-mode", *[a for c in [s.run(execution) for s in mode] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in mode] for a in c])
     if load is not None:
-        cargs.extend(["-load", *[a for c in [s.run(execution) for s in load] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in load] for a in c])
     if reset is not None:
-        cargs.extend(["-reset", *[a for c in [s.run(execution) for s in reset] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in reset] for a in c])
     if fov is not None:
-        cargs.extend(["-fov", *[a for c in [s.run(execution) for s in fov] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in fov] for a in c])
     if focus is not None:
-        cargs.extend(["-focus", *[a for c in [s.run(execution) for s in focus] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in focus] for a in c])
     if target is not None:
-        cargs.extend(["-target", *[a for c in [s.run(execution) for s in target] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in target] for a in c])
     if voxel is not None:
-        cargs.extend(["-voxel", *[a for c in [s.run(execution) for s in voxel] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in voxel] for a in c])
     if volume is not None:
-        cargs.extend(["-volume", *[a for c in [s.run(execution) for s in volume] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in volume] for a in c])
     if plane is not None:
-        cargs.extend(["-plane", *[a for c in [s.run(execution) for s in plane] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in plane] for a in c])
     if lock is not None:
-        cargs.extend(["-lock", *[a for c in [s.run(execution) for s in lock] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in lock] for a in c])
     if select_image is not None:
-        cargs.extend(["-select_image", *[a for c in [s.run(execution) for s in select_image] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in select_image] for a in c])
     if autoscale is not None:
-        cargs.extend(["-autoscale", *[a for c in [s.run(execution) for s in autoscale] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in autoscale] for a in c])
     if interpolation is not None:
-        cargs.extend(["-interpolation", *[a for c in [s.run(execution) for s in interpolation] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in interpolation] for a in c])
     if colourmap is not None:
-        cargs.extend(["-colourmap", *[a for c in [s.run(execution) for s in colourmap] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in colourmap] for a in c])
     if noannotations is not None:
-        cargs.extend(["-noannotations", *[a for c in [s.run(execution) for s in noannotations] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in noannotations] for a in c])
     if comments is not None:
-        cargs.extend(["-comments", *[a for c in [s.run(execution) for s in comments] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in comments] for a in c])
     if voxelinfo is not None:
-        cargs.extend(["-voxelinfo", *[a for c in [s.run(execution) for s in voxelinfo] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in voxelinfo] for a in c])
     if orientationlabel is not None:
-        cargs.extend(["-orientationlabel", *[a for c in [s.run(execution) for s in orientationlabel] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in orientationlabel] for a in c])
     if colourbar is not None:
-        cargs.extend(["-colourbar", *[a for c in [s.run(execution) for s in colourbar] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in colourbar] for a in c])
     if imagevisible is not None:
-        cargs.extend(["-imagevisible", *[a for c in [s.run(execution) for s in imagevisible] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in imagevisible] for a in c])
     if intensity_range is not None:
-        cargs.extend(["-intensity_range", *[a for c in [s.run(execution) for s in intensity_range] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in intensity_range] for a in c])
     if size is not None:
-        cargs.extend(["-size", *[a for c in [s.run(execution) for s in size] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in size] for a in c])
     if position is not None:
-        cargs.extend(["-position", *[a for c in [s.run(execution) for s in position] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in position] for a in c])
     if fullscreen:
         cargs.append("-fullscreen")
     if exit_:
@@ -1812,71 +1812,71 @@ def mrview(
     if fps:
         cargs.append("-fps")
     if overlay_load is not None:
-        cargs.extend(["-overlay.load", *[a for c in [s.run(execution) for s in overlay_load] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in overlay_load] for a in c])
     if overlay_opacity is not None:
-        cargs.extend(["-overlay.opacity", *[a for c in [s.run(execution) for s in overlay_opacity] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in overlay_opacity] for a in c])
     if overlay_colourmap is not None:
-        cargs.extend(["-overlay.colourmap", *[a for c in [s.run(execution) for s in overlay_colourmap] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in overlay_colourmap] for a in c])
     if overlay_colour is not None:
-        cargs.extend(["-overlay.colour", *[a for c in [s.run(execution) for s in overlay_colour] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in overlay_colour] for a in c])
     if overlay_intensity is not None:
-        cargs.extend(["-overlay.intensity", *[a for c in [s.run(execution) for s in overlay_intensity] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in overlay_intensity] for a in c])
     if overlay_threshold_min is not None:
-        cargs.extend(["-overlay.threshold_min", *[a for c in [s.run(execution) for s in overlay_threshold_min] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in overlay_threshold_min] for a in c])
     if overlay_threshold_max is not None:
-        cargs.extend(["-overlay.threshold_max", *[a for c in [s.run(execution) for s in overlay_threshold_max] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in overlay_threshold_max] for a in c])
     if overlay_no_threshold_min is not None:
-        cargs.extend(["-overlay.no_threshold_min", *[a for c in [s.run(execution) for s in overlay_no_threshold_min] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in overlay_no_threshold_min] for a in c])
     if overlay_no_threshold_max is not None:
-        cargs.extend(["-overlay.no_threshold_max", *[a for c in [s.run(execution) for s in overlay_no_threshold_max] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in overlay_no_threshold_max] for a in c])
     if overlay_interpolation is not None:
-        cargs.extend(["-overlay.interpolation", *[a for c in [s.run(execution) for s in overlay_interpolation] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in overlay_interpolation] for a in c])
     if roi_load is not None:
-        cargs.extend(["-roi.load", *[a for c in [s.run(execution) for s in roi_load] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in roi_load] for a in c])
     if roi_opacity is not None:
-        cargs.extend(["-roi.opacity", *[a for c in [s.run(execution) for s in roi_opacity] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in roi_opacity] for a in c])
     if roi_colour is not None:
-        cargs.extend(["-roi.colour", *[a for c in [s.run(execution) for s in roi_colour] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in roi_colour] for a in c])
     if tractography_load is not None:
-        cargs.extend(["-tractography.load", *[a for c in [s.run(execution) for s in tractography_load] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tractography_load] for a in c])
     if tractography_thickness is not None:
-        cargs.extend(["-tractography.thickness", *[a for c in [s.run(execution) for s in tractography_thickness] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tractography_thickness] for a in c])
     if tractography_geometry is not None:
-        cargs.extend(["-tractography.geometry", *[a for c in [s.run(execution) for s in tractography_geometry] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tractography_geometry] for a in c])
     if tractography_opacity is not None:
-        cargs.extend(["-tractography.opacity", *[a for c in [s.run(execution) for s in tractography_opacity] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tractography_opacity] for a in c])
     if tractography_slab is not None:
-        cargs.extend(["-tractography.slab", *[a for c in [s.run(execution) for s in tractography_slab] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tractography_slab] for a in c])
     if tractography_lighting is not None:
-        cargs.extend(["-tractography.lighting", *[a for c in [s.run(execution) for s in tractography_lighting] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tractography_lighting] for a in c])
     if tractography_colour is not None:
-        cargs.extend(["-tractography.colour", *[a for c in [s.run(execution) for s in tractography_colour] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tractography_colour] for a in c])
     if tractography_tsf_load is not None:
-        cargs.extend(["-tractography.tsf_load", *[a for c in [s.run(execution) for s in tractography_tsf_load] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tractography_tsf_load] for a in c])
     if tractography_tsf_range is not None:
-        cargs.extend(["-tractography.tsf_range", *[a for c in [s.run(execution) for s in tractography_tsf_range] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tractography_tsf_range] for a in c])
     if tractography_tsf_thresh is not None:
-        cargs.extend(["-tractography.tsf_thresh", *[a for c in [s.run(execution) for s in tractography_tsf_thresh] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tractography_tsf_thresh] for a in c])
     if tractography_tsf_colourmap is not None:
-        cargs.extend(["-tractography.tsf_colourmap", *[a for c in [s.run(execution) for s in tractography_tsf_colourmap] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tractography_tsf_colourmap] for a in c])
     if odf_load_sh is not None:
-        cargs.extend(["-odf.load_sh", *[a for c in [s.run(execution) for s in odf_load_sh] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in odf_load_sh] for a in c])
     if odf_load_tensor is not None:
-        cargs.extend(["-odf.load_tensor", *[a for c in [s.run(execution) for s in odf_load_tensor] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in odf_load_tensor] for a in c])
     if odf_load_dixel is not None:
-        cargs.extend(["-odf.load_dixel", *[a for c in [s.run(execution) for s in odf_load_dixel] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in odf_load_dixel] for a in c])
     if fixel_load is not None:
-        cargs.extend(["-fixel.load", *[a for c in [s.run(execution) for s in fixel_load] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in fixel_load] for a in c])
     if connectome_init is not None:
         cargs.extend(["-connectome.init", execution.input_file(connectome_init)])
     if connectome_load is not None:
-        cargs.extend(["-connectome.load", *[a for c in [s.run(execution) for s in connectome_load] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in connectome_load] for a in c])
     if capture_folder is not None:
-        cargs.extend(["-capture.folder", *[a for c in [s.run(execution) for s in capture_folder] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in capture_folder] for a in c])
     if capture_prefix is not None:
-        cargs.extend(["-capture.prefix", *[a for c in [s.run(execution) for s in capture_prefix] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in capture_prefix] for a in c])
     if capture_grab is not None:
-        cargs.extend(["-capture.grab", *[a for c in [s.run(execution) for s in capture_grab] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in capture_grab] for a in c])
     if info:
         cargs.append("-info")
     if quiet:
@@ -1888,7 +1888,7 @@ def mrview(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

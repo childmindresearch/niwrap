@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFSMOOTH_METADATA = Metadata(
-    id="d8e1b65ae725c7d70dfd5289b836bcabbb317324",
+    id="e032bde4e62213969a86cb055f8a86c8ce44c008",
     name="tsfsmooth",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -122,7 +122,7 @@ def tsfsmooth(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

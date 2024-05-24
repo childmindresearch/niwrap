@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWIDENOISE_METADATA = Metadata(
-    id="2ecd1b9836792f9a6d7cf560451ae9ee0779f1c2",
+    id="3c6bff6c200107e2f1a455b3d7404deb89f6811f",
     name="dwidenoise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -179,7 +179,7 @@ def dwidenoise(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

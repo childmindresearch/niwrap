@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 LABELCONVERT_METADATA = Metadata(
-    id="dc81edbfe2d1fe063c801aebb7feb03c1759dbd3",
+    id="4e1f330d6cfd50da95a2e8127a30d6e69ae133c0",
     name="labelconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -133,7 +133,7 @@ def labelconvert(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

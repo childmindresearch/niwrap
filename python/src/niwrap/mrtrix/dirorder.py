@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRORDER_METADATA = Metadata(
-    id="25c46b8b4a287224ae2f668a24e24d2c4f7d59ff",
+    id="fda6da2b07f18f9ccc200561e5259772a7eaaf09",
     name="dirorder",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -124,7 +124,7 @@ def dirorder(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

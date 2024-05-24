@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRINFO_METADATA = Metadata(
-    id="a04c1e63f897991b153949ef95c9448131554f72",
+    id="2fb877e386bce4d152a4af9fc76ed799044ff7b8",
     name="mrinfo",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -364,7 +364,7 @@ def mrinfo(
     if transform:
         cargs.append("-transform")
     if property_ is not None:
-        cargs.extend(["-property", *[a for c in [s.run(execution) for s in property_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in property_] for a in c])
     if json_keyval is not None:
         cargs.extend(["-json_keyval", execution.input_file(json_keyval)])
     if json_all is not None:
@@ -372,13 +372,13 @@ def mrinfo(
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:
-        cargs.extend(["-fslgrad", *fslgrad.run(execution)])
+        cargs.extend(fslgrad.run(execution))
     if bvalue_scaling is not None:
         cargs.extend(["-bvalue_scaling", bvalue_scaling])
     if export_grad_mrtrix is not None:
         cargs.extend(["-export_grad_mrtrix", execution.input_file(export_grad_mrtrix)])
     if export_grad_fsl is not None:
-        cargs.extend(["-export_grad_fsl", *export_grad_fsl.run(execution)])
+        cargs.extend(export_grad_fsl.run(execution))
     if dwgrad:
         cargs.append("-dwgrad")
     if shell_bvalues:
@@ -390,7 +390,7 @@ def mrinfo(
     if export_pe_table is not None:
         cargs.extend(["-export_pe_table", execution.input_file(export_pe_table)])
     if export_pe_eddy is not None:
-        cargs.extend(["-export_pe_eddy", *export_pe_eddy.run(execution)])
+        cargs.extend(export_pe_eddy.run(execution))
     if petable:
         cargs.append("-petable")
     if nodelete:
@@ -406,7 +406,7 @@ def mrinfo(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

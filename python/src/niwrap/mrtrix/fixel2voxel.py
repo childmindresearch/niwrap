@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXEL2VOXEL_METADATA = Metadata(
-    id="1aa24cfc4cffaa75cbaa43f46956e2bc22f4af1d",
+    id="a043ee297743f8385d551ab8b396f4dc1cce7e34",
     name="fixel2voxel",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -161,7 +161,7 @@ def fixel2voxel(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRTHRESHOLD_METADATA = Metadata(
-    id="5d0e94e5df07360da1d3d993bd87a2e1efc39693",
+    id="38510235786f67f95c679fc85772b0865852d9c9",
     name="mrthreshold",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -207,7 +207,7 @@ def mrthreshold(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRDEGIBBS_METADATA = Metadata(
-    id="3e319b6424a807bc20dacd054c46fde11a475d21",
+    id="36b4067b3b3968157737b0d2a7e639def0a1e55e",
     name="mrdegibbs",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -161,7 +161,7 @@ def mrdegibbs(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

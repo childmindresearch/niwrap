@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DCMINFO_METADATA = Metadata(
-    id="2f9d4b3a58e1cee5778dcaf8e19b267c0cdcc096",
+    id="b68752394d6adcbaeaf5f4f14cff1f92caf6f2d9",
     name="dcminfo",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -151,7 +151,7 @@ def dcminfo(
     if phoenix:
         cargs.append("-phoenix")
     if tag is not None:
-        cargs.extend(["-tag", *[a for c in [s.run(execution) for s in tag] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tag] for a in c])
     if info:
         cargs.append("-info")
     if quiet:
@@ -163,7 +163,7 @@ def dcminfo(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

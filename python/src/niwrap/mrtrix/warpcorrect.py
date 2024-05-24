@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 WARPCORRECT_METADATA = Metadata(
-    id="ba5254cb6fd5b228885d9be6a32a39189a24f335",
+    id="4f1f95fbde9e483ee7dee30b2fd325e526d69ccd",
     name="warpcorrect",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -131,7 +131,7 @@ def warpcorrect(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 AMP2RESPONSE_METADATA = Metadata(
-    id="63f8fabe0c82b58a73ebcad5f0902cad8eb26126",
+    id="595fc91e166472b5af6a80a0edede6fd94ae1c07",
     name="amp2response",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -167,7 +167,7 @@ def amp2response(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

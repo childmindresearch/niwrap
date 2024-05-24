@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCONNECTIVITY_METADATA = Metadata(
-    id="32f304e7ff401fa9300f983ffbf9cf30d4443971",
+    id="60a5334fcd245e053736fe2453b4bbdf61006c7e",
     name="fixelconnectivity",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -137,7 +137,7 @@ def fixelconnectivity(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

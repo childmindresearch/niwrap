@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 LABEL2COLOUR_METADATA = Metadata(
-    id="5bf5fe3c9c8f78df8ce6a02b3c38be376c5a57b8",
+    id="aebd65af67e70c94bc2f20371b2da1eb6e7df458",
     name="label2colour",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -125,7 +125,7 @@ def label2colour(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

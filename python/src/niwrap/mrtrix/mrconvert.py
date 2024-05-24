@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCONVERT_METADATA = Metadata(
-    id="a9dbe4ac767ad2aee3eda838e4b8af505103772c",
+    id="6c32c02ef68d02568062f77a52feefb9315569d6",
     name="mrconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -486,7 +486,7 @@ def mrconvert(
     cargs = []
     cargs.append("mrconvert")
     if coord is not None:
-        cargs.extend(["-coord", *[a for c in [s.run(execution) for s in coord] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in coord] for a in c])
     if vox is not None:
         cargs.extend(["-vox", *map(str, vox)])
     if axes is not None:
@@ -498,11 +498,11 @@ def mrconvert(
     if json_export is not None:
         cargs.extend(["-json_export", execution.input_file(json_export)])
     if clear_property is not None:
-        cargs.extend(["-clear_property", *[a for c in [s.run(execution) for s in clear_property] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in clear_property] for a in c])
     if set_property is not None:
-        cargs.extend(["-set_property", *[a for c in [s.run(execution) for s in set_property] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in set_property] for a in c])
     if append_property is not None:
-        cargs.extend(["-append_property", *[a for c in [s.run(execution) for s in append_property] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in append_property] for a in c])
     if copy_properties is not None:
         cargs.extend(["-copy_properties", copy_properties])
     if strides is not None:
@@ -512,21 +512,21 @@ def mrconvert(
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:
-        cargs.extend(["-fslgrad", *fslgrad.run(execution)])
+        cargs.extend(fslgrad.run(execution))
     if bvalue_scaling is not None:
         cargs.extend(["-bvalue_scaling", bvalue_scaling])
     if export_grad_mrtrix is not None:
         cargs.extend(["-export_grad_mrtrix", execution.input_file(export_grad_mrtrix)])
     if export_grad_fsl is not None:
-        cargs.extend(["-export_grad_fsl", *export_grad_fsl.run(execution)])
+        cargs.extend(export_grad_fsl.run(execution))
     if import_pe_table is not None:
         cargs.extend(["-import_pe_table", execution.input_file(import_pe_table)])
     if import_pe_eddy is not None:
-        cargs.extend(["-import_pe_eddy", *import_pe_eddy.run(execution)])
+        cargs.extend(import_pe_eddy.run(execution))
     if export_pe_table is not None:
         cargs.extend(["-export_pe_table", execution.input_file(export_pe_table)])
     if export_pe_eddy is not None:
-        cargs.extend(["-export_pe_eddy", *export_pe_eddy.run(execution)])
+        cargs.extend(export_pe_eddy.run(execution))
     if info:
         cargs.append("-info")
     if quiet:
@@ -538,7 +538,7 @@ def mrconvert(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

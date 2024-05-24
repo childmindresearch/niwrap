@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SH2PEAKS_METADATA = Metadata(
-    id="22cf835bd8055e83c00084e360a525f009a55eaf",
+    id="214be00c2b773702dffa5b82ca8f8250bbee4e0f",
     name="sh2peaks",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -172,7 +172,7 @@ def sh2peaks(
     if num is not None:
         cargs.extend(["-num", str(num)])
     if direction is not None:
-        cargs.extend(["-direction", *[a for c in [s.run(execution) for s in direction] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in direction] for a in c])
     if peaks is not None:
         cargs.extend(["-peaks", execution.input_file(peaks)])
     if threshold is not None:
@@ -194,7 +194,7 @@ def sh2peaks(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

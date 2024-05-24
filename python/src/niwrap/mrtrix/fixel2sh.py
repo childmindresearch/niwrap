@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXEL2SH_METADATA = Metadata(
-    id="d490dc43aaba82cccc093ff1143be91d7dd7d9a7",
+    id="720cb4ec9ee92560fc2430d6cb74d7e3cd292ed5",
     name="fixel2sh",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -128,7 +128,7 @@ def fixel2sh(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

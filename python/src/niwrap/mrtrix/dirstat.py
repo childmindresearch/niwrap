@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRSTAT_METADATA = Metadata(
-    id="cbf92fd5e88a3e6e42b1447cae5b3c06bcf78133",
+    id="f47214c53939d552d77ff77df405c99741666c6e",
     name="dirstat",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -206,7 +206,7 @@ def dirstat(
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:
-        cargs.extend(["-fslgrad", *fslgrad.run(execution)])
+        cargs.extend(fslgrad.run(execution))
     if info:
         cargs.append("-info")
     if quiet:
@@ -218,7 +218,7 @@ def dirstat(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

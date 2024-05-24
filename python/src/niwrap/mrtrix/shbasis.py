@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SHBASIS_METADATA = Metadata(
-    id="f0a89eeda8989e247830f61c483eb1d09e1cbce4",
+    id="ac50042ac6f0d166fe2da4f4c911d861bc030f1e",
     name="shbasis",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -137,7 +137,7 @@ def shbasis(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

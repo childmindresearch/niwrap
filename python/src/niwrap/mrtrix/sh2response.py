@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SH2RESPONSE_METADATA = Metadata(
-    id="978f978fc168bdd4a57f63d839b62bc9f72bdd7b",
+    id="4563a22df44a67a7221c421f09e6a74380007a27",
     name="sh2response",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -139,7 +139,7 @@ def sh2response(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

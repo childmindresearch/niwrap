@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCONVERT_METADATA = Metadata(
-    id="f7191e21efa1825bb826b60582fb01067c9b8342",
+    id="5871eb8c3637f21950ea05f51f84bd8e49bc6fd7",
     name="fixelconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -145,7 +145,7 @@ def fixelconvert(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

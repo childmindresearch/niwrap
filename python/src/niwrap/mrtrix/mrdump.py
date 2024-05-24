@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRDUMP_METADATA = Metadata(
-    id="50f34e81da097b15d7edd0b280d7122b72e7a93d",
+    id="3664177594e383ff901317f5899c92a4ee369137",
     name="mrdump",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -123,7 +123,7 @@ def mrdump(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

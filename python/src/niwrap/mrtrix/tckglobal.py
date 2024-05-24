@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKGLOBAL_METADATA = Metadata(
-    id="ab0ace78b870fd53c4f7156b8a98717cb9835626",
+    id="f83f9e3f395e683ba66ff657de83be5ae2054d7f",
     name="tckglobal",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -235,7 +235,7 @@ def tckglobal(
     if mask is not None:
         cargs.extend(["-mask", execution.input_file(mask)])
     if riso is not None:
-        cargs.extend(["-riso", *[a for c in [s.run(execution) for s in riso] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in riso] for a in c])
     if lmax is not None:
         cargs.extend(["-lmax", str(lmax)])
     if length is not None:
@@ -283,7 +283,7 @@ def tckglobal(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

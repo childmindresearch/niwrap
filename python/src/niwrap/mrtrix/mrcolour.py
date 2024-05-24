@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCOLOUR_METADATA = Metadata(
-    id="8abaf91996293a2dca3c59dd90f32ac9231f2b8a",
+    id="6960295b0bb6754856979bf47ad10bcd3f95bbd5",
     name="mrcolour",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -142,7 +142,7 @@ def mrcolour(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

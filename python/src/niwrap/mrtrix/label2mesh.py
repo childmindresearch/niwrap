@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 LABEL2MESH_METADATA = Metadata(
-    id="725729366459cdf97fb80fe8a5a3f9bbb2c3f2b0",
+    id="b2df5ca9f761fb9e2ab9bc63bb734b73b5628b7b",
     name="label2mesh",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -122,7 +122,7 @@ def label2mesh(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

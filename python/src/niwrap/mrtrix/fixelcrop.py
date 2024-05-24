@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCROP_METADATA = Metadata(
-    id="cac5f8bd9c3af0ec7b5bab354b165802b99d8d6e",
+    id="25faea5b72f9b9c23fdf965fba04a1888e61b06f",
     name="fixelcrop",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -124,7 +124,7 @@ def fixelcrop(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

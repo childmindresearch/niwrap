@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCLUSTERSTATS_METADATA = Metadata(
-    id="4d37ae3fce9bbf5db8384fc10096360e6e953b3b",
+    id="755682ade8cd53164a332feba7e5eecfcd6d205b",
     name="mrclusterstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -264,7 +264,7 @@ def mrclusterstats(
     if fonly:
         cargs.append("-fonly")
     if column is not None:
-        cargs.extend(["-column", *[a for c in [s.run(execution) for s in column] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in column] for a in c])
     if threshold is not None:
         cargs.extend(["-threshold", str(threshold)])
     if connectivity:
@@ -280,7 +280,7 @@ def mrclusterstats(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRHISTOGRAM_METADATA = Metadata(
-    id="781a522cecad6e54298a6838dd7bd7358ec213cf",
+    id="c7dfb67e2e501bcbba267491785f23b16d1adc85",
     name="mrhistogram",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -139,7 +139,7 @@ def mrhistogram(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 VOXEL2MESH_METADATA = Metadata(
-    id="26b9fcee28b7a937e7a897c06466b09bee9e6689",
+    id="447219146828962b0af0198b9c973ddb7229081f",
     name="voxel2mesh",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -136,7 +136,7 @@ def voxel2mesh(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFINFO_METADATA = Metadata(
-    id="ceba2a22604b0d92193f70c37430f3acedbf849c",
+    id="b170a8551fbadb7ed7c10ee533709da5e3c0c1dd",
     name="tsfinfo",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -122,7 +122,7 @@ def tsfinfo(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

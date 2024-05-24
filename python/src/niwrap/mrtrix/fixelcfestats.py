@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCFESTATS_METADATA = Metadata(
-    id="aaa595f2e481c34a936f1f5b8dacb79693c1bc0f",
+    id="92d2fe3cee5670d1564f8968f3f4174f76a1a9c9",
     name="fixelcfestats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -298,7 +298,7 @@ def fixelcfestats(
     if fonly:
         cargs.append("-fonly")
     if column is not None:
-        cargs.extend(["-column", *[a for c in [s.run(execution) for s in column] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in column] for a in c])
     if info:
         cargs.append("-info")
     if quiet:
@@ -310,7 +310,7 @@ def fixelcfestats(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

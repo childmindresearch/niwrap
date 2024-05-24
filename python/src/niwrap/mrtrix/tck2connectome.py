@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCK2CONNECTOME_METADATA = Metadata(
-    id="97944cceff50364b7f1df2a017a5e6a8f41c89a5",
+    id="df82b1dd15a0df3ae032e68261e9a0b0319e9247",
     name="tck2connectome",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -217,7 +217,7 @@ def tck2connectome(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

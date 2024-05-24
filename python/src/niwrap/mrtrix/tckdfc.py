@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKDFC_METADATA = Metadata(
-    id="722ad4f6e3f2348baae7a287768b2a7cddcc7595",
+    id="6c81cf6d47143afc0b96214330286cb1cf8945f7",
     name="tckdfc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -196,7 +196,7 @@ def tckdfc(
     if static:
         cargs.append("-static")
     if dynamic is not None:
-        cargs.extend(["-dynamic", *dynamic.run(execution)])
+        cargs.extend(dynamic.run(execution))
     if template is not None:
         cargs.extend(["-template", execution.input_file(template)])
     if vox is not None:
@@ -218,7 +218,7 @@ def tckdfc(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

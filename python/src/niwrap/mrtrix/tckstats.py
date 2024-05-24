@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKSTATS_METADATA = Metadata(
-    id="e90ad916f87a2e401c6f92945cce58c9d6f4bcd3",
+    id="e8667e01250c2036c4ac7a8603a5d1914c790df0",
     name="tckstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -150,7 +150,7 @@ def tckstats(
     cargs = []
     cargs.append("tckstats")
     if output is not None:
-        cargs.extend(["-output", *[a for c in [s.run(execution) for s in output] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in output] for a in c])
     if histogram is not None:
         cargs.extend(["-histogram", execution.input_file(histogram)])
     if dump is not None:
@@ -170,7 +170,7 @@ def tckstats(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

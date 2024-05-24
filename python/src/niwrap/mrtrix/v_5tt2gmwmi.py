@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 V_5TT2GMWMI_METADATA = Metadata(
-    id="db1f64b79979864e4047efef69bed886539158c1",
+    id="9d8fcdb9a2342ddf210a6f3a6744324c059ef033",
     name="5tt2gmwmi",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -128,7 +128,7 @@ def v_5tt2gmwmi(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

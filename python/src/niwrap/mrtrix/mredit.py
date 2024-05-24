@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MREDIT_METADATA = Metadata(
-    id="9a3820ed5ab2b1ccd72bf894c0ed8e03e87c182e",
+    id="616aa0c001d334195d755b4105e468ee2507004d",
     name="mredit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -216,11 +216,11 @@ def mredit(
     cargs = []
     cargs.append("mredit")
     if plane is not None:
-        cargs.extend(["-plane", *[a for c in [s.run(execution) for s in plane] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in plane] for a in c])
     if sphere is not None:
-        cargs.extend(["-sphere", *[a for c in [s.run(execution) for s in sphere] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in sphere] for a in c])
     if voxel is not None:
-        cargs.extend(["-voxel", *[a for c in [s.run(execution) for s in voxel] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in voxel] for a in c])
     if scanner:
         cargs.append("-scanner")
     if info:
@@ -234,7 +234,7 @@ def mredit(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWI2MASK_METADATA = Metadata(
-    id="b7977bdc062071024c47f853e87f6838cff44771",
+    id="4c34e423bfb7b1c83c7649d3b0cf5d2d679d2745",
     name="dwi2mask",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -173,7 +173,7 @@ def dwi2mask(
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:
-        cargs.extend(["-fslgrad", *fslgrad.run(execution)])
+        cargs.extend(fslgrad.run(execution))
     if info:
         cargs.append("-info")
     if quiet:
@@ -185,7 +185,7 @@ def dwi2mask(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

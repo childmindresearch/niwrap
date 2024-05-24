@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRSTATS_METADATA = Metadata(
-    id="b40844c29e409a2a885728a4fae6734a2d06270f",
+    id="b993b2694a66b8a2074091a146709e8a612cdd47",
     name="mrstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -150,7 +150,7 @@ def mrstats(
     cargs = []
     cargs.append("mrstats")
     if output is not None:
-        cargs.extend(["-output", *[a for c in [s.run(execution) for s in output] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in output] for a in c])
     if mask is not None:
         cargs.extend(["-mask", execution.input_file(mask)])
     if ignorezero:
@@ -168,7 +168,7 @@ def mrstats(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

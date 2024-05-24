@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MESHFILTER_METADATA = Metadata(
-    id="dee72683c9ceab1e5e39677b0fc9d10df5b7da6f",
+    id="99a845068c4f3f15ea70ef2bedda46a50e182a7e",
     name="meshfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -129,7 +129,7 @@ def meshfilter(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRMETRIC_METADATA = Metadata(
-    id="6685256d65193eda3faf22612435a00f4a833e7e",
+    id="2e78093c7e38a2e2b18b3d27763550c8f05734e4",
     name="mrmetric",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -151,7 +151,7 @@ def mrmetric(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

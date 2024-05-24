@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKCONVERT_METADATA = Metadata(
-    id="be7ac2a7a31235afdeaa33ec4bd47bf802de3266",
+    id="9b0e38a877456cb483b17125974016b86a123716",
     name="tckconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -179,7 +179,7 @@ def tckconvert(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DCMEDIT_METADATA = Metadata(
-    id="f83e2e818031b600e3c517e8870929bdffe272fc",
+    id="35428f8d090a3d52ffa0b1f3a04798191a1c5607",
     name="dcmedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -162,7 +162,7 @@ def dcmedit(
     if id_ is not None:
         cargs.extend(["-id", id_])
     if tag is not None:
-        cargs.extend(["-tag", *[a for c in [s.run(execution) for s in tag] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tag] for a in c])
     if info:
         cargs.append("-info")
     if quiet:
@@ -174,7 +174,7 @@ def dcmedit(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

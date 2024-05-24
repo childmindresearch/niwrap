@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKEDIT_METADATA = Metadata(
-    id="a9220b0802a77a1a31241d574dddc65e354790fb",
+    id="060e06abca53598070775efdcbdd868f73fc0f95",
     name="tckedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -275,13 +275,13 @@ def tckedit(
     cargs = []
     cargs.append("tckedit")
     if include is not None:
-        cargs.extend(["-include", *[a for c in [s.run(execution) for s in include] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in include] for a in c])
     if include_ordered is not None:
-        cargs.extend(["-include_ordered", *[a for c in [s.run(execution) for s in include_ordered] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in include_ordered] for a in c])
     if exclude is not None:
-        cargs.extend(["-exclude", *[a for c in [s.run(execution) for s in exclude] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in exclude] for a in c])
     if mask is not None:
-        cargs.extend(["-mask", *[a for c in [s.run(execution) for s in mask] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in mask] for a in c])
     if maxlength is not None:
         cargs.extend(["-maxlength", str(maxlength)])
     if minlength is not None:
@@ -313,7 +313,7 @@ def tckedit(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

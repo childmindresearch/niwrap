@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKSIFT2_METADATA = Metadata(
-    id="cc03f8b46adadf5cf2fcbbc768de4eeb1e95c6e7",
+    id="12a20c5bb39702633293710839fee3f08be0cd6e",
     name="tcksift2",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -268,7 +268,7 @@ def tcksift2(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

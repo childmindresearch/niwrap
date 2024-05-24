@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 WARPINVERT_METADATA = Metadata(
-    id="6f5ed6d79d3ded4225a0f72960f3c2c02796e740",
+    id="72cc758b1b9d922db5f1346e4fdc422fd03f1ab2",
     name="warpinvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -134,7 +134,7 @@ def warpinvert(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

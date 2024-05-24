@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKGEN_METADATA = Metadata(
-    id="48e3e4611a41c9ce6e0b7a86135fef71fb2ae9af",
+    id="0e8e599b5bdedec7610bb9ea0f5d9f06d207b743",
     name="tckgen",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -747,17 +747,17 @@ def tckgen(
     if downsample is not None:
         cargs.extend(["-downsample", str(downsample)])
     if seed_image is not None:
-        cargs.extend(["-seed_image", *[a for c in [s.run(execution) for s in seed_image] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in seed_image] for a in c])
     if seed_sphere is not None:
-        cargs.extend(["-seed_sphere", *[a for c in [s.run(execution) for s in seed_sphere] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in seed_sphere] for a in c])
     if seed_random_per_voxel is not None:
-        cargs.extend(["-seed_random_per_voxel", *[a for c in [s.run(execution) for s in seed_random_per_voxel] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in seed_random_per_voxel] for a in c])
     if seed_grid_per_voxel is not None:
-        cargs.extend(["-seed_grid_per_voxel", *[a for c in [s.run(execution) for s in seed_grid_per_voxel] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in seed_grid_per_voxel] for a in c])
     if seed_rejection is not None:
-        cargs.extend(["-seed_rejection", *[a for c in [s.run(execution) for s in seed_rejection] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in seed_rejection] for a in c])
     if seed_gmwmi is not None:
-        cargs.extend(["-seed_gmwmi", *[a for c in [s.run(execution) for s in seed_gmwmi] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in seed_gmwmi] for a in c])
     if seed_dynamic is not None:
         cargs.extend(["-seed_dynamic", execution.input_file(seed_dynamic)])
     if seeds is not None:
@@ -773,13 +773,13 @@ def tckgen(
     if output_seeds is not None:
         cargs.extend(["-output_seeds", execution.input_file(output_seeds)])
     if include is not None:
-        cargs.extend(["-include", *[a for c in [s.run(execution) for s in include] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in include] for a in c])
     if include_ordered is not None:
-        cargs.extend(["-include_ordered", *[a for c in [s.run(execution) for s in include_ordered] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in include_ordered] for a in c])
     if exclude is not None:
-        cargs.extend(["-exclude", *[a for c in [s.run(execution) for s in exclude] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in exclude] for a in c])
     if mask is not None:
-        cargs.extend(["-mask", *[a for c in [s.run(execution) for s in mask] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in mask] for a in c])
     if act is not None:
         cargs.extend(["-act", execution.input_file(act)])
     if backtrack:
@@ -793,7 +793,7 @@ def tckgen(
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:
-        cargs.extend(["-fslgrad", *fslgrad.run(execution)])
+        cargs.extend(fslgrad.run(execution))
     if info:
         cargs.append("-info")
     if quiet:
@@ -805,7 +805,7 @@ def tckgen(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

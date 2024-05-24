@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRSPLIT_METADATA = Metadata(
-    id="6ffb039f08b24a2f77c312d1a8b612dd5ce95159",
+    id="65195eb3add26951dbd9c4f1da4dbf84b18e19a0",
     name="dirsplit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -127,7 +127,7 @@ def dirsplit(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

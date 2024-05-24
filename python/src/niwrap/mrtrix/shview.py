@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SHVIEW_METADATA = Metadata(
-    id="3390b5467ce0e77c5a53db6e3da2807a1fd3de44",
+    id="b1f56586d2f8b13648a1df15381f1585d3773f65",
     name="shview",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -120,7 +120,7 @@ def shview(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCALC_METADATA = Metadata(
-    id="2e423f3fe9161ef8a5360bd0c1aa599bcabcd1a8",
+    id="323bf5235882de108300cabf4de2d56474107d4a",
     name="mrcalc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -1441,105 +1441,105 @@ def mrcalc(
     cargs = []
     cargs.append("mrcalc")
     if abs_ is not None:
-        cargs.extend(["-abs", *[a for c in [s.run(execution) for s in abs_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in abs_] for a in c])
     if neg is not None:
-        cargs.extend(["-neg", *[a for c in [s.run(execution) for s in neg] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in neg] for a in c])
     if add is not None:
-        cargs.extend(["-add", *[a for c in [s.run(execution) for s in add] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in add] for a in c])
     if subtract is not None:
-        cargs.extend(["-subtract", *[a for c in [s.run(execution) for s in subtract] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in subtract] for a in c])
     if multiply is not None:
-        cargs.extend(["-multiply", *[a for c in [s.run(execution) for s in multiply] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in multiply] for a in c])
     if divide is not None:
-        cargs.extend(["-divide", *[a for c in [s.run(execution) for s in divide] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in divide] for a in c])
     if min_ is not None:
-        cargs.extend(["-min", *[a for c in [s.run(execution) for s in min_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in min_] for a in c])
     if max_ is not None:
-        cargs.extend(["-max", *[a for c in [s.run(execution) for s in max_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in max_] for a in c])
     if lt is not None:
-        cargs.extend(["-lt", *[a for c in [s.run(execution) for s in lt] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in lt] for a in c])
     if gt is not None:
-        cargs.extend(["-gt", *[a for c in [s.run(execution) for s in gt] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in gt] for a in c])
     if le is not None:
-        cargs.extend(["-le", *[a for c in [s.run(execution) for s in le] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in le] for a in c])
     if ge is not None:
-        cargs.extend(["-ge", *[a for c in [s.run(execution) for s in ge] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in ge] for a in c])
     if eq is not None:
-        cargs.extend(["-eq", *[a for c in [s.run(execution) for s in eq] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in eq] for a in c])
     if neq is not None:
-        cargs.extend(["-neq", *[a for c in [s.run(execution) for s in neq] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in neq] for a in c])
     if if_ is not None:
-        cargs.extend(["-if", *[a for c in [s.run(execution) for s in if_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in if_] for a in c])
     if replace is not None:
-        cargs.extend(["-replace", *[a for c in [s.run(execution) for s in replace] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in replace] for a in c])
     if sqrt is not None:
-        cargs.extend(["-sqrt", *[a for c in [s.run(execution) for s in sqrt] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in sqrt] for a in c])
     if pow_ is not None:
-        cargs.extend(["-pow", *[a for c in [s.run(execution) for s in pow_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in pow_] for a in c])
     if round_ is not None:
-        cargs.extend(["-round", *[a for c in [s.run(execution) for s in round_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in round_] for a in c])
     if ceil is not None:
-        cargs.extend(["-ceil", *[a for c in [s.run(execution) for s in ceil] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in ceil] for a in c])
     if floor is not None:
-        cargs.extend(["-floor", *[a for c in [s.run(execution) for s in floor] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in floor] for a in c])
     if not_ is not None:
-        cargs.extend(["-not", *[a for c in [s.run(execution) for s in not_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in not_] for a in c])
     if and_ is not None:
-        cargs.extend(["-and", *[a for c in [s.run(execution) for s in and_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in and_] for a in c])
     if or_ is not None:
-        cargs.extend(["-or", *[a for c in [s.run(execution) for s in or_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in or_] for a in c])
     if xor is not None:
-        cargs.extend(["-xor", *[a for c in [s.run(execution) for s in xor] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in xor] for a in c])
     if isnan is not None:
-        cargs.extend(["-isnan", *[a for c in [s.run(execution) for s in isnan] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in isnan] for a in c])
     if isinf is not None:
-        cargs.extend(["-isinf", *[a for c in [s.run(execution) for s in isinf] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in isinf] for a in c])
     if finite is not None:
-        cargs.extend(["-finite", *[a for c in [s.run(execution) for s in finite] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in finite] for a in c])
     if complex_ is not None:
-        cargs.extend(["-complex", *[a for c in [s.run(execution) for s in complex_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in complex_] for a in c])
     if polar is not None:
-        cargs.extend(["-polar", *[a for c in [s.run(execution) for s in polar] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in polar] for a in c])
     if real is not None:
-        cargs.extend(["-real", *[a for c in [s.run(execution) for s in real] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in real] for a in c])
     if imag is not None:
-        cargs.extend(["-imag", *[a for c in [s.run(execution) for s in imag] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in imag] for a in c])
     if phase is not None:
-        cargs.extend(["-phase", *[a for c in [s.run(execution) for s in phase] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in phase] for a in c])
     if conj is not None:
-        cargs.extend(["-conj", *[a for c in [s.run(execution) for s in conj] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in conj] for a in c])
     if proj is not None:
-        cargs.extend(["-proj", *[a for c in [s.run(execution) for s in proj] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in proj] for a in c])
     if exp is not None:
-        cargs.extend(["-exp", *[a for c in [s.run(execution) for s in exp] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in exp] for a in c])
     if log is not None:
-        cargs.extend(["-log", *[a for c in [s.run(execution) for s in log] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in log] for a in c])
     if log10 is not None:
-        cargs.extend(["-log10", *[a for c in [s.run(execution) for s in log10] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in log10] for a in c])
     if cos is not None:
-        cargs.extend(["-cos", *[a for c in [s.run(execution) for s in cos] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in cos] for a in c])
     if sin is not None:
-        cargs.extend(["-sin", *[a for c in [s.run(execution) for s in sin] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in sin] for a in c])
     if tan is not None:
-        cargs.extend(["-tan", *[a for c in [s.run(execution) for s in tan] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tan] for a in c])
     if acos is not None:
-        cargs.extend(["-acos", *[a for c in [s.run(execution) for s in acos] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in acos] for a in c])
     if asin is not None:
-        cargs.extend(["-asin", *[a for c in [s.run(execution) for s in asin] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in asin] for a in c])
     if atan is not None:
-        cargs.extend(["-atan", *[a for c in [s.run(execution) for s in atan] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in atan] for a in c])
     if cosh is not None:
-        cargs.extend(["-cosh", *[a for c in [s.run(execution) for s in cosh] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in cosh] for a in c])
     if sinh is not None:
-        cargs.extend(["-sinh", *[a for c in [s.run(execution) for s in sinh] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in sinh] for a in c])
     if tanh is not None:
-        cargs.extend(["-tanh", *[a for c in [s.run(execution) for s in tanh] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in tanh] for a in c])
     if acosh is not None:
-        cargs.extend(["-acosh", *[a for c in [s.run(execution) for s in acosh] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in acosh] for a in c])
     if asinh is not None:
-        cargs.extend(["-asinh", *[a for c in [s.run(execution) for s in asinh] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in asinh] for a in c])
     if atanh is not None:
-        cargs.extend(["-atanh", *[a for c in [s.run(execution) for s in atanh] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in atanh] for a in c])
     if datatype is not None:
         cargs.extend(["-datatype", datatype])
     if info:
@@ -1553,7 +1553,7 @@ def mrcalc(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

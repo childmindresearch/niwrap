@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCAT_METADATA = Metadata(
-    id="664a53a7de0ceeaf0c932e0ad7a634d74861a960",
+    id="ad70047912ad2cbe2591f23a95fe909cb7cae0cb",
     name="mrcat",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -136,7 +136,7 @@ def mrcat(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

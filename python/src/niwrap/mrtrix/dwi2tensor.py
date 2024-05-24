@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWI2TENSOR_METADATA = Metadata(
-    id="daa1ffe5a6f338610a384651c6665600f39d4f97",
+    id="5f71502984ba2f80fe06dcb76f56448959e8a961",
     name="dwi2tensor",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -225,7 +225,7 @@ def dwi2tensor(
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:
-        cargs.extend(["-fslgrad", *fslgrad.run(execution)])
+        cargs.extend(fslgrad.run(execution))
     if info:
         cargs.append("-info")
     if quiet:
@@ -237,7 +237,7 @@ def dwi2tensor(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRAVERAGEHEADER_METADATA = Metadata(
-    id="b1234f208db6ee1435ac86d3014b40a23491110b",
+    id="195760823643ab4420155eeb554262eaa4d62f4c",
     name="mraverageheader",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -141,7 +141,7 @@ def mraverageheader(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

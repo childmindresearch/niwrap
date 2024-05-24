@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MESHCONVERT_METADATA = Metadata(
-    id="f2a617306afe557a6724c61cbcc4056bbc346da5",
+    id="aa91b795c50b09432cf243a115b13afcf3dbf649",
     name="meshconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -149,7 +149,7 @@ def meshconvert(
     if binary:
         cargs.append("-binary")
     if transform is not None:
-        cargs.extend(["-transform", *transform.run(execution)])
+        cargs.extend(transform.run(execution))
     if info:
         cargs.append("-info")
     if quiet:
@@ -161,7 +161,7 @@ def meshconvert(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:

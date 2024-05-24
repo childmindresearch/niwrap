@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRGEN_METADATA = Metadata(
-    id="1aa4aa5c2b30f52b1cd84032aa4c9106d121f71c",
+    id="e9746629c7b8f4bccb7f9b4f9d94ad8494cacbff",
     name="dirgen",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -154,7 +154,7 @@ def dirgen(
     if nthreads is not None:
         cargs.extend(["-nthreads", str(nthreads)])
     if config is not None:
-        cargs.extend(["-config", *[a for c in [s.run(execution) for s in config] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
     if help_:
         cargs.append("-help")
     if version:
