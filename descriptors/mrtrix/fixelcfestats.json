@@ -84,7 +84,9 @@
       "description": "specify nature of errors for shuffling; options are: ee,ise,both (default: ee)",
       "type": "String",
       "optional": true,
-      "value-choices": ["spec"]
+      "value-choices": [
+        "spec"
+      ]
     },
     {
       "id": "exchange_within",
@@ -260,7 +262,6 @@
           {
             "id": "path",
             "name": "path",
-            "command-line-flag": "",
             "value-key": "[PATH]",
             "description": "add a column to the design matrix corresponding to subject fixel-wise values (note that the contrast matrix must include an additional column for each use of this option); the text file provided via this option should contain a file name for each subject",
             "type": "File",
@@ -332,7 +333,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -341,7 +341,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

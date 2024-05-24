@@ -33,7 +33,6 @@
           {
             "id": "index",
             "name": "index",
-            "command-line-flag": "",
             "value-key": "[INDEX]",
             "description": "Switch to view mode specified by the integer index, as per the view menu.",
             "type": "Number",
@@ -60,7 +59,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "Load image specified and make it current.",
             "type": "File",
@@ -102,7 +100,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "Set the field of view, in mm.",
             "type": "Number",
@@ -129,7 +126,6 @@
           {
             "id": "x_y_z_or_boolean",
             "name": "x_y_z_or_boolean",
-            "command-line-flag": "",
             "value-key": "[X_Y_Z_OR_BOOLEAN]",
             "description": "Either set the position of the crosshairs in scanner coordinates, with the new position supplied as a comma-separated list of floating-point values or show or hide the focus cross hair using a boolean value as argument.",
             "type": "String",
@@ -155,7 +151,6 @@
           {
             "id": "x_y_z",
             "name": "x_y_z",
-            "command-line-flag": "",
             "value-key": "[X_Y_Z]",
             "description": "Set the target location for the viewing window (the scanner coordinate that will appear at the centre of the viewing window",
             "type": "Number",
@@ -183,7 +178,6 @@
           {
             "id": "x_y_z",
             "name": "x_y_z",
-            "command-line-flag": "",
             "value-key": "[X_Y_Z]",
             "description": "Set the position of the crosshairs in voxel coordinates, relative the image currently displayed. The new position should be supplied as a comma-separated list of floating-point values.",
             "type": "Number",
@@ -211,7 +205,6 @@
           {
             "id": "idx",
             "name": "idx",
-            "command-line-flag": "",
             "value-key": "[IDX]",
             "description": "Set the volume index for the image displayed, as a comma-separated list of integers.",
             "type": "Number",
@@ -239,7 +232,6 @@
           {
             "id": "index",
             "name": "index",
-            "command-line-flag": "",
             "value-key": "[INDEX]",
             "description": "Set the viewing plane, according to the mappping 0: sagittal; 1: coronal; 2: axial.",
             "type": "Number",
@@ -266,7 +258,6 @@
           {
             "id": "yesno",
             "name": "yesno",
-            "command-line-flag": "",
             "value-key": "[YESNO]",
             "description": "Set whether view is locked to image axes (0: no, 1: yes).",
             "type": "String",
@@ -292,7 +283,6 @@
           {
             "id": "index",
             "name": "index",
-            "command-line-flag": "",
             "value-key": "[INDEX]",
             "description": "Switch to image number specified, with reference to the list of currently loaded images.",
             "type": "Number",
@@ -335,7 +325,6 @@
           {
             "id": "boolean",
             "name": "boolean",
-            "command-line-flag": "",
             "value-key": "[BOOLEAN]",
             "description": "Enable or disable image interpolation in main image.",
             "type": "String",
@@ -361,7 +350,6 @@
           {
             "id": "index",
             "name": "index",
-            "command-line-flag": "",
             "value-key": "[INDEX]",
             "description": "Switch the image colourmap to that specified, as per the colourmap menu.",
             "type": "Number",
@@ -404,7 +392,6 @@
           {
             "id": "boolean",
             "name": "boolean",
-            "command-line-flag": "",
             "value-key": "[BOOLEAN]",
             "description": "Show or hide image comments overlay.",
             "type": "String",
@@ -430,7 +417,6 @@
           {
             "id": "boolean",
             "name": "boolean",
-            "command-line-flag": "",
             "value-key": "[BOOLEAN]",
             "description": "Show or hide voxel information overlay.",
             "type": "String",
@@ -456,7 +442,6 @@
           {
             "id": "boolean",
             "name": "boolean",
-            "command-line-flag": "",
             "value-key": "[BOOLEAN]",
             "description": "Show or hide orientation label overlay.",
             "type": "String",
@@ -482,7 +467,6 @@
           {
             "id": "boolean",
             "name": "boolean",
-            "command-line-flag": "",
             "value-key": "[BOOLEAN]",
             "description": "Show or hide colourbar overlay.",
             "type": "String",
@@ -508,7 +492,6 @@
           {
             "id": "boolean",
             "name": "boolean",
-            "command-line-flag": "",
             "value-key": "[BOOLEAN]",
             "description": "Show or hide the main image.",
             "type": "String",
@@ -534,7 +517,6 @@
           {
             "id": "min_max",
             "name": "min_max",
-            "command-line-flag": "",
             "value-key": "[MIN_MAX]",
             "description": "Set the image intensity range to that specified.",
             "type": "Number",
@@ -562,7 +544,6 @@
           {
             "id": "width_height",
             "name": "width_height",
-            "command-line-flag": "",
             "value-key": "[WIDTH_HEIGHT]",
             "description": "Set the size of the view area, in pixel units.",
             "type": "Number",
@@ -590,7 +571,6 @@
           {
             "id": "x_y",
             "name": "x_y",
-            "command-line-flag": "",
             "value-key": "[X_Y]",
             "description": "Set the position of the main window, in pixel units.",
             "type": "Number",
@@ -654,7 +634,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "Loads the specified image on the overlay tool.",
             "type": "File",
@@ -680,7 +659,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "Sets the overlay opacity to floating value [0-1].",
             "type": "Number",
@@ -707,7 +685,6 @@
           {
             "id": "index",
             "name": "index",
-            "command-line-flag": "",
             "value-key": "[INDEX]",
             "description": "Sets the colourmap of the overlay as indexed in the colourmap dropdown menu.",
             "type": "Number",
@@ -734,7 +711,6 @@
           {
             "id": "R_G_B",
             "name": "R_G_B",
-            "command-line-flag": "",
             "value-key": "[R_G_B]",
             "description": "Specify a manual colour for the overlay, as three comma-separated values",
             "type": "Number",
@@ -762,7 +738,6 @@
           {
             "id": "Min_Max",
             "name": "Min_Max",
-            "command-line-flag": "",
             "value-key": "[MIN_MAX]",
             "description": "Set the intensity windowing of the overlay",
             "type": "Number",
@@ -790,7 +765,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "Set the lower threshold value of the overlay",
             "type": "Number",
@@ -817,7 +791,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "Set the upper threshold value of the overlay",
             "type": "Number",
@@ -876,7 +849,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "Enable or disable overlay image interpolation.",
             "type": "String",
@@ -902,7 +874,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "Loads the specified image on the ROI editor tool.",
             "type": "File",
@@ -928,7 +899,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "Sets the overlay opacity to floating value [0-1].",
             "type": "Number",
@@ -955,7 +925,6 @@
           {
             "id": "R_G_B",
             "name": "R_G_B",
-            "command-line-flag": "",
             "value-key": "[R_G_B]",
             "description": "Sets the colour of the ROI overlay",
             "type": "Number",
@@ -983,7 +952,6 @@
           {
             "id": "tracks",
             "name": "tracks",
-            "command-line-flag": "",
             "value-key": "[TRACKS]",
             "description": "Load the specified tracks file into the tractography tool.",
             "type": "File",
@@ -1009,7 +977,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "Line thickness of tractography display, [-1.0, 1.0], default is 0.0.",
             "type": "Number",
@@ -1036,12 +1003,13 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "The geometry type to use when rendering tractograms (options are: pseudotubes, lines, points)",
             "type": "String",
             "optional": false,
-            "value-choices": ["value"]
+            "value-choices": [
+              "value"
+            ]
           }
         ],
         "output-files": []
@@ -1063,7 +1031,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "Opacity of tractography display, [0.0, 1.0], default is 1.0.",
             "type": "Number",
@@ -1090,7 +1057,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "Slab thickness of tractography display, in mm. -1 to turn off crop to slab.",
             "type": "Number",
@@ -1117,7 +1083,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "Toggle the use of lighting of tractogram geometry",
             "type": "String",
@@ -1143,7 +1108,6 @@
           {
             "id": "R_G_B",
             "name": "R_G_B",
-            "command-line-flag": "",
             "value-key": "[R_G_B]",
             "description": "Specify a manual colour for the tractogram, as three comma-separated values",
             "type": "Number",
@@ -1171,7 +1135,6 @@
           {
             "id": "tsf",
             "name": "tsf",
-            "command-line-flag": "",
             "value-key": "[TSF]",
             "description": "Load the specified tractography scalar file.",
             "type": "File",
@@ -1197,7 +1160,6 @@
           {
             "id": "RangeMin_RangeMax",
             "name": "RangeMin_RangeMax",
-            "command-line-flag": "",
             "value-key": "[RANGEMIN_RANGEMAX]",
             "description": "Set range for the tractography scalar file. Requires -tractography.tsf_load already provided.",
             "type": "Number",
@@ -1225,7 +1187,6 @@
           {
             "id": "ThresholdMin_ThesholdMax",
             "name": "ThresholdMin_ThesholdMax",
-            "command-line-flag": "",
             "value-key": "[THRESHOLDMIN_THESHOLDMAX]",
             "description": "Set thresholds for the tractography scalar file. Requires -tractography.tsf_load already provided.",
             "type": "Number",
@@ -1253,7 +1214,6 @@
           {
             "id": "index",
             "name": "index",
-            "command-line-flag": "",
             "value-key": "[INDEX]",
             "description": "Sets the colourmap of the .tsf file as indexed in the tsf colourmap dropdown menu. Requires -tractography.tsf_load already.",
             "type": "Number",
@@ -1280,7 +1240,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "Loads the specified SH-based ODF image on the ODF tool.",
             "type": "File",
@@ -1306,7 +1265,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "Loads the specified tensor image on the ODF tool.",
             "type": "File",
@@ -1332,7 +1290,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "Loads the specified dixel-based image on the ODF tool.",
             "type": "File",
@@ -1358,7 +1315,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "Load a fixel file (any file inside a fixel directory, or an old .msf / .msh legacy format file) into the fixel tool.",
             "type": "File",
@@ -1393,7 +1349,6 @@
           {
             "id": "path",
             "name": "path",
-            "command-line-flag": "",
             "value-key": "[PATH]",
             "description": "Load a matrix file into the connectome tool.",
             "type": "File",
@@ -1419,7 +1374,6 @@
           {
             "id": "path",
             "name": "path",
-            "command-line-flag": "",
             "value-key": "[PATH]",
             "description": "Set the output folder for the screen capture tool.",
             "type": "String",
@@ -1445,7 +1399,6 @@
           {
             "id": "string",
             "name": "string",
-            "command-line-flag": "",
             "value-key": "[STRING]",
             "description": "Set the output file prefix for the screen capture tool.",
             "type": "String",
@@ -1533,7 +1486,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -1542,7 +1494,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

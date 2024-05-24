@@ -25,7 +25,9 @@
       "description": "the type of filter to be applied",
       "type": "String",
       "optional": false,
-      "value-choices": ["filter"]
+      "value-choices": [
+        "filter"
+      ]
     },
     {
       "id": "output",
@@ -274,7 +276,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -283,7 +284,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

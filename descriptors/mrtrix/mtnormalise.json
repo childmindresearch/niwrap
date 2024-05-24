@@ -36,7 +36,9 @@
       "description": "the maximum order of the polynomial basis used to fit the normalisation field in the log-domain. An order of 0 is equivalent to not allowing spatial variance of the intensity normalisation factor. (default: 3)",
       "type": "String",
       "optional": true,
-      "value-choices": ["number"]
+      "value-choices": [
+        "number"
+      ]
     },
     {
       "id": "niter",
@@ -155,7 +157,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -164,7 +165,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

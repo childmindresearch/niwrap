@@ -32,12 +32,13 @@
           {
             "id": "field",
             "name": "field",
-            "command-line-flag": "",
             "value-key": "[FIELD]",
             "description": "output only the field specified. Multiple such options can be supplied if required. Choices are: mean, median, std, min, max, count. Useful for use in scripts.",
             "type": "String",
             "optional": false,
-            "value-choices": ["field"]
+            "value-choices": [
+              "field"
+            ]
           }
         ],
         "output-files": []
@@ -141,7 +142,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -150,7 +150,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

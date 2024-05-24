@@ -66,7 +66,6 @@
           {
             "id": "response",
             "name": "response",
-            "command-line-flag": "",
             "value-key": "[RESPONSE]",
             "description": "set one or more isotropic response functions. (multiple allowed)",
             "type": "File",
@@ -314,7 +313,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -323,7 +321,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

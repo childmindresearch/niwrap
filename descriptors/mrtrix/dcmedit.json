@@ -50,7 +50,6 @@
           {
             "id": "group",
             "name": "group",
-            "command-line-flag": "",
             "value-key": "[GROUP]",
             "description": "replace specific tag.",
             "type": "String",
@@ -59,7 +58,6 @@
           {
             "id": "element",
             "name": "element",
-            "command-line-flag": "",
             "value-key": "[ELEMENT]",
             "description": "replace specific tag.",
             "type": "String",
@@ -68,7 +66,6 @@
           {
             "id": "newvalue",
             "name": "newvalue",
-            "command-line-flag": "",
             "value-key": "[NEWVALUE]",
             "description": "replace specific tag.",
             "type": "String",
@@ -140,7 +137,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -149,7 +145,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

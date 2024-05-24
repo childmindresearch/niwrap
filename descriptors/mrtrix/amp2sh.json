@@ -86,7 +86,6 @@
           {
             "id": "bvecs",
             "name": "bvecs",
-            "command-line-flag": "",
             "value-key": "[BVECS]",
             "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
             "type": "File",
@@ -95,7 +94,6 @@
           {
             "id": "bvals",
             "name": "bvals",
-            "command-line-flag": "",
             "value-key": "[BVALS]",
             "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
             "type": "File",
@@ -186,7 +184,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -195,7 +192,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

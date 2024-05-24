@@ -41,7 +41,6 @@
           {
             "id": "spec",
             "name": "spec",
-            "command-line-flag": "",
             "value-key": "[SPEC]",
             "description": "specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be accepted.",
             "type": "String",
@@ -67,7 +66,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions in the order they are specified in order to be accepted.",
             "type": "String",
@@ -93,7 +91,6 @@
           {
             "id": "spec",
             "name": "spec",
-            "command-line-flag": "",
             "value-key": "[SPEC]",
             "description": "specify an exclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that enter ANY exclude region will be discarded.",
             "type": "String",
@@ -119,7 +116,6 @@
           {
             "id": "spec",
             "name": "spec",
-            "command-line-flag": "",
             "value-key": "[SPEC]",
             "description": "specify a masking region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). If defined, streamlines exiting the mask will be truncated.",
             "type": "String",
@@ -287,7 +283,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -296,7 +291,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

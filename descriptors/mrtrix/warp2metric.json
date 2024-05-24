@@ -32,7 +32,6 @@
           {
             "id": "template_fixel_directory",
             "name": "template_fixel_directory",
-            "command-line-flag": "",
             "value-key": "[TEMPLATE_FIXEL_DIRECTORY]",
             "description": "use an input template fixel image to define fibre orientations and output a fixel image describing the change in fibre cross-section (FC) in the perpendicular plane to the fixel orientation. e.g. warp2metric warp.mif -fc fixel_template_directory output_fixel_directory fc.mif",
             "type": "File",
@@ -41,7 +40,6 @@
           {
             "id": "output_fixel_directory",
             "name": "output_fixel_directory",
-            "command-line-flag": "",
             "value-key": "[OUTPUT_FIXEL_DIRECTORY]",
             "description": "use an input template fixel image to define fibre orientations and output a fixel image describing the change in fibre cross-section (FC) in the perpendicular plane to the fixel orientation. e.g. warp2metric warp.mif -fc fixel_template_directory output_fixel_directory fc.mif",
             "type": "String",
@@ -50,7 +48,6 @@
           {
             "id": "output_fixel_data",
             "name": "output_fixel_data",
-            "command-line-flag": "",
             "value-key": "[OUTPUT_FIXEL_DATA]",
             "description": "use an input template fixel image to define fibre orientations and output a fixel image describing the change in fibre cross-section (FC) in the perpendicular plane to the fixel orientation. e.g. warp2metric warp.mif -fc fixel_template_directory output_fixel_directory fc.mif",
             "type": "String",
@@ -139,7 +136,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -148,7 +144,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

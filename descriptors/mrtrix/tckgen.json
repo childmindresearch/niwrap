@@ -34,7 +34,9 @@
       "description": "specify the tractography algorithm to use. Valid choices are: FACT, iFOD1, iFOD2, Nulldist1, Nulldist2, SD_Stream, Seedtest, Tensor_Det, Tensor_Prob (default: iFOD2).",
       "type": "String",
       "optional": true,
-      "value-choices": ["name"]
+      "value-choices": [
+        "name"
+      ]
     },
     {
       "id": "select",
@@ -157,7 +159,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "seed streamlines entirely at random within a mask image ",
             "type": "File",
@@ -183,7 +184,6 @@
           {
             "id": "spec",
             "name": "spec",
-            "command-line-flag": "",
             "value-key": "[SPEC]",
             "description": "spherical seed as four comma-separated values (XYZ position and radius)",
             "type": "Number",
@@ -211,7 +211,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "seed a fixed number of streamlines per voxel in a mask image; random placement of seeds in each voxel",
             "type": "File",
@@ -220,7 +219,6 @@
           {
             "id": "num_per_voxel",
             "name": "num_per_voxel",
-            "command-line-flag": "",
             "value-key": "[NUM_PER_VOXEL]",
             "description": "seed a fixed number of streamlines per voxel in a mask image; random placement of seeds in each voxel",
             "type": "Number",
@@ -247,7 +245,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "seed a fixed number of streamlines per voxel in a mask image; place seeds on a 3D mesh grid (grid_size argument is per axis; so a grid_size of 3 results in 27 seeds per voxel)",
             "type": "File",
@@ -256,7 +253,6 @@
           {
             "id": "grid_size",
             "name": "grid_size",
-            "command-line-flag": "",
             "value-key": "[GRID_SIZE]",
             "description": "seed a fixed number of streamlines per voxel in a mask image; place seeds on a 3D mesh grid (grid_size argument is per axis; so a grid_size of 3 results in 27 seeds per voxel)",
             "type": "Number",
@@ -283,7 +279,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "seed from an image using rejection sampling (higher values = more probable to seed from)",
             "type": "File",
@@ -309,7 +304,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "seed from the grey matter - white matter interface (only valid if using ACT framework). Input image should be a 3D seeding volume; seeds drawn within this image will be optimised to the interface using the 5TT image provided using the -act option.",
             "type": "File",
@@ -403,7 +397,6 @@
           {
             "id": "spec",
             "name": "spec",
-            "command-line-flag": "",
             "value-key": "[SPEC]",
             "description": "specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be accepted.",
             "type": "String",
@@ -429,7 +422,6 @@
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions in the order they are specified in order to be accepted.",
             "type": "String",
@@ -455,7 +447,6 @@
           {
             "id": "spec",
             "name": "spec",
-            "command-line-flag": "",
             "value-key": "[SPEC]",
             "description": "specify an exclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that enter ANY exclude region will be discarded.",
             "type": "String",
@@ -481,7 +472,6 @@
           {
             "id": "spec",
             "name": "spec",
-            "command-line-flag": "",
             "value-key": "[SPEC]",
             "description": "specify a masking region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). If defined, streamlines exiting the mask will be truncated.",
             "type": "String",
@@ -563,7 +553,6 @@
           {
             "id": "bvecs",
             "name": "bvecs",
-            "command-line-flag": "",
             "value-key": "[BVECS]",
             "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
             "type": "File",
@@ -572,7 +561,6 @@
           {
             "id": "bvals",
             "name": "bvals",
-            "command-line-flag": "",
             "value-key": "[BVALS]",
             "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
             "type": "File",
@@ -643,7 +631,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -652,7 +639,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

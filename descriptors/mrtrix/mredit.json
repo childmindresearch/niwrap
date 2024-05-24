@@ -40,7 +40,6 @@
           {
             "id": "axis",
             "name": "axis",
-            "command-line-flag": "",
             "value-key": "[AXIS]",
             "description": "fill one or more planes on a particular image axis",
             "type": "Number",
@@ -50,7 +49,6 @@
           {
             "id": "coord",
             "name": "coord",
-            "command-line-flag": "",
             "value-key": "[COORD]",
             "description": "fill one or more planes on a particular image axis",
             "type": "Number",
@@ -61,7 +59,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "fill one or more planes on a particular image axis",
             "type": "Number",
@@ -88,7 +85,6 @@
           {
             "id": "position",
             "name": "position",
-            "command-line-flag": "",
             "value-key": "[POSITION]",
             "description": "draw a sphere with radius in mm",
             "type": "Number",
@@ -99,7 +95,6 @@
           {
             "id": "radius",
             "name": "radius",
-            "command-line-flag": "",
             "value-key": "[RADIUS]",
             "description": "draw a sphere with radius in mm",
             "type": "Number",
@@ -109,7 +104,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "draw a sphere with radius in mm",
             "type": "Number",
@@ -136,7 +130,6 @@
           {
             "id": "position",
             "name": "position",
-            "command-line-flag": "",
             "value-key": "[POSITION]",
             "description": "change the image value within a single voxel",
             "type": "Number",
@@ -147,7 +140,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "change the image value within a single voxel",
             "type": "Number",
@@ -229,7 +221,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -238,7 +229,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

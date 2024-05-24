@@ -50,7 +50,6 @@
           {
             "id": "phi",
             "name": "phi",
-            "command-line-flag": "",
             "value-key": "[PHI]",
             "description": "the direction of a peak to estimate. The algorithm will attempt to find the same number of peaks as have been specified using this option.",
             "type": "Number",
@@ -60,7 +59,6 @@
           {
             "id": "theta",
             "name": "theta",
-            "command-line-flag": "",
             "value-key": "[THETA]",
             "description": "the direction of a peak to estimate. The algorithm will attempt to find the same number of peaks as have been specified using this option.",
             "type": "Number",
@@ -179,7 +177,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -188,7 +185,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

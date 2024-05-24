@@ -57,17 +57,17 @@
           {
             "id": "shape",
             "name": "shape",
-            "command-line-flag": "",
             "value-key": "[SHAPE]",
             "description": "generate a \"dynamic\" (4D) output image; must additionally provide the shape and width (in volumes) of the sliding window.",
             "type": "String",
             "optional": false,
-            "value-choices": ["shape"]
+            "value-choices": [
+              "shape"
+            ]
           },
           {
             "id": "width",
             "name": "width",
-            "command-line-flag": "",
             "value-key": "[WIDTH]",
             "description": "generate a \"dynamic\" (4D) output image; must additionally provide the shape and width (in volumes) of the sliding window.",
             "type": "Number",
@@ -107,7 +107,9 @@
       "description": "define the statistic for choosing the final voxel intensities for a given contrast type given the individual values from the tracks passing through each voxel\nOptions are: sum, min, mean, max (default: mean)",
       "type": "String",
       "optional": true,
-      "value-choices": ["type"]
+      "value-choices": [
+        "type"
+      ]
     },
     {
       "id": "backtrack",
@@ -188,7 +190,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -197,7 +198,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",

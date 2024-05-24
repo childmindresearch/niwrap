@@ -49,17 +49,17 @@
           {
             "id": "mode",
             "name": "mode",
-            "command-line-flag": "",
             "value-key": "[MODE]",
             "description": "transform vertices from one coordinate space to another, based on a template image; options are: first2real, real2first, voxel2real, real2voxel, fs2real",
             "type": "String",
             "optional": false,
-            "value-choices": ["mode"]
+            "value-choices": [
+              "mode"
+            ]
           },
           {
             "id": "image",
             "name": "image",
-            "command-line-flag": "",
             "value-key": "[IMAGE]",
             "description": "transform vertices from one coordinate space to another, based on a template image; options are: first2real, real2first, voxel2real, real2voxel, fs2real",
             "type": "File",
@@ -130,7 +130,6 @@
           {
             "id": "key",
             "name": "key",
-            "command-line-flag": "",
             "value-key": "[KEY]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
@@ -139,7 +138,6 @@
           {
             "id": "value",
             "name": "value",
-            "command-line-flag": "",
             "value-key": "[VALUE]",
             "description": "temporarily set the value of an MRtrix config file entry.",
             "type": "String",
