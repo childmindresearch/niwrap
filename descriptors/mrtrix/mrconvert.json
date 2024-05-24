@@ -31,7 +31,6 @@
     {
       "id": "coord",
       "name": "coord",
-      "command-line-flag": "-coord",
       "value-key": "[OPTIONS_FOR_MANIPULATING_FUNDAMENTAL_IMAGE_PROPERTIES_COORD]",
       "description": "retain data from the input image only at the coordinates specified in the selection along the specified axis. The selection argument expects a number sequence, which can also include the 'end' keyword.",
       "type": {
@@ -121,7 +120,6 @@
     {
       "id": "clear_property",
       "name": "clear_property",
-      "command-line-flag": "-clear_property",
       "value-key": "[OPTIONS_TO_MODIFY_GENERIC_HEADER_ENTRIES_CLEAR_PROPERTY]",
       "description": "remove the specified key from the image header altogether.",
       "type": {
@@ -148,7 +146,6 @@
     {
       "id": "set_property",
       "name": "set_property",
-      "command-line-flag": "-set_property",
       "value-key": "[OPTIONS_TO_MODIFY_GENERIC_HEADER_ENTRIES_SET_PROPERTY]",
       "description": "set the value of the specified key in the image header.",
       "type": {
@@ -184,7 +181,6 @@
     {
       "id": "append_property",
       "name": "append_property",
-      "command-line-flag": "-append_property",
       "value-key": "[OPTIONS_TO_MODIFY_GENERIC_HEADER_ENTRIES_APPEND_PROPERTY]",
       "description": "append the given value to the specified key in the image header (this adds the value specified as a new line in the header value).",
       "type": {
@@ -243,7 +239,9 @@
       "description": "specify output image data type. Valid choices are: float32, float32le, float32be, float64, float64le, float64be, int64, uint64, int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le, int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be, cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be, int8, uint8, bit.",
       "type": "String",
       "optional": true,
-      "value-choices": ["spec"]
+      "value-choices": [
+        "spec"
+      ]
     },
     {
       "id": "grad",
@@ -257,7 +255,6 @@
     {
       "id": "fslgrad",
       "name": "fslgrad",
-      "command-line-flag": "-fslgrad",
       "value-key": "[DW_GRADIENT_TABLE_IMPORT_OPTIONS_FSLGRAD]",
       "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
       "type": {
@@ -310,7 +307,6 @@
     {
       "id": "export_grad_fsl",
       "name": "export_grad_fsl",
-      "command-line-flag": "-export_grad_fsl",
       "value-key": "[DW_GRADIENT_TABLE_EXPORT_OPTIONS_EXPORT_GRAD_FSL]",
       "description": "export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format",
       "type": {
@@ -367,7 +363,6 @@
     {
       "id": "import_pe_eddy",
       "name": "import_pe_eddy",
-      "command-line-flag": "-import_pe_eddy",
       "value-key": "[OPTIONS_FOR_IMPORTING_PHASE_ENCODE_TABLES_IMPORT_PE_EDDY]",
       "description": "import phase-encoding information from an EDDY-style config / index file pair",
       "type": {
@@ -411,7 +406,6 @@
     {
       "id": "export_pe_eddy",
       "name": "export_pe_eddy",
-      "command-line-flag": "-export_pe_eddy",
       "value-key": "[OPTIONS_FOR_EXPORTING_PHASE_ENCODE_TABLES_EXPORT_PE_EDDY]",
       "description": "export phase-encoding information to an EDDY-style config / index file pair",
       "type": {
@@ -505,7 +499,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

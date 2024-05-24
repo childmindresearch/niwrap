@@ -40,7 +40,6 @@
     {
       "id": "transform",
       "name": "transform",
-      "command-line-flag": "-transform",
       "value-key": "[OPTIONS_TRANSFORM]",
       "description": "transform vertices from one coordinate space to another, based on a template image; options are: first2real, real2first, voxel2real, real2voxel, fs2real",
       "type": {
@@ -57,7 +56,9 @@
             "description": "transform vertices from one coordinate space to another, based on a template image; options are: first2real, real2first, voxel2real, real2voxel, fs2real",
             "type": "String",
             "optional": false,
-            "value-choices": ["mode"]
+            "value-choices": [
+              "mode"
+            ]
           },
           {
             "id": "image",
@@ -122,7 +123,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

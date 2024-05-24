@@ -23,7 +23,6 @@
     {
       "id": "mode",
       "name": "mode",
-      "command-line-flag": "-mode",
       "value-key": "[VIEW_OPTIONS_MODE]",
       "description": "Switch to view mode specified by the integer index, as per the view menu.",
       "type": {
@@ -51,7 +50,6 @@
     {
       "id": "load",
       "name": "load",
-      "command-line-flag": "-load",
       "value-key": "[VIEW_OPTIONS_LOAD]",
       "description": "Load image specified and make it current.",
       "type": {
@@ -78,7 +76,6 @@
     {
       "id": "reset",
       "name": "reset",
-      "command-line-flag": "-reset",
       "value-key": "[VIEW_OPTIONS_RESET]",
       "description": "Reset the view according to current image. This resets the FOV, projection and focus.",
       "type": {
@@ -95,7 +92,6 @@
     {
       "id": "fov",
       "name": "fov",
-      "command-line-flag": "-fov",
       "value-key": "[VIEW_OPTIONS_FOV]",
       "description": "Set the field of view, in mm.",
       "type": {
@@ -123,7 +119,6 @@
     {
       "id": "focus",
       "name": "focus",
-      "command-line-flag": "-focus",
       "value-key": "[VIEW_OPTIONS_FOCUS]",
       "description": "Either set the position of the crosshairs in scanner coordinates, with the new position supplied as a comma-separated list of floating-point values or show or hide the focus cross hair using a boolean value as argument.",
       "type": {
@@ -150,7 +145,6 @@
     {
       "id": "target",
       "name": "target",
-      "command-line-flag": "-target",
       "value-key": "[VIEW_OPTIONS_TARGET]",
       "description": "Set the target location for the viewing window (the scanner coordinate that will appear at the centre of the viewing window",
       "type": {
@@ -179,7 +173,6 @@
     {
       "id": "voxel",
       "name": "voxel",
-      "command-line-flag": "-voxel",
       "value-key": "[VIEW_OPTIONS_VOXEL]",
       "description": "Set the position of the crosshairs in voxel coordinates, relative the image currently displayed. The new position should be supplied as a comma-separated list of floating-point values.",
       "type": {
@@ -208,7 +201,6 @@
     {
       "id": "volume",
       "name": "volume",
-      "command-line-flag": "-volume",
       "value-key": "[VIEW_OPTIONS_VOLUME]",
       "description": "Set the volume index for the image displayed, as a comma-separated list of integers.",
       "type": {
@@ -237,7 +229,6 @@
     {
       "id": "plane",
       "name": "plane",
-      "command-line-flag": "-plane",
       "value-key": "[VIEW_OPTIONS_PLANE]",
       "description": "Set the viewing plane, according to the mappping 0: sagittal; 1: coronal; 2: axial.",
       "type": {
@@ -265,7 +256,6 @@
     {
       "id": "lock",
       "name": "lock",
-      "command-line-flag": "-lock",
       "value-key": "[VIEW_OPTIONS_LOCK]",
       "description": "Set whether view is locked to image axes (0: no, 1: yes).",
       "type": {
@@ -292,7 +282,6 @@
     {
       "id": "select_image",
       "name": "select_image",
-      "command-line-flag": "-select_image",
       "value-key": "[VIEW_OPTIONS_SELECT_IMAGE]",
       "description": "Switch to image number specified, with reference to the list of currently loaded images.",
       "type": {
@@ -320,7 +309,6 @@
     {
       "id": "autoscale",
       "name": "autoscale",
-      "command-line-flag": "-autoscale",
       "value-key": "[VIEW_OPTIONS_AUTOSCALE]",
       "description": "Reset the image scaling to automatically determined range.",
       "type": {
@@ -337,7 +325,6 @@
     {
       "id": "interpolation",
       "name": "interpolation",
-      "command-line-flag": "-interpolation",
       "value-key": "[VIEW_OPTIONS_INTERPOLATION]",
       "description": "Enable or disable image interpolation in main image.",
       "type": {
@@ -364,7 +351,6 @@
     {
       "id": "colourmap",
       "name": "colourmap",
-      "command-line-flag": "-colourmap",
       "value-key": "[VIEW_OPTIONS_COLOURMAP]",
       "description": "Switch the image colourmap to that specified, as per the colourmap menu.",
       "type": {
@@ -392,7 +378,6 @@
     {
       "id": "noannotations",
       "name": "noannotations",
-      "command-line-flag": "-noannotations",
       "value-key": "[VIEW_OPTIONS_NOANNOTATIONS]",
       "description": "Hide all image annotation overlays",
       "type": {
@@ -409,7 +394,6 @@
     {
       "id": "comments",
       "name": "comments",
-      "command-line-flag": "-comments",
       "value-key": "[VIEW_OPTIONS_COMMENTS]",
       "description": "Show or hide image comments overlay.",
       "type": {
@@ -436,7 +420,6 @@
     {
       "id": "voxelinfo",
       "name": "voxelinfo",
-      "command-line-flag": "-voxelinfo",
       "value-key": "[VIEW_OPTIONS_VOXELINFO]",
       "description": "Show or hide voxel information overlay.",
       "type": {
@@ -463,7 +446,6 @@
     {
       "id": "orientationlabel",
       "name": "orientationlabel",
-      "command-line-flag": "-orientationlabel",
       "value-key": "[VIEW_OPTIONS_ORIENTATIONLABEL]",
       "description": "Show or hide orientation label overlay.",
       "type": {
@@ -490,7 +472,6 @@
     {
       "id": "colourbar",
       "name": "colourbar",
-      "command-line-flag": "-colourbar",
       "value-key": "[VIEW_OPTIONS_COLOURBAR]",
       "description": "Show or hide colourbar overlay.",
       "type": {
@@ -517,7 +498,6 @@
     {
       "id": "imagevisible",
       "name": "imagevisible",
-      "command-line-flag": "-imagevisible",
       "value-key": "[VIEW_OPTIONS_IMAGEVISIBLE]",
       "description": "Show or hide the main image.",
       "type": {
@@ -544,7 +524,6 @@
     {
       "id": "intensity_range",
       "name": "intensity_range",
-      "command-line-flag": "-intensity_range",
       "value-key": "[VIEW_OPTIONS_INTENSITY_RANGE]",
       "description": "Set the image intensity range to that specified.",
       "type": {
@@ -573,7 +552,6 @@
     {
       "id": "size",
       "name": "size",
-      "command-line-flag": "-size",
       "value-key": "[WINDOW_MANAGEMENT_OPTIONS_SIZE]",
       "description": "Set the size of the view area, in pixel units.",
       "type": {
@@ -602,7 +580,6 @@
     {
       "id": "position",
       "name": "position",
-      "command-line-flag": "-position",
       "value-key": "[WINDOW_MANAGEMENT_OPTIONS_POSITION]",
       "description": "Set the position of the main window, in pixel units.",
       "type": {
@@ -667,7 +644,6 @@
     {
       "id": "overlay_load",
       "name": "overlay_load",
-      "command-line-flag": "-overlay.load",
       "value-key": "[OVERLAY_TOOL_OPTIONS_OVERLAY_LOAD]",
       "description": "Loads the specified image on the overlay tool.",
       "type": {
@@ -694,7 +670,6 @@
     {
       "id": "overlay_opacity",
       "name": "overlay_opacity",
-      "command-line-flag": "-overlay.opacity",
       "value-key": "[OVERLAY_TOOL_OPTIONS_OVERLAY_OPACITY]",
       "description": "Sets the overlay opacity to floating value [0-1].",
       "type": {
@@ -722,7 +697,6 @@
     {
       "id": "overlay_colourmap",
       "name": "overlay_colourmap",
-      "command-line-flag": "-overlay.colourmap",
       "value-key": "[OVERLAY_TOOL_OPTIONS_OVERLAY_COLOURMAP]",
       "description": "Sets the colourmap of the overlay as indexed in the colourmap dropdown menu.",
       "type": {
@@ -750,7 +724,6 @@
     {
       "id": "overlay_colour",
       "name": "overlay_colour",
-      "command-line-flag": "-overlay.colour",
       "value-key": "[OVERLAY_TOOL_OPTIONS_OVERLAY_COLOUR]",
       "description": "Specify a manual colour for the overlay, as three comma-separated values",
       "type": {
@@ -779,7 +752,6 @@
     {
       "id": "overlay_intensity",
       "name": "overlay_intensity",
-      "command-line-flag": "-overlay.intensity",
       "value-key": "[OVERLAY_TOOL_OPTIONS_OVERLAY_INTENSITY]",
       "description": "Set the intensity windowing of the overlay",
       "type": {
@@ -808,7 +780,6 @@
     {
       "id": "overlay_threshold_min",
       "name": "overlay_threshold_min",
-      "command-line-flag": "-overlay.threshold_min",
       "value-key": "[OVERLAY_TOOL_OPTIONS_OVERLAY_THRESHOLD_MIN]",
       "description": "Set the lower threshold value of the overlay",
       "type": {
@@ -836,7 +807,6 @@
     {
       "id": "overlay_threshold_max",
       "name": "overlay_threshold_max",
-      "command-line-flag": "-overlay.threshold_max",
       "value-key": "[OVERLAY_TOOL_OPTIONS_OVERLAY_THRESHOLD_MAX]",
       "description": "Set the upper threshold value of the overlay",
       "type": {
@@ -864,7 +834,6 @@
     {
       "id": "overlay_no_threshold_min",
       "name": "overlay_no_threshold_min",
-      "command-line-flag": "-overlay.no_threshold_min",
       "value-key": "[OVERLAY_TOOL_OPTIONS_OVERLAY_NO_THRESHOLD_MIN]",
       "description": "Disable the lower threshold for the overlay",
       "type": {
@@ -881,7 +850,6 @@
     {
       "id": "overlay_no_threshold_max",
       "name": "overlay_no_threshold_max",
-      "command-line-flag": "-overlay.no_threshold_max",
       "value-key": "[OVERLAY_TOOL_OPTIONS_OVERLAY_NO_THRESHOLD_MAX]",
       "description": "Disable the upper threshold for the overlay",
       "type": {
@@ -898,7 +866,6 @@
     {
       "id": "overlay_interpolation",
       "name": "overlay_interpolation",
-      "command-line-flag": "-overlay.interpolation",
       "value-key": "[OVERLAY_TOOL_OPTIONS_OVERLAY_INTERPOLATION]",
       "description": "Enable or disable overlay image interpolation.",
       "type": {
@@ -925,7 +892,6 @@
     {
       "id": "roi_load",
       "name": "roi_load",
-      "command-line-flag": "-roi.load",
       "value-key": "[ROI_EDITOR_TOOL_OPTIONS_ROI_LOAD]",
       "description": "Loads the specified image on the ROI editor tool.",
       "type": {
@@ -952,7 +918,6 @@
     {
       "id": "roi_opacity",
       "name": "roi_opacity",
-      "command-line-flag": "-roi.opacity",
       "value-key": "[ROI_EDITOR_TOOL_OPTIONS_ROI_OPACITY]",
       "description": "Sets the overlay opacity to floating value [0-1].",
       "type": {
@@ -980,7 +945,6 @@
     {
       "id": "roi_colour",
       "name": "roi_colour",
-      "command-line-flag": "-roi.colour",
       "value-key": "[ROI_EDITOR_TOOL_OPTIONS_ROI_COLOUR]",
       "description": "Sets the colour of the ROI overlay",
       "type": {
@@ -1009,7 +973,6 @@
     {
       "id": "tractography_load",
       "name": "tractography_load",
-      "command-line-flag": "-tractography.load",
       "value-key": "[TRACTOGRAPHY_TOOL_OPTIONS_TRACTOGRAPHY_LOAD]",
       "description": "Load the specified tracks file into the tractography tool.",
       "type": {
@@ -1036,7 +999,6 @@
     {
       "id": "tractography_thickness",
       "name": "tractography_thickness",
-      "command-line-flag": "-tractography.thickness",
       "value-key": "[TRACTOGRAPHY_TOOL_OPTIONS_TRACTOGRAPHY_THICKNESS]",
       "description": "Line thickness of tractography display, [-1.0, 1.0], default is 0.0.",
       "type": {
@@ -1064,7 +1026,6 @@
     {
       "id": "tractography_geometry",
       "name": "tractography_geometry",
-      "command-line-flag": "-tractography.geometry",
       "value-key": "[TRACTOGRAPHY_TOOL_OPTIONS_TRACTOGRAPHY_GEOMETRY]",
       "description": "The geometry type to use when rendering tractograms (options are: pseudotubes, lines, points)",
       "type": {
@@ -1081,7 +1042,9 @@
             "description": "The geometry type to use when rendering tractograms (options are: pseudotubes, lines, points)",
             "type": "String",
             "optional": false,
-            "value-choices": ["value"]
+            "value-choices": [
+              "value"
+            ]
           }
         ],
         "output-files": []
@@ -1092,7 +1055,6 @@
     {
       "id": "tractography_opacity",
       "name": "tractography_opacity",
-      "command-line-flag": "-tractography.opacity",
       "value-key": "[TRACTOGRAPHY_TOOL_OPTIONS_TRACTOGRAPHY_OPACITY]",
       "description": "Opacity of tractography display, [0.0, 1.0], default is 1.0.",
       "type": {
@@ -1120,7 +1082,6 @@
     {
       "id": "tractography_slab",
       "name": "tractography_slab",
-      "command-line-flag": "-tractography.slab",
       "value-key": "[TRACTOGRAPHY_TOOL_OPTIONS_TRACTOGRAPHY_SLAB]",
       "description": "Slab thickness of tractography display, in mm. -1 to turn off crop to slab.",
       "type": {
@@ -1148,7 +1109,6 @@
     {
       "id": "tractography_lighting",
       "name": "tractography_lighting",
-      "command-line-flag": "-tractography.lighting",
       "value-key": "[TRACTOGRAPHY_TOOL_OPTIONS_TRACTOGRAPHY_LIGHTING]",
       "description": "Toggle the use of lighting of tractogram geometry",
       "type": {
@@ -1175,7 +1135,6 @@
     {
       "id": "tractography_colour",
       "name": "tractography_colour",
-      "command-line-flag": "-tractography.colour",
       "value-key": "[TRACTOGRAPHY_TOOL_OPTIONS_TRACTOGRAPHY_COLOUR]",
       "description": "Specify a manual colour for the tractogram, as three comma-separated values",
       "type": {
@@ -1204,7 +1163,6 @@
     {
       "id": "tractography_tsf_load",
       "name": "tractography_tsf_load",
-      "command-line-flag": "-tractography.tsf_load",
       "value-key": "[TRACTOGRAPHY_TOOL_OPTIONS_TRACTOGRAPHY_TSF_LOAD]",
       "description": "Load the specified tractography scalar file.",
       "type": {
@@ -1231,7 +1189,6 @@
     {
       "id": "tractography_tsf_range",
       "name": "tractography_tsf_range",
-      "command-line-flag": "-tractography.tsf_range",
       "value-key": "[TRACTOGRAPHY_TOOL_OPTIONS_TRACTOGRAPHY_TSF_RANGE]",
       "description": "Set range for the tractography scalar file. Requires -tractography.tsf_load already provided.",
       "type": {
@@ -1260,7 +1217,6 @@
     {
       "id": "tractography_tsf_thresh",
       "name": "tractography_tsf_thresh",
-      "command-line-flag": "-tractography.tsf_thresh",
       "value-key": "[TRACTOGRAPHY_TOOL_OPTIONS_TRACTOGRAPHY_TSF_THRESH]",
       "description": "Set thresholds for the tractography scalar file. Requires -tractography.tsf_load already provided.",
       "type": {
@@ -1289,7 +1245,6 @@
     {
       "id": "tractography_tsf_colourmap",
       "name": "tractography_tsf_colourmap",
-      "command-line-flag": "-tractography.tsf_colourmap",
       "value-key": "[TRACTOGRAPHY_TOOL_OPTIONS_TRACTOGRAPHY_TSF_COLOURMAP]",
       "description": "Sets the colourmap of the .tsf file as indexed in the tsf colourmap dropdown menu. Requires -tractography.tsf_load already.",
       "type": {
@@ -1317,7 +1272,6 @@
     {
       "id": "odf_load_sh",
       "name": "odf_load_sh",
-      "command-line-flag": "-odf.load_sh",
       "value-key": "[ODF_TOOL_OPTIONS_ODF_LOAD_SH]",
       "description": "Loads the specified SH-based ODF image on the ODF tool.",
       "type": {
@@ -1344,7 +1298,6 @@
     {
       "id": "odf_load_tensor",
       "name": "odf_load_tensor",
-      "command-line-flag": "-odf.load_tensor",
       "value-key": "[ODF_TOOL_OPTIONS_ODF_LOAD_TENSOR]",
       "description": "Loads the specified tensor image on the ODF tool.",
       "type": {
@@ -1371,7 +1324,6 @@
     {
       "id": "odf_load_dixel",
       "name": "odf_load_dixel",
-      "command-line-flag": "-odf.load_dixel",
       "value-key": "[ODF_TOOL_OPTIONS_ODF_LOAD_DIXEL]",
       "description": "Loads the specified dixel-based image on the ODF tool.",
       "type": {
@@ -1398,7 +1350,6 @@
     {
       "id": "fixel_load",
       "name": "fixel_load",
-      "command-line-flag": "-fixel.load",
       "value-key": "[FIXEL_PLOT_TOOL_OPTIONS_FIXEL_LOAD]",
       "description": "Load a fixel file (any file inside a fixel directory, or an old .msf / .msh legacy format file) into the fixel tool.",
       "type": {
@@ -1434,7 +1385,6 @@
     {
       "id": "connectome_load",
       "name": "connectome_load",
-      "command-line-flag": "-connectome.load",
       "value-key": "[CONNECTOME_TOOL_OPTIONS_CONNECTOME_LOAD]",
       "description": "Load a matrix file into the connectome tool.",
       "type": {
@@ -1461,7 +1411,6 @@
     {
       "id": "capture_folder",
       "name": "capture_folder",
-      "command-line-flag": "-capture.folder",
       "value-key": "[SCREEN_CAPTURE_TOOL_OPTIONS_CAPTURE_FOLDER]",
       "description": "Set the output folder for the screen capture tool.",
       "type": {
@@ -1488,7 +1437,6 @@
     {
       "id": "capture_prefix",
       "name": "capture_prefix",
-      "command-line-flag": "-capture.prefix",
       "value-key": "[SCREEN_CAPTURE_TOOL_OPTIONS_CAPTURE_PREFIX]",
       "description": "Set the output file prefix for the screen capture tool.",
       "type": {
@@ -1515,7 +1463,6 @@
     {
       "id": "capture_grab",
       "name": "capture_grab",
-      "command-line-flag": "-capture.grab",
       "value-key": "[SCREEN_CAPTURE_TOOL_OPTIONS_CAPTURE_GRAB]",
       "description": "Start the screen capture process.",
       "type": {
@@ -1578,7 +1525,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

@@ -27,7 +27,9 @@
       "description": "the algorithm to use in network-based clustering/enhancement. Options are: nbs, tfnbs, none",
       "type": "String",
       "optional": false,
-      "value-choices": ["algorithm"]
+      "value-choices": [
+        "algorithm"
+      ]
     },
     {
       "id": "design",
@@ -73,7 +75,9 @@
       "description": "specify nature of errors for shuffling; options are: ee,ise,both (default: ee)",
       "type": "String",
       "optional": true,
-      "value-choices": ["spec"]
+      "value-choices": [
+        "spec"
+      ]
     },
     {
       "id": "exchange_within",
@@ -219,7 +223,6 @@
     {
       "id": "column",
       "name": "column",
-      "command-line-flag": "-column",
       "value-key": "[OPTIONS_RELATED_TO_THE_GENERAL_LINEAR_MODEL__GLM__COLUMN]",
       "description": "add a column to the design matrix corresponding to subject edge-wise values (note that the contrast matrix must include an additional column for each use of this option); the text file provided via this option should contain a file name for each subject",
       "type": {
@@ -302,7 +305,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

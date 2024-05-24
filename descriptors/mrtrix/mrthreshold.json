@@ -103,7 +103,9 @@
       "description": "comparison operator to use when applying the threshold; options are: lt,le,ge,gt (default = \"le\" for -bottom; \"ge\" otherwise)",
       "type": "String",
       "optional": true,
-      "value-choices": ["choice"]
+      "value-choices": [
+        "choice"
+      ]
     },
     {
       "id": "invert",
@@ -181,7 +183,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

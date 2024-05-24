@@ -45,7 +45,9 @@
       "description": "compute some statistic from the values along each streamline (options are: mean,median,min,max)",
       "type": "String",
       "optional": true,
-      "value-choices": ["statistic"]
+      "value-choices": [
+        "statistic"
+      ]
     },
     {
       "id": "nointerp",
@@ -123,7 +125,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

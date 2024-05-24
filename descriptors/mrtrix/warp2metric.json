@@ -22,7 +22,6 @@
     {
       "id": "fc",
       "name": "fc",
-      "command-line-flag": "-fc",
       "value-key": "[OPTIONS_FC]",
       "description": "use an input template fixel image to define fibre orientations and output a fixel image describing the change in fibre cross-section (FC) in the perpendicular plane to the fixel orientation. e.g. warp2metric warp.mif -fc fixel_template_directory output_fixel_directory fc.mif",
       "type": {
@@ -130,7 +129,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

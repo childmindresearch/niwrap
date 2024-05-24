@@ -23,7 +23,6 @@
     {
       "id": "abs",
       "name": "abs",
-      "command-line-flag": "-abs",
       "value-key": "[BASIC_OPERATIONS_ABS]",
       "description": "|%1| : return absolute value (magnitude) of real or complex number",
       "type": {
@@ -40,7 +39,6 @@
     {
       "id": "neg",
       "name": "neg",
-      "command-line-flag": "-neg",
       "value-key": "[BASIC_OPERATIONS_NEG]",
       "description": "-%1 : negative value",
       "type": {
@@ -57,7 +55,6 @@
     {
       "id": "add",
       "name": "add",
-      "command-line-flag": "-add",
       "value-key": "[BASIC_OPERATIONS_ADD]",
       "description": "(%1 + %2) : add values",
       "type": {
@@ -74,7 +71,6 @@
     {
       "id": "subtract",
       "name": "subtract",
-      "command-line-flag": "-subtract",
       "value-key": "[BASIC_OPERATIONS_SUBTRACT]",
       "description": "(%1 - %2) : subtract nth operand from (n-1)th",
       "type": {
@@ -91,7 +87,6 @@
     {
       "id": "multiply",
       "name": "multiply",
-      "command-line-flag": "-multiply",
       "value-key": "[BASIC_OPERATIONS_MULTIPLY]",
       "description": "(%1 * %2) : multiply values",
       "type": {
@@ -108,7 +103,6 @@
     {
       "id": "divide",
       "name": "divide",
-      "command-line-flag": "-divide",
       "value-key": "[BASIC_OPERATIONS_DIVIDE]",
       "description": "(%1 / %2) : divide (n-1)th operand by nth",
       "type": {
@@ -125,7 +119,6 @@
     {
       "id": "min",
       "name": "min",
-      "command-line-flag": "-min",
       "value-key": "[BASIC_OPERATIONS_MIN]",
       "description": "min (%1, %2) : smallest of last two operands",
       "type": {
@@ -142,7 +135,6 @@
     {
       "id": "max",
       "name": "max",
-      "command-line-flag": "-max",
       "value-key": "[BASIC_OPERATIONS_MAX]",
       "description": "max (%1, %2) : greatest of last two operands",
       "type": {
@@ -159,7 +151,6 @@
     {
       "id": "lt",
       "name": "lt",
-      "command-line-flag": "-lt",
       "value-key": "[COMPARISON_OPERATORS_LT]",
       "description": "(%1 < %2) : less-than operator (true=1, false=0)",
       "type": {
@@ -176,7 +167,6 @@
     {
       "id": "gt",
       "name": "gt",
-      "command-line-flag": "-gt",
       "value-key": "[COMPARISON_OPERATORS_GT]",
       "description": "(%1 > %2) : greater-than operator (true=1, false=0)",
       "type": {
@@ -193,7 +183,6 @@
     {
       "id": "le",
       "name": "le",
-      "command-line-flag": "-le",
       "value-key": "[COMPARISON_OPERATORS_LE]",
       "description": "(%1 <= %2) : less-than-or-equal-to operator (true=1, false=0)",
       "type": {
@@ -210,7 +199,6 @@
     {
       "id": "ge",
       "name": "ge",
-      "command-line-flag": "-ge",
       "value-key": "[COMPARISON_OPERATORS_GE]",
       "description": "(%1 >= %2) : greater-than-or-equal-to operator (true=1, false=0)",
       "type": {
@@ -227,7 +215,6 @@
     {
       "id": "eq",
       "name": "eq",
-      "command-line-flag": "-eq",
       "value-key": "[COMPARISON_OPERATORS_EQ]",
       "description": "(%1 == %2) : equal-to operator (true=1, false=0)",
       "type": {
@@ -244,7 +231,6 @@
     {
       "id": "neq",
       "name": "neq",
-      "command-line-flag": "-neq",
       "value-key": "[COMPARISON_OPERATORS_NEQ]",
       "description": "(%1 != %2) : not-equal-to operator (true=1, false=0)",
       "type": {
@@ -261,7 +247,6 @@
     {
       "id": "if",
       "name": "if",
-      "command-line-flag": "-if",
       "value-key": "[CONDITIONAL_OPERATORS_IF]",
       "description": "(%1 ? %2 : %3) : if first operand is true (non-zero), return second operand, otherwise return third operand",
       "type": {
@@ -278,7 +263,6 @@
     {
       "id": "replace",
       "name": "replace",
-      "command-line-flag": "-replace",
       "value-key": "[CONDITIONAL_OPERATORS_REPLACE]",
       "description": "(%1, %2 -> %3) : Wherever first operand is equal to the second operand, replace with third operand",
       "type": {
@@ -295,7 +279,6 @@
     {
       "id": "sqrt",
       "name": "sqrt",
-      "command-line-flag": "-sqrt",
       "value-key": "[POWER_FUNCTIONS_SQRT]",
       "description": "sqrt (%1) : square root",
       "type": {
@@ -312,7 +295,6 @@
     {
       "id": "pow",
       "name": "pow",
-      "command-line-flag": "-pow",
       "value-key": "[POWER_FUNCTIONS_POW]",
       "description": "%1^%2 : raise (n-1)th operand to nth power",
       "type": {
@@ -329,7 +311,6 @@
     {
       "id": "round",
       "name": "round",
-      "command-line-flag": "-round",
       "value-key": "[NEAREST_INTEGER_OPERATIONS_ROUND]",
       "description": "round (%1) : round to nearest integer",
       "type": {
@@ -346,7 +327,6 @@
     {
       "id": "ceil",
       "name": "ceil",
-      "command-line-flag": "-ceil",
       "value-key": "[NEAREST_INTEGER_OPERATIONS_CEIL]",
       "description": "ceil (%1) : round up to nearest integer",
       "type": {
@@ -363,7 +343,6 @@
     {
       "id": "floor",
       "name": "floor",
-      "command-line-flag": "-floor",
       "value-key": "[NEAREST_INTEGER_OPERATIONS_FLOOR]",
       "description": "floor (%1) : round down to nearest integer",
       "type": {
@@ -380,7 +359,6 @@
     {
       "id": "not",
       "name": "not",
-      "command-line-flag": "-not",
       "value-key": "[LOGICAL_OPERATORS_NOT]",
       "description": "!%1 : NOT operator: true (1) if operand is false (i.e. zero)",
       "type": {
@@ -397,7 +375,6 @@
     {
       "id": "and",
       "name": "and",
-      "command-line-flag": "-and",
       "value-key": "[LOGICAL_OPERATORS_AND]",
       "description": "(%1 && %2) : AND operator: true (1) if both operands are true (i.e. non-zero)",
       "type": {
@@ -414,7 +391,6 @@
     {
       "id": "or",
       "name": "or",
-      "command-line-flag": "-or",
       "value-key": "[LOGICAL_OPERATORS_OR]",
       "description": "(%1 || %2) : OR operator: true (1) if either operand is true (i.e. non-zero)",
       "type": {
@@ -431,7 +407,6 @@
     {
       "id": "xor",
       "name": "xor",
-      "command-line-flag": "-xor",
       "value-key": "[LOGICAL_OPERATORS_XOR]",
       "description": "(%1 ^^ %2) : XOR operator: true (1) if only one of the operands is true (i.e. non-zero)",
       "type": {
@@ -448,7 +423,6 @@
     {
       "id": "isnan",
       "name": "isnan",
-      "command-line-flag": "-isnan",
       "value-key": "[CLASSIFICATION_FUNCTIONS_ISNAN]",
       "description": "isnan (%1) : true (1) if operand is not-a-number (NaN)",
       "type": {
@@ -465,7 +439,6 @@
     {
       "id": "isinf",
       "name": "isinf",
-      "command-line-flag": "-isinf",
       "value-key": "[CLASSIFICATION_FUNCTIONS_ISINF]",
       "description": "isinf (%1) : true (1) if operand is infinite (Inf)",
       "type": {
@@ -482,7 +455,6 @@
     {
       "id": "finite",
       "name": "finite",
-      "command-line-flag": "-finite",
       "value-key": "[CLASSIFICATION_FUNCTIONS_FINITE]",
       "description": "finite (%1) : true (1) if operand is finite (i.e. not NaN or Inf)",
       "type": {
@@ -499,7 +471,6 @@
     {
       "id": "complex",
       "name": "complex",
-      "command-line-flag": "-complex",
       "value-key": "[COMPLEX_NUMBERS_COMPLEX]",
       "description": "(%1 + %2 i) : create complex number using the last two operands as real,imaginary components",
       "type": {
@@ -516,7 +487,6 @@
     {
       "id": "polar",
       "name": "polar",
-      "command-line-flag": "-polar",
       "value-key": "[COMPLEX_NUMBERS_POLAR]",
       "description": "(%1 /_ %2) : create complex number using the last two operands as magnitude,phase components (phase in radians)",
       "type": {
@@ -533,7 +503,6 @@
     {
       "id": "real",
       "name": "real",
-      "command-line-flag": "-real",
       "value-key": "[COMPLEX_NUMBERS_REAL]",
       "description": "real (%1) : real part of complex number",
       "type": {
@@ -550,7 +519,6 @@
     {
       "id": "imag",
       "name": "imag",
-      "command-line-flag": "-imag",
       "value-key": "[COMPLEX_NUMBERS_IMAG]",
       "description": "imag (%1) : imaginary part of complex number",
       "type": {
@@ -567,7 +535,6 @@
     {
       "id": "phase",
       "name": "phase",
-      "command-line-flag": "-phase",
       "value-key": "[COMPLEX_NUMBERS_PHASE]",
       "description": "phase (%1) : phase of complex number (use -abs for magnitude)",
       "type": {
@@ -584,7 +551,6 @@
     {
       "id": "conj",
       "name": "conj",
-      "command-line-flag": "-conj",
       "value-key": "[COMPLEX_NUMBERS_CONJ]",
       "description": "conj (%1) : complex conjugate",
       "type": {
@@ -601,7 +567,6 @@
     {
       "id": "proj",
       "name": "proj",
-      "command-line-flag": "-proj",
       "value-key": "[COMPLEX_NUMBERS_PROJ]",
       "description": "proj (%1) : projection onto the Riemann sphere",
       "type": {
@@ -618,7 +583,6 @@
     {
       "id": "exp",
       "name": "exp",
-      "command-line-flag": "-exp",
       "value-key": "[EXPONENTIAL_FUNCTIONS_EXP]",
       "description": "exp (%1) : exponential function",
       "type": {
@@ -635,7 +599,6 @@
     {
       "id": "log",
       "name": "log",
-      "command-line-flag": "-log",
       "value-key": "[EXPONENTIAL_FUNCTIONS_LOG]",
       "description": "log (%1) : natural logarithm",
       "type": {
@@ -652,7 +615,6 @@
     {
       "id": "log10",
       "name": "log10",
-      "command-line-flag": "-log10",
       "value-key": "[EXPONENTIAL_FUNCTIONS_LOG10]",
       "description": "log10 (%1) : common logarithm",
       "type": {
@@ -669,7 +631,6 @@
     {
       "id": "cos",
       "name": "cos",
-      "command-line-flag": "-cos",
       "value-key": "[TRIGONOMETRIC_FUNCTIONS_COS]",
       "description": "cos (%1) : cosine",
       "type": {
@@ -686,7 +647,6 @@
     {
       "id": "sin",
       "name": "sin",
-      "command-line-flag": "-sin",
       "value-key": "[TRIGONOMETRIC_FUNCTIONS_SIN]",
       "description": "sin (%1) : sine",
       "type": {
@@ -703,7 +663,6 @@
     {
       "id": "tan",
       "name": "tan",
-      "command-line-flag": "-tan",
       "value-key": "[TRIGONOMETRIC_FUNCTIONS_TAN]",
       "description": "tan (%1) : tangent",
       "type": {
@@ -720,7 +679,6 @@
     {
       "id": "acos",
       "name": "acos",
-      "command-line-flag": "-acos",
       "value-key": "[TRIGONOMETRIC_FUNCTIONS_ACOS]",
       "description": "acos (%1) : inverse cosine",
       "type": {
@@ -737,7 +695,6 @@
     {
       "id": "asin",
       "name": "asin",
-      "command-line-flag": "-asin",
       "value-key": "[TRIGONOMETRIC_FUNCTIONS_ASIN]",
       "description": "asin (%1) : inverse sine",
       "type": {
@@ -754,7 +711,6 @@
     {
       "id": "atan",
       "name": "atan",
-      "command-line-flag": "-atan",
       "value-key": "[TRIGONOMETRIC_FUNCTIONS_ATAN]",
       "description": "atan (%1) : inverse tangent",
       "type": {
@@ -771,7 +727,6 @@
     {
       "id": "cosh",
       "name": "cosh",
-      "command-line-flag": "-cosh",
       "value-key": "[HYPERBOLIC_FUNCTIONS_COSH]",
       "description": "cosh (%1) : hyperbolic cosine",
       "type": {
@@ -788,7 +743,6 @@
     {
       "id": "sinh",
       "name": "sinh",
-      "command-line-flag": "-sinh",
       "value-key": "[HYPERBOLIC_FUNCTIONS_SINH]",
       "description": "sinh (%1) : hyperbolic sine",
       "type": {
@@ -805,7 +759,6 @@
     {
       "id": "tanh",
       "name": "tanh",
-      "command-line-flag": "-tanh",
       "value-key": "[HYPERBOLIC_FUNCTIONS_TANH]",
       "description": "tanh (%1) : hyperbolic tangent",
       "type": {
@@ -822,7 +775,6 @@
     {
       "id": "acosh",
       "name": "acosh",
-      "command-line-flag": "-acosh",
       "value-key": "[HYPERBOLIC_FUNCTIONS_ACOSH]",
       "description": "acosh (%1) : inverse hyperbolic cosine",
       "type": {
@@ -839,7 +791,6 @@
     {
       "id": "asinh",
       "name": "asinh",
-      "command-line-flag": "-asinh",
       "value-key": "[HYPERBOLIC_FUNCTIONS_ASINH]",
       "description": "asinh (%1) : inverse hyperbolic sine",
       "type": {
@@ -856,7 +807,6 @@
     {
       "id": "atanh",
       "name": "atanh",
-      "command-line-flag": "-atanh",
       "value-key": "[HYPERBOLIC_FUNCTIONS_ATANH]",
       "description": "atanh (%1) : inverse hyperbolic tangent",
       "type": {
@@ -878,7 +828,9 @@
       "description": "specify output image data type. Valid choices are: float32, float32le, float32be, float64, float64le, float64be, int64, uint64, int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le, int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be, cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be, int8, uint8, bit.",
       "type": "String",
       "optional": true,
-      "value-choices": ["spec"]
+      "value-choices": [
+        "spec"
+      ]
     },
     {
       "id": "info",
@@ -929,7 +881,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

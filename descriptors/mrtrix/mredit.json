@@ -31,7 +31,6 @@
     {
       "id": "plane",
       "name": "plane",
-      "command-line-flag": "-plane",
       "value-key": "[OPTIONS_PLANE]",
       "description": "fill one or more planes on a particular image axis",
       "type": {
@@ -80,7 +79,6 @@
     {
       "id": "sphere",
       "name": "sphere",
-      "command-line-flag": "-sphere",
       "value-key": "[OPTIONS_SPHERE]",
       "description": "draw a sphere with radius in mm",
       "type": {
@@ -129,7 +127,6 @@
     {
       "id": "voxel",
       "name": "voxel",
-      "command-line-flag": "-voxel",
       "value-key": "[OPTIONS_VOXEL]",
       "description": "change the image value within a single voxel",
       "type": {
@@ -223,7 +220,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

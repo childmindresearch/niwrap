@@ -27,7 +27,9 @@
       "description": "the conversion type required. Valid choices are: deformation2displacement, displacement2deformation, warpfull2deformation, warpfull2displacement",
       "type": "String",
       "optional": false,
-      "value-choices": ["type"]
+      "value-choices": [
+        "type"
+      ]
     },
     {
       "id": "out",
@@ -115,7 +117,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

@@ -40,7 +40,6 @@
     {
       "id": "tag",
       "name": "tag",
-      "command-line-flag": "-tag",
       "value-key": "[OPTIONS_TAG]",
       "description": "replace specific tag.",
       "type": {
@@ -131,7 +130,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

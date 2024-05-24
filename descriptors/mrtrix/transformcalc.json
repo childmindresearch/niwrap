@@ -28,7 +28,9 @@
       "description": "the operation to perform, one of: invert, half, rigid, header, average, interpolate, decompose, align_vertices_rigid, align_vertices_rigid_scale (see description section for details).",
       "type": "String",
       "optional": false,
-      "value-choices": ["operation"]
+      "value-choices": [
+        "operation"
+      ]
     },
     {
       "id": "output",
@@ -88,7 +90,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

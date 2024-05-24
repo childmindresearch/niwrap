@@ -27,7 +27,9 @@
       "description": "the colourmap to apply; choices are: gray,hot,cool,jet,inferno,viridis,pet,colour,rgb",
       "type": "String",
       "optional": false,
-      "value-choices": ["map"]
+      "value-choices": [
+        "map"
+      ]
     },
     {
       "id": "output",
@@ -118,7 +120,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

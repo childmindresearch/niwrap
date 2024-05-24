@@ -22,7 +22,6 @@
     {
       "id": "output",
       "name": "output",
-      "command-line-flag": "-output",
       "value-key": "[OPTIONS_OUTPUT]",
       "description": "output only the field specified. Multiple such options can be supplied if required. Choices are: mean, median, std, min, max, count. Useful for use in scripts.",
       "type": {
@@ -39,7 +38,9 @@
             "description": "output only the field specified. Multiple such options can be supplied if required. Choices are: mean, median, std, min, max, count. Useful for use in scripts.",
             "type": "String",
             "optional": false,
-            "value-choices": ["field"]
+            "value-choices": [
+              "field"
+            ]
           }
         ],
         "output-files": []
@@ -132,7 +133,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

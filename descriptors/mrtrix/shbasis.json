@@ -28,7 +28,9 @@
       "description": "convert the image data in-place to the desired basis; options are: old,new,force_oldtonew,force_newtoold.",
       "type": "String",
       "optional": true,
-      "value-choices": ["mode"]
+      "value-choices": [
+        "mode"
+      ]
     },
     {
       "id": "info",
@@ -79,7 +81,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

@@ -32,7 +32,6 @@
     {
       "id": "include",
       "name": "include",
-      "command-line-flag": "-include",
       "value-key": "[REGION_OF_INTEREST_PROCESSING_OPTIONS_INCLUDE]",
       "description": "specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be accepted.",
       "type": {
@@ -59,7 +58,6 @@
     {
       "id": "include_ordered",
       "name": "include_ordered",
-      "command-line-flag": "-include_ordered",
       "value-key": "[REGION_OF_INTEREST_PROCESSING_OPTIONS_INCLUDE_ORDERED]",
       "description": "specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions in the order they are specified in order to be accepted.",
       "type": {
@@ -86,7 +84,6 @@
     {
       "id": "exclude",
       "name": "exclude",
-      "command-line-flag": "-exclude",
       "value-key": "[REGION_OF_INTEREST_PROCESSING_OPTIONS_EXCLUDE]",
       "description": "specify an exclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that enter ANY exclude region will be discarded.",
       "type": {
@@ -113,7 +110,6 @@
     {
       "id": "mask",
       "name": "mask",
-      "command-line-flag": "-mask",
       "value-key": "[REGION_OF_INTEREST_PROCESSING_OPTIONS_MASK]",
       "description": "specify a masking region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). If defined, streamlines exiting the mask will be truncated.",
       "type": {
@@ -282,7 +278,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

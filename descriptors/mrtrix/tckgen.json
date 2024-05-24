@@ -36,7 +36,9 @@
       "description": "specify the tractography algorithm to use. Valid choices are: FACT, iFOD1, iFOD2, Nulldist1, Nulldist2, SD_Stream, Seedtest, Tensor_Det, Tensor_Prob (default: iFOD2).",
       "type": "String",
       "optional": true,
-      "value-choices": ["name"]
+      "value-choices": [
+        "name"
+      ]
     },
     {
       "id": "select",
@@ -148,7 +150,6 @@
     {
       "id": "seed_image",
       "name": "seed_image",
-      "command-line-flag": "-seed_image",
       "value-key": "[TRACTOGRAPHY_SEEDING_MECHANISMS__AT_LEAST_ONE_MUST_BE_PROVIDED_SEED_IMAGE]",
       "description": "seed streamlines entirely at random within a mask image ",
       "type": {
@@ -175,7 +176,6 @@
     {
       "id": "seed_sphere",
       "name": "seed_sphere",
-      "command-line-flag": "-seed_sphere",
       "value-key": "[TRACTOGRAPHY_SEEDING_MECHANISMS__AT_LEAST_ONE_MUST_BE_PROVIDED_SEED_SPHERE]",
       "description": "spherical seed as four comma-separated values (XYZ position and radius)",
       "type": {
@@ -204,7 +204,6 @@
     {
       "id": "seed_random_per_voxel",
       "name": "seed_random_per_voxel",
-      "command-line-flag": "-seed_random_per_voxel",
       "value-key": "[TRACTOGRAPHY_SEEDING_MECHANISMS__AT_LEAST_ONE_MUST_BE_PROVIDED_SEED_RANDOM_PER_VOXEL]",
       "description": "seed a fixed number of streamlines per voxel in a mask image; random placement of seeds in each voxel",
       "type": {
@@ -241,7 +240,6 @@
     {
       "id": "seed_grid_per_voxel",
       "name": "seed_grid_per_voxel",
-      "command-line-flag": "-seed_grid_per_voxel",
       "value-key": "[TRACTOGRAPHY_SEEDING_MECHANISMS__AT_LEAST_ONE_MUST_BE_PROVIDED_SEED_GRID_PER_VOXEL]",
       "description": "seed a fixed number of streamlines per voxel in a mask image; place seeds on a 3D mesh grid (grid_size argument is per axis; so a grid_size of 3 results in 27 seeds per voxel)",
       "type": {
@@ -278,7 +276,6 @@
     {
       "id": "seed_rejection",
       "name": "seed_rejection",
-      "command-line-flag": "-seed_rejection",
       "value-key": "[TRACTOGRAPHY_SEEDING_MECHANISMS__AT_LEAST_ONE_MUST_BE_PROVIDED_SEED_REJECTION]",
       "description": "seed from an image using rejection sampling (higher values = more probable to seed from)",
       "type": {
@@ -305,7 +302,6 @@
     {
       "id": "seed_gmwmi",
       "name": "seed_gmwmi",
-      "command-line-flag": "-seed_gmwmi",
       "value-key": "[TRACTOGRAPHY_SEEDING_MECHANISMS__AT_LEAST_ONE_MUST_BE_PROVIDED_SEED_GMWMI]",
       "description": "seed from the grey matter - white matter interface (only valid if using ACT framework). Input image should be a 3D seeding volume; seeds drawn within this image will be optimised to the interface using the 5TT image provided using the -act option.",
       "type": {
@@ -400,7 +396,6 @@
     {
       "id": "include",
       "name": "include",
-      "command-line-flag": "-include",
       "value-key": "[REGION_OF_INTEREST_PROCESSING_OPTIONS_INCLUDE]",
       "description": "specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be accepted.",
       "type": {
@@ -427,7 +422,6 @@
     {
       "id": "include_ordered",
       "name": "include_ordered",
-      "command-line-flag": "-include_ordered",
       "value-key": "[REGION_OF_INTEREST_PROCESSING_OPTIONS_INCLUDE_ORDERED]",
       "description": "specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions in the order they are specified in order to be accepted.",
       "type": {
@@ -454,7 +448,6 @@
     {
       "id": "exclude",
       "name": "exclude",
-      "command-line-flag": "-exclude",
       "value-key": "[REGION_OF_INTEREST_PROCESSING_OPTIONS_EXCLUDE]",
       "description": "specify an exclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that enter ANY exclude region will be discarded.",
       "type": {
@@ -481,7 +474,6 @@
     {
       "id": "mask",
       "name": "mask",
-      "command-line-flag": "-mask",
       "value-key": "[REGION_OF_INTEREST_PROCESSING_OPTIONS_MASK]",
       "description": "specify a masking region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). If defined, streamlines exiting the mask will be truncated.",
       "type": {
@@ -564,7 +556,6 @@
     {
       "id": "fslgrad",
       "name": "fslgrad",
-      "command-line-flag": "-fslgrad",
       "value-key": "[DW_GRADIENT_TABLE_IMPORT_OPTIONS_FSLGRAD]",
       "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
       "type": {
@@ -645,7 +636,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

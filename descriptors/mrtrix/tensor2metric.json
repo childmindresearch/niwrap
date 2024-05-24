@@ -119,7 +119,9 @@
       "description": "specify how to modulate the magnitude of the eigenvectors. Valid choices are: none, FA, eigval (default = FA).",
       "type": "String",
       "optional": true,
-      "value-choices": ["choice"]
+      "value-choices": [
+        "choice"
+      ]
     },
     {
       "id": "mask",
@@ -179,7 +181,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

@@ -80,7 +80,6 @@
     {
       "id": "line",
       "name": "line",
-      "command-line-flag": "-line",
       "value-key": "[STREAMLINE_RESAMPLING_OPTIONS_LINE]",
       "description": "resample tracks at 'num' equidistant locations along a line between 'start' and 'end' (specified as comma-separated 3-vectors in scanner coordinates)",
       "type": {
@@ -129,7 +128,6 @@
     {
       "id": "arc",
       "name": "arc",
-      "command-line-flag": "-arc",
       "value-key": "[STREAMLINE_RESAMPLING_OPTIONS_ARC]",
       "description": "resample tracks at 'num' equidistant locations along a circular arc specified by points 'start', 'mid' and 'end' (specified as comma-separated 3-vectors in scanner coordinates)",
       "type": {
@@ -235,7 +233,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

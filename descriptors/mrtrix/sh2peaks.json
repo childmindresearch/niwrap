@@ -41,7 +41,6 @@
     {
       "id": "direction",
       "name": "direction",
-      "command-line-flag": "-direction",
       "value-key": "[OPTIONS_DIRECTION]",
       "description": "the direction of a peak to estimate. The algorithm will attempt to find the same number of peaks as have been specified using this option.",
       "type": {
@@ -171,7 +170,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

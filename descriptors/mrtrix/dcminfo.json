@@ -49,7 +49,6 @@
     {
       "id": "tag",
       "name": "tag",
-      "command-line-flag": "-tag",
       "value-key": "[OPTIONS_TAG]",
       "description": "print field specified by the group & element tags supplied. Tags should be supplied as Hexadecimal (i.e. as they appear in the -all listing).",
       "type": {
@@ -131,7 +130,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

@@ -18,7 +18,9 @@
       "description": "type of histogram matching to perform; options are: scale,linear,nonlinear",
       "type": "String",
       "optional": false,
-      "value-choices": ["type"]
+      "value-choices": [
+        "type"
+      ]
     },
     {
       "id": "input",
@@ -124,7 +126,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {

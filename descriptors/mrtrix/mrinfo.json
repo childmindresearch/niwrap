@@ -122,7 +122,6 @@
     {
       "id": "property",
       "name": "property",
-      "command-line-flag": "-property",
       "value-key": "[OPTIONS_FOR_EXPORTING_IMAGE_HEADER_FIELDS_PROPERTY]",
       "description": "any text properties embedded in the image header under the specified key (use 'all' to list all keys found)",
       "type": {
@@ -176,7 +175,6 @@
     {
       "id": "fslgrad",
       "name": "fslgrad",
-      "command-line-flag": "-fslgrad",
       "value-key": "[DW_GRADIENT_TABLE_IMPORT_OPTIONS_FSLGRAD]",
       "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
       "type": {
@@ -229,7 +227,6 @@
     {
       "id": "export_grad_fsl",
       "name": "export_grad_fsl",
-      "command-line-flag": "-export_grad_fsl",
       "value-key": "[DW_GRADIENT_TABLE_EXPORT_OPTIONS_EXPORT_GRAD_FSL]",
       "description": "export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format",
       "type": {
@@ -322,7 +319,6 @@
     {
       "id": "export_pe_eddy",
       "name": "export_pe_eddy",
-      "command-line-flag": "-export_pe_eddy",
       "value-key": "[OPTIONS_FOR_EXPORTING_PHASE_ENCODE_TABLES_EXPORT_PE_EDDY]",
       "description": "export phase-encoding information to an EDDY-style config / index file pair",
       "type": {
@@ -434,7 +430,6 @@
     {
       "id": "config",
       "name": "config",
-      "command-line-flag": "-config",
       "value-key": "[__STANDARD_OPTIONS_CONFIG]",
       "description": "temporarily set the value of an MRtrix config file entry.",
       "type": {
