@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRAVERAGEHEADER_METADATA = Metadata(
-    id="195760823643ab4420155eeb554262eaa4d62f4c",
+    id="271842d1357b600f4da756c5ab786d4ff41f4fb9",
     name="mraverageheader",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -146,8 +146,8 @@ def mraverageheader(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *[execution.input_file(f) for f in input_]])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.extend([execution.input_file(f) for f in input_])
+    cargs.append(execution.input_file(output))
     ret = MraverageheaderOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

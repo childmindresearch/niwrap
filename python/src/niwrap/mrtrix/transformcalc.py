@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TRANSFORMCALC_METADATA = Metadata(
-    id="9e99fd568e51dd1a6a0c59040654e58e985e1de8",
+    id="41a85090161e7d8354d8069765d144e733505f39",
     name="transformcalc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -126,9 +126,9 @@ def transformcalc(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *inputs])
-    cargs.extend(["", operation])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.extend(inputs)
+    cargs.append(operation)
+    cargs.append(execution.input_file(output))
     ret = TransformcalcOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRMETRIC_METADATA = Metadata(
-    id="2e78093c7e38a2e2b18b3d27763550c8f05734e4",
+    id="886e41ec060b8ac070901635f195684c5f312017",
     name="mrmetric",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -156,8 +156,8 @@ def mrmetric(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(image1)])
-    cargs.extend(["", execution.input_file(image2)])
+    cargs.append(execution.input_file(image1))
+    cargs.append(execution.input_file(image2))
     ret = MrmetricOutputs(
         root=execution.output_file("."),
     )

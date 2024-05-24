@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCORRESPONDENCE_METADATA = Metadata(
-    id="6638d5dbcd83463d6404abaad8dc36df4f20a56b",
+    id="bbfcdf3c8161334bc9555d835552038c1b5a3001",
     name="fixelcorrespondence",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -135,10 +135,10 @@ def fixelcorrespondence(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(subject_data)])
-    cargs.extend(["", execution.input_file(template_directory)])
-    cargs.extend(["", output_directory])
-    cargs.extend(["", output_data])
+    cargs.append(execution.input_file(subject_data))
+    cargs.append(execution.input_file(template_directory))
+    cargs.append(output_directory)
+    cargs.append(output_data)
     ret = FixelcorrespondenceOutputs(
         root=execution.output_file("."),
     )

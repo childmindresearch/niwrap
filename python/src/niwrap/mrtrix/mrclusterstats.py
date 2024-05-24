@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCLUSTERSTATS_METADATA = Metadata(
-    id="755682ade8cd53164a332feba7e5eecfcd6d205b",
+    id="919e555d9c0306abbb1c57e45ab697900606d0d7",
     name="mrclusterstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -285,11 +285,11 @@ def mrclusterstats(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(design)])
-    cargs.extend(["", execution.input_file(contrast)])
-    cargs.extend(["", execution.input_file(mask)])
-    cargs.extend(["", output])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(design))
+    cargs.append(execution.input_file(contrast))
+    cargs.append(execution.input_file(mask))
+    cargs.append(output)
     ret = MrclusterstatsOutputs(
         root=execution.output_file("."),
     )

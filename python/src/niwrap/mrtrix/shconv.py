@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SHCONV_METADATA = Metadata(
-    id="c7a65adda6f533f6b2d6fd148c967d1ddc535d52",
+    id="7409f9984bc6e973676b90044d3ec7542c634af1",
     name="shconv",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -156,8 +156,8 @@ def shconv(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *odf_response])
-    cargs.extend(["", execution.input_file(sh_out)])
+    cargs.extend(odf_response)
+    cargs.append(execution.input_file(sh_out))
     ret = ShconvOutputs(
         root=execution.output_file("."),
         sh_out=execution.output_file(f"{pathlib.Path(sh_out).stem}"),

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWI2TENSOR_METADATA = Metadata(
-    id="5f71502984ba2f80fe06dcb76f56448959e8a961",
+    id="6de247fcb34ba8e697e30249bce5a1d41889ca65",
     name="dwi2tensor",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -242,8 +242,8 @@ def dwi2tensor(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(dwi)])
-    cargs.extend(["", execution.input_file(dt)])
+    cargs.append(execution.input_file(dwi))
+    cargs.append(execution.input_file(dt))
     ret = Dwi2tensorOutputs(
         root=execution.output_file("."),
         dt=execution.output_file(f"{pathlib.Path(dt).stem}"),

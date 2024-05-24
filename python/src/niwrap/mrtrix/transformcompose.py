@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TRANSFORMCOMPOSE_METADATA = Metadata(
-    id="45c6e8b1f990ea057ce06563a9e681540516f5dd",
+    id="69ae4382828fc13d658af5c01ea032870617d798",
     name="transformcompose",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -141,8 +141,8 @@ def transformcompose(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *[execution.input_file(f) for f in input_]])
-    cargs.extend(["", output])
+    cargs.extend([execution.input_file(f) for f in input_])
+    cargs.append(output)
     ret = TransformcomposeOutputs(
         root=execution.output_file("."),
     )

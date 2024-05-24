@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SH2AMP_METADATA = Metadata(
-    id="15bba500443e1b8255eda3d614be4268f9e36643",
+    id="c59a1d3514c78b4421a3da85fb771d24aedd14ed",
     name="sh2amp",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -228,9 +228,9 @@ def sh2amp(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(directions)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(directions))
+    cargs.append(execution.input_file(output))
     ret = Sh2ampOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

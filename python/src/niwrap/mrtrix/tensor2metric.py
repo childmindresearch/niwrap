@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TENSOR2METRIC_METADATA = Metadata(
-    id="c212a66f44c76d14b712e2b4ad259065fa888783",
+    id="d38fa6896c84820075b2ff1c2778a1c3b179f2d7",
     name="tensor2metric",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -202,7 +202,7 @@ def tensor2metric(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(tensor)])
+    cargs.append(execution.input_file(tensor))
     ret = Tensor2metricOutputs(
         root=execution.output_file("."),
         adc=execution.output_file(f"{pathlib.Path(adc).stem}") if adc is not None else None,

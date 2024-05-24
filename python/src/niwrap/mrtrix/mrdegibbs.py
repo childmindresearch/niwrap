@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRDEGIBBS_METADATA = Metadata(
-    id="36b4067b3b3968157737b0d2a7e639def0a1e55e",
+    id="73f3402ef977f2c24829e4474763b4890a53b60a",
     name="mrdegibbs",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -166,8 +166,8 @@ def mrdegibbs(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(in_)])
-    cargs.extend(["", execution.input_file(out)])
+    cargs.append(execution.input_file(in_))
+    cargs.append(execution.input_file(out))
     ret = MrdegibbsOutputs(
         root=execution.output_file("."),
         out=execution.output_file(f"{pathlib.Path(out).stem}"),

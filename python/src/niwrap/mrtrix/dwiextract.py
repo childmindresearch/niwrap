@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWIEXTRACT_METADATA = Metadata(
-    id="3e2947ef17460135d7ea86678e9d6e51644337d5",
+    id="b53047a64bc98180bbd88df066d6e9e6bd41c711",
     name="dwiextract",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -305,8 +305,8 @@ def dwiextract(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(output))
     ret = DwiextractOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

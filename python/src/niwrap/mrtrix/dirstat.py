@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRSTAT_METADATA = Metadata(
-    id="f47214c53939d552d77ff77df405c99741666c6e",
+    id="b3bc18611443d4ad8c5df8d60d12285e24d65d5f",
     name="dirstat",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -223,7 +223,7 @@ def dirstat(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(dirs)])
+    cargs.append(execution.input_file(dirs))
     ret = DirstatOutputs(
         root=execution.output_file("."),
     )

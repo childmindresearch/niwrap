@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCROP_METADATA = Metadata(
-    id="25faea5b72f9b9c23fdf965fba04a1888e61b06f",
+    id="84e6ff8fcba1f73d103f0088932c307cb42ae09e",
     name="fixelcrop",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -129,9 +129,9 @@ def fixelcrop(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_fixel_directory)])
-    cargs.extend(["", execution.input_file(input_fixel_mask)])
-    cargs.extend(["", execution.input_file(output_fixel_directory)])
+    cargs.append(execution.input_file(input_fixel_directory))
+    cargs.append(execution.input_file(input_fixel_mask))
+    cargs.append(execution.input_file(output_fixel_directory))
     ret = FixelcropOutputs(
         root=execution.output_file("."),
         output_fixel_directory=execution.output_file(f"{pathlib.Path(output_fixel_directory).stem}"),

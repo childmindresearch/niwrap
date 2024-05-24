@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 V_5TT2VIS_METADATA = Metadata(
-    id="bb692a9a3678ecee279e216cd2e258cce8ac783c",
+    id="9cdab1def4ff3ec9fcb13e284b46b3ea0b341ac1",
     name="5tt2vis",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -147,8 +147,8 @@ def v_5tt2vis(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(output))
     ret = V5tt2visOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

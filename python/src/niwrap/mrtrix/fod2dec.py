@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FOD2DEC_METADATA = Metadata(
-    id="05d6b6df8e2bf56201817ff1038be3ab0342f659",
+    id="4c2845cedf6802bc911fd8b467dde3288a150e25",
     name="fod2dec",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -179,8 +179,8 @@ def fod2dec(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(output))
     ret = Fod2decOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

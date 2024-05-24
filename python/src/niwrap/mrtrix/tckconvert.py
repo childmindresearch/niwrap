@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKCONVERT_METADATA = Metadata(
-    id="9b0e38a877456cb483b17125974016b86a123716",
+    id="e76439ecf66cbc3e276aa8b937c0eb5aab4a835e",
     name="tckconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -184,8 +184,8 @@ def tckconvert(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", input_])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(input_)
+    cargs.append(execution.input_file(output))
     ret = TckconvertOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

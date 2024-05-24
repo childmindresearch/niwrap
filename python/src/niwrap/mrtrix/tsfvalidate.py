@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFVALIDATE_METADATA = Metadata(
-    id="0b9d2c805de376a7d186d00afec4f275f80d8cbc",
+    id="37d603baa32cfacc1d76d4f0931d6f59064e49dc",
     name="tsfvalidate",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -120,8 +120,8 @@ def tsfvalidate(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(tsf)])
-    cargs.extend(["", execution.input_file(tracks)])
+    cargs.append(execution.input_file(tsf))
+    cargs.append(execution.input_file(tracks))
     ret = TsfvalidateOutputs(
         root=execution.output_file("."),
     )

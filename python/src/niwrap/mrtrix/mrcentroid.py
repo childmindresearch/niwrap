@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCENTROID_METADATA = Metadata(
-    id="152b50a12fb34ffab589ba870f75ad51d25ff947",
+    id="d2fafe0cf0317cce4b7dbc0300a5fff02e924501",
     name="mrcentroid",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -127,7 +127,7 @@ def mrcentroid(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
+    cargs.append(execution.input_file(input_))
     ret = MrcentroidOutputs(
         root=execution.output_file("."),
     )

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKRESAMPLE_METADATA = Metadata(
-    id="86fa3eefbc88d8c1bd99e382d350629c63c7cd4b",
+    id="a0f07c3ad1673f461d6e28d56c3a8d7367129def",
     name="tckresample",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -252,8 +252,8 @@ def tckresample(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(in_tracks)])
-    cargs.extend(["", execution.input_file(out_tracks)])
+    cargs.append(execution.input_file(in_tracks))
+    cargs.append(execution.input_file(out_tracks))
     ret = TckresampleOutputs(
         root=execution.output_file("."),
         out_tracks=execution.output_file(f"{pathlib.Path(out_tracks).stem}"),

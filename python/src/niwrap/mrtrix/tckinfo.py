@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKINFO_METADATA = Metadata(
-    id="277445604c487279d85466e13687b17db30dedd3",
+    id="a2d6619eb4138b5674aa9fbacbe3628eea812437",
     name="tckinfo",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -122,7 +122,7 @@ def tckinfo(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *[execution.input_file(f) for f in tracks]])
+    cargs.extend([execution.input_file(f) for f in tracks])
     ret = TckinfoOutputs(
         root=execution.output_file("."),
     )

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DCMEDIT_METADATA = Metadata(
-    id="35428f8d090a3d52ffa0b1f3a04798191a1c5607",
+    id="9fdc7e9af67a79009f76cbfaa23e76ebee6fa08e",
     name="dcmedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -179,7 +179,7 @@ def dcmedit(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(file)])
+    cargs.append(execution.input_file(file))
     ret = DcmeditOutputs(
         root=execution.output_file("."),
     )

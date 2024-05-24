@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRHISTMATCH_METADATA = Metadata(
-    id="7dabfbef7ea58a22e32d7ae72666ed85490a5b07",
+    id="76ab2980d32c58d4498d179036aace7b5b33068e",
     name="mrhistmatch",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -146,10 +146,10 @@ def mrhistmatch(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", type_])
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(target)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(type_)
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(target))
+    cargs.append(execution.input_file(output))
     ret = MrhistmatchOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

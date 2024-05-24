@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKGEN_METADATA = Metadata(
-    id="0e8e599b5bdedec7610bb9ea0f5d9f06d207b743",
+    id="e73da60fd7ae189071aca4c4b4f39ec06359aa12",
     name="tckgen",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -810,8 +810,8 @@ def tckgen(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(source)])
-    cargs.extend(["", execution.input_file(tracks)])
+    cargs.append(execution.input_file(source))
+    cargs.append(execution.input_file(tracks))
     ret = TckgenOutputs(
         root=execution.output_file("."),
         tracks=execution.output_file(f"{pathlib.Path(tracks).stem}"),

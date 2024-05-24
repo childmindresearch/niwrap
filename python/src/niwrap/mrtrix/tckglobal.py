@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKGLOBAL_METADATA = Metadata(
-    id="f83f9e3f395e683ba66ff657de83be5ae2054d7f",
+    id="87cca774ab33dffe7c034097d81e68bb01f2714b",
     name="tckglobal",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -288,9 +288,9 @@ def tckglobal(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(source)])
-    cargs.extend(["", execution.input_file(response)])
-    cargs.extend(["", execution.input_file(tracks)])
+    cargs.append(execution.input_file(source))
+    cargs.append(execution.input_file(response))
+    cargs.append(execution.input_file(tracks))
     ret = TckglobalOutputs(
         root=execution.output_file("."),
         tracks=execution.output_file(f"{pathlib.Path(tracks).stem}"),

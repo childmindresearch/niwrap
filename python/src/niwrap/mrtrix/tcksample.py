@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKSAMPLE_METADATA = Metadata(
-    id="b5adc5bfed5e632c5ba689f4de3f2d4ef16b87a0",
+    id="391a4d1653b65cef33d3c02aa0bdf466aa3affc0",
     name="tcksample",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -152,9 +152,9 @@ def tcksample(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(tracks)])
-    cargs.extend(["", execution.input_file(image)])
-    cargs.extend(["", execution.input_file(values_)])
+    cargs.append(execution.input_file(tracks))
+    cargs.append(execution.input_file(image))
+    cargs.append(execution.input_file(values_))
     ret = TcksampleOutputs(
         root=execution.output_file("."),
         values_=execution.output_file(f"{pathlib.Path(values_).stem}"),

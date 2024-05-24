@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWIDENOISE_METADATA = Metadata(
-    id="3c6bff6c200107e2f1a455b3d7404deb89f6811f",
+    id="90468f4b55fd2315ebf673258aa3f5c3e3153ed2",
     name="dwidenoise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -184,8 +184,8 @@ def dwidenoise(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(dwi)])
-    cargs.extend(["", execution.input_file(out)])
+    cargs.append(execution.input_file(dwi))
+    cargs.append(execution.input_file(out))
     ret = DwidenoiseOutputs(
         root=execution.output_file("."),
         out=execution.output_file(f"{pathlib.Path(out).stem}"),

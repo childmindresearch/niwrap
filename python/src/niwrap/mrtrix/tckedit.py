@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKEDIT_METADATA = Metadata(
-    id="060e06abca53598070775efdcbdd868f73fc0f95",
+    id="11b8c71b05bf32306430708c1136dd5e40b2dcba",
     name="tckedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -318,8 +318,8 @@ def tckedit(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *[execution.input_file(f) for f in tracks_in]])
-    cargs.extend(["", execution.input_file(tracks_out)])
+    cargs.extend([execution.input_file(f) for f in tracks_in])
+    cargs.append(execution.input_file(tracks_out))
     ret = TckeditOutputs(
         root=execution.output_file("."),
         tracks_out=execution.output_file(f"{pathlib.Path(tracks_out).stem}"),

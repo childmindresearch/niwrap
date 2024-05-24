@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRMERGE_METADATA = Metadata(
-    id="1d517eb8166caf4abc918caa9dbb62442e9c30fa",
+    id="b54d273c381fe7db320cff2c39a9108a9f80bd55",
     name="dirmerge",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -133,9 +133,9 @@ def dirmerge(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", str(subsets)])
-    cargs.extend(["", *bvalue_files])
-    cargs.extend(["", execution.input_file(out)])
+    cargs.append(str(subsets))
+    cargs.extend(bvalue_files)
+    cargs.append(execution.input_file(out))
     ret = DirmergeOutputs(
         root=execution.output_file("."),
         out=execution.output_file(f"{pathlib.Path(out).stem}"),

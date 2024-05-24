@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 V_5TT2GMWMI_METADATA = Metadata(
-    id="9d8fcdb9a2342ddf210a6f3a6744324c059ef033",
+    id="121e261ebc2835276034980275053857c9cef714",
     name="5tt2gmwmi",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -133,8 +133,8 @@ def v_5tt2gmwmi(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(v_5tt_in)])
-    cargs.extend(["", execution.input_file(mask_out)])
+    cargs.append(execution.input_file(v_5tt_in))
+    cargs.append(execution.input_file(mask_out))
     ret = V5tt2gmwmiOutputs(
         root=execution.output_file("."),
         mask_out=execution.output_file(f"{pathlib.Path(mask_out).stem}"),

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCK2FIXEL_METADATA = Metadata(
-    id="45d3fa18f686af9bd72c1558ec5ad7bcb5ff2dd8",
+    id="28984bef38dfefa8e3ac4975c89ab3e08dd61cfa",
     name="tck2fixel",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -131,10 +131,10 @@ def tck2fixel(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(tracks)])
-    cargs.extend(["", execution.input_file(fixel_folder_in)])
-    cargs.extend(["", fixel_folder_out])
-    cargs.extend(["", fixel_data_out])
+    cargs.append(execution.input_file(tracks))
+    cargs.append(execution.input_file(fixel_folder_in))
+    cargs.append(fixel_folder_out)
+    cargs.append(fixel_data_out)
     ret = Tck2fixelOutputs(
         root=execution.output_file("."),
     )

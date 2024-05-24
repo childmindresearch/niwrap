@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 AFDCONNECTIVITY_METADATA = Metadata(
-    id="397bad6a666ecbc74a6e145651717e25c9298377",
+    id="56fbf768b86b09c6a542bb16dc8f349f40aac8bf",
     name="afdconnectivity",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -173,8 +173,8 @@ def afdconnectivity(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(image)])
-    cargs.extend(["", execution.input_file(tracks)])
+    cargs.append(execution.input_file(image))
+    cargs.append(execution.input_file(tracks))
     ret = AfdconnectivityOutputs(
         root=execution.output_file("."),
         afd_map=execution.output_file(f"{pathlib.Path(afd_map).stem}") if afd_map is not None else None,

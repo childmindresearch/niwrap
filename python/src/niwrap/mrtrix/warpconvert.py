@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 WARPCONVERT_METADATA = Metadata(
-    id="46f7041d4e915a680e7ada48458724000c496546",
+    id="8e8a5f7b56ee5547a72af3e6e06a692e40de0f7f",
     name="warpconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -154,9 +154,9 @@ def warpconvert(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(in_)])
-    cargs.extend(["", type_])
-    cargs.extend(["", execution.input_file(out)])
+    cargs.append(execution.input_file(in_))
+    cargs.append(type_)
+    cargs.append(execution.input_file(out))
     ret = WarpconvertOutputs(
         root=execution.output_file("."),
         out=execution.output_file(f"{pathlib.Path(out).stem}"),

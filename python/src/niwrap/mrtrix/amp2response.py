@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 AMP2RESPONSE_METADATA = Metadata(
-    id="595fc91e166472b5af6a80a0edede6fd94ae1c07",
+    id="6fd77a65c45c017b949be71b453b14e5cf993b30",
     name="amp2response",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -172,10 +172,10 @@ def amp2response(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(amps)])
-    cargs.extend(["", execution.input_file(mask)])
-    cargs.extend(["", execution.input_file(directions)])
-    cargs.extend(["", execution.input_file(response)])
+    cargs.append(execution.input_file(amps))
+    cargs.append(execution.input_file(mask))
+    cargs.append(execution.input_file(directions))
+    cargs.append(execution.input_file(response))
     ret = Amp2responseOutputs(
         root=execution.output_file("."),
         response=execution.output_file(f"{pathlib.Path(response).stem}"),

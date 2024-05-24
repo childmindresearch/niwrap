@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRFILTER_METADATA = Metadata(
-    id="7ae70e7eae685715098f8a4e504ac8537e153061",
+    id="2ca7b9ee1cca69322bfd7d154ce550fdf775912c",
     name="mrfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -233,9 +233,9 @@ def mrfilter(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", filter_])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(filter_)
+    cargs.append(execution.input_file(output))
     ret = MrfilterOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

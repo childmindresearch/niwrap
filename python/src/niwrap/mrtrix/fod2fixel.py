@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FOD2FIXEL_METADATA = Metadata(
-    id="b270f0038f109034813fb9da08bf8b4366a08a54",
+    id="016928756376bfa4b5acd77ae3e6fe1b9d2af471",
     name="fod2fixel",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -200,8 +200,8 @@ def fod2fixel(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(fod)])
-    cargs.extend(["", execution.input_file(fixel_directory)])
+    cargs.append(execution.input_file(fod))
+    cargs.append(execution.input_file(fixel_directory))
     ret = Fod2fixelOutputs(
         root=execution.output_file("."),
         fixel_directory=execution.output_file(f"{pathlib.Path(fixel_directory).stem}"),

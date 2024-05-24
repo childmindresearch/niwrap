@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCONVERT_METADATA = Metadata(
-    id="6c32c02ef68d02568062f77a52feefb9315569d6",
+    id="aca3749f71d28085267898cc694991d82730811e",
     name="mrconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -543,8 +543,8 @@ def mrconvert(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(output))
     ret = MrconvertOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

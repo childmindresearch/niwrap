@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 VECTORSTATS_METADATA = Metadata(
-    id="acbbb4ae59a834a945141f8e71794f67d02567d6",
+    id="468febad0b1eaa5ebce27a3a310f91ae96f29e0f",
     name="vectorstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -230,10 +230,10 @@ def vectorstats(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(design)])
-    cargs.extend(["", execution.input_file(contrast)])
-    cargs.extend(["", output])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(design))
+    cargs.append(execution.input_file(contrast))
+    cargs.append(output)
     ret = VectorstatsOutputs(
         root=execution.output_file("."),
     )

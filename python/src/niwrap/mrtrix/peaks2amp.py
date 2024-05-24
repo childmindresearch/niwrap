@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 PEAKS2AMP_METADATA = Metadata(
-    id="96b79879268972e5993d240fd9a90bf8834ce625",
+    id="fb3cbf3ca25abf1ab00273be4a652f348b3ffb05",
     name="peaks2amp",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -123,8 +123,8 @@ def peaks2amp(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(directions)])
-    cargs.extend(["", execution.input_file(amplitudes)])
+    cargs.append(execution.input_file(directions))
+    cargs.append(execution.input_file(amplitudes))
     ret = Peaks2ampOutputs(
         root=execution.output_file("."),
         amplitudes=execution.output_file(f"{pathlib.Path(amplitudes).stem}"),

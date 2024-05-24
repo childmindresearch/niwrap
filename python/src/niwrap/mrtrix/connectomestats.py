@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 CONNECTOMESTATS_METADATA = Metadata(
-    id="5c4c44f93dd5d96dca96ff497b26cd03b1e5ae63",
+    id="7db5540ec9bfe5863ea02fc8298dba96d722c53b",
     name="connectomestats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -301,11 +301,11 @@ def connectomestats(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", algorithm])
-    cargs.extend(["", execution.input_file(design)])
-    cargs.extend(["", execution.input_file(contrast)])
-    cargs.extend(["", output])
+    cargs.append(execution.input_file(input_))
+    cargs.append(algorithm)
+    cargs.append(execution.input_file(design))
+    cargs.append(execution.input_file(contrast))
+    cargs.append(output)
     ret = ConnectomestatsOutputs(
         root=execution.output_file("."),
     )

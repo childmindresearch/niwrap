@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRVIEW_METADATA = Metadata(
-    id="81df42fe67810655369b897dee52033b248c23f9",
+    id="aef8290864d5ee131c5daa4eb8ee3c1f1a0af1b1",
     name="mrview",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -1894,7 +1894,7 @@ def mrview(
     if version:
         cargs.append("-version")
     if image is not None:
-        cargs.extend(["", *[execution.input_file(f) for f in image]])
+        cargs.extend([execution.input_file(f) for f in image])
     ret = MrviewOutputs(
         root=execution.output_file("."),
     )

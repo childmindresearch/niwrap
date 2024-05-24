@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRGRID_METADATA = Metadata(
-    id="4ac9b071c7beae7d37c3af32557bf63d94385f08",
+    id="170e0093c16ac657eb7b772c8c7728f00988cd17",
     name="mrgrid",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -298,9 +298,9 @@ def mrgrid(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", operation])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(operation)
+    cargs.append(execution.input_file(output))
     ret = MrgridOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

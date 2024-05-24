@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWI2ADC_METADATA = Metadata(
-    id="1b1fbcb8f541e91a9f4d304ca2a6183b707e1e70",
+    id="b2b97e1171bb94380375c8087143537300cd4d2e",
     name="dwi2adc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -174,8 +174,8 @@ def dwi2adc(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(output))
     ret = Dwi2adcOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

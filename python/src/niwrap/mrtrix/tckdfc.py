@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKDFC_METADATA = Metadata(
-    id="6c81cf6d47143afc0b96214330286cb1cf8945f7",
+    id="dadbd92d39cc117991fb0f3c39ebf0fb9aab4c50",
     name="tckdfc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -223,9 +223,9 @@ def tckdfc(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(tracks)])
-    cargs.extend(["", execution.input_file(fmri)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(tracks))
+    cargs.append(execution.input_file(fmri))
+    cargs.append(execution.input_file(output))
     ret = TckdfcOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 PEAKS2FIXEL_METADATA = Metadata(
-    id="8f4ae27e70e71a51f5a2bdd60267ee203080bc25",
+    id="b6069df02e91ed2ea3319c5604e44923eeefc45d",
     name="peaks2fixel",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -128,8 +128,8 @@ def peaks2fixel(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(directions)])
-    cargs.extend(["", execution.input_file(fixels)])
+    cargs.append(execution.input_file(directions))
+    cargs.append(execution.input_file(fixels))
     ret = Peaks2fixelOutputs(
         root=execution.output_file("."),
         fixels=execution.output_file(f"{pathlib.Path(fixels).stem}"),

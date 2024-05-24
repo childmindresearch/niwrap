@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 CONNECTOME2TCK_METADATA = Metadata(
-    id="c85c3764e6c6e99050eaea0092ab5f8bdee523d8",
+    id="05a5d3532ff03cba0d9f6e2c5a109ea900fbd450",
     name="connectome2tck",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -175,9 +175,9 @@ def connectome2tck(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(tracks_in)])
-    cargs.extend(["", execution.input_file(assignments_in)])
-    cargs.extend(["", prefix_out])
+    cargs.append(execution.input_file(tracks_in))
+    cargs.append(execution.input_file(assignments_in))
+    cargs.append(prefix_out)
     ret = Connectome2tckOutputs(
         root=execution.output_file("."),
     )

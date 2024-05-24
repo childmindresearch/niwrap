@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRORDER_METADATA = Metadata(
-    id="fda6da2b07f18f9ccc200561e5259772a7eaaf09",
+    id="ac6b37b1b759852099a78dabf4a945bceeb0e01f",
     name="dirorder",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -129,8 +129,8 @@ def dirorder(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(output))
     ret = DirorderOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

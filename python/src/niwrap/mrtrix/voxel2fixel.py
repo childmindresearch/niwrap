@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 VOXEL2FIXEL_METADATA = Metadata(
-    id="65f1bc0c1bd313a2dcad47e81422edb9f432e523",
+    id="0b06102b297eccf7539adda99e58d56dbeb8cdec",
     name="voxel2fixel",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -127,10 +127,10 @@ def voxel2fixel(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(image_in)])
-    cargs.extend(["", execution.input_file(fixel_directory_in)])
-    cargs.extend(["", fixel_directory_out])
-    cargs.extend(["", fixel_data_out])
+    cargs.append(execution.input_file(image_in))
+    cargs.append(execution.input_file(fixel_directory_in))
+    cargs.append(fixel_directory_out)
+    cargs.append(fixel_data_out)
     ret = Voxel2fixelOutputs(
         root=execution.output_file("."),
     )

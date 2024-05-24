@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWI2FOD_METADATA = Metadata(
-    id="5f259f3f6c87bbb61a1d2371399958a9799bb353",
+    id="af156787a64179854b3d81a4f76391cbf5ddf8be",
     name="dwi2fod",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -279,9 +279,9 @@ def dwi2fod(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", algorithm])
-    cargs.extend(["", execution.input_file(dwi)])
-    cargs.extend(["", *response_odf])
+    cargs.append(algorithm)
+    cargs.append(execution.input_file(dwi))
+    cargs.extend(response_odf)
     ret = Dwi2fodOutputs(
         root=execution.output_file("."),
         predicted_signal=execution.output_file(f"{pathlib.Path(predicted_signal).stem}") if predicted_signal is not None else None,

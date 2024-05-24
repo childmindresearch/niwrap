@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRTRANSFORM_METADATA = Metadata(
-    id="aec3acebe29765ed32a857f454b276608b2a7335",
+    id="c9ce9165fe452891616cf00bb58ba58ef54aeddf",
     name="mrtransform",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -392,8 +392,8 @@ def mrtransform(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(output))
     ret = MrtransformOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

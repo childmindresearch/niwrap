@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFSMOOTH_METADATA = Metadata(
-    id="e032bde4e62213969a86cb055f8a86c8ce44c008",
+    id="04cecea2521f591f7764bee2fd1df53c56f302dc",
     name="tsfsmooth",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -127,8 +127,8 @@ def tsfsmooth(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(output))
     ret = TsfsmoothOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

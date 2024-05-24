@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCFESTATS_METADATA = Metadata(
-    id="92d2fe3cee5670d1564f8968f3f4174f76a1a9c9",
+    id="e2e403914ba83e76e987ace322598b8e40017045",
     name="fixelcfestats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -315,12 +315,12 @@ def fixelcfestats(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(in_fixel_directory)])
-    cargs.extend(["", execution.input_file(subjects)])
-    cargs.extend(["", execution.input_file(design)])
-    cargs.extend(["", execution.input_file(contrast)])
-    cargs.extend(["", connectivity])
-    cargs.extend(["", out_fixel_directory])
+    cargs.append(execution.input_file(in_fixel_directory))
+    cargs.append(execution.input_file(subjects))
+    cargs.append(execution.input_file(design))
+    cargs.append(execution.input_file(contrast))
+    cargs.append(connectivity)
+    cargs.append(out_fixel_directory)
     ret = FixelcfestatsOutputs(
         root=execution.output_file("."),
     )

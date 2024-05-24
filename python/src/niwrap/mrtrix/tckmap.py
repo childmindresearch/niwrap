@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKMAP_METADATA = Metadata(
-    id="c2e38a929c50a9c26020ec9afb16878a37f1e163",
+    id="4a2bcbaacbc97001ec91b223529c2ffac96e3e69",
     name="tckmap",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -265,8 +265,8 @@ def tckmap(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(tracks)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(tracks))
+    cargs.append(execution.input_file(output))
     ret = TckmapOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

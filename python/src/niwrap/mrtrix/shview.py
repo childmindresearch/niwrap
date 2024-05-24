@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SHVIEW_METADATA = Metadata(
-    id="b1f56586d2f8b13648a1df15381f1585d3773f65",
+    id="fd92d9b8965e0f6ed90268a6ecb24a6522f84695",
     name="shview",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -126,7 +126,7 @@ def shview(
     if version:
         cargs.append("-version")
     if coefs is not None:
-        cargs.extend(["", execution.input_file(coefs)])
+        cargs.append(execution.input_file(coefs))
     ret = ShviewOutputs(
         root=execution.output_file("."),
     )

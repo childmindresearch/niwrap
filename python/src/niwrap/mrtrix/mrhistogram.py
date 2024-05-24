@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRHISTOGRAM_METADATA = Metadata(
-    id="c7dfb67e2e501bcbba267491785f23b16d1adc85",
+    id="fa6de846e492a64e11c3ba756024d7b422453d9c",
     name="mrhistogram",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -144,8 +144,8 @@ def mrhistogram(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(image)])
-    cargs.extend(["", execution.input_file(hist)])
+    cargs.append(execution.input_file(image))
+    cargs.append(execution.input_file(hist))
     ret = MrhistogramOutputs(
         root=execution.output_file("."),
         hist=execution.output_file(f"{pathlib.Path(hist).stem}"),

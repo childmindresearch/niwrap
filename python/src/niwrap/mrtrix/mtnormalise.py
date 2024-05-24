@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MTNORMALISE_METADATA = Metadata(
-    id="9ca89ce5a0632c5f1da8d72833aad6993dfad4bf",
+    id="b2e1e4b749e74b5be532f66be58de7d5b084cc9b",
     name="mtnormalise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -198,7 +198,7 @@ def mtnormalise(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *input_output])
+    cargs.extend(input_output)
     ret = MtnormaliseOutputs(
         root=execution.output_file("."),
         check_norm=execution.output_file(f"{pathlib.Path(check_norm).stem}") if check_norm is not None else None,

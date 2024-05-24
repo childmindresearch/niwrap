@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MREDIT_METADATA = Metadata(
-    id="616aa0c001d334195d755b4105e468ee2507004d",
+    id="725e0d15b5c5afb444a0a6fd05ff51a1eb7b2aec",
     name="mredit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -239,9 +239,9 @@ def mredit(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
+    cargs.append(execution.input_file(input_))
     if output is not None:
-        cargs.extend(["", execution.input_file(output)])
+        cargs.append(execution.input_file(output))
     ret = MreditOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}") if output is not None else None,

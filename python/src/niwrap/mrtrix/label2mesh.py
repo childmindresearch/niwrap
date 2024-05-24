@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 LABEL2MESH_METADATA = Metadata(
-    id="b2df5ca9f761fb9e2ab9bc63bb734b73b5628b7b",
+    id="664f5c4e14a2da1ad456e13a4604b9890c9f5b15",
     name="label2mesh",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -127,8 +127,8 @@ def label2mesh(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(nodes_in)])
-    cargs.extend(["", execution.input_file(mesh_out)])
+    cargs.append(execution.input_file(nodes_in))
+    cargs.append(execution.input_file(mesh_out))
     ret = Label2meshOutputs(
         root=execution.output_file("."),
         mesh_out=execution.output_file(f"{pathlib.Path(mesh_out).stem}"),

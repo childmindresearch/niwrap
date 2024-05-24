@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRINFO_METADATA = Metadata(
-    id="2fb877e386bce4d152a4af9fc76ed799044ff7b8",
+    id="b25ffd380f050ddf5790ef3620d51bfd340f0dad",
     name="mrinfo",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -411,7 +411,7 @@ def mrinfo(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *[execution.input_file(f) for f in image]])
+    cargs.extend([execution.input_file(f) for f in image])
     ret = MrinfoOutputs(
         root=execution.output_file("."),
         json_keyval=execution.output_file(f"{pathlib.Path(json_keyval).stem}") if json_keyval is not None else None,

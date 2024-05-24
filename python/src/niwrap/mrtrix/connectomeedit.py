@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 CONNECTOMEEDIT_METADATA = Metadata(
-    id="a0142e9ed8a87fe2582070307b9ddaf92fdeff5b",
+    id="0f4cf812eb9a303107357ad5231922375e743fd5",
     name="connectomeedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -123,9 +123,9 @@ def connectomeedit(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", input_])
-    cargs.extend(["", operation])
-    cargs.extend(["", output])
+    cargs.append(input_)
+    cargs.append(operation)
+    cargs.append(output)
     ret = ConnectomeeditOutputs(
         root=execution.output_file("."),
     )

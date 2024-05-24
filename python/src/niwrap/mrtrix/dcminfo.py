@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DCMINFO_METADATA = Metadata(
-    id="b68752394d6adcbaeaf5f4f14cff1f92caf6f2d9",
+    id="bb793a92945aa15f4cf2cf95996d8a6ee6a209c0",
     name="dcminfo",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -168,7 +168,7 @@ def dcminfo(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(file)])
+    cargs.append(execution.input_file(file))
     ret = DcminfoOutputs(
         root=execution.output_file("."),
     )

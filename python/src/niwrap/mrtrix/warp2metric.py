@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 WARP2METRIC_METADATA = Metadata(
-    id="2582238b04bc05eb53d0c39c32f896b8d2694c01",
+    id="91e8b0ba42439d652950de09400d5d1336c39c10",
     name="warp2metric",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -184,7 +184,7 @@ def warp2metric(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(in_)])
+    cargs.append(execution.input_file(in_))
     ret = Warp2metricOutputs(
         root=execution.output_file("."),
         jmat=execution.output_file(f"{pathlib.Path(jmat).stem}") if jmat is not None else None,

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFDIVIDE_METADATA = Metadata(
-    id="9af5606596f95ec50a130ded050af23a583aee1f",
+    id="3c13926c23c2b1d2f625b21a916c53868878e432",
     name="tsfdivide",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -124,9 +124,9 @@ def tsfdivide(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input1)])
-    cargs.extend(["", execution.input_file(input2)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input1))
+    cargs.append(execution.input_file(input2))
+    cargs.append(execution.input_file(output))
     ret = TsfdivideOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

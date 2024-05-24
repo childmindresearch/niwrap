@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKSTATS_METADATA = Metadata(
-    id="e8667e01250c2036c4ac7a8603a5d1914c790df0",
+    id="7e1deb28dd6ba96169747ef7a3b7637c72e76740",
     name="tckstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -175,7 +175,7 @@ def tckstats(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(tracks_in)])
+    cargs.append(execution.input_file(tracks_in))
     ret = TckstatsOutputs(
         root=execution.output_file("."),
         histogram=execution.output_file(f"{pathlib.Path(histogram).stem}") if histogram is not None else None,

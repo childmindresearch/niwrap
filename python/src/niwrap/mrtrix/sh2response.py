@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SH2RESPONSE_METADATA = Metadata(
-    id="4563a22df44a67a7221c421f09e6a74380007a27",
+    id="24a3f55ea9a81c8f6d52ecb7e6433db87cb6338a",
     name="sh2response",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -144,10 +144,10 @@ def sh2response(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(sh)])
-    cargs.extend(["", execution.input_file(mask)])
-    cargs.extend(["", execution.input_file(directions)])
-    cargs.extend(["", execution.input_file(response)])
+    cargs.append(execution.input_file(sh))
+    cargs.append(execution.input_file(mask))
+    cargs.append(execution.input_file(directions))
+    cargs.append(execution.input_file(response))
     ret = Sh2responseOutputs(
         root=execution.output_file("."),
         response=execution.output_file(f"{pathlib.Path(response).stem}"),

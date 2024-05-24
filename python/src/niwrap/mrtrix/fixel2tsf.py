@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXEL2TSF_METADATA = Metadata(
-    id="4f407981ac84d2fae888b3c442cd98e628c5a03c",
+    id="ecaa8a440c96797d8ec11f67d528f274254fabba",
     name="fixel2tsf",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -130,9 +130,9 @@ def fixel2tsf(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(fixel_in)])
-    cargs.extend(["", execution.input_file(tracks)])
-    cargs.extend(["", execution.input_file(tsf)])
+    cargs.append(execution.input_file(fixel_in))
+    cargs.append(execution.input_file(tracks))
+    cargs.append(execution.input_file(tsf))
     ret = Fixel2tsfOutputs(
         root=execution.output_file("."),
         tsf=execution.output_file(f"{pathlib.Path(tsf).stem}"),

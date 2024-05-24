@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 LABELSTATS_METADATA = Metadata(
-    id="ce0d17623bda099d48744fbbbf0930ef9e50779e",
+    id="f0a4c25c6efb3d3be9c769b54b1e2ea22a2daa01",
     name="labelstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -127,7 +127,7 @@ def labelstats(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
+    cargs.append(execution.input_file(input_))
     ret = LabelstatsOutputs(
         root=execution.output_file("."),
     )

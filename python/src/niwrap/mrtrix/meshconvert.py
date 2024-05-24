@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MESHCONVERT_METADATA = Metadata(
-    id="aa91b795c50b09432cf243a115b13afcf3dbf649",
+    id="78c682df3ab3a1534e2ed3507e2bc184771b9fa0",
     name="meshconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -166,8 +166,8 @@ def meshconvert(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(output))
     ret = MeshconvertOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

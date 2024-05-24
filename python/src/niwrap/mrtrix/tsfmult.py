@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFMULT_METADATA = Metadata(
-    id="b04e1364c34e66ba8ac4d4b4d53ba4d57b826ece",
+    id="594a2314d1684fa9885a78aa15c39387167e8f0f",
     name="tsfmult",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -124,9 +124,9 @@ def tsfmult(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input1_)])
-    cargs.extend(["", execution.input_file(input1_)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input1_))
+    cargs.append(execution.input_file(input1_))
+    cargs.append(execution.input_file(output))
     ret = TsfmultOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

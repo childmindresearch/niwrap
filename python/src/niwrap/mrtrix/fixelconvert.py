@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCONVERT_METADATA = Metadata(
-    id="5871eb8c3637f21950ea05f51f84bd8e49bc6fd7",
+    id="49d57abbc0be722cdf1ae3d5b675e21a12f97dbd",
     name="fixelconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -150,8 +150,8 @@ def fixelconvert(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", fixel_in])
-    cargs.extend(["", fixel_out])
+    cargs.append(fixel_in)
+    cargs.append(fixel_out)
     ret = FixelconvertOutputs(
         root=execution.output_file("."),
     )

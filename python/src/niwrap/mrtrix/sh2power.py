@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SH2POWER_METADATA = Metadata(
-    id="78a8e43ef71371584670638ba2c946b5f9b9d1b5",
+    id="9a6fc5917b7ea71a1cdc66b8ca126c55006c62bb",
     name="sh2power",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -132,8 +132,8 @@ def sh2power(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(sh)])
-    cargs.extend(["", execution.input_file(power)])
+    cargs.append(execution.input_file(sh))
+    cargs.append(execution.input_file(power))
     ret = Sh2powerOutputs(
         root=execution.output_file("."),
         power=execution.output_file(f"{pathlib.Path(power).stem}"),

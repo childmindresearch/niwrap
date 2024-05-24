@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 WARPINIT_METADATA = Metadata(
-    id="1950bdafd48d2fd0ddec175da82381fd832ad0c0",
+    id="17221c0149bffeafaedc3ad425b7d363682a8994",
     name="warpinit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -134,8 +134,8 @@ def warpinit(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(template)])
-    cargs.extend(["", execution.input_file(warp)])
+    cargs.append(execution.input_file(template))
+    cargs.append(execution.input_file(warp))
     ret = WarpinitOutputs(
         root=execution.output_file("."),
         warp=execution.output_file(f"{pathlib.Path(warp).stem}"),

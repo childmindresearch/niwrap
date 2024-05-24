@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SH2PEAKS_METADATA = Metadata(
-    id="214be00c2b773702dffa5b82ca8f8250bbee4e0f",
+    id="784c742097a602b5e5eb1696f2c2cd21f935d373",
     name="sh2peaks",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -199,8 +199,8 @@ def sh2peaks(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(sh)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(sh))
+    cargs.append(execution.input_file(output))
     ret = Sh2peaksOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

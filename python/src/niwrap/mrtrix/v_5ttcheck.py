@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 V_5TTCHECK_METADATA = Metadata(
-    id="86ea5460dcc45100cfa6089b76793784e5cfbabf",
+    id="7ab02b617a5a472b472f6710da4d20469f58c76d",
     name="5ttcheck",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -124,7 +124,7 @@ def v_5ttcheck(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *[execution.input_file(f) for f in input_]])
+    cargs.extend([execution.input_file(f) for f in input_])
     ret = V5ttcheckOutputs(
         root=execution.output_file("."),
     )

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCAT_METADATA = Metadata(
-    id="ad70047912ad2cbe2591f23a95fe909cb7cae0cb",
+    id="bb47561c1c6b0fa35aad05cd33d2c10fff169284",
     name="mrcat",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -141,9 +141,9 @@ def mrcat(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(image1)])
-    cargs.extend(["", *[execution.input_file(f) for f in image2]])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(image1))
+    cargs.extend([execution.input_file(f) for f in image2])
+    cargs.append(execution.input_file(output))
     ret = MrcatOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

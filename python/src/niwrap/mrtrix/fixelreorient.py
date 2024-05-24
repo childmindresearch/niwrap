@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELREORIENT_METADATA = Metadata(
-    id="3f01b852ab264814ac2936a09ca4c1be8d7553fd",
+    id="656c53a22351d69886e9f964727ac114efc4313a",
     name="fixelreorient",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -133,9 +133,9 @@ def fixelreorient(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(fixel_in)])
-    cargs.extend(["", execution.input_file(warp)])
-    cargs.extend(["", execution.input_file(fixel_out)])
+    cargs.append(execution.input_file(fixel_in))
+    cargs.append(execution.input_file(warp))
+    cargs.append(execution.input_file(fixel_out))
     ret = FixelreorientOutputs(
         root=execution.output_file("."),
         fixel_out=execution.output_file(f"{pathlib.Path(fixel_out).stem}"),

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRREGISTER_METADATA = Metadata(
-    id="57524a2ad0ef09c6e5aeb80922dd72d24a2da4dd",
+    id="2989dd1e991d205826b15d1564709b797bab65cf",
     name="mrregister",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -625,9 +625,9 @@ def mrregister(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(image1_image2)])
+    cargs.append(execution.input_file(image1_image2))
     if contrast1_contrast2 is not None:
-        cargs.extend(["", *[execution.input_file(f) for f in contrast1_contrast2]])
+        cargs.extend([execution.input_file(f) for f in contrast1_contrast2])
     ret = MrregisterOutputs(
         root=execution.output_file("."),
         rigid=execution.output_file(f"{pathlib.Path(rigid).stem}") if rigid is not None else None,

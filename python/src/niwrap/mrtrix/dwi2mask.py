@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWI2MASK_METADATA = Metadata(
-    id="4c34e423bfb7b1c83c7649d3b0cf5d2d679d2745",
+    id="5072a2e5f9f23e74bd16b151b86ef5d6cf1563a2",
     name="dwi2mask",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -190,8 +190,8 @@ def dwi2mask(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(execution.input_file(output))
     ret = Dwi2maskOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCONNECTIVITY_METADATA = Metadata(
-    id="60a5334fcd245e053736fe2453b4bbdf61006c7e",
+    id="509d7f627fdbcd88bc5a2d9e1d970ea45596bc36",
     name="fixelconnectivity",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -142,9 +142,9 @@ def fixelconnectivity(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(fixel_directory)])
-    cargs.extend(["", execution.input_file(tracks)])
-    cargs.extend(["", execution.input_file(matrix)])
+    cargs.append(execution.input_file(fixel_directory))
+    cargs.append(execution.input_file(tracks))
+    cargs.append(execution.input_file(matrix))
     ret = FixelconnectivityOutputs(
         root=execution.output_file("."),
         matrix=execution.output_file(f"{pathlib.Path(matrix).stem}"),

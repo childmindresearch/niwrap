@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFINFO_METADATA = Metadata(
-    id="b170a8551fbadb7ed7c10ee533709da5e3c0c1dd",
+    id="7125311640a546fcc540d62d74247d7ad68a3d74",
     name="tsfinfo",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -127,7 +127,7 @@ def tsfinfo(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *[execution.input_file(f) for f in tracks]])
+    cargs.extend([execution.input_file(f) for f in tracks])
     ret = TsfinfoOutputs(
         root=execution.output_file("."),
     )

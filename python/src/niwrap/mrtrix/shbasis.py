@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SHBASIS_METADATA = Metadata(
-    id="ac50042ac6f0d166fe2da4f4c911d861bc030f1e",
+    id="546c5dd0602850714446bdfa8e3b15a05aa18c77",
     name="shbasis",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -142,7 +142,7 @@ def shbasis(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *[execution.input_file(f) for f in sh]])
+    cargs.extend([execution.input_file(f) for f in sh])
     ret = ShbasisOutputs(
         root=execution.output_file("."),
     )

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 LABELCONVERT_METADATA = Metadata(
-    id="4e1f330d6cfd50da95a2e8127a30d6e69ae133c0",
+    id="487d16a45c6809368e10fd5d5427f815a5d4a730",
     name="labelconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -138,10 +138,10 @@ def labelconvert(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(path_in)])
-    cargs.extend(["", execution.input_file(lut_in)])
-    cargs.extend(["", execution.input_file(lut_out)])
-    cargs.extend(["", execution.input_file(image_out)])
+    cargs.append(execution.input_file(path_in))
+    cargs.append(execution.input_file(lut_in))
+    cargs.append(execution.input_file(lut_out))
+    cargs.append(execution.input_file(image_out))
     ret = LabelconvertOutputs(
         root=execution.output_file("."),
         image_out=execution.output_file(f"{pathlib.Path(image_out).stem}"),

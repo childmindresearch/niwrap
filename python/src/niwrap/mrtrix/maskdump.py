@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MASKDUMP_METADATA = Metadata(
-    id="ba9b36f02179a99b6b907f4c1af2bb8cbeb66361",
+    id="6d894b996353ad5840588aeca6148e0f44523e97",
     name="maskdump",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -123,9 +123,9 @@ def maskdump(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
+    cargs.append(execution.input_file(input_))
     if output is not None:
-        cargs.extend(["", execution.input_file(output)])
+        cargs.append(execution.input_file(output))
     ret = MaskdumpOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}") if output is not None else None,

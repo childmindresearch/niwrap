@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFTHRESHOLD_METADATA = Metadata(
-    id="d678b570994b4a38bafc43be88eba468c6c28132",
+    id="6ae97e239b8c6b26b69d84871ff2f407b71972ba",
     name="tsfthreshold",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -128,9 +128,9 @@ def tsfthreshold(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(input_)])
-    cargs.extend(["", str(t)])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.append(execution.input_file(input_))
+    cargs.append(str(t))
+    cargs.append(execution.input_file(output))
     ret = TsfthresholdOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

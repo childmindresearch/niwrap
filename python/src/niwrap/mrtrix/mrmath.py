@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRMATH_METADATA = Metadata(
-    id="1ff6dad978d51c67fdc7737aa16b0ad6c90b1422",
+    id="e9cd8fb2a78037bf3a831231e693bdea958f5847",
     name="mrmath",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -155,9 +155,9 @@ def mrmath(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *[execution.input_file(f) for f in input_]])
-    cargs.extend(["", operation])
-    cargs.extend(["", execution.input_file(output)])
+    cargs.extend([execution.input_file(f) for f in input_])
+    cargs.append(operation)
+    cargs.append(execution.input_file(output))
     ret = MrmathOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).stem}"),

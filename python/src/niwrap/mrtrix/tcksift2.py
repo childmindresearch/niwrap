@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKSIFT2_METADATA = Metadata(
-    id="12a20c5bb39702633293710839fee3f08be0cd6e",
+    id="dd1eafebc866e314bd02e0fffddbaaae9f6a831f",
     name="tcksift2",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -273,9 +273,9 @@ def tcksift2(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", execution.input_file(in_tracks)])
-    cargs.extend(["", execution.input_file(in_fod)])
-    cargs.extend(["", execution.input_file(out_weights)])
+    cargs.append(execution.input_file(in_tracks))
+    cargs.append(execution.input_file(in_fod))
+    cargs.append(execution.input_file(out_weights))
     ret = Tcksift2Outputs(
         root=execution.output_file("."),
         out_weights=execution.output_file(f"{pathlib.Path(out_weights).stem}"),

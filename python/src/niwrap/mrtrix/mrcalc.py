@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCALC_METADATA = Metadata(
-    id="323bf5235882de108300cabf4de2d56474107d4a",
+    id="d55cfe895f9374e3bc15c5be8ec20ca015e8d206",
     name="mrcalc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -1558,7 +1558,7 @@ def mrcalc(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(["", *operand])
+    cargs.extend(operand)
     ret = MrcalcOutputs(
         root=execution.output_file("."),
     )
