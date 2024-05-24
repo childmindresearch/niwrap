@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCONNECTIVITY_METADATA = Metadata(
-    id="509d7f627fdbcd88bc5a2d9e1d970ea45596bc36",
+    id="f0546e42361f6428996e4c7f84b2b9da55f9a396",
     name="fixelconnectivity",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class FixelconnectivityConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

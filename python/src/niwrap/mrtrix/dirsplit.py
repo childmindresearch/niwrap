@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRSPLIT_METADATA = Metadata(
-    id="e4b5c2439350657ac23d2c75de6d444a95ec091a",
+    id="8b5fdd02778127e44dd5b2a8d2f76857ddbccb24",
     name="dirsplit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class DirsplitConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

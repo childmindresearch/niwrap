@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCFESTATS_METADATA = Metadata(
-    id="e2e403914ba83e76e987ace322598b8e40017045",
+    id="75a4fa805b68f14a8f6c526d4c9345fe364752eb",
     name="fixelcfestats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -42,7 +42,7 @@ class FixelcfestatsColumn:
         """
         cargs = []
         cargs.append("-column")
-        cargs.extend(["", execution.input_file(self.path)])
+        cargs.append(execution.input_file(self.path))
         return cargs
 
 
@@ -71,8 +71,8 @@ class FixelcfestatsConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

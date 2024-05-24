@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 LABEL2MESH_METADATA = Metadata(
-    id="664f5c4e14a2da1ad456e13a4604b9890c9f5b15",
+    id="383b8c89a18899ad420ff854cb634178fcf55571",
     name="label2mesh",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Label2meshConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 LABELSTATS_METADATA = Metadata(
-    id="f0a4c25c6efb3d3be9c769b54b1e2ea22a2daa01",
+    id="286c9fb1bf7805b495acc538d6c090d1834865ce",
     name="labelstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class LabelstatsConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

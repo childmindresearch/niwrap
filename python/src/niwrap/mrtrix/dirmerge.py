@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRMERGE_METADATA = Metadata(
-    id="b54d273c381fe7db320cff2c39a9108a9f80bd55",
+    id="f4052e81bc4668371f88430c397ace69e93bc6e1",
     name="dirmerge",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class DirmergeConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

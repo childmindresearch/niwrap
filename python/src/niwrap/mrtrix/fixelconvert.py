@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCONVERT_METADATA = Metadata(
-    id="49d57abbc0be722cdf1ae3d5b675e21a12f97dbd",
+    id="0e7ea546c541bbf330a629a52875c59d0e036cc9",
     name="fixelconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class FixelconvertConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value_])
+        cargs.append(self.key)
+        cargs.append(self.value_)
         return cargs
 
 

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 VOXEL2FIXEL_METADATA = Metadata(
-    id="0b06102b297eccf7539adda99e58d56dbeb8cdec",
+    id="3ee38fc4c944bbf53830a1ae211114adba9f0623",
     name="voxel2fixel",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Voxel2fixelConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

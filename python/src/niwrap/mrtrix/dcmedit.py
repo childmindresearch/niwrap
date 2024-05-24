@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DCMEDIT_METADATA = Metadata(
-    id="9fdc7e9af67a79009f76cbfaa23e76ebee6fa08e",
+    id="d829a602d8b0ae7db1422fb208af58fe0bfe5b6c",
     name="dcmedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -43,9 +43,9 @@ class DcmeditTag:
         """
         cargs = []
         cargs.append("-tag")
-        cargs.extend(["", self.group])
-        cargs.extend(["", self.element])
-        cargs.extend(["", self.newvalue])
+        cargs.append(self.group)
+        cargs.append(self.element)
+        cargs.append(self.newvalue)
         return cargs
 
 
@@ -74,8 +74,8 @@ class DcmeditConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

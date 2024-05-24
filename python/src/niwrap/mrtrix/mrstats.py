@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRSTATS_METADATA = Metadata(
-    id="ac3053ad02a314009f2976c832171ac6a8701a2c",
+    id="cfe38b38774673daa41e320becef90fb7aa12680",
     name="mrstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -44,7 +44,7 @@ class MrstatsOutput:
         """
         cargs = []
         cargs.append("-output")
-        cargs.extend(["", self.field])
+        cargs.append(self.field)
         return cargs
 
 
@@ -73,8 +73,8 @@ class MrstatsConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

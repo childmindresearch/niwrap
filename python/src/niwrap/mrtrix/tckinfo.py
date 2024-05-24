@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKINFO_METADATA = Metadata(
-    id="a2d6619eb4138b5674aa9fbacbe3628eea812437",
+    id="07e9b6b2d544e6fccb6cfd9310afb78bd0d1c7f3",
     name="tckinfo",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TckinfoConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

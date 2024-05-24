@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRGRID_METADATA = Metadata(
-    id="170e0093c16ac657eb7b772c8c7728f00988cd17",
+    id="e3acae96b1ea70a947a4146ad585070a3d3c79f7",
     name="mrgrid",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,8 +57,8 @@ class MrgridAxis:
         """
         cargs = []
         cargs.append("-axis")
-        cargs.extend(["", str(self.index)])
-        cargs.extend(["", self.spec])
+        cargs.append(str(self.index))
+        cargs.append(self.spec)
         return cargs
 
 
@@ -87,8 +87,8 @@ class MrgridConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

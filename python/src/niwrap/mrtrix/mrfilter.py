@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRFILTER_METADATA = Metadata(
-    id="2ca7b9ee1cca69322bfd7d154ce550fdf775912c",
+    id="021401bcb9e968e66541b579139c47550398b247",
     name="mrfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrfilterConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

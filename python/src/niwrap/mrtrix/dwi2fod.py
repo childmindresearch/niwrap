@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWI2FOD_METADATA = Metadata(
-    id="af156787a64179854b3d81a4f76391cbf5ddf8be",
+    id="13a43d163b310229edcf83d936702e108397bf5a",
     name="dwi2fod",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -47,8 +47,8 @@ class Dwi2fodFslgrad:
         """
         cargs = []
         cargs.append("-fslgrad")
-        cargs.extend(["", execution.input_file(self.bvecs)])
-        cargs.extend(["", execution.input_file(self.bvals)])
+        cargs.append(execution.input_file(self.bvecs))
+        cargs.append(execution.input_file(self.bvals))
         return cargs
 
 
@@ -77,8 +77,8 @@ class Dwi2fodConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

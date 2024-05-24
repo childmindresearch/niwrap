@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRDEGIBBS_METADATA = Metadata(
-    id="73f3402ef977f2c24829e4474763b4890a53b60a",
+    id="ccaa6a3ba223e5670d7651d5da0d8a8c42b02752",
     name="mrdegibbs",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrdegibbsConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

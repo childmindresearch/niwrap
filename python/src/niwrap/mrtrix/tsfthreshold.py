@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFTHRESHOLD_METADATA = Metadata(
-    id="6ae97e239b8c6b26b69d84871ff2f407b71972ba",
+    id="d4ca73e490ba0a508cf678a247db8ed07935d46d",
     name="tsfthreshold",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TsfthresholdConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

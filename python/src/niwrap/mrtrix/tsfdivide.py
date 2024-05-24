@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFDIVIDE_METADATA = Metadata(
-    id="3c13926c23c2b1d2f625b21a916c53868878e432",
+    id="9b536af3d3ea74275dafb0ce496fdbedf2a4b28f",
     name="tsfdivide",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TsfdivideConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

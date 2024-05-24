@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRREGISTER_METADATA = Metadata(
-    id="2989dd1e991d205826b15d1564709b797bab65cf",
+    id="f0cadb4815a21a9ec786633043b545c77522c442",
     name="mrregister",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,7 +41,7 @@ class MrregisterTransformed:
         """
         cargs = []
         cargs.append("-transformed")
-        cargs.extend(["", execution.input_file(self.image)])
+        cargs.append(execution.input_file(self.image))
         return cargs
 
 
@@ -74,8 +74,8 @@ class MrregisterTransformedMidway:
         """
         cargs = []
         cargs.append("-transformed_midway")
-        cargs.extend(["", execution.input_file(self.image1_transformed)])
-        cargs.extend(["", execution.input_file(self.image2_transformed)])
+        cargs.append(execution.input_file(self.image1_transformed))
+        cargs.append(execution.input_file(self.image2_transformed))
         return cargs
 
 
@@ -110,8 +110,8 @@ class MrregisterNlWarp:
         """
         cargs = []
         cargs.append("-nl_warp")
-        cargs.extend(["", execution.input_file(self.warp1)])
-        cargs.extend(["", execution.input_file(self.warp2)])
+        cargs.append(execution.input_file(self.warp1))
+        cargs.append(execution.input_file(self.warp2))
         return cargs
 
 
@@ -140,8 +140,8 @@ class MrregisterConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

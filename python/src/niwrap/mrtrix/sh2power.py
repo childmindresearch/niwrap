@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SH2POWER_METADATA = Metadata(
-    id="9a6fc5917b7ea71a1cdc66b8ca126c55006c62bb",
+    id="c2654ddff51663e202a9842d15fbab01ae6e48c9",
     name="sh2power",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Sh2powerConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

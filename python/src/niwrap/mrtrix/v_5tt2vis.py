@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 V_5TT2VIS_METADATA = Metadata(
-    id="9cdab1def4ff3ec9fcb13e284b46b3ea0b341ac1",
+    id="8b78208ac780e6feffbee6d5f9d2e9fe90bff3cd",
     name="5tt2vis",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class V5tt2visConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKRESAMPLE_METADATA = Metadata(
-    id="a0f07c3ad1673f461d6e28d56c3a8d7367129def",
+    id="371f57c665c15b5521fd00dd5a359447e3aeebab",
     name="tckresample",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -49,9 +49,9 @@ class TckresampleLine:
         """
         cargs = []
         cargs.append("-line")
-        cargs.extend(["", str(self.num)])
-        cargs.extend(["", *map(str, self.start)])
-        cargs.extend(["", *map(str, self.end)])
+        cargs.append(str(self.num))
+        cargs.extend(map(str, self.start))
+        cargs.extend(map(str, self.end))
         return cargs
 
 
@@ -92,10 +92,10 @@ class TckresampleArc:
         """
         cargs = []
         cargs.append("-arc")
-        cargs.extend(["", str(self.num)])
-        cargs.extend(["", *map(str, self.start)])
-        cargs.extend(["", *map(str, self.mid)])
-        cargs.extend(["", *map(str, self.end)])
+        cargs.append(str(self.num))
+        cargs.extend(map(str, self.start))
+        cargs.extend(map(str, self.mid))
+        cargs.extend(map(str, self.end))
         return cargs
 
 
@@ -124,8 +124,8 @@ class TckresampleConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

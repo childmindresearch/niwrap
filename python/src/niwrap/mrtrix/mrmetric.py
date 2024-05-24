@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRMETRIC_METADATA = Metadata(
-    id="886e41ec060b8ac070901635f195684c5f312017",
+    id="38abc872e860cbc5e43effb5a5d2f87b369a712b",
     name="mrmetric",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrmetricConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

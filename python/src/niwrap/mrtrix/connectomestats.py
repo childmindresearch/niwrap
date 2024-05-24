@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 CONNECTOMESTATS_METADATA = Metadata(
-    id="7db5540ec9bfe5863ea02fc8298dba96d722c53b",
+    id="4f12433fa5e94d6b73db3e3d93dbf7e89441971b",
     name="connectomestats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -42,7 +42,7 @@ class ConnectomestatsColumn:
         """
         cargs = []
         cargs.append("-column")
-        cargs.extend(["", execution.input_file(self.path)])
+        cargs.append(execution.input_file(self.path))
         return cargs
 
 
@@ -71,8 +71,8 @@ class ConnectomestatsConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

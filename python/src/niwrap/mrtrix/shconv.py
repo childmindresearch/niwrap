@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SHCONV_METADATA = Metadata(
-    id="7409f9984bc6e973676b90044d3ec7542c634af1",
+    id="22a4e3f3778f258c0a381991fb6dcb5946c765d9",
     name="shconv",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class ShconvConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

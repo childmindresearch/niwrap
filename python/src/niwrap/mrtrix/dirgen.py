@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRGEN_METADATA = Metadata(
-    id="f8c441a0554a428b27ba2e52afe81bed79b29da5",
+    id="d8a2463c6a881a3c32aad11a31200b363d898fd8",
     name="dirgen",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class DirgenConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

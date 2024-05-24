@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRVIEW_METADATA = Metadata(
-    id="aef8290864d5ee131c5daa4eb8ee3c1f1a0af1b1",
+    id="8394d2b93b93dd2e7d2dee50f08a9cf5662871b7",
     name="mrview",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -40,7 +40,7 @@ class MrviewMode:
         """
         cargs = []
         cargs.append("-mode")
-        cargs.extend(["", str(self.index)])
+        cargs.append(str(self.index))
         return cargs
 
 
@@ -67,7 +67,7 @@ class MrviewLoad:
         """
         cargs = []
         cargs.append("-load")
-        cargs.extend(["", execution.input_file(self.image_)])
+        cargs.append(execution.input_file(self.image_))
         return cargs
 
 
@@ -118,7 +118,7 @@ class MrviewFov:
         """
         cargs = []
         cargs.append("-fov")
-        cargs.extend(["", str(self.value)])
+        cargs.append(str(self.value))
         return cargs
 
 
@@ -147,7 +147,7 @@ class MrviewFocus:
         """
         cargs = []
         cargs.append("-focus")
-        cargs.extend(["", self.x_y_z_or_boolean])
+        cargs.append(self.x_y_z_or_boolean)
         return cargs
 
 
@@ -175,7 +175,7 @@ class MrviewTarget:
         """
         cargs = []
         cargs.append("-target")
-        cargs.extend(["", *map(str, self.x_y_z)])
+        cargs.extend(map(str, self.x_y_z))
         return cargs
 
 
@@ -204,7 +204,7 @@ class MrviewVoxel:
         """
         cargs = []
         cargs.append("-voxel")
-        cargs.extend(["", *map(str, self.x_y_z)])
+        cargs.extend(map(str, self.x_y_z))
         return cargs
 
 
@@ -232,7 +232,7 @@ class MrviewVolume:
         """
         cargs = []
         cargs.append("-volume")
-        cargs.extend(["", *map(str, self.idx)])
+        cargs.extend(map(str, self.idx))
         return cargs
 
 
@@ -260,7 +260,7 @@ class MrviewPlane:
         """
         cargs = []
         cargs.append("-plane")
-        cargs.extend(["", str(self.index)])
+        cargs.append(str(self.index))
         return cargs
 
 
@@ -287,7 +287,7 @@ class MrviewLock:
         """
         cargs = []
         cargs.append("-lock")
-        cargs.extend(["", self.yesno])
+        cargs.append(self.yesno)
         return cargs
 
 
@@ -315,7 +315,7 @@ class MrviewSelectImage:
         """
         cargs = []
         cargs.append("-select_image")
-        cargs.extend(["", str(self.index)])
+        cargs.append(str(self.index))
         return cargs
 
 
@@ -366,7 +366,7 @@ class MrviewInterpolation:
         """
         cargs = []
         cargs.append("-interpolation")
-        cargs.extend(["", self.boolean])
+        cargs.append(self.boolean)
         return cargs
 
 
@@ -394,7 +394,7 @@ class MrviewColourmap:
         """
         cargs = []
         cargs.append("-colourmap")
-        cargs.extend(["", str(self.index)])
+        cargs.append(str(self.index))
         return cargs
 
 
@@ -445,7 +445,7 @@ class MrviewComments:
         """
         cargs = []
         cargs.append("-comments")
-        cargs.extend(["", self.boolean])
+        cargs.append(self.boolean)
         return cargs
 
 
@@ -472,7 +472,7 @@ class MrviewVoxelinfo:
         """
         cargs = []
         cargs.append("-voxelinfo")
-        cargs.extend(["", self.boolean])
+        cargs.append(self.boolean)
         return cargs
 
 
@@ -499,7 +499,7 @@ class MrviewOrientationlabel:
         """
         cargs = []
         cargs.append("-orientationlabel")
-        cargs.extend(["", self.boolean])
+        cargs.append(self.boolean)
         return cargs
 
 
@@ -526,7 +526,7 @@ class MrviewColourbar:
         """
         cargs = []
         cargs.append("-colourbar")
-        cargs.extend(["", self.boolean])
+        cargs.append(self.boolean)
         return cargs
 
 
@@ -553,7 +553,7 @@ class MrviewImagevisible:
         """
         cargs = []
         cargs.append("-imagevisible")
-        cargs.extend(["", self.boolean])
+        cargs.append(self.boolean)
         return cargs
 
 
@@ -580,7 +580,7 @@ class MrviewIntensityRange:
         """
         cargs = []
         cargs.append("-intensity_range")
-        cargs.extend(["", *map(str, self.min_max)])
+        cargs.extend(map(str, self.min_max))
         return cargs
 
 
@@ -607,7 +607,7 @@ class MrviewSize:
         """
         cargs = []
         cargs.append("-size")
-        cargs.extend(["", *map(str, self.width_height)])
+        cargs.extend(map(str, self.width_height))
         return cargs
 
 
@@ -634,7 +634,7 @@ class MrviewPosition:
         """
         cargs = []
         cargs.append("-position")
-        cargs.extend(["", *map(str, self.x_y)])
+        cargs.extend(map(str, self.x_y))
         return cargs
 
 
@@ -661,7 +661,7 @@ class MrviewOverlayLoad:
         """
         cargs = []
         cargs.append("-overlay.load")
-        cargs.extend(["", execution.input_file(self.image_)])
+        cargs.append(execution.input_file(self.image_))
         return cargs
 
 
@@ -688,7 +688,7 @@ class MrviewOverlayOpacity:
         """
         cargs = []
         cargs.append("-overlay.opacity")
-        cargs.extend(["", str(self.value)])
+        cargs.append(str(self.value))
         return cargs
 
 
@@ -716,7 +716,7 @@ class MrviewOverlayColourmap:
         """
         cargs = []
         cargs.append("-overlay.colourmap")
-        cargs.extend(["", str(self.index)])
+        cargs.append(str(self.index))
         return cargs
 
 
@@ -744,7 +744,7 @@ class MrviewOverlayColour:
         """
         cargs = []
         cargs.append("-overlay.colour")
-        cargs.extend(["", *map(str, self.r_g_b)])
+        cargs.extend(map(str, self.r_g_b))
         return cargs
 
 
@@ -771,7 +771,7 @@ class MrviewOverlayIntensity:
         """
         cargs = []
         cargs.append("-overlay.intensity")
-        cargs.extend(["", *map(str, self.min_max)])
+        cargs.extend(map(str, self.min_max))
         return cargs
 
 
@@ -798,7 +798,7 @@ class MrviewOverlayThresholdMin:
         """
         cargs = []
         cargs.append("-overlay.threshold_min")
-        cargs.extend(["", str(self.value)])
+        cargs.append(str(self.value))
         return cargs
 
 
@@ -825,7 +825,7 @@ class MrviewOverlayThresholdMax:
         """
         cargs = []
         cargs.append("-overlay.threshold_max")
-        cargs.extend(["", str(self.value)])
+        cargs.append(str(self.value))
         return cargs
 
 
@@ -900,7 +900,7 @@ class MrviewOverlayInterpolation:
         """
         cargs = []
         cargs.append("-overlay.interpolation")
-        cargs.extend(["", self.value])
+        cargs.append(self.value)
         return cargs
 
 
@@ -927,7 +927,7 @@ class MrviewRoiLoad:
         """
         cargs = []
         cargs.append("-roi.load")
-        cargs.extend(["", execution.input_file(self.image_)])
+        cargs.append(execution.input_file(self.image_))
         return cargs
 
 
@@ -954,7 +954,7 @@ class MrviewRoiOpacity:
         """
         cargs = []
         cargs.append("-roi.opacity")
-        cargs.extend(["", str(self.value)])
+        cargs.append(str(self.value))
         return cargs
 
 
@@ -981,7 +981,7 @@ class MrviewRoiColour:
         """
         cargs = []
         cargs.append("-roi.colour")
-        cargs.extend(["", *map(str, self.r_g_b)])
+        cargs.extend(map(str, self.r_g_b))
         return cargs
 
 
@@ -1008,7 +1008,7 @@ class MrviewTractographyLoad:
         """
         cargs = []
         cargs.append("-tractography.load")
-        cargs.extend(["", execution.input_file(self.tracks)])
+        cargs.append(execution.input_file(self.tracks))
         return cargs
 
 
@@ -1035,7 +1035,7 @@ class MrviewTractographyThickness:
         """
         cargs = []
         cargs.append("-tractography.thickness")
-        cargs.extend(["", str(self.value)])
+        cargs.append(str(self.value))
         return cargs
 
 
@@ -1063,7 +1063,7 @@ class MrviewTractographyGeometry:
         """
         cargs = []
         cargs.append("-tractography.geometry")
-        cargs.extend(["", self.value])
+        cargs.append(self.value)
         return cargs
 
 
@@ -1090,7 +1090,7 @@ class MrviewTractographyOpacity:
         """
         cargs = []
         cargs.append("-tractography.opacity")
-        cargs.extend(["", str(self.value)])
+        cargs.append(str(self.value))
         return cargs
 
 
@@ -1118,7 +1118,7 @@ class MrviewTractographySlab:
         """
         cargs = []
         cargs.append("-tractography.slab")
-        cargs.extend(["", str(self.value)])
+        cargs.append(str(self.value))
         return cargs
 
 
@@ -1145,7 +1145,7 @@ class MrviewTractographyLighting:
         """
         cargs = []
         cargs.append("-tractography.lighting")
-        cargs.extend(["", self.value])
+        cargs.append(self.value)
         return cargs
 
 
@@ -1173,7 +1173,7 @@ class MrviewTractographyColour:
         """
         cargs = []
         cargs.append("-tractography.colour")
-        cargs.extend(["", *map(str, self.r_g_b)])
+        cargs.extend(map(str, self.r_g_b))
         return cargs
 
 
@@ -1200,7 +1200,7 @@ class MrviewTractographyTsfLoad:
         """
         cargs = []
         cargs.append("-tractography.tsf_load")
-        cargs.extend(["", execution.input_file(self.tsf)])
+        cargs.append(execution.input_file(self.tsf))
         return cargs
 
 
@@ -1228,7 +1228,7 @@ class MrviewTractographyTsfRange:
         """
         cargs = []
         cargs.append("-tractography.tsf_range")
-        cargs.extend(["", *map(str, self.range_min_range_max)])
+        cargs.extend(map(str, self.range_min_range_max))
         return cargs
 
 
@@ -1256,7 +1256,7 @@ class MrviewTractographyTsfThresh:
         """
         cargs = []
         cargs.append("-tractography.tsf_thresh")
-        cargs.extend(["", *map(str, self.threshold_min_theshold_max)])
+        cargs.extend(map(str, self.threshold_min_theshold_max))
         return cargs
 
 
@@ -1284,7 +1284,7 @@ class MrviewTractographyTsfColourmap:
         """
         cargs = []
         cargs.append("-tractography.tsf_colourmap")
-        cargs.extend(["", str(self.index)])
+        cargs.append(str(self.index))
         return cargs
 
 
@@ -1311,7 +1311,7 @@ class MrviewOdfLoadSh:
         """
         cargs = []
         cargs.append("-odf.load_sh")
-        cargs.extend(["", execution.input_file(self.image_)])
+        cargs.append(execution.input_file(self.image_))
         return cargs
 
 
@@ -1338,7 +1338,7 @@ class MrviewOdfLoadTensor:
         """
         cargs = []
         cargs.append("-odf.load_tensor")
-        cargs.extend(["", execution.input_file(self.image_)])
+        cargs.append(execution.input_file(self.image_))
         return cargs
 
 
@@ -1365,7 +1365,7 @@ class MrviewOdfLoadDixel:
         """
         cargs = []
         cargs.append("-odf.load_dixel")
-        cargs.extend(["", execution.input_file(self.image_)])
+        cargs.append(execution.input_file(self.image_))
         return cargs
 
 
@@ -1393,7 +1393,7 @@ class MrviewFixelLoad:
         """
         cargs = []
         cargs.append("-fixel.load")
-        cargs.extend(["", execution.input_file(self.image_)])
+        cargs.append(execution.input_file(self.image_))
         return cargs
 
 
@@ -1420,7 +1420,7 @@ class MrviewConnectomeLoad:
         """
         cargs = []
         cargs.append("-connectome.load")
-        cargs.extend(["", execution.input_file(self.path)])
+        cargs.append(execution.input_file(self.path))
         return cargs
 
 
@@ -1447,7 +1447,7 @@ class MrviewCaptureFolder:
         """
         cargs = []
         cargs.append("-capture.folder")
-        cargs.extend(["", self.path])
+        cargs.append(self.path)
         return cargs
 
 
@@ -1474,7 +1474,7 @@ class MrviewCapturePrefix:
         """
         cargs = []
         cargs.append("-capture.prefix")
-        cargs.extend(["", self.string_])
+        cargs.append(self.string_)
         return cargs
 
 
@@ -1527,8 +1527,8 @@ class MrviewConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

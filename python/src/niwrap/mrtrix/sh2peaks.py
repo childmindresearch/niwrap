@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SH2PEAKS_METADATA = Metadata(
-    id="784c742097a602b5e5eb1696f2c2cd21f935d373",
+    id="9251342747ef3203032d4a31ebaebbb679329943",
     name="sh2peaks",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -43,8 +43,8 @@ class Sh2peaksDirection:
         """
         cargs = []
         cargs.append("-direction")
-        cargs.extend(["", str(self.phi)])
-        cargs.extend(["", str(self.theta)])
+        cargs.append(str(self.phi))
+        cargs.append(str(self.theta))
         return cargs
 
 
@@ -73,8 +73,8 @@ class Sh2peaksConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

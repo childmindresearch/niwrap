@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWI2TENSOR_METADATA = Metadata(
-    id="6de247fcb34ba8e697e30249bce5a1d41889ca65",
+    id="57272c4fc072bbc482b867c16a8884c0853fb8f5",
     name="dwi2tensor",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -47,8 +47,8 @@ class Dwi2tensorFslgrad:
         """
         cargs = []
         cargs.append("-fslgrad")
-        cargs.extend(["", execution.input_file(self.bvecs)])
-        cargs.extend(["", execution.input_file(self.bvals)])
+        cargs.append(execution.input_file(self.bvecs))
+        cargs.append(execution.input_file(self.bvals))
         return cargs
 
 
@@ -77,8 +77,8 @@ class Dwi2tensorConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

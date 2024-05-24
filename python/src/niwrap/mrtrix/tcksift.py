@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKSIFT_METADATA = Metadata(
-    id="92150c0a2550628481e511d69011f989990030a2",
+    id="0df3436cb02a1110e7030df068bb6f7a48910b6b",
     name="tcksift",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TcksiftConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

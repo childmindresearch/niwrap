@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 WARP2METRIC_METADATA = Metadata(
-    id="91e8b0ba42439d652950de09400d5d1336c39c10",
+    id="7bf8a320ff6fb906157e2f4df79c06732e57ab60",
     name="warp2metric",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -52,9 +52,9 @@ class Warp2metricFc:
         """
         cargs = []
         cargs.append("-fc")
-        cargs.extend(["", execution.input_file(self.template_fixel_directory)])
-        cargs.extend(["", self.output_fixel_directory])
-        cargs.extend(["", self.output_fixel_data])
+        cargs.append(execution.input_file(self.template_fixel_directory))
+        cargs.append(self.output_fixel_directory)
+        cargs.append(self.output_fixel_data)
         return cargs
 
 
@@ -83,8 +83,8 @@ class Warp2metricConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

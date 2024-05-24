@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SH2RESPONSE_METADATA = Metadata(
-    id="24a3f55ea9a81c8f6d52ecb7e6433db87cb6338a",
+    id="cd90807121faa735f09e431bfb89683b88ec64a8",
     name="sh2response",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Sh2responseConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

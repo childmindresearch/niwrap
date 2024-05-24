@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TRANSFORMCONVERT_METADATA = Metadata(
-    id="8c747aee250af8661ac5676126e64e13a680e370",
+    id="b4abd003a65b4e93fc7414c9ac6be4b0be05bfa8",
     name="transformconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TransformconvertConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

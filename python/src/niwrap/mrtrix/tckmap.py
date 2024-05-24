@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKMAP_METADATA = Metadata(
-    id="4a2bcbaacbc97001ec91b223529c2ffac96e3e69",
+    id="0987e535d633d8dc1b22141f35ade0b07832d7d6",
     name="tckmap",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TckmapConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

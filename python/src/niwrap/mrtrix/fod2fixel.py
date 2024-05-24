@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FOD2FIXEL_METADATA = Metadata(
-    id="016928756376bfa4b5acd77ae3e6fe1b9d2af471",
+    id="624de5d83bc1e96871850ee95153c643eaedf75c",
     name="fod2fixel",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Fod2fixelConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

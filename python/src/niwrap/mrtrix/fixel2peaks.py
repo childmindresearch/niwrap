@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXEL2PEAKS_METADATA = Metadata(
-    id="46ad0218c2f4e7332d62a995dc58b3458ab83be8",
+    id="750ef59543a13bbb08434adbdd85d0c6b3f035d2",
     name="fixel2peaks",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Fixel2peaksConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

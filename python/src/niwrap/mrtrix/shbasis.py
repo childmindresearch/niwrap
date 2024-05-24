@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SHBASIS_METADATA = Metadata(
-    id="546c5dd0602850714446bdfa8e3b15a05aa18c77",
+    id="f5015a6fa580efa3089db741e6b2ed5b913d793b",
     name="shbasis",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class ShbasisConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

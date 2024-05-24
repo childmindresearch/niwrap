@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWIEXTRACT_METADATA = Metadata(
-    id="b53047a64bc98180bbd88df066d6e9e6bd41c711",
+    id="20dcd9bb222ae757a7aa00bc444db7fe227b12ee",
     name="dwiextract",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -47,8 +47,8 @@ class DwiextractFslgrad:
         """
         cargs = []
         cargs.append("-fslgrad")
-        cargs.extend(["", execution.input_file(self.bvecs)])
-        cargs.extend(["", execution.input_file(self.bvals)])
+        cargs.append(execution.input_file(self.bvecs))
+        cargs.append(execution.input_file(self.bvals))
         return cargs
 
 
@@ -79,8 +79,8 @@ class DwiextractExportGradFsl:
         """
         cargs = []
         cargs.append("-export_grad_fsl")
-        cargs.extend(["", execution.input_file(self.bvecs_path)])
-        cargs.extend(["", execution.input_file(self.bvals_path)])
+        cargs.append(execution.input_file(self.bvecs_path))
+        cargs.append(execution.input_file(self.bvals_path))
         return cargs
 
 
@@ -111,8 +111,8 @@ class DwiextractImportPeEddy:
         """
         cargs = []
         cargs.append("-import_pe_eddy")
-        cargs.extend(["", execution.input_file(self.config_)])
-        cargs.extend(["", execution.input_file(self.indices)])
+        cargs.append(execution.input_file(self.config_))
+        cargs.append(execution.input_file(self.indices))
         return cargs
 
 
@@ -141,8 +141,8 @@ class DwiextractConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

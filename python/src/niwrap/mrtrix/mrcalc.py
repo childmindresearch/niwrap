@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCALC_METADATA = Metadata(
-    id="d55cfe895f9374e3bc15c5be8ec20ca015e8d206",
+    id="0a433c2d6189801142076f222e9ab90c9183c047",
     name="mrcalc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -1241,8 +1241,8 @@ class MrcalcConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

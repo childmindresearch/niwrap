@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MREDIT_METADATA = Metadata(
-    id="725e0d15b5c5afb444a0a6fd05ff51a1eb7b2aec",
+    id="96eeb9573644a64bde9640817e526954dbec0d09",
     name="mredit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -43,9 +43,9 @@ class MreditPlane:
         """
         cargs = []
         cargs.append("-plane")
-        cargs.extend(["", str(self.axis)])
-        cargs.extend(["", *map(str, self.coord)])
-        cargs.extend(["", str(self.value)])
+        cargs.append(str(self.axis))
+        cargs.extend(map(str, self.coord))
+        cargs.append(str(self.value))
         return cargs
 
 
@@ -76,9 +76,9 @@ class MreditSphere:
         """
         cargs = []
         cargs.append("-sphere")
-        cargs.extend(["", *map(str, self.position)])
-        cargs.extend(["", str(self.radius)])
-        cargs.extend(["", str(self.value)])
+        cargs.extend(map(str, self.position))
+        cargs.append(str(self.radius))
+        cargs.append(str(self.value))
         return cargs
 
 
@@ -107,8 +107,8 @@ class MreditVoxel:
         """
         cargs = []
         cargs.append("-voxel")
-        cargs.extend(["", *map(str, self.position)])
-        cargs.extend(["", str(self.value)])
+        cargs.extend(map(str, self.position))
+        cargs.append(str(self.value))
         return cargs
 
 
@@ -137,8 +137,8 @@ class MreditConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRAVERAGEHEADER_METADATA = Metadata(
-    id="271842d1357b600f4da756c5ab786d4ff41f4fb9",
+    id="dc72e10a3f6c4ead6edbd603667e78d5bc6047c8",
     name="mraverageheader",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MraverageheaderConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

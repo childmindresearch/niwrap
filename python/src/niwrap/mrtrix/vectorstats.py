@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 VECTORSTATS_METADATA = Metadata(
-    id="468febad0b1eaa5ebce27a3a310f91ae96f29e0f",
+    id="c59d55bcec9a6deff12e83476613abf0ca82bcdd",
     name="vectorstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -42,7 +42,7 @@ class VectorstatsColumn:
         """
         cargs = []
         cargs.append("-column")
-        cargs.extend(["", execution.input_file(self.path)])
+        cargs.append(execution.input_file(self.path))
         return cargs
 
 
@@ -71,8 +71,8 @@ class VectorstatsConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

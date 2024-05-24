@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCK2CONNECTOME_METADATA = Metadata(
-    id="aea06d7a1d23ec78000a356daa929fefe5926228",
+    id="a03e73d5d9c3da6ab052a08a432f74334689a0c3",
     name="tck2connectome",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Tck2connectomeConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

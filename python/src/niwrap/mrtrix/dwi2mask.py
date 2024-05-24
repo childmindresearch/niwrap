@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWI2MASK_METADATA = Metadata(
-    id="5072a2e5f9f23e74bd16b151b86ef5d6cf1563a2",
+    id="6b6aba217256d9f6daad23e3388b3478ced6db31",
     name="dwi2mask",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -47,8 +47,8 @@ class Dwi2maskFslgrad:
         """
         cargs = []
         cargs.append("-fslgrad")
-        cargs.extend(["", execution.input_file(self.bvecs)])
-        cargs.extend(["", execution.input_file(self.bvals)])
+        cargs.append(execution.input_file(self.bvecs))
+        cargs.append(execution.input_file(self.bvals))
         return cargs
 
 
@@ -77,8 +77,8 @@ class Dwi2maskConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

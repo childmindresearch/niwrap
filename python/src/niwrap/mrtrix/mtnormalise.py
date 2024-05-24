@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MTNORMALISE_METADATA = Metadata(
-    id="b2e1e4b749e74b5be532f66be58de7d5b084cc9b",
+    id="cd3ae6497f3cf8d45319da581cf911bc038953a1",
     name="mtnormalise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MtnormaliseConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

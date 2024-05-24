@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRFLIP_METADATA = Metadata(
-    id="1cb3288a4b2efcf818e3a579cd6254b07407dd6e",
+    id="623c2c986c21b0eca7e5db0efcc8f3c19e7e3139",
     name="dirflip",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class DirflipConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

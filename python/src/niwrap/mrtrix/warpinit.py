@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 WARPINIT_METADATA = Metadata(
-    id="17221c0149bffeafaedc3ad425b7d363682a8994",
+    id="89b6a74cefdfe9ff35d5f636ecfe36bce0e39b5d",
     name="warpinit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class WarpinitConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

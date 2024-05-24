@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 AMP2RESPONSE_METADATA = Metadata(
-    id="6fd77a65c45c017b949be71b453b14e5cf993b30",
+    id="66d0adbe8cc1fb477aad13601a463061122d577e",
     name="amp2response",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Amp2responseConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRMATH_METADATA = Metadata(
-    id="e9cd8fb2a78037bf3a831231e693bdea958f5847",
+    id="38c935ed54ecd55176cdcab30387f2a5c846a9dd",
     name="mrmath",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrmathConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 
