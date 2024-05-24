@@ -36,9 +36,7 @@
       "description": "specify the tractography algorithm to use. Valid choices are: FACT, iFOD1, iFOD2, Nulldist1, Nulldist2, SD_Stream, Seedtest, Tensor_Det, Tensor_Prob (default: iFOD2).",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "name"
-      ]
+      "value-choices": ["name"]
     },
     {
       "id": "select",

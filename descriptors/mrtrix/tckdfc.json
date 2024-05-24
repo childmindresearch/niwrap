@@ -66,9 +66,7 @@
             "description": "generate a \"dynamic\" (4D) output image; must additionally provide the shape and width (in volumes) of the sliding window.",
             "type": "String",
             "optional": false,
-            "value-choices": [
-              "shape"
-            ]
+            "value-choices": ["shape"]
           },
           {
             "id": "width",
@@ -113,9 +111,7 @@
       "description": "define the statistic for choosing the final voxel intensities for a given contrast type given the individual values from the tracks passing through each voxel\nOptions are: sum, min, mean, max (default: mean)",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "type"
-      ]
+      "value-choices": ["type"]
     },
     {
       "id": "backtrack",

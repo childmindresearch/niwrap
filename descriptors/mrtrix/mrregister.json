@@ -37,9 +37,7 @@
       "description": "the registration type. Valid choices are: rigid, affine, nonlinear, rigid_affine, rigid_nonlinear, affine_nonlinear, rigid_affine_nonlinear (Default: affine_nonlinear)",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "choice"
-      ]
+      "value-choices": ["choice"]
     },
     {
       "id": "transformed",
@@ -186,9 +184,7 @@
       "description": "initialise the translation and centre of rotation \nValid choices are: \nmass (aligns the centers of mass of both images, default), \ngeometric (aligns geometric image centres) and none.",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "type"
-      ]
+      "value-choices": ["type"]
     },
     {
       "id": "rigid_init_rotation",
@@ -198,9 +194,7 @@
       "description": "initialise the rotation Valid choices are: \nsearch (search for the best rotation using mean squared residuals), \nmoments (rotation based on directions of intensity variance with respect to centre of mass), \nnone (default).",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "type"
-      ]
+      "value-choices": ["type"]
     },
     {
       "id": "rigid_init_matrix",
@@ -241,9 +235,7 @@
       "description": "valid choices are: diff (intensity differences), Default: diff",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "type"
-      ]
+      "value-choices": ["type"]
     },
     {
       "id": "rigid_metric_diff_estimator",
@@ -253,9 +245,7 @@
       "description": "Valid choices are: l1 (least absolute: |x|), l2 (ordinary least squares), lp (least powers: |x|^1.2), Default: l2",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "type"
-      ]
+      "value-choices": ["type"]
     },
     {
       "id": "rigid_lmax",
@@ -312,9 +302,7 @@
       "description": "initialise the translation and centre of rotation \nValid choices are: \nmass (aligns the centers of mass of both images), \ngeometric (aligns geometric image centres) and none. (Default: mass)",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "type"
-      ]
+      "value-choices": ["type"]
     },
     {
       "id": "affine_init_rotation",
@@ -324,9 +312,7 @@
       "description": "initialise the rotation Valid choices are: \nsearch (search for the best rotation using mean squared residuals), \nmoments (rotation based on directions of intensity variance with respect to centre of mass), \nnone (Default: none).",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "type"
-      ]
+      "value-choices": ["type"]
     },
     {
       "id": "affine_init_matrix",
@@ -367,9 +353,7 @@
       "description": "valid choices are: diff (intensity differences), Default: diff",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "type"
-      ]
+      "value-choices": ["type"]
     },
     {
       "id": "affine_metric_diff_estimator",
@@ -379,9 +363,7 @@
       "description": "Valid choices are: l1 (least absolute: |x|), l2 (ordinary least squares), lp (least powers: |x|^1.2), Default: l2",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "type"
-      ]
+      "value-choices": ["type"]
     },
     {
       "id": "affine_lmax",
@@ -508,9 +490,7 @@
       "description": "Cost function optimisation algorithm to use at first iteration of all stages. Valid choices: bbgd (Barzilai-Borwein gradient descent) or gd (simple gradient descent). (Default: bbgd)",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "algorithm"
-      ]
+      "value-choices": ["algorithm"]
     },
     {
       "id": "linstage_optimiser_last",
@@ -520,9 +500,7 @@
       "description": "Cost function optimisation algorithm to use at last iteration of all stages (if there are more than one). Valid choices: bbgd (Barzilai-Borwein gradient descent) or gd (simple gradient descent). (Default: bbgd)",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "algorithm"
-      ]
+      "value-choices": ["algorithm"]
     },
     {
       "id": "linstage_optimiser_default",
@@ -532,9 +510,7 @@
       "description": "Cost function optimisation algorithm to use at any stage iteration other than first or last iteration. Valid choices: bbgd (Barzilai-Borwein gradient descent) or gd (simple gradient descent). (Default: bbgd)",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "algorithm"
-      ]
+      "value-choices": ["algorithm"]
     },
     {
       "id": "linstage_diagnostics_prefix",
@@ -720,9 +696,7 @@
       "description": "specify output image data type. Valid choices are: float32, float32le, float32be, float64, float64le, float64be, int64, uint64, int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le, int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be, cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be, int8, uint8, bit.",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "spec"
-      ]
+      "value-choices": ["spec"]
     },
     {
       "id": "info",

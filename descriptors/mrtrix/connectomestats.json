@@ -27,9 +27,7 @@
       "description": "the algorithm to use in network-based clustering/enhancement. Options are: nbs, tfnbs, none",
       "type": "String",
       "optional": false,
-      "value-choices": [
-        "algorithm"
-      ]
+      "value-choices": ["algorithm"]
     },
     {
       "id": "design",
@@ -75,9 +73,7 @@
       "description": "specify nature of errors for shuffling; options are: ee,ise,both (default: ee)",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "spec"
-      ]
+      "value-choices": ["spec"]
     },
     {
       "id": "exchange_within",
