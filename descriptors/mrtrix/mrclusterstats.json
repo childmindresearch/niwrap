@@ -72,9 +72,7 @@
       "description": "specify nature of errors for shuffling; options are: ee,ise,both (default: ee)",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "spec"
-      ]
+      "value-choices": ["spec"]
     },
     {
       "id": "exchange_within",

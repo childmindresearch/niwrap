@@ -65,10 +65,7 @@
       "description": "Datatype for the eigenvalue decomposition (single or double precision). For complex input data, this will select complex float32 or complex float64 datatypes.",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "float32",
-        "float64"
-      ]
+      "value-choices": ["float32", "float64"]
     },
     {
       "id": "estimator",
@@ -78,10 +75,7 @@
       "description": "Select the noise level estimator (default = Exp2), either: \n* Exp1: the original estimator used in Veraart et al. (2016), or \n* Exp2: the improved estimator introduced in Cordero-Grande et al. (2019).",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "Exp1",
-        "Exp2"
-      ]
+      "value-choices": ["Exp1", "Exp2"]
     },
     {
       "id": "info",

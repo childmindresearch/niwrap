@@ -56,9 +56,7 @@
             "description": "transform vertices from one coordinate space to another, based on a template image; options are: first2real, real2first, voxel2real, real2voxel, fs2real",
             "type": "String",
             "optional": false,
-            "value-choices": [
-              "mode"
-            ]
+            "value-choices": ["mode"]
           },
           {
             "id": "image",
