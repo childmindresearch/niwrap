@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 CONNECTOMEEDIT_METADATA = Metadata(
-    id="0f4cf812eb9a303107357ad5231922375e743fd5",
+    id="e4127e3c7d0c43b2a34a69be209c72dfe99b280d",
     name="connectomeedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class ConnectomeeditConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

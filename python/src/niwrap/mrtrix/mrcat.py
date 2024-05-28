@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCAT_METADATA = Metadata(
-    id="bb47561c1c6b0fa35aad05cd33d2c10fff169284",
+    id="680f5ea472ee036106b336468d400c70b4396107",
     name="mrcat",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrcatConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

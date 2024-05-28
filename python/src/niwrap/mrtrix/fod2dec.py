@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FOD2DEC_METADATA = Metadata(
-    id="4c2845cedf6802bc911fd8b467dde3288a150e25",
+    id="4d9a0e570b398e4e8520a69b23f016b423badf82",
     name="fod2dec",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Fod2decConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

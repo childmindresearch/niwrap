@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TRANSFORMCALC_METADATA = Metadata(
-    id="41a85090161e7d8354d8069765d144e733505f39",
+    id="87d1afb12ed2e233b4067f12e09a8708e2da26a2",
     name="transformcalc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TransformcalcConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

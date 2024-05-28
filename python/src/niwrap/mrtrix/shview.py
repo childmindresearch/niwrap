@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SHVIEW_METADATA = Metadata(
-    id="fd92d9b8965e0f6ed90268a6ecb24a6522f84695",
+    id="486abeae45db60cfe57dccc395b48d4d93c2c1b2",
     name="shview",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class ShviewConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

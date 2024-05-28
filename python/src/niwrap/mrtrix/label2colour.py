@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 LABEL2COLOUR_METADATA = Metadata(
-    id="72a6c0ec6159c7b8251c9134da95b1aa060c8e51",
+    id="c4f6aaaf20fd52063e88fcdc01019a97ce9a411e",
     name="label2colour",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Label2colourConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

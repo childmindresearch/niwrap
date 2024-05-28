@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DWIDENOISE_METADATA = Metadata(
-    id="90468f4b55fd2315ebf673258aa3f5c3e3153ed2",
+    id="cdb405ed75a8aab0bd5e26be9a73eca665c12c59",
     name="dwidenoise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class DwidenoiseConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

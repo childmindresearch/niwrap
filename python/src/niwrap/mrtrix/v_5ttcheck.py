@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 V_5TTCHECK_METADATA = Metadata(
-    id="7ab02b617a5a472b472f6710da4d20469f58c76d",
+    id="6892c2ac6937d1acdec1587d238c2a124ef2b0e5",
     name="5ttcheck",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class V5ttcheckConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

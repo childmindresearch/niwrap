@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFINFO_METADATA = Metadata(
-    id="7125311640a546fcc540d62d74247d7ad68a3d74",
+    id="c6f148fcd0593b5d5c2e9034d846ebb579dc9636",
     name="tsfinfo",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TsfinfoConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

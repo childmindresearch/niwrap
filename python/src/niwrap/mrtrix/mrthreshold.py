@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRTHRESHOLD_METADATA = Metadata(
-    id="344006edad77cefc2798222f10879d2a2665a3a5",
+    id="4847ff4d02897b619f88b1de2794d00f6b98aac3",
     name="mrthreshold",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrthresholdConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

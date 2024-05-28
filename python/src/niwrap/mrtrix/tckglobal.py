@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKGLOBAL_METADATA = Metadata(
-    id="87cca774ab33dffe7c034097d81e68bb01f2714b",
+    id="eb352efaec6869cfdc01b7089fad1defc3425a13",
     name="tckglobal",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -39,7 +39,7 @@ class TckglobalRiso:
         """
         cargs = []
         cargs.append("-riso")
-        cargs.extend(["", execution.input_file(self.response_)])
+        cargs.append(execution.input_file(self.response_))
         return cargs
 
 
@@ -68,8 +68,8 @@ class TckglobalConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TENSOR2METRIC_METADATA = Metadata(
-    id="d38fa6896c84820075b2ff1c2778a1c3b179f2d7",
+    id="97ac6caa4e40a551fdd4a0175886b4557265bd4e",
     name="tensor2metric",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Tensor2metricConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value_])
+        cargs.append(self.key)
+        cargs.append(self.value_)
         return cargs
 
 

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKGEN_METADATA = Metadata(
-    id="e73da60fd7ae189071aca4c4b4f39ec06359aa12",
+    id="0d56b081013c9389a2a94e621bdd9f43f13fd2d8",
     name="tckgen",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -39,7 +39,7 @@ class TckgenSeedImage:
         """
         cargs = []
         cargs.append("-seed_image")
-        cargs.extend(["", execution.input_file(self.image)])
+        cargs.append(execution.input_file(self.image))
         return cargs
 
 
@@ -67,7 +67,7 @@ class TckgenSeedSphere:
         """
         cargs = []
         cargs.append("-seed_sphere")
-        cargs.extend(["", *map(str, self.spec)])
+        cargs.extend(map(str, self.spec))
         return cargs
 
 
@@ -98,8 +98,8 @@ class TckgenSeedRandomPerVoxel:
         """
         cargs = []
         cargs.append("-seed_random_per_voxel")
-        cargs.extend(["", execution.input_file(self.image)])
-        cargs.extend(["", str(self.num_per_voxel)])
+        cargs.append(execution.input_file(self.image))
+        cargs.append(str(self.num_per_voxel))
         return cargs
 
 
@@ -132,8 +132,8 @@ class TckgenSeedGridPerVoxel:
         """
         cargs = []
         cargs.append("-seed_grid_per_voxel")
-        cargs.extend(["", execution.input_file(self.image)])
-        cargs.extend(["", str(self.grid_size)])
+        cargs.append(execution.input_file(self.image))
+        cargs.append(str(self.grid_size))
         return cargs
 
 
@@ -161,7 +161,7 @@ class TckgenSeedRejection:
         """
         cargs = []
         cargs.append("-seed_rejection")
-        cargs.extend(["", execution.input_file(self.image)])
+        cargs.append(execution.input_file(self.image))
         return cargs
 
 
@@ -191,7 +191,7 @@ class TckgenSeedGmwmi:
         """
         cargs = []
         cargs.append("-seed_gmwmi")
-        cargs.extend(["", execution.input_file(self.image)])
+        cargs.append(execution.input_file(self.image))
         return cargs
 
 
@@ -220,7 +220,7 @@ class TckgenInclude:
         """
         cargs = []
         cargs.append("-include")
-        cargs.extend(["", self.spec])
+        cargs.append(self.spec)
         return cargs
 
 
@@ -250,7 +250,7 @@ class TckgenIncludeOrdered:
         """
         cargs = []
         cargs.append("-include_ordered")
-        cargs.extend(["", self.image])
+        cargs.append(self.image)
         return cargs
 
 
@@ -279,7 +279,7 @@ class TckgenExclude:
         """
         cargs = []
         cargs.append("-exclude")
-        cargs.extend(["", self.spec])
+        cargs.append(self.spec)
         return cargs
 
 
@@ -308,7 +308,7 @@ class TckgenMask:
         """
         cargs = []
         cargs.append("-mask")
-        cargs.extend(["", self.spec])
+        cargs.append(self.spec)
         return cargs
 
 
@@ -343,8 +343,8 @@ class TckgenFslgrad:
         """
         cargs = []
         cargs.append("-fslgrad")
-        cargs.extend(["", execution.input_file(self.bvecs)])
-        cargs.extend(["", execution.input_file(self.bvals)])
+        cargs.append(execution.input_file(self.bvecs))
+        cargs.append(execution.input_file(self.bvals))
         return cargs
 
 
@@ -373,8 +373,8 @@ class TckgenConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

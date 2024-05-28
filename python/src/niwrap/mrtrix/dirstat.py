@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRSTAT_METADATA = Metadata(
-    id="b3bc18611443d4ad8c5df8d60d12285e24d65d5f",
+    id="23d54a9eb34a7b46332442cb22042095b35f0bfc",
     name="dirstat",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -47,8 +47,8 @@ class DirstatFslgrad:
         """
         cargs = []
         cargs.append("-fslgrad")
-        cargs.extend(["", execution.input_file(self.bvecs)])
-        cargs.extend(["", execution.input_file(self.bvals)])
+        cargs.append(execution.input_file(self.bvecs))
+        cargs.append(execution.input_file(self.bvals))
         return cargs
 
 
@@ -77,8 +77,8 @@ class DirstatConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

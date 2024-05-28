@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKDFC_METADATA = Metadata(
-    id="dadbd92d39cc117991fb0f3c39ebf0fb9aab4c50",
+    id="ce60027ca27c665a9e0fe524a8eaa758983b5e6e",
     name="tckdfc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -43,8 +43,8 @@ class TckdfcDynamic:
         """
         cargs = []
         cargs.append("-dynamic")
-        cargs.extend(["", self.shape])
-        cargs.extend(["", str(self.width)])
+        cargs.append(self.shape)
+        cargs.append(str(self.width))
         return cargs
 
 
@@ -73,8 +73,8 @@ class TckdfcConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKSTATS_METADATA = Metadata(
-    id="7e1deb28dd6ba96169747ef7a3b7637c72e76740",
+    id="c1fc50a602ddbd3db695f10261168b3a6d342487",
     name="tckstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,7 +41,7 @@ class TckstatsOutput:
         """
         cargs = []
         cargs.append("-output")
-        cargs.extend(["", self.field])
+        cargs.append(self.field)
         return cargs
 
 
@@ -70,8 +70,8 @@ class TckstatsConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFVALIDATE_METADATA = Metadata(
-    id="37d603baa32cfacc1d76d4f0931d6f59064e49dc",
+    id="d28ca26eb235589fbfbc7fc1f5f5041ada24dad1",
     name="tsfvalidate",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TsfvalidateConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

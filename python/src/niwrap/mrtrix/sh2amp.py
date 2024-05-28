@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 SH2AMP_METADATA = Metadata(
-    id="c59a1d3514c78b4421a3da85fb771d24aedd14ed",
+    id="74f0bb6cc194f552638aa3a35ba346f28e113b4d",
     name="sh2amp",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -47,8 +47,8 @@ class Sh2ampFslgrad:
         """
         cargs = []
         cargs.append("-fslgrad")
-        cargs.extend(["", execution.input_file(self.bvecs)])
-        cargs.extend(["", execution.input_file(self.bvals)])
+        cargs.append(execution.input_file(self.bvecs))
+        cargs.append(execution.input_file(self.bvals))
         return cargs
 
 
@@ -77,8 +77,8 @@ class Sh2ampConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

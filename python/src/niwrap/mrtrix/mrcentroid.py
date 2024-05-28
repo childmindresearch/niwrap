@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCENTROID_METADATA = Metadata(
-    id="d2fafe0cf0317cce4b7dbc0300a5fff02e924501",
+    id="d838bdc531d825fa969ebc2de82ef3b919eb2624",
     name="mrcentroid",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrcentroidConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

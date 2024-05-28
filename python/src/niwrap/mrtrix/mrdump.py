@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRDUMP_METADATA = Metadata(
-    id="b08501850c540e89319bde8ff94bf5bebda4043b",
+    id="0c806e221db03fcce348a2136901a2b718ab5b5c",
     name="mrdump",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrdumpConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

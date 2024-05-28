@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCROP_METADATA = Metadata(
-    id="84e6ff8fcba1f73d103f0088932c307cb42ae09e",
+    id="c8ef9461f7b5cf7c5032f80367dafb6a82310c19",
     name="fixelcrop",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class FixelcropConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKTRANSFORM_METADATA = Metadata(
-    id="853f383ade8fa1baec6d333b3e08b915516691e7",
+    id="cea0856d8dd63bb7a510b7c923b67e6b791bfc6f",
     name="tcktransform",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TcktransformConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

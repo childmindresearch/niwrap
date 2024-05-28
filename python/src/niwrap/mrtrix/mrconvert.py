@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCONVERT_METADATA = Metadata(
-    id="aca3749f71d28085267898cc694991d82730811e",
+    id="146afb40c56ef0246d6b850ea899e152d8bc7a42",
     name="mrconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -45,8 +45,8 @@ class MrconvertCoord:
         """
         cargs = []
         cargs.append("-coord")
-        cargs.extend(["", str(self.axis)])
-        cargs.extend(["", *map(str, self.selection)])
+        cargs.append(str(self.axis))
+        cargs.extend(map(str, self.selection))
         return cargs
 
 
@@ -73,7 +73,7 @@ class MrconvertClearProperty:
         """
         cargs = []
         cargs.append("-clear_property")
-        cargs.extend(["", self.key])
+        cargs.append(self.key)
         return cargs
 
 
@@ -102,8 +102,8 @@ class MrconvertSetProperty:
         """
         cargs = []
         cargs.append("-set_property")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 
@@ -134,8 +134,8 @@ class MrconvertAppendProperty:
         """
         cargs = []
         cargs.append("-append_property")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 
@@ -170,8 +170,8 @@ class MrconvertFslgrad:
         """
         cargs = []
         cargs.append("-fslgrad")
-        cargs.extend(["", execution.input_file(self.bvecs)])
-        cargs.extend(["", execution.input_file(self.bvals)])
+        cargs.append(execution.input_file(self.bvecs))
+        cargs.append(execution.input_file(self.bvals))
         return cargs
 
 
@@ -202,8 +202,8 @@ class MrconvertExportGradFsl:
         """
         cargs = []
         cargs.append("-export_grad_fsl")
-        cargs.extend(["", execution.input_file(self.bvecs_path)])
-        cargs.extend(["", execution.input_file(self.bvals_path)])
+        cargs.append(execution.input_file(self.bvecs_path))
+        cargs.append(execution.input_file(self.bvals_path))
         return cargs
 
 
@@ -234,8 +234,8 @@ class MrconvertImportPeEddy:
         """
         cargs = []
         cargs.append("-import_pe_eddy")
-        cargs.extend(["", execution.input_file(self.config_)])
-        cargs.extend(["", execution.input_file(self.indices)])
+        cargs.append(execution.input_file(self.config_))
+        cargs.append(execution.input_file(self.indices))
         return cargs
 
 
@@ -266,8 +266,8 @@ class MrconvertExportPeEddy:
         """
         cargs = []
         cargs.append("-export_pe_eddy")
-        cargs.extend(["", execution.input_file(self.config_)])
-        cargs.extend(["", execution.input_file(self.indices)])
+        cargs.append(execution.input_file(self.config_))
+        cargs.append(execution.input_file(self.indices))
         return cargs
 
 
@@ -296,8 +296,8 @@ class MrconvertConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

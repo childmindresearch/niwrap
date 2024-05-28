@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DCMINFO_METADATA = Metadata(
-    id="bb793a92945aa15f4cf2cf95996d8a6ee6a209c0",
+    id="aea6ec78977aa717ae14895f9f5b8a1f4bbab798",
     name="dcminfo",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -43,8 +43,8 @@ class DcminfoTag:
         """
         cargs = []
         cargs.append("-tag")
-        cargs.extend(["", self.group])
-        cargs.extend(["", self.element])
+        cargs.append(self.group)
+        cargs.append(self.element)
         return cargs
 
 
@@ -73,8 +73,8 @@ class DcminfoConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

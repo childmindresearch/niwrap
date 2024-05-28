@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 AFDCONNECTIVITY_METADATA = Metadata(
-    id="56fbf768b86b09c6a542bb16dc8f349f40aac8bf",
+    id="ac1fed286930806980fdd1a32b4768ce0f697a2c",
     name="afdconnectivity",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class AfdconnectivityConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

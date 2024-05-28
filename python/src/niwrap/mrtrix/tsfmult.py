@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFMULT_METADATA = Metadata(
-    id="594a2314d1684fa9885a78aa15c39387167e8f0f",
+    id="51a55d0fbf2d52e451ad501e141ad5ad21b5dcbc",
     name="tsfmult",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TsfmultConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

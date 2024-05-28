@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 DIRORDER_METADATA = Metadata(
-    id="ac6b37b1b759852099a78dabf4a945bceeb0e01f",
+    id="5f54eff92a851b39fe9d1d7c65d9d1d143dd3125",
     name="dirorder",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class DirorderConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

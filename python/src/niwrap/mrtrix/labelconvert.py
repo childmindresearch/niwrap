@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 LABELCONVERT_METADATA = Metadata(
-    id="487d16a45c6809368e10fd5d5427f815a5d4a730",
+    id="20d68c563ce807dd94ecd36a2e72735d744460a0",
     name="labelconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class LabelconvertConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

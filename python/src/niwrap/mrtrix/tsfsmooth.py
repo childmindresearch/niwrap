@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TSFSMOOTH_METADATA = Metadata(
-    id="04cecea2521f591f7764bee2fd1df53c56f302dc",
+    id="15806f5235a60010433593a2b81bb511d88b2783",
     name="tsfsmooth",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TsfsmoothConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

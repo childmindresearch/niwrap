@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCHECKERBOARDMASK_METADATA = Metadata(
-    id="fb3a4bdb09f2d5c2b8bc960bf48bb94555a04945",
+    id="7af51407ddcfe70a0fedba7ef892e3e656c86997",
     name="mrcheckerboardmask",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrcheckerboardmaskConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

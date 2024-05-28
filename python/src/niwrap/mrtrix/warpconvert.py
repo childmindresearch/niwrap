@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 WARPCONVERT_METADATA = Metadata(
-    id="8e8a5f7b56ee5547a72af3e6e06a692e40de0f7f",
+    id="c5de6be0f5508d3923727e3ac0053b895dbbe427",
     name="warpconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class WarpconvertConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

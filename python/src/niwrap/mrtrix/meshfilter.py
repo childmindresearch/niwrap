@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MESHFILTER_METADATA = Metadata(
-    id="b592c112f668cc0a59bada4716106f8c68ba6757",
+    id="28fad6720e49eb227ca2557c9d100de3f1931ea8",
     name="meshfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MeshfilterConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

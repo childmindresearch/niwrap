@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKEDIT_METADATA = Metadata(
-    id="11b8c71b05bf32306430708c1136dd5e40b2dcba",
+    id="9826cd8bcf7139e530a5747a922b1421f5bdb5c4",
     name="tckedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,7 +41,7 @@ class TckeditInclude:
         """
         cargs = []
         cargs.append("-include")
-        cargs.extend(["", self.spec])
+        cargs.append(self.spec)
         return cargs
 
 
@@ -71,7 +71,7 @@ class TckeditIncludeOrdered:
         """
         cargs = []
         cargs.append("-include_ordered")
-        cargs.extend(["", self.image])
+        cargs.append(self.image)
         return cargs
 
 
@@ -100,7 +100,7 @@ class TckeditExclude:
         """
         cargs = []
         cargs.append("-exclude")
-        cargs.extend(["", self.spec])
+        cargs.append(self.spec)
         return cargs
 
 
@@ -129,7 +129,7 @@ class TckeditMask:
         """
         cargs = []
         cargs.append("-mask")
-        cargs.extend(["", self.spec])
+        cargs.append(self.spec)
         return cargs
 
 
@@ -158,8 +158,8 @@ class TckeditConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

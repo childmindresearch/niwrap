@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TRANSFORMCOMPOSE_METADATA = Metadata(
-    id="69ae4382828fc13d658af5c01ea032870617d798",
+    id="4a1fa00a64521e89c78077507af058c9f9ff7feb",
     name="transformcompose",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TransformcomposeConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

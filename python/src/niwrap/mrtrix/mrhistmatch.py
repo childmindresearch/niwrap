@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRHISTMATCH_METADATA = Metadata(
-    id="76ab2980d32c58d4498d179036aace7b5b33068e",
+    id="609558e89e48a823018b6c130900bb74b61378a1",
     name="mrhistmatch",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrhistmatchConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

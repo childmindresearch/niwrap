@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 PEAKS2AMP_METADATA = Metadata(
-    id="fb3cbf3ca25abf1ab00273be4a652f348b3ffb05",
+    id="08f3d33948e9703c0cf7b2793aae6e39f1323837",
     name="peaks2amp",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Peaks2ampConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MESH2VOXEL_METADATA = Metadata(
-    id="c5395cc1c45a7f0755032701192fead30cbb9e91",
+    id="8a36fd16448d3836d50558c038acfae860b0c0e7",
     name="mesh2voxel",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Mesh2voxelConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

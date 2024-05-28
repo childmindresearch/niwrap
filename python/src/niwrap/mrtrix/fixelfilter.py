@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELFILTER_METADATA = Metadata(
-    id="df15f2f556936e44de58a1426783120512a54325",
+    id="32244d5feeb02c86d46b0b90b26d0bceabce0b2a",
     name="fixelfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class FixelfilterConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

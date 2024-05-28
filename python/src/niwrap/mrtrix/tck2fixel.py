@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCK2FIXEL_METADATA = Metadata(
-    id="28984bef38dfefa8e3ac4975c89ab3e08dd61cfa",
+    id="eb214376a576e7c83be8a1981030f92f0a68cd9f",
     name="tck2fixel",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class Tck2fixelConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

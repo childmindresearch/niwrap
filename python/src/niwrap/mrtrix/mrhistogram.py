@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRHISTOGRAM_METADATA = Metadata(
-    id="fa6de846e492a64e11c3ba756024d7b422453d9c",
+    id="60935e8897e6238d0a95b873bfeda2af535077b2",
     name="mrhistogram",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrhistogramConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

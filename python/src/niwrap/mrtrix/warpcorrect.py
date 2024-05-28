@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 WARPCORRECT_METADATA = Metadata(
-    id="e87d68982bba9c55d696ffbe1f2f4d034cea5738",
+    id="7545c6404bd65e4aaec18b92a0a6f53d0fdfbcd6",
     name="warpcorrect",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class WarpcorrectConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

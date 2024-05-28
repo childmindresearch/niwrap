@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MASKFILTER_METADATA = Metadata(
-    id="f72beef8fc4e6bac9df1f8c2a83e3e2ae160fef6",
+    id="00eee3c34814ae6e53f3c0ea1a4ff3b832c12d7d",
     name="maskfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MaskfilterConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

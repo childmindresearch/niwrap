@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 TCKSAMPLE_METADATA = Metadata(
-    id="391a4d1653b65cef33d3c02aa0bdf466aa3affc0",
+    id="b1f50b9b6fdb73f7fd985293f25ea6ad65a8657c",
     name="tcksample",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class TcksampleConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

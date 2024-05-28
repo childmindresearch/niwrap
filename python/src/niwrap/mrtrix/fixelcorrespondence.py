@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELCORRESPONDENCE_METADATA = Metadata(
-    id="bbfcdf3c8161334bc9555d835552038c1b5a3001",
+    id="e504e8529648fd4befb8831d2415e0de7107e1d1",
     name="fixelcorrespondence",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class FixelcorrespondenceConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

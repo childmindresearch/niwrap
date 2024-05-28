@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MRCOLOUR_METADATA = Metadata(
-    id="aa4ac5f4e8010e235b6f5fad651e3d1e4f2a9fc2",
+    id="7eeec3996105cb3ca3cebf1ce4588c25826d96da",
     name="mrcolour",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MrcolourConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

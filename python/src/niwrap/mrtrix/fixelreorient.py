@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 FIXELREORIENT_METADATA = Metadata(
-    id="656c53a22351d69886e9f964727ac114efc4313a",
+    id="dabfea09cb51b2904b297e2075e079c19b9029c0",
     name="fixelreorient",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class FixelreorientConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

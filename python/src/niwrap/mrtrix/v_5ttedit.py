@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 V_5TTEDIT_METADATA = Metadata(
-    id="bc1962b2e1d8e4a4d27ee4e2fa0ff9a4e92ca7f0",
+    id="076911c966c85ed1562419caa477f3b0ba70edfd",
     name="5ttedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class V5tteditConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

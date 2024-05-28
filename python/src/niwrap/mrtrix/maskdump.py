@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 MASKDUMP_METADATA = Metadata(
-    id="6d894b996353ad5840588aeca6148e0f44523e97",
+    id="2166f755604098ccbeb27c1a85bc0d4f19621653",
     name="maskdump",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class MaskdumpConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 

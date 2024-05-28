@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 V_5TT2GMWMI_METADATA = Metadata(
-    id="121e261ebc2835276034980275053857c9cef714",
+    id="c1d1f0b0c813305d590470b4bf445852d3e51f9a",
     name="5tt2gmwmi",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -41,8 +41,8 @@ class V5tt2gmwmiConfig:
         """
         cargs = []
         cargs.append("-config")
-        cargs.extend(["", self.key])
-        cargs.extend(["", self.value])
+        cargs.append(self.key)
+        cargs.append(self.value)
         return cargs
 
 
