@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -surface-coordinates-to-metric [SURFACE] [METRIC_OUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MAKE METRIC FILE OF SURFACE COORDINATES.\n\nPuts the coordinates of the surface into a 3-map metric file, as x, y, z.",
+  "description": "Make metric file of surface coordinates.\n\nPuts the coordinates of the surface into a 3-map metric file, as x, y, z.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,17 +15,17 @@
       "id": "surface",
       "name": "surface",
       "description": "the surface to use the coordinates of",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "metric_out",
       "name": "metric_out",
       "description": "the output metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_OUT]"
+      "value-key": "[METRIC_OUT]",
+      "type": "File"
     }
   ],
   "output-files": [

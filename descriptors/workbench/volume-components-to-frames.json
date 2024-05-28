@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -volume-components-to-frames [INPUT] [OUTPUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "CONVERT RGB/COMPLEX VOLUME TO FRAMES.\n\nRGB and complex datatypes are not always well supported, this command allows separating them into standard subvolumes for better support.",
+  "description": "Convert rgb/complex volume to frames.\n\nRGB and complex datatypes are not always well supported, this command allows separating them into standard subvolumes for better support.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,17 +15,17 @@
       "id": "input",
       "name": "input",
       "description": "the RGB/complex-type volume",
-      "type": "File",
       "optional": false,
-      "value-key": "[INPUT]"
+      "value-key": "[INPUT]",
+      "type": "File"
     },
     {
       "id": "output",
       "name": "output",
       "description": "the input volume converted to multiple frames of scalar type",
-      "type": "File",
       "optional": false,
-      "value-key": "[OUTPUT]"
+      "value-key": "[OUTPUT]",
+      "type": "File"
     }
   ],
   "output-files": [

@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -cifti-parcel-mapping-to-label [CIFTI_IN] [DIRECTION] [TEMPLATE_CIFTI] [DLABEL_OUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "CREATE DLABEL FROM PARCELLATED FILE.\n\nThis command will output a dlabel file, useful for doing the same parcellation to another dense file.\n\nFor ptseries, pscalar, plabel, pconn, and pdconn, using COLUMN for <direction> will work.",
+  "description": "Create dlabel from parcellated file.\n\nThis command will output a dlabel file, useful for doing the same parcellation to another dense file.\n\nFor ptseries, pscalar, plabel, pconn, and pdconn, using COLUMN for <direction> will work.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,33 +15,33 @@
       "id": "cifti_in",
       "name": "cifti_in",
       "description": "the input parcellated file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_IN]"
+      "value-key": "[CIFTI_IN]",
+      "type": "File"
     },
     {
       "id": "direction",
       "name": "direction",
       "description": "which dimension to take the parcel map from, ROW or COLUMN",
-      "type": "String",
       "optional": false,
-      "value-key": "[DIRECTION]"
+      "value-key": "[DIRECTION]",
+      "type": "String"
     },
     {
       "id": "template_cifti",
       "name": "template_cifti",
       "description": "a cifti file with the desired dense mapping along column",
-      "type": "File",
       "optional": false,
-      "value-key": "[TEMPLATE_CIFTI]"
+      "value-key": "[TEMPLATE_CIFTI]",
+      "type": "File"
     },
     {
       "id": "dlabel_out",
       "name": "dlabel_out",
       "description": "the output dense label file",
-      "type": "File",
       "optional": false,
-      "value-key": "[DLABEL_OUT]"
+      "value-key": "[DLABEL_OUT]",
+      "type": "File"
     }
   ],
   "output-files": [

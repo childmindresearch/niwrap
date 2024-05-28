@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -metric-dilate [METRIC] [SURFACE] [DISTANCE] [METRIC_OUT] [OPT_BAD_VERTEX_ROI_ROI_METRIC] [OPT_DATA_ROI_ROI_METRIC] [OPT_COLUMN_COLUMN] [OPT_NEAREST] [OPT_LINEAR] [OPT_EXPONENT_EXPONENT] [OPT_CORRECTED_AREAS_AREA_METRIC] [OPT_LEGACY_CUTOFF]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "DILATE A METRIC FILE.\n\nFor all metric vertices that are designated as bad, if they neighbor a non-bad vertex with data or are within the specified distance of such a vertex, replace the value with a distance-based weighted average of nearby non-bad vertices that have data, otherwise set the value to zero.  No matter how small <distance> is, dilation will always use at least the immediate neighbor vertices.  If -nearest is specified, it will use the value from the closest non-bad vertex with data within range instead of a weighted average.\n\nIf -bad-vertex-roi is specified, all vertices with a positive ROI value are bad.  If it is not specified, only vertices that have data, with a value of zero, are bad.  If -data-roi is not specified, all vertices are assumed to have data.\n\nNote that the -corrected-areas option uses an approximate correction for the change in distances along a group average surface.\n\nTo get the behavior of version 1.3.2 or earlier, use '-legacy-cutoff -exponent 2'.",
+  "description": "Dilate a metric file.\n\nFor all metric vertices that are designated as bad, if they neighbor a non-bad vertex with data or are within the specified distance of such a vertex, replace the value with a distance-based weighted average of nearby non-bad vertices that have data, otherwise set the value to zero.  No matter how small <distance> is, dilation will always use at least the immediate neighbor vertices.  If -nearest is specified, it will use the value from the closest non-bad vertex with data within range instead of a weighted average.\n\nIf -bad-vertex-roi is specified, all vertices with a positive ROI value are bad.  If it is not specified, only vertices that have data, with a value of zero, are bad.  If -data-roi is not specified, all vertices are assumed to have data.\n\nNote that the -corrected-areas option uses an approximate correction for the change in distances along a group average surface.\n\nTo get the behavior of version 1.3.2 or earlier, use '-legacy-cutoff -exponent 2'.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,60 +15,61 @@
       "id": "metric",
       "name": "metric",
       "description": "the metric to dilate",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC]"
+      "value-key": "[METRIC]",
+      "type": "File"
     },
     {
       "id": "surface",
       "name": "surface",
       "description": "the surface to compute on",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "distance",
       "name": "distance",
       "description": "distance in mm to dilate",
-      "type": "Number",
       "optional": false,
-      "value-key": "[DISTANCE]"
+      "value-key": "[DISTANCE]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "metric_out",
       "name": "metric_out",
       "description": "the output metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_OUT]"
+      "value-key": "[METRIC_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_bad_vertex_roi_roi_metric",
       "name": "opt_bad_vertex_roi_roi_metric",
       "command-line-flag": "-bad-vertex-roi",
       "description": "specify an roi of vertices to overwrite, rather than vertices with value zero: metric file, positive values denote vertices to have their values replaced",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_BAD_VERTEX_ROI_ROI_METRIC]"
+      "value-key": "[OPT_BAD_VERTEX_ROI_ROI_METRIC]",
+      "type": "File"
     },
     {
       "id": "opt_data_roi_roi_metric",
       "name": "opt_data_roi_roi_metric",
       "command-line-flag": "-data-roi",
       "description": "specify an roi of where there is data: metric file, positive values denote vertices that have data",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_DATA_ROI_ROI_METRIC]"
+      "value-key": "[OPT_DATA_ROI_ROI_METRIC]",
+      "type": "File"
     },
     {
       "id": "opt_column_column",
       "name": "opt_column_column",
       "command-line-flag": "-column",
       "description": "select a single column to dilate: the column number or name",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_COLUMN_COLUMN]"
+      "value-key": "[OPT_COLUMN_COLUMN]",
+      "type": "String"
     },
     {
       "id": "opt_nearest",
@@ -93,18 +94,19 @@
       "name": "opt_exponent_exponent",
       "command-line-flag": "-exponent",
       "description": "use a different exponent in the weighting function: exponent 'n' to use in (area / (distance ^ n)) as the weighting function (default 6)",
-      "type": "Number",
       "optional": true,
-      "value-key": "[OPT_EXPONENT_EXPONENT]"
+      "value-key": "[OPT_EXPONENT_EXPONENT]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "opt_corrected_areas_area_metric",
       "name": "opt_corrected_areas_area_metric",
       "command-line-flag": "-corrected-areas",
       "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
+      "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]",
+      "type": "File"
     },
     {
       "id": "opt_legacy_cutoff",

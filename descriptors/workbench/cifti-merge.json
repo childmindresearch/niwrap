@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-merge",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-merge [CIFTI_OUT] [OPT_DIRECTION_DIRECTION] [OPT_MEM_LIMIT_LIMIT_GB] [OPT_CIFTI_CIFTI_IN]",
+  "command-line": "wb_command -cifti-merge [CIFTI_OUT] [OPT_DIRECTION_DIRECTION] [OPT_MEM_LIMIT_LIMIT_GB] [CIFTI]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MERGE OR SPLIT ON SERIES, SCALAR, OR LABEL DIMENSIONS.\n\nGiven input CIFTI files for which mappings along the selected direction are the same type, all either series, scalars, or labels, and the other dimensions are index-compatible, this command concatenates the data in the specified indices/ranges along the selected direction (by default, on typical 2D cifti, concatenate horizontally, so rows become longer).  The direction can be either an integer starting from 1, or the strings 'ROW' or 'COLUMN'.\n\nExample: wb_command -cifti-merge out.dtseries.nii -cifti first.dtseries.nii -index 1 -cifti second.dtseries.nii\n\nThis example would take the first column from first.dtseries.nii, followed by all columns from second.dtseries.nii, and write these columns to out.dtseries.nii.  ",
+  "description": "Merge or split on series, scalar, or label dimensions.\n\nGiven input CIFTI files for which mappings along the selected direction are the same type, all either series, scalars, or labels, and the other dimensions are index-compatible, this command concatenates the data in the specified indices/ranges along the selected direction (by default, on typical 2D cifti, concatenate horizontally, so rows become longer).  The direction can be either an integer starting from 1, or the strings 'ROW' or 'COLUMN'.\n\nExample: wb_command -cifti-merge out.dtseries.nii -cifti first.dtseries.nii -index 1 -cifti second.dtseries.nii\n\nThis example would take the first column from first.dtseries.nii, followed by all columns from second.dtseries.nii, and write these columns to out.dtseries.nii.  ",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,36 +15,88 @@
       "id": "cifti_out",
       "name": "cifti_out",
       "description": "output cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_OUT]"
+      "value-key": "[CIFTI_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_direction_direction",
       "name": "opt_direction_direction",
       "command-line-flag": "-direction",
       "description": "merge in a direction other than along rows: the dimension to split/concatenate along, default ROW",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_DIRECTION_DIRECTION]"
+      "value-key": "[OPT_DIRECTION_DIRECTION]",
+      "type": "String"
     },
     {
       "id": "opt_mem_limit_limit_gb",
       "name": "opt_mem_limit_limit_gb",
       "command-line-flag": "-mem-limit",
       "description": "restrict memory used for file reading efficiency: memory limit in gigabytes",
-      "type": "Number",
       "optional": true,
-      "value-key": "[OPT_MEM_LIMIT_LIMIT_GB]"
+      "value-key": "[OPT_MEM_LIMIT_LIMIT_GB]",
+      "type": "Number",
+      "integer": false
     },
     {
-      "id": "opt_cifti_cifti_in",
-      "name": "opt_cifti_cifti_in",
+      "id": "cifti",
+      "name": "cifti",
+      "description": "specify an input cifti file",
       "command-line-flag": "-cifti",
-      "description": "specify an input cifti file: a cifti file to use data from",
-      "type": "File",
+      "type": {
+        "id": "cifti",
+        "name": "cifti",
+        "description": "specify an input cifti file",
+        "command-line": " [INDEX]",
+        "inputs": [
+          {
+            "id": "index",
+            "name": "index",
+            "description": "select a single index to use",
+            "command-line-flag": "-index",
+            "type": {
+              "id": "index",
+              "name": "index",
+              "description": "select a single index to use",
+              "command-line": " [UP_TO]",
+              "inputs": [
+                {
+                  "id": "up_to",
+                  "name": "up_to",
+                  "description": "use an inclusive range of indices",
+                  "command-line-flag": "-up-to",
+                  "type": {
+                    "id": "up_to",
+                    "name": "up_to",
+                    "description": "use an inclusive range of indices",
+                    "command-line": " [OPT_REVERSE]",
+                    "inputs": [
+                      {
+                        "id": "opt_reverse",
+                        "name": "opt_reverse",
+                        "command-line-flag": "-reverse",
+                        "description": "use the range in reverse order",
+                        "type": "Flag",
+                        "optional": true,
+                        "value-key": "[OPT_REVERSE]"
+                      }
+                    ]
+                  },
+                  "optional": true,
+                  "value-key": "[UP_TO]",
+                  "list": false
+                }
+              ]
+            },
+            "optional": true,
+            "value-key": "[INDEX]",
+            "list": true
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_CIFTI_CIFTI_IN]"
+      "value-key": "[CIFTI]",
+      "list": true
     }
   ],
   "output-files": [

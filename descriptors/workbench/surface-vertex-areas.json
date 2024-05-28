@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -surface-vertex-areas [SURFACE] [METRIC]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MEASURE SURFACE AREA EACH VERTEX IS RESPONSIBLE FOR.\n\nEach vertex gets one third of the area of each triangle it is a part of.  Units are mm^2.",
+  "description": "Measure surface area each vertex is responsible for.\n\nEach vertex gets one third of the area of each triangle it is a part of.  Units are mm^2.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,17 +15,17 @@
       "id": "surface",
       "name": "surface",
       "description": "the surface to measure",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "metric",
       "name": "metric",
       "description": "the output metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC]"
+      "value-key": "[METRIC]",
+      "type": "File"
     }
   ],
   "output-files": [

@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "probtrackx-dot-convert",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -probtrackx-dot-convert [DOT_FILE] [CIFTI_OUT] [OPT_ROW_SURFACE_ROI_METRIC] [OPT_COL_SURFACE_ROI_METRIC] [OPT_TRANSPOSE] [OPT_MAKE_SYMMETRIC]",
+  "command-line": "wb_command -probtrackx-dot-convert [DOT_FILE] [CIFTI_OUT] [ROW_VOXELS] [OPT_ROW_SURFACE_ROI_METRIC] [ROW_CIFTI] [COL_VOXELS] [OPT_COL_SURFACE_ROI_METRIC] [COL_CIFTI] [OPT_TRANSPOSE] [OPT_MAKE_SYMMETRIC]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "CONVERT A .DOT FILE FROM PROBTRACKX TO CIFTI.\n\nNOTE: exactly one -row option and one -col option must be used.\n\nIf the input file does not have its indexes sorted in the correct ordering, this command may take longer than expected.  Specifying -transpose will transpose the input matrix before trying to put its values into the cifti file, which is currently needed for at least matrix2 in order to display it as intended.  How the cifti file is displayed is based on which -row option is specified: if -row-voxels is specified, then it will display data on volume slices.  The label names in the label volume(s) must have the following names, other names are ignored:\n\n\nCORTEX_LEFT\nCORTEX_RIGHT\nCEREBELLUM\nACCUMBENS_LEFT\nACCUMBENS_RIGHT\nALL_GREY_MATTER\nALL_WHITE_MATTER\nAMYGDALA_LEFT\nAMYGDALA_RIGHT\nBRAIN_STEM\nCAUDATE_LEFT\nCAUDATE_RIGHT\nCEREBELLAR_WHITE_MATTER_LEFT\nCEREBELLAR_WHITE_MATTER_RIGHT\nCEREBELLUM_LEFT\nCEREBELLUM_RIGHT\nCEREBRAL_WHITE_MATTER_LEFT\nCEREBRAL_WHITE_MATTER_RIGHT\nCORTEX\nDIENCEPHALON_VENTRAL_LEFT\nDIENCEPHALON_VENTRAL_RIGHT\nHIPPOCAMPUS_LEFT\nHIPPOCAMPUS_RIGHT\nINVALID\nOTHER\nOTHER_GREY_MATTER\nOTHER_WHITE_MATTER\nPALLIDUM_LEFT\nPALLIDUM_RIGHT\nPUTAMEN_LEFT\nPUTAMEN_RIGHT\nTHALAMUS_LEFT\nTHALAMUS_RIGHT",
+  "description": "Convert a .dot file from probtrackx to cifti.\n\nNOTE: exactly one -row option and one -col option must be used.\n\nIf the input file does not have its indexes sorted in the correct ordering, this command may take longer than expected.  Specifying -transpose will transpose the input matrix before trying to put its values into the cifti file, which is currently needed for at least matrix2 in order to display it as intended.  How the cifti file is displayed is based on which -row option is specified: if -row-voxels is specified, then it will display data on volume slices.  The label names in the label volume(s) must have the following names, other names are ignored:\n\n\nCORTEX_LEFT\nCORTEX_RIGHT\nCEREBELLUM\nACCUMBENS_LEFT\nACCUMBENS_RIGHT\nALL_GREY_MATTER\nALL_WHITE_MATTER\nAMYGDALA_LEFT\nAMYGDALA_RIGHT\nBRAIN_STEM\nCAUDATE_LEFT\nCAUDATE_RIGHT\nCEREBELLAR_WHITE_MATTER_LEFT\nCEREBELLAR_WHITE_MATTER_RIGHT\nCEREBELLUM_LEFT\nCEREBELLUM_RIGHT\nCEREBRAL_WHITE_MATTER_LEFT\nCEREBRAL_WHITE_MATTER_RIGHT\nCORTEX\nDIENCEPHALON_VENTRAL_LEFT\nDIENCEPHALON_VENTRAL_RIGHT\nHIPPOCAMPUS_LEFT\nHIPPOCAMPUS_RIGHT\nINVALID\nOTHER\nOTHER_GREY_MATTER\nOTHER_WHITE_MATTER\nPALLIDUM_LEFT\nPALLIDUM_RIGHT\nPUTAMEN_LEFT\nPUTAMEN_RIGHT\nTHALAMUS_LEFT\nTHALAMUS_RIGHT",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,35 +15,95 @@
       "id": "dot_file",
       "name": "dot_file",
       "description": "input .dot file",
-      "type": "String",
       "optional": false,
-      "value-key": "[DOT_FILE]"
+      "value-key": "[DOT_FILE]",
+      "type": "String"
     },
     {
       "id": "cifti_out",
       "name": "cifti_out",
       "description": "output cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_OUT]"
+      "value-key": "[CIFTI_OUT]",
+      "type": "File"
+    },
+    {
+      "id": "row_voxels",
+      "name": "row_voxels",
+      "description": "the output mapping along a row will be voxels",
+      "command-line-flag": "-row-voxels",
+      "type": {
+        "id": "row_voxels",
+        "name": "row_voxels",
+        "description": "the output mapping along a row will be voxels",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[ROW_VOXELS]",
+      "list": false
     },
     {
       "id": "opt_row_surface_roi_metric",
       "name": "opt_row_surface_roi_metric",
       "command-line-flag": "-row-surface",
       "description": "the output mapping along a row will be surface vertices: a metric file with positive values on all vertices used",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_ROW_SURFACE_ROI_METRIC]"
+      "value-key": "[OPT_ROW_SURFACE_ROI_METRIC]",
+      "type": "File"
+    },
+    {
+      "id": "row_cifti",
+      "name": "row_cifti",
+      "description": "take the mapping along a row from a cifti file",
+      "command-line-flag": "-row-cifti",
+      "type": {
+        "id": "row_cifti",
+        "name": "row_cifti",
+        "description": "take the mapping along a row from a cifti file",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[ROW_CIFTI]",
+      "list": false
+    },
+    {
+      "id": "col_voxels",
+      "name": "col_voxels",
+      "description": "the output mapping along a column will be voxels",
+      "command-line-flag": "-col-voxels",
+      "type": {
+        "id": "col_voxels",
+        "name": "col_voxels",
+        "description": "the output mapping along a column will be voxels",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[COL_VOXELS]",
+      "list": false
     },
     {
       "id": "opt_col_surface_roi_metric",
       "name": "opt_col_surface_roi_metric",
       "command-line-flag": "-col-surface",
       "description": "the output mapping along a column will be surface vertices: a metric file with positive values on all vertices used",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_COL_SURFACE_ROI_METRIC]"
+      "value-key": "[OPT_COL_SURFACE_ROI_METRIC]",
+      "type": "File"
+    },
+    {
+      "id": "col_cifti",
+      "name": "col_cifti",
+      "description": "take the mapping along a column from a cifti file",
+      "command-line-flag": "-col-cifti",
+      "type": {
+        "id": "col_cifti",
+        "name": "col_cifti",
+        "description": "take the mapping along a column from a cifti file",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[COL_CIFTI]",
+      "list": false
     },
     {
       "id": "opt_transpose",

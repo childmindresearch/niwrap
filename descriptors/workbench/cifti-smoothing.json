@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-smoothing",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-smoothing [CIFTI] [SURFACE_KERNEL] [VOLUME_KERNEL] [DIRECTION] [CIFTI_OUT] [OPT_FWHM] [OPT_LEFT_SURFACE_SURFACE] [OPT_RIGHT_SURFACE_SURFACE] [OPT_CEREBELLUM_SURFACE_SURFACE] [OPT_CIFTI_ROI_ROI_CIFTI] [OPT_FIX_ZEROS_VOLUME] [OPT_FIX_ZEROS_SURFACE] [OPT_MERGED_VOLUME]",
+  "command-line": "wb_command -cifti-smoothing [CIFTI] [SURFACE_KERNEL] [VOLUME_KERNEL] [DIRECTION] [CIFTI_OUT] [OPT_FWHM] [LEFT_SURFACE] [RIGHT_SURFACE] [CEREBELLUM_SURFACE] [OPT_CIFTI_ROI_ROI_CIFTI] [OPT_FIX_ZEROS_VOLUME] [OPT_FIX_ZEROS_SURFACE] [OPT_MERGED_VOLUME]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "SMOOTH A CIFTI FILE.\n\nThe input cifti file must have a brain models mapping on the chosen dimension, columns for .dtseries, and either for .dconn.  By default, data in different structures is smoothed independently (i.e., \"parcel constrained\" smoothing), so volume structures that touch do not smooth across this boundary.  Specify -merged-volume to ignore these boundaries.  Surface smoothing uses the GEO_GAUSS_AREA smoothing method.\n\nThe -*-corrected-areas options are intended for when it is unavoidable to smooth on group average surfaces, it is only an approximate correction for the reduction of structure in a group average surface.  It is better to smooth the data on individuals before averaging, when feasible.\n\nThe -fix-zeros-* options will treat values of zero as lack of data, and not use that value when generating the smoothed values, but will fill zeros with extrapolated values.  The ROI should have a brain models mapping along columns, exactly matching the mapping of the chosen direction in the input file.  Data outside the ROI is ignored.",
+  "description": "Smooth a cifti file.\n\nThe input cifti file must have a brain models mapping on the chosen dimension, columns for .dtseries, and either for .dconn.  By default, data in different structures is smoothed independently (i.e., \"parcel constrained\" smoothing), so volume structures that touch do not smooth across this boundary.  Specify -merged-volume to ignore these boundaries.  Surface smoothing uses the GEO_GAUSS_AREA smoothing method.\n\nThe -*-corrected-areas options are intended for when it is unavoidable to smooth on group average surfaces, it is only an approximate correction for the reduction of structure in a group average surface.  It is better to smooth the data on individuals before averaging, when feasible.\n\nThe -fix-zeros-* options will treat values of zero as lack of data, and not use that value when generating the smoothed values, but will fill zeros with extrapolated values.  The ROI should have a brain models mapping along columns, exactly matching the mapping of the chosen direction in the input file.  Data outside the ROI is ignored.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,41 +15,43 @@
       "id": "cifti",
       "name": "cifti",
       "description": "the input cifti",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI]"
+      "value-key": "[CIFTI]",
+      "type": "File"
     },
     {
       "id": "surface_kernel",
       "name": "surface_kernel",
       "description": "the size of the gaussian surface smoothing kernel in mm, as sigma by default",
-      "type": "Number",
       "optional": false,
-      "value-key": "[SURFACE_KERNEL]"
+      "value-key": "[SURFACE_KERNEL]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "volume_kernel",
       "name": "volume_kernel",
       "description": "the size of the gaussian volume smoothing kernel in mm, as sigma by default",
-      "type": "Number",
       "optional": false,
-      "value-key": "[VOLUME_KERNEL]"
+      "value-key": "[VOLUME_KERNEL]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "direction",
       "name": "direction",
       "description": "which dimension to smooth along, ROW or COLUMN",
-      "type": "String",
       "optional": false,
-      "value-key": "[DIRECTION]"
+      "value-key": "[DIRECTION]",
+      "type": "String"
     },
     {
       "id": "cifti_out",
       "name": "cifti_out",
       "description": "the output cifti",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_OUT]"
+      "value-key": "[CIFTI_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_fwhm",
@@ -61,40 +63,91 @@
       "value-key": "[OPT_FWHM]"
     },
     {
-      "id": "opt_left_surface_surface",
-      "name": "opt_left_surface_surface",
+      "id": "left_surface",
+      "name": "left_surface",
+      "description": "specify the left surface to use",
       "command-line-flag": "-left-surface",
-      "description": "specify the left surface to use: the left surface file",
-      "type": "File",
+      "type": {
+        "id": "left_surface",
+        "name": "left_surface",
+        "description": "specify the left surface to use",
+        "command-line": " [OPT_LEFT_CORRECTED_AREAS_AREA_METRIC]",
+        "inputs": [
+          {
+            "id": "opt_left_corrected_areas_area_metric",
+            "name": "opt_left_corrected_areas_area_metric",
+            "command-line-flag": "-left-corrected-areas",
+            "description": "vertex areas to use instead of computing them from the left surface: the corrected vertex areas, as a metric",
+            "optional": true,
+            "value-key": "[OPT_LEFT_CORRECTED_AREAS_AREA_METRIC]",
+            "type": "File"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
+      "value-key": "[LEFT_SURFACE]",
+      "list": false
     },
     {
-      "id": "opt_right_surface_surface",
-      "name": "opt_right_surface_surface",
+      "id": "right_surface",
+      "name": "right_surface",
+      "description": "specify the right surface to use",
       "command-line-flag": "-right-surface",
-      "description": "specify the right surface to use: the right surface file",
-      "type": "File",
+      "type": {
+        "id": "right_surface",
+        "name": "right_surface",
+        "description": "specify the right surface to use",
+        "command-line": " [OPT_RIGHT_CORRECTED_AREAS_AREA_METRIC]",
+        "inputs": [
+          {
+            "id": "opt_right_corrected_areas_area_metric",
+            "name": "opt_right_corrected_areas_area_metric",
+            "command-line-flag": "-right-corrected-areas",
+            "description": "vertex areas to use instead of computing them from the right surface: the corrected vertex areas, as a metric",
+            "optional": true,
+            "value-key": "[OPT_RIGHT_CORRECTED_AREAS_AREA_METRIC]",
+            "type": "File"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
+      "value-key": "[RIGHT_SURFACE]",
+      "list": false
     },
     {
-      "id": "opt_cerebellum_surface_surface",
-      "name": "opt_cerebellum_surface_surface",
+      "id": "cerebellum_surface",
+      "name": "cerebellum_surface",
+      "description": "specify the cerebellum surface to use",
       "command-line-flag": "-cerebellum-surface",
-      "description": "specify the cerebellum surface to use: the cerebellum surface file",
-      "type": "File",
+      "type": {
+        "id": "cerebellum_surface",
+        "name": "cerebellum_surface",
+        "description": "specify the cerebellum surface to use",
+        "command-line": " [OPT_CEREBELLUM_CORRECTED_AREAS_AREA_METRIC]",
+        "inputs": [
+          {
+            "id": "opt_cerebellum_corrected_areas_area_metric",
+            "name": "opt_cerebellum_corrected_areas_area_metric",
+            "command-line-flag": "-cerebellum-corrected-areas",
+            "description": "vertex areas to use instead of computing them from the cerebellum surface: the corrected vertex areas, as a metric",
+            "optional": true,
+            "value-key": "[OPT_CEREBELLUM_CORRECTED_AREAS_AREA_METRIC]",
+            "type": "File"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
+      "value-key": "[CEREBELLUM_SURFACE]",
+      "list": false
     },
     {
       "id": "opt_cifti_roi_roi_cifti",
       "name": "opt_cifti_roi_roi_cifti",
       "command-line-flag": "-cifti-roi",
       "description": "smooth only within regions of interest: the regions to smooth within, as a cifti file",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_CIFTI_ROI_ROI_CIFTI]"
+      "value-key": "[OPT_CIFTI_ROI_ROI_CIFTI]",
+      "type": "File"
     },
     {
       "id": "opt_fix_zeros_volume",

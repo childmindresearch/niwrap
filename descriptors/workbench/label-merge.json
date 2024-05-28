@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "label-merge",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -label-merge [LABEL_OUT] [OPT_LABEL_LABEL_IN]",
+  "command-line": "wb_command -label-merge [LABEL_OUT] [LABEL]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MERGE LABEL FILES INTO A NEW FILE.\n\nTakes one or more label files and constructs a new label file by concatenating columns from them.  The input files must have the same number of vertices and the same structure.\n\nExample: wb_command -label-merge out.label.gii -label first.label.gii -column 1 -label second.label.gii\n\nThis example would take the first column from first.label.gii and all subvolumes from second.label.gii, and write these to out.label.gii.",
+  "description": "Merge label files into a new file.\n\nTakes one or more label files and constructs a new label file by concatenating columns from them.  The input files must have the same number of vertices and the same structure.\n\nExample: wb_command -label-merge out.label.gii -label first.label.gii -column 1 -label second.label.gii\n\nThis example would take the first column from first.label.gii and all subvolumes from second.label.gii, and write these to out.label.gii.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,18 +15,69 @@
       "id": "label_out",
       "name": "label_out",
       "description": "the output label",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_OUT]"
+      "value-key": "[LABEL_OUT]",
+      "type": "File"
     },
     {
-      "id": "opt_label_label_in",
-      "name": "opt_label_label_in",
+      "id": "label",
+      "name": "label",
+      "description": "specify an input label",
       "command-line-flag": "-label",
-      "description": "specify an input label: a label file to use columns from",
-      "type": "File",
+      "type": {
+        "id": "label",
+        "name": "label",
+        "description": "specify an input label",
+        "command-line": " [COLUMN]",
+        "inputs": [
+          {
+            "id": "column",
+            "name": "column",
+            "description": "select a single column to use",
+            "command-line-flag": "-column",
+            "type": {
+              "id": "column",
+              "name": "column",
+              "description": "select a single column to use",
+              "command-line": " [UP_TO]",
+              "inputs": [
+                {
+                  "id": "up_to",
+                  "name": "up_to",
+                  "description": "use an inclusive range of columns",
+                  "command-line-flag": "-up-to",
+                  "type": {
+                    "id": "up_to",
+                    "name": "up_to",
+                    "description": "use an inclusive range of columns",
+                    "command-line": " [OPT_REVERSE]",
+                    "inputs": [
+                      {
+                        "id": "opt_reverse",
+                        "name": "opt_reverse",
+                        "command-line-flag": "-reverse",
+                        "description": "use the range in reverse order",
+                        "type": "Flag",
+                        "optional": true,
+                        "value-key": "[OPT_REVERSE]"
+                      }
+                    ]
+                  },
+                  "optional": true,
+                  "value-key": "[UP_TO]",
+                  "list": false
+                }
+              ]
+            },
+            "optional": true,
+            "value-key": "[COLUMN]",
+            "list": true
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_LABEL_LABEL_IN]"
+      "value-key": "[LABEL]",
+      "list": true
     }
   ],
   "output-files": [

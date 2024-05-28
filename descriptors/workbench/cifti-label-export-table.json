@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -cifti-label-export-table [LABEL_IN] [MAP] [TABLE_OUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "EXPORT LABEL TABLE FROM CIFTI AS TEXT.\n\nTakes the label table from the cifti label map, and writes it to a text format matching what is expected by -cifti-label-import.",
+  "description": "Export label table from cifti as text.\n\nTakes the label table from the cifti label map, and writes it to a text format matching what is expected by -cifti-label-import.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,25 +15,25 @@
       "id": "label_in",
       "name": "label_in",
       "description": "the input cifti label file",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_IN]"
+      "value-key": "[LABEL_IN]",
+      "type": "File"
     },
     {
       "id": "map",
       "name": "map",
       "description": "the number or name of the label map to use",
-      "type": "String",
       "optional": false,
-      "value-key": "[MAP]"
+      "value-key": "[MAP]",
+      "type": "String"
     },
     {
       "id": "table_out",
       "name": "table_out",
       "description": "output - the output text file",
-      "type": "String",
       "optional": false,
-      "value-key": "[TABLE_OUT]"
+      "value-key": "[TABLE_OUT]",
+      "type": "String"
     }
   ]
 }

@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -surface-wedge-volume [INNER_SURFACE] [OUTER_SURFACE] [METRIC]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MEASURE PER-VERTEX VOLUME BETWEEN SURFACES.\n\nCompute the volume of each vertex's area from one surface to another.  The surfaces must have vertex correspondence, and have consistent triangle orientation.",
+  "description": "Measure per-vertex volume between surfaces.\n\nCompute the volume of each vertex's area from one surface to another.  The surfaces must have vertex correspondence, and have consistent triangle orientation.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,25 +15,25 @@
       "id": "inner_surface",
       "name": "inner_surface",
       "description": "the inner surface",
-      "type": "File",
       "optional": false,
-      "value-key": "[INNER_SURFACE]"
+      "value-key": "[INNER_SURFACE]",
+      "type": "File"
     },
     {
       "id": "outer_surface",
       "name": "outer_surface",
       "description": "the outer surface",
-      "type": "File",
       "optional": false,
-      "value-key": "[OUTER_SURFACE]"
+      "value-key": "[OUTER_SURFACE]",
+      "type": "File"
     },
     {
       "id": "metric",
       "name": "metric",
       "description": "the output metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC]"
+      "value-key": "[METRIC]",
+      "type": "File"
     }
   ],
   "output-files": [

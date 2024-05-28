@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "label-resample",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -label-resample [LABEL_IN] [CURRENT_SPHERE] [NEW_SPHERE] [METHOD] [LABEL_OUT] [OPT_CURRENT_ROI_ROI_METRIC] [OPT_VALID_ROI_OUT] [OPT_LARGEST] [OPT_BYPASS_SPHERE_CHECK]",
+  "command-line": "wb_command -label-resample [LABEL_IN] [CURRENT_SPHERE] [NEW_SPHERE] [METHOD] [LABEL_OUT] [AREA_SURFS] [AREA_METRICS] [OPT_CURRENT_ROI_ROI_METRIC] [OPT_VALID_ROI_OUT] [ROI_OUT] [OPT_LARGEST] [OPT_BYPASS_SPHERE_CHECK]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "RESAMPLE A LABEL FILE TO A DIFFERENT MESH.\n\nResamples a label file, given two spherical surfaces that are in register.  If ADAP_BARY_AREA is used, exactly one of -area-surfs or -area-metrics must be specified.\n\nThe ADAP_BARY_AREA method is recommended for label data, because it should be better at resolving vertices that are near multiple labels, or in case of downsampling.  Midthickness surfaces are recommended for the vertex areas for most data.\n\nThe -largest option results in nearest vertex behavior when used with BARYCENTRIC, as it uses the value of the source vertex that has the largest weight.\n\nWhen -largest is not specified, the vertex weights are summed according to which label they correspond to, and the label with the largest sum is used.\n\nThe <method> argument must be one of the following:\n\nADAP_BARY_AREA\nBARYCENTRIC\n",
+  "description": "Resample a label file to a different mesh.\n\nResamples a label file, given two spherical surfaces that are in register.  If ADAP_BARY_AREA is used, exactly one of -area-surfs or -area-metrics must be specified.\n\nThe ADAP_BARY_AREA method is recommended for label data, because it should be better at resolving vertices that are near multiple labels, or in case of downsampling.  Midthickness surfaces are recommended for the vertex areas for most data.\n\nThe -largest option results in nearest vertex behavior when used with BARYCENTRIC, as it uses the value of the source vertex that has the largest weight.\n\nWhen -largest is not specified, the vertex weights are summed according to which label they correspond to, and the label with the largest sum is used.\n\nThe <method> argument must be one of the following:\n\nADAP_BARY_AREA\nBARYCENTRIC\n",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,50 +15,80 @@
       "id": "label_in",
       "name": "label_in",
       "description": "the label file to resample",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_IN]"
+      "value-key": "[LABEL_IN]",
+      "type": "File"
     },
     {
       "id": "current_sphere",
       "name": "current_sphere",
       "description": "a sphere surface with the mesh that the label file is currently on",
-      "type": "File",
       "optional": false,
-      "value-key": "[CURRENT_SPHERE]"
+      "value-key": "[CURRENT_SPHERE]",
+      "type": "File"
     },
     {
       "id": "new_sphere",
       "name": "new_sphere",
       "description": "a sphere surface that is in register with <current-sphere> and has the desired output mesh",
-      "type": "File",
       "optional": false,
-      "value-key": "[NEW_SPHERE]"
+      "value-key": "[NEW_SPHERE]",
+      "type": "File"
     },
     {
       "id": "method",
       "name": "method",
       "description": "the method name",
-      "type": "String",
       "optional": false,
-      "value-key": "[METHOD]"
+      "value-key": "[METHOD]",
+      "type": "String"
     },
     {
       "id": "label_out",
       "name": "label_out",
       "description": "the output label file",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_OUT]"
+      "value-key": "[LABEL_OUT]",
+      "type": "File"
+    },
+    {
+      "id": "area_surfs",
+      "name": "area_surfs",
+      "description": "specify surfaces to do vertex area correction based on",
+      "command-line-flag": "-area-surfs",
+      "type": {
+        "id": "area_surfs",
+        "name": "area_surfs",
+        "description": "specify surfaces to do vertex area correction based on",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[AREA_SURFS]",
+      "list": false
+    },
+    {
+      "id": "area_metrics",
+      "name": "area_metrics",
+      "description": "specify vertex area metrics to do area correction based on",
+      "command-line-flag": "-area-metrics",
+      "type": {
+        "id": "area_metrics",
+        "name": "area_metrics",
+        "description": "specify vertex area metrics to do area correction based on",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[AREA_METRICS]",
+      "list": false
     },
     {
       "id": "opt_current_roi_roi_metric",
       "name": "opt_current_roi_roi_metric",
       "command-line-flag": "-current-roi",
       "description": "use an input roi on the current mesh to exclude non-data vertices: the roi, as a metric file",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_CURRENT_ROI_ROI_METRIC]"
+      "value-key": "[OPT_CURRENT_ROI_ROI_METRIC]",
+      "type": "File"
     },
     {
       "id": "opt_valid_roi_out",
@@ -68,6 +98,14 @@
       "type": "Flag",
       "optional": true,
       "value-key": "[OPT_VALID_ROI_OUT]"
+    },
+    {
+      "id": "roi_out",
+      "name": "roi_out",
+      "description": "the output roi as a metric",
+      "optional": false,
+      "value-key": "[ROI_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_largest",
@@ -94,6 +132,13 @@
       "name": "label_out",
       "path-template": "[LABEL_OUT]",
       "description": "the output label file",
+      "optional": false
+    },
+    {
+      "id": "roi_out",
+      "name": "roi_out",
+      "path-template": "[ROI_OUT]",
+      "description": "the output roi as a metric",
       "optional": false
     }
   ]

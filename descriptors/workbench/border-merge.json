@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "border-merge",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -border-merge [BORDER_FILE_OUT] [OPT_BORDER_BORDER_FILE_IN]",
+  "command-line": "wb_command -border-merge [BORDER_FILE_OUT] [BORDER]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MERGE BORDER FILES INTO A NEW FILE.\n\nTakes one or more border files and makes a new border file from the borders in them.\n\nExample: wb_command -border-merge out.border -border first.border -select 1 -border second.border\n\nThis example would take the first border from first.border, followed by all borders from second.border, and write these to out.border.",
+  "description": "Merge border files into a new file.\n\nTakes one or more border files and makes a new border file from the borders in them.\n\nExample: wb_command -border-merge out.border -border first.border -select 1 -border second.border\n\nThis example would take the first border from first.border, followed by all borders from second.border, and write these to out.border.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,18 +15,69 @@
       "id": "border_file_out",
       "name": "border_file_out",
       "description": "the output border file",
-      "type": "File",
       "optional": false,
-      "value-key": "[BORDER_FILE_OUT]"
+      "value-key": "[BORDER_FILE_OUT]",
+      "type": "File"
     },
     {
-      "id": "opt_border_border_file_in",
-      "name": "opt_border_border_file_in",
+      "id": "border",
+      "name": "border",
+      "description": "specify an input border file",
       "command-line-flag": "-border",
-      "description": "specify an input border file: a border file to use borders from",
-      "type": "File",
+      "type": {
+        "id": "border",
+        "name": "border",
+        "description": "specify an input border file",
+        "command-line": " [SELECT]",
+        "inputs": [
+          {
+            "id": "select",
+            "name": "select",
+            "description": "select a single border to use",
+            "command-line-flag": "-select",
+            "type": {
+              "id": "select",
+              "name": "select",
+              "description": "select a single border to use",
+              "command-line": " [UP_TO]",
+              "inputs": [
+                {
+                  "id": "up_to",
+                  "name": "up_to",
+                  "description": "use an inclusive range of borders",
+                  "command-line-flag": "-up-to",
+                  "type": {
+                    "id": "up_to",
+                    "name": "up_to",
+                    "description": "use an inclusive range of borders",
+                    "command-line": " [OPT_REVERSE]",
+                    "inputs": [
+                      {
+                        "id": "opt_reverse",
+                        "name": "opt_reverse",
+                        "command-line-flag": "-reverse",
+                        "description": "use the range in reverse order",
+                        "type": "Flag",
+                        "optional": true,
+                        "value-key": "[OPT_REVERSE]"
+                      }
+                    ]
+                  },
+                  "optional": true,
+                  "value-key": "[UP_TO]",
+                  "list": false
+                }
+              ]
+            },
+            "optional": true,
+            "value-key": "[SELECT]",
+            "list": true
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_BORDER_BORDER_FILE_IN]"
+      "value-key": "[BORDER]",
+      "list": true
     }
   ],
   "output-files": [

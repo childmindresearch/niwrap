@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -cifti-reorder [CIFTI_IN] [DIRECTION] [REORDER_LIST] [CIFTI_OUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "REORDER THE PARCELS OR SCALAR/LABEL MAPS IN A CIFTI FILE.\n\nThe mapping along the specified direction must be parcels, scalars, or labels.  For pscalar or ptseries, use COLUMN to reorder the parcels.  For dlabel, use ROW.  The <reorder-list> file must contain 1-based indices separated by whitespace (spaces, newlines, tabs, etc), with as many indices as <cifti-in> has along the specified dimension.  These indices specify which current index should end up in that position, for instance, if the current order is 'A B C D', and the desired order is 'D A B C', the text file should contain '4 1 2 3'.",
+  "description": "Reorder the parcels or scalar/label maps in a cifti file.\n\nThe mapping along the specified direction must be parcels, scalars, or labels.  For pscalar or ptseries, use COLUMN to reorder the parcels.  For dlabel, use ROW.  The <reorder-list> file must contain 1-based indices separated by whitespace (spaces, newlines, tabs, etc), with as many indices as <cifti-in> has along the specified dimension.  These indices specify which current index should end up in that position, for instance, if the current order is 'A B C D', and the desired order is 'D A B C', the text file should contain '4 1 2 3'.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,33 +15,33 @@
       "id": "cifti_in",
       "name": "cifti_in",
       "description": "input cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_IN]"
+      "value-key": "[CIFTI_IN]",
+      "type": "File"
     },
     {
       "id": "direction",
       "name": "direction",
       "description": "which dimension to reorder along, ROW or COLUMN",
-      "type": "String",
       "optional": false,
-      "value-key": "[DIRECTION]"
+      "value-key": "[DIRECTION]",
+      "type": "String"
     },
     {
       "id": "reorder_list",
       "name": "reorder_list",
       "description": "a text file containing the desired order transformation",
-      "type": "String",
       "optional": false,
-      "value-key": "[REORDER_LIST]"
+      "value-key": "[REORDER_LIST]",
+      "type": "String"
     },
     {
       "id": "cifti_out",
       "name": "cifti_out",
       "description": "the reordered cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_OUT]"
+      "value-key": "[CIFTI_OUT]",
+      "type": "File"
     }
   ],
   "output-files": [

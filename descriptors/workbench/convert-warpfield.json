@@ -2,50 +2,108 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "convert-warpfield",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -convert-warpfield [OPT_FROM_WORLD_INPUT] [OPT_FROM_ITK_INPUT] [OPT_TO_WORLD_OUTPUT] [OPT_TO_ITK_OUTPUT]",
+  "command-line": "wb_command -convert-warpfield [FROM_WORLD] [OPT_FROM_ITK_INPUT] [FROM_FNIRT] [OPT_TO_WORLD_OUTPUT] [OPT_TO_ITK_OUTPUT] [TO_FNIRT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "CONVERT A WARPFIELD BETWEEN CONVENTIONS.\n\nNIFTI world warpfields can be used directly on mm coordinates via sampling the three subvolumes at the coordinate and adding the sampled values to the coordinate vector.  They use the NIFTI coordinate system, that is, X is left to right, Y is posterior to anterior, and Z is inferior to superior.\n\nNOTE: this command does not invert the warpfield, and to warp a surface, you must use the inverse of the warpfield that warps the corresponding volume.\n\nThe ITK format is used by ANTS.\n\nYou must specify exactly one -from option, but you may specify multiple -to options, and -to-fnirt may be specified more than once.",
+  "description": "Convert a warpfield between conventions.\n\nNIFTI world warpfields can be used directly on mm coordinates via sampling the three subvolumes at the coordinate and adding the sampled values to the coordinate vector.  They use the NIFTI coordinate system, that is, X is left to right, Y is posterior to anterior, and Z is inferior to superior.\n\nNOTE: this command does not invert the warpfield, and to warp a surface, you must use the inverse of the warpfield that warps the corresponding volume.\n\nThe ITK format is used by ANTS.\n\nYou must specify exactly one -from option, but you may specify multiple -to options, and -to-fnirt may be specified more than once.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
     {
-      "id": "opt_from_world_input",
-      "name": "opt_from_world_input",
+      "id": "from_world",
+      "name": "from_world",
+      "description": "input is a NIFTI 'world' warpfield",
       "command-line-flag": "-from-world",
-      "description": "input is a NIFTI 'world' warpfield: the input warpfield",
-      "type": "String",
+      "type": {
+        "id": "from_world",
+        "name": "from_world",
+        "description": "input is a NIFTI 'world' warpfield",
+        "command-line": " [OPT_ABSOLUTE]",
+        "inputs": [
+          {
+            "id": "opt_absolute",
+            "name": "opt_absolute",
+            "command-line-flag": "-absolute",
+            "description": "warpfield was written in absolute convention, rather than relative",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_ABSOLUTE]"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_FROM_WORLD_INPUT]"
+      "value-key": "[FROM_WORLD]",
+      "list": false
     },
     {
       "id": "opt_from_itk_input",
       "name": "opt_from_itk_input",
       "command-line-flag": "-from-itk",
       "description": "input is an ITK warpfield: the input warpfield",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_FROM_ITK_INPUT]"
+      "value-key": "[OPT_FROM_ITK_INPUT]",
+      "type": "String"
+    },
+    {
+      "id": "from_fnirt",
+      "name": "from_fnirt",
+      "description": "input is a fnirt warpfield",
+      "command-line-flag": "-from-fnirt",
+      "type": {
+        "id": "from_fnirt",
+        "name": "from_fnirt",
+        "description": "input is a fnirt warpfield",
+        "command-line": " [OPT_ABSOLUTE]",
+        "inputs": [
+          {
+            "id": "opt_absolute",
+            "name": "opt_absolute",
+            "command-line-flag": "-absolute",
+            "description": "warpfield was written in absolute convention, rather than relative",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_ABSOLUTE]"
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[FROM_FNIRT]",
+      "list": false
     },
     {
       "id": "opt_to_world_output",
       "name": "opt_to_world_output",
       "command-line-flag": "-to-world",
       "description": "write output as a NIFTI 'world' warpfield: output - the output warpfield",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_TO_WORLD_OUTPUT]"
+      "value-key": "[OPT_TO_WORLD_OUTPUT]",
+      "type": "String"
     },
     {
       "id": "opt_to_itk_output",
       "name": "opt_to_itk_output",
       "command-line-flag": "-to-itk",
       "description": "write output as an ITK warpfield: output - the output warpfield",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_TO_ITK_OUTPUT]"
+      "value-key": "[OPT_TO_ITK_OUTPUT]",
+      "type": "String"
+    },
+    {
+      "id": "to_fnirt",
+      "name": "to_fnirt",
+      "description": "write output as a fnirt warpfield",
+      "command-line-flag": "-to-fnirt",
+      "type": {
+        "id": "to_fnirt",
+        "name": "to_fnirt",
+        "description": "write output as a fnirt warpfield",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[TO_FNIRT]",
+      "list": true
     }
   ]
 }

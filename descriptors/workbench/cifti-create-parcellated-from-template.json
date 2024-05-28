@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-create-parcellated-from-template",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-create-parcellated-from-template [CIFTI_TEMPLATE] [MODIFY_DIRECTION] [CIFTI_OUT] [OPT_FILL_VALUE_VALUE] [OPT_CIFTI_CIFTI_IN]",
+  "command-line": "wb_command -cifti-create-parcellated-from-template [CIFTI_TEMPLATE] [MODIFY_DIRECTION] [CIFTI_OUT] [OPT_FILL_VALUE_VALUE] [CIFTI]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MATCH PARCELS TO TEMPLATE BY NAME.\n\nFor each parcel name in the template mapping, find that name in an input cifti file and use its data in the output file.  All input cifti files must have a parcels mapping along <modify-direction> and matching mappings along other dimensions.  The direction can be either an integer starting from 1, or the strings 'ROW' or 'COLUMN'.",
+  "description": "Match parcels to template by name.\n\nFor each parcel name in the template mapping, find that name in an input cifti file and use its data in the output file.  All input cifti files must have a parcels mapping along <modify-direction> and matching mappings along other dimensions.  The direction can be either an integer starting from 1, or the strings 'ROW' or 'COLUMN'.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,43 +15,50 @@
       "id": "cifti_template",
       "name": "cifti_template",
       "description": "a cifti file with the template parcel mapping along column",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_TEMPLATE]"
+      "value-key": "[CIFTI_TEMPLATE]",
+      "type": "File"
     },
     {
       "id": "modify_direction",
       "name": "modify_direction",
       "description": "which dimension of the output file should match the template (integer, 'ROW', or 'COLUMN')",
-      "type": "String",
       "optional": false,
-      "value-key": "[MODIFY_DIRECTION]"
+      "value-key": "[MODIFY_DIRECTION]",
+      "type": "String"
     },
     {
       "id": "cifti_out",
       "name": "cifti_out",
       "description": "the output cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_OUT]"
+      "value-key": "[CIFTI_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_fill_value_value",
       "name": "opt_fill_value_value",
       "command-line-flag": "-fill-value",
       "description": "specify value to be used in parcels that don't match: value to use (default 0)",
-      "type": "Number",
       "optional": true,
-      "value-key": "[OPT_FILL_VALUE_VALUE]"
+      "value-key": "[OPT_FILL_VALUE_VALUE]",
+      "type": "Number",
+      "integer": false
     },
     {
-      "id": "opt_cifti_cifti_in",
-      "name": "opt_cifti_cifti_in",
+      "id": "cifti",
+      "name": "cifti",
+      "description": "specify an input cifti file",
       "command-line-flag": "-cifti",
-      "description": "specify an input cifti file: the input parcellated cifti file",
-      "type": "File",
+      "type": {
+        "id": "cifti",
+        "name": "cifti",
+        "description": "specify an input cifti file",
+        "command-line": ""
+      },
       "optional": true,
-      "value-key": "[OPT_CIFTI_CIFTI_IN]"
+      "value-key": "[CIFTI]",
+      "list": true
     }
   ],
   "output-files": [

@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -border-length [BORDER] [SURFACE] [OPT_CORRECTED_AREAS_AREA_METRIC] [OPT_SEPARATE_PIECES] [OPT_HIDE_BORDER_NAME]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "REPORT LENGTH OF BORDERS.\n\nFor each border, print its length along the surface, in mm.  If a border has multiple parts, their lengths are summed before printing, unless -separate-pieces is specified.\n\nThe -corrected-areas option is intended for when the length is not meaningfully measurable on individual surfaces, it is only an approximate correction for the reduction in structure of a group average surface.",
+  "description": "Report length of borders.\n\nFor each border, print its length along the surface, in mm.  If a border has multiple parts, their lengths are summed before printing, unless -separate-pieces is specified.\n\nThe -corrected-areas option is intended for when the length is not meaningfully measurable on individual surfaces, it is only an approximate correction for the reduction in structure of a group average surface.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,26 +15,26 @@
       "id": "border",
       "name": "border",
       "description": "the input border file",
-      "type": "File",
       "optional": false,
-      "value-key": "[BORDER]"
+      "value-key": "[BORDER]",
+      "type": "File"
     },
     {
       "id": "surface",
       "name": "surface",
       "description": "the surface to measure the borders on",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "opt_corrected_areas_area_metric",
       "name": "opt_corrected_areas_area_metric",
       "command-line-flag": "-corrected-areas",
       "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
+      "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]",
+      "type": "File"
     },
     {
       "id": "opt_separate_pieces",

@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -surface-normals [SURFACE] [METRIC_OUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "OUTPUT VERTEX NORMALS AS METRIC FILE.\n\nComputes the normal vectors of the surface file, and outputs them as a 3 column metric file.",
+  "description": "Output vertex normals as metric file.\n\nComputes the normal vectors of the surface file, and outputs them as a 3 column metric file.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,17 +15,17 @@
       "id": "surface",
       "name": "surface",
       "description": "the surface to output the normals of",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "metric_out",
       "name": "metric_out",
       "description": "the normal vectors",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_OUT]"
+      "value-key": "[METRIC_OUT]",
+      "type": "File"
     }
   ],
   "output-files": [

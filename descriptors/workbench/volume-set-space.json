@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-set-space",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-set-space [VOLUME_IN] [VOLUME_OUT] [OPT_FILE_VOLUME_REF]",
+  "command-line": "wb_command -volume-set-space [VOLUME_IN] [VOLUME_OUT] [PLUMB] [SFORM] [FILE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "CHANGE VOLUME SPACE INFORMATION.\n\nWrites a copy of the volume file, with the spacing information changed as specified.  No reordering of the voxel data occurs, see -volume-reorient to change the volume indexing order and reorder the voxels to match.  Exactly one of -plumb, -sform, or -file must be specified.",
+  "description": "Change volume space information.\n\nWrites a copy of the volume file, with the spacing information changed as specified.  No reordering of the voxel data occurs, see -volume-reorient to change the volume indexing order and reorder the voxels to match.  Exactly one of -plumb, -sform, or -file must be specified.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,26 +15,73 @@
       "id": "volume_in",
       "name": "volume_in",
       "description": "the input volume",
-      "type": "File",
       "optional": false,
-      "value-key": "[VOLUME_IN]"
+      "value-key": "[VOLUME_IN]",
+      "type": "File"
     },
     {
       "id": "volume_out",
       "name": "volume_out",
       "description": "output - the output volume",
-      "type": "String",
       "optional": false,
-      "value-key": "[VOLUME_OUT]"
+      "value-key": "[VOLUME_OUT]",
+      "type": "String"
     },
     {
-      "id": "opt_file_volume_ref",
-      "name": "opt_file_volume_ref",
-      "command-line-flag": "-file",
-      "description": "copy spacing info from volume file with matching dimensions: volume file to use for reference space",
-      "type": "String",
+      "id": "plumb",
+      "name": "plumb",
+      "description": "set via axis order and spacing/offset",
+      "command-line-flag": "-plumb",
+      "type": {
+        "id": "plumb",
+        "name": "plumb",
+        "description": "set via axis order and spacing/offset",
+        "command-line": ""
+      },
       "optional": true,
-      "value-key": "[OPT_FILE_VOLUME_REF]"
+      "value-key": "[PLUMB]",
+      "list": false
+    },
+    {
+      "id": "sform",
+      "name": "sform",
+      "description": "set via a nifti sform",
+      "command-line-flag": "-sform",
+      "type": {
+        "id": "sform",
+        "name": "sform",
+        "description": "set via a nifti sform",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[SFORM]",
+      "list": false
+    },
+    {
+      "id": "file",
+      "name": "file",
+      "description": "copy spacing info from volume file with matching dimensions",
+      "command-line-flag": "-file",
+      "type": {
+        "id": "file",
+        "name": "file",
+        "description": "copy spacing info from volume file with matching dimensions",
+        "command-line": " [OPT_IGNORE_DIMS]",
+        "inputs": [
+          {
+            "id": "opt_ignore_dims",
+            "name": "opt_ignore_dims",
+            "command-line-flag": "-ignore-dims",
+            "description": "copy the spacing info even if the dimensions don't match",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_IGNORE_DIMS]"
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[FILE]",
+      "list": false
     }
   ]
 }

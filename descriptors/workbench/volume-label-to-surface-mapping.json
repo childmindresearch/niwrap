@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-label-to-surface-mapping",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-label-to-surface-mapping [VOLUME] [SURFACE] [LABEL_OUT] [OPT_SUBVOL_SELECT_SUBVOL]",
+  "command-line": "wb_command -volume-label-to-surface-mapping [VOLUME] [SURFACE] [LABEL_OUT] [RIBBON_CONSTRAINED] [OPT_SUBVOL_SELECT_SUBVOL]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MAP A LABEL VOLUME TO A SURFACE LABEL FILE.\n\nMap label volume data to a surface.  If -ribbon-constrained is not specified, uses the enclosing voxel method.  The ribbon mapping method constructs a polyhedron from the vertex's neighbors on each surface, and estimates the amount of this polyhedron's volume that falls inside any nearby voxels, to use as the weights for a popularity comparison.  If -thin-columns is specified, the polyhedron uses the edge midpoints and triangle centroids, so that neighboring vertices do not have overlapping polyhedra.  This may require increasing -voxel-subdiv to get enough samples in each voxel to reliably land inside these smaller polyhedra.  The volume ROI is useful to exclude partial volume effects of voxels the surfaces pass through, and will cause the mapping to ignore voxels that don't have a positive value in the mask.  The subdivision number specifies how it approximates the amount of the volume the polyhedron intersects, by splitting each voxel into NxNxN pieces, and checking whether the center of each piece is inside the polyhedron.  If you have very large voxels, consider increasing this if you get unexpected unlabeled vertices in your output.",
+  "description": "Map a label volume to a surface label file.\n\nMap label volume data to a surface.  If -ribbon-constrained is not specified, uses the enclosing voxel method.  The ribbon mapping method constructs a polyhedron from the vertex's neighbors on each surface, and estimates the amount of this polyhedron's volume that falls inside any nearby voxels, to use as the weights for a popularity comparison.  If -thin-columns is specified, the polyhedron uses the edge midpoints and triangle centroids, so that neighboring vertices do not have overlapping polyhedra.  This may require increasing -voxel-subdiv to get enough samples in each voxel to reliably land inside these smaller polyhedra.  The volume ROI is useful to exclude partial volume effects of voxels the surfaces pass through, and will cause the mapping to ignore voxels that don't have a positive value in the mask.  The subdivision number specifies how it approximates the amount of the volume the polyhedron intersects, by splitting each voxel into NxNxN pieces, and checking whether the center of each piece is inside the polyhedron.  If you have very large voxels, consider increasing this if you get unexpected unlabeled vertices in your output.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,34 +15,79 @@
       "id": "volume",
       "name": "volume",
       "description": "the volume to map data from",
-      "type": "File",
       "optional": false,
-      "value-key": "[VOLUME]"
+      "value-key": "[VOLUME]",
+      "type": "File"
     },
     {
       "id": "surface",
       "name": "surface",
       "description": "the surface to map the data onto",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "label_out",
       "name": "label_out",
       "description": "the output gifti label file",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_OUT]"
+      "value-key": "[LABEL_OUT]",
+      "type": "File"
+    },
+    {
+      "id": "ribbon_constrained",
+      "name": "ribbon_constrained",
+      "description": "use ribbon constrained mapping algorithm",
+      "command-line-flag": "-ribbon-constrained",
+      "type": {
+        "id": "ribbon_constrained",
+        "name": "ribbon_constrained",
+        "description": "use ribbon constrained mapping algorithm",
+        "command-line": " [OPT_VOLUME_ROI_ROI_VOLUME] [OPT_VOXEL_SUBDIV_SUBDIV_NUM] [OPT_THIN_COLUMNS]",
+        "inputs": [
+          {
+            "id": "opt_volume_roi_roi_volume",
+            "name": "opt_volume_roi_roi_volume",
+            "command-line-flag": "-volume-roi",
+            "description": "use a volume roi: the volume file",
+            "optional": true,
+            "value-key": "[OPT_VOLUME_ROI_ROI_VOLUME]",
+            "type": "File"
+          },
+          {
+            "id": "opt_voxel_subdiv_subdiv_num",
+            "name": "opt_voxel_subdiv_subdiv_num",
+            "command-line-flag": "-voxel-subdiv",
+            "description": "voxel divisions while estimating voxel weights: number of subdivisions, default 3",
+            "optional": true,
+            "value-key": "[OPT_VOXEL_SUBDIV_SUBDIV_NUM]",
+            "type": "Number",
+            "integer": true
+          },
+          {
+            "id": "opt_thin_columns",
+            "name": "opt_thin_columns",
+            "command-line-flag": "-thin-columns",
+            "description": "use non-overlapping polyhedra",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_THIN_COLUMNS]"
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[RIBBON_CONSTRAINED]",
+      "list": false
     },
     {
       "id": "opt_subvol_select_subvol",
       "name": "opt_subvol_select_subvol",
       "command-line-flag": "-subvol-select",
       "description": "select a single subvolume to map: the subvolume number or name",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_SUBVOL_SELECT_SUBVOL]"
+      "value-key": "[OPT_SUBVOL_SELECT_SUBVOL]",
+      "type": "String"
     }
   ],
   "output-files": [

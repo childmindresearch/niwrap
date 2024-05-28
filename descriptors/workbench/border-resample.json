@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -border-resample [BORDER_IN] [CURRENT_SPHERE] [NEW_SPHERE] [BORDER_OUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "RESAMPLE A BORDER FILE TO A DIFFERENT MESH.\n\nResamples a border file, given two spherical surfaces that are in register.  Only borders that have the same structure as current-sphere will be resampled.",
+  "description": "Resample a border file to a different mesh.\n\nResamples a border file, given two spherical surfaces that are in register.  Only borders that have the same structure as current-sphere will be resampled.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,33 +15,33 @@
       "id": "border_in",
       "name": "border_in",
       "description": "the border file to resample",
-      "type": "File",
       "optional": false,
-      "value-key": "[BORDER_IN]"
+      "value-key": "[BORDER_IN]",
+      "type": "File"
     },
     {
       "id": "current_sphere",
       "name": "current_sphere",
       "description": "a sphere surface with the mesh that the metric is currently on",
-      "type": "File",
       "optional": false,
-      "value-key": "[CURRENT_SPHERE]"
+      "value-key": "[CURRENT_SPHERE]",
+      "type": "File"
     },
     {
       "id": "new_sphere",
       "name": "new_sphere",
       "description": "a sphere surface that is in register with <current-sphere> and has the desired output mesh",
-      "type": "File",
       "optional": false,
-      "value-key": "[NEW_SPHERE]"
+      "value-key": "[NEW_SPHERE]",
+      "type": "File"
     },
     {
       "id": "border_out",
       "name": "border_out",
       "description": "the output border file",
-      "type": "File",
       "optional": false,
-      "value-key": "[BORDER_OUT]"
+      "value-key": "[BORDER_OUT]",
+      "type": "File"
     }
   ],
   "output-files": [

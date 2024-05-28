@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -gifti-label-add-prefix [LABEL_IN] [PREFIX] [LABEL_OUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "ADD PREFIX TO ALL LABEL NAMES IN A GIFTI LABEL FILE.\n\nFor each label other than '???', prepend <prefix> to the label name.",
+  "description": "Add prefix to all label names in a gifti label file.\n\nFor each label other than '???', prepend <prefix> to the label name.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,25 +15,25 @@
       "id": "label_in",
       "name": "label_in",
       "description": "the input label file",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_IN]"
+      "value-key": "[LABEL_IN]",
+      "type": "File"
     },
     {
       "id": "prefix",
       "name": "prefix",
       "description": "the prefix string to add",
-      "type": "String",
       "optional": false,
-      "value-key": "[PREFIX]"
+      "value-key": "[PREFIX]",
+      "type": "String"
     },
     {
       "id": "label_out",
       "name": "label_out",
       "description": "the output label file",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_OUT]"
+      "value-key": "[LABEL_OUT]",
+      "type": "File"
     }
   ],
   "output-files": [

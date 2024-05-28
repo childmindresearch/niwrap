@@ -2,32 +2,367 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-convert",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-convert [OPT_FROM_GIFTI_EXT_GIFTI_IN] [OPT_TO_NIFTI_CIFTI_IN]",
+  "command-line": "wb_command -cifti-convert [TO_GIFTI_EXT] [FROM_GIFTI_EXT] [TO_NIFTI] [FROM_NIFTI] [TO_TEXT] [FROM_TEXT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "DUMP CIFTI MATRIX INTO OTHER FORMATS.\n\nThis command is used to convert a full CIFTI matrix to/from formats that can be used by programs that don't understand CIFTI.  You must specify exactly one of -to-gifti-ext, -from-gifti-ext, -to-nifti, -from-nifti, -to-text, or -from-text.\n\nIf you want to write an existing CIFTI file with a different CIFTI version, see -file-convert, and its -cifti-version-convert option.\n\nIf you want part of the CIFTI file as a metric, label, or volume file, see -cifti-separate.  If you want to create a CIFTI file from metric and/or volume files, see the -cifti-create-* commands.\n\nIf you want to import a matrix that is restricted to an ROI, first create a template CIFTI file matching that ROI using a -cifti-create-* command.  After importing to CIFTI, you can then expand the file into a standard brainordinates space with -cifti-create-dense-from-template.  If you want to export only part of a CIFTI file, first create an roi-restricted CIFTI file with -cifti-restrict-dense-mapping.\n\nThe -transpose option to -from-gifti-ext is needed if the replacement binary file is in column-major order.\n\nThe -unit options accept these values:\n\nSECOND\nHERTZ\nMETER\nRADIAN",
+  "description": "Dump cifti matrix into other formats.\n\nThis command is used to convert a full CIFTI matrix to/from formats that can be used by programs that don't understand CIFTI.  You must specify exactly one of -to-gifti-ext, -from-gifti-ext, -to-nifti, -from-nifti, -to-text, or -from-text.\n\nIf you want to write an existing CIFTI file with a different CIFTI version, see -file-convert, and its -cifti-version-convert option.\n\nIf you want part of the CIFTI file as a metric, label, or volume file, see -cifti-separate.  If you want to create a CIFTI file from metric and/or volume files, see the -cifti-create-* commands.\n\nIf you want to import a matrix that is restricted to an ROI, first create a template CIFTI file matching that ROI using a -cifti-create-* command.  After importing to CIFTI, you can then expand the file into a standard brainordinates space with -cifti-create-dense-from-template.  If you want to export only part of a CIFTI file, first create an roi-restricted CIFTI file with -cifti-restrict-dense-mapping.\n\nThe -transpose option to -from-gifti-ext is needed if the replacement binary file is in column-major order.\n\nThe -unit options accept these values:\n\nSECOND\nHERTZ\nMETER\nRADIAN",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
     {
-      "id": "opt_from_gifti_ext_gifti_in",
-      "name": "opt_from_gifti_ext_gifti_in",
-      "command-line-flag": "-from-gifti-ext",
-      "description": "convert a GIFTI made with this command back into a CIFTI: the input gifti file",
-      "type": "String",
+      "id": "to_gifti_ext",
+      "name": "to_gifti_ext",
+      "description": "convert to GIFTI external binary",
+      "command-line-flag": "-to-gifti-ext",
+      "type": {
+        "id": "to_gifti_ext",
+        "name": "to_gifti_ext",
+        "description": "convert to GIFTI external binary",
+        "command-line": ""
+      },
       "optional": true,
-      "value-key": "[OPT_FROM_GIFTI_EXT_GIFTI_IN]"
+      "value-key": "[TO_GIFTI_EXT]",
+      "list": false
     },
     {
-      "id": "opt_to_nifti_cifti_in",
-      "name": "opt_to_nifti_cifti_in",
-      "command-line-flag": "-to-nifti",
-      "description": "convert to NIFTI1: the input cifti file",
-      "type": "File",
+      "id": "from_gifti_ext",
+      "name": "from_gifti_ext",
+      "description": "convert a GIFTI made with this command back into a CIFTI",
+      "command-line-flag": "-from-gifti-ext",
+      "type": {
+        "id": "from_gifti_ext",
+        "name": "from_gifti_ext",
+        "description": "convert a GIFTI made with this command back into a CIFTI",
+        "command-line": " [CIFTI_OUT] [RESET_TIMEPOINTS] [OPT_RESET_SCALARS] [OPT_COLUMN_RESET_SCALARS] [REPLACE_BINARY]",
+        "inputs": [
+          {
+            "id": "cifti_out",
+            "name": "cifti_out",
+            "description": "the output cifti file",
+            "optional": false,
+            "value-key": "[CIFTI_OUT]",
+            "type": "File"
+          },
+          {
+            "id": "reset_timepoints",
+            "name": "reset_timepoints",
+            "description": "reset the mapping along rows to timepoints, taking length from the gifti file",
+            "command-line-flag": "-reset-timepoints",
+            "type": {
+              "id": "reset_timepoints",
+              "name": "reset_timepoints",
+              "description": "reset the mapping along rows to timepoints, taking length from the gifti file",
+              "command-line": " [OPT_UNIT_UNIT]",
+              "inputs": [
+                {
+                  "id": "opt_unit_unit",
+                  "name": "opt_unit_unit",
+                  "command-line-flag": "-unit",
+                  "description": "use a unit other than time: unit identifier (default SECOND)",
+                  "optional": true,
+                  "value-key": "[OPT_UNIT_UNIT]",
+                  "type": "String"
+                }
+              ]
+            },
+            "optional": true,
+            "value-key": "[RESET_TIMEPOINTS]",
+            "list": false
+          },
+          {
+            "id": "opt_reset_scalars",
+            "name": "opt_reset_scalars",
+            "command-line-flag": "-reset-scalars",
+            "description": "reset mapping along rows to scalars, taking length from the gifti file",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_RESET_SCALARS]"
+          },
+          {
+            "id": "opt_column_reset_scalars",
+            "name": "opt_column_reset_scalars",
+            "command-line-flag": "-column-reset-scalars",
+            "description": "reset mapping along columns to scalar (useful for changing number of series in a sdseries file)",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_COLUMN_RESET_SCALARS]"
+          },
+          {
+            "id": "replace_binary",
+            "name": "replace_binary",
+            "description": "replace data with a binary file",
+            "command-line-flag": "-replace-binary",
+            "type": {
+              "id": "replace_binary",
+              "name": "replace_binary",
+              "description": "replace data with a binary file",
+              "command-line": " [OPT_FLIP_ENDIAN] [OPT_TRANSPOSE]",
+              "inputs": [
+                {
+                  "id": "opt_flip_endian",
+                  "name": "opt_flip_endian",
+                  "command-line-flag": "-flip-endian",
+                  "description": "byteswap the binary file",
+                  "type": "Flag",
+                  "optional": true,
+                  "value-key": "[OPT_FLIP_ENDIAN]"
+                },
+                {
+                  "id": "opt_transpose",
+                  "name": "opt_transpose",
+                  "command-line-flag": "-transpose",
+                  "description": "transpose the binary file",
+                  "type": "Flag",
+                  "optional": true,
+                  "value-key": "[OPT_TRANSPOSE]"
+                }
+              ]
+            },
+            "optional": true,
+            "value-key": "[REPLACE_BINARY]",
+            "list": false
+          }
+        ],
+        "output-files": [
+          {
+            "id": "cifti_out",
+            "name": "cifti_out",
+            "path-template": "[CIFTI_OUT]",
+            "description": "the output cifti file",
+            "optional": false
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_TO_NIFTI_CIFTI_IN]"
+      "value-key": "[FROM_GIFTI_EXT]",
+      "list": false
+    },
+    {
+      "id": "to_nifti",
+      "name": "to_nifti",
+      "description": "convert to NIFTI1",
+      "command-line-flag": "-to-nifti",
+      "type": {
+        "id": "to_nifti",
+        "name": "to_nifti",
+        "description": "convert to NIFTI1",
+        "command-line": " [NIFTI_OUT] [OPT_SMALLER_FILE] [OPT_SMALLER_DIMS]",
+        "inputs": [
+          {
+            "id": "nifti_out",
+            "name": "nifti_out",
+            "description": "the output nifti file",
+            "optional": false,
+            "value-key": "[NIFTI_OUT]",
+            "type": "File"
+          },
+          {
+            "id": "opt_smaller_file",
+            "name": "opt_smaller_file",
+            "command-line-flag": "-smaller-file",
+            "description": "use better-fitting dimension lengths",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_SMALLER_FILE]"
+          },
+          {
+            "id": "opt_smaller_dims",
+            "name": "opt_smaller_dims",
+            "command-line-flag": "-smaller-dims",
+            "description": "minimize the largest dimension, for tools that don't like large indices",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_SMALLER_DIMS]"
+          }
+        ],
+        "output-files": [
+          {
+            "id": "nifti_out",
+            "name": "nifti_out",
+            "path-template": "[NIFTI_OUT]",
+            "description": "the output nifti file",
+            "optional": false
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[TO_NIFTI]",
+      "list": false
+    },
+    {
+      "id": "from_nifti",
+      "name": "from_nifti",
+      "description": "convert a NIFTI (1 or 2) file made with this command back into CIFTI",
+      "command-line-flag": "-from-nifti",
+      "type": {
+        "id": "from_nifti",
+        "name": "from_nifti",
+        "description": "convert a NIFTI (1 or 2) file made with this command back into CIFTI",
+        "command-line": " [CIFTI_OUT] [RESET_TIMEPOINTS] [OPT_RESET_SCALARS]",
+        "inputs": [
+          {
+            "id": "cifti_out",
+            "name": "cifti_out",
+            "description": "the output cifti file",
+            "optional": false,
+            "value-key": "[CIFTI_OUT]",
+            "type": "File"
+          },
+          {
+            "id": "reset_timepoints",
+            "name": "reset_timepoints",
+            "description": "reset the mapping along rows to timepoints, taking length from the nifti file",
+            "command-line-flag": "-reset-timepoints",
+            "type": {
+              "id": "reset_timepoints",
+              "name": "reset_timepoints",
+              "description": "reset the mapping along rows to timepoints, taking length from the nifti file",
+              "command-line": " [OPT_UNIT_UNIT]",
+              "inputs": [
+                {
+                  "id": "opt_unit_unit",
+                  "name": "opt_unit_unit",
+                  "command-line-flag": "-unit",
+                  "description": "use a unit other than time: unit identifier (default SECOND)",
+                  "optional": true,
+                  "value-key": "[OPT_UNIT_UNIT]",
+                  "type": "String"
+                }
+              ]
+            },
+            "optional": true,
+            "value-key": "[RESET_TIMEPOINTS]",
+            "list": false
+          },
+          {
+            "id": "opt_reset_scalars",
+            "name": "opt_reset_scalars",
+            "command-line-flag": "-reset-scalars",
+            "description": "reset mapping along rows to scalars, taking length from the nifti file",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_RESET_SCALARS]"
+          }
+        ],
+        "output-files": [
+          {
+            "id": "cifti_out",
+            "name": "cifti_out",
+            "path-template": "[CIFTI_OUT]",
+            "description": "the output cifti file",
+            "optional": false
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[FROM_NIFTI]",
+      "list": false
+    },
+    {
+      "id": "to_text",
+      "name": "to_text",
+      "description": "convert to a plain text file",
+      "command-line-flag": "-to-text",
+      "type": {
+        "id": "to_text",
+        "name": "to_text",
+        "description": "convert to a plain text file",
+        "command-line": " [OPT_COL_DELIM_DELIM_STRING]",
+        "inputs": [
+          {
+            "id": "opt_col_delim_delim_string",
+            "name": "opt_col_delim_delim_string",
+            "command-line-flag": "-col-delim",
+            "description": "choose string to put between elements in a row: the string to use (default is a tab character)",
+            "optional": true,
+            "value-key": "[OPT_COL_DELIM_DELIM_STRING]",
+            "type": "String"
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[TO_TEXT]",
+      "list": false
+    },
+    {
+      "id": "from_text",
+      "name": "from_text",
+      "description": "convert from plain text to cifti",
+      "command-line-flag": "-from-text",
+      "type": {
+        "id": "from_text",
+        "name": "from_text",
+        "description": "convert from plain text to cifti",
+        "command-line": " [CIFTI_OUT] [OPT_COL_DELIM_DELIM_STRING] [RESET_TIMEPOINTS] [OPT_RESET_SCALARS]",
+        "inputs": [
+          {
+            "id": "cifti_out",
+            "name": "cifti_out",
+            "description": "the output cifti file",
+            "optional": false,
+            "value-key": "[CIFTI_OUT]",
+            "type": "File"
+          },
+          {
+            "id": "opt_col_delim_delim_string",
+            "name": "opt_col_delim_delim_string",
+            "command-line-flag": "-col-delim",
+            "description": "specify string that is between elements in a row: the string to use (default is any whitespace)",
+            "optional": true,
+            "value-key": "[OPT_COL_DELIM_DELIM_STRING]",
+            "type": "String"
+          },
+          {
+            "id": "reset_timepoints",
+            "name": "reset_timepoints",
+            "description": "reset the mapping along rows to timepoints, taking length from the text file",
+            "command-line-flag": "-reset-timepoints",
+            "type": {
+              "id": "reset_timepoints",
+              "name": "reset_timepoints",
+              "description": "reset the mapping along rows to timepoints, taking length from the text file",
+              "command-line": " [OPT_UNIT_UNIT]",
+              "inputs": [
+                {
+                  "id": "opt_unit_unit",
+                  "name": "opt_unit_unit",
+                  "command-line-flag": "-unit",
+                  "description": "use a unit other than time: unit identifier (default SECOND)",
+                  "optional": true,
+                  "value-key": "[OPT_UNIT_UNIT]",
+                  "type": "String"
+                }
+              ]
+            },
+            "optional": true,
+            "value-key": "[RESET_TIMEPOINTS]",
+            "list": false
+          },
+          {
+            "id": "opt_reset_scalars",
+            "name": "opt_reset_scalars",
+            "command-line-flag": "-reset-scalars",
+            "description": "reset mapping along rows to scalars, taking length from the text file",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_RESET_SCALARS]"
+          }
+        ],
+        "output-files": [
+          {
+            "id": "cifti_out",
+            "name": "cifti_out",
+            "path-template": "[CIFTI_OUT]",
+            "description": "the output cifti file",
+            "optional": false
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[FROM_TEXT]",
+      "list": false
     }
   ]
 }

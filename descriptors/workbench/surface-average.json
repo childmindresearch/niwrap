@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-average",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-average [SURFACE_OUT] [OPT_STDDEV] [OPT_UNCERTAINTY] [OPT_SURF_SURFACE]",
+  "command-line": "wb_command -surface-average [SURFACE_OUT] [OPT_STDDEV] [STDDEV_METRIC_OUT] [OPT_UNCERTAINTY] [UNCERT_METRIC_OUT] [SURF]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "AVERAGE SURFACE FILES TOGETHER.\n\nThe 3D sample standard deviation is computed as 'sqrt(sum(squaredlength(xyz - mean(xyz)))/(n - 1))'.\n\nUncertainty is a legacy measure used in caret5, and is computed as 'sum(length(xyz - mean(xyz)))/n'.\n\nWhen weights are used, the 3D sample standard deviation treats them as reliability weights.",
+  "description": "Average surface files together.\n\nThe 3D sample standard deviation is computed as 'sqrt(sum(squaredlength(xyz - mean(xyz)))/(n - 1))'.\n\nUncertainty is a legacy measure used in caret5, and is computed as 'sum(length(xyz - mean(xyz)))/n'.\n\nWhen weights are used, the 3D sample standard deviation treats them as reliability weights.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,9 +15,9 @@
       "id": "surface_out",
       "name": "surface_out",
       "description": "the output averaged surface",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE_OUT]"
+      "value-key": "[SURFACE_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_stddev",
@@ -29,6 +29,14 @@
       "value-key": "[OPT_STDDEV]"
     },
     {
+      "id": "stddev_metric_out",
+      "name": "stddev_metric_out",
+      "description": "the output metric for 3D sample standard deviation",
+      "optional": false,
+      "value-key": "[STDDEV_METRIC_OUT]",
+      "type": "File"
+    },
+    {
       "id": "opt_uncertainty",
       "name": "opt_uncertainty",
       "command-line-flag": "-uncertainty",
@@ -38,13 +46,39 @@
       "value-key": "[OPT_UNCERTAINTY]"
     },
     {
-      "id": "opt_surf_surface",
-      "name": "opt_surf_surface",
+      "id": "uncert_metric_out",
+      "name": "uncert_metric_out",
+      "description": "the output metric for uncertainty",
+      "optional": false,
+      "value-key": "[UNCERT_METRIC_OUT]",
+      "type": "File"
+    },
+    {
+      "id": "surf",
+      "name": "surf",
+      "description": "specify a surface to include in the average",
       "command-line-flag": "-surf",
-      "description": "specify a surface to include in the average: a surface file to average",
-      "type": "File",
+      "type": {
+        "id": "surf",
+        "name": "surf",
+        "description": "specify a surface to include in the average",
+        "command-line": " [OPT_WEIGHT_WEIGHT]",
+        "inputs": [
+          {
+            "id": "opt_weight_weight",
+            "name": "opt_weight_weight",
+            "command-line-flag": "-weight",
+            "description": "specify a weighted average: the weight to use (default 1)",
+            "optional": true,
+            "value-key": "[OPT_WEIGHT_WEIGHT]",
+            "type": "Number",
+            "integer": false
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_SURF_SURFACE]"
+      "value-key": "[SURF]",
+      "list": true
     }
   ],
   "output-files": [
@@ -53,6 +87,20 @@
       "name": "surface_out",
       "path-template": "[SURFACE_OUT]",
       "description": "the output averaged surface",
+      "optional": false
+    },
+    {
+      "id": "stddev_metric_out",
+      "name": "stddev_metric_out",
+      "path-template": "[STDDEV_METRIC_OUT]",
+      "description": "the output metric for 3D sample standard deviation",
+      "optional": false
+    },
+    {
+      "id": "uncert_metric_out",
+      "name": "uncert_metric_out",
+      "path-template": "[UNCERT_METRIC_OUT]",
+      "description": "the output metric for uncertainty",
       "optional": false
     }
   ]

@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -label-export-table [LABEL_IN] [TABLE_OUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "EXPORT LABEL TABLE FROM GIFTI AS TEXT.\n\nTakes the label table from the gifti label file, and writes it to a text format matching what is expected by -metric-label-import.",
+  "description": "Export label table from gifti as text.\n\nTakes the label table from the gifti label file, and writes it to a text format matching what is expected by -metric-label-import.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,17 +15,17 @@
       "id": "label_in",
       "name": "label_in",
       "description": "the input label file",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_IN]"
+      "value-key": "[LABEL_IN]",
+      "type": "File"
     },
     {
       "id": "table_out",
       "name": "table_out",
       "description": "output - the output text file",
-      "type": "String",
       "optional": false,
-      "value-key": "[TABLE_OUT]"
+      "value-key": "[TABLE_OUT]",
+      "type": "String"
     }
   ]
 }

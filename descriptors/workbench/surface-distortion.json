@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-distortion",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-distortion [SURFACE_REFERENCE] [SURFACE_DISTORTED] [METRIC_OUT] [OPT_SMOOTH_SIGMA] [OPT_CARET5_METHOD] [OPT_EDGE_METHOD] [OPT_LOCAL_AFFINE_METHOD]",
+  "command-line": "wb_command -surface-distortion [SURFACE_REFERENCE] [SURFACE_DISTORTED] [METRIC_OUT] [SMOOTH] [OPT_CARET5_METHOD] [OPT_EDGE_METHOD] [OPT_LOCAL_AFFINE_METHOD] [OPT_LOG2]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MEASURE DISTORTION BETWEEN SURFACES.\n\nThis command, when not using -caret5-method, -edge-method, or -local-affine-method, is equivalent to using -surface-vertex-areas on each surface, smoothing both output metrics with the GEO_GAUSS_EQUAL method on the surface they came from if -smooth is specified, and then using the formula 'ln(distorted/reference)/ln(2)' on the smoothed results.\n\nWhen using -caret5-method, it uses the surface distortion method from caret5, which takes the base 2 log of the ratio of tile areas, then averages those results at each vertex, and then smooths the result on the reference surface.\n\nWhen using -edge-method, the -smooth option is ignored, and the output at each vertex is the average of 'abs(ln(refEdge/distortEdge)/ln(2))' over all edges connected to the vertex.\n\nWhen using -local-affine-method, the -smooth option is ignored.  The output is two columns, the first is the area distortion ratio, and the second is anisotropic strain.  These are calculated by an affine transform between matching triangles, and then averaged across the triangles of a vertex.",
+  "description": "Measure distortion between surfaces.\n\nThis command, when not using -caret5-method, -edge-method, or -local-affine-method, is equivalent to using -surface-vertex-areas on each surface, smoothing both output metrics with the GEO_GAUSS_EQUAL method on the surface they came from if -smooth is specified, and then using the formula 'ln(distorted/reference)/ln(2)' on the smoothed results.\n\nWhen using -caret5-method, it uses the surface distortion method from caret5, which takes the base 2 log of the ratio of tile areas, then averages those results at each vertex, and then smooths the result on the reference surface.\n\nWhen using -edge-method, the -smooth option is ignored, and the output at each vertex is the average of 'abs(ln(refEdge/distortEdge)/ln(2))' over all edges connected to the vertex.\n\nWhen using -local-affine-method, the -smooth option is ignored.  The output is two columns, the first is the area distortion ratio, and the second is anisotropic strain.  These are calculated by an affine transform between matching triangles, and then averaged across the triangles of a vertex.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,34 +15,51 @@
       "id": "surface_reference",
       "name": "surface_reference",
       "description": "the reference surface",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE_REFERENCE]"
+      "value-key": "[SURFACE_REFERENCE]",
+      "type": "File"
     },
     {
       "id": "surface_distorted",
       "name": "surface_distorted",
       "description": "the distorted surface",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE_DISTORTED]"
+      "value-key": "[SURFACE_DISTORTED]",
+      "type": "File"
     },
     {
       "id": "metric_out",
       "name": "metric_out",
       "description": "the output distortion metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_OUT]"
+      "value-key": "[METRIC_OUT]",
+      "type": "File"
     },
     {
-      "id": "opt_smooth_sigma",
-      "name": "opt_smooth_sigma",
+      "id": "smooth",
+      "name": "smooth",
+      "description": "smooth the area data",
       "command-line-flag": "-smooth",
-      "description": "smooth the area data: the size of the smoothing kernel in mm, as sigma by default",
-      "type": "Number",
+      "type": {
+        "id": "smooth",
+        "name": "smooth",
+        "description": "smooth the area data",
+        "command-line": " [OPT_FWHM]",
+        "inputs": [
+          {
+            "id": "opt_fwhm",
+            "name": "opt_fwhm",
+            "command-line-flag": "-fwhm",
+            "description": "kernel size is FWHM, not sigma",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_FWHM]"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_SMOOTH_SIGMA]"
+      "value-key": "[SMOOTH]",
+      "list": false
     },
     {
       "id": "opt_caret5_method",
@@ -70,6 +87,15 @@
       "type": "Flag",
       "optional": true,
       "value-key": "[OPT_LOCAL_AFFINE_METHOD]"
+    },
+    {
+      "id": "opt_log2",
+      "name": "opt_log2",
+      "command-line-flag": "-log2",
+      "description": "apply base-2 log transform",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_LOG2]"
     }
   ],
   "output-files": [

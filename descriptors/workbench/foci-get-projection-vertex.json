@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -foci-get-projection-vertex [FOCI] [SURFACE] [METRIC_OUT] [OPT_NAME_NAME]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "GET PROJECTION VERTEX FOR FOCI.\n\nFor each focus, a column is created in <metric-out>, and the vertex with the most influence on its projection is assigned a value of 1 in that column, with all other vertices 0.  If -name is used, only one focus will be used.",
+  "description": "Get projection vertex for foci.\n\nFor each focus, a column is created in <metric-out>, and the vertex with the most influence on its projection is assigned a value of 1 in that column, with all other vertices 0.  If -name is used, only one focus will be used.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,34 +15,34 @@
       "id": "foci",
       "name": "foci",
       "description": "the foci file",
-      "type": "File",
       "optional": false,
-      "value-key": "[FOCI]"
+      "value-key": "[FOCI]",
+      "type": "File"
     },
     {
       "id": "surface",
       "name": "surface",
       "description": "the surface related to the foci file",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "metric_out",
       "name": "metric_out",
       "description": "the output metric file",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_OUT]"
+      "value-key": "[METRIC_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_name_name",
       "name": "opt_name_name",
       "command-line-flag": "-name",
       "description": "select a focus by name: the name of the focus",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_NAME_NAME]"
+      "value-key": "[OPT_NAME_NAME]",
+      "type": "String"
     }
   ],
   "output-files": [

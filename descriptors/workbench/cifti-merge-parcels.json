@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-merge-parcels",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-merge-parcels [DIRECTION] [CIFTI_OUT] [OPT_CIFTI_CIFTI_IN]",
+  "command-line": "wb_command -cifti-merge-parcels [DIRECTION] [CIFTI_OUT] [CIFTI]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MERGE CIFTI FILES ALONG PARCELS DIMENSION.\n\nThe input cifti files must have matching mappings along the direction not specified, and the mapping along the specified direction must be parcels.  The direction can be either an integer starting from 1, or the strings 'ROW' or 'COLUMN'.",
+  "description": "Merge cifti files along parcels dimension.\n\nThe input cifti files must have matching mappings along the direction not specified, and the mapping along the specified direction must be parcels.  The direction can be either an integer starting from 1, or the strings 'ROW' or 'COLUMN'.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,26 +15,32 @@
       "id": "direction",
       "name": "direction",
       "description": "which dimension to merge along (integer, 'ROW', or 'COLUMN')",
-      "type": "String",
       "optional": false,
-      "value-key": "[DIRECTION]"
+      "value-key": "[DIRECTION]",
+      "type": "String"
     },
     {
       "id": "cifti_out",
       "name": "cifti_out",
       "description": "the output cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_OUT]"
+      "value-key": "[CIFTI_OUT]",
+      "type": "File"
     },
     {
-      "id": "opt_cifti_cifti_in",
-      "name": "opt_cifti_cifti_in",
+      "id": "cifti",
+      "name": "cifti",
+      "description": "specify an input cifti file",
       "command-line-flag": "-cifti",
-      "description": "specify an input cifti file: a cifti file to merge",
-      "type": "File",
+      "type": {
+        "id": "cifti",
+        "name": "cifti",
+        "description": "specify an input cifti file",
+        "command-line": ""
+      },
       "optional": true,
-      "value-key": "[OPT_CIFTI_CIFTI_IN]"
+      "value-key": "[CIFTI]",
+      "list": true
     }
   ],
   "output-files": [

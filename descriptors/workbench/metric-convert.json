@@ -2,23 +2,82 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-convert",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-convert [OPT_TO_NIFTI_METRIC_IN]",
+  "command-line": "wb_command -metric-convert [TO_NIFTI] [FROM_NIFTI]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "CONVERT METRIC FILE TO FAKE NIFTI.\n\nThe purpose of this command is to convert between metric files and nifti1 so that gifti-unaware programs can operate on the data.  You must specify exactly one of the options.",
+  "description": "Convert metric file to fake nifti.\n\nThe purpose of this command is to convert between metric files and nifti1 so that gifti-unaware programs can operate on the data.  You must specify exactly one of the options.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
     {
-      "id": "opt_to_nifti_metric_in",
-      "name": "opt_to_nifti_metric_in",
+      "id": "to_nifti",
+      "name": "to_nifti",
+      "description": "convert metric to nifti",
       "command-line-flag": "-to-nifti",
-      "description": "convert metric to nifti: the metric to convert",
-      "type": "File",
+      "type": {
+        "id": "to_nifti",
+        "name": "to_nifti",
+        "description": "convert metric to nifti",
+        "command-line": " [NIFTI_OUT]",
+        "inputs": [
+          {
+            "id": "nifti_out",
+            "name": "nifti_out",
+            "description": "the output nifti file",
+            "optional": false,
+            "value-key": "[NIFTI_OUT]",
+            "type": "File"
+          }
+        ],
+        "output-files": [
+          {
+            "id": "nifti_out",
+            "name": "nifti_out",
+            "path-template": "[NIFTI_OUT]",
+            "description": "the output nifti file",
+            "optional": false
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_TO_NIFTI_METRIC_IN]"
+      "value-key": "[TO_NIFTI]",
+      "list": false
+    },
+    {
+      "id": "from_nifti",
+      "name": "from_nifti",
+      "description": "convert nifti to metric",
+      "command-line-flag": "-from-nifti",
+      "type": {
+        "id": "from_nifti",
+        "name": "from_nifti",
+        "description": "convert nifti to metric",
+        "command-line": " [METRIC_OUT]",
+        "inputs": [
+          {
+            "id": "metric_out",
+            "name": "metric_out",
+            "description": "the output metric file",
+            "optional": false,
+            "value-key": "[METRIC_OUT]",
+            "type": "File"
+          }
+        ],
+        "output-files": [
+          {
+            "id": "metric_out",
+            "name": "metric_out",
+            "path-template": "[METRIC_OUT]",
+            "description": "the output metric file",
+            "optional": false
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[FROM_NIFTI]",
+      "list": false
     }
   ]
 }

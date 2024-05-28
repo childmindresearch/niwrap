@@ -2,20 +2,70 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "file-convert",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -file-convert",
+  "command-line": "wb_command -file-convert [BORDER_VERSION_CONVERT] [NIFTI_VERSION_CONVERT] [CIFTI_VERSION_CONVERT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "CHANGE VERSION OF FILE FORMAT.\n\nYou may only specify one top-level option.",
+  "description": "Change version of file format.\n\nYou may only specify one top-level option.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
     {
-      "id": "0",
-      "name": "in",
-      "type": "Flag",
-      "value-key": "[IN]"
+      "id": "border_version_convert",
+      "name": "border_version_convert",
+      "description": "write a border file with a different version",
+      "command-line-flag": "-border-version-convert",
+      "type": {
+        "id": "border_version_convert",
+        "name": "border_version_convert",
+        "description": "write a border file with a different version",
+        "command-line": " [OPT_SURFACE_SURFACE]",
+        "inputs": [
+          {
+            "id": "opt_surface_surface",
+            "name": "opt_surface_surface",
+            "command-line-flag": "-surface",
+            "description": "must be specified if the input is version 1: use this surface file for structure and number of vertices, ignore borders on other structures",
+            "optional": true,
+            "value-key": "[OPT_SURFACE_SURFACE]",
+            "type": "File"
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[BORDER_VERSION_CONVERT]",
+      "list": false
+    },
+    {
+      "id": "nifti_version_convert",
+      "name": "nifti_version_convert",
+      "description": "write a nifti file with a different version",
+      "command-line-flag": "-nifti-version-convert",
+      "type": {
+        "id": "nifti_version_convert",
+        "name": "nifti_version_convert",
+        "description": "write a nifti file with a different version",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[NIFTI_VERSION_CONVERT]",
+      "list": false
+    },
+    {
+      "id": "cifti_version_convert",
+      "name": "cifti_version_convert",
+      "description": "write a cifti file with a different version",
+      "command-line-flag": "-cifti-version-convert",
+      "type": {
+        "id": "cifti_version_convert",
+        "name": "cifti_version_convert",
+        "description": "write a cifti file with a different version",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[CIFTI_VERSION_CONVERT]",
+      "list": false
     }
   ]
 }

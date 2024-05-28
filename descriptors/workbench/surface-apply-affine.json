@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-apply-affine",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-apply-affine [IN_SURF] [AFFINE] [OUT_SURF]",
+  "command-line": "wb_command -surface-apply-affine [IN_SURF] [AFFINE] [OUT_SURF] [FLIRT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "APPLY AFFINE TRANSFORM TO SURFACE FILE.\n\nFor flirt matrices, you must use the -flirt option, because flirt matrices are not a complete description of the coordinate transform they represent.  If the -flirt option is not present, the affine must be a nifti 'world' affine, which can be obtained with the -convert-affine command, or aff_conv from the 4dfp suite.",
+  "description": "Apply affine transform to surface file.\n\nFor flirt matrices, you must use the -flirt option, because flirt matrices are not a complete description of the coordinate transform they represent.  If the -flirt option is not present, the affine must be a nifti 'world' affine, which can be obtained with the -convert-affine command, or aff_conv from the 4dfp suite.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,25 +15,40 @@
       "id": "in_surf",
       "name": "in_surf",
       "description": "the surface to transform",
-      "type": "File",
       "optional": false,
-      "value-key": "[IN_SURF]"
+      "value-key": "[IN_SURF]",
+      "type": "File"
     },
     {
       "id": "affine",
       "name": "affine",
       "description": "the affine file",
-      "type": "String",
       "optional": false,
-      "value-key": "[AFFINE]"
+      "value-key": "[AFFINE]",
+      "type": "String"
     },
     {
       "id": "out_surf",
       "name": "out_surf",
       "description": "the output transformed surface",
-      "type": "File",
       "optional": false,
-      "value-key": "[OUT_SURF]"
+      "value-key": "[OUT_SURF]",
+      "type": "File"
+    },
+    {
+      "id": "flirt",
+      "name": "flirt",
+      "description": "MUST be used if affine is a flirt affine",
+      "command-line-flag": "-flirt",
+      "type": {
+        "id": "flirt",
+        "name": "flirt",
+        "description": "MUST be used if affine is a flirt affine",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[FLIRT]",
+      "list": false
     }
   ],
   "output-files": [

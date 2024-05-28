@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-curvature",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-curvature [SURFACE] [OPT_MEAN] [OPT_GAUSS]",
+  "command-line": "wb_command -surface-curvature [SURFACE] [OPT_MEAN] [MEAN_OUT] [OPT_GAUSS] [GAUSS_OUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "CALCULATE CURVATURE OF SURFACE.\n\nCompute the curvature of the surface, using the method from:\nInteractive Texture Mapping by J. Maillot, Yahia, and Verroust, 1993.\nACM-0-98791-601-8/93/008",
+  "description": "Calculate curvature of surface.\n\nCompute the curvature of the surface, using the method from:\nInteractive Texture Mapping by J. Maillot, Yahia, and Verroust, 1993.\nACM-0-98791-601-8/93/008",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,9 +15,9 @@
       "id": "surface",
       "name": "surface",
       "description": "the surface to compute the curvature of",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "opt_mean",
@@ -29,6 +29,14 @@
       "value-key": "[OPT_MEAN]"
     },
     {
+      "id": "mean_out",
+      "name": "mean_out",
+      "description": "mean curvature metric",
+      "optional": false,
+      "value-key": "[MEAN_OUT]",
+      "type": "File"
+    },
+    {
       "id": "opt_gauss",
       "name": "opt_gauss",
       "command-line-flag": "-gauss",
@@ -36,6 +44,30 @@
       "type": "Flag",
       "optional": true,
       "value-key": "[OPT_GAUSS]"
+    },
+    {
+      "id": "gauss_out",
+      "name": "gauss_out",
+      "description": "gaussian curvature metric",
+      "optional": false,
+      "value-key": "[GAUSS_OUT]",
+      "type": "File"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "mean_out",
+      "name": "mean_out",
+      "path-template": "[MEAN_OUT]",
+      "description": "mean curvature metric",
+      "optional": false
+    },
+    {
+      "id": "gauss_out",
+      "name": "gauss_out",
+      "path-template": "[GAUSS_OUT]",
+      "description": "gaussian curvature metric",
+      "optional": false
     }
   ]
 }

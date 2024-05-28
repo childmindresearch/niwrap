@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -zip-scene-file [SCENE_FILE] [EXTRACT_FOLDER] [ZIP_FILE] [OPT_BASE_DIR_DIRECTORY] [OPT_SKIP_MISSING] [OPT_WRITE_SCENE_FILE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "ZIP A SCENE FILE AND ITS DATA FILES.\n\nIf zip-file already exists, it will be overwritten.  If -base-dir is not specified, the base directory will be automatically set to the lowest level directory containing all files.  The scene file must contain only relative paths, and no data files may be outside the base directory.",
+  "description": "Zip a scene file and its data files.\n\nIf zip-file already exists, it will be overwritten.  If -base-dir is not specified, the base directory will be automatically set to the lowest level directory containing all files.  The scene file must contain only relative paths, and no data files may be outside the base directory.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,34 +15,34 @@
       "id": "scene_file",
       "name": "scene_file",
       "description": "the scene file to make the zip file from",
-      "type": "String",
       "optional": false,
-      "value-key": "[SCENE_FILE]"
+      "value-key": "[SCENE_FILE]",
+      "type": "String"
     },
     {
       "id": "extract_folder",
       "name": "extract_folder",
       "description": "the name of the folder created when the zip file is unzipped",
-      "type": "String",
       "optional": false,
-      "value-key": "[EXTRACT_FOLDER]"
+      "value-key": "[EXTRACT_FOLDER]",
+      "type": "String"
     },
     {
       "id": "zip_file",
       "name": "zip_file",
       "description": "out - the zip file that will be created",
-      "type": "String",
       "optional": false,
-      "value-key": "[ZIP_FILE]"
+      "value-key": "[ZIP_FILE]",
+      "type": "String"
     },
     {
       "id": "opt_base_dir_directory",
       "name": "opt_base_dir_directory",
       "command-line-flag": "-base-dir",
       "description": "specify a directory that all data files are somewhere within, this will become the root of the zipfile's directory structure: the directory",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_BASE_DIR_DIRECTORY]"
+      "value-key": "[OPT_BASE_DIR_DIRECTORY]",
+      "type": "String"
     },
     {
       "id": "opt_skip_missing",

@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -label-erode [LABEL] [SURFACE] [ERODE_DIST] [LABEL_OUT] [OPT_ROI_ROI_METRIC] [OPT_COLUMN_COLUMN] [OPT_CORRECTED_AREAS_AREA_METRIC]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "ERODE A LABEL FILE.\n\nAround each vertex that is unlabeled, set surrounding vertices to unlabeled.  The surrounding vertices are all immediate neighbors and all vertices within the specified distance.\n\nNote that the -corrected-areas option uses an approximate correction for distance along the surface.",
+  "description": "Erode a label file.\n\nAround each vertex that is unlabeled, set surrounding vertices to unlabeled.  The surrounding vertices are all immediate neighbors and all vertices within the specified distance.\n\nNote that the -corrected-areas option uses an approximate correction for distance along the surface.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,60 +15,61 @@
       "id": "label",
       "name": "label",
       "description": "the input label",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL]"
+      "value-key": "[LABEL]",
+      "type": "File"
     },
     {
       "id": "surface",
       "name": "surface",
       "description": "the surface to erode on",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "erode_dist",
       "name": "erode_dist",
       "description": "distance in mm to erode the labels",
-      "type": "Number",
       "optional": false,
-      "value-key": "[ERODE_DIST]"
+      "value-key": "[ERODE_DIST]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "label_out",
       "name": "label_out",
       "description": "the output label file",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_OUT]"
+      "value-key": "[LABEL_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_roi_roi_metric",
       "name": "opt_roi_roi_metric",
       "command-line-flag": "-roi",
       "description": "assume values outside this roi are labeled: metric file, positive values denote vertices that have data",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_ROI_ROI_METRIC]"
+      "value-key": "[OPT_ROI_ROI_METRIC]",
+      "type": "File"
     },
     {
       "id": "opt_column_column",
       "name": "opt_column_column",
       "command-line-flag": "-column",
       "description": "select a single column to erode: the column number or name",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_COLUMN_COLUMN]"
+      "value-key": "[OPT_COLUMN_COLUMN]",
+      "type": "String"
     },
     {
       "id": "opt_corrected_areas_area_metric",
       "name": "opt_corrected_areas_area_metric",
       "command-line-flag": "-corrected-areas",
       "description": "vertex areas to use instead of computing them from the surface: the corrected vertex areas, as a metric",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]"
+      "value-key": "[OPT_CORRECTED_AREAS_AREA_METRIC]",
+      "type": "File"
     }
   ],
   "output-files": [

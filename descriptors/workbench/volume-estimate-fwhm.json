@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "volume-estimate-fwhm",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -volume-estimate-fwhm [VOLUME] [OPT_ROI_ROIVOL] [OPT_SUBVOLUME_SUBVOL] [OPT_WHOLE_FILE]",
+  "command-line": "wb_command -volume-estimate-fwhm [VOLUME] [OPT_ROI_ROIVOL] [OPT_SUBVOLUME_SUBVOL] [OPT_WHOLE_FILE] [OPT_DEMEAN]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "ESTIMATE FWHM SMOOTHNESS OF A VOLUME.\n\nEstimates the smoothness of the input volume in X, Y, and Z directions separately, printing the estimates to standard output, in mm as FWHM.  If -subvolume or -whole-file are not specified, each subvolume is estimated and displayed separately.",
+  "description": "Estimate fwhm smoothness of a volume.\n\nEstimates the smoothness of the input volume in X, Y, and Z directions separately, printing the estimates to standard output, in mm as FWHM.  If -subvolume or -whole-file are not specified, each subvolume is estimated and displayed separately.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,27 +15,27 @@
       "id": "volume",
       "name": "volume",
       "description": "the input volume",
-      "type": "File",
       "optional": false,
-      "value-key": "[VOLUME]"
+      "value-key": "[VOLUME]",
+      "type": "File"
     },
     {
       "id": "opt_roi_roivol",
       "name": "opt_roi_roivol",
       "command-line-flag": "-roi",
       "description": "use only data within an ROI: the volume to use as an ROI",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_ROI_ROIVOL]"
+      "value-key": "[OPT_ROI_ROIVOL]",
+      "type": "File"
     },
     {
       "id": "opt_subvolume_subvol",
       "name": "opt_subvolume_subvol",
       "command-line-flag": "-subvolume",
       "description": "select a single subvolume to estimate smoothness of: the subvolume number or name",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_SUBVOLUME_SUBVOL]"
+      "value-key": "[OPT_SUBVOLUME_SUBVOL]",
+      "type": "String"
     },
     {
       "id": "opt_whole_file",
@@ -45,6 +45,15 @@
       "type": "Flag",
       "optional": true,
       "value-key": "[OPT_WHOLE_FILE]"
+    },
+    {
+      "id": "opt_demean",
+      "name": "opt_demean",
+      "command-line-flag": "-demean",
+      "description": "subtract the mean image before estimating smoothness",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_DEMEAN]"
     }
   ]
 }

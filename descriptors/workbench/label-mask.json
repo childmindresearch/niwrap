@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -label-mask [LABEL] [MASK] [LABEL_OUT] [OPT_COLUMN_COLUMN]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MASK A LABEL FILE.\n\nBy default, the output label is a copy of the input label, but with the 'unused' label wherever the mask metric is zero or negative.  if -column is specified, the output contains only one column, the masked version of the specified input column.",
+  "description": "Mask a label file.\n\nBy default, the output label is a copy of the input label, but with the 'unused' label wherever the mask metric is zero or negative.  if -column is specified, the output contains only one column, the masked version of the specified input column.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,34 +15,34 @@
       "id": "label",
       "name": "label",
       "description": "the label file to mask",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL]"
+      "value-key": "[LABEL]",
+      "type": "File"
     },
     {
       "id": "mask",
       "name": "mask",
       "description": "the mask metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[MASK]"
+      "value-key": "[MASK]",
+      "type": "File"
     },
     {
       "id": "label_out",
       "name": "label_out",
       "description": "the output label file",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_OUT]"
+      "value-key": "[LABEL_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_column_column",
       "name": "opt_column_column",
       "command-line-flag": "-column",
       "description": "select a single column: the column number or name",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_COLUMN_COLUMN]"
+      "value-key": "[OPT_COLUMN_COLUMN]",
+      "type": "String"
     }
   ],
   "output-files": [

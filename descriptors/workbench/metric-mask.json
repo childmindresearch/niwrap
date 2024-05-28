@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -metric-mask [METRIC] [MASK] [METRIC_OUT] [OPT_COLUMN_COLUMN]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MASK A METRIC FILE.\n\nBy default, the output metric is a copy of the input metric, but with zeros wherever the mask metric is zero or negative.  if -column is specified, the output contains only one column, the masked version of the specified input column.",
+  "description": "Mask a metric file.\n\nBy default, the output metric is a copy of the input metric, but with zeros wherever the mask metric is zero or negative.  if -column is specified, the output contains only one column, the masked version of the specified input column.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,34 +15,34 @@
       "id": "metric",
       "name": "metric",
       "description": "the input metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC]"
+      "value-key": "[METRIC]",
+      "type": "File"
     },
     {
       "id": "mask",
       "name": "mask",
       "description": "the mask metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[MASK]"
+      "value-key": "[MASK]",
+      "type": "File"
     },
     {
       "id": "metric_out",
       "name": "metric_out",
       "description": "the output metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_OUT]"
+      "value-key": "[METRIC_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_column_column",
       "name": "opt_column_column",
       "command-line-flag": "-column",
       "description": "select a single column: the column number or name",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_COLUMN_COLUMN]"
+      "value-key": "[OPT_COLUMN_COLUMN]",
+      "type": "String"
     }
   ],
   "output-files": [

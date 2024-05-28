@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-estimate-fwhm",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-estimate-fwhm [CIFTI] [OPT_MERGED_VOLUME] [OPT_COLUMN_COLUMN] [OPT_WHOLE_FILE]",
+  "command-line": "wb_command -cifti-estimate-fwhm [CIFTI] [OPT_MERGED_VOLUME] [OPT_COLUMN_COLUMN] [OPT_WHOLE_FILE] [OPT_DEMEAN] [SURFACE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "ESTIMATE FWHM SMOOTHNESS OF A CIFTI FILE.\n\nEstimate the smoothness of the components of the cifti file, printing the estimates to standard output.  If -merged-volume is used, all voxels are used as a single component, rather than separated by structure.\n\n<structure> must be one of the following:\n\nCORTEX_LEFT\nCORTEX_RIGHT\nCEREBELLUM\nACCUMBENS_LEFT\nACCUMBENS_RIGHT\nALL_GREY_MATTER\nALL_WHITE_MATTER\nAMYGDALA_LEFT\nAMYGDALA_RIGHT\nBRAIN_STEM\nCAUDATE_LEFT\nCAUDATE_RIGHT\nCEREBELLAR_WHITE_MATTER_LEFT\nCEREBELLAR_WHITE_MATTER_RIGHT\nCEREBELLUM_LEFT\nCEREBELLUM_RIGHT\nCEREBRAL_WHITE_MATTER_LEFT\nCEREBRAL_WHITE_MATTER_RIGHT\nCORTEX\nDIENCEPHALON_VENTRAL_LEFT\nDIENCEPHALON_VENTRAL_RIGHT\nHIPPOCAMPUS_LEFT\nHIPPOCAMPUS_RIGHT\nINVALID\nOTHER\nOTHER_GREY_MATTER\nOTHER_WHITE_MATTER\nPALLIDUM_LEFT\nPALLIDUM_RIGHT\nPUTAMEN_LEFT\nPUTAMEN_RIGHT\nTHALAMUS_LEFT\nTHALAMUS_RIGHT",
+  "description": "Estimate fwhm smoothness of a cifti file.\n\nEstimate the smoothness of the components of the cifti file, printing the estimates to standard output.  If -merged-volume is used, all voxels are used as a single component, rather than separated by structure.\n\n<structure> must be one of the following:\n\nCORTEX_LEFT\nCORTEX_RIGHT\nCEREBELLUM\nACCUMBENS_LEFT\nACCUMBENS_RIGHT\nALL_GREY_MATTER\nALL_WHITE_MATTER\nAMYGDALA_LEFT\nAMYGDALA_RIGHT\nBRAIN_STEM\nCAUDATE_LEFT\nCAUDATE_RIGHT\nCEREBELLAR_WHITE_MATTER_LEFT\nCEREBELLAR_WHITE_MATTER_RIGHT\nCEREBELLUM_LEFT\nCEREBELLUM_RIGHT\nCEREBRAL_WHITE_MATTER_LEFT\nCEREBRAL_WHITE_MATTER_RIGHT\nCORTEX\nDIENCEPHALON_VENTRAL_LEFT\nDIENCEPHALON_VENTRAL_RIGHT\nHIPPOCAMPUS_LEFT\nHIPPOCAMPUS_RIGHT\nINVALID\nOTHER\nOTHER_GREY_MATTER\nOTHER_WHITE_MATTER\nPALLIDUM_LEFT\nPALLIDUM_RIGHT\nPUTAMEN_LEFT\nPUTAMEN_RIGHT\nTHALAMUS_LEFT\nTHALAMUS_RIGHT",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,9 +15,9 @@
       "id": "cifti",
       "name": "cifti",
       "description": "the input cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI]"
+      "value-key": "[CIFTI]",
+      "type": "File"
     },
     {
       "id": "opt_merged_volume",
@@ -33,9 +33,10 @@
       "name": "opt_column_column",
       "command-line-flag": "-column",
       "description": "only output estimates for one column: the column number",
-      "type": "Number",
       "optional": true,
-      "value-key": "[OPT_COLUMN_COLUMN]"
+      "value-key": "[OPT_COLUMN_COLUMN]",
+      "type": "Number",
+      "integer": true
     },
     {
       "id": "opt_whole_file",
@@ -45,6 +46,30 @@
       "type": "Flag",
       "optional": true,
       "value-key": "[OPT_WHOLE_FILE]"
+    },
+    {
+      "id": "opt_demean",
+      "name": "opt_demean",
+      "command-line-flag": "-demean",
+      "description": "subtract the mean image before estimating smoothness",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_DEMEAN]"
+    },
+    {
+      "id": "surface",
+      "name": "surface",
+      "description": "specify an input surface",
+      "command-line-flag": "-surface",
+      "type": {
+        "id": "surface",
+        "name": "surface",
+        "description": "specify an input surface",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[SURFACE]",
+      "list": true
     }
   ]
 }

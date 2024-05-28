@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-replace-structure",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-replace-structure [CIFTI] [DIRECTION] [OPT_VOLUME_ALL_VOLUME] [OPT_DISCARD_UNUSED_LABELS] [OPT_LABEL_COLLISION_ACTION]",
+  "command-line": "wb_command -cifti-replace-structure [CIFTI] [DIRECTION] [VOLUME_ALL] [OPT_DISCARD_UNUSED_LABELS] [OPT_LABEL_COLLISION_ACTION] [LABEL] [METRIC] [VOLUME]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "REPLACE DATA IN A STRUCTURE IN A CIFTI FILE.\n\nThis is a fairly low-level command, you probably want to use -cifti-create-dense-from-template instead.\n\nYou must specify at least one of -metric, -label, -volume, or -volume-all for this command to do anything.  Input volumes must line up with the output of -cifti-separate.  For dtseries/dscalar, use COLUMN, and if your dconn matrix will be fully symmetric, COLUMN is more efficient.  The -volume-all option must not be specified when using a -volume option.  A -metric option must not be specified when using a -label option, and is not recommended on a label-type cifti file.  For each <structure> argument, use one of the following strings:\n\nCORTEX_LEFT\nCORTEX_RIGHT\nCEREBELLUM\nACCUMBENS_LEFT\nACCUMBENS_RIGHT\nALL_GREY_MATTER\nALL_WHITE_MATTER\nAMYGDALA_LEFT\nAMYGDALA_RIGHT\nBRAIN_STEM\nCAUDATE_LEFT\nCAUDATE_RIGHT\nCEREBELLAR_WHITE_MATTER_LEFT\nCEREBELLAR_WHITE_MATTER_RIGHT\nCEREBELLUM_LEFT\nCEREBELLUM_RIGHT\nCEREBRAL_WHITE_MATTER_LEFT\nCEREBRAL_WHITE_MATTER_RIGHT\nCORTEX\nDIENCEPHALON_VENTRAL_LEFT\nDIENCEPHALON_VENTRAL_RIGHT\nHIPPOCAMPUS_LEFT\nHIPPOCAMPUS_RIGHT\nINVALID\nOTHER\nOTHER_GREY_MATTER\nOTHER_WHITE_MATTER\nPALLIDUM_LEFT\nPALLIDUM_RIGHT\nPUTAMEN_LEFT\nPUTAMEN_RIGHT\nTHALAMUS_LEFT\nTHALAMUS_RIGHT",
+  "description": "Replace data in a structure in a cifti file.\n\nThis is a fairly low-level command, you probably want to use -cifti-create-dense-from-template instead.\n\nYou must specify at least one of -metric, -label, -volume, or -volume-all for this command to do anything.  Input volumes must line up with the output of -cifti-separate.  For dtseries/dscalar, use COLUMN, and if your dconn matrix will be fully symmetric, COLUMN is more efficient.  The -volume-all option must not be specified when using a -volume option.  A -metric option must not be specified when using a -label option, and is not recommended on a label-type cifti file.  For each <structure> argument, use one of the following strings:\n\nCORTEX_LEFT\nCORTEX_RIGHT\nCEREBELLUM\nACCUMBENS_LEFT\nACCUMBENS_RIGHT\nALL_GREY_MATTER\nALL_WHITE_MATTER\nAMYGDALA_LEFT\nAMYGDALA_RIGHT\nBRAIN_STEM\nCAUDATE_LEFT\nCAUDATE_RIGHT\nCEREBELLAR_WHITE_MATTER_LEFT\nCEREBELLAR_WHITE_MATTER_RIGHT\nCEREBELLUM_LEFT\nCEREBELLUM_RIGHT\nCEREBRAL_WHITE_MATTER_LEFT\nCEREBRAL_WHITE_MATTER_RIGHT\nCORTEX\nDIENCEPHALON_VENTRAL_LEFT\nDIENCEPHALON_VENTRAL_RIGHT\nHIPPOCAMPUS_LEFT\nHIPPOCAMPUS_RIGHT\nINVALID\nOTHER\nOTHER_GREY_MATTER\nOTHER_WHITE_MATTER\nPALLIDUM_LEFT\nPALLIDUM_RIGHT\nPUTAMEN_LEFT\nPUTAMEN_RIGHT\nTHALAMUS_LEFT\nTHALAMUS_RIGHT",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,26 +15,43 @@
       "id": "cifti",
       "name": "cifti",
       "description": "the cifti to modify",
-      "type": "String",
       "optional": false,
-      "value-key": "[CIFTI]"
+      "value-key": "[CIFTI]",
+      "type": "String"
     },
     {
       "id": "direction",
       "name": "direction",
       "description": "which dimension to interpret as a single map, ROW or COLUMN",
-      "type": "String",
       "optional": false,
-      "value-key": "[DIRECTION]"
+      "value-key": "[DIRECTION]",
+      "type": "String"
     },
     {
-      "id": "opt_volume_all_volume",
-      "name": "opt_volume_all_volume",
+      "id": "volume_all",
+      "name": "volume_all",
+      "description": "replace the data in all volume components",
       "command-line-flag": "-volume-all",
-      "description": "replace the data in all volume components: the input volume",
-      "type": "File",
+      "type": {
+        "id": "volume_all",
+        "name": "volume_all",
+        "description": "replace the data in all volume components",
+        "command-line": " [OPT_FROM_CROPPED]",
+        "inputs": [
+          {
+            "id": "opt_from_cropped",
+            "name": "opt_from_cropped",
+            "command-line-flag": "-from-cropped",
+            "description": "the input is cropped to the size of the data",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_FROM_CROPPED]"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_VOLUME_ALL_VOLUME]"
+      "value-key": "[VOLUME_ALL]",
+      "list": false
     },
     {
       "id": "opt_discard_unused_labels",
@@ -50,9 +67,65 @@
       "name": "opt_label_collision_action",
       "command-line-flag": "-label-collision",
       "description": "how to handle conflicts between label keys: 'ERROR', 'LEFT_SURFACE_FIRST', or 'LEGACY', default 'ERROR', use 'LEGACY' to match v1.4.2 and earlier",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_LABEL_COLLISION_ACTION]"
+      "value-key": "[OPT_LABEL_COLLISION_ACTION]",
+      "type": "String"
+    },
+    {
+      "id": "label",
+      "name": "label",
+      "description": "replace the data in a surface label component",
+      "command-line-flag": "-label",
+      "type": {
+        "id": "label",
+        "name": "label",
+        "description": "replace the data in a surface label component",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[LABEL]",
+      "list": true
+    },
+    {
+      "id": "metric",
+      "name": "metric",
+      "description": "replace the data in a surface component",
+      "command-line-flag": "-metric",
+      "type": {
+        "id": "metric",
+        "name": "metric",
+        "description": "replace the data in a surface component",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[METRIC]",
+      "list": true
+    },
+    {
+      "id": "volume",
+      "name": "volume",
+      "description": "replace the data in a volume component",
+      "command-line-flag": "-volume",
+      "type": {
+        "id": "volume",
+        "name": "volume",
+        "description": "replace the data in a volume component",
+        "command-line": " [OPT_FROM_CROPPED]",
+        "inputs": [
+          {
+            "id": "opt_from_cropped",
+            "name": "opt_from_cropped",
+            "command-line-flag": "-from-cropped",
+            "description": "the input is cropped to the size of the component",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_FROM_CROPPED]"
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[VOLUME]",
+      "list": true
     }
   ]
 }

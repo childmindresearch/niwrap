@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -cifti-label-probability [LABEL_MAPS] [PROBABILITY_DSCALAR_OUT] [OPT_EXCLUDE_UNLABELED]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "FIND FREQUENCY OF CIFTI LABELS.\n\nThis command outputs a set of soft ROIs, one for each label in the input, where the value is how many of the input maps had that label at that vertex/voxel, divided by the number of input maps.",
+  "description": "Find frequency of cifti labels.\n\nThis command outputs a set of soft ROIs, one for each label in the input, where the value is how many of the input maps had that label at that vertex/voxel, divided by the number of input maps.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,17 +15,17 @@
       "id": "label_maps",
       "name": "label_maps",
       "description": "cifti dlabel file containing individual label maps from many subjects",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_MAPS]"
+      "value-key": "[LABEL_MAPS]",
+      "type": "File"
     },
     {
       "id": "probability_dscalar_out",
       "name": "probability_dscalar_out",
       "description": "the relative frequencies of each label at each vertex/voxel",
-      "type": "File",
       "optional": false,
-      "value-key": "[PROBABILITY_DSCALAR_OUT]"
+      "value-key": "[PROBABILITY_DSCALAR_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_exclude_unlabeled",

@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-average",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-average [CIFTI_OUT] [OPT_MEM_LIMIT_LIMIT_GB] [OPT_CIFTI_CIFTI_IN]",
+  "command-line": "wb_command -cifti-average [CIFTI_OUT] [EXCLUDE_OUTLIERS] [OPT_MEM_LIMIT_LIMIT_GB] [CIFTI]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "AVERAGE CIFTI FILES.\n\nAverages cifti files together.  Files without -weight specified are given a weight of 1.  If -exclude-outliers is specified, at each element, the data across all files is taken as a set, its unweighted mean and sample standard deviation are found, and values outside the specified number of standard deviations are excluded from the (potentially weighted) average at that element.",
+  "description": "Average cifti files.\n\nAverages cifti files together.  Files without -weight specified are given a weight of 1.  If -exclude-outliers is specified, at each element, the data across all files is taken as a set, its unweighted mean and sample standard deviation are found, and values outside the specified number of standard deviations are excluded from the (potentially weighted) average at that element.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,27 +15,61 @@
       "id": "cifti_out",
       "name": "cifti_out",
       "description": "output cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_OUT]"
+      "value-key": "[CIFTI_OUT]",
+      "type": "File"
+    },
+    {
+      "id": "exclude_outliers",
+      "name": "exclude_outliers",
+      "description": "exclude outliers by standard deviation of each element across files",
+      "command-line-flag": "-exclude-outliers",
+      "type": {
+        "id": "exclude_outliers",
+        "name": "exclude_outliers",
+        "description": "exclude outliers by standard deviation of each element across files",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[EXCLUDE_OUTLIERS]",
+      "list": false
     },
     {
       "id": "opt_mem_limit_limit_gb",
       "name": "opt_mem_limit_limit_gb",
       "command-line-flag": "-mem-limit",
       "description": "restrict memory used for file reading efficiency: memory limit in gigabytes",
-      "type": "Number",
       "optional": true,
-      "value-key": "[OPT_MEM_LIMIT_LIMIT_GB]"
+      "value-key": "[OPT_MEM_LIMIT_LIMIT_GB]",
+      "type": "Number",
+      "integer": false
     },
     {
-      "id": "opt_cifti_cifti_in",
-      "name": "opt_cifti_cifti_in",
+      "id": "cifti",
+      "name": "cifti",
+      "description": "specify an input file",
       "command-line-flag": "-cifti",
-      "description": "specify an input file: the input cifti file",
-      "type": "File",
+      "type": {
+        "id": "cifti",
+        "name": "cifti",
+        "description": "specify an input file",
+        "command-line": " [OPT_WEIGHT_WEIGHT]",
+        "inputs": [
+          {
+            "id": "opt_weight_weight",
+            "name": "opt_weight_weight",
+            "command-line-flag": "-weight",
+            "description": "give a weight for this file: the weight to use",
+            "optional": true,
+            "value-key": "[OPT_WEIGHT_WEIGHT]",
+            "type": "Number",
+            "integer": false
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_CIFTI_CIFTI_IN]"
+      "value-key": "[CIFTI]",
+      "list": true
     }
   ],
   "output-files": [

@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -border-to-rois [SURFACE] [BORDER_FILE] [METRIC_OUT] [OPT_BORDER_NAME] [OPT_INVERSE] [OPT_INCLUDE_BORDER]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "MAKE METRIC ROIS FROM BORDERS.\n\nBy default, draws ROIs inside all borders in the border file, as separate metric columns.",
+  "description": "Make metric rois from borders.\n\nBy default, draws ROIs inside all borders in the border file, as separate metric columns.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,34 +15,34 @@
       "id": "surface",
       "name": "surface",
       "description": "the surface the borders are drawn on",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "border_file",
       "name": "border_file",
       "description": "the border file",
-      "type": "File",
       "optional": false,
-      "value-key": "[BORDER_FILE]"
+      "value-key": "[BORDER_FILE]",
+      "type": "File"
     },
     {
       "id": "metric_out",
       "name": "metric_out",
       "description": "the output metric file",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_OUT]"
+      "value-key": "[METRIC_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_border_name",
       "name": "opt_border_name",
       "command-line-flag": "-border",
       "description": "create ROI for only one border: the name of the border",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_BORDER_NAME]"
+      "value-key": "[OPT_BORDER_NAME]",
+      "type": "String"
     },
     {
       "id": "opt_inverse",

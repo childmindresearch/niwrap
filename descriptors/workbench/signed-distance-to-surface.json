@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -signed-distance-to-surface [SURFACE_COMP] [SURFACE_REF] [METRIC] [OPT_WINDING_METHOD]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "COMPUTE SIGNED DISTANCE FROM ONE SURFACE TO ANOTHER.\n\nCompute the signed distance function of the reference surface at every vertex on the comparison surface.  NOTE: this relation is NOT symmetric, the line from a vertex to the closest point on the 'ref' surface (the one that defines the signed distance function) will only align with the normal of the 'ref' surface.  Valid specifiers for winding methods are as follows:\n\nEVEN_ODD (default)\nNEGATIVE\nNONZERO\nNORMALS\n\nThe NORMALS method uses the normals of triangles and edges, or the closest triangle hit by a ray from the point.  This method may be slightly faster, but is only reliable for a closed surface that does not cross through itself.  All other methods count entry (positive) and exit (negative) crossings of a vertical ray from the point, then counts as inside if the total is odd, negative, or nonzero, respectively.",
+  "description": "Compute signed distance from one surface to another.\n\nCompute the signed distance function of the reference surface at every vertex on the comparison surface.  NOTE: this relation is NOT symmetric, the line from a vertex to the closest point on the 'ref' surface (the one that defines the signed distance function) will only align with the normal of the 'ref' surface.  Valid specifiers for winding methods are as follows:\n\nEVEN_ODD (default)\nNEGATIVE\nNONZERO\nNORMALS\n\nThe NORMALS method uses the normals of triangles and edges, or the closest triangle hit by a ray from the point.  This method may be slightly faster, but is only reliable for a closed surface that does not cross through itself.  All other methods count entry (positive) and exit (negative) crossings of a vertical ray from the point, then counts as inside if the total is odd, negative, or nonzero, respectively.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,34 +15,34 @@
       "id": "surface_comp",
       "name": "surface_comp",
       "description": "the comparison surface to measure the signed distance on",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE_COMP]"
+      "value-key": "[SURFACE_COMP]",
+      "type": "File"
     },
     {
       "id": "surface_ref",
       "name": "surface_ref",
       "description": "the reference surface that defines the signed distance function",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE_REF]"
+      "value-key": "[SURFACE_REF]",
+      "type": "File"
     },
     {
       "id": "metric",
       "name": "metric",
       "description": "the output metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC]"
+      "value-key": "[METRIC]",
+      "type": "File"
     },
     {
       "id": "opt_winding_method",
       "name": "opt_winding_method",
       "command-line-flag": "-winding",
       "description": "winding method for point inside surface test: name of the method (default EVEN_ODD)",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_WINDING_METHOD]"
+      "value-key": "[OPT_WINDING_METHOD]",
+      "type": "String"
     }
   ],
   "output-files": [

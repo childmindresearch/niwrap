@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -metric-false-correlation [SURFACE] [METRIC_IN] [3D_DIST] [GEO_OUTER] [GEO_INNER] [METRIC_OUT] [OPT_ROI_ROI_METRIC] [OPT_DUMP_TEXT_TEXT_OUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "COMPARE CORRELATION LOCALLY AND ACROSS/THROUGH SULCI/GYRI.\n\nFor each vertex, compute the average correlation within a range of geodesic distances that don't cross a sulcus/gyrus, and the correlation to the closest vertex crossing a sulcus/gyrus.  A vertex is considered to cross a sulcus/gyrus if the 3D distance is less than a third of the geodesic distance.  The output file contains the ratio between these correlations, and some additional maps to help explain the ratio.",
+  "description": "Compare correlation locally and across/through sulci/gyri.\n\nFor each vertex, compute the average correlation within a range of geodesic distances that don't cross a sulcus/gyrus, and the correlation to the closest vertex crossing a sulcus/gyrus.  A vertex is considered to cross a sulcus/gyrus if the 3D distance is less than a third of the geodesic distance.  The output file contains the ratio between these correlations, and some additional maps to help explain the ratio.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,67 +15,70 @@
       "id": "surface",
       "name": "surface",
       "description": "the surface to compute geodesic and 3D distance with",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "metric_in",
       "name": "metric_in",
       "description": "the metric to correlate",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_IN]"
+      "value-key": "[METRIC_IN]",
+      "type": "File"
     },
     {
       "id": "3d_dist",
       "name": "3d_dist",
       "description": "maximum 3D distance to check around each vertex",
-      "type": "Number",
       "optional": false,
-      "value-key": "[3D_DIST]"
+      "value-key": "[3D_DIST]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "geo_outer",
       "name": "geo_outer",
       "description": "maximum geodesic distance to use for neighboring correlation",
-      "type": "Number",
       "optional": false,
-      "value-key": "[GEO_OUTER]"
+      "value-key": "[GEO_OUTER]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "geo_inner",
       "name": "geo_inner",
       "description": "minimum geodesic distance to use for neighboring correlation",
-      "type": "Number",
       "optional": false,
-      "value-key": "[GEO_INNER]"
+      "value-key": "[GEO_INNER]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "metric_out",
       "name": "metric_out",
       "description": "the output metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_OUT]"
+      "value-key": "[METRIC_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_roi_roi_metric",
       "name": "opt_roi_roi_metric",
       "command-line-flag": "-roi",
       "description": "select a region of interest that has data: the region, as a metric file",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_ROI_ROI_METRIC]"
+      "value-key": "[OPT_ROI_ROI_METRIC]",
+      "type": "File"
     },
     {
       "id": "opt_dump_text_text_out",
       "name": "opt_dump_text_text_out",
       "command-line-flag": "-dump-text",
       "description": "dump the raw measures used to a text file: the output text file",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_DUMP_TEXT_TEXT_OUT]"
+      "value-key": "[OPT_DUMP_TEXT_TEXT_OUT]",
+      "type": "String"
     }
   ],
   "output-files": [

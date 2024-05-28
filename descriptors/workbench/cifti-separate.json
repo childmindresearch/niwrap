@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-separate",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-separate [CIFTI_IN] [DIRECTION] [OPT_VOLUME_ALL] [OPT_LABEL_STRUCTURE] [OPT_METRIC_STRUCTURE] [OPT_VOLUME_STRUCTURE]",
+  "command-line": "wb_command -cifti-separate [CIFTI_IN] [DIRECTION] [VOLUME_ALL] [LABEL] [METRIC] [VOLUME]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "WRITE A CIFTI STRUCTURE AS METRIC, LABEL OR VOLUME.\n\nFor dtseries, dscalar, and dlabel, use COLUMN for <direction>, and if you have a symmetric dconn, COLUMN is more efficient.\n\nYou must specify at least one of -metric, -volume-all, -volume, or -label for this command to do anything.  Output volumes will spatially line up with their original positions, whether or not they are cropped.  Volume files produced by separating a dlabel file, or from the -label suboption of -volume-all, will be label volumes, see -volume-help.\n\nFor each <structure> argument, use one of the following strings:\n\nCORTEX_LEFT\nCORTEX_RIGHT\nCEREBELLUM\nACCUMBENS_LEFT\nACCUMBENS_RIGHT\nALL_GREY_MATTER\nALL_WHITE_MATTER\nAMYGDALA_LEFT\nAMYGDALA_RIGHT\nBRAIN_STEM\nCAUDATE_LEFT\nCAUDATE_RIGHT\nCEREBELLAR_WHITE_MATTER_LEFT\nCEREBELLAR_WHITE_MATTER_RIGHT\nCEREBELLUM_LEFT\nCEREBELLUM_RIGHT\nCEREBRAL_WHITE_MATTER_LEFT\nCEREBRAL_WHITE_MATTER_RIGHT\nCORTEX\nDIENCEPHALON_VENTRAL_LEFT\nDIENCEPHALON_VENTRAL_RIGHT\nHIPPOCAMPUS_LEFT\nHIPPOCAMPUS_RIGHT\nINVALID\nOTHER\nOTHER_GREY_MATTER\nOTHER_WHITE_MATTER\nPALLIDUM_LEFT\nPALLIDUM_RIGHT\nPUTAMEN_LEFT\nPUTAMEN_RIGHT\nTHALAMUS_LEFT\nTHALAMUS_RIGHT",
+  "description": "Write a cifti structure as metric, label or volume.\n\nFor dtseries, dscalar, and dlabel, use COLUMN for <direction>, and if you have a symmetric dconn, COLUMN is more efficient.\n\nYou must specify at least one of -metric, -volume-all, -volume, or -label for this command to do anything.  Output volumes will spatially line up with their original positions, whether or not they are cropped.  Volume files produced by separating a dlabel file, or from the -label suboption of -volume-all, will be label volumes, see -volume-help.\n\nFor each <structure> argument, use one of the following strings:\n\nCORTEX_LEFT\nCORTEX_RIGHT\nCEREBELLUM\nACCUMBENS_LEFT\nACCUMBENS_RIGHT\nALL_GREY_MATTER\nALL_WHITE_MATTER\nAMYGDALA_LEFT\nAMYGDALA_RIGHT\nBRAIN_STEM\nCAUDATE_LEFT\nCAUDATE_RIGHT\nCEREBELLAR_WHITE_MATTER_LEFT\nCEREBELLAR_WHITE_MATTER_RIGHT\nCEREBELLUM_LEFT\nCEREBELLUM_RIGHT\nCEREBRAL_WHITE_MATTER_LEFT\nCEREBRAL_WHITE_MATTER_RIGHT\nCORTEX\nDIENCEPHALON_VENTRAL_LEFT\nDIENCEPHALON_VENTRAL_RIGHT\nHIPPOCAMPUS_LEFT\nHIPPOCAMPUS_RIGHT\nINVALID\nOTHER\nOTHER_GREY_MATTER\nOTHER_WHITE_MATTER\nPALLIDUM_LEFT\nPALLIDUM_RIGHT\nPUTAMEN_LEFT\nPUTAMEN_RIGHT\nTHALAMUS_LEFT\nTHALAMUS_RIGHT",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,53 +15,291 @@
       "id": "cifti_in",
       "name": "cifti_in",
       "description": "the cifti to separate a component of",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_IN]"
+      "value-key": "[CIFTI_IN]",
+      "type": "File"
     },
     {
       "id": "direction",
       "name": "direction",
       "description": "which direction to separate into components, ROW or COLUMN",
-      "type": "String",
       "optional": false,
-      "value-key": "[DIRECTION]"
+      "value-key": "[DIRECTION]",
+      "type": "String"
     },
     {
-      "id": "opt_volume_all",
-      "name": "opt_volume_all",
-      "command-line-flag": "-volume-all",
+      "id": "volume_all",
+      "name": "volume_all",
       "description": "separate all volume structures into a volume file",
-      "type": "Flag",
+      "command-line-flag": "-volume-all",
+      "type": {
+        "id": "volume_all",
+        "name": "volume_all",
+        "description": "separate all volume structures into a volume file",
+        "command-line": " [VOLUME_OUT] [OPT_ROI] [ROI_OUT] [OPT_LABEL] [LABEL_OUT] [OPT_CROP]",
+        "inputs": [
+          {
+            "id": "volume_out",
+            "name": "volume_out",
+            "description": "the output volume",
+            "optional": false,
+            "value-key": "[VOLUME_OUT]",
+            "type": "File"
+          },
+          {
+            "id": "opt_roi",
+            "name": "opt_roi",
+            "command-line-flag": "-roi",
+            "description": "also output the roi of which voxels have data",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_ROI]"
+          },
+          {
+            "id": "roi_out",
+            "name": "roi_out",
+            "description": "the roi output volume",
+            "optional": false,
+            "value-key": "[ROI_OUT]",
+            "type": "File"
+          },
+          {
+            "id": "opt_label",
+            "name": "opt_label",
+            "command-line-flag": "-label",
+            "description": "output a volume label file indicating the location of structures",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_LABEL]"
+          },
+          {
+            "id": "label_out",
+            "name": "label_out",
+            "description": "the label output volume",
+            "optional": false,
+            "value-key": "[LABEL_OUT]",
+            "type": "File"
+          },
+          {
+            "id": "opt_crop",
+            "name": "opt_crop",
+            "command-line-flag": "-crop",
+            "description": "crop volume to the size of the data rather than using the original volume size",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_CROP]"
+          }
+        ],
+        "output-files": [
+          {
+            "id": "volume_out",
+            "name": "volume_out",
+            "path-template": "[VOLUME_OUT]",
+            "description": "the output volume",
+            "optional": false
+          },
+          {
+            "id": "roi_out",
+            "name": "roi_out",
+            "path-template": "[ROI_OUT]",
+            "description": "the roi output volume",
+            "optional": false
+          },
+          {
+            "id": "label_out",
+            "name": "label_out",
+            "path-template": "[LABEL_OUT]",
+            "description": "the label output volume",
+            "optional": false
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_VOLUME_ALL]"
+      "value-key": "[VOLUME_ALL]",
+      "list": false
     },
     {
-      "id": "opt_label_structure",
-      "name": "opt_label_structure",
+      "id": "label",
+      "name": "label",
+      "description": "separate a surface model into a surface label file",
       "command-line-flag": "-label",
-      "description": "separate a surface model into a surface label file: the structure to output",
-      "type": "String",
+      "type": {
+        "id": "label",
+        "name": "label",
+        "description": "separate a surface model into a surface label file",
+        "command-line": " [LABEL_OUT] [OPT_ROI] [ROI_OUT]",
+        "inputs": [
+          {
+            "id": "label_out",
+            "name": "label_out",
+            "description": "the output label file",
+            "optional": false,
+            "value-key": "[LABEL_OUT]",
+            "type": "File"
+          },
+          {
+            "id": "opt_roi",
+            "name": "opt_roi",
+            "command-line-flag": "-roi",
+            "description": "also output the roi of which vertices have data",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_ROI]"
+          },
+          {
+            "id": "roi_out",
+            "name": "roi_out",
+            "description": "the roi output metric",
+            "optional": false,
+            "value-key": "[ROI_OUT]",
+            "type": "File"
+          }
+        ],
+        "output-files": [
+          {
+            "id": "label_out",
+            "name": "label_out",
+            "path-template": "[LABEL_OUT]",
+            "description": "the output label file",
+            "optional": false
+          },
+          {
+            "id": "roi_out",
+            "name": "roi_out",
+            "path-template": "[ROI_OUT]",
+            "description": "the roi output metric",
+            "optional": false
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_LABEL_STRUCTURE]"
+      "value-key": "[LABEL]",
+      "list": true
     },
     {
-      "id": "opt_metric_structure",
-      "name": "opt_metric_structure",
+      "id": "metric",
+      "name": "metric",
+      "description": "separate a surface model into a metric file",
       "command-line-flag": "-metric",
-      "description": "separate a surface model into a metric file: the structure to output",
-      "type": "String",
+      "type": {
+        "id": "metric",
+        "name": "metric",
+        "description": "separate a surface model into a metric file",
+        "command-line": " [METRIC_OUT] [OPT_ROI] [ROI_OUT]",
+        "inputs": [
+          {
+            "id": "metric_out",
+            "name": "metric_out",
+            "description": "the output metric",
+            "optional": false,
+            "value-key": "[METRIC_OUT]",
+            "type": "File"
+          },
+          {
+            "id": "opt_roi",
+            "name": "opt_roi",
+            "command-line-flag": "-roi",
+            "description": "also output the roi of which vertices have data",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_ROI]"
+          },
+          {
+            "id": "roi_out",
+            "name": "roi_out",
+            "description": "the roi output metric",
+            "optional": false,
+            "value-key": "[ROI_OUT]",
+            "type": "File"
+          }
+        ],
+        "output-files": [
+          {
+            "id": "metric_out",
+            "name": "metric_out",
+            "path-template": "[METRIC_OUT]",
+            "description": "the output metric",
+            "optional": false
+          },
+          {
+            "id": "roi_out",
+            "name": "roi_out",
+            "path-template": "[ROI_OUT]",
+            "description": "the roi output metric",
+            "optional": false
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_METRIC_STRUCTURE]"
+      "value-key": "[METRIC]",
+      "list": true
     },
     {
-      "id": "opt_volume_structure",
-      "name": "opt_volume_structure",
+      "id": "volume",
+      "name": "volume",
+      "description": "separate a volume structure into a volume file",
       "command-line-flag": "-volume",
-      "description": "separate a volume structure into a volume file: the structure to output",
-      "type": "String",
+      "type": {
+        "id": "volume",
+        "name": "volume",
+        "description": "separate a volume structure into a volume file",
+        "command-line": " [VOLUME_OUT] [OPT_ROI] [ROI_OUT] [OPT_CROP]",
+        "inputs": [
+          {
+            "id": "volume_out",
+            "name": "volume_out",
+            "description": "the output volume",
+            "optional": false,
+            "value-key": "[VOLUME_OUT]",
+            "type": "File"
+          },
+          {
+            "id": "opt_roi",
+            "name": "opt_roi",
+            "command-line-flag": "-roi",
+            "description": "also output the roi of which voxels have data",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_ROI]"
+          },
+          {
+            "id": "roi_out",
+            "name": "roi_out",
+            "description": "the roi output volume",
+            "optional": false,
+            "value-key": "[ROI_OUT]",
+            "type": "File"
+          },
+          {
+            "id": "opt_crop",
+            "name": "opt_crop",
+            "command-line-flag": "-crop",
+            "description": "crop volume to the size of the component rather than using the original volume size",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_CROP]"
+          }
+        ],
+        "output-files": [
+          {
+            "id": "volume_out",
+            "name": "volume_out",
+            "path-template": "[VOLUME_OUT]",
+            "description": "the output volume",
+            "optional": false
+          },
+          {
+            "id": "roi_out",
+            "name": "roi_out",
+            "path-template": "[ROI_OUT]",
+            "description": "the roi output volume",
+            "optional": false
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_VOLUME_STRUCTURE]"
+      "value-key": "[VOLUME]",
+      "list": true
     }
   ]
 }

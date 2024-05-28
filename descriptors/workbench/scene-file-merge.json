@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "scene-file-merge",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -scene-file-merge [SCENE_FILE_OUT] [OPT_SCENE_FILE_SCENE_FILE]",
+  "command-line": "wb_command -scene-file-merge [SCENE_FILE_OUT] [SCENE_FILE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "REARRANGE SCENES INTO A NEW FILE.\n\nTakes one or more scene files and constructs a new scene file by concatenating specified scenes from them.\n\nExample: wb_command -scene-file-merge out.scene -scene-file first.scene -scene 1 -scene-file second.scene\n\nThis example would take the first scene from first.scene, followed by all scenes from second.scene, and write these scenes to out.scene.",
+  "description": "Rearrange scenes into a new file.\n\nTakes one or more scene files and constructs a new scene file by concatenating specified scenes from them.\n\nExample: wb_command -scene-file-merge out.scene -scene-file first.scene -scene 1 -scene-file second.scene\n\nThis example would take the first scene from first.scene, followed by all scenes from second.scene, and write these scenes to out.scene.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,18 +15,69 @@
       "id": "scene_file_out",
       "name": "scene_file_out",
       "description": "output - the output scene file",
-      "type": "String",
       "optional": false,
-      "value-key": "[SCENE_FILE_OUT]"
+      "value-key": "[SCENE_FILE_OUT]",
+      "type": "String"
     },
     {
-      "id": "opt_scene_file_scene_file",
-      "name": "opt_scene_file_scene_file",
+      "id": "scene_file",
+      "name": "scene_file",
+      "description": "specify a scene file to use scenes from",
       "command-line-flag": "-scene-file",
-      "description": "specify a scene file to use scenes from: the input scene file",
-      "type": "String",
+      "type": {
+        "id": "scene_file",
+        "name": "scene_file",
+        "description": "specify a scene file to use scenes from",
+        "command-line": " [SCENE]",
+        "inputs": [
+          {
+            "id": "scene",
+            "name": "scene",
+            "description": "specify a scene to use",
+            "command-line-flag": "-scene",
+            "type": {
+              "id": "scene",
+              "name": "scene",
+              "description": "specify a scene to use",
+              "command-line": " [UP_TO]",
+              "inputs": [
+                {
+                  "id": "up_to",
+                  "name": "up_to",
+                  "description": "use an inclusive range of scenes",
+                  "command-line-flag": "-up-to",
+                  "type": {
+                    "id": "up_to",
+                    "name": "up_to",
+                    "description": "use an inclusive range of scenes",
+                    "command-line": " [OPT_REVERSE]",
+                    "inputs": [
+                      {
+                        "id": "opt_reverse",
+                        "name": "opt_reverse",
+                        "command-line-flag": "-reverse",
+                        "description": "use the range in reverse order",
+                        "type": "Flag",
+                        "optional": true,
+                        "value-key": "[OPT_REVERSE]"
+                      }
+                    ]
+                  },
+                  "optional": true,
+                  "value-key": "[UP_TO]",
+                  "list": false
+                }
+              ]
+            },
+            "optional": true,
+            "value-key": "[SCENE]",
+            "list": true
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_SCENE_FILE_SCENE_FILE]"
+      "value-key": "[SCENE_FILE]",
+      "list": true
     }
   ]
 }

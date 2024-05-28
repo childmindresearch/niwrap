@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-resample-dconn-memory",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-resample-dconn-memory [CIFTI_IN] [CIFTI_TEMPLATE] [TEMPLATE_DIRECTION] [SURFACE_METHOD] [VOLUME_METHOD] [CIFTI_OUT] [OPT_SURFACE_LARGEST] [OPT_VOLUME_PREDILATE_DILATE_MM] [OPT_SURFACE_POSTDILATE_DILATE_MM] [OPT_AFFINE_AFFINE_FILE] [OPT_WARPFIELD_WARPFIELD]",
+  "command-line": "wb_command -cifti-resample-dconn-memory [CIFTI_IN] [CIFTI_TEMPLATE] [TEMPLATE_DIRECTION] [SURFACE_METHOD] [VOLUME_METHOD] [CIFTI_OUT] [OPT_SURFACE_LARGEST] [VOLUME_PREDILATE] [SURFACE_POSTDILATE] [AFFINE] [WARPFIELD] [LEFT_SPHERES] [RIGHT_SPHERES] [CEREBELLUM_SPHERES]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "USE LOTS OF MEMORY TO RESAMPLE DCONN.\n\nThis command does the same thing as running -cifti-resample twice, but uses memory up to approximately 2x the size that the intermediate file would be.  This is because the intermediate dconn is kept in memory, rather than written to disk, and the components before and after resampling/dilation have to be in memory at the same time during the relevant computation.  The <template-direction> argument should usually be COLUMN, as dtseries, dscalar, and dlabel all have brainordinates on that direction.  If spheres are not specified for a surface structure which exists in the cifti files, its data is copied without resampling or dilation.  Dilation is done with the 'nearest' method, and is done on <new-sphere> for surface data.  Volume components are padded before dilation so that dilation doesn't run into the edge of the component bounding box.\n\nTo get the v1.3.2 and earlier behavior of weighted dilation, specify exponent of 2 for surface and volume, and -legacy-cutoff for both surface and volume.\n\nThe <volume-method> argument must be one of the following:\n\nCUBIC\nENCLOSING_VOXEL\nTRILINEAR\n\nThe <surface-method> argument must be one of the following:\n\nADAP_BARY_AREA\nBARYCENTRIC\n",
+  "description": "Use lots of memory to resample dconn.\n\nThis command does the same thing as running -cifti-resample twice, but uses memory up to approximately 2x the size that the intermediate file would be.  This is because the intermediate dconn is kept in memory, rather than written to disk, and the components before and after resampling/dilation have to be in memory at the same time during the relevant computation.  The <template-direction> argument should usually be COLUMN, as dtseries, dscalar, and dlabel all have brainordinates on that direction.  If spheres are not specified for a surface structure which exists in the cifti files, its data is copied without resampling or dilation.  Dilation is done with the 'nearest' method, and is done on <new-sphere> for surface data.  Volume components are padded before dilation so that dilation doesn't run into the edge of the component bounding box.\n\nTo get the v1.3.2 and earlier behavior of weighted dilation, specify exponent of 2 for surface and volume, and -legacy-cutoff for both surface and volume.\n\nThe <volume-method> argument must be one of the following:\n\nCUBIC\nENCLOSING_VOXEL\nTRILINEAR\n\nThe <surface-method> argument must be one of the following:\n\nADAP_BARY_AREA\nBARYCENTRIC\n",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,49 +15,49 @@
       "id": "cifti_in",
       "name": "cifti_in",
       "description": "the cifti file to resample",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_IN]"
+      "value-key": "[CIFTI_IN]",
+      "type": "File"
     },
     {
       "id": "cifti_template",
       "name": "cifti_template",
       "description": "a cifti file containing the cifti space to resample to",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_TEMPLATE]"
+      "value-key": "[CIFTI_TEMPLATE]",
+      "type": "File"
     },
     {
       "id": "template_direction",
       "name": "template_direction",
       "description": "the direction of the template to use as the resampling space, ROW or COLUMN",
-      "type": "String",
       "optional": false,
-      "value-key": "[TEMPLATE_DIRECTION]"
+      "value-key": "[TEMPLATE_DIRECTION]",
+      "type": "String"
     },
     {
       "id": "surface_method",
       "name": "surface_method",
       "description": "specify a surface resampling method",
-      "type": "String",
       "optional": false,
-      "value-key": "[SURFACE_METHOD]"
+      "value-key": "[SURFACE_METHOD]",
+      "type": "String"
     },
     {
       "id": "volume_method",
       "name": "volume_method",
       "description": "specify a volume interpolation method",
-      "type": "String",
       "optional": false,
-      "value-key": "[VOLUME_METHOD]"
+      "value-key": "[VOLUME_METHOD]",
+      "type": "String"
     },
     {
       "id": "cifti_out",
       "name": "cifti_out",
       "description": "the output cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_OUT]"
+      "value-key": "[CIFTI_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_surface_largest",
@@ -69,40 +69,336 @@
       "value-key": "[OPT_SURFACE_LARGEST]"
     },
     {
-      "id": "opt_volume_predilate_dilate_mm",
-      "name": "opt_volume_predilate_dilate_mm",
+      "id": "volume_predilate",
+      "name": "volume_predilate",
+      "description": "dilate the volume components before resampling",
       "command-line-flag": "-volume-predilate",
-      "description": "dilate the volume components before resampling: distance, in mm, to dilate",
-      "type": "Number",
+      "type": {
+        "id": "volume_predilate",
+        "name": "volume_predilate",
+        "description": "dilate the volume components before resampling",
+        "command-line": " [OPT_NEAREST] [WEIGHTED]",
+        "inputs": [
+          {
+            "id": "opt_nearest",
+            "name": "opt_nearest",
+            "command-line-flag": "-nearest",
+            "description": "use nearest value dilation",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_NEAREST]"
+          },
+          {
+            "id": "weighted",
+            "name": "weighted",
+            "description": "use weighted dilation (default)",
+            "command-line-flag": "-weighted",
+            "type": {
+              "id": "weighted",
+              "name": "weighted",
+              "description": "use weighted dilation (default)",
+              "command-line": " [OPT_EXPONENT_EXPONENT] [OPT_LEGACY_CUTOFF]",
+              "inputs": [
+                {
+                  "id": "opt_exponent_exponent",
+                  "name": "opt_exponent_exponent",
+                  "command-line-flag": "-exponent",
+                  "description": "specify exponent in weighting function: exponent 'n' to use in (1 / (distance ^ n)) as the weighting function (default 7)",
+                  "optional": true,
+                  "value-key": "[OPT_EXPONENT_EXPONENT]",
+                  "type": "Number",
+                  "integer": false
+                },
+                {
+                  "id": "opt_legacy_cutoff",
+                  "name": "opt_legacy_cutoff",
+                  "command-line-flag": "-legacy-cutoff",
+                  "description": "use v1.3.2 logic for the kernel cutoff",
+                  "type": "Flag",
+                  "optional": true,
+                  "value-key": "[OPT_LEGACY_CUTOFF]"
+                }
+              ]
+            },
+            "optional": true,
+            "value-key": "[WEIGHTED]",
+            "list": false
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_VOLUME_PREDILATE_DILATE_MM]"
+      "value-key": "[VOLUME_PREDILATE]",
+      "list": false
     },
     {
-      "id": "opt_surface_postdilate_dilate_mm",
-      "name": "opt_surface_postdilate_dilate_mm",
+      "id": "surface_postdilate",
+      "name": "surface_postdilate",
+      "description": "dilate the surface components after resampling",
       "command-line-flag": "-surface-postdilate",
-      "description": "dilate the surface components after resampling: distance, in mm, to dilate",
-      "type": "Number",
+      "type": {
+        "id": "surface_postdilate",
+        "name": "surface_postdilate",
+        "description": "dilate the surface components after resampling",
+        "command-line": " [OPT_NEAREST] [OPT_LINEAR] [WEIGHTED]",
+        "inputs": [
+          {
+            "id": "opt_nearest",
+            "name": "opt_nearest",
+            "command-line-flag": "-nearest",
+            "description": "use nearest value dilation",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_NEAREST]"
+          },
+          {
+            "id": "opt_linear",
+            "name": "opt_linear",
+            "command-line-flag": "-linear",
+            "description": "use linear dilation",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_LINEAR]"
+          },
+          {
+            "id": "weighted",
+            "name": "weighted",
+            "description": "use weighted dilation (default)",
+            "command-line-flag": "-weighted",
+            "type": {
+              "id": "weighted",
+              "name": "weighted",
+              "description": "use weighted dilation (default)",
+              "command-line": " [OPT_EXPONENT_EXPONENT] [OPT_LEGACY_CUTOFF]",
+              "inputs": [
+                {
+                  "id": "opt_exponent_exponent",
+                  "name": "opt_exponent_exponent",
+                  "command-line-flag": "-exponent",
+                  "description": "specify exponent in weighting function: exponent 'n' to use in (area / (distance ^ n)) as the weighting function (default 6)",
+                  "optional": true,
+                  "value-key": "[OPT_EXPONENT_EXPONENT]",
+                  "type": "Number",
+                  "integer": false
+                },
+                {
+                  "id": "opt_legacy_cutoff",
+                  "name": "opt_legacy_cutoff",
+                  "command-line-flag": "-legacy-cutoff",
+                  "description": "use v1.3.2 logic for the kernel cutoff",
+                  "type": "Flag",
+                  "optional": true,
+                  "value-key": "[OPT_LEGACY_CUTOFF]"
+                }
+              ]
+            },
+            "optional": true,
+            "value-key": "[WEIGHTED]",
+            "list": false
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_SURFACE_POSTDILATE_DILATE_MM]"
+      "value-key": "[SURFACE_POSTDILATE]",
+      "list": false
     },
     {
-      "id": "opt_affine_affine_file",
-      "name": "opt_affine_affine_file",
+      "id": "affine",
+      "name": "affine",
+      "description": "use an affine transformation on the volume components",
       "command-line-flag": "-affine",
-      "description": "use an affine transformation on the volume components: the affine file to use",
-      "type": "String",
+      "type": {
+        "id": "affine",
+        "name": "affine",
+        "description": "use an affine transformation on the volume components",
+        "command-line": " [FLIRT]",
+        "inputs": [
+          {
+            "id": "flirt",
+            "name": "flirt",
+            "description": "MUST be used if affine is a flirt affine",
+            "command-line-flag": "-flirt",
+            "type": {
+              "id": "flirt",
+              "name": "flirt",
+              "description": "MUST be used if affine is a flirt affine",
+              "command-line": ""
+            },
+            "optional": true,
+            "value-key": "[FLIRT]",
+            "list": false
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_AFFINE_AFFINE_FILE]"
+      "value-key": "[AFFINE]",
+      "list": false
     },
     {
-      "id": "opt_warpfield_warpfield",
-      "name": "opt_warpfield_warpfield",
+      "id": "warpfield",
+      "name": "warpfield",
+      "description": "use a warpfield on the volume components",
       "command-line-flag": "-warpfield",
-      "description": "use a warpfield on the volume components: the warpfield to use",
-      "type": "String",
+      "type": {
+        "id": "warpfield",
+        "name": "warpfield",
+        "description": "use a warpfield on the volume components",
+        "command-line": " [OPT_FNIRT_SOURCE_VOLUME]",
+        "inputs": [
+          {
+            "id": "opt_fnirt_source_volume",
+            "name": "opt_fnirt_source_volume",
+            "command-line-flag": "-fnirt",
+            "description": "MUST be used if using a fnirt warpfield: the source volume used when generating the warpfield",
+            "optional": true,
+            "value-key": "[OPT_FNIRT_SOURCE_VOLUME]",
+            "type": "String"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_WARPFIELD_WARPFIELD]"
+      "value-key": "[WARPFIELD]",
+      "list": false
+    },
+    {
+      "id": "left_spheres",
+      "name": "left_spheres",
+      "description": "specify spheres for left surface resampling",
+      "command-line-flag": "-left-spheres",
+      "type": {
+        "id": "left_spheres",
+        "name": "left_spheres",
+        "description": "specify spheres for left surface resampling",
+        "command-line": " [LEFT_AREA_SURFS] [LEFT_AREA_METRICS]",
+        "inputs": [
+          {
+            "id": "left_area_surfs",
+            "name": "left_area_surfs",
+            "description": "specify left surfaces to do vertex area correction based on",
+            "command-line-flag": "-left-area-surfs",
+            "type": {
+              "id": "left_area_surfs",
+              "name": "left_area_surfs",
+              "description": "specify left surfaces to do vertex area correction based on",
+              "command-line": ""
+            },
+            "optional": true,
+            "value-key": "[LEFT_AREA_SURFS]",
+            "list": false
+          },
+          {
+            "id": "left_area_metrics",
+            "name": "left_area_metrics",
+            "description": "specify left vertex area metrics to do area correction based on",
+            "command-line-flag": "-left-area-metrics",
+            "type": {
+              "id": "left_area_metrics",
+              "name": "left_area_metrics",
+              "description": "specify left vertex area metrics to do area correction based on",
+              "command-line": ""
+            },
+            "optional": true,
+            "value-key": "[LEFT_AREA_METRICS]",
+            "list": false
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[LEFT_SPHERES]",
+      "list": false
+    },
+    {
+      "id": "right_spheres",
+      "name": "right_spheres",
+      "description": "specify spheres for right surface resampling",
+      "command-line-flag": "-right-spheres",
+      "type": {
+        "id": "right_spheres",
+        "name": "right_spheres",
+        "description": "specify spheres for right surface resampling",
+        "command-line": " [RIGHT_AREA_SURFS] [RIGHT_AREA_METRICS]",
+        "inputs": [
+          {
+            "id": "right_area_surfs",
+            "name": "right_area_surfs",
+            "description": "specify right surfaces to do vertex area correction based on",
+            "command-line-flag": "-right-area-surfs",
+            "type": {
+              "id": "right_area_surfs",
+              "name": "right_area_surfs",
+              "description": "specify right surfaces to do vertex area correction based on",
+              "command-line": ""
+            },
+            "optional": true,
+            "value-key": "[RIGHT_AREA_SURFS]",
+            "list": false
+          },
+          {
+            "id": "right_area_metrics",
+            "name": "right_area_metrics",
+            "description": "specify right vertex area metrics to do area correction based on",
+            "command-line-flag": "-right-area-metrics",
+            "type": {
+              "id": "right_area_metrics",
+              "name": "right_area_metrics",
+              "description": "specify right vertex area metrics to do area correction based on",
+              "command-line": ""
+            },
+            "optional": true,
+            "value-key": "[RIGHT_AREA_METRICS]",
+            "list": false
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[RIGHT_SPHERES]",
+      "list": false
+    },
+    {
+      "id": "cerebellum_spheres",
+      "name": "cerebellum_spheres",
+      "description": "specify spheres for cerebellum surface resampling",
+      "command-line-flag": "-cerebellum-spheres",
+      "type": {
+        "id": "cerebellum_spheres",
+        "name": "cerebellum_spheres",
+        "description": "specify spheres for cerebellum surface resampling",
+        "command-line": " [CEREBELLUM_AREA_SURFS] [CEREBELLUM_AREA_METRICS]",
+        "inputs": [
+          {
+            "id": "cerebellum_area_surfs",
+            "name": "cerebellum_area_surfs",
+            "description": "specify cerebellum surfaces to do vertex area correction based on",
+            "command-line-flag": "-cerebellum-area-surfs",
+            "type": {
+              "id": "cerebellum_area_surfs",
+              "name": "cerebellum_area_surfs",
+              "description": "specify cerebellum surfaces to do vertex area correction based on",
+              "command-line": ""
+            },
+            "optional": true,
+            "value-key": "[CEREBELLUM_AREA_SURFS]",
+            "list": false
+          },
+          {
+            "id": "cerebellum_area_metrics",
+            "name": "cerebellum_area_metrics",
+            "description": "specify cerebellum vertex area metrics to do area correction based on",
+            "command-line-flag": "-cerebellum-area-metrics",
+            "type": {
+              "id": "cerebellum_area_metrics",
+              "name": "cerebellum_area_metrics",
+              "description": "specify cerebellum vertex area metrics to do area correction based on",
+              "command-line": ""
+            },
+            "optional": true,
+            "value-key": "[CEREBELLUM_AREA_METRICS]",
+            "list": false
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[CEREBELLUM_SPHERES]",
+      "list": false
     }
   ],
   "output-files": [

@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-regression",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-regression [METRIC_IN] [METRIC_OUT] [OPT_ROI_ROI_METRIC] [OPT_COLUMN_COLUMN] [OPT_REMOVE_METRIC] [OPT_KEEP_METRIC]",
+  "command-line": "wb_command -metric-regression [METRIC_IN] [METRIC_OUT] [OPT_ROI_ROI_METRIC] [OPT_COLUMN_COLUMN] [REMOVE] [KEEP]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "REGRESS SPATIAL MAP OUT OF A METRIC FILE.\n\nFor each regressor, its mean across the surface is subtracted from its data.  Each input map is then regressed against these, and a constant term.  The resulting regressed slopes of all regressors specified with -remove are multiplied with their respective regressor maps, and these are subtracted from the input map.",
+  "description": "Regress spatial map out of a metric file.\n\nFor each regressor, its mean across the surface is subtracted from its data.  Each input map is then regressed against these, and a constant term.  The resulting regressed slopes of all regressors specified with -remove are multiplied with their respective regressor maps, and these are subtracted from the input map.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,53 +15,87 @@
       "id": "metric_in",
       "name": "metric_in",
       "description": "the metric to regress from",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_IN]"
+      "value-key": "[METRIC_IN]",
+      "type": "File"
     },
     {
       "id": "metric_out",
       "name": "metric_out",
       "description": "the output metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_OUT]"
+      "value-key": "[METRIC_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_roi_roi_metric",
       "name": "opt_roi_roi_metric",
       "command-line-flag": "-roi",
       "description": "only regress inside an roi: the area to use for regression, as a metric",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_ROI_ROI_METRIC]"
+      "value-key": "[OPT_ROI_ROI_METRIC]",
+      "type": "File"
     },
     {
       "id": "opt_column_column",
       "name": "opt_column_column",
       "command-line-flag": "-column",
       "description": "select a single column to regress from: the column number or name",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_COLUMN_COLUMN]"
+      "value-key": "[OPT_COLUMN_COLUMN]",
+      "type": "String"
     },
     {
-      "id": "opt_remove_metric",
-      "name": "opt_remove_metric",
+      "id": "remove",
+      "name": "remove",
+      "description": "specify a metric to regress out",
       "command-line-flag": "-remove",
-      "description": "specify a metric to regress out: the metric file to use",
-      "type": "File",
+      "type": {
+        "id": "remove",
+        "name": "remove",
+        "description": "specify a metric to regress out",
+        "command-line": " [OPT_REMOVE_COLUMN_COLUMN]",
+        "inputs": [
+          {
+            "id": "opt_remove_column_column",
+            "name": "opt_remove_column_column",
+            "command-line-flag": "-remove-column",
+            "description": "select a column to use, rather than all: the column number or name",
+            "optional": true,
+            "value-key": "[OPT_REMOVE_COLUMN_COLUMN]",
+            "type": "String"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_REMOVE_METRIC]"
+      "value-key": "[REMOVE]",
+      "list": true
     },
     {
-      "id": "opt_keep_metric",
-      "name": "opt_keep_metric",
+      "id": "keep",
+      "name": "keep",
+      "description": "specify a metric to include in regression, but not remove",
       "command-line-flag": "-keep",
-      "description": "specify a metric to include in regression, but not remove: the metric file to use",
-      "type": "File",
+      "type": {
+        "id": "keep",
+        "name": "keep",
+        "description": "specify a metric to include in regression, but not remove",
+        "command-line": " [OPT_KEEP_COLUMN_COLUMN]",
+        "inputs": [
+          {
+            "id": "opt_keep_column_column",
+            "name": "opt_keep_column_column",
+            "command-line-flag": "-keep-column",
+            "description": "select a column to use, rather than all: the column number or name",
+            "optional": true,
+            "value-key": "[OPT_KEEP_COLUMN_COLUMN]",
+            "type": "String"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_KEEP_METRIC]"
+      "value-key": "[KEEP]",
+      "list": true
     }
   ],
   "output-files": [

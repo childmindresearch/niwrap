@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "surface-resample",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -surface-resample [SURFACE_IN] [CURRENT_SPHERE] [NEW_SPHERE] [METHOD] [SURFACE_OUT] [OPT_BYPASS_SPHERE_CHECK]",
+  "command-line": "wb_command -surface-resample [SURFACE_IN] [CURRENT_SPHERE] [NEW_SPHERE] [METHOD] [SURFACE_OUT] [AREA_SURFS] [AREA_METRICS] [OPT_BYPASS_SPHERE_CHECK]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "RESAMPLE A SURFACE TO A DIFFERENT MESH.\n\nResamples a surface file, given two spherical surfaces that are in register.  If ADAP_BARY_AREA is used, exactly one of -area-surfs or -area-metrics must be specified.  This method is not generally recommended for surface resampling, but is provided for completeness.\n\nThe BARYCENTRIC method is generally recommended for anatomical surfaces, in order to minimize smoothing.\n\nFor cut surfaces (including flatmaps), use -surface-cut-resample.\n\nInstead of resampling a spherical surface, the -surface-sphere-project-unproject command is recommended.\n\nThe <method> argument must be one of the following:\n\nADAP_BARY_AREA\nBARYCENTRIC\n",
+  "description": "Resample a surface to a different mesh.\n\nResamples a surface file, given two spherical surfaces that are in register.  If ADAP_BARY_AREA is used, exactly one of -area-surfs or -area-metrics must be specified.  This method is not generally recommended for surface resampling, but is provided for completeness.\n\nThe BARYCENTRIC method is generally recommended for anatomical surfaces, in order to minimize smoothing.\n\nFor cut surfaces (including flatmaps), use -surface-cut-resample.\n\nInstead of resampling a spherical surface, the -surface-sphere-project-unproject command is recommended.\n\nThe <method> argument must be one of the following:\n\nADAP_BARY_AREA\nBARYCENTRIC\n",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,41 +15,71 @@
       "id": "surface_in",
       "name": "surface_in",
       "description": "the surface file to resample",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE_IN]"
+      "value-key": "[SURFACE_IN]",
+      "type": "File"
     },
     {
       "id": "current_sphere",
       "name": "current_sphere",
       "description": "a sphere surface with the mesh that the input surface is currently on",
-      "type": "File",
       "optional": false,
-      "value-key": "[CURRENT_SPHERE]"
+      "value-key": "[CURRENT_SPHERE]",
+      "type": "File"
     },
     {
       "id": "new_sphere",
       "name": "new_sphere",
       "description": "a sphere surface that is in register with <current-sphere> and has the desired output mesh",
-      "type": "File",
       "optional": false,
-      "value-key": "[NEW_SPHERE]"
+      "value-key": "[NEW_SPHERE]",
+      "type": "File"
     },
     {
       "id": "method",
       "name": "method",
       "description": "the method name",
-      "type": "String",
       "optional": false,
-      "value-key": "[METHOD]"
+      "value-key": "[METHOD]",
+      "type": "String"
     },
     {
       "id": "surface_out",
       "name": "surface_out",
       "description": "the output surface file",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE_OUT]"
+      "value-key": "[SURFACE_OUT]",
+      "type": "File"
+    },
+    {
+      "id": "area_surfs",
+      "name": "area_surfs",
+      "description": "specify surfaces to do vertex area correction based on",
+      "command-line-flag": "-area-surfs",
+      "type": {
+        "id": "area_surfs",
+        "name": "area_surfs",
+        "description": "specify surfaces to do vertex area correction based on",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[AREA_SURFS]",
+      "list": false
+    },
+    {
+      "id": "area_metrics",
+      "name": "area_metrics",
+      "description": "specify vertex area metrics to do area correction based on",
+      "command-line-flag": "-area-metrics",
+      "type": {
+        "id": "area_metrics",
+        "name": "area_metrics",
+        "description": "specify vertex area metrics to do area correction based on",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[AREA_METRICS]",
+      "list": false
     },
     {
       "id": "opt_bypass_sphere_check",

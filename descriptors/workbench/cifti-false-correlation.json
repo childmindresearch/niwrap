@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-false-correlation",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-false-correlation [CIFTI_IN] [3D_DIST] [GEO_OUTER] [GEO_INNER] [CIFTI_OUT] [OPT_LEFT_SURFACE_SURFACE] [OPT_RIGHT_SURFACE_SURFACE] [OPT_CEREBELLUM_SURFACE_SURFACE]",
+  "command-line": "wb_command -cifti-false-correlation [CIFTI_IN] [3D_DIST] [GEO_OUTER] [GEO_INNER] [CIFTI_OUT] [LEFT_SURFACE] [RIGHT_SURFACE] [CEREBELLUM_SURFACE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "COMPARE CORRELATION LOCALLY AND ACROSS/THROUGH SULCI/GYRI.\n\nFor each vertex, compute the average correlation within a range of geodesic distances that don't cross a sulcus/gyrus, and the correlation to the closest vertex crossing a sulcus/gyrus.  A vertex is considered to cross a sulcus/gyrus if the 3D distance is less than a third of the geodesic distance.  The output file contains the ratio between these correlations, and some additional maps to help explain the ratio.",
+  "description": "Compare correlation locally and across/through sulci/gyri.\n\nFor each vertex, compute the average correlation within a range of geodesic distances that don't cross a sulcus/gyrus, and the correlation to the closest vertex crossing a sulcus/gyrus.  A vertex is considered to cross a sulcus/gyrus if the 3D distance is less than a third of the geodesic distance.  The output file contains the ratio between these correlations, and some additional maps to help explain the ratio.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,68 +15,122 @@
       "id": "cifti_in",
       "name": "cifti_in",
       "description": "the cifti file to use for correlation",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_IN]"
+      "value-key": "[CIFTI_IN]",
+      "type": "File"
     },
     {
       "id": "3d_dist",
       "name": "3d_dist",
       "description": "maximum 3D distance to check around each vertex",
-      "type": "Number",
       "optional": false,
-      "value-key": "[3D_DIST]"
+      "value-key": "[3D_DIST]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "geo_outer",
       "name": "geo_outer",
       "description": "maximum geodesic distance to use for neighboring correlation",
-      "type": "Number",
       "optional": false,
-      "value-key": "[GEO_OUTER]"
+      "value-key": "[GEO_OUTER]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "geo_inner",
       "name": "geo_inner",
       "description": "minimum geodesic distance to use for neighboring correlation",
-      "type": "Number",
       "optional": false,
-      "value-key": "[GEO_INNER]"
+      "value-key": "[GEO_INNER]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "cifti_out",
       "name": "cifti_out",
       "description": "the output cifti dscalar file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_OUT]"
+      "value-key": "[CIFTI_OUT]",
+      "type": "File"
     },
     {
-      "id": "opt_left_surface_surface",
-      "name": "opt_left_surface_surface",
+      "id": "left_surface",
+      "name": "left_surface",
+      "description": "specify the left surface to use",
       "command-line-flag": "-left-surface",
-      "description": "specify the left surface to use: the left surface file",
-      "type": "File",
+      "type": {
+        "id": "left_surface",
+        "name": "left_surface",
+        "description": "specify the left surface to use",
+        "command-line": " [OPT_DUMP_TEXT_TEXT_OUT]",
+        "inputs": [
+          {
+            "id": "opt_dump_text_text_out",
+            "name": "opt_dump_text_text_out",
+            "command-line-flag": "-dump-text",
+            "description": "dump the raw measures used to a text file: the output text file",
+            "optional": true,
+            "value-key": "[OPT_DUMP_TEXT_TEXT_OUT]",
+            "type": "String"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_LEFT_SURFACE_SURFACE]"
+      "value-key": "[LEFT_SURFACE]",
+      "list": false
     },
     {
-      "id": "opt_right_surface_surface",
-      "name": "opt_right_surface_surface",
+      "id": "right_surface",
+      "name": "right_surface",
+      "description": "specify the right surface to use",
       "command-line-flag": "-right-surface",
-      "description": "specify the right surface to use: the right surface file",
-      "type": "File",
+      "type": {
+        "id": "right_surface",
+        "name": "right_surface",
+        "description": "specify the right surface to use",
+        "command-line": " [OPT_DUMP_TEXT_TEXT_OUT]",
+        "inputs": [
+          {
+            "id": "opt_dump_text_text_out",
+            "name": "opt_dump_text_text_out",
+            "command-line-flag": "-dump-text",
+            "description": "dump the raw measures used to a text file: the output text file",
+            "optional": true,
+            "value-key": "[OPT_DUMP_TEXT_TEXT_OUT]",
+            "type": "String"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_RIGHT_SURFACE_SURFACE]"
+      "value-key": "[RIGHT_SURFACE]",
+      "list": false
     },
     {
-      "id": "opt_cerebellum_surface_surface",
-      "name": "opt_cerebellum_surface_surface",
+      "id": "cerebellum_surface",
+      "name": "cerebellum_surface",
+      "description": "specify the cerebellum surface to use",
       "command-line-flag": "-cerebellum-surface",
-      "description": "specify the cerebellum surface to use: the cerebellum surface file",
-      "type": "File",
+      "type": {
+        "id": "cerebellum_surface",
+        "name": "cerebellum_surface",
+        "description": "specify the cerebellum surface to use",
+        "command-line": " [OPT_DUMP_TEXT_TEXT_OUT]",
+        "inputs": [
+          {
+            "id": "opt_dump_text_text_out",
+            "name": "opt_dump_text_text_out",
+            "command-line-flag": "-dump-text",
+            "description": "dump the raw measures used to a text file: the output text file",
+            "optional": true,
+            "value-key": "[OPT_DUMP_TEXT_TEXT_OUT]",
+            "type": "String"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_CEREBELLUM_SURFACE_SURFACE]"
+      "value-key": "[CEREBELLUM_SURFACE]",
+      "list": false
     }
   ],
   "output-files": [

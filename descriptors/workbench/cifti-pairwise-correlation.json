@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -cifti-pairwise-correlation [CIFTI_A] [CIFTI_B] [CIFTI_OUT] [OPT_FISHER_Z] [OPT_OVERRIDE_MAPPING_CHECK]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "CORRELATE PAIRED ROWS BETWEEN TWO CIFTI FILES.\n\nFor each row in <cifti-a>, correlate it with the same row in <cifti-b>, and put the result in the same row of <cifti-out>, which has only one column.",
+  "description": "Correlate paired rows between two cifti files.\n\nFor each row in <cifti-a>, correlate it with the same row in <cifti-b>, and put the result in the same row of <cifti-out>, which has only one column.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,25 +15,25 @@
       "id": "cifti_a",
       "name": "cifti_a",
       "description": "first input cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_A]"
+      "value-key": "[CIFTI_A]",
+      "type": "File"
     },
     {
       "id": "cifti_b",
       "name": "cifti_b",
       "description": "second input cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_B]"
+      "value-key": "[CIFTI_B]",
+      "type": "File"
     },
     {
       "id": "cifti_out",
       "name": "cifti_out",
       "description": "output cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_OUT]"
+      "value-key": "[CIFTI_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_fisher_z",

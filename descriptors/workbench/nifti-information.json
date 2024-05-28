@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "nifti-information",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -nifti-information [NIFTI_FILE] [OPT_PRINT_HEADER] [OPT_PRINT_MATRIX] [OPT_PRINT_XML]",
+  "command-line": "wb_command -nifti-information [NIFTI_FILE] [OPT_PRINT_HEADER] [OPT_ALLOW_TRUNCATED] [OPT_PRINT_MATRIX] [OPT_PRINT_XML] [OPT_VERSION_VERSION]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "DISPLAY INFORMATION ABOUT A NIFTI/CIFTI FILE.\n\nYou must specify at least one -print-* option.",
+  "description": "Display information about a nifti/cifti file.\n\nYou must specify at least one -print-* option.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,9 +15,9 @@
       "id": "nifti_file",
       "name": "nifti_file",
       "description": "the nifti/cifti file to examine",
-      "type": "String",
       "optional": false,
-      "value-key": "[NIFTI_FILE]"
+      "value-key": "[NIFTI_FILE]",
+      "type": "String"
     },
     {
       "id": "opt_print_header",
@@ -27,6 +27,15 @@
       "type": "Flag",
       "optional": true,
       "value-key": "[OPT_PRINT_HEADER]"
+    },
+    {
+      "id": "opt_allow_truncated",
+      "name": "opt_allow_truncated",
+      "command-line-flag": "-allow-truncated",
+      "description": "print the header even if the data is truncated",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[OPT_ALLOW_TRUNCATED]"
     },
     {
       "id": "opt_print_matrix",
@@ -45,6 +54,15 @@
       "type": "Flag",
       "optional": true,
       "value-key": "[OPT_PRINT_XML]"
+    },
+    {
+      "id": "opt_version_version",
+      "name": "opt_version_version",
+      "command-line-flag": "-version",
+      "description": "convert the XML to a specific CIFTI version (default is the file's cifti version): the CIFTI version to use",
+      "optional": true,
+      "value-key": "[OPT_VERSION_VERSION]",
+      "type": "String"
     }
   ]
 }

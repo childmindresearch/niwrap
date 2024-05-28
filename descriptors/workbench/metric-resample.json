@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "metric-resample",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -metric-resample [METRIC_IN] [CURRENT_SPHERE] [NEW_SPHERE] [METHOD] [METRIC_OUT] [OPT_CURRENT_ROI_ROI_METRIC] [OPT_VALID_ROI_OUT] [OPT_LARGEST] [OPT_BYPASS_SPHERE_CHECK]",
+  "command-line": "wb_command -metric-resample [METRIC_IN] [CURRENT_SPHERE] [NEW_SPHERE] [METHOD] [METRIC_OUT] [AREA_SURFS] [AREA_METRICS] [OPT_CURRENT_ROI_ROI_METRIC] [OPT_VALID_ROI_OUT] [ROI_OUT] [OPT_LARGEST] [OPT_BYPASS_SPHERE_CHECK]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "RESAMPLE A METRIC FILE TO A DIFFERENT MESH.\n\nResamples a metric file, given two spherical surfaces that are in register.  If ADAP_BARY_AREA is used, exactly one of -area-surfs or -area-metrics must be specified.\n\nThe ADAP_BARY_AREA method is recommended for ordinary metric data, because it should use all data while downsampling, unlike BARYCENTRIC.  The recommended areas option for most data is individual midthicknesses for individual data, and averaged vertex area metrics from individual midthicknesses for group average data.\n\nThe -current-roi option only masks the input, the output may be slightly dilated in comparison, consider using -metric-mask on the output when using -current-roi.\n\nThe -largest option results in nearest vertex behavior when used with BARYCENTRIC.  When resampling a binary metric, consider thresholding at 0.5 after resampling rather than using -largest.\n\nThe <method> argument must be one of the following:\n\nADAP_BARY_AREA\nBARYCENTRIC\n",
+  "description": "Resample a metric file to a different mesh.\n\nResamples a metric file, given two spherical surfaces that are in register.  If ADAP_BARY_AREA is used, exactly one of -area-surfs or -area-metrics must be specified.\n\nThe ADAP_BARY_AREA method is recommended for ordinary metric data, because it should use all data while downsampling, unlike BARYCENTRIC.  The recommended areas option for most data is individual midthicknesses for individual data, and averaged vertex area metrics from individual midthicknesses for group average data.\n\nThe -current-roi option only masks the input, the output may be slightly dilated in comparison, consider using -metric-mask on the output when using -current-roi.\n\nThe -largest option results in nearest vertex behavior when used with BARYCENTRIC.  When resampling a binary metric, consider thresholding at 0.5 after resampling rather than using -largest.\n\nThe <method> argument must be one of the following:\n\nADAP_BARY_AREA\nBARYCENTRIC\n",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,50 +15,80 @@
       "id": "metric_in",
       "name": "metric_in",
       "description": "the metric file to resample",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_IN]"
+      "value-key": "[METRIC_IN]",
+      "type": "File"
     },
     {
       "id": "current_sphere",
       "name": "current_sphere",
       "description": "a sphere surface with the mesh that the metric is currently on",
-      "type": "File",
       "optional": false,
-      "value-key": "[CURRENT_SPHERE]"
+      "value-key": "[CURRENT_SPHERE]",
+      "type": "File"
     },
     {
       "id": "new_sphere",
       "name": "new_sphere",
       "description": "a sphere surface that is in register with <current-sphere> and has the desired output mesh",
-      "type": "File",
       "optional": false,
-      "value-key": "[NEW_SPHERE]"
+      "value-key": "[NEW_SPHERE]",
+      "type": "File"
     },
     {
       "id": "method",
       "name": "method",
       "description": "the method name",
-      "type": "String",
       "optional": false,
-      "value-key": "[METHOD]"
+      "value-key": "[METHOD]",
+      "type": "String"
     },
     {
       "id": "metric_out",
       "name": "metric_out",
       "description": "the output metric",
-      "type": "File",
       "optional": false,
-      "value-key": "[METRIC_OUT]"
+      "value-key": "[METRIC_OUT]",
+      "type": "File"
+    },
+    {
+      "id": "area_surfs",
+      "name": "area_surfs",
+      "description": "specify surfaces to do vertex area correction based on",
+      "command-line-flag": "-area-surfs",
+      "type": {
+        "id": "area_surfs",
+        "name": "area_surfs",
+        "description": "specify surfaces to do vertex area correction based on",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[AREA_SURFS]",
+      "list": false
+    },
+    {
+      "id": "area_metrics",
+      "name": "area_metrics",
+      "description": "specify vertex area metrics to do area correction based on",
+      "command-line-flag": "-area-metrics",
+      "type": {
+        "id": "area_metrics",
+        "name": "area_metrics",
+        "description": "specify vertex area metrics to do area correction based on",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[AREA_METRICS]",
+      "list": false
     },
     {
       "id": "opt_current_roi_roi_metric",
       "name": "opt_current_roi_roi_metric",
       "command-line-flag": "-current-roi",
       "description": "use an input roi on the current mesh to exclude non-data vertices: the roi, as a metric file",
-      "type": "File",
       "optional": true,
-      "value-key": "[OPT_CURRENT_ROI_ROI_METRIC]"
+      "value-key": "[OPT_CURRENT_ROI_ROI_METRIC]",
+      "type": "File"
     },
     {
       "id": "opt_valid_roi_out",
@@ -68,6 +98,14 @@
       "type": "Flag",
       "optional": true,
       "value-key": "[OPT_VALID_ROI_OUT]"
+    },
+    {
+      "id": "roi_out",
+      "name": "roi_out",
+      "description": "the output roi as a metric",
+      "optional": false,
+      "value-key": "[ROI_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_largest",
@@ -94,6 +132,13 @@
       "name": "metric_out",
       "path-template": "[METRIC_OUT]",
       "description": "the output metric",
+      "optional": false
+    },
+    {
+      "id": "roi_out",
+      "name": "roi_out",
+      "path-template": "[ROI_OUT]",
+      "description": "the output roi as a metric",
       "optional": false
     }
   ]

@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "file-information",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -file-information [DATA_FILE] [OPT_NO_MAP_INFO] [OPT_ONLY_STEP_INTERVAL] [OPT_ONLY_NUMBER_OF_MAPS] [OPT_ONLY_MAP_NAMES] [OPT_ONLY_METADATA] [OPT_ONLY_CIFTI_XML] [OPT_CZI] [OPT_CZI_ALL_SUB_BLOCKS] [OPT_CZI_XML]",
+  "command-line": "wb_command -file-information [DATA_FILE] [OPT_NO_MAP_INFO] [OPT_ONLY_STEP_INTERVAL] [OPT_ONLY_NUMBER_OF_MAPS] [OPT_ONLY_MAP_NAMES] [OPT_ONLY_METADATA] [OPT_KEY_KEY] [OPT_ONLY_CIFTI_XML] [OPT_CZI] [OPT_CZI_ALL_SUB_BLOCKS] [OPT_CZI_XML]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "LIST INFORMATION ABOUT A FILE'S CONTENT.\n\nList information about the content of a data file.  Only one -only option may be specified.  The information listed when no -only option is present is dependent upon the type of data file.\n\nLibrary paths:\n   /usr/lib/x86_64-linux-gnu/qt5/plugins\n   /mnt/c/Users/floru/Projects/cmi/workbench/build/CommandLine\n\n\nFile and extensions for reading and writing:\n   Annotation: wb_annot\n   Annotation Text Substitution: wb_annsub.csv\n   Border: border, wb_border\n   CIFTI - Dense: dconn.nii\n   CIFTI - Dense Label: dlabel.nii\n   CIFTI - Dense Parcel: dpconn.nii\n   CIFTI - Dense Scalar: dscalar.nii\n   CIFTI - Dense Data Series: dtseries.nii\n   CIFTI - Fiber Orientations TEMPORARY: fiberTEMP.nii\n   CIFTI - Fiber Trajectory TEMPORARY: trajTEMP.wbsparse\n   CIFTI - Parcel: pconn.nii\n   CIFTI - Parcel Dense: pdconn.nii\n   CIFTI - Parcel Label: plabel.nii\n   CIFTI - Parcel Scalar: pscalar.nii\n   CIFTI - Parcel Series: ptseries.nii\n   CIFTI - Scalar Data Series: sdseries.nii\n   CZI Image: czi\n   Foci: foci, wb_foci\n   Histology Slices: metaczi, meta-image\n   Image Read: bmp, gif, jpeg, jpg, png, ppm\n        Write: bmp, jpeg, jpg, png, ppm\n   Label: label.gii\n   Metric: func.gii, shape.gii\n   Palette: palette, wb_palette\n   RGBA: rgba.gii\n   Samples: wb_samples\n   Scene: scene, wb_scene\n   Specification: spec, wb_spec\n   Surface: surf.gii\n   Volume: nii, nii.gz\n",
+  "description": "List information about a file's content.\n\nList information about the content of a data file.  Only one -only option may be specified.  The information listed when no -only option is present is dependent upon the type of data file.\n\nLibrary paths:\n   /usr/lib/x86_64-linux-gnu/qt5/plugins\n   /mnt/c/Users/floru/Projects/cmi/workbench/build/CommandLine\n\n\nFile and extensions for reading and writing:\n   Annotation: wb_annot\n   Annotation Text Substitution: wb_annsub.csv\n   Border: border, wb_border\n   CIFTI - Dense: dconn.nii\n   CIFTI - Dense Label: dlabel.nii\n   CIFTI - Dense Parcel: dpconn.nii\n   CIFTI - Dense Scalar: dscalar.nii\n   CIFTI - Dense Data Series: dtseries.nii\n   CIFTI - Fiber Orientations TEMPORARY: fiberTEMP.nii\n   CIFTI - Fiber Trajectory TEMPORARY: trajTEMP.wbsparse\n   CIFTI - Parcel: pconn.nii\n   CIFTI - Parcel Dense: pdconn.nii\n   CIFTI - Parcel Label: plabel.nii\n   CIFTI - Parcel Scalar: pscalar.nii\n   CIFTI - Parcel Series: ptseries.nii\n   CIFTI - Scalar Data Series: sdseries.nii\n   CZI Image: czi\n   Foci: foci, wb_foci\n   Histology Slices: metaczi, meta-image\n   Image Read: bmp, gif, jpeg, jpg, png, ppm\n        Write: bmp, jpeg, jpg, png, ppm\n   Label: label.gii\n   Metric: func.gii, shape.gii\n   Palette: palette, wb_palette\n   RGBA: rgba.gii\n   Samples: wb_samples\n   Scene: scene, wb_scene\n   Specification: spec, wb_spec\n   Surface: surf.gii\n   Volume: nii, nii.gz\n",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,9 +15,9 @@
       "id": "data_file",
       "name": "data_file",
       "description": "data file",
-      "type": "String",
       "optional": false,
-      "value-key": "[DATA_FILE]"
+      "value-key": "[DATA_FILE]",
+      "type": "String"
     },
     {
       "id": "opt_no_map_info",
@@ -63,6 +63,15 @@
       "type": "Flag",
       "optional": true,
       "value-key": "[OPT_ONLY_METADATA]"
+    },
+    {
+      "id": "opt_key_key",
+      "name": "opt_key_key",
+      "command-line-flag": "-key",
+      "description": "only print the metadata for one key, with no formatting: the metadata key",
+      "optional": true,
+      "value-key": "[OPT_KEY_KEY]",
+      "type": "String"
     },
     {
       "id": "opt_only_cifti_xml",

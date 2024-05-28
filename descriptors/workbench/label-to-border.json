@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -label-to-border [SURFACE] [LABEL_IN] [BORDER_OUT] [OPT_PLACEMENT_FRACTION] [OPT_COLUMN_COLUMN]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "DRAW BORDERS AROUND LABELS.\n\nFor each label, finds all edges on the mesh that cross the boundary of the label, and draws borders through them.  By default, this is done on all columns in the input file, using the map name as the class name for the border.",
+  "description": "Draw borders around labels.\n\nFor each label, finds all edges on the mesh that cross the boundary of the label, and draws borders through them.  By default, this is done on all columns in the input file, using the map name as the class name for the border.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,43 +15,44 @@
       "id": "surface",
       "name": "surface",
       "description": "the surface to use for neighbor information",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE]"
+      "value-key": "[SURFACE]",
+      "type": "File"
     },
     {
       "id": "label_in",
       "name": "label_in",
       "description": "the input label file",
-      "type": "File",
       "optional": false,
-      "value-key": "[LABEL_IN]"
+      "value-key": "[LABEL_IN]",
+      "type": "File"
     },
     {
       "id": "border_out",
       "name": "border_out",
       "description": "the output border file",
-      "type": "File",
       "optional": false,
-      "value-key": "[BORDER_OUT]"
+      "value-key": "[BORDER_OUT]",
+      "type": "File"
     },
     {
       "id": "opt_placement_fraction",
       "name": "opt_placement_fraction",
       "command-line-flag": "-placement",
       "description": "set how far along the edge border points are drawn: fraction along edge from inside vertex (default 0.33)",
-      "type": "Number",
       "optional": true,
-      "value-key": "[OPT_PLACEMENT_FRACTION]"
+      "value-key": "[OPT_PLACEMENT_FRACTION]",
+      "type": "Number",
+      "integer": false
     },
     {
       "id": "opt_column_column",
       "name": "opt_column_column",
       "command-line-flag": "-column",
       "description": "select a single column: the column number or name",
-      "type": "String",
       "optional": true,
-      "value-key": "[OPT_COLUMN_COLUMN]"
+      "value-key": "[OPT_COLUMN_COLUMN]",
+      "type": "String"
     }
   ],
   "output-files": [

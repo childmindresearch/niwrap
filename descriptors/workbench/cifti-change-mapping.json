@@ -2,12 +2,12 @@
   "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
   "name": "cifti-change-mapping",
   "author": "Washington University School of Medicin",
-  "command-line": "wb_command -cifti-change-mapping [DATA_CIFTI] [DIRECTION] [CIFTI_OUT] [OPT_SCALAR]",
+  "command-line": "wb_command -cifti-change-mapping [DATA_CIFTI] [DIRECTION] [CIFTI_OUT] [SERIES] [OPT_SCALAR] [OPT_NAME_FILE_FILE] [FROM_CIFTI]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "CONVERT TO SCALAR, COPY MAPPING, ETC.\n\nTake an existing cifti file and change one of the mappings.  Exactly one of -series, -scalar, or -from-cifti must be specified.  The direction can be either an integer starting from 1, or the strings 'ROW' or 'COLUMN'.\n\nThe argument to -unit must be one of the following:\n\nSECOND\nHERTZ\nMETER\nRADIAN",
+  "description": "Convert to scalar, copy mapping, etc.\n\nTake an existing cifti file and change one of the mappings.  Exactly one of -series, -scalar, or -from-cifti must be specified.  The direction can be either an integer starting from 1, or the strings 'ROW' or 'COLUMN'.\n\nThe argument to -unit must be one of the following:\n\nSECOND\nHERTZ\nMETER\nRADIAN",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,25 +15,51 @@
       "id": "data_cifti",
       "name": "data_cifti",
       "description": "the cifti file to use the data from",
-      "type": "File",
       "optional": false,
-      "value-key": "[DATA_CIFTI]"
+      "value-key": "[DATA_CIFTI]",
+      "type": "File"
     },
     {
       "id": "direction",
       "name": "direction",
       "description": "which direction on <data-cifti> to replace the mapping",
-      "type": "String",
       "optional": false,
-      "value-key": "[DIRECTION]"
+      "value-key": "[DIRECTION]",
+      "type": "String"
     },
     {
       "id": "cifti_out",
       "name": "cifti_out",
       "description": "the output cifti file",
-      "type": "File",
       "optional": false,
-      "value-key": "[CIFTI_OUT]"
+      "value-key": "[CIFTI_OUT]",
+      "type": "File"
+    },
+    {
+      "id": "series",
+      "name": "series",
+      "description": "set the mapping to series",
+      "command-line-flag": "-series",
+      "type": {
+        "id": "series",
+        "name": "series",
+        "description": "set the mapping to series",
+        "command-line": " [OPT_UNIT_UNIT]",
+        "inputs": [
+          {
+            "id": "opt_unit_unit",
+            "name": "opt_unit_unit",
+            "command-line-flag": "-unit",
+            "description": "select unit for series (default SECOND): unit identifier",
+            "optional": true,
+            "value-key": "[OPT_UNIT_UNIT]",
+            "type": "String"
+          }
+        ]
+      },
+      "optional": true,
+      "value-key": "[SERIES]",
+      "list": false
     },
     {
       "id": "opt_scalar",
@@ -43,6 +69,30 @@
       "type": "Flag",
       "optional": true,
       "value-key": "[OPT_SCALAR]"
+    },
+    {
+      "id": "opt_name_file_file",
+      "name": "opt_name_file_file",
+      "command-line-flag": "-name-file",
+      "description": "specify names for the maps: text file containing map names, one per line",
+      "optional": true,
+      "value-key": "[OPT_NAME_FILE_FILE]",
+      "type": "String"
+    },
+    {
+      "id": "from_cifti",
+      "name": "from_cifti",
+      "description": "copy mapping from another cifti file",
+      "command-line-flag": "-from-cifti",
+      "type": {
+        "id": "from_cifti",
+        "name": "from_cifti",
+        "description": "copy mapping from another cifti file",
+        "command-line": ""
+      },
+      "optional": true,
+      "value-key": "[FROM_CIFTI]",
+      "list": false
     }
   ],
   "output-files": [

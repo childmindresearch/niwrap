@@ -4,10 +4,10 @@
   "author": "Washington University School of Medicin",
   "command-line": "wb_command -surface-information [SURFACE_FILE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "description": "DISPLAY INFORMATION ABOUT A SURFACE.\n\nInformation about surface is displayed including vertices, \ntriangles, bounding box, and spacing.",
+  "description": "Display information about a surface.\n\nInformation about surface is displayed including vertices, \ntriangles, bounding box, and spacing.",
   "schema-version": "0.5",
   "tags": {},
   "inputs": [
@@ -15,9 +15,9 @@
       "id": "surface_file",
       "name": "surface_file",
       "description": "Surface for which information is displayed",
-      "type": "File",
       "optional": false,
-      "value-key": "[SURFACE_FILE]"
+      "value-key": "[SURFACE_FILE]",
+      "type": "File"
     }
   ]
 }
