@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 GIFTI_LABEL_TO_ROI_METADATA = Metadata(
-    id="4ac6d01d43e14cd0825e0f573af2974e90b8be9f",
+    id="8ed85b99cf4ebdc19a60f587b8920c782339a1ce",
     name="gifti-label-to-roi",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,14 +29,14 @@ def gifti_label_to_roi(
     label_in: InputPathType,
     metric_out: InputPathType,
     opt_name_label_name: str | None = None,
-    opt_key_label_key: float | int | None = None,
+    opt_key_label_key: int | None = None,
     opt_map_map: str | None = None,
     runner: Runner = None,
 ) -> GiftiLabelToRoiOutputs:
     """
     gifti-label-to-roi by Washington University School of Medicin.
     
-    MAKE A GIFTI LABEL INTO AN ROI METRIC.
+    Make a gifti label into an roi metric.
     
     For each map in <label-in>, a map is created in <metric-out> where all
     locations labeled with <label-name> or with a key of <label-key> are given a

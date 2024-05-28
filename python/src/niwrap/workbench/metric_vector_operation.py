@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_VECTOR_OPERATION_METADATA = Metadata(
-    id="bd0b320fcbfb511b5e2f3a680a754ad787c2287c",
+    id="27bde668dd4a07828ba62ded018123819a06bde1",
     name="metric-vector-operation",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,7 +39,7 @@ def metric_vector_operation(
     """
     metric-vector-operation by Washington University School of Medicin.
     
-    DO A VECTOR OPERATION ON METRIC FILES.
+    Do a vector operation on metric files.
     
     Does a vector operation on two metric files (that must have a multiple of 3
     columns). Either of the inputs may have multiple vectors (more than 3

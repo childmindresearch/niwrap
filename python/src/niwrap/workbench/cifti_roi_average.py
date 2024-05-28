@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_ROI_AVERAGE_METADATA = Metadata(
-    id="669c1e1460f549b8e3830033399acbd2fca9334f",
+    id="bd3ef39d6435b0868a5924ccc4268c09a881c62f",
     name="cifti-roi-average",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,7 +36,7 @@ def cifti_roi_average(
     """
     cifti-roi-average by Washington University School of Medicin.
     
-    AVERAGE ROWS IN A SINGLE CIFTI FILE.
+    Average rows in a single cifti file.
     
     Average the rows that are within the specified ROIs, and write the resulting
     average row to a text file, separated by newlines. If -cifti-roi is

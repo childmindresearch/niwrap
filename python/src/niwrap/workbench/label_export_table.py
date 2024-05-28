@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 LABEL_EXPORT_TABLE_METADATA = Metadata(
-    id="50b60f52988dae7ee8c9ffae8b24abd6170fb709",
+    id="5e1c16886ed18d91840f3624b88f0cea0dd45d60",
     name="label-export-table",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,7 +31,7 @@ def label_export_table(
     """
     label-export-table by Washington University School of Medicin.
     
-    EXPORT LABEL TABLE FROM GIFTI AS TEXT.
+    Export label table from gifti as text.
     
     Takes the label table from the gifti label file, and writes it to a text
     format matching what is expected by -metric-label-import.

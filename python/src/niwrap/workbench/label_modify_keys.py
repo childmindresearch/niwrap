@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 LABEL_MODIFY_KEYS_METADATA = Metadata(
-    id="961a28d090cd88e3cf02b1df61b5d302fee8f83e",
+    id="d58bb59afff89ddf98a79d1f70964b0a5cab47e0",
     name="label-modify-keys",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def label_modify_keys(
     """
     label-modify-keys by Washington University School of Medicin.
     
-    CHANGE KEY VALUES IN A LABEL FILE.
+    Change key values in a label file.
     
     <remap-file> should have lines of the form 'oldkey newkey', like so:
     

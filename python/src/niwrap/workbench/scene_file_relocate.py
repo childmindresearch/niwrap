@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SCENE_FILE_RELOCATE_METADATA = Metadata(
-    id="00a8e7ccecb19517ddf0abce8e2bba12198b7942",
+    id="d493b0df318d30ea6990e3b45d8039d30b5657c6",
     name="scene-file-relocate",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,7 +31,7 @@ def scene_file_relocate(
     """
     scene-file-relocate by Washington University School of Medicin.
     
-    RECREATE SCENE FILE IN NEW LOCATION.
+    Recreate scene file in new location.
     
     Scene files contain internal relative paths, such that moving or copying a
     scene file will cause it to lose track of the files it refers to. This

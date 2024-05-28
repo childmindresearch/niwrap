@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_LABEL_PROBABILITY_METADATA = Metadata(
-    id="038551e4acd1c3404c8269c1ef741afeddca6d17",
+    id="e43d37fd5a640c812f6bd48c8ee4a67decd06f70",
     name="cifti-label-probability",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def cifti_label_probability(
     """
     cifti-label-probability by Washington University School of Medicin.
     
-    FIND FREQUENCY OF CIFTI LABELS.
+    Find frequency of cifti labels.
     
     This command outputs a set of soft ROIs, one for each label in the input,
     where the value is how many of the input maps had that label at that

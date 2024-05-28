@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_LABEL_IMPORT_METADATA = Metadata(
-    id="80a9f467d099de8121c45581fd8ab22118a67fe8",
+    id="bb7743f4d5d3cb10594509f9a34cdd9ffe991cd3",
     name="cifti-label-import",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,14 +30,14 @@ def cifti_label_import(
     label_list_file: str,
     output: InputPathType,
     opt_discard_others: bool = False,
-    opt_unlabeled_value_value: float | int | None = None,
+    opt_unlabeled_value_value: int | None = None,
     opt_drop_unused_labels: bool = False,
     runner: Runner = None,
 ) -> CiftiLabelImportOutputs:
     """
     cifti-label-import by Washington University School of Medicin.
     
-    MAKE A CIFTI LABEL FILE FROM A CIFTI FILE.
+    Make a cifti label file from a cifti file.
     
     Creates a cifti label file from a cifti file with label-like values. You may
     specify the empty string (use "") for <label-list-file>, which will be

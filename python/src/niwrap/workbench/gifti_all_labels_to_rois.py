@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 GIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="7efca4d903e97865a2de5f635455f069c26b4441",
+    id="d1547db7fbb091c87cc381294f4468c7d6ee8259",
     name="gifti-all-labels-to-rois",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def gifti_all_labels_to_rois(
     """
     gifti-all-labels-to-rois by Washington University School of Medicin.
     
-    MAKE ROIS FROM ALL LABELS IN A GIFTI COLUMN.
+    Make rois from all labels in a gifti column.
     
     The output metric file has a column for each label in the specified input
     map, other than the ??? label, each of which contains an ROI of all vertices

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 LABEL_DILATE_METADATA = Metadata(
-    id="bbcfd5742b8f0dd7bf37ff905fbd1385e71671e5",
+    id="553c9cdc59042dcf72c087b7549d5551831e7256",
     name="label-dilate",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,7 +38,7 @@ def label_dilate(
     """
     label-dilate by Washington University School of Medicin.
     
-    DILATE A LABEL FILE.
+    Dilate a label file.
     
     Fills in label information for all vertices designated as bad, up to the
     specified distance away from other labels. If -bad-vertex-roi is specified,

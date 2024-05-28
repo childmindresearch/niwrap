@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_CREATE_SPHERE_METADATA = Metadata(
-    id="bbe966fe6542fccf652572c8d45adcafdcc6cb7a",
+    id="26a650100823264e2bda8551b43068b46358c62f",
     name="surface-create-sphere",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,14 +26,14 @@ class SurfaceCreateSphereOutputs(typing.NamedTuple):
 
 
 def surface_create_sphere(
-    num_vertices: float | int,
+    num_vertices: int,
     sphere_out: InputPathType,
     runner: Runner = None,
 ) -> SurfaceCreateSphereOutputs:
     """
     surface-create-sphere by Washington University School of Medicin.
     
-    GENERATE A SPHERE WITH CONSISTENT VERTEX AREAS.
+    Generate a sphere with consistent vertex areas.
     
     Generates a sphere by regularly dividing the triangles of an icosahedron, to
     come as close to the desired number of vertices as possible, and modifying

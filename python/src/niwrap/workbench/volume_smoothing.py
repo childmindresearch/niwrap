@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_SMOOTHING_METADATA = Metadata(
-    id="66f5f4e076e810dab6414414c93abe661c3d0884",
+    id="df34c342d98389005c2fbe860cb92d2eb0e19405",
     name="volume-smoothing",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,7 +38,7 @@ def volume_smoothing(
     """
     volume-smoothing by Washington University School of Medicin.
     
-    SMOOTH A VOLUME FILE.
+    Smooth a volume file.
     
     Gaussian smoothing for volumes. By default, smooths all subvolumes with no
     ROI, if ROI is given, only positive voxels in the ROI volume have their

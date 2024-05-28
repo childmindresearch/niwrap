@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_ROIS_FROM_EXTREMA_METADATA = Metadata(
-    id="d8f7471b62bf03db97dc9d969b2ec83ecf405064",
+    id="5ea2d9e893fe62547d5a74a2d8ab70f6d99035be",
     name="metric-rois-from-extrema",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,7 +39,7 @@ def metric_rois_from_extrema(
     """
     metric-rois-from-extrema by Washington University School of Medicin.
     
-    CREATE METRIC ROI MAPS FROM EXTREMA MAPS.
+    Create metric roi maps from extrema maps.
     
     For each nonzero value in each map, make a map with an ROI around that
     location. If the -gaussian option is specified, then normalized gaussian

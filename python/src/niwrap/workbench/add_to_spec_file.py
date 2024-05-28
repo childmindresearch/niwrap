@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 ADD_TO_SPEC_FILE_METADATA = Metadata(
-    id="1b71f2465528a4a1812b3c5b7ec4a85071bf9396",
+    id="fba7b8da42e9d7aa382689587036d60e92241cb4",
     name="add-to-spec-file",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +32,7 @@ def add_to_spec_file(
     """
     add-to-spec-file by Washington University School of Medicin.
     
-    ADD A FILE TO A SPECIFICATION FILE.
+    Add a file to a specification file.
     
     The resulting spec file overwrites the existing spec file. If the spec file
     doesn't exist, it is created with default metadata. The structure argument

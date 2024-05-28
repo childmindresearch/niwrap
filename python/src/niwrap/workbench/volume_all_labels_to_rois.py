@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="6f9daa807160b730014f1f84aa28de77a42e1b78",
+    id="1a228c317bc85c474029f5c5ed5bdae11cc081a7",
     name="volume-all-labels-to-rois",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def volume_all_labels_to_rois(
     """
     volume-all-labels-to-rois by Washington University School of Medicin.
     
-    MAKE ROIS FROM ALL LABELS IN A VOLUME FRAME.
+    Make rois from all labels in a volume frame.
     
     The output volume has a frame for each label in the specified input frame,
     other than the ??? label, each of which contains an ROI of all voxels that

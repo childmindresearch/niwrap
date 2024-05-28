@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METADATA_REMOVE_PROVENANCE_METADATA = Metadata(
-    id="d51b25e9a6ce386de9664aa93065196329f3ebbb",
+    id="44f98a54a9edff1763ec9491c845b2141c304315",
     name="metadata-remove-provenance",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,7 +31,7 @@ def metadata_remove_provenance(
     """
     metadata-remove-provenance by Washington University School of Medicin.
     
-    REMOVE PROVENANCE INFORMATION FROM FILE METADATA.
+    Remove provenance information from file metadata.
     
     Removes the provenance metadata fields added by workbench during processing.
     

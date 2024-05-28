@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_RESTRICT_DENSE_MAP_METADATA = Metadata(
-    id="6ddb386b0d5115f7c0e0f30bc0393135818f3b3b",
+    id="35c0ca3876581f51bc2ae9c1bb36d52b9ba59507",
     name="cifti-restrict-dense-map",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,7 +39,7 @@ def cifti_restrict_dense_map(
     """
     cifti-restrict-dense-map by Washington University School of Medicin.
     
-    EXCLUDE BRAINORDINATES FROM A CIFTI FILE.
+    Exclude brainordinates from a cifti file.
     
     Writes a modified version of <cifti-in>, where all brainordinates outside
     the specified roi(s) are removed from the file. The direction can be either

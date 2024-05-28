@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_VECTOR_OPERATION_METADATA = Metadata(
-    id="ff11b340ffc020aa1acf61387a975cfc58854f92",
+    id="596ebe0b9ad0624f5b7f76e8717a43652e8b09e2",
     name="cifti-vector-operation",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,7 +39,7 @@ def cifti_vector_operation(
     """
     cifti-vector-operation by Washington University School of Medicin.
     
-    DO A VECTOR OPERATION ON CIFTI FILES.
+    Do a vector operation on cifti files.
     
     Does a vector operation on two cifti files (that must have a multiple of 3
     columns). Either of the inputs may have multiple vectors (more than 3

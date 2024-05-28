@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA = Metadata(
-    id="d42f3b9ed36b24587efcd30975bfca8a1bee4ca0",
+    id="caeaed530c7c13609bae383f92440d35ff909ef0",
     name="surface-sphere-triangular-patches",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,14 +25,14 @@ class SurfaceSphereTriangularPatchesOutputs(typing.NamedTuple):
 
 def surface_sphere_triangular_patches(
     sphere: InputPathType,
-    divisions: float | int,
+    divisions: int,
     text_out: str,
     runner: Runner = None,
 ) -> SurfaceSphereTriangularPatchesOutputs:
     """
     surface-sphere-triangular-patches by Washington University School of Medicin.
     
-    DIVIDE STANDARD SPHERE INTO PATCHES.
+    Divide standard sphere into patches.
     
     Divide the given undistorted sphere into equally-sized triangular patches.
     Patches overlap by a border of 1 vertex.

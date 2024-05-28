@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_REORIENT_METADATA = Metadata(
-    id="fbf2633e180668b959ef4006c34d31b5739be501",
+    id="30b762a32e3b61cc03d012be0fbeb6d571564759",
     name="volume-reorient",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +32,7 @@ def volume_reorient(
     """
     volume-reorient by Washington University School of Medicin.
     
-    CHANGE VOXEL ORDER OF A VOLUME FILE.
+    Change voxel order of a volume file.
     
     Changes the voxel order and the header spacing/origin information such that
     the value of any spatial point is unchanged. Orientation strings look like

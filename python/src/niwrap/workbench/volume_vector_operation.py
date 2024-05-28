@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_VECTOR_OPERATION_METADATA = Metadata(
-    id="d428250905ad6db73c68a9e916cbc177597ee718",
+    id="3b82c58c375a19b1de1d8fa2e188595d84f12b8e",
     name="volume-vector-operation",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,7 +39,7 @@ def volume_vector_operation(
     """
     volume-vector-operation by Washington University School of Medicin.
     
-    DO A VECTOR OPERATION ON VOLUME FILES.
+    Do a vector operation on volume files.
     
     Does a vector operation on two volume files (that must have a multiple of 3
     subvolumes). Either of the inputs may have multiple vectors (more than 3

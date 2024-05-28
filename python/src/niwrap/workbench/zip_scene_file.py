@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 ZIP_SCENE_FILE_METADATA = Metadata(
-    id="82547db09c2958f5df5064ed3a0f4d79af8b7f31",
+    id="e016ec5fe97359057dec0f0cd29cbfe79cbd99fc",
     name="zip-scene-file",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def zip_scene_file(
     """
     zip-scene-file by Washington University School of Medicin.
     
-    ZIP A SCENE FILE AND ITS DATA FILES.
+    Zip a scene file and its data files.
     
     If zip-file already exists, it will be overwritten. If -base-dir is not
     specified, the base directory will be automatically set to the lowest level

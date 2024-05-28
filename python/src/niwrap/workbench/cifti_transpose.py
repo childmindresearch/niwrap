@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_TRANSPOSE_METADATA = Metadata(
-    id="6ffc7a423c8a06509ed552536c929cc1ebe31375",
+    id="036b8702c701d8b9e1b9372c1f493051a1af64d9",
     name="cifti-transpose",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def cifti_transpose(
     """
     cifti-transpose by Washington University School of Medicin.
     
-    TRANSPOSE A CIFTI FILE.
+    Transpose a cifti file.
     
     The input must be a 2-dimensional cifti file. The output is a cifti file
     where every row in the input is a column in the output.

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 BACKEND_AVERAGE_DENSE_ROI_METADATA = Metadata(
-    id="636c2d8c5fef1ea15715dad85b98f4cfd6a352dc",
+    id="74fb9930a431b065bf26022dec1298f67f6cfc8f",
     name="backend-average-dense-roi",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,7 +31,7 @@ def backend_average_dense_roi(
     """
     backend-average-dense-roi by Washington University School of Medicin.
     
-    CONNECTOME DB BACKEND COMMAND FOR CIFTI AVERAGE DENSE ROI.
+    Connectome db backend command for cifti average dense roi.
     
     This command is probably not the one you are looking for, try
     -cifti-average-dense-roi. It takes the list of cifti files to average from

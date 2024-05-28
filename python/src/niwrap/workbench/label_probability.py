@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 LABEL_PROBABILITY_METADATA = Metadata(
-    id="f4361e3a5ea4ff9b134bba2beecc51b71ef9fb94",
+    id="25d79bf1b049f288a3d90b70022b5bc194d1a107",
     name="label-probability",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def label_probability(
     """
     label-probability by Washington University School of Medicin.
     
-    FIND FREQUENCY OF SURFACE LABELS.
+    Find frequency of surface labels.
     
     This command outputs a set of soft ROIs, one for each label in the input,
     where the value is how many of the input maps had that label at that vertex,

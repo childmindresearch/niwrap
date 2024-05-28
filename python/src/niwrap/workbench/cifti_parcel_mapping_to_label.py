@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA = Metadata(
-    id="a1fd778c5bc3b0ad733e5b5d3eff6d13777340db",
+    id="c3a8f182e30d89d3443bff348c9890510b0da2d3",
     name="cifti-parcel-mapping-to-label",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def cifti_parcel_mapping_to_label(
     """
     cifti-parcel-mapping-to-label by Washington University School of Medicin.
     
-    CREATE DLABEL FROM PARCELLATED FILE.
+    Create dlabel from parcellated file.
     
     This command will output a dlabel file, useful for doing the same
     parcellation to another dense file.

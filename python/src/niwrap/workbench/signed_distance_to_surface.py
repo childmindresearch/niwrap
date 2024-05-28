@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SIGNED_DISTANCE_TO_SURFACE_METADATA = Metadata(
-    id="776faeacd8f65f9e804110ff539f906d0c75dd79",
+    id="101f856124be8c1c8873ee90748f97dab57cf829",
     name="signed-distance-to-surface",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def signed_distance_to_surface(
     """
     signed-distance-to-surface by Washington University School of Medicin.
     
-    COMPUTE SIGNED DISTANCE FROM ONE SURFACE TO ANOTHER.
+    Compute signed distance from one surface to another.
     
     Compute the signed distance function of the reference surface at every
     vertex on the comparison surface. NOTE: this relation is NOT symmetric, the

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 BORDER_RESAMPLE_METADATA = Metadata(
-    id="504abad4dcd048f0853a279f46dc1ccd1a441a70",
+    id="dcf50944d51a5fcf1cab3e6713921217840d5753",
     name="border-resample",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def border_resample(
     """
     border-resample by Washington University School of Medicin.
     
-    RESAMPLE A BORDER FILE TO A DIFFERENT MESH.
+    Resample a border file to a different mesh.
     
     Resamples a border file, given two spherical surfaces that are in register.
     Only borders that have the same structure as current-sphere will be

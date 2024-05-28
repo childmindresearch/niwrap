@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_COORDINATES_TO_METRIC_METADATA = Metadata(
-    id="d1bafb9bfeb6ff7bad4caed14df1ad62e14a5cab",
+    id="48c46c3880e1b5252ccc2b576c2747362c23470c",
     name="surface-coordinates-to-metric",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +33,7 @@ def surface_coordinates_to_metric(
     """
     surface-coordinates-to-metric by Washington University School of Medicin.
     
-    MAKE METRIC FILE OF SURFACE COORDINATES.
+    Make metric file of surface coordinates.
     
     Puts the coordinates of the surface into a 3-map metric file, as x, y, z.
     

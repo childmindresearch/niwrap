@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_COPY_EXTENSIONS_METADATA = Metadata(
-    id="f972fa77b35d122c3070d721e78cb11504df9401",
+    id="058f201b7856523c9b46ef6d392b55aa711ab1c9",
     name="volume-copy-extensions",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def volume_copy_extensions(
     """
     volume-copy-extensions by Washington University School of Medicin.
     
-    COPY EXTENDED DATA TO ANOTHER VOLUME FILE.
+    Copy extended data to another volume file.
     
     This command copies the information in a volume file that isn't a critical
     part of the standard header or data matrix, e.g. map names, palette

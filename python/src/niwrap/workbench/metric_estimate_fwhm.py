@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_ESTIMATE_FWHM_METADATA = Metadata(
-    id="3e54d83010c650c51f64cd1581b771b9cb5b1edb",
+    id="0979a6909806aedc9eb064754b10178d219e3382",
     name="metric-estimate-fwhm",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,12 +29,13 @@ def metric_estimate_fwhm(
     opt_roi_roi_metric: InputPathType | None = None,
     opt_column_column: str | None = None,
     opt_whole_file: bool = False,
+    opt_demean: bool = False,
     runner: Runner = None,
 ) -> MetricEstimateFwhmOutputs:
     """
     metric-estimate-fwhm by Washington University School of Medicin.
     
-    ESTIMATE FWHM SMOOTHNESS OF A METRIC FILE.
+    Estimate fwhm smoothness of a metric file.
     
     Estimates the smoothness of the metric columns, printing the estimates to
     standard output. These estimates ignore variation in vertex spacing.
@@ -48,6 +49,7 @@ def metric_estimate_fwhm(
             column number or name
         opt_whole_file: estimate for the whole file at once, not each column
             separately
+        opt_demean: subtract the mean image before estimating smoothness
         runner: Command runner
     Returns:
         NamedTuple of outputs (described in `MetricEstimateFwhmOutputs`).
@@ -65,6 +67,8 @@ def metric_estimate_fwhm(
         cargs.extend(["-column", opt_column_column])
     if opt_whole_file:
         cargs.append("-whole-file")
+    if opt_demean:
+        cargs.append("-demean")
     ret = MetricEstimateFwhmOutputs(
         root=execution.output_file("."),
     )

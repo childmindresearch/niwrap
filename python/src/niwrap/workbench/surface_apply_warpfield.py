@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_APPLY_WARPFIELD_METADATA = Metadata(
-    id="53317c75ffa21bb0cf2681a0839af8212bf67ba3",
+    id="92c9248f62ba1e7f86bf03e4aae2762371217248",
     name="surface-apply-warpfield",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def surface_apply_warpfield(
     """
     surface-apply-warpfield by Washington University School of Medicin.
     
-    APPLY WARPFIELD TO SURFACE FILE.
+    Apply warpfield to surface file.
     
     NOTE: warping a surface requires the INVERSE of the warpfield used to warp
     the volume it lines up with. The header of the forward warp is needed by the

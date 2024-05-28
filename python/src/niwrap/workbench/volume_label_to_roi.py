@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_LABEL_TO_ROI_METADATA = Metadata(
-    id="81610189040429807ca3a4c1c02803de848ef274",
+    id="d909157b7d74800169717407257d32236367f775",
     name="volume-label-to-roi",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,14 +29,14 @@ def volume_label_to_roi(
     label_in: InputPathType,
     volume_out: InputPathType,
     opt_name_label_name: str | None = None,
-    opt_key_label_key: float | int | None = None,
+    opt_key_label_key: int | None = None,
     opt_map_map: str | None = None,
     runner: Runner = None,
 ) -> VolumeLabelToRoiOutputs:
     """
     volume-label-to-roi by Washington University School of Medicin.
     
-    MAKE A VOLUME LABEL INTO AN ROI VOLUME.
+    Make a volume label into an roi volume.
     
     For each map in <label-in>, a map is created in <volume-out> where all
     locations labeled with <label-name> or with a key of <label-key> are given a

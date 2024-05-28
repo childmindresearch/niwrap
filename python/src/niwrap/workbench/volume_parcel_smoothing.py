@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_PARCEL_SMOOTHING_METADATA = Metadata(
-    id="14bd25d6b2453b4cb4fbe39a38d0450263b21f35",
+    id="473bb04cdac613bfc3c44905ff2f6071ecb2ae6e",
     name="volume-parcel-smoothing",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,7 +38,7 @@ def volume_parcel_smoothing(
     """
     volume-parcel-smoothing by Washington University School of Medicin.
     
-    SMOOTH PARCELS IN A VOLUME SEPARATELY.
+    Smooth parcels in a volume separately.
     
     The volume is smoothed within each label in the label volume using data only
     from within the label. Equivalent to running volume smoothing with ROIs

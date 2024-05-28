@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_LABEL_EXPORT_TABLE_METADATA = Metadata(
-    id="ca679a1552e3c6e4850cd1c2d45b7b105c2d702f",
+    id="612ca61b4ba12319d159b362f67119fef7cf0f1c",
     name="cifti-label-export-table",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +32,7 @@ def cifti_label_export_table(
     """
     cifti-label-export-table by Washington University School of Medicin.
     
-    EXPORT LABEL TABLE FROM CIFTI AS TEXT.
+    Export label table from cifti as text.
     
     Takes the label table from the cifti label map, and writes it to a text
     format matching what is expected by -cifti-label-import.

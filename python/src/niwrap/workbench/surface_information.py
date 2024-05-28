@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_INFORMATION_METADATA = Metadata(
-    id="4cdda12b9e875bcb72cbdad68225805c8fb4fb92",
+    id="914eeea3443bfe03b0f42698d096b6f92dbfaa1a",
     name="surface-information",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,7 +30,7 @@ def surface_information(
     """
     surface-information by Washington University School of Medicin.
     
-    DISPLAY INFORMATION ABOUT A SURFACE.
+    Display information about a surface.
     
     Information about surface is displayed including vertices,
     triangles, bounding box, and spacing.

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_LABEL_MODIFY_KEYS_METADATA = Metadata(
-    id="546e3babf05e69949c2e689fe6c05e3566c17bde",
+    id="28c180be0b1b98876ec5e2ee12f9f159ae157d88",
     name="volume-label-modify-keys",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def volume_label_modify_keys(
     """
     volume-label-modify-keys by Washington University School of Medicin.
     
-    CHANGE KEY VALUES IN A VOLUME LABEL FILE.
+    Change key values in a volume label file.
     
     <remap-file> should have lines of the form 'oldkey newkey', like so:
     

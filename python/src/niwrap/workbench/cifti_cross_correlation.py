@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_CROSS_CORRELATION_METADATA = Metadata(
-    id="f9ea2a33df4edc037bd4eeef3deb2cf147d06eed",
+    id="fc07303dcd6b9f08ee2adc8e28f051912664067d",
     name="cifti-cross-correlation",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,7 +37,7 @@ def cifti_cross_correlation(
     """
     cifti-cross-correlation by Washington University School of Medicin.
     
-    CORRELATE A CIFTI FILE WITH ANOTHER CIFTI FILE.
+    Correlate a cifti file with another cifti file.
     
     Correlates every row in <cifti-a> with every row in <cifti-b>. The mapping
     along columns in <cifti-b> becomes the mapping along rows in the output.

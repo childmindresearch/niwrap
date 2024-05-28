@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA = Metadata(
-    id="474e2dcf619af924821f842ff444ba6a85089383",
+    id="6bfad3845bc8d36324dcb9e096fe783ed3ef330e",
     name="surface-sphere-project-unproject",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def surface_sphere_project_unproject(
     """
     surface-sphere-project-unproject by Washington University School of Medicin.
     
-    COPY REGISTRATION DEFORMATIONS TO DIFFERENT SPHERE.
+    Copy registration deformations to different sphere.
     
     Background: A surface registration starts with an input sphere, and moves
     its vertices around on the sphere until it matches the template data. This

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 BACKEND_AVERAGE_ROI_CORRELATION_METADATA = Metadata(
-    id="b2b0ca6503fe3f9ce6b2130d105d269329e5ed51",
+    id="2baddc4c3d355a41fdd825bd07430cef65c542e0",
     name="backend-average-roi-correlation",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,7 +31,7 @@ def backend_average_roi_correlation(
     """
     backend-average-roi-correlation by Washington University School of Medicin.
     
-    CONNECTOME DB BACKEND COMMAND FOR CIFTI AVERAGE ROI CORRELATION.
+    Connectome db backend command for cifti average roi correlation.
     
     This command is probably not the one you are looking for, try
     -cifti-average-roi-correlation. It takes the list of cifti files to average

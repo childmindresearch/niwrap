@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="971fab6c3f79f23c354f23fd982c5ba7a4a7238b",
+    id="268c7ef7d14b79f70aa6a8d31c2b572ca2153713",
     name="cifti-all-labels-to-rois",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def cifti_all_labels_to_rois(
     """
     cifti-all-labels-to-rois by Washington University School of Medicin.
     
-    MAKE ROIS FROM ALL LABELS IN A CIFTI LABEL MAP.
+    Make rois from all labels in a cifti label map.
     
     The output cifti file is a dscalar file with a column (map) for each label
     in the specified input map, other than the ??? label, each of which contains

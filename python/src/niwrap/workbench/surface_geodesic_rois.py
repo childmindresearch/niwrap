@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_GEODESIC_ROIS_METADATA = Metadata(
-    id="8bd2210a884c1c571e67c04abb4bf8fe42875515",
+    id="86e64cde691fcb20ef309f142d98021c69d26400",
     name="surface-geodesic-rois",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,7 +39,7 @@ def surface_geodesic_rois(
     """
     surface-geodesic-rois by Washington University School of Medicin.
     
-    DRAW GEODESIC LIMITED ROIS AT VERTICES.
+    Draw geodesic limited rois at vertices.
     
     For each vertex in the list file, a column in the output metric is created,
     and an ROI around that vertex is drawn in that column. Each metric column

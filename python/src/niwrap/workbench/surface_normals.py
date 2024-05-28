@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_NORMALS_METADATA = Metadata(
-    id="cd9ef7063094ee215a9944b8661fee6515043b6c",
+    id="740999db43b3a543acba6f1b2ee7990d36d0d980",
     name="surface-normals",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +33,7 @@ def surface_normals(
     """
     surface-normals by Washington University School of Medicin.
     
-    OUTPUT VERTEX NORMALS AS METRIC FILE.
+    Output vertex normals as metric file.
     
     Computes the normal vectors of the surface file, and outputs them as a 3
     column metric file.

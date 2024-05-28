@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 BORDER_TO_VERTICES_METADATA = Metadata(
-    id="24a3f15dca88742390d15f07372b429dec2dcb1a",
+    id="4a39d7db621ee076c2d8b62581a1a04abfaf5813",
     name="border-to-vertices",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def border_to_vertices(
     """
     border-to-vertices by Washington University School of Medicin.
     
-    DRAW BORDERS AS VERTICES IN A METRIC FILE.
+    Draw borders as vertices in a metric file.
     
     Outputs a metric with 1s on vertices that follow a border, and 0s elsewhere.
     By default, a separate metric column is created for each border.

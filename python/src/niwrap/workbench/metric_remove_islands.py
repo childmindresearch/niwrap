@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_REMOVE_ISLANDS_METADATA = Metadata(
-    id="79634688a80a1736433ce9a53813d562c5934b6c",
+    id="f88e9dbecfbfe9a85b2d4cb697e396405807da72",
     name="metric-remove-islands",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def metric_remove_islands(
     """
     metric-remove-islands by Washington University School of Medicin.
     
-    REMOVE ISLANDS FROM AN ROI METRIC.
+    Remove islands from an roi metric.
     
     Finds all connected areas in the ROI, and zeros out all but the largest one,
     in terms of surface area.

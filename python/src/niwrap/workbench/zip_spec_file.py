@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 ZIP_SPEC_FILE_METADATA = Metadata(
-    id="15613ccc083a0633203b5dc33f944d4cd7b6b539",
+    id="31589ac899c3dda0868712af0f1d5390ddfb5543",
     name="zip-spec-file",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def zip_spec_file(
     """
     zip-spec-file by Washington University School of Medicin.
     
-    ZIP A SPEC FILE AND ITS DATA FILES.
+    Zip a spec file and its data files.
     
     If zip-file already exists, it will be overwritten. If -base-dir is not
     specified, the directory containing the spec file is used for the base

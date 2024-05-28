@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_FLIP_LR_METADATA = Metadata(
-    id="43bc2e7c2b3bf7be50042ae316b5af59925dab6d",
+    id="bd4b1d987f55accd41c674badcf89e23350ec215",
     name="surface-flip-lr",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +33,7 @@ def surface_flip_lr(
     """
     surface-flip-lr by Washington University School of Medicin.
     
-    MIRROR A SURFACE THROUGH THE YZ PLANE.
+    Mirror a surface through the yz plane.
     
     This command negates the x coordinate of each vertex, and flips the surface
     normals, so that you have a surface of opposite handedness with the same

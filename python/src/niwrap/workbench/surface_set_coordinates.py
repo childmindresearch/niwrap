@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_SET_COORDINATES_METADATA = Metadata(
-    id="2cc070f285b495aef313e7b20fe925a091e86162",
+    id="17ef75db17841a06180fa2bfcb5c4d0d732f2bdc",
     name="surface-set-coordinates",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def surface_set_coordinates(
     """
     surface-set-coordinates by Washington University School of Medicin.
     
-    MODIFY COORDINATES OF A SURFACE.
+    Modify coordinates of a surface.
     
     Takes the topology from an existing surface file, and uses values from a
     metric file as coordinates to construct a new surface file.

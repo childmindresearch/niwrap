@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_ERODE_METADATA = Metadata(
-    id="60e9fb531f701f2dbee43284fde775a563ab240e",
+    id="f705f463d1a4cd440e8f94540f065810585f1bc4",
     name="metric-erode",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,7 +38,7 @@ def metric_erode(
     """
     metric-erode by Washington University School of Medicin.
     
-    ERODE A METRIC FILE.
+    Erode a metric file.
     
     Around each vertex with a value of zero, set surrounding vertices to zero.
     The surrounding vertices are all immediate neighbors and all vertices within

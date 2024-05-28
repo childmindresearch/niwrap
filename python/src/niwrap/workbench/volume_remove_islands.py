@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_REMOVE_ISLANDS_METADATA = Metadata(
-    id="c5e32d66758bf8e6c5a01a532c03bc1853929d8a",
+    id="8da548798edf32ac1baff399a00bbd659acf8ddb",
     name="volume-remove-islands",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +33,7 @@ def volume_remove_islands(
     """
     volume-remove-islands by Washington University School of Medicin.
     
-    REMOVE ISLANDS FROM AN ROI VOLUME.
+    Remove islands from an roi volume.
     
     Finds all face-connected parts of the ROI, and zeros out all but the largest
     one.

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 LABEL_ERODE_METADATA = Metadata(
-    id="d81a7a6718a4ce679b652b6de345a45280d599dd",
+    id="cd5a470bce0547b7877b4a7c2cf1904e5314a2c7",
     name="label-erode",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,7 +38,7 @@ def label_erode(
     """
     label-erode by Washington University School of Medicin.
     
-    ERODE A LABEL FILE.
+    Erode a label file.
     
     Around each vertex that is unlabeled, set surrounding vertices to unlabeled.
     The surrounding vertices are all immediate neighbors and all vertices within

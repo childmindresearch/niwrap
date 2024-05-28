@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_MATCH_METADATA = Metadata(
-    id="0f2c13241ff42adc1c3024da16b03492b5cbd3a3",
+    id="b6860ac82c047408b01c31547426c89f13ed6fd8",
     name="surface-match",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +32,7 @@ def surface_match(
     """
     surface-match by Washington University School of Medicin.
     
-    SURFACE MATCH.
+    Surface match.
     
     The Input Surface File will be transformed so that its coordinate ranges
     (bounding box) match that of the Match Surface File.

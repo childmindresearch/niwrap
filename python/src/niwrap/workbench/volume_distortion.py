@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_DISTORTION_METADATA = Metadata(
-    id="4fb51858c63698643ab136ca3658a1de49d09c21",
+    id="f2f4a3fb621316ec40b599b567aef29d92d0674b",
     name="volume-distortion",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,7 +36,7 @@ def volume_distortion(
     """
     volume-distortion by Washington University School of Medicin.
     
-    CALCULATE VOLUME WARPFIELD DISTORTION.
+    Calculate volume warpfield distortion.
     
     Calculates isotropic and anisotropic distortions in the volume warpfield. At
     each voxel, the gradient of the absolute warpfield is computed to obtain the

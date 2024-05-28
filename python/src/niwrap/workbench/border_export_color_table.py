@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 BORDER_EXPORT_COLOR_TABLE_METADATA = Metadata(
-    id="a793dd510973bd17c166c5c8f90a8c1f2c963e65",
+    id="83f77bfaf4b9dff368b5d94b9fa01021dc6bda4c",
     name="border-export-color-table",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +32,7 @@ def border_export_color_table(
     """
     border-export-color-table by Washington University School of Medicin.
     
-    WRITE BORDER NAMES AND COLORS AS TEXT.
+    Write border names and colors as text.
     
     Takes the names and colors of each border, and writes it to the same format
     as -metric-label-import expects. By default, the borders are colored by

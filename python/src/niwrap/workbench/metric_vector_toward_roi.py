@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_VECTOR_TOWARD_ROI_METADATA = Metadata(
-    id="78c8be1564925b4af68634b69b726f77303c56ee",
+    id="15c128f2dc9ed57ee38dea19ee2be1c54527783b",
     name="metric-vector-toward-roi",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def metric_vector_toward_roi(
     """
     metric-vector-toward-roi by Washington University School of Medicin.
     
-    FIND IF VECTORS POINT TOWARD AN ROI.
+    Find if vectors point toward an roi.
     
     At each vertex, compute the vector along the start of the shortest path to
     the ROI.

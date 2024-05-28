@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 FOCI_GET_PROJECTION_VERTEX_METADATA = Metadata(
-    id="da581877c7476ef3dbd273038f43c39da155df28",
+    id="48392294beb76d317e86588680c7e466a4e5bea4",
     name="foci-get-projection-vertex",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def foci_get_projection_vertex(
     """
     foci-get-projection-vertex by Washington University School of Medicin.
     
-    GET PROJECTION VERTEX FOR FOCI.
+    Get projection vertex for foci.
     
     For each focus, a column is created in <metric-out>, and the vertex with the
     most influence on its projection is assigned a value of 1 in that column,

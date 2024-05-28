@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_LABEL_IMPORT_METADATA = Metadata(
-    id="135ca032a89ce82c32d0d734950d9ab6b530d798",
+    id="e9d70dc54a1dd1fbee743a47b24464f06bc378b4",
     name="volume-label-import",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,7 +30,7 @@ def volume_label_import(
     label_list_file: str,
     output: InputPathType,
     opt_discard_others: bool = False,
-    opt_unlabeled_value_value: float | int | None = None,
+    opt_unlabeled_value_value: int | None = None,
     opt_subvolume_subvol: str | None = None,
     opt_drop_unused_labels: bool = False,
     runner: Runner = None,
@@ -38,7 +38,7 @@ def volume_label_import(
     """
     volume-label-import by Washington University School of Medicin.
     
-    IMPORT A LABEL VOLUME TO WORKBENCH FORMAT.
+    Import a label volume to workbench format.
     
     Creates a label volume from an integer-valued volume file. The label name
     and color information is stored in the volume header in a nifti extension,

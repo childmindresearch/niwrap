@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_GEODESIC_DISTANCE_METADATA = Metadata(
-    id="6787622994b30fed557ffb6f8d06e0714fedfa14",
+    id="ccb38222d0e63c2f342f7f40bfb8b2264f8dd097",
     name="surface-geodesic-distance",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,7 +27,7 @@ class SurfaceGeodesicDistanceOutputs(typing.NamedTuple):
 
 def surface_geodesic_distance(
     surface: InputPathType,
-    vertex: float | int,
+    vertex: int,
     metric_out: InputPathType,
     opt_naive: bool = False,
     opt_limit_limit_mm: float | int | None = None,
@@ -37,7 +37,7 @@ def surface_geodesic_distance(
     """
     surface-geodesic-distance by Washington University School of Medicin.
     
-    COMPUTE GEODESIC DISTANCE FROM ONE VERTEX TO THE ENTIRE SURFACE.
+    Compute geodesic distance from one vertex to the entire surface.
     
     Unless -limit is specified, computes the geodesic distance from the
     specified vertex to all others. The result is output as a single column

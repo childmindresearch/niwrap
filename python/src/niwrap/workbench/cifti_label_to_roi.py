@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_LABEL_TO_ROI_METADATA = Metadata(
-    id="2dcb8e83a8a5c7e84c4bae72bcadbbcdb4676796",
+    id="2f4b23d78d199707be8be7e3774d7226bd5a28b8",
     name="cifti-label-to-roi",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,14 +29,14 @@ def cifti_label_to_roi(
     label_in: InputPathType,
     scalar_out: InputPathType,
     opt_name_label_name: str | None = None,
-    opt_key_label_key: float | int | None = None,
+    opt_key_label_key: int | None = None,
     opt_map_map: str | None = None,
     runner: Runner = None,
 ) -> CiftiLabelToRoiOutputs:
     """
     cifti-label-to-roi by Washington University School of Medicin.
     
-    MAKE A CIFTI LABEL INTO AN ROI.
+    Make a cifti label into an roi.
     
     For each map in <label-in>, a map is created in <scalar-out> where all
     locations labeled with <label-name> or with a key of <label-key> are given a

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_CUT_RESAMPLE_METADATA = Metadata(
-    id="8819053df0ae223919c29fae0e5ef66382a3f0e8",
+    id="713a34f533c21a4e43d835b6bef150d1a667bcb3",
     name="surface-cut-resample",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def surface_cut_resample(
     """
     surface-cut-resample by Washington University School of Medicin.
     
-    RESAMPLE A CUT SURFACE.
+    Resample a cut surface.
     
     Resamples a surface file, given two spherical surfaces that are in register.
     Barycentric resampling is used, because it is usually better for resampling

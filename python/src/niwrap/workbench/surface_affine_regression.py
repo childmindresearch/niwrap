@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_AFFINE_REGRESSION_METADATA = Metadata(
-    id="d84b2ea0b2dea9173c32a06a28b309e177370f67",
+    id="47261813cd35b9b8c56f490f6ec5d42e44da03a9",
     name="surface-affine-regression",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +32,7 @@ def surface_affine_regression(
     """
     surface-affine-regression by Washington University School of Medicin.
     
-    REGRESS THE AFFINE TRANSFORM BETWEEN SURFACES ON THE SAME MESH.
+    Regress the affine transform between surfaces on the same mesh.
     
     Use linear regression to compute an affine that minimizes the sum of squares
     of the coordinate differences between the target surface and the warped

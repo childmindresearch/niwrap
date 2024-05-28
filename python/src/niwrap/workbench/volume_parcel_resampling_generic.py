@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_PARCEL_RESAMPLING_GENERIC_METADATA = Metadata(
-    id="6efe201ba5945feedc9ac05541d9912189c179e7",
+    id="f805f222623a797b6bc33e5af9ada9aee384bce5",
     name="volume-parcel-resampling-generic",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,7 +39,7 @@ def volume_parcel_resampling_generic(
     """
     volume-parcel-resampling-generic by Washington University School of Medicin.
     
-    SMOOTH AND RESAMPLE VOLUME PARCELS FROM DIFFERENT VOLUME SPACE.
+    Smooth and resample volume parcels from different volume space.
     
     Smooths and resamples the region inside each label in cur-parcels to the
     region of the same label name in new-parcels. Any voxels in the output label

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SPEC_FILE_RELOCATE_METADATA = Metadata(
-    id="d345adce5d9eaaa82b446d0dcdd45489b92e46fb",
+    id="afbe63530dfcccb2fb3fd8719bb8ab0f90b52c87",
     name="spec-file-relocate",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,7 +31,7 @@ def spec_file_relocate(
     """
     spec-file-relocate by Washington University School of Medicin.
     
-    RECREATE SPEC FILE IN NEW LOCATION.
+    Recreate spec file in new location.
     
     Spec files contain internal relative paths, such that moving or copying a
     spec file will cause it to lose track of the files it refers to. This

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_CLOSEST_VERTEX_METADATA = Metadata(
-    id="464fdcd54c3d5f63c79bdb5ebe8a0b3efb447891",
+    id="b9486678d3c9ebd557335d10098b893b1715e3b5",
     name="surface-closest-vertex",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +32,7 @@ def surface_closest_vertex(
     """
     surface-closest-vertex by Washington University School of Medicin.
     
-    FIND CLOSEST SURFACE VERTEX TO COORDINATES.
+    Find closest surface vertex to coordinates.
     
     For each coordinate XYZ triple, find the closest vertex in the surface, and
     output its vertex number into a text file. The input file should only use

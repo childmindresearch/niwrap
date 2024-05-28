@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 ESTIMATE_FIBER_BINGHAMS_METADATA = Metadata(
-    id="d28ca264732eaadae5f7809ae743655bc750a587",
+    id="ac508d970cb1111ad5d8079e820ee7da8c1e9984",
     name="estimate-fiber-binghams",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,7 +42,7 @@ def estimate_fiber_binghams(
     """
     estimate-fiber-binghams by Washington University School of Medicin.
     
-    ESTIMATE FIBER ORIENTATION DISTRIBUTIONS FROM BEDPOSTX SAMPLES.
+    Estimate fiber orientation distributions from bedpostx samples.
     
     This command does an estimation of a bingham distribution for each fiber
     orientation in each voxel which is labeled a structure identifier. These

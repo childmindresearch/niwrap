@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_GENERATE_INFLATED_METADATA = Metadata(
-    id="42926286102716a4e69c48dbbf403c67e58eaec1",
+    id="c1c87a04abf811cbd213063e906175a55c1fe53c",
     name="surface-generate-inflated",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,7 +37,7 @@ def surface_generate_inflated(
     """
     surface-generate-inflated by Washington University School of Medicin.
     
-    SURFACE GENERATE INFLATED.
+    Surface generate inflated.
     
     Generate inflated and very inflated surfaces. The output surfaces are
     'matched' (have same XYZ range) to the anatomical surface. In most cases, an

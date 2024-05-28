@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_MASK_METADATA = Metadata(
-    id="725ecb737ff1b37695fabc571f3688fba5cff65a",
+    id="09c43bbb1f0b5cd23077f6a28ebd30530b5602ef",
     name="metric-mask",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def metric_mask(
     """
     metric-mask by Washington University School of Medicin.
     
-    MASK A METRIC FILE.
+    Mask a metric file.
     
     By default, the output metric is a copy of the input metric, but with zeros
     wherever the mask metric is zero or negative. if -column is specified, the

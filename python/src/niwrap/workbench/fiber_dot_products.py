@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 FIBER_DOT_PRODUCTS_METADATA = Metadata(
-    id="43d898f912b251d9d773f965d5f88e59fee03984",
+    id="932cac44a69aac6e45082689cda03aee39d0fa71",
     name="fiber-dot-products",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,7 +39,7 @@ def fiber_dot_products(
     """
     fiber-dot-products by Washington University School of Medicin.
     
-    COMPUTE DOT PRODUCTS OF FIBER ORIENTATIONS WITH SURFACE NORMALS.
+    Compute dot products of fiber orientations with surface normals.
     
     For each vertex, this command finds the closest fiber population that
     satisfies the <direction> test, and computes the absolute value of the dot

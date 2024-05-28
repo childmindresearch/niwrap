@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 GIFTI_LABEL_ADD_PREFIX_METADATA = Metadata(
-    id="245f082bd4867c44614b2c3bcad70fdb4b41af8f",
+    id="086df4fe0bd65b4bef8c65d70c552e262fefee3b",
     name="gifti-label-add-prefix",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def gifti_label_add_prefix(
     """
     gifti-label-add-prefix by Washington University School of Medicin.
     
-    ADD PREFIX TO ALL LABEL NAMES IN A GIFTI LABEL FILE.
+    Add prefix to all label names in a gifti label file.
     
     For each label other than '???', prepend <prefix> to the label name.
     

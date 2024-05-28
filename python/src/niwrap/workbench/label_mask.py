@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 LABEL_MASK_METADATA = Metadata(
-    id="f5f87079f541ccf6eb3c4babb5c69a0082bf1e30",
+    id="f59edf2f885ccd7eb20cfdd2bf9bf3c3487d1808",
     name="label-mask",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def label_mask(
     """
     label-mask by Washington University School of Medicin.
     
-    MASK A LABEL FILE.
+    Mask a label file.
     
     By default, the output label is a copy of the input label, but with the
     'unused' label wherever the mask metric is zero or negative. if -column is

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 LABEL_TO_BORDER_METADATA = Metadata(
-    id="2995b24beba7ddcb9266606704f1c29e6ed3c7e0",
+    id="b6c0e96e953c8dd8571ceb1a3fac709a9851e773",
     name="label-to-border",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,7 +36,7 @@ def label_to_border(
     """
     label-to-border by Washington University School of Medicin.
     
-    DRAW BORDERS AROUND LABELS.
+    Draw borders around labels.
     
     For each label, finds all edges on the mesh that cross the boundary of the
     label, and draws borders through them. By default, this is done on all

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CREATE_SIGNED_DISTANCE_VOLUME_METADATA = Metadata(
-    id="fc5fa9a2bfb0788dd3ca0b0bccd8c58fffc8a33d",
+    id="0d3e7431863d648a94f95546a81542beb276a11d",
     name="create-signed-distance-volume",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -23,24 +23,27 @@ class CreateSignedDistanceVolumeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outvol: OutputPathType
     """the output volume"""
+    roi_vol: OutputPathType
+    """the output roi volume"""
 
 
 def create_signed_distance_volume(
     surface: InputPathType,
     refspace: str,
     outvol: InputPathType,
+    roi_vol: InputPathType,
     opt_roi_out: bool = False,
     opt_fill_value_value: float | int | None = None,
     opt_exact_limit_dist: float | int | None = None,
     opt_approx_limit_dist: float | int | None = None,
-    opt_approx_neighborhood_num: float | int | None = None,
+    opt_approx_neighborhood_num: int | None = None,
     opt_winding_method: str | None = None,
     runner: Runner = None,
 ) -> CreateSignedDistanceVolumeOutputs:
     """
     create-signed-distance-volume by Washington University School of Medicin.
     
-    CREATE SIGNED DISTANCE VOLUME FROM SURFACE.
+    Create signed distance volume from surface.
     
     Computes the signed distance function of the surface. Exact distance is
     calculated by finding the closest point on any surface triangle to the
@@ -65,6 +68,7 @@ def create_signed_distance_volume(
         surface: the input surface
         refspace: a volume in the desired output space (dims, spacing, origin)
         outvol: the output volume
+        roi_vol: the output roi volume
         opt_roi_out: output an roi volume of where the output has a computed
             value
         opt_fill_value_value: specify a value to put in all voxels that don't
@@ -92,6 +96,7 @@ def create_signed_distance_volume(
     cargs.append(execution.input_file(outvol))
     if opt_roi_out:
         cargs.append("-roi-out")
+    cargs.append(execution.input_file(roi_vol))
     if opt_fill_value_value is not None:
         cargs.extend(["-fill-value", str(opt_fill_value_value)])
     if opt_exact_limit_dist is not None:
@@ -105,6 +110,7 @@ def create_signed_distance_volume(
     ret = CreateSignedDistanceVolumeOutputs(
         root=execution.output_file("."),
         outvol=execution.output_file(f"{pathlib.Path(outvol).stem}"),
+        roi_vol=execution.output_file(f"{pathlib.Path(roi_vol).stem}"),
     )
     execution.run(cargs)
     return ret

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_FALSE_CORRELATION_METADATA = Metadata(
-    id="3846f90f64e3b621f3b8aae95d4e4187f109e2a6",
+    id="34247ec59637a12760c7dcfbf29cd02ad778c03f",
     name="metric-false-correlation",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,7 +39,7 @@ def metric_false_correlation(
     """
     metric-false-correlation by Washington University School of Medicin.
     
-    COMPARE CORRELATION LOCALLY AND ACROSS/THROUGH SULCI/GYRI.
+    Compare correlation locally and across/through sulci/gyri.
     
     For each vertex, compute the average correlation within a range of geodesic
     distances that don't cross a sulcus/gyrus, and the correlation to the

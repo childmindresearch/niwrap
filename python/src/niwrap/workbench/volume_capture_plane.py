@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_CAPTURE_PLANE_METADATA = Metadata(
-    id="ef1331ea93cda4f967e51c9107d878382114ce83",
+    id="b53d829e4db960f9d28fcbcc7ceb929f96dff997",
     name="volume-capture-plane",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,8 +27,8 @@ def volume_capture_plane(
     volume: InputPathType,
     subvolume: str,
     interp: str,
-    h_dim: float | int,
-    v_dim: float | int,
+    h_dim: int,
+    v_dim: int,
     scale_min: float | int,
     scale_max: float | int,
     bottom_left_x: float | int,
@@ -46,7 +46,7 @@ def volume_capture_plane(
     """
     volume-capture-plane by Washington University School of Medicin.
     
-    INTERPOLATE IMAGE FROM PLANE THROUGH VOLUME.
+    Interpolate image from plane through volume.
     
     NOTE: If you want to generate an image with all of the capabilities of the
     GUI rendering, see -show-scene.

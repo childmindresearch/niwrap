@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_CURVATURE_METADATA = Metadata(
-    id="929a909815b992062c14ff5d6fd6f6b6a08113c8",
+    id="cce0bb8c8fcf20cbfd8e49e5616bebb29a0477e9",
     name="surface-curvature",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -21,10 +21,16 @@ class SurfaceCurvatureOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
+    mean_out: OutputPathType
+    """mean curvature metric"""
+    gauss_out: OutputPathType
+    """gaussian curvature metric"""
 
 
 def surface_curvature(
     surface: InputPathType,
+    mean_out: InputPathType,
+    gauss_out: InputPathType,
     opt_mean: bool = False,
     opt_gauss: bool = False,
     runner: Runner = None,
@@ -32,7 +38,7 @@ def surface_curvature(
     """
     surface-curvature by Washington University School of Medicin.
     
-    CALCULATE CURVATURE OF SURFACE.
+    Calculate curvature of surface.
     
     Compute the curvature of the surface, using the method from:
     Interactive Texture Mapping by J. Maillot, Yahia, and Verroust, 1993.
@@ -40,6 +46,8 @@ def surface_curvature(
     
     Args:
         surface: the surface to compute the curvature of
+        mean_out: mean curvature metric
+        gauss_out: gaussian curvature metric
         opt_mean: output mean curvature
         opt_gauss: output gaussian curvature
         runner: Command runner
@@ -54,10 +62,14 @@ def surface_curvature(
     cargs.append(execution.input_file(surface))
     if opt_mean:
         cargs.append("-mean")
+    cargs.append(execution.input_file(mean_out))
     if opt_gauss:
         cargs.append("-gauss")
+    cargs.append(execution.input_file(gauss_out))
     ret = SurfaceCurvatureOutputs(
         root=execution.output_file("."),
+        mean_out=execution.output_file(f"{pathlib.Path(mean_out).stem}"),
+        gauss_out=execution.output_file(f"{pathlib.Path(gauss_out).stem}"),
     )
     execution.run(cargs)
     return ret

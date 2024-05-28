@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SPEC_FILE_MERGE_METADATA = Metadata(
-    id="3ca264802452de819d9f757f37fbadce84129806",
+    id="534a333d9adb5732bcea94cfa3f3d2a762a1d111",
     name="spec-file-merge",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +32,7 @@ def spec_file_merge(
     """
     spec-file-merge by Washington University School of Medicin.
     
-    MERGE TWO SPEC FILES INTO ONE.
+    Merge two spec files into one.
     
     The output spec file contains every file that is in either of the input spec
     files.

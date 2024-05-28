@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_TO_SURFACE_3D_DISTANCE_METADATA = Metadata(
-    id="ea52ef3a19d11965fa3647f3c4e364a8de124429",
+    id="429f92cdd3e6df09e7587c5ca538f294c540aace",
     name="surface-to-surface-3d-distance",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -23,19 +23,22 @@ class SurfaceToSurface3dDistanceOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     dists_out: OutputPathType
     """the output distances"""
+    vectors_out: OutputPathType
+    """the output vectors"""
 
 
 def surface_to_surface_3d_distance(
     surface_comp: InputPathType,
     surface_ref: InputPathType,
     dists_out: InputPathType,
+    vectors_out: InputPathType,
     opt_vectors: bool = False,
     runner: Runner = None,
 ) -> SurfaceToSurface3dDistanceOutputs:
     """
     surface-to-surface-3d-distance by Washington University School of Medicin.
     
-    COMPUTE DISTANCE BETWEEN CORRESPONDING VERTICES.
+    Compute distance between corresponding vertices.
     
     Computes the vector difference between the vertices of each surface with the
     same index, as (comp - ref), and output the magnitudes, and optionally the
@@ -45,6 +48,7 @@ def surface_to_surface_3d_distance(
         surface_comp: the surface to compare to the reference
         surface_ref: the surface to use as the reference
         dists_out: the output distances
+        vectors_out: the output vectors
         opt_vectors: output the displacement vectors
         runner: Command runner
     Returns:
@@ -60,9 +64,11 @@ def surface_to_surface_3d_distance(
     cargs.append(execution.input_file(dists_out))
     if opt_vectors:
         cargs.append("-vectors")
+    cargs.append(execution.input_file(vectors_out))
     ret = SurfaceToSurface3dDistanceOutputs(
         root=execution.output_file("."),
         dists_out=execution.output_file(f"{pathlib.Path(dists_out).stem}"),
+        vectors_out=execution.output_file(f"{pathlib.Path(vectors_out).stem}"),
     )
     execution.run(cargs)
     return ret

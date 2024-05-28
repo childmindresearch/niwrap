@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SET_STRUCTURE_METADATA = Metadata(
-    id="6f18e3c2892fa9d2e7cb52fb7ce2c01193ef0494",
+    id="7380330fce6ee441336abb558cb65e66f59c6bcf",
     name="set-structure",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +33,7 @@ def set_structure(
     """
     set-structure by Washington University School of Medicin.
     
-    SET STRUCTURE OF A DATA FILE.
+    Set structure of a data file.
     
     The existing file is modified and rewritten to the same filename. Valid
     values for the structure name are:

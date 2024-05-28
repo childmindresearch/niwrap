@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_FIND_CLUSTERS_METADATA = Metadata(
-    id="dbeb3d11a26b8a0400a168361c24f2b2fe4b9011",
+    id="3ea53c47222268012e84419e7674af694cdafca0",
     name="metric-find-clusters",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,13 +37,13 @@ def metric_find_clusters(
     opt_column_column: str | None = None,
     opt_size_ratio_ratio: float | int | None = None,
     opt_distance_distance: float | int | None = None,
-    opt_start_startval: float | int | None = None,
+    opt_start_startval: int | None = None,
     runner: Runner = None,
 ) -> MetricFindClustersOutputs:
     """
     metric-find-clusters by Washington University School of Medicin.
     
-    FILTER CLUSTERS BY SURFACE AREA.
+    Filter clusters by surface area.
     
     Outputs a metric with nonzero integers for all vertices within a large
     enough cluster, and zeros elsewhere. The integers denote cluster membership

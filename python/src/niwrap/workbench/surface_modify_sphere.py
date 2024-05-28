@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_MODIFY_SPHERE_METADATA = Metadata(
-    id="2bc79d9fa7ac597b349f44349e56a15b7594b22c",
+    id="5585f2fa5f02cb2ec81b4f755f0cdd1f4b1f40a6",
     name="surface-modify-sphere",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def surface_modify_sphere(
     """
     surface-modify-sphere by Washington University School of Medicin.
     
-    CHANGE RADIUS AND OPTIONALLY RECENTER A SPHERE.
+    Change radius and optionally recenter a sphere.
     
     This command may be useful if you have used -surface-resample to resample a
     sphere, which can suffer from problems generally not present in

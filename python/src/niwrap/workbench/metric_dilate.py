@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_DILATE_METADATA = Metadata(
-    id="dfb291b57100175c109304a83ed43ba7db6d794b",
+    id="6df8dab38c92a25be33b50fd1d2930514948e9ae",
     name="metric-dilate",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,7 +43,7 @@ def metric_dilate(
     """
     metric-dilate by Washington University School of Medicin.
     
-    DILATE A METRIC FILE.
+    Dilate a metric file.
     
     For all metric vertices that are designated as bad, if they neighbor a
     non-bad vertex with data or are within the specified distance of such a

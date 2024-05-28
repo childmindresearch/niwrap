@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_FILL_HOLES_METADATA = Metadata(
-    id="5819f20642f4257428e8d52990862e461e56c9a7",
+    id="e8f36c2a2a1abd0a92c85dce38eca355263bf9dc",
     name="metric-fill-holes",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def metric_fill_holes(
     """
     metric-fill-holes by Washington University School of Medicin.
     
-    FILL HOLES IN AN ROI METRIC.
+    Fill holes in an roi metric.
     
     Finds all connected areas that are not included in the ROI, and writes ones
     into all but the largest one, in terms of surface area.

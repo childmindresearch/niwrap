@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_FIND_CLUSTERS_METADATA = Metadata(
-    id="7ed9052b5b2cfaa5cef7e04ba68f567e8ff3719a",
+    id="f0a2ffa360304a33ad52bd52826f3187ea71add1",
     name="volume-find-clusters",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,13 +35,13 @@ def volume_find_clusters(
     opt_subvolume_subvol: str | None = None,
     opt_size_ratio_ratio: float | int | None = None,
     opt_distance_distance: float | int | None = None,
-    opt_start_startval: float | int | None = None,
+    opt_start_startval: int | None = None,
     runner: Runner = None,
 ) -> VolumeFindClustersOutputs:
     """
     volume-find-clusters by Washington University School of Medicin.
     
-    FILTER CLUSTERS BY VOLUME.
+    Filter clusters by volume.
     
     Outputs a volume with nonzero integers for all voxels within a large enough
     cluster, and zeros elsewhere. The integers denote cluster membership (by

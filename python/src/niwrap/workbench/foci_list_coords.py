@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 FOCI_LIST_COORDS_METADATA = Metadata(
-    id="64b02e95c85bdf6c0226f6d01fae4d567b6e3a7a",
+    id="db5c91253f13371240846253e87cfab661e3cefc",
     name="foci-list-coords",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +32,7 @@ def foci_list_coords(
     """
     foci-list-coords by Washington University School of Medicin.
     
-    OUTPUT FOCI COORDINATES IN A TEXT FILE.
+    Output foci coordinates in a text file.
     
     Output the coordinates for every focus in the foci file, and optionally the
     focus names in a second text file.

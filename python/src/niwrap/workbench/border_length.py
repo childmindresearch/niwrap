@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 BORDER_LENGTH_METADATA = Metadata(
-    id="ad9b2e8071f7a0a549dcafffc31693988c0dd099",
+    id="1c7cf169d78e6b37032b0df2eb8b08b4d96f80e1",
     name="border-length",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def border_length(
     """
     border-length by Washington University School of Medicin.
     
-    REPORT LENGTH OF BORDERS.
+    Report length of borders.
     
     For each border, print its length along the surface, in mm. If a border has
     multiple parts, their lengths are summed before printing, unless

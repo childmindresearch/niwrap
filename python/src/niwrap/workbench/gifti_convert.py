@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 GIFTI_CONVERT_METADATA = Metadata(
-    id="9480e7d2b343860c91638bd03b1b25c561fae417",
+    id="64b5c25d1d0477979b18c155f79730fd46afbb4f",
     name="gifti-convert",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +32,7 @@ def gifti_convert(
     """
     gifti-convert by Washington University School of Medicin.
     
-    CONVERT A GIFTI FILE TO A DIFFERENT ENCODING.
+    Convert a gifti file to a different encoding.
     
     The value of <gifti-encoding> must be one of the following:
     

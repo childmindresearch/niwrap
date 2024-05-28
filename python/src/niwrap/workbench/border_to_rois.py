@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 BORDER_TO_ROIS_METADATA = Metadata(
-    id="8aab633faca9ce8df8495f4582e27e5f9f7b9a44",
+    id="a2e3148701d841c39ab8b0b6e50f781a8c8d42fa",
     name="border-to-rois",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,7 +37,7 @@ def border_to_rois(
     """
     border-to-rois by Washington University School of Medicin.
     
-    MAKE METRIC ROIS FROM BORDERS.
+    Make metric rois from borders.
     
     By default, draws ROIs inside all borders in the border file, as separate
     metric columns.

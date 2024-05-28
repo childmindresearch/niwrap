@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_LABEL_PROBABILITY_METADATA = Metadata(
-    id="c8dfd3fc9b1a0d8f4a9f31c224e65af21e0d10b3",
+    id="87d1563a8c992e3b4e82b3c5ba411e45fb0c806a",
     name="volume-label-probability",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def volume_label_probability(
     """
     volume-label-probability by Washington University School of Medicin.
     
-    FIND FREQUENCY OF VOLUME LABELS.
+    Find frequency of volume labels.
     
     This command outputs a set of soft ROIs, one for each label in the input,
     where the value is how many of the input maps had that label at that voxel,

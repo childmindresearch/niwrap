@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_ESTIMATE_FWHM_METADATA = Metadata(
-    id="a7e090a92bdc01f47477bb81e8573b9e7158e53a",
+    id="a5a800df95fdc292e5a236c6ad888630a0b434a0",
     name="volume-estimate-fwhm",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,12 +28,13 @@ def volume_estimate_fwhm(
     opt_roi_roivol: InputPathType | None = None,
     opt_subvolume_subvol: str | None = None,
     opt_whole_file: bool = False,
+    opt_demean: bool = False,
     runner: Runner = None,
 ) -> VolumeEstimateFwhmOutputs:
     """
     volume-estimate-fwhm by Washington University School of Medicin.
     
-    ESTIMATE FWHM SMOOTHNESS OF A VOLUME.
+    Estimate fwhm smoothness of a volume.
     
     Estimates the smoothness of the input volume in X, Y, and Z directions
     separately, printing the estimates to standard output, in mm as FWHM. If
@@ -47,6 +48,7 @@ def volume_estimate_fwhm(
             of: the subvolume number or name
         opt_whole_file: estimate for the whole file at once, not each subvolume
             separately
+        opt_demean: subtract the mean image before estimating smoothness
         runner: Command runner
     Returns:
         NamedTuple of outputs (described in `VolumeEstimateFwhmOutputs`).
@@ -63,6 +65,8 @@ def volume_estimate_fwhm(
         cargs.extend(["-subvolume", opt_subvolume_subvol])
     if opt_whole_file:
         cargs.append("-whole-file")
+    if opt_demean:
+        cargs.append("-demean")
     ret = VolumeEstimateFwhmOutputs(
         root=execution.output_file("."),
     )

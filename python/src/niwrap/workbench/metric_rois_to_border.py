@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_ROIS_TO_BORDER_METADATA = Metadata(
-    id="5665125d3656b52cf1ca6caaac3e3b292f925d44",
+    id="23a7413bb81751dbd270a50cb3d8224e6405bb7a",
     name="metric-rois-to-border",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,7 +37,7 @@ def metric_rois_to_border(
     """
     metric-rois-to-border by Washington University School of Medicin.
     
-    DRAW BORDERS AROUND METRIC ROIS.
+    Draw borders around metric rois.
     
     For each ROI column, finds all edges on the mesh that cross the boundary of
     the ROI, and draws borders through them. By default, this is done on all

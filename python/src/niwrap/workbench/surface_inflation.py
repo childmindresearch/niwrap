@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_INFLATION_METADATA = Metadata(
-    id="4396d52c247c1666b5966ccb5860c8a28e87cdee",
+    id="9e8a090010468eb1b4a1ab2178e5a3d720f41c8a",
     name="surface-inflation",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,9 +28,9 @@ class SurfaceInflationOutputs(typing.NamedTuple):
 def surface_inflation(
     anatomical_surface_in: InputPathType,
     surface_in: InputPathType,
-    number_of_smoothing_cycles: float | int,
+    number_of_smoothing_cycles: int,
     smoothing_strength: float | int,
-    smoothing_iterations: float | int,
+    smoothing_iterations: int,
     inflation_factor: float | int,
     surface_out: InputPathType,
     runner: Runner = None,
@@ -38,7 +38,7 @@ def surface_inflation(
     """
     surface-inflation by Washington University School of Medicin.
     
-    SURFACE INFLATION.
+    Surface inflation.
     
     Inflate a surface by performing cycles that consist of smoothing followed by
     inflation (to correct shrinkage caused by smoothing).

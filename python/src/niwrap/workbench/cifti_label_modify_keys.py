@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_LABEL_MODIFY_KEYS_METADATA = Metadata(
-    id="475718459757e2dfe8c14dd90cde83d4beb086b0",
+    id="7d03ed922e7e005715fcc5b1f3e85d7e0f7050d6",
     name="cifti-label-modify-keys",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def cifti_label_modify_keys(
     """
     cifti-label-modify-keys by Washington University School of Medicin.
     
-    CHANGE KEY VALUES IN A DLABEL FILE.
+    Change key values in a dlabel file.
     
     <remap-file> should have lines of the form 'oldkey newkey', like so:
     

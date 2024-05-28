@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_PAIRWISE_CORRELATION_METADATA = Metadata(
-    id="865d19b2feb66f167d95f9bb04470d39ceac203d",
+    id="0558144d1ff442183f3f2a2ae02b386ae005a017",
     name="cifti-pairwise-correlation",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,7 +36,7 @@ def cifti_pairwise_correlation(
     """
     cifti-pairwise-correlation by Washington University School of Medicin.
     
-    CORRELATE PAIRED ROWS BETWEEN TWO CIFTI FILES.
+    Correlate paired rows between two cifti files.
     
     For each row in <cifti-a>, correlate it with the same row in <cifti-b>, and
     put the result in the same row of <cifti-out>, which has only one column.

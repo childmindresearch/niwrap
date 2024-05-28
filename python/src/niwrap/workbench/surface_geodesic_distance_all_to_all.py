@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_GEODESIC_DISTANCE_ALL_TO_ALL_METADATA = Metadata(
-    id="7ce999198356b35719cc8f74450182fa893e69d4",
+    id="2219b9609169d65923740d44c13d54d453987be2",
     name="surface-geodesic-distance-all-to-all",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,7 +37,7 @@ def surface_geodesic_distance_all_to_all(
     """
     surface-geodesic-distance-all-to-all by Washington University School of Medicin.
     
-    COMPUTE GEODESIC DISTANCES FROM ALL VERTICES.
+    Compute geodesic distances from all vertices.
     
     Computes geodesic distance from every vertex to every vertex, outputting a
     single-hemisphere dconn file. If you are only interested in a few vertices,

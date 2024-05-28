@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_ERODE_METADATA = Metadata(
-    id="4c1cfa317001a766cefe377a064012d6aa840abe",
+    id="0c57ec48aba3939d10cc4b7ebb0d78cf28d2ef9b",
     name="volume-erode",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,7 +36,7 @@ def volume_erode(
     """
     volume-erode by Washington University School of Medicin.
     
-    ERODE A VOLUME FILE.
+    Erode a volume file.
     
     Around each voxel with a value of zero, set surrounding voxels to zero. The
     surrounding voxels are all face neighbors and all voxels within the

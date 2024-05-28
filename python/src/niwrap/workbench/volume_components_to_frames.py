@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_COMPONENTS_TO_FRAMES_METADATA = Metadata(
-    id="618f56ccf873ea27e8ad4c3df60e3ef75e97141d",
+    id="e33a704ae3a960fa92f5343717d9bcdf31d2d4b1",
     name="volume-components-to-frames",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +33,7 @@ def volume_components_to_frames(
     """
     volume-components-to-frames by Washington University School of Medicin.
     
-    CONVERT RGB/COMPLEX VOLUME TO FRAMES.
+    Convert rgb/complex volume to frames.
     
     RGB and complex datatypes are not always well supported, this command allows
     separating them into standard subvolumes for better support.

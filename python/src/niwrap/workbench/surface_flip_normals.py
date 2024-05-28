@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_FLIP_NORMALS_METADATA = Metadata(
-    id="5e9a5cffd2791171171db2c1f049d5f856af7759",
+    id="42964755965df68270ab6416523dec60defbd12f",
     name="surface-flip-normals",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +33,7 @@ def surface_flip_normals(
     """
     surface-flip-normals by Washington University School of Medicin.
     
-    FLIP ALL TILES ON A SURFACE.
+    Flip all tiles on a surface.
     
     Flips all triangles on a surface, resulting in surface normals being flipped
     the other direction (inward vs outward). If you transform a surface with an

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 FILE_INFORMATION_METADATA = Metadata(
-    id="b001b3aa58b2129de0211d8d553640fdb1b5888c",
+    id="2e1adc19f4d54b61198c9c68ea89b42b7315d000",
     name="file-information",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,6 +30,7 @@ def file_information(
     opt_only_number_of_maps: bool = False,
     opt_only_map_names: bool = False,
     opt_only_metadata: bool = False,
+    opt_key_key: str | None = None,
     opt_only_cifti_xml: bool = False,
     opt_czi: bool = False,
     opt_czi_all_sub_blocks: bool = False,
@@ -39,7 +40,7 @@ def file_information(
     """
     file-information by Washington University School of Medicin.
     
-    LIST INFORMATION ABOUT A FILE'S CONTENT.
+    List information about a file's content.
     
     List information about the content of a data file. Only one -only option may
     be specified. The information listed when no -only option is present is
@@ -92,6 +93,8 @@ def file_information(
             maps
         opt_only_map_names: suppress normal output, print the names of all maps
         opt_only_metadata: suppress normal output, print file metadata
+        opt_key_key: only print the metadata for one key, with no formatting:
+            the metadata key
         opt_only_cifti_xml: suppress normal output, print the cifti xml if the
             file type has it
         opt_czi: For a CZI file, show information from the libCZI Info Command
@@ -119,6 +122,8 @@ def file_information(
         cargs.append("-only-map-names")
     if opt_only_metadata:
         cargs.append("-only-metadata")
+    if opt_key_key is not None:
+        cargs.extend(["-key", opt_key_key])
     if opt_only_cifti_xml:
         cargs.append("-only-cifti-xml")
     if opt_czi:

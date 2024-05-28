@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_LABEL_ADJACENCY_METADATA = Metadata(
-    id="56efde38de95f4b8adc1fb8f95f69d9cfafe9b24",
+    id="346f512a02a2d7602031aa1332290b9f7822396a",
     name="cifti-label-adjacency",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,7 +36,7 @@ def cifti_label_adjacency(
     """
     cifti-label-adjacency by Washington University School of Medicin.
     
-    MAKE ADJACENCY MATRIX OF A CIFTI LABEL FILE.
+    Make adjacency matrix of a cifti label file.
     
     Find face-adjacent voxels and connected vertices that have different label
     values, and count them for each pair. Put the resulting counts into a

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_FILL_HOLES_METADATA = Metadata(
-    id="3c728e75439929ad671e52c71eab3757a887720f",
+    id="4d7ac9c22920a6808ced9079431f362acbb2a465",
     name="volume-fill-holes",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +33,7 @@ def volume_fill_holes(
     """
     volume-fill-holes by Washington University School of Medicin.
     
-    FILL HOLES IN AN ROI VOLUME.
+    Fill holes in an roi volume.
     
     Finds all face-connected parts that are not included in the ROI, and fills
     all but the largest one with ones.

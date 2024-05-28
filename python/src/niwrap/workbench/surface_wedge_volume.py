@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_WEDGE_VOLUME_METADATA = Metadata(
-    id="c287d1aa78149f0e35a1d9deb844a02e0705fe1f",
+    id="50763acf7dc582c7512b9e43dcf4678fa008d35d",
     name="surface-wedge-volume",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def surface_wedge_volume(
     """
     surface-wedge-volume by Washington University School of Medicin.
     
-    MEASURE PER-VERTEX VOLUME BETWEEN SURFACES.
+    Measure per-vertex volume between surfaces.
     
     Compute the volume of each vertex's area from one surface to another. The
     surfaces must have vertex correspondence, and have consistent triangle

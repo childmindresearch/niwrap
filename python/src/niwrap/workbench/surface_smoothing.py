@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_SMOOTHING_METADATA = Metadata(
-    id="d0efcfca152b018584aace9c65c1fcf169a7c42f",
+    id="b5c34814840a8341b4177335aae09e164d8ce54d",
     name="surface-smoothing",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,14 +28,14 @@ class SurfaceSmoothingOutputs(typing.NamedTuple):
 def surface_smoothing(
     surface_in: InputPathType,
     smoothing_strength: float | int,
-    smoothing_iterations: float | int,
+    smoothing_iterations: int,
     surface_out: InputPathType,
     runner: Runner = None,
 ) -> SurfaceSmoothingOutputs:
     """
     surface-smoothing by Washington University School of Medicin.
     
-    SURFACE SMOOTHING.
+    Surface smoothing.
     
     Smooths a surface by averaging vertex coordinates with those of the
     neighboring vertices.

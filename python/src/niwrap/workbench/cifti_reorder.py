@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 CIFTI_REORDER_METADATA = Metadata(
-    id="ee3c3a20bb46c57deb6ff588255019fb7b0f00c5",
+    id="0524822039be62e4fa7e64df14c1370d49ab9288",
     name="cifti-reorder",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +35,7 @@ def cifti_reorder(
     """
     cifti-reorder by Washington University School of Medicin.
     
-    REORDER THE PARCELS OR SCALAR/LABEL MAPS IN A CIFTI FILE.
+    Reorder the parcels or scalar/label maps in a cifti file.
     
     The mapping along the specified direction must be parcels, scalars, or
     labels. For pscalar or ptseries, use COLUMN to reorder the parcels. For

@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 SURFACE_VERTEX_AREAS_METADATA = Metadata(
-    id="97916cebad28124f8208fca283a5f56a6ebbfa0a",
+    id="7633d54a4186e1ae77eedff9e5dde52c9dd4d24b",
     name="surface-vertex-areas",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +33,7 @@ def surface_vertex_areas(
     """
     surface-vertex-areas by Washington University School of Medicin.
     
-    MEASURE SURFACE AREA EACH VERTEX IS RESPONSIBLE FOR.
+    Measure surface area each vertex is responsible for.
     
     Each vertex gets one third of the area of each triangle it is a part of.
     Units are mm^2.

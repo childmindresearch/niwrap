@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METADATA_STRING_REPLACE_METADATA = Metadata(
-    id="c401ec18f64003879449685a4bbdee7858260fc3",
+    id="56e2c0327e4cb96ca30d791200c9946f31e857cf",
     name="metadata-string-replace",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +34,7 @@ def metadata_string_replace(
     """
     metadata-string-replace by Washington University School of Medicin.
     
-    REPLACE A STRING IN ALL METADATA OF A FILE.
+    Replace a string in all metadata of a file.
     
     Replaces all occurrences of <find-string> in the metadata and map names of
     <input-file> with <replace-string>.

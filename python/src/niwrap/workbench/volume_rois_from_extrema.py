@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_ROIS_FROM_EXTREMA_METADATA = Metadata(
-    id="91346dec57449cc125d00145a10d3e6aa9f4d27e",
+    id="545139f150a5233a43a2da6c4f687e148e0d2446",
     name="volume-rois-from-extrema",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,7 +38,7 @@ def volume_rois_from_extrema(
     """
     volume-rois-from-extrema by Washington University School of Medicin.
     
-    CREATE VOLUME ROI MAPS FROM EXTREMA MAPS.
+    Create volume roi maps from extrema maps.
     
     For each nonzero value in each map, make a map with an ROI around that
     location. If the -gaussian option is specified, then normalized gaussian

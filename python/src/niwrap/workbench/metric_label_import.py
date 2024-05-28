@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 METRIC_LABEL_IMPORT_METADATA = Metadata(
-    id="a43fd1c7731d3fac1610aef4cb22dc0c3072de17",
+    id="3b451a2803a443a7b349841387bd4681bcea7d6e",
     name="metric-label-import",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,7 +30,7 @@ def metric_label_import(
     label_list_file: str,
     output: InputPathType,
     opt_discard_others: bool = False,
-    opt_unlabeled_value_value: float | int | None = None,
+    opt_unlabeled_value_value: int | None = None,
     opt_column_column: str | None = None,
     opt_drop_unused_labels: bool = False,
     runner: Runner = None,
@@ -38,7 +38,7 @@ def metric_label_import(
     """
     metric-label-import by Washington University School of Medicin.
     
-    IMPORT A GIFTI LABEL FILE FROM A METRIC FILE.
+    Import a gifti label file from a metric file.
     
     Creates a gifti label file from a metric file with label-like values. You
     may specify the empty string (use "") for <label-list-file>, which will be

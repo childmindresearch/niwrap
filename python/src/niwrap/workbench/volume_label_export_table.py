@@ -8,10 +8,10 @@ from styxdefs import *
 
 
 VOLUME_LABEL_EXPORT_TABLE_METADATA = Metadata(
-    id="57b5e04991f64c68568cfa323f21d46032ad22c8",
+    id="8bc815d1decd0d57473d32ff4e94d7b7a35cfe0b",
     name="volume-label-export-table",
     container_image_type="docker",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +32,7 @@ def volume_label_export_table(
     """
     volume-label-export-table by Washington University School of Medicin.
     
-    EXPORT LABEL TABLE FROM VOLUME AS TEXT.
+    Export label table from volume as text.
     
     Takes the label table from the volume label map, and writes it to a text
     format matching what is expected by -volume-label-import.
