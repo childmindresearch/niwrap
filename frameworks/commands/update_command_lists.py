@@ -1,6 +1,7 @@
 import json
 import os
 import glob
+import shlex
 
 
 def override_from_command_list(file_command_list, file_framework_json, prefix=''):
@@ -36,21 +37,29 @@ def override_from_command_list(file_command_list, file_framework_json, prefix=''
     for descriptor_file in glob.glob(f'descriptors/{framework["id"]}/*.json'):
         with open(descriptor_file, 'r') as f:
             descriptor = json.load(f)
-            command_invocations.append((descriptor_file, descriptor["command-line"]))
+            command_args = shlex.split(descriptor["command-line"])
+            command_invocations.append((descriptor_file, command_args))
+
+    def _find_command_invocation(invocation):
+        invocation = invocation.split(' ')[-1]
+        for file, command in command_invocations:
+            if invocation in command:
+                return file
+        return None
 
     # Check if a descriptor is available for any endpoint
     for endpoint in framework["api"]["endpoints"]:
-        found = None
-        for file, invocation in command_invocations:
-            if (endpoint["target"] == invocation) or ((endpoint["target"] + " ") in invocation):
-                # TODO: instead of looking for a trailing space in the invocation
-                # we should look if there are multiple hits without a trailing space
-                found = file
-                break
-        if found and (endpoint["status"] == "missing" or "descriptor" not in endpoint):
+        if endpoint["status"] == "ignore":
+            continue
+
+        hit = _find_command_invocation(endpoint["target"])
+
+        if hit and (endpoint["status"] == "missing" or "descriptor" not in endpoint):
             endpoint["status"] = "done"
-            endpoint["descriptor"] = file.replace('\\', '/')
+            endpoint["descriptor"] = hit.replace('\\', '/')
             print(f"Updated status of {endpoint['target']} to done in {file_framework_json}")
+        if not hit and endpoint["status"] == "done":
+            print(f"INFO: {endpoint['target']} is marked as done but no trivially matching descriptor found in {file_framework_json} (this might be a false positive)")
 
     with open(file_framework_json, 'w') as f:
         json.dump(framework, f, indent=2)

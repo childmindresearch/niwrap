@@ -511,8 +511,7 @@
       },
       {
         "target": "flirt",
-        "status": "done",
-        "descriptor": "descriptors/fsl/mcflirt.json"
+        "status": "missing"
       },
       {
         "target": "flirt_average",
@@ -529,8 +528,7 @@
       },
       {
         "target": "fsl",
-        "status": "done",
-        "descriptor": "descriptors/fsl/maths.json"
+        "status": "ignore"
       },
       {
         "target": "fsl2ascii",
@@ -1033,8 +1031,7 @@
       },
       {
         "target": "mm",
-        "status": "done",
-        "descriptor": "descriptors/fsl/flameo.json"
+        "status": "missing"
       },
       {
         "target": "morph_kernel",
@@ -1307,8 +1304,7 @@
       },
       {
         "target": "slices",
-        "status": "done",
-        "descriptor": "descriptors/fsl/slicer.json"
+        "status": "missing"
       },
       {
         "target": "slices_summary",

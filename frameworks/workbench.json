@@ -323,23 +323,23 @@
       },
       {
         "target": "wb_command -class-add-member",
-        "status": "done"
+        "status": "ignore"
       },
       {
         "target": "wb_command -class-create",
-        "status": "done"
+        "status": "ignore"
       },
       {
         "target": "wb_command -class-create-algorithm",
-        "status": "done"
+        "status": "ignore"
       },
       {
         "target": "wb_command -class-create-enum",
-        "status": "done"
+        "status": "ignore"
       },
       {
         "target": "wb_command -class-create-operation",
-        "status": "done"
+        "status": "ignore"
       },
       {
         "target": "wb_command -convert-affine",
@@ -833,7 +833,7 @@
       },
       {
         "target": "wb_command -unit-test",
-        "status": "done"
+        "status": "ignore"
       },
       {
         "target": "wb_command -volume-all-labels-to-rois",

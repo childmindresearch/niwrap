@@ -31,17 +31,19 @@ if __name__ == '__main__':
         total_endpoints = len(framework['api']['endpoints'])
         done_endpoints = len([x for x in framework['api']['endpoints'] if x['status'] == 'done'])
         missing_endpoints = len([x for x in framework['api']['endpoints'] if x['status'] == 'missing'])
-        ignored_endpoints = len([x for x in framework['api']['endpoints'] if x['status'] == 'ignored'])
+        ignored_endpoints = len([x for x in framework['api']['endpoints'] if x['status'] == 'ignore'])
 
         assert total_endpoints == done_endpoints + missing_endpoints + ignored_endpoints
 
-        coverage_percent = done_endpoints / (done_endpoints + missing_endpoints) * 100
+        relevant_endpoints = total_endpoints - ignored_endpoints
+
+        coverage_percent = done_endpoints / relevant_endpoints * 100
 
         coverage = ""
         if missing_endpoints == 0:
-            coverage = f"{done_endpoints}/{total_endpoints} (100% 🎉)"
+            coverage = f"{done_endpoints}/{relevant_endpoints} (100% 🎉)"
         else:
-            coverage = f"{done_endpoints}/{total_endpoints} ({coverage_percent:.1f}%)"
+            coverage = f"{done_endpoints}/{relevant_endpoints} ({coverage_percent:.1f}%)"
 
         buf += f"| {name_link} | {framework['approach']} | {framework['status']} | {coverage} |\n"
 
