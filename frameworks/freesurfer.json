@@ -3,7 +3,7 @@
   "name": "FreeSurfer",
   "url": "https://github.com/freesurfer/freesurfer",
   "approach": "Manual",
-  "status": "In Progress",
+  "status": "In progress",
   "api": {
     "endpoints": [
       {

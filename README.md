@@ -10,14 +10,14 @@ NiWrap is based on the [Boutiques Descriptor Schema](https://github.com/boutique
 
 <!-- START_FRAMEWORKS_TABLE -->
 
-| Framework | Approach | Status | Coverage |
+| Framework | Approach | Status | API Coverage |
 | --- | --- | --- | --- |
 | [AFNI](https://afni.nimh.nih.gov/) | Manual | In progress | 22/621 (3.5%) |
 | [ANTs](https://github.com/ANTsX/ANTs) | Manual | In progress | 6/120 (5.0%) |
 | [Connectome Workbench](https://github.com/Washington-University/workbench) | Source extraction | Testing | 208/208 (100% 🎉) |
 | [Convert3D](http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D) | Manual | In progress | 1/5 (20.0%) |
 | [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) | Manual | In progress | 20/377 (5.3%) |
-| [FreeSurfer](https://github.com/freesurfer/freesurfer) | Manual | In Progress | 2/104 (1.9%) |
+| [FreeSurfer](https://github.com/freesurfer/freesurfer) | Manual | In progress | 2/104 (1.9%) |
 | [MRTrix3](https://www.mrtrix.org/) | Source extraction | Testing | 112/125 (89.6%) |
 
 <!-- END_FRAMEWORKS_TABLE -->
@@ -44,6 +44,7 @@ See the [niwrap Python package README](./python/README.md) for installation inst
 ## Contributing
 
 See the [CONTRIBUTING.md](./CONTRIBUTING.md) file for information on how to contribute to NiWrap.
+
 
 
 
