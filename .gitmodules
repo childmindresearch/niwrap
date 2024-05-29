@@ -1,0 +1,9 @@
+[submodule "workbench"]
+	path = extraction/workbench/source
+    url = https://github.com/childmindresearch/workbench.git
+    branch = command-line-json
+
+[submodule "mrtrix3"]
+	path = extraction/mrtrix/source
+    url = https://github.com/childmindresearch/mrtrix3.git
+    branch = json-serial
