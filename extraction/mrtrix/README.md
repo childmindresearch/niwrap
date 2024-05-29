@@ -23,3 +23,7 @@ Build MRTrix3:
 ./generate_json_docs.sh
 node mrt2bt.js
 ```
+
+## Implementation details
+
+All changes are in `extraction\mrtrix\source\core\app.cpp`.
