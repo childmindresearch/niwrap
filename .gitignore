@@ -295,4 +295,4 @@ cython_debug/
 .idea/
 
 .vscode
-scripts
+/local_scripts

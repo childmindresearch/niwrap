@@ -1,0 +1,2518 @@
+{
+  "id": "afni",
+  "name": "AFNI",
+  "url": "https://afni.nimh.nih.gov/",
+  "approach": "Manual",
+  "status": "In progress",
+  "container": "afni/afni_make_build",
+  "api": {
+    "endpoints": [
+      {
+        "target": "1dApar2mat",
+        "status": "missing"
+      },
+      {
+        "target": "1dAstrip",
+        "status": "missing"
+      },
+      {
+        "target": "1dBandpass",
+        "status": "missing"
+      },
+      {
+        "target": "1dBport",
+        "status": "missing"
+      },
+      {
+        "target": "1dCorrelate",
+        "status": "missing"
+      },
+      {
+        "target": "1dDW_Grad_o_Mat++",
+        "status": "missing"
+      },
+      {
+        "target": "1dFlagMotion",
+        "status": "missing"
+      },
+      {
+        "target": "1dMarry",
+        "status": "missing"
+      },
+      {
+        "target": "1dNLfit",
+        "status": "missing"
+      },
+      {
+        "target": "1dRplot",
+        "status": "missing"
+      },
+      {
+        "target": "1dSEM",
+        "status": "missing"
+      },
+      {
+        "target": "1dTsort",
+        "status": "missing"
+      },
+      {
+        "target": "1dUpsample",
+        "status": "missing"
+      },
+      {
+        "target": "1d_tool.py",
+        "status": "missing"
+      },
+      {
+        "target": "1dcat",
+        "status": "missing"
+      },
+      {
+        "target": "1ddot",
+        "status": "missing"
+      },
+      {
+        "target": "1deval",
+        "status": "missing"
+      },
+      {
+        "target": "1dfft",
+        "status": "missing"
+      },
+      {
+        "target": "1dgenARMA11",
+        "status": "missing"
+      },
+      {
+        "target": "1dgrayplot",
+        "status": "missing"
+      },
+      {
+        "target": "1dmatcalc",
+        "status": "missing"
+      },
+      {
+        "target": "1dnorm",
+        "status": "missing"
+      },
+      {
+        "target": "1dplot",
+        "status": "missing"
+      },
+      {
+        "target": "1dplot.py",
+        "status": "missing"
+      },
+      {
+        "target": "1dsound",
+        "status": "missing"
+      },
+      {
+        "target": "1dsum",
+        "status": "missing"
+      },
+      {
+        "target": "1dsvd",
+        "status": "missing"
+      },
+      {
+        "target": "1dtranspose",
+        "status": "missing"
+      },
+      {
+        "target": "24swap",
+        "status": "missing"
+      },
+      {
+        "target": "2dImReg",
+        "status": "missing"
+      },
+      {
+        "target": "2dcat",
+        "status": "missing"
+      },
+      {
+        "target": "2perm",
+        "status": "missing"
+      },
+      {
+        "target": "2swap",
+        "status": "missing"
+      },
+      {
+        "target": "3dABoverlap",
+        "status": "missing"
+      },
+      {
+        "target": "3dAFNIto3D",
+        "status": "missing"
+      },
+      {
+        "target": "3dAFNItoANALYZE",
+        "status": "missing"
+      },
+      {
+        "target": "3dAFNItoNIFTI",
+        "status": "missing"
+      },
+      {
+        "target": "3dAFNItoNIML",
+        "status": "missing"
+      },
+      {
+        "target": "3dAFNItoRaw",
+        "status": "missing"
+      },
+      {
+        "target": "3dANOVA",
+        "status": "missing"
+      },
+      {
+        "target": "3dANOVA2",
+        "status": "missing"
+      },
+      {
+        "target": "3dANOVA3",
+        "status": "missing"
+      },
+      {
+        "target": "3dAcost",
+        "status": "missing"
+      },
+      {
+        "target": "3dAllineate",
+        "status": "missing"
+      },
+      {
+        "target": "3dAmpToRSFC",
+        "status": "missing"
+      },
+      {
+        "target": "3dAnhist",
+        "status": "missing"
+      },
+      {
+        "target": "3dAttribute",
+        "status": "missing"
+      },
+      {
+        "target": "3dAutoTcorrelate",
+        "status": "missing"
+      },
+      {
+        "target": "3dAutobox",
+        "status": "missing"
+      },
+      {
+        "target": "3dAutomask",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dAutomask.json"
+      },
+      {
+        "target": "3dBRAIN_VOYAGERtoAFNI",
+        "status": "missing"
+      },
+      {
+        "target": "3dBallMatch",
+        "status": "missing"
+      },
+      {
+        "target": "3dBandpass",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dBandpass.json"
+      },
+      {
+        "target": "3dBlurInMask",
+        "status": "missing"
+      },
+      {
+        "target": "3dBlurToFWHM",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dBlurToFWHM.json"
+      },
+      {
+        "target": "3dBrainSync",
+        "status": "missing"
+      },
+      {
+        "target": "3dBrickStat",
+        "status": "missing"
+      },
+      {
+        "target": "3dCM",
+        "status": "missing"
+      },
+      {
+        "target": "3dCRUISEtoAFNI",
+        "status": "missing"
+      },
+      {
+        "target": "3dClipLevel",
+        "status": "missing"
+      },
+      {
+        "target": "3dClustCount",
+        "status": "missing"
+      },
+      {
+        "target": "3dClustSim",
+        "status": "missing"
+      },
+      {
+        "target": "3dClusterize",
+        "status": "missing"
+      },
+      {
+        "target": "3dCompareAffine",
+        "status": "missing"
+      },
+      {
+        "target": "3dConformist",
+        "status": "missing"
+      },
+      {
+        "target": "3dConvolve",
+        "status": "missing"
+      },
+      {
+        "target": "3dDFT",
+        "status": "missing"
+      },
+      {
+        "target": "3dDTeig",
+        "status": "missing"
+      },
+      {
+        "target": "3dDTtoDWI",
+        "status": "missing"
+      },
+      {
+        "target": "3dDTtoNoisyDWI",
+        "status": "missing"
+      },
+      {
+        "target": "3dDWItoDT",
+        "status": "missing"
+      },
+      {
+        "target": "3dDWUncert",
+        "status": "missing"
+      },
+      {
+        "target": "3dDeconvolve",
+        "status": "missing"
+      },
+      {
+        "target": "3dDegreeCentrality",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dDegreeCentrality.json"
+      },
+      {
+        "target": "3dDepthMap",
+        "status": "missing"
+      },
+      {
+        "target": "3dDespike",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dDespike.json"
+      },
+      {
+        "target": "3dDetrend",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dDetrend.json"
+      },
+      {
+        "target": "3dDiff",
+        "status": "missing"
+      },
+      {
+        "target": "3dECM",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dECM.json"
+      },
+      {
+        "target": "3dEdu_01_scale",
+        "status": "missing"
+      },
+      {
+        "target": "3dEigsToDT",
+        "status": "missing"
+      },
+      {
+        "target": "3dEmpty",
+        "status": "missing"
+      },
+      {
+        "target": "3dEntropy",
+        "status": "missing"
+      },
+      {
+        "target": "3dErrtsCormat",
+        "status": "missing"
+      },
+      {
+        "target": "3dExchange",
+        "status": "missing"
+      },
+      {
+        "target": "3dExtractGroupInCorr",
+        "status": "missing"
+      },
+      {
+        "target": "3dExtrema",
+        "status": "missing"
+      },
+      {
+        "target": "3dFDR",
+        "status": "missing"
+      },
+      {
+        "target": "3dFFT",
+        "status": "missing"
+      },
+      {
+        "target": "3dFWHMx",
+        "status": "missing"
+      },
+      {
+        "target": "3dFriedman",
+        "status": "missing"
+      },
+      {
+        "target": "3dGenFeatureDist",
+        "status": "missing"
+      },
+      {
+        "target": "3dGenPriors",
+        "status": "missing"
+      },
+      {
+        "target": "3dGetrow",
+        "status": "missing"
+      },
+      {
+        "target": "3dGrayplot",
+        "status": "missing"
+      },
+      {
+        "target": "3dGroupInCorr",
+        "status": "missing"
+      },
+      {
+        "target": "3dHist",
+        "status": "missing"
+      },
+      {
+        "target": "3dICC",
+        "status": "missing"
+      },
+      {
+        "target": "3dISC",
+        "status": "missing"
+      },
+      {
+        "target": "3dIntracranial",
+        "status": "missing"
+      },
+      {
+        "target": "3dInvFMRI",
+        "status": "missing"
+      },
+      {
+        "target": "3dKruskalWallis",
+        "status": "missing"
+      },
+      {
+        "target": "3dLFCD",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dLFCD.json"
+      },
+      {
+        "target": "3dLME",
+        "status": "missing"
+      },
+      {
+        "target": "3dLMEr",
+        "status": "missing"
+      },
+      {
+        "target": "3dLRflip",
+        "status": "missing"
+      },
+      {
+        "target": "3dLSS",
+        "status": "missing"
+      },
+      {
+        "target": "3dLocalACF",
+        "status": "missing"
+      },
+      {
+        "target": "3dLocalBistat",
+        "status": "missing"
+      },
+      {
+        "target": "3dLocalHistog",
+        "status": "missing"
+      },
+      {
+        "target": "3dLocalPV",
+        "status": "missing"
+      },
+      {
+        "target": "3dLocalSVD",
+        "status": "missing"
+      },
+      {
+        "target": "3dLocalUnifize",
+        "status": "missing"
+      },
+      {
+        "target": "3dLocalstat",
+        "status": "missing"
+      },
+      {
+        "target": "3dLombScargle",
+        "status": "missing"
+      },
+      {
+        "target": "3dMEMA",
+        "status": "missing"
+      },
+      {
+        "target": "3dMEPFM",
+        "status": "missing"
+      },
+      {
+        "target": "3dMSE",
+        "status": "missing"
+      },
+      {
+        "target": "3dMSS",
+        "status": "missing"
+      },
+      {
+        "target": "3dMVM",
+        "status": "missing"
+      },
+      {
+        "target": "3dMVM_validator",
+        "status": "missing"
+      },
+      {
+        "target": "3dMannWhitney",
+        "status": "missing"
+      },
+      {
+        "target": "3dMaskToASCII",
+        "status": "missing"
+      },
+      {
+        "target": "3dMatch",
+        "status": "missing"
+      },
+      {
+        "target": "3dMean",
+        "status": "missing"
+      },
+      {
+        "target": "3dMedianFilter",
+        "status": "missing"
+      },
+      {
+        "target": "3dMultiThresh",
+        "status": "missing"
+      },
+      {
+        "target": "3dNLfim",
+        "status": "missing"
+      },
+      {
+        "target": "3dNetCorr",
+        "status": "missing"
+      },
+      {
+        "target": "3dNormalityTest",
+        "status": "missing"
+      },
+      {
+        "target": "3dNotes",
+        "status": "missing"
+      },
+      {
+        "target": "3dNwarpAdjust",
+        "status": "missing"
+      },
+      {
+        "target": "3dNwarpApply",
+        "status": "missing"
+      },
+      {
+        "target": "3dNwarpCalc",
+        "status": "missing"
+      },
+      {
+        "target": "3dNwarpCat",
+        "status": "missing"
+      },
+      {
+        "target": "3dNwarpFuncs",
+        "status": "missing"
+      },
+      {
+        "target": "3dNwarpXYZ",
+        "status": "missing"
+      },
+      {
+        "target": "3dOverlap",
+        "status": "missing"
+      },
+      {
+        "target": "3dPAR2AFNI.pl",
+        "status": "missing"
+      },
+      {
+        "target": "3dPFM",
+        "status": "missing"
+      },
+      {
+        "target": "3dPVmap",
+        "status": "missing"
+      },
+      {
+        "target": "3dPeriodogram",
+        "status": "missing"
+      },
+      {
+        "target": "3dPolyfit",
+        "status": "missing"
+      },
+      {
+        "target": "3dPval",
+        "status": "missing"
+      },
+      {
+        "target": "3dQwarp",
+        "status": "missing"
+      },
+      {
+        "target": "3dREMLfit",
+        "status": "missing"
+      },
+      {
+        "target": "3dROIMaker",
+        "status": "missing"
+      },
+      {
+        "target": "3dROIstats",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dROIstats.json"
+      },
+      {
+        "target": "3dRSFC",
+        "status": "missing"
+      },
+      {
+        "target": "3dRank",
+        "status": "missing"
+      },
+      {
+        "target": "3dRankizer",
+        "status": "missing"
+      },
+      {
+        "target": "3dReHo",
+        "status": "missing"
+      },
+      {
+        "target": "3dRegAna",
+        "status": "missing"
+      },
+      {
+        "target": "3dRetinoPhase",
+        "status": "missing"
+      },
+      {
+        "target": "3dRowFillin",
+        "status": "missing"
+      },
+      {
+        "target": "3dRprogDemo",
+        "status": "missing"
+      },
+      {
+        "target": "3dSeg",
+        "status": "missing"
+      },
+      {
+        "target": "3dSetupGroupInCorr",
+        "status": "missing"
+      },
+      {
+        "target": "3dSharpen",
+        "status": "missing"
+      },
+      {
+        "target": "3dSignatures",
+        "status": "missing"
+      },
+      {
+        "target": "3dSkullStrip",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dSkullStrip.json"
+      },
+      {
+        "target": "3dSliceNDice",
+        "status": "missing"
+      },
+      {
+        "target": "3dSpaceTimeCorr",
+        "status": "missing"
+      },
+      {
+        "target": "3dSpatNorm",
+        "status": "missing"
+      },
+      {
+        "target": "3dStatClust",
+        "status": "missing"
+      },
+      {
+        "target": "3dSurf2Vol",
+        "status": "missing"
+      },
+      {
+        "target": "3dSurfMask",
+        "status": "missing"
+      },
+      {
+        "target": "3dSynthesize",
+        "status": "missing"
+      },
+      {
+        "target": "3dTORTOISEtoHere",
+        "status": "missing"
+      },
+      {
+        "target": "3dTRfix",
+        "status": "missing"
+      },
+      {
+        "target": "3dTSgen",
+        "status": "missing"
+      },
+      {
+        "target": "3dTagalign",
+        "status": "missing"
+      },
+      {
+        "target": "3dTcat",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dTcat.json"
+      },
+      {
+        "target": "3dTcorr1D",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dTcorr1D.json"
+      },
+      {
+        "target": "3dTcorrMap",
+        "status": "missing"
+      },
+      {
+        "target": "3dTcorrelate",
+        "status": "missing"
+      },
+      {
+        "target": "3dTfilter",
+        "status": "missing"
+      },
+      {
+        "target": "3dTfitter",
+        "status": "missing"
+      },
+      {
+        "target": "3dThreetoRGB",
+        "status": "missing"
+      },
+      {
+        "target": "3dTnorm",
+        "status": "missing"
+      },
+      {
+        "target": "3dToutcount",
+        "status": "missing"
+      },
+      {
+        "target": "3dToyProg",
+        "status": "missing"
+      },
+      {
+        "target": "3dTproject",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dTproject.json"
+      },
+      {
+        "target": "3dTqual",
+        "status": "missing"
+      },
+      {
+        "target": "3dTrackID",
+        "status": "missing"
+      },
+      {
+        "target": "3dTshift",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dTshift.json"
+      },
+      {
+        "target": "3dTsmooth",
+        "status": "missing"
+      },
+      {
+        "target": "3dTsort",
+        "status": "missing"
+      },
+      {
+        "target": "3dTsplit4D",
+        "status": "missing"
+      },
+      {
+        "target": "3dTstat",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dTstat.json"
+      },
+      {
+        "target": "3dTto1D",
+        "status": "missing"
+      },
+      {
+        "target": "3dTwotoComplex",
+        "status": "missing"
+      },
+      {
+        "target": "3dUndump",
+        "status": "missing"
+      },
+      {
+        "target": "3dUnifize",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dUnifize.json"
+      },
+      {
+        "target": "3dUpsample",
+        "status": "missing"
+      },
+      {
+        "target": "3dVecRGB_to_HSL",
+        "status": "missing"
+      },
+      {
+        "target": "3dVol2Surf",
+        "status": "missing"
+      },
+      {
+        "target": "3dWarp",
+        "status": "missing"
+      },
+      {
+        "target": "3dWarpDrive",
+        "status": "missing"
+      },
+      {
+        "target": "3dWilcoxon",
+        "status": "missing"
+      },
+      {
+        "target": "3dWinsor",
+        "status": "missing"
+      },
+      {
+        "target": "3dXClustSim",
+        "status": "missing"
+      },
+      {
+        "target": "3dXYZcat",
+        "status": "missing"
+      },
+      {
+        "target": "3dZcat",
+        "status": "missing"
+      },
+      {
+        "target": "3dZcutup",
+        "status": "missing"
+      },
+      {
+        "target": "3dZeropad",
+        "status": "missing"
+      },
+      {
+        "target": "3dZipperZapper",
+        "status": "missing"
+      },
+      {
+        "target": "3dZregrid",
+        "status": "missing"
+      },
+      {
+        "target": "3danisosmooth",
+        "status": "missing"
+      },
+      {
+        "target": "3daxialize",
+        "status": "missing"
+      },
+      {
+        "target": "3dbucket",
+        "status": "missing"
+      },
+      {
+        "target": "3dcalc",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dcalc.json"
+      },
+      {
+        "target": "3dclust",
+        "status": "missing"
+      },
+      {
+        "target": "3dcopy",
+        "status": "missing"
+      },
+      {
+        "target": "3ddelay",
+        "status": "missing"
+      },
+      {
+        "target": "3ddot",
+        "status": "missing"
+      },
+      {
+        "target": "3ddot_beta",
+        "status": "missing"
+      },
+      {
+        "target": "3dedge3",
+        "status": "missing"
+      },
+      {
+        "target": "3dedgedog",
+        "status": "missing"
+      },
+      {
+        "target": "3dfim+",
+        "status": "missing"
+      },
+      {
+        "target": "3dfractionize",
+        "status": "missing"
+      },
+      {
+        "target": "3dhistog",
+        "status": "missing"
+      },
+      {
+        "target": "3dinfill",
+        "status": "missing"
+      },
+      {
+        "target": "3dinfo",
+        "status": "missing"
+      },
+      {
+        "target": "3dkmeans",
+        "status": "missing"
+      },
+      {
+        "target": "3dmaskSVD",
+        "status": "missing"
+      },
+      {
+        "target": "3dmask_tool",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dmask_tool.json"
+      },
+      {
+        "target": "3dmaskave",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dmaskave.json"
+      },
+      {
+        "target": "3dmaskdump",
+        "status": "missing"
+      },
+      {
+        "target": "3dmatcalc",
+        "status": "missing"
+      },
+      {
+        "target": "3dmatmult",
+        "status": "missing"
+      },
+      {
+        "target": "3dmaxdisp",
+        "status": "missing"
+      },
+      {
+        "target": "3dmaxima",
+        "status": "missing"
+      },
+      {
+        "target": "3dmerge",
+        "status": "missing"
+      },
+      {
+        "target": "3dnewid",
+        "status": "missing"
+      },
+      {
+        "target": "3dnvals",
+        "status": "missing"
+      },
+      {
+        "target": "3dpc",
+        "status": "missing"
+      },
+      {
+        "target": "3drefit",
+        "status": "done",
+        "descriptor": "descriptors/afni/3drefit.json"
+      },
+      {
+        "target": "3drename",
+        "status": "missing"
+      },
+      {
+        "target": "3dresample",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dresample.json"
+      },
+      {
+        "target": "3dretroicor",
+        "status": "missing"
+      },
+      {
+        "target": "3drotate",
+        "status": "missing"
+      },
+      {
+        "target": "3dsvm",
+        "status": "missing"
+      },
+      {
+        "target": "3dsvm_linpredict",
+        "status": "missing"
+      },
+      {
+        "target": "3dtoXdataset",
+        "status": "missing"
+      },
+      {
+        "target": "3dttest++",
+        "status": "missing"
+      },
+      {
+        "target": "3dvolreg",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dvolreg.json"
+      },
+      {
+        "target": "4swap",
+        "status": "missing"
+      },
+      {
+        "target": "@1dDiffMag",
+        "status": "missing"
+      },
+      {
+        "target": "@2dwarper",
+        "status": "missing"
+      },
+      {
+        "target": "@2dwarper.Allin",
+        "status": "missing"
+      },
+      {
+        "target": "@4Daverage",
+        "status": "missing"
+      },
+      {
+        "target": "@ANATICOR",
+        "status": "missing"
+      },
+      {
+        "target": "@AddEdge",
+        "status": "missing"
+      },
+      {
+        "target": "@AfniEnv",
+        "status": "missing"
+      },
+      {
+        "target": "@AfniOrient2RAImap",
+        "status": "missing"
+      },
+      {
+        "target": "@AfniOrientSign",
+        "status": "missing"
+      },
+      {
+        "target": "@Align_Centers",
+        "status": "missing"
+      },
+      {
+        "target": "@Atlasize",
+        "status": "missing"
+      },
+      {
+        "target": "@Center_Distance",
+        "status": "missing"
+      },
+      {
+        "target": "@CheckForAfniDset",
+        "status": "missing"
+      },
+      {
+        "target": "@ClustExp_CatLab",
+        "status": "missing"
+      },
+      {
+        "target": "@ClustExp_run_shiny",
+        "status": "missing"
+      },
+      {
+        "target": "@CommandGlobb",
+        "status": "missing"
+      },
+      {
+        "target": "@DO.examples",
+        "status": "missing"
+      },
+      {
+        "target": "@DeblankFileNames",
+        "status": "missing"
+      },
+      {
+        "target": "@DiceMetric",
+        "status": "missing"
+      },
+      {
+        "target": "@DriveAfni",
+        "status": "missing"
+      },
+      {
+        "target": "@DriveSuma",
+        "status": "missing"
+      },
+      {
+        "target": "@ElectroGrid",
+        "status": "missing"
+      },
+      {
+        "target": "@ExamineGenFeatDists",
+        "status": "missing"
+      },
+      {
+        "target": "@FS_roi_label",
+        "status": "missing"
+      },
+      {
+        "target": "@FSlabel2dset",
+        "status": "missing"
+      },
+      {
+        "target": "@FindAfniDsetPath",
+        "status": "missing"
+      },
+      {
+        "target": "@FromRAI",
+        "status": "missing"
+      },
+      {
+        "target": "@FullPath",
+        "status": "missing"
+      },
+      {
+        "target": "@GetAfniBin",
+        "status": "missing"
+      },
+      {
+        "target": "@GetAfniDims",
+        "status": "missing"
+      },
+      {
+        "target": "@GetAfniID",
+        "status": "missing"
+      },
+      {
+        "target": "@GetAfniOrient",
+        "status": "missing"
+      },
+      {
+        "target": "@GetAfniPrefix",
+        "status": "missing"
+      },
+      {
+        "target": "@GetAfniRes",
+        "status": "missing"
+      },
+      {
+        "target": "@GetAfniView",
+        "status": "missing"
+      },
+      {
+        "target": "@GradFlipTest",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_3dPFM_Demo",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_APMULTI_Demo1_rest",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_APMULTI_Demo2_realtime",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_AfniRetinoDemo",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_ClustScat_Demo",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_D99_macaque",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_DBSproc",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_FATCAT_DEMO",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_FATCAT_DEMO2",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_FATMVM_DEMO",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_IBT_DATASETS",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_InstaCorr_Demo",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_MACAQUE_DEMO",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_MACAQUE_DEMO_REST",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_MBM_Marmoset",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_MEICA_Demo",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_NIH_Marmoset",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_NMT",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_RSFMRI_Motion_Group_Demo",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_SURFLAYERS_DEMO1",
+        "status": "missing"
+      },
+      {
+        "target": "@Install_TSrestMovieDemo",
+        "status": "missing"
+      },
+      {
+        "target": "@IsoMasks",
+        "status": "missing"
+      },
+      {
+        "target": "@MakeLabelTable",
+        "status": "missing"
+      },
+      {
+        "target": "@NoExt",
+        "status": "missing"
+      },
+      {
+        "target": "@NoPound",
+        "status": "missing"
+      },
+      {
+        "target": "@NoisySkullStrip",
+        "status": "missing"
+      },
+      {
+        "target": "@Purify_1D",
+        "status": "missing"
+      },
+      {
+        "target": "@Quiet_Talkers",
+        "status": "missing"
+      },
+      {
+        "target": "@ROI_Corr_Mat",
+        "status": "missing"
+      },
+      {
+        "target": "@ROI_decluster",
+        "status": "missing"
+      },
+      {
+        "target": "@ROI_modal_grow",
+        "status": "missing"
+      },
+      {
+        "target": "@R_funclist",
+        "status": "missing"
+      },
+      {
+        "target": "@RenamePanga",
+        "status": "missing"
+      },
+      {
+        "target": "@Reorder",
+        "status": "missing"
+      },
+      {
+        "target": "@RetinoProc",
+        "status": "missing"
+      },
+      {
+        "target": "@SSwarper",
+        "status": "missing"
+      },
+      {
+        "target": "@SUMA_AlignToExperiment",
+        "status": "missing"
+      },
+      {
+        "target": "@SUMA_FSvolToBRIK",
+        "status": "missing"
+      },
+      {
+        "target": "@SUMA_Make_Spec_Caret",
+        "status": "missing"
+      },
+      {
+        "target": "@SUMA_Make_Spec_FS",
+        "status": "missing"
+      },
+      {
+        "target": "@SUMA_Make_Spec_SF",
+        "status": "missing"
+      },
+      {
+        "target": "@SUMA_renumber_FS",
+        "status": "missing"
+      },
+      {
+        "target": "@ScaleVolume",
+        "status": "missing"
+      },
+      {
+        "target": "@ScriptCheck",
+        "status": "missing"
+      },
+      {
+        "target": "@Shift_Volume",
+        "status": "missing"
+      },
+      {
+        "target": "@ShowDynamicRange",
+        "status": "missing"
+      },
+      {
+        "target": "@SkullStrip_TouchUp",
+        "status": "missing"
+      },
+      {
+        "target": "@Spharm.examples",
+        "status": "missing"
+      },
+      {
+        "target": "@SurfSmooth.HEAT_07.examples",
+        "status": "missing"
+      },
+      {
+        "target": "@T1scale",
+        "status": "missing"
+      },
+      {
+        "target": "@TimeDiff",
+        "status": "missing"
+      },
+      {
+        "target": "@ToRAI",
+        "status": "missing"
+      },
+      {
+        "target": "@VolCenter",
+        "status": "missing"
+      },
+      {
+        "target": "@afni.run.me",
+        "status": "missing"
+      },
+      {
+        "target": "@afni_R_package_install",
+        "status": "missing"
+      },
+      {
+        "target": "@afni_refacer_make_master",
+        "status": "missing"
+      },
+      {
+        "target": "@afni_refacer_make_master_addendum",
+        "status": "missing"
+      },
+      {
+        "target": "@afni_refacer_make_onebigA12",
+        "status": "missing"
+      },
+      {
+        "target": "@afni_refacer_run",
+        "status": "missing"
+      },
+      {
+        "target": "@align_partial_oblique",
+        "status": "missing"
+      },
+      {
+        "target": "@animal_warper",
+        "status": "missing"
+      },
+      {
+        "target": "@auto_tlrc",
+        "status": "missing"
+      },
+      {
+        "target": "@build_afni_Xlib",
+        "status": "missing"
+      },
+      {
+        "target": "@chauffeur_afni",
+        "status": "missing"
+      },
+      {
+        "target": "@clean_help_dir",
+        "status": "missing"
+      },
+      {
+        "target": "@clip_volume",
+        "status": "missing"
+      },
+      {
+        "target": "@compute_OC_weights",
+        "status": "missing"
+      },
+      {
+        "target": "@compute_gcor",
+        "status": "missing"
+      },
+      {
+        "target": "@demo_prompt",
+        "status": "missing"
+      },
+      {
+        "target": "@diff.files",
+        "status": "missing"
+      },
+      {
+        "target": "@diff.tree",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_4d_imager",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_4d_slices_to_3d_vol",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_anonymize",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_dwi_selector.tcsh",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_edgy_align_check",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_glue_imgs_vert",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_json_value.py",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_modal_smoothing_with_rep",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_montage_coordinator",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_overlap_check",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_slice_space",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_ssw_intermed_edge_imgs",
+        "status": "missing"
+      },
+      {
+        "target": "@djunct_vol_3slice_select",
+        "status": "missing"
+      },
+      {
+        "target": "@escape-",
+        "status": "missing"
+      },
+      {
+        "target": "@extract_meica_ortvec",
+        "status": "missing"
+      },
+      {
+        "target": "@fast_roi",
+        "status": "missing"
+      },
+      {
+        "target": "@fat_tract_colorize",
+        "status": "missing"
+      },
+      {
+        "target": "@fix_FSsphere",
+        "status": "missing"
+      },
+      {
+        "target": "@float_fix",
+        "status": "missing"
+      },
+      {
+        "target": "@get.afni.version",
+        "status": "missing"
+      },
+      {
+        "target": "@global_parse",
+        "status": "missing"
+      },
+      {
+        "target": "@grayplot",
+        "status": "missing"
+      },
+      {
+        "target": "@help.AFNI",
+        "status": "missing"
+      },
+      {
+        "target": "@isOblique",
+        "status": "missing"
+      },
+      {
+        "target": "@make_plug_diff",
+        "status": "missing"
+      },
+      {
+        "target": "@measure_bb_thick",
+        "status": "missing"
+      },
+      {
+        "target": "@measure_erosion_thick",
+        "status": "missing"
+      },
+      {
+        "target": "@measure_in2out",
+        "status": "missing"
+      },
+      {
+        "target": "@move.to.series.dirs",
+        "status": "missing"
+      },
+      {
+        "target": "@np",
+        "status": "missing"
+      },
+      {
+        "target": "@parse_afni_name",
+        "status": "missing"
+      },
+      {
+        "target": "@parse_name",
+        "status": "missing"
+      },
+      {
+        "target": "@radial_correlate",
+        "status": "missing"
+      },
+      {
+        "target": "@simulate_motion",
+        "status": "missing"
+      },
+      {
+        "target": "@snapshot_volreg",
+        "status": "missing"
+      },
+      {
+        "target": "@statauxcode",
+        "status": "missing"
+      },
+      {
+        "target": "@suma_acknowledge",
+        "status": "missing"
+      },
+      {
+        "target": "@suma_reprefixize_spec",
+        "status": "missing"
+      },
+      {
+        "target": "@surf_to_vol_spackle",
+        "status": "missing"
+      },
+      {
+        "target": "@thickness_master",
+        "status": "missing"
+      },
+      {
+        "target": "@toMNI_Awarp",
+        "status": "missing"
+      },
+      {
+        "target": "@toMNI_Qwarpar",
+        "status": "missing"
+      },
+      {
+        "target": "@update.afni.binaries",
+        "status": "missing"
+      },
+      {
+        "target": "@xyz_to_ijk",
+        "status": "missing"
+      },
+      {
+        "target": "AFNI_Batch_R",
+        "status": "missing"
+      },
+      {
+        "target": "AnalyzeTrace",
+        "status": "missing"
+      },
+      {
+        "target": "BayesianGroupAna.py",
+        "status": "missing"
+      },
+      {
+        "target": "BrainSkin",
+        "status": "missing"
+      },
+      {
+        "target": "ClustExp_HistTable.py",
+        "status": "missing"
+      },
+      {
+        "target": "ClustExp_StatParse.py",
+        "status": "missing"
+      },
+      {
+        "target": "CompareSurfaces",
+        "status": "missing"
+      },
+      {
+        "target": "ConvertDset",
+        "status": "missing"
+      },
+      {
+        "target": "ConvertSurface",
+        "status": "missing"
+      },
+      {
+        "target": "ConvexHull",
+        "status": "missing"
+      },
+      {
+        "target": "CreateIcosahedron",
+        "status": "missing"
+      },
+      {
+        "target": "DTIStudioFibertoSegments",
+        "status": "missing"
+      },
+      {
+        "target": "Dimon",
+        "status": "missing"
+      },
+      {
+        "target": "DriveSuma",
+        "status": "missing"
+      },
+      {
+        "target": "ExamineXmat",
+        "status": "missing"
+      },
+      {
+        "target": "FATCAT_matplot",
+        "status": "missing"
+      },
+      {
+        "target": "FIRdesign",
+        "status": "missing"
+      },
+      {
+        "target": "FSread_annot",
+        "status": "missing"
+      },
+      {
+        "target": "GLTsymtest",
+        "status": "missing"
+      },
+      {
+        "target": "HalloSuma",
+        "status": "missing"
+      },
+      {
+        "target": "InstaTract",
+        "status": "missing"
+      },
+      {
+        "target": "IsoSurface",
+        "status": "missing"
+      },
+      {
+        "target": "MBA",
+        "status": "missing"
+      },
+      {
+        "target": "MakeColorMap",
+        "status": "missing"
+      },
+      {
+        "target": "MapIcosahedron",
+        "status": "missing"
+      },
+      {
+        "target": "PTA",
+        "status": "missing"
+      },
+      {
+        "target": "ParseName",
+        "status": "missing"
+      },
+      {
+        "target": "RBA",
+        "status": "missing"
+      },
+      {
+        "target": "ROI2dataset",
+        "status": "missing"
+      },
+      {
+        "target": "ROIgrow",
+        "status": "missing"
+      },
+      {
+        "target": "RSFgen",
+        "status": "missing"
+      },
+      {
+        "target": "RetroTS.py",
+        "status": "missing"
+      },
+      {
+        "target": "SUMA_glxdino",
+        "status": "missing"
+      },
+      {
+        "target": "SUMA_paperplane",
+        "status": "missing"
+      },
+      {
+        "target": "SUMA_pixmap2eps",
+        "status": "missing"
+      },
+      {
+        "target": "SampBias",
+        "status": "missing"
+      },
+      {
+        "target": "ScaleToMap",
+        "status": "missing"
+      },
+      {
+        "target": "SpharmDeco",
+        "status": "missing"
+      },
+      {
+        "target": "SpharmReco",
+        "status": "missing"
+      },
+      {
+        "target": "Surf2VolCoord",
+        "status": "missing"
+      },
+      {
+        "target": "SurfClust",
+        "status": "missing"
+      },
+      {
+        "target": "SurfDist",
+        "status": "missing"
+      },
+      {
+        "target": "SurfDsetInfo",
+        "status": "missing"
+      },
+      {
+        "target": "SurfExtrema",
+        "status": "missing"
+      },
+      {
+        "target": "SurfFWHM",
+        "status": "missing"
+      },
+      {
+        "target": "SurfInfo",
+        "status": "missing"
+      },
+      {
+        "target": "SurfLayers",
+        "status": "missing"
+      },
+      {
+        "target": "SurfLocalstat",
+        "status": "missing"
+      },
+      {
+        "target": "SurfMeasures",
+        "status": "missing"
+      },
+      {
+        "target": "SurfMesh",
+        "status": "missing"
+      },
+      {
+        "target": "SurfPatch",
+        "status": "missing"
+      },
+      {
+        "target": "SurfQual",
+        "status": "missing"
+      },
+      {
+        "target": "SurfRetinoMap",
+        "status": "missing"
+      },
+      {
+        "target": "SurfSmooth",
+        "status": "missing"
+      },
+      {
+        "target": "SurfToSurf",
+        "status": "missing"
+      },
+      {
+        "target": "SurfaceMetrics",
+        "status": "missing"
+      },
+      {
+        "target": "TRR",
+        "status": "missing"
+      },
+      {
+        "target": "Vecwarp",
+        "status": "missing"
+      },
+      {
+        "target": "abids_json_info.py",
+        "status": "missing"
+      },
+      {
+        "target": "abids_json_tool.py",
+        "status": "missing"
+      },
+      {
+        "target": "abids_tool.py",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_apqc_tsnr_general",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_aw_tableize_roi_info.py",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_calc_mont_dims.py",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_combine_str.py",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_is_label.py",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_make_script_and_rst.py",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_select_str.py",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_simplify_cost.py",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_suma_fs_mask_and_qc",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_suma_fs_roi_info",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_tort_plot_dp_align",
+        "status": "missing"
+      },
+      {
+        "target": "adjunct_tort_read_dp_align.py",
+        "status": "missing"
+      },
+      {
+        "target": "adwarp",
+        "status": "missing"
+      },
+      {
+        "target": "afni",
+        "status": "missing"
+      },
+      {
+        "target": "afni_check_omp",
+        "status": "missing"
+      },
+      {
+        "target": "afni_history",
+        "status": "missing"
+      },
+      {
+        "target": "afni_open",
+        "status": "missing"
+      },
+      {
+        "target": "afni_proc.py",
+        "status": "missing"
+      },
+      {
+        "target": "afni_python_wrapper.py",
+        "status": "missing"
+      },
+      {
+        "target": "afni_run_R",
+        "status": "missing"
+      },
+      {
+        "target": "afni_skeleton.py",
+        "status": "missing"
+      },
+      {
+        "target": "afni_system_check.py",
+        "status": "missing"
+      },
+      {
+        "target": "afni_vcheck",
+        "status": "missing"
+      },
+      {
+        "target": "aiv",
+        "status": "missing"
+      },
+      {
+        "target": "align_epi_anat.py",
+        "status": "missing"
+      },
+      {
+        "target": "ap_run_simple_rest.tcsh",
+        "status": "missing"
+      },
+      {
+        "target": "apqc_make_html.py",
+        "status": "missing"
+      },
+      {
+        "target": "apqc_make_tcsh.py",
+        "status": "missing"
+      },
+      {
+        "target": "apsearch",
+        "status": "missing"
+      },
+      {
+        "target": "auto_warp.py",
+        "status": "missing"
+      },
+      {
+        "target": "balloon",
+        "status": "missing"
+      },
+      {
+        "target": "bayes_view",
+        "status": "missing"
+      },
+      {
+        "target": "build_afni.py",
+        "status": "missing"
+      },
+      {
+        "target": "byteorder",
+        "status": "missing"
+      },
+      {
+        "target": "cat_matvec",
+        "status": "missing"
+      },
+      {
+        "target": "ccalc",
+        "status": "missing"
+      },
+      {
+        "target": "cdf",
+        "status": "missing"
+      },
+      {
+        "target": "cifti_tool",
+        "status": "missing"
+      },
+      {
+        "target": "cjpeg",
+        "status": "missing"
+      },
+      {
+        "target": "column_cat",
+        "status": "missing"
+      },
+      {
+        "target": "convert_cdiflist_to_grads.py",
+        "status": "missing"
+      },
+      {
+        "target": "count",
+        "status": "missing"
+      },
+      {
+        "target": "dcm2niix_afni",
+        "status": "missing"
+      },
+      {
+        "target": "dicom_hdr",
+        "status": "missing"
+      },
+      {
+        "target": "dicom_hinfo",
+        "status": "missing"
+      },
+      {
+        "target": "dicom_to_raw",
+        "status": "missing"
+      },
+      {
+        "target": "djpeg",
+        "status": "missing"
+      },
+      {
+        "target": "dsetstat2p",
+        "status": "missing"
+      },
+      {
+        "target": "eg_main_chrono.py",
+        "status": "missing"
+      },
+      {
+        "target": "epi_b0_correct.py",
+        "status": "missing"
+      },
+      {
+        "target": "fat_mat2d_plot.py",
+        "status": "missing"
+      },
+      {
+        "target": "fat_mat_sel.py",
+        "status": "missing"
+      },
+      {
+        "target": "fat_mat_tableize.py",
+        "status": "missing"
+      },
+      {
+        "target": "fat_mvm_gridconv.py",
+        "status": "missing"
+      },
+      {
+        "target": "fat_mvm_prep.py",
+        "status": "missing"
+      },
+      {
+        "target": "fat_mvm_scripter.py",
+        "status": "missing"
+      },
+      {
+        "target": "fat_proc_align_anat_pair",
+        "status": "missing"
+      },
+      {
+        "target": "fat_proc_axialize_anat",
+        "status": "missing"
+      },
+      {
+        "target": "fat_proc_connec_vis",
+        "status": "missing"
+      },
+      {
+        "target": "fat_proc_convert_dcm_anat",
+        "status": "missing"
+      },
+      {
+        "target": "fat_proc_convert_dcm_dwis",
+        "status": "missing"
+      },
+      {
+        "target": "fat_proc_decmap",
+        "status": "missing"
+      },
+      {
+        "target": "fat_proc_dwi_to_dt",
+        "status": "missing"
+      },
+      {
+        "target": "fat_proc_filter_dwis",
+        "status": "missing"
+      },
+      {
+        "target": "fat_proc_imit2w_from_t1w",
+        "status": "missing"
+      },
+      {
+        "target": "fat_proc_map_to_dti",
+        "status": "missing"
+      },
+      {
+        "target": "fat_proc_select_vols",
+        "status": "missing"
+      },
+      {
+        "target": "fat_roi_row.py",
+        "status": "missing"
+      },
+      {
+        "target": "fdrval",
+        "status": "missing"
+      },
+      {
+        "target": "fftest",
+        "status": "missing"
+      },
+      {
+        "target": "file_tool",
+        "status": "missing"
+      },
+      {
+        "target": "fim2",
+        "status": "missing"
+      },
+      {
+        "target": "find_variance_lines.tcsh",
+        "status": "missing"
+      },
+      {
+        "target": "float_scan",
+        "status": "missing"
+      },
+      {
+        "target": "from3d",
+        "status": "missing"
+      },
+      {
+        "target": "gen_epi_review.py",
+        "status": "missing"
+      },
+      {
+        "target": "gen_group_command.py",
+        "status": "missing"
+      },
+      {
+        "target": "gen_ss_review_scripts.py",
+        "status": "missing"
+      },
+      {
+        "target": "gen_ss_review_table.py",
+        "status": "missing"
+      },
+      {
+        "target": "get_afni_model_PRF",
+        "status": "missing"
+      },
+      {
+        "target": "get_afni_model_PRF_6",
+        "status": "missing"
+      },
+      {
+        "target": "get_afni_model_PRF_6_BAD",
+        "status": "missing"
+      },
+      {
+        "target": "gifti_tool",
+        "status": "missing"
+      },
+      {
+        "target": "help_format",
+        "status": "missing"
+      },
+      {
+        "target": "im2niml",
+        "status": "missing"
+      },
+      {
+        "target": "images_equal",
+        "status": "missing"
+      },
+      {
+        "target": "imand",
+        "status": "missing"
+      },
+      {
+        "target": "imaver",
+        "status": "missing"
+      },
+      {
+        "target": "imcalc",
+        "status": "missing"
+      },
+      {
+        "target": "imcat",
+        "status": "missing"
+      },
+      {
+        "target": "imcutup",
+        "status": "missing"
+      },
+      {
+        "target": "imdump",
+        "status": "missing"
+      },
+      {
+        "target": "immask",
+        "status": "missing"
+      },
+      {
+        "target": "imreg",
+        "status": "missing"
+      },
+      {
+        "target": "imrotate",
+        "status": "missing"
+      },
+      {
+        "target": "imstack",
+        "status": "missing"
+      },
+      {
+        "target": "imstat",
+        "status": "missing"
+      },
+      {
+        "target": "imupsam",
+        "status": "missing"
+      },
+      {
+        "target": "init_user_dotfiles.py",
+        "status": "missing"
+      },
+      {
+        "target": "inspec",
+        "status": "missing"
+      },
+      {
+        "target": "lesion_align",
+        "status": "missing"
+      },
+      {
+        "target": "make_pq_script.py",
+        "status": "missing"
+      },
+      {
+        "target": "make_random_timing.py",
+        "status": "missing"
+      },
+      {
+        "target": "make_stim_times.py",
+        "status": "missing"
+      },
+      {
+        "target": "map_TrackID",
+        "status": "missing"
+      },
+      {
+        "target": "meica.py",
+        "status": "missing"
+      },
+      {
+        "target": "mycat",
+        "status": "missing"
+      },
+      {
+        "target": "myget",
+        "status": "missing"
+      },
+      {
+        "target": "neuro_deconvolve.py",
+        "status": "missing"
+      },
+      {
+        "target": "nicat",
+        "status": "missing"
+      },
+      {
+        "target": "niccc",
+        "status": "missing"
+      },
+      {
+        "target": "nifti1_tool",
+        "status": "missing"
+      },
+      {
+        "target": "nifti_tool",
+        "status": "missing"
+      },
+      {
+        "target": "niml_feedme",
+        "status": "missing"
+      },
+      {
+        "target": "niprobe",
+        "status": "missing"
+      },
+      {
+        "target": "nsize",
+        "status": "missing"
+      },
+      {
+        "target": "p2dsetstat",
+        "status": "missing"
+      },
+      {
+        "target": "parse_fs_lt_log.py",
+        "status": "missing"
+      },
+      {
+        "target": "plugout_drive",
+        "status": "missing"
+      },
+      {
+        "target": "plugout_ijk",
+        "status": "missing"
+      },
+      {
+        "target": "plugout_tt",
+        "status": "missing"
+      },
+      {
+        "target": "plugout_tta",
+        "status": "missing"
+      },
+      {
+        "target": "prompt_popup",
+        "status": "missing"
+      },
+      {
+        "target": "prompt_user",
+        "status": "missing"
+      },
+      {
+        "target": "python_module_test.py",
+        "status": "missing"
+      },
+      {
+        "target": "qdelaunay",
+        "status": "missing"
+      },
+      {
+        "target": "qhull",
+        "status": "missing"
+      },
+      {
+        "target": "quick.alpha.vals.py",
+        "status": "missing"
+      },
+      {
+        "target": "quickspec",
+        "status": "missing"
+      },
+      {
+        "target": "quickspecSL",
+        "status": "missing"
+      },
+      {
+        "target": "quotize",
+        "status": "missing"
+      },
+      {
+        "target": "rPkgsInstall",
+        "status": "missing"
+      },
+      {
+        "target": "rbox",
+        "status": "missing"
+      },
+      {
+        "target": "read_matlab_files.py",
+        "status": "missing"
+      },
+      {
+        "target": "realtime_receiver.py",
+        "status": "missing"
+      },
+      {
+        "target": "rmz",
+        "status": "missing"
+      },
+      {
+        "target": "rotcom",
+        "status": "missing"
+      },
+      {
+        "target": "rtfeedme",
+        "status": "missing"
+      },
+      {
+        "target": "serial_helper",
+        "status": "missing"
+      },
+      {
+        "target": "sfim",
+        "status": "missing"
+      },
+      {
+        "target": "slow_surf_clustsim.py",
+        "status": "missing"
+      },
+      {
+        "target": "stimband",
+        "status": "missing"
+      },
+      {
+        "target": "strblast",
+        "status": "missing"
+      },
+      {
+        "target": "suma",
+        "status": "missing"
+      },
+      {
+        "target": "suma_change_spec",
+        "status": "missing"
+      },
+      {
+        "target": "tedana_wrapper.py",
+        "status": "missing"
+      },
+      {
+        "target": "tfim",
+        "status": "missing"
+      },
+      {
+        "target": "timing_tool.py",
+        "status": "missing"
+      },
+      {
+        "target": "to3d",
+        "status": "missing"
+      },
+      {
+        "target": "tokens",
+        "status": "missing"
+      },
+      {
+        "target": "uber_align_test.py",
+        "status": "missing"
+      },
+      {
+        "target": "uber_proc.py",
+        "status": "missing"
+      },
+      {
+        "target": "uber_skel.py",
+        "status": "missing"
+      },
+      {
+        "target": "uber_subject.py",
+        "status": "missing"
+      },
+      {
+        "target": "uber_ttest.py",
+        "status": "missing"
+      },
+      {
+        "target": "unWarpEPI.py",
+        "status": "missing"
+      },
+      {
+        "target": "uniq_images",
+        "status": "missing"
+      },
+      {
+        "target": "waver",
+        "status": "missing"
+      },
+      {
+        "target": "whereami",
+        "status": "missing"
+      },
+      {
+        "target": "whirlgif",
+        "status": "missing"
+      },
+      {
+        "target": "xmat_tool.py",
+        "status": "missing"
+      }
+    ]
+  }
+}

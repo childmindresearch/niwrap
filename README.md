@@ -3,21 +3,27 @@
 
 NiWrap is an extensive collection of neuroimaging command line tool metadata used for generating modern, ideomatic Python wrappers.
 
-Metadata is partly hand-written and partly extracted from existing tools.
-
-NiWrap is based on the Boutiques Descriptor Schema and powered by the Styx Boutiques-to-Python compiler.
+Metadata is partly hand-written and partly extracted from the source code of the tools themselves.
+NiWrap is based on the [Boutiques Descriptor Schema](https://github.com/boutiques/boutiques) and powered by the [Styx Boutiques-to-Python compiler](https://github.com/childmindresearch/styx).
 
 ## Supported frameworks
 
+<!-- START_FRAMEWORKS_TABLE -->
+
 | Framework | Approach | Status | Coverage |
 | --- | --- | --- | --- |
-| AFNI | Manual | In progress | ?% (?/?) |
-| ANTs | Manual | In progress | ?% (?/?) |
-| Convert3D | Manual | In progress | ?% (?/?) |
-| FSL | Manual | In progress | ?% (?/?) |
-| Freesurfer | Manual | In progress | ?% (?/?) |
-| MRtrix3 | Source extration | Testing | 100% (112/112) |
-| Connectome Workbench | Source extraction | Testing | 100% (202/202) |
+| [AFNI](https://afni.nimh.nih.gov/) | Manual | In progress | 22/621 (3.5%) |
+| [ANTs](https://github.com/ANTsX/ANTs) | Manual | In progress | 6/120 (5.0%) |
+| [Connectome Workbench](https://github.com/Washington-University/workbench) | Source extraction | Testing | 208/208 (100% 🎉) |
+| [Convert3D](http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D) | Manual | In progress | 1/5 (20.0%) |
+| [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) | Manual | In progress | 20/377 (5.3%) |
+| [FreeSurfer](https://github.com/freesurfer/freesurfer) | Manual | In Progress | 2/104 (1.9%) |
+| [MRTrix3](https://www.mrtrix.org/) | Source extraction | Testing | 112/125 (89.6%) |
+
+<!-- END_FRAMEWORKS_TABLE -->
+
+> [!NOTE] 
+> *API Coverage* is defined as the percentage of individual binaries for which a descriptor is available in NiWrap. This is not a measure of the completeness of the descriptors themselves nor is reaching 100% strictly necessary as e.g. FSL and AFNI contain many small utilities for which Python offers much easier standard library functions. One way to increase coverage is to mark known-irrelevant binaries as `"status": "ignore"` in `frameworks/`.
 
 ## Repository structure
 
@@ -27,6 +33,7 @@ NiWrap is based on the Boutiques Descriptor Schema and powered by the Styx Bouti
 | `/schemas` | JSON schema for Boutiques descriptors |
 | `/python` | Generated `niwrap` Python package |
 | `/extraction` | Source metadata extraction |
+| `/frameworks` | Framework-specific metadata |
 
 ## Python package
 
@@ -37,3 +44,13 @@ See the [niwrap Python package README](./python/README.md) for installation inst
 ## Contributing
 
 See the [CONTRIBUTING.md](./CONTRIBUTING.md) file for information on how to contribute to NiWrap.
+
+
+
+
+
+
+
+
+
+

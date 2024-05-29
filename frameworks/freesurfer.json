@@ -1,0 +1,429 @@
+{
+  "id": "freesurfer",
+  "name": "FreeSurfer",
+  "url": "https://github.com/freesurfer/freesurfer",
+  "approach": "Manual",
+  "status": "In Progress",
+  "api": {
+    "endpoints": [
+      {
+        "target": "UpdateNeeded",
+        "status": "missing"
+      },
+      {
+        "target": "analyzeto4dfp",
+        "status": "missing"
+      },
+      {
+        "target": "aparcstats2table",
+        "status": "missing"
+      },
+      {
+        "target": "apas2aseg",
+        "status": "missing"
+      },
+      {
+        "target": "asegstats2table",
+        "status": "missing"
+      },
+      {
+        "target": "avi2talxfm",
+        "status": "missing"
+      },
+      {
+        "target": "bbregister",
+        "status": "missing"
+      },
+      {
+        "target": "compute_vox2vox",
+        "status": "missing"
+      },
+      {
+        "target": "datastruct_utils.py",
+        "status": "missing"
+      },
+      {
+        "target": "extract_talairach_avi_QA.awk",
+        "status": "missing"
+      },
+      {
+        "target": "flirt.fsl",
+        "status": "missing"
+      },
+      {
+        "target": "fsr-getxopts",
+        "status": "missing"
+      },
+      {
+        "target": "fsutils.py",
+        "status": "missing"
+      },
+      {
+        "target": "gauss_4dfp",
+        "status": "missing"
+      },
+      {
+        "target": "ifh2hdr",
+        "status": "missing"
+      },
+      {
+        "target": "imgreg_4dfp",
+        "status": "missing"
+      },
+      {
+        "target": "kvlApplyTransform",
+        "status": "missing"
+      },
+      {
+        "target": "kvlApplyTransform.bin",
+        "status": "missing"
+      },
+      {
+        "target": "kvlAutoCrop",
+        "status": "missing"
+      },
+      {
+        "target": "kvlAutoCrop.bin",
+        "status": "missing"
+      },
+      {
+        "target": "lta_convert",
+        "status": "missing"
+      },
+      {
+        "target": "misc.py",
+        "status": "missing"
+      },
+      {
+        "target": "mpr2mni305",
+        "status": "missing"
+      },
+      {
+        "target": "mri_add_xform_to_header",
+        "status": "missing"
+      },
+      {
+        "target": "mri_and",
+        "status": "missing"
+      },
+      {
+        "target": "mri_aparc2aseg",
+        "status": "missing"
+      },
+      {
+        "target": "mri_binarize",
+        "status": "done",
+        "descriptor": "descriptors/freesurfer/mri_binarize.json"
+      },
+      {
+        "target": "mri_binarize.bin",
+        "status": "missing"
+      },
+      {
+        "target": "mri_ca_label",
+        "status": "missing"
+      },
+      {
+        "target": "mri_ca_normalize",
+        "status": "missing"
+      },
+      {
+        "target": "mri_ca_register",
+        "status": "missing"
+      },
+      {
+        "target": "mri_cc",
+        "status": "missing"
+      },
+      {
+        "target": "mri_concat",
+        "status": "missing"
+      },
+      {
+        "target": "mri_concat.bin",
+        "status": "missing"
+      },
+      {
+        "target": "mri_concatenate_lta",
+        "status": "missing"
+      },
+      {
+        "target": "mri_concatenate_lta.bin",
+        "status": "missing"
+      },
+      {
+        "target": "mri_convert",
+        "status": "missing"
+      },
+      {
+        "target": "mri_convert.bin",
+        "status": "missing"
+      },
+      {
+        "target": "mri_coreg",
+        "status": "missing"
+      },
+      {
+        "target": "mri_edit_wm_with_aseg",
+        "status": "missing"
+      },
+      {
+        "target": "mri_em_register",
+        "status": "missing"
+      },
+      {
+        "target": "mri_fill",
+        "status": "missing"
+      },
+      {
+        "target": "mri_fuse_segmentations",
+        "status": "missing"
+      },
+      {
+        "target": "mri_gcut",
+        "status": "missing"
+      },
+      {
+        "target": "mri_info",
+        "status": "missing"
+      },
+      {
+        "target": "mri_label2label",
+        "status": "missing"
+      },
+      {
+        "target": "mri_label2label.bin",
+        "status": "missing"
+      },
+      {
+        "target": "mri_make_uchar",
+        "status": "missing"
+      },
+      {
+        "target": "mri_mask",
+        "status": "missing"
+      },
+      {
+        "target": "mri_mask.bin",
+        "status": "missing"
+      },
+      {
+        "target": "mri_matrix_multiply",
+        "status": "missing"
+      },
+      {
+        "target": "mri_motion_correct.fsl",
+        "status": "missing"
+      },
+      {
+        "target": "mri_normalize",
+        "status": "missing"
+      },
+      {
+        "target": "mri_normalize_tp2",
+        "status": "missing"
+      },
+      {
+        "target": "mri_nu_correct.mni",
+        "status": "missing"
+      },
+      {
+        "target": "mri_or",
+        "status": "missing"
+      },
+      {
+        "target": "mri_pretess",
+        "status": "missing"
+      },
+      {
+        "target": "mri_relabel_hypointensities",
+        "status": "missing"
+      },
+      {
+        "target": "mri_robust_register",
+        "status": "missing"
+      },
+      {
+        "target": "mri_robust_register.bin",
+        "status": "missing"
+      },
+      {
+        "target": "mri_robust_template",
+        "status": "missing"
+      },
+      {
+        "target": "mri_segment",
+        "status": "missing"
+      },
+      {
+        "target": "mri_segreg",
+        "status": "missing"
+      },
+      {
+        "target": "mri_segstats",
+        "status": "missing"
+      },
+      {
+        "target": "mri_tessellate",
+        "status": "missing"
+      },
+      {
+        "target": "mri_vol2surf",
+        "status": "missing"
+      },
+      {
+        "target": "mri_vol2vol",
+        "status": "done",
+        "descriptor": "descriptors/freesurfer/apply_vol_transform.json"
+      },
+      {
+        "target": "mri_vol2vol.bin",
+        "status": "missing"
+      },
+      {
+        "target": "mri_watershed",
+        "status": "missing"
+      },
+      {
+        "target": "mris_anatomical_stats",
+        "status": "missing"
+      },
+      {
+        "target": "mris_ca_label",
+        "status": "missing"
+      },
+      {
+        "target": "mris_calc",
+        "status": "missing"
+      },
+      {
+        "target": "mris_convert",
+        "status": "missing"
+      },
+      {
+        "target": "mris_curvature",
+        "status": "missing"
+      },
+      {
+        "target": "mris_curvature_stats",
+        "status": "missing"
+      },
+      {
+        "target": "mris_euler_number",
+        "status": "missing"
+      },
+      {
+        "target": "mris_expand",
+        "status": "missing"
+      },
+      {
+        "target": "mris_extract_main_component",
+        "status": "missing"
+      },
+      {
+        "target": "mris_fix_topology",
+        "status": "missing"
+      },
+      {
+        "target": "mris_inflate",
+        "status": "missing"
+      },
+      {
+        "target": "mris_info",
+        "status": "missing"
+      },
+      {
+        "target": "mris_jacobian",
+        "status": "missing"
+      },
+      {
+        "target": "mris_label2annot",
+        "status": "missing"
+      },
+      {
+        "target": "mris_make_surfaces",
+        "status": "missing"
+      },
+      {
+        "target": "mris_register",
+        "status": "missing"
+      },
+      {
+        "target": "mris_remove_intersection",
+        "status": "missing"
+      },
+      {
+        "target": "mris_smooth",
+        "status": "missing"
+      },
+      {
+        "target": "mris_sphere",
+        "status": "missing"
+      },
+      {
+        "target": "mris_topo_fixer",
+        "status": "missing"
+      },
+      {
+        "target": "mris_volmask",
+        "status": "missing"
+      },
+      {
+        "target": "mrisp_paint",
+        "status": "missing"
+      },
+      {
+        "target": "pctsurfcon",
+        "status": "missing"
+      },
+      {
+        "target": "recon-all",
+        "status": "missing"
+      },
+      {
+        "target": "run_SegmentSubject.sh",
+        "status": "missing"
+      },
+      {
+        "target": "run_segmentSubjectT1T2_autoEstimateAlveusML.sh",
+        "status": "missing"
+      },
+      {
+        "target": "segmentBS.sh",
+        "status": "missing"
+      },
+      {
+        "target": "segmentSF_T1T2.sh",
+        "status": "missing"
+      },
+      {
+        "target": "segmentSubject",
+        "status": "missing"
+      },
+      {
+        "target": "segmentSubjectT1T2_autoEstimateAlveusML",
+        "status": "missing"
+      },
+      {
+        "target": "subject_info.py",
+        "status": "missing"
+      },
+      {
+        "target": "talairach_afd",
+        "status": "missing"
+      },
+      {
+        "target": "talairach_avi",
+        "status": "missing"
+      },
+      {
+        "target": "tkregister2_cmdl",
+        "status": "missing"
+      },
+      {
+        "target": "vertexvol",
+        "status": "missing"
+      }
+    ]
+  }
+}

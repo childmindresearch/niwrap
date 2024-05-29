@@ -1,0 +1,1540 @@
+{
+  "id": "fsl",
+  "name": "FSL",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
+  "approach": "Manual",
+  "status": "In progress",
+  "container": "fnndsc/fsl:6.0.5.1-cuda9.1",
+  "api": {
+    "endpoints": [
+      {
+        "target": "AnatomicalAverage",
+        "status": "missing"
+      },
+      {
+        "target": "ApplyXFM",
+        "status": "missing"
+      },
+      {
+        "target": "Bet",
+        "status": "missing"
+      },
+      {
+        "target": "ConcatXFM",
+        "status": "missing"
+      },
+      {
+        "target": "Fast",
+        "status": "missing"
+      },
+      {
+        "target": "Fdt",
+        "status": "missing"
+      },
+      {
+        "target": "Feat",
+        "status": "missing"
+      },
+      {
+        "target": "Featquery",
+        "status": "missing"
+      },
+      {
+        "target": "Flirt",
+        "status": "missing"
+      },
+      {
+        "target": "Fsl_prepare_fieldmap",
+        "status": "missing"
+      },
+      {
+        "target": "Glm",
+        "status": "missing"
+      },
+      {
+        "target": "InvertXFM",
+        "status": "missing"
+      },
+      {
+        "target": "Make_flobs",
+        "status": "missing"
+      },
+      {
+        "target": "Melodic",
+        "status": "missing"
+      },
+      {
+        "target": "Nudge",
+        "status": "missing"
+      },
+      {
+        "target": "Pnm",
+        "status": "missing"
+      },
+      {
+        "target": "Possum",
+        "status": "missing"
+      },
+      {
+        "target": "Renderhighres",
+        "status": "missing"
+      },
+      {
+        "target": "Renderstats",
+        "status": "missing"
+      },
+      {
+        "target": "Runtcl",
+        "status": "missing"
+      },
+      {
+        "target": "Susan",
+        "status": "missing"
+      },
+      {
+        "target": "Text2Vest",
+        "status": "missing"
+      },
+      {
+        "target": "Vest2Text",
+        "status": "missing"
+      },
+      {
+        "target": "aff2rigid",
+        "status": "missing"
+      },
+      {
+        "target": "applytopup",
+        "status": "missing"
+      },
+      {
+        "target": "applywarp",
+        "status": "done",
+        "descriptor": "descriptors/fsl/apply_warp.json"
+      },
+      {
+        "target": "applyxfm4D",
+        "status": "missing"
+      },
+      {
+        "target": "asl_calib",
+        "status": "missing"
+      },
+      {
+        "target": "asl_file",
+        "status": "missing"
+      },
+      {
+        "target": "asl_gui",
+        "status": "missing"
+      },
+      {
+        "target": "asl_mfree",
+        "status": "missing"
+      },
+      {
+        "target": "asl_reg",
+        "status": "missing"
+      },
+      {
+        "target": "atlasq",
+        "status": "missing"
+      },
+      {
+        "target": "atlasquery",
+        "status": "missing"
+      },
+      {
+        "target": "autoaq",
+        "status": "missing"
+      },
+      {
+        "target": "avscale",
+        "status": "missing"
+      },
+      {
+        "target": "avw2fsl",
+        "status": "missing"
+      },
+      {
+        "target": "b0calc",
+        "status": "missing"
+      },
+      {
+        "target": "basil",
+        "status": "missing"
+      },
+      {
+        "target": "basil_var",
+        "status": "missing"
+      },
+      {
+        "target": "baycest",
+        "status": "missing"
+      },
+      {
+        "target": "bedpost",
+        "status": "missing"
+      },
+      {
+        "target": "bedpostx",
+        "status": "missing"
+      },
+      {
+        "target": "bedpostx_datacheck",
+        "status": "missing"
+      },
+      {
+        "target": "bedpostx_gpu",
+        "status": "missing"
+      },
+      {
+        "target": "bedpostx_postproc.sh",
+        "status": "missing"
+      },
+      {
+        "target": "bedpostx_postproc_gpu.sh",
+        "status": "missing"
+      },
+      {
+        "target": "bedpostx_preproc.sh",
+        "status": "missing"
+      },
+      {
+        "target": "bedpostx_single_slice.sh",
+        "status": "missing"
+      },
+      {
+        "target": "bet",
+        "status": "done",
+        "descriptor": "descriptors/fsl/bet.json"
+      },
+      {
+        "target": "bet2",
+        "status": "missing"
+      },
+      {
+        "target": "betsurf",
+        "status": "missing"
+      },
+      {
+        "target": "bianca",
+        "status": "missing"
+      },
+      {
+        "target": "bianca_cluster_stats",
+        "status": "missing"
+      },
+      {
+        "target": "bianca_overlap_measures",
+        "status": "missing"
+      },
+      {
+        "target": "bianca_perivent_deep",
+        "status": "missing"
+      },
+      {
+        "target": "calc_grad_perc_dev",
+        "status": "missing"
+      },
+      {
+        "target": "ccops",
+        "status": "missing"
+      },
+      {
+        "target": "checkFEAT",
+        "status": "missing"
+      },
+      {
+        "target": "cluster",
+        "status": "missing"
+      },
+      {
+        "target": "cluster2html",
+        "status": "missing"
+      },
+      {
+        "target": "concat_bvars",
+        "status": "missing"
+      },
+      {
+        "target": "connectedcomp",
+        "status": "missing"
+      },
+      {
+        "target": "contrast_mgr",
+        "status": "missing"
+      },
+      {
+        "target": "convert_xfm",
+        "status": "done",
+        "descriptor": "descriptors/fsl/convert_xfm.json"
+      },
+      {
+        "target": "convertwarp",
+        "status": "done",
+        "descriptor": "descriptors/fsl/convert_warp.json"
+      },
+      {
+        "target": "create_blueprint.py",
+        "status": "missing"
+      },
+      {
+        "target": "create_lut",
+        "status": "missing"
+      },
+      {
+        "target": "cutoffcalc",
+        "status": "missing"
+      },
+      {
+        "target": "design_ttest2",
+        "status": "missing"
+      },
+      {
+        "target": "distancemap",
+        "status": "missing"
+      },
+      {
+        "target": "drawmesh",
+        "status": "missing"
+      },
+      {
+        "target": "dtifit",
+        "status": "missing"
+      },
+      {
+        "target": "dtigen",
+        "status": "missing"
+      },
+      {
+        "target": "dual_regression",
+        "status": "missing"
+      },
+      {
+        "target": "easythresh",
+        "status": "missing"
+      },
+      {
+        "target": "eddy",
+        "status": "done",
+        "descriptor": "descriptors/fsl/eddy.json"
+      },
+      {
+        "target": "eddy_combine",
+        "status": "missing"
+      },
+      {
+        "target": "eddy_correct",
+        "status": "missing"
+      },
+      {
+        "target": "eddy_cuda",
+        "status": "missing"
+      },
+      {
+        "target": "eddy_cuda10.2",
+        "status": "missing"
+      },
+      {
+        "target": "eddy_cuda8.0",
+        "status": "missing"
+      },
+      {
+        "target": "eddy_cuda9.1",
+        "status": "missing"
+      },
+      {
+        "target": "eddy_openmp",
+        "status": "missing"
+      },
+      {
+        "target": "eddy_quad",
+        "status": "missing"
+      },
+      {
+        "target": "eddy_squad",
+        "status": "missing"
+      },
+      {
+        "target": "epi_reg",
+        "status": "done",
+        "descriptor": "descriptors/fsl/epi_reg.json"
+      },
+      {
+        "target": "estimate_metric_distortion",
+        "status": "missing"
+      },
+      {
+        "target": "estnoise",
+        "status": "missing"
+      },
+      {
+        "target": "extractfidparams",
+        "status": "missing"
+      },
+      {
+        "target": "extracttxt",
+        "status": "missing"
+      },
+      {
+        "target": "fabber",
+        "status": "missing"
+      },
+      {
+        "target": "fabber_asl",
+        "status": "missing"
+      },
+      {
+        "target": "fabber_cest",
+        "status": "missing"
+      },
+      {
+        "target": "fabber_dce",
+        "status": "missing"
+      },
+      {
+        "target": "fabber_dsc",
+        "status": "missing"
+      },
+      {
+        "target": "fabber_dualecho",
+        "status": "missing"
+      },
+      {
+        "target": "fabber_dwi",
+        "status": "missing"
+      },
+      {
+        "target": "fabber_pet",
+        "status": "missing"
+      },
+      {
+        "target": "fabber_qbold",
+        "status": "missing"
+      },
+      {
+        "target": "fabber_t1",
+        "status": "missing"
+      },
+      {
+        "target": "fabber_var",
+        "status": "missing"
+      },
+      {
+        "target": "fast",
+        "status": "missing"
+      },
+      {
+        "target": "fdr",
+        "status": "missing"
+      },
+      {
+        "target": "fdt_matrix_merge",
+        "status": "missing"
+      },
+      {
+        "target": "fdt_rotate_bvecs",
+        "status": "missing"
+      },
+      {
+        "target": "feat",
+        "status": "missing"
+      },
+      {
+        "target": "feat_gm_prepare",
+        "status": "missing"
+      },
+      {
+        "target": "feat_model",
+        "status": "missing"
+      },
+      {
+        "target": "featquery",
+        "status": "missing"
+      },
+      {
+        "target": "featregapply",
+        "status": "missing"
+      },
+      {
+        "target": "film_cifti",
+        "status": "missing"
+      },
+      {
+        "target": "film_gls",
+        "status": "missing"
+      },
+      {
+        "target": "filmbabe",
+        "status": "missing"
+      },
+      {
+        "target": "filmbabescript",
+        "status": "missing"
+      },
+      {
+        "target": "find_the_biggest",
+        "status": "missing"
+      },
+      {
+        "target": "first",
+        "status": "missing"
+      },
+      {
+        "target": "first3Dview",
+        "status": "missing"
+      },
+      {
+        "target": "first_boundary_corr",
+        "status": "missing"
+      },
+      {
+        "target": "first_flirt",
+        "status": "missing"
+      },
+      {
+        "target": "first_mult_bcorr",
+        "status": "missing"
+      },
+      {
+        "target": "first_roi_slicesdir",
+        "status": "missing"
+      },
+      {
+        "target": "first_utils",
+        "status": "missing"
+      },
+      {
+        "target": "flameo",
+        "status": "missing"
+      },
+      {
+        "target": "flirt",
+        "status": "done",
+        "descriptor": "descriptors/fsl/mcflirt.json"
+      },
+      {
+        "target": "flirt_average",
+        "status": "missing"
+      },
+      {
+        "target": "fnirt",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fnirt.json"
+      },
+      {
+        "target": "fnirtfileutils",
+        "status": "missing"
+      },
+      {
+        "target": "fsl",
+        "status": "done",
+        "descriptor": "descriptors/fsl/maths.json"
+      },
+      {
+        "target": "fsl2ascii",
+        "status": "missing"
+      },
+      {
+        "target": "fslFixText",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_abspath",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_add_module",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_anat",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_boxplot",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_deface",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_ents",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_gen_3D",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_get_standard",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_glm",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_gui",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_histogram",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_motion_outliers",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_mrs",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_mrs_preproc",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_mrs_proc",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_mrs_sim",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_mrsi",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_mvlm",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_prepare_fieldmap",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_reg",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_regfilt",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_sbca",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_schurprod",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_sub",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_sub_config",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_sub_plugin",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_sub_report",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_sub_update",
+        "status": "missing"
+      },
+      {
+        "target": "fsl_tsplot",
+        "status": "missing"
+      },
+      {
+        "target": "fsladd",
+        "status": "missing"
+      },
+      {
+        "target": "fslanimate",
+        "status": "missing"
+      },
+      {
+        "target": "fslascii2img",
+        "status": "missing"
+      },
+      {
+        "target": "fslcc",
+        "status": "missing"
+      },
+      {
+        "target": "fslchfiletype",
+        "status": "missing"
+      },
+      {
+        "target": "fslchfiletype_exe",
+        "status": "missing"
+      },
+      {
+        "target": "fslchpixdim",
+        "status": "missing"
+      },
+      {
+        "target": "fslcomplex",
+        "status": "missing"
+      },
+      {
+        "target": "fslcpgeom",
+        "status": "missing"
+      },
+      {
+        "target": "fslcreatehd",
+        "status": "missing"
+      },
+      {
+        "target": "fslecho",
+        "status": "missing"
+      },
+      {
+        "target": "fsledithd",
+        "status": "missing"
+      },
+      {
+        "target": "fslerrorreport",
+        "status": "missing"
+      },
+      {
+        "target": "fsleyes",
+        "status": "missing"
+      },
+      {
+        "target": "fslfft",
+        "status": "missing"
+      },
+      {
+        "target": "fslhd",
+        "status": "missing"
+      },
+      {
+        "target": "fslinfo",
+        "status": "missing"
+      },
+      {
+        "target": "fslinterleave",
+        "status": "missing"
+      },
+      {
+        "target": "fslipython",
+        "status": "missing"
+      },
+      {
+        "target": "fslmaths",
+        "status": "done",
+        "descriptor": "descriptors/fsl/maths.json"
+      },
+      {
+        "target": "fslmeants",
+        "status": "missing"
+      },
+      {
+        "target": "fslmerge",
+        "status": "done",
+        "descriptor": "descriptors/fsl/merge.json"
+      },
+      {
+        "target": "fslmodhd",
+        "status": "missing"
+      },
+      {
+        "target": "fslnvols",
+        "status": "missing"
+      },
+      {
+        "target": "fslorient",
+        "status": "missing"
+      },
+      {
+        "target": "fslpspec",
+        "status": "missing"
+      },
+      {
+        "target": "fslpython",
+        "status": "missing"
+      },
+      {
+        "target": "fslpythonw",
+        "status": "missing"
+      },
+      {
+        "target": "fslreorient2std",
+        "status": "missing"
+      },
+      {
+        "target": "fslroi",
+        "status": "done",
+        "descriptor": "descriptors/fsl/roi.json"
+      },
+      {
+        "target": "fslselectvols",
+        "status": "missing"
+      },
+      {
+        "target": "fslsize",
+        "status": "missing"
+      },
+      {
+        "target": "fslslice",
+        "status": "missing"
+      },
+      {
+        "target": "fslsmoothfill",
+        "status": "missing"
+      },
+      {
+        "target": "fslsplit",
+        "status": "done",
+        "descriptor": "descriptors/fsl/split.json"
+      },
+      {
+        "target": "fslstats",
+        "status": "missing"
+      },
+      {
+        "target": "fslsurfacemaths",
+        "status": "missing"
+      },
+      {
+        "target": "fslswapdim",
+        "status": "done",
+        "descriptor": "descriptors/fsl/swap_dimensions.json"
+      },
+      {
+        "target": "fslswapdim_exe",
+        "status": "missing"
+      },
+      {
+        "target": "fsltclsh",
+        "status": "missing"
+      },
+      {
+        "target": "fslval",
+        "status": "missing"
+      },
+      {
+        "target": "fslvbm_1_bet",
+        "status": "missing"
+      },
+      {
+        "target": "fslvbm_2_template",
+        "status": "missing"
+      },
+      {
+        "target": "fslvbm_3_proc",
+        "status": "missing"
+      },
+      {
+        "target": "fslview",
+        "status": "missing"
+      },
+      {
+        "target": "fslview_bin",
+        "status": "missing"
+      },
+      {
+        "target": "fslview_deprecated",
+        "status": "missing"
+      },
+      {
+        "target": "fslwish",
+        "status": "missing"
+      },
+      {
+        "target": "ftoz",
+        "status": "missing"
+      },
+      {
+        "target": "fugue",
+        "status": "missing"
+      },
+      {
+        "target": "funpack",
+        "status": "missing"
+      },
+      {
+        "target": "funpack_demo",
+        "status": "missing"
+      },
+      {
+        "target": "generateConfounds",
+        "status": "missing"
+      },
+      {
+        "target": "generate_b0",
+        "status": "missing"
+      },
+      {
+        "target": "generate_b0calc",
+        "status": "missing"
+      },
+      {
+        "target": "generate_brain",
+        "status": "missing"
+      },
+      {
+        "target": "gps",
+        "status": "missing"
+      },
+      {
+        "target": "halfcosbasis",
+        "status": "missing"
+      },
+      {
+        "target": "hist2prob",
+        "status": "missing"
+      },
+      {
+        "target": "imcp",
+        "status": "missing"
+      },
+      {
+        "target": "img2imgcoord",
+        "status": "missing"
+      },
+      {
+        "target": "img2stdcoord",
+        "status": "missing"
+      },
+      {
+        "target": "imglob",
+        "status": "missing"
+      },
+      {
+        "target": "imln",
+        "status": "missing"
+      },
+      {
+        "target": "immv",
+        "status": "missing"
+      },
+      {
+        "target": "imrm",
+        "status": "missing"
+      },
+      {
+        "target": "imtest",
+        "status": "missing"
+      },
+      {
+        "target": "invfeatreg",
+        "status": "missing"
+      },
+      {
+        "target": "invwarp",
+        "status": "done",
+        "descriptor": "descriptors/fsl/inv_warp.json"
+      },
+      {
+        "target": "invwarp_exe",
+        "status": "missing"
+      },
+      {
+        "target": "label2surf",
+        "status": "missing"
+      },
+      {
+        "target": "lesion_filling",
+        "status": "missing"
+      },
+      {
+        "target": "mainfeatreg",
+        "status": "missing"
+      },
+      {
+        "target": "make_bianca_mask",
+        "status": "missing"
+      },
+      {
+        "target": "make_dyadic_vectors",
+        "status": "missing"
+      },
+      {
+        "target": "makerot",
+        "status": "missing"
+      },
+      {
+        "target": "maskdyads",
+        "status": "missing"
+      },
+      {
+        "target": "match_smoothing",
+        "status": "missing"
+      },
+      {
+        "target": "mccutup",
+        "status": "missing"
+      },
+      {
+        "target": "mcflirt",
+        "status": "done",
+        "descriptor": "descriptors/fsl/mcflirt.json"
+      },
+      {
+        "target": "mean",
+        "status": "missing"
+      },
+      {
+        "target": "medianfilter",
+        "status": "missing"
+      },
+      {
+        "target": "melodic",
+        "status": "missing"
+      },
+      {
+        "target": "merge_mrs_reports",
+        "status": "missing"
+      },
+      {
+        "target": "merge_parts_gpu",
+        "status": "missing"
+      },
+      {
+        "target": "midtrans",
+        "status": "missing"
+      },
+      {
+        "target": "mist",
+        "status": "missing"
+      },
+      {
+        "target": "mist_1_train",
+        "status": "missing"
+      },
+      {
+        "target": "mist_2_fit",
+        "status": "missing"
+      },
+      {
+        "target": "mist_FA_reg",
+        "status": "missing"
+      },
+      {
+        "target": "mist_display",
+        "status": "missing"
+      },
+      {
+        "target": "mist_mesh_utils",
+        "status": "missing"
+      },
+      {
+        "target": "mm",
+        "status": "done",
+        "descriptor": "descriptors/fsl/flameo.json"
+      },
+      {
+        "target": "morph_kernel",
+        "status": "missing"
+      },
+      {
+        "target": "mp_diffpow.sh",
+        "status": "missing"
+      },
+      {
+        "target": "mrsi_segment",
+        "status": "missing"
+      },
+      {
+        "target": "msm",
+        "status": "missing"
+      },
+      {
+        "target": "msm_metric_sim",
+        "status": "missing"
+      },
+      {
+        "target": "msmapplywarp",
+        "status": "missing"
+      },
+      {
+        "target": "msmresample",
+        "status": "missing"
+      },
+      {
+        "target": "mvntool",
+        "status": "missing"
+      },
+      {
+        "target": "new_invwarp",
+        "status": "missing"
+      },
+      {
+        "target": "old_betall",
+        "status": "missing"
+      },
+      {
+        "target": "overlay",
+        "status": "missing"
+      },
+      {
+        "target": "oxford_asl",
+        "status": "missing"
+      },
+      {
+        "target": "oxford_asl_roi_stats.py",
+        "status": "missing"
+      },
+      {
+        "target": "pairreg",
+        "status": "missing"
+      },
+      {
+        "target": "perfusion_subtract",
+        "status": "missing"
+      },
+      {
+        "target": "pngappend",
+        "status": "missing"
+      },
+      {
+        "target": "pnm_evs",
+        "status": "missing"
+      },
+      {
+        "target": "pnm_stage1",
+        "status": "missing"
+      },
+      {
+        "target": "pointflirt",
+        "status": "missing"
+      },
+      {
+        "target": "popp",
+        "status": "missing"
+      },
+      {
+        "target": "possum",
+        "status": "missing"
+      },
+      {
+        "target": "possumX",
+        "status": "missing"
+      },
+      {
+        "target": "possumX_postproc.sh",
+        "status": "missing"
+      },
+      {
+        "target": "possum_interpmot.py",
+        "status": "missing"
+      },
+      {
+        "target": "possum_matrix",
+        "status": "missing"
+      },
+      {
+        "target": "possum_plot.py",
+        "status": "missing"
+      },
+      {
+        "target": "possum_sum",
+        "status": "missing"
+      },
+      {
+        "target": "prelude",
+        "status": "missing"
+      },
+      {
+        "target": "prewhiten",
+        "status": "missing"
+      },
+      {
+        "target": "probtrack",
+        "status": "missing"
+      },
+      {
+        "target": "probtrackx",
+        "status": "missing"
+      },
+      {
+        "target": "probtrackx2",
+        "status": "missing"
+      },
+      {
+        "target": "probtrackx2_gpu",
+        "status": "missing"
+      },
+      {
+        "target": "proj_thresh",
+        "status": "missing"
+      },
+      {
+        "target": "ptoz",
+        "status": "missing"
+      },
+      {
+        "target": "pulse",
+        "status": "missing"
+      },
+      {
+        "target": "pvmfit",
+        "status": "missing"
+      },
+      {
+        "target": "pyfeeds",
+        "status": "missing"
+      },
+      {
+        "target": "qboot",
+        "status": "missing"
+      },
+      {
+        "target": "qboot_parallel",
+        "status": "missing"
+      },
+      {
+        "target": "qboot_postproc.sh",
+        "status": "missing"
+      },
+      {
+        "target": "qboot_preproc.sh",
+        "status": "missing"
+      },
+      {
+        "target": "quasil",
+        "status": "missing"
+      },
+      {
+        "target": "randomise",
+        "status": "missing"
+      },
+      {
+        "target": "randomise_parallel",
+        "status": "missing"
+      },
+      {
+        "target": "remove_ext",
+        "status": "missing"
+      },
+      {
+        "target": "render",
+        "status": "missing"
+      },
+      {
+        "target": "renderhighres",
+        "status": "missing"
+      },
+      {
+        "target": "rmsdiff",
+        "status": "missing"
+      },
+      {
+        "target": "robustfov",
+        "status": "missing"
+      },
+      {
+        "target": "run_first",
+        "status": "missing"
+      },
+      {
+        "target": "run_first_all",
+        "status": "missing"
+      },
+      {
+        "target": "run_mesh_utils",
+        "status": "missing"
+      },
+      {
+        "target": "select_dwi_vols",
+        "status": "missing"
+      },
+      {
+        "target": "selfintersection",
+        "status": "missing"
+      },
+      {
+        "target": "setFEAT",
+        "status": "missing"
+      },
+      {
+        "target": "setup_masks",
+        "status": "missing"
+      },
+      {
+        "target": "siena",
+        "status": "missing"
+      },
+      {
+        "target": "siena_cal",
+        "status": "missing"
+      },
+      {
+        "target": "siena_diff",
+        "status": "missing"
+      },
+      {
+        "target": "siena_flirt",
+        "status": "missing"
+      },
+      {
+        "target": "siena_flow2std",
+        "status": "missing"
+      },
+      {
+        "target": "sienax",
+        "status": "missing"
+      },
+      {
+        "target": "sigloss",
+        "status": "missing"
+      },
+      {
+        "target": "signal2image",
+        "status": "missing"
+      },
+      {
+        "target": "sliceanimate",
+        "status": "missing"
+      },
+      {
+        "target": "slicer",
+        "status": "done",
+        "descriptor": "descriptors/fsl/slicer.json"
+      },
+      {
+        "target": "slices",
+        "status": "done",
+        "descriptor": "descriptors/fsl/slicer.json"
+      },
+      {
+        "target": "slices_summary",
+        "status": "missing"
+      },
+      {
+        "target": "slicesdir",
+        "status": "missing"
+      },
+      {
+        "target": "slicesmask",
+        "status": "missing"
+      },
+      {
+        "target": "slicetimer",
+        "status": "missing"
+      },
+      {
+        "target": "smoothest",
+        "status": "done",
+        "descriptor": "descriptors/fsl/smooth_estimate.json"
+      },
+      {
+        "target": "spharm_rm",
+        "status": "missing"
+      },
+      {
+        "target": "split_parts_gpu",
+        "status": "missing"
+      },
+      {
+        "target": "standard_space_roi",
+        "status": "missing"
+      },
+      {
+        "target": "std2imgcoord",
+        "status": "missing"
+      },
+      {
+        "target": "surf2surf",
+        "status": "missing"
+      },
+      {
+        "target": "surf2volume",
+        "status": "missing"
+      },
+      {
+        "target": "surf_proj",
+        "status": "missing"
+      },
+      {
+        "target": "surface_fdr",
+        "status": "missing"
+      },
+      {
+        "target": "surfconvert",
+        "status": "missing"
+      },
+      {
+        "target": "surfmaths",
+        "status": "missing"
+      },
+      {
+        "target": "susan",
+        "status": "missing"
+      },
+      {
+        "target": "svs_segment",
+        "status": "missing"
+      },
+      {
+        "target": "swap_subjectwise",
+        "status": "missing"
+      },
+      {
+        "target": "swap_voxelwise",
+        "status": "missing"
+      },
+      {
+        "target": "swe",
+        "status": "missing"
+      },
+      {
+        "target": "systemnoise",
+        "status": "missing"
+      },
+      {
+        "target": "tbss_1_preproc",
+        "status": "missing"
+      },
+      {
+        "target": "tbss_2_reg",
+        "status": "missing"
+      },
+      {
+        "target": "tbss_3_postreg",
+        "status": "missing"
+      },
+      {
+        "target": "tbss_4_prestats",
+        "status": "missing"
+      },
+      {
+        "target": "tbss_deproject",
+        "status": "missing"
+      },
+      {
+        "target": "tbss_fill",
+        "status": "missing"
+      },
+      {
+        "target": "tbss_non_FA",
+        "status": "missing"
+      },
+      {
+        "target": "tbss_skeleton",
+        "status": "missing"
+      },
+      {
+        "target": "tbss_sym",
+        "status": "missing"
+      },
+      {
+        "target": "tbss_x",
+        "status": "missing"
+      },
+      {
+        "target": "tcalc",
+        "status": "missing"
+      },
+      {
+        "target": "tirl",
+        "status": "missing"
+      },
+      {
+        "target": "tmpnam",
+        "status": "missing"
+      },
+      {
+        "target": "toast",
+        "status": "missing"
+      },
+      {
+        "target": "topup",
+        "status": "missing"
+      },
+      {
+        "target": "tsplot",
+        "status": "missing"
+      },
+      {
+        "target": "ttologp",
+        "status": "missing"
+      },
+      {
+        "target": "ttoz",
+        "status": "missing"
+      },
+      {
+        "target": "unconfound",
+        "status": "missing"
+      },
+      {
+        "target": "updatefeatreg",
+        "status": "missing"
+      },
+      {
+        "target": "vecreg",
+        "status": "missing"
+      },
+      {
+        "target": "verbena",
+        "status": "missing"
+      },
+      {
+        "target": "viena_createpng",
+        "status": "missing"
+      },
+      {
+        "target": "viena_quant",
+        "status": "missing"
+      },
+      {
+        "target": "whirlgif",
+        "status": "missing"
+      },
+      {
+        "target": "wire",
+        "status": "missing"
+      },
+      {
+        "target": "wpng",
+        "status": "missing"
+      },
+      {
+        "target": "xfibres",
+        "status": "missing"
+      },
+      {
+        "target": "xfibres_gpu",
+        "status": "missing"
+      },
+      {
+        "target": "xtract",
+        "status": "missing"
+      },
+      {
+        "target": "xtract_blueprint",
+        "status": "missing"
+      },
+      {
+        "target": "xtract_stats",
+        "status": "missing"
+      },
+      {
+        "target": "xtract_viewer",
+        "status": "missing"
+      },
+      {
+        "target": "zeropad",
+        "status": "missing"
+      },
+      {
+        "target": "ztop",
+        "status": "missing"
+      }
+    ]
+  }
+}

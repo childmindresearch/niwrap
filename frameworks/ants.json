@@ -1,0 +1,498 @@
+{
+  "id": "ants",
+  "name": "ANTs",
+  "url": "https://github.com/ANTsX/ANTs",
+  "approach": "Manual",
+  "status": "In progress",
+  "container": "antsx/ants",
+  "api": {
+    "endpoints": [
+      {
+        "target": "ANTS",
+        "status": "missing"
+      },
+      {
+        "target": "ANTSIntegrateVectorField",
+        "status": "missing"
+      },
+      {
+        "target": "ANTSIntegrateVelocityField",
+        "status": "missing"
+      },
+      {
+        "target": "ANTSJacobian",
+        "status": "missing"
+      },
+      {
+        "target": "ANTSUseDeformationFieldToGetAffineTransform",
+        "status": "missing"
+      },
+      {
+        "target": "ANTSUseLandmarkImagesToGetAffineTransform",
+        "status": "missing"
+      },
+      {
+        "target": "ANTSUseLandmarkImagesToGetBSplineDisplacementField",
+        "status": "missing"
+      },
+      {
+        "target": "ANTSpexec.sh",
+        "status": "missing"
+      },
+      {
+        "target": "AddNoiseToImage",
+        "status": "missing"
+      },
+      {
+        "target": "Atropos",
+        "status": "done",
+        "descriptor": "descriptors/ants/atropos.json"
+      },
+      {
+        "target": "AverageAffineTransform",
+        "status": "missing"
+      },
+      {
+        "target": "AverageAffineTransformNoRigid",
+        "status": "missing"
+      },
+      {
+        "target": "AverageImages",
+        "status": "missing"
+      },
+      {
+        "target": "AverageTensorImages",
+        "status": "missing"
+      },
+      {
+        "target": "ClusterImageStatistics",
+        "status": "missing"
+      },
+      {
+        "target": "ComposeMultiTransform",
+        "status": "missing"
+      },
+      {
+        "target": "CompositeTransformUtil",
+        "status": "missing"
+      },
+      {
+        "target": "ConvertImage",
+        "status": "missing"
+      },
+      {
+        "target": "ConvertImagePixelType",
+        "status": "missing"
+      },
+      {
+        "target": "ConvertInputImagePixelTypeToFloat",
+        "status": "missing"
+      },
+      {
+        "target": "ConvertScalarImageToRGB",
+        "status": "missing"
+      },
+      {
+        "target": "ConvertToJpg",
+        "status": "missing"
+      },
+      {
+        "target": "ConvertTransformFile",
+        "status": "missing"
+      },
+      {
+        "target": "CopyImageHeaderInformation",
+        "status": "missing"
+      },
+      {
+        "target": "CreateDTICohort",
+        "status": "missing"
+      },
+      {
+        "target": "CreateDisplacementField",
+        "status": "missing"
+      },
+      {
+        "target": "CreateImage",
+        "status": "missing"
+      },
+      {
+        "target": "CreateJacobianDeterminantImage",
+        "status": "missing"
+      },
+      {
+        "target": "CreateTiledMosaic",
+        "status": "missing"
+      },
+      {
+        "target": "CreateWarpedGridImage",
+        "status": "missing"
+      },
+      {
+        "target": "DeNrrd",
+        "status": "missing"
+      },
+      {
+        "target": "DenoiseImage",
+        "status": "done",
+        "descriptor": "descriptors/ants/denoise_image.json"
+      },
+      {
+        "target": "ExtractRegionFromImage",
+        "status": "missing"
+      },
+      {
+        "target": "ExtractRegionFromImageByMask",
+        "status": "missing"
+      },
+      {
+        "target": "ExtractSliceFromImage",
+        "status": "missing"
+      },
+      {
+        "target": "FitBSplineToPoints",
+        "status": "missing"
+      },
+      {
+        "target": "GetConnectedComponentsFeatureImages",
+        "status": "missing"
+      },
+      {
+        "target": "ImageCompare",
+        "status": "missing"
+      },
+      {
+        "target": "ImageIntensityStatistics",
+        "status": "missing"
+      },
+      {
+        "target": "ImageMath",
+        "status": "missing"
+      },
+      {
+        "target": "ImageSetStatistics",
+        "status": "missing"
+      },
+      {
+        "target": "KellyKapowski",
+        "status": "missing"
+      },
+      {
+        "target": "KellySlater",
+        "status": "missing"
+      },
+      {
+        "target": "LabelClustersUniquely",
+        "status": "missing"
+      },
+      {
+        "target": "LabelGeometryMeasures",
+        "status": "missing"
+      },
+      {
+        "target": "LabelOverlapMeasures",
+        "status": "missing"
+      },
+      {
+        "target": "LaplacianThickness",
+        "status": "missing"
+      },
+      {
+        "target": "LesionFilling",
+        "status": "missing"
+      },
+      {
+        "target": "MeasureImageSimilarity",
+        "status": "missing"
+      },
+      {
+        "target": "MeasureMinMaxMean",
+        "status": "missing"
+      },
+      {
+        "target": "MemoryTest",
+        "status": "missing"
+      },
+      {
+        "target": "MultiplyImages",
+        "status": "done",
+        "descriptor": "descriptors/ants/multiply_images.json"
+      },
+      {
+        "target": "N3BiasFieldCorrection",
+        "status": "missing"
+      },
+      {
+        "target": "N4BiasFieldCorrection",
+        "status": "done",
+        "descriptor": "descriptors/ants/n4_bias_field_correction.json"
+      },
+      {
+        "target": "NonLocalSuperResolution",
+        "status": "missing"
+      },
+      {
+        "target": "PasteImageIntoImage",
+        "status": "missing"
+      },
+      {
+        "target": "PermuteFlipImageOrientationAxes",
+        "status": "missing"
+      },
+      {
+        "target": "PrintHeader",
+        "status": "missing"
+      },
+      {
+        "target": "RebaseTensorImage",
+        "status": "missing"
+      },
+      {
+        "target": "ReorientTensorImage",
+        "status": "missing"
+      },
+      {
+        "target": "ResampleImage",
+        "status": "missing"
+      },
+      {
+        "target": "ResampleImageBySpacing",
+        "status": "missing"
+      },
+      {
+        "target": "ResetDirection",
+        "status": "missing"
+      },
+      {
+        "target": "SetDirectionByMatrix",
+        "status": "missing"
+      },
+      {
+        "target": "SetOrigin",
+        "status": "missing"
+      },
+      {
+        "target": "SetSpacing",
+        "status": "missing"
+      },
+      {
+        "target": "SimulateDisplacementField",
+        "status": "missing"
+      },
+      {
+        "target": "SmoothDisplacementField",
+        "status": "missing"
+      },
+      {
+        "target": "SmoothImage",
+        "status": "missing"
+      },
+      {
+        "target": "StackSlices",
+        "status": "missing"
+      },
+      {
+        "target": "SuperResolution",
+        "status": "missing"
+      },
+      {
+        "target": "SurfaceBasedSmoothing",
+        "status": "missing"
+      },
+      {
+        "target": "SurfaceCurvature",
+        "status": "missing"
+      },
+      {
+        "target": "TextureCooccurrenceFeatures",
+        "status": "missing"
+      },
+      {
+        "target": "TextureRunLengthFeatures",
+        "status": "missing"
+      },
+      {
+        "target": "ThresholdImage",
+        "status": "missing"
+      },
+      {
+        "target": "TileImages",
+        "status": "missing"
+      },
+      {
+        "target": "TimeSCCAN",
+        "status": "missing"
+      },
+      {
+        "target": "WarpImageMultiTransform",
+        "status": "missing"
+      },
+      {
+        "target": "WarpTensorImageMultiTransform",
+        "status": "missing"
+      },
+      {
+        "target": "WarpTimeSeriesImageMultiTransform",
+        "status": "missing"
+      },
+      {
+        "target": "antsAI",
+        "status": "missing"
+      },
+      {
+        "target": "antsASLProcessing.sh",
+        "status": "missing"
+      },
+      {
+        "target": "antsAffineInitializer",
+        "status": "missing"
+      },
+      {
+        "target": "antsAlignOrigin",
+        "status": "missing"
+      },
+      {
+        "target": "antsApplyTransforms",
+        "status": "missing"
+      },
+      {
+        "target": "antsApplyTransformsToPoints",
+        "status": "missing"
+      },
+      {
+        "target": "antsAtroposN4.sh",
+        "status": "missing"
+      },
+      {
+        "target": "antsBOLDNetworkAnalysis.R",
+        "status": "missing"
+      },
+      {
+        "target": "antsBrainExtraction.sh",
+        "status": "done",
+        "descriptor": "descriptors/ants/brain_extraction_sh.json"
+      },
+      {
+        "target": "antsCorticalThickness.sh",
+        "status": "missing"
+      },
+      {
+        "target": "antsIntermodalityIntrasubject.sh",
+        "status": "missing"
+      },
+      {
+        "target": "antsIntroduction.sh",
+        "status": "missing"
+      },
+      {
+        "target": "antsJointFusion",
+        "status": "missing"
+      },
+      {
+        "target": "antsJointLabelFusion.sh",
+        "status": "missing"
+      },
+      {
+        "target": "antsJointTensorFusion",
+        "status": "missing"
+      },
+      {
+        "target": "antsLandmarkBasedTransformInitializer",
+        "status": "missing"
+      },
+      {
+        "target": "antsLaplacianBoundaryCondition.R",
+        "status": "missing"
+      },
+      {
+        "target": "antsLongitudinalCorticalThickness.sh",
+        "status": "missing"
+      },
+      {
+        "target": "antsMotionCorr",
+        "status": "missing"
+      },
+      {
+        "target": "antsMotionCorrDiffusionDirection",
+        "status": "missing"
+      },
+      {
+        "target": "antsMotionCorrStats",
+        "status": "missing"
+      },
+      {
+        "target": "antsMultivariateTemplateConstruction.sh",
+        "status": "missing"
+      },
+      {
+        "target": "antsMultivariateTemplateConstruction2.sh",
+        "status": "missing"
+      },
+      {
+        "target": "antsNetworkAnalysis.R",
+        "status": "missing"
+      },
+      {
+        "target": "antsNeuroimagingBattery",
+        "status": "missing"
+      },
+      {
+        "target": "antsRegistration",
+        "status": "done",
+        "descriptor": "descriptors/ants/registration.json"
+      },
+      {
+        "target": "antsRegistrationSyN.sh",
+        "status": "missing"
+      },
+      {
+        "target": "antsRegistrationSyNQuick.sh",
+        "status": "missing"
+      },
+      {
+        "target": "antsSliceRegularizedRegistration",
+        "status": "missing"
+      },
+      {
+        "target": "antsTransformInfo",
+        "status": "missing"
+      },
+      {
+        "target": "antsUtilitiesTesting",
+        "status": "missing"
+      },
+      {
+        "target": "compareTwoTransforms",
+        "status": "missing"
+      },
+      {
+        "target": "iMath",
+        "status": "missing"
+      },
+      {
+        "target": "sccan",
+        "status": "missing"
+      },
+      {
+        "target": "simpleSynRegistration",
+        "status": "missing"
+      },
+      {
+        "target": "waitForPBSQJobs.pl",
+        "status": "missing"
+      },
+      {
+        "target": "waitForSGEQJobs.pl",
+        "status": "missing"
+      },
+      {
+        "target": "waitForSlurmJobs.pl",
+        "status": "missing"
+      },
+      {
+        "target": "waitForXGridJobs.pl",
+        "status": "missing"
+      }
+    ]
+  }
+}

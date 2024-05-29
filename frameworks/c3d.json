@@ -1,0 +1,32 @@
+{
+  "id": "c3d",
+  "name": "Convert3D",
+  "url": "http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D",
+  "approach": "Manual",
+  "status": "In progress",
+  "api": {
+    "endpoints": [
+      {
+        "target": "c2d",
+        "status": "missing"
+      },
+      {
+        "target": "c3d",
+        "status": "missing"
+      },
+      {
+        "target": "c3d_affine_tool",
+        "status": "done",
+        "descriptor": "descriptors/c3d/c3d_affine_tool.json"
+      },
+      {
+        "target": "c3d_gui",
+        "status": "missing"
+      },
+      {
+        "target": "c4d",
+        "status": "missing"
+      }
+    ]
+  }
+}
