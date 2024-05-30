@@ -9,7 +9,7 @@ from styxdefs import *
 
 
 ANTS_APPLY_TRANSFORMS_METADATA = Metadata(
-    id="6562c8916ff9cdcfbfd46e0fa826438b9c8d2b15",
+    id="0c6fa951a055b8a31c90ee449813ff74f023bf3a",
     name="antsApplyTransforms",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -931,6 +931,7 @@ def ants_apply_transforms(
     if input_image_type is not None:
         cargs.extend(["--input-image-type", str(input_image_type)])
     cargs.extend(["--input", execution.input_file(input_image)])
+    cargs.extend(["--reference-image", execution.input_file(reference_image)])
     cargs.extend(["--output", *output.run(execution)])
     if interpolation is not None:
         cargs.extend(["--interpolation", *interpolation.run(execution)])
