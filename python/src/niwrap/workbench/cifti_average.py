@@ -16,16 +16,16 @@ CIFTI_AVERAGE_METADATA = Metadata(
 )
 
 
-class ExcludeOutliersOutputs(typing.NamedTuple):
+class CiftiAverageExcludeOutliersOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ExcludeOutliers.run(...)`.
+    Output object returned when calling `CiftiAverageExcludeOutliers.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ExcludeOutliers:
+class CiftiAverageExcludeOutliers:
     """
     exclude outliers by standard deviation of each element across files
     """
@@ -49,7 +49,7 @@ class ExcludeOutliers:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExcludeOutliersOutputs:
+    ) -> CiftiAverageExcludeOutliersOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class ExcludeOutliers:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExcludeOutliersOutputs`).
+            NamedTuple of outputs (described in `CiftiAverageExcludeOutliersOutputs`).
         """
-        ret = ExcludeOutliersOutputs(
+        ret = CiftiAverageExcludeOutliersOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CiftiOutputs(typing.NamedTuple):
+class CiftiAverageCiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Cifti.run(...)`.
+    Output object returned when calling `CiftiAverageCifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Cifti:
+class CiftiAverageCifti:
     """
     specify an input file
     """
@@ -102,7 +102,7 @@ class Cifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> CiftiOutputs:
+    ) -> CiftiAverageCiftiOutputs:
         """
         Collect output file paths.
         
@@ -110,9 +110,9 @@ class Cifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CiftiOutputs`).
+            NamedTuple of outputs (described in `CiftiAverageCiftiOutputs`).
         """
-        ret = CiftiOutputs(
+        ret = CiftiAverageCiftiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -126,17 +126,17 @@ class CiftiAverageOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti file"""
-    exclude_outliers: ExcludeOutliersOutputs
+    exclude_outliers: CiftiAverageExcludeOutliersOutputs
     """Subcommand outputs"""
-    cifti: CiftiOutputs
+    cifti: typing.List[CiftiAverageCiftiOutputs]
     """Subcommand outputs"""
 
 
 def cifti_average(
     cifti_out: InputPathType,
-    exclude_outliers: ExcludeOutliers | None = None,
+    exclude_outliers: CiftiAverageExcludeOutliers | None = None,
     opt_mem_limit_limit_gb: float | int | None = None,
-    cifti: list[Cifti] = None,
+    cifti: list[CiftiAverageCifti] = None,
     runner: Runner = None,
 ) -> CiftiAverageOutputs:
     """
@@ -186,10 +186,10 @@ def cifti_average(
 
 __all__ = [
     "CIFTI_AVERAGE_METADATA",
-    "Cifti",
+    "CiftiAverageCifti",
+    "CiftiAverageCiftiOutputs",
+    "CiftiAverageExcludeOutliers",
+    "CiftiAverageExcludeOutliersOutputs",
     "CiftiAverageOutputs",
-    "CiftiOutputs",
-    "ExcludeOutliers",
-    "ExcludeOutliersOutputs",
     "cifti_average",
 ]

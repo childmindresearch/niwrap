@@ -16,16 +16,16 @@ CIFTI_ROIS_FROM_EXTREMA_METADATA = Metadata(
 )
 
 
-class GaussianOutputs(typing.NamedTuple):
+class CiftiRoisFromExtremaGaussianOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Gaussian.run(...)`.
+    Output object returned when calling `CiftiRoisFromExtremaGaussian.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Gaussian:
+class CiftiRoisFromExtremaGaussian:
     """
     generate gaussian kernels instead of flat ROIs
     """
@@ -49,7 +49,7 @@ class Gaussian:
     def outputs(
         self,
         execution: Execution,
-    ) -> GaussianOutputs:
+    ) -> CiftiRoisFromExtremaGaussianOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Gaussian:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `GaussianOutputs`).
+            NamedTuple of outputs (described in `CiftiRoisFromExtremaGaussianOutputs`).
         """
-        ret = GaussianOutputs(
+        ret = CiftiRoisFromExtremaGaussianOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -73,7 +73,7 @@ class CiftiRoisFromExtremaOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti"""
-    gaussian: GaussianOutputs
+    gaussian: CiftiRoisFromExtremaGaussianOutputs
     """Subcommand outputs"""
 
 
@@ -86,7 +86,7 @@ def cifti_rois_from_extrema(
     opt_left_surface_surface: InputPathType | None = None,
     opt_right_surface_surface: InputPathType | None = None,
     opt_cerebellum_surface_surface: InputPathType | None = None,
-    gaussian: Gaussian | None = None,
+    gaussian: CiftiRoisFromExtremaGaussian | None = None,
     opt_overlap_logic_method: str | None = None,
     opt_merged_volume: bool = False,
     runner: Runner = None,
@@ -159,8 +159,8 @@ def cifti_rois_from_extrema(
 
 __all__ = [
     "CIFTI_ROIS_FROM_EXTREMA_METADATA",
+    "CiftiRoisFromExtremaGaussian",
+    "CiftiRoisFromExtremaGaussianOutputs",
     "CiftiRoisFromExtremaOutputs",
-    "Gaussian",
-    "GaussianOutputs",
     "cifti_rois_from_extrema",
 ]

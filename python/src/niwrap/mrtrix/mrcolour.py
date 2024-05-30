@@ -16,16 +16,16 @@ MRCOLOUR_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrcolourConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrcolourConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrcolourConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrcolourConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrcolourConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrcolourConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class MrcolourOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output image"""
-    config: ConfigOutputs
+    config: typing.List[MrcolourConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -96,7 +96,7 @@ def mrcolour(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrcolourConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -188,9 +188,9 @@ def mrcolour(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MRCOLOUR_METADATA",
+    "MrcolourConfig",
+    "MrcolourConfigOutputs",
     "MrcolourOutputs",
     "mrcolour",
 ]

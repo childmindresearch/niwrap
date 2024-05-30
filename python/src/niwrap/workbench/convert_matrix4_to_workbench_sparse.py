@@ -16,16 +16,16 @@ CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA = Metadata(
 )
 
 
-class VolumeSeedsOutputs(typing.NamedTuple):
+class ConvertMatrix4ToWorkbenchSparseVolumeSeedsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `VolumeSeeds.run(...)`.
+    Output object returned when calling `ConvertMatrix4ToWorkbenchSparseVolumeSeeds.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class VolumeSeeds:
+class ConvertMatrix4ToWorkbenchSparseVolumeSeeds:
     """
     specify the volume seed space
     """
@@ -49,7 +49,7 @@ class VolumeSeeds:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeSeedsOutputs:
+    ) -> ConvertMatrix4ToWorkbenchSparseVolumeSeedsOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class VolumeSeeds:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeSeedsOutputs`).
+            NamedTuple of outputs (described in `ConvertMatrix4ToWorkbenchSparseVolumeSeedsOutputs`).
         """
-        ret = VolumeSeedsOutputs(
+        ret = ConvertMatrix4ToWorkbenchSparseVolumeSeedsOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -71,7 +71,7 @@ class ConvertMatrix4ToWorkbenchSparseOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    volume_seeds: VolumeSeedsOutputs
+    volume_seeds: ConvertMatrix4ToWorkbenchSparseVolumeSeedsOutputs
     """Subcommand outputs"""
 
 
@@ -83,7 +83,7 @@ def convert_matrix4_to_workbench_sparse(
     voxel_list: str,
     wb_sparse_out: str,
     opt_surface_seeds_seed_roi: InputPathType | None = None,
-    volume_seeds: VolumeSeeds | None = None,
+    volume_seeds: ConvertMatrix4ToWorkbenchSparseVolumeSeeds | None = None,
     runner: Runner = None,
 ) -> ConvertMatrix4ToWorkbenchSparseOutputs:
     """
@@ -136,7 +136,7 @@ def convert_matrix4_to_workbench_sparse(
 __all__ = [
     "CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA",
     "ConvertMatrix4ToWorkbenchSparseOutputs",
-    "VolumeSeeds",
-    "VolumeSeedsOutputs",
+    "ConvertMatrix4ToWorkbenchSparseVolumeSeeds",
+    "ConvertMatrix4ToWorkbenchSparseVolumeSeedsOutputs",
     "convert_matrix4_to_workbench_sparse",
 ]

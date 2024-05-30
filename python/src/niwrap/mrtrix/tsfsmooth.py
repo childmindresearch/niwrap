@@ -16,16 +16,16 @@ TSFSMOOTH_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TsfsmoothConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TsfsmoothConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TsfsmoothConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TsfsmoothConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TsfsmoothConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TsfsmoothConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class TsfsmoothOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output track scalar file"""
-    config: ConfigOutputs
+    config: typing.List[TsfsmoothConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -93,7 +93,7 @@ def tsfsmooth(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TsfsmoothConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -167,9 +167,9 @@ def tsfsmooth(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TSFSMOOTH_METADATA",
+    "TsfsmoothConfig",
+    "TsfsmoothConfigOutputs",
     "TsfsmoothOutputs",
     "tsfsmooth",
 ]

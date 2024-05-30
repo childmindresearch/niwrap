@@ -16,16 +16,16 @@ AMP2SH_METADATA = Metadata(
 )
 
 
-class FslgradOutputs(typing.NamedTuple):
+class Amp2shFslgradOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fslgrad.run(...)`.
+    Output object returned when calling `Amp2shFslgrad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fslgrad:
+class Amp2shFslgrad:
     """
     Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
     """
@@ -62,7 +62,7 @@ class Fslgrad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FslgradOutputs:
+    ) -> Amp2shFslgradOutputs:
         """
         Collect output file paths.
         
@@ -70,24 +70,24 @@ class Fslgrad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FslgradOutputs`).
+            NamedTuple of outputs (described in `Amp2shFslgradOutputs`).
         """
-        ret = FslgradOutputs(
+        ret = Amp2shFslgradOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Amp2shConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Amp2shConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Amp2shConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -118,7 +118,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Amp2shConfigOutputs:
         """
         Collect output file paths.
         
@@ -126,9 +126,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Amp2shConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Amp2shConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -142,9 +142,9 @@ class Amp2shOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     sh: OutputPathType
     """the output spherical harmonics coefficients image."""
-    fslgrad: FslgradOutputs
+    fslgrad: Amp2shFslgradOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[Amp2shConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -156,7 +156,7 @@ def amp2sh(
     directions: InputPathType | None = None,
     rician: InputPathType | None = None,
     grad: InputPathType | None = None,
-    fslgrad: Fslgrad | None = None,
+    fslgrad: Amp2shFslgrad | None = None,
     shells: list[float | int] = None,
     strides: str | None = None,
     info: bool = False,
@@ -164,7 +164,7 @@ def amp2sh(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Amp2shConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -301,10 +301,10 @@ def amp2sh(
 
 __all__ = [
     "AMP2SH_METADATA",
+    "Amp2shConfig",
+    "Amp2shConfigOutputs",
+    "Amp2shFslgrad",
+    "Amp2shFslgradOutputs",
     "Amp2shOutputs",
-    "Config",
-    "ConfigOutputs",
-    "Fslgrad",
-    "FslgradOutputs",
     "amp2sh",
 ]

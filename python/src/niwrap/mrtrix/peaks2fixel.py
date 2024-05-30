@@ -16,16 +16,16 @@ PEAKS2FIXEL_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Peaks2fixelConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Peaks2fixelConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Peaks2fixelConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Peaks2fixelConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Peaks2fixelConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Peaks2fixelConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class Peaks2fixelOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     fixels: OutputPathType
     """the output fixel directory."""
-    config: ConfigOutputs
+    config: typing.List[Peaks2fixelConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -93,7 +93,7 @@ def peaks2fixel(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Peaks2fixelConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -168,9 +168,9 @@ def peaks2fixel(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "PEAKS2FIXEL_METADATA",
+    "Peaks2fixelConfig",
+    "Peaks2fixelConfigOutputs",
     "Peaks2fixelOutputs",
     "peaks2fixel",
 ]

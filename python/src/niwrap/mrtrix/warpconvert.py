@@ -16,16 +16,16 @@ WARPCONVERT_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class WarpconvertConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `WarpconvertConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class WarpconvertConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> WarpconvertConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `WarpconvertConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = WarpconvertConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class WarpconvertOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out: OutputPathType
     """the output warp image."""
-    config: ConfigOutputs
+    config: typing.List[WarpconvertConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -96,7 +96,7 @@ def warpconvert(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[WarpconvertConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -195,9 +195,9 @@ def warpconvert(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "WARPCONVERT_METADATA",
+    "WarpconvertConfig",
+    "WarpconvertConfigOutputs",
     "WarpconvertOutputs",
     "warpconvert",
 ]

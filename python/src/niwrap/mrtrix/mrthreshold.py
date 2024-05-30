@@ -16,16 +16,16 @@ MRTHRESHOLD_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrthresholdConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrthresholdConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrthresholdConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrthresholdConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrthresholdConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrthresholdConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class MrthresholdOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType | None
     """the (optional) output binary image mask"""
-    config: ConfigOutputs
+    config: typing.List[MrthresholdConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -103,7 +103,7 @@ def mrthreshold(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrthresholdConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -253,9 +253,9 @@ def mrthreshold(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MRTHRESHOLD_METADATA",
+    "MrthresholdConfig",
+    "MrthresholdConfigOutputs",
     "MrthresholdOutputs",
     "mrthreshold",
 ]

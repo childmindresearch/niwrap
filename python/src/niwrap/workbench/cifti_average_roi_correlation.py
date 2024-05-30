@@ -16,16 +16,16 @@ CIFTI_AVERAGE_ROI_CORRELATION_METADATA = Metadata(
 )
 
 
-class CiftiRoiOutputs(typing.NamedTuple):
+class CiftiAverageRoiCorrelationCiftiRoiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CiftiRoi.run(...)`.
+    Output object returned when calling `CiftiAverageRoiCorrelationCiftiRoi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CiftiRoi:
+class CiftiAverageRoiCorrelationCiftiRoi:
     """
     cifti file containing combined weights
     """
@@ -53,7 +53,7 @@ class CiftiRoi:
     def outputs(
         self,
         execution: Execution,
-    ) -> CiftiRoiOutputs:
+    ) -> CiftiAverageRoiCorrelationCiftiRoiOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class CiftiRoi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CiftiRoiOutputs`).
+            NamedTuple of outputs (described in `CiftiAverageRoiCorrelationCiftiRoiOutputs`).
         """
-        ret = CiftiRoiOutputs(
+        ret = CiftiAverageRoiCorrelationCiftiRoiOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CiftiOutputs(typing.NamedTuple):
+class CiftiAverageRoiCorrelationCiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Cifti.run(...)`.
+    Output object returned when calling `CiftiAverageRoiCorrelationCifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Cifti:
+class CiftiAverageRoiCorrelationCifti:
     """
     specify an input cifti file
     """
@@ -102,7 +102,7 @@ class Cifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> CiftiOutputs:
+    ) -> CiftiAverageRoiCorrelationCiftiOutputs:
         """
         Collect output file paths.
         
@@ -110,9 +110,9 @@ class Cifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CiftiOutputs`).
+            NamedTuple of outputs (described in `CiftiAverageRoiCorrelationCiftiOutputs`).
         """
-        ret = CiftiOutputs(
+        ret = CiftiAverageRoiCorrelationCiftiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -126,15 +126,15 @@ class CiftiAverageRoiCorrelationOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti file"""
-    cifti_roi: CiftiRoiOutputs
+    cifti_roi: CiftiAverageRoiCorrelationCiftiRoiOutputs
     """Subcommand outputs"""
-    cifti: CiftiOutputs
+    cifti: typing.List[CiftiAverageRoiCorrelationCiftiOutputs]
     """Subcommand outputs"""
 
 
 def cifti_average_roi_correlation(
     cifti_out: InputPathType,
-    cifti_roi: CiftiRoi | None = None,
+    cifti_roi: CiftiAverageRoiCorrelationCiftiRoi | None = None,
     opt_left_roi_roi_metric: InputPathType | None = None,
     opt_right_roi_roi_metric: InputPathType | None = None,
     opt_cerebellum_roi_roi_metric: InputPathType | None = None,
@@ -142,7 +142,7 @@ def cifti_average_roi_correlation(
     opt_left_area_surf_left_surf: InputPathType | None = None,
     opt_right_area_surf_right_surf: InputPathType | None = None,
     opt_cerebellum_area_surf_cerebellum_surf: InputPathType | None = None,
-    cifti: list[Cifti] = None,
+    cifti: list[CiftiAverageRoiCorrelationCifti] = None,
     runner: Runner = None,
 ) -> CiftiAverageRoiCorrelationOutputs:
     """
@@ -216,10 +216,10 @@ def cifti_average_roi_correlation(
 
 __all__ = [
     "CIFTI_AVERAGE_ROI_CORRELATION_METADATA",
-    "Cifti",
+    "CiftiAverageRoiCorrelationCifti",
+    "CiftiAverageRoiCorrelationCiftiOutputs",
+    "CiftiAverageRoiCorrelationCiftiRoi",
+    "CiftiAverageRoiCorrelationCiftiRoiOutputs",
     "CiftiAverageRoiCorrelationOutputs",
-    "CiftiOutputs",
-    "CiftiRoi",
-    "CiftiRoiOutputs",
     "cifti_average_roi_correlation",
 ]

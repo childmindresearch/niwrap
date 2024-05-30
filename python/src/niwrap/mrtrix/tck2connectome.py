@@ -16,16 +16,16 @@ TCK2CONNECTOME_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Tck2connectomeConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Tck2connectomeConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Tck2connectomeConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Tck2connectomeConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Tck2connectomeConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Tck2connectomeConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -82,7 +82,7 @@ class Tck2connectomeOutputs(typing.NamedTuple):
     """the output .csv file containing edge weights"""
     out_assignments: OutputPathType | None
     """output the node assignments of each streamline to a file; this can be used subsequently e.g. by the command connectome2tck """
-    config: ConfigOutputs
+    config: typing.List[Tck2connectomeConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -111,7 +111,7 @@ def tck2connectome(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Tck2connectomeConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -264,9 +264,9 @@ def tck2connectome(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TCK2CONNECTOME_METADATA",
+    "Tck2connectomeConfig",
+    "Tck2connectomeConfigOutputs",
     "Tck2connectomeOutputs",
     "tck2connectome",
 ]

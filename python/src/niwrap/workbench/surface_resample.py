@@ -16,16 +16,16 @@ SURFACE_RESAMPLE_METADATA = Metadata(
 )
 
 
-class AreaSurfsOutputs(typing.NamedTuple):
+class SurfaceResampleAreaSurfsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `AreaSurfs.run(...)`.
+    Output object returned when calling `SurfaceResampleAreaSurfs.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class AreaSurfs:
+class SurfaceResampleAreaSurfs:
     """
     specify surfaces to do vertex area correction based on
     """
@@ -49,7 +49,7 @@ class AreaSurfs:
     def outputs(
         self,
         execution: Execution,
-    ) -> AreaSurfsOutputs:
+    ) -> SurfaceResampleAreaSurfsOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class AreaSurfs:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AreaSurfsOutputs`).
+            NamedTuple of outputs (described in `SurfaceResampleAreaSurfsOutputs`).
         """
-        ret = AreaSurfsOutputs(
+        ret = SurfaceResampleAreaSurfsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AreaMetricsOutputs(typing.NamedTuple):
+class SurfaceResampleAreaMetricsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `AreaMetrics.run(...)`.
+    Output object returned when calling `SurfaceResampleAreaMetrics.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class AreaMetrics:
+class SurfaceResampleAreaMetrics:
     """
     specify vertex area metrics to do area correction based on
     """
@@ -98,7 +98,7 @@ class AreaMetrics:
     def outputs(
         self,
         execution: Execution,
-    ) -> AreaMetricsOutputs:
+    ) -> SurfaceResampleAreaMetricsOutputs:
         """
         Collect output file paths.
         
@@ -106,9 +106,9 @@ class AreaMetrics:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AreaMetricsOutputs`).
+            NamedTuple of outputs (described in `SurfaceResampleAreaMetricsOutputs`).
         """
-        ret = AreaMetricsOutputs(
+        ret = SurfaceResampleAreaMetricsOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -122,9 +122,9 @@ class SurfaceResampleOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     surface_out: OutputPathType
     """the output surface file"""
-    area_surfs: AreaSurfsOutputs
+    area_surfs: SurfaceResampleAreaSurfsOutputs
     """Subcommand outputs"""
-    area_metrics: AreaMetricsOutputs
+    area_metrics: SurfaceResampleAreaMetricsOutputs
     """Subcommand outputs"""
 
 
@@ -134,8 +134,8 @@ def surface_resample(
     new_sphere: InputPathType,
     method: str,
     surface_out: InputPathType,
-    area_surfs: AreaSurfs | None = None,
-    area_metrics: AreaMetrics | None = None,
+    area_surfs: SurfaceResampleAreaSurfs | None = None,
+    area_metrics: SurfaceResampleAreaMetrics | None = None,
     opt_bypass_sphere_check: bool = False,
     runner: Runner = None,
 ) -> SurfaceResampleOutputs:
@@ -206,11 +206,11 @@ def surface_resample(
 
 
 __all__ = [
-    "AreaMetrics",
-    "AreaMetricsOutputs",
-    "AreaSurfs",
-    "AreaSurfsOutputs",
     "SURFACE_RESAMPLE_METADATA",
+    "SurfaceResampleAreaMetrics",
+    "SurfaceResampleAreaMetricsOutputs",
+    "SurfaceResampleAreaSurfs",
+    "SurfaceResampleAreaSurfsOutputs",
     "SurfaceResampleOutputs",
     "surface_resample",
 ]

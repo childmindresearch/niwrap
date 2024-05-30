@@ -16,16 +16,16 @@ VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA = Metadata(
 )
 
 
-class FlirtOutOutputs(typing.NamedTuple):
+class VolumeWarpfieldAffineRegressionFlirtOutOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `FlirtOut.run(...)`.
+    Output object returned when calling `VolumeWarpfieldAffineRegressionFlirtOut.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class FlirtOut:
+class VolumeWarpfieldAffineRegressionFlirtOut:
     """
     write output as a flirt matrix rather than a world coordinate transform
     """
@@ -49,7 +49,7 @@ class FlirtOut:
     def outputs(
         self,
         execution: Execution,
-    ) -> FlirtOutOutputs:
+    ) -> VolumeWarpfieldAffineRegressionFlirtOutOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class FlirtOut:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FlirtOutOutputs`).
+            NamedTuple of outputs (described in `VolumeWarpfieldAffineRegressionFlirtOutOutputs`).
         """
-        ret = FlirtOutOutputs(
+        ret = VolumeWarpfieldAffineRegressionFlirtOutOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -71,7 +71,7 @@ class VolumeWarpfieldAffineRegressionOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    flirt_out: FlirtOutOutputs
+    flirt_out: VolumeWarpfieldAffineRegressionFlirtOutOutputs
     """Subcommand outputs"""
 
 
@@ -80,7 +80,7 @@ def volume_warpfield_affine_regression(
     affine_out: str,
     opt_roi_roi_vol: InputPathType | None = None,
     opt_fnirt_source_volume: str | None = None,
-    flirt_out: FlirtOut | None = None,
+    flirt_out: VolumeWarpfieldAffineRegressionFlirtOut | None = None,
     runner: Runner = None,
 ) -> VolumeWarpfieldAffineRegressionOutputs:
     """
@@ -132,9 +132,9 @@ def volume_warpfield_affine_regression(
 
 
 __all__ = [
-    "FlirtOut",
-    "FlirtOutOutputs",
     "VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA",
+    "VolumeWarpfieldAffineRegressionFlirtOut",
+    "VolumeWarpfieldAffineRegressionFlirtOutOutputs",
     "VolumeWarpfieldAffineRegressionOutputs",
     "volume_warpfield_affine_regression",
 ]

@@ -16,16 +16,16 @@ SURFACE_DISTORTION_METADATA = Metadata(
 )
 
 
-class SmoothOutputs(typing.NamedTuple):
+class SurfaceDistortionSmoothOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Smooth.run(...)`.
+    Output object returned when calling `SurfaceDistortionSmooth.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Smooth:
+class SurfaceDistortionSmooth:
     """
     smooth the area data
     """
@@ -53,7 +53,7 @@ class Smooth:
     def outputs(
         self,
         execution: Execution,
-    ) -> SmoothOutputs:
+    ) -> SurfaceDistortionSmoothOutputs:
         """
         Collect output file paths.
         
@@ -61,9 +61,9 @@ class Smooth:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SmoothOutputs`).
+            NamedTuple of outputs (described in `SurfaceDistortionSmoothOutputs`).
         """
-        ret = SmoothOutputs(
+        ret = SurfaceDistortionSmoothOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -77,7 +77,7 @@ class SurfaceDistortionOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output distortion metric"""
-    smooth: SmoothOutputs
+    smooth: SurfaceDistortionSmoothOutputs
     """Subcommand outputs"""
 
 
@@ -85,7 +85,7 @@ def surface_distortion(
     surface_reference: InputPathType,
     surface_distorted: InputPathType,
     metric_out: InputPathType,
-    smooth: Smooth | None = None,
+    smooth: SurfaceDistortionSmooth | None = None,
     opt_caret5_method: bool = False,
     opt_edge_method: bool = False,
     opt_local_affine_method: bool = False,
@@ -160,8 +160,8 @@ def surface_distortion(
 
 __all__ = [
     "SURFACE_DISTORTION_METADATA",
-    "Smooth",
-    "SmoothOutputs",
     "SurfaceDistortionOutputs",
+    "SurfaceDistortionSmooth",
+    "SurfaceDistortionSmoothOutputs",
     "surface_distortion",
 ]

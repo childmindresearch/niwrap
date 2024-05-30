@@ -16,16 +16,16 @@ LABEL_RESAMPLE_METADATA = Metadata(
 )
 
 
-class AreaSurfsOutputs(typing.NamedTuple):
+class LabelResampleAreaSurfsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `AreaSurfs.run(...)`.
+    Output object returned when calling `LabelResampleAreaSurfs.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class AreaSurfs:
+class LabelResampleAreaSurfs:
     """
     specify surfaces to do vertex area correction based on
     """
@@ -49,7 +49,7 @@ class AreaSurfs:
     def outputs(
         self,
         execution: Execution,
-    ) -> AreaSurfsOutputs:
+    ) -> LabelResampleAreaSurfsOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class AreaSurfs:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AreaSurfsOutputs`).
+            NamedTuple of outputs (described in `LabelResampleAreaSurfsOutputs`).
         """
-        ret = AreaSurfsOutputs(
+        ret = LabelResampleAreaSurfsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AreaMetricsOutputs(typing.NamedTuple):
+class LabelResampleAreaMetricsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `AreaMetrics.run(...)`.
+    Output object returned when calling `LabelResampleAreaMetrics.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class AreaMetrics:
+class LabelResampleAreaMetrics:
     """
     specify vertex area metrics to do area correction based on
     """
@@ -98,7 +98,7 @@ class AreaMetrics:
     def outputs(
         self,
         execution: Execution,
-    ) -> AreaMetricsOutputs:
+    ) -> LabelResampleAreaMetricsOutputs:
         """
         Collect output file paths.
         
@@ -106,9 +106,9 @@ class AreaMetrics:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AreaMetricsOutputs`).
+            NamedTuple of outputs (described in `LabelResampleAreaMetricsOutputs`).
         """
-        ret = AreaMetricsOutputs(
+        ret = LabelResampleAreaMetricsOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -124,9 +124,9 @@ class LabelResampleOutputs(typing.NamedTuple):
     """the output label file"""
     roi_out: OutputPathType
     """the output roi as a metric"""
-    area_surfs: AreaSurfsOutputs
+    area_surfs: LabelResampleAreaSurfsOutputs
     """Subcommand outputs"""
-    area_metrics: AreaMetricsOutputs
+    area_metrics: LabelResampleAreaMetricsOutputs
     """Subcommand outputs"""
 
 
@@ -137,8 +137,8 @@ def label_resample(
     method: str,
     label_out: InputPathType,
     roi_out: InputPathType,
-    area_surfs: AreaSurfs | None = None,
-    area_metrics: AreaMetrics | None = None,
+    area_surfs: LabelResampleAreaSurfs | None = None,
+    area_metrics: LabelResampleAreaMetrics | None = None,
     opt_current_roi_roi_metric: InputPathType | None = None,
     opt_valid_roi_out: bool = False,
     opt_largest: bool = False,
@@ -229,11 +229,11 @@ def label_resample(
 
 
 __all__ = [
-    "AreaMetrics",
-    "AreaMetricsOutputs",
-    "AreaSurfs",
-    "AreaSurfsOutputs",
     "LABEL_RESAMPLE_METADATA",
+    "LabelResampleAreaMetrics",
+    "LabelResampleAreaMetricsOutputs",
+    "LabelResampleAreaSurfs",
+    "LabelResampleAreaSurfsOutputs",
     "LabelResampleOutputs",
     "label_resample",
 ]

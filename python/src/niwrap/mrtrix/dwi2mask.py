@@ -16,16 +16,16 @@ DWI2MASK_METADATA = Metadata(
 )
 
 
-class FslgradOutputs(typing.NamedTuple):
+class Dwi2maskFslgradOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fslgrad.run(...)`.
+    Output object returned when calling `Dwi2maskFslgrad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fslgrad:
+class Dwi2maskFslgrad:
     """
     Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
     """
@@ -62,7 +62,7 @@ class Fslgrad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FslgradOutputs:
+    ) -> Dwi2maskFslgradOutputs:
         """
         Collect output file paths.
         
@@ -70,24 +70,24 @@ class Fslgrad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FslgradOutputs`).
+            NamedTuple of outputs (described in `Dwi2maskFslgradOutputs`).
         """
-        ret = FslgradOutputs(
+        ret = Dwi2maskFslgradOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Dwi2maskConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Dwi2maskConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Dwi2maskConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -118,7 +118,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Dwi2maskConfigOutputs:
         """
         Collect output file paths.
         
@@ -126,9 +126,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Dwi2maskConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Dwi2maskConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -142,9 +142,9 @@ class Dwi2maskOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output whole-brain mask image"""
-    fslgrad: FslgradOutputs
+    fslgrad: Dwi2maskFslgradOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[Dwi2maskConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -153,13 +153,13 @@ def dwi2mask(
     output: InputPathType,
     clean_scale: int | None = None,
     grad: InputPathType | None = None,
-    fslgrad: Fslgrad | None = None,
+    fslgrad: Dwi2maskFslgrad | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Dwi2maskConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -259,11 +259,11 @@ def dwi2mask(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "DWI2MASK_METADATA",
+    "Dwi2maskConfig",
+    "Dwi2maskConfigOutputs",
+    "Dwi2maskFslgrad",
+    "Dwi2maskFslgradOutputs",
     "Dwi2maskOutputs",
-    "Fslgrad",
-    "FslgradOutputs",
     "dwi2mask",
 ]

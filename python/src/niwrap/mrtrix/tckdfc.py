@@ -16,16 +16,16 @@ TCKDFC_METADATA = Metadata(
 )
 
 
-class DynamicOutputs(typing.NamedTuple):
+class TckdfcDynamicOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Dynamic.run(...)`.
+    Output object returned when calling `TckdfcDynamic.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Dynamic:
+class TckdfcDynamic:
     """
     generate a "dynamic" (4D) output image; must additionally provide the shape and width (in volumes) of the sliding window.
     """
@@ -58,7 +58,7 @@ class Dynamic:
     def outputs(
         self,
         execution: Execution,
-    ) -> DynamicOutputs:
+    ) -> TckdfcDynamicOutputs:
         """
         Collect output file paths.
         
@@ -66,24 +66,24 @@ class Dynamic:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `DynamicOutputs`).
+            NamedTuple of outputs (described in `TckdfcDynamicOutputs`).
         """
-        ret = DynamicOutputs(
+        ret = TckdfcDynamicOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TckdfcConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TckdfcConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TckdfcConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -114,7 +114,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TckdfcConfigOutputs:
         """
         Collect output file paths.
         
@@ -122,9 +122,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TckdfcConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TckdfcConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -138,9 +138,9 @@ class TckdfcOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output TW-dFC image"""
-    dynamic: DynamicOutputs
+    dynamic: TckdfcDynamicOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[TckdfcConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -149,7 +149,7 @@ def tckdfc(
     fmri: InputPathType,
     output: InputPathType,
     static: bool = False,
-    dynamic: Dynamic | None = None,
+    dynamic: TckdfcDynamic | None = None,
     template: InputPathType | None = None,
     vox: list[float | int] = None,
     stat_vox: typing.Literal["type"] | None = None,
@@ -160,7 +160,7 @@ def tckdfc(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TckdfcConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -293,11 +293,11 @@ def tckdfc(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
-    "Dynamic",
-    "DynamicOutputs",
     "TCKDFC_METADATA",
+    "TckdfcConfig",
+    "TckdfcConfigOutputs",
+    "TckdfcDynamic",
+    "TckdfcDynamicOutputs",
     "TckdfcOutputs",
     "tckdfc",
 ]

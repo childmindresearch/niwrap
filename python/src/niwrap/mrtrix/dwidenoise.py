@@ -16,16 +16,16 @@ DWIDENOISE_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class DwidenoiseConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `DwidenoiseConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class DwidenoiseConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> DwidenoiseConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `DwidenoiseConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = DwidenoiseConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -82,7 +82,7 @@ class DwidenoiseOutputs(typing.NamedTuple):
     """the output denoised DWI image."""
     noise: OutputPathType | None
     """The output noise map, i.e., the estimated noise level 'sigma' in the data. Note that on complex input data, this will be the total noise level across real and imaginary channels, so a scale factor sqrt(2) applies. """
-    config: ConfigOutputs
+    config: typing.List[DwidenoiseConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -99,7 +99,7 @@ def dwidenoise(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[DwidenoiseConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -225,9 +225,9 @@ def dwidenoise(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "DWIDENOISE_METADATA",
+    "DwidenoiseConfig",
+    "DwidenoiseConfigOutputs",
     "DwidenoiseOutputs",
     "dwidenoise",
 ]

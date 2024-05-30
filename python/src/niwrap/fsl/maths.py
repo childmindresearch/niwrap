@@ -16,16 +16,16 @@ FSLMATHS_METADATA = Metadata(
 )
 
 
-class OperationOutputs(typing.NamedTuple):
+class FslmathsOperationOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Operation.run(...)`.
+    Output object returned when calling `FslmathsOperation.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Operation:
+class FslmathsOperation:
     """
     Operation to perform on input images
     """
@@ -689,7 +689,7 @@ class Operation:
     def outputs(
         self,
         execution: Execution,
-    ) -> OperationOutputs:
+    ) -> FslmathsOperationOutputs:
         """
         Collect output file paths.
         
@@ -697,9 +697,9 @@ class Operation:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OperationOutputs`).
+            NamedTuple of outputs (described in `FslmathsOperationOutputs`).
         """
-        ret = OperationOutputs(
+        ret = FslmathsOperationOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -713,13 +713,13 @@ class FslmathsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """The main output file produced by fslmaths"""
-    operations: OperationOutputs
+    operations: typing.List[FslmathsOperationOutputs]
     """Subcommand outputs"""
 
 
 def fslmaths(
     input_files: list[InputPathType],
-    operations: list[Operation],
+    operations: list[FslmathsOperation],
     output: str,
     datatype_internal: typing.Literal["char", "short", "int", "float", "double", "input"] | None = "float",
     output_datatype: typing.Literal["char", "short", "int", "float", "double", "input"] | None = None,
@@ -762,8 +762,8 @@ def fslmaths(
 
 __all__ = [
     "FSLMATHS_METADATA",
+    "FslmathsOperation",
+    "FslmathsOperationOutputs",
     "FslmathsOutputs",
-    "Operation",
-    "OperationOutputs",
     "fslmaths",
 ]

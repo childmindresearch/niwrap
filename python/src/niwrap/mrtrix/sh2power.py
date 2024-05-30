@@ -16,16 +16,16 @@ SH2POWER_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Sh2powerConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Sh2powerConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Sh2powerConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Sh2powerConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Sh2powerConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Sh2powerConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class Sh2powerOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     power: OutputPathType
     """the output power image."""
-    config: ConfigOutputs
+    config: typing.List[Sh2powerConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -93,7 +93,7 @@ def sh2power(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Sh2powerConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -172,9 +172,9 @@ def sh2power(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "SH2POWER_METADATA",
+    "Sh2powerConfig",
+    "Sh2powerConfigOutputs",
     "Sh2powerOutputs",
     "sh2power",
 ]

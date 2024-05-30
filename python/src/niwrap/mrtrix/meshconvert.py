@@ -16,16 +16,16 @@ MESHCONVERT_METADATA = Metadata(
 )
 
 
-class TransformOutputs(typing.NamedTuple):
+class MeshconvertTransformOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Transform.run(...)`.
+    Output object returned when calling `MeshconvertTransform.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Transform:
+class MeshconvertTransform:
     """
     transform vertices from one coordinate space to another, based on a template image; options are: first2real, real2first, voxel2real, real2voxel, fs2real
     """
@@ -60,7 +60,7 @@ class Transform:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformOutputs:
+    ) -> MeshconvertTransformOutputs:
         """
         Collect output file paths.
         
@@ -68,24 +68,24 @@ class Transform:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformOutputs`).
+            NamedTuple of outputs (described in `MeshconvertTransformOutputs`).
         """
-        ret = TransformOutputs(
+        ret = MeshconvertTransformOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MeshconvertConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MeshconvertConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MeshconvertConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -116,7 +116,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MeshconvertConfigOutputs:
         """
         Collect output file paths.
         
@@ -124,9 +124,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MeshconvertConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MeshconvertConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -140,9 +140,9 @@ class MeshconvertOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output mesh file"""
-    transform: TransformOutputs
+    transform: MeshconvertTransformOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[MeshconvertConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -150,13 +150,13 @@ def meshconvert(
     input_: InputPathType,
     output: InputPathType,
     binary: bool = False,
-    transform: Transform | None = None,
+    transform: MeshconvertTransform | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MeshconvertConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -235,11 +235,11 @@ def meshconvert(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MESHCONVERT_METADATA",
+    "MeshconvertConfig",
+    "MeshconvertConfigOutputs",
     "MeshconvertOutputs",
-    "Transform",
-    "TransformOutputs",
+    "MeshconvertTransform",
+    "MeshconvertTransformOutputs",
     "meshconvert",
 ]

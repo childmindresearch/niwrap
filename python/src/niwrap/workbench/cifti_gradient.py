@@ -16,16 +16,16 @@ CIFTI_GRADIENT_METADATA = Metadata(
 )
 
 
-class LeftSurfaceOutputs(typing.NamedTuple):
+class CiftiGradientLeftSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftSurface.run(...)`.
+    Output object returned when calling `CiftiGradientLeftSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftSurface:
+class CiftiGradientLeftSurface:
     """
     specify the left surface to use
     """
@@ -54,7 +54,7 @@ class LeftSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftSurfaceOutputs:
+    ) -> CiftiGradientLeftSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -62,24 +62,24 @@ class LeftSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiGradientLeftSurfaceOutputs`).
         """
-        ret = LeftSurfaceOutputs(
+        ret = CiftiGradientLeftSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightSurfaceOutputs(typing.NamedTuple):
+class CiftiGradientRightSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightSurface.run(...)`.
+    Output object returned when calling `CiftiGradientRightSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightSurface:
+class CiftiGradientRightSurface:
     """
     specify the right surface to use
     """
@@ -108,7 +108,7 @@ class RightSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightSurfaceOutputs:
+    ) -> CiftiGradientRightSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -116,24 +116,24 @@ class RightSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiGradientRightSurfaceOutputs`).
         """
-        ret = RightSurfaceOutputs(
+        ret = CiftiGradientRightSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumSurfaceOutputs(typing.NamedTuple):
+class CiftiGradientCerebellumSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumSurface.run(...)`.
+    Output object returned when calling `CiftiGradientCerebellumSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumSurface:
+class CiftiGradientCerebellumSurface:
     """
     specify the cerebellum surface to use
     """
@@ -162,7 +162,7 @@ class CerebellumSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumSurfaceOutputs:
+    ) -> CiftiGradientCerebellumSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -170,9 +170,9 @@ class CerebellumSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiGradientCerebellumSurfaceOutputs`).
         """
-        ret = CerebellumSurfaceOutputs(
+        ret = CiftiGradientCerebellumSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -188,11 +188,11 @@ class CiftiGradientOutputs(typing.NamedTuple):
     """the output cifti"""
     vectors_out: OutputPathType
     """the vectors, as a dscalar file"""
-    left_surface: LeftSurfaceOutputs
+    left_surface: CiftiGradientLeftSurfaceOutputs
     """Subcommand outputs"""
-    right_surface: RightSurfaceOutputs
+    right_surface: CiftiGradientRightSurfaceOutputs
     """Subcommand outputs"""
-    cerebellum_surface: CerebellumSurfaceOutputs
+    cerebellum_surface: CiftiGradientCerebellumSurfaceOutputs
     """Subcommand outputs"""
 
 
@@ -201,9 +201,9 @@ def cifti_gradient(
     direction: str,
     cifti_out: InputPathType,
     vectors_out: InputPathType,
-    left_surface: LeftSurface | None = None,
-    right_surface: RightSurface | None = None,
-    cerebellum_surface: CerebellumSurface | None = None,
+    left_surface: CiftiGradientLeftSurface | None = None,
+    right_surface: CiftiGradientRightSurface | None = None,
+    cerebellum_surface: CiftiGradientCerebellumSurface | None = None,
     opt_surface_presmooth_surface_kernel: float | int | None = None,
     opt_volume_presmooth_volume_kernel: float | int | None = None,
     opt_presmooth_fwhm: bool = False,
@@ -284,12 +284,12 @@ def cifti_gradient(
 
 __all__ = [
     "CIFTI_GRADIENT_METADATA",
-    "CerebellumSurface",
-    "CerebellumSurfaceOutputs",
+    "CiftiGradientCerebellumSurface",
+    "CiftiGradientCerebellumSurfaceOutputs",
+    "CiftiGradientLeftSurface",
+    "CiftiGradientLeftSurfaceOutputs",
     "CiftiGradientOutputs",
-    "LeftSurface",
-    "LeftSurfaceOutputs",
-    "RightSurface",
-    "RightSurfaceOutputs",
+    "CiftiGradientRightSurface",
+    "CiftiGradientRightSurfaceOutputs",
     "cifti_gradient",
 ]

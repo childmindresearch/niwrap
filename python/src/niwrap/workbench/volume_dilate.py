@@ -16,16 +16,16 @@ VOLUME_DILATE_METADATA = Metadata(
 )
 
 
-class PresmoothOutputs(typing.NamedTuple):
+class VolumeDilatePresmoothOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Presmooth.run(...)`.
+    Output object returned when calling `VolumeDilatePresmooth.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Presmooth:
+class VolumeDilatePresmooth:
     """
     apply presmoothing before computing gradient vectors, not recommended
     """
@@ -53,7 +53,7 @@ class Presmooth:
     def outputs(
         self,
         execution: Execution,
-    ) -> PresmoothOutputs:
+    ) -> VolumeDilatePresmoothOutputs:
         """
         Collect output file paths.
         
@@ -61,9 +61,9 @@ class Presmooth:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PresmoothOutputs`).
+            NamedTuple of outputs (described in `VolumeDilatePresmoothOutputs`).
         """
-        ret = PresmoothOutputs(
+        ret = VolumeDilatePresmoothOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -77,7 +77,7 @@ class VolumeDilateOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume"""
-    presmooth: PresmoothOutputs
+    presmooth: VolumeDilatePresmoothOutputs
     """Subcommand outputs"""
 
 
@@ -92,7 +92,7 @@ def volume_dilate(
     opt_subvolume_subvol: str | None = None,
     opt_legacy_cutoff: bool = False,
     opt_grad_extrapolate: bool = False,
-    presmooth: Presmooth | None = None,
+    presmooth: VolumeDilatePresmooth | None = None,
     runner: Runner = None,
 ) -> VolumeDilateOutputs:
     """
@@ -176,9 +176,9 @@ def volume_dilate(
 
 
 __all__ = [
-    "Presmooth",
-    "PresmoothOutputs",
     "VOLUME_DILATE_METADATA",
     "VolumeDilateOutputs",
+    "VolumeDilatePresmooth",
+    "VolumeDilatePresmoothOutputs",
     "volume_dilate",
 ]

@@ -16,16 +16,16 @@ SCENE_FILE_MERGE_METADATA = Metadata(
 )
 
 
-class UpToOutputs(typing.NamedTuple):
+class SceneFileMergeUpToOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `UpTo.run(...)`.
+    Output object returned when calling `SceneFileMergeUpTo.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class UpTo:
+class SceneFileMergeUpTo:
     """
     use an inclusive range of scenes
     """
@@ -53,7 +53,7 @@ class UpTo:
     def outputs(
         self,
         execution: Execution,
-    ) -> UpToOutputs:
+    ) -> SceneFileMergeUpToOutputs:
         """
         Collect output file paths.
         
@@ -61,30 +61,30 @@ class UpTo:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `UpToOutputs`).
+            NamedTuple of outputs (described in `SceneFileMergeUpToOutputs`).
         """
-        ret = UpToOutputs(
+        ret = SceneFileMergeUpToOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SceneOutputs(typing.NamedTuple):
+class SceneFileMergeSceneOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Scene.run(...)`.
+    Output object returned when calling `SceneFileMergeScene.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.up_to: UpToOutputs
+    self.up_to: SceneFileMergeUpToOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Scene:
+class SceneFileMergeScene:
     """
     specify a scene to use
     """
-    up_to: UpTo | None = None
+    up_to: SceneFileMergeUpTo | None = None
     """use an inclusive range of scenes"""
     
     def run(
@@ -108,7 +108,7 @@ class Scene:
     def outputs(
         self,
         execution: Execution,
-    ) -> SceneOutputs:
+    ) -> SceneFileMergeSceneOutputs:
         """
         Collect output file paths.
         
@@ -116,31 +116,31 @@ class Scene:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SceneOutputs`).
+            NamedTuple of outputs (described in `SceneFileMergeSceneOutputs`).
         """
-        ret = SceneOutputs(
+        ret = SceneFileMergeSceneOutputs(
             root=execution.output_file("."),
             self.up_to=self.up_to.outputs(execution),
         )
         return ret
 
 
-class SceneFileOutputs(typing.NamedTuple):
+class SceneFileMergeSceneFileOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SceneFile.run(...)`.
+    Output object returned when calling `SceneFileMergeSceneFile.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.scene: SceneOutputs
+    self.scene: typing.List[SceneFileMergeSceneOutputs]
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class SceneFile:
+class SceneFileMergeSceneFile:
     """
     specify a scene file to use scenes from
     """
-    scene: list[Scene] = None
+    scene: list[SceneFileMergeScene] = None
     """specify a scene to use"""
     
     def run(
@@ -164,7 +164,7 @@ class SceneFile:
     def outputs(
         self,
         execution: Execution,
-    ) -> SceneFileOutputs:
+    ) -> SceneFileMergeSceneFileOutputs:
         """
         Collect output file paths.
         
@@ -172,9 +172,9 @@ class SceneFile:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SceneFileOutputs`).
+            NamedTuple of outputs (described in `SceneFileMergeSceneFileOutputs`).
         """
-        ret = SceneFileOutputs(
+        ret = SceneFileMergeSceneFileOutputs(
             root=execution.output_file("."),
             self.scene=[self.scene.outputs(execution) for self.scene in self.scene],
         )
@@ -187,13 +187,13 @@ class SceneFileMergeOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    scene_file: SceneFileOutputs
+    scene_file: typing.List[SceneFileMergeSceneFileOutputs]
     """Subcommand outputs"""
 
 
 def scene_file_merge(
     scene_file_out: str,
-    scene_file: list[SceneFile] = None,
+    scene_file: list[SceneFileMergeSceneFile] = None,
     runner: Runner = None,
 ) -> SceneFileMergeOutputs:
     """
@@ -235,12 +235,12 @@ def scene_file_merge(
 
 __all__ = [
     "SCENE_FILE_MERGE_METADATA",
-    "Scene",
-    "SceneFile",
     "SceneFileMergeOutputs",
-    "SceneFileOutputs",
-    "SceneOutputs",
-    "UpTo",
-    "UpToOutputs",
+    "SceneFileMergeScene",
+    "SceneFileMergeSceneFile",
+    "SceneFileMergeSceneFileOutputs",
+    "SceneFileMergeSceneOutputs",
+    "SceneFileMergeUpTo",
+    "SceneFileMergeUpToOutputs",
     "scene_file_merge",
 ]

@@ -16,16 +16,16 @@ BORDER_FILE_EXPORT_TO_CARET5_METADATA = Metadata(
 )
 
 
-class SurfaceOutputs(typing.NamedTuple):
+class BorderFileExportToCaret5SurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Surface.run(...)`.
+    Output object returned when calling `BorderFileExportToCaret5Surface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Surface:
+class BorderFileExportToCaret5Surface:
     """
     specify an input surface
     """
@@ -49,7 +49,7 @@ class Surface:
     def outputs(
         self,
         execution: Execution,
-    ) -> SurfaceOutputs:
+    ) -> BorderFileExportToCaret5SurfaceOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Surface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SurfaceOutputs`).
+            NamedTuple of outputs (described in `BorderFileExportToCaret5SurfaceOutputs`).
         """
-        ret = SurfaceOutputs(
+        ret = BorderFileExportToCaret5SurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -71,14 +71,14 @@ class BorderFileExportToCaret5Outputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    surface: SurfaceOutputs
+    surface: typing.List[BorderFileExportToCaret5SurfaceOutputs]
     """Subcommand outputs"""
 
 
 def border_file_export_to_caret5(
     border_file: str,
     output_file_prefix: str,
-    surface: list[Surface] = None,
+    surface: list[BorderFileExportToCaret5Surface] = None,
     runner: Runner = None,
 ) -> BorderFileExportToCaret5Outputs:
     """
@@ -140,7 +140,7 @@ def border_file_export_to_caret5(
 __all__ = [
     "BORDER_FILE_EXPORT_TO_CARET5_METADATA",
     "BorderFileExportToCaret5Outputs",
-    "Surface",
-    "SurfaceOutputs",
+    "BorderFileExportToCaret5Surface",
+    "BorderFileExportToCaret5SurfaceOutputs",
     "border_file_export_to_caret5",
 ]

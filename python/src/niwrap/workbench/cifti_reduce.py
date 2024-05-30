@@ -16,16 +16,16 @@ CIFTI_REDUCE_METADATA = Metadata(
 )
 
 
-class ExcludeOutliersOutputs(typing.NamedTuple):
+class CiftiReduceExcludeOutliersOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ExcludeOutliers.run(...)`.
+    Output object returned when calling `CiftiReduceExcludeOutliers.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ExcludeOutliers:
+class CiftiReduceExcludeOutliers:
     """
     exclude non-numeric values and outliers by standard deviation
     """
@@ -49,7 +49,7 @@ class ExcludeOutliers:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExcludeOutliersOutputs:
+    ) -> CiftiReduceExcludeOutliersOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class ExcludeOutliers:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExcludeOutliersOutputs`).
+            NamedTuple of outputs (described in `CiftiReduceExcludeOutliersOutputs`).
         """
-        ret = ExcludeOutliersOutputs(
+        ret = CiftiReduceExcludeOutliersOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -73,7 +73,7 @@ class CiftiReduceOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    exclude_outliers: ExcludeOutliersOutputs
+    exclude_outliers: CiftiReduceExcludeOutliersOutputs
     """Subcommand outputs"""
 
 
@@ -82,7 +82,7 @@ def cifti_reduce(
     operation: str,
     cifti_out: InputPathType,
     opt_direction_direction: str | None = None,
-    exclude_outliers: ExcludeOutliers | None = None,
+    exclude_outliers: CiftiReduceExcludeOutliers | None = None,
     opt_only_numeric: bool = False,
     runner: Runner = None,
 ) -> CiftiReduceOutputs:
@@ -151,8 +151,8 @@ def cifti_reduce(
 
 __all__ = [
     "CIFTI_REDUCE_METADATA",
+    "CiftiReduceExcludeOutliers",
+    "CiftiReduceExcludeOutliersOutputs",
     "CiftiReduceOutputs",
-    "ExcludeOutliers",
-    "ExcludeOutliersOutputs",
     "cifti_reduce",
 ]

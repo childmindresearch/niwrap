@@ -16,16 +16,16 @@ CIFTI_ESTIMATE_FWHM_METADATA = Metadata(
 )
 
 
-class SurfaceOutputs(typing.NamedTuple):
+class CiftiEstimateFwhmSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Surface.run(...)`.
+    Output object returned when calling `CiftiEstimateFwhmSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Surface:
+class CiftiEstimateFwhmSurface:
     """
     specify an input surface
     """
@@ -49,7 +49,7 @@ class Surface:
     def outputs(
         self,
         execution: Execution,
-    ) -> SurfaceOutputs:
+    ) -> CiftiEstimateFwhmSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Surface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiEstimateFwhmSurfaceOutputs`).
         """
-        ret = SurfaceOutputs(
+        ret = CiftiEstimateFwhmSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -71,7 +71,7 @@ class CiftiEstimateFwhmOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    surface: SurfaceOutputs
+    surface: typing.List[CiftiEstimateFwhmSurfaceOutputs]
     """Subcommand outputs"""
 
 
@@ -81,7 +81,7 @@ def cifti_estimate_fwhm(
     opt_column_column: int | None = None,
     opt_whole_file: bool = False,
     opt_demean: bool = False,
-    surface: list[Surface] = None,
+    surface: list[CiftiEstimateFwhmSurface] = None,
     runner: Runner = None,
 ) -> CiftiEstimateFwhmOutputs:
     """
@@ -170,7 +170,7 @@ def cifti_estimate_fwhm(
 __all__ = [
     "CIFTI_ESTIMATE_FWHM_METADATA",
     "CiftiEstimateFwhmOutputs",
-    "Surface",
-    "SurfaceOutputs",
+    "CiftiEstimateFwhmSurface",
+    "CiftiEstimateFwhmSurfaceOutputs",
     "cifti_estimate_fwhm",
 ]

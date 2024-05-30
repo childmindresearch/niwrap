@@ -16,16 +16,16 @@ FIXELREORIENT_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class FixelreorientConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `FixelreorientConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class FixelreorientConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> FixelreorientConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `FixelreorientConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = FixelreorientConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class FixelreorientOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     fixel_out: OutputPathType
     """the output fixel directory. If the the input and output directories are the same, the existing directions file will be replaced (providing the -force option is supplied). If a new directory is supplied then the fixel directions and all other fixel data will be copied to the new directory."""
-    config: ConfigOutputs
+    config: typing.List[FixelreorientConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -93,7 +93,7 @@ def fixelreorient(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[FixelreorientConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -174,9 +174,9 @@ def fixelreorient(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "FIXELREORIENT_METADATA",
+    "FixelreorientConfig",
+    "FixelreorientConfigOutputs",
     "FixelreorientOutputs",
     "fixelreorient",
 ]

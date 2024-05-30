@@ -16,16 +16,16 @@ TRANSFORMCALC_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TransformcalcConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TransformcalcConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TransformcalcConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TransformcalcConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TransformcalcConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TransformcalcConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class TransformcalcOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output transformation matrix."""
-    config: ConfigOutputs
+    config: typing.List[TransformcalcConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -93,7 +93,7 @@ def transformcalc(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TransformcalcConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -167,9 +167,9 @@ def transformcalc(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TRANSFORMCALC_METADATA",
+    "TransformcalcConfig",
+    "TransformcalcConfigOutputs",
     "TransformcalcOutputs",
     "transformcalc",
 ]

@@ -16,16 +16,16 @@ DWI2TENSOR_METADATA = Metadata(
 )
 
 
-class FslgradOutputs(typing.NamedTuple):
+class Dwi2tensorFslgradOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fslgrad.run(...)`.
+    Output object returned when calling `Dwi2tensorFslgrad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fslgrad:
+class Dwi2tensorFslgrad:
     """
     Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
     """
@@ -62,7 +62,7 @@ class Fslgrad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FslgradOutputs:
+    ) -> Dwi2tensorFslgradOutputs:
         """
         Collect output file paths.
         
@@ -70,24 +70,24 @@ class Fslgrad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FslgradOutputs`).
+            NamedTuple of outputs (described in `Dwi2tensorFslgradOutputs`).
         """
-        ret = FslgradOutputs(
+        ret = Dwi2tensorFslgradOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Dwi2tensorConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Dwi2tensorConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Dwi2tensorConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -118,7 +118,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Dwi2tensorConfigOutputs:
         """
         Collect output file paths.
         
@@ -126,9 +126,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Dwi2tensorConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Dwi2tensorConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -148,9 +148,9 @@ class Dwi2tensorOutputs(typing.NamedTuple):
     """the output dkt image. """
     predicted_signal: OutputPathType | None
     """the predicted dwi image. """
-    fslgrad: FslgradOutputs
+    fslgrad: Dwi2tensorFslgradOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[Dwi2tensorConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -164,13 +164,13 @@ def dwi2tensor(
     iter_: int | None = None,
     predicted_signal: InputPathType | None = None,
     grad: InputPathType | None = None,
-    fslgrad: Fslgrad | None = None,
+    fslgrad: Dwi2tensorFslgrad | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Dwi2tensorConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -314,11 +314,11 @@ def dwi2tensor(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "DWI2TENSOR_METADATA",
+    "Dwi2tensorConfig",
+    "Dwi2tensorConfigOutputs",
+    "Dwi2tensorFslgrad",
+    "Dwi2tensorFslgradOutputs",
     "Dwi2tensorOutputs",
-    "Fslgrad",
-    "FslgradOutputs",
     "dwi2tensor",
 ]

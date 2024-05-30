@@ -16,16 +16,16 @@ MRHISTOGRAM_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrhistogramConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrhistogramConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrhistogramConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrhistogramConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrhistogramConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrhistogramConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class MrhistogramOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     hist: OutputPathType
     """the output histogram file"""
-    config: ConfigOutputs
+    config: typing.List[MrhistogramConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -97,7 +97,7 @@ def mrhistogram(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrhistogramConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -184,9 +184,9 @@ def mrhistogram(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MRHISTOGRAM_METADATA",
+    "MrhistogramConfig",
+    "MrhistogramConfigOutputs",
     "MrhistogramOutputs",
     "mrhistogram",
 ]

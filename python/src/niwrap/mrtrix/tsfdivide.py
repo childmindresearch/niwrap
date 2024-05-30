@@ -16,16 +16,16 @@ TSFDIVIDE_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TsfdivideConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TsfdivideConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TsfdivideConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TsfdivideConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TsfdivideConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TsfdivideConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class TsfdivideOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output track scalar file"""
-    config: ConfigOutputs
+    config: typing.List[TsfdivideConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -93,7 +93,7 @@ def tsfdivide(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TsfdivideConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -165,9 +165,9 @@ def tsfdivide(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TSFDIVIDE_METADATA",
+    "TsfdivideConfig",
+    "TsfdivideConfigOutputs",
     "TsfdivideOutputs",
     "tsfdivide",
 ]

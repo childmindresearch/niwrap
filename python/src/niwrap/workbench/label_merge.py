@@ -16,16 +16,16 @@ LABEL_MERGE_METADATA = Metadata(
 )
 
 
-class UpToOutputs(typing.NamedTuple):
+class LabelMergeUpToOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `UpTo.run(...)`.
+    Output object returned when calling `LabelMergeUpTo.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class UpTo:
+class LabelMergeUpTo:
     """
     use an inclusive range of columns
     """
@@ -53,7 +53,7 @@ class UpTo:
     def outputs(
         self,
         execution: Execution,
-    ) -> UpToOutputs:
+    ) -> LabelMergeUpToOutputs:
         """
         Collect output file paths.
         
@@ -61,30 +61,30 @@ class UpTo:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `UpToOutputs`).
+            NamedTuple of outputs (described in `LabelMergeUpToOutputs`).
         """
-        ret = UpToOutputs(
+        ret = LabelMergeUpToOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ColumnOutputs(typing.NamedTuple):
+class LabelMergeColumnOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Column.run(...)`.
+    Output object returned when calling `LabelMergeColumn.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.up_to: UpToOutputs
+    self.up_to: LabelMergeUpToOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Column:
+class LabelMergeColumn:
     """
     select a single column to use
     """
-    up_to: UpTo | None = None
+    up_to: LabelMergeUpTo | None = None
     """use an inclusive range of columns"""
     
     def run(
@@ -108,7 +108,7 @@ class Column:
     def outputs(
         self,
         execution: Execution,
-    ) -> ColumnOutputs:
+    ) -> LabelMergeColumnOutputs:
         """
         Collect output file paths.
         
@@ -116,31 +116,31 @@ class Column:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ColumnOutputs`).
+            NamedTuple of outputs (described in `LabelMergeColumnOutputs`).
         """
-        ret = ColumnOutputs(
+        ret = LabelMergeColumnOutputs(
             root=execution.output_file("."),
             self.up_to=self.up_to.outputs(execution),
         )
         return ret
 
 
-class LabelOutputs(typing.NamedTuple):
+class LabelMergeLabelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Label.run(...)`.
+    Output object returned when calling `LabelMergeLabel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.column: ColumnOutputs
+    self.column: typing.List[LabelMergeColumnOutputs]
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Label:
+class LabelMergeLabel:
     """
     specify an input label
     """
-    column: list[Column] = None
+    column: list[LabelMergeColumn] = None
     """select a single column to use"""
     
     def run(
@@ -164,7 +164,7 @@ class Label:
     def outputs(
         self,
         execution: Execution,
-    ) -> LabelOutputs:
+    ) -> LabelMergeLabelOutputs:
         """
         Collect output file paths.
         
@@ -172,9 +172,9 @@ class Label:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LabelOutputs`).
+            NamedTuple of outputs (described in `LabelMergeLabelOutputs`).
         """
-        ret = LabelOutputs(
+        ret = LabelMergeLabelOutputs(
             root=execution.output_file("."),
             self.column=[self.column.outputs(execution) for self.column in self.column],
         )
@@ -189,13 +189,13 @@ class LabelMergeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     label_out: OutputPathType
     """the output label"""
-    label: LabelOutputs
+    label: typing.List[LabelMergeLabelOutputs]
     """Subcommand outputs"""
 
 
 def label_merge(
     label_out: InputPathType,
-    label: list[Label] = None,
+    label: list[LabelMergeLabel] = None,
     runner: Runner = None,
 ) -> LabelMergeOutputs:
     """
@@ -238,13 +238,13 @@ def label_merge(
 
 
 __all__ = [
-    "Column",
-    "ColumnOutputs",
     "LABEL_MERGE_METADATA",
-    "Label",
+    "LabelMergeColumn",
+    "LabelMergeColumnOutputs",
+    "LabelMergeLabel",
+    "LabelMergeLabelOutputs",
     "LabelMergeOutputs",
-    "LabelOutputs",
-    "UpTo",
-    "UpToOutputs",
+    "LabelMergeUpTo",
+    "LabelMergeUpToOutputs",
     "label_merge",
 ]

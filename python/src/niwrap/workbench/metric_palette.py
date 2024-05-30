@@ -16,16 +16,16 @@ METRIC_PALETTE_METADATA = Metadata(
 )
 
 
-class PosPercentOutputs(typing.NamedTuple):
+class MetricPalettePosPercentOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `PosPercent.run(...)`.
+    Output object returned when calling `MetricPalettePosPercent.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class PosPercent:
+class MetricPalettePosPercent:
     """
     percentage min/max for positive data coloring
     """
@@ -49,7 +49,7 @@ class PosPercent:
     def outputs(
         self,
         execution: Execution,
-    ) -> PosPercentOutputs:
+    ) -> MetricPalettePosPercentOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class PosPercent:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PosPercentOutputs`).
+            NamedTuple of outputs (described in `MetricPalettePosPercentOutputs`).
         """
-        ret = PosPercentOutputs(
+        ret = MetricPalettePosPercentOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NegPercentOutputs(typing.NamedTuple):
+class MetricPaletteNegPercentOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `NegPercent.run(...)`.
+    Output object returned when calling `MetricPaletteNegPercent.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class NegPercent:
+class MetricPaletteNegPercent:
     """
     percentage min/max for negative data coloring
     """
@@ -98,7 +98,7 @@ class NegPercent:
     def outputs(
         self,
         execution: Execution,
-    ) -> NegPercentOutputs:
+    ) -> MetricPaletteNegPercentOutputs:
         """
         Collect output file paths.
         
@@ -106,24 +106,24 @@ class NegPercent:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NegPercentOutputs`).
+            NamedTuple of outputs (described in `MetricPaletteNegPercentOutputs`).
         """
-        ret = NegPercentOutputs(
+        ret = MetricPaletteNegPercentOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class PosUserOutputs(typing.NamedTuple):
+class MetricPalettePosUserOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `PosUser.run(...)`.
+    Output object returned when calling `MetricPalettePosUser.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class PosUser:
+class MetricPalettePosUser:
     """
     user min/max values for positive data coloring
     """
@@ -147,7 +147,7 @@ class PosUser:
     def outputs(
         self,
         execution: Execution,
-    ) -> PosUserOutputs:
+    ) -> MetricPalettePosUserOutputs:
         """
         Collect output file paths.
         
@@ -155,24 +155,24 @@ class PosUser:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PosUserOutputs`).
+            NamedTuple of outputs (described in `MetricPalettePosUserOutputs`).
         """
-        ret = PosUserOutputs(
+        ret = MetricPalettePosUserOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NegUserOutputs(typing.NamedTuple):
+class MetricPaletteNegUserOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `NegUser.run(...)`.
+    Output object returned when calling `MetricPaletteNegUser.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class NegUser:
+class MetricPaletteNegUser:
     """
     user min/max values for negative data coloring
     """
@@ -196,7 +196,7 @@ class NegUser:
     def outputs(
         self,
         execution: Execution,
-    ) -> NegUserOutputs:
+    ) -> MetricPaletteNegUserOutputs:
         """
         Collect output file paths.
         
@@ -204,24 +204,24 @@ class NegUser:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NegUserOutputs`).
+            NamedTuple of outputs (described in `MetricPaletteNegUserOutputs`).
         """
-        ret = NegUserOutputs(
+        ret = MetricPaletteNegUserOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ThresholdingOutputs(typing.NamedTuple):
+class MetricPaletteThresholdingOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Thresholding.run(...)`.
+    Output object returned when calling `MetricPaletteThresholding.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Thresholding:
+class MetricPaletteThresholding:
     """
     set the thresholding
     """
@@ -245,7 +245,7 @@ class Thresholding:
     def outputs(
         self,
         execution: Execution,
-    ) -> ThresholdingOutputs:
+    ) -> MetricPaletteThresholdingOutputs:
         """
         Collect output file paths.
         
@@ -253,9 +253,9 @@ class Thresholding:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ThresholdingOutputs`).
+            NamedTuple of outputs (described in `MetricPaletteThresholdingOutputs`).
         """
-        ret = ThresholdingOutputs(
+        ret = MetricPaletteThresholdingOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -267,15 +267,15 @@ class MetricPaletteOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    pos_percent: PosPercentOutputs
+    pos_percent: MetricPalettePosPercentOutputs
     """Subcommand outputs"""
-    neg_percent: NegPercentOutputs
+    neg_percent: MetricPaletteNegPercentOutputs
     """Subcommand outputs"""
-    pos_user: PosUserOutputs
+    pos_user: MetricPalettePosUserOutputs
     """Subcommand outputs"""
-    neg_user: NegUserOutputs
+    neg_user: MetricPaletteNegUserOutputs
     """Subcommand outputs"""
-    thresholding: ThresholdingOutputs
+    thresholding: MetricPaletteThresholdingOutputs
     """Subcommand outputs"""
 
 
@@ -283,16 +283,16 @@ def metric_palette(
     metric: str,
     mode: str,
     opt_column_column: str | None = None,
-    pos_percent: PosPercent | None = None,
-    neg_percent: NegPercent | None = None,
-    pos_user: PosUser | None = None,
-    neg_user: NegUser | None = None,
+    pos_percent: MetricPalettePosPercent | None = None,
+    neg_percent: MetricPaletteNegPercent | None = None,
+    pos_user: MetricPalettePosUser | None = None,
+    neg_user: MetricPaletteNegUser | None = None,
     opt_interpolate_interpolate: typing.Literal["true", "false"] | None = None,
     opt_disp_pos_display: typing.Literal["true", "false"] | None = None,
     opt_disp_neg_display: typing.Literal["true", "false"] | None = None,
     opt_disp_zero_display: typing.Literal["true", "false"] | None = None,
     opt_palette_name_name: str | None = None,
-    thresholding: Thresholding | None = None,
+    thresholding: MetricPaletteThresholding | None = None,
     opt_inversion_type: str | None = None,
     runner: Runner = None,
 ) -> MetricPaletteOutputs:
@@ -443,16 +443,16 @@ def metric_palette(
 
 __all__ = [
     "METRIC_PALETTE_METADATA",
+    "MetricPaletteNegPercent",
+    "MetricPaletteNegPercentOutputs",
+    "MetricPaletteNegUser",
+    "MetricPaletteNegUserOutputs",
     "MetricPaletteOutputs",
-    "NegPercent",
-    "NegPercentOutputs",
-    "NegUser",
-    "NegUserOutputs",
-    "PosPercent",
-    "PosPercentOutputs",
-    "PosUser",
-    "PosUserOutputs",
-    "Thresholding",
-    "ThresholdingOutputs",
+    "MetricPalettePosPercent",
+    "MetricPalettePosPercentOutputs",
+    "MetricPalettePosUser",
+    "MetricPalettePosUserOutputs",
+    "MetricPaletteThresholding",
+    "MetricPaletteThresholdingOutputs",
     "metric_palette",
 ]

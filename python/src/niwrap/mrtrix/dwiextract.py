@@ -16,16 +16,16 @@ DWIEXTRACT_METADATA = Metadata(
 )
 
 
-class FslgradOutputs(typing.NamedTuple):
+class DwiextractFslgradOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fslgrad.run(...)`.
+    Output object returned when calling `DwiextractFslgrad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fslgrad:
+class DwiextractFslgrad:
     """
     Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
     """
@@ -62,7 +62,7 @@ class Fslgrad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FslgradOutputs:
+    ) -> DwiextractFslgradOutputs:
         """
         Collect output file paths.
         
@@ -70,17 +70,17 @@ class Fslgrad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FslgradOutputs`).
+            NamedTuple of outputs (described in `DwiextractFslgradOutputs`).
         """
-        ret = FslgradOutputs(
+        ret = DwiextractFslgradOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ExportGradFslOutputs(typing.NamedTuple):
+class DwiextractExportGradFslOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ExportGradFsl.run(...)`.
+    Output object returned when calling `DwiextractExportGradFsl.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -91,7 +91,7 @@ class ExportGradFslOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class ExportGradFsl:
+class DwiextractExportGradFsl:
     """
     export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format
     """
@@ -124,7 +124,7 @@ class ExportGradFsl:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExportGradFslOutputs:
+    ) -> DwiextractExportGradFslOutputs:
         """
         Collect output file paths.
         
@@ -132,9 +132,9 @@ class ExportGradFsl:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExportGradFslOutputs`).
+            NamedTuple of outputs (described in `DwiextractExportGradFslOutputs`).
         """
-        ret = ExportGradFslOutputs(
+        ret = DwiextractExportGradFslOutputs(
             root=execution.output_file("."),
             bvecs_path=execution.output_file(f"{pathlib.Path(self.bvecs_path).name}"),
             bvals_path=execution.output_file(f"{pathlib.Path(self.bvals_path).name}"),
@@ -142,16 +142,16 @@ class ExportGradFsl:
         return ret
 
 
-class ImportPeEddyOutputs(typing.NamedTuple):
+class DwiextractImportPeEddyOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ImportPeEddy.run(...)`.
+    Output object returned when calling `DwiextractImportPeEddy.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ImportPeEddy:
+class DwiextractImportPeEddy:
     """
     import phase-encoding information from an EDDY-style config / index file pair
     """
@@ -184,7 +184,7 @@ class ImportPeEddy:
     def outputs(
         self,
         execution: Execution,
-    ) -> ImportPeEddyOutputs:
+    ) -> DwiextractImportPeEddyOutputs:
         """
         Collect output file paths.
         
@@ -192,24 +192,24 @@ class ImportPeEddy:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ImportPeEddyOutputs`).
+            NamedTuple of outputs (described in `DwiextractImportPeEddyOutputs`).
         """
-        ret = ImportPeEddyOutputs(
+        ret = DwiextractImportPeEddyOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class DwiextractConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `DwiextractConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class DwiextractConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -240,7 +240,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> DwiextractConfigOutputs:
         """
         Collect output file paths.
         
@@ -248,9 +248,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `DwiextractConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = DwiextractConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -266,13 +266,13 @@ class DwiextractOutputs(typing.NamedTuple):
     """the output image (diffusion-weighted volumes by default)."""
     export_grad_mrtrix: OutputPathType | None
     """export the diffusion-weighted gradient table to file in MRtrix format """
-    fslgrad: FslgradOutputs
+    fslgrad: DwiextractFslgradOutputs
     """Subcommand outputs"""
-    export_grad_fsl: ExportGradFslOutputs
+    export_grad_fsl: DwiextractExportGradFslOutputs
     """Subcommand outputs"""
-    import_pe_eddy: ImportPeEddyOutputs
+    import_pe_eddy: DwiextractImportPeEddyOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[DwiextractConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -283,12 +283,12 @@ def dwiextract(
     no_bzero: bool = False,
     singleshell: bool = False,
     grad: InputPathType | None = None,
-    fslgrad: Fslgrad | None = None,
+    fslgrad: DwiextractFslgrad | None = None,
     shells: list[float | int] = None,
     export_grad_mrtrix: InputPathType | None = None,
-    export_grad_fsl: ExportGradFsl | None = None,
+    export_grad_fsl: DwiextractExportGradFsl | None = None,
     import_pe_table: InputPathType | None = None,
-    import_pe_eddy: ImportPeEddy | None = None,
+    import_pe_eddy: DwiextractImportPeEddy | None = None,
     pe: list[float | int] = None,
     strides: str | None = None,
     info: bool = False,
@@ -296,7 +296,7 @@ def dwiextract(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[DwiextractConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -439,15 +439,15 @@ def dwiextract(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "DWIEXTRACT_METADATA",
+    "DwiextractConfig",
+    "DwiextractConfigOutputs",
+    "DwiextractExportGradFsl",
+    "DwiextractExportGradFslOutputs",
+    "DwiextractFslgrad",
+    "DwiextractFslgradOutputs",
+    "DwiextractImportPeEddy",
+    "DwiextractImportPeEddyOutputs",
     "DwiextractOutputs",
-    "ExportGradFsl",
-    "ExportGradFslOutputs",
-    "Fslgrad",
-    "FslgradOutputs",
-    "ImportPeEddy",
-    "ImportPeEddyOutputs",
     "dwiextract",
 ]

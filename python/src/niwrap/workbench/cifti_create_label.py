@@ -16,16 +16,16 @@ CIFTI_CREATE_LABEL_METADATA = Metadata(
 )
 
 
-class VolumeOutputs(typing.NamedTuple):
+class CiftiCreateLabelVolumeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Volume.run(...)`.
+    Output object returned when calling `CiftiCreateLabelVolume.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Volume:
+class CiftiCreateLabelVolume:
     """
     volume component
     """
@@ -49,7 +49,7 @@ class Volume:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeOutputs:
+    ) -> CiftiCreateLabelVolumeOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class Volume:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateLabelVolumeOutputs`).
         """
-        ret = VolumeOutputs(
+        ret = CiftiCreateLabelVolumeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LeftLabelOutputs(typing.NamedTuple):
+class CiftiCreateLabelLeftLabelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftLabel.run(...)`.
+    Output object returned when calling `CiftiCreateLabelLeftLabel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftLabel:
+class CiftiCreateLabelLeftLabel:
     """
     label file for left surface
     """
@@ -102,7 +102,7 @@ class LeftLabel:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftLabelOutputs:
+    ) -> CiftiCreateLabelLeftLabelOutputs:
         """
         Collect output file paths.
         
@@ -110,24 +110,24 @@ class LeftLabel:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftLabelOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateLabelLeftLabelOutputs`).
         """
-        ret = LeftLabelOutputs(
+        ret = CiftiCreateLabelLeftLabelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightLabelOutputs(typing.NamedTuple):
+class CiftiCreateLabelRightLabelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightLabel.run(...)`.
+    Output object returned when calling `CiftiCreateLabelRightLabel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightLabel:
+class CiftiCreateLabelRightLabel:
     """
     label for left surface
     """
@@ -155,7 +155,7 @@ class RightLabel:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightLabelOutputs:
+    ) -> CiftiCreateLabelRightLabelOutputs:
         """
         Collect output file paths.
         
@@ -163,24 +163,24 @@ class RightLabel:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightLabelOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateLabelRightLabelOutputs`).
         """
-        ret = RightLabelOutputs(
+        ret = CiftiCreateLabelRightLabelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumLabelOutputs(typing.NamedTuple):
+class CiftiCreateLabelCerebellumLabelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumLabel.run(...)`.
+    Output object returned when calling `CiftiCreateLabelCerebellumLabel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumLabel:
+class CiftiCreateLabelCerebellumLabel:
     """
     label for the cerebellum
     """
@@ -208,7 +208,7 @@ class CerebellumLabel:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumLabelOutputs:
+    ) -> CiftiCreateLabelCerebellumLabelOutputs:
         """
         Collect output file paths.
         
@@ -216,9 +216,9 @@ class CerebellumLabel:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumLabelOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateLabelCerebellumLabelOutputs`).
         """
-        ret = CerebellumLabelOutputs(
+        ret = CiftiCreateLabelCerebellumLabelOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -232,22 +232,22 @@ class CiftiCreateLabelOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    volume: VolumeOutputs
+    volume: CiftiCreateLabelVolumeOutputs
     """Subcommand outputs"""
-    left_label: LeftLabelOutputs
+    left_label: CiftiCreateLabelLeftLabelOutputs
     """Subcommand outputs"""
-    right_label: RightLabelOutputs
+    right_label: CiftiCreateLabelRightLabelOutputs
     """Subcommand outputs"""
-    cerebellum_label: CerebellumLabelOutputs
+    cerebellum_label: CiftiCreateLabelCerebellumLabelOutputs
     """Subcommand outputs"""
 
 
 def cifti_create_label(
     cifti_out: InputPathType,
-    volume: Volume | None = None,
-    left_label: LeftLabel | None = None,
-    right_label: RightLabel | None = None,
-    cerebellum_label: CerebellumLabel | None = None,
+    volume: CiftiCreateLabelVolume | None = None,
+    left_label: CiftiCreateLabelLeftLabel | None = None,
+    right_label: CiftiCreateLabelRightLabel | None = None,
+    cerebellum_label: CiftiCreateLabelCerebellumLabel | None = None,
     runner: Runner = None,
 ) -> CiftiCreateLabelOutputs:
     """
@@ -341,14 +341,14 @@ def cifti_create_label(
 
 __all__ = [
     "CIFTI_CREATE_LABEL_METADATA",
-    "CerebellumLabel",
-    "CerebellumLabelOutputs",
+    "CiftiCreateLabelCerebellumLabel",
+    "CiftiCreateLabelCerebellumLabelOutputs",
+    "CiftiCreateLabelLeftLabel",
+    "CiftiCreateLabelLeftLabelOutputs",
     "CiftiCreateLabelOutputs",
-    "LeftLabel",
-    "LeftLabelOutputs",
-    "RightLabel",
-    "RightLabelOutputs",
-    "Volume",
-    "VolumeOutputs",
+    "CiftiCreateLabelRightLabel",
+    "CiftiCreateLabelRightLabelOutputs",
+    "CiftiCreateLabelVolume",
+    "CiftiCreateLabelVolumeOutputs",
     "cifti_create_label",
 ]

@@ -16,16 +16,16 @@ TSFMULT_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TsfmultConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TsfmultConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TsfmultConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TsfmultConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TsfmultConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TsfmultConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class TsfmultOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output track scalar file"""
-    config: ConfigOutputs
+    config: typing.List[TsfmultConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -93,7 +93,7 @@ def tsfmult(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TsfmultConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -165,9 +165,9 @@ def tsfmult(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TSFMULT_METADATA",
+    "TsfmultConfig",
+    "TsfmultConfigOutputs",
     "TsfmultOutputs",
     "tsfmult",
 ]

@@ -16,16 +16,16 @@ SCENE_FILE_UPDATE_METADATA = Metadata(
 )
 
 
-class CopyMapOnePaletteOutputs(typing.NamedTuple):
+class SceneFileUpdateCopyMapOnePaletteOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CopyMapOnePalette.run(...)`.
+    Output object returned when calling `SceneFileUpdateCopyMapOnePalette.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CopyMapOnePalette:
+class SceneFileUpdateCopyMapOnePalette:
     """
     Copy palettes settings from first map to all maps in a data file
     """
@@ -49,7 +49,7 @@ class CopyMapOnePalette:
     def outputs(
         self,
         execution: Execution,
-    ) -> CopyMapOnePaletteOutputs:
+    ) -> SceneFileUpdateCopyMapOnePaletteOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class CopyMapOnePalette:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CopyMapOnePaletteOutputs`).
+            NamedTuple of outputs (described in `SceneFileUpdateCopyMapOnePaletteOutputs`).
         """
-        ret = CopyMapOnePaletteOutputs(
+        ret = SceneFileUpdateCopyMapOnePaletteOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class DataFileAddOutputs(typing.NamedTuple):
+class SceneFileUpdateDataFileAddOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `DataFileAdd.run(...)`.
+    Output object returned when calling `SceneFileUpdateDataFileAdd.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class DataFileAdd:
+class SceneFileUpdateDataFileAdd:
     """
     Add a data file to scene's loaded files
     """
@@ -98,7 +98,7 @@ class DataFileAdd:
     def outputs(
         self,
         execution: Execution,
-    ) -> DataFileAddOutputs:
+    ) -> SceneFileUpdateDataFileAddOutputs:
         """
         Collect output file paths.
         
@@ -106,24 +106,24 @@ class DataFileAdd:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `DataFileAddOutputs`).
+            NamedTuple of outputs (described in `SceneFileUpdateDataFileAddOutputs`).
         """
-        ret = DataFileAddOutputs(
+        ret = SceneFileUpdateDataFileAddOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class DataFileRemoveOutputs(typing.NamedTuple):
+class SceneFileUpdateDataFileRemoveOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `DataFileRemove.run(...)`.
+    Output object returned when calling `SceneFileUpdateDataFileRemove.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class DataFileRemove:
+class SceneFileUpdateDataFileRemove:
     """
     Remove a data file from scene's loaded files
     """
@@ -147,7 +147,7 @@ class DataFileRemove:
     def outputs(
         self,
         execution: Execution,
-    ) -> DataFileRemoveOutputs:
+    ) -> SceneFileUpdateDataFileRemoveOutputs:
         """
         Collect output file paths.
         
@@ -155,9 +155,9 @@ class DataFileRemove:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `DataFileRemoveOutputs`).
+            NamedTuple of outputs (described in `SceneFileUpdateDataFileRemoveOutputs`).
         """
-        ret = DataFileRemoveOutputs(
+        ret = SceneFileUpdateDataFileRemoveOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -169,11 +169,11 @@ class SceneFileUpdateOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    copy_map_one_palette: CopyMapOnePaletteOutputs
+    copy_map_one_palette: typing.List[SceneFileUpdateCopyMapOnePaletteOutputs]
     """Subcommand outputs"""
-    data_file_add: DataFileAddOutputs
+    data_file_add: typing.List[SceneFileUpdateDataFileAddOutputs]
     """Subcommand outputs"""
-    data_file_remove: DataFileRemoveOutputs
+    data_file_remove: typing.List[SceneFileUpdateDataFileRemoveOutputs]
     """Subcommand outputs"""
 
 
@@ -185,9 +185,9 @@ def scene_file_update(
     opt_remove_missing_files: bool = False,
     opt_error: bool = False,
     opt_verbose: bool = False,
-    copy_map_one_palette: list[CopyMapOnePalette] = None,
-    data_file_add: list[DataFileAdd] = None,
-    data_file_remove: list[DataFileRemove] = None,
+    copy_map_one_palette: list[SceneFileUpdateCopyMapOnePalette] = None,
+    data_file_add: list[SceneFileUpdateDataFileAdd] = None,
+    data_file_remove: list[SceneFileUpdateDataFileRemove] = None,
     runner: Runner = None,
 ) -> SceneFileUpdateOutputs:
     """
@@ -275,13 +275,13 @@ def scene_file_update(
 
 
 __all__ = [
-    "CopyMapOnePalette",
-    "CopyMapOnePaletteOutputs",
-    "DataFileAdd",
-    "DataFileAddOutputs",
-    "DataFileRemove",
-    "DataFileRemoveOutputs",
     "SCENE_FILE_UPDATE_METADATA",
+    "SceneFileUpdateCopyMapOnePalette",
+    "SceneFileUpdateCopyMapOnePaletteOutputs",
+    "SceneFileUpdateDataFileAdd",
+    "SceneFileUpdateDataFileAddOutputs",
+    "SceneFileUpdateDataFileRemove",
+    "SceneFileUpdateDataFileRemoveOutputs",
     "SceneFileUpdateOutputs",
     "scene_file_update",
 ]

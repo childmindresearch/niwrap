@@ -16,16 +16,16 @@ VOLUME_PALETTE_METADATA = Metadata(
 )
 
 
-class PosPercentOutputs(typing.NamedTuple):
+class VolumePalettePosPercentOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `PosPercent.run(...)`.
+    Output object returned when calling `VolumePalettePosPercent.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class PosPercent:
+class VolumePalettePosPercent:
     """
     percentage min/max for positive data coloring
     """
@@ -49,7 +49,7 @@ class PosPercent:
     def outputs(
         self,
         execution: Execution,
-    ) -> PosPercentOutputs:
+    ) -> VolumePalettePosPercentOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class PosPercent:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PosPercentOutputs`).
+            NamedTuple of outputs (described in `VolumePalettePosPercentOutputs`).
         """
-        ret = PosPercentOutputs(
+        ret = VolumePalettePosPercentOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NegPercentOutputs(typing.NamedTuple):
+class VolumePaletteNegPercentOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `NegPercent.run(...)`.
+    Output object returned when calling `VolumePaletteNegPercent.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class NegPercent:
+class VolumePaletteNegPercent:
     """
     percentage min/max for negative data coloring
     """
@@ -98,7 +98,7 @@ class NegPercent:
     def outputs(
         self,
         execution: Execution,
-    ) -> NegPercentOutputs:
+    ) -> VolumePaletteNegPercentOutputs:
         """
         Collect output file paths.
         
@@ -106,24 +106,24 @@ class NegPercent:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NegPercentOutputs`).
+            NamedTuple of outputs (described in `VolumePaletteNegPercentOutputs`).
         """
-        ret = NegPercentOutputs(
+        ret = VolumePaletteNegPercentOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class PosUserOutputs(typing.NamedTuple):
+class VolumePalettePosUserOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `PosUser.run(...)`.
+    Output object returned when calling `VolumePalettePosUser.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class PosUser:
+class VolumePalettePosUser:
     """
     user min/max values for positive data coloring
     """
@@ -147,7 +147,7 @@ class PosUser:
     def outputs(
         self,
         execution: Execution,
-    ) -> PosUserOutputs:
+    ) -> VolumePalettePosUserOutputs:
         """
         Collect output file paths.
         
@@ -155,24 +155,24 @@ class PosUser:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PosUserOutputs`).
+            NamedTuple of outputs (described in `VolumePalettePosUserOutputs`).
         """
-        ret = PosUserOutputs(
+        ret = VolumePalettePosUserOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NegUserOutputs(typing.NamedTuple):
+class VolumePaletteNegUserOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `NegUser.run(...)`.
+    Output object returned when calling `VolumePaletteNegUser.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class NegUser:
+class VolumePaletteNegUser:
     """
     user min/max values for negative data coloring
     """
@@ -196,7 +196,7 @@ class NegUser:
     def outputs(
         self,
         execution: Execution,
-    ) -> NegUserOutputs:
+    ) -> VolumePaletteNegUserOutputs:
         """
         Collect output file paths.
         
@@ -204,24 +204,24 @@ class NegUser:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NegUserOutputs`).
+            NamedTuple of outputs (described in `VolumePaletteNegUserOutputs`).
         """
-        ret = NegUserOutputs(
+        ret = VolumePaletteNegUserOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ThresholdingOutputs(typing.NamedTuple):
+class VolumePaletteThresholdingOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Thresholding.run(...)`.
+    Output object returned when calling `VolumePaletteThresholding.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Thresholding:
+class VolumePaletteThresholding:
     """
     set the thresholding
     """
@@ -245,7 +245,7 @@ class Thresholding:
     def outputs(
         self,
         execution: Execution,
-    ) -> ThresholdingOutputs:
+    ) -> VolumePaletteThresholdingOutputs:
         """
         Collect output file paths.
         
@@ -253,9 +253,9 @@ class Thresholding:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ThresholdingOutputs`).
+            NamedTuple of outputs (described in `VolumePaletteThresholdingOutputs`).
         """
-        ret = ThresholdingOutputs(
+        ret = VolumePaletteThresholdingOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -267,15 +267,15 @@ class VolumePaletteOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    pos_percent: PosPercentOutputs
+    pos_percent: VolumePalettePosPercentOutputs
     """Subcommand outputs"""
-    neg_percent: NegPercentOutputs
+    neg_percent: VolumePaletteNegPercentOutputs
     """Subcommand outputs"""
-    pos_user: PosUserOutputs
+    pos_user: VolumePalettePosUserOutputs
     """Subcommand outputs"""
-    neg_user: NegUserOutputs
+    neg_user: VolumePaletteNegUserOutputs
     """Subcommand outputs"""
-    thresholding: ThresholdingOutputs
+    thresholding: VolumePaletteThresholdingOutputs
     """Subcommand outputs"""
 
 
@@ -283,16 +283,16 @@ def volume_palette(
     volume: str,
     mode: str,
     opt_subvolume_subvolume: str | None = None,
-    pos_percent: PosPercent | None = None,
-    neg_percent: NegPercent | None = None,
-    pos_user: PosUser | None = None,
-    neg_user: NegUser | None = None,
+    pos_percent: VolumePalettePosPercent | None = None,
+    neg_percent: VolumePaletteNegPercent | None = None,
+    pos_user: VolumePalettePosUser | None = None,
+    neg_user: VolumePaletteNegUser | None = None,
     opt_interpolate_interpolate: typing.Literal["true", "false"] | None = None,
     opt_disp_pos_display: typing.Literal["true", "false"] | None = None,
     opt_disp_neg_display: typing.Literal["true", "false"] | None = None,
     opt_disp_zero_display: typing.Literal["true", "false"] | None = None,
     opt_palette_name_name: str | None = None,
-    thresholding: Thresholding | None = None,
+    thresholding: VolumePaletteThresholding | None = None,
     opt_inversion_type: str | None = None,
     runner: Runner = None,
 ) -> VolumePaletteOutputs:
@@ -443,17 +443,17 @@ def volume_palette(
 
 
 __all__ = [
-    "NegPercent",
-    "NegPercentOutputs",
-    "NegUser",
-    "NegUserOutputs",
-    "PosPercent",
-    "PosPercentOutputs",
-    "PosUser",
-    "PosUserOutputs",
-    "Thresholding",
-    "ThresholdingOutputs",
     "VOLUME_PALETTE_METADATA",
+    "VolumePaletteNegPercent",
+    "VolumePaletteNegPercentOutputs",
+    "VolumePaletteNegUser",
+    "VolumePaletteNegUserOutputs",
     "VolumePaletteOutputs",
+    "VolumePalettePosPercent",
+    "VolumePalettePosPercentOutputs",
+    "VolumePalettePosUser",
+    "VolumePalettePosUserOutputs",
+    "VolumePaletteThresholding",
+    "VolumePaletteThresholdingOutputs",
     "volume_palette",
 ]

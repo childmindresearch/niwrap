@@ -16,16 +16,16 @@ SURFACE_AVERAGE_METADATA = Metadata(
 )
 
 
-class SurfOutputs(typing.NamedTuple):
+class SurfaceAverageSurfOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Surf.run(...)`.
+    Output object returned when calling `SurfaceAverageSurf.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Surf:
+class SurfaceAverageSurf:
     """
     specify a surface to include in the average
     """
@@ -53,7 +53,7 @@ class Surf:
     def outputs(
         self,
         execution: Execution,
-    ) -> SurfOutputs:
+    ) -> SurfaceAverageSurfOutputs:
         """
         Collect output file paths.
         
@@ -61,9 +61,9 @@ class Surf:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SurfOutputs`).
+            NamedTuple of outputs (described in `SurfaceAverageSurfOutputs`).
         """
-        ret = SurfOutputs(
+        ret = SurfaceAverageSurfOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -81,7 +81,7 @@ class SurfaceAverageOutputs(typing.NamedTuple):
     """the output metric for 3D sample standard deviation"""
     uncert_metric_out: OutputPathType
     """the output metric for uncertainty"""
-    surf: SurfOutputs
+    surf: typing.List[SurfaceAverageSurfOutputs]
     """Subcommand outputs"""
 
 
@@ -91,7 +91,7 @@ def surface_average(
     uncert_metric_out: InputPathType,
     opt_stddev: bool = False,
     opt_uncertainty: bool = False,
-    surf: list[Surf] = None,
+    surf: list[SurfaceAverageSurf] = None,
     runner: Runner = None,
 ) -> SurfaceAverageOutputs:
     """
@@ -146,8 +146,8 @@ def surface_average(
 
 __all__ = [
     "SURFACE_AVERAGE_METADATA",
-    "Surf",
-    "SurfOutputs",
     "SurfaceAverageOutputs",
+    "SurfaceAverageSurf",
+    "SurfaceAverageSurfOutputs",
     "surface_average",
 ]

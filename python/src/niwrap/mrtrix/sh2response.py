@@ -16,16 +16,16 @@ SH2RESPONSE_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Sh2responseConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Sh2responseConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Sh2responseConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Sh2responseConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Sh2responseConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Sh2responseConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -82,7 +82,7 @@ class Sh2responseOutputs(typing.NamedTuple):
     """the output axially-symmetric spherical harmonic coefficients"""
     dump: OutputPathType | None
     """dump the m=0 SH coefficients from all voxels in the mask to the output file, rather than their mean """
-    config: ConfigOutputs
+    config: typing.List[Sh2responseConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -98,7 +98,7 @@ def sh2response(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Sh2responseConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -187,9 +187,9 @@ def sh2response(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "SH2RESPONSE_METADATA",
+    "Sh2responseConfig",
+    "Sh2responseConfigOutputs",
     "Sh2responseOutputs",
     "sh2response",
 ]

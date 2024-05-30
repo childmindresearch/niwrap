@@ -16,16 +16,16 @@ METRIC_REGRESSION_METADATA = Metadata(
 )
 
 
-class RemoveOutputs(typing.NamedTuple):
+class MetricRegressionRemoveOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Remove.run(...)`.
+    Output object returned when calling `MetricRegressionRemove.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Remove:
+class MetricRegressionRemove:
     """
     specify a metric to regress out
     """
@@ -53,7 +53,7 @@ class Remove:
     def outputs(
         self,
         execution: Execution,
-    ) -> RemoveOutputs:
+    ) -> MetricRegressionRemoveOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class Remove:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RemoveOutputs`).
+            NamedTuple of outputs (described in `MetricRegressionRemoveOutputs`).
         """
-        ret = RemoveOutputs(
+        ret = MetricRegressionRemoveOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class KeepOutputs(typing.NamedTuple):
+class MetricRegressionKeepOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Keep.run(...)`.
+    Output object returned when calling `MetricRegressionKeep.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Keep:
+class MetricRegressionKeep:
     """
     specify a metric to include in regression, but not remove
     """
@@ -106,7 +106,7 @@ class Keep:
     def outputs(
         self,
         execution: Execution,
-    ) -> KeepOutputs:
+    ) -> MetricRegressionKeepOutputs:
         """
         Collect output file paths.
         
@@ -114,9 +114,9 @@ class Keep:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `KeepOutputs`).
+            NamedTuple of outputs (described in `MetricRegressionKeepOutputs`).
         """
-        ret = KeepOutputs(
+        ret = MetricRegressionKeepOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -130,9 +130,9 @@ class MetricRegressionOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
-    remove: RemoveOutputs
+    remove: typing.List[MetricRegressionRemoveOutputs]
     """Subcommand outputs"""
-    keep: KeepOutputs
+    keep: typing.List[MetricRegressionKeepOutputs]
     """Subcommand outputs"""
 
 
@@ -141,8 +141,8 @@ def metric_regression(
     metric_out: InputPathType,
     opt_roi_roi_metric: InputPathType | None = None,
     opt_column_column: str | None = None,
-    remove: list[Remove] = None,
-    keep: list[Keep] = None,
+    remove: list[MetricRegressionRemove] = None,
+    keep: list[MetricRegressionKeep] = None,
     runner: Runner = None,
 ) -> MetricRegressionOutputs:
     """
@@ -195,11 +195,11 @@ def metric_regression(
 
 
 __all__ = [
-    "Keep",
-    "KeepOutputs",
     "METRIC_REGRESSION_METADATA",
+    "MetricRegressionKeep",
+    "MetricRegressionKeepOutputs",
     "MetricRegressionOutputs",
-    "Remove",
-    "RemoveOutputs",
+    "MetricRegressionRemove",
+    "MetricRegressionRemoveOutputs",
     "metric_regression",
 ]

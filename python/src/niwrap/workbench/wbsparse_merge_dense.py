@@ -16,16 +16,16 @@ WBSPARSE_MERGE_DENSE_METADATA = Metadata(
 )
 
 
-class WbsparseOutputs(typing.NamedTuple):
+class WbsparseMergeDenseWbsparseOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Wbsparse.run(...)`.
+    Output object returned when calling `WbsparseMergeDenseWbsparse.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Wbsparse:
+class WbsparseMergeDenseWbsparse:
     """
     specify an input wbsparse file
     """
@@ -49,7 +49,7 @@ class Wbsparse:
     def outputs(
         self,
         execution: Execution,
-    ) -> WbsparseOutputs:
+    ) -> WbsparseMergeDenseWbsparseOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Wbsparse:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `WbsparseOutputs`).
+            NamedTuple of outputs (described in `WbsparseMergeDenseWbsparseOutputs`).
         """
-        ret = WbsparseOutputs(
+        ret = WbsparseMergeDenseWbsparseOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -71,14 +71,14 @@ class WbsparseMergeDenseOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    wbsparse: WbsparseOutputs
+    wbsparse: typing.List[WbsparseMergeDenseWbsparseOutputs]
     """Subcommand outputs"""
 
 
 def wbsparse_merge_dense(
     direction: str,
     wbsparse_out: str,
-    wbsparse: list[Wbsparse] = None,
+    wbsparse: list[WbsparseMergeDenseWbsparse] = None,
     runner: Runner = None,
 ) -> WbsparseMergeDenseOutputs:
     """
@@ -117,8 +117,8 @@ def wbsparse_merge_dense(
 
 __all__ = [
     "WBSPARSE_MERGE_DENSE_METADATA",
-    "Wbsparse",
     "WbsparseMergeDenseOutputs",
-    "WbsparseOutputs",
+    "WbsparseMergeDenseWbsparse",
+    "WbsparseMergeDenseWbsparseOutputs",
     "wbsparse_merge_dense",
 ]

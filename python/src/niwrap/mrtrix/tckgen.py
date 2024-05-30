@@ -16,16 +16,16 @@ TCKGEN_METADATA = Metadata(
 )
 
 
-class SeedImageOutputs(typing.NamedTuple):
+class TckgenSeedImageOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SeedImage.run(...)`.
+    Output object returned when calling `TckgenSeedImage.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SeedImage:
+class TckgenSeedImage:
     """
     seed streamlines entirely at random within a mask image 
     """
@@ -53,7 +53,7 @@ class SeedImage:
     def outputs(
         self,
         execution: Execution,
-    ) -> SeedImageOutputs:
+    ) -> TckgenSeedImageOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class SeedImage:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SeedImageOutputs`).
+            NamedTuple of outputs (described in `TckgenSeedImageOutputs`).
         """
-        ret = SeedImageOutputs(
+        ret = TckgenSeedImageOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SeedSphereOutputs(typing.NamedTuple):
+class TckgenSeedSphereOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SeedSphere.run(...)`.
+    Output object returned when calling `TckgenSeedSphere.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SeedSphere:
+class TckgenSeedSphere:
     """
     spherical seed as four comma-separated values (XYZ position and radius)
     """
@@ -107,7 +107,7 @@ class SeedSphere:
     def outputs(
         self,
         execution: Execution,
-    ) -> SeedSphereOutputs:
+    ) -> TckgenSeedSphereOutputs:
         """
         Collect output file paths.
         
@@ -115,24 +115,24 @@ class SeedSphere:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SeedSphereOutputs`).
+            NamedTuple of outputs (described in `TckgenSeedSphereOutputs`).
         """
-        ret = SeedSphereOutputs(
+        ret = TckgenSeedSphereOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SeedRandomPerVoxelOutputs(typing.NamedTuple):
+class TckgenSeedRandomPerVoxelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SeedRandomPerVoxel.run(...)`.
+    Output object returned when calling `TckgenSeedRandomPerVoxel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SeedRandomPerVoxel:
+class TckgenSeedRandomPerVoxel:
     """
     seed a fixed number of streamlines per voxel in a mask image; random placement of seeds in each voxel
     """
@@ -165,7 +165,7 @@ class SeedRandomPerVoxel:
     def outputs(
         self,
         execution: Execution,
-    ) -> SeedRandomPerVoxelOutputs:
+    ) -> TckgenSeedRandomPerVoxelOutputs:
         """
         Collect output file paths.
         
@@ -173,24 +173,24 @@ class SeedRandomPerVoxel:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SeedRandomPerVoxelOutputs`).
+            NamedTuple of outputs (described in `TckgenSeedRandomPerVoxelOutputs`).
         """
-        ret = SeedRandomPerVoxelOutputs(
+        ret = TckgenSeedRandomPerVoxelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SeedGridPerVoxelOutputs(typing.NamedTuple):
+class TckgenSeedGridPerVoxelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SeedGridPerVoxel.run(...)`.
+    Output object returned when calling `TckgenSeedGridPerVoxel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SeedGridPerVoxel:
+class TckgenSeedGridPerVoxel:
     """
     seed a fixed number of streamlines per voxel in a mask image; place seeds on a 3D mesh grid (grid_size argument is per axis; so a grid_size of 3 results in 27 seeds per voxel)
     """
@@ -225,7 +225,7 @@ class SeedGridPerVoxel:
     def outputs(
         self,
         execution: Execution,
-    ) -> SeedGridPerVoxelOutputs:
+    ) -> TckgenSeedGridPerVoxelOutputs:
         """
         Collect output file paths.
         
@@ -233,24 +233,24 @@ class SeedGridPerVoxel:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SeedGridPerVoxelOutputs`).
+            NamedTuple of outputs (described in `TckgenSeedGridPerVoxelOutputs`).
         """
-        ret = SeedGridPerVoxelOutputs(
+        ret = TckgenSeedGridPerVoxelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SeedRejectionOutputs(typing.NamedTuple):
+class TckgenSeedRejectionOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SeedRejection.run(...)`.
+    Output object returned when calling `TckgenSeedRejection.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SeedRejection:
+class TckgenSeedRejection:
     """
     seed from an image using rejection sampling (higher values = more probable to seed from)
     """
@@ -279,7 +279,7 @@ class SeedRejection:
     def outputs(
         self,
         execution: Execution,
-    ) -> SeedRejectionOutputs:
+    ) -> TckgenSeedRejectionOutputs:
         """
         Collect output file paths.
         
@@ -287,24 +287,24 @@ class SeedRejection:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SeedRejectionOutputs`).
+            NamedTuple of outputs (described in `TckgenSeedRejectionOutputs`).
         """
-        ret = SeedRejectionOutputs(
+        ret = TckgenSeedRejectionOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SeedGmwmiOutputs(typing.NamedTuple):
+class TckgenSeedGmwmiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SeedGmwmi.run(...)`.
+    Output object returned when calling `TckgenSeedGmwmi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SeedGmwmi:
+class TckgenSeedGmwmi:
     """
     seed from the grey matter - white matter interface (only valid if using ACT framework). Input image should be a 3D seeding volume; seeds drawn within this image will be optimised to the interface using the 5TT image provided using the -act option.
     """
@@ -335,7 +335,7 @@ class SeedGmwmi:
     def outputs(
         self,
         execution: Execution,
-    ) -> SeedGmwmiOutputs:
+    ) -> TckgenSeedGmwmiOutputs:
         """
         Collect output file paths.
         
@@ -343,24 +343,24 @@ class SeedGmwmi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SeedGmwmiOutputs`).
+            NamedTuple of outputs (described in `TckgenSeedGmwmiOutputs`).
         """
-        ret = SeedGmwmiOutputs(
+        ret = TckgenSeedGmwmiOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class IncludeOutputs(typing.NamedTuple):
+class TckgenIncludeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Include.run(...)`.
+    Output object returned when calling `TckgenInclude.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Include:
+class TckgenInclude:
     """
     specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be accepted.
     """
@@ -390,7 +390,7 @@ class Include:
     def outputs(
         self,
         execution: Execution,
-    ) -> IncludeOutputs:
+    ) -> TckgenIncludeOutputs:
         """
         Collect output file paths.
         
@@ -398,24 +398,24 @@ class Include:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `IncludeOutputs`).
+            NamedTuple of outputs (described in `TckgenIncludeOutputs`).
         """
-        ret = IncludeOutputs(
+        ret = TckgenIncludeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class IncludeOrderedOutputs(typing.NamedTuple):
+class TckgenIncludeOrderedOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `IncludeOrdered.run(...)`.
+    Output object returned when calling `TckgenIncludeOrdered.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class IncludeOrdered:
+class TckgenIncludeOrdered:
     """
     specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions in the order they are specified in order to be accepted.
     """
@@ -446,7 +446,7 @@ class IncludeOrdered:
     def outputs(
         self,
         execution: Execution,
-    ) -> IncludeOrderedOutputs:
+    ) -> TckgenIncludeOrderedOutputs:
         """
         Collect output file paths.
         
@@ -454,24 +454,24 @@ class IncludeOrdered:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `IncludeOrderedOutputs`).
+            NamedTuple of outputs (described in `TckgenIncludeOrderedOutputs`).
         """
-        ret = IncludeOrderedOutputs(
+        ret = TckgenIncludeOrderedOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ExcludeOutputs(typing.NamedTuple):
+class TckgenExcludeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Exclude.run(...)`.
+    Output object returned when calling `TckgenExclude.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Exclude:
+class TckgenExclude:
     """
     specify an exclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that enter ANY exclude region will be discarded.
     """
@@ -501,7 +501,7 @@ class Exclude:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExcludeOutputs:
+    ) -> TckgenExcludeOutputs:
         """
         Collect output file paths.
         
@@ -509,24 +509,24 @@ class Exclude:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExcludeOutputs`).
+            NamedTuple of outputs (described in `TckgenExcludeOutputs`).
         """
-        ret = ExcludeOutputs(
+        ret = TckgenExcludeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MaskOutputs(typing.NamedTuple):
+class TckgenMaskOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Mask.run(...)`.
+    Output object returned when calling `TckgenMask.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Mask:
+class TckgenMask:
     """
     specify a masking region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). If defined, streamlines exiting the mask will be truncated.
     """
@@ -556,7 +556,7 @@ class Mask:
     def outputs(
         self,
         execution: Execution,
-    ) -> MaskOutputs:
+    ) -> TckgenMaskOutputs:
         """
         Collect output file paths.
         
@@ -564,24 +564,24 @@ class Mask:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MaskOutputs`).
+            NamedTuple of outputs (described in `TckgenMaskOutputs`).
         """
-        ret = MaskOutputs(
+        ret = TckgenMaskOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FslgradOutputs(typing.NamedTuple):
+class TckgenFslgradOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fslgrad.run(...)`.
+    Output object returned when calling `TckgenFslgrad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fslgrad:
+class TckgenFslgrad:
     """
     Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
     """
@@ -618,7 +618,7 @@ class Fslgrad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FslgradOutputs:
+    ) -> TckgenFslgradOutputs:
         """
         Collect output file paths.
         
@@ -626,24 +626,24 @@ class Fslgrad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FslgradOutputs`).
+            NamedTuple of outputs (described in `TckgenFslgradOutputs`).
         """
-        ret = FslgradOutputs(
+        ret = TckgenFslgradOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TckgenConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TckgenConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TckgenConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -674,7 +674,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TckgenConfigOutputs:
         """
         Collect output file paths.
         
@@ -682,9 +682,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TckgenConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TckgenConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -700,29 +700,29 @@ class TckgenOutputs(typing.NamedTuple):
     """the output file containing the tracks generated."""
     output_seeds: OutputPathType | None
     """output the seed location of all successful streamlines to a file """
-    seed_image: SeedImageOutputs
+    seed_image: typing.List[TckgenSeedImageOutputs]
     """Subcommand outputs"""
-    seed_sphere: SeedSphereOutputs
+    seed_sphere: typing.List[TckgenSeedSphereOutputs]
     """Subcommand outputs"""
-    seed_random_per_voxel: SeedRandomPerVoxelOutputs
+    seed_random_per_voxel: typing.List[TckgenSeedRandomPerVoxelOutputs]
     """Subcommand outputs"""
-    seed_grid_per_voxel: SeedGridPerVoxelOutputs
+    seed_grid_per_voxel: typing.List[TckgenSeedGridPerVoxelOutputs]
     """Subcommand outputs"""
-    seed_rejection: SeedRejectionOutputs
+    seed_rejection: typing.List[TckgenSeedRejectionOutputs]
     """Subcommand outputs"""
-    seed_gmwmi: SeedGmwmiOutputs
+    seed_gmwmi: typing.List[TckgenSeedGmwmiOutputs]
     """Subcommand outputs"""
-    include: IncludeOutputs
+    include: typing.List[TckgenIncludeOutputs]
     """Subcommand outputs"""
-    include_ordered: IncludeOrderedOutputs
+    include_ordered: typing.List[TckgenIncludeOrderedOutputs]
     """Subcommand outputs"""
-    exclude: ExcludeOutputs
+    exclude: typing.List[TckgenExcludeOutputs]
     """Subcommand outputs"""
-    mask: MaskOutputs
+    mask: typing.List[TckgenMaskOutputs]
     """Subcommand outputs"""
-    fslgrad: FslgradOutputs
+    fslgrad: TckgenFslgradOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[TckgenConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -741,12 +741,12 @@ def tckgen(
     rk4: bool = False,
     stop: bool = False,
     downsample: int | None = None,
-    seed_image: list[SeedImage] = None,
-    seed_sphere: list[SeedSphere] = None,
-    seed_random_per_voxel: list[SeedRandomPerVoxel] = None,
-    seed_grid_per_voxel: list[SeedGridPerVoxel] = None,
-    seed_rejection: list[SeedRejection] = None,
-    seed_gmwmi: list[SeedGmwmi] = None,
+    seed_image: list[TckgenSeedImage] = None,
+    seed_sphere: list[TckgenSeedSphere] = None,
+    seed_random_per_voxel: list[TckgenSeedRandomPerVoxel] = None,
+    seed_grid_per_voxel: list[TckgenSeedGridPerVoxel] = None,
+    seed_rejection: list[TckgenSeedRejection] = None,
+    seed_gmwmi: list[TckgenSeedGmwmi] = None,
     seed_dynamic: InputPathType | None = None,
     seeds: int | None = None,
     max_attempts_per_seed: int | None = None,
@@ -754,23 +754,23 @@ def tckgen(
     seed_unidirectional: bool = False,
     seed_direction: list[float | int] = None,
     output_seeds: InputPathType | None = None,
-    include: list[Include] = None,
-    include_ordered: list[IncludeOrdered] = None,
-    exclude: list[Exclude] = None,
-    mask: list[Mask] = None,
+    include: list[TckgenInclude] = None,
+    include_ordered: list[TckgenIncludeOrdered] = None,
+    exclude: list[TckgenExclude] = None,
+    mask: list[TckgenMask] = None,
     act: InputPathType | None = None,
     backtrack: bool = False,
     crop_at_gmwmi: bool = False,
     power: float | int | None = None,
     samples: int | None = None,
     grad: InputPathType | None = None,
-    fslgrad: Fslgrad | None = None,
+    fslgrad: TckgenFslgrad | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TckgenConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -1170,31 +1170,31 @@ def tckgen(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
-    "Exclude",
-    "ExcludeOutputs",
-    "Fslgrad",
-    "FslgradOutputs",
-    "Include",
-    "IncludeOrdered",
-    "IncludeOrderedOutputs",
-    "IncludeOutputs",
-    "Mask",
-    "MaskOutputs",
-    "SeedGmwmi",
-    "SeedGmwmiOutputs",
-    "SeedGridPerVoxel",
-    "SeedGridPerVoxelOutputs",
-    "SeedImage",
-    "SeedImageOutputs",
-    "SeedRandomPerVoxel",
-    "SeedRandomPerVoxelOutputs",
-    "SeedRejection",
-    "SeedRejectionOutputs",
-    "SeedSphere",
-    "SeedSphereOutputs",
     "TCKGEN_METADATA",
+    "TckgenConfig",
+    "TckgenConfigOutputs",
+    "TckgenExclude",
+    "TckgenExcludeOutputs",
+    "TckgenFslgrad",
+    "TckgenFslgradOutputs",
+    "TckgenInclude",
+    "TckgenIncludeOrdered",
+    "TckgenIncludeOrderedOutputs",
+    "TckgenIncludeOutputs",
+    "TckgenMask",
+    "TckgenMaskOutputs",
     "TckgenOutputs",
+    "TckgenSeedGmwmi",
+    "TckgenSeedGmwmiOutputs",
+    "TckgenSeedGridPerVoxel",
+    "TckgenSeedGridPerVoxelOutputs",
+    "TckgenSeedImage",
+    "TckgenSeedImageOutputs",
+    "TckgenSeedRandomPerVoxel",
+    "TckgenSeedRandomPerVoxelOutputs",
+    "TckgenSeedRejection",
+    "TckgenSeedRejectionOutputs",
+    "TckgenSeedSphere",
+    "TckgenSeedSphereOutputs",
     "tckgen",
 ]

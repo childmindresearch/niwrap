@@ -16,16 +16,16 @@ CIFTI_SMOOTHING_METADATA = Metadata(
 )
 
 
-class LeftSurfaceOutputs(typing.NamedTuple):
+class CiftiSmoothingLeftSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftSurface.run(...)`.
+    Output object returned when calling `CiftiSmoothingLeftSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftSurface:
+class CiftiSmoothingLeftSurface:
     """
     specify the left surface to use
     """
@@ -54,7 +54,7 @@ class LeftSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftSurfaceOutputs:
+    ) -> CiftiSmoothingLeftSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -62,24 +62,24 @@ class LeftSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiSmoothingLeftSurfaceOutputs`).
         """
-        ret = LeftSurfaceOutputs(
+        ret = CiftiSmoothingLeftSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightSurfaceOutputs(typing.NamedTuple):
+class CiftiSmoothingRightSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightSurface.run(...)`.
+    Output object returned when calling `CiftiSmoothingRightSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightSurface:
+class CiftiSmoothingRightSurface:
     """
     specify the right surface to use
     """
@@ -108,7 +108,7 @@ class RightSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightSurfaceOutputs:
+    ) -> CiftiSmoothingRightSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -116,24 +116,24 @@ class RightSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiSmoothingRightSurfaceOutputs`).
         """
-        ret = RightSurfaceOutputs(
+        ret = CiftiSmoothingRightSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumSurfaceOutputs(typing.NamedTuple):
+class CiftiSmoothingCerebellumSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumSurface.run(...)`.
+    Output object returned when calling `CiftiSmoothingCerebellumSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumSurface:
+class CiftiSmoothingCerebellumSurface:
     """
     specify the cerebellum surface to use
     """
@@ -162,7 +162,7 @@ class CerebellumSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumSurfaceOutputs:
+    ) -> CiftiSmoothingCerebellumSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -170,9 +170,9 @@ class CerebellumSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiSmoothingCerebellumSurfaceOutputs`).
         """
-        ret = CerebellumSurfaceOutputs(
+        ret = CiftiSmoothingCerebellumSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -186,11 +186,11 @@ class CiftiSmoothingOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti"""
-    left_surface: LeftSurfaceOutputs
+    left_surface: CiftiSmoothingLeftSurfaceOutputs
     """Subcommand outputs"""
-    right_surface: RightSurfaceOutputs
+    right_surface: CiftiSmoothingRightSurfaceOutputs
     """Subcommand outputs"""
-    cerebellum_surface: CerebellumSurfaceOutputs
+    cerebellum_surface: CiftiSmoothingCerebellumSurfaceOutputs
     """Subcommand outputs"""
 
 
@@ -201,9 +201,9 @@ def cifti_smoothing(
     direction: str,
     cifti_out: InputPathType,
     opt_fwhm: bool = False,
-    left_surface: LeftSurface | None = None,
-    right_surface: RightSurface | None = None,
-    cerebellum_surface: CerebellumSurface | None = None,
+    left_surface: CiftiSmoothingLeftSurface | None = None,
+    right_surface: CiftiSmoothingRightSurface | None = None,
+    cerebellum_surface: CiftiSmoothingCerebellumSurface | None = None,
     opt_cifti_roi_roi_cifti: InputPathType | None = None,
     opt_fix_zeros_volume: bool = False,
     opt_fix_zeros_surface: bool = False,
@@ -294,12 +294,12 @@ def cifti_smoothing(
 
 __all__ = [
     "CIFTI_SMOOTHING_METADATA",
-    "CerebellumSurface",
-    "CerebellumSurfaceOutputs",
+    "CiftiSmoothingCerebellumSurface",
+    "CiftiSmoothingCerebellumSurfaceOutputs",
+    "CiftiSmoothingLeftSurface",
+    "CiftiSmoothingLeftSurfaceOutputs",
     "CiftiSmoothingOutputs",
-    "LeftSurface",
-    "LeftSurfaceOutputs",
-    "RightSurface",
-    "RightSurfaceOutputs",
+    "CiftiSmoothingRightSurface",
+    "CiftiSmoothingRightSurfaceOutputs",
     "cifti_smoothing",
 ]

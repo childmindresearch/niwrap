@@ -16,16 +16,16 @@ SCENE_CAPTURE_IMAGE_METADATA = Metadata(
 )
 
 
-class SizeWidthHeightOutputs(typing.NamedTuple):
+class SceneCaptureImageSizeWidthHeightOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SizeWidthHeight.run(...)`.
+    Output object returned when calling `SceneCaptureImageSizeWidthHeight.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SizeWidthHeight:
+class SceneCaptureImageSizeWidthHeight:
     """
     Width and height for output image
     """
@@ -49,7 +49,7 @@ class SizeWidthHeight:
     def outputs(
         self,
         execution: Execution,
-    ) -> SizeWidthHeightOutputs:
+    ) -> SceneCaptureImageSizeWidthHeightOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class SizeWidthHeight:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SizeWidthHeightOutputs`).
+            NamedTuple of outputs (described in `SceneCaptureImageSizeWidthHeightOutputs`).
         """
-        ret = SizeWidthHeightOutputs(
+        ret = SceneCaptureImageSizeWidthHeightOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ResolutionOutputs(typing.NamedTuple):
+class SceneCaptureImageResolutionOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Resolution.run(...)`.
+    Output object returned when calling `SceneCaptureImageResolution.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Resolution:
+class SceneCaptureImageResolution:
     """
     Image resolution (number pixels per size unit)
       Default is 300 PIXELS_PER_INCH
@@ -99,7 +99,7 @@ class Resolution:
     def outputs(
         self,
         execution: Execution,
-    ) -> ResolutionOutputs:
+    ) -> SceneCaptureImageResolutionOutputs:
         """
         Collect output file paths.
         
@@ -107,24 +107,24 @@ class Resolution:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ResolutionOutputs`).
+            NamedTuple of outputs (described in `SceneCaptureImageResolutionOutputs`).
         """
-        ret = ResolutionOutputs(
+        ret = SceneCaptureImageResolutionOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SetMapYokeOutputs(typing.NamedTuple):
+class SceneCaptureImageSetMapYokeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SetMapYoke.run(...)`.
+    Output object returned when calling `SceneCaptureImageSetMapYoke.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SetMapYoke:
+class SceneCaptureImageSetMapYoke:
     """
     Override selected map index for a map yoking group.
     """
@@ -148,7 +148,7 @@ class SetMapYoke:
     def outputs(
         self,
         execution: Execution,
-    ) -> SetMapYokeOutputs:
+    ) -> SceneCaptureImageSetMapYokeOutputs:
         """
         Collect output file paths.
         
@@ -156,24 +156,24 @@ class SetMapYoke:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SetMapYokeOutputs`).
+            NamedTuple of outputs (described in `SceneCaptureImageSetMapYokeOutputs`).
         """
-        ret = SetMapYokeOutputs(
+        ret = SceneCaptureImageSetMapYokeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConnDbLoginOutputs(typing.NamedTuple):
+class SceneCaptureImageConnDbLoginOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ConnDbLogin.run(...)`.
+    Output object returned when calling `SceneCaptureImageConnDbLogin.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ConnDbLogin:
+class SceneCaptureImageConnDbLogin:
     """
     Login for scenes with files in Connectome Database.  If this option is not specified, the login and password stored in the user's preferences is used.
     """
@@ -197,7 +197,7 @@ class ConnDbLogin:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConnDbLoginOutputs:
+    ) -> SceneCaptureImageConnDbLoginOutputs:
         """
         Collect output file paths.
         
@@ -205,9 +205,9 @@ class ConnDbLogin:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConnDbLoginOutputs`).
+            NamedTuple of outputs (described in `SceneCaptureImageConnDbLoginOutputs`).
         """
-        ret = ConnDbLoginOutputs(
+        ret = SceneCaptureImageConnDbLoginOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -219,13 +219,13 @@ class SceneCaptureImageOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    size_width_height: SizeWidthHeightOutputs
+    size_width_height: SceneCaptureImageSizeWidthHeightOutputs
     """Subcommand outputs"""
-    resolution: ResolutionOutputs
+    resolution: SceneCaptureImageResolutionOutputs
     """Subcommand outputs"""
-    set_map_yoke: SetMapYokeOutputs
+    set_map_yoke: SceneCaptureImageSetMapYokeOutputs
     """Subcommand outputs"""
-    conn_db_login: ConnDbLoginOutputs
+    conn_db_login: SceneCaptureImageConnDbLoginOutputs
     """Subcommand outputs"""
 
 
@@ -235,15 +235,15 @@ def scene_capture_image(
     image_file_name: str,
     opt_size_window: bool = False,
     opt_size_capture: bool = False,
-    size_width_height: SizeWidthHeight | None = None,
+    size_width_height: SceneCaptureImageSizeWidthHeight | None = None,
     opt_size_width_width: float | int | None = None,
     opt_size_height_height: float | int | None = None,
     opt_units_units: str | None = None,
-    resolution: Resolution | None = None,
+    resolution: SceneCaptureImageResolution | None = None,
     opt_margin_size: int | None = None,
     opt_no_scene_colors: bool = False,
-    set_map_yoke: SetMapYoke | None = None,
-    conn_db_login: ConnDbLogin | None = None,
+    set_map_yoke: SceneCaptureImageSetMapYoke | None = None,
+    conn_db_login: SceneCaptureImageConnDbLogin | None = None,
     opt_show_capture_settings: bool = False,
     opt_renderer_renderer: str | None = None,
     opt_print_image_info: bool = False,
@@ -408,15 +408,15 @@ def scene_capture_image(
 
 
 __all__ = [
-    "ConnDbLogin",
-    "ConnDbLoginOutputs",
-    "Resolution",
-    "ResolutionOutputs",
     "SCENE_CAPTURE_IMAGE_METADATA",
+    "SceneCaptureImageConnDbLogin",
+    "SceneCaptureImageConnDbLoginOutputs",
     "SceneCaptureImageOutputs",
-    "SetMapYoke",
-    "SetMapYokeOutputs",
-    "SizeWidthHeight",
-    "SizeWidthHeightOutputs",
+    "SceneCaptureImageResolution",
+    "SceneCaptureImageResolutionOutputs",
+    "SceneCaptureImageSetMapYoke",
+    "SceneCaptureImageSetMapYokeOutputs",
+    "SceneCaptureImageSizeWidthHeight",
+    "SceneCaptureImageSizeWidthHeightOutputs",
     "scene_capture_image",
 ]

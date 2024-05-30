@@ -16,16 +16,16 @@ VOLUME_REDUCE_METADATA = Metadata(
 )
 
 
-class ExcludeOutliersOutputs(typing.NamedTuple):
+class VolumeReduceExcludeOutliersOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ExcludeOutliers.run(...)`.
+    Output object returned when calling `VolumeReduceExcludeOutliers.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ExcludeOutliers:
+class VolumeReduceExcludeOutliers:
     """
     exclude non-numeric values and outliers by standard deviation
     """
@@ -49,7 +49,7 @@ class ExcludeOutliers:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExcludeOutliersOutputs:
+    ) -> VolumeReduceExcludeOutliersOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class ExcludeOutliers:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExcludeOutliersOutputs`).
+            NamedTuple of outputs (described in `VolumeReduceExcludeOutliersOutputs`).
         """
-        ret = ExcludeOutliersOutputs(
+        ret = VolumeReduceExcludeOutliersOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -73,7 +73,7 @@ class VolumeReduceOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume"""
-    exclude_outliers: ExcludeOutliersOutputs
+    exclude_outliers: VolumeReduceExcludeOutliersOutputs
     """Subcommand outputs"""
 
 
@@ -81,7 +81,7 @@ def volume_reduce(
     volume_in: InputPathType,
     operation: str,
     volume_out: InputPathType,
-    exclude_outliers: ExcludeOutliers | None = None,
+    exclude_outliers: VolumeReduceExcludeOutliers | None = None,
     opt_only_numeric: bool = False,
     runner: Runner = None,
 ) -> VolumeReduceOutputs:
@@ -145,9 +145,9 @@ def volume_reduce(
 
 
 __all__ = [
-    "ExcludeOutliers",
-    "ExcludeOutliersOutputs",
     "VOLUME_REDUCE_METADATA",
+    "VolumeReduceExcludeOutliers",
+    "VolumeReduceExcludeOutliersOutputs",
     "VolumeReduceOutputs",
     "volume_reduce",
 ]

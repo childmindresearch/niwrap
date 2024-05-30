@@ -16,16 +16,16 @@ CIFTI_CREATE_DENSE_TIMESERIES_METADATA = Metadata(
 )
 
 
-class VolumeOutputs(typing.NamedTuple):
+class CiftiCreateDenseTimeseriesVolumeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Volume.run(...)`.
+    Output object returned when calling `CiftiCreateDenseTimeseriesVolume.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Volume:
+class CiftiCreateDenseTimeseriesVolume:
     """
     volume component
     """
@@ -49,7 +49,7 @@ class Volume:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeOutputs:
+    ) -> CiftiCreateDenseTimeseriesVolumeOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class Volume:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseTimeseriesVolumeOutputs`).
         """
-        ret = VolumeOutputs(
+        ret = CiftiCreateDenseTimeseriesVolumeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LeftMetricOutputs(typing.NamedTuple):
+class CiftiCreateDenseTimeseriesLeftMetricOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftMetric.run(...)`.
+    Output object returned when calling `CiftiCreateDenseTimeseriesLeftMetric.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftMetric:
+class CiftiCreateDenseTimeseriesLeftMetric:
     """
     metric for left surface
     """
@@ -102,7 +102,7 @@ class LeftMetric:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftMetricOutputs:
+    ) -> CiftiCreateDenseTimeseriesLeftMetricOutputs:
         """
         Collect output file paths.
         
@@ -110,24 +110,24 @@ class LeftMetric:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftMetricOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseTimeseriesLeftMetricOutputs`).
         """
-        ret = LeftMetricOutputs(
+        ret = CiftiCreateDenseTimeseriesLeftMetricOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightMetricOutputs(typing.NamedTuple):
+class CiftiCreateDenseTimeseriesRightMetricOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightMetric.run(...)`.
+    Output object returned when calling `CiftiCreateDenseTimeseriesRightMetric.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightMetric:
+class CiftiCreateDenseTimeseriesRightMetric:
     """
     metric for left surface
     """
@@ -155,7 +155,7 @@ class RightMetric:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightMetricOutputs:
+    ) -> CiftiCreateDenseTimeseriesRightMetricOutputs:
         """
         Collect output file paths.
         
@@ -163,24 +163,24 @@ class RightMetric:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightMetricOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseTimeseriesRightMetricOutputs`).
         """
-        ret = RightMetricOutputs(
+        ret = CiftiCreateDenseTimeseriesRightMetricOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumMetricOutputs(typing.NamedTuple):
+class CiftiCreateDenseTimeseriesCerebellumMetricOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumMetric.run(...)`.
+    Output object returned when calling `CiftiCreateDenseTimeseriesCerebellumMetric.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumMetric:
+class CiftiCreateDenseTimeseriesCerebellumMetric:
     """
     metric for the cerebellum
     """
@@ -208,7 +208,7 @@ class CerebellumMetric:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumMetricOutputs:
+    ) -> CiftiCreateDenseTimeseriesCerebellumMetricOutputs:
         """
         Collect output file paths.
         
@@ -216,9 +216,9 @@ class CerebellumMetric:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumMetricOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseTimeseriesCerebellumMetricOutputs`).
         """
-        ret = CerebellumMetricOutputs(
+        ret = CiftiCreateDenseTimeseriesCerebellumMetricOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -232,22 +232,22 @@ class CiftiCreateDenseTimeseriesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    volume: VolumeOutputs
+    volume: CiftiCreateDenseTimeseriesVolumeOutputs
     """Subcommand outputs"""
-    left_metric: LeftMetricOutputs
+    left_metric: CiftiCreateDenseTimeseriesLeftMetricOutputs
     """Subcommand outputs"""
-    right_metric: RightMetricOutputs
+    right_metric: CiftiCreateDenseTimeseriesRightMetricOutputs
     """Subcommand outputs"""
-    cerebellum_metric: CerebellumMetricOutputs
+    cerebellum_metric: CiftiCreateDenseTimeseriesCerebellumMetricOutputs
     """Subcommand outputs"""
 
 
 def cifti_create_dense_timeseries(
     cifti_out: InputPathType,
-    volume: Volume | None = None,
-    left_metric: LeftMetric | None = None,
-    right_metric: RightMetric | None = None,
-    cerebellum_metric: CerebellumMetric | None = None,
+    volume: CiftiCreateDenseTimeseriesVolume | None = None,
+    left_metric: CiftiCreateDenseTimeseriesLeftMetric | None = None,
+    right_metric: CiftiCreateDenseTimeseriesRightMetric | None = None,
+    cerebellum_metric: CiftiCreateDenseTimeseriesCerebellumMetric | None = None,
     opt_timestep_interval: float | int | None = None,
     opt_timestart_start: float | int | None = None,
     opt_unit_unit: str | None = None,
@@ -357,14 +357,14 @@ def cifti_create_dense_timeseries(
 
 __all__ = [
     "CIFTI_CREATE_DENSE_TIMESERIES_METADATA",
-    "CerebellumMetric",
-    "CerebellumMetricOutputs",
+    "CiftiCreateDenseTimeseriesCerebellumMetric",
+    "CiftiCreateDenseTimeseriesCerebellumMetricOutputs",
+    "CiftiCreateDenseTimeseriesLeftMetric",
+    "CiftiCreateDenseTimeseriesLeftMetricOutputs",
     "CiftiCreateDenseTimeseriesOutputs",
-    "LeftMetric",
-    "LeftMetricOutputs",
-    "RightMetric",
-    "RightMetricOutputs",
-    "Volume",
-    "VolumeOutputs",
+    "CiftiCreateDenseTimeseriesRightMetric",
+    "CiftiCreateDenseTimeseriesRightMetricOutputs",
+    "CiftiCreateDenseTimeseriesVolume",
+    "CiftiCreateDenseTimeseriesVolumeOutputs",
     "cifti_create_dense_timeseries",
 ]

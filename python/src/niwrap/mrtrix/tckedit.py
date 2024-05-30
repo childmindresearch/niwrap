@@ -16,16 +16,16 @@ TCKEDIT_METADATA = Metadata(
 )
 
 
-class IncludeOutputs(typing.NamedTuple):
+class TckeditIncludeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Include.run(...)`.
+    Output object returned when calling `TckeditInclude.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Include:
+class TckeditInclude:
     """
     specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be accepted.
     """
@@ -55,7 +55,7 @@ class Include:
     def outputs(
         self,
         execution: Execution,
-    ) -> IncludeOutputs:
+    ) -> TckeditIncludeOutputs:
         """
         Collect output file paths.
         
@@ -63,24 +63,24 @@ class Include:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `IncludeOutputs`).
+            NamedTuple of outputs (described in `TckeditIncludeOutputs`).
         """
-        ret = IncludeOutputs(
+        ret = TckeditIncludeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class IncludeOrderedOutputs(typing.NamedTuple):
+class TckeditIncludeOrderedOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `IncludeOrdered.run(...)`.
+    Output object returned when calling `TckeditIncludeOrdered.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class IncludeOrdered:
+class TckeditIncludeOrdered:
     """
     specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions in the order they are specified in order to be accepted.
     """
@@ -111,7 +111,7 @@ class IncludeOrdered:
     def outputs(
         self,
         execution: Execution,
-    ) -> IncludeOrderedOutputs:
+    ) -> TckeditIncludeOrderedOutputs:
         """
         Collect output file paths.
         
@@ -119,24 +119,24 @@ class IncludeOrdered:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `IncludeOrderedOutputs`).
+            NamedTuple of outputs (described in `TckeditIncludeOrderedOutputs`).
         """
-        ret = IncludeOrderedOutputs(
+        ret = TckeditIncludeOrderedOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ExcludeOutputs(typing.NamedTuple):
+class TckeditExcludeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Exclude.run(...)`.
+    Output object returned when calling `TckeditExclude.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Exclude:
+class TckeditExclude:
     """
     specify an exclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that enter ANY exclude region will be discarded.
     """
@@ -166,7 +166,7 @@ class Exclude:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExcludeOutputs:
+    ) -> TckeditExcludeOutputs:
         """
         Collect output file paths.
         
@@ -174,24 +174,24 @@ class Exclude:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExcludeOutputs`).
+            NamedTuple of outputs (described in `TckeditExcludeOutputs`).
         """
-        ret = ExcludeOutputs(
+        ret = TckeditExcludeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MaskOutputs(typing.NamedTuple):
+class TckeditMaskOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Mask.run(...)`.
+    Output object returned when calling `TckeditMask.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Mask:
+class TckeditMask:
     """
     specify a masking region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). If defined, streamlines exiting the mask will be truncated.
     """
@@ -221,7 +221,7 @@ class Mask:
     def outputs(
         self,
         execution: Execution,
-    ) -> MaskOutputs:
+    ) -> TckeditMaskOutputs:
         """
         Collect output file paths.
         
@@ -229,24 +229,24 @@ class Mask:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MaskOutputs`).
+            NamedTuple of outputs (described in `TckeditMaskOutputs`).
         """
-        ret = MaskOutputs(
+        ret = TckeditMaskOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TckeditConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TckeditConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TckeditConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -277,7 +277,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TckeditConfigOutputs:
         """
         Collect output file paths.
         
@@ -285,9 +285,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TckeditConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TckeditConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -303,25 +303,25 @@ class TckeditOutputs(typing.NamedTuple):
     """the output track file"""
     tck_weights_out: OutputPathType | None
     """specify the path for an output text scalar file containing streamline weights """
-    include: IncludeOutputs
+    include: typing.List[TckeditIncludeOutputs]
     """Subcommand outputs"""
-    include_ordered: IncludeOrderedOutputs
+    include_ordered: typing.List[TckeditIncludeOrderedOutputs]
     """Subcommand outputs"""
-    exclude: ExcludeOutputs
+    exclude: typing.List[TckeditExcludeOutputs]
     """Subcommand outputs"""
-    mask: MaskOutputs
+    mask: typing.List[TckeditMaskOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[TckeditConfigOutputs]
     """Subcommand outputs"""
 
 
 def tckedit(
     tracks_in: list[InputPathType],
     tracks_out: InputPathType,
-    include: list[Include] = None,
-    include_ordered: list[IncludeOrdered] = None,
-    exclude: list[Exclude] = None,
-    mask: list[Mask] = None,
+    include: list[TckeditInclude] = None,
+    include_ordered: list[TckeditIncludeOrdered] = None,
+    exclude: list[TckeditExclude] = None,
+    mask: list[TckeditMask] = None,
     maxlength: float | int | None = None,
     minlength: float | int | None = None,
     number: int | None = None,
@@ -337,7 +337,7 @@ def tckedit(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TckeditConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -475,17 +475,17 @@ def tckedit(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
-    "Exclude",
-    "ExcludeOutputs",
-    "Include",
-    "IncludeOrdered",
-    "IncludeOrderedOutputs",
-    "IncludeOutputs",
-    "Mask",
-    "MaskOutputs",
     "TCKEDIT_METADATA",
+    "TckeditConfig",
+    "TckeditConfigOutputs",
+    "TckeditExclude",
+    "TckeditExcludeOutputs",
+    "TckeditInclude",
+    "TckeditIncludeOrdered",
+    "TckeditIncludeOrderedOutputs",
+    "TckeditIncludeOutputs",
+    "TckeditMask",
+    "TckeditMaskOutputs",
     "TckeditOutputs",
     "tckedit",
 ]

@@ -16,16 +16,16 @@ DIRSTAT_METADATA = Metadata(
 )
 
 
-class FslgradOutputs(typing.NamedTuple):
+class DirstatFslgradOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fslgrad.run(...)`.
+    Output object returned when calling `DirstatFslgrad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fslgrad:
+class DirstatFslgrad:
     """
     Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
     """
@@ -62,7 +62,7 @@ class Fslgrad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FslgradOutputs:
+    ) -> DirstatFslgradOutputs:
         """
         Collect output file paths.
         
@@ -70,24 +70,24 @@ class Fslgrad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FslgradOutputs`).
+            NamedTuple of outputs (described in `DirstatFslgradOutputs`).
         """
-        ret = FslgradOutputs(
+        ret = DirstatFslgradOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class DirstatConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `DirstatConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class DirstatConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -118,7 +118,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> DirstatConfigOutputs:
         """
         Collect output file paths.
         
@@ -126,9 +126,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `DirstatConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = DirstatConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -140,9 +140,9 @@ class DirstatOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    fslgrad: FslgradOutputs
+    fslgrad: DirstatFslgradOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[DirstatConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -151,13 +151,13 @@ def dirstat(
     output: str | None = None,
     shells: list[float | int] = None,
     grad: InputPathType | None = None,
-    fslgrad: Fslgrad | None = None,
+    fslgrad: DirstatFslgrad | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[DirstatConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -290,11 +290,11 @@ def dirstat(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "DIRSTAT_METADATA",
+    "DirstatConfig",
+    "DirstatConfigOutputs",
+    "DirstatFslgrad",
+    "DirstatFslgradOutputs",
     "DirstatOutputs",
-    "Fslgrad",
-    "FslgradOutputs",
     "dirstat",
 ]

@@ -16,16 +16,16 @@ MRDEGIBBS_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrdegibbsConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrdegibbsConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrdegibbsConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrdegibbsConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrdegibbsConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrdegibbsConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class MrdegibbsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out: OutputPathType
     """the output image."""
-    config: ConfigOutputs
+    config: typing.List[MrdegibbsConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -97,7 +97,7 @@ def mrdegibbs(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrdegibbsConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -206,9 +206,9 @@ def mrdegibbs(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MRDEGIBBS_METADATA",
+    "MrdegibbsConfig",
+    "MrdegibbsConfigOutputs",
     "MrdegibbsOutputs",
     "mrdegibbs",
 ]

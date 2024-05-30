@@ -16,9 +16,9 @@ METRIC_CONVERT_METADATA = Metadata(
 )
 
 
-class ToNiftiOutputs(typing.NamedTuple):
+class MetricConvertToNiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ToNifti.run(...)`.
+    Output object returned when calling `MetricConvertToNifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -27,7 +27,7 @@ class ToNiftiOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class ToNifti:
+class MetricConvertToNifti:
     """
     convert metric to nifti
     """
@@ -54,7 +54,7 @@ class ToNifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> ToNiftiOutputs:
+    ) -> MetricConvertToNiftiOutputs:
         """
         Collect output file paths.
         
@@ -62,18 +62,18 @@ class ToNifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ToNiftiOutputs`).
+            NamedTuple of outputs (described in `MetricConvertToNiftiOutputs`).
         """
-        ret = ToNiftiOutputs(
+        ret = MetricConvertToNiftiOutputs(
             root=execution.output_file("."),
             nifti_out=execution.output_file(f"{pathlib.Path(self.nifti_out).name}"),
         )
         return ret
 
 
-class FromNiftiOutputs(typing.NamedTuple):
+class MetricConvertFromNiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `FromNifti.run(...)`.
+    Output object returned when calling `MetricConvertFromNifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -82,7 +82,7 @@ class FromNiftiOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class FromNifti:
+class MetricConvertFromNifti:
     """
     convert nifti to metric
     """
@@ -109,7 +109,7 @@ class FromNifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> FromNiftiOutputs:
+    ) -> MetricConvertFromNiftiOutputs:
         """
         Collect output file paths.
         
@@ -117,9 +117,9 @@ class FromNifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FromNiftiOutputs`).
+            NamedTuple of outputs (described in `MetricConvertFromNiftiOutputs`).
         """
-        ret = FromNiftiOutputs(
+        ret = MetricConvertFromNiftiOutputs(
             root=execution.output_file("."),
             metric_out=execution.output_file(f"{pathlib.Path(self.metric_out).name}"),
         )
@@ -132,15 +132,15 @@ class MetricConvertOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    to_nifti: ToNiftiOutputs
+    to_nifti: MetricConvertToNiftiOutputs
     """Subcommand outputs"""
-    from_nifti: FromNiftiOutputs
+    from_nifti: MetricConvertFromNiftiOutputs
     """Subcommand outputs"""
 
 
 def metric_convert(
-    to_nifti: ToNifti | None = None,
-    from_nifti: FromNifti | None = None,
+    to_nifti: MetricConvertToNifti | None = None,
+    from_nifti: MetricConvertFromNifti | None = None,
     runner: Runner = None,
 ) -> MetricConvertOutputs:
     """
@@ -178,11 +178,11 @@ def metric_convert(
 
 
 __all__ = [
-    "FromNifti",
-    "FromNiftiOutputs",
     "METRIC_CONVERT_METADATA",
+    "MetricConvertFromNifti",
+    "MetricConvertFromNiftiOutputs",
     "MetricConvertOutputs",
-    "ToNifti",
-    "ToNiftiOutputs",
+    "MetricConvertToNifti",
+    "MetricConvertToNiftiOutputs",
     "metric_convert",
 ]

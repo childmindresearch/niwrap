@@ -16,16 +16,16 @@ SHVIEW_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class ShviewConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `ShviewConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class ShviewConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> ShviewConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `ShviewConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = ShviewConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -78,7 +78,7 @@ class ShviewOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    config: ConfigOutputs
+    config: typing.List[ShviewConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -90,7 +90,7 @@ def shview(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[ShviewConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -164,9 +164,9 @@ def shview(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "SHVIEW_METADATA",
+    "ShviewConfig",
+    "ShviewConfigOutputs",
     "ShviewOutputs",
     "shview",
 ]

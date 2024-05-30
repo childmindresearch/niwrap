@@ -16,16 +16,16 @@ TSFINFO_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TsfinfoConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TsfinfoConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TsfinfoConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TsfinfoConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TsfinfoConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TsfinfoConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -78,7 +78,7 @@ class TsfinfoOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    config: ConfigOutputs
+    config: typing.List[TsfinfoConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -91,7 +91,7 @@ def tsfinfo(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TsfinfoConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -165,9 +165,9 @@ def tsfinfo(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TSFINFO_METADATA",
+    "TsfinfoConfig",
+    "TsfinfoConfigOutputs",
     "TsfinfoOutputs",
     "tsfinfo",
 ]

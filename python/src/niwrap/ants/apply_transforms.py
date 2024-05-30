@@ -16,9 +16,9 @@ ANTS_APPLY_TRANSFORMS_METADATA = Metadata(
 )
 
 
-class WarpedOutputOutputs(typing.NamedTuple):
+class AntsApplyTransformsWarpedOutputOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `WarpedOutput.run(...)`.
+    Output object returned when calling `AntsApplyTransformsWarpedOutput.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -27,7 +27,7 @@ class WarpedOutputOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class WarpedOutput:
+class AntsApplyTransformsWarpedOutput:
     """
     Output the warped image.
     """
@@ -54,7 +54,7 @@ class WarpedOutput:
     def outputs(
         self,
         execution: Execution,
-    ) -> WarpedOutputOutputs:
+    ) -> AntsApplyTransformsWarpedOutputOutputs:
         """
         Collect output file paths.
         
@@ -62,18 +62,18 @@ class WarpedOutput:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `WarpedOutputOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsWarpedOutputOutputs`).
         """
-        ret = WarpedOutputOutputs(
+        ret = AntsApplyTransformsWarpedOutputOutputs(
             root=execution.output_file("."),
             output_image_outfile=execution.output_file(f"{pathlib.Path(self.warped_output_file_name).name}"),
         )
         return ret
 
 
-class CompositeDisplacementFieldOutputOutputs(typing.NamedTuple):
+class AntsApplyTransformsCompositeDisplacementFieldOutputOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CompositeDisplacementFieldOutput.run(...)`.
+    Output object returned when calling `AntsApplyTransformsCompositeDisplacementFieldOutput.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -82,7 +82,7 @@ class CompositeDisplacementFieldOutputOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class CompositeDisplacementFieldOutput:
+class AntsApplyTransformsCompositeDisplacementFieldOutput:
     """
     Print out the displacement field based on the composite transform and the reference image.
     """
@@ -116,7 +116,7 @@ class CompositeDisplacementFieldOutput:
     def outputs(
         self,
         execution: Execution,
-    ) -> CompositeDisplacementFieldOutputOutputs:
+    ) -> AntsApplyTransformsCompositeDisplacementFieldOutputOutputs:
         """
         Collect output file paths.
         
@@ -124,18 +124,18 @@ class CompositeDisplacementFieldOutput:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CompositeDisplacementFieldOutputOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsCompositeDisplacementFieldOutputOutputs`).
         """
-        ret = CompositeDisplacementFieldOutputOutputs(
+        ret = AntsApplyTransformsCompositeDisplacementFieldOutputOutputs(
             root=execution.output_file("."),
             output_image_outfile_=execution.output_file(f"{pathlib.Path(self.composite_displacement_field).name}"),
         )
         return ret
 
 
-class GenericAffineTransformOutputOutputs(typing.NamedTuple):
+class AntsApplyTransformsGenericAffineTransformOutputOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `GenericAffineTransformOutput.run(...)`.
+    Output object returned when calling `AntsApplyTransformsGenericAffineTransformOutput.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -144,7 +144,7 @@ class GenericAffineTransformOutputOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class GenericAffineTransformOutput:
+class AntsApplyTransformsGenericAffineTransformOutput:
     """
     Compose all affine transforms and (if boolean is set) calculate its inverse which is then written to an ITK file.
     """
@@ -178,7 +178,7 @@ class GenericAffineTransformOutput:
     def outputs(
         self,
         execution: Execution,
-    ) -> GenericAffineTransformOutputOutputs:
+    ) -> AntsApplyTransformsGenericAffineTransformOutputOutputs:
         """
         Collect output file paths.
         
@@ -186,25 +186,25 @@ class GenericAffineTransformOutput:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `GenericAffineTransformOutputOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsGenericAffineTransformOutputOutputs`).
         """
-        ret = GenericAffineTransformOutputOutputs(
+        ret = AntsApplyTransformsGenericAffineTransformOutputOutputs(
             root=execution.output_file("."),
             output_image_outfile_2=execution.output_file(f"{pathlib.Path(self.generic_affine_transform_file).name}"),
         )
         return ret
 
 
-class LinearOutputs(typing.NamedTuple):
+class AntsApplyTransformsLinearOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Linear.run(...)`.
+    Output object returned when calling `AntsApplyTransformsLinear.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Linear:
+class AntsApplyTransformsLinear:
     """
     Linear interpolation.
     """
@@ -229,7 +229,7 @@ class Linear:
     def outputs(
         self,
         execution: Execution,
-    ) -> LinearOutputs:
+    ) -> AntsApplyTransformsLinearOutputs:
         """
         Collect output file paths.
         
@@ -237,24 +237,24 @@ class Linear:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LinearOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsLinearOutputs`).
         """
-        ret = LinearOutputs(
+        ret = AntsApplyTransformsLinearOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NearestNeighborOutputs(typing.NamedTuple):
+class AntsApplyTransformsNearestNeighborOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `NearestNeighbor.run(...)`.
+    Output object returned when calling `AntsApplyTransformsNearestNeighbor.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class NearestNeighbor:
+class AntsApplyTransformsNearestNeighbor:
     """
     Nearest neighbor interpolation.
     """
@@ -279,7 +279,7 @@ class NearestNeighbor:
     def outputs(
         self,
         execution: Execution,
-    ) -> NearestNeighborOutputs:
+    ) -> AntsApplyTransformsNearestNeighborOutputs:
         """
         Collect output file paths.
         
@@ -287,24 +287,24 @@ class NearestNeighbor:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NearestNeighborOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsNearestNeighborOutputs`).
         """
-        ret = NearestNeighborOutputs(
+        ret = AntsApplyTransformsNearestNeighborOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MultiLabelOutputs(typing.NamedTuple):
+class AntsApplyTransformsMultiLabelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MultiLabel.run(...)`.
+    Output object returned when calling `AntsApplyTransformsMultiLabel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MultiLabel:
+class AntsApplyTransformsMultiLabel:
     """
     Multi label interpolation.
     """
@@ -339,7 +339,7 @@ class MultiLabel:
     def outputs(
         self,
         execution: Execution,
-    ) -> MultiLabelOutputs:
+    ) -> AntsApplyTransformsMultiLabelOutputs:
         """
         Collect output file paths.
         
@@ -347,24 +347,24 @@ class MultiLabel:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MultiLabelOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsMultiLabelOutputs`).
         """
-        ret = MultiLabelOutputs(
+        ret = AntsApplyTransformsMultiLabelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class GaussianOutputs(typing.NamedTuple):
+class AntsApplyTransformsGaussianOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Gaussian.run(...)`.
+    Output object returned when calling `AntsApplyTransformsGaussian.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Gaussian:
+class AntsApplyTransformsGaussian:
     """
     Gaussian interpolation.
     """
@@ -399,7 +399,7 @@ class Gaussian:
     def outputs(
         self,
         execution: Execution,
-    ) -> GaussianOutputs:
+    ) -> AntsApplyTransformsGaussianOutputs:
         """
         Collect output file paths.
         
@@ -407,24 +407,24 @@ class Gaussian:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `GaussianOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsGaussianOutputs`).
         """
-        ret = GaussianOutputs(
+        ret = AntsApplyTransformsGaussianOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class BsplineOutputs(typing.NamedTuple):
+class AntsApplyTransformsBsplineOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Bspline.run(...)`.
+    Output object returned when calling `AntsApplyTransformsBspline.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Bspline:
+class AntsApplyTransformsBspline:
     """
     BSpline interpolation.
     """
@@ -456,7 +456,7 @@ class Bspline:
     def outputs(
         self,
         execution: Execution,
-    ) -> BsplineOutputs:
+    ) -> AntsApplyTransformsBsplineOutputs:
         """
         Collect output file paths.
         
@@ -464,24 +464,24 @@ class Bspline:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `BsplineOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsBsplineOutputs`).
         """
-        ret = BsplineOutputs(
+        ret = AntsApplyTransformsBsplineOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CosineWindowedSincOutputs(typing.NamedTuple):
+class AntsApplyTransformsCosineWindowedSincOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CosineWindowedSinc.run(...)`.
+    Output object returned when calling `AntsApplyTransformsCosineWindowedSinc.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CosineWindowedSinc:
+class AntsApplyTransformsCosineWindowedSinc:
     """
     Cosine windowed sinc interpolation.
     """
@@ -506,7 +506,7 @@ class CosineWindowedSinc:
     def outputs(
         self,
         execution: Execution,
-    ) -> CosineWindowedSincOutputs:
+    ) -> AntsApplyTransformsCosineWindowedSincOutputs:
         """
         Collect output file paths.
         
@@ -514,24 +514,24 @@ class CosineWindowedSinc:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CosineWindowedSincOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsCosineWindowedSincOutputs`).
         """
-        ret = CosineWindowedSincOutputs(
+        ret = AntsApplyTransformsCosineWindowedSincOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class WelchWindowedSincOutputs(typing.NamedTuple):
+class AntsApplyTransformsWelchWindowedSincOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `WelchWindowedSinc.run(...)`.
+    Output object returned when calling `AntsApplyTransformsWelchWindowedSinc.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class WelchWindowedSinc:
+class AntsApplyTransformsWelchWindowedSinc:
     """
     Welch windowed sinc interpolation.
     """
@@ -556,7 +556,7 @@ class WelchWindowedSinc:
     def outputs(
         self,
         execution: Execution,
-    ) -> WelchWindowedSincOutputs:
+    ) -> AntsApplyTransformsWelchWindowedSincOutputs:
         """
         Collect output file paths.
         
@@ -564,24 +564,24 @@ class WelchWindowedSinc:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `WelchWindowedSincOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsWelchWindowedSincOutputs`).
         """
-        ret = WelchWindowedSincOutputs(
+        ret = AntsApplyTransformsWelchWindowedSincOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class HammingWindowedSincOutputs(typing.NamedTuple):
+class AntsApplyTransformsHammingWindowedSincOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `HammingWindowedSinc.run(...)`.
+    Output object returned when calling `AntsApplyTransformsHammingWindowedSinc.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class HammingWindowedSinc:
+class AntsApplyTransformsHammingWindowedSinc:
     """
     Hamming windowed sinc interpolation.
     """
@@ -606,7 +606,7 @@ class HammingWindowedSinc:
     def outputs(
         self,
         execution: Execution,
-    ) -> HammingWindowedSincOutputs:
+    ) -> AntsApplyTransformsHammingWindowedSincOutputs:
         """
         Collect output file paths.
         
@@ -614,24 +614,24 @@ class HammingWindowedSinc:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `HammingWindowedSincOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsHammingWindowedSincOutputs`).
         """
-        ret = HammingWindowedSincOutputs(
+        ret = AntsApplyTransformsHammingWindowedSincOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LanczosWindowedSincOutputs(typing.NamedTuple):
+class AntsApplyTransformsLanczosWindowedSincOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LanczosWindowedSinc.run(...)`.
+    Output object returned when calling `AntsApplyTransformsLanczosWindowedSinc.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LanczosWindowedSinc:
+class AntsApplyTransformsLanczosWindowedSinc:
     """
     Lanczos windowed sinc interpolation.
     """
@@ -656,7 +656,7 @@ class LanczosWindowedSinc:
     def outputs(
         self,
         execution: Execution,
-    ) -> LanczosWindowedSincOutputs:
+    ) -> AntsApplyTransformsLanczosWindowedSincOutputs:
         """
         Collect output file paths.
         
@@ -664,24 +664,24 @@ class LanczosWindowedSinc:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LanczosWindowedSincOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsLanczosWindowedSincOutputs`).
         """
-        ret = LanczosWindowedSincOutputs(
+        ret = AntsApplyTransformsLanczosWindowedSincOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class GenericLabelOutputs(typing.NamedTuple):
+class AntsApplyTransformsGenericLabelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `GenericLabel.run(...)`.
+    Output object returned when calling `AntsApplyTransformsGenericLabel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class GenericLabel:
+class AntsApplyTransformsGenericLabel:
     """
     Generic label interpolation.
     """
@@ -713,7 +713,7 @@ class GenericLabel:
     def outputs(
         self,
         execution: Execution,
-    ) -> GenericLabelOutputs:
+    ) -> AntsApplyTransformsGenericLabelOutputs:
         """
         Collect output file paths.
         
@@ -721,24 +721,24 @@ class GenericLabel:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `GenericLabelOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsGenericLabelOutputs`).
         """
-        ret = GenericLabelOutputs(
+        ret = AntsApplyTransformsGenericLabelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformFileNameOutputs(typing.NamedTuple):
+class AntsApplyTransformsTransformFileNameOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformFileName.run(...)`.
+    Output object returned when calling `AntsApplyTransformsTransformFileName.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformFileName:
+class AntsApplyTransformsTransformFileName:
     """
     Transform file name.
     """
@@ -765,7 +765,7 @@ class TransformFileName:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformFileNameOutputs:
+    ) -> AntsApplyTransformsTransformFileNameOutputs:
         """
         Collect output file paths.
         
@@ -773,24 +773,24 @@ class TransformFileName:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformFileNameOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsTransformFileNameOutputs`).
         """
-        ret = TransformFileNameOutputs(
+        ret = AntsApplyTransformsTransformFileNameOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class UseInverseOutputs(typing.NamedTuple):
+class AntsApplyTransformsUseInverseOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `UseInverse.run(...)`.
+    Output object returned when calling `AntsApplyTransformsUseInverse.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class UseInverse:
+class AntsApplyTransformsUseInverse:
     """
     Use inverse.
     """
@@ -821,7 +821,7 @@ class UseInverse:
     def outputs(
         self,
         execution: Execution,
-    ) -> UseInverseOutputs:
+    ) -> AntsApplyTransformsUseInverseOutputs:
         """
         Collect output file paths.
         
@@ -829,9 +829,9 @@ class UseInverse:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `UseInverseOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsUseInverseOutputs`).
         """
-        ret = UseInverseOutputs(
+        ret = AntsApplyTransformsUseInverseOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -843,22 +843,22 @@ class AntsApplyTransformsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output: typing.Union[WarpedOutputOutputs, CompositeDisplacementFieldOutputOutputs, GenericAffineTransformOutputOutputs]
+    output: typing.Union[AntsApplyTransformsWarpedOutputOutputs, AntsApplyTransformsCompositeDisplacementFieldOutputOutputs, AntsApplyTransformsGenericAffineTransformOutputOutputs]
     """Subcommand outputs"""
-    interpolation: typing.Union[LinearOutputs, NearestNeighborOutputs, MultiLabelOutputs, GaussianOutputs, BsplineOutputs, CosineWindowedSincOutputs, WelchWindowedSincOutputs, HammingWindowedSincOutputs, LanczosWindowedSincOutputs, GenericLabelOutputs]
+    interpolation: typing.Union[AntsApplyTransformsLinearOutputs, AntsApplyTransformsNearestNeighborOutputs, AntsApplyTransformsMultiLabelOutputs, AntsApplyTransformsGaussianOutputs, AntsApplyTransformsBsplineOutputs, AntsApplyTransformsCosineWindowedSincOutputs, AntsApplyTransformsWelchWindowedSincOutputs, AntsApplyTransformsHammingWindowedSincOutputs, AntsApplyTransformsLanczosWindowedSincOutputs, AntsApplyTransformsGenericLabelOutputs]
     """Subcommand outputs"""
-    transform: typing.List[typing.Union[TransformFileNameOutputs, UseInverseOutputs]]
+    transform: typing.List[typing.Union[AntsApplyTransformsTransformFileNameOutputs, AntsApplyTransformsUseInverseOutputs]]
     """Subcommand outputs"""
 
 
 def ants_apply_transforms(
     input_image: InputPathType,
     reference_image: InputPathType,
-    output: typing.Union[WarpedOutput, CompositeDisplacementFieldOutput, GenericAffineTransformOutput],
-    transform: list[typing.Union[TransformFileName, UseInverse]],
+    output: typing.Union[AntsApplyTransformsWarpedOutput, AntsApplyTransformsCompositeDisplacementFieldOutput, AntsApplyTransformsGenericAffineTransformOutput],
+    transform: list[typing.Union[AntsApplyTransformsTransformFileName, AntsApplyTransformsUseInverse]],
     dimensionality: typing.Literal[2, 3, 4] | None = None,
     input_image_type: typing.Literal[0, 1, 2, 3, 4, 5] | None = None,
-    interpolation: typing.Union[Linear, NearestNeighbor, MultiLabel, Gaussian, Bspline, CosineWindowedSinc, WelchWindowedSinc, HammingWindowedSinc, LanczosWindowedSinc, GenericLabel] | None = None,
+    interpolation: typing.Union[AntsApplyTransformsLinear, AntsApplyTransformsNearestNeighbor, AntsApplyTransformsMultiLabel, AntsApplyTransformsGaussian, AntsApplyTransformsBspline, AntsApplyTransformsCosineWindowedSinc, AntsApplyTransformsWelchWindowedSinc, AntsApplyTransformsHammingWindowedSinc, AntsApplyTransformsLanczosWindowedSinc, AntsApplyTransformsGenericLabel] | None = None,
     output_data_type: typing.Literal["char", "uchar", "short", "int", "float", "double", "default"] | None = None,
     default_value: float | int | None = None,
     static_cast_for_r: str | None = None,
@@ -957,36 +957,36 @@ def ants_apply_transforms(
 
 __all__ = [
     "ANTS_APPLY_TRANSFORMS_METADATA",
+    "AntsApplyTransformsBspline",
+    "AntsApplyTransformsBsplineOutputs",
+    "AntsApplyTransformsCompositeDisplacementFieldOutput",
+    "AntsApplyTransformsCompositeDisplacementFieldOutputOutputs",
+    "AntsApplyTransformsCosineWindowedSinc",
+    "AntsApplyTransformsCosineWindowedSincOutputs",
+    "AntsApplyTransformsGaussian",
+    "AntsApplyTransformsGaussianOutputs",
+    "AntsApplyTransformsGenericAffineTransformOutput",
+    "AntsApplyTransformsGenericAffineTransformOutputOutputs",
+    "AntsApplyTransformsGenericLabel",
+    "AntsApplyTransformsGenericLabelOutputs",
+    "AntsApplyTransformsHammingWindowedSinc",
+    "AntsApplyTransformsHammingWindowedSincOutputs",
+    "AntsApplyTransformsLanczosWindowedSinc",
+    "AntsApplyTransformsLanczosWindowedSincOutputs",
+    "AntsApplyTransformsLinear",
+    "AntsApplyTransformsLinearOutputs",
+    "AntsApplyTransformsMultiLabel",
+    "AntsApplyTransformsMultiLabelOutputs",
+    "AntsApplyTransformsNearestNeighbor",
+    "AntsApplyTransformsNearestNeighborOutputs",
     "AntsApplyTransformsOutputs",
-    "Bspline",
-    "BsplineOutputs",
-    "CompositeDisplacementFieldOutput",
-    "CompositeDisplacementFieldOutputOutputs",
-    "CosineWindowedSinc",
-    "CosineWindowedSincOutputs",
-    "Gaussian",
-    "GaussianOutputs",
-    "GenericAffineTransformOutput",
-    "GenericAffineTransformOutputOutputs",
-    "GenericLabel",
-    "GenericLabelOutputs",
-    "HammingWindowedSinc",
-    "HammingWindowedSincOutputs",
-    "LanczosWindowedSinc",
-    "LanczosWindowedSincOutputs",
-    "Linear",
-    "LinearOutputs",
-    "MultiLabel",
-    "MultiLabelOutputs",
-    "NearestNeighbor",
-    "NearestNeighborOutputs",
-    "TransformFileName",
-    "TransformFileNameOutputs",
-    "UseInverse",
-    "UseInverseOutputs",
-    "WarpedOutput",
-    "WarpedOutputOutputs",
-    "WelchWindowedSinc",
-    "WelchWindowedSincOutputs",
+    "AntsApplyTransformsTransformFileName",
+    "AntsApplyTransformsTransformFileNameOutputs",
+    "AntsApplyTransformsUseInverse",
+    "AntsApplyTransformsUseInverseOutputs",
+    "AntsApplyTransformsWarpedOutput",
+    "AntsApplyTransformsWarpedOutputOutputs",
+    "AntsApplyTransformsWelchWindowedSinc",
+    "AntsApplyTransformsWelchWindowedSincOutputs",
     "ants_apply_transforms",
 ]

@@ -16,16 +16,16 @@ DCMEDIT_METADATA = Metadata(
 )
 
 
-class TagOutputs(typing.NamedTuple):
+class DcmeditTagOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Tag.run(...)`.
+    Output object returned when calling `DcmeditTag.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Tag:
+class DcmeditTag:
     """
     replace specific tag.
     """
@@ -59,7 +59,7 @@ class Tag:
     def outputs(
         self,
         execution: Execution,
-    ) -> TagOutputs:
+    ) -> DcmeditTagOutputs:
         """
         Collect output file paths.
         
@@ -67,24 +67,24 @@ class Tag:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TagOutputs`).
+            NamedTuple of outputs (described in `DcmeditTagOutputs`).
         """
-        ret = TagOutputs(
+        ret = DcmeditTagOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class DcmeditConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `DcmeditConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class DcmeditConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -115,7 +115,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> DcmeditConfigOutputs:
         """
         Collect output file paths.
         
@@ -123,9 +123,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `DcmeditConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = DcmeditConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -137,9 +137,9 @@ class DcmeditOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    tag: TagOutputs
+    tag: typing.List[DcmeditTagOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[DcmeditConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -147,13 +147,13 @@ def dcmedit(
     file: InputPathType,
     anonymise: bool = False,
     id_: str | None = None,
-    tag: list[Tag] = None,
+    tag: list[DcmeditTag] = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[DcmeditConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -246,11 +246,11 @@ def dcmedit(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "DCMEDIT_METADATA",
+    "DcmeditConfig",
+    "DcmeditConfigOutputs",
     "DcmeditOutputs",
-    "Tag",
-    "TagOutputs",
+    "DcmeditTag",
+    "DcmeditTagOutputs",
     "dcmedit",
 ]

@@ -16,16 +16,16 @@ CIFTI_WEIGHTED_STATS_METADATA = Metadata(
 )
 
 
-class SpatialWeightsOutputs(typing.NamedTuple):
+class CiftiWeightedStatsSpatialWeightsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SpatialWeights.run(...)`.
+    Output object returned when calling `CiftiWeightedStatsSpatialWeights.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SpatialWeights:
+class CiftiWeightedStatsSpatialWeights:
     """
     use vertex area and voxel volume as weights
     """
@@ -79,7 +79,7 @@ class SpatialWeights:
     def outputs(
         self,
         execution: Execution,
-    ) -> SpatialWeightsOutputs:
+    ) -> CiftiWeightedStatsSpatialWeightsOutputs:
         """
         Collect output file paths.
         
@@ -87,24 +87,24 @@ class SpatialWeights:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SpatialWeightsOutputs`).
+            NamedTuple of outputs (described in `CiftiWeightedStatsSpatialWeightsOutputs`).
         """
-        ret = SpatialWeightsOutputs(
+        ret = CiftiWeightedStatsSpatialWeightsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RoiOutputs(typing.NamedTuple):
+class CiftiWeightedStatsRoiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Roi.run(...)`.
+    Output object returned when calling `CiftiWeightedStatsRoi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Roi:
+class CiftiWeightedStatsRoi:
     """
     only consider data inside an roi
     """
@@ -132,7 +132,7 @@ class Roi:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiOutputs:
+    ) -> CiftiWeightedStatsRoiOutputs:
         """
         Collect output file paths.
         
@@ -140,9 +140,9 @@ class Roi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiOutputs`).
+            NamedTuple of outputs (described in `CiftiWeightedStatsRoiOutputs`).
         """
-        ret = RoiOutputs(
+        ret = CiftiWeightedStatsRoiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -154,18 +154,18 @@ class CiftiWeightedStatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    spatial_weights: SpatialWeightsOutputs
+    spatial_weights: CiftiWeightedStatsSpatialWeightsOutputs
     """Subcommand outputs"""
-    roi: RoiOutputs
+    roi: CiftiWeightedStatsRoiOutputs
     """Subcommand outputs"""
 
 
 def cifti_weighted_stats(
     cifti_in: InputPathType,
-    spatial_weights: SpatialWeights | None = None,
+    spatial_weights: CiftiWeightedStatsSpatialWeights | None = None,
     opt_cifti_weights_weight_cifti: InputPathType | None = None,
     opt_column_column: int | None = None,
-    roi: Roi | None = None,
+    roi: CiftiWeightedStatsRoi | None = None,
     opt_mean: bool = False,
     opt_stdev: bool = False,
     opt_sample: bool = False,
@@ -251,9 +251,9 @@ def cifti_weighted_stats(
 __all__ = [
     "CIFTI_WEIGHTED_STATS_METADATA",
     "CiftiWeightedStatsOutputs",
-    "Roi",
-    "RoiOutputs",
-    "SpatialWeights",
-    "SpatialWeightsOutputs",
+    "CiftiWeightedStatsRoi",
+    "CiftiWeightedStatsRoiOutputs",
+    "CiftiWeightedStatsSpatialWeights",
+    "CiftiWeightedStatsSpatialWeightsOutputs",
     "cifti_weighted_stats",
 ]

@@ -16,16 +16,16 @@ CIFTI_MERGE_METADATA = Metadata(
 )
 
 
-class UpToOutputs(typing.NamedTuple):
+class CiftiMergeUpToOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `UpTo.run(...)`.
+    Output object returned when calling `CiftiMergeUpTo.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class UpTo:
+class CiftiMergeUpTo:
     """
     use an inclusive range of indices
     """
@@ -53,7 +53,7 @@ class UpTo:
     def outputs(
         self,
         execution: Execution,
-    ) -> UpToOutputs:
+    ) -> CiftiMergeUpToOutputs:
         """
         Collect output file paths.
         
@@ -61,30 +61,30 @@ class UpTo:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `UpToOutputs`).
+            NamedTuple of outputs (described in `CiftiMergeUpToOutputs`).
         """
-        ret = UpToOutputs(
+        ret = CiftiMergeUpToOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class IndexOutputs(typing.NamedTuple):
+class CiftiMergeIndexOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Index.run(...)`.
+    Output object returned when calling `CiftiMergeIndex.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.up_to: UpToOutputs
+    self.up_to: CiftiMergeUpToOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Index:
+class CiftiMergeIndex:
     """
     select a single index to use
     """
-    up_to: UpTo | None = None
+    up_to: CiftiMergeUpTo | None = None
     """use an inclusive range of indices"""
     
     def run(
@@ -108,7 +108,7 @@ class Index:
     def outputs(
         self,
         execution: Execution,
-    ) -> IndexOutputs:
+    ) -> CiftiMergeIndexOutputs:
         """
         Collect output file paths.
         
@@ -116,31 +116,31 @@ class Index:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `IndexOutputs`).
+            NamedTuple of outputs (described in `CiftiMergeIndexOutputs`).
         """
-        ret = IndexOutputs(
+        ret = CiftiMergeIndexOutputs(
             root=execution.output_file("."),
             self.up_to=self.up_to.outputs(execution),
         )
         return ret
 
 
-class CiftiOutputs(typing.NamedTuple):
+class CiftiMergeCiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Cifti.run(...)`.
+    Output object returned when calling `CiftiMergeCifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.index: IndexOutputs
+    self.index: typing.List[CiftiMergeIndexOutputs]
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Cifti:
+class CiftiMergeCifti:
     """
     specify an input cifti file
     """
-    index: list[Index] = None
+    index: list[CiftiMergeIndex] = None
     """select a single index to use"""
     
     def run(
@@ -164,7 +164,7 @@ class Cifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> CiftiOutputs:
+    ) -> CiftiMergeCiftiOutputs:
         """
         Collect output file paths.
         
@@ -172,9 +172,9 @@ class Cifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CiftiOutputs`).
+            NamedTuple of outputs (described in `CiftiMergeCiftiOutputs`).
         """
-        ret = CiftiOutputs(
+        ret = CiftiMergeCiftiOutputs(
             root=execution.output_file("."),
             self.index=[self.index.outputs(execution) for self.index in self.index],
         )
@@ -189,7 +189,7 @@ class CiftiMergeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti file"""
-    cifti: CiftiOutputs
+    cifti: typing.List[CiftiMergeCiftiOutputs]
     """Subcommand outputs"""
 
 
@@ -197,7 +197,7 @@ def cifti_merge(
     cifti_out: InputPathType,
     opt_direction_direction: str | None = None,
     opt_mem_limit_limit_gb: float | int | None = None,
-    cifti: list[Cifti] = None,
+    cifti: list[CiftiMergeCifti] = None,
     runner: Runner = None,
 ) -> CiftiMergeOutputs:
     """
@@ -254,12 +254,12 @@ def cifti_merge(
 
 __all__ = [
     "CIFTI_MERGE_METADATA",
-    "Cifti",
+    "CiftiMergeCifti",
+    "CiftiMergeCiftiOutputs",
+    "CiftiMergeIndex",
+    "CiftiMergeIndexOutputs",
     "CiftiMergeOutputs",
-    "CiftiOutputs",
-    "Index",
-    "IndexOutputs",
-    "UpTo",
-    "UpToOutputs",
+    "CiftiMergeUpTo",
+    "CiftiMergeUpToOutputs",
     "cifti_merge",
 ]

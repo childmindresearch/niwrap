@@ -16,16 +16,16 @@ VOLUME_SET_SPACE_METADATA = Metadata(
 )
 
 
-class PlumbOutputs(typing.NamedTuple):
+class VolumeSetSpacePlumbOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Plumb.run(...)`.
+    Output object returned when calling `VolumeSetSpacePlumb.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Plumb:
+class VolumeSetSpacePlumb:
     """
     set via axis order and spacing/offset
     """
@@ -49,7 +49,7 @@ class Plumb:
     def outputs(
         self,
         execution: Execution,
-    ) -> PlumbOutputs:
+    ) -> VolumeSetSpacePlumbOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class Plumb:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PlumbOutputs`).
+            NamedTuple of outputs (described in `VolumeSetSpacePlumbOutputs`).
         """
-        ret = PlumbOutputs(
+        ret = VolumeSetSpacePlumbOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SformOutputs(typing.NamedTuple):
+class VolumeSetSpaceSformOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Sform.run(...)`.
+    Output object returned when calling `VolumeSetSpaceSform.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Sform:
+class VolumeSetSpaceSform:
     """
     set via a nifti sform
     """
@@ -98,7 +98,7 @@ class Sform:
     def outputs(
         self,
         execution: Execution,
-    ) -> SformOutputs:
+    ) -> VolumeSetSpaceSformOutputs:
         """
         Collect output file paths.
         
@@ -106,24 +106,24 @@ class Sform:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SformOutputs`).
+            NamedTuple of outputs (described in `VolumeSetSpaceSformOutputs`).
         """
-        ret = SformOutputs(
+        ret = VolumeSetSpaceSformOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FileOutputs(typing.NamedTuple):
+class VolumeSetSpaceFileOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `File.run(...)`.
+    Output object returned when calling `VolumeSetSpaceFile.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class File:
+class VolumeSetSpaceFile:
     """
     copy spacing info from volume file with matching dimensions
     """
@@ -151,7 +151,7 @@ class File:
     def outputs(
         self,
         execution: Execution,
-    ) -> FileOutputs:
+    ) -> VolumeSetSpaceFileOutputs:
         """
         Collect output file paths.
         
@@ -159,9 +159,9 @@ class File:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FileOutputs`).
+            NamedTuple of outputs (described in `VolumeSetSpaceFileOutputs`).
         """
-        ret = FileOutputs(
+        ret = VolumeSetSpaceFileOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -173,20 +173,20 @@ class VolumeSetSpaceOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    plumb: PlumbOutputs
+    plumb: VolumeSetSpacePlumbOutputs
     """Subcommand outputs"""
-    sform: SformOutputs
+    sform: VolumeSetSpaceSformOutputs
     """Subcommand outputs"""
-    file: FileOutputs
+    file: VolumeSetSpaceFileOutputs
     """Subcommand outputs"""
 
 
 def volume_set_space(
     volume_in: InputPathType,
     volume_out: str,
-    plumb: Plumb | None = None,
-    sform: Sform | None = None,
-    file: File | None = None,
+    plumb: VolumeSetSpacePlumb | None = None,
+    sform: VolumeSetSpaceSform | None = None,
+    file: VolumeSetSpaceFile | None = None,
     runner: Runner = None,
 ) -> VolumeSetSpaceOutputs:
     """
@@ -233,13 +233,13 @@ def volume_set_space(
 
 
 __all__ = [
-    "File",
-    "FileOutputs",
-    "Plumb",
-    "PlumbOutputs",
-    "Sform",
-    "SformOutputs",
     "VOLUME_SET_SPACE_METADATA",
+    "VolumeSetSpaceFile",
+    "VolumeSetSpaceFileOutputs",
     "VolumeSetSpaceOutputs",
+    "VolumeSetSpacePlumb",
+    "VolumeSetSpacePlumbOutputs",
+    "VolumeSetSpaceSform",
+    "VolumeSetSpaceSformOutputs",
     "volume_set_space",
 ]

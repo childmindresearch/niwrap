@@ -16,16 +16,16 @@ CIFTI_MATH_METADATA = Metadata(
 )
 
 
-class SelectOutputs(typing.NamedTuple):
+class CiftiMathSelectOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Select.run(...)`.
+    Output object returned when calling `CiftiMathSelect.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Select:
+class CiftiMathSelect:
     """
     select a single index from a dimension
     """
@@ -53,7 +53,7 @@ class Select:
     def outputs(
         self,
         execution: Execution,
-    ) -> SelectOutputs:
+    ) -> CiftiMathSelectOutputs:
         """
         Collect output file paths.
         
@@ -61,30 +61,30 @@ class Select:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SelectOutputs`).
+            NamedTuple of outputs (described in `CiftiMathSelectOutputs`).
         """
-        ret = SelectOutputs(
+        ret = CiftiMathSelectOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class VarOutputs(typing.NamedTuple):
+class CiftiMathVarOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Var.run(...)`.
+    Output object returned when calling `CiftiMathVar.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.select_: SelectOutputs
+    self.select_: typing.List[CiftiMathSelectOutputs]
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Var:
+class CiftiMathVar:
     """
     a cifti file to use as a variable
     """
-    select_: list[Select] = None
+    select_: list[CiftiMathSelect] = None
     """select a single index from a dimension"""
     
     def run(
@@ -108,7 +108,7 @@ class Var:
     def outputs(
         self,
         execution: Execution,
-    ) -> VarOutputs:
+    ) -> CiftiMathVarOutputs:
         """
         Collect output file paths.
         
@@ -116,9 +116,9 @@ class Var:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VarOutputs`).
+            NamedTuple of outputs (described in `CiftiMathVarOutputs`).
         """
-        ret = VarOutputs(
+        ret = CiftiMathVarOutputs(
             root=execution.output_file("."),
             self.select_=[self.select_.outputs(execution) for self.select_ in self.select_],
         )
@@ -133,7 +133,7 @@ class CiftiMathOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    var: VarOutputs
+    var: typing.List[CiftiMathVarOutputs]
     """Subcommand outputs"""
 
 
@@ -142,7 +142,7 @@ def cifti_math(
     cifti_out: InputPathType,
     opt_fixnan_replace: float | int | None = None,
     opt_override_mapping_check: bool = False,
-    var: list[Var] = None,
+    var: list[CiftiMathVar] = None,
     runner: Runner = None,
 ) -> CiftiMathOutputs:
     """
@@ -260,9 +260,9 @@ def cifti_math(
 __all__ = [
     "CIFTI_MATH_METADATA",
     "CiftiMathOutputs",
-    "Select",
-    "SelectOutputs",
-    "Var",
-    "VarOutputs",
+    "CiftiMathSelect",
+    "CiftiMathSelectOutputs",
+    "CiftiMathVar",
+    "CiftiMathVarOutputs",
     "cifti_math",
 ]

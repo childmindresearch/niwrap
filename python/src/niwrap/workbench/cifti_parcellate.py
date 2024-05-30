@@ -16,16 +16,16 @@ CIFTI_PARCELLATE_METADATA = Metadata(
 )
 
 
-class SpatialWeightsOutputs(typing.NamedTuple):
+class CiftiParcellateSpatialWeightsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SpatialWeights.run(...)`.
+    Output object returned when calling `CiftiParcellateSpatialWeights.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SpatialWeights:
+class CiftiParcellateSpatialWeights:
     """
     use voxel volume and either vertex areas or metric files as weights
     """
@@ -79,7 +79,7 @@ class SpatialWeights:
     def outputs(
         self,
         execution: Execution,
-    ) -> SpatialWeightsOutputs:
+    ) -> CiftiParcellateSpatialWeightsOutputs:
         """
         Collect output file paths.
         
@@ -87,24 +87,24 @@ class SpatialWeights:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SpatialWeightsOutputs`).
+            NamedTuple of outputs (described in `CiftiParcellateSpatialWeightsOutputs`).
         """
-        ret = SpatialWeightsOutputs(
+        ret = CiftiParcellateSpatialWeightsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ExcludeOutliersOutputs(typing.NamedTuple):
+class CiftiParcellateExcludeOutliersOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ExcludeOutliers.run(...)`.
+    Output object returned when calling `CiftiParcellateExcludeOutliers.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ExcludeOutliers:
+class CiftiParcellateExcludeOutliers:
     """
     exclude non-numeric values and outliers from each parcel by standard deviation
     """
@@ -128,7 +128,7 @@ class ExcludeOutliers:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExcludeOutliersOutputs:
+    ) -> CiftiParcellateExcludeOutliersOutputs:
         """
         Collect output file paths.
         
@@ -136,9 +136,9 @@ class ExcludeOutliers:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExcludeOutliersOutputs`).
+            NamedTuple of outputs (described in `CiftiParcellateExcludeOutliersOutputs`).
         """
-        ret = ExcludeOutliersOutputs(
+        ret = CiftiParcellateExcludeOutliersOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -154,9 +154,9 @@ class CiftiParcellateOutputs(typing.NamedTuple):
     """output cifti file"""
     mask_out: OutputPathType
     """the output mask file"""
-    spatial_weights: SpatialWeightsOutputs
+    spatial_weights: CiftiParcellateSpatialWeightsOutputs
     """Subcommand outputs"""
-    exclude_outliers: ExcludeOutliersOutputs
+    exclude_outliers: CiftiParcellateExcludeOutliersOutputs
     """Subcommand outputs"""
 
 
@@ -166,10 +166,10 @@ def cifti_parcellate(
     direction: str,
     cifti_out: InputPathType,
     mask_out: InputPathType,
-    spatial_weights: SpatialWeights | None = None,
+    spatial_weights: CiftiParcellateSpatialWeights | None = None,
     opt_cifti_weights_weight_cifti: InputPathType | None = None,
     opt_method_method: str | None = None,
-    exclude_outliers: ExcludeOutliers | None = None,
+    exclude_outliers: CiftiParcellateExcludeOutliers | None = None,
     opt_only_numeric: bool = False,
     opt_fill_value_value: float | int | None = None,
     opt_nonempty_mask_out: bool = False,
@@ -287,10 +287,10 @@ def cifti_parcellate(
 
 __all__ = [
     "CIFTI_PARCELLATE_METADATA",
+    "CiftiParcellateExcludeOutliers",
+    "CiftiParcellateExcludeOutliersOutputs",
     "CiftiParcellateOutputs",
-    "ExcludeOutliers",
-    "ExcludeOutliersOutputs",
-    "SpatialWeights",
-    "SpatialWeightsOutputs",
+    "CiftiParcellateSpatialWeights",
+    "CiftiParcellateSpatialWeightsOutputs",
     "cifti_parcellate",
 ]

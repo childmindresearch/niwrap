@@ -16,16 +16,16 @@ FIXELCONVERT_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class FixelconvertConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `FixelconvertConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class FixelconvertConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> FixelconvertConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `FixelconvertConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = FixelconvertConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -78,7 +78,7 @@ class FixelconvertOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    config: ConfigOutputs
+    config: typing.List[FixelconvertConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -96,7 +96,7 @@ def fixelconvert(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[FixelconvertConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -189,9 +189,9 @@ def fixelconvert(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "FIXELCONVERT_METADATA",
+    "FixelconvertConfig",
+    "FixelconvertConfigOutputs",
     "FixelconvertOutputs",
     "fixelconvert",
 ]

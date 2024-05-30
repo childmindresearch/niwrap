@@ -16,9 +16,9 @@ CIFTI_LABEL_TO_BORDER_METADATA = Metadata(
 )
 
 
-class BorderOutputs(typing.NamedTuple):
+class CiftiLabelToBorderBorderOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Border.run(...)`.
+    Output object returned when calling `CiftiLabelToBorderBorder.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -27,7 +27,7 @@ class BorderOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class Border:
+class CiftiLabelToBorderBorder:
     """
     specify output file for a surface structure
     """
@@ -54,7 +54,7 @@ class Border:
     def outputs(
         self,
         execution: Execution,
-    ) -> BorderOutputs:
+    ) -> CiftiLabelToBorderBorderOutputs:
         """
         Collect output file paths.
         
@@ -62,9 +62,9 @@ class Border:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `BorderOutputs`).
+            NamedTuple of outputs (described in `CiftiLabelToBorderBorderOutputs`).
         """
-        ret = BorderOutputs(
+        ret = CiftiLabelToBorderBorderOutputs(
             root=execution.output_file("."),
             border_out=execution.output_file(f"{pathlib.Path(self.border_out).name}"),
         )
@@ -77,7 +77,7 @@ class CiftiLabelToBorderOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    border: BorderOutputs
+    border: typing.List[CiftiLabelToBorderBorderOutputs]
     """Subcommand outputs"""
 
 
@@ -85,7 +85,7 @@ def cifti_label_to_border(
     cifti_in: InputPathType,
     opt_placement_fraction: float | int | None = None,
     opt_column_column: str | None = None,
-    border: list[Border] = None,
+    border: list[CiftiLabelToBorderBorder] = None,
     runner: Runner = None,
 ) -> CiftiLabelToBorderOutputs:
     """
@@ -128,9 +128,9 @@ def cifti_label_to_border(
 
 
 __all__ = [
-    "Border",
-    "BorderOutputs",
     "CIFTI_LABEL_TO_BORDER_METADATA",
+    "CiftiLabelToBorderBorder",
+    "CiftiLabelToBorderBorderOutputs",
     "CiftiLabelToBorderOutputs",
     "cifti_label_to_border",
 ]

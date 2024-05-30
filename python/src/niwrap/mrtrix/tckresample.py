@@ -16,16 +16,16 @@ TCKRESAMPLE_METADATA = Metadata(
 )
 
 
-class LineOutputs(typing.NamedTuple):
+class TckresampleLineOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Line.run(...)`.
+    Output object returned when calling `TckresampleLine.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Line:
+class TckresampleLine:
     """
     resample tracks at 'num' equidistant locations along a line between 'start' and 'end' (specified as comma-separated 3-vectors in scanner coordinates)
     """
@@ -65,7 +65,7 @@ class Line:
     def outputs(
         self,
         execution: Execution,
-    ) -> LineOutputs:
+    ) -> TckresampleLineOutputs:
         """
         Collect output file paths.
         
@@ -73,24 +73,24 @@ class Line:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LineOutputs`).
+            NamedTuple of outputs (described in `TckresampleLineOutputs`).
         """
-        ret = LineOutputs(
+        ret = TckresampleLineOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ArcOutputs(typing.NamedTuple):
+class TckresampleArcOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Arc.run(...)`.
+    Output object returned when calling `TckresampleArc.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Arc:
+class TckresampleArc:
     """
     resample tracks at 'num' equidistant locations along a circular arc specified by points 'start', 'mid' and 'end' (specified as comma-separated 3-vectors in scanner coordinates)
     """
@@ -135,7 +135,7 @@ class Arc:
     def outputs(
         self,
         execution: Execution,
-    ) -> ArcOutputs:
+    ) -> TckresampleArcOutputs:
         """
         Collect output file paths.
         
@@ -143,24 +143,24 @@ class Arc:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ArcOutputs`).
+            NamedTuple of outputs (described in `TckresampleArcOutputs`).
         """
-        ret = ArcOutputs(
+        ret = TckresampleArcOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TckresampleConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TckresampleConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TckresampleConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -191,7 +191,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TckresampleConfigOutputs:
         """
         Collect output file paths.
         
@@ -199,9 +199,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TckresampleConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TckresampleConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -215,11 +215,11 @@ class TckresampleOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_tracks: OutputPathType
     """the output resampled tracks"""
-    line: LineOutputs
+    line: TckresampleLineOutputs
     """Subcommand outputs"""
-    arc: ArcOutputs
+    arc: TckresampleArcOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[TckresampleConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -231,14 +231,14 @@ def tckresample(
     step_size: float | int | None = None,
     num_points: int | None = None,
     endpoints: bool = False,
-    line: Line | None = None,
-    arc: Arc | None = None,
+    line: TckresampleLine | None = None,
+    arc: TckresampleArc | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TckresampleConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -350,13 +350,13 @@ def tckresample(
 
 
 __all__ = [
-    "Arc",
-    "ArcOutputs",
-    "Config",
-    "ConfigOutputs",
-    "Line",
-    "LineOutputs",
     "TCKRESAMPLE_METADATA",
+    "TckresampleArc",
+    "TckresampleArcOutputs",
+    "TckresampleConfig",
+    "TckresampleConfigOutputs",
+    "TckresampleLine",
+    "TckresampleLineOutputs",
     "TckresampleOutputs",
     "tckresample",
 ]

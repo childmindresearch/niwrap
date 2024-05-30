@@ -16,16 +16,16 @@ METRIC_MERGE_METADATA = Metadata(
 )
 
 
-class UpToOutputs(typing.NamedTuple):
+class MetricMergeUpToOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `UpTo.run(...)`.
+    Output object returned when calling `MetricMergeUpTo.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class UpTo:
+class MetricMergeUpTo:
     """
     use an inclusive range of columns
     """
@@ -53,7 +53,7 @@ class UpTo:
     def outputs(
         self,
         execution: Execution,
-    ) -> UpToOutputs:
+    ) -> MetricMergeUpToOutputs:
         """
         Collect output file paths.
         
@@ -61,30 +61,30 @@ class UpTo:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `UpToOutputs`).
+            NamedTuple of outputs (described in `MetricMergeUpToOutputs`).
         """
-        ret = UpToOutputs(
+        ret = MetricMergeUpToOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ColumnOutputs(typing.NamedTuple):
+class MetricMergeColumnOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Column.run(...)`.
+    Output object returned when calling `MetricMergeColumn.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.up_to: UpToOutputs
+    self.up_to: MetricMergeUpToOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Column:
+class MetricMergeColumn:
     """
     select a single column to use
     """
-    up_to: UpTo | None = None
+    up_to: MetricMergeUpTo | None = None
     """use an inclusive range of columns"""
     
     def run(
@@ -108,7 +108,7 @@ class Column:
     def outputs(
         self,
         execution: Execution,
-    ) -> ColumnOutputs:
+    ) -> MetricMergeColumnOutputs:
         """
         Collect output file paths.
         
@@ -116,31 +116,31 @@ class Column:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ColumnOutputs`).
+            NamedTuple of outputs (described in `MetricMergeColumnOutputs`).
         """
-        ret = ColumnOutputs(
+        ret = MetricMergeColumnOutputs(
             root=execution.output_file("."),
             self.up_to=self.up_to.outputs(execution),
         )
         return ret
 
 
-class MetricOutputs(typing.NamedTuple):
+class MetricMergeMetricOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Metric.run(...)`.
+    Output object returned when calling `MetricMergeMetric.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.column: ColumnOutputs
+    self.column: typing.List[MetricMergeColumnOutputs]
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Metric:
+class MetricMergeMetric:
     """
     specify an input metric
     """
-    column: list[Column] = None
+    column: list[MetricMergeColumn] = None
     """select a single column to use"""
     
     def run(
@@ -164,7 +164,7 @@ class Metric:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricOutputs:
+    ) -> MetricMergeMetricOutputs:
         """
         Collect output file paths.
         
@@ -172,9 +172,9 @@ class Metric:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricOutputs`).
+            NamedTuple of outputs (described in `MetricMergeMetricOutputs`).
         """
-        ret = MetricOutputs(
+        ret = MetricMergeMetricOutputs(
             root=execution.output_file("."),
             self.column=[self.column.outputs(execution) for self.column in self.column],
         )
@@ -189,13 +189,13 @@ class MetricMergeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
-    metric: MetricOutputs
+    metric: typing.List[MetricMergeMetricOutputs]
     """Subcommand outputs"""
 
 
 def metric_merge(
     metric_out: InputPathType,
-    metric: list[Metric] = None,
+    metric: list[MetricMergeMetric] = None,
     runner: Runner = None,
 ) -> MetricMergeOutputs:
     """
@@ -238,13 +238,13 @@ def metric_merge(
 
 
 __all__ = [
-    "Column",
-    "ColumnOutputs",
     "METRIC_MERGE_METADATA",
-    "Metric",
+    "MetricMergeColumn",
+    "MetricMergeColumnOutputs",
+    "MetricMergeMetric",
+    "MetricMergeMetricOutputs",
     "MetricMergeOutputs",
-    "MetricOutputs",
-    "UpTo",
-    "UpToOutputs",
+    "MetricMergeUpTo",
+    "MetricMergeUpToOutputs",
     "metric_merge",
 ]

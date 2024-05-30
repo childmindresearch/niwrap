@@ -16,16 +16,16 @@ CONNECTOMESTATS_METADATA = Metadata(
 )
 
 
-class ColumnOutputs(typing.NamedTuple):
+class ConnectomestatsColumnOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Column.run(...)`.
+    Output object returned when calling `ConnectomestatsColumn.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Column:
+class ConnectomestatsColumn:
     """
     add a column to the design matrix corresponding to subject edge-wise values (note that the contrast matrix must include an additional column for each use of this option); the text file provided via this option should contain a file name for each subject
     """
@@ -56,7 +56,7 @@ class Column:
     def outputs(
         self,
         execution: Execution,
-    ) -> ColumnOutputs:
+    ) -> ConnectomestatsColumnOutputs:
         """
         Collect output file paths.
         
@@ -64,24 +64,24 @@ class Column:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ColumnOutputs`).
+            NamedTuple of outputs (described in `ConnectomestatsColumnOutputs`).
         """
-        ret = ColumnOutputs(
+        ret = ConnectomestatsColumnOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class ConnectomestatsConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `ConnectomestatsConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class ConnectomestatsConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -112,7 +112,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> ConnectomestatsConfigOutputs:
         """
         Collect output file paths.
         
@@ -120,9 +120,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `ConnectomestatsConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = ConnectomestatsConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -134,9 +134,9 @@ class ConnectomestatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    column: ColumnOutputs
+    column: typing.List[ConnectomestatsColumnOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[ConnectomestatsConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -163,14 +163,14 @@ def connectomestats(
     variance: InputPathType | None = None,
     ftests: InputPathType | None = None,
     fonly: bool = False,
-    column: list[Column] = None,
+    column: list[ConnectomestatsColumn] = None,
     threshold: float | int | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[ConnectomestatsConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -373,10 +373,10 @@ def connectomestats(
 
 __all__ = [
     "CONNECTOMESTATS_METADATA",
-    "Column",
-    "ColumnOutputs",
-    "Config",
-    "ConfigOutputs",
+    "ConnectomestatsColumn",
+    "ConnectomestatsColumnOutputs",
+    "ConnectomestatsConfig",
+    "ConnectomestatsConfigOutputs",
     "ConnectomestatsOutputs",
     "connectomestats",
 ]

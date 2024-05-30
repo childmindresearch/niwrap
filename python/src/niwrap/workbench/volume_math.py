@@ -16,16 +16,16 @@ VOLUME_MATH_METADATA = Metadata(
 )
 
 
-class VarOutputs(typing.NamedTuple):
+class VolumeMathVarOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Var.run(...)`.
+    Output object returned when calling `VolumeMathVar.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Var:
+class VolumeMathVar:
     """
     a volume file to use as a variable
     """
@@ -57,7 +57,7 @@ class Var:
     def outputs(
         self,
         execution: Execution,
-    ) -> VarOutputs:
+    ) -> VolumeMathVarOutputs:
         """
         Collect output file paths.
         
@@ -65,9 +65,9 @@ class Var:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VarOutputs`).
+            NamedTuple of outputs (described in `VolumeMathVarOutputs`).
         """
-        ret = VarOutputs(
+        ret = VolumeMathVarOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -81,7 +81,7 @@ class VolumeMathOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume"""
-    var: VarOutputs
+    var: typing.List[VolumeMathVarOutputs]
     """Subcommand outputs"""
 
 
@@ -89,7 +89,7 @@ def volume_math(
     expression: str,
     volume_out: InputPathType,
     opt_fixnan_replace: float | int | None = None,
-    var: list[Var] = None,
+    var: list[VolumeMathVar] = None,
     runner: Runner = None,
 ) -> VolumeMathOutputs:
     """
@@ -198,8 +198,8 @@ def volume_math(
 
 __all__ = [
     "VOLUME_MATH_METADATA",
-    "Var",
-    "VarOutputs",
     "VolumeMathOutputs",
+    "VolumeMathVar",
+    "VolumeMathVarOutputs",
     "volume_math",
 ]

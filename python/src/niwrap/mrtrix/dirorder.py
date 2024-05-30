@@ -16,16 +16,16 @@ DIRORDER_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class DirorderConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `DirorderConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class DirorderConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> DirorderConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `DirorderConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = DirorderConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class DirorderOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output directions file"""
-    config: ConfigOutputs
+    config: typing.List[DirorderConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -93,7 +93,7 @@ def dirorder(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[DirorderConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -169,9 +169,9 @@ def dirorder(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "DIRORDER_METADATA",
+    "DirorderConfig",
+    "DirorderConfigOutputs",
     "DirorderOutputs",
     "dirorder",
 ]

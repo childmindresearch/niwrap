@@ -7,17 +7,17 @@ import typing
 from styxdefs import *
 
 
-ATROPOS_METADATA = Metadata(
-    id="a3fe198eae3a480d2f2de7ff2c29bb1679f296c5",
-    name="Atropos",
+ANTS_ATROPOS_N4_SH_METADATA = Metadata(
+    id="191cabe1c7a08f0f36145d22f7b3007c3bd02ad8",
+    name="antsAtroposN4.sh",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
 )
 
 
-class AtroposOutputs(typing.NamedTuple):
+class AntsAtroposN4ShOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `atropos(...)`.
+    Output object returned when calling `ants_atropos_n4_sh(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -27,7 +27,7 @@ class AtroposOutputs(typing.NamedTuple):
     """A list of items which are file. No description provided."""
 
 
-def atropos(
+def ants_atropos_n4_sh(
     initialization: typing.Literal["Random", "Otsu", "KMeans", "PriorProbabilityImages", "PriorLabelImage"],
     intensity_images: list[InputPathType],
     mask_image: InputPathType,
@@ -52,9 +52,9 @@ def atropos(
     use_mixture_model_proportions: bool = False,
     use_random_seed: bool = True,
     runner: Runner = None,
-) -> AtroposOutputs:
+) -> AntsAtroposN4ShOutputs:
     """
-    Atropos by Nipype (interface).
+    antsAtroposN4.sh by Nipype (interface).
     
     
     A multivariate n-class segmentation algorithm.
@@ -94,7 +94,7 @@ def atropos(
         use_random_seed: Use random seed value over constant.
         runner: Command runner
     Returns:
-        NamedTuple of outputs (described in `AtroposOutputs`).
+        NamedTuple of outputs (described in `AntsAtroposN4ShOutputs`).
     """
     runner = runner or get_global_runner()
     if kmeans_init_centers is not None and not (1 <= len(kmeans_init_centers)): 
@@ -108,9 +108,9 @@ def atropos(
             "prior_image,\n"
             "prior_image_2"
         )
-    execution = runner.start_execution(ATROPOS_METADATA)
+    execution = runner.start_execution(ANTS_ATROPOS_N4_SH_METADATA)
     cargs = []
-    cargs.append("Atropos")
+    cargs.append("antsAtroposN4.sh")
     if convergence_threshold is not None:
         cargs.append(str(convergence_threshold))
     if dimension is not None:
@@ -152,7 +152,7 @@ def atropos(
         cargs.append("--use_mixture_model_proportions")
     if use_random_seed:
         cargs.append("--use-random-seed")
-    ret = AtroposOutputs(
+    ret = AntsAtroposN4ShOutputs(
         root=execution.output_file("."),
         classified_image=execution.output_file(f"classified_image", optional=True),
         posteriors=execution.output_file(f"posteriors", optional=True),
@@ -162,7 +162,7 @@ def atropos(
 
 
 __all__ = [
-    "ATROPOS_METADATA",
-    "AtroposOutputs",
-    "atropos",
+    "ANTS_ATROPOS_N4_SH_METADATA",
+    "AntsAtroposN4ShOutputs",
+    "ants_atropos_n4_sh",
 ]

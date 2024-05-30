@@ -16,9 +16,9 @@ CONVERT_MATRIX4_TO_MATRIX2_METADATA = Metadata(
 )
 
 
-class IndividualFibersOutputs(typing.NamedTuple):
+class ConvertMatrix4ToMatrix2IndividualFibersOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `IndividualFibers.run(...)`.
+    Output object returned when calling `ConvertMatrix4ToMatrix2IndividualFibers.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -31,7 +31,7 @@ class IndividualFibersOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class IndividualFibers:
+class ConvertMatrix4ToMatrix2IndividualFibers:
     """
     output files for each fiber direction
     """
@@ -64,7 +64,7 @@ class IndividualFibers:
     def outputs(
         self,
         execution: Execution,
-    ) -> IndividualFibersOutputs:
+    ) -> ConvertMatrix4ToMatrix2IndividualFibersOutputs:
         """
         Collect output file paths.
         
@@ -72,9 +72,9 @@ class IndividualFibers:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `IndividualFibersOutputs`).
+            NamedTuple of outputs (described in `ConvertMatrix4ToMatrix2IndividualFibersOutputs`).
         """
-        ret = IndividualFibersOutputs(
+        ret = ConvertMatrix4ToMatrix2IndividualFibersOutputs(
             root=execution.output_file("."),
             fiber_1=execution.output_file(f"{pathlib.Path(self.fiber_1).name}"),
             fiber_2=execution.output_file(f"{pathlib.Path(self.fiber_2).name}"),
@@ -93,7 +93,7 @@ class ConvertMatrix4ToMatrix2Outputs(typing.NamedTuple):
     """the total fiber counts, as a cifti file"""
     distance_out: OutputPathType
     """the distances, as a cifti file"""
-    individual_fibers: IndividualFibersOutputs
+    individual_fibers: ConvertMatrix4ToMatrix2IndividualFibersOutputs
     """Subcommand outputs"""
 
 
@@ -102,7 +102,7 @@ def convert_matrix4_to_matrix2(
     counts_out: InputPathType,
     distance_out: InputPathType,
     opt_distances: bool = False,
-    individual_fibers: IndividualFibers | None = None,
+    individual_fibers: ConvertMatrix4ToMatrix2IndividualFibers | None = None,
     runner: Runner = None,
 ) -> ConvertMatrix4ToMatrix2Outputs:
     """
@@ -150,8 +150,8 @@ def convert_matrix4_to_matrix2(
 
 __all__ = [
     "CONVERT_MATRIX4_TO_MATRIX2_METADATA",
+    "ConvertMatrix4ToMatrix2IndividualFibers",
+    "ConvertMatrix4ToMatrix2IndividualFibersOutputs",
     "ConvertMatrix4ToMatrix2Outputs",
-    "IndividualFibers",
-    "IndividualFibersOutputs",
     "convert_matrix4_to_matrix2",
 ]

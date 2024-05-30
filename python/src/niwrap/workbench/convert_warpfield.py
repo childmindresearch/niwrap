@@ -16,16 +16,16 @@ CONVERT_WARPFIELD_METADATA = Metadata(
 )
 
 
-class FromWorldOutputs(typing.NamedTuple):
+class ConvertWarpfieldFromWorldOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `FromWorld.run(...)`.
+    Output object returned when calling `ConvertWarpfieldFromWorld.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class FromWorld:
+class ConvertWarpfieldFromWorld:
     """
     input is a NIFTI 'world' warpfield
     """
@@ -53,7 +53,7 @@ class FromWorld:
     def outputs(
         self,
         execution: Execution,
-    ) -> FromWorldOutputs:
+    ) -> ConvertWarpfieldFromWorldOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class FromWorld:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FromWorldOutputs`).
+            NamedTuple of outputs (described in `ConvertWarpfieldFromWorldOutputs`).
         """
-        ret = FromWorldOutputs(
+        ret = ConvertWarpfieldFromWorldOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FromFnirtOutputs(typing.NamedTuple):
+class ConvertWarpfieldFromFnirtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `FromFnirt.run(...)`.
+    Output object returned when calling `ConvertWarpfieldFromFnirt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class FromFnirt:
+class ConvertWarpfieldFromFnirt:
     """
     input is a fnirt warpfield
     """
@@ -106,7 +106,7 @@ class FromFnirt:
     def outputs(
         self,
         execution: Execution,
-    ) -> FromFnirtOutputs:
+    ) -> ConvertWarpfieldFromFnirtOutputs:
         """
         Collect output file paths.
         
@@ -114,24 +114,24 @@ class FromFnirt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FromFnirtOutputs`).
+            NamedTuple of outputs (described in `ConvertWarpfieldFromFnirtOutputs`).
         """
-        ret = FromFnirtOutputs(
+        ret = ConvertWarpfieldFromFnirtOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ToFnirtOutputs(typing.NamedTuple):
+class ConvertWarpfieldToFnirtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ToFnirt.run(...)`.
+    Output object returned when calling `ConvertWarpfieldToFnirt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ToFnirt:
+class ConvertWarpfieldToFnirt:
     """
     write output as a fnirt warpfield
     """
@@ -155,7 +155,7 @@ class ToFnirt:
     def outputs(
         self,
         execution: Execution,
-    ) -> ToFnirtOutputs:
+    ) -> ConvertWarpfieldToFnirtOutputs:
         """
         Collect output file paths.
         
@@ -163,9 +163,9 @@ class ToFnirt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ToFnirtOutputs`).
+            NamedTuple of outputs (described in `ConvertWarpfieldToFnirtOutputs`).
         """
-        ret = ToFnirtOutputs(
+        ret = ConvertWarpfieldToFnirtOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -177,21 +177,21 @@ class ConvertWarpfieldOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    from_world: FromWorldOutputs
+    from_world: ConvertWarpfieldFromWorldOutputs
     """Subcommand outputs"""
-    from_fnirt: FromFnirtOutputs
+    from_fnirt: ConvertWarpfieldFromFnirtOutputs
     """Subcommand outputs"""
-    to_fnirt: ToFnirtOutputs
+    to_fnirt: typing.List[ConvertWarpfieldToFnirtOutputs]
     """Subcommand outputs"""
 
 
 def convert_warpfield(
-    from_world: FromWorld | None = None,
+    from_world: ConvertWarpfieldFromWorld | None = None,
     opt_from_itk_input: str | None = None,
-    from_fnirt: FromFnirt | None = None,
+    from_fnirt: ConvertWarpfieldFromFnirt | None = None,
     opt_to_world_output: str | None = None,
     opt_to_itk_output: str | None = None,
-    to_fnirt: list[ToFnirt] = None,
+    to_fnirt: list[ConvertWarpfieldToFnirt] = None,
     runner: Runner = None,
 ) -> ConvertWarpfieldOutputs:
     """
@@ -254,12 +254,12 @@ def convert_warpfield(
 
 __all__ = [
     "CONVERT_WARPFIELD_METADATA",
+    "ConvertWarpfieldFromFnirt",
+    "ConvertWarpfieldFromFnirtOutputs",
+    "ConvertWarpfieldFromWorld",
+    "ConvertWarpfieldFromWorldOutputs",
     "ConvertWarpfieldOutputs",
-    "FromFnirt",
-    "FromFnirtOutputs",
-    "FromWorld",
-    "FromWorldOutputs",
-    "ToFnirt",
-    "ToFnirtOutputs",
+    "ConvertWarpfieldToFnirt",
+    "ConvertWarpfieldToFnirtOutputs",
     "convert_warpfield",
 ]

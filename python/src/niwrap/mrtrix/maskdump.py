@@ -16,16 +16,16 @@ MASKDUMP_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MaskdumpConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MaskdumpConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MaskdumpConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MaskdumpConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MaskdumpConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MaskdumpConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class MaskdumpOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType | None
     """the (optional) output text file."""
-    config: ConfigOutputs
+    config: typing.List[MaskdumpConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -92,7 +92,7 @@ def maskdump(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MaskdumpConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -164,9 +164,9 @@ def maskdump(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MASKDUMP_METADATA",
+    "MaskdumpConfig",
+    "MaskdumpConfigOutputs",
     "MaskdumpOutputs",
     "maskdump",
 ]

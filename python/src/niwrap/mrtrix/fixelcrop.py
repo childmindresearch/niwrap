@@ -16,16 +16,16 @@ FIXELCROP_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class FixelcropConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `FixelcropConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class FixelcropConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> FixelcropConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `FixelcropConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = FixelcropConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class FixelcropOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_fixel_directory: OutputPathType
     """the output directory to store the cropped directions and data files"""
-    config: ConfigOutputs
+    config: typing.List[FixelcropConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -93,7 +93,7 @@ def fixelcrop(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[FixelcropConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -170,9 +170,9 @@ def fixelcrop(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "FIXELCROP_METADATA",
+    "FixelcropConfig",
+    "FixelcropConfigOutputs",
     "FixelcropOutputs",
     "fixelcrop",
 ]

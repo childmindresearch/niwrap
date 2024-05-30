@@ -16,16 +16,16 @@ MREDIT_METADATA = Metadata(
 )
 
 
-class PlaneOutputs(typing.NamedTuple):
+class MreditPlaneOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Plane.run(...)`.
+    Output object returned when calling `MreditPlane.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Plane:
+class MreditPlane:
     """
     fill one or more planes on a particular image axis
     """
@@ -59,7 +59,7 @@ class Plane:
     def outputs(
         self,
         execution: Execution,
-    ) -> PlaneOutputs:
+    ) -> MreditPlaneOutputs:
         """
         Collect output file paths.
         
@@ -67,24 +67,24 @@ class Plane:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PlaneOutputs`).
+            NamedTuple of outputs (described in `MreditPlaneOutputs`).
         """
-        ret = PlaneOutputs(
+        ret = MreditPlaneOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SphereOutputs(typing.NamedTuple):
+class MreditSphereOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Sphere.run(...)`.
+    Output object returned when calling `MreditSphere.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Sphere:
+class MreditSphere:
     """
     draw a sphere with radius in mm
     """
@@ -118,7 +118,7 @@ class Sphere:
     def outputs(
         self,
         execution: Execution,
-    ) -> SphereOutputs:
+    ) -> MreditSphereOutputs:
         """
         Collect output file paths.
         
@@ -126,24 +126,24 @@ class Sphere:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SphereOutputs`).
+            NamedTuple of outputs (described in `MreditSphereOutputs`).
         """
-        ret = SphereOutputs(
+        ret = MreditSphereOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class VoxelOutputs(typing.NamedTuple):
+class MreditVoxelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Voxel.run(...)`.
+    Output object returned when calling `MreditVoxel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Voxel:
+class MreditVoxel:
     """
     change the image value within a single voxel
     """
@@ -174,7 +174,7 @@ class Voxel:
     def outputs(
         self,
         execution: Execution,
-    ) -> VoxelOutputs:
+    ) -> MreditVoxelOutputs:
         """
         Collect output file paths.
         
@@ -182,24 +182,24 @@ class Voxel:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VoxelOutputs`).
+            NamedTuple of outputs (described in `MreditVoxelOutputs`).
         """
-        ret = VoxelOutputs(
+        ret = MreditVoxelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MreditConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MreditConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MreditConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -230,7 +230,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MreditConfigOutputs:
         """
         Collect output file paths.
         
@@ -238,9 +238,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MreditConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MreditConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -254,29 +254,29 @@ class MreditOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType | None
     """the (optional) output image"""
-    plane: PlaneOutputs
+    plane: typing.List[MreditPlaneOutputs]
     """Subcommand outputs"""
-    sphere: SphereOutputs
+    sphere: typing.List[MreditSphereOutputs]
     """Subcommand outputs"""
-    voxel: VoxelOutputs
+    voxel: typing.List[MreditVoxelOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[MreditConfigOutputs]
     """Subcommand outputs"""
 
 
 def mredit(
     input_: InputPathType,
     output: InputPathType | None = None,
-    plane: list[Plane] = None,
-    sphere: list[Sphere] = None,
-    voxel: list[Voxel] = None,
+    plane: list[MreditPlane] = None,
+    sphere: list[MreditSphere] = None,
+    voxel: list[MreditVoxel] = None,
     scanner: bool = False,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MreditConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -367,15 +367,15 @@ def mredit(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MREDIT_METADATA",
+    "MreditConfig",
+    "MreditConfigOutputs",
     "MreditOutputs",
-    "Plane",
-    "PlaneOutputs",
-    "Sphere",
-    "SphereOutputs",
-    "Voxel",
-    "VoxelOutputs",
+    "MreditPlane",
+    "MreditPlaneOutputs",
+    "MreditSphere",
+    "MreditSphereOutputs",
+    "MreditVoxel",
+    "MreditVoxelOutputs",
     "mredit",
 ]

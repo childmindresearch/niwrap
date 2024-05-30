@@ -16,16 +16,16 @@ METRIC_SMOOTHING_METADATA = Metadata(
 )
 
 
-class RoiOutputs(typing.NamedTuple):
+class MetricSmoothingRoiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Roi.run(...)`.
+    Output object returned when calling `MetricSmoothingRoi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Roi:
+class MetricSmoothingRoi:
     """
     select a region of interest to smooth
     """
@@ -53,7 +53,7 @@ class Roi:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiOutputs:
+    ) -> MetricSmoothingRoiOutputs:
         """
         Collect output file paths.
         
@@ -61,9 +61,9 @@ class Roi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiOutputs`).
+            NamedTuple of outputs (described in `MetricSmoothingRoiOutputs`).
         """
-        ret = RoiOutputs(
+        ret = MetricSmoothingRoiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -77,7 +77,7 @@ class MetricSmoothingOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
-    roi: RoiOutputs
+    roi: MetricSmoothingRoiOutputs
     """Subcommand outputs"""
 
 
@@ -87,7 +87,7 @@ def metric_smoothing(
     smoothing_kernel: float | int,
     metric_out: InputPathType,
     opt_fwhm: bool = False,
-    roi: Roi | None = None,
+    roi: MetricSmoothingRoi | None = None,
     opt_fix_zeros: bool = False,
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
@@ -195,7 +195,7 @@ def metric_smoothing(
 __all__ = [
     "METRIC_SMOOTHING_METADATA",
     "MetricSmoothingOutputs",
-    "Roi",
-    "RoiOutputs",
+    "MetricSmoothingRoi",
+    "MetricSmoothingRoiOutputs",
     "metric_smoothing",
 ]

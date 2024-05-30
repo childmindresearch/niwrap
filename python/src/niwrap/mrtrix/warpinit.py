@@ -16,16 +16,16 @@ WARPINIT_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class WarpinitConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `WarpinitConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class WarpinitConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> WarpinitConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `WarpinitConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = WarpinitConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class WarpinitOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     warp: OutputPathType
     """the output warp image."""
-    config: ConfigOutputs
+    config: typing.List[WarpinitConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -92,7 +92,7 @@ def warpinit(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[WarpinitConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -174,9 +174,9 @@ def warpinit(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "WARPINIT_METADATA",
+    "WarpinitConfig",
+    "WarpinitConfigOutputs",
     "WarpinitOutputs",
     "warpinit",
 ]

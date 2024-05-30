@@ -16,16 +16,16 @@ ANNOTATION_RESAMPLE_METADATA = Metadata(
 )
 
 
-class SurfacePairOutputs(typing.NamedTuple):
+class AnnotationResampleSurfacePairOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SurfacePair.run(...)`.
+    Output object returned when calling `AnnotationResampleSurfacePair.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SurfacePair:
+class AnnotationResampleSurfacePair:
     """
     pair of surfaces for resampling surface annotations for one structure
     """
@@ -49,7 +49,7 @@ class SurfacePair:
     def outputs(
         self,
         execution: Execution,
-    ) -> SurfacePairOutputs:
+    ) -> AnnotationResampleSurfacePairOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class SurfacePair:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SurfacePairOutputs`).
+            NamedTuple of outputs (described in `AnnotationResampleSurfacePairOutputs`).
         """
-        ret = SurfacePairOutputs(
+        ret = AnnotationResampleSurfacePairOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -71,14 +71,14 @@ class AnnotationResampleOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    surface_pair: SurfacePairOutputs
+    surface_pair: typing.List[AnnotationResampleSurfacePairOutputs]
     """Subcommand outputs"""
 
 
 def annotation_resample(
     annotation_in: InputPathType,
     annotation_out: str,
-    surface_pair: list[SurfacePair] = None,
+    surface_pair: list[AnnotationResampleSurfacePair] = None,
     runner: Runner = None,
 ) -> AnnotationResampleOutputs:
     """
@@ -121,7 +121,7 @@ def annotation_resample(
 __all__ = [
     "ANNOTATION_RESAMPLE_METADATA",
     "AnnotationResampleOutputs",
-    "SurfacePair",
-    "SurfacePairOutputs",
+    "AnnotationResampleSurfacePair",
+    "AnnotationResampleSurfacePairOutputs",
     "annotation_resample",
 ]

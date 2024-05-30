@@ -16,16 +16,16 @@ FOCI_RESAMPLE_METADATA = Metadata(
 )
 
 
-class LeftSurfacesOutputs(typing.NamedTuple):
+class FociResampleLeftSurfacesOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftSurfaces.run(...)`.
+    Output object returned when calling `FociResampleLeftSurfaces.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftSurfaces:
+class FociResampleLeftSurfaces:
     """
     the left surfaces for resampling
     """
@@ -49,7 +49,7 @@ class LeftSurfaces:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftSurfacesOutputs:
+    ) -> FociResampleLeftSurfacesOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class LeftSurfaces:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftSurfacesOutputs`).
+            NamedTuple of outputs (described in `FociResampleLeftSurfacesOutputs`).
         """
-        ret = LeftSurfacesOutputs(
+        ret = FociResampleLeftSurfacesOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightSurfacesOutputs(typing.NamedTuple):
+class FociResampleRightSurfacesOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightSurfaces.run(...)`.
+    Output object returned when calling `FociResampleRightSurfaces.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightSurfaces:
+class FociResampleRightSurfaces:
     """
     the right surfaces for resampling
     """
@@ -98,7 +98,7 @@ class RightSurfaces:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightSurfacesOutputs:
+    ) -> FociResampleRightSurfacesOutputs:
         """
         Collect output file paths.
         
@@ -106,24 +106,24 @@ class RightSurfaces:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightSurfacesOutputs`).
+            NamedTuple of outputs (described in `FociResampleRightSurfacesOutputs`).
         """
-        ret = RightSurfacesOutputs(
+        ret = FociResampleRightSurfacesOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumSurfacesOutputs(typing.NamedTuple):
+class FociResampleCerebellumSurfacesOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumSurfaces.run(...)`.
+    Output object returned when calling `FociResampleCerebellumSurfaces.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumSurfaces:
+class FociResampleCerebellumSurfaces:
     """
     the cerebellum surfaces for resampling
     """
@@ -147,7 +147,7 @@ class CerebellumSurfaces:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumSurfacesOutputs:
+    ) -> FociResampleCerebellumSurfacesOutputs:
         """
         Collect output file paths.
         
@@ -155,9 +155,9 @@ class CerebellumSurfaces:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumSurfacesOutputs`).
+            NamedTuple of outputs (described in `FociResampleCerebellumSurfacesOutputs`).
         """
-        ret = CerebellumSurfacesOutputs(
+        ret = FociResampleCerebellumSurfacesOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -171,20 +171,20 @@ class FociResampleOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     foci_out: OutputPathType
     """the output foci file"""
-    left_surfaces: LeftSurfacesOutputs
+    left_surfaces: FociResampleLeftSurfacesOutputs
     """Subcommand outputs"""
-    right_surfaces: RightSurfacesOutputs
+    right_surfaces: FociResampleRightSurfacesOutputs
     """Subcommand outputs"""
-    cerebellum_surfaces: CerebellumSurfacesOutputs
+    cerebellum_surfaces: FociResampleCerebellumSurfacesOutputs
     """Subcommand outputs"""
 
 
 def foci_resample(
     foci_in: InputPathType,
     foci_out: InputPathType,
-    left_surfaces: LeftSurfaces | None = None,
-    right_surfaces: RightSurfaces | None = None,
-    cerebellum_surfaces: CerebellumSurfaces | None = None,
+    left_surfaces: FociResampleLeftSurfaces | None = None,
+    right_surfaces: FociResampleRightSurfaces | None = None,
+    cerebellum_surfaces: FociResampleCerebellumSurfaces | None = None,
     opt_discard_distance_from_surface: bool = False,
     opt_restore_xyz: bool = False,
     runner: Runner = None,
@@ -243,13 +243,13 @@ def foci_resample(
 
 
 __all__ = [
-    "CerebellumSurfaces",
-    "CerebellumSurfacesOutputs",
     "FOCI_RESAMPLE_METADATA",
+    "FociResampleCerebellumSurfaces",
+    "FociResampleCerebellumSurfacesOutputs",
+    "FociResampleLeftSurfaces",
+    "FociResampleLeftSurfacesOutputs",
     "FociResampleOutputs",
-    "LeftSurfaces",
-    "LeftSurfacesOutputs",
-    "RightSurfaces",
-    "RightSurfacesOutputs",
+    "FociResampleRightSurfaces",
+    "FociResampleRightSurfacesOutputs",
     "foci_resample",
 ]

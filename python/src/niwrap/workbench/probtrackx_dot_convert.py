@@ -16,16 +16,16 @@ PROBTRACKX_DOT_CONVERT_METADATA = Metadata(
 )
 
 
-class RowVoxelsOutputs(typing.NamedTuple):
+class ProbtrackxDotConvertRowVoxelsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RowVoxels.run(...)`.
+    Output object returned when calling `ProbtrackxDotConvertRowVoxels.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RowVoxels:
+class ProbtrackxDotConvertRowVoxels:
     """
     the output mapping along a row will be voxels
     """
@@ -49,7 +49,7 @@ class RowVoxels:
     def outputs(
         self,
         execution: Execution,
-    ) -> RowVoxelsOutputs:
+    ) -> ProbtrackxDotConvertRowVoxelsOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class RowVoxels:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RowVoxelsOutputs`).
+            NamedTuple of outputs (described in `ProbtrackxDotConvertRowVoxelsOutputs`).
         """
-        ret = RowVoxelsOutputs(
+        ret = ProbtrackxDotConvertRowVoxelsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RowCiftiOutputs(typing.NamedTuple):
+class ProbtrackxDotConvertRowCiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RowCifti.run(...)`.
+    Output object returned when calling `ProbtrackxDotConvertRowCifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RowCifti:
+class ProbtrackxDotConvertRowCifti:
     """
     take the mapping along a row from a cifti file
     """
@@ -98,7 +98,7 @@ class RowCifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> RowCiftiOutputs:
+    ) -> ProbtrackxDotConvertRowCiftiOutputs:
         """
         Collect output file paths.
         
@@ -106,24 +106,24 @@ class RowCifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RowCiftiOutputs`).
+            NamedTuple of outputs (described in `ProbtrackxDotConvertRowCiftiOutputs`).
         """
-        ret = RowCiftiOutputs(
+        ret = ProbtrackxDotConvertRowCiftiOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ColVoxelsOutputs(typing.NamedTuple):
+class ProbtrackxDotConvertColVoxelsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ColVoxels.run(...)`.
+    Output object returned when calling `ProbtrackxDotConvertColVoxels.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ColVoxels:
+class ProbtrackxDotConvertColVoxels:
     """
     the output mapping along a column will be voxels
     """
@@ -147,7 +147,7 @@ class ColVoxels:
     def outputs(
         self,
         execution: Execution,
-    ) -> ColVoxelsOutputs:
+    ) -> ProbtrackxDotConvertColVoxelsOutputs:
         """
         Collect output file paths.
         
@@ -155,24 +155,24 @@ class ColVoxels:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ColVoxelsOutputs`).
+            NamedTuple of outputs (described in `ProbtrackxDotConvertColVoxelsOutputs`).
         """
-        ret = ColVoxelsOutputs(
+        ret = ProbtrackxDotConvertColVoxelsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ColCiftiOutputs(typing.NamedTuple):
+class ProbtrackxDotConvertColCiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ColCifti.run(...)`.
+    Output object returned when calling `ProbtrackxDotConvertColCifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ColCifti:
+class ProbtrackxDotConvertColCifti:
     """
     take the mapping along a column from a cifti file
     """
@@ -196,7 +196,7 @@ class ColCifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> ColCiftiOutputs:
+    ) -> ProbtrackxDotConvertColCiftiOutputs:
         """
         Collect output file paths.
         
@@ -204,9 +204,9 @@ class ColCifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ColCiftiOutputs`).
+            NamedTuple of outputs (described in `ProbtrackxDotConvertColCiftiOutputs`).
         """
-        ret = ColCiftiOutputs(
+        ret = ProbtrackxDotConvertColCiftiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -220,25 +220,25 @@ class ProbtrackxDotConvertOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti file"""
-    row_voxels: RowVoxelsOutputs
+    row_voxels: ProbtrackxDotConvertRowVoxelsOutputs
     """Subcommand outputs"""
-    row_cifti: RowCiftiOutputs
+    row_cifti: ProbtrackxDotConvertRowCiftiOutputs
     """Subcommand outputs"""
-    col_voxels: ColVoxelsOutputs
+    col_voxels: ProbtrackxDotConvertColVoxelsOutputs
     """Subcommand outputs"""
-    col_cifti: ColCiftiOutputs
+    col_cifti: ProbtrackxDotConvertColCiftiOutputs
     """Subcommand outputs"""
 
 
 def probtrackx_dot_convert(
     dot_file: str,
     cifti_out: InputPathType,
-    row_voxels: RowVoxels | None = None,
+    row_voxels: ProbtrackxDotConvertRowVoxels | None = None,
     opt_row_surface_roi_metric: InputPathType | None = None,
-    row_cifti: RowCifti | None = None,
-    col_voxels: ColVoxels | None = None,
+    row_cifti: ProbtrackxDotConvertRowCifti | None = None,
+    col_voxels: ProbtrackxDotConvertColVoxels | None = None,
     opt_col_surface_roi_metric: InputPathType | None = None,
-    col_cifti: ColCifti | None = None,
+    col_cifti: ProbtrackxDotConvertColCifti | None = None,
     opt_transpose: bool = False,
     opt_make_symmetric: bool = False,
     runner: Runner = None,
@@ -349,15 +349,15 @@ def probtrackx_dot_convert(
 
 
 __all__ = [
-    "ColCifti",
-    "ColCiftiOutputs",
-    "ColVoxels",
-    "ColVoxelsOutputs",
     "PROBTRACKX_DOT_CONVERT_METADATA",
+    "ProbtrackxDotConvertColCifti",
+    "ProbtrackxDotConvertColCiftiOutputs",
+    "ProbtrackxDotConvertColVoxels",
+    "ProbtrackxDotConvertColVoxelsOutputs",
     "ProbtrackxDotConvertOutputs",
-    "RowCifti",
-    "RowCiftiOutputs",
-    "RowVoxels",
-    "RowVoxelsOutputs",
+    "ProbtrackxDotConvertRowCifti",
+    "ProbtrackxDotConvertRowCiftiOutputs",
+    "ProbtrackxDotConvertRowVoxels",
+    "ProbtrackxDotConvertRowVoxelsOutputs",
     "probtrackx_dot_convert",
 ]

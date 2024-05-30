@@ -16,16 +16,16 @@ CIFTI_CORRELATION_METADATA = Metadata(
 )
 
 
-class RoiOverrideOutputs(typing.NamedTuple):
+class CiftiCorrelationRoiOverrideOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RoiOverride.run(...)`.
+    Output object returned when calling `CiftiCorrelationRoiOverride.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RoiOverride:
+class CiftiCorrelationRoiOverride:
     """
     perform correlation from a subset of rows to all rows
     """
@@ -69,7 +69,7 @@ class RoiOverride:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiOverrideOutputs:
+    ) -> CiftiCorrelationRoiOverrideOutputs:
         """
         Collect output file paths.
         
@@ -77,9 +77,9 @@ class RoiOverride:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiOverrideOutputs`).
+            NamedTuple of outputs (described in `CiftiCorrelationRoiOverrideOutputs`).
         """
-        ret = RoiOverrideOutputs(
+        ret = CiftiCorrelationRoiOverrideOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -93,14 +93,14 @@ class CiftiCorrelationOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti file"""
-    roi_override: RoiOverrideOutputs
+    roi_override: CiftiCorrelationRoiOverrideOutputs
     """Subcommand outputs"""
 
 
 def cifti_correlation(
     cifti: InputPathType,
     cifti_out: InputPathType,
-    roi_override: RoiOverride | None = None,
+    roi_override: CiftiCorrelationRoiOverride | None = None,
     opt_weights_weight_file: str | None = None,
     opt_fisher_z: bool = False,
     opt_no_demean: bool = False,
@@ -174,7 +174,7 @@ def cifti_correlation(
 __all__ = [
     "CIFTI_CORRELATION_METADATA",
     "CiftiCorrelationOutputs",
-    "RoiOverride",
-    "RoiOverrideOutputs",
+    "CiftiCorrelationRoiOverride",
+    "CiftiCorrelationRoiOverrideOutputs",
     "cifti_correlation",
 ]

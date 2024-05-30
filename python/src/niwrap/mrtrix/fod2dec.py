@@ -16,16 +16,16 @@ FOD2DEC_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Fod2decConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Fod2decConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Fod2decConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Fod2decConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Fod2decConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Fod2decConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class Fod2decOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """The output DEC image (weighted RGB triplets)."""
-    config: ConfigOutputs
+    config: typing.List[Fod2decConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -99,7 +99,7 @@ def fod2dec(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Fod2decConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -219,9 +219,9 @@ def fod2dec(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "FOD2DEC_METADATA",
+    "Fod2decConfig",
+    "Fod2decConfigOutputs",
     "Fod2decOutputs",
     "fod2dec",
 ]

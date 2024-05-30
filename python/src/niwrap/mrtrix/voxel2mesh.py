@@ -16,16 +16,16 @@ VOXEL2MESH_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Voxel2meshConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Voxel2meshConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Voxel2meshConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Voxel2meshConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Voxel2meshConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Voxel2meshConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class Voxel2meshOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output mesh file."""
-    config: ConfigOutputs
+    config: typing.List[Voxel2meshConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -94,7 +94,7 @@ def voxel2mesh(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Voxel2meshConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -181,9 +181,9 @@ def voxel2mesh(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "VOXEL2MESH_METADATA",
+    "Voxel2meshConfig",
+    "Voxel2meshConfigOutputs",
     "Voxel2meshOutputs",
     "voxel2mesh",
 ]

@@ -16,16 +16,16 @@ METRIC_REDUCE_METADATA = Metadata(
 )
 
 
-class ExcludeOutliersOutputs(typing.NamedTuple):
+class MetricReduceExcludeOutliersOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ExcludeOutliers.run(...)`.
+    Output object returned when calling `MetricReduceExcludeOutliers.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ExcludeOutliers:
+class MetricReduceExcludeOutliers:
     """
     exclude non-numeric values and outliers by standard deviation
     """
@@ -49,7 +49,7 @@ class ExcludeOutliers:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExcludeOutliersOutputs:
+    ) -> MetricReduceExcludeOutliersOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class ExcludeOutliers:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExcludeOutliersOutputs`).
+            NamedTuple of outputs (described in `MetricReduceExcludeOutliersOutputs`).
         """
-        ret = ExcludeOutliersOutputs(
+        ret = MetricReduceExcludeOutliersOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -73,7 +73,7 @@ class MetricReduceOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
-    exclude_outliers: ExcludeOutliersOutputs
+    exclude_outliers: MetricReduceExcludeOutliersOutputs
     """Subcommand outputs"""
 
 
@@ -81,7 +81,7 @@ def metric_reduce(
     metric_in: InputPathType,
     operation: str,
     metric_out: InputPathType,
-    exclude_outliers: ExcludeOutliers | None = None,
+    exclude_outliers: MetricReduceExcludeOutliers | None = None,
     opt_only_numeric: bool = False,
     runner: Runner = None,
 ) -> MetricReduceOutputs:
@@ -145,9 +145,9 @@ def metric_reduce(
 
 
 __all__ = [
-    "ExcludeOutliers",
-    "ExcludeOutliersOutputs",
     "METRIC_REDUCE_METADATA",
+    "MetricReduceExcludeOutliers",
+    "MetricReduceExcludeOutliersOutputs",
     "MetricReduceOutputs",
     "metric_reduce",
 ]

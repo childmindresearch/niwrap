@@ -16,16 +16,16 @@ CIFTI_ERODE_METADATA = Metadata(
 )
 
 
-class LeftSurfaceOutputs(typing.NamedTuple):
+class CiftiErodeLeftSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftSurface.run(...)`.
+    Output object returned when calling `CiftiErodeLeftSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftSurface:
+class CiftiErodeLeftSurface:
     """
     specify the left surface to use
     """
@@ -54,7 +54,7 @@ class LeftSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftSurfaceOutputs:
+    ) -> CiftiErodeLeftSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -62,24 +62,24 @@ class LeftSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiErodeLeftSurfaceOutputs`).
         """
-        ret = LeftSurfaceOutputs(
+        ret = CiftiErodeLeftSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightSurfaceOutputs(typing.NamedTuple):
+class CiftiErodeRightSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightSurface.run(...)`.
+    Output object returned when calling `CiftiErodeRightSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightSurface:
+class CiftiErodeRightSurface:
     """
     specify the right surface to use
     """
@@ -108,7 +108,7 @@ class RightSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightSurfaceOutputs:
+    ) -> CiftiErodeRightSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -116,24 +116,24 @@ class RightSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiErodeRightSurfaceOutputs`).
         """
-        ret = RightSurfaceOutputs(
+        ret = CiftiErodeRightSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumSurfaceOutputs(typing.NamedTuple):
+class CiftiErodeCerebellumSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumSurface.run(...)`.
+    Output object returned when calling `CiftiErodeCerebellumSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumSurface:
+class CiftiErodeCerebellumSurface:
     """
     specify the cerebellum surface to use
     """
@@ -162,7 +162,7 @@ class CerebellumSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumSurfaceOutputs:
+    ) -> CiftiErodeCerebellumSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -170,9 +170,9 @@ class CerebellumSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiErodeCerebellumSurfaceOutputs`).
         """
-        ret = CerebellumSurfaceOutputs(
+        ret = CiftiErodeCerebellumSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -186,11 +186,11 @@ class CiftiErodeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    left_surface: LeftSurfaceOutputs
+    left_surface: CiftiErodeLeftSurfaceOutputs
     """Subcommand outputs"""
-    right_surface: RightSurfaceOutputs
+    right_surface: CiftiErodeRightSurfaceOutputs
     """Subcommand outputs"""
-    cerebellum_surface: CerebellumSurfaceOutputs
+    cerebellum_surface: CiftiErodeCerebellumSurfaceOutputs
     """Subcommand outputs"""
 
 
@@ -200,9 +200,9 @@ def cifti_erode(
     surface_distance: float | int,
     volume_distance: float | int,
     cifti_out: InputPathType,
-    left_surface: LeftSurface | None = None,
-    right_surface: RightSurface | None = None,
-    cerebellum_surface: CerebellumSurface | None = None,
+    left_surface: CiftiErodeLeftSurface | None = None,
+    right_surface: CiftiErodeRightSurface | None = None,
+    cerebellum_surface: CiftiErodeCerebellumSurface | None = None,
     opt_merged_volume: bool = False,
     runner: Runner = None,
 ) -> CiftiErodeOutputs:
@@ -266,12 +266,12 @@ def cifti_erode(
 
 __all__ = [
     "CIFTI_ERODE_METADATA",
-    "CerebellumSurface",
-    "CerebellumSurfaceOutputs",
+    "CiftiErodeCerebellumSurface",
+    "CiftiErodeCerebellumSurfaceOutputs",
+    "CiftiErodeLeftSurface",
+    "CiftiErodeLeftSurfaceOutputs",
     "CiftiErodeOutputs",
-    "LeftSurface",
-    "LeftSurfaceOutputs",
-    "RightSurface",
-    "RightSurfaceOutputs",
+    "CiftiErodeRightSurface",
+    "CiftiErodeRightSurfaceOutputs",
     "cifti_erode",
 ]

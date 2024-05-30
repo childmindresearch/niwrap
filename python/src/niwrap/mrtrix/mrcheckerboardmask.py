@@ -16,16 +16,16 @@ MRCHECKERBOARDMASK_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrcheckerboardmaskConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrcheckerboardmaskConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrcheckerboardmaskConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrcheckerboardmaskConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrcheckerboardmaskConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrcheckerboardmaskConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class MrcheckerboardmaskOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output binary image mask."""
-    config: ConfigOutputs
+    config: typing.List[MrcheckerboardmaskConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -95,7 +95,7 @@ def mrcheckerboardmask(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrcheckerboardmaskConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -174,9 +174,9 @@ def mrcheckerboardmask(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MRCHECKERBOARDMASK_METADATA",
+    "MrcheckerboardmaskConfig",
+    "MrcheckerboardmaskConfigOutputs",
     "MrcheckerboardmaskOutputs",
     "mrcheckerboardmask",
 ]

@@ -16,16 +16,16 @@ CIFTI_RESAMPLE_METADATA = Metadata(
 )
 
 
-class WeightedOutputs(typing.NamedTuple):
+class CiftiResampleWeightedOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Weighted.run(...)`.
+    Output object returned when calling `CiftiResampleWeighted.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Weighted:
+class CiftiResampleWeighted:
     """
     use weighted dilation (default)
     """
@@ -58,7 +58,7 @@ class Weighted:
     def outputs(
         self,
         execution: Execution,
-    ) -> WeightedOutputs:
+    ) -> CiftiResampleWeightedOutputs:
         """
         Collect output file paths.
         
@@ -66,32 +66,32 @@ class Weighted:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `WeightedOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleWeightedOutputs`).
         """
-        ret = WeightedOutputs(
+        ret = CiftiResampleWeightedOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class VolumePredilateOutputs(typing.NamedTuple):
+class CiftiResampleVolumePredilateOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `VolumePredilate.run(...)`.
+    Output object returned when calling `CiftiResampleVolumePredilate.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.weighted: WeightedOutputs
+    self.weighted: CiftiResampleWeightedOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class VolumePredilate:
+class CiftiResampleVolumePredilate:
     """
     dilate the volume components before resampling
     """
     opt_nearest: bool = False
     """use nearest value dilation"""
-    weighted: Weighted | None = None
+    weighted: CiftiResampleWeighted | None = None
     """use weighted dilation (default)"""
     
     def run(
@@ -117,7 +117,7 @@ class VolumePredilate:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumePredilateOutputs:
+    ) -> CiftiResampleVolumePredilateOutputs:
         """
         Collect output file paths.
         
@@ -125,25 +125,25 @@ class VolumePredilate:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumePredilateOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleVolumePredilateOutputs`).
         """
-        ret = VolumePredilateOutputs(
+        ret = CiftiResampleVolumePredilateOutputs(
             root=execution.output_file("."),
             self.weighted=self.weighted.outputs(execution),
         )
         return ret
 
 
-class WeightedOutputs_(typing.NamedTuple):
+class CiftiResampleWeightedOutputs_(typing.NamedTuple):
     """
-    Output object returned when calling `Weighted_.run(...)`.
+    Output object returned when calling `CiftiResampleWeighted_.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Weighted_:
+class CiftiResampleWeighted_:
     """
     use weighted dilation (default for non-label data)
     """
@@ -176,7 +176,7 @@ class Weighted_:
     def outputs(
         self,
         execution: Execution,
-    ) -> WeightedOutputs_:
+    ) -> CiftiResampleWeightedOutputs_:
         """
         Collect output file paths.
         
@@ -184,26 +184,26 @@ class Weighted_:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `WeightedOutputs_`).
+            NamedTuple of outputs (described in `CiftiResampleWeightedOutputs_`).
         """
-        ret = WeightedOutputs_(
+        ret = CiftiResampleWeightedOutputs_(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SurfacePostdilateOutputs(typing.NamedTuple):
+class CiftiResampleSurfacePostdilateOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SurfacePostdilate.run(...)`.
+    Output object returned when calling `CiftiResampleSurfacePostdilate.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.weighted: WeightedOutputs_
+    self.weighted: CiftiResampleWeightedOutputs_
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class SurfacePostdilate:
+class CiftiResampleSurfacePostdilate:
     """
     dilate the surface components after resampling
     """
@@ -211,7 +211,7 @@ class SurfacePostdilate:
     """use nearest value dilation"""
     opt_linear: bool = False
     """use linear dilation"""
-    weighted: Weighted_ | None = None
+    weighted: CiftiResampleWeighted_ | None = None
     """use weighted dilation (default for non-label data)"""
     
     def run(
@@ -239,7 +239,7 @@ class SurfacePostdilate:
     def outputs(
         self,
         execution: Execution,
-    ) -> SurfacePostdilateOutputs:
+    ) -> CiftiResampleSurfacePostdilateOutputs:
         """
         Collect output file paths.
         
@@ -247,25 +247,25 @@ class SurfacePostdilate:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SurfacePostdilateOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleSurfacePostdilateOutputs`).
         """
-        ret = SurfacePostdilateOutputs(
+        ret = CiftiResampleSurfacePostdilateOutputs(
             root=execution.output_file("."),
             self.weighted=self.weighted.outputs(execution),
         )
         return ret
 
 
-class FlirtOutputs(typing.NamedTuple):
+class CiftiResampleFlirtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Flirt.run(...)`.
+    Output object returned when calling `CiftiResampleFlirt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Flirt:
+class CiftiResampleFlirt:
     """
     MUST be used if affine is a flirt affine
     """
@@ -289,7 +289,7 @@ class Flirt:
     def outputs(
         self,
         execution: Execution,
-    ) -> FlirtOutputs:
+    ) -> CiftiResampleFlirtOutputs:
         """
         Collect output file paths.
         
@@ -297,30 +297,30 @@ class Flirt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FlirtOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleFlirtOutputs`).
         """
-        ret = FlirtOutputs(
+        ret = CiftiResampleFlirtOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AffineOutputs(typing.NamedTuple):
+class CiftiResampleAffineOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Affine.run(...)`.
+    Output object returned when calling `CiftiResampleAffine.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.flirt: FlirtOutputs
+    self.flirt: CiftiResampleFlirtOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Affine:
+class CiftiResampleAffine:
     """
     use an affine transformation on the volume components
     """
-    flirt: Flirt | None = None
+    flirt: CiftiResampleFlirt | None = None
     """MUST be used if affine is a flirt affine"""
     
     def run(
@@ -344,7 +344,7 @@ class Affine:
     def outputs(
         self,
         execution: Execution,
-    ) -> AffineOutputs:
+    ) -> CiftiResampleAffineOutputs:
         """
         Collect output file paths.
         
@@ -352,25 +352,25 @@ class Affine:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AffineOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleAffineOutputs`).
         """
-        ret = AffineOutputs(
+        ret = CiftiResampleAffineOutputs(
             root=execution.output_file("."),
             self.flirt=self.flirt.outputs(execution),
         )
         return ret
 
 
-class WarpfieldOutputs(typing.NamedTuple):
+class CiftiResampleWarpfieldOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Warpfield.run(...)`.
+    Output object returned when calling `CiftiResampleWarpfield.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Warpfield:
+class CiftiResampleWarpfield:
     """
     use a warpfield on the volume components
     """
@@ -399,7 +399,7 @@ class Warpfield:
     def outputs(
         self,
         execution: Execution,
-    ) -> WarpfieldOutputs:
+    ) -> CiftiResampleWarpfieldOutputs:
         """
         Collect output file paths.
         
@@ -407,24 +407,24 @@ class Warpfield:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `WarpfieldOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleWarpfieldOutputs`).
         """
-        ret = WarpfieldOutputs(
+        ret = CiftiResampleWarpfieldOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LeftAreaSurfsOutputs(typing.NamedTuple):
+class CiftiResampleLeftAreaSurfsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftAreaSurfs.run(...)`.
+    Output object returned when calling `CiftiResampleLeftAreaSurfs.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftAreaSurfs:
+class CiftiResampleLeftAreaSurfs:
     """
     specify left surfaces to do vertex area correction based on
     """
@@ -448,7 +448,7 @@ class LeftAreaSurfs:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftAreaSurfsOutputs:
+    ) -> CiftiResampleLeftAreaSurfsOutputs:
         """
         Collect output file paths.
         
@@ -456,24 +456,24 @@ class LeftAreaSurfs:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftAreaSurfsOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleLeftAreaSurfsOutputs`).
         """
-        ret = LeftAreaSurfsOutputs(
+        ret = CiftiResampleLeftAreaSurfsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LeftAreaMetricsOutputs(typing.NamedTuple):
+class CiftiResampleLeftAreaMetricsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftAreaMetrics.run(...)`.
+    Output object returned when calling `CiftiResampleLeftAreaMetrics.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftAreaMetrics:
+class CiftiResampleLeftAreaMetrics:
     """
     specify left vertex area metrics to do area correction based on
     """
@@ -497,7 +497,7 @@ class LeftAreaMetrics:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftAreaMetricsOutputs:
+    ) -> CiftiResampleLeftAreaMetricsOutputs:
         """
         Collect output file paths.
         
@@ -505,34 +505,34 @@ class LeftAreaMetrics:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftAreaMetricsOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleLeftAreaMetricsOutputs`).
         """
-        ret = LeftAreaMetricsOutputs(
+        ret = CiftiResampleLeftAreaMetricsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LeftSpheresOutputs(typing.NamedTuple):
+class CiftiResampleLeftSpheresOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftSpheres.run(...)`.
+    Output object returned when calling `CiftiResampleLeftSpheres.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.left_area_surfs: LeftAreaSurfsOutputs
+    self.left_area_surfs: CiftiResampleLeftAreaSurfsOutputs
     """Subcommand outputs"""
-    self.left_area_metrics: LeftAreaMetricsOutputs
+    self.left_area_metrics: CiftiResampleLeftAreaMetricsOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class LeftSpheres:
+class CiftiResampleLeftSpheres:
     """
     specify spheres for left surface resampling
     """
-    left_area_surfs: LeftAreaSurfs | None = None
+    left_area_surfs: CiftiResampleLeftAreaSurfs | None = None
     """specify left surfaces to do vertex area correction based on"""
-    left_area_metrics: LeftAreaMetrics | None = None
+    left_area_metrics: CiftiResampleLeftAreaMetrics | None = None
     """specify left vertex area metrics to do area correction based on"""
     
     def run(
@@ -558,7 +558,7 @@ class LeftSpheres:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftSpheresOutputs:
+    ) -> CiftiResampleLeftSpheresOutputs:
         """
         Collect output file paths.
         
@@ -566,9 +566,9 @@ class LeftSpheres:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftSpheresOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleLeftSpheresOutputs`).
         """
-        ret = LeftSpheresOutputs(
+        ret = CiftiResampleLeftSpheresOutputs(
             root=execution.output_file("."),
             self.left_area_surfs=self.left_area_surfs.outputs(execution),
             self.left_area_metrics=self.left_area_metrics.outputs(execution),
@@ -576,16 +576,16 @@ class LeftSpheres:
         return ret
 
 
-class RightAreaSurfsOutputs(typing.NamedTuple):
+class CiftiResampleRightAreaSurfsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightAreaSurfs.run(...)`.
+    Output object returned when calling `CiftiResampleRightAreaSurfs.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightAreaSurfs:
+class CiftiResampleRightAreaSurfs:
     """
     specify right surfaces to do vertex area correction based on
     """
@@ -609,7 +609,7 @@ class RightAreaSurfs:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightAreaSurfsOutputs:
+    ) -> CiftiResampleRightAreaSurfsOutputs:
         """
         Collect output file paths.
         
@@ -617,24 +617,24 @@ class RightAreaSurfs:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightAreaSurfsOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleRightAreaSurfsOutputs`).
         """
-        ret = RightAreaSurfsOutputs(
+        ret = CiftiResampleRightAreaSurfsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightAreaMetricsOutputs(typing.NamedTuple):
+class CiftiResampleRightAreaMetricsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightAreaMetrics.run(...)`.
+    Output object returned when calling `CiftiResampleRightAreaMetrics.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightAreaMetrics:
+class CiftiResampleRightAreaMetrics:
     """
     specify right vertex area metrics to do area correction based on
     """
@@ -658,7 +658,7 @@ class RightAreaMetrics:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightAreaMetricsOutputs:
+    ) -> CiftiResampleRightAreaMetricsOutputs:
         """
         Collect output file paths.
         
@@ -666,34 +666,34 @@ class RightAreaMetrics:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightAreaMetricsOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleRightAreaMetricsOutputs`).
         """
-        ret = RightAreaMetricsOutputs(
+        ret = CiftiResampleRightAreaMetricsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightSpheresOutputs(typing.NamedTuple):
+class CiftiResampleRightSpheresOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightSpheres.run(...)`.
+    Output object returned when calling `CiftiResampleRightSpheres.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.right_area_surfs: RightAreaSurfsOutputs
+    self.right_area_surfs: CiftiResampleRightAreaSurfsOutputs
     """Subcommand outputs"""
-    self.right_area_metrics: RightAreaMetricsOutputs
+    self.right_area_metrics: CiftiResampleRightAreaMetricsOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class RightSpheres:
+class CiftiResampleRightSpheres:
     """
     specify spheres for right surface resampling
     """
-    right_area_surfs: RightAreaSurfs | None = None
+    right_area_surfs: CiftiResampleRightAreaSurfs | None = None
     """specify right surfaces to do vertex area correction based on"""
-    right_area_metrics: RightAreaMetrics | None = None
+    right_area_metrics: CiftiResampleRightAreaMetrics | None = None
     """specify right vertex area metrics to do area correction based on"""
     
     def run(
@@ -719,7 +719,7 @@ class RightSpheres:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightSpheresOutputs:
+    ) -> CiftiResampleRightSpheresOutputs:
         """
         Collect output file paths.
         
@@ -727,9 +727,9 @@ class RightSpheres:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightSpheresOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleRightSpheresOutputs`).
         """
-        ret = RightSpheresOutputs(
+        ret = CiftiResampleRightSpheresOutputs(
             root=execution.output_file("."),
             self.right_area_surfs=self.right_area_surfs.outputs(execution),
             self.right_area_metrics=self.right_area_metrics.outputs(execution),
@@ -737,16 +737,16 @@ class RightSpheres:
         return ret
 
 
-class CerebellumAreaSurfsOutputs(typing.NamedTuple):
+class CiftiResampleCerebellumAreaSurfsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumAreaSurfs.run(...)`.
+    Output object returned when calling `CiftiResampleCerebellumAreaSurfs.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumAreaSurfs:
+class CiftiResampleCerebellumAreaSurfs:
     """
     specify cerebellum surfaces to do vertex area correction based on
     """
@@ -770,7 +770,7 @@ class CerebellumAreaSurfs:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumAreaSurfsOutputs:
+    ) -> CiftiResampleCerebellumAreaSurfsOutputs:
         """
         Collect output file paths.
         
@@ -778,24 +778,24 @@ class CerebellumAreaSurfs:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumAreaSurfsOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleCerebellumAreaSurfsOutputs`).
         """
-        ret = CerebellumAreaSurfsOutputs(
+        ret = CiftiResampleCerebellumAreaSurfsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumAreaMetricsOutputs(typing.NamedTuple):
+class CiftiResampleCerebellumAreaMetricsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumAreaMetrics.run(...)`.
+    Output object returned when calling `CiftiResampleCerebellumAreaMetrics.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumAreaMetrics:
+class CiftiResampleCerebellumAreaMetrics:
     """
     specify cerebellum vertex area metrics to do area correction based on
     """
@@ -819,7 +819,7 @@ class CerebellumAreaMetrics:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumAreaMetricsOutputs:
+    ) -> CiftiResampleCerebellumAreaMetricsOutputs:
         """
         Collect output file paths.
         
@@ -827,34 +827,34 @@ class CerebellumAreaMetrics:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumAreaMetricsOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleCerebellumAreaMetricsOutputs`).
         """
-        ret = CerebellumAreaMetricsOutputs(
+        ret = CiftiResampleCerebellumAreaMetricsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumSpheresOutputs(typing.NamedTuple):
+class CiftiResampleCerebellumSpheresOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumSpheres.run(...)`.
+    Output object returned when calling `CiftiResampleCerebellumSpheres.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.cerebellum_area_surfs: CerebellumAreaSurfsOutputs
+    self.cerebellum_area_surfs: CiftiResampleCerebellumAreaSurfsOutputs
     """Subcommand outputs"""
-    self.cerebellum_area_metrics: CerebellumAreaMetricsOutputs
+    self.cerebellum_area_metrics: CiftiResampleCerebellumAreaMetricsOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class CerebellumSpheres:
+class CiftiResampleCerebellumSpheres:
     """
     specify spheres for cerebellum surface resampling
     """
-    cerebellum_area_surfs: CerebellumAreaSurfs | None = None
+    cerebellum_area_surfs: CiftiResampleCerebellumAreaSurfs | None = None
     """specify cerebellum surfaces to do vertex area correction based on"""
-    cerebellum_area_metrics: CerebellumAreaMetrics | None = None
+    cerebellum_area_metrics: CiftiResampleCerebellumAreaMetrics | None = None
     """specify cerebellum vertex area metrics to do area correction based on"""
     
     def run(
@@ -880,7 +880,7 @@ class CerebellumSpheres:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumSpheresOutputs:
+    ) -> CiftiResampleCerebellumSpheresOutputs:
         """
         Collect output file paths.
         
@@ -888,9 +888,9 @@ class CerebellumSpheres:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumSpheresOutputs`).
+            NamedTuple of outputs (described in `CiftiResampleCerebellumSpheresOutputs`).
         """
-        ret = CerebellumSpheresOutputs(
+        ret = CiftiResampleCerebellumSpheresOutputs(
             root=execution.output_file("."),
             self.cerebellum_area_surfs=self.cerebellum_area_surfs.outputs(execution),
             self.cerebellum_area_metrics=self.cerebellum_area_metrics.outputs(execution),
@@ -906,19 +906,19 @@ class CiftiResampleOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    volume_predilate: VolumePredilateOutputs
+    volume_predilate: CiftiResampleVolumePredilateOutputs
     """Subcommand outputs"""
-    surface_postdilate: SurfacePostdilateOutputs
+    surface_postdilate: CiftiResampleSurfacePostdilateOutputs
     """Subcommand outputs"""
-    affine: AffineOutputs
+    affine: CiftiResampleAffineOutputs
     """Subcommand outputs"""
-    warpfield: WarpfieldOutputs
+    warpfield: CiftiResampleWarpfieldOutputs
     """Subcommand outputs"""
-    left_spheres: LeftSpheresOutputs
+    left_spheres: CiftiResampleLeftSpheresOutputs
     """Subcommand outputs"""
-    right_spheres: RightSpheresOutputs
+    right_spheres: CiftiResampleRightSpheresOutputs
     """Subcommand outputs"""
-    cerebellum_spheres: CerebellumSpheresOutputs
+    cerebellum_spheres: CiftiResampleCerebellumSpheresOutputs
     """Subcommand outputs"""
 
 
@@ -931,13 +931,13 @@ def cifti_resample(
     volume_method: str,
     cifti_out: InputPathType,
     opt_surface_largest: bool = False,
-    volume_predilate: VolumePredilate | None = None,
-    surface_postdilate: SurfacePostdilate | None = None,
-    affine: Affine | None = None,
-    warpfield: Warpfield | None = None,
-    left_spheres: LeftSpheres | None = None,
-    right_spheres: RightSpheres | None = None,
-    cerebellum_spheres: CerebellumSpheres | None = None,
+    volume_predilate: CiftiResampleVolumePredilate | None = None,
+    surface_postdilate: CiftiResampleSurfacePostdilate | None = None,
+    affine: CiftiResampleAffine | None = None,
+    warpfield: CiftiResampleWarpfield | None = None,
+    left_spheres: CiftiResampleLeftSpheres | None = None,
+    right_spheres: CiftiResampleRightSpheres | None = None,
+    cerebellum_spheres: CiftiResampleCerebellumSpheres | None = None,
     runner: Runner = None,
 ) -> CiftiResampleOutputs:
     """
@@ -1045,39 +1045,39 @@ def cifti_resample(
 
 
 __all__ = [
-    "Affine",
-    "AffineOutputs",
     "CIFTI_RESAMPLE_METADATA",
-    "CerebellumAreaMetrics",
-    "CerebellumAreaMetricsOutputs",
-    "CerebellumAreaSurfs",
-    "CerebellumAreaSurfsOutputs",
-    "CerebellumSpheres",
-    "CerebellumSpheresOutputs",
+    "CiftiResampleAffine",
+    "CiftiResampleAffineOutputs",
+    "CiftiResampleCerebellumAreaMetrics",
+    "CiftiResampleCerebellumAreaMetricsOutputs",
+    "CiftiResampleCerebellumAreaSurfs",
+    "CiftiResampleCerebellumAreaSurfsOutputs",
+    "CiftiResampleCerebellumSpheres",
+    "CiftiResampleCerebellumSpheresOutputs",
+    "CiftiResampleFlirt",
+    "CiftiResampleFlirtOutputs",
+    "CiftiResampleLeftAreaMetrics",
+    "CiftiResampleLeftAreaMetricsOutputs",
+    "CiftiResampleLeftAreaSurfs",
+    "CiftiResampleLeftAreaSurfsOutputs",
+    "CiftiResampleLeftSpheres",
+    "CiftiResampleLeftSpheresOutputs",
     "CiftiResampleOutputs",
-    "Flirt",
-    "FlirtOutputs",
-    "LeftAreaMetrics",
-    "LeftAreaMetricsOutputs",
-    "LeftAreaSurfs",
-    "LeftAreaSurfsOutputs",
-    "LeftSpheres",
-    "LeftSpheresOutputs",
-    "RightAreaMetrics",
-    "RightAreaMetricsOutputs",
-    "RightAreaSurfs",
-    "RightAreaSurfsOutputs",
-    "RightSpheres",
-    "RightSpheresOutputs",
-    "SurfacePostdilate",
-    "SurfacePostdilateOutputs",
-    "VolumePredilate",
-    "VolumePredilateOutputs",
-    "Warpfield",
-    "WarpfieldOutputs",
-    "Weighted",
-    "WeightedOutputs",
-    "WeightedOutputs_",
-    "Weighted_",
+    "CiftiResampleRightAreaMetrics",
+    "CiftiResampleRightAreaMetricsOutputs",
+    "CiftiResampleRightAreaSurfs",
+    "CiftiResampleRightAreaSurfsOutputs",
+    "CiftiResampleRightSpheres",
+    "CiftiResampleRightSpheresOutputs",
+    "CiftiResampleSurfacePostdilate",
+    "CiftiResampleSurfacePostdilateOutputs",
+    "CiftiResampleVolumePredilate",
+    "CiftiResampleVolumePredilateOutputs",
+    "CiftiResampleWarpfield",
+    "CiftiResampleWarpfieldOutputs",
+    "CiftiResampleWeighted",
+    "CiftiResampleWeightedOutputs",
+    "CiftiResampleWeightedOutputs_",
+    "CiftiResampleWeighted_",
     "cifti_resample",
 ]

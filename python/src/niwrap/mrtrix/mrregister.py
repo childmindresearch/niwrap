@@ -16,9 +16,9 @@ MRREGISTER_METADATA = Metadata(
 )
 
 
-class TransformedOutputs(typing.NamedTuple):
+class MrregisterTransformedOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Transformed.run(...)`.
+    Output object returned when calling `MrregisterTransformed.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -27,7 +27,7 @@ class TransformedOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class Transformed:
+class MrregisterTransformed:
     """
     image1 after registration transformed and regridded to the space of image2. Note that -transformed needs to be repeated for each contrast if multi-contrast registration is used.
     """
@@ -57,7 +57,7 @@ class Transformed:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformedOutputs:
+    ) -> MrregisterTransformedOutputs:
         """
         Collect output file paths.
         
@@ -65,18 +65,18 @@ class Transformed:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformedOutputs`).
+            NamedTuple of outputs (described in `MrregisterTransformedOutputs`).
         """
-        ret = TransformedOutputs(
+        ret = MrregisterTransformedOutputs(
             root=execution.output_file("."),
             image=execution.output_file(f"{pathlib.Path(self.image).name}"),
         )
         return ret
 
 
-class TransformedMidwayOutputs(typing.NamedTuple):
+class MrregisterTransformedMidwayOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformedMidway.run(...)`.
+    Output object returned when calling `MrregisterTransformedMidway.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -87,7 +87,7 @@ class TransformedMidwayOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class TransformedMidway:
+class MrregisterTransformedMidway:
     """
     image1 and image2 after registration transformed and regridded to the midway space. Note that -transformed_midway needs to be repeated for each contrast if multi-contrast registration is used.
     """
@@ -122,7 +122,7 @@ class TransformedMidway:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformedMidwayOutputs:
+    ) -> MrregisterTransformedMidwayOutputs:
         """
         Collect output file paths.
         
@@ -130,9 +130,9 @@ class TransformedMidway:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformedMidwayOutputs`).
+            NamedTuple of outputs (described in `MrregisterTransformedMidwayOutputs`).
         """
-        ret = TransformedMidwayOutputs(
+        ret = MrregisterTransformedMidwayOutputs(
             root=execution.output_file("."),
             image1_transformed=execution.output_file(f"{pathlib.Path(self.image1_transformed).name}"),
             image2_transformed=execution.output_file(f"{pathlib.Path(self.image2_transformed).name}"),
@@ -140,9 +140,9 @@ class TransformedMidway:
         return ret
 
 
-class NlWarpOutputs(typing.NamedTuple):
+class MrregisterNlWarpOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `NlWarp.run(...)`.
+    Output object returned when calling `MrregisterNlWarp.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -153,7 +153,7 @@ class NlWarpOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class NlWarp:
+class MrregisterNlWarp:
     """
     the non-linear warp output defined as two deformation fields, where warp1 can be used to transform image1->image2 and warp2 to transform image2->image1. The deformation fields also encapsulate any linear transformation estimated prior to non-linear registration.
     """
@@ -190,7 +190,7 @@ class NlWarp:
     def outputs(
         self,
         execution: Execution,
-    ) -> NlWarpOutputs:
+    ) -> MrregisterNlWarpOutputs:
         """
         Collect output file paths.
         
@@ -198,9 +198,9 @@ class NlWarp:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NlWarpOutputs`).
+            NamedTuple of outputs (described in `MrregisterNlWarpOutputs`).
         """
-        ret = NlWarpOutputs(
+        ret = MrregisterNlWarpOutputs(
             root=execution.output_file("."),
             warp1=execution.output_file(f"{pathlib.Path(self.warp1).name}"),
             warp2=execution.output_file(f"{pathlib.Path(self.warp2).name}"),
@@ -208,16 +208,16 @@ class NlWarp:
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrregisterConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrregisterConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrregisterConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -248,7 +248,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrregisterConfigOutputs:
         """
         Collect output file paths.
         
@@ -256,9 +256,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrregisterConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrregisterConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -288,13 +288,13 @@ class MrregisterOutputs(typing.NamedTuple):
     """write gradient descent parameter evolution to log file """
     nl_warp_full: OutputPathType | None
     """output all warps used during registration. This saves four different warps that map each image to a midway space and their inverses in a single 5D image file. The 4th image dimension indexes the x,y,z component of the deformation vector and the 5th dimension indexes the field in this order: image1->midway, midway->image1, image2->midway, midway->image2. Where image1->midway defines the field that maps image1 onto the midway space using the reverse convention When linear registration is performed first, the estimated linear transform will be included in the comments of the image header, and therefore the entire linear and non-linear transform can be applied (in either direction) using this output warp file with mrtransform """
-    transformed: TransformedOutputs
+    transformed: typing.List[MrregisterTransformedOutputs]
     """Subcommand outputs"""
-    transformed_midway: TransformedMidwayOutputs
+    transformed_midway: typing.List[MrregisterTransformedMidwayOutputs]
     """Subcommand outputs"""
-    nl_warp: NlWarpOutputs
+    nl_warp: MrregisterNlWarpOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[MrregisterConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -302,8 +302,8 @@ def mrregister(
     image1_image2: InputPathType,
     contrast1_contrast2: list[InputPathType] = None,
     type_: typing.Literal["choice"] | None = None,
-    transformed: list[Transformed] = None,
-    transformed_midway: list[TransformedMidway] = None,
+    transformed: list[MrregisterTransformed] = None,
+    transformed_midway: list[MrregisterTransformedMidway] = None,
     mask1: InputPathType | None = None,
     mask2: InputPathType | None = None,
     nan: bool = False,
@@ -345,7 +345,7 @@ def mrregister(
     linstage_optimiser_last: typing.Literal["algorithm"] | None = None,
     linstage_optimiser_default: typing.Literal["algorithm"] | None = None,
     linstage_diagnostics_prefix: str | None = None,
-    nl_warp: NlWarp | None = None,
+    nl_warp: MrregisterNlWarp | None = None,
     nl_warp_full: InputPathType | None = None,
     nl_init: InputPathType | None = None,
     nl_scale: list[float | int] = None,
@@ -364,7 +364,7 @@ def mrregister(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrregisterConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -776,15 +776,15 @@ def mrregister(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MRREGISTER_METADATA",
+    "MrregisterConfig",
+    "MrregisterConfigOutputs",
+    "MrregisterNlWarp",
+    "MrregisterNlWarpOutputs",
     "MrregisterOutputs",
-    "NlWarp",
-    "NlWarpOutputs",
-    "Transformed",
-    "TransformedMidway",
-    "TransformedMidwayOutputs",
-    "TransformedOutputs",
+    "MrregisterTransformed",
+    "MrregisterTransformedMidway",
+    "MrregisterTransformedMidwayOutputs",
+    "MrregisterTransformedOutputs",
     "mrregister",
 ]

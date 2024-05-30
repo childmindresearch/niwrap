@@ -16,16 +16,16 @@ CIFTI_PALETTE_METADATA = Metadata(
 )
 
 
-class PosPercentOutputs(typing.NamedTuple):
+class CiftiPalettePosPercentOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `PosPercent.run(...)`.
+    Output object returned when calling `CiftiPalettePosPercent.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class PosPercent:
+class CiftiPalettePosPercent:
     """
     percentage min/max for positive data coloring
     """
@@ -49,7 +49,7 @@ class PosPercent:
     def outputs(
         self,
         execution: Execution,
-    ) -> PosPercentOutputs:
+    ) -> CiftiPalettePosPercentOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class PosPercent:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PosPercentOutputs`).
+            NamedTuple of outputs (described in `CiftiPalettePosPercentOutputs`).
         """
-        ret = PosPercentOutputs(
+        ret = CiftiPalettePosPercentOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NegPercentOutputs(typing.NamedTuple):
+class CiftiPaletteNegPercentOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `NegPercent.run(...)`.
+    Output object returned when calling `CiftiPaletteNegPercent.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class NegPercent:
+class CiftiPaletteNegPercent:
     """
     percentage min/max for negative data coloring
     """
@@ -98,7 +98,7 @@ class NegPercent:
     def outputs(
         self,
         execution: Execution,
-    ) -> NegPercentOutputs:
+    ) -> CiftiPaletteNegPercentOutputs:
         """
         Collect output file paths.
         
@@ -106,24 +106,24 @@ class NegPercent:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NegPercentOutputs`).
+            NamedTuple of outputs (described in `CiftiPaletteNegPercentOutputs`).
         """
-        ret = NegPercentOutputs(
+        ret = CiftiPaletteNegPercentOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class PosUserOutputs(typing.NamedTuple):
+class CiftiPalettePosUserOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `PosUser.run(...)`.
+    Output object returned when calling `CiftiPalettePosUser.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class PosUser:
+class CiftiPalettePosUser:
     """
     user min/max values for positive data coloring
     """
@@ -147,7 +147,7 @@ class PosUser:
     def outputs(
         self,
         execution: Execution,
-    ) -> PosUserOutputs:
+    ) -> CiftiPalettePosUserOutputs:
         """
         Collect output file paths.
         
@@ -155,24 +155,24 @@ class PosUser:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PosUserOutputs`).
+            NamedTuple of outputs (described in `CiftiPalettePosUserOutputs`).
         """
-        ret = PosUserOutputs(
+        ret = CiftiPalettePosUserOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NegUserOutputs(typing.NamedTuple):
+class CiftiPaletteNegUserOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `NegUser.run(...)`.
+    Output object returned when calling `CiftiPaletteNegUser.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class NegUser:
+class CiftiPaletteNegUser:
     """
     user min/max values for negative data coloring
     """
@@ -196,7 +196,7 @@ class NegUser:
     def outputs(
         self,
         execution: Execution,
-    ) -> NegUserOutputs:
+    ) -> CiftiPaletteNegUserOutputs:
         """
         Collect output file paths.
         
@@ -204,24 +204,24 @@ class NegUser:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NegUserOutputs`).
+            NamedTuple of outputs (described in `CiftiPaletteNegUserOutputs`).
         """
-        ret = NegUserOutputs(
+        ret = CiftiPaletteNegUserOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ThresholdingOutputs(typing.NamedTuple):
+class CiftiPaletteThresholdingOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Thresholding.run(...)`.
+    Output object returned when calling `CiftiPaletteThresholding.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Thresholding:
+class CiftiPaletteThresholding:
     """
     set the thresholding
     """
@@ -245,7 +245,7 @@ class Thresholding:
     def outputs(
         self,
         execution: Execution,
-    ) -> ThresholdingOutputs:
+    ) -> CiftiPaletteThresholdingOutputs:
         """
         Collect output file paths.
         
@@ -253,9 +253,9 @@ class Thresholding:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ThresholdingOutputs`).
+            NamedTuple of outputs (described in `CiftiPaletteThresholdingOutputs`).
         """
-        ret = ThresholdingOutputs(
+        ret = CiftiPaletteThresholdingOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -269,15 +269,15 @@ class CiftiPaletteOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    pos_percent: PosPercentOutputs
+    pos_percent: CiftiPalettePosPercentOutputs
     """Subcommand outputs"""
-    neg_percent: NegPercentOutputs
+    neg_percent: CiftiPaletteNegPercentOutputs
     """Subcommand outputs"""
-    pos_user: PosUserOutputs
+    pos_user: CiftiPalettePosUserOutputs
     """Subcommand outputs"""
-    neg_user: NegUserOutputs
+    neg_user: CiftiPaletteNegUserOutputs
     """Subcommand outputs"""
-    thresholding: ThresholdingOutputs
+    thresholding: CiftiPaletteThresholdingOutputs
     """Subcommand outputs"""
 
 
@@ -286,16 +286,16 @@ def cifti_palette(
     mode: str,
     cifti_out: InputPathType,
     opt_column_column: str | None = None,
-    pos_percent: PosPercent | None = None,
-    neg_percent: NegPercent | None = None,
-    pos_user: PosUser | None = None,
-    neg_user: NegUser | None = None,
+    pos_percent: CiftiPalettePosPercent | None = None,
+    neg_percent: CiftiPaletteNegPercent | None = None,
+    pos_user: CiftiPalettePosUser | None = None,
+    neg_user: CiftiPaletteNegUser | None = None,
     opt_interpolate_interpolate: typing.Literal["true", "false"] | None = None,
     opt_disp_pos_display: typing.Literal["true", "false"] | None = None,
     opt_disp_neg_display: typing.Literal["true", "false"] | None = None,
     opt_disp_zero_display: typing.Literal["true", "false"] | None = None,
     opt_palette_name_name: str | None = None,
-    thresholding: Thresholding | None = None,
+    thresholding: CiftiPaletteThresholding | None = None,
     opt_inversion_type: str | None = None,
     runner: Runner = None,
 ) -> CiftiPaletteOutputs:
@@ -451,16 +451,16 @@ def cifti_palette(
 
 __all__ = [
     "CIFTI_PALETTE_METADATA",
+    "CiftiPaletteNegPercent",
+    "CiftiPaletteNegPercentOutputs",
+    "CiftiPaletteNegUser",
+    "CiftiPaletteNegUserOutputs",
     "CiftiPaletteOutputs",
-    "NegPercent",
-    "NegPercentOutputs",
-    "NegUser",
-    "NegUserOutputs",
-    "PosPercent",
-    "PosPercentOutputs",
-    "PosUser",
-    "PosUserOutputs",
-    "Thresholding",
-    "ThresholdingOutputs",
+    "CiftiPalettePosPercent",
+    "CiftiPalettePosPercentOutputs",
+    "CiftiPalettePosUser",
+    "CiftiPalettePosUserOutputs",
+    "CiftiPaletteThresholding",
+    "CiftiPaletteThresholdingOutputs",
     "cifti_palette",
 ]

@@ -16,16 +16,16 @@ SHBASIS_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class ShbasisConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `ShbasisConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class ShbasisConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> ShbasisConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `ShbasisConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = ShbasisConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -78,7 +78,7 @@ class ShbasisOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    config: ConfigOutputs
+    config: typing.List[ShbasisConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -90,7 +90,7 @@ def shbasis(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[ShbasisConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -180,9 +180,9 @@ def shbasis(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "SHBASIS_METADATA",
+    "ShbasisConfig",
+    "ShbasisConfigOutputs",
     "ShbasisOutputs",
     "shbasis",
 ]

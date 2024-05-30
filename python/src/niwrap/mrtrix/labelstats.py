@@ -16,16 +16,16 @@ LABELSTATS_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class LabelstatsConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `LabelstatsConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class LabelstatsConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> LabelstatsConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `LabelstatsConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = LabelstatsConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -78,7 +78,7 @@ class LabelstatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    config: ConfigOutputs
+    config: typing.List[LabelstatsConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -91,7 +91,7 @@ def labelstats(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[LabelstatsConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -165,9 +165,9 @@ def labelstats(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "LABELSTATS_METADATA",
+    "LabelstatsConfig",
+    "LabelstatsConfigOutputs",
     "LabelstatsOutputs",
     "labelstats",
 ]

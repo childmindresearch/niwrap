@@ -16,16 +16,16 @@ AFDCONNECTIVITY_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class AfdconnectivityConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `AfdconnectivityConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class AfdconnectivityConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> AfdconnectivityConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `AfdconnectivityConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = AfdconnectivityConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class AfdconnectivityOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     afd_map: OutputPathType | None
     """output a 3D image containing the AFD estimated for each voxel. """
-    config: ConfigOutputs
+    config: typing.List[AfdconnectivityConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -95,7 +95,7 @@ def afdconnectivity(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[AfdconnectivityConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -214,8 +214,8 @@ def afdconnectivity(
 
 __all__ = [
     "AFDCONNECTIVITY_METADATA",
+    "AfdconnectivityConfig",
+    "AfdconnectivityConfigOutputs",
     "AfdconnectivityOutputs",
-    "Config",
-    "ConfigOutputs",
     "afdconnectivity",
 ]

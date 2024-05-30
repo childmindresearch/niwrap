@@ -16,16 +16,16 @@ VOLUME_STATS_METADATA = Metadata(
 )
 
 
-class RoiOutputs(typing.NamedTuple):
+class VolumeStatsRoiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Roi.run(...)`.
+    Output object returned when calling `VolumeStatsRoi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Roi:
+class VolumeStatsRoi:
     """
     only consider data inside an roi
     """
@@ -54,7 +54,7 @@ class Roi:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiOutputs:
+    ) -> VolumeStatsRoiOutputs:
         """
         Collect output file paths.
         
@@ -62,9 +62,9 @@ class Roi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiOutputs`).
+            NamedTuple of outputs (described in `VolumeStatsRoiOutputs`).
         """
-        ret = RoiOutputs(
+        ret = VolumeStatsRoiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -76,7 +76,7 @@ class VolumeStatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    roi: RoiOutputs
+    roi: VolumeStatsRoiOutputs
     """Subcommand outputs"""
 
 
@@ -85,7 +85,7 @@ def volume_stats(
     opt_reduce_operation: str | None = None,
     opt_percentile_percent: float | int | None = None,
     opt_subvolume_subvolume: str | None = None,
-    roi: Roi | None = None,
+    roi: VolumeStatsRoi | None = None,
     opt_show_map_name: bool = False,
     runner: Runner = None,
 ) -> VolumeStatsOutputs:
@@ -159,9 +159,9 @@ def volume_stats(
 
 
 __all__ = [
-    "Roi",
-    "RoiOutputs",
     "VOLUME_STATS_METADATA",
     "VolumeStatsOutputs",
+    "VolumeStatsRoi",
+    "VolumeStatsRoiOutputs",
     "volume_stats",
 ]

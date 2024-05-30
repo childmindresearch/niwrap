@@ -16,16 +16,16 @@ AMP2RESPONSE_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Amp2responseConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Amp2responseConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Amp2responseConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Amp2responseConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Amp2responseConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Amp2responseConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class Amp2responseOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     response: OutputPathType
     """the output zonal spherical harmonic coefficients"""
-    config: ConfigOutputs
+    config: typing.List[Amp2responseConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -99,7 +99,7 @@ def amp2response(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Amp2responseConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -215,8 +215,8 @@ def amp2response(
 
 __all__ = [
     "AMP2RESPONSE_METADATA",
+    "Amp2responseConfig",
+    "Amp2responseConfigOutputs",
     "Amp2responseOutputs",
-    "Config",
-    "ConfigOutputs",
     "amp2response",
 ]

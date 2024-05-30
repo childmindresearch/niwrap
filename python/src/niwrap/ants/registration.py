@@ -16,16 +16,16 @@ ANTS_REGISTRATION_METADATA = Metadata(
 )
 
 
-class InitialMovingTransformOutputs(typing.NamedTuple):
+class AntsRegistrationInitialMovingTransformOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `InitialMovingTransform.run(...)`.
+    Output object returned when calling `AntsRegistrationInitialMovingTransform.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class InitialMovingTransform:
+class AntsRegistrationInitialMovingTransform:
     """
     Description missing
     """
@@ -52,7 +52,7 @@ class InitialMovingTransform:
     def outputs(
         self,
         execution: Execution,
-    ) -> InitialMovingTransformOutputs:
+    ) -> AntsRegistrationInitialMovingTransformOutputs:
         """
         Collect output file paths.
         
@@ -60,24 +60,24 @@ class InitialMovingTransform:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `InitialMovingTransformOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationInitialMovingTransformOutputs`).
         """
-        ret = InitialMovingTransformOutputs(
+        ret = AntsRegistrationInitialMovingTransformOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class InitialMovingTransformUseInverseOutputs(typing.NamedTuple):
+class AntsRegistrationInitialMovingTransformUseInverseOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `InitialMovingTransformUseInverse.run(...)`.
+    Output object returned when calling `AntsRegistrationInitialMovingTransformUseInverse.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class InitialMovingTransformUseInverse:
+class AntsRegistrationInitialMovingTransformUseInverse:
     """
     Description missing
     """
@@ -111,7 +111,7 @@ class InitialMovingTransformUseInverse:
     def outputs(
         self,
         execution: Execution,
-    ) -> InitialMovingTransformUseInverseOutputs:
+    ) -> AntsRegistrationInitialMovingTransformUseInverseOutputs:
         """
         Collect output file paths.
         
@@ -119,24 +119,24 @@ class InitialMovingTransformUseInverse:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `InitialMovingTransformUseInverseOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationInitialMovingTransformUseInverseOutputs`).
         """
-        ret = InitialMovingTransformUseInverseOutputs(
+        ret = AntsRegistrationInitialMovingTransformUseInverseOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class InitialMovingTransformInitializationFeatureOutputs(typing.NamedTuple):
+class AntsRegistrationInitialMovingTransformInitializationFeatureOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `InitialMovingTransformInitializationFeature.run(...)`.
+    Output object returned when calling `AntsRegistrationInitialMovingTransformInitializationFeature.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class InitialMovingTransformInitializationFeature:
+class AntsRegistrationInitialMovingTransformInitializationFeature:
     """
     Description missing
     """
@@ -176,7 +176,7 @@ class InitialMovingTransformInitializationFeature:
     def outputs(
         self,
         execution: Execution,
-    ) -> InitialMovingTransformInitializationFeatureOutputs:
+    ) -> AntsRegistrationInitialMovingTransformInitializationFeatureOutputs:
         """
         Collect output file paths.
         
@@ -184,24 +184,24 @@ class InitialMovingTransformInitializationFeature:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `InitialMovingTransformInitializationFeatureOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationInitialMovingTransformInitializationFeatureOutputs`).
         """
-        ret = InitialMovingTransformInitializationFeatureOutputs(
+        ret = AntsRegistrationInitialMovingTransformInitializationFeatureOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformRigidOutputs(typing.NamedTuple):
+class AntsRegistrationTransformRigidOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformRigid.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformRigid.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformRigid:
+class AntsRegistrationTransformRigid:
     """
     Description missing
     """
@@ -232,7 +232,7 @@ class TransformRigid:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformRigidOutputs:
+    ) -> AntsRegistrationTransformRigidOutputs:
         """
         Collect output file paths.
         
@@ -240,24 +240,24 @@ class TransformRigid:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformRigidOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformRigidOutputs`).
         """
-        ret = TransformRigidOutputs(
+        ret = AntsRegistrationTransformRigidOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformAffineOutputs(typing.NamedTuple):
+class AntsRegistrationTransformAffineOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformAffine.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformAffine.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformAffine:
+class AntsRegistrationTransformAffine:
     """
     Description missing
     """
@@ -288,7 +288,7 @@ class TransformAffine:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformAffineOutputs:
+    ) -> AntsRegistrationTransformAffineOutputs:
         """
         Collect output file paths.
         
@@ -296,24 +296,24 @@ class TransformAffine:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformAffineOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformAffineOutputs`).
         """
-        ret = TransformAffineOutputs(
+        ret = AntsRegistrationTransformAffineOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformCompositeAffineOutputs(typing.NamedTuple):
+class AntsRegistrationTransformCompositeAffineOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformCompositeAffine.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformCompositeAffine.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformCompositeAffine:
+class AntsRegistrationTransformCompositeAffine:
     """
     Description missing
     """
@@ -344,7 +344,7 @@ class TransformCompositeAffine:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformCompositeAffineOutputs:
+    ) -> AntsRegistrationTransformCompositeAffineOutputs:
         """
         Collect output file paths.
         
@@ -352,24 +352,24 @@ class TransformCompositeAffine:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformCompositeAffineOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformCompositeAffineOutputs`).
         """
-        ret = TransformCompositeAffineOutputs(
+        ret = AntsRegistrationTransformCompositeAffineOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformSimilarityOutputs(typing.NamedTuple):
+class AntsRegistrationTransformSimilarityOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformSimilarity.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformSimilarity.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformSimilarity:
+class AntsRegistrationTransformSimilarity:
     """
     Description missing
     """
@@ -400,7 +400,7 @@ class TransformSimilarity:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformSimilarityOutputs:
+    ) -> AntsRegistrationTransformSimilarityOutputs:
         """
         Collect output file paths.
         
@@ -408,24 +408,24 @@ class TransformSimilarity:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformSimilarityOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformSimilarityOutputs`).
         """
-        ret = TransformSimilarityOutputs(
+        ret = AntsRegistrationTransformSimilarityOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformTranslationOutputs(typing.NamedTuple):
+class AntsRegistrationTransformTranslationOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformTranslation.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformTranslation.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformTranslation:
+class AntsRegistrationTransformTranslation:
     """
     Description missing
     """
@@ -456,7 +456,7 @@ class TransformTranslation:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformTranslationOutputs:
+    ) -> AntsRegistrationTransformTranslationOutputs:
         """
         Collect output file paths.
         
@@ -464,24 +464,24 @@ class TransformTranslation:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformTranslationOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformTranslationOutputs`).
         """
-        ret = TransformTranslationOutputs(
+        ret = AntsRegistrationTransformTranslationOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformBsplineOutputs(typing.NamedTuple):
+class AntsRegistrationTransformBsplineOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformBspline.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformBspline.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformBspline:
+class AntsRegistrationTransformBspline:
     """
     Description missing
     """
@@ -516,7 +516,7 @@ class TransformBspline:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformBsplineOutputs:
+    ) -> AntsRegistrationTransformBsplineOutputs:
         """
         Collect output file paths.
         
@@ -524,24 +524,24 @@ class TransformBspline:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformBsplineOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformBsplineOutputs`).
         """
-        ret = TransformBsplineOutputs(
+        ret = AntsRegistrationTransformBsplineOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformGaussianDisplacementFieldOutputs(typing.NamedTuple):
+class AntsRegistrationTransformGaussianDisplacementFieldOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformGaussianDisplacementField.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformGaussianDisplacementField.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformGaussianDisplacementField:
+class AntsRegistrationTransformGaussianDisplacementField:
     """
     Description missing
     """
@@ -580,7 +580,7 @@ class TransformGaussianDisplacementField:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformGaussianDisplacementFieldOutputs:
+    ) -> AntsRegistrationTransformGaussianDisplacementFieldOutputs:
         """
         Collect output file paths.
         
@@ -588,24 +588,24 @@ class TransformGaussianDisplacementField:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformGaussianDisplacementFieldOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformGaussianDisplacementFieldOutputs`).
         """
-        ret = TransformGaussianDisplacementFieldOutputs(
+        ret = AntsRegistrationTransformGaussianDisplacementFieldOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformBsplineDisplacementFieldOutputs(typing.NamedTuple):
+class AntsRegistrationTransformBsplineDisplacementFieldOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformBsplineDisplacementField.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformBsplineDisplacementField.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformBsplineDisplacementField:
+class AntsRegistrationTransformBsplineDisplacementField:
     """
     Description missing
     """
@@ -646,7 +646,7 @@ class TransformBsplineDisplacementField:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformBsplineDisplacementFieldOutputs:
+    ) -> AntsRegistrationTransformBsplineDisplacementFieldOutputs:
         """
         Collect output file paths.
         
@@ -654,24 +654,24 @@ class TransformBsplineDisplacementField:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformBsplineDisplacementFieldOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformBsplineDisplacementFieldOutputs`).
         """
-        ret = TransformBsplineDisplacementFieldOutputs(
+        ret = AntsRegistrationTransformBsplineDisplacementFieldOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformTimeVaryingVelocityFieldOutputs(typing.NamedTuple):
+class AntsRegistrationTransformTimeVaryingVelocityFieldOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformTimeVaryingVelocityField.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformTimeVaryingVelocityField.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformTimeVaryingVelocityField:
+class AntsRegistrationTransformTimeVaryingVelocityField:
     """
     Description missing
     """
@@ -722,7 +722,7 @@ class TransformTimeVaryingVelocityField:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformTimeVaryingVelocityFieldOutputs:
+    ) -> AntsRegistrationTransformTimeVaryingVelocityFieldOutputs:
         """
         Collect output file paths.
         
@@ -730,24 +730,24 @@ class TransformTimeVaryingVelocityField:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformTimeVaryingVelocityFieldOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformTimeVaryingVelocityFieldOutputs`).
         """
-        ret = TransformTimeVaryingVelocityFieldOutputs(
+        ret = AntsRegistrationTransformTimeVaryingVelocityFieldOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformTimeVaryingBsplineVelocityFieldOutputs(typing.NamedTuple):
+class AntsRegistrationTransformTimeVaryingBsplineVelocityFieldOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformTimeVaryingBsplineVelocityField.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformTimeVaryingBsplineVelocityField.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformTimeVaryingBsplineVelocityField:
+class AntsRegistrationTransformTimeVaryingBsplineVelocityField:
     """
     Description missing
     """
@@ -788,7 +788,7 @@ class TransformTimeVaryingBsplineVelocityField:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformTimeVaryingBsplineVelocityFieldOutputs:
+    ) -> AntsRegistrationTransformTimeVaryingBsplineVelocityFieldOutputs:
         """
         Collect output file paths.
         
@@ -796,24 +796,24 @@ class TransformTimeVaryingBsplineVelocityField:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformTimeVaryingBsplineVelocityFieldOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformTimeVaryingBsplineVelocityFieldOutputs`).
         """
-        ret = TransformTimeVaryingBsplineVelocityFieldOutputs(
+        ret = AntsRegistrationTransformTimeVaryingBsplineVelocityFieldOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformSynOutputs(typing.NamedTuple):
+class AntsRegistrationTransformSynOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformSyn.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformSyn.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformSyn:
+class AntsRegistrationTransformSyn:
     """
     Description missing
     """
@@ -850,7 +850,7 @@ class TransformSyn:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformSynOutputs:
+    ) -> AntsRegistrationTransformSynOutputs:
         """
         Collect output file paths.
         
@@ -858,24 +858,24 @@ class TransformSyn:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformSynOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformSynOutputs`).
         """
-        ret = TransformSynOutputs(
+        ret = AntsRegistrationTransformSynOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformBsplineSynOutputs(typing.NamedTuple):
+class AntsRegistrationTransformBsplineSynOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformBsplineSyn.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformBsplineSyn.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformBsplineSyn:
+class AntsRegistrationTransformBsplineSyn:
     """
     Description missing
     """
@@ -916,7 +916,7 @@ class TransformBsplineSyn:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformBsplineSynOutputs:
+    ) -> AntsRegistrationTransformBsplineSynOutputs:
         """
         Collect output file paths.
         
@@ -924,24 +924,24 @@ class TransformBsplineSyn:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformBsplineSynOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformBsplineSynOutputs`).
         """
-        ret = TransformBsplineSynOutputs(
+        ret = AntsRegistrationTransformBsplineSynOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformExponentialOutputs(typing.NamedTuple):
+class AntsRegistrationTransformExponentialOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformExponential.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformExponential.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformExponential:
+class AntsRegistrationTransformExponential:
     """
     Description missing
     """
@@ -983,7 +983,7 @@ class TransformExponential:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformExponentialOutputs:
+    ) -> AntsRegistrationTransformExponentialOutputs:
         """
         Collect output file paths.
         
@@ -991,24 +991,24 @@ class TransformExponential:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformExponentialOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformExponentialOutputs`).
         """
-        ret = TransformExponentialOutputs(
+        ret = AntsRegistrationTransformExponentialOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TransformBsplineExponentialOutputs(typing.NamedTuple):
+class AntsRegistrationTransformBsplineExponentialOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TransformBsplineExponential.run(...)`.
+    Output object returned when calling `AntsRegistrationTransformBsplineExponential.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TransformBsplineExponential:
+class AntsRegistrationTransformBsplineExponential:
     """
     Description missing
     """
@@ -1052,7 +1052,7 @@ class TransformBsplineExponential:
     def outputs(
         self,
         execution: Execution,
-    ) -> TransformBsplineExponentialOutputs:
+    ) -> AntsRegistrationTransformBsplineExponentialOutputs:
         """
         Collect output file paths.
         
@@ -1060,24 +1060,24 @@ class TransformBsplineExponential:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TransformBsplineExponentialOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationTransformBsplineExponentialOutputs`).
         """
-        ret = TransformBsplineExponentialOutputs(
+        ret = AntsRegistrationTransformBsplineExponentialOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricAntsNeighbourhoodCrossCorrelationOutputs(typing.NamedTuple):
+class AntsRegistrationMetricAntsNeighbourhoodCrossCorrelationOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MetricAntsNeighbourhoodCrossCorrelation.run(...)`.
+    Output object returned when calling `AntsRegistrationMetricAntsNeighbourhoodCrossCorrelation.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MetricAntsNeighbourhoodCrossCorrelation:
+class AntsRegistrationMetricAntsNeighbourhoodCrossCorrelation:
     """
     Description missing
     """
@@ -1131,7 +1131,7 @@ class MetricAntsNeighbourhoodCrossCorrelation:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricAntsNeighbourhoodCrossCorrelationOutputs:
+    ) -> AntsRegistrationMetricAntsNeighbourhoodCrossCorrelationOutputs:
         """
         Collect output file paths.
         
@@ -1139,24 +1139,24 @@ class MetricAntsNeighbourhoodCrossCorrelation:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricAntsNeighbourhoodCrossCorrelationOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationMetricAntsNeighbourhoodCrossCorrelationOutputs`).
         """
-        ret = MetricAntsNeighbourhoodCrossCorrelationOutputs(
+        ret = AntsRegistrationMetricAntsNeighbourhoodCrossCorrelationOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricMutualInformationOutputs(typing.NamedTuple):
+class AntsRegistrationMetricMutualInformationOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MetricMutualInformation.run(...)`.
+    Output object returned when calling `AntsRegistrationMetricMutualInformation.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MetricMutualInformation:
+class AntsRegistrationMetricMutualInformation:
     """
     Description missing
     """
@@ -1210,7 +1210,7 @@ class MetricMutualInformation:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricMutualInformationOutputs:
+    ) -> AntsRegistrationMetricMutualInformationOutputs:
         """
         Collect output file paths.
         
@@ -1218,24 +1218,24 @@ class MetricMutualInformation:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricMutualInformationOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationMetricMutualInformationOutputs`).
         """
-        ret = MetricMutualInformationOutputs(
+        ret = AntsRegistrationMetricMutualInformationOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricMattesOutputs(typing.NamedTuple):
+class AntsRegistrationMetricMattesOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MetricMattes.run(...)`.
+    Output object returned when calling `AntsRegistrationMetricMattes.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MetricMattes:
+class AntsRegistrationMetricMattes:
     """
     Description missing
     """
@@ -1289,7 +1289,7 @@ class MetricMattes:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricMattesOutputs:
+    ) -> AntsRegistrationMetricMattesOutputs:
         """
         Collect output file paths.
         
@@ -1297,24 +1297,24 @@ class MetricMattes:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricMattesOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationMetricMattesOutputs`).
         """
-        ret = MetricMattesOutputs(
+        ret = AntsRegistrationMetricMattesOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricMeanSquaresOutputs(typing.NamedTuple):
+class AntsRegistrationMetricMeanSquaresOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MetricMeanSquares.run(...)`.
+    Output object returned when calling `AntsRegistrationMetricMeanSquares.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MetricMeanSquares:
+class AntsRegistrationMetricMeanSquares:
     """
     Description missing
     """
@@ -1368,7 +1368,7 @@ class MetricMeanSquares:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricMeanSquaresOutputs:
+    ) -> AntsRegistrationMetricMeanSquaresOutputs:
         """
         Collect output file paths.
         
@@ -1376,24 +1376,24 @@ class MetricMeanSquares:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricMeanSquaresOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationMetricMeanSquaresOutputs`).
         """
-        ret = MetricMeanSquaresOutputs(
+        ret = AntsRegistrationMetricMeanSquaresOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricDemonsOutputs(typing.NamedTuple):
+class AntsRegistrationMetricDemonsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MetricDemons.run(...)`.
+    Output object returned when calling `AntsRegistrationMetricDemons.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MetricDemons:
+class AntsRegistrationMetricDemons:
     """
     Description missing
     """
@@ -1447,7 +1447,7 @@ class MetricDemons:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricDemonsOutputs:
+    ) -> AntsRegistrationMetricDemonsOutputs:
         """
         Collect output file paths.
         
@@ -1455,24 +1455,24 @@ class MetricDemons:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricDemonsOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationMetricDemonsOutputs`).
         """
-        ret = MetricDemonsOutputs(
+        ret = AntsRegistrationMetricDemonsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricGlobalCorrelationOutputs(typing.NamedTuple):
+class AntsRegistrationMetricGlobalCorrelationOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MetricGlobalCorrelation.run(...)`.
+    Output object returned when calling `AntsRegistrationMetricGlobalCorrelation.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MetricGlobalCorrelation:
+class AntsRegistrationMetricGlobalCorrelation:
     """
     Description missing
     """
@@ -1526,7 +1526,7 @@ class MetricGlobalCorrelation:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricGlobalCorrelationOutputs:
+    ) -> AntsRegistrationMetricGlobalCorrelationOutputs:
         """
         Collect output file paths.
         
@@ -1534,24 +1534,24 @@ class MetricGlobalCorrelation:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricGlobalCorrelationOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationMetricGlobalCorrelationOutputs`).
         """
-        ret = MetricGlobalCorrelationOutputs(
+        ret = AntsRegistrationMetricGlobalCorrelationOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricEuclideanIcpOutputs(typing.NamedTuple):
+class AntsRegistrationMetricEuclideanIcpOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MetricEuclideanIcp.run(...)`.
+    Output object returned when calling `AntsRegistrationMetricEuclideanIcp.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MetricEuclideanIcp:
+class AntsRegistrationMetricEuclideanIcp:
     """
     Description missing
     """
@@ -1598,7 +1598,7 @@ class MetricEuclideanIcp:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricEuclideanIcpOutputs:
+    ) -> AntsRegistrationMetricEuclideanIcpOutputs:
         """
         Collect output file paths.
         
@@ -1606,24 +1606,24 @@ class MetricEuclideanIcp:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricEuclideanIcpOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationMetricEuclideanIcpOutputs`).
         """
-        ret = MetricEuclideanIcpOutputs(
+        ret = AntsRegistrationMetricEuclideanIcpOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricPointSetExpectationOutputs(typing.NamedTuple):
+class AntsRegistrationMetricPointSetExpectationOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MetricPointSetExpectation.run(...)`.
+    Output object returned when calling `AntsRegistrationMetricPointSetExpectation.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MetricPointSetExpectation:
+class AntsRegistrationMetricPointSetExpectation:
     """
     Description missing
     """
@@ -1672,7 +1672,7 @@ class MetricPointSetExpectation:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricPointSetExpectationOutputs:
+    ) -> AntsRegistrationMetricPointSetExpectationOutputs:
         """
         Collect output file paths.
         
@@ -1680,24 +1680,24 @@ class MetricPointSetExpectation:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricPointSetExpectationOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationMetricPointSetExpectationOutputs`).
         """
-        ret = MetricPointSetExpectationOutputs(
+        ret = AntsRegistrationMetricPointSetExpectationOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricJensenHavrdaCharvetTsallisOutputs(typing.NamedTuple):
+class AntsRegistrationMetricJensenHavrdaCharvetTsallisOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MetricJensenHavrdaCharvetTsallis.run(...)`.
+    Output object returned when calling `AntsRegistrationMetricJensenHavrdaCharvetTsallis.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MetricJensenHavrdaCharvetTsallis:
+class AntsRegistrationMetricJensenHavrdaCharvetTsallis:
     """
     Description missing
     """
@@ -1750,7 +1750,7 @@ class MetricJensenHavrdaCharvetTsallis:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricJensenHavrdaCharvetTsallisOutputs:
+    ) -> AntsRegistrationMetricJensenHavrdaCharvetTsallisOutputs:
         """
         Collect output file paths.
         
@@ -1758,24 +1758,24 @@ class MetricJensenHavrdaCharvetTsallis:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricJensenHavrdaCharvetTsallisOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationMetricJensenHavrdaCharvetTsallisOutputs`).
         """
-        ret = MetricJensenHavrdaCharvetTsallisOutputs(
+        ret = AntsRegistrationMetricJensenHavrdaCharvetTsallisOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricIgdmOutputs(typing.NamedTuple):
+class AntsRegistrationMetricIgdmOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MetricIgdm.run(...)`.
+    Output object returned when calling `AntsRegistrationMetricIgdm.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MetricIgdm:
+class AntsRegistrationMetricIgdm:
     """
     Description missing
     """
@@ -1820,7 +1820,7 @@ class MetricIgdm:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricIgdmOutputs:
+    ) -> AntsRegistrationMetricIgdmOutputs:
         """
         Collect output file paths.
         
@@ -1828,24 +1828,24 @@ class MetricIgdm:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricIgdmOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationMetricIgdmOutputs`).
         """
-        ret = MetricIgdmOutputs(
+        ret = AntsRegistrationMetricIgdmOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConvergenceOutputs(typing.NamedTuple):
+class AntsRegistrationConvergenceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Convergence.run(...)`.
+    Output object returned when calling `AntsRegistrationConvergence.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Convergence:
+class AntsRegistrationConvergence:
     """
     Description missing
     """
@@ -1882,7 +1882,7 @@ class Convergence:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConvergenceOutputs:
+    ) -> AntsRegistrationConvergenceOutputs:
         """
         Collect output file paths.
         
@@ -1890,41 +1890,41 @@ class Convergence:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConvergenceOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationConvergenceOutputs`).
         """
-        ret = ConvergenceOutputs(
+        ret = AntsRegistrationConvergenceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class StageOutputs(typing.NamedTuple):
+class AntsRegistrationStageOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Stage.run(...)`.
+    Output object returned when calling `AntsRegistrationStage.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.transform: typing.Union[TransformRigidOutputs, TransformAffineOutputs, TransformCompositeAffineOutputs, TransformSimilarityOutputs, TransformTranslationOutputs, TransformBsplineOutputs, TransformGaussianDisplacementFieldOutputs, TransformBsplineDisplacementFieldOutputs, TransformTimeVaryingVelocityFieldOutputs, TransformTimeVaryingBsplineVelocityFieldOutputs, TransformSynOutputs, TransformBsplineSynOutputs, TransformExponentialOutputs, TransformBsplineExponentialOutputs]
+    self.transform: typing.Union[AntsRegistrationTransformRigidOutputs, AntsRegistrationTransformAffineOutputs, AntsRegistrationTransformCompositeAffineOutputs, AntsRegistrationTransformSimilarityOutputs, AntsRegistrationTransformTranslationOutputs, AntsRegistrationTransformBsplineOutputs, AntsRegistrationTransformGaussianDisplacementFieldOutputs, AntsRegistrationTransformBsplineDisplacementFieldOutputs, AntsRegistrationTransformTimeVaryingVelocityFieldOutputs, AntsRegistrationTransformTimeVaryingBsplineVelocityFieldOutputs, AntsRegistrationTransformSynOutputs, AntsRegistrationTransformBsplineSynOutputs, AntsRegistrationTransformExponentialOutputs, AntsRegistrationTransformBsplineExponentialOutputs]
     """Subcommand outputs"""
-    self.metric: typing.Union[MetricAntsNeighbourhoodCrossCorrelationOutputs, MetricMutualInformationOutputs, MetricMattesOutputs, MetricMeanSquaresOutputs, MetricDemonsOutputs, MetricGlobalCorrelationOutputs, MetricEuclideanIcpOutputs, MetricPointSetExpectationOutputs, MetricJensenHavrdaCharvetTsallisOutputs, MetricIgdmOutputs]
+    self.metric: typing.Union[AntsRegistrationMetricAntsNeighbourhoodCrossCorrelationOutputs, AntsRegistrationMetricMutualInformationOutputs, AntsRegistrationMetricMattesOutputs, AntsRegistrationMetricMeanSquaresOutputs, AntsRegistrationMetricDemonsOutputs, AntsRegistrationMetricGlobalCorrelationOutputs, AntsRegistrationMetricEuclideanIcpOutputs, AntsRegistrationMetricPointSetExpectationOutputs, AntsRegistrationMetricJensenHavrdaCharvetTsallisOutputs, AntsRegistrationMetricIgdmOutputs]
     """Subcommand outputs"""
-    self.convergence: ConvergenceOutputs
+    self.convergence: AntsRegistrationConvergenceOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Stage:
+class AntsRegistrationStage:
     """
     Stage of the registration process.
     """
-    transform: typing.Union[TransformRigid, TransformAffine, TransformCompositeAffine, TransformSimilarity, TransformTranslation, TransformBspline, TransformGaussianDisplacementField, TransformBsplineDisplacementField, TransformTimeVaryingVelocityField, TransformTimeVaryingBsplineVelocityField, TransformSyn, TransformBsplineSyn, TransformExponential, TransformBsplineExponential]
+    transform: typing.Union[AntsRegistrationTransformRigid, AntsRegistrationTransformAffine, AntsRegistrationTransformCompositeAffine, AntsRegistrationTransformSimilarity, AntsRegistrationTransformTranslation, AntsRegistrationTransformBspline, AntsRegistrationTransformGaussianDisplacementField, AntsRegistrationTransformBsplineDisplacementField, AntsRegistrationTransformTimeVaryingVelocityField, AntsRegistrationTransformTimeVaryingBsplineVelocityField, AntsRegistrationTransformSyn, AntsRegistrationTransformBsplineSyn, AntsRegistrationTransformExponential, AntsRegistrationTransformBsplineExponential]
     """Several transform options are available. The gradientStep or learningRate
     characterizes the gradient descent optimization and is scaled appropriately
     for each transform using the shift scales estimator. Subsequent parameters
     are transform-specific and can be determined from the usage. For the
     B-spline transforms one can also specify the smoothing in terms of spline
     distance (i.e. knot spacing)."""
-    metric: typing.Union[MetricAntsNeighbourhoodCrossCorrelation, MetricMutualInformation, MetricMattes, MetricMeanSquares, MetricDemons, MetricGlobalCorrelation, MetricEuclideanIcp, MetricPointSetExpectation, MetricJensenHavrdaCharvetTsallis, MetricIgdm]
+    metric: typing.Union[AntsRegistrationMetricAntsNeighbourhoodCrossCorrelation, AntsRegistrationMetricMutualInformation, AntsRegistrationMetricMattes, AntsRegistrationMetricMeanSquares, AntsRegistrationMetricDemons, AntsRegistrationMetricGlobalCorrelation, AntsRegistrationMetricEuclideanIcp, AntsRegistrationMetricPointSetExpectation, AntsRegistrationMetricJensenHavrdaCharvetTsallis, AntsRegistrationMetricIgdm]
     """These image metrics are available--- CC: ANTS neighborhood cross
     correlation, MI: Mutual information, Demons: (Thirion), MeanSquares, and GC:
     Global Correlation. The "metricWeight" variable is used to modulate the per
@@ -1938,7 +1938,7 @@ class Stage:
     smoothingfilter is applied when estimating the metric gradient.In addition,
     three point set metrics are available: Euclidean (ICP), Point-set
     expectation (PSE), and Jensen-Havrda-Charvet-Tsallis (JHCT)."""
-    convergence: Convergence
+    convergence: AntsRegistrationConvergence
     """Convergence is determined from the number of iterations per level and is
     determined by fitting a line to the normalized energy profile of the last N
     iterations (where N is specified by the window size) and determining the
@@ -1979,7 +1979,7 @@ class Stage:
     def outputs(
         self,
         execution: Execution,
-    ) -> StageOutputs:
+    ) -> AntsRegistrationStageOutputs:
         """
         Collect output file paths.
         
@@ -1987,9 +1987,9 @@ class Stage:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `StageOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationStageOutputs`).
         """
-        ret = StageOutputs(
+        ret = AntsRegistrationStageOutputs(
             root=execution.output_file("."),
             self.transform=self.transform.outputs(execution),
             self.metric=self.metric.outputs(execution),
@@ -1998,16 +1998,16 @@ class Stage:
         return ret
 
 
-class WinsorizeImageIntensitiesOutputs(typing.NamedTuple):
+class AntsRegistrationWinsorizeImageIntensitiesOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `WinsorizeImageIntensities.run(...)`.
+    Output object returned when calling `AntsRegistrationWinsorizeImageIntensities.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class WinsorizeImageIntensities:
+class AntsRegistrationWinsorizeImageIntensities:
     """
     Description missing
     """
@@ -2041,7 +2041,7 @@ class WinsorizeImageIntensities:
     def outputs(
         self,
         execution: Execution,
-    ) -> WinsorizeImageIntensitiesOutputs:
+    ) -> AntsRegistrationWinsorizeImageIntensitiesOutputs:
         """
         Collect output file paths.
         
@@ -2049,24 +2049,24 @@ class WinsorizeImageIntensities:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `WinsorizeImageIntensitiesOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationWinsorizeImageIntensitiesOutputs`).
         """
-        ret = WinsorizeImageIntensitiesOutputs(
+        ret = AntsRegistrationWinsorizeImageIntensitiesOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MasksOutputs(typing.NamedTuple):
+class AntsRegistrationMasksOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Masks.run(...)`.
+    Output object returned when calling `AntsRegistrationMasks.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Masks:
+class AntsRegistrationMasks:
     """
     Description missing
     """
@@ -2101,7 +2101,7 @@ class Masks:
     def outputs(
         self,
         execution: Execution,
-    ) -> MasksOutputs:
+    ) -> AntsRegistrationMasksOutputs:
         """
         Collect output file paths.
         
@@ -2109,9 +2109,9 @@ class Masks:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MasksOutputs`).
+            NamedTuple of outputs (described in `AntsRegistrationMasksOutputs`).
         """
-        ret = MasksOutputs(
+        ret = AntsRegistrationMasksOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -2125,18 +2125,18 @@ class AntsRegistrationOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_transform: OutputPathType | None
     """The output transform file."""
-    initial_moving_transform: typing.Union[InitialMovingTransformOutputs, InitialMovingTransformUseInverseOutputs, InitialMovingTransformInitializationFeatureOutputs]
+    initial_moving_transform: typing.Union[AntsRegistrationInitialMovingTransformOutputs, AntsRegistrationInitialMovingTransformUseInverseOutputs, AntsRegistrationInitialMovingTransformInitializationFeatureOutputs]
     """Subcommand outputs"""
-    stages: StageOutputs
+    stages: typing.List[AntsRegistrationStageOutputs]
     """Subcommand outputs"""
-    winsorize_image_intensities: WinsorizeImageIntensitiesOutputs
+    winsorize_image_intensities: AntsRegistrationWinsorizeImageIntensitiesOutputs
     """Subcommand outputs"""
-    masks: MasksOutputs
+    masks: AntsRegistrationMasksOutputs
     """Subcommand outputs"""
 
 
 def ants_registration(
-    stages: list[Stage],
+    stages: list[AntsRegistrationStage],
     dimensionality: typing.Literal[2, 3, 4] | None = None,
     output: str | None = None,
     save_state: str | None = None,
@@ -2149,9 +2149,9 @@ def ants_registration(
     interpolation: typing.Literal["Linear", "NearestNeighbor", "MultiLabel", "Gaussian", "BSpline", "CosineWindowedSinc", "WelchWindowedSinc", "HammingWindowedSinc", "LanczosWindowedSinc", "GenericLabel"] | None = None,
     restrict_deformation: list[typing.Literal[0, 1]] = None,
     initial_fixed_transform: str | None = None,
-    initial_moving_transform: typing.Union[InitialMovingTransform, InitialMovingTransformUseInverse, InitialMovingTransformInitializationFeature] | None = None,
-    winsorize_image_intensities: WinsorizeImageIntensities | None = None,
-    masks: Masks | None = None,
+    initial_moving_transform: typing.Union[AntsRegistrationInitialMovingTransform, AntsRegistrationInitialMovingTransformUseInverse, AntsRegistrationInitialMovingTransformInitializationFeature] | None = None,
+    winsorize_image_intensities: AntsRegistrationWinsorizeImageIntensities | None = None,
+    masks: AntsRegistrationMasks | None = None,
     minc: typing.Literal[0, 1] | None = None,
     random_seed: int | None = None,
     verbose: typing.Literal[0, 1] | None = None,
@@ -2343,68 +2343,68 @@ def ants_registration(
 
 __all__ = [
     "ANTS_REGISTRATION_METADATA",
+    "AntsRegistrationConvergence",
+    "AntsRegistrationConvergenceOutputs",
+    "AntsRegistrationInitialMovingTransform",
+    "AntsRegistrationInitialMovingTransformInitializationFeature",
+    "AntsRegistrationInitialMovingTransformInitializationFeatureOutputs",
+    "AntsRegistrationInitialMovingTransformOutputs",
+    "AntsRegistrationInitialMovingTransformUseInverse",
+    "AntsRegistrationInitialMovingTransformUseInverseOutputs",
+    "AntsRegistrationMasks",
+    "AntsRegistrationMasksOutputs",
+    "AntsRegistrationMetricAntsNeighbourhoodCrossCorrelation",
+    "AntsRegistrationMetricAntsNeighbourhoodCrossCorrelationOutputs",
+    "AntsRegistrationMetricDemons",
+    "AntsRegistrationMetricDemonsOutputs",
+    "AntsRegistrationMetricEuclideanIcp",
+    "AntsRegistrationMetricEuclideanIcpOutputs",
+    "AntsRegistrationMetricGlobalCorrelation",
+    "AntsRegistrationMetricGlobalCorrelationOutputs",
+    "AntsRegistrationMetricIgdm",
+    "AntsRegistrationMetricIgdmOutputs",
+    "AntsRegistrationMetricJensenHavrdaCharvetTsallis",
+    "AntsRegistrationMetricJensenHavrdaCharvetTsallisOutputs",
+    "AntsRegistrationMetricMattes",
+    "AntsRegistrationMetricMattesOutputs",
+    "AntsRegistrationMetricMeanSquares",
+    "AntsRegistrationMetricMeanSquaresOutputs",
+    "AntsRegistrationMetricMutualInformation",
+    "AntsRegistrationMetricMutualInformationOutputs",
+    "AntsRegistrationMetricPointSetExpectation",
+    "AntsRegistrationMetricPointSetExpectationOutputs",
     "AntsRegistrationOutputs",
-    "Convergence",
-    "ConvergenceOutputs",
-    "InitialMovingTransform",
-    "InitialMovingTransformInitializationFeature",
-    "InitialMovingTransformInitializationFeatureOutputs",
-    "InitialMovingTransformOutputs",
-    "InitialMovingTransformUseInverse",
-    "InitialMovingTransformUseInverseOutputs",
-    "Masks",
-    "MasksOutputs",
-    "MetricAntsNeighbourhoodCrossCorrelation",
-    "MetricAntsNeighbourhoodCrossCorrelationOutputs",
-    "MetricDemons",
-    "MetricDemonsOutputs",
-    "MetricEuclideanIcp",
-    "MetricEuclideanIcpOutputs",
-    "MetricGlobalCorrelation",
-    "MetricGlobalCorrelationOutputs",
-    "MetricIgdm",
-    "MetricIgdmOutputs",
-    "MetricJensenHavrdaCharvetTsallis",
-    "MetricJensenHavrdaCharvetTsallisOutputs",
-    "MetricMattes",
-    "MetricMattesOutputs",
-    "MetricMeanSquares",
-    "MetricMeanSquaresOutputs",
-    "MetricMutualInformation",
-    "MetricMutualInformationOutputs",
-    "MetricPointSetExpectation",
-    "MetricPointSetExpectationOutputs",
-    "Stage",
-    "StageOutputs",
-    "TransformAffine",
-    "TransformAffineOutputs",
-    "TransformBspline",
-    "TransformBsplineDisplacementField",
-    "TransformBsplineDisplacementFieldOutputs",
-    "TransformBsplineExponential",
-    "TransformBsplineExponentialOutputs",
-    "TransformBsplineOutputs",
-    "TransformBsplineSyn",
-    "TransformBsplineSynOutputs",
-    "TransformCompositeAffine",
-    "TransformCompositeAffineOutputs",
-    "TransformExponential",
-    "TransformExponentialOutputs",
-    "TransformGaussianDisplacementField",
-    "TransformGaussianDisplacementFieldOutputs",
-    "TransformRigid",
-    "TransformRigidOutputs",
-    "TransformSimilarity",
-    "TransformSimilarityOutputs",
-    "TransformSyn",
-    "TransformSynOutputs",
-    "TransformTimeVaryingBsplineVelocityField",
-    "TransformTimeVaryingBsplineVelocityFieldOutputs",
-    "TransformTimeVaryingVelocityField",
-    "TransformTimeVaryingVelocityFieldOutputs",
-    "TransformTranslation",
-    "TransformTranslationOutputs",
-    "WinsorizeImageIntensities",
-    "WinsorizeImageIntensitiesOutputs",
+    "AntsRegistrationStage",
+    "AntsRegistrationStageOutputs",
+    "AntsRegistrationTransformAffine",
+    "AntsRegistrationTransformAffineOutputs",
+    "AntsRegistrationTransformBspline",
+    "AntsRegistrationTransformBsplineDisplacementField",
+    "AntsRegistrationTransformBsplineDisplacementFieldOutputs",
+    "AntsRegistrationTransformBsplineExponential",
+    "AntsRegistrationTransformBsplineExponentialOutputs",
+    "AntsRegistrationTransformBsplineOutputs",
+    "AntsRegistrationTransformBsplineSyn",
+    "AntsRegistrationTransformBsplineSynOutputs",
+    "AntsRegistrationTransformCompositeAffine",
+    "AntsRegistrationTransformCompositeAffineOutputs",
+    "AntsRegistrationTransformExponential",
+    "AntsRegistrationTransformExponentialOutputs",
+    "AntsRegistrationTransformGaussianDisplacementField",
+    "AntsRegistrationTransformGaussianDisplacementFieldOutputs",
+    "AntsRegistrationTransformRigid",
+    "AntsRegistrationTransformRigidOutputs",
+    "AntsRegistrationTransformSimilarity",
+    "AntsRegistrationTransformSimilarityOutputs",
+    "AntsRegistrationTransformSyn",
+    "AntsRegistrationTransformSynOutputs",
+    "AntsRegistrationTransformTimeVaryingBsplineVelocityField",
+    "AntsRegistrationTransformTimeVaryingBsplineVelocityFieldOutputs",
+    "AntsRegistrationTransformTimeVaryingVelocityField",
+    "AntsRegistrationTransformTimeVaryingVelocityFieldOutputs",
+    "AntsRegistrationTransformTranslation",
+    "AntsRegistrationTransformTranslationOutputs",
+    "AntsRegistrationWinsorizeImageIntensities",
+    "AntsRegistrationWinsorizeImageIntensitiesOutputs",
     "ants_registration",
 ]

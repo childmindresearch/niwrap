@@ -16,16 +16,16 @@ VOLUME_MERGE_METADATA = Metadata(
 )
 
 
-class UpToOutputs(typing.NamedTuple):
+class VolumeMergeUpToOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `UpTo.run(...)`.
+    Output object returned when calling `VolumeMergeUpTo.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class UpTo:
+class VolumeMergeUpTo:
     """
     use an inclusive range of subvolumes
     """
@@ -53,7 +53,7 @@ class UpTo:
     def outputs(
         self,
         execution: Execution,
-    ) -> UpToOutputs:
+    ) -> VolumeMergeUpToOutputs:
         """
         Collect output file paths.
         
@@ -61,30 +61,30 @@ class UpTo:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `UpToOutputs`).
+            NamedTuple of outputs (described in `VolumeMergeUpToOutputs`).
         """
-        ret = UpToOutputs(
+        ret = VolumeMergeUpToOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SubvolumeOutputs(typing.NamedTuple):
+class VolumeMergeSubvolumeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Subvolume.run(...)`.
+    Output object returned when calling `VolumeMergeSubvolume.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.up_to: UpToOutputs
+    self.up_to: VolumeMergeUpToOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Subvolume:
+class VolumeMergeSubvolume:
     """
     select a single subvolume to use
     """
-    up_to: UpTo | None = None
+    up_to: VolumeMergeUpTo | None = None
     """use an inclusive range of subvolumes"""
     
     def run(
@@ -108,7 +108,7 @@ class Subvolume:
     def outputs(
         self,
         execution: Execution,
-    ) -> SubvolumeOutputs:
+    ) -> VolumeMergeSubvolumeOutputs:
         """
         Collect output file paths.
         
@@ -116,31 +116,31 @@ class Subvolume:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SubvolumeOutputs`).
+            NamedTuple of outputs (described in `VolumeMergeSubvolumeOutputs`).
         """
-        ret = SubvolumeOutputs(
+        ret = VolumeMergeSubvolumeOutputs(
             root=execution.output_file("."),
             self.up_to=self.up_to.outputs(execution),
         )
         return ret
 
 
-class VolumeOutputs(typing.NamedTuple):
+class VolumeMergeVolumeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Volume.run(...)`.
+    Output object returned when calling `VolumeMergeVolume.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.subvolume: SubvolumeOutputs
+    self.subvolume: typing.List[VolumeMergeSubvolumeOutputs]
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Volume:
+class VolumeMergeVolume:
     """
     specify an input volume file
     """
-    subvolume: list[Subvolume] = None
+    subvolume: list[VolumeMergeSubvolume] = None
     """select a single subvolume to use"""
     
     def run(
@@ -164,7 +164,7 @@ class Volume:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeOutputs:
+    ) -> VolumeMergeVolumeOutputs:
         """
         Collect output file paths.
         
@@ -172,9 +172,9 @@ class Volume:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeOutputs`).
+            NamedTuple of outputs (described in `VolumeMergeVolumeOutputs`).
         """
-        ret = VolumeOutputs(
+        ret = VolumeMergeVolumeOutputs(
             root=execution.output_file("."),
             self.subvolume=[self.subvolume.outputs(execution) for self.subvolume in self.subvolume],
         )
@@ -189,13 +189,13 @@ class VolumeMergeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume file"""
-    volume: VolumeOutputs
+    volume: typing.List[VolumeMergeVolumeOutputs]
     """Subcommand outputs"""
 
 
 def volume_merge(
     volume_out: InputPathType,
-    volume: list[Volume] = None,
+    volume: list[VolumeMergeVolume] = None,
     runner: Runner = None,
 ) -> VolumeMergeOutputs:
     """
@@ -238,13 +238,13 @@ def volume_merge(
 
 
 __all__ = [
-    "Subvolume",
-    "SubvolumeOutputs",
-    "UpTo",
-    "UpToOutputs",
     "VOLUME_MERGE_METADATA",
-    "Volume",
     "VolumeMergeOutputs",
-    "VolumeOutputs",
+    "VolumeMergeSubvolume",
+    "VolumeMergeSubvolumeOutputs",
+    "VolumeMergeUpTo",
+    "VolumeMergeUpToOutputs",
+    "VolumeMergeVolume",
+    "VolumeMergeVolumeOutputs",
     "volume_merge",
 ]

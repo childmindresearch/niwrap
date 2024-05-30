@@ -16,16 +16,16 @@ VOLUME_CREATE_METADATA = Metadata(
 )
 
 
-class PlumbOutputs(typing.NamedTuple):
+class VolumeCreatePlumbOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Plumb.run(...)`.
+    Output object returned when calling `VolumeCreatePlumb.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Plumb:
+class VolumeCreatePlumb:
     """
     set via axis order and spacing/offset
     """
@@ -49,7 +49,7 @@ class Plumb:
     def outputs(
         self,
         execution: Execution,
-    ) -> PlumbOutputs:
+    ) -> VolumeCreatePlumbOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class Plumb:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PlumbOutputs`).
+            NamedTuple of outputs (described in `VolumeCreatePlumbOutputs`).
         """
-        ret = PlumbOutputs(
+        ret = VolumeCreatePlumbOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SformOutputs(typing.NamedTuple):
+class VolumeCreateSformOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Sform.run(...)`.
+    Output object returned when calling `VolumeCreateSform.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Sform:
+class VolumeCreateSform:
     """
     set via a nifti sform
     """
@@ -98,7 +98,7 @@ class Sform:
     def outputs(
         self,
         execution: Execution,
-    ) -> SformOutputs:
+    ) -> VolumeCreateSformOutputs:
         """
         Collect output file paths.
         
@@ -106,9 +106,9 @@ class Sform:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SformOutputs`).
+            NamedTuple of outputs (described in `VolumeCreateSformOutputs`).
         """
-        ret = SformOutputs(
+        ret = VolumeCreateSformOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -122,9 +122,9 @@ class VolumeCreateOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume"""
-    plumb: PlumbOutputs
+    plumb: VolumeCreatePlumbOutputs
     """Subcommand outputs"""
-    sform: SformOutputs
+    sform: VolumeCreateSformOutputs
     """Subcommand outputs"""
 
 
@@ -133,8 +133,8 @@ def volume_create(
     j_dim: int,
     k_dim: int,
     volume_out: InputPathType,
-    plumb: Plumb | None = None,
-    sform: Sform | None = None,
+    plumb: VolumeCreatePlumb | None = None,
+    sform: VolumeCreateSform | None = None,
     runner: Runner = None,
 ) -> VolumeCreateOutputs:
     """
@@ -180,11 +180,11 @@ def volume_create(
 
 
 __all__ = [
-    "Plumb",
-    "PlumbOutputs",
-    "Sform",
-    "SformOutputs",
     "VOLUME_CREATE_METADATA",
     "VolumeCreateOutputs",
+    "VolumeCreatePlumb",
+    "VolumeCreatePlumbOutputs",
+    "VolumeCreateSform",
+    "VolumeCreateSformOutputs",
     "volume_create",
 ]

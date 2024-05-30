@@ -16,16 +16,16 @@ CIFTI_REPLACE_STRUCTURE_METADATA = Metadata(
 )
 
 
-class VolumeAllOutputs(typing.NamedTuple):
+class CiftiReplaceStructureVolumeAllOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `VolumeAll.run(...)`.
+    Output object returned when calling `CiftiReplaceStructureVolumeAll.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class VolumeAll:
+class CiftiReplaceStructureVolumeAll:
     """
     replace the data in all volume components
     """
@@ -53,7 +53,7 @@ class VolumeAll:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeAllOutputs:
+    ) -> CiftiReplaceStructureVolumeAllOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class VolumeAll:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeAllOutputs`).
+            NamedTuple of outputs (described in `CiftiReplaceStructureVolumeAllOutputs`).
         """
-        ret = VolumeAllOutputs(
+        ret = CiftiReplaceStructureVolumeAllOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LabelOutputs(typing.NamedTuple):
+class CiftiReplaceStructureLabelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Label.run(...)`.
+    Output object returned when calling `CiftiReplaceStructureLabel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Label:
+class CiftiReplaceStructureLabel:
     """
     replace the data in a surface label component
     """
@@ -102,7 +102,7 @@ class Label:
     def outputs(
         self,
         execution: Execution,
-    ) -> LabelOutputs:
+    ) -> CiftiReplaceStructureLabelOutputs:
         """
         Collect output file paths.
         
@@ -110,24 +110,24 @@ class Label:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LabelOutputs`).
+            NamedTuple of outputs (described in `CiftiReplaceStructureLabelOutputs`).
         """
-        ret = LabelOutputs(
+        ret = CiftiReplaceStructureLabelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricOutputs(typing.NamedTuple):
+class CiftiReplaceStructureMetricOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Metric.run(...)`.
+    Output object returned when calling `CiftiReplaceStructureMetric.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Metric:
+class CiftiReplaceStructureMetric:
     """
     replace the data in a surface component
     """
@@ -151,7 +151,7 @@ class Metric:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricOutputs:
+    ) -> CiftiReplaceStructureMetricOutputs:
         """
         Collect output file paths.
         
@@ -159,24 +159,24 @@ class Metric:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricOutputs`).
+            NamedTuple of outputs (described in `CiftiReplaceStructureMetricOutputs`).
         """
-        ret = MetricOutputs(
+        ret = CiftiReplaceStructureMetricOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class VolumeOutputs(typing.NamedTuple):
+class CiftiReplaceStructureVolumeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Volume.run(...)`.
+    Output object returned when calling `CiftiReplaceStructureVolume.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Volume:
+class CiftiReplaceStructureVolume:
     """
     replace the data in a volume component
     """
@@ -204,7 +204,7 @@ class Volume:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeOutputs:
+    ) -> CiftiReplaceStructureVolumeOutputs:
         """
         Collect output file paths.
         
@@ -212,9 +212,9 @@ class Volume:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeOutputs`).
+            NamedTuple of outputs (described in `CiftiReplaceStructureVolumeOutputs`).
         """
-        ret = VolumeOutputs(
+        ret = CiftiReplaceStructureVolumeOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -226,25 +226,25 @@ class CiftiReplaceStructureOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    volume_all: VolumeAllOutputs
+    volume_all: CiftiReplaceStructureVolumeAllOutputs
     """Subcommand outputs"""
-    label: LabelOutputs
+    label: typing.List[CiftiReplaceStructureLabelOutputs]
     """Subcommand outputs"""
-    metric: MetricOutputs
+    metric: typing.List[CiftiReplaceStructureMetricOutputs]
     """Subcommand outputs"""
-    volume: VolumeOutputs
+    volume: typing.List[CiftiReplaceStructureVolumeOutputs]
     """Subcommand outputs"""
 
 
 def cifti_replace_structure(
     cifti: str,
     direction: str,
-    volume_all: VolumeAll | None = None,
+    volume_all: CiftiReplaceStructureVolumeAll | None = None,
     opt_discard_unused_labels: bool = False,
     opt_label_collision_action: str | None = None,
-    label: list[Label] = None,
-    metric: list[Metric] = None,
-    volume: list[Volume] = None,
+    label: list[CiftiReplaceStructureLabel] = None,
+    metric: list[CiftiReplaceStructureMetric] = None,
+    volume: list[CiftiReplaceStructureVolume] = None,
     runner: Runner = None,
 ) -> CiftiReplaceStructureOutputs:
     """
@@ -346,14 +346,14 @@ def cifti_replace_structure(
 
 __all__ = [
     "CIFTI_REPLACE_STRUCTURE_METADATA",
+    "CiftiReplaceStructureLabel",
+    "CiftiReplaceStructureLabelOutputs",
+    "CiftiReplaceStructureMetric",
+    "CiftiReplaceStructureMetricOutputs",
     "CiftiReplaceStructureOutputs",
-    "Label",
-    "LabelOutputs",
-    "Metric",
-    "MetricOutputs",
-    "Volume",
-    "VolumeAll",
-    "VolumeAllOutputs",
-    "VolumeOutputs",
+    "CiftiReplaceStructureVolume",
+    "CiftiReplaceStructureVolumeAll",
+    "CiftiReplaceStructureVolumeAllOutputs",
+    "CiftiReplaceStructureVolumeOutputs",
     "cifti_replace_structure",
 ]

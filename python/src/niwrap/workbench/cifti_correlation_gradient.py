@@ -16,16 +16,16 @@ CIFTI_CORRELATION_GRADIENT_METADATA = Metadata(
 )
 
 
-class LeftSurfaceOutputs(typing.NamedTuple):
+class CiftiCorrelationGradientLeftSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftSurface.run(...)`.
+    Output object returned when calling `CiftiCorrelationGradientLeftSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftSurface:
+class CiftiCorrelationGradientLeftSurface:
     """
     specify the left surface to use
     """
@@ -54,7 +54,7 @@ class LeftSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftSurfaceOutputs:
+    ) -> CiftiCorrelationGradientLeftSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -62,24 +62,24 @@ class LeftSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiCorrelationGradientLeftSurfaceOutputs`).
         """
-        ret = LeftSurfaceOutputs(
+        ret = CiftiCorrelationGradientLeftSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightSurfaceOutputs(typing.NamedTuple):
+class CiftiCorrelationGradientRightSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightSurface.run(...)`.
+    Output object returned when calling `CiftiCorrelationGradientRightSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightSurface:
+class CiftiCorrelationGradientRightSurface:
     """
     specify the right surface to use
     """
@@ -108,7 +108,7 @@ class RightSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightSurfaceOutputs:
+    ) -> CiftiCorrelationGradientRightSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -116,24 +116,24 @@ class RightSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiCorrelationGradientRightSurfaceOutputs`).
         """
-        ret = RightSurfaceOutputs(
+        ret = CiftiCorrelationGradientRightSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumSurfaceOutputs(typing.NamedTuple):
+class CiftiCorrelationGradientCerebellumSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumSurface.run(...)`.
+    Output object returned when calling `CiftiCorrelationGradientCerebellumSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumSurface:
+class CiftiCorrelationGradientCerebellumSurface:
     """
     specify the cerebellum surface to use
     """
@@ -162,7 +162,7 @@ class CerebellumSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumSurfaceOutputs:
+    ) -> CiftiCorrelationGradientCerebellumSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -170,24 +170,24 @@ class CerebellumSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiCorrelationGradientCerebellumSurfaceOutputs`).
         """
-        ret = CerebellumSurfaceOutputs(
+        ret = CiftiCorrelationGradientCerebellumSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class DoubleCorrelationOutputs(typing.NamedTuple):
+class CiftiCorrelationGradientDoubleCorrelationOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `DoubleCorrelation.run(...)`.
+    Output object returned when calling `CiftiCorrelationGradientDoubleCorrelation.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class DoubleCorrelation:
+class CiftiCorrelationGradientDoubleCorrelation:
     """
     do two correlations before taking the gradient
     """
@@ -225,7 +225,7 @@ class DoubleCorrelation:
     def outputs(
         self,
         execution: Execution,
-    ) -> DoubleCorrelationOutputs:
+    ) -> CiftiCorrelationGradientDoubleCorrelationOutputs:
         """
         Collect output file paths.
         
@@ -233,9 +233,9 @@ class DoubleCorrelation:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `DoubleCorrelationOutputs`).
+            NamedTuple of outputs (described in `CiftiCorrelationGradientDoubleCorrelationOutputs`).
         """
-        ret = DoubleCorrelationOutputs(
+        ret = CiftiCorrelationGradientDoubleCorrelationOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -249,22 +249,22 @@ class CiftiCorrelationGradientOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti"""
-    left_surface: LeftSurfaceOutputs
+    left_surface: CiftiCorrelationGradientLeftSurfaceOutputs
     """Subcommand outputs"""
-    right_surface: RightSurfaceOutputs
+    right_surface: CiftiCorrelationGradientRightSurfaceOutputs
     """Subcommand outputs"""
-    cerebellum_surface: CerebellumSurfaceOutputs
+    cerebellum_surface: CiftiCorrelationGradientCerebellumSurfaceOutputs
     """Subcommand outputs"""
-    double_correlation: DoubleCorrelationOutputs
+    double_correlation: CiftiCorrelationGradientDoubleCorrelationOutputs
     """Subcommand outputs"""
 
 
 def cifti_correlation_gradient(
     cifti: InputPathType,
     cifti_out: InputPathType,
-    left_surface: LeftSurface | None = None,
-    right_surface: RightSurface | None = None,
-    cerebellum_surface: CerebellumSurface | None = None,
+    left_surface: CiftiCorrelationGradientLeftSurface | None = None,
+    right_surface: CiftiCorrelationGradientRightSurface | None = None,
+    cerebellum_surface: CiftiCorrelationGradientCerebellumSurface | None = None,
     opt_surface_presmooth_surface_kernel: float | int | None = None,
     opt_volume_presmooth_volume_kernel: float | int | None = None,
     opt_presmooth_fwhm: bool = False,
@@ -274,7 +274,7 @@ def cifti_correlation_gradient(
     opt_volume_exclude_distance: float | int | None = None,
     opt_covariance: bool = False,
     opt_mem_limit_limit_gb: float | int | None = None,
-    double_correlation: DoubleCorrelation | None = None,
+    double_correlation: CiftiCorrelationGradientDoubleCorrelation | None = None,
     runner: Runner = None,
 ) -> CiftiCorrelationGradientOutputs:
     """
@@ -363,14 +363,14 @@ def cifti_correlation_gradient(
 
 __all__ = [
     "CIFTI_CORRELATION_GRADIENT_METADATA",
-    "CerebellumSurface",
-    "CerebellumSurfaceOutputs",
+    "CiftiCorrelationGradientCerebellumSurface",
+    "CiftiCorrelationGradientCerebellumSurfaceOutputs",
+    "CiftiCorrelationGradientDoubleCorrelation",
+    "CiftiCorrelationGradientDoubleCorrelationOutputs",
+    "CiftiCorrelationGradientLeftSurface",
+    "CiftiCorrelationGradientLeftSurfaceOutputs",
     "CiftiCorrelationGradientOutputs",
-    "DoubleCorrelation",
-    "DoubleCorrelationOutputs",
-    "LeftSurface",
-    "LeftSurfaceOutputs",
-    "RightSurface",
-    "RightSurfaceOutputs",
+    "CiftiCorrelationGradientRightSurface",
+    "CiftiCorrelationGradientRightSurfaceOutputs",
     "cifti_correlation_gradient",
 ]

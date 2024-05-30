@@ -16,16 +16,16 @@ MRCLUSTERSTATS_METADATA = Metadata(
 )
 
 
-class ColumnOutputs(typing.NamedTuple):
+class MrclusterstatsColumnOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Column.run(...)`.
+    Output object returned when calling `MrclusterstatsColumn.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Column:
+class MrclusterstatsColumn:
     """
     add a column to the design matrix corresponding to subject voxel-wise values (note that the contrast matrix must include an additional column for each use of this option); the text file provided via this option should contain a file name for each subject
     """
@@ -56,7 +56,7 @@ class Column:
     def outputs(
         self,
         execution: Execution,
-    ) -> ColumnOutputs:
+    ) -> MrclusterstatsColumnOutputs:
         """
         Collect output file paths.
         
@@ -64,24 +64,24 @@ class Column:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ColumnOutputs`).
+            NamedTuple of outputs (described in `MrclusterstatsColumnOutputs`).
         """
-        ret = ColumnOutputs(
+        ret = MrclusterstatsColumnOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrclusterstatsConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrclusterstatsConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrclusterstatsConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -112,7 +112,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrclusterstatsConfigOutputs:
         """
         Collect output file paths.
         
@@ -120,9 +120,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrclusterstatsConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrclusterstatsConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -134,9 +134,9 @@ class MrclusterstatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    column: ColumnOutputs
+    column: typing.List[MrclusterstatsColumnOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[MrclusterstatsConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -163,7 +163,7 @@ def mrclusterstats(
     variance: InputPathType | None = None,
     ftests: InputPathType | None = None,
     fonly: bool = False,
-    column: list[Column] = None,
+    column: list[MrclusterstatsColumn] = None,
     threshold: float | int | None = None,
     connectivity: bool = False,
     info: bool = False,
@@ -171,7 +171,7 @@ def mrclusterstats(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrclusterstatsConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -356,11 +356,11 @@ def mrclusterstats(
 
 
 __all__ = [
-    "Column",
-    "ColumnOutputs",
-    "Config",
-    "ConfigOutputs",
     "MRCLUSTERSTATS_METADATA",
+    "MrclusterstatsColumn",
+    "MrclusterstatsColumnOutputs",
+    "MrclusterstatsConfig",
+    "MrclusterstatsConfigOutputs",
     "MrclusterstatsOutputs",
     "mrclusterstats",
 ]

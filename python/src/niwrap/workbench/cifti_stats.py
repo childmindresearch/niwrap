@@ -16,16 +16,16 @@ CIFTI_STATS_METADATA = Metadata(
 )
 
 
-class RoiOutputs(typing.NamedTuple):
+class CiftiStatsRoiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Roi.run(...)`.
+    Output object returned when calling `CiftiStatsRoi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Roi:
+class CiftiStatsRoi:
     """
     only consider data inside an roi
     """
@@ -53,7 +53,7 @@ class Roi:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiOutputs:
+    ) -> CiftiStatsRoiOutputs:
         """
         Collect output file paths.
         
@@ -61,9 +61,9 @@ class Roi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiOutputs`).
+            NamedTuple of outputs (described in `CiftiStatsRoiOutputs`).
         """
-        ret = RoiOutputs(
+        ret = CiftiStatsRoiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -75,7 +75,7 @@ class CiftiStatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    roi: RoiOutputs
+    roi: CiftiStatsRoiOutputs
     """Subcommand outputs"""
 
 
@@ -84,7 +84,7 @@ def cifti_stats(
     opt_reduce_operation: str | None = None,
     opt_percentile_percent: float | int | None = None,
     opt_column_column: int | None = None,
-    roi: Roi | None = None,
+    roi: CiftiStatsRoi | None = None,
     opt_show_map_name: bool = False,
     runner: Runner = None,
 ) -> CiftiStatsOutputs:
@@ -160,7 +160,7 @@ def cifti_stats(
 __all__ = [
     "CIFTI_STATS_METADATA",
     "CiftiStatsOutputs",
-    "Roi",
-    "RoiOutputs",
+    "CiftiStatsRoi",
+    "CiftiStatsRoiOutputs",
     "cifti_stats",
 ]

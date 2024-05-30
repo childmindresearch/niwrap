@@ -16,16 +16,16 @@ VOLUME_EXTREMA_METADATA = Metadata(
 )
 
 
-class PresmoothOutputs(typing.NamedTuple):
+class VolumeExtremaPresmoothOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Presmooth.run(...)`.
+    Output object returned when calling `VolumeExtremaPresmooth.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Presmooth:
+class VolumeExtremaPresmooth:
     """
     smooth the volume before finding extrema
     """
@@ -53,7 +53,7 @@ class Presmooth:
     def outputs(
         self,
         execution: Execution,
-    ) -> PresmoothOutputs:
+    ) -> VolumeExtremaPresmoothOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class Presmooth:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PresmoothOutputs`).
+            NamedTuple of outputs (described in `VolumeExtremaPresmoothOutputs`).
         """
-        ret = PresmoothOutputs(
+        ret = VolumeExtremaPresmoothOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ThresholdOutputs(typing.NamedTuple):
+class VolumeExtremaThresholdOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Threshold.run(...)`.
+    Output object returned when calling `VolumeExtremaThreshold.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Threshold:
+class VolumeExtremaThreshold:
     """
     ignore small extrema
     """
@@ -102,7 +102,7 @@ class Threshold:
     def outputs(
         self,
         execution: Execution,
-    ) -> ThresholdOutputs:
+    ) -> VolumeExtremaThresholdOutputs:
         """
         Collect output file paths.
         
@@ -110,9 +110,9 @@ class Threshold:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ThresholdOutputs`).
+            NamedTuple of outputs (described in `VolumeExtremaThresholdOutputs`).
         """
-        ret = ThresholdOutputs(
+        ret = VolumeExtremaThresholdOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -126,9 +126,9 @@ class VolumeExtremaOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output extrema volume"""
-    presmooth: PresmoothOutputs
+    presmooth: VolumeExtremaPresmoothOutputs
     """Subcommand outputs"""
-    threshold: ThresholdOutputs
+    threshold: VolumeExtremaThresholdOutputs
     """Subcommand outputs"""
 
 
@@ -136,9 +136,9 @@ def volume_extrema(
     volume_in: InputPathType,
     distance: float | int,
     volume_out: InputPathType,
-    presmooth: Presmooth | None = None,
+    presmooth: VolumeExtremaPresmooth | None = None,
     opt_roi_roi_volume: InputPathType | None = None,
-    threshold: Threshold | None = None,
+    threshold: VolumeExtremaThreshold | None = None,
     opt_sum_subvols: bool = False,
     opt_consolidate_mode: bool = False,
     opt_only_maxima: bool = False,
@@ -228,11 +228,11 @@ def volume_extrema(
 
 
 __all__ = [
-    "Presmooth",
-    "PresmoothOutputs",
-    "Threshold",
-    "ThresholdOutputs",
     "VOLUME_EXTREMA_METADATA",
     "VolumeExtremaOutputs",
+    "VolumeExtremaPresmooth",
+    "VolumeExtremaPresmoothOutputs",
+    "VolumeExtremaThreshold",
+    "VolumeExtremaThresholdOutputs",
     "volume_extrema",
 ]

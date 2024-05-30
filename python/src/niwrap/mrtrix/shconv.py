@@ -16,16 +16,16 @@ SHCONV_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class ShconvConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `ShconvConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class ShconvConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> ShconvConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `ShconvConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = ShconvConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class ShconvOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     sh_out: OutputPathType
     """the output spherical harmonics coefficients image."""
-    config: ConfigOutputs
+    config: typing.List[ShconvConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -94,7 +94,7 @@ def shconv(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[ShconvConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -196,9 +196,9 @@ def shconv(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "SHCONV_METADATA",
+    "ShconvConfig",
+    "ShconvConfigOutputs",
     "ShconvOutputs",
     "shconv",
 ]

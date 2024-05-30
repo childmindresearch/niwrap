@@ -16,16 +16,16 @@ TCK2FIXEL_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Tck2fixelConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Tck2fixelConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Tck2fixelConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Tck2fixelConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Tck2fixelConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Tck2fixelConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -78,7 +78,7 @@ class Tck2fixelOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    config: ConfigOutputs
+    config: typing.List[Tck2fixelConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -93,7 +93,7 @@ def tck2fixel(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Tck2fixelConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -172,9 +172,9 @@ def tck2fixel(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TCK2FIXEL_METADATA",
+    "Tck2fixelConfig",
+    "Tck2fixelConfigOutputs",
     "Tck2fixelOutputs",
     "tck2fixel",
 ]

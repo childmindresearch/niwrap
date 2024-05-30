@@ -16,16 +16,16 @@ MRCAT_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrcatConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrcatConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrcatConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrcatConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrcatConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrcatConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class MrcatOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output image."""
-    config: ConfigOutputs
+    config: typing.List[MrcatConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -95,7 +95,7 @@ def mrcat(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrcatConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -182,9 +182,9 @@ def mrcat(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MRCAT_METADATA",
+    "MrcatConfig",
+    "MrcatConfigOutputs",
     "MrcatOutputs",
     "mrcat",
 ]

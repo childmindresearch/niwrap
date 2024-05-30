@@ -16,16 +16,16 @@ CIFTI_EXTREMA_METADATA = Metadata(
 )
 
 
-class ThresholdOutputs(typing.NamedTuple):
+class CiftiExtremaThresholdOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Threshold.run(...)`.
+    Output object returned when calling `CiftiExtremaThreshold.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Threshold:
+class CiftiExtremaThreshold:
     """
     ignore small extrema
     """
@@ -49,7 +49,7 @@ class Threshold:
     def outputs(
         self,
         execution: Execution,
-    ) -> ThresholdOutputs:
+    ) -> CiftiExtremaThresholdOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Threshold:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ThresholdOutputs`).
+            NamedTuple of outputs (described in `CiftiExtremaThresholdOutputs`).
         """
-        ret = ThresholdOutputs(
+        ret = CiftiExtremaThresholdOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -73,7 +73,7 @@ class CiftiExtremaOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti"""
-    threshold: ThresholdOutputs
+    threshold: CiftiExtremaThresholdOutputs
     """Subcommand outputs"""
 
 
@@ -89,7 +89,7 @@ def cifti_extrema(
     opt_surface_presmooth_surface_kernel: float | int | None = None,
     opt_volume_presmooth_volume_kernel: float | int | None = None,
     opt_presmooth_fwhm: bool = False,
-    threshold: Threshold | None = None,
+    threshold: CiftiExtremaThreshold | None = None,
     opt_merged_volume: bool = False,
     opt_sum_maps: bool = False,
     opt_consolidate_mode: bool = False,
@@ -188,7 +188,7 @@ def cifti_extrema(
 __all__ = [
     "CIFTI_EXTREMA_METADATA",
     "CiftiExtremaOutputs",
-    "Threshold",
-    "ThresholdOutputs",
+    "CiftiExtremaThreshold",
+    "CiftiExtremaThresholdOutputs",
     "cifti_extrema",
 ]

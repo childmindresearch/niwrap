@@ -16,16 +16,16 @@ TENSOR2METRIC_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Tensor2metricConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Tensor2metricConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Tensor2metricConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Tensor2metricConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Tensor2metricConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Tensor2metricConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -96,7 +96,7 @@ class Tensor2metricOutputs(typing.NamedTuple):
     """compute the selected eigenvalue(s) of the diffusion tensor. """
     vector: OutputPathType | None
     """compute the selected eigenvector(s) of the diffusion tensor. """
-    config: ConfigOutputs
+    config: typing.List[Tensor2metricConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -119,7 +119,7 @@ def tensor2metric(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Tensor2metricConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -249,9 +249,9 @@ def tensor2metric(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TENSOR2METRIC_METADATA",
+    "Tensor2metricConfig",
+    "Tensor2metricConfigOutputs",
     "Tensor2metricOutputs",
     "tensor2metric",
 ]

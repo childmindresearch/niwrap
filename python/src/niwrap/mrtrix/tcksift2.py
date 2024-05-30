@@ -16,16 +16,16 @@ TCKSIFT2_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Tcksift2ConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Tcksift2Config.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Tcksift2Config:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Tcksift2ConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Tcksift2ConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Tcksift2ConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -86,7 +86,7 @@ class Tcksift2Outputs(typing.NamedTuple):
     """output the final value of SIFT proportionality coefficient mu to a text file """
     out_coeffs: OutputPathType | None
     """output text file containing the weighting coefficient for each streamline """
-    config: ConfigOutputs
+    config: typing.List[Tcksift2ConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -122,7 +122,7 @@ def tcksift2(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Tcksift2Config] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -317,9 +317,9 @@ def tcksift2(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TCKSIFT2_METADATA",
+    "Tcksift2Config",
+    "Tcksift2ConfigOutputs",
     "Tcksift2Outputs",
     "tcksift2",
 ]

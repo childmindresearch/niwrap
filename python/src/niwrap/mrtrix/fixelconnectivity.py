@@ -16,16 +16,16 @@ FIXELCONNECTIVITY_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class FixelconnectivityConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `FixelconnectivityConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class FixelconnectivityConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> FixelconnectivityConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `FixelconnectivityConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = FixelconnectivityConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class FixelconnectivityOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     matrix: OutputPathType
     """the output fixel-fixel connectivity matrix directory path"""
-    config: ConfigOutputs
+    config: typing.List[FixelconnectivityConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -96,7 +96,7 @@ def fixelconnectivity(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[FixelconnectivityConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -183,9 +183,9 @@ def fixelconnectivity(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "FIXELCONNECTIVITY_METADATA",
+    "FixelconnectivityConfig",
+    "FixelconnectivityConfigOutputs",
     "FixelconnectivityOutputs",
     "fixelconnectivity",
 ]

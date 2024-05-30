@@ -16,16 +16,16 @@ PEAKS2AMP_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Peaks2ampConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Peaks2ampConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Peaks2ampConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Peaks2ampConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Peaks2ampConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Peaks2ampConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class Peaks2ampOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     amplitudes: OutputPathType
     """the output amplitudes image."""
-    config: ConfigOutputs
+    config: typing.List[Peaks2ampConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -92,7 +92,7 @@ def peaks2amp(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Peaks2ampConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -163,9 +163,9 @@ def peaks2amp(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "PEAKS2AMP_METADATA",
+    "Peaks2ampConfig",
+    "Peaks2ampConfigOutputs",
     "Peaks2ampOutputs",
     "peaks2amp",
 ]

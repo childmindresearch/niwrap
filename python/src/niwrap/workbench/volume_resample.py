@@ -16,16 +16,16 @@ VOLUME_RESAMPLE_METADATA = Metadata(
 )
 
 
-class FlirtOutputs(typing.NamedTuple):
+class VolumeResampleFlirtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Flirt.run(...)`.
+    Output object returned when calling `VolumeResampleFlirt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Flirt:
+class VolumeResampleFlirt:
     """
     MUST be used if affine is a flirt affine
     """
@@ -49,7 +49,7 @@ class Flirt:
     def outputs(
         self,
         execution: Execution,
-    ) -> FlirtOutputs:
+    ) -> VolumeResampleFlirtOutputs:
         """
         Collect output file paths.
         
@@ -57,30 +57,30 @@ class Flirt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FlirtOutputs`).
+            NamedTuple of outputs (described in `VolumeResampleFlirtOutputs`).
         """
-        ret = FlirtOutputs(
+        ret = VolumeResampleFlirtOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AffineOutputs(typing.NamedTuple):
+class VolumeResampleAffineOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Affine.run(...)`.
+    Output object returned when calling `VolumeResampleAffine.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.flirt: FlirtOutputs
+    self.flirt: VolumeResampleFlirtOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Affine:
+class VolumeResampleAffine:
     """
     add an affine transform
     """
-    flirt: Flirt | None = None
+    flirt: VolumeResampleFlirt | None = None
     """MUST be used if affine is a flirt affine"""
     
     def run(
@@ -104,7 +104,7 @@ class Affine:
     def outputs(
         self,
         execution: Execution,
-    ) -> AffineOutputs:
+    ) -> VolumeResampleAffineOutputs:
         """
         Collect output file paths.
         
@@ -112,25 +112,25 @@ class Affine:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AffineOutputs`).
+            NamedTuple of outputs (described in `VolumeResampleAffineOutputs`).
         """
-        ret = AffineOutputs(
+        ret = VolumeResampleAffineOutputs(
             root=execution.output_file("."),
             self.flirt=self.flirt.outputs(execution),
         )
         return ret
 
 
-class FlirtOutputs_(typing.NamedTuple):
+class VolumeResampleFlirtOutputs_(typing.NamedTuple):
     """
-    Output object returned when calling `Flirt_.run(...)`.
+    Output object returned when calling `VolumeResampleFlirt_.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Flirt_:
+class VolumeResampleFlirt_:
     """
     MUST be used if the affines are flirt affines
     """
@@ -154,7 +154,7 @@ class Flirt_:
     def outputs(
         self,
         execution: Execution,
-    ) -> FlirtOutputs_:
+    ) -> VolumeResampleFlirtOutputs_:
         """
         Collect output file paths.
         
@@ -162,30 +162,30 @@ class Flirt_:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FlirtOutputs_`).
+            NamedTuple of outputs (described in `VolumeResampleFlirtOutputs_`).
         """
-        ret = FlirtOutputs_(
+        ret = VolumeResampleFlirtOutputs_(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AffineSeriesOutputs(typing.NamedTuple):
+class VolumeResampleAffineSeriesOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `AffineSeries.run(...)`.
+    Output object returned when calling `VolumeResampleAffineSeries.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.flirt: FlirtOutputs_
+    self.flirt: VolumeResampleFlirtOutputs_
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class AffineSeries:
+class VolumeResampleAffineSeries:
     """
     add an independent affine per-frame
     """
-    flirt: Flirt_ | None = None
+    flirt: VolumeResampleFlirt_ | None = None
     """MUST be used if the affines are flirt affines"""
     
     def run(
@@ -209,7 +209,7 @@ class AffineSeries:
     def outputs(
         self,
         execution: Execution,
-    ) -> AffineSeriesOutputs:
+    ) -> VolumeResampleAffineSeriesOutputs:
         """
         Collect output file paths.
         
@@ -217,25 +217,25 @@ class AffineSeries:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AffineSeriesOutputs`).
+            NamedTuple of outputs (described in `VolumeResampleAffineSeriesOutputs`).
         """
-        ret = AffineSeriesOutputs(
+        ret = VolumeResampleAffineSeriesOutputs(
             root=execution.output_file("."),
             self.flirt=self.flirt.outputs(execution),
         )
         return ret
 
 
-class WarpOutputs(typing.NamedTuple):
+class VolumeResampleWarpOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Warp.run(...)`.
+    Output object returned when calling `VolumeResampleWarp.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Warp:
+class VolumeResampleWarp:
     """
     add a nonlinear warpfield transform
     """
@@ -264,7 +264,7 @@ class Warp:
     def outputs(
         self,
         execution: Execution,
-    ) -> WarpOutputs:
+    ) -> VolumeResampleWarpOutputs:
         """
         Collect output file paths.
         
@@ -272,9 +272,9 @@ class Warp:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `WarpOutputs`).
+            NamedTuple of outputs (described in `VolumeResampleWarpOutputs`).
         """
-        ret = WarpOutputs(
+        ret = VolumeResampleWarpOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -288,11 +288,11 @@ class VolumeResampleOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume"""
-    affine: AffineOutputs
+    affine: typing.List[VolumeResampleAffineOutputs]
     """Subcommand outputs"""
-    affine_series: AffineSeriesOutputs
+    affine_series: typing.List[VolumeResampleAffineSeriesOutputs]
     """Subcommand outputs"""
-    warp: WarpOutputs
+    warp: typing.List[VolumeResampleWarpOutputs]
     """Subcommand outputs"""
 
 
@@ -301,9 +301,9 @@ def volume_resample(
     volume_space: str,
     method: str,
     volume_out: InputPathType,
-    affine: list[Affine] = None,
-    affine_series: list[AffineSeries] = None,
-    warp: list[Warp] = None,
+    affine: list[VolumeResampleAffine] = None,
+    affine_series: list[VolumeResampleAffineSeries] = None,
+    warp: list[VolumeResampleWarp] = None,
     runner: Runner = None,
 ) -> VolumeResampleOutputs:
     """
@@ -362,17 +362,17 @@ def volume_resample(
 
 
 __all__ = [
-    "Affine",
-    "AffineOutputs",
-    "AffineSeries",
-    "AffineSeriesOutputs",
-    "Flirt",
-    "FlirtOutputs",
-    "FlirtOutputs_",
-    "Flirt_",
     "VOLUME_RESAMPLE_METADATA",
+    "VolumeResampleAffine",
+    "VolumeResampleAffineOutputs",
+    "VolumeResampleAffineSeries",
+    "VolumeResampleAffineSeriesOutputs",
+    "VolumeResampleFlirt",
+    "VolumeResampleFlirtOutputs",
+    "VolumeResampleFlirtOutputs_",
+    "VolumeResampleFlirt_",
     "VolumeResampleOutputs",
-    "Warp",
-    "WarpOutputs",
+    "VolumeResampleWarp",
+    "VolumeResampleWarpOutputs",
     "volume_resample",
 ]

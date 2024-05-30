@@ -16,16 +16,16 @@ FILE_CONVERT_METADATA = Metadata(
 )
 
 
-class BorderVersionConvertOutputs(typing.NamedTuple):
+class FileConvertBorderVersionConvertOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `BorderVersionConvert.run(...)`.
+    Output object returned when calling `FileConvertBorderVersionConvert.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class BorderVersionConvert:
+class FileConvertBorderVersionConvert:
     """
     write a border file with a different version
     """
@@ -54,7 +54,7 @@ class BorderVersionConvert:
     def outputs(
         self,
         execution: Execution,
-    ) -> BorderVersionConvertOutputs:
+    ) -> FileConvertBorderVersionConvertOutputs:
         """
         Collect output file paths.
         
@@ -62,24 +62,24 @@ class BorderVersionConvert:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `BorderVersionConvertOutputs`).
+            NamedTuple of outputs (described in `FileConvertBorderVersionConvertOutputs`).
         """
-        ret = BorderVersionConvertOutputs(
+        ret = FileConvertBorderVersionConvertOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NiftiVersionConvertOutputs(typing.NamedTuple):
+class FileConvertNiftiVersionConvertOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `NiftiVersionConvert.run(...)`.
+    Output object returned when calling `FileConvertNiftiVersionConvert.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class NiftiVersionConvert:
+class FileConvertNiftiVersionConvert:
     """
     write a nifti file with a different version
     """
@@ -103,7 +103,7 @@ class NiftiVersionConvert:
     def outputs(
         self,
         execution: Execution,
-    ) -> NiftiVersionConvertOutputs:
+    ) -> FileConvertNiftiVersionConvertOutputs:
         """
         Collect output file paths.
         
@@ -111,24 +111,24 @@ class NiftiVersionConvert:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NiftiVersionConvertOutputs`).
+            NamedTuple of outputs (described in `FileConvertNiftiVersionConvertOutputs`).
         """
-        ret = NiftiVersionConvertOutputs(
+        ret = FileConvertNiftiVersionConvertOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CiftiVersionConvertOutputs(typing.NamedTuple):
+class FileConvertCiftiVersionConvertOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CiftiVersionConvert.run(...)`.
+    Output object returned when calling `FileConvertCiftiVersionConvert.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CiftiVersionConvert:
+class FileConvertCiftiVersionConvert:
     """
     write a cifti file with a different version
     """
@@ -152,7 +152,7 @@ class CiftiVersionConvert:
     def outputs(
         self,
         execution: Execution,
-    ) -> CiftiVersionConvertOutputs:
+    ) -> FileConvertCiftiVersionConvertOutputs:
         """
         Collect output file paths.
         
@@ -160,9 +160,9 @@ class CiftiVersionConvert:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CiftiVersionConvertOutputs`).
+            NamedTuple of outputs (described in `FileConvertCiftiVersionConvertOutputs`).
         """
-        ret = CiftiVersionConvertOutputs(
+        ret = FileConvertCiftiVersionConvertOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -174,18 +174,18 @@ class FileConvertOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    border_version_convert: BorderVersionConvertOutputs
+    border_version_convert: FileConvertBorderVersionConvertOutputs
     """Subcommand outputs"""
-    nifti_version_convert: NiftiVersionConvertOutputs
+    nifti_version_convert: FileConvertNiftiVersionConvertOutputs
     """Subcommand outputs"""
-    cifti_version_convert: CiftiVersionConvertOutputs
+    cifti_version_convert: FileConvertCiftiVersionConvertOutputs
     """Subcommand outputs"""
 
 
 def file_convert(
-    border_version_convert: BorderVersionConvert | None = None,
-    nifti_version_convert: NiftiVersionConvert | None = None,
-    cifti_version_convert: CiftiVersionConvert | None = None,
+    border_version_convert: FileConvertBorderVersionConvert | None = None,
+    nifti_version_convert: FileConvertNiftiVersionConvert | None = None,
+    cifti_version_convert: FileConvertCiftiVersionConvert | None = None,
     runner: Runner = None,
 ) -> FileConvertOutputs:
     """
@@ -225,13 +225,13 @@ def file_convert(
 
 
 __all__ = [
-    "BorderVersionConvert",
-    "BorderVersionConvertOutputs",
-    "CiftiVersionConvert",
-    "CiftiVersionConvertOutputs",
     "FILE_CONVERT_METADATA",
+    "FileConvertBorderVersionConvert",
+    "FileConvertBorderVersionConvertOutputs",
+    "FileConvertCiftiVersionConvert",
+    "FileConvertCiftiVersionConvertOutputs",
+    "FileConvertNiftiVersionConvert",
+    "FileConvertNiftiVersionConvertOutputs",
     "FileConvertOutputs",
-    "NiftiVersionConvert",
-    "NiftiVersionConvertOutputs",
     "file_convert",
 ]

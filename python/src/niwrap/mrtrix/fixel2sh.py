@@ -16,16 +16,16 @@ FIXEL2SH_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Fixel2shConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Fixel2shConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Fixel2shConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Fixel2shConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Fixel2shConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Fixel2shConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class Fixel2shOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     sh_out: OutputPathType
     """the output sh image."""
-    config: ConfigOutputs
+    config: typing.List[Fixel2shConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -93,7 +93,7 @@ def fixel2sh(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Fixel2shConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -173,9 +173,9 @@ def fixel2sh(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "FIXEL2SH_METADATA",
+    "Fixel2shConfig",
+    "Fixel2shConfigOutputs",
     "Fixel2shOutputs",
     "fixel2sh",
 ]

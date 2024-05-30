@@ -16,16 +16,16 @@ BORDER_MERGE_METADATA = Metadata(
 )
 
 
-class UpToOutputs(typing.NamedTuple):
+class BorderMergeUpToOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `UpTo.run(...)`.
+    Output object returned when calling `BorderMergeUpTo.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class UpTo:
+class BorderMergeUpTo:
     """
     use an inclusive range of borders
     """
@@ -53,7 +53,7 @@ class UpTo:
     def outputs(
         self,
         execution: Execution,
-    ) -> UpToOutputs:
+    ) -> BorderMergeUpToOutputs:
         """
         Collect output file paths.
         
@@ -61,30 +61,30 @@ class UpTo:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `UpToOutputs`).
+            NamedTuple of outputs (described in `BorderMergeUpToOutputs`).
         """
-        ret = UpToOutputs(
+        ret = BorderMergeUpToOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SelectOutputs(typing.NamedTuple):
+class BorderMergeSelectOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Select.run(...)`.
+    Output object returned when calling `BorderMergeSelect.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.up_to: UpToOutputs
+    self.up_to: BorderMergeUpToOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Select:
+class BorderMergeSelect:
     """
     select a single border to use
     """
-    up_to: UpTo | None = None
+    up_to: BorderMergeUpTo | None = None
     """use an inclusive range of borders"""
     
     def run(
@@ -108,7 +108,7 @@ class Select:
     def outputs(
         self,
         execution: Execution,
-    ) -> SelectOutputs:
+    ) -> BorderMergeSelectOutputs:
         """
         Collect output file paths.
         
@@ -116,31 +116,31 @@ class Select:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SelectOutputs`).
+            NamedTuple of outputs (described in `BorderMergeSelectOutputs`).
         """
-        ret = SelectOutputs(
+        ret = BorderMergeSelectOutputs(
             root=execution.output_file("."),
             self.up_to=self.up_to.outputs(execution),
         )
         return ret
 
 
-class BorderOutputs(typing.NamedTuple):
+class BorderMergeBorderOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Border.run(...)`.
+    Output object returned when calling `BorderMergeBorder.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.select_: SelectOutputs
+    self.select_: typing.List[BorderMergeSelectOutputs]
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class Border:
+class BorderMergeBorder:
     """
     specify an input border file
     """
-    select_: list[Select] = None
+    select_: list[BorderMergeSelect] = None
     """select a single border to use"""
     
     def run(
@@ -164,7 +164,7 @@ class Border:
     def outputs(
         self,
         execution: Execution,
-    ) -> BorderOutputs:
+    ) -> BorderMergeBorderOutputs:
         """
         Collect output file paths.
         
@@ -172,9 +172,9 @@ class Border:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `BorderOutputs`).
+            NamedTuple of outputs (described in `BorderMergeBorderOutputs`).
         """
-        ret = BorderOutputs(
+        ret = BorderMergeBorderOutputs(
             root=execution.output_file("."),
             self.select_=[self.select_.outputs(execution) for self.select_ in self.select_],
         )
@@ -189,13 +189,13 @@ class BorderMergeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     border_file_out: OutputPathType
     """the output border file"""
-    border: BorderOutputs
+    border: typing.List[BorderMergeBorderOutputs]
     """Subcommand outputs"""
 
 
 def border_merge(
     border_file_out: InputPathType,
-    border: list[Border] = None,
+    border: list[BorderMergeBorder] = None,
     runner: Runner = None,
 ) -> BorderMergeOutputs:
     """
@@ -238,12 +238,12 @@ def border_merge(
 
 __all__ = [
     "BORDER_MERGE_METADATA",
-    "Border",
+    "BorderMergeBorder",
+    "BorderMergeBorderOutputs",
     "BorderMergeOutputs",
-    "BorderOutputs",
-    "Select",
-    "SelectOutputs",
-    "UpTo",
-    "UpToOutputs",
+    "BorderMergeSelect",
+    "BorderMergeSelectOutputs",
+    "BorderMergeUpTo",
+    "BorderMergeUpToOutputs",
     "border_merge",
 ]

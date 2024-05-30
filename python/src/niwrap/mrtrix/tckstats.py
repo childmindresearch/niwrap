@@ -16,16 +16,16 @@ TCKSTATS_METADATA = Metadata(
 )
 
 
-class OutputOutputs(typing.NamedTuple):
+class TckstatsOutputOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Output.run(...)`.
+    Output object returned when calling `TckstatsOutput.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Output:
+class TckstatsOutput:
     """
     output only the field specified. Multiple such options can be supplied if required. Choices are: mean, median, std, min, max, count. Useful for use in scripts.
     """
@@ -55,7 +55,7 @@ class Output:
     def outputs(
         self,
         execution: Execution,
-    ) -> OutputOutputs:
+    ) -> TckstatsOutputOutputs:
         """
         Collect output file paths.
         
@@ -63,24 +63,24 @@ class Output:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OutputOutputs`).
+            NamedTuple of outputs (described in `TckstatsOutputOutputs`).
         """
-        ret = OutputOutputs(
+        ret = TckstatsOutputOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TckstatsConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TckstatsConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TckstatsConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -111,7 +111,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TckstatsConfigOutputs:
         """
         Collect output file paths.
         
@@ -119,9 +119,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TckstatsConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TckstatsConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -137,15 +137,15 @@ class TckstatsOutputs(typing.NamedTuple):
     """output a histogram of streamline lengths """
     dump: OutputPathType | None
     """dump the streamlines lengths to a text file """
-    output: OutputOutputs
+    output: typing.List[TckstatsOutputOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[TckstatsConfigOutputs]
     """Subcommand outputs"""
 
 
 def tckstats(
     tracks_in: InputPathType,
-    output: list[Output] = None,
+    output: list[TckstatsOutput] = None,
     histogram: InputPathType | None = None,
     dump: InputPathType | None = None,
     ignorezero: bool = False,
@@ -155,7 +155,7 @@ def tckstats(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TckstatsConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -244,11 +244,11 @@ def tckstats(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
-    "Output",
-    "OutputOutputs",
     "TCKSTATS_METADATA",
+    "TckstatsConfig",
+    "TckstatsConfigOutputs",
+    "TckstatsOutput",
+    "TckstatsOutputOutputs",
     "TckstatsOutputs",
     "tckstats",
 ]

@@ -16,16 +16,16 @@ MRGRID_METADATA = Metadata(
 )
 
 
-class AxisOutputs(typing.NamedTuple):
+class MrgridAxisOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Axis.run(...)`.
+    Output object returned when calling `MrgridAxis.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Axis:
+class MrgridAxis:
     """
     pad or crop the input image along the provided axis (defined by index). The specifier argument defines the number of voxels added or removed on the lower or upper end of the axis (-axis index delta_lower,delta_upper) or acts as a voxel selection range (-axis index start:stop). In both modes, values are relative to the input image (overriding all other extent-specifying options). Negative delta specifier values trigger the inverse operation (pad instead of crop and vice versa) and negative range specifier trigger padding. Note that the deprecated commands 'mrcrop' and 'mrpad' used range-based and delta-based -axis indices, respectively.
     """
@@ -72,7 +72,7 @@ class Axis:
     def outputs(
         self,
         execution: Execution,
-    ) -> AxisOutputs:
+    ) -> MrgridAxisOutputs:
         """
         Collect output file paths.
         
@@ -80,24 +80,24 @@ class Axis:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AxisOutputs`).
+            NamedTuple of outputs (described in `MrgridAxisOutputs`).
         """
-        ret = AxisOutputs(
+        ret = MrgridAxisOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrgridConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrgridConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrgridConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -128,7 +128,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrgridConfigOutputs:
         """
         Collect output file paths.
         
@@ -136,9 +136,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrgridConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrgridConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -152,9 +152,9 @@ class MrgridOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output image."""
-    axis: AxisOutputs
+    axis: typing.List[MrgridAxisOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[MrgridConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -172,7 +172,7 @@ def mrgrid(
     uniform: int | None = None,
     mask: InputPathType | None = None,
     crop_unbound: bool = False,
-    axis: list[Axis] = None,
+    axis: list[MrgridAxis] = None,
     all_axes: bool = False,
     fill: float | int | None = None,
     strides: str | None = None,
@@ -182,7 +182,7 @@ def mrgrid(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrgridConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -368,11 +368,11 @@ def mrgrid(
 
 
 __all__ = [
-    "Axis",
-    "AxisOutputs",
-    "Config",
-    "ConfigOutputs",
     "MRGRID_METADATA",
+    "MrgridAxis",
+    "MrgridAxisOutputs",
+    "MrgridConfig",
+    "MrgridConfigOutputs",
     "MrgridOutputs",
     "mrgrid",
 ]

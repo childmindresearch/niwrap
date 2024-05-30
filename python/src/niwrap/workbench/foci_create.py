@@ -16,16 +16,16 @@ FOCI_CREATE_METADATA = Metadata(
 )
 
 
-class ClassOutputs(typing.NamedTuple):
+class FociCreateClassOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Class.run(...)`.
+    Output object returned when calling `FociCreateClass.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Class:
+class FociCreateClass:
     """
     specify class input data
     """
@@ -49,7 +49,7 @@ class Class:
     def outputs(
         self,
         execution: Execution,
-    ) -> ClassOutputs:
+    ) -> FociCreateClassOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Class:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ClassOutputs`).
+            NamedTuple of outputs (described in `FociCreateClassOutputs`).
         """
-        ret = ClassOutputs(
+        ret = FociCreateClassOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -73,13 +73,13 @@ class FociCreateOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output foci file"""
-    class_: ClassOutputs
+    class_: typing.List[FociCreateClassOutputs]
     """Subcommand outputs"""
 
 
 def foci_create(
     output: InputPathType,
-    class_: list[Class] = None,
+    class_: list[FociCreateClass] = None,
     runner: Runner = None,
 ) -> FociCreateOutputs:
     """
@@ -131,9 +131,9 @@ def foci_create(
 
 
 __all__ = [
-    "Class",
-    "ClassOutputs",
     "FOCI_CREATE_METADATA",
+    "FociCreateClass",
+    "FociCreateClassOutputs",
     "FociCreateOutputs",
     "foci_create",
 ]

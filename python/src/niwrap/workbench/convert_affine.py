@@ -16,16 +16,16 @@ CONVERT_AFFINE_METADATA = Metadata(
 )
 
 
-class FromWorldOutputs(typing.NamedTuple):
+class ConvertAffineFromWorldOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `FromWorld.run(...)`.
+    Output object returned when calling `ConvertAffineFromWorld.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class FromWorld:
+class ConvertAffineFromWorld:
     """
     input is a NIFTI 'world' affine
     """
@@ -53,7 +53,7 @@ class FromWorld:
     def outputs(
         self,
         execution: Execution,
-    ) -> FromWorldOutputs:
+    ) -> ConvertAffineFromWorldOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class FromWorld:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FromWorldOutputs`).
+            NamedTuple of outputs (described in `ConvertAffineFromWorldOutputs`).
         """
-        ret = FromWorldOutputs(
+        ret = ConvertAffineFromWorldOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FromFlirtOutputs(typing.NamedTuple):
+class ConvertAffineFromFlirtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `FromFlirt.run(...)`.
+    Output object returned when calling `ConvertAffineFromFlirt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class FromFlirt:
+class ConvertAffineFromFlirt:
     """
     input is a flirt matrix
     """
@@ -102,7 +102,7 @@ class FromFlirt:
     def outputs(
         self,
         execution: Execution,
-    ) -> FromFlirtOutputs:
+    ) -> ConvertAffineFromFlirtOutputs:
         """
         Collect output file paths.
         
@@ -110,24 +110,24 @@ class FromFlirt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FromFlirtOutputs`).
+            NamedTuple of outputs (described in `ConvertAffineFromFlirtOutputs`).
         """
-        ret = FromFlirtOutputs(
+        ret = ConvertAffineFromFlirtOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ToWorldOutputs(typing.NamedTuple):
+class ConvertAffineToWorldOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ToWorld.run(...)`.
+    Output object returned when calling `ConvertAffineToWorld.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ToWorld:
+class ConvertAffineToWorld:
     """
     write output as a NIFTI 'world' affine
     """
@@ -155,7 +155,7 @@ class ToWorld:
     def outputs(
         self,
         execution: Execution,
-    ) -> ToWorldOutputs:
+    ) -> ConvertAffineToWorldOutputs:
         """
         Collect output file paths.
         
@@ -163,24 +163,24 @@ class ToWorld:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ToWorldOutputs`).
+            NamedTuple of outputs (described in `ConvertAffineToWorldOutputs`).
         """
-        ret = ToWorldOutputs(
+        ret = ConvertAffineToWorldOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ToFlirtOutputs(typing.NamedTuple):
+class ConvertAffineToFlirtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ToFlirt.run(...)`.
+    Output object returned when calling `ConvertAffineToFlirt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ToFlirt:
+class ConvertAffineToFlirt:
     """
     write output as a flirt matrix
     """
@@ -204,7 +204,7 @@ class ToFlirt:
     def outputs(
         self,
         execution: Execution,
-    ) -> ToFlirtOutputs:
+    ) -> ConvertAffineToFlirtOutputs:
         """
         Collect output file paths.
         
@@ -212,9 +212,9 @@ class ToFlirt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ToFlirtOutputs`).
+            NamedTuple of outputs (described in `ConvertAffineToFlirtOutputs`).
         """
-        ret = ToFlirtOutputs(
+        ret = ConvertAffineToFlirtOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -226,23 +226,23 @@ class ConvertAffineOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    from_world: FromWorldOutputs
+    from_world: ConvertAffineFromWorldOutputs
     """Subcommand outputs"""
-    from_flirt: FromFlirtOutputs
+    from_flirt: ConvertAffineFromFlirtOutputs
     """Subcommand outputs"""
-    to_world: ToWorldOutputs
+    to_world: ConvertAffineToWorldOutputs
     """Subcommand outputs"""
-    to_flirt: ToFlirtOutputs
+    to_flirt: typing.List[ConvertAffineToFlirtOutputs]
     """Subcommand outputs"""
 
 
 def convert_affine(
-    from_world: FromWorld | None = None,
+    from_world: ConvertAffineFromWorld | None = None,
     opt_from_itk_input: str | None = None,
-    from_flirt: FromFlirt | None = None,
-    to_world: ToWorld | None = None,
+    from_flirt: ConvertAffineFromFlirt | None = None,
+    to_world: ConvertAffineToWorld | None = None,
     opt_to_itk_output: str | None = None,
-    to_flirt: list[ToFlirt] = None,
+    to_flirt: list[ConvertAffineToFlirt] = None,
     runner: Runner = None,
 ) -> ConvertAffineOutputs:
     """
@@ -304,14 +304,14 @@ def convert_affine(
 
 __all__ = [
     "CONVERT_AFFINE_METADATA",
+    "ConvertAffineFromFlirt",
+    "ConvertAffineFromFlirtOutputs",
+    "ConvertAffineFromWorld",
+    "ConvertAffineFromWorldOutputs",
     "ConvertAffineOutputs",
-    "FromFlirt",
-    "FromFlirtOutputs",
-    "FromWorld",
-    "FromWorldOutputs",
-    "ToFlirt",
-    "ToFlirtOutputs",
-    "ToWorld",
-    "ToWorldOutputs",
+    "ConvertAffineToFlirt",
+    "ConvertAffineToFlirtOutputs",
+    "ConvertAffineToWorld",
+    "ConvertAffineToWorldOutputs",
     "convert_affine",
 ]

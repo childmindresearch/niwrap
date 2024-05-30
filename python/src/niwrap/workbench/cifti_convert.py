@@ -16,16 +16,16 @@ CIFTI_CONVERT_METADATA = Metadata(
 )
 
 
-class ToGiftiExtOutputs(typing.NamedTuple):
+class CiftiConvertToGiftiExtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ToGiftiExt.run(...)`.
+    Output object returned when calling `CiftiConvertToGiftiExt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ToGiftiExt:
+class CiftiConvertToGiftiExt:
     """
     convert to GIFTI external binary
     """
@@ -49,7 +49,7 @@ class ToGiftiExt:
     def outputs(
         self,
         execution: Execution,
-    ) -> ToGiftiExtOutputs:
+    ) -> CiftiConvertToGiftiExtOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class ToGiftiExt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ToGiftiExtOutputs`).
+            NamedTuple of outputs (described in `CiftiConvertToGiftiExtOutputs`).
         """
-        ret = ToGiftiExtOutputs(
+        ret = CiftiConvertToGiftiExtOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ResetTimepointsOutputs(typing.NamedTuple):
+class CiftiConvertResetTimepointsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ResetTimepoints.run(...)`.
+    Output object returned when calling `CiftiConvertResetTimepoints.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ResetTimepoints:
+class CiftiConvertResetTimepoints:
     """
     reset the mapping along rows to timepoints, taking length from the gifti file
     """
@@ -102,7 +102,7 @@ class ResetTimepoints:
     def outputs(
         self,
         execution: Execution,
-    ) -> ResetTimepointsOutputs:
+    ) -> CiftiConvertResetTimepointsOutputs:
         """
         Collect output file paths.
         
@@ -110,24 +110,24 @@ class ResetTimepoints:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ResetTimepointsOutputs`).
+            NamedTuple of outputs (described in `CiftiConvertResetTimepointsOutputs`).
         """
-        ret = ResetTimepointsOutputs(
+        ret = CiftiConvertResetTimepointsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ReplaceBinaryOutputs(typing.NamedTuple):
+class CiftiConvertReplaceBinaryOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ReplaceBinary.run(...)`.
+    Output object returned when calling `CiftiConvertReplaceBinary.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ReplaceBinary:
+class CiftiConvertReplaceBinary:
     """
     replace data with a binary file
     """
@@ -159,7 +159,7 @@ class ReplaceBinary:
     def outputs(
         self,
         execution: Execution,
-    ) -> ReplaceBinaryOutputs:
+    ) -> CiftiConvertReplaceBinaryOutputs:
         """
         Collect output file paths.
         
@@ -167,36 +167,36 @@ class ReplaceBinary:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ReplaceBinaryOutputs`).
+            NamedTuple of outputs (described in `CiftiConvertReplaceBinaryOutputs`).
         """
-        ret = ReplaceBinaryOutputs(
+        ret = CiftiConvertReplaceBinaryOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FromGiftiExtOutputs(typing.NamedTuple):
+class CiftiConvertFromGiftiExtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `FromGiftiExt.run(...)`.
+    Output object returned when calling `CiftiConvertFromGiftiExt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    self.reset_timepoints: ResetTimepointsOutputs
+    self.reset_timepoints: CiftiConvertResetTimepointsOutputs
     """Subcommand outputs"""
-    self.replace_binary: ReplaceBinaryOutputs
+    self.replace_binary: CiftiConvertReplaceBinaryOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class FromGiftiExt:
+class CiftiConvertFromGiftiExt:
     """
     convert a GIFTI made with this command back into a CIFTI
     """
     cifti_out: InputPathType
     """the output cifti file"""
-    reset_timepoints: ResetTimepoints | None = None
+    reset_timepoints: CiftiConvertResetTimepoints | None = None
     """reset the mapping along rows to timepoints, taking length from the gifti
     file"""
     opt_reset_scalars: bool = False
@@ -204,7 +204,7 @@ class FromGiftiExt:
     opt_column_reset_scalars: bool = False
     """reset mapping along columns to scalar (useful for changing number of
     series in a sdseries file)"""
-    replace_binary: ReplaceBinary | None = None
+    replace_binary: CiftiConvertReplaceBinary | None = None
     """replace data with a binary file"""
     
     def run(
@@ -235,7 +235,7 @@ class FromGiftiExt:
     def outputs(
         self,
         execution: Execution,
-    ) -> FromGiftiExtOutputs:
+    ) -> CiftiConvertFromGiftiExtOutputs:
         """
         Collect output file paths.
         
@@ -243,9 +243,9 @@ class FromGiftiExt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FromGiftiExtOutputs`).
+            NamedTuple of outputs (described in `CiftiConvertFromGiftiExtOutputs`).
         """
-        ret = FromGiftiExtOutputs(
+        ret = CiftiConvertFromGiftiExtOutputs(
             root=execution.output_file("."),
             cifti_out=execution.output_file(f"{pathlib.Path(self.cifti_out).name}"),
             self.reset_timepoints=self.reset_timepoints.outputs(execution),
@@ -254,9 +254,9 @@ class FromGiftiExt:
         return ret
 
 
-class ToNiftiOutputs(typing.NamedTuple):
+class CiftiConvertToNiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ToNifti.run(...)`.
+    Output object returned when calling `CiftiConvertToNifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -265,7 +265,7 @@ class ToNiftiOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class ToNifti:
+class CiftiConvertToNifti:
     """
     convert to NIFTI1
     """
@@ -301,7 +301,7 @@ class ToNifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> ToNiftiOutputs:
+    ) -> CiftiConvertToNiftiOutputs:
         """
         Collect output file paths.
         
@@ -309,25 +309,25 @@ class ToNifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ToNiftiOutputs`).
+            NamedTuple of outputs (described in `CiftiConvertToNiftiOutputs`).
         """
-        ret = ToNiftiOutputs(
+        ret = CiftiConvertToNiftiOutputs(
             root=execution.output_file("."),
             nifti_out=execution.output_file(f"{pathlib.Path(self.nifti_out).name}"),
         )
         return ret
 
 
-class ResetTimepointsOutputs_(typing.NamedTuple):
+class CiftiConvertResetTimepointsOutputs_(typing.NamedTuple):
     """
-    Output object returned when calling `ResetTimepoints_.run(...)`.
+    Output object returned when calling `CiftiConvertResetTimepoints_.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ResetTimepoints_:
+class CiftiConvertResetTimepoints_:
     """
     reset the mapping along rows to timepoints, taking length from the nifti file
     """
@@ -355,7 +355,7 @@ class ResetTimepoints_:
     def outputs(
         self,
         execution: Execution,
-    ) -> ResetTimepointsOutputs_:
+    ) -> CiftiConvertResetTimepointsOutputs_:
         """
         Collect output file paths.
         
@@ -363,34 +363,34 @@ class ResetTimepoints_:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ResetTimepointsOutputs_`).
+            NamedTuple of outputs (described in `CiftiConvertResetTimepointsOutputs_`).
         """
-        ret = ResetTimepointsOutputs_(
+        ret = CiftiConvertResetTimepointsOutputs_(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FromNiftiOutputs(typing.NamedTuple):
+class CiftiConvertFromNiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `FromNifti.run(...)`.
+    Output object returned when calling `CiftiConvertFromNifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
     cifti_out_: OutputPathType
     """the output cifti file"""
-    self.reset_timepoints: ResetTimepointsOutputs_
+    self.reset_timepoints: CiftiConvertResetTimepointsOutputs_
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class FromNifti:
+class CiftiConvertFromNifti:
     """
     convert a NIFTI (1 or 2) file made with this command back into CIFTI
     """
     cifti_out: InputPathType
     """the output cifti file"""
-    reset_timepoints: ResetTimepoints_ | None = None
+    reset_timepoints: CiftiConvertResetTimepoints_ | None = None
     """reset the mapping along rows to timepoints, taking length from the nifti
     file"""
     opt_reset_scalars: bool = False
@@ -420,7 +420,7 @@ class FromNifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> FromNiftiOutputs:
+    ) -> CiftiConvertFromNiftiOutputs:
         """
         Collect output file paths.
         
@@ -428,9 +428,9 @@ class FromNifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FromNiftiOutputs`).
+            NamedTuple of outputs (described in `CiftiConvertFromNiftiOutputs`).
         """
-        ret = FromNiftiOutputs(
+        ret = CiftiConvertFromNiftiOutputs(
             root=execution.output_file("."),
             cifti_out_=execution.output_file(f"{pathlib.Path(self.cifti_out).name}"),
             self.reset_timepoints=self.reset_timepoints.outputs(execution),
@@ -438,16 +438,16 @@ class FromNifti:
         return ret
 
 
-class ToTextOutputs(typing.NamedTuple):
+class CiftiConvertToTextOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ToText.run(...)`.
+    Output object returned when calling `CiftiConvertToText.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ToText:
+class CiftiConvertToText:
     """
     convert to a plain text file
     """
@@ -476,7 +476,7 @@ class ToText:
     def outputs(
         self,
         execution: Execution,
-    ) -> ToTextOutputs:
+    ) -> CiftiConvertToTextOutputs:
         """
         Collect output file paths.
         
@@ -484,24 +484,24 @@ class ToText:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ToTextOutputs`).
+            NamedTuple of outputs (described in `CiftiConvertToTextOutputs`).
         """
-        ret = ToTextOutputs(
+        ret = CiftiConvertToTextOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ResetTimepointsOutputs_2(typing.NamedTuple):
+class CiftiConvertResetTimepointsOutputs_2(typing.NamedTuple):
     """
-    Output object returned when calling `ResetTimepoints_2.run(...)`.
+    Output object returned when calling `CiftiConvertResetTimepoints_2.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ResetTimepoints_2:
+class CiftiConvertResetTimepoints_2:
     """
     reset the mapping along rows to timepoints, taking length from the text file
     """
@@ -529,7 +529,7 @@ class ResetTimepoints_2:
     def outputs(
         self,
         execution: Execution,
-    ) -> ResetTimepointsOutputs_2:
+    ) -> CiftiConvertResetTimepointsOutputs_2:
         """
         Collect output file paths.
         
@@ -537,28 +537,28 @@ class ResetTimepoints_2:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ResetTimepointsOutputs_2`).
+            NamedTuple of outputs (described in `CiftiConvertResetTimepointsOutputs_2`).
         """
-        ret = ResetTimepointsOutputs_2(
+        ret = CiftiConvertResetTimepointsOutputs_2(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FromTextOutputs(typing.NamedTuple):
+class CiftiConvertFromTextOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `FromText.run(...)`.
+    Output object returned when calling `CiftiConvertFromText.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
     cifti_out_2: OutputPathType
     """the output cifti file"""
-    self.reset_timepoints: ResetTimepointsOutputs_2
+    self.reset_timepoints: CiftiConvertResetTimepointsOutputs_2
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class FromText:
+class CiftiConvertFromText:
     """
     convert from plain text to cifti
     """
@@ -567,7 +567,7 @@ class FromText:
     opt_col_delim_delim_string: str | None = None
     """specify string that is between elements in a row: the string to use
     (default is any whitespace)"""
-    reset_timepoints: ResetTimepoints_2 | None = None
+    reset_timepoints: CiftiConvertResetTimepoints_2 | None = None
     """reset the mapping along rows to timepoints, taking length from the text
     file"""
     opt_reset_scalars: bool = False
@@ -599,7 +599,7 @@ class FromText:
     def outputs(
         self,
         execution: Execution,
-    ) -> FromTextOutputs:
+    ) -> CiftiConvertFromTextOutputs:
         """
         Collect output file paths.
         
@@ -607,9 +607,9 @@ class FromText:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FromTextOutputs`).
+            NamedTuple of outputs (described in `CiftiConvertFromTextOutputs`).
         """
-        ret = FromTextOutputs(
+        ret = CiftiConvertFromTextOutputs(
             root=execution.output_file("."),
             cifti_out_2=execution.output_file(f"{pathlib.Path(self.cifti_out).name}"),
             self.reset_timepoints=self.reset_timepoints.outputs(execution),
@@ -623,27 +623,27 @@ class CiftiConvertOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    to_gifti_ext: ToGiftiExtOutputs
+    to_gifti_ext: CiftiConvertToGiftiExtOutputs
     """Subcommand outputs"""
-    from_gifti_ext: FromGiftiExtOutputs
+    from_gifti_ext: CiftiConvertFromGiftiExtOutputs
     """Subcommand outputs"""
-    to_nifti: ToNiftiOutputs
+    to_nifti: CiftiConvertToNiftiOutputs
     """Subcommand outputs"""
-    from_nifti: FromNiftiOutputs
+    from_nifti: CiftiConvertFromNiftiOutputs
     """Subcommand outputs"""
-    to_text: ToTextOutputs
+    to_text: CiftiConvertToTextOutputs
     """Subcommand outputs"""
-    from_text: FromTextOutputs
+    from_text: CiftiConvertFromTextOutputs
     """Subcommand outputs"""
 
 
 def cifti_convert(
-    to_gifti_ext: ToGiftiExt | None = None,
-    from_gifti_ext: FromGiftiExt | None = None,
-    to_nifti: ToNifti | None = None,
-    from_nifti: FromNifti | None = None,
-    to_text: ToText | None = None,
-    from_text: FromText | None = None,
+    to_gifti_ext: CiftiConvertToGiftiExt | None = None,
+    from_gifti_ext: CiftiConvertFromGiftiExt | None = None,
+    to_nifti: CiftiConvertToNifti | None = None,
+    from_nifti: CiftiConvertFromNifti | None = None,
+    to_text: CiftiConvertToText | None = None,
+    from_text: CiftiConvertFromText | None = None,
     runner: Runner = None,
 ) -> CiftiConvertOutputs:
     """
@@ -724,26 +724,26 @@ def cifti_convert(
 
 __all__ = [
     "CIFTI_CONVERT_METADATA",
+    "CiftiConvertFromGiftiExt",
+    "CiftiConvertFromGiftiExtOutputs",
+    "CiftiConvertFromNifti",
+    "CiftiConvertFromNiftiOutputs",
+    "CiftiConvertFromText",
+    "CiftiConvertFromTextOutputs",
     "CiftiConvertOutputs",
-    "FromGiftiExt",
-    "FromGiftiExtOutputs",
-    "FromNifti",
-    "FromNiftiOutputs",
-    "FromText",
-    "FromTextOutputs",
-    "ReplaceBinary",
-    "ReplaceBinaryOutputs",
-    "ResetTimepoints",
-    "ResetTimepointsOutputs",
-    "ResetTimepointsOutputs_",
-    "ResetTimepointsOutputs_2",
-    "ResetTimepoints_",
-    "ResetTimepoints_2",
-    "ToGiftiExt",
-    "ToGiftiExtOutputs",
-    "ToNifti",
-    "ToNiftiOutputs",
-    "ToText",
-    "ToTextOutputs",
+    "CiftiConvertReplaceBinary",
+    "CiftiConvertReplaceBinaryOutputs",
+    "CiftiConvertResetTimepoints",
+    "CiftiConvertResetTimepointsOutputs",
+    "CiftiConvertResetTimepointsOutputs_",
+    "CiftiConvertResetTimepointsOutputs_2",
+    "CiftiConvertResetTimepoints_",
+    "CiftiConvertResetTimepoints_2",
+    "CiftiConvertToGiftiExt",
+    "CiftiConvertToGiftiExtOutputs",
+    "CiftiConvertToNifti",
+    "CiftiConvertToNiftiOutputs",
+    "CiftiConvertToText",
+    "CiftiConvertToTextOutputs",
     "cifti_convert",
 ]

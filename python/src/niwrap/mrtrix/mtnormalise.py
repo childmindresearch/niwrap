@@ -16,16 +16,16 @@ MTNORMALISE_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MtnormaliseConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MtnormaliseConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MtnormaliseConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MtnormaliseConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MtnormaliseConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MtnormaliseConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -84,7 +84,7 @@ class MtnormaliseOutputs(typing.NamedTuple):
     """output the final mask used to compute the normalisation. This mask excludes regions identified as outliers by the optimisation process. """
     check_factors: OutputPathType | None
     """output the tissue balance factors computed during normalisation. """
-    config: ConfigOutputs
+    config: typing.List[MtnormaliseConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -103,7 +103,7 @@ def mtnormalise(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MtnormaliseConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -239,9 +239,9 @@ def mtnormalise(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MTNORMALISE_METADATA",
+    "MtnormaliseConfig",
+    "MtnormaliseConfigOutputs",
     "MtnormaliseOutputs",
     "mtnormalise",
 ]

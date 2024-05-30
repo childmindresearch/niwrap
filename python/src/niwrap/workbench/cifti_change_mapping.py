@@ -16,16 +16,16 @@ CIFTI_CHANGE_MAPPING_METADATA = Metadata(
 )
 
 
-class SeriesOutputs(typing.NamedTuple):
+class CiftiChangeMappingSeriesOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Series.run(...)`.
+    Output object returned when calling `CiftiChangeMappingSeries.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Series:
+class CiftiChangeMappingSeries:
     """
     set the mapping to series
     """
@@ -53,7 +53,7 @@ class Series:
     def outputs(
         self,
         execution: Execution,
-    ) -> SeriesOutputs:
+    ) -> CiftiChangeMappingSeriesOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class Series:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SeriesOutputs`).
+            NamedTuple of outputs (described in `CiftiChangeMappingSeriesOutputs`).
         """
-        ret = SeriesOutputs(
+        ret = CiftiChangeMappingSeriesOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FromCiftiOutputs(typing.NamedTuple):
+class CiftiChangeMappingFromCiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `FromCifti.run(...)`.
+    Output object returned when calling `CiftiChangeMappingFromCifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class FromCifti:
+class CiftiChangeMappingFromCifti:
     """
     copy mapping from another cifti file
     """
@@ -102,7 +102,7 @@ class FromCifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> FromCiftiOutputs:
+    ) -> CiftiChangeMappingFromCiftiOutputs:
         """
         Collect output file paths.
         
@@ -110,9 +110,9 @@ class FromCifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FromCiftiOutputs`).
+            NamedTuple of outputs (described in `CiftiChangeMappingFromCiftiOutputs`).
         """
-        ret = FromCiftiOutputs(
+        ret = CiftiChangeMappingFromCiftiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -126,9 +126,9 @@ class CiftiChangeMappingOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    series: SeriesOutputs
+    series: CiftiChangeMappingSeriesOutputs
     """Subcommand outputs"""
-    from_cifti: FromCiftiOutputs
+    from_cifti: CiftiChangeMappingFromCiftiOutputs
     """Subcommand outputs"""
 
 
@@ -136,10 +136,10 @@ def cifti_change_mapping(
     data_cifti: InputPathType,
     direction: str,
     cifti_out: InputPathType,
-    series: Series | None = None,
+    series: CiftiChangeMappingSeries | None = None,
     opt_scalar: bool = False,
     opt_name_file_file: str | None = None,
-    from_cifti: FromCifti | None = None,
+    from_cifti: CiftiChangeMappingFromCifti | None = None,
     runner: Runner = None,
 ) -> CiftiChangeMappingOutputs:
     """
@@ -199,10 +199,10 @@ def cifti_change_mapping(
 
 __all__ = [
     "CIFTI_CHANGE_MAPPING_METADATA",
+    "CiftiChangeMappingFromCifti",
+    "CiftiChangeMappingFromCiftiOutputs",
     "CiftiChangeMappingOutputs",
-    "FromCifti",
-    "FromCiftiOutputs",
-    "Series",
-    "SeriesOutputs",
+    "CiftiChangeMappingSeries",
+    "CiftiChangeMappingSeriesOutputs",
     "cifti_change_mapping",
 ]

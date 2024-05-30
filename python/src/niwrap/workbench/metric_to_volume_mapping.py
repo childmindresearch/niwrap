@@ -16,16 +16,16 @@ METRIC_TO_VOLUME_MAPPING_METADATA = Metadata(
 )
 
 
-class RibbonConstrainedOutputs(typing.NamedTuple):
+class MetricToVolumeMappingRibbonConstrainedOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RibbonConstrained.run(...)`.
+    Output object returned when calling `MetricToVolumeMappingRibbonConstrained.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RibbonConstrained:
+class MetricToVolumeMappingRibbonConstrained:
     """
     use ribbon constrained mapping algorithm
     """
@@ -63,7 +63,7 @@ class RibbonConstrained:
     def outputs(
         self,
         execution: Execution,
-    ) -> RibbonConstrainedOutputs:
+    ) -> MetricToVolumeMappingRibbonConstrainedOutputs:
         """
         Collect output file paths.
         
@@ -71,9 +71,9 @@ class RibbonConstrained:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RibbonConstrainedOutputs`).
+            NamedTuple of outputs (described in `MetricToVolumeMappingRibbonConstrainedOutputs`).
         """
-        ret = RibbonConstrainedOutputs(
+        ret = MetricToVolumeMappingRibbonConstrainedOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -87,7 +87,7 @@ class MetricToVolumeMappingOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume file"""
-    ribbon_constrained: RibbonConstrainedOutputs
+    ribbon_constrained: MetricToVolumeMappingRibbonConstrainedOutputs
     """Subcommand outputs"""
 
 
@@ -97,7 +97,7 @@ def metric_to_volume_mapping(
     volume_space: InputPathType,
     volume_out: InputPathType,
     opt_nearest_vertex_distance: float | int | None = None,
-    ribbon_constrained: RibbonConstrained | None = None,
+    ribbon_constrained: MetricToVolumeMappingRibbonConstrained | None = None,
     runner: Runner = None,
 ) -> MetricToVolumeMappingOutputs:
     """
@@ -151,7 +151,7 @@ def metric_to_volume_mapping(
 __all__ = [
     "METRIC_TO_VOLUME_MAPPING_METADATA",
     "MetricToVolumeMappingOutputs",
-    "RibbonConstrained",
-    "RibbonConstrainedOutputs",
+    "MetricToVolumeMappingRibbonConstrained",
+    "MetricToVolumeMappingRibbonConstrainedOutputs",
     "metric_to_volume_mapping",
 ]

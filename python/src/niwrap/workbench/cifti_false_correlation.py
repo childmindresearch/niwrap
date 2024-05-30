@@ -16,16 +16,16 @@ CIFTI_FALSE_CORRELATION_METADATA = Metadata(
 )
 
 
-class LeftSurfaceOutputs(typing.NamedTuple):
+class CiftiFalseCorrelationLeftSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftSurface.run(...)`.
+    Output object returned when calling `CiftiFalseCorrelationLeftSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftSurface:
+class CiftiFalseCorrelationLeftSurface:
     """
     specify the left surface to use
     """
@@ -53,7 +53,7 @@ class LeftSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftSurfaceOutputs:
+    ) -> CiftiFalseCorrelationLeftSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class LeftSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiFalseCorrelationLeftSurfaceOutputs`).
         """
-        ret = LeftSurfaceOutputs(
+        ret = CiftiFalseCorrelationLeftSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightSurfaceOutputs(typing.NamedTuple):
+class CiftiFalseCorrelationRightSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightSurface.run(...)`.
+    Output object returned when calling `CiftiFalseCorrelationRightSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightSurface:
+class CiftiFalseCorrelationRightSurface:
     """
     specify the right surface to use
     """
@@ -106,7 +106,7 @@ class RightSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightSurfaceOutputs:
+    ) -> CiftiFalseCorrelationRightSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -114,24 +114,24 @@ class RightSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiFalseCorrelationRightSurfaceOutputs`).
         """
-        ret = RightSurfaceOutputs(
+        ret = CiftiFalseCorrelationRightSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumSurfaceOutputs(typing.NamedTuple):
+class CiftiFalseCorrelationCerebellumSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumSurface.run(...)`.
+    Output object returned when calling `CiftiFalseCorrelationCerebellumSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumSurface:
+class CiftiFalseCorrelationCerebellumSurface:
     """
     specify the cerebellum surface to use
     """
@@ -159,7 +159,7 @@ class CerebellumSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumSurfaceOutputs:
+    ) -> CiftiFalseCorrelationCerebellumSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -167,9 +167,9 @@ class CerebellumSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiFalseCorrelationCerebellumSurfaceOutputs`).
         """
-        ret = CerebellumSurfaceOutputs(
+        ret = CiftiFalseCorrelationCerebellumSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -183,11 +183,11 @@ class CiftiFalseCorrelationOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti dscalar file"""
-    left_surface: LeftSurfaceOutputs
+    left_surface: CiftiFalseCorrelationLeftSurfaceOutputs
     """Subcommand outputs"""
-    right_surface: RightSurfaceOutputs
+    right_surface: CiftiFalseCorrelationRightSurfaceOutputs
     """Subcommand outputs"""
-    cerebellum_surface: CerebellumSurfaceOutputs
+    cerebellum_surface: CiftiFalseCorrelationCerebellumSurfaceOutputs
     """Subcommand outputs"""
 
 
@@ -197,9 +197,9 @@ def cifti_false_correlation(
     geo_outer: float | int,
     geo_inner: float | int,
     cifti_out: InputPathType,
-    left_surface: LeftSurface | None = None,
-    right_surface: RightSurface | None = None,
-    cerebellum_surface: CerebellumSurface | None = None,
+    left_surface: CiftiFalseCorrelationLeftSurface | None = None,
+    right_surface: CiftiFalseCorrelationRightSurface | None = None,
+    cerebellum_surface: CiftiFalseCorrelationCerebellumSurface | None = None,
     runner: Runner = None,
 ) -> CiftiFalseCorrelationOutputs:
     """
@@ -256,12 +256,12 @@ def cifti_false_correlation(
 
 __all__ = [
     "CIFTI_FALSE_CORRELATION_METADATA",
-    "CerebellumSurface",
-    "CerebellumSurfaceOutputs",
+    "CiftiFalseCorrelationCerebellumSurface",
+    "CiftiFalseCorrelationCerebellumSurfaceOutputs",
+    "CiftiFalseCorrelationLeftSurface",
+    "CiftiFalseCorrelationLeftSurfaceOutputs",
     "CiftiFalseCorrelationOutputs",
-    "LeftSurface",
-    "LeftSurfaceOutputs",
-    "RightSurface",
-    "RightSurfaceOutputs",
+    "CiftiFalseCorrelationRightSurface",
+    "CiftiFalseCorrelationRightSurfaceOutputs",
     "cifti_false_correlation",
 ]

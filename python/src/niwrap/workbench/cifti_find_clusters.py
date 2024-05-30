@@ -16,16 +16,16 @@ CIFTI_FIND_CLUSTERS_METADATA = Metadata(
 )
 
 
-class LeftSurfaceOutputs(typing.NamedTuple):
+class CiftiFindClustersLeftSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftSurface.run(...)`.
+    Output object returned when calling `CiftiFindClustersLeftSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftSurface:
+class CiftiFindClustersLeftSurface:
     """
     specify the left surface to use
     """
@@ -54,7 +54,7 @@ class LeftSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftSurfaceOutputs:
+    ) -> CiftiFindClustersLeftSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -62,24 +62,24 @@ class LeftSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiFindClustersLeftSurfaceOutputs`).
         """
-        ret = LeftSurfaceOutputs(
+        ret = CiftiFindClustersLeftSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightSurfaceOutputs(typing.NamedTuple):
+class CiftiFindClustersRightSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightSurface.run(...)`.
+    Output object returned when calling `CiftiFindClustersRightSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightSurface:
+class CiftiFindClustersRightSurface:
     """
     specify the right surface to use
     """
@@ -108,7 +108,7 @@ class RightSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightSurfaceOutputs:
+    ) -> CiftiFindClustersRightSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -116,24 +116,24 @@ class RightSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiFindClustersRightSurfaceOutputs`).
         """
-        ret = RightSurfaceOutputs(
+        ret = CiftiFindClustersRightSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumSurfaceOutputs(typing.NamedTuple):
+class CiftiFindClustersCerebellumSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumSurface.run(...)`.
+    Output object returned when calling `CiftiFindClustersCerebellumSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumSurface:
+class CiftiFindClustersCerebellumSurface:
     """
     specify the cerebellum surface to use
     """
@@ -162,7 +162,7 @@ class CerebellumSurface:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumSurfaceOutputs:
+    ) -> CiftiFindClustersCerebellumSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -170,24 +170,24 @@ class CerebellumSurface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumSurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiFindClustersCerebellumSurfaceOutputs`).
         """
-        ret = CerebellumSurfaceOutputs(
+        ret = CiftiFindClustersCerebellumSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SizeRatioOutputs(typing.NamedTuple):
+class CiftiFindClustersSizeRatioOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SizeRatio.run(...)`.
+    Output object returned when calling `CiftiFindClustersSizeRatio.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SizeRatio:
+class CiftiFindClustersSizeRatio:
     """
     ignore clusters smaller than a given fraction of the largest cluster in the structure
     """
@@ -211,7 +211,7 @@ class SizeRatio:
     def outputs(
         self,
         execution: Execution,
-    ) -> SizeRatioOutputs:
+    ) -> CiftiFindClustersSizeRatioOutputs:
         """
         Collect output file paths.
         
@@ -219,24 +219,24 @@ class SizeRatio:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SizeRatioOutputs`).
+            NamedTuple of outputs (described in `CiftiFindClustersSizeRatioOutputs`).
         """
-        ret = SizeRatioOutputs(
+        ret = CiftiFindClustersSizeRatioOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class DistanceOutputs(typing.NamedTuple):
+class CiftiFindClustersDistanceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Distance.run(...)`.
+    Output object returned when calling `CiftiFindClustersDistance.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Distance:
+class CiftiFindClustersDistance:
     """
     ignore clusters further than a given distance from the largest cluster in the structure
     """
@@ -260,7 +260,7 @@ class Distance:
     def outputs(
         self,
         execution: Execution,
-    ) -> DistanceOutputs:
+    ) -> CiftiFindClustersDistanceOutputs:
         """
         Collect output file paths.
         
@@ -268,9 +268,9 @@ class Distance:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `DistanceOutputs`).
+            NamedTuple of outputs (described in `CiftiFindClustersDistanceOutputs`).
         """
-        ret = DistanceOutputs(
+        ret = CiftiFindClustersDistanceOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -284,15 +284,15 @@ class CiftiFindClustersOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti"""
-    left_surface: LeftSurfaceOutputs
+    left_surface: CiftiFindClustersLeftSurfaceOutputs
     """Subcommand outputs"""
-    right_surface: RightSurfaceOutputs
+    right_surface: CiftiFindClustersRightSurfaceOutputs
     """Subcommand outputs"""
-    cerebellum_surface: CerebellumSurfaceOutputs
+    cerebellum_surface: CiftiFindClustersCerebellumSurfaceOutputs
     """Subcommand outputs"""
-    size_ratio: SizeRatioOutputs
+    size_ratio: CiftiFindClustersSizeRatioOutputs
     """Subcommand outputs"""
-    distance: DistanceOutputs
+    distance: CiftiFindClustersDistanceOutputs
     """Subcommand outputs"""
 
 
@@ -305,13 +305,13 @@ def cifti_find_clusters(
     direction: str,
     cifti_out: InputPathType,
     opt_less_than: bool = False,
-    left_surface: LeftSurface | None = None,
-    right_surface: RightSurface | None = None,
-    cerebellum_surface: CerebellumSurface | None = None,
+    left_surface: CiftiFindClustersLeftSurface | None = None,
+    right_surface: CiftiFindClustersRightSurface | None = None,
+    cerebellum_surface: CiftiFindClustersCerebellumSurface | None = None,
     opt_cifti_roi_roi_cifti: InputPathType | None = None,
     opt_merged_volume: bool = False,
-    size_ratio: SizeRatio | None = None,
-    distance: Distance | None = None,
+    size_ratio: CiftiFindClustersSizeRatio | None = None,
+    distance: CiftiFindClustersDistance | None = None,
     opt_start_startval: int | None = None,
     runner: Runner = None,
 ) -> CiftiFindClustersOutputs:
@@ -402,16 +402,16 @@ def cifti_find_clusters(
 
 __all__ = [
     "CIFTI_FIND_CLUSTERS_METADATA",
-    "CerebellumSurface",
-    "CerebellumSurfaceOutputs",
+    "CiftiFindClustersCerebellumSurface",
+    "CiftiFindClustersCerebellumSurfaceOutputs",
+    "CiftiFindClustersDistance",
+    "CiftiFindClustersDistanceOutputs",
+    "CiftiFindClustersLeftSurface",
+    "CiftiFindClustersLeftSurfaceOutputs",
     "CiftiFindClustersOutputs",
-    "Distance",
-    "DistanceOutputs",
-    "LeftSurface",
-    "LeftSurfaceOutputs",
-    "RightSurface",
-    "RightSurfaceOutputs",
-    "SizeRatio",
-    "SizeRatioOutputs",
+    "CiftiFindClustersRightSurface",
+    "CiftiFindClustersRightSurfaceOutputs",
+    "CiftiFindClustersSizeRatio",
+    "CiftiFindClustersSizeRatioOutputs",
     "cifti_find_clusters",
 ]

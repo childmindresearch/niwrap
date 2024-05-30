@@ -16,16 +16,16 @@ VOLUME_TFCE_METADATA = Metadata(
 )
 
 
-class PresmoothOutputs(typing.NamedTuple):
+class VolumeTfcePresmoothOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Presmooth.run(...)`.
+    Output object returned when calling `VolumeTfcePresmooth.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Presmooth:
+class VolumeTfcePresmooth:
     """
     smooth the volume before running TFCE
     """
@@ -53,7 +53,7 @@ class Presmooth:
     def outputs(
         self,
         execution: Execution,
-    ) -> PresmoothOutputs:
+    ) -> VolumeTfcePresmoothOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class Presmooth:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PresmoothOutputs`).
+            NamedTuple of outputs (described in `VolumeTfcePresmoothOutputs`).
         """
-        ret = PresmoothOutputs(
+        ret = VolumeTfcePresmoothOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ParametersOutputs(typing.NamedTuple):
+class VolumeTfceParametersOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Parameters.run(...)`.
+    Output object returned when calling `VolumeTfceParameters.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Parameters:
+class VolumeTfceParameters:
     """
     set parameters for TFCE integral
     """
@@ -102,7 +102,7 @@ class Parameters:
     def outputs(
         self,
         execution: Execution,
-    ) -> ParametersOutputs:
+    ) -> VolumeTfceParametersOutputs:
         """
         Collect output file paths.
         
@@ -110,9 +110,9 @@ class Parameters:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ParametersOutputs`).
+            NamedTuple of outputs (described in `VolumeTfceParametersOutputs`).
         """
-        ret = ParametersOutputs(
+        ret = VolumeTfceParametersOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -126,18 +126,18 @@ class VolumeTfceOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume"""
-    presmooth: PresmoothOutputs
+    presmooth: VolumeTfcePresmoothOutputs
     """Subcommand outputs"""
-    parameters: ParametersOutputs
+    parameters: VolumeTfceParametersOutputs
     """Subcommand outputs"""
 
 
 def volume_tfce(
     volume_in: InputPathType,
     volume_out: InputPathType,
-    presmooth: Presmooth | None = None,
+    presmooth: VolumeTfcePresmooth | None = None,
     opt_roi_roi_volume: InputPathType | None = None,
-    parameters: Parameters | None = None,
+    parameters: VolumeTfceParameters | None = None,
     opt_subvolume_subvolume: str | None = None,
     runner: Runner = None,
 ) -> VolumeTfceOutputs:
@@ -204,11 +204,11 @@ def volume_tfce(
 
 
 __all__ = [
-    "Parameters",
-    "ParametersOutputs",
-    "Presmooth",
-    "PresmoothOutputs",
     "VOLUME_TFCE_METADATA",
     "VolumeTfceOutputs",
+    "VolumeTfceParameters",
+    "VolumeTfceParametersOutputs",
+    "VolumeTfcePresmooth",
+    "VolumeTfcePresmoothOutputs",
     "volume_tfce",
 ]

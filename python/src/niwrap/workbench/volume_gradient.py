@@ -16,16 +16,16 @@ VOLUME_GRADIENT_METADATA = Metadata(
 )
 
 
-class PresmoothOutputs(typing.NamedTuple):
+class VolumeGradientPresmoothOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Presmooth.run(...)`.
+    Output object returned when calling `VolumeGradientPresmooth.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Presmooth:
+class VolumeGradientPresmooth:
     """
     smooth the volume before computing the gradient
     """
@@ -53,7 +53,7 @@ class Presmooth:
     def outputs(
         self,
         execution: Execution,
-    ) -> PresmoothOutputs:
+    ) -> VolumeGradientPresmoothOutputs:
         """
         Collect output file paths.
         
@@ -61,9 +61,9 @@ class Presmooth:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PresmoothOutputs`).
+            NamedTuple of outputs (described in `VolumeGradientPresmoothOutputs`).
         """
-        ret = PresmoothOutputs(
+        ret = VolumeGradientPresmoothOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -79,7 +79,7 @@ class VolumeGradientOutputs(typing.NamedTuple):
     """the output gradient magnitude volume"""
     vector_volume_out: OutputPathType
     """the vectors as a volume file"""
-    presmooth: PresmoothOutputs
+    presmooth: VolumeGradientPresmoothOutputs
     """Subcommand outputs"""
 
 
@@ -87,7 +87,7 @@ def volume_gradient(
     volume_in: InputPathType,
     volume_out: InputPathType,
     vector_volume_out: InputPathType,
-    presmooth: Presmooth | None = None,
+    presmooth: VolumeGradientPresmooth | None = None,
     opt_roi_roi_volume: InputPathType | None = None,
     opt_vectors: bool = False,
     opt_subvolume_subvol: str | None = None,
@@ -146,9 +146,9 @@ def volume_gradient(
 
 
 __all__ = [
-    "Presmooth",
-    "PresmoothOutputs",
     "VOLUME_GRADIENT_METADATA",
     "VolumeGradientOutputs",
+    "VolumeGradientPresmooth",
+    "VolumeGradientPresmoothOutputs",
     "volume_gradient",
 ]

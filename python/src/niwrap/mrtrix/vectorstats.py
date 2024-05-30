@@ -16,16 +16,16 @@ VECTORSTATS_METADATA = Metadata(
 )
 
 
-class ColumnOutputs(typing.NamedTuple):
+class VectorstatsColumnOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Column.run(...)`.
+    Output object returned when calling `VectorstatsColumn.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Column:
+class VectorstatsColumn:
     """
     add a column to the design matrix corresponding to subject element-wise values (note that the contrast matrix must include an additional column for each use of this option); the text file provided via this option should contain a file name for each subject
     """
@@ -56,7 +56,7 @@ class Column:
     def outputs(
         self,
         execution: Execution,
-    ) -> ColumnOutputs:
+    ) -> VectorstatsColumnOutputs:
         """
         Collect output file paths.
         
@@ -64,24 +64,24 @@ class Column:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ColumnOutputs`).
+            NamedTuple of outputs (described in `VectorstatsColumnOutputs`).
         """
-        ret = ColumnOutputs(
+        ret = VectorstatsColumnOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class VectorstatsConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `VectorstatsConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class VectorstatsConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -112,7 +112,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> VectorstatsConfigOutputs:
         """
         Collect output file paths.
         
@@ -120,9 +120,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `VectorstatsConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = VectorstatsConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -134,9 +134,9 @@ class VectorstatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    column: ColumnOutputs
+    column: typing.List[VectorstatsColumnOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[VectorstatsConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -155,13 +155,13 @@ def vectorstats(
     variance: InputPathType | None = None,
     ftests: InputPathType | None = None,
     fonly: bool = False,
-    column: list[Column] = None,
+    column: list[VectorstatsColumn] = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[VectorstatsConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -300,11 +300,11 @@ def vectorstats(
 
 
 __all__ = [
-    "Column",
-    "ColumnOutputs",
-    "Config",
-    "ConfigOutputs",
     "VECTORSTATS_METADATA",
+    "VectorstatsColumn",
+    "VectorstatsColumnOutputs",
+    "VectorstatsConfig",
+    "VectorstatsConfigOutputs",
     "VectorstatsOutputs",
     "vectorstats",
 ]

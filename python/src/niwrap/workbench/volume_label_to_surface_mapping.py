@@ -16,16 +16,16 @@ VOLUME_LABEL_TO_SURFACE_MAPPING_METADATA = Metadata(
 )
 
 
-class RibbonConstrainedOutputs(typing.NamedTuple):
+class VolumeLabelToSurfaceMappingRibbonConstrainedOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RibbonConstrained.run(...)`.
+    Output object returned when calling `VolumeLabelToSurfaceMappingRibbonConstrained.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RibbonConstrained:
+class VolumeLabelToSurfaceMappingRibbonConstrained:
     """
     use ribbon constrained mapping algorithm
     """
@@ -62,7 +62,7 @@ class RibbonConstrained:
     def outputs(
         self,
         execution: Execution,
-    ) -> RibbonConstrainedOutputs:
+    ) -> VolumeLabelToSurfaceMappingRibbonConstrainedOutputs:
         """
         Collect output file paths.
         
@@ -70,9 +70,9 @@ class RibbonConstrained:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RibbonConstrainedOutputs`).
+            NamedTuple of outputs (described in `VolumeLabelToSurfaceMappingRibbonConstrainedOutputs`).
         """
-        ret = RibbonConstrainedOutputs(
+        ret = VolumeLabelToSurfaceMappingRibbonConstrainedOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -86,7 +86,7 @@ class VolumeLabelToSurfaceMappingOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     label_out: OutputPathType
     """the output gifti label file"""
-    ribbon_constrained: RibbonConstrainedOutputs
+    ribbon_constrained: VolumeLabelToSurfaceMappingRibbonConstrainedOutputs
     """Subcommand outputs"""
 
 
@@ -94,7 +94,7 @@ def volume_label_to_surface_mapping(
     volume: InputPathType,
     surface: InputPathType,
     label_out: InputPathType,
-    ribbon_constrained: RibbonConstrained | None = None,
+    ribbon_constrained: VolumeLabelToSurfaceMappingRibbonConstrained | None = None,
     opt_subvol_select_subvol: str | None = None,
     runner: Runner = None,
 ) -> VolumeLabelToSurfaceMappingOutputs:
@@ -153,9 +153,9 @@ def volume_label_to_surface_mapping(
 
 
 __all__ = [
-    "RibbonConstrained",
-    "RibbonConstrainedOutputs",
     "VOLUME_LABEL_TO_SURFACE_MAPPING_METADATA",
     "VolumeLabelToSurfaceMappingOutputs",
+    "VolumeLabelToSurfaceMappingRibbonConstrained",
+    "VolumeLabelToSurfaceMappingRibbonConstrainedOutputs",
     "volume_label_to_surface_mapping",
 ]

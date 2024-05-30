@@ -16,9 +16,9 @@ CIFTI_SEPARATE_METADATA = Metadata(
 )
 
 
-class VolumeAllOutputs(typing.NamedTuple):
+class CiftiSeparateVolumeAllOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `VolumeAll.run(...)`.
+    Output object returned when calling `CiftiSeparateVolumeAll.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -31,7 +31,7 @@ class VolumeAllOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class VolumeAll:
+class CiftiSeparateVolumeAll:
     """
     separate all volume structures into a volume file
     """
@@ -77,7 +77,7 @@ class VolumeAll:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeAllOutputs:
+    ) -> CiftiSeparateVolumeAllOutputs:
         """
         Collect output file paths.
         
@@ -85,9 +85,9 @@ class VolumeAll:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeAllOutputs`).
+            NamedTuple of outputs (described in `CiftiSeparateVolumeAllOutputs`).
         """
-        ret = VolumeAllOutputs(
+        ret = CiftiSeparateVolumeAllOutputs(
             root=execution.output_file("."),
             volume_out=execution.output_file(f"{pathlib.Path(self.volume_out).name}"),
             roi_out=execution.output_file(f"{pathlib.Path(self.roi_out).name}"),
@@ -96,9 +96,9 @@ class VolumeAll:
         return ret
 
 
-class LabelOutputs(typing.NamedTuple):
+class CiftiSeparateLabelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Label.run(...)`.
+    Output object returned when calling `CiftiSeparateLabel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -109,7 +109,7 @@ class LabelOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class Label:
+class CiftiSeparateLabel:
     """
     separate a surface model into a surface label file
     """
@@ -143,7 +143,7 @@ class Label:
     def outputs(
         self,
         execution: Execution,
-    ) -> LabelOutputs:
+    ) -> CiftiSeparateLabelOutputs:
         """
         Collect output file paths.
         
@@ -151,9 +151,9 @@ class Label:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LabelOutputs`).
+            NamedTuple of outputs (described in `CiftiSeparateLabelOutputs`).
         """
-        ret = LabelOutputs(
+        ret = CiftiSeparateLabelOutputs(
             root=execution.output_file("."),
             label_out_=execution.output_file(f"{pathlib.Path(self.label_out).name}"),
             roi_out_=execution.output_file(f"{pathlib.Path(self.roi_out).name}"),
@@ -161,9 +161,9 @@ class Label:
         return ret
 
 
-class MetricOutputs(typing.NamedTuple):
+class CiftiSeparateMetricOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Metric.run(...)`.
+    Output object returned when calling `CiftiSeparateMetric.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -174,7 +174,7 @@ class MetricOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class Metric:
+class CiftiSeparateMetric:
     """
     separate a surface model into a metric file
     """
@@ -208,7 +208,7 @@ class Metric:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricOutputs:
+    ) -> CiftiSeparateMetricOutputs:
         """
         Collect output file paths.
         
@@ -216,9 +216,9 @@ class Metric:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricOutputs`).
+            NamedTuple of outputs (described in `CiftiSeparateMetricOutputs`).
         """
-        ret = MetricOutputs(
+        ret = CiftiSeparateMetricOutputs(
             root=execution.output_file("."),
             metric_out=execution.output_file(f"{pathlib.Path(self.metric_out).name}"),
             roi_out_2=execution.output_file(f"{pathlib.Path(self.roi_out).name}"),
@@ -226,9 +226,9 @@ class Metric:
         return ret
 
 
-class VolumeOutputs(typing.NamedTuple):
+class CiftiSeparateVolumeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Volume.run(...)`.
+    Output object returned when calling `CiftiSeparateVolume.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -239,7 +239,7 @@ class VolumeOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class Volume:
+class CiftiSeparateVolume:
     """
     separate a volume structure into a volume file
     """
@@ -278,7 +278,7 @@ class Volume:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeOutputs:
+    ) -> CiftiSeparateVolumeOutputs:
         """
         Collect output file paths.
         
@@ -286,9 +286,9 @@ class Volume:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeOutputs`).
+            NamedTuple of outputs (described in `CiftiSeparateVolumeOutputs`).
         """
-        ret = VolumeOutputs(
+        ret = CiftiSeparateVolumeOutputs(
             root=execution.output_file("."),
             volume_out_=execution.output_file(f"{pathlib.Path(self.volume_out).name}"),
             roi_out_3=execution.output_file(f"{pathlib.Path(self.roi_out).name}"),
@@ -302,23 +302,23 @@ class CiftiSeparateOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    volume_all: VolumeAllOutputs
+    volume_all: CiftiSeparateVolumeAllOutputs
     """Subcommand outputs"""
-    label: LabelOutputs
+    label: typing.List[CiftiSeparateLabelOutputs]
     """Subcommand outputs"""
-    metric: MetricOutputs
+    metric: typing.List[CiftiSeparateMetricOutputs]
     """Subcommand outputs"""
-    volume: VolumeOutputs
+    volume: typing.List[CiftiSeparateVolumeOutputs]
     """Subcommand outputs"""
 
 
 def cifti_separate(
     cifti_in: InputPathType,
     direction: str,
-    volume_all: VolumeAll | None = None,
-    label: list[Label] = None,
-    metric: list[Metric] = None,
-    volume: list[Volume] = None,
+    volume_all: CiftiSeparateVolumeAll | None = None,
+    label: list[CiftiSeparateLabel] = None,
+    metric: list[CiftiSeparateMetric] = None,
+    volume: list[CiftiSeparateVolume] = None,
     runner: Runner = None,
 ) -> CiftiSeparateOutputs:
     """
@@ -410,14 +410,14 @@ def cifti_separate(
 
 __all__ = [
     "CIFTI_SEPARATE_METADATA",
+    "CiftiSeparateLabel",
+    "CiftiSeparateLabelOutputs",
+    "CiftiSeparateMetric",
+    "CiftiSeparateMetricOutputs",
     "CiftiSeparateOutputs",
-    "Label",
-    "LabelOutputs",
-    "Metric",
-    "MetricOutputs",
-    "Volume",
-    "VolumeAll",
-    "VolumeAllOutputs",
-    "VolumeOutputs",
+    "CiftiSeparateVolume",
+    "CiftiSeparateVolumeAll",
+    "CiftiSeparateVolumeAllOutputs",
+    "CiftiSeparateVolumeOutputs",
     "cifti_separate",
 ]

@@ -16,16 +16,16 @@ DCMINFO_METADATA = Metadata(
 )
 
 
-class TagOutputs(typing.NamedTuple):
+class DcminfoTagOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Tag.run(...)`.
+    Output object returned when calling `DcminfoTag.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Tag:
+class DcminfoTag:
     """
     print field specified by the group & element tags supplied. Tags should be supplied as Hexadecimal (i.e. as they appear in the -all listing).
     """
@@ -58,7 +58,7 @@ class Tag:
     def outputs(
         self,
         execution: Execution,
-    ) -> TagOutputs:
+    ) -> DcminfoTagOutputs:
         """
         Collect output file paths.
         
@@ -66,24 +66,24 @@ class Tag:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TagOutputs`).
+            NamedTuple of outputs (described in `DcminfoTagOutputs`).
         """
-        ret = TagOutputs(
+        ret = DcminfoTagOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class DcminfoConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `DcminfoConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class DcminfoConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -114,7 +114,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> DcminfoConfigOutputs:
         """
         Collect output file paths.
         
@@ -122,9 +122,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `DcminfoConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = DcminfoConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -136,9 +136,9 @@ class DcminfoOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    tag: TagOutputs
+    tag: typing.List[DcminfoTagOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[DcminfoConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -147,13 +147,13 @@ def dcminfo(
     all_: bool = False,
     csa: bool = False,
     phoenix: bool = False,
-    tag: list[Tag] = None,
+    tag: list[DcminfoTag] = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[DcminfoConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -235,11 +235,11 @@ def dcminfo(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "DCMINFO_METADATA",
+    "DcminfoConfig",
+    "DcminfoConfigOutputs",
     "DcminfoOutputs",
-    "Tag",
-    "TagOutputs",
+    "DcminfoTag",
+    "DcminfoTagOutputs",
     "dcminfo",
 ]

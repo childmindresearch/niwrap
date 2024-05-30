@@ -16,16 +16,16 @@ MRINFO_METADATA = Metadata(
 )
 
 
-class PropertyOutputs(typing.NamedTuple):
+class MrinfoPropertyOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Property.run(...)`.
+    Output object returned when calling `MrinfoProperty.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Property:
+class MrinfoProperty:
     """
     any text properties embedded in the image header under the specified key (use 'all' to list all keys found)
     """
@@ -54,7 +54,7 @@ class Property:
     def outputs(
         self,
         execution: Execution,
-    ) -> PropertyOutputs:
+    ) -> MrinfoPropertyOutputs:
         """
         Collect output file paths.
         
@@ -62,24 +62,24 @@ class Property:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PropertyOutputs`).
+            NamedTuple of outputs (described in `MrinfoPropertyOutputs`).
         """
-        ret = PropertyOutputs(
+        ret = MrinfoPropertyOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FslgradOutputs(typing.NamedTuple):
+class MrinfoFslgradOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fslgrad.run(...)`.
+    Output object returned when calling `MrinfoFslgrad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fslgrad:
+class MrinfoFslgrad:
     """
     Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
     """
@@ -116,7 +116,7 @@ class Fslgrad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FslgradOutputs:
+    ) -> MrinfoFslgradOutputs:
         """
         Collect output file paths.
         
@@ -124,17 +124,17 @@ class Fslgrad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FslgradOutputs`).
+            NamedTuple of outputs (described in `MrinfoFslgradOutputs`).
         """
-        ret = FslgradOutputs(
+        ret = MrinfoFslgradOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ExportGradFslOutputs(typing.NamedTuple):
+class MrinfoExportGradFslOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ExportGradFsl.run(...)`.
+    Output object returned when calling `MrinfoExportGradFsl.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -145,7 +145,7 @@ class ExportGradFslOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class ExportGradFsl:
+class MrinfoExportGradFsl:
     """
     export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format
     """
@@ -178,7 +178,7 @@ class ExportGradFsl:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExportGradFslOutputs:
+    ) -> MrinfoExportGradFslOutputs:
         """
         Collect output file paths.
         
@@ -186,9 +186,9 @@ class ExportGradFsl:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExportGradFslOutputs`).
+            NamedTuple of outputs (described in `MrinfoExportGradFslOutputs`).
         """
-        ret = ExportGradFslOutputs(
+        ret = MrinfoExportGradFslOutputs(
             root=execution.output_file("."),
             bvecs_path=execution.output_file(f"{pathlib.Path(self.bvecs_path).name}"),
             bvals_path=execution.output_file(f"{pathlib.Path(self.bvals_path).name}"),
@@ -196,9 +196,9 @@ class ExportGradFsl:
         return ret
 
 
-class ExportPeEddyOutputs(typing.NamedTuple):
+class MrinfoExportPeEddyOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ExportPeEddy.run(...)`.
+    Output object returned when calling `MrinfoExportPeEddy.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -209,7 +209,7 @@ class ExportPeEddyOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class ExportPeEddy:
+class MrinfoExportPeEddy:
     """
     export phase-encoding information to an EDDY-style config / index file pair
     """
@@ -242,7 +242,7 @@ class ExportPeEddy:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExportPeEddyOutputs:
+    ) -> MrinfoExportPeEddyOutputs:
         """
         Collect output file paths.
         
@@ -250,9 +250,9 @@ class ExportPeEddy:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExportPeEddyOutputs`).
+            NamedTuple of outputs (described in `MrinfoExportPeEddyOutputs`).
         """
-        ret = ExportPeEddyOutputs(
+        ret = MrinfoExportPeEddyOutputs(
             root=execution.output_file("."),
             config=execution.output_file(f"{pathlib.Path(self.config_).name}"),
             indices=execution.output_file(f"{pathlib.Path(self.indices).name}"),
@@ -260,16 +260,16 @@ class ExportPeEddy:
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrinfoConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrinfoConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrinfoConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -300,7 +300,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrinfoConfigOutputs:
         """
         Collect output file paths.
         
@@ -308,9 +308,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrinfoConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrinfoConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -330,15 +330,15 @@ class MrinfoOutputs(typing.NamedTuple):
     """export the diffusion-weighted gradient table to file in MRtrix format """
     export_pe_table: OutputPathType | None
     """export phase-encoding table to file """
-    property_: PropertyOutputs
+    property_: typing.List[MrinfoPropertyOutputs]
     """Subcommand outputs"""
-    fslgrad: FslgradOutputs
+    fslgrad: MrinfoFslgradOutputs
     """Subcommand outputs"""
-    export_grad_fsl: ExportGradFslOutputs
+    export_grad_fsl: MrinfoExportGradFslOutputs
     """Subcommand outputs"""
-    export_pe_eddy: ExportPeEddyOutputs
+    export_pe_eddy: MrinfoExportPeEddyOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[MrinfoConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -355,20 +355,20 @@ def mrinfo(
     offset: bool = False,
     multiplier: bool = False,
     transform: bool = False,
-    property_: list[Property] = None,
+    property_: list[MrinfoProperty] = None,
     json_keyval: InputPathType | None = None,
     json_all: InputPathType | None = None,
     grad: InputPathType | None = None,
-    fslgrad: Fslgrad | None = None,
+    fslgrad: MrinfoFslgrad | None = None,
     bvalue_scaling: str | None = None,
     export_grad_mrtrix: InputPathType | None = None,
-    export_grad_fsl: ExportGradFsl | None = None,
+    export_grad_fsl: MrinfoExportGradFsl | None = None,
     dwgrad: bool = False,
     shell_bvalues: bool = False,
     shell_sizes: bool = False,
     shell_indices: bool = False,
     export_pe_table: InputPathType | None = None,
-    export_pe_eddy: ExportPeEddy | None = None,
+    export_pe_eddy: MrinfoExportPeEddy | None = None,
     petable: bool = False,
     nodelete: bool = False,
     info: bool = False,
@@ -376,7 +376,7 @@ def mrinfo(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrinfoConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -581,17 +581,17 @@ def mrinfo(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
-    "ExportGradFsl",
-    "ExportGradFslOutputs",
-    "ExportPeEddy",
-    "ExportPeEddyOutputs",
-    "Fslgrad",
-    "FslgradOutputs",
     "MRINFO_METADATA",
+    "MrinfoConfig",
+    "MrinfoConfigOutputs",
+    "MrinfoExportGradFsl",
+    "MrinfoExportGradFslOutputs",
+    "MrinfoExportPeEddy",
+    "MrinfoExportPeEddyOutputs",
+    "MrinfoFslgrad",
+    "MrinfoFslgradOutputs",
     "MrinfoOutputs",
-    "Property",
-    "PropertyOutputs",
+    "MrinfoProperty",
+    "MrinfoPropertyOutputs",
     "mrinfo",
 ]

@@ -16,16 +16,16 @@ VOXEL2FIXEL_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Voxel2fixelConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Voxel2fixelConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Voxel2fixelConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Voxel2fixelConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Voxel2fixelConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Voxel2fixelConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -78,7 +78,7 @@ class Voxel2fixelOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    config: ConfigOutputs
+    config: typing.List[Voxel2fixelConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -92,7 +92,7 @@ def voxel2fixel(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Voxel2fixelConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -168,9 +168,9 @@ def voxel2fixel(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "VOXEL2FIXEL_METADATA",
+    "Voxel2fixelConfig",
+    "Voxel2fixelConfigOutputs",
     "Voxel2fixelOutputs",
     "voxel2fixel",
 ]

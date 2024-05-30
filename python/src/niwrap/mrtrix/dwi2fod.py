@@ -16,16 +16,16 @@ DWI2FOD_METADATA = Metadata(
 )
 
 
-class FslgradOutputs(typing.NamedTuple):
+class Dwi2fodFslgradOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fslgrad.run(...)`.
+    Output object returned when calling `Dwi2fodFslgrad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fslgrad:
+class Dwi2fodFslgrad:
     """
     Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
     """
@@ -62,7 +62,7 @@ class Fslgrad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FslgradOutputs:
+    ) -> Dwi2fodFslgradOutputs:
         """
         Collect output file paths.
         
@@ -70,24 +70,24 @@ class Fslgrad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FslgradOutputs`).
+            NamedTuple of outputs (described in `Dwi2fodFslgradOutputs`).
         """
-        ret = FslgradOutputs(
+        ret = Dwi2fodFslgradOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Dwi2fodConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Dwi2fodConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Dwi2fodConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -118,7 +118,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Dwi2fodConfigOutputs:
         """
         Collect output file paths.
         
@@ -126,9 +126,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Dwi2fodConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Dwi2fodConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -142,9 +142,9 @@ class Dwi2fodOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     predicted_signal: OutputPathType | None
     """output the predicted dwi image. """
-    fslgrad: FslgradOutputs
+    fslgrad: Dwi2fodFslgradOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[Dwi2fodConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -153,7 +153,7 @@ def dwi2fod(
     dwi: InputPathType,
     response_odf: list[str],
     grad: InputPathType | None = None,
-    fslgrad: Fslgrad | None = None,
+    fslgrad: Dwi2fodFslgrad | None = None,
     shells: list[float | int] = None,
     directions: InputPathType | None = None,
     lmax: list[int] = None,
@@ -172,7 +172,7 @@ def dwi2fod(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Dwi2fodConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -349,11 +349,11 @@ def dwi2fod(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "DWI2FOD_METADATA",
+    "Dwi2fodConfig",
+    "Dwi2fodConfigOutputs",
+    "Dwi2fodFslgrad",
+    "Dwi2fodFslgradOutputs",
     "Dwi2fodOutputs",
-    "Fslgrad",
-    "FslgradOutputs",
     "dwi2fod",
 ]

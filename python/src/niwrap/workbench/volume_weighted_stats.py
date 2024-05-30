@@ -16,16 +16,16 @@ VOLUME_WEIGHTED_STATS_METADATA = Metadata(
 )
 
 
-class WeightVolumeOutputs(typing.NamedTuple):
+class VolumeWeightedStatsWeightVolumeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `WeightVolume.run(...)`.
+    Output object returned when calling `VolumeWeightedStatsWeightVolume.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class WeightVolume:
+class VolumeWeightedStatsWeightVolume:
     """
     use weights from a volume file
     """
@@ -54,7 +54,7 @@ class WeightVolume:
     def outputs(
         self,
         execution: Execution,
-    ) -> WeightVolumeOutputs:
+    ) -> VolumeWeightedStatsWeightVolumeOutputs:
         """
         Collect output file paths.
         
@@ -62,24 +62,24 @@ class WeightVolume:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `WeightVolumeOutputs`).
+            NamedTuple of outputs (described in `VolumeWeightedStatsWeightVolumeOutputs`).
         """
-        ret = WeightVolumeOutputs(
+        ret = VolumeWeightedStatsWeightVolumeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RoiOutputs(typing.NamedTuple):
+class VolumeWeightedStatsRoiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Roi.run(...)`.
+    Output object returned when calling `VolumeWeightedStatsRoi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Roi:
+class VolumeWeightedStatsRoi:
     """
     only consider data inside an roi
     """
@@ -108,7 +108,7 @@ class Roi:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiOutputs:
+    ) -> VolumeWeightedStatsRoiOutputs:
         """
         Collect output file paths.
         
@@ -116,9 +116,9 @@ class Roi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiOutputs`).
+            NamedTuple of outputs (described in `VolumeWeightedStatsRoiOutputs`).
         """
-        ret = RoiOutputs(
+        ret = VolumeWeightedStatsRoiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -130,17 +130,17 @@ class VolumeWeightedStatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    weight_volume: WeightVolumeOutputs
+    weight_volume: VolumeWeightedStatsWeightVolumeOutputs
     """Subcommand outputs"""
-    roi: RoiOutputs
+    roi: VolumeWeightedStatsRoiOutputs
     """Subcommand outputs"""
 
 
 def volume_weighted_stats(
     volume_in: InputPathType,
-    weight_volume: WeightVolume | None = None,
+    weight_volume: VolumeWeightedStatsWeightVolume | None = None,
     opt_subvolume_subvolume: str | None = None,
-    roi: Roi | None = None,
+    roi: VolumeWeightedStatsRoi | None = None,
     opt_mean: bool = False,
     opt_stdev: bool = False,
     opt_sample: bool = False,
@@ -216,11 +216,11 @@ def volume_weighted_stats(
 
 
 __all__ = [
-    "Roi",
-    "RoiOutputs",
     "VOLUME_WEIGHTED_STATS_METADATA",
     "VolumeWeightedStatsOutputs",
-    "WeightVolume",
-    "WeightVolumeOutputs",
+    "VolumeWeightedStatsRoi",
+    "VolumeWeightedStatsRoiOutputs",
+    "VolumeWeightedStatsWeightVolume",
+    "VolumeWeightedStatsWeightVolumeOutputs",
     "volume_weighted_stats",
 ]

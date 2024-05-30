@@ -16,16 +16,16 @@ METRIC_EXTREMA_METADATA = Metadata(
 )
 
 
-class PresmoothOutputs(typing.NamedTuple):
+class MetricExtremaPresmoothOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Presmooth.run(...)`.
+    Output object returned when calling `MetricExtremaPresmooth.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Presmooth:
+class MetricExtremaPresmooth:
     """
     smooth the metric before finding extrema
     """
@@ -53,7 +53,7 @@ class Presmooth:
     def outputs(
         self,
         execution: Execution,
-    ) -> PresmoothOutputs:
+    ) -> MetricExtremaPresmoothOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class Presmooth:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PresmoothOutputs`).
+            NamedTuple of outputs (described in `MetricExtremaPresmoothOutputs`).
         """
-        ret = PresmoothOutputs(
+        ret = MetricExtremaPresmoothOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ThresholdOutputs(typing.NamedTuple):
+class MetricExtremaThresholdOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Threshold.run(...)`.
+    Output object returned when calling `MetricExtremaThreshold.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Threshold:
+class MetricExtremaThreshold:
     """
     ignore small extrema
     """
@@ -102,7 +102,7 @@ class Threshold:
     def outputs(
         self,
         execution: Execution,
-    ) -> ThresholdOutputs:
+    ) -> MetricExtremaThresholdOutputs:
         """
         Collect output file paths.
         
@@ -110,9 +110,9 @@ class Threshold:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ThresholdOutputs`).
+            NamedTuple of outputs (described in `MetricExtremaThresholdOutputs`).
         """
-        ret = ThresholdOutputs(
+        ret = MetricExtremaThresholdOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -126,9 +126,9 @@ class MetricExtremaOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output extrema metric"""
-    presmooth: PresmoothOutputs
+    presmooth: MetricExtremaPresmoothOutputs
     """Subcommand outputs"""
-    threshold: ThresholdOutputs
+    threshold: MetricExtremaThresholdOutputs
     """Subcommand outputs"""
 
 
@@ -137,9 +137,9 @@ def metric_extrema(
     metric_in: InputPathType,
     distance: float | int,
     metric_out: InputPathType,
-    presmooth: Presmooth | None = None,
+    presmooth: MetricExtremaPresmooth | None = None,
     opt_roi_roi_metric: InputPathType | None = None,
-    threshold: Threshold | None = None,
+    threshold: MetricExtremaThreshold | None = None,
     opt_sum_columns: bool = False,
     opt_consolidate_mode: bool = False,
     opt_only_maxima: bool = False,
@@ -238,9 +238,9 @@ def metric_extrema(
 __all__ = [
     "METRIC_EXTREMA_METADATA",
     "MetricExtremaOutputs",
-    "Presmooth",
-    "PresmoothOutputs",
-    "Threshold",
-    "ThresholdOutputs",
+    "MetricExtremaPresmooth",
+    "MetricExtremaPresmoothOutputs",
+    "MetricExtremaThreshold",
+    "MetricExtremaThresholdOutputs",
     "metric_extrema",
 ]

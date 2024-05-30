@@ -16,16 +16,16 @@ METRIC_TFCE_METADATA = Metadata(
 )
 
 
-class PresmoothOutputs(typing.NamedTuple):
+class MetricTfcePresmoothOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Presmooth.run(...)`.
+    Output object returned when calling `MetricTfcePresmooth.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Presmooth:
+class MetricTfcePresmooth:
     """
     smooth the metric before running TFCE
     """
@@ -53,7 +53,7 @@ class Presmooth:
     def outputs(
         self,
         execution: Execution,
-    ) -> PresmoothOutputs:
+    ) -> MetricTfcePresmoothOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class Presmooth:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PresmoothOutputs`).
+            NamedTuple of outputs (described in `MetricTfcePresmoothOutputs`).
         """
-        ret = PresmoothOutputs(
+        ret = MetricTfcePresmoothOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ParametersOutputs(typing.NamedTuple):
+class MetricTfceParametersOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Parameters.run(...)`.
+    Output object returned when calling `MetricTfceParameters.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Parameters:
+class MetricTfceParameters:
     """
     set parameters for TFCE integral
     """
@@ -102,7 +102,7 @@ class Parameters:
     def outputs(
         self,
         execution: Execution,
-    ) -> ParametersOutputs:
+    ) -> MetricTfceParametersOutputs:
         """
         Collect output file paths.
         
@@ -110,9 +110,9 @@ class Parameters:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ParametersOutputs`).
+            NamedTuple of outputs (described in `MetricTfceParametersOutputs`).
         """
-        ret = ParametersOutputs(
+        ret = MetricTfceParametersOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -126,9 +126,9 @@ class MetricTfceOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
-    presmooth: PresmoothOutputs
+    presmooth: MetricTfcePresmoothOutputs
     """Subcommand outputs"""
-    parameters: ParametersOutputs
+    parameters: MetricTfceParametersOutputs
     """Subcommand outputs"""
 
 
@@ -136,9 +136,9 @@ def metric_tfce(
     surface: InputPathType,
     metric_in: InputPathType,
     metric_out: InputPathType,
-    presmooth: Presmooth | None = None,
+    presmooth: MetricTfcePresmooth | None = None,
     opt_roi_roi_metric: InputPathType | None = None,
-    parameters: Parameters | None = None,
+    parameters: MetricTfceParameters | None = None,
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
     runner: Runner = None,
@@ -219,9 +219,9 @@ def metric_tfce(
 __all__ = [
     "METRIC_TFCE_METADATA",
     "MetricTfceOutputs",
-    "Parameters",
-    "ParametersOutputs",
-    "Presmooth",
-    "PresmoothOutputs",
+    "MetricTfceParameters",
+    "MetricTfceParametersOutputs",
+    "MetricTfcePresmooth",
+    "MetricTfcePresmoothOutputs",
     "metric_tfce",
 ]

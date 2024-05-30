@@ -16,16 +16,16 @@ LABEL_TO_VOLUME_MAPPING_METADATA = Metadata(
 )
 
 
-class RibbonConstrainedOutputs(typing.NamedTuple):
+class LabelToVolumeMappingRibbonConstrainedOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RibbonConstrained.run(...)`.
+    Output object returned when calling `LabelToVolumeMappingRibbonConstrained.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RibbonConstrained:
+class LabelToVolumeMappingRibbonConstrained:
     """
     use ribbon constrained mapping algorithm
     """
@@ -63,7 +63,7 @@ class RibbonConstrained:
     def outputs(
         self,
         execution: Execution,
-    ) -> RibbonConstrainedOutputs:
+    ) -> LabelToVolumeMappingRibbonConstrainedOutputs:
         """
         Collect output file paths.
         
@@ -71,9 +71,9 @@ class RibbonConstrained:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RibbonConstrainedOutputs`).
+            NamedTuple of outputs (described in `LabelToVolumeMappingRibbonConstrainedOutputs`).
         """
-        ret = RibbonConstrainedOutputs(
+        ret = LabelToVolumeMappingRibbonConstrainedOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -87,7 +87,7 @@ class LabelToVolumeMappingOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume file"""
-    ribbon_constrained: RibbonConstrainedOutputs
+    ribbon_constrained: LabelToVolumeMappingRibbonConstrainedOutputs
     """Subcommand outputs"""
 
 
@@ -97,7 +97,7 @@ def label_to_volume_mapping(
     volume_space: InputPathType,
     volume_out: InputPathType,
     opt_nearest_vertex_distance: float | int | None = None,
-    ribbon_constrained: RibbonConstrained | None = None,
+    ribbon_constrained: LabelToVolumeMappingRibbonConstrained | None = None,
     runner: Runner = None,
 ) -> LabelToVolumeMappingOutputs:
     """
@@ -149,7 +149,7 @@ def label_to_volume_mapping(
 __all__ = [
     "LABEL_TO_VOLUME_MAPPING_METADATA",
     "LabelToVolumeMappingOutputs",
-    "RibbonConstrained",
-    "RibbonConstrainedOutputs",
+    "LabelToVolumeMappingRibbonConstrained",
+    "LabelToVolumeMappingRibbonConstrainedOutputs",
     "label_to_volume_mapping",
 ]

@@ -16,16 +16,16 @@ CIFTI_CREATE_PARCELLATED_FROM_TEMPLATE_METADATA = Metadata(
 )
 
 
-class CiftiOutputs(typing.NamedTuple):
+class CiftiCreateParcellatedFromTemplateCiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Cifti.run(...)`.
+    Output object returned when calling `CiftiCreateParcellatedFromTemplateCifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Cifti:
+class CiftiCreateParcellatedFromTemplateCifti:
     """
     specify an input cifti file
     """
@@ -49,7 +49,7 @@ class Cifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> CiftiOutputs:
+    ) -> CiftiCreateParcellatedFromTemplateCiftiOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Cifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CiftiOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateParcellatedFromTemplateCiftiOutputs`).
         """
-        ret = CiftiOutputs(
+        ret = CiftiCreateParcellatedFromTemplateCiftiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -73,7 +73,7 @@ class CiftiCreateParcellatedFromTemplateOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    cifti: CiftiOutputs
+    cifti: typing.List[CiftiCreateParcellatedFromTemplateCiftiOutputs]
     """Subcommand outputs"""
 
 
@@ -82,7 +82,7 @@ def cifti_create_parcellated_from_template(
     modify_direction: str,
     cifti_out: InputPathType,
     opt_fill_value_value: float | int | None = None,
-    cifti: list[Cifti] = None,
+    cifti: list[CiftiCreateParcellatedFromTemplateCifti] = None,
     runner: Runner = None,
 ) -> CiftiCreateParcellatedFromTemplateOutputs:
     """
@@ -133,8 +133,8 @@ def cifti_create_parcellated_from_template(
 
 __all__ = [
     "CIFTI_CREATE_PARCELLATED_FROM_TEMPLATE_METADATA",
-    "Cifti",
+    "CiftiCreateParcellatedFromTemplateCifti",
+    "CiftiCreateParcellatedFromTemplateCiftiOutputs",
     "CiftiCreateParcellatedFromTemplateOutputs",
-    "CiftiOutputs",
     "cifti_create_parcellated_from_template",
 ]

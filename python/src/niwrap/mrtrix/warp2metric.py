@@ -16,16 +16,16 @@ WARP2METRIC_METADATA = Metadata(
 )
 
 
-class FcOutputs(typing.NamedTuple):
+class Warp2metricFcOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fc.run(...)`.
+    Output object returned when calling `Warp2metricFc.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fc:
+class Warp2metricFc:
     """
     use an input template fixel image to define fibre orientations and output a fixel image describing the change in fibre cross-section (FC) in the perpendicular plane to the fixel orientation. e.g. warp2metric warp.mif -fc fixel_template_directory output_fixel_directory fc.mif
     """
@@ -68,7 +68,7 @@ class Fc:
     def outputs(
         self,
         execution: Execution,
-    ) -> FcOutputs:
+    ) -> Warp2metricFcOutputs:
         """
         Collect output file paths.
         
@@ -76,24 +76,24 @@ class Fc:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FcOutputs`).
+            NamedTuple of outputs (described in `Warp2metricFcOutputs`).
         """
-        ret = FcOutputs(
+        ret = Warp2metricFcOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Warp2metricConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Warp2metricConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Warp2metricConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -124,7 +124,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Warp2metricConfigOutputs:
         """
         Collect output file paths.
         
@@ -132,9 +132,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Warp2metricConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Warp2metricConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -150,15 +150,15 @@ class Warp2metricOutputs(typing.NamedTuple):
     """output a Jacobian matrix image stored in column-major order along the 4th dimension.Note the output jacobian describes the warp gradient w.r.t the scanner space coordinate system """
     jdet: OutputPathType | None
     """output the Jacobian determinant instead of the full matrix """
-    fc: FcOutputs
+    fc: Warp2metricFcOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[Warp2metricConfigOutputs]
     """Subcommand outputs"""
 
 
 def warp2metric(
     in_: InputPathType,
-    fc: Fc | None = None,
+    fc: Warp2metricFc | None = None,
     jmat: InputPathType | None = None,
     jdet: InputPathType | None = None,
     info: bool = False,
@@ -166,7 +166,7 @@ def warp2metric(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Warp2metricConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -253,11 +253,11 @@ def warp2metric(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
-    "Fc",
-    "FcOutputs",
     "WARP2METRIC_METADATA",
+    "Warp2metricConfig",
+    "Warp2metricConfigOutputs",
+    "Warp2metricFc",
+    "Warp2metricFcOutputs",
     "Warp2metricOutputs",
     "warp2metric",
 ]

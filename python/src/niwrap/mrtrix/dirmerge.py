@@ -16,16 +16,16 @@ DIRMERGE_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class DirmergeConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `DirmergeConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class DirmergeConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> DirmergeConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `DirmergeConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = DirmergeConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class DirmergeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out: OutputPathType
     """the output directions file, with each row listing the X Y Z gradient directions, the b-value, and an index representing the phase encode direction"""
-    config: ConfigOutputs
+    config: typing.List[DirmergeConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -94,7 +94,7 @@ def dirmerge(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[DirmergeConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -174,9 +174,9 @@ def dirmerge(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "DIRMERGE_METADATA",
+    "DirmergeConfig",
+    "DirmergeConfigOutputs",
     "DirmergeOutputs",
     "dirmerge",
 ]

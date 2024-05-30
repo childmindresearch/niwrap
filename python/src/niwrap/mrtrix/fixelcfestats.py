@@ -16,16 +16,16 @@ FIXELCFESTATS_METADATA = Metadata(
 )
 
 
-class ColumnOutputs(typing.NamedTuple):
+class FixelcfestatsColumnOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Column.run(...)`.
+    Output object returned when calling `FixelcfestatsColumn.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Column:
+class FixelcfestatsColumn:
     """
     add a column to the design matrix corresponding to subject fixel-wise values (note that the contrast matrix must include an additional column for each use of this option); the text file provided via this option should contain a file name for each subject
     """
@@ -56,7 +56,7 @@ class Column:
     def outputs(
         self,
         execution: Execution,
-    ) -> ColumnOutputs:
+    ) -> FixelcfestatsColumnOutputs:
         """
         Collect output file paths.
         
@@ -64,24 +64,24 @@ class Column:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ColumnOutputs`).
+            NamedTuple of outputs (described in `FixelcfestatsColumnOutputs`).
         """
-        ret = ColumnOutputs(
+        ret = FixelcfestatsColumnOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class FixelcfestatsConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `FixelcfestatsConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class FixelcfestatsConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -112,7 +112,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> FixelcfestatsConfigOutputs:
         """
         Collect output file paths.
         
@@ -120,9 +120,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `FixelcfestatsConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = FixelcfestatsConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -134,9 +134,9 @@ class FixelcfestatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    column: ColumnOutputs
+    column: typing.List[FixelcfestatsColumnOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[FixelcfestatsConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -167,13 +167,13 @@ def fixelcfestats(
     variance: InputPathType | None = None,
     ftests: InputPathType | None = None,
     fonly: bool = False,
-    column: list[Column] = None,
+    column: list[FixelcfestatsColumn] = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[FixelcfestatsConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -387,11 +387,11 @@ def fixelcfestats(
 
 
 __all__ = [
-    "Column",
-    "ColumnOutputs",
-    "Config",
-    "ConfigOutputs",
     "FIXELCFESTATS_METADATA",
+    "FixelcfestatsColumn",
+    "FixelcfestatsColumnOutputs",
+    "FixelcfestatsConfig",
+    "FixelcfestatsConfigOutputs",
     "FixelcfestatsOutputs",
     "fixelcfestats",
 ]

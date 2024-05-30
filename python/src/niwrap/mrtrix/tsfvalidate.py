@@ -16,16 +16,16 @@ TSFVALIDATE_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TsfvalidateConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TsfvalidateConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TsfvalidateConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TsfvalidateConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TsfvalidateConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TsfvalidateConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -78,7 +78,7 @@ class TsfvalidateOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    config: ConfigOutputs
+    config: typing.List[TsfvalidateConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -90,7 +90,7 @@ def tsfvalidate(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TsfvalidateConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -159,9 +159,9 @@ def tsfvalidate(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TSFVALIDATE_METADATA",
+    "TsfvalidateConfig",
+    "TsfvalidateConfigOutputs",
     "TsfvalidateOutputs",
     "tsfvalidate",
 ]

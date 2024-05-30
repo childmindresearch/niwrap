@@ -16,16 +16,16 @@ MESHFILTER_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MeshfilterConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MeshfilterConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MeshfilterConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MeshfilterConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MeshfilterConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MeshfilterConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class MeshfilterOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output mesh file"""
-    config: ConfigOutputs
+    config: typing.List[MeshfilterConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -95,7 +95,7 @@ def meshfilter(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MeshfilterConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -175,9 +175,9 @@ def meshfilter(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MESHFILTER_METADATA",
+    "MeshfilterConfig",
+    "MeshfilterConfigOutputs",
     "MeshfilterOutputs",
     "meshfilter",
 ]

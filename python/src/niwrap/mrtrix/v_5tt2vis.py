@@ -16,16 +16,16 @@ V_5TT2VIS_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class V5tt2visConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `V5tt2visConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class V5tt2visConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> V5tt2visConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `V5tt2visConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = V5tt2visConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class V5tt2visOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output 3D image for visualisation"""
-    config: ConfigOutputs
+    config: typing.List[V5tt2visConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -98,7 +98,7 @@ def v_5tt2vis(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[V5tt2visConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -187,8 +187,8 @@ def v_5tt2vis(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
+    "V5tt2visConfig",
+    "V5tt2visConfigOutputs",
     "V5tt2visOutputs",
     "V_5TT2VIS_METADATA",
     "v_5tt2vis",

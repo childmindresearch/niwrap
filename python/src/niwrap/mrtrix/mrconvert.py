@@ -16,16 +16,16 @@ MRCONVERT_METADATA = Metadata(
 )
 
 
-class CoordOutputs(typing.NamedTuple):
+class MrconvertCoordOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Coord.run(...)`.
+    Output object returned when calling `MrconvertCoord.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Coord:
+class MrconvertCoord:
     """
     retain data from the input image only at the coordinates specified in the selection along the specified axis. The selection argument expects a number sequence, which can also include the 'end' keyword.
     """
@@ -60,7 +60,7 @@ class Coord:
     def outputs(
         self,
         execution: Execution,
-    ) -> CoordOutputs:
+    ) -> MrconvertCoordOutputs:
         """
         Collect output file paths.
         
@@ -68,24 +68,24 @@ class Coord:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CoordOutputs`).
+            NamedTuple of outputs (described in `MrconvertCoordOutputs`).
         """
-        ret = CoordOutputs(
+        ret = MrconvertCoordOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ClearPropertyOutputs(typing.NamedTuple):
+class MrconvertClearPropertyOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ClearProperty.run(...)`.
+    Output object returned when calling `MrconvertClearProperty.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ClearProperty:
+class MrconvertClearProperty:
     """
     remove the specified key from the image header altogether.
     """
@@ -113,7 +113,7 @@ class ClearProperty:
     def outputs(
         self,
         execution: Execution,
-    ) -> ClearPropertyOutputs:
+    ) -> MrconvertClearPropertyOutputs:
         """
         Collect output file paths.
         
@@ -121,24 +121,24 @@ class ClearProperty:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ClearPropertyOutputs`).
+            NamedTuple of outputs (described in `MrconvertClearPropertyOutputs`).
         """
-        ret = ClearPropertyOutputs(
+        ret = MrconvertClearPropertyOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SetPropertyOutputs(typing.NamedTuple):
+class MrconvertSetPropertyOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SetProperty.run(...)`.
+    Output object returned when calling `MrconvertSetProperty.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SetProperty:
+class MrconvertSetProperty:
     """
     set the value of the specified key in the image header.
     """
@@ -169,7 +169,7 @@ class SetProperty:
     def outputs(
         self,
         execution: Execution,
-    ) -> SetPropertyOutputs:
+    ) -> MrconvertSetPropertyOutputs:
         """
         Collect output file paths.
         
@@ -177,24 +177,24 @@ class SetProperty:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SetPropertyOutputs`).
+            NamedTuple of outputs (described in `MrconvertSetPropertyOutputs`).
         """
-        ret = SetPropertyOutputs(
+        ret = MrconvertSetPropertyOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AppendPropertyOutputs(typing.NamedTuple):
+class MrconvertAppendPropertyOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `AppendProperty.run(...)`.
+    Output object returned when calling `MrconvertAppendProperty.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class AppendProperty:
+class MrconvertAppendProperty:
     """
     append the given value to the specified key in the image header (this adds the value specified as a new line in the header value).
     """
@@ -227,7 +227,7 @@ class AppendProperty:
     def outputs(
         self,
         execution: Execution,
-    ) -> AppendPropertyOutputs:
+    ) -> MrconvertAppendPropertyOutputs:
         """
         Collect output file paths.
         
@@ -235,24 +235,24 @@ class AppendProperty:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AppendPropertyOutputs`).
+            NamedTuple of outputs (described in `MrconvertAppendPropertyOutputs`).
         """
-        ret = AppendPropertyOutputs(
+        ret = MrconvertAppendPropertyOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FslgradOutputs(typing.NamedTuple):
+class MrconvertFslgradOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fslgrad.run(...)`.
+    Output object returned when calling `MrconvertFslgrad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fslgrad:
+class MrconvertFslgrad:
     """
     Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
     """
@@ -289,7 +289,7 @@ class Fslgrad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FslgradOutputs:
+    ) -> MrconvertFslgradOutputs:
         """
         Collect output file paths.
         
@@ -297,17 +297,17 @@ class Fslgrad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FslgradOutputs`).
+            NamedTuple of outputs (described in `MrconvertFslgradOutputs`).
         """
-        ret = FslgradOutputs(
+        ret = MrconvertFslgradOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ExportGradFslOutputs(typing.NamedTuple):
+class MrconvertExportGradFslOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ExportGradFsl.run(...)`.
+    Output object returned when calling `MrconvertExportGradFsl.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -318,7 +318,7 @@ class ExportGradFslOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class ExportGradFsl:
+class MrconvertExportGradFsl:
     """
     export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format
     """
@@ -351,7 +351,7 @@ class ExportGradFsl:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExportGradFslOutputs:
+    ) -> MrconvertExportGradFslOutputs:
         """
         Collect output file paths.
         
@@ -359,9 +359,9 @@ class ExportGradFsl:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExportGradFslOutputs`).
+            NamedTuple of outputs (described in `MrconvertExportGradFslOutputs`).
         """
-        ret = ExportGradFslOutputs(
+        ret = MrconvertExportGradFslOutputs(
             root=execution.output_file("."),
             bvecs_path=execution.output_file(f"{pathlib.Path(self.bvecs_path).name}"),
             bvals_path=execution.output_file(f"{pathlib.Path(self.bvals_path).name}"),
@@ -369,16 +369,16 @@ class ExportGradFsl:
         return ret
 
 
-class ImportPeEddyOutputs(typing.NamedTuple):
+class MrconvertImportPeEddyOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ImportPeEddy.run(...)`.
+    Output object returned when calling `MrconvertImportPeEddy.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ImportPeEddy:
+class MrconvertImportPeEddy:
     """
     import phase-encoding information from an EDDY-style config / index file pair
     """
@@ -411,7 +411,7 @@ class ImportPeEddy:
     def outputs(
         self,
         execution: Execution,
-    ) -> ImportPeEddyOutputs:
+    ) -> MrconvertImportPeEddyOutputs:
         """
         Collect output file paths.
         
@@ -419,17 +419,17 @@ class ImportPeEddy:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ImportPeEddyOutputs`).
+            NamedTuple of outputs (described in `MrconvertImportPeEddyOutputs`).
         """
-        ret = ImportPeEddyOutputs(
+        ret = MrconvertImportPeEddyOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ExportPeEddyOutputs(typing.NamedTuple):
+class MrconvertExportPeEddyOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ExportPeEddy.run(...)`.
+    Output object returned when calling `MrconvertExportPeEddy.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -440,7 +440,7 @@ class ExportPeEddyOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class ExportPeEddy:
+class MrconvertExportPeEddy:
     """
     export phase-encoding information to an EDDY-style config / index file pair
     """
@@ -473,7 +473,7 @@ class ExportPeEddy:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExportPeEddyOutputs:
+    ) -> MrconvertExportPeEddyOutputs:
         """
         Collect output file paths.
         
@@ -481,9 +481,9 @@ class ExportPeEddy:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExportPeEddyOutputs`).
+            NamedTuple of outputs (described in `MrconvertExportPeEddyOutputs`).
         """
-        ret = ExportPeEddyOutputs(
+        ret = MrconvertExportPeEddyOutputs(
             root=execution.output_file("."),
             config=execution.output_file(f"{pathlib.Path(self.config_).name}"),
             indices=execution.output_file(f"{pathlib.Path(self.indices).name}"),
@@ -491,16 +491,16 @@ class ExportPeEddy:
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrconvertConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrconvertConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrconvertConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -531,7 +531,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrconvertConfigOutputs:
         """
         Collect output file paths.
         
@@ -539,9 +539,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrconvertConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrconvertConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -561,56 +561,56 @@ class MrconvertOutputs(typing.NamedTuple):
     """export the diffusion-weighted gradient table to file in MRtrix format """
     export_pe_table: OutputPathType | None
     """export phase-encoding table to file """
-    coord: CoordOutputs
+    coord: typing.List[MrconvertCoordOutputs]
     """Subcommand outputs"""
-    clear_property: ClearPropertyOutputs
+    clear_property: typing.List[MrconvertClearPropertyOutputs]
     """Subcommand outputs"""
-    set_property: SetPropertyOutputs
+    set_property: typing.List[MrconvertSetPropertyOutputs]
     """Subcommand outputs"""
-    append_property: AppendPropertyOutputs
+    append_property: typing.List[MrconvertAppendPropertyOutputs]
     """Subcommand outputs"""
-    fslgrad: FslgradOutputs
+    fslgrad: MrconvertFslgradOutputs
     """Subcommand outputs"""
-    export_grad_fsl: ExportGradFslOutputs
+    export_grad_fsl: MrconvertExportGradFslOutputs
     """Subcommand outputs"""
-    import_pe_eddy: ImportPeEddyOutputs
+    import_pe_eddy: MrconvertImportPeEddyOutputs
     """Subcommand outputs"""
-    export_pe_eddy: ExportPeEddyOutputs
+    export_pe_eddy: MrconvertExportPeEddyOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[MrconvertConfigOutputs]
     """Subcommand outputs"""
 
 
 def mrconvert(
     input_: InputPathType,
     output: InputPathType,
-    coord: list[Coord] = None,
+    coord: list[MrconvertCoord] = None,
     vox: list[float | int] = None,
     axes: list[int] = None,
     scaling: list[float | int] = None,
     json_import: InputPathType | None = None,
     json_export: InputPathType | None = None,
-    clear_property: list[ClearProperty] = None,
-    set_property: list[SetProperty] = None,
-    append_property: list[AppendProperty] = None,
+    clear_property: list[MrconvertClearProperty] = None,
+    set_property: list[MrconvertSetProperty] = None,
+    append_property: list[MrconvertAppendProperty] = None,
     copy_properties: str | None = None,
     strides: str | None = None,
     datatype: typing.Literal["spec"] | None = None,
     grad: InputPathType | None = None,
-    fslgrad: Fslgrad | None = None,
+    fslgrad: MrconvertFslgrad | None = None,
     bvalue_scaling: str | None = None,
     export_grad_mrtrix: InputPathType | None = None,
-    export_grad_fsl: ExportGradFsl | None = None,
+    export_grad_fsl: MrconvertExportGradFsl | None = None,
     import_pe_table: InputPathType | None = None,
-    import_pe_eddy: ImportPeEddy | None = None,
+    import_pe_eddy: MrconvertImportPeEddy | None = None,
     export_pe_table: InputPathType | None = None,
-    export_pe_eddy: ExportPeEddy | None = None,
+    export_pe_eddy: MrconvertExportPeEddy | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrconvertConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -830,25 +830,25 @@ def mrconvert(
 
 
 __all__ = [
-    "AppendProperty",
-    "AppendPropertyOutputs",
-    "ClearProperty",
-    "ClearPropertyOutputs",
-    "Config",
-    "ConfigOutputs",
-    "Coord",
-    "CoordOutputs",
-    "ExportGradFsl",
-    "ExportGradFslOutputs",
-    "ExportPeEddy",
-    "ExportPeEddyOutputs",
-    "Fslgrad",
-    "FslgradOutputs",
-    "ImportPeEddy",
-    "ImportPeEddyOutputs",
     "MRCONVERT_METADATA",
+    "MrconvertAppendProperty",
+    "MrconvertAppendPropertyOutputs",
+    "MrconvertClearProperty",
+    "MrconvertClearPropertyOutputs",
+    "MrconvertConfig",
+    "MrconvertConfigOutputs",
+    "MrconvertCoord",
+    "MrconvertCoordOutputs",
+    "MrconvertExportGradFsl",
+    "MrconvertExportGradFslOutputs",
+    "MrconvertExportPeEddy",
+    "MrconvertExportPeEddyOutputs",
+    "MrconvertFslgrad",
+    "MrconvertFslgradOutputs",
+    "MrconvertImportPeEddy",
+    "MrconvertImportPeEddyOutputs",
     "MrconvertOutputs",
-    "SetProperty",
-    "SetPropertyOutputs",
+    "MrconvertSetProperty",
+    "MrconvertSetPropertyOutputs",
     "mrconvert",
 ]

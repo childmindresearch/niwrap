@@ -16,16 +16,16 @@ MRAVERAGEHEADER_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MraverageheaderConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MraverageheaderConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MraverageheaderConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MraverageheaderConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MraverageheaderConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MraverageheaderConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class MraverageheaderOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output image"""
-    config: ConfigOutputs
+    config: typing.List[MraverageheaderConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -96,7 +96,7 @@ def mraverageheader(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MraverageheaderConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -186,9 +186,9 @@ def mraverageheader(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MRAVERAGEHEADER_METADATA",
+    "MraverageheaderConfig",
+    "MraverageheaderConfigOutputs",
     "MraverageheaderOutputs",
     "mraverageheader",
 ]

@@ -16,16 +16,16 @@ V_5TTCHECK_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class V5ttcheckConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `V5ttcheckConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class V5ttcheckConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> V5ttcheckConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `V5ttcheckConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = V5ttcheckConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -78,7 +78,7 @@ class V5ttcheckOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    config: ConfigOutputs
+    config: typing.List[V5ttcheckConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -90,7 +90,7 @@ def v_5ttcheck(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[V5ttcheckConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -162,8 +162,8 @@ def v_5ttcheck(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
+    "V5ttcheckConfig",
+    "V5ttcheckConfigOutputs",
     "V5ttcheckOutputs",
     "V_5TTCHECK_METADATA",
     "v_5ttcheck",

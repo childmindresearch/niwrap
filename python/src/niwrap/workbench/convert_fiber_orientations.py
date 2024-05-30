@@ -16,16 +16,16 @@ CONVERT_FIBER_ORIENTATIONS_METADATA = Metadata(
 )
 
 
-class FiberOutputs(typing.NamedTuple):
+class ConvertFiberOrientationsFiberOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fiber.run(...)`.
+    Output object returned when calling `ConvertFiberOrientationsFiber.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fiber:
+class ConvertFiberOrientationsFiber:
     """
     specify the parameter volumes for a fiber
     """
@@ -49,7 +49,7 @@ class Fiber:
     def outputs(
         self,
         execution: Execution,
-    ) -> FiberOutputs:
+    ) -> ConvertFiberOrientationsFiberOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Fiber:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FiberOutputs`).
+            NamedTuple of outputs (described in `ConvertFiberOrientationsFiberOutputs`).
         """
-        ret = FiberOutputs(
+        ret = ConvertFiberOrientationsFiberOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -73,14 +73,14 @@ class ConvertFiberOrientationsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     fiber_out: OutputPathType
     """the output fiber orientation file"""
-    fiber: FiberOutputs
+    fiber: typing.List[ConvertFiberOrientationsFiberOutputs]
     """Subcommand outputs"""
 
 
 def convert_fiber_orientations(
     label_volume: InputPathType,
     fiber_out: InputPathType,
-    fiber: list[Fiber] = None,
+    fiber: list[ConvertFiberOrientationsFiber] = None,
     runner: Runner = None,
 ) -> ConvertFiberOrientationsOutputs:
     """
@@ -155,8 +155,8 @@ def convert_fiber_orientations(
 
 __all__ = [
     "CONVERT_FIBER_ORIENTATIONS_METADATA",
+    "ConvertFiberOrientationsFiber",
+    "ConvertFiberOrientationsFiberOutputs",
     "ConvertFiberOrientationsOutputs",
-    "Fiber",
-    "FiberOutputs",
     "convert_fiber_orientations",
 ]

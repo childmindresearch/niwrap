@@ -16,16 +16,16 @@ SET_MAP_NAMES_METADATA = Metadata(
 )
 
 
-class MapOutputs(typing.NamedTuple):
+class SetMapNamesMapOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Map.run(...)`.
+    Output object returned when calling `SetMapNamesMap.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Map:
+class SetMapNamesMap:
     """
     specify a map to set the name of
     """
@@ -49,7 +49,7 @@ class Map:
     def outputs(
         self,
         execution: Execution,
-    ) -> MapOutputs:
+    ) -> SetMapNamesMapOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Map:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MapOutputs`).
+            NamedTuple of outputs (described in `SetMapNamesMapOutputs`).
         """
-        ret = MapOutputs(
+        ret = SetMapNamesMapOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -71,7 +71,7 @@ class SetMapNamesOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    map_: MapOutputs
+    map_: typing.List[SetMapNamesMapOutputs]
     """Subcommand outputs"""
 
 
@@ -79,7 +79,7 @@ def set_map_names(
     data_file: str,
     opt_name_file_file: str | None = None,
     opt_from_data_file_file: str | None = None,
-    map_: list[Map] = None,
+    map_: list[SetMapNamesMap] = None,
     runner: Runner = None,
 ) -> SetMapNamesOutputs:
     """
@@ -124,9 +124,9 @@ def set_map_names(
 
 
 __all__ = [
-    "Map",
-    "MapOutputs",
     "SET_MAP_NAMES_METADATA",
+    "SetMapNamesMap",
+    "SetMapNamesMapOutputs",
     "SetMapNamesOutputs",
     "set_map_names",
 ]

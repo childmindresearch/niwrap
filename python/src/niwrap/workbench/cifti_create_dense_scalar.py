@@ -16,16 +16,16 @@ CIFTI_CREATE_DENSE_SCALAR_METADATA = Metadata(
 )
 
 
-class VolumeOutputs(typing.NamedTuple):
+class CiftiCreateDenseScalarVolumeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Volume.run(...)`.
+    Output object returned when calling `CiftiCreateDenseScalarVolume.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Volume:
+class CiftiCreateDenseScalarVolume:
     """
     volume component
     """
@@ -49,7 +49,7 @@ class Volume:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeOutputs:
+    ) -> CiftiCreateDenseScalarVolumeOutputs:
         """
         Collect output file paths.
         
@@ -57,24 +57,24 @@ class Volume:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseScalarVolumeOutputs`).
         """
-        ret = VolumeOutputs(
+        ret = CiftiCreateDenseScalarVolumeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LeftMetricOutputs(typing.NamedTuple):
+class CiftiCreateDenseScalarLeftMetricOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `LeftMetric.run(...)`.
+    Output object returned when calling `CiftiCreateDenseScalarLeftMetric.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class LeftMetric:
+class CiftiCreateDenseScalarLeftMetric:
     """
     metric for left surface
     """
@@ -102,7 +102,7 @@ class LeftMetric:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeftMetricOutputs:
+    ) -> CiftiCreateDenseScalarLeftMetricOutputs:
         """
         Collect output file paths.
         
@@ -110,24 +110,24 @@ class LeftMetric:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeftMetricOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseScalarLeftMetricOutputs`).
         """
-        ret = LeftMetricOutputs(
+        ret = CiftiCreateDenseScalarLeftMetricOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RightMetricOutputs(typing.NamedTuple):
+class CiftiCreateDenseScalarRightMetricOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RightMetric.run(...)`.
+    Output object returned when calling `CiftiCreateDenseScalarRightMetric.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RightMetric:
+class CiftiCreateDenseScalarRightMetric:
     """
     metric for right surface
     """
@@ -155,7 +155,7 @@ class RightMetric:
     def outputs(
         self,
         execution: Execution,
-    ) -> RightMetricOutputs:
+    ) -> CiftiCreateDenseScalarRightMetricOutputs:
         """
         Collect output file paths.
         
@@ -163,24 +163,24 @@ class RightMetric:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RightMetricOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseScalarRightMetricOutputs`).
         """
-        ret = RightMetricOutputs(
+        ret = CiftiCreateDenseScalarRightMetricOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CerebellumMetricOutputs(typing.NamedTuple):
+class CiftiCreateDenseScalarCerebellumMetricOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CerebellumMetric.run(...)`.
+    Output object returned when calling `CiftiCreateDenseScalarCerebellumMetric.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CerebellumMetric:
+class CiftiCreateDenseScalarCerebellumMetric:
     """
     metric for the cerebellum
     """
@@ -208,7 +208,7 @@ class CerebellumMetric:
     def outputs(
         self,
         execution: Execution,
-    ) -> CerebellumMetricOutputs:
+    ) -> CiftiCreateDenseScalarCerebellumMetricOutputs:
         """
         Collect output file paths.
         
@@ -216,9 +216,9 @@ class CerebellumMetric:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CerebellumMetricOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseScalarCerebellumMetricOutputs`).
         """
-        ret = CerebellumMetricOutputs(
+        ret = CiftiCreateDenseScalarCerebellumMetricOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -232,22 +232,22 @@ class CiftiCreateDenseScalarOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    volume: VolumeOutputs
+    volume: CiftiCreateDenseScalarVolumeOutputs
     """Subcommand outputs"""
-    left_metric: LeftMetricOutputs
+    left_metric: CiftiCreateDenseScalarLeftMetricOutputs
     """Subcommand outputs"""
-    right_metric: RightMetricOutputs
+    right_metric: CiftiCreateDenseScalarRightMetricOutputs
     """Subcommand outputs"""
-    cerebellum_metric: CerebellumMetricOutputs
+    cerebellum_metric: CiftiCreateDenseScalarCerebellumMetricOutputs
     """Subcommand outputs"""
 
 
 def cifti_create_dense_scalar(
     cifti_out: InputPathType,
-    volume: Volume | None = None,
-    left_metric: LeftMetric | None = None,
-    right_metric: RightMetric | None = None,
-    cerebellum_metric: CerebellumMetric | None = None,
+    volume: CiftiCreateDenseScalarVolume | None = None,
+    left_metric: CiftiCreateDenseScalarLeftMetric | None = None,
+    right_metric: CiftiCreateDenseScalarRightMetric | None = None,
+    cerebellum_metric: CiftiCreateDenseScalarCerebellumMetric | None = None,
     opt_name_file_file: str | None = None,
     runner: Runner = None,
 ) -> CiftiCreateDenseScalarOutputs:
@@ -340,14 +340,14 @@ def cifti_create_dense_scalar(
 
 __all__ = [
     "CIFTI_CREATE_DENSE_SCALAR_METADATA",
-    "CerebellumMetric",
-    "CerebellumMetricOutputs",
+    "CiftiCreateDenseScalarCerebellumMetric",
+    "CiftiCreateDenseScalarCerebellumMetricOutputs",
+    "CiftiCreateDenseScalarLeftMetric",
+    "CiftiCreateDenseScalarLeftMetricOutputs",
     "CiftiCreateDenseScalarOutputs",
-    "LeftMetric",
-    "LeftMetricOutputs",
-    "RightMetric",
-    "RightMetricOutputs",
-    "Volume",
-    "VolumeOutputs",
+    "CiftiCreateDenseScalarRightMetric",
+    "CiftiCreateDenseScalarRightMetricOutputs",
+    "CiftiCreateDenseScalarVolume",
+    "CiftiCreateDenseScalarVolumeOutputs",
     "cifti_create_dense_scalar",
 ]

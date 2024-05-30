@@ -16,16 +16,16 @@ MRTRANSFORM_METADATA = Metadata(
 )
 
 
-class FslgradOutputs(typing.NamedTuple):
+class MrtransformFslgradOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fslgrad.run(...)`.
+    Output object returned when calling `MrtransformFslgrad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fslgrad:
+class MrtransformFslgrad:
     """
     Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
     """
@@ -62,7 +62,7 @@ class Fslgrad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FslgradOutputs:
+    ) -> MrtransformFslgradOutputs:
         """
         Collect output file paths.
         
@@ -70,17 +70,17 @@ class Fslgrad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FslgradOutputs`).
+            NamedTuple of outputs (described in `MrtransformFslgradOutputs`).
         """
-        ret = FslgradOutputs(
+        ret = MrtransformFslgradOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ExportGradFslOutputs(typing.NamedTuple):
+class MrtransformExportGradFslOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ExportGradFsl.run(...)`.
+    Output object returned when calling `MrtransformExportGradFsl.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -91,7 +91,7 @@ class ExportGradFslOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class ExportGradFsl:
+class MrtransformExportGradFsl:
     """
     export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format
     """
@@ -124,7 +124,7 @@ class ExportGradFsl:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExportGradFslOutputs:
+    ) -> MrtransformExportGradFslOutputs:
         """
         Collect output file paths.
         
@@ -132,9 +132,9 @@ class ExportGradFsl:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExportGradFslOutputs`).
+            NamedTuple of outputs (described in `MrtransformExportGradFslOutputs`).
         """
-        ret = ExportGradFslOutputs(
+        ret = MrtransformExportGradFslOutputs(
             root=execution.output_file("."),
             bvecs_path=execution.output_file(f"{pathlib.Path(self.bvecs_path).name}"),
             bvals_path=execution.output_file(f"{pathlib.Path(self.bvals_path).name}"),
@@ -142,16 +142,16 @@ class ExportGradFsl:
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrtransformConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrtransformConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrtransformConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -182,7 +182,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrtransformConfigOutputs:
         """
         Collect output file paths.
         
@@ -190,9 +190,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrtransformConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrtransformConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -208,11 +208,11 @@ class MrtransformOutputs(typing.NamedTuple):
     """the output image."""
     export_grad_mrtrix: OutputPathType | None
     """export the diffusion-weighted gradient table to file in MRtrix format """
-    fslgrad: FslgradOutputs
+    fslgrad: MrtransformFslgradOutputs
     """Subcommand outputs"""
-    export_grad_fsl: ExportGradFslOutputs
+    export_grad_fsl: MrtransformExportGradFslOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[MrtransformConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -236,9 +236,9 @@ def mrtransform(
     directions: InputPathType | None = None,
     reorient_fod: str | None = None,
     grad: InputPathType | None = None,
-    fslgrad: Fslgrad | None = None,
+    fslgrad: MrtransformFslgrad | None = None,
     export_grad_mrtrix: InputPathType | None = None,
-    export_grad_fsl: ExportGradFsl | None = None,
+    export_grad_fsl: MrtransformExportGradFsl | None = None,
     datatype: typing.Literal["spec"] | None = None,
     strides: str | None = None,
     nan: bool = False,
@@ -248,7 +248,7 @@ def mrtransform(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrtransformConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -497,13 +497,13 @@ def mrtransform(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
-    "ExportGradFsl",
-    "ExportGradFslOutputs",
-    "Fslgrad",
-    "FslgradOutputs",
     "MRTRANSFORM_METADATA",
+    "MrtransformConfig",
+    "MrtransformConfigOutputs",
+    "MrtransformExportGradFsl",
+    "MrtransformExportGradFslOutputs",
+    "MrtransformFslgrad",
+    "MrtransformFslgradOutputs",
     "MrtransformOutputs",
     "mrtransform",
 ]

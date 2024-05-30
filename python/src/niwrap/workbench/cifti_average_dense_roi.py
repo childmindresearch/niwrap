@@ -16,16 +16,16 @@ CIFTI_AVERAGE_DENSE_ROI_METADATA = Metadata(
 )
 
 
-class CiftiRoiOutputs(typing.NamedTuple):
+class CiftiAverageDenseRoiCiftiRoiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CiftiRoi.run(...)`.
+    Output object returned when calling `CiftiAverageDenseRoiCiftiRoi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CiftiRoi:
+class CiftiAverageDenseRoiCiftiRoi:
     """
     cifti file containing combined weights
     """
@@ -53,7 +53,7 @@ class CiftiRoi:
     def outputs(
         self,
         execution: Execution,
-    ) -> CiftiRoiOutputs:
+    ) -> CiftiAverageDenseRoiCiftiRoiOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class CiftiRoi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CiftiRoiOutputs`).
+            NamedTuple of outputs (described in `CiftiAverageDenseRoiCiftiRoiOutputs`).
         """
-        ret = CiftiRoiOutputs(
+        ret = CiftiAverageDenseRoiCiftiRoiOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CiftiOutputs(typing.NamedTuple):
+class CiftiAverageDenseRoiCiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Cifti.run(...)`.
+    Output object returned when calling `CiftiAverageDenseRoiCifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Cifti:
+class CiftiAverageDenseRoiCifti:
     """
     specify an input cifti file
     """
@@ -102,7 +102,7 @@ class Cifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> CiftiOutputs:
+    ) -> CiftiAverageDenseRoiCiftiOutputs:
         """
         Collect output file paths.
         
@@ -110,9 +110,9 @@ class Cifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CiftiOutputs`).
+            NamedTuple of outputs (described in `CiftiAverageDenseRoiCiftiOutputs`).
         """
-        ret = CiftiOutputs(
+        ret = CiftiAverageDenseRoiCiftiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -126,15 +126,15 @@ class CiftiAverageDenseRoiOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti dscalar file"""
-    cifti_roi: CiftiRoiOutputs
+    cifti_roi: CiftiAverageDenseRoiCiftiRoiOutputs
     """Subcommand outputs"""
-    cifti: CiftiOutputs
+    cifti: typing.List[CiftiAverageDenseRoiCiftiOutputs]
     """Subcommand outputs"""
 
 
 def cifti_average_dense_roi(
     cifti_out: InputPathType,
-    cifti_roi: CiftiRoi | None = None,
+    cifti_roi: CiftiAverageDenseRoiCiftiRoi | None = None,
     opt_left_roi_roi_metric: InputPathType | None = None,
     opt_right_roi_roi_metric: InputPathType | None = None,
     opt_cerebellum_roi_roi_metric: InputPathType | None = None,
@@ -142,7 +142,7 @@ def cifti_average_dense_roi(
     opt_left_area_surf_left_surf: InputPathType | None = None,
     opt_right_area_surf_right_surf: InputPathType | None = None,
     opt_cerebellum_area_surf_cerebellum_surf: InputPathType | None = None,
-    cifti: list[Cifti] = None,
+    cifti: list[CiftiAverageDenseRoiCifti] = None,
     runner: Runner = None,
 ) -> CiftiAverageDenseRoiOutputs:
     """
@@ -214,10 +214,10 @@ def cifti_average_dense_roi(
 
 __all__ = [
     "CIFTI_AVERAGE_DENSE_ROI_METADATA",
-    "Cifti",
+    "CiftiAverageDenseRoiCifti",
+    "CiftiAverageDenseRoiCiftiOutputs",
+    "CiftiAverageDenseRoiCiftiRoi",
+    "CiftiAverageDenseRoiCiftiRoiOutputs",
     "CiftiAverageDenseRoiOutputs",
-    "CiftiOutputs",
-    "CiftiRoi",
-    "CiftiRoiOutputs",
     "cifti_average_dense_roi",
 ]

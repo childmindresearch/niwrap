@@ -16,16 +16,16 @@ METRIC_MATH_METADATA = Metadata(
 )
 
 
-class VarOutputs(typing.NamedTuple):
+class MetricMathVarOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Var.run(...)`.
+    Output object returned when calling `MetricMathVar.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Var:
+class MetricMathVar:
     """
     a metric to use as a variable
     """
@@ -57,7 +57,7 @@ class Var:
     def outputs(
         self,
         execution: Execution,
-    ) -> VarOutputs:
+    ) -> MetricMathVarOutputs:
         """
         Collect output file paths.
         
@@ -65,9 +65,9 @@ class Var:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VarOutputs`).
+            NamedTuple of outputs (described in `MetricMathVarOutputs`).
         """
-        ret = VarOutputs(
+        ret = MetricMathVarOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -81,7 +81,7 @@ class MetricMathOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
-    var: VarOutputs
+    var: typing.List[MetricMathVarOutputs]
     """Subcommand outputs"""
 
 
@@ -89,7 +89,7 @@ def metric_math(
     expression: str,
     metric_out: InputPathType,
     opt_fixnan_replace: float | int | None = None,
-    var: list[Var] = None,
+    var: list[MetricMathVar] = None,
     runner: Runner = None,
 ) -> MetricMathOutputs:
     """
@@ -200,7 +200,7 @@ def metric_math(
 __all__ = [
     "METRIC_MATH_METADATA",
     "MetricMathOutputs",
-    "Var",
-    "VarOutputs",
+    "MetricMathVar",
+    "MetricMathVarOutputs",
     "metric_math",
 ]

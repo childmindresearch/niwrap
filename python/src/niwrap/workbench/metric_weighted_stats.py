@@ -16,16 +16,16 @@ METRIC_WEIGHTED_STATS_METADATA = Metadata(
 )
 
 
-class RoiOutputs(typing.NamedTuple):
+class MetricWeightedStatsRoiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Roi.run(...)`.
+    Output object returned when calling `MetricWeightedStatsRoi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Roi:
+class MetricWeightedStatsRoi:
     """
     only consider data inside an roi
     """
@@ -53,7 +53,7 @@ class Roi:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiOutputs:
+    ) -> MetricWeightedStatsRoiOutputs:
         """
         Collect output file paths.
         
@@ -61,9 +61,9 @@ class Roi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiOutputs`).
+            NamedTuple of outputs (described in `MetricWeightedStatsRoiOutputs`).
         """
-        ret = RoiOutputs(
+        ret = MetricWeightedStatsRoiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -75,7 +75,7 @@ class MetricWeightedStatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    roi: RoiOutputs
+    roi: MetricWeightedStatsRoiOutputs
     """Subcommand outputs"""
 
 
@@ -84,7 +84,7 @@ def metric_weighted_stats(
     opt_area_surface_area_surface: InputPathType | None = None,
     opt_weight_metric_weight_metric: InputPathType | None = None,
     opt_column_column: str | None = None,
-    roi: Roi | None = None,
+    roi: MetricWeightedStatsRoi | None = None,
     opt_mean: bool = False,
     opt_stdev: bool = False,
     opt_sample: bool = False,
@@ -169,7 +169,7 @@ def metric_weighted_stats(
 __all__ = [
     "METRIC_WEIGHTED_STATS_METADATA",
     "MetricWeightedStatsOutputs",
-    "Roi",
-    "RoiOutputs",
+    "MetricWeightedStatsRoi",
+    "MetricWeightedStatsRoiOutputs",
     "metric_weighted_stats",
 ]

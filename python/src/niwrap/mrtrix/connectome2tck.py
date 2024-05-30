@@ -16,16 +16,16 @@ CONNECTOME2TCK_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Connectome2tckConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Connectome2tckConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Connectome2tckConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Connectome2tckConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Connectome2tckConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Connectome2tckConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -78,7 +78,7 @@ class Connectome2tckOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    config: ConfigOutputs
+    config: typing.List[Connectome2tckConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -99,7 +99,7 @@ def connectome2tck(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Connectome2tckConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -216,8 +216,8 @@ def connectome2tck(
 
 __all__ = [
     "CONNECTOME2TCK_METADATA",
-    "Config",
-    "ConfigOutputs",
+    "Connectome2tckConfig",
+    "Connectome2tckConfigOutputs",
     "Connectome2tckOutputs",
     "connectome2tck",
 ]

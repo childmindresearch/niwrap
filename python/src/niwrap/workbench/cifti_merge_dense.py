@@ -16,16 +16,16 @@ CIFTI_MERGE_DENSE_METADATA = Metadata(
 )
 
 
-class CiftiOutputs(typing.NamedTuple):
+class CiftiMergeDenseCiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Cifti.run(...)`.
+    Output object returned when calling `CiftiMergeDenseCifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Cifti:
+class CiftiMergeDenseCifti:
     """
     specify an input cifti file
     """
@@ -49,7 +49,7 @@ class Cifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> CiftiOutputs:
+    ) -> CiftiMergeDenseCiftiOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Cifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CiftiOutputs`).
+            NamedTuple of outputs (described in `CiftiMergeDenseCiftiOutputs`).
         """
-        ret = CiftiOutputs(
+        ret = CiftiMergeDenseCiftiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -73,7 +73,7 @@ class CiftiMergeDenseOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    cifti: CiftiOutputs
+    cifti: typing.List[CiftiMergeDenseCiftiOutputs]
     """Subcommand outputs"""
 
 
@@ -81,7 +81,7 @@ def cifti_merge_dense(
     direction: str,
     cifti_out: InputPathType,
     opt_label_collision_action: str | None = None,
-    cifti: list[Cifti] = None,
+    cifti: list[CiftiMergeDenseCifti] = None,
     runner: Runner = None,
 ) -> CiftiMergeDenseOutputs:
     """
@@ -126,8 +126,8 @@ def cifti_merge_dense(
 
 __all__ = [
     "CIFTI_MERGE_DENSE_METADATA",
-    "Cifti",
+    "CiftiMergeDenseCifti",
+    "CiftiMergeDenseCiftiOutputs",
     "CiftiMergeDenseOutputs",
-    "CiftiOutputs",
     "cifti_merge_dense",
 ]

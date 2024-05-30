@@ -16,16 +16,16 @@ MRVIEW_METADATA = Metadata(
 )
 
 
-class ModeOutputs(typing.NamedTuple):
+class MrviewModeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Mode.run(...)`.
+    Output object returned when calling `MrviewMode.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Mode:
+class MrviewMode:
     """
     Switch to view mode specified by the integer index, as per the view menu.
     """
@@ -54,7 +54,7 @@ class Mode:
     def outputs(
         self,
         execution: Execution,
-    ) -> ModeOutputs:
+    ) -> MrviewModeOutputs:
         """
         Collect output file paths.
         
@@ -62,24 +62,24 @@ class Mode:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ModeOutputs`).
+            NamedTuple of outputs (described in `MrviewModeOutputs`).
         """
-        ret = ModeOutputs(
+        ret = MrviewModeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LoadOutputs(typing.NamedTuple):
+class MrviewLoadOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Load.run(...)`.
+    Output object returned when calling `MrviewLoad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Load:
+class MrviewLoad:
     """
     Load image specified and make it current.
     """
@@ -107,7 +107,7 @@ class Load:
     def outputs(
         self,
         execution: Execution,
-    ) -> LoadOutputs:
+    ) -> MrviewLoadOutputs:
         """
         Collect output file paths.
         
@@ -115,24 +115,24 @@ class Load:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LoadOutputs`).
+            NamedTuple of outputs (described in `MrviewLoadOutputs`).
         """
-        ret = LoadOutputs(
+        ret = MrviewLoadOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ResetOutputs(typing.NamedTuple):
+class MrviewResetOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Reset.run(...)`.
+    Output object returned when calling `MrviewReset.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Reset:
+class MrviewReset:
     """
     Reset the view according to current image. This resets the FOV, projection and focus.
     """
@@ -157,7 +157,7 @@ class Reset:
     def outputs(
         self,
         execution: Execution,
-    ) -> ResetOutputs:
+    ) -> MrviewResetOutputs:
         """
         Collect output file paths.
         
@@ -165,24 +165,24 @@ class Reset:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ResetOutputs`).
+            NamedTuple of outputs (described in `MrviewResetOutputs`).
         """
-        ret = ResetOutputs(
+        ret = MrviewResetOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FovOutputs(typing.NamedTuple):
+class MrviewFovOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fov.run(...)`.
+    Output object returned when calling `MrviewFov.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fov:
+class MrviewFov:
     """
     Set the field of view, in mm.
     """
@@ -210,7 +210,7 @@ class Fov:
     def outputs(
         self,
         execution: Execution,
-    ) -> FovOutputs:
+    ) -> MrviewFovOutputs:
         """
         Collect output file paths.
         
@@ -218,24 +218,24 @@ class Fov:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FovOutputs`).
+            NamedTuple of outputs (described in `MrviewFovOutputs`).
         """
-        ret = FovOutputs(
+        ret = MrviewFovOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FocusOutputs(typing.NamedTuple):
+class MrviewFocusOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Focus.run(...)`.
+    Output object returned when calling `MrviewFocus.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Focus:
+class MrviewFocus:
     """
     Either set the position of the crosshairs in scanner coordinates, with the new position supplied as a comma-separated list of floating-point values or show or hide the focus cross hair using a boolean value as argument.
     """
@@ -265,7 +265,7 @@ class Focus:
     def outputs(
         self,
         execution: Execution,
-    ) -> FocusOutputs:
+    ) -> MrviewFocusOutputs:
         """
         Collect output file paths.
         
@@ -273,24 +273,24 @@ class Focus:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FocusOutputs`).
+            NamedTuple of outputs (described in `MrviewFocusOutputs`).
         """
-        ret = FocusOutputs(
+        ret = MrviewFocusOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TargetOutputs(typing.NamedTuple):
+class MrviewTargetOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Target.run(...)`.
+    Output object returned when calling `MrviewTarget.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Target:
+class MrviewTarget:
     """
     Set the target location for the viewing window (the scanner coordinate that will appear at the centre of the viewing window
     """
@@ -319,7 +319,7 @@ class Target:
     def outputs(
         self,
         execution: Execution,
-    ) -> TargetOutputs:
+    ) -> MrviewTargetOutputs:
         """
         Collect output file paths.
         
@@ -327,24 +327,24 @@ class Target:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TargetOutputs`).
+            NamedTuple of outputs (described in `MrviewTargetOutputs`).
         """
-        ret = TargetOutputs(
+        ret = MrviewTargetOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class VoxelOutputs(typing.NamedTuple):
+class MrviewVoxelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Voxel.run(...)`.
+    Output object returned when calling `MrviewVoxel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Voxel:
+class MrviewVoxel:
     """
     Set the position of the crosshairs in voxel coordinates, relative the image currently displayed. The new position should be supplied as a comma-separated list of floating-point values.
     """
@@ -374,7 +374,7 @@ class Voxel:
     def outputs(
         self,
         execution: Execution,
-    ) -> VoxelOutputs:
+    ) -> MrviewVoxelOutputs:
         """
         Collect output file paths.
         
@@ -382,24 +382,24 @@ class Voxel:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VoxelOutputs`).
+            NamedTuple of outputs (described in `MrviewVoxelOutputs`).
         """
-        ret = VoxelOutputs(
+        ret = MrviewVoxelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class VolumeOutputs(typing.NamedTuple):
+class MrviewVolumeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Volume.run(...)`.
+    Output object returned when calling `MrviewVolume.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Volume:
+class MrviewVolume:
     """
     Set the volume index for the image displayed, as a comma-separated list of integers.
     """
@@ -428,7 +428,7 @@ class Volume:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeOutputs:
+    ) -> MrviewVolumeOutputs:
         """
         Collect output file paths.
         
@@ -436,24 +436,24 @@ class Volume:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeOutputs`).
+            NamedTuple of outputs (described in `MrviewVolumeOutputs`).
         """
-        ret = VolumeOutputs(
+        ret = MrviewVolumeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class PlaneOutputs(typing.NamedTuple):
+class MrviewPlaneOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Plane.run(...)`.
+    Output object returned when calling `MrviewPlane.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Plane:
+class MrviewPlane:
     """
     Set the viewing plane, according to the mappping 0: sagittal; 1: coronal; 2: axial.
     """
@@ -482,7 +482,7 @@ class Plane:
     def outputs(
         self,
         execution: Execution,
-    ) -> PlaneOutputs:
+    ) -> MrviewPlaneOutputs:
         """
         Collect output file paths.
         
@@ -490,24 +490,24 @@ class Plane:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PlaneOutputs`).
+            NamedTuple of outputs (described in `MrviewPlaneOutputs`).
         """
-        ret = PlaneOutputs(
+        ret = MrviewPlaneOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LockOutputs(typing.NamedTuple):
+class MrviewLockOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Lock.run(...)`.
+    Output object returned when calling `MrviewLock.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Lock:
+class MrviewLock:
     """
     Set whether view is locked to image axes (0: no, 1: yes).
     """
@@ -535,7 +535,7 @@ class Lock:
     def outputs(
         self,
         execution: Execution,
-    ) -> LockOutputs:
+    ) -> MrviewLockOutputs:
         """
         Collect output file paths.
         
@@ -543,24 +543,24 @@ class Lock:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LockOutputs`).
+            NamedTuple of outputs (described in `MrviewLockOutputs`).
         """
-        ret = LockOutputs(
+        ret = MrviewLockOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SelectImageOutputs(typing.NamedTuple):
+class MrviewSelectImageOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `SelectImage.run(...)`.
+    Output object returned when calling `MrviewSelectImage.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class SelectImage:
+class MrviewSelectImage:
     """
     Switch to image number specified, with reference to the list of currently loaded images.
     """
@@ -589,7 +589,7 @@ class SelectImage:
     def outputs(
         self,
         execution: Execution,
-    ) -> SelectImageOutputs:
+    ) -> MrviewSelectImageOutputs:
         """
         Collect output file paths.
         
@@ -597,24 +597,24 @@ class SelectImage:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SelectImageOutputs`).
+            NamedTuple of outputs (described in `MrviewSelectImageOutputs`).
         """
-        ret = SelectImageOutputs(
+        ret = MrviewSelectImageOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AutoscaleOutputs(typing.NamedTuple):
+class MrviewAutoscaleOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Autoscale.run(...)`.
+    Output object returned when calling `MrviewAutoscale.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Autoscale:
+class MrviewAutoscale:
     """
     Reset the image scaling to automatically determined range.
     """
@@ -639,7 +639,7 @@ class Autoscale:
     def outputs(
         self,
         execution: Execution,
-    ) -> AutoscaleOutputs:
+    ) -> MrviewAutoscaleOutputs:
         """
         Collect output file paths.
         
@@ -647,24 +647,24 @@ class Autoscale:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AutoscaleOutputs`).
+            NamedTuple of outputs (described in `MrviewAutoscaleOutputs`).
         """
-        ret = AutoscaleOutputs(
+        ret = MrviewAutoscaleOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class InterpolationOutputs(typing.NamedTuple):
+class MrviewInterpolationOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Interpolation.run(...)`.
+    Output object returned when calling `MrviewInterpolation.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Interpolation:
+class MrviewInterpolation:
     """
     Enable or disable image interpolation in main image.
     """
@@ -692,7 +692,7 @@ class Interpolation:
     def outputs(
         self,
         execution: Execution,
-    ) -> InterpolationOutputs:
+    ) -> MrviewInterpolationOutputs:
         """
         Collect output file paths.
         
@@ -700,24 +700,24 @@ class Interpolation:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `InterpolationOutputs`).
+            NamedTuple of outputs (described in `MrviewInterpolationOutputs`).
         """
-        ret = InterpolationOutputs(
+        ret = MrviewInterpolationOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ColourmapOutputs(typing.NamedTuple):
+class MrviewColourmapOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Colourmap.run(...)`.
+    Output object returned when calling `MrviewColourmap.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Colourmap:
+class MrviewColourmap:
     """
     Switch the image colourmap to that specified, as per the colourmap menu.
     """
@@ -746,7 +746,7 @@ class Colourmap:
     def outputs(
         self,
         execution: Execution,
-    ) -> ColourmapOutputs:
+    ) -> MrviewColourmapOutputs:
         """
         Collect output file paths.
         
@@ -754,24 +754,24 @@ class Colourmap:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ColourmapOutputs`).
+            NamedTuple of outputs (described in `MrviewColourmapOutputs`).
         """
-        ret = ColourmapOutputs(
+        ret = MrviewColourmapOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NoannotationsOutputs(typing.NamedTuple):
+class MrviewNoannotationsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Noannotations.run(...)`.
+    Output object returned when calling `MrviewNoannotations.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Noannotations:
+class MrviewNoannotations:
     """
     Hide all image annotation overlays
     """
@@ -796,7 +796,7 @@ class Noannotations:
     def outputs(
         self,
         execution: Execution,
-    ) -> NoannotationsOutputs:
+    ) -> MrviewNoannotationsOutputs:
         """
         Collect output file paths.
         
@@ -804,24 +804,24 @@ class Noannotations:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NoannotationsOutputs`).
+            NamedTuple of outputs (described in `MrviewNoannotationsOutputs`).
         """
-        ret = NoannotationsOutputs(
+        ret = MrviewNoannotationsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CommentsOutputs(typing.NamedTuple):
+class MrviewCommentsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Comments.run(...)`.
+    Output object returned when calling `MrviewComments.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Comments:
+class MrviewComments:
     """
     Show or hide image comments overlay.
     """
@@ -849,7 +849,7 @@ class Comments:
     def outputs(
         self,
         execution: Execution,
-    ) -> CommentsOutputs:
+    ) -> MrviewCommentsOutputs:
         """
         Collect output file paths.
         
@@ -857,24 +857,24 @@ class Comments:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CommentsOutputs`).
+            NamedTuple of outputs (described in `MrviewCommentsOutputs`).
         """
-        ret = CommentsOutputs(
+        ret = MrviewCommentsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class VoxelinfoOutputs(typing.NamedTuple):
+class MrviewVoxelinfoOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Voxelinfo.run(...)`.
+    Output object returned when calling `MrviewVoxelinfo.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Voxelinfo:
+class MrviewVoxelinfo:
     """
     Show or hide voxel information overlay.
     """
@@ -902,7 +902,7 @@ class Voxelinfo:
     def outputs(
         self,
         execution: Execution,
-    ) -> VoxelinfoOutputs:
+    ) -> MrviewVoxelinfoOutputs:
         """
         Collect output file paths.
         
@@ -910,24 +910,24 @@ class Voxelinfo:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VoxelinfoOutputs`).
+            NamedTuple of outputs (described in `MrviewVoxelinfoOutputs`).
         """
-        ret = VoxelinfoOutputs(
+        ret = MrviewVoxelinfoOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OrientationlabelOutputs(typing.NamedTuple):
+class MrviewOrientationlabelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Orientationlabel.run(...)`.
+    Output object returned when calling `MrviewOrientationlabel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Orientationlabel:
+class MrviewOrientationlabel:
     """
     Show or hide orientation label overlay.
     """
@@ -955,7 +955,7 @@ class Orientationlabel:
     def outputs(
         self,
         execution: Execution,
-    ) -> OrientationlabelOutputs:
+    ) -> MrviewOrientationlabelOutputs:
         """
         Collect output file paths.
         
@@ -963,24 +963,24 @@ class Orientationlabel:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OrientationlabelOutputs`).
+            NamedTuple of outputs (described in `MrviewOrientationlabelOutputs`).
         """
-        ret = OrientationlabelOutputs(
+        ret = MrviewOrientationlabelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ColourbarOutputs(typing.NamedTuple):
+class MrviewColourbarOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Colourbar.run(...)`.
+    Output object returned when calling `MrviewColourbar.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Colourbar:
+class MrviewColourbar:
     """
     Show or hide colourbar overlay.
     """
@@ -1008,7 +1008,7 @@ class Colourbar:
     def outputs(
         self,
         execution: Execution,
-    ) -> ColourbarOutputs:
+    ) -> MrviewColourbarOutputs:
         """
         Collect output file paths.
         
@@ -1016,24 +1016,24 @@ class Colourbar:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ColourbarOutputs`).
+            NamedTuple of outputs (described in `MrviewColourbarOutputs`).
         """
-        ret = ColourbarOutputs(
+        ret = MrviewColourbarOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ImagevisibleOutputs(typing.NamedTuple):
+class MrviewImagevisibleOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Imagevisible.run(...)`.
+    Output object returned when calling `MrviewImagevisible.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Imagevisible:
+class MrviewImagevisible:
     """
     Show or hide the main image.
     """
@@ -1061,7 +1061,7 @@ class Imagevisible:
     def outputs(
         self,
         execution: Execution,
-    ) -> ImagevisibleOutputs:
+    ) -> MrviewImagevisibleOutputs:
         """
         Collect output file paths.
         
@@ -1069,24 +1069,24 @@ class Imagevisible:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ImagevisibleOutputs`).
+            NamedTuple of outputs (described in `MrviewImagevisibleOutputs`).
         """
-        ret = ImagevisibleOutputs(
+        ret = MrviewImagevisibleOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class IntensityRangeOutputs(typing.NamedTuple):
+class MrviewIntensityRangeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `IntensityRange.run(...)`.
+    Output object returned when calling `MrviewIntensityRange.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class IntensityRange:
+class MrviewIntensityRange:
     """
     Set the image intensity range to that specified.
     """
@@ -1114,7 +1114,7 @@ class IntensityRange:
     def outputs(
         self,
         execution: Execution,
-    ) -> IntensityRangeOutputs:
+    ) -> MrviewIntensityRangeOutputs:
         """
         Collect output file paths.
         
@@ -1122,24 +1122,24 @@ class IntensityRange:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `IntensityRangeOutputs`).
+            NamedTuple of outputs (described in `MrviewIntensityRangeOutputs`).
         """
-        ret = IntensityRangeOutputs(
+        ret = MrviewIntensityRangeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SizeOutputs(typing.NamedTuple):
+class MrviewSizeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Size.run(...)`.
+    Output object returned when calling `MrviewSize.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Size:
+class MrviewSize:
     """
     Set the size of the view area, in pixel units.
     """
@@ -1167,7 +1167,7 @@ class Size:
     def outputs(
         self,
         execution: Execution,
-    ) -> SizeOutputs:
+    ) -> MrviewSizeOutputs:
         """
         Collect output file paths.
         
@@ -1175,24 +1175,24 @@ class Size:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SizeOutputs`).
+            NamedTuple of outputs (described in `MrviewSizeOutputs`).
         """
-        ret = SizeOutputs(
+        ret = MrviewSizeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class PositionOutputs(typing.NamedTuple):
+class MrviewPositionOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Position.run(...)`.
+    Output object returned when calling `MrviewPosition.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Position:
+class MrviewPosition:
     """
     Set the position of the main window, in pixel units.
     """
@@ -1220,7 +1220,7 @@ class Position:
     def outputs(
         self,
         execution: Execution,
-    ) -> PositionOutputs:
+    ) -> MrviewPositionOutputs:
         """
         Collect output file paths.
         
@@ -1228,24 +1228,24 @@ class Position:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PositionOutputs`).
+            NamedTuple of outputs (described in `MrviewPositionOutputs`).
         """
-        ret = PositionOutputs(
+        ret = MrviewPositionOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OverlayLoadOutputs(typing.NamedTuple):
+class MrviewOverlayLoadOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OverlayLoad.run(...)`.
+    Output object returned when calling `MrviewOverlayLoad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OverlayLoad:
+class MrviewOverlayLoad:
     """
     Loads the specified image on the overlay tool.
     """
@@ -1273,7 +1273,7 @@ class OverlayLoad:
     def outputs(
         self,
         execution: Execution,
-    ) -> OverlayLoadOutputs:
+    ) -> MrviewOverlayLoadOutputs:
         """
         Collect output file paths.
         
@@ -1281,24 +1281,24 @@ class OverlayLoad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OverlayLoadOutputs`).
+            NamedTuple of outputs (described in `MrviewOverlayLoadOutputs`).
         """
-        ret = OverlayLoadOutputs(
+        ret = MrviewOverlayLoadOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OverlayOpacityOutputs(typing.NamedTuple):
+class MrviewOverlayOpacityOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OverlayOpacity.run(...)`.
+    Output object returned when calling `MrviewOverlayOpacity.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OverlayOpacity:
+class MrviewOverlayOpacity:
     """
     Sets the overlay opacity to floating value [0-1].
     """
@@ -1326,7 +1326,7 @@ class OverlayOpacity:
     def outputs(
         self,
         execution: Execution,
-    ) -> OverlayOpacityOutputs:
+    ) -> MrviewOverlayOpacityOutputs:
         """
         Collect output file paths.
         
@@ -1334,24 +1334,24 @@ class OverlayOpacity:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OverlayOpacityOutputs`).
+            NamedTuple of outputs (described in `MrviewOverlayOpacityOutputs`).
         """
-        ret = OverlayOpacityOutputs(
+        ret = MrviewOverlayOpacityOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OverlayColourmapOutputs(typing.NamedTuple):
+class MrviewOverlayColourmapOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OverlayColourmap.run(...)`.
+    Output object returned when calling `MrviewOverlayColourmap.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OverlayColourmap:
+class MrviewOverlayColourmap:
     """
     Sets the colourmap of the overlay as indexed in the colourmap dropdown menu.
     """
@@ -1380,7 +1380,7 @@ class OverlayColourmap:
     def outputs(
         self,
         execution: Execution,
-    ) -> OverlayColourmapOutputs:
+    ) -> MrviewOverlayColourmapOutputs:
         """
         Collect output file paths.
         
@@ -1388,24 +1388,24 @@ class OverlayColourmap:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OverlayColourmapOutputs`).
+            NamedTuple of outputs (described in `MrviewOverlayColourmapOutputs`).
         """
-        ret = OverlayColourmapOutputs(
+        ret = MrviewOverlayColourmapOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OverlayColourOutputs(typing.NamedTuple):
+class MrviewOverlayColourOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OverlayColour.run(...)`.
+    Output object returned when calling `MrviewOverlayColour.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OverlayColour:
+class MrviewOverlayColour:
     """
     Specify a manual colour for the overlay, as three comma-separated values
     """
@@ -1434,7 +1434,7 @@ class OverlayColour:
     def outputs(
         self,
         execution: Execution,
-    ) -> OverlayColourOutputs:
+    ) -> MrviewOverlayColourOutputs:
         """
         Collect output file paths.
         
@@ -1442,24 +1442,24 @@ class OverlayColour:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OverlayColourOutputs`).
+            NamedTuple of outputs (described in `MrviewOverlayColourOutputs`).
         """
-        ret = OverlayColourOutputs(
+        ret = MrviewOverlayColourOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OverlayIntensityOutputs(typing.NamedTuple):
+class MrviewOverlayIntensityOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OverlayIntensity.run(...)`.
+    Output object returned when calling `MrviewOverlayIntensity.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OverlayIntensity:
+class MrviewOverlayIntensity:
     """
     Set the intensity windowing of the overlay
     """
@@ -1487,7 +1487,7 @@ class OverlayIntensity:
     def outputs(
         self,
         execution: Execution,
-    ) -> OverlayIntensityOutputs:
+    ) -> MrviewOverlayIntensityOutputs:
         """
         Collect output file paths.
         
@@ -1495,24 +1495,24 @@ class OverlayIntensity:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OverlayIntensityOutputs`).
+            NamedTuple of outputs (described in `MrviewOverlayIntensityOutputs`).
         """
-        ret = OverlayIntensityOutputs(
+        ret = MrviewOverlayIntensityOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OverlayThresholdMinOutputs(typing.NamedTuple):
+class MrviewOverlayThresholdMinOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OverlayThresholdMin.run(...)`.
+    Output object returned when calling `MrviewOverlayThresholdMin.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OverlayThresholdMin:
+class MrviewOverlayThresholdMin:
     """
     Set the lower threshold value of the overlay
     """
@@ -1540,7 +1540,7 @@ class OverlayThresholdMin:
     def outputs(
         self,
         execution: Execution,
-    ) -> OverlayThresholdMinOutputs:
+    ) -> MrviewOverlayThresholdMinOutputs:
         """
         Collect output file paths.
         
@@ -1548,24 +1548,24 @@ class OverlayThresholdMin:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OverlayThresholdMinOutputs`).
+            NamedTuple of outputs (described in `MrviewOverlayThresholdMinOutputs`).
         """
-        ret = OverlayThresholdMinOutputs(
+        ret = MrviewOverlayThresholdMinOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OverlayThresholdMaxOutputs(typing.NamedTuple):
+class MrviewOverlayThresholdMaxOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OverlayThresholdMax.run(...)`.
+    Output object returned when calling `MrviewOverlayThresholdMax.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OverlayThresholdMax:
+class MrviewOverlayThresholdMax:
     """
     Set the upper threshold value of the overlay
     """
@@ -1593,7 +1593,7 @@ class OverlayThresholdMax:
     def outputs(
         self,
         execution: Execution,
-    ) -> OverlayThresholdMaxOutputs:
+    ) -> MrviewOverlayThresholdMaxOutputs:
         """
         Collect output file paths.
         
@@ -1601,24 +1601,24 @@ class OverlayThresholdMax:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OverlayThresholdMaxOutputs`).
+            NamedTuple of outputs (described in `MrviewOverlayThresholdMaxOutputs`).
         """
-        ret = OverlayThresholdMaxOutputs(
+        ret = MrviewOverlayThresholdMaxOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OverlayNoThresholdMinOutputs(typing.NamedTuple):
+class MrviewOverlayNoThresholdMinOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OverlayNoThresholdMin.run(...)`.
+    Output object returned when calling `MrviewOverlayNoThresholdMin.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OverlayNoThresholdMin:
+class MrviewOverlayNoThresholdMin:
     """
     Disable the lower threshold for the overlay
     """
@@ -1643,7 +1643,7 @@ class OverlayNoThresholdMin:
     def outputs(
         self,
         execution: Execution,
-    ) -> OverlayNoThresholdMinOutputs:
+    ) -> MrviewOverlayNoThresholdMinOutputs:
         """
         Collect output file paths.
         
@@ -1651,24 +1651,24 @@ class OverlayNoThresholdMin:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OverlayNoThresholdMinOutputs`).
+            NamedTuple of outputs (described in `MrviewOverlayNoThresholdMinOutputs`).
         """
-        ret = OverlayNoThresholdMinOutputs(
+        ret = MrviewOverlayNoThresholdMinOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OverlayNoThresholdMaxOutputs(typing.NamedTuple):
+class MrviewOverlayNoThresholdMaxOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OverlayNoThresholdMax.run(...)`.
+    Output object returned when calling `MrviewOverlayNoThresholdMax.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OverlayNoThresholdMax:
+class MrviewOverlayNoThresholdMax:
     """
     Disable the upper threshold for the overlay
     """
@@ -1693,7 +1693,7 @@ class OverlayNoThresholdMax:
     def outputs(
         self,
         execution: Execution,
-    ) -> OverlayNoThresholdMaxOutputs:
+    ) -> MrviewOverlayNoThresholdMaxOutputs:
         """
         Collect output file paths.
         
@@ -1701,24 +1701,24 @@ class OverlayNoThresholdMax:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OverlayNoThresholdMaxOutputs`).
+            NamedTuple of outputs (described in `MrviewOverlayNoThresholdMaxOutputs`).
         """
-        ret = OverlayNoThresholdMaxOutputs(
+        ret = MrviewOverlayNoThresholdMaxOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OverlayInterpolationOutputs(typing.NamedTuple):
+class MrviewOverlayInterpolationOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OverlayInterpolation.run(...)`.
+    Output object returned when calling `MrviewOverlayInterpolation.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OverlayInterpolation:
+class MrviewOverlayInterpolation:
     """
     Enable or disable overlay image interpolation.
     """
@@ -1746,7 +1746,7 @@ class OverlayInterpolation:
     def outputs(
         self,
         execution: Execution,
-    ) -> OverlayInterpolationOutputs:
+    ) -> MrviewOverlayInterpolationOutputs:
         """
         Collect output file paths.
         
@@ -1754,24 +1754,24 @@ class OverlayInterpolation:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OverlayInterpolationOutputs`).
+            NamedTuple of outputs (described in `MrviewOverlayInterpolationOutputs`).
         """
-        ret = OverlayInterpolationOutputs(
+        ret = MrviewOverlayInterpolationOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RoiLoadOutputs(typing.NamedTuple):
+class MrviewRoiLoadOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RoiLoad.run(...)`.
+    Output object returned when calling `MrviewRoiLoad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RoiLoad:
+class MrviewRoiLoad:
     """
     Loads the specified image on the ROI editor tool.
     """
@@ -1799,7 +1799,7 @@ class RoiLoad:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiLoadOutputs:
+    ) -> MrviewRoiLoadOutputs:
         """
         Collect output file paths.
         
@@ -1807,24 +1807,24 @@ class RoiLoad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiLoadOutputs`).
+            NamedTuple of outputs (described in `MrviewRoiLoadOutputs`).
         """
-        ret = RoiLoadOutputs(
+        ret = MrviewRoiLoadOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RoiOpacityOutputs(typing.NamedTuple):
+class MrviewRoiOpacityOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RoiOpacity.run(...)`.
+    Output object returned when calling `MrviewRoiOpacity.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RoiOpacity:
+class MrviewRoiOpacity:
     """
     Sets the overlay opacity to floating value [0-1].
     """
@@ -1852,7 +1852,7 @@ class RoiOpacity:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiOpacityOutputs:
+    ) -> MrviewRoiOpacityOutputs:
         """
         Collect output file paths.
         
@@ -1860,24 +1860,24 @@ class RoiOpacity:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiOpacityOutputs`).
+            NamedTuple of outputs (described in `MrviewRoiOpacityOutputs`).
         """
-        ret = RoiOpacityOutputs(
+        ret = MrviewRoiOpacityOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RoiColourOutputs(typing.NamedTuple):
+class MrviewRoiColourOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RoiColour.run(...)`.
+    Output object returned when calling `MrviewRoiColour.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class RoiColour:
+class MrviewRoiColour:
     """
     Sets the colour of the ROI overlay
     """
@@ -1905,7 +1905,7 @@ class RoiColour:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiColourOutputs:
+    ) -> MrviewRoiColourOutputs:
         """
         Collect output file paths.
         
@@ -1913,24 +1913,24 @@ class RoiColour:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiColourOutputs`).
+            NamedTuple of outputs (described in `MrviewRoiColourOutputs`).
         """
-        ret = RoiColourOutputs(
+        ret = MrviewRoiColourOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TractographyLoadOutputs(typing.NamedTuple):
+class MrviewTractographyLoadOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TractographyLoad.run(...)`.
+    Output object returned when calling `MrviewTractographyLoad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TractographyLoad:
+class MrviewTractographyLoad:
     """
     Load the specified tracks file into the tractography tool.
     """
@@ -1958,7 +1958,7 @@ class TractographyLoad:
     def outputs(
         self,
         execution: Execution,
-    ) -> TractographyLoadOutputs:
+    ) -> MrviewTractographyLoadOutputs:
         """
         Collect output file paths.
         
@@ -1966,24 +1966,24 @@ class TractographyLoad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TractographyLoadOutputs`).
+            NamedTuple of outputs (described in `MrviewTractographyLoadOutputs`).
         """
-        ret = TractographyLoadOutputs(
+        ret = MrviewTractographyLoadOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TractographyThicknessOutputs(typing.NamedTuple):
+class MrviewTractographyThicknessOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TractographyThickness.run(...)`.
+    Output object returned when calling `MrviewTractographyThickness.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TractographyThickness:
+class MrviewTractographyThickness:
     """
     Line thickness of tractography display, [-1.0, 1.0], default is 0.0.
     """
@@ -2011,7 +2011,7 @@ class TractographyThickness:
     def outputs(
         self,
         execution: Execution,
-    ) -> TractographyThicknessOutputs:
+    ) -> MrviewTractographyThicknessOutputs:
         """
         Collect output file paths.
         
@@ -2019,24 +2019,24 @@ class TractographyThickness:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TractographyThicknessOutputs`).
+            NamedTuple of outputs (described in `MrviewTractographyThicknessOutputs`).
         """
-        ret = TractographyThicknessOutputs(
+        ret = MrviewTractographyThicknessOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TractographyGeometryOutputs(typing.NamedTuple):
+class MrviewTractographyGeometryOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TractographyGeometry.run(...)`.
+    Output object returned when calling `MrviewTractographyGeometry.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TractographyGeometry:
+class MrviewTractographyGeometry:
     """
     The geometry type to use when rendering tractograms (options are: pseudotubes, lines, points)
     """
@@ -2065,7 +2065,7 @@ class TractographyGeometry:
     def outputs(
         self,
         execution: Execution,
-    ) -> TractographyGeometryOutputs:
+    ) -> MrviewTractographyGeometryOutputs:
         """
         Collect output file paths.
         
@@ -2073,24 +2073,24 @@ class TractographyGeometry:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TractographyGeometryOutputs`).
+            NamedTuple of outputs (described in `MrviewTractographyGeometryOutputs`).
         """
-        ret = TractographyGeometryOutputs(
+        ret = MrviewTractographyGeometryOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TractographyOpacityOutputs(typing.NamedTuple):
+class MrviewTractographyOpacityOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TractographyOpacity.run(...)`.
+    Output object returned when calling `MrviewTractographyOpacity.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TractographyOpacity:
+class MrviewTractographyOpacity:
     """
     Opacity of tractography display, [0.0, 1.0], default is 1.0.
     """
@@ -2118,7 +2118,7 @@ class TractographyOpacity:
     def outputs(
         self,
         execution: Execution,
-    ) -> TractographyOpacityOutputs:
+    ) -> MrviewTractographyOpacityOutputs:
         """
         Collect output file paths.
         
@@ -2126,24 +2126,24 @@ class TractographyOpacity:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TractographyOpacityOutputs`).
+            NamedTuple of outputs (described in `MrviewTractographyOpacityOutputs`).
         """
-        ret = TractographyOpacityOutputs(
+        ret = MrviewTractographyOpacityOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TractographySlabOutputs(typing.NamedTuple):
+class MrviewTractographySlabOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TractographySlab.run(...)`.
+    Output object returned when calling `MrviewTractographySlab.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TractographySlab:
+class MrviewTractographySlab:
     """
     Slab thickness of tractography display, in mm. -1 to turn off crop to slab.
     """
@@ -2172,7 +2172,7 @@ class TractographySlab:
     def outputs(
         self,
         execution: Execution,
-    ) -> TractographySlabOutputs:
+    ) -> MrviewTractographySlabOutputs:
         """
         Collect output file paths.
         
@@ -2180,24 +2180,24 @@ class TractographySlab:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TractographySlabOutputs`).
+            NamedTuple of outputs (described in `MrviewTractographySlabOutputs`).
         """
-        ret = TractographySlabOutputs(
+        ret = MrviewTractographySlabOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TractographyLightingOutputs(typing.NamedTuple):
+class MrviewTractographyLightingOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TractographyLighting.run(...)`.
+    Output object returned when calling `MrviewTractographyLighting.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TractographyLighting:
+class MrviewTractographyLighting:
     """
     Toggle the use of lighting of tractogram geometry
     """
@@ -2225,7 +2225,7 @@ class TractographyLighting:
     def outputs(
         self,
         execution: Execution,
-    ) -> TractographyLightingOutputs:
+    ) -> MrviewTractographyLightingOutputs:
         """
         Collect output file paths.
         
@@ -2233,24 +2233,24 @@ class TractographyLighting:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TractographyLightingOutputs`).
+            NamedTuple of outputs (described in `MrviewTractographyLightingOutputs`).
         """
-        ret = TractographyLightingOutputs(
+        ret = MrviewTractographyLightingOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TractographyColourOutputs(typing.NamedTuple):
+class MrviewTractographyColourOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TractographyColour.run(...)`.
+    Output object returned when calling `MrviewTractographyColour.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TractographyColour:
+class MrviewTractographyColour:
     """
     Specify a manual colour for the tractogram, as three comma-separated values
     """
@@ -2279,7 +2279,7 @@ class TractographyColour:
     def outputs(
         self,
         execution: Execution,
-    ) -> TractographyColourOutputs:
+    ) -> MrviewTractographyColourOutputs:
         """
         Collect output file paths.
         
@@ -2287,24 +2287,24 @@ class TractographyColour:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TractographyColourOutputs`).
+            NamedTuple of outputs (described in `MrviewTractographyColourOutputs`).
         """
-        ret = TractographyColourOutputs(
+        ret = MrviewTractographyColourOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TractographyTsfLoadOutputs(typing.NamedTuple):
+class MrviewTractographyTsfLoadOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TractographyTsfLoad.run(...)`.
+    Output object returned when calling `MrviewTractographyTsfLoad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TractographyTsfLoad:
+class MrviewTractographyTsfLoad:
     """
     Load the specified tractography scalar file.
     """
@@ -2332,7 +2332,7 @@ class TractographyTsfLoad:
     def outputs(
         self,
         execution: Execution,
-    ) -> TractographyTsfLoadOutputs:
+    ) -> MrviewTractographyTsfLoadOutputs:
         """
         Collect output file paths.
         
@@ -2340,24 +2340,24 @@ class TractographyTsfLoad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TractographyTsfLoadOutputs`).
+            NamedTuple of outputs (described in `MrviewTractographyTsfLoadOutputs`).
         """
-        ret = TractographyTsfLoadOutputs(
+        ret = MrviewTractographyTsfLoadOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TractographyTsfRangeOutputs(typing.NamedTuple):
+class MrviewTractographyTsfRangeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TractographyTsfRange.run(...)`.
+    Output object returned when calling `MrviewTractographyTsfRange.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TractographyTsfRange:
+class MrviewTractographyTsfRange:
     """
     Set range for the tractography scalar file. Requires -tractography.tsf_load already provided.
     """
@@ -2386,7 +2386,7 @@ class TractographyTsfRange:
     def outputs(
         self,
         execution: Execution,
-    ) -> TractographyTsfRangeOutputs:
+    ) -> MrviewTractographyTsfRangeOutputs:
         """
         Collect output file paths.
         
@@ -2394,24 +2394,24 @@ class TractographyTsfRange:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TractographyTsfRangeOutputs`).
+            NamedTuple of outputs (described in `MrviewTractographyTsfRangeOutputs`).
         """
-        ret = TractographyTsfRangeOutputs(
+        ret = MrviewTractographyTsfRangeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TractographyTsfThreshOutputs(typing.NamedTuple):
+class MrviewTractographyTsfThreshOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TractographyTsfThresh.run(...)`.
+    Output object returned when calling `MrviewTractographyTsfThresh.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TractographyTsfThresh:
+class MrviewTractographyTsfThresh:
     """
     Set thresholds for the tractography scalar file. Requires -tractography.tsf_load already provided.
     """
@@ -2440,7 +2440,7 @@ class TractographyTsfThresh:
     def outputs(
         self,
         execution: Execution,
-    ) -> TractographyTsfThreshOutputs:
+    ) -> MrviewTractographyTsfThreshOutputs:
         """
         Collect output file paths.
         
@@ -2448,24 +2448,24 @@ class TractographyTsfThresh:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TractographyTsfThreshOutputs`).
+            NamedTuple of outputs (described in `MrviewTractographyTsfThreshOutputs`).
         """
-        ret = TractographyTsfThreshOutputs(
+        ret = MrviewTractographyTsfThreshOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TractographyTsfColourmapOutputs(typing.NamedTuple):
+class MrviewTractographyTsfColourmapOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `TractographyTsfColourmap.run(...)`.
+    Output object returned when calling `MrviewTractographyTsfColourmap.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class TractographyTsfColourmap:
+class MrviewTractographyTsfColourmap:
     """
     Sets the colourmap of the .tsf file as indexed in the tsf colourmap dropdown menu. Requires -tractography.tsf_load already.
     """
@@ -2494,7 +2494,7 @@ class TractographyTsfColourmap:
     def outputs(
         self,
         execution: Execution,
-    ) -> TractographyTsfColourmapOutputs:
+    ) -> MrviewTractographyTsfColourmapOutputs:
         """
         Collect output file paths.
         
@@ -2502,24 +2502,24 @@ class TractographyTsfColourmap:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TractographyTsfColourmapOutputs`).
+            NamedTuple of outputs (described in `MrviewTractographyTsfColourmapOutputs`).
         """
-        ret = TractographyTsfColourmapOutputs(
+        ret = MrviewTractographyTsfColourmapOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OdfLoadShOutputs(typing.NamedTuple):
+class MrviewOdfLoadShOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OdfLoadSh.run(...)`.
+    Output object returned when calling `MrviewOdfLoadSh.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OdfLoadSh:
+class MrviewOdfLoadSh:
     """
     Loads the specified SH-based ODF image on the ODF tool.
     """
@@ -2547,7 +2547,7 @@ class OdfLoadSh:
     def outputs(
         self,
         execution: Execution,
-    ) -> OdfLoadShOutputs:
+    ) -> MrviewOdfLoadShOutputs:
         """
         Collect output file paths.
         
@@ -2555,24 +2555,24 @@ class OdfLoadSh:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OdfLoadShOutputs`).
+            NamedTuple of outputs (described in `MrviewOdfLoadShOutputs`).
         """
-        ret = OdfLoadShOutputs(
+        ret = MrviewOdfLoadShOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OdfLoadTensorOutputs(typing.NamedTuple):
+class MrviewOdfLoadTensorOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OdfLoadTensor.run(...)`.
+    Output object returned when calling `MrviewOdfLoadTensor.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OdfLoadTensor:
+class MrviewOdfLoadTensor:
     """
     Loads the specified tensor image on the ODF tool.
     """
@@ -2600,7 +2600,7 @@ class OdfLoadTensor:
     def outputs(
         self,
         execution: Execution,
-    ) -> OdfLoadTensorOutputs:
+    ) -> MrviewOdfLoadTensorOutputs:
         """
         Collect output file paths.
         
@@ -2608,24 +2608,24 @@ class OdfLoadTensor:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OdfLoadTensorOutputs`).
+            NamedTuple of outputs (described in `MrviewOdfLoadTensorOutputs`).
         """
-        ret = OdfLoadTensorOutputs(
+        ret = MrviewOdfLoadTensorOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OdfLoadDixelOutputs(typing.NamedTuple):
+class MrviewOdfLoadDixelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OdfLoadDixel.run(...)`.
+    Output object returned when calling `MrviewOdfLoadDixel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class OdfLoadDixel:
+class MrviewOdfLoadDixel:
     """
     Loads the specified dixel-based image on the ODF tool.
     """
@@ -2653,7 +2653,7 @@ class OdfLoadDixel:
     def outputs(
         self,
         execution: Execution,
-    ) -> OdfLoadDixelOutputs:
+    ) -> MrviewOdfLoadDixelOutputs:
         """
         Collect output file paths.
         
@@ -2661,24 +2661,24 @@ class OdfLoadDixel:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OdfLoadDixelOutputs`).
+            NamedTuple of outputs (described in `MrviewOdfLoadDixelOutputs`).
         """
-        ret = OdfLoadDixelOutputs(
+        ret = MrviewOdfLoadDixelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FixelLoadOutputs(typing.NamedTuple):
+class MrviewFixelLoadOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `FixelLoad.run(...)`.
+    Output object returned when calling `MrviewFixelLoad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class FixelLoad:
+class MrviewFixelLoad:
     """
     Load a fixel file (any file inside a fixel directory, or an old .msf / .msh legacy format file) into the fixel tool.
     """
@@ -2707,7 +2707,7 @@ class FixelLoad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FixelLoadOutputs:
+    ) -> MrviewFixelLoadOutputs:
         """
         Collect output file paths.
         
@@ -2715,24 +2715,24 @@ class FixelLoad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FixelLoadOutputs`).
+            NamedTuple of outputs (described in `MrviewFixelLoadOutputs`).
         """
-        ret = FixelLoadOutputs(
+        ret = MrviewFixelLoadOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConnectomeLoadOutputs(typing.NamedTuple):
+class MrviewConnectomeLoadOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ConnectomeLoad.run(...)`.
+    Output object returned when calling `MrviewConnectomeLoad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class ConnectomeLoad:
+class MrviewConnectomeLoad:
     """
     Load a matrix file into the connectome tool.
     """
@@ -2760,7 +2760,7 @@ class ConnectomeLoad:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConnectomeLoadOutputs:
+    ) -> MrviewConnectomeLoadOutputs:
         """
         Collect output file paths.
         
@@ -2768,24 +2768,24 @@ class ConnectomeLoad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConnectomeLoadOutputs`).
+            NamedTuple of outputs (described in `MrviewConnectomeLoadOutputs`).
         """
-        ret = ConnectomeLoadOutputs(
+        ret = MrviewConnectomeLoadOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CaptureFolderOutputs(typing.NamedTuple):
+class MrviewCaptureFolderOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CaptureFolder.run(...)`.
+    Output object returned when calling `MrviewCaptureFolder.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CaptureFolder:
+class MrviewCaptureFolder:
     """
     Set the output folder for the screen capture tool.
     """
@@ -2813,7 +2813,7 @@ class CaptureFolder:
     def outputs(
         self,
         execution: Execution,
-    ) -> CaptureFolderOutputs:
+    ) -> MrviewCaptureFolderOutputs:
         """
         Collect output file paths.
         
@@ -2821,24 +2821,24 @@ class CaptureFolder:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CaptureFolderOutputs`).
+            NamedTuple of outputs (described in `MrviewCaptureFolderOutputs`).
         """
-        ret = CaptureFolderOutputs(
+        ret = MrviewCaptureFolderOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CapturePrefixOutputs(typing.NamedTuple):
+class MrviewCapturePrefixOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CapturePrefix.run(...)`.
+    Output object returned when calling `MrviewCapturePrefix.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CapturePrefix:
+class MrviewCapturePrefix:
     """
     Set the output file prefix for the screen capture tool.
     """
@@ -2866,7 +2866,7 @@ class CapturePrefix:
     def outputs(
         self,
         execution: Execution,
-    ) -> CapturePrefixOutputs:
+    ) -> MrviewCapturePrefixOutputs:
         """
         Collect output file paths.
         
@@ -2874,24 +2874,24 @@ class CapturePrefix:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CapturePrefixOutputs`).
+            NamedTuple of outputs (described in `MrviewCapturePrefixOutputs`).
         """
-        ret = CapturePrefixOutputs(
+        ret = MrviewCapturePrefixOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CaptureGrabOutputs(typing.NamedTuple):
+class MrviewCaptureGrabOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CaptureGrab.run(...)`.
+    Output object returned when calling `MrviewCaptureGrab.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class CaptureGrab:
+class MrviewCaptureGrab:
     """
     Start the screen capture process.
     """
@@ -2916,7 +2916,7 @@ class CaptureGrab:
     def outputs(
         self,
         execution: Execution,
-    ) -> CaptureGrabOutputs:
+    ) -> MrviewCaptureGrabOutputs:
         """
         Collect output file paths.
         
@@ -2924,24 +2924,24 @@ class CaptureGrab:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CaptureGrabOutputs`).
+            NamedTuple of outputs (described in `MrviewCaptureGrabOutputs`).
         """
-        ret = CaptureGrabOutputs(
+        ret = MrviewCaptureGrabOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrviewConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrviewConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrviewConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -2972,7 +2972,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrviewConfigOutputs:
         """
         Collect output file paths.
         
@@ -2980,9 +2980,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrviewConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrviewConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -2994,188 +2994,188 @@ class MrviewOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    mode: ModeOutputs
+    mode: typing.List[MrviewModeOutputs]
     """Subcommand outputs"""
-    load: LoadOutputs
+    load: typing.List[MrviewLoadOutputs]
     """Subcommand outputs"""
-    reset: ResetOutputs
+    reset: typing.List[MrviewResetOutputs]
     """Subcommand outputs"""
-    fov: FovOutputs
+    fov: typing.List[MrviewFovOutputs]
     """Subcommand outputs"""
-    focus: FocusOutputs
+    focus: typing.List[MrviewFocusOutputs]
     """Subcommand outputs"""
-    target: TargetOutputs
+    target: typing.List[MrviewTargetOutputs]
     """Subcommand outputs"""
-    voxel: VoxelOutputs
+    voxel: typing.List[MrviewVoxelOutputs]
     """Subcommand outputs"""
-    volume: VolumeOutputs
+    volume: typing.List[MrviewVolumeOutputs]
     """Subcommand outputs"""
-    plane: PlaneOutputs
+    plane: typing.List[MrviewPlaneOutputs]
     """Subcommand outputs"""
-    lock: LockOutputs
+    lock: typing.List[MrviewLockOutputs]
     """Subcommand outputs"""
-    select_image: SelectImageOutputs
+    select_image: typing.List[MrviewSelectImageOutputs]
     """Subcommand outputs"""
-    autoscale: AutoscaleOutputs
+    autoscale: typing.List[MrviewAutoscaleOutputs]
     """Subcommand outputs"""
-    interpolation: InterpolationOutputs
+    interpolation: typing.List[MrviewInterpolationOutputs]
     """Subcommand outputs"""
-    colourmap: ColourmapOutputs
+    colourmap: typing.List[MrviewColourmapOutputs]
     """Subcommand outputs"""
-    noannotations: NoannotationsOutputs
+    noannotations: typing.List[MrviewNoannotationsOutputs]
     """Subcommand outputs"""
-    comments: CommentsOutputs
+    comments: typing.List[MrviewCommentsOutputs]
     """Subcommand outputs"""
-    voxelinfo: VoxelinfoOutputs
+    voxelinfo: typing.List[MrviewVoxelinfoOutputs]
     """Subcommand outputs"""
-    orientationlabel: OrientationlabelOutputs
+    orientationlabel: typing.List[MrviewOrientationlabelOutputs]
     """Subcommand outputs"""
-    colourbar: ColourbarOutputs
+    colourbar: typing.List[MrviewColourbarOutputs]
     """Subcommand outputs"""
-    imagevisible: ImagevisibleOutputs
+    imagevisible: typing.List[MrviewImagevisibleOutputs]
     """Subcommand outputs"""
-    intensity_range: IntensityRangeOutputs
+    intensity_range: typing.List[MrviewIntensityRangeOutputs]
     """Subcommand outputs"""
-    size: SizeOutputs
+    size: typing.List[MrviewSizeOutputs]
     """Subcommand outputs"""
-    position: PositionOutputs
+    position: typing.List[MrviewPositionOutputs]
     """Subcommand outputs"""
-    overlay_load: OverlayLoadOutputs
+    overlay_load: typing.List[MrviewOverlayLoadOutputs]
     """Subcommand outputs"""
-    overlay_opacity: OverlayOpacityOutputs
+    overlay_opacity: typing.List[MrviewOverlayOpacityOutputs]
     """Subcommand outputs"""
-    overlay_colourmap: OverlayColourmapOutputs
+    overlay_colourmap: typing.List[MrviewOverlayColourmapOutputs]
     """Subcommand outputs"""
-    overlay_colour: OverlayColourOutputs
+    overlay_colour: typing.List[MrviewOverlayColourOutputs]
     """Subcommand outputs"""
-    overlay_intensity: OverlayIntensityOutputs
+    overlay_intensity: typing.List[MrviewOverlayIntensityOutputs]
     """Subcommand outputs"""
-    overlay_threshold_min: OverlayThresholdMinOutputs
+    overlay_threshold_min: typing.List[MrviewOverlayThresholdMinOutputs]
     """Subcommand outputs"""
-    overlay_threshold_max: OverlayThresholdMaxOutputs
+    overlay_threshold_max: typing.List[MrviewOverlayThresholdMaxOutputs]
     """Subcommand outputs"""
-    overlay_no_threshold_min: OverlayNoThresholdMinOutputs
+    overlay_no_threshold_min: typing.List[MrviewOverlayNoThresholdMinOutputs]
     """Subcommand outputs"""
-    overlay_no_threshold_max: OverlayNoThresholdMaxOutputs
+    overlay_no_threshold_max: typing.List[MrviewOverlayNoThresholdMaxOutputs]
     """Subcommand outputs"""
-    overlay_interpolation: OverlayInterpolationOutputs
+    overlay_interpolation: typing.List[MrviewOverlayInterpolationOutputs]
     """Subcommand outputs"""
-    roi_load: RoiLoadOutputs
+    roi_load: typing.List[MrviewRoiLoadOutputs]
     """Subcommand outputs"""
-    roi_opacity: RoiOpacityOutputs
+    roi_opacity: typing.List[MrviewRoiOpacityOutputs]
     """Subcommand outputs"""
-    roi_colour: RoiColourOutputs
+    roi_colour: typing.List[MrviewRoiColourOutputs]
     """Subcommand outputs"""
-    tractography_load: TractographyLoadOutputs
+    tractography_load: typing.List[MrviewTractographyLoadOutputs]
     """Subcommand outputs"""
-    tractography_thickness: TractographyThicknessOutputs
+    tractography_thickness: typing.List[MrviewTractographyThicknessOutputs]
     """Subcommand outputs"""
-    tractography_geometry: TractographyGeometryOutputs
+    tractography_geometry: typing.List[MrviewTractographyGeometryOutputs]
     """Subcommand outputs"""
-    tractography_opacity: TractographyOpacityOutputs
+    tractography_opacity: typing.List[MrviewTractographyOpacityOutputs]
     """Subcommand outputs"""
-    tractography_slab: TractographySlabOutputs
+    tractography_slab: typing.List[MrviewTractographySlabOutputs]
     """Subcommand outputs"""
-    tractography_lighting: TractographyLightingOutputs
+    tractography_lighting: typing.List[MrviewTractographyLightingOutputs]
     """Subcommand outputs"""
-    tractography_colour: TractographyColourOutputs
+    tractography_colour: typing.List[MrviewTractographyColourOutputs]
     """Subcommand outputs"""
-    tractography_tsf_load: TractographyTsfLoadOutputs
+    tractography_tsf_load: typing.List[MrviewTractographyTsfLoadOutputs]
     """Subcommand outputs"""
-    tractography_tsf_range: TractographyTsfRangeOutputs
+    tractography_tsf_range: typing.List[MrviewTractographyTsfRangeOutputs]
     """Subcommand outputs"""
-    tractography_tsf_thresh: TractographyTsfThreshOutputs
+    tractography_tsf_thresh: typing.List[MrviewTractographyTsfThreshOutputs]
     """Subcommand outputs"""
-    tractography_tsf_colourmap: TractographyTsfColourmapOutputs
+    tractography_tsf_colourmap: typing.List[MrviewTractographyTsfColourmapOutputs]
     """Subcommand outputs"""
-    odf_load_sh: OdfLoadShOutputs
+    odf_load_sh: typing.List[MrviewOdfLoadShOutputs]
     """Subcommand outputs"""
-    odf_load_tensor: OdfLoadTensorOutputs
+    odf_load_tensor: typing.List[MrviewOdfLoadTensorOutputs]
     """Subcommand outputs"""
-    odf_load_dixel: OdfLoadDixelOutputs
+    odf_load_dixel: typing.List[MrviewOdfLoadDixelOutputs]
     """Subcommand outputs"""
-    fixel_load: FixelLoadOutputs
+    fixel_load: typing.List[MrviewFixelLoadOutputs]
     """Subcommand outputs"""
-    connectome_load: ConnectomeLoadOutputs
+    connectome_load: typing.List[MrviewConnectomeLoadOutputs]
     """Subcommand outputs"""
-    capture_folder: CaptureFolderOutputs
+    capture_folder: typing.List[MrviewCaptureFolderOutputs]
     """Subcommand outputs"""
-    capture_prefix: CapturePrefixOutputs
+    capture_prefix: typing.List[MrviewCapturePrefixOutputs]
     """Subcommand outputs"""
-    capture_grab: CaptureGrabOutputs
+    capture_grab: typing.List[MrviewCaptureGrabOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[MrviewConfigOutputs]
     """Subcommand outputs"""
 
 
 def mrview(
     image: list[InputPathType] = None,
-    mode: list[Mode] = None,
-    load: list[Load] = None,
-    reset: list[Reset] = None,
-    fov: list[Fov] = None,
-    focus: list[Focus] = None,
-    target: list[Target] = None,
-    voxel: list[Voxel] = None,
-    volume: list[Volume] = None,
-    plane: list[Plane] = None,
-    lock: list[Lock] = None,
-    select_image: list[SelectImage] = None,
-    autoscale: list[Autoscale] = None,
-    interpolation: list[Interpolation] = None,
-    colourmap: list[Colourmap] = None,
-    noannotations: list[Noannotations] = None,
-    comments: list[Comments] = None,
-    voxelinfo: list[Voxelinfo] = None,
-    orientationlabel: list[Orientationlabel] = None,
-    colourbar: list[Colourbar] = None,
-    imagevisible: list[Imagevisible] = None,
-    intensity_range: list[IntensityRange] = None,
-    size: list[Size] = None,
-    position: list[Position] = None,
+    mode: list[MrviewMode] = None,
+    load: list[MrviewLoad] = None,
+    reset: list[MrviewReset] = None,
+    fov: list[MrviewFov] = None,
+    focus: list[MrviewFocus] = None,
+    target: list[MrviewTarget] = None,
+    voxel: list[MrviewVoxel] = None,
+    volume: list[MrviewVolume] = None,
+    plane: list[MrviewPlane] = None,
+    lock: list[MrviewLock] = None,
+    select_image: list[MrviewSelectImage] = None,
+    autoscale: list[MrviewAutoscale] = None,
+    interpolation: list[MrviewInterpolation] = None,
+    colourmap: list[MrviewColourmap] = None,
+    noannotations: list[MrviewNoannotations] = None,
+    comments: list[MrviewComments] = None,
+    voxelinfo: list[MrviewVoxelinfo] = None,
+    orientationlabel: list[MrviewOrientationlabel] = None,
+    colourbar: list[MrviewColourbar] = None,
+    imagevisible: list[MrviewImagevisible] = None,
+    intensity_range: list[MrviewIntensityRange] = None,
+    size: list[MrviewSize] = None,
+    position: list[MrviewPosition] = None,
     fullscreen: bool = False,
     exit_: bool = False,
     sync_focus: bool = False,
     fps: bool = False,
-    overlay_load: list[OverlayLoad] = None,
-    overlay_opacity: list[OverlayOpacity] = None,
-    overlay_colourmap: list[OverlayColourmap] = None,
-    overlay_colour: list[OverlayColour] = None,
-    overlay_intensity: list[OverlayIntensity] = None,
-    overlay_threshold_min: list[OverlayThresholdMin] = None,
-    overlay_threshold_max: list[OverlayThresholdMax] = None,
-    overlay_no_threshold_min: list[OverlayNoThresholdMin] = None,
-    overlay_no_threshold_max: list[OverlayNoThresholdMax] = None,
-    overlay_interpolation: list[OverlayInterpolation] = None,
-    roi_load: list[RoiLoad] = None,
-    roi_opacity: list[RoiOpacity] = None,
-    roi_colour: list[RoiColour] = None,
-    tractography_load: list[TractographyLoad] = None,
-    tractography_thickness: list[TractographyThickness] = None,
-    tractography_geometry: list[TractographyGeometry] = None,
-    tractography_opacity: list[TractographyOpacity] = None,
-    tractography_slab: list[TractographySlab] = None,
-    tractography_lighting: list[TractographyLighting] = None,
-    tractography_colour: list[TractographyColour] = None,
-    tractography_tsf_load: list[TractographyTsfLoad] = None,
-    tractography_tsf_range: list[TractographyTsfRange] = None,
-    tractography_tsf_thresh: list[TractographyTsfThresh] = None,
-    tractography_tsf_colourmap: list[TractographyTsfColourmap] = None,
-    odf_load_sh: list[OdfLoadSh] = None,
-    odf_load_tensor: list[OdfLoadTensor] = None,
-    odf_load_dixel: list[OdfLoadDixel] = None,
-    fixel_load: list[FixelLoad] = None,
+    overlay_load: list[MrviewOverlayLoad] = None,
+    overlay_opacity: list[MrviewOverlayOpacity] = None,
+    overlay_colourmap: list[MrviewOverlayColourmap] = None,
+    overlay_colour: list[MrviewOverlayColour] = None,
+    overlay_intensity: list[MrviewOverlayIntensity] = None,
+    overlay_threshold_min: list[MrviewOverlayThresholdMin] = None,
+    overlay_threshold_max: list[MrviewOverlayThresholdMax] = None,
+    overlay_no_threshold_min: list[MrviewOverlayNoThresholdMin] = None,
+    overlay_no_threshold_max: list[MrviewOverlayNoThresholdMax] = None,
+    overlay_interpolation: list[MrviewOverlayInterpolation] = None,
+    roi_load: list[MrviewRoiLoad] = None,
+    roi_opacity: list[MrviewRoiOpacity] = None,
+    roi_colour: list[MrviewRoiColour] = None,
+    tractography_load: list[MrviewTractographyLoad] = None,
+    tractography_thickness: list[MrviewTractographyThickness] = None,
+    tractography_geometry: list[MrviewTractographyGeometry] = None,
+    tractography_opacity: list[MrviewTractographyOpacity] = None,
+    tractography_slab: list[MrviewTractographySlab] = None,
+    tractography_lighting: list[MrviewTractographyLighting] = None,
+    tractography_colour: list[MrviewTractographyColour] = None,
+    tractography_tsf_load: list[MrviewTractographyTsfLoad] = None,
+    tractography_tsf_range: list[MrviewTractographyTsfRange] = None,
+    tractography_tsf_thresh: list[MrviewTractographyTsfThresh] = None,
+    tractography_tsf_colourmap: list[MrviewTractographyTsfColourmap] = None,
+    odf_load_sh: list[MrviewOdfLoadSh] = None,
+    odf_load_tensor: list[MrviewOdfLoadTensor] = None,
+    odf_load_dixel: list[MrviewOdfLoadDixel] = None,
+    fixel_load: list[MrviewFixelLoad] = None,
     connectome_init: InputPathType | None = None,
-    connectome_load: list[ConnectomeLoad] = None,
-    capture_folder: list[CaptureFolder] = None,
-    capture_prefix: list[CapturePrefix] = None,
-    capture_grab: list[CaptureGrab] = None,
+    connectome_load: list[MrviewConnectomeLoad] = None,
+    capture_folder: list[MrviewCaptureFolder] = None,
+    capture_prefix: list[MrviewCapturePrefix] = None,
+    capture_grab: list[MrviewCaptureGrab] = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrviewConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -3527,119 +3527,119 @@ def mrview(
 
 
 __all__ = [
-    "Autoscale",
-    "AutoscaleOutputs",
-    "CaptureFolder",
-    "CaptureFolderOutputs",
-    "CaptureGrab",
-    "CaptureGrabOutputs",
-    "CapturePrefix",
-    "CapturePrefixOutputs",
-    "Colourbar",
-    "ColourbarOutputs",
-    "Colourmap",
-    "ColourmapOutputs",
-    "Comments",
-    "CommentsOutputs",
-    "Config",
-    "ConfigOutputs",
-    "ConnectomeLoad",
-    "ConnectomeLoadOutputs",
-    "FixelLoad",
-    "FixelLoadOutputs",
-    "Focus",
-    "FocusOutputs",
-    "Fov",
-    "FovOutputs",
-    "Imagevisible",
-    "ImagevisibleOutputs",
-    "IntensityRange",
-    "IntensityRangeOutputs",
-    "Interpolation",
-    "InterpolationOutputs",
-    "Load",
-    "LoadOutputs",
-    "Lock",
-    "LockOutputs",
     "MRVIEW_METADATA",
-    "Mode",
-    "ModeOutputs",
+    "MrviewAutoscale",
+    "MrviewAutoscaleOutputs",
+    "MrviewCaptureFolder",
+    "MrviewCaptureFolderOutputs",
+    "MrviewCaptureGrab",
+    "MrviewCaptureGrabOutputs",
+    "MrviewCapturePrefix",
+    "MrviewCapturePrefixOutputs",
+    "MrviewColourbar",
+    "MrviewColourbarOutputs",
+    "MrviewColourmap",
+    "MrviewColourmapOutputs",
+    "MrviewComments",
+    "MrviewCommentsOutputs",
+    "MrviewConfig",
+    "MrviewConfigOutputs",
+    "MrviewConnectomeLoad",
+    "MrviewConnectomeLoadOutputs",
+    "MrviewFixelLoad",
+    "MrviewFixelLoadOutputs",
+    "MrviewFocus",
+    "MrviewFocusOutputs",
+    "MrviewFov",
+    "MrviewFovOutputs",
+    "MrviewImagevisible",
+    "MrviewImagevisibleOutputs",
+    "MrviewIntensityRange",
+    "MrviewIntensityRangeOutputs",
+    "MrviewInterpolation",
+    "MrviewInterpolationOutputs",
+    "MrviewLoad",
+    "MrviewLoadOutputs",
+    "MrviewLock",
+    "MrviewLockOutputs",
+    "MrviewMode",
+    "MrviewModeOutputs",
+    "MrviewNoannotations",
+    "MrviewNoannotationsOutputs",
+    "MrviewOdfLoadDixel",
+    "MrviewOdfLoadDixelOutputs",
+    "MrviewOdfLoadSh",
+    "MrviewOdfLoadShOutputs",
+    "MrviewOdfLoadTensor",
+    "MrviewOdfLoadTensorOutputs",
+    "MrviewOrientationlabel",
+    "MrviewOrientationlabelOutputs",
     "MrviewOutputs",
-    "Noannotations",
-    "NoannotationsOutputs",
-    "OdfLoadDixel",
-    "OdfLoadDixelOutputs",
-    "OdfLoadSh",
-    "OdfLoadShOutputs",
-    "OdfLoadTensor",
-    "OdfLoadTensorOutputs",
-    "Orientationlabel",
-    "OrientationlabelOutputs",
-    "OverlayColour",
-    "OverlayColourOutputs",
-    "OverlayColourmap",
-    "OverlayColourmapOutputs",
-    "OverlayIntensity",
-    "OverlayIntensityOutputs",
-    "OverlayInterpolation",
-    "OverlayInterpolationOutputs",
-    "OverlayLoad",
-    "OverlayLoadOutputs",
-    "OverlayNoThresholdMax",
-    "OverlayNoThresholdMaxOutputs",
-    "OverlayNoThresholdMin",
-    "OverlayNoThresholdMinOutputs",
-    "OverlayOpacity",
-    "OverlayOpacityOutputs",
-    "OverlayThresholdMax",
-    "OverlayThresholdMaxOutputs",
-    "OverlayThresholdMin",
-    "OverlayThresholdMinOutputs",
-    "Plane",
-    "PlaneOutputs",
-    "Position",
-    "PositionOutputs",
-    "Reset",
-    "ResetOutputs",
-    "RoiColour",
-    "RoiColourOutputs",
-    "RoiLoad",
-    "RoiLoadOutputs",
-    "RoiOpacity",
-    "RoiOpacityOutputs",
-    "SelectImage",
-    "SelectImageOutputs",
-    "Size",
-    "SizeOutputs",
-    "Target",
-    "TargetOutputs",
-    "TractographyColour",
-    "TractographyColourOutputs",
-    "TractographyGeometry",
-    "TractographyGeometryOutputs",
-    "TractographyLighting",
-    "TractographyLightingOutputs",
-    "TractographyLoad",
-    "TractographyLoadOutputs",
-    "TractographyOpacity",
-    "TractographyOpacityOutputs",
-    "TractographySlab",
-    "TractographySlabOutputs",
-    "TractographyThickness",
-    "TractographyThicknessOutputs",
-    "TractographyTsfColourmap",
-    "TractographyTsfColourmapOutputs",
-    "TractographyTsfLoad",
-    "TractographyTsfLoadOutputs",
-    "TractographyTsfRange",
-    "TractographyTsfRangeOutputs",
-    "TractographyTsfThresh",
-    "TractographyTsfThreshOutputs",
-    "Volume",
-    "VolumeOutputs",
-    "Voxel",
-    "VoxelOutputs",
-    "Voxelinfo",
-    "VoxelinfoOutputs",
+    "MrviewOverlayColour",
+    "MrviewOverlayColourOutputs",
+    "MrviewOverlayColourmap",
+    "MrviewOverlayColourmapOutputs",
+    "MrviewOverlayIntensity",
+    "MrviewOverlayIntensityOutputs",
+    "MrviewOverlayInterpolation",
+    "MrviewOverlayInterpolationOutputs",
+    "MrviewOverlayLoad",
+    "MrviewOverlayLoadOutputs",
+    "MrviewOverlayNoThresholdMax",
+    "MrviewOverlayNoThresholdMaxOutputs",
+    "MrviewOverlayNoThresholdMin",
+    "MrviewOverlayNoThresholdMinOutputs",
+    "MrviewOverlayOpacity",
+    "MrviewOverlayOpacityOutputs",
+    "MrviewOverlayThresholdMax",
+    "MrviewOverlayThresholdMaxOutputs",
+    "MrviewOverlayThresholdMin",
+    "MrviewOverlayThresholdMinOutputs",
+    "MrviewPlane",
+    "MrviewPlaneOutputs",
+    "MrviewPosition",
+    "MrviewPositionOutputs",
+    "MrviewReset",
+    "MrviewResetOutputs",
+    "MrviewRoiColour",
+    "MrviewRoiColourOutputs",
+    "MrviewRoiLoad",
+    "MrviewRoiLoadOutputs",
+    "MrviewRoiOpacity",
+    "MrviewRoiOpacityOutputs",
+    "MrviewSelectImage",
+    "MrviewSelectImageOutputs",
+    "MrviewSize",
+    "MrviewSizeOutputs",
+    "MrviewTarget",
+    "MrviewTargetOutputs",
+    "MrviewTractographyColour",
+    "MrviewTractographyColourOutputs",
+    "MrviewTractographyGeometry",
+    "MrviewTractographyGeometryOutputs",
+    "MrviewTractographyLighting",
+    "MrviewTractographyLightingOutputs",
+    "MrviewTractographyLoad",
+    "MrviewTractographyLoadOutputs",
+    "MrviewTractographyOpacity",
+    "MrviewTractographyOpacityOutputs",
+    "MrviewTractographySlab",
+    "MrviewTractographySlabOutputs",
+    "MrviewTractographyThickness",
+    "MrviewTractographyThicknessOutputs",
+    "MrviewTractographyTsfColourmap",
+    "MrviewTractographyTsfColourmapOutputs",
+    "MrviewTractographyTsfLoad",
+    "MrviewTractographyTsfLoadOutputs",
+    "MrviewTractographyTsfRange",
+    "MrviewTractographyTsfRangeOutputs",
+    "MrviewTractographyTsfThresh",
+    "MrviewTractographyTsfThreshOutputs",
+    "MrviewVolume",
+    "MrviewVolumeOutputs",
+    "MrviewVoxel",
+    "MrviewVoxelOutputs",
+    "MrviewVoxelinfo",
+    "MrviewVoxelinfoOutputs",
     "mrview",
 ]

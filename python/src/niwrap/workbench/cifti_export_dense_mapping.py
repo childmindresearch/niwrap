@@ -16,16 +16,16 @@ CIFTI_EXPORT_DENSE_MAPPING_METADATA = Metadata(
 )
 
 
-class VolumeAllOutputs(typing.NamedTuple):
+class CiftiExportDenseMappingVolumeAllOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `VolumeAll.run(...)`.
+    Output object returned when calling `CiftiExportDenseMappingVolumeAll.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class VolumeAll:
+class CiftiExportDenseMappingVolumeAll:
     """
     export the the mapping of all voxels
     """
@@ -57,7 +57,7 @@ class VolumeAll:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeAllOutputs:
+    ) -> CiftiExportDenseMappingVolumeAllOutputs:
         """
         Collect output file paths.
         
@@ -65,24 +65,24 @@ class VolumeAll:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeAllOutputs`).
+            NamedTuple of outputs (described in `CiftiExportDenseMappingVolumeAllOutputs`).
         """
-        ret = VolumeAllOutputs(
+        ret = CiftiExportDenseMappingVolumeAllOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SurfaceOutputs(typing.NamedTuple):
+class CiftiExportDenseMappingSurfaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Surface.run(...)`.
+    Output object returned when calling `CiftiExportDenseMappingSurface.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Surface:
+class CiftiExportDenseMappingSurface:
     """
     export the the mapping of one surface structure
     """
@@ -110,7 +110,7 @@ class Surface:
     def outputs(
         self,
         execution: Execution,
-    ) -> SurfaceOutputs:
+    ) -> CiftiExportDenseMappingSurfaceOutputs:
         """
         Collect output file paths.
         
@@ -118,24 +118,24 @@ class Surface:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SurfaceOutputs`).
+            NamedTuple of outputs (described in `CiftiExportDenseMappingSurfaceOutputs`).
         """
-        ret = SurfaceOutputs(
+        ret = CiftiExportDenseMappingSurfaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class VolumeOutputs(typing.NamedTuple):
+class CiftiExportDenseMappingVolumeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Volume.run(...)`.
+    Output object returned when calling `CiftiExportDenseMappingVolume.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Volume:
+class CiftiExportDenseMappingVolume:
     """
     export the the mapping of one volume structure
     """
@@ -163,7 +163,7 @@ class Volume:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeOutputs:
+    ) -> CiftiExportDenseMappingVolumeOutputs:
         """
         Collect output file paths.
         
@@ -171,9 +171,9 @@ class Volume:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeOutputs`).
+            NamedTuple of outputs (described in `CiftiExportDenseMappingVolumeOutputs`).
         """
-        ret = VolumeOutputs(
+        ret = CiftiExportDenseMappingVolumeOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -185,20 +185,20 @@ class CiftiExportDenseMappingOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    volume_all: VolumeAllOutputs
+    volume_all: CiftiExportDenseMappingVolumeAllOutputs
     """Subcommand outputs"""
-    surface: SurfaceOutputs
+    surface: typing.List[CiftiExportDenseMappingSurfaceOutputs]
     """Subcommand outputs"""
-    volume: VolumeOutputs
+    volume: typing.List[CiftiExportDenseMappingVolumeOutputs]
     """Subcommand outputs"""
 
 
 def cifti_export_dense_mapping(
     cifti: InputPathType,
     direction: str,
-    volume_all: VolumeAll | None = None,
-    surface: list[Surface] = None,
-    volume: list[Volume] = None,
+    volume_all: CiftiExportDenseMappingVolumeAll | None = None,
+    surface: list[CiftiExportDenseMappingSurface] = None,
+    volume: list[CiftiExportDenseMappingVolume] = None,
     runner: Runner = None,
 ) -> CiftiExportDenseMappingOutputs:
     """
@@ -288,11 +288,11 @@ def cifti_export_dense_mapping(
 __all__ = [
     "CIFTI_EXPORT_DENSE_MAPPING_METADATA",
     "CiftiExportDenseMappingOutputs",
-    "Surface",
-    "SurfaceOutputs",
-    "Volume",
-    "VolumeAll",
-    "VolumeAllOutputs",
-    "VolumeOutputs",
+    "CiftiExportDenseMappingSurface",
+    "CiftiExportDenseMappingSurfaceOutputs",
+    "CiftiExportDenseMappingVolume",
+    "CiftiExportDenseMappingVolumeAll",
+    "CiftiExportDenseMappingVolumeAllOutputs",
+    "CiftiExportDenseMappingVolumeOutputs",
     "cifti_export_dense_mapping",
 ]

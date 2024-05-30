@@ -16,16 +16,16 @@ TCKMAP_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TckmapConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TckmapConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TckmapConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TckmapConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TckmapConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TckmapConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class TckmapOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output track-weighted image"""
-    config: ConfigOutputs
+    config: typing.List[TckmapConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -110,7 +110,7 @@ def tckmap(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TckmapConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -305,9 +305,9 @@ def tckmap(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TCKMAP_METADATA",
+    "TckmapConfig",
+    "TckmapConfigOutputs",
     "TckmapOutputs",
     "tckmap",
 ]

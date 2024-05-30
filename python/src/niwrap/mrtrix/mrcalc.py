@@ -16,16 +16,16 @@ MRCALC_METADATA = Metadata(
 )
 
 
-class AbsOutputs(typing.NamedTuple):
+class MrcalcAbsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Abs.run(...)`.
+    Output object returned when calling `MrcalcAbs.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Abs:
+class MrcalcAbs:
     """
     |%1| : return absolute value (magnitude) of real or complex number
     """
@@ -50,7 +50,7 @@ class Abs:
     def outputs(
         self,
         execution: Execution,
-    ) -> AbsOutputs:
+    ) -> MrcalcAbsOutputs:
         """
         Collect output file paths.
         
@@ -58,24 +58,24 @@ class Abs:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AbsOutputs`).
+            NamedTuple of outputs (described in `MrcalcAbsOutputs`).
         """
-        ret = AbsOutputs(
+        ret = MrcalcAbsOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NegOutputs(typing.NamedTuple):
+class MrcalcNegOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Neg.run(...)`.
+    Output object returned when calling `MrcalcNeg.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Neg:
+class MrcalcNeg:
     """
     -%1 : negative value
     """
@@ -100,7 +100,7 @@ class Neg:
     def outputs(
         self,
         execution: Execution,
-    ) -> NegOutputs:
+    ) -> MrcalcNegOutputs:
         """
         Collect output file paths.
         
@@ -108,24 +108,24 @@ class Neg:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NegOutputs`).
+            NamedTuple of outputs (described in `MrcalcNegOutputs`).
         """
-        ret = NegOutputs(
+        ret = MrcalcNegOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AddOutputs(typing.NamedTuple):
+class MrcalcAddOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Add.run(...)`.
+    Output object returned when calling `MrcalcAdd.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Add:
+class MrcalcAdd:
     """
     (%1 + %2) : add values
     """
@@ -150,7 +150,7 @@ class Add:
     def outputs(
         self,
         execution: Execution,
-    ) -> AddOutputs:
+    ) -> MrcalcAddOutputs:
         """
         Collect output file paths.
         
@@ -158,24 +158,24 @@ class Add:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AddOutputs`).
+            NamedTuple of outputs (described in `MrcalcAddOutputs`).
         """
-        ret = AddOutputs(
+        ret = MrcalcAddOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SubtractOutputs(typing.NamedTuple):
+class MrcalcSubtractOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Subtract.run(...)`.
+    Output object returned when calling `MrcalcSubtract.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Subtract:
+class MrcalcSubtract:
     """
     (%1 - %2) : subtract nth operand from (n-1)th
     """
@@ -200,7 +200,7 @@ class Subtract:
     def outputs(
         self,
         execution: Execution,
-    ) -> SubtractOutputs:
+    ) -> MrcalcSubtractOutputs:
         """
         Collect output file paths.
         
@@ -208,24 +208,24 @@ class Subtract:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SubtractOutputs`).
+            NamedTuple of outputs (described in `MrcalcSubtractOutputs`).
         """
-        ret = SubtractOutputs(
+        ret = MrcalcSubtractOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MultiplyOutputs(typing.NamedTuple):
+class MrcalcMultiplyOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Multiply.run(...)`.
+    Output object returned when calling `MrcalcMultiply.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Multiply:
+class MrcalcMultiply:
     """
     (%1 * %2) : multiply values
     """
@@ -250,7 +250,7 @@ class Multiply:
     def outputs(
         self,
         execution: Execution,
-    ) -> MultiplyOutputs:
+    ) -> MrcalcMultiplyOutputs:
         """
         Collect output file paths.
         
@@ -258,24 +258,24 @@ class Multiply:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MultiplyOutputs`).
+            NamedTuple of outputs (described in `MrcalcMultiplyOutputs`).
         """
-        ret = MultiplyOutputs(
+        ret = MrcalcMultiplyOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class DivideOutputs(typing.NamedTuple):
+class MrcalcDivideOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Divide.run(...)`.
+    Output object returned when calling `MrcalcDivide.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Divide:
+class MrcalcDivide:
     """
     (%1 / %2) : divide (n-1)th operand by nth
     """
@@ -300,7 +300,7 @@ class Divide:
     def outputs(
         self,
         execution: Execution,
-    ) -> DivideOutputs:
+    ) -> MrcalcDivideOutputs:
         """
         Collect output file paths.
         
@@ -308,24 +308,24 @@ class Divide:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `DivideOutputs`).
+            NamedTuple of outputs (described in `MrcalcDivideOutputs`).
         """
-        ret = DivideOutputs(
+        ret = MrcalcDivideOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MinOutputs(typing.NamedTuple):
+class MrcalcMinOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Min.run(...)`.
+    Output object returned when calling `MrcalcMin.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Min:
+class MrcalcMin:
     """
     min (%1, %2) : smallest of last two operands
     """
@@ -350,7 +350,7 @@ class Min:
     def outputs(
         self,
         execution: Execution,
-    ) -> MinOutputs:
+    ) -> MrcalcMinOutputs:
         """
         Collect output file paths.
         
@@ -358,24 +358,24 @@ class Min:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MinOutputs`).
+            NamedTuple of outputs (described in `MrcalcMinOutputs`).
         """
-        ret = MinOutputs(
+        ret = MrcalcMinOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MaxOutputs(typing.NamedTuple):
+class MrcalcMaxOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Max.run(...)`.
+    Output object returned when calling `MrcalcMax.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Max:
+class MrcalcMax:
     """
     max (%1, %2) : greatest of last two operands
     """
@@ -400,7 +400,7 @@ class Max:
     def outputs(
         self,
         execution: Execution,
-    ) -> MaxOutputs:
+    ) -> MrcalcMaxOutputs:
         """
         Collect output file paths.
         
@@ -408,24 +408,24 @@ class Max:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MaxOutputs`).
+            NamedTuple of outputs (described in `MrcalcMaxOutputs`).
         """
-        ret = MaxOutputs(
+        ret = MrcalcMaxOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LtOutputs(typing.NamedTuple):
+class MrcalcLtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Lt.run(...)`.
+    Output object returned when calling `MrcalcLt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Lt:
+class MrcalcLt:
     """
     (%1 < %2) : less-than operator (true=1, false=0)
     """
@@ -450,7 +450,7 @@ class Lt:
     def outputs(
         self,
         execution: Execution,
-    ) -> LtOutputs:
+    ) -> MrcalcLtOutputs:
         """
         Collect output file paths.
         
@@ -458,24 +458,24 @@ class Lt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LtOutputs`).
+            NamedTuple of outputs (described in `MrcalcLtOutputs`).
         """
-        ret = LtOutputs(
+        ret = MrcalcLtOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class GtOutputs(typing.NamedTuple):
+class MrcalcGtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Gt.run(...)`.
+    Output object returned when calling `MrcalcGt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Gt:
+class MrcalcGt:
     """
     (%1 > %2) : greater-than operator (true=1, false=0)
     """
@@ -500,7 +500,7 @@ class Gt:
     def outputs(
         self,
         execution: Execution,
-    ) -> GtOutputs:
+    ) -> MrcalcGtOutputs:
         """
         Collect output file paths.
         
@@ -508,24 +508,24 @@ class Gt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `GtOutputs`).
+            NamedTuple of outputs (described in `MrcalcGtOutputs`).
         """
-        ret = GtOutputs(
+        ret = MrcalcGtOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LeOutputs(typing.NamedTuple):
+class MrcalcLeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Le.run(...)`.
+    Output object returned when calling `MrcalcLe.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Le:
+class MrcalcLe:
     """
     (%1 <= %2) : less-than-or-equal-to operator (true=1, false=0)
     """
@@ -550,7 +550,7 @@ class Le:
     def outputs(
         self,
         execution: Execution,
-    ) -> LeOutputs:
+    ) -> MrcalcLeOutputs:
         """
         Collect output file paths.
         
@@ -558,24 +558,24 @@ class Le:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LeOutputs`).
+            NamedTuple of outputs (described in `MrcalcLeOutputs`).
         """
-        ret = LeOutputs(
+        ret = MrcalcLeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class GeOutputs(typing.NamedTuple):
+class MrcalcGeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Ge.run(...)`.
+    Output object returned when calling `MrcalcGe.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Ge:
+class MrcalcGe:
     """
     (%1 >= %2) : greater-than-or-equal-to operator (true=1, false=0)
     """
@@ -600,7 +600,7 @@ class Ge:
     def outputs(
         self,
         execution: Execution,
-    ) -> GeOutputs:
+    ) -> MrcalcGeOutputs:
         """
         Collect output file paths.
         
@@ -608,24 +608,24 @@ class Ge:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `GeOutputs`).
+            NamedTuple of outputs (described in `MrcalcGeOutputs`).
         """
-        ret = GeOutputs(
+        ret = MrcalcGeOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class EqOutputs(typing.NamedTuple):
+class MrcalcEqOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Eq.run(...)`.
+    Output object returned when calling `MrcalcEq.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Eq:
+class MrcalcEq:
     """
     (%1 == %2) : equal-to operator (true=1, false=0)
     """
@@ -650,7 +650,7 @@ class Eq:
     def outputs(
         self,
         execution: Execution,
-    ) -> EqOutputs:
+    ) -> MrcalcEqOutputs:
         """
         Collect output file paths.
         
@@ -658,24 +658,24 @@ class Eq:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `EqOutputs`).
+            NamedTuple of outputs (described in `MrcalcEqOutputs`).
         """
-        ret = EqOutputs(
+        ret = MrcalcEqOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NeqOutputs(typing.NamedTuple):
+class MrcalcNeqOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Neq.run(...)`.
+    Output object returned when calling `MrcalcNeq.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Neq:
+class MrcalcNeq:
     """
     (%1 != %2) : not-equal-to operator (true=1, false=0)
     """
@@ -700,7 +700,7 @@ class Neq:
     def outputs(
         self,
         execution: Execution,
-    ) -> NeqOutputs:
+    ) -> MrcalcNeqOutputs:
         """
         Collect output file paths.
         
@@ -708,24 +708,24 @@ class Neq:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NeqOutputs`).
+            NamedTuple of outputs (described in `MrcalcNeqOutputs`).
         """
-        ret = NeqOutputs(
+        ret = MrcalcNeqOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class IfOutputs(typing.NamedTuple):
+class MrcalcIfOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `If.run(...)`.
+    Output object returned when calling `MrcalcIf.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class If:
+class MrcalcIf:
     """
     (%1 ? %2 : %3) : if first operand is true (non-zero), return second operand, otherwise return third operand
     """
@@ -750,7 +750,7 @@ class If:
     def outputs(
         self,
         execution: Execution,
-    ) -> IfOutputs:
+    ) -> MrcalcIfOutputs:
         """
         Collect output file paths.
         
@@ -758,24 +758,24 @@ class If:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `IfOutputs`).
+            NamedTuple of outputs (described in `MrcalcIfOutputs`).
         """
-        ret = IfOutputs(
+        ret = MrcalcIfOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ReplaceOutputs(typing.NamedTuple):
+class MrcalcReplaceOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Replace.run(...)`.
+    Output object returned when calling `MrcalcReplace.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Replace:
+class MrcalcReplace:
     """
     (%1, %2 -> %3) : Wherever first operand is equal to the second operand, replace with third operand
     """
@@ -800,7 +800,7 @@ class Replace:
     def outputs(
         self,
         execution: Execution,
-    ) -> ReplaceOutputs:
+    ) -> MrcalcReplaceOutputs:
         """
         Collect output file paths.
         
@@ -808,24 +808,24 @@ class Replace:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ReplaceOutputs`).
+            NamedTuple of outputs (described in `MrcalcReplaceOutputs`).
         """
-        ret = ReplaceOutputs(
+        ret = MrcalcReplaceOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SqrtOutputs(typing.NamedTuple):
+class MrcalcSqrtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Sqrt.run(...)`.
+    Output object returned when calling `MrcalcSqrt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Sqrt:
+class MrcalcSqrt:
     """
     sqrt (%1) : square root
     """
@@ -850,7 +850,7 @@ class Sqrt:
     def outputs(
         self,
         execution: Execution,
-    ) -> SqrtOutputs:
+    ) -> MrcalcSqrtOutputs:
         """
         Collect output file paths.
         
@@ -858,24 +858,24 @@ class Sqrt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SqrtOutputs`).
+            NamedTuple of outputs (described in `MrcalcSqrtOutputs`).
         """
-        ret = SqrtOutputs(
+        ret = MrcalcSqrtOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class PowOutputs(typing.NamedTuple):
+class MrcalcPowOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Pow.run(...)`.
+    Output object returned when calling `MrcalcPow.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Pow:
+class MrcalcPow:
     """
     %1^%2 : raise (n-1)th operand to nth power
     """
@@ -900,7 +900,7 @@ class Pow:
     def outputs(
         self,
         execution: Execution,
-    ) -> PowOutputs:
+    ) -> MrcalcPowOutputs:
         """
         Collect output file paths.
         
@@ -908,24 +908,24 @@ class Pow:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PowOutputs`).
+            NamedTuple of outputs (described in `MrcalcPowOutputs`).
         """
-        ret = PowOutputs(
+        ret = MrcalcPowOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RoundOutputs(typing.NamedTuple):
+class MrcalcRoundOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Round.run(...)`.
+    Output object returned when calling `MrcalcRound.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Round:
+class MrcalcRound:
     """
     round (%1) : round to nearest integer
     """
@@ -950,7 +950,7 @@ class Round:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoundOutputs:
+    ) -> MrcalcRoundOutputs:
         """
         Collect output file paths.
         
@@ -958,24 +958,24 @@ class Round:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoundOutputs`).
+            NamedTuple of outputs (described in `MrcalcRoundOutputs`).
         """
-        ret = RoundOutputs(
+        ret = MrcalcRoundOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CeilOutputs(typing.NamedTuple):
+class MrcalcCeilOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Ceil.run(...)`.
+    Output object returned when calling `MrcalcCeil.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Ceil:
+class MrcalcCeil:
     """
     ceil (%1) : round up to nearest integer
     """
@@ -1000,7 +1000,7 @@ class Ceil:
     def outputs(
         self,
         execution: Execution,
-    ) -> CeilOutputs:
+    ) -> MrcalcCeilOutputs:
         """
         Collect output file paths.
         
@@ -1008,24 +1008,24 @@ class Ceil:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CeilOutputs`).
+            NamedTuple of outputs (described in `MrcalcCeilOutputs`).
         """
-        ret = CeilOutputs(
+        ret = MrcalcCeilOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FloorOutputs(typing.NamedTuple):
+class MrcalcFloorOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Floor.run(...)`.
+    Output object returned when calling `MrcalcFloor.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Floor:
+class MrcalcFloor:
     """
     floor (%1) : round down to nearest integer
     """
@@ -1050,7 +1050,7 @@ class Floor:
     def outputs(
         self,
         execution: Execution,
-    ) -> FloorOutputs:
+    ) -> MrcalcFloorOutputs:
         """
         Collect output file paths.
         
@@ -1058,24 +1058,24 @@ class Floor:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FloorOutputs`).
+            NamedTuple of outputs (described in `MrcalcFloorOutputs`).
         """
-        ret = FloorOutputs(
+        ret = MrcalcFloorOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class NotOutputs(typing.NamedTuple):
+class MrcalcNotOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Not.run(...)`.
+    Output object returned when calling `MrcalcNot.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Not:
+class MrcalcNot:
     """
     !%1 : NOT operator: true (1) if operand is false (i.e. zero)
     """
@@ -1100,7 +1100,7 @@ class Not:
     def outputs(
         self,
         execution: Execution,
-    ) -> NotOutputs:
+    ) -> MrcalcNotOutputs:
         """
         Collect output file paths.
         
@@ -1108,24 +1108,24 @@ class Not:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `NotOutputs`).
+            NamedTuple of outputs (described in `MrcalcNotOutputs`).
         """
-        ret = NotOutputs(
+        ret = MrcalcNotOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AndOutputs(typing.NamedTuple):
+class MrcalcAndOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `And.run(...)`.
+    Output object returned when calling `MrcalcAnd.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class And:
+class MrcalcAnd:
     """
     (%1 && %2) : AND operator: true (1) if both operands are true (i.e. non-zero)
     """
@@ -1150,7 +1150,7 @@ class And:
     def outputs(
         self,
         execution: Execution,
-    ) -> AndOutputs:
+    ) -> MrcalcAndOutputs:
         """
         Collect output file paths.
         
@@ -1158,24 +1158,24 @@ class And:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AndOutputs`).
+            NamedTuple of outputs (described in `MrcalcAndOutputs`).
         """
-        ret = AndOutputs(
+        ret = MrcalcAndOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OrOutputs(typing.NamedTuple):
+class MrcalcOrOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Or.run(...)`.
+    Output object returned when calling `MrcalcOr.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Or:
+class MrcalcOr:
     """
     (%1 || %2) : OR operator: true (1) if either operand is true (i.e. non-zero)
     """
@@ -1200,7 +1200,7 @@ class Or:
     def outputs(
         self,
         execution: Execution,
-    ) -> OrOutputs:
+    ) -> MrcalcOrOutputs:
         """
         Collect output file paths.
         
@@ -1208,24 +1208,24 @@ class Or:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OrOutputs`).
+            NamedTuple of outputs (described in `MrcalcOrOutputs`).
         """
-        ret = OrOutputs(
+        ret = MrcalcOrOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class XorOutputs(typing.NamedTuple):
+class MrcalcXorOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Xor.run(...)`.
+    Output object returned when calling `MrcalcXor.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Xor:
+class MrcalcXor:
     """
     (%1 ^^ %2) : XOR operator: true (1) if only one of the operands is true (i.e. non-zero)
     """
@@ -1250,7 +1250,7 @@ class Xor:
     def outputs(
         self,
         execution: Execution,
-    ) -> XorOutputs:
+    ) -> MrcalcXorOutputs:
         """
         Collect output file paths.
         
@@ -1258,24 +1258,24 @@ class Xor:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `XorOutputs`).
+            NamedTuple of outputs (described in `MrcalcXorOutputs`).
         """
-        ret = XorOutputs(
+        ret = MrcalcXorOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class IsnanOutputs(typing.NamedTuple):
+class MrcalcIsnanOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Isnan.run(...)`.
+    Output object returned when calling `MrcalcIsnan.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Isnan:
+class MrcalcIsnan:
     """
     isnan (%1) : true (1) if operand is not-a-number (NaN)
     """
@@ -1300,7 +1300,7 @@ class Isnan:
     def outputs(
         self,
         execution: Execution,
-    ) -> IsnanOutputs:
+    ) -> MrcalcIsnanOutputs:
         """
         Collect output file paths.
         
@@ -1308,24 +1308,24 @@ class Isnan:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `IsnanOutputs`).
+            NamedTuple of outputs (described in `MrcalcIsnanOutputs`).
         """
-        ret = IsnanOutputs(
+        ret = MrcalcIsnanOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class IsinfOutputs(typing.NamedTuple):
+class MrcalcIsinfOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Isinf.run(...)`.
+    Output object returned when calling `MrcalcIsinf.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Isinf:
+class MrcalcIsinf:
     """
     isinf (%1) : true (1) if operand is infinite (Inf)
     """
@@ -1350,7 +1350,7 @@ class Isinf:
     def outputs(
         self,
         execution: Execution,
-    ) -> IsinfOutputs:
+    ) -> MrcalcIsinfOutputs:
         """
         Collect output file paths.
         
@@ -1358,24 +1358,24 @@ class Isinf:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `IsinfOutputs`).
+            NamedTuple of outputs (described in `MrcalcIsinfOutputs`).
         """
-        ret = IsinfOutputs(
+        ret = MrcalcIsinfOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class FiniteOutputs(typing.NamedTuple):
+class MrcalcFiniteOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Finite.run(...)`.
+    Output object returned when calling `MrcalcFinite.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Finite:
+class MrcalcFinite:
     """
     finite (%1) : true (1) if operand is finite (i.e. not NaN or Inf)
     """
@@ -1400,7 +1400,7 @@ class Finite:
     def outputs(
         self,
         execution: Execution,
-    ) -> FiniteOutputs:
+    ) -> MrcalcFiniteOutputs:
         """
         Collect output file paths.
         
@@ -1408,24 +1408,24 @@ class Finite:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FiniteOutputs`).
+            NamedTuple of outputs (described in `MrcalcFiniteOutputs`).
         """
-        ret = FiniteOutputs(
+        ret = MrcalcFiniteOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ComplexOutputs(typing.NamedTuple):
+class MrcalcComplexOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Complex.run(...)`.
+    Output object returned when calling `MrcalcComplex.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Complex:
+class MrcalcComplex:
     """
     (%1 + %2 i) : create complex number using the last two operands as real,imaginary components
     """
@@ -1450,7 +1450,7 @@ class Complex:
     def outputs(
         self,
         execution: Execution,
-    ) -> ComplexOutputs:
+    ) -> MrcalcComplexOutputs:
         """
         Collect output file paths.
         
@@ -1458,24 +1458,24 @@ class Complex:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ComplexOutputs`).
+            NamedTuple of outputs (described in `MrcalcComplexOutputs`).
         """
-        ret = ComplexOutputs(
+        ret = MrcalcComplexOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class PolarOutputs(typing.NamedTuple):
+class MrcalcPolarOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Polar.run(...)`.
+    Output object returned when calling `MrcalcPolar.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Polar:
+class MrcalcPolar:
     """
     (%1 /_ %2) : create complex number using the last two operands as magnitude,phase components (phase in radians)
     """
@@ -1500,7 +1500,7 @@ class Polar:
     def outputs(
         self,
         execution: Execution,
-    ) -> PolarOutputs:
+    ) -> MrcalcPolarOutputs:
         """
         Collect output file paths.
         
@@ -1508,24 +1508,24 @@ class Polar:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PolarOutputs`).
+            NamedTuple of outputs (described in `MrcalcPolarOutputs`).
         """
-        ret = PolarOutputs(
+        ret = MrcalcPolarOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RealOutputs(typing.NamedTuple):
+class MrcalcRealOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Real.run(...)`.
+    Output object returned when calling `MrcalcReal.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Real:
+class MrcalcReal:
     """
     real (%1) : real part of complex number
     """
@@ -1550,7 +1550,7 @@ class Real:
     def outputs(
         self,
         execution: Execution,
-    ) -> RealOutputs:
+    ) -> MrcalcRealOutputs:
         """
         Collect output file paths.
         
@@ -1558,24 +1558,24 @@ class Real:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RealOutputs`).
+            NamedTuple of outputs (described in `MrcalcRealOutputs`).
         """
-        ret = RealOutputs(
+        ret = MrcalcRealOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ImagOutputs(typing.NamedTuple):
+class MrcalcImagOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Imag.run(...)`.
+    Output object returned when calling `MrcalcImag.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Imag:
+class MrcalcImag:
     """
     imag (%1) : imaginary part of complex number
     """
@@ -1600,7 +1600,7 @@ class Imag:
     def outputs(
         self,
         execution: Execution,
-    ) -> ImagOutputs:
+    ) -> MrcalcImagOutputs:
         """
         Collect output file paths.
         
@@ -1608,24 +1608,24 @@ class Imag:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ImagOutputs`).
+            NamedTuple of outputs (described in `MrcalcImagOutputs`).
         """
-        ret = ImagOutputs(
+        ret = MrcalcImagOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class PhaseOutputs(typing.NamedTuple):
+class MrcalcPhaseOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Phase.run(...)`.
+    Output object returned when calling `MrcalcPhase.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Phase:
+class MrcalcPhase:
     """
     phase (%1) : phase of complex number (use -abs for magnitude)
     """
@@ -1650,7 +1650,7 @@ class Phase:
     def outputs(
         self,
         execution: Execution,
-    ) -> PhaseOutputs:
+    ) -> MrcalcPhaseOutputs:
         """
         Collect output file paths.
         
@@ -1658,24 +1658,24 @@ class Phase:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PhaseOutputs`).
+            NamedTuple of outputs (described in `MrcalcPhaseOutputs`).
         """
-        ret = PhaseOutputs(
+        ret = MrcalcPhaseOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConjOutputs(typing.NamedTuple):
+class MrcalcConjOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Conj.run(...)`.
+    Output object returned when calling `MrcalcConj.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Conj:
+class MrcalcConj:
     """
     conj (%1) : complex conjugate
     """
@@ -1700,7 +1700,7 @@ class Conj:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConjOutputs:
+    ) -> MrcalcConjOutputs:
         """
         Collect output file paths.
         
@@ -1708,24 +1708,24 @@ class Conj:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConjOutputs`).
+            NamedTuple of outputs (described in `MrcalcConjOutputs`).
         """
-        ret = ConjOutputs(
+        ret = MrcalcConjOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ProjOutputs(typing.NamedTuple):
+class MrcalcProjOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Proj.run(...)`.
+    Output object returned when calling `MrcalcProj.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Proj:
+class MrcalcProj:
     """
     proj (%1) : projection onto the Riemann sphere
     """
@@ -1750,7 +1750,7 @@ class Proj:
     def outputs(
         self,
         execution: Execution,
-    ) -> ProjOutputs:
+    ) -> MrcalcProjOutputs:
         """
         Collect output file paths.
         
@@ -1758,24 +1758,24 @@ class Proj:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ProjOutputs`).
+            NamedTuple of outputs (described in `MrcalcProjOutputs`).
         """
-        ret = ProjOutputs(
+        ret = MrcalcProjOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ExpOutputs(typing.NamedTuple):
+class MrcalcExpOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Exp.run(...)`.
+    Output object returned when calling `MrcalcExp.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Exp:
+class MrcalcExp:
     """
     exp (%1) : exponential function
     """
@@ -1800,7 +1800,7 @@ class Exp:
     def outputs(
         self,
         execution: Execution,
-    ) -> ExpOutputs:
+    ) -> MrcalcExpOutputs:
         """
         Collect output file paths.
         
@@ -1808,24 +1808,24 @@ class Exp:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ExpOutputs`).
+            NamedTuple of outputs (described in `MrcalcExpOutputs`).
         """
-        ret = ExpOutputs(
+        ret = MrcalcExpOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LogOutputs(typing.NamedTuple):
+class MrcalcLogOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Log.run(...)`.
+    Output object returned when calling `MrcalcLog.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Log:
+class MrcalcLog:
     """
     log (%1) : natural logarithm
     """
@@ -1850,7 +1850,7 @@ class Log:
     def outputs(
         self,
         execution: Execution,
-    ) -> LogOutputs:
+    ) -> MrcalcLogOutputs:
         """
         Collect output file paths.
         
@@ -1858,24 +1858,24 @@ class Log:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LogOutputs`).
+            NamedTuple of outputs (described in `MrcalcLogOutputs`).
         """
-        ret = LogOutputs(
+        ret = MrcalcLogOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class Log10Outputs(typing.NamedTuple):
+class MrcalcLog10Outputs(typing.NamedTuple):
     """
-    Output object returned when calling `Log10.run(...)`.
+    Output object returned when calling `MrcalcLog10.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Log10:
+class MrcalcLog10:
     """
     log10 (%1) : common logarithm
     """
@@ -1900,7 +1900,7 @@ class Log10:
     def outputs(
         self,
         execution: Execution,
-    ) -> Log10Outputs:
+    ) -> MrcalcLog10Outputs:
         """
         Collect output file paths.
         
@@ -1908,24 +1908,24 @@ class Log10:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `Log10Outputs`).
+            NamedTuple of outputs (described in `MrcalcLog10Outputs`).
         """
-        ret = Log10Outputs(
+        ret = MrcalcLog10Outputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CosOutputs(typing.NamedTuple):
+class MrcalcCosOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Cos.run(...)`.
+    Output object returned when calling `MrcalcCos.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Cos:
+class MrcalcCos:
     """
     cos (%1) : cosine
     """
@@ -1950,7 +1950,7 @@ class Cos:
     def outputs(
         self,
         execution: Execution,
-    ) -> CosOutputs:
+    ) -> MrcalcCosOutputs:
         """
         Collect output file paths.
         
@@ -1958,24 +1958,24 @@ class Cos:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CosOutputs`).
+            NamedTuple of outputs (described in `MrcalcCosOutputs`).
         """
-        ret = CosOutputs(
+        ret = MrcalcCosOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SinOutputs(typing.NamedTuple):
+class MrcalcSinOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Sin.run(...)`.
+    Output object returned when calling `MrcalcSin.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Sin:
+class MrcalcSin:
     """
     sin (%1) : sine
     """
@@ -2000,7 +2000,7 @@ class Sin:
     def outputs(
         self,
         execution: Execution,
-    ) -> SinOutputs:
+    ) -> MrcalcSinOutputs:
         """
         Collect output file paths.
         
@@ -2008,24 +2008,24 @@ class Sin:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SinOutputs`).
+            NamedTuple of outputs (described in `MrcalcSinOutputs`).
         """
-        ret = SinOutputs(
+        ret = MrcalcSinOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TanOutputs(typing.NamedTuple):
+class MrcalcTanOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Tan.run(...)`.
+    Output object returned when calling `MrcalcTan.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Tan:
+class MrcalcTan:
     """
     tan (%1) : tangent
     """
@@ -2050,7 +2050,7 @@ class Tan:
     def outputs(
         self,
         execution: Execution,
-    ) -> TanOutputs:
+    ) -> MrcalcTanOutputs:
         """
         Collect output file paths.
         
@@ -2058,24 +2058,24 @@ class Tan:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TanOutputs`).
+            NamedTuple of outputs (described in `MrcalcTanOutputs`).
         """
-        ret = TanOutputs(
+        ret = MrcalcTanOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AcosOutputs(typing.NamedTuple):
+class MrcalcAcosOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Acos.run(...)`.
+    Output object returned when calling `MrcalcAcos.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Acos:
+class MrcalcAcos:
     """
     acos (%1) : inverse cosine
     """
@@ -2100,7 +2100,7 @@ class Acos:
     def outputs(
         self,
         execution: Execution,
-    ) -> AcosOutputs:
+    ) -> MrcalcAcosOutputs:
         """
         Collect output file paths.
         
@@ -2108,24 +2108,24 @@ class Acos:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AcosOutputs`).
+            NamedTuple of outputs (described in `MrcalcAcosOutputs`).
         """
-        ret = AcosOutputs(
+        ret = MrcalcAcosOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AsinOutputs(typing.NamedTuple):
+class MrcalcAsinOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Asin.run(...)`.
+    Output object returned when calling `MrcalcAsin.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Asin:
+class MrcalcAsin:
     """
     asin (%1) : inverse sine
     """
@@ -2150,7 +2150,7 @@ class Asin:
     def outputs(
         self,
         execution: Execution,
-    ) -> AsinOutputs:
+    ) -> MrcalcAsinOutputs:
         """
         Collect output file paths.
         
@@ -2158,24 +2158,24 @@ class Asin:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AsinOutputs`).
+            NamedTuple of outputs (described in `MrcalcAsinOutputs`).
         """
-        ret = AsinOutputs(
+        ret = MrcalcAsinOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AtanOutputs(typing.NamedTuple):
+class MrcalcAtanOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Atan.run(...)`.
+    Output object returned when calling `MrcalcAtan.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Atan:
+class MrcalcAtan:
     """
     atan (%1) : inverse tangent
     """
@@ -2200,7 +2200,7 @@ class Atan:
     def outputs(
         self,
         execution: Execution,
-    ) -> AtanOutputs:
+    ) -> MrcalcAtanOutputs:
         """
         Collect output file paths.
         
@@ -2208,24 +2208,24 @@ class Atan:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AtanOutputs`).
+            NamedTuple of outputs (described in `MrcalcAtanOutputs`).
         """
-        ret = AtanOutputs(
+        ret = MrcalcAtanOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CoshOutputs(typing.NamedTuple):
+class MrcalcCoshOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Cosh.run(...)`.
+    Output object returned when calling `MrcalcCosh.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Cosh:
+class MrcalcCosh:
     """
     cosh (%1) : hyperbolic cosine
     """
@@ -2250,7 +2250,7 @@ class Cosh:
     def outputs(
         self,
         execution: Execution,
-    ) -> CoshOutputs:
+    ) -> MrcalcCoshOutputs:
         """
         Collect output file paths.
         
@@ -2258,24 +2258,24 @@ class Cosh:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CoshOutputs`).
+            NamedTuple of outputs (described in `MrcalcCoshOutputs`).
         """
-        ret = CoshOutputs(
+        ret = MrcalcCoshOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class SinhOutputs(typing.NamedTuple):
+class MrcalcSinhOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Sinh.run(...)`.
+    Output object returned when calling `MrcalcSinh.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Sinh:
+class MrcalcSinh:
     """
     sinh (%1) : hyperbolic sine
     """
@@ -2300,7 +2300,7 @@ class Sinh:
     def outputs(
         self,
         execution: Execution,
-    ) -> SinhOutputs:
+    ) -> MrcalcSinhOutputs:
         """
         Collect output file paths.
         
@@ -2308,24 +2308,24 @@ class Sinh:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SinhOutputs`).
+            NamedTuple of outputs (described in `MrcalcSinhOutputs`).
         """
-        ret = SinhOutputs(
+        ret = MrcalcSinhOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class TanhOutputs(typing.NamedTuple):
+class MrcalcTanhOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Tanh.run(...)`.
+    Output object returned when calling `MrcalcTanh.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Tanh:
+class MrcalcTanh:
     """
     tanh (%1) : hyperbolic tangent
     """
@@ -2350,7 +2350,7 @@ class Tanh:
     def outputs(
         self,
         execution: Execution,
-    ) -> TanhOutputs:
+    ) -> MrcalcTanhOutputs:
         """
         Collect output file paths.
         
@@ -2358,24 +2358,24 @@ class Tanh:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `TanhOutputs`).
+            NamedTuple of outputs (described in `MrcalcTanhOutputs`).
         """
-        ret = TanhOutputs(
+        ret = MrcalcTanhOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AcoshOutputs(typing.NamedTuple):
+class MrcalcAcoshOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Acosh.run(...)`.
+    Output object returned when calling `MrcalcAcosh.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Acosh:
+class MrcalcAcosh:
     """
     acosh (%1) : inverse hyperbolic cosine
     """
@@ -2400,7 +2400,7 @@ class Acosh:
     def outputs(
         self,
         execution: Execution,
-    ) -> AcoshOutputs:
+    ) -> MrcalcAcoshOutputs:
         """
         Collect output file paths.
         
@@ -2408,24 +2408,24 @@ class Acosh:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AcoshOutputs`).
+            NamedTuple of outputs (described in `MrcalcAcoshOutputs`).
         """
-        ret = AcoshOutputs(
+        ret = MrcalcAcoshOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AsinhOutputs(typing.NamedTuple):
+class MrcalcAsinhOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Asinh.run(...)`.
+    Output object returned when calling `MrcalcAsinh.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Asinh:
+class MrcalcAsinh:
     """
     asinh (%1) : inverse hyperbolic sine
     """
@@ -2450,7 +2450,7 @@ class Asinh:
     def outputs(
         self,
         execution: Execution,
-    ) -> AsinhOutputs:
+    ) -> MrcalcAsinhOutputs:
         """
         Collect output file paths.
         
@@ -2458,24 +2458,24 @@ class Asinh:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AsinhOutputs`).
+            NamedTuple of outputs (described in `MrcalcAsinhOutputs`).
         """
-        ret = AsinhOutputs(
+        ret = MrcalcAsinhOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class AtanhOutputs(typing.NamedTuple):
+class MrcalcAtanhOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Atanh.run(...)`.
+    Output object returned when calling `MrcalcAtanh.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Atanh:
+class MrcalcAtanh:
     """
     atanh (%1) : inverse hyperbolic tangent
     """
@@ -2500,7 +2500,7 @@ class Atanh:
     def outputs(
         self,
         execution: Execution,
-    ) -> AtanhOutputs:
+    ) -> MrcalcAtanhOutputs:
         """
         Collect output file paths.
         
@@ -2508,24 +2508,24 @@ class Atanh:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `AtanhOutputs`).
+            NamedTuple of outputs (described in `MrcalcAtanhOutputs`).
         """
-        ret = AtanhOutputs(
+        ret = MrcalcAtanhOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MrcalcConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MrcalcConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MrcalcConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -2556,7 +2556,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MrcalcConfigOutputs:
         """
         Collect output file paths.
         
@@ -2564,9 +2564,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MrcalcConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MrcalcConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -2578,169 +2578,169 @@ class MrcalcOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    abs_: AbsOutputs
+    abs_: typing.List[MrcalcAbsOutputs]
     """Subcommand outputs"""
-    neg: NegOutputs
+    neg: typing.List[MrcalcNegOutputs]
     """Subcommand outputs"""
-    add: AddOutputs
+    add: typing.List[MrcalcAddOutputs]
     """Subcommand outputs"""
-    subtract: SubtractOutputs
+    subtract: typing.List[MrcalcSubtractOutputs]
     """Subcommand outputs"""
-    multiply: MultiplyOutputs
+    multiply: typing.List[MrcalcMultiplyOutputs]
     """Subcommand outputs"""
-    divide: DivideOutputs
+    divide: typing.List[MrcalcDivideOutputs]
     """Subcommand outputs"""
-    min_: MinOutputs
+    min_: typing.List[MrcalcMinOutputs]
     """Subcommand outputs"""
-    max_: MaxOutputs
+    max_: typing.List[MrcalcMaxOutputs]
     """Subcommand outputs"""
-    lt: LtOutputs
+    lt: typing.List[MrcalcLtOutputs]
     """Subcommand outputs"""
-    gt: GtOutputs
+    gt: typing.List[MrcalcGtOutputs]
     """Subcommand outputs"""
-    le: LeOutputs
+    le: typing.List[MrcalcLeOutputs]
     """Subcommand outputs"""
-    ge: GeOutputs
+    ge: typing.List[MrcalcGeOutputs]
     """Subcommand outputs"""
-    eq: EqOutputs
+    eq: typing.List[MrcalcEqOutputs]
     """Subcommand outputs"""
-    neq: NeqOutputs
+    neq: typing.List[MrcalcNeqOutputs]
     """Subcommand outputs"""
-    if_: IfOutputs
+    if_: typing.List[MrcalcIfOutputs]
     """Subcommand outputs"""
-    replace: ReplaceOutputs
+    replace: typing.List[MrcalcReplaceOutputs]
     """Subcommand outputs"""
-    sqrt: SqrtOutputs
+    sqrt: typing.List[MrcalcSqrtOutputs]
     """Subcommand outputs"""
-    pow_: PowOutputs
+    pow_: typing.List[MrcalcPowOutputs]
     """Subcommand outputs"""
-    round_: RoundOutputs
+    round_: typing.List[MrcalcRoundOutputs]
     """Subcommand outputs"""
-    ceil: CeilOutputs
+    ceil: typing.List[MrcalcCeilOutputs]
     """Subcommand outputs"""
-    floor: FloorOutputs
+    floor: typing.List[MrcalcFloorOutputs]
     """Subcommand outputs"""
-    not_: NotOutputs
+    not_: typing.List[MrcalcNotOutputs]
     """Subcommand outputs"""
-    and_: AndOutputs
+    and_: typing.List[MrcalcAndOutputs]
     """Subcommand outputs"""
-    or_: OrOutputs
+    or_: typing.List[MrcalcOrOutputs]
     """Subcommand outputs"""
-    xor: XorOutputs
+    xor: typing.List[MrcalcXorOutputs]
     """Subcommand outputs"""
-    isnan: IsnanOutputs
+    isnan: typing.List[MrcalcIsnanOutputs]
     """Subcommand outputs"""
-    isinf: IsinfOutputs
+    isinf: typing.List[MrcalcIsinfOutputs]
     """Subcommand outputs"""
-    finite: FiniteOutputs
+    finite: typing.List[MrcalcFiniteOutputs]
     """Subcommand outputs"""
-    complex_: ComplexOutputs
+    complex_: typing.List[MrcalcComplexOutputs]
     """Subcommand outputs"""
-    polar: PolarOutputs
+    polar: typing.List[MrcalcPolarOutputs]
     """Subcommand outputs"""
-    real: RealOutputs
+    real: typing.List[MrcalcRealOutputs]
     """Subcommand outputs"""
-    imag: ImagOutputs
+    imag: typing.List[MrcalcImagOutputs]
     """Subcommand outputs"""
-    phase: PhaseOutputs
+    phase: typing.List[MrcalcPhaseOutputs]
     """Subcommand outputs"""
-    conj: ConjOutputs
+    conj: typing.List[MrcalcConjOutputs]
     """Subcommand outputs"""
-    proj: ProjOutputs
+    proj: typing.List[MrcalcProjOutputs]
     """Subcommand outputs"""
-    exp: ExpOutputs
+    exp: typing.List[MrcalcExpOutputs]
     """Subcommand outputs"""
-    log: LogOutputs
+    log: typing.List[MrcalcLogOutputs]
     """Subcommand outputs"""
-    log10: Log10Outputs
+    log10: typing.List[MrcalcLog10Outputs]
     """Subcommand outputs"""
-    cos: CosOutputs
+    cos: typing.List[MrcalcCosOutputs]
     """Subcommand outputs"""
-    sin: SinOutputs
+    sin: typing.List[MrcalcSinOutputs]
     """Subcommand outputs"""
-    tan: TanOutputs
+    tan: typing.List[MrcalcTanOutputs]
     """Subcommand outputs"""
-    acos: AcosOutputs
+    acos: typing.List[MrcalcAcosOutputs]
     """Subcommand outputs"""
-    asin: AsinOutputs
+    asin: typing.List[MrcalcAsinOutputs]
     """Subcommand outputs"""
-    atan: AtanOutputs
+    atan: typing.List[MrcalcAtanOutputs]
     """Subcommand outputs"""
-    cosh: CoshOutputs
+    cosh: typing.List[MrcalcCoshOutputs]
     """Subcommand outputs"""
-    sinh: SinhOutputs
+    sinh: typing.List[MrcalcSinhOutputs]
     """Subcommand outputs"""
-    tanh: TanhOutputs
+    tanh: typing.List[MrcalcTanhOutputs]
     """Subcommand outputs"""
-    acosh: AcoshOutputs
+    acosh: typing.List[MrcalcAcoshOutputs]
     """Subcommand outputs"""
-    asinh: AsinhOutputs
+    asinh: typing.List[MrcalcAsinhOutputs]
     """Subcommand outputs"""
-    atanh: AtanhOutputs
+    atanh: typing.List[MrcalcAtanhOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[MrcalcConfigOutputs]
     """Subcommand outputs"""
 
 
 def mrcalc(
     operand: list[str],
-    abs_: list[Abs] = None,
-    neg: list[Neg] = None,
-    add: list[Add] = None,
-    subtract: list[Subtract] = None,
-    multiply: list[Multiply] = None,
-    divide: list[Divide] = None,
-    min_: list[Min] = None,
-    max_: list[Max] = None,
-    lt: list[Lt] = None,
-    gt: list[Gt] = None,
-    le: list[Le] = None,
-    ge: list[Ge] = None,
-    eq: list[Eq] = None,
-    neq: list[Neq] = None,
-    if_: list[If] = None,
-    replace: list[Replace] = None,
-    sqrt: list[Sqrt] = None,
-    pow_: list[Pow] = None,
-    round_: list[Round] = None,
-    ceil: list[Ceil] = None,
-    floor: list[Floor] = None,
-    not_: list[Not] = None,
-    and_: list[And] = None,
-    or_: list[Or] = None,
-    xor: list[Xor] = None,
-    isnan: list[Isnan] = None,
-    isinf: list[Isinf] = None,
-    finite: list[Finite] = None,
-    complex_: list[Complex] = None,
-    polar: list[Polar] = None,
-    real: list[Real] = None,
-    imag: list[Imag] = None,
-    phase: list[Phase] = None,
-    conj: list[Conj] = None,
-    proj: list[Proj] = None,
-    exp: list[Exp] = None,
-    log: list[Log] = None,
-    log10: list[Log10] = None,
-    cos: list[Cos] = None,
-    sin: list[Sin] = None,
-    tan: list[Tan] = None,
-    acos: list[Acos] = None,
-    asin: list[Asin] = None,
-    atan: list[Atan] = None,
-    cosh: list[Cosh] = None,
-    sinh: list[Sinh] = None,
-    tanh: list[Tanh] = None,
-    acosh: list[Acosh] = None,
-    asinh: list[Asinh] = None,
-    atanh: list[Atanh] = None,
+    abs_: list[MrcalcAbs] = None,
+    neg: list[MrcalcNeg] = None,
+    add: list[MrcalcAdd] = None,
+    subtract: list[MrcalcSubtract] = None,
+    multiply: list[MrcalcMultiply] = None,
+    divide: list[MrcalcDivide] = None,
+    min_: list[MrcalcMin] = None,
+    max_: list[MrcalcMax] = None,
+    lt: list[MrcalcLt] = None,
+    gt: list[MrcalcGt] = None,
+    le: list[MrcalcLe] = None,
+    ge: list[MrcalcGe] = None,
+    eq: list[MrcalcEq] = None,
+    neq: list[MrcalcNeq] = None,
+    if_: list[MrcalcIf] = None,
+    replace: list[MrcalcReplace] = None,
+    sqrt: list[MrcalcSqrt] = None,
+    pow_: list[MrcalcPow] = None,
+    round_: list[MrcalcRound] = None,
+    ceil: list[MrcalcCeil] = None,
+    floor: list[MrcalcFloor] = None,
+    not_: list[MrcalcNot] = None,
+    and_: list[MrcalcAnd] = None,
+    or_: list[MrcalcOr] = None,
+    xor: list[MrcalcXor] = None,
+    isnan: list[MrcalcIsnan] = None,
+    isinf: list[MrcalcIsinf] = None,
+    finite: list[MrcalcFinite] = None,
+    complex_: list[MrcalcComplex] = None,
+    polar: list[MrcalcPolar] = None,
+    real: list[MrcalcReal] = None,
+    imag: list[MrcalcImag] = None,
+    phase: list[MrcalcPhase] = None,
+    conj: list[MrcalcConj] = None,
+    proj: list[MrcalcProj] = None,
+    exp: list[MrcalcExp] = None,
+    log: list[MrcalcLog] = None,
+    log10: list[MrcalcLog10] = None,
+    cos: list[MrcalcCos] = None,
+    sin: list[MrcalcSin] = None,
+    tan: list[MrcalcTan] = None,
+    acos: list[MrcalcAcos] = None,
+    asin: list[MrcalcAsin] = None,
+    atan: list[MrcalcAtan] = None,
+    cosh: list[MrcalcCosh] = None,
+    sinh: list[MrcalcSinh] = None,
+    tanh: list[MrcalcTanh] = None,
+    acosh: list[MrcalcAcosh] = None,
+    asinh: list[MrcalcAsinh] = None,
+    atanh: list[MrcalcAtanh] = None,
     datatype: typing.Literal["spec"] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MrcalcConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -3046,109 +3046,109 @@ def mrcalc(
 
 
 __all__ = [
-    "Abs",
-    "AbsOutputs",
-    "Acos",
-    "AcosOutputs",
-    "Acosh",
-    "AcoshOutputs",
-    "Add",
-    "AddOutputs",
-    "And",
-    "AndOutputs",
-    "Asin",
-    "AsinOutputs",
-    "Asinh",
-    "AsinhOutputs",
-    "Atan",
-    "AtanOutputs",
-    "Atanh",
-    "AtanhOutputs",
-    "Ceil",
-    "CeilOutputs",
-    "Complex",
-    "ComplexOutputs",
-    "Config",
-    "ConfigOutputs",
-    "Conj",
-    "ConjOutputs",
-    "Cos",
-    "CosOutputs",
-    "Cosh",
-    "CoshOutputs",
-    "Divide",
-    "DivideOutputs",
-    "Eq",
-    "EqOutputs",
-    "Exp",
-    "ExpOutputs",
-    "Finite",
-    "FiniteOutputs",
-    "Floor",
-    "FloorOutputs",
-    "Ge",
-    "GeOutputs",
-    "Gt",
-    "GtOutputs",
-    "If",
-    "IfOutputs",
-    "Imag",
-    "ImagOutputs",
-    "Isinf",
-    "IsinfOutputs",
-    "Isnan",
-    "IsnanOutputs",
-    "Le",
-    "LeOutputs",
-    "Log",
-    "Log10",
-    "Log10Outputs",
-    "LogOutputs",
-    "Lt",
-    "LtOutputs",
     "MRCALC_METADATA",
-    "Max",
-    "MaxOutputs",
-    "Min",
-    "MinOutputs",
+    "MrcalcAbs",
+    "MrcalcAbsOutputs",
+    "MrcalcAcos",
+    "MrcalcAcosOutputs",
+    "MrcalcAcosh",
+    "MrcalcAcoshOutputs",
+    "MrcalcAdd",
+    "MrcalcAddOutputs",
+    "MrcalcAnd",
+    "MrcalcAndOutputs",
+    "MrcalcAsin",
+    "MrcalcAsinOutputs",
+    "MrcalcAsinh",
+    "MrcalcAsinhOutputs",
+    "MrcalcAtan",
+    "MrcalcAtanOutputs",
+    "MrcalcAtanh",
+    "MrcalcAtanhOutputs",
+    "MrcalcCeil",
+    "MrcalcCeilOutputs",
+    "MrcalcComplex",
+    "MrcalcComplexOutputs",
+    "MrcalcConfig",
+    "MrcalcConfigOutputs",
+    "MrcalcConj",
+    "MrcalcConjOutputs",
+    "MrcalcCos",
+    "MrcalcCosOutputs",
+    "MrcalcCosh",
+    "MrcalcCoshOutputs",
+    "MrcalcDivide",
+    "MrcalcDivideOutputs",
+    "MrcalcEq",
+    "MrcalcEqOutputs",
+    "MrcalcExp",
+    "MrcalcExpOutputs",
+    "MrcalcFinite",
+    "MrcalcFiniteOutputs",
+    "MrcalcFloor",
+    "MrcalcFloorOutputs",
+    "MrcalcGe",
+    "MrcalcGeOutputs",
+    "MrcalcGt",
+    "MrcalcGtOutputs",
+    "MrcalcIf",
+    "MrcalcIfOutputs",
+    "MrcalcImag",
+    "MrcalcImagOutputs",
+    "MrcalcIsinf",
+    "MrcalcIsinfOutputs",
+    "MrcalcIsnan",
+    "MrcalcIsnanOutputs",
+    "MrcalcLe",
+    "MrcalcLeOutputs",
+    "MrcalcLog",
+    "MrcalcLog10",
+    "MrcalcLog10Outputs",
+    "MrcalcLogOutputs",
+    "MrcalcLt",
+    "MrcalcLtOutputs",
+    "MrcalcMax",
+    "MrcalcMaxOutputs",
+    "MrcalcMin",
+    "MrcalcMinOutputs",
+    "MrcalcMultiply",
+    "MrcalcMultiplyOutputs",
+    "MrcalcNeg",
+    "MrcalcNegOutputs",
+    "MrcalcNeq",
+    "MrcalcNeqOutputs",
+    "MrcalcNot",
+    "MrcalcNotOutputs",
+    "MrcalcOr",
+    "MrcalcOrOutputs",
     "MrcalcOutputs",
-    "Multiply",
-    "MultiplyOutputs",
-    "Neg",
-    "NegOutputs",
-    "Neq",
-    "NeqOutputs",
-    "Not",
-    "NotOutputs",
-    "Or",
-    "OrOutputs",
-    "Phase",
-    "PhaseOutputs",
-    "Polar",
-    "PolarOutputs",
-    "Pow",
-    "PowOutputs",
-    "Proj",
-    "ProjOutputs",
-    "Real",
-    "RealOutputs",
-    "Replace",
-    "ReplaceOutputs",
-    "Round",
-    "RoundOutputs",
-    "Sin",
-    "SinOutputs",
-    "Sinh",
-    "SinhOutputs",
-    "Sqrt",
-    "SqrtOutputs",
-    "Subtract",
-    "SubtractOutputs",
-    "Tan",
-    "TanOutputs",
-    "Tanh",
-    "TanhOutputs",
-    "Xor",
-    "XorOutputs",
+    "MrcalcPhase",
+    "MrcalcPhaseOutputs",
+    "MrcalcPolar",
+    "MrcalcPolarOutputs",
+    "MrcalcPow",
+    "MrcalcPowOutputs",
+    "MrcalcProj",
+    "MrcalcProjOutputs",
+    "MrcalcReal",
+    "MrcalcRealOutputs",
+    "MrcalcReplace",
+    "MrcalcReplaceOutputs",
+    "MrcalcRound",
+    "MrcalcRoundOutputs",
+    "MrcalcSin",
+    "MrcalcSinOutputs",
+    "MrcalcSinh",
+    "MrcalcSinhOutputs",
+    "MrcalcSqrt",
+    "MrcalcSqrtOutputs",
+    "MrcalcSubtract",
+    "MrcalcSubtractOutputs",
+    "MrcalcTan",
+    "MrcalcTanOutputs",
+    "MrcalcTanh",
+    "MrcalcTanhOutputs",
+    "MrcalcXor",
+    "MrcalcXorOutputs",
     "mrcalc",
 ]

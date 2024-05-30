@@ -16,16 +16,16 @@ VOLUME_TO_SURFACE_MAPPING_METADATA = Metadata(
 )
 
 
-class VolumeRoiOutputs(typing.NamedTuple):
+class VolumeToSurfaceMappingVolumeRoiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `VolumeRoi.run(...)`.
+    Output object returned when calling `VolumeToSurfaceMappingVolumeRoi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class VolumeRoi:
+class VolumeToSurfaceMappingVolumeRoi:
     """
     use a volume roi
     """
@@ -53,7 +53,7 @@ class VolumeRoi:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeRoiOutputs:
+    ) -> VolumeToSurfaceMappingVolumeRoiOutputs:
         """
         Collect output file paths.
         
@@ -61,17 +61,17 @@ class VolumeRoi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeRoiOutputs`).
+            NamedTuple of outputs (described in `VolumeToSurfaceMappingVolumeRoiOutputs`).
         """
-        ret = VolumeRoiOutputs(
+        ret = VolumeToSurfaceMappingVolumeRoiOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class OutputWeightsOutputs(typing.NamedTuple):
+class VolumeToSurfaceMappingOutputWeightsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `OutputWeights.run(...)`.
+    Output object returned when calling `VolumeToSurfaceMappingOutputWeights.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -80,7 +80,7 @@ class OutputWeightsOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class OutputWeights:
+class VolumeToSurfaceMappingOutputWeights:
     """
     write the voxel weights for a vertex to a volume file
     """
@@ -107,7 +107,7 @@ class OutputWeights:
     def outputs(
         self,
         execution: Execution,
-    ) -> OutputWeightsOutputs:
+    ) -> VolumeToSurfaceMappingOutputWeightsOutputs:
         """
         Collect output file paths.
         
@@ -115,33 +115,33 @@ class OutputWeights:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `OutputWeightsOutputs`).
+            NamedTuple of outputs (described in `VolumeToSurfaceMappingOutputWeightsOutputs`).
         """
-        ret = OutputWeightsOutputs(
+        ret = VolumeToSurfaceMappingOutputWeightsOutputs(
             root=execution.output_file("."),
             weights_out=execution.output_file(f"{pathlib.Path(self.weights_out).name}"),
         )
         return ret
 
 
-class RibbonConstrainedOutputs(typing.NamedTuple):
+class VolumeToSurfaceMappingRibbonConstrainedOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `RibbonConstrained.run(...)`.
+    Output object returned when calling `VolumeToSurfaceMappingRibbonConstrained.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.volume_roi: VolumeRoiOutputs
+    self.volume_roi: VolumeToSurfaceMappingVolumeRoiOutputs
     """Subcommand outputs"""
-    self.output_weights: OutputWeightsOutputs
+    self.output_weights: VolumeToSurfaceMappingOutputWeightsOutputs
     """Subcommand outputs"""
 
 
 @dataclasses.dataclass
-class RibbonConstrained:
+class VolumeToSurfaceMappingRibbonConstrained:
     """
     use ribbon constrained mapping algorithm
     """
-    volume_roi: VolumeRoi | None = None
+    volume_roi: VolumeToSurfaceMappingVolumeRoi | None = None
     """use a volume roi"""
     opt_voxel_subdiv_subdiv_num: int | None = None
     """voxel divisions while estimating voxel weights: number of subdivisions,
@@ -159,7 +159,7 @@ class RibbonConstrained:
     """output an ROI of which vertices didn't intersect any valid voxels"""
     roi_out: InputPathType
     """the output metric file of vertices that have no data"""
-    output_weights: OutputWeights | None = None
+    output_weights: VolumeToSurfaceMappingOutputWeights | None = None
     """write the voxel weights for a vertex to a volume file"""
     opt_output_weights_text_text_out: str | None = None
     """write the voxel weights for all vertices to a text file: output - the
@@ -201,7 +201,7 @@ class RibbonConstrained:
     def outputs(
         self,
         execution: Execution,
-    ) -> RibbonConstrainedOutputs:
+    ) -> VolumeToSurfaceMappingRibbonConstrainedOutputs:
         """
         Collect output file paths.
         
@@ -209,9 +209,9 @@ class RibbonConstrained:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RibbonConstrainedOutputs`).
+            NamedTuple of outputs (described in `VolumeToSurfaceMappingRibbonConstrainedOutputs`).
         """
-        ret = RibbonConstrainedOutputs(
+        ret = VolumeToSurfaceMappingRibbonConstrainedOutputs(
             root=execution.output_file("."),
             self.volume_roi=self.volume_roi.outputs(execution),
             self.output_weights=self.output_weights.outputs(execution),
@@ -219,16 +219,16 @@ class RibbonConstrained:
         return ret
 
 
-class MyelinStyleOutputs(typing.NamedTuple):
+class VolumeToSurfaceMappingMyelinStyleOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `MyelinStyle.run(...)`.
+    Output object returned when calling `VolumeToSurfaceMappingMyelinStyle.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class MyelinStyle:
+class VolumeToSurfaceMappingMyelinStyle:
     """
     use the method from myelin mapping
     """
@@ -257,7 +257,7 @@ class MyelinStyle:
     def outputs(
         self,
         execution: Execution,
-    ) -> MyelinStyleOutputs:
+    ) -> VolumeToSurfaceMappingMyelinStyleOutputs:
         """
         Collect output file paths.
         
@@ -265,9 +265,9 @@ class MyelinStyle:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MyelinStyleOutputs`).
+            NamedTuple of outputs (described in `VolumeToSurfaceMappingMyelinStyleOutputs`).
         """
-        ret = MyelinStyleOutputs(
+        ret = VolumeToSurfaceMappingMyelinStyleOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -281,9 +281,9 @@ class VolumeToSurfaceMappingOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric file"""
-    ribbon_constrained: RibbonConstrainedOutputs
+    ribbon_constrained: VolumeToSurfaceMappingRibbonConstrainedOutputs
     """Subcommand outputs"""
-    myelin_style: MyelinStyleOutputs
+    myelin_style: VolumeToSurfaceMappingMyelinStyleOutputs
     """Subcommand outputs"""
 
 
@@ -294,8 +294,8 @@ def volume_to_surface_mapping(
     opt_trilinear: bool = False,
     opt_enclosing: bool = False,
     opt_cubic: bool = False,
-    ribbon_constrained: RibbonConstrained | None = None,
-    myelin_style: MyelinStyle | None = None,
+    ribbon_constrained: VolumeToSurfaceMappingRibbonConstrained | None = None,
+    myelin_style: VolumeToSurfaceMappingMyelinStyle | None = None,
     opt_subvol_select_subvol: str | None = None,
     runner: Runner = None,
 ) -> VolumeToSurfaceMappingOutputs:
@@ -388,15 +388,15 @@ def volume_to_surface_mapping(
 
 
 __all__ = [
-    "MyelinStyle",
-    "MyelinStyleOutputs",
-    "OutputWeights",
-    "OutputWeightsOutputs",
-    "RibbonConstrained",
-    "RibbonConstrainedOutputs",
     "VOLUME_TO_SURFACE_MAPPING_METADATA",
-    "VolumeRoi",
-    "VolumeRoiOutputs",
+    "VolumeToSurfaceMappingMyelinStyle",
+    "VolumeToSurfaceMappingMyelinStyleOutputs",
+    "VolumeToSurfaceMappingOutputWeights",
+    "VolumeToSurfaceMappingOutputWeightsOutputs",
     "VolumeToSurfaceMappingOutputs",
+    "VolumeToSurfaceMappingRibbonConstrained",
+    "VolumeToSurfaceMappingRibbonConstrainedOutputs",
+    "VolumeToSurfaceMappingVolumeRoi",
+    "VolumeToSurfaceMappingVolumeRoiOutputs",
     "volume_to_surface_mapping",
 ]

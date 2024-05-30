@@ -16,16 +16,16 @@ METRIC_GRADIENT_METADATA = Metadata(
 )
 
 
-class PresmoothOutputs(typing.NamedTuple):
+class MetricGradientPresmoothOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Presmooth.run(...)`.
+    Output object returned when calling `MetricGradientPresmooth.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Presmooth:
+class MetricGradientPresmooth:
     """
     smooth the metric before computing the gradient
     """
@@ -53,7 +53,7 @@ class Presmooth:
     def outputs(
         self,
         execution: Execution,
-    ) -> PresmoothOutputs:
+    ) -> MetricGradientPresmoothOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class Presmooth:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `PresmoothOutputs`).
+            NamedTuple of outputs (described in `MetricGradientPresmoothOutputs`).
         """
-        ret = PresmoothOutputs(
+        ret = MetricGradientPresmoothOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class RoiOutputs(typing.NamedTuple):
+class MetricGradientRoiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Roi.run(...)`.
+    Output object returned when calling `MetricGradientRoi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Roi:
+class MetricGradientRoi:
     """
     select a region of interest to take the gradient of
     """
@@ -106,7 +106,7 @@ class Roi:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiOutputs:
+    ) -> MetricGradientRoiOutputs:
         """
         Collect output file paths.
         
@@ -114,9 +114,9 @@ class Roi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiOutputs`).
+            NamedTuple of outputs (described in `MetricGradientRoiOutputs`).
         """
-        ret = RoiOutputs(
+        ret = MetricGradientRoiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -132,9 +132,9 @@ class MetricGradientOutputs(typing.NamedTuple):
     """the magnitude of the gradient"""
     vector_metric_out: OutputPathType
     """the vectors as a metric file"""
-    presmooth: PresmoothOutputs
+    presmooth: MetricGradientPresmoothOutputs
     """Subcommand outputs"""
-    roi: RoiOutputs
+    roi: MetricGradientRoiOutputs
     """Subcommand outputs"""
 
 
@@ -143,8 +143,8 @@ def metric_gradient(
     metric_in: InputPathType,
     metric_out: InputPathType,
     vector_metric_out: InputPathType,
-    presmooth: Presmooth | None = None,
-    roi: Roi | None = None,
+    presmooth: MetricGradientPresmooth | None = None,
+    roi: MetricGradientRoi | None = None,
     opt_vectors: bool = False,
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
@@ -237,9 +237,9 @@ def metric_gradient(
 __all__ = [
     "METRIC_GRADIENT_METADATA",
     "MetricGradientOutputs",
-    "Presmooth",
-    "PresmoothOutputs",
-    "Roi",
-    "RoiOutputs",
+    "MetricGradientPresmooth",
+    "MetricGradientPresmoothOutputs",
+    "MetricGradientRoi",
+    "MetricGradientRoiOutputs",
     "metric_gradient",
 ]

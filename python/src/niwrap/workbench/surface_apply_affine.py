@@ -16,16 +16,16 @@ SURFACE_APPLY_AFFINE_METADATA = Metadata(
 )
 
 
-class FlirtOutputs(typing.NamedTuple):
+class SurfaceApplyAffineFlirtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Flirt.run(...)`.
+    Output object returned when calling `SurfaceApplyAffineFlirt.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Flirt:
+class SurfaceApplyAffineFlirt:
     """
     MUST be used if affine is a flirt affine
     """
@@ -49,7 +49,7 @@ class Flirt:
     def outputs(
         self,
         execution: Execution,
-    ) -> FlirtOutputs:
+    ) -> SurfaceApplyAffineFlirtOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Flirt:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FlirtOutputs`).
+            NamedTuple of outputs (described in `SurfaceApplyAffineFlirtOutputs`).
         """
-        ret = FlirtOutputs(
+        ret = SurfaceApplyAffineFlirtOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -73,7 +73,7 @@ class SurfaceApplyAffineOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_surf: OutputPathType
     """the output transformed surface"""
-    flirt: FlirtOutputs
+    flirt: SurfaceApplyAffineFlirtOutputs
     """Subcommand outputs"""
 
 
@@ -81,7 +81,7 @@ def surface_apply_affine(
     in_surf: InputPathType,
     affine: str,
     out_surf: InputPathType,
-    flirt: Flirt | None = None,
+    flirt: SurfaceApplyAffineFlirt | None = None,
     runner: Runner = None,
 ) -> SurfaceApplyAffineOutputs:
     """
@@ -124,9 +124,9 @@ def surface_apply_affine(
 
 
 __all__ = [
-    "Flirt",
-    "FlirtOutputs",
     "SURFACE_APPLY_AFFINE_METADATA",
+    "SurfaceApplyAffineFlirt",
+    "SurfaceApplyAffineFlirtOutputs",
     "SurfaceApplyAffineOutputs",
     "surface_apply_affine",
 ]

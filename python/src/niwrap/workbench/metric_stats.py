@@ -16,16 +16,16 @@ METRIC_STATS_METADATA = Metadata(
 )
 
 
-class RoiOutputs(typing.NamedTuple):
+class MetricStatsRoiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Roi.run(...)`.
+    Output object returned when calling `MetricStatsRoi.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Roi:
+class MetricStatsRoi:
     """
     only consider data inside an roi
     """
@@ -53,7 +53,7 @@ class Roi:
     def outputs(
         self,
         execution: Execution,
-    ) -> RoiOutputs:
+    ) -> MetricStatsRoiOutputs:
         """
         Collect output file paths.
         
@@ -61,9 +61,9 @@ class Roi:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RoiOutputs`).
+            NamedTuple of outputs (described in `MetricStatsRoiOutputs`).
         """
-        ret = RoiOutputs(
+        ret = MetricStatsRoiOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -75,7 +75,7 @@ class MetricStatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    roi: RoiOutputs
+    roi: MetricStatsRoiOutputs
     """Subcommand outputs"""
 
 
@@ -84,7 +84,7 @@ def metric_stats(
     opt_reduce_operation: str | None = None,
     opt_percentile_percent: float | int | None = None,
     opt_column_column: str | None = None,
-    roi: Roi | None = None,
+    roi: MetricStatsRoi | None = None,
     opt_show_map_name: bool = False,
     runner: Runner = None,
 ) -> MetricStatsOutputs:
@@ -160,7 +160,7 @@ def metric_stats(
 __all__ = [
     "METRIC_STATS_METADATA",
     "MetricStatsOutputs",
-    "Roi",
-    "RoiOutputs",
+    "MetricStatsRoi",
+    "MetricStatsRoiOutputs",
     "metric_stats",
 ]

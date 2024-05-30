@@ -16,16 +16,16 @@ TCKGLOBAL_METADATA = Metadata(
 )
 
 
-class RisoOutputs(typing.NamedTuple):
+class TckglobalRisoOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Riso.run(...)`.
+    Output object returned when calling `TckglobalRiso.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Riso:
+class TckglobalRiso:
     """
     set one or more isotropic response functions. (multiple allowed)
     """
@@ -53,7 +53,7 @@ class Riso:
     def outputs(
         self,
         execution: Execution,
-    ) -> RisoOutputs:
+    ) -> TckglobalRisoOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class Riso:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `RisoOutputs`).
+            NamedTuple of outputs (described in `TckglobalRisoOutputs`).
         """
-        ret = RisoOutputs(
+        ret = TckglobalRisoOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TckglobalConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TckglobalConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TckglobalConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -109,7 +109,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TckglobalConfigOutputs:
         """
         Collect output file paths.
         
@@ -117,9 +117,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TckglobalConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TckglobalConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -142,9 +142,9 @@ This fODF is estimated as part of the global track optimization, and therefore i
     """Residual external energy in every voxel. """
     etrend: OutputPathType | None
     """internal and external energy trend and cooling statistics. """
-    riso: RisoOutputs
+    riso: typing.List[TckglobalRisoOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[TckglobalConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -154,7 +154,7 @@ def tckglobal(
     tracks: InputPathType,
     grad: InputPathType | None = None,
     mask: InputPathType | None = None,
-    riso: list[Riso] = None,
+    riso: list[TckglobalRiso] = None,
     lmax: int | None = None,
     length: float | int | None = None,
     weight: float | int | None = None,
@@ -178,7 +178,7 @@ def tckglobal(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TckglobalConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -362,11 +362,11 @@ def tckglobal(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
-    "Riso",
-    "RisoOutputs",
     "TCKGLOBAL_METADATA",
+    "TckglobalConfig",
+    "TckglobalConfigOutputs",
     "TckglobalOutputs",
+    "TckglobalRiso",
+    "TckglobalRisoOutputs",
     "tckglobal",
 ]

@@ -16,16 +16,16 @@ SH2AMP_METADATA = Metadata(
 )
 
 
-class FslgradOutputs(typing.NamedTuple):
+class Sh2ampFslgradOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Fslgrad.run(...)`.
+    Output object returned when calling `Sh2ampFslgrad.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Fslgrad:
+class Sh2ampFslgrad:
     """
     Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
     """
@@ -62,7 +62,7 @@ class Fslgrad:
     def outputs(
         self,
         execution: Execution,
-    ) -> FslgradOutputs:
+    ) -> Sh2ampFslgradOutputs:
         """
         Collect output file paths.
         
@@ -70,24 +70,24 @@ class Fslgrad:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `FslgradOutputs`).
+            NamedTuple of outputs (described in `Sh2ampFslgradOutputs`).
         """
-        ret = FslgradOutputs(
+        ret = Sh2ampFslgradOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Sh2ampConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Sh2ampConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Sh2ampConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -118,7 +118,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Sh2ampConfigOutputs:
         """
         Collect output file paths.
         
@@ -126,9 +126,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Sh2ampConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Sh2ampConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -142,9 +142,9 @@ class Sh2ampOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output image consisting of the amplitude of the SH functions along the specified directions."""
-    fslgrad: FslgradOutputs
+    fslgrad: Sh2ampFslgradOutputs
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[Sh2ampConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -154,7 +154,7 @@ def sh2amp(
     output: InputPathType,
     nonnegative: bool = False,
     grad: InputPathType | None = None,
-    fslgrad: Fslgrad | None = None,
+    fslgrad: Sh2ampFslgrad | None = None,
     strides: str | None = None,
     datatype: typing.Literal["spec"] | None = None,
     info: bool = False,
@@ -162,7 +162,7 @@ def sh2amp(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Sh2ampConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -298,11 +298,11 @@ def sh2amp(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
-    "Fslgrad",
-    "FslgradOutputs",
     "SH2AMP_METADATA",
+    "Sh2ampConfig",
+    "Sh2ampConfigOutputs",
+    "Sh2ampFslgrad",
+    "Sh2ampFslgradOutputs",
     "Sh2ampOutputs",
     "sh2amp",
 ]

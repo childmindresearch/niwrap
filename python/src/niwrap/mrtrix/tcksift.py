@@ -16,16 +16,16 @@ TCKSIFT_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TcksiftConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TcksiftConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TcksiftConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TcksiftConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TcksiftConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TcksiftConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -86,7 +86,7 @@ class TcksiftOutputs(typing.NamedTuple):
     """output the final value of SIFT proportionality coefficient mu to a text file """
     out_selection: OutputPathType | None
     """output a text file containing the binary selection of streamlines """
-    config: ConfigOutputs
+    config: typing.List[TcksiftConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -115,7 +115,7 @@ def tcksift(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TcksiftConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -267,9 +267,9 @@ def tcksift(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TCKSIFT_METADATA",
+    "TcksiftConfig",
+    "TcksiftConfigOutputs",
     "TcksiftOutputs",
     "tcksift",
 ]

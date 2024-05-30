@@ -16,16 +16,16 @@ MASKFILTER_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class MaskfilterConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `MaskfilterConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class MaskfilterConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> MaskfilterConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `MaskfilterConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = MaskfilterConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class MaskfilterOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output image."""
-    config: ConfigOutputs
+    config: typing.List[MaskfilterConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -100,7 +100,7 @@ def maskfilter(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[MaskfilterConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -207,9 +207,9 @@ def maskfilter(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "MASKFILTER_METADATA",
+    "MaskfilterConfig",
+    "MaskfilterConfigOutputs",
     "MaskfilterOutputs",
     "maskfilter",
 ]

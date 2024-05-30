@@ -16,16 +16,16 @@ CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA = Metadata(
 )
 
 
-class SeriesOutputs(typing.NamedTuple):
+class CiftiCreateDenseFromTemplateSeriesOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Series.run(...)`.
+    Output object returned when calling `CiftiCreateDenseFromTemplateSeries.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Series:
+class CiftiCreateDenseFromTemplateSeries:
     """
     make a dtseries file instead of a dscalar
     """
@@ -53,7 +53,7 @@ class Series:
     def outputs(
         self,
         execution: Execution,
-    ) -> SeriesOutputs:
+    ) -> CiftiCreateDenseFromTemplateSeriesOutputs:
         """
         Collect output file paths.
         
@@ -61,24 +61,24 @@ class Series:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SeriesOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateSeriesOutputs`).
         """
-        ret = SeriesOutputs(
+        ret = CiftiCreateDenseFromTemplateSeriesOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class VolumeAllOutputs(typing.NamedTuple):
+class CiftiCreateDenseFromTemplateVolumeAllOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `VolumeAll.run(...)`.
+    Output object returned when calling `CiftiCreateDenseFromTemplateVolumeAll.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class VolumeAll:
+class CiftiCreateDenseFromTemplateVolumeAll:
     """
     specify an input volume file for all voxel data
     """
@@ -107,7 +107,7 @@ class VolumeAll:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeAllOutputs:
+    ) -> CiftiCreateDenseFromTemplateVolumeAllOutputs:
         """
         Collect output file paths.
         
@@ -115,24 +115,24 @@ class VolumeAll:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeAllOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateVolumeAllOutputs`).
         """
-        ret = VolumeAllOutputs(
+        ret = CiftiCreateDenseFromTemplateVolumeAllOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class CiftiOutputs(typing.NamedTuple):
+class CiftiCreateDenseFromTemplateCiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Cifti.run(...)`.
+    Output object returned when calling `CiftiCreateDenseFromTemplateCifti.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Cifti:
+class CiftiCreateDenseFromTemplateCifti:
     """
     use input data from a cifti file
     """
@@ -156,7 +156,7 @@ class Cifti:
     def outputs(
         self,
         execution: Execution,
-    ) -> CiftiOutputs:
+    ) -> CiftiCreateDenseFromTemplateCiftiOutputs:
         """
         Collect output file paths.
         
@@ -164,24 +164,24 @@ class Cifti:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `CiftiOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateCiftiOutputs`).
         """
-        ret = CiftiOutputs(
+        ret = CiftiCreateDenseFromTemplateCiftiOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class MetricOutputs(typing.NamedTuple):
+class CiftiCreateDenseFromTemplateMetricOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Metric.run(...)`.
+    Output object returned when calling `CiftiCreateDenseFromTemplateMetric.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Metric:
+class CiftiCreateDenseFromTemplateMetric:
     """
     use input data from a metric file
     """
@@ -205,7 +205,7 @@ class Metric:
     def outputs(
         self,
         execution: Execution,
-    ) -> MetricOutputs:
+    ) -> CiftiCreateDenseFromTemplateMetricOutputs:
         """
         Collect output file paths.
         
@@ -213,24 +213,24 @@ class Metric:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `MetricOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateMetricOutputs`).
         """
-        ret = MetricOutputs(
+        ret = CiftiCreateDenseFromTemplateMetricOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class LabelOutputs(typing.NamedTuple):
+class CiftiCreateDenseFromTemplateLabelOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Label.run(...)`.
+    Output object returned when calling `CiftiCreateDenseFromTemplateLabel.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Label:
+class CiftiCreateDenseFromTemplateLabel:
     """
     use input data from surface label files
     """
@@ -254,7 +254,7 @@ class Label:
     def outputs(
         self,
         execution: Execution,
-    ) -> LabelOutputs:
+    ) -> CiftiCreateDenseFromTemplateLabelOutputs:
         """
         Collect output file paths.
         
@@ -262,24 +262,24 @@ class Label:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `LabelOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateLabelOutputs`).
         """
-        ret = LabelOutputs(
+        ret = CiftiCreateDenseFromTemplateLabelOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class VolumeOutputs(typing.NamedTuple):
+class CiftiCreateDenseFromTemplateVolumeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Volume.run(...)`.
+    Output object returned when calling `CiftiCreateDenseFromTemplateVolume.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Volume:
+class CiftiCreateDenseFromTemplateVolume:
     """
     use a volume file for a single volume structure's data
     """
@@ -307,7 +307,7 @@ class Volume:
     def outputs(
         self,
         execution: Execution,
-    ) -> VolumeOutputs:
+    ) -> CiftiCreateDenseFromTemplateVolumeOutputs:
         """
         Collect output file paths.
         
@@ -315,9 +315,9 @@ class Volume:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `VolumeOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateVolumeOutputs`).
         """
-        ret = VolumeOutputs(
+        ret = CiftiCreateDenseFromTemplateVolumeOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -331,30 +331,30 @@ class CiftiCreateDenseFromTemplateOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
-    series: SeriesOutputs
+    series: CiftiCreateDenseFromTemplateSeriesOutputs
     """Subcommand outputs"""
-    volume_all: VolumeAllOutputs
+    volume_all: CiftiCreateDenseFromTemplateVolumeAllOutputs
     """Subcommand outputs"""
-    cifti: CiftiOutputs
+    cifti: typing.List[CiftiCreateDenseFromTemplateCiftiOutputs]
     """Subcommand outputs"""
-    metric: MetricOutputs
+    metric: typing.List[CiftiCreateDenseFromTemplateMetricOutputs]
     """Subcommand outputs"""
-    label: LabelOutputs
+    label: typing.List[CiftiCreateDenseFromTemplateLabelOutputs]
     """Subcommand outputs"""
-    volume: VolumeOutputs
+    volume: typing.List[CiftiCreateDenseFromTemplateVolumeOutputs]
     """Subcommand outputs"""
 
 
 def cifti_create_dense_from_template(
     template_cifti: InputPathType,
     cifti_out: InputPathType,
-    series: Series | None = None,
-    volume_all: VolumeAll | None = None,
+    series: CiftiCreateDenseFromTemplateSeries | None = None,
+    volume_all: CiftiCreateDenseFromTemplateVolumeAll | None = None,
     opt_label_collision_action: str | None = None,
-    cifti: list[Cifti] = None,
-    metric: list[Metric] = None,
-    label: list[Label] = None,
-    volume: list[Volume] = None,
+    cifti: list[CiftiCreateDenseFromTemplateCifti] = None,
+    metric: list[CiftiCreateDenseFromTemplateMetric] = None,
+    label: list[CiftiCreateDenseFromTemplateLabel] = None,
+    volume: list[CiftiCreateDenseFromTemplateVolume] = None,
     runner: Runner = None,
 ) -> CiftiCreateDenseFromTemplateOutputs:
     """
@@ -472,18 +472,18 @@ def cifti_create_dense_from_template(
 
 __all__ = [
     "CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA",
-    "Cifti",
+    "CiftiCreateDenseFromTemplateCifti",
+    "CiftiCreateDenseFromTemplateCiftiOutputs",
+    "CiftiCreateDenseFromTemplateLabel",
+    "CiftiCreateDenseFromTemplateLabelOutputs",
+    "CiftiCreateDenseFromTemplateMetric",
+    "CiftiCreateDenseFromTemplateMetricOutputs",
     "CiftiCreateDenseFromTemplateOutputs",
-    "CiftiOutputs",
-    "Label",
-    "LabelOutputs",
-    "Metric",
-    "MetricOutputs",
-    "Series",
-    "SeriesOutputs",
-    "Volume",
-    "VolumeAll",
-    "VolumeAllOutputs",
-    "VolumeOutputs",
+    "CiftiCreateDenseFromTemplateSeries",
+    "CiftiCreateDenseFromTemplateSeriesOutputs",
+    "CiftiCreateDenseFromTemplateVolume",
+    "CiftiCreateDenseFromTemplateVolumeAll",
+    "CiftiCreateDenseFromTemplateVolumeAllOutputs",
+    "CiftiCreateDenseFromTemplateVolumeOutputs",
     "cifti_create_dense_from_template",
 ]

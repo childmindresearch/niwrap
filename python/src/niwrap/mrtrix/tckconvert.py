@@ -16,16 +16,16 @@ TCKCONVERT_METADATA = Metadata(
 )
 
 
-class ConfigOutputs(typing.NamedTuple):
+class TckconvertConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `TckconvertConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class TckconvertConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -56,7 +56,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> TckconvertConfigOutputs:
         """
         Collect output file paths.
         
@@ -64,9 +64,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `TckconvertConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = TckconvertConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -80,7 +80,7 @@ class TckconvertOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output track file."""
-    config: ConfigOutputs
+    config: typing.List[TckconvertConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -102,7 +102,7 @@ def tckconvert(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[TckconvertConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -224,9 +224,9 @@ def tckconvert(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
     "TCKCONVERT_METADATA",
+    "TckconvertConfig",
+    "TckconvertConfigOutputs",
     "TckconvertOutputs",
     "tckconvert",
 ]

@@ -16,16 +16,16 @@ CIFTI_CREATE_SCALAR_SERIES_METADATA = Metadata(
 )
 
 
-class SeriesOutputs(typing.NamedTuple):
+class CiftiCreateScalarSeriesSeriesOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Series.run(...)`.
+    Output object returned when calling `CiftiCreateScalarSeriesSeries.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Series:
+class CiftiCreateScalarSeriesSeries:
     """
     set the units and values of the series
     """
@@ -49,7 +49,7 @@ class Series:
     def outputs(
         self,
         execution: Execution,
-    ) -> SeriesOutputs:
+    ) -> CiftiCreateScalarSeriesSeriesOutputs:
         """
         Collect output file paths.
         
@@ -57,9 +57,9 @@ class Series:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `SeriesOutputs`).
+            NamedTuple of outputs (described in `CiftiCreateScalarSeriesSeriesOutputs`).
         """
-        ret = SeriesOutputs(
+        ret = CiftiCreateScalarSeriesSeriesOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -73,7 +73,7 @@ class CiftiCreateScalarSeriesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti file"""
-    series: SeriesOutputs
+    series: CiftiCreateScalarSeriesSeriesOutputs
     """Subcommand outputs"""
 
 
@@ -82,7 +82,7 @@ def cifti_create_scalar_series(
     cifti_out: InputPathType,
     opt_transpose: bool = False,
     opt_name_file_file: str | None = None,
-    series: Series | None = None,
+    series: CiftiCreateScalarSeriesSeries | None = None,
     runner: Runner = None,
 ) -> CiftiCreateScalarSeriesOutputs:
     """
@@ -138,7 +138,7 @@ def cifti_create_scalar_series(
 __all__ = [
     "CIFTI_CREATE_SCALAR_SERIES_METADATA",
     "CiftiCreateScalarSeriesOutputs",
-    "Series",
-    "SeriesOutputs",
+    "CiftiCreateScalarSeriesSeries",
+    "CiftiCreateScalarSeriesSeriesOutputs",
     "cifti_create_scalar_series",
 ]

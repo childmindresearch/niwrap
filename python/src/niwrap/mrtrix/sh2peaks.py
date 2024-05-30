@@ -16,16 +16,16 @@ SH2PEAKS_METADATA = Metadata(
 )
 
 
-class DirectionOutputs(typing.NamedTuple):
+class Sh2peaksDirectionOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Direction.run(...)`.
+    Output object returned when calling `Sh2peaksDirection.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Direction:
+class Sh2peaksDirection:
     """
     the direction of a peak to estimate. The algorithm will attempt to find the same number of peaks as have been specified using this option.
     """
@@ -58,7 +58,7 @@ class Direction:
     def outputs(
         self,
         execution: Execution,
-    ) -> DirectionOutputs:
+    ) -> Sh2peaksDirectionOutputs:
         """
         Collect output file paths.
         
@@ -66,24 +66,24 @@ class Direction:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `DirectionOutputs`).
+            NamedTuple of outputs (described in `Sh2peaksDirectionOutputs`).
         """
-        ret = DirectionOutputs(
+        ret = Sh2peaksDirectionOutputs(
             root=execution.output_file("."),
         )
         return ret
 
 
-class ConfigOutputs(typing.NamedTuple):
+class Sh2peaksConfigOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Config.run(...)`.
+    Output object returned when calling `Sh2peaksConfig.run(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
 @dataclasses.dataclass
-class Config:
+class Sh2peaksConfig:
     """
     temporarily set the value of an MRtrix config file entry.
     """
@@ -114,7 +114,7 @@ class Config:
     def outputs(
         self,
         execution: Execution,
-    ) -> ConfigOutputs:
+    ) -> Sh2peaksConfigOutputs:
         """
         Collect output file paths.
         
@@ -122,9 +122,9 @@ class Config:
             self: The sub-command object.
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ConfigOutputs`).
+            NamedTuple of outputs (described in `Sh2peaksConfigOutputs`).
         """
-        ret = ConfigOutputs(
+        ret = Sh2peaksConfigOutputs(
             root=execution.output_file("."),
         )
         return ret
@@ -138,9 +138,9 @@ class Sh2peaksOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output image. Each volume corresponds to the x, y & z component of each peak direction vector in turn."""
-    direction: DirectionOutputs
+    direction: typing.List[Sh2peaksDirectionOutputs]
     """Subcommand outputs"""
-    config: ConfigOutputs
+    config: typing.List[Sh2peaksConfigOutputs]
     """Subcommand outputs"""
 
 
@@ -148,7 +148,7 @@ def sh2peaks(
     sh: InputPathType,
     output: InputPathType,
     num: int | None = None,
-    direction: list[Direction] = None,
+    direction: list[Sh2peaksDirection] = None,
     peaks: InputPathType | None = None,
     threshold: float | int | None = None,
     seeds: InputPathType | None = None,
@@ -159,7 +159,7 @@ def sh2peaks(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Config] = None,
+    config: list[Sh2peaksConfig] = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner = None,
@@ -268,11 +268,11 @@ def sh2peaks(
 
 
 __all__ = [
-    "Config",
-    "ConfigOutputs",
-    "Direction",
-    "DirectionOutputs",
     "SH2PEAKS_METADATA",
+    "Sh2peaksConfig",
+    "Sh2peaksConfigOutputs",
+    "Sh2peaksDirection",
+    "Sh2peaksDirectionOutputs",
     "Sh2peaksOutputs",
     "sh2peaks",
 ]
