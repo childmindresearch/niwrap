@@ -295,7 +295,15 @@
       "command-line-flag": "--output-data-type",
       "description": "Output image data type. This is a direct typecast; output values are not rescaled. Default is to use the internal data type (float or double). uchar is unsigned char; others are signed. WARNING: Outputs will be incorrect (overflowed/reinterpreted) if values exceed the range allowed by your choice. Note that some pixel types are not supported by some image formats. e.g. int is not supported by jpg.",
       "optional": true,
-      "value-choices": ["char", "uchar", "short", "int", "float", "double", "default"]
+      "value-choices": [
+        "char",
+        "uchar",
+        "short",
+        "int",
+        "float",
+        "double",
+        "default"
+      ]
     },
     {
       "id": "transform",
@@ -335,7 +343,7 @@
             }
           ]
         }
-      ]  
+      ]
     },
     {
       "id": "default_value",
