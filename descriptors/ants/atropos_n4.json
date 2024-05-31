@@ -140,10 +140,7 @@
       "description": "Posterior formulation and whether or not to use mixture model proportions. e.g 'Socrates[ 1 ]' (default) or 'Aristotle[ 1 ]'.  Choose the latter if you want to use the distance priors, see also the -l option for label propagation control (default = 'Socrates[ 1 ]').",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "Socrates[ 1 ]",
-        "Aristotle[ 1 ]"
-      ]
+      "value-choices": ["Socrates[ 1 ]", "Aristotle[ 1 ]"]
     },
     {
       "id": "label_propagation",
