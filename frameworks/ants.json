@@ -353,7 +353,8 @@
       },
       {
         "target": "antsApplyTransforms",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/apply_transforms.json"
       },
       {
         "target": "antsApplyTransformsToPoints",
@@ -361,7 +362,8 @@
       },
       {
         "target": "antsAtroposN4.sh",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/atropos_n4.json"
       },
       {
         "target": "antsBOLDNetworkAnalysis.R",

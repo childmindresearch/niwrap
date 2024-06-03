@@ -21,7 +21,7 @@
       },
       {
         "target": "c3d_gui",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "c4d",

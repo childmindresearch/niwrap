@@ -105,7 +105,8 @@
       },
       {
         "target": "applytopup",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/fsl/applytopup.json"
       },
       {
         "target": "applywarp",
@@ -1449,7 +1450,8 @@
       },
       {
         "target": "topup",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/fsl/topup.json"
       },
       {
         "target": "tsplot",
