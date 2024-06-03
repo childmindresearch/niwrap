@@ -3,6 +3,7 @@
 
 from .apply_warp import *
 from .applytopup import *
+from .avscale import *
 from .bet import *
 from .cluster import *
 from .convert_warp import *
