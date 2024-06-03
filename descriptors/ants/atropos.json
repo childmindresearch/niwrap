@@ -1,262 +1,219 @@
 {
   "name": "Atropos",
-  "command-line": "Atropos [CONVERGENCE_THRESHOLD] [DIMENSION] [ICM_USE_SYNCHRONOUS_UPDATE] [INITIALIZATION] [INTENSITY_IMAGES] [KMEANS_INIT_CENTERS] [LIKELIHOOD_MODEL] [MASK_IMAGE] [MAXIMUM_NUMBER_OF_ICM_TERATIONS] [MRF_RADIUS] [MRF_SMOOTHING_FACTOR] [N_ITERATIONS] [NUM_THREADS] [NUMBER_OF_TISSUE_CLASSES] [OUT_CLASSIFIED_IMAGE_NAME] [OUTPUT_POSTERIORS_NAME_TEMPLATE] [POSTERIOR_FORMULATION] [PRIOR_IMAGE] [PRIOR_PROBABILITY_THRESHOLD] [PRIOR_WEIGHTING] [SAVE_POSTERIORS] [USE_MIXTURE_MODEL_PROPORTIONS] [USE_RANDOM_SEED]",
-  "author": "Nipype (interface)",
-  "description": "A multivariate n-class segmentation algorithm.\nA finite mixture modeling (FMM) segmentation approach with possibilities for specifying prior constraints. These prior constraints include the specification of a prior label image, prior probability images (one for each class), and/or an MRF prior to enforce spatial smoothing of the labels. Similar algorithms include FAST and SPM.",
+  "command-line": "Atropos [IMAGE_DIMENSIONALITY] [INTENSITY_IMAGE] [BSPLINE] [INITIALIZATION] [PARTIAL_VOLUME_LABEL_SET] [USE_PARTIAL_VOLUME_LIKELIHOODS] [POSTERIOR_FORMULATION] [MASK_IMAGE] [CONVERGENCE] [LIKELIHOOD_MODEL] [MRF] [ICM] [USE_RANDOM_SEED] [OUTPUT] [MINIMIZE_MEMORY_USAGE] [WINSORIZE_OUTLIERS] [USE_EUCLIDEAN_DISTANCE] [LABEL_PROPAGATION] [VERBOSE]",
+  "description": "A finite mixture modeling (FMM) segmentation approach with possibilities for specifying prior constraints. These prior constraints include the specification of a prior label image, prior probability images (one for each class), and/or an MRF prior to enforce spatial smoothing of the labels. All segmentation images including priors and masks must be in the same voxel and physical space. Similar algorithms include FAST and SPM.",
+  "author": "ANTs authors",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "latest",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "fcpindi/c-pac:latest"
+  },
   "inputs": [
     {
-      "id": "convergence_threshold",
-      "name": "Convergence threshold",
+      "id": "image_dimensionality",
+      "name": "Image dimensionality",
+      "value-key": "[IMAGE_DIMENSIONALITY]",
       "type": "Number",
-      "value-key": "[CONVERGENCE_THRESHOLD]",
-      "description": "No description provided.",
+      "integer": true,
       "optional": true,
-      "requires-inputs": ["n_iterations"]
+      "value-choices": [2, 3, 4],
+      "command-line-flag": "--image-dimensionality",
+      "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, Atropos tries to infer the dimensionality from the first input image."
     },
     {
-      "id": "dimension",
-      "name": "Dimension",
-      "type": "Number",
-      "value-key": "[DIMENSION]",
-      "command-line-flag": "--image-dimensionality",
-      "description": "3 or 2 or 4. Image dimension (2, 3, or 4).",
+      "id": "intensity_image",
+      "name": "Intensity image",
+      "value-key": "[INTENSITY_IMAGE]",
+      "type": "String",
+      "optional": false,
+      "list": true,
+      "command-line-flag": "--intensity-image",
+      "description": "One or more scalar images is specified for segmentation. For segmentation scenarios with no prior information, the first scalar image encountered on the command line is used to order labelings such that the class with the smallest intensity signature is class '1' through class 'N' which represents the voxels with the largest intensity values. The optional adaptive smoothing weight parameter is applicable only when using prior label or probability images. This scalar parameter is to be specified between [0,1] which smooths each labeled region separately and modulates the intensity measurement at each voxel in each intensity image between the original intensity and its smoothed counterpart. The smoothness parameters are governed by the -b/--bspline option."
+    },
+    {
+      "id": "bspline",
+      "name": "BSpline",
+      "value-key": "[BSPLINE]",
+      "command-line-flag": "--bspline",
+      "type": "String",
       "optional": true,
-      "default-value": 3,
-      "integer": true,
-      "value-choices": [3, 2, 4]
+      "description": "If the adaptive smoothing weights are > 0, the intensity images are smoothed in calculating the likelihood values. This is to account for subtle intensity differences across the same tissue regions.",
+      "default-value": "6,1x1x...,3"
     },
     {
       "id": "initialization",
       "name": "Initialization",
-      "type": "String",
       "value-key": "[INITIALIZATION]",
-      "description": "'random' or 'otsu' or 'kmeans' or 'priorprobabilityimages' or 'priorlabelimage'. No description provided.",
+      "command-line-flag": "--initialization",
+      "type": "String",
       "optional": false,
-      "requires-inputs": ["number_of_tissue_classes"],
-      "value-choices": [
-        "Random",
-        "Otsu",
-        "KMeans",
-        "PriorProbabilityImages",
-        "PriorLabelImage"
-      ]
+      "description": "To initialize the FMM parameters, one of the specified options (Random, Otsu, KMeans, PriorProbabilityImages, or PriorLabelImage) must be used."
     },
     {
-      "id": "intensity_images",
-      "name": "Intensity images",
-      "type": "File",
+      "id": "partial_volume_label_set",
+      "name": "Partial volume label set",
+      "value-key": "[PARTIAL_VOLUME_LABEL_SET]",
+      "type": "String",
       "list": true,
-      "value-key": "[INTENSITY_IMAGES]",
-      "command-line-flag": "--intensity-image",
-      "description": "No description provided.",
-      "optional": false
-    },
-    {
-      "id": "kmeans_init_centers",
-      "name": "Kmeans init centers",
-      "type": "Number",
-      "list": true,
+      "command-line-flag": "--partial-volume-label-set",
       "min-list-entries": 1,
-      "value-key": "[KMEANS_INIT_CENTERS]",
-      "description": "No description provided.",
-      "optional": true
-    },
-    {
-      "id": "likelihood_model",
-      "name": "Likelihood model",
-      "type": "String",
-      "value-key": "[LIKELIHOOD_MODEL]",
-      "command-line-flag": "--likelihood-model",
-      "description": "No description provided.",
-      "optional": true
-    },
-    {
-      "id": "mask_image",
-      "name": "Mask image",
-      "type": "File",
-      "value-key": "[MASK_IMAGE]",
-      "command-line-flag": "--mask-image",
-      "description": "No description provided.",
-      "optional": false
-    },
-    {
-      "id": "maximum_number_of_icm_terations",
-      "name": "Maximum number of icm terations",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[MAXIMUM_NUMBER_OF_ICM_TERATIONS]",
-      "description": "No description provided.",
       "optional": true,
-      "requires-inputs": ["icm_use_synchronous_update"]
+      "description": "The partial volume estimation option allows one to model mixtures of classes within single voxels."
     },
     {
-      "id": "mrf_radius",
-      "name": "Mrf radius",
+      "id": "use_partial_volume_likelihoods",
+      "name": "Use partial volume likelihoods",
+      "value-key": "[USE_PARTIAL_VOLUME_LIKELIHOODS]",
       "type": "Number",
-      "list": true,
       "integer": true,
-      "value-key": "[MRF_RADIUS]",
-      "description": "A list of items which are an integer. No description provided.",
       "optional": true,
-      "requires-inputs": ["mrf_smoothing_factor"]
-    },
-    {
-      "id": "mrf_smoothing_factor",
-      "name": "Mrf smoothing factor",
-      "type": "Number",
-      "value-key": "[MRF_SMOOTHING_FACTOR]",
-      "description": "No description provided.",
-      "optional": true
-    },
-    {
-      "id": "n_iterations",
-      "name": "N iterations",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[N_ITERATIONS]",
-      "description": "No description provided.",
-      "optional": true
-    },
-    {
-      "id": "num_threads",
-      "name": "Num threads",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[NUM_THREADS]",
-      "description": "Number of itk threads to use.",
-      "optional": true,
-      "default-value": 1
-    },
-    {
-      "id": "number_of_tissue_classes",
-      "name": "Number of tissue classes",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[NUMBER_OF_TISSUE_CLASSES]",
-      "description": "No description provided.",
-      "optional": false
-    },
-    {
-      "id": "out_classified_image_name",
-      "name": "Out classified image name",
-      "type": "File",
-      "value-key": "[OUT_CLASSIFIED_IMAGE_NAME]",
-      "description": "No description provided.",
-      "optional": true
-    },
-    {
-      "id": "output_posteriors_name_template",
-      "name": "Output posteriors name template",
-      "type": "String",
-      "value-key": "[OUTPUT_POSTERIORS_NAME_TEMPLATE]",
-      "description": "No description provided.",
-      "optional": true,
-      "default-value": "POSTERIOR_%02d.nii.gz"
+      "value-choices": [0, 1],
+      "command-line-flag": "--use-partial-volume-likelihoods",
+      "description": "The user can specify whether or not to use the partial volume likelihoods."
     },
     {
       "id": "posterior_formulation",
       "name": "Posterior formulation",
-      "type": "String",
       "value-key": "[POSTERIOR_FORMULATION]",
-      "description": "No description provided.",
-      "optional": true
-    },
-    {
-      "id": "prior_image",
-      "name": "Prior image",
-      "type": "File",
-      "value-key": "[PRIOR_IMAGE]",
-      "description": "file or string or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
-      "optional": true
-    },
-    {
-      "id": "prior_image_2",
-      "name": "Prior image",
       "type": "String",
-      "value-key": "[PRIOR_IMAGE]",
-      "description": "file or string or a string. Either a string pattern (e.g., 'prior%02d.nii') or an existing vector-image file.",
-      "optional": true
-    },
-    {
-      "id": "prior_probability_threshold",
-      "name": "Prior probability threshold",
-      "type": "Number",
-      "value-key": "[PRIOR_PROBABILITY_THRESHOLD]",
-      "description": "No description provided.",
       "optional": true,
-      "requires-inputs": ["prior_weighting"]
+      "command-line-flag": "--posterior-formulation",
+      "description": "Different posterior probability formulations are possible as are different update options."
     },
     {
-      "id": "prior_weighting",
-      "name": "Prior weighting",
-      "type": "Number",
-      "value-key": "[PRIOR_WEIGHTING]",
-      "description": "No description provided.",
-      "optional": true
+      "id": "mask_image",
+      "name": "Mask image",
+      "value-key": "[MASK_IMAGE]",
+      "type": "String",
+      "optional": false,
+      "command-line-flag": "-x",
+      "description": "The image mask (which is required) defines the region which is to be labeled by the Atropos algorithm."
     },
     {
-      "id": "save_posteriors",
-      "name": "Save posteriors",
-      "type": "Flag",
-      "value-key": "[SAVE_POSTERIORS]",
-      "command-line-flag": "--save_posteriors",
-      "description": "No description provided.",
-      "optional": true
+      "id": "convergence",
+      "name": "Convergence",
+      "value-key": "[CONVERGENCE]",
+      "type": "String",
+      "optional": false,
+      "command-line-flag": "--convergence",
+      "description": "Convergence is determined by calculating the mean maximum posterior probability over the region of interest at each iteration. When this value decreases or increases less than the specified threshold from the previous iteration or the maximum number of iterations is exceeded the program terminates.",
+      "default-value": "[5,0.001]"
     },
     {
-      "id": "use_mixture_model_proportions",
-      "name": "Use mixture model proportions",
-      "type": "Flag",
-      "value-key": "[USE_MIXTURE_MODEL_PROPORTIONS]",
-      "command-line-flag": "--use_mixture_model_proportions",
-      "description": "No description provided.",
+      "id": "likelihood_model",
+      "name": "Likelihood model",
+      "value-key": "[LIKELIHOOD_MODEL]",
+      "type": "String",
+      "optional": false,
+      "command-line-flag": "--likelihood-model",
+      "description": "Both parametric and non-parametric options exist in Atropos."
+    },
+    {
+      "id": "mrf",
+      "name": "MRF",
+      "value-key": "[MRF]",
+      "command-line-flag": "-m",
+      "type": "String",
       "optional": true,
-      "requires-inputs": ["posterior_formulation"]
+      "description": "Markov random field (MRF) theory provides a general framework for enforcing spatially contextual constraints on the segmentation solution.",
+      "default-value": "0.3,1x1x..."
+    },
+    {
+      "id": "icm",
+      "name": "ICM",
+      "value-key": "[ICM]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "--icm",
+      "description": "Asynchronous updating requires the construction of an ICM code image which is a label image (with labels in the range {1,..,MaximumICMCode}) constructed such that no MRF neighborhood has duplicate ICM code labels.",
+      "default-value": "1,1,''"
     },
     {
       "id": "use_random_seed",
       "name": "Use random seed",
-      "type": "Flag",
       "value-key": "[USE_RANDOM_SEED]",
-      "command-line-flag": "--use-random-seed",
-      "description": "Use random seed value over constant.",
+      "type": "Number",
+      "integer": true,
       "optional": true,
-      "default-value": true
+      "value-choices": [0, 1],
+      "command-line-flag": "--use-random-seed",
+      "description": "Initialize internal random number generator with a random seed."
+    },
+    {
+      "id": "output",
+      "name": "Output",
+      "value-key": "[OUTPUT]",
+      "command-line-flag": "-o",
+      "type": "String",
+      "optional": false,
+      "description": "The output consists of a labeled image where each voxel in the masked region is assigned a label from 1, 2, ..., N. Optionally, one can also output the posterior probability images specified in the same format as the prior probability images, e.g. posterior%02d.nii.gz (C-style file name formatting)."
+    },
+    {
+      "id": "minimize_memory_usage",
+      "name": "Minimize memory usage",
+      "value-key": "[MINIMIZE_MEMORY_USAGE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [0, 1],
+      "command-line-flag": "--minimize-memory-usage",
+      "description": "By default, memory usage is not minimized, however, if this is needed, the various probability and distance images are calculated on the fly instead of being stored in memory at each iteration. Also, if prior probability images are used, only the non-negligible pixel values are stored in memory."
+    },
+    {
+      "id": "winsorize_outliers",
+      "name": "Winsorize outliers",
+      "value-key": "[WINSORIZE_OUTLIERS]",
+      "command-line-flag": "--winsorize-outliers",
+      "type": "String",
+      "optional": true,
+      "description": "To remove the effects of outliers in calculating the weighted mean and weighted covariance, the user can opt to remove the outliers through the options specified below."
+    },
+    {
+      "id": "use_euclidean_distance",
+      "name": "Use Euclidean distance",
+      "value-key": "[USE_EUCLIDEAN_DISTANCE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [0, 1],
+      "command-line-flag": "--use-euclidean-distance",
+      "description": "Given prior label or probability images, the labels are propagated throughout the masked region so that every voxel in the mask is labeled."
+    },
+    {
+      "id": "label_propagation",
+      "name": "Label propagation",
+      "value-key": "[LABEL_PROPAGATION]",
+      "type": "String",
+      "command-line-flag": "--label-propagation",
+      "optional": true,
+      "description": "The propagation of each prior label can be controlled by the lambda and boundary probability parameters."
+    },
+    {
+      "id": "verbose",
+      "name": "Verbose",
+      "value-key": "[VERBOSE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [0, 1],
+      "command-line-flag": "--verbose",
+      "description": "Verbose output."
     }
   ],
   "output-files": [
     {
-      "name": "Classified image",
       "id": "classified_image",
-      "path-template": "classified_image",
-      "optional": true,
-      "description": "No description provided."
+      "name": "Classified Image",
+      "description": "The classified image output file.",
+      "path-template": "[CLASSIFIED_IMAGE]"
     },
     {
-      "name": "Posteriors",
-      "id": "posteriors",
-      "path-template": "posteriors",
-      "optional": true,
-      "description": "A list of items which are file. No description provided.",
-      "list": true
+      "id": "posterior_probability_images",
+      "name": "Posterior Probability Images",
+      "description": "Optional posterior probability images output files.",
+      "path-template": "[POSTERIOR_PROBABILITY_IMAGE_FILE_FORMAT]"
     }
-  ],
-  "groups": [
-    {
-      "id": "prior_image_group",
-      "name": "Prior image group",
-      "members": ["prior_image", "prior_image_2"],
-      "mutually-exclusive": true
-    }
-  ],
-  "tool-version": "1.0.0",
-  "schema-version": "0.5",
-  "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
-  },
-  "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
-  }
+  ]
 }
