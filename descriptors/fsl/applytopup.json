@@ -1,110 +1,110 @@
 {
-    "tool-version": "1.0",
-    "name": "applytopup",
-    "author": "University of Oxford (Jesper Andersson)",
-    "description": "applytopup applies corrections to images using the field estimates produced by topup.",
-    "command-line": "applytopup [IMAIN] [DATAIN] [ININDEX] [TOPUP] [OUT] [METHOD] [INTERP] [DATATYPE] [VERBOSE]",
-    "container-image": {
-      "image": "mcin/docker-fsl:latest",
-      "index": "index.docker.io",
-      "type": "docker"
+  "tool-version": "1.0",
+  "name": "applytopup",
+  "author": "University of Oxford (Jesper Andersson)",
+  "description": "applytopup applies corrections to images using the field estimates produced by topup.",
+  "command-line": "applytopup [IMAIN] [DATAIN] [ININDEX] [TOPUP] [OUT] [METHOD] [INTERP] [DATATYPE] [VERBOSE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-i",
+      "description": "Comma separated list of names of input image (to be corrected)",
+      "value-key": "[IMAIN]",
+      "type": "String",
+      "list": true,
+      "optional": false,
+      "id": "imain",
+      "name": "Input images"
     },
-    "inputs": [
-      {
-        "command-line-flag": "-i",
-        "description": "Comma separated list of names of input image (to be corrected)",
-        "value-key": "[IMAIN]",
-        "type": "String",
-        "list": true,
-        "optional": false,
-        "id": "imain",
-        "name": "Input images"
-      },
-      {
-        "command-line-flag": "-a",
-        "description": "Name of text file with PE directions/times",
-        "value-key": "[DATAIN]",
-        "type": "File",
-        "optional": false,
-        "id": "datain",
-        "name": "PE directions/times file"
-      },
-      {
-        "command-line-flag": "-x",
-        "description": "Comma separated list of indices into --datain of the input image (to be corrected)",
-        "value-key": "[ININDEX]",
-        "type": "String",
-        "list": true,
-        "optional": false,
-        "id": "inindex",
-        "name": "Input index"
-      },
-      {
-        "command-line-flag": "-t",
-        "description": "Name of field/movements (from topup)",
-        "value-key": "[TOPUP]",
-        "type": "File",
-        "optional": false,
-        "id": "topup",
-        "name": "Topup file"
-      },
-      {
-        "command-line-flag": "-o",
-        "description": "Basename for output (warped) image",
-        "value-key": "[OUT]",
-        "type": "String",
-        "optional": false,
-        "id": "out",
-        "name": "Output basename"
-      },
-      {
-        "command-line-flag": "-m",
-        "description": "Use jacobian modulation (jac) or least-squares resampling (lsr), default=lsr.",
-        "value-key": "[METHOD]",
-        "type": "String",
-        "optional": true,
-        "id": "method",
-        "name": "Method",
-        "value-choices": ["jac", "lsr"]
-      },
-      {
-        "command-line-flag": "-n",
-        "description": "Interpolation method {trilinear, spline}, default=spline",
-        "value-key": "[INTERP]",
-        "type": "String",
-        "optional": true,
-        "id": "interp",
-        "name": "Interpolation method",
-        "value-choices": ["trilinear", "spline"]
-      },
-      {
-        "command-line-flag": "-d",
-        "description": "Force output data type [char short int float double]",
-        "value-key": "[DATATYPE]",
-        "type": "String",
-        "optional": true,
-        "id": "datatype",
-        "name": "Output data type",
-        "value-choices": ["char", "short", "int", "float", "double"]
-      },
-      {
-        "command-line-flag": "-v",
-        "description": "Switch on diagnostic messages",
-        "value-key": "[VERBOSE]",
-        "type": "Flag",
-        "optional": true,
-        "id": "verbose",
-        "name": "Verbose flag"
-      }
-    ],
-    "schema-version": "0.5",
-    "output-files": [
-      {
-        "path-template": "[OUT]_abswarp.nii.gz",
-        "description": "The output warped image.",
-        "optional": false,
-        "id": "output_file",
-        "name": "Warped image"
-      }
-    ]
-  }
+    {
+      "command-line-flag": "-a",
+      "description": "Name of text file with PE directions/times",
+      "value-key": "[DATAIN]",
+      "type": "File",
+      "optional": false,
+      "id": "datain",
+      "name": "PE directions/times file"
+    },
+    {
+      "command-line-flag": "-x",
+      "description": "Comma separated list of indices into --datain of the input image (to be corrected)",
+      "value-key": "[ININDEX]",
+      "type": "String",
+      "list": true,
+      "optional": false,
+      "id": "inindex",
+      "name": "Input index"
+    },
+    {
+      "command-line-flag": "-t",
+      "description": "Name of field/movements (from topup)",
+      "value-key": "[TOPUP]",
+      "type": "File",
+      "optional": false,
+      "id": "topup",
+      "name": "Topup file"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Basename for output (warped) image",
+      "value-key": "[OUT]",
+      "type": "String",
+      "optional": false,
+      "id": "out",
+      "name": "Output basename"
+    },
+    {
+      "command-line-flag": "-m",
+      "description": "Use jacobian modulation (jac) or least-squares resampling (lsr), default=lsr.",
+      "value-key": "[METHOD]",
+      "type": "String",
+      "optional": true,
+      "id": "method",
+      "name": "Method",
+      "value-choices": ["jac", "lsr"]
+    },
+    {
+      "command-line-flag": "-n",
+      "description": "Interpolation method {trilinear, spline}, default=spline",
+      "value-key": "[INTERP]",
+      "type": "String",
+      "optional": true,
+      "id": "interp",
+      "name": "Interpolation method",
+      "value-choices": ["trilinear", "spline"]
+    },
+    {
+      "command-line-flag": "-d",
+      "description": "Force output data type [char short int float double]",
+      "value-key": "[DATATYPE]",
+      "type": "String",
+      "optional": true,
+      "id": "datatype",
+      "name": "Output data type",
+      "value-choices": ["char", "short", "int", "float", "double"]
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUT]_abswarp.nii.gz",
+      "description": "The output warped image.",
+      "optional": false,
+      "id": "output_file",
+      "name": "Warped image"
+    }
+  ]
+}
