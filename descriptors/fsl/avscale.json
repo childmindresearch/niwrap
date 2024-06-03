@@ -1,0 +1,57 @@
+{
+  "tool-version": "1.0.0",
+  "name": "avscale",
+  "author": "Unknown",
+  "description": "A command line tool for computing affine transformations.",
+  "command-line": "avscale [ALLPARAMS_FLAG] [INVERTED_DDIES_FLAG] [MATRIX_FILE] [NON_REFERENCE_VOLUME] > output.txt",
+  "container-image": {
+    "image": "mydockerhubuser/avscale:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "The path to the matrix file.",
+      "value-key": "[MATRIX_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "matrix_file",
+      "name": "Matrix file"
+    },
+    {
+      "description": "The path to the non-reference volume.",
+      "value-key": "[NON_REFERENCE_VOLUME]",
+      "type": "File",
+      "optional": true,
+      "id": "non_reference_volume",
+      "name": "Non-reference volume"
+    },
+    {
+      "command-line-flag": "--allparams",
+      "description": "Flag for all parameters.",
+      "value-key": "[ALLPARAMS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "allparams_flag",
+      "name": "All parameters flag"
+    },
+    {
+      "command-line-flag": "--inverteddies",
+      "description": "Flag for inverted eddies.",
+      "value-key": "[INVERTED_DDIES_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "inverteddies_flag",
+      "name": "Inverted eddies flag"
+    }
+  ],
+  "output-files": [
+    {
+      "description": "The output file.",
+      "path-template": "output.txt",
+      "id": "output_file",
+      "name": "Output file"
+    }
+  ],
+  "schema-version": "0.5"
+}
