@@ -79,3 +79,4 @@ if __name__ == '__main__':
     override_from_command_list('frameworks/commands/mrtrix_commands.txt', 'frameworks/mrtrix.json')
     override_from_command_list('frameworks/commands/c3d_commands.txt', 'frameworks/c3d.json')
     override_from_command_list('extraction/workbench/out_commands.txt', 'frameworks/workbench.json', prefix='wb_command ')
+    override_from_command_list('frameworks/commands/niftyreg_commands.txt', 'frameworks/niftyreg.json')

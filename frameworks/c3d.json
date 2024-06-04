@@ -12,7 +12,8 @@
       },
       {
         "target": "c3d",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/c3d/c3d.json"
       },
       {
         "target": "c3d_affine_tool",
