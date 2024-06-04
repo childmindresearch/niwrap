@@ -1,0 +1,67 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fsl_mrs_proc",
+  "author": "FMRIB Centre, University of Oxford",
+  "description": "FSL Magnetic Resonance Spectroscopy - Preprocessing",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "command-line": "fsl_mrs_proc [GLOBAL_OPTIONS] <subcommand> [SUBCOMMAND_OPTIONS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "version_flag",
+      "value-key": "[VERSION_FLAG]",
+      "name": "Version",
+      "type": "Flag",
+      "command-line-flag": "-v",
+      "description": "Show program's version number and exit",
+      "optional": true
+    },
+    {
+      "id": "config_file",
+      "value-key": "[CONFIG_FILE]",
+      "name": "Configuration File",
+      "type": "File",
+      "command-line-flag": "--config",
+      "description": "Configuration file",
+      "optional": true
+    },
+    {
+      "id": "subcommand",
+      "value-key": "[SUBCOMMAND]",
+      "name": "Subcommand",
+      "type": "String",
+      "description": "The subcommand to run",
+      "value-choices": [
+        "coilcombine",
+        "average",
+        "align",
+        "align-diff",
+        "ecc",
+        "remove",
+        "model",
+        "tshift",
+        "truncate",
+        "apodize",
+        "fshift",
+        "unlike",
+        "phase",
+        "fixed_phase",
+        "subtract",
+        "add",
+        "conj"
+      ],
+      "optional": false
+    }
+  ],
+  "groups": [
+    {
+      "id": "global_options",
+      "name": "Global Options",
+      "members": [
+        "version_flag",
+        "config_file"
+      ],
+      "description": "Global options for FSL MRS Processing"
+    }
+  ]
+}

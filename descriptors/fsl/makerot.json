@@ -1,0 +1,103 @@
+{
+  "name": "makerot",
+  "tool-version": "6.0.5:9e026117",
+  "author": "Mark Jenkinson, University of Oxford",
+  "description": "Tool to create a rotation matrix for a given angle and axis of rotation.",
+  "command-line": "makerot [AXIS] [COV] [CENTER] [OUTPUT_FILE] [VERBOSE_FLAG] [HELP_FLAG] [THETA]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "--theta",
+      "description": "Angle of rotation (in degrees)",
+      "value-key": "[THETA]",
+      "type": "Number",
+      "integer": false,
+      "optional": false,
+      "id": "theta",
+      "name": "Rotation angle"
+    },
+    {
+      "command-line-flag": "--axis",
+      "description": "Unnormalized axis vector (comma separated)",
+      "value-key": "[AXIS]",
+      "type": "String",
+      "optional": true,
+      "id": "axis",
+      "name": "Axis vector"
+    },
+    {
+      "command-line-flag": "--cov",
+      "description": "Image filename used for center of volume",
+      "value-key": "[COV]",
+      "type": "File",
+      "optional": true,
+      "id": "cov",
+      "name": "Center of volume image"
+    },
+    {
+      "command-line-flag": "--centre",
+      "description": "Center of rotation in mm (comma separated)",
+      "value-key": "[CENTER]",
+      "type": "String",
+      "optional": true,
+      "id": "center",
+      "name": "Center of rotation"
+    },
+    {
+      "command-line-flag": "--out",
+      "description": "Output filename for matrix",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "output_file",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "--verbose",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose flag"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Display help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Optional arguments for specifying rotation parameters and output details",
+      "id": "optional_params_group",
+      "members": [
+        "axis",
+        "cov",
+        "center",
+        "output_file",
+        "verbose_flag",
+        "help_flag"
+      ],
+      "name": "Optional Parameters"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Output file for the rotation matrix",
+      "optional": true,
+      "id": "matrix_output",
+      "name": "Rotation matrix output"
+    }
+  ]
+}

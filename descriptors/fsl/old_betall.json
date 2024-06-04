@@ -1,0 +1,47 @@
+{
+  "tool-version": "1.0.0",
+  "name": "old_betall",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Automated brain extraction tool for FSL involving both T1 and T2 images",
+  "command-line": "betall [T1_FILEROUT] [T2_FILEROUT]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input T1 image file root (e.g. img_t1.nii.gz)",
+      "value-key": "[T1_FILEROUT]",
+      "type": "String",
+      "optional": false,
+      "id": "t1_filerout",
+      "name": "T1 File Root"
+    },
+    {
+      "description": "Input T2 image file root (e.g. img_t2.nii.gz)",
+      "value-key": "[T2_FILEROUT]",
+      "type": "String",
+      "optional": false,
+      "id": "t2_filerout",
+      "name": "T2 File Root"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[T1_FILEROUT]",
+      "description": "Output file root for T1 image",
+      "optional": false,
+      "id": "output_t1",
+      "name": "Output T1 File Root"
+    },
+    {
+      "path-template": "[T2_FILEROUT]",
+      "description": "Output file root for T2 image",
+      "optional": false,
+      "id": "output_t2",
+      "name": "Output T2 File Root"
+    }
+  ]
+}

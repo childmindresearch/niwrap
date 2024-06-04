@@ -1,0 +1,101 @@
+{
+  "tool-version": "6.0.5:9e026117",
+  "name": "lesion_filling",
+  "author": "University of Oxford (Mark Jenkinson & Taylor Hanayik)",
+  "description": "Lesion filling tool as part of FSL",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/LESION_FILLING",
+  "command-line": "lesion_filling [INPUT_IMAGE] [OUTPUT_IMAGE] [LESION_MASK_IMAGE] [WHITE_MATTER_MASK_IMAGE] [VERBOSE_FLAG] [COMPONENTS_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-i",
+      "description": "Input image filename (e.g., T1w image)",
+      "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Output filename (lesion filled image)",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "-l",
+      "description": "Filename of lesion mask image",
+      "value-key": "[LESION_MASK_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "lesionmask",
+      "name": "Lesion mask file"
+    },
+    {
+      "command-line-flag": "-w",
+      "description": "Filename of white matter mask image",
+      "value-key": "[WHITE_MATTER_MASK_IMAGE]",
+      "type": "File",
+      "optional": true,
+      "id": "wmmask",
+      "name": "White matter mask file"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose Flag"
+    },
+    {
+      "command-line-flag": "-c",
+      "description": "Save all lesion components as volumes",
+      "value-key": "[COMPONENTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "components_flag",
+      "name": "Components Flag"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Display help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Optional arguments for lesion filling tool",
+      "id": "optional_params_group",
+      "members": [
+        "wmmask",
+        "verbose_flag",
+        "components_flag",
+        "help_flag"
+      ],
+      "name": "Optional Parameters"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_IMAGE]",
+      "description": "Lesion filled output image",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output lesion filled image"
+    }
+  ]
+}

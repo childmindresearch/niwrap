@@ -1,0 +1,101 @@
+{
+  "tool-version": "1.0",
+  "name": "first_mult_bcorr",
+  "author": "University of Oxford (Mark Jenkinson)",
+  "description": "Part of FSL (ID: 6.0.5:9e026117), first_mult_bcorr converts label images to an output image.",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST",
+  "command-line": "first_mult_bcorr [INPUT_IMAGE] [CORRECTED_4D_LABELS] [UNCORRECTED_4D_LABELS] [OUTPUT_IMAGE] [VERBOSE_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-i",
+      "description": "Filename of original T1 input image",
+      "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_image",
+      "name": "Input Image"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Output image name (3D label image)",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_image",
+      "name": "Output Image"
+    },
+    {
+      "command-line-flag": "-u",
+      "description": "Filename of 4D image of uncorrected labels (with boundaries)",
+      "value-key": "[UNCORRECTED_4D_LABELS]",
+      "type": "File",
+      "optional": false,
+      "id": "uncorrected_4d_labels",
+      "name": "Uncorrected 4D Labels"
+    },
+    {
+      "command-line-flag": "-c",
+      "description": "Filename of 4D image of individually corrected labels",
+      "value-key": "[CORRECTED_4D_LABELS]",
+      "type": "File",
+      "optional": false,
+      "id": "corrected_4d_labels",
+      "name": "Corrected 4D Labels"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Output F-stats to standard out",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose Flag"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Display this help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory arguments (You MUST set one or more of)",
+      "id": "compulsory_params_group",
+      "members": [
+        "input_image",
+        "output_image",
+        "uncorrected_4d_labels",
+        "corrected_4d_labels"
+      ],
+      "name": "Compulsory Parameters"
+    },
+    {
+      "description": "Optional arguments (You may optionally specify one or more of)",
+      "id": "optional_params_group",
+      "members": [
+        "verbose_flag",
+        "help_flag"
+      ],
+      "name": "Optional Parameters"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_IMAGE]",
+      "description": "Output image name (3D label image)",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output Image"
+    }
+  ]
+}

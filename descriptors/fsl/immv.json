@@ -1,0 +1,32 @@
+{
+  "tool-version": "1.0.0",
+  "name": "immv",
+  "author": "Unknown",
+  "description": "Moves images from one file or directory to another.",
+  "command-line": "immv [SOURCE_FILES] [DESTINATION]",
+  "container-image": {
+    "image": "docker/immv:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Source files to be moved. Recognized file extensions: .nii.gz, .nii, .img, .hdr, .img.gz, .hdr.gz",
+      "value-key": "[SOURCE_FILES]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "source_files",
+      "name": "Source Files"
+    },
+    {
+      "description": "Destination file or directory.",
+      "value-key": "[DESTINATION]",
+      "type": "String",
+      "optional": false,
+      "id": "destination",
+      "name": "Destination"
+    }
+  ],
+  "schema-version": "0.5"
+}

@@ -1,0 +1,121 @@
+{
+  "tool-version": "1.0.0",
+  "name": "xtract_stats",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Quantitative evaluation tool of XTRACT results in neuroimaging",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/",
+  "command-line": "xtract_stats -d <folder_basename> -xtract <XTRACT_dir> -w <xtract2diff> [reference] [output_file] [structures_file] [threshold] [measurements] [keep_temp_files]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Path to microstructure folder and basename of data (e.g. /home/DTI/dti_)",
+      "value-key": "<folder_basename>",
+      "type": "String",
+      "optional": false,
+      "id": "folder_basename",
+      "name": "Folder Basename"
+    },
+    {
+      "description": "Path to XTRACT output folder",
+      "value-key": "<XTRACT_dir>",
+      "type": "String",
+      "optional": false,
+      "id": "XTRACT_dir",
+      "name": "XTRACT Output Directory"
+    },
+    {
+      "description": "EITHER XTRACT results to diffusion space transform OR 'native' if tracts are already in diffusion space",
+      "value-key": "<xtract2diff>",
+      "type": "String",
+      "optional": false,
+      "id": "xtract2diff",
+      "name": "Xtract to Diffusion Transform"
+    },
+    {
+      "command-line-flag": "-r",
+      "description": "If not 'native', provide reference image in diffusion space (e.g. /home/DTI/dti_FA)",
+      "value-key": "<reference>",
+      "type": "File",
+      "optional": true,
+      "id": "reference_image",
+      "name": "Reference Image"
+    },
+    {
+      "command-line-flag": "-out",
+      "description": "Output filepath (Default <XTRACT_dir>/stats.csv)",
+      "value-key": "<output_file>",
+      "type": "String",
+      "optional": true,
+      "id": "output_file",
+      "name": "Output File"
+    },
+    {
+      "command-line-flag": "-str",
+      "description": "Structures file (as in XTRACT) (Default is all tracts under <XTRACT_dir>)",
+      "value-key": "<structures_file>",
+      "type": "File",
+      "optional": true,
+      "id": "structures_file",
+      "name": "Structures File"
+    },
+    {
+      "command-line-flag": "-thr",
+      "description": "Threshold applied to tract probability map (default = 0.001 = 0.1%)",
+      "value-key": "<threshold>",
+      "type": "Number",
+      "optional": true,
+      "id": "threshold",
+      "name": "Threshold"
+    },
+    {
+      "command-line-flag": "-meas",
+      "description": "Comma separated list of features to extract (Default = vol,prob,length,FA,MD - assumes DTI folder has been provided). vol = tract volume, prob = tract probability, length = tract length. Additional metrics must follow file naming conventions. e.g. for dti_L1 use 'L1'",
+      "value-key": "<measurements>",
+      "type": "String",
+      "optional": true,
+      "id": "measurements",
+      "name": "Measurements"
+    },
+    {
+      "command-line-flag": "-keepfiles",
+      "description": "Keep temporary files",
+      "value-key": "<keep_temp_files>",
+      "type": "Flag",
+      "optional": true,
+      "id": "keep_temp_files",
+      "name": "Keep Temporary Files"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Main parameters required to run xtract_stats",
+      "id": "main_params_group",
+      "members": [
+        "folder_basename",
+        "XTRACT_dir",
+        "xtract2diff",
+        "reference_image",
+        "output_file",
+        "structures_file",
+        "threshold",
+        "measurements",
+        "keep_temp_files"
+      ],
+      "name": "Main Parameters"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "<output_file>",
+      "description": "CSV file containing the statistics from XTRACT analysis.",
+      "optional": true,
+      "id": "csv_output",
+      "name": "CSV Output"
+    }
+  ]
+}

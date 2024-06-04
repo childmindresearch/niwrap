@@ -1,0 +1,33 @@
+{
+  "tool-version": "1.0.0",
+  "name": "mist_display",
+  "author": "Unknown",
+  "descriptor-url": "http://example.com",
+  "description": "Tool to show scalars on mesh",
+  "command-line": "mist_display [MODE] [--help]",
+  "inputs": [
+    {
+      "description": "Mode for displaying scalars on mesh",
+      "value-choices": [
+        "simple",
+        "pvals",
+        "noscalars"
+      ],
+      "value-key": "[MODE]",
+      "type": "String",
+      "optional": false,
+      "id": "mode",
+      "name": "Mode"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Show help message and exit",
+      "value-key": "[--help]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    }
+  ],
+  "schema-version": "0.5"
+}

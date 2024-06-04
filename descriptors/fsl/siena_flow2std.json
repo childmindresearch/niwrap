@@ -1,0 +1,45 @@
+{
+  "tool-version": "1.0.0",
+  "name": "siena_flow2std",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Convert edge flow to standard space",
+  "command-line": "siena_flow2std [FILEROUT1] [FILEROUT2] [SIGMA] [DEBUG_FLAG]",
+  "inputs": [
+    {
+      "description": "Input file root 1",
+      "value-key": "[FILEROUT1]",
+      "type": "String",
+      "optional": false,
+      "id": "fileroot1",
+      "name": "Input file root 1"
+    },
+    {
+      "description": "Input file root 2",
+      "value-key": "[FILEROUT2]",
+      "type": "String",
+      "optional": false,
+      "id": "fileroot2",
+      "name": "Input file root 2"
+    },
+    {
+      "command-line-flag": "-s",
+      "description": "Spatial smoothing of standard-space edge-flow image, sigma (HWHM) in mm (default=5)",
+      "value-key": "[SIGMA]",
+      "type": "Number",
+      "optional": true,
+      "id": "sigma",
+      "name": "Spatial smoothing sigma",
+      "default-value": 5
+    },
+    {
+      "command-line-flag": "-d",
+      "description": "Debug (don't delete intermediate files)",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug_flag",
+      "name": "Debug Flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

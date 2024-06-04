@@ -1,0 +1,127 @@
+{
+  "tool-version": "6.0.5:9e026117",
+  "name": "dtigen",
+  "author": "FSL",
+  "description": "Generate diffusion data using tensor model",
+  "command-line": "dtigen [TENSOR] [S0] [OUTPUT_DATA] [BVECS] [BVALS] [BRAINMASK] [KURTOSIS] [HELP]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-t",
+      "description": "Input tensor file",
+      "value-key": "[TENSOR]",
+      "type": "File",
+      "optional": false,
+      "id": "tensor",
+      "name": "Input tensor"
+    },
+    {
+      "command-line-flag": "--s0",
+      "description": "Input S0 file",
+      "value-key": "[S0]",
+      "type": "File",
+      "optional": false,
+      "id": "s0",
+      "name": "Input S0"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Output data file",
+      "value-key": "[OUTPUT_DATA]",
+      "type": "String",
+      "optional": false,
+      "id": "output_data",
+      "name": "Output data"
+    },
+    {
+      "command-line-flag": "-r",
+      "description": "bvecs ASCII text file",
+      "value-key": "[BVECS]",
+      "type": "File",
+      "optional": false,
+      "id": "bvecs",
+      "name": "Bvecs file"
+    },
+    {
+      "command-line-flag": "-b",
+      "description": "bvals ASCII text file",
+      "value-key": "[BVALS]",
+      "type": "File",
+      "optional": false,
+      "id": "bvals",
+      "name": "Bvals file"
+    },
+    {
+      "command-line-flag": "-m",
+      "description": "Brain mask file",
+      "value-key": "[BRAINMASK]",
+      "type": "File",
+      "optional": false,
+      "id": "brainmask",
+      "name": "Brain mask"
+    },
+    {
+      "command-line-flag": "--kurt",
+      "description": "Mean kurtosis map",
+      "value-key": "[KURTOSIS]",
+      "type": "File",
+      "optional": true,
+      "id": "kurtosis",
+      "name": "Kurtosis map"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Display help message",
+      "value-key": "[HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory arguments for dtigen",
+      "id": "compulsory_args",
+      "members": [
+        "tensor",
+        "s0",
+        "output_data",
+        "bvecs",
+        "bvals",
+        "brainmask"
+      ],
+      "name": "Compulsory Arguments"
+    },
+    {
+      "description": "Optional arguments for dtigen",
+      "id": "optional_args",
+      "members": [
+        "kurtosis",
+        "help"
+      ],
+      "name": "Optional Arguments"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_DATA].nii.gz",
+      "description": "Output diffusion data",
+      "optional": false,
+      "id": "output_diffusion_data",
+      "name": "Output diffusion data"
+    },
+    {
+      "path-template": "[KURTOSIS]",
+      "description": "Mean kurtosis map",
+      "optional": true,
+      "id": "output_kurtosis_map",
+      "name": "Output kurtosis map"
+    }
+  ]
+}

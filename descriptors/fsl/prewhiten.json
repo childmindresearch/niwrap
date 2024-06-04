@@ -1,0 +1,35 @@
+{
+  "tool-version": "1.0.0",
+  "name": "prewhiten",
+  "command-line": "prewhiten [FEAT_DIRECTORY] [OUTPUT_DIRECTORY]",
+  "description": "Prewhitening tool for FEAT directories",
+  "inputs": [
+    {
+      "description": "Input FEAT directory",
+      "value-key": "[FEAT_DIRECTORY]",
+      "type": "String",
+      "optional": false,
+      "id": "feat_directory",
+      "name": "FEAT directory"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Change output directory from default of input FEAT directory",
+      "value-key": "[OUTPUT_DIRECTORY]",
+      "type": "String",
+      "optional": true,
+      "id": "output_directory",
+      "name": "Output Directory"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_DIRECTORY]/*",
+      "description": "Output files generated in the specified output directory",
+      "optional": true,
+      "id": "output_files",
+      "name": "Output Files"
+    }
+  ]
+}

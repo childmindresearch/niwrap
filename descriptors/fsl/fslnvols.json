@@ -1,0 +1,23 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fslnvols",
+  "author": "FMRIB Centre, University of Oxford",
+  "description": "Retrieve the number of volumes in a 4D NIfTI file",
+  "command-line": "fslnvols [INPUT_FILE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input NIfTI file (e.g., fmri.nii.gz)",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    }
+  ],
+  "schema-version": "0.5"
+}

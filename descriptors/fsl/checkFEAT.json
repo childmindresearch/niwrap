@@ -1,0 +1,49 @@
+{
+  "name": "checkFEAT",
+  "description": "Perform checks on FEAT analysis results",
+  "command-line": "checkFEAT [REPORT] [REPORT_LOG]",
+  "inputs": [
+    {
+      "description": "Path to the HTML report",
+      "value-key": "[REPORT]",
+      "type": "File",
+      "optional": false,
+      "id": "report_file",
+      "name": "Report File"
+    },
+    {
+      "description": "Path to the HTML report log",
+      "value-key": "[REPORT_LOG]",
+      "type": "File",
+      "optional": false,
+      "id": "report_log_file",
+      "name": "Report Log File"
+    }
+  ],
+  "schema-version": "0.5",
+  "tool-version": "1.0.0",
+  "author": "YourName",
+  "descriptor-url": "http://example.com/checkFEAT_descriptor.json",
+  "url": "http://example.com/checkFEAT",
+  "container-image": {
+    "image": "example/checkfeat:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "output-files": [
+    {
+      "path-template": "output_report.html",
+      "description": "Output HTML report",
+      "optional": false,
+      "id": "output_report",
+      "name": "Output Report"
+    },
+    {
+      "path-template": "output_report_log.html",
+      "description": "Output HTML report log",
+      "optional": false,
+      "id": "output_report_log",
+      "name": "Output Report Log"
+    }
+  ]
+}

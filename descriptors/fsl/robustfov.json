@@ -1,0 +1,102 @@
+{
+  "tool-version": "6.0.5",
+  "name": "robustfov",
+  "author": "University of Oxford (Mark Jenkinson)",
+  "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/robustfov",
+  "description": "Reduce FOV of image to remove lower head and neck.",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/robustfov",
+  "command-line": "robustfov [OPTIONS] -i [INPUT_FILE] [-r OUTPUT_IMAGE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:6.0.5",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input image file",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input file",
+      "command-line-flag": "-i"
+    },
+    {
+      "description": "ROI volume output name",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "File",
+      "optional": true,
+      "id": "output_image",
+      "name": "Output image",
+      "command-line-flag": "-r"
+    },
+    {
+      "description": "Size of the brain in z-dimension (default 170mm)",
+      "value-key": "[BRAIN_SIZE]",
+      "type": "Number",
+      "optional": true,
+      "id": "brain_size",
+      "name": "Brain size in z-dimension",
+      "command-line-flag": "-b"
+    },
+    {
+      "description": "Matrix output name (ROI to full FOV)",
+      "value-key": "[MATRIX_OUTPUT]",
+      "type": "String",
+      "optional": true,
+      "id": "matrix_output",
+      "name": "Matrix output name",
+      "command-line-flag": "-m"
+    },
+    {
+      "description": "Turn on debugging output",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug_flag",
+      "name": "Debug flag",
+      "command-line-flag": "--debug"
+    },
+    {
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose flag",
+      "command-line-flag": "--verbose"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory and optional arguments for robustfov",
+      "id": "main_group",
+      "members": [
+        "input_file",
+        "output_image",
+        "brain_size",
+        "matrix_output",
+        "debug_flag",
+        "verbose_flag"
+      ],
+      "name": "Main Parameters"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_IMAGE].nii.gz",
+      "description": "ROI volume output",
+      "optional": true,
+      "id": "output_roi_volume",
+      "name": "Output ROI volume"
+    },
+    {
+      "path-template": "[MATRIX_OUTPUT].txt",
+      "description": "Matrix output (ROI to full FOV)",
+      "optional": true,
+      "id": "output_matrix_file",
+      "name": "Output matrix file"
+    }
+  ]
+}

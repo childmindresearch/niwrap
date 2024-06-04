@@ -1,0 +1,341 @@
+{
+  "tool-version": "6.0.5:9e026117",
+  "name": "asl_file",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "ASL data manipulation tool for FSL",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/AslFile",
+  "command-line": "asl_file [DATA] [NTIS] [MASK] [IBF] [IAF] [RPTS] [PAIRS] [SPPAIRS] [DIFF] [SURRDIFF] [EXTRAPOLATE] [NEIGHBOUR] [PVGM] [PVWM] [KERNEL] [OUT] [OBF] [MEAN] [SPLIT] [EPOCH] [ELEN] [EOL] [EUNIT] [DECONV] [AIF]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "--data",
+      "description": "ASL data file",
+      "value-key": "[DATA]",
+      "type": "File",
+      "optional": false,
+      "id": "datafile",
+      "name": "Data file"
+    },
+    {
+      "command-line-flag": "--ntis",
+      "description": "Number of TIs in the file",
+      "value-key": "[NTIS]",
+      "type": "Number",
+      "optional": false,
+      "id": "ntis",
+      "name": "Number of TIs"
+    },
+    {
+      "command-line-flag": "--mask",
+      "description": "Mask file",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask"
+    },
+    {
+      "command-line-flag": "--ibf",
+      "description": "Input block format",
+      "value-key": "[IBF]",
+      "type": "String",
+      "optional": true,
+      "id": "inblockform",
+      "name": "Input block format",
+      "value-choices": [
+        "rpt",
+        "tis"
+      ]
+    },
+    {
+      "command-line-flag": "--iaf",
+      "description": "ASL data form",
+      "value-key": "[IAF]",
+      "type": "String",
+      "optional": true,
+      "id": "inaslform",
+      "name": "Input ASL form",
+      "value-choices": [
+        "diff",
+        "tc",
+        "ct",
+        "tcb",
+        "ctb"
+      ],
+      "default-value": "diff"
+    },
+    {
+      "command-line-flag": "--rpts",
+      "description": "Number of repeats at each TI as comma separated list, not required if the number of repeats is same for all TIs  (only for use with --ibf=tis)",
+      "value-key": "[RPTS]",
+      "type": "String",
+      "optional": true,
+      "id": "rpts",
+      "name": "Repeats"
+    },
+    {
+      "command-line-flag": "--pairs",
+      "description": "Data contains adjacent pairs of measurements (e.g. Tag, Control) DEPRECATED use --iaf instead",
+      "value-key": "[PAIRS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "pairs",
+      "name": "Pairs"
+    },
+    {
+      "command-line-flag": "--spairs",
+      "description": "Split the pairs within the data, e.g. to separate tag and control images in output",
+      "value-key": "[SPPAIRS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "spairs",
+      "name": "Split pairs"
+    },
+    {
+      "command-line-flag": "--diff",
+      "description": "Take the difference between the pairs, i.e., Tag-control difference",
+      "value-key": "[DIFF]",
+      "type": "Flag",
+      "optional": true,
+      "id": "diff",
+      "name": "Difference"
+    },
+    {
+      "command-line-flag": "--surrdiff",
+      "description": "Do surround subtraction on the pairs",
+      "value-key": "[SURRDIFF]",
+      "type": "Flag",
+      "optional": true,
+      "id": "surrdiff",
+      "name": "Surround subtraction"
+    },
+    {
+      "command-line-flag": "--extrapolate",
+      "description": "Option to extrapolate the edge of the brain to fix the artefact on the edge of the brain",
+      "value-key": "[EXTRAPOLATE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "extrapolate",
+      "name": "Extrapolate"
+    },
+    {
+      "command-line-flag": "--neighbour",
+      "description": "Neighbour size for extrapolation, must be an odd number between 3 and 9. Default: 5",
+      "value-key": "[NEIGHBOUR]",
+      "type": "Number",
+      "optional": true,
+      "id": "neighbour",
+      "name": "Neighbour size",
+      "minimum": 3,
+      "maximum": 9
+    },
+    {
+      "command-line-flag": "--pvgm",
+      "description": "GM partial volume map",
+      "value-key": "[PVGM]",
+      "type": "File",
+      "optional": true,
+      "id": "pvgm",
+      "name": "GM partial volume map"
+    },
+    {
+      "command-line-flag": "--pvwm",
+      "description": "WM partial volume map",
+      "value-key": "[PVWM]",
+      "type": "File",
+      "optional": true,
+      "id": "pvwm",
+      "name": "WM partial volume map"
+    },
+    {
+      "command-line-flag": "--kernel",
+      "description": "Kernel size (in voxels) of partial volume correction, must be an odd number between 3 and 9. Default: 5",
+      "value-key": "[KERNEL]",
+      "type": "Number",
+      "optional": true,
+      "id": "kernel",
+      "name": "Kernel size",
+      "minimum": 3,
+      "maximum": 9
+    },
+    {
+      "command-line-flag": "--out",
+      "description": "Output data file",
+      "value-key": "[OUT]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "--obf",
+      "description": "Output block format",
+      "value-key": "[OBF]",
+      "type": "String",
+      "optional": true,
+      "id": "outblockform",
+      "name": "Output block format",
+      "value-choices": [
+        "rpt",
+        "tis"
+      ]
+    },
+    {
+      "command-line-flag": "--mean",
+      "description": "Output ASL data having taken mean at each TI to file",
+      "value-key": "[MEAN]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mean",
+      "name": "Mean output"
+    },
+    {
+      "command-line-flag": "--split",
+      "description": "Split data into separate files for each TI, specify filename root",
+      "value-key": "[SPLIT]",
+      "type": "String",
+      "optional": true,
+      "id": "split",
+      "name": "Split output"
+    },
+    {
+      "command-line-flag": "--epoch",
+      "description": "Output epochs of ASL data (takes mean at each TI within the epoch)",
+      "value-key": "[EPOCH]",
+      "type": "Flag",
+      "optional": true,
+      "id": "epoch",
+      "name": "Epoch output"
+    },
+    {
+      "command-line-flag": "--elen",
+      "description": "Length of epochs in number of repeats",
+      "value-key": "[ELEN]",
+      "type": "Number",
+      "optional": true,
+      "id": "epoch_length",
+      "name": "Epoch length"
+    },
+    {
+      "command-line-flag": "--eol",
+      "description": "Amount of overlap between epochs in number of repeats",
+      "value-key": "[EOL]",
+      "type": "Number",
+      "optional": true,
+      "id": "epoch_overlap",
+      "name": "Epoch overlap"
+    },
+    {
+      "command-line-flag": "--eunit",
+      "description": "Epochs to be determined over",
+      "value-key": "[EUNIT]",
+      "type": "String",
+      "optional": true,
+      "id": "epoch_unit",
+      "name": "Epoch unit",
+      "value-choices": [
+        "rpt",
+        "tis"
+      ]
+    },
+    {
+      "command-line-flag": "--deconv",
+      "description": "Deconvolution of data with arterial input functions",
+      "value-key": "[DECONV]",
+      "type": "Flag",
+      "optional": true,
+      "id": "deconv",
+      "name": "Deconvolution"
+    },
+    {
+      "command-line-flag": "--aif",
+      "description": "Arterial input functions for deconvolution (4D volume, one aif for each voxel within mask)",
+      "value-key": "[AIF]",
+      "type": "File",
+      "optional": true,
+      "id": "aif",
+      "name": "Arterial input functions"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Display the help message",
+      "value-key": "[HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Display version identification",
+      "value-key": "[VERSION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory arguments",
+      "id": "compulsory_arguments",
+      "members": [
+        "datafile",
+        "ntis"
+      ],
+      "name": "Compulsory Arguments"
+    },
+    {
+      "description": "Optional arguments for processing ASL data",
+      "id": "optional_arguments",
+      "members": [
+        "mask",
+        "inblockform",
+        "inaslform",
+        "rpts",
+        "pairs",
+        "spairs",
+        "diff",
+        "surrdiff",
+        "extrapolate",
+        "neighbour",
+        "pvgm",
+        "pvwm",
+        "kernel",
+        "outblockform",
+        "mean",
+        "split",
+        "epoch",
+        "epoch_length",
+        "epoch_overlap",
+        "epoch_unit",
+        "deconv",
+        "aif",
+        "help",
+        "version"
+      ],
+      "name": "Optional Arguments"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUT].nii.gz",
+      "description": "Primary output data file",
+      "optional": false,
+      "id": "output_data",
+      "name": "Output data file"
+    },
+    {
+      "path-template": "[OUT]_mean.nii.gz",
+      "description": "Mean output data file",
+      "optional": true,
+      "id": "output_mean",
+      "name": "Mean output file"
+    }
+  ]
+}

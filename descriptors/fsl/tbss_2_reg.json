@@ -1,0 +1,56 @@
+{
+  "tool-version": "1.0.0",
+  "name": "tbss_2_reg",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "TBSS utility for target selection and registration for Tract-Based Spatial Statistics (TBSS) analysis",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide",
+  "command-line": "tbss_2_reg [TARGET_SELECTION_OPTION]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-T",
+      "description": "Use FMRIB58_FA_1mm as the target for nonlinear registrations (recommended)",
+      "value-key": "[USE_FMRIB58_FA_1MM]",
+      "type": "Flag",
+      "optional": true,
+      "id": "use_fmrib58_fa_1mm",
+      "name": "Use FMRIB58_FA_1mm"
+    },
+    {
+      "command-line-flag": "-t",
+      "description": "Use the specified image as the target for nonlinear registrations",
+      "value-key": "[TARGET_IMAGE]",
+      "type": "File",
+      "optional": true,
+      "id": "target_image",
+      "name": "Target Image"
+    },
+    {
+      "command-line-flag": "-n",
+      "description": "Find the best target from all images in the FA",
+      "value-key": "[FIND_BEST_TARGET]",
+      "type": "Flag",
+      "optional": true,
+      "id": "find_best_target",
+      "name": "Find Best Target"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Choose one of the target-selection options",
+      "mutually-exclusive": true,
+      "id": "target_selection_group",
+      "members": [
+        "use_fmrib58_fa_1mm",
+        "target_image",
+        "find_best_target"
+      ],
+      "name": "Target Selection Options"
+    }
+  ]
+}

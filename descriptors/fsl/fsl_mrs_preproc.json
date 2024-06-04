@@ -1,0 +1,174 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fsl_mrs_preproc",
+  "author": "FMRIB Analysis Group, Oxford University",
+  "description": "FSL Magnetic Resonance Spectroscopy - Complete non-edited SVS Preprocessing",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL",
+  "command-line": "fsl_mrs_preproc [DATA] [REFERENCE] [OUTPUT] [QUANT] [ECC] [NOAVERAGE] [HLSVD] [LEFTSHIFT] [T1] [VERBOSE] [CONJUGATE] [OVERWRITE] [REPORT] [CONFIG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input file(s)",
+      "value-key": "[DATA]",
+      "type": "File",
+      "optional": false,
+      "id": "data",
+      "name": "Data"
+    },
+    {
+      "description": "Reference non-water suppressed file",
+      "value-key": "[REFERENCE]",
+      "type": "File",
+      "optional": false,
+      "id": "reference",
+      "name": "Reference"
+    },
+    {
+      "description": "Output folder",
+      "value-key": "[OUTPUT]",
+      "type": "String",
+      "optional": false,
+      "id": "output",
+      "name": "Output"
+    },
+    {
+      "description": "Water reference data for quantification (Optional)",
+      "value-key": "[QUANT]",
+      "type": "File",
+      "optional": true,
+      "id": "quant",
+      "name": "Quant"
+    },
+    {
+      "description": "Water reference data for eddy current correction (Optional)",
+      "value-key": "[ECC]",
+      "type": "File",
+      "optional": true,
+      "id": "ecc",
+      "name": "Ecc"
+    },
+    {
+      "command-line-flag": "--noaverage",
+      "description": "Do not average repetitions",
+      "value-key": "[NOAVERAGE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "noaverage",
+      "name": "No Average"
+    },
+    {
+      "command-line-flag": "--hlsvd",
+      "description": "Apply HLSVD for residual water removal",
+      "value-key": "[HLSVD]",
+      "type": "Flag",
+      "optional": true,
+      "id": "hlsvd",
+      "name": "HLSVD"
+    },
+    {
+      "command-line-flag": "--leftshift",
+      "description": "Remove points at the start of the fid",
+      "value-key": "[LEFTSHIFT]",
+      "type": "Number",
+      "optional": true,
+      "id": "leftshift",
+      "name": "Left Shift Points"
+    },
+    {
+      "description": "Structural image (for report)",
+      "value-key": "[T1]",
+      "type": "File",
+      "optional": true,
+      "id": "t1",
+      "name": "T1 Image"
+    },
+    {
+      "command-line-flag": "--verbose",
+      "description": "Spit out verbose info",
+      "value-key": "[VERBOSE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose"
+    },
+    {
+      "command-line-flag": "--conjugate",
+      "description": "Apply conjugate to FID",
+      "value-key": "[CONJUGATE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "conjugate",
+      "name": "Conjugate"
+    },
+    {
+      "command-line-flag": "--overwrite",
+      "description": "Overwrite existing output folder",
+      "value-key": "[OVERWRITE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "overwrite",
+      "name": "Overwrite"
+    },
+    {
+      "command-line-flag": "--report",
+      "description": "Generate report in output folder",
+      "value-key": "[REPORT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "report",
+      "name": "Report"
+    },
+    {
+      "description": "Configuration file",
+      "value-key": "[CONFIG]",
+      "type": "File",
+      "optional": true,
+      "id": "config",
+      "name": "Config"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Required arguments for fsl_mrs_preproc",
+      "id": "required_arguments_group",
+      "members": [
+        "data",
+        "reference",
+        "output"
+      ],
+      "name": "Required Arguments"
+    },
+    {
+      "description": "Optional arguments for fsl_mrs_preproc",
+      "id": "optional_arguments_group",
+      "members": [
+        "quant",
+        "ecc",
+        "noaverage",
+        "hlsvd",
+        "leftshift",
+        "t1",
+        "verbose",
+        "conjugate",
+        "overwrite",
+        "report",
+        "config"
+      ],
+      "name": "Optional Arguments"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT]",
+      "description": "Output folder containing preprocessed data",
+      "optional": true,
+      "id": "output_folder",
+      "name": "Output Folder"
+    }
+  ]
+}

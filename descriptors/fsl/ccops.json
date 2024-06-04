@@ -1,0 +1,159 @@
+{
+  "tool-version": "6.0.5:9e026117",
+  "name": "ccops",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "description": "ccops - Clustering of Connectomes Using Probabilistic Tractography",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "command-line": "ccops [basename] [infile] [tract_dir] [exclusion_mask] [reorder_seedspace] [reorder_tractspace] [tract_reord] [connexity_constraint] [binarise_val] [matrix_power] [brain_mask] [scheme] [nclusters] [--help]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Output basename",
+      "value-key": "[basename]",
+      "command-line-flag": "--basename",
+      "type": "String",
+      "optional": false,
+      "id": "basename",
+      "name": "Basename"
+    },
+    {
+      "description": "Input matrix",
+      "value-key": "[infile]",
+      "command-line-flag": "--in",
+      "type": "File",
+      "optional": true,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "description": "Tractography Results Directory",
+      "value-key": "[tract_dir]",
+      "command-line-flag": "--dir",
+      "type": "String",
+      "optional": true,
+      "id": "tract_dir",
+      "name": "Tractography Results Directory"
+    },
+    {
+      "description": "Exclusion mask (in tract space)",
+      "value-key": "[exclusion_mask]",
+      "command-line-flag": "-x",
+      "type": "File",
+      "optional": true,
+      "id": "exclusion_mask",
+      "name": "Exclusion Mask"
+    },
+    {
+      "description": "Do seedspace reordering (default no)",
+      "value-key": "[reorder_seedspace]",
+      "command-line-flag": "--r1",
+      "type": "Flag",
+      "optional": true,
+      "id": "reorder_seedspace",
+      "name": "Reorder Seedspace"
+    },
+    {
+      "description": "Do tractspace reordering (default no)",
+      "value-key": "[reorder_tractspace]",
+      "command-line-flag": "--r2",
+      "type": "Flag",
+      "optional": true,
+      "id": "reorder_tractspace",
+      "name": "Reorder Tractspace"
+    },
+    {
+      "description": "Propagate seed reordering onto tract space",
+      "value-key": "[tract_reord]",
+      "command-line-flag": "--tractreord",
+      "type": "Flag",
+      "optional": true,
+      "id": "tract_reord",
+      "name": "Tract Reordering"
+    },
+    {
+      "description": "Add connexity constraint - value between 0 and 1 (0 is no constraint). Default is 0",
+      "value-key": "[connexity_constraint]",
+      "command-line-flag": "--con",
+      "type": "Number",
+      "maximum": 1,
+      "minimum": 0,
+      "integer": false,
+      "optional": true,
+      "id": "connexity_constraint",
+      "name": "Connexity Constraint",
+      "default-value": 0
+    },
+    {
+      "description": "Binarise at (default 0 - no binarisation)",
+      "value-key": "[binarise_val]",
+      "command-line-flag": "--bin",
+      "type": "Number",
+      "optional": true,
+      "id": "binarise_val",
+      "name": "Binarisation",
+      "default-value": 0
+    },
+    {
+      "description": "Power to raise the correlation matrix to (default 1)",
+      "value-key": "[matrix_power]",
+      "command-line-flag": "--power",
+      "type": "Number",
+      "optional": true,
+      "id": "matrix_power",
+      "name": "Matrix Power",
+      "default-value": 1
+    },
+    {
+      "description": "Brain mask used to output the clustered ROI mask (not necessary if --dir set)",
+      "value-key": "[brain_mask]",
+      "command-line-flag": "--mask",
+      "type": "File",
+      "optional": true,
+      "id": "brain_mask",
+      "name": "Brain Mask"
+    },
+    {
+      "description": "Reordering algorithm. Can be either spectral (default), kmeans or fuzzy",
+      "value-key": "[scheme]",
+      "command-line-flag": "--scheme",
+      "type": "String",
+      "optional": true,
+      "id": "scheme",
+      "name": "Reordering Algorithm",
+      "default-value": "spectral"
+    },
+    {
+      "description": "Number of clusters to be used in kmeans or fuzzy",
+      "value-key": "[nclusters]",
+      "command-line-flag": "--nclusters",
+      "type": "Number",
+      "optional": true,
+      "id": "nclusters",
+      "name": "Number of Clusters"
+    },
+    {
+      "description": "Display this help message",
+      "value-key": "[--help]",
+      "command-line-flag": "--help",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[basename]_output.nii.gz",
+      "description": "Output clustered ROI mask",
+      "optional": true,
+      "id": "outfile",
+      "name": "Output Mask File"
+    }
+  ]
+}

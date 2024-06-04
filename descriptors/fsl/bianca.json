@@ -1,0 +1,210 @@
+{
+  "tool-version": "1.0.0",
+  "name": "bianca",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "BIANCA: Brain Intensity AbNormality Classification Algorithm",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BIANCA",
+  "command-line": "/usr/local/fsl/bin/bianca --singlefile=[MASTER_FILE] --labelfeaturenum=[LABEL_FEATURE_NUM] --brainmaskfeaturenum=[BRAIN_MASK_FEATURE_NUM] --querysubjectnum=[QUERY_SUBJECT_NUM] [FEATURE_SUBSET] [MAT_FEATURE_NUM] [SPATIAL_WEIGHT] [PATCH_SIZES] [PATCH_3D] [SELECT_PTS] [TRAINING_PTS] [NON_LES_PTS] [SAVE_CLASSIFIER_DATA] [VERBOSE_FLAG] -o [OUT_NAME]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Name of the master file",
+      "value-key": "[MASTER_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "master_file",
+      "name": "Master file"
+    },
+    {
+      "description": "Row number of query subject (in masterlistfile)",
+      "value-key": "[QUERY_SUBJECT_NUM]",
+      "type": "Number",
+      "optional": false,
+      "id": "query_subject_num",
+      "name": "Query subject number"
+    },
+    {
+      "description": "Column number (in the master file) of images to derive non-zero mask from",
+      "value-key": "[BRAIN_MASK_FEATURE_NUM]",
+      "type": "Number",
+      "optional": false,
+      "id": "brain_mask_feature_num",
+      "name": "Brain mask feature number"
+    },
+    {
+      "description": "Column number (in the master file) of the manual masks (or any placeholder name for query subjects)",
+      "value-key": "[LABEL_FEATURE_NUM]",
+      "type": "Number",
+      "optional": false,
+      "id": "label_feature_num",
+      "name": "Label feature number"
+    },
+    {
+      "command-line-flag": "--trainingnums",
+      "description": "Subjects to be used in training. List of row numbers (comma separated, no spaces) or 'all' to use all the subjects in the master file",
+      "value-key": "[TRAINING_NUMS]",
+      "type": "String",
+      "optional": true,
+      "id": "training_nums",
+      "name": "Training numbers"
+    },
+    {
+      "command-line-flag": "--loadclassifierdata",
+      "description": "Load training data from file",
+      "value-key": "[LOAD_CLASSIFIER_DATA]",
+      "type": "String",
+      "optional": true,
+      "id": "load_classifier_data",
+      "name": "Load classifier data"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Specify (base) output name of files",
+      "value-key": "[OUT_NAME]",
+      "type": "String",
+      "optional": true,
+      "id": "out_name",
+      "name": "Output name",
+      "default-value": "output_bianca"
+    },
+    {
+      "command-line-flag": "--featuresubset",
+      "description": "Set of column numbers (comma separated and no spaces) for features/images to use (default: use all available modalities as intensity features). The image used to derive non-zero mask from must be part of the features subset",
+      "value-key": "[FEATURE_SUBSET]",
+      "type": "String",
+      "optional": true,
+      "id": "feature_subset",
+      "name": "Feature subset"
+    },
+    {
+      "command-line-flag": "--matfeaturenum",
+      "description": "Column number of matrix files (in masterlistfile). Needed to extract spatial features (MNI coordinates)",
+      "value-key": "[MAT_FEATURE_NUM]",
+      "type": "Number",
+      "optional": true,
+      "id": "mat_feature_num",
+      "name": "Matrix feature number"
+    },
+    {
+      "command-line-flag": "--spatialweight",
+      "description": "Weighting for spatial coordinates (default = 1, i.e., variance-normalized MNI coordinates). Requires --matfeaturenum to be specified",
+      "value-key": "[SPATIAL_WEIGHT]",
+      "type": "Number",
+      "optional": true,
+      "id": "spatial_weight",
+      "name": "Spatial weight",
+      "default-value": 1
+    },
+    {
+      "command-line-flag": "--patchsizes",
+      "description": "List of patch sizes for local averaging",
+      "value-key": "[PATCH_SIZES]",
+      "type": "String",
+      "optional": true,
+      "id": "patch_sizes",
+      "name": "Patch sizes"
+    },
+    {
+      "command-line-flag": "--patch3D",
+      "description": "Use 3D patches (default is 2D)",
+      "value-key": "[PATCH_3D]",
+      "type": "Flag",
+      "optional": true,
+      "id": "patch_3d",
+      "name": "3D patches"
+    },
+    {
+      "command-line-flag": "--selectpts",
+      "description": "\"any\" (default) or \"surround\" or \"noborder\"",
+      "value-key": "[SELECT_PTS]",
+      "type": "String",
+      "optional": true,
+      "id": "select_pts",
+      "name": "Select points",
+      "default-value": "any"
+    },
+    {
+      "command-line-flag": "--trainingpts",
+      "description": "Number (max) of (lesion) points to use (per training subject) or \"equalpoints\" to select all lesion points and equal number of non-lesion points",
+      "value-key": "[TRAINING_PTS]",
+      "type": "String",
+      "optional": true,
+      "id": "training_pts",
+      "name": "Training points"
+    },
+    {
+      "command-line-flag": "--nonlespts",
+      "description": "Number (max) of non-lesion points to use. If not specified will be set to the same amount of lesion points",
+      "value-key": "[NON_LES_PTS]",
+      "type": "String",
+      "optional": true,
+      "id": "non_les_pts",
+      "name": "Non-lesion points"
+    },
+    {
+      "command-line-flag": "--saveclassifierdata",
+      "description": "Save training data to file",
+      "value-key": "[SAVE_CLASSIFIER_DATA]",
+      "type": "String",
+      "optional": true,
+      "id": "save_classifier_data",
+      "name": "Save classifier data"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Use verbose mode",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory arguments needed to run BIANCA",
+      "id": "compulsory_args_group",
+      "members": [
+        "master_file",
+        "query_subject_num",
+        "brain_mask_feature_num",
+        "label_feature_num",
+        "training_nums",
+        "load_classifier_data"
+      ],
+      "name": "Compulsory Arguments"
+    },
+    {
+      "description": "Optional arguments for BIANCA",
+      "id": "optional_args_group",
+      "members": [
+        "out_name",
+        "feature_subset",
+        "mat_feature_num",
+        "spatial_weight",
+        "patch_sizes",
+        "patch_3d",
+        "select_pts",
+        "training_pts",
+        "non_les_pts",
+        "save_classifier_data",
+        "verbose_flag"
+      ],
+      "name": "Optional Arguments"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUT_NAME]_bianca",
+      "description": "Base output file generated by BIANCA",
+      "optional": true,
+      "id": "base_output",
+      "name": "Base output"
+    }
+  ]
+}

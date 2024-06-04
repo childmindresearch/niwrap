@@ -1,0 +1,186 @@
+{
+  "tool-version": "6.0.5",
+  "name": "signal2image",
+  "author": "University of Oxford (Mark Jenkinson & Ivana Drobnjak)",
+  "description": "A tool for converting MR signal data to images using specified k-space coordinates and pulse sequences.",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "command-line": "signal2image [PULSE_SEQUENCE] [INPUT_SIGNAL] [OUTPUT_IMAGE] [KSPACE_COORDINATES] [OUTPUT_KSPACE] [ABS_FLAG] [HOMODYNE_FLAG] [VERBOSE_FLAG] [APODIZE_FLAG] [CUTOFF] [ROLLOFF] [SAVE_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-p",
+      "description": "8-column pulse_sequence matrix. Expects to find all other pulse sequence files in the same directory.",
+      "value-key": "[PULSE_SEQUENCE]",
+      "type": "File",
+      "optional": false,
+      "id": "pulse_sequence",
+      "name": "Pulse Sequence File"
+    },
+    {
+      "command-line-flag": "-i",
+      "description": "Input signal file.",
+      "value-key": "[INPUT_SIGNAL]",
+      "type": "File",
+      "optional": true,
+      "id": "input_signal",
+      "name": "Input Signal File"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Output image file.",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "String",
+      "optional": true,
+      "id": "output_image",
+      "name": "Output Image File"
+    },
+    {
+      "command-line-flag": "-c",
+      "description": "K-space coordinates file.",
+      "value-key": "[KSPACE_COORDINATES]",
+      "type": "File",
+      "optional": true,
+      "id": "kspace_coordinates",
+      "name": "K-space Coordinates File"
+    },
+    {
+      "command-line-flag": "-k",
+      "description": "Output k-space file.",
+      "value-key": "[OUTPUT_KSPACE]",
+      "type": "String",
+      "optional": true,
+      "id": "output_kspace",
+      "name": "Output K-space File"
+    },
+    {
+      "command-line-flag": "-a",
+      "description": "Save absolute magnitude and phase.",
+      "value-key": "[ABS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "abs_flag",
+      "name": "Absolute Magnitude and Phase Flag"
+    },
+    {
+      "command-line-flag": "--homo",
+      "description": "Do the homodyne reconstruction.",
+      "value-key": "[HOMODYNE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "homodyne_flag",
+      "name": "Homodyne Reconstruction Flag"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Switch on diagnostic messages.",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose Flag"
+    },
+    {
+      "command-line-flag": "-z",
+      "description": "Do apodization.",
+      "value-key": "[APODIZE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "apodize_flag",
+      "name": "Apodization Flag"
+    },
+    {
+      "command-line-flag": "-l",
+      "description": "Apodization with this cutoff; default 100.",
+      "value-key": "[CUTOFF]",
+      "type": "Number",
+      "optional": true,
+      "id": "cutoff",
+      "name": "Apodization Cutoff",
+      "default-value": 100
+    },
+    {
+      "command-line-flag": "-r",
+      "description": "Apodization with this rolloff; default 10.",
+      "value-key": "[ROLLOFF]",
+      "type": "Number",
+      "optional": true,
+      "id": "rolloff",
+      "name": "Apodization Rolloff",
+      "default-value": 10
+    },
+    {
+      "command-line-flag": "-s",
+      "description": "Save window as ASCII matrix (DEBUG!)",
+      "value-key": "[SAVE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "save_flag",
+      "name": "Save Window as ASCII Matrix Flag"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Display help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory arguments for running signal2image",
+      "id": "compulsory_arguments_group",
+      "members": [
+        "pulse_sequence"
+      ],
+      "name": "Compulsory Arguments"
+    },
+    {
+      "description": "Optional arguments for specifying input and output options",
+      "id": "optional_arguments_group",
+      "members": [
+        "input_signal",
+        "output_image",
+        "kspace_coordinates",
+        "output_kspace"
+      ],
+      "name": "Optional Input/Output Arguments"
+    },
+    {
+      "description": "Optional modification and debug options",
+      "id": "mod_debug_arguments_group",
+      "members": [
+        "abs_flag",
+        "homodyne_flag",
+        "verbose_flag",
+        "apodize_flag",
+        "cutoff",
+        "rolloff",
+        "save_flag"
+      ],
+      "name": "Modification and Debug Options"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_IMAGE]",
+      "description": "The resultant image file from the input signal and pulse sequence.",
+      "optional": true,
+      "id": "outfile",
+      "name": "Output Image File"
+    },
+    {
+      "path-template": "[OUTPUT_KSPACE]",
+      "description": "The resultant k-space file.",
+      "optional": true,
+      "id": "kspace_outfile",
+      "name": "Output K-space File"
+    }
+  ]
+}

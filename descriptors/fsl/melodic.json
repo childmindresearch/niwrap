@@ -1,0 +1,494 @@
+{
+  "tool-version": "3.15",
+  "name": "melodic",
+  "author": "Christian F. Beckmann, University of Oxford",
+  "description": "Multivariate Exploratory Linear Optimised Decomposition into Independent Components",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MELODIC",
+  "command-line": "melodic [INFILE] [OUTDIR] [MASK] [DIM] [APPROACH] [VN] [REPORT] [CIFTI] [NOMASK] [UPDATE_MASK] [NOBET] [BGTHRESHOLD] [DIMEST] [SEP_VN] [DISABLE_MIGP] [MIGP_N] [MIGP_SHUFFLE] [MIGP_FACTOR] [NUM_ICS] [NL] [COVARWEIGHT] [EPS_RANK1] [EPS] [MAXIT] [MAXRESTART] [MMTHRESH] [NO_MM] [ICS] [MIX] [SMODE] [FILTER] [BGIMAGE] [TR] [LOGPOWER] [TDES] [TCON] [SDES] [SCON] [OUNMIX] [OSTATS] [OPCA] [OWHITE] [OORIG] [OMEAN] [VERSION] [COPYRIGHT] [DEBUG] [REPORT_MAPS] [KEEP_MEANVOL]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-i",
+      "description": "Input file names (either single file name or comma-separated list or text file)",
+      "value-key": "[INFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input file"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Output directory name",
+      "value-key": "[OUTDIR]",
+      "type": "String",
+      "optional": true,
+      "id": "output_directory",
+      "name": "Output directory"
+    },
+    {
+      "command-line-flag": "-m",
+      "description": "File name of mask for thresholding",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask_file",
+      "name": "Mask file"
+    },
+    {
+      "command-line-flag": "-d",
+      "description": "Dimensionality reduction into specified number of dimensions (default is automatic estimation)",
+      "value-key": "[DIM]",
+      "type": "Number",
+      "optional": true,
+      "id": "dimensionality_reduction",
+      "name": "Dimensionality reduction"
+    },
+    {
+      "command-line-flag": "--report",
+      "description": "Generate Melodic web report",
+      "value-key": "[REPORT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "generate_report",
+      "name": "Generate report"
+    },
+    {
+      "command-line-flag": "--CIFTI",
+      "description": "Input/output as CIFTI (warning: auto-dimensionality estimation for CIFTI data is currently inaccurate)",
+      "value-key": "[CIFTI]",
+      "type": "Flag",
+      "optional": true,
+      "id": "cifti_io",
+      "name": "CIFTI input/output"
+    },
+    {
+      "command-line-flag": "--vn",
+      "description": "Switch off variance normalization",
+      "value-key": "[VN]",
+      "type": "Flag",
+      "optional": true,
+      "id": "variance_normalization",
+      "name": "Variance normalization"
+    },
+    {
+      "command-line-flag": "--nomask",
+      "description": "Switch off masking",
+      "value-key": "[NOMASK]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_masking",
+      "name": "No masking"
+    },
+    {
+      "command-line-flag": "--update_mask",
+      "description": "Switch off mask updating",
+      "value-key": "[UPDATE_MASK]",
+      "type": "Flag",
+      "optional": true,
+      "id": "update_masking",
+      "name": "Update masking"
+    },
+    {
+      "command-line-flag": "--nobet",
+      "description": "Switch off BET",
+      "value-key": "[NOBET]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_bet",
+      "name": "No BET"
+    },
+    {
+      "command-line-flag": "--bgthreshold",
+      "description": "Brain / non-brain threshold (only if --nobet selected)",
+      "value-key": "[BGTHRESHOLD]",
+      "type": "Number",
+      "optional": true,
+      "id": "bg_threshold",
+      "name": "Background threshold"
+    },
+    {
+      "command-line-flag": "--dimest",
+      "description": "Use specific dimensionality estimation technique: lap, bic, mdl, aic, mean (default: lap)",
+      "value-key": "[DIMEST]",
+      "type": "String",
+      "optional": true,
+      "id": "dimest_technique",
+      "name": "Dimensionality estimation technique"
+    },
+    {
+      "command-line-flag": "--sep_vn",
+      "description": "Switch on separate variance normalization for each input dataset (off by default)",
+      "value-key": "[SEP_VN]",
+      "type": "Flag",
+      "optional": true,
+      "id": "separate_variance_normalization",
+      "name": "Separate variance normalization"
+    },
+    {
+      "command-line-flag": "--disableMigp",
+      "description": "Switch off MIGP data reduction when using -a concat (full temporal concatenation will be used)",
+      "value-key": "[DISABLE_MIGP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "disable_migp",
+      "name": "Disable MIGP"
+    },
+    {
+      "command-line-flag": "--migpN",
+      "description": "Number of internal Eigenmaps",
+      "value-key": "[MIGP_N]",
+      "type": "Number",
+      "optional": true,
+      "id": "num_internal_eigenmaps",
+      "name": "Number of internal Eigenmaps"
+    },
+    {
+      "command-line-flag": "--migp_shuffle",
+      "description": "Randomize MIGP file order (default: TRUE)",
+      "value-key": "[MIGP_SHUFFLE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "migp_shuffle",
+      "name": "Randomize MIGP order"
+    },
+    {
+      "command-line-flag": "--migp_factor",
+      "description": "Internal Factor of mem-threshold relative to number of Eigenmaps (default: 2)",
+      "value-key": "[MIGP_FACTOR]",
+      "type": "Number",
+      "optional": true,
+      "id": "migp_factor",
+      "name": "MIGP factor"
+    },
+    {
+      "command-line-flag": "-n",
+      "description": "Number of ICs to extract (for deflation approach)",
+      "value-key": "[NUM_ICS]",
+      "type": "Number",
+      "optional": true,
+      "id": "num_ics",
+      "name": "Number of ICs"
+    },
+    {
+      "command-line-flag": "--nl",
+      "description": "Nonlinearity: gauss, tanh, pow3 (default), pow4",
+      "value-key": "[NL]",
+      "type": "String",
+      "optional": true,
+      "id": "nonlinearity",
+      "name": "Nonlinearity"
+    },
+    {
+      "command-line-flag": "--covarweight",
+      "description": "Voxel-wise weights for the covariance matrix (e.g. segmentation information)",
+      "value-key": "[COVARWEIGHT]",
+      "type": "File",
+      "optional": true,
+      "id": "covar_weights",
+      "name": "Covariance weights"
+    },
+    {
+      "command-line-flag": "--eps",
+      "description": "Minimum error change",
+      "value-key": "[EPS]",
+      "type": "Number",
+      "optional": true,
+      "id": "eps_error",
+      "name": "Minimum error change"
+    },
+    {
+      "command-line-flag": "--epsS",
+      "description": "Minimum error change for rank-1 approximation in TICA",
+      "value-key": "[EPS_RANK1]",
+      "type": "Number",
+      "optional": true,
+      "id": "eps_rank1_error",
+      "name": "Minimum rank-1 error change"
+    },
+    {
+      "command-line-flag": "--maxit",
+      "description": "Maximum number of iterations before restart",
+      "value-key": "[MAXIT]",
+      "type": "Number",
+      "optional": true,
+      "id": "max_iters",
+      "name": "Max iterations"
+    },
+    {
+      "command-line-flag": "--maxrestart",
+      "description": "Maximum number of restarts",
+      "value-key": "[MAXRESTART]",
+      "type": "Number",
+      "optional": true,
+      "id": "max_restarts",
+      "name": "Max restarts"
+    },
+    {
+      "command-line-flag": "--mmthresh",
+      "description": "Threshold for Mixture Model based inference",
+      "value-key": "[MMTHRESH]",
+      "type": "Number",
+      "optional": true,
+      "id": "mm_threshold",
+      "name": "Mixture Model threshold"
+    },
+    {
+      "command-line-flag": "--no_mm",
+      "description": "Switch off mixture modeling on IC maps",
+      "value-key": "[NO_MM]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_mixture_modeling",
+      "name": "No mixture modeling"
+    },
+    {
+      "command-line-flag": "--ICs",
+      "description": "Input filename of the IC components file for mixture modeling",
+      "value-key": "[ICS]",
+      "type": "File",
+      "optional": true,
+      "id": "ic_components_file",
+      "name": "IC components file"
+    },
+    {
+      "command-line-flag": "--mix",
+      "description": "Input filename of mixing matrix for mixture modeling / filtering",
+      "value-key": "[MIX]",
+      "type": "File",
+      "optional": true,
+      "id": "mixing_matrix_file",
+      "name": "Mixing matrix file"
+    },
+    {
+      "command-line-flag": "--smode",
+      "description": "Input filename of matrix of session modes for report generation",
+      "value-key": "[SMODE]",
+      "type": "File",
+      "optional": true,
+      "id": "session_modes_file",
+      "name": "Session modes file"
+    },
+    {
+      "command-line-flag": "-f",
+      "description": "List of component numbers to remove",
+      "value-key": "[FILTER]",
+      "type": "String",
+      "optional": true,
+      "id": "component_filter",
+      "name": "Component filter"
+    },
+    {
+      "command-line-flag": "--bgimage",
+      "description": "Specify background image for report (default: mean image)",
+      "value-key": "[BGIMAGE]",
+      "type": "File",
+      "optional": true,
+      "id": "background_image",
+      "name": "Background image"
+    },
+    {
+      "command-line-flag": "--tr",
+      "description": "TR in seconds",
+      "value-key": "[TR]",
+      "type": "Number",
+      "optional": true,
+      "id": "tr_seconds",
+      "name": "TR in seconds"
+    },
+    {
+      "command-line-flag": "--logPower",
+      "description": "Calculate log of power for frequency spectrum",
+      "value-key": "[LOGPOWER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "log_power_calc",
+      "name": "Log power calculation"
+    },
+    {
+      "command-line-flag": "--Tdes",
+      "description": "Design matrix across time-domain",
+      "value-key": "[TDES]",
+      "type": "File",
+      "optional": true,
+      "id": "time_domain_design_matrix",
+      "name": "Time-domain design matrix"
+    },
+    {
+      "command-line-flag": "--Tcon",
+      "description": "T-contrast matrix across time-domain",
+      "value-key": "[TCON]",
+      "type": "File",
+      "optional": true,
+      "id": "time_domain_t_contrast_matrix",
+      "name": "Time-domain T-contrast matrix"
+    },
+    {
+      "command-line-flag": "--Sdes",
+      "description": "Design matrix across subject-domain",
+      "value-key": "[SDES]",
+      "type": "File",
+      "optional": true,
+      "id": "subject_domain_design_matrix",
+      "name": "Subject-domain design matrix"
+    },
+    {
+      "command-line-flag": "--Scon",
+      "description": "T-contrast matrix across subject-domain",
+      "value-key": "[SCON]",
+      "type": "File",
+      "optional": true,
+      "id": "subject_domain_t_contrast_matrix",
+      "name": "Subject-domain T-contrast matrix"
+    },
+    {
+      "command-line-flag": "--Ounmix",
+      "description": "Output unmixing matrix",
+      "value-key": "[OUNMIX]",
+      "type": "Flag",
+      "optional": true,
+      "id": "output_unmixing_matrix",
+      "name": "Output unmixing matrix"
+    },
+    {
+      "command-line-flag": "--Ostats",
+      "description": "Output thresholded maps and probability maps",
+      "value-key": "[OSTATS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "output_stats",
+      "name": "Output thresholded and probability maps"
+    },
+    {
+      "command-line-flag": "--Opca",
+      "description": "Output PCA results",
+      "value-key": "[OPCA]",
+      "type": "Flag",
+      "optional": true,
+      "id": "output_pca",
+      "name": "Output PCA results"
+    },
+    {
+      "command-line-flag": "--Owhite",
+      "description": "Output whitening/dewhitening matrices",
+      "value-key": "[OWHITE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "output_whitening",
+      "name": "Output whitening/dewhitening matrices"
+    },
+    {
+      "command-line-flag": "--Oorig",
+      "description": "Output the original ICs",
+      "value-key": "[OORIG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "output_original_ics",
+      "name": "Output original ICs"
+    },
+    {
+      "command-line-flag": "--Omean",
+      "description": "Output mean volume",
+      "value-key": "[OMEAN]",
+      "type": "Flag",
+      "optional": true,
+      "id": "output_mean_volume",
+      "name": "Output mean volume"
+    },
+    {
+      "command-line-flag": "-V",
+      "description": "Prints version information",
+      "value-key": "[VERSION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version"
+    },
+    {
+      "command-line-flag": "--copyright",
+      "description": "Prints copyright information",
+      "value-key": "[COPYRIGHT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "copyright",
+      "name": "Copyright"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Prints this help message",
+      "value-key": "[HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Switch on debug messages",
+      "value-key": "[DEBUG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug"
+    },
+    {
+      "command-line-flag": "--report_maps",
+      "description": "Control string for spatial map images (see slicer)",
+      "value-key": "[REPORT_MAPS]",
+      "type": "String",
+      "optional": true,
+      "id": "report_maps",
+      "name": "Report maps control"
+    },
+    {
+      "command-line-flag": "--keep_meanvol",
+      "description": "Do not subtract mean volume",
+      "value-key": "[KEEP_MEANVOL]",
+      "type": "Flag",
+      "optional": true,
+      "id": "keep_meanvol",
+      "name": "Keep mean volume"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTDIR]/report.html",
+      "description": "Output Melodic web report",
+      "optional": true,
+      "id": "report_file",
+      "name": "Report file"
+    },
+    {
+      "path-template": "[OUTDIR]/melodic_IC.nii.gz",
+      "description": "Output IC components file",
+      "optional": true,
+      "id": "ics_output_file",
+      "name": "IC components output file"
+    },
+    {
+      "path-template": "[OUTDIR]/melodic_mix",
+      "description": "Output mixing matrix file",
+      "optional": true,
+      "id": "mix_output_file",
+      "name": "Mixing matrix output file"
+    },
+    {
+      "path-template": "[OUTDIR]/melodic_Tmodes",
+      "description": "Output matrix of temporal modes",
+      "optional": true,
+      "id": "temporal_mode_file",
+      "name": "Temporal mode file"
+    },
+    {
+      "path-template": "[OUTDIR]/melodic_report",
+      "description": "Output Melodic report directory",
+      "optional": true,
+      "id": "melodic_report_directory",
+      "name": "Melodic report directory"
+    }
+  ],
+  "schema-version": "0.5"
+}

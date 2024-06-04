@@ -1,0 +1,33 @@
+{
+  "tool-version": "1.0.0",
+  "name": "feat_gm_prepare",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Prepare 4D grey matter files for higher-level analysis in FEAT.",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT",
+  "command-line": "feat_gm_prepare [GM_OUTPUT] [FEAT_DIRS_LIST]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "4D grey matter output file",
+      "value-key": "[GM_OUTPUT]",
+      "type": "String",
+      "optional": false,
+      "id": "gm_output",
+      "name": "4D-GM-output"
+    },
+    {
+      "description": "List of first-level FEAT output directories",
+      "value-key": "[FEAT_DIRS_LIST]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "feat_dirs_list",
+      "name": "List of FEAT output directories"
+    }
+  ],
+  "schema-version": "0.5"
+}

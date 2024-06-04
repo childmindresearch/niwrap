@@ -1,0 +1,74 @@
+{
+  "tool-version": "1.0.0",
+  "name": "pairreg",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "descriptor-url": "https://example.com/descriptors/pairreg.json",
+  "description": "Pairwise registration tool",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT",
+  "command-line": "/usr/local/fsl/bin/pairreg [BRAIN1] [BRAIN2] [SKULL1] [SKULL2] [OUTPUTMATRIX] [FLIRT_ARGS]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Brain image 1 (used as -ref internally)",
+      "value-key": "[BRAIN1]",
+      "type": "File",
+      "optional": false,
+      "id": "brain1",
+      "name": "Brain Image 1"
+    },
+    {
+      "description": "Brain image 2",
+      "value-key": "[BRAIN2]",
+      "type": "File",
+      "optional": false,
+      "id": "brain2",
+      "name": "Brain Image 2"
+    },
+    {
+      "description": "Skull image 1 (used as -ref internally)",
+      "value-key": "[SKULL1]",
+      "type": "File",
+      "optional": false,
+      "id": "skull1",
+      "name": "Skull Image 1"
+    },
+    {
+      "description": "Skull image 2",
+      "value-key": "[SKULL2]",
+      "type": "File",
+      "optional": false,
+      "id": "skull2",
+      "name": "Skull Image 2"
+    },
+    {
+      "description": "Output transformation matrix file",
+      "value-key": "[OUTPUTMATRIX]",
+      "type": "File",
+      "optional": false,
+      "id": "outputmatrix",
+      "name": "Output Matrix"
+    },
+    {
+      "description": "Extra arguments to pass to flirt",
+      "value-key": "[FLIRT_ARGS]",
+      "type": "String",
+      "optional": true,
+      "id": "extra_flirt_args",
+      "name": "Extra FLIRT Arguments"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUTMATRIX]",
+      "description": "Pairwise registration output transformation matrix file",
+      "optional": false,
+      "id": "output_matrix",
+      "name": "Output Matrix File"
+    }
+  ]
+}

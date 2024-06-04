@@ -1,0 +1,121 @@
+{
+  "tool-version": "1.0.0",
+  "name": "eddy_combine",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Combines diffusion data sets with opposite phase encoding directions for use with FSL's EDDY.",
+  "command-line": "eddy_combine [PosData] [Posbvals] [Posbvecs] [Pos_SeriesVol] [NegData] [Negbvals] [Negbvecs] [Neg_SeriesVol] [outputpath] [onlymatched_flag]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Path to the positive phase-encoded data file (e.g. PosData.nii.gz)",
+      "value-key": "[PosData]",
+      "type": "File",
+      "optional": false,
+      "id": "pos_data",
+      "name": "Positive Data File"
+    },
+    {
+      "description": "Path to the positive phase-encoded b-values file (e.g. Posbvals)",
+      "value-key": "[Posbvals]",
+      "type": "File",
+      "optional": false,
+      "id": "pos_bvals",
+      "name": "Positive B-values File"
+    },
+    {
+      "description": "Path to the positive phase-encoded b-vectors file (e.g. Posbvecs)",
+      "value-key": "[Posbvecs]",
+      "type": "File",
+      "optional": false,
+      "id": "pos_bvecs",
+      "name": "Positive B-vectors File"
+    },
+    {
+      "description": "Positive series volume count",
+      "value-key": "[Pos_SeriesVol]",
+      "type": "Number",
+      "optional": false,
+      "id": "pos_series_vol",
+      "name": "Positive Series Volume"
+    },
+    {
+      "description": "Path to the negative phase-encoded data file (e.g. NegData.nii.gz)",
+      "value-key": "[NegData]",
+      "type": "File",
+      "optional": false,
+      "id": "neg_data",
+      "name": "Negative Data File"
+    },
+    {
+      "description": "Path to the negative phase-encoded b-values file (e.g. Negbvals)",
+      "value-key": "[Negbvals]",
+      "type": "File",
+      "optional": false,
+      "id": "neg_bvals",
+      "name": "Negative B-values File"
+    },
+    {
+      "description": "Path to the negative phase-encoded b-vectors file (e.g. Negbvecs)",
+      "value-key": "[Negbvecs]",
+      "type": "File",
+      "optional": false,
+      "id": "neg_bvecs",
+      "name": "Negative B-vectors File"
+    },
+    {
+      "description": "Negative series volume count",
+      "value-key": "[Neg_SeriesVol]",
+      "type": "Number",
+      "optional": false,
+      "id": "neg_series_vol",
+      "name": "Negative Series Volume"
+    },
+    {
+      "description": "Output directory path",
+      "value-key": "[outputpath]",
+      "type": "String",
+      "optional": false,
+      "id": "output_path",
+      "name": "Output Path"
+    },
+    {
+      "description": "Flag to include only matched volumes (set to 1 to include only matched volumes, otherwise 0)",
+      "value-key": "[onlymatched_flag]",
+      "type": "Number",
+      "minimum": 0,
+      "maximum": 1,
+      "integer": true,
+      "optional": false,
+      "id": "only_matched_flag",
+      "name": "Only Matched Volumes Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[outputpath]/combined_data.nii.gz",
+      "description": "Combined positive and negative phase-encoded data",
+      "optional": false,
+      "id": "combined_data",
+      "name": "Combined Data File"
+    },
+    {
+      "path-template": "[outputpath]/combined_bvals",
+      "description": "Combined b-values file",
+      "optional": false,
+      "id": "combined_bvals",
+      "name": "Combined B-values File"
+    },
+    {
+      "path-template": "[outputpath]/combined_bvecs",
+      "description": "Combined b-vectors file",
+      "optional": false,
+      "id": "combined_bvecs",
+      "name": "Combined B-vectors File"
+    }
+  ]
+}

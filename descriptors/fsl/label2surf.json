@@ -1,0 +1,82 @@
+{
+  "tool-version": "6.0.5",
+  "name": "label2surf",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "description": "Transform a group of labels into a surface",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "command-line": "label2surf --surf [INPUT_SURFACE] --out [OUTPUT_SURFACE] --labels [LABELS] [VERBOSE_FLAG] [HELP_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:6.0.5",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "--surf",
+      "description": "Input surface file",
+      "value-key": "[INPUT_SURFACE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_surface",
+      "name": "Input Surface File"
+    },
+    {
+      "command-line-flag": "--out",
+      "description": "Output surface file",
+      "value-key": "[OUTPUT_SURFACE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_surface",
+      "name": "Output Surface File"
+    },
+    {
+      "command-line-flag": "--labels",
+      "description": "ASCII list of label files",
+      "value-key": "[LABELS]",
+      "type": "File",
+      "optional": false,
+      "id": "labels",
+      "name": "Label Files"
+    },
+    {
+      "command-line-flag": "--verbose",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose Flag"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Display help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Optional miscellaneous parameters for label2surf",
+      "id": "miscellaneous_params_group",
+      "members": [
+        "verbose_flag",
+        "help_flag"
+      ],
+      "name": "Miscellaneous Parameters"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_SURFACE]",
+      "description": "Resulting output surface file",
+      "optional": false,
+      "id": "out_surf",
+      "name": "Output Surface File"
+    }
+  ]
+}

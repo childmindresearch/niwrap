@@ -1,0 +1,68 @@
+{
+  "name": "mrsi_segment",
+  "tool-version": "1.0.0",
+  "author": "FSL Team",
+  "description": "FSL Magnetic Resonance Spectroscopy - register fast segmentation to MRSI.",
+  "command-line": "mrsi_segment [MRSI] [--t1 T1] [--anat ANAT] [--output OUTPUT] [--filename FILENAME]",
+  "container-image": {
+    "type": "docker",
+    "image": "fsl/fsl:latest",
+    "index": "index.docker.io"
+  },
+  "inputs": [
+    {
+      "id": "mrsi_file",
+      "name": "MRSI file",
+      "type": "File",
+      "value-key": "[MRSI]",
+      "description": "MRSI nifti file",
+      "optional": false
+    },
+    {
+      "id": "t1_file",
+      "name": "T1 file",
+      "type": "File",
+      "value-key": "[--t1]",
+      "command-line-flag": "--t1",
+      "description": "T1 nifti file",
+      "optional": true
+    },
+    {
+      "id": "anat_dir",
+      "name": "Anatomical directory",
+      "type": "String",
+      "value-key": "[--anat]",
+      "command-line-flag": "--anat",
+      "description": "fsl_anat output directory",
+      "optional": true
+    },
+    {
+      "id": "output_dir",
+      "name": "Output directory",
+      "type": "String",
+      "value-key": "[--output]",
+      "command-line-flag": "--output",
+      "description": "Output directory",
+      "optional": true
+    },
+    {
+      "id": "filename",
+      "name": "Output file name",
+      "type": "String",
+      "value-key": "[--filename]",
+      "command-line-flag": "--filename",
+      "description": "Output file name",
+      "optional": true
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "id": "output_file",
+      "name": "Output file",
+      "path-template": "[--output]/[--filename]",
+      "description": "Output file name",
+      "optional": true
+    }
+  ]
+}

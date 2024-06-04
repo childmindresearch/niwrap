@@ -1,0 +1,383 @@
+{
+  "tool-version": "6.0.5",
+  "name": "filmbabe",
+  "author": "FMRIB Analysis Group, Oxford University, UK",
+  "description": "FILM with MCMC-based Bayesian Analysis for fMRI",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "command-line": "filmbabe [DATAFILE] [MASK] [DESIGNFILE] [FRF] [VERBOSE_FLAG] [DEBUG_LEVEL] [TIMING_ON_FLAG] [HELP_FLAG] [FLOBS_PRIOR_OFF_FLAG] [FLOBS_DIR] [PRIOR_COVAR_FILE] [PRIOR_MEAN_FILE] [LOG_DIR] [NUM_ITERATIONS] [TEMPORAL_AR_MRF_PREC] [TEMPORAL_AR_FLAG] [NUM_TRACE_SAMPLES] [TEMPORAL_AR_ORDER]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "--df",
+      "description": "Data file",
+      "value-key": "[DATAFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "datafile",
+      "name": "Data file"
+    },
+    {
+      "command-line-flag": "--datafile",
+      "description": "Data file",
+      "value-key": "[DATAFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "datafile_alias",
+      "name": "Data file alias"
+    },
+    {
+      "command-line-flag": "-m",
+      "description": "Mask file",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": false,
+      "id": "mask",
+      "name": "Mask file"
+    },
+    {
+      "command-line-flag": "--mask",
+      "description": "Mask file",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": false,
+      "id": "mask_alias",
+      "name": "Mask file alias"
+    },
+    {
+      "command-line-flag": "-d",
+      "description": "Design matrix file",
+      "value-key": "[DESIGNFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "designfile",
+      "name": "Design matrix file"
+    },
+    {
+      "command-line-flag": "--dm",
+      "description": "Design matrix file",
+      "value-key": "[DESIGNFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "designfile_alias_1",
+      "name": "Design matrix file alias 1"
+    },
+    {
+      "command-line-flag": "--designfile",
+      "description": "Design matrix file",
+      "value-key": "[DESIGNFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "designfile_alias_2",
+      "name": "Design matrix file alias 2"
+    },
+    {
+      "command-line-flag": "--frf",
+      "description": "File indicating which regressors belong to which original EV design matrix file (a -1 label indicates a non-flobs regressor)",
+      "value-key": "[FRF]",
+      "type": "File",
+      "optional": false,
+      "id": "frf",
+      "name": "Regressors file"
+    },
+    {
+      "command-line-flag": "-V",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose Flag"
+    },
+    {
+      "command-line-flag": "--verbose",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag_alias",
+      "name": "Verbose Flag alias"
+    },
+    {
+      "command-line-flag": "--db",
+      "description": "Set debug level",
+      "value-key": "[DEBUG_LEVEL]",
+      "type": "String",
+      "optional": true,
+      "id": "debug_level",
+      "name": "Debug level"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Set debug level",
+      "value-key": "[DEBUG_LEVEL]",
+      "type": "String",
+      "optional": true,
+      "id": "debug_level_alias_1",
+      "name": "Debug level alias1"
+    },
+    {
+      "command-line-flag": "--debuglevel",
+      "description": "Set debug level",
+      "value-key": "[DEBUG_LEVEL]",
+      "type": "String",
+      "optional": true,
+      "id": "debug_level_alias_2",
+      "name": "Debug level alias2"
+    },
+    {
+      "command-line-flag": "--to",
+      "description": "Turn timing on",
+      "value-key": "[TIMING_ON_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "timing_on_flag",
+      "name": "Timing flag"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Display help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help flag"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Display help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag_alias",
+      "name": "Help flag alias"
+    },
+    {
+      "command-line-flag": "--fpo",
+      "description": "Turn FLOBS prior off",
+      "value-key": "[FLOBS_PRIOR_OFF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "flobs_prior_off_flag",
+      "name": "Flobs prior off flag"
+    },
+    {
+      "command-line-flag": "--flobsprioroff",
+      "description": "Turn FLOBS prior off",
+      "value-key": "[FLOBS_PRIOR_OFF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "flobs_prior_off_alias",
+      "name": "Flobs prior off flag alias"
+    },
+    {
+      "command-line-flag": "--fd",
+      "description": "FLOBS directory; required when using FLOBS constraints",
+      "value-key": "[FLOBS_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "flobs_dir",
+      "name": "FLOBS directory"
+    },
+    {
+      "command-line-flag": "--pcf",
+      "description": "Prior covariance matrix file",
+      "value-key": "[PRIOR_COVAR_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "prior_covar_file",
+      "name": "Prior covariance file"
+    },
+    {
+      "command-line-flag": "--priorcovarfile",
+      "description": "Prior covariance matrix file",
+      "value-key": "[PRIOR_COVAR_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "prior_covar_file_alias",
+      "name": "Prior covariance file alias"
+    },
+    {
+      "command-line-flag": "--pmf",
+      "description": "Prior mean matrix file",
+      "value-key": "[PRIOR_MEAN_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "prior_mean_file",
+      "name": "Prior mean file"
+    },
+    {
+      "command-line-flag": "--priormeanfile",
+      "description": "Prior mean matrix file",
+      "value-key": "[PRIOR_MEAN_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "prior_mean_file_alias",
+      "name": "Prior mean file alias"
+    },
+    {
+      "command-line-flag": "-l",
+      "description": "Log directory",
+      "value-key": "[LOG_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "log_dir",
+      "name": "Log directory"
+    },
+    {
+      "command-line-flag": "--ld",
+      "description": "Log directory",
+      "value-key": "[LOG_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "log_dir_alias_1",
+      "name": "Log directory alias1"
+    },
+    {
+      "command-line-flag": "--logdir",
+      "description": "Log directory",
+      "value-key": "[LOG_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "log_dir_alias_2",
+      "name": "Log directory alias2"
+    },
+    {
+      "command-line-flag": "--ni",
+      "description": "Number of VB iterations; default is 5",
+      "value-key": "[NUM_ITERATIONS]",
+      "type": "Number",
+      "optional": true,
+      "id": "num_iterations",
+      "name": "Number of iterations",
+      "integer": true,
+      "default-value": 5
+    },
+    {
+      "command-line-flag": "--tmp",
+      "description": "MRF precision to impose on temporal AR maps, default is -1 for a proper full Bayes approach",
+      "value-key": "[TEMPORAL_AR_MRF_PREC]",
+      "type": "Number",
+      "optional": true,
+      "id": "temporal_ar_mrf_prec",
+      "name": "Temporal AR MRF precision",
+      "integer": false,
+      "default-value": -1
+    },
+    {
+      "command-line-flag": "--tarmrfprec",
+      "description": "MRF precision to impose on temporal AR maps, default is -1 for a proper full Bayes approach",
+      "value-key": "[TEMPORAL_AR_MRF_PREC]",
+      "type": "Number",
+      "optional": true,
+      "id": "temporal_ar_mrf_prec_alias",
+      "name": "Temporal AR MRF precision alias",
+      "integer": false,
+      "default-value": -1
+    },
+    {
+      "command-line-flag": "--tarard",
+      "description": "Impose ARD/MRF on temporal AR",
+      "value-key": "[TEMPORAL_AR_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "temporal_ar_flag",
+      "name": "Temporal AR flag"
+    },
+    {
+      "command-line-flag": "--nts",
+      "description": "Number of samples to take to estimate trace; default is 0 (uses only diagonal elements of precision matrix to estimate trace)",
+      "value-key": "[NUM_TRACE_SAMPLES]",
+      "type": "Number",
+      "optional": true,
+      "id": "num_trace_samples",
+      "name": "Number of trace samples",
+      "integer": true,
+      "default-value": 0
+    },
+    {
+      "command-line-flag": "--ntracesamps",
+      "description": "Number of samples to take to estimate trace; default is 0 (uses only diagonal elements of precision matrix to estimate trace)",
+      "value-key": "[NUM_TRACE_SAMPLES]",
+      "type": "Number",
+      "optional": true,
+      "id": "num_trace_samples_alias",
+      "name": "Number of trace samples alias",
+      "integer": true,
+      "default-value": 0
+    },
+    {
+      "command-line-flag": "--ntar",
+      "description": "Order of temporal AR; default is 3",
+      "value-key": "[TEMPORAL_AR_ORDER]",
+      "type": "Number",
+      "optional": true,
+      "id": "temporal_ar_order",
+      "name": "Temporal AR order",
+      "integer": true,
+      "default-value": 3
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory arguments that must be provided",
+      "id": "compulsory_args_group",
+      "members": [
+        "datafile",
+        "datafile_alias",
+        "mask",
+        "mask_alias",
+        "designfile",
+        "designfile_alias_1",
+        "designfile_alias_2",
+        "frf"
+      ],
+      "name": "Compulsory Arguments"
+    },
+    {
+      "description": "Optional arguments for additional features",
+      "id": "optional_args_group",
+      "members": [
+        "verbose_flag",
+        "verbose_flag_alias",
+        "debug_level",
+        "debug_level_alias_1",
+        "debug_level_alias_2",
+        "timing_on_flag",
+        "help_flag",
+        "help_flag_alias",
+        "flobs_prior_off_flag",
+        "flobs_prior_off_alias",
+        "flobs_dir",
+        "prior_covar_file",
+        "prior_covar_file_alias",
+        "prior_mean_file",
+        "prior_mean_file_alias",
+        "log_dir",
+        "log_dir_alias_1",
+        "log_dir_alias_2",
+        "num_iterations",
+        "temporal_ar_mrf_prec",
+        "temporal_ar_mrf_prec_alias",
+        "temporal_ar_flag",
+        "num_trace_samples",
+        "num_trace_samples_alias",
+        "temporal_ar_order"
+      ],
+      "name": "Optional Arguments"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "output",
+      "description": "Output directory",
+      "optional": false,
+      "id": "output_dir",
+      "name": "Output Directory"
+    }
+  ]
+}

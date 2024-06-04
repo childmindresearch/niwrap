@@ -1,0 +1,36 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fsl_sub_report",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "FSL cluster job reporting tool",
+  "command-line": "fsl_sub_report [JOB_ID] [SUBJOB_ID_FLAG] [SUBJOB_ID] [PARSEABLE_FLAG]",
+  "inputs": [
+    {
+      "description": "Report job details for this job ID",
+      "value-key": "[JOB_ID]",
+      "type": "String",
+      "optional": false,
+      "id": "job_id",
+      "name": "Job ID"
+    },
+    {
+      "command-line-flag": "--subjob_id",
+      "description": "Report job details for this subjob ID's only",
+      "value-key": "[SUBJOB_ID]",
+      "type": "String",
+      "optional": true,
+      "id": "subjob_id",
+      "name": "Subjob ID"
+    },
+    {
+      "command-line-flag": "--parseable",
+      "description": "Include all output '|' separated",
+      "value-key": "[PARSEABLE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "parseable_flag",
+      "name": "Parseable output flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

@@ -1,0 +1,231 @@
+{
+  "tool-version": "6.0.5",
+  "name": "fsl_regfilt",
+  "author": "Christian F. Beckmann",
+  "description": "Data de-noising by regressing out part of a design matrix using simple OLS regression on 4D images",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslRegfilt",
+  "command-line": "fsl_regfilt -i [INPUT_FILE] -d [DESIGN_FILE] -o [OUTPUT_FILE] [MASK_FILE] [FILTER] [FREQ_FILTER_FLAG] [FREQ_IC_FLAG] [FREQ_IC_SMOOTH] [FTHRESH] [FTHRESH2] [VN_FLAG] [VERBOSE_FLAG] [AGGRESSIVE_FLAG] [HELP_FLAG] [OUT_DATA] [OUT_MIX] [OUT_VNSCALES]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input file name (4D image)",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "description": "Output file name for the filtered data",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file"
+    },
+    {
+      "description": "File name of the matrix with time courses (e.g. GLM design or MELODIC mixing matrix)",
+      "value-key": "[DESIGN_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "designfile",
+      "name": "Design file"
+    },
+    {
+      "command-line-flag": "-m",
+      "description": "Mask image file name",
+      "value-key": "[MASK_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "maskfile",
+      "name": "Mask file"
+    },
+    {
+      "command-line-flag": "-f",
+      "description": "Filter out part of the regression model, e.g., -f \"1,2,3\"",
+      "value-key": "[FILTER]",
+      "type": "String",
+      "optional": true,
+      "id": "filter",
+      "name": "Filter"
+    },
+    {
+      "command-line-flag": "-F",
+      "description": "Filter out components based on high vs. low frequency content",
+      "value-key": "[FREQ_FILTER_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "freq_filter_flag",
+      "name": "Frequency filter flag"
+    },
+    {
+      "command-line-flag": "--freq_ic",
+      "description": "Switch off IC Z-stats filtering as part of frequency filtering",
+      "value-key": "[FREQ_IC_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "freq_ic_flag",
+      "name": "Frequency IC Z-stats filtering flag"
+    },
+    {
+      "command-line-flag": "--freq_ic_smooth",
+      "description": "Smoothing width for IC Z-stats filtering as part of frequency filtering",
+      "value-key": "[FREQ_IC_SMOOTH]",
+      "type": "Number",
+      "optional": true,
+      "id": "freq_ic_smooth",
+      "name": "Frequency IC Z-stats smoothing width"
+    },
+    {
+      "command-line-flag": "--fthresh",
+      "description": "Frequency threshold ratio; default: 0.15",
+      "value-key": "[FTHRESH]",
+      "type": "Number",
+      "default-value": 0.15,
+      "optional": true,
+      "id": "fthresh",
+      "name": "Frequency threshold ratio"
+    },
+    {
+      "command-line-flag": "--fthresh2",
+      "description": "Frequency filter score threshold; default: 0.02",
+      "value-key": "[FTHRESH2]",
+      "type": "Number",
+      "default-value": 0.02,
+      "optional": true,
+      "id": "fthresh2",
+      "name": "Frequency filter score threshold"
+    },
+    {
+      "command-line-flag": "--vn",
+      "description": "Perform variance-normalisation on data",
+      "value-key": "[VN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "vn_flag",
+      "name": "Variance-normalisation flag"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose flag"
+    },
+    {
+      "command-line-flag": "-a",
+      "description": "Switch on aggressive filtering (full instead of partial regression)",
+      "value-key": "[AGGRESSIVE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "aggressive_flag",
+      "name": "Aggressive filtering flag"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Display help text",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help flag"
+    },
+    {
+      "command-line-flag": "--out_data",
+      "description": "Output file name for pre-processed data (prior to denoising)",
+      "value-key": "[OUT_DATA]",
+      "type": "String",
+      "optional": true,
+      "id": "out_data",
+      "name": "Output pre-processed data"
+    },
+    {
+      "command-line-flag": "--out_mix",
+      "description": "Output file name for new mixing matrix",
+      "value-key": "[OUT_MIX]",
+      "type": "String",
+      "optional": true,
+      "id": "out_mix",
+      "name": "Output new mixing matrix"
+    },
+    {
+      "command-line-flag": "--out_vnscales",
+      "description": "Output file name for scaling factors from variance normalisation",
+      "value-key": "[OUT_VNSCALES]",
+      "type": "String",
+      "optional": true,
+      "id": "out_vnscales",
+      "name": "Output variance normalisation scales"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Specify main inputs and outputs",
+      "id": "mandatory_params_group",
+      "members": [
+        "infile",
+        "outfile",
+        "designfile"
+      ],
+      "name": "Main Inputs and Outputs"
+    },
+    {
+      "description": "Specify optional processing parameters",
+      "id": "optional_params_group",
+      "members": [
+        "maskfile",
+        "filter",
+        "freq_filter_flag",
+        "freq_ic_flag",
+        "freq_ic_smooth",
+        "fthresh",
+        "fthresh2",
+        "vn_flag",
+        "verbose_flag",
+        "aggressive_flag",
+        "help_flag",
+        "out_data",
+        "out_mix",
+        "out_vnscales"
+      ],
+      "name": "Optional Arguments"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE].nii.gz",
+      "description": "Filtered data output",
+      "optional": false,
+      "id": "filtered_data",
+      "name": "Filtered data output file"
+    },
+    {
+      "path-template": "[OUT_DATA].nii.gz",
+      "description": "Pre-processed data output",
+      "optional": true,
+      "id": "preprocessed_data",
+      "name": "Pre-processed data output file"
+    },
+    {
+      "path-template": "[OUT_MIX].nii.gz",
+      "description": "New mixing matrix output",
+      "optional": true,
+      "id": "mixing_matrix",
+      "name": "New mixing matrix output file"
+    },
+    {
+      "path-template": "[OUT_VNSCALES].nii.gz",
+      "description": "Variance normalisation scaling factors output",
+      "optional": true,
+      "id": "vnscales",
+      "name": "Variance normalisation scales output file"
+    }
+  ]
+}

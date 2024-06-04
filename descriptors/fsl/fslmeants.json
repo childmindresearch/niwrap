@@ -1,0 +1,184 @@
+{
+  "tool-version": "6.0.5",
+  "name": "fslmeants",
+  "author": "University of Oxford (Mark Jenkinson, Christian F. Beckmann)",
+  "description": "Prints average timeseries (intensities) to the screen (or saves to a file).",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "command-line": "fslmeants -i [INPUT_IMAGE] [OUTPUT] [MASK] [COORDINATES] [USEMM_FLAG] [SHOWALL_FLAG] [EIGENV_FLAG] [EIGENVARIATES_ORDER] [NO_BIN_FLAG] [LABEL_IMAGE] [TRANSPOSE_FLAG] [WEIGHTED_MEAN_FLAG] [VERBOSE_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input 4D image",
+      "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_image",
+      "name": "Input Image",
+      "command-line-flag": "-i"
+    },
+    {
+      "description": "Output text matrix",
+      "value-key": "[OUTPUT]",
+      "type": "String",
+      "optional": true,
+      "id": "output",
+      "name": "Output File",
+      "command-line-flag": "-o"
+    },
+    {
+      "description": "Input 3D mask",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask",
+      "command-line-flag": "-m"
+    },
+    {
+      "description": "Requested spatial coordinate (instead of mask). Must have exactly three numerical entries in the list (3-vector).",
+      "value-key": "[COORDINATES]",
+      "type": "Number",
+      "list": true,
+      "optional": true,
+      "id": "coordinates",
+      "name": "Coordinates",
+      "command-line-flag": "-c",
+      "min-list-entries": 3,
+      "max-list-entries": 3
+    },
+    {
+      "description": "Use mm instead of voxel coordinates (for -c option)",
+      "value-key": "[USEMM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "usemm_flag",
+      "name": "Use mm flag",
+      "command-line-flag": "--usemm"
+    },
+    {
+      "description": "Show all voxel time series (within mask) instead of averaging",
+      "value-key": "[SHOWALL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "showall_flag",
+      "name": "Showall flag",
+      "command-line-flag": "--showall"
+    },
+    {
+      "description": "Calculate Eigenvariate(s) instead of mean (output will have 0 mean)",
+      "value-key": "[EIGENV_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "eigenv_flag",
+      "name": "Eigenvariate(s) flag",
+      "command-line-flag": "--eig"
+    },
+    {
+      "description": "Select number of Eigenvariates (default 1)",
+      "value-key": "[EIGENVARIATES_ORDER]",
+      "type": "Number",
+      "optional": true,
+      "id": "eigenvariates_order",
+      "name": "Eigenvariates Order",
+      "command-line-flag": "--order"
+    },
+    {
+      "description": "Do not binarise the mask for calculation of Eigenvariates",
+      "value-key": "[NO_BIN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_bin_flag",
+      "name": "No binarisation flag",
+      "command-line-flag": "--no_bin"
+    },
+    {
+      "description": "Input 3D label image (generate separate mean for each integer label value - cannot be used with showall)",
+      "value-key": "[LABEL_IMAGE]",
+      "type": "File",
+      "optional": true,
+      "id": "label_image",
+      "name": "Label Image",
+      "command-line-flag": "--label"
+    },
+    {
+      "description": "Output results in transpose format (one row per voxel/mean)",
+      "value-key": "[TRANSPOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "transpose_flag",
+      "name": "Transpose flag",
+      "command-line-flag": "--transpose"
+    },
+    {
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose flag",
+      "command-line-flag": "-v"
+    },
+    {
+      "description": "Display the help message",
+      "value-key": "help_flag",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help flag",
+      "command-line-flag": "-h"
+    },
+    {
+      "description": "Output weighted mean, using mask values as weights, and exit.",
+      "value-key": "[WEIGHTED_MEAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "weighted_mean_flag",
+      "name": "Weighted mean flag",
+      "command-line-flag": "-w"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory arguments for fslmeants",
+      "id": "compulsory_args_group",
+      "members": [
+        "input_image"
+      ],
+      "name": "Compulsory Arguments"
+    },
+    {
+      "description": "Optional arguments for fslmeants",
+      "id": "optional_args_group",
+      "members": [
+        "output",
+        "mask",
+        "coordinates",
+        "usemm_flag",
+        "showall_flag",
+        "eigenv_flag",
+        "eigenvariates_order",
+        "no_bin_flag",
+        "label_image",
+        "transpose_flag",
+        "verbose_flag",
+        "help_flag",
+        "weighted_mean_flag"
+      ],
+      "name": "Optional Arguments"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT]",
+      "description": "Output text matrix from fslmeants",
+      "optional": true,
+      "id": "output_text_matrix",
+      "name": "Output Text Matrix"
+    }
+  ]
+}

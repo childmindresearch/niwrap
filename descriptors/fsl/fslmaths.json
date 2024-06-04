@@ -1,0 +1,229 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fslmaths",
+  "author": "FMRIB Analysis Group, Oxford University, UK",
+  "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "description": "General command for mathematical manipulation of image intensities and generation of statistical data from given images.",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "command-line": "fslmaths [INPUT_FILE] [OPERATIONS] [OUTPUT_FILE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input image",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "command-line-flag": "-dt",
+      "description": "Set the datatype used internally for calculations (default float for all except double images)",
+      "value-key": "[DATATYPE]",
+      "type": "String",
+      "optional": true,
+      "id": "datatype",
+      "name": "Internal Datatype"
+    },
+    {
+      "command-line-flag": "-odt",
+      "description": "Set the output datatype (default is float)",
+      "value-key": "[OUTPUT_DATATYPE]",
+      "type": "String",
+      "optional": true,
+      "id": "output_datatype",
+      "name": "Output Datatype"
+    },
+    {
+      "command-line-flag": "-add",
+      "description": "Add following input to current image",
+      "value-key": "[ADD_VALUE]",
+      "type": "String",
+      "optional": true,
+      "id": "add_operation",
+      "name": "Add operation"
+    },
+    {
+      "command-line-flag": "-sub",
+      "description": "Subtract following input from current image",
+      "value-key": "[SUB_VALUE]",
+      "type": "String",
+      "optional": true,
+      "id": "sub_operation",
+      "name": "Subtract operation"
+    },
+    {
+      "command-line-flag": "-mul",
+      "description": "Multiply current image by following input",
+      "value-key": "[MUL_VALUE]",
+      "type": "String",
+      "optional": true,
+      "id": "mul_operation",
+      "name": "Multiply operation"
+    },
+    {
+      "command-line-flag": "-div",
+      "description": "Divide current image by following input",
+      "value-key": "[DIV_VALUE]",
+      "type": "String",
+      "optional": true,
+      "id": "div_operation",
+      "name": "Divide operation"
+    },
+    {
+      "command-line-flag": "-rem",
+      "description": "Modulus remainder - divide current image by following input and take remainder",
+      "value-key": "[REM_VALUE]",
+      "type": "String",
+      "optional": true,
+      "id": "rem_operation",
+      "name": "Modulus remainder operation"
+    },
+    {
+      "command-line-flag": "-mas",
+      "description": "Use (following image>0) to mask current image",
+      "value-key": "[MAS_VALUE]",
+      "type": "File",
+      "optional": true,
+      "id": "mas_operation",
+      "name": "Mask operation"
+    },
+    {
+      "command-line-flag": "-thr",
+      "description": "Use following number to threshold current image (zero anything below the number)",
+      "value-key": "[THR_VALUE]",
+      "type": "Number",
+      "optional": true,
+      "id": "thr_operation",
+      "name": "Threshold operation"
+    },
+    {
+      "command-line-flag": "-thrp",
+      "description": "Use following percentage (0-100) of ROBUST RANGE to threshold current image (zero anything below the number)",
+      "value-key": "[THRP_VALUE]",
+      "type": "Number",
+      "maximum": 100,
+      "minimum": 0,
+      "integer": false,
+      "optional": true,
+      "id": "thrp_operation",
+      "name": "Threshold percentage"
+    },
+    {
+      "command-line-flag": "-uthr",
+      "description": "Use following number to upper-threshold current image (zero anything above the number)",
+      "value-key": "[UTHR_VALUE]",
+      "type": "Number",
+      "optional": true,
+      "id": "uthr_operation",
+      "name": "Upper-threshold operation"
+    },
+    {
+      "command-line-flag": "-uthrp",
+      "description": "Use following percentage (0-100) of ROBUST RANGE to upper-threshold current image (zero anything above the number)",
+      "value-key": "[UTHRP_VALUE]",
+      "type": "Number",
+      "maximum": 100,
+      "minimum": 0,
+      "integer": false,
+      "optional": true,
+      "id": "uthrp_operation",
+      "name": "Upper-threshold percentage"
+    },
+    {
+      "command-line-flag": "-max",
+      "description": "Take maximum of following input and current image",
+      "value-key": "[MAX_VALUE]",
+      "type": "String",
+      "optional": true,
+      "id": "max_operation",
+      "name": "Maximum operation"
+    },
+    {
+      "command-line-flag": "-min",
+      "description": "Take minimum of following input and current image",
+      "value-key": "[MIN_VALUE]",
+      "type": "String",
+      "optional": true,
+      "id": "min_operation",
+      "name": "Minimum operation"
+    },
+    {
+      "command-line-flag": "-exp",
+      "description": "Exponential",
+      "value-key": "[EXP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "exp_operation",
+      "name": "Exponential operation"
+    },
+    {
+      "command-line-flag": "-log",
+      "description": "Natural logarithm",
+      "value-key": "[LOG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "log_operation",
+      "name": "Logarithm operation"
+    },
+    {
+      "command-line-flag": "-sin",
+      "description": "Sine function",
+      "value-key": "[SIN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sin_operation",
+      "name": "Sine operation"
+    },
+    {
+      "command-line-flag": "-cos",
+      "description": "Cosine function",
+      "value-key": "[COS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "cos_operation",
+      "name": "Cosine operation"
+    },
+    {
+      "command-line-flag": "-tan",
+      "description": "Tangent function",
+      "value-key": "[TAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "tan_operation",
+      "name": "Tangent operation"
+    },
+    {
+      "command-line-flag": "-sqr",
+      "description": "Square",
+      "value-key": "[SQR_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sqr_operation",
+      "name": "Square operation"
+    },
+    {
+      "command-line-flag": "-sqrt",
+      "description": "Square root",
+      "value-key": "[SQRT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sqrt_operation",
+      "name": "Square root operation"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Output image",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file"
+    }
+  ]
+}

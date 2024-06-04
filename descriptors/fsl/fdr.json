@@ -1,0 +1,175 @@
+{
+  "tool-version": "6.0.5:9e026117",
+  "name": "fdr",
+  "author": "University of Oxford (Mark Jenkinson)",
+  "description": "False Discovery Rate (FDR) correction tool from FSL",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
+  "command-line": "fdr -i [INPUT_FILE] [MASK_IMAGE] [Q_VALUE] [OUTPUT_ADJUSTED_IMAGE] [OUTPUT_THRESH_IMAGE] [OUTPUT_ORDER_VALUES] [ONE_MINUS_P_FLAG] [POSITIVE_CORR_FLAG] [INDEPENDENT_FLAG] [CONSERVATIVE_FLAG] [DEBUG_FLAG] [VERBOSE_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:6.0.5",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input p-value image file",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file",
+      "command-line-flag": "-i"
+    },
+    {
+      "description": "Mask image file",
+      "value-key": "[MASK_IMAGE]",
+      "type": "File",
+      "optional": true,
+      "id": "maskfile",
+      "name": "Mask file",
+      "command-line-flag": "-m"
+    },
+    {
+      "description": "Q-value (FDR) threshold",
+      "value-key": "[Q_VALUE]",
+      "type": "Number",
+      "optional": true,
+      "id": "qvalue",
+      "name": "Q-value threshold",
+      "command-line-flag": "-q"
+    },
+    {
+      "description": "Output image with FDR-adjusted p-values",
+      "value-key": "[OUTPUT_ADJUSTED_IMAGE]",
+      "type": "String",
+      "optional": true,
+      "id": "adjustedimage",
+      "name": "Adjusted output image",
+      "command-line-flag": "-a"
+    },
+    {
+      "description": "Output a thresholded p-value image",
+      "value-key": "[OUTPUT_THRESH_IMAGE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "othresh_flag",
+      "name": "Output thresholded image",
+      "command-line-flag": "--othresh"
+    },
+    {
+      "description": "Output image of order values",
+      "value-key": "[OUTPUT_ORDER_VALUES]",
+      "type": "Flag",
+      "optional": true,
+      "id": "order_flag",
+      "name": "Output order values",
+      "command-line-flag": "--order"
+    },
+    {
+      "description": "Treat input as 1-p (also save output like this)",
+      "value-key": "[ONE_MINUS_P_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "oneminusp_flag",
+      "name": "One minus p-value flag",
+      "command-line-flag": "--oneminusp"
+    },
+    {
+      "description": "Use FDR correction factor that assumes positive correlation",
+      "value-key": "[POSITIVE_CORR_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "positive_corr_flag",
+      "name": "Positive correlation correction",
+      "command-line-flag": "--positivecorr"
+    },
+    {
+      "description": "Use FDR correction factor that assumes independence",
+      "value-key": "[INDEPENDENT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "independent_flag",
+      "name": "Assume independence",
+      "command-line-flag": "--independent"
+    },
+    {
+      "description": "Use conservative FDR correction factor (allows for any correlation)",
+      "value-key": "[CONSERVATIVE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "conservative_flag",
+      "name": "Conservative correction",
+      "command-line-flag": "--conservative"
+    },
+    {
+      "description": "Switch on debugging output",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug_flag",
+      "name": "Debug flag",
+      "command-line-flag": "--debug"
+    },
+    {
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose flag",
+      "command-line-flag": "-v"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory argument group",
+      "id": "compulsory_params_group",
+      "members": [
+        "infile"
+      ],
+      "name": "Compulsory Parameters"
+    },
+    {
+      "description": "Optional parameters group",
+      "id": "optional_params_group",
+      "members": [
+        "maskfile",
+        "qvalue",
+        "adjustedimage",
+        "othresh_flag",
+        "order_flag",
+        "oneminusp_flag",
+        "positive_corr_flag",
+        "independent_flag",
+        "conservative_flag",
+        "debug_flag",
+        "verbose_flag"
+      ],
+      "name": "Optional Parameters"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_ADJUSTED_IMAGE].nii.gz",
+      "description": "Output FDR-adjusted p-values image",
+      "optional": true,
+      "id": "output_adjusted",
+      "name": "Output adjusted p-value image"
+    },
+    {
+      "path-template": "[INPUT_FILE]_thr.nii.gz",
+      "description": "Thresholded output p-value image",
+      "optional": true,
+      "id": "output_thresholded",
+      "name": "Output thresholded p-value image"
+    },
+    {
+      "path-template": "[INPUT_FILE]_order.nii.gz",
+      "description": "Output order values image",
+      "optional": true,
+      "id": "output_order",
+      "name": "Output order values image"
+    }
+  ]
+}

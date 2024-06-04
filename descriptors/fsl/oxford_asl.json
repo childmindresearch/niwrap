@@ -1,0 +1,336 @@
+{
+  "command-line": "oxford_asl -i <asl_data> -o <output_dir_name> [options]",
+  "tool-version": "1.0.0",
+  "name": "oxford_asl",
+  "author": "FMRIB Centre, University of Oxford",
+  "description": "Calculate perfusion maps from ASL data",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/oxford_asl",
+  "inputs": [
+    {
+      "id": "asl_data",
+      "name": "ASL data",
+      "type": "File",
+      "value-key": "<asl_data>",
+      "description": "Input ASL data",
+      "optional": false
+    },
+    {
+      "id": "output_dir_name",
+      "name": "Output Directory",
+      "type": "String",
+      "value-key": "<output_dir_name>",
+      "description": "Output directory name",
+      "optional": false
+    },
+    {
+      "id": "mask",
+      "name": "Mask",
+      "type": "File",
+      "value-key": "<mask>",
+      "description": "Mask in native space of ASL data",
+      "command-line-flag": "-m",
+      "optional": true
+    },
+    {
+      "id": "spatial_smoothing",
+      "name": "Spatial Smoothing",
+      "type": "Flag",
+      "value-key": "<spatial_smoothing>",
+      "description": "Use adaptive spatial smoothing on perfusion",
+      "command-line-flag": "--spatial",
+      "optional": true
+    },
+    {
+      "id": "white_paper_analysis",
+      "name": "White Paper Analysis",
+      "type": "Flag",
+      "value-key": "<white_paper_analysis>",
+      "description": "Analysis that conforms to the 'white paper' (Alsop et al. 2014)",
+      "command-line-flag": "--wp",
+      "optional": true
+    },
+    {
+      "id": "motion_correction",
+      "name": "Motion Correction",
+      "type": "Flag",
+      "value-key": "<motion_correction>",
+      "description": "Apply motion correction using mcflirt",
+      "command-line-flag": "--mc",
+      "optional": true
+    },
+    {
+      "id": "input_asl_format",
+      "name": "Input ASL Format",
+      "type": "String",
+      "value-key": "<input_asl_format>",
+      "description": "Input ASL format: diff, tc, ct",
+      "command-line-flag": "--iaf",
+      "optional": true
+    },
+    {
+      "id": "input_block_format",
+      "name": "Input Block Format",
+      "type": "String",
+      "value-key": "<input_block_format>",
+      "description": "Input block format (for multi-TI): rpt, tis",
+      "command-line-flag": "--ibf",
+      "optional": true
+    },
+    {
+      "id": "inversion_times",
+      "name": "Inversion Times",
+      "type": "String",
+      "value-key": "<inversion_times>",
+      "description": "Comma separated list of inversion times",
+      "command-line-flag": "--tis",
+      "optional": true
+    },
+    {
+      "id": "ti_image",
+      "name": "TI Image",
+      "type": "File",
+      "value-key": "<ti_image>",
+      "description": "4D image containing voxelwise TI values",
+      "command-line-flag": "--tiimg",
+      "optional": true
+    },
+    {
+      "id": "casl",
+      "name": "CASL Acquisition",
+      "type": "Flag",
+      "value-key": "<casl>",
+      "description": "ASL acquisition is pseudo cASL (pcASL) rather than pASL",
+      "command-line-flag": "--casl",
+      "optional": true
+    },
+    {
+      "id": "arterial_suppression",
+      "name": "Arterial Suppression",
+      "type": "Flag",
+      "value-key": "<arterial_suppression>",
+      "description": "Arterial suppression (vascular crushing) was used",
+      "command-line-flag": "--artsupp",
+      "optional": true
+    },
+    {
+      "id": "bolus_duration",
+      "name": "Bolus Duration",
+      "type": "Number",
+      "value-key": "<bolus_duration>",
+      "description": "Bolus duration",
+      "command-line-flag": "--bolus",
+      "optional": true
+    },
+    {
+      "id": "bat",
+      "name": "Bolus Arrival Time",
+      "type": "Number",
+      "value-key": "<bat>",
+      "description": "Bolus arrival time",
+      "command-line-flag": "--bat",
+      "optional": true
+    },
+    {
+      "id": "tissue_t1",
+      "name": "Tissue T1 Value",
+      "type": "Number",
+      "value-key": "<tissue_t1>",
+      "description": "Tissue T1 value",
+      "command-line-flag": "--t1",
+      "optional": true
+    },
+    {
+      "id": "blood_t1",
+      "name": "Blood T1 Value",
+      "type": "Number",
+      "value-key": "<blood_t1>",
+      "description": "Blood T1 value",
+      "command-line-flag": "--t1b",
+      "optional": true
+    },
+    {
+      "id": "slice_timing_difference",
+      "name": "Slice Timing Difference",
+      "type": "Number",
+      "value-key": "<slice_timing_difference>",
+      "description": "Timing difference between slices",
+      "command-line-flag": "--slicedt",
+      "optional": true
+    },
+    {
+      "id": "slice_band",
+      "name": "Slice Band",
+      "type": "Number",
+      "value-key": "<slice_band>",
+      "description": "Number of slices per band in a multi-band setup",
+      "command-line-flag": "--sliceband",
+      "optional": true
+    },
+    {
+      "id": "flip_angle",
+      "name": "Flip Angle",
+      "type": "Number",
+      "value-key": "<flip_angle>",
+      "description": "Flip angle for Look-Locker readout correction",
+      "command-line-flag": "--fa",
+      "optional": true
+    },
+    {
+      "id": "fsl_anat_dir",
+      "name": "FSL ANAT Directory",
+      "type": "String",
+      "value-key": "<fsl_anat_dir>",
+      "description": "An fsl_anat directory from structural image",
+      "command-line-flag": "--fslanat",
+      "optional": true
+    },
+    {
+      "id": "structural_image",
+      "name": "Structural Image",
+      "type": "File",
+      "value-key": "<structural_image>",
+      "description": "Structural image (whole head)",
+      "command-line-flag": "-s",
+      "optional": true
+    },
+    {
+      "id": "bet_structural_image",
+      "name": "BET Structural Image",
+      "type": "File",
+      "value-key": "<bet_structural_image>",
+      "description": "Structural image (already BETed)",
+      "command-line-flag": "--sbrain",
+      "optional": true
+    },
+    {
+      "id": "fast_segmentation_images",
+      "name": "FAST Segmentation Images",
+      "type": "String",
+      "value-key": "<fast_segmentation_images>",
+      "description": "Images from a FAST segmentation",
+      "command-line-flag": "--fastsrc",
+      "optional": true
+    },
+    {
+      "id": "sensitivity_correction",
+      "name": "Sensitivity Correction",
+      "type": "Flag",
+      "value-key": "<sensitivity_correction>",
+      "description": "Use bias field (from segmentation) for sensitivity correction",
+      "command-line-flag": "--senscorr",
+      "optional": true
+    },
+    {
+      "id": "precomputed_m0_value",
+      "name": "Precomputed M0 Value",
+      "type": "Number",
+      "value-key": "<precomputed_m0_value>",
+      "description": "Single precomputed M0 value",
+      "command-line-flag": "--M0",
+      "optional": true
+    },
+    {
+      "id": "inversion_efficiency",
+      "name": "Inversion Efficiency",
+      "type": "Number",
+      "value-key": "<inversion_efficiency>",
+      "description": "Inversion efficiency",
+      "command-line-flag": "--alpha",
+      "optional": true
+    },
+    {
+      "id": "calibration_image",
+      "name": "Calibration Image",
+      "type": "File",
+      "value-key": "<calibration_image>",
+      "description": "M0 calibration image (proton density or mean control image)",
+      "command-line-flag": "-c",
+      "optional": true
+    },
+    {
+      "id": "tr_calibration_data",
+      "name": "TR Calibration Data",
+      "type": "Number",
+      "value-key": "<tr_calibration_data>",
+      "description": "TR of calibration data",
+      "command-line-flag": "--tr",
+      "optional": true
+    },
+    {
+      "id": "calibration_method",
+      "name": "Calibration Method",
+      "type": "String",
+      "value-key": "<calibration_method>",
+      "description": "Calibration method: single or voxel",
+      "command-line-flag": "--cmethod",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_dir",
+      "name": "Output Directory",
+      "path-template": "<output_dir_name>",
+      "description": "Directory containing the output files",
+      "optional": false
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "id": "main_options",
+      "name": "Main Options",
+      "description": "Main options for oxford_asl",
+      "members": [
+        "mask",
+        "spatial_smoothing",
+        "white_paper_analysis",
+        "motion_correction"
+      ]
+    },
+    {
+      "id": "acquisition_data",
+      "name": "Acquisition/Data Specific",
+      "description": "Options related to acquisition or data specifics for oxford_asl",
+      "members": [
+        "input_asl_format",
+        "input_block_format",
+        "inversion_times",
+        "ti_image",
+        "casl",
+        "arterial_suppression",
+        "bolus_duration",
+        "bat",
+        "tissue_t1",
+        "blood_t1",
+        "slice_timing_difference",
+        "slice_band",
+        "flip_angle"
+      ]
+    },
+    {
+      "id": "structural_image_options",
+      "name": "Structural Image Options",
+      "description": "Options related to structural images",
+      "members": [
+        "fsl_anat_dir",
+        "structural_image",
+        "bet_structural_image",
+        "fast_segmentation_images",
+        "sensitivity_correction"
+      ]
+    },
+    {
+      "id": "calibration_options",
+      "name": "Calibration Options",
+      "description": "Options for calibration",
+      "members": [
+        "precomputed_m0_value",
+        "inversion_efficiency",
+        "calibration_image",
+        "tr_calibration_data",
+        "calibration_method"
+      ]
+    }
+  ]
+}

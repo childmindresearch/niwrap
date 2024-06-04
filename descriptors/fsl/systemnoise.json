@@ -1,0 +1,102 @@
+{
+  "tool-version": "1.0.0",
+  "name": "systemnoise",
+  "author": "University of Oxford (Mark Jenkinson)",
+  "descriptor-url": "https://example.com/descriptors/systemnoise.json",
+  "description": "Tool for adding system noise to a given signal using FSL's utilities",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SystemNoise",
+  "command-line": "systemnoise [OPTIONS]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "--in",
+      "description": "Input signal (possum output matrix)",
+      "value-key": "[INPUT_SIGNAL]",
+      "type": "File",
+      "optional": false,
+      "id": "input_signal",
+      "name": "Input Signal"
+    },
+    {
+      "command-line-flag": "--out",
+      "description": "Output signal (possum matrix form)",
+      "value-key": "[OUTPUT_SIGNAL]",
+      "type": "File",
+      "optional": false,
+      "id": "output_signal",
+      "name": "Output Signal"
+    },
+    {
+      "command-line-flag": "--sigma",
+      "description": "Set noise standard deviation (units of intensity)",
+      "value-key": "[NOISE_STANDARD_DEVIATION]",
+      "type": "Number",
+      "optional": false,
+      "id": "noise_standard_deviation",
+      "name": "Noise Standard Deviation"
+    },
+    {
+      "command-line-flag": "--seed",
+      "description": "Input seed value for the sequence",
+      "value-key": "[SEED]",
+      "type": "Number",
+      "optional": true,
+      "id": "seed",
+      "name": "Seed Value"
+    },
+    {
+      "command-line-flag": "--verbose",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose Flag"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Display help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Specify compulsory arguments",
+      "id": "compulsory_args_group",
+      "members": [
+        "input_signal",
+        "output_signal",
+        "noise_standard_deviation"
+      ],
+      "name": "Compulsory Arguments"
+    },
+    {
+      "description": "Optional arguments",
+      "id": "optional_args_group",
+      "members": [
+        "seed",
+        "verbose_flag",
+        "help_flag"
+      ],
+      "name": "Optional Arguments"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_SIGNAL]",
+      "description": "Output signal with added system noise",
+      "optional": false,
+      "id": "output_signal_file",
+      "name": "Output Signal File"
+    }
+  ]
+}

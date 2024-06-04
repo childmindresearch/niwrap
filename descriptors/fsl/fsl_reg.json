@@ -1,0 +1,115 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fsl_reg",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Image registration using FSL tools",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT",
+  "command-line": "fsl_reg [INPUT_FILE] [REFERENCE_FILE] [OUTPUT_FILE] [ESTIMATE_ONLY_FLAG] [AFFINE_ONLY_FLAG] [FNIRT_FA_CONFIG_FLAG] [FLIRT_OPTIONS] [FNIRT_OPTIONS]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input image file",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input file"
+    },
+    {
+      "description": "Reference image file",
+      "value-key": "[REFERENCE_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "reference_file",
+      "name": "Reference file"
+    },
+    {
+      "description": "Output transformation file",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "-e",
+      "description": "Estimate transformation but don't apply it",
+      "value-key": "[ESTIMATE_ONLY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "estimate_only_flag",
+      "name": "Estimate only flag"
+    },
+    {
+      "command-line-flag": "-a",
+      "description": "Affine-only registration",
+      "value-key": "[AFFINE_ONLY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "affine_only_flag",
+      "name": "Affine-only flag"
+    },
+    {
+      "command-line-flag": "-FA",
+      "description": "Use FNIRT config file optimised for FA data",
+      "value-key": "[FNIRT_FA_CONFIG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "fnirt_fa_config_flag",
+      "name": "FNIRT FA config flag"
+    },
+    {
+      "command-line-flag": "-flirt",
+      "description": "Options to be passed onto flirt (inside double-quotes)",
+      "value-key": "[FLIRT_OPTIONS]",
+      "type": "String",
+      "optional": true,
+      "id": "flirt_options",
+      "name": "FLIRT options"
+    },
+    {
+      "command-line-flag": "-fnirt",
+      "description": "Options to be passed onto fnirt (inside double-quotes)",
+      "value-key": "[FNIRT_OPTIONS]",
+      "type": "String",
+      "optional": true,
+      "id": "fnirt_options",
+      "name": "FNIRT options"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Flags controlling the type and extent of registration",
+      "id": "registration_flags_group",
+      "members": [
+        "estimate_only_flag",
+        "affine_only_flag",
+        "fnirt_fa_config_flag"
+      ],
+      "name": "Registration Flags"
+    },
+    {
+      "description": "Options to pass to FLIRT and FNIRT",
+      "id": "flirt_fnirt_options_group",
+      "members": [
+        "flirt_options",
+        "fnirt_options"
+      ],
+      "name": "FLIRT and FNIRT Options"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Output transformation file",
+      "optional": false,
+      "id": "output_transform_file",
+      "name": "Output transformation file"
+    }
+  ]
+}

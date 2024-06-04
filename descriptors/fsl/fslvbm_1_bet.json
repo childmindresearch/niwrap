@@ -1,0 +1,54 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fslvbm_1_bet",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Brain extraction for VBM using FSL BET",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLVBM",
+  "command-line": "fslvbm_1_bet [BET_OPTION] [BET_PARAMETERS]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-b",
+      "description": "Default BET brain extraction with -f 0.4",
+      "value-key": "[BET_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "default_bet",
+      "name": "Default BET brain extraction"
+    },
+    {
+      "command-line-flag": "-N",
+      "description": "Increased robustness in the brain extraction when a lot of neck is present",
+      "value-key": "[BET_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "increased_robustness",
+      "name": "Increased robustness for neck presence"
+    },
+    {
+      "description": "Additional options to be passed on to BET",
+      "value-key": "[BET_PARAMETERS]",
+      "type": "String",
+      "optional": true,
+      "id": "bet_parameters",
+      "name": "BET parameters"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Mutually exclusive options for BET brain extraction",
+      "mutually-exclusive": true,
+      "id": "bet_option_group",
+      "members": [
+        "default_bet",
+        "increased_robustness"
+      ],
+      "name": "BET Options"
+    }
+  ]
+}

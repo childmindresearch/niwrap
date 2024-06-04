@@ -1,0 +1,40 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fslmodhd",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "A tool for modifying header information of NIfTI images",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "command-line": "fslmodhd [IMAGE] [KEYWORD] [VALUE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input image file (e.g. image.nii.gz)",
+      "value-key": "[IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "image",
+      "name": "Input image"
+    },
+    {
+      "description": "Header keyword to modify (e.g. 'dim', 'pixdim')",
+      "value-key": "[KEYWORD]",
+      "type": "String",
+      "optional": false,
+      "id": "keyword",
+      "name": "Header keyword"
+    },
+    {
+      "description": "New value for the given header keyword",
+      "value-key": "[VALUE]",
+      "type": "String",
+      "optional": false,
+      "id": "value",
+      "name": "New value"
+    }
+  ],
+  "schema-version": "0.5"
+}

@@ -1,0 +1,34 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fslhd",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/fslhd.json",
+  "description": "Display header information from a NIFTI file",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#FSLHD",
+  "command-line": "fslhd [XML_FLAG] [INPUT_FILE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input NIFTI file",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input file"
+    },
+    {
+      "command-line-flag": "-x",
+      "description": "Print an XML-style NIFTI header",
+      "value-key": "[XML_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "xml_flag",
+      "name": "XML flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

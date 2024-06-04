@@ -1,0 +1,130 @@
+{
+  "tool-version": "1.0.0",
+  "name": "img2imgcoord",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Tool for transforming coordinates between images",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT",
+  "command-line": "img2imgcoord [OPTIONS] [COORDINATES_FILE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Filename containing coordinates",
+      "value-key": "[COORDINATES_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "coordinates_file",
+      "name": "Coordinates File"
+    },
+    {
+      "command-line-flag": "-src",
+      "description": "Filename of source image",
+      "value-key": "[SOURCE_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "source_image",
+      "name": "Source Image"
+    },
+    {
+      "command-line-flag": "-dest",
+      "description": "Filename of destination image",
+      "value-key": "[DEST_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "dest_image",
+      "name": "Destination Image"
+    },
+    {
+      "command-line-flag": "-xfm",
+      "description": "Filename of affine transform (e.g. source2dest.mat)",
+      "value-key": "[AFFINE_TRANSFORM]",
+      "type": "File",
+      "optional": false,
+      "id": "affine_transform",
+      "name": "Affine Transform"
+    },
+    {
+      "command-line-flag": "-warp",
+      "description": "Filename of warpfield (e.g. intermediate2dest_warp.nii.gz)",
+      "value-key": "[WARP_FIELD]",
+      "type": "File",
+      "optional": true,
+      "id": "warp_field",
+      "name": "Warp Field"
+    },
+    {
+      "command-line-flag": "-premat",
+      "description": "Filename of pre-warp affine transform (default=identity)",
+      "value-key": "[PRE_WARP_AFFINE]",
+      "type": "File",
+      "optional": true,
+      "id": "pre_warp_affine",
+      "name": "Pre-warp Affine Transform"
+    },
+    {
+      "command-line-flag": "-vox",
+      "description": "All coordinates in voxels (default)",
+      "value-key": "[COORDS_IN_VOXELS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "coords_in_voxels",
+      "name": "Coordinates in Voxels"
+    },
+    {
+      "command-line-flag": "-mm",
+      "description": "All coordinates in mm",
+      "value-key": "[COORDS_IN_MM]",
+      "type": "Flag",
+      "optional": true,
+      "id": "coords_in_mm",
+      "name": "Coordinates in MM"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Verbose mode",
+      "value-key": "[VERBOSE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Display help message",
+      "value-key": "[HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Source, destination, and transform parameters",
+      "id": "compulsory_params",
+      "members": [
+        "source_image",
+        "dest_image",
+        "affine_transform"
+      ],
+      "name": "Compulsory Parameters"
+    },
+    {
+      "description": "Optional parameters",
+      "id": "optional_params",
+      "members": [
+        "warp_field",
+        "pre_warp_affine",
+        "coords_in_voxels",
+        "coords_in_mm",
+        "verbose",
+        "help"
+      ],
+      "name": "Optional Parameters"
+    }
+  ]
+}

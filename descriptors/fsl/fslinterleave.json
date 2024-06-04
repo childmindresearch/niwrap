@@ -1,0 +1,58 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fslinterleave",
+  "author": "FMRIB Software Library (FSL)",
+  "description": "Interleaves two input images slice-by-slice to produce an output image.",
+  "url": "https://fsl.fmrib.ox.ac.uk",
+  "command-line": "fslinterleave [IN1] [IN2] [OUT] [REVERSE_SLICE_ORDER_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "First input image",
+      "value-key": "[IN1]",
+      "type": "File",
+      "optional": false,
+      "id": "infile1",
+      "name": "Input file 1"
+    },
+    {
+      "description": "Second input image",
+      "value-key": "[IN2]",
+      "type": "File",
+      "optional": false,
+      "id": "infile2",
+      "name": "Input file 2"
+    },
+    {
+      "description": "Output interleaved image",
+      "value-key": "[OUT]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "-i",
+      "description": "Reverse slice order",
+      "value-key": "[REVERSE_SLICE_ORDER_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "reverse_slice_order_flag",
+      "name": "Reverse slice order flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUT].nii.gz",
+      "description": "Interleaved output image",
+      "optional": false,
+      "id": "interleaved_output",
+      "name": "Interleaved output file"
+    }
+  ]
+}

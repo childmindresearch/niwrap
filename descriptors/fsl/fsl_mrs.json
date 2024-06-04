@@ -1,0 +1,377 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fsl_mrs",
+  "author": "FMRIB Centre, University of Oxford",
+  "description": "FSL Magnetic Resonance Spectroscopy Wrapper Script",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "command-line": "fsl_mrs [DATA] [BASIS] [OUTPUT] [ALGO] [IGNORE_METAB] [KEEP_METAB] [COMBINE_METAB] [PPMLIM] [H2O_FILE] [BASELINE_ORDER] [METAB_GROUPS] [ADD_MM_FLAG] [ADD_MM_MEGA_FLAG] [LORENTZIAN_FLAG] [IND_SCALE] [DISABLE_MH_PRIORS_FLAG] [T1_IMAGE] [TE] [TR] [TISSUE_FRAC] [INTERNAL_REF] [WREF_METABOLITE] [REF_PROTONS] [REF_INT_LIMITS] [H2O_SCALE] [REPORT_FLAG] [VERBOSE_FLAG] [OVERWRITE_FLAG] [CONJ_FID] [NO_CONJ_FID] [CONJ_BASIS] [NO_CONJ_BASIS] [NO_RESCALE] [CONFIG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input FID file",
+      "value-key": "[DATA]",
+      "type": "File",
+      "optional": false,
+      "id": "data",
+      "name": "Data file"
+    },
+    {
+      "description": ".BASIS file or folder containing basis spectra (will read all files within)",
+      "value-key": "[BASIS]",
+      "type": "File",
+      "optional": false,
+      "id": "basis",
+      "name": "Basis file"
+    },
+    {
+      "description": "Output folder",
+      "value-key": "[OUTPUT]",
+      "type": "String",
+      "optional": false,
+      "id": "output",
+      "name": "Output folder"
+    },
+    {
+      "command-line-flag": "--algo",
+      "description": "Algorithm [Newton (fast, default) or MH (slow)]",
+      "value-key": "[ALGO]",
+      "type": "String",
+      "optional": true,
+      "id": "algo",
+      "name": "Algorithm"
+    },
+    {
+      "command-line-flag": "--ignore",
+      "description": "Ignore certain metabolites [repeatable]",
+      "value-key": "[IGNORE_METAB]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "ignore_metab",
+      "name": "Ignore metabolites"
+    },
+    {
+      "command-line-flag": "--keep",
+      "description": "Only keep these metabolites",
+      "value-key": "[KEEP_METAB]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "keep_metab",
+      "name": "Keep metabolites"
+    },
+    {
+      "command-line-flag": "--combine",
+      "description": "Combine certain metabolites [repeatable]",
+      "value-key": "[COMBINE_METAB]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "combine_metab",
+      "name": "Combine metabolites"
+    },
+    {
+      "command-line-flag": "--ppmlim",
+      "description": "Limit the fit to a frequency range (default=(.2,4.2))",
+      "value-key": "[PPMLIM]",
+      "type": "Number",
+      "list": true,
+      "max-list-entries": 2,
+      "optional": true,
+      "id": "ppmlim",
+      "name": "PPM limit"
+    },
+    {
+      "command-line-flag": "--h2o",
+      "description": "Input .H2O file for quantification",
+      "value-key": "[H2O_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "h2o_file",
+      "name": "H2O file"
+    },
+    {
+      "command-line-flag": "--baseline_order",
+      "description": "Order of baseline polynomial (default=2, -1 disables)",
+      "value-key": "[BASELINE_ORDER]",
+      "type": "Number",
+      "optional": true,
+      "id": "baseline_order",
+      "name": "Baseline order"
+    },
+    {
+      "command-line-flag": "--metab_groups",
+      "description": "Metabolite groups: list of groups or list of names for independent groups.",
+      "value-key": "[METAB_GROUPS]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "metab_groups",
+      "name": "Metabolite groups"
+    },
+    {
+      "command-line-flag": "--add_MM",
+      "description": "Include default macromolecule peaks",
+      "value-key": "[ADD_MM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "add_mm_flag",
+      "name": "Add macromolecule peaks flag"
+    },
+    {
+      "command-line-flag": "--add_MM_MEGA",
+      "description": "Include default MEGA-PRESS macromolecule peaks. This option is experimental!",
+      "value-key": "[ADD_MM_MEGA_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "add_mm_mega_flag",
+      "name": "Add MEGA macromolecule peaks flag"
+    },
+    {
+      "command-line-flag": "--lorentzian",
+      "description": "Enable purely Lorentzian broadening (default is Voigt)",
+      "value-key": "[LORENTZIAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "lorentzian_flag",
+      "name": "Lorentzian broadening flag"
+    },
+    {
+      "command-line-flag": "--ind_scale",
+      "description": "List of basis spectra to scale independently of other basis spectra.",
+      "value-key": "[IND_SCALE]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "ind_scaling",
+      "name": "Independent scaling"
+    },
+    {
+      "command-line-flag": "--disable_MH_priors",
+      "description": "Disable MH priors.",
+      "value-key": "[DISABLE_MH_PRIORS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "disable_mh_priors_flag",
+      "name": "Disable MH priors flag"
+    },
+    {
+      "command-line-flag": "--t1",
+      "description": "Structural image (for report)",
+      "value-key": "[T1_IMAGE]",
+      "type": "File",
+      "optional": true,
+      "id": "t1_image",
+      "name": "T1 Image"
+    },
+    {
+      "command-line-flag": "--TE",
+      "description": "Echo time for relaxation correction (ms)",
+      "value-key": "[TE]",
+      "type": "Number",
+      "optional": true,
+      "id": "te",
+      "name": "Echo time (TE)"
+    },
+    {
+      "command-line-flag": "--TR",
+      "description": "Repetition time for relaxation correction (s)",
+      "value-key": "[TR]",
+      "type": "Number",
+      "optional": true,
+      "id": "tr",
+      "name": "Repetition time (TR)"
+    },
+    {
+      "command-line-flag": "--tissue_frac",
+      "description": "Fractional tissue volumes for WM, GM, CSF or json segmentation file. Defaults to pure water scaling.",
+      "value-key": "[TISSUE_FRAC]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "tissue_frac",
+      "name": "Tissue fractions"
+    },
+    {
+      "command-line-flag": "--internal_ref",
+      "description": "Metabolite(s) used as an internal reference. Defaults to tCr (Cr+PCr).",
+      "value-key": "[INTERNAL_REF]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "internal_ref",
+      "name": "Internal reference"
+    },
+    {
+      "command-line-flag": "--wref_metabolite",
+      "description": "Metabolite(s) used as the reference for water scaling. Uses internal defaults otherwise.",
+      "value-key": "[WREF_METABOLITE]",
+      "type": "String",
+      "optional": true,
+      "id": "wref_metabolite",
+      "name": "Water reference metabolite"
+    },
+    {
+      "command-line-flag": "--ref_protons",
+      "description": "Number of protons that reference metabolite is equivalent to. No effect without setting --wref_metabolite.",
+      "value-key": "[REF_PROTONS]",
+      "type": "Number",
+      "optional": true,
+      "id": "ref_protons",
+      "name": "Reference protons"
+    },
+    {
+      "command-line-flag": "--ref_int_limits",
+      "description": "Reference spectrum integration limits (low, high). No effect without setting --wref_metabolite.",
+      "value-key": "[REF_INT_LIMITS]",
+      "type": "Number",
+      "list": true,
+      "max-list-entries": 2,
+      "optional": true,
+      "id": "ref_int_limits",
+      "name": "Reference integration limits"
+    },
+    {
+      "command-line-flag": "--h2o_scale",
+      "description": "Additional scaling modifier for external water referencing.",
+      "value-key": "[H2O_SCALE]",
+      "type": "Number",
+      "optional": true,
+      "id": "h2o_scale",
+      "name": "H2O scale"
+    },
+    {
+      "command-line-flag": "--report",
+      "description": "Output HTML report",
+      "value-key": "[REPORT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "report_flag",
+      "name": "Report Flag"
+    },
+    {
+      "command-line-flag": "--verbose",
+      "description": "Spit out verbose info",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose Flag"
+    },
+    {
+      "command-line-flag": "--overwrite",
+      "description": "Overwrite existing output folder",
+      "value-key": "[OVERWRITE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "overwrite_flag",
+      "name": "Overwrite Flag"
+    },
+    {
+      "command-line-flag": "--conj_fid",
+      "description": "Force conjugation of FID",
+      "value-key": "[CONJ_FID]",
+      "type": "Flag",
+      "optional": true,
+      "id": "conj_fid",
+      "name": "Conjugate FID Flag"
+    },
+    {
+      "command-line-flag": "--no_conj_fid",
+      "description": "Forbid automatic conjugation of FID",
+      "value-key": "[NO_CONJ_FID]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_conj_fid",
+      "name": "No Conjugate FID Flag"
+    },
+    {
+      "command-line-flag": "--conj_basis",
+      "description": "Force conjugation of basis",
+      "value-key": "[CONJ_BASIS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "conj_basis",
+      "name": "Conjugate Basis Flag"
+    },
+    {
+      "command-line-flag": "--no_conj_basis",
+      "description": "Forbid automatic conjugation of basis",
+      "value-key": "[NO_CONJ_BASIS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_conj_basis",
+      "name": "No Conjugate Basis Flag"
+    },
+    {
+      "command-line-flag": "--no_rescale",
+      "description": "Forbid rescaling of FID/basis/H2O.",
+      "value-key": "[NO_RESCALE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_rescale",
+      "name": "No rescale Flag"
+    },
+    {
+      "command-line-flag": "--config",
+      "description": "Configuration file",
+      "value-key": "[CONFIG]",
+      "type": "File",
+      "optional": true,
+      "id": "config",
+      "name": "Configuration file"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Specify parameters that alter the default fitting options for FSL-MRS",
+      "id": "fitting_options_group",
+      "members": [
+        "algo",
+        "ignore_metab",
+        "keep_metab",
+        "combine_metab",
+        "ppmlim",
+        "h2o_file",
+        "baseline_order",
+        "metab_groups",
+        "add_mm_flag",
+        "add_mm_mega_flag",
+        "lorentzian_flag",
+        "ind_scaling",
+        "disable_mh_priors_flag",
+        "t1_image",
+        "te",
+        "tr",
+        "tissue_frac",
+        "internal_ref",
+        "wref_metabolite",
+        "ref_protons",
+        "ref_int_limits",
+        "h2o_scale",
+        "report_flag"
+      ],
+      "name": "Fitting Options"
+    },
+    {
+      "description": "Miscellaneous flags for FSL-MRS",
+      "id": "miscellaneous_flags_group",
+      "members": [
+        "verbose_flag",
+        "overwrite_flag",
+        "conj_fid",
+        "no_conj_fid",
+        "conj_basis",
+        "no_conj_basis",
+        "no_rescale",
+        "config"
+      ],
+      "name": "Miscellaneous Flags"
+    }
+  ]
+}

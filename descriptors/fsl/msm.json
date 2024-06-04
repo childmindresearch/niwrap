@@ -1,0 +1,200 @@
+{
+  "tool-version": "6.0.5:9e026117",
+  "name": "msm",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MSM",
+  "description": "MSM (Multimodal Surface Matching) is a tool for aligning brain surface scans based on their cortical folding patterns or functional/structural data",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MSM",
+  "command-line": "msm [INPUT_MESH] --out [OUTPUT_BASENAME] [REFERENCE_MESH] [INPUT_DATA] [REFERENCE_DATA] [TRANSFORMED_SOURCE] [INPUT_MESH_REGISTER] [INPUT_WEIGHT] [REFERENCE_WEIGHT] [OUTPUT_FORMAT] [CONFIG_FILE] [RESOLUTION_LEVELS] [OUTPUT_SMOOTHING] [HELP_FLAG] [VERBOSE_FLAG] [PRINT_OPTIONS_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input mesh (available formats: VTK, ASCII, GIFTI). Needs to be a sphere",
+      "value-key": "[INPUT_MESH]",
+      "type": "File",
+      "optional": false,
+      "id": "inmesh",
+      "name": "Input mesh"
+    },
+    {
+      "description": "Output basename",
+      "value-key": "[OUTPUT_BASENAME]",
+      "type": "String",
+      "optional": false,
+      "id": "out",
+      "name": "Output basename"
+    },
+    {
+      "command-line-flag": "--refmesh",
+      "description": "Reference mesh (available formats: VTK, ASCII, GIFTI). Needs to be a sphere. If not included algorithm assumes reference mesh is equivalent input",
+      "value-key": "[REFERENCE_MESH]",
+      "type": "File",
+      "optional": true,
+      "id": "refmesh",
+      "name": "Reference mesh"
+    },
+    {
+      "command-line-flag": "--indata",
+      "description": "Scalar or multivariate data for input - can be ASCII (.asc,.dpv,.txt) or GIFTI (.func.gii or .shape.gii)",
+      "value-key": "[INPUT_DATA]",
+      "type": "File",
+      "optional": true,
+      "id": "indata",
+      "name": "Input data"
+    },
+    {
+      "command-line-flag": "--refdata",
+      "description": "Scalar or multivariate data for reference - can be ASCII (.asc,.dpv,.txt) or GIFTI (.func.gii or .shape.gii)",
+      "value-key": "[REFERENCE_DATA]",
+      "type": "File",
+      "optional": true,
+      "id": "refdata",
+      "name": "Reference data"
+    },
+    {
+      "command-line-flag": "--trans",
+      "description": "Transformed source mesh (output of a previous registration). Use this to initialise the current registration.",
+      "value-key": "[TRANSFORMED_SOURCE]",
+      "type": "File",
+      "optional": true,
+      "id": "trans",
+      "name": "Transformed source mesh"
+    },
+    {
+      "command-line-flag": "--in_register",
+      "description": "Input mesh at data resolution. Used to resample data onto input mesh if data is supplied at a different resolution. Note this mesh HAS to be in alignment with either the input_mesh of (if supplied) the transformed source mesh. Use with supreme caution.",
+      "value-key": "[INPUT_MESH_REGISTER]",
+      "type": "File",
+      "optional": true,
+      "id": "in_register",
+      "name": "Input mesh at data resolution"
+    },
+    {
+      "command-line-flag": "--inweight",
+      "description": "Cost function weighting for input - weights data in these vertices when calculating similarity (ASCII or GIFTI). Can be multivariate provided dimension equals that of data",
+      "value-key": "[INPUT_WEIGHT]",
+      "type": "File",
+      "optional": true,
+      "id": "inweight",
+      "name": "Input cost function weighting"
+    },
+    {
+      "command-line-flag": "--refweight",
+      "description": "Cost function weighting for reference - weights data in these vertices when calculating similarity (ASCII or GIFTI). Can be multivariate provided dimension equals that of data",
+      "value-key": "[REFERENCE_WEIGHT]",
+      "type": "File",
+      "optional": true,
+      "id": "refweight",
+      "name": "Reference cost function weighting"
+    },
+    {
+      "command-line-flag": "-f",
+      "description": "Format of output files, can be: GIFTI, VTK, ASCII or ASCII_MAT (for full details of output file formats see MSM wiki)",
+      "value-key": "[OUTPUT_FORMAT]",
+      "type": "String",
+      "optional": true,
+      "id": "format",
+      "name": "Output format"
+    },
+    {
+      "command-line-flag": "--conf",
+      "description": "Configuration file",
+      "value-key": "[CONFIG_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "conf",
+      "name": "Configuration file"
+    },
+    {
+      "command-line-flag": "--levels",
+      "description": "Number of resolution levels (default = number of resolution levels specified by --opt in config file)",
+      "value-key": "[RESOLUTION_LEVELS]",
+      "type": "Number",
+      "optional": true,
+      "id": "levels",
+      "name": "Resolution levels"
+    },
+    {
+      "command-line-flag": "--smoothout",
+      "description": "Smooth transformed output with this sigma (default=0)",
+      "value-key": "[OUTPUT_SMOOTHING]",
+      "type": "Number",
+      "optional": true,
+      "id": "smoothout",
+      "name": "Output smoothing"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Display help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose flag"
+    },
+    {
+      "command-line-flag": "-p",
+      "description": "Print configuration file options",
+      "value-key": "[PRINT_OPTIONS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "printoptions",
+      "name": "Print options flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory arguments for MSM",
+      "id": "compulsory_args",
+      "members": [
+        "inmesh",
+        "out"
+      ],
+      "name": "Compulsory Arguments"
+    },
+    {
+      "description": "Optional arguments for MSM",
+      "id": "optional_args",
+      "members": [
+        "refmesh",
+        "indata",
+        "refdata",
+        "trans",
+        "in_register",
+        "inweight",
+        "refweight",
+        "format",
+        "conf",
+        "levels",
+        "smoothout",
+        "help",
+        "verbose",
+        "printoptions"
+      ],
+      "name": "Optional Arguments"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_BASENAME]_output.ext",
+      "description": "Output file from MSM",
+      "optional": true,
+      "id": "output_file",
+      "name": "MSM output file"
+    }
+  ]
+}

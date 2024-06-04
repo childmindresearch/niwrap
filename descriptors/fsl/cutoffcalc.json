@@ -1,0 +1,112 @@
+{
+  "tool-version": "1.1",
+  "name": "cutoffcalc",
+  "author": "University of Oxford (Mark Jenkinson and Matthew Webster)",
+  "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/descriptors/fsl_cutoffcalc.json",
+  "description": "Calculates the minimal period for the highpass filter that still preserves a specified amount of variance in all the design matrix regressors.",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
+  "command-line": "cutoffcalc [INPUT_DESIGN] [THRESHOLD] [TR] [LIMIT] [EXAMPLE_SIG] [VERBOSE_FLAG] [DEBUG_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-i",
+      "command-line-flag-separator": " ",
+      "description": "Input design matrix (e.g. design.mat)",
+      "value-key": "[INPUT_DESIGN]",
+      "type": "File",
+      "optional": false,
+      "id": "input_design",
+      "name": "Input design matrix"
+    },
+    {
+      "command-line-flag": "-t",
+      "command-line-flag-separator": " ",
+      "description": "Threshold for retained variance (default=0.9)",
+      "value-key": "[THRESHOLD]",
+      "type": "Number",
+      "default-value": 0.9,
+      "optional": true,
+      "id": "threshold",
+      "name": "Threshold for retained variance"
+    },
+    {
+      "command-line-flag": "--tr",
+      "command-line-flag-separator": " ",
+      "description": "Time between successive data points (default=3.0s)",
+      "value-key": "[TR]",
+      "type": "Number",
+      "default-value": 3.0,
+      "optional": true,
+      "id": "tr",
+      "name": "Time between data points"
+    },
+    {
+      "command-line-flag": "--limit",
+      "command-line-flag-separator": " ",
+      "description": "Lower limit on period due to autocorr estimation (default=90s)",
+      "value-key": "[LIMIT]",
+      "type": "Number",
+      "default-value": 90.0,
+      "optional": true,
+      "id": "lower_limit",
+      "name": "Lower limit on period"
+    },
+    {
+      "command-line-flag": "--example_sig",
+      "command-line-flag-separator": " ",
+      "description": "Example sigma (in sec) to produce output called example_filt.mtx",
+      "value-key": "[EXAMPLE_SIG]",
+      "type": "Number",
+      "optional": true,
+      "id": "example_sigma",
+      "name": "Example sigma for output"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose flag"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Switch on debugging messages",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug_flag",
+      "name": "Debug flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Optional parameters for custom configurations",
+      "id": "optional_params_group",
+      "members": [
+        "threshold",
+        "tr",
+        "lower_limit",
+        "example_sigma",
+        "verbose_flag",
+        "debug_flag"
+      ],
+      "name": "Optional Parameters"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "example_filt.mtx",
+      "description": "Filtered output file if example sigma is provided",
+      "optional": true,
+      "id": "example_output",
+      "name": "Example filtered output file"
+    }
+  ]
+}

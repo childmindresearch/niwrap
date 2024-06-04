@@ -1,0 +1,92 @@
+{
+  "tool-version": "1.0",
+  "name": "fslsmoothfill",
+  "author": "University of Oxford (Mark Jenkinson)",
+  "description": "Smoothfill is a tool designed to fill in holes in images by smoothly interpolating the pixel values.",
+  "command-line": "smoothfill -i [INPUT_IMAGE] -m [MASK_IMAGE] -o [OUTPUT_IMAGE] [NUMBER_OF_ITERATIONS] [DEBUG_FLAG] [VERBOSE_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:6.0.5",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Filename of the input image.",
+      "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_image",
+      "name": "Input Image",
+      "command-line-flag": "--in"
+    },
+    {
+      "description": "Filename of the mask image.",
+      "value-key": "[MASK_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "mask_image",
+      "name": "Mask Image",
+      "command-line-flag": "--mask"
+    },
+    {
+      "description": "Filename for the output smoothed result image.",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_image",
+      "name": "Output Image",
+      "command-line-flag": "--out"
+    },
+    {
+      "description": "Number of iterations.",
+      "value-key": "[NUMBER_OF_ITERATIONS]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "number_of_iterations",
+      "name": "Number of Iterations",
+      "command-line-flag": "--niter"
+    },
+    {
+      "description": "Turn on debugging output.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug_flag",
+      "name": "Debug Flag",
+      "command-line-flag": "--debug"
+    },
+    {
+      "description": "Switch on diagnostic messages.",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose Flag",
+      "command-line-flag": "--verbose"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory arguments.",
+      "id": "compulsory_arguments",
+      "members": [
+        "input_image",
+        "mask_image",
+        "output_image"
+      ],
+      "name": "Compulsory Arguments"
+    },
+    {
+      "description": "Optional arguments.",
+      "id": "optional_arguments",
+      "members": [
+        "number_of_iterations",
+        "debug_flag",
+        "verbose_flag"
+      ],
+      "name": "Optional Arguments"
+    }
+  ]
+}

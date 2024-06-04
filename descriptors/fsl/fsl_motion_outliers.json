@@ -1,0 +1,202 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fsl_motion_outliers",
+  "author": "FMRIB Analysis Group",
+  "descriptor-url": "https://example.com/fsl_motion_outliers_descriptor.json",
+  "description": "FSL tool used to calculate motion outliers in 4D image data",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLMotionOutliers",
+  "command-line": "fsl_motion_outliers -i [INPUT_4D_IMAGE] -o [OUTPUT_CONFOUND_FILE] [MASK_IMAGE] [SAVE_METRIC_FILE] [SAVE_METRIC_PLOT] [TEMP_PATH] [REFFRMS_FLAG] [DVARS_FLAG] [REFMSE_FLAG] [FD_FLAG] [FDRMS_FLAG] [ABS_THRESH] [NO_MOCO_FLAG] [DUMMY_SCANS] [VERBOSE_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input 4D image (e.g. 4D.nii.gz)",
+      "value-key": "[INPUT_4D_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_4d_image",
+      "name": "Input 4D image"
+    },
+    {
+      "description": "Output confound file (e.g. confounds.txt)",
+      "value-key": "[OUTPUT_CONFOUND_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_confound_file",
+      "name": "Output confound file"
+    },
+    {
+      "command-line-flag": "-m",
+      "description": "Use supplied mask image for calculating metric",
+      "value-key": "[MASK_IMAGE]",
+      "type": "File",
+      "optional": true,
+      "id": "mask_image",
+      "name": "Mask image"
+    },
+    {
+      "command-line-flag": "-s",
+      "description": "Save metric values (e.g. DVARS) as text into specified file",
+      "value-key": "[SAVE_METRIC_FILE]",
+      "type": "String",
+      "optional": true,
+      "id": "save_metric_file",
+      "name": "Save metric file"
+    },
+    {
+      "command-line-flag": "-p",
+      "description": "Save metric values (e.g. DVARS) as a graphical plot (png format)",
+      "value-key": "[SAVE_METRIC_PLOT]",
+      "type": "String",
+      "optional": true,
+      "id": "save_metric_plot",
+      "name": "Save metric plot"
+    },
+    {
+      "command-line-flag": "-t",
+      "description": "[Optional] Path to the location where temporary files should be created. Defaults to /tmp",
+      "value-key": "[TEMP_PATH]",
+      "type": "String",
+      "optional": true,
+      "id": "temp_path",
+      "name": "Temporary files path"
+    },
+    {
+      "command-line-flag": "--refrms",
+      "description": "Use RMS intensity difference to reference volume as metric",
+      "value-key": "[REFFRMS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "refrms_flag",
+      "name": "Reference RMS flag"
+    },
+    {
+      "command-line-flag": "--dvars",
+      "description": "Use DVARS as metric",
+      "value-key": "[DVARS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dvars_flag",
+      "name": "DVARS flag"
+    },
+    {
+      "command-line-flag": "--refmse",
+      "description": "Mean Square Error version of --refrms (used in original version of fsl_motion_outliers)",
+      "value-key": "[REFMSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "refmse_flag",
+      "name": "Reference MSE flag"
+    },
+    {
+      "command-line-flag": "--fd",
+      "description": "Use FD (framewise displacement) as metric",
+      "value-key": "[FD_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "fd_flag",
+      "name": "Framewise displacement flag"
+    },
+    {
+      "command-line-flag": "--fdrms",
+      "description": "Use FD with RMS matrix calculation as metric",
+      "value-key": "[FDRMS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "fdrms_flag",
+      "name": "FD RMS flag"
+    },
+    {
+      "command-line-flag": "--thresh",
+      "description": "Specify absolute threshold value (otherwise use box-plot cutoff = P75 + 1.5*IQR)",
+      "value-key": "[ABS_THRESH]",
+      "type": "Number",
+      "optional": true,
+      "id": "abs_thresh",
+      "name": "Absolute threshold"
+    },
+    {
+      "command-line-flag": "--nomoco",
+      "description": "Do not run motion correction (assumed already done)",
+      "value-key": "[NO_MOCO_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_moco_flag",
+      "name": "No motion correction flag"
+    },
+    {
+      "command-line-flag": "--dummy",
+      "description": "Specify number of dummy scans to delete (before running anything and creating EVs)",
+      "value-key": "[DUMMY_SCANS]",
+      "type": "Number",
+      "optional": true,
+      "id": "dummy_scans",
+      "name": "Number of dummy scans"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Verbose mode",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Specify parameters for metrics calculation",
+      "id": "metrics_params_group",
+      "members": [
+        "mask_image",
+        "save_metric_file",
+        "save_metric_plot",
+        "temp_path",
+        "refrms_flag",
+        "dvars_flag",
+        "refmse_flag",
+        "fd_flag",
+        "fdrms_flag",
+        "abs_thresh",
+        "no_moco_flag",
+        "dummy_scans"
+      ],
+      "name": "Metrics Parameters"
+    },
+    {
+      "description": "Optional parameters for verbose output",
+      "id": "miscellaneous_params_group",
+      "members": [
+        "verbose_flag"
+      ],
+      "name": "Miscellaneous Parameters"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_CONFOUND_FILE]",
+      "description": "Main output confound file",
+      "optional": false,
+      "id": "output_confound_file",
+      "name": "Output confound file"
+    },
+    {
+      "path-template": "[SAVE_METRIC_FILE]",
+      "description": "Metric values saved as text file",
+      "optional": true,
+      "id": "metric_text_file",
+      "name": "Metric text file"
+    },
+    {
+      "path-template": "[SAVE_METRIC_PLOT]",
+      "description": "Metric values saved as graphical plot (png format)",
+      "optional": true,
+      "id": "metric_plot_file",
+      "name": "Metric plot file"
+    }
+  ]
+}

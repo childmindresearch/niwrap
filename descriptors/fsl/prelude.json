@@ -1,0 +1,363 @@
+{
+  "tool-version": "6.0.5",
+  "name": "prelude",
+  "author": "University of Oxford (Mark Jenkinson)",
+  "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PRELUDE",
+  "description": "Phase Region Expanding Labeller for Unwrapping Discrete Estimates",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PRELUDE",
+  "command-line": "prelude [1 or more] [OPTIONS]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-o",
+      "description": "Filename for saving the unwrapped phase output",
+      "value-key": "[OUTPUT_UNWRAP]",
+      "type": "File",
+      "optional": false,
+      "id": "output_unwrap",
+      "name": "Output unwrap file"
+    },
+    {
+      "command-line-flag": "-u",
+      "description": "Filename for saving the unwrapped phase output",
+      "value-key": "[OUTPUT_UNWRAP_ALIAS]",
+      "type": "File",
+      "optional": false,
+      "id": "output_unwrap_alias",
+      "name": "Output unwrap file (alias)"
+    },
+    {
+      "command-line-flag": "-c",
+      "description": "Filename of complex phase input volume",
+      "value-key": "[COMPLEX_PHASE]",
+      "type": "File",
+      "optional": true,
+      "id": "complex_phase",
+      "name": "Complex phase input"
+    },
+    {
+      "command-line-flag": "--complex",
+      "description": "Filename of complex phase input volume",
+      "value-key": "[COMPLEX_PHASE_ALIAS]",
+      "type": "File",
+      "optional": true,
+      "id": "complex_phase_alias",
+      "name": "Complex phase input (alias)"
+    },
+    {
+      "command-line-flag": "-a",
+      "description": "Filename of absolute input volume",
+      "value-key": "[ABSOLUTE_VOLUME]",
+      "type": "File",
+      "optional": true,
+      "id": "absolute_volume",
+      "name": "Absolute input volume"
+    },
+    {
+      "command-line-flag": "--abs",
+      "description": "Filename of absolute input volume",
+      "value-key": "[ABSOLUTE_VOLUME_ALIAS]",
+      "type": "File",
+      "optional": true,
+      "id": "absolute_volume_alias",
+      "name": "Absolute input volume (alias)"
+    },
+    {
+      "command-line-flag": "-p",
+      "description": "Filename of raw phase input volume",
+      "value-key": "[PHASE_VOLUME]",
+      "type": "File",
+      "optional": true,
+      "id": "phase_volume",
+      "name": "Raw phase input volume"
+    },
+    {
+      "command-line-flag": "--phase",
+      "description": "Filename of raw phase input volume",
+      "value-key": "[PHASE_VOLUME_ALIAS]",
+      "type": "File",
+      "optional": true,
+      "id": "phase_volume_alias",
+      "name": "Raw phase input volume (alias)"
+    },
+    {
+      "command-line-flag": "-n",
+      "description": "Number of phase partitions to use",
+      "value-key": "[NUM_PHASE_SPLIT]",
+      "type": "Number",
+      "optional": true,
+      "id": "num_phase_split",
+      "name": "Number of phase partitions"
+    },
+    {
+      "command-line-flag": "--labelslices",
+      "description": "Does label processing in 2D (slice at a time)",
+      "value-key": "[LABEL_SLICES_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "label_slices",
+      "name": "Label slices flag"
+    },
+    {
+      "command-line-flag": "-s",
+      "description": "Does all processing in 2D (slice at a time)",
+      "value-key": "[SLICE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "slice_processing",
+      "name": "2D slice processing flag"
+    },
+    {
+      "command-line-flag": "--slices",
+      "description": "Does all processing in 2D (slice at a time)",
+      "value-key": "[SLICE_FLAG_ALIAS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "slice_processing_alias",
+      "name": "2D slice processing flag (alias)"
+    },
+    {
+      "command-line-flag": "-f",
+      "description": "Forces all processing to be full 3D",
+      "value-key": "[FORCE_3D_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "force_3d",
+      "name": "Force 3D processing flag"
+    },
+    {
+      "command-line-flag": "--force3D",
+      "description": "Forces all processing to be full 3D",
+      "value-key": "[FORCE_3D_FLAG_ALIAS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "force_3d_alias",
+      "name": "Force 3D processing flag (alias)"
+    },
+    {
+      "command-line-flag": "-t",
+      "description": "Intensity threshold for masking",
+      "value-key": "[THRESHOLD]",
+      "type": "Number",
+      "optional": true,
+      "id": "threshold",
+      "name": "Intensity threshold"
+    },
+    {
+      "command-line-flag": "--thresh",
+      "description": "Intensity threshold for masking",
+      "value-key": "[THRESHOLD_ALIAS]",
+      "type": "Number",
+      "optional": true,
+      "id": "threshold_alias",
+      "name": "Intensity threshold (alias)"
+    },
+    {
+      "command-line-flag": "-m",
+      "description": "Filename of mask input volume",
+      "value-key": "[MASK_VOLUME]",
+      "type": "File",
+      "optional": true,
+      "id": "mask_volume",
+      "name": "Mask input volume"
+    },
+    {
+      "command-line-flag": "--mask",
+      "description": "Filename of mask input volume",
+      "value-key": "[MASK_VOLUME_ALIAS]",
+      "type": "File",
+      "optional": true,
+      "id": "mask_volume_alias",
+      "name": "Mask input volume (alias)"
+    },
+    {
+      "command-line-flag": "--start",
+      "description": "First image number to process (default 0)",
+      "value-key": "[START_IMAGE]",
+      "type": "Number",
+      "optional": true,
+      "id": "start_image",
+      "name": "Start image number"
+    },
+    {
+      "command-line-flag": "--end",
+      "description": "Final image number to process (default Inf)",
+      "value-key": "[END_IMAGE]",
+      "type": "Number",
+      "optional": true,
+      "id": "end_image",
+      "name": "End image number"
+    },
+    {
+      "command-line-flag": "--savemask",
+      "description": "Filename for saving the mask volume",
+      "value-key": "[SAVE_MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "save_mask",
+      "name": "Save mask volume"
+    },
+    {
+      "command-line-flag": "-r",
+      "description": "Filename for saving the raw phase output",
+      "value-key": "[SAVE_RAW_PHASE]",
+      "type": "File",
+      "optional": true,
+      "id": "save_raw_phase",
+      "name": "Save raw phase output"
+    },
+    {
+      "command-line-flag": "--rawphase",
+      "description": "Filename for saving the raw phase output",
+      "value-key": "[SAVE_RAW_PHASE_ALIAS]",
+      "type": "File",
+      "optional": true,
+      "id": "save_raw_phase_alias",
+      "name": "Save raw phase output (alias)"
+    },
+    {
+      "command-line-flag": "-l",
+      "description": "Filename for saving the area labels output",
+      "value-key": "[SAVE_LABELS]",
+      "type": "File",
+      "optional": true,
+      "id": "save_labels",
+      "name": "Save labels output"
+    },
+    {
+      "command-line-flag": "--labels",
+      "description": "Filename for saving the area labels output",
+      "value-key": "[SAVE_LABELS_ALIAS]",
+      "type": "File",
+      "optional": true,
+      "id": "save_labels_alias",
+      "name": "Save labels output (alias)"
+    },
+    {
+      "command-line-flag": "--removeramps",
+      "description": "Remove phase ramps during unwrapping",
+      "value-key": "[REMOVE_RAMPS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "remove_ramps",
+      "name": "Remove phase ramps flag"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose flag"
+    },
+    {
+      "command-line-flag": "--verbose",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG_ALIAS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_alias",
+      "name": "Verbose flag (alias)"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Display help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Display help message",
+      "value-key": "[HELP_FLAG_ALIAS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_alias",
+      "name": "Help flag (alias)"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "One or more compulsory arguments",
+      "id": "compulsory_arguments",
+      "members": [
+        "output_unwrap",
+        "output_unwrap_alias"
+      ],
+      "name": "Compulsory Arguments"
+    },
+    {
+      "description": "Optional arguments",
+      "id": "optional_arguments",
+      "members": [
+        "complex_phase",
+        "complex_phase_alias",
+        "absolute_volume",
+        "absolute_volume_alias",
+        "phase_volume",
+        "phase_volume_alias",
+        "num_phase_split",
+        "label_slices",
+        "slice_processing",
+        "slice_processing_alias",
+        "force_3d",
+        "force_3d_alias",
+        "threshold",
+        "threshold_alias",
+        "mask_volume",
+        "mask_volume_alias",
+        "start_image",
+        "end_image",
+        "save_mask",
+        "save_raw_phase",
+        "save_raw_phase_alias",
+        "save_labels",
+        "save_labels_alias",
+        "remove_ramps",
+        "verbose",
+        "verbose_alias",
+        "help",
+        "help_alias"
+      ],
+      "name": "Optional Arguments"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_UNWRAP].nii.gz",
+      "description": "Unwrapped phase output file",
+      "optional": false,
+      "id": "unwrapped_phase_output",
+      "name": "Unwrapped phase output file"
+    },
+    {
+      "path-template": "[SAVE_MASK].nii.gz",
+      "description": "Saved mask volume file",
+      "optional": true,
+      "id": "saved_mask_volume",
+      "name": "Saved mask volume"
+    },
+    {
+      "path-template": "[SAVE_RAW_PHASE].nii.gz",
+      "description": "Saved raw phase output file",
+      "optional": true,
+      "id": "saved_raw_phase_output",
+      "name": "Saved raw phase output"
+    },
+    {
+      "path-template": "[SAVE_LABELS].nii.gz",
+      "description": "Saved area labels output file",
+      "optional": true,
+      "id": "saved_area_labels_output",
+      "name": "Saved area labels output"
+    }
+  ]
+}

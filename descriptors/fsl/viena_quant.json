@@ -1,0 +1,43 @@
+{
+  "tool-version": "1.0.0",
+  "name": "viena_quant",
+  "author": "Unknown",
+  "description": "Automated brain ventricle quantification tool",
+  "command-line": "viena_quant [INPUT1] [INPUT2] [VENTRICLEMASK]",
+  "inputs": [
+    {
+      "description": "Input image 1 (e.g. img1.nii.gz)",
+      "value-key": "[INPUT1]",
+      "type": "File",
+      "optional": false,
+      "id": "input1",
+      "name": "Input image 1"
+    },
+    {
+      "description": "Input image 2 (e.g. img2.nii.gz)",
+      "value-key": "[INPUT2]",
+      "type": "File",
+      "optional": false,
+      "id": "input2",
+      "name": "Input image 2"
+    },
+    {
+      "description": "Ventricle mask (e.g. mask.nii.gz)",
+      "value-key": "[VENTRICLEMASK]",
+      "type": "File",
+      "optional": false,
+      "id": "ventricle_mask",
+      "name": "Ventricle mask"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "output_quantification.nii.gz",
+      "description": "Output quantification result",
+      "optional": true,
+      "id": "output_quantification",
+      "name": "Output quantification result"
+    }
+  ]
+}

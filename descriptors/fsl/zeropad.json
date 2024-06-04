@@ -1,0 +1,41 @@
+{
+  "tool-version": "1.0.0",
+  "name": "zeropad",
+  "author": "Unknown",
+  "description": "Tool for zero-padding numbers to a specified length",
+  "url": "Unknown",
+  "command-line": "zeropad [INPUT_NUMBER] [LENGTH]",
+  "container-image": {
+    "image": "zeropad:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input number to be zero-padded",
+      "value-key": "[INPUT_NUMBER]",
+      "type": "String",
+      "optional": false,
+      "id": "input_number",
+      "name": "Input Number"
+    },
+    {
+      "description": "Desired length of the output string",
+      "value-key": "[LENGTH]",
+      "type": "Number",
+      "optional": false,
+      "id": "length",
+      "name": "Output Length"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "padded_output.txt",
+      "description": "File containing the zero-padded output",
+      "optional": false,
+      "id": "output_file",
+      "name": "Zero-padded Output File"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "tool-version": "1.0.0",
+  "name": "img2stdcoord",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Transforms image coordinates using standard space transformations.",
+  "command-line": "img2stdcoord [OPTIONS] <FILENAME>",
+  "inputs": [
+    {
+      "description": "Filename containing coordinates. If '-' is used, coordinates are read from standard input.",
+      "value-key": "<FILENAME>",
+      "type": "String",
+      "optional": false,
+      "id": "coordinate_file",
+      "name": "Coordinate File"
+    },
+    {
+      "command-line-flag": "-img",
+      "description": "Filename of input image.",
+      "value-key": "<INPUT_IMAGE>",
+      "type": "File",
+      "optional": false,
+      "id": "input_image",
+      "name": "Input Image"
+    },
+    {
+      "command-line-flag": "-std",
+      "description": "Filename of standard image.",
+      "value-key": "<STD_IMAGE>",
+      "type": "File",
+      "optional": true,
+      "id": "standard_image",
+      "name": "Standard Image"
+    },
+    {
+      "command-line-flag": "-xfm",
+      "description": "Filename of affine transform (e.g., example_func2standard.mat).",
+      "value-key": "<AFFINE_TRANSFORM>",
+      "type": "File",
+      "optional": true,
+      "id": "affine_transform",
+      "name": "Affine Transform"
+    },
+    {
+      "command-line-flag": "-warp",
+      "description": "Filename of warp field (e.g., highres2standard_warp.nii.gz).",
+      "value-key": "<WARP_FIELD>",
+      "type": "File",
+      "optional": true,
+      "id": "warp_field",
+      "name": "Warp Field"
+    },
+    {
+      "command-line-flag": "-premat",
+      "description": "Filename of pre-warp affine transform (e.g., example_func2highres.mat). Default is identity.",
+      "value-key": "<PREWARP_AFFINE_TRANSFORM>",
+      "type": "File",
+      "optional": true,
+      "id": "prewarp_affine_transform",
+      "name": "Pre-warp Affine Transform"
+    },
+    {
+      "command-line-flag": "-vox",
+      "description": "Input coordinates in voxels (default).",
+      "value-key": "[VOXEL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "voxel_flag",
+      "name": "Voxel Flag"
+    },
+    {
+      "command-line-flag": "-mm",
+      "description": "Input coordinates in mm.",
+      "value-key": "[MM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mm_flag",
+      "name": "Millimeter Flag"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Verbose output.",
+      "value-key": "[VERBOSE_FLAG_1]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag_1",
+      "name": "Verbose Flag"
+    },
+    {
+      "command-line-flag": "-verbose",
+      "description": "More verbose output.",
+      "value-key": "[VERBOSE_FLAG_2]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag_2",
+      "name": "More Verbose Flag"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Display help message.",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help Flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

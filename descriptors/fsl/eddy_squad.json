@@ -1,0 +1,69 @@
+{
+  "tool-version": "1.0.0",
+  "name": "eddy_squad",
+  "author": "FMRIB Software Library (FSL)",
+  "description": "Study-wise QC for dMRI data",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy/UsersGuide#EDDY_QC",
+  "command-line": "eddy_squad [GROUPING] [GROUP_DB] [UPDATE] [OUTPUT_DIR] list",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-g",
+      "description": "Specifies the grouping of studies.",
+      "value-key": "[GROUPING]",
+      "type": "String",
+      "optional": true,
+      "id": "grouping",
+      "name": "Grouping of studies"
+    },
+    {
+      "command-line-flag": "-gdb",
+      "description": "Path to the group database.",
+      "value-key": "[GROUP_DB]",
+      "type": "File",
+      "optional": true,
+      "id": "group_db",
+      "name": "Group database"
+    },
+    {
+      "command-line-flag": "-u",
+      "description": "Option to update the QC results.",
+      "value-key": "[UPDATE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "update",
+      "name": "Update QC results flag"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Output directory for the QC results.",
+      "value-key": "[OUTPUT_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "output_dir",
+      "name": "Output directory"
+    },
+    {
+      "description": "List of subject IDs for the QC.",
+      "value-key": "list",
+      "type": "String",
+      "optional": false,
+      "id": "subject_list",
+      "name": "Subject ID list"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_DIR]/qc_results.json",
+      "description": "QC results in JSON format",
+      "optional": true,
+      "id": "qc_results",
+      "name": "QC Results"
+    }
+  ]
+}

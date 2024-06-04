@@ -1,0 +1,33 @@
+{
+  "tool-version": "1.0.0",
+  "name": "feat",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "fMRI Expert Analysis Tool",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT",
+  "command-line": "feat [DESIGN_FSF]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "FEAT design file (e.g. design.fsf)",
+      "value-key": "[DESIGN_FSF]",
+      "type": "File",
+      "optional": false,
+      "id": "design_file",
+      "name": "Design file"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "design.feat",
+      "description": "Output directory containing all results from FEAT",
+      "optional": false,
+      "id": "output_dir",
+      "name": "Output directory"
+    }
+  ]
+}

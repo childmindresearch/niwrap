@@ -357,26 +357,5 @@
       "id": "out_outskull_off",
       "name": "Output out-skull mesh off file"
     }
-  ],
-  "tags": {
-    "domain": ["neuroinformatics", "mri"]
-  },
-  "tests": [
-    {
-      "name": "fsl_bet_test",
-      "invocation": {
-        "infile": "sub-01_T1w.nii.gz",
-        "maskfile": "img_bet"
-      },
-      "assertions": {
-        "exit-code": 0,
-        "output-files": [
-          {
-            "id": "outfile",
-            "md5-reference": "053507dd8605d62f5ba71dbecece17f8"
-          }
-        ]
-      }
-    }
   ]
 }

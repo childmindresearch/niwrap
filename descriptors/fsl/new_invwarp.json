@@ -1,0 +1,117 @@
+{
+  "tool-version": "6.0.5:9e026117",
+  "name": "invwarp",
+  "author": "University of Oxford (Jesper Andersson)",
+  "description": "Tool for inverting warp fields in FSL",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT/UserGuide#Using_invwarp",
+  "command-line": "invwarp --warp [WARP_FILE] --out [OUT_FILE] --ref [REF_FILE] [RELATIVE_WARP_FLAG] [ABSOLUTE_WARP_FLAG] [NO_CONSTRAINT_FLAG] [MIN_JACOBIAN] [MAX_JACOBIAN] [DEBUG_FLAG] [VERBOSE_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "--warp",
+      "description": "Filename for warp/shiftmap transform (volume)",
+      "value-key": "[WARP_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "warp_file",
+      "name": "Warp file"
+    },
+    {
+      "command-line-flag": "--out",
+      "description": "Filename for output (inverse warped) image",
+      "value-key": "[OUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "out_file",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "--ref",
+      "description": "Filename for new reference image, i.e., what was originally the input image (determines inverse warpvol's FOV and pixdims)",
+      "value-key": "[REF_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "ref_file",
+      "name": "Reference file"
+    },
+    {
+      "command-line-flag": "--rel",
+      "description": "Use relative warp convention: x' = x + w(x)",
+      "value-key": "[RELATIVE_WARP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "relative_warp_flag",
+      "name": "Relative warp flag"
+    },
+    {
+      "command-line-flag": "--abs",
+      "description": "Use absolute warp convention (default): x' = w(x)",
+      "value-key": "[ABSOLUTE_WARP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "absolute_warp_flag",
+      "name": "Absolute warp flag"
+    },
+    {
+      "command-line-flag": "--noconstraint",
+      "description": "Do not apply the Jacobian constraint",
+      "value-key": "[NO_CONSTRAINT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_constraint_flag",
+      "name": "No constraint flag"
+    },
+    {
+      "command-line-flag": "--jmin",
+      "description": "Minimum acceptable Jacobian value for constraint (default 0.01)",
+      "value-key": "[MIN_JACOBIAN]",
+      "type": "Number",
+      "optional": true,
+      "default-value": 0.01,
+      "id": "min_jacobian",
+      "name": "Minimum Jacobian constraint"
+    },
+    {
+      "command-line-flag": "--jmax",
+      "description": "Maximum acceptable Jacobian value for constraint (default 100.0)",
+      "value-key": "[MAX_JACOBIAN]",
+      "type": "Number",
+      "optional": true,
+      "default-value": 100.0,
+      "id": "max_jacobian",
+      "name": "Maximum Jacobian constraint"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Turn on debugging output",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug_flag",
+      "name": "Debug flag"
+    },
+    {
+      "command-line-flag": "--verbose",
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_flag",
+      "name": "Verbose flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUT_FILE]",
+      "description": "Output inverse warped image",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output file"
+    }
+  ]
+}

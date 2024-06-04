@@ -1,0 +1,114 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fslascii2img",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Convert data from ASCII format to NIfTI format",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "command-line": "fslascii2img [INPUT_FILE] [XSIZE] [YSIZE] [ZSIZE] [TSIZE] [XDIM] [YDIM] [ZDIM] [TR] [OUTPUT_FILE]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input ASCII file",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input ASCII file"
+    },
+    {
+      "description": "Size in the x dimension (in voxels)",
+      "value-key": "[XSIZE]",
+      "type": "Number",
+      "integer": true,
+      "optional": false,
+      "id": "xsize",
+      "name": "X size"
+    },
+    {
+      "description": "Size in the y dimension (in voxels)",
+      "value-key": "[YSIZE]",
+      "type": "Number",
+      "integer": true,
+      "optional": false,
+      "id": "ysize",
+      "name": "Y size"
+    },
+    {
+      "description": "Size in the z dimension (in voxels)",
+      "value-key": "[ZSIZE]",
+      "type": "Number",
+      "integer": true,
+      "optional": false,
+      "id": "zsize",
+      "name": "Z size"
+    },
+    {
+      "description": "Size in the t dimension (in voxels)",
+      "value-key": "[TSIZE]",
+      "type": "Number",
+      "integer": true,
+      "optional": false,
+      "id": "tsize",
+      "name": "T size"
+    },
+    {
+      "description": "Dimension size in the x dimension (in mm)",
+      "value-key": "[XDIM]",
+      "type": "Number",
+      "integer": false,
+      "optional": false,
+      "id": "xdim",
+      "name": "X dimension size"
+    },
+    {
+      "description": "Dimension size in the y dimension (in mm)",
+      "value-key": "[YDIM]",
+      "type": "Number",
+      "integer": false,
+      "optional": false,
+      "id": "ydim",
+      "name": "Y dimension size"
+    },
+    {
+      "description": "Dimension size in the z dimension (in mm)",
+      "value-key": "[ZDIM]",
+      "type": "Number",
+      "integer": false,
+      "optional": false,
+      "id": "zdim",
+      "name": "Z dimension size"
+    },
+    {
+      "description": "Repetition time (TR) in seconds",
+      "value-key": "[TR]",
+      "type": "Number",
+      "integer": false,
+      "optional": false,
+      "id": "tr",
+      "name": "Repetition time (TR)"
+    },
+    {
+      "description": "Output NIfTI file",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output NIfTI file",
+      "default-value": "output"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Converted NIfTI file from ASCII input",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output NIfTI file"
+    }
+  ],
+  "schema-version": "0.5"
+}

@@ -1,0 +1,67 @@
+{
+  "tool-version": "1.0.0",
+  "name": "ttologp",
+  "author": "Unknown",
+  "description": "Tool for computing logp",
+  "command-line": "ttologp [OPTIONS] [VARSFILE] [CBSFILE] [DOF]",
+  "container-image": {
+    "image": "some-docker-repo/ttologp:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Path to the vars file",
+      "value-key": "[VARSFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "varsfile",
+      "name": "Vars File"
+    },
+    {
+      "description": "Path to the cbs file",
+      "value-key": "[CBSFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "cbsfile",
+      "name": "CBS File"
+    },
+    {
+      "description": "Degree of freedom",
+      "value-key": "[DOF]",
+      "type": "String",
+      "optional": false,
+      "id": "dof",
+      "name": "DOF"
+    },
+    {
+      "command-line-flag": "-logpout",
+      "description": "Output volume for logp value (default is logps)",
+      "value-key": "[OUTPUTVOL]",
+      "type": "String",
+      "optional": true,
+      "id": "outputvol",
+      "name": "Logp Output Volume",
+      "default-value": "logps"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Display help information and exit",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUTVOL].nii.gz",
+      "description": "Output volume for logp value",
+      "optional": true,
+      "id": "output_logpvol",
+      "name": "Logp Output Volume File"
+    }
+  ]
+}

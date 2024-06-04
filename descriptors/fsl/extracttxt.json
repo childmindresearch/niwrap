@@ -1,0 +1,58 @@
+{
+  "tool-version": "1.0.0",
+  "name": "extracttxt",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Extracts text from a file based on a search word",
+  "command-line": "/usr/local/fsl/bin/extracttxt [SEARCH_WORD] [FILE] [NUM_TRAILING_LINES] [RELATIVE_START]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "The word to search for in the file",
+      "value-key": "[SEARCH_WORD]",
+      "type": "String",
+      "optional": false,
+      "id": "search_word",
+      "name": "Search Word"
+    },
+    {
+      "description": "Path to the file where text is to be extracted",
+      "value-key": "[FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "file",
+      "name": "File"
+    },
+    {
+      "description": "Number of trailing lines to include after the search word",
+      "value-key": "[NUM_TRAILING_LINES]",
+      "type": "Number",
+      "default-value": 0,
+      "optional": true,
+      "id": "num_trailing_lines",
+      "name": "Number of Trailing Lines"
+    },
+    {
+      "description": "Relative start position to begin the search",
+      "value-key": "[RELATIVE_START]",
+      "type": "Number",
+      "default-value": 0,
+      "optional": true,
+      "id": "relative_start",
+      "name": "Relative Start Position"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "output.txt",
+      "description": "Extracted text output file",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    }
+  ]
+}

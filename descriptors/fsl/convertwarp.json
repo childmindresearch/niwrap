@@ -1,0 +1,234 @@
+{
+  "tool-version": "6.0.5",
+  "name": "convertwarp",
+  "author": "University of Oxford",
+  "descriptor-url": "https://fsl.fmrib.ox.ac.uk",
+  "description": "Convert and combine FSL warp fields",
+  "url": "https://fsl.fmrib.ox.ac.uk",
+  "command-line": "convertwarp [OUTPUT_FILE] [REFERENCE] [PREMAT] [WARP1] [MIDMAT] [WARP2] [POSTMAT] [SHIFT_MAP] [SHIFT_DIR] [JACOBIAN_FLAG] [JSTATS_FLAG] [CONSTRAINJ_FLAG] [JMIN] [JMAX] [ABS_FLAG] [REL_FLAG] [ABSOUT_FLAG] [RELOUT_FLAG] [VERBOSE_FLAG]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Filename for output (warp) image - always in 'field' format",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_warp",
+      "command-line-flag": "-o",
+      "name": "Output File"
+    },
+    {
+      "description": "Filename for reference image",
+      "value-key": "[REFERENCE]",
+      "type": "String",
+      "optional": false,
+      "id": "refvol",
+      "command-line-flag": "-r",
+      "name": "Reference Image"
+    },
+    {
+      "description": "Filename of pre-affine transform",
+      "value-key": "[PREMAT]",
+      "type": "String",
+      "optional": true,
+      "id": "premat",
+      "command-line-flag": "-m",
+      "name": "Pre-affine Transform"
+    },
+    {
+      "description": "Filename for initial warp (follows pre-affine)",
+      "value-key": "[WARP1]",
+      "type": "String",
+      "optional": true,
+      "id": "warp1",
+      "command-line-flag": "-w",
+      "name": "Initial Warp"
+    },
+    {
+      "description": "Filename of mid-warp-affine transform",
+      "value-key": "[MIDMAT]",
+      "type": "String",
+      "optional": true,
+      "id": "midmat",
+      "command-line-flag": "--midmat",
+      "name": "Mid-warp Transform"
+    },
+    {
+      "description": "Filename for secondary warp (after initial warp, before post-affine)",
+      "value-key": "[WARP2]",
+      "type": "String",
+      "optional": true,
+      "id": "warp2",
+      "command-line-flag": "--warp2",
+      "name": "Secondary Warp"
+    },
+    {
+      "description": "Filename of post-affine transform",
+      "value-key": "[POSTMAT]",
+      "type": "String",
+      "optional": true,
+      "id": "postmat",
+      "command-line-flag": "--postmat",
+      "name": "Post-affine Transform"
+    },
+    {
+      "description": "Filename for shiftmap (applied first)",
+      "value-key": "[SHIFT_MAP]",
+      "type": "String",
+      "optional": true,
+      "id": "shiftmap",
+      "command-line-flag": "-s",
+      "name": "Shift Map"
+    },
+    {
+      "description": "Direction to apply shiftmap {x,y,z,x-,y-,z-}",
+      "value-key": "[SHIFT_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "shiftdir",
+      "command-line-flag": "-d",
+      "name": "Shift Direction"
+    },
+    {
+      "description": "Calculate and save Jacobian of final warp field",
+      "value-key": "[JACOBIAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "jacobian",
+      "command-line-flag": "-j",
+      "name": "Jacobian Flag"
+    },
+    {
+      "description": "Print out statistics of the Jacobian of the warpfield",
+      "value-key": "[JSTATS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "jstats",
+      "command-line-flag": "--jstats",
+      "name": "Jacobian Statistics Flag"
+    },
+    {
+      "description": "Constrain the Jacobian of the warpfield to lie within specified min/max limits",
+      "value-key": "[CONSTRAINJ_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "constrainj",
+      "command-line-flag": "--constrainj",
+      "name": "Constrain Jacobian Flag"
+    },
+    {
+      "description": "Minimum acceptable Jacobian value for constraint (default 0.01)",
+      "value-key": "[JMIN]",
+      "type": "Number",
+      "optional": true,
+      "id": "jmin",
+      "command-line-flag": "--jmin",
+      "default-value": 0.01,
+      "name": "Minimum Jacobian"
+    },
+    {
+      "description": "Maximum acceptable Jacobian value for constraint (default 100.0)",
+      "value-key": "[JMAX]",
+      "type": "Number",
+      "optional": true,
+      "id": "jmax",
+      "command-line-flag": "--jmax",
+      "default-value": 100.0,
+      "name": "Maximum Jacobian"
+    },
+    {
+      "description": "Use absolute warp convention (default): x' = w(x)",
+      "value-key": "[ABS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "abs",
+      "command-line-flag": "--abs",
+      "name": "Absolute Warp Convention Flag"
+    },
+    {
+      "description": "Use relative warp convention: x' = x + w(x)",
+      "value-key": "[REL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "rel",
+      "command-line-flag": "--rel",
+      "name": "Relative Warp Convention Flag"
+    },
+    {
+      "description": "Force output to use absolute warp convention: x' = w(x)",
+      "value-key": "[ABSOUT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "absout",
+      "command-line-flag": "--absout",
+      "name": "Absolute Output Convention Flag"
+    },
+    {
+      "description": "Force output to use relative warp convention: x' = x + w(x)",
+      "value-key": "[RELOUT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "relout",
+      "command-line-flag": "--relout",
+      "name": "Relative Output Convention Flag"
+    },
+    {
+      "description": "Switch on diagnostic messages",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "command-line-flag": "-v",
+      "name": "Verbose Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Output warp image",
+      "optional": false,
+      "id": "output_warp_file",
+      "name": "Output Warp Image"
+    }
+  ],
+  "groups": [
+    {
+      "description": "Compulsory arguments",
+      "id": "compulsory_args",
+      "members": [
+        "output_warp",
+        "refvol"
+      ],
+      "name": "Compulsory Arguments"
+    },
+    {
+      "description": "Optional arguments",
+      "id": "optional_args",
+      "members": [
+        "premat",
+        "warp1",
+        "midmat",
+        "warp2",
+        "postmat",
+        "shiftmap",
+        "shiftdir",
+        "jacobian",
+        "jstats",
+        "constrainj",
+        "jmin",
+        "jmax",
+        "abs",
+        "rel",
+        "absout",
+        "relout",
+        "verbose"
+      ],
+      "name": "Optional Arguments"
+    }
+  ]
+}

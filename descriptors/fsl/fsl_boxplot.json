@@ -1,0 +1,134 @@
+{
+  "tool-version": "1.0",
+  "name": "fsl_boxplot",
+  "author": "University of Oxford (Christian F. Beckmann)",
+  "descriptor-url": "https://example.com/fsl_boxplot.json",
+  "description": "Tool for creating boxplot images from ASCII text matrices",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
+  "command-line": "fsl_boxplot --in [INPUT_FILES] --out [OUTPUT_IMAGE] [TITLE] [LEGEND_FILE] [XLABEL] [YLABEL] [PLOT_HEIGHT] [PLOT_WIDTH]",
+  "container-image": {
+    "image": "mcin/docker-fsl:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "--in",
+      "description": "Comma-separated list of input file names (ASCII text matrices, one column per boxplot)",
+      "value-key": "[INPUT_FILES]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "input_files",
+      "name": "Input files"
+    },
+    {
+      "command-line-flag": "--out",
+      "description": "Output filename for the PNG file",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_image",
+      "name": "Output image"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Display this help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help flag"
+    },
+    {
+      "command-line-flag": "--title",
+      "description": "Plot title",
+      "value-key": "[TITLE]",
+      "type": "String",
+      "optional": true,
+      "id": "title",
+      "name": "Title"
+    },
+    {
+      "command-line-flag": "--legend",
+      "description": "File name of ASCII text file, one row per legend entry",
+      "value-key": "[LEGEND_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "legend_file",
+      "name": "Legend file"
+    },
+    {
+      "command-line-flag": "--xlabel",
+      "description": "X-axis label",
+      "value-key": "[XLABEL]",
+      "type": "String",
+      "optional": true,
+      "id": "x_label",
+      "name": "X-axis label"
+    },
+    {
+      "command-line-flag": "--ylabel",
+      "description": "Y-axis label",
+      "value-key": "[YLABEL]",
+      "type": "String",
+      "optional": true,
+      "id": "y_label",
+      "name": "Y-axis label"
+    },
+    {
+      "command-line-flag": "--height",
+      "description": "Plot height in pixels (default 450)",
+      "value-key": "[PLOT_HEIGHT]",
+      "type": "Number",
+      "optional": true,
+      "default-value": 450,
+      "id": "plot_height",
+      "name": "Plot height"
+    },
+    {
+      "command-line-flag": "--width",
+      "description": "Plot width in pixels (default 80*#boxplots)",
+      "value-key": "[PLOT_WIDTH]",
+      "type": "Number",
+      "optional": true,
+      "id": "plot_width",
+      "name": "Plot width"
+    }
+  ],
+  "schema-version": "0.5",
+  "groups": [
+    {
+      "description": "Compulsory parameters for fsl_boxplot",
+      "id": "compulsory_params_group",
+      "members": [
+        "input_files",
+        "output_image"
+      ],
+      "name": "Compulsory Parameters"
+    },
+    {
+      "description": "Optional parameters for fsl_boxplot",
+      "id": "optional_params_group",
+      "members": [
+        "help_flag",
+        "title",
+        "legend_file",
+        "x_label",
+        "y_label",
+        "plot_height",
+        "plot_width"
+      ],
+      "name": "Optional Parameters"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_IMAGE].png",
+      "description": "The output boxplot image in PNG format",
+      "optional": false,
+      "id": "output_png",
+      "name": "Output PNG image"
+    }
+  ]
+}

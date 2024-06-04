@@ -1,0 +1,45 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fslfft",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "A tool to compute the Fourier transform of an input volume and save the result in an output volume.",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FT",
+  "command-line": "fslfft [INPUT_VOLUME] [OUTPUT_VOLUME] [INVERSE_FLAG]",
+  "inputs": [
+    {
+      "description": "Input volume file (e.g. invol.nii.gz)",
+      "value-key": "[INPUT_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "input_volume",
+      "name": "Input Volume"
+    },
+    {
+      "description": "Output volume file (e.g. outvol.nii.gz)",
+      "value-key": "[OUTPUT_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "output_volume",
+      "name": "Output Volume"
+    },
+    {
+      "command-line-flag": "-inv",
+      "description": "Flag to perform the inverse Fourier transform",
+      "value-key": "[INVERSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "inverse_flag",
+      "name": "Inverse Transform Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_VOLUME].nii.gz",
+      "description": "Output volume result of the Fourier transform",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output Volume File"
+    }
+  ]
+}
