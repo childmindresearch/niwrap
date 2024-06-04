@@ -61,11 +61,7 @@
     {
       "description": "Optional arguments for the tool",
       "id": "optional_args_group",
-      "members": [
-        "mask_file",
-        "number_of_terms",
-        "verbose_flag"
-      ],
+      "members": ["mask_file", "number_of_terms", "verbose_flag"],
       "name": "Optional Arguments"
     }
   ],

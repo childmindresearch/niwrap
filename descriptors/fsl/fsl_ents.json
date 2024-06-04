@@ -55,11 +55,7 @@
     {
       "id": "optional_params_group",
       "name": "Optional Parameters",
-      "members": [
-        "outfile",
-        "overwrite",
-        "conffile"
-      ]
+      "members": ["outfile", "overwrite", "conffile"]
     }
   ],
   "output-files": [

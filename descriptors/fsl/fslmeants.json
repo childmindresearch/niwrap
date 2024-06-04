@@ -146,9 +146,7 @@
     {
       "description": "Compulsory arguments for fslmeants",
       "id": "compulsory_args_group",
-      "members": [
-        "input_image"
-      ],
+      "members": ["input_image"],
       "name": "Compulsory Arguments"
     },
     {

@@ -55,11 +55,7 @@
       "optional": true,
       "id": "slice_direction",
       "name": "Slice direction",
-      "value-choices": [
-        "x",
-        "y",
-        "z"
-      ]
+      "value-choices": ["x", "y", "z"]
     },
     {
       "command-line-flag": "-v",

@@ -65,20 +65,13 @@
     {
       "description": "Specify the specific operation for FSL Complex",
       "id": "operations_group",
-      "members": [
-        "input_file",
-        "output_file",
-        "output_type"
-      ],
+      "members": ["input_file", "output_file", "output_type"],
       "name": "Main Operations Parameters"
     },
     {
       "description": "Optional parameters",
       "id": "optional_params_group",
-      "members": [
-        "start_vol",
-        "end_vol"
-      ],
+      "members": ["start_vol", "end_vol"],
       "name": "Optional Parameters"
     }
   ],

@@ -189,13 +189,7 @@
     {
       "description": "Specify compulsory parameters for analysis",
       "id": "compulsory_params_group",
-      "members": [
-        "datafile",
-        "mask",
-        "out",
-        "aif",
-        "dt"
-      ],
+      "members": ["datafile", "mask", "out", "aif", "dt"],
       "name": "Compulsory Parameters"
     },
     {
@@ -221,9 +215,7 @@
     {
       "description": "Specify additional settings",
       "id": "additional_params_group",
-      "members": [
-        "verbose"
-      ],
+      "members": ["verbose"],
       "name": "Additional Settings"
     }
   ],

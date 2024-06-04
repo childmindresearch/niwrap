@@ -236,10 +236,7 @@
     {
       "description": "Compulsory inputs for FSL GLM",
       "id": "compulsory_group",
-      "members": [
-        "input_file",
-        "design_matrix"
-      ],
+      "members": ["input_file", "design_matrix"],
       "name": "Compulsory Parameters"
     },
     {
@@ -278,18 +275,13 @@
     {
       "description": "Beta options for FSL GLM",
       "id": "beta_options_group",
-      "members": [
-        "vx_text",
-        "vx_images"
-      ],
+      "members": ["vx_text", "vx_images"],
       "name": "Beta Options"
     },
     {
       "description": "Miscellaneous options for FSL GLM",
       "id": "miscellaneous_params_group",
-      "members": [
-        "help_flag"
-      ],
+      "members": ["help_flag"],
       "name": "Miscellaneous Parameters"
     }
   ],

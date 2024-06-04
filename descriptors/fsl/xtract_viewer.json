@@ -24,10 +24,7 @@
       "optional": true,
       "id": "species",
       "name": "Species",
-      "value-choices": [
-        "HUMAN",
-        "MACAQUE"
-      ]
+      "value-choices": ["HUMAN", "MACAQUE"]
     },
     {
       "command-line-flag": "-brain",

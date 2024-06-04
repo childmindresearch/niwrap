@@ -82,10 +82,7 @@
     {
       "description": "Optional arguments (You may optionally specify one or more of)",
       "id": "optional_params_group",
-      "members": [
-        "verbose_flag",
-        "help_flag"
-      ],
+      "members": ["verbose_flag", "help_flag"],
       "name": "Optional Parameters"
     }
   ],

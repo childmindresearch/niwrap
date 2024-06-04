@@ -143,11 +143,7 @@
     {
       "description": "Specify required parameters for FSL MRS Simulation",
       "id": "required_params_group",
-      "members": [
-        "metab",
-        "metab_file",
-        "custom_spinsys"
-      ],
+      "members": ["metab", "metab_file", "custom_spinsys"],
       "name": "Required Parameters"
     },
     {

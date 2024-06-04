@@ -136,9 +136,7 @@
     {
       "description": "Compulsory arguments for running signal2image",
       "id": "compulsory_arguments_group",
-      "members": [
-        "pulse_sequence"
-      ],
+      "members": ["pulse_sequence"],
       "name": "Compulsory Arguments"
     },
     {

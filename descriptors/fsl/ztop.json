@@ -44,11 +44,7 @@
     {
       "description": "Optional parameters for z-score to p-value conversion",
       "id": "optional_params_group",
-      "members": [
-        "tail_flag",
-        "grf_flag",
-        "number_of_resels"
-      ],
+      "members": ["tail_flag", "grf_flag", "number_of_resels"],
       "name": "Optional Parameters"
     }
   ]

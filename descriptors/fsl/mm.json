@@ -171,10 +171,7 @@
     {
       "description": "Compulsory arguments for specifying input files.",
       "id": "compulsory_params_group",
-      "members": [
-        "spatial_data_file",
-        "mask_file"
-      ],
+      "members": ["spatial_data_file", "mask_file"],
       "name": "Compulsory Parameters"
     },
     {

@@ -79,10 +79,7 @@
     {
       "description": "Upsample options for featregapply",
       "id": "upsample_options_group",
-      "members": [
-        "upsample_trilinear",
-        "upsample_spline"
-      ],
+      "members": ["upsample_trilinear", "upsample_spline"],
       "name": "Upsample Options"
     }
   ],

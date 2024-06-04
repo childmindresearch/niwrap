@@ -7,11 +7,7 @@
   "inputs": [
     {
       "description": "Choice of cluster system configuration example to output. Options are 'shell', 'sge', or 'slurm'.",
-      "value-choices": [
-        "shell",
-        "sge",
-        "slurm"
-      ],
+      "value-choices": ["shell", "sge", "slurm"],
       "value-key": "[CLUSTER_SYSTEM]",
       "type": "String",
       "optional": false,

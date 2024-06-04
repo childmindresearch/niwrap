@@ -306,31 +306,19 @@
     {
       "description": "File management options for Fabber output, overwrite and link",
       "id": "file_mgmt_group",
-      "members": [
-        "output",
-        "overwrite",
-        "link_to_latest"
-      ],
+      "members": ["output", "overwrite", "link_to_latest"],
       "name": "File Management Options"
     },
     {
       "description": "Model and method selection options for Fabber",
       "id": "model_method_group",
-      "members": [
-        "method",
-        "model",
-        "loadmodels"
-      ],
+      "members": ["method", "model", "loadmodels"],
       "name": "Model and Method Selection"
     },
     {
       "description": "Data inputs for Fabber",
       "id": "data_inputs_group",
-      "members": [
-        "data",
-        "mask",
-        "suppdata"
-      ],
+      "members": ["data", "mask", "suppdata"],
       "name": "Data Inputs"
     },
     {

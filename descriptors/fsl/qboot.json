@@ -214,12 +214,7 @@
     {
       "description": "Required input files for qboot",
       "id": "required_files_group",
-      "members": [
-        "data_file",
-        "mask_file",
-        "bvecs_file",
-        "bvals_file"
-      ],
+      "members": ["data_file", "mask_file", "bvecs_file", "bvals_file"],
       "name": "Required Input Files"
     },
     {
