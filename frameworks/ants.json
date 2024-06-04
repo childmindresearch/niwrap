@@ -445,7 +445,8 @@
       },
       {
         "target": "antsRegistrationSyN.sh",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ants_registration_syn_sh.json"
       },
       {
         "target": "antsRegistrationSyNQuick.sh",
