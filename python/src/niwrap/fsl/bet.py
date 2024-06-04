@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 BET_METADATA = Metadata(
-    id="a82c114929d9dd7ec1c55558ac12d78b41062a71",
+    id="344c290807e7b3b1c22226d9d41288aa9b904b34",
     name="bet",
     container_image_type="docker",
     container_image_index="index.docker.io",
