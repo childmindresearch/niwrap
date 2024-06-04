@@ -1,115 +1,115 @@
 {
-    "name": "mri_synthstrip",
-    "tool-version": "1.0",
-    "author": "Unknown",
-    "description": "Robust, universal skull-stripping for brain images of any type.",
-    "url": "https://example.com/universal_skullstrip_docs",
-    "command-line": "mri_synthstrip [INPUT_IMAGE] [OUT_FILE] [MASK_FILE] [SDT_FILE] [GPU_FLAG] [BORDER_THRESHOLD] [NUM_THREADS] [NO_CSF_FLAG] [MODEL_FILE]",
-    "schema-version": "0.5",
-    "inputs": [
-      {
-        "id": "input_image",
-        "name": "Input Image",
-        "type": "File",
-        "value-key": "[INPUT_IMAGE]",
-        "command-line-flag": "-i",
-        "description": "Input image to skullstrip",
-        "optional": false
-      },
-      {
-        "id": "out_file",
-        "name": "Output File",
-        "type": "String",
-        "value-key": "[OUT_FILE]",
-        "command-line-flag": "-o",
-        "description": "Filename to save the stripped image",
-        "optional": true
-      },
-      {
-        "id": "mask_file",
-        "name": "Mask File",
-        "type": "String",
-        "value-key": "[MASK_FILE]",
-        "command-line-flag": "-m",
-        "description": "Filename to save the binary brain mask",
-        "optional": true
-      },
-      {
-        "id": "sdt_file",
-        "name": "SDT File",
-        "type": "String",
-        "value-key": "[SDT_FILE]",
-        "command-line-flag": "-d",
-        "description": "Filename to save the distance transform",
-        "optional": true
-      },
-      {
-        "id": "gpu_flag",
-        "name": "Use GPU",
-        "type": "Flag",
-        "value-key": "[GPU_FLAG]",
-        "command-line-flag": "-g",
-        "description": "Use the GPU",
-        "optional": true
-      },
-      {
-        "id": "border_threshold",
-        "name": "Border Threshold",
-        "type": "Number",
-        "value-key": "[BORDER_THRESHOLD]",
-        "command-line-flag": "-b",
-        "description": "Mask border threshold in mm, defaults to 1",
-        "optional": true
-      },
-      {
-        "id": "num_threads",
-        "name": "Number of Threads",
-        "type": "Number",
-        "value-key": "[NUM_THREADS]",
-        "command-line-flag": "-t",
-        "description": "PyTorch CPU threads; uses PyTorch default if unset",
-        "optional": true
-      },
-      {
-        "id": "no_csf_flag",
-        "name": "Exclude CSF",
-        "type": "Flag",
-        "value-key": "[NO_CSF_FLAG]",
-        "command-line-flag": "--no-csf",
-        "description": "Exclude CSF from the brain border",
-        "optional": true
-      },
-      {
-        "id": "model_file",
-        "name": "Model File",
-        "type": "File",
-        "value-key": "[MODEL_FILE]",
-        "command-line-flag": "--model",
-        "description": "Alternative model weights",
-        "optional": true
-      }
-    ],
-    "output-files": [
-      {
-        "id": "out_image_file",
-        "name": "Stripped Image File",
-        "path-template": "[OUT_FILE]",
-        "description": "File containing the stripped image",
-        "optional": true
-      },
-      {
-        "id": "mask_image_file",
-        "name": "Binary Brain Mask File",
-        "path-template": "[MASK_FILE]",
-        "description": "File containing the binary brain mask",
-        "optional": true
-      },
-      {
-        "id": "sdt_image_file",
-        "name": "Distance Transform File",
-        "path-template": "[SDT_FILE]",
-        "description": "File containing the distance transform",
-        "optional": true
-      }
-    ]
-  }
+  "name": "mri_synthstrip",
+  "tool-version": "1.0",
+  "author": "Unknown",
+  "description": "Robust, universal skull-stripping for brain images of any type.",
+  "url": "https://example.com/universal_skullstrip_docs",
+  "command-line": "mri_synthstrip [INPUT_IMAGE] [OUT_FILE] [MASK_FILE] [SDT_FILE] [GPU_FLAG] [BORDER_THRESHOLD] [NUM_THREADS] [NO_CSF_FLAG] [MODEL_FILE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "input_image",
+      "name": "Input Image",
+      "type": "File",
+      "value-key": "[INPUT_IMAGE]",
+      "command-line-flag": "-i",
+      "description": "Input image to skullstrip",
+      "optional": false
+    },
+    {
+      "id": "out_file",
+      "name": "Output File",
+      "type": "String",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-o",
+      "description": "Filename to save the stripped image",
+      "optional": true
+    },
+    {
+      "id": "mask_file",
+      "name": "Mask File",
+      "type": "String",
+      "value-key": "[MASK_FILE]",
+      "command-line-flag": "-m",
+      "description": "Filename to save the binary brain mask",
+      "optional": true
+    },
+    {
+      "id": "sdt_file",
+      "name": "SDT File",
+      "type": "String",
+      "value-key": "[SDT_FILE]",
+      "command-line-flag": "-d",
+      "description": "Filename to save the distance transform",
+      "optional": true
+    },
+    {
+      "id": "gpu_flag",
+      "name": "Use GPU",
+      "type": "Flag",
+      "value-key": "[GPU_FLAG]",
+      "command-line-flag": "-g",
+      "description": "Use the GPU",
+      "optional": true
+    },
+    {
+      "id": "border_threshold",
+      "name": "Border Threshold",
+      "type": "Number",
+      "value-key": "[BORDER_THRESHOLD]",
+      "command-line-flag": "-b",
+      "description": "Mask border threshold in mm, defaults to 1",
+      "optional": true
+    },
+    {
+      "id": "num_threads",
+      "name": "Number of Threads",
+      "type": "Number",
+      "value-key": "[NUM_THREADS]",
+      "command-line-flag": "-t",
+      "description": "PyTorch CPU threads; uses PyTorch default if unset",
+      "optional": true
+    },
+    {
+      "id": "no_csf_flag",
+      "name": "Exclude CSF",
+      "type": "Flag",
+      "value-key": "[NO_CSF_FLAG]",
+      "command-line-flag": "--no-csf",
+      "description": "Exclude CSF from the brain border",
+      "optional": true
+    },
+    {
+      "id": "model_file",
+      "name": "Model File",
+      "type": "File",
+      "value-key": "[MODEL_FILE]",
+      "command-line-flag": "--model",
+      "description": "Alternative model weights",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "id": "out_image_file",
+      "name": "Stripped Image File",
+      "path-template": "[OUT_FILE]",
+      "description": "File containing the stripped image",
+      "optional": true
+    },
+    {
+      "id": "mask_image_file",
+      "name": "Binary Brain Mask File",
+      "path-template": "[MASK_FILE]",
+      "description": "File containing the binary brain mask",
+      "optional": true
+    },
+    {
+      "id": "sdt_image_file",
+      "name": "Distance Transform File",
+      "path-template": "[SDT_FILE]",
+      "description": "File containing the distance transform",
+      "optional": true
+    }
+  ]
+}
