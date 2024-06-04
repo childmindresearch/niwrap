@@ -1,0 +1,220 @@
+{
+    "name": "dwibiascorrect",
+    "tool-version": "1.0",
+    "author": "Robert E. Smith",
+    "description": "Perform B1 field inhomogeneity correction for a DWI volume series using either ANTs or FSL.",
+    "url": "http://www.mrtrix.org/",
+    "command-line": "dwibiascorrect [ALGORITHM] [INPUT_IMAGE] [OUTPUT_IMAGE] [GRAD] [FSLGRAD_BVECS] [MASK_IMAGE] [BIAS_IMAGE] [NOCLEANUP] [SCRATCH] [CONTINUE_SCRATCH] [INFO] [QUIET] [DEBUG] [FORCE] [NTHREADS] [CONFIG] [HELP] [VERSION] [ANTS_B] [ANTS_C] [ANTS_S]",
+    "schema-version": "0.5",
+    "inputs": [
+      {
+        "id": "algorithm",
+        "name": "Algorithm",
+        "type": "String",
+        "value-key": "[ALGORITHM]",
+        "description": "Select the algorithm to be used for bias correction. Options are: ants, fsl",
+        "optional": false
+      },
+      {
+        "id": "input_image",
+        "name": "Input Image",
+        "type": "File",
+        "value-key": "[INPUT_IMAGE]",
+        "description": "The input image series to be corrected",
+        "optional": false
+      },
+      {
+        "id": "output_image",
+        "name": "Output Image",
+        "type": "File",
+        "value-key": "[OUTPUT_IMAGE]",
+        "description": "The output corrected image series",
+        "optional": false
+      },
+      {
+        "id": "grad",
+        "name": "Gradient Table (MRtrix format)",
+        "type": "File",
+        "value-key": "[GRAD]",
+        "command-line-flag": "-grad",
+        "description": "Provide the diffusion gradient table in MRtrix format",
+        "optional": true
+      },
+      {
+        "id": "fslgrad_bvecs",
+        "name": "Gradient Table (FSL bvecs format)",
+        "type": "File",
+        "value-key": "[FSLGRAD_BVECS]",
+        "command-line-flag": "-fslgrad",
+        "description": "Provide the diffusion gradient table in FSL bvecs format",
+        "optional": true,
+        "list": true,
+        "min-list-entries": 2,
+        "max-list-entries": 2
+      },
+      {
+        "id": "mask_image",
+        "name": "Mask Image",
+        "type": "File",
+        "value-key": "[MASK_IMAGE]",
+        "command-line-flag": "-mask",
+        "description": "Manually provide a mask image for bias field estimation",
+        "optional": true
+      },
+      {
+        "id": "bias_image",
+        "name": "Bias Image",
+        "type": "File",
+        "value-key": "[BIAS_IMAGE]",
+        "command-line-flag": "-bias",
+        "description": "Output the estimated bias field",
+        "optional": true
+      },
+      {
+        "id": "nocleanup",
+        "name": "No Cleanup",
+        "type": "Flag",
+        "value-key": "[NOCLEANUP]",
+        "command-line-flag": "-nocleanup",
+        "description": "Do not delete intermediate files during script execution, and do not delete scratch directory at script completion",
+        "optional": true
+      },
+      {
+        "id": "scratch_dir",
+        "name": "Scratch Directory",
+        "type": "File",
+        "value-key": "[SCRATCH]",
+        "command-line-flag": "-scratch",
+        "description": "Manually specify the path in which to generate the scratch directory",
+        "optional": true
+      },
+      {
+        "id": "continue_scratch_dir",
+        "name": "Continue Scratch Directory",
+        "type": "File",
+        "value-key": "[CONTINUE_SCRATCH]",
+        "command-line-flag": "-continue",
+        "description": "Continue the script from a previous execution; must provide the scratch directory path",
+        "optional": true,
+        "list": true,
+        "min-list-entries": 2,
+        "max-list-entries": 2
+      },
+      {
+        "id": "info",
+        "name": "Display Information Messages",
+        "type": "Flag",
+        "value-key": "[INFO]",
+        "command-line-flag": "-info",
+        "description": "Display information messages",
+        "optional": true
+      },
+      {
+        "id": "quiet",
+        "name": "Quiet Mode",
+        "type": "Flag",
+        "value-key": "[QUIET]",
+        "command-line-flag": "-quiet",
+        "description": "Do not display information messages or progress status",
+        "optional": true
+      },
+      {
+        "id": "debug",
+        "name": "Debug Mode",
+        "type": "Flag",
+        "value-key": "[DEBUG]",
+        "command-line-flag": "-debug",
+        "description": "Display debugging messages",
+        "optional": true
+      },
+      {
+        "id": "force",
+        "name": "Force Overwrite",
+        "type": "Flag",
+        "value-key": "[FORCE]",
+        "command-line-flag": "-force",
+        "description": "Force overwrite of output files",
+        "optional": true
+      },
+      {
+        "id": "nthreads",
+        "name": "Number of Threads",
+        "type": "Number",
+        "value-key": "[NTHREADS]",
+        "command-line-flag": "-nthreads",
+        "description": "Use this number of threads in multi-threaded applications (set to 0 to disable multi-threading)",
+        "optional": true
+      },
+      {
+        "id": "config",
+        "name": "Config Key Value",
+        "type": "String",
+        "value-key": "[CONFIG]",
+        "command-line-flag": "-config",
+        "description": "Temporarily set the value of an MRtrix config file entry",
+        "optional": true,
+        "list": true
+      },
+      {
+        "id": "help",
+        "name": "Display Help",
+        "type": "Flag",
+        "value-key": "[HELP]",
+        "command-line-flag": "-help",
+        "description": "Display help information and exit",
+        "optional": true
+      },
+      {
+        "id": "version",
+        "name": "Display Version",
+        "type": "Flag",
+        "value-key": "[VERSION]",
+        "command-line-flag": "-version",
+        "description": "Display version information and exit",
+        "optional": true
+      },
+      {
+        "id": "ants_b",
+        "name": "ANTS N4 Bias Field Correction -b",
+        "type": "String",
+        "value-key": "[ANTS_B]",
+        "command-line-flag": "-ants.b",
+        "description": "N4BiasFieldCorrection option -b (initial mesh resolution in mm, spline order)",
+        "optional": true
+      },
+      {
+        "id": "ants_c",
+        "name": "ANTS N4 Bias Field Correction -c",
+        "type": "String",
+        "value-key": "[ANTS_C]",
+        "command-line-flag": "-ants.c",
+        "description": "N4BiasFieldCorrection option -c (number of iterations, convergence threshold)",
+        "optional": true
+      },
+      {
+        "id": "ants_s",
+        "name": "ANTS N4 Bias Field Correction -s",
+        "type": "String",
+        "value-key": "[ANTS_S]",
+        "command-line-flag": "-ants.s",
+        "description": "N4BiasFieldCorrection option -s (shrink-factor applied to spatial dimensions)",
+        "optional": true
+      }
+    ],
+    "output-files": [
+      {
+        "id": "output_image_file",
+        "name": "Corrected Image Series",
+        "path-template": "[OUTPUT_IMAGE]",
+        "description": "File containing the corrected image series",
+        "optional": false
+      },
+      {
+        "id": "bias_image_file",
+        "name": "Estimated Bias Field",
+        "path-template": "[BIAS_IMAGE]",
+        "description": "File containing the estimated bias field",
+        "optional": true
+      }
+    ]
+  }
