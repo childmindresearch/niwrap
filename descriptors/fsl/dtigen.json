@@ -88,23 +88,13 @@
     {
       "description": "Compulsory arguments for dtigen",
       "id": "compulsory_args",
-      "members": [
-        "tensor",
-        "s0",
-        "output_data",
-        "bvecs",
-        "bvals",
-        "brainmask"
-      ],
+      "members": ["tensor", "s0", "output_data", "bvecs", "bvals", "brainmask"],
       "name": "Compulsory Arguments"
     },
     {
       "description": "Optional arguments for dtigen",
       "id": "optional_args",
-      "members": [
-        "kurtosis",
-        "help"
-      ],
+      "members": ["kurtosis", "help"],
       "name": "Optional Arguments"
     }
   ],

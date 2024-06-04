@@ -151,9 +151,7 @@
       "description": "Parameter for creating header from NIfTI XML file",
       "mutually-exclusive": true,
       "id": "nifti_xml_group",
-      "members": [
-        "nifti_xml_file"
-      ],
+      "members": ["nifti_xml_file"],
       "name": "NIfTI XML Parameter"
     }
   ],

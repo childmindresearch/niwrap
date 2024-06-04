@@ -381,10 +381,7 @@
     {
       "description": "Miscellaneous options for running Fabber",
       "id": "misc_options",
-      "members": [
-        "optfile",
-        "debug"
-      ],
+      "members": ["optfile", "debug"],
       "name": "Miscellaneous Options"
     }
   ],

@@ -46,10 +46,7 @@
       "optional": true,
       "id": "inblockform",
       "name": "Input block format",
-      "value-choices": [
-        "rpt",
-        "tis"
-      ]
+      "value-choices": ["rpt", "tis"]
     },
     {
       "command-line-flag": "--iaf",
@@ -59,13 +56,7 @@
       "optional": true,
       "id": "inaslform",
       "name": "Input ASL form",
-      "value-choices": [
-        "diff",
-        "tc",
-        "ct",
-        "tcb",
-        "ctb"
-      ],
+      "value-choices": ["diff", "tc", "ct", "tcb", "ctb"],
       "default-value": "diff"
     },
     {
@@ -179,10 +170,7 @@
       "optional": true,
       "id": "outblockform",
       "name": "Output block format",
-      "value-choices": [
-        "rpt",
-        "tis"
-      ]
+      "value-choices": ["rpt", "tis"]
     },
     {
       "command-line-flag": "--mean",
@@ -237,10 +225,7 @@
       "optional": true,
       "id": "epoch_unit",
       "name": "Epoch unit",
-      "value-choices": [
-        "rpt",
-        "tis"
-      ]
+      "value-choices": ["rpt", "tis"]
     },
     {
       "command-line-flag": "--deconv",
@@ -284,10 +269,7 @@
     {
       "description": "Compulsory arguments",
       "id": "compulsory_arguments",
-      "members": [
-        "datafile",
-        "ntis"
-      ],
+      "members": ["datafile", "ntis"],
       "name": "Compulsory Arguments"
     },
     {

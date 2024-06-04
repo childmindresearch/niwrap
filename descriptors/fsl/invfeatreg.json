@@ -51,19 +51,13 @@
     {
       "description": "Main parameters for invwarp",
       "id": "main_params_group",
-      "members": [
-        "warp_file",
-        "reference",
-        "output_file"
-      ],
+      "members": ["warp_file", "reference", "output_file"],
       "name": "Main Parameters"
     },
     {
       "description": "Optional parameters for verbose output",
       "id": "optional_params_group",
-      "members": [
-        "verbose_flag"
-      ],
+      "members": ["verbose_flag"],
       "name": "Optional Parameters"
     }
   ],

@@ -180,10 +180,7 @@
     {
       "description": "Input options for specifying the structural image or existing anatomical directory",
       "id": "input_options",
-      "members": [
-        "structural_image",
-        "existing_anat_dir"
-      ],
+      "members": ["structural_image", "existing_anat_dir"],
       "name": "Input Options"
     },
     {

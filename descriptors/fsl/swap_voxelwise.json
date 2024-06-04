@@ -93,11 +93,7 @@
     {
       "description": "Specify the main input files for swap_voxelwise",
       "id": "compulsory_params_group",
-      "members": [
-        "vectors_file_list",
-        "scalars_file_list",
-        "mask"
-      ],
+      "members": ["vectors_file_list", "scalars_file_list", "mask"],
       "name": "Main Input Files"
     },
     {

@@ -288,10 +288,7 @@
     {
       "description": "One or more compulsory arguments",
       "id": "compulsory_arguments",
-      "members": [
-        "output_unwrap",
-        "output_unwrap_alias"
-      ],
+      "members": ["output_unwrap", "output_unwrap_alias"],
       "name": "Compulsory Arguments"
     },
     {

@@ -136,11 +136,7 @@
     {
       "description": "Required arguments for fsl_mrs_preproc",
       "id": "required_arguments_group",
-      "members": [
-        "data",
-        "reference",
-        "output"
-      ],
+      "members": ["data", "reference", "output"],
       "name": "Required Arguments"
     },
     {

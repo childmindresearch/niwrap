@@ -35,11 +35,7 @@
       "optional": true,
       "id": "method",
       "name": "Method",
-      "value-choices": [
-        "auto",
-        "fast",
-        "none"
-      ]
+      "value-choices": ["auto", "fast", "none"]
     },
     {
       "command-line-flag": "-b",

@@ -189,10 +189,7 @@
     {
       "description": "Compulsory arguments (You MUST set one or more of)",
       "id": "mandatory_params_group",
-      "members": [
-        "datafile",
-        "maskfile"
-      ],
+      "members": ["datafile", "maskfile"],
       "name": "Compulsory Arguments"
     },
     {

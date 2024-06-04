@@ -81,22 +81,13 @@
     {
       "description": "Compulsory arguments",
       "id": "compulsory_params_group",
-      "members": [
-        "dyads",
-        "fmean",
-        "mask"
-      ],
+      "members": ["dyads", "fmean", "mask"],
       "name": "Compulsory Parameters"
     },
     {
       "description": "Optional arguments",
       "id": "optional_params_group",
-      "members": [
-        "obasename",
-        "xthresh",
-        "averageonly_flag",
-        "verbose_flag"
-      ],
+      "members": ["obasename", "xthresh", "averageonly_flag", "verbose_flag"],
       "name": "Optional Parameters"
     }
   ]

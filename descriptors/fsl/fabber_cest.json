@@ -321,11 +321,7 @@
     {
       "description": "Options to evaluate models",
       "id": "evaluation_options_group",
-      "members": [
-        "evaluate",
-        "evaluate_params",
-        "evaluate_nt"
-      ],
+      "members": ["evaluate", "evaluate_params", "evaluate_nt"],
       "name": "Evaluation Options"
     },
     {
@@ -364,10 +360,7 @@
     {
       "description": "Miscellaneous options for advanced usage",
       "id": "miscellaneous_options_group",
-      "members": [
-        "optfile",
-        "debug"
-      ],
+      "members": ["optfile", "debug"],
       "name": "Miscellaneous Options"
     }
   ],

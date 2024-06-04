@@ -393,10 +393,7 @@
     {
       "description": "Miscellaneous options",
       "id": "miscellaneous_options",
-      "members": [
-        "help",
-        "version"
-      ],
+      "members": ["help", "version"],
       "name": "Miscellaneous Options"
     }
   ],

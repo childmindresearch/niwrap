@@ -175,10 +175,7 @@
     {
       "description": "Specify compulsory arguments for halfcosbasis",
       "id": "compulsory_group",
-      "members": [
-        "hrf_param_file",
-        "hrf_param_file_hf"
-      ],
+      "members": ["hrf_param_file", "hrf_param_file_hf"],
       "name": "Compulsory Arguments",
       "mutually-exclusive": true
     },

@@ -137,11 +137,7 @@
     {
       "description": "Compulsory arguments for invwarp",
       "id": "compulsory_args",
-      "members": [
-        "warp_file",
-        "out_file",
-        "ref_file"
-      ],
+      "members": ["warp_file", "out_file", "ref_file"],
       "name": "Compulsory Arguments"
     },
     {

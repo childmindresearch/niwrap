@@ -77,10 +77,7 @@
     {
       "description": "FLIRT options group",
       "id": "flirt_options_group",
-      "members": [
-        "reference_image",
-        "flirt_options"
-      ],
+      "members": ["reference_image", "flirt_options"],
       "name": "FLIRT Options"
     }
   ],

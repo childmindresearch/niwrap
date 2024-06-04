@@ -371,30 +371,19 @@
     {
       "description": "Options for checking on fsl_sub capabilities.",
       "id": "query_configuration",
-      "members": [
-        "has_coprocessor",
-        "has_queues",
-        "show_config"
-      ],
+      "members": ["has_coprocessor", "has_queues", "show_config"],
       "name": "Query configuration"
     },
     {
       "description": "Email notification options.",
       "id": "email_notification",
-      "members": [
-        "mailoptions",
-        "mailto"
-      ],
+      "members": ["mailoptions", "mailto"],
       "name": "Emailing"
     },
     {
       "description": "Miscellaneous options.",
       "id": "miscellaneous",
-      "members": [
-        "verbose",
-        "version",
-        "fileisimage"
-      ],
+      "members": ["verbose", "version", "fileisimage"],
       "name": "Miscellaneous"
     }
   ]

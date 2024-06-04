@@ -200,10 +200,7 @@
     {
       "description": "Compulsory arguments",
       "id": "compulsory_args",
-      "members": [
-        "output_warp",
-        "refvol"
-      ],
+      "members": ["output_warp", "refvol"],
       "name": "Compulsory Arguments"
     },
     {
