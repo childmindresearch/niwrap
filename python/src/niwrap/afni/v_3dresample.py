@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DRESAMPLE_METADATA = Metadata(
-    id="53724a9c83f8b4545b501c2b7d3ade4e00dd1c8e",
+    id="6950747e9c6ee46807dedd78f391f3076de6d8b8",
     name="3dresample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -21,12 +21,11 @@ class V3dresampleOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType
     """Output image file name."""
-    out_file_: OutputPathType
-    """Output file."""
 
 
 def v_3dresample(
     in_file: InputPathType,
+    prefix: str = "out",
     master: InputPathType | None = None,
     orientation: typing.Literal["AIL", "AIR", "ASL", "ASR", "PIL", "PIR", "PSL", "PSR", "ALI", "ALS", "ARI", "ARS", "PLI", "PLS", "PRI", "PRS", "IAL", "IAR", "IPL", "IPR", "SAL", "SAR", "SPL", "SPR", "ILA", "ILP", "IRA", "IRP", "SLA", "SLP", "SRA", "SRP", "LAI", "LAS", "LPI", "LPS", "RAI", "RAS", "RPI", "RPS", "LIA", "LIP", "LSA", "LSP", "RIA", "RIP", "RSA", "RSP"] | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
@@ -44,6 +43,7 @@ def v_3dresample(
     
     Args:
         in_file: Input file to 3dresample.
+        prefix: required prefix for output dataset
         master: Align dataset grid to a reference file.
         orientation: New orientation code.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
@@ -66,7 +66,7 @@ def v_3dresample(
         cargs.extend(["-master", execution.input_file(master)])
     if orientation is not None:
         cargs.extend(["-orient", orientation])
-    cargs.append("[OUT_FILE]")
+    cargs.extend(["-prefix", prefix])
     if outputtype is not None:
         cargs.append(outputtype)
     if resample_mode is not None:
@@ -76,7 +76,6 @@ def v_3dresample(
     ret = V3dresampleOutputs(
         root=execution.output_file("."),
         out_file=execution.output_file(f"{pathlib.Path(in_file).name}_resample", optional=True),
-        out_file_=execution.output_file(f"out_file", optional=True),
     )
     execution.run(cargs)
     return ret
