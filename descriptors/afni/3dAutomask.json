@@ -1,6 +1,6 @@
 {
   "name": "3dAutomask",
-  "command-line": "3dAutomask [IN_FILE] [BRAIN_FILE] [CLFRAC] [DILATE] [ERODE] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
+  "command-line": "3dAutomask [IN_FILE] [BRAIN_FILE] [CLFRAC] [DILATE] [ERODE] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
   "description": "Create a brain-only mask of the image using AFNI 3dAutomask command.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html",
@@ -41,16 +41,6 @@
       "value-key": "[IN_FILE]",
       "description": "Input file to 3dautomask.",
       "optional": false
-    },
-    {
-      "id": "num_threads",
-      "name": "Num threads",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[NUM_THREADS]",
-      "description": "Set number of threads.",
-      "optional": true,
-      "default-value": 1
     },
     {
       "id": "outputtype",

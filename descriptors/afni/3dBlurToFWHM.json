@@ -1,6 +1,6 @@
 {
   "name": "3dBlurToFWHM",
-  "command-line": "3dBlurToFWHM [AUTOMASK] [BLURMASTER] [FWHM] [FWHMXY] [IN_FILE] [MASK] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE]",
+  "command-line": "3dBlurToFWHM [AUTOMASK] [BLURMASTER] [FWHM] [FWHMXY] [IN_FILE] [MASK] [OUT_FILE] [OUTPUTTYPE]",
   "author": "Nipype (interface)",
   "description": "Blurs a 'master' dataset until it reaches a specified FWHM smoothness (approximately).",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html",
@@ -58,16 +58,6 @@
       "command-line-flag": "-mask",
       "description": "Mask dataset, if desired. voxels not in mask will be set to zero in output.",
       "optional": true
-    },
-    {
-      "id": "num_threads",
-      "name": "Num threads",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[NUM_THREADS]",
-      "description": "Set number of threads.",
-      "optional": true,
-      "default-value": 1
     },
     {
       "id": "outputtype",

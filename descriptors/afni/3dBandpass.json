@@ -1,6 +1,6 @@
 {
   "name": "3dBandpass",
-  "command-line": "3dBandpass [HIGHPASS] [LOWPASS] [OUT_FILE] [MASK] [IN_FILE] [AUTOMASK] [BLUR] [DESPIKE] [LOCALPV] [NFFT] [NO_DETREND] [NORMALIZE] [NOTRANS] [NUM_THREADS] [ORTHOGONALIZE_DSET] [ORTHOGONALIZE_FILE] [OUTPUTTYPE] [TR]",
+  "command-line": "3dBandpass [HIGHPASS] [LOWPASS] [OUT_FILE] [MASK] [IN_FILE] [AUTOMASK] [BLUR] [DESPIKE] [LOCALPV] [NFFT] [NO_DETREND] [NORMALIZE] [NOTRANS] [ORTHOGONALIZE_DSET] [ORTHOGONALIZE_FILE] [OUTPUTTYPE] [TR]",
   "author": "Nipype (interface)",
   "description": "Program to lowpass and/or highpass each voxel time series in a dataset, offering more/different options than Fourier.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBandpass.html",
@@ -110,16 +110,6 @@
       "command-line-flag": "-notrans",
       "description": "Don't check for initial positive transients in the data. the test is a little slow, so skipping it is ok, if you know the data time series are transient-free.",
       "optional": true
-    },
-    {
-      "id": "num_threads",
-      "name": "Num threads",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[NUM_THREADS]",
-      "description": "Set number of threads.",
-      "optional": true,
-      "default-value": 1
     },
     {
       "id": "orthogonalize_dset",

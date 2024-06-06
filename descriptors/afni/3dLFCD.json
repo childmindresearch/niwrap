@@ -1,6 +1,6 @@
 {
   "name": "3dLFCD",
-  "command-line": "3dLFCD [IN_FILE] [AUTOCLIP] [AUTOMASK] [MASK] [NUM_THREADS] [OUT_FILE] [OUTPUTTYPE] [POLORT] [THRESH]",
+  "command-line": "3dLFCD [IN_FILE] [AUTOCLIP] [AUTOMASK] [MASK] [OUT_FILE] [OUTPUTTYPE] [POLORT] [THRESH]",
   "author": "Nipype (interface)",
   "description": "Performs degree centrality on a dataset using a given maskfile via the 3dLFCD command",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLFCD.html",
