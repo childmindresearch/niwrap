@@ -126,12 +126,19 @@
   "output-files": [
     {
       "name": "Out file",
-      "id": "out_file",
+      "id": "out_file_head",
       "optional": true,
       "description": "Output image file name.",
-      "path-template": "[IN_FILE]_resample",
-      "value-key": "[OUT_FILE]",
-      "command-line-flag": "-prefix"
+      "path-template-stripped-extensions": [".nii", ".nii.gz"],
+      "path-template": "[OUT_FILE]+orig.HEAD"
+    },
+    {
+      "name": "Out file",
+      "id": "out_file_brik",
+      "optional": true,
+      "description": "Output image file name.",
+      "path-template-stripped-extensions": [".nii", ".nii.gz"],
+      "path-template": "[OUT_FILE]+orig.BRIK"
     }
   ],
   "tool-version": "1.0.0",
