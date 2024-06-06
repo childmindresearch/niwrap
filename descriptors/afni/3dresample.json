@@ -15,6 +15,15 @@
       "optional": false
     },
     {
+      "id": "prefix",
+      "name": "Output prefix",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-prefix",
+      "description": "required prefix for output dataset",
+      "type": "String",
+      "default-value": "out"
+    },
+    {
       "id": "master",
       "name": "Master",
       "type": "File",
@@ -123,13 +132,6 @@
       "path-template": "[IN_FILE]_resample",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-prefix"
-    },
-    {
-      "name": "Out file",
-      "id": "out_file",
-      "path-template": "out_file",
-      "optional": true,
-      "description": "Output file."
     }
   ],
   "tool-version": "1.0.0",
