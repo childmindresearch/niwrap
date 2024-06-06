@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_LFCD_METADATA = Metadata(
-    id="5348e5d3e433abc790e56f66ed361abb2142b208",
+    id="f8392a262919712d6fff2ff2e5f6f62933e4c0c5",
     name="3dLFCD",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -69,8 +69,6 @@ def v_3d_lfcd(
         cargs.append("-automask")
     if mask is not None:
         cargs.extend(["-mask", execution.input_file(mask)])
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_AUTOMASK_METADATA = Metadata(
-    id="5d88af61e27409727aa79d7a3803347975b4abb1",
+    id="f0077d5e9af7a4a3f601f1a88fca77676c2363bb",
     name="3dAutomask",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -34,7 +34,6 @@ def v_3d_automask(
     clfrac: float | int | None = None,
     dilate: int | None = None,
     erode: int | None = None,
-    num_threads: int | None = 1,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     runner: Runner = None,
 ) -> V3dAutomaskOutputs:
@@ -52,7 +51,6 @@ def v_3d_automask(
             will tend to make the mask larger [default = 0.5].
         dilate: Dilate the mask outwards.
         erode: Erode the mask inwards.
-        num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         runner: Command runner
     Returns:
@@ -70,8 +68,6 @@ def v_3d_automask(
         cargs.extend(["-dilate", str(dilate)])
     if erode is not None:
         cargs.extend(["-erode", str(erode)])
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)

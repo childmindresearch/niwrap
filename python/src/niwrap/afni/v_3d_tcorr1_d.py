@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TCORR1_D_METADATA = Metadata(
-    id="10b7d3d570d9e43a0d7545f8685ae04a9441c403",
+    id="f56b085b1b20538b963f739c7a27ef3ce88bd8c3",
     name="3dTcorr1D",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -79,8 +79,6 @@ def v_3d_tcorr1_d(
     if spearman:
         cargs.append("-spearman")
     cargs.extend(["", execution.input_file(y_1d)])
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)

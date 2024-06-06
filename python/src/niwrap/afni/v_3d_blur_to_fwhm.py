@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_BLUR_TO_FWHM_METADATA = Metadata(
-    id="bfa4a9cfcba16a02c729a45e50647d824f207141",
+    id="b74d8dad86f9296cef1dc402fc45ddf7394da7c7",
     name="3dBlurToFWHM",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -32,7 +32,6 @@ def v_3d_blur_to_fwhm(
     fwhm: float | int | None = None,
     fwhmxy: float | int | None = None,
     mask: InputPathType | None = None,
-    num_threads: int | None = 1,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     runner: Runner = None,
 ) -> V3dBlurToFwhmOutputs:
@@ -53,7 +52,6 @@ def v_3d_blur_to_fwhm(
         fwhmxy: Blur until the 2d (x,y)-plane fwhm reaches this value (in mm).
         mask: Mask dataset, if desired. voxels not in mask will be set to zero
             in output.
-        num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         runner: Command runner
     Returns:
@@ -74,8 +72,6 @@ def v_3d_blur_to_fwhm(
     cargs.extend(["-input", execution.input_file(in_file)])
     if mask is not None:
         cargs.extend(["-mask", execution.input_file(mask)])
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)

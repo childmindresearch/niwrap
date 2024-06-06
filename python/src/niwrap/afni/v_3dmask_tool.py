@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DMASK_TOOL_METADATA = Metadata(
-    id="cbf01b2f7b4075038f6646036994946770b1c277",
+    id="35c30df2475c55d064788b3dd7fbfeb7b2fcf90f",
     name="3dmask_tool",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -97,8 +97,6 @@ def v_3dmask_tool(
         cargs.extend(["-frac", str(frac)])
     if inter:
         cargs.append("-inter")
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)

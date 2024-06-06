@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_BANDPASS_METADATA = Metadata(
-    id="3fe63cdedb0a12b3606b55f4b73dcb3d07646ec9",
+    id="03d13bfe43614af52f4b2cb52d525729073909c7",
     name="3dBandpass",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,7 +38,6 @@ def v_3d_bandpass(
     no_detrend: bool = False,
     normalize: bool = False,
     notrans: bool = False,
-    num_threads: int | None = 1,
     orthogonalize_dset: InputPathType | None = None,
     orthogonalize_file: list[InputPathType] = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
@@ -77,7 +76,6 @@ def v_3d_bandpass(
         notrans: Don't check for initial positive transients in the data. the
             test is a little slow, so skipping it is ok, if you know the data time
             series are transient-free.
-        num_threads: Set number of threads.
         orthogonalize_dset: Orthogonalize each voxel to the corresponding voxel
             time series in dataset 'fset', which must have the same spatial and
             temporal grid structure as the main input dataset. at present, only one
@@ -116,8 +114,6 @@ def v_3d_bandpass(
         cargs.append("-norm")
     if notrans:
         cargs.append("-notrans")
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     if orthogonalize_dset is not None:
         cargs.extend(["-dsort", execution.input_file(orthogonalize_dset)])
     if orthogonalize_file is not None:

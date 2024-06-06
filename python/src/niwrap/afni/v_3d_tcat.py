@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TCAT_METADATA = Metadata(
-    id="56e988f3745e66d3c04e67286b1f710c01c03196",
+    id="9ae8518a5c3a87eb21b36cc919499304d5720f81",
     name="3dTcat",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -64,8 +64,6 @@ def v_3d_tcat(
     if rlt is not None:
         cargs.extend(["-rlt", rlt])
     cargs.extend(["", execution.input_file(in_files)])
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)
