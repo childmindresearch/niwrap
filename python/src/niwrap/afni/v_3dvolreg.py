@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DVOLREG_METADATA = Metadata(
-    id="68d364895153408a39ccf09c93b715944e33865d",
+    id="0716c216271a7a81d9300fb7e5d2358b5b1a4567",
     name="3dvolreg",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -105,8 +105,6 @@ def v_3dvolreg(
         cargs.extend(["-weight '", execution.input_file(in_weight_volume_2)])
     if interp is not None:
         cargs.extend(["-", interp])
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     cargs.append("[ONED_FILE]")
     cargs.append("[ONED_MATRIX_SAVE]")
     cargs.append("[OUT_FILE]")

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DMASKAVE_METADATA = Metadata(
-    id="5f0063fbadf1184c79700d33c6791df910894441",
+    id="bdaf71edba8ba07bb4fac16ef3bbf5e2a73026ce",
     name="3dmaskave",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -62,8 +62,6 @@ def v_3dmaskave(
     if quiet:
         cargs.append("-quiet")
     cargs.append("[OUT_FILE]")
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     if outputtype is not None:
         cargs.append(outputtype)
     ret = V3dmaskaveOutputs(

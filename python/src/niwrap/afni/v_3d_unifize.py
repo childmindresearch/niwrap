@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_UNIFIZE_METADATA = Metadata(
-    id="6b0fd001354df1d28cc4e7373eee398e238c9790",
+    id="6505f5e836fa618c3fe1f204e6b3c6a0705e2e5e",
     name="3dUnifize",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -132,8 +132,6 @@ def v_3d_unifize(
         cargs.append("-GM")
     if no_duplo:
         cargs.append("-noduplo")
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)

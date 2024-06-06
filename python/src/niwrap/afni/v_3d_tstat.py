@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TSTAT_METADATA = Metadata(
-    id="ca52d908ade7d81481502867a636ebdc246a4e4d",
+    id="14cac03aa9ac7d95328b653383962807986bbf04",
     name="3dTstat",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -58,8 +58,6 @@ def v_3d_tstat(
     cargs.append(execution.input_file(in_file))
     if mask is not None:
         cargs.extend(["-mask", execution.input_file(mask)])
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     if options is not None:
         cargs.append(options)
     cargs.append("[OUT_FILE]")

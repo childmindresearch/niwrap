@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TSHIFT_METADATA = Metadata(
-    id="30f4565527ccf7831296694a1ffaa341bf120e4d",
+    id="2d862076edbb6c5bd54506dc33cbe959d36a53a9",
     name="3dTshift",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -134,8 +134,6 @@ def v_3d_tshift(
         cargs.extend(["-ignore", str(ignore)])
     if interp is not None:
         cargs.extend(["-", interp])
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)

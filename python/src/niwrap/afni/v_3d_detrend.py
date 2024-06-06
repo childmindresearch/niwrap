@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_DETREND_METADATA = Metadata(
-    id="27bd1f74c0b5a32d1be1223b70fc3d703e2cee45",
+    id="5843dc9a52bd3d47e5736c6d132e36b82fcc346f",
     name="3dDetrend",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,6 @@ class V3dDetrendOutputs(typing.NamedTuple):
 
 def v_3d_detrend(
     in_file: InputPathType,
-    num_threads: int | None = 1,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     runner: Runner = None,
 ) -> V3dDetrendOutputs:
@@ -42,7 +41,6 @@ def v_3d_detrend(
     
     Args:
         in_file: Input file to 3ddetrend.
-        num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         runner: Command runner
     Returns:
@@ -53,8 +51,6 @@ def v_3d_detrend(
     cargs = []
     cargs.append("3dDetrend")
     cargs.append(execution.input_file(in_file))
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)

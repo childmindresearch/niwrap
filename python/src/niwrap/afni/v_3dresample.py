@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DRESAMPLE_METADATA = Metadata(
-    id="cbbd45e676566e627ffa7be53d9fb19a835f9e69",
+    id="53724a9c83f8b4545b501c2b7d3ade4e00dd1c8e",
     name="3dresample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -64,7 +64,6 @@ def v_3dresample(
     cargs.extend(["-inset", execution.input_file(in_file)])
     if master is not None:
         cargs.extend(["-master", execution.input_file(master)])
-    cargs.append("[NUM_THREADS]")
     if orientation is not None:
         cargs.extend(["-orient", orientation])
     cargs.append("[OUT_FILE]")

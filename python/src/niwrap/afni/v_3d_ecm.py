@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_ECM_METADATA = Metadata(
-    id="56e72dfe408e3e97f9457b31c03b72ed6862d377",
+    id="03760cb033635d46fe7bcf4e0e8ea27af7873a8a",
     name="3dECM",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -104,8 +104,6 @@ def v_3d_ecm(
         cargs.extend(["-max_iter", str(max_iter)])
     if memory is not None:
         cargs.extend(["-memory", str(memory)])
-    if num_threads is not None:
-        cargs.append(str(num_threads))
     cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)
