@@ -21,7 +21,7 @@
       "command-line-flag": "-prefix",
       "description": "required prefix for output dataset",
       "type": "String",
-      "default-value": "out"
+      "default-value": "out.nii.gz"
     },
     {
       "id": "master",
@@ -129,16 +129,7 @@
       "id": "out_file_head",
       "optional": true,
       "description": "Output image file name.",
-      "path-template-stripped-extensions": [".nii", ".nii.gz"],
-      "path-template": "[OUT_FILE]+orig.HEAD"
-    },
-    {
-      "name": "Out file",
-      "id": "out_file_brik",
-      "optional": true,
-      "description": "Output image file name.",
-      "path-template-stripped-extensions": [".nii", ".nii.gz"],
-      "path-template": "[OUT_FILE]+orig.BRIK"
+      "path-template": "[OUT_FILE]"
     }
   ],
   "tool-version": "1.0.0",
