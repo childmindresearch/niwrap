@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DRESAMPLE_METADATA = Metadata(
-    id="6950747e9c6ee46807dedd78f391f3076de6d8b8",
+    id="a70a60c181e83732b59fee382a54ccf25024c307",
     name="3dresample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,7 +19,9 @@ class V3dresampleOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType
+    out_file_head: OutputPathType
+    """Output image file name."""
+    out_file_brik: OutputPathType
     """Output image file name."""
 
 
@@ -73,9 +75,15 @@ def v_3dresample(
         cargs.extend(["-rmode", resample_mode])
     if voxel_size is not None:
         cargs.extend(["-dxyz", *map(str, voxel_size)])
+    def _rstrip(s, r):
+        for postfix in r:
+            if s.endswith(postfix):
+                return s[: -len(postfix)]
+        return s
     ret = V3dresampleOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(f"{pathlib.Path(in_file).name}_resample", optional=True),
+        out_file_head=execution.output_file(f"{_rstrip(prefix, ['.nii', '.nii.gz'])}+orig.HEAD", optional=True),
+        out_file_brik=execution.output_file(f"{_rstrip(prefix, ['.nii', '.nii.gz'])}+orig.BRIK", optional=True),
     )
     execution.run(cargs)
     return ret
