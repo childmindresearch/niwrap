@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DRESAMPLE_METADATA = Metadata(
-    id="a70a60c181e83732b59fee382a54ccf25024c307",
+    id="d6a2b0eb8aee527dfea26b765b1068a87864e55c",
     name="3dresample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -21,13 +21,11 @@ class V3dresampleOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_file_head: OutputPathType
     """Output image file name."""
-    out_file_brik: OutputPathType
-    """Output image file name."""
 
 
 def v_3dresample(
     in_file: InputPathType,
-    prefix: str = "out",
+    prefix: str = "out.nii.gz",
     master: InputPathType | None = None,
     orientation: typing.Literal["AIL", "AIR", "ASL", "ASR", "PIL", "PIR", "PSL", "PSR", "ALI", "ALS", "ARI", "ARS", "PLI", "PLS", "PRI", "PRS", "IAL", "IAR", "IPL", "IPR", "SAL", "SAR", "SPL", "SPR", "ILA", "ILP", "IRA", "IRP", "SLA", "SLP", "SRA", "SRP", "LAI", "LAS", "LPI", "LPS", "RAI", "RAS", "RPI", "RPS", "LIA", "LIP", "LSA", "LSP", "RIA", "RIP", "RSA", "RSP"] | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
@@ -75,15 +73,9 @@ def v_3dresample(
         cargs.extend(["-rmode", resample_mode])
     if voxel_size is not None:
         cargs.extend(["-dxyz", *map(str, voxel_size)])
-    def _rstrip(s, r):
-        for postfix in r:
-            if s.endswith(postfix):
-                return s[: -len(postfix)]
-        return s
     ret = V3dresampleOutputs(
         root=execution.output_file("."),
-        out_file_head=execution.output_file(f"{_rstrip(prefix, ['.nii', '.nii.gz'])}+orig.HEAD", optional=True),
-        out_file_brik=execution.output_file(f"{_rstrip(prefix, ['.nii', '.nii.gz'])}+orig.BRIK", optional=True),
+        out_file_head=execution.output_file(f"{prefix}", optional=True),
     )
     execution.run(cargs)
     return ret
