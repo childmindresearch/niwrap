@@ -126,7 +126,7 @@
   "output-files": [
     {
       "name": "Out file",
-      "id": "out_file_head",
+      "id": "out_file",
       "optional": true,
       "description": "Output image file name.",
       "path-template": "[OUT_FILE]"
