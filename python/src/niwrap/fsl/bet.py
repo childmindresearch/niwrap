@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 BET_METADATA = Metadata(
-    id="344c290807e7b3b1c22226d9d41288aa9b904b34",
+    id="4da6f8ca1a6b603e95b06c65fba95b14c369efb9",
     name="bet",
     container_image_type="docker",
     container_image_index="index.docker.io",
@@ -58,22 +58,22 @@ def bet(
     fractional_intensity: float | int | None = None,
     vg_fractional_intensity: float | int | None = None,
     center_of_gravity: list[float | int] = None,
-    overlay_flag: bool = False,
-    binary_mask_flag: bool = False,
-    approx_skull_flag: bool = False,
-    no_seg_output_flag: bool = False,
+    overlay: bool = False,
+    binary_mask: bool = False,
+    approx_skull: bool = False,
+    no_seg_output: bool = False,
     vtk_mesh: bool = False,
     head_radius: float | int | None = None,
-    thresholding_flag: bool = False,
-    robust_iters_flag: bool = False,
-    residual_optic_cleanup_flag: bool = False,
-    reduce_bias_flag: bool = False,
-    slice_padding_flag: bool = False,
-    whole_set_mask_flag: bool = False,
-    additional_surfaces_flag: bool = False,
+    thresholding: bool = False,
+    robust_iters: bool = False,
+    residual_optic_cleanup: bool = False,
+    reduce_bias: bool = False,
+    slice_padding: bool = False,
+    whole_set_mask: bool = False,
+    additional_surfaces: bool = False,
     additional_surfaces_t2: InputPathType | None = None,
-    verbose_flag: bool = False,
-    debug_flag: bool = False,
+    verbose: bool = False,
+    debug: bool = False,
     runner: Runner = None,
 ) -> BetOutputs:
     """
@@ -94,50 +94,49 @@ def bet(
         center_of_gravity: The xyz coordinates of the center of gravity (voxels,
             not mm) of initial mesh surface. Must have exactly three numerical
             entries in the list (3-vector).
-        overlay_flag: Generate brain surface outline overlaid onto original
-            image
-        binary_mask_flag: Generate binary brain mask
-        approx_skull_flag: Generate rough skull image (not as clean as betsurf)
-        no_seg_output_flag: Don't generate segmented brain image output
+        overlay: Generate brain surface outline overlaid onto original image
+        binary_mask: Generate binary brain mask
+        approx_skull: Generate rough skull image (not as clean as betsurf)
+        no_seg_output: Don't generate segmented brain image output
         vtk_mesh: Generate brain surface as mesh in .vtk format
         head_radius: head radius (mm not voxels); initial surface sphere is set
             to half of this
-        thresholding_flag: Apply thresholding to segmented brain image and mask
-        robust_iters_flag: More robust brain center estimation, by iterating BET
-            with a changing center-of-gravity.
-        residual_optic_cleanup_flag: This attempts to cleanup residual eye and
-            optic nerve voxels which bet2 can sometimes leave behind. This can be
-            useful when running SIENA or SIENAX, for example. Various stages
-            involving standard-space masking, morphpological operations and
-            thresholdings are combined to produce a result which can often give
-            better results than just running bet2.
-        reduce_bias_flag: This attempts to reduce image bias, and residual neck
+        thresholding: Apply thresholding to segmented brain image and mask
+        robust_iters: More robust brain center estimation, by iterating BET with
+            a changing center-of-gravity.
+        residual_optic_cleanup: This attempts to cleanup residual eye and optic
+            nerve voxels which bet2 can sometimes leave behind. This can be useful
+            when running SIENA or SIENAX, for example. Various stages involving
+            standard-space masking, morphpological operations and thresholdings are
+            combined to produce a result which can often give better results than
+            just running bet2.
+        reduce_bias: This attempts to reduce image bias, and residual neck
             voxels. This can be useful when running SIENA or SIENAX, for example.
             Various stages involving FAST segmentation-based bias field removal and
             standard-space masking are combined to produce a result which can often
             give better results than just running bet2.
-        slice_padding_flag: This can improve the brain extraction if only a few
+        slice_padding: This can improve the brain extraction if only a few
             slices are present in the data (i.e., a small field of view in the Z
             direction). This is achieved by padding the end slices in both
             directions, copying the end slices several times, running bet2 and then
             removing the added slices.
-        whole_set_mask_flag: This option uses bet2 to determine a brain mask on
-            the basis of the first volume in a 4D data set, and applies this to the
+        whole_set_mask: This option uses bet2 to determine a brain mask on the
+            basis of the first volume in a 4D data set, and applies this to the
             whole data set. This is principally intended for use on FMRI data, for
             example to remove eyeballs. Because it is normally important (in this
             application) that masking be liberal (ie that there be little risk of
             cutting out valid brain voxels) the -f threshold is reduced to 0.3, and
             also the brain mask is "dilated" slightly before being used.
-        additional_surfaces_flag: This runs both bet2 and betsurf programs in
-            order to get the additional skull and scalp surfaces created by betsurf.
-            This involves registering to standard space in order to allow betsurf to
-            find the standard space masks it needs.
+        additional_surfaces: This runs both bet2 and betsurf programs in order
+            to get the additional skull and scalp surfaces created by betsurf. This
+            involves registering to standard space in order to allow betsurf to find
+            the standard space masks it needs.
         additional_surfaces_t2: This is the same as -A except that a T2 image is
             also input, to further improve the estimated skull and scalp surfaces.
             As well as carrying out the standard space registration this also
             registers the T2 to the T1 input image.
-        verbose_flag: Switch on diagnostic messages
-        debug_flag: Don't delete temporary intermediate images
+        verbose: Switch on diagnostic messages
+        debug: Don't delete temporary intermediate images
         runner: Command runner
     Returns:
         NamedTuple of outputs (described in `BetOutputs`).
@@ -150,22 +149,22 @@ def bet(
     if center_of_gravity is not None and (len(center_of_gravity) != 3): 
         raise ValueError(f"Length of 'center_of_gravity' must be 3 but was {len(center_of_gravity)}")
     if (
-        robust_iters_flag +
-        residual_optic_cleanup_flag +
-        reduce_bias_flag +
-        slice_padding_flag +
-        whole_set_mask_flag +
-        additional_surfaces_flag +
+        robust_iters +
+        residual_optic_cleanup +
+        reduce_bias +
+        slice_padding +
+        whole_set_mask +
+        additional_surfaces +
         (additional_surfaces_t2 is not None)
     ) > 1:
         raise ValueError(
             "Only one of the following arguments can be specified:\n"
-            "robust_iters_flag,\n"
-            "residual_optic_cleanup_flag,\n"
-            "reduce_bias_flag,\n"
-            "slice_padding_flag,\n"
-            "whole_set_mask_flag,\n"
-            "additional_surfaces_flag,\n"
+            "robust_iters,\n"
+            "residual_optic_cleanup,\n"
+            "reduce_bias,\n"
+            "slice_padding,\n"
+            "whole_set_mask,\n"
+            "additional_surfaces,\n"
             "additional_surfaces_t2"
         )
     execution = runner.start_execution(BET_METADATA)
@@ -179,37 +178,37 @@ def bet(
         cargs.extend(["-g", str(vg_fractional_intensity)])
     if center_of_gravity is not None:
         cargs.extend(["-c", *map(str, center_of_gravity)])
-    if overlay_flag:
+    if overlay:
         cargs.append("-o")
-    if binary_mask_flag:
+    if binary_mask:
         cargs.append("-m")
-    if approx_skull_flag:
+    if approx_skull:
         cargs.append("-s")
-    if no_seg_output_flag:
+    if no_seg_output:
         cargs.append("-n")
     if vtk_mesh:
         cargs.append("-e")
     if head_radius is not None:
         cargs.extend(["-r", str(head_radius)])
-    if thresholding_flag:
+    if thresholding:
         cargs.append("-t")
-    if robust_iters_flag:
+    if robust_iters:
         cargs.append("-R")
-    if residual_optic_cleanup_flag:
+    if residual_optic_cleanup:
         cargs.append("-S")
-    if reduce_bias_flag:
+    if reduce_bias:
         cargs.append("-B")
-    if slice_padding_flag:
+    if slice_padding:
         cargs.append("-Z")
-    if whole_set_mask_flag:
+    if whole_set_mask:
         cargs.append("-F")
-    if additional_surfaces_flag:
+    if additional_surfaces:
         cargs.append("-A")
     if additional_surfaces_t2 is not None:
         cargs.extend(["-A2", execution.input_file(additional_surfaces_t2)])
-    if verbose_flag:
+    if verbose:
         cargs.append("-v")
-    if debug_flag:
+    if debug:
         cargs.append("-d")
     ret = BetOutputs(
         root=execution.output_file("."),

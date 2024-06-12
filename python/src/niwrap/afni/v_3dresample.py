@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DRESAMPLE_METADATA = Metadata(
-    id="d6a2b0eb8aee527dfea26b765b1068a87864e55c",
+    id="71d456ed68fb0fccec030d2d1bb82c4cfdb4af62",
     name="3dresample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,7 +19,7 @@ class V3dresampleOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file_head: OutputPathType
+    out_file: OutputPathType
     """Output image file name."""
 
 
@@ -75,7 +75,7 @@ def v_3dresample(
         cargs.extend(["-dxyz", *map(str, voxel_size)])
     ret = V3dresampleOutputs(
         root=execution.output_file("."),
-        out_file_head=execution.output_file(f"{prefix}", optional=True),
+        out_file=execution.output_file(f"{prefix}", optional=True),
     )
     execution.run(cargs)
     return ret
