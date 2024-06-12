@@ -71,7 +71,7 @@
       "value-key": "[OVERLAY_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "overlay_flag",
+      "id": "overlay",
       "name": "Overlay flag"
     },
     {
@@ -80,7 +80,7 @@
       "value-key": "[BINARY_MASK_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "binary_mask_flag",
+      "id": "binary_mask",
       "name": "Binary mask flag"
     },
     {
@@ -89,7 +89,7 @@
       "value-key": "[APPROX_SKULL_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "approx_skull_flag",
+      "id": "approx_skull",
       "name": "Approximate skull flag"
     },
     {
@@ -98,7 +98,7 @@
       "value-key": "[NO_SEG_OUTPUT_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "no_seg_output_flag",
+      "id": "no_seg_output",
       "name": "No segmented brain image flag"
     },
     {
@@ -125,7 +125,7 @@
       "value-key": "[THRESHOLDING_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "thresholding_flag",
+      "id": "thresholding",
       "name": "Threshold segmented image flag"
     },
     {
@@ -134,7 +134,7 @@
       "value-key": "[ROBUST_ITERS_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "robust_iters_flag",
+      "id": "robust_iters",
       "name": "Robust iterations flag"
     },
     {
@@ -143,7 +143,7 @@
       "value-key": "[RES_OPTIC_CLEANUP_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "residual_optic_cleanup_flag",
+      "id": "residual_optic_cleanup",
       "name": "Residual optic cleanup flag"
     },
     {
@@ -152,7 +152,7 @@
       "value-key": "[REDUCE_BIAS_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "reduce_bias_flag",
+      "id": "reduce_bias",
       "name": "Bias reduction flag"
     },
     {
@@ -161,7 +161,7 @@
       "value-key": "[SLICE_PADDING_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "slice_padding_flag",
+      "id": "slice_padding",
       "name": "Slice padding flag"
     },
     {
@@ -170,7 +170,7 @@
       "value-key": "[MASK_WHOLE_SET_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "whole_set_mask_flag",
+      "id": "whole_set_mask",
       "name": "Mask-whole-set flag"
     },
     {
@@ -179,7 +179,7 @@
       "value-key": "[ADD_SURFACES_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "additional_surfaces_flag",
+      "id": "additional_surfaces",
       "name": "Additional surfaces flag"
     },
     {
@@ -197,7 +197,7 @@
       "value-key": "[VERBOSE_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "verbose_flag",
+      "id": "verbose",
       "name": "Verbose Flag"
     },
     {
@@ -206,7 +206,7 @@
       "value-key": "[DEBUG_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "debug_flag",
+      "id": "debug",
       "name": "Debug Flag"
     }
   ],
@@ -219,13 +219,13 @@
         "fractional_intensity",
         "vg_fractional_intensity",
         "center_of_gravity",
-        "overlay_flag",
-        "binary_mask_flag",
-        "approx_skull_flag",
-        "no_seg_output_flag",
+        "overlay",
+        "binary_mask",
+        "approx_skull",
+        "no_seg_output",
         "vtk_mesh",
         "head_radius",
-        "thresholding_flag"
+        "thresholding"
       ],
       "name": "Main Program Parameters"
     },
@@ -234,12 +234,12 @@
       "mutually-exclusive": true,
       "id": "variational_params_group",
       "members": [
-        "robust_iters_flag",
-        "residual_optic_cleanup_flag",
-        "reduce_bias_flag",
-        "slice_padding_flag",
-        "whole_set_mask_flag",
-        "additional_surfaces_flag",
+        "robust_iters",
+        "residual_optic_cleanup",
+        "reduce_bias",
+        "slice_padding",
+        "whole_set_mask",
+        "additional_surfaces",
         "additional_surfaces_t2"
       ],
       "name": "Variations on Default Functionality"
@@ -247,7 +247,7 @@
     {
       "description": "Optional miscellaneous parameters when running BET",
       "id": "miscellaneous_params_group",
-      "members": ["verbose_flag", "debug_flag"],
+      "members": ["verbose", "debug"],
       "name": "Miscellaneous Parameters"
     }
   ],
