@@ -80,51 +80,51 @@ def reg_transform(
     More information: https://example.com/reg_transform_docs
     
     Args:
-        reference_image: Filename of the reference image
-        cpp2def_input: Conversion from control point position to deformation
+        reference_image: Filename of the reference image.
+        cpp2def_input: Conversion from control point position to deformation\
             field. Filename of input lattice of control point positions (CPP).
         cpp2def_output: Filename of the output deformation field image (DEF).
-        comp1_cpp2: Composition of two lattices of control points.
-            CPP2(CPP1(x)). Filename of lattice of control point that contains the
+        comp1_cpp2: Composition of two lattices of control points.\
+            CPP2(CPP1(x)). Filename of lattice of control point that contains the\
             second deformation (CPP2).
-        comp1_cpp1: Filename of lattice of control point that contains the
+        comp1_cpp1: Filename of lattice of control point that contains the\
             initial deformation (CPP1).
         comp1_output: Filename of the output deformation field.
-        comp2_cpp: Composition of a deformation field with a lattice of control
-            points. CPP(DEF(x)). Filename of lattice of control point that contains
+        comp2_cpp: Composition of a deformation field with a lattice of control\
+            points. CPP(DEF(x)). Filename of lattice of control point that contains\
             the second deformation (CPP).
-        comp2_def: Filename of the deformation field to be used as initial
+        comp2_def: Filename of the deformation field to be used as initial\
             deformation (DEF).
         comp2_output: Filename of the output deformation field.
-        comp3_def2: Composition of two deformation fields. DEF2(DEF1(x)).
+        comp3_def2: Composition of two deformation fields. DEF2(DEF1(x)).\
             Filename of the second deformation field (DEF2).
         comp3_def1: Filename of the first deformation field (DEF1).
         comp3_output: Filename of the output deformation field.
-        def2disp_input: Convert a deformation field into a displacement field.
+        def2disp_input: Convert a deformation field into a displacement field.\
             Filename of deformation field x'=T(x).
         def2disp_output: Filename of displacement field x'=x+T(x).
-        disp2def_input: Convert a displacement field into a deformation field.
+        disp2def_input: Convert a displacement field into a deformation field.\
             Filename of displacement field x'=x+T(x).
         disp2def_output: Filename of deformation field x'=T(x).
-        upd_sform_image: Update the sform of a floating (source) image using an
+        upd_sform_image: Update the sform of a floating (source) image using an\
             affine transformation. Filename of image to be updated.
-        upd_sform_affine: Affine transformation defined as Affine x Reference =
+        upd_sform_affine: Affine transformation defined as Affine x Reference =\
             Floating. Filename of affine transformation.
         upd_sform_output: Updated image filename.
-        aff2def_affine: Compose a non-rigid with an affine. Filename of affine
+        aff2def_affine: Compose a non-rigid with an affine. Filename of affine\
             transformation.
         aff2def_target: Image used as a target for the non-rigid step.
-        aff2def_cpp_or_def: Reference image (B). Filename of control point
+        aff2def_cpp_or_def: Reference image (B). Filename of control point\
             position or deformation field.
         aff2def_output: Output deformation field filename.
-        inv_affine_input: Invert an affine transformation matrix. Filename of
+        inv_affine_input: Invert an affine transformation matrix. Filename of\
             input affine matrix.
         inv_affine_output: Filename of inverted affine matrix.
-        comp_aff_1st: Compose two affine transformation matrices. Filename of
+        comp_aff_1st: Compose two affine transformation matrices. Filename of\
             first affine matrix.
         comp_aff_2nd: Filename of second affine matrix.
         comp_aff_output: Filename of composed affine matrix result.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegTransformOutputs`).
     """

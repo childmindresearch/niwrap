@@ -40,14 +40,14 @@ def multiply_images(
     Args:
         dimension: 3 or 2. Image dimension (2 or 3).
         first_input: Image 1.
-        output_product_image: Outputfname.nii.gz: the name of the resulting
+        output_product_image: Outputfname.nii.gz: the name of the resulting\
             image.
         num_threads: Number of itk threads to use.
-        second_input: file or string or a float. Image 2 or multiplication
+        second_input: file or string or a float. Image 2 or multiplication\
             weight.
-        second_input_2: file or string or a float. Image 2 or multiplication
+        second_input_2: file or string or a float. Image 2 or multiplication\
             weight.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MultiplyImagesOutputs`).
     """

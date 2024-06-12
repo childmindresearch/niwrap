@@ -40,12 +40,12 @@ def label2surf(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        input_surface: Input surface file
-        output_surface: Output surface file
-        labels: ASCII list of label files
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help message
-        runner: Command runner
+        input_surface: Input surface file.
+        output_surface: Output surface file.
+        labels: ASCII list of label files.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Label2surfOutputs`).
     """

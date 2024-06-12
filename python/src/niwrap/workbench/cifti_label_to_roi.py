@@ -42,14 +42,14 @@ def cifti_label_to_roi(
     -key must be specified. Specify -map to use only one map from <label-in>.
     
     Args:
-        label_in: the input cifti label file
-        scalar_out: the output cifti scalar file
-        opt_name_label_name: select label by name: the label name that you want
-            an roi of
-        opt_key_label_key: select label by key: the label key that you want an
-            roi of
-        opt_map_map: select a single label map to use: the map number or name
-        runner: Command runner
+        label_in: the input cifti label file.
+        scalar_out: the output cifti scalar file.
+        opt_name_label_name: select label by name: the label name that you want\
+            an roi of.
+        opt_key_label_key: select label by key: the label key that you want an\
+            roi of.
+        opt_map_map: select a single label map to use: the map number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiLabelToRoiOutputs`).
     """

@@ -35,9 +35,9 @@ def filmbabescript(
     More information: URL not provided
     
     Args:
-        feat_dir: Input FEAT directory
-        flobs_dir: Input FLOBs directory
-        runner: Command runner
+        feat_dir: Input FEAT directory.
+        flobs_dir: Input FLOBs directory.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FilmbabescriptOutputs`).
     """

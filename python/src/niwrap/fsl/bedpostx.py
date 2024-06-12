@@ -47,19 +47,19 @@ def bedpostx(
     https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide#BEDPOSTX
     
     Args:
-        subject_dir: Input subject directory which contains bvals, bvecs, data,
+        subject_dir: Input subject directory which contains bvals, bvecs, data,\
             and nodif_brain_mask files.
         num_fibres: Number of fibres per voxel (default 3).
-        ard_weight: ARD weight, more weight means less secondary fibres per
+        ard_weight: ARD weight, more weight means less secondary fibres per\
             voxel (default 1).
         burnin: Burnin period (default 1000).
         num_jumps: Number of jumps (default 1250).
         sample_every: Sample every (default 25).
-        model_type: Deconvolution model. 1: with sticks, 2: with sticks with a
+        model_type: Deconvolution model. 1: with sticks, 2: with sticks with a\
             range of diffusivities (default), 3: with zeppelins.
-        grad_nonlinear: Consider gradient nonlinearities, expects grad_dev in
+        grad_nonlinear: Consider gradient nonlinearities, expects grad_dev in\
             the subject directory.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BedpostxOutputs`).
     """

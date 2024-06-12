@@ -42,13 +42,13 @@ def fslreorient2std(
     https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#fslreorient2std
     
     Args:
-        input_image: Input image to be reoriented (NIfTI format, e.g.
-            img.nii.gz)
-        output_image: Output image with the reoriented result (NIfTI format,
-            e.g. reoriented_img.nii.gz). If not provided, transformation matrix is
+        input_image: Input image to be reoriented (NIfTI format, e.g.\
+            img.nii.gz).
+        output_image: Output image with the reoriented result (NIfTI format,\
+            e.g. reoriented_img.nii.gz). If not provided, transformation matrix is\
             output to standard output.
-        matrix_file: File to save the transformation matrix
-        runner: Command runner
+        matrix_file: File to save the transformation matrix.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Fslreorient2stdOutputs`).
     """

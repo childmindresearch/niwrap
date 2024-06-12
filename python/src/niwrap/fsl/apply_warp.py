@@ -50,23 +50,24 @@ def applywarp(
         in_file: Image to be warped.
         ref_file: Reference image.
         abswarp: Treat warp field as absolute: x' = w(x).
-        datatype: 'char' or 'short' or 'int' or 'float' or 'double'. Force
+        datatype: 'char' or 'short' or 'int' or 'float' or 'double'. Force\
             output data type [char short int float double].
         field_file: File containing warp field.
-        interp: 'nn' or 'trilinear' or 'sinc' or 'spline'. Interpolation method.
+        interp: 'nn' or 'trilinear' or 'sinc' or 'spline'. Interpolation\
+            method.
         mask_file: Filename for mask image (in reference space).
         out_file: Output filename.
-        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
             Fsl output type.
         postmat: Filename for post-transform (affine matrix).
         premat: Filename for pre-transform (affine matrix).
         relwarp: Treat warp field as relative: x' = x + w(x).
-        superlevel: 'a' or an integer. Level of intermediary supersampling, a
+        superlevel: 'a' or an integer. Level of intermediary supersampling, a\
             for 'automatic' or integer level. default = 2.
-        superlevel_2: 'a' or an integer. Level of intermediary supersampling, a
+        superlevel_2: 'a' or an integer. Level of intermediary supersampling, a\
             for 'automatic' or integer level. default = 2.
         supersample: Intermediary supersampling of output, default is off.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ApplywarpOutputs`).
     """

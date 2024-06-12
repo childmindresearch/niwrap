@@ -41,13 +41,13 @@ def pairreg(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT
     
     Args:
-        brain1: Brain image 1 (used as -ref internally)
-        brain2: Brain image 2
-        skull1: Skull image 1 (used as -ref internally)
-        skull2: Skull image 2
-        outputmatrix: Output transformation matrix file
-        extra_flirt_args: Extra arguments to pass to flirt
-        runner: Command runner
+        brain1: Brain image 1 (used as -ref internally).
+        brain2: Brain image 2.
+        skull1: Skull image 1 (used as -ref internally).
+        skull2: Skull image 2.
+        outputmatrix: Output transformation matrix file.
+        extra_flirt_args: Extra arguments to pass to flirt.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PairregOutputs`).
     """

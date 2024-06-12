@@ -110,49 +110,49 @@ def fod2fixel(
     
     Args:
         fod: the input fod image.
-        fixel_directory: the output fixel directory
-        afd: output the total Apparent Fibre Density per fixel (integral of FOD
-            lobe)
-        peak_amp: output the amplitude of the FOD at the maximal peak per fixel
-        disp: output a measure of dispersion per fixel as the ratio between FOD
-            lobe integral and maximal peak amplitude
-        fmls_integral: threshold absolute numerical integral of positive FOD
-            lobes. Any lobe for which the integral is smaller than this threshold
+        fixel_directory: the output fixel directory.
+        afd: output the total Apparent Fibre Density per fixel (integral of FOD\
+            lobe).
+        peak_amp: output the amplitude of the FOD at the maximal peak per fixel.
+        disp: output a measure of dispersion per fixel as the ratio between FOD\
+            lobe integral and maximal peak amplitude.
+        fmls_integral: threshold absolute numerical integral of positive FOD\
+            lobes. Any lobe for which the integral is smaller than this threshold\
             will be discarded. Default: 0.
-        fmls_peak_value: threshold peak amplitude of positive FOD lobes. Any
-            lobe for which the maximal peak amplitude is smaller than this threshold
-            will be discarded. Default: 0.1.
-        fmls_no_thresholds: disable all FOD lobe thresholding; every lobe where
+        fmls_peak_value: threshold peak amplitude of positive FOD lobes. Any\
+            lobe for which the maximal peak amplitude is smaller than this\
+            threshold will be discarded. Default: 0.1.
+        fmls_no_thresholds: disable all FOD lobe thresholding; every lobe where\
             the FOD is positive will be retained.
-        fmls_lobe_merge_ratio: Specify the ratio between a given FOD amplitude
-            sample between two lobes, and the smallest peak amplitude of the
-            adjacent lobes, above which those lobes will be merged. This is the
-            amplitude of the FOD at the 'bridge' point between the two lobes,
-            divided by the peak amplitude of the smaller of the two adjoining lobes.
-            A value of 1.0 will never merge two lobes into one; a value of 0.0 will
-            always merge lobes unless they are bisected by a zero-valued crossing.
-            Default: 1.
-        mask: only perform computation within the specified binary brain mask
+        fmls_lobe_merge_ratio: Specify the ratio between a given FOD amplitude\
+            sample between two lobes, and the smallest peak amplitude of the\
+            adjacent lobes, above which those lobes will be merged. This is the\
+            amplitude of the FOD at the 'bridge' point between the two lobes,\
+            divided by the peak amplitude of the smaller of the two adjoining\
+            lobes. A value of 1.0 will never merge two lobes into one; a value of\
+            0.0 will always merge lobes unless they are bisected by a zero-valued\
+            crossing. Default: 1.
+        mask: only perform computation within the specified binary brain mask\
             image.
-        maxnum: maximum number of fixels to output for any particular voxel
-            (default: no limit)
-        nii: output the directions and index file in nii format (instead of the
-            default mif)
-        dirpeak: define the fixel direction as that of the lobe's maximal peak
-            as opposed to its weighted mean direction (the default)
+        maxnum: maximum number of fixels to output for any particular voxel\
+            (default: no limit).
+        nii: output the directions and index file in nii format (instead of the\
+            default mif).
+        dirpeak: define the fixel direction as that of the lobe's maximal peak\
+            as opposed to its weighted mean direction (the default).
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Fod2fixelOutputs`).
     """

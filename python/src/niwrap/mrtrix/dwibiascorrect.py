@@ -56,36 +56,36 @@ def dwibiascorrect(
     More information: http://www.mrtrix.org/
     
     Args:
-        algorithm: Select the algorithm to be used for bias correction. Options
-            are: ants, fsl
-        input_image: The input image series to be corrected
-        output_image: The output corrected image series
-        grad: Provide the diffusion gradient table in MRtrix format
-        fslgrad_bvecs: Provide the diffusion gradient table in FSL bvecs format
-        mask_image: Manually provide a mask image for bias field estimation
-        bias_image: Output the estimated bias field
-        nocleanup: Do not delete intermediate files during script execution, and
-            do not delete scratch directory at script completion
-        scratch_dir: Manually specify the path in which to generate the scratch
-            directory
-        continue_scratch_dir: Continue the script from a previous execution;
-            must provide the scratch directory path
-        info: Display information messages
-        quiet: Do not display information messages or progress status
-        debug: Display debugging messages
-        force: Force overwrite of output files
-        nthreads: Use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading)
-        config: Temporarily set the value of an MRtrix config file entry
-        help_: Display help information and exit
-        version: Display version information and exit
-        ants_b: N4BiasFieldCorrection option -b (initial mesh resolution in mm,
-            spline order)
-        ants_c: N4BiasFieldCorrection option -c (number of iterations,
-            convergence threshold)
-        ants_s: N4BiasFieldCorrection option -s (shrink-factor applied to
-            spatial dimensions)
-        runner: Command runner
+        algorithm: Select the algorithm to be used for bias correction. Options\
+            are: ants, fsl.
+        input_image: The input image series to be corrected.
+        output_image: The output corrected image series.
+        grad: Provide the diffusion gradient table in MRtrix format.
+        fslgrad_bvecs: Provide the diffusion gradient table in FSL bvecs format.
+        mask_image: Manually provide a mask image for bias field estimation.
+        bias_image: Output the estimated bias field.
+        nocleanup: Do not delete intermediate files during script execution,\
+            and do not delete scratch directory at script completion.
+        scratch_dir: Manually specify the path in which to generate the scratch\
+            directory.
+        continue_scratch_dir: Continue the script from a previous execution;\
+            must provide the scratch directory path.
+        info: Display information messages.
+        quiet: Do not display information messages or progress status.
+        debug: Display debugging messages.
+        force: Force overwrite of output files.
+        nthreads: Use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: Temporarily set the value of an MRtrix config file entry.
+        help_: Display help information and exit.
+        version: Display version information and exit.
+        ants_b: N4BiasFieldCorrection option -b (initial mesh resolution in mm,\
+            spline order).
+        ants_c: N4BiasFieldCorrection option -c (number of iterations,\
+            convergence threshold).
+        ants_s: N4BiasFieldCorrection option -s (shrink-factor applied to\
+            spatial dimensions).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DwibiascorrectOutputs`).
     """

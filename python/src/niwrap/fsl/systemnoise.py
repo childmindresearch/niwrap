@@ -41,14 +41,14 @@ def systemnoise(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SystemNoise
     
     Args:
-        input_signal: Input signal (possum output matrix)
-        output_signal: Output signal (possum matrix form)
-        noise_standard_deviation: Set noise standard deviation (units of
-            intensity)
-        seed: Input seed value for the sequence
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help message
-        runner: Command runner
+        input_signal: Input signal (possum output matrix).
+        output_signal: Output signal (possum matrix form).
+        noise_standard_deviation: Set noise standard deviation (units of\
+            intensity).
+        seed: Input seed value for the sequence.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SystemnoiseOutputs`).
     """

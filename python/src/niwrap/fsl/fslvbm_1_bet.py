@@ -36,11 +36,11 @@ def fslvbm_1_bet(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLVBM
     
     Args:
-        default_bet: Default BET brain extraction with -f 0.4
-        increased_robustness: Increased robustness in the brain extraction when
-            a lot of neck is present
-        bet_parameters: Additional options to be passed on to BET
-        runner: Command runner
+        default_bet: Default BET brain extraction with -f 0.4.
+        increased_robustness: Increased robustness in the brain extraction when\
+            a lot of neck is present.
+        bet_parameters: Additional options to be passed on to BET.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Fslvbm1BetOutputs`).
     """

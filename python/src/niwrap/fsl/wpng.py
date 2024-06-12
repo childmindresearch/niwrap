@@ -36,20 +36,20 @@ def wpng(
     Simple PGM/PPM/PAM to PNG Converter.
     
     Args:
-        input_file: Input PNM file (binary PGM 'P5', PPM 'P6' or PAM 'P8')
-        gamma: Transfer-function exponent (``gamma'') of the image in
-            floating-point format (e.g., ``0.45455''). If image looks correct on
-            given display system, image gamma is equal to inverse of display-system
-            exponent, i.e., 1 / (LUT * CRT) (where LUT = lookup-table exponent and
-            CRT = CRT exponent; first varies, second is usually 2.2, all are
-            positive)
-        bgcolor: Desired background color for alpha-channel images, in
-            7-character hex RGB format (e.g., ``#ff7700'' for orange: same as HTML
-            colors)
-        text_flag: Prompt interactively for text info (tEXt chunks)
-        time_flag: Include a tIME chunk (last modification time)
-        interlace_flag: Write interlaced PNG image
-        runner: Command runner
+        input_file: Input PNM file (binary PGM 'P5', PPM 'P6' or PAM 'P8').
+        gamma: Transfer-function exponent (``gamma'') of the image in\
+            floating-point format (e.g., ``0.45455''). If image looks correct on\
+            given display system, image gamma is equal to inverse of display-system\
+            exponent, i.e., 1 / (LUT * CRT) (where LUT = lookup-table exponent and\
+            CRT = CRT exponent; first varies, second is usually 2.2, all are\
+            positive).
+        bgcolor: Desired background color for alpha-channel images, in\
+            7-character hex RGB format (e.g., ``#ff7700'' for orange: same as HTML\
+            colors).
+        text_flag: Prompt interactively for text info (tEXt chunks).
+        time_flag: Include a tIME chunk (last modification time).
+        interlace_flag: Write interlaced PNG image.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `WpngOutputs`).
     """

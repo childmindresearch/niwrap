@@ -45,20 +45,20 @@ def fslmerge(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        output_file: Output concatenated image file
-        input_files: Input image files to concatenate
-        merge_time: Concatenate images in time (4th dimension)
-        merge_x: Concatenate images in the x direction
-        merge_y: Concatenate images in the y direction
-        merge_z: Concatenate images in the z direction
-        auto_choose: Auto-choose: single slices -> volume, volumes -> 4D (time
-            series)
-        merge_set_tr: Concatenate images in time and set the output image tr to
-            the provided value
-        volume_number: Only use volume <N> from each input file (first volume is
-            0 not 1)
-        tr_value: TR value in seconds, used with the -tr flag
-        runner: Command runner
+        output_file: Output concatenated image file.
+        input_files: Input image files to concatenate.
+        merge_time: Concatenate images in time (4th dimension).
+        merge_x: Concatenate images in the x direction.
+        merge_y: Concatenate images in the y direction.
+        merge_z: Concatenate images in the z direction.
+        auto_choose: Auto-choose: single slices -> volume, volumes -> 4D (time\
+            series).
+        merge_set_tr: Concatenate images in time and set the output image tr to\
+            the provided value.
+        volume_number: Only use volume <N> from each input file (first volume\
+            is 0 not 1).
+        tr_value: TR value in seconds, used with the -tr flag.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslmergeOutputs`).
     """

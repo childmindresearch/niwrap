@@ -38,10 +38,10 @@ def fslanimate(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
-        input_file: Input image file (e.g., input.nii.gz)
-        output_file: Output file (e.g., output.gif)
-        tmp_dir: Temporary directory for intermediate files
-        runner: Command runner
+        input_file: Input image file (e.g., input.nii.gz).
+        output_file: Output file (e.g., output.gif).
+        tmp_dir: Temporary directory for intermediate files.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslanimateOutputs`).
     """

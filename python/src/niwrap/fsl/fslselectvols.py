@@ -41,14 +41,14 @@ def fslselectvols(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        input_file: Input file name (4D image)
-        output_file: Output file name (4D image)
-        vols_list: List of volumes to extract (comma-separated list or ascii
-            file)
-        output_mean_flag: Output mean instead of concatenation
-        output_variance_flag: Output variance instead of concatenation
-        help_flag: Display help text
-        runner: Command runner
+        input_file: Input file name (4D image).
+        output_file: Output file name (4D image).
+        vols_list: List of volumes to extract (comma-separated list or ascii\
+            file).
+        output_mean_flag: Output mean instead of concatenation.
+        output_variance_flag: Output variance instead of concatenation.
+        help_flag: Display help text.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslselectvolsOutputs`).
     """

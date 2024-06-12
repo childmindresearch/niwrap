@@ -43,17 +43,17 @@ def swap_voxelwise(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT
     
     Args:
-        vectors_file_list: Text file containing list of vectors
-        mask: Filename of brain mask or skeleton
-        scalars_file_list: Text file containing list of scalars
-        output_base_name: Output base name
-        reorder_mode: Reordering mode - choose between 'voxels' (default) or
-            'volumes'
-        init_mask: Filename of initialization mask
-        crossing_thresh: Threshold for considering a crossing fibre region -
-            default=0.1
-        verbose_flag: Switch on diagnostic messages
-        runner: Command runner
+        vectors_file_list: Text file containing list of vectors.
+        mask: Filename of brain mask or skeleton.
+        scalars_file_list: Text file containing list of scalars.
+        output_base_name: Output base name.
+        reorder_mode: Reordering mode - choose between 'voxels' (default) or\
+            'volumes'.
+        init_mask: Filename of initialization mask.
+        crossing_thresh: Threshold for considering a crossing fibre region -\
+            default=0.1.
+        verbose_flag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SwapVoxelwiseOutputs`).
     """

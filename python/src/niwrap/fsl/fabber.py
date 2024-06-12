@@ -91,63 +91,64 @@ def fabber(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fabber
     
     Args:
-        output: Directory for output files (including logfile)
-        method: Use this inference method
-        model: Use this forward model
-        data_file: Specify a single input data file
+        output: Directory for output files (including logfile).
+        method: Use this inference method.
+        model: Use this forward model.
+        data_file: Specify a single input data file.
         data_files: Specify multiple data files for n=1, 2, 3...
-        data_order: If multiple data files are specified, how they will be
-            handled
-        mask_file: Mask file. Inference will only be performed where mask value
-            > 0
-        mt_n: List of masked time points, indexed from 1. These will be ignored
-            in the parameter updates
-        supp_data: 'Supplemental' timeseries data, required for some models
-        evaluate_output: Evaluate model. Set to name of output required or blank
-            for default output. Requires model configuration options,
-            --evaluate-params and --evaluate-nt
-        evaluate_params: List of parameter values for evaluation
-        evaluate_nt: Number of time points for evaluation
-        simple_output: Instead of usual standard output, simply output series of
-            lines each giving progress as percentage
-        overwrite: If set will overwrite existing output. If not set, new output
-            directories will be created by appending '+' to the directory name
-        link_to_latest: Try to create a link to the most recent output directory
-            with the prefix _latest
-        load_models: Load models dynamically from the specified filename, which
-            should be a DLL/shared library
-        debug: Output large amounts of debug information. ONLY USE WITH VERY
-            SMALL NUMBERS OF VOXELS
-        optfile: File containing additional options, one per line, in the same
-            form as specified on the command line
-        save_model_fit: Output the model prediction as a 4d volume
-        save_residuals: Output the residuals (difference between the data and
-            the model prediction)
-        save_model_extras: Output any additional model-specific timeseries data
-        save_mvn: Output the final MVN distributions
-        save_mean: Output the parameter means
-        save_std: Output the parameter standard deviations
-        save_var: Output the parameter variances
-        save_zstat: Output the parameter Z-stats
-        save_noise_mean: Output the noise means. The noise distribution inferred
-            is the precision of a Gaussian noise source
-        save_noise_std: Output the noise standard deviations
-        save_free_energy: Output the free energy, if calculated
-        help_: Print this usage method. If given with --method or --model,
-            display relevant method/model usage information
-        list_methods: List all known inference methods
-        list_models: List all known forward models
-        list_params: List model parameters (requires model configuration options
-            to be given)
-        desc_params: Describe model parameters (name, description, units) -
-            requires model configuration options to be given. Note that not all
-            models provide parameter descriptions
-        list_outputs: List additional model outputs (requires model
-            configuration options to be given)
-        optfile_: Read options in option=value form from the specified file
-        old_optfile: Read options in command line form from the specified file
-            (DEPRECATED)
-        runner: Command runner
+        data_order: If multiple data files are specified, how they will be\
+            handled.
+        mask_file: Mask file. Inference will only be performed where mask value\
+            > 0.
+        mt_n: List of masked time points, indexed from 1. These will be ignored\
+            in the parameter updates.
+        supp_data: 'Supplemental' timeseries data, required for some models.
+        evaluate_output: Evaluate model. Set to name of output required or\
+            blank for default output. Requires model configuration options,\
+            --evaluate-params and --evaluate-nt.
+        evaluate_params: List of parameter values for evaluation.
+        evaluate_nt: Number of time points for evaluation.
+        simple_output: Instead of usual standard output, simply output series\
+            of lines each giving progress as percentage.
+        overwrite: If set will overwrite existing output. If not set, new\
+            output directories will be created by appending '+' to the directory\
+            name.
+        link_to_latest: Try to create a link to the most recent output\
+            directory with the prefix _latest.
+        load_models: Load models dynamically from the specified filename, which\
+            should be a DLL/shared library.
+        debug: Output large amounts of debug information. ONLY USE WITH VERY\
+            SMALL NUMBERS OF VOXELS.
+        optfile: File containing additional options, one per line, in the same\
+            form as specified on the command line.
+        save_model_fit: Output the model prediction as a 4d volume.
+        save_residuals: Output the residuals (difference between the data and\
+            the model prediction).
+        save_model_extras: Output any additional model-specific timeseries data.
+        save_mvn: Output the final MVN distributions.
+        save_mean: Output the parameter means.
+        save_std: Output the parameter standard deviations.
+        save_var: Output the parameter variances.
+        save_zstat: Output the parameter Z-stats.
+        save_noise_mean: Output the noise means. The noise distribution\
+            inferred is the precision of a Gaussian noise source.
+        save_noise_std: Output the noise standard deviations.
+        save_free_energy: Output the free energy, if calculated.
+        help_: Print this usage method. If given with --method or --model,\
+            display relevant method/model usage information.
+        list_methods: List all known inference methods.
+        list_models: List all known forward models.
+        list_params: List model parameters (requires model configuration\
+            options to be given).
+        desc_params: Describe model parameters (name, description, units) -\
+            requires model configuration options to be given. Note that not all\
+            models provide parameter descriptions.
+        list_outputs: List additional model outputs (requires model\
+            configuration options to be given).
+        optfile_: Read options in option=value form from the specified file.
+        old_optfile: Read options in command line form from the specified file\
+            (DEPRECATED).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FabberOutputs`).
     """

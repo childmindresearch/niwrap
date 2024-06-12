@@ -344,62 +344,62 @@ def mrinfo(
     Args:
         image: the input image(s).
         all_: print all properties, rather than the first and last 2 of each.
-        name: print the file system path of the image
-        format_: image file format
-        ndim: number of image dimensions
-        size: image size along each axis
-        spacing: voxel spacing along each image dimension
-        datatype: data type used for image data storage
-        strides: data strides i.e. order and direction of axes data layout
-        offset: image intensity offset
-        multiplier: image intensity multiplier
-        transform: the transformation from image coordinates [mm] to scanner /
-            real world coordinates [mm]
-        property_: any text properties embedded in the image header under the
-            specified key (use 'all' to list all keys found)
-        json_keyval: export header key/value entries to a JSON file
-        json_all: export all header contents to a JSON file
-        grad: Provide the diffusion-weighted gradient scheme used in the
-            acquisition in a text file. This should be supplied as a 4xN text file
-            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe
-            the direction of the applied gradient, and b gives the b-value in units
-            of s/mm^2. If a diffusion gradient scheme is present in the input image
+        name: print the file system path of the image.
+        format_: image file format.
+        ndim: number of image dimensions.
+        size: image size along each axis.
+        spacing: voxel spacing along each image dimension.
+        datatype: data type used for image data storage.
+        strides: data strides i.e. order and direction of axes data layout.
+        offset: image intensity offset.
+        multiplier: image intensity multiplier.
+        transform: the transformation from image coordinates [mm] to scanner /\
+            real world coordinates [mm].
+        property_: any text properties embedded in the image header under the\
+            specified key (use 'all' to list all keys found).
+        json_keyval: export header key/value entries to a JSON file.
+        json_all: export all header contents to a JSON file.
+        grad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in a text file. This should be supplied as a 4xN text file\
+            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\
+            the direction of the applied gradient, and b gives the b-value in units\
+            of s/mm^2. If a diffusion gradient scheme is present in the input image\
             header, the data provided with this option will be instead used.
-        fslgrad: Provide the diffusion-weighted gradient scheme used in the
-            acquisition in FSL bvecs/bvals format files. If a diffusion gradient
-            scheme is present in the input image header, the data provided with this
-            option will be instead used.
-        bvalue_scaling: enable or disable scaling of diffusion b-values by the
-            square of the corresponding DW gradient norm (see Desciption). Valid
+        fslgrad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
+        bvalue_scaling: enable or disable scaling of diffusion b-values by the\
+            square of the corresponding DW gradient norm (see Desciption). Valid\
             choices are yes/no, true/false, 0/1 (default: automatic).
-        export_grad_mrtrix: export the diffusion-weighted gradient table to file
-            in MRtrix format
-        export_grad_fsl: export the diffusion-weighted gradient table to files
-            in FSL (bvecs / bvals) format
-        dwgrad: the diffusion-weighting gradient table, as interpreted by
-            MRtrix3
-        shell_bvalues: list the average b-value of each shell
-        shell_sizes: list the number of volumes in each shell
-        shell_indices: list the image volumes attributed to each b-value shell
-        export_pe_table: export phase-encoding table to file
-        export_pe_eddy: export phase-encoding information to an EDDY-style
-            config / index file pair
-        petable: print the phase encoding table
-        nodelete: don't delete temporary images or images passed to mrinfo via
-            Unix pipes
+        export_grad_mrtrix: export the diffusion-weighted gradient table to\
+            file in MRtrix format.
+        export_grad_fsl: export the diffusion-weighted gradient table to files\
+            in FSL (bvecs / bvals) format.
+        dwgrad: the diffusion-weighting gradient table, as interpreted by\
+            MRtrix3.
+        shell_bvalues: list the average b-value of each shell.
+        shell_sizes: list the number of volumes in each shell.
+        shell_indices: list the image volumes attributed to each b-value shell.
+        export_pe_table: export phase-encoding table to file.
+        export_pe_eddy: export phase-encoding information to an EDDY-style\
+            config / index file pair.
+        petable: print the phase encoding table.
+        nodelete: don't delete temporary images or images passed to mrinfo via\
+            Unix pipes.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrinfoOutputs`).
     """

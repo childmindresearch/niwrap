@@ -41,13 +41,13 @@ def border_to_rois(
     metric columns.
     
     Args:
-        surface: the surface the borders are drawn on
-        border_file: the border file
-        metric_out: the output metric file
-        opt_border_name: create ROI for only one border: the name of the border
-        opt_inverse: use inverse selection (outside border)
-        opt_include_border: include vertices the border is closest to
-        runner: Command runner
+        surface: the surface the borders are drawn on.
+        border_file: the border file.
+        metric_out: the output metric file.
+        opt_border_name: create ROI for only one border: the name of the border.
+        opt_inverse: use inverse selection (outside border).
+        opt_include_border: include vertices the border is closest to.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BorderToRoisOutputs`).
     """

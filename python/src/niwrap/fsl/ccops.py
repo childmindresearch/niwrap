@@ -49,24 +49,24 @@ def ccops(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        basename: Output basename
-        infile: Input matrix
-        tract_dir: Tractography Results Directory
-        exclusion_mask: Exclusion mask (in tract space)
-        reorder_seedspace: Do seedspace reordering (default no)
-        reorder_tractspace: Do tractspace reordering (default no)
-        tract_reord: Propagate seed reordering onto tract space
-        connexity_constraint: Add connexity constraint - value between 0 and 1
-            (0 is no constraint). Default is 0
-        binarise_val: Binarise at (default 0 - no binarisation)
-        matrix_power: Power to raise the correlation matrix to (default 1)
-        brain_mask: Brain mask used to output the clustered ROI mask (not
-            necessary if --dir set)
-        scheme: Reordering algorithm. Can be either spectral (default), kmeans
-            or fuzzy
-        nclusters: Number of clusters to be used in kmeans or fuzzy
-        help_: Display this help message
-        runner: Command runner
+        basename: Output basename.
+        infile: Input matrix.
+        tract_dir: Tractography Results Directory.
+        exclusion_mask: Exclusion mask (in tract space).
+        reorder_seedspace: Do seedspace reordering (default no).
+        reorder_tractspace: Do tractspace reordering (default no).
+        tract_reord: Propagate seed reordering onto tract space.
+        connexity_constraint: Add connexity constraint - value between 0 and 1\
+            (0 is no constraint). Default is 0.
+        binarise_val: Binarise at (default 0 - no binarisation).
+        matrix_power: Power to raise the correlation matrix to (default 1).
+        brain_mask: Brain mask used to output the clustered ROI mask (not\
+            necessary if --dir set).
+        scheme: Reordering algorithm. Can be either spectral (default), kmeans\
+            or fuzzy.
+        nclusters: Number of clusters to be used in kmeans or fuzzy.
+        help_: Display this help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CcopsOutputs`).
     """

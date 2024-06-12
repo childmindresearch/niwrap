@@ -99,15 +99,15 @@ def metric_regression(
     from the input map.
     
     Args:
-        metric_in: the metric to regress from
-        metric_out: the output metric
-        opt_roi_roi_metric: only regress inside an roi: the area to use for
-            regression, as a metric
-        opt_column_column: select a single column to regress from: the column
-            number or name
-        remove: specify a metric to regress out
-        keep: specify a metric to include in regression, but not remove
-        runner: Command runner
+        metric_in: the metric to regress from.
+        metric_out: the output metric.
+        opt_roi_roi_metric: only regress inside an roi: the area to use for\
+            regression, as a metric.
+        opt_column_column: select a single column to regress from: the column\
+            number or name.
+        remove: specify a metric to regress out.
+        keep: specify a metric to include in regression, but not remove.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricRegressionOutputs`).
     """

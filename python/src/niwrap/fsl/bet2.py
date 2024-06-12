@@ -56,31 +56,31 @@ def bet__brain_extraction_tool_(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET
     
     Args:
-        input_fileroot: Input file root (e.g. img)
-        output_fileroot: Output file root (e.g. img_bet)
-        fractional_intensity: Fractional intensity threshold (0->1);
-            default=0.5; smaller values give larger brain outline estimates
-        vertical_gradient: Vertical gradient in fractional intensity threshold
-            (-1->1); default=0; positive values give larger brain outline at bottom,
-            smaller at top
-        center_of_gravity: The xyz coordinates of the center of gravity (voxels,
-            not mm) of initial mesh surface. Must have exactly three numerical
-            entries in the list (3-vector).
-        outline_flag: Generate brain surface outline overlaid onto original
-            image
-        mask_flag: Generate binary brain mask
-        skull_flag: Generate approximate skull image
-        no_output_flag: Don't generate segmented brain image output
-        mesh_flag: Generate brain surface as mesh in vtk format
-        head_radius: Head radius (mm not voxels); initial surface sphere is set
-            to half of this
-        smooth_factor: Smoothness factor; default=1; values smaller than 1
-            produce more detailed brain surface, values larger than one produce
-            smoother, less detailed surface
-        threshold_flag: Apply thresholding to segmented brain image and mask
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help message and exit
-        runner: Command runner
+        input_fileroot: Input file root (e.g. img).
+        output_fileroot: Output file root (e.g. img_bet).
+        fractional_intensity: Fractional intensity threshold (0->1);\
+            default=0.5; smaller values give larger brain outline estimates.
+        vertical_gradient: Vertical gradient in fractional intensity threshold\
+            (-1->1); default=0; positive values give larger brain outline at\
+            bottom, smaller at top.
+        center_of_gravity: The xyz coordinates of the center of gravity\
+            (voxels, not mm) of initial mesh surface. Must have exactly three\
+            numerical entries in the list (3-vector).
+        outline_flag: Generate brain surface outline overlaid onto original\
+            image.
+        mask_flag: Generate binary brain mask.
+        skull_flag: Generate approximate skull image.
+        no_output_flag: Don't generate segmented brain image output.
+        mesh_flag: Generate brain surface as mesh in vtk format.
+        head_radius: Head radius (mm not voxels); initial surface sphere is set\
+            to half of this.
+        smooth_factor: Smoothness factor; default=1; values smaller than 1\
+            produce more detailed brain surface, values larger than one produce\
+            smoother, less detailed surface.
+        threshold_flag: Apply thresholding to segmented brain image and mask.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message and exit.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BetBrainExtractionToolOutputs`).
     """

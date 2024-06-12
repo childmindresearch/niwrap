@@ -42,7 +42,7 @@ def smooth_estimate(
         dof: Number of degrees of freedom.
         residual_fit_file: Residual-fit image file.
         zstat_file: Zstat image file.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SmoothEstimateOutputs`).
     """

@@ -67,35 +67,35 @@ def fast(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FAST
     
     Args:
-        infile: Input image(s) for segmentation
-        class_number: Number of tissue-type classes; default=3
-        iter_number: Number of main-loop iterations during bias-field removal;
-            default=4
-        lowpass_extent: Bias field smoothing extent (FWHM) in mm; default=20
-        image_type: Type of image 1=T1, 2=T2, 3=PD; default=T1
-        init_seg_smoothness: Initial segmentation spatial smoothness (during
-            bias field estimation); default=0.02
-        segments_flag: Outputs a separate binary image for each tissue type
-        init_priors: Initialise using priors; you must supply a FLIRT transform
-        alt_priors: Alternative prior images (must specify three images)
-        nopve_flag: Turn off PVE (partial volume estimation)
-        bias_field_flag: Output estimated bias field
-        bias_corrected_flag: Output bias-corrected image
-        no_bias_flag: Do not remove bias field
-        channels_number: Number of input images (channels); default 1
-        output_basename: Output basename
-        use_priors_flag: Use priors throughout; you must also set the -a option
-        seg_init_iters: Number of segmentation-initialisation iterations;
-            default=15
-        mixel_smoothness: Spatial smoothness for mixeltype; default=0.3
-        fixed_iters: Number of main-loop iterations after bias-field removal;
-            default=4
-        seg_smoothness: Segmentation spatial smoothness; default=0.1
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help message
-        manual_seg: Filename containing intensities
-        prob_maps_flag: Outputs individual probability maps
-        runner: Command runner
+        infile: Input image(s) for segmentation.
+        class_number: Number of tissue-type classes; default=3.
+        iter_number: Number of main-loop iterations during bias-field removal;\
+            default=4.
+        lowpass_extent: Bias field smoothing extent (FWHM) in mm; default=20.
+        image_type: Type of image 1=T1, 2=T2, 3=PD; default=T1.
+        init_seg_smoothness: Initial segmentation spatial smoothness (during\
+            bias field estimation); default=0.02.
+        segments_flag: Outputs a separate binary image for each tissue type.
+        init_priors: Initialise using priors; you must supply a FLIRT transform.
+        alt_priors: Alternative prior images (must specify three images).
+        nopve_flag: Turn off PVE (partial volume estimation).
+        bias_field_flag: Output estimated bias field.
+        bias_corrected_flag: Output bias-corrected image.
+        no_bias_flag: Do not remove bias field.
+        channels_number: Number of input images (channels); default 1.
+        output_basename: Output basename.
+        use_priors_flag: Use priors throughout; you must also set the -a option.
+        seg_init_iters: Number of segmentation-initialisation iterations;\
+            default=15.
+        mixel_smoothness: Spatial smoothness for mixeltype; default=0.3.
+        fixed_iters: Number of main-loop iterations after bias-field removal;\
+            default=4.
+        seg_smoothness: Segmentation spatial smoothness; default=0.1.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+        manual_seg: Filename containing intensities.
+        prob_maps_flag: Outputs individual probability maps.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FastOutputs`).
     """

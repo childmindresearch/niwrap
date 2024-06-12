@@ -37,9 +37,9 @@ def old_betall(
     Automated brain extraction tool for FSL involving both T1 and T2 images.
     
     Args:
-        t1_filerout: Input T1 image file root (e.g. img_t1.nii.gz)
-        t2_filerout: Input T2 image file root (e.g. img_t2.nii.gz)
-        runner: Command runner
+        t1_filerout: Input T1 image file root (e.g. img_t1.nii.gz).
+        t2_filerout: Input T2 image file root (e.g. img_t2.nii.gz).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `OldBetallOutputs`).
     """

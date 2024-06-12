@@ -507,14 +507,15 @@ def cifti_convert(
     RADIAN.
     
     Args:
-        to_gifti_ext: convert to GIFTI external binary
-        from_gifti_ext: convert a GIFTI made with this command back into a CIFTI
-        to_nifti: convert to NIFTI1
-        from_nifti: convert a NIFTI (1 or 2) file made with this command back
-            into CIFTI
-        to_text: convert to a plain text file
-        from_text: convert from plain text to cifti
-        runner: Command runner
+        to_gifti_ext: convert to GIFTI external binary.
+        from_gifti_ext: convert a GIFTI made with this command back into a\
+            CIFTI.
+        to_nifti: convert to NIFTI1.
+        from_nifti: convert a NIFTI (1 or 2) file made with this command back\
+            into CIFTI.
+        to_text: convert to a plain text file.
+        from_text: convert from plain text to cifti.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiConvertOutputs`).
     """

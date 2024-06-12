@@ -43,20 +43,20 @@ def std2imgcoord(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        filename_coordinates: Path to the filename containing coordinates or '-'
-            to read from standard input
-        input_image: Filename of input image
-        standard_image: Filename of standard image
-        affine_transform: Filename of affine transform (e.g.
-            example_func2standard.mat)
-        warp_field: Filename of warpfield (e.g. highres2standard_warp.nii.gz)
-        prewarp_affine_transform: Filename of pre-warp affine transform (e.g.
+        filename_coordinates: Path to the filename containing coordinates or\
+            '-' to read from standard input.
+        input_image: Filename of input image.
+        standard_image: Filename of standard image.
+        affine_transform: Filename of affine transform (e.g.\
+            example_func2standard.mat).
+        warp_field: Filename of warpfield (e.g. highres2standard_warp.nii.gz).
+        prewarp_affine_transform: Filename of pre-warp affine transform (e.g.\
             example_func2highres.mat). Defaults to identity matrix.
-        output_mm: Outputs coordinates in mm (default)
-        output_vox: Outputs coordinates in voxels
-        verbose: Verbose output
-        more_verbose: More verbose output
-        runner: Command runner
+        output_mm: Outputs coordinates in mm (default).
+        output_vox: Outputs coordinates in voxels.
+        verbose: Verbose output.
+        more_verbose: More verbose output.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Std2imgcoordOutputs`).
     """

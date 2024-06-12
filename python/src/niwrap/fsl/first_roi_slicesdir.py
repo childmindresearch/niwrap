@@ -37,11 +37,11 @@ def first_roi_slicesdir(
     A utility for generating slice directories for FIRST-ROI.
     
     Args:
-        input_t1_images: Input T1-weighted images of the brain
-            (pattern-matched); for example, *_t1.nii.gz
-        input_label_images: Input label images corresponding to the T1 images
-            (pattern-matched); for example, *_L_Hipp_first.nii.gz
-        runner: Command runner
+        input_t1_images: Input T1-weighted images of the brain\
+            (pattern-matched); for example, *_t1.nii.gz.
+        input_label_images: Input label images corresponding to the T1 images\
+            (pattern-matched); for example, *_L_Hipp_first.nii.gz.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FirstRoiSlicesdirOutputs`).
     """

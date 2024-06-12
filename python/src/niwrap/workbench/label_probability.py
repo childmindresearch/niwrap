@@ -39,12 +39,13 @@ def label_probability(
     divided by the number of input maps.
     
     Args:
-        label_maps: label file containing individual label maps from many
-            subjects
-        probability_metric_out: the relative frequencies of each label at each
-            vertex
-        opt_exclude_unlabeled: don't make a probability map of the unlabeled key
-        runner: Command runner
+        label_maps: label file containing individual label maps from many\
+            subjects.
+        probability_metric_out: the relative frequencies of each label at each\
+            vertex.
+        opt_exclude_unlabeled: don't make a probability map of the unlabeled\
+            key.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `LabelProbabilityOutputs`).
     """

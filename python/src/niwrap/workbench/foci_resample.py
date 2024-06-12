@@ -115,16 +115,16 @@ def foci_resample(
     -restore-xyz.
     
     Args:
-        foci_in: the input foci file
-        foci_out: the output foci file
-        left_surfaces: the left surfaces for resampling
-        right_surfaces: the right surfaces for resampling
-        cerebellum_surfaces: the cerebellum surfaces for resampling
-        opt_discard_distance_from_surface: ignore the distance the foci are
-            above or below the current surface
-        opt_restore_xyz: put the original xyz coordinates into the foci, rather
-            than the coordinates obtained from unprojection
-        runner: Command runner
+        foci_in: the input foci file.
+        foci_out: the output foci file.
+        left_surfaces: the left surfaces for resampling.
+        right_surfaces: the right surfaces for resampling.
+        cerebellum_surfaces: the cerebellum surfaces for resampling.
+        opt_discard_distance_from_surface: ignore the distance the foci are\
+            above or below the current surface.
+        opt_restore_xyz: put the original xyz coordinates into the foci, rather\
+            than the coordinates obtained from unprojection.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FociResampleOutputs`).
     """

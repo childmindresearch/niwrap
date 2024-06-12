@@ -51,21 +51,21 @@ def fdr(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
-        infile: Input p-value image file
-        maskfile: Mask image file
-        qvalue: Q-value (FDR) threshold
-        adjustedimage: Output image with FDR-adjusted p-values
-        othresh_flag: Output a thresholded p-value image
-        order_flag: Output image of order values
-        oneminusp_flag: Treat input as 1-p (also save output like this)
-        positive_corr_flag: Use FDR correction factor that assumes positive
-            correlation
-        independent_flag: Use FDR correction factor that assumes independence
-        conservative_flag: Use conservative FDR correction factor (allows for
-            any correlation)
-        debug_flag: Switch on debugging output
-        verbose_flag: Switch on diagnostic messages
-        runner: Command runner
+        infile: Input p-value image file.
+        maskfile: Mask image file.
+        qvalue: Q-value (FDR) threshold.
+        adjustedimage: Output image with FDR-adjusted p-values.
+        othresh_flag: Output a thresholded p-value image.
+        order_flag: Output image of order values.
+        oneminusp_flag: Treat input as 1-p (also save output like this).
+        positive_corr_flag: Use FDR correction factor that assumes positive\
+            correlation.
+        independent_flag: Use FDR correction factor that assumes independence.
+        conservative_flag: Use conservative FDR correction factor (allows for\
+            any correlation).
+        debug_flag: Switch on debugging output.
+        verbose_flag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FdrOutputs`).
     """

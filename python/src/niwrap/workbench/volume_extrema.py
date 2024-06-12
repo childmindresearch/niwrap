@@ -115,23 +115,23 @@ def volume_extrema(
     before finding the extrema.
     
     Args:
-        volume_in: volume file to find the extrema of
-        distance: the minimum distance between identified extrema of the same
-            type
-        volume_out: the output extrema volume
-        presmooth: smooth the volume before finding extrema
-        opt_roi_roi_volume: ignore values outside the selected area: the area to
-            find extrema in
-        threshold: ignore small extrema
-        opt_sum_subvols: output the sum of the extrema subvolumes instead of
-            each subvolume separately
-        opt_consolidate_mode: use consolidation of local minima instead of a
-            large neighborhood
-        opt_only_maxima: only find the maxima
-        opt_only_minima: only find the minima
-        opt_subvolume_subvolume: select a single subvolume to find extrema in:
-            the subvolume number or name
-        runner: Command runner
+        volume_in: volume file to find the extrema of.
+        distance: the minimum distance between identified extrema of the same\
+            type.
+        volume_out: the output extrema volume.
+        presmooth: smooth the volume before finding extrema.
+        opt_roi_roi_volume: ignore values outside the selected area: the area\
+            to find extrema in.
+        threshold: ignore small extrema.
+        opt_sum_subvols: output the sum of the extrema subvolumes instead of\
+            each subvolume separately.
+        opt_consolidate_mode: use consolidation of local minima instead of a\
+            large neighborhood.
+        opt_only_maxima: only find the maxima.
+        opt_only_minima: only find the minima.
+        opt_subvolume_subvolume: select a single subvolume to find extrema in:\
+            the subvolume number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeExtremaOutputs`).
     """

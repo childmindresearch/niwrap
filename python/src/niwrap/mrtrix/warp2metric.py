@@ -131,28 +131,28 @@ def warp2metric(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/warp2metric.html
     
     Args:
-        in_: the input deformation field
-        fc: use an input template fixel image to define fibre orientations and
-            output a fixel image describing the change in fibre cross-section (FC)
-            in the perpendicular plane to the fixel orientation. e.g. warp2metric
-            warp.mif -fc fixel_template_directory output_fixel_directory fc.mif
-        jmat: output a Jacobian matrix image stored in column-major order along
-            the 4th dimension.Note the output jacobian describes the warp gradient
-            w.r.t the scanner space coordinate system
-        jdet: output the Jacobian determinant instead of the full matrix
+        in_: the input deformation field.
+        fc: use an input template fixel image to define fibre orientations and\
+            output a fixel image describing the change in fibre cross-section (FC)\
+            in the perpendicular plane to the fixel orientation. e.g. warp2metric\
+            warp.mif -fc fixel_template_directory output_fixel_directory fc.mif.
+        jmat: output a Jacobian matrix image stored in column-major order along\
+            the 4th dimension.Note the output jacobian describes the warp gradient\
+            w.r.t the scanner space coordinate system.
+        jdet: output the Jacobian determinant instead of the full matrix.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Warp2metricOutputs`).
     """

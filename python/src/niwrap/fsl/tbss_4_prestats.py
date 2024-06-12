@@ -31,9 +31,9 @@ def tbss_4_prestats(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide
     
     Args:
-        threshold: Thresholding value for the Mean FA Skeleton; recommended
-            value is 0.2
-        runner: Command runner
+        threshold: Thresholding value for the Mean FA Skeleton; recommended\
+            value is 0.2.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Tbss4PrestatsOutputs`).
     """

@@ -44,25 +44,25 @@ def xtract_stats(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/
     
     Args:
-        folder_basename: Path to microstructure folder and basename of data
-            (e.g. /home/DTI/dti_)
-        xtract_dir: Path to XTRACT output folder
-        xtract2diff: EITHER XTRACT results to diffusion space transform OR
-            'native' if tracts are already in diffusion space
-        reference_image: If not 'native', provide reference image in diffusion
-            space (e.g. /home/DTI/dti_FA)
-        output_file: Output filepath (Default <XTRACT_dir>/stats.csv)
-        structures_file: Structures file (as in XTRACT) (Default is all tracts
-            under <XTRACT_dir>)
-        threshold: Threshold applied to tract probability map (default = 0.001 =
-            0.1%)
-        measurements: Comma separated list of features to extract (Default =
-            vol,prob,length,FA,MD - assumes DTI folder has been provided). vol =
-            tract volume, prob = tract probability, length = tract length.
-            Additional metrics must follow file naming conventions. e.g. for dti_L1
-            use 'L1'
-        keep_temp_files: Keep temporary files
-        runner: Command runner
+        folder_basename: Path to microstructure folder and basename of data\
+            (e.g. /home/DTI/dti_).
+        xtract_dir: Path to XTRACT output folder.
+        xtract2diff: EITHER XTRACT results to diffusion space transform OR\
+            'native' if tracts are already in diffusion space.
+        reference_image: If not 'native', provide reference image in diffusion\
+            space (e.g. /home/DTI/dti_FA).
+        output_file: Output filepath (Default <XTRACT_dir>/stats.csv).
+        structures_file: Structures file (as in XTRACT) (Default is all tracts\
+            under <XTRACT_dir>).
+        threshold: Threshold applied to tract probability map (default = 0.001\
+            = 0.1%).
+        measurements: Comma separated list of features to extract (Default =\
+            vol,prob,length,FA,MD - assumes DTI folder has been provided). vol =\
+            tract volume, prob = tract probability, length = tract length.\
+            Additional metrics must follow file naming conventions. e.g. for dti_L1\
+            use 'L1'.
+        keep_temp_files: Keep temporary files.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `XtractStatsOutputs`).
     """

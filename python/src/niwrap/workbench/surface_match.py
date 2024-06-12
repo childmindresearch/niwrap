@@ -36,10 +36,10 @@ def surface_match(
     (bounding box) match that of the Match Surface File.
     
     Args:
-        match_surface_file: Match (Reference) Surface
-        input_surface_file: File containing surface that will be transformed
-        output_surface_name: Surface File after transformation
-        runner: Command runner
+        match_surface_file: Match (Reference) Surface.
+        input_surface_file: File containing surface that will be transformed.
+        output_surface_name: Surface File after transformation.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceMatchOutputs`).
     """

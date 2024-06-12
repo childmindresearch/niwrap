@@ -66,11 +66,11 @@ def surface_apply_affine(
     from the 4dfp suite.
     
     Args:
-        in_surf: the surface to transform
-        affine: the affine file
-        out_surf: the output transformed surface
-        flirt: MUST be used if affine is a flirt affine
-        runner: Command runner
+        in_surf: the surface to transform.
+        affine: the affine file.
+        out_surf: the output transformed surface.
+        flirt: MUST be used if affine is a flirt affine.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceApplyAffineOutputs`).
     """

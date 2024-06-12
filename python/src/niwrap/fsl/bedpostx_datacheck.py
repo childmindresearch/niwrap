@@ -32,8 +32,8 @@ def bedpostx_datacheck(
     Check the data directory for BEDPOSTX compatibility.
     
     Args:
-        data_dir: Data directory to check for BEDPOSTX compatibility
-        runner: Command runner
+        data_dir: Data directory to check for BEDPOSTX compatibility.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BedpostxDatacheckOutputs`).
     """

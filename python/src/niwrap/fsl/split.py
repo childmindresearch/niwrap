@@ -38,9 +38,9 @@ def split(
     
     Args:
         in_file: Input image to split along dimension (default: time).
-        out_base_name: Output prefix
+        out_base_name: Output prefix.
         dimension: 't' or 'x' or 'y' or 'z'. Dimension to mean across.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SplitOutputs`).
     """

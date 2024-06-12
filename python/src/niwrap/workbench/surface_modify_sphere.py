@@ -45,11 +45,11 @@ def surface_modify_sphere(
     and -recenter is not used, a warning is printed.
     
     Args:
-        sphere_in: the sphere to modify
-        radius: the radius the output sphere should have
-        sphere_out: the output sphere
-        opt_recenter: recenter the sphere by means of the bounding box
-        runner: Command runner
+        sphere_in: the sphere to modify.
+        radius: the radius the output sphere should have.
+        sphere_out: the output sphere.
+        opt_recenter: recenter the sphere by means of the bounding box.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceModifySphereOutputs`).
     """

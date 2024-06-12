@@ -68,15 +68,15 @@ def cifti_create_parcellated_from_template(
     the strings 'ROW' or 'COLUMN'.
     
     Args:
-        cifti_template: a cifti file with the template parcel mapping along
-            column
-        modify_direction: which dimension of the output file should match the
-            template (integer, 'ROW', or 'COLUMN')
-        cifti_out: the output cifti file
-        opt_fill_value_value: specify value to be used in parcels that don't
-            match: value to use (default 0)
-        cifti: specify an input cifti file
-        runner: Command runner
+        cifti_template: a cifti file with the template parcel mapping along\
+            column.
+        modify_direction: which dimension of the output file should match the\
+            template (integer, 'ROW', or 'COLUMN').
+        cifti_out: the output cifti file.
+        opt_fill_value_value: specify value to be used in parcels that don't\
+            match: value to use (default 0).
+        cifti: specify an input cifti file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiCreateParcellatedFromTemplateOutputs`).
     """

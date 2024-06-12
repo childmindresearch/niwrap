@@ -51,24 +51,24 @@ def volume_find_clusters(
     complicated thresholding, see -volume-math.
     
     Args:
-        volume_in: the input volume
-        value_threshold: threshold for data values
-        minimum_volume: threshold for cluster volume, in mm^3
-        volume_out: the output volume
-        opt_less_than: find values less than <value-threshold>, rather than
-            greater
-        opt_roi_roi_volume: select a region of interest: the roi, as a volume
-            file
-        opt_subvolume_subvol: select a single subvolume: the subvolume number or
-            name
-        opt_size_ratio_ratio: ignore clusters smaller than a given fraction of
-            the largest cluster in map: fraction of the largest cluster's volume
-        opt_distance_distance: ignore clusters further than a given distance
-            from the largest cluster: how far from the largest cluster a cluster can
-            be, edge to edge, in mm
-        opt_start_startval: start labeling clusters from a value other than 1:
-            the value to give the first cluster found
-        runner: Command runner
+        volume_in: the input volume.
+        value_threshold: threshold for data values.
+        minimum_volume: threshold for cluster volume, in mm^3.
+        volume_out: the output volume.
+        opt_less_than: find values less than <value-threshold>, rather than\
+            greater.
+        opt_roi_roi_volume: select a region of interest: the roi, as a volume\
+            file.
+        opt_subvolume_subvol: select a single subvolume: the subvolume number\
+            or name.
+        opt_size_ratio_ratio: ignore clusters smaller than a given fraction of\
+            the largest cluster in map: fraction of the largest cluster's volume.
+        opt_distance_distance: ignore clusters further than a given distance\
+            from the largest cluster: how far from the largest cluster a cluster\
+            can be, edge to edge, in mm.
+        opt_start_startval: start labeling clusters from a value other than 1:\
+            the value to give the first cluster found.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeFindClustersOutputs`).
     """

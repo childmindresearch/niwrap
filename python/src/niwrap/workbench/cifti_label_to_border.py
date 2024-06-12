@@ -96,12 +96,12 @@ def cifti_label_to_border(
     map.
     
     Args:
-        cifti_in: the input cifti dlabel file
-        opt_placement_fraction: set how far along the edge border points are
-            drawn: fraction along edge from inside vertex (default 0.33)
-        opt_column_column: select a single column: the column number or name
-        border: specify output file for a surface structure
-        runner: Command runner
+        cifti_in: the input cifti dlabel file.
+        opt_placement_fraction: set how far along the edge border points are\
+            drawn: fraction along edge from inside vertex (default 0.33).
+        opt_column_column: select a single column: the column number or name.
+        border: specify output file for a surface structure.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiLabelToBorderOutputs`).
     """

@@ -1350,87 +1350,88 @@ def mrcalc(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/mrcalc.html
     
     Args:
-        operand: an input image, intensity value, or the special keywords 'rand'
-            (random number between 0 and 1) or 'randn' (random number from unit
-            std.dev. normal distribution) or the mathematical constants 'e' and
-            'pi'.
-        abs_: |%1| : return absolute value (magnitude) of real or complex number
-        neg: -%1 : negative value
-        add: (%1 + %2) : add values
-        subtract: (%1 - %2) : subtract nth operand from (n-1)th
-        multiply: (%1 * %2) : multiply values
-        divide: (%1 / %2) : divide (n-1)th operand by nth
-        min_: min (%1, %2) : smallest of last two operands
-        max_: max (%1, %2) : greatest of last two operands
-        lt: (%1 < %2) : less-than operator (true=1, false=0)
-        gt: (%1 > %2) : greater-than operator (true=1, false=0)
-        le: (%1 <= %2) : less-than-or-equal-to operator (true=1, false=0)
-        ge: (%1 >= %2) : greater-than-or-equal-to operator (true=1, false=0)
-        eq: (%1 == %2) : equal-to operator (true=1, false=0)
-        neq: (%1 != %2) : not-equal-to operator (true=1, false=0)
-        if_: (%1 ? %2 : %3) : if first operand is true (non-zero), return second
-            operand, otherwise return third operand
-        replace: (%1, %2 -> %3) : Wherever first operand is equal to the second
-            operand, replace with third operand
-        sqrt: sqrt (%1) : square root
-        pow_: %1^%2 : raise (n-1)th operand to nth power
-        round_: round (%1) : round to nearest integer
-        ceil: ceil (%1) : round up to nearest integer
-        floor: floor (%1) : round down to nearest integer
-        not_: !%1 : NOT operator: true (1) if operand is false (i.e. zero)
-        and_: (%1 && %2) : AND operator: true (1) if both operands are true
-            (i.e. non-zero)
-        or_: (%1 || %2) : OR operator: true (1) if either operand is true (i.e.
-            non-zero)
-        xor: (%1 ^^ %2) : XOR operator: true (1) if only one of the operands is
-            true (i.e. non-zero)
-        isnan: isnan (%1) : true (1) if operand is not-a-number (NaN)
-        isinf: isinf (%1) : true (1) if operand is infinite (Inf)
-        finite: finite (%1) : true (1) if operand is finite (i.e. not NaN or
-            Inf)
-        complex_: (%1 + %2 i) : create complex number using the last two
-            operands as real,imaginary components
-        polar: (%1 /_ %2) : create complex number using the last two operands as
-            magnitude,phase components (phase in radians)
-        real: real (%1) : real part of complex number
-        imag: imag (%1) : imaginary part of complex number
-        phase: phase (%1) : phase of complex number (use -abs for magnitude)
-        conj: conj (%1) : complex conjugate
-        proj: proj (%1) : projection onto the Riemann sphere
-        exp: exp (%1) : exponential function
-        log: log (%1) : natural logarithm
-        log10: log10 (%1) : common logarithm
-        cos: cos (%1) : cosine
-        sin: sin (%1) : sine
-        tan: tan (%1) : tangent
-        acos: acos (%1) : inverse cosine
-        asin: asin (%1) : inverse sine
-        atan: atan (%1) : inverse tangent
-        cosh: cosh (%1) : hyperbolic cosine
-        sinh: sinh (%1) : hyperbolic sine
-        tanh: tanh (%1) : hyperbolic tangent
-        acosh: acosh (%1) : inverse hyperbolic cosine
-        asinh: asinh (%1) : inverse hyperbolic sine
-        atanh: atanh (%1) : inverse hyperbolic tangent
-        datatype: specify output image data type. Valid choices are: float32,
-            float32le, float32be, float64, float64le, float64be, int64, uint64,
-            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,
-            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,
-            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,
+        operand: an input image, intensity value, or the special keywords\
+            'rand' (random number between 0 and 1) or 'randn' (random number from\
+            unit std.dev. normal distribution) or the mathematical constants 'e'\
+            and 'pi'.
+        abs_: |%1| : return absolute value (magnitude) of real or complex\
+            number.
+        neg: -%1 : negative value.
+        add: (%1 + %2) : add values.
+        subtract: (%1 - %2) : subtract nth operand from (n-1)th.
+        multiply: (%1 * %2) : multiply values.
+        divide: (%1 / %2) : divide (n-1)th operand by nth.
+        min_: min (%1, %2) : smallest of last two operands.
+        max_: max (%1, %2) : greatest of last two operands.
+        lt: (%1 < %2) : less-than operator (true=1, false=0).
+        gt: (%1 > %2) : greater-than operator (true=1, false=0).
+        le: (%1 <= %2) : less-than-or-equal-to operator (true=1, false=0).
+        ge: (%1 >= %2) : greater-than-or-equal-to operator (true=1, false=0).
+        eq: (%1 == %2) : equal-to operator (true=1, false=0).
+        neq: (%1 != %2) : not-equal-to operator (true=1, false=0).
+        if_: (%1 ? %2 : %3) : if first operand is true (non-zero), return\
+            second operand, otherwise return third operand.
+        replace: (%1, %2 -> %3) : Wherever first operand is equal to the second\
+            operand, replace with third operand.
+        sqrt: sqrt (%1) : square root.
+        pow_: %1^%2 : raise (n-1)th operand to nth power.
+        round_: round (%1) : round to nearest integer.
+        ceil: ceil (%1) : round up to nearest integer.
+        floor: floor (%1) : round down to nearest integer.
+        not_: !%1 : NOT operator: true (1) if operand is false (i.e. zero).
+        and_: (%1 && %2) : AND operator: true (1) if both operands are true\
+            (i.e. non-zero).
+        or_: (%1 || %2) : OR operator: true (1) if either operand is true (i.e.\
+            non-zero).
+        xor: (%1 ^^ %2) : XOR operator: true (1) if only one of the operands is\
+            true (i.e. non-zero).
+        isnan: isnan (%1) : true (1) if operand is not-a-number (NaN).
+        isinf: isinf (%1) : true (1) if operand is infinite (Inf).
+        finite: finite (%1) : true (1) if operand is finite (i.e. not NaN or\
+            Inf).
+        complex_: (%1 + %2 i) : create complex number using the last two\
+            operands as real,imaginary components.
+        polar: (%1 /_ %2) : create complex number using the last two operands\
+            as magnitude,phase components (phase in radians).
+        real: real (%1) : real part of complex number.
+        imag: imag (%1) : imaginary part of complex number.
+        phase: phase (%1) : phase of complex number (use -abs for magnitude).
+        conj: conj (%1) : complex conjugate.
+        proj: proj (%1) : projection onto the Riemann sphere.
+        exp: exp (%1) : exponential function.
+        log: log (%1) : natural logarithm.
+        log10: log10 (%1) : common logarithm.
+        cos: cos (%1) : cosine.
+        sin: sin (%1) : sine.
+        tan: tan (%1) : tangent.
+        acos: acos (%1) : inverse cosine.
+        asin: asin (%1) : inverse sine.
+        atan: atan (%1) : inverse tangent.
+        cosh: cosh (%1) : hyperbolic cosine.
+        sinh: sinh (%1) : hyperbolic sine.
+        tanh: tanh (%1) : hyperbolic tangent.
+        acosh: acosh (%1) : inverse hyperbolic cosine.
+        asinh: asinh (%1) : inverse hyperbolic sine.
+        atanh: atanh (%1) : inverse hyperbolic tangent.
+        datatype: specify output image data type. Valid choices are: float32,\
+            float32le, float32be, float64, float64le, float64be, int64, uint64,\
+            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\
+            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\
+            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\
             int8, uint8, bit.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrcalcOutputs`).
     """

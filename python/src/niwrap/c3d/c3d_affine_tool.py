@@ -54,9 +54,10 @@ def c3d_affine_tool(
     
     Args:
         transform_file: file or string representing the transform.
-        reference_file: Set reference (fixed) image - only for -fsl2ras and
+        reference_file: Set reference (fixed) image - only for -fsl2ras and\
             -ras2fsl.
-        source_file: Set source (moving) image - only for -fsl2ras and -ras2fsl.
+        source_file: Set source (moving) image - only for -fsl2ras and\
+            -ras2fsl.
         fsl2ras: Convert FSL to RAS.
         ras2fsl: Convert RAS to FSL.
         determinant: Print the determinant.
@@ -71,7 +72,7 @@ def c3d_affine_tool(
         out_irtk_transform: Export IRTK .dof format transform.
         info: Print matrix.
         info_full: Print matrix and more detail about the transform.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `C3dAffineToolOutputs`).
     """

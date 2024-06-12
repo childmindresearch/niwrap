@@ -44,19 +44,19 @@ def tsplot(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/tsplot
     
     Args:
-        input_directory: Input FEAT directory (e.g. feat_directory.feat)
-        main_filtered_data: Input main filtered data, in case it's not
-            <feat_directory.feat>/filtered_func_data
-        coordinates: Use X, Y, Z instead of max Z stat position
-        coordinates_output: Use X,Y,Z to output time series only - no stats or
-            modelling
-        mask: Use mask image instead of thresholded activation images
-        output_directory: Change output directory from default of input FEAT
-            directory
-        no_weight_flag: Don't weight cluster averaging with Z stats
-        prewhiten_flag: Prewhiten data and model timeseries before plotting
-        no_raw_flag: Don't keep raw data text files
-        runner: Command runner
+        input_directory: Input FEAT directory (e.g. feat_directory.feat).
+        main_filtered_data: Input main filtered data, in case it's not\
+            <feat_directory.feat>/filtered_func_data.
+        coordinates: Use X, Y, Z instead of max Z stat position.
+        coordinates_output: Use X,Y,Z to output time series only - no stats or\
+            modelling.
+        mask: Use mask image instead of thresholded activation images.
+        output_directory: Change output directory from default of input FEAT\
+            directory.
+        no_weight_flag: Don't weight cluster averaging with Z stats.
+        prewhiten_flag: Prewhiten data and model timeseries before plotting.
+        no_raw_flag: Don't keep raw data text files.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TsplotOutputs`).
     """

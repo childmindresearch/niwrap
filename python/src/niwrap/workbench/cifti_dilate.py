@@ -145,23 +145,23 @@ def cifti_dilate(
     If it is not specified, only values equal to zero are bad.
     
     Args:
-        cifti_in: the input cifti file
-        direction: which dimension to dilate along, ROW or COLUMN
-        surface_distance: the distance to dilate on surfaces, in mm
-        volume_distance: the distance to dilate in the volume, in mm
-        cifti_out: the output cifti file
-        left_surface: specify the left surface to use
-        right_surface: specify the right surface to use
-        cerebellum_surface: specify the cerebellum surface to use
-        opt_bad_brainordinate_roi_roi_cifti: specify an roi of brainordinates to
-            overwrite, rather than zeros: cifti dscalar or dtseries file, positive
-            values denote brainordinates to have their values replaced
-        opt_nearest: use nearest good value instead of a weighted average
-        opt_merged_volume: treat volume components as if they were a single
-            component
-        opt_legacy_mode: use the math from v1.3.2 and earlier for weighted
-            dilation
-        runner: Command runner
+        cifti_in: the input cifti file.
+        direction: which dimension to dilate along, ROW or COLUMN.
+        surface_distance: the distance to dilate on surfaces, in mm.
+        volume_distance: the distance to dilate in the volume, in mm.
+        cifti_out: the output cifti file.
+        left_surface: specify the left surface to use.
+        right_surface: specify the right surface to use.
+        cerebellum_surface: specify the cerebellum surface to use.
+        opt_bad_brainordinate_roi_roi_cifti: specify an roi of brainordinates\
+            to overwrite, rather than zeros: cifti dscalar or dtseries file,\
+            positive values denote brainordinates to have their values replaced.
+        opt_nearest: use nearest good value instead of a weighted average.
+        opt_merged_volume: treat volume components as if they were a single\
+            component.
+        opt_legacy_mode: use the math from v1.3.2 and earlier for weighted\
+            dilation.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiDilateOutputs`).
     """

@@ -45,20 +45,20 @@ def slicetimer(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Slicetimer
     
     Args:
-        infile: Filename of input timeseries
-        outfile: Filename of output timeseries
-        verbose_flag: Switch on diagnostic messages
-        down_flag: Reverse slice indexing (default is: slices were acquired
-            bottom-up)
-        tr_value: Specify TR of data - default is 3s
-        direction: Direction of slice acquisition (x=1,y=2,z=3) - default is z
-        odd_flag: Use interleaved acquisition
-        tcustom_file: Filename of single-column slice timings, in fractions of
-            TR, +ve values shift slices forward in time
-        tglobal_value: Global shift in fraction of TR, (default is 0)
-        ocustom_file: Filename of single-column custom interleave order file
-            (first slice is referred to as 1 not 0)
-        runner: Command runner
+        infile: Filename of input timeseries.
+        outfile: Filename of output timeseries.
+        verbose_flag: Switch on diagnostic messages.
+        down_flag: Reverse slice indexing (default is: slices were acquired\
+            bottom-up).
+        tr_value: Specify TR of data - default is 3s.
+        direction: Direction of slice acquisition (x=1,y=2,z=3) - default is z.
+        odd_flag: Use interleaved acquisition.
+        tcustom_file: Filename of single-column slice timings, in fractions of\
+            TR, +ve values shift slices forward in time.
+        tglobal_value: Global shift in fraction of TR, (default is 0).
+        ocustom_file: Filename of single-column custom interleave order file\
+            (first slice is referred to as 1 not 0).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SlicetimerOutputs`).
     """

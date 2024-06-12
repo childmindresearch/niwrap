@@ -1647,33 +1647,33 @@ def mrview(
     
     Args:
         image: An image to be loaded.
-        mode: Switch to view mode specified by the integer index, as per the
+        mode: Switch to view mode specified by the integer index, as per the\
             view menu.
         load: Load image specified and make it current.
-        reset: Reset the view according to current image. This resets the FOV,
+        reset: Reset the view according to current image. This resets the FOV,\
             projection and focus.
         fov: Set the field of view, in mm.
-        focus: Either set the position of the crosshairs in scanner coordinates,
-            with the new position supplied as a comma-separated list of
-            floating-point values or show or hide the focus cross hair using a
+        focus: Either set the position of the crosshairs in scanner\
+            coordinates, with the new position supplied as a comma-separated list\
+            of floating-point values or show or hide the focus cross hair using a\
             boolean value as argument.
-        target: Set the target location for the viewing window (the scanner
-            coordinate that will appear at the centre of the viewing window
-        voxel: Set the position of the crosshairs in voxel coordinates, relative
-            the image currently displayed. The new position should be supplied as a
-            comma-separated list of floating-point values.
-        volume: Set the volume index for the image displayed, as a
+        target: Set the target location for the viewing window (the scanner\
+            coordinate that will appear at the centre of the viewing window.
+        voxel: Set the position of the crosshairs in voxel coordinates,\
+            relative the image currently displayed. The new position should be\
+            supplied as a comma-separated list of floating-point values.
+        volume: Set the volume index for the image displayed, as a\
             comma-separated list of integers.
-        plane: Set the viewing plane, according to the mappping 0: sagittal; 1:
+        plane: Set the viewing plane, according to the mappping 0: sagittal; 1:\
             coronal; 2: axial.
         lock: Set whether view is locked to image axes (0: no, 1: yes).
-        select_image: Switch to image number specified, with reference to the
+        select_image: Switch to image number specified, with reference to the\
             list of currently loaded images.
         autoscale: Reset the image scaling to automatically determined range.
         interpolation: Enable or disable image interpolation in main image.
-        colourmap: Switch the image colourmap to that specified, as per the
+        colourmap: Switch the image colourmap to that specified, as per the\
             colourmap menu.
-        noannotations: Hide all image annotation overlays
+        noannotations: Hide all image annotation overlays.
         comments: Show or hide image comments overlay.
         voxelinfo: Show or hide voxel information overlay.
         orientationlabel: Show or hide orientation label overlay.
@@ -1684,70 +1684,71 @@ def mrview(
         position: Set the position of the main window, in pixel units.
         fullscreen: Start fullscreen.
         exit_: Quit MRView.
-        sync_focus: Sync the focus with other MRView windows that also have this
-            turned on.
-        fps: Display frames per second, averaged over the last 10 frames. The
+        sync_focus: Sync the focus with other MRView windows that also have\
+            this turned on.
+        fps: Display frames per second, averaged over the last 10 frames. The\
             maximum over the last 3 seconds is also displayed.
         overlay_load: Loads the specified image on the overlay tool.
         overlay_opacity: Sets the overlay opacity to floating value [0-1].
-        overlay_colourmap: Sets the colourmap of the overlay as indexed in the
+        overlay_colourmap: Sets the colourmap of the overlay as indexed in the\
             colourmap dropdown menu.
-        overlay_colour: Specify a manual colour for the overlay, as three
-            comma-separated values
-        overlay_intensity: Set the intensity windowing of the overlay
-        overlay_threshold_min: Set the lower threshold value of the overlay
-        overlay_threshold_max: Set the upper threshold value of the overlay
-        overlay_no_threshold_min: Disable the lower threshold for the overlay
-        overlay_no_threshold_max: Disable the upper threshold for the overlay
+        overlay_colour: Specify a manual colour for the overlay, as three\
+            comma-separated values.
+        overlay_intensity: Set the intensity windowing of the overlay.
+        overlay_threshold_min: Set the lower threshold value of the overlay.
+        overlay_threshold_max: Set the upper threshold value of the overlay.
+        overlay_no_threshold_min: Disable the lower threshold for the overlay.
+        overlay_no_threshold_max: Disable the upper threshold for the overlay.
         overlay_interpolation: Enable or disable overlay image interpolation.
         roi_load: Loads the specified image on the ROI editor tool.
         roi_opacity: Sets the overlay opacity to floating value [0-1].
-        roi_colour: Sets the colour of the ROI overlay
-        tractography_load: Load the specified tracks file into the tractography
+        roi_colour: Sets the colour of the ROI overlay.
+        tractography_load: Load the specified tracks file into the tractography\
             tool.
-        tractography_thickness: Line thickness of tractography display, [-1.0,
+        tractography_thickness: Line thickness of tractography display, [-1.0,\
             1.0], default is 0.0.
-        tractography_geometry: The geometry type to use when rendering
-            tractograms (options are: pseudotubes, lines, points)
-        tractography_opacity: Opacity of tractography display, [0.0, 1.0],
+        tractography_geometry: The geometry type to use when rendering\
+            tractograms (options are: pseudotubes, lines, points).
+        tractography_opacity: Opacity of tractography display, [0.0, 1.0],\
             default is 1.0.
-        tractography_slab: Slab thickness of tractography display, in mm. -1 to
+        tractography_slab: Slab thickness of tractography display, in mm. -1 to\
             turn off crop to slab.
-        tractography_lighting: Toggle the use of lighting of tractogram geometry
-        tractography_colour: Specify a manual colour for the tractogram, as
-            three comma-separated values
+        tractography_lighting: Toggle the use of lighting of tractogram\
+            geometry.
+        tractography_colour: Specify a manual colour for the tractogram, as\
+            three comma-separated values.
         tractography_tsf_load: Load the specified tractography scalar file.
-        tractography_tsf_range: Set range for the tractography scalar file.
+        tractography_tsf_range: Set range for the tractography scalar file.\
             Requires -tractography.tsf_load already provided.
-        tractography_tsf_thresh: Set thresholds for the tractography scalar
+        tractography_tsf_thresh: Set thresholds for the tractography scalar\
             file. Requires -tractography.tsf_load already provided.
-        tractography_tsf_colourmap: Sets the colourmap of the .tsf file as
-            indexed in the tsf colourmap dropdown menu. Requires
+        tractography_tsf_colourmap: Sets the colourmap of the .tsf file as\
+            indexed in the tsf colourmap dropdown menu. Requires\
             -tractography.tsf_load already.
         odf_load_sh: Loads the specified SH-based ODF image on the ODF tool.
         odf_load_tensor: Loads the specified tensor image on the ODF tool.
         odf_load_dixel: Loads the specified dixel-based image on the ODF tool.
-        fixel_load: Load a fixel file (any file inside a fixel directory, or an
+        fixel_load: Load a fixel file (any file inside a fixel directory, or an\
             old .msf / .msh legacy format file) into the fixel tool.
-        connectome_init: Initialise the connectome tool using a parcellation
+        connectome_init: Initialise the connectome tool using a parcellation\
             image.
         connectome_load: Load a matrix file into the connectome tool.
         capture_folder: Set the output folder for the screen capture tool.
         capture_prefix: Set the output file prefix for the screen capture tool.
         capture_grab: Start the screen capture process.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrviewOutputs`).
     """

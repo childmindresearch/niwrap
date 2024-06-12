@@ -77,35 +77,35 @@ def glm(
     FSL GLM.
     
     Args:
-        design: File name of the glm design matrix (text time courses for
+        design: File name of the glm design matrix (text time courses for\
             temporal regression or an image file for spatial regression).
         in_file: Input file name (text matrix or 3d/4d image file).
         contrasts: Matrix of t-statics contrasts.
-        dat_norm: Switch on normalization of the data time series to unit std
+        dat_norm: Switch on normalization of the data time series to unit std\
             deviation.
         demean: Switch on demeaining of design and data.
-        des_norm: Switch on normalization of the design matrix columns to unit
+        des_norm: Switch on normalization of the design matrix columns to unit\
             std deviation.
         dof: Set degrees of freedom explicitly.
         mask: Mask image file name if input is image.
         out_cope: Output file name for cope (either as txt or image.
         out_data_name: Output file name for pre-processed data.
         out_f_name: Output file name for f-value of full model fit.
-        out_p_name: Output file name for p-values of z-stats (either as text
+        out_p_name: Output file name for p-values of z-stats (either as text\
             file or image).
         out_pf_name: Output file name for p-value for full model fit.
         out_res_name: Output file name for residuals.
-        out_sigsq_name: Output file name for residual noise variance
+        out_sigsq_name: Output file name for residual noise variance\
             sigma-square.
         out_t_name: Output file name for t-stats (either as txt or image.
         out_varcb_name: Output file name for variance of copes.
-        out_vnscales_name: Output file name for scaling factors for variance
+        out_vnscales_name: Output file name for scaling factors for variance\
             normalisation.
         out_z_name: Output file name for z-stats (either as txt or image.
-        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
             Fsl output type.
         var_norm: Perform melodic variance-normalisation on data.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `GlmOutputs`).
     """

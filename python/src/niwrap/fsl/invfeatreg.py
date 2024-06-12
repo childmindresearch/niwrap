@@ -39,12 +39,12 @@ def invfeatreg(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT
     
     Args:
-        warp_file: Input warp file (e.g., highres2standard_warp)
-        reference: Reference image (e.g., highres.nii.gz)
-        output_file: Output filename for the inverted warp file (e.g.,
-            standard2highres_warp)
-        verbose_flag: Verbose (switch on diagnostic messages)
-        runner: Command runner
+        warp_file: Input warp file (e.g., highres2standard_warp).
+        reference: Reference image (e.g., highres.nii.gz).
+        output_file: Output filename for the inverted warp file (e.g.,\
+            standard2highres_warp).
+        verbose_flag: Verbose (switch on diagnostic messages).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `InvfeatregOutputs`).
     """

@@ -120,35 +120,34 @@ def dwidenoise(
         dwi: the input diffusion-weighted image.
         out: the output denoised DWI image.
         mask: Only process voxels within the specified binary brain mask image.
-        extent: Set the patch size of the denoising filter. By default, the
-            command will select the smallest isotropic patch size that exceeds the
-            number of DW images in the input data, e.g., 5x5x5 for data with <= 125
+        extent: Set the patch size of the denoising filter. By default, the\
+            command will select the smallest isotropic patch size that exceeds the\
+            number of DW images in the input data, e.g., 5x5x5 for data with <= 125\
             DWI volumes, 7x7x7 for data with <= 343 DWI volumes, etc.
-        noise: The output noise map, i.e., the estimated noise level 'sigma' in
-            the data. Note that on complex input data, this will be the total noise
-            level across real and imaginary channels, so a scale factor sqrt(2)
+        noise: The output noise map, i.e., the estimated noise level 'sigma' in\
+            the data. Note that on complex input data, this will be the total noise\
+            level across real and imaginary channels, so a scale factor sqrt(2)\
             applies.
-        datatype: Datatype for the eigenvalue decomposition (single or double
-            precision). For complex input data, this will select complex float32 or
+        datatype: Datatype for the eigenvalue decomposition (single or double\
+            precision). For complex input data, this will select complex float32 or\
             complex float64 datatypes.
-        estimator: Select the noise level estimator (default = Exp2), either:
-            * Exp1: the original estimator used in Veraart et al.
-            (2016), or
-            * Exp2: the improved estimator introduced in
-            Cordero-Grande et al. (2019).
+        estimator: Select the noise level estimator (default = Exp2), either:\
+            * Exp1: the original estimator used in Veraart et al. (2016), or\
+            * Exp2: the improved estimator introduced in Cordero-Grande et al.\
+            (2019).
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DwidenoiseOutputs`).
     """

@@ -42,15 +42,15 @@ def cifti_label_adjacency(
     rough estimate of how long or expansive the border between two labels is.
     
     Args:
-        label_in: the input cifti label file
-        adjacency_out: the output cifti pconn adjacency matrix
-        opt_left_surface_surface: specify the left surface to use: the left
-            surface file
-        opt_right_surface_surface: specify the right surface to use: the right
-            surface file
-        opt_cerebellum_surface_surface: specify the cerebellum surface to use:
-            the cerebellum surface file
-        runner: Command runner
+        label_in: the input cifti label file.
+        adjacency_out: the output cifti pconn adjacency matrix.
+        opt_left_surface_surface: specify the left surface to use: the left\
+            surface file.
+        opt_right_surface_surface: specify the right surface to use: the right\
+            surface file.
+        opt_cerebellum_surface_surface: specify the cerebellum surface to use:\
+            the cerebellum surface file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiLabelAdjacencyOutputs`).
     """

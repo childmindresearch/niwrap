@@ -38,12 +38,12 @@ def metadata_string_replace(
     <input-file> with <replace-string>.
     
     Args:
-        input_file: the file to replace metadata in
-        find_string: the string to find
-        replace_string: the string to replace <find-string> with
-        output_file: output - the name to save the modified file as
-        opt_case_insensitive: match with case variation also
-        runner: Command runner
+        input_file: the file to replace metadata in.
+        find_string: the string to find.
+        replace_string: the string to replace <find-string> with.
+        output_file: output - the name to save the modified file as.
+        opt_case_insensitive: match with case variation also.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetadataStringReplaceOutputs`).
     """

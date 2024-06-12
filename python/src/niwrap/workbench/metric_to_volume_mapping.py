@@ -84,15 +84,15 @@ def metric_to_volume_mapping(
     order to have all of the surface data participate.
     
     Args:
-        metric: the input metric file
-        surface: the surface to use coordinates from
-        volume_space: a volume file in the desired output volume space
-        volume_out: the output volume file
-        opt_nearest_vertex_distance: use the value from the vertex closest to
-            the voxel center: how far from the surface to map values to voxels, in
-            mm
-        ribbon_constrained: use ribbon constrained mapping algorithm
-        runner: Command runner
+        metric: the input metric file.
+        surface: the surface to use coordinates from.
+        volume_space: a volume file in the desired output volume space.
+        volume_out: the output volume file.
+        opt_nearest_vertex_distance: use the value from the vertex closest to\
+            the voxel center: how far from the surface to map values to voxels, in\
+            mm.
+        ribbon_constrained: use ribbon constrained mapping algorithm.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricToVolumeMappingOutputs`).
     """

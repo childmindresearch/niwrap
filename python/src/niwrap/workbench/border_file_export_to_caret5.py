@@ -82,11 +82,11 @@ def border_file_export_to_caret5(
     name. .
     
     Args:
-        border_file: workbench border file
-        output_file_prefix: prefix for name of output caret5
-            border/borderproj/bordercolor files
-        surface: specify an input surface
-        runner: Command runner
+        border_file: workbench border file.
+        output_file_prefix: prefix for name of output caret5\
+            border/borderproj/bordercolor files.
+        surface: specify an input surface.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BorderFileExportToCaret5Outputs`).
     """

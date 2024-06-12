@@ -165,14 +165,14 @@ def cifti_math(
     .
     
     Args:
-        expression: the expression to evaluate, in quotes
-        cifti_out: the output cifti file
-        opt_fixnan_replace: replace NaN results with a value: value to replace
-            NaN with
-        opt_override_mapping_check: don't check the mappings for compatibility,
-            only check length
-        var: a cifti file to use as a variable
-        runner: Command runner
+        expression: the expression to evaluate, in quotes.
+        cifti_out: the output cifti file.
+        opt_fixnan_replace: replace NaN results with a value: value to replace\
+            NaN with.
+        opt_override_mapping_check: don't check the mappings for compatibility,\
+            only check length.
+        var: a cifti file to use as a variable.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiMathOutputs`).
     """

@@ -60,20 +60,20 @@ def fnirt(
         in_file: Name of input image.
         ref_file: Name of reference image.
         affine_file: Name of file containing affine transform.
-        config_file: 't1_2_mni152_2mm' or 'fa_2_fmrib58_1mm' or file or string.
+        config_file: 't1_2_mni152_2mm' or 'fa_2_fmrib58_1mm' or file or string.\
             Name of config file specifying command line arguments.
         field_file: file. Name of output file with field.
-        fieldcoeff_file: string representing a file. Name of output file with
+        fieldcoeff_file: string representing a file. Name of output file with\
             field coefficients.
-        jacobian_file: A file. Name of file for writing out the jacobian of the
+        jacobian_file: A file. Name of file for writing out the jacobian of the\
             field (for diagnostic or vbm purposes).
         log_file: Name of log-file.
-        modulatedref_file: string representing a file. Name of file for writing
+        modulatedref_file: string representing a file. Name of file for writing\
             out intensity modulated --ref (for diagnostic purposes).
         refmask_file: Name of file with mask in reference space.
-        warped_file: Name of output-file containing the --in image after it has
-            been warped to the --ref image
-        runner: Command runner
+        warped_file: Name of output-file containing the --in image after it has\
+            been warped to the --ref image.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FnirtOutputs`).
     """

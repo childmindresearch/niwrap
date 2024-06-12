@@ -49,32 +49,32 @@ def xtract_blueprint(
     More information: https://fsl.fmrib.ox.ac.uk
     
     Args:
-        bpx_folder: Path to bedpostx folder
-        out_folder: Path to output folder
-        xtract_folder: Path to xtract folder
-        seeds_list: Comma separated list of seeds for which a blueprint is
-            requested
-        warps: Standard space reference image and transforms between xtract
-            space and diffusion space
-        stage: What to run. 1:matrix2, 2:blueprint, all:everything (default)
-        gpu_flag: Use GPU version
-        save_txt_flag: Save blueprint as txt file (nseed by ntracts) instead of
-            CIFTI
-        prefix: Specify a prefix for the final blueprint filename
-        rois_list: Comma separated list of ROIs (gifti) to restrict seeding
-            (e.g. medial wall masks)
-        stops_file: Text file containing line separated list
-        wtstops_file: Text file containing line separated list
-        tract_list: Comma separated list of tracts to include (default = all
-            found under -xtract <folder>)
-        threshold: Threshold applied to XTRACT tracts prior to blueprint
-            calculation (default = 0.001, i.e. 0.1% probability)
-        nsamples: Number of samples per seed used in tractography (default =
-            1000)
-        res: Resolution of matrix2 output (Default = 3 mm)
-        ptx_options: Pass extra probtrackx2 options as a text file to override
-            defaults
-        runner: Command runner
+        bpx_folder: Path to bedpostx folder.
+        out_folder: Path to output folder.
+        xtract_folder: Path to xtract folder.
+        seeds_list: Comma separated list of seeds for which a blueprint is\
+            requested.
+        warps: Standard space reference image and transforms between xtract\
+            space and diffusion space.
+        stage: What to run. 1:matrix2, 2:blueprint, all:everything (default).
+        gpu_flag: Use GPU version.
+        save_txt_flag: Save blueprint as txt file (nseed by ntracts) instead of\
+            CIFTI.
+        prefix: Specify a prefix for the final blueprint filename.
+        rois_list: Comma separated list of ROIs (gifti) to restrict seeding\
+            (e.g. medial wall masks).
+        stops_file: Text file containing line separated list.
+        wtstops_file: Text file containing line separated list.
+        tract_list: Comma separated list of tracts to include (default = all\
+            found under -xtract <folder>).
+        threshold: Threshold applied to XTRACT tracts prior to blueprint\
+            calculation (default = 0.001, i.e. 0.1% probability).
+        nsamples: Number of samples per seed used in tractography (default =\
+            1000).
+        res: Resolution of matrix2 output (Default = 3 mm).
+        ptx_options: Pass extra probtrackx2 options as a text file to override\
+            defaults.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `XtractBlueprintOutputs`).
     """

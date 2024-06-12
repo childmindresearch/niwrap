@@ -116,30 +116,30 @@ def mrstats(
     
     Args:
         image: the input image from which statistics will be computed.
-        output: output only the field specified. Multiple such options can be
-            supplied if required. Choices are: mean, median, std, std_rv, min, max,
-            count. Useful for use in scripts. Both std options refer to the unbiased
-            (sample) standard deviation. For complex data, min, max and std are
-            calculated separately for real and imaginary parts, std_rv is based on
-            the real valued variance (equals sqrt of sum of variances of imaginary
-            and real parts).
+        output: output only the field specified. Multiple such options can be\
+            supplied if required. Choices are: mean, median, std, std_rv, min, max,\
+            count. Useful for use in scripts. Both std options refer to the\
+            unbiased (sample) standard deviation. For complex data, min, max and\
+            std are calculated separately for real and imaginary parts, std_rv is\
+            based on the real valued variance (equals sqrt of sum of variances of\
+            imaginary and real parts).
         mask: only perform computation within the specified binary mask image.
-        ignorezero: ignore zero values during statistics calculation
-        allvolumes: generate statistics across all image volumes, rather than
-            one set of statistics per image volume
+        ignorezero: ignore zero values during statistics calculation.
+        allvolumes: generate statistics across all image volumes, rather than\
+            one set of statistics per image volume.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrstatsOutputs`).
     """

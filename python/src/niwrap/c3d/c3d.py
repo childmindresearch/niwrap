@@ -7759,7 +7759,7 @@ def c3d(
         input_: The input image to process.
         output: The output image.
         operations: The operations to perform.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `C3dOutputs`).
     """

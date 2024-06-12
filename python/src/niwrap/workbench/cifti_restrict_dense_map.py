@@ -47,20 +47,20 @@ def cifti_restrict_dense_map(
     structure, if present in the input file.
     
     Args:
-        cifti_in: the input cifti
-        direction: which dimension to change the mapping on (integer, 'ROW', or
-            'COLUMN')
-        cifti_out: the output cifti
-        opt_cifti_roi_roi_cifti: cifti file containing combined rois: the rois
-            as a cifti file
-        opt_left_roi_roi_metric: vertices to use from left hemisphere: the left
-            roi as a metric file
-        opt_right_roi_roi_metric: vertices to use from right hemisphere: the
-            right roi as a metric file
-        opt_cerebellum_roi_roi_metric: vertices to use from cerebellum: the
-            cerebellum roi as a metric file
-        opt_vol_roi_roi_vol: voxels to use: the roi volume file
-        runner: Command runner
+        cifti_in: the input cifti.
+        direction: which dimension to change the mapping on (integer, 'ROW', or\
+            'COLUMN').
+        cifti_out: the output cifti.
+        opt_cifti_roi_roi_cifti: cifti file containing combined rois: the rois\
+            as a cifti file.
+        opt_left_roi_roi_metric: vertices to use from left hemisphere: the left\
+            roi as a metric file.
+        opt_right_roi_roi_metric: vertices to use from right hemisphere: the\
+            right roi as a metric file.
+        opt_cerebellum_roi_roi_metric: vertices to use from cerebellum: the\
+            cerebellum roi as a metric file.
+        opt_vol_roi_roi_vol: voxels to use: the roi volume file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiRestrictDenseMapOutputs`).
     """

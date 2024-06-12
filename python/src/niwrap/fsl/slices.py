@@ -34,13 +34,13 @@ def slices(
     intensity range options, and save as a GIF.
     
     Args:
-        primary_input: Primary input image file (e.g. img1.nii.gz)
-        secondary_input: Secondary input image file (e.g. img2.nii.gz)
+        primary_input: Primary input image file (e.g. img1.nii.gz).
+        secondary_input: Secondary input image file (e.g. img2.nii.gz).
         scale_factor: Scale factor to apply to images.
-        intensity_range: Intensity range to consider (minimum and maximum
+        intensity_range: Intensity range to consider (minimum and maximum\
             values).
         output_gif: Output GIF file.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SlicesOutputs`).
     """

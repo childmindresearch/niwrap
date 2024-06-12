@@ -98,10 +98,10 @@ def convert_fiber_orientations(
     THALAMUS_RIGHT.
     
     Args:
-        label_volume: volume of cifti structure labels
-        fiber_out: the output fiber orientation file
-        fiber: specify the parameter volumes for a fiber
-        runner: Command runner
+        label_volume: volume of cifti structure labels.
+        fiber_out: the output fiber orientation file.
+        fiber: specify the parameter volumes for a fiber.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ConvertFiberOrientationsOutputs`).
     """

@@ -50,12 +50,12 @@ def volume_label_modify_keys(
     values in the data at the same time.
     
     Args:
-        volume_in: the input volume label file
-        remap_file: text file with old and new key values
-        volume_out: the output volume label file
-        opt_subvolume_subvolume: select a single subvolume: the subvolume number
-            or name
-        runner: Command runner
+        volume_in: the input volume label file.
+        remap_file: text file with old and new key values.
+        volume_out: the output volume label file.
+        opt_subvolume_subvolume: select a single subvolume: the subvolume\
+            number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeLabelModifyKeysOutputs`).
     """

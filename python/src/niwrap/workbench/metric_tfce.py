@@ -116,17 +116,18 @@ def metric_tfce(
     PMID: 18501637.
     
     Args:
-        surface: the surface to compute on
-        metric_in: the metric to run TFCE on
-        metric_out: the output metric
-        presmooth: smooth the metric before running TFCE
-        opt_roi_roi_metric: select a region of interest to run TFCE on: the area
-            to run TFCE on, as a metric
-        parameters: set parameters for TFCE integral
-        opt_column_column: select a single column: the column number or name
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        runner: Command runner
+        surface: the surface to compute on.
+        metric_in: the metric to run TFCE on.
+        metric_out: the output metric.
+        presmooth: smooth the metric before running TFCE.
+        opt_roi_roi_metric: select a region of interest to run TFCE on: the\
+            area to run TFCE on, as a metric.
+        parameters: set parameters for TFCE integral.
+        opt_column_column: select a single column: the column number or name.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricTfceOutputs`).
     """

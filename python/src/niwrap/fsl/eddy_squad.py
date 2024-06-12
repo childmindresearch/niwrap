@@ -46,7 +46,7 @@ def eddy_squad(
         group_db: Path to the group database.
         update_: Option to update the QC results.
         output_dir: Output directory for the QC results.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `EddySquadOutputs`).
     """

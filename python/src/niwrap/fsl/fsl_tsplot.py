@@ -51,24 +51,24 @@ def fsl_tsplot(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        input_files: Comma-separated list of input file names (ASCII text
-            matrix, one column per timecourse)
-        output_file: Output filename for the PNG file
-        title: Plot title
-        legend_file: File name of ASCII text file, one row per legend entry
-        labels: Comma-separated list of labels
-        ymin: Minimum y-value
-        ymax: Maximum y-value
-        xlabel: X-axis label
-        ylabel: Y-axis label
-        height: Plot height in pixels (default 150)
-        width: Plot width in pixels (default 600)
-        unit: Scaling units for x-axis (default 1...length of infile)
-        precision: Precision of x-axis labels
-        sci_flag: Switch on scientific notation
-        start_col: Position of first column to plot
-        end_col: Position of final column to plot
-        runner: Command runner
+        input_files: Comma-separated list of input file names (ASCII text\
+            matrix, one column per timecourse).
+        output_file: Output filename for the PNG file.
+        title: Plot title.
+        legend_file: File name of ASCII text file, one row per legend entry.
+        labels: Comma-separated list of labels.
+        ymin: Minimum y-value.
+        ymax: Maximum y-value.
+        xlabel: X-axis label.
+        ylabel: Y-axis label.
+        height: Plot height in pixels (default 150).
+        width: Plot width in pixels (default 600).
+        unit: Scaling units for x-axis (default 1...length of infile).
+        precision: Precision of x-axis labels.
+        sci_flag: Switch on scientific notation.
+        start_col: Position of first column to plot.
+        end_col: Position of final column to plot.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslTsplotOutputs`).
     """

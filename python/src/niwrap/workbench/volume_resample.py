@@ -180,14 +180,14 @@ def volume_resample(
     TRILINEAR.
     
     Args:
-        volume_in: volume to resample
-        volume_space: a volume file in the volume space you want for the output
-        method: the resampling method
-        volume_out: the output volume
-        affine: add an affine transform
-        affine_series: add an independent affine per-frame
-        warp: add a nonlinear warpfield transform
-        runner: Command runner
+        volume_in: volume to resample.
+        volume_space: a volume file in the volume space you want for the output.
+        method: the resampling method.
+        volume_out: the output volume.
+        affine: add an affine transform.
+        affine_series: add an independent affine per-frame.
+        warp: add a nonlinear warpfield transform.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeResampleOutputs`).
     """

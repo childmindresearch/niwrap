@@ -71,9 +71,9 @@ def mri_binarize(
         bin_col_num: Set binarized voxel value to its column number.
         bin_val: Set vox within thresh to val (default is 1).
         bin_val_not: Set vox outside range to val (default is 0).
-        count_file: A boolean or file. Save number of hits in ascii file (hits,
+        count_file: A boolean or file. Save number of hits in ascii file (hits,\
             ntotvox, pct).
-        count_file_2: A boolean or file. Save number of hits in ascii file
+        count_file_2: A boolean or file. Save number of hits in ascii file\
             (hits, ntotvox, pct).
         dilate: Niters: dilate binarization in 3d.
         erode: Nerode: erode binarization in 3d (after any dilation).
@@ -89,14 +89,14 @@ def mri_binarize(
         out_type: 'nii' or 'nii.gz' or 'mgz'. Output file type.
         rmax: Compute max based on rmax*globalmean.
         rmin: Compute min based on rmin*globalmean.
-        subjects_dir: file or string representing an existing directory.
+        subjects_dir: file or string representing an existing directory.\
             Subjects directory.
         ventricles: Set match vals those for aseg ventricles+choroid (not 4th).
         wm: Set match vals to 2 and 41 (aseg for cerebral wm).
         wm_ven_csf: Wm and ventricular csf, including choroid (not 4th).
         zero_edges: Zero the edge voxels.
         zero_slice_edge: Zero the edge slice voxels.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MriBinarizeOutputs`).
     """

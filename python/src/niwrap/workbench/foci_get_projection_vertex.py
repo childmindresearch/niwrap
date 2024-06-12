@@ -40,11 +40,11 @@ def foci_get_projection_vertex(
     with all other vertices 0. If -name is used, only one focus will be used.
     
     Args:
-        foci: the foci file
-        surface: the surface related to the foci file
-        metric_out: the output metric file
-        opt_name_name: select a focus by name: the name of the focus
-        runner: Command runner
+        foci: the foci file.
+        surface: the surface related to the foci file.
+        metric_out: the output metric file.
+        opt_name_name: select a focus by name: the name of the focus.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FociGetProjectionVertexOutputs`).
     """

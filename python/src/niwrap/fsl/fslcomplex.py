@@ -37,12 +37,12 @@ def fslcomplex(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        input_file: Input volume (e.g. complexvol.nii.gz)
-        output_file: Output volume (e.g. absvol.nii.gz)
-        output_type: Output type (determines the operation to perform)
-        start_vol: Start volume (optional)
-        end_vol: End volume (optional)
-        runner: Command runner
+        input_file: Input volume (e.g. complexvol.nii.gz).
+        output_file: Output volume (e.g. absvol.nii.gz).
+        output_type: Output type (determines the operation to perform).
+        start_vol: Start volume (optional).
+        end_vol: End volume (optional).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslcomplexOutputs`).
     """

@@ -49,28 +49,28 @@ def first(
     
     Args:
         input_file: Filename of input image to be segmented.
-        output_name: Output name
+        output_name: Output name.
         input_model: Filename of input model (the structure to be segmented).
-        flirt_matrix: Filename of flirt matrix that transform input image to MNI
-            space (output of first_flirt).
-        verbose: Switch on diagnostic messages
-        help_: Display help message
-        input_model2: Filename of second input model (the structure to be
+        flirt_matrix: Filename of flirt matrix that transform input image to\
+            MNI space (output of first_flirt).
+        verbose: Switch on diagnostic messages.
+        help_: Display help message.
+        input_model2: Filename of second input model (the structure to be\
             segmented).
         nmodes: Specifies number of modes used.
-        intref: Use structure specified by modelname2 as intensity reference
-        multi_image_input: Use structure specified by modelname2 as intensity
-            reference
-        binary_surface_output: Use structure specified by modelname2 as
-            intensity reference
-        bmap_name: Filename of conditional mapping matrix
-        bvars: Initialize using bvars from a previous segmentation. When using
-            with --shcond specifies the shape of the structure we are conditioning
+        intref: Use structure specified by modelname2 as intensity reference.
+        multi_image_input: Use structure specified by modelname2 as intensity\
+            reference.
+        binary_surface_output: Use structure specified by modelname2 as\
+            intensity reference.
+        bmap_name: Filename of conditional mapping matrix.
+        bvars: Initialize using bvars from a previous segmentation. When using\
+            with --shcond specifies the shape of the structure we are conditioning\
             on.
-        shcond: Use conditional shape probability
-        loadbvars: Load initial parameter estimates from a previous
+        shcond: Use conditional shape probability.
+        loadbvars: Load initial parameter estimates from a previous\
             segmentation.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FirstOutputs`).
     """

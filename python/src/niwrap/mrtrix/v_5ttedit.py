@@ -89,29 +89,31 @@ def v_5ttedit(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/5ttedit.html
     
     Args:
-        input_: the 5TT image to be modified
-        output: the output modified 5TT image
-        cgm: provide a mask of voxels that should be set to cortical grey matter
-        sgm: provide a mask of voxels that should be set to sub-cortical grey
-            matter
-        wm: provide a mask of voxels that should be set to white matter
-        csf: provide a mask of voxels that should be set to CSF
-        path: provide a mask of voxels that should be set to pathological tissue
-        none: provide a mask of voxels that should be cleared (i.e. are
-            non-brain); note that this will supersede all other provided masks
+        input_: the 5TT image to be modified.
+        output: the output modified 5TT image.
+        cgm: provide a mask of voxels that should be set to cortical grey\
+            matter.
+        sgm: provide a mask of voxels that should be set to sub-cortical grey\
+            matter.
+        wm: provide a mask of voxels that should be set to white matter.
+        csf: provide a mask of voxels that should be set to CSF.
+        path: provide a mask of voxels that should be set to pathological\
+            tissue.
+        none: provide a mask of voxels that should be cleared (i.e. are\
+            non-brain); note that this will supersede all other provided masks.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V5tteditOutputs`).
     """

@@ -108,15 +108,15 @@ def volume_tfce(
     PMID: 18501637.
     
     Args:
-        volume_in: the volume to run TFCE on
-        volume_out: the output volume
-        presmooth: smooth the volume before running TFCE
-        opt_roi_roi_volume: select a region of interest to run TFCE on: the area
-            to run TFCE on, as a volume
-        parameters: set parameters for TFCE integral
-        opt_subvolume_subvolume: select a single subvolume: the subvolume number
-            or name
-        runner: Command runner
+        volume_in: the volume to run TFCE on.
+        volume_out: the output volume.
+        presmooth: smooth the volume before running TFCE.
+        opt_roi_roi_volume: select a region of interest to run TFCE on: the\
+            area to run TFCE on, as a volume.
+        parameters: set parameters for TFCE integral.
+        opt_subvolume_subvolume: select a single subvolume: the subvolume\
+            number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeTfceOutputs`).
     """

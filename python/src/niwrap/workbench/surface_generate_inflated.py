@@ -44,12 +44,12 @@ def surface_generate_inflated(
     2.5.
     
     Args:
-        anatomical_surface_in: the anatomical surface
-        inflated_surface_out: the output inflated surface
-        very_inflated_surface_out: the output very inflated surface
-        opt_iterations_scale_iterations_scale_value: optional iterations
-            scaling: iterations-scale value
-        runner: Command runner
+        anatomical_surface_in: the anatomical surface.
+        inflated_surface_out: the output inflated surface.
+        very_inflated_surface_out: the output very inflated surface.
+        opt_iterations_scale_iterations_scale_value: optional iterations\
+            scaling: iterations-scale value.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceGenerateInflatedOutputs`).
     """

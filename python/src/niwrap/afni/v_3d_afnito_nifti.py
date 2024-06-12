@@ -43,16 +43,16 @@ def v_3d_afnito_nifti(
     More information: https://afni.nimh.nih.gov/
     
     Args:
-        input_dataset: Input AFNI dataset
-        prefix: Output NIfTI file prefix
-        verbose: Print progress messages (increases verbosity if repeated)
-        force_float: Force the output dataset to be 32-bit floats
-        pure: Do not write an AFNI extension field into the output file
-        denote: Remove text notes from AFNI extension field that might contain
-            identifying information
-        oldid: Retain the input dataset's AFNI ID code
-        newid: Assign a new AFNI ID code to the dataset (default action)
-        runner: Command runner
+        input_dataset: Input AFNI dataset.
+        prefix: Output NIfTI file prefix.
+        verbose: Print progress messages (increases verbosity if repeated).
+        force_float: Force the output dataset to be 32-bit floats.
+        pure: Do not write an AFNI extension field into the output file.
+        denote: Remove text notes from AFNI extension field that might contain\
+            identifying information.
+        oldid: Retain the input dataset's AFNI ID code.
+        newid: Assign a new AFNI ID code to the dataset (default action).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dAfnitoNiftiOutputs`).
     """

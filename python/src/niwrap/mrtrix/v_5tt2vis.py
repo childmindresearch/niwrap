@@ -89,27 +89,27 @@ def v_5tt2vis(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/5tt2vis.html
     
     Args:
-        input_: the input 4D tissue-segmented image
-        output: the output 3D image for visualisation
-        bg: image intensity of background (default: 0)
-        cgm: image intensity of cortical grey matter (default: 0.5)
-        sgm: image intensity of sub-cortical grey matter (default: 0.75)
-        wm: image intensity of white matter (default: 1)
-        csf: image intensity of CSF (default: 0.15)
-        path: image intensity of pathological tissue (default: 2)
+        input_: the input 4D tissue-segmented image.
+        output: the output 3D image for visualisation.
+        bg: image intensity of background (default: 0).
+        cgm: image intensity of cortical grey matter (default: 0.5).
+        sgm: image intensity of sub-cortical grey matter (default: 0.75).
+        wm: image intensity of white matter (default: 1).
+        csf: image intensity of CSF (default: 0.15).
+        path: image intensity of pathological tissue (default: 2).
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V5tt2visOutputs`).
     """

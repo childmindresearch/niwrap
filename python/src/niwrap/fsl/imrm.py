@@ -34,9 +34,9 @@ def imrm(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        images_to_remove: List of image names to remove. Filenames can be
+        images_to_remove: List of image names to remove. Filenames can be\
             basenames or full names.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ImrmOutputs`).
     """

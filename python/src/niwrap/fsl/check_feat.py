@@ -39,9 +39,9 @@ def check_feat(
     More information: http://example.com/checkFEAT
     
     Args:
-        report_file: Path to the HTML report
-        report_log_file: Path to the HTML report log
-        runner: Command runner
+        report_file: Path to the HTML report.
+        report_log_file: Path to the HTML report log.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CheckFeatOutputs`).
     """

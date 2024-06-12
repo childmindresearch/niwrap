@@ -92,15 +92,16 @@ def volume_stats(
     .
     
     Args:
-        volume_in: the input volume
-        opt_reduce_operation: use a reduction operation: the reduction operation
-        opt_percentile_percent: give the value at a percentile: the percentile
-            to find, must be between 0 and 100
-        opt_subvolume_subvolume: only display output for one subvolume: the
-            subvolume number or name
-        roi: only consider data inside an roi
-        opt_show_map_name: print map index and name before each output
-        runner: Command runner
+        volume_in: the input volume.
+        opt_reduce_operation: use a reduction operation: the reduction\
+            operation.
+        opt_percentile_percent: give the value at a percentile: the percentile\
+            to find, must be between 0 and 100.
+        opt_subvolume_subvolume: only display output for one subvolume: the\
+            subvolume number or name.
+        roi: only consider data inside an roi.
+        opt_show_map_name: print map index and name before each output.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeStatsOutputs`).
     """

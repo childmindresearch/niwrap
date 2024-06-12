@@ -47,7 +47,7 @@ def v_3d_tstat(
         num_threads: Set number of threads.
         options: Selected statistical output.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dTstatOutputs`).
     """

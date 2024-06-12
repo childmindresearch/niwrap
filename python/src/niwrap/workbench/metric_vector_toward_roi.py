@@ -39,12 +39,12 @@ def metric_vector_toward_roi(
     the ROI.
     
     Args:
-        surface: the surface to compute on
-        target_roi: the roi to find the shortest path to
-        metric_out: the output metric
-        opt_roi_roi_metric: don't compute for vertices outside an roi: the
-            region to compute inside, as a metric
-        runner: Command runner
+        surface: the surface to compute on.
+        target_roi: the roi to find the shortest path to.
+        metric_out: the output metric.
+        opt_roi_roi_metric: don't compute for vertices outside an roi: the\
+            region to compute inside, as a metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricVectorTowardRoiOutputs`).
     """

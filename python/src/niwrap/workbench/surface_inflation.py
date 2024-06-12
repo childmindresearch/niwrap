@@ -42,14 +42,14 @@ def surface_inflation(
     inflation (to correct shrinkage caused by smoothing).
     
     Args:
-        anatomical_surface_in: the anatomical surface
-        surface_in: the surface file to inflate
-        number_of_smoothing_cycles: number of smoothing cycles
-        smoothing_strength: smoothing strength (ranges [0.0 - 1.0])
-        smoothing_iterations: smoothing iterations
-        inflation_factor: inflation factor
-        surface_out: output surface file
-        runner: Command runner
+        anatomical_surface_in: the anatomical surface.
+        surface_in: the surface file to inflate.
+        number_of_smoothing_cycles: number of smoothing cycles.
+        smoothing_strength: smoothing strength (ranges [0.0 - 1.0]).
+        smoothing_iterations: smoothing iterations.
+        inflation_factor: inflation factor.
+        surface_out: output surface file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceInflationOutputs`).
     """

@@ -35,9 +35,9 @@ def feat_gm_prepare(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
     
     Args:
-        gm_output: 4D grey matter output file
-        feat_dirs_list: List of first-level FEAT output directories
-        runner: Command runner
+        gm_output: 4D grey matter output file.
+        feat_dirs_list: List of first-level FEAT output directories.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FeatGmPrepareOutputs`).
     """

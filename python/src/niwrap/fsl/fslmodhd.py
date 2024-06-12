@@ -36,10 +36,10 @@ def fslmodhd(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        image: Input image file (e.g. image.nii.gz)
-        keyword_: Header keyword to modify (e.g. 'dim', 'pixdim')
-        value: New value for the given header keyword
-        runner: Command runner
+        image: Input image file (e.g. image.nii.gz).
+        keyword_: Header keyword to modify (e.g. 'dim', 'pixdim').
+        value: New value for the given header keyword.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslmodhdOutputs`).
     """

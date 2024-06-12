@@ -37,11 +37,11 @@ def siena_flirt(
     Wrapper for FLIRT image registration within the SIENA framework.
     
     Args:
-        input1_fileroot: First input file root (e.g. first time-point image
-            root, without file extension)
-        input2_fileroot: Second input file root (e.g. second time-point image
-            root, without file extension)
-        runner: Command runner
+        input1_fileroot: First input file root (e.g. first time-point image\
+            root, without file extension).
+        input2_fileroot: Second input file root (e.g. second time-point image\
+            root, without file extension).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SienaFlirtOutputs`).
     """

@@ -32,9 +32,9 @@ def imcp(
     Copy images from one location to another.
     
     Args:
-        infiles: Input image files (e.g. img1.nii.gz, img2.nii.gz)
-        output_location: Output file or directory
-        runner: Command runner
+        infiles: Input image files (e.g. img1.nii.gz, img2.nii.gz).
+        output_location: Output file or directory.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ImcpOutputs`).
     """

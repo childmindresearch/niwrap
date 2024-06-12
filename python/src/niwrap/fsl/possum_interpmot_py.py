@@ -42,15 +42,15 @@ def possum_interpmot(
     More information: https://fsl.fmrib.ox.ac.uk
     
     Args:
-        motion_type: Type of motion: 0 for continuous, 1 for between slices, 2
-            for between volumes
-        tr: Repetition time in seconds
-        tr_slice: Slice repetition time in seconds
-        nslices: Number of slices
-        nvols: Number of volumes
-        custom_motion_file: Custom motion file
-        output_file: Output file
-        runner: Command runner
+        motion_type: Type of motion: 0 for continuous, 1 for between slices, 2\
+            for between volumes.
+        tr: Repetition time in seconds.
+        tr_slice: Slice repetition time in seconds.
+        nslices: Number of slices.
+        nvols: Number of volumes.
+        custom_motion_file: Custom motion file.
+        output_file: Output file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PossumInterpmotOutputs`).
     """

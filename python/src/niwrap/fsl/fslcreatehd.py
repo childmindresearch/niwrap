@@ -49,23 +49,23 @@ def fslcreatehd(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLUtils
     
     Args:
-        xsize: Size of the image in the x dimension
-        ysize: Size of the image in the y dimension
-        zsize: Size of the image in the z dimension
-        tsize: Size of the image in the t dimension (time)
-        xvoxsize: Voxel size in the x dimension
-        yvoxsize: Voxel size in the y dimension
-        zvoxsize: Voxel size in the z dimension
-        tr: Repetition time (TR) of the image
-        xorigin: Origin of the image in the x dimension
-        yorigin: Origin of the image in the y dimension
-        zorigin: Origin of the image in the z dimension
-        datatype: Datatype of the image (2=char, 4=short, 8=int, 16=float,
-            64=double)
-        headername: Name of the header file to be created
-        nifti_xml_file: NIfTI XML file describing the header configuration
-            (Mutually exclusive with other inputs)
-        runner: Command runner
+        xsize: Size of the image in the x dimension.
+        ysize: Size of the image in the y dimension.
+        zsize: Size of the image in the z dimension.
+        tsize: Size of the image in the t dimension (time).
+        xvoxsize: Voxel size in the x dimension.
+        yvoxsize: Voxel size in the y dimension.
+        zvoxsize: Voxel size in the z dimension.
+        tr: Repetition time (TR) of the image.
+        xorigin: Origin of the image in the x dimension.
+        yorigin: Origin of the image in the y dimension.
+        zorigin: Origin of the image in the z dimension.
+        datatype: Datatype of the image (2=char, 4=short, 8=int, 16=float,\
+            64=double).
+        headername: Name of the header file to be created.
+        nifti_xml_file: NIfTI XML file describing the header configuration\
+            (Mutually exclusive with other inputs).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslcreatehdOutputs`).
     """

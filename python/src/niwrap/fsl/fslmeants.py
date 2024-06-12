@@ -49,27 +49,27 @@ def fslmeants(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        input_image: Input 4D image
-        output: Output text matrix
-        mask: Input 3D mask
-        coordinates: Requested spatial coordinate (instead of mask). Must have
+        input_image: Input 4D image.
+        output: Output text matrix.
+        mask: Input 3D mask.
+        coordinates: Requested spatial coordinate (instead of mask). Must have\
             exactly three numerical entries in the list (3-vector).
-        usemm_flag: Use mm instead of voxel coordinates (for -c option)
-        showall_flag: Show all voxel time series (within mask) instead of
-            averaging
-        eigenv_flag: Calculate Eigenvariate(s) instead of mean (output will have
-            0 mean)
-        eigenvariates_order: Select number of Eigenvariates (default 1)
-        no_bin_flag: Do not binarise the mask for calculation of Eigenvariates
-        label_image: Input 3D label image (generate separate mean for each
-            integer label value - cannot be used with showall)
-        transpose_flag: Output results in transpose format (one row per
-            voxel/mean)
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display the help message
-        weighted_mean_flag: Output weighted mean, using mask values as weights,
+        usemm_flag: Use mm instead of voxel coordinates (for -c option).
+        showall_flag: Show all voxel time series (within mask) instead of\
+            averaging.
+        eigenv_flag: Calculate Eigenvariate(s) instead of mean (output will\
+            have 0 mean).
+        eigenvariates_order: Select number of Eigenvariates (default 1).
+        no_bin_flag: Do not binarise the mask for calculation of Eigenvariates.
+        label_image: Input 3D label image (generate separate mean for each\
+            integer label value - cannot be used with showall).
+        transpose_flag: Output results in transpose format (one row per\
+            voxel/mean).
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display the help message.
+        weighted_mean_flag: Output weighted mean, using mask values as weights,\
             and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslmeantsOutputs`).
     """

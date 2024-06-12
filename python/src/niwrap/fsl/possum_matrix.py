@@ -42,20 +42,20 @@ def possum_matrix(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM
     
     Args:
-        pulse_sequence: Pulse sequence - all additional files with extensions
-            .posx, .posy, etc., expected to be in the same directory
-        motion_matrix: Motion matrix [time(s) Tx(m) Ty(m) Tz(m) Rx(rad) Ry(rad)
-            Rz(rad)]
-        output_matrix: Main event matrix [t(s), rf_ang(rad), rf_freq_band(Hz),
-            (4)=rf_cent_freq(Hz), read(1/0), Gx, Gy, Gz(T/m), Tx, Ty, Tz(m),
-            angle_of_rot B(rad), rot_axis Bx, By, Bz(m), angle_of_rot A(rad),
-            rot_axis Ax, Ay, Az(m)]
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display this help message
-        old_version_flag: Allows for the old version of the sorter to run
-        segment_size: Setting the size of the segment of the matrix that is read
-            in one at a time
-        runner: Command runner
+        pulse_sequence: Pulse sequence - all additional files with extensions\
+            .posx, .posy, etc., expected to be in the same directory.
+        motion_matrix: Motion matrix [time(s) Tx(m) Ty(m) Tz(m) Rx(rad) Ry(rad)\
+            Rz(rad)].
+        output_matrix: Main event matrix [t(s), rf_ang(rad), rf_freq_band(Hz),\
+            (4)=rf_cent_freq(Hz), read(1/0), Gx, Gy, Gz(T/m), Tx, Ty, Tz(m),\
+            angle_of_rot B(rad), rot_axis Bx, By, Bz(m), angle_of_rot A(rad),\
+            rot_axis Ax, Ay, Az(m)].
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display this help message.
+        old_version_flag: Allows for the old version of the sorter to run.
+        segment_size: Setting the size of the segment of the matrix that is\
+            read in one at a time.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PossumMatrixOutputs`).
     """

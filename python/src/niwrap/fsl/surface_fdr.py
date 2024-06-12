@@ -35,8 +35,8 @@ def surface_fdr(
     Tool to calculate surface FDR correction for vertex analysis.
     
     Args:
-        input_vtk: Input VTK file from vertex analysis
-        runner: Command runner
+        input_vtk: Input VTK file from vertex analysis.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceFdrOutputs`).
     """

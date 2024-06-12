@@ -58,33 +58,33 @@ def v_3d_bandpass(
         in_file: Input file to 3dbandpass.
         lowpass: Lowpass.
         automask: Create a mask from the input dataset.
-        blur: Blur (inside the mask only) with a filter width (fwhm) of 'fff'
+        blur: Blur (inside the mask only) with a filter width (fwhm) of 'fff'\
             millimeters.
-        despike: Despike each time series before other processing. hopefully,
+        despike: Despike each time series before other processing. hopefully,\
             you don't actually need to do this, which is why it is optional.
-        local_pv: Replace each vector by the local principal vector (aka first
-            singular vector) from a neighborhood of radius 'rrr' millimeters. note
-            that the pv time series is l2 normalized. this option is mostly for bob
+        local_pv: Replace each vector by the local principal vector (aka first\
+            singular vector) from a neighborhood of radius 'rrr' millimeters. note\
+            that the pv time series is l2 normalized. this option is mostly for bob\
             cox to have fun with.
         mask: Mask file.
         nfft: Set the fft length [must be a legal value].
-        no_detrend: Skip the quadratic detrending of the input that occurs
-            before the fft-based bandpassing. you would only want to do this if the
+        no_detrend: Skip the quadratic detrending of the input that occurs\
+            before the fft-based bandpassing. you would only want to do this if the\
             dataset had been detrended already in some other program.
-        normalize: Make all output time series have l2 norm = 1 (i.e., sum of
+        normalize: Make all output time series have l2 norm = 1 (i.e., sum of\
             squares = 1).
-        notrans: Don't check for initial positive transients in the data. the
-            test is a little slow, so skipping it is ok, if you know the data time
+        notrans: Don't check for initial positive transients in the data. the\
+            test is a little slow, so skipping it is ok, if you know the data time\
             series are transient-free.
-        orthogonalize_dset: Orthogonalize each voxel to the corresponding voxel
-            time series in dataset 'fset', which must have the same spatial and
-            temporal grid structure as the main input dataset. at present, only one
+        orthogonalize_dset: Orthogonalize each voxel to the corresponding voxel\
+            time series in dataset 'fset', which must have the same spatial and\
+            temporal grid structure as the main input dataset. at present, only one\
             '-dsort' option is allowed.
-        orthogonalize_file: Also orthogonalize input to columns in f.1d.
+        orthogonalize_file: Also orthogonalize input to columns in f.1d.\
             multiple '-ort' options are allowed.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         tr: Set time step (tr) in sec [default=from dataset header].
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dBandpassOutputs`).
     """

@@ -79,36 +79,36 @@ def cifti_extrema(
     dconn, if it is symmetric use COLUMN, otherwise use ROW.
     
     Args:
-        cifti: the input cifti
-        surface_distance: the minimum distance between extrema of the same type,
-            for surface components
-        volume_distance: the minimum distance between extrema of the same type,
-            for volume components
-        direction: which dimension to find extrema along, ROW or COLUMN
-        cifti_out: the output cifti
-        opt_left_surface_surface: specify the left surface to use: the left
-            surface file
-        opt_right_surface_surface: specify the right surface to use: the right
-            surface file
-        opt_cerebellum_surface_surface: specify the cerebellum surface to use:
-            the cerebellum surface file
-        opt_surface_presmooth_surface_kernel: smooth on the surface before
-            finding extrema: the size of the gaussian surface smoothing kernel in
-            mm, as sigma by default
-        opt_volume_presmooth_volume_kernel: smooth volume components before
-            finding extrema: the size of the gaussian volume smoothing kernel in mm,
-            as sigma by default
-        opt_presmooth_fwhm: smoothing kernel distances are FWHM, not sigma
-        threshold: ignore small extrema
-        opt_merged_volume: treat volume components as if they were a single
-            component
-        opt_sum_maps: output the sum of the extrema maps instead of each map
-            separately
-        opt_consolidate_mode: use consolidation of local minima instead of a
-            large neighborhood
-        opt_only_maxima: only find the maxima
-        opt_only_minima: only find the minima
-        runner: Command runner
+        cifti: the input cifti.
+        surface_distance: the minimum distance between extrema of the same\
+            type, for surface components.
+        volume_distance: the minimum distance between extrema of the same type,\
+            for volume components.
+        direction: which dimension to find extrema along, ROW or COLUMN.
+        cifti_out: the output cifti.
+        opt_left_surface_surface: specify the left surface to use: the left\
+            surface file.
+        opt_right_surface_surface: specify the right surface to use: the right\
+            surface file.
+        opt_cerebellum_surface_surface: specify the cerebellum surface to use:\
+            the cerebellum surface file.
+        opt_surface_presmooth_surface_kernel: smooth on the surface before\
+            finding extrema: the size of the gaussian surface smoothing kernel in\
+            mm, as sigma by default.
+        opt_volume_presmooth_volume_kernel: smooth volume components before\
+            finding extrema: the size of the gaussian volume smoothing kernel in\
+            mm, as sigma by default.
+        opt_presmooth_fwhm: smoothing kernel distances are FWHM, not sigma.
+        threshold: ignore small extrema.
+        opt_merged_volume: treat volume components as if they were a single\
+            component.
+        opt_sum_maps: output the sum of the extrema maps instead of each map\
+            separately.
+        opt_consolidate_mode: use consolidation of local minima instead of a\
+            large neighborhood.
+        opt_only_maxima: only find the maxima.
+        opt_only_minima: only find the minima.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiExtremaOutputs`).
     """

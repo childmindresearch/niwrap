@@ -56,7 +56,7 @@ def v_3d_degree_centrality(
         polort: No description provided.
         sparsity: Only take the top percent of connections.
         thresh: Threshold to exclude connections where corr <= thresh.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dDegreeCentralityOutputs`).
     """

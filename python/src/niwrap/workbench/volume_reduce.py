@@ -83,13 +83,13 @@ def volume_reduce(
     .
     
     Args:
-        volume_in: the volume file to reduce
-        operation: the reduction operator to use
-        volume_out: the output volume
-        exclude_outliers: exclude non-numeric values and outliers by standard
-            deviation
-        opt_only_numeric: exclude non-numeric values
-        runner: Command runner
+        volume_in: the volume file to reduce.
+        operation: the reduction operator to use.
+        volume_out: the output volume.
+        exclude_outliers: exclude non-numeric values and outliers by standard\
+            deviation.
+        opt_only_numeric: exclude non-numeric values.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeReduceOutputs`).
     """

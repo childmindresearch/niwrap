@@ -41,11 +41,11 @@ def label_mask(
     specified input column.
     
     Args:
-        label: the label file to mask
-        mask: the mask metric
-        label_out: the output label file
-        opt_column_column: select a single column: the column number or name
-        runner: Command runner
+        label: the label file to mask.
+        mask: the mask metric.
+        label_out: the output label file.
+        opt_column_column: select a single column: the column number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `LabelMaskOutputs`).
     """

@@ -34,8 +34,8 @@ def surface_information(
     triangles, bounding box, and spacing.
     
     Args:
-        surface_file: Surface for which information is displayed
-        runner: Command runner
+        surface_file: Surface for which information is displayed.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceInformationOutputs`).
     """

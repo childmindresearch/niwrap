@@ -30,10 +30,10 @@ def proj_thresh(
     A tool to apply a threshold to either volumes or surfaces.
     
     Args:
-        input_paths: Paths to volume or surface files. Please use either volumes
-            or surfaces but not both.
+        input_paths: Paths to volume or surface files. Please use either\
+            volumes or surfaces but not both.
         threshold: Threshold value to be applied.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ProjThreshOutputs`).
     """

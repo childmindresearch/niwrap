@@ -54,30 +54,31 @@ def asl_mfree(
     ASL model-free analysis tool.
     
     Args:
-        datafile: ASL data file
-        mask: Mask file
-        out: Output directory name
-        aif: Arterial input functions for deconvolution (4D volume, one aif for
-            each voxel within mask)
-        dt: Temporal spacing in data (s)
-        metric: Metric image file (optional)
-        mthresh: Metric threshold (optional)
-        tcorrect: Apply correction for timing difference between AIF and tissue
-            curve (optional)
-        bata: Arterial BAT image (optional)
-        batt: Tissue BAT image (optional)
-        bat: Estimate tissue BAT from data and save this image (optional)
-        bat_grad_thr: Edge detection gradient threshold (default: 0.2, optional)
-        t1: T1 (of blood) value (optional)
-        fa: Flip angle (if using LL readout, optional)
-        std: Calculate standard deviations on perfusion values using wild
-            bootstrapping (optional)
-        nwb: Number of permutations for wild bootstrapping (optional)
-        turbo_quasar: Specify this is a Turbo QUASAR Sequence (optional)
-        shift_factor: Slice shifting factor in Turbo QUASAR (default value: 1,
-            optional)
-        verbose: Enable verbose mode
-        runner: Command runner
+        datafile: ASL data file.
+        mask: Mask file.
+        out: Output directory name.
+        aif: Arterial input functions for deconvolution (4D volume, one aif for\
+            each voxel within mask).
+        dt: Temporal spacing in data (s).
+        metric: Metric image file (optional).
+        mthresh: Metric threshold (optional).
+        tcorrect: Apply correction for timing difference between AIF and tissue\
+            curve (optional).
+        bata: Arterial BAT image (optional).
+        batt: Tissue BAT image (optional).
+        bat: Estimate tissue BAT from data and save this image (optional).
+        bat_grad_thr: Edge detection gradient threshold (default: 0.2,\
+            optional).
+        t1: T1 (of blood) value (optional).
+        fa: Flip angle (if using LL readout, optional).
+        std: Calculate standard deviations on perfusion values using wild\
+            bootstrapping (optional).
+        nwb: Number of permutations for wild bootstrapping (optional).
+        turbo_quasar: Specify this is a Turbo QUASAR Sequence (optional).
+        shift_factor: Slice shifting factor in Turbo QUASAR (default value: 1,\
+            optional).
+        verbose: Enable verbose mode.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AslMfreeOutputs`).
     """

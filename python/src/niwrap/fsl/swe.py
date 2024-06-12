@@ -83,52 +83,53 @@ def swe(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        input_file: 4D input image
-        output_root: Output file root name
-        design_mat: Design matrix file
-        design_con: T contrasts file
-        design_sub: Subjects file
-        mask: Mask image
-        fcon: F contrasts file
-        modified: Use the modified 'Homogeneous' SwE instead of the classic
-            'Heterogeneous' SwE
-        wild_bootstrap: Inference using a non-parametric Wild Bootstrap
-            procedure
-        logp: Return -log_10(p) images instead of 1-p images
-        nboot: Number of bootstraps (default 999)
-        corrp: Output voxelwise corrected p-value images
-        fonly: Calculate f-statistics only
-        tfce: Threshold-Free Cluster Enhancement
-        tfce_2d: Threshold-Free Cluster Enhancement with 2D optimisation, e.g.
-            for TBSS data (H=2, E=1, C=26)
-        cluster_t: Cluster-extent-based inference for t-contrasts with specified
-            cluster-forming threshold (z-score if >= 1, uncorrected p-value if < 1)
-        cluster_t_mass: Cluster-mass-based inference for t-contrasts with
-            specified cluster-forming threshold (z-score if >= 1, uncorrected
-            p-value if < 1)
-        cluster_f: Cluster-extent-based inference for f-contrasts with specified
-            cluster-forming threshold (chi-squared-score if >= 1, uncorrected
-            p-value if < 1)
-        cluster_f_mass: Cluster-mass-based inference for f-contrasts with
-            specified cluster-forming threshold (chi-squared-score if >= 1,
-            uncorrected p-value if < 1)
-        quiet: Switch off diagnostic messages
-        raw: Output raw voxelwise statistic images
-        equiv: Output equivalent z or chi-squared statistic images
-        dof: Output effective number of degrees of freedom images
-        uncorr_p: Output uncorrected p-value images
-        null_dist: Output null distribution text files
-        no_rc_mask: Don't remove constant voxels from mask
-        seed: Specific integer seed for random number generator
-        tfce_h: TFCE height parameter (default=2)
-        tfce_d: TFCE delta parameter override
-        tfce_e: TFCE extent parameter (default=0.5)
-        tfce_c: TFCE connectivity (6 or 26; default=6)
-        voxelwise_ev: List of numbers indicating voxelwise EVs position in the
-            design matrix
-        voxelwise_evs: List of 4D images containing voxelwise EVs
-        glm_output: Output GLM information (pe, cope, & varcope)
-        runner: Command runner
+        input_file: 4D input image.
+        output_root: Output file root name.
+        design_mat: Design matrix file.
+        design_con: T contrasts file.
+        design_sub: Subjects file.
+        mask: Mask image.
+        fcon: F contrasts file.
+        modified: Use the modified 'Homogeneous' SwE instead of the classic\
+            'Heterogeneous' SwE.
+        wild_bootstrap: Inference using a non-parametric Wild Bootstrap\
+            procedure.
+        logp: Return -log_10(p) images instead of 1-p images.
+        nboot: Number of bootstraps (default 999).
+        corrp: Output voxelwise corrected p-value images.
+        fonly: Calculate f-statistics only.
+        tfce: Threshold-Free Cluster Enhancement.
+        tfce_2d: Threshold-Free Cluster Enhancement with 2D optimisation, e.g.\
+            for TBSS data (H=2, E=1, C=26).
+        cluster_t: Cluster-extent-based inference for t-contrasts with\
+            specified cluster-forming threshold (z-score if >= 1, uncorrected\
+            p-value if < 1).
+        cluster_t_mass: Cluster-mass-based inference for t-contrasts with\
+            specified cluster-forming threshold (z-score if >= 1, uncorrected\
+            p-value if < 1).
+        cluster_f: Cluster-extent-based inference for f-contrasts with\
+            specified cluster-forming threshold (chi-squared-score if >= 1,\
+            uncorrected p-value if < 1).
+        cluster_f_mass: Cluster-mass-based inference for f-contrasts with\
+            specified cluster-forming threshold (chi-squared-score if >= 1,\
+            uncorrected p-value if < 1).
+        quiet: Switch off diagnostic messages.
+        raw: Output raw voxelwise statistic images.
+        equiv: Output equivalent z or chi-squared statistic images.
+        dof: Output effective number of degrees of freedom images.
+        uncorr_p: Output uncorrected p-value images.
+        null_dist: Output null distribution text files.
+        no_rc_mask: Don't remove constant voxels from mask.
+        seed: Specific integer seed for random number generator.
+        tfce_h: TFCE height parameter (default=2).
+        tfce_d: TFCE delta parameter override.
+        tfce_e: TFCE extent parameter (default=0.5).
+        tfce_c: TFCE connectivity (6 or 26; default=6).
+        voxelwise_ev: List of numbers indicating voxelwise EVs position in the\
+            design matrix.
+        voxelwise_evs: List of 4D images containing voxelwise EVs.
+        glm_output: Output GLM information (pe, cope, & varcope).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SweOutputs`).
     """

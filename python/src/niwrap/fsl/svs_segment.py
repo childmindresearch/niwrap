@@ -43,16 +43,16 @@ def svs_segment(
     SVS voxel and generate a tissue segmentation file.
     
     Args:
-        svs_file: SVS nifti file
-        t1_file: T1 nifti file
-        anat_dir: fsl_anat output directory
-        output_dir: Output directory
-        filename_stem: File name stem. _mask.nii.gz or _segmentation.json will
+        svs_file: SVS nifti file.
+        t1_file: T1 nifti file.
+        anat_dir: fsl_anat output directory.
+        output_dir: Output directory.
+        filename_stem: File name stem. _mask.nii.gz or _segmentation.json will\
             be added.
-        mask_only_flag: Only perform masking stage, do not run fsl_anat if only
+        mask_only_flag: Only perform masking stage, do not run fsl_anat if only\
             T1 passed.
         no_clean_flag: Don't clean intermediate output.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SvsSegmentOutputs`).
     """

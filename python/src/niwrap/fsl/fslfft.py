@@ -36,10 +36,10 @@ def fslfft(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FT
     
     Args:
-        input_volume: Input volume file (e.g. invol.nii.gz)
-        output_volume: Output volume file (e.g. outvol.nii.gz)
-        inverse_flag: Flag to perform the inverse Fourier transform
-        runner: Command runner
+        input_volume: Input volume file (e.g. invol.nii.gz).
+        output_volume: Output volume file (e.g. outvol.nii.gz).
+        inverse_flag: Flag to perform the inverse Fourier transform.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslfftOutputs`).
     """

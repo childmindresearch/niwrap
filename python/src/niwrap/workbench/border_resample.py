@@ -40,13 +40,13 @@ def border_resample(
     resampled.
     
     Args:
-        border_in: the border file to resample
-        current_sphere: a sphere surface with the mesh that the metric is
-            currently on
-        new_sphere: a sphere surface that is in register with <current-sphere>
-            and has the desired output mesh
-        border_out: the output border file
-        runner: Command runner
+        border_in: the border file to resample.
+        current_sphere: a sphere surface with the mesh that the metric is\
+            currently on.
+        new_sphere: a sphere surface that is in register with <current-sphere>\
+            and has the desired output mesh.
+        border_out: the output border file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BorderResampleOutputs`).
     """

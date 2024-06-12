@@ -43,18 +43,18 @@ def img2imgcoord(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT
     
     Args:
-        coordinates_file: Filename containing coordinates
-        source_image: Filename of source image
-        dest_image: Filename of destination image
-        affine_transform: Filename of affine transform (e.g. source2dest.mat)
-        warp_field: Filename of warpfield (e.g. intermediate2dest_warp.nii.gz)
-        pre_warp_affine: Filename of pre-warp affine transform
-            (default=identity)
-        coords_in_voxels: All coordinates in voxels (default)
-        coords_in_mm: All coordinates in mm
-        verbose: Verbose mode
-        help_: Display help message
-        runner: Command runner
+        coordinates_file: Filename containing coordinates.
+        source_image: Filename of source image.
+        dest_image: Filename of destination image.
+        affine_transform: Filename of affine transform (e.g. source2dest.mat).
+        warp_field: Filename of warpfield (e.g. intermediate2dest_warp.nii.gz).
+        pre_warp_affine: Filename of pre-warp affine transform\
+            (default=identity).
+        coords_in_voxels: All coordinates in voxels (default).
+        coords_in_mm: All coordinates in mm.
+        verbose: Verbose mode.
+        help_: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Img2imgcoordOutputs`).
     """

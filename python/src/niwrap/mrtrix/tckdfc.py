@@ -152,38 +152,38 @@ def tckdfc(
     
     Args:
         tracks: the input track file.
-        fmri: the pre-processed fMRI time series
-        output: the output TW-dFC image
+        fmri: the pre-processed fMRI time series.
+        output: the output TW-dFC image.
         static: generate a "static" (3D) output image.
-        dynamic: generate a "dynamic" (4D) output image; must additionally
+        dynamic: generate a "dynamic" (4D) output image; must additionally\
             provide the shape and width (in volumes) of the sliding window.
-        template: an image file to be used as a template for the output (the
+        template: an image file to be used as a template for the output (the\
             output image will have the same transform and field of view).
-        vox: provide either an isotropic voxel size (in mm), or comma-separated
+        vox: provide either an isotropic voxel size (in mm), or comma-separated\
             list of 3 voxel dimensions.
-        stat_vox: define the statistic for choosing the final voxel intensities
-            for a given contrast type given the individual values from the tracks
-            passing through each voxel
-            Options are: sum, min, mean, max (default: mean)
-        backtrack: if no valid timeseries is found at the streamline endpoint,
-            back-track along the streamline trajectory until a valid timeseries is
-            found
-        upsample: upsample the tracks by some ratio using Hermite interpolation
-            before mapping (if omitted, an appropriate ratio will be determined
-            automatically)
+        stat_vox: define the statistic for choosing the final voxel intensities\
+            for a given contrast type given the individual values from the tracks\
+            passing through each voxel\
+            Options are: sum, min, mean, max (default: mean).
+        backtrack: if no valid timeseries is found at the streamline endpoint,\
+            back-track along the streamline trajectory until a valid timeseries is\
+            found.
+        upsample: upsample the tracks by some ratio using Hermite interpolation\
+            before mapping (if omitted, an appropriate ratio will be determined\
+            automatically).
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TckdfcOutputs`).
     """

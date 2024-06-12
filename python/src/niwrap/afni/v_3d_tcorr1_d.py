@@ -54,7 +54,7 @@ def v_3d_tcorr1_d(
         pearson: Correlation is the normal pearson correlation coefficient.
         quadrant: Correlation is the quadrant correlation coefficient.
         spearman: Correlation is the spearman (rank) correlation coefficient.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dTcorr1DOutputs`).
     """

@@ -40,10 +40,10 @@ def gifti_convert(
     EXTERNAL_FILE_BINARY.
     
     Args:
-        gifti_encoding: what the output encoding should be
-        input_gifti_file: the input gifti file
-        output_gifti_file: output - the output gifti file
-        runner: Command runner
+        gifti_encoding: what the output encoding should be.
+        input_gifti_file: the input gifti file.
+        output_gifti_file: output - the output gifti file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `GiftiConvertOutputs`).
     """

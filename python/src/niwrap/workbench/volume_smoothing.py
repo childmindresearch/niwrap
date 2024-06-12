@@ -51,17 +51,17 @@ def volume_smoothing(
     the intensity of nearby voxels, while giving the zero an extrapolated value.
     
     Args:
-        volume_in: the volume to smooth
-        kernel: the size of the gaussian smoothing kernel in mm, as sigma by
-            default
-        volume_out: the output volume
-        opt_fwhm: kernel size is FWHM, not sigma
-        opt_roi_roivol: smooth only from data within an ROI: the volume to use
-            as an ROI
-        opt_fix_zeros: treat zero values as not being data
-        opt_subvolume_subvol: select a single subvolume to smooth: the subvolume
-            number or name
-        runner: Command runner
+        volume_in: the volume to smooth.
+        kernel: the size of the gaussian smoothing kernel in mm, as sigma by\
+            default.
+        volume_out: the output volume.
+        opt_fwhm: kernel size is FWHM, not sigma.
+        opt_roi_roivol: smooth only from data within an ROI: the volume to use\
+            as an ROI.
+        opt_fix_zeros: treat zero values as not being data.
+        opt_subvolume_subvol: select a single subvolume to smooth: the\
+            subvolume number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeSmoothingOutputs`).
     """

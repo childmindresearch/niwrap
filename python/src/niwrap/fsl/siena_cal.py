@@ -41,7 +41,7 @@ def siena_cal(
         input2_file: Second input image file root (e.g., follow-up image root).
         scale: Voxel size scaling factor.
         siena_diff_options: Optional SIENA difference options.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SienaCalOutputs`).
     """

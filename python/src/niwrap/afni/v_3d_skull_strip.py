@@ -44,7 +44,7 @@ def v_3d_skull_strip(
         in_file: Input file to 3dskullstrip.
         num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dSkullStripOutputs`).
     """

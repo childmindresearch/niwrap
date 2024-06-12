@@ -34,8 +34,8 @@ def fslinfo(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        filename: Input NIFTI-1 image file (e.g. img.nii.gz)
-        runner: Command runner
+        filename: Input NIFTI-1 image file (e.g. img.nii.gz).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslinfoOutputs`).
     """

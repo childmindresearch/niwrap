@@ -44,16 +44,16 @@ def prepare_fieldmap(
     
     Args:
         in_magnitude: Magnitude difference map, brain extracted.
-        in_phase: Phase difference map, in siemens format range from 0-4096 or
+        in_phase: Phase difference map, in siemens format range from 0-4096 or\
             0-8192).
-        delta_te: Echo time difference of the fieldmap sequence in ms. (usually
+        delta_te: Echo time difference of the fieldmap sequence in ms. (usually\
             2.46ms in siemens).
         nocheck: Do not perform sanity checks for image size/range/dimensions.
         out_fieldmap: Output name for prepared fieldmap.
-        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
             Fsl output type.
         scanner: Must be siemens.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PrepareFieldmapOutputs`).
     """

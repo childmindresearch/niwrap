@@ -42,11 +42,12 @@ def cifti_parcel_mapping_to_label(
     <direction> will work.
     
     Args:
-        cifti_in: the input parcellated file
-        direction: which dimension to take the parcel map from, ROW or COLUMN
-        template_cifti: a cifti file with the desired dense mapping along column
-        dlabel_out: the output dense label file
-        runner: Command runner
+        cifti_in: the input parcellated file.
+        direction: which dimension to take the parcel map from, ROW or COLUMN.
+        template_cifti: a cifti file with the desired dense mapping along\
+            column.
+        dlabel_out: the output dense label file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiParcelMappingToLabelOutputs`).
     """

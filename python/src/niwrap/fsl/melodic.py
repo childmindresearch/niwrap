@@ -93,69 +93,69 @@ def melodic(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MELODIC
     
     Args:
-        input_file: Input file names (either single file name or comma-separated
-            list or text file)
-        output_directory: Output directory name
-        mask_file: File name of mask for thresholding
-        dimensionality_reduction: Dimensionality reduction into specified number
-            of dimensions (default is automatic estimation)
-        generate_report: Generate Melodic web report
-        cifti_io: Input/output as CIFTI (warning: auto-dimensionality estimation
-            for CIFTI data is currently inaccurate)
-        variance_normalization: Switch off variance normalization
-        no_masking: Switch off masking
-        update_masking: Switch off mask updating
-        no_bet: Switch off BET
-        bg_threshold: Brain / non-brain threshold (only if --nobet selected)
-        dimest_technique: Use specific dimensionality estimation technique: lap,
-            bic, mdl, aic, mean (default: lap)
-        separate_variance_normalization: Switch on separate variance
-            normalization for each input dataset (off by default)
-        disable_migp: Switch off MIGP data reduction when using -a concat (full
-            temporal concatenation will be used)
-        num_internal_eigenmaps: Number of internal Eigenmaps
-        migp_shuffle: Randomize MIGP file order (default: TRUE)
-        migp_factor: Internal Factor of mem-threshold relative to number of
-            Eigenmaps (default: 2)
-        num_ics: Number of ICs to extract (for deflation approach)
-        nonlinearity: Nonlinearity: gauss, tanh, pow3 (default), pow4
-        covar_weights: Voxel-wise weights for the covariance matrix (e.g.
-            segmentation information)
-        eps_error: Minimum error change
-        eps_rank1_error: Minimum error change for rank-1 approximation in TICA
-        max_iters: Maximum number of iterations before restart
-        max_restarts: Maximum number of restarts
-        mm_threshold: Threshold for Mixture Model based inference
-        no_mixture_modeling: Switch off mixture modeling on IC maps
-        ic_components_file: Input filename of the IC components file for mixture
-            modeling
-        mixing_matrix_file: Input filename of mixing matrix for mixture modeling
-            / filtering
-        session_modes_file: Input filename of matrix of session modes for report
-            generation
-        component_filter: List of component numbers to remove
-        background_image: Specify background image for report (default: mean
-            image)
-        tr_seconds: TR in seconds
-        log_power_calc: Calculate log of power for frequency spectrum
-        time_domain_design_matrix: Design matrix across time-domain
-        time_domain_t_contrast_matrix: T-contrast matrix across time-domain
-        subject_domain_design_matrix: Design matrix across subject-domain
-        subject_domain_t_contrast_matrix: T-contrast matrix across
-            subject-domain
-        output_unmixing_matrix: Output unmixing matrix
-        output_stats: Output thresholded maps and probability maps
-        output_pca: Output PCA results
-        output_whitening: Output whitening/dewhitening matrices
-        output_original_ics: Output the original ICs
-        output_mean_volume: Output mean volume
-        version: Prints version information
-        copyright_: Prints copyright information
-        help_: Prints this help message
-        debug: Switch on debug messages
-        report_maps: Control string for spatial map images (see slicer)
-        keep_meanvol: Do not subtract mean volume
-        runner: Command runner
+        input_file: Input file names (either single file name or\
+            comma-separated list or text file).
+        output_directory: Output directory name.
+        mask_file: File name of mask for thresholding.
+        dimensionality_reduction: Dimensionality reduction into specified\
+            number of dimensions (default is automatic estimation).
+        generate_report: Generate Melodic web report.
+        cifti_io: Input/output as CIFTI (warning: auto-dimensionality\
+            estimation for CIFTI data is currently inaccurate).
+        variance_normalization: Switch off variance normalization.
+        no_masking: Switch off masking.
+        update_masking: Switch off mask updating.
+        no_bet: Switch off BET.
+        bg_threshold: Brain / non-brain threshold (only if --nobet selected).
+        dimest_technique: Use specific dimensionality estimation technique:\
+            lap, bic, mdl, aic, mean (default: lap).
+        separate_variance_normalization: Switch on separate variance\
+            normalization for each input dataset (off by default).
+        disable_migp: Switch off MIGP data reduction when using -a concat (full\
+            temporal concatenation will be used).
+        num_internal_eigenmaps: Number of internal Eigenmaps.
+        migp_shuffle: Randomize MIGP file order (default: TRUE).
+        migp_factor: Internal Factor of mem-threshold relative to number of\
+            Eigenmaps (default: 2).
+        num_ics: Number of ICs to extract (for deflation approach).
+        nonlinearity: Nonlinearity: gauss, tanh, pow3 (default), pow4.
+        covar_weights: Voxel-wise weights for the covariance matrix (e.g.\
+            segmentation information).
+        eps_error: Minimum error change.
+        eps_rank1_error: Minimum error change for rank-1 approximation in TICA.
+        max_iters: Maximum number of iterations before restart.
+        max_restarts: Maximum number of restarts.
+        mm_threshold: Threshold for Mixture Model based inference.
+        no_mixture_modeling: Switch off mixture modeling on IC maps.
+        ic_components_file: Input filename of the IC components file for\
+            mixture modeling.
+        mixing_matrix_file: Input filename of mixing matrix for mixture\
+            modeling / filtering.
+        session_modes_file: Input filename of matrix of session modes for\
+            report generation.
+        component_filter: List of component numbers to remove.
+        background_image: Specify background image for report (default: mean\
+            image).
+        tr_seconds: TR in seconds.
+        log_power_calc: Calculate log of power for frequency spectrum.
+        time_domain_design_matrix: Design matrix across time-domain.
+        time_domain_t_contrast_matrix: T-contrast matrix across time-domain.
+        subject_domain_design_matrix: Design matrix across subject-domain.
+        subject_domain_t_contrast_matrix: T-contrast matrix across\
+            subject-domain.
+        output_unmixing_matrix: Output unmixing matrix.
+        output_stats: Output thresholded maps and probability maps.
+        output_pca: Output PCA results.
+        output_whitening: Output whitening/dewhitening matrices.
+        output_original_ics: Output the original ICs.
+        output_mean_volume: Output mean volume.
+        version: Prints version information.
+        copyright_: Prints copyright information.
+        help_: Prints this help message.
+        debug: Switch on debug messages.
+        report_maps: Control string for spatial map images (see slicer).
+        keep_meanvol: Do not subtract mean volume.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MelodicOutputs`).
     """

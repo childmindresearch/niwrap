@@ -37,9 +37,9 @@ def fsl_gen_3_d(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
     
     Args:
-        infile: Input structural image (e.g. input.nii.gz)
-        outfile: Output 3D snapshot image (e.g. output.png)
-        runner: Command runner
+        infile: Input structural image (e.g. input.nii.gz).
+        outfile: Output 3D snapshot image (e.g. output.png).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslGen3DOutputs`).
     """

@@ -63,28 +63,29 @@ def metric_dilate(
     -exponent 2'.
     
     Args:
-        metric: the metric to dilate
-        surface: the surface to compute on
-        distance: distance in mm to dilate
-        metric_out: the output metric
-        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,
-            rather than vertices with value zero: metric file, positive values
-            denote vertices to have their values replaced
-        opt_data_roi_roi_metric: specify an roi of where there is data: metric
-            file, positive values denote vertices that have data
-        opt_column_column: select a single column to dilate: the column number
-            or name
-        opt_nearest: use the nearest good value instead of a weighted average
-        opt_linear: fill in values with linear interpolation along strongest
-            gradient
-        opt_exponent_exponent: use a different exponent in the weighting
-            function: exponent 'n' to use in (area / (distance ^ n)) as the
-            weighting function (default 6)
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        opt_legacy_cutoff: use the v1.3.2 method of choosing how many vertices
-            to use when calulating the dilated value with weighted method
-        runner: Command runner
+        metric: the metric to dilate.
+        surface: the surface to compute on.
+        distance: distance in mm to dilate.
+        metric_out: the output metric.
+        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,\
+            rather than vertices with value zero: metric file, positive values\
+            denote vertices to have their values replaced.
+        opt_data_roi_roi_metric: specify an roi of where there is data: metric\
+            file, positive values denote vertices that have data.
+        opt_column_column: select a single column to dilate: the column number\
+            or name.
+        opt_nearest: use the nearest good value instead of a weighted average.
+        opt_linear: fill in values with linear interpolation along strongest\
+            gradient.
+        opt_exponent_exponent: use a different exponent in the weighting\
+            function: exponent 'n' to use in (area / (distance ^ n)) as the\
+            weighting function (default 6).
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        opt_legacy_cutoff: use the v1.3.2 method of choosing how many vertices\
+            to use when calulating the dilated value with weighted method.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricDilateOutputs`).
     """

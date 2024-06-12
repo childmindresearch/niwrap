@@ -44,17 +44,17 @@ def tbss_skeleton(
     https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide#Step_4:_tbss_skeleton
     
     Args:
-        input_image: Input image
-        output_image: Output skeleton image
-        skeleton_params: Skeleton threshold, distance map, search rule mask, 4D
-            data and projected 4D data in that order
-        alternative_4ddata: Alternative 4D data (e.g., L1)
-        alternative_skeleton: Alternative skeleton
-        help_flag: Display help message
-        debug_flag: Enable debugging image outputs
-        debug2_flag: De-project skelpoints points on skeleton back to all_FA
-            space
-        runner: Command runner
+        input_image: Input image.
+        output_image: Output skeleton image.
+        skeleton_params: Skeleton threshold, distance map, search rule mask, 4D\
+            data and projected 4D data in that order.
+        alternative_4ddata: Alternative 4D data (e.g., L1).
+        alternative_skeleton: Alternative skeleton.
+        help_flag: Display help message.
+        debug_flag: Enable debugging image outputs.
+        debug2_flag: De-project skelpoints points on skeleton back to all_FA\
+            space.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TbssSkeletonOutputs`).
     """

@@ -37,9 +37,9 @@ def fslpspec(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
     
     Args:
-        infile: Input 4D fMRI time series image (e.g. fMRI_data.nii.gz)
-        outfile: Output power spectrum image (e.g. pspec_data.nii.gz)
-        runner: Command runner
+        infile: Input 4D fMRI time series image (e.g. fMRI_data.nii.gz).
+        outfile: Output power spectrum image (e.g. pspec_data.nii.gz).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslpspecOutputs`).
     """

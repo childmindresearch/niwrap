@@ -33,11 +33,11 @@ def aff2rigid(
     Tool for converting affine transformations to rigid transformations.
     
     Args:
-        input_transform: Input FLIRT transform (12 DOF) from the input image to
+        input_transform: Input FLIRT transform (12 DOF) from the input image to\
             standard space.
-        output_transform: Output matrix which will convert the input image to
+        output_transform: Output matrix which will convert the input image to\
             standard space using a 6 DOF transformation.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Aff2rigidOutputs`).
     """

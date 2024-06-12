@@ -184,35 +184,35 @@ def tckresample(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/tckresample.html
     
     Args:
-        in_tracks: the input track file
-        out_tracks: the output resampled tracks
-        upsample: increase the density of points along the length of each
-            streamline by some factor (may improve mapping streamlines to ROIs,
-            and/or visualisation)
-        downsample: increase the density of points along the length of each
-            streamline by some factor (decreases required storage space)
-        step_size: re-sample the streamlines to a desired step size (in mm)
-        num_points: re-sample each streamline to a fixed number of points
-        endpoints: only output the two endpoints of each streamline
-        line: resample tracks at 'num' equidistant locations along a line
-            between 'start' and 'end' (specified as comma-separated 3-vectors in
-            scanner coordinates)
-        arc: resample tracks at 'num' equidistant locations along a circular arc
-            specified by points 'start', 'mid' and 'end' (specified as
-            comma-separated 3-vectors in scanner coordinates)
+        in_tracks: the input track file.
+        out_tracks: the output resampled tracks.
+        upsample: increase the density of points along the length of each\
+            streamline by some factor (may improve mapping streamlines to ROIs,\
+            and/or visualisation).
+        downsample: increase the density of points along the length of each\
+            streamline by some factor (decreases required storage space).
+        step_size: re-sample the streamlines to a desired step size (in mm).
+        num_points: re-sample each streamline to a fixed number of points.
+        endpoints: only output the two endpoints of each streamline.
+        line: resample tracks at 'num' equidistant locations along a line\
+            between 'start' and 'end' (specified as comma-separated 3-vectors in\
+            scanner coordinates).
+        arc: resample tracks at 'num' equidistant locations along a circular\
+            arc specified by points 'start', 'mid' and 'end' (specified as\
+            comma-separated 3-vectors in scanner coordinates).
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TckresampleOutputs`).
     """

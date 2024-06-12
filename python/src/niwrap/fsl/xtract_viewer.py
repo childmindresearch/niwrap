@@ -35,16 +35,16 @@ def xtract_viewer(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/XTRACT
     
     Args:
-        xtract_dir: Path to XTRACT output folder
-        species: Species type (HUMAN or MACAQUE)
-        brain_image: The brain image to use for the background overlay - must be
-            in the same space as tracts. Default is the FSL_HCP065_FA map for HUMAN
-            and F99 T1 brain for MACAQUE
-        structures: Structures (comma separated, default = display all that is
-            found in input folder)
-        thresholds: The lower and upper thresholds applied to the tracts for
-            viewing. Default = 0.001 0.1
-        runner: Command runner
+        xtract_dir: Path to XTRACT output folder.
+        species: Species type (HUMAN or MACAQUE).
+        brain_image: The brain image to use for the background overlay - must\
+            be in the same space as tracts. Default is the FSL_HCP065_FA map for\
+            HUMAN and F99 T1 brain for MACAQUE.
+        structures: Structures (comma separated, default = display all that is\
+            found in input folder).
+        thresholds: The lower and upper thresholds applied to the tracts for\
+            viewing. Default = 0.001 0.1.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `XtractViewerOutputs`).
     """

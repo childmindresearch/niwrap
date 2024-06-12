@@ -67,48 +67,48 @@ def fsl_mrsi(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        data: Input NIFTI file
-        basis: Basis file or folder
-        mask: Mask volume
-        output: Output folder
-        algo: Algorithm [Newton (fast, default) or MH (slow)]
-        ignore_metab: Ignore certain metabolites [repeatable]
-        keep_metab: Only keep these metabolites
-        combine_metab: Combine certain metabolites [repeatable]
-        ppmlim: Limit the fit to a frequency range
-        h2o: Input .H2O file for quantification
-        baseline_order: Order of baseline polynomial (default=2, -1 disables)
-        metab_groups: Metabolite groups: list of groups or list of names for
-            independent groups
-        add_mm: Include default macromolecule peaks
-        lorentzian: Enable purely lorentzian broadening (default is Voigt)
-        ind_scale: List of basis spectra to scale independently of other basis
-            spectra
-        disable_mh_priors: Disable MH priors
-        te: Echo time for relaxation correction (ms)
-        tr: Repetition time for relaxation correction (s)
-        tissue_frac: Tissue fraction NIFTI files registered to MRSI volume.
-            Supplied in order: WM, GM, CSF
-        internal_ref: Metabolite(s) used as an internal reference. Defaults to
-            tCr (Cr+PCr)
-        wref_metabolite: Metabolite(s) used as the reference for water scaling.
-            Uses internal defaults otherwise
-        ref_protons: Number of protons that reference metabolite is equivalent
-            to. No effect without setting --wref_metabolite
-        ref_int_limits: Reference spectrum integration limits (low, high). No
-            effect without setting --wref_metabolite
-        h2o_scale: Additional scaling modifier for external water referencing
-        report: Output HTML report
-        verbose: Output verbose information
-        overwrite: Overwrite existing output folder
-        single_proc: Disable parallel processing of voxels
-        conj_fid: Force conjugation of FID
-        no_conj_fid: Forbid automatic conjugation of FID
-        conj_basis: Force conjugation of basis
-        no_conj_basis: Forbid automatic conjugation of basis
-        no_rescale: Forbid rescaling of FID/basis/H2O
-        config: Configuration file
-        runner: Command runner
+        data: Input NIFTI file.
+        basis: Basis file or folder.
+        mask: Mask volume.
+        output: Output folder.
+        algo: Algorithm [Newton (fast, default) or MH (slow)].
+        ignore_metab: Ignore certain metabolites [repeatable].
+        keep_metab: Only keep these metabolites.
+        combine_metab: Combine certain metabolites [repeatable].
+        ppmlim: Limit the fit to a frequency range.
+        h2o: Input .H2O file for quantification.
+        baseline_order: Order of baseline polynomial (default=2, -1 disables).
+        metab_groups: Metabolite groups: list of groups or list of names for\
+            independent groups.
+        add_mm: Include default macromolecule peaks.
+        lorentzian: Enable purely lorentzian broadening (default is Voigt).
+        ind_scale: List of basis spectra to scale independently of other basis\
+            spectra.
+        disable_mh_priors: Disable MH priors.
+        te: Echo time for relaxation correction (ms).
+        tr: Repetition time for relaxation correction (s).
+        tissue_frac: Tissue fraction NIFTI files registered to MRSI volume.\
+            Supplied in order: WM, GM, CSF.
+        internal_ref: Metabolite(s) used as an internal reference. Defaults to\
+            tCr (Cr+PCr).
+        wref_metabolite: Metabolite(s) used as the reference for water scaling.\
+            Uses internal defaults otherwise.
+        ref_protons: Number of protons that reference metabolite is equivalent\
+            to. No effect without setting --wref_metabolite.
+        ref_int_limits: Reference spectrum integration limits (low, high). No\
+            effect without setting --wref_metabolite.
+        h2o_scale: Additional scaling modifier for external water referencing.
+        report: Output HTML report.
+        verbose: Output verbose information.
+        overwrite: Overwrite existing output folder.
+        single_proc: Disable parallel processing of voxels.
+        conj_fid: Force conjugation of FID.
+        no_conj_fid: Forbid automatic conjugation of FID.
+        conj_basis: Force conjugation of basis.
+        no_conj_basis: Forbid automatic conjugation of basis.
+        no_rescale: Forbid rescaling of FID/basis/H2O.
+        config: Configuration file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslMrsiOutputs`).
     """

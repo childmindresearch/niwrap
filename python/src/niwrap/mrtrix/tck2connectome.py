@@ -110,61 +110,61 @@ def tck2connectome(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/tck2connectome.html
     
     Args:
-        tracks_in: the input track file
-        nodes_in: the input node parcellation image
-        connectome_out: the output .csv file containing edge weights
-        assignment_end_voxels: use a simple voxel lookup value at each
-            streamline endpoint
-        assignment_radial_search: perform a radial search from each streamline
-            endpoint to locate the nearest node. Argument is the maximum radius in
-            mm; if no node is found within this radius, the streamline endpoint is
+        tracks_in: the input track file.
+        nodes_in: the input node parcellation image.
+        connectome_out: the output .csv file containing edge weights.
+        assignment_end_voxels: use a simple voxel lookup value at each\
+            streamline endpoint.
+        assignment_radial_search: perform a radial search from each streamline\
+            endpoint to locate the nearest node. Argument is the maximum radius in\
+            mm; if no node is found within this radius, the streamline endpoint is\
             not assigned to any node. Default search distance is 4mm.
-        assignment_reverse_search: traverse from each streamline endpoint
-            inwards along the streamline, in search of the last node traversed by
-            the streamline. Argument is the maximum traversal length in mm (set to 0
-            to allow search to continue to the streamline midpoint).
-        assignment_forward_search: project the streamline forwards from the
-            endpoint in search of a parcellation node voxel. Argument is the maximum
-            traversal length in mm.
-        assignment_all_voxels: assign the streamline to all nodes it intersects
-            along its length (note that this means a streamline may be assigned to
-            more than two nodes, or indeed none at all)
-        scale_length: scale each contribution to the connectome edge by the
-            length of the streamline
-        scale_invlength: scale each contribution to the connectome edge by the
-            inverse of the streamline length
-        scale_invnodevol: scale each contribution to the connectome edge by the
-            inverse of the two node volumes
-        scale_file: scale each contribution to the connectome edge according to
-            the values in a vector file
-        symmetric: Make matrices symmetric on output
-        zero_diagonal: Set matrix diagonal to zero on output
-        stat_edge: statistic for combining the values from all streamlines in an
-            edge into a single scale value for that edge (options are:
-            sum,mean,min,max; default=sum)
-        tck_weights_in: specify a text scalar file containing the streamline
-            weights
-        keep_unassigned: By default, the program discards the information
-            regarding those streamlines that are not successfully assigned to a node
-            pair. Set this option to keep these values (will be the first row/column
-            in the output matrix)
-        out_assignments: output the node assignments of each streamline to a
-            file; this can be used subsequently e.g. by the command connectome2tck
-        vector: output a vector representing connectivities from a given seed
-            point to target nodes, rather than a matrix of node-node connectivities
+        assignment_reverse_search: traverse from each streamline endpoint\
+            inwards along the streamline, in search of the last node traversed by\
+            the streamline. Argument is the maximum traversal length in mm (set to\
+            0 to allow search to continue to the streamline midpoint).
+        assignment_forward_search: project the streamline forwards from the\
+            endpoint in search of a parcellation node voxel. Argument is the\
+            maximum traversal length in mm.
+        assignment_all_voxels: assign the streamline to all nodes it intersects\
+            along its length (note that this means a streamline may be assigned to\
+            more than two nodes, or indeed none at all).
+        scale_length: scale each contribution to the connectome edge by the\
+            length of the streamline.
+        scale_invlength: scale each contribution to the connectome edge by the\
+            inverse of the streamline length.
+        scale_invnodevol: scale each contribution to the connectome edge by the\
+            inverse of the two node volumes.
+        scale_file: scale each contribution to the connectome edge according to\
+            the values in a vector file.
+        symmetric: Make matrices symmetric on output.
+        zero_diagonal: Set matrix diagonal to zero on output.
+        stat_edge: statistic for combining the values from all streamlines in\
+            an edge into a single scale value for that edge (options are:\
+            sum,mean,min,max; default=sum).
+        tck_weights_in: specify a text scalar file containing the streamline\
+            weights.
+        keep_unassigned: By default, the program discards the information\
+            regarding those streamlines that are not successfully assigned to a\
+            node pair. Set this option to keep these values (will be the first\
+            row/column in the output matrix).
+        out_assignments: output the node assignments of each streamline to a\
+            file; this can be used subsequently e.g. by the command connectome2tck.
+        vector: output a vector representing connectivities from a given seed\
+            point to target nodes, rather than a matrix of node-node connectivities.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Tck2connectomeOutputs`).
     """

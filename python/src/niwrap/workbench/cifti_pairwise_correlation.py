@@ -40,13 +40,14 @@ def cifti_pairwise_correlation(
     put the result in the same row of <cifti-out>, which has only one column.
     
     Args:
-        cifti_a: first input cifti file
-        cifti_b: second input cifti file
-        cifti_out: output cifti file
-        opt_fisher_z: apply fisher small z transform (ie, artanh) to correlation
-        opt_override_mapping_check: don't check the mappings for compatibility,
-            only check length
-        runner: Command runner
+        cifti_a: first input cifti file.
+        cifti_b: second input cifti file.
+        cifti_out: output cifti file.
+        opt_fisher_z: apply fisher small z transform (ie, artanh) to\
+            correlation.
+        opt_override_mapping_check: don't check the mappings for compatibility,\
+            only check length.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiPairwiseCorrelationOutputs`).
     """

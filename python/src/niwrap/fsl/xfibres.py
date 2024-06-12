@@ -62,39 +62,39 @@ def xfibres(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide
     
     Args:
-        datafile: Data file (e.g., diffusion data)
-        maskfile: Mask file defining brain voxels
-        bvecs: B vectors file
-        bvals: B values file
-        logdir: Log directory (default is logdir)
-        forcedir: Use the actual directory name given - i.e., don't add + to
-            make a new directory
-        max_fibres: Maximum number of fibres to fit in each voxel (default 1)
-        model: Model to use: 1=deconv. with sticks (default), 2=deconv. with
-            sticks and a range of diffusivities, 3=deconv. with zeppelins
-        fudge: ARD fudge factor
-        num_jumps: Number of jumps to be made by MCMC (default 1250)
-        num_burnin: Total number of jumps at start of MCMC to be discarded
-            (default 1000)
-        burnin_noard: Number of burnin jumps before ARD is imposed (default 0)
-        sampleevery: Number of jumps for each sample (MCMC) (default 25)
-        updateproposal: Number of jumps for each update to the proposal density
-            std (MCMC) (default 40)
-        seed: Seed for pseudo-random number generator
-        noard: Turn ARD off on all fibres
-        allard: Turn ARD on all fibres
-        nospat: Initialize with tensor, not spatially
-        nonlinear: Initialize with nonlinear fitting
-        cnonlinear: Initialize with constrained nonlinear fitting
-        rician: Use Rician noise modelling
-        add_f0: Add to the model an unattenuated signal compartment
-        ard_f0: Use ARD on F0
-        rmean: Set the prior mean for R of model 3 (default: 0.13 - must be
-            <0.5)
-        rstd: Set the prior standard deviation for R of model 3 (default: 0.03)
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help message
-        runner: Command runner
+        datafile: Data file (e.g., diffusion data).
+        maskfile: Mask file defining brain voxels.
+        bvecs: B vectors file.
+        bvals: B values file.
+        logdir: Log directory (default is logdir).
+        forcedir: Use the actual directory name given - i.e., don't add + to\
+            make a new directory.
+        max_fibres: Maximum number of fibres to fit in each voxel (default 1).
+        model: Model to use: 1=deconv. with sticks (default), 2=deconv. with\
+            sticks and a range of diffusivities, 3=deconv. with zeppelins.
+        fudge: ARD fudge factor.
+        num_jumps: Number of jumps to be made by MCMC (default 1250).
+        num_burnin: Total number of jumps at start of MCMC to be discarded\
+            (default 1000).
+        burnin_noard: Number of burnin jumps before ARD is imposed (default 0).
+        sampleevery: Number of jumps for each sample (MCMC) (default 25).
+        updateproposal: Number of jumps for each update to the proposal density\
+            std (MCMC) (default 40).
+        seed: Seed for pseudo-random number generator.
+        noard: Turn ARD off on all fibres.
+        allard: Turn ARD on all fibres.
+        nospat: Initialize with tensor, not spatially.
+        nonlinear: Initialize with nonlinear fitting.
+        cnonlinear: Initialize with constrained nonlinear fitting.
+        rician: Use Rician noise modelling.
+        add_f0: Add to the model an unattenuated signal compartment.
+        ard_f0: Use ARD on F0.
+        rmean: Set the prior mean for R of model 3 (default: 0.13 - must be\
+            <0.5).
+        rstd: Set the prior standard deviation for R of model 3 (default: 0.03).
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `XfibresOutputs`).
     """

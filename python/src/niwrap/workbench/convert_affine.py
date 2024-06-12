@@ -149,14 +149,14 @@ def convert_affine(
     options, and -to-flirt may be specified more than once.
     
     Args:
-        from_world: input is a NIFTI 'world' affine
-        opt_from_itk_input: input is an ITK matrix: the input affine
-        from_flirt: input is a flirt matrix
-        to_world: write output as a NIFTI 'world' affine
-        opt_to_itk_output: write output as an ITK affine: output - the output
-            affine
-        to_flirt: write output as a flirt matrix
-        runner: Command runner
+        from_world: input is a NIFTI 'world' affine.
+        opt_from_itk_input: input is an ITK matrix: the input affine.
+        from_flirt: input is a flirt matrix.
+        to_world: write output as a NIFTI 'world' affine.
+        opt_to_itk_output: write output as an ITK affine: output - the output\
+            affine.
+        to_flirt: write output as a flirt matrix.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ConvertAffineOutputs`).
     """

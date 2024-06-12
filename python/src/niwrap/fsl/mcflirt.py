@@ -72,11 +72,11 @@ def mcflirt(
     Args:
         in_file: Timeseries to motion-correct.
         bins: Number of histogram bins.
-        cost: 'mutualinfo' or 'woods' or 'corratio' or 'normcorr' or 'normmi' or
-            'leastsquares'. Cost function to optimize.
+        cost: 'mutualinfo' or 'woods' or 'corratio' or 'normcorr' or 'normmi'\
+            or 'leastsquares'. Cost function to optimize.
         dof: Degrees of freedom for the transformation.
         init: Initial transformation matrix.
-        interpolation: 'spline' or 'nn' or 'sinc'. Interpolation method for
+        interpolation: 'spline' or 'nn' or 'sinc'. Interpolation method for\
             transformation.
         mean_vol: Register to mean volume.
         out_file: File to write.
@@ -92,7 +92,7 @@ def mcflirt(
         stats_imgs: Produce variance and std. dev. images.
         use_contour: Run search on contour images.
         use_gradient: Run search on gradient images.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `McflirtOutputs`).
     """

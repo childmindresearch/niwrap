@@ -32,9 +32,9 @@ def imln(
     Creates a link (called file2) to file1.
     
     Args:
-        input_file: The source file (file1) to create a link to
-        link_name: The name for the link (file2)
-        runner: Command runner
+        input_file: The source file (file1) to create a link to.
+        link_name: The name for the link (file2).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ImlnOutputs`).
     """

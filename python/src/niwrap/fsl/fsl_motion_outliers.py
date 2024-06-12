@@ -54,28 +54,28 @@ def fsl_motion_outliers(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLMotionOutliers
     
     Args:
-        input_4d_image: Input 4D image (e.g. 4D.nii.gz)
-        output_confound_file: Output confound file (e.g. confounds.txt)
-        mask_image: Use supplied mask image for calculating metric
-        save_metric_file: Save metric values (e.g. DVARS) as text into specified
-            file
-        save_metric_plot: Save metric values (e.g. DVARS) as a graphical plot
-            (png format)
-        temp_path: [Optional] Path to the location where temporary files should
-            be created. Defaults to /tmp
-        refrms_flag: Use RMS intensity difference to reference volume as metric
-        dvars_flag: Use DVARS as metric
-        refmse_flag: Mean Square Error version of --refrms (used in original
-            version of fsl_motion_outliers)
-        fd_flag: Use FD (framewise displacement) as metric
-        fdrms_flag: Use FD with RMS matrix calculation as metric
-        abs_thresh: Specify absolute threshold value (otherwise use box-plot
-            cutoff = P75 + 1.5*IQR)
-        no_moco_flag: Do not run motion correction (assumed already done)
-        dummy_scans: Specify number of dummy scans to delete (before running
-            anything and creating EVs)
-        verbose_flag: Verbose mode
-        runner: Command runner
+        input_4d_image: Input 4D image (e.g. 4D.nii.gz).
+        output_confound_file: Output confound file (e.g. confounds.txt).
+        mask_image: Use supplied mask image for calculating metric.
+        save_metric_file: Save metric values (e.g. DVARS) as text into\
+            specified file.
+        save_metric_plot: Save metric values (e.g. DVARS) as a graphical plot\
+            (png format).
+        temp_path: [Optional] Path to the location where temporary files should\
+            be created. Defaults to /tmp.
+        refrms_flag: Use RMS intensity difference to reference volume as metric.
+        dvars_flag: Use DVARS as metric.
+        refmse_flag: Mean Square Error version of --refrms (used in original\
+            version of fsl_motion_outliers).
+        fd_flag: Use FD (framewise displacement) as metric.
+        fdrms_flag: Use FD with RMS matrix calculation as metric.
+        abs_thresh: Specify absolute threshold value (otherwise use box-plot\
+            cutoff = P75 + 1.5*IQR).
+        no_moco_flag: Do not run motion correction (assumed already done).
+        dummy_scans: Specify number of dummy scans to delete (before running\
+            anything and creating EVs).
+        verbose_flag: Verbose mode.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslMotionOutliersOutputs`).
     """

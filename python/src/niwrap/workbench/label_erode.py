@@ -46,17 +46,18 @@ def label_erode(
     distance along the surface.
     
     Args:
-        label: the input label
-        surface: the surface to erode on
-        erode_dist: distance in mm to erode the labels
-        label_out: the output label file
-        opt_roi_roi_metric: assume values outside this roi are labeled: metric
-            file, positive values denote vertices that have data
-        opt_column_column: select a single column to erode: the column number or
-            name
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        runner: Command runner
+        label: the input label.
+        surface: the surface to erode on.
+        erode_dist: distance in mm to erode the labels.
+        label_out: the output label file.
+        opt_roi_roi_metric: assume values outside this roi are labeled: metric\
+            file, positive values denote vertices that have data.
+        opt_column_column: select a single column to erode: the column number\
+            or name.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `LabelErodeOutputs`).
     """

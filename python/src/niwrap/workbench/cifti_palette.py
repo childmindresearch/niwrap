@@ -240,25 +240,27 @@ def cifti_palette(
     .
     
     Args:
-        cifti_in: the cifti input
-        mode: the mapping mode
-        cifti_out: the output cifti file
-        opt_column_column: select a single column for scalar maps: the column
-            number or name
-        pos_percent: percentage min/max for positive data coloring
-        neg_percent: percentage min/max for negative data coloring
-        pos_user: user min/max values for positive data coloring
-        neg_user: user min/max values for negative data coloring
-        opt_interpolate_interpolate: interpolate colors: boolean, whether to
-            interpolate
-        opt_disp_pos_display: display positive data: boolean, whether to display
-        opt_disp_neg_display: display positive data: boolean, whether to display
-        opt_disp_zero_display: display data closer to zero than the min cutoff:
-            boolean, whether to display
-        opt_palette_name_name: set the palette used: the name of the palette
-        thresholding: set the thresholding
-        opt_inversion_type: specify palette inversion: the type of inversion
-        runner: Command runner
+        cifti_in: the cifti input.
+        mode: the mapping mode.
+        cifti_out: the output cifti file.
+        opt_column_column: select a single column for scalar maps: the column\
+            number or name.
+        pos_percent: percentage min/max for positive data coloring.
+        neg_percent: percentage min/max for negative data coloring.
+        pos_user: user min/max values for positive data coloring.
+        neg_user: user min/max values for negative data coloring.
+        opt_interpolate_interpolate: interpolate colors: boolean, whether to\
+            interpolate.
+        opt_disp_pos_display: display positive data: boolean, whether to\
+            display.
+        opt_disp_neg_display: display positive data: boolean, whether to\
+            display.
+        opt_disp_zero_display: display data closer to zero than the min cutoff:\
+            boolean, whether to display.
+        opt_palette_name_name: set the palette used: the name of the palette.
+        thresholding: set the thresholding.
+        opt_inversion_type: specify palette inversion: the type of inversion.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiPaletteOutputs`).
     """

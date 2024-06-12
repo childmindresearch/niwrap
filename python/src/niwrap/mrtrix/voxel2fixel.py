@@ -84,24 +84,24 @@ def voxel2fixel(
     
     Args:
         image_in: the input image.
-        fixel_directory_in: the input fixel directory. Used to define the fixels
-            and their directions
-        fixel_directory_out: the fixel directory where the output will be
-            written. This can be the same as the input directory if desired
+        fixel_directory_in: the input fixel directory. Used to define the\
+            fixels and their directions.
+        fixel_directory_out: the fixel directory where the output will be\
+            written. This can be the same as the input directory if desired.
         fixel_data_out: the name of the fixel data image.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Voxel2fixelOutputs`).
     """

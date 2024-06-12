@@ -478,72 +478,72 @@ def mrconvert(
     Args:
         input_: the input image.
         output: the output image.
-        coord: retain data from the input image only at the coordinates
-            specified in the selection along the specified axis. The selection
-            argument expects a number sequence, which can also include the 'end'
+        coord: retain data from the input image only at the coordinates\
+            specified in the selection along the specified axis. The selection\
+            argument expects a number sequence, which can also include the 'end'\
             keyword.
-        vox: change the voxel dimensions reported in the output image header
-        axes: specify the axes from the input image that will be used to form
-            the output image
-        scaling: specify the data scaling parameters used to rescale the
-            intensity values
-        json_import: import data from a JSON file into header key-value pairs
-        json_export: export data from an image header key-value pairs into a
-            JSON file
-        clear_property: remove the specified key from the image header
+        vox: change the voxel dimensions reported in the output image header.
+        axes: specify the axes from the input image that will be used to form\
+            the output image.
+        scaling: specify the data scaling parameters used to rescale the\
+            intensity values.
+        json_import: import data from a JSON file into header key-value pairs.
+        json_export: export data from an image header key-value pairs into a\
+            JSON file.
+        clear_property: remove the specified key from the image header\
             altogether.
         set_property: set the value of the specified key in the image header.
-        append_property: append the given value to the specified key in the
-            image header (this adds the value specified as a new line in the header
+        append_property: append the given value to the specified key in the\
+            image header (this adds the value specified as a new line in the header\
             value).
-        copy_properties: clear all generic properties and replace with the
+        copy_properties: clear all generic properties and replace with the\
             properties from the image / file specified.
-        strides: specify the strides of the output data in memory; either as a
-            comma-separated list of (signed) integers, or as a template image from
-            which the strides shall be extracted and used. The actual strides
+        strides: specify the strides of the output data in memory; either as a\
+            comma-separated list of (signed) integers, or as a template image from\
+            which the strides shall be extracted and used. The actual strides\
             produced will depend on whether the output image format can support it.
-        datatype: specify output image data type. Valid choices are: float32,
-            float32le, float32be, float64, float64le, float64be, int64, uint64,
-            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,
-            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,
-            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,
+        datatype: specify output image data type. Valid choices are: float32,\
+            float32le, float32be, float64, float64le, float64be, int64, uint64,\
+            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\
+            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\
+            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\
             int8, uint8, bit.
-        grad: Provide the diffusion-weighted gradient scheme used in the
-            acquisition in a text file. This should be supplied as a 4xN text file
-            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe
-            the direction of the applied gradient, and b gives the b-value in units
-            of s/mm^2. If a diffusion gradient scheme is present in the input image
+        grad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in a text file. This should be supplied as a 4xN text file\
+            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\
+            the direction of the applied gradient, and b gives the b-value in units\
+            of s/mm^2. If a diffusion gradient scheme is present in the input image\
             header, the data provided with this option will be instead used.
-        fslgrad: Provide the diffusion-weighted gradient scheme used in the
-            acquisition in FSL bvecs/bvals format files. If a diffusion gradient
-            scheme is present in the input image header, the data provided with this
-            option will be instead used.
-        bvalue_scaling: enable or disable scaling of diffusion b-values by the
-            square of the corresponding DW gradient norm (see Desciption). Valid
+        fslgrad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
+        bvalue_scaling: enable or disable scaling of diffusion b-values by the\
+            square of the corresponding DW gradient norm (see Desciption). Valid\
             choices are yes/no, true/false, 0/1 (default: automatic).
-        export_grad_mrtrix: export the diffusion-weighted gradient table to file
-            in MRtrix format
-        export_grad_fsl: export the diffusion-weighted gradient table to files
-            in FSL (bvecs / bvals) format
-        import_pe_table: import a phase-encoding table from file
-        import_pe_eddy: import phase-encoding information from an EDDY-style
-            config / index file pair
-        export_pe_table: export phase-encoding table to file
-        export_pe_eddy: export phase-encoding information to an EDDY-style
-            config / index file pair
+        export_grad_mrtrix: export the diffusion-weighted gradient table to\
+            file in MRtrix format.
+        export_grad_fsl: export the diffusion-weighted gradient table to files\
+            in FSL (bvecs / bvals) format.
+        import_pe_table: import a phase-encoding table from file.
+        import_pe_eddy: import phase-encoding information from an EDDY-style\
+            config / index file pair.
+        export_pe_table: export phase-encoding table to file.
+        export_pe_eddy: export phase-encoding information to an EDDY-style\
+            config / index file pair.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrconvertOutputs`).
     """

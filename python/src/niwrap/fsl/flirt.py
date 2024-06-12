@@ -85,31 +85,31 @@ def flirt(
         reference: Reference file.
         angle_rep: 'quaternion' or 'euler'. Representation of rotation angles.
         apply_isoxfm: As applyxfm but forces isotropic resampling.
-        apply_xfm: Apply transformation supplied by in_matrix_file or uses_qform
-            to use the affine matrix stored in the reference header.
+        apply_xfm: Apply transformation supplied by in_matrix_file or\
+            uses_qform to use the affine matrix stored in the reference header.
         bbrslope: Value of bbr slope.
-        bbrtype: 'signed' or 'global_abs' or 'local_abs'. Type of bbr cost
+        bbrtype: 'signed' or 'global_abs' or 'local_abs'. Type of bbr cost\
             function: signed [default], global_abs, local_abs.
         bgvalue: Use specified background value for points outside fov.
         bins: Number of histogram bins.
         coarse_search: Coarse search delta angle.
-        cost: 'mutualinfo' or 'corratio' or 'normcorr' or 'normmi' or 'leastsq'
+        cost: 'mutualinfo' or 'corratio' or 'normcorr' or 'normmi' or 'leastsq'\
             or 'labeldiff' or 'bbr'. Cost function.
-        cost_func: 'mutualinfo' or 'corratio' or 'normcorr' or 'normmi' or
+        cost_func: 'mutualinfo' or 'corratio' or 'normcorr' or 'normmi' or\
             'leastsq' or 'labeldiff' or 'bbr'. Cost function.
-        datatype: 'char' or 'short' or 'int' or 'float' or 'double'. Force
+        datatype: 'char' or 'short' or 'int' or 'float' or 'double'. Force\
             output data type.
         display_init: Display initial matrix.
         dof: Number of transform degrees of freedom.
         echospacing: Value of epi echo spacing - units of seconds.
-        fieldmap: Fieldmap image in rads/s - must be already registered to the
+        fieldmap: Fieldmap image in rads/s - must be already registered to the\
             reference image.
         fieldmapmask: Mask for fieldmap image.
         fine_search: Fine search delta angle.
         force_scaling: Force rescaling even for low-res images.
         in_matrix_file: Input 4x4 affine matrix.
         in_weight: File for input weighting volume.
-        interp: 'trilinear' or 'nearestneighbour' or 'sinc' or 'spline'. Final
+        interp: 'trilinear' or 'nearestneighbour' or 'sinc' or 'spline'. Final\
             interpolation method used in reslicing.
         min_sampling: Set minimum voxel dimension for sampling.
         no_clamp: Do not use intensity clamping.
@@ -131,7 +131,7 @@ def flirt(
         wm_seg: White matter segmentation volume needed by bbr cost function.
         wmcoords: White matter boundary coordinates for bbr cost function.
         wmnorms: White matter boundary normals for bbr cost function.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FlirtOutputs`).
     """

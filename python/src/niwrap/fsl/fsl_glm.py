@@ -82,40 +82,40 @@ def fsl_glm(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM
     
     Args:
-        input_file: Input file name (text matrix or 3D/4D image file)
-        design_matrix: File name of the GLM design matrix (text time courses for
-            temporal regression or an image file for spatial regression)
-        output_file: Output file name for GLM parameter estimates (GLM betas)
-        contrasts: Matrix of t-statistics contrasts
-        mask_file: Mask image file name if input is image
-        dof: Set degrees-of-freedom explicitly
-        design_norm_flag: Switch on normalisation of the design matrix columns
-            to unit std. deviation
-        data_norm_flag: Switch on normalisation of the data time series to unit
-            std. deviation
-        vn_flag: Perform MELODIC variance-normalisation on data
-        demean_flag: Switch on de-meaning of design and data
-        output_copes: Output file name for COPEs (either as text file or image)
-        output_zstats: Output file name for Z-stats (either as text file or
-            image)
-        output_tstats: Output file name for t-stats (either as text file or
-            image)
-        output_pvals: Output file name for p-values of Z-stats (either as text
-            file or image)
-        output_fvals: Output file name for F-value of full model fit
-        output_pfvals: Output file name for p-value for full model fit
-        output_residuals: Output file name for residuals
-        output_varcb: Output file name for variance of COPEs
-        output_sigsq: Output file name for residual noise variance sigma-square
-        output_data: Output file name for pre-processed data
-        output_vnscales: Output file name for scaling factors for variance
-            normalisation
-        vx_text: List of text files containing text matrix confounds. Caution,
+        input_file: Input file name (text matrix or 3D/4D image file).
+        design_matrix: File name of the GLM design matrix (text time courses\
+            for temporal regression or an image file for spatial regression).
+        output_file: Output file name for GLM parameter estimates (GLM betas).
+        contrasts: Matrix of t-statistics contrasts.
+        mask_file: Mask image file name if input is image.
+        dof: Set degrees-of-freedom explicitly.
+        design_norm_flag: Switch on normalisation of the design matrix columns\
+            to unit std. deviation.
+        data_norm_flag: Switch on normalisation of the data time series to unit\
+            std. deviation.
+        vn_flag: Perform MELODIC variance-normalisation on data.
+        demean_flag: Switch on de-meaning of design and data.
+        output_copes: Output file name for COPEs (either as text file or image).
+        output_zstats: Output file name for Z-stats (either as text file or\
+            image).
+        output_tstats: Output file name for t-stats (either as text file or\
+            image).
+        output_pvals: Output file name for p-values of Z-stats (either as text\
+            file or image).
+        output_fvals: Output file name for F-value of full model fit.
+        output_pfvals: Output file name for p-value for full model fit.
+        output_residuals: Output file name for residuals.
+        output_varcb: Output file name for variance of COPEs.
+        output_sigsq: Output file name for residual noise variance sigma-square.
+        output_data: Output file name for pre-processed data.
+        output_vnscales: Output file name for scaling factors for variance\
+            normalisation.
+        vx_text: List of text files containing text matrix confounds. Caution,\
             BETA option.
-        vx_images: List of 4D images containing voxelwise confounds. Caution,
+        vx_images: List of 4D images containing voxelwise confounds. Caution,\
             BETA option.
-        help_flag: Display this help text
-        runner: Command runner
+        help_flag: Display this help text.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslGlmOutputs`).
     """

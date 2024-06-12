@@ -115,12 +115,12 @@ def convert_matrix4_to_matrix2(
     nonintegers.
     
     Args:
-        matrix4_wbsparse: a wbsparse matrix4 file
-        counts_out: the total fiber counts, as a cifti file
-        distance_out: the distances, as a cifti file
-        opt_distances: output average trajectory distance
-        individual_fibers: output files for each fiber direction
-        runner: Command runner
+        matrix4_wbsparse: a wbsparse matrix4 file.
+        counts_out: the total fiber counts, as a cifti file.
+        distance_out: the distances, as a cifti file.
+        opt_distances: output average trajectory distance.
+        individual_fibers: output files for each fiber direction.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ConvertMatrix4ToMatrix2Outputs`).
     """

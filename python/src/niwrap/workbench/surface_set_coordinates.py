@@ -41,10 +41,10 @@ def surface_set_coordinates(
     metric file, such that you can then modify them via metric commands, etc.
     
     Args:
-        surface_in: the surface to use for the topology
-        coord_metric: the new coordinates, as a 3-column metric file
-        surface_out: the new surface
-        runner: Command runner
+        surface_in: the surface to use for the topology.
+        coord_metric: the new coordinates, as a 3-column metric file.
+        surface_out: the new surface.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceSetCoordinatesOutputs`).
     """

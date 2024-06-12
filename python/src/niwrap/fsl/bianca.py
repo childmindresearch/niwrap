@@ -52,37 +52,37 @@ def bianca(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BIANCA
     
     Args:
-        master_file: Name of the master file
-        query_subject_num: Row number of query subject (in masterlistfile)
-        brain_mask_feature_num: Column number (in the master file) of images to
-            derive non-zero mask from
-        label_feature_num: Column number (in the master file) of the manual
-            masks (or any placeholder name for query subjects)
-        training_nums: Subjects to be used in training. List of row numbers
-            (comma separated, no spaces) or 'all' to use all the subjects in the
-            master file
-        load_classifier_data: Load training data from file
-        out_name: Specify (base) output name of files
-        feature_subset: Set of column numbers (comma separated and no spaces)
-            for features/images to use (default: use all available modalities as
-            intensity features). The image used to derive non-zero mask from must be
-            part of the features subset
-        mat_feature_num: Column number of matrix files (in masterlistfile).
-            Needed to extract spatial features (MNI coordinates)
-        spatial_weight: Weighting for spatial coordinates (default = 1, i.e.,
-            variance-normalized MNI coordinates). Requires --matfeaturenum to be
-            specified
-        patch_sizes: List of patch sizes for local averaging
-        patch_3d: Use 3D patches (default is 2D)
-        select_pts: "any" (default) or "surround" or "noborder"
-        training_pts: Number (max) of (lesion) points to use (per training
-            subject) or "equalpoints" to select all lesion points and equal number
-            of non-lesion points
-        non_les_pts: Number (max) of non-lesion points to use. If not specified
-            will be set to the same amount of lesion points
-        save_classifier_data: Save training data to file
-        verbose_flag: Use verbose mode
-        runner: Command runner
+        master_file: Name of the master file.
+        query_subject_num: Row number of query subject (in masterlistfile).
+        brain_mask_feature_num: Column number (in the master file) of images to\
+            derive non-zero mask from.
+        label_feature_num: Column number (in the master file) of the manual\
+            masks (or any placeholder name for query subjects).
+        training_nums: Subjects to be used in training. List of row numbers\
+            (comma separated, no spaces) or 'all' to use all the subjects in the\
+            master file.
+        load_classifier_data: Load training data from file.
+        out_name: Specify (base) output name of files.
+        feature_subset: Set of column numbers (comma separated and no spaces)\
+            for features/images to use (default: use all available modalities as\
+            intensity features). The image used to derive non-zero mask from must\
+            be part of the features subset.
+        mat_feature_num: Column number of matrix files (in masterlistfile).\
+            Needed to extract spatial features (MNI coordinates).
+        spatial_weight: Weighting for spatial coordinates (default = 1, i.e.,\
+            variance-normalized MNI coordinates). Requires --matfeaturenum to be\
+            specified.
+        patch_sizes: List of patch sizes for local averaging.
+        patch_3d: Use 3D patches (default is 2D).
+        select_pts: "any" (default) or "surround" or "noborder".
+        training_pts: Number (max) of (lesion) points to use (per training\
+            subject) or "equalpoints" to select all lesion points and equal number\
+            of non-lesion points.
+        non_les_pts: Number (max) of non-lesion points to use. If not specified\
+            will be set to the same amount of lesion points.
+        save_classifier_data: Save training data to file.
+        verbose_flag: Use verbose mode.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BiancaOutputs`).
     """

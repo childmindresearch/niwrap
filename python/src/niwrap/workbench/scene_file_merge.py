@@ -123,9 +123,9 @@ def scene_file_merge(
     scenes from second.scene, and write these scenes to out.scene.
     
     Args:
-        scene_file_out: output - the output scene file
-        scene_file: specify a scene file to use scenes from
-        runner: Command runner
+        scene_file_out: output - the output scene file.
+        scene_file: specify a scene file to use scenes from.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SceneFileMergeOutputs`).
     """

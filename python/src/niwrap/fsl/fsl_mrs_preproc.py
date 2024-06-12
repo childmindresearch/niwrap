@@ -49,21 +49,21 @@ def fsl_mrs_preproc(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
     
     Args:
-        data: Input file(s)
-        reference: Reference non-water suppressed file
-        output: Output folder
-        quant: Water reference data for quantification (Optional)
-        ecc: Water reference data for eddy current correction (Optional)
-        noaverage: Do not average repetitions
-        hlsvd: Apply HLSVD for residual water removal
-        leftshift: Remove points at the start of the fid
-        t1: Structural image (for report)
-        verbose: Spit out verbose info
-        conjugate: Apply conjugate to FID
-        overwrite: Overwrite existing output folder
-        report: Generate report in output folder
-        config: Configuration file
-        runner: Command runner
+        data: Input file(s).
+        reference: Reference non-water suppressed file.
+        output: Output folder.
+        quant: Water reference data for quantification (Optional).
+        ecc: Water reference data for eddy current correction (Optional).
+        noaverage: Do not average repetitions.
+        hlsvd: Apply HLSVD for residual water removal.
+        leftshift: Remove points at the start of the fid.
+        t1: Structural image (for report).
+        verbose: Spit out verbose info.
+        conjugate: Apply conjugate to FID.
+        overwrite: Overwrite existing output folder.
+        report: Generate report in output folder.
+        config: Configuration file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslMrsPreprocOutputs`).
     """

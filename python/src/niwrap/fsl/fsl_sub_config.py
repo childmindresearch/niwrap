@@ -30,10 +30,10 @@ def fsl_sub_config(
     FSL cluster submission configuration examples.
     
     Args:
-        cluster_system: Choice of cluster system configuration example to
+        cluster_system: Choice of cluster system configuration example to\
             output. Options are 'shell', 'sge', or 'slurm'.
-        help_flag: Show help message and exit
-        runner: Command runner
+        help_flag: Show help message and exit.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslSubConfigOutputs`).
     """

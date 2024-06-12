@@ -35,9 +35,9 @@ def sliceanimate(
     A tool for animating slices of an image using whirlgif.
     
     Args:
-        output_file: Output animated GIF file
-        input_files: Input image files for animation
-        runner: Command runner
+        output_file: Output animated GIF file.
+        input_files: Input image files for animation.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SliceanimateOutputs`).
     """

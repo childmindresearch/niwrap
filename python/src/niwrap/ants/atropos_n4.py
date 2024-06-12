@@ -96,68 +96,67 @@ def ants_atropos_n4_sh(
     
     Args:
         image_dimension: 2 or 3, for 2- or 3-dimensional image.
-        input_image: Anatomical image, typically T1. If more than one anatomical
-            image is specified, subsequent images are also used during the
-            segmentation process.
+        input_image: Anatomical image, typically T1. If more than one\
+            anatomical image is specified, subsequent images are also used during\
+            the segmentation process.
         mask_image: Binary mask defining the region of interest.
         number_of_classes: Number of classes defining the segmentation.
-        output_prefix: The following images are created:
-            {output_prefix}N4Corrected.{output_suffix},
-            {output_prefix}Segmentation.{output_suffix},
-            {output_prefix}SegmentationPosteriors.{output_suffix}
-        segmentation_priors: Prior probability images initializing the
-            segmentation. Specified using c-style formatting, e.g. -p
-            labelsPriors%02d.nii.gz. If this is not specified, k-means
+        output_prefix: The following images are created:\
+            {output_prefix}N4Corrected.{output_suffix},\
+            {output_prefix}Segmentation.{output_suffix},\
+            {output_prefix}SegmentationPosteriors.{output_suffix}.
+        segmentation_priors: Prior probability images initializing the\
+            segmentation. Specified using c-style formatting, e.g. -p\
+            labelsPriors%02d.nii.gz. If this is not specified, k-means\
             initialization is used instead.
-        max_n4_atropos_iterations: Maximum number of (outer loop) iterations
+        max_n4_atropos_iterations: Maximum number of (outer loop) iterations\
             between N4 <-> Atropos (default = 15).
-        max_atropos_iterations: Maximum number of (inner loop) iterations in
+        max_atropos_iterations: Maximum number of (inner loop) iterations in\
             Atropos (default = 3).
-        mrf: Specifies MRF prior (of the form '[ weight,neighborhood ]', e.g. '[
-            0.1,1x1x1 ]' which is default).
-        denoise_anatomical_images: Denoise anatomical images (1) or not (0)
+        mrf: Specifies MRF prior (of the form '[ weight,neighborhood ]', e.g.\
+            '[ 0.1,1x1x1 ]' which is default).
+        denoise_anatomical_images: Denoise anatomical images (1) or not (0)\
             (default = 1).
-        posterior_formulation: Posterior formulation and whether or not to use
-            mixture model proportions. e.g 'Socrates[ 1 ]' (default) or 'Aristotle[
-            1 ]'. Choose the latter if you want to use the distance priors, see also
-            the -l option for label propagation control (default = 'Socrates[ 1 ]').
-        label_propagation: Incorporate a distance prior into the 'Aristotle'
-            posterior formulation. Should be of the form 'label[
-            lambda,boundaryProbability ]' where label is a value of 1,2,3,...
-            denoting label ID. The label probability for anything outside the
-            current label
-            
-            = boundaryProbability * exp( -lambda *
-            distanceFromBoundary )
-            
-            Intuitively, smaller lambda values will increase
-            the spatial capture range of the distance prior.
-            To apply to all label values, simply omit
-            specifying the label, i.e. -l '[
+        posterior_formulation: Posterior formulation and whether or not to use\
+            mixture model proportions. e.g 'Socrates[ 1 ]' (default) or 'Aristotle[\
+            1 ]'. Choose the latter if you want to use the distance priors, see\
+            also the -l option for label propagation control (default = 'Socrates[\
+            1 ]').
+        label_propagation: Incorporate a distance prior into the 'Aristotle'\
+            posterior formulation. Should be of the form 'label[\
+            lambda,boundaryProbability ]' where label is a value of 1,2,3,...\
+            denoting label ID. The label probability for anything outside the\
+            current label\
+            \
+            = boundaryProbability * exp( -lambda * distanceFromBoundary )\
+            \
+            Intuitively, smaller lambda values will increase the spatial\
+            capture range of the distance prior. To apply to all label values,\
+            simply omit specifying the label, i.e. -l '[\
             lambda,boundaryProbability ]'.
-        posterior_label_for_n4_weight_mask: Which posterior probability image
-            should be used to define the N4 weight mask. Can also specify multiple
+        posterior_label_for_n4_weight_mask: Which posterior probability image\
+            should be used to define the N4 weight mask. Can also specify multiple\
             posteriors in which case the chosen posteriors are combined.
-        image_file_suffix: Any of the standard ITK IO formats e.g. nrrd, nii.gz
+        image_file_suffix: Any of the standard ITK IO formats e.g. nrrd, nii.gz\
             (default), mhd.
-        keep_temporary_files: Keep temporary files on disk (1) or delete them
+        keep_temporary_files: Keep temporary files on disk (1) or delete them\
             (0) (default = 0).
-        use_random_seeding: Use random number generated from system clock in
+        use_random_seeding: Use random number generated from system clock in\
             Atropos (default = 1).
-        atropos_segmentation_prior_weight: Atropos spatial prior probability
+        atropos_segmentation_prior_weight: Atropos spatial prior probability\
             weight for the segmentation (default = 0.25).
-        n4_convergence: Convergence parameters for N4, see '-c' option in
+        n4_convergence: Convergence parameters for N4, see '-c' option in\
             N4BiasFieldCorrection (default = [50x50x50x50,0.0000001]).
         n4_shrink_factor: Shrink factor for N4 (default = 4).
-        n4_bspline_params: N4 b-spline specification, see '-b' option in
+        n4_bspline_params: N4 b-spline specification, see '-b' option in\
             N4BiasFieldCorrection (default = [200,0,0,0]).
-        atropos_segmentation_icm: ICM parameters for segmentation, see '-g'
+        atropos_segmentation_icm: ICM parameters for segmentation, see '-g'\
             option in Atropos (default = [1,1]).
-        atropos_segmentation_use_euclidean_distance: Use euclidean distances in
-            distance prior formulation (1) or not (0), see Atropos usage for details
-            (default = 1).
+        atropos_segmentation_use_euclidean_distance: Use euclidean distances in\
+            distance prior formulation (1) or not (0), see Atropos usage for\
+            details (default = 1).
         test_debug_mode: If > 0, attempts to continue after errors.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AntsAtroposN4ShOutputs`).
     """

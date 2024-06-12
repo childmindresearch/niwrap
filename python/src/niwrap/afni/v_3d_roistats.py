@@ -53,48 +53,49 @@ def v_3d_roistats(
     Args:
         in_file: Input dataset.
         debug: Print debug information.
-        format1_d: Output results in a 1d format that includes commented labels.
-        format1_dr: Output results in a 1d format that includes uncommented
-            labels. may not work optimally with typical 1d functions, but is useful
+        format1_d: Output results in a 1d format that includes commented\
+            labels.
+        format1_dr: Output results in a 1d format that includes uncommented\
+            labels. may not work optimally with typical 1d functions, but is useful\
             for r functions.
         mask: Input mask.
-        mask_f2short: Tells the program to convert a float mask to short
+        mask_f2short: Tells the program to convert a float mask to short\
             integers, by simple rounding.
         mask_file: Input mask.
         nobriklab: Do not print the sub-brick label next to its index.
-        nomeanout: Do not include the (zero-inclusive) mean among computed
+        nomeanout: Do not include the (zero-inclusive) mean among computed\
             stats.
-        num_roi: Forces the assumption that the mask dataset's rois are denoted
-            by 1 to n inclusive. normally, the program figures out the rois on its
-            own. this option is useful if a) you are certain that the mask dataset
-            has no values outside the range [0 n], b) there may be some rois missing
-            between [1 n] in the mask data-set and c) you want those columns in the
-            output any-way so the output lines up with the output from other
-            invocations of 3droistats.
+        num_roi: Forces the assumption that the mask dataset's rois are denoted\
+            by 1 to n inclusive. normally, the program figures out the rois on its\
+            own. this option is useful if a) you are certain that the mask dataset\
+            has no values outside the range [0 n], b) there may be some rois\
+            missing between [1 n] in the mask data-set and c) you want those\
+            columns in the output any-way so the output lines up with the output\
+            from other invocations of 3droistats.
         quiet: Execute quietly.
-        roisel: Only considers rois denoted by values found in the specified
-            file. note that the order of the rois as specified in the file is not
-            preserved. so an sel.1d of '2 8 20' produces the same output as '8 20
+        roisel: Only considers rois denoted by values found in the specified\
+            file. note that the order of the rois as specified in the file is not\
+            preserved. so an sel.1d of '2 8 20' produces the same output as '8 20\
             2'.
-        stat_: A list of items which are 'mean' or 'sum' or 'voxels' or 'minmax'
-            or 'sigma' or 'median' or 'mode' or 'summary' or 'zerominmax' or
-            'zerosigma' or 'zeromedian' or 'zeromode'. Statistics to compute.
-            options include: * mean = compute the mean using only non_zero voxels.
-            implies the opposite for the mean computed by default. * median =
-            compute the median of nonzero voxels * mode = compute the mode of
-            nonzero voxels. (integral valued sets only) * minmax = compute the
-            min/max of nonzero voxels * sum = compute the sum using only nonzero
-            voxels. * voxels = compute the number of nonzero voxels * sigma =
-            compute the standard deviation of nonzero voxelsstatistics that include
-            zero-valued voxels: * zerominmax = compute the min/max of all voxels. *
-            zerosigma = compute the standard deviation of all voxels. * zeromedian =
-            compute the median of all voxels. * zeromode = compute the mode of all
-            voxels. * summary = only output a summary line with the grand mean
-            across all briks in the input dataset. this option cannot be used with
+        stat_: A list of items which are 'mean' or 'sum' or 'voxels' or\
+            'minmax' or 'sigma' or 'median' or 'mode' or 'summary' or 'zerominmax'\
+            or 'zerosigma' or 'zeromedian' or 'zeromode'. Statistics to compute.\
+            options include: * mean = compute the mean using only non_zero voxels.\
+            implies the opposite for the mean computed by default. * median =\
+            compute the median of nonzero voxels * mode = compute the mode of\
+            nonzero voxels. (integral valued sets only) * minmax = compute the\
+            min/max of nonzero voxels * sum = compute the sum using only nonzero\
+            voxels. * voxels = compute the number of nonzero voxels * sigma =\
+            compute the standard deviation of nonzero voxelsstatistics that include\
+            zero-valued voxels: * zerominmax = compute the min/max of all voxels. *\
+            zerosigma = compute the standard deviation of all voxels. * zeromedian\
+            = compute the median of all voxels. * zeromode = compute the mode of\
+            all voxels. * summary = only output a summary line with the grand mean\
+            across all briks in the input dataset. this option cannot be used with\
             nomeanout.more that one option can be specified.
-        zerofill: For roi labels not found, use the provided string instead of a
-            '0' in the output file. only active if `num_roi` is enabled.
-        runner: Command runner
+        zerofill: For roi labels not found, use the provided string instead of\
+            a '0' in the output file. only active if `num_roi` is enabled.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dRoistatsOutputs`).
     """

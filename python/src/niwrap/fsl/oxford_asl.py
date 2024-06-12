@@ -61,39 +61,39 @@ def oxford_asl(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/oxford_asl
     
     Args:
-        asl_data: Input ASL data
-        output_dir_name: Output directory name
-        mask: Mask in native space of ASL data
-        spatial_smoothing: Use adaptive spatial smoothing on perfusion
-        white_paper_analysis: Analysis that conforms to the 'white paper' (Alsop
-            et al. 2014)
-        motion_correction: Apply motion correction using mcflirt
-        input_asl_format: Input ASL format: diff, tc, ct
-        input_block_format: Input block format (for multi-TI): rpt, tis
-        inversion_times: Comma separated list of inversion times
-        ti_image: 4D image containing voxelwise TI values
-        casl: ASL acquisition is pseudo cASL (pcASL) rather than pASL
-        arterial_suppression: Arterial suppression (vascular crushing) was used
-        bolus_duration: Bolus duration
-        bat: Bolus arrival time
-        tissue_t1: Tissue T1 value
-        blood_t1: Blood T1 value
-        slice_timing_difference: Timing difference between slices
-        slice_band: Number of slices per band in a multi-band setup
-        flip_angle: Flip angle for Look-Locker readout correction
-        fsl_anat_dir: An fsl_anat directory from structural image
-        structural_image: Structural image (whole head)
-        bet_structural_image: Structural image (already BETed)
-        fast_segmentation_images: Images from a FAST segmentation
-        sensitivity_correction: Use bias field (from segmentation) for
-            sensitivity correction
-        precomputed_m0_value: Single precomputed M0 value
-        inversion_efficiency: Inversion efficiency
-        calibration_image: M0 calibration image (proton density or mean control
-            image)
-        tr_calibration_data: TR of calibration data
-        calibration_method: Calibration method: single or voxel
-        runner: Command runner
+        asl_data: Input ASL data.
+        output_dir_name: Output directory name.
+        mask: Mask in native space of ASL data.
+        spatial_smoothing: Use adaptive spatial smoothing on perfusion.
+        white_paper_analysis: Analysis that conforms to the 'white paper'\
+            (Alsop et al. 2014).
+        motion_correction: Apply motion correction using mcflirt.
+        input_asl_format: Input ASL format: diff, tc, ct.
+        input_block_format: Input block format (for multi-TI): rpt, tis.
+        inversion_times: Comma separated list of inversion times.
+        ti_image: 4D image containing voxelwise TI values.
+        casl: ASL acquisition is pseudo cASL (pcASL) rather than pASL.
+        arterial_suppression: Arterial suppression (vascular crushing) was used.
+        bolus_duration: Bolus duration.
+        bat: Bolus arrival time.
+        tissue_t1: Tissue T1 value.
+        blood_t1: Blood T1 value.
+        slice_timing_difference: Timing difference between slices.
+        slice_band: Number of slices per band in a multi-band setup.
+        flip_angle: Flip angle for Look-Locker readout correction.
+        fsl_anat_dir: An fsl_anat directory from structural image.
+        structural_image: Structural image (whole head).
+        bet_structural_image: Structural image (already BETed).
+        fast_segmentation_images: Images from a FAST segmentation.
+        sensitivity_correction: Use bias field (from segmentation) for\
+            sensitivity correction.
+        precomputed_m0_value: Single precomputed M0 value.
+        inversion_efficiency: Inversion efficiency.
+        calibration_image: M0 calibration image (proton density or mean control\
+            image).
+        tr_calibration_data: TR of calibration data.
+        calibration_method: Calibration method: single or voxel.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `OxfordAslOutputs`).
     """

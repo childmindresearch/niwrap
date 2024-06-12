@@ -40,14 +40,14 @@ def sigloss(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/sigloss
     
     Args:
-        input_b0map: Input b0 map image filename (in rad/s)
-        output_sigloss: Output signal loss image filename
-        input_mask: Input mask filename
-        echo_time: Echo time (in seconds)
-        slice_direction: Slice direction (either x, y or z)
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display this help message
-        runner: Command runner
+        input_b0map: Input b0 map image filename (in rad/s).
+        output_sigloss: Output signal loss image filename.
+        input_mask: Input mask filename.
+        echo_time: Echo time (in seconds).
+        slice_direction: Slice direction (either x, y or z).
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display this help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SiglossOutputs`).
     """

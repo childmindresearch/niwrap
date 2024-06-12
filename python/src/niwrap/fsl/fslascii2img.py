@@ -45,17 +45,17 @@ def fslascii2img(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        infile: Input ASCII file
-        xsize: Size in the x dimension (in voxels)
-        ysize: Size in the y dimension (in voxels)
-        zsize: Size in the z dimension (in voxels)
-        tsize: Size in the t dimension (in voxels)
-        xdim: Dimension size in the x dimension (in mm)
-        ydim: Dimension size in the y dimension (in mm)
-        zdim: Dimension size in the z dimension (in mm)
-        tr: Repetition time (TR) in seconds
-        outfile: Output NIfTI file
-        runner: Command runner
+        infile: Input ASCII file.
+        xsize: Size in the x dimension (in voxels).
+        ysize: Size in the y dimension (in voxels).
+        zsize: Size in the z dimension (in voxels).
+        tsize: Size in the t dimension (in voxels).
+        xdim: Dimension size in the x dimension (in mm).
+        ydim: Dimension size in the y dimension (in mm).
+        zdim: Dimension size in the z dimension (in mm).
+        tr: Repetition time (TR) in seconds.
+        outfile: Output NIfTI file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Fslascii2imgOutputs`).
     """

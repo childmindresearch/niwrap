@@ -54,54 +54,53 @@ def ants_registration_sy_n(
     More information: https://github.com/ANTsX/ANTs/
     
     Args:
-        image_dimension: Image dimension: 2 or 3 (for 2 or 3-dimensional
-            registration of a single volume)
-        fixed_image: Fixed image(s) or source image(s) or reference image(s)
-        moving_image: Moving image(s) or target image(s)
-        output_prefix: A prefix that is prepended to all output files
-        threads: Number of threads (default =
-            ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS if defined, otherwise 1)
-        initial_transform: Initial transform(s) --- order specified on the
-            command line matters
-        transform_type: Transform type (default = 's'). Options:
-            - t: translation (1 stage)
-            - r: rigid (1 stage)
-            - a: rigid + affine (2 stages)
-            - s: rigid + affine + deformable syn (3 stages)
-            - sr: rigid + deformable syn (2 stages)
-            - so: deformable syn only (1 stage)
-            - b: rigid + affine + deformable b-spline syn (3
-            stages)
-            - br: rigid + deformable b-spline syn (2 stages)
-            - bo: deformable b-spline syn only (1 stage)
-        radius: Radius for cross correlation metric used during SyN stage
-            (default = 4)
-        spline_distance: Spline distance for deformable B-spline SyN transform
-            (default = 26)
-        gradient_step: Gradient step size for SyN and B-spline SyN (default =
-            0.1)
-        masks: Mask(s) for the fixed image space, or for the fixed and moving
-            image space in the format 'fixedMask,MovingMask'. Use -x once to specify
-            mask(s) to be used for all stages or use -x for each 'stage' (cf -t
-            option). If no mask is to be used for a particular stage, the keyword
-            'NULL' should be used in place of file names.
-        precision_type: Precision type (default = 'd'). Options:
-            - f: float
-            - d: double
-        use_histogram_matching: Use histogram matching (default = 0). Options:
-            - 0: false
-            - 1: true
-        use_repro_mode: Use 'repro' mode for exact reproducibility of output.
-            Uses GC metric for linear stages and a fixed random seed (default = 0).
-            Options:
-            - 0: false
-            - 1: true
-        collapse_output_transforms: Collapse output transforms (default = 1).
-            Options:
-            - 0: false
-            - 1: true
-        random_seed: Fix random seed to an int value
-        runner: Command runner
+        image_dimension: Image dimension: 2 or 3 (for 2 or 3-dimensional\
+            registration of a single volume).
+        fixed_image: Fixed image(s) or source image(s) or reference image(s).
+        moving_image: Moving image(s) or target image(s).
+        output_prefix: A prefix that is prepended to all output files.
+        threads: Number of threads (default =\
+            ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS if defined, otherwise 1).
+        initial_transform: Initial transform(s) --- order specified on the\
+            command line matters.
+        transform_type: Transform type (default = 's'). Options:\
+            - t: translation (1 stage)\
+            - r: rigid (1 stage)\
+            - a: rigid + affine (2 stages)\
+            - s: rigid + affine + deformable syn (3 stages)\
+            - sr: rigid + deformable syn (2 stages)\
+            - so: deformable syn only (1 stage)\
+            - b: rigid + affine + deformable b-spline syn (3 stages)\
+            - br: rigid + deformable b-spline syn (2 stages)\
+            - bo: deformable b-spline syn only (1 stage).
+        radius: Radius for cross correlation metric used during SyN stage\
+            (default = 4).
+        spline_distance: Spline distance for deformable B-spline SyN transform\
+            (default = 26).
+        gradient_step: Gradient step size for SyN and B-spline SyN (default =\
+            0.1).
+        masks: Mask(s) for the fixed image space, or for the fixed and moving\
+            image space in the format 'fixedMask,MovingMask'. Use -x once to\
+            specify mask(s) to be used for all stages or use -x for each 'stage'\
+            (cf -t option). If no mask is to be used for a particular stage, the\
+            keyword 'NULL' should be used in place of file names.
+        precision_type: Precision type (default = 'd'). Options:\
+            - f: float\
+            - d: double.
+        use_histogram_matching: Use histogram matching (default = 0). Options:\
+            - 0: false\
+            - 1: true.
+        use_repro_mode: Use 'repro' mode for exact reproducibility of output.\
+            Uses GC metric for linear stages and a fixed random seed (default = 0).\
+            Options:\
+            - 0: false\
+            - 1: true.
+        collapse_output_transforms: Collapse output transforms (default = 1).\
+            Options:\
+            - 0: false\
+            - 1: true.
+        random_seed: Fix random seed to an int value.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AntsRegistrationSyNOutputs`).
     """

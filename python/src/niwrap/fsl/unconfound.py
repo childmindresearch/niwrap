@@ -38,10 +38,11 @@ def unconfound(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
     
     Args:
-        in4d: Input 4D fMRI data (e.g., in4d.nii.gz)
-        out4d: Output 4D fMRI data after removing confounds (e.g., out4d.nii.gz)
-        confound_mat: Confound matrix file (e.g., confound.mat)
-        runner: Command runner
+        in4d: Input 4D fMRI data (e.g., in4d.nii.gz).
+        out4d: Output 4D fMRI data after removing confounds (e.g.,\
+            out4d.nii.gz).
+        confound_mat: Confound matrix file (e.g., confound.mat).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `UnconfoundOutputs`).
     """

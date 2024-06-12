@@ -33,8 +33,8 @@ def flameo(
     Automatic nipype2boutiques conversion failed.
     
     Args:
-        dummy_input: Description missing
-        runner: Command runner
+        dummy_input: Description missing.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FlameoOutputs`).
     """

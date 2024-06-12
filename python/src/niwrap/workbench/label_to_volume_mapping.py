@@ -82,15 +82,15 @@ def label_to_volume_mapping(
     in reverse, with popularity logic to decide on a label to use.
     
     Args:
-        label: the input label file
-        surface: the surface to use coordinates from
-        volume_space: a volume file in the desired output volume space
-        volume_out: the output volume file
-        opt_nearest_vertex_distance: use the label from the vertex closest to
-            the voxel center: how far from the surface to map labels to voxels, in
-            mm
-        ribbon_constrained: use ribbon constrained mapping algorithm
-        runner: Command runner
+        label: the input label file.
+        surface: the surface to use coordinates from.
+        volume_space: a volume file in the desired output volume space.
+        volume_out: the output volume file.
+        opt_nearest_vertex_distance: use the label from the vertex closest to\
+            the voxel center: how far from the surface to map labels to voxels, in\
+            mm.
+        ribbon_constrained: use ribbon constrained mapping algorithm.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `LabelToVolumeMappingOutputs`).
     """

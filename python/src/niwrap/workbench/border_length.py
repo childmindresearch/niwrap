@@ -43,14 +43,15 @@ def border_length(
     correction for the reduction in structure of a group average surface.
     
     Args:
-        border: the input border file
-        surface: the surface to measure the borders on
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        opt_separate_pieces: report lengths for multi-part borders as separate
-            numbers
-        opt_hide_border_name: don't print border name before each output
-        runner: Command runner
+        border: the input border file.
+        surface: the surface to measure the borders on.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        opt_separate_pieces: report lengths for multi-part borders as separate\
+            numbers.
+        opt_hide_border_name: don't print border name before each output.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BorderLengthOutputs`).
     """

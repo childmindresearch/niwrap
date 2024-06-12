@@ -43,15 +43,15 @@ def v_3dresample(
     
     Args:
         in_file: Input file to 3dresample.
-        prefix: required prefix for output dataset
+        prefix: required prefix for output dataset.
         master: Align dataset grid to a reference file.
         orientation: New orientation code.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
-        resample_mode: 'nn' or 'li' or 'cu' or 'bk'. Resampling method from set
-            {"nn", "li", "cu", "bk"}. these are for "nearest neighbor", "linear",
+        resample_mode: 'nn' or 'li' or 'cu' or 'bk'. Resampling method from set\
+            {"nn", "li", "cu", "bk"}. these are for "nearest neighbor", "linear",\
             "cubic" and "blocky"interpolation, respectively. default is nn.
         voxel_size: (a float, a float, a float). Resample to new dx, dy and dz.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dresampleOutputs`).
     """

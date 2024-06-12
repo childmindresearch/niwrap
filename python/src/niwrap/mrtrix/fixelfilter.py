@@ -91,36 +91,36 @@ def fixelfilter(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelfilter.html
     
     Args:
-        input_: the input: either a fixel data file, or a fixel directory (see
-            Description)
-        filter_: the filtering operation to perform; options are: connect,
-            smooth
-        output: the output: either a fixel data file, or a fixel directory (see
-            Description)
-        matrix: provide a fixel-fixel connectivity matrix for filtering
-            operations that require it
-        threshold_value: specify a threshold for the input fixel data file
-            values (default = 0.5)
-        threshold_connectivity: specify a fixel-fixel connectivity threshold for
-            connected-component analysis (default = 0.10000000000000001)
-        fwhm: the full-width half-maximum (FWHM) of the spatial component of the
-            smoothing filter (default = 10mm)
-        minweight: apply a minimum threshold to smoothing weights (default =
-            0.01)
-        mask: only perform smoothing within a specified binary fixel mask
+        input_: the input: either a fixel data file, or a fixel directory (see\
+            Description).
+        filter_: the filtering operation to perform; options are: connect,\
+            smooth.
+        output: the output: either a fixel data file, or a fixel directory (see\
+            Description).
+        matrix: provide a fixel-fixel connectivity matrix for filtering\
+            operations that require it.
+        threshold_value: specify a threshold for the input fixel data file\
+            values (default = 0.5).
+        threshold_connectivity: specify a fixel-fixel connectivity threshold\
+            for connected-component analysis (default = 0.10000000000000001).
+        fwhm: the full-width half-maximum (FWHM) of the spatial component of\
+            the smoothing filter (default = 10mm).
+        minweight: apply a minimum threshold to smoothing weights (default =\
+            0.01).
+        mask: only perform smoothing within a specified binary fixel mask.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FixelfilterOutputs`).
     """

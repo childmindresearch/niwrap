@@ -45,16 +45,16 @@ def mri_synthstrip(
     More information: https://example.com/universal_skullstrip_docs
     
     Args:
-        input_image: Input image to skullstrip
-        out_file: Filename to save the stripped image
-        mask_file: Filename to save the binary brain mask
-        sdt_file: Filename to save the distance transform
-        gpu_flag: Use the GPU
-        border_threshold: Mask border threshold in mm, defaults to 1
-        num_threads: PyTorch CPU threads; uses PyTorch default if unset
-        no_csf_flag: Exclude CSF from the brain border
-        model_file: Alternative model weights
-        runner: Command runner
+        input_image: Input image to skullstrip.
+        out_file: Filename to save the stripped image.
+        mask_file: Filename to save the binary brain mask.
+        sdt_file: Filename to save the distance transform.
+        gpu_flag: Use the GPU.
+        border_threshold: Mask border threshold in mm, defaults to 1.
+        num_threads: PyTorch CPU threads; uses PyTorch default if unset.
+        no_csf_flag: Exclude CSF from the brain border.
+        model_file: Alternative model weights.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MriSynthstripOutputs`).
     """

@@ -38,10 +38,11 @@ def cifti_transpose(
     where every row in the input is a column in the output.
     
     Args:
-        cifti_in: the input cifti file
-        cifti_out: the output cifti file
-        opt_mem_limit_limit_gb: restrict memory usage: memory limit in gigabytes
-        runner: Command runner
+        cifti_in: the input cifti file.
+        cifti_out: the output cifti file.
+        opt_mem_limit_limit_gb: restrict memory usage: memory limit in\
+            gigabytes.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiTransposeOutputs`).
     """

@@ -36,11 +36,11 @@ def foci_list_coords(
     focus names in a second text file.
     
     Args:
-        foci_file: input foci file
-        coord_file_out: output - the output coordinate text file
-        opt_names_out_names_file_out: output the foci names: output - text file
-            to put foci names in
-        runner: Command runner
+        foci_file: input foci file.
+        coord_file_out: output - the output coordinate text file.
+        opt_names_out_names_file_out: output the foci names: output - text file\
+            to put foci names in.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FociListCoordsOutputs`).
     """

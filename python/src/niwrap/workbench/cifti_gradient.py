@@ -138,24 +138,24 @@ def cifti_gradient(
     want ROW, unless you are using -average-output.
     
     Args:
-        cifti: the input cifti
-        direction: which dimension to take the gradient along, ROW or COLUMN
-        cifti_out: the output cifti
-        vectors_out: the vectors, as a dscalar file
-        left_surface: specify the left surface to use
-        right_surface: specify the right surface to use
-        cerebellum_surface: specify the cerebellum surface to use
-        opt_surface_presmooth_surface_kernel: smooth on the surface before
-            computing the gradient: the size of the gaussian surface smoothing
-            kernel in mm, as sigma by default
-        opt_volume_presmooth_volume_kernel: smooth on the surface before
-            computing the gradient: the size of the gaussian volume smoothing kernel
-            in mm, as sigma by default
-        opt_presmooth_fwhm: smoothing kernel sizes are FWHM, not sigma
-        opt_average_output: output the average of the gradient magnitude maps
-            instead of each gradient map separately
-        opt_vectors: output gradient vectors
-        runner: Command runner
+        cifti: the input cifti.
+        direction: which dimension to take the gradient along, ROW or COLUMN.
+        cifti_out: the output cifti.
+        vectors_out: the vectors, as a dscalar file.
+        left_surface: specify the left surface to use.
+        right_surface: specify the right surface to use.
+        cerebellum_surface: specify the cerebellum surface to use.
+        opt_surface_presmooth_surface_kernel: smooth on the surface before\
+            computing the gradient: the size of the gaussian surface smoothing\
+            kernel in mm, as sigma by default.
+        opt_volume_presmooth_volume_kernel: smooth on the surface before\
+            computing the gradient: the size of the gaussian volume smoothing\
+            kernel in mm, as sigma by default.
+        opt_presmooth_fwhm: smoothing kernel sizes are FWHM, not sigma.
+        opt_average_output: output the average of the gradient magnitude maps\
+            instead of each gradient map separately.
+        opt_vectors: output gradient vectors.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiGradientOutputs`).
     """

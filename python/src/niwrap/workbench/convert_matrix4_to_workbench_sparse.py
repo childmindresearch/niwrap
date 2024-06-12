@@ -65,18 +65,18 @@ def convert_matrix4_to_workbench_sparse(
     Exactly one of -surface-seeds and -volume-seeds must be specified.
     
     Args:
-        matrix4_1: the first matrix4 file
-        matrix4_2: the second matrix4 file
-        matrix4_3: the third matrix4 file
-        orientation_file: the .fiberTEMP.nii file this trajectory file applies
-            to
-        voxel_list: list of white matter voxel index triplets as used in the
-            trajectory matrix
-        wb_sparse_out: output - the output workbench sparse file
-        opt_surface_seeds_seed_roi: specify the surface seed space: metric roi
-            file of all vertices used in the seed space
-        volume_seeds: specify the volume seed space
-        runner: Command runner
+        matrix4_1: the first matrix4 file.
+        matrix4_2: the second matrix4 file.
+        matrix4_3: the third matrix4 file.
+        orientation_file: the .fiberTEMP.nii file this trajectory file applies\
+            to.
+        voxel_list: list of white matter voxel index triplets as used in the\
+            trajectory matrix.
+        wb_sparse_out: output - the output workbench sparse file.
+        opt_surface_seeds_seed_roi: specify the surface seed space: metric roi\
+            file of all vertices used in the seed space.
+        volume_seeds: specify the volume seed space.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ConvertMatrix4ToWorkbenchSparseOutputs`).
     """

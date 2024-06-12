@@ -53,24 +53,24 @@ def fsl_mvlm(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        input_file: Input file (text matrix or 3D/4D image file)
-        basename_output_files: Basename for output files
-        algorithm: Algorithm for decomposition: PCA (or SVD; default), PLS,
-            orthoPLS, CVA, SVD-CVA, MLM, NMF
-        design_matrix: File name of the GLM design matrix (time courses or
-            spatial maps)
-        mask_image: Mask image file name if input is an image
-        design_normalization: Switch on normalisation of the design matrix
-            columns to unit standard deviation
-        variance_normalisation: Perform MELODIC variance-normalisation on data
-        demean: Switch on de-meaning of design and data
-        nmf_dim: Number of underlying factors for NMF
-        nmf_iterations: Number of NMF iterations (default 100)
-        verbose: Switch on verbose output
-        out_data: Output file name for pre-processed data
-        out_vnscales: Output file name for scaling factors for variance
-            normalisation
-        runner: Command runner
+        input_file: Input file (text matrix or 3D/4D image file).
+        basename_output_files: Basename for output files.
+        algorithm: Algorithm for decomposition: PCA (or SVD; default), PLS,\
+            orthoPLS, CVA, SVD-CVA, MLM, NMF.
+        design_matrix: File name of the GLM design matrix (time courses or\
+            spatial maps).
+        mask_image: Mask image file name if input is an image.
+        design_normalization: Switch on normalisation of the design matrix\
+            columns to unit standard deviation.
+        variance_normalisation: Perform MELODIC variance-normalisation on data.
+        demean: Switch on de-meaning of design and data.
+        nmf_dim: Number of underlying factors for NMF.
+        nmf_iterations: Number of NMF iterations (default 100).
+        verbose: Switch on verbose output.
+        out_data: Output file name for pre-processed data.
+        out_vnscales: Output file name for scaling factors for variance\
+            normalisation.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslMvlmOutputs`).
     """

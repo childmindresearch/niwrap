@@ -68,46 +68,47 @@ def filmbabe(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        datafile: Data file
-        datafile_alias: Data file
-        mask: Mask file
-        mask_alias: Mask file
-        designfile: Design matrix file
-        designfile_alias_1: Design matrix file
-        designfile_alias_2: Design matrix file
-        frf: File indicating which regressors belong to which original EV design
-            matrix file (a -1 label indicates a non-flobs regressor)
-        verbose_flag: Switch on diagnostic messages
-        verbose_flag_alias: Switch on diagnostic messages
-        debug_level: Set debug level
-        debug_level_alias_1: Set debug level
-        debug_level_alias_2: Set debug level
-        timing_on_flag: Turn timing on
-        help_flag: Display help message
-        help_flag_alias: Display help message
-        flobs_prior_off_flag: Turn FLOBS prior off
-        flobs_prior_off_alias: Turn FLOBS prior off
-        flobs_dir: FLOBS directory; required when using FLOBS constraints
-        prior_covar_file: Prior covariance matrix file
-        prior_covar_file_alias: Prior covariance matrix file
-        prior_mean_file: Prior mean matrix file
-        prior_mean_file_alias: Prior mean matrix file
-        log_dir: Log directory
-        log_dir_alias_1: Log directory
-        log_dir_alias_2: Log directory
-        num_iterations: Number of VB iterations; default is 5
-        temporal_ar_mrf_prec: MRF precision to impose on temporal AR maps,
-            default is -1 for a proper full Bayes approach
-        temporal_ar_mrf_prec_alias: MRF precision to impose on temporal AR maps,
-            default is -1 for a proper full Bayes approach
-        temporal_ar_flag: Impose ARD/MRF on temporal AR
-        num_trace_samples: Number of samples to take to estimate trace; default
-            is 0 (uses only diagonal elements of precision matrix to estimate trace)
-        num_trace_samples_alias: Number of samples to take to estimate trace;
-            default is 0 (uses only diagonal elements of precision matrix to
-            estimate trace)
-        temporal_ar_order: Order of temporal AR; default is 3
-        runner: Command runner
+        datafile: Data file.
+        datafile_alias: Data file.
+        mask: Mask file.
+        mask_alias: Mask file.
+        designfile: Design matrix file.
+        designfile_alias_1: Design matrix file.
+        designfile_alias_2: Design matrix file.
+        frf: File indicating which regressors belong to which original EV\
+            design matrix file (a -1 label indicates a non-flobs regressor).
+        verbose_flag: Switch on diagnostic messages.
+        verbose_flag_alias: Switch on diagnostic messages.
+        debug_level: Set debug level.
+        debug_level_alias_1: Set debug level.
+        debug_level_alias_2: Set debug level.
+        timing_on_flag: Turn timing on.
+        help_flag: Display help message.
+        help_flag_alias: Display help message.
+        flobs_prior_off_flag: Turn FLOBS prior off.
+        flobs_prior_off_alias: Turn FLOBS prior off.
+        flobs_dir: FLOBS directory; required when using FLOBS constraints.
+        prior_covar_file: Prior covariance matrix file.
+        prior_covar_file_alias: Prior covariance matrix file.
+        prior_mean_file: Prior mean matrix file.
+        prior_mean_file_alias: Prior mean matrix file.
+        log_dir: Log directory.
+        log_dir_alias_1: Log directory.
+        log_dir_alias_2: Log directory.
+        num_iterations: Number of VB iterations; default is 5.
+        temporal_ar_mrf_prec: MRF precision to impose on temporal AR maps,\
+            default is -1 for a proper full Bayes approach.
+        temporal_ar_mrf_prec_alias: MRF precision to impose on temporal AR\
+            maps, default is -1 for a proper full Bayes approach.
+        temporal_ar_flag: Impose ARD/MRF on temporal AR.
+        num_trace_samples: Number of samples to take to estimate trace; default\
+            is 0 (uses only diagonal elements of precision matrix to estimate\
+            trace).
+        num_trace_samples_alias: Number of samples to take to estimate trace;\
+            default is 0 (uses only diagonal elements of precision matrix to\
+            estimate trace).
+        temporal_ar_order: Order of temporal AR; default is 3.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FilmbabeOutputs`).
     """

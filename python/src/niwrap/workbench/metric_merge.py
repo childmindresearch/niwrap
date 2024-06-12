@@ -126,9 +126,9 @@ def metric_merge(
     all columns from second.func.gii, and write these columns to out.func.gii.
     
     Args:
-        metric_out: the output metric
-        metric: specify an input metric
-        runner: Command runner
+        metric_out: the output metric.
+        metric: specify an input metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricMergeOutputs`).
     """

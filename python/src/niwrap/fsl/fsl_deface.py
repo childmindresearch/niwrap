@@ -60,27 +60,27 @@ def fsl_deface(
     Tool to deface a structural T1w image.
     
     Args:
-        infile: Input T1w image
-        outfile: Output defaced T1w image
-        cropped_defacing_flag: Apply the defacing to the cropped image instead
-            of the original image
-        defacing_mask: Filename to save the defacing mask
-        cropped_struc: Filename to save the new cropped struct
-        orig_to_std_mat: Filename to save affine matrix from original struct to
-            std
-        orig_to_cropped_mat: Filename to save affine matrix from original struct
-            to cropped struct
-        cropped_to_std_mat: Filename to save affine matrix from cropped struct
-            to std
-        shift_nud: Shift, in mm, x-, y- and z-directions, to shift face mask by
-            (These matrices will only work if the input has been previously
-            reoriented to std)
-        fractional_intensity: Fractional intensity for bet (0->1); default=0.5
-        bias_correct_flag: Bias-correct the input image (with fast)
-        center_of_gravity: Center-of-gravity for bet (voxels, not mm)
-        qc_images: Generate 2 pngs to show how the defacing worked for QC
-            purposes
-        runner: Command runner
+        infile: Input T1w image.
+        outfile: Output defaced T1w image.
+        cropped_defacing_flag: Apply the defacing to the cropped image instead\
+            of the original image.
+        defacing_mask: Filename to save the defacing mask.
+        cropped_struc: Filename to save the new cropped struct.
+        orig_to_std_mat: Filename to save affine matrix from original struct to\
+            std.
+        orig_to_cropped_mat: Filename to save affine matrix from original\
+            struct to cropped struct.
+        cropped_to_std_mat: Filename to save affine matrix from cropped struct\
+            to std.
+        shift_nud: Shift, in mm, x-, y- and z-directions, to shift face mask by\
+            (These matrices will only work if the input has been previously\
+            reoriented to std).
+        fractional_intensity: Fractional intensity for bet (0->1); default=0.5.
+        bias_correct_flag: Bias-correct the input image (with fast).
+        center_of_gravity: Center-of-gravity for bet (voxels, not mm).
+        qc_images: Generate 2 pngs to show how the defacing worked for QC\
+            purposes.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslDefaceOutputs`).
     """

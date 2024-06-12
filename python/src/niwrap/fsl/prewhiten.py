@@ -32,10 +32,10 @@ def prewhiten(
     Prewhitening tool for FEAT directories.
     
     Args:
-        feat_directory: Input FEAT directory
-        output_directory: Change output directory from default of input FEAT
-            directory
-        runner: Command runner
+        feat_directory: Input FEAT directory.
+        output_directory: Change output directory from default of input FEAT\
+            directory.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PrewhitenOutputs`).
     """

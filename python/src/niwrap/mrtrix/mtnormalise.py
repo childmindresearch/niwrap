@@ -119,45 +119,45 @@ def mtnormalise(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/mtnormalise.html
     
     Args:
-        input_output: list of all input and output tissue compartment files (see
-            example usage).
-        mask: the mask defines the data used to compute the intensity
+        input_output: list of all input and output tissue compartment files\
+            (see example usage).
+        mask: the mask defines the data used to compute the intensity\
             normalisation. This option is mandatory.
-        order: the maximum order of the polynomial basis used to fit the
-            normalisation field in the log-domain. An order of 0 is equivalent to
-            not allowing spatial variance of the intensity normalisation factor.
-            (default: 3)
-        niter: set the number of iterations. The first (and potentially only)
-            entry applies to the main loop. If supplied as a comma-separated list of
-            integers, the second entry applies to the inner loop to update the
+        order: the maximum order of the polynomial basis used to fit the\
+            normalisation field in the log-domain. An order of 0 is equivalent to\
+            not allowing spatial variance of the intensity normalisation factor.\
+            (default: 3).
+        niter: set the number of iterations. The first (and potentially only)\
+            entry applies to the main loop. If supplied as a comma-separated list\
+            of integers, the second entry applies to the inner loop to update the\
             balance factors (default: 15,7).
-        reference: specify the (positive) reference value to which the summed
-            tissue compartments will be normalised. (default: 0.282095, SH DC term
-            for unit angular integral)
-        balanced: incorporate the per-tissue balancing factors into scaling of
-            the output images (NOTE: use of this option has critical consequences
-            for AFD intensity normalisation; should not be used unless these
-            consequences are fully understood)
-        check_norm: output the final estimated spatially varying intensity level
-            that is used for normalisation.
-        check_mask: output the final mask used to compute the normalisation.
-            This mask excludes regions identified as outliers by the optimisation
+        reference: specify the (positive) reference value to which the summed\
+            tissue compartments will be normalised. (default: 0.282095, SH DC term\
+            for unit angular integral).
+        balanced: incorporate the per-tissue balancing factors into scaling of\
+            the output images (NOTE: use of this option has critical consequences\
+            for AFD intensity normalisation; should not be used unless these\
+            consequences are fully understood).
+        check_norm: output the final estimated spatially varying intensity\
+            level that is used for normalisation.
+        check_mask: output the final mask used to compute the normalisation.\
+            This mask excludes regions identified as outliers by the optimisation\
             process.
-        check_factors: output the tissue balance factors computed during
+        check_factors: output the tissue balance factors computed during\
             normalisation.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MtnormaliseOutputs`).
     """

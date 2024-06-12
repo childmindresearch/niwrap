@@ -45,10 +45,10 @@ def volume_reorient(
     S superior to inferior.
     
     Args:
-        volume: the volume to reorient
-        orient_string: the desired orientation
-        volume_out: out - the reoriented volume
-        runner: Command runner
+        volume: the volume to reorient.
+        orient_string: the desired orientation.
+        volume_out: out - the reoriented volume.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeReorientOutputs`).
     """

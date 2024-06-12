@@ -35,9 +35,9 @@ def fsl_fix_text(
     Ensures standard UNIX line endings in the output text file.
     
     Args:
-        input_text_file: Input text file
-        output_text_file: Output text file
-        runner: Command runner
+        input_text_file: Input text file.
+        output_text_file: Output text file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslFixTextOutputs`).
     """

@@ -52,27 +52,27 @@ def pvmfit(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        data_file: Data file
-        mask_file: Mask file
-        bvec_file: B vectors file
-        bval_file: B values file
-        output_basename: Output basename - default='pvm'
-        number_of_fibres: Number of fibres to fit - default=1
-        model_type: Model type: 1 for Ball-Sticks (single-shell), 2 for
-            Ball-Sticks (multi-shells), 4 for Ball-Binghams
-        fit_all_models: Fit all models from 1 up to N fibres and choose the best
-            using BIC
-        constrained_nonlinear: Model1: Apply constrained nonlinear optimization
-            on the diffusivity, volume fractions and their sum
-        constrained_nonlinear_f: Model1: Apply constrained nonlinear
-            optimization on the diffusivity, volume fractions and their sum. Return
-            n fanning angle estimates, using the Hessian of the cost function
-        grid_search: Use grid search (on the fanning eigenvalues). Default=off
-        include_noise_floor: Include noise floor parameter in the model
-        save_bic: Save BIC for certain models
-        verbose: Switch on diagnostic messages
-        help_: Display help message
-        runner: Command runner
+        data_file: Data file.
+        mask_file: Mask file.
+        bvec_file: B vectors file.
+        bval_file: B values file.
+        output_basename: Output basename - default='pvm'.
+        number_of_fibres: Number of fibres to fit - default=1.
+        model_type: Model type: 1 for Ball-Sticks (single-shell), 2 for\
+            Ball-Sticks (multi-shells), 4 for Ball-Binghams.
+        fit_all_models: Fit all models from 1 up to N fibres and choose the\
+            best using BIC.
+        constrained_nonlinear: Model1: Apply constrained nonlinear optimization\
+            on the diffusivity, volume fractions and their sum.
+        constrained_nonlinear_f: Model1: Apply constrained nonlinear\
+            optimization on the diffusivity, volume fractions and their sum. Return\
+            n fanning angle estimates, using the Hessian of the cost function.
+        grid_search: Use grid search (on the fanning eigenvalues). Default=off.
+        include_noise_floor: Include noise floor parameter in the model.
+        save_bic: Save BIC for certain models.
+        verbose: Switch on diagnostic messages.
+        help_: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PvmfitOutputs`).
     """

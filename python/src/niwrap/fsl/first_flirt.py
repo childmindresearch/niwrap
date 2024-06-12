@@ -46,19 +46,19 @@ def first_flirt(
     extraction and weighting masks.
     
     Args:
-        input_image: Input image (e.g. subject10rawT1.nii.gz)
-        output_basename: Output basename for the results (e.g.
-            subject10rawT1_to_std_sub)
-        already_brain_extracted_flag: Input is already brain extracted
-        debug_flag: Debug mode: don't delete intermediate files
-        inweight_flag: Use a weighting mask on the first registration
-        strucweight_mask: Use a specific structure weighting mask (in standard
-            space) for an optional third-stage registration step (e.g.
-            maskimage.nii.gz)
-        cort_flag: Use a weighting mask of the whole brain on the first
-            registration for specific models
-        cost_function: Specify the cost function to be used by all FLIRT calls
-        runner: Command runner
+        input_image: Input image (e.g. subject10rawT1.nii.gz).
+        output_basename: Output basename for the results (e.g.\
+            subject10rawT1_to_std_sub).
+        already_brain_extracted_flag: Input is already brain extracted.
+        debug_flag: Debug mode: don't delete intermediate files.
+        inweight_flag: Use a weighting mask on the first registration.
+        strucweight_mask: Use a specific structure weighting mask (in standard\
+            space) for an optional third-stage registration step (e.g.\
+            maskimage.nii.gz).
+        cort_flag: Use a weighting mask of the whole brain on the first\
+            registration for specific models.
+        cost_function: Specify the cost function to be used by all FLIRT calls.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FirstFlirtOutputs`).
     """

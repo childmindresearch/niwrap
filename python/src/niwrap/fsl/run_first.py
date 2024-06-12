@@ -44,19 +44,19 @@ def run_first(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST
     
     Args:
-        input_image: Input image file (e.g. img.nii.gz)
-        transformation_matrix: Input transformation matrix file (e.g.
-            input_to_mni.mat)
-        n_modes: Number of modes
-        output_basename: Output basename
-        model_name: Model name
-        verbose_flag: Verbose mode
-        intref_model_name: Reference structure for the local intensity
-            normalization
-        load_bvars: Initializes FIRST with a previous estimate of the structure
-        multiple_images_flag: Run FIRST on multiple images; provide a list of
-            images, transformation matrices, and output names
-        runner: Command runner
+        input_image: Input image file (e.g. img.nii.gz).
+        transformation_matrix: Input transformation matrix file (e.g.\
+            input_to_mni.mat).
+        n_modes: Number of modes.
+        output_basename: Output basename.
+        model_name: Model name.
+        verbose_flag: Verbose mode.
+        intref_model_name: Reference structure for the local intensity\
+            normalization.
+        load_bvars: Initializes FIRST with a previous estimate of the structure.
+        multiple_images_flag: Run FIRST on multiple images; provide a list of\
+            images, transformation matrices, and output names.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RunFirstOutputs`).
     """

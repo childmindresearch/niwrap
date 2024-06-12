@@ -42,14 +42,14 @@ def easythresh(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Easythresh
     
     Args:
-        raw_zstat_input: Input raw z-statistics image
-        brain_mask_input: Brain mask image
-        cluster_z_thresh_input: Cluster z-threshold
-        cluster_prob_thresh_input: Cluster probability threshold
-        background_image_input: Background image for thresholding
-        output_root: Root of output file names
-        mm_flag: Flag to indicate the use of mm (millimeters)
-        runner: Command runner
+        raw_zstat_input: Input raw z-statistics image.
+        brain_mask_input: Brain mask image.
+        cluster_z_thresh_input: Cluster z-threshold.
+        cluster_prob_thresh_input: Cluster probability threshold.
+        background_image_input: Background image for thresholding.
+        output_root: Root of output file names.
+        mm_flag: Flag to indicate the use of mm (millimeters).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `EasythreshOutputs`).
     """

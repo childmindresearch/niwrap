@@ -31,10 +31,10 @@ def pngappend(
     file.
     
     Args:
-        input_files_and_options: List of input files and options for appending
-            (e.g., file1.png +3 file2.png -2 file3.png)
-        output_file: Output file (e.g., output.png or output.gif)
-        runner: Command runner
+        input_files_and_options: List of input files and options for appending\
+            (e.g., file1.png +3 file2.png -2 file3.png).
+        output_file: Output file (e.g., output.png or output.gif).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PngappendOutputs`).
     """

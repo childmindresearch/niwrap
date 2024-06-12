@@ -93,36 +93,36 @@ def fabber_cest(
     More information: https://fabber.gitlab.io
     
     Args:
-        output: Directory for output files
-        method: Inference method
-        model: Forward model
-        data: Input data file
-        help_: Print usage help
-        listmethods: List all known inference methods
-        listmodels: List all known forward models
-        listparams: List model parameters
-        descparams: Describe model parameters
-        listoutputs: List additional model outputs
-        evaluate: Evaluate model and set to name of output required
-        evaluate_params: List of parameter values for evaluation
-        evaluate_nt: Number of time points for evaluation
-        simple_output: Simple output series of lines each giving progress as
-            percentage
-        overwrite: Overwrite existing output
-        link_to_latest: Create a link to the most recent output directory with
-            the prefix _latest
-        loadmodels: Load models dynamically from the specified filename
-        data_multi: Specify multiple data files (data<n>)
-        data_order: Handling of multiple data files (concatenate or interleave)
-        mask: Mask file. Inference performed where mask value > 0
-        masked_timepoints: List of masked time points to ignore (mt<n>)
-        suppdata: Supplemental timeseries data required for some models
-        dump_param_names: Write the file paramnames.txt containing the names of
-            the model parameters
-        save_model_fit: Output the model prediction as a 4d volume
-        save_residuals: Output the residuals (difference between the data and
-            the model prediction)
-        save_model_extras: Output additional model-specific timeseries data
+        output: Directory for output files.
+        method: Inference method.
+        model: Forward model.
+        data: Input data file.
+        help_: Print usage help.
+        listmethods: List all known inference methods.
+        listmodels: List all known forward models.
+        listparams: List model parameters.
+        descparams: Describe model parameters.
+        listoutputs: List additional model outputs.
+        evaluate: Evaluate model and set to name of output required.
+        evaluate_params: List of parameter values for evaluation.
+        evaluate_nt: Number of time points for evaluation.
+        simple_output: Simple output series of lines each giving progress as\
+            percentage.
+        overwrite: Overwrite existing output.
+        link_to_latest: Create a link to the most recent output directory with\
+            the prefix _latest.
+        loadmodels: Load models dynamically from the specified filename.
+        data_multi: Specify multiple data files (data<n>).
+        data_order: Handling of multiple data files (concatenate or interleave).
+        mask: Mask file. Inference performed where mask value > 0.
+        masked_timepoints: List of masked time points to ignore (mt<n>).
+        suppdata: Supplemental timeseries data required for some models.
+        dump_param_names: Write the file paramnames.txt containing the names of\
+            the model parameters.
+        save_model_fit: Output the model prediction as a 4d volume.
+        save_residuals: Output the residuals (difference between the data and\
+            the model prediction).
+        save_model_extras: Output additional model-specific timeseries data.
         save_mvn: Output the final MVN distributions.
         save_mean: Output the parameter means.
         save_std: Output the parameter standard deviations.
@@ -131,11 +131,11 @@ def fabber_cest(
         save_noise_mean: Output the noise means.
         save_noise_std: Output the noise standard deviations.
         save_free_energy: Output the free energy, if calculated.
-        optfile: File containing additional options, one per line, in the same
-            form as specified on the command line
-        debug: Output large amounts of debug information. ONLY USE WITH VERY
-            SMALL NUMBERS OF VOXELS
-        runner: Command runner
+        optfile: File containing additional options, one per line, in the same\
+            form as specified on the command line.
+        debug: Output large amounts of debug information. ONLY USE WITH VERY\
+            SMALL NUMBERS OF VOXELS.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FabberCestOutputs`).
     """

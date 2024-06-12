@@ -53,37 +53,37 @@ def fsl_anat(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/fsl_anat
     
     Args:
-        structural_image: Filename of input image (for one image only)
-        existing_anat_dir: Directory name for existing .anat directory where
-            this script will be run in place
-        output_dir: Basename of directory for output (default is input image
-            basename followed by .anat)
-        clobber_flag: If .anat directory exists (as specified by -o or default
-            from -i) then delete it and make a new one
-        strongbias_flag: Used for images with very strong bias fields
-        weakbias_flag: Used for images with smoother, more typical, bias fields
-            (default setting)
-        noreorient_flag: Turn off step that does reorientation to standard
-            (fslreorient2std)
-        nocrop_flag: Turn off step that does automated cropping (robustfov)
-        nobias_flag: Turn off steps that do bias field correction (via FAST)
-        noreg_flag: Turn off steps that do registration to standard (FLIRT and
-            FNIRT)
-        nononlinreg_flag: Turn off step that does non-linear registration
-            (FNIRT)
-        noseg_flag: Turn off step that does tissue-type segmentation (FAST)
-        nosubcortseg_flag: Turn off step that does sub-cortical segmentation
-            (FIRST)
-        bias_smoothing: Specify the value for bias field smoothing (the -l
-            option in FAST)
-        image_type: Specify the type of image (choose one of T1 T2 PD - default
-            is T1)
-        nosearch_flag: Specify that linear registration uses the -nosearch
-            option (FLIRT)
-        bet_f_param: Specify f parameter for BET (only used if not running
-            non-linear reg and also wanting brain extraction done)
-        nocleanup_flag: Do not remove intermediate files
-        runner: Command runner
+        structural_image: Filename of input image (for one image only).
+        existing_anat_dir: Directory name for existing .anat directory where\
+            this script will be run in place.
+        output_dir: Basename of directory for output (default is input image\
+            basename followed by .anat).
+        clobber_flag: If .anat directory exists (as specified by -o or default\
+            from -i) then delete it and make a new one.
+        strongbias_flag: Used for images with very strong bias fields.
+        weakbias_flag: Used for images with smoother, more typical, bias fields\
+            (default setting).
+        noreorient_flag: Turn off step that does reorientation to standard\
+            (fslreorient2std).
+        nocrop_flag: Turn off step that does automated cropping (robustfov).
+        nobias_flag: Turn off steps that do bias field correction (via FAST).
+        noreg_flag: Turn off steps that do registration to standard (FLIRT and\
+            FNIRT).
+        nononlinreg_flag: Turn off step that does non-linear registration\
+            (FNIRT).
+        noseg_flag: Turn off step that does tissue-type segmentation (FAST).
+        nosubcortseg_flag: Turn off step that does sub-cortical segmentation\
+            (FIRST).
+        bias_smoothing: Specify the value for bias field smoothing (the -l\
+            option in FAST).
+        image_type: Specify the type of image (choose one of T1 T2 PD - default\
+            is T1).
+        nosearch_flag: Specify that linear registration uses the -nosearch\
+            option (FLIRT).
+        bet_f_param: Specify f parameter for BET (only used if not running\
+            non-linear reg and also wanting brain extraction done).
+        nocleanup_flag: Do not remove intermediate files.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslAnatOutputs`).
     """

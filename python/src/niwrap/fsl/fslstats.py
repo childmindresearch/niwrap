@@ -60,43 +60,43 @@ def fslstats(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        input_file: Input image file (e.g., image.nii.gz)
-        index_mask: Generate separate n submasks from indexMask, for indexvalues
-            1..n where n is the maximum index value in indexMask, and generate
-            statistics for each submask
-        lower_threshold: Set lower threshold
-        upper_threshold: Set upper threshold
-        robust_intensity_flag: Output robust min and max intensity
-        minmax_intensity_flag: Output min and max intensity
-        voxels_volume_flag: Output voxels and volume
-        nonzero_voxels_volume_flag: Output voxels and volume (for nonzero
-            voxels)
-        mean_flag: Output mean
-        nonzero_mean_flag: Output mean (for nonzero voxels)
-        std_dev_flag: Output standard deviation
-        nonzero_std_dev_flag: Output standard deviation (for nonzero voxels)
-        smallest_roi_flag: Output smallest ROI containing nonzero voxels
-        max_coords_flag: Output coordinates of maximum voxel
-        min_coords_flag: Output coordinates of minimum voxel
-        cog_mm_flag: Output center-of-gravity (cog) in mm coordinates
-        cog_voxel_flag: Output center-of-gravity (cog) in voxel coordinates
-        percentile: Output nth percentile
-        nonzero_percentile: Output nth percentile (for nonzero voxels)
-        absolute_values_flag: Use absolute values of all image intensities
-        nan_as_zero_flag: Treat NaN or Inf as zero for subsequent stats
-        mask_image: Use the specified image for masking - overrides lower and
-            upper thresholds
-        difference_image: Take the difference between the base image and the
-            image specified here
-        hist_bins: Output a histogram for the thresholded/masked voxels only
-            with specified number of bins
-        hist_bins_min_max: Output a histogram for the thresholded/masked voxels
-            only with specified number of bins and histogram limits of min and max
-        timeseries_flag: Separate output line for each 3D volume of a 4D
-            timeseries
-        mean_entropy_flag: Output mean entropy; mean(-i*ln(i))
-        nonzero_mean_entropy_flag: Output mean entropy (of nonzero voxels)
-        runner: Command runner
+        input_file: Input image file (e.g., image.nii.gz).
+        index_mask: Generate separate n submasks from indexMask, for\
+            indexvalues 1..n where n is the maximum index value in indexMask, and\
+            generate statistics for each submask.
+        lower_threshold: Set lower threshold.
+        upper_threshold: Set upper threshold.
+        robust_intensity_flag: Output robust min and max intensity.
+        minmax_intensity_flag: Output min and max intensity.
+        voxels_volume_flag: Output voxels and volume.
+        nonzero_voxels_volume_flag: Output voxels and volume (for nonzero\
+            voxels).
+        mean_flag: Output mean.
+        nonzero_mean_flag: Output mean (for nonzero voxels).
+        std_dev_flag: Output standard deviation.
+        nonzero_std_dev_flag: Output standard deviation (for nonzero voxels).
+        smallest_roi_flag: Output smallest ROI containing nonzero voxels.
+        max_coords_flag: Output coordinates of maximum voxel.
+        min_coords_flag: Output coordinates of minimum voxel.
+        cog_mm_flag: Output center-of-gravity (cog) in mm coordinates.
+        cog_voxel_flag: Output center-of-gravity (cog) in voxel coordinates.
+        percentile: Output nth percentile.
+        nonzero_percentile: Output nth percentile (for nonzero voxels).
+        absolute_values_flag: Use absolute values of all image intensities.
+        nan_as_zero_flag: Treat NaN or Inf as zero for subsequent stats.
+        mask_image: Use the specified image for masking - overrides lower and\
+            upper thresholds.
+        difference_image: Take the difference between the base image and the\
+            image specified here.
+        hist_bins: Output a histogram for the thresholded/masked voxels only\
+            with specified number of bins.
+        hist_bins_min_max: Output a histogram for the thresholded/masked voxels\
+            only with specified number of bins and histogram limits of min and max.
+        timeseries_flag: Separate output line for each 3D volume of a 4D\
+            timeseries.
+        mean_entropy_flag: Output mean entropy; mean(-i*ln(i)).
+        nonzero_mean_entropy_flag: Output mean entropy (of nonzero voxels).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslstatsOutputs`).
     """

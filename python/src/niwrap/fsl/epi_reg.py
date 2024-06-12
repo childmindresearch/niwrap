@@ -79,20 +79,20 @@ def epi_reg(
         out_base_name: Output base name.
         t1_brain: Brain-extracted T1 image.
         t1_head: Wholehead T1 image.
-        echospacing: Effective epi echo spacing (sometimes called dwell time) -
+        echospacing: Effective epi echo spacing (sometimes called dwell time) -\
             in seconds.
         fmap: Fieldmap image (in rad/s).
         fmapmag: Fieldmap magnitude image - wholehead.
         fmapmagbrain: Fieldmap magnitude image - brain extracted.
         no_clean: Do not clean up intermediate files.
-        no_fmapreg: Do not perform registration of fmap to t1 (use if fmap
+        no_fmapreg: Do not perform registration of fmap to t1 (use if fmap\
             already registered).
-        pedir: 'x' or 'y' or 'z' or '-x' or '-y' or '-z'. Phase encoding
+        pedir: 'x' or 'y' or 'z' or '-x' or '-y' or '-z'. Phase encoding\
             direction, dir = x/y/z/-x/-y/-z.
         weight_image: Weighting image (in t1 space).
-        wmseg: White matter segmentation of t1 image, has to be named like the
+        wmseg: White matter segmentation of t1 image, has to be named like the\
             t1brain and end on _wmseg.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `EpiRegOutputs`).
     """

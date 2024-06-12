@@ -43,22 +43,22 @@ def bedpostx_gpu(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/Bedpostx
     
     Args:
-        subject_dir: Directory containing the subject's DWI data and associated
+        subject_dir: Directory containing the subject's DWI data and associated\
             files (bvals, bvecs, data, nodif_brain_mask).
-        gpu_queue: Name of the GPU(s) queue. Default: --coprocessor=cuda to let
-            fsl_sub decide on the queue
-        num_jobs: Number of jobs to queue. The data is divided into this number
-            of parts, useful for a GPU cluster. Default: 4
-        num_fibers: Number of fibres per voxel. Default: 3
-        ard_weight: Automatic Relevance Determination (ARD) weight. More weight
-            means fewer secondary fibres per voxel. Default: 1
-        burnin_period: Burn-in period. Default: 1000
-        num_jumps: Number of jumps. Default: 1250
-        sample_every: Sample every N steps. Default: 25
-        deconv_model: Deconvolution model. 1: with sticks, 2: with sticks with a
-            range of diffusivities (default), 3: with zeppelins
-        grad_nonlinear: Consider gradient nonlinearities. Default: off
-        runner: Command runner
+        gpu_queue: Name of the GPU(s) queue. Default: --coprocessor=cuda to let\
+            fsl_sub decide on the queue.
+        num_jobs: Number of jobs to queue. The data is divided into this number\
+            of parts, useful for a GPU cluster. Default: 4.
+        num_fibers: Number of fibres per voxel. Default: 3.
+        ard_weight: Automatic Relevance Determination (ARD) weight. More weight\
+            means fewer secondary fibres per voxel. Default: 1.
+        burnin_period: Burn-in period. Default: 1000.
+        num_jumps: Number of jumps. Default: 1250.
+        sample_every: Sample every N steps. Default: 25.
+        deconv_model: Deconvolution model. 1: with sticks, 2: with sticks with\
+            a range of diffusivities (default), 3: with zeppelins.
+        grad_nonlinear: Consider gradient nonlinearities. Default: off.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BedpostxGpuOutputs`).
     """

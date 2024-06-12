@@ -35,9 +35,9 @@ def tbss_x(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS
     
     Args:
-        scalar_dirs: List of scalar directories (e.g., F1, F2)
-        vector_dirs: List of vector directories (e.g., D1, D2)
-        runner: Command runner
+        scalar_dirs: List of scalar directories (e.g., F1, F2).
+        vector_dirs: List of vector directories (e.g., D1, D2).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TbssXOutputs`).
     """

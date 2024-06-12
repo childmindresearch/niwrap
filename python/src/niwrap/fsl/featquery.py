@@ -49,23 +49,23 @@ def featquery(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
     
     Args:
-        n_featdirs: Number of feat directories
-        featdirs: List of feat directories
-        n_stats: Number of stats to query
-        stats: List of stats
-        output_rootname: Root name for output files
-        mask_file: Mask file used as a reference for coordinates; if relative,
-            searched within each FEAT directory
-        atlas_flag: Use selected atlas to generate label (etc.) information
-        percent_convert_flag: Convert PE / COPE values into percentages
-        thresh_flag: Threshold stats images
-        interp_thresh: Affect size of resampled masks by changing
-            post-interpolation thresholding (default 0.5)
-        timeseries_flag: Create time-series plots
-        weight_flag: Do not binarise mask (allow weighting)
-        browser_flag: Popup results in browser when finished
-        coords: Coordinates specified in voxels (X Y Z)
-        runner: Command runner
+        n_featdirs: Number of feat directories.
+        featdirs: List of feat directories.
+        n_stats: Number of stats to query.
+        stats: List of stats.
+        output_rootname: Root name for output files.
+        mask_file: Mask file used as a reference for coordinates; if relative,\
+            searched within each FEAT directory.
+        atlas_flag: Use selected atlas to generate label (etc.) information.
+        percent_convert_flag: Convert PE / COPE values into percentages.
+        thresh_flag: Threshold stats images.
+        interp_thresh: Affect size of resampled masks by changing\
+            post-interpolation thresholding (default 0.5).
+        timeseries_flag: Create time-series plots.
+        weight_flag: Do not binarise mask (allow weighting).
+        browser_flag: Popup results in browser when finished.
+        coords: Coordinates specified in voxels (X Y Z).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FeatqueryOutputs`).
     """

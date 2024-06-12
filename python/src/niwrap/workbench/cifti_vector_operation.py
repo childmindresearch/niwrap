@@ -52,17 +52,17 @@ def cifti_vector_operation(
     SUBTRACT.
     
     Args:
-        vectors_a: first vector input file
-        vectors_b: second vector input file
-        operation: what vector operation to do
-        cifti_out: the output file
-        opt_normalize_a: normalize vectors of first input
-        opt_normalize_b: normalize vectors of second input
-        opt_normalize_output: normalize output vectors (not valid for dot
-            product)
-        opt_magnitude: output the magnitude of the result (not valid for dot
-            product)
-        runner: Command runner
+        vectors_a: first vector input file.
+        vectors_b: second vector input file.
+        operation: what vector operation to do.
+        cifti_out: the output file.
+        opt_normalize_a: normalize vectors of first input.
+        opt_normalize_b: normalize vectors of second input.
+        opt_normalize_output: normalize output vectors (not valid for dot\
+            product).
+        opt_magnitude: output the magnitude of the result (not valid for dot\
+            product).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiVectorOperationOutputs`).
     """

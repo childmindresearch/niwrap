@@ -37,10 +37,10 @@ def gifti_label_add_prefix(
     For each label other than '???', prepend <prefix> to the label name.
     
     Args:
-        label_in: the input label file
-        prefix: the prefix string to add
-        label_out: the output label file
-        runner: Command runner
+        label_in: the input label file.
+        prefix: the prefix string to add.
+        label_out: the output label file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `GiftiLabelAddPrefixOutputs`).
     """

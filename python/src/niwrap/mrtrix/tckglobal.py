@@ -159,68 +159,67 @@ def tckglobal(
         source: the image containing the raw DWI data.
         response: the response of a track segment on the DWI signal.
         tracks: the output file containing the tracks generated.
-        grad: specify the diffusion encoding scheme (required if not supplied in
-            the header).
-        mask: only reconstruct the tractogram within the specified brain mask
+        grad: specify the diffusion encoding scheme (required if not supplied\
+            in the header).
+        mask: only reconstruct the tractogram within the specified brain mask\
             image.
-        riso: set one or more isotropic response functions. (multiple allowed)
-        lmax: set the maximum harmonic order for the output series. (default =
-            8)
-        length: set the length of the particles (fibre segments). (default =
-            1mm)
-        weight: set the weight by which particles contribute to the model.
-            (default = 0.1)
-        ppot: set the particle potential, i.e., the cost of adding one segment,
-            relative to the particle weight. (default = 0.05)
-        cpot: set the connection potential, i.e., the energy term that drives
-            two segments together. (default = 0.5)
-        t0: set the initial temperature of the metropolis hastings optimizer.
-            (default = 0.1)
-        t1: set the final temperature of the metropolis hastings optimizer.
-            (default = 0.001)
-        niter: set the number of iterations of the metropolis hastings
-            optimizer. (default = 10M)
-        fod: Predicted fibre orientation distribution function (fODF).
-            This fODF is estimated as part of the global track
-            optimization, and therefore incorporates the spatial
-            regularization that it imposes. Internally, the fODF is
-            represented as a discrete sum of apodized point spread
-            functions (aPSF) oriented along the directions of all particles
-            in the voxel, used to predict the DWI signal from the particle
-            configuration.
-        noapo: disable spherical convolution of fODF with apodized PSF, to
+        riso: set one or more isotropic response functions. (multiple allowed).
+        lmax: set the maximum harmonic order for the output series. (default =\
+            8).
+        length: set the length of the particles (fibre segments). (default =\
+            1mm).
+        weight: set the weight by which particles contribute to the model.\
+            (default = 0.1).
+        ppot: set the particle potential, i.e., the cost of adding one segment,\
+            relative to the particle weight. (default = 0.05).
+        cpot: set the connection potential, i.e., the energy term that drives\
+            two segments together. (default = 0.5).
+        t0: set the initial temperature of the metropolis hastings optimizer.\
+            (default = 0.1).
+        t1: set the final temperature of the metropolis hastings optimizer.\
+            (default = 0.001).
+        niter: set the number of iterations of the metropolis hastings\
+            optimizer. (default = 10M).
+        fod: Predicted fibre orientation distribution function (fODF).\
+            This fODF is estimated as part of the global track optimization,\
+            and therefore incorporates the spatial regularization that it\
+            imposes. Internally, the fODF is represented as a discrete sum of\
+            apodized point spread functions (aPSF) oriented along the\
+            directions of all particles in the voxel, used to predict the DWI\
+            signal from the particle configuration.
+        noapo: disable spherical convolution of fODF with apodized PSF, to\
             output a sum of delta functions rather than a sum of aPSFs.
-        fiso: Predicted isotropic fractions of the tissues for which response
+        fiso: Predicted isotropic fractions of the tissues for which response\
             functions were provided with -riso. Typically, these are CSF and GM.
         eext: Residual external energy in every voxel.
         etrend: internal and external energy trend and cooling statistics.
-        balance: balance internal and external energy. (default = 0)
-            Negative values give more weight to the internal energy,
-            positive to the external energy.
-        density: set the desired density of the free Poisson process. (default =
-            1)
-        prob: set the probabilities of generating birth, death, randshift,
-            optshift and connect proposals respectively. (default =
-            0.25,0.05,0.25,0.1,0.35)
-        beta: set the width of the Hanning interpolation window. (in [0, 1],
-            default = 0)
-            If used, a mask is required, and this mask must keep at least
-            one voxel distance to the image bounding box.
-        lambda_: set the weight of the internal energy directly. (default = 1)
+        balance: balance internal and external energy. (default = 0)\
+            Negative values give more weight to the internal energy, positive\
+            to the external energy.
+        density: set the desired density of the free Poisson process. (default\
+            = 1).
+        prob: set the probabilities of generating birth, death, randshift,\
+            optshift and connect proposals respectively. (default =\
+            0.25,0.05,0.25,0.1,0.35).
+        beta: set the width of the Hanning interpolation window. (in [0, 1],\
+            default = 0)\
+            If used, a mask is required, and this mask must keep at least one\
+            voxel distance to the image bounding box.
+        lambda_: set the weight of the internal energy directly. (default = 1)\
             If provided, any value of -balance will be ignored.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TckglobalOutputs`).
     """

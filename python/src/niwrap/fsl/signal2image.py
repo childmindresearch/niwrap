@@ -51,7 +51,7 @@ def signal2image(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        pulse_sequence: 8-column pulse_sequence matrix. Expects to find all
+        pulse_sequence: 8-column pulse_sequence matrix. Expects to find all\
             other pulse sequence files in the same directory.
         input_signal: Input signal file.
         output_image: Output image file.
@@ -63,9 +63,9 @@ def signal2image(
         apodize_flag: Do apodization.
         cutoff: Apodization with this cutoff; default 100.
         rolloff: Apodization with this rolloff; default 10.
-        save_flag: Save window as ASCII matrix (DEBUG!)
-        help_flag: Display help message
-        runner: Command runner
+        save_flag: Save window as ASCII matrix (DEBUG!).
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Signal2imageOutputs`).
     """

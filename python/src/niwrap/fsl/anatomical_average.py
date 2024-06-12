@@ -44,18 +44,18 @@ def anatomical_average(
     More information: https://example.com/anatomicalaverage
     
     Args:
-        output_basename: Output basename
-        input_images: List of input images
-        standard_image: Standard image (default is MNI152_T1_2mm)
-        standard_brain_mask: Standard brain mask (default is
-            MNI152_T1_2mm_brain_mask_dil)
-        no_crop_flag: Do not crop images
-        work_dir: Local, temporary working directory (to be cleaned up - i.e.
-            deleted)
-        brainsize: Specify brainsize in mm for internal ROI (via robustfov)
-        noclean_flag: Do not run the cleanup
-        verbose_flag: Verbose output
-        runner: Command runner
+        output_basename: Output basename.
+        input_images: List of input images.
+        standard_image: Standard image (default is MNI152_T1_2mm).
+        standard_brain_mask: Standard brain mask (default is\
+            MNI152_T1_2mm_brain_mask_dil).
+        no_crop_flag: Do not crop images.
+        work_dir: Local, temporary working directory (to be cleaned up - i.e.\
+            deleted).
+        brainsize: Specify brainsize in mm for internal ROI (via robustfov).
+        noclean_flag: Do not run the cleanup.
+        verbose_flag: Verbose output.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AnatomicalAverageOutputs`).
     """

@@ -33,10 +33,10 @@ def connectedcomp(
     Connected component analysis tool.
     
     Args:
-        in_volume: Input image volume
-        output_volume: Output image volume
-        num_connect: Number of connected components
-        runner: Command runner
+        in_volume: Input image volume.
+        output_volume: Output image volume.
+        num_connect: Number of connected components.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ConnectedcompOutputs`).
     """

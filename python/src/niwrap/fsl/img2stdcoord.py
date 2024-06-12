@@ -39,21 +39,22 @@ def img2stdcoord(
     Transforms image coordinates using standard space transformations.
     
     Args:
-        coordinate_file: Filename containing coordinates. If '-' is used,
+        coordinate_file: Filename containing coordinates. If '-' is used,\
             coordinates are read from standard input.
         input_image: Filename of input image.
         standard_image: Filename of standard image.
-        affine_transform: Filename of affine transform (e.g.,
+        affine_transform: Filename of affine transform (e.g.,\
             example_func2standard.mat).
-        warp_field: Filename of warp field (e.g., highres2standard_warp.nii.gz).
-        prewarp_affine_transform: Filename of pre-warp affine transform (e.g.,
+        warp_field: Filename of warp field (e.g.,\
+            highres2standard_warp.nii.gz).
+        prewarp_affine_transform: Filename of pre-warp affine transform (e.g.,\
             example_func2highres.mat). Default is identity.
         voxel_flag: Input coordinates in voxels (default).
         mm_flag: Input coordinates in mm.
         verbose_flag_1: Verbose output.
         verbose_flag_2: More verbose output.
         help_flag: Display help message.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Img2stdcoordOutputs`).
     """

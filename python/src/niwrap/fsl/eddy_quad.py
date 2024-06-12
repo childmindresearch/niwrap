@@ -43,19 +43,19 @@ def eddy_quad(
     QUality Assessment for DMRI.
     
     Args:
-        eddy_base: Basename (including path) specified when running EDDY
-        eddy_index: File containing indices for all volumes into acquisition
-            parameters
-        eddy_params: File containing acquisition parameters
-        mask: Binary mask file
-        bvals: b-values file
-        bvecs: b-vectors file - only used when <eddyBase>.eddy_residuals file is
-            present
-        output_dir: Output directory - default = '<eddyBase>.qc'
-        field: TOPUP estimated field (in Hz)
-        slspec: Text file specifying slice/group acquisition
-        verbose: Display debug messages
-        runner: Command runner
+        eddy_base: Basename (including path) specified when running EDDY.
+        eddy_index: File containing indices for all volumes into acquisition\
+            parameters.
+        eddy_params: File containing acquisition parameters.
+        mask: Binary mask file.
+        bvals: b-values file.
+        bvecs: b-vectors file - only used when <eddyBase>.eddy_residuals file\
+            is present.
+        output_dir: Output directory - default = '<eddyBase>.qc'.
+        field: TOPUP estimated field (in Hz).
+        slspec: Text file specifying slice/group acquisition.
+        verbose: Display debug messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `EddyQuadOutputs`).
     """

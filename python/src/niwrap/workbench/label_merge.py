@@ -126,9 +126,9 @@ def label_merge(
     subvolumes from second.label.gii, and write these to out.label.gii.
     
     Args:
-        label_out: the output label
-        label: specify an input label
-        runner: Command runner
+        label_out: the output label.
+        label: specify an input label.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `LabelMergeOutputs`).
     """

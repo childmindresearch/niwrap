@@ -54,7 +54,7 @@ def fsl_roi(
         y_size: Size of ROI for y-dimension.
         z_min: Minimum index for z-dimension.
         z_size: Size of ROI for z-dimension.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslRoiOutputs`).
     """

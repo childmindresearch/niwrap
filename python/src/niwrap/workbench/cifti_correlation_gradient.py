@@ -174,31 +174,32 @@ def cifti_correlation_gradient(
     little memory as possible (this may be very slow).
     
     Args:
-        cifti: the input cifti
-        cifti_out: the output cifti
-        left_surface: specify the left surface to use
-        right_surface: specify the right surface to use
-        cerebellum_surface: specify the cerebellum surface to use
-        opt_surface_presmooth_surface_kernel: smooth on the surface before
-            computing the gradient: the size of the gaussian surface smoothing
-            kernel in mm, as sigma by default
-        opt_volume_presmooth_volume_kernel: smooth the volume before computing
-            the gradient: the size of the gaussian volume smoothing kernel in mm, as
-            sigma by default
-        opt_presmooth_fwhm: smoothing kernel sizes are FWHM, not sigma
-        opt_undo_fisher_z: apply the inverse fisher small z transform to the
-            input
-        opt_fisher_z: apply the fisher small z transform to the correlations
-            before taking the gradient
-        opt_surface_exclude_distance: exclude vertices near each seed vertex
-            from computation: geodesic distance from seed vertex for the exclusion
-            zone, in mm
-        opt_volume_exclude_distance: exclude voxels near each seed voxel from
-            computation: distance from seed voxel for the exclusion zone, in mm
-        opt_covariance: compute covariance instead of correlation
-        opt_mem_limit_limit_gb: restrict memory usage: memory limit in gigabytes
-        double_correlation: do two correlations before taking the gradient
-        runner: Command runner
+        cifti: the input cifti.
+        cifti_out: the output cifti.
+        left_surface: specify the left surface to use.
+        right_surface: specify the right surface to use.
+        cerebellum_surface: specify the cerebellum surface to use.
+        opt_surface_presmooth_surface_kernel: smooth on the surface before\
+            computing the gradient: the size of the gaussian surface smoothing\
+            kernel in mm, as sigma by default.
+        opt_volume_presmooth_volume_kernel: smooth the volume before computing\
+            the gradient: the size of the gaussian volume smoothing kernel in mm,\
+            as sigma by default.
+        opt_presmooth_fwhm: smoothing kernel sizes are FWHM, not sigma.
+        opt_undo_fisher_z: apply the inverse fisher small z transform to the\
+            input.
+        opt_fisher_z: apply the fisher small z transform to the correlations\
+            before taking the gradient.
+        opt_surface_exclude_distance: exclude vertices near each seed vertex\
+            from computation: geodesic distance from seed vertex for the exclusion\
+            zone, in mm.
+        opt_volume_exclude_distance: exclude voxels near each seed voxel from\
+            computation: distance from seed voxel for the exclusion zone, in mm.
+        opt_covariance: compute covariance instead of correlation.
+        opt_mem_limit_limit_gb: restrict memory usage: memory limit in\
+            gigabytes.
+        double_correlation: do two correlations before taking the gradient.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiCorrelationGradientOutputs`).
     """

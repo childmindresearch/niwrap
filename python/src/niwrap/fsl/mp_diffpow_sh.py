@@ -37,11 +37,11 @@ def mp_diff(
     by motion correction.
     
     Args:
-        reg_file: Input file containing registration parameters (e.g.,
-            regparam.dat)
-        diff_reg_file: Output file with differenced registration parameters
-            (e.g., diffregparam.dat)
-        runner: Command runner
+        reg_file: Input file containing registration parameters (e.g.,\
+            regparam.dat).
+        diff_reg_file: Output file with differenced registration parameters\
+            (e.g., diffregparam.dat).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MpDiffOutputs`).
     """

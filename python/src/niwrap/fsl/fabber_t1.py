@@ -86,48 +86,48 @@ def fabber_t1(
     advanced Bayesian inference techniques.
     
     Args:
-        output: Directory for output files (including logfile)
-        method: Inference method to use
-        model: Forward model to use
-        data: Specify a single input data file
+        output: Directory for output files (including logfile).
+        method: Inference method to use.
+        model: Forward model to use.
+        data: Specify a single input data file.
         data_mult: Specify multiple data files for n=1, 2, 3...
-        data_order: How multiple data files are handled: concatenate or
-            interleave
-        mask: Mask file. Inference will only be performed where mask value > 0
-        masked_time_points: List of masked time points, indexed from 1. These
-            will be ignored in the parameter updates
-        supp_data: Supplemental timeseries data, required for some models
-        overwrite: Overwrite existing output. If not set, new output directories
-            will be created by appending '+' to the directory name
-        link_to_latest: Try to create a link to the most recent output directory
-            with the prefix _latest
-        simple_output: Simple output format: progress as percentage
-        load_models: Load models dynamically from the specified filename, which
-            should be a DLL/shared library
-        evaluate: Evaluate model. Set to name of output required or blank for
-            default output
-        evaluate_params: List of parameter values for evaluation
-        evaluate_nt: Number of time points for evaluation - must be consistent
-            with model options where appropriate
-        dump_param_names: Write the file paramnames.txt containing the names of
-            the model parameters
-        save_model_fit: Output the model prediction as a 4d volume
-        save_residuals: Output the residuals (difference between the data and
-            the model prediction)
-        save_model_extras: Output any additional model-specific timeseries data
-        save_mvn: Output the final MVN distributions
-        save_mean: Output the parameter means
-        save_std: Output the parameter standard deviations
-        save_var: Output the parameter variances
-        save_zstat: Output the parameter Zstats
-        save_noise_mean: Output the noise means. The noise distribution inferred
-            is the precision of a Gaussian noise source
-        save_noise_std: Output the noise standard deviations
-        save_free_energy: Output the free energy, if calculated
-        optfile: File containing additional options, one per line, in the same
-            form as specified on the command line
-        debug: Output large amounts of debug information
-        runner: Command runner
+        data_order: How multiple data files are handled: concatenate or\
+            interleave.
+        mask: Mask file. Inference will only be performed where mask value > 0.
+        masked_time_points: List of masked time points, indexed from 1. These\
+            will be ignored in the parameter updates.
+        supp_data: Supplemental timeseries data, required for some models.
+        overwrite: Overwrite existing output. If not set, new output\
+            directories will be created by appending '+' to the directory name.
+        link_to_latest: Try to create a link to the most recent output\
+            directory with the prefix _latest.
+        simple_output: Simple output format: progress as percentage.
+        load_models: Load models dynamically from the specified filename, which\
+            should be a DLL/shared library.
+        evaluate: Evaluate model. Set to name of output required or blank for\
+            default output.
+        evaluate_params: List of parameter values for evaluation.
+        evaluate_nt: Number of time points for evaluation - must be consistent\
+            with model options where appropriate.
+        dump_param_names: Write the file paramnames.txt containing the names of\
+            the model parameters.
+        save_model_fit: Output the model prediction as a 4d volume.
+        save_residuals: Output the residuals (difference between the data and\
+            the model prediction).
+        save_model_extras: Output any additional model-specific timeseries data.
+        save_mvn: Output the final MVN distributions.
+        save_mean: Output the parameter means.
+        save_std: Output the parameter standard deviations.
+        save_var: Output the parameter variances.
+        save_zstat: Output the parameter Zstats.
+        save_noise_mean: Output the noise means. The noise distribution\
+            inferred is the precision of a Gaussian noise source.
+        save_noise_std: Output the noise standard deviations.
+        save_free_energy: Output the free energy, if calculated.
+        optfile: File containing additional options, one per line, in the same\
+            form as specified on the command line.
+        debug: Output large amounts of debug information.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FabberT1Outputs`).
     """

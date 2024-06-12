@@ -45,19 +45,19 @@ def run_first_all(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST
     
     Args:
-        input_image: Input image file
-        output_image: Output image file
-        method: Method for brain extraction (auto, fast, none or a numerical
-            threshold value)
-        brainextract_flag: Input is already brain extracted
-        structure: Run only on one specified structure (e.g. L_Hipp) or a comma
-            separated list (no spaces)
-        affine_matrix: Use affine matrix (do not re-run registration)
-        threestage_flag: Use 3-stage affine registration (only currently for
-            hippocampus)
-        debug_flag: Do not cleanup image output files (useful for debugging)
-        verbose_flag: Verbose output
-        runner: Command runner
+        input_image: Input image file.
+        output_image: Output image file.
+        method: Method for brain extraction (auto, fast, none or a numerical\
+            threshold value).
+        brainextract_flag: Input is already brain extracted.
+        structure: Run only on one specified structure (e.g. L_Hipp) or a comma\
+            separated list (no spaces).
+        affine_matrix: Use affine matrix (do not re-run registration).
+        threestage_flag: Use 3-stage affine registration (only currently for\
+            hippocampus).
+        debug_flag: Do not cleanup image output files (useful for debugging).
+        verbose_flag: Verbose output.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RunFirstAllOutputs`).
     """

@@ -45,18 +45,19 @@ def label_dilate(
     vertices with the unlabeled key are bad.
     
     Args:
-        label: the input label
-        surface: the surface to dilate on
-        dilate_dist: distance in mm to dilate the labels
-        label_out: the output label file
-        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,
-            rather than vertices with the unlabeled key: metric file, positive
-            values denote vertices to have their values replaced
-        opt_column_column: select a single column to dilate: the column number
-            or name
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        runner: Command runner
+        label: the input label.
+        surface: the surface to dilate on.
+        dilate_dist: distance in mm to dilate the labels.
+        label_out: the output label file.
+        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,\
+            rather than vertices with the unlabeled key: metric file, positive\
+            values denote vertices to have their values replaced.
+        opt_column_column: select a single column to dilate: the column number\
+            or name.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `LabelDilateOutputs`).
     """

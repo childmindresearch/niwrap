@@ -37,9 +37,9 @@ def fslslice(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        volume: Input 3D volume (e.g. volume.nii.gz)
-        output_basename: Output basename for extracted slices
-        runner: Command runner
+        volume: Input 3D volume (e.g. volume.nii.gz).
+        output_basename: Output basename for extracted slices.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslsliceOutputs`).
     """

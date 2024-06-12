@@ -75,63 +75,63 @@ def reg_f3d(
     More information: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     
     Args:
-        reference_image: Filename of the reference image
-        floating_image: Filename of the floating image
-        affine_transform: Filename which contains an affine transformation
-        flirt_affine_transform: Filename which contains a flirt affine
-            transformation
-        control_point_grid_input: Filename of control point grid input
-        output_cpp: Filename of control point grid
-        output_resampled_image: Filename of the resampled image
-        reference_mask: Filename of a mask image in the reference space
-        smooth_reference: Smooth the reference image using the specified sigma
-            (mm)
-        smooth_floating: Smooth the floating image using the specified sigma
-            (mm)
-        num_bins_joint_histogram: Number of bins to use for the joint histogram
-            (reference)
-        num_bins_floating_joint_histogram: Number of bins to use for the joint
-            histogram (floating)
-        lower_threshold_reference: Lower threshold to apply to the reference
-            image intensities
-        upper_threshold_reference: Upper threshold to apply to the reference
-            image intensities
-        lower_threshold_floating: Lower threshold to apply to the floating image
-            intensities
-        upper_threshold_floating: Upper threshold to apply to the floating image
-            intensities
-        spacing_x: Final grid spacing along the x axis in mm (or in voxel if
-            negative value)
-        spacing_y: Final grid spacing along the y axis in mm (or in voxel if
-            negative value)
-        spacing_z: Final grid spacing along the z axis in mm (or in voxel if
-            negative value)
-        bending_energy: Weight of the bending energy penalty term
-        linear_elasticity: Weights of linear elasticity penalty term
-        l2_norm_displacement: Weight of L2 norm displacement penalty term
-        jacobian_determinant: Weight of log of the Jacobian determinant penalty
-            term
-        no_approx_jl: Do not approximate the JL value only at the control point
-            position
-        no_conj: Do not use the conjugate gradient optimization but a simple
-            gradient ascent
-        ssd: Use the SSD as the similarity measure instead of NMI
-        kld: Use the KL divergence as the similarity measure instead of NMI
-        amc: Use the additive NMI for multichannel data
-        max_iterations: Maximal number of iterations per level
-        num_levels: Number of levels to perform
-        first_levels: Only perform the first levels
-        no_pyramid: Do not use a pyramidal approach
-        symmetric: Use symmetric approach
-        floating_mask: Filename of a mask image in the floating space
-        inverse_consistency: Weight of the inverse consistency penalty term
-        velocity_field: Use velocity field integration to generate the
-            deformation
-        composition_steps: Number of composition steps
-        smooth_gradient: Smooth the metric derivative (in mm)
-        padding_value: Padding value
-        verbose_off: Turn verbose off
-        runner: Command runner
+        reference_image: Filename of the reference image.
+        floating_image: Filename of the floating image.
+        affine_transform: Filename which contains an affine transformation.
+        flirt_affine_transform: Filename which contains a flirt affine\
+            transformation.
+        control_point_grid_input: Filename of control point grid input.
+        output_cpp: Filename of control point grid.
+        output_resampled_image: Filename of the resampled image.
+        reference_mask: Filename of a mask image in the reference space.
+        smooth_reference: Smooth the reference image using the specified sigma\
+            (mm).
+        smooth_floating: Smooth the floating image using the specified sigma\
+            (mm).
+        num_bins_joint_histogram: Number of bins to use for the joint histogram\
+            (reference).
+        num_bins_floating_joint_histogram: Number of bins to use for the joint\
+            histogram (floating).
+        lower_threshold_reference: Lower threshold to apply to the reference\
+            image intensities.
+        upper_threshold_reference: Upper threshold to apply to the reference\
+            image intensities.
+        lower_threshold_floating: Lower threshold to apply to the floating\
+            image intensities.
+        upper_threshold_floating: Upper threshold to apply to the floating\
+            image intensities.
+        spacing_x: Final grid spacing along the x axis in mm (or in voxel if\
+            negative value).
+        spacing_y: Final grid spacing along the y axis in mm (or in voxel if\
+            negative value).
+        spacing_z: Final grid spacing along the z axis in mm (or in voxel if\
+            negative value).
+        bending_energy: Weight of the bending energy penalty term.
+        linear_elasticity: Weights of linear elasticity penalty term.
+        l2_norm_displacement: Weight of L2 norm displacement penalty term.
+        jacobian_determinant: Weight of log of the Jacobian determinant penalty\
+            term.
+        no_approx_jl: Do not approximate the JL value only at the control point\
+            position.
+        no_conj: Do not use the conjugate gradient optimization but a simple\
+            gradient ascent.
+        ssd: Use the SSD as the similarity measure instead of NMI.
+        kld: Use the KL divergence as the similarity measure instead of NMI.
+        amc: Use the additive NMI for multichannel data.
+        max_iterations: Maximal number of iterations per level.
+        num_levels: Number of levels to perform.
+        first_levels: Only perform the first levels.
+        no_pyramid: Do not use a pyramidal approach.
+        symmetric: Use symmetric approach.
+        floating_mask: Filename of a mask image in the floating space.
+        inverse_consistency: Weight of the inverse consistency penalty term.
+        velocity_field: Use velocity field integration to generate the\
+            deformation.
+        composition_steps: Number of composition steps.
+        smooth_gradient: Smooth the metric derivative (in mm).
+        padding_value: Padding value.
+        verbose_off: Turn verbose off.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegF3dOutputs`).
     """

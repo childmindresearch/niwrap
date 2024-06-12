@@ -40,14 +40,15 @@ def volume_estimate_fwhm(
     displayed separately.
     
     Args:
-        volume: the input volume
-        opt_roi_roivol: use only data within an ROI: the volume to use as an ROI
-        opt_subvolume_subvol: select a single subvolume to estimate smoothness
-            of: the subvolume number or name
-        opt_whole_file: estimate for the whole file at once, not each subvolume
-            separately
-        opt_demean: subtract the mean image before estimating smoothness
-        runner: Command runner
+        volume: the input volume.
+        opt_roi_roivol: use only data within an ROI: the volume to use as an\
+            ROI.
+        opt_subvolume_subvol: select a single subvolume to estimate smoothness\
+            of: the subvolume number or name.
+        opt_whole_file: estimate for the whole file at once, not each subvolume\
+            separately.
+        opt_demean: subtract the mean image before estimating smoothness.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeEstimateFwhmOutputs`).
     """

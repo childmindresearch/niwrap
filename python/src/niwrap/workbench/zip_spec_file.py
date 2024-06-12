@@ -42,16 +42,16 @@ def zip_spec_file(
     by the scene files are also referenced by the spec file.
     
     Args:
-        spec_file: the specification file to add to zip file
-        extract_folder: the name of the folder created when the zip file is
-            unzipped
-        zip_file: out - the zip file that will be created
-        opt_base_dir_directory: specify a directory that all data files are
-            somewhere within, this will become the root of the zipfile's directory
-            structure: the directory
-        opt_skip_missing: any missing files will generate only warnings, and the
-            zip file will be created anyway
-        runner: Command runner
+        spec_file: the specification file to add to zip file.
+        extract_folder: the name of the folder created when the zip file is\
+            unzipped.
+        zip_file: out - the zip file that will be created.
+        opt_base_dir_directory: specify a directory that all data files are\
+            somewhere within, this will become the root of the zipfile's directory\
+            structure: the directory.
+        opt_skip_missing: any missing files will generate only warnings, and\
+            the zip file will be created anyway.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ZipSpecFileOutputs`).
     """

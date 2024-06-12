@@ -35,10 +35,10 @@ def medianfilter(
     A tool to perform 26 neighbourhood median filtering on an input image.
     
     Args:
-        infile: Input image file to be filtered (e.g., img.nii.gz)
-        outfile: Output file to store the filtered image (e.g.,
-            img_filtered.nii.gz)
-        runner: Command runner
+        infile: Input image file to be filtered (e.g., img.nii.gz).
+        outfile: Output file to store the filtered image (e.g.,\
+            img_filtered.nii.gz).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MedianfilterOutputs`).
     """

@@ -31,10 +31,10 @@ def imglob(
     Tool for generating image lists with specific extensions.
     
     Args:
-        input_list: List of image names or file paths
-        single_extension: Output one image with full extension
-        multiple_extensions: Output list of images with full extensions
-        runner: Command runner
+        input_list: List of image names or file paths.
+        single_extension: Output one image with full extension.
+        multiple_extensions: Output list of images with full extensions.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ImglobOutputs`).
     """

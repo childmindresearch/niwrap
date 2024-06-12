@@ -39,11 +39,11 @@ def surface_smoothing(
     neighboring vertices.
     
     Args:
-        surface_in: the surface file to smooth
-        smoothing_strength: smoothing strength (ranges [0.0 - 1.0])
-        smoothing_iterations: smoothing iterations
-        surface_out: output surface file
-        runner: Command runner
+        surface_in: the surface file to smooth.
+        smoothing_strength: smoothing strength (ranges [0.0 - 1.0]).
+        smoothing_iterations: smoothing iterations.
+        surface_out: output surface file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceSmoothingOutputs`).
     """

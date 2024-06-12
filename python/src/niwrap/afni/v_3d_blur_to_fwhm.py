@@ -50,10 +50,10 @@ def v_3d_blur_to_fwhm(
         blurmaster: The dataset whose smoothness controls the process.
         fwhm: Blur until the 3d fwhm reaches this value (in mm).
         fwhmxy: Blur until the 2d (x,y)-plane fwhm reaches this value (in mm).
-        mask: Mask dataset, if desired. voxels not in mask will be set to zero
+        mask: Mask dataset, if desired. voxels not in mask will be set to zero\
             in output.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dBlurToFwhmOutputs`).
     """

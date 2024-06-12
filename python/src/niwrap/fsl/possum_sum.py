@@ -37,12 +37,12 @@ def possum_sum(
     Sum of output signals from multiple possum processors.
     
     Args:
-        input_signal: Input signal for one processor (possum output matrix)
-        output_signal: Output signal: sum of all the processors (possum matrix
-            form)
-        num_processors: Number of processors
-        verbose_flag: Switch on diagnostic messages
-        runner: Command runner
+        input_signal: Input signal for one processor (possum output matrix).
+        output_signal: Output signal: sum of all the processors (possum matrix\
+            form).
+        num_processors: Number of processors.
+        verbose_flag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PossumSumOutputs`).
     """

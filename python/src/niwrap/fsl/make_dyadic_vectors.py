@@ -35,13 +35,13 @@ def make_dyadic_vectors(
     Generate dyadic vectors from theta and phi volumes.
     
     Args:
-        theta_vol: Theta volume input file
-        phi_vol: Phi volume input file
-        output: Output file
-        mask: Mask input file (optional)
-        perc: Percentage angle of the output cone of uncertainty (output will be
-            in degrees)
-        runner: Command runner
+        theta_vol: Theta volume input file.
+        phi_vol: Phi volume input file.
+        output: Output file.
+        mask: Mask input file (optional).
+        perc: Percentage angle of the output cone of uncertainty (output will\
+            be in degrees).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MakeDyadicVectorsOutputs`).
     """

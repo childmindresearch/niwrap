@@ -43,14 +43,14 @@ def pointflirt(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        invol_coords: Filename of input volume coordinates
-        refvol_coords: Filename of reference volume coordinates
-        out_matrix: Filename of affine matrix output
-        use_vox: Use voxel coordinates, not mm, for input
-        vol_input: Filename of input volume (needed for --vox option)
-        vol_ref: Filename of reference volume (needed for --vox option)
-        verbose_flag: Switch on diagnostic messages
-        runner: Command runner
+        invol_coords: Filename of input volume coordinates.
+        refvol_coords: Filename of reference volume coordinates.
+        out_matrix: Filename of affine matrix output.
+        use_vox: Use voxel coordinates, not mm, for input.
+        vol_input: Filename of input volume (needed for --vox option).
+        vol_ref: Filename of reference volume (needed for --vox option).
+        verbose_flag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PointflirtOutputs`).
     """

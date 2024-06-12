@@ -35,9 +35,9 @@ def basil_var(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BASIL
     
     Args:
-        results_dir: BASIL results directory
-        mask_image: Mask image
-        runner: Command runner
+        results_dir: BASIL results directory.
+        mask_image: Mask image.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BasilVarOutputs`).
     """

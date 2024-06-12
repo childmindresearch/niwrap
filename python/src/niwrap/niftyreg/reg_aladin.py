@@ -47,21 +47,21 @@ def reg_aladin(
     More information: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     
     Args:
-        reference_image: Filename of the reference (target) image
-        floating_image: Filename of the floating (source) image
-        symmetric: Uses symmetric version of the algorithm
-        output_affine: Filename which contains the output affine transformation
-        rigid_only: To perform a rigid registration only
-        direct_affine: Directly optimize 12 DoF affine
-        smooth_ref: Smooth the reference image using the specified sigma (mm)
-        smooth_float: Smooth the floating image using the specified sigma (mm)
-        num_levels: Number of levels to perform
-        first_levels: Only perform the first levels
-        use_nifti_origin: Use the NIFTI header origins to initialize the
-            translation
-        percent_block: Percentage of block to use
-        percent_inlier: Percentage of inlier for the LTS
-        runner: Command runner
+        reference_image: Filename of the reference (target) image.
+        floating_image: Filename of the floating (source) image.
+        symmetric: Uses symmetric version of the algorithm.
+        output_affine: Filename which contains the output affine transformation.
+        rigid_only: To perform a rigid registration only.
+        direct_affine: Directly optimize 12 DoF affine.
+        smooth_ref: Smooth the reference image using the specified sigma (mm).
+        smooth_float: Smooth the floating image using the specified sigma (mm).
+        num_levels: Number of levels to perform.
+        first_levels: Only perform the first levels.
+        use_nifti_origin: Use the NIFTI header origins to initialize the\
+            translation.
+        percent_block: Percentage of block to use.
+        percent_inlier: Percentage of inlier for the LTS.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegAladinOutputs`).
     """

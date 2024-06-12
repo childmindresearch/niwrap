@@ -32,12 +32,12 @@ def fsl_get_standard(
     Generate paths to FSL standard space images.
     
     Args:
-        image_type: Image type - one of 'whole_head' (the default), 'brain', or
-            'brain_mask'
-        resolution: Desired isotropic resolution in millimetres
-        verbose_flag: Output more information
-        version_flag: Print version and exit
-        runner: Command runner
+        image_type: Image type - one of 'whole_head' (the default), 'brain', or\
+            'brain_mask'.
+        resolution: Desired isotropic resolution in millimetres.
+        verbose_flag: Output more information.
+        version_flag: Print version and exit.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslGetStandardOutputs`).
     """

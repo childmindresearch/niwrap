@@ -40,12 +40,12 @@ def tbss_fill(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS
     
     Args:
-        stats_image: Stats image
-        threshold: Threshold value
-        mean_fa: Mean FA image
-        output: Output image
-        include_negative_flag: Include negative stat values (below -threshold)
-        runner: Command runner
+        stats_image: Stats image.
+        threshold: Threshold value.
+        mean_fa: Mean FA image.
+        output: Output image.
+        include_negative_flag: Include negative stat values (below -threshold).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TbssFillOutputs`).
     """

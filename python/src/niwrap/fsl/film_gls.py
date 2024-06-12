@@ -62,43 +62,43 @@ def film_gls(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FILM
     
     Args:
-        infile: Input data file (NIFTI for volumetric, GIFTI for surface)
-        ac_flag: Perform autocorrelation estimation only
-        threshold: Initial threshold to apply to input data
-        ar_flag: Fits autoregressive model - default is to use tukey with
-            M=sqrt(numvols)
-        noest_flag: Do not estimate autocorrelations
-        output_pw_flag: Output prewhitened data and average design matrix
-        pava_flag: Estimates autocorrelation using PAVA - default is to use
-            tukey with M=sqrt(numvols)
-        sa_flag: Smooths autocorrelation estimates
-        verbose_flag: Outputs full data
-        results_dir: Directory name to store results in, default is results
-        mode: Analysis mode, options are volumetric (default) or surface.
-            Caution: surface-based functionality is still BETA
-        input_surface: Input surface for autocorrelation smoothing in
-            surface-based analyses
-        mean_func_file: Re-estimate mean_func baseline - for use with perfusion
-            subtraction
-        min_timepoint_file: Minimum timepoint file
-        paradigm_file: Paradigm file
-        t_contrasts_file: T-contrasts file
-        f_contrasts_file: F-contrasts file
-        epith: SUSAN brightness threshold for volumetric analysis/smoothing
-            sigma for surface analysis
-        ms: SUSAN mask size for volumetric analysis/smoothing extent for surface
-            analysis
-        tukey: Uses tukey window to estimate autocorrelation with window size
-            num - default is to use tukey with M=sqrt(numvols)
-        mt: Uses multitapering with slepian tapers and num is the time-bandwidth
-            product - default is to use tukey with M=sqrt(numvols)
-        ven: List of numbers indicating voxelwise EVs position in the design
-            matrix (list order corresponds to files in vxf option). Caution BETA
+        infile: Input data file (NIFTI for volumetric, GIFTI for surface).
+        ac_flag: Perform autocorrelation estimation only.
+        threshold: Initial threshold to apply to input data.
+        ar_flag: Fits autoregressive model - default is to use tukey with\
+            M=sqrt(numvols).
+        noest_flag: Do not estimate autocorrelations.
+        output_pw_flag: Output prewhitened data and average design matrix.
+        pava_flag: Estimates autocorrelation using PAVA - default is to use\
+            tukey with M=sqrt(numvols).
+        sa_flag: Smooths autocorrelation estimates.
+        verbose_flag: Outputs full data.
+        results_dir: Directory name to store results in, default is results.
+        mode: Analysis mode, options are volumetric (default) or surface.\
+            Caution: surface-based functionality is still BETA.
+        input_surface: Input surface for autocorrelation smoothing in\
+            surface-based analyses.
+        mean_func_file: Re-estimate mean_func baseline - for use with perfusion\
+            subtraction.
+        min_timepoint_file: Minimum timepoint file.
+        paradigm_file: Paradigm file.
+        t_contrasts_file: T-contrasts file.
+        f_contrasts_file: F-contrasts file.
+        epith: SUSAN brightness threshold for volumetric analysis/smoothing\
+            sigma for surface analysis.
+        ms: SUSAN mask size for volumetric analysis/smoothing extent for\
+            surface analysis.
+        tukey: Uses tukey window to estimate autocorrelation with window size\
+            num - default is to use tukey with M=sqrt(numvols).
+        mt: Uses multitapering with slepian tapers and num is the\
+            time-bandwidth product - default is to use tukey with M=sqrt(numvols).
+        ven: List of numbers indicating voxelwise EVs position in the design\
+            matrix (list order corresponds to files in vxf option). Caution BETA\
             option, only use with volumetric analysis.
-        vef: List of 4D images containing voxelwise EVs (list order corresponds
-            to numbers in vxl option). Caution BETA option, only use with volumetric
-            analysis.
-        runner: Command runner
+        vef: List of 4D images containing voxelwise EVs (list order corresponds\
+            to numbers in vxl option). Caution BETA option, only use with\
+            volumetric analysis.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FilmGlsOutputs`).
     """

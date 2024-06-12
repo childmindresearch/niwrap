@@ -39,15 +39,15 @@ def fslswapdim_exe(
     Tool to swap the x, y, z axes dimensions of an image.
     
     Args:
-        input_file: Input image file (e.g., input.nii.gz)
-        axis_a: New x-axis in terms of old axes (-x, x, y, -y, z, -z)
-        axis_b: New y-axis in terms of old axes (-x, x, y, -y, z, -z)
-        axis_c: New z-axis in terms of old axes (-x, x, y, -y, z, -z)
-        output_file: Output image file (optional, cannot be used with --checkLR
-            flag)
-        check_lr_flag: Option to check if the specified arguments lead to a
-            Left-Right swap or not, cannot be used with an output name
-        runner: Command runner
+        input_file: Input image file (e.g., input.nii.gz).
+        axis_a: New x-axis in terms of old axes (-x, x, y, -y, z, -z).
+        axis_b: New y-axis in terms of old axes (-x, x, y, -y, z, -z).
+        axis_c: New z-axis in terms of old axes (-x, x, y, -y, z, -z).
+        output_file: Output image file (optional, cannot be used with --checkLR\
+            flag).
+        check_lr_flag: Option to check if the specified arguments lead to a\
+            Left-Right swap or not, cannot be used with an output name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslswapdimExeOutputs`).
     """

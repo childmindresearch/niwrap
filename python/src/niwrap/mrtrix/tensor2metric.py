@@ -116,43 +116,43 @@ def tensor2metric(
     
     Args:
         tensor: the input tensor image.
-        adc: compute the mean apparent diffusion coefficient (ADC) of the
-            diffusion tensor. (sometimes also referred to as the mean diffusivity
-            (MD))
+        adc: compute the mean apparent diffusion coefficient (ADC) of the\
+            diffusion tensor. (sometimes also referred to as the mean diffusivity\
+            (MD)).
         fa: compute the fractional anisotropy (FA) of the diffusion tensor.
-        ad: compute the axial diffusivity (AD) of the diffusion tensor.
-            (equivalent to the principal eigenvalue)
-        rd: compute the radial diffusivity (RD) of the diffusion tensor.
-            (equivalent to the mean of the two non-principal eigenvalues)
-        cl: compute the linearity metric of the diffusion tensor. (one of the
-            three Westin shape metrics)
-        cp: compute the planarity metric of the diffusion tensor. (one of the
-            three Westin shape metrics)
-        cs: compute the sphericity metric of the diffusion tensor. (one of the
-            three Westin shape metrics)
+        ad: compute the axial diffusivity (AD) of the diffusion tensor.\
+            (equivalent to the principal eigenvalue).
+        rd: compute the radial diffusivity (RD) of the diffusion tensor.\
+            (equivalent to the mean of the two non-principal eigenvalues).
+        cl: compute the linearity metric of the diffusion tensor. (one of the\
+            three Westin shape metrics).
+        cp: compute the planarity metric of the diffusion tensor. (one of the\
+            three Westin shape metrics).
+        cs: compute the sphericity metric of the diffusion tensor. (one of the\
+            three Westin shape metrics).
         value: compute the selected eigenvalue(s) of the diffusion tensor.
         vector: compute the selected eigenvector(s) of the diffusion tensor.
-        num: specify the desired eigenvalue/eigenvector(s). Note that several
-            eigenvalues can be specified as a number sequence. For example, '1,3'
-            specifies the principal (1) and minor (3) eigenvalues/eigenvectors
+        num: specify the desired eigenvalue/eigenvector(s). Note that several\
+            eigenvalues can be specified as a number sequence. For example, '1,3'\
+            specifies the principal (1) and minor (3) eigenvalues/eigenvectors\
             (default = 1).
-        modulate: specify how to modulate the magnitude of the eigenvectors.
+        modulate: specify how to modulate the magnitude of the eigenvectors.\
             Valid choices are: none, FA, eigval (default = FA).
-        mask: only perform computation within the specified binary brain mask
+        mask: only perform computation within the specified binary brain mask\
             image.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Tensor2metricOutputs`).
     """

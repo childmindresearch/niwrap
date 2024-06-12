@@ -130,35 +130,35 @@ def dwi2mask(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/dwi2mask.html
     
     Args:
-        input_: the input DWI image containing volumes that are both diffusion
-            weighted and b=0
-        output: the output whole-brain mask image
-        clean_scale: the maximum scale used to cut bridges. A certain maximum
-            scale cuts bridges up to a width (in voxels) of 2x the provided scale.
-            Setting this to 0 disables the mask cleaning step. (Default: 2)
-        grad: Provide the diffusion-weighted gradient scheme used in the
-            acquisition in a text file. This should be supplied as a 4xN text file
-            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe
-            the direction of the applied gradient, and b gives the b-value in units
-            of s/mm^2. If a diffusion gradient scheme is present in the input image
+        input_: the input DWI image containing volumes that are both diffusion\
+            weighted and b=0.
+        output: the output whole-brain mask image.
+        clean_scale: the maximum scale used to cut bridges. A certain maximum\
+            scale cuts bridges up to a width (in voxels) of 2x the provided scale.\
+            Setting this to 0 disables the mask cleaning step. (Default: 2).
+        grad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in a text file. This should be supplied as a 4xN text file\
+            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\
+            the direction of the applied gradient, and b gives the b-value in units\
+            of s/mm^2. If a diffusion gradient scheme is present in the input image\
             header, the data provided with this option will be instead used.
-        fslgrad: Provide the diffusion-weighted gradient scheme used in the
-            acquisition in FSL bvecs/bvals format files. If a diffusion gradient
-            scheme is present in the input image header, the data provided with this
-            option will be instead used.
+        fslgrad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Dwi2maskOutputs`).
     """

@@ -701,12 +701,12 @@ def fslmaths(
     FSL utility for image arithmetic, statistics, and mathematical operations.
     
     Args:
-        input_files: Input images for processing
-        operations: Operations to perform on input images
-        output: Output image file
-        datatype_internal: Datatype used internally for calculations
-        output_datatype: Datatype used for the output image
-        runner: Command runner
+        input_files: Input images for processing.
+        operations: Operations to perform on input images.
+        output: Output image file.
+        datatype_internal: Datatype used internally for calculations.
+        output_datatype: Datatype used for the output image.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslmathsOutputs`).
     """

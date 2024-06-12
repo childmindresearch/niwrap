@@ -42,14 +42,14 @@ def fsl_prepare_fieldmap(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PrepareFieldmap
     
     Args:
-        scanner: Scanner type (must be SIEMENS)
-        phase_image: Phase image file
-        magnitude_image: Magnitude image file (should be Brain Extracted)
-        out_image: Output fieldmap image file
-        delta_te: Echo time difference of the fieldmap sequence in milliseconds
-        nocheck_flag: Suppress automatic sanity checking of image
-            size/range/dimensions
-        runner: Command runner
+        scanner: Scanner type (must be SIEMENS).
+        phase_image: Phase image file.
+        magnitude_image: Magnitude image file (should be Brain Extracted).
+        out_image: Output fieldmap image file.
+        delta_te: Echo time difference of the fieldmap sequence in milliseconds.
+        nocheck_flag: Suppress automatic sanity checking of image\
+            size/range/dimensions.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslPrepareFieldmapOutputs`).
     """

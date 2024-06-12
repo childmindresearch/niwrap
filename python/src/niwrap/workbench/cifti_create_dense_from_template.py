@@ -250,18 +250,18 @@ def cifti_create_dense_from_template(
     RADIAN.
     
     Args:
-        template_cifti: file to match brainordinates of
-        cifti_out: the output cifti file
-        series: make a dtseries file instead of a dscalar
-        volume_all: specify an input volume file for all voxel data
-        opt_label_collision_action: how to handle conflicts between label keys:
-            'ERROR', 'SURFACES_FIRST', or 'LEGACY', default 'ERROR', use 'LEGACY' to
-            match v1.4.2 and earlier
-        cifti: use input data from a cifti file
-        metric: use input data from a metric file
-        label: use input data from surface label files
-        volume: use a volume file for a single volume structure's data
-        runner: Command runner
+        template_cifti: file to match brainordinates of.
+        cifti_out: the output cifti file.
+        series: make a dtseries file instead of a dscalar.
+        volume_all: specify an input volume file for all voxel data.
+        opt_label_collision_action: how to handle conflicts between label keys:\
+            'ERROR', 'SURFACES_FIRST', or 'LEGACY', default 'ERROR', use 'LEGACY'\
+            to match v1.4.2 and earlier.
+        cifti: use input data from a cifti file.
+        metric: use input data from a metric file.
+        label: use input data from surface label files.
+        volume: use a volume file for a single volume structure's data.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateOutputs`).
     """

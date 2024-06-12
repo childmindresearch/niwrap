@@ -44,16 +44,16 @@ def volume_parcel_smoothing(
     faster.
     
     Args:
-        data_volume: the volume to smooth
-        label_volume: a label volume containing the parcels to smooth
-        kernel: the size of the gaussian smoothing kernel in mm, as sigma by
-            default
-        volume_out: the output volume
-        opt_fwhm: smoothing kernel size is FWHM, not sigma
-        opt_fix_zeros: treat zero values as not being data
-        opt_subvolume_subvol: select a single subvolume to smooth: the subvolume
-            number or name
-        runner: Command runner
+        data_volume: the volume to smooth.
+        label_volume: a label volume containing the parcels to smooth.
+        kernel: the size of the gaussian smoothing kernel in mm, as sigma by\
+            default.
+        volume_out: the output volume.
+        opt_fwhm: smoothing kernel size is FWHM, not sigma.
+        opt_fix_zeros: treat zero values as not being data.
+        opt_subvolume_subvol: select a single subvolume to smooth: the\
+            subvolume number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeParcelSmoothingOutputs`).
     """

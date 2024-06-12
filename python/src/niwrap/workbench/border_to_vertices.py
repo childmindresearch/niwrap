@@ -39,11 +39,11 @@ def border_to_vertices(
     By default, a separate metric column is created for each border.
     
     Args:
-        surface: the surface the borders are drawn on
-        border_file: the border file
-        metric_out: the output metric file
-        opt_border_name: create ROI for only one border: the name of the border
-        runner: Command runner
+        surface: the surface the borders are drawn on.
+        border_file: the border file.
+        metric_out: the output metric file.
+        opt_border_name: create ROI for only one border: the name of the border.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BorderToVerticesOutputs`).
     """

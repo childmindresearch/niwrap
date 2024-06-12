@@ -36,11 +36,11 @@ def tbss_3_postreg(
     https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide#tbss_3_postreg
     
     Args:
-        derive_mean_from_study: Derive mean_FA and mean_FA_skeleton from mean of
-            all subjects in study (recommended)
-        use_fmrib58: Use FMRIB58_FA and its skeleton instead of study-derived
-            mean and skeleton
-        runner: Command runner
+        derive_mean_from_study: Derive mean_FA and mean_FA_skeleton from mean\
+            of all subjects in study (recommended).
+        use_fmrib58: Use FMRIB58_FA and its skeleton instead of study-derived\
+            mean and skeleton.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Tbss3PostregOutputs`).
     """

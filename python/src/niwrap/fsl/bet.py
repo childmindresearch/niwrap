@@ -84,60 +84,60 @@ def bet(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET
     
     Args:
-        infile: Input image (e.g. img.nii.gz)
-        maskfile: Output brain mask (e.g. img_bet.nii.gz)
-        fractional_intensity: Fractional intensity threshold (0->1);
-            default=0.5; smaller values give larger brain outline estimates
-        vg_fractional_intensity: Vertical gradient in fractional intensity
-            threshold (-1->1); default=0; positive values give larger brain outline
-            at bottom, smaller at top
-        center_of_gravity: The xyz coordinates of the center of gravity (voxels,
-            not mm) of initial mesh surface. Must have exactly three numerical
-            entries in the list (3-vector).
-        overlay: Generate brain surface outline overlaid onto original image
-        binary_mask: Generate binary brain mask
-        approx_skull: Generate rough skull image (not as clean as betsurf)
-        no_seg_output: Don't generate segmented brain image output
-        vtk_mesh: Generate brain surface as mesh in .vtk format
-        head_radius: head radius (mm not voxels); initial surface sphere is set
-            to half of this
-        thresholding: Apply thresholding to segmented brain image and mask
-        robust_iters: More robust brain center estimation, by iterating BET with
-            a changing center-of-gravity.
-        residual_optic_cleanup: This attempts to cleanup residual eye and optic
-            nerve voxels which bet2 can sometimes leave behind. This can be useful
-            when running SIENA or SIENAX, for example. Various stages involving
-            standard-space masking, morphpological operations and thresholdings are
-            combined to produce a result which can often give better results than
+        infile: Input image (e.g. img.nii.gz).
+        maskfile: Output brain mask (e.g. img_bet.nii.gz).
+        fractional_intensity: Fractional intensity threshold (0->1);\
+            default=0.5; smaller values give larger brain outline estimates.
+        vg_fractional_intensity: Vertical gradient in fractional intensity\
+            threshold (-1->1); default=0; positive values give larger brain outline\
+            at bottom, smaller at top.
+        center_of_gravity: The xyz coordinates of the center of gravity\
+            (voxels, not mm) of initial mesh surface. Must have exactly three\
+            numerical entries in the list (3-vector).
+        overlay: Generate brain surface outline overlaid onto original image.
+        binary_mask: Generate binary brain mask.
+        approx_skull: Generate rough skull image (not as clean as betsurf).
+        no_seg_output: Don't generate segmented brain image output.
+        vtk_mesh: Generate brain surface as mesh in .vtk format.
+        head_radius: head radius (mm not voxels); initial surface sphere is set\
+            to half of this.
+        thresholding: Apply thresholding to segmented brain image and mask.
+        robust_iters: More robust brain center estimation, by iterating BET\
+            with a changing center-of-gravity.
+        residual_optic_cleanup: This attempts to cleanup residual eye and optic\
+            nerve voxels which bet2 can sometimes leave behind. This can be useful\
+            when running SIENA or SIENAX, for example. Various stages involving\
+            standard-space masking, morphpological operations and thresholdings are\
+            combined to produce a result which can often give better results than\
             just running bet2.
-        reduce_bias: This attempts to reduce image bias, and residual neck
-            voxels. This can be useful when running SIENA or SIENAX, for example.
-            Various stages involving FAST segmentation-based bias field removal and
-            standard-space masking are combined to produce a result which can often
+        reduce_bias: This attempts to reduce image bias, and residual neck\
+            voxels. This can be useful when running SIENA or SIENAX, for example.\
+            Various stages involving FAST segmentation-based bias field removal and\
+            standard-space masking are combined to produce a result which can often\
             give better results than just running bet2.
-        slice_padding: This can improve the brain extraction if only a few
-            slices are present in the data (i.e., a small field of view in the Z
-            direction). This is achieved by padding the end slices in both
-            directions, copying the end slices several times, running bet2 and then
+        slice_padding: This can improve the brain extraction if only a few\
+            slices are present in the data (i.e., a small field of view in the Z\
+            direction). This is achieved by padding the end slices in both\
+            directions, copying the end slices several times, running bet2 and then\
             removing the added slices.
-        whole_set_mask: This option uses bet2 to determine a brain mask on the
-            basis of the first volume in a 4D data set, and applies this to the
-            whole data set. This is principally intended for use on FMRI data, for
-            example to remove eyeballs. Because it is normally important (in this
-            application) that masking be liberal (ie that there be little risk of
-            cutting out valid brain voxels) the -f threshold is reduced to 0.3, and
+        whole_set_mask: This option uses bet2 to determine a brain mask on the\
+            basis of the first volume in a 4D data set, and applies this to the\
+            whole data set. This is principally intended for use on FMRI data, for\
+            example to remove eyeballs. Because it is normally important (in this\
+            application) that masking be liberal (ie that there be little risk of\
+            cutting out valid brain voxels) the -f threshold is reduced to 0.3, and\
             also the brain mask is "dilated" slightly before being used.
-        additional_surfaces: This runs both bet2 and betsurf programs in order
-            to get the additional skull and scalp surfaces created by betsurf. This
-            involves registering to standard space in order to allow betsurf to find
-            the standard space masks it needs.
-        additional_surfaces_t2: This is the same as -A except that a T2 image is
-            also input, to further improve the estimated skull and scalp surfaces.
-            As well as carrying out the standard space registration this also
-            registers the T2 to the T1 input image.
-        verbose: Switch on diagnostic messages
-        debug: Don't delete temporary intermediate images
-        runner: Command runner
+        additional_surfaces: This runs both bet2 and betsurf programs in order\
+            to get the additional skull and scalp surfaces created by betsurf. This\
+            involves registering to standard space in order to allow betsurf to\
+            find the standard space masks it needs.
+        additional_surfaces_t2: This is the same as -A except that a T2 image\
+            is also input, to further improve the estimated skull and scalp\
+            surfaces. As well as carrying out the standard space registration this\
+            also registers the T2 to the T1 input image.
+        verbose: Switch on diagnostic messages.
+        debug: Don't delete temporary intermediate images.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BetOutputs`).
     """

@@ -82,18 +82,18 @@ def estimate_fiber_binghams(
     THALAMUS_RIGHT.
     
     Args:
-        merged_f1samples: fiber 1 strength samples
-        merged_th1samples: fiber 1 theta samples
-        merged_ph1samples: fiber 1 phi samples
-        merged_f2samples: fiber 2 strength samples
-        merged_th2samples: fiber 2 theta samples
-        merged_ph2samples: fiber 2 phi samples
-        merged_f3samples: fiber 3 strength samples
-        merged_th3samples: fiber 3 theta samples
-        merged_ph3samples: fiber 3 phi samples
-        label_volume: volume of cifti structure labels
-        cifti_out: output cifti fiber distributons file
-        runner: Command runner
+        merged_f1samples: fiber 1 strength samples.
+        merged_th1samples: fiber 1 theta samples.
+        merged_ph1samples: fiber 1 phi samples.
+        merged_f2samples: fiber 2 strength samples.
+        merged_th2samples: fiber 2 theta samples.
+        merged_ph2samples: fiber 2 phi samples.
+        merged_f3samples: fiber 3 strength samples.
+        merged_th3samples: fiber 3 theta samples.
+        merged_ph3samples: fiber 3 phi samples.
+        label_volume: volume of cifti structure labels.
+        cifti_out: output cifti fiber distributons file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `EstimateFiberBinghamsOutputs`).
     """

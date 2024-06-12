@@ -38,12 +38,12 @@ def smoothest(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Smoothest
     
     Args:
-        mask: Brain mask volume
-        dof: Number of degrees of freedom
-        residual_fit_image: Filename of `residual-fit` image (use -d)
-        zstat_image: Filename of zstat image (not with -d)
-        verbose_flag: Switch on diagnostic messages
-        runner: Command runner
+        mask: Brain mask volume.
+        dof: Number of degrees of freedom.
+        residual_fit_image: Filename of `residual-fit` image (use -d).
+        zstat_image: Filename of zstat image (not with -d).
+        verbose_flag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SmoothestOutputs`).
     """

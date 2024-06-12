@@ -81,14 +81,14 @@ def fugue(
         asym_se_time: Set the fieldmap asymmetric spin echo time (sec).
         despike_2dfilter: Apply a 2d de-spiking filter.
         despike_threshold: Specify the threshold for de-spiking (default=3.0).
-        dwell_time: Set the epi dwell time per phase-encode line - same as echo
+        dwell_time: Set the epi dwell time per phase-encode line - same as echo\
             spacing - (sec).
         dwell_to_asym_ratio: Set the dwell to asym time ratio.
         fmap_in_file: Filename for loading fieldmap (rad/s).
         fmap_out_file: Filename for saving fieldmap (rad/s).
         forward_warping: Apply forward warping instead of unwarping.
         fourier_order: Apply fourier (sinusoidal) fitting of order n.
-        icorr: Apply intensity correction to unwarping (pixel shift method
+        icorr: Apply intensity correction to unwarping (pixel shift method\
             only).
         icorr_only: Apply intensity correction only.
         in_file: Filename of input volume.
@@ -97,7 +97,7 @@ def fugue(
         no_extend: Do not apply rigid-body extrapolation to the fieldmap.
         no_gap_fill: Do not apply gap-filling measure to the fieldmap.
         nokspace: Do not use k-space forward warping.
-        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
             Fsl output type.
         pava: Apply monotonic enforcement via pava.
         phase_conjugate: Apply phase conjugate method of unwarping.
@@ -106,16 +106,17 @@ def fugue(
         save_fmap: Write field map volume.
         save_shift: Write pixel shift volume.
         save_unmasked_fmap: Saves the unmasked fieldmap when using --savefmap.
-        save_unmasked_shift: Saves the unmasked shiftmap when using --saveshift.
+        save_unmasked_shift: Saves the unmasked shiftmap when using\
+            --saveshift.
         shift_in_file: Filename for reading pixel shift volume.
         shift_out_file: Filename for saving pixel shift volume.
         smooth2d: Apply 2d gaussian smoothing of sigma n (in mm).
         smooth3d: Apply 3d gaussian smoothing of sigma n (in mm).
-        unwarp_direction: 'x' or 'y' or 'z' or 'x-' or 'y-' or 'z-'. Specifies
+        unwarp_direction: 'x' or 'y' or 'z' or 'x-' or 'y-' or 'z-'. Specifies\
             direction of warping (default y).
         unwarped_file: Apply unwarping and save as filename.
         warped_file: Apply forward warping and save as filename.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FugueOutputs`).
     """

@@ -34,9 +34,9 @@ def metadata_remove_provenance(
     Removes the provenance metadata fields added by workbench during processing.
     
     Args:
-        input_file: the file to remove provenance information from
-        output_file: output - the name to save the modified file as
-        runner: Command runner
+        input_file: the file to remove provenance information from.
+        output_file: output - the name to save the modified file as.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetadataRemoveProvenanceOutputs`).
     """

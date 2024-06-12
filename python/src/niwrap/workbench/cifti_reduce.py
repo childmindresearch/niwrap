@@ -84,15 +84,15 @@ def cifti_reduce(
     .
     
     Args:
-        cifti_in: the cifti file to reduce
-        operation: the reduction operator to use
-        cifti_out: the output cifti file
-        opt_direction_direction: specify what direction to reduce along: the
-            direction (default ROW)
-        exclude_outliers: exclude non-numeric values and outliers by standard
-            deviation
-        opt_only_numeric: exclude non-numeric values
-        runner: Command runner
+        cifti_in: the cifti file to reduce.
+        operation: the reduction operator to use.
+        cifti_out: the output cifti file.
+        opt_direction_direction: specify what direction to reduce along: the\
+            direction (default ROW).
+        exclude_outliers: exclude non-numeric values and outliers by standard\
+            deviation.
+        opt_only_numeric: exclude non-numeric values.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiReduceOutputs`).
     """

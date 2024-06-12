@@ -37,9 +37,9 @@ def scene_file_relocate(
     to refer to the new relative locations of the files.
     
     Args:
-        input_scene: the scene file to use
-        output_scene: output - the new scene file to create
-        runner: Command runner
+        input_scene: the scene file to use.
+        output_scene: output - the new scene file to create.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SceneFileRelocateOutputs`).
     """

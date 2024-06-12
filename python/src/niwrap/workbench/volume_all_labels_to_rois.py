@@ -39,10 +39,10 @@ def volume_all_labels_to_rois(
     are set to the corresponding label.
     
     Args:
-        label_in: the input volume label file
-        map_: the number or name of the label map to use
-        volume_out: the output volume file
-        runner: Command runner
+        label_in: the input volume label file.
+        map_: the number or name of the label map to use.
+        volume_out: the output volume file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeAllLabelsToRoisOutputs`).
     """

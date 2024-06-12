@@ -46,22 +46,22 @@ def vecreg(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT
     
     Args:
-        input_file: Filename for input vector or tensor field
-        output_file: Filename for output registered vector or tensor field
-        reference_volume: Filename for reference (target) volume
-        transform_file: Filename for affine transformation matrix
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help message
-        secondary_affine: Filename for secondary affine matrix; if set, this
-            will be used for the rotation of the vector/tensor field
-        secondary_warp: Filename for secondary warp field; if set, this will be
-            used for the rotation of the vector/tensor field
-        interp_method: Interpolation method (nearestneighbour, trilinear
-            (default), sinc, or spline)
-        brain_mask: Brain mask in input space
-        ref_brain_mask: Brain mask in output space (useful for speed up of
-            nonlinear registration)
-        runner: Command runner
+        input_file: Filename for input vector or tensor field.
+        output_file: Filename for output registered vector or tensor field.
+        reference_volume: Filename for reference (target) volume.
+        transform_file: Filename for affine transformation matrix.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+        secondary_affine: Filename for secondary affine matrix; if set, this\
+            will be used for the rotation of the vector/tensor field.
+        secondary_warp: Filename for secondary warp field; if set, this will be\
+            used for the rotation of the vector/tensor field.
+        interp_method: Interpolation method (nearestneighbour, trilinear\
+            (default), sinc, or spline).
+        brain_mask: Brain mask in input space.
+        ref_brain_mask: Brain mask in output space (useful for speed up of\
+            nonlinear registration).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VecregOutputs`).
     """

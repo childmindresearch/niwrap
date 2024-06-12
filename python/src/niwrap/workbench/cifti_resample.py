@@ -520,25 +520,25 @@ def cifti_resample(
     .
     
     Args:
-        cifti_in: the cifti file to resample
-        direction: the direction of the input that should be resampled, ROW or
-            COLUMN
-        cifti_template: a cifti file containing the cifti space to resample to
-        template_direction: the direction of the template to use as the
-            resampling space, ROW or COLUMN
-        surface_method: specify a surface resampling method
-        volume_method: specify a volume interpolation method
-        cifti_out: the output cifti file
-        opt_surface_largest: use largest weight instead of weighted average or
-            popularity when doing surface resampling
-        volume_predilate: dilate the volume components before resampling
-        surface_postdilate: dilate the surface components after resampling
-        affine: use an affine transformation on the volume components
-        warpfield: use a warpfield on the volume components
-        left_spheres: specify spheres for left surface resampling
-        right_spheres: specify spheres for right surface resampling
-        cerebellum_spheres: specify spheres for cerebellum surface resampling
-        runner: Command runner
+        cifti_in: the cifti file to resample.
+        direction: the direction of the input that should be resampled, ROW or\
+            COLUMN.
+        cifti_template: a cifti file containing the cifti space to resample to.
+        template_direction: the direction of the template to use as the\
+            resampling space, ROW or COLUMN.
+        surface_method: specify a surface resampling method.
+        volume_method: specify a volume interpolation method.
+        cifti_out: the output cifti file.
+        opt_surface_largest: use largest weight instead of weighted average or\
+            popularity when doing surface resampling.
+        volume_predilate: dilate the volume components before resampling.
+        surface_postdilate: dilate the surface components after resampling.
+        affine: use an affine transformation on the volume components.
+        warpfield: use a warpfield on the volume components.
+        left_spheres: specify spheres for left surface resampling.
+        right_spheres: specify spheres for right surface resampling.
+        cerebellum_spheres: specify spheres for cerebellum surface resampling.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiResampleOutputs`).
     """

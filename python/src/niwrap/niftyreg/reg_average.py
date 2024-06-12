@@ -34,9 +34,10 @@ def reg_average(
     More information: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     
     Args:
-        output_file: Filename of the output image or affine transformation
-        input_files: Input file names (images or affine matrices) to be averaged
-        runner: Command runner
+        output_file: Filename of the output image or affine transformation.
+        input_files: Input file names (images or affine matrices) to be\
+            averaged.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegAverageOutputs`).
     """

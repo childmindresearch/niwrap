@@ -37,12 +37,12 @@ def extracttxt(
     Extracts text from a file based on a search word.
     
     Args:
-        search_word: The word to search for in the file
-        file: Path to the file where text is to be extracted
-        num_trailing_lines: Number of trailing lines to include after the search
-            word
-        relative_start: Relative start position to begin the search
-        runner: Command runner
+        search_word: The word to search for in the file.
+        file: Path to the file where text is to be extracted.
+        num_trailing_lines: Number of trailing lines to include after the\
+            search word.
+        relative_start: Relative start position to begin the search.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ExtracttxtOutputs`).
     """

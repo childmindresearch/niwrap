@@ -54,30 +54,30 @@ def mean(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        datafile: Regressor data file
-        maskfile: Mask file
-        verbose_flag: Switch on diagnostic messages
-        debug_level: Set debug level
-        timing_flag: Turn timing on
-        log_dir: Log directory (default is logdir)
-        forcedir_flag: Use the actual directory name given - i.e. don't add + to
-            make a new directory
-        inference_tech: Inference technique: mcmc or laplace (default is mcmc)
-        num_jumps: Number of jumps to be made by MCMC (default is 5000)
-        num_burnin: Number of jumps at start of MCMC to be discarded (default is
-            500)
-        num_sample_every: Number of jumps for each sample (MCMC) (default is 1)
-        num_update_proposalevery: Number of jumps for each update to the
-            proposal density std (MCMC) (default is 40)
-        acceptance_rate: Acceptance rate to aim for (MCMC) (default is 0.6)
-        seed: Seed for pseudo random number generator
-        error_precision: Value to fix error precision to (default is -1, which
-            means error precision is not fixed)
-        noamp_flag: Turn off Analytical Marginalisation of error Precision
-        prior_mean: Prior mean
-        prior_std: Prior standard deviation
-        help_flag: Display help message
-        runner: Command runner
+        datafile: Regressor data file.
+        maskfile: Mask file.
+        verbose_flag: Switch on diagnostic messages.
+        debug_level: Set debug level.
+        timing_flag: Turn timing on.
+        log_dir: Log directory (default is logdir).
+        forcedir_flag: Use the actual directory name given - i.e. don't add +\
+            to make a new directory.
+        inference_tech: Inference technique: mcmc or laplace (default is mcmc).
+        num_jumps: Number of jumps to be made by MCMC (default is 5000).
+        num_burnin: Number of jumps at start of MCMC to be discarded (default\
+            is 500).
+        num_sample_every: Number of jumps for each sample (MCMC) (default is 1).
+        num_update_proposalevery: Number of jumps for each update to the\
+            proposal density std (MCMC) (default is 40).
+        acceptance_rate: Acceptance rate to aim for (MCMC) (default is 0.6).
+        seed: Seed for pseudo random number generator.
+        error_precision: Value to fix error precision to (default is -1, which\
+            means error precision is not fixed).
+        noamp_flag: Turn off Analytical Marginalisation of error Precision.
+        prior_mean: Prior mean.
+        prior_std: Prior standard deviation.
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MeanOutputs`).
     """

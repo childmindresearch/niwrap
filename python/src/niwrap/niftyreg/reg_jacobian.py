@@ -44,18 +44,19 @@ def reg_jacobian(
     More information: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     
     Args:
-        reference_image: Filename of the reference image
-        deformation_field: Filename of the deformation field (from
-            reg_transform)
-        control_point_lattice: Filename of the control point position lattice
-            (from reg_f3d)
-        output_jacobian: Filename of the Jacobian determinant map
-        output_jacobian_matrix: Filename of the Jacobian matrix map (9 or 4
-            values stored as a 5D nifti)
-        output_log_jacobian: Filename of the Log of the Jacobian determinant map
-        affine_matrix: Filename of the affine matrix to modulate the Jacobian
-            determinant map
-        runner: Command runner
+        reference_image: Filename of the reference image.
+        deformation_field: Filename of the deformation field (from\
+            reg_transform).
+        control_point_lattice: Filename of the control point position lattice\
+            (from reg_f3d).
+        output_jacobian: Filename of the Jacobian determinant map.
+        output_jacobian_matrix: Filename of the Jacobian matrix map (9 or 4\
+            values stored as a 5D nifti).
+        output_log_jacobian: Filename of the Log of the Jacobian determinant\
+            map.
+        affine_matrix: Filename of the affine matrix to modulate the Jacobian\
+            determinant map.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegJacobianOutputs`).
     """

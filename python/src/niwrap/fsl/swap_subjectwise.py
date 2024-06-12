@@ -41,14 +41,14 @@ def swap_subjectwise(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        dyads: List of list of dyads
-        fmean: List of list of mean fsamples
-        mask: Filename of brain mask
-        obasename: Output obasename [default=swapped]
-        xthresh: A.R.D. threshold - default=0.1
-        averageonly_flag: Average only?
-        verbose_flag: Switch on diagnostic messages
-        runner: Command runner
+        dyads: List of list of dyads.
+        fmean: List of list of mean fsamples.
+        mask: Filename of brain mask.
+        obasename: Output obasename [default=swapped].
+        xthresh: A.R.D. threshold - default=0.1.
+        averageonly_flag: Average only?.
+        verbose_flag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SwapSubjectwiseOutputs`).
     """

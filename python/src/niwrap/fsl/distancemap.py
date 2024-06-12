@@ -49,21 +49,21 @@ def distancemap(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
     
     Args:
-        input_image: Input image filename (calc distance to non-zero voxels)
-        output_image: Output image filename
-        mask_image: Mask image filename (only calc values at these voxels)
-        second_image: Second image filename (calc closest distance of this and
-            primary input image, using non-zero voxels, negative distances mean this
-            secondary image is the closer one)
-        local_maxima_image: Local maxima output image filename
-        segmented_image: Segmented output image filename (unique value per
-            segment is local maxima label)
-        invert_flag: Invert input image
-        interpolate_values: Filename for values to interpolate (sparse sampling
-            interpolation)
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help message
-        runner: Command runner
+        input_image: Input image filename (calc distance to non-zero voxels).
+        output_image: Output image filename.
+        mask_image: Mask image filename (only calc values at these voxels).
+        second_image: Second image filename (calc closest distance of this and\
+            primary input image, using non-zero voxels, negative distances mean\
+            this secondary image is the closer one).
+        local_maxima_image: Local maxima output image filename.
+        segmented_image: Segmented output image filename (unique value per\
+            segment is local maxima label).
+        invert_flag: Invert input image.
+        interpolate_values: Filename for values to interpolate (sparse sampling\
+            interpolation).
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DistancemapOutputs`).
     """

@@ -93,62 +93,63 @@ def fabber(
     More information: https://fabber.readthedocs.io/
     
     Args:
-        output: Directory for output files (including logfile)
-        method: Use this inference method
-        model: Use this forward model
-        data: Specify a single input data file
-        help_: Print this usage method. If given with --method or --model,
+        output: Directory for output files (including logfile).
+        method: Use this inference method.
+        model: Use this forward model.
+        data: Specify a single input data file.
+        help_: Print this usage method. If given with --method or --model,\
             display relevant method/model usage information.
-        list_methods: List all known inference methods
-        list_models: List all known forward models
-        list_params: List model parameters (requires model configuration options
-            to be given)
-        desc_params: Descript model parameters (name, description, units) -
+        list_methods: List all known inference methods.
+        list_models: List all known forward models.
+        list_params: List model parameters (requires model configuration\
+            options to be given).
+        desc_params: Descript model parameters (name, description, units) -\
             requires model configuration options to be given.
-        list_outputs: List additional model outputs (requires model
-            configuration options to be given)
-        evaluate: Evaluate model. Set to name of output required or blank for
-            default output. Requires model configuration options, --evaluate-params
-            and --evaluate-nt
-        evaluate_params: List of parameter values for evaluation
-        evaluate_nt: Number of time points for evaluation - must be consistent
-            with model options where appropriate
-        simple_output: Instead of usual standard output, simply output series of
-            lines each giving progress as percentage
-        overwrite: If set will overwrite existing output. If not set, new output
-            directories will be created by appending '+' to the directory name
-        link_to_latest: Try to create a link to the most recent output directory
-            with the prefix _latest
-        load_models: Load models dynamically from the specified filename, which
-            should be a DLL/shared library
+        list_outputs: List additional model outputs (requires model\
+            configuration options to be given).
+        evaluate: Evaluate model. Set to name of output required or blank for\
+            default output. Requires model configuration options, --evaluate-params\
+            and --evaluate-nt.
+        evaluate_params: List of parameter values for evaluation.
+        evaluate_nt: Number of time points for evaluation - must be consistent\
+            with model options where appropriate.
+        simple_output: Instead of usual standard output, simply output series\
+            of lines each giving progress as percentage.
+        overwrite: If set will overwrite existing output. If not set, new\
+            output directories will be created by appending '+' to the directory\
+            name.
+        link_to_latest: Try to create a link to the most recent output\
+            directory with the prefix _latest.
+        load_models: Load models dynamically from the specified filename, which\
+            should be a DLL/shared library.
         data_n: Specify multiple data files for n=1, 2, 3...
-        data_order: If multiple data files are specified, how they will be
-            handled: concatenate = one after the other, interleave = first record
+        data_order: If multiple data files are specified, how they will be\
+            handled: concatenate = one after the other, interleave = first record\
             from each file, then second, etc.
-        mask: Mask file. Inference will only be performed where mask value > 0
-        mt_n: List of masked time points, indexed from 1. These will be ignored
-            in the parameter updates
-        supp_data: 'Supplemental' timeseries data, required for some models
-        dump_param_names: Write the file paramnames.txt containing the names of
-            the model parameters
-        save_model_fit: Output the model prediction as a 4d volume
-        save_residuals: Output the residuals (difference between the data and
-            the model prediction)
-        save_model_extras: Output any additional model-specific timeseries data
+        mask: Mask file. Inference will only be performed where mask value > 0.
+        mt_n: List of masked time points, indexed from 1. These will be ignored\
+            in the parameter updates.
+        supp_data: 'Supplemental' timeseries data, required for some models.
+        dump_param_names: Write the file paramnames.txt containing the names of\
+            the model parameters.
+        save_model_fit: Output the model prediction as a 4d volume.
+        save_residuals: Output the residuals (difference between the data and\
+            the model prediction).
+        save_model_extras: Output any additional model-specific timeseries data.
         save_mvn: Output the final MVN distributions.
         save_mean: Output the parameter means.
         save_std: Output the parameter standard deviations.
         save_var: Output the parameter variances.
         save_zstat: Output the parameter Zstats.
-        save_noise_mean: Output the noise means. The noise distribution inferred
-            is the precision of a Gaussian noise source
+        save_noise_mean: Output the noise means. The noise distribution\
+            inferred is the precision of a Gaussian noise source.
         save_noise_std: Output the noise standard deviations.
         save_free_energy: Output the free energy, if calculated.
-        optfile: File containing additional options, one per line, in the same
-            form as specified on the command line
-        debug: Output large amounts of debug information. ONLY USE WITH VERY
-            SMALL NUMBERS OF VOXELS
-        runner: Command runner
+        optfile: File containing additional options, one per line, in the same\
+            form as specified on the command line.
+        debug: Output large amounts of debug information. ONLY USE WITH VERY\
+            SMALL NUMBERS OF VOXELS.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FabberOutputs`).
     """

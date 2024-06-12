@@ -47,14 +47,16 @@ def cifti_cross_correlation(
     reading through <cifti-b> multiple times.
     
     Args:
-        cifti_a: first input cifti file
-        cifti_b: second input cifti file
-        cifti_out: output cifti file
-        opt_weights_weight_file: specify column weights: text file containing
-            one weight per column
-        opt_fisher_z: apply fisher small z transform (ie, artanh) to correlation
-        opt_mem_limit_limit_gb: restrict memory usage: memory limit in gigabytes
-        runner: Command runner
+        cifti_a: first input cifti file.
+        cifti_b: second input cifti file.
+        cifti_out: output cifti file.
+        opt_weights_weight_file: specify column weights: text file containing\
+            one weight per column.
+        opt_fisher_z: apply fisher small z transform (ie, artanh) to\
+            correlation.
+        opt_mem_limit_limit_gb: restrict memory usage: memory limit in\
+            gigabytes.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiCrossCorrelationOutputs`).
     """

@@ -137,73 +137,71 @@ def tckmap(
     
     Args:
         tracks: the input track file.
-        output: the output track-weighted image
-        template: an image file to be used as a template for the output (the
+        output: the output track-weighted image.
+        template: an image file to be used as a template for the output (the\
             output image will have the same transform and field of view).
-        vox: provide either an isotropic voxel size (in mm), or comma-separated
+        vox: provide either an isotropic voxel size (in mm), or comma-separated\
             list of 3 voxel dimensions.
         datatype: specify output image data type.
-        dec: perform track mapping in directionally-encoded colour (DEC) space
-        dixel: map streamlines to dixels within each voxel; requires either a
-            number of dixels (references an internal direction set), or a path to a
-            text file containing a set of directions stored as azimuth/elevation
-            pairs
-        tod: generate a Track Orientation Distribution (TOD) in each voxel; need
-            to specify the maximum spherical harmonic degree lmax to use when
-            generating Apodised Point Spread Functions
-        contrast: define the desired form of contrast for the output image
-            Options are: tdi, length, invlength, scalar_map,
-            scalar_map_count, fod_amp, curvature, vector_file
-            (default: tdi)
-        image: provide the scalar image map for generating images with
-            'scalar_map' / 'scalar_map_count' contrast, or the spherical harmonics
-            image for 'fod_amp' contrast
-        vector_file: provide the vector data file for generating images with
-            'vector_file' contrast
-        stat_vox: define the statistic for choosing the final voxel intensities
-            for a given contrast type given the individual values from the tracks
-            passing through each voxel.
-            Options are: sum, min, mean, max (default: sum)
-        stat_tck: define the statistic for choosing the contribution to be made
-            by each streamline as a function of the samples taken along their
-            lengths.
-            Only has an effect for 'scalar_map', 'fod_amp' and
-            'curvature' contrast types.
-            Options are: sum, min, mean, max, median, mean_nonzero,
-            gaussian, ends_min, ends_mean, ends_max, ends_prod
-            (default: mean)
-        fwhm_tck: when using gaussian-smoothed per-track statistic, specify the
-            desired full-width half-maximum of the Gaussian smoothing kernel (in mm)
-        map_zero: if a streamline has zero contribution based on the contrast &
-            statistic, typically it is not mapped; use this option to still
-            contribute to the map even if this is the case (these non-contributing
-            voxels can then influence the mean value in each voxel of the map)
-        backtrack: when using -stat_tck ends_*, if the streamline endpoint is
-            outside the FoV, backtrack along the streamline trajectory until an
-            appropriate point is found
-        upsample: upsample the tracks by some ratio using Hermite interpolation
-            before mappping
-            (If omitted, an appropriate ratio will be determined
-            automatically)
-        precise: use a more precise streamline mapping strategy, that accurately
-            quantifies the length through each voxel (these lengths are then taken
-            into account during TWI calculation)
-        ends_only: only map the streamline endpoints to the image
-        tck_weights_in: specify a text scalar file containing the streamline
-            weights
+        dec: perform track mapping in directionally-encoded colour (DEC) space.
+        dixel: map streamlines to dixels within each voxel; requires either a\
+            number of dixels (references an internal direction set), or a path to a\
+            text file containing a set of directions stored as azimuth/elevation\
+            pairs.
+        tod: generate a Track Orientation Distribution (TOD) in each voxel;\
+            need to specify the maximum spherical harmonic degree lmax to use when\
+            generating Apodised Point Spread Functions.
+        contrast: define the desired form of contrast for the output image\
+            Options are: tdi, length, invlength, scalar_map, scalar_map_count,\
+            fod_amp, curvature, vector_file (default: tdi).
+        image: provide the scalar image map for generating images with\
+            'scalar_map' / 'scalar_map_count' contrast, or the spherical harmonics\
+            image for 'fod_amp' contrast.
+        vector_file: provide the vector data file for generating images with\
+            'vector_file' contrast.
+        stat_vox: define the statistic for choosing the final voxel intensities\
+            for a given contrast type given the individual values from the tracks\
+            passing through each voxel.\
+            Options are: sum, min, mean, max (default: sum).
+        stat_tck: define the statistic for choosing the contribution to be made\
+            by each streamline as a function of the samples taken along their\
+            lengths.\
+            Only has an effect for 'scalar_map', 'fod_amp' and 'curvature'\
+            contrast types.\
+            Options are: sum, min, mean, max, median, mean_nonzero, gaussian,\
+            ends_min, ends_mean, ends_max, ends_prod (default: mean).
+        fwhm_tck: when using gaussian-smoothed per-track statistic, specify the\
+            desired full-width half-maximum of the Gaussian smoothing kernel (in\
+            mm).
+        map_zero: if a streamline has zero contribution based on the contrast &\
+            statistic, typically it is not mapped; use this option to still\
+            contribute to the map even if this is the case (these non-contributing\
+            voxels can then influence the mean value in each voxel of the map).
+        backtrack: when using -stat_tck ends_*, if the streamline endpoint is\
+            outside the FoV, backtrack along the streamline trajectory until an\
+            appropriate point is found.
+        upsample: upsample the tracks by some ratio using Hermite interpolation\
+            before mappping\
+            (If omitted, an appropriate ratio will be determined automatically).
+        precise: use a more precise streamline mapping strategy, that\
+            accurately quantifies the length through each voxel (these lengths are\
+            then taken into account during TWI calculation).
+        ends_only: only map the streamline endpoints to the image.
+        tck_weights_in: specify a text scalar file containing the streamline\
+            weights.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TckmapOutputs`).
     """

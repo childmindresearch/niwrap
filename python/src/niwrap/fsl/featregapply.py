@@ -42,20 +42,20 @@ def featregapply(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
     
     Args:
-        feat_directory: FEAT directory from which registration will be taken
-        force_flag: Force featregapply to run even if it has already been run on
-            this FEAT directory
-        cleanup_flag: Cleanup, i.e. remove all featregapply output
-        upsample_trilinear: Upsample functional-space image to standard space
-            using trilinear interpolation
-        upsample_spline: Upsample functional-space image to standard space using
-            spline (like sinc) interpolation
-        standard_space_res: Specify the standard space resolution for melodic
-            (e.g. 3 for 3mm)
-        exclude_filtered_func_flag: Exclude filtered func when processing
-            melodic directories (for FEAT directories filtered func is never
-            processed)
-        runner: Command runner
+        feat_directory: FEAT directory from which registration will be taken.
+        force_flag: Force featregapply to run even if it has already been run\
+            on this FEAT directory.
+        cleanup_flag: Cleanup, i.e. remove all featregapply output.
+        upsample_trilinear: Upsample functional-space image to standard space\
+            using trilinear interpolation.
+        upsample_spline: Upsample functional-space image to standard space\
+            using spline (like sinc) interpolation.
+        standard_space_res: Specify the standard space resolution for melodic\
+            (e.g. 3 for 3mm).
+        exclude_filtered_func_flag: Exclude filtered func when processing\
+            melodic directories (for FEAT directories filtered func is never\
+            processed).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FeatregapplyOutputs`).
     """

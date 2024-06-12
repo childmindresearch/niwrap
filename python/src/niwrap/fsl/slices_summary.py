@@ -45,20 +45,20 @@ def slices_summary(
     Generate summary PNG images for 4D neuroimaging data.
     
     Args:
-        v_4d_input_file: 4D input image (e.g., melodic_IC)
-        threshold: Threshold value for the slices
-        background_image: Background image file (e.g., standard/MNI152_T1_2mm)
-        pictures_sum: Output directory for summary images
-        pictures_sum_second: Path to summary images directory
-        output_png: Output PNG file
-        timepoints: Space-separated list of timepoints to use; first timepoint
-            is 0
-        single_slice_flag: Generate single-slice summary images instead of
-            3-slice
-        darker_background_flag: Make background darker and colour brighter, for
-            greater colour visibility
-        dumb_rule_flag: Use dumber rule for choosing optimal slice
-        runner: Command runner
+        v_4d_input_file: 4D input image (e.g., melodic_IC).
+        threshold: Threshold value for the slices.
+        background_image: Background image file (e.g., standard/MNI152_T1_2mm).
+        pictures_sum: Output directory for summary images.
+        pictures_sum_second: Path to summary images directory.
+        output_png: Output PNG file.
+        timepoints: Space-separated list of timepoints to use; first timepoint\
+            is 0.
+        single_slice_flag: Generate single-slice summary images instead of\
+            3-slice.
+        darker_background_flag: Make background darker and colour brighter, for\
+            greater colour visibility.
+        dumb_rule_flag: Use dumber rule for choosing optimal slice.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SlicesSummaryOutputs`).
     """

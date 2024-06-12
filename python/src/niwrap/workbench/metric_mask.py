@@ -41,11 +41,11 @@ def metric_mask(
     column.
     
     Args:
-        metric: the input metric
-        mask: the mask metric
-        metric_out: the output metric
-        opt_column_column: select a single column: the column number or name
-        runner: Command runner
+        metric: the input metric.
+        mask: the mask metric.
+        metric_out: the output metric.
+        opt_column_column: select a single column: the column number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricMaskOutputs`).
     """

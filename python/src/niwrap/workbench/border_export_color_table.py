@@ -38,10 +38,10 @@ def border_export_color_table(
     values start at 1 and follow the order of the borders in the file.
     
     Args:
-        border_file: the input border file
-        table_out: output - the output text file
-        opt_class_colors: use class colors instead of the name colors
-        runner: Command runner
+        border_file: the input border file.
+        table_out: output - the output text file.
+        opt_class_colors: use class colors instead of the name colors.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BorderExportColorTableOutputs`).
     """

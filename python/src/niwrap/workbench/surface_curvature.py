@@ -43,12 +43,12 @@ def surface_curvature(
     ACM-0-98791-601-8/93/008.
     
     Args:
-        surface: the surface to compute the curvature of
-        mean_out: mean curvature metric
-        gauss_out: gaussian curvature metric
-        opt_mean: output mean curvature
-        opt_gauss: output gaussian curvature
-        runner: Command runner
+        surface: the surface to compute the curvature of.
+        mean_out: mean curvature metric.
+        gauss_out: gaussian curvature metric.
+        opt_mean: output mean curvature.
+        opt_gauss: output gaussian curvature.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceCurvatureOutputs`).
     """

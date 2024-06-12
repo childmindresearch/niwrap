@@ -32,11 +32,11 @@ def design_ttest2(
     Command for generating group mean contrasts for a two-sample t-test design.
     
     Args:
-        design_files_rootname: Root name for design files
-        ngroupa: Number of subjects in group A
-        ngroupb: Number of subjects in group B
-        include_mean_contrasts: Include individual group mean contrasts
-        runner: Command runner
+        design_files_rootname: Root name for design files.
+        ngroupa: Number of subjects in group A.
+        ngroupb: Number of subjects in group B.
+        include_mean_contrasts: Include individual group mean contrasts.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DesignTtest2Outputs`).
     """

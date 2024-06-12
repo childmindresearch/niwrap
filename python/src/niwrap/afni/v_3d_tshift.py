@@ -57,35 +57,35 @@ def v_3d_tshift(
     Args:
         in_file: Input file to 3dtshift.
         ignore: Ignore the first set of points specified.
-        interp: 'fourier' or 'linear' or 'cubic' or 'quintic' or 'heptic'.
-            Different interpolation methods (see 3dtshift for details) default =
+        interp: 'fourier' or 'linear' or 'cubic' or 'quintic' or 'heptic'.\
+            Different interpolation methods (see 3dtshift for details) default =\
             fourier.
         num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         rlt: Before shifting, remove the mean and linear trend.
-        rltplus: Before shifting, remove the mean and linear trend and later put
-            back the mean.
-        slice_encoding_direction: 'k' or 'k-'. Direction in which slice_timing
-            is specified (default: k). if negative,slice_timing is defined in
-            reverse order, that is, the first entry corresponds to the slice with
-            the largest index, and the final entry corresponds to slice index zero.
-            only in effect when slice_timing is passed as list, not when it is
+        rltplus: Before shifting, remove the mean and linear trend and later\
+            put back the mean.
+        slice_encoding_direction: 'k' or 'k-'. Direction in which slice_timing\
+            is specified (default: k). if negative,slice_timing is defined in\
+            reverse order, that is, the first entry corresponds to the slice with\
+            the largest index, and the final entry corresponds to slice index zero.\
+            only in effect when slice_timing is passed as list, not when it is\
             passed as file.
-        slice_timing: file or string or a list of items which are a float. Time
+        slice_timing: file or string or a list of items which are a float. Time\
             offsets from the volume acquisition onset for each slice.
-        slice_timing_2: file or string or a list of items which are a float.
+        slice_timing_2: file or string or a list of items which are a float.\
             Time offsets from the volume acquisition onset for each slice.
-        tpattern: 'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus' or
-            'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a string.
+        tpattern: 'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus' or\
+            'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a string.\
             Use specified slice time pattern rather than one in header.
-        tpattern_2: 'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus' or
-            'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a string.
-            Use specified slice time pattern rather than one in header.
-        tr: Manually set the tr. you can attach suffix "s" for seconds or "ms"
+        tpattern_2: 'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus'\
+            or 'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a\
+            string. Use specified slice time pattern rather than one in header.
+        tr: Manually set the tr. you can attach suffix "s" for seconds or "ms"\
             for milliseconds.
         tslice: Align each slice to time offset of given slice.
         tzero: Align each slice to given time offset.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dTshiftOutputs`).
     """

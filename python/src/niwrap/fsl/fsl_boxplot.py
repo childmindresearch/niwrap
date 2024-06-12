@@ -44,17 +44,17 @@ def fsl_boxplot(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
-        input_files: Comma-separated list of input file names (ASCII text
-            matrices, one column per boxplot)
-        output_image: Output filename for the PNG file
-        help_flag: Display this help message
-        title: Plot title
-        legend_file: File name of ASCII text file, one row per legend entry
-        x_label: X-axis label
-        y_label: Y-axis label
-        plot_height: Plot height in pixels (default 450)
-        plot_width: Plot width in pixels (default 80*#boxplots)
-        runner: Command runner
+        input_files: Comma-separated list of input file names (ASCII text\
+            matrices, one column per boxplot).
+        output_image: Output filename for the PNG file.
+        help_flag: Display this help message.
+        title: Plot title.
+        legend_file: File name of ASCII text file, one row per legend entry.
+        x_label: X-axis label.
+        y_label: Y-axis label.
+        plot_height: Plot height in pixels (default 450).
+        plot_width: Plot width in pixels (default 80*#boxplots).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslBoxplotOutputs`).
     """

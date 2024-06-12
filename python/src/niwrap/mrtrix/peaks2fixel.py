@@ -83,24 +83,24 @@ def peaks2fixel(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/peaks2fixel.html
     
     Args:
-        directions: the input directions image; each volume corresponds to the
+        directions: the input directions image; each volume corresponds to the\
             x, y & z component of each direction vector in turn.
         fixels: the output fixel directory.
-        dataname: the name of the output fixel data file encoding peak
-            amplitudes
+        dataname: the name of the output fixel data file encoding peak\
+            amplitudes.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Peaks2fixelOutputs`).
     """

@@ -39,11 +39,11 @@ def fslinterleave(
     More information: https://fsl.fmrib.ox.ac.uk
     
     Args:
-        infile1: First input image
-        infile2: Second input image
-        outfile: Output interleaved image
-        reverse_slice_order_flag: Reverse slice order
-        runner: Command runner
+        infile1: First input image.
+        infile2: Second input image.
+        outfile: Output interleaved image.
+        reverse_slice_order_flag: Reverse slice order.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslinterleaveOutputs`).
     """

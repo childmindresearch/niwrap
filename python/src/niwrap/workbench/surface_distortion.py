@@ -88,16 +88,16 @@ def surface_distortion(
     matching triangles, and then averaged across the triangles of a vertex.
     
     Args:
-        surface_reference: the reference surface
-        surface_distorted: the distorted surface
-        metric_out: the output distortion metric
-        smooth: smooth the area data
-        opt_caret5_method: use the surface distortion method from caret5
-        opt_edge_method: calculate distortion of edge lengths rather than areas
-        opt_local_affine_method: calculate distortion by the local affines
-            between triangles
-        opt_log2: apply base-2 log transform
-        runner: Command runner
+        surface_reference: the reference surface.
+        surface_distorted: the distorted surface.
+        metric_out: the output distortion metric.
+        smooth: smooth the area data.
+        opt_caret5_method: use the surface distortion method from caret5.
+        opt_edge_method: calculate distortion of edge lengths rather than areas.
+        opt_local_affine_method: calculate distortion by the local affines\
+            between triangles.
+        opt_log2: apply base-2 log transform.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceDistortionOutputs`).
     """

@@ -52,38 +52,38 @@ def msm(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MSM
     
     Args:
-        inmesh: Input mesh (available formats: VTK, ASCII, GIFTI). Needs to be a
-            sphere
-        out: Output basename
-        refmesh: Reference mesh (available formats: VTK, ASCII, GIFTI). Needs to
-            be a sphere. If not included algorithm assumes reference mesh is
-            equivalent input
-        indata: Scalar or multivariate data for input - can be ASCII
-            (.asc,.dpv,.txt) or GIFTI (.func.gii or .shape.gii)
-        refdata: Scalar or multivariate data for reference - can be ASCII
-            (.asc,.dpv,.txt) or GIFTI (.func.gii or .shape.gii)
-        trans: Transformed source mesh (output of a previous registration). Use
+        inmesh: Input mesh (available formats: VTK, ASCII, GIFTI). Needs to be\
+            a sphere.
+        out: Output basename.
+        refmesh: Reference mesh (available formats: VTK, ASCII, GIFTI). Needs\
+            to be a sphere. If not included algorithm assumes reference mesh is\
+            equivalent input.
+        indata: Scalar or multivariate data for input - can be ASCII\
+            (.asc,.dpv,.txt) or GIFTI (.func.gii or .shape.gii).
+        refdata: Scalar or multivariate data for reference - can be ASCII\
+            (.asc,.dpv,.txt) or GIFTI (.func.gii or .shape.gii).
+        trans: Transformed source mesh (output of a previous registration). Use\
             this to initialise the current registration.
-        in_register: Input mesh at data resolution. Used to resample data onto
-            input mesh if data is supplied at a different resolution. Note this mesh
-            HAS to be in alignment with either the input_mesh of (if supplied) the
-            transformed source mesh. Use with supreme caution.
-        inweight: Cost function weighting for input - weights data in these
-            vertices when calculating similarity (ASCII or GIFTI). Can be
-            multivariate provided dimension equals that of data
-        refweight: Cost function weighting for reference - weights data in these
-            vertices when calculating similarity (ASCII or GIFTI). Can be
-            multivariate provided dimension equals that of data
-        format_: Format of output files, can be: GIFTI, VTK, ASCII or ASCII_MAT
-            (for full details of output file formats see MSM wiki)
-        conf: Configuration file
-        levels: Number of resolution levels (default = number of resolution
-            levels specified by --opt in config file)
-        smoothout: Smooth transformed output with this sigma (default=0)
-        help_: Display help message
-        verbose: Switch on diagnostic messages
-        printoptions: Print configuration file options
-        runner: Command runner
+        in_register: Input mesh at data resolution. Used to resample data onto\
+            input mesh if data is supplied at a different resolution. Note this\
+            mesh HAS to be in alignment with either the input_mesh of (if supplied)\
+            the transformed source mesh. Use with supreme caution.
+        inweight: Cost function weighting for input - weights data in these\
+            vertices when calculating similarity (ASCII or GIFTI). Can be\
+            multivariate provided dimension equals that of data.
+        refweight: Cost function weighting for reference - weights data in\
+            these vertices when calculating similarity (ASCII or GIFTI). Can be\
+            multivariate provided dimension equals that of data.
+        format_: Format of output files, can be: GIFTI, VTK, ASCII or ASCII_MAT\
+            (for full details of output file formats see MSM wiki).
+        conf: Configuration file.
+        levels: Number of resolution levels (default = number of resolution\
+            levels specified by --opt in config file).
+        smoothout: Smooth transformed output with this sigma (default=0).
+        help_: Display help message.
+        verbose: Switch on diagnostic messages.
+        printoptions: Print configuration file options.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MsmOutputs`).
     """

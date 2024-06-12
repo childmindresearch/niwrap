@@ -58,35 +58,35 @@ def fslmaths(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        infile: Input image
-        datatype: Set the datatype used internally for calculations (default
-            float for all except double images)
-        output_datatype: Set the output datatype (default is float)
-        add_operation: Add following input to current image
-        sub_operation: Subtract following input from current image
-        mul_operation: Multiply current image by following input
-        div_operation: Divide current image by following input
-        rem_operation: Modulus remainder - divide current image by following
-            input and take remainder
-        mas_operation: Use (following image>0) to mask current image
-        thr_operation: Use following number to threshold current image (zero
-            anything below the number)
-        thrp_operation: Use following percentage (0-100) of ROBUST RANGE to
-            threshold current image (zero anything below the number)
-        uthr_operation: Use following number to upper-threshold current image
-            (zero anything above the number)
-        uthrp_operation: Use following percentage (0-100) of ROBUST RANGE to
-            upper-threshold current image (zero anything above the number)
-        max_operation: Take maximum of following input and current image
-        min_operation: Take minimum of following input and current image
-        exp_operation: Exponential
-        log_operation: Natural logarithm
-        sin_operation: Sine function
-        cos_operation: Cosine function
-        tan_operation: Tangent function
-        sqr_operation: Square
-        sqrt_operation: Square root
-        runner: Command runner
+        infile: Input image.
+        datatype: Set the datatype used internally for calculations (default\
+            float for all except double images).
+        output_datatype: Set the output datatype (default is float).
+        add_operation: Add following input to current image.
+        sub_operation: Subtract following input from current image.
+        mul_operation: Multiply current image by following input.
+        div_operation: Divide current image by following input.
+        rem_operation: Modulus remainder - divide current image by following\
+            input and take remainder.
+        mas_operation: Use (following image>0) to mask current image.
+        thr_operation: Use following number to threshold current image (zero\
+            anything below the number).
+        thrp_operation: Use following percentage (0-100) of ROBUST RANGE to\
+            threshold current image (zero anything below the number).
+        uthr_operation: Use following number to upper-threshold current image\
+            (zero anything above the number).
+        uthrp_operation: Use following percentage (0-100) of ROBUST RANGE to\
+            upper-threshold current image (zero anything above the number).
+        max_operation: Take maximum of following input and current image.
+        min_operation: Take minimum of following input and current image.
+        exp_operation: Exponential.
+        log_operation: Natural logarithm.
+        sin_operation: Sine function.
+        cos_operation: Cosine function.
+        tan_operation: Tangent function.
+        sqr_operation: Square.
+        sqrt_operation: Square root.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslmathsOutputs`).
     """

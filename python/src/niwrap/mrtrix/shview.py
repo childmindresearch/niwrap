@@ -80,24 +80,24 @@ def shview(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/shview.html
     
     Args:
-        coefs: a text file containing the even order spherical harmonics
+        coefs: a text file containing the even order spherical harmonics\
             coefficients to display.
-        response: assume SH coefficients file only contains m=0 terms (zonal
-            harmonics). Used to display the response function as produced by
-            estimate_response
+        response: assume SH coefficients file only contains m=0 terms (zonal\
+            harmonics). Used to display the response function as produced by\
+            estimate_response.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ShviewOutputs`).
     """

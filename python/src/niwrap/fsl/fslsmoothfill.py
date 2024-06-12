@@ -44,7 +44,7 @@ def fslsmoothfill(
         number_of_iterations: Number of iterations.
         debug_flag: Turn on debugging output.
         verbose_flag: Switch on diagnostic messages.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslsmoothfillOutputs`).
     """

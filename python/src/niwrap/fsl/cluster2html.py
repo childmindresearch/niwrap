@@ -34,11 +34,11 @@ def cluster2html(
     Generates an HTML report from cluster-based FEAT analysis.
     
     Args:
-        featdir: Directory containing the FEAT analysis results
-        inroot: Root name for cluster files (should not contain the _std
-            extension)
-        std_flag: Indicate that the input files contain the _std extension
-        runner: Command runner
+        featdir: Directory containing the FEAT analysis results.
+        inroot: Root name for cluster files (should not contain the _std\
+            extension).
+        std_flag: Indicate that the input files contain the _std extension.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Cluster2htmlOutputs`).
     """

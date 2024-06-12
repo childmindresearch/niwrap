@@ -47,13 +47,13 @@ def inv_warp(
         ref_img: Filename for new reference image.
         absolute: Use absolute warp convention (default): x' = w(x).
         relative: Use relative warp convention (default): x' = x + w(x).
-        jacobian_max: Maximum acceptable jacobian value for constraint (default
+        jacobian_max: Maximum acceptable jacobian value for constraint (default\
             100.0).
-        jacobian_min: Minimum acceptable jacobian value for constraint (default
+        jacobian_min: Minimum acceptable jacobian value for constraint (default\
             0.01).
         noconstraint: Do not apply jacobian constraint.
         debug: Turn on debugging output.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `InvWarpOutputs`).
     """

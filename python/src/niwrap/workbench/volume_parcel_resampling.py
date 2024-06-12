@@ -51,17 +51,17 @@ def volume_parcel_resampling(
     different output space, see -volume-parcel-resampling-generic.
     
     Args:
-        volume_in: the input data volume
-        cur_parcels: label volume of where the parcels currently are
-        new_parcels: label volume of where the parcels should be
-        kernel: gaussian kernel size in mm to smooth by during resampling, as
-            sigma by default
-        volume_out: output volume
-        opt_fix_zeros: treat zero values as not being data
-        opt_fwhm: smoothing kernel size is FWHM, not sigma
-        opt_subvolume_subvol: select a single subvolume as input: the subvolume
-            number or name
-        runner: Command runner
+        volume_in: the input data volume.
+        cur_parcels: label volume of where the parcels currently are.
+        new_parcels: label volume of where the parcels should be.
+        kernel: gaussian kernel size in mm to smooth by during resampling, as\
+            sigma by default.
+        volume_out: output volume.
+        opt_fix_zeros: treat zero values as not being data.
+        opt_fwhm: smoothing kernel size is FWHM, not sigma.
+        opt_subvolume_subvol: select a single subvolume as input: the subvolume\
+            number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeParcelResamplingOutputs`).
     """

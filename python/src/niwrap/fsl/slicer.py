@@ -75,32 +75,32 @@ def slicer(
         colour_map: Use different colour map from that specified in the header.
         scaling: Image scale.
         intensity_range: Specify intensity min and max for display range.
-        threshold_edges: Use specified threshold for edges (if >0 use this
-            proportion of max-min, if <0, use the absolute value)
+        threshold_edges: Use specified threshold for edges (if >0 use this\
+            proportion of max-min, if <0, use the absolute value).
         dither_edges: Produce semi-transparent (dithered) edges.
         nearest_neighbour: Use nearest neighbor interpolation for output.
-        show_orientation: Do not put left-right labels in output
+        show_orientation: Do not put left-right labels in output.
         red_dot_marker: Add a red dot marker to topright of image.
-        output_single_image: Output mid-sagittal, -coronal, and -axial slices
+        output_single_image: Output mid-sagittal, -coronal, and -axial slices\
             into one image.
-        output_sagittal_slice: Output sagittal slice (if slice >0, it is a
+        output_sagittal_slice: Output sagittal slice (if slice >0, it is a\
             fraction of image dimension, if <0, it is absolute slice number).
         output_sagittal_slice_fname: Output file name sagittal slice.
-        output_axial_slice: Output axial slice (if slice >0, it is a fraction of
-            image dimension, if <0, it is absolute slice number).
+        output_axial_slice: Output axial slice (if slice >0, it is a fraction\
+            of image dimension, if <0, it is absolute slice number).
         output_axial_slice_fname: Output file name axial slice.
-        output_coronal_slice: Output coronal slice (if slice >0, it is a
+        output_coronal_slice: Output coronal slice (if slice >0, it is a\
             fraction of image dimension, if <0, it is absolute slice number).
         output_coronal_slice_fname: Output file name coronal slice.
         output_all_axial_slices: Maximum width of image of all axial slices.
-        output_all_axial_slices_fname: File name of all axial slice output
+        output_all_axial_slices_fname: File name of all axial slice output\
             image.
         output_sample_axial_slices: Ouput every <sample>'th axial slice.
-        output_sample_axial_slices_width: Width of every <sample'th> axial slice
-            output image.
-        output_sample_axial_slices_fname: File name of every <sample'th> axial
+        output_sample_axial_slices_width: Width of every <sample'th> axial\
             slice output image.
-        runner: Command runner
+        output_sample_axial_slices_fname: File name of every <sample'th> axial\
+            slice output image.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SlicerOutputs`).
     """

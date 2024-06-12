@@ -39,16 +39,16 @@ def midtrans(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        transforms: List of input transform files (e.g. transform1.mat
-            transform2.mat ... transformN.mat)
-        output_matrix: Output filename for the resulting matrix
-        template_image: Input filename for template image (needed for fix
-            origin)
-        separate_basename: Basename for the output of separate matrices (final
-            name includes a number; e.g. img2mid0001.mat)
-        debug_flag: Switch on debugging output
-        verbose_flag: Switch on diagnostic messages
-        runner: Command runner
+        transforms: List of input transform files (e.g. transform1.mat\
+            transform2.mat ... transformN.mat).
+        output_matrix: Output filename for the resulting matrix.
+        template_image: Input filename for template image (needed for fix\
+            origin).
+        separate_basename: Basename for the output of separate matrices (final\
+            name includes a number; e.g. img2mid0001.mat).
+        debug_flag: Switch on debugging output.
+        verbose_flag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MidtransOutputs`).
     """

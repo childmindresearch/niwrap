@@ -59,37 +59,37 @@ def possum(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM
     
     Args:
-        input_volume: Input 4D volume filename
-        mr_parameters: Input matrix filename containing MR parameters
-        motion_matrix: Input motion matrix filename (time(s) Tx(m) Ty(m) Tz(m)
-            Rx(rad) Ry(rad) Rz(rad))
-        pulse_sequence: Input matrix basename for pulse sequence files (.posx,
-            .posy, etc.)
-        rf_slice_profile: Input matrix filename containing RF slice profile
-        output_signal: Output matrix filename for the signal
-        event_matrix: Main event matrix file [(t(s), rf_ang(rad),
-            rf_freq_band(Hz), rf_cent_freq(Hz), ...)]
-        verbose: Switch on diagnostic messages
-        help_: Display help message
-        kcoord: Save the k-space coordinates
-        b0_inhomogeneities: B0 inhomogeneities due to susceptibility differences
-            (basename)
-        extra_b0_inhomogeneities: B0 inhomogeneities due to an extra field
-        b0_inhomogeneities_timecourse: B0 inhomogeneities timecourse file
-        rf_inhomogeneity_receive: RF inhomogeneity - receive
-        rf_inhomogeneity_transmit: RF inhomogeneity - transmit
-        activation_volume: Activation volume file
-        activation_timecourse: Activation time course file
-        activation_4d_volume: Activation 4D volume file
-        activation_4d_timecourse: Activation 4D time course file
-        level: Level of processing: 1.no motion//basic B0, 2.motion//basic B0,
-            3.motion//full B0, 4.no motion//time changing B0
-        num_procs: Number of processors available for parallelisation
-        proc_id: ID of the processor
-        no_speedup: If ON, will not do the speedup but perform signal
-            calculation for all slices for each voxel
-        rf_average: If ON, it will use RF angle averaging
-        runner: Command runner
+        input_volume: Input 4D volume filename.
+        mr_parameters: Input matrix filename containing MR parameters.
+        motion_matrix: Input motion matrix filename (time(s) Tx(m) Ty(m) Tz(m)\
+            Rx(rad) Ry(rad) Rz(rad)).
+        pulse_sequence: Input matrix basename for pulse sequence files (.posx,\
+            .posy, etc.).
+        rf_slice_profile: Input matrix filename containing RF slice profile.
+        output_signal: Output matrix filename for the signal.
+        event_matrix: Main event matrix file [(t(s), rf_ang(rad),\
+            rf_freq_band(Hz), rf_cent_freq(Hz), ...)].
+        verbose: Switch on diagnostic messages.
+        help_: Display help message.
+        kcoord: Save the k-space coordinates.
+        b0_inhomogeneities: B0 inhomogeneities due to susceptibility\
+            differences (basename).
+        extra_b0_inhomogeneities: B0 inhomogeneities due to an extra field.
+        b0_inhomogeneities_timecourse: B0 inhomogeneities timecourse file.
+        rf_inhomogeneity_receive: RF inhomogeneity - receive.
+        rf_inhomogeneity_transmit: RF inhomogeneity - transmit.
+        activation_volume: Activation volume file.
+        activation_timecourse: Activation time course file.
+        activation_4d_volume: Activation 4D volume file.
+        activation_4d_timecourse: Activation 4D time course file.
+        level: Level of processing: 1.no motion//basic B0, 2.motion//basic B0,\
+            3.motion//full B0, 4.no motion//time changing B0.
+        num_procs: Number of processors available for parallelisation.
+        proc_id: ID of the processor.
+        no_speedup: If ON, will not do the speedup but perform signal\
+            calculation for all slices for each voxel.
+        rf_average: If ON, it will use RF angle averaging.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PossumOutputs`).
     """

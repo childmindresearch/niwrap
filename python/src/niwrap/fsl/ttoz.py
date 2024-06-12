@@ -38,12 +38,12 @@ def ttoz(
     Tool to convert a T-statistic image to a Z-statistic image.
     
     Args:
-        varsfile: Input variables file
-        cbsfile: Input CBS file
-        dof: Degrees of freedom
-        outputvol: Output volume name (default is zstats)
-        help_flag: Display help information
-        runner: Command runner
+        varsfile: Input variables file.
+        cbsfile: Input CBS file.
+        dof: Degrees of freedom.
+        outputvol: Output volume name (default is zstats).
+        help_flag: Display help information.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TtozOutputs`).
     """

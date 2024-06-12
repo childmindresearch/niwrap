@@ -42,18 +42,18 @@ def film_cifti(
     A tool for statistical analysis of CIFTI files using FILM.
     
     Args:
-        input_filename: Input CIFTI file
-        basename: Output basename
-        left_surface: Geometry for left cortex
-        right_surface: Geometry for right cortex
-        susan_threshold: Susan brightness threshold for volumetric analysis
-            (default: 0)
-        susan_extent: Susan mask size for volumetric analysis (default: 4)
-        surface_sigma: Smoothing sigma for surface analysis (default: 0)
-        surface_extent: Smoothing extent for surface analysis (default: 4)
-        film_options: Film options to be used with all modes, list must be
-            wrapped by quotes
-        runner: Command runner
+        input_filename: Input CIFTI file.
+        basename: Output basename.
+        left_surface: Geometry for left cortex.
+        right_surface: Geometry for right cortex.
+        susan_threshold: Susan brightness threshold for volumetric analysis\
+            (default: 0).
+        susan_extent: Susan mask size for volumetric analysis (default: 4).
+        surface_sigma: Smoothing sigma for surface analysis (default: 0).
+        surface_extent: Smoothing extent for surface analysis (default: 4).
+        film_options: Film options to be used with all modes, list must be\
+            wrapped by quotes.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FilmCiftiOutputs`).
     """

@@ -49,20 +49,22 @@ def fnirtfileutils(
     other formats.
     
     Args:
-        input_coefs: Filename of input coefficient volume to be converted
-        ref_volume: Filename for reference volume
-        out_field: Filename for output field/coef volume - uses relative warp
-            convention
-        output_format: Output format [field, spline], default=field
-        warp_res: Warp resolution (mm), only relevant when --outformat=spline
-        knot_space: Knot-spacing (voxels), only relevant when --outformat=spline
-        jacobian_output: Filename for output jacobian determinant map volume
-        jacobian_matrix_output: Filename for output full jacobian matrix 4D-map
-            volume
-        with_aff: If set, the affine transform is included in the field/jacobian
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display this help message
-        runner: Command runner
+        input_coefs: Filename of input coefficient volume to be converted.
+        ref_volume: Filename for reference volume.
+        out_field: Filename for output field/coef volume - uses relative warp\
+            convention.
+        output_format: Output format [field, spline], default=field.
+        warp_res: Warp resolution (mm), only relevant when --outformat=spline.
+        knot_space: Knot-spacing (voxels), only relevant when\
+            --outformat=spline.
+        jacobian_output: Filename for output jacobian determinant map volume.
+        jacobian_matrix_output: Filename for output full jacobian matrix 4D-map\
+            volume.
+        with_aff: If set, the affine transform is included in the\
+            field/jacobian.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display this help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FnirtfileutilsOutputs`).
     """

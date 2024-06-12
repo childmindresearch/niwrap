@@ -49,23 +49,24 @@ def fsl_mrs_sim(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/fsl_mrs
     
     Args:
-        sequence_file: Pulse sequence file or previous results file
-        metab: Single metabolite string
-        metab_file: Path to file containing metabolite list for batch simulation
-        custom_spinsys: Path to JSON file containing custom spin systems
-        output_folder: Output folder
-        raw_flag: Output LCModel Style Raw files
-        jmru_flag: Output jMRUI Style txt files
-        addref_flag: Add 0 ppm reference to all outputs
-        autophase_ppm: Simulate a singlet peak at <ppm> to auto-phase the basis
+        sequence_file: Pulse sequence file or previous results file.
+        metab: Single metabolite string.
+        metab_file: Path to file containing metabolite list for batch\
+            simulation.
+        custom_spinsys: Path to JSON file containing custom spin systems.
+        output_folder: Output folder.
+        raw_flag: Output LCModel Style Raw files.
+        jmru_flag: Output jMRUI Style txt files.
+        addref_flag: Add 0 ppm reference to all outputs.
+        autophase_ppm: Simulate a singlet peak at <ppm> to auto-phase the basis\
             spectra. Relative to receiver central frequency.
-        lcm_loc: Location to enter into lcm IN file
-        mm_json: JSON file containing MM FID to add to the basis output
-        output_te: Echo time value in ms for output files (no effect on
-            simulation)
-        overwrite_flag: Overwrite existing output folder
-        verbose_flag: Verbose output
-        runner: Command runner
+        lcm_loc: Location to enter into lcm IN file.
+        mm_json: JSON file containing MM FID to add to the basis output.
+        output_te: Echo time value in ms for output files (no effect on\
+            simulation).
+        overwrite_flag: Overwrite existing output folder.
+        verbose_flag: Verbose output.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslMrsSimOutputs`).
     """

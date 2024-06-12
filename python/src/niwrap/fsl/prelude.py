@@ -71,37 +71,37 @@ def prelude(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PRELUDE
     
     Args:
-        output_unwrap: Filename for saving the unwrapped phase output
-        output_unwrap_alias: Filename for saving the unwrapped phase output
-        complex_phase: Filename of complex phase input volume
-        complex_phase_alias: Filename of complex phase input volume
-        absolute_volume: Filename of absolute input volume
-        absolute_volume_alias: Filename of absolute input volume
-        phase_volume: Filename of raw phase input volume
-        phase_volume_alias: Filename of raw phase input volume
-        num_phase_split: Number of phase partitions to use
-        label_slices: Does label processing in 2D (slice at a time)
-        slice_processing: Does all processing in 2D (slice at a time)
-        slice_processing_alias: Does all processing in 2D (slice at a time)
-        force_3d: Forces all processing to be full 3D
-        force_3d_alias: Forces all processing to be full 3D
-        threshold: Intensity threshold for masking
-        threshold_alias: Intensity threshold for masking
-        mask_volume: Filename of mask input volume
-        mask_volume_alias: Filename of mask input volume
-        start_image: First image number to process (default 0)
-        end_image: Final image number to process (default Inf)
-        save_mask: Filename for saving the mask volume
-        save_raw_phase: Filename for saving the raw phase output
-        save_raw_phase_alias: Filename for saving the raw phase output
-        save_labels: Filename for saving the area labels output
-        save_labels_alias: Filename for saving the area labels output
-        remove_ramps: Remove phase ramps during unwrapping
-        verbose: Switch on diagnostic messages
-        verbose_alias: Switch on diagnostic messages
-        help_: Display help message
-        help_alias: Display help message
-        runner: Command runner
+        output_unwrap: Filename for saving the unwrapped phase output.
+        output_unwrap_alias: Filename for saving the unwrapped phase output.
+        complex_phase: Filename of complex phase input volume.
+        complex_phase_alias: Filename of complex phase input volume.
+        absolute_volume: Filename of absolute input volume.
+        absolute_volume_alias: Filename of absolute input volume.
+        phase_volume: Filename of raw phase input volume.
+        phase_volume_alias: Filename of raw phase input volume.
+        num_phase_split: Number of phase partitions to use.
+        label_slices: Does label processing in 2D (slice at a time).
+        slice_processing: Does all processing in 2D (slice at a time).
+        slice_processing_alias: Does all processing in 2D (slice at a time).
+        force_3d: Forces all processing to be full 3D.
+        force_3d_alias: Forces all processing to be full 3D.
+        threshold: Intensity threshold for masking.
+        threshold_alias: Intensity threshold for masking.
+        mask_volume: Filename of mask input volume.
+        mask_volume_alias: Filename of mask input volume.
+        start_image: First image number to process (default 0).
+        end_image: Final image number to process (default Inf).
+        save_mask: Filename for saving the mask volume.
+        save_raw_phase: Filename for saving the raw phase output.
+        save_raw_phase_alias: Filename for saving the raw phase output.
+        save_labels: Filename for saving the area labels output.
+        save_labels_alias: Filename for saving the area labels output.
+        remove_ramps: Remove phase ramps during unwrapping.
+        verbose: Switch on diagnostic messages.
+        verbose_alias: Switch on diagnostic messages.
+        help_: Display help message.
+        help_alias: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PreludeOutputs`).
     """

@@ -37,9 +37,9 @@ def volume_components_to_frames(
     separating them into standard subvolumes for better support.
     
     Args:
-        input_: the RGB/complex-type volume
-        output: the input volume converted to multiple frames of scalar type
-        runner: Command runner
+        input_: the RGB/complex-type volume.
+        output: the input volume converted to multiple frames of scalar type.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeComponentsToFramesOutputs`).
     """

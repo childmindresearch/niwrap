@@ -39,11 +39,11 @@ def estnoise(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
     
     Args:
-        input_4d_data: Input 4D fMRI data (e.g., fmri_data.nii.gz)
-        spatial_sigma: Spatial smoothing sigma
-        temp_hp_sigma: Temporal high-pass filter sigma
-        temp_lp_sigma: Temporal low-pass filter sigma
-        runner: Command runner
+        input_4d_data: Input 4D fMRI data (e.g., fmri_data.nii.gz).
+        spatial_sigma: Spatial smoothing sigma.
+        temp_hp_sigma: Temporal high-pass filter sigma.
+        temp_lp_sigma: Temporal low-pass filter sigma.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `EstnoiseOutputs`).
     """

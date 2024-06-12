@@ -72,14 +72,14 @@ def cifti_create_scalar_series(
     RADIAN.
     
     Args:
-        input_: input file
-        cifti_out: output cifti file
-        opt_transpose: use if the rows of the text file are along the scalar
-            dimension
-        opt_name_file_file: use a text file to set names on scalar dimension:
-            text file containing names, one per line
-        series: set the units and values of the series
-        runner: Command runner
+        input_: input file.
+        cifti_out: output cifti file.
+        opt_transpose: use if the rows of the text file are along the scalar\
+            dimension.
+        opt_name_file_file: use a text file to set names on scalar dimension:\
+            text file containing names, one per line.
+        series: set the units and values of the series.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiCreateScalarSeriesOutputs`).
     """

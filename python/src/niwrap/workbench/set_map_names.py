@@ -63,13 +63,13 @@ def set_map_names(
     mutually exclusive.
     
     Args:
-        data_file: the file to set the map names of
-        opt_name_file_file: use a text file to replace all map names: text file
-            containing map names, one per line
-        opt_from_data_file_file: use the map names from another data file: a
-            data file with the same number of maps
-        map_: specify a map to set the name of
-        runner: Command runner
+        data_file: the file to set the map names of.
+        opt_name_file_file: use a text file to replace all map names: text file\
+            containing map names, one per line.
+        opt_from_data_file_file: use the map names from another data file: a\
+            data file with the same number of maps.
+        map_: specify a map to set the name of.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SetMapNamesOutputs`).
     """

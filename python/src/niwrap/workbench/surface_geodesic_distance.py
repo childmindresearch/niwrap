@@ -54,15 +54,16 @@ def surface_geodesic_distance(
     share an edge.
     
     Args:
-        surface: the surface to compute on
-        vertex: the vertex to compute geodesic distance from
-        metric_out: the output metric
-        opt_naive: use only neighbors, don't crawl triangles (not recommended)
-        opt_limit_limit_mm: stop at a certain distance: distance in mm to stop
-            at
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        runner: Command runner
+        surface: the surface to compute on.
+        vertex: the vertex to compute geodesic distance from.
+        metric_out: the output metric.
+        opt_naive: use only neighbors, don't crawl triangles (not recommended).
+        opt_limit_limit_mm: stop at a certain distance: distance in mm to stop\
+            at.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceGeodesicDistanceOutputs`).
     """

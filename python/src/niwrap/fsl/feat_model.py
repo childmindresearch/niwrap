@@ -35,9 +35,9 @@ def feat_model(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
     
     Args:
-        design_name_root: Design name root
-        confound_matrix: Confound matrix text file
-        runner: Command runner
+        design_name_root: Design name root.
+        confound_matrix: Confound matrix text file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FeatModelOutputs`).
     """

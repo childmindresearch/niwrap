@@ -45,9 +45,9 @@ def robust_fov(
     Args:
         in_file: Input filename.
         brainsize: Size of brain in z-dimension (default 170mm/150mm).
-        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
             Fsl output type.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RobustFovOutputs`).
     """

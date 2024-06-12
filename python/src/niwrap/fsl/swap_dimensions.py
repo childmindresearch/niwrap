@@ -46,22 +46,22 @@ def swap_dimensions(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        in_file: Input image to swap dimensions of
-        x_dims_cart: Representation of new x axes in terms of old cartesian
+        in_file: Input image to swap dimensions of.
+        x_dims_cart: Representation of new x axes in terms of old cartesian\
             axes.
-        y_dims_cart: Representation of new y axes in terms of old cartesian
+        y_dims_cart: Representation of new y axes in terms of old cartesian\
             axes.
-        z_dims_cart: Representation of new z axes in terms of old cartesian
+        z_dims_cart: Representation of new z axes in terms of old cartesian\
             axes.
-        x_dims_ras: Representation of new x axes in terms of old anatomical
+        x_dims_ras: Representation of new x axes in terms of old anatomical\
             axes.
-        y_dims_ras: Representation of new y axes in terms of old anatomical
+        y_dims_ras: Representation of new y axes in terms of old anatomical\
             axes.
-        z_dims_ras: Representation of new z axes in terms of old anatomical
+        z_dims_ras: Representation of new z axes in terms of old anatomical\
             axes.
-        out_file: Output name of image, if not provided, writes to standard
+        out_file: Output name of image, if not provided, writes to standard\
             output.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SwapDimensionsOutputs`).
     """

@@ -76,23 +76,23 @@ def cifti_rois_from_extrema(
     vertex within range of more than one ROI does not belong to any ROI.
     
     Args:
-        cifti: the input cifti
-        surf_limit: geodesic distance limit from vertex, in mm
-        vol_limit: euclidean distance limit from voxel center, in mm
-        direction: which dimension an extrema map is along, ROW or COLUMN
-        cifti_out: the output cifti
-        opt_left_surface_surface: specify the left surface to use: the left
-            surface file
-        opt_right_surface_surface: specify the right surface to use: the right
-            surface file
-        opt_cerebellum_surface_surface: specify the cerebellum surface to use:
-            the cerebellum surface file
-        gaussian: generate gaussian kernels instead of flat ROIs
-        opt_overlap_logic_method: how to handle overlapping ROIs, default ALLOW:
-            the method of resolving overlaps
-        opt_merged_volume: treat volume components as if they were a single
-            component
-        runner: Command runner
+        cifti: the input cifti.
+        surf_limit: geodesic distance limit from vertex, in mm.
+        vol_limit: euclidean distance limit from voxel center, in mm.
+        direction: which dimension an extrema map is along, ROW or COLUMN.
+        cifti_out: the output cifti.
+        opt_left_surface_surface: specify the left surface to use: the left\
+            surface file.
+        opt_right_surface_surface: specify the right surface to use: the right\
+            surface file.
+        opt_cerebellum_surface_surface: specify the cerebellum surface to use:\
+            the cerebellum surface file.
+        gaussian: generate gaussian kernels instead of flat ROIs.
+        opt_overlap_logic_method: how to handle overlapping ROIs, default\
+            ALLOW: the method of resolving overlaps.
+        opt_merged_volume: treat volume components as if they were a single\
+            component.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiRoisFromExtremaOutputs`).
     """

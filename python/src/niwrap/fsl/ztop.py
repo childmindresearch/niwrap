@@ -32,12 +32,12 @@ def ztop(
     Converts a z-score to a p-value.
     
     Args:
-        z_score: Input z-score
-        tail_flag: Use 2-tailed conversion (default is 1-tailed)
-        grf_flag: Use GRF maximum-height theory instead of Gaussian PDF
-        number_of_resels: Number of resels (resolution elements) for GRF
-            correction
-        runner: Command runner
+        z_score: Input z-score.
+        tail_flag: Use 2-tailed conversion (default is 1-tailed).
+        grf_flag: Use GRF maximum-height theory instead of Gaussian PDF.
+        number_of_resels: Number of resels (resolution elements) for GRF\
+            correction.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ZtopOutputs`).
     """

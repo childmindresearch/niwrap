@@ -51,28 +51,28 @@ def v_3dmask_tool(
     
     Args:
         in_file: Input file to 3dmask_tool.
-        count: Instead of created a binary 0/1 mask dataset, create one with
-            counts of voxel overlap, i.e., each voxel will contain the number of
+        count: Instead of created a binary 0/1 mask dataset, create one with\
+            counts of voxel overlap, i.e., each voxel will contain the number of\
             masks that it is set in.
         datum: 'byte' or 'short' or 'float'. Specify data type for output.
-        dilate_inputs: Use this option to dilate and/or erode datasets as they
+        dilate_inputs: Use this option to dilate and/or erode datasets as they\
             are read. ex. '5 -5' to dilate and erode 5 times.
         dilate_results: Dilate and/or erode combined mask at the given levels.
-        fill_dirs: Fill holes only in the given directions. this option is for
-            use with -fill holes. should be a single string that specifies 1-3 of
-            the axes using {x,y,z} labels (i.e. dataset axis order), or using the
+        fill_dirs: Fill holes only in the given directions. this option is for\
+            use with -fill holes. should be a single string that specifies 1-3 of\
+            the axes using {x,y,z} labels (i.e. dataset axis order), or using the\
             labels in {r,l,a,p,i,s}.
-        fill_holes: This option can be used to fill holes in the resulting mask,
-            i.e. after all other processing has been done.
-        frac: When combining masks (across datasets and sub-bricks), use this
-            option to restrict the result to a certain fraction of the set of
+        fill_holes: This option can be used to fill holes in the resulting\
+            mask, i.e. after all other processing has been done.
+        frac: When combining masks (across datasets and sub-bricks), use this\
+            option to restrict the result to a certain fraction of the set of\
             volumes.
         inter: Intersection, this means -frac 1.0.
         num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         union: Union, this means -frac 0.
         verbose: Specify verbosity level, for 0 to 3.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dmaskToolOutputs`).
     """

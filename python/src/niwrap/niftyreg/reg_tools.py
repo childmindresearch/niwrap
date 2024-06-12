@@ -44,20 +44,20 @@ def reg_tools(
     More information: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     
     Args:
-        input_image: Filename of the input image
-        output_image: Filename of the output image
-        add_value_or_image: This image (or value) is added to the input
-        sub_value_or_image: This image (or value) is subtracted from the input
-        mul_value_or_image: This image (or value) is multiplied with the input
-        div_value_or_image: This image (or value) is divided by the input
-        smooth_value: The input image is smoothed using a B-spline curve
-        smooth_gaussian: The input image is smoothed using a Gaussian kernel
-        rms_image: Compute the mean RMS between the input image and this image
-        binarize: Binarize the input image (val!=0?val=1:val=0)
-        threshold_value: Threshold the input image (val<thr?val=0:val=1)
-        nan_mask_image: This image is used to mask the input image. Voxels
-            outside of the mask are set to NaN
-        runner: Command runner
+        input_image: Filename of the input image.
+        output_image: Filename of the output image.
+        add_value_or_image: This image (or value) is added to the input.
+        sub_value_or_image: This image (or value) is subtracted from the input.
+        mul_value_or_image: This image (or value) is multiplied with the input.
+        div_value_or_image: This image (or value) is divided by the input.
+        smooth_value: The input image is smoothed using a B-spline curve.
+        smooth_gaussian: The input image is smoothed using a Gaussian kernel.
+        rms_image: Compute the mean RMS between the input image and this image.
+        binarize: Binarize the input image (val!=0?val=1:val=0).
+        threshold_value: Threshold the input image (val<thr?val=0:val=1).
+        nan_mask_image: This image is used to mask the input image. Voxels\
+            outside of the mask are set to NaN.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegToolsOutputs`).
     """

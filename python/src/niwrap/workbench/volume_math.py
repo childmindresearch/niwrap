@@ -137,12 +137,12 @@ def volume_math(
     .
     
     Args:
-        expression: the expression to evaluate, in quotes
-        volume_out: the output volume
-        opt_fixnan_replace: replace NaN results with a value: value to replace
-            NaN with
-        var: a volume file to use as a variable
-        runner: Command runner
+        expression: the expression to evaluate, in quotes.
+        volume_out: the output volume.
+        opt_fixnan_replace: replace NaN results with a value: value to replace\
+            NaN with.
+        var: a volume file to use as a variable.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeMathOutputs`).
     """

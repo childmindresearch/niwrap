@@ -47,17 +47,17 @@ def metric_false_correlation(
     some additional maps to help explain the ratio.
     
     Args:
-        surface: the surface to compute geodesic and 3D distance with
-        metric_in: the metric to correlate
-        v_3d_dist: maximum 3D distance to check around each vertex
-        geo_outer: maximum geodesic distance to use for neighboring correlation
-        geo_inner: minimum geodesic distance to use for neighboring correlation
-        metric_out: the output metric
-        opt_roi_roi_metric: select a region of interest that has data: the
-            region, as a metric file
-        opt_dump_text_text_out: dump the raw measures used to a text file: the
-            output text file
-        runner: Command runner
+        surface: the surface to compute geodesic and 3D distance with.
+        metric_in: the metric to correlate.
+        v_3d_dist: maximum 3D distance to check around each vertex.
+        geo_outer: maximum geodesic distance to use for neighboring correlation.
+        geo_inner: minimum geodesic distance to use for neighboring correlation.
+        metric_out: the output metric.
+        opt_roi_roi_metric: select a region of interest that has data: the\
+            region, as a metric file.
+        opt_dump_text_text_out: dump the raw measures used to a text file: the\
+            output text file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricFalseCorrelationOutputs`).
     """

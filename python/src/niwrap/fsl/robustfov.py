@@ -43,13 +43,13 @@ def robustfov(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/robustfov
     
     Args:
-        input_file: Input image file
-        output_image: ROI volume output name
-        brain_size: Size of the brain in z-dimension (default 170mm)
-        matrix_output: Matrix output name (ROI to full FOV)
-        debug_flag: Turn on debugging output
-        verbose_flag: Switch on diagnostic messages
-        runner: Command runner
+        input_file: Input image file.
+        output_image: ROI volume output name.
+        brain_size: Size of the brain in z-dimension (default 170mm).
+        matrix_output: Matrix output name (ROI to full FOV).
+        debug_flag: Turn on debugging output.
+        verbose_flag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RobustfovOutputs`).
     """

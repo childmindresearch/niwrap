@@ -67,50 +67,50 @@ def fsl_mrs(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        data: Input FID file
-        basis: .BASIS file or folder containing basis spectra (will read all
-            files within)
-        output: Output folder
-        algo: Algorithm [Newton (fast, default) or MH (slow)]
-        ignore_metab: Ignore certain metabolites [repeatable]
-        keep_metab: Only keep these metabolites
-        combine_metab: Combine certain metabolites [repeatable]
-        ppmlim: Limit the fit to a frequency range (default=(.2,4.2))
-        h2o_file: Input .H2O file for quantification
-        baseline_order: Order of baseline polynomial (default=2, -1 disables)
-        metab_groups: Metabolite groups: list of groups or list of names for
+        data: Input FID file.
+        basis: .BASIS file or folder containing basis spectra (will read all\
+            files within).
+        output: Output folder.
+        algo: Algorithm [Newton (fast, default) or MH (slow)].
+        ignore_metab: Ignore certain metabolites [repeatable].
+        keep_metab: Only keep these metabolites.
+        combine_metab: Combine certain metabolites [repeatable].
+        ppmlim: Limit the fit to a frequency range (default=(.2,4.2)).
+        h2o_file: Input .H2O file for quantification.
+        baseline_order: Order of baseline polynomial (default=2, -1 disables).
+        metab_groups: Metabolite groups: list of groups or list of names for\
             independent groups.
-        add_mm_flag: Include default macromolecule peaks
-        add_mm_mega_flag: Include default MEGA-PRESS macromolecule peaks. This
-            option is experimental!
-        lorentzian_flag: Enable purely Lorentzian broadening (default is Voigt)
-        ind_scaling: List of basis spectra to scale independently of other basis
-            spectra.
+        add_mm_flag: Include default macromolecule peaks.
+        add_mm_mega_flag: Include default MEGA-PRESS macromolecule peaks. This\
+            option is experimental!.
+        lorentzian_flag: Enable purely Lorentzian broadening (default is Voigt).
+        ind_scaling: List of basis spectra to scale independently of other\
+            basis spectra.
         disable_mh_priors_flag: Disable MH priors.
-        t1_image: Structural image (for report)
-        te: Echo time for relaxation correction (ms)
-        tr: Repetition time for relaxation correction (s)
-        tissue_frac: Fractional tissue volumes for WM, GM, CSF or json
+        t1_image: Structural image (for report).
+        te: Echo time for relaxation correction (ms).
+        tr: Repetition time for relaxation correction (s).
+        tissue_frac: Fractional tissue volumes for WM, GM, CSF or json\
             segmentation file. Defaults to pure water scaling.
-        internal_ref: Metabolite(s) used as an internal reference. Defaults to
+        internal_ref: Metabolite(s) used as an internal reference. Defaults to\
             tCr (Cr+PCr).
-        wref_metabolite: Metabolite(s) used as the reference for water scaling.
+        wref_metabolite: Metabolite(s) used as the reference for water scaling.\
             Uses internal defaults otherwise.
-        ref_protons: Number of protons that reference metabolite is equivalent
+        ref_protons: Number of protons that reference metabolite is equivalent\
             to. No effect without setting --wref_metabolite.
-        ref_int_limits: Reference spectrum integration limits (low, high). No
+        ref_int_limits: Reference spectrum integration limits (low, high). No\
             effect without setting --wref_metabolite.
         h2o_scale: Additional scaling modifier for external water referencing.
-        report_flag: Output HTML report
-        verbose_flag: Spit out verbose info
-        overwrite_flag: Overwrite existing output folder
-        conj_fid: Force conjugation of FID
-        no_conj_fid: Forbid automatic conjugation of FID
-        conj_basis: Force conjugation of basis
-        no_conj_basis: Forbid automatic conjugation of basis
+        report_flag: Output HTML report.
+        verbose_flag: Spit out verbose info.
+        overwrite_flag: Overwrite existing output folder.
+        conj_fid: Force conjugation of FID.
+        no_conj_fid: Forbid automatic conjugation of FID.
+        conj_basis: Force conjugation of basis.
+        no_conj_basis: Forbid automatic conjugation of basis.
         no_rescale: Forbid rescaling of FID/basis/H2O.
-        config: Configuration file
-        runner: Command runner
+        config: Configuration file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslMrsOutputs`).
     """

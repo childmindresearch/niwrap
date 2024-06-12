@@ -174,80 +174,80 @@ def fixelcfestats(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelcfestats.html
     
     Args:
-        in_fixel_directory: the fixel directory containing the data files for
-            each subject (after obtaining fixel correspondence
-        subjects: a text file listing the subject identifiers (one per line).
-            This should correspond with the filenames in the fixel directory
-            (including the file extension), and be listed in the same order as the
+        in_fixel_directory: the fixel directory containing the data files for\
+            each subject (after obtaining fixel correspondence.
+        subjects: a text file listing the subject identifiers (one per line).\
+            This should correspond with the filenames in the fixel directory\
+            (including the file extension), and be listed in the same order as the\
             rows of the design matrix.
-        design: the design matrix
-        contrast: the contrast matrix, specified as rows of weights
-        connectivity: the fixel-fixel connectivity matrix
-        out_fixel_directory: the output directory where results will be saved.
-            Will be created if it does not exist
-        mask: provide a fixel data file containing a mask of those fixels to be
-            used during processing
-        notest: don't perform statistical inference; only output population
-            statistics (effect size, stdev etc)
-        errors: specify nature of errors for shuffling; options are: ee,ise,both
-            (default: ee)
-        exchange_within: specify blocks of observations within each of which
-            data may undergo restricted exchange
-        exchange_whole: specify blocks of observations that may be exchanged
-            with one another (for independent and symmetric errors, sign-flipping
-            will occur block-wise)
-        strong: use strong familywise error control across multiple hypotheses
-        nshuffles: the number of shuffles (default: 5000)
-        permutations: manually define the permutations (relabelling). The input
-            should be a text file defining a m x n matrix, where each relabelling is
-            defined as a column vector of size m, and the number of columns, n,
-            defines the number of permutations. Can be generated with the
-            palm_quickperms function in PALM
-            (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM). Overrides the -nshuffles
+        design: the design matrix.
+        contrast: the contrast matrix, specified as rows of weights.
+        connectivity: the fixel-fixel connectivity matrix.
+        out_fixel_directory: the output directory where results will be saved.\
+            Will be created if it does not exist.
+        mask: provide a fixel data file containing a mask of those fixels to be\
+            used during processing.
+        notest: don't perform statistical inference; only output population\
+            statistics (effect size, stdev etc).
+        errors: specify nature of errors for shuffling; options are:\
+            ee,ise,both (default: ee).
+        exchange_within: specify blocks of observations within each of which\
+            data may undergo restricted exchange.
+        exchange_whole: specify blocks of observations that may be exchanged\
+            with one another (for independent and symmetric errors, sign-flipping\
+            will occur block-wise).
+        strong: use strong familywise error control across multiple hypotheses.
+        nshuffles: the number of shuffles (default: 5000).
+        permutations: manually define the permutations (relabelling). The input\
+            should be a text file defining a m x n matrix, where each relabelling\
+            is defined as a column vector of size m, and the number of columns, n,\
+            defines the number of permutations. Can be generated with the\
+            palm_quickperms function in PALM\
+            (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM). Overrides the -nshuffles\
             option.
-        nonstationarity: perform non-stationarity correction
-        skew_nonstationarity: specify the skew parameter for empirical statistic
-            calculation (default for this command is 1)
-        nshuffles_nonstationarity: the number of shuffles to use when
-            precomputing the empirical statistic image for non-stationarity
-            correction (default: 5000)
-        permutations_nonstationarity: manually define the permutations
-            (relabelling) for computing the emprical statistics for non-stationarity
-            correction. The input should be a text file defining a m x n matrix,
-            where each relabelling is defined as a column vector of size m, and the
-            number of columns, n, defines the number of permutations. Can be
-            generated with the palm_quickperms function in PALM
-            (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM) Overrides the
+        nonstationarity: perform non-stationarity correction.
+        skew_nonstationarity: specify the skew parameter for empirical\
+            statistic calculation (default for this command is 1).
+        nshuffles_nonstationarity: the number of shuffles to use when\
+            precomputing the empirical statistic image for non-stationarity\
+            correction (default: 5000).
+        permutations_nonstationarity: manually define the permutations\
+            (relabelling) for computing the emprical statistics for\
+            non-stationarity correction. The input should be a text file defining a\
+            m x n matrix, where each relabelling is defined as a column vector of\
+            size m, and the number of columns, n, defines the number of\
+            permutations. Can be generated with the palm_quickperms function in\
+            PALM (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM) Overrides the\
             -nshuffles_nonstationarity option.
-        cfe_dh: the height increment used in the cfe integration (default: 0.1)
-        cfe_e: cfe extent exponent (default: 2)
-        cfe_h: cfe height exponent (default: 3)
-        cfe_c: cfe connectivity exponent (default: 0.5)
-        cfe_legacy: use the legacy (non-normalised) form of the cfe equation
-        variance: define variance groups for the G-statistic; measurements for
-            which the expected variance is equivalent should contain the same index
-        ftests: perform F-tests; input text file should contain, for each
-            F-test, a row containing ones and zeros, where ones indicate the rows of
-            the contrast matrix to be included in the F-test.
-        fonly: only assess F-tests; do not perform statistical inference on
-            entries in the contrast matrix
-        column: add a column to the design matrix corresponding to subject
-            fixel-wise values (note that the contrast matrix must include an
-            additional column for each use of this option); the text file provided
-            via this option should contain a file name for each subject
+        cfe_dh: the height increment used in the cfe integration (default: 0.1).
+        cfe_e: cfe extent exponent (default: 2).
+        cfe_h: cfe height exponent (default: 3).
+        cfe_c: cfe connectivity exponent (default: 0.5).
+        cfe_legacy: use the legacy (non-normalised) form of the cfe equation.
+        variance: define variance groups for the G-statistic; measurements for\
+            which the expected variance is equivalent should contain the same index.
+        ftests: perform F-tests; input text file should contain, for each\
+            F-test, a row containing ones and zeros, where ones indicate the rows\
+            of the contrast matrix to be included in the F-test.
+        fonly: only assess F-tests; do not perform statistical inference on\
+            entries in the contrast matrix.
+        column: add a column to the design matrix corresponding to subject\
+            fixel-wise values (note that the contrast matrix must include an\
+            additional column for each use of this option); the text file provided\
+            via this option should contain a file name for each subject.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FixelcfestatsOutputs`).
     """

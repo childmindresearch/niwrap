@@ -38,12 +38,12 @@ def ttologp(
     Tool for computing logp.
     
     Args:
-        varsfile: Path to the vars file
-        cbsfile: Path to the cbs file
-        dof: Degree of freedom
-        outputvol: Output volume for logp value (default is logps)
-        help_flag: Display help information and exit
-        runner: Command runner
+        varsfile: Path to the vars file.
+        cbsfile: Path to the cbs file.
+        dof: Degree of freedom.
+        outputvol: Output volume for logp value (default is logps).
+        help_flag: Display help information and exit.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TtologpOutputs`).
     """

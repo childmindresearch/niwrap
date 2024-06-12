@@ -39,11 +39,11 @@ def eddy_correct(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/EDDY
     
     Args:
-        v_4d_input: Input 4D image file (e.g., dti.nii.gz)
-        v_4d_output: Output 4D image file (e.g., dti_corrected.nii.gz)
-        reference_no: Reference number
-        interp_method: Interpolation method to use: 'trilinear' or 'spline'
-        runner: Command runner
+        v_4d_input: Input 4D image file (e.g., dti.nii.gz).
+        v_4d_output: Output 4D image file (e.g., dti_corrected.nii.gz).
+        reference_no: Reference number.
+        interp_method: Interpolation method to use: 'trilinear' or 'spline'.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `EddyCorrectOutputs`).
     """

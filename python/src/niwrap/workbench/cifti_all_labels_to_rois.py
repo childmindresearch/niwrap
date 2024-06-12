@@ -42,10 +42,10 @@ def cifti_all_labels_to_rois(
     desired.
     
     Args:
-        label_in: the input cifti label file
-        map_: the number or name of the label map to use
-        cifti_out: the output cifti file
-        runner: Command runner
+        label_in: the input cifti label file.
+        map_: the number or name of the label map to use.
+        cifti_out: the output cifti file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiAllLabelsToRoisOutputs`).
     """

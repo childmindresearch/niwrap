@@ -55,30 +55,31 @@ def ica_aroma(
     More information: https://github.com/rhr-pruim/ICA-AROMA
     
     Args:
-        feat_dir: file or string representing an existing directory. If a feat
-            directory exists and temporal filtering has not been run yet, ica_aroma
+        feat_dir: file or string representing an existing directory. If a feat\
+            directory exists and temporal filtering has not been run yet, ica_aroma\
             can use the files in this directory.
         in_file: Volume to be denoised.
         motion_parameters: Motion parameters file.
-        tr: Tr in seconds. if this is not specified the tr will be extracted
+        tr: Tr in seconds. if this is not specified the tr will be extracted\
             from the header of the fmri nifti file.
-        denoise_type: 'nonaggr' or 'aggr' or 'both' or 'no'. Type of denoising
-            strategy:-no: only classification, no denoising-nonaggr (default):
-            non-aggresssive denoising, i.e. partial component regression-aggr:
-            aggressive denoising, i.e. full component regression-both: both
+        denoise_type: 'nonaggr' or 'aggr' or 'both' or 'no'. Type of denoising\
+            strategy:-no: only classification, no denoising-nonaggr (default):\
+            non-aggresssive denoising, i.e. partial component regression-aggr:\
+            aggressive denoising, i.e. full component regression-both: both\
             aggressive and non-aggressive denoising (two outputs).
-        dim: Dimensionality reduction when running melodic (default is automatic
-            estimation).
-        fnirt_warp_file: File name of the warp-file describing the non-linear
-            registration (e.g. fsl fnirt) of the structural data to mni152 space
+        dim: Dimensionality reduction when running melodic (default is\
+            automatic estimation).
+        fnirt_warp_file: File name of the warp-file describing the non-linear\
+            registration (e.g. fsl fnirt) of the structural data to mni152 space\
             (.nii.gz).
         mask: Path/name volume mask.
-        mat_file: Path/name of the mat-file describing the affine registration
-            (e.g. fsl flirt) of the functional data to structural space (.mat file).
-        melodic_dir: file or string representing an existing directory. Path to
+        mat_file: Path/name of the mat-file describing the affine registration\
+            (e.g. fsl flirt) of the functional data to structural space (.mat\
+            file).
+        melodic_dir: file or string representing an existing directory. Path to\
             melodic directory if melodic has already been run.
         out_dir: file or string representing a directory. Output directory.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `IcaAromaOutputs`).
     """

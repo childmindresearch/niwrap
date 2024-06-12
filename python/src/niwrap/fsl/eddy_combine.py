@@ -48,24 +48,24 @@ def eddy_combine(
     with FSL's EDDY.
     
     Args:
-        pos_data: Path to the positive phase-encoded data file (e.g.
-            PosData.nii.gz)
-        pos_bvals: Path to the positive phase-encoded b-values file (e.g.
-            Posbvals)
-        pos_bvecs: Path to the positive phase-encoded b-vectors file (e.g.
-            Posbvecs)
-        pos_series_vol: Positive series volume count
-        neg_data: Path to the negative phase-encoded data file (e.g.
-            NegData.nii.gz)
-        neg_bvals: Path to the negative phase-encoded b-values file (e.g.
-            Negbvals)
-        neg_bvecs: Path to the negative phase-encoded b-vectors file (e.g.
-            Negbvecs)
-        neg_series_vol: Negative series volume count
-        output_path: Output directory path
-        only_matched_flag: Flag to include only matched volumes (set to 1 to
-            include only matched volumes, otherwise 0)
-        runner: Command runner
+        pos_data: Path to the positive phase-encoded data file (e.g.\
+            PosData.nii.gz).
+        pos_bvals: Path to the positive phase-encoded b-values file (e.g.\
+            Posbvals).
+        pos_bvecs: Path to the positive phase-encoded b-vectors file (e.g.\
+            Posbvecs).
+        pos_series_vol: Positive series volume count.
+        neg_data: Path to the negative phase-encoded data file (e.g.\
+            NegData.nii.gz).
+        neg_bvals: Path to the negative phase-encoded b-values file (e.g.\
+            Negbvals).
+        neg_bvecs: Path to the negative phase-encoded b-vectors file (e.g.\
+            Negbvecs).
+        neg_series_vol: Negative series volume count.
+        output_path: Output directory path.
+        only_matched_flag: Flag to include only matched volumes (set to 1 to\
+            include only matched volumes, otherwise 0).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `EddyCombineOutputs`).
     """

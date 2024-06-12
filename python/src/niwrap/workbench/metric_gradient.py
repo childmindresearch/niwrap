@@ -127,20 +127,21 @@ def metric_gradient(
     from a single input column are consecutive columns.
     
     Args:
-        surface: the surface to compute the gradient on
-        metric_in: the metric to compute the gradient of
-        metric_out: the magnitude of the gradient
-        vector_metric_out: the vectors as a metric file
-        presmooth: smooth the metric before computing the gradient
-        roi: select a region of interest to take the gradient of
-        opt_vectors: output gradient vectors
-        opt_column_column: select a single column to compute the gradient of:
-            the column number or name
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        opt_average_normals: average the normals of each vertex with its
-            neighbors before using them to compute the gradient
-        runner: Command runner
+        surface: the surface to compute the gradient on.
+        metric_in: the metric to compute the gradient of.
+        metric_out: the magnitude of the gradient.
+        vector_metric_out: the vectors as a metric file.
+        presmooth: smooth the metric before computing the gradient.
+        roi: select a region of interest to take the gradient of.
+        opt_vectors: output gradient vectors.
+        opt_column_column: select a single column to compute the gradient of:\
+            the column number or name.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        opt_average_normals: average the normals of each vertex with its\
+            neighbors before using them to compute the gradient.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricGradientOutputs`).
     """

@@ -38,13 +38,13 @@ def fsl_ents(
     Extract component time series from a MELODIC .ica directory.
     
     Args:
-        icadir: .ica directory to extract time series from
-        components: Component number or FIX/AROMA file specifying components to
-            extract
-        outfile: File to save time series to
-        overwrite: Overwrite output file if it exists
-        conffile: Extra files to append to output file
-        runner: Command runner
+        icadir: .ica directory to extract time series from.
+        components: Component number or FIX/AROMA file specifying components to\
+            extract.
+        outfile: File to save time series to.
+        overwrite: Overwrite output file if it exists.
+        conffile: Extra files to append to output file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslEntsOutputs`).
     """

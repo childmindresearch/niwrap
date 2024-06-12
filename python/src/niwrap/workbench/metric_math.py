@@ -138,12 +138,12 @@ def metric_math(
     .
     
     Args:
-        expression: the expression to evaluate, in quotes
-        metric_out: the output metric
-        opt_fixnan_replace: replace NaN results with a value: value to replace
-            NaN with
-        var: a metric to use as a variable
-        runner: Command runner
+        expression: the expression to evaluate, in quotes.
+        metric_out: the output metric.
+        opt_fixnan_replace: replace NaN results with a value: value to replace\
+            NaN with.
+        var: a metric to use as a variable.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricMathOutputs`).
     """

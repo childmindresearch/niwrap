@@ -39,10 +39,10 @@ def gifti_all_labels_to_rois(
     that are set to the corresponding label.
     
     Args:
-        label_in: the input gifti label file
-        map_: the number or name of the label map to use
-        metric_out: the output metric file
-        runner: Command runner
+        label_in: the input gifti label file.
+        map_: the number or name of the label map to use.
+        metric_out: the output metric file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `GiftiAllLabelsToRoisOutputs`).
     """

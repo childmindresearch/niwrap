@@ -38,12 +38,12 @@ def mrsi_segment(
     FSL Magnetic Resonance Spectroscopy - register fast segmentation to MRSI.
     
     Args:
-        mrsi_file: MRSI nifti file
-        t1_file: T1 nifti file
-        anat_dir: fsl_anat output directory
-        output_dir: Output directory
-        filename: Output file name
-        runner: Command runner
+        mrsi_file: MRSI nifti file.
+        t1_file: T1 nifti file.
+        anat_dir: fsl_anat output directory.
+        output_dir: Output directory.
+        filename: Output file name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrsiSegmentOutputs`).
     """

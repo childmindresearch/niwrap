@@ -151,9 +151,9 @@ def metric_convert(
     exactly one of the options.
     
     Args:
-        to_nifti: convert metric to nifti
-        from_nifti: convert nifti to metric
-        runner: Command runner
+        to_nifti: convert metric to nifti.
+        from_nifti: convert nifti to metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricConvertOutputs`).
     """

@@ -555,52 +555,52 @@ def ants_apply_transforms(
     reference image and a transform (or a set of transforms).
     
     Args:
-        input_image: Currently, the only input objects supported are image
-            objects. However, the current framework allows for warping of other
+        input_image: Currently, the only input objects supported are image\
+            objects. However, the current framework allows for warping of other\
             objects such as meshes and point sets.
-        reference_image: For warping input images, the reference image defines
+        reference_image: For warping input images, the reference image defines\
             the spacing, origin, size, and direction of the output warped image.
-        output: One can either output the warped image or, if the boolean is
-            set, one can print out the displacement field based on the composite
-            transform and the reference image. A third option is to compose all
-            affine transforms and (if boolean is set) calculate its inverse which is
-            then written to an ITK file.
-        transform: Several transform options are supported including all those
-            defined in the ITK library in addition to a deformation field transform.
-            The ordering of the transformations follows the ordering specified on
-            the command line. An identity transform is pushed onto the
-            transformation stack. Each new transform encountered on the command line
-            is also pushed onto the transformation stack. Then, to warp the input
-            object, each point comprising the input object is warped first according
-            to the last transform pushed onto the stack followed by the second to
-            last transform, etc. until the last transform encountered which is the
-            identity transform. Also, it should be noted that the inverse transform
-            can be accommodated with the usual caveat that such an inverse must be
-            defined by the specified transform class.
-        dimensionality: This option forces the image to be treated as a
-            specified-dimensional image. if not specified, antswarp tries to infer
+        output: One can either output the warped image or, if the boolean is\
+            set, one can print out the displacement field based on the composite\
+            transform and the reference image. A third option is to compose all\
+            affine transforms and (if boolean is set) calculate its inverse which\
+            is then written to an ITK file.
+        transform: Several transform options are supported including all those\
+            defined in the ITK library in addition to a deformation field\
+            transform. The ordering of the transformations follows the ordering\
+            specified on the command line. An identity transform is pushed onto the\
+            transformation stack. Each new transform encountered on the command\
+            line is also pushed onto the transformation stack. Then, to warp the\
+            input object, each point comprising the input object is warped first\
+            according to the last transform pushed onto the stack followed by the\
+            second to last transform, etc. until the last transform encountered\
+            which is the identity transform. Also, it should be noted that the\
+            inverse transform can be accommodated with the usual caveat that such\
+            an inverse must be defined by the specified transform class.
+        dimensionality: This option forces the image to be treated as a\
+            specified-dimensional image. if not specified, antswarp tries to infer\
             the dimensionality from the input image.
-        input_image_type: Option specifying the input image type of scalar
-            (default), vector, tensor, time series, or multi-channel. A time series
-            image is a scalar image defined by an additional dimension for the time
-            component whereas a multi-channel image is a vector image with only
+        input_image_type: Option specifying the input image type of scalar\
+            (default), vector, tensor, time series, or multi-channel. A time series\
+            image is a scalar image defined by an additional dimension for the time\
+            component whereas a multi-channel image is a vector image with only\
             spatial dimensions. Five-dimensional images are e.g., AFNI stats image.
-        interpolation: Several interpolation options are available in ITK. These
-            have all been made available.
-        output_data_type: Output image data type. This is a direct typecast;
-            output values are not rescaled. Default is to use the internal data type
-            (float or double). uchar is unsigned char; others are signed. WARNING:
-            Outputs will be incorrect (overflowed/reinterpreted) if values exceed
-            the range allowed by your choice. Note that some pixel types are not
-            supported by some image formats. e.g. int is not supported by jpg.
-        default_value: Default voxel value to be used with input images only.
-            Specifies the voxel value when the input point maps outside the output
-            domain. With tensor input images, specifies the default voxel
+        interpolation: Several interpolation options are available in ITK.\
+            These have all been made available.
+        output_data_type: Output image data type. This is a direct typecast;\
+            output values are not rescaled. Default is to use the internal data\
+            type (float or double). uchar is unsigned char; others are signed.\
+            WARNING: Outputs will be incorrect (overflowed/reinterpreted) if values\
+            exceed the range allowed by your choice. Note that some pixel types are\
+            not supported by some image formats. e.g. int is not supported by jpg.
+        default_value: Default voxel value to be used with input images only.\
+            Specifies the voxel value when the input point maps outside the output\
+            domain. With tensor input images, specifies the default voxel\
             eigenvalues.
         static_cast_for_r: Forces static cast in ReadTransform (for R).
         float_: Use float instead of double for computations.
         verbose: Verbose output.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AntsApplyTransformsOutputs`).
     """

@@ -72,10 +72,10 @@ def add_to_spec_file(
     .
     
     Args:
-        specfile: the specification file to add to
-        structure: the structure of the data file
-        filename: the path to the file
-        runner: Command runner
+        specfile: the specification file to add to.
+        structure: the structure of the data file.
+        filename: the path to the file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AddToSpecFileOutputs`).
     """

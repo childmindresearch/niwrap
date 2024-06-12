@@ -90,33 +90,33 @@ def mrmetric(
     Args:
         image1: the first input image.
         image2: the second input image.
-        space: voxel (default): per voxel image1: scanner space of image 1
-            image2: scanner space of image 2 average: scanner space of the average
-            affine transformation of image 1 and 2
-        interp: set the interpolation method to use when reslicing (choices:
+        space: voxel (default): per voxel image1: scanner space of image 1\
+            image2: scanner space of image 2 average: scanner space of the average\
+            affine transformation of image 1 and 2.
+        interp: set the interpolation method to use when reslicing (choices:\
             nearest, linear, cubic, sinc. Default: linear).
-        metric: define the dissimilarity metric used to calculate the cost.
-            Choices: diff (squared differences), cc (non-normalised negative cross
-            correlation aka negative cross covariance). Default: diff). cc is only
+        metric: define the dissimilarity metric used to calculate the cost.\
+            Choices: diff (squared differences), cc (non-normalised negative cross\
+            correlation aka negative cross covariance). Default: diff). cc is only\
             implemented for -space average and -interp linear and cubic.
-        mask1: mask for image 1
-        mask2: mask for image 2
-        nonormalisation: do not normalise the dissimilarity metric to the number
-            of voxels.
+        mask1: mask for image 1.
+        mask2: mask for image 2.
+        nonormalisation: do not normalise the dissimilarity metric to the\
+            number of voxels.
         overlap: output number of voxels that were used.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrmetricOutputs`).
     """

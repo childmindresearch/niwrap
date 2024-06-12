@@ -39,10 +39,10 @@ def surface_affine_regression(
     -convert-affine to convert it for use in other software.
     
     Args:
-        source: the surface to warp
-        target: the surface to match the coordinates of
-        affine_out: output - the output affine file
-        runner: Command runner
+        source: the surface to warp.
+        target: the surface to match the coordinates of.
+        affine_out: output - the output affine file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceAffineRegressionOutputs`).
     """

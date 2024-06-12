@@ -70,65 +70,65 @@ def fabber_dualecho(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fabber
     
     Args:
-        output_directory: Directory for output files (including logfile)
-        method: Use this inference method
-        model: Use this forward model
-        data: Specify a single input data file
-        data_order: If multiple data files are specified, how they will be
-            handled: concatenate = one after the other, interleave = first record
+        output_directory: Directory for output files (including logfile).
+        method: Use this inference method.
+        model: Use this forward model.
+        data: Specify a single input data file.
+        data_order: If multiple data files are specified, how they will be\
+            handled: concatenate = one after the other, interleave = first record\
             from each file, then second, etc.
-        mask_file: Mask file. Inference will only be performed where mask value
-            > 0
-        mt_list: List of masked time points, indexed from 1. These will be
-            ignored in the parameter updates
-        supp_data: 'Supplemental' timeseries data, required for some models
-        options_file: File containing additional options, one per line, in the
-            same form as specified on the command line
-        help_flag: Print this usage method. If given with --method or --model,
-            display relevant method/model usage information
-        list_methods_flag: List all known inference methods
-        list_models_flag: List all known forward models
-        list_params_flag: List model parameters (requires model configuration
-            options to be given)
-        desc_params_flag: Descript model parameters (name, description, units) -
-            requires model configuration options to be given. Note that not all
-            models provide parameter descriptions
-        list_outputs_flag: List additional model outputs (requires model
-            configuration options to be given)
-        evaluate: Evaluate model. Set to name of output required or blank for
-            default output. Requires model configuration options, --evaluate-params
-            and --evaluate-nt
-        evaluate_params: List of parameter values for evaluation
-        evaluate_nt: Number of time points for evaluation - must be consistent
-            with model options where appropriate
-        simple_output_flag: Instead of usual standard output, simply output
-            series of lines each giving progress as percentage
-        overwrite_flag: If set will overwrite existing output. If not set, new
-            output directories will be created by appending '+' to the directory
-            name
-        link_to_latest_flag: Try to create a link to the most recent output
-            directory with the prefix _latest
-        load_models: Load models dynamically from the specified filename, which
-            should be a DLL/shared library
-        dump_param_names_flag: Write the file paramnames.txt containing the
-            names of the model parameters
-        save_model_fit_flag: Output the model prediction as a 4d volume
-        save_residuals_flag: Output the residuals (difference between the data
-            and the model prediction)
-        save_model_extras_flag: Output any additional model-specific timeseries
-            data
+        mask_file: Mask file. Inference will only be performed where mask value\
+            > 0.
+        mt_list: List of masked time points, indexed from 1. These will be\
+            ignored in the parameter updates.
+        supp_data: 'Supplemental' timeseries data, required for some models.
+        options_file: File containing additional options, one per line, in the\
+            same form as specified on the command line.
+        help_flag: Print this usage method. If given with --method or --model,\
+            display relevant method/model usage information.
+        list_methods_flag: List all known inference methods.
+        list_models_flag: List all known forward models.
+        list_params_flag: List model parameters (requires model configuration\
+            options to be given).
+        desc_params_flag: Descript model parameters (name, description, units)\
+            - requires model configuration options to be given. Note that not all\
+            models provide parameter descriptions.
+        list_outputs_flag: List additional model outputs (requires model\
+            configuration options to be given).
+        evaluate: Evaluate model. Set to name of output required or blank for\
+            default output. Requires model configuration options, --evaluate-params\
+            and --evaluate-nt.
+        evaluate_params: List of parameter values for evaluation.
+        evaluate_nt: Number of time points for evaluation - must be consistent\
+            with model options where appropriate.
+        simple_output_flag: Instead of usual standard output, simply output\
+            series of lines each giving progress as percentage.
+        overwrite_flag: If set will overwrite existing output. If not set, new\
+            output directories will be created by appending '+' to the directory\
+            name.
+        link_to_latest_flag: Try to create a link to the most recent output\
+            directory with the prefix _latest.
+        load_models: Load models dynamically from the specified filename, which\
+            should be a DLL/shared library.
+        dump_param_names_flag: Write the file paramnames.txt containing the\
+            names of the model parameters.
+        save_model_fit_flag: Output the model prediction as a 4d volume.
+        save_residuals_flag: Output the residuals (difference between the data\
+            and the model prediction).
+        save_model_extras_flag: Output any additional model-specific timeseries\
+            data.
         save_mvn_flag: Output the final MVN distributions.
         save_mean_flag: Output the parameter means.
         save_std_flag: Output the parameter standard deviations.
         save_var_flag: Output the parameter variances.
         save_zstat_flag: Output the parameter Zstats.
-        save_noise_mean_flag: Output the noise means. The noise distribution
-            inferred is the precision of a Gaussian noise source
+        save_noise_mean_flag: Output the noise means. The noise distribution\
+            inferred is the precision of a Gaussian noise source.
         save_noise_std_flag: Output the noise standard deviations.
         save_free_energy_flag: Output the free energy, if calculated.
-        debug_flag: Output large amounts of debug information. ONLY USE WITH
-            VERY SMALL NUMBERS OF VOXELS
-        runner: Command runner
+        debug_flag: Output large amounts of debug information. ONLY USE WITH\
+            VERY SMALL NUMBERS OF VOXELS.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FabberDualechoOutputs`).
     """

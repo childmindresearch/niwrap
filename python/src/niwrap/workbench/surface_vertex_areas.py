@@ -37,9 +37,9 @@ def surface_vertex_areas(
     Units are mm^2.
     
     Args:
-        surface: the surface to measure
-        metric: the output metric
-        runner: Command runner
+        surface: the surface to measure.
+        metric: the output metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceVertexAreasOutputs`).
     """

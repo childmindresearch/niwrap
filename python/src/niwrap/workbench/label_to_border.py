@@ -42,13 +42,13 @@ def label_to_border(
     border.
     
     Args:
-        surface: the surface to use for neighbor information
-        label_in: the input label file
-        border_out: the output border file
-        opt_placement_fraction: set how far along the edge border points are
-            drawn: fraction along edge from inside vertex (default 0.33)
-        opt_column_column: select a single column: the column number or name
-        runner: Command runner
+        surface: the surface to use for neighbor information.
+        label_in: the input label file.
+        border_out: the output border file.
+        opt_placement_fraction: set how far along the edge border points are\
+            drawn: fraction along edge from inside vertex (default 0.33).
+        opt_column_column: select a single column: the column number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `LabelToBorderOutputs`).
     """

@@ -42,18 +42,18 @@ def cifti_roi_average(
     specified.
     
     Args:
-        cifti_in: the cifti file to average rows from
-        text_out: output text file of the average values
-        opt_cifti_roi_roi_cifti: cifti file containing combined rois: the rois
-            as a cifti file
-        opt_left_roi_roi_metric: vertices to use from left hemisphere: the left
-            roi as a metric file
-        opt_right_roi_roi_metric: vertices to use from right hemisphere: the
-            right roi as a metric file
-        opt_cerebellum_roi_roi_metric: vertices to use from cerebellum: the
-            cerebellum roi as a metric file
-        opt_vol_roi_roi_vol: voxels to use: the roi volume file
-        runner: Command runner
+        cifti_in: the cifti file to average rows from.
+        text_out: output text file of the average values.
+        opt_cifti_roi_roi_cifti: cifti file containing combined rois: the rois\
+            as a cifti file.
+        opt_left_roi_roi_metric: vertices to use from left hemisphere: the left\
+            roi as a metric file.
+        opt_right_roi_roi_metric: vertices to use from right hemisphere: the\
+            right roi as a metric file.
+        opt_cerebellum_roi_roi_metric: vertices to use from cerebellum: the\
+            cerebellum roi as a metric file.
+        opt_vol_roi_roi_vol: voxels to use: the roi volume file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiRoiAverageOutputs`).
     """

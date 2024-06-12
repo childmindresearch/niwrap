@@ -79,34 +79,34 @@ def fast(
     
     Args:
         in_files: Image, or multi-channel set of images, to be segmented.
-        number_classes: number of tissue-type classes; default=3
-        bias_iters: number of main-loop iterations during bias-field removal;
-            default=4
-        bias_lowpass: bias field smoothing extent (FWHM) in mm; default=20
-        img_type: type of image 1=T1, 2=T2, 3=PD; default=T1
-        init_seg_smooth: initial segmentation spatial smoothness (during bias
-            field estimation); default=0.02
-        segments: outputs a separate binary image for each tissue type
-        init_transform: initialise using priors; you must supply a FLIRT
-            transform
+        number_classes: number of tissue-type classes; default=3.
+        bias_iters: number of main-loop iterations during bias-field removal;\
+            default=4.
+        bias_lowpass: bias field smoothing extent (FWHM) in mm; default=20.
+        img_type: type of image 1=T1, 2=T2, 3=PD; default=T1.
+        init_seg_smooth: initial segmentation spatial smoothness (during bias\
+            field estimation); default=0.02.
+        segments: outputs a separate binary image for each tissue type.
+        init_transform: initialise using priors; you must supply a FLIRT\
+            transform.
         other_priors: Alternative prior images.
         output_biasfield: Output estimated bias field.
         output_biascorrected: Output restored image (bias-corrected image).
         no_bias: Do not remove bias field.
-        channels: number of input images (channels); default 1
+        channels: number of input images (channels); default 1.
         out_basename: Base name of output files.
         use_priors: Use priors throughout.
         no_pve: Turn off pve (partial volume estimation).
-        segment_iters: number of segmentation-initialisation iterations;
-            default=15
-        mixel_smooth: spatial smoothness for mixeltype; default=0.3
-        iters_afterbias: number of main-loop iterations after bias-field
-            removal; default=4
-        hyper: 0.0 <= a floating point number <= 1.0. segmentation spatial
-            smoothness; default=0.1
+        segment_iters: number of segmentation-initialisation iterations;\
+            default=15.
+        mixel_smooth: spatial smoothness for mixeltype; default=0.3.
+        iters_afterbias: number of main-loop iterations after bias-field\
+            removal; default=4.
+        hyper: 0.0 <= a floating point number <= 1.0. segmentation spatial\
+            smoothness; default=0.1.
         verbose: Switch on diagnostic messages.
         manual_seg: Filename containing intensities.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FastOutputs`).
     """

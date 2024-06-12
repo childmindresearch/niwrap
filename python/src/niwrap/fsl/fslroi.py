@@ -45,17 +45,17 @@ def fslroi(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        infile: Input image file
-        outfile: Output image file
-        xmin: Minimum X coordinate for ROI (indexing starts at 0)
-        xsize: Size of the ROI in X direction
-        ymin: Minimum Y coordinate for ROI (indexing starts at 0)
-        ysize: Size of the ROI in Y direction
-        zmin: Minimum Z coordinate for ROI (indexing starts at 0)
-        zsize: Size of the ROI in Z direction
-        tmin: Minimum T coordinate for ROI (indexing starts at 0)
-        tsize: Size of the ROI in T direction
-        runner: Command runner
+        infile: Input image file.
+        outfile: Output image file.
+        xmin: Minimum X coordinate for ROI (indexing starts at 0).
+        xsize: Size of the ROI in X direction.
+        ymin: Minimum Y coordinate for ROI (indexing starts at 0).
+        ysize: Size of the ROI in Y direction.
+        zmin: Minimum Z coordinate for ROI (indexing starts at 0).
+        zsize: Size of the ROI in Z direction.
+        tmin: Minimum T coordinate for ROI (indexing starts at 0).
+        tsize: Size of the ROI in T direction.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslroiOutputs`).
     """

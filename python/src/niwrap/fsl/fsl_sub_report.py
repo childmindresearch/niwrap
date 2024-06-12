@@ -31,10 +31,10 @@ def fsl_sub_report(
     FSL cluster job reporting tool.
     
     Args:
-        job_id: Report job details for this job ID
-        subjob_id: Report job details for this subjob ID's only
-        parseable_flag: Include all output '|' separated
-        runner: Command runner
+        job_id: Report job details for this job ID.
+        subjob_id: Report job details for this subjob ID's only.
+        parseable_flag: Include all output '|' separated.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslSubReportOutputs`).
     """

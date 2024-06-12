@@ -112,25 +112,25 @@ def mrdegibbs(
         nshifts: discretization of subpixel spacing (default: 20).
         min_w: left border of window used for TV computation (default: 1).
         max_w: right border of window used for TV computation (default: 3).
-        datatype: specify output image data type. Valid choices are: float32,
-            float32le, float32be, float64, float64le, float64be, int64, uint64,
-            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,
-            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,
-            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,
+        datatype: specify output image data type. Valid choices are: float32,\
+            float32le, float32be, float64, float64le, float64be, int64, uint64,\
+            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\
+            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\
+            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\
             int8, uint8, bit.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrdegibbsOutputs`).
     """

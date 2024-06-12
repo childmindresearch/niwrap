@@ -65,18 +65,18 @@ def volume_label_import(
     -discard-others to instead set these values to the "unlabeled" key.
     
     Args:
-        input_: the input volume file
-        label_list_file: text file containing the values and names for labels
-        output: the output workbench label volume
-        opt_discard_others: set any voxels with values not mentioned in the
-            label list to the ??? label
-        opt_unlabeled_value_value: set the value that will be interpreted as
-            unlabeled: the numeric value for unlabeled (default 0)
-        opt_subvolume_subvol: select a single subvolume to import: the subvolume
-            number or name
-        opt_drop_unused_labels: remove any unused label values from the label
-            table
-        runner: Command runner
+        input_: the input volume file.
+        label_list_file: text file containing the values and names for labels.
+        output: the output workbench label volume.
+        opt_discard_others: set any voxels with values not mentioned in the\
+            label list to the ??? label.
+        opt_unlabeled_value_value: set the value that will be interpreted as\
+            unlabeled: the numeric value for unlabeled (default 0).
+        opt_subvolume_subvol: select a single subvolume to import: the\
+            subvolume number or name.
+        opt_drop_unused_labels: remove any unused label values from the label\
+            table.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeLabelImportOutputs`).
     """

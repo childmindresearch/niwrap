@@ -129,42 +129,43 @@ def mrthreshold(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/mrthreshold.html
     
     Args:
-        input_: the input image to be thresholded
-        output: the (optional) output binary image mask
-        abs_: specify threshold value as absolute intensity
-        percentile: determine threshold based on some percentile of the image
-            intensity distribution
-        top: determine threshold that will result in selection of some number of
-            top-valued voxels
-        bottom: determine & apply threshold resulting in selection of some
-            number of bottom-valued voxels (note: implies threshold application
-            operator of "le" unless otherwise specified)
-        allvolumes: compute a single threshold for all image volumes, rather
-            than an individual threshold per volume
-        ignorezero: ignore zero-valued input values during threshold
-            determination
-        mask: compute the threshold based only on values within an input mask
-            image
-        comparison: comparison operator to use when applying the threshold;
-            options are: lt,le,ge,gt (default = "le" for -bottom; "ge" otherwise)
-        invert: invert the output binary mask (equivalent to flipping the
-            operator; provided for backwards compatibility)
-        out_masked: mask the output image based on the provided input mask image
-        nan: set voxels that fail the threshold to NaN rather than zero (output
-            image will be floating-point rather than binary)
+        input_: the input image to be thresholded.
+        output: the (optional) output binary image mask.
+        abs_: specify threshold value as absolute intensity.
+        percentile: determine threshold based on some percentile of the image\
+            intensity distribution.
+        top: determine threshold that will result in selection of some number\
+            of top-valued voxels.
+        bottom: determine & apply threshold resulting in selection of some\
+            number of bottom-valued voxels (note: implies threshold application\
+            operator of "le" unless otherwise specified).
+        allvolumes: compute a single threshold for all image volumes, rather\
+            than an individual threshold per volume.
+        ignorezero: ignore zero-valued input values during threshold\
+            determination.
+        mask: compute the threshold based only on values within an input mask\
+            image.
+        comparison: comparison operator to use when applying the threshold;\
+            options are: lt,le,ge,gt (default = "le" for -bottom; "ge" otherwise).
+        invert: invert the output binary mask (equivalent to flipping the\
+            operator; provided for backwards compatibility).
+        out_masked: mask the output image based on the provided input mask\
+            image.
+        nan: set voxels that fail the threshold to NaN rather than zero (output\
+            image will be floating-point rather than binary).
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrthresholdOutputs`).
     """

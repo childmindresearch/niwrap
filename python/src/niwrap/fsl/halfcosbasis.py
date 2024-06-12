@@ -50,24 +50,25 @@ def halfcosbasis(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        hrf_param_file: Half cosine HRF parameter ranges file
-        hrf_param_file_hf: Half cosine HRF parameter ranges file
-        verbose_flag: Switch on diagnostic messages
-        debug_level: Set debug level
-        debug_level_debug: Set debug level
-        debug_level_debuglevel: Set debug level
-        timing_on_flag: Turn timing on
-        log_dir: Log directory
-        log_dir_ld: Log directory
-        log_dir_logdir: Log directory
-        num_hrf_samples: Number of HRF samples to use (default is 1000)
-        num_hrf_basis_funcs: Number of HRF basis functions to use (default is 3)
-        num_secs: Number of seconds (default is 40)
-        num_secs_nsecs: Number of seconds (default is 40)
-        temp_res: Temporal resolution (default is 0.05)
-        help_flag: Display help message
-        help_flag_long: Display help message
-        runner: Command runner
+        hrf_param_file: Half cosine HRF parameter ranges file.
+        hrf_param_file_hf: Half cosine HRF parameter ranges file.
+        verbose_flag: Switch on diagnostic messages.
+        debug_level: Set debug level.
+        debug_level_debug: Set debug level.
+        debug_level_debuglevel: Set debug level.
+        timing_on_flag: Turn timing on.
+        log_dir: Log directory.
+        log_dir_ld: Log directory.
+        log_dir_logdir: Log directory.
+        num_hrf_samples: Number of HRF samples to use (default is 1000).
+        num_hrf_basis_funcs: Number of HRF basis functions to use (default is\
+            3).
+        num_secs: Number of seconds (default is 40).
+        num_secs_nsecs: Number of seconds (default is 40).
+        temp_res: Temporal resolution (default is 0.05).
+        help_flag: Display help message.
+        help_flag_long: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `HalfcosbasisOutputs`).
     """

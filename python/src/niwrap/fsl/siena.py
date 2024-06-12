@@ -51,26 +51,26 @@ def siena(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SIENA
     
     Args:
-        input1: First input image (e.g. timepoint 1 image, img1.nii.gz)
-        input2: Second input image (e.g. timepoint 2 image, img2.nii.gz)
-        output_dir: Set output directory (default output is
-            <input1>_to_<input2>_siena)
-        debug_flag: Debug (don't delete intermediate files)
-        bet_options: Options to pass to BET brain extraction (inside
-            double-quotes), e.g. -B "-f 0.3"
-        two_class_seg_flag: Two-class segmentation (don't segment grey and white
-            matter separately)
-        t2_weighted_flag: T2-weighted input image (default T1-weighted)
-        standard_space_mask_flag: Use standard-space masking as well as BET
-        upper_ignore: Ignore from t (mm) upwards in MNI152/Talairach space
-        lower_ignore: Ignore from b (mm) downwards in MNI152/Talairach space (b
-            should probably be negative)
-        sienadiff_options: Options to pass to siena_diff timepoint differencing
-            (inside double-quotes), e.g. -S "-s -i 20"
-        ventricle_analysis_flag: Run ventricle analysis (VIENA)
-        ventricle_mask: Optional user-supplied ventricle mask (default is
-            /usr/local/fsl/data/standard/MNI152_T1_2mm_VentricleMask)
-        runner: Command runner
+        input1: First input image (e.g. timepoint 1 image, img1.nii.gz).
+        input2: Second input image (e.g. timepoint 2 image, img2.nii.gz).
+        output_dir: Set output directory (default output is\
+            <input1>_to_<input2>_siena).
+        debug_flag: Debug (don't delete intermediate files).
+        bet_options: Options to pass to BET brain extraction (inside\
+            double-quotes), e.g. -B "-f 0.3".
+        two_class_seg_flag: Two-class segmentation (don't segment grey and\
+            white matter separately).
+        t2_weighted_flag: T2-weighted input image (default T1-weighted).
+        standard_space_mask_flag: Use standard-space masking as well as BET.
+        upper_ignore: Ignore from t (mm) upwards in MNI152/Talairach space.
+        lower_ignore: Ignore from b (mm) downwards in MNI152/Talairach space (b\
+            should probably be negative).
+        sienadiff_options: Options to pass to siena_diff timepoint differencing\
+            (inside double-quotes), e.g. -S "-s -i 20".
+        ventricle_analysis_flag: Run ventricle analysis (VIENA).
+        ventricle_mask: Optional user-supplied ventricle mask (default is\
+            /usr/local/fsl/data/standard/MNI152_T1_2mm_VentricleMask).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SienaOutputs`).
     """

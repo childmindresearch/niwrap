@@ -36,11 +36,11 @@ def fsladd(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        output_file: Output volume file
-        volume_list: List of input volumes
-        mean_flag: Calculate mean instead of sum
-        scale_flag: Scale each input image mean to 1000 before processing
-        runner: Command runner
+        output_file: Output volume file.
+        volume_list: List of input volumes.
+        mean_flag: Calculate mean instead of sum.
+        scale_flag: Scale each input image mean to 1000 before processing.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FsladdOutputs`).
     """

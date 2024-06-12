@@ -110,10 +110,10 @@ def file_convert(
     You may only specify one top-level option.
     
     Args:
-        border_version_convert: write a border file with a different version
-        nifti_version_convert: write a nifti file with a different version
-        cifti_version_convert: write a cifti file with a different version
-        runner: Command runner
+        border_version_convert: write a border file with a different version.
+        nifti_version_convert: write a nifti file with a different version.
+        cifti_version_convert: write a cifti file with a different version.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FileConvertOutputs`).
     """

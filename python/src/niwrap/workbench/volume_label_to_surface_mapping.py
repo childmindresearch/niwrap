@@ -91,13 +91,13 @@ def volume_label_to_surface_mapping(
     unlabeled vertices in your output.
     
     Args:
-        volume: the volume to map data from
-        surface: the surface to map the data onto
-        label_out: the output gifti label file
-        ribbon_constrained: use ribbon constrained mapping algorithm
-        opt_subvol_select_subvol: select a single subvolume to map: the
-            subvolume number or name
-        runner: Command runner
+        volume: the volume to map data from.
+        surface: the surface to map the data onto.
+        label_out: the output gifti label file.
+        ribbon_constrained: use ribbon constrained mapping algorithm.
+        opt_subvol_select_subvol: select a single subvolume to map: the\
+            subvolume number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeLabelToSurfaceMappingOutputs`).
     """

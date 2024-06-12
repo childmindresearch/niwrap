@@ -49,23 +49,23 @@ def dual_regression(
     More information: https://fsl.fmrib.ox.ac.uk/
     
     Args:
-        group_ic_maps: 4D image containing spatial IC maps (melodic_IC) from the
-            whole-group ICA analysis
-        des_norm: 0 or 1 (1 is recommended). Whether to variance-normalise the
-            timecourses used as the stage-2 regressors
-        design_mat: Design matrix for final cross-subject modelling with
-            randomise
-        design_con: Design contrasts for final cross-subject modelling with
-            randomise
-        n_perm: Number of permutations for randomise; set to 1 for just raw
+        group_ic_maps: 4D image containing spatial IC maps (melodic_IC) from\
+            the whole-group ICA analysis.
+        des_norm: 0 or 1 (1 is recommended). Whether to variance-normalise the\
+            timecourses used as the stage-2 regressors.
+        design_mat: Design matrix for final cross-subject modelling with\
+            randomise.
+        design_con: Design contrasts for final cross-subject modelling with\
+            randomise.
+        n_perm: Number of permutations for randomise; set to 1 for just raw\
             tstat output, set to 0 to not run randomise at all.
-        output_directory: This directory will be created to hold all output and
-            logfiles
-        input_files: List of all subjects' preprocessed, standard-space 4D
-            datasets
-        thr_flag: Perform thresholded dual regression to obtain unbiased
-            timeseries for connectomics analyses (e.g., with FSLnets)
-        runner: Command runner
+        output_directory: This directory will be created to hold all output and\
+            logfiles.
+        input_files: List of all subjects' preprocessed, standard-space 4D\
+            datasets.
+        thr_flag: Perform thresholded dual regression to obtain unbiased\
+            timeseries for connectomics analyses (e.g., with FSLnets).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DualRegressionOutputs`).
     """

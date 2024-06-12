@@ -41,17 +41,17 @@ def applyxfm4_d(
     Applies 4D transformation matrices to 4D volumes.
     
     Args:
-        input_volume: Input 4D volume (e.g. img.nii.gz)
-        ref_volume: Reference volume (e.g. ref.nii.gz)
-        output_volume: Output volume after applying transformation (e.g.
-            output.nii.gz)
-        transformation_matrix: Transformation matrix file or directory
-        interpolation_method: Interpolation method; options are nearestneighbour
-            (or nn), trilinear, spline, sinc; default is sinc
-        single_matrix_flag: Flag to specify a single transformation matrix
-        four_digit_flag: Flag to use four digits in naming files
-        user_prefix: User-defined prefix for output files
-        runner: Command runner
+        input_volume: Input 4D volume (e.g. img.nii.gz).
+        ref_volume: Reference volume (e.g. ref.nii.gz).
+        output_volume: Output volume after applying transformation (e.g.\
+            output.nii.gz).
+        transformation_matrix: Transformation matrix file or directory.
+        interpolation_method: Interpolation method; options are\
+            nearestneighbour (or nn), trilinear, spline, sinc; default is sinc.
+        single_matrix_flag: Flag to specify a single transformation matrix.
+        four_digit_flag: Flag to use four digits in naming files.
+        user_prefix: User-defined prefix for output files.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Applyxfm4DOutputs`).
     """

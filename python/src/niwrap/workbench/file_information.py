@@ -83,24 +83,25 @@ def file_information(
     .
     
     Args:
-        data_file: data file
-        opt_no_map_info: do not show map information for files that support maps
-        opt_only_step_interval: suppress normal output, print the interval
-            between maps
-        opt_only_number_of_maps: suppress normal output, print the number of
-            maps
-        opt_only_map_names: suppress normal output, print the names of all maps
-        opt_only_metadata: suppress normal output, print file metadata
-        opt_key_key: only print the metadata for one key, with no formatting:
-            the metadata key
-        opt_only_cifti_xml: suppress normal output, print the cifti xml if the
-            file type has it
-        opt_czi: For a CZI file, show information from the libCZI Info Command
-            instead of the Workbench CZI File
-        opt_czi_all_sub_blocks: show all sub-blocks in CZI file (may produce
-            long output)
-        opt_czi_xml: show XML from CZI file
-        runner: Command runner
+        data_file: data file.
+        opt_no_map_info: do not show map information for files that support\
+            maps.
+        opt_only_step_interval: suppress normal output, print the interval\
+            between maps.
+        opt_only_number_of_maps: suppress normal output, print the number of\
+            maps.
+        opt_only_map_names: suppress normal output, print the names of all maps.
+        opt_only_metadata: suppress normal output, print file metadata.
+        opt_key_key: only print the metadata for one key, with no formatting:\
+            the metadata key.
+        opt_only_cifti_xml: suppress normal output, print the cifti xml if the\
+            file type has it.
+        opt_czi: For a CZI file, show information from the libCZI Info Command\
+            instead of the Workbench CZI File.
+        opt_czi_all_sub_blocks: show all sub-blocks in CZI file (may produce\
+            long output).
+        opt_czi_xml: show XML from CZI file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FileInformationOutputs`).
     """

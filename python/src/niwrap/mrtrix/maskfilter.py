@@ -95,38 +95,38 @@ def maskfilter(
     
     Args:
         input_: the input image.
-        filter_: the type of filter to be applied (clean, connect, dilate,
-            erode, median)
+        filter_: the type of filter to be applied (clean, connect, dilate,\
+            erode, median).
         output: the output image.
-        scale: the maximum scale used to cut bridges. A certain maximum scale
-            cuts bridges up to a width (in voxels) of 2x the provided scale.
-            (Default: 2)
-        axes: specify which axes should be included in the connected components.
-            By default only the first 3 axes are included. The axes should be
-            provided as a comma-separated list of values.
-        largest: only retain the largest connected component
-        connectivity: use 26-voxel-neighbourhood connectivity (Default: 6)
-        npass: the number of times to repeatedly apply the filter
-        extent: specify the extent (width) of kernel size in voxels. This can be
-            specified either as a single value to be used for all axes, or as a
+        scale: the maximum scale used to cut bridges. A certain maximum scale\
+            cuts bridges up to a width (in voxels) of 2x the provided scale.\
+            (Default: 2).
+        axes: specify which axes should be included in the connected\
+            components. By default only the first 3 axes are included. The axes\
+            should be provided as a comma-separated list of values.
+        largest: only retain the largest connected component.
+        connectivity: use 26-voxel-neighbourhood connectivity (Default: 6).
+        npass: the number of times to repeatedly apply the filter.
+        extent: specify the extent (width) of kernel size in voxels. This can\
+            be specified either as a single value to be used for all axes, or as a\
             comma-separated list of the extent for each axis. The default is 3x3x3.
-        strides: specify the strides of the output data in memory; either as a
-            comma-separated list of (signed) integers, or as a template image from
-            which the strides shall be extracted and used. The actual strides
+        strides: specify the strides of the output data in memory; either as a\
+            comma-separated list of (signed) integers, or as a template image from\
+            which the strides shall be extracted and used. The actual strides\
             produced will depend on whether the output image format can support it.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MaskfilterOutputs`).
     """

@@ -130,36 +130,36 @@ def sh2peaks(
     
     Args:
         sh: the input image of SH coefficients.
-        output: the output image. Each volume corresponds to the x, y & z
+        output: the output image. Each volume corresponds to the x, y & z\
             component of each peak direction vector in turn.
         num: the number of peaks to extract (default: 3).
-        direction: the direction of a peak to estimate. The algorithm will
-            attempt to find the same number of peaks as have been specified using
+        direction: the direction of a peak to estimate. The algorithm will\
+            attempt to find the same number of peaks as have been specified using\
             this option.
-        peaks: the program will try to find the peaks that most closely match
+        peaks: the program will try to find the peaks that most closely match\
             those in the image provided.
-        threshold: only peak amplitudes greater than the threshold will be
+        threshold: only peak amplitudes greater than the threshold will be\
             considered.
-        seeds: specify a set of directions from which to start the multiple
-            restarts of the optimisation (by default, the built-in 60 direction set
-            is used)
-        mask: only perform computation within the specified binary brain mask
+        seeds: specify a set of directions from which to start the multiple\
+            restarts of the optimisation (by default, the built-in 60 direction set\
+            is used).
+        mask: only perform computation within the specified binary brain mask\
             image.
-        fast: use lookup table to compute associated Legendre polynomials
+        fast: use lookup table to compute associated Legendre polynomials\
             (faster, but approximate).
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Sh2peaksOutputs`).
     """

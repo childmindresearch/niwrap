@@ -69,51 +69,52 @@ def fsl_sub(
     Args:
         arch: Architectures not available.
         coprocessor: No co-processor configured - ignored.
-        coprocessor_multi: No co-processor configured - ignored
+        coprocessor_multi: No co-processor configured - ignored.
         coprocessor_class: No co-processor classes configured - ignored.
         coprocessor_class_strict: No co-processor classes configured - ignored.
         coprocessor_toolkit: No co-processor toolkits configured - ignored.
-        usescript: Use flags embedded in scripts to set queuing options - not
-            supported
-        jobhold: Place a hold on this task until specified job id has completed.
+        usescript: Use flags embedded in scripts to set queuing options - not\
+            supported.
+        jobhold: Place a hold on this task until specified job id has\
+            completed.
         not_requeueable: Job cannot be requeued in the event of a node failure.
-        array_hold: Not supported - will be converted to simple job hold
+        array_hold: Not supported - will be converted to simple job hold.
         logdir: Where to output logfiles.
         mailoptions: Email notification options (ignored).
         mailto: Email notification recipients (ignored).
-        novalidation: Don't check for presence of script/binary in your
-            searchpath
+        novalidation: Don't check for presence of script/binary in your\
+            searchpath.
         name: Specify job name as it will appear on queue.
         priority: Specify job priority (not supported).
-        queue_: Specify the queue for the job (irrelevant if not running in a
+        queue_: Specify the queue for the job (irrelevant if not running in a\
             cluster environment).
-        resource_: Pass a resource request or constraint string through to the
+        resource_: Pass a resource request or constraint string through to the\
             job scheduler.
         delete_job: Deletes a queued/running job.
         jobram: Max total RAM required for job (integer in GB).
         parallelenv_threads: No parallel environments configured.
         array_task: Specify a task file of commands to execute in parallel.
-        array_native: Binary/Script will handle array task internally (mutually
+        array_native: Binary/Script will handle array task internally (mutually\
             exclusive with --array_task).
-        array_limit: Specify the maximum number of parallel job sub-tasks to run
-            concurrently.
+        array_limit: Specify the maximum number of parallel job sub-tasks to\
+            run concurrently.
         keep_jobscript: Whether to create and save a job submission script.
-        project: Specify the project (not relevant when not running in a cluster
-            environment).
-        noramsplit: Disable RAM splitting (not relevant when not running in a
+        project: Specify the project (not relevant when not running in a\
             cluster environment).
-        jobtime: Estimated job length in minutes, used to automatically choose
+        noramsplit: Disable RAM splitting (not relevant when not running in a\
+            cluster environment).
+        jobtime: Estimated job length in minutes, used to automatically choose\
             the queue name.
-        has_coprocessor: fsl_sub returns with exit code of 0 if specified
+        has_coprocessor: fsl_sub returns with exit code of 0 if specified\
             coprocessor is configured.
-        has_queues: fsl_sub returns with exit code of 0 if there's a compute
+        has_queues: fsl_sub returns with exit code of 0 if there's a compute\
             cluster with queues configured.
         show_config: Display the configuration currently in force.
         verbose: Verbose mode.
         version: Show program's version number and exit.
-        fileisimage: If <file> already exists and is an MRI image file, do
+        fileisimage: If <file> already exists and is an MRI image file, do\
             nothing and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslSubOutputs`).
     """

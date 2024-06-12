@@ -48,18 +48,18 @@ def volume_rois_from_extrema(
     vertex within range of more than one ROI does not belong to any ROI.
     
     Args:
-        volume_in: the input volume
-        limit: distance limit from voxel center, in mm
-        volume_out: the output volume
-        opt_gaussian_sigma: generate a gaussian kernel instead of a flat ROI:
-            the sigma for the gaussian kernel, in mm
-        opt_roi_roi_volume: select a region of interest to use: the region to
-            use
-        opt_overlap_logic_method: how to handle overlapping ROIs, default ALLOW:
-            the method of resolving overlaps
-        opt_subvolume_subvol: select a single subvolume to take the gradient of:
-            the subvolume number or name
-        runner: Command runner
+        volume_in: the input volume.
+        limit: distance limit from voxel center, in mm.
+        volume_out: the output volume.
+        opt_gaussian_sigma: generate a gaussian kernel instead of a flat ROI:\
+            the sigma for the gaussian kernel, in mm.
+        opt_roi_roi_volume: select a region of interest to use: the region to\
+            use.
+        opt_overlap_logic_method: how to handle overlapping ROIs, default\
+            ALLOW: the method of resolving overlaps.
+        opt_subvolume_subvol: select a single subvolume to take the gradient\
+            of: the subvolume number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeRoisFromExtremaOutputs`).
     """

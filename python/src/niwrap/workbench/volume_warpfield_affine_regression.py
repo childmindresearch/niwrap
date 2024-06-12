@@ -68,15 +68,15 @@ def volume_warpfield_affine_regression(
     -flirt as needed, as their coordinate conventions are different.
     
     Args:
-        warpfield: the input warpfield
-        affine_out: output - the output affine file
-        opt_roi_roi_vol: only consider voxels within a mask (e.g., a brain
-            mask): the mask volume
-        opt_fnirt_source_volume: input is a fnirt warpfield: the source volume
-            used when generating the fnirt warpfield
-        flirt_out: write output as a flirt matrix rather than a world coordinate
-            transform
-        runner: Command runner
+        warpfield: the input warpfield.
+        affine_out: output - the output affine file.
+        opt_roi_roi_vol: only consider voxels within a mask (e.g., a brain\
+            mask): the mask volume.
+        opt_fnirt_source_volume: input is a fnirt warpfield: the source volume\
+            used when generating the fnirt warpfield.
+        flirt_out: write output as a flirt matrix rather than a world\
+            coordinate transform.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeWarpfieldAffineRegressionOutputs`).
     """

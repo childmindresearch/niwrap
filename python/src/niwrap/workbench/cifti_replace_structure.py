@@ -185,18 +185,18 @@ def cifti_replace_structure(
     THALAMUS_RIGHT.
     
     Args:
-        cifti: the cifti to modify
-        direction: which dimension to interpret as a single map, ROW or COLUMN
-        volume_all: replace the data in all volume components
-        opt_discard_unused_labels: when operating on a dlabel file, drop any
-            unused label keys from the label table
-        opt_label_collision_action: how to handle conflicts between label keys:
-            'ERROR', 'LEFT_SURFACE_FIRST', or 'LEGACY', default 'ERROR', use
-            'LEGACY' to match v1.4.2 and earlier
-        label: replace the data in a surface label component
-        metric: replace the data in a surface component
-        volume: replace the data in a volume component
-        runner: Command runner
+        cifti: the cifti to modify.
+        direction: which dimension to interpret as a single map, ROW or COLUMN.
+        volume_all: replace the data in all volume components.
+        opt_discard_unused_labels: when operating on a dlabel file, drop any\
+            unused label keys from the label table.
+        opt_label_collision_action: how to handle conflicts between label keys:\
+            'ERROR', 'LEFT_SURFACE_FIRST', or 'LEGACY', default 'ERROR', use\
+            'LEGACY' to match v1.4.2 and earlier.
+        label: replace the data in a surface label component.
+        metric: replace the data in a surface component.
+        volume: replace the data in a volume component.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiReplaceStructureOutputs`).
     """

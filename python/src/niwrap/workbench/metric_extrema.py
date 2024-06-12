@@ -121,24 +121,24 @@ def metric_extrema(
     finding the extrema.
     
     Args:
-        surface: the surface to use for distance information
-        metric_in: the metric to find the extrema of
-        distance: the minimum distance between identified extrema of the same
-            type
-        metric_out: the output extrema metric
-        presmooth: smooth the metric before finding extrema
-        opt_roi_roi_metric: ignore values outside the selected area: the area to
-            find extrema in, as a metric
-        threshold: ignore small extrema
-        opt_sum_columns: output the sum of the extrema columns instead of each
-            column separately
-        opt_consolidate_mode: use consolidation of local minima instead of a
-            large neighborhood
-        opt_only_maxima: only find the maxima
-        opt_only_minima: only find the minima
-        opt_column_column: select a single column to find extrema in: the column
-            number or name
-        runner: Command runner
+        surface: the surface to use for distance information.
+        metric_in: the metric to find the extrema of.
+        distance: the minimum distance between identified extrema of the same\
+            type.
+        metric_out: the output extrema metric.
+        presmooth: smooth the metric before finding extrema.
+        opt_roi_roi_metric: ignore values outside the selected area: the area\
+            to find extrema in, as a metric.
+        threshold: ignore small extrema.
+        opt_sum_columns: output the sum of the extrema columns instead of each\
+            column separately.
+        opt_consolidate_mode: use consolidation of local minima instead of a\
+            large neighborhood.
+        opt_only_maxima: only find the maxima.
+        opt_only_minima: only find the minima.
+        opt_column_column: select a single column to find extrema in: the\
+            column number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricExtremaOutputs`).
     """

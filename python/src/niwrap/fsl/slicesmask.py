@@ -35,10 +35,10 @@ def slicesmask(
     Tool for masking slices from an image using a mask.
     
     Args:
-        image: Input image file
-        mask: Mask file
-        output: Output file
-        runner: Command runner
+        image: Input image file.
+        mask: Mask file.
+        output: Output file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SlicesmaskOutputs`).
     """

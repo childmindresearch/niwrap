@@ -370,13 +370,13 @@ def cifti_separate(
     THALAMUS_RIGHT.
     
     Args:
-        cifti_in: the cifti to separate a component of
-        direction: which direction to separate into components, ROW or COLUMN
-        volume_all: separate all volume structures into a volume file
-        label: separate a surface model into a surface label file
-        metric: separate a surface model into a metric file
-        volume: separate a volume structure into a volume file
-        runner: Command runner
+        cifti_in: the cifti to separate a component of.
+        direction: which direction to separate into components, ROW or COLUMN.
+        volume_all: separate all volume structures into a volume file.
+        label: separate a surface model into a surface label file.
+        metric: separate a surface model into a metric file.
+        volume: separate a volume structure into a volume file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiSeparateOutputs`).
     """

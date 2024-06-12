@@ -90,39 +90,40 @@ def cluster(
         minclustersize: Prints out minimum significant cluster size.
         no_table: Suppresses printing of the table info.
         num_maxima: No of local maxima to report.
-        out_index_file: A boolean or file. Output of cluster index (in size
+        out_index_file: A boolean or file. Output of cluster index (in size\
             order).
-        out_index_file_2: A boolean or file. Output of cluster index (in size
+        out_index_file_2: A boolean or file. Output of cluster index (in size\
             order).
         out_localmax_txt_file: A boolean or file. Local maxima text file.
         out_localmax_txt_file_2: A boolean or file. Local maxima text file.
-        out_localmax_vol_file: A boolean or file. Output of local maxima volume.
-        out_localmax_vol_file_2: A boolean or file. Output of local maxima
+        out_localmax_vol_file: A boolean or file. Output of local maxima\
+            volume.
+        out_localmax_vol_file_2: A boolean or file. Output of local maxima\
             volume.
         out_max_file: A boolean or file. Filename for output of max image.
         out_max_file_2: A boolean or file. Filename for output of max image.
         out_mean_file: A boolean or file. Filename for output of mean image.
         out_mean_file_2: A boolean or file. Filename for output of mean image.
-        out_pval_file: A boolean or file. Filename for image output of log
+        out_pval_file: A boolean or file. Filename for image output of log\
             pvals.
-        out_pval_file_2: A boolean or file. Filename for image output of log
+        out_pval_file_2: A boolean or file. Filename for image output of log\
             pvals.
         out_size_file: A boolean or file. Filename for output of size image.
         out_size_file_2: A boolean or file. Filename for output of size image.
         out_threshold_file: A boolean or file. Thresholded image.
         out_threshold_file_2: A boolean or file. Thresholded image.
-        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
             Fsl output type.
-        peak_distance: Minimum distance between local maxima/minima, in mm
+        peak_distance: Minimum distance between local maxima/minima, in mm\
             (default 0).
         pthreshold: P-threshold for clusters.
         std_space_file: Filename for standard-space volume.
         use_mm: Use mm, not voxel, coordinates.
         volume: Number of voxels in the mask.
         warpfield_file: File containing warpfield.
-        xfm_file: Filename for linear: input->standard-space transform.
+        xfm_file: Filename for linear: input->standard-space transform.\
             non-linear: input->highres transform.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ClusterOutputs`).
     """

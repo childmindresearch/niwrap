@@ -54,7 +54,7 @@ def v_3d_lfcd(
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         polort: No description provided.
         thresh: Threshold to exclude connections where corr <= thresh.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dLfcdOutputs`).
     """

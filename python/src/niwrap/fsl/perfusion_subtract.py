@@ -33,12 +33,12 @@ def perfusion_subtract(
     Subtract control images from tag images in 4D perfusion data.
     
     Args:
-        four_d_input: Input 4D perfusion image (e.g. perfusion.nii.gz)
-        four_d_output: Output 4D image with subtraction results (e.g.
-            perfusion_subtracted.nii.gz)
-        control_first_flag: First timepoint is control instead of tag. Default
+        four_d_input: Input 4D perfusion image (e.g. perfusion.nii.gz).
+        four_d_output: Output 4D image with subtraction results (e.g.\
+            perfusion_subtracted.nii.gz).
+        control_first_flag: First timepoint is control instead of tag. Default\
             is tag first.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PerfusionSubtractOutputs`).
     """

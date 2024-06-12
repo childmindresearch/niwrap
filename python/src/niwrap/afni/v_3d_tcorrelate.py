@@ -57,38 +57,38 @@ def v_3d_tcorrelate(
         pearson: Correlation is the normal pearson correlation coefficient.
         spearman: Correlation is the Spearman (rank) correlation coefficient.
         quadrant: Correlation is the quadrant coefficient.
-        ktaub: Correlation is Kendall's tau_b coefficient. For continuous or
-            finely discretized data, tau_b and rank correlation are nearly
+        ktaub: Correlation is Kendall's tau_b coefficient. For continuous or\
+            finely discretized data, tau_b and rank correlation are nearly\
             equivalent.
-        covariance: Covariance instead of correlation. That would be Pearson
+        covariance: Covariance instead of correlation. That would be Pearson\
             correlation without scaling by the product of the standard deviations.
-        partial: Partial Pearson's correlation of X & Y, adjusting for Z (the
+        partial: Partial Pearson's correlation of X & Y, adjusting for Z (the\
             dataset provided here).
-        ycoef: Least squares coefficient that best fits y(t) to x(t), after
-            detrending. That is, if yd(t) is the detrended y(t) and xd(t) is the
-            detrended x(t), then the ycoef value is from the OLSQ fit to xd(t) =
+        ycoef: Least squares coefficient that best fits y(t) to x(t), after\
+            detrending. That is, if yd(t) is the detrended y(t) and xd(t) is the\
+            detrended x(t), then the ycoef value is from the OLSQ fit to xd(t) =\
             ycoef & y(t) + error.
-        fisher: Apply the Fisher (inverse hyperbolic tangent) transformation to
-            correlation results. Does not make sense with ktaub, covariance, or
+        fisher: Apply the Fisher (inverse hyperbolic tangent) transformation to\
+            correlation results. Does not make sense with ktaub, covariance, or\
             ycoef.
-        polort: Remove polynomial trend of order m. Using m=-1 mean no
+        polort: Remove polynomial trend of order m. Using m=-1 mean no\
             detrending; this is only useful fro data that has been preprocessed.
-        ort: A 1D file. Also detrend using the columbs of the 1D file provided
-            here. Only one -ort option can be given, so if you would like to use
+        ort: A 1D file. Also detrend using the columbs of the 1D file provided\
+            here. Only one -ort option can be given, so if you would like to use\
             more than one, create a temporary file using 1dcat.
-        autoclip: Clip off low-intensity regions in the two datasets, so that
-            the correlation is only computed between high-intensity (presumably
-            brain) voxels. The intensity level is determined the same way that
+        autoclip: Clip off low-intensity regions in the two datasets, so that\
+            the correlation is only computed between high-intensity (presumably\
+            brain) voxels. The intensity level is determined the same way that\
             3dClipLevel works.
-        automask: Clip off low-intensity regions in the two datasets, so that
-            the correlation is only computed between high-intensity (presumably
-            brain) voxels. The intensity level is determined the same way that
+        automask: Clip off low-intensity regions in the two datasets, so that\
+            the correlation is only computed between high-intensity (presumably\
+            brain) voxels. The intensity level is determined the same way that\
             3dClipLevel works.
-        zcensor: Omit (censor out) any time points where the xset volume is all
-            zero OR where the yset volume is all zero (in mask). Please note that
+        zcensor: Omit (censor out) any time points where the xset volume is all\
+            zero OR where the yset volume is all zero (in mask). Please note that\
             using -zcensor with any detrending is unlikely to be useful.
         prefix: Save output into a dataset with this prefix.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dTcorrelateOutputs`).
     """

@@ -48,15 +48,15 @@ def fiber_dot_products(
     surface. Each fiber population is output in a separate metric column.
     
     Args:
-        white_surf: the white/gray boundary surface
-        fiber_file: the fiber orientation file
-        max_dist: the maximum distance from any surface vertex a fiber
-            population may be, in mm
-        direction: test against surface for whether a fiber population should be
-            used
-        dot_metric: the metric of dot products
-        f_metric: a metric of the f values of the fiber distributions
-        runner: Command runner
+        white_surf: the white/gray boundary surface.
+        fiber_file: the fiber orientation file.
+        max_dist: the maximum distance from any surface vertex a fiber\
+            population may be, in mm.
+        direction: test against surface for whether a fiber population should\
+            be used.
+        dot_metric: the metric of dot products.
+        f_metric: a metric of the f values of the fiber distributions.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FiberDotProductsOutputs`).
     """

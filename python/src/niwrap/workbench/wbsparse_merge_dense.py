@@ -61,10 +61,10 @@ def wbsparse_merge_dense(
     models.
     
     Args:
-        direction: which dimension to merge along, ROW or COLUMN
-        wbsparse_out: output - the output wbsparse file
-        wbsparse: specify an input wbsparse file
-        runner: Command runner
+        direction: which dimension to merge along, ROW or COLUMN.
+        wbsparse_out: output - the output wbsparse file.
+        wbsparse: specify an input wbsparse file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `WbsparseMergeDenseOutputs`).
     """

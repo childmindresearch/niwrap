@@ -37,9 +37,9 @@ def fslval(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        input_file: Input NIfTI image file
-        keyword_: Keyword to query from the NIfTI header
-        runner: Command runner
+        input_file: Input NIfTI image file.
+        keyword_: Keyword to query from the NIfTI header.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslvalOutputs`).
     """

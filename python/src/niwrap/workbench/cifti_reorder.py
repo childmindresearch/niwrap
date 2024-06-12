@@ -45,11 +45,11 @@ def cifti_reorder(
     contain '4 1 2 3'.
     
     Args:
-        cifti_in: input cifti file
-        direction: which dimension to reorder along, ROW or COLUMN
-        reorder_list: a text file containing the desired order transformation
-        cifti_out: the reordered cifti file
-        runner: Command runner
+        cifti_in: input cifti file.
+        direction: which dimension to reorder along, ROW or COLUMN.
+        reorder_list: a text file containing the desired order transformation.
+        cifti_out: the reordered cifti file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiReorderOutputs`).
     """

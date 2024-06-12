@@ -41,14 +41,14 @@ def volume_erode(
     specified distance (center to center).
     
     Args:
-        volume: the volume to erode
-        distance: distance in mm to erode
-        volume_out: the output volume
-        opt_roi_roi_volume: assume voxels outside this roi are nonzero: volume
-            file, positive values denote voxels that have data
-        opt_subvolume_subvol: select a single subvolume to dilate: the subvolume
-            number or name
-        runner: Command runner
+        volume: the volume to erode.
+        distance: distance in mm to erode.
+        volume_out: the output volume.
+        opt_roi_roi_volume: assume voxels outside this roi are nonzero: volume\
+            file, positive values denote voxels that have data.
+        opt_subvolume_subvol: select a single subvolume to dilate: the\
+            subvolume number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeErodeOutputs`).
     """

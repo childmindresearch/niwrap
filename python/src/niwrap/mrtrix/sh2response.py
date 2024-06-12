@@ -91,30 +91,30 @@ def sh2response(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2response.html
     
     Args:
-        sh: the spherical harmonic decomposition of the diffusion-weighted
-            images
-        mask: the mask containing the voxels from which to estimate the response
-            function
-        directions: a 4D image containing the direction vectors along which to
-            estimate the response function
-        response: the output axially-symmetric spherical harmonic coefficients
-        lmax: specify the maximum harmonic degree of the response function to
-            estimate
-        dump: dump the m=0 SH coefficients from all voxels in the mask to the
-            output file, rather than their mean
+        sh: the spherical harmonic decomposition of the diffusion-weighted\
+            images.
+        mask: the mask containing the voxels from which to estimate the\
+            response function.
+        directions: a 4D image containing the direction vectors along which to\
+            estimate the response function.
+        response: the output axially-symmetric spherical harmonic coefficients.
+        lmax: specify the maximum harmonic degree of the response function to\
+            estimate.
+        dump: dump the m=0 SH coefficients from all voxels in the mask to the\
+            output file, rather than their mean.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Sh2responseOutputs`).
     """

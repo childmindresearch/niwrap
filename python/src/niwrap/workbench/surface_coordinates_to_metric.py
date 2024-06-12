@@ -36,9 +36,9 @@ def surface_coordinates_to_metric(
     Puts the coordinates of the surface into a 3-map metric file, as x, y, z.
     
     Args:
-        surface: the surface to use the coordinates of
-        metric_out: the output metric
-        runner: Command runner
+        surface: the surface to use the coordinates of.
+        metric_out: the output metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceCoordinatesToMetricOutputs`).
     """

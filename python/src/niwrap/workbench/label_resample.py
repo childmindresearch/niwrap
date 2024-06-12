@@ -115,24 +115,25 @@ def label_resample(
     .
     
     Args:
-        label_in: the label file to resample
-        current_sphere: a sphere surface with the mesh that the label file is
-            currently on
-        new_sphere: a sphere surface that is in register with <current-sphere>
-            and has the desired output mesh
-        method: the method name
-        label_out: the output label file
-        roi_out: the output roi as a metric
-        area_surfs: specify surfaces to do vertex area correction based on
-        area_metrics: specify vertex area metrics to do area correction based on
-        opt_current_roi_roi_metric: use an input roi on the current mesh to
-            exclude non-data vertices: the roi, as a metric file
-        opt_valid_roi_out: output the ROI of vertices that got data from valid
-            source vertices
-        opt_largest: use only the label of the vertex with the largest weight
-        opt_bypass_sphere_check: ADVANCED: allow the current and new 'spheres'
-            to have arbitrary shape as long as they follow the same contour
-        runner: Command runner
+        label_in: the label file to resample.
+        current_sphere: a sphere surface with the mesh that the label file is\
+            currently on.
+        new_sphere: a sphere surface that is in register with <current-sphere>\
+            and has the desired output mesh.
+        method: the method name.
+        label_out: the output label file.
+        roi_out: the output roi as a metric.
+        area_surfs: specify surfaces to do vertex area correction based on.
+        area_metrics: specify vertex area metrics to do area correction based\
+            on.
+        opt_current_roi_roi_metric: use an input roi on the current mesh to\
+            exclude non-data vertices: the roi, as a metric file.
+        opt_valid_roi_out: output the ROI of vertices that got data from valid\
+            source vertices.
+        opt_largest: use only the label of the vertex with the largest weight.
+        opt_bypass_sphere_check: ADVANCED: allow the current and new 'spheres'\
+            to have arbitrary shape as long as they follow the same contour.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `LabelResampleOutputs`).
     """

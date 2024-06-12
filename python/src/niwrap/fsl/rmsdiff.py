@@ -35,11 +35,11 @@ def rmsdiff(
     Outputs RMS deviation between matrices (in mm).
     
     Args:
-        matrixfile1: First matrix file
-        matrixfile2: Second matrix file
-        refvol: Reference volume
-        mask: Optional mask
-        runner: Command runner
+        matrixfile1: First matrix file.
+        matrixfile2: Second matrix file.
+        refvol: Reference volume.
+        mask: Optional mask.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RmsdiffOutputs`).
     """

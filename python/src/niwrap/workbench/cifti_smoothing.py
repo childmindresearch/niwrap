@@ -148,24 +148,25 @@ def cifti_smoothing(
     file. Data outside the ROI is ignored.
     
     Args:
-        cifti: the input cifti
-        surface_kernel: the size of the gaussian surface smoothing kernel in mm,
-            as sigma by default
-        volume_kernel: the size of the gaussian volume smoothing kernel in mm,
-            as sigma by default
-        direction: which dimension to smooth along, ROW or COLUMN
-        cifti_out: the output cifti
-        opt_fwhm: kernel sizes are FWHM, not sigma
-        left_surface: specify the left surface to use
-        right_surface: specify the right surface to use
-        cerebellum_surface: specify the cerebellum surface to use
-        opt_cifti_roi_roi_cifti: smooth only within regions of interest: the
-            regions to smooth within, as a cifti file
-        opt_fix_zeros_volume: treat values of zero in the volume as missing data
-        opt_fix_zeros_surface: treat values of zero on the surface as missing
-            data
-        opt_merged_volume: smooth across subcortical structure boundaries
-        runner: Command runner
+        cifti: the input cifti.
+        surface_kernel: the size of the gaussian surface smoothing kernel in\
+            mm, as sigma by default.
+        volume_kernel: the size of the gaussian volume smoothing kernel in mm,\
+            as sigma by default.
+        direction: which dimension to smooth along, ROW or COLUMN.
+        cifti_out: the output cifti.
+        opt_fwhm: kernel sizes are FWHM, not sigma.
+        left_surface: specify the left surface to use.
+        right_surface: specify the right surface to use.
+        cerebellum_surface: specify the cerebellum surface to use.
+        opt_cifti_roi_roi_cifti: smooth only within regions of interest: the\
+            regions to smooth within, as a cifti file.
+        opt_fix_zeros_volume: treat values of zero in the volume as missing\
+            data.
+        opt_fix_zeros_surface: treat values of zero on the surface as missing\
+            data.
+        opt_merged_volume: smooth across subcortical structure boundaries.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiSmoothingOutputs`).
     """

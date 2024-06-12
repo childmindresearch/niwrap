@@ -125,9 +125,9 @@ def border_merge(
     borders from second.border, and write these to out.border.
     
     Args:
-        border_file_out: the output border file
-        border: specify an input border file
-        runner: Command runner
+        border_file_out: the output border file.
+        border: specify an input border file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BorderMergeOutputs`).
     """

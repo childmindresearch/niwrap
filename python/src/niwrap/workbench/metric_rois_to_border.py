@@ -42,14 +42,14 @@ def metric_rois_to_border(
     columns in the input file, using the map name as the name for the border.
     
     Args:
-        surface: the surface to use for neighbor information
-        metric: the input metric containing ROIs
-        class_name: the name to use for the class of the output borders
-        border_out: the output border file
-        opt_placement_fraction: set how far along the edge border points are
-            drawn: fraction along edge from inside vertex (default 0.33)
-        opt_column_column: select a single column: the column number or name
-        runner: Command runner
+        surface: the surface to use for neighbor information.
+        metric: the input metric containing ROIs.
+        class_name: the name to use for the class of the output borders.
+        border_out: the output border file.
+        opt_placement_fraction: set how far along the edge border points are\
+            drawn: fraction along edge from inside vertex (default 0.33).
+        opt_column_column: select a single column: the column number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricRoisToBorderOutputs`).
     """

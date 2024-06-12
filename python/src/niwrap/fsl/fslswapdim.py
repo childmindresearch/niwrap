@@ -40,13 +40,13 @@ def fslswapdim(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        input_file: Input image (e.g. img.nii.gz)
-        axis_a: New x-axis dimension (e.g., -x, x, RL, etc.)
-        axis_b: New y-axis dimension (e.g., -y, y, PA, etc.)
-        axis_c: New z-axis dimension (e.g., -z, z, IS, etc.)
-        output_file: Output image (e.g., output.nii.gz). If not specified, the
+        input_file: Input image (e.g. img.nii.gz).
+        axis_a: New x-axis dimension (e.g., -x, x, RL, etc.).
+        axis_b: New y-axis dimension (e.g., -y, y, PA, etc.).
+        axis_c: New z-axis dimension (e.g., -z, z, IS, etc.).
+        output_file: Output image (e.g., output.nii.gz). If not specified, the\
             equivalent transformation matrix is written to the standard output.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslswapdimOutputs`).
     """

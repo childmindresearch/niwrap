@@ -79,71 +79,71 @@ def eddy(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy
     
     Args:
-        imain: File containing all the images to estimate distortions for
-        mask: Mask to indicate brain
-        index: File containing indices for all volumes in --imain into --acqp
-            and --topup
-        acqp: File containing acquisition parameters
-        bvecs: File containing the b-vectors for all volumes in --imain
-        bvals: File containing the b-values for all volumes in --imain
-        implementation: Choose the implementation to use
-        out: Basename for output
-        mb: Multi-band factor
-        mb_offs: Multi-band offset (-1 if bottom slice removed, 1 if top slice
-            removed)
-        slspec: Name of text file completely specifying slice/group acuistion.
+        imain: File containing all the images to estimate distortions for.
+        mask: Mask to indicate brain.
+        index: File containing indices for all volumes in --imain into --acqp\
+            and --topup.
+        acqp: File containing acquisition parameters.
+        bvecs: File containing the b-vectors for all volumes in --imain.
+        bvals: File containing the b-values for all volumes in --imain.
+        implementation: Choose the implementation to use.
+        out: Basename for output.
+        mb: Multi-band factor.
+        mb_offs: Multi-band offset (-1 if bottom slice removed, 1 if top slice\
+            removed).
+        slspec: Name of text file completely specifying slice/group acuistion.\
             N.B. --slspec and --json are mutually exclusive.
-        json_: Name of .json text file with information about slice timing. N.B.
-            --json and --slspec are mutually exclusive.
-        mporder: Order of slice-to-vol movement model (default 0, i.e.
-            vol-to-vol
-        s2v_lambda: Regularisation weight for slice-to-vol movement. (default 1,
-            reasonable range 1--10)
-        topup: Base name for output files from topup
-        field: Name of file with susceptibility field (in Hz)
-        field_mat: Name of rigid body transform for susceptibility field
-        flm: First level EC model (movement/linear/quadratic/cubic, default
-            quadratic)
-        slm: Second level EC model (none/linear/quadratic, default none)
-        fwhm: FWHM for conditioning filter when estimating the parameters
-            (default 0)
-        niter: Number of iterations (default 5)
-        s2v_niter: Number of iterations for slice-to-vol (default 5)
-        cnr_maps: Write shell-wise cnr-maps (default false)
-        residuals: Write residuals (between GP and observations), (default
-            false)
-        fep: Fill empty planes in x- or y-directions (default false)
-        interp: Interpolation model for estimation step (spline/trilinear,
-            default spline)
-        s2v_interp: Slice-to-vol interpolation model for estimation step
-            (spline/trilinear, default trilinear)
-        resamp: Final resampling method (jac/lsr, default jac)
-        nvoxhp: # of voxels used to estimate the hyperparameters (default 1000)
-        initrand: Seeds rand for when selecting voxels (default 0=no seeding)
-        ff: Fudge factor for hyperparameter error variance (default 10.0)
-        repol: Detect and replace outlier slices (default false))
-        ol_nstd: Number of std off to qualify as outlier (default 4)
-        ol_nvox: Min # of voxels in a slice for inclusion in outlier detection
-            (default 250)
-        ol_type: Type of outliers, slicewise (sw), groupwise (gw) or both
-            (both). (default sw)
-        ol_pos: Consider both positive and negative outliers if set (default
-            false)
-        ol_sqr: Consider outliers among sums-of-squared differences if set
-            (default false)
-        estimate_move_by_susceptibility: Estimate how susceptibility field
-            changes with subject movement (default false)
-        mbs_niter: Number of iterations for MBS estimation (default 10)
-        mbs_lambda: Weighting of regularisation for MBS estimation (default 10)
-        mbs_ksp: Knot-spacing for MBS field estimation (default 10mm)
-        dont_sep_offs_move: Do NOT attempt to separate field offset from subject
-            movement (default false)
-        dont_peas: Do NOT perform a post-eddy alignment of shells (default
-            false)
-        data_is_shelled: Assume, don't check, that data is shelled (default
-            false)
-        verbose: switch on diagnostic messages
-        runner: Command runner
+        json_: Name of .json text file with information about slice timing.\
+            N.B. --json and --slspec are mutually exclusive.
+        mporder: Order of slice-to-vol movement model (default 0, i.e.\
+            vol-to-vol.
+        s2v_lambda: Regularisation weight for slice-to-vol movement. (default\
+            1, reasonable range 1--10).
+        topup: Base name for output files from topup.
+        field: Name of file with susceptibility field (in Hz).
+        field_mat: Name of rigid body transform for susceptibility field.
+        flm: First level EC model (movement/linear/quadratic/cubic, default\
+            quadratic).
+        slm: Second level EC model (none/linear/quadratic, default none).
+        fwhm: FWHM for conditioning filter when estimating the parameters\
+            (default 0).
+        niter: Number of iterations (default 5).
+        s2v_niter: Number of iterations for slice-to-vol (default 5).
+        cnr_maps: Write shell-wise cnr-maps (default false).
+        residuals: Write residuals (between GP and observations), (default\
+            false).
+        fep: Fill empty planes in x- or y-directions (default false).
+        interp: Interpolation model for estimation step (spline/trilinear,\
+            default spline).
+        s2v_interp: Slice-to-vol interpolation model for estimation step\
+            (spline/trilinear, default trilinear).
+        resamp: Final resampling method (jac/lsr, default jac).
+        nvoxhp: # of voxels used to estimate the hyperparameters (default 1000).
+        initrand: Seeds rand for when selecting voxels (default 0=no seeding).
+        ff: Fudge factor for hyperparameter error variance (default 10.0).
+        repol: Detect and replace outlier slices (default false)).
+        ol_nstd: Number of std off to qualify as outlier (default 4).
+        ol_nvox: Min # of voxels in a slice for inclusion in outlier detection\
+            (default 250).
+        ol_type: Type of outliers, slicewise (sw), groupwise (gw) or both\
+            (both). (default sw).
+        ol_pos: Consider both positive and negative outliers if set (default\
+            false).
+        ol_sqr: Consider outliers among sums-of-squared differences if set\
+            (default false).
+        estimate_move_by_susceptibility: Estimate how susceptibility field\
+            changes with subject movement (default false).
+        mbs_niter: Number of iterations for MBS estimation (default 10).
+        mbs_lambda: Weighting of regularisation for MBS estimation (default 10).
+        mbs_ksp: Knot-spacing for MBS field estimation (default 10mm).
+        dont_sep_offs_move: Do NOT attempt to separate field offset from\
+            subject movement (default false).
+        dont_peas: Do NOT perform a post-eddy alignment of shells (default\
+            false).
+        data_is_shelled: Assume, don't check, that data is shelled (default\
+            false).
+        verbose: switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `EddyOutputs`).
     """

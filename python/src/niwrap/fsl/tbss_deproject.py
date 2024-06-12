@@ -37,10 +37,10 @@ def tbss_deproject(
     Args:
         skeleton_space_input_image: Skeleton space input image.
         final_space_option: Final space option.
-        index_image_flag: Assume that the skeleton space input image contains
-            one or more integer index numbers and ensure that those exact values are
-            deprojected without being changed by interpolations.
-        runner: Command runner
+        index_image_flag: Assume that the skeleton space input image contains\
+            one or more integer index numbers and ensure that those exact values\
+            are deprojected without being changed by interpolations.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TbssDeprojectOutputs`).
     """

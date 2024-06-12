@@ -42,18 +42,18 @@ def image_stats(
     
     Args:
         in_file: Input file to generate stats of.
-        op_string: String defining the operation, options are applied in order,
-            e.g. -m -l 10 -m will report the non-zero mean, apply a threshold and
+        op_string: String defining the operation, options are applied in order,\
+            e.g. -m -l 10 -m will report the non-zero mean, apply a threshold and\
             then report the new nonzero mean.
-        index_mask_file: Generate separate n submasks from indexmask, for
-            indexvalues 1..n where n is the maximum index value in indexmask, and
+        index_mask_file: Generate separate n submasks from indexmask, for\
+            indexvalues 1..n where n is the maximum index value in indexmask, and\
             generate statistics for each submask.
         mask_file: Mask file used for option -k %s.
-        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
             Fsl output type.
-        split_4d: Give a separate output line for each 3d volume of a 4d
+        split_4d: Give a separate output line for each 3d volume of a 4d\
             timeseries.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ImageStatsOutputs`).
     """

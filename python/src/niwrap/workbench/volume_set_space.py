@@ -114,12 +114,12 @@ def volume_set_space(
     one of -plumb, -sform, or -file must be specified.
     
     Args:
-        volume_in: the input volume
-        volume_out: output - the output volume
-        plumb: set via axis order and spacing/offset
-        sform: set via a nifti sform
-        file: copy spacing info from volume file with matching dimensions
-        runner: Command runner
+        volume_in: the input volume.
+        volume_out: output - the output volume.
+        plumb: set via axis order and spacing/offset.
+        sform: set via a nifti sform.
+        file: copy spacing info from volume file with matching dimensions.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeSetSpaceOutputs`).
     """

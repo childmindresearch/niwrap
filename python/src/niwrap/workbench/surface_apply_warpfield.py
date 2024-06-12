@@ -44,12 +44,12 @@ def surface_apply_warpfield(
     warpfield, which can be obtained with the -convert-warpfield command.
     
     Args:
-        in_surf: the surface to transform
-        warpfield: the INVERSE warpfield
-        out_surf: the output transformed surface
-        opt_fnirt_forward_warp: MUST be used if using a fnirt warpfield: the
-            forward warpfield
-        runner: Command runner
+        in_surf: the surface to transform.
+        warpfield: the INVERSE warpfield.
+        out_surf: the output transformed surface.
+        opt_fnirt_forward_warp: MUST be used if using a fnirt warpfield: the\
+            forward warpfield.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceApplyWarpfieldOutputs`).
     """

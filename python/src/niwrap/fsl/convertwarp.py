@@ -54,28 +54,29 @@ def convertwarp(
     More information: https://fsl.fmrib.ox.ac.uk
     
     Args:
-        output_warp: Filename for output (warp) image - always in 'field' format
-        refvol: Filename for reference image
-        premat: Filename of pre-affine transform
-        warp1: Filename for initial warp (follows pre-affine)
-        midmat: Filename of mid-warp-affine transform
-        warp2: Filename for secondary warp (after initial warp, before
-            post-affine)
-        postmat: Filename of post-affine transform
-        shiftmap: Filename for shiftmap (applied first)
-        shiftdir: Direction to apply shiftmap {x,y,z,x-,y-,z-}
-        jacobian: Calculate and save Jacobian of final warp field
-        jstats: Print out statistics of the Jacobian of the warpfield
-        constrainj: Constrain the Jacobian of the warpfield to lie within
-            specified min/max limits
-        jmin: Minimum acceptable Jacobian value for constraint (default 0.01)
-        jmax: Maximum acceptable Jacobian value for constraint (default 100.0)
-        abs_: Use absolute warp convention (default): x' = w(x)
-        rel: Use relative warp convention: x' = x + w(x)
-        absout: Force output to use absolute warp convention: x' = w(x)
-        relout: Force output to use relative warp convention: x' = x + w(x)
-        verbose: Switch on diagnostic messages
-        runner: Command runner
+        output_warp: Filename for output (warp) image - always in 'field'\
+            format.
+        refvol: Filename for reference image.
+        premat: Filename of pre-affine transform.
+        warp1: Filename for initial warp (follows pre-affine).
+        midmat: Filename of mid-warp-affine transform.
+        warp2: Filename for secondary warp (after initial warp, before\
+            post-affine).
+        postmat: Filename of post-affine transform.
+        shiftmap: Filename for shiftmap (applied first).
+        shiftdir: Direction to apply shiftmap {x,y,z,x-,y-,z-}.
+        jacobian: Calculate and save Jacobian of final warp field.
+        jstats: Print out statistics of the Jacobian of the warpfield.
+        constrainj: Constrain the Jacobian of the warpfield to lie within\
+            specified min/max limits.
+        jmin: Minimum acceptable Jacobian value for constraint (default 0.01).
+        jmax: Maximum acceptable Jacobian value for constraint (default 100.0).
+        abs_: Use absolute warp convention (default): x' = w(x).
+        rel: Use relative warp convention: x' = x + w(x).
+        absout: Force output to use absolute warp convention: x' = w(x).
+        relout: Force output to use relative warp convention: x' = x + w(x).
+        verbose: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ConvertwarpOutputs`).
     """

@@ -33,10 +33,10 @@ def immv(
     Moves images from one file or directory to another.
     
     Args:
-        source_files: Source files to be moved. Recognized file extensions:
-            .nii.gz, .nii, .img, .hdr, .img.gz, .hdr.gz
+        source_files: Source files to be moved. Recognized file extensions:\
+            .nii.gz, .nii, .img, .hdr, .img.gz, .hdr.gz.
         destination: Destination file or directory.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ImmvOutputs`).
     """

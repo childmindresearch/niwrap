@@ -181,21 +181,21 @@ def probtrackx_dot_convert(
     THALAMUS_RIGHT.
     
     Args:
-        dot_file: input .dot file
-        cifti_out: output cifti file
-        row_voxels: the output mapping along a row will be voxels
-        opt_row_surface_roi_metric: the output mapping along a row will be
-            surface vertices: a metric file with positive values on all vertices
-            used
-        row_cifti: take the mapping along a row from a cifti file
-        col_voxels: the output mapping along a column will be voxels
-        opt_col_surface_roi_metric: the output mapping along a column will be
-            surface vertices: a metric file with positive values on all vertices
-            used
-        col_cifti: take the mapping along a column from a cifti file
-        opt_transpose: transpose the input matrix
-        opt_make_symmetric: transform half-square input into full matrix output
-        runner: Command runner
+        dot_file: input .dot file.
+        cifti_out: output cifti file.
+        row_voxels: the output mapping along a row will be voxels.
+        opt_row_surface_roi_metric: the output mapping along a row will be\
+            surface vertices: a metric file with positive values on all vertices\
+            used.
+        row_cifti: take the mapping along a row from a cifti file.
+        col_voxels: the output mapping along a column will be voxels.
+        opt_col_surface_roi_metric: the output mapping along a column will be\
+            surface vertices: a metric file with positive values on all vertices\
+            used.
+        col_cifti: take the mapping along a column from a cifti file.
+        opt_transpose: transpose the input matrix.
+        opt_make_symmetric: transform half-square input into full matrix output.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ProbtrackxDotConvertOutputs`).
     """

@@ -54,13 +54,13 @@ def signed_distance_to_surface(
     total is odd, negative, or nonzero, respectively.
     
     Args:
-        surface_comp: the comparison surface to measure the signed distance on
-        surface_ref: the reference surface that defines the signed distance
-            function
-        metric: the output metric
-        opt_winding_method: winding method for point inside surface test: name
-            of the method (default EVEN_ODD)
-        runner: Command runner
+        surface_comp: the comparison surface to measure the signed distance on.
+        surface_ref: the reference surface that defines the signed distance\
+            function.
+        metric: the output metric.
+        opt_winding_method: winding method for point inside surface test: name\
+            of the method (default EVEN_ODD).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SignedDistanceToSurfaceOutputs`).
     """

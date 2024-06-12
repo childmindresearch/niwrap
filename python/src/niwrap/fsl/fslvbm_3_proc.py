@@ -65,39 +65,39 @@ def fslvbm_3_proc(
     Pipeline for voxel-based morphometry analysis using FSL tools.
     
     Args:
-        arch: Specify architecture
-        coprocessor: Specify coprocessor
-        coprocessor_multi: Specify multiple coprocessors
-        coprocessor_class: Specify coprocessor class
-        coprocessor_class_strict: Use strict class matching for coprocessor
-        coprocessor_toolkit: Specify coprocessor toolkit
-        not_requeueable: Do not requeue the job
-        jobhold: Job to hold
-        array_hold: Array hold
-        logdir: Specify log directory
-        mailoptions: Specify mail options
-        mailto: Specify mail recipient
-        name: Job name
-        priority: Job priority
-        queue_: Queue to submit to
-        resource_: Resource identifier
-        delete_job: Delete specified job
-        memory_gb: Memory (GB)
-        parallel_env_threads: Parallel environment and threads
-        array_task: Array task file
-        array_native: Array native specification
-        number_jobscripts: Keep number of job scripts
-        keep_jobscript: Keep job script
-        coprocessor_name: Specify coprocessor name
-        has_queues: Specify queues
-        project: Specify project name
-        submit_scheduler: Submit to Scheduler
-        runtime_limit: Specify runtime limit in minutes
-        show_config: Show configuration
-        verbose: Verbose output
-        version: Version information
-        config_file: Specify configuration file
-        runner: Command runner
+        arch: Specify architecture.
+        coprocessor: Specify coprocessor.
+        coprocessor_multi: Specify multiple coprocessors.
+        coprocessor_class: Specify coprocessor class.
+        coprocessor_class_strict: Use strict class matching for coprocessor.
+        coprocessor_toolkit: Specify coprocessor toolkit.
+        not_requeueable: Do not requeue the job.
+        jobhold: Job to hold.
+        array_hold: Array hold.
+        logdir: Specify log directory.
+        mailoptions: Specify mail options.
+        mailto: Specify mail recipient.
+        name: Job name.
+        priority: Job priority.
+        queue_: Queue to submit to.
+        resource_: Resource identifier.
+        delete_job: Delete specified job.
+        memory_gb: Memory (GB).
+        parallel_env_threads: Parallel environment and threads.
+        array_task: Array task file.
+        array_native: Array native specification.
+        number_jobscripts: Keep number of job scripts.
+        keep_jobscript: Keep job script.
+        coprocessor_name: Specify coprocessor name.
+        has_queues: Specify queues.
+        project: Specify project name.
+        submit_scheduler: Submit to Scheduler.
+        runtime_limit: Specify runtime limit in minutes.
+        show_config: Show configuration.
+        verbose: Verbose output.
+        version: Version information.
+        config_file: Specify configuration file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Fslvbm3ProcOutputs`).
     """

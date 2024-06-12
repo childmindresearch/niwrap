@@ -53,7 +53,7 @@ def v_3dcalc(
         single_idx: Volume index for in_file_a.
         start_idx: Start index for in_file_a.
         stop_idx: Stop index for in_file_a.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dcalcOutputs`).
     """

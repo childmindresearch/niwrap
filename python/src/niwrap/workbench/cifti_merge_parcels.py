@@ -64,10 +64,10 @@ def cifti_merge_parcels(
     or 'COLUMN'.
     
     Args:
-        direction: which dimension to merge along (integer, 'ROW', or 'COLUMN')
-        cifti_out: the output cifti file
-        cifti: specify an input cifti file
-        runner: Command runner
+        direction: which dimension to merge along (integer, 'ROW', or 'COLUMN').
+        cifti_out: the output cifti file.
+        cifti: specify an input cifti file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiMergeParcelsOutputs`).
     """

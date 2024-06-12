@@ -81,23 +81,23 @@ def mrcentroid(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/mrcentroid.html
     
     Args:
-        input_: the input image
-        mask: only include voxels within a mask in the calculation
-        voxelspace: report image centre of mass in voxel space rather than
-            scanner space
+        input_: the input image.
+        mask: only include voxels within a mask in the calculation.
+        voxelspace: report image centre of mass in voxel space rather than\
+            scanner space.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrcentroidOutputs`).
     """

@@ -41,12 +41,12 @@ def volume_copy_extensions(
     similar kinds of information set by other software.
     
     Args:
-        data_volume: the volume file containing the voxel data to use
-        extension_volume: the volume file containing the extensions to use
-        volume_out: the output volume
-        opt_drop_unknown: don't copy extensions that workbench doesn't
-            understand
-        runner: Command runner
+        data_volume: the volume file containing the voxel data to use.
+        extension_volume: the volume file containing the extensions to use.
+        volume_out: the output volume.
+        opt_drop_unknown: don't copy extensions that workbench doesn't\
+            understand.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeCopyExtensionsOutputs`).
     """

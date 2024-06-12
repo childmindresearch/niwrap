@@ -69,49 +69,50 @@ def popp(
     https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PNM#The_popp_program
     
     Args:
-        infile: Input physiological data filename (text format)
-        out_basename: Output basename for physiological data and timing/triggers
-            (no extensions)
-        sampling_rate: Sampling rate in Hz (default is 100Hz)
-        tr_value: TR value in seconds
-        resp_col: Specify column number of respiratory input
-        cardiac_col: Specify column number of cardiac input
-        trigger_col: Specify column number of trigger input
-        rvt_flag: Generate RVT data
-        heartrate_flag: Generate heart rate data
-        pulseox_trigger_flag: Specify that cardiac data is a trigger
-        smooth_card: Specify smoothing amount for cardiac (in seconds)
-        smooth_resp: Specify smoothing amount for respiratory (in seconds)
-        high_freq_cutoff: High frequency cut off for respiratory filter in Hz
-            (default is 5Hz)
-        low_freq_cutoff: Low frequency cut off for respiratory filter in Hz
-            (default is 0.1Hz)
-        init_thresh_c: Initial threshold percentile for cardiac (default 90)
-        n_thresh_c: Neighbourhood exclusion threshold percentile for cardiac
-            (default 60)
-        init_thresh_r: Initial threshold percentile for respiratory (default 80)
-        n_thresh_r: Neighbourhood exclusion threshold percentile for respiratory
-            (default 80)
-        invert_resp_flag: Invert respiratory trace
-        invert_cardiac_flag: Invert cardiac trace
-        noclean1_flag: Turn off cleanup phase 1
-        noclean2_flag: Turn off cleanup phase 2
-        load_card_phase: Input cardiac phase for reprocessing (text format)
-        load_resp_phase: Input respiratory phase for reprocessing (text format)
-        vol_file: Input volumetric image (EPI) filename
-        start_sample: Set sample number of the starting time (t=0)
-        resp_add: Comma separated list of times (in sec) to add to respiratory
-            peak list (uses nearest local max)
-        resp_del: Comma separated list of times (in sec) to delete from
-            respiratory peak list (uses nearest existing peak)
-        card_add: Comma separated list of times (in sec) to add to cardiac peak
-            list (uses nearest local max)
-        card_del: Comma separated list of times (in sec) to delete from cardiac
-            peak list (uses nearest existing peak)
-        verbose_flag: Switch on diagnostic messages
-        debug_flag: Output debugging information
-        help_flag: Display help message
-        runner: Command runner
+        infile: Input physiological data filename (text format).
+        out_basename: Output basename for physiological data and\
+            timing/triggers (no extensions).
+        sampling_rate: Sampling rate in Hz (default is 100Hz).
+        tr_value: TR value in seconds.
+        resp_col: Specify column number of respiratory input.
+        cardiac_col: Specify column number of cardiac input.
+        trigger_col: Specify column number of trigger input.
+        rvt_flag: Generate RVT data.
+        heartrate_flag: Generate heart rate data.
+        pulseox_trigger_flag: Specify that cardiac data is a trigger.
+        smooth_card: Specify smoothing amount for cardiac (in seconds).
+        smooth_resp: Specify smoothing amount for respiratory (in seconds).
+        high_freq_cutoff: High frequency cut off for respiratory filter in Hz\
+            (default is 5Hz).
+        low_freq_cutoff: Low frequency cut off for respiratory filter in Hz\
+            (default is 0.1Hz).
+        init_thresh_c: Initial threshold percentile for cardiac (default 90).
+        n_thresh_c: Neighbourhood exclusion threshold percentile for cardiac\
+            (default 60).
+        init_thresh_r: Initial threshold percentile for respiratory (default\
+            80).
+        n_thresh_r: Neighbourhood exclusion threshold percentile for\
+            respiratory (default 80).
+        invert_resp_flag: Invert respiratory trace.
+        invert_cardiac_flag: Invert cardiac trace.
+        noclean1_flag: Turn off cleanup phase 1.
+        noclean2_flag: Turn off cleanup phase 2.
+        load_card_phase: Input cardiac phase for reprocessing (text format).
+        load_resp_phase: Input respiratory phase for reprocessing (text format).
+        vol_file: Input volumetric image (EPI) filename.
+        start_sample: Set sample number of the starting time (t=0).
+        resp_add: Comma separated list of times (in sec) to add to respiratory\
+            peak list (uses nearest local max).
+        resp_del: Comma separated list of times (in sec) to delete from\
+            respiratory peak list (uses nearest existing peak).
+        card_add: Comma separated list of times (in sec) to add to cardiac peak\
+            list (uses nearest local max).
+        card_del: Comma separated list of times (in sec) to delete from cardiac\
+            peak list (uses nearest existing peak).
+        verbose_flag: Switch on diagnostic messages.
+        debug_flag: Output debugging information.
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PoppOutputs`).
     """

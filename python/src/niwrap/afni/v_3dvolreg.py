@@ -63,20 +63,20 @@ def v_3dvolreg(
         in_file: Input file to 3dvolreg.
         basefile: Base file for registration.
         copyorigin: Copy base file origin coords to output.
-        in_weight_volume: (file or string, an integer) or file or string.
-            Weights for each voxel specified by a file with an optional volume
+        in_weight_volume: (file or string, an integer) or file or string.\
+            Weights for each voxel specified by a file with an optional volume\
             number (defaults to 0).
-        in_weight_volume_2: (file or string, an integer) or file or string.
-            Weights for each voxel specified by a file with an optional volume
+        in_weight_volume_2: (file or string, an integer) or file or string.\
+            Weights for each voxel specified by a file with an optional volume\
             number (defaults to 0).
-        interp: 'fourier' or 'cubic' or 'heptic' or 'quintic' or 'linear'.
+        interp: 'fourier' or 'cubic' or 'heptic' or 'quintic' or 'linear'.\
             Spatial interpolation methods [default = heptic].
         num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         timeshift: Time shift to mean slice time offset.
         verbose: More detailed description of the process.
         zpad: Zeropad around the edges by 'n' voxels during rotations.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dvolregOutputs`).
     """

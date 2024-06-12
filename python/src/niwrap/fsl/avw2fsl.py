@@ -72,16 +72,16 @@ def avw2fsl(
     
     Args:
         source: Source file(s) or directory to copy.
-        destination: Destination file or directory where the source is to be
+        destination: Destination file or directory where the source is to be\
             copied.
         archive: Archive mode; same as -dR --preserve=all.
         attributes_only: Don't copy the file data, just the attributes.
         backup: Make a backup of each existing destination file.
         backup_noarg: Like --backup but does not accept an argument.
         copy_contents: Copy contents of special files when recursive.
-        no_dereference_preserve_links: Same as --no-dereference
+        no_dereference_preserve_links: Same as --no-dereference\
             --preserve=links.
-        force: If an existing destination file cannot be opened, remove it and
+        force: If an existing destination file cannot be opened, remove it and\
             try again.
         interactive: Prompt before overwrite.
         follow_symlinks_cmdline: Follow command-line symbolic links in SOURCE.
@@ -90,33 +90,33 @@ def avw2fsl(
         no_clobber: Do not overwrite an existing file.
         no_dereference: Never follow symbolic links in SOURCE.
         preserve: Preserve mode, ownership, and timestamps.
-        preserve_attr: Preserve the specified attributes (default:
+        preserve_attr: Preserve the specified attributes (default:\
             mode,ownership,timestamps).
         preserve_context: Deprecated, same as --preserve=context.
         no_preserve: Don't preserve the specified attributes.
         parents: Use full source file name under DIRECTORY.
         recursive: Copy directories recursively.
         reflink: Control clone/CoW copies.
-        remove_destination: Remove each existing destination file before
+        remove_destination: Remove each existing destination file before\
             attempting to open it.
         sparse: Control creation of sparse files.
-        strip_trailing_slashes: Remove any trailing slashes from each SOURCE
+        strip_trailing_slashes: Remove any trailing slashes from each SOURCE\
             argument.
         symbolic_link: Make symbolic links instead of copying.
         suffix: Override the usual backup suffix.
         target_directory: Specify the target directory.
         no_target_directory: Treat DEST as a normal file.
-        update_: Copy only when the SOURCE file is newer than the destination
+        update_: Copy only when the SOURCE file is newer than the destination\
             file or when the destination file is missing.
         verbose: Explain what is being done.
         one_file_system: Stay on this file system.
-        selinux_context: Set SELinux security context of destination file to
+        selinux_context: Set SELinux security context of destination file to\
             default type.
-        context: Like -Z, or if CTX is specified set the SELinux or SMACK
+        context: Like -Z, or if CTX is specified set the SELinux or SMACK\
             security context to CTX.
         help_: Display this help and exit.
         version: Output version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Avw2fslOutputs`).
     """

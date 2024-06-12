@@ -59,30 +59,30 @@ def fsl_regfilt(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslRegfilt
     
     Args:
-        infile: Input file name (4D image)
-        outfile: Output file name for the filtered data
-        designfile: File name of the matrix with time courses (e.g. GLM design
-            or MELODIC mixing matrix)
-        maskfile: Mask image file name
-        filter_: Filter out part of the regression model, e.g., -f "1,2,3"
-        freq_filter_flag: Filter out components based on high vs. low frequency
-            content
-        freq_ic_flag: Switch off IC Z-stats filtering as part of frequency
-            filtering
-        freq_ic_smooth: Smoothing width for IC Z-stats filtering as part of
-            frequency filtering
-        fthresh: Frequency threshold ratio; default: 0.15
-        fthresh2: Frequency filter score threshold; default: 0.02
-        vn_flag: Perform variance-normalisation on data
-        verbose_flag: Switch on diagnostic messages
-        aggressive_flag: Switch on aggressive filtering (full instead of partial
-            regression)
-        help_flag: Display help text
-        out_data: Output file name for pre-processed data (prior to denoising)
-        out_mix: Output file name for new mixing matrix
-        out_vnscales: Output file name for scaling factors from variance
-            normalisation
-        runner: Command runner
+        infile: Input file name (4D image).
+        outfile: Output file name for the filtered data.
+        designfile: File name of the matrix with time courses (e.g. GLM design\
+            or MELODIC mixing matrix).
+        maskfile: Mask image file name.
+        filter_: Filter out part of the regression model, e.g., -f "1,2,3".
+        freq_filter_flag: Filter out components based on high vs. low frequency\
+            content.
+        freq_ic_flag: Switch off IC Z-stats filtering as part of frequency\
+            filtering.
+        freq_ic_smooth: Smoothing width for IC Z-stats filtering as part of\
+            frequency filtering.
+        fthresh: Frequency threshold ratio; default: 0.15.
+        fthresh2: Frequency filter score threshold; default: 0.02.
+        vn_flag: Perform variance-normalisation on data.
+        verbose_flag: Switch on diagnostic messages.
+        aggressive_flag: Switch on aggressive filtering (full instead of\
+            partial regression).
+        help_flag: Display help text.
+        out_data: Output file name for pre-processed data (prior to denoising).
+        out_mix: Output file name for new mixing matrix.
+        out_vnscales: Output file name for scaling factors from variance\
+            normalisation.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslRegfiltOutputs`).
     """

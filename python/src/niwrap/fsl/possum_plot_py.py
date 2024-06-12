@@ -37,10 +37,10 @@ def possum_plot(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM
     
     Args:
-        input_file: Input file from POSSUM simulation (e.g.
-            simulation_results.txt)
-        output_basename: Basename for output files (e.g. plot_output)
-        runner: Command runner
+        input_file: Input file from POSSUM simulation (e.g.\
+            simulation_results.txt).
+        output_basename: Basename for output files (e.g. plot_output).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PossumPlotOutputs`).
     """

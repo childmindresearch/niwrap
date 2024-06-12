@@ -31,8 +31,8 @@ def create_lut(
     A tool to create lookup tables.
     
     Args:
-        output_file_root: The root name of the output file to be generated
-        runner: Command runner
+        output_file_root: The root name of the output file to be generated.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CreateLutOutputs`).
     """

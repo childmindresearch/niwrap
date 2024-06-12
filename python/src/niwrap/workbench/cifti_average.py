@@ -94,13 +94,13 @@ def cifti_average(
     element.
     
     Args:
-        cifti_out: output cifti file
-        exclude_outliers: exclude outliers by standard deviation of each element
-            across files
-        opt_mem_limit_limit_gb: restrict memory used for file reading
-            efficiency: memory limit in gigabytes
-        cifti: specify an input file
-        runner: Command runner
+        cifti_out: output cifti file.
+        exclude_outliers: exclude outliers by standard deviation of each\
+            element across files.
+        opt_mem_limit_limit_gb: restrict memory used for file reading\
+            efficiency: memory limit in gigabytes.
+        cifti: specify an input file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiAverageOutputs`).
     """

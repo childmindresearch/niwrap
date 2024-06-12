@@ -66,28 +66,28 @@ def dtifit(
     https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide#DTIFIT
     
     Args:
-        data_file: DTI data file
-        output_basename: Output basename
-        mask_file: Bet binary mask file
-        bvec_file: B vectors file
-        bval_file: B values file
-        verbose_flag: Switch on diagnostic messages
-        sse_flag: Output sum of squared errors
-        wls_flag: Fit the tensor with weighted least squares
-        kurt_flag: Output mean kurtosis map (for multi-shell data)
-        kurtdir_flag: Output maps of kurtosis along each eigenvector: K1, K2,
-            and K3 (for multi-shell data)
-        littlebit_flag: Only process small area of brain
-        save_tensor_flag: Save the elements of the tensor
-        zmin: Minimum z
-        zmax: Maximum z
-        ymin: Minimum y
-        ymax: Maximum y
-        xmin: Minimum x
-        xmax: Maximum x
-        gradnonlin_file: Gradient Nonlinearity Tensor file
-        confound_regressors: Input confound regressors
-        runner: Command runner
+        data_file: DTI data file.
+        output_basename: Output basename.
+        mask_file: Bet binary mask file.
+        bvec_file: B vectors file.
+        bval_file: B values file.
+        verbose_flag: Switch on diagnostic messages.
+        sse_flag: Output sum of squared errors.
+        wls_flag: Fit the tensor with weighted least squares.
+        kurt_flag: Output mean kurtosis map (for multi-shell data).
+        kurtdir_flag: Output maps of kurtosis along each eigenvector: K1, K2,\
+            and K3 (for multi-shell data).
+        littlebit_flag: Only process small area of brain.
+        save_tensor_flag: Save the elements of the tensor.
+        zmin: Minimum z.
+        zmax: Maximum z.
+        ymin: Minimum y.
+        ymax: Maximum y.
+        xmin: Minimum x.
+        xmax: Maximum x.
+        gradnonlin_file: Gradient Nonlinearity Tensor file.
+        confound_regressors: Input confound regressors.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DtifitOutputs`).
     """

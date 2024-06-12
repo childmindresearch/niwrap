@@ -32,12 +32,12 @@ def siena_flow2std(
     Convert edge flow to standard space.
     
     Args:
-        fileroot1: Input file root 1
-        fileroot2: Input file root 2
-        sigma: Spatial smoothing of standard-space edge-flow image, sigma (HWHM)
-            in mm (default=5)
-        debug_flag: Debug (don't delete intermediate files)
-        runner: Command runner
+        fileroot1: Input file root 1.
+        fileroot2: Input file root 2.
+        sigma: Spatial smoothing of standard-space edge-flow image, sigma\
+            (HWHM) in mm (default=5).
+        debug_flag: Debug (don't delete intermediate files).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SienaFlow2stdOutputs`).
     """

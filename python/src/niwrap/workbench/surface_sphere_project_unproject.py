@@ -91,12 +91,12 @@ def surface_sphere_project_unproject(
     as each other, but <sphere-in> may have any topology.
     
     Args:
-        sphere_in: a sphere with the desired output mesh
-        sphere_project_to: a sphere that aligns with sphere-in
-        sphere_unproject_from: <sphere-project-to> deformed to the desired
-            output space
-        sphere_out: the output sphere
-        runner: Command runner
+        sphere_in: a sphere with the desired output mesh.
+        sphere_project_to: a sphere that aligns with sphere-in.
+        sphere_unproject_from: <sphere-project-to> deformed to the desired\
+            output space.
+        sphere_out: the output sphere.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceSphereProjectUnprojectOutputs`).
     """

@@ -51,20 +51,21 @@ def betsurf(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET
     
     Args:
-        t1_image: T1-weighted MRI image
-        bet_mesh: BET Mesh File (.vtk)
-        t1_to_standard_mat: Transformation matrix file from T1 to standard space
-        output_prefix: Output prefix for generated files
-        t2_image: T2-weighted MRI image (optional if using --t1only flag)
-        help_flag: Displays help message and exits
-        verbose_flag: Switch on diagnostic messages
-        t1only_flag: Extraction with T1 only
-        outline_flag: Generates all surface outlines
-        mask_flag: Generates binary masks from the meshes
-        skull_mask_flag: Generates skull binary mask
-        increased_precision: Retessellates the meshes the indicated number of
-            times (int)
-        runner: Command runner
+        t1_image: T1-weighted MRI image.
+        bet_mesh: BET Mesh File (.vtk).
+        t1_to_standard_mat: Transformation matrix file from T1 to standard\
+            space.
+        output_prefix: Output prefix for generated files.
+        t2_image: T2-weighted MRI image (optional if using --t1only flag).
+        help_flag: Displays help message and exits.
+        verbose_flag: Switch on diagnostic messages.
+        t1only_flag: Extraction with T1 only.
+        outline_flag: Generates all surface outlines.
+        mask_flag: Generates binary masks from the meshes.
+        skull_mask_flag: Generates skull binary mask.
+        increased_precision: Retessellates the meshes the indicated number of\
+            times (int).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BetsurfOutputs`).
     """

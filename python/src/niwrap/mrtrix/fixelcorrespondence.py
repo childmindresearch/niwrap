@@ -86,28 +86,28 @@ def fixelcorrespondence(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelcorrespondence.html
     
     Args:
-        subject_data: the input subject fixel data file. This should be a file
-            inside the fixel directory
+        subject_data: the input subject fixel data file. This should be a file\
+            inside the fixel directory.
         template_directory: the input template fixel directory.
-        output_directory: the fixel directory where the output file will be
+        output_directory: the fixel directory where the output file will be\
             written.
-        output_data: the name of the output fixel data file. This will be placed
-            in the output fixel directory
-        angle: the max angle threshold for computing inter-subject fixel
-            correspondence (Default: 45 degrees)
+        output_data: the name of the output fixel data file. This will be\
+            placed in the output fixel directory.
+        angle: the max angle threshold for computing inter-subject fixel\
+            correspondence (Default: 45 degrees).
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FixelcorrespondenceOutputs`).
     """

@@ -34,8 +34,8 @@ def tbss_1_preproc(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS
     
     Args:
-        images: List of input images (e.g. subj1_FA.nii.gz subj2_FA.nii.gz ...)
-        runner: Command runner
+        images: List of input images (e.g. subj1_FA.nii.gz subj2_FA.nii.gz ...).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Tbss1PreprocOutputs`).
     """

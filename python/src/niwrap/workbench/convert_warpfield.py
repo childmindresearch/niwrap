@@ -127,15 +127,15 @@ def convert_warpfield(
     options, and -to-fnirt may be specified more than once.
     
     Args:
-        from_world: input is a NIFTI 'world' warpfield
-        opt_from_itk_input: input is an ITK warpfield: the input warpfield
-        from_fnirt: input is a fnirt warpfield
-        opt_to_world_output: write output as a NIFTI 'world' warpfield: output -
-            the output warpfield
-        opt_to_itk_output: write output as an ITK warpfield: output - the output
-            warpfield
-        to_fnirt: write output as a fnirt warpfield
-        runner: Command runner
+        from_world: input is a NIFTI 'world' warpfield.
+        opt_from_itk_input: input is an ITK warpfield: the input warpfield.
+        from_fnirt: input is a fnirt warpfield.
+        opt_to_world_output: write output as a NIFTI 'world' warpfield: output\
+            - the output warpfield.
+        opt_to_itk_output: write output as an ITK warpfield: output - the\
+            output warpfield.
+        to_fnirt: write output as a fnirt warpfield.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ConvertWarpfieldOutputs`).
     """

@@ -100,16 +100,16 @@ def cifti_estimate_fwhm(
     THALAMUS_RIGHT.
     
     Args:
-        cifti: the input cifti file
-        opt_merged_volume: treat volume components as if they were a single
-            component
-        opt_column_column: only output estimates for one column: the column
-            number
-        opt_whole_file: estimate for the whole file at once, not each column
-            separately
-        opt_demean: subtract the mean image before estimating smoothness
-        surface: specify an input surface
-        runner: Command runner
+        cifti: the input cifti file.
+        opt_merged_volume: treat volume components as if they were a single\
+            component.
+        opt_column_column: only output estimates for one column: the column\
+            number.
+        opt_whole_file: estimate for the whole file at once, not each column\
+            separately.
+        opt_demean: subtract the mean image before estimating smoothness.
+        surface: specify an input surface.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiEstimateFwhmOutputs`).
     """

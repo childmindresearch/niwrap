@@ -46,17 +46,18 @@ def metric_erode(
     distance along the surface.
     
     Args:
-        metric: the metric file to erode
-        surface: the surface to compute on
-        distance: distance in mm to erode
-        metric_out: the output metric
-        opt_roi_roi_metric: assume values outside this roi are nonzero: metric
-            file, positive values denote vertices that have data
-        opt_column_column: select a single column to erode: the column number or
-            name
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        runner: Command runner
+        metric: the metric file to erode.
+        surface: the surface to compute on.
+        distance: distance in mm to erode.
+        metric_out: the output metric.
+        opt_roi_roi_metric: assume values outside this roi are nonzero: metric\
+            file, positive values denote vertices that have data.
+        opt_column_column: select a single column to erode: the column number\
+            or name.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricErodeOutputs`).
     """

@@ -581,138 +581,139 @@ def tckgen(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/tckgen.html
     
     Args:
-        source: The image containing the source data. The type of image data
+        source: The image containing the source data. The type of image data\
             required depends on the algorithm used (see Description section).
         tracks: the output file containing the tracks generated.
-        algorithm: specify the tractography algorithm to use. Valid choices are:
-            FACT, iFOD1, iFOD2, Nulldist1, Nulldist2, SD_Stream, Seedtest,
+        algorithm: specify the tractography algorithm to use. Valid choices\
+            are: FACT, iFOD1, iFOD2, Nulldist1, Nulldist2, SD_Stream, Seedtest,\
             Tensor_Det, Tensor_Prob (default: iFOD2).
-        select_: set the desired number of streamlines to be selected by tckgen,
-            after all selection criteria have been applied (i.e. inclusion/exclusion
-            ROIs, min/max length, etc). tckgen will keep seeding streamlines until
-            this number of streamlines have been selected, or the maximum allowed
-            number of seeds has been exceeded (see -seeds option). By default, 5000
-            streamlines are to be selected. Set to zero to disable, which will
-            result in streamlines being seeded until the number specified by -seeds
-            has been reached.
-        step: set the step size of the algorithm in mm (defaults: for
-            first-order algorithms, 0.1 x voxelsize; if using RK4, 0.25 x voxelsize;
-            for iFOD2: 0.5 x voxelsize).
-        angle: set the maximum angle in degrees between successive steps
-            (defaults: 60 for deterministic algorithms; 15 for iFOD1 / nulldist1; 45
-            for iFOD2 / nulldist2)
-        minlength: set the minimum length of any track in mm (defaults: without
+        select_: set the desired number of streamlines to be selected by\
+            tckgen, after all selection criteria have been applied (i.e.\
+            inclusion/exclusion ROIs, min/max length, etc). tckgen will keep\
+            seeding streamlines until this number of streamlines have been\
+            selected, or the maximum allowed number of seeds has been exceeded (see\
+            -seeds option). By default, 5000 streamlines are to be selected. Set to\
+            zero to disable, which will result in streamlines being seeded until\
+            the number specified by -seeds has been reached.
+        step: set the step size of the algorithm in mm (defaults: for\
+            first-order algorithms, 0.1 x voxelsize; if using RK4, 0.25 x\
+            voxelsize; for iFOD2: 0.5 x voxelsize).
+        angle: set the maximum angle in degrees between successive steps\
+            (defaults: 60 for deterministic algorithms; 15 for iFOD1 / nulldist1;\
+            45 for iFOD2 / nulldist2).
+        minlength: set the minimum length of any track in mm (defaults: without\
             ACT, 5 x voxelsize; with ACT, 2 x voxelsize).
-        maxlength: set the maximum length of any track in mm (default: 100 x
+        maxlength: set the maximum length of any track in mm (default: 100 x\
             voxelsize).
-        cutoff: set the FOD amplitude / fixel size / tensor FA cutoff for
-            terminating tracks (defaults: 0.1 for FOD-based algorithms; 0.1 for
-            fixel-based algorithms; 0.1 for tensor-based algorithms; threshold
+        cutoff: set the FOD amplitude / fixel size / tensor FA cutoff for\
+            terminating tracks (defaults: 0.1 for FOD-based algorithms; 0.1 for\
+            fixel-based algorithms; 0.1 for tensor-based algorithms; threshold\
             multiplied by 0.5 when using ACT).
-        trials: set the maximum number of sampling trials at each point (only
+        trials: set the maximum number of sampling trials at each point (only\
             used for iFOD1 / iFOD2) (default: 1000).
-        noprecomputed: do NOT pre-compute legendre polynomial values. Warning:
+        noprecomputed: do NOT pre-compute legendre polynomial values. Warning:\
             this will slow down the algorithm by a factor of approximately 4.
-        rk4: use 4th-order Runge-Kutta integration (slower, but eliminates
-            curvature overshoot in 1st-order deterministic methods)
-        stop: stop propagating a streamline once it has traversed all include
-            regions
-        downsample: downsample the generated streamlines to reduce output file
-            size (default is (samples-1) for iFOD2, no downsampling for all other
-            algorithms)
-        seed_image: seed streamlines entirely at random within a mask image
-        seed_sphere: spherical seed as four comma-separated values (XYZ position
-            and radius)
-        seed_random_per_voxel: seed a fixed number of streamlines per voxel in a
-            mask image; random placement of seeds in each voxel
-        seed_grid_per_voxel: seed a fixed number of streamlines per voxel in a
-            mask image; place seeds on a 3D mesh grid (grid_size argument is per
-            axis; so a grid_size of 3 results in 27 seeds per voxel)
-        seed_rejection: seed from an image using rejection sampling (higher
-            values = more probable to seed from)
-        seed_gmwmi: seed from the grey matter - white matter interface (only
-            valid if using ACT framework). Input image should be a 3D seeding
-            volume; seeds drawn within this image will be optimised to the interface
-            using the 5TT image provided using the -act option.
-        seed_dynamic: determine seed points dynamically using the SIFT model
-            (must not provide any other seeding mechanism). Note that while this
-            seeding mechanism improves the distribution of reconstructed streamlines
-            density, it should NOT be used as a substitute for the SIFT method
-            itself.
-        seeds: set the number of seeds that tckgen will attempt to track from.
-            If this option is NOT provided, the default number of seeds is set to
-            1000× the number of selected streamlines. If -select is NOT also
-            specified, tckgen will continue tracking until this number of seeds has
-            been attempted. However, if -select is also specified, tckgen will stop
-            when the number of seeds attempted reaches the number specified here, OR
-            when the number of streamlines selected reaches the number requested
-            with the -select option. This can be used to prevent the program from
-            running indefinitely when no or very few streamlines can be found that
-            match the selection criteria. Setting this to zero will cause tckgen to
-            keep attempting seeds until the number specified by -select has been
+        rk4: use 4th-order Runge-Kutta integration (slower, but eliminates\
+            curvature overshoot in 1st-order deterministic methods).
+        stop: stop propagating a streamline once it has traversed all include\
+            regions.
+        downsample: downsample the generated streamlines to reduce output file\
+            size (default is (samples-1) for iFOD2, no downsampling for all other\
+            algorithms).
+        seed_image: seed streamlines entirely at random within a mask image.
+        seed_sphere: spherical seed as four comma-separated values (XYZ\
+            position and radius).
+        seed_random_per_voxel: seed a fixed number of streamlines per voxel in\
+            a mask image; random placement of seeds in each voxel.
+        seed_grid_per_voxel: seed a fixed number of streamlines per voxel in a\
+            mask image; place seeds on a 3D mesh grid (grid_size argument is per\
+            axis; so a grid_size of 3 results in 27 seeds per voxel).
+        seed_rejection: seed from an image using rejection sampling (higher\
+            values = more probable to seed from).
+        seed_gmwmi: seed from the grey matter - white matter interface (only\
+            valid if using ACT framework). Input image should be a 3D seeding\
+            volume; seeds drawn within this image will be optimised to the\
+            interface using the 5TT image provided using the -act option.
+        seed_dynamic: determine seed points dynamically using the SIFT model\
+            (must not provide any other seeding mechanism). Note that while this\
+            seeding mechanism improves the distribution of reconstructed\
+            streamlines density, it should NOT be used as a substitute for the SIFT\
+            method itself.
+        seeds: set the number of seeds that tckgen will attempt to track from.\
+            If this option is NOT provided, the default number of seeds is set to\
+            1000× the number of selected streamlines. If -select is NOT also\
+            specified, tckgen will continue tracking until this number of seeds has\
+            been attempted. However, if -select is also specified, tckgen will stop\
+            when the number of seeds attempted reaches the number specified here,\
+            OR when the number of streamlines selected reaches the number requested\
+            with the -select option. This can be used to prevent the program from\
+            running indefinitely when no or very few streamlines can be found that\
+            match the selection criteria. Setting this to zero will cause tckgen to\
+            keep attempting seeds until the number specified by -select has been\
             reached.
-        max_attempts_per_seed: set the maximum number of times that the tracking
-            algorithm should attempt to find an appropriate tracking direction from
-            a given seed point. This should be set high enough to ensure that an
-            actual plausible seed point is not discarded prematurely as being unable
-            to initiate tracking from. Higher settings may affect performance if
-            many seeds are genuinely impossible to track from, as many attempts will
-            still be made in vain for such seeds. (default: 1000)
-        seed_cutoff: set the minimum FA or FOD amplitude for seeding tracks
+        max_attempts_per_seed: set the maximum number of times that the\
+            tracking algorithm should attempt to find an appropriate tracking\
+            direction from a given seed point. This should be set high enough to\
+            ensure that an actual plausible seed point is not discarded prematurely\
+            as being unable to initiate tracking from. Higher settings may affect\
+            performance if many seeds are genuinely impossible to track from, as\
+            many attempts will still be made in vain for such seeds. (default:\
+            1000).
+        seed_cutoff: set the minimum FA or FOD amplitude for seeding tracks\
             (default is the same as the normal -cutoff).
-        seed_unidirectional: track from the seed point in one direction only
+        seed_unidirectional: track from the seed point in one direction only\
             (default is to track in both directions).
-        seed_direction: specify a seeding direction for the tracking (this
+        seed_direction: specify a seeding direction for the tracking (this\
             should be supplied as a vector of 3 comma-separated values.
-        output_seeds: output the seed location of all successful streamlines to
-            a file
-        include: specify an inclusion region of interest, as either a binary
-            mask image, or as a sphere using 4 comma-separared values
-            (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be
+        output_seeds: output the seed location of all successful streamlines to\
+            a file.
+        include: specify an inclusion region of interest, as either a binary\
+            mask image, or as a sphere using 4 comma-separared values\
+            (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be\
             accepted.
-        include_ordered: specify an inclusion region of interest, as either a
-            binary mask image, or as a sphere using 4 comma-separared values
-            (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions
+        include_ordered: specify an inclusion region of interest, as either a\
+            binary mask image, or as a sphere using 4 comma-separared values\
+            (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions\
             in the order they are specified in order to be accepted.
-        exclude: specify an exclusion region of interest, as either a binary
-            mask image, or as a sphere using 4 comma-separared values
-            (x,y,z,radius). Streamlines that enter ANY exclude region will be
+        exclude: specify an exclusion region of interest, as either a binary\
+            mask image, or as a sphere using 4 comma-separared values\
+            (x,y,z,radius). Streamlines that enter ANY exclude region will be\
             discarded.
-        mask: specify a masking region of interest, as either a binary mask
-            image, or as a sphere using 4 comma-separared values (x,y,z,radius). If
+        mask: specify a masking region of interest, as either a binary mask\
+            image, or as a sphere using 4 comma-separared values (x,y,z,radius). If\
             defined, streamlines exiting the mask will be truncated.
-        act: use the Anatomically-Constrained Tractography framework during
-            tracking; provided image must be in the 5TT (five-tissue-type) format
-        backtrack: allow tracks to be truncated and re-tracked if a poor
-            structural termination is encountered
-        crop_at_gmwmi: crop streamline endpoints more precisely as they cross
-            the GM-WM interface
-        power: raise the FOD to the power specified (defaults are: 1.0 for
+        act: use the Anatomically-Constrained Tractography framework during\
+            tracking; provided image must be in the 5TT (five-tissue-type) format.
+        backtrack: allow tracks to be truncated and re-tracked if a poor\
+            structural termination is encountered.
+        crop_at_gmwmi: crop streamline endpoints more precisely as they cross\
+            the GM-WM interface.
+        power: raise the FOD to the power specified (defaults are: 1.0 for\
             iFOD1; 1.0/nsamples for iFOD2).
         samples: set the number of FOD samples to take per step (Default: 4).
-        grad: Provide the diffusion-weighted gradient scheme used in the
-            acquisition in a text file. This should be supplied as a 4xN text file
-            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe
-            the direction of the applied gradient, and b gives the b-value in units
-            of s/mm^2. If a diffusion gradient scheme is present in the input image
+        grad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in a text file. This should be supplied as a 4xN text file\
+            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\
+            the direction of the applied gradient, and b gives the b-value in units\
+            of s/mm^2. If a diffusion gradient scheme is present in the input image\
             header, the data provided with this option will be instead used.
-        fslgrad: Provide the diffusion-weighted gradient scheme used in the
-            acquisition in FSL bvecs/bvals format files. If a diffusion gradient
-            scheme is present in the input image header, the data provided with this
-            option will be instead used.
+        fslgrad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TckgenOutputs`).
     """

@@ -92,14 +92,14 @@ def set_structure(
     .
     
     Args:
-        data_file: the file to set the structure of
-        structure: the structure to set the file to
-        opt_surface_type_type: set the type of a surface (only used if file is a
-            surface file): name of surface type
-        opt_surface_secondary_type_secondary_type: set the secondary type of a
-            surface (only used if file is a surface file): name of surface secondary
-            type
-        runner: Command runner
+        data_file: the file to set the structure of.
+        structure: the structure to set the file to.
+        opt_surface_type_type: set the type of a surface (only used if file is\
+            a surface file): name of surface type.
+        opt_surface_secondary_type_secondary_type: set the secondary type of a\
+            surface (only used if file is a surface file): name of surface\
+            secondary type.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SetStructureOutputs`).
     """

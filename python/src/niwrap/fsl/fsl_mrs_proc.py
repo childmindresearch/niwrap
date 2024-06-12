@@ -33,10 +33,10 @@ def fsl_mrs_proc(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        subcommand: The subcommand to run
-        version_flag: Show program's version number and exit
-        config_file: Configuration file
-        runner: Command runner
+        subcommand: The subcommand to run.
+        version_flag: Show program's version number and exit.
+        config_file: Configuration file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslMrsProcOutputs`).
     """

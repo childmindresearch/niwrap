@@ -53,20 +53,21 @@ def surface_geodesic_rois(
     within range of more than one ROI does not belong to any ROI.
     
     Args:
-        surface: the surface to draw on
-        limit: geodesic distance limit from vertex, in mm
-        vertex_list_file: a text file containing the vertices to draw ROIs
-            around
-        metric_out: the output metric
-        opt_gaussian_sigma: generate a gaussian kernel instead of a flat ROI:
-            the sigma for the gaussian kernel, in mm
-        opt_overlap_logic_method: how to handle overlapping ROIs, default ALLOW:
-            the method of resolving overlaps
-        opt_names_name_list_file: name the columns from text file: a text file
-            containing column names, one per line
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        runner: Command runner
+        surface: the surface to draw on.
+        limit: geodesic distance limit from vertex, in mm.
+        vertex_list_file: a text file containing the vertices to draw ROIs\
+            around.
+        metric_out: the output metric.
+        opt_gaussian_sigma: generate a gaussian kernel instead of a flat ROI:\
+            the sigma for the gaussian kernel, in mm.
+        opt_overlap_logic_method: how to handle overlapping ROIs, default\
+            ALLOW: the method of resolving overlaps.
+        opt_names_name_list_file: name the columns from text file: a text file\
+            containing column names, one per line.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceGeodesicRoisOutputs`).
     """

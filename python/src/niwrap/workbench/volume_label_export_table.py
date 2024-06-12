@@ -36,10 +36,10 @@ def volume_label_export_table(
     format matching what is expected by -volume-label-import.
     
     Args:
-        label_in: the input volume label file
-        map_: the number or name of the label map to use
-        table_out: output - the output text file
-        runner: Command runner
+        label_in: the input volume label file.
+        map_: the number or name of the label map to use.
+        table_out: output - the output text file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeLabelExportTableOutputs`).
     """

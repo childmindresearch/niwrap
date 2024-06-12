@@ -57,24 +57,24 @@ def volume_capture_plane(
     TRILINEAR.
     
     Args:
-        volume: the volume file to interpolate from
-        subvolume: the name or number of the subvolume to use
-        interp: interpolation type
-        h_dim: width of output image, in pixels
-        v_dim: height of output image, in pixels
-        scale_min: value to render as black
-        scale_max: value to render as white
-        bottom_left_x: x-coordinate of the bottom left of the output image
-        bottom_left_y: y-coordinate of the bottom left of the output image
-        bottom_left_z: z-coordinate of the bottom left of the output image
-        bottom_right_x: x-coordinate of the bottom right of the output image
-        bottom_right_y: y-coordinate of the bottom right of the output image
-        bottom_right_z: z-coordinate of the bottom right of the output image
-        top_left_x: x-coordinate of the top left of the output image
-        top_left_y: y-coordinate of the top left of the output image
-        top_left_z: z-coordinate of the top left of the output image
-        image: output - the output image
-        runner: Command runner
+        volume: the volume file to interpolate from.
+        subvolume: the name or number of the subvolume to use.
+        interp: interpolation type.
+        h_dim: width of output image, in pixels.
+        v_dim: height of output image, in pixels.
+        scale_min: value to render as black.
+        scale_max: value to render as white.
+        bottom_left_x: x-coordinate of the bottom left of the output image.
+        bottom_left_y: y-coordinate of the bottom left of the output image.
+        bottom_left_z: z-coordinate of the bottom left of the output image.
+        bottom_right_x: x-coordinate of the bottom right of the output image.
+        bottom_right_y: y-coordinate of the bottom right of the output image.
+        bottom_right_z: z-coordinate of the bottom right of the output image.
+        top_left_x: x-coordinate of the top left of the output image.
+        top_left_y: y-coordinate of the top left of the output image.
+        top_left_z: z-coordinate of the top left of the output image.
+        image: output - the output image.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeCapturePlaneOutputs`).
     """

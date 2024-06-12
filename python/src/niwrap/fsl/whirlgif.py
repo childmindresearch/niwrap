@@ -38,14 +38,14 @@ def whirlgif(
     More information: http://members.aol.com/royalef/gifanim.htm
     
     Args:
-        input_files: Input image files for the animation
-        outfile: Specify the output file
-        loop_count: Specify the loop count for the animation
-        delay_time: Specify the delay time between frames
-        disp_flag: Specify the disposal method for frames
-        list_file: Input list file containing names of images to be used for
-            animation
-        runner: Command runner
+        input_files: Input image files for the animation.
+        outfile: Specify the output file.
+        loop_count: Specify the loop count for the animation.
+        delay_time: Specify the delay time between frames.
+        disp_flag: Specify the disposal method for frames.
+        list_file: Input list file containing names of images to be used for\
+            animation.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `WhirlgifOutputs`).
     """

@@ -38,7 +38,7 @@ def v_3d_despike(
     
     Args:
         in_file: Input file to 3ddespike.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dDespikeOutputs`).
     """

@@ -83,22 +83,22 @@ def metric_weighted_stats(
     midthickness.surf.gii.
     
     Args:
-        metric_in: the input metric
-        opt_area_surface_area_surface: use vertex areas as weights: the surface
-            to use for vertex areas
-        opt_weight_metric_weight_metric: use weights from a metric file: metric
-            file containing the weights
-        opt_column_column: only display output for one column: the column number
-            or name
-        roi: only consider data inside an roi
-        opt_mean: compute weighted mean
-        opt_stdev: compute weighted standard deviation
-        opt_sample: estimate population stdev from the sample
-        opt_percentile_percent: compute weighted percentile: the percentile to
-            find, must be between 0 and 100
-        opt_sum: compute weighted sum
-        opt_show_map_name: print map index and name before each output
-        runner: Command runner
+        metric_in: the input metric.
+        opt_area_surface_area_surface: use vertex areas as weights: the surface\
+            to use for vertex areas.
+        opt_weight_metric_weight_metric: use weights from a metric file: metric\
+            file containing the weights.
+        opt_column_column: only display output for one column: the column\
+            number or name.
+        roi: only consider data inside an roi.
+        opt_mean: compute weighted mean.
+        opt_stdev: compute weighted standard deviation.
+        opt_sample: estimate population stdev from the sample.
+        opt_percentile_percent: compute weighted percentile: the percentile to\
+            find, must be between 0 and 100.
+        opt_sum: compute weighted sum.
+        opt_show_map_name: print map index and name before each output.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricWeightedStatsOutputs`).
     """

@@ -35,9 +35,9 @@ def morph_kernel(
     Tool to generate morphological kernels.
     
     Args:
-        cube_side_length: Side length of the cube (e.g., 11)
-        sphere_radius: Radius of the sphere (e.g., 5.5)
-        runner: Command runner
+        cube_side_length: Side length of the cube (e.g., 11).
+        sphere_radius: Radius of the sphere (e.g., 5.5).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MorphKernelOutputs`).
     """

@@ -34,10 +34,10 @@ def ptoz(
     Convert p-values to z-values.
     
     Args:
-        p_value: p-value to convert
-        tail_flag: Use 2-tailed conversion
-        grf_flag: Use GRF maximum-height theory instead of Gaussian pdf
-        runner: Command runner
+        p_value: p-value to convert.
+        tail_flag: Use 2-tailed conversion.
+        grf_flag: Use GRF maximum-height theory instead of Gaussian pdf.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PtozOutputs`).
     """

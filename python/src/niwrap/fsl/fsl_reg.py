@@ -43,15 +43,15 @@ def fsl_reg(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT
     
     Args:
-        input_file: Input image file
-        reference_file: Reference image file
-        output_file: Output transformation file
-        estimate_only_flag: Estimate transformation but don't apply it
-        affine_only_flag: Affine-only registration
-        fnirt_fa_config_flag: Use FNIRT config file optimised for FA data
-        flirt_options: Options to be passed onto flirt (inside double-quotes)
-        fnirt_options: Options to be passed onto fnirt (inside double-quotes)
-        runner: Command runner
+        input_file: Input image file.
+        reference_file: Reference image file.
+        output_file: Output transformation file.
+        estimate_only_flag: Estimate transformation but don't apply it.
+        affine_only_flag: Affine-only registration.
+        fnirt_fa_config_flag: Use FNIRT config file optimised for FA data.
+        flirt_options: Options to be passed onto flirt (inside double-quotes).
+        fnirt_options: Options to be passed onto fnirt (inside double-quotes).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslRegOutputs`).
     """

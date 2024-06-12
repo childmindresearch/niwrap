@@ -38,14 +38,14 @@ def nifti_information(
     You must specify at least one -print-* option.
     
     Args:
-        nifti_file: the nifti/cifti file to examine
-        opt_print_header: display the header contents
-        opt_allow_truncated: print the header even if the data is truncated
-        opt_print_matrix: output the values in the matrix (cifti only)
-        opt_print_xml: print the cifti XML (cifti only)
-        opt_version_version: convert the XML to a specific CIFTI version
-            (default is the file's cifti version): the CIFTI version to use
-        runner: Command runner
+        nifti_file: the nifti/cifti file to examine.
+        opt_print_header: display the header contents.
+        opt_allow_truncated: print the header even if the data is truncated.
+        opt_print_matrix: output the values in the matrix (cifti only).
+        opt_print_xml: print the cifti XML (cifti only).
+        opt_version_version: convert the XML to a specific CIFTI version\
+            (default is the file's cifti version): the CIFTI version to use.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `NiftiInformationOutputs`).
     """

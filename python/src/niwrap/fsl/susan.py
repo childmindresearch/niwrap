@@ -46,22 +46,23 @@ def susan(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SUSAN
     
     Args:
-        input_file: Input image file
-        brightness_threshold: Brightness threshold; should be greater than noise
-            level and less than contrast of edges to be preserved
-        spatial_size: Spatial size (sigma, i.e., half-width) of smoothing, in mm
-        dimensionality: Dimensionality (2 or 3), for within-plane (2) or fully
-            3D (3) smoothing
-        use_median_filter: Use median filter for cases where single-point noise
-            is detected (0 or 1)
-        n_usans: Determine if the smoothing area is found from secondary images
-            (0, 1 or 2)
-        output_file: Output image file
-        usan1: First USAN image file
-        brightness_threshold1: Brightness threshold for first USAN image
-        usan2: Second USAN image file
-        brightness_threshold2: Brightness threshold for second USAN image
-        runner: Command runner
+        input_file: Input image file.
+        brightness_threshold: Brightness threshold; should be greater than\
+            noise level and less than contrast of edges to be preserved.
+        spatial_size: Spatial size (sigma, i.e., half-width) of smoothing, in\
+            mm.
+        dimensionality: Dimensionality (2 or 3), for within-plane (2) or fully\
+            3D (3) smoothing.
+        use_median_filter: Use median filter for cases where single-point noise\
+            is detected (0 or 1).
+        n_usans: Determine if the smoothing area is found from secondary images\
+            (0, 1 or 2).
+        output_file: Output image file.
+        usan1: First USAN image file.
+        brightness_threshold1: Brightness threshold for first USAN image.
+        usan2: Second USAN image file.
+        brightness_threshold2: Brightness threshold for second USAN image.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SusanOutputs`).
     """

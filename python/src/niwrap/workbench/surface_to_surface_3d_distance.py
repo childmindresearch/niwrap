@@ -43,12 +43,12 @@ def surface_to_surface_3d_distance(
     displacement vectors.
     
     Args:
-        surface_comp: the surface to compare to the reference
-        surface_ref: the surface to use as the reference
-        dists_out: the output distances
-        vectors_out: the output vectors
-        opt_vectors: output the displacement vectors
-        runner: Command runner
+        surface_comp: the surface to compare to the reference.
+        surface_ref: the surface to use as the reference.
+        dists_out: the output distances.
+        vectors_out: the output vectors.
+        opt_vectors: output the displacement vectors.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceToSurface3dDistanceOutputs`).
     """

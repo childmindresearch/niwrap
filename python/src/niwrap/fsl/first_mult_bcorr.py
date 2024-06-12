@@ -42,15 +42,15 @@ def first_mult_bcorr(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST
     
     Args:
-        input_image: Filename of original T1 input image
-        output_image: Output image name (3D label image)
-        uncorrected_4d_labels: Filename of 4D image of uncorrected labels (with
-            boundaries)
-        corrected_4d_labels: Filename of 4D image of individually corrected
-            labels
-        verbose_flag: Output F-stats to standard out
-        help_flag: Display this help message
-        runner: Command runner
+        input_image: Filename of original T1 input image.
+        output_image: Output image name (3D label image).
+        uncorrected_4d_labels: Filename of 4D image of uncorrected labels (with\
+            boundaries).
+        corrected_4d_labels: Filename of 4D image of individually corrected\
+            labels.
+        verbose_flag: Output F-stats to standard out.
+        help_flag: Display this help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FirstMultBcorrOutputs`).
     """

@@ -39,10 +39,10 @@ def surface_wedge_volume(
     orientation.
     
     Args:
-        inner_surface: the inner surface
-        outer_surface: the outer surface
-        metric: the output metric
-        runner: Command runner
+        inner_surface: the inner surface.
+        outer_surface: the outer surface.
+        metric: the output metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceWedgeVolumeOutputs`).
     """

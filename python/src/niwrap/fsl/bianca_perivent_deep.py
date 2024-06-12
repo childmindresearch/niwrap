@@ -40,19 +40,19 @@ def bianca_perivent_deep(
     images, and calculates volume of total and separate WMHs.
     
     Args:
-        thresholded_binarised_wmh_map: Thresholded and binarized WMH map (output
-            of BIANCA thresholded and binarized)
-        ventricles_mask: Ventricles mask you created using the exclusion mask
-            script. If T1 and FLAIR were not in the same space, ventricle mask needs
-            to be registered to FLAIR (and binarized).
-        minclustersize: Minimum cluster (volume) size in voxels to consider. Use
-            0 for no cluster thresholding.
-        do_stats: Option to calculate volumes: 0 to only produce images without
-            volume calculation, 1 to calculate volumes for total, periventricular
-            and deep WMH and display on the screen, 2 to calculate volumes and save
+        thresholded_binarised_wmh_map: Thresholded and binarized WMH map\
+            (output of BIANCA thresholded and binarized).
+        ventricles_mask: Ventricles mask you created using the exclusion mask\
+            script. If T1 and FLAIR were not in the same space, ventricle mask\
+            needs to be registered to FLAIR (and binarized).
+        minclustersize: Minimum cluster (volume) size in voxels to consider.\
+            Use 0 for no cluster thresholding.
+        do_stats: Option to calculate volumes: 0 to only produce images without\
+            volume calculation, 1 to calculate volumes for total, periventricular\
+            and deep WMH and display on the screen, 2 to calculate volumes and save\
             them in a file.
         outputdir: Directory to save the output files.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BiancaPeriventDeepOutputs`).
     """

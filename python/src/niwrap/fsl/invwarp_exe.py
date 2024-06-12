@@ -49,21 +49,21 @@ def invwarp(
     https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT/UsersGuide#A--invwarp
     
     Args:
-        warp_file: Filename for warp/shiftmap transform (volume)
-        out_file: Filename for output (inverse warped) image
-        ref_file: Filename for new reference image, i.e., what was originally
-            the input image (determines inverse warpvol's FOV and pixdims)
-        rel_flag: Use relative warp convention: x' = x + w(x)
-        abs_flag: Use absolute warp convention (default): x' = w(x)
-        niter: Number of gradient-descent iterations (default=10)
-        regularise: Regularisation strength (default=1.0)
-        initwarp: Filename for initial warp transform (volume)
-        noconstraint: Do not apply the Jacobian constraint
-        jmin: Minimum acceptable Jacobian value for constraint (default 0.01)
-        jmax: Maximum acceptable Jacobian value for constraint (default 100.0)
-        debug_flag: Turn on debugging output
-        verbose_flag: Switch on diagnostic messages
-        runner: Command runner
+        warp_file: Filename for warp/shiftmap transform (volume).
+        out_file: Filename for output (inverse warped) image.
+        ref_file: Filename for new reference image, i.e., what was originally\
+            the input image (determines inverse warpvol's FOV and pixdims).
+        rel_flag: Use relative warp convention: x' = x + w(x).
+        abs_flag: Use absolute warp convention (default): x' = w(x).
+        niter: Number of gradient-descent iterations (default=10).
+        regularise: Regularisation strength (default=1.0).
+        initwarp: Filename for initial warp transform (volume).
+        noconstraint: Do not apply the Jacobian constraint.
+        jmin: Minimum acceptable Jacobian value for constraint (default 0.01).
+        jmax: Maximum acceptable Jacobian value for constraint (default 100.0).
+        debug_flag: Turn on debugging output.
+        verbose_flag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `InvwarpOutputs`).
     """

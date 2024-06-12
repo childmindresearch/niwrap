@@ -101,42 +101,41 @@ def amp2response(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/amp2response.html
     
     Args:
-        amps: the amplitudes image
-        mask: the mask containing the voxels from which to estimate the response
-            function
-        directions: a 4D image containing the estimated fibre directions
-        response: the output zonal spherical harmonic coefficients
-        isotropic: estimate an isotropic response function (lmax=0 for all
-            shells)
-        noconstraint: disable the non-negativity and monotonicity constraints
-        directions_: provide an external text file containing the directions
-            along which the amplitudes are sampled
-        shells: specify one or more b-values to use during processing, as a
-            comma-separated list of the desired approximate b-values (b-values are
-            clustered to allow for small deviations). Note that some commands are
-            incompatible with multiple b-values, and will report an error if more
-            than one b-value is provided.
-            WARNING: note that, even though the b=0 volumes are never
-            referred to as shells in the literature, they still have to
-            be explicitly included in the list of b-values as provided
-            to the -shell option! Several algorithms which include the
-            b=0 volumes in their computations may otherwise return an
-            undesired result.
-        lmax: specify the maximum harmonic degree of the response function to
-            estimate (can be a comma-separated list for multi-shell data)
+        amps: the amplitudes image.
+        mask: the mask containing the voxels from which to estimate the\
+            response function.
+        directions: a 4D image containing the estimated fibre directions.
+        response: the output zonal spherical harmonic coefficients.
+        isotropic: estimate an isotropic response function (lmax=0 for all\
+            shells).
+        noconstraint: disable the non-negativity and monotonicity constraints.
+        directions_: provide an external text file containing the directions\
+            along which the amplitudes are sampled.
+        shells: specify one or more b-values to use during processing, as a\
+            comma-separated list of the desired approximate b-values (b-values are\
+            clustered to allow for small deviations). Note that some commands are\
+            incompatible with multiple b-values, and will report an error if more\
+            than one b-value is provided.\
+            WARNING: note that, even though the b=0 volumes are never referred\
+            to as shells in the literature, they still have to be explicitly\
+            included in the list of b-values as provided to the -shell option!\
+            Several algorithms which include the b=0 volumes in their\
+            computations may otherwise return an undesired result.
+        lmax: specify the maximum harmonic degree of the response function to\
+            estimate (can be a comma-separated list for multi-shell data).
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Amp2responseOutputs`).
     """

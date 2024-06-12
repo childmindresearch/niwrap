@@ -40,13 +40,13 @@ def surface_cut_resample(
     surfaces, and because it is needed to figure out the new topology anyway.
     
     Args:
-        surface_in: the surface file to resample
-        current_sphere: a sphere surface with the mesh that the input surface is
-            currently on
-        new_sphere: a sphere surface that is in register with <current-sphere>
-            and has the desired output mesh
-        surface_out: the output surface file
-        runner: Command runner
+        surface_in: the surface file to resample.
+        current_sphere: a sphere surface with the mesh that the input surface\
+            is currently on.
+        new_sphere: a sphere surface that is in register with <current-sphere>\
+            and has the desired output mesh.
+        surface_out: the output surface file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceCutResampleOutputs`).
     """

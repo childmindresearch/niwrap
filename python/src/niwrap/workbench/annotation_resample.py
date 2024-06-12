@@ -63,11 +63,11 @@ def annotation_resample(
     additional structures used by surface space annotations.
     
     Args:
-        annotation_in: the annotation file to resample
-        annotation_out: name of resampled annotation file
-        surface_pair: pair of surfaces for resampling surface annotations for
-            one structure
-        runner: Command runner
+        annotation_in: the annotation file to resample.
+        annotation_out: name of resampled annotation file.
+        surface_pair: pair of surfaces for resampling surface annotations for\
+            one structure.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AnnotationResampleOutputs`).
     """

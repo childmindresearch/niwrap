@@ -48,7 +48,7 @@ def v_3dmaskave(
         num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         quiet: Matrix to align input file.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dmaskaveOutputs`).
     """

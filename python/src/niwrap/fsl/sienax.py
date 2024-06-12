@@ -49,24 +49,24 @@ def sienax(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SIENA/SienaX
     
     Args:
-        infile: Input image (e.g. img.nii.gz)
-        output_dir: Output directory (default output is <input>_sienax)
-        debug_flag: Debug (don't delete intermediate files)
-        bet_options: Options to pass to BET brain extraction (inside
-            double-quotes), e.g. -B "-f 0.3"
-        twoclass_segment_flag: Two-class segmentation (don't segment grey and
-            white matter separately)
-        t2_flag: Input image is T2-weighted (default is T1-weighted)
-        top_threshold: Ignore from t (mm) upwards in MNI152/Talairach space
-        bottom_threshold: Ignore from b (mm) downwards in MNI152/Talairach space
-            (b should probably be negative)
-        regional_flag: Regional - use standard-space masks to give peripheral
-            cortex GM volume (3-class segmentation only) and ventricular CSF volume
-        lesion_mask: Use lesion (or lesion+CSF) mask to remove incorrectly
-            labelled 'grey matter' voxels
-        fast_options: Options to pass to FAST segmentation (inside
-            double-quotes), e.g. -S "I 20"
-        runner: Command runner
+        infile: Input image (e.g. img.nii.gz).
+        output_dir: Output directory (default output is <input>_sienax).
+        debug_flag: Debug (don't delete intermediate files).
+        bet_options: Options to pass to BET brain extraction (inside\
+            double-quotes), e.g. -B "-f 0.3".
+        twoclass_segment_flag: Two-class segmentation (don't segment grey and\
+            white matter separately).
+        t2_flag: Input image is T2-weighted (default is T1-weighted).
+        top_threshold: Ignore from t (mm) upwards in MNI152/Talairach space.
+        bottom_threshold: Ignore from b (mm) downwards in MNI152/Talairach\
+            space (b should probably be negative).
+        regional_flag: Regional - use standard-space masks to give peripheral\
+            cortex GM volume (3-class segmentation only) and ventricular CSF volume.
+        lesion_mask: Use lesion (or lesion+CSF) mask to remove incorrectly\
+            labelled 'grey matter' voxels.
+        fast_options: Options to pass to FAST segmentation (inside\
+            double-quotes), e.g. -S "I 20".
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SienaxOutputs`).
     """

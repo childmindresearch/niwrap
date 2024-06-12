@@ -31,10 +31,10 @@ def maskdyads(
     Tool to mask dyads with threshold.
     
     Args:
-        dyads: Input dyads file
-        fsamples: Input fsamples file
-        threshold: Threshold (default is 0.05)
-        runner: Command runner
+        dyads: Input dyads file.
+        fsamples: Input fsamples file.
+        threshold: Threshold (default is 0.05).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MaskdyadsOutputs`).
     """

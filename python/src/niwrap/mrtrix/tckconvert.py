@@ -108,37 +108,37 @@ def tckconvert(
     Args:
         input_: the input track file.
         output: the output track file.
-        scanner2voxel: if specified, the properties of this image will be used
-            to convert track point positions from real (scanner) coordinates into
+        scanner2voxel: if specified, the properties of this image will be used\
+            to convert track point positions from real (scanner) coordinates into\
             voxel coordinates.
-        scanner2image: if specified, the properties of this image will be used
-            to convert track point positions from real (scanner) coordinates into
+        scanner2image: if specified, the properties of this image will be used\
+            to convert track point positions from real (scanner) coordinates into\
             image coordinates (in mm).
-        voxel2scanner: if specified, the properties of this image will be used
-            to convert track point positions from voxel coordinates into real
+        voxel2scanner: if specified, the properties of this image will be used\
+            to convert track point positions from voxel coordinates into real\
             (scanner) coordinates.
-        image2scanner: if specified, the properties of this image will be used
-            to convert track point positions from image coordinates (in mm) into
+        image2scanner: if specified, the properties of this image will be used\
+            to convert track point positions from image coordinates (in mm) into\
             real (scanner) coordinates.
-        sides: number of sides for streamlines
-        increment: generate streamline points at every (increment) points
-        dec: add DEC as a primvar
-        radius: radius of the streamlines
-        ascii_: write an ASCII VTK file (this is the default)
-        binary: write a binary VTK file
+        sides: number of sides for streamlines.
+        increment: generate streamline points at every (increment) points.
+        dec: add DEC as a primvar.
+        radius: radius of the streamlines.
+        ascii_: write an ASCII VTK file (this is the default).
+        binary: write a binary VTK file.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TckconvertOutputs`).
     """

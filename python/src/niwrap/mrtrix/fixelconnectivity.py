@@ -88,29 +88,29 @@ def fixelconnectivity(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelconnectivity.html
     
     Args:
-        fixel_directory: the directory containing the fixels between which
-            connectivity will be quantified
-        tracks: the tracks used to determine fixel-fixel connectivity
-        matrix: the output fixel-fixel connectivity matrix directory path
-        threshold: a threshold to define the required fraction of shared
-            connections to be included in the neighbourhood (default: 0.01)
-        angle: the max angle threshold for assigning streamline tangents to
-            fixels (Default: 45 degrees)
-        mask: provide a fixel data file containing a mask of those fixels to be
-            computed; fixels outside the mask will be empty in the output matrix
+        fixel_directory: the directory containing the fixels between which\
+            connectivity will be quantified.
+        tracks: the tracks used to determine fixel-fixel connectivity.
+        matrix: the output fixel-fixel connectivity matrix directory path.
+        threshold: a threshold to define the required fraction of shared\
+            connections to be included in the neighbourhood (default: 0.01).
+        angle: the max angle threshold for assigning streamline tangents to\
+            fixels (Default: 45 degrees).
+        mask: provide a fixel data file containing a mask of those fixels to be\
+            computed; fixels outside the mask will be empty in the output matrix.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FixelconnectivityOutputs`).
     """

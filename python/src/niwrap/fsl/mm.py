@@ -60,17 +60,17 @@ def mm(
         nonspatial_flag: Nonspatial mixture model.
         fix_mrf_precision_flag: Fix MRF precision to mrfprecstart throughout.
         mrf_prec_start: MRF precision initial value (default is 10).
-        mrf_prec_multiplier: Update multiplier for MRF precision (default is -1,
-            do not multiply).
+        mrf_prec_multiplier: Update multiplier for MRF precision (default is\
+            -1, do not multiply).
         init_multiplier: Init multiplier (default is 0.3).
-        no_update_theta_flag: Turn off updating of distribution parameters after
-            non-spatial fit.
+        no_update_theta_flag: Turn off updating of distribution parameters\
+            after non-spatial fit.
         zfstat_flag: Turn on zfstat mode - this enforces no deactivation class.
         phi: Phi (default is 0.05).
         niters: Number of iterations (default is -1: auto stop).
-        threshold: Threshold for use when displaying classification maps in
+        threshold: Threshold for use when displaying classification maps in\
             MM.html report (default is 0.5, -1 indicates no thresholding).
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MmOutputs`).
     """

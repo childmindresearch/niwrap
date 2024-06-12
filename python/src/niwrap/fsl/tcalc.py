@@ -50,25 +50,25 @@ def tcalc(
     Resample a 4D phantom for theoretical calculations.
     
     Args:
-        input_image: Input image (4D phantom for theoretical calculations)
-        output_image: Output image
-        echo_time: Echo Time (TE) in seconds [e.g., T1-weighted images for 3T
-            TE=0.01 s]
-        repetition_time: Repetition Time (TR) in seconds [e.g., T1-weighted
-            images for 3T TR=0.7 s]
-        mrpar_file: MRpar File
-        num_voxel_x: Number of Voxels along X (default: phantom)
-        num_voxel_y: Number of Voxels along Y (default: phantom)
-        num_voxel_z: Number of Voxels along Z (default: phantom)
-        voxel_size_x: Size of voxels along X (default: phantom)
-        voxel_size_y: Size of voxels along Y (default: phantom)
-        voxel_size_z: Size of voxels along Z i.e., number of slices (default:
-            phantom)
-        start_position: Starting position of the volume in mm (default = 0mm)
-        noise_sigma: Add noise with given sigma (default: 0 i.e., no noise)
-        save_flag: Save original non-resample output image
-        verbose_flag: Switch on diagnostic messages
-        runner: Command runner
+        input_image: Input image (4D phantom for theoretical calculations).
+        output_image: Output image.
+        echo_time: Echo Time (TE) in seconds [e.g., T1-weighted images for 3T\
+            TE=0.01 s].
+        repetition_time: Repetition Time (TR) in seconds [e.g., T1-weighted\
+            images for 3T TR=0.7 s].
+        mrpar_file: MRpar File.
+        num_voxel_x: Number of Voxels along X (default: phantom).
+        num_voxel_y: Number of Voxels along Y (default: phantom).
+        num_voxel_z: Number of Voxels along Z (default: phantom).
+        voxel_size_x: Size of voxels along X (default: phantom).
+        voxel_size_y: Size of voxels along Y (default: phantom).
+        voxel_size_z: Size of voxels along Z i.e., number of slices (default:\
+            phantom).
+        start_position: Starting position of the volume in mm (default = 0mm).
+        noise_sigma: Add noise with given sigma (default: 0 i.e., no noise).
+        save_flag: Save original non-resample output image.
+        verbose_flag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TcalcOutputs`).
     """

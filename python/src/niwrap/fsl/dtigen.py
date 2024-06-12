@@ -43,15 +43,15 @@ def dtigen(
     Generate diffusion data using tensor model.
     
     Args:
-        tensor: Input tensor file
-        s0: Input S0 file
-        output_data: Output data file
-        bvecs: bvecs ASCII text file
-        bvals: bvals ASCII text file
-        brainmask: Brain mask file
-        kurtosis: Mean kurtosis map
-        help_: Display help message
-        runner: Command runner
+        tensor: Input tensor file.
+        s0: Input S0 file.
+        output_data: Output data file.
+        bvecs: bvecs ASCII text file.
+        bvals: bvals ASCII text file.
+        brainmask: Brain mask file.
+        kurtosis: Mean kurtosis map.
+        help_: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DtigenOutputs`).
     """

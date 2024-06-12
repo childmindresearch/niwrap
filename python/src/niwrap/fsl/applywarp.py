@@ -52,25 +52,25 @@ def applywarp(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT/Applywarp
     
     Args:
-        input_file: Filename of input image (to be warped)
-        reference_file: Filename for reference image
-        output_file: Filename for output (warped) image
-        warp_coeff_file: Filename for warp/coefficient (volume)
-        absolute_warp: Treat warp field as absolute: x' = w(x)
-        relative_warp: Treat warp field as relative: x' = x + w(x)
-        datatype: Force output data type [char short int float double]
-        supersampling: Intermediary supersampling of output, default is off
-        superlevel: Level of intermediary supersampling, 'a' for automatic or
-            integer level. Default = 2
-        pre_transform: Filename for pre-transform (affine matrix)
-        post_transform: Filename for post-transform (affine matrix)
-        mask: Filename for mask image (in reference space)
-        interpolation: Interpolation method {nn,trilinear,sinc,spline}
-        padding_size: Extrapolates outside original volume by n voxels
-        use_sqform: Use s/qforms of --ref and --in images
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help message
-        runner: Command runner
+        input_file: Filename of input image (to be warped).
+        reference_file: Filename for reference image.
+        output_file: Filename for output (warped) image.
+        warp_coeff_file: Filename for warp/coefficient (volume).
+        absolute_warp: Treat warp field as absolute: x' = w(x).
+        relative_warp: Treat warp field as relative: x' = x + w(x).
+        datatype: Force output data type [char short int float double].
+        supersampling: Intermediary supersampling of output, default is off.
+        superlevel: Level of intermediary supersampling, 'a' for automatic or\
+            integer level. Default = 2.
+        pre_transform: Filename for pre-transform (affine matrix).
+        post_transform: Filename for post-transform (affine matrix).
+        mask: Filename for mask image (in reference space).
+        interpolation: Interpolation method {nn,trilinear,sinc,spline}.
+        padding_size: Extrapolates outside original volume by n voxels.
+        use_sqform: Use s/qforms of --ref and --in images.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ApplywarpOutputs`).
     """

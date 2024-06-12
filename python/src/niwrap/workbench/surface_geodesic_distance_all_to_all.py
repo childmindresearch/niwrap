@@ -58,16 +58,17 @@ def surface_geodesic_distance_all_to_all(
     share an edge.
     
     Args:
-        surface: the surface to compute on
-        cifti_out: single-hemisphere dconn containing the distances
-        opt_roi_roi_metric: only output distances for vertices inside an ROI:
-            the ROI as a metric file
-        opt_limit_limit_mm: stop at a specified distance: distance in mm to stop
-            at
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        opt_naive: use only neighbors, don't crawl triangles (not recommended)
-        runner: Command runner
+        surface: the surface to compute on.
+        cifti_out: single-hemisphere dconn containing the distances.
+        opt_roi_roi_metric: only output distances for vertices inside an ROI:\
+            the ROI as a metric file.
+        opt_limit_limit_mm: stop at a specified distance: distance in mm to\
+            stop at.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        opt_naive: use only neighbors, don't crawl triangles (not recommended).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceGeodesicDistanceAllToAllOutputs`).
     """

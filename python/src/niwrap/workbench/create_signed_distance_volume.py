@@ -63,24 +63,24 @@ def create_signed_distance_volume(
     total is odd, negative, or nonzero, respectively.
     
     Args:
-        surface: the input surface
-        refspace: a volume in the desired output space (dims, spacing, origin)
-        outvol: the output volume
-        roi_vol: the output roi volume
-        opt_roi_out: output an roi volume of where the output has a computed
-            value
-        opt_fill_value_value: specify a value to put in all voxels that don't
-            get assigned a distance: value to fill with (default 0)
-        opt_exact_limit_dist: specify distance for exact output: distance in mm
-            (default 5)
-        opt_approx_limit_dist: specify distance for approximate output: distance
-            in mm (default 20)
-        opt_approx_neighborhood_num: voxel neighborhood for approximate
-            calculation: size of neighborhood cube measured from center to face, in
-            voxels (default 2 = 5x5x5)
-        opt_winding_method: winding method for point inside surface test: name
-            of the method (default EVEN_ODD)
-        runner: Command runner
+        surface: the input surface.
+        refspace: a volume in the desired output space (dims, spacing, origin).
+        outvol: the output volume.
+        roi_vol: the output roi volume.
+        opt_roi_out: output an roi volume of where the output has a computed\
+            value.
+        opt_fill_value_value: specify a value to put in all voxels that don't\
+            get assigned a distance: value to fill with (default 0).
+        opt_exact_limit_dist: specify distance for exact output: distance in mm\
+            (default 5).
+        opt_approx_limit_dist: specify distance for approximate output:\
+            distance in mm (default 20).
+        opt_approx_neighborhood_num: voxel neighborhood for approximate\
+            calculation: size of neighborhood cube measured from center to face, in\
+            voxels (default 2 = 5x5x5).
+        opt_winding_method: winding method for point inside surface test: name\
+            of the method (default EVEN_ODD).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CreateSignedDistanceVolumeOutputs`).
     """

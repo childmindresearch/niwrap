@@ -43,16 +43,16 @@ def cutoffcalc(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
-        input_design: Input design matrix (e.g. design.mat)
-        threshold: Threshold for retained variance (default=0.9)
-        tr: Time between successive data points (default=3.0s)
-        lower_limit: Lower limit on period due to autocorr estimation
-            (default=90s)
-        example_sigma: Example sigma (in sec) to produce output called
-            example_filt.mtx
-        verbose_flag: Switch on diagnostic messages
-        debug_flag: Switch on debugging messages
-        runner: Command runner
+        input_design: Input design matrix (e.g. design.mat).
+        threshold: Threshold for retained variance (default=0.9).
+        tr: Time between successive data points (default=3.0s).
+        lower_limit: Lower limit on period due to autocorr estimation\
+            (default=90s).
+        example_sigma: Example sigma (in sec) to produce output called\
+            example_filt.mtx.
+        verbose_flag: Switch on diagnostic messages.
+        debug_flag: Switch on debugging messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CutoffcalcOutputs`).
     """

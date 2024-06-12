@@ -43,18 +43,18 @@ def applytopup(
     by topup.
     
     Args:
-        imain: Comma separated list of names of input image (to be corrected)
-        datain: Name of text file with PE directions/times
-        inindex: Comma separated list of indices into --datain of the input
-            image (to be corrected)
-        topup: Name of field/movements (from topup)
-        out: Basename for output (warped) image
-        method: Use jacobian modulation (jac) or least-squares resampling (lsr),
-            default=lsr.
-        interp: Interpolation method {trilinear, spline}, default=spline
-        datatype: Force output data type [char short int float double]
-        verbose: Switch on diagnostic messages
-        runner: Command runner
+        imain: Comma separated list of names of input image (to be corrected).
+        datain: Name of text file with PE directions/times.
+        inindex: Comma separated list of indices into --datain of the input\
+            image (to be corrected).
+        topup: Name of field/movements (from topup).
+        out: Basename for output (warped) image.
+        method: Use jacobian modulation (jac) or least-squares resampling\
+            (lsr), default=lsr.
+        interp: Interpolation method {trilinear, spline}, default=spline.
+        datatype: Force output data type [char short int float double].
+        verbose: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ApplytopupOutputs`).
     """

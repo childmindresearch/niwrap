@@ -61,38 +61,39 @@ def pulse(
     
     Args:
         input_file: 4D digital brain, resolution can be any.
-        output_base: Output base name
-        seq: Type of pulse sequence; default=epi (epi OR ge)
-        angle: Flip angle in degrees; default=90
-        te: The time from the first RF to the first echo; default=0.03s
-        tr: The time between the two RF pulses applied on the same part of the
-            object; default=3s
-        trslc: The time that takes for the acquisition of one slice;
-            default=0.12s
-        nx: Resolution in x of the output image; default=64
-        ny: Resolution in y of the output image; default=64
-        dx: Image voxel x-dimension; default=0.004m
-        dy: Image voxel y-dimension; default=0.004m
-        max_g: Maximum gradient strength; default=0.055 T/m
-        riset: Time it takes for the gradient to reach its max value;
-            default=0.00022s
-        bw: Receiving bandwidth; default=100000Hz
-        numvol: Number of volumes; default=1
-        numslc: Number of slices; default=1
-        slcthk: Slice thickness; default=0.006m
-        gap: Gap between the slices in meters; default=0m
-        zstart: The lowest position in the slice direction in meters; default=0m
-        slcdir: Slice acquisition direction/orientation; default=z- (x+,x-,
-            y+,y- or z+,or z-)
-        phasedir: Phase encode direction/orientation; default=y+ (x+,x-, y+,y-
-            or z+,or z-)
-        readdir: Read-out direction/orientation; default=x+ (x+,x-, y+,y- or
-            z+,or z-)
-        verbose_flag: Switch on diagnostic messages
-        kcoord_flag: Save k-space coordinates; default=no
-        cover: Phase partial Fourier coverage in percentage; default=100
-            (min=50, max=100)
-        runner: Command runner
+        output_base: Output base name.
+        seq: Type of pulse sequence; default=epi (epi OR ge).
+        angle: Flip angle in degrees; default=90.
+        te: The time from the first RF to the first echo; default=0.03s.
+        tr: The time between the two RF pulses applied on the same part of the\
+            object; default=3s.
+        trslc: The time that takes for the acquisition of one slice;\
+            default=0.12s.
+        nx: Resolution in x of the output image; default=64.
+        ny: Resolution in y of the output image; default=64.
+        dx: Image voxel x-dimension; default=0.004m.
+        dy: Image voxel y-dimension; default=0.004m.
+        max_g: Maximum gradient strength; default=0.055 T/m.
+        riset: Time it takes for the gradient to reach its max value;\
+            default=0.00022s.
+        bw: Receiving bandwidth; default=100000Hz.
+        numvol: Number of volumes; default=1.
+        numslc: Number of slices; default=1.
+        slcthk: Slice thickness; default=0.006m.
+        gap: Gap between the slices in meters; default=0m.
+        zstart: The lowest position in the slice direction in meters;\
+            default=0m.
+        slcdir: Slice acquisition direction/orientation; default=z- (x+,x-,\
+            y+,y- or z+,or z-).
+        phasedir: Phase encode direction/orientation; default=y+ (x+,x-, y+,y-\
+            or z+,or z-).
+        readdir: Read-out direction/orientation; default=x+ (x+,x-, y+,y- or\
+            z+,or z-).
+        verbose_flag: Switch on diagnostic messages.
+        kcoord_flag: Save k-space coordinates; default=no.
+        cover: Phase partial Fourier coverage in percentage; default=100\
+            (min=50, max=100).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PulseOutputs`).
     """

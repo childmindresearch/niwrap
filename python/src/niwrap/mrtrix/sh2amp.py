@@ -153,46 +153,46 @@ def sh2amp(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2amp.html
     
     Args:
-        input_: the input image consisting of spherical harmonic (SH)
+        input_: the input image consisting of spherical harmonic (SH)\
             coefficients.
-        directions: the list of directions along which the SH functions will be
-            sampled, generated using the dirgen command
-        output: the output image consisting of the amplitude of the SH functions
-            along the specified directions.
-        nonnegative: cap all negative amplitudes to zero
-        grad: Provide the diffusion-weighted gradient scheme used in the
-            acquisition in a text file. This should be supplied as a 4xN text file
-            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe
-            the direction of the applied gradient, and b gives the b-value in units
-            of s/mm^2. If a diffusion gradient scheme is present in the input image
+        directions: the list of directions along which the SH functions will be\
+            sampled, generated using the dirgen command.
+        output: the output image consisting of the amplitude of the SH\
+            functions along the specified directions.
+        nonnegative: cap all negative amplitudes to zero.
+        grad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in a text file. This should be supplied as a 4xN text file\
+            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\
+            the direction of the applied gradient, and b gives the b-value in units\
+            of s/mm^2. If a diffusion gradient scheme is present in the input image\
             header, the data provided with this option will be instead used.
-        fslgrad: Provide the diffusion-weighted gradient scheme used in the
-            acquisition in FSL bvecs/bvals format files. If a diffusion gradient
-            scheme is present in the input image header, the data provided with this
-            option will be instead used.
-        strides: specify the strides of the output data in memory; either as a
-            comma-separated list of (signed) integers, or as a template image from
-            which the strides shall be extracted and used. The actual strides
+        fslgrad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
+        strides: specify the strides of the output data in memory; either as a\
+            comma-separated list of (signed) integers, or as a template image from\
+            which the strides shall be extracted and used. The actual strides\
             produced will depend on whether the output image format can support it.
-        datatype: specify output image data type. Valid choices are: float32,
-            float32le, float32be, float64, float64le, float64be, int64, uint64,
-            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,
-            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,
-            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,
+        datatype: specify output image data type. Valid choices are: float32,\
+            float32le, float32be, float64, float64le, float64be, int64, uint64,\
+            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\
+            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\
+            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\
             int8, uint8, bit.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Sh2ampOutputs`).
     """

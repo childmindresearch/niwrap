@@ -43,16 +43,16 @@ def gps(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
     
     Args:
-        ndir: Number of directions
-        output: Name of output file (default: bvecs#.txt)
-        optws: Perform additional optimisation on the whole sphere (needed for
-            eddy)
-        ranseed: Seed random generator with supplied number
-        init: File with bvecs to use as initialisation
-        report: Report coulomb forces for initial configuration
-        verbose: Switch on diagnostic messages
-        help_: Display help message
-        runner: Command runner
+        ndir: Number of directions.
+        output: Name of output file (default: bvecs#.txt).
+        optws: Perform additional optimisation on the whole sphere (needed for\
+            eddy).
+        ranseed: Seed random generator with supplied number.
+        init: File with bvecs to use as initialisation.
+        report: Report coulomb forces for initial configuration.
+        verbose: Switch on diagnostic messages.
+        help_: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `GpsOutputs`).
     """

@@ -57,31 +57,31 @@ def fslvbm_2_template(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLVBM
     
     Args:
-        arch: Specify architecture
-        coprocessor: Specify coprocessor type
-        coprocessor_multi: Specify multiple coprocessors
-        coprocessor_class: Specify coprocessor class
-        coprocessor_toolkit: Specify coprocessor toolkit
-        jobhold: Hold job until specified job ID is completed
-        array_hold: Hold array job until specified job ID is completed
-        logdir: Specify log directory
-        mailoptions: Specify mail options
-        mailto: Specify email address for notifications
-        name: Specify job name
-        priority: Specify job priority
-        queue_: Specify queue
-        resource_: Specify resources
-        delete_job: Delete specified job
-        memory_gb: Specify memory in GB
-        parallel_env: Specify parallel environment and threads
-        array_task: Specify array task
-        array_native: Specify array native task
-        num_tasks: Specify number of tasks
-        coprocessor_name: Specify coprocessor name
-        project: Specify project
-        runtime_limit: Specify runtime limit in minutes
-        job_file: Specify job script file
-        runner: Command runner
+        arch: Specify architecture.
+        coprocessor: Specify coprocessor type.
+        coprocessor_multi: Specify multiple coprocessors.
+        coprocessor_class: Specify coprocessor class.
+        coprocessor_toolkit: Specify coprocessor toolkit.
+        jobhold: Hold job until specified job ID is completed.
+        array_hold: Hold array job until specified job ID is completed.
+        logdir: Specify log directory.
+        mailoptions: Specify mail options.
+        mailto: Specify email address for notifications.
+        name: Specify job name.
+        priority: Specify job priority.
+        queue_: Specify queue.
+        resource_: Specify resources.
+        delete_job: Delete specified job.
+        memory_gb: Specify memory in GB.
+        parallel_env: Specify parallel environment and threads.
+        array_task: Specify array task.
+        array_native: Specify array native task.
+        num_tasks: Specify number of tasks.
+        coprocessor_name: Specify coprocessor name.
+        project: Specify project.
+        runtime_limit: Specify runtime limit in minutes.
+        job_file: Specify job script file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Fslvbm2TemplateOutputs`).
     """

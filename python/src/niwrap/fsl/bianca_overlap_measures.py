@@ -51,10 +51,10 @@ def bianca_overlap_measures(
     BIANCA overlap measures script for FSL.
     
     Args:
-        lesion_mask: Lesion mask image file
-        manual_mask: Manual mask image file
-        output_dir: Output directory for generated files
-        runner: Command runner
+        lesion_mask: Lesion mask image file.
+        manual_mask: Manual mask image file.
+        output_dir: Output directory for generated files.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BiancaOverlapMeasuresOutputs`).
     """

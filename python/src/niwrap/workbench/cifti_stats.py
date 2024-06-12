@@ -91,15 +91,16 @@ def cifti_stats(
     .
     
     Args:
-        cifti_in: the input cifti
-        opt_reduce_operation: use a reduction operation: the reduction operation
-        opt_percentile_percent: give the value at a percentile: the percentile
-            to find, must be between 0 and 100
-        opt_column_column: only display output for one column: the column index
-            (starting from 1)
-        roi: only consider data inside an roi
-        opt_show_map_name: print column index and name before each output
-        runner: Command runner
+        cifti_in: the input cifti.
+        opt_reduce_operation: use a reduction operation: the reduction\
+            operation.
+        opt_percentile_percent: give the value at a percentile: the percentile\
+            to find, must be between 0 and 100.
+        opt_column_column: only display output for one column: the column index\
+            (starting from 1).
+        roi: only consider data inside an roi.
+        opt_show_map_name: print column index and name before each output.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiStatsOutputs`).
     """

@@ -53,25 +53,26 @@ def metric_find_clusters(
     complicated thresholding, see -metric-math.
     
     Args:
-        surface: the surface to compute on
-        metric_in: the input metric
-        value_threshold: threshold for data values
-        minimum_area: threshold for cluster area, in mm^2
-        metric_out: the output metric
-        opt_less_than: find values less than <value-threshold>, rather than
-            greater
-        opt_roi_roi_metric: select a region of interest: the roi, as a metric
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        opt_column_column: select a single column: the column number or name
-        opt_size_ratio_ratio: ignore clusters smaller than a given fraction of
-            the largest cluster in map: fraction of the largest cluster's area
-        opt_distance_distance: ignore clusters further than a given distance
-            from the largest cluster: how far from the largest cluster a cluster can
-            be, edge to edge, in mm
-        opt_start_startval: start labeling clusters from a value other than 1:
-            the value to give the first cluster found
-        runner: Command runner
+        surface: the surface to compute on.
+        metric_in: the input metric.
+        value_threshold: threshold for data values.
+        minimum_area: threshold for cluster area, in mm^2.
+        metric_out: the output metric.
+        opt_less_than: find values less than <value-threshold>, rather than\
+            greater.
+        opt_roi_roi_metric: select a region of interest: the roi, as a metric.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        opt_column_column: select a single column: the column number or name.
+        opt_size_ratio_ratio: ignore clusters smaller than a given fraction of\
+            the largest cluster in map: fraction of the largest cluster's area.
+        opt_distance_distance: ignore clusters further than a given distance\
+            from the largest cluster: how far from the largest cluster a cluster\
+            can be, edge to edge, in mm.
+        opt_start_startval: start labeling clusters from a value other than 1:\
+            the value to give the first cluster found.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricFindClustersOutputs`).
     """

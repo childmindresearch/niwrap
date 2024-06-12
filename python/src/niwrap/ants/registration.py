@@ -1347,113 +1347,113 @@ def ants_registration(
     
     Args:
         stages: Stages of the registration process.
-        dimensionality: This option forces the image to be treated as a
-            specified-dimensional image. If not specified, we try to infer the
+        dimensionality: This option forces the image to be treated as a\
+            specified-dimensional image. If not specified, we try to infer the\
             dimensionality from the input image.
-        output: Specify the output transform prefix (output format is .nii.gz ).
-            Optionally, one can choose to warp the moving image to the fixed space
-            and, if the inverse transform exists, one can also output the warped
-            fixed image. Note that only the images specified in the first metric
-            call are warped. Use antsApplyTransforms to warp other images using the
-            resultant transform(s). When a composite transform is not specified,
-            linear transforms are specified with a '.mat' suffix and displacement
-            fields with a 'Warp.nii.gz' suffix (and 'InverseWarp.nii.gz', when
-            applicable. In addition, for velocity-based transforms, the full
-            velocity field is written to file ('VelocityField.nii.gz') as long as
-            the collapse transforms flag is turned off ('-z 0').
-        save_state: Specify the output file for the current state of the
-            registration. The state file is written to an hdf5 composite file. It is
-            specially usefull if we want to save the current state of a SyN
-            registration to the disk, so we can load and restore that later to
-            continue the next registration process directly started from the last
-            saved state. The output file of this flag is the same as the
-            write-composite-transform, unless the last transform is a SyN transform.
-            In that case, the inverse displacement field of the SyN transform is
-            also added to the output composite transform. Again notice that this
-            file cannot be treated as a transform, and restore-state option must be
-            used to load the written file by this flag.
-        restore_state: Specify the initial state of the registration which get
-            immediately used to directly initialize the registration process. The
-            flag is mutually exclusive with other intialization flags.If this flag
-            is used, none of the initial-moving-transform and
+        output: Specify the output transform prefix (output format is .nii.gz\
+            ). Optionally, one can choose to warp the moving image to the fixed\
+            space and, if the inverse transform exists, one can also output the\
+            warped fixed image. Note that only the images specified in the first\
+            metric call are warped. Use antsApplyTransforms to warp other images\
+            using the resultant transform(s). When a composite transform is not\
+            specified, linear transforms are specified with a '.mat' suffix and\
+            displacement fields with a 'Warp.nii.gz' suffix (and\
+            'InverseWarp.nii.gz', when applicable. In addition, for velocity-based\
+            transforms, the full velocity field is written to file\
+            ('VelocityField.nii.gz') as long as the collapse transforms flag is\
+            turned off ('-z 0').
+        save_state: Specify the output file for the current state of the\
+            registration. The state file is written to an hdf5 composite file. It\
+            is specially usefull if we want to save the current state of a SyN\
+            registration to the disk, so we can load and restore that later to\
+            continue the next registration process directly started from the last\
+            saved state. The output file of this flag is the same as the\
+            write-composite-transform, unless the last transform is a SyN\
+            transform. In that case, the inverse displacement field of the SyN\
+            transform is also added to the output composite transform. Again notice\
+            that this file cannot be treated as a transform, and restore-state\
+            option must be used to load the written file by this flag.
+        restore_state: Specify the initial state of the registration which get\
+            immediately used to directly initialize the registration process. The\
+            flag is mutually exclusive with other intialization flags.If this flag\
+            is used, none of the initial-moving-transform and\
             initial-fixed-transform cannot be used.
-        write_composite_transform: Boolean specifying whether or not the
-            composite transform (and its inverse, if it exists) should be written to
-            an hdf5 composite file. This is false by default so that only the
+        write_composite_transform: Boolean specifying whether or not the\
+            composite transform (and its inverse, if it exists) should be written\
+            to an hdf5 composite file. This is false by default so that only the\
             transform for each stage is written to file.
-        print_similarity_measure_interval: Prints out the CC similarity metric
-            measure between the full-size input fixed and the transformed moving
-            images at each iteration a value of 0 (the default) indicates that the
-            full scale computation should not take placeany value greater than 0
+        print_similarity_measure_interval: Prints out the CC similarity metric\
+            measure between the full-size input fixed and the transformed moving\
+            images at each iteration a value of 0 (the default) indicates that the\
+            full scale computation should not take placeany value greater than 0\
             represents the interval of full scale metric computation.
-        write_interval_volumes: Writes out the output volume at each iteration.
-            It helps to present the registration process as a short movie a value of
-            0 (the default) indicates that this option should not take placeany
-            value greater than 0 represents the interval between the iterations
+        write_interval_volumes: Writes out the output volume at each iteration.\
+            It helps to present the registration process as a short movie a value\
+            of 0 (the default) indicates that this option should not take placeany\
+            value greater than 0 represents the interval between the iterations\
             which outputs are written to the disk.
-        collapse_output_transforms: Collapse output transforms. Specifically,
-            enabling this option combines all adjacent transforms where possible.
-            All adjacent linear transforms are written to disk in the form of an itk
-            affine transform (called xxxGenericAffine.mat).
-            Similarly, all adjacent displacement
-            field transforms are combined when
-            written to disk (e.g. xxxWarp.nii.gz and
-            xxxInverseWarp.nii.gz (if available)).
-            Also, an output composite transform
-            including the collapsed transforms is
-            written to the disk (called
+        collapse_output_transforms: Collapse output transforms. Specifically,\
+            enabling this option combines all adjacent transforms where possible.\
+            All adjacent linear transforms are written to disk in the form of an\
+            itk affine transform (called xxxGenericAffine.mat).\
+            Similarly, all adjacent displacement field transforms are combined\
+            when written to disk (e.g. xxxWarp.nii.gz and xxxInverseWarp.nii.gz\
+            (if available)). Also, an output composite transform including the\
+            collapsed transforms is written to the disk (called\
             outputCollapsed(Inverse)Composite).
-        initialize_transforms_per_stage: Initialize linear transforms from the
-            previous stage. By enabling this option, the current linear stage
-            transform is directly intialized from the previous stage's linear
-            transform; this allows multiple linear stages to be run where each stage
-            directly updates the estimated linear transform from the previous stage.
-            (e.g. Translation -> Rigid -> Affine).
-        interpolation: Several interpolation options are available in ITK. These
-            have all been made available. Currently the interpolator choice is only
-            used to warp (and possibly inverse warp) the final output image(s).
-        restrict_deformation: This option allows the user to restrict the
-            optimization of the displacement field, translation, rigid or affine
-            transform on a per-component basis. For example, if one wants to limit
-            the deformation or rotation of 3-D volume to the first two dimensions,
-            this is possible by specifying a weight vector of '1x1x0' for a
-            deformation field or '1x1x0x1x1x0' for a rigid transformation.
-            Low-dimensional restriction only works if there are no preceding
-            transformations.All stages up to and including the desired stage must
-            have this option specified,even if they should not be restricted (in
-            which case specify 1x1x1...)
-        initial_fixed_transform: Specify the initial fixed transform(s) which
-            get immediately incorporated into the composite transform. The order of
-            the transforms is stack-esque in that the last transform specified on
-            the command line is the first to be applied. In addition to
-            initialization with ITK transforms, the user can perform an initial
-            translation alignment by specifying the fixed and moving images and
-            selecting an initialization feature. These features include using the
-            geometric center of the images (=0), the image intensities (=1), or the
+        initialize_transforms_per_stage: Initialize linear transforms from the\
+            previous stage. By enabling this option, the current linear stage\
+            transform is directly intialized from the previous stage's linear\
+            transform; this allows multiple linear stages to be run where each\
+            stage directly updates the estimated linear transform from the previous\
+            stage. (e.g. Translation -> Rigid -> Affine).
+        interpolation: Several interpolation options are available in ITK.\
+            These have all been made available. Currently the interpolator choice\
+            is only used to warp (and possibly inverse warp) the final output\
+            image(s).
+        restrict_deformation: This option allows the user to restrict the\
+            optimization of the displacement field, translation, rigid or affine\
+            transform on a per-component basis. For example, if one wants to limit\
+            the deformation or rotation of 3-D volume to the first two dimensions,\
+            this is possible by specifying a weight vector of '1x1x0' for a\
+            deformation field or '1x1x0x1x1x0' for a rigid transformation.\
+            Low-dimensional restriction only works if there are no preceding\
+            transformations.All stages up to and including the desired stage must\
+            have this option specified,even if they should not be restricted (in\
+            which case specify 1x1x1...).
+        initial_fixed_transform: Specify the initial fixed transform(s) which\
+            get immediately incorporated into the composite transform. The order of\
+            the transforms is stack-esque in that the last transform specified on\
+            the command line is the first to be applied. In addition to\
+            initialization with ITK transforms, the user can perform an initial\
+            translation alignment by specifying the fixed and moving images and\
+            selecting an initialization feature. These features include using the\
+            geometric center of the images (=0), the image intensities (=1), or the\
             origin of the images (=2).
-        initial_moving_transform: Specify the initial moving transform(s) which
-            get immediately incorporated into the composite transform. The order of
-            the transforms is stack-esque in that the last transform specified on
-            the command line is the first to be applied. In addition to
-            initialization with ITK transforms, the user can perform an initial
-            translation alignment by specifying the fixed and moving images and
-            selecting an initialization feature. These features include using the
-            geometric center of the images (=0), the image intensities (=1), or the
+        initial_moving_transform: Specify the initial moving transform(s) which\
+            get immediately incorporated into the composite transform. The order of\
+            the transforms is stack-esque in that the last transform specified on\
+            the command line is the first to be applied. In addition to\
+            initialization with ITK transforms, the user can perform an initial\
+            translation alignment by specifying the fixed and moving images and\
+            selecting an initialization feature. These features include using the\
+            geometric center of the images (=0), the image intensities (=1), or the\
             origin of the images (=2).
-        winsorize_image_intensities: Winsorize data based on specified
+        winsorize_image_intensities: Winsorize data based on specified\
             quantiles.
-        masks: Image masks to limit voxels considered by the metric. Two options
-            are allowed for mask specification: 1) Either the user specifies a
-            single mask to be used for all stages or 2) the user specifies a mask
-            for each stage. With the latter one can select to which stages masks are
-            applied by supplying valid file names. If the file does not exist, a
-            mask will not be used for that stage. Note that we handle the fixed and
-            moving masks separately to enforce this constraint.
+        masks: Image masks to limit voxels considered by the metric. Two\
+            options are allowed for mask specification: 1) Either the user\
+            specifies a single mask to be used for all stages or 2) the user\
+            specifies a mask for each stage. With the latter one can select to\
+            which stages masks are applied by supplying valid file names. If the\
+            file does not exist, a mask will not be used for that stage. Note that\
+            we handle the fixed and moving masks separately to enforce this\
+            constraint.
         minc: Use MINC file formats for transformations.
         random_seed: Random seed.
         verbose: Verbose output.
         float_: Use 'float' instead of 'double' for computations.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AntsRegistrationOutputs`).
     """

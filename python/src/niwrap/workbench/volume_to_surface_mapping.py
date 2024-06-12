@@ -284,17 +284,17 @@ def volume_to_surface_mapping(
     where the cylinder cutoff should have been.
     
     Args:
-        volume: the volume to map data from
-        surface: the surface to map the data onto
-        metric_out: the output metric file
-        opt_trilinear: use trilinear volume interpolation
-        opt_enclosing: use value of the enclosing voxel
-        opt_cubic: use cubic splines
-        ribbon_constrained: use ribbon constrained mapping algorithm
-        myelin_style: use the method from myelin mapping
-        opt_subvol_select_subvol: select a single subvolume to map: the
-            subvolume number or name
-        runner: Command runner
+        volume: the volume to map data from.
+        surface: the surface to map the data onto.
+        metric_out: the output metric file.
+        opt_trilinear: use trilinear volume interpolation.
+        opt_enclosing: use value of the enclosing voxel.
+        opt_cubic: use cubic splines.
+        ribbon_constrained: use ribbon constrained mapping algorithm.
+        myelin_style: use the method from myelin mapping.
+        opt_subvol_select_subvol: select a single subvolume to map: the\
+            subvolume number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeToSurfaceMappingOutputs`).
     """

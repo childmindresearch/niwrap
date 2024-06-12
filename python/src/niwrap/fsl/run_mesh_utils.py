@@ -50,24 +50,24 @@ def run_mesh_utils(
     A tool for various mesh operations as part of FSL.
     
     Args:
-        base_mesh: Filename of base mesh
-        output_image: Filename of output image
-        input_image: Filename of input image
-        second_input_image: Filename of second input image
-        weighting_image_force: Weighting image force
-        do_uncentre_model: Do UnCentre Model
-        do_subtract_constant_from_scalars: Do Subtract Constant From Scalars
-        do_vertex_scalars_to_image_volume: Do Vertex Scalars To Image Volume
-        base_mesh2: Filename of base mesh2
-        use_sc2: Use SC2
-        flirt_matrix: Filename of flirt matrix
-        do_mesh_reg: Do Mesh Registration
-        threshold: Threshold
-        degrees_of_freedom: Degrees of freedom
-        inverse: Inverse Operation
-        verbose: Switch on diagnostic messages
-        help_: Display help message
-        runner: Command runner
+        base_mesh: Filename of base mesh.
+        output_image: Filename of output image.
+        input_image: Filename of input image.
+        second_input_image: Filename of second input image.
+        weighting_image_force: Weighting image force.
+        do_uncentre_model: Do UnCentre Model.
+        do_subtract_constant_from_scalars: Do Subtract Constant From Scalars.
+        do_vertex_scalars_to_image_volume: Do Vertex Scalars To Image Volume.
+        base_mesh2: Filename of base mesh2.
+        use_sc2: Use SC2.
+        flirt_matrix: Filename of flirt matrix.
+        do_mesh_reg: Do Mesh Registration.
+        threshold: Threshold.
+        degrees_of_freedom: Degrees of freedom.
+        inverse: Inverse Operation.
+        verbose: Switch on diagnostic messages.
+        help_: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RunMeshUtilsOutputs`).
     """

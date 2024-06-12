@@ -41,15 +41,15 @@ def split_parts_gpu(
     Splits parts of data for GPU processing.
     
     Args:
-        datafile: Input data file
-        maskfile: Input mask file
-        bvals_file: bvals file
-        bvecs_file: bvecs file
-        use_grad_file: Use gradient file (0 or 1)
-        total_num_parts: Total number of parts
-        output_directory: Output directory
-        grad_file: Gradient file (can be null)
-        runner: Command runner
+        datafile: Input data file.
+        maskfile: Input mask file.
+        bvals_file: bvals file.
+        bvecs_file: bvecs file.
+        use_grad_file: Use gradient file (0 or 1).
+        total_num_parts: Total number of parts.
+        output_directory: Output directory.
+        grad_file: Gradient file (can be null).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SplitPartsGpuOutputs`).
     """

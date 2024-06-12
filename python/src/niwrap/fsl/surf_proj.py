@@ -43,19 +43,19 @@ def surf_proj(
     Projects data onto a surface mesh using specified parameters.
     
     Args:
-        data: Data to project onto surface
-        surface: Surface file
-        output_file: Output file
-        surface_reference: Surface volume reference (default=same as data)
-        transform: Data to surface transform (default=Identity)
-        meshspace: Mesh space (default='caret')
-        step_size: Average over step (mm - default=1)
-        direction: If >0 goes towards brain (default=0 i.e. both directions)
-        operation: What to do with values: 'mean' (default), 'max', 'median',
-            'last'
-        surface_output: Output surface file, not ASCII matrix (valid only for
-            scalars)
-        runner: Command runner
+        data: Data to project onto surface.
+        surface: Surface file.
+        output_file: Output file.
+        surface_reference: Surface volume reference (default=same as data).
+        transform: Data to surface transform (default=Identity).
+        meshspace: Mesh space (default='caret').
+        step_size: Average over step (mm - default=1).
+        direction: If >0 goes towards brain (default=0 i.e. both directions).
+        operation: What to do with values: 'mean' (default), 'max', 'median',\
+            'last'.
+        surface_output: Output surface file, not ASCII matrix (valid only for\
+            scalars).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfProjOutputs`).
     """

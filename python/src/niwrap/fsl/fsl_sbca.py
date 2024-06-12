@@ -59,29 +59,29 @@ def fsl_sbca(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SBCA
     
     Args:
-        infile: Input file name (4D image file)
-        seed: Seed voxel coordinate or file name of seed mask (3D/4D file)
-        target: File name of target mask(s) (3D or 4D file)
-        out: Output file base name
-        reg_flag: Perform time series regression rather than classification to
-            targets
-        conf_files: File name (or comma-separated list of file names) for
-            confound ASCII text files
-        seed_data: File name of 4D data file for the seed
-        binarise_flag: Binarise spatial maps prior to calculation of time
-            courses
-        mean_flag: Use mean instead of Eigenvariates for calculation of time
-            courses
-        abs_cc_flag: Use maximum absolute value instead of maximum value of the
-            cross-correlations
-        order: Number of Eigenvariates (default 1)
-        out_seeds_flag: Output seed mask image as <basename>_seeds
-        out_seedmask_flag: Output seed mask image as <basename>_seedmask
-        out_ttcs_flag: Output target time courses as <basename>_ttc<X>.txt
-        out_conf_flag: Output confound time courses as <basename>_confounds.txt
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help text
-        runner: Command runner
+        infile: Input file name (4D image file).
+        seed: Seed voxel coordinate or file name of seed mask (3D/4D file).
+        target: File name of target mask(s) (3D or 4D file).
+        out: Output file base name.
+        reg_flag: Perform time series regression rather than classification to\
+            targets.
+        conf_files: File name (or comma-separated list of file names) for\
+            confound ASCII text files.
+        seed_data: File name of 4D data file for the seed.
+        binarise_flag: Binarise spatial maps prior to calculation of time\
+            courses.
+        mean_flag: Use mean instead of Eigenvariates for calculation of time\
+            courses.
+        abs_cc_flag: Use maximum absolute value instead of maximum value of the\
+            cross-correlations.
+        order: Number of Eigenvariates (default 1).
+        out_seeds_flag: Output seed mask image as <basename>_seeds.
+        out_seedmask_flag: Output seed mask image as <basename>_seedmask.
+        out_ttcs_flag: Output target time courses as <basename>_ttc<X>.txt.
+        out_conf_flag: Output confound time courses as <basename>_confounds.txt.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help text.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslSbcaOutputs`).
     """

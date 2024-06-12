@@ -38,7 +38,7 @@ def mist_fa_reg(
         s0_volume: The S0 volume corresponding to the FA volume.
         reference_t1_volume: The reference T1 volume to register against.
         output_filename: The output filename for the registered volume.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MistFaRegOutputs`).
     """

@@ -49,7 +49,7 @@ def convert_xfm(
         fix_scale_skew: A File. Use secondary matrix to fix scale and skew.
         invert_xfm: Invert input transformation.
         out_file: Final transformation matrix.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ConvertXfmOutputs`).
     """

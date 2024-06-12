@@ -39,13 +39,13 @@ def atlasquery(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlasquery
     
     Args:
-        dumpatlases_flag: Dump a list of available atlases
-        atlas: Name of atlas to use
-        coord: Coordinate to query in the format X,Y,Z
-        mask: A mask image to use during structural lookups
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Show help message and exit
-        runner: Command runner
+        dumpatlases_flag: Dump a list of available atlases.
+        atlas: Name of atlas to use.
+        coord: Coordinate to query in the format X,Y,Z.
+        mask: A mask image to use during structural lookups.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Show help message and exit.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AtlasqueryOutputs`).
     """

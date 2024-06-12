@@ -190,12 +190,12 @@ def cifti_create_label(
     THALAMUS_RIGHT.
     
     Args:
-        cifti_out: the output cifti file
-        volume: volume component
-        left_label: label file for left surface
-        right_label: label for left surface
-        cerebellum_label: label for the cerebellum
-        runner: Command runner
+        cifti_out: the output cifti file.
+        volume: volume component.
+        left_label: label file for left surface.
+        right_label: label for left surface.
+        cerebellum_label: label for the cerebellum.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiCreateLabelOutputs`).
     """

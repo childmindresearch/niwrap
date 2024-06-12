@@ -161,30 +161,30 @@ def cifti_parcellate(
     label data).
     
     Args:
-        cifti_in: the cifti file to parcellate
-        cifti_label: a cifti label file to use for the parcellation
-        direction: which mapping to parcellate (integer, ROW, or COLUMN)
-        cifti_out: output cifti file
-        mask_out: the output mask file
-        spatial_weights: use voxel volume and either vertex areas or metric
-            files as weights
-        opt_cifti_weights_weight_cifti: use a cifti file containing weights: the
-            weights to use, as a cifti file
-        opt_method_method: specify method of parcellation (default MEAN, or MODE
-            if label data): the method to use to assign parcel values from the
-            values of member brainordinates
-        exclude_outliers: exclude non-numeric values and outliers from each
-            parcel by standard deviation
-        opt_only_numeric: exclude non-numeric values
-        opt_fill_value_value: specify value to use in empty parcels (default 0):
-            the value to fill empty parcels with
-        opt_nonempty_mask_out: output a matching pscalar file that has 0s in
-            empty parcels, and 1s elsewhere
-        opt_legacy_mode: use the old behavior, parcels are defined by the
-            intersection between labels and valid data, and empty parcels are
-            discarded
-        opt_include_empty: deprecated: now the default behavior
-        runner: Command runner
+        cifti_in: the cifti file to parcellate.
+        cifti_label: a cifti label file to use for the parcellation.
+        direction: which mapping to parcellate (integer, ROW, or COLUMN).
+        cifti_out: output cifti file.
+        mask_out: the output mask file.
+        spatial_weights: use voxel volume and either vertex areas or metric\
+            files as weights.
+        opt_cifti_weights_weight_cifti: use a cifti file containing weights:\
+            the weights to use, as a cifti file.
+        opt_method_method: specify method of parcellation (default MEAN, or\
+            MODE if label data): the method to use to assign parcel values from the\
+            values of member brainordinates.
+        exclude_outliers: exclude non-numeric values and outliers from each\
+            parcel by standard deviation.
+        opt_only_numeric: exclude non-numeric values.
+        opt_fill_value_value: specify value to use in empty parcels (default\
+            0): the value to fill empty parcels with.
+        opt_nonempty_mask_out: output a matching pscalar file that has 0s in\
+            empty parcels, and 1s elsewhere.
+        opt_legacy_mode: use the old behavior, parcels are defined by the\
+            intersection between labels and valid data, and empty parcels are\
+            discarded.
+        opt_include_empty: deprecated: now the default behavior.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiParcellateOutputs`).
     """

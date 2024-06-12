@@ -43,14 +43,14 @@ def flirt_average(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT
     
     Args:
-        ninputs: Number of input images
-        input1: First input image (e.g. rawT1_1.nii.gz)
-        input2: Second input image (e.g. rawT1_2.nii.gz)
-        output_file: Output image (e.g. averageT1.nii.gz)
-        input3: Third input image (e.g. rawT1_3.nii.gz)
-        reference_image: Reference image to use instead of first input
-        flirt_options: Options to be passed to FLIRT
-        runner: Command runner
+        ninputs: Number of input images.
+        input1: First input image (e.g. rawT1_1.nii.gz).
+        input2: Second input image (e.g. rawT1_2.nii.gz).
+        output_file: Output image (e.g. averageT1.nii.gz).
+        input3: Third input image (e.g. rawT1_3.nii.gz).
+        reference_image: Reference image to use instead of first input.
+        flirt_options: Options to be passed to FLIRT.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FlirtAverageOutputs`).
     """

@@ -40,21 +40,21 @@ def surf2surf(
     Conversions between surface formats and/or conventions.
     
     Args:
-        input_surface: Input surface
-        output_surface: Output surface
-        input_convention: Input convention [default=caret] - only used if output
-            convention is different
-        output_convention: Output convention [default=same as input]
-        input_ref_volume: Input reference volume - Must set this if changing
-            conventions
-        output_ref_volume: Output reference volume [default=same as input]
-        transform: In-to-out ASCII matrix or out-to-in warpfield
-            [default=identity]
-        output_type: Output type: ASCII, VTK, GIFTI_ASCII, GIFTI_BIN,
-            GIFTI_BIN_GZ (default)
-        output_values: Set output scalar values (e.g.
-            --values=mysurface.func.gii or --values=1)
-        runner: Command runner
+        input_surface: Input surface.
+        output_surface: Output surface.
+        input_convention: Input convention [default=caret] - only used if\
+            output convention is different.
+        output_convention: Output convention [default=same as input].
+        input_ref_volume: Input reference volume - Must set this if changing\
+            conventions.
+        output_ref_volume: Output reference volume [default=same as input].
+        transform: In-to-out ASCII matrix or out-to-in warpfield\
+            [default=identity].
+        output_type: Output type: ASCII, VTK, GIFTI_ASCII, GIFTI_BIN,\
+            GIFTI_BIN_GZ (default).
+        output_values: Set output scalar values (e.g.\
+            --values=mysurface.func.gii or --values=1).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Surf2surfOutputs`).
     """

@@ -51,16 +51,16 @@ def tbss_skeleton(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS
     
     Args:
-        input_image: Input image
-        output_image: Output skeleton image
-        skeleton_params: Skeletonization parameters: <skel_thresh> <distancemap>
-            <search_rule_mask> <4Ddata> <projected_4Ddata>
-        alt_4d: Alternative 4D data (e.g., L1)
-        alt_skeleton: Alternative skeleton
-        debug_flag: Switch on debugging image outputs
-        debug2_flag: De-project skelpoints points on skeleton back to all_FA
-            space
-        runner: Command runner
+        input_image: Input image.
+        output_image: Output skeleton image.
+        skeleton_params: Skeletonization parameters: <skel_thresh>\
+            <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata>.
+        alt_4d: Alternative 4D data (e.g., L1).
+        alt_skeleton: Alternative skeleton.
+        debug_flag: Switch on debugging image outputs.
+        debug2_flag: De-project skelpoints points on skeleton back to all_FA\
+            space.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TbssSkeletonOutputs`).
     """

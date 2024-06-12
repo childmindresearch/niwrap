@@ -55,36 +55,36 @@ def pnm_evs(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PNM
     
     Args:
-        input_file: Input image filename (4D functional/EPI data)
-        output_file: Output filename (for confound/EV matrix)
-        tr_value: TR of fMRI volumes (in seconds)
-        cardiac_file: Input filename for cardiac values (1 or 2 columns: time
-            [phase])
-        respiratory_file: Input filename for respiratory phase values (1 or 2
-            columns: time [phase])
-        order_cardiac: Order of basic cardiac regressors (number of Fourier
-            pairs)
-        order_respiratory: Order of basic respiratory regressors (number of
-            Fourier pairs)
-        order_mult_cardiac: Order of multiplicative cardiac terms (also need to
-            set --multr)
-        order_mult_respiratory: Order of multiplicative respiratory terms (also
-            need to set --multc)
-        csf_mask: Filename of CSF mask image (and generate CSF regressor)
-        rvt_file: Input filename of RVT data (2 columns: time value)
-        heartrate_file: Input filename for heart rate data (2 columns: time
-            value)
-        rvt_smooth: Optional smoothing of RVT regressor (in seconds)
-        heartrate_smooth: Optional smoothing of heart rate regressor (in
-            seconds)
-        slice_direction: Specify slice direction (x/y/z)
-        slice_order: Specify slice ordering
-            (up/down/interleaved_up/interleaved_down)
-        slice_timing_file: Specify slice timing via an external file
-        debug_flag: Turn on debugging output
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help message
-        runner: Command runner
+        input_file: Input image filename (4D functional/EPI data).
+        output_file: Output filename (for confound/EV matrix).
+        tr_value: TR of fMRI volumes (in seconds).
+        cardiac_file: Input filename for cardiac values (1 or 2 columns: time\
+            [phase]).
+        respiratory_file: Input filename for respiratory phase values (1 or 2\
+            columns: time [phase]).
+        order_cardiac: Order of basic cardiac regressors (number of Fourier\
+            pairs).
+        order_respiratory: Order of basic respiratory regressors (number of\
+            Fourier pairs).
+        order_mult_cardiac: Order of multiplicative cardiac terms (also need to\
+            set --multr).
+        order_mult_respiratory: Order of multiplicative respiratory terms (also\
+            need to set --multc).
+        csf_mask: Filename of CSF mask image (and generate CSF regressor).
+        rvt_file: Input filename of RVT data (2 columns: time value).
+        heartrate_file: Input filename for heart rate data (2 columns: time\
+            value).
+        rvt_smooth: Optional smoothing of RVT regressor (in seconds).
+        heartrate_smooth: Optional smoothing of heart rate regressor (in\
+            seconds).
+        slice_direction: Specify slice direction (x/y/z).
+        slice_order: Specify slice ordering\
+            (up/down/interleaved_up/interleaved_down).
+        slice_timing_file: Specify slice timing via an external file.
+        debug_flag: Turn on debugging output.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PnmEvsOutputs`).
     """

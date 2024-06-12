@@ -89,27 +89,27 @@ def volume_dilate(
     WEIGHTED - use a weighted average based on distance.
     
     Args:
-        volume: the volume to dilate
-        distance: distance in mm to dilate
-        method: dilation method to use
-        volume_out: the output volume
-        opt_exponent_exponent: use a different exponent in the weighting
-            function: exponent 'n' to use in (1 / (distance ^ n)) as the weighting
-            function (default 7)
-        opt_bad_voxel_roi_roi_volume: specify an roi of voxels to overwrite,
-            rather than voxels with value zero: volume file, positive values denote
-            voxels to have their values replaced
-        opt_data_roi_roi_volume: specify an roi of where there is data: volume
-            file, positive values denote voxels that have data
-        opt_subvolume_subvol: select a single subvolume to dilate: the subvolume
-            number or name
-        opt_legacy_cutoff: use the v1.3.2 method of excluding voxels further
-            than the dilation distance when calculating the dilated value
-        opt_grad_extrapolate: additionally use the gradient to extrapolate,
-            intended to be used with WEIGHTED
-        presmooth: apply presmoothing before computing gradient vectors, not
-            recommended
-        runner: Command runner
+        volume: the volume to dilate.
+        distance: distance in mm to dilate.
+        method: dilation method to use.
+        volume_out: the output volume.
+        opt_exponent_exponent: use a different exponent in the weighting\
+            function: exponent 'n' to use in (1 / (distance ^ n)) as the weighting\
+            function (default 7).
+        opt_bad_voxel_roi_roi_volume: specify an roi of voxels to overwrite,\
+            rather than voxels with value zero: volume file, positive values denote\
+            voxels to have their values replaced.
+        opt_data_roi_roi_volume: specify an roi of where there is data: volume\
+            file, positive values denote voxels that have data.
+        opt_subvolume_subvol: select a single subvolume to dilate: the\
+            subvolume number or name.
+        opt_legacy_cutoff: use the v1.3.2 method of excluding voxels further\
+            than the dilation distance when calculating the dilated value.
+        opt_grad_extrapolate: additionally use the gradient to extrapolate,\
+            intended to be used with WEIGHTED.
+        presmooth: apply presmoothing before computing gradient vectors, not\
+            recommended.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeDilateOutputs`).
     """

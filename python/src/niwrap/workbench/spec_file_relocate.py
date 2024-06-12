@@ -37,9 +37,9 @@ def spec_file_relocate(
     to refer to the new relative locations of the files.
     
     Args:
-        input_spec: the spec file to use
-        output_spec: output - the new spec file to create
-        runner: Command runner
+        input_spec: the spec file to use.
+        output_spec: output - the new spec file to create.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SpecFileRelocateOutputs`).
     """

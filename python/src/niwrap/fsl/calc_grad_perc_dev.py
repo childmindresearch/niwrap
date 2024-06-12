@@ -38,11 +38,11 @@ def calc_grad_perc_dev(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation
     
     Args:
-        fullwarp_image: Full warp image from gradient_unwarp.py
-        out_basename: Output basename
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display the help message
-        runner: Command runner
+        fullwarp_image: Full warp image from gradient_unwarp.py.
+        out_basename: Output basename.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display the help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CalcGradPercDevOutputs`).
     """

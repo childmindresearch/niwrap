@@ -37,9 +37,9 @@ def surface_normals(
     column metric file.
     
     Args:
-        surface: the surface to output the normals of
-        metric_out: the normal vectors
-        runner: Command runner
+        surface: the surface to output the normals of.
+        metric_out: the normal vectors.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceNormalsOutputs`).
     """

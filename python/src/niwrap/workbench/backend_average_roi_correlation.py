@@ -37,10 +37,10 @@ def backend_average_roi_correlation(
     of row size followed by the row as 32-bit floats.
     
     Args:
-        index_list: comma separated list of cifti indexes to average and then
-            correlate
-        out_file: file to write the average row to
-        runner: Command runner
+        index_list: comma separated list of cifti indexes to average and then\
+            correlate.
+        out_file: file to write the average row to.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BackendAverageRoiCorrelationOutputs`).
     """

@@ -40,15 +40,15 @@ def fslcc(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
     
     Args:
-        first_input: First input time-series
-        second_input: Second input time-series
-        mask: Mask file name
-        noabs_flag: Don't return absolute values (keep sign)
-        nodemean_flag: Don't demean the input files
-        threshold: Threshold (default 0.1)
-        decimal_places: Number of decimal places to display in output (default
-            2)
-        runner: Command runner
+        first_input: First input time-series.
+        second_input: Second input time-series.
+        mask: Mask file name.
+        noabs_flag: Don't return absolute values (keep sign).
+        nodemean_flag: Don't demean the input files.
+        threshold: Threshold (default 0.1).
+        decimal_places: Number of decimal places to display in output (default\
+            2).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslccOutputs`).
     """

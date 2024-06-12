@@ -133,13 +133,13 @@ def cifti_merge(
     out.dtseries.nii. .
     
     Args:
-        cifti_out: output cifti file
-        opt_direction_direction: merge in a direction other than along rows: the
-            dimension to split/concatenate along, default ROW
-        opt_mem_limit_limit_gb: restrict memory used for file reading
-            efficiency: memory limit in gigabytes
-        cifti: specify an input cifti file
-        runner: Command runner
+        cifti_out: output cifti file.
+        opt_direction_direction: merge in a direction other than along rows:\
+            the dimension to split/concatenate along, default ROW.
+        opt_mem_limit_limit_gb: restrict memory used for file reading\
+            efficiency: memory limit in gigabytes.
+        cifti: specify an input cifti file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiMergeOutputs`).
     """

@@ -63,41 +63,41 @@ def firt_utils(
     Utilities for handling FIRST's input and output files.
     
     Args:
-        input_file: Filename of input image/mesh/bvars
-        output_name: Output name
-        norm_factors: Filename of normalization factors
-        reference_image: Filename of reference image
-        extra_path: Specifies extra path to image in .bvars file
-        flirt_matrices: Text file containing filenames of flirt matrices
-        use_scale: Do stats
-        dice_overlap: Calculates Dice overlap
-        input_mesh: Filename of input mesh
-        use_norm: Normalize volumes measurements
-        surface_out: Output vertex analysis on the surface
-        threshold: Threshold for clean up
-        mesh_label: Specifies the label used to fill the mesh
-        use_bvars: Operate using the mode parameters output from FIRST
-        use_recon_mni: Reconstruct meshes in MNI space
-        vertex_analysis: Perform vertex-wise stats from bvars
-        use_recon_native: Reconstruct meshes in native space
-        use_rigid_align: Register meshes using 6 degree of freedom (7 if
-            useScale is used)
-        design_matrix: Filename of fsl design matrix
-        recon_mesh_from_bvars: Convert bvars to mesh
-        read_bvars: Read bvars from binary format
-        mesh_to_vol: Convert mesh to an image
-        centre_origin: Places origin of mesh at the centre of the image
-        save_vertices: Filename for saving matrix of vertex coords: (all x, then
-            all y, then all z) by Nsubjects
-        verbose: Output F-stats to standard out
-        use_pca_filter: Smooths the surface by truncating the mode parameters
-        num_modes: Number of modes to retain per structure
-        single_boundary_corr: Correct boundary voxels of a single structure
-        do_mvglm: Perform multivariate general linear model analysis
-        concat_bvars: Concat bvars from binary format
-        debug_mode: Turn on debugging mode
-        help_: Display help message
-        runner: Command runner
+        input_file: Filename of input image/mesh/bvars.
+        output_name: Output name.
+        norm_factors: Filename of normalization factors.
+        reference_image: Filename of reference image.
+        extra_path: Specifies extra path to image in .bvars file.
+        flirt_matrices: Text file containing filenames of flirt matrices.
+        use_scale: Do stats.
+        dice_overlap: Calculates Dice overlap.
+        input_mesh: Filename of input mesh.
+        use_norm: Normalize volumes measurements.
+        surface_out: Output vertex analysis on the surface.
+        threshold: Threshold for clean up.
+        mesh_label: Specifies the label used to fill the mesh.
+        use_bvars: Operate using the mode parameters output from FIRST.
+        use_recon_mni: Reconstruct meshes in MNI space.
+        vertex_analysis: Perform vertex-wise stats from bvars.
+        use_recon_native: Reconstruct meshes in native space.
+        use_rigid_align: Register meshes using 6 degree of freedom (7 if\
+            useScale is used).
+        design_matrix: Filename of fsl design matrix.
+        recon_mesh_from_bvars: Convert bvars to mesh.
+        read_bvars: Read bvars from binary format.
+        mesh_to_vol: Convert mesh to an image.
+        centre_origin: Places origin of mesh at the centre of the image.
+        save_vertices: Filename for saving matrix of vertex coords: (all x,\
+            then all y, then all z) by Nsubjects.
+        verbose: Output F-stats to standard out.
+        use_pca_filter: Smooths the surface by truncating the mode parameters.
+        num_modes: Number of modes to retain per structure.
+        single_boundary_corr: Correct boundary voxels of a single structure.
+        do_mvglm: Perform multivariate general linear model analysis.
+        concat_bvars: Concat bvars from binary format.
+        debug_mode: Turn on debugging mode.
+        help_: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FirtUtilsOutputs`).
     """

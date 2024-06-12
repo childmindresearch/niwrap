@@ -46,22 +46,22 @@ def overlay(
     
     Args:
         background_image: Image to use as background.
-        bg_thresh: (a float, a float). Min and max values for background
+        bg_thresh: (a float, a float). Min and max values for background\
             intensity.
         stat_image: Statistical image to overlay in color.
-        stat_thresh: (a float, a float). Min and max values for the statistical
+        stat_thresh: (a float, a float). Min and max values for the statistical\
             overlay.
         auto_thresh_bg: Automatically threshold the background image.
         full_bg_range: Use full range of background image.
         out_file: Combined image volume.
         out_type: 'float' or 'int'. Write output with float or int.
-        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
             Fsl output type.
         stat_image2: Second statistical image to overlay in color.
-        stat_thresh2: (a float, a float). Min and max values for second
+        stat_thresh2: (a float, a float). Min and max values for second\
             statistical overlay.
         use_checkerboard: Use checkerboard mask for overlay.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `OverlayOutputs`).
     """

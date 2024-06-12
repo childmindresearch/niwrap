@@ -41,15 +41,15 @@ def baycest(
     Bayesian analysis for chemical exchange saturation transfer z-spectra.
     
     Args:
-        data_file: Specify data file (nifti image)
-        mask_file: Specify mask file (nifti image)
-        output_dir: Specify output directory name
-        pools_file: Specify pools to be included in model (ascii matrix)
-        spec_file: Data specification (ascii matrix)
-        ptrain_file: Specify pulse shape (ascii matrix)
-        spatial_flag: Use spatial prior (appropriate for in vivo data)
-        t12prior_flag: Include uncertainty in T1 and T2 values
-        runner: Command runner
+        data_file: Specify data file (nifti image).
+        mask_file: Specify mask file (nifti image).
+        output_dir: Specify output directory name.
+        pools_file: Specify pools to be included in model (ascii matrix).
+        spec_file: Data specification (ascii matrix).
+        ptrain_file: Specify pulse shape (ascii matrix).
+        spatial_flag: Use spatial prior (appropriate for in vivo data).
+        t12prior_flag: Include uncertainty in T1 and T2 values.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BaycestOutputs`).
     """

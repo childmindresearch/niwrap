@@ -185,14 +185,14 @@ def cifti_create_dense_scalar(
     THALAMUS_RIGHT.
     
     Args:
-        cifti_out: the output cifti file
-        volume: volume component
-        left_metric: metric for left surface
-        right_metric: metric for right surface
-        cerebellum_metric: metric for the cerebellum
-        opt_name_file_file: use a text file to set all map names: text file
-            containing map names, one per line
-        runner: Command runner
+        cifti_out: the output cifti file.
+        volume: volume component.
+        left_metric: metric for left surface.
+        right_metric: metric for right surface.
+        cerebellum_metric: metric for the cerebellum.
+        opt_name_file_file: use a text file to set all map names: text file\
+            containing map names, one per line.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiCreateDenseScalarOutputs`).
     """

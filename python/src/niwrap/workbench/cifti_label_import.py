@@ -62,16 +62,16 @@ def cifti_label_import(
     -discard-others to instead set these values to the "unlabeled" key.
     
     Args:
-        input_: the input cifti file
-        label_list_file: text file containing the values and names for labels
-        output: the output cifti label file
-        opt_discard_others: set any values not mentioned in the label list to
-            the ??? label
-        opt_unlabeled_value_value: set the value that will be interpreted as
-            unlabeled: the numeric value for unlabeled (default 0)
-        opt_drop_unused_labels: remove any unused label values from the label
-            table
-        runner: Command runner
+        input_: the input cifti file.
+        label_list_file: text file containing the values and names for labels.
+        output: the output cifti label file.
+        opt_discard_others: set any values not mentioned in the label list to\
+            the ??? label.
+        opt_unlabeled_value_value: set the value that will be interpreted as\
+            unlabeled: the numeric value for unlabeled (default 0).
+        opt_drop_unused_labels: remove any unused label values from the label\
+            table.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiLabelImportOutputs`).
     """

@@ -46,9 +46,9 @@ def surface_create_sphere(
     $ wb_command -set-structure Sphere.6k.L.surf.gii CORTEX_LEFT.
     
     Args:
-        num_vertices: desired number of vertices
-        sphere_out: the output sphere
-        runner: Command runner
+        num_vertices: desired number of vertices.
+        sphere_out: the output sphere.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceCreateSphereOutputs`).
     """

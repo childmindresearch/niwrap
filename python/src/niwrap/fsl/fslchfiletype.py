@@ -36,12 +36,12 @@ def fslchfiletype(
     https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#FSL_UTILITIES
     
     Args:
-        filetype: The type of the file to convert to. Valid values include:
-            ANALYZE, ANALYZE_GZ, NIFTI, NIFTI_GZ, NIFTI_PAIR, NIFTI_PAIR_GZ, NIFTI2,
-            NIFTI2_GZ, NIFTI2_PAIR, NIFTI2_PAIR_GZ.
+        filetype: The type of the file to convert to. Valid values include:\
+            ANALYZE, ANALYZE_GZ, NIFTI, NIFTI_GZ, NIFTI_PAIR, NIFTI_PAIR_GZ,\
+            NIFTI2, NIFTI2_GZ, NIFTI2_PAIR, NIFTI2_PAIR_GZ.
         filename: The name of the input image file.
         filename2: The name of the output image file (optional).
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslchfiletypeOutputs`).
     """

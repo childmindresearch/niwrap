@@ -36,8 +36,8 @@ def feat(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
     
     Args:
-        design_file: FEAT design file (e.g. design.fsf)
-        runner: Command runner
+        design_file: FEAT design file (e.g. design.fsf).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FeatOutputs`).
     """

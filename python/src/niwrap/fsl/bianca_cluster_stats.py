@@ -32,11 +32,11 @@ def bianca_cluster_stats(
     Calculate number of clusters and WMH volume in a BIANCA output map.
     
     Args:
-        bianca_output_map: BIANCA output map file
-        threshold: Threshold value to apply
-        min_cluster_size: Minimum cluster size in voxels
-        mask: Optional mask file (in the same space as the BIANCA output map)
-        runner: Command runner
+        bianca_output_map: BIANCA output map file.
+        threshold: Threshold value to apply.
+        min_cluster_size: Minimum cluster size in voxels.
+        mask: Optional mask file (in the same space as the BIANCA output map).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BiancaClusterStatsOutputs`).
     """

@@ -63,18 +63,18 @@ def metric_label_import(
     -discard-others to instead set these values to the "unlabeled" key.
     
     Args:
-        input_: the input metric file
-        label_list_file: text file containing the values and names for labels
-        output: the output gifti label file
-        opt_discard_others: set any values not mentioned in the label list to
-            the ??? label
-        opt_unlabeled_value_value: set the value that will be interpreted as
-            unlabeled: the numeric value for unlabeled (default 0)
-        opt_column_column: select a single column to import: the column number
-            or name
-        opt_drop_unused_labels: remove any unused label values from the label
-            table
-        runner: Command runner
+        input_: the input metric file.
+        label_list_file: text file containing the values and names for labels.
+        output: the output gifti label file.
+        opt_discard_others: set any values not mentioned in the label list to\
+            the ??? label.
+        opt_unlabeled_value_value: set the value that will be interpreted as\
+            unlabeled: the numeric value for unlabeled (default 0).
+        opt_column_column: select a single column to import: the column number\
+            or name.
+        opt_drop_unused_labels: remove any unused label values from the label\
+            table.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricLabelImportOutputs`).
     """

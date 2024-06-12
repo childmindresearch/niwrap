@@ -64,44 +64,45 @@ def asl_file(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/AslFile
     
     Args:
-        datafile: ASL data file
-        ntis: Number of TIs in the file
-        outfile: Output data file
-        mask: Mask file
-        inblockform: Input block format
-        inaslform: ASL data form
-        rpts: Number of repeats at each TI as comma separated list, not required
-            if the number of repeats is same for all TIs (only for use with
-            --ibf=tis)
-        pairs: Data contains adjacent pairs of measurements (e.g. Tag, Control)
-            DEPRECATED use --iaf instead
-        spairs: Split the pairs within the data, e.g. to separate tag and
-            control images in output
-        diff: Take the difference between the pairs, i.e., Tag-control
-            difference
-        surrdiff: Do surround subtraction on the pairs
-        extrapolate: Option to extrapolate the edge of the brain to fix the
-            artefact on the edge of the brain
-        neighbour: Neighbour size for extrapolation, must be an odd number
-            between 3 and 9. Default: 5
-        pvgm: GM partial volume map
-        pvwm: WM partial volume map
-        kernel: Kernel size (in voxels) of partial volume correction, must be an
-            odd number between 3 and 9. Default: 5
-        outblockform: Output block format
-        mean: Output ASL data having taken mean at each TI to file
-        split: Split data into separate files for each TI, specify filename root
-        epoch: Output epochs of ASL data (takes mean at each TI within the
-            epoch)
-        epoch_length: Length of epochs in number of repeats
-        epoch_overlap: Amount of overlap between epochs in number of repeats
-        epoch_unit: Epochs to be determined over
-        deconv: Deconvolution of data with arterial input functions
-        aif: Arterial input functions for deconvolution (4D volume, one aif for
-            each voxel within mask)
-        help_: Display the help message
-        version: Display version identification
-        runner: Command runner
+        datafile: ASL data file.
+        ntis: Number of TIs in the file.
+        outfile: Output data file.
+        mask: Mask file.
+        inblockform: Input block format.
+        inaslform: ASL data form.
+        rpts: Number of repeats at each TI as comma separated list, not\
+            required if the number of repeats is same for all TIs (only for use\
+            with --ibf=tis).
+        pairs: Data contains adjacent pairs of measurements (e.g. Tag, Control)\
+            DEPRECATED use --iaf instead.
+        spairs: Split the pairs within the data, e.g. to separate tag and\
+            control images in output.
+        diff: Take the difference between the pairs, i.e., Tag-control\
+            difference.
+        surrdiff: Do surround subtraction on the pairs.
+        extrapolate: Option to extrapolate the edge of the brain to fix the\
+            artefact on the edge of the brain.
+        neighbour: Neighbour size for extrapolation, must be an odd number\
+            between 3 and 9. Default: 5.
+        pvgm: GM partial volume map.
+        pvwm: WM partial volume map.
+        kernel: Kernel size (in voxels) of partial volume correction, must be\
+            an odd number between 3 and 9. Default: 5.
+        outblockform: Output block format.
+        mean: Output ASL data having taken mean at each TI to file.
+        split: Split data into separate files for each TI, specify filename\
+            root.
+        epoch: Output epochs of ASL data (takes mean at each TI within the\
+            epoch).
+        epoch_length: Length of epochs in number of repeats.
+        epoch_overlap: Amount of overlap between epochs in number of repeats.
+        epoch_unit: Epochs to be determined over.
+        deconv: Deconvolution of data with arterial input functions.
+        aif: Arterial input functions for deconvolution (4D volume, one aif for\
+            each voxel within mask).
+        help_: Display the help message.
+        version: Display version identification.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AslFileOutputs`).
     """

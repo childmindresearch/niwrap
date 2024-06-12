@@ -76,16 +76,16 @@ def volume_gradient(
     and z components from a subvolume as consecutive subvolumes.
     
     Args:
-        volume_in: the input volume
-        volume_out: the output gradient magnitude volume
-        vector_volume_out: the vectors as a volume file
-        presmooth: smooth the volume before computing the gradient
-        opt_roi_roi_volume: select a region of interest to take the gradient of:
-            the region to take the gradient within
-        opt_vectors: output vectors
-        opt_subvolume_subvol: select a single subvolume to take the gradient of:
-            the subvolume number or name
-        runner: Command runner
+        volume_in: the input volume.
+        volume_out: the output gradient magnitude volume.
+        vector_volume_out: the vectors as a volume file.
+        presmooth: smooth the volume before computing the gradient.
+        opt_roi_roi_volume: select a region of interest to take the gradient\
+            of: the region to take the gradient within.
+        opt_vectors: output vectors.
+        opt_subvolume_subvol: select a single subvolume to take the gradient\
+            of: the subvolume number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeGradientOutputs`).
     """

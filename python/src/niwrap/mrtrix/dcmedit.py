@@ -121,33 +121,33 @@ def dcmedit(
     
     Args:
         file: the DICOM file to be edited.
-        anonymise: remove any identifiable information, by replacing the
-            following tags:
-            - any tag with Value Representation PN will be replaced
-            with 'anonymous'
-            - tag (0010,0030) PatientBirthDate will be replaced with
-            an empty string
-            WARNING: there is no guarantee that this command will
-            remove all identiable information, since such information
-            may be contained in any number of private vendor-specific
-            tags. You will need to double-check the results
-            independently if you need to ensure anonymity.
-        id_: replace all ID tags with string supplied. This consists of tags
-            (0010, 0020) PatientID and (0010, 1000) OtherPatientIDs
+        anonymise: remove any identifiable information, by replacing the\
+            following tags:\
+            - any tag with Value Representation PN will be replaced with\
+            'anonymous'\
+            - tag (0010,0030) PatientBirthDate will be replaced with an empty\
+            string\
+            WARNING: there is no guarantee that this command will remove all\
+            identiable information, since such information may be contained in\
+            any number of private vendor-specific tags. You will need to\
+            double-check the results independently if you need to ensure\
+            anonymity.
+        id_: replace all ID tags with string supplied. This consists of tags\
+            (0010, 0020) PatientID and (0010, 1000) OtherPatientIDs.
         tag: replace specific tag.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DcmeditOutputs`).
     """

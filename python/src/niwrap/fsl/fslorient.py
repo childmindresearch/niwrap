@@ -49,23 +49,25 @@ def fslorient(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        filename: Filename of the image to operate on (e.g. img.nii.gz)
-        get_orient: Prints FSL left-right orientation
-        get_sform: Prints the 16 elements of the sform matrix
-        get_qform: Prints the 16 elements of the qform matrix
-        set_sform: Sets the 16 elements of the sform matrix
-        set_qform: Sets the 16 elements of the qform matrix
-        get_sform_code: Prints the sform integer code
-        get_qform_code: Prints the qform integer code
-        set_sform_code: Sets sform integer code
-        set_qform_code: Sets qform integer code
-        copy_sform_to_qform: Sets the qform equal to the sform - code and matrix
-        copy_qform_to_sform: Sets the sform equal to the qform - code and matrix
-        delete_orient: Removes orient info from header
-        force_radiological: Makes FSL radiological header
-        force_neurological: Makes FSL neurological header - not Analyze
-        swap_orient: Swaps FSL radiological and FSL neurological
-        runner: Command runner
+        filename: Filename of the image to operate on (e.g. img.nii.gz).
+        get_orient: Prints FSL left-right orientation.
+        get_sform: Prints the 16 elements of the sform matrix.
+        get_qform: Prints the 16 elements of the qform matrix.
+        set_sform: Sets the 16 elements of the sform matrix.
+        set_qform: Sets the 16 elements of the qform matrix.
+        get_sform_code: Prints the sform integer code.
+        get_qform_code: Prints the qform integer code.
+        set_sform_code: Sets sform integer code.
+        set_qform_code: Sets qform integer code.
+        copy_sform_to_qform: Sets the qform equal to the sform - code and\
+            matrix.
+        copy_qform_to_sform: Sets the sform equal to the qform - code and\
+            matrix.
+        delete_orient: Removes orient info from header.
+        force_radiological: Makes FSL radiological header.
+        force_neurological: Makes FSL neurological header - not Analyze.
+        swap_orient: Swaps FSL radiological and FSL neurological.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslorientOutputs`).
     """

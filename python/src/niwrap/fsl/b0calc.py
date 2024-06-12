@@ -57,26 +57,26 @@ def b0calc(
     https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE/Guide#fieldmapcreation
     
     Args:
-        input_file: Filename of input image (usually a tissue/air segmentation)
-        output_file: Filename of B0 output volume
-        zero_order_x: Value for zeroth-order x-gradient field (per mm);
-            default=0
-        zero_order_y: Value for zeroth-order y-gradient field (per mm);
-            default=0
-        zero_order_z: Value for zeroth-order z-gradient field (per mm);
-            default=0
-        b0_x: Value for zeroth-order B0 field (x-component); default=0
-        b0_y: Value for zeroth-order B0 field (y-component); default=0
-        b0_z: Value for zeroth-order B0 field (z-component); default=1
-        delta: Delta value (chi_tissue - chi_air); default=-9.45e-6
-        chi0: Value for susceptibility of air; default=+4e-7
-        xyz_flag: Calculate and save all 3 field components (i.e. x,y,z)
-        extend_boundary: Relative proportion to extend voxels at boundary;
-            default=1
-        direct_conv: Use direct (image space) convolution, not FFT
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help message
-        runner: Command runner
+        input_file: Filename of input image (usually a tissue/air segmentation).
+        output_file: Filename of B0 output volume.
+        zero_order_x: Value for zeroth-order x-gradient field (per mm);\
+            default=0.
+        zero_order_y: Value for zeroth-order y-gradient field (per mm);\
+            default=0.
+        zero_order_z: Value for zeroth-order z-gradient field (per mm);\
+            default=0.
+        b0_x: Value for zeroth-order B0 field (x-component); default=0.
+        b0_y: Value for zeroth-order B0 field (y-component); default=0.
+        b0_z: Value for zeroth-order B0 field (z-component); default=1.
+        delta: Delta value (chi_tissue - chi_air); default=-9.45e-6.
+        chi0: Value for susceptibility of air; default=+4e-7.
+        xyz_flag: Calculate and save all 3 field components (i.e. x,y,z).
+        extend_boundary: Relative proportion to extend voxels at boundary;\
+            default=1.
+        direct_conv: Use direct (image space) convolution, not FFT.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `B0calcOutputs`).
     """

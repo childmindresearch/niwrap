@@ -42,14 +42,14 @@ def lesion_filling(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/LESION_FILLING
     
     Args:
-        infile: Input image filename (e.g., T1w image)
-        outfile: Output filename (lesion filled image)
-        lesionmask: Filename of lesion mask image
-        wmmask: Filename of white matter mask image
-        verbose_flag: Switch on diagnostic messages
-        components_flag: Save all lesion components as volumes
-        help_flag: Display help message
-        runner: Command runner
+        infile: Input image filename (e.g., T1w image).
+        outfile: Output filename (lesion filled image).
+        lesionmask: Filename of lesion mask image.
+        wmmask: Filename of white matter mask image.
+        verbose_flag: Switch on diagnostic messages.
+        components_flag: Save all lesion components as volumes.
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `LesionFillingOutputs`).
     """

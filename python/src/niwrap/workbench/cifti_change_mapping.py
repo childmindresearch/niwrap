@@ -101,15 +101,15 @@ def cifti_change_mapping(
     RADIAN.
     
     Args:
-        data_cifti: the cifti file to use the data from
-        direction: which direction on <data-cifti> to replace the mapping
-        cifti_out: the output cifti file
-        series: set the mapping to series
-        opt_scalar: set the mapping to scalar
-        opt_name_file_file: specify names for the maps: text file containing map
-            names, one per line
-        from_cifti: copy mapping from another cifti file
-        runner: Command runner
+        data_cifti: the cifti file to use the data from.
+        direction: which direction on <data-cifti> to replace the mapping.
+        cifti_out: the output cifti file.
+        series: set the mapping to series.
+        opt_scalar: set the mapping to scalar.
+        opt_name_file_file: specify names for the maps: text file containing\
+            map names, one per line.
+        from_cifti: copy mapping from another cifti file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiChangeMappingOutputs`).
     """

@@ -46,24 +46,24 @@ def standard_space_roi(
     transformed into the space of the input image.
     
     Args:
-        infile: Input image
-        outfile: Output image
-        mask_fov_flag: Mask output using transformed standard space FOV
-        mask_mask: Mask output using transformed standard space mask
-        mask_none_flag: Do not mask output
-        roi_fov_flag: Cut down input FOV using bounding box of the transformed
-            standard space FOV
-        roi_mask: Cut down input FOV using nonbackground bounding box of the
-            transformed standard space mask
-        roi_none_flag: Do not cut down input FOV
-        ss_ref: Standard space reference image to use (default:
-            /usr/local/fsl/data/standard/MNI152_T1)
-        alt_input: Alternative input image to apply the ROI to (instead of the
-            one used to register to the reference)
-        debug_flag: Debug mode (don't delete intermediate files)
-        bet_premask_flag: Equivalent to: -maskMASK
-            /usr/local/fsl/data/standard/MNI152_T1_2mm_brain_mask_dil -roiNONE
-        runner: Command runner
+        infile: Input image.
+        outfile: Output image.
+        mask_fov_flag: Mask output using transformed standard space FOV.
+        mask_mask: Mask output using transformed standard space mask.
+        mask_none_flag: Do not mask output.
+        roi_fov_flag: Cut down input FOV using bounding box of the transformed\
+            standard space FOV.
+        roi_mask: Cut down input FOV using nonbackground bounding box of the\
+            transformed standard space mask.
+        roi_none_flag: Do not cut down input FOV.
+        ss_ref: Standard space reference image to use (default:\
+            /usr/local/fsl/data/standard/MNI152_T1).
+        alt_input: Alternative input image to apply the ROI to (instead of the\
+            one used to register to the reference).
+        debug_flag: Debug mode (don't delete intermediate files).
+        bet_premask_flag: Equivalent to: -maskMASK\
+            /usr/local/fsl/data/standard/MNI152_T1_2mm_brain_mask_dil -roiNONE.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `StandardSpaceRoiOutputs`).
     """

@@ -83,13 +83,13 @@ def metric_reduce(
     .
     
     Args:
-        metric_in: the metric to reduce
-        operation: the reduction operator to use
-        metric_out: the output metric
-        exclude_outliers: exclude non-numeric values and outliers by standard
-            deviation
-        opt_only_numeric: exclude non-numeric values
-        runner: Command runner
+        metric_in: the metric to reduce.
+        operation: the reduction operator to use.
+        metric_out: the output metric.
+        exclude_outliers: exclude non-numeric values and outliers by standard\
+            deviation.
+        opt_only_numeric: exclude non-numeric values.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricReduceOutputs`).
     """

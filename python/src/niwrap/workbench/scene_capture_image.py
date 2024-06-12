@@ -194,55 +194,54 @@ def scene_capture_image(
     .
     
     Args:
-        scene_file: scene file
-        scene_name_or_number: name or number (starting at one) of the scene in
-            the scene file
-        image_file_name: output - image file name
-            The file name must end with a valid extension that
-            identifies the image file format. Valid extensions
-            on this system are: (.bmp .jpeg .jpg .png .ppm).
-            
-            If there is more than one window in the scene,
-            multiple image files are output with the window's
-            number inserted into the name of the image file
-            immediately before the image file's extension.
-        opt_size_window: Output image is size of window's graphics region from
+        scene_file: scene file.
+        scene_name_or_number: name or number (starting at one) of the scene in\
+            the scene file.
+        image_file_name: output - image file name\
+            The file name must end with a valid extension that identifies the\
+            image file format. Valid extensions on this system are: (.bmp .jpeg\
+            .jpg .png .ppm).\
+            \
+            If there is more than one window in the scene, multiple image files\
+            are output with the window's number inserted into the name of the\
+            image file immediately before the image file's extension.
+        opt_size_window: Output image is size of window's graphics region from\
             when scene was created.
-        opt_size_capture: Output image uses size from Capture Dialog when scene
-            was created
-        size_width_height: Width and height for output image
-        opt_size_width_width: Width for output image. Height is computed using
-            the aspect ratio from the window's width and height saved in the scene.:
-            Width for output image
-        opt_size_height_height: Height for output image. Width is computed using
-            the aspect ratio from the window's width and height saved in the scene.:
-            Height for output image
-        opt_units_units: Units for image width/height
-            Default is PIXELS: Name of units for image
-            width/height. Valid units are:
-            INCHES
-            CENTIMETERS
-            MILLIMETERS
-            METERS
-            PIXELS
-        resolution: Image resolution (number pixels per size unit)
-            Default is 300 PIXELS_PER_INCH
-        opt_margin_size: Add a margin to sides of the image using the window's
-            background color.: size of margin, in pixels, added to all sides of
-            output image
-        opt_no_scene_colors: Do not use background and foreground colors in
-            scene
+        opt_size_capture: Output image uses size from Capture Dialog when scene\
+            was created.
+        size_width_height: Width and height for output image.
+        opt_size_width_width: Width for output image. Height is computed using\
+            the aspect ratio from the window's width and height saved in the\
+            scene.: Width for output image.
+        opt_size_height_height: Height for output image. Width is computed\
+            using the aspect ratio from the window's width and height saved in the\
+            scene.: Height for output image.
+        opt_units_units: Units for image width/height\
+            Default is PIXELS: Name of units for image width/height. Valid\
+            units are:\
+            INCHES\
+            CENTIMETERS\
+            MILLIMETERS\
+            METERS\
+            PIXELS.
+        resolution: Image resolution (number pixels per size unit)\
+            Default is 300 PIXELS_PER_INCH.
+        opt_margin_size: Add a margin to sides of the image using the window's\
+            background color.: size of margin, in pixels, added to all sides of\
+            output image.
+        opt_no_scene_colors: Do not use background and foreground colors in\
+            scene.
         set_map_yoke: Override selected map index for a map yoking group.
-        conn_db_login: Login for scenes with files in Connectome Database. If
-            this option is not specified, the login and password stored in the
+        conn_db_login: Login for scenes with files in Connectome Database. If\
+            this option is not specified, the login and password stored in the\
             user's preferences is used.
-        opt_show_capture_settings: Print settings from Capture Dialog only, DO
-            NOT create image file(s)
-        opt_renderer_renderer: Select renderer for drawing image: Name of
-            renderer to use for drawing image
-        opt_print_image_info: Print the size and other information about output
-            images only and DO NOT create any output images
-        runner: Command runner
+        opt_show_capture_settings: Print settings from Capture Dialog only, DO\
+            NOT create image file(s).
+        opt_renderer_renderer: Select renderer for drawing image: Name of\
+            renderer to use for drawing image.
+        opt_print_image_info: Print the size and other information about output\
+            images only and DO NOT create any output images.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SceneCaptureImageOutputs`).
     """

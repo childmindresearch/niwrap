@@ -167,12 +167,12 @@ def cifti_export_dense_mapping(
     THALAMUS_RIGHT.
     
     Args:
-        cifti: the cifti file
-        direction: which direction to export the mapping from, ROW or COLUMN
-        volume_all: export the the mapping of all voxels
-        surface: export the the mapping of one surface structure
-        volume: export the the mapping of one volume structure
-        runner: Command runner
+        cifti: the cifti file.
+        direction: which direction to export the mapping from, ROW or COLUMN.
+        volume_all: export the the mapping of all voxels.
+        surface: export the the mapping of one surface structure.
+        volume: export the the mapping of one volume structure.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiExportDenseMappingOutputs`).
     """

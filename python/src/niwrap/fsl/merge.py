@@ -46,15 +46,15 @@ def merge(
     Args:
         in_files: A list of images to merge together.
         merged_file: Merged output file.
-        dimension: 't' or 'x' or 'y' or 'z' or 'a'. Dimension along which to
+        dimension: 't' or 'x' or 'y' or 'z' or 'a'. Dimension along which to\
             merge, optionally set tr input when dimension is t.
-        dimension_tr: Concatenate images in time and set out image tr to final
-            option value
-        tr: Use to specify tr in seconds (default is 1.00 sec), overrides
+        dimension_tr: Concatenate images in time and set out image tr to final\
+            option value.
+        tr: Use to specify tr in seconds (default is 1.00 sec), overrides\
             dimension and sets it to tr.
-        volume_number: Only use volume <N> from each input file (first volume is
-            0 and not 1).
-        runner: Command runner
+        volume_number: Only use volume <N> from each input file (first volume\
+            is 0 and not 1).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MergeOutputs`).
     """

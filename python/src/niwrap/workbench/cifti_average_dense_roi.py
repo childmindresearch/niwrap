@@ -100,23 +100,23 @@ def cifti_average_dense_roi(
     specified, they must have the same number of columns.
     
     Args:
-        cifti_out: output cifti dscalar file
-        cifti_roi: cifti file containing combined weights
-        opt_left_roi_roi_metric: weights to use for left hempsphere: the left
-            roi as a metric file
-        opt_right_roi_roi_metric: weights to use for right hempsphere: the right
-            roi as a metric file
-        opt_cerebellum_roi_roi_metric: weights to use for cerebellum surface:
-            the cerebellum roi as a metric file
-        opt_vol_roi_roi_vol: voxel weights to use: the roi volume file
-        opt_left_area_surf_left_surf: specify the left surface for vertex area
-            correction: the left surface file
-        opt_right_area_surf_right_surf: specify the right surface for vertex
-            area correction: the right surface file
-        opt_cerebellum_area_surf_cerebellum_surf: specify the cerebellum surface
-            for vertex area correction: the cerebellum surface file
-        cifti: specify an input cifti file
-        runner: Command runner
+        cifti_out: output cifti dscalar file.
+        cifti_roi: cifti file containing combined weights.
+        opt_left_roi_roi_metric: weights to use for left hempsphere: the left\
+            roi as a metric file.
+        opt_right_roi_roi_metric: weights to use for right hempsphere: the\
+            right roi as a metric file.
+        opt_cerebellum_roi_roi_metric: weights to use for cerebellum surface:\
+            the cerebellum roi as a metric file.
+        opt_vol_roi_roi_vol: voxel weights to use: the roi volume file.
+        opt_left_area_surf_left_surf: specify the left surface for vertex area\
+            correction: the left surface file.
+        opt_right_area_surf_right_surf: specify the right surface for vertex\
+            area correction: the right surface file.
+        opt_cerebellum_area_surf_cerebellum_surf: specify the cerebellum\
+            surface for vertex area correction: the cerebellum surface file.
+        cifti: specify an input cifti file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiAverageDenseRoiOutputs`).
     """

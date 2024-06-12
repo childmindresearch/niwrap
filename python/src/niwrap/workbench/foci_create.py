@@ -77,9 +77,9 @@ def foci_create(
     contained in the <surface> parameter and are projected to that surface.
     
     Args:
-        output: the output foci file
-        class_: specify class input data
-        runner: Command runner
+        output: the output foci file.
+        class_: specify class input data.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FociCreateOutputs`).
     """

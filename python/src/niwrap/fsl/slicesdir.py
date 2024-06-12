@@ -36,15 +36,15 @@ def slicesdir(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#SLICESDIR
     
     Args:
-        filelist: List of image files to process
-        flag_filelist: Filelist contains pairs of images (underlying and
-            red-outline images)
-        outline_image: Use the specified image as the red-outline image on top
-            of all images in the file list
-        edge_threshold: Use specified threshold for edges. If >0, use this
-            proportion of max-min; if <0, use the absolute value
-        slice_option: Output every second axial slice instead of 9 ortho slices
-        runner: Command runner
+        filelist: List of image files to process.
+        flag_filelist: Filelist contains pairs of images (underlying and\
+            red-outline images).
+        outline_image: Use the specified image as the red-outline image on top\
+            of all images in the file list.
+        edge_threshold: Use specified threshold for edges. If >0, use this\
+            proportion of max-min; if <0, use the absolute value.
+        slice_option: Output every second axial slice instead of 9 ortho slices.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SlicesdirOutputs`).
     """

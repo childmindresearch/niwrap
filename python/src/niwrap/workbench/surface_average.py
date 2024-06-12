@@ -79,13 +79,13 @@ def surface_average(
     reliability weights.
     
     Args:
-        surface_out: the output averaged surface
-        stddev_metric_out: the output metric for 3D sample standard deviation
-        uncert_metric_out: the output metric for uncertainty
-        opt_stddev: compute 3D sample standard deviation
-        opt_uncertainty: compute caret5 'uncertainty'
-        surf: specify a surface to include in the average
-        runner: Command runner
+        surface_out: the output averaged surface.
+        stddev_metric_out: the output metric for 3D sample standard deviation.
+        uncert_metric_out: the output metric for uncertainty.
+        opt_stddev: compute 3D sample standard deviation.
+        opt_uncertainty: compute caret5 'uncertainty'.
+        surf: specify a surface to include in the average.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceAverageOutputs`).
     """

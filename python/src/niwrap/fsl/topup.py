@@ -64,38 +64,38 @@ def topup(
     susceptibility-induced distortions in echo planar imaging (EPI) data.
     
     Args:
-        imain: Name of 4D file with images
-        datain: Name of text file with PE directions/times
-        out: Base-name of output files (spline coefficients (Hz) and movement
-            parameters)
-        fout: Name of image file with field (Hz)
-        iout: Name of 4D image file with unwarped images
-        logout: Name of log-file
-        warpres: (Approximate) resolution (in mm) of warp basis for the
-            different sub-sampling levels, default 10
-        subsamp: Sub-sampling scheme, default 1
-        fwhm: FWHM (in mm) of gaussian smoothing kernel, default 8
-        config: Name of config file specifying command line arguments
-        miter: Max # of non-linear iterations, default 5
-        lambda_: Weight of regularisation, default depending on --ssqlambda and
+        imain: Name of 4D file with images.
+        datain: Name of text file with PE directions/times.
+        out: Base-name of output files (spline coefficients (Hz) and movement\
+            parameters).
+        fout: Name of image file with field (Hz).
+        iout: Name of 4D image file with unwarped images.
+        logout: Name of log-file.
+        warpres: (Approximate) resolution (in mm) of warp basis for the\
+            different sub-sampling levels, default 10.
+        subsamp: Sub-sampling scheme, default 1.
+        fwhm: FWHM (in mm) of gaussian smoothing kernel, default 8.
+        config: Name of config file specifying command line arguments.
+        miter: Max # of non-linear iterations, default 5.
+        lambda_: Weight of regularisation, default depending on --ssqlambda and\
             --regmod switches. See user documentation.
-        ssqlambda: If set (=1), lambda is weighted by current ssq, default 1
-        regmod: Model for regularisation of warp-field [membrane_energy
-            bending_energy], default bending_energy
-        estmov: Estimate movements if set, default 1 (true)
-        minmet: Minimisation method 0=Levenberg-Marquardt, 1=Scaled Conjugate
-            Gradient, default 0 (LM)
-        splineorder: Order of spline, 2=Quadratic spline, 3=Cubic spline.
-            Default=3
-        numprec: Precision for representing Hessian, double or float. Default
-            double
-        interp: Image interpolation model, linear or spline. Default spline
-        scale: If set (=1), the images are individually scaled to a common mean,
-            default 0 (false)
-        regrid: If set (=1), the calculations are done in a different grid,
-            default 1 (true)
-        verbose: Print diagnostic information while running
-        runner: Command runner
+        ssqlambda: If set (=1), lambda is weighted by current ssq, default 1.
+        regmod: Model for regularisation of warp-field [membrane_energy\
+            bending_energy], default bending_energy.
+        estmov: Estimate movements if set, default 1 (true).
+        minmet: Minimisation method 0=Levenberg-Marquardt, 1=Scaled Conjugate\
+            Gradient, default 0 (LM).
+        splineorder: Order of spline, 2=Quadratic spline, 3=Cubic spline.\
+            Default=3.
+        numprec: Precision for representing Hessian, double or float. Default\
+            double.
+        interp: Image interpolation model, linear or spline. Default spline.
+        scale: If set (=1), the images are individually scaled to a common\
+            mean, default 0 (false).
+        regrid: If set (=1), the calculations are done in a different grid,\
+            default 1 (true).
+        verbose: Print diagnostic information while running.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TopupOutputs`).
     """

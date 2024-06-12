@@ -236,24 +236,26 @@ def volume_palette(
     .
     
     Args:
-        volume: the volume file to modify
-        mode: the mapping mode
-        opt_subvolume_subvolume: select a single subvolume: the subvolume number
-            or name
-        pos_percent: percentage min/max for positive data coloring
-        neg_percent: percentage min/max for negative data coloring
-        pos_user: user min/max values for positive data coloring
-        neg_user: user min/max values for negative data coloring
-        opt_interpolate_interpolate: interpolate colors: boolean, whether to
-            interpolate
-        opt_disp_pos_display: display positive data: boolean, whether to display
-        opt_disp_neg_display: display positive data: boolean, whether to display
-        opt_disp_zero_display: display data closer to zero than the min cutoff:
-            boolean, whether to display
-        opt_palette_name_name: set the palette used: the name of the palette
-        thresholding: set the thresholding
-        opt_inversion_type: specify palette inversion: the type of inversion
-        runner: Command runner
+        volume: the volume file to modify.
+        mode: the mapping mode.
+        opt_subvolume_subvolume: select a single subvolume: the subvolume\
+            number or name.
+        pos_percent: percentage min/max for positive data coloring.
+        neg_percent: percentage min/max for negative data coloring.
+        pos_user: user min/max values for positive data coloring.
+        neg_user: user min/max values for negative data coloring.
+        opt_interpolate_interpolate: interpolate colors: boolean, whether to\
+            interpolate.
+        opt_disp_pos_display: display positive data: boolean, whether to\
+            display.
+        opt_disp_neg_display: display positive data: boolean, whether to\
+            display.
+        opt_disp_zero_display: display data closer to zero than the min cutoff:\
+            boolean, whether to display.
+        opt_palette_name_name: set the palette used: the name of the palette.
+        thresholding: set the thresholding.
+        opt_inversion_type: specify palette inversion: the type of inversion.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumePaletteOutputs`).
     """

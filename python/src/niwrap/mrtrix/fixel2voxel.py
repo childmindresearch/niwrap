@@ -111,30 +111,30 @@ def fixel2voxel(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/fixel2voxel.html
     
     Args:
-        fixel_in: the input fixel data file
-        operation: the operation to apply, one of: mean, sum, product, min, max,
-            absmax, magmax, count, complexity, sf, dec_unit, dec_scaled, none.
+        fixel_in: the input fixel data file.
+        operation: the operation to apply, one of: mean, sum, product, min,\
+            max, absmax, magmax, count, complexity, sf, dec_unit, dec_scaled, none.
         image_out: the output scalar image.
-        number: use only the largest N fixels in calculation of the voxel-wise
-            statistic; in the case of operation "none", output only the largest N
+        number: use only the largest N fixels in calculation of the voxel-wise\
+            statistic; in the case of operation "none", output only the largest N\
             fixels in each voxel.
-        fill: for "none" operation, specify the value to fill when number of
-            fixels is fewer than the maximum (default: 0.0)
-        weighted: weight the contribution of each fixel to the per-voxel result
+        fill: for "none" operation, specify the value to fill when number of\
+            fixels is fewer than the maximum (default: 0.0).
+        weighted: weight the contribution of each fixel to the per-voxel result\
             according to its volume.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Fixel2voxelOutputs`).
     """

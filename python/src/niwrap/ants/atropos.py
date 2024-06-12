@@ -60,70 +60,72 @@ def atropos(
     More information: https://github.com/ANTsX/ANTs
     
     Args:
-        intensity_image: One or more scalar images is specified for
-            segmentation. For segmentation scenarios with no prior information, the
-            first scalar image encountered on the command line is used to order
-            labelings such that the class with the smallest intensity signature is
-            class '1' through class 'N' which represents the voxels with the largest
-            intensity values. The optional adaptive smoothing weight parameter is
-            applicable only when using prior label or probability images. This
-            scalar parameter is to be specified between [0,1] which smooths each
-            labeled region separately and modulates the intensity measurement at
-            each voxel in each intensity image between the original intensity and
-            its smoothed counterpart. The smoothness parameters are governed by the
-            -b/--bspline option.
-        initialization: To initialize the FMM parameters, one of the specified
-            options (Random, Otsu, KMeans, PriorProbabilityImages, or
+        intensity_image: One or more scalar images is specified for\
+            segmentation. For segmentation scenarios with no prior information, the\
+            first scalar image encountered on the command line is used to order\
+            labelings such that the class with the smallest intensity signature is\
+            class '1' through class 'N' which represents the voxels with the\
+            largest intensity values. The optional adaptive smoothing weight\
+            parameter is applicable only when using prior label or probability\
+            images. This scalar parameter is to be specified between [0,1] which\
+            smooths each labeled region separately and modulates the intensity\
+            measurement at each voxel in each intensity image between the original\
+            intensity and its smoothed counterpart. The smoothness parameters are\
+            governed by the -b/--bspline option.
+        initialization: To initialize the FMM parameters, one of the specified\
+            options (Random, Otsu, KMeans, PriorProbabilityImages, or\
             PriorLabelImage) must be used.
-        mask_image: The image mask (which is required) defines the region which
+        mask_image: The image mask (which is required) defines the region which\
             is to be labeled by the Atropos algorithm.
-        likelihood_model: Both parametric and non-parametric options exist in
+        likelihood_model: Both parametric and non-parametric options exist in\
             Atropos.
-        output: The output consists of a labeled image where each voxel in the
-            masked region is assigned a label from 1, 2, ..., N. Optionally, one can
-            also output the posterior probability images specified in the same
-            format as the prior probability images, e.g. posterior%02d.nii.gz
+        output: The output consists of a labeled image where each voxel in the\
+            masked region is assigned a label from 1, 2, ..., N. Optionally, one\
+            can also output the posterior probability images specified in the same\
+            format as the prior probability images, e.g. posterior%02d.nii.gz\
             (C-style file name formatting).
-        image_dimensionality: This option forces the image to be treated as a
-            specified-dimensional image. If not specified, Atropos tries to infer
+        image_dimensionality: This option forces the image to be treated as a\
+            specified-dimensional image. If not specified, Atropos tries to infer\
             the dimensionality from the first input image.
-        bspline: If the adaptive smoothing weights are > 0, the intensity images
-            are smoothed in calculating the likelihood values. This is to account
-            for subtle intensity differences across the same tissue regions.
-        partial_volume_label_set: The partial volume estimation option allows
+        bspline: If the adaptive smoothing weights are > 0, the intensity\
+            images are smoothed in calculating the likelihood values. This is to\
+            account for subtle intensity differences across the same tissue\
+            regions.
+        partial_volume_label_set: The partial volume estimation option allows\
             one to model mixtures of classes within single voxels.
-        use_partial_volume_likelihoods: The user can specify whether or not to
+        use_partial_volume_likelihoods: The user can specify whether or not to\
             use the partial volume likelihoods.
-        posterior_formulation: Different posterior probability formulations are
+        posterior_formulation: Different posterior probability formulations are\
             possible as are different update options.
-        convergence: Convergence is determined by calculating the mean maximum
-            posterior probability over the region of interest at each iteration.
-            When this value decreases or increases less than the specified threshold
-            from the previous iteration or the maximum number of iterations is
-            exceeded the program terminates.
-        mrf: Markov random field (MRF) theory provides a general framework for
-            enforcing spatially contextual constraints on the segmentation solution.
-        icm: Asynchronous updating requires the construction of an ICM code
-            image which is a label image (with labels in the range
-            {1,..,MaximumICMCode}) constructed such that no MRF neighborhood has
+        convergence: Convergence is determined by calculating the mean maximum\
+            posterior probability over the region of interest at each iteration.\
+            When this value decreases or increases less than the specified\
+            threshold from the previous iteration or the maximum number of\
+            iterations is exceeded the program terminates.
+        mrf: Markov random field (MRF) theory provides a general framework for\
+            enforcing spatially contextual constraints on the segmentation\
+            solution.
+        icm: Asynchronous updating requires the construction of an ICM code\
+            image which is a label image (with labels in the range\
+            {1,..,MaximumICMCode}) constructed such that no MRF neighborhood has\
             duplicate ICM code labels.
-        use_random_seed: Initialize internal random number generator with a
+        use_random_seed: Initialize internal random number generator with a\
             random seed.
-        minimize_memory_usage: By default, memory usage is not minimized,
-            however, if this is needed, the various probability and distance images
-            are calculated on the fly instead of being stored in memory at each
-            iteration. Also, if prior probability images are used, only the
+        minimize_memory_usage: By default, memory usage is not minimized,\
+            however, if this is needed, the various probability and distance images\
+            are calculated on the fly instead of being stored in memory at each\
+            iteration. Also, if prior probability images are used, only the\
             non-negligible pixel values are stored in memory.
-        winsorize_outliers: To remove the effects of outliers in calculating the
-            weighted mean and weighted covariance, the user can opt to remove the
-            outliers through the options specified below.
-        use_euclidean_distance: Given prior label or probability images, the
-            labels are propagated throughout the masked region so that every voxel
+        winsorize_outliers: To remove the effects of outliers in calculating\
+            the weighted mean and weighted covariance, the user can opt to remove\
+            the outliers through the options specified below.
+        use_euclidean_distance: Given prior label or probability images, the\
+            labels are propagated throughout the masked region so that every voxel\
             in the mask is labeled.
-        label_propagation: The propagation of each prior label can be controlled
-            by the lambda and boundary probability parameters.
+        label_propagation: The propagation of each prior label can be\
+            controlled by the lambda and boundary probability parameters.
         verbose: Verbose output.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AtroposOutputs`).
     """

@@ -54,22 +54,22 @@ def ants_brain_extraction_sh(
     More information: https://github.com/ANTsX/ANTs
     
     Args:
-        anatomical_image: Anatomical image (Structural image, typically T1)
-        template: Brain extraction template (Anatomical template)
-        probability_mask: Brain extraction probability mask
-        output_prefix: Output prefix
-        image_dimension: Image dimension (2 or 3)
-        tissue_classification: Tissue classification
-        brain_extraction_registration_mask: Brain extraction registration mask
-        keep_temporary_files: Keep temporary files
-        single_floating_point_precision: Use single floating point precision
-        initial_moving_transform: Initial moving transform
-        rotation_search_params: Rotation search parameters
-        image_file_suffix: Image file suffix
-        translation_search_params: Translation search parameters
-        random_seeding: Use random seeding
-        debug_mode: Test / debug mode
-        runner: Command runner
+        anatomical_image: Anatomical image (Structural image, typically T1).
+        template: Brain extraction template (Anatomical template).
+        probability_mask: Brain extraction probability mask.
+        output_prefix: Output prefix.
+        image_dimension: Image dimension (2 or 3).
+        tissue_classification: Tissue classification.
+        brain_extraction_registration_mask: Brain extraction registration mask.
+        keep_temporary_files: Keep temporary files.
+        single_floating_point_precision: Use single floating point precision.
+        initial_moving_transform: Initial moving transform.
+        rotation_search_params: Rotation search parameters.
+        image_file_suffix: Image file suffix.
+        translation_search_params: Translation search parameters.
+        random_seeding: Use random seeding.
+        debug_mode: Test / debug mode.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AntsBrainExtractionShOutputs`).
     """

@@ -82,32 +82,32 @@ def randomise(
         f_only: Calculate f-statistics only.
         fcon: F contrasts file.
         mask: Mask image.
-        num_perm: Number of permutations (default 5000, set to 0 for
+        num_perm: Number of permutations (default 5000, set to 0 for\
             exhaustive).
-        one_sample_group_mean: Perform 1-sample group-mean test instead of
+        one_sample_group_mean: Perform 1-sample group-mean test instead of\
             generic permutation test.
-        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
             Fsl output type.
-        p_vec_n_dist_files: Output permutation vector and null distribution text
-            files.
+        p_vec_n_dist_files: Output permutation vector and null distribution\
+            text files.
         raw_stats_imgs: Output raw ( unpermuted ) statistic images.
         seed: Specific integer seed for random number generator.
-        show_info_parallel_mode: Print out information required for parallel
+        show_info_parallel_mode: Print out information required for parallel\
             mode and exit.
-        show_total_perms: Print out how many unique permutations would be
+        show_total_perms: Print out how many unique permutations would be\
             generated and exit.
         tcon: T contrasts file.
         tfce: Carry out threshold-free cluster enhancement.
-        tfce2_d: Carry out threshold-free cluster enhancement with 2d
+        tfce2_d: Carry out threshold-free cluster enhancement with 2d\
             optimisation.
         tfce_c: Tfce connectivity (6 or 26; default=6).
         tfce_e: Tfce extent parameter (default=0.5).
         tfce_h: Tfce height parameter (default=2).
         var_smooth: Use variance smoothing (std is in mm).
-        vox_p_values: Output voxelwise (corrected and uncorrected) p-value
+        vox_p_values: Output voxelwise (corrected and uncorrected) p-value\
             images.
         x_block_labels: Exchangeability block labels file.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RandomiseOutputs`).
     """

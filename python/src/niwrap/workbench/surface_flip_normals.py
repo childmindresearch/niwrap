@@ -41,9 +41,9 @@ def surface_flip_normals(
     problem.
     
     Args:
-        surface: the surface to flip the normals of
-        surface_out: the output surface
-        runner: Command runner
+        surface: the surface to flip the normals of.
+        surface_out: the output surface.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceFlipNormalsOutputs`).
     """

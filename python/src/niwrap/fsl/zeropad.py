@@ -37,9 +37,9 @@ def zeropad(
     More information: Unknown
     
     Args:
-        input_number: Input number to be zero-padded
-        length: Desired length of the output string
-        runner: Command runner
+        input_number: Input number to be zero-padded.
+        length: Desired length of the output string.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ZeropadOutputs`).
     """

@@ -33,9 +33,9 @@ def zeropad(
     Add leading zeros to a number up to the specified length.
     
     Args:
-        input_number: Input number to pad
-        output_length: Desired length of output with leading zeros
-        runner: Command runner
+        input_number: Input number to pad.
+        output_length: Desired length of output with leading zeros.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ZeropadOutputs`).
     """

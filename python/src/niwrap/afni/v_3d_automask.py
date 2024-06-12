@@ -47,12 +47,12 @@ def v_3d_automask(
     
     Args:
         in_file: Input file to 3dautomask.
-        clfrac: Sets the clip level fraction (must be 0.1-0.9). a small value
+        clfrac: Sets the clip level fraction (must be 0.1-0.9). a small value\
             will tend to make the mask larger [default = 0.5].
         dilate: Dilate the mask outwards.
         erode: Erode the mask inwards.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dAutomaskOutputs`).
     """

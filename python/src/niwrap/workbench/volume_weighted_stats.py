@@ -108,19 +108,19 @@ def volume_weighted_stats(
     to volume.
     
     Args:
-        volume_in: the input volume
-        weight_volume: use weights from a volume file
-        opt_subvolume_subvolume: only display output for one subvolume: the
-            subvolume number or name
-        roi: only consider data inside an roi
-        opt_mean: compute weighted mean
-        opt_stdev: compute weighted standard deviation
-        opt_sample: estimate population stdev from the sample
-        opt_percentile_percent: compute weighted percentile: the percentile to
-            find, must be between 0 and 100
-        opt_sum: compute weighted sum
-        opt_show_map_name: print map index and name before each output
-        runner: Command runner
+        volume_in: the input volume.
+        weight_volume: use weights from a volume file.
+        opt_subvolume_subvolume: only display output for one subvolume: the\
+            subvolume number or name.
+        roi: only consider data inside an roi.
+        opt_mean: compute weighted mean.
+        opt_stdev: compute weighted standard deviation.
+        opt_sample: estimate population stdev from the sample.
+        opt_percentile_percent: compute weighted percentile: the percentile to\
+            find, must be between 0 and 100.
+        opt_sum: compute weighted sum.
+        opt_show_map_name: print map index and name before each output.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeWeightedStatsOutputs`).
     """

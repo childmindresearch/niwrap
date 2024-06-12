@@ -55,36 +55,36 @@ def fsl_histogram(
     Histogram plotting tool for FSL.
     
     Args:
-        input_file: Input file name
-        input_file_duplicate: Input file name
-        output_file: Output filename for the PNG file
-        output_file_duplicate: Output filename for the PNG file
-        mask_file: Mask file name
-        mask_file_duplicate: Mask file name
-        gmmfit_file: File name of matrix with parameter estimates of
-            Gaussian/Gamma mixture model (means, variances and proportions per row)
-        gmmfit_file_duplicate: File name of matrix with parameter estimates of
-            Gaussian/Gamma mixture model (means, variances and proportions per row)
-        plot_title: Plot title
-        plot_title_duplicate: Plot title
-        legend_file: File name of ASCII text file, one row per legend entry
-        legend_file_duplicate: File name of ASCII text file, one row per legend
-            entry
-        xlabel: X-axis label
-        xlabel_duplicate: X-axis label
-        ylabel: Y-axis label
-        ylabel_duplicate: Y-axis label
-        plot_height: Plot height in pixels (default 400)
-        plot_height_duplicate: Plot height in pixels (default 400)
-        plot_width: Plot width in pixels (default 600)
-        plot_width_duplicate: Plot width in pixels (default 600)
-        num_bins: Number of histogram bins
-        num_bins_duplicate: Number of histogram bins
-        zoom_factor: Zoom factor for y-range (e.g. 2.0)
-        zoom_factor_duplicate: Zoom factor for y-range (e.g. 2.0)
-        use_gmm_flag: Use Gaussian mixture model instead of Gaussian/Gamma
-            mixture model
-        runner: Command runner
+        input_file: Input file name.
+        input_file_duplicate: Input file name.
+        output_file: Output filename for the PNG file.
+        output_file_duplicate: Output filename for the PNG file.
+        mask_file: Mask file name.
+        mask_file_duplicate: Mask file name.
+        gmmfit_file: File name of matrix with parameter estimates of\
+            Gaussian/Gamma mixture model (means, variances and proportions per row).
+        gmmfit_file_duplicate: File name of matrix with parameter estimates of\
+            Gaussian/Gamma mixture model (means, variances and proportions per row).
+        plot_title: Plot title.
+        plot_title_duplicate: Plot title.
+        legend_file: File name of ASCII text file, one row per legend entry.
+        legend_file_duplicate: File name of ASCII text file, one row per legend\
+            entry.
+        xlabel: X-axis label.
+        xlabel_duplicate: X-axis label.
+        ylabel: Y-axis label.
+        ylabel_duplicate: Y-axis label.
+        plot_height: Plot height in pixels (default 400).
+        plot_height_duplicate: Plot height in pixels (default 400).
+        plot_width: Plot width in pixels (default 600).
+        plot_width_duplicate: Plot width in pixels (default 600).
+        num_bins: Number of histogram bins.
+        num_bins_duplicate: Number of histogram bins.
+        zoom_factor: Zoom factor for y-range (e.g. 2.0).
+        zoom_factor_duplicate: Zoom factor for y-range (e.g. 2.0).
+        use_gmm_flag: Use Gaussian mixture model instead of Gaussian/Gamma\
+            mixture model.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslHistogramOutputs`).
     """

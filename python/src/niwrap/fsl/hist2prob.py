@@ -35,11 +35,11 @@ def hist2prob(
     thresholds.
     
     Args:
-        image: Input histogram image
-        size: Size of the histogram
-        low_threshold: Lower threshold for probability conversion
-        high_threshold: Higher threshold for probability conversion
-        runner: Command runner
+        image: Input histogram image.
+        size: Size of the histogram.
+        low_threshold: Lower threshold for probability conversion.
+        high_threshold: Higher threshold for probability conversion.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Hist2probOutputs`).
     """

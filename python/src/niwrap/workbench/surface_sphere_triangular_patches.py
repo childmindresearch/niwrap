@@ -36,11 +36,11 @@ def surface_sphere_triangular_patches(
     Patches overlap by a border of 1 vertex.
     
     Args:
-        sphere: an undistorted, regularly divided icosahedral sphere
-        divisions: how many pieces to divide each icosahedral edge into, must
-            divide perfectly into the given sphere
-        text_out: output - text file for the vertex numbers of the patches
-        runner: Command runner
+        sphere: an undistorted, regularly divided icosahedral sphere.
+        divisions: how many pieces to divide each icosahedral edge into, must\
+            divide perfectly into the given sphere.
+        text_out: output - text file for the vertex numbers of the patches.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceSphereTriangularPatchesOutputs`).
     """

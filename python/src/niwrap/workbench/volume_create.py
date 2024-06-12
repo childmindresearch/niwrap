@@ -88,13 +88,13 @@ def volume_create(
     specified.
     
     Args:
-        i_dim: length of first dimension
-        j_dim: length of second dimension
-        k_dim: length of third dimension
-        volume_out: the output volume
-        plumb: set via axis order and spacing/offset
-        sform: set via a nifti sform
-        runner: Command runner
+        i_dim: length of first dimension.
+        j_dim: length of second dimension.
+        k_dim: length of third dimension.
+        volume_out: the output volume.
+        plumb: set via axis order and spacing/offset.
+        sform: set via a nifti sform.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeCreateOutputs`).
     """

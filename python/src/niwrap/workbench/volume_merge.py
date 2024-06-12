@@ -126,9 +126,9 @@ def volume_merge(
     subvolumes from second.nii, and write these to out.nii.
     
     Args:
-        volume_out: the output volume file
-        volume: specify an input volume file
-        runner: Command runner
+        volume_out: the output volume file.
+        volume: specify an input volume file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeMergeOutputs`).
     """

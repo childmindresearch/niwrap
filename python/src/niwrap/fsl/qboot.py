@@ -56,37 +56,37 @@ def qboot(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        data_file: Data file
-        mask_file: Mask file
-        bvecs_file: b vectors file
-        bvals_file: b values file
-        log_dir: Output directory (default is logdir)
-        forcedir_flag: Use the actual directory name given - i.e. don't add + to
-            make a new directory
-        q_file: File provided with multi-shell data. Indicates the number of
-            directions for each shell
-        model_type: Which model to use. 1=Tuch's ODFs, 2=CSA ODFs (default),
-            3=multi-shell CSA ODFs
-        lmax_order: Maximum spherical harmonic order employed (must be even,
-            default=4)
-        npeaks: Maximum number of ODF peaks to be detected (default 2)
-        threshold: Minimum threshold for a local maxima to be considered an ODF
-            peak. Expressed as a fraction of the maximum ODF value (default 0.4)
-        num_samples: Number of bootstrap samples (default is 50)
-        lambda_param: Laplace-Beltrami regularization parameter (default is 0)
-        delta_param: Signal attenuation regularization parameter for models=2,3
-            (default is 0.01)
-        alpha_param: Laplacian sharpening parameter for model=1 (default is 0,
-            should be smaller than 1)
-        seed_param: Seed for pseudo-random number generator
-        gfa_flag: Compute a generalised FA, using the mean ODF in each voxel
-        savecoeff_flag: Save the ODF coefficients instead of the peaks. WARNING:
-            These can be huge files, please use a few bootstrap samples and a low
-            lmax!
-        savemeancoeff_flag: Save the mean ODF coefficients across all samples
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display this help message
-        runner: Command runner
+        data_file: Data file.
+        mask_file: Mask file.
+        bvecs_file: b vectors file.
+        bvals_file: b values file.
+        log_dir: Output directory (default is logdir).
+        forcedir_flag: Use the actual directory name given - i.e. don't add +\
+            to make a new directory.
+        q_file: File provided with multi-shell data. Indicates the number of\
+            directions for each shell.
+        model_type: Which model to use. 1=Tuch's ODFs, 2=CSA ODFs (default),\
+            3=multi-shell CSA ODFs.
+        lmax_order: Maximum spherical harmonic order employed (must be even,\
+            default=4).
+        npeaks: Maximum number of ODF peaks to be detected (default 2).
+        threshold: Minimum threshold for a local maxima to be considered an ODF\
+            peak. Expressed as a fraction of the maximum ODF value (default 0.4).
+        num_samples: Number of bootstrap samples (default is 50).
+        lambda_param: Laplace-Beltrami regularization parameter (default is 0).
+        delta_param: Signal attenuation regularization parameter for models=2,3\
+            (default is 0.01).
+        alpha_param: Laplacian sharpening parameter for model=1 (default is 0,\
+            should be smaller than 1).
+        seed_param: Seed for pseudo-random number generator.
+        gfa_flag: Compute a generalised FA, using the mean ODF in each voxel.
+        savecoeff_flag: Save the ODF coefficients instead of the peaks.\
+            WARNING: These can be huge files, please use a few bootstrap samples\
+            and a low lmax!.
+        savemeancoeff_flag: Save the mean ODF coefficients across all samples.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display this help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `QbootOutputs`).
     """

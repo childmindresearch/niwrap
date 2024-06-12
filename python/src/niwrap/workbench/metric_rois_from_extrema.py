@@ -49,19 +49,19 @@ def metric_rois_from_extrema(
     vertex within range of more than one ROI does not belong to any ROI.
     
     Args:
-        surface: the surface to use for geodesic distance
-        metric: the input metric file
-        limit: geodesic distance limit from vertex, in mm
-        metric_out: the output metric file
-        opt_gaussian_sigma: generate a gaussian kernel instead of a flat ROI:
-            the sigma for the gaussian kernel, in mm
-        opt_roi_roi_metric: select a region of interest to use: the area to use,
-            as a metric
-        opt_overlap_logic_method: how to handle overlapping ROIs, default ALLOW:
-            the method of resolving overlaps
-        opt_column_column: select a single input column to use: the column
-            number or name
-        runner: Command runner
+        surface: the surface to use for geodesic distance.
+        metric: the input metric file.
+        limit: geodesic distance limit from vertex, in mm.
+        metric_out: the output metric file.
+        opt_gaussian_sigma: generate a gaussian kernel instead of a flat ROI:\
+            the sigma for the gaussian kernel, in mm.
+        opt_roi_roi_metric: select a region of interest to use: the area to\
+            use, as a metric.
+        opt_overlap_logic_method: how to handle overlapping ROIs, default\
+            ALLOW: the method of resolving overlaps.
+        opt_column_column: select a single input column to use: the column\
+            number or name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricRoisFromExtremaOutputs`).
     """

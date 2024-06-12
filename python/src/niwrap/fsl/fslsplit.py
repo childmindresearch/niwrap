@@ -41,13 +41,13 @@ def fslsplit(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        infile: Input image (e.g. img.nii.gz)
-        output_basename: Output basename (default: vol)
-        separation_time: Separate images in time (default behaviour)
-        separation_x: Separate images in the x direction
-        separation_y: Separate images in the y direction
-        separation_z: Separate images in the z direction
-        runner: Command runner
+        infile: Input image (e.g. img.nii.gz).
+        output_basename: Output basename (default: vol).
+        separation_time: Separate images in time (default behaviour).
+        separation_x: Separate images in the x direction.
+        separation_y: Separate images in the y direction.
+        separation_z: Separate images in the z direction.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslsplitOutputs`).
     """

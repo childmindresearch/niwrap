@@ -47,13 +47,13 @@ def v_3d_tcat(
         in_files: Input file to 3dtcat.
         num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
-        rlt: '' or '+' or '++'. Remove linear trends in each voxel time series
-            loaded from each input dataset, separately. option -rlt removes the
-            least squares fit of 'a+b*t' to each voxel time series. option -rlt+
-            adds dataset mean back in. option -rlt++ adds overall mean of all
+        rlt: '' or '+' or '++'. Remove linear trends in each voxel time series\
+            loaded from each input dataset, separately. option -rlt removes the\
+            least squares fit of 'a+b*t' to each voxel time series. option -rlt+\
+            adds dataset mean back in. option -rlt++ adds overall mean of all\
             dataset timeseries back in.
         verbose: Print out some verbose output as the program.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dTcatOutputs`).
     """

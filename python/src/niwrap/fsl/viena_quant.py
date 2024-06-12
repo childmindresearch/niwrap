@@ -33,10 +33,10 @@ def viena_quant(
     Automated brain ventricle quantification tool.
     
     Args:
-        input1: Input image 1 (e.g. img1.nii.gz)
-        input2: Input image 2 (e.g. img2.nii.gz)
-        ventricle_mask: Ventricle mask (e.g. mask.nii.gz)
-        runner: Command runner
+        input1: Input image 1 (e.g. img1.nii.gz).
+        input2: Input image 2 (e.g. img2.nii.gz).
+        ventricle_mask: Ventricle mask (e.g. mask.nii.gz).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VienaQuantOutputs`).
     """

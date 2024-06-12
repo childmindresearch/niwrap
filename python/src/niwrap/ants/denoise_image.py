@@ -49,27 +49,27 @@ def denoise_image(
     More information: https://github.com/ANTsX/ANTs
     
     Args:
-        input_image: -i, --input-image inputImageFilename. A scalar image is
+        input_image: -i, --input-image inputImageFilename. A scalar image is\
             expected as input for noise correction.
         corrected_image_path: The noise corrected version of the input image.
         noise_image_path: Estimated noise image.
-        image_dimensionality: -d, --image-dimensionality 2/3/4. This option
-            forces the image to be treated as a specified-dimensional image. If not
-            specified, the program tries to infer the dimensionality from the input
+        image_dimensionality: -d, --image-dimensionality 2/3/4. This option\
+            forces the image to be treated as a specified-dimensional image. If not\
+            specified, the program tries to infer the dimensionality from the input\
             image.
-        noise_model: -n, --noise-model Rician/(Gaussian). Employ a Rician or
+        noise_model: -n, --noise-model Rician/(Gaussian). Employ a Rician or\
             Gaussian noise model.
-        shrink_factor: -s, --shrink-factor (1)/2/3/... Running noise correction
-            on large images can be time consuming. To lessen computation time, the
-            input image can be resampled. The shrink factor, specified as a single
+        shrink_factor: -s, --shrink-factor (1)/2/3/... Running noise correction\
+            on large images can be time consuming. To lessen computation time, the\
+            input image can be resampled. The shrink factor, specified as a single\
             integer, describes this resampling. Shrink factor = 1 is the default.
-        mask_image: -x, --mask-image maskImageFilename. If a mask image is
+        mask_image: -x, --mask-image maskImageFilename. If a mask image is\
             specified, denoising is only performed in the mask region.
         patch_radius: -p, --patch-radius 1x1x1. Patch radius. Default is 1x1x1.
-        search_radius: -r, --search-radius 2x2x2. Search radius. Default is
+        search_radius: -r, --search-radius 2x2x2. Search radius. Default is\
             2x2x2.
         verbose: Verbose output.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DenoiseImageOutputs`).
     """

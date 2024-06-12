@@ -37,10 +37,10 @@ def fslcpgeom(
     https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#FSL-Extended-Utilities
     
     Args:
-        source_file: Source image file (e.g. img1.nii.gz)
-        destination_file: Destination image file (e.g. img2.nii.gz)
-        dimensions_flag: Don't copy image dimensions
-        runner: Command runner
+        source_file: Source image file (e.g. img1.nii.gz).
+        destination_file: Destination image file (e.g. img2.nii.gz).
+        dimensions_flag: Don't copy image dimensions.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslcpgeomOutputs`).
     """

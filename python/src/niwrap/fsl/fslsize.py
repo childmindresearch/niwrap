@@ -33,9 +33,9 @@ def fslsize(
     Tool to output the size of an image file in FSL.
     
     Args:
-        input_file: Input image file
-        short_format_flag: Output using short format (one line)
-        runner: Command runner
+        input_file: Input image file.
+        short_format_flag: Output using short format (one line).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslsizeOutputs`).
     """

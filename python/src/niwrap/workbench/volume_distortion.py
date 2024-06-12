@@ -50,13 +50,13 @@ def volume_distortion(
     diameter, and transforms that back to a ratio.
     
     Args:
-        warpfield: the warpfield to compute the distortion of
-        volume_out: the output distortion measures
-        opt_fnirt_source_volume: MUST be used if using a fnirt warpfield: the
-            source volume used when generating the warpfield
-        opt_circular: use the circle-based formula for the anisotropic measure
-        opt_log2: apply base-2 log transform
-        runner: Command runner
+        warpfield: the warpfield to compute the distortion of.
+        volume_out: the output distortion measures.
+        opt_fnirt_source_volume: MUST be used if using a fnirt warpfield: the\
+            source volume used when generating the warpfield.
+        opt_circular: use the circle-based formula for the anisotropic measure.
+        opt_log2: apply base-2 log transform.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeDistortionOutputs`).
     """

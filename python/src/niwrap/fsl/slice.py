@@ -37,9 +37,9 @@ def slice_(
     Args:
         in_file: Input filename.
         out_base_name: Outputs prefix.
-        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
             Fsl output type.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SliceOutputs`).
     """

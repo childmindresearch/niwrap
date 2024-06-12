@@ -114,21 +114,22 @@ def metric_smoothing(
     replicate methods of studies done with caret5's geodesic smoothing.
     
     Args:
-        surface: the surface to smooth on
-        metric_in: the metric to smooth
-        smoothing_kernel: the size of the gaussian smoothing kernel in mm, as
-            sigma by default
-        metric_out: the output metric
-        opt_fwhm: kernel size is FWHM, not sigma
-        roi: select a region of interest to smooth
-        opt_fix_zeros: treat zero values as not being data
-        opt_column_column: select a single column to smooth: the column number
-            or name
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        opt_method_method: select smoothing method, default GEO_GAUSS_AREA: the
-            name of the smoothing method
-        runner: Command runner
+        surface: the surface to smooth on.
+        metric_in: the metric to smooth.
+        smoothing_kernel: the size of the gaussian smoothing kernel in mm, as\
+            sigma by default.
+        metric_out: the output metric.
+        opt_fwhm: kernel size is FWHM, not sigma.
+        roi: select a region of interest to smooth.
+        opt_fix_zeros: treat zero values as not being data.
+        opt_column_column: select a single column to smooth: the column number\
+            or name.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        opt_method_method: select smoothing method, default GEO_GAUSS_AREA: the\
+            name of the smoothing method.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricSmoothingOutputs`).
     """

@@ -39,12 +39,13 @@ def metric_remove_islands(
     in terms of surface area.
     
     Args:
-        surface: the surface to use for neighbor information
-        metric_in: the input ROI metric
-        metric_out: the output ROI metric
-        opt_corrected_areas_area_metric: vertex areas to use instead of
-            computing them from the surface: the corrected vertex areas, as a metric
-        runner: Command runner
+        surface: the surface to use for neighbor information.
+        metric_in: the input ROI metric.
+        metric_out: the output ROI metric.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricRemoveIslandsOutputs`).
     """

@@ -47,14 +47,14 @@ def surface_cortex_layer(
     pial surface). .
     
     Args:
-        white_surface: the white matter surface
-        pial_surface: the pial surface
-        location: what volume fraction to place the layer at
-        out_surface: the output surface
-        placement_metric: output metric
-        opt_placement_out: output the placement as a volume fraction from pial
-            to white
-        runner: Command runner
+        white_surface: the white matter surface.
+        pial_surface: the pial surface.
+        location: what volume fraction to place the layer at.
+        out_surface: the output surface.
+        placement_metric: output metric.
+        opt_placement_out: output the placement as a volume fraction from pial\
+            to white.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceCortexLayerOutputs`).
     """

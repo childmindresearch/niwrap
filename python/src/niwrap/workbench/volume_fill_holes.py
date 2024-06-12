@@ -37,9 +37,9 @@ def volume_fill_holes(
     all but the largest one with ones.
     
     Args:
-        volume_in: the input ROI volume
-        volume_out: the output ROI volume
-        runner: Command runner
+        volume_in: the input ROI volume.
+        volume_out: the output ROI volume.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeFillHolesOutputs`).
     """

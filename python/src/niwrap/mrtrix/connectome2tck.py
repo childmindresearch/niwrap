@@ -96,44 +96,44 @@ def connectome2tck(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/connectome2tck.html
     
     Args:
-        tracks_in: the input track file
-        assignments_in: input text file containing the node assignments for each
-            streamline
-        prefix_out: the output file / prefix
-        nodes: only select tracks that involve a set of nodes of interest
-            (provide as a comma-separated list of integers)
-        exclusive: only select tracks that exclusively connect nodes from within
-            the list of nodes of interest
-        files: select how the resulting streamlines will be grouped in output
-            files. Options are: per_edge, per_node, single (default: per_edge)
-        exemplars: generate a mean connection exemplar per edge, rather than
-            keeping all streamlines (the parcellation node image must be provided in
-            order to constrain the exemplar endpoints)
-        keep_unassigned: by default, the program discards those streamlines that
-            are not successfully assigned to a node. Set this option to generate
-            corresponding outputs containing these streamlines (labelled as node
-            index 0)
-        keep_self: by default, the program will not output streamlines that
-            connect to the same node at both ends. Set this option to instead keep
+        tracks_in: the input track file.
+        assignments_in: input text file containing the node assignments for\
+            each streamline.
+        prefix_out: the output file / prefix.
+        nodes: only select tracks that involve a set of nodes of interest\
+            (provide as a comma-separated list of integers).
+        exclusive: only select tracks that exclusively connect nodes from\
+            within the list of nodes of interest.
+        files: select how the resulting streamlines will be grouped in output\
+            files. Options are: per_edge, per_node, single (default: per_edge).
+        exemplars: generate a mean connection exemplar per edge, rather than\
+            keeping all streamlines (the parcellation node image must be provided\
+            in order to constrain the exemplar endpoints).
+        keep_unassigned: by default, the program discards those streamlines\
+            that are not successfully assigned to a node. Set this option to\
+            generate corresponding outputs containing these streamlines (labelled\
+            as node index 0).
+        keep_self: by default, the program will not output streamlines that\
+            connect to the same node at both ends. Set this option to instead keep\
             these self-connections.
-        tck_weights_in: specify a text scalar file containing the streamline
-            weights
-        prefix_tck_weights_out: provide a prefix for outputting a text file
-            corresponding to each output file, each containing only the streamline
-            weights relevant for that track file
+        tck_weights_in: specify a text scalar file containing the streamline\
+            weights.
+        prefix_tck_weights_out: provide a prefix for outputting a text file\
+            corresponding to each output file, each containing only the streamline\
+            weights relevant for that track file.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Connectome2tckOutputs`).
     """

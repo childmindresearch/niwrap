@@ -35,12 +35,12 @@ def ftoz(
     Convert F-statistics to Z-scores.
     
     Args:
-        input_file: File containing F-statistics
-        dof1: Degrees of freedom 1 for F-to-Z conversion
-        dof2: Degrees of freedom 2 for F-to-Z conversion
-        output_file: Output file for Z-scores
-        help_flag: Display this help and exit
-        runner: Command runner
+        input_file: File containing F-statistics.
+        dof1: Degrees of freedom 1 for F-to-Z conversion.
+        dof2: Degrees of freedom 2 for F-to-Z conversion.
+        output_file: Output file for Z-scores.
+        help_flag: Display this help and exit.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FtozOutputs`).
     """

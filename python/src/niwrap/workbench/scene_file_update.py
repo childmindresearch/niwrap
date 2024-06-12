@@ -138,21 +138,21 @@ def scene_file_update(
     .
     
     Args:
-        input_scene_file: the input scene file
-        output_scene_file: the new scene file to create
-        scene_name_or_number: name or number (starting at one) of the scene in
-            the scene file
-        opt_fix_map_palette_settings: Fix palette settings for files with change
-            in number of maps
-        opt_remove_missing_files: Remove missing files from SpecFile
-        opt_error: Abort command if there is an error performing any of the
-            operations on the scene file
-        opt_verbose: Print names of files that have palettes updated
-        copy_map_one_palette: Copy palettes settings from first map to all maps
-            in a data file
-        data_file_add: Add a data file to scene's loaded files
-        data_file_remove: Remove a data file from scene's loaded files
-        runner: Command runner
+        input_scene_file: the input scene file.
+        output_scene_file: the new scene file to create.
+        scene_name_or_number: name or number (starting at one) of the scene in\
+            the scene file.
+        opt_fix_map_palette_settings: Fix palette settings for files with\
+            change in number of maps.
+        opt_remove_missing_files: Remove missing files from SpecFile.
+        opt_error: Abort command if there is an error performing any of the\
+            operations on the scene file.
+        opt_verbose: Print names of files that have palettes updated.
+        copy_map_one_palette: Copy palettes settings from first map to all maps\
+            in a data file.
+        data_file_add: Add a data file to scene's loaded files.
+        data_file_remove: Remove a data file from scene's loaded files.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SceneFileUpdateOutputs`).
     """

@@ -42,7 +42,7 @@ def v_3d_detrend(
     Args:
         in_file: Input file to 3ddetrend.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dDetrendOutputs`).
     """

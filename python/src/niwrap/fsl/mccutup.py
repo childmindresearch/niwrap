@@ -39,11 +39,11 @@ def mccutup(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
-        input_: Input file
-        output_file: Specify output file name
-        param1: Parameter 1 description
-        param2: Parameter 2 description
-        runner: Command runner
+        input_: Input file.
+        output_file: Specify output file name.
+        param1: Parameter 1 description.
+        param2: Parameter 2 description.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MccutupOutputs`).
     """

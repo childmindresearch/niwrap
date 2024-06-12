@@ -37,12 +37,12 @@ def tbss_2_reg(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide
     
     Args:
-        use_fmrib58_fa_1mm: Use FMRIB58_FA_1mm as the target for nonlinear
-            registrations (recommended)
-        target_image: Use the specified image as the target for nonlinear
-            registrations
-        find_best_target: Find the best target from all images in the FA
-        runner: Command runner
+        use_fmrib58_fa_1mm: Use FMRIB58_FA_1mm as the target for nonlinear\
+            registrations (recommended).
+        target_image: Use the specified image as the target for nonlinear\
+            registrations.
+        find_best_target: Find the best target from all images in the FA.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Tbss2RegOutputs`).
     """

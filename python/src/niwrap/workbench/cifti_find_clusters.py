@@ -189,29 +189,30 @@ def cifti_find_clusters(
     the ROI is ignored.
     
     Args:
-        cifti: the input cifti
-        surface_value_threshold: threshold for surface data values
-        surface_minimum_area: threshold for surface cluster area, in mm^2
-        volume_value_threshold: threshold for volume data values
-        volume_minimum_size: threshold for volume cluster size, in mm^3
-        direction: which dimension to use for spatial information, ROW or COLUMN
-        cifti_out: the output cifti
-        opt_less_than: find values less than <value-threshold>, rather than
-            greater
-        left_surface: specify the left surface to use
-        right_surface: specify the right surface to use
-        cerebellum_surface: specify the cerebellum surface to use
-        opt_cifti_roi_roi_cifti: search only within regions of interest: the
-            regions to search within, as a cifti file
-        opt_merged_volume: treat volume components as if they were a single
-            component
-        size_ratio: ignore clusters smaller than a given fraction of the largest
-            cluster in the structure
-        distance: ignore clusters further than a given distance from the largest
-            cluster in the structure
-        opt_start_startval: start labeling clusters from a value other than 1:
-            the value to give the first cluster found
-        runner: Command runner
+        cifti: the input cifti.
+        surface_value_threshold: threshold for surface data values.
+        surface_minimum_area: threshold for surface cluster area, in mm^2.
+        volume_value_threshold: threshold for volume data values.
+        volume_minimum_size: threshold for volume cluster size, in mm^3.
+        direction: which dimension to use for spatial information, ROW or\
+            COLUMN.
+        cifti_out: the output cifti.
+        opt_less_than: find values less than <value-threshold>, rather than\
+            greater.
+        left_surface: specify the left surface to use.
+        right_surface: specify the right surface to use.
+        cerebellum_surface: specify the cerebellum surface to use.
+        opt_cifti_roi_roi_cifti: search only within regions of interest: the\
+            regions to search within, as a cifti file.
+        opt_merged_volume: treat volume components as if they were a single\
+            component.
+        size_ratio: ignore clusters smaller than a given fraction of the\
+            largest cluster in the structure.
+        distance: ignore clusters further than a given distance from the\
+            largest cluster in the structure.
+        opt_start_startval: start labeling clusters from a value other than 1:\
+            the value to give the first cluster found.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiFindClustersOutputs`).
     """

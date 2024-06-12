@@ -54,40 +54,40 @@ def make_bianca_mask(
     A script for generating BIANCA masks.
     
     Args:
-        input_image: Input image
-        output_image: Output image
-        overlay_flag: Generate brain surface outline overlaid onto original
-            image
-        binary_mask_flag: Generate binary brain mask
-        approx_skull_flag: Generate approximate skull image
-        no_seg_output_flag: Don't generate segmented brain image output
-        fractional_intensity: Fractional intensity threshold (0->1);
-            default=0.5; smaller values give larger brain outline estimates
-        vg_fractional_intensity: Vertical gradient in fractional intensity
-            threshold (-1->1); default=0; positive values give larger brain outline
-            at bottom, smaller at top
-        head_radius: Head radius (mm not voxels); initial surface sphere is set
-            to half of this
-        center_of_gravity: Centre-of-gravity (voxels not mm) of initial mesh
+        input_image: Input image.
+        output_image: Output image.
+        overlay_flag: Generate brain surface outline overlaid onto original\
+            image.
+        binary_mask_flag: Generate binary brain mask.
+        approx_skull_flag: Generate approximate skull image.
+        no_seg_output_flag: Don't generate segmented brain image output.
+        fractional_intensity: Fractional intensity threshold (0->1);\
+            default=0.5; smaller values give larger brain outline estimates.
+        vg_fractional_intensity: Vertical gradient in fractional intensity\
+            threshold (-1->1); default=0; positive values give larger brain outline\
+            at bottom, smaller at top.
+        head_radius: Head radius (mm not voxels); initial surface sphere is set\
+            to half of this.
+        center_of_gravity: Centre-of-gravity (voxels not mm) of initial mesh\
             surface.
-        thresholding_flag: Apply thresholding to segmented brain image and mask
-        vtk_mesh: Generates brain surface as mesh in .vtk format
-        robust_iters_flag: Robust brain center estimation (iterates BET several
-            times)
-        residual_optic_cleanup_flag: Eye & optic nerve cleanup (can be useful in
-            SIENA - disables -o option)
-        reduce_bias_flag: Bias field & neck cleanup (can be useful in SIENA)
-        slice_padding_flag: Improve BET if FOV is very small in Z (by
-            temporarily padding end slices)
-        whole_set_mask_flag: Apply to 4D FMRI data (uses -f 0.3 and dilates
-            brain mask slightly)
-        additional_surfaces_flag: Run bet2 and then betsurf to get additional
-            skull and scalp surfaces (includes registrations)
-        additional_surfaces_t2: As with -A, when also feeding in
-            non-brain-extracted T2 (includes registrations)
-        verbose_flag: Verbose (switch on diagnostic messages)
-        debug_flag: Debug (don't delete temporary intermediate images)
-        runner: Command runner
+        thresholding_flag: Apply thresholding to segmented brain image and mask.
+        vtk_mesh: Generates brain surface as mesh in .vtk format.
+        robust_iters_flag: Robust brain center estimation (iterates BET several\
+            times).
+        residual_optic_cleanup_flag: Eye & optic nerve cleanup (can be useful\
+            in SIENA - disables -o option).
+        reduce_bias_flag: Bias field & neck cleanup (can be useful in SIENA).
+        slice_padding_flag: Improve BET if FOV is very small in Z (by\
+            temporarily padding end slices).
+        whole_set_mask_flag: Apply to 4D FMRI data (uses -f 0.3 and dilates\
+            brain mask slightly).
+        additional_surfaces_flag: Run bet2 and then betsurf to get additional\
+            skull and scalp surfaces (includes registrations).
+        additional_surfaces_t2: As with -A, when also feeding in\
+            non-brain-extracted T2 (includes registrations).
+        verbose_flag: Verbose (switch on diagnostic messages).
+        debug_flag: Debug (don't delete temporary intermediate images).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MakeBiancaMaskOutputs`).
     """

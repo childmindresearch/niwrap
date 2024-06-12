@@ -129,15 +129,15 @@ def cifti_false_correlation(
     some additional maps to help explain the ratio.
     
     Args:
-        cifti_in: the cifti file to use for correlation
-        v_3d_dist: maximum 3D distance to check around each vertex
-        geo_outer: maximum geodesic distance to use for neighboring correlation
-        geo_inner: minimum geodesic distance to use for neighboring correlation
-        cifti_out: the output cifti dscalar file
-        left_surface: specify the left surface to use
-        right_surface: specify the right surface to use
-        cerebellum_surface: specify the cerebellum surface to use
-        runner: Command runner
+        cifti_in: the cifti file to use for correlation.
+        v_3d_dist: maximum 3D distance to check around each vertex.
+        geo_outer: maximum geodesic distance to use for neighboring correlation.
+        geo_inner: minimum geodesic distance to use for neighboring correlation.
+        cifti_out: the output cifti dscalar file.
+        left_surface: specify the left surface to use.
+        right_surface: specify the right surface to use.
+        cerebellum_surface: specify the cerebellum surface to use.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiFalseCorrelationOutputs`).
     """

@@ -67,57 +67,58 @@ def probtrackx(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT
     
     Args:
-        samples: Basename for samples files
-        mask: Bet binary mask file in diffusion space
-        seed: Seed volume, or voxel, or ascii file with multiple volumes, or
-            freesurfer label file
-        out: Output file (default='fdt_paths')
-        verbose: Verbose level, [0-2]
-        targetmasks: File containing a list of target masks - required for
-            seeds_to_targets classification
+        samples: Basename for samples files.
+        mask: Bet binary mask file in diffusion space.
+        seed: Seed volume, or voxel, or ascii file with multiple volumes, or\
+            freesurfer label file.
+        out: Output file (default='fdt_paths').
+        verbose: Verbose level, [0-2].
+        targetmasks: File containing a list of target masks - required for\
+            seeds_to_targets classification.
         mask2: Second mask in twomask_symm mode.
-        waypoints: Waypoint mask or ascii list of waypoint masks - only keep
-            paths going through ALL the masks
-        network: Activate network mode - only keep paths going through at least
-            one seed mask (required if multiple seed masks)
-        mesh: Freesurfer-type surface descriptor (in ascii format)
-        seedref: Reference vol to define seed space in simple mode - diffusion
-            space assumed if absent
-        dir_: Directory to put the final volumes in - code makes this directory
-            - default='logdir'
-        forcedir: Use the actual directory name given - i.e. don't add + to make
-            a new directory
-        opd: Output path distribution
-        pd: Correct path distribution for the length of the pathways
-        os2t: Output seeds to targets
-        avoid: Reject pathways passing through locations given by this mask
-        stop: Stop tracking at locations given by this mask file
-        xfm: Transform taking seed space to DTI space (either FLIRT matrix or
-            FNIRT warpfield) - default is identity
-        invxfm: Transform taking DTI space to seed space (compulsory when using
-            a warpfield for seeds_to_dti)
-        nsamples: Number of samples - default=5000
-        nsteps: Number of steps per sample - default=2000
-        distthresh: Discards samples shorter than this threshold (in mm -
-            default=0)
-        cthr: Curvature threshold - default=0.2
-        fibthresh: Volume fraction before subsidary fibre orientations are
-            considered - default=0.01
-        sampvox: Sample random points within seed voxels
-        steplength: Steplength in mm - default=0.5
-        loopcheck: Perform loopchecks on paths - slower, but allows lower
-            curvature threshold
-        usef: Use anisotropy to constrain tracking
-        randfib: Default 0. Set to 1 to randomly sample initial fibres (with f >
-            fibthresh). Set to 2 to sample in proportion fibres (with f>fibthresh)
-            to f. Set to 3 to sample ALL populations at random (even if f<fibthresh)
-        fibst: Force a starting fibre for tracking - default=1, i.e. first fibre
-            orientation. Only works if randfib==0
-        modeuler: Use modified euler streamlining
-        rseed: Random seed
-        s2tastext: Output seed-to-target counts as a text file (useful when
-            seeding from a mesh)
-        runner: Command runner
+        waypoints: Waypoint mask or ascii list of waypoint masks - only keep\
+            paths going through ALL the masks.
+        network: Activate network mode - only keep paths going through at least\
+            one seed mask (required if multiple seed masks).
+        mesh: Freesurfer-type surface descriptor (in ascii format).
+        seedref: Reference vol to define seed space in simple mode - diffusion\
+            space assumed if absent.
+        dir_: Directory to put the final volumes in - code makes this directory\
+            - default='logdir'.
+        forcedir: Use the actual directory name given - i.e. don't add + to\
+            make a new directory.
+        opd: Output path distribution.
+        pd: Correct path distribution for the length of the pathways.
+        os2t: Output seeds to targets.
+        avoid: Reject pathways passing through locations given by this mask.
+        stop: Stop tracking at locations given by this mask file.
+        xfm: Transform taking seed space to DTI space (either FLIRT matrix or\
+            FNIRT warpfield) - default is identity.
+        invxfm: Transform taking DTI space to seed space (compulsory when using\
+            a warpfield for seeds_to_dti).
+        nsamples: Number of samples - default=5000.
+        nsteps: Number of steps per sample - default=2000.
+        distthresh: Discards samples shorter than this threshold (in mm -\
+            default=0).
+        cthr: Curvature threshold - default=0.2.
+        fibthresh: Volume fraction before subsidary fibre orientations are\
+            considered - default=0.01.
+        sampvox: Sample random points within seed voxels.
+        steplength: Steplength in mm - default=0.5.
+        loopcheck: Perform loopchecks on paths - slower, but allows lower\
+            curvature threshold.
+        usef: Use anisotropy to constrain tracking.
+        randfib: Default 0. Set to 1 to randomly sample initial fibres (with f\
+            > fibthresh). Set to 2 to sample in proportion fibres (with\
+            f>fibthresh) to f. Set to 3 to sample ALL populations at random (even\
+            if f<fibthresh).
+        fibst: Force a starting fibre for tracking - default=1, i.e. first\
+            fibre orientation. Only works if randfib==0.
+        modeuler: Use modified euler streamlining.
+        rseed: Random seed.
+        s2tastext: Output seed-to-target counts as a text file (useful when\
+            seeding from a mesh).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ProbtrackxOutputs`).
     """

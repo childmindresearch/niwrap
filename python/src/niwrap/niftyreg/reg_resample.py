@@ -45,23 +45,23 @@ def reg_resample(
     More information: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     
     Args:
-        reference_image: Filename of the reference image
-        floating_image: Filename of the floating image
-        affine_transform: Filename which contains an affine transformation
-            (Affine*Reference=Floating)
-        flirt_affine_transform: Filename which contains a radiological flirt
-            affine transformation
-        control_point_grid: Filename of the control point grid image (from
-            reg_f3d)
-        deformation_field: Filename of the deformation field image (from
-            reg_transform)
-        resampled_image: Filename of the resampled image
-        resampled_blank: Filename of the resampled blank grid
-        nearest_neighbor: Use a Nearest Neighbor interpolation for the source
-            resampling (cubic spline by default)
-        linear_interpolation: Use a Linear interpolation for the source
-            resampling (cubic spline by default)
-        runner: Command runner
+        reference_image: Filename of the reference image.
+        floating_image: Filename of the floating image.
+        affine_transform: Filename which contains an affine transformation\
+            (Affine*Reference=Floating).
+        flirt_affine_transform: Filename which contains a radiological flirt\
+            affine transformation.
+        control_point_grid: Filename of the control point grid image (from\
+            reg_f3d).
+        deformation_field: Filename of the deformation field image (from\
+            reg_transform).
+        resampled_image: Filename of the resampled image.
+        resampled_blank: Filename of the resampled blank grid.
+        nearest_neighbor: Use a Nearest Neighbor interpolation for the source\
+            resampling (cubic spline by default).
+        linear_interpolation: Use a Linear interpolation for the source\
+            resampling (cubic spline by default).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegResampleOutputs`).
     """

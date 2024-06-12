@@ -36,10 +36,10 @@ def spec_file_merge(
     files.
     
     Args:
-        spec_1: first spec file to merge
-        spec_2: second spec file to merge
-        out_spec: output - output spec file
-        runner: Command runner
+        spec_1: first spec file to merge.
+        spec_2: second spec file to merge.
+        out_spec: output - output spec file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SpecFileMergeOutputs`).
     """

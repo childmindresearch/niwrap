@@ -171,78 +171,79 @@ def mrgrid(
         input_: input image to be regridded.
         operation: the operation to be performed, one of: regrid, crop, pad.
         output: the output image.
-        template: match the input image grid (voxel spacing, image size, header
-            transformation) to that of a reference image. The image resolution
-            relative to the template image can be changed with one of -size, -voxel,
-            -scale.
-        size: define the size (number of voxels) in each spatial dimension for
+        template: match the input image grid (voxel spacing, image size, header\
+            transformation) to that of a reference image. The image resolution\
+            relative to the template image can be changed with one of -size,\
+            -voxel, -scale.
+        size: define the size (number of voxels) in each spatial dimension for\
             the output image. This should be specified as a comma-separated list.
-        voxel: define the new voxel size for the output image. This can be
-            specified either as a single value to be used for all spatial
-            dimensions, or as a comma-separated list of the size for each voxel
+        voxel: define the new voxel size for the output image. This can be\
+            specified either as a single value to be used for all spatial\
+            dimensions, or as a comma-separated list of the size for each voxel\
             dimension.
-        scale: scale the image resolution by the supplied factor. This can be
-            specified either as a single value to be used for all dimensions, or as
+        scale: scale the image resolution by the supplied factor. This can be\
+            specified either as a single value to be used for all dimensions, or as\
             a comma-separated list of scale factors for each dimension.
-        interp: set the interpolation method to use when reslicing (choices:
+        interp: set the interpolation method to use when reslicing (choices:\
             nearest, linear, cubic, sinc. Default: cubic).
-        oversample: set the amount of over-sampling (in the target space) to
-            perform when regridding. This is particularly relevant when downsamping
-            a high-resolution image to a low-resolution image, to avoid aliasing
-            artefacts. This can consist of a single integer, or a comma-separated
-            list of 3 integers if different oversampling factors are desired along
-            the different axes. Default is determined from ratio of voxel dimensions
-            (disabled for nearest-neighbour interpolation).
-        as_: pad or crop the input image on the upper bound to match the
-            specified reference image grid. This operation ignores differences in
+        oversample: set the amount of over-sampling (in the target space) to\
+            perform when regridding. This is particularly relevant when downsamping\
+            a high-resolution image to a low-resolution image, to avoid aliasing\
+            artefacts. This can consist of a single integer, or a comma-separated\
+            list of 3 integers if different oversampling factors are desired along\
+            the different axes. Default is determined from ratio of voxel\
+            dimensions (disabled for nearest-neighbour interpolation).
+        as_: pad or crop the input image on the upper bound to match the\
+            specified reference image grid. This operation ignores differences in\
             image transformation between input and reference image.
-        uniform: pad or crop the input image by a uniform number of voxels on
-            all sides
-        mask: crop the input image according to the spatial extent of a mask
-            image. The mask must share a common voxel grid with the input image but
-            differences in image transformations are ignored. Note that even though
-            only 3 dimensions are cropped when using a mask, the bounds are computed
-            by checking the extent for all dimensions. Note that by default a gap of
-            1 voxel is left at all edges of the image to allow valid trilinear
-            interpolation. This gap can be modified with the -uniform option but by
-            default it does not extend beyond the FOV unless -crop_unbound is used.
+        uniform: pad or crop the input image by a uniform number of voxels on\
+            all sides.
+        mask: crop the input image according to the spatial extent of a mask\
+            image. The mask must share a common voxel grid with the input image but\
+            differences in image transformations are ignored. Note that even though\
+            only 3 dimensions are cropped when using a mask, the bounds are\
+            computed by checking the extent for all dimensions. Note that by\
+            default a gap of 1 voxel is left at all edges of the image to allow\
+            valid trilinear interpolation. This gap can be modified with the\
+            -uniform option but by default it does not extend beyond the FOV unless\
+            -crop_unbound is used.
         crop_unbound: Allow padding beyond the original FOV when cropping.
-        axis: pad or crop the input image along the provided axis (defined by
-            index). The specifier argument defines the number of voxels added or
-            removed on the lower or upper end of the axis (-axis index
-            delta_lower,delta_upper) or acts as a voxel selection range (-axis index
-            start:stop). In both modes, values are relative to the input image
-            (overriding all other extent-specifying options). Negative delta
-            specifier values trigger the inverse operation (pad instead of crop and
-            vice versa) and negative range specifier trigger padding. Note that the
-            deprecated commands 'mrcrop' and 'mrpad' used range-based and
+        axis: pad or crop the input image along the provided axis (defined by\
+            index). The specifier argument defines the number of voxels added or\
+            removed on the lower or upper end of the axis (-axis index\
+            delta_lower,delta_upper) or acts as a voxel selection range (-axis\
+            index start:stop). In both modes, values are relative to the input\
+            image (overriding all other extent-specifying options). Negative delta\
+            specifier values trigger the inverse operation (pad instead of crop and\
+            vice versa) and negative range specifier trigger padding. Note that the\
+            deprecated commands 'mrcrop' and 'mrpad' used range-based and\
             delta-based -axis indices, respectively.
         all_axes: Crop or pad all, not just spatial axes.
-        fill: Use number as the out of bounds value. nan, inf and -inf are valid
-            arguments. (Default: 0.0)
-        strides: specify the strides of the output data in memory; either as a
-            comma-separated list of (signed) integers, or as a template image from
-            which the strides shall be extracted and used. The actual strides
+        fill: Use number as the out of bounds value. nan, inf and -inf are\
+            valid arguments. (Default: 0.0).
+        strides: specify the strides of the output data in memory; either as a\
+            comma-separated list of (signed) integers, or as a template image from\
+            which the strides shall be extracted and used. The actual strides\
             produced will depend on whether the output image format can support it.
-        datatype: specify output image data type. Valid choices are: float32,
-            float32le, float32be, float64, float64le, float64be, int64, uint64,
-            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,
-            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,
-            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,
+        datatype: specify output image data type. Valid choices are: float32,\
+            float32le, float32be, float64, float64le, float64be, int64, uint64,\
+            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\
+            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\
+            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\
             int8, uint8, bit.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrgridOutputs`).
     """

@@ -39,16 +39,16 @@ def metric_estimate_fwhm(
     standard output. These estimates ignore variation in vertex spacing.
     
     Args:
-        surface: the surface to use for distance and neighbor information
-        metric_in: the input metric
-        opt_roi_roi_metric: use only data within an ROI: the metric file to use
-            as an ROI
-        opt_column_column: select a single column to estimate smoothness of: the
-            column number or name
-        opt_whole_file: estimate for the whole file at once, not each column
-            separately
-        opt_demean: subtract the mean image before estimating smoothness
-        runner: Command runner
+        surface: the surface to use for distance and neighbor information.
+        metric_in: the input metric.
+        opt_roi_roi_metric: use only data within an ROI: the metric file to use\
+            as an ROI.
+        opt_column_column: select a single column to estimate smoothness of:\
+            the column number or name.
+        opt_whole_file: estimate for the whole file at once, not each column\
+            separately.
+        opt_demean: subtract the mean image before estimating smoothness.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricEstimateFwhmOutputs`).
     """

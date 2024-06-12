@@ -64,13 +64,13 @@ def cifti_merge_dense(
     models.
     
     Args:
-        direction: which dimension to merge along, ROW or COLUMN
-        cifti_out: the output cifti file
-        opt_label_collision_action: how to handle conflicts between label keys:
-            'ERROR', 'FIRST', or 'LEGACY', default 'ERROR', use 'LEGACY' to match
-            v1.4.2 and earlier
-        cifti: specify an input cifti file
-        runner: Command runner
+        direction: which dimension to merge along, ROW or COLUMN.
+        cifti_out: the output cifti file.
+        opt_label_collision_action: how to handle conflicts between label keys:\
+            'ERROR', 'FIRST', or 'LEGACY', default 'ERROR', use 'LEGACY' to match\
+            v1.4.2 and earlier.
+        cifti: specify an input cifti file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiMergeDenseOutputs`).
     """

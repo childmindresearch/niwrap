@@ -41,7 +41,7 @@ def avscale(
         non_reference_volume: The path to the non-reference volume.
         allparams_flag: Flag for all parameters.
         inverteddies_flag: Flag for inverted eddies.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AvscaleOutputs`).
     """

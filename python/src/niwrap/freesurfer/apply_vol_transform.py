@@ -59,35 +59,35 @@ def apply_vol_transform(
     Args:
         fs_target: Use orig.mgz from subject in regfile as target.
         fsl_reg_file: Fslras-to-fslras matrix (fsl format).
-        interp: 'trilin' or 'nearest' or 'cubic'. Interpolation method (<trilin>
-            or nearest).
+        interp: 'trilin' or 'nearest' or 'cubic'. Interpolation method\
+            (<trilin> or nearest).
         inverse: Sample from target to source.
-        invert_morph: Compute and use the inverse of the non-linear morph to
+        invert_morph: Compute and use the inverse of the non-linear morph to\
             resample the input volume. to be used by --m3z.
         lta_file: Linear transform array file.
         lta_inv_file: Lta, invert.
-        m3z_file: This is the morph to be applied to the volume. unless the
-            morph is in mri/transforms (eg.: for talairach.m3z computed by
-            reconall), you will need to specify the full path to this morph and use
+        m3z_file: This is the morph to be applied to the volume. unless the\
+            morph is in mri/transforms (eg.: for talairach.m3z computed by\
+            reconall), you will need to specify the full path to this morph and use\
             the --nodefm3zpath flag.
         mni_152_reg: Target mni152 space.
-        no_def_m3z_path: To be used with the m3z flag. Instructs the code not to
-            look for the non-linear m3z morph in the default location
-            (subjects_dir/subj/mri/transforms), but instead just use the path
+        no_def_m3z_path: To be used with the m3z flag. Instructs the code not\
+            to look for the non-linear m3z morph in the default location\
+            (subjects_dir/subj/mri/transforms), but instead just use the path\
             indicated in --m3z.
         no_resample: Do not resample; just change vox2ras matrix.
         reg_file: Tkras-to-tkras matrix (tkregister2 format).
         reg_header: Scannerras-to-scannerras matrix = identity.
         source_file: Input volume you wish to transform.
         subject: Set matrix = identity and use subject for any templates.
-        subjects_dir: file or string representing an existing directory.
+        subjects_dir: file or string representing an existing directory.\
             Subjects directory.
         tal: Map to a sub fov of mni305 (with --reg only).
         tal_resolution: Resolution to sample when using tal.
         target_file: Output template volume.
         transformed_file: Output volume.
         xfm_reg_file: Scannerras-to-scannerras matrix (mni format).
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ApplyVolTransformOutputs`).
     """

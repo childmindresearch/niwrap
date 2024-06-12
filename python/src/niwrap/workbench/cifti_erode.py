@@ -135,17 +135,17 @@ def cifti_erode(
     surfaces, but it is only an approximate correction.
     
     Args:
-        cifti_in: the input cifti file
-        direction: which dimension to dilate along, ROW or COLUMN
-        surface_distance: the distance to dilate on surfaces, in mm
-        volume_distance: the distance to dilate in the volume, in mm
-        cifti_out: the output cifti file
-        left_surface: specify the left surface to use
-        right_surface: specify the right surface to use
-        cerebellum_surface: specify the cerebellum surface to use
-        opt_merged_volume: treat volume components as if they were a single
-            component
-        runner: Command runner
+        cifti_in: the input cifti file.
+        direction: which dimension to dilate along, ROW or COLUMN.
+        surface_distance: the distance to dilate on surfaces, in mm.
+        volume_distance: the distance to dilate in the volume, in mm.
+        cifti_out: the output cifti file.
+        left_surface: specify the left surface to use.
+        right_surface: specify the right surface to use.
+        cerebellum_surface: specify the cerebellum surface to use.
+        opt_merged_volume: treat volume components as if they were a single\
+            component.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiErodeOutputs`).
     """

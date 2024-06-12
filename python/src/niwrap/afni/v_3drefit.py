@@ -53,32 +53,32 @@ def v_3drefit(
     
     Args:
         in_file: Input file to 3drefit.
-        atrcopy: (file, string). Copy afni header attribute from the given file
-            into the header of the dataset(s) being modified. for more information
-            on afni header attributes, see documentation file readme.attributes.
-            more than one '-atrcopy' option can be used. for afni advanced users
-            only. do not use -atrcopy or -atrstring with other modification options.
-            see also -copyaux.
-        atrfloat: (a string, a string). Create or modify floating point
-            attributes. the input values may be specified as a single string in
-            quotes or as a 1d filename or string, example '1 0.2 0 0 -0.2 1 0 0 0 0
+        atrcopy: (file, string). Copy afni header attribute from the given file\
+            into the header of the dataset(s) being modified. for more information\
+            on afni header attributes, see documentation file readme.attributes.\
+            more than one '-atrcopy' option can be used. for afni advanced users\
+            only. do not use -atrcopy or -atrstring with other modification\
+            options. see also -copyaux.
+        atrfloat: (a string, a string). Create or modify floating point\
+            attributes. the input values may be specified as a single string in\
+            quotes or as a 1d filename or string, example '1 0.2 0 0 -0.2 1 0 0 0 0\
             1 0' or flipz.1d or '1d:1,0.2,2@0,-0.2,1,2@0,2@0,1,0'.
-        atrint: (a string, a string). Create or modify integer attributes. the
-            input values may be specified as a single string in quotes or as a 1d
-            filename or string, example '1 0 0 0 0 1 0 0 0 0 1 0' or flipz.1d or
+        atrint: (a string, a string). Create or modify integer attributes. the\
+            input values may be specified as a single string in quotes or as a 1d\
+            filename or string, example '1 0 0 0 0 1 0 0 0 0 1 0' or flipz.1d or\
             '1d:1,0,2@0,-0,1,2@0,2@0,1,0'.
-        atrstring: (a string, a string). Copy the last given string into the
-            dataset(s) being modified, giving it the attribute name given by the
+        atrstring: (a string, a string). Copy the last given string into the\
+            dataset(s) being modified, giving it the attribute name given by the\
             last string.to be safe, the last string should be in quotes.
         deoblique: Replace current transformation matrix with cardinal matrix.
-        duporigin_file: Copies the xorigin, yorigin, and zorigin values from the
-            header of the given dataset.
+        duporigin_file: Copies the xorigin, yorigin, and zorigin values from\
+            the header of the given dataset.
         nosaveatr: Opposite of -saveatr.
-        saveatr: (default) copy the attributes that are known to afni into the
-            dset->dblk structure thereby forcing changes to known attributes to be
+        saveatr: (default) copy the attributes that are known to afni into the\
+            dset->dblk structure thereby forcing changes to known attributes to be\
             present in the output. this option only makes sense with -atrcopy.
-        space: 'tlrc' or 'mni' or 'orig'. Associates the dataset with a specific
-            template type, e.g. tlrc, mni, orig.
+        space: 'tlrc' or 'mni' or 'orig'. Associates the dataset with a\
+            specific template type, e.g. tlrc, mni, orig.
         xdel: New x voxel dimension in mm.
         xorigin: X distance for edge voxel offset.
         xyzscale: Scale the size of the dataset voxels by the given factor.
@@ -86,7 +86,7 @@ def v_3drefit(
         yorigin: Y distance for edge voxel offset.
         zdel: New z voxel dimension in mm.
         zorigin: Z distance for edge voxel offset.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3drefitOutputs`).
     """

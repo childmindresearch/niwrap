@@ -40,10 +40,10 @@ def surface_closest_vertex(
     30 -20 10.
     
     Args:
-        surface: the surface to use
-        coord_list_file: text file with coordinates
-        vertex_list_out: output - the output text file with vertex numbers
-        runner: Command runner
+        surface: the surface to use.
+        coord_list_file: text file with coordinates.
+        vertex_list_out: output - the output text file with vertex numbers.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceClosestVertexOutputs`).
     """

@@ -34,12 +34,12 @@ def match_smoothing(
     
     Args:
         example_func: Path to the example functional image file.
-        func_smoothing_fwhm: Full-width at half maximum (FWHM) of the smoothing
+        func_smoothing_fwhm: Full-width at half maximum (FWHM) of the smoothing\
             kernel applied to the functional data, in millimeters.
         example_structural: Path to the example structural image file.
-        standard_space_resolution: Resolution of the standard space, in
+        standard_space_resolution: Resolution of the standard space, in\
             millimeters.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MatchSmoothingOutputs`).
     """

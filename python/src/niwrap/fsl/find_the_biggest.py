@@ -32,9 +32,9 @@ def find_the_biggest(
     Tool to find the largest volume or surface from a set of inputs.
     
     Args:
-        volumes_surfaces: List of input volumes or surfaces
-        output_index: Output index of the largest volume or surface
-        runner: Command runner
+        volumes_surfaces: List of input volumes or surfaces.
+        output_index: Output index of the largest volume or surface.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FindTheBiggestOutputs`).
     """

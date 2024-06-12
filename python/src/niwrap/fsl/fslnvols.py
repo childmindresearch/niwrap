@@ -32,8 +32,8 @@ def fslnvols(
     Retrieve the number of volumes in a 4D NIfTI file.
     
     Args:
-        infile: Input NIfTI file (e.g., fmri.nii.gz)
-        runner: Command runner
+        infile: Input NIfTI file (e.g., fmri.nii.gz).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslnvolsOutputs`).
     """

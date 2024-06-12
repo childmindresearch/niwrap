@@ -41,10 +41,10 @@ def merge_mrs_reports(
     Args:
         input_files: List of input files.
         dataset_description: Dataset description.
-        output_folder: Output folder (default=current directory)
-        output_filename: Output filename (default=mergedReports.html)
+        output_folder: Output folder (default=current directory).
+        output_filename: Output filename (default=mergedReports.html).
         delete_flag: Delete files after successful merge.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MergeMrsReportsOutputs`).
     """

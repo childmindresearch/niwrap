@@ -41,20 +41,20 @@ def siena_diff(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SIENA
     
     Args:
-        input1_basename: Input image 1 basename
-        input2_basename: Input image 2 basename
-        debug_flag: Debug - generate edge images and don't remove temporary
-            images
-        no_seg_flag: Don't segment grey+white separately (because there is poor
-            grey-white contrast)
-        self_corr_factor: Apply self-calibrating correction factor
-        ignore_z_flow_flag: Ignore flow in z (may be beneficial if top of brain
-            is missing)
-        apply_std_mask_flag: Apply <input1_basename>_stdmask to brain edge
-            points
-        segment_options: Options to be passed to segmentation (type 'fast' to
-            get these)
-        runner: Command runner
+        input1_basename: Input image 1 basename.
+        input2_basename: Input image 2 basename.
+        debug_flag: Debug - generate edge images and don't remove temporary\
+            images.
+        no_seg_flag: Don't segment grey+white separately (because there is poor\
+            grey-white contrast).
+        self_corr_factor: Apply self-calibrating correction factor.
+        ignore_z_flow_flag: Ignore flow in z (may be beneficial if top of brain\
+            is missing).
+        apply_std_mask_flag: Apply <input1_basename>_stdmask to brain edge\
+            points.
+        segment_options: Options to be passed to segmentation (type 'fast' to\
+            get these).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SienaDiffOutputs`).
     """

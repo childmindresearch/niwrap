@@ -50,12 +50,12 @@ def cifti_label_modify_keys(
     values in the data at the same time.
     
     Args:
-        cifti_in: the input dlabel file
-        remap_file: text file with old and new key values
-        cifti_out: the output dlabel file
-        opt_column_column: select a single column to use: the column number or
-            name
-        runner: Command runner
+        cifti_in: the input dlabel file.
+        remap_file: text file with old and new key values.
+        cifti_out: the output dlabel file.
+        opt_column_column: select a single column to use: the column number or\
+            name.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiLabelModifyKeysOutputs`).
     """

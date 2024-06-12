@@ -42,16 +42,16 @@ def fsl_schurprod(
     vectors from 4D data.
     
     Args:
-        input_file: Input file name (4D image file)
-        design_file: ASCII text matrix of time series to be correlated
-        output_file: Output file base name
-        regression_flag: Use regression rather than correlation
-        index: Index of column in the design to be used for matrix product
-            calculation
-        mask_file: Mask image file name
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display this help text
-        runner: Command runner
+        input_file: Input file name (4D image file).
+        design_file: ASCII text matrix of time series to be correlated.
+        output_file: Output file base name.
+        regression_flag: Use regression rather than correlation.
+        index: Index of column in the design to be used for matrix product\
+            calculation.
+        mask_file: Mask image file name.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display this help text.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslSchurprodOutputs`).
     """

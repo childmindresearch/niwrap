@@ -45,18 +45,18 @@ def new_invwarp(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT
     
     Args:
-        warpvol: Filename for warp/shiftmap transform (volume)
-        outvol: Filename for output (inverse warped) image
-        refvol: Filename for new reference image, i.e., what was originally the
-            input image (determines inverse warpvol's FOV and pixdims)
-        relflag: Use relative warp convention: x' = x + w(x)
-        absflag: Use absolute warp convention (default): x' = w(x)
-        noconstraintflag: Do not apply the Jacobian constraint
-        jmin: Minimum acceptable Jacobian value for constraint (default 0.01)
-        jmax: Maximum acceptable Jacobian value for constraint (default 100.0)
-        debugflag: Turn on debugging output
-        verboseflag: Switch on diagnostic messages
-        runner: Command runner
+        warpvol: Filename for warp/shiftmap transform (volume).
+        outvol: Filename for output (inverse warped) image.
+        refvol: Filename for new reference image, i.e., what was originally the\
+            input image (determines inverse warpvol's FOV and pixdims).
+        relflag: Use relative warp convention: x' = x + w(x).
+        absflag: Use absolute warp convention (default): x' = w(x).
+        noconstraintflag: Do not apply the Jacobian constraint.
+        jmin: Minimum acceptable Jacobian value for constraint (default 0.01).
+        jmax: Maximum acceptable Jacobian value for constraint (default 100.0).
+        debugflag: Turn on debugging output.
+        verboseflag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `NewInvwarpOutputs`).
     """

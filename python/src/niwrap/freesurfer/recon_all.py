@@ -57,28 +57,28 @@ def recon_all(
     More information: https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all
     
     Args:
-        subjects_dir: file or string representing an existing directory. Path to
-            subjects directory.
+        subjects_dir: file or string representing an existing directory. Path\
+            to subjects directory.
         flair_file: Convert flair image to orig directory.
         t1_files: Name of t1 file to process.
         t2_file: Convert t2 image to orig directory.
         big_ventricles: For use in subjects with enlarged ventricles.
         brainstem: Segment brainstem structures.
-        directive: 'all' or 'autorecon1' or 'autorecon2' or 'autorecon2-volonly'
-            or 'autorecon2-perhemi' or 'autorecon2-inflate1' or 'autorecon2-cp' or
-            'autorecon2-wm' or 'autorecon3' or 'autorecon3-t2pial' or
-            'autorecon-pial' or 'autorecon-hemi' or 'localgi' or 'qcache'. Process
-            directive.
+        directive: 'all' or 'autorecon1' or 'autorecon2' or\
+            'autorecon2-volonly' or 'autorecon2-perhemi' or 'autorecon2-inflate1'\
+            or 'autorecon2-cp' or 'autorecon2-wm' or 'autorecon3' or\
+            'autorecon3-t2pial' or 'autorecon-pial' or 'autorecon-hemi' or\
+            'localgi' or 'qcache'. Process directive.
         expert: Set parameters using expert file.
         flags: A list of items which are a string. Additional parameters.
         hemi: 'lh' or 'rh'. Hemisphere to process.
-        hippocampal_subfields_t1: Segment hippocampal subfields using input t1
+        hippocampal_subfields_t1: Segment hippocampal subfields using input t1\
             scan.
-        hippocampal_subfields_t2: (file or string, a string). Segment
-            hippocampal subfields using t2 scan, identified by id (may be combined
+        hippocampal_subfields_t2: (file or string, a string). Segment\
+            hippocampal subfields using t2 scan, identified by id (may be combined\
             with hippocampal_subfields_t1).
         hires: Conform to minimum voxel size (for voxels < 1mm).
-        mprage: Assume scan parameters are mgh mp-rage protocol, which produces
+        mprage: Assume scan parameters are mgh mp-rage protocol, which produces\
             darker gray matter.
         openmp: Number of processors to use in parallel.
         parallel: Enable parallel execution.
@@ -86,9 +86,9 @@ def recon_all(
         talairach: Flags to pass to talairach commands.
         use_flair: Use flair image to refine the pial surface.
         use_t2: Use t2 image to refine the pial surface.
-        xopts: 'use' or 'clean' or 'overwrite'. Use, delete or overwrite
+        xopts: 'use' or 'clean' or 'overwrite'. Use, delete or overwrite\
             existing expert options file.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ReconAllOutputs`).
     """

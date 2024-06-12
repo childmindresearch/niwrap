@@ -106,18 +106,19 @@ def surface_resample(
     .
     
     Args:
-        surface_in: the surface file to resample
-        current_sphere: a sphere surface with the mesh that the input surface is
-            currently on
-        new_sphere: a sphere surface that is in register with <current-sphere>
-            and has the desired output mesh
-        method: the method name
-        surface_out: the output surface file
-        area_surfs: specify surfaces to do vertex area correction based on
-        area_metrics: specify vertex area metrics to do area correction based on
-        opt_bypass_sphere_check: ADVANCED: allow the current and new 'spheres'
-            to have arbitrary shape as long as they follow the same contour
-        runner: Command runner
+        surface_in: the surface file to resample.
+        current_sphere: a sphere surface with the mesh that the input surface\
+            is currently on.
+        new_sphere: a sphere surface that is in register with <current-sphere>\
+            and has the desired output mesh.
+        method: the method name.
+        surface_out: the output surface file.
+        area_surfs: specify surfaces to do vertex area correction based on.
+        area_metrics: specify vertex area metrics to do area correction based\
+            on.
+        opt_bypass_sphere_check: ADVANCED: allow the current and new 'spheres'\
+            to have arbitrary shape as long as they follow the same contour.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceResampleOutputs`).
     """

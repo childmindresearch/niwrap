@@ -137,21 +137,21 @@ def cifti_weighted_stats(
     therefore output the area or volume of each ROI.
     
     Args:
-        cifti_in: the input cifti
-        spatial_weights: use vertex area and voxel volume as weights
-        opt_cifti_weights_weight_cifti: use a cifti file containing weights: the
-            weights to use, as a cifti file
-        opt_column_column: only display output for one column: the column to use
-            (1-based)
-        roi: only consider data inside an roi
-        opt_mean: compute weighted mean
-        opt_stdev: compute weighted standard deviation
-        opt_sample: estimate population stdev from the sample
-        opt_percentile_percent: compute weighted percentile: the percentile to
-            find, must be between 0 and 100
-        opt_sum: compute weighted sum
-        opt_show_map_name: print map index and name before each output
-        runner: Command runner
+        cifti_in: the input cifti.
+        spatial_weights: use vertex area and voxel volume as weights.
+        opt_cifti_weights_weight_cifti: use a cifti file containing weights:\
+            the weights to use, as a cifti file.
+        opt_column_column: only display output for one column: the column to\
+            use (1-based).
+        roi: only consider data inside an roi.
+        opt_mean: compute weighted mean.
+        opt_stdev: compute weighted standard deviation.
+        opt_sample: estimate population stdev from the sample.
+        opt_percentile_percent: compute weighted percentile: the percentile to\
+            find, must be between 0 and 100.
+        opt_sum: compute weighted sum.
+        opt_show_map_name: print map index and name before each output.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiWeightedStatsOutputs`).
     """

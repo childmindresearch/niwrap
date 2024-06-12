@@ -85,27 +85,27 @@ def dirmerge(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/dirmerge.html
     
     Args:
-        subsets: the number of subsets (eg. phase encoding directions) per
-            b-value
-        bvalue_files: the b-value and sets of corresponding files, in order
-        out: the output directions file, with each row listing the X Y Z
-            gradient directions, the b-value, and an index representing the phase
-            encode direction
-        unipolar_weight: set the weight given to the unipolar electrostatic
+        subsets: the number of subsets (eg. phase encoding directions) per\
+            b-value.
+        bvalue_files: the b-value and sets of corresponding files, in order.
+        out: the output directions file, with each row listing the X Y Z\
+            gradient directions, the b-value, and an index representing the phase\
+            encode direction.
+        unipolar_weight: set the weight given to the unipolar electrostatic\
             repulsion model compared to the bipolar model (default: 0.2).
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DirmergeOutputs`).
     """

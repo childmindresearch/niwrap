@@ -30,9 +30,9 @@ def mist_display(
     Tool to show scalars on mesh.
     
     Args:
-        mode: Mode for displaying scalars on mesh
-        help_: Show help message and exit
-        runner: Command runner
+        mode: Mode for displaying scalars on mesh.
+        help_: Show help message and exit.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MistDisplayOutputs`).
     """

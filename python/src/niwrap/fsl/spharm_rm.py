@@ -38,13 +38,13 @@ def spharm_rm(
     Part of FSL - Spherical harmonics removal tool to process neuroimaging data.
     
     Args:
-        input_file: Input image filename
-        output_file: Output image filename
-        mask_file: Mask filename
-        number_of_terms: Number of terms to remove (order is
-            1,x,y,z,z^2+(x^2+y^2)/2,zx,zy,xy,x^2-y^2)
-        verbose_flag: Switch on diagnostic messages
-        runner: Command runner
+        input_file: Input image filename.
+        output_file: Output image filename.
+        mask_file: Mask filename.
+        number_of_terms: Number of terms to remove (order is\
+            1,x,y,z,z^2+(x^2+y^2)/2,zx,zy,xy,x^2-y^2).
+        verbose_flag: Switch on diagnostic messages.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SpharmRmOutputs`).
     """

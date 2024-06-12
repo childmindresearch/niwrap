@@ -194,18 +194,18 @@ def cifti_create_dense_timeseries(
     RADIAN.
     
     Args:
-        cifti_out: the output cifti file
-        volume: volume component
-        left_metric: metric for left surface
-        right_metric: metric for left surface
-        cerebellum_metric: metric for the cerebellum
-        opt_timestep_interval: set the timestep: the timestep, in seconds
-            (default 1.0)
-        opt_timestart_start: set the start time: the time at the first frame, in
-            seconds (default 0.0)
-        opt_unit_unit: use a unit other than time: unit identifier (default
-            SECOND)
-        runner: Command runner
+        cifti_out: the output cifti file.
+        volume: volume component.
+        left_metric: metric for left surface.
+        right_metric: metric for left surface.
+        cerebellum_metric: metric for the cerebellum.
+        opt_timestep_interval: set the timestep: the timestep, in seconds\
+            (default 1.0).
+        opt_timestart_start: set the start time: the time at the first frame,\
+            in seconds (default 0.0).
+        opt_unit_unit: use a unit other than time: unit identifier (default\
+            SECOND).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiCreateDenseTimeseriesOutputs`).
     """

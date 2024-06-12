@@ -70,41 +70,41 @@ def v_3d_unifize(
     
     Args:
         in_file: Input file to 3dunifize.
-        cl_frac: Option for afni experts only.set the automask 'clip level
-            fraction'. must be between 0.1 and 0.9. a small fraction means to make
-            the initial threshold for clipping (a la 3dcliplevel) smaller, which
+        cl_frac: Option for afni experts only.set the automask 'clip level\
+            fraction'. must be between 0.1 and 0.9. a small fraction means to make\
+            the initial threshold for clipping (a la 3dcliplevel) smaller, which\
             will tend to make the mask larger. [default=0.1].
-        epi: Assume the input dataset is a t2 (or t2\*) weighted epi time
-            series. after computing the scaling, apply it to all volumes (trs) in
-            the input dataset. that is, a given voxel will be scaled by the same
-            factor at each tr. this option also implies '-noduplo' and '-t2'.this
+        epi: Assume the input dataset is a t2 (or t2\*) weighted epi time\
+            series. after computing the scaling, apply it to all volumes (trs) in\
+            the input dataset. that is, a given voxel will be scaled by the same\
+            factor at each tr. this option also implies '-noduplo' and '-t2'.this\
             option turns off '-gm' if you turned it on.
-        gm: Also scale to unifize 'gray matter' = lower intensity voxels (to aid
-            in registering images from different scanners).
-        no_duplo: Do not use the 'duplo down' step; this can be useful for lower
-            resolution datasets.
+        gm: Also scale to unifize 'gray matter' = lower intensity voxels (to\
+            aid in registering images from different scanners).
+        no_duplo: Do not use the 'duplo down' step; this can be useful for\
+            lower resolution datasets.
         num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         quiet: Don't print the progress messages.
-        rbt: (a float, a float, a float). Option for afni experts only.specify
-            the 3 parameters for the algorithm:r = radius; same as given by option
-            '-urad', [default=18.3]b = bottom percentile of normalizing data range,
-            [default=70.0]r = top percentile of normalizing data range,
+        rbt: (a float, a float, a float). Option for afni experts only.specify\
+            the 3 parameters for the algorithm:r = radius; same as given by option\
+            '-urad', [default=18.3]b = bottom percentile of normalizing data range,\
+            [default=70.0]r = top percentile of normalizing data range,\
             [default=80.0].
-        scale_file: Output file name to save the scale factor used at each voxel
-            .
-        t2: Treat the input as if it were t2-weighted, rather than t1-weighted.
-            this processing is done simply by inverting the image contrast,
-            processing it as if that result were t1-weighted, and then re-inverting
-            the results counts of voxel overlap, i.e., each voxel will contain the
+        scale_file: Output file name to save the scale factor used at each\
+            voxel .
+        t2: Treat the input as if it were t2-weighted, rather than t1-weighted.\
+            this processing is done simply by inverting the image contrast,\
+            processing it as if that result were t1-weighted, and then re-inverting\
+            the results counts of voxel overlap, i.e., each voxel will contain the\
             number of masks that it is set in.
-        t2_up: Option for afni experts only.set the upper percentile point used
-            for t2-t1 inversion. allowed to be anything between 90 and 100
+        t2_up: Option for afni experts only.set the upper percentile point used\
+            for t2-t1 inversion. allowed to be anything between 90 and 100\
             (inclusive), with default to 98.5 (for no good reason).
-        urad: Sets the radius (in voxels) of the ball used for the sneaky trick.
-            default value is 18.3, and should be changed proportionally if the
-            dataset voxel size differs significantly from 1 mm.
-        runner: Command runner
+        urad: Sets the radius (in voxels) of the ball used for the sneaky\
+            trick. default value is 18.3, and should be changed proportionally if\
+            the dataset voxel size differs significantly from 1 mm.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dUnifizeOutputs`).
     """

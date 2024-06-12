@@ -40,9 +40,9 @@ def surface_flip_lr(
     the output surface will also have normals facing outward.
     
     Args:
-        surface: the surface to flip
-        surface_out: the output flipped surface
-        runner: Command runner
+        surface: the surface to flip.
+        surface_out: the output flipped surface.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceFlipLrOutputs`).
     """

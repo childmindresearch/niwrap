@@ -32,9 +32,9 @@ def concat_bvars(
     Concatenate multiple .bvars files into a single .bvars file.
     
     Args:
-        output_bvars: Output .bvars file
-        input_bvars: List of input .bvars files
-        runner: Command runner
+        output_bvars: Output .bvars file.
+        input_bvars: List of input .bvars files.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ConcatBvarsOutputs`).
     """

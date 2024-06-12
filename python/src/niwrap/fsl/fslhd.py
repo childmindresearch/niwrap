@@ -35,9 +35,9 @@ def fslhd(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#FSLHD
     
     Args:
-        input_file: Input NIFTI file
-        xml_flag: Print an XML-style NIFTI header
-        runner: Command runner
+        input_file: Input NIFTI file.
+        xml_flag: Print an XML-style NIFTI header.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslhdOutputs`).
     """

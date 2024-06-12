@@ -117,24 +117,24 @@ def dcminfo(
     Args:
         file: the DICOM file to be scanned.
         all_: print all DICOM fields.
-        csa: print all Siemens CSA fields (excluding Phoenix unless requested)
-        phoenix: print Siemens Phoenix protocol information
-        tag: print field specified by the group & element tags supplied. Tags
-            should be supplied as Hexadecimal (i.e. as they appear in the -all
+        csa: print all Siemens CSA fields (excluding Phoenix unless requested).
+        phoenix: print Siemens Phoenix protocol information.
+        tag: print field specified by the group & element tags supplied. Tags\
+            should be supplied as Hexadecimal (i.e. as they appear in the -all\
             listing).
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DcminfoOutputs`).
     """

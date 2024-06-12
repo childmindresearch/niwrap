@@ -50,13 +50,13 @@ def tbss_non_fa(
         concat_y: Concatenate images in the y direction.
         concat_z: Concatenate images in the z direction.
         concat_t: Concatenate images in time.
-        concat_auto: Auto-choose: single slices -> volume, volumes -> 4D (time
+        concat_auto: Auto-choose: single slices -> volume, volumes -> 4D (time\
             series).
-        concat_tr: Concatenate images in time and set the output image TR
+        concat_tr: Concatenate images in time and set the output image TR\
             (repetition time) to the final option value.
-        volume_number: Only use volume <N> from each input file (first volume is
-            0 not 1).
-        runner: Command runner
+        volume_number: Only use volume <N> from each input file (first volume\
+            is 0 not 1).
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TbssNonFaOutputs`).
     """

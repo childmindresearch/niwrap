@@ -217,54 +217,54 @@ def tckedit(
     https://mrtrix.readthedocs.io/en/latest/reference/commands/tckedit.html
     
     Args:
-        tracks_in: the input track file(s)
-        tracks_out: the output track file
-        include: specify an inclusion region of interest, as either a binary
-            mask image, or as a sphere using 4 comma-separared values
-            (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be
+        tracks_in: the input track file(s).
+        tracks_out: the output track file.
+        include: specify an inclusion region of interest, as either a binary\
+            mask image, or as a sphere using 4 comma-separared values\
+            (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be\
             accepted.
-        include_ordered: specify an inclusion region of interest, as either a
-            binary mask image, or as a sphere using 4 comma-separared values
-            (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions
+        include_ordered: specify an inclusion region of interest, as either a\
+            binary mask image, or as a sphere using 4 comma-separared values\
+            (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions\
             in the order they are specified in order to be accepted.
-        exclude: specify an exclusion region of interest, as either a binary
-            mask image, or as a sphere using 4 comma-separared values
-            (x,y,z,radius). Streamlines that enter ANY exclude region will be
+        exclude: specify an exclusion region of interest, as either a binary\
+            mask image, or as a sphere using 4 comma-separared values\
+            (x,y,z,radius). Streamlines that enter ANY exclude region will be\
             discarded.
-        mask: specify a masking region of interest, as either a binary mask
-            image, or as a sphere using 4 comma-separared values (x,y,z,radius). If
+        mask: specify a masking region of interest, as either a binary mask\
+            image, or as a sphere using 4 comma-separared values (x,y,z,radius). If\
             defined, streamlines exiting the mask will be truncated.
-        maxlength: set the maximum length of any streamline in mm
-        minlength: set the minimum length of any streamline in mm
-        number: set the desired number of selected streamlines to be propagated
-            to the output file
-        skip: omit this number of selected streamlines before commencing writing
-            to the output file
-        maxweight: set the maximum weight of any streamline
-        minweight: set the minimum weight of any streamline
-        inverse: output the inverse selection of streamlines based on the
-            criteria provided; i.e. only those streamlines that fail at least one
-            selection criterion, and/or vertices that are outside masks if provided,
-            will be written to file
-        ends_only: only test the ends of each streamline against the provided
-            include/exclude ROIs
-        tck_weights_in: specify a text scalar file containing the streamline
-            weights
-        tck_weights_out: specify the path for an output text scalar file
-            containing streamline weights
+        maxlength: set the maximum length of any streamline in mm.
+        minlength: set the minimum length of any streamline in mm.
+        number: set the desired number of selected streamlines to be propagated\
+            to the output file.
+        skip: omit this number of selected streamlines before commencing\
+            writing to the output file.
+        maxweight: set the maximum weight of any streamline.
+        minweight: set the minimum weight of any streamline.
+        inverse: output the inverse selection of streamlines based on the\
+            criteria provided; i.e. only those streamlines that fail at least one\
+            selection criterion, and/or vertices that are outside masks if\
+            provided, will be written to file.
+        ends_only: only test the ends of each streamline against the provided\
+            include/exclude ROIs.
+        tck_weights_in: specify a text scalar file containing the streamline\
+            weights.
+        tck_weights_out: specify the path for an output text scalar file\
+            containing streamline weights.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TckeditOutputs`).
     """

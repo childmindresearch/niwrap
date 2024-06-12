@@ -37,7 +37,7 @@ def surfmaths(
         first_input: First input surface file.
         output: Output surface file.
         operations_inputs: Mathematical operations and additional inputs.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfmathsOutputs`).
     """

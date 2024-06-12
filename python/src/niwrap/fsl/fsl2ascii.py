@@ -37,9 +37,9 @@ def fsl2ascii(
     More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
-        input_file: Input NIfTI (or analyze 7.5 format) image
-        output_file: Output ASCII text file
-        runner: Command runner
+        input_file: Input NIfTI (or analyze 7.5 format) image.
+        output_file: Output ASCII text file.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Fsl2asciiOutputs`).
     """

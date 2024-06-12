@@ -90,29 +90,29 @@ def fixelconvert(
     Args:
         fixel_in: the input fixel file / directory.
         fixel_out: the output fixel file / directory.
-        name: assign a different name to the value field output (Default:
+        name: assign a different name to the value field output (Default:\
             value). Do not include the file extension.
-        nii: output the index, directions and data file in NIfTI format instead
-            of .mif
-        out_size: also output the 'size' field from the old format
-        template: specify an existing fixel directory (in the new format) to
-            which the new output should conform
-        value: nominate the data file to import to the 'value' field in the old
-            format
-        in_size: import data for the 'size' field in the old format
+        nii: output the index, directions and data file in NIfTI format instead\
+            of .mif.
+        out_size: also output the 'size' field from the old format.
+        template: specify an existing fixel directory (in the new format) to\
+            which the new output should conform.
+        value: nominate the data file to import to the 'value' field in the old\
+            format.
+        in_size: import data for the 'size' field in the old format.
         info: display information messages.
-        quiet: do not display information messages or progress status;
-            alternatively, this can be achieved by setting the MRTRIX_QUIET
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
             environment variable to a non-empty string.
         debug: display debugging messages.
-        force: force overwrite of output files (caution: using the same file as
+        force: force overwrite of output files (caution: using the same file as\
             input and output might cause unexpected behaviour).
-        nthreads: use this number of threads in multi-threaded applications (set
-            to 0 to disable multi-threading).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
         config: temporarily set the value of an MRtrix config file entry.
         help_: display this information page and exit.
         version: display version information and exit.
-        runner: Command runner
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FixelconvertOutputs`).
     """

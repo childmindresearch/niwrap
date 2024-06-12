@@ -40,14 +40,14 @@ def makerot(
     Tool to create a rotation matrix for a given angle and axis of rotation.
     
     Args:
-        theta: Angle of rotation (in degrees)
-        axis: Unnormalized axis vector (comma separated)
-        cov: Image filename used for center of volume
-        center: Center of rotation in mm (comma separated)
-        output_file: Output filename for matrix
-        verbose_flag: Switch on diagnostic messages
-        help_flag: Display help message
-        runner: Command runner
+        theta: Angle of rotation (in degrees).
+        axis: Unnormalized axis vector (comma separated).
+        cov: Image filename used for center of volume.
+        center: Center of rotation in mm (comma separated).
+        output_file: Output filename for matrix.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+        runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MakerotOutputs`).
     """
