@@ -398,9 +398,9 @@ def cifti_separate(
     ret = CiftiSeparateOutputs(
         root=execution.output_file("."),
         volume_all=volume_all.outputs(execution),
-        label=[label.outputs(execution) for label in label],
-        metric=[metric.outputs(execution) for metric in metric],
-        volume=[volume.outputs(execution) for volume in volume],
+        label=[i.outputs(execution) for i in label],
+        metric=[i.outputs(execution) for i in metric],
+        volume=[i.outputs(execution) for i in volume],
     )
     execution.run(cargs)
     return ret

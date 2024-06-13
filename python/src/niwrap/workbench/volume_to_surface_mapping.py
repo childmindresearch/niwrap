@@ -102,7 +102,7 @@ class VolumeToSurfaceMappingRibbonConstrainedOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    self.output_weights: VolumeToSurfaceMappingOutputWeightsOutputs
+    output_weights: VolumeToSurfaceMappingOutputWeightsOutputs
     """Subcommand outputs"""
 
 
@@ -183,7 +183,7 @@ class VolumeToSurfaceMappingRibbonConstrained:
         """
         ret = VolumeToSurfaceMappingRibbonConstrainedOutputs(
             root=execution.output_file("."),
-            self.output_weights=self.output_weights.outputs(execution),
+            output_weights=self.output_weights.outputs(execution),
         )
         return ret
 
