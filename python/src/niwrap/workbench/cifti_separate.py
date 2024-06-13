@@ -35,14 +35,14 @@ class CiftiSeparateVolumeAll:
     """
     volume_out: InputPathType
     """the output volume"""
-    opt_roi: bool = False
-    """also output the roi of which voxels have data"""
     roi_out: InputPathType
     """the roi output volume"""
-    opt_label: bool = False
-    """output a volume label file indicating the location of structures"""
     label_out: InputPathType
     """the label output volume"""
+    opt_roi: bool = False
+    """also output the roi of which voxels have data"""
+    opt_label: bool = False
+    """output a volume label file indicating the location of structures"""
     opt_crop: bool = False
     """crop volume to the size of the data rather than using the original volume
     size"""
@@ -113,10 +113,10 @@ class CiftiSeparateLabel:
     """
     label_out: InputPathType
     """the output label file"""
-    opt_roi: bool = False
-    """also output the roi of which vertices have data"""
     roi_out: InputPathType
     """the roi output metric"""
+    opt_roi: bool = False
+    """also output the roi of which vertices have data"""
     
     def run(
         self,
@@ -178,10 +178,10 @@ class CiftiSeparateMetric:
     """
     metric_out: InputPathType
     """the output metric"""
-    opt_roi: bool = False
-    """also output the roi of which vertices have data"""
     roi_out: InputPathType
     """the roi output metric"""
+    opt_roi: bool = False
+    """also output the roi of which vertices have data"""
     
     def run(
         self,
@@ -243,10 +243,10 @@ class CiftiSeparateVolume:
     """
     volume_out: InputPathType
     """the output volume"""
-    opt_roi: bool = False
-    """also output the roi of which voxels have data"""
     roi_out: InputPathType
     """the roi output volume"""
+    opt_roi: bool = False
+    """also output the roi of which voxels have data"""
     opt_crop: bool = False
     """crop volume to the size of the component rather than using the original
     volume size"""

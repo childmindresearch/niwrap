@@ -111,6 +111,8 @@ class VolumeToSurfaceMappingRibbonConstrained:
     """
     use ribbon constrained mapping algorithm
     """
+    roi_out: InputPathType
+    """the output metric file of vertices that have no data"""
     volume_roi: VolumeToSurfaceMappingVolumeRoi | None = None
     """use a volume roi"""
     opt_voxel_subdiv_subdiv_num: int | None = None
@@ -127,8 +129,6 @@ class VolumeToSurfaceMappingRibbonConstrained:
     TRILINEAR"""
     opt_bad_vertices_out: bool = False
     """output an ROI of which vertices didn't intersect any valid voxels"""
-    roi_out: InputPathType
-    """the output metric file of vertices that have no data"""
     output_weights: VolumeToSurfaceMappingOutputWeights | None = None
     """write the voxel weights for a vertex to a volume file"""
     opt_output_weights_text_text_out: str | None = None
