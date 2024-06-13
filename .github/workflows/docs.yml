@@ -28,7 +28,7 @@ jobs:
         run: |
           cd python 
           poetry install
-          poetry run "pip install pdoc"
+          poetry add pdoc
 
       - name: Set up Git
         run: |
