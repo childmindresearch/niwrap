@@ -8,7 +8,7 @@ on:
       - completed
 
 jobs:
-  styx:
+  pdoc:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,4 +42,4 @@ jobs:
             touch docs_build/.nojekyll
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: docs_build
+          folder: python/docs_build
