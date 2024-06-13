@@ -28,7 +28,7 @@ jobs:
       - name: Install niwrap
         run: |
           poetry install --directory=python
-          poetry add pdoc
+          poetry run "pip install pdoc"
 
       - name: Set up Git
         run: |
