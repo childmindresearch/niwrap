@@ -26,7 +26,8 @@ jobs:
 
       - name: Install niwrap
         run: |
-          poetry install --directory=python
+          cd python 
+          poetry install
           poetry run "pip install pdoc"
 
       - name: Set up Git
@@ -36,7 +37,8 @@ jobs:
 
       - name: Compile
         run: |
-            poetry run pdoc niwrap -o docs_build -t python/docs/pdoc-theme --docformat google
+            cd python
+            poetry run pdoc niwrap -o docs_build -t docs/pdoc-theme --docformat google
             touch docs_build/.nojekyll
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
