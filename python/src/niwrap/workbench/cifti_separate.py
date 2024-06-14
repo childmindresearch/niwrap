@@ -397,10 +397,10 @@ def cifti_separate(
         cargs.extend(["-volume", *[a for c in [s.run(execution) for s in volume] for a in c]])
     ret = CiftiSeparateOutputs(
         root=execution.output_file("."),
-        volume_all=volume_all.outputs(execution),
-        label=[i.outputs(execution) for i in label],
-        metric=[i.outputs(execution) for i in metric],
-        volume=[i.outputs(execution) for i in volume],
+        volume_all=volume_all.outputs(execution) if volume_all else None,
+        label=[i.outputs(execution) for i in label] if label else None,
+        metric=[i.outputs(execution) for i in metric] if metric else None,
+        volume=[i.outputs(execution) for i in volume] if volume else None,
     )
     execution.run(cargs)
     return ret

@@ -538,10 +538,10 @@ def cifti_convert(
         cargs.extend(["-from-text", *from_text.run(execution)])
     ret = CiftiConvertOutputs(
         root=execution.output_file("."),
-        from_gifti_ext=from_gifti_ext.outputs(execution),
-        to_nifti=to_nifti.outputs(execution),
-        from_nifti=from_nifti.outputs(execution),
-        from_text=from_text.outputs(execution),
+        from_gifti_ext=from_gifti_ext.outputs(execution) if from_gifti_ext else None,
+        to_nifti=to_nifti.outputs(execution) if to_nifti else None,
+        from_nifti=from_nifti.outputs(execution) if from_nifti else None,
+        from_text=from_text.outputs(execution) if from_text else None,
     )
     execution.run(cargs)
     return ret

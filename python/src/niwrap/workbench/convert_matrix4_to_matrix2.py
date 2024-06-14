@@ -140,7 +140,7 @@ def convert_matrix4_to_matrix2(
         root=execution.output_file("."),
         counts_out=execution.output_file(f"{pathlib.Path(counts_out).name}"),
         distance_out=execution.output_file(f"{pathlib.Path(distance_out).name}"),
-        individual_fibers=individual_fibers.outputs(execution),
+        individual_fibers=individual_fibers.outputs(execution) if individual_fibers else None,
     )
     execution.run(cargs)
     return ret
