@@ -272,6 +272,6 @@ for (const file of fs.readdirSync(jsonPath)) {
     const descriptorPath = path.join(outputPath, obj.name + ".json");
     fs.writeFileSync
         (descriptorPath,
-            JSON.stringify(descriptor, null, 2),
+            JSON.stringify(descriptor, null, 2) + '\n',
             'utf8');
 }

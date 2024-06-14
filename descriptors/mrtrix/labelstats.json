@@ -26,7 +26,9 @@
       "description": "output only the field specified; options are: mass,centre",
       "type": "String",
       "optional": true,
-      "value-choices": ["choice"]
+      "value-choices": [
+        "choice"
+      ]
     },
     {
       "id": "voxelspace",

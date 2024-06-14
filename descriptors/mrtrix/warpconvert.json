@@ -25,7 +25,9 @@
       "description": "the conversion type required. Valid choices are: deformation2displacement, displacement2deformation, warpfull2deformation, warpfull2displacement",
       "type": "String",
       "optional": false,
-      "value-choices": ["type"]
+      "value-choices": [
+        "type"
+      ]
     },
     {
       "id": "out",

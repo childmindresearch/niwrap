@@ -25,7 +25,9 @@
       "description": "the filtering operation to perform; options are: connect, smooth",
       "type": "String",
       "optional": false,
-      "value-choices": ["filter"]
+      "value-choices": [
+        "filter"
+      ]
     },
     {
       "id": "output",

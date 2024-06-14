@@ -42,7 +42,9 @@
       "description": "compute some statistic from the values along each streamline (options are: mean,median,min,max)",
       "type": "String",
       "optional": true,
-      "value-choices": ["statistic"]
+      "value-choices": [
+        "statistic"
+      ]
     },
     {
       "id": "nointerp",
