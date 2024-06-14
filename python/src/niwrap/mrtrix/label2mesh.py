@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABEL2MESH_METADATA = Metadata(
-    id="383b8c89a18899ad420ff854cb634178fcf55571",
+    id="b444580cf3e1cf7e180659ffb6dcb8e97e567318",
     name="label2mesh",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class Label2meshOutputs(typing.NamedTuple):
 
 def label2mesh(
     nodes_in: InputPathType,
-    mesh_out: InputPathType,
+    mesh_out: str,
     blocky: bool = False,
     info: bool = False,
     quiet: bool = False,
@@ -126,10 +126,10 @@ def label2mesh(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(nodes_in))
-    cargs.append(execution.input_file(mesh_out))
+    cargs.append(mesh_out)
     ret = Label2meshOutputs(
         root=execution.output_file("."),
-        mesh_out=execution.output_file(f"{pathlib.Path(mesh_out).name}"),
+        mesh_out=execution.output_file(f"{mesh_out}"),
     )
     execution.run(cargs)
     return ret

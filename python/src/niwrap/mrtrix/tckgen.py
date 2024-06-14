@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKGEN_METADATA = Metadata(
-    id="0d56b081013c9389a2a94e621bdd9f43f13fd2d8",
+    id="ed1920c7382874be796f2648e439f45150b46ac6",
     name="tckgen",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -390,7 +390,7 @@ class TckgenOutputs(typing.NamedTuple):
 
 def tckgen(
     source: InputPathType,
-    tracks: InputPathType,
+    tracks: str,
     algorithm: typing.Literal["name"] | None = None,
     select_: int | None = None,
     step: float | int | None = None,
@@ -415,7 +415,7 @@ def tckgen(
     seed_cutoff: float | int | None = None,
     seed_unidirectional: bool = False,
     seed_direction: list[float | int] = None,
-    output_seeds: InputPathType | None = None,
+    output_seeds: str | None = None,
     include: list[TckgenInclude] = None,
     include_ordered: list[TckgenIncludeOrdered] = None,
     exclude: list[TckgenExclude] = None,
@@ -770,7 +770,7 @@ def tckgen(
     if seed_direction is not None:
         cargs.extend(["-seed_direction", *map(str, seed_direction)])
     if output_seeds is not None:
-        cargs.extend(["-output_seeds", execution.input_file(output_seeds)])
+        cargs.extend(["-output_seeds", output_seeds])
     if include is not None:
         cargs.extend([a for c in [s.run(execution) for s in include] for a in c])
     if include_ordered is not None:
@@ -810,11 +810,11 @@ def tckgen(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(source))
-    cargs.append(execution.input_file(tracks))
+    cargs.append(tracks)
     ret = TckgenOutputs(
         root=execution.output_file("."),
-        tracks=execution.output_file(f"{pathlib.Path(tracks).name}"),
-        output_seeds=execution.output_file(f"{pathlib.Path(output_seeds).name}") if output_seeds is not None else None,
+        tracks=execution.output_file(f"{tracks}"),
+        output_seeds=execution.output_file(f"{output_seeds}") if output_seeds is not None else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DWI2MASK_METADATA = Metadata(
-    id="6b6aba217256d9f6daad23e3388b3478ced6db31",
+    id="bbb2af83b7ab6ae65e15c9fe6e0fe8ca671044b4",
     name="dwi2mask",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -92,7 +92,7 @@ class Dwi2maskOutputs(typing.NamedTuple):
 
 def dwi2mask(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     clean_scale: int | None = None,
     grad: InputPathType | None = None,
     fslgrad: Dwi2maskFslgrad | None = None,
@@ -189,10 +189,10 @@ def dwi2mask(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = Dwi2maskOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

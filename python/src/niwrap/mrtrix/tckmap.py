@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKMAP_METADATA = Metadata(
-    id="0987e535d633d8dc1b22141f35ade0b07832d7d6",
+    id="f4c775dbcb7f1d6d026d8bab63b51da641383f9c",
     name="tckmap",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class TckmapOutputs(typing.NamedTuple):
 
 def tckmap(
     tracks: InputPathType,
-    output: InputPathType,
+    output: str,
     template: InputPathType | None = None,
     vox: list[float | int] = None,
     datatype: typing.Literal["spec"] | None = None,
@@ -262,10 +262,10 @@ def tckmap(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(tracks))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = TckmapOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRHISTOGRAM_METADATA = Metadata(
-    id="60935e8897e6238d0a95b873bfeda2af535077b2",
+    id="7709fa02d5156e931706236070e64c6a048ddf37",
     name="mrhistogram",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class MrhistogramOutputs(typing.NamedTuple):
 
 def mrhistogram(
     image: InputPathType,
-    hist: InputPathType,
+    hist: str,
     bins: int | None = None,
     template: InputPathType | None = None,
     mask: InputPathType | None = None,
@@ -143,10 +143,10 @@ def mrhistogram(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(image))
-    cargs.append(execution.input_file(hist))
+    cargs.append(hist)
     ret = MrhistogramOutputs(
         root=execution.output_file("."),
-        hist=execution.output_file(f"{pathlib.Path(hist).name}"),
+        hist=execution.output_file(f"{hist}"),
     )
     execution.run(cargs)
     return ret

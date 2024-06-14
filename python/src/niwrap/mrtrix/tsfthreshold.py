@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TSFTHRESHOLD_METADATA = Metadata(
-    id="d4ca73e490ba0a508cf678a247db8ed07935d46d",
+    id="9f2b6d460e04e0cdb680c50341661efb12b982f3",
     name="tsfthreshold",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class TsfthresholdOutputs(typing.NamedTuple):
 def tsfthreshold(
     input_: InputPathType,
     t: float | int,
-    output: InputPathType,
+    output: str,
     invert: bool = False,
     info: bool = False,
     quiet: bool = False,
@@ -128,10 +128,10 @@ def tsfthreshold(
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
     cargs.append(str(t))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = TsfthresholdOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SH2PEAKS_METADATA = Metadata(
-    id="9251342747ef3203032d4a31ebaebbb679329943",
+    id="0d3b563504c253ffc16efd251fe2c480de2ffcac",
     name="sh2peaks",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -88,7 +88,7 @@ class Sh2peaksOutputs(typing.NamedTuple):
 
 def sh2peaks(
     sh: InputPathType,
-    output: InputPathType,
+    output: str,
     num: int | None = None,
     direction: list[Sh2peaksDirection] = None,
     peaks: InputPathType | None = None,
@@ -198,10 +198,10 @@ def sh2peaks(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(sh))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = Sh2peaksOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

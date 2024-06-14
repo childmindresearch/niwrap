@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKSTATS_METADATA = Metadata(
-    id="c1fc50a602ddbd3db695f10261168b3a6d342487",
+    id="6091bf2b02998c7e4929a89bf48b84ae94e830ab",
     name="tckstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -88,8 +88,8 @@ class TckstatsOutputs(typing.NamedTuple):
 def tckstats(
     tracks_in: InputPathType,
     output: list[TckstatsOutput] = None,
-    histogram: InputPathType | None = None,
-    dump: InputPathType | None = None,
+    histogram: str | None = None,
+    dump: str | None = None,
     ignorezero: bool = False,
     tck_weights_in: InputPathType | None = None,
     info: bool = False,
@@ -150,9 +150,9 @@ def tckstats(
     if output is not None:
         cargs.extend([a for c in [s.run(execution) for s in output] for a in c])
     if histogram is not None:
-        cargs.extend(["-histogram", execution.input_file(histogram)])
+        cargs.extend(["-histogram", histogram])
     if dump is not None:
-        cargs.extend(["-dump", execution.input_file(dump)])
+        cargs.extend(["-dump", dump])
     if ignorezero:
         cargs.append("-ignorezero")
     if tck_weights_in is not None:
@@ -176,8 +176,8 @@ def tckstats(
     cargs.append(execution.input_file(tracks_in))
     ret = TckstatsOutputs(
         root=execution.output_file("."),
-        histogram=execution.output_file(f"{pathlib.Path(histogram).name}") if histogram is not None else None,
-        dump=execution.output_file(f"{pathlib.Path(dump).name}") if dump is not None else None,
+        histogram=execution.output_file(f"{histogram}") if histogram is not None else None,
+        dump=execution.output_file(f"{dump}") if dump is not None else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SHCONV_METADATA = Metadata(
-    id="22a4e3f3778f258c0a381991fb6dcb5946c765d9",
+    id="18d0bb930cd604864f7c4faade6abf9965ede4fa",
     name="shconv",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class ShconvOutputs(typing.NamedTuple):
 
 def shconv(
     odf_response: list[str],
-    sh_out: InputPathType,
+    sh_out: str,
     datatype: typing.Literal["spec"] | None = None,
     strides: str | None = None,
     info: bool = False,
@@ -155,10 +155,10 @@ def shconv(
     if version:
         cargs.append("-version")
     cargs.extend(odf_response)
-    cargs.append(execution.input_file(sh_out))
+    cargs.append(sh_out)
     ret = ShconvOutputs(
         root=execution.output_file("."),
-        sh_out=execution.output_file(f"{pathlib.Path(sh_out).name}"),
+        sh_out=execution.output_file(f"{sh_out}"),
     )
     execution.run(cargs)
     return ret

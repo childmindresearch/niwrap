@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRCOLOUR_METADATA = Metadata(
-    id="7eeec3996105cb3ca3cebf1ce4588c25826d96da",
+    id="c7fe043f079d8f9860d16bf3b5875fea341094d6",
     name="mrcolour",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class MrcolourOutputs(typing.NamedTuple):
 def mrcolour(
     input_: InputPathType,
     map_: typing.Literal["map"],
-    output: InputPathType,
+    output: str,
     upper: float | int | None = None,
     lower: float | int | None = None,
     colour: list[float | int] = None,
@@ -147,10 +147,10 @@ def mrcolour(
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
     cargs.append(map_)
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = MrcolourOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

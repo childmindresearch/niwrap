@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKRESAMPLE_METADATA = Metadata(
-    id="371f57c665c15b5521fd00dd5a359447e3aeebab",
+    id="58ba887d55694a38b8affc5a8c5c50a07ce7b7e1",
     name="tckresample",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -139,7 +139,7 @@ class TckresampleOutputs(typing.NamedTuple):
 
 def tckresample(
     in_tracks: InputPathType,
-    out_tracks: InputPathType,
+    out_tracks: str,
     upsample: int | None = None,
     downsample: int | None = None,
     step_size: float | int | None = None,
@@ -251,10 +251,10 @@ def tckresample(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(in_tracks))
-    cargs.append(execution.input_file(out_tracks))
+    cargs.append(out_tracks)
     ret = TckresampleOutputs(
         root=execution.output_file("."),
-        out_tracks=execution.output_file(f"{pathlib.Path(out_tracks).name}"),
+        out_tracks=execution.output_file(f"{out_tracks}"),
     )
     execution.run(cargs)
     return ret

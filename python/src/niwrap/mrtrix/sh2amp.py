@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SH2AMP_METADATA = Metadata(
-    id="74f0bb6cc194f552638aa3a35ba346f28e113b4d",
+    id="1c234736c393c6ada4cd49718a9f87ea4db3c6c2",
     name="sh2amp",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -93,7 +93,7 @@ class Sh2ampOutputs(typing.NamedTuple):
 def sh2amp(
     input_: InputPathType,
     directions: InputPathType,
-    output: InputPathType,
+    output: str,
     nonnegative: bool = False,
     grad: InputPathType | None = None,
     fslgrad: Sh2ampFslgrad | None = None,
@@ -228,10 +228,10 @@ def sh2amp(
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
     cargs.append(execution.input_file(directions))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = Sh2ampOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DIRORDER_METADATA = Metadata(
-    id="5f54eff92a851b39fe9d1d7c65d9d1d143dd3125",
+    id="02f825c0911227b0733cbc2197ad559c6d9826bb",
     name="dirorder",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class DirorderOutputs(typing.NamedTuple):
 
 def dirorder(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     cartesian: bool = False,
     info: bool = False,
     quiet: bool = False,
@@ -128,10 +128,10 @@ def dirorder(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = DirorderOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

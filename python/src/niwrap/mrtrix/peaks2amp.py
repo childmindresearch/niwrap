@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 PEAKS2AMP_METADATA = Metadata(
-    id="08f3d33948e9703c0cf7b2793aae6e39f1323837",
+    id="0f0769f37a7be0bea0d73d448945bb0f5aaeb864",
     name="peaks2amp",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class Peaks2ampOutputs(typing.NamedTuple):
 
 def peaks2amp(
     directions: InputPathType,
-    amplitudes: InputPathType,
+    amplitudes: str,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -122,10 +122,10 @@ def peaks2amp(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(directions))
-    cargs.append(execution.input_file(amplitudes))
+    cargs.append(amplitudes)
     ret = Peaks2ampOutputs(
         root=execution.output_file("."),
-        amplitudes=execution.output_file(f"{pathlib.Path(amplitudes).name}"),
+        amplitudes=execution.output_file(f"{amplitudes}"),
     )
     execution.run(cargs)
     return ret

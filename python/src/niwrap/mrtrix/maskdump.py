@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MASKDUMP_METADATA = Metadata(
-    id="2166f755604098ccbeb27c1a85bc0d4f19621653",
+    id="81345fb4732dfcf6db2b3efeadc0684f0e3ba96b",
     name="maskdump",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class MaskdumpOutputs(typing.NamedTuple):
 
 def maskdump(
     input_: InputPathType,
-    output: InputPathType | None = None,
+    output: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -123,10 +123,10 @@ def maskdump(
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
     if output is not None:
-        cargs.append(execution.input_file(output))
+        cargs.append(output)
     ret = MaskdumpOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}") if output is not None else None,
+        output=execution.output_file(f"{output}") if output is not None else None,
     )
     execution.run(cargs)
     return ret

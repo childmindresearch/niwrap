@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKSAMPLE_METADATA = Metadata(
-    id="b1f50b9b6fdb73f7fd985293f25ea6ad65a8657c",
+    id="9933e08db2c2f8a41c8ebffa2ac83b33c72fd723",
     name="tcksample",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class TcksampleOutputs(typing.NamedTuple):
 def tcksample(
     tracks: InputPathType,
     image: InputPathType,
-    values_: InputPathType,
+    values_: str,
     stat_tck: typing.Literal["statistic"] | None = None,
     nointerp: bool = False,
     precise: bool = False,
@@ -152,10 +152,10 @@ def tcksample(
         cargs.append("-version")
     cargs.append(execution.input_file(tracks))
     cargs.append(execution.input_file(image))
-    cargs.append(execution.input_file(values_))
+    cargs.append(values_)
     ret = TcksampleOutputs(
         root=execution.output_file("."),
-        values_=execution.output_file(f"{pathlib.Path(values_).name}"),
+        values_=execution.output_file(f"{values_}"),
     )
     execution.run(cargs)
     return ret

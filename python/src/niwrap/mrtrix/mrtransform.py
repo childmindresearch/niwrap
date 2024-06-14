@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRTRANSFORM_METADATA = Metadata(
-    id="48e30bf76b0a70833df4e7a384fb8e93e0253d84",
+    id="01c6838619553c7833836283e7ca74d5f17f9954",
     name="mrtransform",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -67,10 +67,10 @@ class MrtransformExportGradFsl:
     """
     export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format
     """
-    bvecs_path: InputPathType
+    bvecs_path: str
     """export the diffusion-weighted gradient table to files in FSL (bvecs /
     bvals) format"""
-    bvals_path: InputPathType
+    bvals_path: str
     """export the diffusion-weighted gradient table to files in FSL (bvecs /
     bvals) format"""
     
@@ -89,8 +89,8 @@ class MrtransformExportGradFsl:
         """
         cargs = []
         cargs.append("-export_grad_fsl")
-        cargs.append(execution.input_file(self.bvecs_path))
-        cargs.append(execution.input_file(self.bvals_path))
+        cargs.append(self.bvecs_path)
+        cargs.append(self.bvals_path)
         return cargs
     
     def outputs(
@@ -108,8 +108,8 @@ class MrtransformExportGradFsl:
         """
         ret = MrtransformExportGradFslOutputs(
             root=execution.output_file("."),
-            bvecs_path=execution.output_file(f"{pathlib.Path(self.bvecs_path).name}"),
-            bvals_path=execution.output_file(f"{pathlib.Path(self.bvals_path).name}"),
+            bvecs_path=execution.output_file(f"{self.bvecs_path}"),
+            bvals_path=execution.output_file(f"{self.bvals_path}"),
         )
         return ret
 
@@ -160,7 +160,7 @@ class MrtransformOutputs(typing.NamedTuple):
 
 def mrtransform(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     linear: InputPathType | None = None,
     flip: list[int] = None,
     inverse: bool = False,
@@ -179,7 +179,7 @@ def mrtransform(
     reorient_fod: str | None = None,
     grad: InputPathType | None = None,
     fslgrad: MrtransformFslgrad | None = None,
-    export_grad_mrtrix: InputPathType | None = None,
+    export_grad_mrtrix: str | None = None,
     export_grad_fsl: MrtransformExportGradFsl | None = None,
     datatype: typing.Literal["spec"] | None = None,
     strides: str | None = None,
@@ -396,7 +396,7 @@ def mrtransform(
     if fslgrad is not None:
         cargs.extend(fslgrad.run(execution))
     if export_grad_mrtrix is not None:
-        cargs.extend(["-export_grad_mrtrix", execution.input_file(export_grad_mrtrix)])
+        cargs.extend(["-export_grad_mrtrix", export_grad_mrtrix])
     if export_grad_fsl is not None:
         cargs.extend(export_grad_fsl.run(execution))
     if datatype is not None:
@@ -424,11 +424,11 @@ def mrtransform(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = MrtransformOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
-        export_grad_mrtrix=execution.output_file(f"{pathlib.Path(export_grad_mrtrix).name}") if export_grad_mrtrix is not None else None,
+        output=execution.output_file(f"{output}"),
+        export_grad_mrtrix=execution.output_file(f"{export_grad_mrtrix}") if export_grad_mrtrix is not None else None,
         export_grad_fsl=export_grad_fsl.outputs(execution),
     )
     execution.run(cargs)

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRCHECKERBOARDMASK_METADATA = Metadata(
-    id="7af51407ddcfe70a0fedba7ef892e3e656c86997",
+    id="1a575e3cb25176fde85bc5ffa5c124b40734a061",
     name="mrcheckerboardmask",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class MrcheckerboardmaskOutputs(typing.NamedTuple):
 
 def mrcheckerboardmask(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     tiles: int | None = None,
     invert: bool = False,
     nan: bool = False,
@@ -133,10 +133,10 @@ def mrcheckerboardmask(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = MrcheckerboardmaskOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

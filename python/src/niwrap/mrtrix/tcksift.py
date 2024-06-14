@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKSIFT_METADATA = Metadata(
-    id="0df3436cb02a1110e7030df068bb6f7a48910b6b",
+    id="e515279056fff4e93aa8acc83108c2f6f3c69983",
     name="tcksift",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -63,7 +63,7 @@ class TcksiftOutputs(typing.NamedTuple):
 def tcksift(
     in_tracks: InputPathType,
     in_fod: InputPathType,
-    out_tracks: InputPathType,
+    out_tracks: str,
     nofilter: bool = False,
     output_at_counts: list[int] = None,
     proc_mask: InputPathType | None = None,
@@ -73,10 +73,10 @@ def tcksift(
     make_null_lobes: bool = False,
     remove_untracked: bool = False,
     fd_thresh: float | int | None = None,
-    csv_: InputPathType | None = None,
-    out_mu: InputPathType | None = None,
+    csv_: str | None = None,
+    out_mu: str | None = None,
     output_debug: bool = False,
-    out_selection: InputPathType | None = None,
+    out_selection: str | None = None,
     term_number: int | None = None,
     term_ratio: float | int | None = None,
     term_mu: float | int | None = None,
@@ -192,13 +192,13 @@ def tcksift(
     if fd_thresh is not None:
         cargs.extend(["-fd_thresh", str(fd_thresh)])
     if csv_ is not None:
-        cargs.extend(["-csv", execution.input_file(csv_)])
+        cargs.extend(["-csv", csv_])
     if out_mu is not None:
-        cargs.extend(["-out_mu", execution.input_file(out_mu)])
+        cargs.extend(["-out_mu", out_mu])
     if output_debug:
         cargs.append("-output_debug")
     if out_selection is not None:
-        cargs.extend(["-out_selection", execution.input_file(out_selection)])
+        cargs.extend(["-out_selection", out_selection])
     if term_number is not None:
         cargs.extend(["-term_number", str(term_number)])
     if term_ratio is not None:
@@ -223,13 +223,13 @@ def tcksift(
         cargs.append("-version")
     cargs.append(execution.input_file(in_tracks))
     cargs.append(execution.input_file(in_fod))
-    cargs.append(execution.input_file(out_tracks))
+    cargs.append(out_tracks)
     ret = TcksiftOutputs(
         root=execution.output_file("."),
-        out_tracks=execution.output_file(f"{pathlib.Path(out_tracks).name}"),
-        csv_=execution.output_file(f"{pathlib.Path(csv_).name}") if csv_ is not None else None,
-        out_mu=execution.output_file(f"{pathlib.Path(out_mu).name}") if out_mu is not None else None,
-        out_selection=execution.output_file(f"{pathlib.Path(out_selection).name}") if out_selection is not None else None,
+        out_tracks=execution.output_file(f"{out_tracks}"),
+        csv_=execution.output_file(f"{csv_}") if csv_ is not None else None,
+        out_mu=execution.output_file(f"{out_mu}") if out_mu is not None else None,
+        out_selection=execution.output_file(f"{out_selection}") if out_selection is not None else None,
     )
     execution.run(cargs)
     return ret

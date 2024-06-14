@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 WARP2METRIC_METADATA = Metadata(
-    id="7bf8a320ff6fb906157e2f4df79c06732e57ab60",
+    id="2fd5850bcb7f32a9c9c10cc3635b0b1b82152cda",
     name="warp2metric",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -101,8 +101,8 @@ class Warp2metricOutputs(typing.NamedTuple):
 def warp2metric(
     in_: InputPathType,
     fc: Warp2metricFc | None = None,
-    jmat: InputPathType | None = None,
-    jdet: InputPathType | None = None,
+    jmat: str | None = None,
+    jdet: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -163,9 +163,9 @@ def warp2metric(
     if fc is not None:
         cargs.extend(fc.run(execution))
     if jmat is not None:
-        cargs.extend(["-jmat", execution.input_file(jmat)])
+        cargs.extend(["-jmat", jmat])
     if jdet is not None:
-        cargs.extend(["-jdet", execution.input_file(jdet)])
+        cargs.extend(["-jdet", jdet])
     if info:
         cargs.append("-info")
     if quiet:
@@ -185,8 +185,8 @@ def warp2metric(
     cargs.append(execution.input_file(in_))
     ret = Warp2metricOutputs(
         root=execution.output_file("."),
-        jmat=execution.output_file(f"{pathlib.Path(jmat).name}") if jmat is not None else None,
-        jdet=execution.output_file(f"{pathlib.Path(jdet).name}") if jdet is not None else None,
+        jmat=execution.output_file(f"{jmat}") if jmat is not None else None,
+        jdet=execution.output_file(f"{jdet}") if jdet is not None else None,
     )
     execution.run(cargs)
     return ret

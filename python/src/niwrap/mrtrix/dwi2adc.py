@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DWI2ADC_METADATA = Metadata(
-    id="1cc64f1b6fe1024460e8f49f51ff11537052d451",
+    id="35bdd526d5d1026f77b87b17c4274fc8d6432d78",
     name="dwi2adc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -92,7 +92,7 @@ class Dwi2adcOutputs(typing.NamedTuple):
 
 def dwi2adc(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     grad: InputPathType | None = None,
     fslgrad: Dwi2adcFslgrad | None = None,
     info: bool = False,
@@ -173,10 +173,10 @@ def dwi2adc(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = Dwi2adcOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRTHRESHOLD_METADATA = Metadata(
-    id="4847ff4d02897b619f88b1de2794d00f6b98aac3",
+    id="505a66e50baef15acc3bd93fd79fbbad74d28ccb",
     name="mrthreshold",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class MrthresholdOutputs(typing.NamedTuple):
 
 def mrthreshold(
     input_: InputPathType,
-    output: InputPathType | None = None,
+    output: str | None = None,
     abs_: float | int | None = None,
     percentile: float | int | None = None,
     top: int | None = None,
@@ -213,10 +213,10 @@ def mrthreshold(
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
     if output is not None:
-        cargs.append(execution.input_file(output))
+        cargs.append(output)
     ret = MrthresholdOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}") if output is not None else None,
+        output=execution.output_file(f"{output}") if output is not None else None,
     )
     execution.run(cargs)
     return ret

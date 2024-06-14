@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TENSOR2METRIC_METADATA = Metadata(
-    id="97ac6caa4e40a551fdd4a0175886b4557265bd4e",
+    id="a52be3325be42f53cf78810899f28fe50e50e254",
     name="tensor2metric",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -72,15 +72,15 @@ class Tensor2metricOutputs(typing.NamedTuple):
 
 def tensor2metric(
     tensor: InputPathType,
-    adc: InputPathType | None = None,
-    fa: InputPathType | None = None,
-    ad: InputPathType | None = None,
-    rd: InputPathType | None = None,
-    cl: InputPathType | None = None,
-    cp: InputPathType | None = None,
-    cs: InputPathType | None = None,
-    value: InputPathType | None = None,
-    vector: InputPathType | None = None,
+    adc: str | None = None,
+    fa: str | None = None,
+    ad: str | None = None,
+    rd: str | None = None,
+    cl: str | None = None,
+    cp: str | None = None,
+    cs: str | None = None,
+    value: str | None = None,
+    vector: str | None = None,
     num: list[int] = None,
     modulate: typing.Literal["choice"] | None = None,
     mask: InputPathType | None = None,
@@ -161,23 +161,23 @@ def tensor2metric(
     cargs = []
     cargs.append("tensor2metric")
     if adc is not None:
-        cargs.extend(["-adc", execution.input_file(adc)])
+        cargs.extend(["-adc", adc])
     if fa is not None:
-        cargs.extend(["-fa", execution.input_file(fa)])
+        cargs.extend(["-fa", fa])
     if ad is not None:
-        cargs.extend(["-ad", execution.input_file(ad)])
+        cargs.extend(["-ad", ad])
     if rd is not None:
-        cargs.extend(["-rd", execution.input_file(rd)])
+        cargs.extend(["-rd", rd])
     if cl is not None:
-        cargs.extend(["-cl", execution.input_file(cl)])
+        cargs.extend(["-cl", cl])
     if cp is not None:
-        cargs.extend(["-cp", execution.input_file(cp)])
+        cargs.extend(["-cp", cp])
     if cs is not None:
-        cargs.extend(["-cs", execution.input_file(cs)])
+        cargs.extend(["-cs", cs])
     if value is not None:
-        cargs.extend(["-value", execution.input_file(value)])
+        cargs.extend(["-value", value])
     if vector is not None:
-        cargs.extend(["-vector", execution.input_file(vector)])
+        cargs.extend(["-vector", vector])
     if num is not None:
         cargs.extend(["-num", *map(str, num)])
     if modulate is not None:
@@ -203,15 +203,15 @@ def tensor2metric(
     cargs.append(execution.input_file(tensor))
     ret = Tensor2metricOutputs(
         root=execution.output_file("."),
-        adc=execution.output_file(f"{pathlib.Path(adc).name}") if adc is not None else None,
-        fa=execution.output_file(f"{pathlib.Path(fa).name}") if fa is not None else None,
-        ad=execution.output_file(f"{pathlib.Path(ad).name}") if ad is not None else None,
-        rd=execution.output_file(f"{pathlib.Path(rd).name}") if rd is not None else None,
-        cl=execution.output_file(f"{pathlib.Path(cl).name}") if cl is not None else None,
-        cp=execution.output_file(f"{pathlib.Path(cp).name}") if cp is not None else None,
-        cs=execution.output_file(f"{pathlib.Path(cs).name}") if cs is not None else None,
-        value=execution.output_file(f"{pathlib.Path(value).name}") if value is not None else None,
-        vector=execution.output_file(f"{pathlib.Path(vector).name}") if vector is not None else None,
+        adc=execution.output_file(f"{adc}") if adc is not None else None,
+        fa=execution.output_file(f"{fa}") if fa is not None else None,
+        ad=execution.output_file(f"{ad}") if ad is not None else None,
+        rd=execution.output_file(f"{rd}") if rd is not None else None,
+        cl=execution.output_file(f"{cl}") if cl is not None else None,
+        cp=execution.output_file(f"{cp}") if cp is not None else None,
+        cs=execution.output_file(f"{cs}") if cs is not None else None,
+        value=execution.output_file(f"{value}") if value is not None else None,
+        vector=execution.output_file(f"{vector}") if vector is not None else None,
     )
     execution.run(cargs)
     return ret

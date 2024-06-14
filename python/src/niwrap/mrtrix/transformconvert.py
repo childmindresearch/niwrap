@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TRANSFORMCONVERT_METADATA = Metadata(
-    id="b4abd003a65b4e93fc7414c9ac6be4b0be05bfa8",
+    id="7976c3a910031003ace0248d2d53752e6939a3f3",
     name="transformconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class TransformconvertOutputs(typing.NamedTuple):
 def transformconvert(
     input_: list[str],
     operation: typing.Literal["operation"],
-    output: InputPathType,
+    output: str,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -127,10 +127,10 @@ def transformconvert(
         cargs.append("-version")
     cargs.extend(input_)
     cargs.append(operation)
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = TransformconvertOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

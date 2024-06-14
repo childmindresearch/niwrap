@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 AMP2SH_METADATA = Metadata(
-    id="1f073c0c02420bf0ed9b5faaaf52dbc0c8165027",
+    id="7ab6d8fb5c45ab99b31cd95415d6374ab6d9abc8",
     name="amp2sh",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -92,7 +92,7 @@ class Amp2shOutputs(typing.NamedTuple):
 
 def amp2sh(
     amp: InputPathType,
-    sh: InputPathType,
+    sh: str,
     lmax: int | None = None,
     normalise: bool = False,
     directions: InputPathType | None = None,
@@ -229,10 +229,10 @@ def amp2sh(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(amp))
-    cargs.append(execution.input_file(sh))
+    cargs.append(sh)
     ret = Amp2shOutputs(
         root=execution.output_file("."),
-        sh=execution.output_file(f"{pathlib.Path(sh).name}"),
+        sh=execution.output_file(f"{sh}"),
     )
     execution.run(cargs)
     return ret

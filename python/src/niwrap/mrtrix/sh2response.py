@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SH2RESPONSE_METADATA = Metadata(
-    id="cd90807121faa735f09e431bfb89683b88ec64a8",
+    id="2ac3ba8ab50d4cf9227f875454b7446510342d3c",
     name="sh2response",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -60,9 +60,9 @@ def sh2response(
     sh: InputPathType,
     mask: InputPathType,
     directions: InputPathType,
-    response: InputPathType,
+    response: str,
     lmax: int | None = None,
-    dump: InputPathType | None = None,
+    dump: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -125,7 +125,7 @@ def sh2response(
     if lmax is not None:
         cargs.extend(["-lmax", str(lmax)])
     if dump is not None:
-        cargs.extend(["-dump", execution.input_file(dump)])
+        cargs.extend(["-dump", dump])
     if info:
         cargs.append("-info")
     if quiet:
@@ -145,11 +145,11 @@ def sh2response(
     cargs.append(execution.input_file(sh))
     cargs.append(execution.input_file(mask))
     cargs.append(execution.input_file(directions))
-    cargs.append(execution.input_file(response))
+    cargs.append(response)
     ret = Sh2responseOutputs(
         root=execution.output_file("."),
-        response=execution.output_file(f"{pathlib.Path(response).name}"),
-        dump=execution.output_file(f"{pathlib.Path(dump).name}") if dump is not None else None,
+        response=execution.output_file(f"{response}"),
+        dump=execution.output_file(f"{dump}") if dump is not None else None,
     )
     execution.run(cargs)
     return ret

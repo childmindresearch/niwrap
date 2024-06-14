@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DIRSPLIT_METADATA = Metadata(
-    id="8b5fdd02778127e44dd5b2a8d2f76857ddbccb24",
+    id="80e9aed4b71bb01534689c5552661d069223b664",
     name="dirsplit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class DirsplitOutputs(typing.NamedTuple):
 
 def dirsplit(
     dirs: InputPathType,
-    out: InputPathType,
+    out: str,
     permutations: int | None = None,
     cartesian: bool = False,
     info: bool = False,
@@ -131,10 +131,10 @@ def dirsplit(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(dirs))
-    cargs.append(execution.input_file(out))
+    cargs.append(out)
     ret = DirsplitOutputs(
         root=execution.output_file("."),
-        out=execution.output_file(f"{pathlib.Path(out).name}"),
+        out=execution.output_file(f"{out}"),
     )
     execution.run(cargs)
     return ret

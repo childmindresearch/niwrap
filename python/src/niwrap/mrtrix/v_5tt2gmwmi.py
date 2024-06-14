@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 V_5TT2GMWMI_METADATA = Metadata(
-    id="c1d1f0b0c813305d590470b4bf445852d3e51f9a",
+    id="5e6be0e8d2d77946c8326a477cc65c226f37e2c4",
     name="5tt2gmwmi",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class V5tt2gmwmiOutputs(typing.NamedTuple):
 
 def v_5tt2gmwmi(
     v_5tt_in: InputPathType,
-    mask_out: InputPathType,
+    mask_out: str,
     mask_in: InputPathType | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -132,10 +132,10 @@ def v_5tt2gmwmi(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(v_5tt_in))
-    cargs.append(execution.input_file(mask_out))
+    cargs.append(mask_out)
     ret = V5tt2gmwmiOutputs(
         root=execution.output_file("."),
-        mask_out=execution.output_file(f"{pathlib.Path(mask_out).name}"),
+        mask_out=execution.output_file(f"{mask_out}"),
     )
     execution.run(cargs)
     return ret

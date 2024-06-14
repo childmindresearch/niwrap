@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FIXEL2VOXEL_METADATA = Metadata(
-    id="0fd989afccfcaf270175db584daceba2f0944b02",
+    id="1f31288b1f038d1fe4f8bc6729d7a279739065d0",
     name="fixel2voxel",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class Fixel2voxelOutputs(typing.NamedTuple):
 def fixel2voxel(
     fixel_in: InputPathType,
     operation: typing.Literal["operation"],
-    image_out: InputPathType,
+    image_out: str,
     number: int | None = None,
     fill: float | int | None = None,
     weighted: InputPathType | None = None,
@@ -166,10 +166,10 @@ def fixel2voxel(
         cargs.append("-version")
     cargs.append(execution.input_file(fixel_in))
     cargs.append(operation)
-    cargs.append(execution.input_file(image_out))
+    cargs.append(image_out)
     ret = Fixel2voxelOutputs(
         root=execution.output_file("."),
-        image_out=execution.output_file(f"{pathlib.Path(image_out).name}"),
+        image_out=execution.output_file(f"{image_out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRGRID_METADATA = Metadata(
-    id="e3acae96b1ea70a947a4146ad585070a3d3c79f7",
+    id="22f4b2a2b44656b0fd233806fef186a7cfa936d1",
     name="mrgrid",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -103,7 +103,7 @@ class MrgridOutputs(typing.NamedTuple):
 def mrgrid(
     input_: InputPathType,
     operation: typing.Literal["operation"],
-    output: InputPathType,
+    output: str,
     template: InputPathType | None = None,
     size: list[int] = None,
     voxel: list[float | int] = None,
@@ -299,10 +299,10 @@ def mrgrid(
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
     cargs.append(operation)
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = MrgridOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

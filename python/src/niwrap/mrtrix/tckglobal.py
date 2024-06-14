@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKGLOBAL_METADATA = Metadata(
-    id="eb352efaec6869cfdc01b7089fad1defc3425a13",
+    id="9a2dbc3f27bab5e95b5061f6292c2ac390832c5c",
     name="tckglobal",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -93,7 +93,7 @@ This fODF is estimated as part of the global track optimization, and therefore i
 def tckglobal(
     source: InputPathType,
     response: InputPathType,
-    tracks: InputPathType,
+    tracks: str,
     grad: InputPathType | None = None,
     mask: InputPathType | None = None,
     riso: list[TckglobalRiso] = None,
@@ -105,11 +105,11 @@ def tckglobal(
     t0: float | int | None = None,
     t1: float | int | None = None,
     niter: int | None = None,
-    fod: InputPathType | None = None,
+    fod: str | None = None,
     noapo: bool = False,
-    fiso: InputPathType | None = None,
-    eext: InputPathType | None = None,
-    etrend: InputPathType | None = None,
+    fiso: str | None = None,
+    eext: str | None = None,
+    etrend: str | None = None,
     balance: float | int | None = None,
     density: float | int | None = None,
     prob: list[float | int] = None,
@@ -250,15 +250,15 @@ def tckglobal(
     if niter is not None:
         cargs.extend(["-niter", str(niter)])
     if fod is not None:
-        cargs.extend(["-fod", execution.input_file(fod)])
+        cargs.extend(["-fod", fod])
     if noapo:
         cargs.append("-noapo")
     if fiso is not None:
-        cargs.extend(["-fiso", execution.input_file(fiso)])
+        cargs.extend(["-fiso", fiso])
     if eext is not None:
-        cargs.extend(["-eext", execution.input_file(eext)])
+        cargs.extend(["-eext", eext])
     if etrend is not None:
-        cargs.extend(["-etrend", execution.input_file(etrend)])
+        cargs.extend(["-etrend", etrend])
     if balance is not None:
         cargs.extend(["-balance", str(balance)])
     if density is not None:
@@ -287,14 +287,14 @@ def tckglobal(
         cargs.append("-version")
     cargs.append(execution.input_file(source))
     cargs.append(execution.input_file(response))
-    cargs.append(execution.input_file(tracks))
+    cargs.append(tracks)
     ret = TckglobalOutputs(
         root=execution.output_file("."),
-        tracks=execution.output_file(f"{pathlib.Path(tracks).name}"),
-        fod=execution.output_file(f"{pathlib.Path(fod).name}") if fod is not None else None,
-        fiso=execution.output_file(f"{pathlib.Path(fiso).name}") if fiso is not None else None,
-        eext=execution.output_file(f"{pathlib.Path(eext).name}") if eext is not None else None,
-        etrend=execution.output_file(f"{pathlib.Path(etrend).name}") if etrend is not None else None,
+        tracks=execution.output_file(f"{tracks}"),
+        fod=execution.output_file(f"{fod}") if fod is not None else None,
+        fiso=execution.output_file(f"{fiso}") if fiso is not None else None,
+        eext=execution.output_file(f"{eext}") if eext is not None else None,
+        etrend=execution.output_file(f"{etrend}") if etrend is not None else None,
     )
     execution.run(cargs)
     return ret

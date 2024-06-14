@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKDFC_METADATA = Metadata(
-    id="ce60027ca27c665a9e0fe524a8eaa758983b5e6e",
+    id="a608cde692b2116fab653c32e54fd1be6bfac333",
     name="tckdfc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -89,7 +89,7 @@ class TckdfcOutputs(typing.NamedTuple):
 def tckdfc(
     tracks: InputPathType,
     fmri: InputPathType,
-    output: InputPathType,
+    output: str,
     static: bool = False,
     dynamic: TckdfcDynamic | None = None,
     template: InputPathType | None = None,
@@ -223,10 +223,10 @@ def tckdfc(
         cargs.append("-version")
     cargs.append(execution.input_file(tracks))
     cargs.append(execution.input_file(fmri))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = TckdfcOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

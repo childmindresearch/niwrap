@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRAVERAGEHEADER_METADATA = Metadata(
-    id="dc72e10a3f6c4ead6edbd603667e78d5bc6047c8",
+    id="e5c649031e89c13ac21d752bc7236bf2e804d019",
     name="mraverageheader",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class MraverageheaderOutputs(typing.NamedTuple):
 
 def mraverageheader(
     input_: list[InputPathType],
-    output: InputPathType,
+    output: str,
     padding: float | int | None = None,
     resolution: typing.Literal["type"] | None = None,
     fill: bool = False,
@@ -145,10 +145,10 @@ def mraverageheader(
     if version:
         cargs.append("-version")
     cargs.extend([execution.input_file(f) for f in input_])
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = MraverageheaderOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

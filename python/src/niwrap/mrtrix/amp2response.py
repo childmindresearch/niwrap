@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 AMP2RESPONSE_METADATA = Metadata(
-    id="66d0adbe8cc1fb477aad13601a463061122d577e",
+    id="e50a8cb5f14ceb20493e34316f8a9c579e15a5b5",
     name="amp2response",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -58,7 +58,7 @@ def amp2response(
     amps: InputPathType,
     mask: InputPathType,
     directions: InputPathType,
-    response: InputPathType,
+    response: str,
     isotropic: bool = False,
     noconstraint: bool = False,
     directions_: InputPathType | None = None,
@@ -172,10 +172,10 @@ def amp2response(
     cargs.append(execution.input_file(amps))
     cargs.append(execution.input_file(mask))
     cargs.append(execution.input_file(directions))
-    cargs.append(execution.input_file(response))
+    cargs.append(response)
     ret = Amp2responseOutputs(
         root=execution.output_file("."),
-        response=execution.output_file(f"{pathlib.Path(response).name}"),
+        response=execution.output_file(f"{response}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MESHCONVERT_METADATA = Metadata(
-    id="1317e560f88a4d11201baa0be284204a8ecdda18",
+    id="cdbce10b9949a8f6986ca8fa55e86fe2916c3120",
     name="meshconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -90,7 +90,7 @@ class MeshconvertOutputs(typing.NamedTuple):
 
 def meshconvert(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     binary: bool = False,
     transform: MeshconvertTransform | None = None,
     info: bool = False,
@@ -165,10 +165,10 @@ def meshconvert(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = MeshconvertOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret
