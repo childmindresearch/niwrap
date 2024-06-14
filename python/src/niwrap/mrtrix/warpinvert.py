@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 WARPINVERT_METADATA = Metadata(
-    id="1c17a942ecf4a167fa5592c9d400d5c806e42c99",
+    id="77ca7378ae908b49b52bcdfb49bdaee81609104d",
     name="warpinvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class WarpinvertOutputs(typing.NamedTuple):
 
 def warpinvert(
     in_: InputPathType,
-    out: InputPathType,
+    out: str,
     template: InputPathType | None = None,
     displacement: bool = False,
     info: bool = False,
@@ -138,10 +138,10 @@ def warpinvert(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(in_))
-    cargs.append(execution.input_file(out))
+    cargs.append(out)
     ret = WarpinvertOutputs(
         root=execution.output_file("."),
-        out=execution.output_file(f"{pathlib.Path(out).name}"),
+        out=execution.output_file(f"{out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FIXELCROP_METADATA = Metadata(
-    id="c8ef9461f7b5cf7c5032f80367dafb6a82310c19",
+    id="fced4ecf8fb2e9fffc3bf27ac47a64772ef6c066",
     name="fixelcrop",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class FixelcropOutputs(typing.NamedTuple):
 def fixelcrop(
     input_fixel_directory: InputPathType,
     input_fixel_mask: InputPathType,
-    output_fixel_directory: InputPathType,
+    output_fixel_directory: str,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -129,10 +129,10 @@ def fixelcrop(
         cargs.append("-version")
     cargs.append(execution.input_file(input_fixel_directory))
     cargs.append(execution.input_file(input_fixel_mask))
-    cargs.append(execution.input_file(output_fixel_directory))
+    cargs.append(output_fixel_directory)
     ret = FixelcropOutputs(
         root=execution.output_file("."),
-        output_fixel_directory=execution.output_file(f"{pathlib.Path(output_fixel_directory).name}"),
+        output_fixel_directory=execution.output_file(f"{output_fixel_directory}"),
     )
     execution.run(cargs)
     return ret

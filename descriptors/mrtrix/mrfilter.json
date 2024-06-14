@@ -25,9 +25,7 @@
       "description": "the type of filter to be applied",
       "type": "String",
       "optional": false,
-      "value-choices": [
-        "filter"
-      ]
+      "value-choices": ["filter"]
     },
     {
       "id": "output",

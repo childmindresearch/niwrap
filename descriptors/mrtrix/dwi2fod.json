@@ -17,9 +17,7 @@
       "description": "the algorithm to use for FOD estimation. (options are: csd,msmt_csd)",
       "type": "String",
       "optional": false,
-      "value-choices": [
-        "algorithm"
-      ]
+      "value-choices": ["algorithm"]
     },
     {
       "id": "dwi",

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FIXEL2TSF_METADATA = Metadata(
-    id="70cbc0045435ec382a43834c5f901584143d4816",
+    id="1b17fa8078b265e7ee0b6d92bf26cb34537176de",
     name="fixel2tsf",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class Fixel2tsfOutputs(typing.NamedTuple):
 def fixel2tsf(
     fixel_in: InputPathType,
     tracks: InputPathType,
-    tsf: InputPathType,
+    tsf: str,
     angle: float | int | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -130,10 +130,10 @@ def fixel2tsf(
         cargs.append("-version")
     cargs.append(execution.input_file(fixel_in))
     cargs.append(execution.input_file(tracks))
-    cargs.append(execution.input_file(tsf))
+    cargs.append(tsf)
     ret = Fixel2tsfOutputs(
         root=execution.output_file("."),
-        tsf=execution.output_file(f"{pathlib.Path(tsf).name}"),
+        tsf=execution.output_file(f"{tsf}"),
     )
     execution.run(cargs)
     return ret

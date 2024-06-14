@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FIXEL2SH_METADATA = Metadata(
-    id="b0874dbe0f4ee51a9228efae12fd64b31c7391ac",
+    id="4e88a833a48a3fab639669d852fc03209d3ca21e",
     name="fixel2sh",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class Fixel2shOutputs(typing.NamedTuple):
 
 def fixel2sh(
     fixel_in: InputPathType,
-    sh_out: InputPathType,
+    sh_out: str,
     lmax: int | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -132,10 +132,10 @@ def fixel2sh(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(fixel_in))
-    cargs.append(execution.input_file(sh_out))
+    cargs.append(sh_out)
     ret = Fixel2shOutputs(
         root=execution.output_file("."),
-        sh_out=execution.output_file(f"{pathlib.Path(sh_out).name}"),
+        sh_out=execution.output_file(f"{sh_out}"),
     )
     execution.run(cargs)
     return ret

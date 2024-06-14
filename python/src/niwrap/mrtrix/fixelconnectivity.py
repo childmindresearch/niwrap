@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FIXELCONNECTIVITY_METADATA = Metadata(
-    id="f0546e42361f6428996e4c7f84b2b9da55f9a396",
+    id="9c0aa46c302eaa38e8041b448650732830a3d850",
     name="fixelconnectivity",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class FixelconnectivityOutputs(typing.NamedTuple):
 def fixelconnectivity(
     fixel_directory: InputPathType,
     tracks: InputPathType,
-    matrix: InputPathType,
+    matrix: str,
     threshold: float | int | None = None,
     angle: float | int | None = None,
     mask: InputPathType | None = None,
@@ -142,10 +142,10 @@ def fixelconnectivity(
         cargs.append("-version")
     cargs.append(execution.input_file(fixel_directory))
     cargs.append(execution.input_file(tracks))
-    cargs.append(execution.input_file(matrix))
+    cargs.append(matrix)
     ret = FixelconnectivityOutputs(
         root=execution.output_file("."),
-        matrix=execution.output_file(f"{pathlib.Path(matrix).name}"),
+        matrix=execution.output_file(f"{matrix}"),
     )
     execution.run(cargs)
     return ret

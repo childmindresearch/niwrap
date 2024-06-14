@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FIXELREORIENT_METADATA = Metadata(
-    id="dabfea09cb51b2904b297e2075e079c19b9029c0",
+    id="7be2d5220e46f4ccbe84989d75dbfad0138a3943",
     name="fixelreorient",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class FixelreorientOutputs(typing.NamedTuple):
 def fixelreorient(
     fixel_in: InputPathType,
     warp: InputPathType,
-    fixel_out: InputPathType,
+    fixel_out: str,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -133,10 +133,10 @@ def fixelreorient(
         cargs.append("-version")
     cargs.append(execution.input_file(fixel_in))
     cargs.append(execution.input_file(warp))
-    cargs.append(execution.input_file(fixel_out))
+    cargs.append(fixel_out)
     ret = FixelreorientOutputs(
         root=execution.output_file("."),
-        fixel_out=execution.output_file(f"{pathlib.Path(fixel_out).name}"),
+        fixel_out=execution.output_file(f"{fixel_out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DIRMERGE_METADATA = Metadata(
-    id="f4052e81bc4668371f88430c397ace69e93bc6e1",
+    id="3ce611683ba7275413635b52cfd65e02dc5a3ec7",
     name="dirmerge",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class DirmergeOutputs(typing.NamedTuple):
 def dirmerge(
     subsets: int,
     bvalue_files: list[str],
-    out: InputPathType,
+    out: str,
     unipolar_weight: float | int | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -133,10 +133,10 @@ def dirmerge(
         cargs.append("-version")
     cargs.append(str(subsets))
     cargs.extend(bvalue_files)
-    cargs.append(execution.input_file(out))
+    cargs.append(out)
     ret = DirmergeOutputs(
         root=execution.output_file("."),
-        out=execution.output_file(f"{pathlib.Path(out).name}"),
+        out=execution.output_file(f"{out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DIRFLIP_METADATA = Metadata(
-    id="623c2c986c21b0eca7e5db0efcc8f3c19e7e3139",
+    id="e215c0593de69b76857a69ebc324ea09095a9dee",
     name="dirflip",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class DirflipOutputs(typing.NamedTuple):
 
 def dirflip(
     in_: InputPathType,
-    out: InputPathType,
+    out: str,
     permutations: int | None = None,
     cartesian: bool = False,
     info: bool = False,
@@ -133,10 +133,10 @@ def dirflip(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(in_))
-    cargs.append(execution.input_file(out))
+    cargs.append(out)
     ret = DirflipOutputs(
         root=execution.output_file("."),
-        out=execution.output_file(f"{pathlib.Path(out).name}"),
+        out=execution.output_file(f"{out}"),
     )
     execution.run(cargs)
     return ret

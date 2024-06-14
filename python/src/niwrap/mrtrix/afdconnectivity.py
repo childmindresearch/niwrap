@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 AFDCONNECTIVITY_METADATA = Metadata(
-    id="ac1fed286930806980fdd1a32b4768ce0f697a2c",
+    id="429f23959d4722a6ab83e4728cf25f38407f7bda",
     name="afdconnectivity",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -58,7 +58,7 @@ def afdconnectivity(
     image: InputPathType,
     tracks: InputPathType,
     wbft: InputPathType | None = None,
-    afd_map: InputPathType | None = None,
+    afd_map: str | None = None,
     all_fixels: bool = False,
     info: bool = False,
     quiet: bool = False,
@@ -153,7 +153,7 @@ def afdconnectivity(
     if wbft is not None:
         cargs.extend(["-wbft", execution.input_file(wbft)])
     if afd_map is not None:
-        cargs.extend(["-afd_map", execution.input_file(afd_map)])
+        cargs.extend(["-afd_map", afd_map])
     if all_fixels:
         cargs.append("-all_fixels")
     if info:
@@ -176,7 +176,7 @@ def afdconnectivity(
     cargs.append(execution.input_file(tracks))
     ret = AfdconnectivityOutputs(
         root=execution.output_file("."),
-        afd_map=execution.output_file(f"{pathlib.Path(afd_map).name}") if afd_map is not None else None,
+        afd_map=execution.output_file(f"{afd_map}") if afd_map is not None else None,
     )
     execution.run(cargs)
     return ret

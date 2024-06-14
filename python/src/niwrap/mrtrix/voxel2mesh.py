@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOXEL2MESH_METADATA = Metadata(
-    id="569298d284f5b623562a82ae59a01d20af6e4b2e",
+    id="9bf6ef38f2f75e5b53e06330bf429ad908be414a",
     name="voxel2mesh",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class Voxel2meshOutputs(typing.NamedTuple):
 
 def voxel2mesh(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     blocky: bool = False,
     threshold: float | int | None = None,
     info: bool = False,
@@ -140,10 +140,10 @@ def voxel2mesh(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = Voxel2meshOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKCONVERT_METADATA = Metadata(
-    id="de559b8d0d6cdfb3accd350dc1ef03237885d559",
+    id="ba4f3995bed0c0902ec8af62c1dd4affcb553184",
     name="tckconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class TckconvertOutputs(typing.NamedTuple):
 
 def tckconvert(
     input_: str,
-    output: InputPathType,
+    output: str,
     scanner2voxel: InputPathType | None = None,
     scanner2image: InputPathType | None = None,
     voxel2scanner: InputPathType | None = None,
@@ -183,10 +183,10 @@ def tckconvert(
     if version:
         cargs.append("-version")
     cargs.append(input_)
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = TckconvertOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MTNORMALISE_METADATA = Metadata(
-    id="cd3ae6497f3cf8d45319da581cf911bc038953a1",
+    id="f9fd855d8196bcbeb515c10676908720175eb482",
     name="mtnormalise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -65,9 +65,9 @@ def mtnormalise(
     niter: list[int] = None,
     reference: float | int | None = None,
     balanced: bool = False,
-    check_norm: InputPathType | None = None,
-    check_mask: InputPathType | None = None,
-    check_factors: InputPathType | None = None,
+    check_norm: str | None = None,
+    check_mask: str | None = None,
+    check_factors: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -175,11 +175,11 @@ def mtnormalise(
     if balanced:
         cargs.append("-balanced")
     if check_norm is not None:
-        cargs.extend(["-check_norm", execution.input_file(check_norm)])
+        cargs.extend(["-check_norm", check_norm])
     if check_mask is not None:
-        cargs.extend(["-check_mask", execution.input_file(check_mask)])
+        cargs.extend(["-check_mask", check_mask])
     if check_factors is not None:
-        cargs.extend(["-check_factors", execution.input_file(check_factors)])
+        cargs.extend(["-check_factors", check_factors])
     if info:
         cargs.append("-info")
     if quiet:
@@ -199,9 +199,9 @@ def mtnormalise(
     cargs.extend(input_output)
     ret = MtnormaliseOutputs(
         root=execution.output_file("."),
-        check_norm=execution.output_file(f"{pathlib.Path(check_norm).name}") if check_norm is not None else None,
-        check_mask=execution.output_file(f"{pathlib.Path(check_mask).name}") if check_mask is not None else None,
-        check_factors=execution.output_file(f"{pathlib.Path(check_factors).name}") if check_factors is not None else None,
+        check_norm=execution.output_file(f"{check_norm}") if check_norm is not None else None,
+        check_mask=execution.output_file(f"{check_mask}") if check_mask is not None else None,
+        check_factors=execution.output_file(f"{check_factors}") if check_factors is not None else None,
     )
     execution.run(cargs)
     return ret

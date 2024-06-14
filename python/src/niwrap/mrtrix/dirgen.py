@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DIRGEN_METADATA = Metadata(
-    id="d8a2463c6a881a3c32aad11a31200b363d898fd8",
+    id="6da7616f93c7a8e91ce3448e95decf8bd9d67709",
     name="dirgen",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class DirgenOutputs(typing.NamedTuple):
 
 def dirgen(
     ndir: int,
-    dirs: InputPathType,
+    dirs: str,
     power: int | None = None,
     niter: int | None = None,
     restarts: int | None = None,
@@ -158,10 +158,10 @@ def dirgen(
     if version:
         cargs.append("-version")
     cargs.append(str(ndir))
-    cargs.append(execution.input_file(dirs))
+    cargs.append(dirs)
     ret = DirgenOutputs(
         root=execution.output_file("."),
-        dirs=execution.output_file(f"{pathlib.Path(dirs).name}"),
+        dirs=execution.output_file(f"{dirs}"),
     )
     execution.run(cargs)
     return ret

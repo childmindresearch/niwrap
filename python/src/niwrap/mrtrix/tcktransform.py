@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKTRANSFORM_METADATA = Metadata(
-    id="cea0856d8dd63bb7a510b7c923b67e6b791bfc6f",
+    id="fd857754d3587aef353548c4859541730b2f8518",
     name="tcktransform",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class TcktransformOutputs(typing.NamedTuple):
 def tcktransform(
     tracks: InputPathType,
     transform: InputPathType,
-    output: InputPathType,
+    output: str,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -124,10 +124,10 @@ def tcktransform(
         cargs.append("-version")
     cargs.append(execution.input_file(tracks))
     cargs.append(execution.input_file(transform))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = TcktransformOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

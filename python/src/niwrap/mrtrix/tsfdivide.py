@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TSFDIVIDE_METADATA = Metadata(
-    id="9b536af3d3ea74275dafb0ce496fdbedf2a4b28f",
+    id="7f25174a66395585bb631c223e73f5fe4356fc1d",
     name="tsfdivide",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class TsfdivideOutputs(typing.NamedTuple):
 def tsfdivide(
     input1: InputPathType,
     input2: InputPathType,
-    output: InputPathType,
+    output: str,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -124,10 +124,10 @@ def tsfdivide(
         cargs.append("-version")
     cargs.append(execution.input_file(input1))
     cargs.append(execution.input_file(input2))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = TsfdivideOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

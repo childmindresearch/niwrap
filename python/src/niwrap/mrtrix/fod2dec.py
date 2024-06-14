@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FOD2DEC_METADATA = Metadata(
-    id="4d9a0e570b398e4e8520a69b23f016b423badf82",
+    id="aac2ac1ce7621d3fce08d22d3e9b29354906d5f9",
     name="fod2dec",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class Fod2decOutputs(typing.NamedTuple):
 
 def fod2dec(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     mask: InputPathType | None = None,
     contrast: InputPathType | None = None,
     lum: bool = False,
@@ -176,10 +176,10 @@ def fod2dec(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = Fod2decOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

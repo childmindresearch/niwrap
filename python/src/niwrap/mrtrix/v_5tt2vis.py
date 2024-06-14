@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 V_5TT2VIS_METADATA = Metadata(
-    id="8b78208ac780e6feffbee6d5f9d2e9fe90bff3cd",
+    id="1a385dca084925fdcb46354bb1a7052eadd52166",
     name="5tt2vis",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class V5tt2visOutputs(typing.NamedTuple):
 
 def v_5tt2vis(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     bg: float | int | None = None,
     cgm: float | int | None = None,
     sgm: float | int | None = None,
@@ -146,10 +146,10 @@ def v_5tt2vis(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = V5tt2visOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

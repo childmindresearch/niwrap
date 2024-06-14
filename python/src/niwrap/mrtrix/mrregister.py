@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRREGISTER_METADATA = Metadata(
-    id="f0cadb4815a21a9ec786633043b545c77522c442",
+    id="c1118d7badab20a92fe0444880d69b86cdae0054",
     name="mrregister",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -29,7 +29,7 @@ class MrregisterTransformed:
     """
     image1 after registration transformed and regridded to the space of image2. Note that -transformed needs to be repeated for each contrast if multi-contrast registration is used.
     """
-    image: InputPathType
+    image: str
     """image1 after registration transformed and regridded to the space of
     image2. Note that -transformed needs to be repeated for each contrast if
     multi-contrast registration is used."""
@@ -49,7 +49,7 @@ class MrregisterTransformed:
         """
         cargs = []
         cargs.append("-transformed")
-        cargs.append(execution.input_file(self.image))
+        cargs.append(self.image)
         return cargs
     
     def outputs(
@@ -67,7 +67,7 @@ class MrregisterTransformed:
         """
         ret = MrregisterTransformedOutputs(
             root=execution.output_file("."),
-            image=execution.output_file(f"{pathlib.Path(self.image).name}"),
+            image=execution.output_file(f"{self.image}"),
         )
         return ret
 
@@ -89,11 +89,11 @@ class MrregisterTransformedMidway:
     """
     image1 and image2 after registration transformed and regridded to the midway space. Note that -transformed_midway needs to be repeated for each contrast if multi-contrast registration is used.
     """
-    image1_transformed: InputPathType
+    image1_transformed: str
     """image1 and image2 after registration transformed and regridded to the
     midway space. Note that -transformed_midway needs to be repeated for each
     contrast if multi-contrast registration is used."""
-    image2_transformed: InputPathType
+    image2_transformed: str
     """image1 and image2 after registration transformed and regridded to the
     midway space. Note that -transformed_midway needs to be repeated for each
     contrast if multi-contrast registration is used."""
@@ -113,8 +113,8 @@ class MrregisterTransformedMidway:
         """
         cargs = []
         cargs.append("-transformed_midway")
-        cargs.append(execution.input_file(self.image1_transformed))
-        cargs.append(execution.input_file(self.image2_transformed))
+        cargs.append(self.image1_transformed)
+        cargs.append(self.image2_transformed)
         return cargs
     
     def outputs(
@@ -132,8 +132,8 @@ class MrregisterTransformedMidway:
         """
         ret = MrregisterTransformedMidwayOutputs(
             root=execution.output_file("."),
-            image1_transformed=execution.output_file(f"{pathlib.Path(self.image1_transformed).name}"),
-            image2_transformed=execution.output_file(f"{pathlib.Path(self.image2_transformed).name}"),
+            image1_transformed=execution.output_file(f"{self.image1_transformed}"),
+            image2_transformed=execution.output_file(f"{self.image2_transformed}"),
         )
         return ret
 
@@ -155,12 +155,12 @@ class MrregisterNlWarp:
     """
     the non-linear warp output defined as two deformation fields, where warp1 can be used to transform image1->image2 and warp2 to transform image2->image1. The deformation fields also encapsulate any linear transformation estimated prior to non-linear registration.
     """
-    warp1: InputPathType
+    warp1: str
     """the non-linear warp output defined as two deformation fields, where warp1
     can be used to transform image1->image2 and warp2 to transform
     image2->image1. The deformation fields also encapsulate any linear
     transformation estimated prior to non-linear registration."""
-    warp2: InputPathType
+    warp2: str
     """the non-linear warp output defined as two deformation fields, where warp1
     can be used to transform image1->image2 and warp2 to transform
     image2->image1. The deformation fields also encapsulate any linear
@@ -181,8 +181,8 @@ class MrregisterNlWarp:
         """
         cargs = []
         cargs.append("-nl_warp")
-        cargs.append(execution.input_file(self.warp1))
-        cargs.append(execution.input_file(self.warp2))
+        cargs.append(self.warp1)
+        cargs.append(self.warp2)
         return cargs
     
     def outputs(
@@ -200,8 +200,8 @@ class MrregisterNlWarp:
         """
         ret = MrregisterNlWarpOutputs(
             root=execution.output_file("."),
-            warp1=execution.output_file(f"{pathlib.Path(self.warp1).name}"),
-            warp2=execution.output_file(f"{pathlib.Path(self.warp2).name}"),
+            warp1=execution.output_file(f"{self.warp1}"),
+            warp2=execution.output_file(f"{self.warp2}"),
         )
         return ret
 
@@ -277,9 +277,9 @@ def mrregister(
     mask1: InputPathType | None = None,
     mask2: InputPathType | None = None,
     nan: bool = False,
-    rigid: InputPathType | None = None,
-    rigid_1tomidway: InputPathType | None = None,
-    rigid_2tomidway: InputPathType | None = None,
+    rigid: str | None = None,
+    rigid_1tomidway: str | None = None,
+    rigid_2tomidway: str | None = None,
     rigid_init_translation: typing.Literal["type"] | None = None,
     rigid_init_rotation: typing.Literal["type"] | None = None,
     rigid_init_matrix: InputPathType | None = None,
@@ -288,10 +288,10 @@ def mrregister(
     rigid_metric: typing.Literal["type"] | None = None,
     rigid_metric_diff_estimator: typing.Literal["type"] | None = None,
     rigid_lmax: list[int] = None,
-    rigid_log: InputPathType | None = None,
-    affine: InputPathType | None = None,
-    affine_1tomidway: InputPathType | None = None,
-    affine_2tomidway: InputPathType | None = None,
+    rigid_log: str | None = None,
+    affine: str | None = None,
+    affine_1tomidway: str | None = None,
+    affine_2tomidway: str | None = None,
     affine_init_translation: typing.Literal["type"] | None = None,
     affine_init_rotation: typing.Literal["type"] | None = None,
     affine_init_matrix: InputPathType | None = None,
@@ -300,7 +300,7 @@ def mrregister(
     affine_metric: typing.Literal["type"] | None = None,
     affine_metric_diff_estimator: typing.Literal["type"] | None = None,
     affine_lmax: list[int] = None,
-    affine_log: InputPathType | None = None,
+    affine_log: str | None = None,
     init_translation_unmasked1: bool = False,
     init_translation_unmasked2: bool = False,
     init_rotation_unmasked1: bool = False,
@@ -316,7 +316,7 @@ def mrregister(
     linstage_optimiser_default: typing.Literal["algorithm"] | None = None,
     linstage_diagnostics_prefix: str | None = None,
     nl_warp: MrregisterNlWarp | None = None,
-    nl_warp_full: InputPathType | None = None,
+    nl_warp_full: str | None = None,
     nl_init: InputPathType | None = None,
     nl_scale: list[float | int] = None,
     nl_niter: list[int] = None,
@@ -597,11 +597,11 @@ def mrregister(
     if nan:
         cargs.append("-nan")
     if rigid is not None:
-        cargs.extend(["-rigid", execution.input_file(rigid)])
+        cargs.extend(["-rigid", rigid])
     if rigid_1tomidway is not None:
-        cargs.extend(["-rigid_1tomidway", execution.input_file(rigid_1tomidway)])
+        cargs.extend(["-rigid_1tomidway", rigid_1tomidway])
     if rigid_2tomidway is not None:
-        cargs.extend(["-rigid_2tomidway", execution.input_file(rigid_2tomidway)])
+        cargs.extend(["-rigid_2tomidway", rigid_2tomidway])
     if rigid_init_translation is not None:
         cargs.extend(["-rigid_init_translation", rigid_init_translation])
     if rigid_init_rotation is not None:
@@ -619,13 +619,13 @@ def mrregister(
     if rigid_lmax is not None:
         cargs.extend(["-rigid_lmax", *map(str, rigid_lmax)])
     if rigid_log is not None:
-        cargs.extend(["-rigid_log", execution.input_file(rigid_log)])
+        cargs.extend(["-rigid_log", rigid_log])
     if affine is not None:
-        cargs.extend(["-affine", execution.input_file(affine)])
+        cargs.extend(["-affine", affine])
     if affine_1tomidway is not None:
-        cargs.extend(["-affine_1tomidway", execution.input_file(affine_1tomidway)])
+        cargs.extend(["-affine_1tomidway", affine_1tomidway])
     if affine_2tomidway is not None:
-        cargs.extend(["-affine_2tomidway", execution.input_file(affine_2tomidway)])
+        cargs.extend(["-affine_2tomidway", affine_2tomidway])
     if affine_init_translation is not None:
         cargs.extend(["-affine_init_translation", affine_init_translation])
     if affine_init_rotation is not None:
@@ -643,7 +643,7 @@ def mrregister(
     if affine_lmax is not None:
         cargs.extend(["-affine_lmax", *map(str, affine_lmax)])
     if affine_log is not None:
-        cargs.extend(["-affine_log", execution.input_file(affine_log)])
+        cargs.extend(["-affine_log", affine_log])
     if init_translation_unmasked1:
         cargs.append("-init_translation.unmasked1")
     if init_translation_unmasked2:
@@ -675,7 +675,7 @@ def mrregister(
     if nl_warp is not None:
         cargs.extend(nl_warp.run(execution))
     if nl_warp_full is not None:
-        cargs.extend(["-nl_warp_full", execution.input_file(nl_warp_full)])
+        cargs.extend(["-nl_warp_full", nl_warp_full])
     if nl_init is not None:
         cargs.extend(["-nl_init", execution.input_file(nl_init)])
     if nl_scale is not None:
@@ -721,15 +721,15 @@ def mrregister(
         cargs.extend([execution.input_file(f) for f in contrast1_contrast2])
     ret = MrregisterOutputs(
         root=execution.output_file("."),
-        rigid=execution.output_file(f"{pathlib.Path(rigid).name}") if rigid is not None else None,
-        rigid_1tomidway=execution.output_file(f"{pathlib.Path(rigid_1tomidway).name}") if rigid_1tomidway is not None else None,
-        rigid_2tomidway=execution.output_file(f"{pathlib.Path(rigid_2tomidway).name}") if rigid_2tomidway is not None else None,
-        rigid_log=execution.output_file(f"{pathlib.Path(rigid_log).name}") if rigid_log is not None else None,
-        affine=execution.output_file(f"{pathlib.Path(affine).name}") if affine is not None else None,
-        affine_1tomidway=execution.output_file(f"{pathlib.Path(affine_1tomidway).name}") if affine_1tomidway is not None else None,
-        affine_2tomidway=execution.output_file(f"{pathlib.Path(affine_2tomidway).name}") if affine_2tomidway is not None else None,
-        affine_log=execution.output_file(f"{pathlib.Path(affine_log).name}") if affine_log is not None else None,
-        nl_warp_full=execution.output_file(f"{pathlib.Path(nl_warp_full).name}") if nl_warp_full is not None else None,
+        rigid=execution.output_file(f"{rigid}") if rigid is not None else None,
+        rigid_1tomidway=execution.output_file(f"{rigid_1tomidway}") if rigid_1tomidway is not None else None,
+        rigid_2tomidway=execution.output_file(f"{rigid_2tomidway}") if rigid_2tomidway is not None else None,
+        rigid_log=execution.output_file(f"{rigid_log}") if rigid_log is not None else None,
+        affine=execution.output_file(f"{affine}") if affine is not None else None,
+        affine_1tomidway=execution.output_file(f"{affine_1tomidway}") if affine_1tomidway is not None else None,
+        affine_2tomidway=execution.output_file(f"{affine_2tomidway}") if affine_2tomidway is not None else None,
+        affine_log=execution.output_file(f"{affine_log}") if affine_log is not None else None,
+        nl_warp_full=execution.output_file(f"{nl_warp_full}") if nl_warp_full is not None else None,
         transformed=[i.outputs(execution) for i in transformed],
         transformed_midway=[i.outputs(execution) for i in transformed_midway],
         nl_warp=nl_warp.outputs(execution),

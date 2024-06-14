@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DWIEXTRACT_METADATA = Metadata(
-    id="20dcd9bb222ae757a7aa00bc444db7fe227b12ee",
+    id="e49ff018f438869477f395f289c902c4a59fe2a1",
     name="dwiextract",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -67,10 +67,10 @@ class DwiextractExportGradFsl:
     """
     export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format
     """
-    bvecs_path: InputPathType
+    bvecs_path: str
     """export the diffusion-weighted gradient table to files in FSL (bvecs /
     bvals) format"""
-    bvals_path: InputPathType
+    bvals_path: str
     """export the diffusion-weighted gradient table to files in FSL (bvecs /
     bvals) format"""
     
@@ -89,8 +89,8 @@ class DwiextractExportGradFsl:
         """
         cargs = []
         cargs.append("-export_grad_fsl")
-        cargs.append(execution.input_file(self.bvecs_path))
-        cargs.append(execution.input_file(self.bvals_path))
+        cargs.append(self.bvecs_path)
+        cargs.append(self.bvals_path)
         return cargs
     
     def outputs(
@@ -108,8 +108,8 @@ class DwiextractExportGradFsl:
         """
         ret = DwiextractExportGradFslOutputs(
             root=execution.output_file("."),
-            bvecs_path=execution.output_file(f"{pathlib.Path(self.bvecs_path).name}"),
-            bvals_path=execution.output_file(f"{pathlib.Path(self.bvals_path).name}"),
+            bvecs_path=execution.output_file(f"{self.bvecs_path}"),
+            bvals_path=execution.output_file(f"{self.bvals_path}"),
         )
         return ret
 
@@ -192,14 +192,14 @@ class DwiextractOutputs(typing.NamedTuple):
 
 def dwiextract(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     bzero: bool = False,
     no_bzero: bool = False,
     singleshell: bool = False,
     grad: InputPathType | None = None,
     fslgrad: DwiextractFslgrad | None = None,
     shells: list[float | int] = None,
-    export_grad_mrtrix: InputPathType | None = None,
+    export_grad_mrtrix: str | None = None,
     export_grad_fsl: DwiextractExportGradFsl | None = None,
     import_pe_table: InputPathType | None = None,
     import_pe_eddy: DwiextractImportPeEddy | None = None,
@@ -309,7 +309,7 @@ def dwiextract(
     if shells is not None:
         cargs.extend(["-shells", *map(str, shells)])
     if export_grad_mrtrix is not None:
-        cargs.extend(["-export_grad_mrtrix", execution.input_file(export_grad_mrtrix)])
+        cargs.extend(["-export_grad_mrtrix", export_grad_mrtrix])
     if export_grad_fsl is not None:
         cargs.extend(export_grad_fsl.run(execution))
     if import_pe_table is not None:
@@ -337,11 +337,11 @@ def dwiextract(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = DwiextractOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
-        export_grad_mrtrix=execution.output_file(f"{pathlib.Path(export_grad_mrtrix).name}") if export_grad_mrtrix is not None else None,
+        output=execution.output_file(f"{output}"),
+        export_grad_mrtrix=execution.output_file(f"{export_grad_mrtrix}") if export_grad_mrtrix is not None else None,
         export_grad_fsl=export_grad_fsl.outputs(execution),
     )
     execution.run(cargs)

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TSFSMOOTH_METADATA = Metadata(
-    id="15806f5235a60010433593a2b81bb511d88b2783",
+    id="692cd9e45a20a87f16544a9bcdc8641c7d382464",
     name="tsfsmooth",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class TsfsmoothOutputs(typing.NamedTuple):
 
 def tsfsmooth(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     stdev: float | int | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -126,10 +126,10 @@ def tsfsmooth(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = TsfsmoothOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

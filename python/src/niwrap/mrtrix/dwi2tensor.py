@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DWI2TENSOR_METADATA = Metadata(
-    id="57272c4fc072bbc482b867c16a8884c0853fb8f5",
+    id="eef89f9e5b654736867fc411b1a28fcda60212e2",
     name="dwi2tensor",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -98,13 +98,13 @@ class Dwi2tensorOutputs(typing.NamedTuple):
 
 def dwi2tensor(
     dwi: InputPathType,
-    dt: InputPathType,
+    dt: str,
     ols: bool = False,
     mask: InputPathType | None = None,
-    b0: InputPathType | None = None,
-    dkt: InputPathType | None = None,
+    b0: str | None = None,
+    dkt: str | None = None,
     iter_: int | None = None,
-    predicted_signal: InputPathType | None = None,
+    predicted_signal: str | None = None,
     grad: InputPathType | None = None,
     fslgrad: Dwi2tensorFslgrad | None = None,
     info: bool = False,
@@ -213,13 +213,13 @@ def dwi2tensor(
     if mask is not None:
         cargs.extend(["-mask", execution.input_file(mask)])
     if b0 is not None:
-        cargs.extend(["-b0", execution.input_file(b0)])
+        cargs.extend(["-b0", b0])
     if dkt is not None:
-        cargs.extend(["-dkt", execution.input_file(dkt)])
+        cargs.extend(["-dkt", dkt])
     if iter_ is not None:
         cargs.extend(["-iter", str(iter_)])
     if predicted_signal is not None:
-        cargs.extend(["-predicted_signal", execution.input_file(predicted_signal)])
+        cargs.extend(["-predicted_signal", predicted_signal])
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:
@@ -241,13 +241,13 @@ def dwi2tensor(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(dwi))
-    cargs.append(execution.input_file(dt))
+    cargs.append(dt)
     ret = Dwi2tensorOutputs(
         root=execution.output_file("."),
-        dt=execution.output_file(f"{pathlib.Path(dt).name}"),
-        b0=execution.output_file(f"{pathlib.Path(b0).name}") if b0 is not None else None,
-        dkt=execution.output_file(f"{pathlib.Path(dkt).name}") if dkt is not None else None,
-        predicted_signal=execution.output_file(f"{pathlib.Path(predicted_signal).name}") if predicted_signal is not None else None,
+        dt=execution.output_file(f"{dt}"),
+        b0=execution.output_file(f"{b0}") if b0 is not None else None,
+        dkt=execution.output_file(f"{dkt}") if dkt is not None else None,
+        predicted_signal=execution.output_file(f"{predicted_signal}") if predicted_signal is not None else None,
     )
     execution.run(cargs)
     return ret

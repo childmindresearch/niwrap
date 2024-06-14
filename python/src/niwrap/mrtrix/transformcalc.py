@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TRANSFORMCALC_METADATA = Metadata(
-    id="87d1afb12ed2e233b4067f12e09a8708e2da26a2",
+    id="7b10f24d760e43a75c367f9b540ddf5bc49ed4ae",
     name="transformcalc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class TransformcalcOutputs(typing.NamedTuple):
 def transformcalc(
     inputs: list[str],
     operation: typing.Literal["operation"],
-    output: InputPathType,
+    output: str,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -126,10 +126,10 @@ def transformcalc(
         cargs.append("-version")
     cargs.extend(inputs)
     cargs.append(operation)
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = TransformcalcOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

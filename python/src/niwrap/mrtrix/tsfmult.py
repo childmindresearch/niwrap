@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TSFMULT_METADATA = Metadata(
-    id="51a55d0fbf2d52e451ad501e141ad5ad21b5dcbc",
+    id="0e2dd10d2eda6443966edb35f09e2aeafaf6e00e",
     name="tsfmult",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class TsfmultOutputs(typing.NamedTuple):
 def tsfmult(
     input1: InputPathType,
     input1_: InputPathType,
-    output: InputPathType,
+    output: str,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -124,10 +124,10 @@ def tsfmult(
         cargs.append("-version")
     cargs.append(execution.input_file(input1_))
     cargs.append(execution.input_file(input1_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = TsfmultOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 V_5TTEDIT_METADATA = Metadata(
-    id="076911c966c85ed1562419caa477f3b0ba70edfd",
+    id="f8c473c8650a4af0acf87684b92167ea28c8158e",
     name="5ttedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class V5tteditOutputs(typing.NamedTuple):
 
 def v_5ttedit(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     cgm: InputPathType | None = None,
     sgm: InputPathType | None = None,
     wm: InputPathType | None = None,
@@ -150,10 +150,10 @@ def v_5ttedit(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = V5tteditOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

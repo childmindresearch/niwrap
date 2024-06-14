@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 WARPCORRECT_METADATA = Metadata(
-    id="7545c6404bd65e4aaec18b92a0a6f53d0fdfbcd6",
+    id="4e2aa6a8f0336306d9c54f96b5277cb81b668ab9",
     name="warpcorrect",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class WarpcorrectOutputs(typing.NamedTuple):
 
 def warpcorrect(
     in_: InputPathType,
-    out: InputPathType,
+    out: str,
     marker: list[float | int] = None,
     tolerance: float | int | None = None,
     info: bool = False,
@@ -135,10 +135,10 @@ def warpcorrect(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(in_))
-    cargs.append(execution.input_file(out))
+    cargs.append(out)
     ret = WarpcorrectOutputs(
         root=execution.output_file("."),
-        out=execution.output_file(f"{pathlib.Path(out).name}"),
+        out=execution.output_file(f"{out}"),
     )
     execution.run(cargs)
     return ret

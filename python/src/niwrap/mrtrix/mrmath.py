@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRMATH_METADATA = Metadata(
-    id="38c935ed54ecd55176cdcab30387f2a5c846a9dd",
+    id="f67d02d4f4bca73bcf27b7b31ab1f7b2ffe5d3c0",
     name="mrmath",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class MrmathOutputs(typing.NamedTuple):
 def mrmath(
     input_: list[InputPathType],
     operation: typing.Literal["operation"],
-    output: InputPathType,
+    output: str,
     axis: int | None = None,
     keep_unary_axes: bool = False,
     datatype: typing.Literal["spec"] | None = None,
@@ -155,10 +155,10 @@ def mrmath(
         cargs.append("-version")
     cargs.extend([execution.input_file(f) for f in input_])
     cargs.append(operation)
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = MrmathOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

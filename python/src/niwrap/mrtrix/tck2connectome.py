@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCK2CONNECTOME_METADATA = Metadata(
-    id="a03e73d5d9c3da6ab052a08a432f74334689a0c3",
+    id="6077410575d70703239f717400a1d3daf5e6f3b8",
     name="tck2connectome",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -59,7 +59,7 @@ class Tck2connectomeOutputs(typing.NamedTuple):
 def tck2connectome(
     tracks_in: InputPathType,
     nodes_in: InputPathType,
-    connectome_out: InputPathType,
+    connectome_out: str,
     assignment_end_voxels: bool = False,
     assignment_radial_search: float | int | None = None,
     assignment_reverse_search: float | int | None = None,
@@ -74,7 +74,7 @@ def tck2connectome(
     stat_edge: typing.Literal["statistic"] | None = None,
     tck_weights_in: InputPathType | None = None,
     keep_unassigned: bool = False,
-    out_assignments: InputPathType | None = None,
+    out_assignments: str | None = None,
     vector: bool = False,
     info: bool = False,
     quiet: bool = False,
@@ -201,7 +201,7 @@ def tck2connectome(
     if keep_unassigned:
         cargs.append("-keep_unassigned")
     if out_assignments is not None:
-        cargs.extend(["-out_assignments", execution.input_file(out_assignments)])
+        cargs.extend(["-out_assignments", out_assignments])
     if vector:
         cargs.append("-vector")
     if info:
@@ -222,11 +222,11 @@ def tck2connectome(
         cargs.append("-version")
     cargs.append(execution.input_file(tracks_in))
     cargs.append(execution.input_file(nodes_in))
-    cargs.append(execution.input_file(connectome_out))
+    cargs.append(connectome_out)
     ret = Tck2connectomeOutputs(
         root=execution.output_file("."),
-        connectome_out=execution.output_file(f"{pathlib.Path(connectome_out).name}"),
-        out_assignments=execution.output_file(f"{pathlib.Path(out_assignments).name}") if out_assignments is not None else None,
+        connectome_out=execution.output_file(f"{connectome_out}"),
+        out_assignments=execution.output_file(f"{out_assignments}") if out_assignments is not None else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKEDIT_METADATA = Metadata(
-    id="9826cd8bcf7139e530a5747a922b1421f5bdb5c4",
+    id="cd40d2e3c8767f7171bda0ed685c6efb24bb6199",
     name="tckedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -175,7 +175,7 @@ class TckeditOutputs(typing.NamedTuple):
 
 def tckedit(
     tracks_in: list[InputPathType],
-    tracks_out: InputPathType,
+    tracks_out: str,
     include: list[TckeditInclude] = None,
     include_ordered: list[TckeditIncludeOrdered] = None,
     exclude: list[TckeditExclude] = None,
@@ -189,7 +189,7 @@ def tckedit(
     inverse: bool = False,
     ends_only: bool = False,
     tck_weights_in: InputPathType | None = None,
-    tck_weights_out: InputPathType | None = None,
+    tck_weights_out: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -299,7 +299,7 @@ def tckedit(
     if tck_weights_in is not None:
         cargs.extend(["-tck_weights_in", execution.input_file(tck_weights_in)])
     if tck_weights_out is not None:
-        cargs.extend(["-tck_weights_out", execution.input_file(tck_weights_out)])
+        cargs.extend(["-tck_weights_out", tck_weights_out])
     if info:
         cargs.append("-info")
     if quiet:
@@ -317,11 +317,11 @@ def tckedit(
     if version:
         cargs.append("-version")
     cargs.extend([execution.input_file(f) for f in tracks_in])
-    cargs.append(execution.input_file(tracks_out))
+    cargs.append(tracks_out)
     ret = TckeditOutputs(
         root=execution.output_file("."),
-        tracks_out=execution.output_file(f"{pathlib.Path(tracks_out).name}"),
-        tck_weights_out=execution.output_file(f"{pathlib.Path(tck_weights_out).name}") if tck_weights_out is not None else None,
+        tracks_out=execution.output_file(f"{tracks_out}"),
+        tck_weights_out=execution.output_file(f"{tck_weights_out}") if tck_weights_out is not None else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKSIFT2_METADATA = Metadata(
-    id="3d0076c5227287eca536ae9214b494406a17adc1",
+    id="d7481a621dcc1c55eb2b1d9041f033c4a9f61311",
     name="tcksift2",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -63,7 +63,7 @@ class Tcksift2Outputs(typing.NamedTuple):
 def tcksift2(
     in_tracks: InputPathType,
     in_fod: InputPathType,
-    out_weights: InputPathType,
+    out_weights: str,
     proc_mask: InputPathType | None = None,
     act: InputPathType | None = None,
     fd_scale_gm: bool = False,
@@ -71,10 +71,10 @@ def tcksift2(
     make_null_lobes: bool = False,
     remove_untracked: bool = False,
     fd_thresh: float | int | None = None,
-    csv_: InputPathType | None = None,
-    out_mu: InputPathType | None = None,
+    csv_: str | None = None,
+    out_mu: str | None = None,
     output_debug: bool = False,
-    out_coeffs: InputPathType | None = None,
+    out_coeffs: str | None = None,
     reg_tikhonov: float | int | None = None,
     reg_tv: float | int | None = None,
     min_td_frac: float | int | None = None,
@@ -225,13 +225,13 @@ def tcksift2(
     if fd_thresh is not None:
         cargs.extend(["-fd_thresh", str(fd_thresh)])
     if csv_ is not None:
-        cargs.extend(["-csv", execution.input_file(csv_)])
+        cargs.extend(["-csv", csv_])
     if out_mu is not None:
-        cargs.extend(["-out_mu", execution.input_file(out_mu)])
+        cargs.extend(["-out_mu", out_mu])
     if output_debug:
         cargs.append("-output_debug")
     if out_coeffs is not None:
-        cargs.extend(["-out_coeffs", execution.input_file(out_coeffs)])
+        cargs.extend(["-out_coeffs", out_coeffs])
     if reg_tikhonov is not None:
         cargs.extend(["-reg_tikhonov", str(reg_tikhonov)])
     if reg_tv is not None:
@@ -274,13 +274,13 @@ def tcksift2(
         cargs.append("-version")
     cargs.append(execution.input_file(in_tracks))
     cargs.append(execution.input_file(in_fod))
-    cargs.append(execution.input_file(out_weights))
+    cargs.append(out_weights)
     ret = Tcksift2Outputs(
         root=execution.output_file("."),
-        out_weights=execution.output_file(f"{pathlib.Path(out_weights).name}"),
-        csv_=execution.output_file(f"{pathlib.Path(csv_).name}") if csv_ is not None else None,
-        out_mu=execution.output_file(f"{pathlib.Path(out_mu).name}") if out_mu is not None else None,
-        out_coeffs=execution.output_file(f"{pathlib.Path(out_coeffs).name}") if out_coeffs is not None else None,
+        out_weights=execution.output_file(f"{out_weights}"),
+        csv_=execution.output_file(f"{csv_}") if csv_ is not None else None,
+        out_mu=execution.output_file(f"{out_mu}") if out_mu is not None else None,
+        out_coeffs=execution.output_file(f"{out_coeffs}") if out_coeffs is not None else None,
     )
     execution.run(cargs)
     return ret

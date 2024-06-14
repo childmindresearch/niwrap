@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DWI2FOD_METADATA = Metadata(
-    id="13a43d163b310229edcf83d936702e108397bf5a",
+    id="a66063fab5b0e86b28e801a06b9ce13ad239bfd2",
     name="dwi2fod",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -107,7 +107,7 @@ def dwi2fod(
     niter: int | None = None,
     norm_lambda_: float | int | None = None,
     neg_lambda_: float | int | None = None,
-    predicted_signal: InputPathType | None = None,
+    predicted_signal: str | None = None,
     strides: str | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -257,7 +257,7 @@ def dwi2fod(
     if neg_lambda_ is not None:
         cargs.extend(["-neg_lambda", str(neg_lambda_)])
     if predicted_signal is not None:
-        cargs.extend(["-predicted_signal", execution.input_file(predicted_signal)])
+        cargs.extend(["-predicted_signal", predicted_signal])
     if strides is not None:
         cargs.extend(["-strides", strides])
     if info:
@@ -281,7 +281,7 @@ def dwi2fod(
     cargs.extend(response_odf)
     ret = Dwi2fodOutputs(
         root=execution.output_file("."),
-        predicted_signal=execution.output_file(f"{pathlib.Path(predicted_signal).name}") if predicted_signal is not None else None,
+        predicted_signal=execution.output_file(f"{predicted_signal}") if predicted_signal is not None else None,
     )
     execution.run(cargs)
     return ret

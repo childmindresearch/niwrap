@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRDEGIBBS_METADATA = Metadata(
-    id="ccaa6a3ba223e5670d7651d5da0d8a8c42b02752",
+    id="5abc27144862fca5b537b7f3de1761112223420b",
     name="mrdegibbs",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class MrdegibbsOutputs(typing.NamedTuple):
 
 def mrdegibbs(
     in_: InputPathType,
-    out: InputPathType,
+    out: str,
     axes: list[int] = None,
     nshifts: int | None = None,
     min_w: int | None = None,
@@ -165,10 +165,10 @@ def mrdegibbs(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(in_))
-    cargs.append(execution.input_file(out))
+    cargs.append(out)
     ret = MrdegibbsOutputs(
         root=execution.output_file("."),
-        out=execution.output_file(f"{pathlib.Path(out).name}"),
+        out=execution.output_file(f"{out}"),
     )
     execution.run(cargs)
     return ret

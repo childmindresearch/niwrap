@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRFILTER_METADATA = Metadata(
-    id="021401bcb9e968e66541b579139c47550398b247",
+    id="f422befc807010743eff7ca2a5a43e6a5f36adc5",
     name="mrfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -59,7 +59,7 @@ class MrfilterOutputs(typing.NamedTuple):
 def mrfilter(
     input_: InputPathType,
     filter_: typing.Literal["filter"],
-    output: InputPathType,
+    output: str,
     axes: list[int] = None,
     inverse: bool = False,
     magnitude: bool = False,
@@ -76,7 +76,7 @@ def mrfilter(
     zlower: float | int | None = None,
     bridge: int | None = None,
     maskin: InputPathType | None = None,
-    maskout: InputPathType | None = None,
+    maskout: str | None = None,
     strides: str | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -212,7 +212,7 @@ def mrfilter(
     if maskin is not None:
         cargs.extend(["-maskin", execution.input_file(maskin)])
     if maskout is not None:
-        cargs.extend(["-maskout", execution.input_file(maskout)])
+        cargs.extend(["-maskout", maskout])
     if strides is not None:
         cargs.extend(["-strides", strides])
     if info:
@@ -233,11 +233,11 @@ def mrfilter(
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
     cargs.append(filter_)
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = MrfilterOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
-        maskout=execution.output_file(f"{pathlib.Path(maskout).name}") if maskout is not None else None,
+        output=execution.output_file(f"{output}"),
+        maskout=execution.output_file(f"{maskout}") if maskout is not None else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MREDIT_METADATA = Metadata(
-    id="96eeb9573644a64bde9640817e526954dbec0d09",
+    id="650053b3c82bc4013a3d760c56f510d5e652b49d",
     name="mredit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -152,7 +152,7 @@ class MreditOutputs(typing.NamedTuple):
 
 def mredit(
     input_: InputPathType,
-    output: InputPathType | None = None,
+    output: str | None = None,
     plane: list[MreditPlane] = None,
     sphere: list[MreditSphere] = None,
     voxel: list[MreditVoxel] = None,
@@ -239,10 +239,10 @@ def mredit(
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
     if output is not None:
-        cargs.append(execution.input_file(output))
+        cargs.append(output)
     ret = MreditOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}") if output is not None else None,
+        output=execution.output_file(f"{output}") if output is not None else None,
     )
     execution.run(cargs)
     return ret

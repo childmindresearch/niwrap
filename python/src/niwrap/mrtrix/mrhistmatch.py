@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRHISTMATCH_METADATA = Metadata(
-    id="609558e89e48a823018b6c130900bb74b61378a1",
+    id="66d15f9521ee5effa3a0a1b8b991409e1c5e6bf5",
     name="mrhistmatch",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -58,7 +58,7 @@ def mrhistmatch(
     type_: typing.Literal["type"],
     input_: InputPathType,
     target: InputPathType,
-    output: InputPathType,
+    output: str,
     mask_input: InputPathType | None = None,
     mask_target: InputPathType | None = None,
     bins: int | None = None,
@@ -147,10 +147,10 @@ def mrhistmatch(
     cargs.append(type_)
     cargs.append(execution.input_file(input_))
     cargs.append(execution.input_file(target))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = MrhistmatchOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

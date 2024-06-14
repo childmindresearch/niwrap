@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FOD2FIXEL_METADATA = Metadata(
-    id="624de5d83bc1e96871850ee95153c643eaedf75c",
+    id="0f495be6ac07c3442550036e3ffcf4914a2efeca",
     name="fod2fixel",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -62,10 +62,10 @@ class Fod2fixelOutputs(typing.NamedTuple):
 
 def fod2fixel(
     fod: InputPathType,
-    fixel_directory: InputPathType,
-    afd: InputPathType | None = None,
-    peak_amp: InputPathType | None = None,
-    disp: InputPathType | None = None,
+    fixel_directory: str,
+    afd: str | None = None,
+    peak_amp: str | None = None,
+    disp: str | None = None,
     fmls_integral: float | int | None = None,
     fmls_peak_value: float | int | None = None,
     fmls_no_thresholds: bool = False,
@@ -161,11 +161,11 @@ def fod2fixel(
     cargs = []
     cargs.append("fod2fixel")
     if afd is not None:
-        cargs.extend(["-afd", execution.input_file(afd)])
+        cargs.extend(["-afd", afd])
     if peak_amp is not None:
-        cargs.extend(["-peak_amp", execution.input_file(peak_amp)])
+        cargs.extend(["-peak_amp", peak_amp])
     if disp is not None:
-        cargs.extend(["-disp", execution.input_file(disp)])
+        cargs.extend(["-disp", disp])
     if fmls_integral is not None:
         cargs.extend(["-fmls_integral", str(fmls_integral)])
     if fmls_peak_value is not None:
@@ -199,13 +199,13 @@ def fod2fixel(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(fod))
-    cargs.append(execution.input_file(fixel_directory))
+    cargs.append(fixel_directory)
     ret = Fod2fixelOutputs(
         root=execution.output_file("."),
-        fixel_directory=execution.output_file(f"{pathlib.Path(fixel_directory).name}"),
-        afd=execution.output_file(f"{pathlib.Path(afd).name}") if afd is not None else None,
-        peak_amp=execution.output_file(f"{pathlib.Path(peak_amp).name}") if peak_amp is not None else None,
-        disp=execution.output_file(f"{pathlib.Path(disp).name}") if disp is not None else None,
+        fixel_directory=execution.output_file(f"{fixel_directory}"),
+        afd=execution.output_file(f"{afd}") if afd is not None else None,
+        peak_amp=execution.output_file(f"{peak_amp}") if peak_amp is not None else None,
+        disp=execution.output_file(f"{disp}") if disp is not None else None,
     )
     execution.run(cargs)
     return ret

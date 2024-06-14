@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 WARPCONVERT_METADATA = Metadata(
-    id="c5de6be0f5508d3923727e3ac0053b895dbbe427",
+    id="a110e82af21edfcb536cfcd5a022be9feb4f7de2",
     name="warpconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class WarpconvertOutputs(typing.NamedTuple):
 def warpconvert(
     in_: InputPathType,
     type_: typing.Literal["type"],
-    out: InputPathType,
+    out: str,
     template: InputPathType | None = None,
     midway_space: bool = False,
     from_: int | None = None,
@@ -154,10 +154,10 @@ def warpconvert(
         cargs.append("-version")
     cargs.append(execution.input_file(in_))
     cargs.append(type_)
-    cargs.append(execution.input_file(out))
+    cargs.append(out)
     ret = WarpconvertOutputs(
         root=execution.output_file("."),
-        out=execution.output_file(f"{pathlib.Path(out).name}"),
+        out=execution.output_file(f"{out}"),
     )
     execution.run(cargs)
     return ret

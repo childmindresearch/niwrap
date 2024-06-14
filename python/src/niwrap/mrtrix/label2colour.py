@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABEL2COLOUR_METADATA = Metadata(
-    id="c4f6aaaf20fd52063e88fcdc01019a97ce9a411e",
+    id="8dcef63685396283ea04342f1c8a20e1acd5cc72",
     name="label2colour",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class Label2colourOutputs(typing.NamedTuple):
 
 def label2colour(
     nodes_in: InputPathType,
-    colour_out: InputPathType,
+    colour_out: str,
     lut: InputPathType | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -129,10 +129,10 @@ def label2colour(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(nodes_in))
-    cargs.append(execution.input_file(colour_out))
+    cargs.append(colour_out)
     ret = Label2colourOutputs(
         root=execution.output_file("."),
-        colour_out=execution.output_file(f"{pathlib.Path(colour_out).name}"),
+        colour_out=execution.output_file(f"{colour_out}"),
     )
     execution.run(cargs)
     return ret

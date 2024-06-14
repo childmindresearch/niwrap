@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DWIDENOISE_METADATA = Metadata(
-    id="cdb405ed75a8aab0bd5e26be9a73eca665c12c59",
+    id="94c1390c6b0173bb45624ca63ad6ab842b7b3c6e",
     name="dwidenoise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -58,10 +58,10 @@ class DwidenoiseOutputs(typing.NamedTuple):
 
 def dwidenoise(
     dwi: InputPathType,
-    out: InputPathType,
+    out: str,
     mask: InputPathType | None = None,
     extent: list[int] = None,
-    noise: InputPathType | None = None,
+    noise: str | None = None,
     datatype: typing.Literal["float32", "float64"] | None = None,
     estimator: typing.Literal["Exp1", "Exp2"] | None = None,
     info: bool = False,
@@ -160,7 +160,7 @@ def dwidenoise(
     if extent is not None:
         cargs.extend(["-extent", *map(str, extent)])
     if noise is not None:
-        cargs.extend(["-noise", execution.input_file(noise)])
+        cargs.extend(["-noise", noise])
     if datatype is not None:
         cargs.extend(["-datatype", datatype])
     if estimator is not None:
@@ -182,11 +182,11 @@ def dwidenoise(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(dwi))
-    cargs.append(execution.input_file(out))
+    cargs.append(out)
     ret = DwidenoiseOutputs(
         root=execution.output_file("."),
-        out=execution.output_file(f"{pathlib.Path(out).name}"),
-        noise=execution.output_file(f"{pathlib.Path(noise).name}") if noise is not None else None,
+        out=execution.output_file(f"{out}"),
+        noise=execution.output_file(f"{noise}") if noise is not None else None,
     )
     execution.run(cargs)
     return ret

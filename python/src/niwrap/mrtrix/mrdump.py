@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRDUMP_METADATA = Metadata(
-    id="0c806e221db03fcce348a2136901a2b718ab5b5c",
+    id="72143b13267a2d4630514d2fb7c746bfc55b6a4a",
     name="mrdump",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class MrdumpOutputs(typing.NamedTuple):
 
 def mrdump(
     input_: InputPathType,
-    output: InputPathType | None = None,
+    output: str | None = None,
     mask: InputPathType | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -128,10 +128,10 @@ def mrdump(
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
     if output is not None:
-        cargs.append(execution.input_file(output))
+        cargs.append(output)
     ret = MrdumpOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}") if output is not None else None,
+        output=execution.output_file(f"{output}") if output is not None else None,
     )
     execution.run(cargs)
     return ret

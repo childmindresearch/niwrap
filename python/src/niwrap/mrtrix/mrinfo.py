@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRINFO_METADATA = Metadata(
-    id="a90acf0ee9cefd56d6ff23a4743ca4cb34ca1c0f",
+    id="1a85852eaad4b28e7ec279a82e8e478eaa7037b1",
     name="mrinfo",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -95,10 +95,10 @@ class MrinfoExportGradFsl:
     """
     export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format
     """
-    bvecs_path: InputPathType
+    bvecs_path: str
     """export the diffusion-weighted gradient table to files in FSL (bvecs /
     bvals) format"""
-    bvals_path: InputPathType
+    bvals_path: str
     """export the diffusion-weighted gradient table to files in FSL (bvecs /
     bvals) format"""
     
@@ -117,8 +117,8 @@ class MrinfoExportGradFsl:
         """
         cargs = []
         cargs.append("-export_grad_fsl")
-        cargs.append(execution.input_file(self.bvecs_path))
-        cargs.append(execution.input_file(self.bvals_path))
+        cargs.append(self.bvecs_path)
+        cargs.append(self.bvals_path)
         return cargs
     
     def outputs(
@@ -136,8 +136,8 @@ class MrinfoExportGradFsl:
         """
         ret = MrinfoExportGradFslOutputs(
             root=execution.output_file("."),
-            bvecs_path=execution.output_file(f"{pathlib.Path(self.bvecs_path).name}"),
-            bvals_path=execution.output_file(f"{pathlib.Path(self.bvals_path).name}"),
+            bvecs_path=execution.output_file(f"{self.bvecs_path}"),
+            bvals_path=execution.output_file(f"{self.bvals_path}"),
         )
         return ret
 
@@ -159,10 +159,10 @@ class MrinfoExportPeEddy:
     """
     export phase-encoding information to an EDDY-style config / index file pair
     """
-    config_: InputPathType
+    config_: str
     """export phase-encoding information to an EDDY-style config / index file
     pair"""
-    indices: InputPathType
+    indices: str
     """export phase-encoding information to an EDDY-style config / index file
     pair"""
     
@@ -181,8 +181,8 @@ class MrinfoExportPeEddy:
         """
         cargs = []
         cargs.append("-export_pe_eddy")
-        cargs.append(execution.input_file(self.config_))
-        cargs.append(execution.input_file(self.indices))
+        cargs.append(self.config_)
+        cargs.append(self.indices)
         return cargs
     
     def outputs(
@@ -200,8 +200,8 @@ class MrinfoExportPeEddy:
         """
         ret = MrinfoExportPeEddyOutputs(
             root=execution.output_file("."),
-            config=execution.output_file(f"{pathlib.Path(self.config_).name}"),
-            indices=execution.output_file(f"{pathlib.Path(self.indices).name}"),
+            config=execution.output_file(f"{self.config_}"),
+            indices=execution.output_file(f"{self.indices}"),
         )
         return ret
 
@@ -270,18 +270,18 @@ def mrinfo(
     multiplier: bool = False,
     transform: bool = False,
     property_: list[MrinfoProperty] = None,
-    json_keyval: InputPathType | None = None,
-    json_all: InputPathType | None = None,
+    json_keyval: str | None = None,
+    json_all: str | None = None,
     grad: InputPathType | None = None,
     fslgrad: MrinfoFslgrad | None = None,
     bvalue_scaling: str | None = None,
-    export_grad_mrtrix: InputPathType | None = None,
+    export_grad_mrtrix: str | None = None,
     export_grad_fsl: MrinfoExportGradFsl | None = None,
     dwgrad: bool = False,
     shell_bvalues: bool = False,
     shell_sizes: bool = False,
     shell_indices: bool = False,
-    export_pe_table: InputPathType | None = None,
+    export_pe_table: str | None = None,
     export_pe_eddy: MrinfoExportPeEddy | None = None,
     petable: bool = False,
     nodelete: bool = False,
@@ -432,9 +432,9 @@ def mrinfo(
     if property_ is not None:
         cargs.extend([a for c in [s.run(execution) for s in property_] for a in c])
     if json_keyval is not None:
-        cargs.extend(["-json_keyval", execution.input_file(json_keyval)])
+        cargs.extend(["-json_keyval", json_keyval])
     if json_all is not None:
-        cargs.extend(["-json_all", execution.input_file(json_all)])
+        cargs.extend(["-json_all", json_all])
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:
@@ -442,7 +442,7 @@ def mrinfo(
     if bvalue_scaling is not None:
         cargs.extend(["-bvalue_scaling", bvalue_scaling])
     if export_grad_mrtrix is not None:
-        cargs.extend(["-export_grad_mrtrix", execution.input_file(export_grad_mrtrix)])
+        cargs.extend(["-export_grad_mrtrix", export_grad_mrtrix])
     if export_grad_fsl is not None:
         cargs.extend(export_grad_fsl.run(execution))
     if dwgrad:
@@ -454,7 +454,7 @@ def mrinfo(
     if shell_indices:
         cargs.append("-shell_indices")
     if export_pe_table is not None:
-        cargs.extend(["-export_pe_table", execution.input_file(export_pe_table)])
+        cargs.extend(["-export_pe_table", export_pe_table])
     if export_pe_eddy is not None:
         cargs.extend(export_pe_eddy.run(execution))
     if petable:
@@ -480,10 +480,10 @@ def mrinfo(
     cargs.extend([execution.input_file(f) for f in image])
     ret = MrinfoOutputs(
         root=execution.output_file("."),
-        json_keyval=execution.output_file(f"{pathlib.Path(json_keyval).name}") if json_keyval is not None else None,
-        json_all=execution.output_file(f"{pathlib.Path(json_all).name}") if json_all is not None else None,
-        export_grad_mrtrix=execution.output_file(f"{pathlib.Path(export_grad_mrtrix).name}") if export_grad_mrtrix is not None else None,
-        export_pe_table=execution.output_file(f"{pathlib.Path(export_pe_table).name}") if export_pe_table is not None else None,
+        json_keyval=execution.output_file(f"{json_keyval}") if json_keyval is not None else None,
+        json_all=execution.output_file(f"{json_all}") if json_all is not None else None,
+        export_grad_mrtrix=execution.output_file(f"{export_grad_mrtrix}") if export_grad_mrtrix is not None else None,
+        export_pe_table=execution.output_file(f"{export_pe_table}") if export_pe_table is not None else None,
         export_grad_fsl=export_grad_fsl.outputs(execution),
         export_pe_eddy=export_pe_eddy.outputs(execution),
     )

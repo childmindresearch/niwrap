@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FIXEL2PEAKS_METADATA = Metadata(
-    id="750ef59543a13bbb08434adbdd85d0c6b3f035d2",
+    id="98ed9c18cf276e5b938d70b66727959cf8643284",
     name="fixel2peaks",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class Fixel2peaksOutputs(typing.NamedTuple):
 
 def fixel2peaks(
     in_: str,
-    out: InputPathType,
+    out: str,
     number: int | None = None,
     nan: bool = False,
     info: bool = False,
@@ -133,10 +133,10 @@ def fixel2peaks(
     if version:
         cargs.append("-version")
     cargs.append(in_)
-    cargs.append(execution.input_file(out))
+    cargs.append(out)
     ret = Fixel2peaksOutputs(
         root=execution.output_file("."),
-        out=execution.output_file(f"{pathlib.Path(out).name}"),
+        out=execution.output_file(f"{out}"),
     )
     execution.run(cargs)
     return ret

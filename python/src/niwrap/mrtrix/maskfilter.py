@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MASKFILTER_METADATA = Metadata(
-    id="00eee3c34814ae6e53f3c0ea1a4ff3b832c12d7d",
+    id="b4236a43255f8e519cc82f2416070b420b2b95bc",
     name="maskfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -57,7 +57,7 @@ class MaskfilterOutputs(typing.NamedTuple):
 def maskfilter(
     input_: InputPathType,
     filter_: typing.Literal["filter"],
-    output: InputPathType,
+    output: str,
     scale: int | None = None,
     axes: list[int] = None,
     largest: bool = False,
@@ -166,10 +166,10 @@ def maskfilter(
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
     cargs.append(filter_)
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = MaskfilterOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

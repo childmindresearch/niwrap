@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 WARPINIT_METADATA = Metadata(
-    id="89b6a74cefdfe9ff35d5f636ecfe36bce0e39b5d",
+    id="0cf983822e74a7718795e3b8f63a7f4ed0c42808",
     name="warpinit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class WarpinitOutputs(typing.NamedTuple):
 
 def warpinit(
     template: InputPathType,
-    warp: InputPathType,
+    warp: str,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -133,10 +133,10 @@ def warpinit(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(template))
-    cargs.append(execution.input_file(warp))
+    cargs.append(warp)
     ret = WarpinitOutputs(
         root=execution.output_file("."),
-        warp=execution.output_file(f"{pathlib.Path(warp).name}"),
+        warp=execution.output_file(f"{warp}"),
     )
     execution.run(cargs)
     return ret

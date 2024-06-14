@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRCONVERT_METADATA = Metadata(
-    id="146afb40c56ef0246d6b850ea899e152d8bc7a42",
+    id="71cf346476366ba2a5ff4d1e5cea0a61124f45fc",
     name="mrconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -190,10 +190,10 @@ class MrconvertExportGradFsl:
     """
     export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format
     """
-    bvecs_path: InputPathType
+    bvecs_path: str
     """export the diffusion-weighted gradient table to files in FSL (bvecs /
     bvals) format"""
-    bvals_path: InputPathType
+    bvals_path: str
     """export the diffusion-weighted gradient table to files in FSL (bvecs /
     bvals) format"""
     
@@ -212,8 +212,8 @@ class MrconvertExportGradFsl:
         """
         cargs = []
         cargs.append("-export_grad_fsl")
-        cargs.append(execution.input_file(self.bvecs_path))
-        cargs.append(execution.input_file(self.bvals_path))
+        cargs.append(self.bvecs_path)
+        cargs.append(self.bvals_path)
         return cargs
     
     def outputs(
@@ -231,8 +231,8 @@ class MrconvertExportGradFsl:
         """
         ret = MrconvertExportGradFslOutputs(
             root=execution.output_file("."),
-            bvecs_path=execution.output_file(f"{pathlib.Path(self.bvecs_path).name}"),
-            bvals_path=execution.output_file(f"{pathlib.Path(self.bvals_path).name}"),
+            bvecs_path=execution.output_file(f"{self.bvecs_path}"),
+            bvals_path=execution.output_file(f"{self.bvals_path}"),
         )
         return ret
 
@@ -286,10 +286,10 @@ class MrconvertExportPeEddy:
     """
     export phase-encoding information to an EDDY-style config / index file pair
     """
-    config_: InputPathType
+    config_: str
     """export phase-encoding information to an EDDY-style config / index file
     pair"""
-    indices: InputPathType
+    indices: str
     """export phase-encoding information to an EDDY-style config / index file
     pair"""
     
@@ -308,8 +308,8 @@ class MrconvertExportPeEddy:
         """
         cargs = []
         cargs.append("-export_pe_eddy")
-        cargs.append(execution.input_file(self.config_))
-        cargs.append(execution.input_file(self.indices))
+        cargs.append(self.config_)
+        cargs.append(self.indices)
         return cargs
     
     def outputs(
@@ -327,8 +327,8 @@ class MrconvertExportPeEddy:
         """
         ret = MrconvertExportPeEddyOutputs(
             root=execution.output_file("."),
-            config=execution.output_file(f"{pathlib.Path(self.config_).name}"),
-            indices=execution.output_file(f"{pathlib.Path(self.indices).name}"),
+            config=execution.output_file(f"{self.config_}"),
+            indices=execution.output_file(f"{self.indices}"),
         )
         return ret
 
@@ -385,13 +385,13 @@ class MrconvertOutputs(typing.NamedTuple):
 
 def mrconvert(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     coord: list[MrconvertCoord] = None,
     vox: list[float | int] = None,
     axes: list[int] = None,
     scaling: list[float | int] = None,
     json_import: InputPathType | None = None,
-    json_export: InputPathType | None = None,
+    json_export: str | None = None,
     clear_property: list[MrconvertClearProperty] = None,
     set_property: list[MrconvertSetProperty] = None,
     append_property: list[MrconvertAppendProperty] = None,
@@ -401,11 +401,11 @@ def mrconvert(
     grad: InputPathType | None = None,
     fslgrad: MrconvertFslgrad | None = None,
     bvalue_scaling: str | None = None,
-    export_grad_mrtrix: InputPathType | None = None,
+    export_grad_mrtrix: str | None = None,
     export_grad_fsl: MrconvertExportGradFsl | None = None,
     import_pe_table: InputPathType | None = None,
     import_pe_eddy: MrconvertImportPeEddy | None = None,
-    export_pe_table: InputPathType | None = None,
+    export_pe_table: str | None = None,
     export_pe_eddy: MrconvertExportPeEddy | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -562,7 +562,7 @@ def mrconvert(
     if json_import is not None:
         cargs.extend(["-json_import", execution.input_file(json_import)])
     if json_export is not None:
-        cargs.extend(["-json_export", execution.input_file(json_export)])
+        cargs.extend(["-json_export", json_export])
     if clear_property is not None:
         cargs.extend([a for c in [s.run(execution) for s in clear_property] for a in c])
     if set_property is not None:
@@ -582,7 +582,7 @@ def mrconvert(
     if bvalue_scaling is not None:
         cargs.extend(["-bvalue_scaling", bvalue_scaling])
     if export_grad_mrtrix is not None:
-        cargs.extend(["-export_grad_mrtrix", execution.input_file(export_grad_mrtrix)])
+        cargs.extend(["-export_grad_mrtrix", export_grad_mrtrix])
     if export_grad_fsl is not None:
         cargs.extend(export_grad_fsl.run(execution))
     if import_pe_table is not None:
@@ -590,7 +590,7 @@ def mrconvert(
     if import_pe_eddy is not None:
         cargs.extend(import_pe_eddy.run(execution))
     if export_pe_table is not None:
-        cargs.extend(["-export_pe_table", execution.input_file(export_pe_table)])
+        cargs.extend(["-export_pe_table", export_pe_table])
     if export_pe_eddy is not None:
         cargs.extend(export_pe_eddy.run(execution))
     if info:
@@ -610,13 +610,13 @@ def mrconvert(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = MrconvertOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
-        json_export=execution.output_file(f"{pathlib.Path(json_export).name}") if json_export is not None else None,
-        export_grad_mrtrix=execution.output_file(f"{pathlib.Path(export_grad_mrtrix).name}") if export_grad_mrtrix is not None else None,
-        export_pe_table=execution.output_file(f"{pathlib.Path(export_pe_table).name}") if export_pe_table is not None else None,
+        output=execution.output_file(f"{output}"),
+        json_export=execution.output_file(f"{json_export}") if json_export is not None else None,
+        export_grad_mrtrix=execution.output_file(f"{export_grad_mrtrix}") if export_grad_mrtrix is not None else None,
+        export_pe_table=execution.output_file(f"{export_pe_table}") if export_pe_table is not None else None,
         export_grad_fsl=export_grad_fsl.outputs(execution),
         export_pe_eddy=export_pe_eddy.outputs(execution),
     )

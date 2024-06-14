@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABELCONVERT_METADATA = Metadata(
-    id="20d68c563ce807dd94ecd36a2e72735d744460a0",
+    id="3db410dd632103500180036cae7b0e8d0ef3fcf6",
     name="labelconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -58,7 +58,7 @@ def labelconvert(
     path_in: InputPathType,
     lut_in: InputPathType,
     lut_out: InputPathType,
-    image_out: InputPathType,
+    image_out: str,
     spine: InputPathType | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -139,10 +139,10 @@ def labelconvert(
     cargs.append(execution.input_file(path_in))
     cargs.append(execution.input_file(lut_in))
     cargs.append(execution.input_file(lut_out))
-    cargs.append(execution.input_file(image_out))
+    cargs.append(image_out)
     ret = LabelconvertOutputs(
         root=execution.output_file("."),
-        image_out=execution.output_file(f"{pathlib.Path(image_out).name}"),
+        image_out=execution.output_file(f"{image_out}"),
     )
     execution.run(cargs)
     return ret

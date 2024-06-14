@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SH2POWER_METADATA = Metadata(
-    id="c2654ddff51663e202a9842d15fbab01ae6e48c9",
+    id="1ab49e4ed2dfe080fcbd257db71a6d4309225297",
     name="sh2power",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class Sh2powerOutputs(typing.NamedTuple):
 
 def sh2power(
     sh: InputPathType,
-    power: InputPathType,
+    power: str,
     spectrum: bool = False,
     info: bool = False,
     quiet: bool = False,
@@ -131,10 +131,10 @@ def sh2power(
     if version:
         cargs.append("-version")
     cargs.append(execution.input_file(sh))
-    cargs.append(execution.input_file(power))
+    cargs.append(power)
     ret = Sh2powerOutputs(
         root=execution.output_file("."),
-        power=execution.output_file(f"{pathlib.Path(power).name}"),
+        power=execution.output_file(f"{power}"),
     )
     execution.run(cargs)
     return ret
