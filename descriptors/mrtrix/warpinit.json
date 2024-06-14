@@ -23,7 +23,7 @@
       "name": "warp",
       "value-key": "[WARP]",
       "description": "the output warp image.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

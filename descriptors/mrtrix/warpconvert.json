@@ -34,7 +34,7 @@
       "name": "out",
       "value-key": "[OUT]",
       "description": "the output warp image.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

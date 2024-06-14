@@ -31,7 +31,7 @@
       "name": "tracks",
       "value-key": "[TRACKS]",
       "description": "the output file containing the tracks generated.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {
@@ -163,7 +163,7 @@
       "command-line-flag": "-fod",
       "value-key": "[OUTPUT_OPTIONS_FOD]",
       "description": "Predicted fibre orientation distribution function (fODF).\nThis fODF is estimated as part of the global track optimization, and therefore incorporates the spatial regularization that it imposes. Internally, the fODF is represented as a discrete sum of apodized point spread functions (aPSF) oriented along the directions of all particles in the voxel, used to predict the DWI signal from the particle configuration.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -181,7 +181,7 @@
       "command-line-flag": "-fiso",
       "value-key": "[OUTPUT_OPTIONS_FISO]",
       "description": "Predicted isotropic fractions of the tissues for which response functions were provided with -riso. Typically, these are CSF and GM.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -190,7 +190,7 @@
       "command-line-flag": "-eext",
       "value-key": "[OUTPUT_OPTIONS_EEXT]",
       "description": "Residual external energy in every voxel.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -199,7 +199,7 @@
       "command-line-flag": "-etrend",
       "value-key": "[OUTPUT_OPTIONS_ETREND]",
       "description": "internal and external energy trend and cooling statistics.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

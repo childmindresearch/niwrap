@@ -23,7 +23,7 @@
       "name": "out",
       "value-key": "[OUT]",
       "description": "the output denoised DWI image.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {
@@ -52,7 +52,7 @@
       "command-line-flag": "-noise",
       "value-key": "[OPTIONS_NOISE]",
       "description": "The output noise map, i.e., the estimated noise level 'sigma' in the data. Note that on complex input data, this will be the total noise level across real and imaginary channels, so a scale factor sqrt(2) applies.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

@@ -23,7 +23,7 @@
       "name": "output",
       "value-key": "[OUTPUT]",
       "description": "the output track file.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

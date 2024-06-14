@@ -34,7 +34,7 @@
       "name": "output",
       "value-key": "[OUTPUT]",
       "description": "the output image.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {
@@ -204,7 +204,7 @@
       "command-line-flag": "-maskout",
       "value-key": "[OPTIONS_FOR_ZCLEAN_FILTER_MASKOUT]",
       "description": "Output a refined mask based on a spatially coherent region with normal intensity range.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

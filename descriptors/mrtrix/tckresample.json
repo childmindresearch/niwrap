@@ -23,7 +23,7 @@
       "name": "out_tracks",
       "value-key": "[OUT_TRACKS]",
       "description": "the output resampled tracks",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

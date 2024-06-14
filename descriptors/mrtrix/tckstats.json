@@ -52,7 +52,7 @@
       "command-line-flag": "-histogram",
       "value-key": "[OPTIONS_HISTOGRAM]",
       "description": "output a histogram of streamline lengths",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -61,7 +61,7 @@
       "command-line-flag": "-dump",
       "value-key": "[OPTIONS_DUMP]",
       "description": "dump the streamlines lengths to a text file",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

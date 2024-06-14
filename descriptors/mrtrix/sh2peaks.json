@@ -23,7 +23,7 @@
       "name": "output",
       "value-key": "[OUTPUT]",
       "description": "the output image. Each volume corresponds to the x, y & z component of each peak direction vector in turn.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

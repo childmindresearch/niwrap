@@ -64,7 +64,7 @@
       "command-line-flag": "-jmat",
       "value-key": "[OPTIONS_JMAT]",
       "description": "output a Jacobian matrix image stored in column-major order along the 4th dimension.Note the output jacobian describes the warp gradient w.r.t the scanner space coordinate system",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -73,7 +73,7 @@
       "command-line-flag": "-jdet",
       "value-key": "[OPTIONS_JDET]",
       "description": "output the Jacobian determinant instead of the full matrix",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

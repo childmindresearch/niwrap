@@ -23,7 +23,7 @@
       "name": "fixel_directory",
       "value-key": "[FIXEL_DIRECTORY]",
       "description": "the output fixel directory",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {
@@ -32,7 +32,7 @@
       "command-line-flag": "-afd",
       "value-key": "[METRIC_VALUES_FOR_FIXEL_BASED_SPARSE_OUTPUT_IMAGES_AFD]",
       "description": "output the total Apparent Fibre Density per fixel (integral of FOD lobe)",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -41,7 +41,7 @@
       "command-line-flag": "-peak_amp",
       "value-key": "[METRIC_VALUES_FOR_FIXEL_BASED_SPARSE_OUTPUT_IMAGES_PEAK_AMP]",
       "description": "output the amplitude of the FOD at the maximal peak per fixel",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-disp",
       "value-key": "[METRIC_VALUES_FOR_FIXEL_BASED_SPARSE_OUTPUT_IMAGES_DISP]",
       "description": "output a measure of dispersion per fixel as the ratio between FOD lobe integral and maximal peak amplitude",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

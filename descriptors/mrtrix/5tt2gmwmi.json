@@ -23,7 +23,7 @@
       "name": "mask_out",
       "value-key": "[MASK_OUT]",
       "description": "the output mask image",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

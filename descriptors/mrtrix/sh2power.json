@@ -23,7 +23,7 @@
       "name": "power",
       "value-key": "[POWER]",
       "description": "the output power image.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

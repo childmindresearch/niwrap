@@ -24,7 +24,7 @@
       "command-line-flag": "-adc",
       "value-key": "[OPTIONS_ADC]",
       "description": "compute the mean apparent diffusion coefficient (ADC) of the diffusion tensor. (sometimes also referred to as the mean diffusivity (MD))",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -33,7 +33,7 @@
       "command-line-flag": "-fa",
       "value-key": "[OPTIONS_FA]",
       "description": "compute the fractional anisotropy (FA) of the diffusion tensor.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -42,7 +42,7 @@
       "command-line-flag": "-ad",
       "value-key": "[OPTIONS_AD]",
       "description": "compute the axial diffusivity (AD) of the diffusion tensor. (equivalent to the principal eigenvalue)",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -51,7 +51,7 @@
       "command-line-flag": "-rd",
       "value-key": "[OPTIONS_RD]",
       "description": "compute the radial diffusivity (RD) of the diffusion tensor. (equivalent to the mean of the two non-principal eigenvalues)",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -60,7 +60,7 @@
       "command-line-flag": "-cl",
       "value-key": "[OPTIONS_CL]",
       "description": "compute the linearity metric of the diffusion tensor. (one of the three Westin shape metrics)",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -69,7 +69,7 @@
       "command-line-flag": "-cp",
       "value-key": "[OPTIONS_CP]",
       "description": "compute the planarity metric of the diffusion tensor. (one of the three Westin shape metrics)",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -78,7 +78,7 @@
       "command-line-flag": "-cs",
       "value-key": "[OPTIONS_CS]",
       "description": "compute the sphericity metric of the diffusion tensor. (one of the three Westin shape metrics)",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -87,7 +87,7 @@
       "command-line-flag": "-value",
       "value-key": "[OPTIONS_VALUE]",
       "description": "compute the selected eigenvalue(s) of the diffusion tensor.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -96,7 +96,7 @@
       "command-line-flag": "-vector",
       "value-key": "[OPTIONS_VECTOR]",
       "description": "compute the selected eigenvector(s) of the diffusion tensor.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

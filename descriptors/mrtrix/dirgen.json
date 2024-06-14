@@ -24,7 +24,7 @@
       "name": "dirs",
       "value-key": "[DIRS]",
       "description": "the text file to write the directions to, as [ az el ] pairs.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

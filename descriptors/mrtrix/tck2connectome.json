@@ -31,7 +31,7 @@
       "name": "connectome_out",
       "value-key": "[CONNECTOME_OUT]",
       "description": "the output .csv file containing edge weights",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {
@@ -172,7 +172,7 @@
       "command-line-flag": "-out_assignments",
       "value-key": "[OTHER_OPTIONS_FOR_TCK2CONNECTOME_OUT_ASSIGNMENTS]",
       "description": "output the node assignments of each streamline to a file; this can be used subsequently e.g. by the command connectome2tck",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

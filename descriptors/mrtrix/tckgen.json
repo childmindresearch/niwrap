@@ -23,7 +23,7 @@
       "name": "tracks",
       "value-key": "[TRACKS]",
       "description": "the output file containing the tracks generated.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {
@@ -380,7 +380,7 @@
       "command-line-flag": "-output_seeds",
       "value-key": "[TRACTOGRAPHY_SEEDING_OPTIONS_AND_PARAMETERS_OUTPUT_SEEDS]",
       "description": "output the seed location of all successful streamlines to a file",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

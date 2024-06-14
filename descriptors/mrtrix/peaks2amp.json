@@ -23,7 +23,7 @@
       "name": "amplitudes",
       "value-key": "[AMPLITUDES]",
       "description": "the output amplitudes image.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

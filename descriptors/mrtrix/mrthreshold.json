@@ -23,7 +23,7 @@
       "name": "output",
       "value-key": "[OUTPUT]",
       "description": "the (optional) output binary image mask",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

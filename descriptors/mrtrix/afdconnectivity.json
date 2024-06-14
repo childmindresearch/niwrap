@@ -41,7 +41,7 @@
       "command-line-flag": "-afd_map",
       "value-key": "[OPTIONS_AFD_MAP]",
       "description": "output a 3D image containing the AFD estimated for each voxel.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

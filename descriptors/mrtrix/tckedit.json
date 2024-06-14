@@ -24,7 +24,7 @@
       "name": "tracks_out",
       "value-key": "[TRACKS_OUT]",
       "description": "the output track file",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {
@@ -220,7 +220,7 @@
       "command-line-flag": "-tck_weights_out",
       "value-key": "[OPTIONS_FOR_HANDLING_STREAMLINE_WEIGHTS_TCK_WEIGHTS_OUT]",
       "description": "specify the path for an output text scalar file containing streamline weights",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

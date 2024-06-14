@@ -23,7 +23,7 @@
       "name": "output",
       "value-key": "[OUTPUT]",
       "description": "the output image (diffusion-weighted volumes by default).",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {
@@ -111,7 +111,7 @@
       "command-line-flag": "-export_grad_mrtrix",
       "value-key": "[DW_GRADIENT_TABLE_EXPORT_OPTIONS_EXPORT_GRAD_MRTRIX]",
       "description": "export the diffusion-weighted gradient table to file in MRtrix format",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -130,7 +130,7 @@
             "name": "bvecs_path",
             "value-key": "[BVECS_PATH]",
             "description": "export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format",
-            "type": "File",
+            "type": "String",
             "optional": false
           },
           {
@@ -138,7 +138,7 @@
             "name": "bvals_path",
             "value-key": "[BVALS_PATH]",
             "description": "export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format",
-            "type": "File",
+            "type": "String",
             "optional": false
           }
         ],

@@ -39,7 +39,7 @@
       "name": "image_out",
       "value-key": "[IMAGE_OUT]",
       "description": "the output image",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

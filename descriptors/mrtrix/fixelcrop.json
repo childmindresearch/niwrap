@@ -31,7 +31,7 @@
       "name": "output_fixel_directory",
       "value-key": "[OUTPUT_FIXEL_DIRECTORY]",
       "description": "the output directory to store the cropped directions and data files",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

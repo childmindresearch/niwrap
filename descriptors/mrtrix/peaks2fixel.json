@@ -23,7 +23,7 @@
       "name": "fixels",
       "value-key": "[FIXELS]",
       "description": "the output fixel directory.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

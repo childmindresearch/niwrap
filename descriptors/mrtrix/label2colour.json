@@ -23,7 +23,7 @@
       "name": "colour_out",
       "value-key": "[COLOUR_OUT]",
       "description": "the output colour image",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

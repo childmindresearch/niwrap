@@ -23,7 +23,7 @@
       "name": "hist",
       "value-key": "[HIST]",
       "description": "the output histogram file",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

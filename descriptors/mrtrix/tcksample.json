@@ -31,7 +31,7 @@
       "name": "values",
       "value-key": "[VALUES]",
       "description": "the output sampled values",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

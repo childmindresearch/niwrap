@@ -76,7 +76,7 @@
       "command-line-flag": "-check_norm",
       "value-key": "[DEBUGGING_OPTIONS_CHECK_NORM]",
       "description": "output the final estimated spatially varying intensity level that is used for normalisation.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -85,7 +85,7 @@
       "command-line-flag": "-check_mask",
       "value-key": "[DEBUGGING_OPTIONS_CHECK_MASK]",
       "description": "output the final mask used to compute the normalisation. This mask excludes regions identified as outliers by the optimisation process.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -94,7 +94,7 @@
       "command-line-flag": "-check_factors",
       "value-key": "[DEBUGGING_OPTIONS_CHECK_FACTORS]",
       "description": "output the tissue balance factors computed during normalisation.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

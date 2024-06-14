@@ -149,7 +149,7 @@
       "command-line-flag": "-json_keyval",
       "value-key": "[OPTIONS_FOR_EXPORTING_IMAGE_HEADER_FIELDS_JSON_KEYVAL]",
       "description": "export header key/value entries to a JSON file",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -158,7 +158,7 @@
       "command-line-flag": "-json_all",
       "value-key": "[OPTIONS_FOR_EXPORTING_IMAGE_HEADER_FIELDS_JSON_ALL]",
       "description": "export all header contents to a JSON file",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -217,7 +217,7 @@
       "command-line-flag": "-export_grad_mrtrix",
       "value-key": "[DW_GRADIENT_TABLE_EXPORT_OPTIONS_EXPORT_GRAD_MRTRIX]",
       "description": "export the diffusion-weighted gradient table to file in MRtrix format",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -236,7 +236,7 @@
             "name": "bvecs_path",
             "value-key": "[BVECS_PATH]",
             "description": "export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format",
-            "type": "File",
+            "type": "String",
             "optional": false
           },
           {
@@ -244,7 +244,7 @@
             "name": "bvals_path",
             "value-key": "[BVALS_PATH]",
             "description": "export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format",
-            "type": "File",
+            "type": "String",
             "optional": false
           }
         ],
@@ -307,7 +307,7 @@
       "command-line-flag": "-export_pe_table",
       "value-key": "[OPTIONS_FOR_EXPORTING_PHASE_ENCODE_TABLES_EXPORT_PE_TABLE]",
       "description": "export phase-encoding table to file",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -326,7 +326,7 @@
             "name": "config",
             "value-key": "[CONFIG]",
             "description": "export phase-encoding information to an EDDY-style config / index file pair",
-            "type": "File",
+            "type": "String",
             "optional": false
           },
           {
@@ -334,7 +334,7 @@
             "name": "indices",
             "value-key": "[INDICES]",
             "description": "export phase-encoding information to an EDDY-style config / index file pair",
-            "type": "File",
+            "type": "String",
             "optional": false
           }
         ],

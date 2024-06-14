@@ -194,7 +194,7 @@
       "command-line-flag": "-predicted_signal",
       "value-key": "[OPTIONS_FOR_THE_MULTI_SHELL__MULTI_TISSUE_CONSTRAINED_SPHERICAL_DECONVOLUTION_ALGORITHM_PREDICTED_SIGNAL]",
       "description": "output the predicted dwi image.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

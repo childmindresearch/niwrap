@@ -23,7 +23,7 @@
       "name": "dt",
       "value-key": "[DT]",
       "description": "the output dt image.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {
@@ -50,7 +50,7 @@
       "command-line-flag": "-b0",
       "value-key": "[OPTIONS_B0]",
       "description": "the output b0 image.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -59,7 +59,7 @@
       "command-line-flag": "-dkt",
       "value-key": "[OPTIONS_DKT]",
       "description": "the output dkt image.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -78,7 +78,7 @@
       "command-line-flag": "-predicted_signal",
       "value-key": "[OPTIONS_PREDICTED_SIGNAL]",
       "description": "the predicted dwi image.",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

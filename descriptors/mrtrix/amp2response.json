@@ -39,7 +39,7 @@
       "name": "response",
       "value-key": "[RESPONSE]",
       "description": "the output zonal spherical harmonic coefficients",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

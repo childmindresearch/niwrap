@@ -23,7 +23,7 @@
       "name": "sh_out",
       "value-key": "[SH_OUT]",
       "description": "the output sh image.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

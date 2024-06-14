@@ -55,7 +55,7 @@
             "name": "image",
             "value-key": "[IMAGE]",
             "description": "image1 after registration transformed and regridded to the space of image2. Note that -transformed needs to be repeated for each contrast if multi-contrast registration is used.",
-            "type": "File",
+            "type": "String",
             "optional": false
           }
         ],
@@ -87,7 +87,7 @@
             "name": "image1_transformed",
             "value-key": "[IMAGE1_TRANSFORMED]",
             "description": "image1 and image2 after registration transformed and regridded to the midway space. Note that -transformed_midway needs to be repeated for each contrast if multi-contrast registration is used.",
-            "type": "File",
+            "type": "String",
             "optional": false
           },
           {
@@ -95,7 +95,7 @@
             "name": "image2_transformed",
             "value-key": "[IMAGE2_TRANSFORMED]",
             "description": "image1 and image2 after registration transformed and regridded to the midway space. Note that -transformed_midway needs to be repeated for each contrast if multi-contrast registration is used.",
-            "type": "File",
+            "type": "String",
             "optional": false
           }
         ],
@@ -150,7 +150,7 @@
       "command-line-flag": "-rigid",
       "value-key": "[RIGID_REGISTRATION_OPTIONS_RIGID]",
       "description": "the output text file containing the rigid transformation as a 4x4 matrix",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -159,7 +159,7 @@
       "command-line-flag": "-rigid_1tomidway",
       "value-key": "[RIGID_REGISTRATION_OPTIONS_RIGID_1TOMIDWAY]",
       "description": "the output text file containing the rigid transformation that aligns image1 to image2 in their common midway space as a 4x4 matrix",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -168,7 +168,7 @@
       "command-line-flag": "-rigid_2tomidway",
       "value-key": "[RIGID_REGISTRATION_OPTIONS_RIGID_2TOMIDWAY]",
       "description": "the output text file containing the rigid transformation that aligns image2 to image1 in their common midway space as a 4x4 matrix",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -267,7 +267,7 @@
       "command-line-flag": "-rigid_log",
       "value-key": "[RIGID_REGISTRATION_OPTIONS_RIGID_LOG]",
       "description": "write gradient descent parameter evolution to log file",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -276,7 +276,7 @@
       "command-line-flag": "-affine",
       "value-key": "[AFFINE_REGISTRATION_OPTIONS_AFFINE]",
       "description": "the output text file containing the affine transformation as a 4x4 matrix",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -285,7 +285,7 @@
       "command-line-flag": "-affine_1tomidway",
       "value-key": "[AFFINE_REGISTRATION_OPTIONS_AFFINE_1TOMIDWAY]",
       "description": "the output text file containing the affine transformation that aligns image1 to image2 in their common midway space as a 4x4 matrix",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -294,7 +294,7 @@
       "command-line-flag": "-affine_2tomidway",
       "value-key": "[AFFINE_REGISTRATION_OPTIONS_AFFINE_2TOMIDWAY]",
       "description": "the output text file containing the affine transformation that aligns image2 to image1 in their common midway space as a 4x4 matrix",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -393,7 +393,7 @@
       "command-line-flag": "-affine_log",
       "value-key": "[AFFINE_REGISTRATION_OPTIONS_AFFINE_LOG]",
       "description": "write gradient descent parameter evolution to log file",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -554,7 +554,7 @@
             "name": "warp1",
             "value-key": "[WARP1]",
             "description": "the non-linear warp output defined as two deformation fields, where warp1 can be used to transform image1->image2 and warp2 to transform image2->image1. The deformation fields also encapsulate any linear transformation estimated prior to non-linear registration.",
-            "type": "File",
+            "type": "String",
             "optional": false
           },
           {
@@ -562,7 +562,7 @@
             "name": "warp2",
             "value-key": "[WARP2]",
             "description": "the non-linear warp output defined as two deformation fields, where warp1 can be used to transform image1->image2 and warp2 to transform image2->image1. The deformation fields also encapsulate any linear transformation estimated prior to non-linear registration.",
-            "type": "File",
+            "type": "String",
             "optional": false
           }
         ],
@@ -589,7 +589,7 @@
       "command-line-flag": "-nl_warp_full",
       "value-key": "[NON_LINEAR_REGISTRATION_OPTIONS_NL_WARP_FULL]",
       "description": "output all warps used during registration. This saves four different warps that map each image to a midway space and their inverses in a single 5D image file. The 4th image dimension indexes the x,y,z component of the deformation vector and the 5th dimension indexes the field in this order: image1->midway, midway->image1, image2->midway, midway->image2. Where image1->midway defines the field that maps image1 onto the midway space using the reverse convention When linear registration is performed first, the estimated linear transform will be included in the comments of the image header, and therefore the entire linear and non-linear transform can be applied (in either direction) using this output warp file with mrtransform",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {

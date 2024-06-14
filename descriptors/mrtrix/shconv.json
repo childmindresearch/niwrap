@@ -24,7 +24,7 @@
       "name": "SH_out",
       "value-key": "[SH_OUT]",
       "description": "the output spherical harmonics coefficients image.",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {

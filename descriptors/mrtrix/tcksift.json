@@ -31,7 +31,7 @@
       "name": "out_tracks",
       "value-key": "[OUT_TRACKS]",
       "description": "the output filtered tracks file",
-      "type": "File",
+      "type": "String",
       "optional": false
     },
     {
@@ -124,7 +124,7 @@
       "command-line-flag": "-csv",
       "value-key": "[OPTIONS_TO_MAKE_SIFT_PROVIDE_ADDITIONAL_OUTPUT_FILES_CSV]",
       "description": "output statistics of execution per iteration to a .csv file",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -133,7 +133,7 @@
       "command-line-flag": "-out_mu",
       "value-key": "[OPTIONS_TO_MAKE_SIFT_PROVIDE_ADDITIONAL_OUTPUT_FILES_OUT_MU]",
       "description": "output the final value of SIFT proportionality coefficient mu to a text file",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
@@ -151,7 +151,7 @@
       "command-line-flag": "-out_selection",
       "value-key": "[OPTIONS_TO_MAKE_SIFT_PROVIDE_ADDITIONAL_OUTPUT_FILES_OUT_SELECTION]",
       "description": "output a text file containing the binary selection of streamlines",
-      "type": "File",
+      "type": "String",
       "optional": true
     },
     {
