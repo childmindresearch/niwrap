@@ -57,8 +57,16 @@
         "id": "roi",
         "name": "roi",
         "description": "only consider data inside an roi",
-        "command-line": " [OPT_MATCH_MAPS]",
+        "command-line": " [ROI_CIFTI] [OPT_MATCH_MAPS]",
         "inputs": [
+          {
+            "id": "roi_cifti",
+            "name": "roi_cifti",
+            "description": "the roi, as a cifti file",
+            "optional": false,
+            "value-key": "[ROI_CIFTI]",
+            "type": "File"
+          },
           {
             "id": "opt_match_maps",
             "name": "opt_match_maps",

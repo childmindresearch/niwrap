@@ -28,8 +28,16 @@
         "id": "cifti_roi",
         "name": "cifti_roi",
         "description": "cifti file containing combined weights",
-        "command-line": " [OPT_IN_MEMORY]",
+        "command-line": " [ROI_CIFTI] [OPT_IN_MEMORY]",
         "inputs": [
+          {
+            "id": "roi_cifti",
+            "name": "roi_cifti",
+            "description": "the roi cifti file",
+            "optional": false,
+            "value-key": "[ROI_CIFTI]",
+            "type": "File"
+          },
           {
             "id": "opt_in_memory",
             "name": "opt_in_memory",
@@ -117,7 +125,17 @@
         "id": "cifti",
         "name": "cifti",
         "description": "specify an input cifti file",
-        "command-line": ""
+        "command-line": " [CIFTI_IN]",
+        "inputs": [
+          {
+            "id": "cifti_in",
+            "name": "cifti_in",
+            "description": "a cifti file to average across",
+            "optional": false,
+            "value-key": "[CIFTI_IN]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[CIFTI]",

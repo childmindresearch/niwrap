@@ -44,8 +44,17 @@
         "id": "presmooth",
         "name": "presmooth",
         "description": "smooth the metric before computing the gradient",
-        "command-line": " [OPT_FWHM]",
+        "command-line": " [KERNEL] [OPT_FWHM]",
         "inputs": [
+          {
+            "id": "kernel",
+            "name": "kernel",
+            "description": "the size of the gaussian smoothing kernel in mm, as sigma by default",
+            "optional": false,
+            "value-key": "[KERNEL]",
+            "type": "Number",
+            "integer": false
+          },
           {
             "id": "opt_fwhm",
             "name": "opt_fwhm",
@@ -70,8 +79,16 @@
         "id": "roi",
         "name": "roi",
         "description": "select a region of interest to take the gradient of",
-        "command-line": " [OPT_MATCH_COLUMNS]",
+        "command-line": " [ROI_METRIC] [OPT_MATCH_COLUMNS]",
         "inputs": [
+          {
+            "id": "roi_metric",
+            "name": "roi_metric",
+            "description": "the area to take the gradient within, as a metric",
+            "optional": false,
+            "value-key": "[ROI_METRIC]",
+            "type": "File"
+          },
           {
             "id": "opt_match_columns",
             "name": "opt_match_columns",

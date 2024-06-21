@@ -77,7 +77,25 @@
         "id": "volume_seeds",
         "name": "volume_seeds",
         "description": "specify the volume seed space",
-        "command-line": ""
+        "command-line": " [CIFTI_TEMPLATE] [DIRECTION]",
+        "inputs": [
+          {
+            "id": "cifti_template",
+            "name": "cifti_template",
+            "description": "cifti file to use the volume mappings from",
+            "optional": false,
+            "value-key": "[CIFTI_TEMPLATE]",
+            "type": "File"
+          },
+          {
+            "id": "direction",
+            "name": "direction",
+            "description": "dimension along the cifti file to take the mapping from, ROW or COLUMN",
+            "optional": false,
+            "value-key": "[DIRECTION]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[VOLUME_SEEDS]",

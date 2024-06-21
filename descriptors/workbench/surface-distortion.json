@@ -44,8 +44,17 @@
         "id": "smooth",
         "name": "smooth",
         "description": "smooth the area data",
-        "command-line": " [OPT_FWHM]",
+        "command-line": " [SIGMA] [OPT_FWHM]",
         "inputs": [
+          {
+            "id": "sigma",
+            "name": "sigma",
+            "description": "the size of the smoothing kernel in mm, as sigma by default",
+            "optional": false,
+            "value-key": "[SIGMA]",
+            "type": "Number",
+            "integer": false
+          },
           {
             "id": "opt_fwhm",
             "name": "opt_fwhm",

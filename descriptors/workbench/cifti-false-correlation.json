@@ -63,8 +63,16 @@
         "id": "left_surface",
         "name": "left_surface",
         "description": "specify the left surface to use",
-        "command-line": " [OPT_DUMP_TEXT_TEXT_OUT]",
+        "command-line": " [SURFACE] [OPT_DUMP_TEXT_TEXT_OUT]",
         "inputs": [
+          {
+            "id": "surface",
+            "name": "surface",
+            "description": "the left surface file",
+            "optional": false,
+            "value-key": "[SURFACE]",
+            "type": "File"
+          },
           {
             "id": "opt_dump_text_text_out",
             "name": "opt_dump_text_text_out",
@@ -89,8 +97,16 @@
         "id": "right_surface",
         "name": "right_surface",
         "description": "specify the right surface to use",
-        "command-line": " [OPT_DUMP_TEXT_TEXT_OUT]",
+        "command-line": " [SURFACE] [OPT_DUMP_TEXT_TEXT_OUT]",
         "inputs": [
+          {
+            "id": "surface",
+            "name": "surface",
+            "description": "the right surface file",
+            "optional": false,
+            "value-key": "[SURFACE]",
+            "type": "File"
+          },
           {
             "id": "opt_dump_text_text_out",
             "name": "opt_dump_text_text_out",
@@ -115,8 +131,16 @@
         "id": "cerebellum_surface",
         "name": "cerebellum_surface",
         "description": "specify the cerebellum surface to use",
-        "command-line": " [OPT_DUMP_TEXT_TEXT_OUT]",
+        "command-line": " [SURFACE] [OPT_DUMP_TEXT_TEXT_OUT]",
         "inputs": [
+          {
+            "id": "surface",
+            "name": "surface",
+            "description": "the cerebellum surface file",
+            "optional": false,
+            "value-key": "[SURFACE]",
+            "type": "File"
+          },
           {
             "id": "opt_dump_text_text_out",
             "name": "opt_dump_text_text_out",

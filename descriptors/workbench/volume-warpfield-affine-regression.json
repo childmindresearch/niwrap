@@ -54,7 +54,25 @@
         "id": "flirt_out",
         "name": "flirt_out",
         "description": "write output as a flirt matrix rather than a world coordinate transform",
-        "command-line": ""
+        "command-line": " [SOURCE_VOLUME] [TARGET_VOLUME]",
+        "inputs": [
+          {
+            "id": "source_volume",
+            "name": "source_volume",
+            "description": "the volume you want to apply the transform to",
+            "optional": false,
+            "value-key": "[SOURCE_VOLUME]",
+            "type": "String"
+          },
+          {
+            "id": "target_volume",
+            "name": "target_volume",
+            "description": "the target space you want the transformed volume to match",
+            "optional": false,
+            "value-key": "[TARGET_VOLUME]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[FLIRT_OUT]",

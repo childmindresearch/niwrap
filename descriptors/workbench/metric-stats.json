@@ -56,8 +56,16 @@
         "id": "roi",
         "name": "roi",
         "description": "only consider data inside an roi",
-        "command-line": " [OPT_MATCH_MAPS]",
+        "command-line": " [ROI_METRIC] [OPT_MATCH_MAPS]",
         "inputs": [
+          {
+            "id": "roi_metric",
+            "name": "roi_metric",
+            "description": "the roi, as a metric file",
+            "optional": false,
+            "value-key": "[ROI_METRIC]",
+            "type": "File"
+          },
           {
             "id": "opt_match_maps",
             "name": "opt_match_maps",

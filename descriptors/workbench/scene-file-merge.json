@@ -28,8 +28,16 @@
         "id": "scene_file",
         "name": "scene_file",
         "description": "specify a scene file to use scenes from",
-        "command-line": " [SCENE]",
+        "command-line": " [SCENE_FILE] [SCENE]",
         "inputs": [
+          {
+            "id": "scene_file",
+            "name": "scene_file",
+            "description": "the input scene file",
+            "optional": false,
+            "value-key": "[SCENE_FILE]",
+            "type": "String"
+          },
           {
             "id": "scene",
             "name": "scene",
@@ -39,8 +47,16 @@
               "id": "scene",
               "name": "scene",
               "description": "specify a scene to use",
-              "command-line": " [UP_TO]",
+              "command-line": " [SCENE] [UP_TO]",
               "inputs": [
+                {
+                  "id": "scene",
+                  "name": "scene",
+                  "description": "the scene number or name",
+                  "optional": false,
+                  "value-key": "[SCENE]",
+                  "type": "String"
+                },
                 {
                   "id": "up_to",
                   "name": "up_to",
@@ -50,8 +66,16 @@
                     "id": "up_to",
                     "name": "up_to",
                     "description": "use an inclusive range of scenes",
-                    "command-line": " [OPT_REVERSE]",
+                    "command-line": " [LAST_COLUMN] [OPT_REVERSE]",
                     "inputs": [
+                      {
+                        "id": "last_column",
+                        "name": "last_column",
+                        "description": "the number or name of the last scene to include",
+                        "optional": false,
+                        "value-key": "[LAST_COLUMN]",
+                        "type": "String"
+                      },
                       {
                         "id": "opt_reverse",
                         "name": "opt_reverse",

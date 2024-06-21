@@ -20,8 +20,16 @@
         "id": "from_world",
         "name": "from_world",
         "description": "input is a NIFTI 'world' warpfield",
-        "command-line": " [OPT_ABSOLUTE]",
+        "command-line": " [INPUT] [OPT_ABSOLUTE]",
         "inputs": [
+          {
+            "id": "input",
+            "name": "input",
+            "description": "the input warpfield",
+            "optional": false,
+            "value-key": "[INPUT]",
+            "type": "String"
+          },
           {
             "id": "opt_absolute",
             "name": "opt_absolute",
@@ -55,8 +63,24 @@
         "id": "from_fnirt",
         "name": "from_fnirt",
         "description": "input is a fnirt warpfield",
-        "command-line": " [OPT_ABSOLUTE]",
+        "command-line": " [INPUT] [SOURCE_VOLUME] [OPT_ABSOLUTE]",
         "inputs": [
+          {
+            "id": "input",
+            "name": "input",
+            "description": "the input warpfield",
+            "optional": false,
+            "value-key": "[INPUT]",
+            "type": "String"
+          },
+          {
+            "id": "source_volume",
+            "name": "source_volume",
+            "description": "the source volume used when generating the input warpfield",
+            "optional": false,
+            "value-key": "[SOURCE_VOLUME]",
+            "type": "String"
+          },
           {
             "id": "opt_absolute",
             "name": "opt_absolute",
@@ -99,7 +123,25 @@
         "id": "to_fnirt",
         "name": "to_fnirt",
         "description": "write output as a fnirt warpfield",
-        "command-line": ""
+        "command-line": " [OUTPUT] [SOURCE_VOLUME]",
+        "inputs": [
+          {
+            "id": "output",
+            "name": "output",
+            "description": "output - the output warpfield",
+            "optional": false,
+            "value-key": "[OUTPUT]",
+            "type": "String"
+          },
+          {
+            "id": "source_volume",
+            "name": "source_volume",
+            "description": "the volume you want to apply the warpfield to",
+            "optional": false,
+            "value-key": "[SOURCE_VOLUME]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[TO_FNIRT]",

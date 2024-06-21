@@ -47,8 +47,16 @@
         "id": "border",
         "name": "border",
         "description": "specify output file for a surface structure",
-        "command-line": " [BORDER_OUT]",
+        "command-line": " [SURFACE] [BORDER_OUT]",
         "inputs": [
+          {
+            "id": "surface",
+            "name": "surface",
+            "description": "the surface to use for neighbor and structure information",
+            "optional": false,
+            "value-key": "[SURFACE]",
+            "type": "File"
+          },
           {
             "id": "border_out",
             "name": "border_out",

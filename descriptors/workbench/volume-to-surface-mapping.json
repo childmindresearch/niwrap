@@ -71,8 +71,24 @@
         "id": "ribbon_constrained",
         "name": "ribbon_constrained",
         "description": "use ribbon constrained mapping algorithm",
-        "command-line": " [VOLUME_ROI] [OPT_VOXEL_SUBDIV_SUBDIV_NUM] [OPT_THIN_COLUMNS] [OPT_GAUSSIAN_SCALE] [OPT_INTERPOLATE_METHOD] [OPT_BAD_VERTICES_OUT] [ROI_OUT] [OUTPUT_WEIGHTS] [OPT_OUTPUT_WEIGHTS_TEXT_TEXT_OUT]",
+        "command-line": " [INNER_SURF] [OUTER_SURF] [VOLUME_ROI] [OPT_VOXEL_SUBDIV_SUBDIV_NUM] [OPT_THIN_COLUMNS] [OPT_GAUSSIAN_SCALE] [OPT_INTERPOLATE_METHOD] [OPT_BAD_VERTICES_OUT] [ROI_OUT] [OUTPUT_WEIGHTS] [OPT_OUTPUT_WEIGHTS_TEXT_TEXT_OUT]",
         "inputs": [
+          {
+            "id": "inner_surf",
+            "name": "inner_surf",
+            "description": "the inner surface of the ribbon",
+            "optional": false,
+            "value-key": "[INNER_SURF]",
+            "type": "File"
+          },
+          {
+            "id": "outer_surf",
+            "name": "outer_surf",
+            "description": "the outer surface of the ribbon",
+            "optional": false,
+            "value-key": "[OUTER_SURF]",
+            "type": "File"
+          },
           {
             "id": "volume_roi",
             "name": "volume_roi",
@@ -82,8 +98,16 @@
               "id": "volume_roi",
               "name": "volume_roi",
               "description": "use a volume roi",
-              "command-line": " [OPT_WEIGHTED]",
+              "command-line": " [ROI_VOLUME] [OPT_WEIGHTED]",
               "inputs": [
+                {
+                  "id": "roi_volume",
+                  "name": "roi_volume",
+                  "description": "the roi volume file",
+                  "optional": false,
+                  "value-key": "[ROI_VOLUME]",
+                  "type": "File"
+                },
                 {
                   "id": "opt_weighted",
                   "name": "opt_weighted",
@@ -163,8 +187,17 @@
               "id": "output_weights",
               "name": "output_weights",
               "description": "write the voxel weights for a vertex to a volume file",
-              "command-line": " [WEIGHTS_OUT]",
+              "command-line": " [VERTEX] [WEIGHTS_OUT]",
               "inputs": [
+                {
+                  "id": "vertex",
+                  "name": "vertex",
+                  "description": "the vertex number to get the voxel weights for, 0-based",
+                  "optional": false,
+                  "value-key": "[VERTEX]",
+                  "type": "Number",
+                  "integer": true
+                },
                 {
                   "id": "weights_out",
                   "name": "weights_out",
@@ -212,8 +245,33 @@
         "id": "myelin_style",
         "name": "myelin_style",
         "description": "use the method from myelin mapping",
-        "command-line": " [OPT_LEGACY_BUG]",
+        "command-line": " [RIBBON_ROI] [THICKNESS] [SIGMA] [OPT_LEGACY_BUG]",
         "inputs": [
+          {
+            "id": "ribbon_roi",
+            "name": "ribbon_roi",
+            "description": "an roi volume of the cortical ribbon for this hemisphere",
+            "optional": false,
+            "value-key": "[RIBBON_ROI]",
+            "type": "File"
+          },
+          {
+            "id": "thickness",
+            "name": "thickness",
+            "description": "a metric file of cortical thickness",
+            "optional": false,
+            "value-key": "[THICKNESS]",
+            "type": "File"
+          },
+          {
+            "id": "sigma",
+            "name": "sigma",
+            "description": "gaussian kernel in mm for weighting voxels within range",
+            "optional": false,
+            "value-key": "[SIGMA]",
+            "type": "Number",
+            "integer": false
+          },
           {
             "id": "opt_legacy_bug",
             "name": "opt_legacy_bug",

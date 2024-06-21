@@ -62,8 +62,16 @@
         "id": "roi",
         "name": "roi",
         "description": "select a region of interest to smooth",
-        "command-line": " [OPT_MATCH_COLUMNS]",
+        "command-line": " [ROI_METRIC] [OPT_MATCH_COLUMNS]",
         "inputs": [
+          {
+            "id": "roi_metric",
+            "name": "roi_metric",
+            "description": "the roi to smooth within, as a metric",
+            "optional": false,
+            "value-key": "[ROI_METRIC]",
+            "type": "File"
+          },
           {
             "id": "opt_match_columns",
             "name": "opt_match_columns",

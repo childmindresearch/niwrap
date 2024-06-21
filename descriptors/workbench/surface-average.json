@@ -62,8 +62,16 @@
         "id": "surf",
         "name": "surf",
         "description": "specify a surface to include in the average",
-        "command-line": " [OPT_WEIGHT_WEIGHT]",
+        "command-line": " [SURFACE] [OPT_WEIGHT_WEIGHT]",
         "inputs": [
+          {
+            "id": "surface",
+            "name": "surface",
+            "description": "a surface file to average",
+            "optional": false,
+            "value-key": "[SURFACE]",
+            "type": "File"
+          },
           {
             "id": "opt_weight_weight",
             "name": "opt_weight_weight",

@@ -44,7 +44,27 @@
         "id": "exclude_outliers",
         "name": "exclude_outliers",
         "description": "exclude non-numeric values and outliers by standard deviation",
-        "command-line": ""
+        "command-line": " [SIGMA_BELOW] [SIGMA_ABOVE]",
+        "inputs": [
+          {
+            "id": "sigma_below",
+            "name": "sigma_below",
+            "description": "number of standard deviations below the mean to include",
+            "optional": false,
+            "value-key": "[SIGMA_BELOW]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "sigma_above",
+            "name": "sigma_above",
+            "description": "number of standard deviations above the mean to include",
+            "optional": false,
+            "value-key": "[SIGMA_ABOVE]",
+            "type": "Number",
+            "integer": false
+          }
+        ]
       },
       "optional": true,
       "value-key": "[EXCLUDE_OUTLIERS]",

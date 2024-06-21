@@ -46,7 +46,26 @@
         "id": "map",
         "name": "map",
         "description": "specify a map to set the name of",
-        "command-line": ""
+        "command-line": " [INDEX] [NEW_NAME]",
+        "inputs": [
+          {
+            "id": "index",
+            "name": "index",
+            "description": "the map index to change the name of",
+            "optional": false,
+            "value-key": "[INDEX]",
+            "type": "Number",
+            "integer": true
+          },
+          {
+            "id": "new_name",
+            "name": "new_name",
+            "description": "the name to set for the map",
+            "optional": false,
+            "value-key": "[NEW_NAME]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[MAP]",

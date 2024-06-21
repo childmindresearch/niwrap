@@ -54,7 +54,17 @@
         "id": "cifti",
         "name": "cifti",
         "description": "specify an input cifti file",
-        "command-line": ""
+        "command-line": " [CIFTI_IN]",
+        "inputs": [
+          {
+            "id": "cifti_in",
+            "name": "cifti_in",
+            "description": "the input parcellated cifti file",
+            "optional": false,
+            "value-key": "[CIFTI_IN]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[CIFTI]",

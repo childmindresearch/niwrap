@@ -44,7 +44,25 @@
         "id": "flirt",
         "name": "flirt",
         "description": "MUST be used if affine is a flirt affine",
-        "command-line": ""
+        "command-line": " [SOURCE_VOLUME] [TARGET_VOLUME]",
+        "inputs": [
+          {
+            "id": "source_volume",
+            "name": "source_volume",
+            "description": "the source volume used when generating the affine",
+            "optional": false,
+            "value-key": "[SOURCE_VOLUME]",
+            "type": "String"
+          },
+          {
+            "id": "target_volume",
+            "name": "target_volume",
+            "description": "the target volume used when generating the affine",
+            "optional": false,
+            "value-key": "[TARGET_VOLUME]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[FLIRT]",

@@ -118,7 +118,27 @@
         "id": "threshold",
         "name": "threshold",
         "description": "ignore small extrema",
-        "command-line": ""
+        "command-line": " [LOW] [HIGH]",
+        "inputs": [
+          {
+            "id": "low",
+            "name": "low",
+            "description": "the largest value to consider for being a minimum",
+            "optional": false,
+            "value-key": "[LOW]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "high",
+            "name": "high",
+            "description": "the smallest value to consider for being a maximum",
+            "optional": false,
+            "value-key": "[HIGH]",
+            "type": "Number",
+            "integer": false
+          }
+        ]
       },
       "optional": true,
       "value-key": "[THRESHOLD]",

@@ -36,8 +36,16 @@
         "id": "volume_all",
         "name": "volume_all",
         "description": "replace the data in all volume components",
-        "command-line": " [OPT_FROM_CROPPED]",
+        "command-line": " [VOLUME] [OPT_FROM_CROPPED]",
         "inputs": [
+          {
+            "id": "volume",
+            "name": "volume",
+            "description": "the input volume",
+            "optional": false,
+            "value-key": "[VOLUME]",
+            "type": "File"
+          },
           {
             "id": "opt_from_cropped",
             "name": "opt_from_cropped",
@@ -80,7 +88,25 @@
         "id": "label",
         "name": "label",
         "description": "replace the data in a surface label component",
-        "command-line": ""
+        "command-line": " [STRUCTURE] [LABEL]",
+        "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "the structure to replace the data of",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
+          {
+            "id": "label",
+            "name": "label",
+            "description": "the input label file",
+            "optional": false,
+            "value-key": "[LABEL]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[LABEL]",
@@ -95,7 +121,25 @@
         "id": "metric",
         "name": "metric",
         "description": "replace the data in a surface component",
-        "command-line": ""
+        "command-line": " [STRUCTURE] [METRIC]",
+        "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "the structure to replace the data of",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
+          {
+            "id": "metric",
+            "name": "metric",
+            "description": "the input metric",
+            "optional": false,
+            "value-key": "[METRIC]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[METRIC]",
@@ -110,8 +154,24 @@
         "id": "volume",
         "name": "volume",
         "description": "replace the data in a volume component",
-        "command-line": " [OPT_FROM_CROPPED]",
+        "command-line": " [STRUCTURE] [VOLUME] [OPT_FROM_CROPPED]",
         "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "the structure to replace the data of",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
+          {
+            "id": "volume",
+            "name": "volume",
+            "description": "the input volume",
+            "optional": false,
+            "value-key": "[VOLUME]",
+            "type": "File"
+          },
           {
             "id": "opt_from_cropped",
             "name": "opt_from_cropped",

@@ -89,7 +89,27 @@
         "id": "gaussian",
         "name": "gaussian",
         "description": "generate gaussian kernels instead of flat ROIs",
-        "command-line": ""
+        "command-line": " [SURF_SIGMA] [VOL_SIGMA]",
+        "inputs": [
+          {
+            "id": "surf_sigma",
+            "name": "surf_sigma",
+            "description": "the sigma for the surface gaussian kernel, in mm",
+            "optional": false,
+            "value-key": "[SURF_SIGMA]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "vol_sigma",
+            "name": "vol_sigma",
+            "description": "the sigma for the volume gaussian kernel, in mm",
+            "optional": false,
+            "value-key": "[VOL_SIGMA]",
+            "type": "Number",
+            "integer": false
+          }
+        ]
       },
       "optional": true,
       "value-key": "[GAUSSIAN]",

@@ -36,8 +36,16 @@
         "id": "volume_all",
         "name": "volume_all",
         "description": "export the the mapping of all voxels",
-        "command-line": " [OPT_NO_CIFTI_INDEX] [OPT_STRUCTURE]",
+        "command-line": " [TEXT_OUT] [OPT_NO_CIFTI_INDEX] [OPT_STRUCTURE]",
         "inputs": [
+          {
+            "id": "text_out",
+            "name": "text_out",
+            "description": "output - the output text file",
+            "optional": false,
+            "value-key": "[TEXT_OUT]",
+            "type": "String"
+          },
           {
             "id": "opt_no_cifti_index",
             "name": "opt_no_cifti_index",
@@ -71,8 +79,24 @@
         "id": "surface",
         "name": "surface",
         "description": "export the the mapping of one surface structure",
-        "command-line": " [OPT_NO_CIFTI_INDEX]",
+        "command-line": " [STRUCTURE] [TEXT_OUT] [OPT_NO_CIFTI_INDEX]",
         "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "the structure to output",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
+          {
+            "id": "text_out",
+            "name": "text_out",
+            "description": "output - the output text file",
+            "optional": false,
+            "value-key": "[TEXT_OUT]",
+            "type": "String"
+          },
           {
             "id": "opt_no_cifti_index",
             "name": "opt_no_cifti_index",
@@ -97,8 +121,24 @@
         "id": "volume",
         "name": "volume",
         "description": "export the the mapping of one volume structure",
-        "command-line": " [OPT_NO_CIFTI_INDEX]",
+        "command-line": " [STRUCTURE] [TEXT_OUT] [OPT_NO_CIFTI_INDEX]",
         "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "the structure to output",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
+          {
+            "id": "text_out",
+            "name": "text_out",
+            "description": "output - the output text file",
+            "optional": false,
+            "value-key": "[TEXT_OUT]",
+            "type": "String"
+          },
           {
             "id": "opt_no_cifti_index",
             "name": "opt_no_cifti_index",

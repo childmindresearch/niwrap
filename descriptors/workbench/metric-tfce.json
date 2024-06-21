@@ -44,8 +44,17 @@
         "id": "presmooth",
         "name": "presmooth",
         "description": "smooth the metric before running TFCE",
-        "command-line": " [OPT_FWHM]",
+        "command-line": " [KERNEL] [OPT_FWHM]",
         "inputs": [
+          {
+            "id": "kernel",
+            "name": "kernel",
+            "description": "the size of the gaussian smoothing kernel in mm, as sigma by default",
+            "optional": false,
+            "value-key": "[KERNEL]",
+            "type": "Number",
+            "integer": false
+          },
           {
             "id": "opt_fwhm",
             "name": "opt_fwhm",
@@ -79,7 +88,27 @@
         "id": "parameters",
         "name": "parameters",
         "description": "set parameters for TFCE integral",
-        "command-line": ""
+        "command-line": " [E] [H]",
+        "inputs": [
+          {
+            "id": "e",
+            "name": "e",
+            "description": "exponent for cluster area (default 1.0)",
+            "optional": false,
+            "value-key": "[E]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "h",
+            "name": "h",
+            "description": "exponent for threshold value (default 2.0)",
+            "optional": false,
+            "value-key": "[H]",
+            "type": "Number",
+            "integer": false
+          }
+        ]
       },
       "optional": true,
       "value-key": "[PARAMETERS]",

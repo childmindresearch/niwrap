@@ -127,8 +127,16 @@
         "id": "label",
         "name": "label",
         "description": "separate a surface model into a surface label file",
-        "command-line": " [LABEL_OUT] [OPT_ROI] [ROI_OUT]",
+        "command-line": " [STRUCTURE] [LABEL_OUT] [OPT_ROI] [ROI_OUT]",
         "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "the structure to output",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
           {
             "id": "label_out",
             "name": "label_out",
@@ -185,8 +193,16 @@
         "id": "metric",
         "name": "metric",
         "description": "separate a surface model into a metric file",
-        "command-line": " [METRIC_OUT] [OPT_ROI] [ROI_OUT]",
+        "command-line": " [STRUCTURE] [METRIC_OUT] [OPT_ROI] [ROI_OUT]",
         "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "the structure to output",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
           {
             "id": "metric_out",
             "name": "metric_out",
@@ -243,8 +259,16 @@
         "id": "volume",
         "name": "volume",
         "description": "separate a volume structure into a volume file",
-        "command-line": " [VOLUME_OUT] [OPT_ROI] [ROI_OUT] [OPT_CROP]",
+        "command-line": " [STRUCTURE] [VOLUME_OUT] [OPT_ROI] [ROI_OUT] [OPT_CROP]",
         "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "the structure to output",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
           {
             "id": "volume_out",
             "name": "volume_out",

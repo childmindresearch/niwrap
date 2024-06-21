@@ -28,8 +28,16 @@
         "id": "label",
         "name": "label",
         "description": "specify an input label",
-        "command-line": " [COLUMN]",
+        "command-line": " [LABEL_IN] [COLUMN]",
         "inputs": [
+          {
+            "id": "label_in",
+            "name": "label_in",
+            "description": "a label file to use columns from",
+            "optional": false,
+            "value-key": "[LABEL_IN]",
+            "type": "File"
+          },
           {
             "id": "column",
             "name": "column",
@@ -39,8 +47,16 @@
               "id": "column",
               "name": "column",
               "description": "select a single column to use",
-              "command-line": " [UP_TO]",
+              "command-line": " [COLUMN] [UP_TO]",
               "inputs": [
+                {
+                  "id": "column",
+                  "name": "column",
+                  "description": "the column number or name",
+                  "optional": false,
+                  "value-key": "[COLUMN]",
+                  "type": "String"
+                },
                 {
                   "id": "up_to",
                   "name": "up_to",
@@ -50,8 +66,16 @@
                     "id": "up_to",
                     "name": "up_to",
                     "description": "use an inclusive range of columns",
-                    "command-line": " [OPT_REVERSE]",
+                    "command-line": " [LAST_COLUMN] [OPT_REVERSE]",
                     "inputs": [
+                      {
+                        "id": "last_column",
+                        "name": "last_column",
+                        "description": "the number or name of the last column to include",
+                        "optional": false,
+                        "value-key": "[LAST_COLUMN]",
+                        "type": "String"
+                      },
                       {
                         "id": "opt_reverse",
                         "name": "opt_reverse",

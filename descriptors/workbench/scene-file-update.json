@@ -80,7 +80,17 @@
         "id": "copy_map_one_palette",
         "name": "copy_map_one_palette",
         "description": "Copy palettes settings from first map to all maps in a data file",
-        "command-line": ""
+        "command-line": " [DATA_FILE_NAME_SUFFIX]",
+        "inputs": [
+          {
+            "id": "data_file_name_suffix",
+            "name": "data_file_name_suffix",
+            "description": "Name of palette mapped data file (cifti, metric, volume)",
+            "optional": false,
+            "value-key": "[DATA_FILE_NAME_SUFFIX]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[COPY_MAP_ONE_PALETTE]",
@@ -95,7 +105,17 @@
         "id": "data_file_add",
         "name": "data_file_add",
         "description": "Add a data file to scene's loaded files",
-        "command-line": ""
+        "command-line": " [NAME_OF_DATA_FILE]",
+        "inputs": [
+          {
+            "id": "name_of_data_file",
+            "name": "name_of_data_file",
+            "description": "Name of data file.  If a data file not in the current directory, it is best to use an absolute path (a relative path may work).  Instead of a data file, this value may be the name of a text file (must end in \".txt\") that contains the names of one or more data files, one per line.\nExample on UNIX to create a text file containing all CIFTI scalar files in the current directory with absolute paths:\n   ls -d $PWD/*dscalar.nii  > file.txt",
+            "optional": false,
+            "value-key": "[NAME_OF_DATA_FILE]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[DATA_FILE_ADD]",
@@ -110,7 +130,17 @@
         "id": "data_file_remove",
         "name": "data_file_remove",
         "description": "Remove a data file from scene's loaded files",
-        "command-line": ""
+        "command-line": " [NAME_OF_DATA_FILE]",
+        "inputs": [
+          {
+            "id": "name_of_data_file",
+            "name": "name_of_data_file",
+            "description": "Name of data file.  If a data file not in the current directory, it is best to use an absolute path (a relative path may work).  Instead of a data file, this value may be the name of a text file (must end in \".txt\") that contains the names of one or more data files, one per line.\nExample on UNIX to create a text file containing all CIFTI scalar files in the current directory with absolute paths:\n   ls -d $PWD/*dscalar.nii  > file.txt",
+            "optional": false,
+            "value-key": "[NAME_OF_DATA_FILE]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[DATA_FILE_REMOVE]",

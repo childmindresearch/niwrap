@@ -44,8 +44,26 @@
         "id": "series",
         "name": "series",
         "description": "set the mapping to series",
-        "command-line": " [OPT_UNIT_UNIT]",
+        "command-line": " [STEP] [START] [OPT_UNIT_UNIT]",
         "inputs": [
+          {
+            "id": "step",
+            "name": "step",
+            "description": "increment between series points",
+            "optional": false,
+            "value-key": "[STEP]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "start",
+            "name": "start",
+            "description": "start value of the series",
+            "optional": false,
+            "value-key": "[START]",
+            "type": "Number",
+            "integer": false
+          },
           {
             "id": "opt_unit_unit",
             "name": "opt_unit_unit",
@@ -88,7 +106,25 @@
         "id": "from_cifti",
         "name": "from_cifti",
         "description": "copy mapping from another cifti file",
-        "command-line": ""
+        "command-line": " [TEMPLATE_CIFTI] [DIRECTION]",
+        "inputs": [
+          {
+            "id": "template_cifti",
+            "name": "template_cifti",
+            "description": "a cifti file containing the desired mapping",
+            "optional": false,
+            "value-key": "[TEMPLATE_CIFTI]",
+            "type": "File"
+          },
+          {
+            "id": "direction",
+            "name": "direction",
+            "description": "which direction to copy the mapping from",
+            "optional": false,
+            "value-key": "[DIRECTION]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[FROM_CIFTI]",

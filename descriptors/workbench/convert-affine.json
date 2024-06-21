@@ -20,8 +20,16 @@
         "id": "from_world",
         "name": "from_world",
         "description": "input is a NIFTI 'world' affine",
-        "command-line": " [OPT_INVERSE]",
+        "command-line": " [INPUT] [OPT_INVERSE]",
         "inputs": [
+          {
+            "id": "input",
+            "name": "input",
+            "description": "the input affine",
+            "optional": false,
+            "value-key": "[INPUT]",
+            "type": "String"
+          },
           {
             "id": "opt_inverse",
             "name": "opt_inverse",
@@ -55,7 +63,33 @@
         "id": "from_flirt",
         "name": "from_flirt",
         "description": "input is a flirt matrix",
-        "command-line": ""
+        "command-line": " [INPUT] [SOURCE_VOLUME] [TARGET_VOLUME]",
+        "inputs": [
+          {
+            "id": "input",
+            "name": "input",
+            "description": "the input affine",
+            "optional": false,
+            "value-key": "[INPUT]",
+            "type": "String"
+          },
+          {
+            "id": "source_volume",
+            "name": "source_volume",
+            "description": "the source volume used when generating the input affine",
+            "optional": false,
+            "value-key": "[SOURCE_VOLUME]",
+            "type": "String"
+          },
+          {
+            "id": "target_volume",
+            "name": "target_volume",
+            "description": "the target volume used when generating the input affine",
+            "optional": false,
+            "value-key": "[TARGET_VOLUME]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[FROM_FLIRT]",
@@ -70,8 +104,16 @@
         "id": "to_world",
         "name": "to_world",
         "description": "write output as a NIFTI 'world' affine",
-        "command-line": " [OPT_INVERSE]",
+        "command-line": " [OUTPUT] [OPT_INVERSE]",
         "inputs": [
+          {
+            "id": "output",
+            "name": "output",
+            "description": "output - the output affine",
+            "optional": false,
+            "value-key": "[OUTPUT]",
+            "type": "String"
+          },
           {
             "id": "opt_inverse",
             "name": "opt_inverse",
@@ -105,7 +147,33 @@
         "id": "to_flirt",
         "name": "to_flirt",
         "description": "write output as a flirt matrix",
-        "command-line": ""
+        "command-line": " [OUTPUT] [SOURCE_VOLUME] [TARGET_VOLUME]",
+        "inputs": [
+          {
+            "id": "output",
+            "name": "output",
+            "description": "output - the output affine",
+            "optional": false,
+            "value-key": "[OUTPUT]",
+            "type": "String"
+          },
+          {
+            "id": "source_volume",
+            "name": "source_volume",
+            "description": "the volume you want to apply the transform to",
+            "optional": false,
+            "value-key": "[SOURCE_VOLUME]",
+            "type": "String"
+          },
+          {
+            "id": "target_volume",
+            "name": "target_volume",
+            "description": "the target space you want the transformed volume to match",
+            "optional": false,
+            "value-key": "[TARGET_VOLUME]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[TO_FLIRT]",

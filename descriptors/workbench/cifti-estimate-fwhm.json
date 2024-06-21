@@ -65,7 +65,25 @@
         "id": "surface",
         "name": "surface",
         "description": "specify an input surface",
-        "command-line": ""
+        "command-line": " [STRUCTURE] [SURFACE]",
+        "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "what structure to use this surface for",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
+          {
+            "id": "surface",
+            "name": "surface",
+            "description": "the surface file",
+            "optional": false,
+            "value-key": "[SURFACE]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[SURFACE]",

@@ -55,8 +55,24 @@
         "id": "var",
         "name": "var",
         "description": "a cifti file to use as a variable",
-        "command-line": " [SELECT]",
+        "command-line": " [NAME] [CIFTI] [SELECT]",
         "inputs": [
+          {
+            "id": "name",
+            "name": "name",
+            "description": "the name of the variable, as used in the expression",
+            "optional": false,
+            "value-key": "[NAME]",
+            "type": "String"
+          },
+          {
+            "id": "cifti",
+            "name": "cifti",
+            "description": "the cifti file to use as this variable",
+            "optional": false,
+            "value-key": "[CIFTI]",
+            "type": "File"
+          },
           {
             "id": "select",
             "name": "select",
@@ -66,8 +82,25 @@
               "id": "select",
               "name": "select",
               "description": "select a single index from a dimension",
-              "command-line": " [OPT_REPEAT]",
+              "command-line": " [DIM] [INDEX] [OPT_REPEAT]",
               "inputs": [
+                {
+                  "id": "dim",
+                  "name": "dim",
+                  "description": "the dimension to select from (1-based)",
+                  "optional": false,
+                  "value-key": "[DIM]",
+                  "type": "Number",
+                  "integer": true
+                },
+                {
+                  "id": "index",
+                  "name": "index",
+                  "description": "the index number (1-based) or map name to use",
+                  "optional": false,
+                  "value-key": "[INDEX]",
+                  "type": "String"
+                },
                 {
                   "id": "opt_repeat",
                   "name": "opt_repeat",

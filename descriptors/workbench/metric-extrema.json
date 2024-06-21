@@ -53,8 +53,17 @@
         "id": "presmooth",
         "name": "presmooth",
         "description": "smooth the metric before finding extrema",
-        "command-line": " [OPT_FWHM]",
+        "command-line": " [KERNEL] [OPT_FWHM]",
         "inputs": [
+          {
+            "id": "kernel",
+            "name": "kernel",
+            "description": "the size of the gaussian smoothing kernel in mm, as sigma by default",
+            "optional": false,
+            "value-key": "[KERNEL]",
+            "type": "Number",
+            "integer": false
+          },
           {
             "id": "opt_fwhm",
             "name": "opt_fwhm",
@@ -88,7 +97,27 @@
         "id": "threshold",
         "name": "threshold",
         "description": "ignore small extrema",
-        "command-line": ""
+        "command-line": " [LOW] [HIGH]",
+        "inputs": [
+          {
+            "id": "low",
+            "name": "low",
+            "description": "the largest value to consider for being a minimum",
+            "optional": false,
+            "value-key": "[LOW]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "high",
+            "name": "high",
+            "description": "the smallest value to consider for being a maximum",
+            "optional": false,
+            "value-key": "[HIGH]",
+            "type": "Number",
+            "integer": false
+          }
+        ]
       },
       "optional": true,
       "value-key": "[THRESHOLD]",

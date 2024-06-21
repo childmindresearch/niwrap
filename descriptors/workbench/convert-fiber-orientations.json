@@ -36,7 +36,65 @@
         "id": "fiber",
         "name": "fiber",
         "description": "specify the parameter volumes for a fiber",
-        "command-line": ""
+        "command-line": " [MEAN_F] [STDEV_F] [THETA] [PHI] [PSI] [KA] [KB]",
+        "inputs": [
+          {
+            "id": "mean_f",
+            "name": "mean_f",
+            "description": "mean fiber strength",
+            "optional": false,
+            "value-key": "[MEAN_F]",
+            "type": "File"
+          },
+          {
+            "id": "stdev_f",
+            "name": "stdev_f",
+            "description": "standard deviation of fiber strength",
+            "optional": false,
+            "value-key": "[STDEV_F]",
+            "type": "File"
+          },
+          {
+            "id": "theta",
+            "name": "theta",
+            "description": "theta angle",
+            "optional": false,
+            "value-key": "[THETA]",
+            "type": "File"
+          },
+          {
+            "id": "phi",
+            "name": "phi",
+            "description": "phi angle",
+            "optional": false,
+            "value-key": "[PHI]",
+            "type": "File"
+          },
+          {
+            "id": "psi",
+            "name": "psi",
+            "description": "psi angle",
+            "optional": false,
+            "value-key": "[PSI]",
+            "type": "File"
+          },
+          {
+            "id": "ka",
+            "name": "ka",
+            "description": "ka bingham parameter",
+            "optional": false,
+            "value-key": "[KA]",
+            "type": "File"
+          },
+          {
+            "id": "kb",
+            "name": "kb",
+            "description": "kb bingham parameter",
+            "optional": false,
+            "value-key": "[KB]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[FIBER]",

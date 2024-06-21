@@ -36,8 +36,26 @@
         "id": "series",
         "name": "series",
         "description": "make a dtseries file instead of a dscalar",
-        "command-line": " [OPT_UNIT_UNIT]",
+        "command-line": " [STEP] [START] [OPT_UNIT_UNIT]",
         "inputs": [
+          {
+            "id": "step",
+            "name": "step",
+            "description": "increment between series points",
+            "optional": false,
+            "value-key": "[STEP]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "start",
+            "name": "start",
+            "description": "start value of the series",
+            "optional": false,
+            "value-key": "[START]",
+            "type": "Number",
+            "integer": false
+          },
           {
             "id": "opt_unit_unit",
             "name": "opt_unit_unit",
@@ -62,8 +80,16 @@
         "id": "volume_all",
         "name": "volume_all",
         "description": "specify an input volume file for all voxel data",
-        "command-line": " [OPT_FROM_CROPPED]",
+        "command-line": " [VOLUME_IN] [OPT_FROM_CROPPED]",
         "inputs": [
+          {
+            "id": "volume_in",
+            "name": "volume_in",
+            "description": "the input volume file",
+            "optional": false,
+            "value-key": "[VOLUME_IN]",
+            "type": "File"
+          },
           {
             "id": "opt_from_cropped",
             "name": "opt_from_cropped",
@@ -97,7 +123,17 @@
         "id": "cifti",
         "name": "cifti",
         "description": "use input data from a cifti file",
-        "command-line": ""
+        "command-line": " [CIFTI_IN]",
+        "inputs": [
+          {
+            "id": "cifti_in",
+            "name": "cifti_in",
+            "description": "cifti file containing input data",
+            "optional": false,
+            "value-key": "[CIFTI_IN]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[CIFTI]",
@@ -112,7 +148,25 @@
         "id": "metric",
         "name": "metric",
         "description": "use input data from a metric file",
-        "command-line": ""
+        "command-line": " [STRUCTURE] [METRIC_IN]",
+        "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "which structure to put the metric file into",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
+          {
+            "id": "metric_in",
+            "name": "metric_in",
+            "description": "input metric file",
+            "optional": false,
+            "value-key": "[METRIC_IN]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[METRIC]",
@@ -127,7 +181,25 @@
         "id": "label",
         "name": "label",
         "description": "use input data from surface label files",
-        "command-line": ""
+        "command-line": " [STRUCTURE] [LABEL_IN]",
+        "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "which structure to put the label file into",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
+          {
+            "id": "label_in",
+            "name": "label_in",
+            "description": "input label file",
+            "optional": false,
+            "value-key": "[LABEL_IN]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[LABEL]",
@@ -142,8 +214,24 @@
         "id": "volume",
         "name": "volume",
         "description": "use a volume file for a single volume structure's data",
-        "command-line": " [OPT_FROM_CROPPED]",
+        "command-line": " [STRUCTURE] [VOLUME_IN] [OPT_FROM_CROPPED]",
         "inputs": [
+          {
+            "id": "structure",
+            "name": "structure",
+            "description": "which structure to put the volume file into",
+            "optional": false,
+            "value-key": "[STRUCTURE]",
+            "type": "String"
+          },
+          {
+            "id": "volume_in",
+            "name": "volume_in",
+            "description": "the input volume file",
+            "optional": false,
+            "value-key": "[VOLUME_IN]",
+            "type": "File"
+          },
           {
             "id": "opt_from_cropped",
             "name": "opt_from_cropped",

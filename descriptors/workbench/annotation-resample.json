@@ -36,7 +36,25 @@
         "id": "surface_pair",
         "name": "surface_pair",
         "description": "pair of surfaces for resampling surface annotations for one structure",
-        "command-line": ""
+        "command-line": " [SOURCE_SURFACE] [TARGET_SURFACE]",
+        "inputs": [
+          {
+            "id": "source_surface",
+            "name": "source_surface",
+            "description": "the midthickness surface of the current mesh the annotations use",
+            "optional": false,
+            "value-key": "[SOURCE_SURFACE]",
+            "type": "File"
+          },
+          {
+            "id": "target_surface",
+            "name": "target_surface",
+            "description": "the midthickness surface of the mesh the annotations should be transferred to",
+            "optional": false,
+            "value-key": "[TARGET_SURFACE]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[SURFACE_PAIR]",

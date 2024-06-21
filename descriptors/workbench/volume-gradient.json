@@ -36,8 +36,17 @@
         "id": "presmooth",
         "name": "presmooth",
         "description": "smooth the volume before computing the gradient",
-        "command-line": " [OPT_FWHM]",
+        "command-line": " [KERNEL] [OPT_FWHM]",
         "inputs": [
+          {
+            "id": "kernel",
+            "name": "kernel",
+            "description": "the size of the gaussian smoothing kernel in mm, as sigma by default",
+            "optional": false,
+            "value-key": "[KERNEL]",
+            "type": "Number",
+            "integer": false
+          },
           {
             "id": "opt_fwhm",
             "name": "opt_fwhm",

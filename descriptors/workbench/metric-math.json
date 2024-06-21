@@ -46,8 +46,24 @@
         "id": "var",
         "name": "var",
         "description": "a metric to use as a variable",
-        "command-line": " [OPT_COLUMN_COLUMN] [OPT_REPEAT]",
+        "command-line": " [NAME] [METRIC] [OPT_COLUMN_COLUMN] [OPT_REPEAT]",
         "inputs": [
+          {
+            "id": "name",
+            "name": "name",
+            "description": "the name of the variable, as used in the expression",
+            "optional": false,
+            "value-key": "[NAME]",
+            "type": "String"
+          },
+          {
+            "id": "metric",
+            "name": "metric",
+            "description": "the metric file to use as this variable",
+            "optional": false,
+            "value-key": "[METRIC]",
+            "type": "File"
+          },
           {
             "id": "opt_column_column",
             "name": "opt_column_column",

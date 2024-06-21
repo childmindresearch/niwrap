@@ -46,8 +46,24 @@
         "id": "var",
         "name": "var",
         "description": "a volume file to use as a variable",
-        "command-line": " [OPT_SUBVOLUME_SUBVOL] [OPT_REPEAT]",
+        "command-line": " [NAME] [VOLUME] [OPT_SUBVOLUME_SUBVOL] [OPT_REPEAT]",
         "inputs": [
+          {
+            "id": "name",
+            "name": "name",
+            "description": "the name of the variable, as used in the expression",
+            "optional": false,
+            "value-key": "[NAME]",
+            "type": "String"
+          },
+          {
+            "id": "volume",
+            "name": "volume",
+            "description": "the volume file to use as this variable",
+            "optional": false,
+            "value-key": "[VOLUME]",
+            "type": "File"
+          },
           {
             "id": "opt_subvolume_subvol",
             "name": "opt_subvolume_subvol",

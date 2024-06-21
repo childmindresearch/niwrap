@@ -89,8 +89,16 @@
         "id": "left_surface",
         "name": "left_surface",
         "description": "specify the left surface to use",
-        "command-line": " [OPT_CORRECTED_AREAS_AREA_METRIC]",
+        "command-line": " [SURFACE] [OPT_CORRECTED_AREAS_AREA_METRIC]",
         "inputs": [
+          {
+            "id": "surface",
+            "name": "surface",
+            "description": "the left surface file",
+            "optional": false,
+            "value-key": "[SURFACE]",
+            "type": "File"
+          },
           {
             "id": "opt_corrected_areas_area_metric",
             "name": "opt_corrected_areas_area_metric",
@@ -115,8 +123,16 @@
         "id": "right_surface",
         "name": "right_surface",
         "description": "specify the right surface to use",
-        "command-line": " [OPT_CORRECTED_AREAS_AREA_METRIC]",
+        "command-line": " [SURFACE] [OPT_CORRECTED_AREAS_AREA_METRIC]",
         "inputs": [
+          {
+            "id": "surface",
+            "name": "surface",
+            "description": "the right surface file",
+            "optional": false,
+            "value-key": "[SURFACE]",
+            "type": "File"
+          },
           {
             "id": "opt_corrected_areas_area_metric",
             "name": "opt_corrected_areas_area_metric",
@@ -141,8 +157,16 @@
         "id": "cerebellum_surface",
         "name": "cerebellum_surface",
         "description": "specify the cerebellum surface to use",
-        "command-line": " [OPT_CORRECTED_AREAS_AREA_METRIC]",
+        "command-line": " [SURFACE] [OPT_CORRECTED_AREAS_AREA_METRIC]",
         "inputs": [
+          {
+            "id": "surface",
+            "name": "surface",
+            "description": "the cerebellum surface file",
+            "optional": false,
+            "value-key": "[SURFACE]",
+            "type": "File"
+          },
           {
             "id": "opt_corrected_areas_area_metric",
             "name": "opt_corrected_areas_area_metric",
@@ -185,7 +209,27 @@
         "id": "size_ratio",
         "name": "size_ratio",
         "description": "ignore clusters smaller than a given fraction of the largest cluster in the structure",
-        "command-line": ""
+        "command-line": " [SURFACE_RATIO] [VOLUME_RATIO]",
+        "inputs": [
+          {
+            "id": "surface_ratio",
+            "name": "surface_ratio",
+            "description": "fraction of the structure's largest cluster area",
+            "optional": false,
+            "value-key": "[SURFACE_RATIO]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "volume_ratio",
+            "name": "volume_ratio",
+            "description": "fraction of the structure's largest cluster volume",
+            "optional": false,
+            "value-key": "[VOLUME_RATIO]",
+            "type": "Number",
+            "integer": false
+          }
+        ]
       },
       "optional": true,
       "value-key": "[SIZE_RATIO]",
@@ -200,7 +244,27 @@
         "id": "distance",
         "name": "distance",
         "description": "ignore clusters further than a given distance from the largest cluster in the structure",
-        "command-line": ""
+        "command-line": " [SURFACE_DISTANCE] [VOLUME_DISTANCE]",
+        "inputs": [
+          {
+            "id": "surface_distance",
+            "name": "surface_distance",
+            "description": "how far from the largest cluster a cluster can be, edge to edge, in mm",
+            "optional": false,
+            "value-key": "[SURFACE_DISTANCE]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "volume_distance",
+            "name": "volume_distance",
+            "description": "how far from the largest cluster a cluster can be, edge to edge, in mm",
+            "optional": false,
+            "value-key": "[VOLUME_DISTANCE]",
+            "type": "Number",
+            "integer": false
+          }
+        ]
       },
       "optional": true,
       "value-key": "[DISTANCE]",

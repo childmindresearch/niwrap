@@ -60,7 +60,25 @@
         "id": "area_surfs",
         "name": "area_surfs",
         "description": "specify surfaces to do vertex area correction based on",
-        "command-line": ""
+        "command-line": " [CURRENT_AREA] [NEW_AREA]",
+        "inputs": [
+          {
+            "id": "current_area",
+            "name": "current_area",
+            "description": "a relevant surface with <current-sphere> mesh",
+            "optional": false,
+            "value-key": "[CURRENT_AREA]",
+            "type": "File"
+          },
+          {
+            "id": "new_area",
+            "name": "new_area",
+            "description": "a relevant surface with <new-sphere> mesh",
+            "optional": false,
+            "value-key": "[NEW_AREA]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[AREA_SURFS]",
@@ -75,7 +93,25 @@
         "id": "area_metrics",
         "name": "area_metrics",
         "description": "specify vertex area metrics to do area correction based on",
-        "command-line": ""
+        "command-line": " [CURRENT_AREA] [NEW_AREA]",
+        "inputs": [
+          {
+            "id": "current_area",
+            "name": "current_area",
+            "description": "a metric file with vertex areas for <current-sphere> mesh",
+            "optional": false,
+            "value-key": "[CURRENT_AREA]",
+            "type": "File"
+          },
+          {
+            "id": "new_area",
+            "name": "new_area",
+            "description": "a metric file with vertex areas for <new-sphere> mesh",
+            "optional": false,
+            "value-key": "[NEW_AREA]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[AREA_METRICS]",

@@ -36,7 +36,17 @@
         "id": "surface",
         "name": "surface",
         "description": "specify an input surface",
-        "command-line": ""
+        "command-line": " [SURFACE_IN]",
+        "inputs": [
+          {
+            "id": "surface_in",
+            "name": "surface_in",
+            "description": "a surface file for unprojection of borders",
+            "optional": false,
+            "value-key": "[SURFACE_IN]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[SURFACE]",

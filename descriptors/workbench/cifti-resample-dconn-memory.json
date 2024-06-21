@@ -77,8 +77,17 @@
         "id": "volume_predilate",
         "name": "volume_predilate",
         "description": "dilate the volume components before resampling",
-        "command-line": " [OPT_NEAREST] [WEIGHTED]",
+        "command-line": " [DILATE_MM] [OPT_NEAREST] [WEIGHTED]",
         "inputs": [
+          {
+            "id": "dilate_mm",
+            "name": "dilate_mm",
+            "description": "distance, in mm, to dilate",
+            "optional": false,
+            "value-key": "[DILATE_MM]",
+            "type": "Number",
+            "integer": false
+          },
           {
             "id": "opt_nearest",
             "name": "opt_nearest",
@@ -139,8 +148,17 @@
         "id": "surface_postdilate",
         "name": "surface_postdilate",
         "description": "dilate the surface components after resampling",
-        "command-line": " [OPT_NEAREST] [OPT_LINEAR] [WEIGHTED]",
+        "command-line": " [DILATE_MM] [OPT_NEAREST] [OPT_LINEAR] [WEIGHTED]",
         "inputs": [
+          {
+            "id": "dilate_mm",
+            "name": "dilate_mm",
+            "description": "distance, in mm, to dilate",
+            "optional": false,
+            "value-key": "[DILATE_MM]",
+            "type": "Number",
+            "integer": false
+          },
           {
             "id": "opt_nearest",
             "name": "opt_nearest",
@@ -210,8 +228,16 @@
         "id": "affine",
         "name": "affine",
         "description": "use an affine transformation on the volume components",
-        "command-line": " [FLIRT]",
+        "command-line": " [AFFINE_FILE] [FLIRT]",
         "inputs": [
+          {
+            "id": "affine_file",
+            "name": "affine_file",
+            "description": "the affine file to use",
+            "optional": false,
+            "value-key": "[AFFINE_FILE]",
+            "type": "String"
+          },
           {
             "id": "flirt",
             "name": "flirt",
@@ -221,7 +247,25 @@
               "id": "flirt",
               "name": "flirt",
               "description": "MUST be used if affine is a flirt affine",
-              "command-line": ""
+              "command-line": " [SOURCE_VOLUME] [TARGET_VOLUME]",
+              "inputs": [
+                {
+                  "id": "source_volume",
+                  "name": "source_volume",
+                  "description": "the source volume used when generating the affine",
+                  "optional": false,
+                  "value-key": "[SOURCE_VOLUME]",
+                  "type": "String"
+                },
+                {
+                  "id": "target_volume",
+                  "name": "target_volume",
+                  "description": "the target volume used when generating the affine",
+                  "optional": false,
+                  "value-key": "[TARGET_VOLUME]",
+                  "type": "String"
+                }
+              ]
             },
             "optional": true,
             "value-key": "[FLIRT]",
@@ -242,8 +286,16 @@
         "id": "warpfield",
         "name": "warpfield",
         "description": "use a warpfield on the volume components",
-        "command-line": " [OPT_FNIRT_SOURCE_VOLUME]",
+        "command-line": " [WARPFIELD] [OPT_FNIRT_SOURCE_VOLUME]",
         "inputs": [
+          {
+            "id": "warpfield",
+            "name": "warpfield",
+            "description": "the warpfield to use",
+            "optional": false,
+            "value-key": "[WARPFIELD]",
+            "type": "String"
+          },
           {
             "id": "opt_fnirt_source_volume",
             "name": "opt_fnirt_source_volume",
@@ -268,8 +320,24 @@
         "id": "left_spheres",
         "name": "left_spheres",
         "description": "specify spheres for left surface resampling",
-        "command-line": " [LEFT_AREA_SURFS] [LEFT_AREA_METRICS]",
+        "command-line": " [CURRENT_SPHERE] [NEW_SPHERE] [LEFT_AREA_SURFS] [LEFT_AREA_METRICS]",
         "inputs": [
+          {
+            "id": "current_sphere",
+            "name": "current_sphere",
+            "description": "a sphere with the same mesh as the current left surface",
+            "optional": false,
+            "value-key": "[CURRENT_SPHERE]",
+            "type": "File"
+          },
+          {
+            "id": "new_sphere",
+            "name": "new_sphere",
+            "description": "a sphere with the new left mesh that is in register with the current sphere",
+            "optional": false,
+            "value-key": "[NEW_SPHERE]",
+            "type": "File"
+          },
           {
             "id": "left_area_surfs",
             "name": "left_area_surfs",
@@ -279,7 +347,25 @@
               "id": "left_area_surfs",
               "name": "left_area_surfs",
               "description": "specify left surfaces to do vertex area correction based on",
-              "command-line": ""
+              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "inputs": [
+                {
+                  "id": "current_area",
+                  "name": "current_area",
+                  "description": "a relevant left anatomical surface with current mesh",
+                  "optional": false,
+                  "value-key": "[CURRENT_AREA]",
+                  "type": "File"
+                },
+                {
+                  "id": "new_area",
+                  "name": "new_area",
+                  "description": "a relevant left anatomical surface with new mesh",
+                  "optional": false,
+                  "value-key": "[NEW_AREA]",
+                  "type": "File"
+                }
+              ]
             },
             "optional": true,
             "value-key": "[LEFT_AREA_SURFS]",
@@ -294,7 +380,25 @@
               "id": "left_area_metrics",
               "name": "left_area_metrics",
               "description": "specify left vertex area metrics to do area correction based on",
-              "command-line": ""
+              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "inputs": [
+                {
+                  "id": "current_area",
+                  "name": "current_area",
+                  "description": "a metric file with vertex areas for the current mesh",
+                  "optional": false,
+                  "value-key": "[CURRENT_AREA]",
+                  "type": "File"
+                },
+                {
+                  "id": "new_area",
+                  "name": "new_area",
+                  "description": "a metric file with vertex areas for the new mesh",
+                  "optional": false,
+                  "value-key": "[NEW_AREA]",
+                  "type": "File"
+                }
+              ]
             },
             "optional": true,
             "value-key": "[LEFT_AREA_METRICS]",
@@ -315,8 +419,24 @@
         "id": "right_spheres",
         "name": "right_spheres",
         "description": "specify spheres for right surface resampling",
-        "command-line": " [RIGHT_AREA_SURFS] [RIGHT_AREA_METRICS]",
+        "command-line": " [CURRENT_SPHERE] [NEW_SPHERE] [RIGHT_AREA_SURFS] [RIGHT_AREA_METRICS]",
         "inputs": [
+          {
+            "id": "current_sphere",
+            "name": "current_sphere",
+            "description": "a sphere with the same mesh as the current right surface",
+            "optional": false,
+            "value-key": "[CURRENT_SPHERE]",
+            "type": "File"
+          },
+          {
+            "id": "new_sphere",
+            "name": "new_sphere",
+            "description": "a sphere with the new right mesh that is in register with the current sphere",
+            "optional": false,
+            "value-key": "[NEW_SPHERE]",
+            "type": "File"
+          },
           {
             "id": "right_area_surfs",
             "name": "right_area_surfs",
@@ -326,7 +446,25 @@
               "id": "right_area_surfs",
               "name": "right_area_surfs",
               "description": "specify right surfaces to do vertex area correction based on",
-              "command-line": ""
+              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "inputs": [
+                {
+                  "id": "current_area",
+                  "name": "current_area",
+                  "description": "a relevant right anatomical surface with current mesh",
+                  "optional": false,
+                  "value-key": "[CURRENT_AREA]",
+                  "type": "File"
+                },
+                {
+                  "id": "new_area",
+                  "name": "new_area",
+                  "description": "a relevant right anatomical surface with new mesh",
+                  "optional": false,
+                  "value-key": "[NEW_AREA]",
+                  "type": "File"
+                }
+              ]
             },
             "optional": true,
             "value-key": "[RIGHT_AREA_SURFS]",
@@ -341,7 +479,25 @@
               "id": "right_area_metrics",
               "name": "right_area_metrics",
               "description": "specify right vertex area metrics to do area correction based on",
-              "command-line": ""
+              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "inputs": [
+                {
+                  "id": "current_area",
+                  "name": "current_area",
+                  "description": "a metric file with vertex areas for the current mesh",
+                  "optional": false,
+                  "value-key": "[CURRENT_AREA]",
+                  "type": "File"
+                },
+                {
+                  "id": "new_area",
+                  "name": "new_area",
+                  "description": "a metric file with vertex areas for the new mesh",
+                  "optional": false,
+                  "value-key": "[NEW_AREA]",
+                  "type": "File"
+                }
+              ]
             },
             "optional": true,
             "value-key": "[RIGHT_AREA_METRICS]",
@@ -362,8 +518,24 @@
         "id": "cerebellum_spheres",
         "name": "cerebellum_spheres",
         "description": "specify spheres for cerebellum surface resampling",
-        "command-line": " [CEREBELLUM_AREA_SURFS] [CEREBELLUM_AREA_METRICS]",
+        "command-line": " [CURRENT_SPHERE] [NEW_SPHERE] [CEREBELLUM_AREA_SURFS] [CEREBELLUM_AREA_METRICS]",
         "inputs": [
+          {
+            "id": "current_sphere",
+            "name": "current_sphere",
+            "description": "a sphere with the same mesh as the current cerebellum surface",
+            "optional": false,
+            "value-key": "[CURRENT_SPHERE]",
+            "type": "File"
+          },
+          {
+            "id": "new_sphere",
+            "name": "new_sphere",
+            "description": "a sphere with the new cerebellum mesh that is in register with the current sphere",
+            "optional": false,
+            "value-key": "[NEW_SPHERE]",
+            "type": "File"
+          },
           {
             "id": "cerebellum_area_surfs",
             "name": "cerebellum_area_surfs",
@@ -373,7 +545,25 @@
               "id": "cerebellum_area_surfs",
               "name": "cerebellum_area_surfs",
               "description": "specify cerebellum surfaces to do vertex area correction based on",
-              "command-line": ""
+              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "inputs": [
+                {
+                  "id": "current_area",
+                  "name": "current_area",
+                  "description": "a relevant cerebellum anatomical surface with current mesh",
+                  "optional": false,
+                  "value-key": "[CURRENT_AREA]",
+                  "type": "File"
+                },
+                {
+                  "id": "new_area",
+                  "name": "new_area",
+                  "description": "a relevant cerebellum anatomical surface with new mesh",
+                  "optional": false,
+                  "value-key": "[NEW_AREA]",
+                  "type": "File"
+                }
+              ]
             },
             "optional": true,
             "value-key": "[CEREBELLUM_AREA_SURFS]",
@@ -388,7 +578,25 @@
               "id": "cerebellum_area_metrics",
               "name": "cerebellum_area_metrics",
               "description": "specify cerebellum vertex area metrics to do area correction based on",
-              "command-line": ""
+              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "inputs": [
+                {
+                  "id": "current_area",
+                  "name": "current_area",
+                  "description": "a metric file with vertex areas for the current mesh",
+                  "optional": false,
+                  "value-key": "[CURRENT_AREA]",
+                  "type": "File"
+                },
+                {
+                  "id": "new_area",
+                  "name": "new_area",
+                  "description": "a metric file with vertex areas for the new mesh",
+                  "optional": false,
+                  "value-key": "[NEW_AREA]",
+                  "type": "File"
+                }
+              ]
             },
             "optional": true,
             "value-key": "[CEREBELLUM_AREA_METRICS]",

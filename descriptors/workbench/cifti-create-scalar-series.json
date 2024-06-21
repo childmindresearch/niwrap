@@ -54,7 +54,35 @@
         "id": "series",
         "name": "series",
         "description": "set the units and values of the series",
-        "command-line": ""
+        "command-line": " [UNIT] [START] [STEP]",
+        "inputs": [
+          {
+            "id": "unit",
+            "name": "unit",
+            "description": "the unit to use",
+            "optional": false,
+            "value-key": "[UNIT]",
+            "type": "String"
+          },
+          {
+            "id": "start",
+            "name": "start",
+            "description": "the value at the first series point",
+            "optional": false,
+            "value-key": "[START]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "step",
+            "name": "step",
+            "description": "the interval between series points",
+            "optional": false,
+            "value-key": "[STEP]",
+            "type": "Number",
+            "integer": false
+          }
+        ]
       },
       "optional": true,
       "value-key": "[SERIES]",

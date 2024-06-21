@@ -28,7 +28,25 @@
         "id": "volume",
         "name": "volume",
         "description": "volume component",
-        "command-line": ""
+        "command-line": " [LABEL_VOLUME] [STRUCTURE_LABEL_VOLUME]",
+        "inputs": [
+          {
+            "id": "label_volume",
+            "name": "label_volume",
+            "description": "label volume file containing the data to be copied",
+            "optional": false,
+            "value-key": "[LABEL_VOLUME]",
+            "type": "File"
+          },
+          {
+            "id": "structure_label_volume",
+            "name": "structure_label_volume",
+            "description": "label volume file that defines which voxels to use",
+            "optional": false,
+            "value-key": "[STRUCTURE_LABEL_VOLUME]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[VOLUME]",
@@ -43,8 +61,16 @@
         "id": "left_label",
         "name": "left_label",
         "description": "label file for left surface",
-        "command-line": " [OPT_ROI_LEFT_ROI_METRIC]",
+        "command-line": " [LABEL] [OPT_ROI_LEFT_ROI_METRIC]",
         "inputs": [
+          {
+            "id": "label",
+            "name": "label",
+            "description": "the label file",
+            "optional": false,
+            "value-key": "[LABEL]",
+            "type": "File"
+          },
           {
             "id": "opt_roi_left_roi_metric",
             "name": "opt_roi_left_roi_metric",
@@ -69,8 +95,16 @@
         "id": "right_label",
         "name": "right_label",
         "description": "label for left surface",
-        "command-line": " [OPT_ROI_RIGHT_ROI_METRIC]",
+        "command-line": " [LABEL] [OPT_ROI_RIGHT_ROI_METRIC]",
         "inputs": [
+          {
+            "id": "label",
+            "name": "label",
+            "description": "the label file",
+            "optional": false,
+            "value-key": "[LABEL]",
+            "type": "File"
+          },
           {
             "id": "opt_roi_right_roi_metric",
             "name": "opt_roi_right_roi_metric",
@@ -95,8 +129,16 @@
         "id": "cerebellum_label",
         "name": "cerebellum_label",
         "description": "label for the cerebellum",
-        "command-line": " [OPT_ROI_CEREBELLUM_ROI_METRIC]",
+        "command-line": " [LABEL] [OPT_ROI_CEREBELLUM_ROI_METRIC]",
         "inputs": [
+          {
+            "id": "label",
+            "name": "label",
+            "description": "the label file",
+            "optional": false,
+            "value-key": "[LABEL]",
+            "type": "File"
+          },
           {
             "id": "opt_roi_cerebellum_roi_metric",
             "name": "opt_roi_cerebellum_roi_metric",

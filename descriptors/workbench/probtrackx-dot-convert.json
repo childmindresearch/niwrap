@@ -36,7 +36,25 @@
         "id": "row_voxels",
         "name": "row_voxels",
         "description": "the output mapping along a row will be voxels",
-        "command-line": ""
+        "command-line": " [VOXEL_LIST_FILE] [LABEL_VOL]",
+        "inputs": [
+          {
+            "id": "voxel_list_file",
+            "name": "voxel_list_file",
+            "description": "a text file containing IJK indices for the voxels used",
+            "optional": false,
+            "value-key": "[VOXEL_LIST_FILE]",
+            "type": "String"
+          },
+          {
+            "id": "label_vol",
+            "name": "label_vol",
+            "description": "a label volume with the dimensions and sform used, with structure labels",
+            "optional": false,
+            "value-key": "[LABEL_VOL]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[ROW_VOXELS]",
@@ -60,7 +78,25 @@
         "id": "row_cifti",
         "name": "row_cifti",
         "description": "take the mapping along a row from a cifti file",
-        "command-line": ""
+        "command-line": " [CIFTI] [DIRECTION]",
+        "inputs": [
+          {
+            "id": "cifti",
+            "name": "cifti",
+            "description": "the cifti file to take the mapping from",
+            "optional": false,
+            "value-key": "[CIFTI]",
+            "type": "File"
+          },
+          {
+            "id": "direction",
+            "name": "direction",
+            "description": "which dimension to take the mapping along, ROW or COLUMN",
+            "optional": false,
+            "value-key": "[DIRECTION]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[ROW_CIFTI]",
@@ -75,7 +111,25 @@
         "id": "col_voxels",
         "name": "col_voxels",
         "description": "the output mapping along a column will be voxels",
-        "command-line": ""
+        "command-line": " [VOXEL_LIST_FILE] [LABEL_VOL]",
+        "inputs": [
+          {
+            "id": "voxel_list_file",
+            "name": "voxel_list_file",
+            "description": "a text file containing IJK indices for the voxels used",
+            "optional": false,
+            "value-key": "[VOXEL_LIST_FILE]",
+            "type": "String"
+          },
+          {
+            "id": "label_vol",
+            "name": "label_vol",
+            "description": "a label volume with the dimensions and sform used, with structure labels",
+            "optional": false,
+            "value-key": "[LABEL_VOL]",
+            "type": "File"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[COL_VOXELS]",
@@ -99,7 +153,25 @@
         "id": "col_cifti",
         "name": "col_cifti",
         "description": "take the mapping along a column from a cifti file",
-        "command-line": ""
+        "command-line": " [CIFTI] [DIRECTION]",
+        "inputs": [
+          {
+            "id": "cifti",
+            "name": "cifti",
+            "description": "the cifti file to take the mapping from",
+            "optional": false,
+            "value-key": "[CIFTI]",
+            "type": "File"
+          },
+          {
+            "id": "direction",
+            "name": "direction",
+            "description": "which dimension to take the mapping along, ROW or COLUMN",
+            "optional": false,
+            "value-key": "[DIRECTION]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[COL_CIFTI]",

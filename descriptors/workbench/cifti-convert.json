@@ -20,7 +20,25 @@
         "id": "to_gifti_ext",
         "name": "to_gifti_ext",
         "description": "convert to GIFTI external binary",
-        "command-line": ""
+        "command-line": " [CIFTI_IN] [GIFTI_OUT]",
+        "inputs": [
+          {
+            "id": "cifti_in",
+            "name": "cifti_in",
+            "description": "the input cifti file",
+            "optional": false,
+            "value-key": "[CIFTI_IN]",
+            "type": "File"
+          },
+          {
+            "id": "gifti_out",
+            "name": "gifti_out",
+            "description": "output - the output gifti file",
+            "optional": false,
+            "value-key": "[GIFTI_OUT]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[TO_GIFTI_EXT]",
@@ -35,8 +53,16 @@
         "id": "from_gifti_ext",
         "name": "from_gifti_ext",
         "description": "convert a GIFTI made with this command back into a CIFTI",
-        "command-line": " [CIFTI_OUT] [RESET_TIMEPOINTS] [OPT_RESET_SCALARS] [OPT_COLUMN_RESET_SCALARS] [REPLACE_BINARY]",
+        "command-line": " [GIFTI_IN] [CIFTI_OUT] [RESET_TIMEPOINTS] [OPT_RESET_SCALARS] [OPT_COLUMN_RESET_SCALARS] [REPLACE_BINARY]",
         "inputs": [
+          {
+            "id": "gifti_in",
+            "name": "gifti_in",
+            "description": "the input gifti file",
+            "optional": false,
+            "value-key": "[GIFTI_IN]",
+            "type": "String"
+          },
           {
             "id": "cifti_out",
             "name": "cifti_out",
@@ -54,8 +80,26 @@
               "id": "reset_timepoints",
               "name": "reset_timepoints",
               "description": "reset the mapping along rows to timepoints, taking length from the gifti file",
-              "command-line": " [OPT_UNIT_UNIT]",
+              "command-line": " [TIMESTEP] [TIMESTART] [OPT_UNIT_UNIT]",
               "inputs": [
+                {
+                  "id": "timestep",
+                  "name": "timestep",
+                  "description": "the desired time between frames",
+                  "optional": false,
+                  "value-key": "[TIMESTEP]",
+                  "type": "Number",
+                  "integer": false
+                },
+                {
+                  "id": "timestart",
+                  "name": "timestart",
+                  "description": "the desired time offset of the initial frame",
+                  "optional": false,
+                  "value-key": "[TIMESTART]",
+                  "type": "Number",
+                  "integer": false
+                },
                 {
                   "id": "opt_unit_unit",
                   "name": "opt_unit_unit",
@@ -98,8 +142,16 @@
               "id": "replace_binary",
               "name": "replace_binary",
               "description": "replace data with a binary file",
-              "command-line": " [OPT_FLIP_ENDIAN] [OPT_TRANSPOSE]",
+              "command-line": " [BINARY_IN] [OPT_FLIP_ENDIAN] [OPT_TRANSPOSE]",
               "inputs": [
+                {
+                  "id": "binary_in",
+                  "name": "binary_in",
+                  "description": "the binary file that contains replacement data",
+                  "optional": false,
+                  "value-key": "[BINARY_IN]",
+                  "type": "String"
+                },
                 {
                   "id": "opt_flip_endian",
                   "name": "opt_flip_endian",
@@ -148,8 +200,16 @@
         "id": "to_nifti",
         "name": "to_nifti",
         "description": "convert to NIFTI1",
-        "command-line": " [NIFTI_OUT] [OPT_SMALLER_FILE] [OPT_SMALLER_DIMS]",
+        "command-line": " [CIFTI_IN] [NIFTI_OUT] [OPT_SMALLER_FILE] [OPT_SMALLER_DIMS]",
         "inputs": [
+          {
+            "id": "cifti_in",
+            "name": "cifti_in",
+            "description": "the input cifti file",
+            "optional": false,
+            "value-key": "[CIFTI_IN]",
+            "type": "File"
+          },
           {
             "id": "nifti_out",
             "name": "nifti_out",
@@ -200,8 +260,24 @@
         "id": "from_nifti",
         "name": "from_nifti",
         "description": "convert a NIFTI (1 or 2) file made with this command back into CIFTI",
-        "command-line": " [CIFTI_OUT] [RESET_TIMEPOINTS] [OPT_RESET_SCALARS]",
+        "command-line": " [NIFTI_IN] [CIFTI_TEMPLATE] [CIFTI_OUT] [RESET_TIMEPOINTS] [OPT_RESET_SCALARS]",
         "inputs": [
+          {
+            "id": "nifti_in",
+            "name": "nifti_in",
+            "description": "the input nifti file",
+            "optional": false,
+            "value-key": "[NIFTI_IN]",
+            "type": "File"
+          },
+          {
+            "id": "cifti_template",
+            "name": "cifti_template",
+            "description": "a cifti file with the dimension(s) and mapping(s) that should be used",
+            "optional": false,
+            "value-key": "[CIFTI_TEMPLATE]",
+            "type": "File"
+          },
           {
             "id": "cifti_out",
             "name": "cifti_out",
@@ -219,8 +295,26 @@
               "id": "reset_timepoints",
               "name": "reset_timepoints",
               "description": "reset the mapping along rows to timepoints, taking length from the nifti file",
-              "command-line": " [OPT_UNIT_UNIT]",
+              "command-line": " [TIMESTEP] [TIMESTART] [OPT_UNIT_UNIT]",
               "inputs": [
+                {
+                  "id": "timestep",
+                  "name": "timestep",
+                  "description": "the desired time between frames",
+                  "optional": false,
+                  "value-key": "[TIMESTEP]",
+                  "type": "Number",
+                  "integer": false
+                },
+                {
+                  "id": "timestart",
+                  "name": "timestart",
+                  "description": "the desired time offset of the initial frame",
+                  "optional": false,
+                  "value-key": "[TIMESTART]",
+                  "type": "Number",
+                  "integer": false
+                },
                 {
                   "id": "opt_unit_unit",
                   "name": "opt_unit_unit",
@@ -269,8 +363,24 @@
         "id": "to_text",
         "name": "to_text",
         "description": "convert to a plain text file",
-        "command-line": " [OPT_COL_DELIM_DELIM_STRING]",
+        "command-line": " [CIFTI_IN] [TEXT_OUT] [OPT_COL_DELIM_DELIM_STRING]",
         "inputs": [
+          {
+            "id": "cifti_in",
+            "name": "cifti_in",
+            "description": "the input cifti file",
+            "optional": false,
+            "value-key": "[CIFTI_IN]",
+            "type": "File"
+          },
+          {
+            "id": "text_out",
+            "name": "text_out",
+            "description": "output - the output text file",
+            "optional": false,
+            "value-key": "[TEXT_OUT]",
+            "type": "String"
+          },
           {
             "id": "opt_col_delim_delim_string",
             "name": "opt_col_delim_delim_string",
@@ -295,8 +405,24 @@
         "id": "from_text",
         "name": "from_text",
         "description": "convert from plain text to cifti",
-        "command-line": " [CIFTI_OUT] [OPT_COL_DELIM_DELIM_STRING] [RESET_TIMEPOINTS] [OPT_RESET_SCALARS]",
+        "command-line": " [TEXT_IN] [CIFTI_TEMPLATE] [CIFTI_OUT] [OPT_COL_DELIM_DELIM_STRING] [RESET_TIMEPOINTS] [OPT_RESET_SCALARS]",
         "inputs": [
+          {
+            "id": "text_in",
+            "name": "text_in",
+            "description": "the input text file",
+            "optional": false,
+            "value-key": "[TEXT_IN]",
+            "type": "String"
+          },
+          {
+            "id": "cifti_template",
+            "name": "cifti_template",
+            "description": "a cifti file with the dimension(s) and mapping(s) that should be used",
+            "optional": false,
+            "value-key": "[CIFTI_TEMPLATE]",
+            "type": "File"
+          },
           {
             "id": "cifti_out",
             "name": "cifti_out",
@@ -323,8 +449,26 @@
               "id": "reset_timepoints",
               "name": "reset_timepoints",
               "description": "reset the mapping along rows to timepoints, taking length from the text file",
-              "command-line": " [OPT_UNIT_UNIT]",
+              "command-line": " [TIMESTEP] [TIMESTART] [OPT_UNIT_UNIT]",
               "inputs": [
+                {
+                  "id": "timestep",
+                  "name": "timestep",
+                  "description": "the desired time between frames",
+                  "optional": false,
+                  "value-key": "[TIMESTEP]",
+                  "type": "Number",
+                  "integer": false
+                },
+                {
+                  "id": "timestart",
+                  "name": "timestart",
+                  "description": "the desired time offset of the initial frame",
+                  "optional": false,
+                  "value-key": "[TIMESTART]",
+                  "type": "Number",
+                  "integer": false
+                },
                 {
                   "id": "opt_unit_unit",
                   "name": "opt_unit_unit",

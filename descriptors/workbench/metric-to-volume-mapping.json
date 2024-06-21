@@ -62,8 +62,24 @@
         "id": "ribbon_constrained",
         "name": "ribbon_constrained",
         "description": "use ribbon constrained mapping algorithm",
-        "command-line": " [OPT_VOXEL_SUBDIV_SUBDIV_NUM] [OPT_GREEDY] [OPT_THICK_COLUMNS]",
+        "command-line": " [INNER_SURF] [OUTER_SURF] [OPT_VOXEL_SUBDIV_SUBDIV_NUM] [OPT_GREEDY] [OPT_THICK_COLUMNS]",
         "inputs": [
+          {
+            "id": "inner_surf",
+            "name": "inner_surf",
+            "description": "the inner surface of the ribbon",
+            "optional": false,
+            "value-key": "[INNER_SURF]",
+            "type": "File"
+          },
+          {
+            "id": "outer_surf",
+            "name": "outer_surf",
+            "description": "the outer surface of the ribbon",
+            "optional": false,
+            "value-key": "[OUTER_SURF]",
+            "type": "File"
+          },
           {
             "id": "opt_voxel_subdiv_subdiv_num",
             "name": "opt_voxel_subdiv_subdiv_num",

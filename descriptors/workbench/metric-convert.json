@@ -20,8 +20,16 @@
         "id": "to_nifti",
         "name": "to_nifti",
         "description": "convert metric to nifti",
-        "command-line": " [NIFTI_OUT]",
+        "command-line": " [METRIC_IN] [NIFTI_OUT]",
         "inputs": [
+          {
+            "id": "metric_in",
+            "name": "metric_in",
+            "description": "the metric to convert",
+            "optional": false,
+            "value-key": "[METRIC_IN]",
+            "type": "File"
+          },
           {
             "id": "nifti_out",
             "name": "nifti_out",
@@ -54,8 +62,24 @@
         "id": "from_nifti",
         "name": "from_nifti",
         "description": "convert nifti to metric",
-        "command-line": " [METRIC_OUT]",
+        "command-line": " [NIFTI_IN] [SURFACE_IN] [METRIC_OUT]",
         "inputs": [
+          {
+            "id": "nifti_in",
+            "name": "nifti_in",
+            "description": "the nifti file to convert",
+            "optional": false,
+            "value-key": "[NIFTI_IN]",
+            "type": "File"
+          },
+          {
+            "id": "surface_in",
+            "name": "surface_in",
+            "description": "surface file to use number of vertices and structure from",
+            "optional": false,
+            "value-key": "[SURFACE_IN]",
+            "type": "File"
+          },
           {
             "id": "metric_out",
             "name": "metric_out",

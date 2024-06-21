@@ -62,7 +62,27 @@
         "id": "size_width_height",
         "name": "size_width_height",
         "description": "Width and height for output image",
-        "command-line": ""
+        "command-line": " [WIDTH] [HEIGHT]",
+        "inputs": [
+          {
+            "id": "width",
+            "name": "width",
+            "description": "Width for output image",
+            "optional": false,
+            "value-key": "[WIDTH]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "height",
+            "name": "height",
+            "description": "Height for output image",
+            "optional": false,
+            "value-key": "[HEIGHT]",
+            "type": "Number",
+            "integer": false
+          }
+        ]
       },
       "optional": true,
       "value-key": "[SIZE_WIDTH_HEIGHT]",
@@ -106,7 +126,26 @@
         "id": "resolution",
         "name": "resolution",
         "description": "Image resolution (number pixels per size unit)\n      Default is 300 PIXELS_PER_INCH",
-        "command-line": ""
+        "command-line": " [NUMBER_OF_PIXELS] [UNITS_NAME]",
+        "inputs": [
+          {
+            "id": "number_of_pixels",
+            "name": "number_of_pixels",
+            "description": "number of pixels",
+            "optional": false,
+            "value-key": "[NUMBER_OF_PIXELS]",
+            "type": "Number",
+            "integer": false
+          },
+          {
+            "id": "units_name",
+            "name": "units_name",
+            "description": "Name of resolution units.  Valid resolution unit names are:\n   PIXELS_PER_INCH\n   PIXELS_PER_CENTIMETER\n   PIXELS_PER_METER\n   PIXELS_PER_MILLIMETER\n",
+            "optional": false,
+            "value-key": "[UNITS_NAME]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[RESOLUTION]",
@@ -140,7 +179,26 @@
         "id": "set_map_yoke",
         "name": "set_map_yoke",
         "description": "Override selected map index for a map yoking group.",
-        "command-line": ""
+        "command-line": " [MAP_YOKING_ROMAN_NUMERAL] [MAP_UNDEX]",
+        "inputs": [
+          {
+            "id": "map_yoking_roman_numeral",
+            "name": "map_yoking_roman_numeral",
+            "description": "Roman numeral identifying the map yoking group (I, II, III, IV, V, VI, VII, VIII, IX, X)",
+            "optional": false,
+            "value-key": "[MAP_YOKING_ROMAN_NUMERAL]",
+            "type": "String"
+          },
+          {
+            "id": "map_undex",
+            "name": "map_undex",
+            "description": "Map index for yoking group.  Indices start at 1 (one)",
+            "optional": false,
+            "value-key": "[MAP_UNDEX]",
+            "type": "Number",
+            "integer": true
+          }
+        ]
       },
       "optional": true,
       "value-key": "[SET_MAP_YOKE]",
@@ -155,7 +213,25 @@
         "id": "conn_db_login",
         "name": "conn_db_login",
         "description": "Login for scenes with files in Connectome Database.  If this option is not specified, the login and password stored in the user's preferences is used.",
-        "command-line": ""
+        "command-line": " [USERNAME] [PASSWORD]",
+        "inputs": [
+          {
+            "id": "username",
+            "name": "username",
+            "description": "Connectome DB Username",
+            "optional": false,
+            "value-key": "[USERNAME]",
+            "type": "String"
+          },
+          {
+            "id": "password",
+            "name": "password",
+            "description": "Connectome DB Password",
+            "optional": false,
+            "value-key": "[PASSWORD]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[CONN_DB_LOGIN]",

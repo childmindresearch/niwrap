@@ -36,7 +36,17 @@
         "id": "wbsparse",
         "name": "wbsparse",
         "description": "specify an input wbsparse file",
-        "command-line": ""
+        "command-line": " [WBSPARSE_IN]",
+        "inputs": [
+          {
+            "id": "wbsparse_in",
+            "name": "wbsparse_in",
+            "description": "a wbsparse file to merge",
+            "optional": false,
+            "value-key": "[WBSPARSE_IN]",
+            "type": "String"
+          }
+        ]
       },
       "optional": true,
       "value-key": "[WBSPARSE]",
