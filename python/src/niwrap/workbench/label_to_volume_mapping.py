@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABEL_TO_VOLUME_MAPPING_METADATA = Metadata(
-    id="04fcefafccf6525707a297764c2afa8756687f20",
+    id="be7301aed515011ae367368ddd9636d55c4a96b8",
     name="label-to-volume-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class LabelToVolumeMappingRibbonConstrained:
     """
     use ribbon constrained mapping algorithm
     """
+    inner_surf: InputPathType
+    """the inner surface of the ribbon"""
+    outer_surf: InputPathType
+    """the outer surface of the ribbon"""
     opt_voxel_subdiv_subdiv_num: int | None = None
     """voxel divisions while estimating voxel weights: number of subdivisions,
     default 3"""
@@ -42,6 +46,8 @@ class LabelToVolumeMappingRibbonConstrained:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.inner_surf))
+        cargs.append(execution.input_file(self.outer_surf))
         if self.opt_voxel_subdiv_subdiv_num is not None:
             cargs.extend(["-voxel-subdiv", str(self.opt_voxel_subdiv_subdiv_num)])
         if self.opt_greedy:

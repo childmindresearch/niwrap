@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_EXPORT_DENSE_MAPPING_METADATA = Metadata(
-    id="3001679d03f0681e190efc2cf5ff83e97efdef32",
+    id="4235da653c90ba252988a7ea5520b6d1eca024b7",
     name="cifti-export-dense-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class CiftiExportDenseMappingVolumeAll:
     """
     export the the mapping of all voxels
     """
+    text_out: str
+    """output - the output text file"""
     opt_no_cifti_index: bool = False
     """don't write the cifti index in the output file"""
     opt_structure: bool = False
@@ -38,6 +40,7 @@ class CiftiExportDenseMappingVolumeAll:
             
         """
         cargs = []
+        cargs.append(self.text_out)
         if self.opt_no_cifti_index:
             cargs.append("-no-cifti-index")
         if self.opt_structure:
@@ -50,6 +53,10 @@ class CiftiExportDenseMappingSurface:
     """
     export the the mapping of one surface structure
     """
+    structure: str
+    """the structure to output"""
+    text_out: str
+    """output - the output text file"""
     opt_no_cifti_index: bool = False
     """don't write the cifti index in the output file"""
     
@@ -67,6 +74,8 @@ class CiftiExportDenseMappingSurface:
             
         """
         cargs = []
+        cargs.append(self.structure)
+        cargs.append(self.text_out)
         if self.opt_no_cifti_index:
             cargs.append("-no-cifti-index")
         return cargs
@@ -77,6 +86,10 @@ class CiftiExportDenseMappingVolume:
     """
     export the the mapping of one volume structure
     """
+    structure: str
+    """the structure to output"""
+    text_out: str
+    """output - the output text file"""
     opt_no_cifti_index: bool = False
     """don't write the cifti index in the output file"""
     
@@ -94,6 +107,8 @@ class CiftiExportDenseMappingVolume:
             
         """
         cargs = []
+        cargs.append(self.structure)
+        cargs.append(self.text_out)
         if self.opt_no_cifti_index:
             cargs.append("-no-cifti-index")
         return cargs

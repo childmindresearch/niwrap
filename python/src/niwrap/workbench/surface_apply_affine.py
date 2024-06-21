@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SURFACE_APPLY_AFFINE_METADATA = Metadata(
-    id="b2ebc07fdd3f70f15be8dd2c0ce7bdd445eb3705",
+    id="bdcb73baf973fcd16b087ffa4996fcfa5d9f0d26",
     name="surface-apply-affine",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class SurfaceApplyAffineFlirt:
     """
     MUST be used if affine is a flirt affine
     """
+    source_volume: str
+    """the source volume used when generating the affine"""
+    target_volume: str
+    """the target volume used when generating the affine"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class SurfaceApplyAffineFlirt:
             
         """
         cargs = []
+        cargs.append(self.source_volume)
+        cargs.append(self.target_volume)
         return cargs
 
 

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SET_MAP_NAMES_METADATA = Metadata(
-    id="564bae9e86701df79e5834a7280f70b167c46077",
+    id="ac8dc0e0f0c553da4ad6f116f12e232d24580490",
     name="set-map-names",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class SetMapNamesMap:
     """
     specify a map to set the name of
     """
+    index: int
+    """the map index to change the name of"""
+    new_name: str
+    """the name to set for the map"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class SetMapNamesMap:
             
         """
         cargs = []
+        cargs.append(str(self.index))
+        cargs.append(self.new_name)
         return cargs
 
 

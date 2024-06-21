@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_ESTIMATE_FWHM_METADATA = Metadata(
-    id="8388bbd20b07c1939bdb1881e6b30160ddde3898",
+    id="d0492f4d9b38de10d8d5e589cf53d73c874e7ad3",
     name="cifti-estimate-fwhm",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class CiftiEstimateFwhmSurface:
     """
     specify an input surface
     """
+    structure: str
+    """what structure to use this surface for"""
+    surface_: InputPathType
+    """the surface file"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class CiftiEstimateFwhmSurface:
             
         """
         cargs = []
+        cargs.append(self.structure)
+        cargs.append(execution.input_file(self.surface_))
         return cargs
 
 

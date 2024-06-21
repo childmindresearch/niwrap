@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_EXTREMA_METADATA = Metadata(
-    id="3f705964007e3ba8162fb9d53e43607650be8412",
+    id="3df21c57f1e096a9d45518970a3c3c2d5472334b",
     name="cifti-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class CiftiExtremaThreshold:
     """
     ignore small extrema
     """
+    low: float | int
+    """the largest value to consider for being a minimum"""
+    high: float | int
+    """the smallest value to consider for being a maximum"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class CiftiExtremaThreshold:
             
         """
         cargs = []
+        cargs.append(str(self.low))
+        cargs.append(str(self.high))
         return cargs
 
 

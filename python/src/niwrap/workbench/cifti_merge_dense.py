@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_MERGE_DENSE_METADATA = Metadata(
-    id="d78106e9be3ae37f76e68fba18dfc0e0ea3c28bb",
+    id="bd8b1472ee670b2c438438dc2d0b5f9b9d153905",
     name="cifti-merge-dense",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class CiftiMergeDenseCifti:
     """
     specify an input cifti file
     """
+    cifti_in: InputPathType
+    """a cifti file to merge"""
     
     def run(
         self,
@@ -34,6 +36,7 @@ class CiftiMergeDenseCifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_in))
         return cargs
 
 

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_REGRESSION_METADATA = Metadata(
-    id="743363990e085cc8ef967271e0bdde3ccf711d13",
+    id="61c1c8cf03b5376c8c7d565c0de7ab0cd763ddac",
     name="metric-regression",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class MetricRegressionRemove:
     """
     specify a metric to regress out
     """
+    metric: InputPathType
+    """the metric file to use"""
     opt_remove_column_column: str | None = None
     """select a column to use, rather than all: the column number or name"""
     
@@ -36,6 +38,7 @@ class MetricRegressionRemove:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.metric))
         if self.opt_remove_column_column is not None:
             cargs.extend(["-remove-column", self.opt_remove_column_column])
         return cargs
@@ -46,6 +49,8 @@ class MetricRegressionKeep:
     """
     specify a metric to include in regression, but not remove
     """
+    metric: InputPathType
+    """the metric file to use"""
     opt_keep_column_column: str | None = None
     """select a column to use, rather than all: the column number or name"""
     
@@ -63,6 +68,7 @@ class MetricRegressionKeep:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.metric))
         if self.opt_keep_column_column is not None:
             cargs.extend(["-keep-column", self.opt_keep_column_column])
         return cargs

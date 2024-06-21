@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 ANNOTATION_RESAMPLE_METADATA = Metadata(
-    id="004ad055b2d3072224ec7561cee0be5f53d98235",
+    id="267ea7b4119aeb12fe6426d300f098d0b2d69e66",
     name="annotation-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,11 @@ class AnnotationResampleSurfacePair:
     """
     pair of surfaces for resampling surface annotations for one structure
     """
+    source_surface: InputPathType
+    """the midthickness surface of the current mesh the annotations use"""
+    target_surface: InputPathType
+    """the midthickness surface of the mesh the annotations should be
+    transferred to"""
     
     def run(
         self,
@@ -34,6 +39,8 @@ class AnnotationResampleSurfacePair:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.source_surface))
+        cargs.append(execution.input_file(self.target_surface))
         return cargs
 
 

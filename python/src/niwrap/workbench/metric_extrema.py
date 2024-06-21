@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_EXTREMA_METADATA = Metadata(
-    id="f8bd1aa1548da40abd02e6ddad8926d4899f80c7",
+    id="d09f80f4bac85e4e7f616495fc74318c076681c6",
     name="metric-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class MetricExtremaPresmooth:
     """
     smooth the metric before finding extrema
     """
+    kernel: float | int
+    """the size of the gaussian smoothing kernel in mm, as sigma by default"""
     opt_fwhm: bool = False
     """kernel size is FWHM, not sigma"""
     
@@ -36,6 +38,7 @@ class MetricExtremaPresmooth:
             
         """
         cargs = []
+        cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
         return cargs
@@ -46,6 +49,10 @@ class MetricExtremaThreshold:
     """
     ignore small extrema
     """
+    low: float | int
+    """the largest value to consider for being a minimum"""
+    high: float | int
+    """the smallest value to consider for being a maximum"""
     
     def run(
         self,
@@ -61,6 +68,8 @@ class MetricExtremaThreshold:
             
         """
         cargs = []
+        cargs.append(str(self.low))
+        cargs.append(str(self.high))
         return cargs
 
 

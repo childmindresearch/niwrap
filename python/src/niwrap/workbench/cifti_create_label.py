@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_LABEL_METADATA = Metadata(
-    id="0afb731c477ef6b2e637638972fd28d69d2ce20f",
+    id="eb566bf23582013c03c0af76dfd4bc0f97ba176d",
     name="cifti-create-label",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class CiftiCreateLabelVolume:
     """
     volume component
     """
+    label_volume: InputPathType
+    """label volume file containing the data to be copied"""
+    structure_label_volume: InputPathType
+    """label volume file that defines which voxels to use"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class CiftiCreateLabelVolume:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.label_volume))
+        cargs.append(execution.input_file(self.structure_label_volume))
         return cargs
 
 
@@ -42,6 +48,8 @@ class CiftiCreateLabelLeftLabel:
     """
     label file for left surface
     """
+    label: InputPathType
+    """the label file"""
     opt_roi_left_roi_metric: InputPathType | None = None
     """roi of vertices to use from left surface: the ROI as a metric file"""
     
@@ -59,6 +67,7 @@ class CiftiCreateLabelLeftLabel:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.label))
         if self.opt_roi_left_roi_metric is not None:
             cargs.extend(["-roi-left", execution.input_file(self.opt_roi_left_roi_metric)])
         return cargs
@@ -69,6 +78,8 @@ class CiftiCreateLabelRightLabel:
     """
     label for left surface
     """
+    label: InputPathType
+    """the label file"""
     opt_roi_right_roi_metric: InputPathType | None = None
     """roi of vertices to use from right surface: the ROI as a metric file"""
     
@@ -86,6 +97,7 @@ class CiftiCreateLabelRightLabel:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.label))
         if self.opt_roi_right_roi_metric is not None:
             cargs.extend(["-roi-right", execution.input_file(self.opt_roi_right_roi_metric)])
         return cargs
@@ -96,6 +108,8 @@ class CiftiCreateLabelCerebellumLabel:
     """
     label for the cerebellum
     """
+    label: InputPathType
+    """the label file"""
     opt_roi_cerebellum_roi_metric: InputPathType | None = None
     """roi of vertices to use from right surface: the ROI as a metric file"""
     
@@ -113,6 +127,7 @@ class CiftiCreateLabelCerebellumLabel:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.label))
         if self.opt_roi_cerebellum_roi_metric is not None:
             cargs.extend(["-roi-cerebellum", execution.input_file(self.opt_roi_cerebellum_roi_metric)])
         return cargs

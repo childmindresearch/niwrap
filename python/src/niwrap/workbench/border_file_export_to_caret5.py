@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 BORDER_FILE_EXPORT_TO_CARET5_METADATA = Metadata(
-    id="d49066b295e970db8e3b06d6f5452e49ba067e23",
+    id="1d070b7205d7fd68f003efaa045b2d74fcef7973",
     name="border-file-export-to-caret5",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class BorderFileExportToCaret5Surface:
     """
     specify an input surface
     """
+    surface_in: InputPathType
+    """a surface file for unprojection of borders"""
     
     def run(
         self,
@@ -34,6 +36,7 @@ class BorderFileExportToCaret5Surface:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface_in))
         return cargs
 
 

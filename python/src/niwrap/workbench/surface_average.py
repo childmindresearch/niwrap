@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SURFACE_AVERAGE_METADATA = Metadata(
-    id="98f438cc476f86c25766a0eba51a0fc2105a5bcf",
+    id="826f32a79c3176c6569d2d224ed402dcf0b28755",
     name="surface-average",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class SurfaceAverageSurf:
     """
     specify a surface to include in the average
     """
+    surface: InputPathType
+    """a surface file to average"""
     opt_weight_weight: float | int | None = None
     """specify a weighted average: the weight to use (default 1)"""
     
@@ -36,6 +38,7 @@ class SurfaceAverageSurf:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface))
         if self.opt_weight_weight is not None:
             cargs.extend(["-weight", str(self.opt_weight_weight)])
         return cargs

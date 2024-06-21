@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CONVERT_METADATA = Metadata(
-    id="54dd9c58ecf9499b7fc53b46eb368125bedb9e65",
+    id="5b3c68d51c69a7f9b9e1d7743f029e5e56ee625c",
     name="cifti-convert",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class CiftiConvertToGiftiExt:
     """
     convert to GIFTI external binary
     """
+    cifti_in: InputPathType
+    """the input cifti file"""
+    gifti_out: str
+    """output - the output gifti file"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class CiftiConvertToGiftiExt:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_in))
+        cargs.append(self.gifti_out)
         return cargs
 
 
@@ -42,6 +48,10 @@ class CiftiConvertResetTimepoints:
     """
     reset the mapping along rows to timepoints, taking length from the gifti file
     """
+    timestep: float | int
+    """the desired time between frames"""
+    timestart: float | int
+    """the desired time offset of the initial frame"""
     opt_unit_unit: str | None = None
     """use a unit other than time: unit identifier (default SECOND)"""
     
@@ -59,6 +69,8 @@ class CiftiConvertResetTimepoints:
             
         """
         cargs = []
+        cargs.append(str(self.timestep))
+        cargs.append(str(self.timestart))
         if self.opt_unit_unit is not None:
             cargs.extend(["-unit", self.opt_unit_unit])
         return cargs
@@ -69,6 +81,8 @@ class CiftiConvertReplaceBinary:
     """
     replace data with a binary file
     """
+    binary_in: str
+    """the binary file that contains replacement data"""
     opt_flip_endian: bool = False
     """byteswap the binary file"""
     opt_transpose: bool = False
@@ -88,6 +102,7 @@ class CiftiConvertReplaceBinary:
             
         """
         cargs = []
+        cargs.append(self.binary_in)
         if self.opt_flip_endian:
             cargs.append("-flip-endian")
         if self.opt_transpose:
@@ -110,6 +125,8 @@ class CiftiConvertFromGiftiExt:
     """
     convert a GIFTI made with this command back into a CIFTI
     """
+    gifti_in: str
+    """the input gifti file"""
     cifti_out: InputPathType
     """the output cifti file"""
     reset_timepoints: CiftiConvertResetTimepoints | None = None
@@ -137,6 +154,7 @@ class CiftiConvertFromGiftiExt:
             
         """
         cargs = []
+        cargs.append(self.gifti_in)
         cargs.append(execution.input_file(self.cifti_out))
         if self.reset_timepoints is not None:
             cargs.extend(["-reset-timepoints", *self.reset_timepoints.run(execution)])
@@ -183,6 +201,8 @@ class CiftiConvertToNifti:
     """
     convert to NIFTI1
     """
+    cifti_in: InputPathType
+    """the input cifti file"""
     nifti_out: InputPathType
     """the output nifti file"""
     opt_smaller_file: bool = False
@@ -205,6 +225,7 @@ class CiftiConvertToNifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_in))
         cargs.append(execution.input_file(self.nifti_out))
         if self.opt_smaller_file:
             cargs.append("-smaller-file")
@@ -237,6 +258,10 @@ class CiftiConvertResetTimepoints_:
     """
     reset the mapping along rows to timepoints, taking length from the nifti file
     """
+    timestep: float | int
+    """the desired time between frames"""
+    timestart: float | int
+    """the desired time offset of the initial frame"""
     opt_unit_unit: str | None = None
     """use a unit other than time: unit identifier (default SECOND)"""
     
@@ -254,6 +279,8 @@ class CiftiConvertResetTimepoints_:
             
         """
         cargs = []
+        cargs.append(str(self.timestep))
+        cargs.append(str(self.timestart))
         if self.opt_unit_unit is not None:
             cargs.extend(["-unit", self.opt_unit_unit])
         return cargs
@@ -274,6 +301,10 @@ class CiftiConvertFromNifti:
     """
     convert a NIFTI (1 or 2) file made with this command back into CIFTI
     """
+    nifti_in: InputPathType
+    """the input nifti file"""
+    cifti_template: InputPathType
+    """a cifti file with the dimension(s) and mapping(s) that should be used"""
     cifti_out: InputPathType
     """the output cifti file"""
     reset_timepoints: CiftiConvertResetTimepoints_ | None = None
@@ -296,6 +327,8 @@ class CiftiConvertFromNifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.nifti_in))
+        cargs.append(execution.input_file(self.cifti_template))
         cargs.append(execution.input_file(self.cifti_out))
         if self.reset_timepoints is not None:
             cargs.extend(["-reset-timepoints", *self.reset_timepoints.run(execution)])
@@ -328,6 +361,10 @@ class CiftiConvertToText:
     """
     convert to a plain text file
     """
+    cifti_in: InputPathType
+    """the input cifti file"""
+    text_out: str
+    """output - the output text file"""
     opt_col_delim_delim_string: str | None = None
     """choose string to put between elements in a row: the string to use
     (default is a tab character)"""
@@ -346,6 +383,8 @@ class CiftiConvertToText:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_in))
+        cargs.append(self.text_out)
         if self.opt_col_delim_delim_string is not None:
             cargs.extend(["-col-delim", self.opt_col_delim_delim_string])
         return cargs
@@ -356,6 +395,10 @@ class CiftiConvertResetTimepoints_2:
     """
     reset the mapping along rows to timepoints, taking length from the text file
     """
+    timestep: float | int
+    """the desired time between frames"""
+    timestart: float | int
+    """the desired time offset of the initial frame"""
     opt_unit_unit: str | None = None
     """use a unit other than time: unit identifier (default SECOND)"""
     
@@ -373,6 +416,8 @@ class CiftiConvertResetTimepoints_2:
             
         """
         cargs = []
+        cargs.append(str(self.timestep))
+        cargs.append(str(self.timestart))
         if self.opt_unit_unit is not None:
             cargs.extend(["-unit", self.opt_unit_unit])
         return cargs
@@ -393,6 +438,10 @@ class CiftiConvertFromText:
     """
     convert from plain text to cifti
     """
+    text_in: str
+    """the input text file"""
+    cifti_template: InputPathType
+    """a cifti file with the dimension(s) and mapping(s) that should be used"""
     cifti_out: InputPathType
     """the output cifti file"""
     opt_col_delim_delim_string: str | None = None
@@ -418,6 +467,8 @@ class CiftiConvertFromText:
             
         """
         cargs = []
+        cargs.append(self.text_in)
+        cargs.append(execution.input_file(self.cifti_template))
         cargs.append(execution.input_file(self.cifti_out))
         if self.opt_col_delim_delim_string is not None:
             cargs.extend(["-col-delim", self.opt_col_delim_delim_string])

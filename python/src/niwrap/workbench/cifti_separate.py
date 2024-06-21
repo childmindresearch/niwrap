@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_SEPARATE_METADATA = Metadata(
-    id="e9badfe1e47d0bc56af787769753d71bb546d660",
+    id="ba216e0552364ceb64d66b096e8868eb54e745e7",
     name="cifti-separate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -111,6 +111,8 @@ class CiftiSeparateLabel:
     """
     separate a surface model into a surface label file
     """
+    structure: str
+    """the structure to output"""
     label_out: InputPathType
     """the output label file"""
     roi_out: InputPathType
@@ -132,6 +134,7 @@ class CiftiSeparateLabel:
             
         """
         cargs = []
+        cargs.append(self.structure)
         cargs.append(execution.input_file(self.label_out))
         if self.opt_roi:
             cargs.append("-roi")
@@ -176,6 +179,8 @@ class CiftiSeparateMetric:
     """
     separate a surface model into a metric file
     """
+    structure: str
+    """the structure to output"""
     metric_out: InputPathType
     """the output metric"""
     roi_out: InputPathType
@@ -197,6 +202,7 @@ class CiftiSeparateMetric:
             
         """
         cargs = []
+        cargs.append(self.structure)
         cargs.append(execution.input_file(self.metric_out))
         if self.opt_roi:
             cargs.append("-roi")
@@ -241,6 +247,8 @@ class CiftiSeparateVolume:
     """
     separate a volume structure into a volume file
     """
+    structure: str
+    """the structure to output"""
     volume_out: InputPathType
     """the output volume"""
     roi_out: InputPathType
@@ -265,6 +273,7 @@ class CiftiSeparateVolume:
             
         """
         cargs = []
+        cargs.append(self.structure)
         cargs.append(execution.input_file(self.volume_out))
         if self.opt_roi:
             cargs.append("-roi")

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FILE_INFORMATION_METADATA = Metadata(
-    id="2e1adc19f4d54b61198c9c68ea89b42b7315d000",
+    id="9de7c1565f7d465ccefd6a7778eabd175962d973",
     name="file-information",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -46,7 +46,8 @@ def file_information(
     
     Library paths:
     /usr/lib/x86_64-linux-gnu/qt5/plugins
-    /mnt/c/Users/floru/Projects/cmi/workbench/build/CommandLine
+    
+    /mnt/c/Users/floru/Projects/cmi/nopype/extraction/workbench/source/build/CommandLine
     
     
     File and extensions for reading and writing:

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_TO_SURFACE_MAPPING_METADATA = Metadata(
-    id="cb01faa679067e09945f8830eccc7c74db53e5b3",
+    id="8e70e06de91f9911ef63353d8f2c0bec37665804",
     name="volume-to-surface-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class VolumeToSurfaceMappingVolumeRoi:
     """
     use a volume roi
     """
+    roi_volume: InputPathType
+    """the roi volume file"""
     opt_weighted: bool = False
     """treat the roi values as weightings rather than binary"""
     
@@ -36,6 +38,7 @@ class VolumeToSurfaceMappingVolumeRoi:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.roi_volume))
         if self.opt_weighted:
             cargs.append("-weighted")
         return cargs
@@ -56,6 +59,8 @@ class VolumeToSurfaceMappingOutputWeights:
     """
     write the voxel weights for a vertex to a volume file
     """
+    vertex: int
+    """the vertex number to get the voxel weights for, 0-based"""
     weights_out: InputPathType
     """volume to write the weights to"""
     
@@ -73,6 +78,7 @@ class VolumeToSurfaceMappingOutputWeights:
             
         """
         cargs = []
+        cargs.append(str(self.vertex))
         cargs.append(execution.input_file(self.weights_out))
         return cargs
     
@@ -111,6 +117,10 @@ class VolumeToSurfaceMappingRibbonConstrained:
     """
     use ribbon constrained mapping algorithm
     """
+    inner_surf: InputPathType
+    """the inner surface of the ribbon"""
+    outer_surf: InputPathType
+    """the outer surface of the ribbon"""
     roi_out: InputPathType
     """the output metric file of vertices that have no data"""
     volume_roi: VolumeToSurfaceMappingVolumeRoi | None = None
@@ -149,6 +159,8 @@ class VolumeToSurfaceMappingRibbonConstrained:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.inner_surf))
+        cargs.append(execution.input_file(self.outer_surf))
         if self.volume_roi is not None:
             cargs.extend(["-volume-roi", *self.volume_roi.run(execution)])
         if self.opt_voxel_subdiv_subdiv_num is not None:
@@ -193,6 +205,12 @@ class VolumeToSurfaceMappingMyelinStyle:
     """
     use the method from myelin mapping
     """
+    ribbon_roi: InputPathType
+    """an roi volume of the cortical ribbon for this hemisphere"""
+    thickness: InputPathType
+    """a metric file of cortical thickness"""
+    sigma: float | int
+    """gaussian kernel in mm for weighting voxels within range"""
     opt_legacy_bug: bool = False
     """emulate old v1.2.3 and earlier code that didn't follow a cylinder
     cutoff"""
@@ -211,6 +229,9 @@ class VolumeToSurfaceMappingMyelinStyle:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.ribbon_roi))
+        cargs.append(execution.input_file(self.thickness))
+        cargs.append(str(self.sigma))
         if self.opt_legacy_bug:
             cargs.append("-legacy-bug")
         return cargs

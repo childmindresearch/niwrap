@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_TO_VOLUME_MAPPING_METADATA = Metadata(
-    id="cd29bae9f3638214fddd1d4c22aad81da1019f6b",
+    id="89ed6aac30b45de4cafbd414738f55a3315d78a4",
     name="metric-to-volume-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class MetricToVolumeMappingRibbonConstrained:
     """
     use ribbon constrained mapping algorithm
     """
+    inner_surf: InputPathType
+    """the inner surface of the ribbon"""
+    outer_surf: InputPathType
+    """the outer surface of the ribbon"""
     opt_voxel_subdiv_subdiv_num: int | None = None
     """voxel divisions while estimating voxel weights: number of subdivisions,
     default 3"""
@@ -42,6 +46,8 @@ class MetricToVolumeMappingRibbonConstrained:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.inner_surf))
+        cargs.append(execution.input_file(self.outer_surf))
         if self.opt_voxel_subdiv_subdiv_num is not None:
             cargs.extend(["-voxel-subdiv", str(self.opt_voxel_subdiv_subdiv_num)])
         if self.opt_greedy:

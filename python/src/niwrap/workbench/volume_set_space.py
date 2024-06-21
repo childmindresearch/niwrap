@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_SET_SPACE_METADATA = Metadata(
-    id="d2c5c3138f090c0357158891fa98a52186eace23",
+    id="2c2c1c285510760f404ff5dec23157bdf745c1e3",
     name="volume-set-space",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,21 @@ class VolumeSetSpacePlumb:
     """
     set via axis order and spacing/offset
     """
+    axis_order: str
+    """a string like 'XYZ' that specifies which index is along which spatial
+    dimension"""
+    x_spacing: float | int
+    """change in x-coordinate from incrementing the relevant index"""
+    y_spacing: float | int
+    """change in y-coordinate from incrementing the relevant index"""
+    z_spacing: float | int
+    """change in z-coordinate from incrementing the relevant index"""
+    x_offset: float | int
+    """the x-coordinate of the first voxel"""
+    y_offset: float | int
+    """the y-coordinate of the first voxel"""
+    z_offset: float | int
+    """the z-coordinate of the first voxel"""
     
     def run(
         self,
@@ -34,6 +49,13 @@ class VolumeSetSpacePlumb:
             
         """
         cargs = []
+        cargs.append(self.axis_order)
+        cargs.append(str(self.x_spacing))
+        cargs.append(str(self.y_spacing))
+        cargs.append(str(self.z_spacing))
+        cargs.append(str(self.x_offset))
+        cargs.append(str(self.y_offset))
+        cargs.append(str(self.z_offset))
         return cargs
 
 
@@ -42,6 +64,30 @@ class VolumeSetSpaceSform:
     """
     set via a nifti sform
     """
+    xi_spacing: float | int
+    """increase in x coordinate from incrementing the i index"""
+    xj_spacing: float | int
+    """increase in x coordinate from incrementing the j index"""
+    xk_spacing: float | int
+    """increase in x coordinate from incrementing the k index"""
+    x_offset: float | int
+    """x coordinate of first voxel"""
+    yi_spacing: float | int
+    """increase in y coordinate from incrementing the i index"""
+    yj_spacing: float | int
+    """increase in y coordinate from incrementing the j index"""
+    yk_spacing: float | int
+    """increase in y coordinate from incrementing the k index"""
+    y_offset: float | int
+    """y coordinate of first voxel"""
+    zi_spacing: float | int
+    """increase in z coordinate from incrementing the i index"""
+    zj_spacing: float | int
+    """increase in z coordinate from incrementing the j index"""
+    zk_spacing: float | int
+    """increase in z coordinate from incrementing the k index"""
+    z_offset: float | int
+    """z coordinate of first voxel"""
     
     def run(
         self,
@@ -57,6 +103,18 @@ class VolumeSetSpaceSform:
             
         """
         cargs = []
+        cargs.append(str(self.xi_spacing))
+        cargs.append(str(self.xj_spacing))
+        cargs.append(str(self.xk_spacing))
+        cargs.append(str(self.x_offset))
+        cargs.append(str(self.yi_spacing))
+        cargs.append(str(self.yj_spacing))
+        cargs.append(str(self.yk_spacing))
+        cargs.append(str(self.y_offset))
+        cargs.append(str(self.zi_spacing))
+        cargs.append(str(self.zj_spacing))
+        cargs.append(str(self.zk_spacing))
+        cargs.append(str(self.z_offset))
         return cargs
 
 
@@ -65,6 +123,8 @@ class VolumeSetSpaceFile:
     """
     copy spacing info from volume file with matching dimensions
     """
+    volume_ref: str
+    """volume file to use for reference space"""
     opt_ignore_dims: bool = False
     """copy the spacing info even if the dimensions don't match"""
     
@@ -82,6 +142,7 @@ class VolumeSetSpaceFile:
             
         """
         cargs = []
+        cargs.append(self.volume_ref)
         if self.opt_ignore_dims:
             cargs.append("-ignore-dims")
         return cargs

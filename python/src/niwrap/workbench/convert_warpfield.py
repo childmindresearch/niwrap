@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONVERT_WARPFIELD_METADATA = Metadata(
-    id="734d07fedc4eff3baa5d2d2d8f8418ac6d77adff",
+    id="781d762368981172b34f72ffaaed5fe8a7b49f2b",
     name="convert-warpfield",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class ConvertWarpfieldFromWorld:
     """
     input is a NIFTI 'world' warpfield
     """
+    input_: str
+    """the input warpfield"""
     opt_absolute: bool = False
     """warpfield was written in absolute convention, rather than relative"""
     
@@ -36,6 +38,7 @@ class ConvertWarpfieldFromWorld:
             
         """
         cargs = []
+        cargs.append(self.input_)
         if self.opt_absolute:
             cargs.append("-absolute")
         return cargs
@@ -46,6 +49,10 @@ class ConvertWarpfieldFromFnirt:
     """
     input is a fnirt warpfield
     """
+    input_: str
+    """the input warpfield"""
+    source_volume: str
+    """the source volume used when generating the input warpfield"""
     opt_absolute: bool = False
     """warpfield was written in absolute convention, rather than relative"""
     
@@ -63,6 +70,8 @@ class ConvertWarpfieldFromFnirt:
             
         """
         cargs = []
+        cargs.append(self.input_)
+        cargs.append(self.source_volume)
         if self.opt_absolute:
             cargs.append("-absolute")
         return cargs
@@ -73,6 +82,10 @@ class ConvertWarpfieldToFnirt:
     """
     write output as a fnirt warpfield
     """
+    output: str
+    """output - the output warpfield"""
+    source_volume: str
+    """the volume you want to apply the warpfield to"""
     
     def run(
         self,
@@ -88,6 +101,8 @@ class ConvertWarpfieldToFnirt:
             
         """
         cargs = []
+        cargs.append(self.output)
+        cargs.append(self.source_volume)
         return cargs
 
 

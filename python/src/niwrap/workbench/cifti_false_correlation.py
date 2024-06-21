@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_FALSE_CORRELATION_METADATA = Metadata(
-    id="2771f8442876327b07875d527b8402e0a46af4f3",
+    id="739317d59392a3ce7d48a0b8079f66a59f784d90",
     name="cifti-false-correlation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class CiftiFalseCorrelationLeftSurface:
     """
     specify the left surface to use
     """
+    surface: InputPathType
+    """the left surface file"""
     opt_dump_text_text_out: str | None = None
     """dump the raw measures used to a text file: the output text file"""
     
@@ -36,6 +38,7 @@ class CiftiFalseCorrelationLeftSurface:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface))
         if self.opt_dump_text_text_out is not None:
             cargs.extend(["-dump-text", self.opt_dump_text_text_out])
         return cargs
@@ -46,6 +49,8 @@ class CiftiFalseCorrelationRightSurface:
     """
     specify the right surface to use
     """
+    surface: InputPathType
+    """the right surface file"""
     opt_dump_text_text_out: str | None = None
     """dump the raw measures used to a text file: the output text file"""
     
@@ -63,6 +68,7 @@ class CiftiFalseCorrelationRightSurface:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface))
         if self.opt_dump_text_text_out is not None:
             cargs.extend(["-dump-text", self.opt_dump_text_text_out])
         return cargs
@@ -73,6 +79,8 @@ class CiftiFalseCorrelationCerebellumSurface:
     """
     specify the cerebellum surface to use
     """
+    surface: InputPathType
+    """the cerebellum surface file"""
     opt_dump_text_text_out: str | None = None
     """dump the raw measures used to a text file: the output text file"""
     
@@ -90,6 +98,7 @@ class CiftiFalseCorrelationCerebellumSurface:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface))
         if self.opt_dump_text_text_out is not None:
             cargs.extend(["-dump-text", self.opt_dump_text_text_out])
         return cargs

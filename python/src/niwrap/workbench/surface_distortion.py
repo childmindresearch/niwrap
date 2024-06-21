@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SURFACE_DISTORTION_METADATA = Metadata(
-    id="4fd55138bcfb3cda849ede52dda5d87a0b083dfb",
+    id="1f09b67bcd558e46f200f7c962c5c3ab9c40ea7f",
     name="surface-distortion",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class SurfaceDistortionSmooth:
     """
     smooth the area data
     """
+    sigma: float | int
+    """the size of the smoothing kernel in mm, as sigma by default"""
     opt_fwhm: bool = False
     """kernel size is FWHM, not sigma"""
     
@@ -36,6 +38,7 @@ class SurfaceDistortionSmooth:
             
         """
         cargs = []
+        cargs.append(str(self.sigma))
         if self.opt_fwhm:
             cargs.append("-fwhm")
         return cargs

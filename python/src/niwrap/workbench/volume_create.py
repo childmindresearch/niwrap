@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_CREATE_METADATA = Metadata(
-    id="2efc737c1b4ef92da53e59ceaab4e071268a7c77",
+    id="d107354466ac717ec5439be6fa940a524706abcc",
     name="volume-create",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,21 @@ class VolumeCreatePlumb:
     """
     set via axis order and spacing/offset
     """
+    axis_order: str
+    """a string like 'XYZ' that specifies which index is along which spatial
+    dimension"""
+    x_spacing: float | int
+    """change in x-coordinate from incrementing the relevant index"""
+    y_spacing: float | int
+    """change in y-coordinate from incrementing the relevant index"""
+    z_spacing: float | int
+    """change in z-coordinate from incrementing the relevant index"""
+    x_offset: float | int
+    """the x-coordinate of the center of the first voxel"""
+    y_offset: float | int
+    """the y-coordinate of the center of the first voxel"""
+    z_offset: float | int
+    """the z-coordinate of the center of the first voxel"""
     
     def run(
         self,
@@ -34,6 +49,13 @@ class VolumeCreatePlumb:
             
         """
         cargs = []
+        cargs.append(self.axis_order)
+        cargs.append(str(self.x_spacing))
+        cargs.append(str(self.y_spacing))
+        cargs.append(str(self.z_spacing))
+        cargs.append(str(self.x_offset))
+        cargs.append(str(self.y_offset))
+        cargs.append(str(self.z_offset))
         return cargs
 
 
@@ -42,6 +64,30 @@ class VolumeCreateSform:
     """
     set via a nifti sform
     """
+    xi_spacing: float | int
+    """increase in x coordinate from incrementing the i index"""
+    xj_spacing: float | int
+    """increase in x coordinate from incrementing the j index"""
+    xk_spacing: float | int
+    """increase in x coordinate from incrementing the k index"""
+    x_offset: float | int
+    """x coordinate of first voxel"""
+    yi_spacing: float | int
+    """increase in y coordinate from incrementing the i index"""
+    yj_spacing: float | int
+    """increase in y coordinate from incrementing the j index"""
+    yk_spacing: float | int
+    """increase in y coordinate from incrementing the k index"""
+    y_offset: float | int
+    """y coordinate of first voxel"""
+    zi_spacing: float | int
+    """increase in z coordinate from incrementing the i index"""
+    zj_spacing: float | int
+    """increase in z coordinate from incrementing the j index"""
+    zk_spacing: float | int
+    """increase in z coordinate from incrementing the k index"""
+    z_offset: float | int
+    """z coordinate of first voxel"""
     
     def run(
         self,
@@ -57,6 +103,18 @@ class VolumeCreateSform:
             
         """
         cargs = []
+        cargs.append(str(self.xi_spacing))
+        cargs.append(str(self.xj_spacing))
+        cargs.append(str(self.xk_spacing))
+        cargs.append(str(self.x_offset))
+        cargs.append(str(self.yi_spacing))
+        cargs.append(str(self.yj_spacing))
+        cargs.append(str(self.yk_spacing))
+        cargs.append(str(self.y_offset))
+        cargs.append(str(self.zi_spacing))
+        cargs.append(str(self.zj_spacing))
+        cargs.append(str(self.zk_spacing))
+        cargs.append(str(self.z_offset))
         return cargs
 
 

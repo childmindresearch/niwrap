@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FOCI_CREATE_METADATA = Metadata(
-    id="ae571d078894a26aee60faeaafa69bdead3b9cde",
+    id="5c4b822366c1575e33484621a6c5124f3294a547",
     name="foci-create",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,12 @@ class FociCreateClass:
     """
     specify class input data
     """
+    class_name: str
+    """name of class"""
+    foci_list_file: str
+    """text file containing foci names, coordinates, and colors"""
+    surface: InputPathType
+    """surface file for projection of foci list file"""
     
     def run(
         self,
@@ -34,6 +40,9 @@ class FociCreateClass:
             
         """
         cargs = []
+        cargs.append(self.class_name)
+        cargs.append(self.foci_list_file)
+        cargs.append(execution.input_file(self.surface))
         return cargs
 
 

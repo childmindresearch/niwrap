@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_DENSE_SCALAR_METADATA = Metadata(
-    id="eeab5e3fcf6554e30281b4d1a5594da126dc8764",
+    id="e241b62e9cbaf917d7820df80a1509d5f16ca0fa",
     name="cifti-create-dense-scalar",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class CiftiCreateDenseScalarVolume:
     """
     volume component
     """
+    volume_data: InputPathType
+    """volume file containing all voxel data for all volume structures"""
+    structure_label_volume: InputPathType
+    """label volume file containing labels for cifti structures"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class CiftiCreateDenseScalarVolume:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.volume_data))
+        cargs.append(execution.input_file(self.structure_label_volume))
         return cargs
 
 
@@ -42,6 +48,8 @@ class CiftiCreateDenseScalarLeftMetric:
     """
     metric for left surface
     """
+    metric: InputPathType
+    """the metric file"""
     opt_roi_left_roi_metric: InputPathType | None = None
     """roi of vertices to use from left surface: the ROI as a metric file"""
     
@@ -59,6 +67,7 @@ class CiftiCreateDenseScalarLeftMetric:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.metric))
         if self.opt_roi_left_roi_metric is not None:
             cargs.extend(["-roi-left", execution.input_file(self.opt_roi_left_roi_metric)])
         return cargs
@@ -69,6 +78,8 @@ class CiftiCreateDenseScalarRightMetric:
     """
     metric for right surface
     """
+    metric: InputPathType
+    """the metric file"""
     opt_roi_right_roi_metric: InputPathType | None = None
     """roi of vertices to use from right surface: the ROI as a metric file"""
     
@@ -86,6 +97,7 @@ class CiftiCreateDenseScalarRightMetric:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.metric))
         if self.opt_roi_right_roi_metric is not None:
             cargs.extend(["-roi-right", execution.input_file(self.opt_roi_right_roi_metric)])
         return cargs
@@ -96,6 +108,8 @@ class CiftiCreateDenseScalarCerebellumMetric:
     """
     metric for the cerebellum
     """
+    metric: InputPathType
+    """the metric file"""
     opt_roi_cerebellum_roi_metric: InputPathType | None = None
     """roi of vertices to use from right surface: the ROI as a metric file"""
     
@@ -113,6 +127,7 @@ class CiftiCreateDenseScalarCerebellumMetric:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.metric))
         if self.opt_roi_cerebellum_roi_metric is not None:
             cargs.extend(["-roi-cerebellum", execution.input_file(self.opt_roi_cerebellum_roi_metric)])
         return cargs

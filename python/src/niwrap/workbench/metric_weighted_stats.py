@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_WEIGHTED_STATS_METADATA = Metadata(
-    id="05ec75e5f9262094580820d396bdbfa68cac0c0e",
+    id="709ae638fdaca690892bac15e423f1324ef7c733",
     name="metric-weighted-stats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class MetricWeightedStatsRoi:
     """
     only consider data inside an roi
     """
+    roi_metric: InputPathType
+    """the roi, as a metric file"""
     opt_match_maps: bool = False
     """each column of input uses the corresponding column from the roi file"""
     
@@ -36,6 +38,7 @@ class MetricWeightedStatsRoi:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.roi_metric))
         if self.opt_match_maps:
             cargs.append("-match-maps")
         return cargs

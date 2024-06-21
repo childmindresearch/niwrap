@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_RESAMPLE_DCONN_MEMORY_METADATA = Metadata(
-    id="d07518fd3d54ea424bb22ccf8d87ee5ecb2f11f5",
+    id="373618e6950552579b8fbfce99c3ecfc9141d42f",
     name="cifti-resample-dconn-memory",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -51,6 +51,8 @@ class CiftiResampleDconnMemoryVolumePredilate:
     """
     dilate the volume components before resampling
     """
+    dilate_mm: float | int
+    """distance, in mm, to dilate"""
     opt_nearest: bool = False
     """use nearest value dilation"""
     weighted: CiftiResampleDconnMemoryWeighted | None = None
@@ -70,6 +72,7 @@ class CiftiResampleDconnMemoryVolumePredilate:
             
         """
         cargs = []
+        cargs.append(str(self.dilate_mm))
         if self.opt_nearest:
             cargs.append("-nearest")
         if self.weighted is not None:
@@ -114,6 +117,8 @@ class CiftiResampleDconnMemorySurfacePostdilate:
     """
     dilate the surface components after resampling
     """
+    dilate_mm: float | int
+    """distance, in mm, to dilate"""
     opt_nearest: bool = False
     """use nearest value dilation"""
     opt_linear: bool = False
@@ -135,6 +140,7 @@ class CiftiResampleDconnMemorySurfacePostdilate:
             
         """
         cargs = []
+        cargs.append(str(self.dilate_mm))
         if self.opt_nearest:
             cargs.append("-nearest")
         if self.opt_linear:
@@ -149,6 +155,10 @@ class CiftiResampleDconnMemoryFlirt:
     """
     MUST be used if affine is a flirt affine
     """
+    source_volume: str
+    """the source volume used when generating the affine"""
+    target_volume: str
+    """the target volume used when generating the affine"""
     
     def run(
         self,
@@ -164,6 +174,8 @@ class CiftiResampleDconnMemoryFlirt:
             
         """
         cargs = []
+        cargs.append(self.source_volume)
+        cargs.append(self.target_volume)
         return cargs
 
 
@@ -172,6 +184,8 @@ class CiftiResampleDconnMemoryAffine:
     """
     use an affine transformation on the volume components
     """
+    affine_file: str
+    """the affine file to use"""
     flirt: CiftiResampleDconnMemoryFlirt | None = None
     """MUST be used if affine is a flirt affine"""
     
@@ -189,6 +203,7 @@ class CiftiResampleDconnMemoryAffine:
             
         """
         cargs = []
+        cargs.append(self.affine_file)
         if self.flirt is not None:
             cargs.extend(["-flirt", *self.flirt.run(execution)])
         return cargs
@@ -199,6 +214,8 @@ class CiftiResampleDconnMemoryWarpfield:
     """
     use a warpfield on the volume components
     """
+    warpfield_: str
+    """the warpfield to use"""
     opt_fnirt_source_volume: str | None = None
     """MUST be used if using a fnirt warpfield: the source volume used when
     generating the warpfield"""
@@ -217,6 +234,7 @@ class CiftiResampleDconnMemoryWarpfield:
             
         """
         cargs = []
+        cargs.append(self.warpfield_)
         if self.opt_fnirt_source_volume is not None:
             cargs.extend(["-fnirt", self.opt_fnirt_source_volume])
         return cargs
@@ -227,6 +245,10 @@ class CiftiResampleDconnMemoryLeftAreaSurfs:
     """
     specify left surfaces to do vertex area correction based on
     """
+    current_area: InputPathType
+    """a relevant left anatomical surface with current mesh"""
+    new_area: InputPathType
+    """a relevant left anatomical surface with new mesh"""
     
     def run(
         self,
@@ -242,6 +264,8 @@ class CiftiResampleDconnMemoryLeftAreaSurfs:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_area))
+        cargs.append(execution.input_file(self.new_area))
         return cargs
 
 
@@ -250,6 +274,10 @@ class CiftiResampleDconnMemoryLeftAreaMetrics:
     """
     specify left vertex area metrics to do area correction based on
     """
+    current_area: InputPathType
+    """a metric file with vertex areas for the current mesh"""
+    new_area: InputPathType
+    """a metric file with vertex areas for the new mesh"""
     
     def run(
         self,
@@ -265,6 +293,8 @@ class CiftiResampleDconnMemoryLeftAreaMetrics:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_area))
+        cargs.append(execution.input_file(self.new_area))
         return cargs
 
 
@@ -273,6 +303,11 @@ class CiftiResampleDconnMemoryLeftSpheres:
     """
     specify spheres for left surface resampling
     """
+    current_sphere: InputPathType
+    """a sphere with the same mesh as the current left surface"""
+    new_sphere: InputPathType
+    """a sphere with the new left mesh that is in register with the current
+    sphere"""
     left_area_surfs: CiftiResampleDconnMemoryLeftAreaSurfs | None = None
     """specify left surfaces to do vertex area correction based on"""
     left_area_metrics: CiftiResampleDconnMemoryLeftAreaMetrics | None = None
@@ -292,6 +327,8 @@ class CiftiResampleDconnMemoryLeftSpheres:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_sphere))
+        cargs.append(execution.input_file(self.new_sphere))
         if self.left_area_surfs is not None:
             cargs.extend(["-left-area-surfs", *self.left_area_surfs.run(execution)])
         if self.left_area_metrics is not None:
@@ -304,6 +341,10 @@ class CiftiResampleDconnMemoryRightAreaSurfs:
     """
     specify right surfaces to do vertex area correction based on
     """
+    current_area: InputPathType
+    """a relevant right anatomical surface with current mesh"""
+    new_area: InputPathType
+    """a relevant right anatomical surface with new mesh"""
     
     def run(
         self,
@@ -319,6 +360,8 @@ class CiftiResampleDconnMemoryRightAreaSurfs:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_area))
+        cargs.append(execution.input_file(self.new_area))
         return cargs
 
 
@@ -327,6 +370,10 @@ class CiftiResampleDconnMemoryRightAreaMetrics:
     """
     specify right vertex area metrics to do area correction based on
     """
+    current_area: InputPathType
+    """a metric file with vertex areas for the current mesh"""
+    new_area: InputPathType
+    """a metric file with vertex areas for the new mesh"""
     
     def run(
         self,
@@ -342,6 +389,8 @@ class CiftiResampleDconnMemoryRightAreaMetrics:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_area))
+        cargs.append(execution.input_file(self.new_area))
         return cargs
 
 
@@ -350,6 +399,11 @@ class CiftiResampleDconnMemoryRightSpheres:
     """
     specify spheres for right surface resampling
     """
+    current_sphere: InputPathType
+    """a sphere with the same mesh as the current right surface"""
+    new_sphere: InputPathType
+    """a sphere with the new right mesh that is in register with the current
+    sphere"""
     right_area_surfs: CiftiResampleDconnMemoryRightAreaSurfs | None = None
     """specify right surfaces to do vertex area correction based on"""
     right_area_metrics: CiftiResampleDconnMemoryRightAreaMetrics | None = None
@@ -369,6 +423,8 @@ class CiftiResampleDconnMemoryRightSpheres:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_sphere))
+        cargs.append(execution.input_file(self.new_sphere))
         if self.right_area_surfs is not None:
             cargs.extend(["-right-area-surfs", *self.right_area_surfs.run(execution)])
         if self.right_area_metrics is not None:
@@ -381,6 +437,10 @@ class CiftiResampleDconnMemoryCerebellumAreaSurfs:
     """
     specify cerebellum surfaces to do vertex area correction based on
     """
+    current_area: InputPathType
+    """a relevant cerebellum anatomical surface with current mesh"""
+    new_area: InputPathType
+    """a relevant cerebellum anatomical surface with new mesh"""
     
     def run(
         self,
@@ -396,6 +456,8 @@ class CiftiResampleDconnMemoryCerebellumAreaSurfs:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_area))
+        cargs.append(execution.input_file(self.new_area))
         return cargs
 
 
@@ -404,6 +466,10 @@ class CiftiResampleDconnMemoryCerebellumAreaMetrics:
     """
     specify cerebellum vertex area metrics to do area correction based on
     """
+    current_area: InputPathType
+    """a metric file with vertex areas for the current mesh"""
+    new_area: InputPathType
+    """a metric file with vertex areas for the new mesh"""
     
     def run(
         self,
@@ -419,6 +485,8 @@ class CiftiResampleDconnMemoryCerebellumAreaMetrics:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_area))
+        cargs.append(execution.input_file(self.new_area))
         return cargs
 
 
@@ -427,6 +495,11 @@ class CiftiResampleDconnMemoryCerebellumSpheres:
     """
     specify spheres for cerebellum surface resampling
     """
+    current_sphere: InputPathType
+    """a sphere with the same mesh as the current cerebellum surface"""
+    new_sphere: InputPathType
+    """a sphere with the new cerebellum mesh that is in register with the
+    current sphere"""
     cerebellum_area_surfs: CiftiResampleDconnMemoryCerebellumAreaSurfs | None = None
     """specify cerebellum surfaces to do vertex area correction based on"""
     cerebellum_area_metrics: CiftiResampleDconnMemoryCerebellumAreaMetrics | None = None
@@ -446,6 +519,8 @@ class CiftiResampleDconnMemoryCerebellumSpheres:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_sphere))
+        cargs.append(execution.input_file(self.new_sphere))
         if self.cerebellum_area_surfs is not None:
             cargs.extend(["-cerebellum-area-surfs", *self.cerebellum_area_surfs.run(execution)])
         if self.cerebellum_area_metrics is not None:

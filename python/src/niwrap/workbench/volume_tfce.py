@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_TFCE_METADATA = Metadata(
-    id="ee2d9d8afb5657ef8adca3d14e33c930f5f1509e",
+    id="f6bc3dd10a3e2f8eb5161a10ac86eef11e2a607c",
     name="volume-tfce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class VolumeTfcePresmooth:
     """
     smooth the volume before running TFCE
     """
+    kernel: float | int
+    """the size of the gaussian smoothing kernel in mm, as sigma by default"""
     opt_fwhm: bool = False
     """smoothing kernel size is FWHM, not sigma"""
     
@@ -36,6 +38,7 @@ class VolumeTfcePresmooth:
             
         """
         cargs = []
+        cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
         return cargs
@@ -46,6 +49,10 @@ class VolumeTfceParameters:
     """
     set parameters for TFCE integral
     """
+    e: float | int
+    """exponent for cluster volume (default 0.5)"""
+    h: float | int
+    """exponent for threshold value (default 2.0)"""
     
     def run(
         self,
@@ -61,6 +68,8 @@ class VolumeTfceParameters:
             
         """
         cargs = []
+        cargs.append(str(self.e))
+        cargs.append(str(self.h))
         return cargs
 
 

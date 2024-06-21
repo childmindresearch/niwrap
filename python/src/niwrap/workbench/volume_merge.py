@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_MERGE_METADATA = Metadata(
-    id="e4d33d90dc9e26a37d178c6ceeab8d2a0bb16290",
+    id="b6c587f3aa48250438cb9fe23635d1468f3cc913",
     name="volume-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class VolumeMergeUpTo:
     """
     use an inclusive range of subvolumes
     """
+    last_subvol: str
+    """the number or name of the last subvolume to include"""
     opt_reverse: bool = False
     """use the range in reverse order"""
     
@@ -36,6 +38,7 @@ class VolumeMergeUpTo:
             
         """
         cargs = []
+        cargs.append(self.last_subvol)
         if self.opt_reverse:
             cargs.append("-reverse")
         return cargs
@@ -46,6 +49,8 @@ class VolumeMergeSubvolume:
     """
     select a single subvolume to use
     """
+    subvol: str
+    """the subvolume number or name"""
     up_to: VolumeMergeUpTo | None = None
     """use an inclusive range of subvolumes"""
     
@@ -63,6 +68,7 @@ class VolumeMergeSubvolume:
             
         """
         cargs = []
+        cargs.append(self.subvol)
         if self.up_to is not None:
             cargs.extend(["-up-to", *self.up_to.run(execution)])
         return cargs
@@ -73,6 +79,8 @@ class VolumeMergeVolume:
     """
     specify an input volume file
     """
+    volume_in: InputPathType
+    """a volume file to use subvolumes from"""
     subvolume: list[VolumeMergeSubvolume] = None
     """select a single subvolume to use"""
     
@@ -90,6 +98,7 @@ class VolumeMergeVolume:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.volume_in))
         if self.subvolume is not None:
             cargs.extend(["-subvolume", *[a for c in [s.run(execution) for s in self.subvolume] for a in c]])
         return cargs

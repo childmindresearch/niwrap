@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_LABEL_TO_SURFACE_MAPPING_METADATA = Metadata(
-    id="a0a6c172b0c16c53b0a9ea6c8b694df290312cbf",
+    id="5c753ede610baf3056a49a9aa0af1c76d829fc83",
     name="volume-label-to-surface-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class VolumeLabelToSurfaceMappingRibbonConstrained:
     """
     use ribbon constrained mapping algorithm
     """
+    inner_surf: InputPathType
+    """the inner surface of the ribbon"""
+    outer_surf: InputPathType
+    """the outer surface of the ribbon"""
     opt_volume_roi_roi_volume: InputPathType | None = None
     """use a volume roi: the volume file"""
     opt_voxel_subdiv_subdiv_num: int | None = None
@@ -41,6 +45,8 @@ class VolumeLabelToSurfaceMappingRibbonConstrained:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.inner_surf))
+        cargs.append(execution.input_file(self.outer_surf))
         if self.opt_volume_roi_roi_volume is not None:
             cargs.extend(["-volume-roi", execution.input_file(self.opt_volume_roi_roi_volume)])
         if self.opt_voxel_subdiv_subdiv_num is not None:

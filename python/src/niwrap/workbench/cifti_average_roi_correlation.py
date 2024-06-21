@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_AVERAGE_ROI_CORRELATION_METADATA = Metadata(
-    id="4e93dbb235efd9147415e8e4f6af7d0489e693d7",
+    id="3f63afc50885219e0a892e52f18fd593a0e1cdee",
     name="cifti-average-roi-correlation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class CiftiAverageRoiCorrelationCiftiRoi:
     """
     cifti file containing combined weights
     """
+    roi_cifti: InputPathType
+    """the roi cifti file"""
     opt_in_memory: bool = False
     """cache the roi in memory so that it isn't re-read for each input cifti"""
     
@@ -36,6 +38,7 @@ class CiftiAverageRoiCorrelationCiftiRoi:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.roi_cifti))
         if self.opt_in_memory:
             cargs.append("-in-memory")
         return cargs
@@ -46,6 +49,8 @@ class CiftiAverageRoiCorrelationCifti:
     """
     specify an input cifti file
     """
+    cifti_in: InputPathType
+    """a cifti file to average across"""
     
     def run(
         self,
@@ -61,6 +66,7 @@ class CiftiAverageRoiCorrelationCifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_in))
         return cargs
 
 

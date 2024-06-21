@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_GRADIENT_METADATA = Metadata(
-    id="7f36ae411093e7ed8b4e554a111987e6a03a0358",
+    id="835550f1affed536876a7c45bc570897c29ae735",
     name="metric-gradient",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class MetricGradientPresmooth:
     """
     smooth the metric before computing the gradient
     """
+    kernel: float | int
+    """the size of the gaussian smoothing kernel in mm, as sigma by default"""
     opt_fwhm: bool = False
     """kernel size is FWHM, not sigma"""
     
@@ -36,6 +38,7 @@ class MetricGradientPresmooth:
             
         """
         cargs = []
+        cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
         return cargs
@@ -46,6 +49,8 @@ class MetricGradientRoi:
     """
     select a region of interest to take the gradient of
     """
+    roi_metric: InputPathType
+    """the area to take the gradient within, as a metric"""
     opt_match_columns: bool = False
     """for each input column, use the corresponding column from the roi"""
     
@@ -63,6 +68,7 @@ class MetricGradientRoi:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.roi_metric))
         if self.opt_match_columns:
             cargs.append("-match-columns")
         return cargs

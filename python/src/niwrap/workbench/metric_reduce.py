@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_REDUCE_METADATA = Metadata(
-    id="6bda37cb5c4d0c97950ec7333f3c77912b1d023a",
+    id="de21cd436fb9b3ef7faf8bb5d5106a78559ead5a",
     name="metric-reduce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class MetricReduceExcludeOutliers:
     """
     exclude non-numeric values and outliers by standard deviation
     """
+    sigma_below: float | int
+    """number of standard deviations below the mean to include"""
+    sigma_above: float | int
+    """number of standard deviations above the mean to include"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class MetricReduceExcludeOutliers:
             
         """
         cargs = []
+        cargs.append(str(self.sigma_below))
+        cargs.append(str(self.sigma_above))
         return cargs
 
 

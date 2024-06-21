@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABEL_MERGE_METADATA = Metadata(
-    id="27e790a9388bfa69f9a0f7b1251abd27de75f481",
+    id="4541ed5d778b1f54a052bff50927eb569086f896",
     name="label-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class LabelMergeUpTo:
     """
     use an inclusive range of columns
     """
+    last_column: str
+    """the number or name of the last column to include"""
     opt_reverse: bool = False
     """use the range in reverse order"""
     
@@ -36,6 +38,7 @@ class LabelMergeUpTo:
             
         """
         cargs = []
+        cargs.append(self.last_column)
         if self.opt_reverse:
             cargs.append("-reverse")
         return cargs
@@ -46,6 +49,8 @@ class LabelMergeColumn:
     """
     select a single column to use
     """
+    column_: str
+    """the column number or name"""
     up_to: LabelMergeUpTo | None = None
     """use an inclusive range of columns"""
     
@@ -63,6 +68,7 @@ class LabelMergeColumn:
             
         """
         cargs = []
+        cargs.append(self.column_)
         if self.up_to is not None:
             cargs.extend(["-up-to", *self.up_to.run(execution)])
         return cargs
@@ -73,6 +79,8 @@ class LabelMergeLabel:
     """
     specify an input label
     """
+    label_in: InputPathType
+    """a label file to use columns from"""
     column: list[LabelMergeColumn] = None
     """select a single column to use"""
     
@@ -90,6 +98,7 @@ class LabelMergeLabel:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.label_in))
         if self.column is not None:
             cargs.extend(["-column", *[a for c in [s.run(execution) for s in self.column] for a in c]])
         return cargs

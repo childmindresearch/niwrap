@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_EXTREMA_METADATA = Metadata(
-    id="e38cc856aefe646a1058c83142367371227ac117",
+    id="df7209bba52051976095bc652abd31069069df2d",
     name="volume-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class VolumeExtremaPresmooth:
     """
     smooth the volume before finding extrema
     """
+    kernel: float | int
+    """the size of the gaussian smoothing kernel in mm, as sigma by default"""
     opt_fwhm: bool = False
     """kernel size is FWHM, not sigma"""
     
@@ -36,6 +38,7 @@ class VolumeExtremaPresmooth:
             
         """
         cargs = []
+        cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
         return cargs
@@ -46,6 +49,10 @@ class VolumeExtremaThreshold:
     """
     ignore small extrema
     """
+    low: float | int
+    """the largest value to consider for being a minimum"""
+    high: float | int
+    """the smallest value to consider for being a maximum"""
     
     def run(
         self,
@@ -61,6 +68,8 @@ class VolumeExtremaThreshold:
             
         """
         cargs = []
+        cargs.append(str(self.low))
+        cargs.append(str(self.high))
         return cargs
 
 

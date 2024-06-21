@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_PALETTE_METADATA = Metadata(
-    id="14edc6f1522cc198b7bf184db7207a02cfd8be6b",
+    id="ff3fa0585da6378a00cc27e0347f9711d6413e54",
     name="metric-palette",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class MetricPalettePosPercent:
     """
     percentage min/max for positive data coloring
     """
+    pos_min__: float | int
+    """the percentile for the least positive data"""
+    pos_max__: float | int
+    """the percentile for the most positive data"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class MetricPalettePosPercent:
             
         """
         cargs = []
+        cargs.append(str(self.pos_min__))
+        cargs.append(str(self.pos_max__))
         return cargs
 
 
@@ -42,6 +48,10 @@ class MetricPaletteNegPercent:
     """
     percentage min/max for negative data coloring
     """
+    neg_min__: float | int
+    """the percentile for the least negative data"""
+    neg_max__: float | int
+    """the percentile for the most negative data"""
     
     def run(
         self,
@@ -57,6 +67,8 @@ class MetricPaletteNegPercent:
             
         """
         cargs = []
+        cargs.append(str(self.neg_min__))
+        cargs.append(str(self.neg_max__))
         return cargs
 
 
@@ -65,6 +77,10 @@ class MetricPalettePosUser:
     """
     user min/max values for positive data coloring
     """
+    pos_min_user: float | int
+    """the value for the least positive data"""
+    pos_max_user: float | int
+    """the value for the most positive data"""
     
     def run(
         self,
@@ -80,6 +96,8 @@ class MetricPalettePosUser:
             
         """
         cargs = []
+        cargs.append(str(self.pos_min_user))
+        cargs.append(str(self.pos_max_user))
         return cargs
 
 
@@ -88,6 +106,10 @@ class MetricPaletteNegUser:
     """
     user min/max values for negative data coloring
     """
+    neg_min_user: float | int
+    """the value for the least negative data"""
+    neg_max_user: float | int
+    """the value for the most negative data"""
     
     def run(
         self,
@@ -103,6 +125,8 @@ class MetricPaletteNegUser:
             
         """
         cargs = []
+        cargs.append(str(self.neg_min_user))
+        cargs.append(str(self.neg_max_user))
         return cargs
 
 
@@ -111,6 +135,14 @@ class MetricPaletteThresholding:
     """
     set the thresholding
     """
+    type_: str
+    """thresholding setting"""
+    test: str
+    """show values inside or outside thresholds"""
+    min_: float | int
+    """lower threshold"""
+    max_: float | int
+    """upper threshold"""
     
     def run(
         self,
@@ -126,6 +158,10 @@ class MetricPaletteThresholding:
             
         """
         cargs = []
+        cargs.append(self.type_)
+        cargs.append(self.test)
+        cargs.append(str(self.min_))
+        cargs.append(str(self.max_))
         return cargs
 
 

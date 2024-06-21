@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_RESAMPLE_METADATA = Metadata(
-    id="ef46f997d66159ea7599e14d21843b7d7b18ba3b",
+    id="915434dd7ca93a7f665d5f166a22647f39b90d1c",
     name="volume-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class VolumeResampleFlirt:
     """
     MUST be used if affine is a flirt affine
     """
+    source_volume: str
+    """the source volume used when generating the affine"""
+    target_volume: str
+    """the target volume used when generating the affine"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class VolumeResampleFlirt:
             
         """
         cargs = []
+        cargs.append(self.source_volume)
+        cargs.append(self.target_volume)
         return cargs
 
 
@@ -42,6 +48,8 @@ class VolumeResampleAffine:
     """
     add an affine transform
     """
+    affine_: str
+    """the affine file to use"""
     flirt: VolumeResampleFlirt | None = None
     """MUST be used if affine is a flirt affine"""
     
@@ -59,6 +67,7 @@ class VolumeResampleAffine:
             
         """
         cargs = []
+        cargs.append(self.affine_)
         if self.flirt is not None:
             cargs.extend(["-flirt", *self.flirt.run(execution)])
         return cargs
@@ -69,6 +78,10 @@ class VolumeResampleFlirt_:
     """
     MUST be used if the affines are flirt affines
     """
+    source_volume: str
+    """the source volume used when generating the affine"""
+    target_volume: str
+    """the target volume used when generating the affine"""
     
     def run(
         self,
@@ -84,6 +97,8 @@ class VolumeResampleFlirt_:
             
         """
         cargs = []
+        cargs.append(self.source_volume)
+        cargs.append(self.target_volume)
         return cargs
 
 
@@ -92,6 +107,9 @@ class VolumeResampleAffineSeries:
     """
     add an independent affine per-frame
     """
+    affine_series_: str
+    """text file containing 12 or 16 numbers per line, each being a row-major
+    flattened affine"""
     flirt: VolumeResampleFlirt_ | None = None
     """MUST be used if the affines are flirt affines"""
     
@@ -109,6 +127,7 @@ class VolumeResampleAffineSeries:
             
         """
         cargs = []
+        cargs.append(self.affine_series_)
         if self.flirt is not None:
             cargs.extend(["-flirt", *self.flirt.run(execution)])
         return cargs
@@ -119,6 +138,8 @@ class VolumeResampleWarp:
     """
     add a nonlinear warpfield transform
     """
+    warpfield: str
+    """the warpfield file"""
     opt_fnirt_source_volume: str | None = None
     """MUST be used if using a fnirt warpfield: the source volume used when
     generating the warpfield"""
@@ -137,6 +158,7 @@ class VolumeResampleWarp:
             
         """
         cargs = []
+        cargs.append(self.warpfield)
         if self.opt_fnirt_source_volume is not None:
             cargs.extend(["-fnirt", self.opt_fnirt_source_volume])
         return cargs

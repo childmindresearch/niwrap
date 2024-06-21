@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_DILATE_METADATA = Metadata(
-    id="798e2a6e854094d1153b72bf12651be07004014e",
+    id="6c6b5c1507376970df3dd4bddbff745d66af9886",
     name="volume-dilate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class VolumeDilatePresmooth:
     """
     apply presmoothing before computing gradient vectors, not recommended
     """
+    kernel: float | int
+    """the size of gaussian smoothing kernel in mm, as sigma by default"""
     opt_fwhm: bool = False
     """kernel size is FWHM, not sigma"""
     
@@ -36,6 +38,7 @@ class VolumeDilatePresmooth:
             
         """
         cargs = []
+        cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
         return cargs

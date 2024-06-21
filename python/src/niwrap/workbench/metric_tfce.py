@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_TFCE_METADATA = Metadata(
-    id="dfc7a14b84642959ee5215e451cbaaed9341f701",
+    id="a3794bff67b839f5a10f88ec5058b28190491098",
     name="metric-tfce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class MetricTfcePresmooth:
     """
     smooth the metric before running TFCE
     """
+    kernel: float | int
+    """the size of the gaussian smoothing kernel in mm, as sigma by default"""
     opt_fwhm: bool = False
     """kernel size is FWHM, not sigma"""
     
@@ -36,6 +38,7 @@ class MetricTfcePresmooth:
             
         """
         cargs = []
+        cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
         return cargs
@@ -46,6 +49,10 @@ class MetricTfceParameters:
     """
     set parameters for TFCE integral
     """
+    e: float | int
+    """exponent for cluster area (default 1.0)"""
+    h: float | int
+    """exponent for threshold value (default 2.0)"""
     
     def run(
         self,
@@ -61,6 +68,8 @@ class MetricTfceParameters:
             
         """
         cargs = []
+        cargs.append(str(self.e))
+        cargs.append(str(self.h))
         return cargs
 
 

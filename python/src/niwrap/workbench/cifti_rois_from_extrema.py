@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_ROIS_FROM_EXTREMA_METADATA = Metadata(
-    id="30839d0bb8cfcd5e16ca2d4e93ca4ffb5dfa8f6f",
+    id="14e9924f18969621953fd5d0ee4fbc8716e2a279",
     name="cifti-rois-from-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class CiftiRoisFromExtremaGaussian:
     """
     generate gaussian kernels instead of flat ROIs
     """
+    surf_sigma: float | int
+    """the sigma for the surface gaussian kernel, in mm"""
+    vol_sigma: float | int
+    """the sigma for the volume gaussian kernel, in mm"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class CiftiRoisFromExtremaGaussian:
             
         """
         cargs = []
+        cargs.append(str(self.surf_sigma))
+        cargs.append(str(self.vol_sigma))
         return cargs
 
 

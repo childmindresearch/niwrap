@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FILE_CONVERT_METADATA = Metadata(
-    id="d1e1f2779836a93aec5a47c4c2886f34fca369b9",
+    id="01473a5246f8539040c3e81b60f8afa6d07c03ec",
     name="file-convert",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,12 @@ class FileConvertBorderVersionConvert:
     """
     write a border file with a different version
     """
+    border_in: InputPathType
+    """the input border file"""
+    out_version: int
+    """the format version to write as, 1 or 3 (2 doesn't exist)"""
+    border_out: str
+    """output - the output border file"""
     opt_surface_surface: InputPathType | None = None
     """must be specified if the input is version 1: use this surface file for
     structure and number of vertices, ignore borders on other structures"""
@@ -37,6 +43,9 @@ class FileConvertBorderVersionConvert:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.border_in))
+        cargs.append(str(self.out_version))
+        cargs.append(self.border_out)
         if self.opt_surface_surface is not None:
             cargs.extend(["-surface", execution.input_file(self.opt_surface_surface)])
         return cargs
@@ -47,6 +56,12 @@ class FileConvertNiftiVersionConvert:
     """
     write a nifti file with a different version
     """
+    input_: str
+    """the input nifti file"""
+    version: int
+    """the nifti version to write as"""
+    output: str
+    """output - the output nifti file"""
     
     def run(
         self,
@@ -62,6 +77,9 @@ class FileConvertNiftiVersionConvert:
             
         """
         cargs = []
+        cargs.append(self.input_)
+        cargs.append(str(self.version))
+        cargs.append(self.output)
         return cargs
 
 
@@ -70,6 +88,12 @@ class FileConvertCiftiVersionConvert:
     """
     write a cifti file with a different version
     """
+    cifti_in: InputPathType
+    """the input cifti file"""
+    version: str
+    """the cifti version to write as"""
+    cifti_out: str
+    """output - the output cifti file"""
     
     def run(
         self,
@@ -85,6 +109,9 @@ class FileConvertCiftiVersionConvert:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_in))
+        cargs.append(self.version)
+        cargs.append(self.cifti_out)
         return cargs
 
 

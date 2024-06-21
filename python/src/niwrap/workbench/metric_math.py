@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_MATH_METADATA = Metadata(
-    id="d84051aeeb784ce7d47967823c294bb41371d47d",
+    id="1f6625acd3e32ae587692a73656da29d21030495",
     name="metric-math",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class MetricMathVar:
     """
     a metric to use as a variable
     """
+    name: str
+    """the name of the variable, as used in the expression"""
+    metric: InputPathType
+    """the metric file to use as this variable"""
     opt_column_column: str | None = None
     """select a single column: the column number or name"""
     opt_repeat: bool = False
@@ -38,6 +42,8 @@ class MetricMathVar:
             
         """
         cargs = []
+        cargs.append(self.name)
+        cargs.append(execution.input_file(self.metric))
         if self.opt_column_column is not None:
             cargs.extend(["-column", self.opt_column_column])
         if self.opt_repeat:

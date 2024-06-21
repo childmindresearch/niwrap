@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_CONVERT_METADATA = Metadata(
-    id="527069bdc5b014831c6b67e2e761ba825f28854f",
+    id="51e2736a23385b5143f6c4d04232f5fd1991697f",
     name="metric-convert",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -29,6 +29,8 @@ class MetricConvertToNifti:
     """
     convert metric to nifti
     """
+    metric_in: InputPathType
+    """the metric to convert"""
     nifti_out: InputPathType
     """the output nifti file"""
     
@@ -46,6 +48,7 @@ class MetricConvertToNifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.metric_in))
         cargs.append(execution.input_file(self.nifti_out))
         return cargs
     
@@ -84,6 +87,10 @@ class MetricConvertFromNifti:
     """
     convert nifti to metric
     """
+    nifti_in: InputPathType
+    """the nifti file to convert"""
+    surface_in: InputPathType
+    """surface file to use number of vertices and structure from"""
     metric_out: InputPathType
     """the output metric file"""
     
@@ -101,6 +108,8 @@ class MetricConvertFromNifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.nifti_in))
+        cargs.append(execution.input_file(self.surface_in))
         cargs.append(execution.input_file(self.metric_out))
         return cargs
     
