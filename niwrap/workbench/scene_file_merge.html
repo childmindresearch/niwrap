@@ -52,6 +52,9 @@
                                 <a class="function" href="#SceneFileMergeScene.__init__">SceneFileMergeScene</a>
                         </li>
                         <li>
+                                <a class="variable" href="#SceneFileMergeScene.scene_">scene_</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#SceneFileMergeScene.up_to">up_to</a>
                         </li>
                         <li>
@@ -67,6 +70,9 @@
                                 <a class="function" href="#SceneFileMergeSceneFile.__init__">SceneFileMergeSceneFile</a>
                         </li>
                         <li>
+                                <a class="variable" href="#SceneFileMergeSceneFile.scene_file_">scene_file_</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#SceneFileMergeSceneFile.scene">scene</a>
                         </li>
                         <li>
@@ -80,6 +86,9 @@
                             <ul class="memberlist">
                         <li>
                                 <a class="function" href="#SceneFileMergeUpTo.__init__">SceneFileMergeUpTo</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneFileMergeUpTo.last_column">last_column</a>
                         </li>
                         <li>
                                 <a class="variable" href="#SceneFileMergeUpTo.opt_reverse">opt_reverse</a>
@@ -123,7 +132,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SCENE_FILE_MERGE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;255f84b5d6fd969bf1ef23f3553f3749eb597330&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8737d769834b9f2c20e2416bb47bf33092d9b2cd&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;scene-file-merge&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;fcpindi/c-pac:latest&quot;</span><span class="p">,</span>
@@ -135,139 +144,148 @@
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    use an inclusive range of scenes</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use the range in reverse order&quot;&quot;&quot;</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>    
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="sd">        </span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="sd">        Args:</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">        Returns:</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">            </span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="k">class</span> <span class="nc">SceneFileMergeScene</span><span class="p">:</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    specify a scene to use</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">SceneFileMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of scenes&quot;&quot;&quot;</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>    
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        </span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        Args:</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        Returns:</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            </span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="k">class</span> <span class="nc">SceneFileMergeSceneFile</span><span class="p">:</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    specify a scene file to use scenes from</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeScene</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;specify a scene to use&quot;&quot;&quot;</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        </span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        Args:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        Returns:</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">            </span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-scene&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="k">class</span> <span class="nc">SceneFileMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">    Output object returned when calling `scene_file_merge(...)`.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="n">last_column</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the number or name of the last scene to include&quot;&quot;&quot;</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>    <span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use the range in reverse order&quot;&quot;&quot;</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>    
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="sd">        </span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">        Args:</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">        Returns:</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">            </span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_column</span><span class="p">)</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="k">class</span> <span class="nc">SceneFileMergeScene</span><span class="p">:</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    specify a scene to use</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>    <span class="n">scene_</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the scene number or name&quot;&quot;&quot;</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">SceneFileMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of scenes&quot;&quot;&quot;</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        </span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        Args:</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        Returns:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">            </span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scene_</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="k">class</span> <span class="nc">SceneFileMergeSceneFile</span><span class="p">:</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    specify a scene file to use scenes from</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">scene_file_</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the input scene file&quot;&quot;&quot;</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeScene</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;specify a scene to use&quot;&quot;&quot;</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        </span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        Args:</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        Returns:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            </span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scene_file_</span><span class="p">)</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-scene&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="k">def</span> <span class="nf">scene_file_merge</span><span class="p">(</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">scene_file_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">scene_file</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeSceneFile</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SceneFileMergeOutputs</span><span class="p">:</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    scene-file-merge by Washington University School of Medicin.</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    </span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    Rearrange scenes into a new file.</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    </span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    Takes one or more scene files and constructs a new scene file by</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    concatenating specified scenes from them.</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    </span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    Example: wb_command -scene-file-merge out.scene -scene-file first.scene</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    -scene 1 -scene-file second.scene</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    </span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    This example would take the first scene from first.scene, followed by all</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    scenes from second.scene, and write these scenes to out.scene.</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="k">class</span> <span class="nc">SceneFileMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    Output object returned when calling `scene_file_merge(...)`.</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="k">def</span> <span class="nf">scene_file_merge</span><span class="p">(</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">scene_file_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">scene_file</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeSceneFile</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SceneFileMergeOutputs</span><span class="p">:</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    scene-file-merge by Washington University School of Medicin.</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    </span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    Rearrange scenes into a new file.</span>
 </span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">    </span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">    Args:</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        scene_file_out: output - the output scene file.</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">        scene_file: specify a scene file to use scenes from.</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">    Returns:</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        NamedTuple of outputs (described in `SceneFileMergeOutputs`).</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SCENE_FILE_MERGE_METADATA</span><span class="p">)</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-scene-file-merge&quot;</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scene_file_out</span><span class="p">)</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">scene_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-scene-file&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scene_file</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SceneFileMergeOutputs</span><span class="p">(</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="p">)</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="s2">&quot;SCENE_FILE_MERGE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="s2">&quot;SceneFileMergeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="s2">&quot;SceneFileMergeScene&quot;</span><span class="p">,</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="s2">&quot;SceneFileMergeSceneFile&quot;</span><span class="p">,</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="s2">&quot;SceneFileMergeUpTo&quot;</span><span class="p">,</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="s2">&quot;scene_file_merge&quot;</span><span class="p">,</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="p">]</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">    Takes one or more scene files and constructs a new scene file by</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">    concatenating specified scenes from them.</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">    </span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">    Example: wb_command -scene-file-merge out.scene -scene-file first.scene</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">    -scene 1 -scene-file second.scene</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">    </span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    This example would take the first scene from first.scene, followed by all</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    scenes from second.scene, and write these scenes to out.scene.</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    </span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    Args:</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">        scene_file_out: output - the output scene file.</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">        scene_file: specify a scene file to use scenes from.</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">    Returns:</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        NamedTuple of outputs (described in `SceneFileMergeOutputs`).</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SCENE_FILE_MERGE_METADATA</span><span class="p">)</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-scene-file-merge&quot;</span><span class="p">)</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scene_file_out</span><span class="p">)</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">scene_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-scene-file&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scene_file</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SceneFileMergeOutputs</span><span class="p">(</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="p">)</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="s2">&quot;SCENE_FILE_MERGE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="s2">&quot;SceneFileMergeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="s2">&quot;SceneFileMergeScene&quot;</span><span class="p">,</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="s2">&quot;SceneFileMergeSceneFile&quot;</span><span class="p">,</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="s2">&quot;SceneFileMergeUpTo&quot;</span><span class="p">,</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="s2">&quot;scene_file_merge&quot;</span><span class="p">,</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -276,7 +294,7 @@
                     <div class="attr variable">
             <span class="name">SCENE_FILE_MERGE_METADATA</span>        =
 <input id="SCENE_FILE_MERGE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SCENE_FILE_MERGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;255f84b5d6fd969bf1ef23f3553f3749eb597330&#39;, name=&#39;scene-file-merge&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="SCENE_FILE_MERGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8737d769834b9f2c20e2416bb47bf33092d9b2cd&#39;, name=&#39;scene-file-merge&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -296,12 +314,12 @@
 
     </div>
     <a class="headerlink" href="#SceneFileMergeOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeOutputs-99"><a href="#SceneFileMergeOutputs-99"><span class="linenos"> 99</span></a><span class="k">class</span> <span class="nc">SceneFileMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="SceneFileMergeOutputs-100"><a href="#SceneFileMergeOutputs-100"><span class="linenos">100</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeOutputs-101"><a href="#SceneFileMergeOutputs-101"><span class="linenos">101</span></a><span class="sd">    Output object returned when calling `scene_file_merge(...)`.</span>
-</span><span id="SceneFileMergeOutputs-102"><a href="#SceneFileMergeOutputs-102"><span class="linenos">102</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeOutputs-103"><a href="#SceneFileMergeOutputs-103"><span class="linenos">103</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="SceneFileMergeOutputs-104"><a href="#SceneFileMergeOutputs-104"><span class="linenos">104</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeOutputs-108"><a href="#SceneFileMergeOutputs-108"><span class="linenos">108</span></a><span class="k">class</span> <span class="nc">SceneFileMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="SceneFileMergeOutputs-109"><a href="#SceneFileMergeOutputs-109"><span class="linenos">109</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeOutputs-110"><a href="#SceneFileMergeOutputs-110"><span class="linenos">110</span></a><span class="sd">    Output object returned when calling `scene_file_merge(...)`.</span>
+</span><span id="SceneFileMergeOutputs-111"><a href="#SceneFileMergeOutputs-111"><span class="linenos">111</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeOutputs-112"><a href="#SceneFileMergeOutputs-112"><span class="linenos">112</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="SceneFileMergeOutputs-113"><a href="#SceneFileMergeOutputs-113"><span class="linenos">113</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -359,31 +377,34 @@
 
     </div>
     <a class="headerlink" href="#SceneFileMergeScene"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeScene-45"><a href="#SceneFileMergeScene-45"><span class="linenos">45</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="SceneFileMergeScene-46"><a href="#SceneFileMergeScene-46"><span class="linenos">46</span></a><span class="k">class</span> <span class="nc">SceneFileMergeScene</span><span class="p">:</span>
-</span><span id="SceneFileMergeScene-47"><a href="#SceneFileMergeScene-47"><span class="linenos">47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeScene-48"><a href="#SceneFileMergeScene-48"><span class="linenos">48</span></a><span class="sd">    specify a scene to use</span>
-</span><span id="SceneFileMergeScene-49"><a href="#SceneFileMergeScene-49"><span class="linenos">49</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeScene-50"><a href="#SceneFileMergeScene-50"><span class="linenos">50</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">SceneFileMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="SceneFileMergeScene-51"><a href="#SceneFileMergeScene-51"><span class="linenos">51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of scenes&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeScene-52"><a href="#SceneFileMergeScene-52"><span class="linenos">52</span></a>    
-</span><span id="SceneFileMergeScene-53"><a href="#SceneFileMergeScene-53"><span class="linenos">53</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="SceneFileMergeScene-54"><a href="#SceneFileMergeScene-54"><span class="linenos">54</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="SceneFileMergeScene-55"><a href="#SceneFileMergeScene-55"><span class="linenos">55</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="SceneFileMergeScene-56"><a href="#SceneFileMergeScene-56"><span class="linenos">56</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="SceneFileMergeScene-57"><a href="#SceneFileMergeScene-57"><span class="linenos">57</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeScene-58"><a href="#SceneFileMergeScene-58"><span class="linenos">58</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="SceneFileMergeScene-59"><a href="#SceneFileMergeScene-59"><span class="linenos">59</span></a><span class="sd">        </span>
-</span><span id="SceneFileMergeScene-60"><a href="#SceneFileMergeScene-60"><span class="linenos">60</span></a><span class="sd">        Args:</span>
-</span><span id="SceneFileMergeScene-61"><a href="#SceneFileMergeScene-61"><span class="linenos">61</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="SceneFileMergeScene-62"><a href="#SceneFileMergeScene-62"><span class="linenos">62</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="SceneFileMergeScene-63"><a href="#SceneFileMergeScene-63"><span class="linenos">63</span></a><span class="sd">        Returns:</span>
-</span><span id="SceneFileMergeScene-64"><a href="#SceneFileMergeScene-64"><span class="linenos">64</span></a><span class="sd">            </span>
-</span><span id="SceneFileMergeScene-65"><a href="#SceneFileMergeScene-65"><span class="linenos">65</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeScene-66"><a href="#SceneFileMergeScene-66"><span class="linenos">66</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="SceneFileMergeScene-67"><a href="#SceneFileMergeScene-67"><span class="linenos">67</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SceneFileMergeScene-68"><a href="#SceneFileMergeScene-68"><span class="linenos">68</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="SceneFileMergeScene-69"><a href="#SceneFileMergeScene-69"><span class="linenos">69</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeScene-48"><a href="#SceneFileMergeScene-48"><span class="linenos">48</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="SceneFileMergeScene-49"><a href="#SceneFileMergeScene-49"><span class="linenos">49</span></a><span class="k">class</span> <span class="nc">SceneFileMergeScene</span><span class="p">:</span>
+</span><span id="SceneFileMergeScene-50"><a href="#SceneFileMergeScene-50"><span class="linenos">50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeScene-51"><a href="#SceneFileMergeScene-51"><span class="linenos">51</span></a><span class="sd">    specify a scene to use</span>
+</span><span id="SceneFileMergeScene-52"><a href="#SceneFileMergeScene-52"><span class="linenos">52</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeScene-53"><a href="#SceneFileMergeScene-53"><span class="linenos">53</span></a>    <span class="n">scene_</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="SceneFileMergeScene-54"><a href="#SceneFileMergeScene-54"><span class="linenos">54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the scene number or name&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeScene-55"><a href="#SceneFileMergeScene-55"><span class="linenos">55</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">SceneFileMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="SceneFileMergeScene-56"><a href="#SceneFileMergeScene-56"><span class="linenos">56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of scenes&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeScene-57"><a href="#SceneFileMergeScene-57"><span class="linenos">57</span></a>    
+</span><span id="SceneFileMergeScene-58"><a href="#SceneFileMergeScene-58"><span class="linenos">58</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="SceneFileMergeScene-59"><a href="#SceneFileMergeScene-59"><span class="linenos">59</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="SceneFileMergeScene-60"><a href="#SceneFileMergeScene-60"><span class="linenos">60</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="SceneFileMergeScene-61"><a href="#SceneFileMergeScene-61"><span class="linenos">61</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="SceneFileMergeScene-62"><a href="#SceneFileMergeScene-62"><span class="linenos">62</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeScene-63"><a href="#SceneFileMergeScene-63"><span class="linenos">63</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="SceneFileMergeScene-64"><a href="#SceneFileMergeScene-64"><span class="linenos">64</span></a><span class="sd">        </span>
+</span><span id="SceneFileMergeScene-65"><a href="#SceneFileMergeScene-65"><span class="linenos">65</span></a><span class="sd">        Args:</span>
+</span><span id="SceneFileMergeScene-66"><a href="#SceneFileMergeScene-66"><span class="linenos">66</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="SceneFileMergeScene-67"><a href="#SceneFileMergeScene-67"><span class="linenos">67</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="SceneFileMergeScene-68"><a href="#SceneFileMergeScene-68"><span class="linenos">68</span></a><span class="sd">        Returns:</span>
+</span><span id="SceneFileMergeScene-69"><a href="#SceneFileMergeScene-69"><span class="linenos">69</span></a><span class="sd">            </span>
+</span><span id="SceneFileMergeScene-70"><a href="#SceneFileMergeScene-70"><span class="linenos">70</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeScene-71"><a href="#SceneFileMergeScene-71"><span class="linenos">71</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SceneFileMergeScene-72"><a href="#SceneFileMergeScene-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scene_</span><span class="p">)</span>
+</span><span id="SceneFileMergeScene-73"><a href="#SceneFileMergeScene-73"><span class="linenos">73</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SceneFileMergeScene-74"><a href="#SceneFileMergeScene-74"><span class="linenos">74</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
+</span><span id="SceneFileMergeScene-75"><a href="#SceneFileMergeScene-75"><span class="linenos">75</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -394,13 +415,26 @@
                             <div id="SceneFileMergeScene.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">SceneFileMergeScene</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">up_to</span><span class="p">:</span> <span class="n"><a href="#SceneFileMergeUpTo">SceneFileMergeUpTo</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+        <span class="name">SceneFileMergeScene</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">scene_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">up_to</span><span class="p">:</span> <span class="n"><a href="#SceneFileMergeUpTo">SceneFileMergeUpTo</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
     <a class="headerlink" href="#SceneFileMergeScene.__init__"></a>
     
     
+
+                            </div>
+                            <div id="SceneFileMergeScene.scene_" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scene_</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileMergeScene.scene_"></a>
+    
+            <div class="docstring"><p>the scene number or name</p>
+</div>
+
 
                             </div>
                             <div id="SceneFileMergeScene.up_to" class="classattr">
@@ -428,23 +462,24 @@
 
     </div>
     <a class="headerlink" href="#SceneFileMergeScene.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeScene.run-53"><a href="#SceneFileMergeScene.run-53"><span class="linenos">53</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="SceneFileMergeScene.run-54"><a href="#SceneFileMergeScene.run-54"><span class="linenos">54</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="SceneFileMergeScene.run-55"><a href="#SceneFileMergeScene.run-55"><span class="linenos">55</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="SceneFileMergeScene.run-56"><a href="#SceneFileMergeScene.run-56"><span class="linenos">56</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="SceneFileMergeScene.run-57"><a href="#SceneFileMergeScene.run-57"><span class="linenos">57</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeScene.run-58"><a href="#SceneFileMergeScene.run-58"><span class="linenos">58</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="SceneFileMergeScene.run-59"><a href="#SceneFileMergeScene.run-59"><span class="linenos">59</span></a><span class="sd">        </span>
-</span><span id="SceneFileMergeScene.run-60"><a href="#SceneFileMergeScene.run-60"><span class="linenos">60</span></a><span class="sd">        Args:</span>
-</span><span id="SceneFileMergeScene.run-61"><a href="#SceneFileMergeScene.run-61"><span class="linenos">61</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="SceneFileMergeScene.run-62"><a href="#SceneFileMergeScene.run-62"><span class="linenos">62</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="SceneFileMergeScene.run-63"><a href="#SceneFileMergeScene.run-63"><span class="linenos">63</span></a><span class="sd">        Returns:</span>
-</span><span id="SceneFileMergeScene.run-64"><a href="#SceneFileMergeScene.run-64"><span class="linenos">64</span></a><span class="sd">            </span>
-</span><span id="SceneFileMergeScene.run-65"><a href="#SceneFileMergeScene.run-65"><span class="linenos">65</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeScene.run-66"><a href="#SceneFileMergeScene.run-66"><span class="linenos">66</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="SceneFileMergeScene.run-67"><a href="#SceneFileMergeScene.run-67"><span class="linenos">67</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SceneFileMergeScene.run-68"><a href="#SceneFileMergeScene.run-68"><span class="linenos">68</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="SceneFileMergeScene.run-69"><a href="#SceneFileMergeScene.run-69"><span class="linenos">69</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeScene.run-58"><a href="#SceneFileMergeScene.run-58"><span class="linenos">58</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="SceneFileMergeScene.run-59"><a href="#SceneFileMergeScene.run-59"><span class="linenos">59</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="SceneFileMergeScene.run-60"><a href="#SceneFileMergeScene.run-60"><span class="linenos">60</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="SceneFileMergeScene.run-61"><a href="#SceneFileMergeScene.run-61"><span class="linenos">61</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="SceneFileMergeScene.run-62"><a href="#SceneFileMergeScene.run-62"><span class="linenos">62</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeScene.run-63"><a href="#SceneFileMergeScene.run-63"><span class="linenos">63</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="SceneFileMergeScene.run-64"><a href="#SceneFileMergeScene.run-64"><span class="linenos">64</span></a><span class="sd">        </span>
+</span><span id="SceneFileMergeScene.run-65"><a href="#SceneFileMergeScene.run-65"><span class="linenos">65</span></a><span class="sd">        Args:</span>
+</span><span id="SceneFileMergeScene.run-66"><a href="#SceneFileMergeScene.run-66"><span class="linenos">66</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="SceneFileMergeScene.run-67"><a href="#SceneFileMergeScene.run-67"><span class="linenos">67</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="SceneFileMergeScene.run-68"><a href="#SceneFileMergeScene.run-68"><span class="linenos">68</span></a><span class="sd">        Returns:</span>
+</span><span id="SceneFileMergeScene.run-69"><a href="#SceneFileMergeScene.run-69"><span class="linenos">69</span></a><span class="sd">            </span>
+</span><span id="SceneFileMergeScene.run-70"><a href="#SceneFileMergeScene.run-70"><span class="linenos">70</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeScene.run-71"><a href="#SceneFileMergeScene.run-71"><span class="linenos">71</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SceneFileMergeScene.run-72"><a href="#SceneFileMergeScene.run-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scene_</span><span class="p">)</span>
+</span><span id="SceneFileMergeScene.run-73"><a href="#SceneFileMergeScene.run-73"><span class="linenos">73</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SceneFileMergeScene.run-74"><a href="#SceneFileMergeScene.run-74"><span class="linenos">74</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
+</span><span id="SceneFileMergeScene.run-75"><a href="#SceneFileMergeScene.run-75"><span class="linenos">75</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -475,31 +510,34 @@
 
     </div>
     <a class="headerlink" href="#SceneFileMergeSceneFile"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeSceneFile-72"><a href="#SceneFileMergeSceneFile-72"><span class="linenos">72</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="SceneFileMergeSceneFile-73"><a href="#SceneFileMergeSceneFile-73"><span class="linenos">73</span></a><span class="k">class</span> <span class="nc">SceneFileMergeSceneFile</span><span class="p">:</span>
-</span><span id="SceneFileMergeSceneFile-74"><a href="#SceneFileMergeSceneFile-74"><span class="linenos">74</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeSceneFile-75"><a href="#SceneFileMergeSceneFile-75"><span class="linenos">75</span></a><span class="sd">    specify a scene file to use scenes from</span>
-</span><span id="SceneFileMergeSceneFile-76"><a href="#SceneFileMergeSceneFile-76"><span class="linenos">76</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeSceneFile-77"><a href="#SceneFileMergeSceneFile-77"><span class="linenos">77</span></a>    <span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeScene</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="SceneFileMergeSceneFile-78"><a href="#SceneFileMergeSceneFile-78"><span class="linenos">78</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;specify a scene to use&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeSceneFile-79"><a href="#SceneFileMergeSceneFile-79"><span class="linenos">79</span></a>    
-</span><span id="SceneFileMergeSceneFile-80"><a href="#SceneFileMergeSceneFile-80"><span class="linenos">80</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="SceneFileMergeSceneFile-81"><a href="#SceneFileMergeSceneFile-81"><span class="linenos">81</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="SceneFileMergeSceneFile-82"><a href="#SceneFileMergeSceneFile-82"><span class="linenos">82</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="SceneFileMergeSceneFile-83"><a href="#SceneFileMergeSceneFile-83"><span class="linenos">83</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="SceneFileMergeSceneFile-84"><a href="#SceneFileMergeSceneFile-84"><span class="linenos">84</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeSceneFile-85"><a href="#SceneFileMergeSceneFile-85"><span class="linenos">85</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="SceneFileMergeSceneFile-86"><a href="#SceneFileMergeSceneFile-86"><span class="linenos">86</span></a><span class="sd">        </span>
-</span><span id="SceneFileMergeSceneFile-87"><a href="#SceneFileMergeSceneFile-87"><span class="linenos">87</span></a><span class="sd">        Args:</span>
-</span><span id="SceneFileMergeSceneFile-88"><a href="#SceneFileMergeSceneFile-88"><span class="linenos">88</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="SceneFileMergeSceneFile-89"><a href="#SceneFileMergeSceneFile-89"><span class="linenos">89</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="SceneFileMergeSceneFile-90"><a href="#SceneFileMergeSceneFile-90"><span class="linenos">90</span></a><span class="sd">        Returns:</span>
-</span><span id="SceneFileMergeSceneFile-91"><a href="#SceneFileMergeSceneFile-91"><span class="linenos">91</span></a><span class="sd">            </span>
-</span><span id="SceneFileMergeSceneFile-92"><a href="#SceneFileMergeSceneFile-92"><span class="linenos">92</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeSceneFile-93"><a href="#SceneFileMergeSceneFile-93"><span class="linenos">93</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="SceneFileMergeSceneFile-94"><a href="#SceneFileMergeSceneFile-94"><span class="linenos">94</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SceneFileMergeSceneFile-95"><a href="#SceneFileMergeSceneFile-95"><span class="linenos">95</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-scene&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="SceneFileMergeSceneFile-96"><a href="#SceneFileMergeSceneFile-96"><span class="linenos">96</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeSceneFile-78"><a href="#SceneFileMergeSceneFile-78"><span class="linenos"> 78</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="SceneFileMergeSceneFile-79"><a href="#SceneFileMergeSceneFile-79"><span class="linenos"> 79</span></a><span class="k">class</span> <span class="nc">SceneFileMergeSceneFile</span><span class="p">:</span>
+</span><span id="SceneFileMergeSceneFile-80"><a href="#SceneFileMergeSceneFile-80"><span class="linenos"> 80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeSceneFile-81"><a href="#SceneFileMergeSceneFile-81"><span class="linenos"> 81</span></a><span class="sd">    specify a scene file to use scenes from</span>
+</span><span id="SceneFileMergeSceneFile-82"><a href="#SceneFileMergeSceneFile-82"><span class="linenos"> 82</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeSceneFile-83"><a href="#SceneFileMergeSceneFile-83"><span class="linenos"> 83</span></a>    <span class="n">scene_file_</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="SceneFileMergeSceneFile-84"><a href="#SceneFileMergeSceneFile-84"><span class="linenos"> 84</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the input scene file&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeSceneFile-85"><a href="#SceneFileMergeSceneFile-85"><span class="linenos"> 85</span></a>    <span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeScene</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="SceneFileMergeSceneFile-86"><a href="#SceneFileMergeSceneFile-86"><span class="linenos"> 86</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;specify a scene to use&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeSceneFile-87"><a href="#SceneFileMergeSceneFile-87"><span class="linenos"> 87</span></a>    
+</span><span id="SceneFileMergeSceneFile-88"><a href="#SceneFileMergeSceneFile-88"><span class="linenos"> 88</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="SceneFileMergeSceneFile-89"><a href="#SceneFileMergeSceneFile-89"><span class="linenos"> 89</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="SceneFileMergeSceneFile-90"><a href="#SceneFileMergeSceneFile-90"><span class="linenos"> 90</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="SceneFileMergeSceneFile-91"><a href="#SceneFileMergeSceneFile-91"><span class="linenos"> 91</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="SceneFileMergeSceneFile-92"><a href="#SceneFileMergeSceneFile-92"><span class="linenos"> 92</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeSceneFile-93"><a href="#SceneFileMergeSceneFile-93"><span class="linenos"> 93</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="SceneFileMergeSceneFile-94"><a href="#SceneFileMergeSceneFile-94"><span class="linenos"> 94</span></a><span class="sd">        </span>
+</span><span id="SceneFileMergeSceneFile-95"><a href="#SceneFileMergeSceneFile-95"><span class="linenos"> 95</span></a><span class="sd">        Args:</span>
+</span><span id="SceneFileMergeSceneFile-96"><a href="#SceneFileMergeSceneFile-96"><span class="linenos"> 96</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="SceneFileMergeSceneFile-97"><a href="#SceneFileMergeSceneFile-97"><span class="linenos"> 97</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="SceneFileMergeSceneFile-98"><a href="#SceneFileMergeSceneFile-98"><span class="linenos"> 98</span></a><span class="sd">        Returns:</span>
+</span><span id="SceneFileMergeSceneFile-99"><a href="#SceneFileMergeSceneFile-99"><span class="linenos"> 99</span></a><span class="sd">            </span>
+</span><span id="SceneFileMergeSceneFile-100"><a href="#SceneFileMergeSceneFile-100"><span class="linenos">100</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeSceneFile-101"><a href="#SceneFileMergeSceneFile-101"><span class="linenos">101</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SceneFileMergeSceneFile-102"><a href="#SceneFileMergeSceneFile-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scene_file_</span><span class="p">)</span>
+</span><span id="SceneFileMergeSceneFile-103"><a href="#SceneFileMergeSceneFile-103"><span class="linenos">103</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SceneFileMergeSceneFile-104"><a href="#SceneFileMergeSceneFile-104"><span class="linenos">104</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-scene&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
+</span><span id="SceneFileMergeSceneFile-105"><a href="#SceneFileMergeSceneFile-105"><span class="linenos">105</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -510,13 +548,26 @@
                             <div id="SceneFileMergeSceneFile.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">SceneFileMergeSceneFile</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileMergeScene">SceneFileMergeScene</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+        <span class="name">SceneFileMergeSceneFile</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">scene_file_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileMergeScene">SceneFileMergeScene</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
     <a class="headerlink" href="#SceneFileMergeSceneFile.__init__"></a>
     
     
+
+                            </div>
+                            <div id="SceneFileMergeSceneFile.scene_file_" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scene_file_</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileMergeSceneFile.scene_file_"></a>
+    
+            <div class="docstring"><p>the input scene file</p>
+</div>
+
 
                             </div>
                             <div id="SceneFileMergeSceneFile.scene" class="classattr">
@@ -544,23 +595,24 @@
 
     </div>
     <a class="headerlink" href="#SceneFileMergeSceneFile.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeSceneFile.run-80"><a href="#SceneFileMergeSceneFile.run-80"><span class="linenos">80</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="SceneFileMergeSceneFile.run-81"><a href="#SceneFileMergeSceneFile.run-81"><span class="linenos">81</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="SceneFileMergeSceneFile.run-82"><a href="#SceneFileMergeSceneFile.run-82"><span class="linenos">82</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="SceneFileMergeSceneFile.run-83"><a href="#SceneFileMergeSceneFile.run-83"><span class="linenos">83</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="SceneFileMergeSceneFile.run-84"><a href="#SceneFileMergeSceneFile.run-84"><span class="linenos">84</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeSceneFile.run-85"><a href="#SceneFileMergeSceneFile.run-85"><span class="linenos">85</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="SceneFileMergeSceneFile.run-86"><a href="#SceneFileMergeSceneFile.run-86"><span class="linenos">86</span></a><span class="sd">        </span>
-</span><span id="SceneFileMergeSceneFile.run-87"><a href="#SceneFileMergeSceneFile.run-87"><span class="linenos">87</span></a><span class="sd">        Args:</span>
-</span><span id="SceneFileMergeSceneFile.run-88"><a href="#SceneFileMergeSceneFile.run-88"><span class="linenos">88</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="SceneFileMergeSceneFile.run-89"><a href="#SceneFileMergeSceneFile.run-89"><span class="linenos">89</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="SceneFileMergeSceneFile.run-90"><a href="#SceneFileMergeSceneFile.run-90"><span class="linenos">90</span></a><span class="sd">        Returns:</span>
-</span><span id="SceneFileMergeSceneFile.run-91"><a href="#SceneFileMergeSceneFile.run-91"><span class="linenos">91</span></a><span class="sd">            </span>
-</span><span id="SceneFileMergeSceneFile.run-92"><a href="#SceneFileMergeSceneFile.run-92"><span class="linenos">92</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeSceneFile.run-93"><a href="#SceneFileMergeSceneFile.run-93"><span class="linenos">93</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="SceneFileMergeSceneFile.run-94"><a href="#SceneFileMergeSceneFile.run-94"><span class="linenos">94</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SceneFileMergeSceneFile.run-95"><a href="#SceneFileMergeSceneFile.run-95"><span class="linenos">95</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-scene&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="SceneFileMergeSceneFile.run-96"><a href="#SceneFileMergeSceneFile.run-96"><span class="linenos">96</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeSceneFile.run-88"><a href="#SceneFileMergeSceneFile.run-88"><span class="linenos"> 88</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="SceneFileMergeSceneFile.run-89"><a href="#SceneFileMergeSceneFile.run-89"><span class="linenos"> 89</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="SceneFileMergeSceneFile.run-90"><a href="#SceneFileMergeSceneFile.run-90"><span class="linenos"> 90</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="SceneFileMergeSceneFile.run-91"><a href="#SceneFileMergeSceneFile.run-91"><span class="linenos"> 91</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="SceneFileMergeSceneFile.run-92"><a href="#SceneFileMergeSceneFile.run-92"><span class="linenos"> 92</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeSceneFile.run-93"><a href="#SceneFileMergeSceneFile.run-93"><span class="linenos"> 93</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="SceneFileMergeSceneFile.run-94"><a href="#SceneFileMergeSceneFile.run-94"><span class="linenos"> 94</span></a><span class="sd">        </span>
+</span><span id="SceneFileMergeSceneFile.run-95"><a href="#SceneFileMergeSceneFile.run-95"><span class="linenos"> 95</span></a><span class="sd">        Args:</span>
+</span><span id="SceneFileMergeSceneFile.run-96"><a href="#SceneFileMergeSceneFile.run-96"><span class="linenos"> 96</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="SceneFileMergeSceneFile.run-97"><a href="#SceneFileMergeSceneFile.run-97"><span class="linenos"> 97</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="SceneFileMergeSceneFile.run-98"><a href="#SceneFileMergeSceneFile.run-98"><span class="linenos"> 98</span></a><span class="sd">        Returns:</span>
+</span><span id="SceneFileMergeSceneFile.run-99"><a href="#SceneFileMergeSceneFile.run-99"><span class="linenos"> 99</span></a><span class="sd">            </span>
+</span><span id="SceneFileMergeSceneFile.run-100"><a href="#SceneFileMergeSceneFile.run-100"><span class="linenos">100</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeSceneFile.run-101"><a href="#SceneFileMergeSceneFile.run-101"><span class="linenos">101</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SceneFileMergeSceneFile.run-102"><a href="#SceneFileMergeSceneFile.run-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scene_file_</span><span class="p">)</span>
+</span><span id="SceneFileMergeSceneFile.run-103"><a href="#SceneFileMergeSceneFile.run-103"><span class="linenos">103</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SceneFileMergeSceneFile.run-104"><a href="#SceneFileMergeSceneFile.run-104"><span class="linenos">104</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-scene&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
+</span><span id="SceneFileMergeSceneFile.run-105"><a href="#SceneFileMergeSceneFile.run-105"><span class="linenos">105</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -596,26 +648,29 @@
 </span><span id="SceneFileMergeUpTo-20"><a href="#SceneFileMergeUpTo-20"><span class="linenos">20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="SceneFileMergeUpTo-21"><a href="#SceneFileMergeUpTo-21"><span class="linenos">21</span></a><span class="sd">    use an inclusive range of scenes</span>
 </span><span id="SceneFileMergeUpTo-22"><a href="#SceneFileMergeUpTo-22"><span class="linenos">22</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeUpTo-23"><a href="#SceneFileMergeUpTo-23"><span class="linenos">23</span></a>    <span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="SceneFileMergeUpTo-24"><a href="#SceneFileMergeUpTo-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use the range in reverse order&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeUpTo-25"><a href="#SceneFileMergeUpTo-25"><span class="linenos">25</span></a>    
-</span><span id="SceneFileMergeUpTo-26"><a href="#SceneFileMergeUpTo-26"><span class="linenos">26</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="SceneFileMergeUpTo-27"><a href="#SceneFileMergeUpTo-27"><span class="linenos">27</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="SceneFileMergeUpTo-28"><a href="#SceneFileMergeUpTo-28"><span class="linenos">28</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="SceneFileMergeUpTo-29"><a href="#SceneFileMergeUpTo-29"><span class="linenos">29</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="SceneFileMergeUpTo-30"><a href="#SceneFileMergeUpTo-30"><span class="linenos">30</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeUpTo-31"><a href="#SceneFileMergeUpTo-31"><span class="linenos">31</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="SceneFileMergeUpTo-32"><a href="#SceneFileMergeUpTo-32"><span class="linenos">32</span></a><span class="sd">        </span>
-</span><span id="SceneFileMergeUpTo-33"><a href="#SceneFileMergeUpTo-33"><span class="linenos">33</span></a><span class="sd">        Args:</span>
-</span><span id="SceneFileMergeUpTo-34"><a href="#SceneFileMergeUpTo-34"><span class="linenos">34</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="SceneFileMergeUpTo-35"><a href="#SceneFileMergeUpTo-35"><span class="linenos">35</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="SceneFileMergeUpTo-36"><a href="#SceneFileMergeUpTo-36"><span class="linenos">36</span></a><span class="sd">        Returns:</span>
-</span><span id="SceneFileMergeUpTo-37"><a href="#SceneFileMergeUpTo-37"><span class="linenos">37</span></a><span class="sd">            </span>
-</span><span id="SceneFileMergeUpTo-38"><a href="#SceneFileMergeUpTo-38"><span class="linenos">38</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeUpTo-39"><a href="#SceneFileMergeUpTo-39"><span class="linenos">39</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="SceneFileMergeUpTo-40"><a href="#SceneFileMergeUpTo-40"><span class="linenos">40</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
-</span><span id="SceneFileMergeUpTo-41"><a href="#SceneFileMergeUpTo-41"><span class="linenos">41</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
-</span><span id="SceneFileMergeUpTo-42"><a href="#SceneFileMergeUpTo-42"><span class="linenos">42</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="SceneFileMergeUpTo-23"><a href="#SceneFileMergeUpTo-23"><span class="linenos">23</span></a>    <span class="n">last_column</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="SceneFileMergeUpTo-24"><a href="#SceneFileMergeUpTo-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the number or name of the last scene to include&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeUpTo-25"><a href="#SceneFileMergeUpTo-25"><span class="linenos">25</span></a>    <span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="SceneFileMergeUpTo-26"><a href="#SceneFileMergeUpTo-26"><span class="linenos">26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use the range in reverse order&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeUpTo-27"><a href="#SceneFileMergeUpTo-27"><span class="linenos">27</span></a>    
+</span><span id="SceneFileMergeUpTo-28"><a href="#SceneFileMergeUpTo-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="SceneFileMergeUpTo-29"><a href="#SceneFileMergeUpTo-29"><span class="linenos">29</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="SceneFileMergeUpTo-30"><a href="#SceneFileMergeUpTo-30"><span class="linenos">30</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="SceneFileMergeUpTo-31"><a href="#SceneFileMergeUpTo-31"><span class="linenos">31</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="SceneFileMergeUpTo-32"><a href="#SceneFileMergeUpTo-32"><span class="linenos">32</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeUpTo-33"><a href="#SceneFileMergeUpTo-33"><span class="linenos">33</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="SceneFileMergeUpTo-34"><a href="#SceneFileMergeUpTo-34"><span class="linenos">34</span></a><span class="sd">        </span>
+</span><span id="SceneFileMergeUpTo-35"><a href="#SceneFileMergeUpTo-35"><span class="linenos">35</span></a><span class="sd">        Args:</span>
+</span><span id="SceneFileMergeUpTo-36"><a href="#SceneFileMergeUpTo-36"><span class="linenos">36</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="SceneFileMergeUpTo-37"><a href="#SceneFileMergeUpTo-37"><span class="linenos">37</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="SceneFileMergeUpTo-38"><a href="#SceneFileMergeUpTo-38"><span class="linenos">38</span></a><span class="sd">        Returns:</span>
+</span><span id="SceneFileMergeUpTo-39"><a href="#SceneFileMergeUpTo-39"><span class="linenos">39</span></a><span class="sd">            </span>
+</span><span id="SceneFileMergeUpTo-40"><a href="#SceneFileMergeUpTo-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeUpTo-41"><a href="#SceneFileMergeUpTo-41"><span class="linenos">41</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SceneFileMergeUpTo-42"><a href="#SceneFileMergeUpTo-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_column</span><span class="p">)</span>
+</span><span id="SceneFileMergeUpTo-43"><a href="#SceneFileMergeUpTo-43"><span class="linenos">43</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
+</span><span id="SceneFileMergeUpTo-44"><a href="#SceneFileMergeUpTo-44"><span class="linenos">44</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
+</span><span id="SceneFileMergeUpTo-45"><a href="#SceneFileMergeUpTo-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -626,13 +681,26 @@
                             <div id="SceneFileMergeUpTo.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">SceneFileMergeUpTo</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
+        <span class="name">SceneFileMergeUpTo</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">last_column</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
 
         
     </div>
     <a class="headerlink" href="#SceneFileMergeUpTo.__init__"></a>
     
     
+
+                            </div>
+                            <div id="SceneFileMergeUpTo.last_column" class="classattr">
+                                <div class="attr variable">
+            <span class="name">last_column</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileMergeUpTo.last_column"></a>
+    
+            <div class="docstring"><p>the number or name of the last scene to include</p>
+</div>
+
 
                             </div>
                             <div id="SceneFileMergeUpTo.opt_reverse" class="classattr">
@@ -660,23 +728,24 @@
 
     </div>
     <a class="headerlink" href="#SceneFileMergeUpTo.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeUpTo.run-26"><a href="#SceneFileMergeUpTo.run-26"><span class="linenos">26</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="SceneFileMergeUpTo.run-27"><a href="#SceneFileMergeUpTo.run-27"><span class="linenos">27</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="SceneFileMergeUpTo.run-28"><a href="#SceneFileMergeUpTo.run-28"><span class="linenos">28</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="SceneFileMergeUpTo.run-29"><a href="#SceneFileMergeUpTo.run-29"><span class="linenos">29</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="SceneFileMergeUpTo.run-30"><a href="#SceneFileMergeUpTo.run-30"><span class="linenos">30</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeUpTo.run-31"><a href="#SceneFileMergeUpTo.run-31"><span class="linenos">31</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="SceneFileMergeUpTo.run-32"><a href="#SceneFileMergeUpTo.run-32"><span class="linenos">32</span></a><span class="sd">        </span>
-</span><span id="SceneFileMergeUpTo.run-33"><a href="#SceneFileMergeUpTo.run-33"><span class="linenos">33</span></a><span class="sd">        Args:</span>
-</span><span id="SceneFileMergeUpTo.run-34"><a href="#SceneFileMergeUpTo.run-34"><span class="linenos">34</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="SceneFileMergeUpTo.run-35"><a href="#SceneFileMergeUpTo.run-35"><span class="linenos">35</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="SceneFileMergeUpTo.run-36"><a href="#SceneFileMergeUpTo.run-36"><span class="linenos">36</span></a><span class="sd">        Returns:</span>
-</span><span id="SceneFileMergeUpTo.run-37"><a href="#SceneFileMergeUpTo.run-37"><span class="linenos">37</span></a><span class="sd">            </span>
-</span><span id="SceneFileMergeUpTo.run-38"><a href="#SceneFileMergeUpTo.run-38"><span class="linenos">38</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeUpTo.run-39"><a href="#SceneFileMergeUpTo.run-39"><span class="linenos">39</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="SceneFileMergeUpTo.run-40"><a href="#SceneFileMergeUpTo.run-40"><span class="linenos">40</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
-</span><span id="SceneFileMergeUpTo.run-41"><a href="#SceneFileMergeUpTo.run-41"><span class="linenos">41</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
-</span><span id="SceneFileMergeUpTo.run-42"><a href="#SceneFileMergeUpTo.run-42"><span class="linenos">42</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SceneFileMergeUpTo.run-28"><a href="#SceneFileMergeUpTo.run-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="SceneFileMergeUpTo.run-29"><a href="#SceneFileMergeUpTo.run-29"><span class="linenos">29</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="SceneFileMergeUpTo.run-30"><a href="#SceneFileMergeUpTo.run-30"><span class="linenos">30</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="SceneFileMergeUpTo.run-31"><a href="#SceneFileMergeUpTo.run-31"><span class="linenos">31</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="SceneFileMergeUpTo.run-32"><a href="#SceneFileMergeUpTo.run-32"><span class="linenos">32</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeUpTo.run-33"><a href="#SceneFileMergeUpTo.run-33"><span class="linenos">33</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="SceneFileMergeUpTo.run-34"><a href="#SceneFileMergeUpTo.run-34"><span class="linenos">34</span></a><span class="sd">        </span>
+</span><span id="SceneFileMergeUpTo.run-35"><a href="#SceneFileMergeUpTo.run-35"><span class="linenos">35</span></a><span class="sd">        Args:</span>
+</span><span id="SceneFileMergeUpTo.run-36"><a href="#SceneFileMergeUpTo.run-36"><span class="linenos">36</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="SceneFileMergeUpTo.run-37"><a href="#SceneFileMergeUpTo.run-37"><span class="linenos">37</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="SceneFileMergeUpTo.run-38"><a href="#SceneFileMergeUpTo.run-38"><span class="linenos">38</span></a><span class="sd">        Returns:</span>
+</span><span id="SceneFileMergeUpTo.run-39"><a href="#SceneFileMergeUpTo.run-39"><span class="linenos">39</span></a><span class="sd">            </span>
+</span><span id="SceneFileMergeUpTo.run-40"><a href="#SceneFileMergeUpTo.run-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SceneFileMergeUpTo.run-41"><a href="#SceneFileMergeUpTo.run-41"><span class="linenos">41</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SceneFileMergeUpTo.run-42"><a href="#SceneFileMergeUpTo.run-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_column</span><span class="p">)</span>
+</span><span id="SceneFileMergeUpTo.run-43"><a href="#SceneFileMergeUpTo.run-43"><span class="linenos">43</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
+</span><span id="SceneFileMergeUpTo.run-44"><a href="#SceneFileMergeUpTo.run-44"><span class="linenos">44</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
+</span><span id="SceneFileMergeUpTo.run-45"><a href="#SceneFileMergeUpTo.run-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -706,45 +775,45 @@
 
     </div>
     <a class="headerlink" href="#scene_file_merge"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="scene_file_merge-107"><a href="#scene_file_merge-107"><span class="linenos">107</span></a><span class="k">def</span> <span class="nf">scene_file_merge</span><span class="p">(</span>
-</span><span id="scene_file_merge-108"><a href="#scene_file_merge-108"><span class="linenos">108</span></a>    <span class="n">scene_file_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="scene_file_merge-109"><a href="#scene_file_merge-109"><span class="linenos">109</span></a>    <span class="n">scene_file</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeSceneFile</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="scene_file_merge-110"><a href="#scene_file_merge-110"><span class="linenos">110</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="scene_file_merge-111"><a href="#scene_file_merge-111"><span class="linenos">111</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SceneFileMergeOutputs</span><span class="p">:</span>
-</span><span id="scene_file_merge-112"><a href="#scene_file_merge-112"><span class="linenos">112</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="scene_file_merge-113"><a href="#scene_file_merge-113"><span class="linenos">113</span></a><span class="sd">    scene-file-merge by Washington University School of Medicin.</span>
-</span><span id="scene_file_merge-114"><a href="#scene_file_merge-114"><span class="linenos">114</span></a><span class="sd">    </span>
-</span><span id="scene_file_merge-115"><a href="#scene_file_merge-115"><span class="linenos">115</span></a><span class="sd">    Rearrange scenes into a new file.</span>
-</span><span id="scene_file_merge-116"><a href="#scene_file_merge-116"><span class="linenos">116</span></a><span class="sd">    </span>
-</span><span id="scene_file_merge-117"><a href="#scene_file_merge-117"><span class="linenos">117</span></a><span class="sd">    Takes one or more scene files and constructs a new scene file by</span>
-</span><span id="scene_file_merge-118"><a href="#scene_file_merge-118"><span class="linenos">118</span></a><span class="sd">    concatenating specified scenes from them.</span>
-</span><span id="scene_file_merge-119"><a href="#scene_file_merge-119"><span class="linenos">119</span></a><span class="sd">    </span>
-</span><span id="scene_file_merge-120"><a href="#scene_file_merge-120"><span class="linenos">120</span></a><span class="sd">    Example: wb_command -scene-file-merge out.scene -scene-file first.scene</span>
-</span><span id="scene_file_merge-121"><a href="#scene_file_merge-121"><span class="linenos">121</span></a><span class="sd">    -scene 1 -scene-file second.scene</span>
-</span><span id="scene_file_merge-122"><a href="#scene_file_merge-122"><span class="linenos">122</span></a><span class="sd">    </span>
-</span><span id="scene_file_merge-123"><a href="#scene_file_merge-123"><span class="linenos">123</span></a><span class="sd">    This example would take the first scene from first.scene, followed by all</span>
-</span><span id="scene_file_merge-124"><a href="#scene_file_merge-124"><span class="linenos">124</span></a><span class="sd">    scenes from second.scene, and write these scenes to out.scene.</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="scene_file_merge-116"><a href="#scene_file_merge-116"><span class="linenos">116</span></a><span class="k">def</span> <span class="nf">scene_file_merge</span><span class="p">(</span>
+</span><span id="scene_file_merge-117"><a href="#scene_file_merge-117"><span class="linenos">117</span></a>    <span class="n">scene_file_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="scene_file_merge-118"><a href="#scene_file_merge-118"><span class="linenos">118</span></a>    <span class="n">scene_file</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeSceneFile</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="scene_file_merge-119"><a href="#scene_file_merge-119"><span class="linenos">119</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="scene_file_merge-120"><a href="#scene_file_merge-120"><span class="linenos">120</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SceneFileMergeOutputs</span><span class="p">:</span>
+</span><span id="scene_file_merge-121"><a href="#scene_file_merge-121"><span class="linenos">121</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="scene_file_merge-122"><a href="#scene_file_merge-122"><span class="linenos">122</span></a><span class="sd">    scene-file-merge by Washington University School of Medicin.</span>
+</span><span id="scene_file_merge-123"><a href="#scene_file_merge-123"><span class="linenos">123</span></a><span class="sd">    </span>
+</span><span id="scene_file_merge-124"><a href="#scene_file_merge-124"><span class="linenos">124</span></a><span class="sd">    Rearrange scenes into a new file.</span>
 </span><span id="scene_file_merge-125"><a href="#scene_file_merge-125"><span class="linenos">125</span></a><span class="sd">    </span>
-</span><span id="scene_file_merge-126"><a href="#scene_file_merge-126"><span class="linenos">126</span></a><span class="sd">    Args:</span>
-</span><span id="scene_file_merge-127"><a href="#scene_file_merge-127"><span class="linenos">127</span></a><span class="sd">        scene_file_out: output - the output scene file.</span>
-</span><span id="scene_file_merge-128"><a href="#scene_file_merge-128"><span class="linenos">128</span></a><span class="sd">        scene_file: specify a scene file to use scenes from.</span>
-</span><span id="scene_file_merge-129"><a href="#scene_file_merge-129"><span class="linenos">129</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="scene_file_merge-130"><a href="#scene_file_merge-130"><span class="linenos">130</span></a><span class="sd">    Returns:</span>
-</span><span id="scene_file_merge-131"><a href="#scene_file_merge-131"><span class="linenos">131</span></a><span class="sd">        NamedTuple of outputs (described in `SceneFileMergeOutputs`).</span>
-</span><span id="scene_file_merge-132"><a href="#scene_file_merge-132"><span class="linenos">132</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="scene_file_merge-133"><a href="#scene_file_merge-133"><span class="linenos">133</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="scene_file_merge-134"><a href="#scene_file_merge-134"><span class="linenos">134</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SCENE_FILE_MERGE_METADATA</span><span class="p">)</span>
-</span><span id="scene_file_merge-135"><a href="#scene_file_merge-135"><span class="linenos">135</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="scene_file_merge-136"><a href="#scene_file_merge-136"><span class="linenos">136</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="scene_file_merge-137"><a href="#scene_file_merge-137"><span class="linenos">137</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-scene-file-merge&quot;</span><span class="p">)</span>
-</span><span id="scene_file_merge-138"><a href="#scene_file_merge-138"><span class="linenos">138</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scene_file_out</span><span class="p">)</span>
-</span><span id="scene_file_merge-139"><a href="#scene_file_merge-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">scene_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="scene_file_merge-140"><a href="#scene_file_merge-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-scene-file&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scene_file</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="scene_file_merge-141"><a href="#scene_file_merge-141"><span class="linenos">141</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SceneFileMergeOutputs</span><span class="p">(</span>
-</span><span id="scene_file_merge-142"><a href="#scene_file_merge-142"><span class="linenos">142</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="scene_file_merge-143"><a href="#scene_file_merge-143"><span class="linenos">143</span></a>    <span class="p">)</span>
-</span><span id="scene_file_merge-144"><a href="#scene_file_merge-144"><span class="linenos">144</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="scene_file_merge-145"><a href="#scene_file_merge-145"><span class="linenos">145</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="scene_file_merge-126"><a href="#scene_file_merge-126"><span class="linenos">126</span></a><span class="sd">    Takes one or more scene files and constructs a new scene file by</span>
+</span><span id="scene_file_merge-127"><a href="#scene_file_merge-127"><span class="linenos">127</span></a><span class="sd">    concatenating specified scenes from them.</span>
+</span><span id="scene_file_merge-128"><a href="#scene_file_merge-128"><span class="linenos">128</span></a><span class="sd">    </span>
+</span><span id="scene_file_merge-129"><a href="#scene_file_merge-129"><span class="linenos">129</span></a><span class="sd">    Example: wb_command -scene-file-merge out.scene -scene-file first.scene</span>
+</span><span id="scene_file_merge-130"><a href="#scene_file_merge-130"><span class="linenos">130</span></a><span class="sd">    -scene 1 -scene-file second.scene</span>
+</span><span id="scene_file_merge-131"><a href="#scene_file_merge-131"><span class="linenos">131</span></a><span class="sd">    </span>
+</span><span id="scene_file_merge-132"><a href="#scene_file_merge-132"><span class="linenos">132</span></a><span class="sd">    This example would take the first scene from first.scene, followed by all</span>
+</span><span id="scene_file_merge-133"><a href="#scene_file_merge-133"><span class="linenos">133</span></a><span class="sd">    scenes from second.scene, and write these scenes to out.scene.</span>
+</span><span id="scene_file_merge-134"><a href="#scene_file_merge-134"><span class="linenos">134</span></a><span class="sd">    </span>
+</span><span id="scene_file_merge-135"><a href="#scene_file_merge-135"><span class="linenos">135</span></a><span class="sd">    Args:</span>
+</span><span id="scene_file_merge-136"><a href="#scene_file_merge-136"><span class="linenos">136</span></a><span class="sd">        scene_file_out: output - the output scene file.</span>
+</span><span id="scene_file_merge-137"><a href="#scene_file_merge-137"><span class="linenos">137</span></a><span class="sd">        scene_file: specify a scene file to use scenes from.</span>
+</span><span id="scene_file_merge-138"><a href="#scene_file_merge-138"><span class="linenos">138</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="scene_file_merge-139"><a href="#scene_file_merge-139"><span class="linenos">139</span></a><span class="sd">    Returns:</span>
+</span><span id="scene_file_merge-140"><a href="#scene_file_merge-140"><span class="linenos">140</span></a><span class="sd">        NamedTuple of outputs (described in `SceneFileMergeOutputs`).</span>
+</span><span id="scene_file_merge-141"><a href="#scene_file_merge-141"><span class="linenos">141</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="scene_file_merge-142"><a href="#scene_file_merge-142"><span class="linenos">142</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="scene_file_merge-143"><a href="#scene_file_merge-143"><span class="linenos">143</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SCENE_FILE_MERGE_METADATA</span><span class="p">)</span>
+</span><span id="scene_file_merge-144"><a href="#scene_file_merge-144"><span class="linenos">144</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="scene_file_merge-145"><a href="#scene_file_merge-145"><span class="linenos">145</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="scene_file_merge-146"><a href="#scene_file_merge-146"><span class="linenos">146</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-scene-file-merge&quot;</span><span class="p">)</span>
+</span><span id="scene_file_merge-147"><a href="#scene_file_merge-147"><span class="linenos">147</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scene_file_out</span><span class="p">)</span>
+</span><span id="scene_file_merge-148"><a href="#scene_file_merge-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">scene_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="scene_file_merge-149"><a href="#scene_file_merge-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-scene-file&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scene_file</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
+</span><span id="scene_file_merge-150"><a href="#scene_file_merge-150"><span class="linenos">150</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SceneFileMergeOutputs</span><span class="p">(</span>
+</span><span id="scene_file_merge-151"><a href="#scene_file_merge-151"><span class="linenos">151</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="scene_file_merge-152"><a href="#scene_file_merge-152"><span class="linenos">152</span></a>    <span class="p">)</span>
+</span><span id="scene_file_merge-153"><a href="#scene_file_merge-153"><span class="linenos">153</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="scene_file_merge-154"><a href="#scene_file_merge-154"><span class="linenos">154</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

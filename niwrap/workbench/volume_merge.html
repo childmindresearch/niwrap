@@ -55,6 +55,9 @@
                                 <a class="function" href="#VolumeMergeSubvolume.__init__">VolumeMergeSubvolume</a>
                         </li>
                         <li>
+                                <a class="variable" href="#VolumeMergeSubvolume.subvol">subvol</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#VolumeMergeSubvolume.up_to">up_to</a>
                         </li>
                         <li>
@@ -70,6 +73,9 @@
                                 <a class="function" href="#VolumeMergeUpTo.__init__">VolumeMergeUpTo</a>
                         </li>
                         <li>
+                                <a class="variable" href="#VolumeMergeUpTo.last_subvol">last_subvol</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#VolumeMergeUpTo.opt_reverse">opt_reverse</a>
                         </li>
                         <li>
@@ -83,6 +89,9 @@
                             <ul class="memberlist">
                         <li>
                                 <a class="function" href="#VolumeMergeVolume.__init__">VolumeMergeVolume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeMergeVolume.volume_in">volume_in</a>
                         </li>
                         <li>
                                 <a class="variable" href="#VolumeMergeVolume.subvolume">subvolume</a>
@@ -126,7 +135,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">VOLUME_MERGE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;e4d33d90dc9e26a37d178c6ceeab8d2a0bb16290&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b6c587f3aa48250438cb9fe23635d1468f3cc913&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;volume-merge&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;fcpindi/c-pac:latest&quot;</span><span class="p">,</span>
@@ -138,143 +147,152 @@
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    use an inclusive range of subvolumes</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use the range in reverse order&quot;&quot;&quot;</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>    
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="sd">        </span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="sd">        Args:</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">        Returns:</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">            </span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="k">class</span> <span class="nc">VolumeMergeSubvolume</span><span class="p">:</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    select a single subvolume to use</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">VolumeMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of subvolumes&quot;&quot;&quot;</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>    
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        </span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        Args:</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        Returns:</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            </span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="k">class</span> <span class="nc">VolumeMergeVolume</span><span class="p">:</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    specify an input volume file</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">subvolume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">VolumeMergeSubvolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;select a single subvolume to use&quot;&quot;&quot;</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        </span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        Args:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        Returns:</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">            </span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="k">class</span> <span class="nc">VolumeMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">    Output object returned when calling `volume_merge(...)`.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output volume file&quot;&quot;&quot;</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="n">last_subvol</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the number or name of the last subvolume to include&quot;&quot;&quot;</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>    <span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use the range in reverse order&quot;&quot;&quot;</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>    
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="sd">        </span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">        Args:</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">        Returns:</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">            </span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_subvol</span><span class="p">)</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="k">class</span> <span class="nc">VolumeMergeSubvolume</span><span class="p">:</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    select a single subvolume to use</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>    <span class="n">subvol</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the subvolume number or name&quot;&quot;&quot;</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">VolumeMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of subvolumes&quot;&quot;&quot;</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        </span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        Args:</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        Returns:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">            </span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subvol</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="k">class</span> <span class="nc">VolumeMergeVolume</span><span class="p">:</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    specify an input volume file</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;a volume file to use subvolumes from&quot;&quot;&quot;</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">subvolume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">VolumeMergeSubvolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;select a single subvolume to use&quot;&quot;&quot;</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        </span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        Args:</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        Returns:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            </span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume_in</span><span class="p">))</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>
 </span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="k">def</span> <span class="nf">volume_merge</span><span class="p">(</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">VolumeMergeVolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeMergeOutputs</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    volume-merge by Washington University School of Medicin.</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    </span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    Merge volume files into a new file.</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    </span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    Takes one or more volume files and constructs a new volume file by</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    concatenating subvolumes from them. The input volume files must have the</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    same volume space.</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    </span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    Example: wb_command -volume-merge out.nii -volume first.nii -subvolume 1</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    -volume second.nii</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="k">class</span> <span class="nc">VolumeMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    Output object returned when calling `volume_merge(...)`.</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output volume file&quot;&quot;&quot;</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="k">def</span> <span class="nf">volume_merge</span><span class="p">(</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">VolumeMergeVolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeMergeOutputs</span><span class="p">:</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    volume-merge by Washington University School of Medicin.</span>
 </span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">    </span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">    This example would take the first subvolume from first.nii, followed by all</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">    subvolumes from second.nii, and write these to out.nii.</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">    </span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">    Args:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">        volume_out: the output volume file.</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        volume: specify an input volume file.</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    Returns:</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeMergeOutputs`).</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_MERGE_METADATA</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-merge&quot;</span><span class="p">)</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">))</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-volume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">volume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeMergeOutputs</span><span class="p">(</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="s2">&quot;VOLUME_MERGE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="s2">&quot;VolumeMergeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="s2">&quot;VolumeMergeSubvolume&quot;</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="s2">&quot;VolumeMergeUpTo&quot;</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="s2">&quot;VolumeMergeVolume&quot;</span><span class="p">,</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="s2">&quot;volume_merge&quot;</span><span class="p">,</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="p">]</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">    Merge volume files into a new file.</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">    </span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">    Takes one or more volume files and constructs a new volume file by</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">    concatenating subvolumes from them. The input volume files must have the</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">    same volume space.</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">    </span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    Example: wb_command -volume-merge out.nii -volume first.nii -subvolume 1</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    -volume second.nii</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    </span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    This example would take the first subvolume from first.nii, followed by all</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    subvolumes from second.nii, and write these to out.nii.</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    </span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    Args:</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">        volume_out: the output volume file.</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        volume: specify an input volume file.</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    Returns:</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeMergeOutputs`).</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_MERGE_METADATA</span><span class="p">)</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-merge&quot;</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">))</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-volume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">volume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeMergeOutputs</span><span class="p">(</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="p">)</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="s2">&quot;VOLUME_MERGE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="s2">&quot;VolumeMergeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="s2">&quot;VolumeMergeSubvolume&quot;</span><span class="p">,</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="s2">&quot;VolumeMergeUpTo&quot;</span><span class="p">,</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="s2">&quot;VolumeMergeVolume&quot;</span><span class="p">,</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="s2">&quot;volume_merge&quot;</span><span class="p">,</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -283,7 +301,7 @@
                     <div class="attr variable">
             <span class="name">VOLUME_MERGE_METADATA</span>        =
 <input id="VOLUME_MERGE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="VOLUME_MERGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;e4d33d90dc9e26a37d178c6ceeab8d2a0bb16290&#39;, name=&#39;volume-merge&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="VOLUME_MERGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;b6c587f3aa48250438cb9fe23635d1468f3cc913&#39;, name=&#39;volume-merge&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -303,14 +321,14 @@
 
     </div>
     <a class="headerlink" href="#VolumeMergeOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeOutputs-99"><a href="#VolumeMergeOutputs-99"><span class="linenos"> 99</span></a><span class="k">class</span> <span class="nc">VolumeMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="VolumeMergeOutputs-100"><a href="#VolumeMergeOutputs-100"><span class="linenos">100</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeOutputs-101"><a href="#VolumeMergeOutputs-101"><span class="linenos">101</span></a><span class="sd">    Output object returned when calling `volume_merge(...)`.</span>
-</span><span id="VolumeMergeOutputs-102"><a href="#VolumeMergeOutputs-102"><span class="linenos">102</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="VolumeMergeOutputs-103"><a href="#VolumeMergeOutputs-103"><span class="linenos">103</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="VolumeMergeOutputs-104"><a href="#VolumeMergeOutputs-104"><span class="linenos">104</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeOutputs-105"><a href="#VolumeMergeOutputs-105"><span class="linenos">105</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="VolumeMergeOutputs-106"><a href="#VolumeMergeOutputs-106"><span class="linenos">106</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output volume file&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeOutputs-108"><a href="#VolumeMergeOutputs-108"><span class="linenos">108</span></a><span class="k">class</span> <span class="nc">VolumeMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="VolumeMergeOutputs-109"><a href="#VolumeMergeOutputs-109"><span class="linenos">109</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeOutputs-110"><a href="#VolumeMergeOutputs-110"><span class="linenos">110</span></a><span class="sd">    Output object returned when calling `volume_merge(...)`.</span>
+</span><span id="VolumeMergeOutputs-111"><a href="#VolumeMergeOutputs-111"><span class="linenos">111</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="VolumeMergeOutputs-112"><a href="#VolumeMergeOutputs-112"><span class="linenos">112</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="VolumeMergeOutputs-113"><a href="#VolumeMergeOutputs-113"><span class="linenos">113</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeOutputs-114"><a href="#VolumeMergeOutputs-114"><span class="linenos">114</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="VolumeMergeOutputs-115"><a href="#VolumeMergeOutputs-115"><span class="linenos">115</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output volume file&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -381,31 +399,34 @@
 
     </div>
     <a class="headerlink" href="#VolumeMergeSubvolume"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeSubvolume-45"><a href="#VolumeMergeSubvolume-45"><span class="linenos">45</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="VolumeMergeSubvolume-46"><a href="#VolumeMergeSubvolume-46"><span class="linenos">46</span></a><span class="k">class</span> <span class="nc">VolumeMergeSubvolume</span><span class="p">:</span>
-</span><span id="VolumeMergeSubvolume-47"><a href="#VolumeMergeSubvolume-47"><span class="linenos">47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeSubvolume-48"><a href="#VolumeMergeSubvolume-48"><span class="linenos">48</span></a><span class="sd">    select a single subvolume to use</span>
-</span><span id="VolumeMergeSubvolume-49"><a href="#VolumeMergeSubvolume-49"><span class="linenos">49</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="VolumeMergeSubvolume-50"><a href="#VolumeMergeSubvolume-50"><span class="linenos">50</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">VolumeMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="VolumeMergeSubvolume-51"><a href="#VolumeMergeSubvolume-51"><span class="linenos">51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of subvolumes&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeSubvolume-52"><a href="#VolumeMergeSubvolume-52"><span class="linenos">52</span></a>    
-</span><span id="VolumeMergeSubvolume-53"><a href="#VolumeMergeSubvolume-53"><span class="linenos">53</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="VolumeMergeSubvolume-54"><a href="#VolumeMergeSubvolume-54"><span class="linenos">54</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="VolumeMergeSubvolume-55"><a href="#VolumeMergeSubvolume-55"><span class="linenos">55</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="VolumeMergeSubvolume-56"><a href="#VolumeMergeSubvolume-56"><span class="linenos">56</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="VolumeMergeSubvolume-57"><a href="#VolumeMergeSubvolume-57"><span class="linenos">57</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeSubvolume-58"><a href="#VolumeMergeSubvolume-58"><span class="linenos">58</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="VolumeMergeSubvolume-59"><a href="#VolumeMergeSubvolume-59"><span class="linenos">59</span></a><span class="sd">        </span>
-</span><span id="VolumeMergeSubvolume-60"><a href="#VolumeMergeSubvolume-60"><span class="linenos">60</span></a><span class="sd">        Args:</span>
-</span><span id="VolumeMergeSubvolume-61"><a href="#VolumeMergeSubvolume-61"><span class="linenos">61</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="VolumeMergeSubvolume-62"><a href="#VolumeMergeSubvolume-62"><span class="linenos">62</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="VolumeMergeSubvolume-63"><a href="#VolumeMergeSubvolume-63"><span class="linenos">63</span></a><span class="sd">        Returns:</span>
-</span><span id="VolumeMergeSubvolume-64"><a href="#VolumeMergeSubvolume-64"><span class="linenos">64</span></a><span class="sd">            </span>
-</span><span id="VolumeMergeSubvolume-65"><a href="#VolumeMergeSubvolume-65"><span class="linenos">65</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="VolumeMergeSubvolume-66"><a href="#VolumeMergeSubvolume-66"><span class="linenos">66</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="VolumeMergeSubvolume-67"><a href="#VolumeMergeSubvolume-67"><span class="linenos">67</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="VolumeMergeSubvolume-68"><a href="#VolumeMergeSubvolume-68"><span class="linenos">68</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="VolumeMergeSubvolume-69"><a href="#VolumeMergeSubvolume-69"><span class="linenos">69</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeSubvolume-48"><a href="#VolumeMergeSubvolume-48"><span class="linenos">48</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="VolumeMergeSubvolume-49"><a href="#VolumeMergeSubvolume-49"><span class="linenos">49</span></a><span class="k">class</span> <span class="nc">VolumeMergeSubvolume</span><span class="p">:</span>
+</span><span id="VolumeMergeSubvolume-50"><a href="#VolumeMergeSubvolume-50"><span class="linenos">50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeSubvolume-51"><a href="#VolumeMergeSubvolume-51"><span class="linenos">51</span></a><span class="sd">    select a single subvolume to use</span>
+</span><span id="VolumeMergeSubvolume-52"><a href="#VolumeMergeSubvolume-52"><span class="linenos">52</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="VolumeMergeSubvolume-53"><a href="#VolumeMergeSubvolume-53"><span class="linenos">53</span></a>    <span class="n">subvol</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="VolumeMergeSubvolume-54"><a href="#VolumeMergeSubvolume-54"><span class="linenos">54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the subvolume number or name&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeSubvolume-55"><a href="#VolumeMergeSubvolume-55"><span class="linenos">55</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">VolumeMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="VolumeMergeSubvolume-56"><a href="#VolumeMergeSubvolume-56"><span class="linenos">56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of subvolumes&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeSubvolume-57"><a href="#VolumeMergeSubvolume-57"><span class="linenos">57</span></a>    
+</span><span id="VolumeMergeSubvolume-58"><a href="#VolumeMergeSubvolume-58"><span class="linenos">58</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="VolumeMergeSubvolume-59"><a href="#VolumeMergeSubvolume-59"><span class="linenos">59</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="VolumeMergeSubvolume-60"><a href="#VolumeMergeSubvolume-60"><span class="linenos">60</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="VolumeMergeSubvolume-61"><a href="#VolumeMergeSubvolume-61"><span class="linenos">61</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="VolumeMergeSubvolume-62"><a href="#VolumeMergeSubvolume-62"><span class="linenos">62</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeSubvolume-63"><a href="#VolumeMergeSubvolume-63"><span class="linenos">63</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="VolumeMergeSubvolume-64"><a href="#VolumeMergeSubvolume-64"><span class="linenos">64</span></a><span class="sd">        </span>
+</span><span id="VolumeMergeSubvolume-65"><a href="#VolumeMergeSubvolume-65"><span class="linenos">65</span></a><span class="sd">        Args:</span>
+</span><span id="VolumeMergeSubvolume-66"><a href="#VolumeMergeSubvolume-66"><span class="linenos">66</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="VolumeMergeSubvolume-67"><a href="#VolumeMergeSubvolume-67"><span class="linenos">67</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="VolumeMergeSubvolume-68"><a href="#VolumeMergeSubvolume-68"><span class="linenos">68</span></a><span class="sd">        Returns:</span>
+</span><span id="VolumeMergeSubvolume-69"><a href="#VolumeMergeSubvolume-69"><span class="linenos">69</span></a><span class="sd">            </span>
+</span><span id="VolumeMergeSubvolume-70"><a href="#VolumeMergeSubvolume-70"><span class="linenos">70</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="VolumeMergeSubvolume-71"><a href="#VolumeMergeSubvolume-71"><span class="linenos">71</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="VolumeMergeSubvolume-72"><a href="#VolumeMergeSubvolume-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subvol</span><span class="p">)</span>
+</span><span id="VolumeMergeSubvolume-73"><a href="#VolumeMergeSubvolume-73"><span class="linenos">73</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="VolumeMergeSubvolume-74"><a href="#VolumeMergeSubvolume-74"><span class="linenos">74</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
+</span><span id="VolumeMergeSubvolume-75"><a href="#VolumeMergeSubvolume-75"><span class="linenos">75</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -416,13 +437,26 @@
                             <div id="VolumeMergeSubvolume.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">VolumeMergeSubvolume</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">up_to</span><span class="p">:</span> <span class="n"><a href="#VolumeMergeUpTo">VolumeMergeUpTo</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+        <span class="name">VolumeMergeSubvolume</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subvol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">up_to</span><span class="p">:</span> <span class="n"><a href="#VolumeMergeUpTo">VolumeMergeUpTo</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
     <a class="headerlink" href="#VolumeMergeSubvolume.__init__"></a>
     
     
+
+                            </div>
+                            <div id="VolumeMergeSubvolume.subvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subvol</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeMergeSubvolume.subvol"></a>
+    
+            <div class="docstring"><p>the subvolume number or name</p>
+</div>
+
 
                             </div>
                             <div id="VolumeMergeSubvolume.up_to" class="classattr">
@@ -450,23 +484,24 @@
 
     </div>
     <a class="headerlink" href="#VolumeMergeSubvolume.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeSubvolume.run-53"><a href="#VolumeMergeSubvolume.run-53"><span class="linenos">53</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="VolumeMergeSubvolume.run-54"><a href="#VolumeMergeSubvolume.run-54"><span class="linenos">54</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="VolumeMergeSubvolume.run-55"><a href="#VolumeMergeSubvolume.run-55"><span class="linenos">55</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="VolumeMergeSubvolume.run-56"><a href="#VolumeMergeSubvolume.run-56"><span class="linenos">56</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="VolumeMergeSubvolume.run-57"><a href="#VolumeMergeSubvolume.run-57"><span class="linenos">57</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeSubvolume.run-58"><a href="#VolumeMergeSubvolume.run-58"><span class="linenos">58</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="VolumeMergeSubvolume.run-59"><a href="#VolumeMergeSubvolume.run-59"><span class="linenos">59</span></a><span class="sd">        </span>
-</span><span id="VolumeMergeSubvolume.run-60"><a href="#VolumeMergeSubvolume.run-60"><span class="linenos">60</span></a><span class="sd">        Args:</span>
-</span><span id="VolumeMergeSubvolume.run-61"><a href="#VolumeMergeSubvolume.run-61"><span class="linenos">61</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="VolumeMergeSubvolume.run-62"><a href="#VolumeMergeSubvolume.run-62"><span class="linenos">62</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="VolumeMergeSubvolume.run-63"><a href="#VolumeMergeSubvolume.run-63"><span class="linenos">63</span></a><span class="sd">        Returns:</span>
-</span><span id="VolumeMergeSubvolume.run-64"><a href="#VolumeMergeSubvolume.run-64"><span class="linenos">64</span></a><span class="sd">            </span>
-</span><span id="VolumeMergeSubvolume.run-65"><a href="#VolumeMergeSubvolume.run-65"><span class="linenos">65</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="VolumeMergeSubvolume.run-66"><a href="#VolumeMergeSubvolume.run-66"><span class="linenos">66</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="VolumeMergeSubvolume.run-67"><a href="#VolumeMergeSubvolume.run-67"><span class="linenos">67</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="VolumeMergeSubvolume.run-68"><a href="#VolumeMergeSubvolume.run-68"><span class="linenos">68</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="VolumeMergeSubvolume.run-69"><a href="#VolumeMergeSubvolume.run-69"><span class="linenos">69</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeSubvolume.run-58"><a href="#VolumeMergeSubvolume.run-58"><span class="linenos">58</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="VolumeMergeSubvolume.run-59"><a href="#VolumeMergeSubvolume.run-59"><span class="linenos">59</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="VolumeMergeSubvolume.run-60"><a href="#VolumeMergeSubvolume.run-60"><span class="linenos">60</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="VolumeMergeSubvolume.run-61"><a href="#VolumeMergeSubvolume.run-61"><span class="linenos">61</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="VolumeMergeSubvolume.run-62"><a href="#VolumeMergeSubvolume.run-62"><span class="linenos">62</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeSubvolume.run-63"><a href="#VolumeMergeSubvolume.run-63"><span class="linenos">63</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="VolumeMergeSubvolume.run-64"><a href="#VolumeMergeSubvolume.run-64"><span class="linenos">64</span></a><span class="sd">        </span>
+</span><span id="VolumeMergeSubvolume.run-65"><a href="#VolumeMergeSubvolume.run-65"><span class="linenos">65</span></a><span class="sd">        Args:</span>
+</span><span id="VolumeMergeSubvolume.run-66"><a href="#VolumeMergeSubvolume.run-66"><span class="linenos">66</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="VolumeMergeSubvolume.run-67"><a href="#VolumeMergeSubvolume.run-67"><span class="linenos">67</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="VolumeMergeSubvolume.run-68"><a href="#VolumeMergeSubvolume.run-68"><span class="linenos">68</span></a><span class="sd">        Returns:</span>
+</span><span id="VolumeMergeSubvolume.run-69"><a href="#VolumeMergeSubvolume.run-69"><span class="linenos">69</span></a><span class="sd">            </span>
+</span><span id="VolumeMergeSubvolume.run-70"><a href="#VolumeMergeSubvolume.run-70"><span class="linenos">70</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="VolumeMergeSubvolume.run-71"><a href="#VolumeMergeSubvolume.run-71"><span class="linenos">71</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="VolumeMergeSubvolume.run-72"><a href="#VolumeMergeSubvolume.run-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subvol</span><span class="p">)</span>
+</span><span id="VolumeMergeSubvolume.run-73"><a href="#VolumeMergeSubvolume.run-73"><span class="linenos">73</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="VolumeMergeSubvolume.run-74"><a href="#VolumeMergeSubvolume.run-74"><span class="linenos">74</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
+</span><span id="VolumeMergeSubvolume.run-75"><a href="#VolumeMergeSubvolume.run-75"><span class="linenos">75</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -502,26 +537,29 @@
 </span><span id="VolumeMergeUpTo-20"><a href="#VolumeMergeUpTo-20"><span class="linenos">20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="VolumeMergeUpTo-21"><a href="#VolumeMergeUpTo-21"><span class="linenos">21</span></a><span class="sd">    use an inclusive range of subvolumes</span>
 </span><span id="VolumeMergeUpTo-22"><a href="#VolumeMergeUpTo-22"><span class="linenos">22</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="VolumeMergeUpTo-23"><a href="#VolumeMergeUpTo-23"><span class="linenos">23</span></a>    <span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="VolumeMergeUpTo-24"><a href="#VolumeMergeUpTo-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use the range in reverse order&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeUpTo-25"><a href="#VolumeMergeUpTo-25"><span class="linenos">25</span></a>    
-</span><span id="VolumeMergeUpTo-26"><a href="#VolumeMergeUpTo-26"><span class="linenos">26</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="VolumeMergeUpTo-27"><a href="#VolumeMergeUpTo-27"><span class="linenos">27</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="VolumeMergeUpTo-28"><a href="#VolumeMergeUpTo-28"><span class="linenos">28</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="VolumeMergeUpTo-29"><a href="#VolumeMergeUpTo-29"><span class="linenos">29</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="VolumeMergeUpTo-30"><a href="#VolumeMergeUpTo-30"><span class="linenos">30</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeUpTo-31"><a href="#VolumeMergeUpTo-31"><span class="linenos">31</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="VolumeMergeUpTo-32"><a href="#VolumeMergeUpTo-32"><span class="linenos">32</span></a><span class="sd">        </span>
-</span><span id="VolumeMergeUpTo-33"><a href="#VolumeMergeUpTo-33"><span class="linenos">33</span></a><span class="sd">        Args:</span>
-</span><span id="VolumeMergeUpTo-34"><a href="#VolumeMergeUpTo-34"><span class="linenos">34</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="VolumeMergeUpTo-35"><a href="#VolumeMergeUpTo-35"><span class="linenos">35</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="VolumeMergeUpTo-36"><a href="#VolumeMergeUpTo-36"><span class="linenos">36</span></a><span class="sd">        Returns:</span>
-</span><span id="VolumeMergeUpTo-37"><a href="#VolumeMergeUpTo-37"><span class="linenos">37</span></a><span class="sd">            </span>
-</span><span id="VolumeMergeUpTo-38"><a href="#VolumeMergeUpTo-38"><span class="linenos">38</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="VolumeMergeUpTo-39"><a href="#VolumeMergeUpTo-39"><span class="linenos">39</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="VolumeMergeUpTo-40"><a href="#VolumeMergeUpTo-40"><span class="linenos">40</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
-</span><span id="VolumeMergeUpTo-41"><a href="#VolumeMergeUpTo-41"><span class="linenos">41</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
-</span><span id="VolumeMergeUpTo-42"><a href="#VolumeMergeUpTo-42"><span class="linenos">42</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="VolumeMergeUpTo-23"><a href="#VolumeMergeUpTo-23"><span class="linenos">23</span></a>    <span class="n">last_subvol</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="VolumeMergeUpTo-24"><a href="#VolumeMergeUpTo-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the number or name of the last subvolume to include&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeUpTo-25"><a href="#VolumeMergeUpTo-25"><span class="linenos">25</span></a>    <span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="VolumeMergeUpTo-26"><a href="#VolumeMergeUpTo-26"><span class="linenos">26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use the range in reverse order&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeUpTo-27"><a href="#VolumeMergeUpTo-27"><span class="linenos">27</span></a>    
+</span><span id="VolumeMergeUpTo-28"><a href="#VolumeMergeUpTo-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="VolumeMergeUpTo-29"><a href="#VolumeMergeUpTo-29"><span class="linenos">29</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="VolumeMergeUpTo-30"><a href="#VolumeMergeUpTo-30"><span class="linenos">30</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="VolumeMergeUpTo-31"><a href="#VolumeMergeUpTo-31"><span class="linenos">31</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="VolumeMergeUpTo-32"><a href="#VolumeMergeUpTo-32"><span class="linenos">32</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeUpTo-33"><a href="#VolumeMergeUpTo-33"><span class="linenos">33</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="VolumeMergeUpTo-34"><a href="#VolumeMergeUpTo-34"><span class="linenos">34</span></a><span class="sd">        </span>
+</span><span id="VolumeMergeUpTo-35"><a href="#VolumeMergeUpTo-35"><span class="linenos">35</span></a><span class="sd">        Args:</span>
+</span><span id="VolumeMergeUpTo-36"><a href="#VolumeMergeUpTo-36"><span class="linenos">36</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="VolumeMergeUpTo-37"><a href="#VolumeMergeUpTo-37"><span class="linenos">37</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="VolumeMergeUpTo-38"><a href="#VolumeMergeUpTo-38"><span class="linenos">38</span></a><span class="sd">        Returns:</span>
+</span><span id="VolumeMergeUpTo-39"><a href="#VolumeMergeUpTo-39"><span class="linenos">39</span></a><span class="sd">            </span>
+</span><span id="VolumeMergeUpTo-40"><a href="#VolumeMergeUpTo-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="VolumeMergeUpTo-41"><a href="#VolumeMergeUpTo-41"><span class="linenos">41</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="VolumeMergeUpTo-42"><a href="#VolumeMergeUpTo-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_subvol</span><span class="p">)</span>
+</span><span id="VolumeMergeUpTo-43"><a href="#VolumeMergeUpTo-43"><span class="linenos">43</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
+</span><span id="VolumeMergeUpTo-44"><a href="#VolumeMergeUpTo-44"><span class="linenos">44</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
+</span><span id="VolumeMergeUpTo-45"><a href="#VolumeMergeUpTo-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -532,13 +570,26 @@
                             <div id="VolumeMergeUpTo.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">VolumeMergeUpTo</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
+        <span class="name">VolumeMergeUpTo</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">last_subvol</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
 
         
     </div>
     <a class="headerlink" href="#VolumeMergeUpTo.__init__"></a>
     
     
+
+                            </div>
+                            <div id="VolumeMergeUpTo.last_subvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">last_subvol</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeMergeUpTo.last_subvol"></a>
+    
+            <div class="docstring"><p>the number or name of the last subvolume to include</p>
+</div>
+
 
                             </div>
                             <div id="VolumeMergeUpTo.opt_reverse" class="classattr">
@@ -566,23 +617,24 @@
 
     </div>
     <a class="headerlink" href="#VolumeMergeUpTo.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeUpTo.run-26"><a href="#VolumeMergeUpTo.run-26"><span class="linenos">26</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="VolumeMergeUpTo.run-27"><a href="#VolumeMergeUpTo.run-27"><span class="linenos">27</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="VolumeMergeUpTo.run-28"><a href="#VolumeMergeUpTo.run-28"><span class="linenos">28</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="VolumeMergeUpTo.run-29"><a href="#VolumeMergeUpTo.run-29"><span class="linenos">29</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="VolumeMergeUpTo.run-30"><a href="#VolumeMergeUpTo.run-30"><span class="linenos">30</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeUpTo.run-31"><a href="#VolumeMergeUpTo.run-31"><span class="linenos">31</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="VolumeMergeUpTo.run-32"><a href="#VolumeMergeUpTo.run-32"><span class="linenos">32</span></a><span class="sd">        </span>
-</span><span id="VolumeMergeUpTo.run-33"><a href="#VolumeMergeUpTo.run-33"><span class="linenos">33</span></a><span class="sd">        Args:</span>
-</span><span id="VolumeMergeUpTo.run-34"><a href="#VolumeMergeUpTo.run-34"><span class="linenos">34</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="VolumeMergeUpTo.run-35"><a href="#VolumeMergeUpTo.run-35"><span class="linenos">35</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="VolumeMergeUpTo.run-36"><a href="#VolumeMergeUpTo.run-36"><span class="linenos">36</span></a><span class="sd">        Returns:</span>
-</span><span id="VolumeMergeUpTo.run-37"><a href="#VolumeMergeUpTo.run-37"><span class="linenos">37</span></a><span class="sd">            </span>
-</span><span id="VolumeMergeUpTo.run-38"><a href="#VolumeMergeUpTo.run-38"><span class="linenos">38</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="VolumeMergeUpTo.run-39"><a href="#VolumeMergeUpTo.run-39"><span class="linenos">39</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="VolumeMergeUpTo.run-40"><a href="#VolumeMergeUpTo.run-40"><span class="linenos">40</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
-</span><span id="VolumeMergeUpTo.run-41"><a href="#VolumeMergeUpTo.run-41"><span class="linenos">41</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
-</span><span id="VolumeMergeUpTo.run-42"><a href="#VolumeMergeUpTo.run-42"><span class="linenos">42</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeUpTo.run-28"><a href="#VolumeMergeUpTo.run-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="VolumeMergeUpTo.run-29"><a href="#VolumeMergeUpTo.run-29"><span class="linenos">29</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="VolumeMergeUpTo.run-30"><a href="#VolumeMergeUpTo.run-30"><span class="linenos">30</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="VolumeMergeUpTo.run-31"><a href="#VolumeMergeUpTo.run-31"><span class="linenos">31</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="VolumeMergeUpTo.run-32"><a href="#VolumeMergeUpTo.run-32"><span class="linenos">32</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeUpTo.run-33"><a href="#VolumeMergeUpTo.run-33"><span class="linenos">33</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="VolumeMergeUpTo.run-34"><a href="#VolumeMergeUpTo.run-34"><span class="linenos">34</span></a><span class="sd">        </span>
+</span><span id="VolumeMergeUpTo.run-35"><a href="#VolumeMergeUpTo.run-35"><span class="linenos">35</span></a><span class="sd">        Args:</span>
+</span><span id="VolumeMergeUpTo.run-36"><a href="#VolumeMergeUpTo.run-36"><span class="linenos">36</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="VolumeMergeUpTo.run-37"><a href="#VolumeMergeUpTo.run-37"><span class="linenos">37</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="VolumeMergeUpTo.run-38"><a href="#VolumeMergeUpTo.run-38"><span class="linenos">38</span></a><span class="sd">        Returns:</span>
+</span><span id="VolumeMergeUpTo.run-39"><a href="#VolumeMergeUpTo.run-39"><span class="linenos">39</span></a><span class="sd">            </span>
+</span><span id="VolumeMergeUpTo.run-40"><a href="#VolumeMergeUpTo.run-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="VolumeMergeUpTo.run-41"><a href="#VolumeMergeUpTo.run-41"><span class="linenos">41</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="VolumeMergeUpTo.run-42"><a href="#VolumeMergeUpTo.run-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_subvol</span><span class="p">)</span>
+</span><span id="VolumeMergeUpTo.run-43"><a href="#VolumeMergeUpTo.run-43"><span class="linenos">43</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
+</span><span id="VolumeMergeUpTo.run-44"><a href="#VolumeMergeUpTo.run-44"><span class="linenos">44</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
+</span><span id="VolumeMergeUpTo.run-45"><a href="#VolumeMergeUpTo.run-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -613,31 +665,34 @@
 
     </div>
     <a class="headerlink" href="#VolumeMergeVolume"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeVolume-72"><a href="#VolumeMergeVolume-72"><span class="linenos">72</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="VolumeMergeVolume-73"><a href="#VolumeMergeVolume-73"><span class="linenos">73</span></a><span class="k">class</span> <span class="nc">VolumeMergeVolume</span><span class="p">:</span>
-</span><span id="VolumeMergeVolume-74"><a href="#VolumeMergeVolume-74"><span class="linenos">74</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeVolume-75"><a href="#VolumeMergeVolume-75"><span class="linenos">75</span></a><span class="sd">    specify an input volume file</span>
-</span><span id="VolumeMergeVolume-76"><a href="#VolumeMergeVolume-76"><span class="linenos">76</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="VolumeMergeVolume-77"><a href="#VolumeMergeVolume-77"><span class="linenos">77</span></a>    <span class="n">subvolume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">VolumeMergeSubvolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="VolumeMergeVolume-78"><a href="#VolumeMergeVolume-78"><span class="linenos">78</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;select a single subvolume to use&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeVolume-79"><a href="#VolumeMergeVolume-79"><span class="linenos">79</span></a>    
-</span><span id="VolumeMergeVolume-80"><a href="#VolumeMergeVolume-80"><span class="linenos">80</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="VolumeMergeVolume-81"><a href="#VolumeMergeVolume-81"><span class="linenos">81</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="VolumeMergeVolume-82"><a href="#VolumeMergeVolume-82"><span class="linenos">82</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="VolumeMergeVolume-83"><a href="#VolumeMergeVolume-83"><span class="linenos">83</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="VolumeMergeVolume-84"><a href="#VolumeMergeVolume-84"><span class="linenos">84</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeVolume-85"><a href="#VolumeMergeVolume-85"><span class="linenos">85</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="VolumeMergeVolume-86"><a href="#VolumeMergeVolume-86"><span class="linenos">86</span></a><span class="sd">        </span>
-</span><span id="VolumeMergeVolume-87"><a href="#VolumeMergeVolume-87"><span class="linenos">87</span></a><span class="sd">        Args:</span>
-</span><span id="VolumeMergeVolume-88"><a href="#VolumeMergeVolume-88"><span class="linenos">88</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="VolumeMergeVolume-89"><a href="#VolumeMergeVolume-89"><span class="linenos">89</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="VolumeMergeVolume-90"><a href="#VolumeMergeVolume-90"><span class="linenos">90</span></a><span class="sd">        Returns:</span>
-</span><span id="VolumeMergeVolume-91"><a href="#VolumeMergeVolume-91"><span class="linenos">91</span></a><span class="sd">            </span>
-</span><span id="VolumeMergeVolume-92"><a href="#VolumeMergeVolume-92"><span class="linenos">92</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="VolumeMergeVolume-93"><a href="#VolumeMergeVolume-93"><span class="linenos">93</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="VolumeMergeVolume-94"><a href="#VolumeMergeVolume-94"><span class="linenos">94</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="VolumeMergeVolume-95"><a href="#VolumeMergeVolume-95"><span class="linenos">95</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="VolumeMergeVolume-96"><a href="#VolumeMergeVolume-96"><span class="linenos">96</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeVolume-78"><a href="#VolumeMergeVolume-78"><span class="linenos"> 78</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="VolumeMergeVolume-79"><a href="#VolumeMergeVolume-79"><span class="linenos"> 79</span></a><span class="k">class</span> <span class="nc">VolumeMergeVolume</span><span class="p">:</span>
+</span><span id="VolumeMergeVolume-80"><a href="#VolumeMergeVolume-80"><span class="linenos"> 80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeVolume-81"><a href="#VolumeMergeVolume-81"><span class="linenos"> 81</span></a><span class="sd">    specify an input volume file</span>
+</span><span id="VolumeMergeVolume-82"><a href="#VolumeMergeVolume-82"><span class="linenos"> 82</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="VolumeMergeVolume-83"><a href="#VolumeMergeVolume-83"><span class="linenos"> 83</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="VolumeMergeVolume-84"><a href="#VolumeMergeVolume-84"><span class="linenos"> 84</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;a volume file to use subvolumes from&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeVolume-85"><a href="#VolumeMergeVolume-85"><span class="linenos"> 85</span></a>    <span class="n">subvolume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">VolumeMergeSubvolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="VolumeMergeVolume-86"><a href="#VolumeMergeVolume-86"><span class="linenos"> 86</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;select a single subvolume to use&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeVolume-87"><a href="#VolumeMergeVolume-87"><span class="linenos"> 87</span></a>    
+</span><span id="VolumeMergeVolume-88"><a href="#VolumeMergeVolume-88"><span class="linenos"> 88</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="VolumeMergeVolume-89"><a href="#VolumeMergeVolume-89"><span class="linenos"> 89</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="VolumeMergeVolume-90"><a href="#VolumeMergeVolume-90"><span class="linenos"> 90</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="VolumeMergeVolume-91"><a href="#VolumeMergeVolume-91"><span class="linenos"> 91</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="VolumeMergeVolume-92"><a href="#VolumeMergeVolume-92"><span class="linenos"> 92</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeVolume-93"><a href="#VolumeMergeVolume-93"><span class="linenos"> 93</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="VolumeMergeVolume-94"><a href="#VolumeMergeVolume-94"><span class="linenos"> 94</span></a><span class="sd">        </span>
+</span><span id="VolumeMergeVolume-95"><a href="#VolumeMergeVolume-95"><span class="linenos"> 95</span></a><span class="sd">        Args:</span>
+</span><span id="VolumeMergeVolume-96"><a href="#VolumeMergeVolume-96"><span class="linenos"> 96</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="VolumeMergeVolume-97"><a href="#VolumeMergeVolume-97"><span class="linenos"> 97</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="VolumeMergeVolume-98"><a href="#VolumeMergeVolume-98"><span class="linenos"> 98</span></a><span class="sd">        Returns:</span>
+</span><span id="VolumeMergeVolume-99"><a href="#VolumeMergeVolume-99"><span class="linenos"> 99</span></a><span class="sd">            </span>
+</span><span id="VolumeMergeVolume-100"><a href="#VolumeMergeVolume-100"><span class="linenos">100</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="VolumeMergeVolume-101"><a href="#VolumeMergeVolume-101"><span class="linenos">101</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="VolumeMergeVolume-102"><a href="#VolumeMergeVolume-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume_in</span><span class="p">))</span>
+</span><span id="VolumeMergeVolume-103"><a href="#VolumeMergeVolume-103"><span class="linenos">103</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="VolumeMergeVolume-104"><a href="#VolumeMergeVolume-104"><span class="linenos">104</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
+</span><span id="VolumeMergeVolume-105"><a href="#VolumeMergeVolume-105"><span class="linenos">105</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -648,13 +703,26 @@
                             <div id="VolumeMergeVolume.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">VolumeMergeVolume</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subvolume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#VolumeMergeSubvolume">VolumeMergeSubvolume</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+        <span class="name">VolumeMergeVolume</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subvolume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#VolumeMergeSubvolume">VolumeMergeSubvolume</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
     <a class="headerlink" href="#VolumeMergeVolume.__init__"></a>
     
     
+
+                            </div>
+                            <div id="VolumeMergeVolume.volume_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_in</span><span class="annotation">: pathlib.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeMergeVolume.volume_in"></a>
+    
+            <div class="docstring"><p>a volume file to use subvolumes from</p>
+</div>
+
 
                             </div>
                             <div id="VolumeMergeVolume.subvolume" class="classattr">
@@ -682,23 +750,24 @@
 
     </div>
     <a class="headerlink" href="#VolumeMergeVolume.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeVolume.run-80"><a href="#VolumeMergeVolume.run-80"><span class="linenos">80</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="VolumeMergeVolume.run-81"><a href="#VolumeMergeVolume.run-81"><span class="linenos">81</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="VolumeMergeVolume.run-82"><a href="#VolumeMergeVolume.run-82"><span class="linenos">82</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="VolumeMergeVolume.run-83"><a href="#VolumeMergeVolume.run-83"><span class="linenos">83</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="VolumeMergeVolume.run-84"><a href="#VolumeMergeVolume.run-84"><span class="linenos">84</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeMergeVolume.run-85"><a href="#VolumeMergeVolume.run-85"><span class="linenos">85</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="VolumeMergeVolume.run-86"><a href="#VolumeMergeVolume.run-86"><span class="linenos">86</span></a><span class="sd">        </span>
-</span><span id="VolumeMergeVolume.run-87"><a href="#VolumeMergeVolume.run-87"><span class="linenos">87</span></a><span class="sd">        Args:</span>
-</span><span id="VolumeMergeVolume.run-88"><a href="#VolumeMergeVolume.run-88"><span class="linenos">88</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="VolumeMergeVolume.run-89"><a href="#VolumeMergeVolume.run-89"><span class="linenos">89</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="VolumeMergeVolume.run-90"><a href="#VolumeMergeVolume.run-90"><span class="linenos">90</span></a><span class="sd">        Returns:</span>
-</span><span id="VolumeMergeVolume.run-91"><a href="#VolumeMergeVolume.run-91"><span class="linenos">91</span></a><span class="sd">            </span>
-</span><span id="VolumeMergeVolume.run-92"><a href="#VolumeMergeVolume.run-92"><span class="linenos">92</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="VolumeMergeVolume.run-93"><a href="#VolumeMergeVolume.run-93"><span class="linenos">93</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="VolumeMergeVolume.run-94"><a href="#VolumeMergeVolume.run-94"><span class="linenos">94</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="VolumeMergeVolume.run-95"><a href="#VolumeMergeVolume.run-95"><span class="linenos">95</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="VolumeMergeVolume.run-96"><a href="#VolumeMergeVolume.run-96"><span class="linenos">96</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeMergeVolume.run-88"><a href="#VolumeMergeVolume.run-88"><span class="linenos"> 88</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="VolumeMergeVolume.run-89"><a href="#VolumeMergeVolume.run-89"><span class="linenos"> 89</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="VolumeMergeVolume.run-90"><a href="#VolumeMergeVolume.run-90"><span class="linenos"> 90</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="VolumeMergeVolume.run-91"><a href="#VolumeMergeVolume.run-91"><span class="linenos"> 91</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="VolumeMergeVolume.run-92"><a href="#VolumeMergeVolume.run-92"><span class="linenos"> 92</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeMergeVolume.run-93"><a href="#VolumeMergeVolume.run-93"><span class="linenos"> 93</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="VolumeMergeVolume.run-94"><a href="#VolumeMergeVolume.run-94"><span class="linenos"> 94</span></a><span class="sd">        </span>
+</span><span id="VolumeMergeVolume.run-95"><a href="#VolumeMergeVolume.run-95"><span class="linenos"> 95</span></a><span class="sd">        Args:</span>
+</span><span id="VolumeMergeVolume.run-96"><a href="#VolumeMergeVolume.run-96"><span class="linenos"> 96</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="VolumeMergeVolume.run-97"><a href="#VolumeMergeVolume.run-97"><span class="linenos"> 97</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="VolumeMergeVolume.run-98"><a href="#VolumeMergeVolume.run-98"><span class="linenos"> 98</span></a><span class="sd">        Returns:</span>
+</span><span id="VolumeMergeVolume.run-99"><a href="#VolumeMergeVolume.run-99"><span class="linenos"> 99</span></a><span class="sd">            </span>
+</span><span id="VolumeMergeVolume.run-100"><a href="#VolumeMergeVolume.run-100"><span class="linenos">100</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="VolumeMergeVolume.run-101"><a href="#VolumeMergeVolume.run-101"><span class="linenos">101</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="VolumeMergeVolume.run-102"><a href="#VolumeMergeVolume.run-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume_in</span><span class="p">))</span>
+</span><span id="VolumeMergeVolume.run-103"><a href="#VolumeMergeVolume.run-103"><span class="linenos">103</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="VolumeMergeVolume.run-104"><a href="#VolumeMergeVolume.run-104"><span class="linenos">104</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subvolume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
+</span><span id="VolumeMergeVolume.run-105"><a href="#VolumeMergeVolume.run-105"><span class="linenos">105</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -728,47 +797,47 @@
 
     </div>
     <a class="headerlink" href="#volume_merge"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_merge-109"><a href="#volume_merge-109"><span class="linenos">109</span></a><span class="k">def</span> <span class="nf">volume_merge</span><span class="p">(</span>
-</span><span id="volume_merge-110"><a href="#volume_merge-110"><span class="linenos">110</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="volume_merge-111"><a href="#volume_merge-111"><span class="linenos">111</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">VolumeMergeVolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_merge-112"><a href="#volume_merge-112"><span class="linenos">112</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_merge-113"><a href="#volume_merge-113"><span class="linenos">113</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeMergeOutputs</span><span class="p">:</span>
-</span><span id="volume_merge-114"><a href="#volume_merge-114"><span class="linenos">114</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="volume_merge-115"><a href="#volume_merge-115"><span class="linenos">115</span></a><span class="sd">    volume-merge by Washington University School of Medicin.</span>
-</span><span id="volume_merge-116"><a href="#volume_merge-116"><span class="linenos">116</span></a><span class="sd">    </span>
-</span><span id="volume_merge-117"><a href="#volume_merge-117"><span class="linenos">117</span></a><span class="sd">    Merge volume files into a new file.</span>
-</span><span id="volume_merge-118"><a href="#volume_merge-118"><span class="linenos">118</span></a><span class="sd">    </span>
-</span><span id="volume_merge-119"><a href="#volume_merge-119"><span class="linenos">119</span></a><span class="sd">    Takes one or more volume files and constructs a new volume file by</span>
-</span><span id="volume_merge-120"><a href="#volume_merge-120"><span class="linenos">120</span></a><span class="sd">    concatenating subvolumes from them. The input volume files must have the</span>
-</span><span id="volume_merge-121"><a href="#volume_merge-121"><span class="linenos">121</span></a><span class="sd">    same volume space.</span>
-</span><span id="volume_merge-122"><a href="#volume_merge-122"><span class="linenos">122</span></a><span class="sd">    </span>
-</span><span id="volume_merge-123"><a href="#volume_merge-123"><span class="linenos">123</span></a><span class="sd">    Example: wb_command -volume-merge out.nii -volume first.nii -subvolume 1</span>
-</span><span id="volume_merge-124"><a href="#volume_merge-124"><span class="linenos">124</span></a><span class="sd">    -volume second.nii</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_merge-118"><a href="#volume_merge-118"><span class="linenos">118</span></a><span class="k">def</span> <span class="nf">volume_merge</span><span class="p">(</span>
+</span><span id="volume_merge-119"><a href="#volume_merge-119"><span class="linenos">119</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="volume_merge-120"><a href="#volume_merge-120"><span class="linenos">120</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">VolumeMergeVolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_merge-121"><a href="#volume_merge-121"><span class="linenos">121</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_merge-122"><a href="#volume_merge-122"><span class="linenos">122</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeMergeOutputs</span><span class="p">:</span>
+</span><span id="volume_merge-123"><a href="#volume_merge-123"><span class="linenos">123</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_merge-124"><a href="#volume_merge-124"><span class="linenos">124</span></a><span class="sd">    volume-merge by Washington University School of Medicin.</span>
 </span><span id="volume_merge-125"><a href="#volume_merge-125"><span class="linenos">125</span></a><span class="sd">    </span>
-</span><span id="volume_merge-126"><a href="#volume_merge-126"><span class="linenos">126</span></a><span class="sd">    This example would take the first subvolume from first.nii, followed by all</span>
-</span><span id="volume_merge-127"><a href="#volume_merge-127"><span class="linenos">127</span></a><span class="sd">    subvolumes from second.nii, and write these to out.nii.</span>
-</span><span id="volume_merge-128"><a href="#volume_merge-128"><span class="linenos">128</span></a><span class="sd">    </span>
-</span><span id="volume_merge-129"><a href="#volume_merge-129"><span class="linenos">129</span></a><span class="sd">    Args:</span>
-</span><span id="volume_merge-130"><a href="#volume_merge-130"><span class="linenos">130</span></a><span class="sd">        volume_out: the output volume file.</span>
-</span><span id="volume_merge-131"><a href="#volume_merge-131"><span class="linenos">131</span></a><span class="sd">        volume: specify an input volume file.</span>
-</span><span id="volume_merge-132"><a href="#volume_merge-132"><span class="linenos">132</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_merge-133"><a href="#volume_merge-133"><span class="linenos">133</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_merge-134"><a href="#volume_merge-134"><span class="linenos">134</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeMergeOutputs`).</span>
-</span><span id="volume_merge-135"><a href="#volume_merge-135"><span class="linenos">135</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_merge-136"><a href="#volume_merge-136"><span class="linenos">136</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_merge-137"><a href="#volume_merge-137"><span class="linenos">137</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_MERGE_METADATA</span><span class="p">)</span>
-</span><span id="volume_merge-138"><a href="#volume_merge-138"><span class="linenos">138</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="volume_merge-139"><a href="#volume_merge-139"><span class="linenos">139</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="volume_merge-140"><a href="#volume_merge-140"><span class="linenos">140</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-merge&quot;</span><span class="p">)</span>
-</span><span id="volume_merge-141"><a href="#volume_merge-141"><span class="linenos">141</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">))</span>
-</span><span id="volume_merge-142"><a href="#volume_merge-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_merge-143"><a href="#volume_merge-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-volume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">volume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="volume_merge-144"><a href="#volume_merge-144"><span class="linenos">144</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeMergeOutputs</span><span class="p">(</span>
-</span><span id="volume_merge-145"><a href="#volume_merge-145"><span class="linenos">145</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="volume_merge-146"><a href="#volume_merge-146"><span class="linenos">146</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
-</span><span id="volume_merge-147"><a href="#volume_merge-147"><span class="linenos">147</span></a>    <span class="p">)</span>
-</span><span id="volume_merge-148"><a href="#volume_merge-148"><span class="linenos">148</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="volume_merge-149"><a href="#volume_merge-149"><span class="linenos">149</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="volume_merge-126"><a href="#volume_merge-126"><span class="linenos">126</span></a><span class="sd">    Merge volume files into a new file.</span>
+</span><span id="volume_merge-127"><a href="#volume_merge-127"><span class="linenos">127</span></a><span class="sd">    </span>
+</span><span id="volume_merge-128"><a href="#volume_merge-128"><span class="linenos">128</span></a><span class="sd">    Takes one or more volume files and constructs a new volume file by</span>
+</span><span id="volume_merge-129"><a href="#volume_merge-129"><span class="linenos">129</span></a><span class="sd">    concatenating subvolumes from them. The input volume files must have the</span>
+</span><span id="volume_merge-130"><a href="#volume_merge-130"><span class="linenos">130</span></a><span class="sd">    same volume space.</span>
+</span><span id="volume_merge-131"><a href="#volume_merge-131"><span class="linenos">131</span></a><span class="sd">    </span>
+</span><span id="volume_merge-132"><a href="#volume_merge-132"><span class="linenos">132</span></a><span class="sd">    Example: wb_command -volume-merge out.nii -volume first.nii -subvolume 1</span>
+</span><span id="volume_merge-133"><a href="#volume_merge-133"><span class="linenos">133</span></a><span class="sd">    -volume second.nii</span>
+</span><span id="volume_merge-134"><a href="#volume_merge-134"><span class="linenos">134</span></a><span class="sd">    </span>
+</span><span id="volume_merge-135"><a href="#volume_merge-135"><span class="linenos">135</span></a><span class="sd">    This example would take the first subvolume from first.nii, followed by all</span>
+</span><span id="volume_merge-136"><a href="#volume_merge-136"><span class="linenos">136</span></a><span class="sd">    subvolumes from second.nii, and write these to out.nii.</span>
+</span><span id="volume_merge-137"><a href="#volume_merge-137"><span class="linenos">137</span></a><span class="sd">    </span>
+</span><span id="volume_merge-138"><a href="#volume_merge-138"><span class="linenos">138</span></a><span class="sd">    Args:</span>
+</span><span id="volume_merge-139"><a href="#volume_merge-139"><span class="linenos">139</span></a><span class="sd">        volume_out: the output volume file.</span>
+</span><span id="volume_merge-140"><a href="#volume_merge-140"><span class="linenos">140</span></a><span class="sd">        volume: specify an input volume file.</span>
+</span><span id="volume_merge-141"><a href="#volume_merge-141"><span class="linenos">141</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_merge-142"><a href="#volume_merge-142"><span class="linenos">142</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_merge-143"><a href="#volume_merge-143"><span class="linenos">143</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeMergeOutputs`).</span>
+</span><span id="volume_merge-144"><a href="#volume_merge-144"><span class="linenos">144</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_merge-145"><a href="#volume_merge-145"><span class="linenos">145</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_merge-146"><a href="#volume_merge-146"><span class="linenos">146</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_MERGE_METADATA</span><span class="p">)</span>
+</span><span id="volume_merge-147"><a href="#volume_merge-147"><span class="linenos">147</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="volume_merge-148"><a href="#volume_merge-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="volume_merge-149"><a href="#volume_merge-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-merge&quot;</span><span class="p">)</span>
+</span><span id="volume_merge-150"><a href="#volume_merge-150"><span class="linenos">150</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">))</span>
+</span><span id="volume_merge-151"><a href="#volume_merge-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_merge-152"><a href="#volume_merge-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-volume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">volume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
+</span><span id="volume_merge-153"><a href="#volume_merge-153"><span class="linenos">153</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeMergeOutputs</span><span class="p">(</span>
+</span><span id="volume_merge-154"><a href="#volume_merge-154"><span class="linenos">154</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="volume_merge-155"><a href="#volume_merge-155"><span class="linenos">155</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+</span><span id="volume_merge-156"><a href="#volume_merge-156"><span class="linenos">156</span></a>    <span class="p">)</span>
+</span><span id="volume_merge-157"><a href="#volume_merge-157"><span class="linenos">157</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="volume_merge-158"><a href="#volume_merge-158"><span class="linenos">158</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
