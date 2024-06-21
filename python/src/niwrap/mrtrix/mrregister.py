@@ -730,9 +730,9 @@ def mrregister(
         affine_2tomidway=execution.output_file(f"{affine_2tomidway}") if affine_2tomidway is not None else None,
         affine_log=execution.output_file(f"{affine_log}") if affine_log is not None else None,
         nl_warp_full=execution.output_file(f"{nl_warp_full}") if nl_warp_full is not None else None,
-        transformed=[i.outputs(execution) for i in transformed],
-        transformed_midway=[i.outputs(execution) for i in transformed_midway],
-        nl_warp=nl_warp.outputs(execution),
+        transformed=[i.outputs(execution) for i in transformed] if transformed else None,
+        transformed_midway=[i.outputs(execution) for i in transformed_midway] if transformed_midway else None,
+        nl_warp=nl_warp.outputs(execution) if nl_warp else None,
     )
     execution.run(cargs)
     return ret

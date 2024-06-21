@@ -484,8 +484,8 @@ def mrinfo(
         json_all=execution.output_file(f"{json_all}") if json_all is not None else None,
         export_grad_mrtrix=execution.output_file(f"{export_grad_mrtrix}") if export_grad_mrtrix is not None else None,
         export_pe_table=execution.output_file(f"{export_pe_table}") if export_pe_table is not None else None,
-        export_grad_fsl=export_grad_fsl.outputs(execution),
-        export_pe_eddy=export_pe_eddy.outputs(execution),
+        export_grad_fsl=export_grad_fsl.outputs(execution) if export_grad_fsl else None,
+        export_pe_eddy=export_pe_eddy.outputs(execution) if export_pe_eddy else None,
     )
     execution.run(cargs)
     return ret

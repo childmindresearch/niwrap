@@ -119,7 +119,7 @@ def cifti_label_to_border(
         cargs.extend(["-border", *[a for c in [s.run(execution) for s in border] for a in c]])
     ret = CiftiLabelToBorderOutputs(
         root=execution.output_file("."),
-        border=[i.outputs(execution) for i in border],
+        border=[i.outputs(execution) for i in border] if border else None,
     )
     execution.run(cargs)
     return ret

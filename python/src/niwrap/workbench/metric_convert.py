@@ -168,8 +168,8 @@ def metric_convert(
         cargs.extend(["-from-nifti", *from_nifti.run(execution)])
     ret = MetricConvertOutputs(
         root=execution.output_file("."),
-        to_nifti=to_nifti.outputs(execution),
-        from_nifti=from_nifti.outputs(execution),
+        to_nifti=to_nifti.outputs(execution) if to_nifti else None,
+        from_nifti=from_nifti.outputs(execution) if from_nifti else None,
     )
     execution.run(cargs)
     return ret

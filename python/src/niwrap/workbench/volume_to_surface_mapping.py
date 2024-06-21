@@ -183,7 +183,7 @@ class VolumeToSurfaceMappingRibbonConstrained:
         """
         ret = VolumeToSurfaceMappingRibbonConstrainedOutputs(
             root=execution.output_file("."),
-            output_weights=self.output_weights.outputs(execution),
+            output_weights=self.output_weights.outputs(execution) if self.output_weights else None,
         )
         return ret
 
@@ -321,7 +321,7 @@ def volume_to_surface_mapping(
     ret = VolumeToSurfaceMappingOutputs(
         root=execution.output_file("."),
         metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
-        ribbon_constrained=ribbon_constrained.outputs(execution),
+        ribbon_constrained=ribbon_constrained.outputs(execution) if ribbon_constrained else None,
     )
     execution.run(cargs)
     return ret
