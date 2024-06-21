@@ -3,7 +3,7 @@ import json
 import re
 
 
-PATH_WB_DUMP = pathlib.Path(__file__) / "source/workbench/build/outs"
+PATH_WB_DUMP = pathlib.Path(__file__).parent / "outs"
 PATH_WB_BOUTIQUES = pathlib.Path(__file__).parent.parent.parent / "descriptors" / "workbench"
 
 assert PATH_WB_DUMP.exists(), "Workbench dump not found."
@@ -123,7 +123,7 @@ def make_poor(opt, bt_inputs, bt_outputs, bt_descriptor, repeatable=False):
             "id": as_bt_id(opt["option_switch"]),
             "name": as_bt_id(opt["option_switch"]),
             "description": opt["description"],
-            "command-line": f"",
+            "command-line": "",
             "inputs": [],
             "output-files": [],
         }
@@ -141,6 +141,9 @@ def make_poor(opt, bt_inputs, bt_outputs, bt_descriptor, repeatable=False):
         bt_inputs = new_descriptor["inputs"]
         bt_outputs = new_descriptor["output-files"]
         bt_descriptor = new_descriptor
+
+        for param in opt["params"]:
+            make_param(param, bt_inputs, bt_descriptor)
 
     elif len(opt["params"]) == 0:
         # command line flag

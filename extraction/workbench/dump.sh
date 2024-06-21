@@ -8,5 +8,5 @@ mkdir -p outs
 while IFS= read -r subcommand; do
     echo "Executing wb_command $subcommand"
     # Execute wb_command with the current subcommand and write output to a file
-    CommandLine/wb_command "$subcommand" > "outs/${subcommand}_output.txt" 2> "outs/${subcommand}_error.txt"
+    source/build/CommandLine/wb_command "$subcommand" > "outs/${subcommand}_output.txt" 2> "outs/${subcommand}_error.txt"
 done < out_commands.txt
