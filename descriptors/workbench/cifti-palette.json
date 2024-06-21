@@ -192,10 +192,7 @@
       "optional": true,
       "value-key": "[OPT_INTERPOLATE_INTERPOLATE]",
       "type": "String",
-      "value-choices": [
-        "true",
-        "false"
-      ]
+      "value-choices": ["true", "false"]
     },
     {
       "id": "opt_disp_pos_display",
@@ -205,10 +202,7 @@
       "optional": true,
       "value-key": "[OPT_DISP_POS_DISPLAY]",
       "type": "String",
-      "value-choices": [
-        "true",
-        "false"
-      ]
+      "value-choices": ["true", "false"]
     },
     {
       "id": "opt_disp_neg_display",
@@ -218,10 +212,7 @@
       "optional": true,
       "value-key": "[OPT_DISP_NEG_DISPLAY]",
       "type": "String",
-      "value-choices": [
-        "true",
-        "false"
-      ]
+      "value-choices": ["true", "false"]
     },
     {
       "id": "opt_disp_zero_display",
@@ -231,10 +222,7 @@
       "optional": true,
       "value-key": "[OPT_DISP_ZERO_DISPLAY]",
       "type": "String",
-      "value-choices": [
-        "true",
-        "false"
-      ]
+      "value-choices": ["true", "false"]
     },
     {
       "id": "opt_palette_name_name",
