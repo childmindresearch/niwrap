@@ -31,12 +31,11 @@
       "id": "series",
       "name": "series",
       "description": "make a dtseries file instead of a dscalar",
-      "command-line-flag": "-series",
       "type": {
         "id": "series",
         "name": "series",
         "description": "make a dtseries file instead of a dscalar",
-        "command-line": " [STEP] [START] [OPT_UNIT_UNIT]",
+        "command-line": "-series [STEP] [START] [OPT_UNIT_UNIT]",
         "inputs": [
           {
             "id": "step",
@@ -75,12 +74,11 @@
       "id": "volume_all",
       "name": "volume_all",
       "description": "specify an input volume file for all voxel data",
-      "command-line-flag": "-volume-all",
       "type": {
         "id": "volume_all",
         "name": "volume_all",
         "description": "specify an input volume file for all voxel data",
-        "command-line": " [VOLUME_IN] [OPT_FROM_CROPPED]",
+        "command-line": "-volume-all [VOLUME_IN] [OPT_FROM_CROPPED]",
         "inputs": [
           {
             "id": "volume_in",
@@ -118,12 +116,11 @@
       "id": "cifti",
       "name": "cifti",
       "description": "use input data from a cifti file",
-      "command-line-flag": "-cifti",
       "type": {
         "id": "cifti",
         "name": "cifti",
         "description": "use input data from a cifti file",
-        "command-line": " [CIFTI_IN]",
+        "command-line": "-cifti [CIFTI_IN]",
         "inputs": [
           {
             "id": "cifti_in",
@@ -143,12 +140,11 @@
       "id": "metric",
       "name": "metric",
       "description": "use input data from a metric file",
-      "command-line-flag": "-metric",
       "type": {
         "id": "metric",
         "name": "metric",
         "description": "use input data from a metric file",
-        "command-line": " [STRUCTURE] [METRIC_IN]",
+        "command-line": "-metric [STRUCTURE] [METRIC_IN]",
         "inputs": [
           {
             "id": "structure",
@@ -176,12 +172,11 @@
       "id": "label",
       "name": "label",
       "description": "use input data from surface label files",
-      "command-line-flag": "-label",
       "type": {
         "id": "label",
         "name": "label",
         "description": "use input data from surface label files",
-        "command-line": " [STRUCTURE] [LABEL_IN]",
+        "command-line": "-label [STRUCTURE] [LABEL_IN]",
         "inputs": [
           {
             "id": "structure",
@@ -209,12 +204,11 @@
       "id": "volume",
       "name": "volume",
       "description": "use a volume file for a single volume structure's data",
-      "command-line-flag": "-volume",
       "type": {
         "id": "volume",
         "name": "volume",
         "description": "use a volume file for a single volume structure's data",
-        "command-line": " [STRUCTURE] [VOLUME_IN] [OPT_FROM_CROPPED]",
+        "command-line": "-volume [STRUCTURE] [VOLUME_IN] [OPT_FROM_CROPPED]",
         "inputs": [
           {
             "id": "structure",

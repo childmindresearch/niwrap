@@ -41,12 +41,11 @@
       "id": "var",
       "name": "var",
       "description": "a volume file to use as a variable",
-      "command-line-flag": "-var",
       "type": {
         "id": "var",
         "name": "var",
         "description": "a volume file to use as a variable",
-        "command-line": " [NAME] [VOLUME] [OPT_SUBVOLUME_SUBVOL] [OPT_REPEAT]",
+        "command-line": "-var [NAME] [VOLUME] [OPT_SUBVOLUME_SUBVOL] [OPT_REPEAT]",
         "inputs": [
           {
             "id": "name",

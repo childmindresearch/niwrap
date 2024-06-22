@@ -84,12 +84,11 @@
       "id": "left_surface",
       "name": "left_surface",
       "description": "specify the left surface to use",
-      "command-line-flag": "-left-surface",
       "type": {
         "id": "left_surface",
         "name": "left_surface",
         "description": "specify the left surface to use",
-        "command-line": " [SURFACE] [OPT_CORRECTED_AREAS_AREA_METRIC]",
+        "command-line": "-left-surface [SURFACE] [OPT_CORRECTED_AREAS_AREA_METRIC]",
         "inputs": [
           {
             "id": "surface",
@@ -118,12 +117,11 @@
       "id": "right_surface",
       "name": "right_surface",
       "description": "specify the right surface to use",
-      "command-line-flag": "-right-surface",
       "type": {
         "id": "right_surface",
         "name": "right_surface",
         "description": "specify the right surface to use",
-        "command-line": " [SURFACE] [OPT_CORRECTED_AREAS_AREA_METRIC]",
+        "command-line": "-right-surface [SURFACE] [OPT_CORRECTED_AREAS_AREA_METRIC]",
         "inputs": [
           {
             "id": "surface",
@@ -152,12 +150,11 @@
       "id": "cerebellum_surface",
       "name": "cerebellum_surface",
       "description": "specify the cerebellum surface to use",
-      "command-line-flag": "-cerebellum-surface",
       "type": {
         "id": "cerebellum_surface",
         "name": "cerebellum_surface",
         "description": "specify the cerebellum surface to use",
-        "command-line": " [SURFACE] [OPT_CORRECTED_AREAS_AREA_METRIC]",
+        "command-line": "-cerebellum-surface [SURFACE] [OPT_CORRECTED_AREAS_AREA_METRIC]",
         "inputs": [
           {
             "id": "surface",
@@ -204,12 +201,11 @@
       "id": "size_ratio",
       "name": "size_ratio",
       "description": "ignore clusters smaller than a given fraction of the largest cluster in the structure",
-      "command-line-flag": "-size-ratio",
       "type": {
         "id": "size_ratio",
         "name": "size_ratio",
         "description": "ignore clusters smaller than a given fraction of the largest cluster in the structure",
-        "command-line": " [SURFACE_RATIO] [VOLUME_RATIO]",
+        "command-line": "-size-ratio [SURFACE_RATIO] [VOLUME_RATIO]",
         "inputs": [
           {
             "id": "surface_ratio",
@@ -239,12 +235,11 @@
       "id": "distance",
       "name": "distance",
       "description": "ignore clusters further than a given distance from the largest cluster in the structure",
-      "command-line-flag": "-distance",
       "type": {
         "id": "distance",
         "name": "distance",
         "description": "ignore clusters further than a given distance from the largest cluster in the structure",
-        "command-line": " [SURFACE_DISTANCE] [VOLUME_DISTANCE]",
+        "command-line": "-distance [SURFACE_DISTANCE] [VOLUME_DISTANCE]",
         "inputs": [
           {
             "id": "surface_distance",

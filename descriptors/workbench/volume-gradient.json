@@ -31,12 +31,11 @@
       "id": "presmooth",
       "name": "presmooth",
       "description": "smooth the volume before computing the gradient",
-      "command-line-flag": "-presmooth",
       "type": {
         "id": "presmooth",
         "name": "presmooth",
         "description": "smooth the volume before computing the gradient",
-        "command-line": " [KERNEL] [OPT_FWHM]",
+        "command-line": "-presmooth [KERNEL] [OPT_FWHM]",
         "inputs": [
           {
             "id": "kernel",

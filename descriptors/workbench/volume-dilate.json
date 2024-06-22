@@ -103,12 +103,11 @@
       "id": "presmooth",
       "name": "presmooth",
       "description": "apply presmoothing before computing gradient vectors, not recommended",
-      "command-line-flag": "-presmooth",
       "type": {
         "id": "presmooth",
         "name": "presmooth",
         "description": "apply presmoothing before computing gradient vectors, not recommended",
-        "command-line": " [KERNEL] [OPT_FWHM]",
+        "command-line": "-presmooth [KERNEL] [OPT_FWHM]",
         "inputs": [
           {
             "id": "kernel",

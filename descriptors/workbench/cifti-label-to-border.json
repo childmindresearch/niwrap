@@ -42,12 +42,11 @@
       "id": "border",
       "name": "border",
       "description": "specify output file for a surface structure",
-      "command-line-flag": "-border",
       "type": {
         "id": "border",
         "name": "border",
         "description": "specify output file for a surface structure",
-        "command-line": " [SURFACE] [BORDER_OUT]",
+        "command-line": "-border [SURFACE] [BORDER_OUT]",
         "inputs": [
           {
             "id": "surface",

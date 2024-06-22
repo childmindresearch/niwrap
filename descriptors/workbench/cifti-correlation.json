@@ -31,12 +31,11 @@
       "id": "roi_override",
       "name": "roi_override",
       "description": "perform correlation from a subset of rows to all rows",
-      "command-line-flag": "-roi-override",
       "type": {
         "id": "roi_override",
         "name": "roi_override",
         "description": "perform correlation from a subset of rows to all rows",
-        "command-line": " [OPT_LEFT_ROI_ROI_METRIC] [OPT_RIGHT_ROI_ROI_METRIC] [OPT_CEREBELLUM_ROI_ROI_METRIC] [OPT_VOL_ROI_ROI_VOL] [OPT_CIFTI_ROI_ROI_CIFTI]",
+        "command-line": "-roi-override [OPT_LEFT_ROI_ROI_METRIC] [OPT_RIGHT_ROI_ROI_METRIC] [OPT_CEREBELLUM_ROI_ROI_METRIC] [OPT_VOL_ROI_ROI_VOL] [OPT_CIFTI_ROI_ROI_CIFTI]",
         "inputs": [
           {
             "id": "opt_left_roi_roi_metric",

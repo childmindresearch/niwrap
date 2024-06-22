@@ -23,12 +23,11 @@
       "id": "volume",
       "name": "volume",
       "description": "volume component",
-      "command-line-flag": "-volume",
       "type": {
         "id": "volume",
         "name": "volume",
         "description": "volume component",
-        "command-line": " [LABEL_VOLUME] [STRUCTURE_LABEL_VOLUME]",
+        "command-line": "-volume [LABEL_VOLUME] [STRUCTURE_LABEL_VOLUME]",
         "inputs": [
           {
             "id": "label_volume",
@@ -56,12 +55,11 @@
       "id": "left_label",
       "name": "left_label",
       "description": "label file for left surface",
-      "command-line-flag": "-left-label",
       "type": {
         "id": "left_label",
         "name": "left_label",
         "description": "label file for left surface",
-        "command-line": " [LABEL] [OPT_ROI_LEFT_ROI_METRIC]",
+        "command-line": "-left-label [LABEL] [OPT_ROI_LEFT_ROI_METRIC]",
         "inputs": [
           {
             "id": "label",
@@ -90,12 +88,11 @@
       "id": "right_label",
       "name": "right_label",
       "description": "label for left surface",
-      "command-line-flag": "-right-label",
       "type": {
         "id": "right_label",
         "name": "right_label",
         "description": "label for left surface",
-        "command-line": " [LABEL] [OPT_ROI_RIGHT_ROI_METRIC]",
+        "command-line": "-right-label [LABEL] [OPT_ROI_RIGHT_ROI_METRIC]",
         "inputs": [
           {
             "id": "label",
@@ -124,12 +121,11 @@
       "id": "cerebellum_label",
       "name": "cerebellum_label",
       "description": "label for the cerebellum",
-      "command-line-flag": "-cerebellum-label",
       "type": {
         "id": "cerebellum_label",
         "name": "cerebellum_label",
         "description": "label for the cerebellum",
-        "command-line": " [LABEL] [OPT_ROI_CEREBELLUM_ROI_METRIC]",
+        "command-line": "-cerebellum-label [LABEL] [OPT_ROI_CEREBELLUM_ROI_METRIC]",
         "inputs": [
           {
             "id": "label",

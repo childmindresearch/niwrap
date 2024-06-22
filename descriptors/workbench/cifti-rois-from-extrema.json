@@ -84,12 +84,11 @@
       "id": "gaussian",
       "name": "gaussian",
       "description": "generate gaussian kernels instead of flat ROIs",
-      "command-line-flag": "-gaussian",
       "type": {
         "id": "gaussian",
         "name": "gaussian",
         "description": "generate gaussian kernels instead of flat ROIs",
-        "command-line": " [SURF_SIGMA] [VOL_SIGMA]",
+        "command-line": "-gaussian [SURF_SIGMA] [VOL_SIGMA]",
         "inputs": [
           {
             "id": "surf_sigma",

@@ -31,12 +31,11 @@
       "id": "volume_all",
       "name": "volume_all",
       "description": "export the the mapping of all voxels",
-      "command-line-flag": "-volume-all",
       "type": {
         "id": "volume_all",
         "name": "volume_all",
         "description": "export the the mapping of all voxels",
-        "command-line": " [TEXT_OUT] [OPT_NO_CIFTI_INDEX] [OPT_STRUCTURE]",
+        "command-line": "-volume-all [TEXT_OUT] [OPT_NO_CIFTI_INDEX] [OPT_STRUCTURE]",
         "inputs": [
           {
             "id": "text_out",
@@ -74,12 +73,11 @@
       "id": "surface",
       "name": "surface",
       "description": "export the the mapping of one surface structure",
-      "command-line-flag": "-surface",
       "type": {
         "id": "surface",
         "name": "surface",
         "description": "export the the mapping of one surface structure",
-        "command-line": " [STRUCTURE] [TEXT_OUT] [OPT_NO_CIFTI_INDEX]",
+        "command-line": "-surface [STRUCTURE] [TEXT_OUT] [OPT_NO_CIFTI_INDEX]",
         "inputs": [
           {
             "id": "structure",
@@ -116,12 +114,11 @@
       "id": "volume",
       "name": "volume",
       "description": "export the the mapping of one volume structure",
-      "command-line-flag": "-volume",
       "type": {
         "id": "volume",
         "name": "volume",
         "description": "export the the mapping of one volume structure",
-        "command-line": " [STRUCTURE] [TEXT_OUT] [OPT_NO_CIFTI_INDEX]",
+        "command-line": "-volume [STRUCTURE] [TEXT_OUT] [OPT_NO_CIFTI_INDEX]",
         "inputs": [
           {
             "id": "structure",

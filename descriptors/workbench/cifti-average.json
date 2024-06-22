@@ -23,12 +23,11 @@
       "id": "exclude_outliers",
       "name": "exclude_outliers",
       "description": "exclude outliers by standard deviation of each element across files",
-      "command-line-flag": "-exclude-outliers",
       "type": {
         "id": "exclude_outliers",
         "name": "exclude_outliers",
         "description": "exclude outliers by standard deviation of each element across files",
-        "command-line": " [SIGMA_BELOW] [SIGMA_ABOVE]",
+        "command-line": "-exclude-outliers [SIGMA_BELOW] [SIGMA_ABOVE]",
         "inputs": [
           {
             "id": "sigma_below",
@@ -68,12 +67,11 @@
       "id": "cifti",
       "name": "cifti",
       "description": "specify an input file",
-      "command-line-flag": "-cifti",
       "type": {
         "id": "cifti",
         "name": "cifti",
         "description": "specify an input file",
-        "command-line": " [CIFTI_IN] [OPT_WEIGHT_WEIGHT]",
+        "command-line": "-cifti [CIFTI_IN] [OPT_WEIGHT_WEIGHT]",
         "inputs": [
           {
             "id": "cifti_in",

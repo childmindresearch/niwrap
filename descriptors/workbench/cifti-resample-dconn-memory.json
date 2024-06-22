@@ -72,12 +72,11 @@
       "id": "volume_predilate",
       "name": "volume_predilate",
       "description": "dilate the volume components before resampling",
-      "command-line-flag": "-volume-predilate",
       "type": {
         "id": "volume_predilate",
         "name": "volume_predilate",
         "description": "dilate the volume components before resampling",
-        "command-line": " [DILATE_MM] [OPT_NEAREST] [WEIGHTED]",
+        "command-line": "-volume-predilate [DILATE_MM] [OPT_NEAREST] [WEIGHTED]",
         "inputs": [
           {
             "id": "dilate_mm",
@@ -101,12 +100,11 @@
             "id": "weighted",
             "name": "weighted",
             "description": "use weighted dilation (default)",
-            "command-line-flag": "-weighted",
             "type": {
               "id": "weighted",
               "name": "weighted",
               "description": "use weighted dilation (default)",
-              "command-line": " [OPT_EXPONENT_EXPONENT] [OPT_LEGACY_CUTOFF]",
+              "command-line": "-weighted [OPT_EXPONENT_EXPONENT] [OPT_LEGACY_CUTOFF]",
               "inputs": [
                 {
                   "id": "opt_exponent_exponent",
@@ -143,12 +141,11 @@
       "id": "surface_postdilate",
       "name": "surface_postdilate",
       "description": "dilate the surface components after resampling",
-      "command-line-flag": "-surface-postdilate",
       "type": {
         "id": "surface_postdilate",
         "name": "surface_postdilate",
         "description": "dilate the surface components after resampling",
-        "command-line": " [DILATE_MM] [OPT_NEAREST] [OPT_LINEAR] [WEIGHTED]",
+        "command-line": "-surface-postdilate [DILATE_MM] [OPT_NEAREST] [OPT_LINEAR] [WEIGHTED]",
         "inputs": [
           {
             "id": "dilate_mm",
@@ -181,12 +178,11 @@
             "id": "weighted",
             "name": "weighted",
             "description": "use weighted dilation (default)",
-            "command-line-flag": "-weighted",
             "type": {
               "id": "weighted",
               "name": "weighted",
               "description": "use weighted dilation (default)",
-              "command-line": " [OPT_EXPONENT_EXPONENT] [OPT_LEGACY_CUTOFF]",
+              "command-line": "-weighted [OPT_EXPONENT_EXPONENT] [OPT_LEGACY_CUTOFF]",
               "inputs": [
                 {
                   "id": "opt_exponent_exponent",
@@ -223,12 +219,11 @@
       "id": "affine",
       "name": "affine",
       "description": "use an affine transformation on the volume components",
-      "command-line-flag": "-affine",
       "type": {
         "id": "affine",
         "name": "affine",
         "description": "use an affine transformation on the volume components",
-        "command-line": " [AFFINE_FILE] [FLIRT]",
+        "command-line": "-affine [AFFINE_FILE] [FLIRT]",
         "inputs": [
           {
             "id": "affine_file",
@@ -242,12 +237,11 @@
             "id": "flirt",
             "name": "flirt",
             "description": "MUST be used if affine is a flirt affine",
-            "command-line-flag": "-flirt",
             "type": {
               "id": "flirt",
               "name": "flirt",
               "description": "MUST be used if affine is a flirt affine",
-              "command-line": " [SOURCE_VOLUME] [TARGET_VOLUME]",
+              "command-line": "-flirt [SOURCE_VOLUME] [TARGET_VOLUME]",
               "inputs": [
                 {
                   "id": "source_volume",
@@ -281,12 +275,11 @@
       "id": "warpfield",
       "name": "warpfield",
       "description": "use a warpfield on the volume components",
-      "command-line-flag": "-warpfield",
       "type": {
         "id": "warpfield",
         "name": "warpfield",
         "description": "use a warpfield on the volume components",
-        "command-line": " [WARPFIELD] [OPT_FNIRT_SOURCE_VOLUME]",
+        "command-line": "-warpfield [WARPFIELD] [OPT_FNIRT_SOURCE_VOLUME]",
         "inputs": [
           {
             "id": "warpfield",
@@ -315,12 +308,11 @@
       "id": "left_spheres",
       "name": "left_spheres",
       "description": "specify spheres for left surface resampling",
-      "command-line-flag": "-left-spheres",
       "type": {
         "id": "left_spheres",
         "name": "left_spheres",
         "description": "specify spheres for left surface resampling",
-        "command-line": " [CURRENT_SPHERE] [NEW_SPHERE] [LEFT_AREA_SURFS] [LEFT_AREA_METRICS]",
+        "command-line": "-left-spheres [CURRENT_SPHERE] [NEW_SPHERE] [LEFT_AREA_SURFS] [LEFT_AREA_METRICS]",
         "inputs": [
           {
             "id": "current_sphere",
@@ -342,12 +334,11 @@
             "id": "left_area_surfs",
             "name": "left_area_surfs",
             "description": "specify left surfaces to do vertex area correction based on",
-            "command-line-flag": "-left-area-surfs",
             "type": {
               "id": "left_area_surfs",
               "name": "left_area_surfs",
               "description": "specify left surfaces to do vertex area correction based on",
-              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "command-line": "-left-area-surfs [CURRENT_AREA] [NEW_AREA]",
               "inputs": [
                 {
                   "id": "current_area",
@@ -375,12 +366,11 @@
             "id": "left_area_metrics",
             "name": "left_area_metrics",
             "description": "specify left vertex area metrics to do area correction based on",
-            "command-line-flag": "-left-area-metrics",
             "type": {
               "id": "left_area_metrics",
               "name": "left_area_metrics",
               "description": "specify left vertex area metrics to do area correction based on",
-              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "command-line": "-left-area-metrics [CURRENT_AREA] [NEW_AREA]",
               "inputs": [
                 {
                   "id": "current_area",
@@ -414,12 +404,11 @@
       "id": "right_spheres",
       "name": "right_spheres",
       "description": "specify spheres for right surface resampling",
-      "command-line-flag": "-right-spheres",
       "type": {
         "id": "right_spheres",
         "name": "right_spheres",
         "description": "specify spheres for right surface resampling",
-        "command-line": " [CURRENT_SPHERE] [NEW_SPHERE] [RIGHT_AREA_SURFS] [RIGHT_AREA_METRICS]",
+        "command-line": "-right-spheres [CURRENT_SPHERE] [NEW_SPHERE] [RIGHT_AREA_SURFS] [RIGHT_AREA_METRICS]",
         "inputs": [
           {
             "id": "current_sphere",
@@ -441,12 +430,11 @@
             "id": "right_area_surfs",
             "name": "right_area_surfs",
             "description": "specify right surfaces to do vertex area correction based on",
-            "command-line-flag": "-right-area-surfs",
             "type": {
               "id": "right_area_surfs",
               "name": "right_area_surfs",
               "description": "specify right surfaces to do vertex area correction based on",
-              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "command-line": "-right-area-surfs [CURRENT_AREA] [NEW_AREA]",
               "inputs": [
                 {
                   "id": "current_area",
@@ -474,12 +462,11 @@
             "id": "right_area_metrics",
             "name": "right_area_metrics",
             "description": "specify right vertex area metrics to do area correction based on",
-            "command-line-flag": "-right-area-metrics",
             "type": {
               "id": "right_area_metrics",
               "name": "right_area_metrics",
               "description": "specify right vertex area metrics to do area correction based on",
-              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "command-line": "-right-area-metrics [CURRENT_AREA] [NEW_AREA]",
               "inputs": [
                 {
                   "id": "current_area",
@@ -513,12 +500,11 @@
       "id": "cerebellum_spheres",
       "name": "cerebellum_spheres",
       "description": "specify spheres for cerebellum surface resampling",
-      "command-line-flag": "-cerebellum-spheres",
       "type": {
         "id": "cerebellum_spheres",
         "name": "cerebellum_spheres",
         "description": "specify spheres for cerebellum surface resampling",
-        "command-line": " [CURRENT_SPHERE] [NEW_SPHERE] [CEREBELLUM_AREA_SURFS] [CEREBELLUM_AREA_METRICS]",
+        "command-line": "-cerebellum-spheres [CURRENT_SPHERE] [NEW_SPHERE] [CEREBELLUM_AREA_SURFS] [CEREBELLUM_AREA_METRICS]",
         "inputs": [
           {
             "id": "current_sphere",
@@ -540,12 +526,11 @@
             "id": "cerebellum_area_surfs",
             "name": "cerebellum_area_surfs",
             "description": "specify cerebellum surfaces to do vertex area correction based on",
-            "command-line-flag": "-cerebellum-area-surfs",
             "type": {
               "id": "cerebellum_area_surfs",
               "name": "cerebellum_area_surfs",
               "description": "specify cerebellum surfaces to do vertex area correction based on",
-              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "command-line": "-cerebellum-area-surfs [CURRENT_AREA] [NEW_AREA]",
               "inputs": [
                 {
                   "id": "current_area",
@@ -573,12 +558,11 @@
             "id": "cerebellum_area_metrics",
             "name": "cerebellum_area_metrics",
             "description": "specify cerebellum vertex area metrics to do area correction based on",
-            "command-line-flag": "-cerebellum-area-metrics",
             "type": {
               "id": "cerebellum_area_metrics",
               "name": "cerebellum_area_metrics",
               "description": "specify cerebellum vertex area metrics to do area correction based on",
-              "command-line": " [CURRENT_AREA] [NEW_AREA]",
+              "command-line": "-cerebellum-area-metrics [CURRENT_AREA] [NEW_AREA]",
               "inputs": [
                 {
                   "id": "current_area",

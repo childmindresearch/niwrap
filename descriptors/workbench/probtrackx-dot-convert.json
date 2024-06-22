@@ -31,12 +31,11 @@
       "id": "row_voxels",
       "name": "row_voxels",
       "description": "the output mapping along a row will be voxels",
-      "command-line-flag": "-row-voxels",
       "type": {
         "id": "row_voxels",
         "name": "row_voxels",
         "description": "the output mapping along a row will be voxels",
-        "command-line": " [VOXEL_LIST_FILE] [LABEL_VOL]",
+        "command-line": "-row-voxels [VOXEL_LIST_FILE] [LABEL_VOL]",
         "inputs": [
           {
             "id": "voxel_list_file",
@@ -73,12 +72,11 @@
       "id": "row_cifti",
       "name": "row_cifti",
       "description": "take the mapping along a row from a cifti file",
-      "command-line-flag": "-row-cifti",
       "type": {
         "id": "row_cifti",
         "name": "row_cifti",
         "description": "take the mapping along a row from a cifti file",
-        "command-line": " [CIFTI] [DIRECTION]",
+        "command-line": "-row-cifti [CIFTI] [DIRECTION]",
         "inputs": [
           {
             "id": "cifti",
@@ -106,12 +104,11 @@
       "id": "col_voxels",
       "name": "col_voxels",
       "description": "the output mapping along a column will be voxels",
-      "command-line-flag": "-col-voxels",
       "type": {
         "id": "col_voxels",
         "name": "col_voxels",
         "description": "the output mapping along a column will be voxels",
-        "command-line": " [VOXEL_LIST_FILE] [LABEL_VOL]",
+        "command-line": "-col-voxels [VOXEL_LIST_FILE] [LABEL_VOL]",
         "inputs": [
           {
             "id": "voxel_list_file",
@@ -148,12 +145,11 @@
       "id": "col_cifti",
       "name": "col_cifti",
       "description": "take the mapping along a column from a cifti file",
-      "command-line-flag": "-col-cifti",
       "type": {
         "id": "col_cifti",
         "name": "col_cifti",
         "description": "take the mapping along a column from a cifti file",
-        "command-line": " [CIFTI] [DIRECTION]",
+        "command-line": "-col-cifti [CIFTI] [DIRECTION]",
         "inputs": [
           {
             "id": "cifti",

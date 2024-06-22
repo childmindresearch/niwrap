@@ -31,12 +31,11 @@
       "id": "fiber",
       "name": "fiber",
       "description": "specify the parameter volumes for a fiber",
-      "command-line-flag": "-fiber",
       "type": {
         "id": "fiber",
         "name": "fiber",
         "description": "specify the parameter volumes for a fiber",
-        "command-line": " [MEAN_F] [STDEV_F] [THETA] [PHI] [PSI] [KA] [KB]",
+        "command-line": "-fiber [MEAN_F] [STDEV_F] [THETA] [PHI] [PSI] [KA] [KB]",
         "inputs": [
           {
             "id": "mean_f",

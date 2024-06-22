@@ -49,12 +49,11 @@
       "id": "flirt_out",
       "name": "flirt_out",
       "description": "write output as a flirt matrix rather than a world coordinate transform",
-      "command-line-flag": "-flirt-out",
       "type": {
         "id": "flirt_out",
         "name": "flirt_out",
         "description": "write output as a flirt matrix rather than a world coordinate transform",
-        "command-line": " [SOURCE_VOLUME] [TARGET_VOLUME]",
+        "command-line": "-flirt-out [SOURCE_VOLUME] [TARGET_VOLUME]",
         "inputs": [
           {
             "id": "source_volume",

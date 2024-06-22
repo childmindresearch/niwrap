@@ -60,12 +60,11 @@
       "id": "surface",
       "name": "surface",
       "description": "specify an input surface",
-      "command-line-flag": "-surface",
       "type": {
         "id": "surface",
         "name": "surface",
         "description": "specify an input surface",
-        "command-line": " [STRUCTURE] [SURFACE]",
+        "command-line": "-surface [STRUCTURE] [SURFACE]",
         "inputs": [
           {
             "id": "structure",

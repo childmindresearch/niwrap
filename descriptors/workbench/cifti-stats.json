@@ -52,12 +52,11 @@
       "id": "roi",
       "name": "roi",
       "description": "only consider data inside an roi",
-      "command-line-flag": "-roi",
       "type": {
         "id": "roi",
         "name": "roi",
         "description": "only consider data inside an roi",
-        "command-line": " [ROI_CIFTI] [OPT_MATCH_MAPS]",
+        "command-line": "-roi [ROI_CIFTI] [OPT_MATCH_MAPS]",
         "inputs": [
           {
             "id": "roi_cifti",

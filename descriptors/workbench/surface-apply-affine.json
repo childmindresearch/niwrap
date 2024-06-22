@@ -39,12 +39,11 @@
       "id": "flirt",
       "name": "flirt",
       "description": "MUST be used if affine is a flirt affine",
-      "command-line-flag": "-flirt",
       "type": {
         "id": "flirt",
         "name": "flirt",
         "description": "MUST be used if affine is a flirt affine",
-        "command-line": " [SOURCE_VOLUME] [TARGET_VOLUME]",
+        "command-line": "-flirt [SOURCE_VOLUME] [TARGET_VOLUME]",
         "inputs": [
           {
             "id": "source_volume",

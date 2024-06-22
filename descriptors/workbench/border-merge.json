@@ -23,12 +23,11 @@
       "id": "border",
       "name": "border",
       "description": "specify an input border file",
-      "command-line-flag": "-border",
       "type": {
         "id": "border",
         "name": "border",
         "description": "specify an input border file",
-        "command-line": " [BORDER_FILE_IN] [SELECT]",
+        "command-line": "-border [BORDER_FILE_IN] [SELECT]",
         "inputs": [
           {
             "id": "border_file_in",
@@ -42,12 +41,11 @@
             "id": "select",
             "name": "select",
             "description": "select a single border to use",
-            "command-line-flag": "-select",
             "type": {
               "id": "select",
               "name": "select",
               "description": "select a single border to use",
-              "command-line": " [BORDER] [UP_TO]",
+              "command-line": "-select [BORDER] [UP_TO]",
               "inputs": [
                 {
                   "id": "border",
@@ -61,12 +59,11 @@
                   "id": "up_to",
                   "name": "up_to",
                   "description": "use an inclusive range of borders",
-                  "command-line-flag": "-up-to",
                   "type": {
                     "id": "up_to",
                     "name": "up_to",
                     "description": "use an inclusive range of borders",
-                    "command-line": " [LAST_BORDER] [OPT_REVERSE]",
+                    "command-line": "-up-to [LAST_BORDER] [OPT_REVERSE]",
                     "inputs": [
                       {
                         "id": "last_border",

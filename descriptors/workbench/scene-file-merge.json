@@ -23,12 +23,11 @@
       "id": "scene_file",
       "name": "scene_file",
       "description": "specify a scene file to use scenes from",
-      "command-line-flag": "-scene-file",
       "type": {
         "id": "scene_file",
         "name": "scene_file",
         "description": "specify a scene file to use scenes from",
-        "command-line": " [SCENE_FILE] [SCENE]",
+        "command-line": "-scene-file [SCENE_FILE] [SCENE]",
         "inputs": [
           {
             "id": "scene_file",
@@ -42,12 +41,11 @@
             "id": "scene",
             "name": "scene",
             "description": "specify a scene to use",
-            "command-line-flag": "-scene",
             "type": {
               "id": "scene",
               "name": "scene",
               "description": "specify a scene to use",
-              "command-line": " [SCENE] [UP_TO]",
+              "command-line": "-scene [SCENE] [UP_TO]",
               "inputs": [
                 {
                   "id": "scene",
@@ -61,12 +59,11 @@
                   "id": "up_to",
                   "name": "up_to",
                   "description": "use an inclusive range of scenes",
-                  "command-line-flag": "-up-to",
                   "type": {
                     "id": "up_to",
                     "name": "up_to",
                     "description": "use an inclusive range of scenes",
-                    "command-line": " [LAST_COLUMN] [OPT_REVERSE]",
+                    "command-line": "-up-to [LAST_COLUMN] [OPT_REVERSE]",
                     "inputs": [
                       {
                         "id": "last_column",

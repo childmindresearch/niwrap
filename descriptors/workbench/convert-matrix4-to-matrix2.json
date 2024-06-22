@@ -48,12 +48,11 @@
       "id": "individual_fibers",
       "name": "individual_fibers",
       "description": "output files for each fiber direction",
-      "command-line-flag": "-individual-fibers",
       "type": {
         "id": "individual_fibers",
         "name": "individual_fibers",
         "description": "output files for each fiber direction",
-        "command-line": " [FIBER_1] [FIBER_2] [FIBER_3]",
+        "command-line": "-individual-fibers [FIBER_1] [FIBER_2] [FIBER_3]",
         "inputs": [
           {
             "id": "fiber_1",

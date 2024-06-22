@@ -66,12 +66,11 @@
       "id": "ribbon_constrained",
       "name": "ribbon_constrained",
       "description": "use ribbon constrained mapping algorithm",
-      "command-line-flag": "-ribbon-constrained",
       "type": {
         "id": "ribbon_constrained",
         "name": "ribbon_constrained",
         "description": "use ribbon constrained mapping algorithm",
-        "command-line": " [INNER_SURF] [OUTER_SURF] [VOLUME_ROI] [OPT_VOXEL_SUBDIV_SUBDIV_NUM] [OPT_THIN_COLUMNS] [OPT_GAUSSIAN_SCALE] [OPT_INTERPOLATE_METHOD] [OPT_BAD_VERTICES_OUT] [ROI_OUT] [OUTPUT_WEIGHTS] [OPT_OUTPUT_WEIGHTS_TEXT_TEXT_OUT]",
+        "command-line": "-ribbon-constrained [INNER_SURF] [OUTER_SURF] [VOLUME_ROI] [OPT_VOXEL_SUBDIV_SUBDIV_NUM] [OPT_THIN_COLUMNS] [OPT_GAUSSIAN_SCALE] [OPT_INTERPOLATE_METHOD] [OPT_BAD_VERTICES_OUT] [ROI_OUT] [OUTPUT_WEIGHTS] [OPT_OUTPUT_WEIGHTS_TEXT_TEXT_OUT]",
         "inputs": [
           {
             "id": "inner_surf",
@@ -93,12 +92,11 @@
             "id": "volume_roi",
             "name": "volume_roi",
             "description": "use a volume roi",
-            "command-line-flag": "-volume-roi",
             "type": {
               "id": "volume_roi",
               "name": "volume_roi",
               "description": "use a volume roi",
-              "command-line": " [ROI_VOLUME] [OPT_WEIGHTED]",
+              "command-line": "-volume-roi [ROI_VOLUME] [OPT_WEIGHTED]",
               "inputs": [
                 {
                   "id": "roi_volume",
@@ -182,12 +180,11 @@
             "id": "output_weights",
             "name": "output_weights",
             "description": "write the voxel weights for a vertex to a volume file",
-            "command-line-flag": "-output-weights",
             "type": {
               "id": "output_weights",
               "name": "output_weights",
               "description": "write the voxel weights for a vertex to a volume file",
-              "command-line": " [VERTEX] [WEIGHTS_OUT]",
+              "command-line": "-output-weights [VERTEX] [WEIGHTS_OUT]",
               "inputs": [
                 {
                   "id": "vertex",
@@ -240,12 +237,11 @@
       "id": "myelin_style",
       "name": "myelin_style",
       "description": "use the method from myelin mapping",
-      "command-line-flag": "-myelin-style",
       "type": {
         "id": "myelin_style",
         "name": "myelin_style",
         "description": "use the method from myelin mapping",
-        "command-line": " [RIBBON_ROI] [THICKNESS] [SIGMA] [OPT_LEGACY_BUG]",
+        "command-line": "-myelin-style [RIBBON_ROI] [THICKNESS] [SIGMA] [OPT_LEGACY_BUG]",
         "inputs": [
           {
             "id": "ribbon_roi",

@@ -48,12 +48,11 @@
       "id": "presmooth",
       "name": "presmooth",
       "description": "smooth the metric before finding extrema",
-      "command-line-flag": "-presmooth",
       "type": {
         "id": "presmooth",
         "name": "presmooth",
         "description": "smooth the metric before finding extrema",
-        "command-line": " [KERNEL] [OPT_FWHM]",
+        "command-line": "-presmooth [KERNEL] [OPT_FWHM]",
         "inputs": [
           {
             "id": "kernel",
@@ -92,12 +91,11 @@
       "id": "threshold",
       "name": "threshold",
       "description": "ignore small extrema",
-      "command-line-flag": "-threshold",
       "type": {
         "id": "threshold",
         "name": "threshold",
         "description": "ignore small extrema",
-        "command-line": " [LOW] [HIGH]",
+        "command-line": "-threshold [LOW] [HIGH]",
         "inputs": [
           {
             "id": "low",

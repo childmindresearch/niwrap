@@ -15,12 +15,11 @@
       "id": "from_world",
       "name": "from_world",
       "description": "input is a NIFTI 'world' warpfield",
-      "command-line-flag": "-from-world",
       "type": {
         "id": "from_world",
         "name": "from_world",
         "description": "input is a NIFTI 'world' warpfield",
-        "command-line": " [INPUT] [OPT_ABSOLUTE]",
+        "command-line": "-from-world [INPUT] [OPT_ABSOLUTE]",
         "inputs": [
           {
             "id": "input",
@@ -58,12 +57,11 @@
       "id": "from_fnirt",
       "name": "from_fnirt",
       "description": "input is a fnirt warpfield",
-      "command-line-flag": "-from-fnirt",
       "type": {
         "id": "from_fnirt",
         "name": "from_fnirt",
         "description": "input is a fnirt warpfield",
-        "command-line": " [INPUT] [SOURCE_VOLUME] [OPT_ABSOLUTE]",
+        "command-line": "-from-fnirt [INPUT] [SOURCE_VOLUME] [OPT_ABSOLUTE]",
         "inputs": [
           {
             "id": "input",
@@ -118,12 +116,11 @@
       "id": "to_fnirt",
       "name": "to_fnirt",
       "description": "write output as a fnirt warpfield",
-      "command-line-flag": "-to-fnirt",
       "type": {
         "id": "to_fnirt",
         "name": "to_fnirt",
         "description": "write output as a fnirt warpfield",
-        "command-line": " [OUTPUT] [SOURCE_VOLUME]",
+        "command-line": "-to-fnirt [OUTPUT] [SOURCE_VOLUME]",
         "inputs": [
           {
             "id": "output",

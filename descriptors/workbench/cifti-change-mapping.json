@@ -39,12 +39,11 @@
       "id": "series",
       "name": "series",
       "description": "set the mapping to series",
-      "command-line-flag": "-series",
       "type": {
         "id": "series",
         "name": "series",
         "description": "set the mapping to series",
-        "command-line": " [STEP] [START] [OPT_UNIT_UNIT]",
+        "command-line": "-series [STEP] [START] [OPT_UNIT_UNIT]",
         "inputs": [
           {
             "id": "step",
@@ -101,12 +100,11 @@
       "id": "from_cifti",
       "name": "from_cifti",
       "description": "copy mapping from another cifti file",
-      "command-line-flag": "-from-cifti",
       "type": {
         "id": "from_cifti",
         "name": "from_cifti",
         "description": "copy mapping from another cifti file",
-        "command-line": " [TEMPLATE_CIFTI] [DIRECTION]",
+        "command-line": "-from-cifti [TEMPLATE_CIFTI] [DIRECTION]",
         "inputs": [
           {
             "id": "template_cifti",

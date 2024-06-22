@@ -23,12 +23,11 @@
       "id": "metric",
       "name": "metric",
       "description": "specify an input metric",
-      "command-line-flag": "-metric",
       "type": {
         "id": "metric",
         "name": "metric",
         "description": "specify an input metric",
-        "command-line": " [METRIC_IN] [COLUMN]",
+        "command-line": "-metric [METRIC_IN] [COLUMN]",
         "inputs": [
           {
             "id": "metric_in",
@@ -42,12 +41,11 @@
             "id": "column",
             "name": "column",
             "description": "select a single column to use",
-            "command-line-flag": "-column",
             "type": {
               "id": "column",
               "name": "column",
               "description": "select a single column to use",
-              "command-line": " [COLUMN] [UP_TO]",
+              "command-line": "-column [COLUMN] [UP_TO]",
               "inputs": [
                 {
                   "id": "column",
@@ -61,12 +59,11 @@
                   "id": "up_to",
                   "name": "up_to",
                   "description": "use an inclusive range of columns",
-                  "command-line-flag": "-up-to",
                   "type": {
                     "id": "up_to",
                     "name": "up_to",
                     "description": "use an inclusive range of columns",
-                    "command-line": " [LAST_COLUMN] [OPT_REVERSE]",
+                    "command-line": "-up-to [LAST_COLUMN] [OPT_REVERSE]",
                     "inputs": [
                       {
                         "id": "last_column",

@@ -49,12 +49,11 @@
       "id": "series",
       "name": "series",
       "description": "set the units and values of the series",
-      "command-line-flag": "-series",
       "type": {
         "id": "series",
         "name": "series",
         "description": "set the units and values of the series",
-        "command-line": " [UNIT] [START] [STEP]",
+        "command-line": "-series [UNIT] [START] [STEP]",
         "inputs": [
           {
             "id": "unit",

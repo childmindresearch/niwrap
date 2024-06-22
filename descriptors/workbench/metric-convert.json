@@ -15,12 +15,11 @@
       "id": "to_nifti",
       "name": "to_nifti",
       "description": "convert metric to nifti",
-      "command-line-flag": "-to-nifti",
       "type": {
         "id": "to_nifti",
         "name": "to_nifti",
         "description": "convert metric to nifti",
-        "command-line": " [METRIC_IN] [NIFTI_OUT]",
+        "command-line": "-to-nifti [METRIC_IN] [NIFTI_OUT]",
         "inputs": [
           {
             "id": "metric_in",
@@ -57,12 +56,11 @@
       "id": "from_nifti",
       "name": "from_nifti",
       "description": "convert nifti to metric",
-      "command-line-flag": "-from-nifti",
       "type": {
         "id": "from_nifti",
         "name": "from_nifti",
         "description": "convert nifti to metric",
-        "command-line": " [NIFTI_IN] [SURFACE_IN] [METRIC_OUT]",
+        "command-line": "-from-nifti [NIFTI_IN] [SURFACE_IN] [METRIC_OUT]",
         "inputs": [
           {
             "id": "nifti_in",

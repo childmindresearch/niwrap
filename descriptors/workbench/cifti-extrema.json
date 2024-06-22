@@ -113,12 +113,11 @@
       "id": "threshold",
       "name": "threshold",
       "description": "ignore small extrema",
-      "command-line-flag": "-threshold",
       "type": {
         "id": "threshold",
         "name": "threshold",
         "description": "ignore small extrema",
-        "command-line": " [LOW] [HIGH]",
+        "command-line": "-threshold [LOW] [HIGH]",
         "inputs": [
           {
             "id": "low",

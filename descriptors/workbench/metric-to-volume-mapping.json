@@ -57,12 +57,11 @@
       "id": "ribbon_constrained",
       "name": "ribbon_constrained",
       "description": "use ribbon constrained mapping algorithm",
-      "command-line-flag": "-ribbon-constrained",
       "type": {
         "id": "ribbon_constrained",
         "name": "ribbon_constrained",
         "description": "use ribbon constrained mapping algorithm",
-        "command-line": " [INNER_SURF] [OUTER_SURF] [OPT_VOXEL_SUBDIV_SUBDIV_NUM] [OPT_GREEDY] [OPT_THICK_COLUMNS]",
+        "command-line": "-ribbon-constrained [INNER_SURF] [OUTER_SURF] [OPT_VOXEL_SUBDIV_SUBDIV_NUM] [OPT_GREEDY] [OPT_THICK_COLUMNS]",
         "inputs": [
           {
             "id": "inner_surf",

@@ -72,12 +72,11 @@
       "id": "volume_seeds",
       "name": "volume_seeds",
       "description": "specify the volume seed space",
-      "command-line-flag": "-volume-seeds",
       "type": {
         "id": "volume_seeds",
         "name": "volume_seeds",
         "description": "specify the volume seed space",
-        "command-line": " [CIFTI_TEMPLATE] [DIRECTION]",
+        "command-line": "-volume-seeds [CIFTI_TEMPLATE] [DIRECTION]",
         "inputs": [
           {
             "id": "cifti_template",

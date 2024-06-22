@@ -31,12 +31,11 @@
       "id": "surface",
       "name": "surface",
       "description": "specify an input surface",
-      "command-line-flag": "-surface",
       "type": {
         "id": "surface",
         "name": "surface",
         "description": "specify an input surface",
-        "command-line": " [SURFACE_IN]",
+        "command-line": "-surface [SURFACE_IN]",
         "inputs": [
           {
             "id": "surface_in",

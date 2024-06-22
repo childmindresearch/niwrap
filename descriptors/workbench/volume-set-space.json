@@ -31,12 +31,11 @@
       "id": "plumb",
       "name": "plumb",
       "description": "set via axis order and spacing/offset",
-      "command-line-flag": "-plumb",
       "type": {
         "id": "plumb",
         "name": "plumb",
         "description": "set via axis order and spacing/offset",
-        "command-line": " [AXIS_ORDER] [X_SPACING] [Y_SPACING] [Z_SPACING] [X_OFFSET] [Y_OFFSET] [Z_OFFSET]",
+        "command-line": "-plumb [AXIS_ORDER] [X_SPACING] [Y_SPACING] [Z_SPACING] [X_OFFSET] [Y_OFFSET] [Z_OFFSET]",
         "inputs": [
           {
             "id": "axis_order",
@@ -110,12 +109,11 @@
       "id": "sform",
       "name": "sform",
       "description": "set via a nifti sform",
-      "command-line-flag": "-sform",
       "type": {
         "id": "sform",
         "name": "sform",
         "description": "set via a nifti sform",
-        "command-line": " [XI_SPACING] [XJ_SPACING] [XK_SPACING] [X_OFFSET] [YI_SPACING] [YJ_SPACING] [YK_SPACING] [Y_OFFSET] [ZI_SPACING] [ZJ_SPACING] [ZK_SPACING] [Z_OFFSET]",
+        "command-line": "-sform [XI_SPACING] [XJ_SPACING] [XK_SPACING] [X_OFFSET] [YI_SPACING] [YJ_SPACING] [YK_SPACING] [Y_OFFSET] [ZI_SPACING] [ZJ_SPACING] [ZK_SPACING] [Z_OFFSET]",
         "inputs": [
           {
             "id": "xi_spacing",
@@ -235,12 +233,11 @@
       "id": "file",
       "name": "file",
       "description": "copy spacing info from volume file with matching dimensions",
-      "command-line-flag": "-file",
       "type": {
         "id": "file",
         "name": "file",
         "description": "copy spacing info from volume file with matching dimensions",
-        "command-line": " [VOLUME_REF] [OPT_IGNORE_DIMS]",
+        "command-line": "-file [VOLUME_REF] [OPT_IGNORE_DIMS]",
         "inputs": [
           {
             "id": "volume_ref",

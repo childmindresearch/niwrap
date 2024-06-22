@@ -15,12 +15,11 @@
       "id": "from_world",
       "name": "from_world",
       "description": "input is a NIFTI 'world' affine",
-      "command-line-flag": "-from-world",
       "type": {
         "id": "from_world",
         "name": "from_world",
         "description": "input is a NIFTI 'world' affine",
-        "command-line": " [INPUT] [OPT_INVERSE]",
+        "command-line": "-from-world [INPUT] [OPT_INVERSE]",
         "inputs": [
           {
             "id": "input",
@@ -58,12 +57,11 @@
       "id": "from_flirt",
       "name": "from_flirt",
       "description": "input is a flirt matrix",
-      "command-line-flag": "-from-flirt",
       "type": {
         "id": "from_flirt",
         "name": "from_flirt",
         "description": "input is a flirt matrix",
-        "command-line": " [INPUT] [SOURCE_VOLUME] [TARGET_VOLUME]",
+        "command-line": "-from-flirt [INPUT] [SOURCE_VOLUME] [TARGET_VOLUME]",
         "inputs": [
           {
             "id": "input",
@@ -99,12 +97,11 @@
       "id": "to_world",
       "name": "to_world",
       "description": "write output as a NIFTI 'world' affine",
-      "command-line-flag": "-to-world",
       "type": {
         "id": "to_world",
         "name": "to_world",
         "description": "write output as a NIFTI 'world' affine",
-        "command-line": " [OUTPUT] [OPT_INVERSE]",
+        "command-line": "-to-world [OUTPUT] [OPT_INVERSE]",
         "inputs": [
           {
             "id": "output",
@@ -142,12 +139,11 @@
       "id": "to_flirt",
       "name": "to_flirt",
       "description": "write output as a flirt matrix",
-      "command-line-flag": "-to-flirt",
       "type": {
         "id": "to_flirt",
         "name": "to_flirt",
         "description": "write output as a flirt matrix",
-        "command-line": " [OUTPUT] [SOURCE_VOLUME] [TARGET_VOLUME]",
+        "command-line": "-to-flirt [OUTPUT] [SOURCE_VOLUME] [TARGET_VOLUME]",
         "inputs": [
           {
             "id": "output",

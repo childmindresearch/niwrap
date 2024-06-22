@@ -23,12 +23,11 @@
       "id": "volume",
       "name": "volume",
       "description": "volume component",
-      "command-line-flag": "-volume",
       "type": {
         "id": "volume",
         "name": "volume",
         "description": "volume component",
-        "command-line": " [VOLUME_DATA] [STRUCTURE_LABEL_VOLUME]",
+        "command-line": "-volume [VOLUME_DATA] [STRUCTURE_LABEL_VOLUME]",
         "inputs": [
           {
             "id": "volume_data",
@@ -56,12 +55,11 @@
       "id": "left_metric",
       "name": "left_metric",
       "description": "metric for left surface",
-      "command-line-flag": "-left-metric",
       "type": {
         "id": "left_metric",
         "name": "left_metric",
         "description": "metric for left surface",
-        "command-line": " [METRIC] [OPT_ROI_LEFT_ROI_METRIC]",
+        "command-line": "-left-metric [METRIC] [OPT_ROI_LEFT_ROI_METRIC]",
         "inputs": [
           {
             "id": "metric",
@@ -90,12 +88,11 @@
       "id": "right_metric",
       "name": "right_metric",
       "description": "metric for left surface",
-      "command-line-flag": "-right-metric",
       "type": {
         "id": "right_metric",
         "name": "right_metric",
         "description": "metric for left surface",
-        "command-line": " [METRIC] [OPT_ROI_RIGHT_ROI_METRIC]",
+        "command-line": "-right-metric [METRIC] [OPT_ROI_RIGHT_ROI_METRIC]",
         "inputs": [
           {
             "id": "metric",
@@ -124,12 +121,11 @@
       "id": "cerebellum_metric",
       "name": "cerebellum_metric",
       "description": "metric for the cerebellum",
-      "command-line-flag": "-cerebellum-metric",
       "type": {
         "id": "cerebellum_metric",
         "name": "cerebellum_metric",
         "description": "metric for the cerebellum",
-        "command-line": " [METRIC] [OPT_ROI_CEREBELLUM_ROI_METRIC]",
+        "command-line": "-cerebellum-metric [METRIC] [OPT_ROI_CEREBELLUM_ROI_METRIC]",
         "inputs": [
           {
             "id": "metric",

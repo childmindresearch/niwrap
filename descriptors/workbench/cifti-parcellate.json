@@ -47,12 +47,11 @@
       "id": "spatial_weights",
       "name": "spatial_weights",
       "description": "use voxel volume and either vertex areas or metric files as weights",
-      "command-line-flag": "-spatial-weights",
       "type": {
         "id": "spatial_weights",
         "name": "spatial_weights",
         "description": "use voxel volume and either vertex areas or metric files as weights",
-        "command-line": " [OPT_LEFT_AREA_SURF_LEFT_SURF] [OPT_RIGHT_AREA_SURF_RIGHT_SURF] [OPT_CEREBELLUM_AREA_SURF_CEREBELLUM_SURF] [OPT_LEFT_AREA_METRIC_LEFT_METRIC] [OPT_RIGHT_AREA_METRIC_RIGHT_METRIC] [OPT_CEREBELLUM_AREA_METRIC_CEREBELLUM_METRIC]",
+        "command-line": "-spatial-weights [OPT_LEFT_AREA_SURF_LEFT_SURF] [OPT_RIGHT_AREA_SURF_RIGHT_SURF] [OPT_CEREBELLUM_AREA_SURF_CEREBELLUM_SURF] [OPT_LEFT_AREA_METRIC_LEFT_METRIC] [OPT_RIGHT_AREA_METRIC_RIGHT_METRIC] [OPT_CEREBELLUM_AREA_METRIC_CEREBELLUM_METRIC]",
         "inputs": [
           {
             "id": "opt_left_area_surf_left_surf",
@@ -136,12 +135,11 @@
       "id": "exclude_outliers",
       "name": "exclude_outliers",
       "description": "exclude non-numeric values and outliers from each parcel by standard deviation",
-      "command-line-flag": "-exclude-outliers",
       "type": {
         "id": "exclude_outliers",
         "name": "exclude_outliers",
         "description": "exclude non-numeric values and outliers from each parcel by standard deviation",
-        "command-line": " [SIGMA_BELOW] [SIGMA_ABOVE]",
+        "command-line": "-exclude-outliers [SIGMA_BELOW] [SIGMA_ABOVE]",
         "inputs": [
           {
             "id": "sigma_below",

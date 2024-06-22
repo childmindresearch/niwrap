@@ -55,12 +55,11 @@
       "id": "area_surfs",
       "name": "area_surfs",
       "description": "specify surfaces to do vertex area correction based on",
-      "command-line-flag": "-area-surfs",
       "type": {
         "id": "area_surfs",
         "name": "area_surfs",
         "description": "specify surfaces to do vertex area correction based on",
-        "command-line": " [CURRENT_AREA] [NEW_AREA]",
+        "command-line": "-area-surfs [CURRENT_AREA] [NEW_AREA]",
         "inputs": [
           {
             "id": "current_area",
@@ -88,12 +87,11 @@
       "id": "area_metrics",
       "name": "area_metrics",
       "description": "specify vertex area metrics to do area correction based on",
-      "command-line-flag": "-area-metrics",
       "type": {
         "id": "area_metrics",
         "name": "area_metrics",
         "description": "specify vertex area metrics to do area correction based on",
-        "command-line": " [CURRENT_AREA] [NEW_AREA]",
+        "command-line": "-area-metrics [CURRENT_AREA] [NEW_AREA]",
         "inputs": [
           {
             "id": "current_area",

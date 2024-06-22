@@ -15,12 +15,11 @@
       "id": "border_version_convert",
       "name": "border_version_convert",
       "description": "write a border file with a different version",
-      "command-line-flag": "-border-version-convert",
       "type": {
         "id": "border_version_convert",
         "name": "border_version_convert",
         "description": "write a border file with a different version",
-        "command-line": " [BORDER_IN] [OUT_VERSION] [BORDER_OUT] [OPT_SURFACE_SURFACE]",
+        "command-line": "-border-version-convert [BORDER_IN] [OUT_VERSION] [BORDER_OUT] [OPT_SURFACE_SURFACE]",
         "inputs": [
           {
             "id": "border_in",
@@ -66,12 +65,11 @@
       "id": "nifti_version_convert",
       "name": "nifti_version_convert",
       "description": "write a nifti file with a different version",
-      "command-line-flag": "-nifti-version-convert",
       "type": {
         "id": "nifti_version_convert",
         "name": "nifti_version_convert",
         "description": "write a nifti file with a different version",
-        "command-line": " [INPUT] [VERSION] [OUTPUT]",
+        "command-line": "-nifti-version-convert [INPUT] [VERSION] [OUTPUT]",
         "inputs": [
           {
             "id": "input",
@@ -108,12 +106,11 @@
       "id": "cifti_version_convert",
       "name": "cifti_version_convert",
       "description": "write a cifti file with a different version",
-      "command-line-flag": "-cifti-version-convert",
       "type": {
         "id": "cifti_version_convert",
         "name": "cifti_version_convert",
         "description": "write a cifti file with a different version",
-        "command-line": " [CIFTI_IN] [VERSION] [CIFTI_OUT]",
+        "command-line": "-cifti-version-convert [CIFTI_IN] [VERSION] [CIFTI_OUT]",
         "inputs": [
           {
             "id": "cifti_in",

@@ -39,12 +39,11 @@
       "id": "exclude_outliers",
       "name": "exclude_outliers",
       "description": "exclude non-numeric values and outliers by standard deviation",
-      "command-line-flag": "-exclude-outliers",
       "type": {
         "id": "exclude_outliers",
         "name": "exclude_outliers",
         "description": "exclude non-numeric values and outliers by standard deviation",
-        "command-line": " [SIGMA_BELOW] [SIGMA_ABOVE]",
+        "command-line": "-exclude-outliers [SIGMA_BELOW] [SIGMA_ABOVE]",
         "inputs": [
           {
             "id": "sigma_below",

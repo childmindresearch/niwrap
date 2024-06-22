@@ -31,12 +31,11 @@
       "id": "volume_all",
       "name": "volume_all",
       "description": "replace the data in all volume components",
-      "command-line-flag": "-volume-all",
       "type": {
         "id": "volume_all",
         "name": "volume_all",
         "description": "replace the data in all volume components",
-        "command-line": " [VOLUME] [OPT_FROM_CROPPED]",
+        "command-line": "-volume-all [VOLUME] [OPT_FROM_CROPPED]",
         "inputs": [
           {
             "id": "volume",
@@ -83,12 +82,11 @@
       "id": "label",
       "name": "label",
       "description": "replace the data in a surface label component",
-      "command-line-flag": "-label",
       "type": {
         "id": "label",
         "name": "label",
         "description": "replace the data in a surface label component",
-        "command-line": " [STRUCTURE] [LABEL]",
+        "command-line": "-label [STRUCTURE] [LABEL]",
         "inputs": [
           {
             "id": "structure",
@@ -116,12 +114,11 @@
       "id": "metric",
       "name": "metric",
       "description": "replace the data in a surface component",
-      "command-line-flag": "-metric",
       "type": {
         "id": "metric",
         "name": "metric",
         "description": "replace the data in a surface component",
-        "command-line": " [STRUCTURE] [METRIC]",
+        "command-line": "-metric [STRUCTURE] [METRIC]",
         "inputs": [
           {
             "id": "structure",
@@ -149,12 +146,11 @@
       "id": "volume",
       "name": "volume",
       "description": "replace the data in a volume component",
-      "command-line-flag": "-volume",
       "type": {
         "id": "volume",
         "name": "volume",
         "description": "replace the data in a volume component",
-        "command-line": " [STRUCTURE] [VOLUME] [OPT_FROM_CROPPED]",
+        "command-line": "-volume [STRUCTURE] [VOLUME] [OPT_FROM_CROPPED]",
         "inputs": [
           {
             "id": "structure",

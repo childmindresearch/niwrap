@@ -42,12 +42,11 @@
       "id": "cifti",
       "name": "cifti",
       "description": "specify an input cifti file",
-      "command-line-flag": "-cifti",
       "type": {
         "id": "cifti",
         "name": "cifti",
         "description": "specify an input cifti file",
-        "command-line": " [CIFTI_IN] [INDEX]",
+        "command-line": "-cifti [CIFTI_IN] [INDEX]",
         "inputs": [
           {
             "id": "cifti_in",
@@ -61,12 +60,11 @@
             "id": "index",
             "name": "index",
             "description": "select a single index to use",
-            "command-line-flag": "-index",
             "type": {
               "id": "index",
               "name": "index",
               "description": "select a single index to use",
-              "command-line": " [INDEX] [UP_TO]",
+              "command-line": "-index [INDEX] [UP_TO]",
               "inputs": [
                 {
                   "id": "index",
@@ -80,12 +78,11 @@
                   "id": "up_to",
                   "name": "up_to",
                   "description": "use an inclusive range of indices",
-                  "command-line-flag": "-up-to",
                   "type": {
                     "id": "up_to",
                     "name": "up_to",
                     "description": "use an inclusive range of indices",
-                    "command-line": " [LAST_INDEX] [OPT_REVERSE]",
+                    "command-line": "-up-to [LAST_INDEX] [OPT_REVERSE]",
                     "inputs": [
                       {
                         "id": "last_index",

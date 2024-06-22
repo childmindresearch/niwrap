@@ -23,12 +23,11 @@
       "id": "volume",
       "name": "volume",
       "description": "specify an input volume file",
-      "command-line-flag": "-volume",
       "type": {
         "id": "volume",
         "name": "volume",
         "description": "specify an input volume file",
-        "command-line": " [VOLUME_IN] [SUBVOLUME]",
+        "command-line": "-volume [VOLUME_IN] [SUBVOLUME]",
         "inputs": [
           {
             "id": "volume_in",
@@ -42,12 +41,11 @@
             "id": "subvolume",
             "name": "subvolume",
             "description": "select a single subvolume to use",
-            "command-line-flag": "-subvolume",
             "type": {
               "id": "subvolume",
               "name": "subvolume",
               "description": "select a single subvolume to use",
-              "command-line": " [SUBVOL] [UP_TO]",
+              "command-line": "-subvolume [SUBVOL] [UP_TO]",
               "inputs": [
                 {
                   "id": "subvol",
@@ -61,12 +59,11 @@
                   "id": "up_to",
                   "name": "up_to",
                   "description": "use an inclusive range of subvolumes",
-                  "command-line-flag": "-up-to",
                   "type": {
                     "id": "up_to",
                     "name": "up_to",
                     "description": "use an inclusive range of subvolumes",
-                    "command-line": " [LAST_SUBVOL] [OPT_REVERSE]",
+                    "command-line": "-up-to [LAST_SUBVOL] [OPT_REVERSE]",
                     "inputs": [
                       {
                         "id": "last_subvol",

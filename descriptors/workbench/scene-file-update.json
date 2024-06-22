@@ -75,12 +75,11 @@
       "id": "copy_map_one_palette",
       "name": "copy_map_one_palette",
       "description": "Copy palettes settings from first map to all maps in a data file",
-      "command-line-flag": "-copy-map-one-palette",
       "type": {
         "id": "copy_map_one_palette",
         "name": "copy_map_one_palette",
         "description": "Copy palettes settings from first map to all maps in a data file",
-        "command-line": " [DATA_FILE_NAME_SUFFIX]",
+        "command-line": "-copy-map-one-palette [DATA_FILE_NAME_SUFFIX]",
         "inputs": [
           {
             "id": "data_file_name_suffix",
@@ -100,12 +99,11 @@
       "id": "data_file_add",
       "name": "data_file_add",
       "description": "Add a data file to scene's loaded files",
-      "command-line-flag": "-data-file-add",
       "type": {
         "id": "data_file_add",
         "name": "data_file_add",
         "description": "Add a data file to scene's loaded files",
-        "command-line": " [NAME_OF_DATA_FILE]",
+        "command-line": "-data-file-add [NAME_OF_DATA_FILE]",
         "inputs": [
           {
             "id": "name_of_data_file",
@@ -125,12 +123,11 @@
       "id": "data_file_remove",
       "name": "data_file_remove",
       "description": "Remove a data file from scene's loaded files",
-      "command-line-flag": "-data-file-remove",
       "type": {
         "id": "data_file_remove",
         "name": "data_file_remove",
         "description": "Remove a data file from scene's loaded files",
-        "command-line": " [NAME_OF_DATA_FILE]",
+        "command-line": "-data-file-remove [NAME_OF_DATA_FILE]",
         "inputs": [
           {
             "id": "name_of_data_file",

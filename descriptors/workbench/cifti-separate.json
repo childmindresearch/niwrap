@@ -31,12 +31,11 @@
       "id": "volume_all",
       "name": "volume_all",
       "description": "separate all volume structures into a volume file",
-      "command-line-flag": "-volume-all",
       "type": {
         "id": "volume_all",
         "name": "volume_all",
         "description": "separate all volume structures into a volume file",
-        "command-line": " [VOLUME_OUT] [OPT_ROI] [ROI_OUT] [OPT_LABEL] [LABEL_OUT] [OPT_CROP]",
+        "command-line": "-volume-all [VOLUME_OUT] [OPT_ROI] [ROI_OUT] [OPT_LABEL] [LABEL_OUT] [OPT_CROP]",
         "inputs": [
           {
             "id": "volume_out",
@@ -122,12 +121,11 @@
       "id": "label",
       "name": "label",
       "description": "separate a surface model into a surface label file",
-      "command-line-flag": "-label",
       "type": {
         "id": "label",
         "name": "label",
         "description": "separate a surface model into a surface label file",
-        "command-line": " [STRUCTURE] [LABEL_OUT] [OPT_ROI] [ROI_OUT]",
+        "command-line": "-label [STRUCTURE] [LABEL_OUT] [OPT_ROI] [ROI_OUT]",
         "inputs": [
           {
             "id": "structure",
@@ -188,12 +186,11 @@
       "id": "metric",
       "name": "metric",
       "description": "separate a surface model into a metric file",
-      "command-line-flag": "-metric",
       "type": {
         "id": "metric",
         "name": "metric",
         "description": "separate a surface model into a metric file",
-        "command-line": " [STRUCTURE] [METRIC_OUT] [OPT_ROI] [ROI_OUT]",
+        "command-line": "-metric [STRUCTURE] [METRIC_OUT] [OPT_ROI] [ROI_OUT]",
         "inputs": [
           {
             "id": "structure",
@@ -254,12 +251,11 @@
       "id": "volume",
       "name": "volume",
       "description": "separate a volume structure into a volume file",
-      "command-line-flag": "-volume",
       "type": {
         "id": "volume",
         "name": "volume",
         "description": "separate a volume structure into a volume file",
-        "command-line": " [STRUCTURE] [VOLUME_OUT] [OPT_ROI] [ROI_OUT] [OPT_CROP]",
+        "command-line": "-volume [STRUCTURE] [VOLUME_OUT] [OPT_ROI] [ROI_OUT] [OPT_CROP]",
         "inputs": [
           {
             "id": "structure",

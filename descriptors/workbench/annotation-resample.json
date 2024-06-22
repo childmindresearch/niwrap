@@ -31,12 +31,11 @@
       "id": "surface_pair",
       "name": "surface_pair",
       "description": "pair of surfaces for resampling surface annotations for one structure",
-      "command-line-flag": "-surface-pair",
       "type": {
         "id": "surface_pair",
         "name": "surface_pair",
         "description": "pair of surfaces for resampling surface annotations for one structure",
-        "command-line": " [SOURCE_SURFACE] [TARGET_SURFACE]",
+        "command-line": "-surface-pair [SOURCE_SURFACE] [TARGET_SURFACE]",
         "inputs": [
           {
             "id": "source_surface",

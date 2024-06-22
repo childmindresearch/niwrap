@@ -41,12 +41,11 @@
       "id": "map",
       "name": "map",
       "description": "specify a map to set the name of",
-      "command-line-flag": "-map",
       "type": {
         "id": "map",
         "name": "map",
         "description": "specify a map to set the name of",
-        "command-line": " [INDEX] [NEW_NAME]",
+        "command-line": "-map [INDEX] [NEW_NAME]",
         "inputs": [
           {
             "id": "index",

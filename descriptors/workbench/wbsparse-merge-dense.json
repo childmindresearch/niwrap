@@ -31,12 +31,11 @@
       "id": "wbsparse",
       "name": "wbsparse",
       "description": "specify an input wbsparse file",
-      "command-line-flag": "-wbsparse",
       "type": {
         "id": "wbsparse",
         "name": "wbsparse",
         "description": "specify an input wbsparse file",
-        "command-line": " [WBSPARSE_IN]",
+        "command-line": "-wbsparse [WBSPARSE_IN]",
         "inputs": [
           {
             "id": "wbsparse_in",

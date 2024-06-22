@@ -23,12 +23,11 @@
       "id": "weight_volume",
       "name": "weight_volume",
       "description": "use weights from a volume file",
-      "command-line-flag": "-weight-volume",
       "type": {
         "id": "weight_volume",
         "name": "weight_volume",
         "description": "use weights from a volume file",
-        "command-line": " [WEIGHT_VOLUME] [OPT_MATCH_MAPS]",
+        "command-line": "-weight-volume [WEIGHT_VOLUME] [OPT_MATCH_MAPS]",
         "inputs": [
           {
             "id": "weight_volume",
@@ -66,12 +65,11 @@
       "id": "roi",
       "name": "roi",
       "description": "only consider data inside an roi",
-      "command-line-flag": "-roi",
       "type": {
         "id": "roi",
         "name": "roi",
         "description": "only consider data inside an roi",
-        "command-line": " [ROI_VOLUME] [OPT_MATCH_MAPS]",
+        "command-line": "-roi [ROI_VOLUME] [OPT_MATCH_MAPS]",
         "inputs": [
           {
             "id": "roi_volume",

@@ -66,12 +66,11 @@
       "id": "left_surface",
       "name": "left_surface",
       "description": "specify the left surface to use",
-      "command-line-flag": "-left-surface",
       "type": {
         "id": "left_surface",
         "name": "left_surface",
         "description": "specify the left surface to use",
-        "command-line": " [SURFACE] [OPT_LEFT_CORRECTED_AREAS_AREA_METRIC]",
+        "command-line": "-left-surface [SURFACE] [OPT_LEFT_CORRECTED_AREAS_AREA_METRIC]",
         "inputs": [
           {
             "id": "surface",
@@ -100,12 +99,11 @@
       "id": "right_surface",
       "name": "right_surface",
       "description": "specify the right surface to use",
-      "command-line-flag": "-right-surface",
       "type": {
         "id": "right_surface",
         "name": "right_surface",
         "description": "specify the right surface to use",
-        "command-line": " [SURFACE] [OPT_RIGHT_CORRECTED_AREAS_AREA_METRIC]",
+        "command-line": "-right-surface [SURFACE] [OPT_RIGHT_CORRECTED_AREAS_AREA_METRIC]",
         "inputs": [
           {
             "id": "surface",
@@ -134,12 +132,11 @@
       "id": "cerebellum_surface",
       "name": "cerebellum_surface",
       "description": "specify the cerebellum surface to use",
-      "command-line-flag": "-cerebellum-surface",
       "type": {
         "id": "cerebellum_surface",
         "name": "cerebellum_surface",
         "description": "specify the cerebellum surface to use",
-        "command-line": " [SURFACE] [OPT_CEREBELLUM_CORRECTED_AREAS_AREA_METRIC]",
+        "command-line": "-cerebellum-surface [SURFACE] [OPT_CEREBELLUM_CORRECTED_AREAS_AREA_METRIC]",
         "inputs": [
           {
             "id": "surface",

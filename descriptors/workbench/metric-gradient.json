@@ -39,12 +39,11 @@
       "id": "presmooth",
       "name": "presmooth",
       "description": "smooth the metric before computing the gradient",
-      "command-line-flag": "-presmooth",
       "type": {
         "id": "presmooth",
         "name": "presmooth",
         "description": "smooth the metric before computing the gradient",
-        "command-line": " [KERNEL] [OPT_FWHM]",
+        "command-line": "-presmooth [KERNEL] [OPT_FWHM]",
         "inputs": [
           {
             "id": "kernel",
@@ -74,12 +73,11 @@
       "id": "roi",
       "name": "roi",
       "description": "select a region of interest to take the gradient of",
-      "command-line-flag": "-roi",
       "type": {
         "id": "roi",
         "name": "roi",
         "description": "select a region of interest to take the gradient of",
-        "command-line": " [ROI_METRIC] [OPT_MATCH_COLUMNS]",
+        "command-line": "-roi [ROI_METRIC] [OPT_MATCH_COLUMNS]",
         "inputs": [
           {
             "id": "roi_metric",

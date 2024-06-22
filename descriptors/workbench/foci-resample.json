@@ -31,12 +31,11 @@
       "id": "left_surfaces",
       "name": "left_surfaces",
       "description": "the left surfaces for resampling",
-      "command-line-flag": "-left-surfaces",
       "type": {
         "id": "left_surfaces",
         "name": "left_surfaces",
         "description": "the left surfaces for resampling",
-        "command-line": " [CURRENT_SURF] [NEW_SURF]",
+        "command-line": "-left-surfaces [CURRENT_SURF] [NEW_SURF]",
         "inputs": [
           {
             "id": "current_surf",
@@ -64,12 +63,11 @@
       "id": "right_surfaces",
       "name": "right_surfaces",
       "description": "the right surfaces for resampling",
-      "command-line-flag": "-right-surfaces",
       "type": {
         "id": "right_surfaces",
         "name": "right_surfaces",
         "description": "the right surfaces for resampling",
-        "command-line": " [CURRENT_SURF] [NEW_SURF]",
+        "command-line": "-right-surfaces [CURRENT_SURF] [NEW_SURF]",
         "inputs": [
           {
             "id": "current_surf",
@@ -97,12 +95,11 @@
       "id": "cerebellum_surfaces",
       "name": "cerebellum_surfaces",
       "description": "the cerebellum surfaces for resampling",
-      "command-line-flag": "-cerebellum-surfaces",
       "type": {
         "id": "cerebellum_surfaces",
         "name": "cerebellum_surfaces",
         "description": "the cerebellum surfaces for resampling",
-        "command-line": " [CURRENT_SURF] [NEW_SURF]",
+        "command-line": "-cerebellum-surfaces [CURRENT_SURF] [NEW_SURF]",
         "inputs": [
           {
             "id": "current_surf",

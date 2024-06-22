@@ -57,12 +57,11 @@
       "id": "roi",
       "name": "roi",
       "description": "select a region of interest to smooth",
-      "command-line-flag": "-roi",
       "type": {
         "id": "roi",
         "name": "roi",
         "description": "select a region of interest to smooth",
-        "command-line": " [ROI_METRIC] [OPT_MATCH_COLUMNS]",
+        "command-line": "-roi [ROI_METRIC] [OPT_MATCH_COLUMNS]",
         "inputs": [
           {
             "id": "roi_metric",

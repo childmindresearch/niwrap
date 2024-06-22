@@ -50,12 +50,11 @@
       "id": "var",
       "name": "var",
       "description": "a cifti file to use as a variable",
-      "command-line-flag": "-var",
       "type": {
         "id": "var",
         "name": "var",
         "description": "a cifti file to use as a variable",
-        "command-line": " [NAME] [CIFTI] [SELECT]",
+        "command-line": "-var [NAME] [CIFTI] [SELECT]",
         "inputs": [
           {
             "id": "name",
@@ -77,12 +76,11 @@
             "id": "select",
             "name": "select",
             "description": "select a single index from a dimension",
-            "command-line-flag": "-select",
             "type": {
               "id": "select",
               "name": "select",
               "description": "select a single index from a dimension",
-              "command-line": " [DIM] [INDEX] [OPT_REPEAT]",
+              "command-line": "-select [DIM] [INDEX] [OPT_REPEAT]",
               "inputs": [
                 {
                   "id": "dim",

@@ -57,12 +57,11 @@
       "id": "size_width_height",
       "name": "size_width_height",
       "description": "Width and height for output image",
-      "command-line-flag": "-size-width-height",
       "type": {
         "id": "size_width_height",
         "name": "size_width_height",
         "description": "Width and height for output image",
-        "command-line": " [WIDTH] [HEIGHT]",
+        "command-line": "-size-width-height [WIDTH] [HEIGHT]",
         "inputs": [
           {
             "id": "width",
@@ -121,12 +120,11 @@
       "id": "resolution",
       "name": "resolution",
       "description": "Image resolution (number pixels per size unit)\n      Default is 300 PIXELS_PER_INCH",
-      "command-line-flag": "-resolution",
       "type": {
         "id": "resolution",
         "name": "resolution",
         "description": "Image resolution (number pixels per size unit)\n      Default is 300 PIXELS_PER_INCH",
-        "command-line": " [NUMBER_OF_PIXELS] [UNITS_NAME]",
+        "command-line": "-resolution [NUMBER_OF_PIXELS] [UNITS_NAME]",
         "inputs": [
           {
             "id": "number_of_pixels",
@@ -174,12 +172,11 @@
       "id": "set_map_yoke",
       "name": "set_map_yoke",
       "description": "Override selected map index for a map yoking group.",
-      "command-line-flag": "-set-map-yoke",
       "type": {
         "id": "set_map_yoke",
         "name": "set_map_yoke",
         "description": "Override selected map index for a map yoking group.",
-        "command-line": " [MAP_YOKING_ROMAN_NUMERAL] [MAP_UNDEX]",
+        "command-line": "-set-map-yoke [MAP_YOKING_ROMAN_NUMERAL] [MAP_UNDEX]",
         "inputs": [
           {
             "id": "map_yoking_roman_numeral",
@@ -208,12 +205,11 @@
       "id": "conn_db_login",
       "name": "conn_db_login",
       "description": "Login for scenes with files in Connectome Database.  If this option is not specified, the login and password stored in the user's preferences is used.",
-      "command-line-flag": "-conn-db-login",
       "type": {
         "id": "conn_db_login",
         "name": "conn_db_login",
         "description": "Login for scenes with files in Connectome Database.  If this option is not specified, the login and password stored in the user's preferences is used.",
-        "command-line": " [USERNAME] [PASSWORD]",
+        "command-line": "-conn-db-login [USERNAME] [PASSWORD]",
         "inputs": [
           {
             "id": "username",

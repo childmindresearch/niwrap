@@ -39,12 +39,11 @@
       "id": "smooth",
       "name": "smooth",
       "description": "smooth the area data",
-      "command-line-flag": "-smooth",
       "type": {
         "id": "smooth",
         "name": "smooth",
         "description": "smooth the area data",
-        "command-line": " [SIGMA] [OPT_FWHM]",
+        "command-line": "-smooth [SIGMA] [OPT_FWHM]",
         "inputs": [
           {
             "id": "sigma",

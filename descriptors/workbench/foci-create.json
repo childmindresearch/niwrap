@@ -23,12 +23,11 @@
       "id": "class",
       "name": "class",
       "description": "specify class input data",
-      "command-line-flag": "-class",
       "type": {
         "id": "class",
         "name": "class",
         "description": "specify class input data",
-        "command-line": " [CLASS_NAME] [FOCI_LIST_FILE] [SURFACE]",
+        "command-line": "-class [CLASS_NAME] [FOCI_LIST_FILE] [SURFACE]",
         "inputs": [
           {
             "id": "class_name",

@@ -41,12 +41,11 @@
       "id": "var",
       "name": "var",
       "description": "a metric to use as a variable",
-      "command-line-flag": "-var",
       "type": {
         "id": "var",
         "name": "var",
         "description": "a metric to use as a variable",
-        "command-line": " [NAME] [METRIC] [OPT_COLUMN_COLUMN] [OPT_REPEAT]",
+        "command-line": "-var [NAME] [METRIC] [OPT_COLUMN_COLUMN] [OPT_REPEAT]",
         "inputs": [
           {
             "id": "name",

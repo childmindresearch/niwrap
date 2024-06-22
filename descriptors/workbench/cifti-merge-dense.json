@@ -40,12 +40,11 @@
       "id": "cifti",
       "name": "cifti",
       "description": "specify an input cifti file",
-      "command-line-flag": "-cifti",
       "type": {
         "id": "cifti",
         "name": "cifti",
         "description": "specify an input cifti file",
-        "command-line": " [CIFTI_IN]",
+        "command-line": "-cifti [CIFTI_IN]",
         "inputs": [
           {
             "id": "cifti_in",

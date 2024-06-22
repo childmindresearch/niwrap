@@ -40,12 +40,11 @@
       "id": "pos_percent",
       "name": "pos_percent",
       "description": "percentage min/max for positive data coloring",
-      "command-line-flag": "-pos-percent",
       "type": {
         "id": "pos_percent",
         "name": "pos_percent",
         "description": "percentage min/max for positive data coloring",
-        "command-line": " [POS_MIN__] [POS_MAX__]",
+        "command-line": "-pos-percent [POS_MIN__] [POS_MAX__]",
         "inputs": [
           {
             "id": "pos_min__",
@@ -75,12 +74,11 @@
       "id": "neg_percent",
       "name": "neg_percent",
       "description": "percentage min/max for negative data coloring",
-      "command-line-flag": "-neg-percent",
       "type": {
         "id": "neg_percent",
         "name": "neg_percent",
         "description": "percentage min/max for negative data coloring",
-        "command-line": " [NEG_MIN__] [NEG_MAX__]",
+        "command-line": "-neg-percent [NEG_MIN__] [NEG_MAX__]",
         "inputs": [
           {
             "id": "neg_min__",
@@ -110,12 +108,11 @@
       "id": "pos_user",
       "name": "pos_user",
       "description": "user min/max values for positive data coloring",
-      "command-line-flag": "-pos-user",
       "type": {
         "id": "pos_user",
         "name": "pos_user",
         "description": "user min/max values for positive data coloring",
-        "command-line": " [POS_MIN_USER] [POS_MAX_USER]",
+        "command-line": "-pos-user [POS_MIN_USER] [POS_MAX_USER]",
         "inputs": [
           {
             "id": "pos_min_user",
@@ -145,12 +142,11 @@
       "id": "neg_user",
       "name": "neg_user",
       "description": "user min/max values for negative data coloring",
-      "command-line-flag": "-neg-user",
       "type": {
         "id": "neg_user",
         "name": "neg_user",
         "description": "user min/max values for negative data coloring",
-        "command-line": " [NEG_MIN_USER] [NEG_MAX_USER]",
+        "command-line": "-neg-user [NEG_MIN_USER] [NEG_MAX_USER]",
         "inputs": [
           {
             "id": "neg_min_user",
@@ -241,12 +237,11 @@
       "id": "thresholding",
       "name": "thresholding",
       "description": "set the thresholding",
-      "command-line-flag": "-thresholding",
       "type": {
         "id": "thresholding",
         "name": "thresholding",
         "description": "set the thresholding",
-        "command-line": " [TYPE] [TEST] [MIN] [MAX]",
+        "command-line": "-thresholding [TYPE] [TEST] [MIN] [MAX]",
         "inputs": [
           {
             "id": "type",

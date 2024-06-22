@@ -49,12 +49,11 @@
       "id": "remove",
       "name": "remove",
       "description": "specify a metric to regress out",
-      "command-line-flag": "-remove",
       "type": {
         "id": "remove",
         "name": "remove",
         "description": "specify a metric to regress out",
-        "command-line": " [METRIC] [OPT_REMOVE_COLUMN_COLUMN]",
+        "command-line": "-remove [METRIC] [OPT_REMOVE_COLUMN_COLUMN]",
         "inputs": [
           {
             "id": "metric",
@@ -83,12 +82,11 @@
       "id": "keep",
       "name": "keep",
       "description": "specify a metric to include in regression, but not remove",
-      "command-line-flag": "-keep",
       "type": {
         "id": "keep",
         "name": "keep",
         "description": "specify a metric to include in regression, but not remove",
-        "command-line": " [METRIC] [OPT_KEEP_COLUMN_COLUMN]",
+        "command-line": "-keep [METRIC] [OPT_KEEP_COLUMN_COLUMN]",
         "inputs": [
           {
             "id": "metric",

@@ -47,12 +47,11 @@
       "id": "affine",
       "name": "affine",
       "description": "add an affine transform",
-      "command-line-flag": "-affine",
       "type": {
         "id": "affine",
         "name": "affine",
         "description": "add an affine transform",
-        "command-line": " [AFFINE] [FLIRT]",
+        "command-line": "-affine [AFFINE] [FLIRT]",
         "inputs": [
           {
             "id": "affine",
@@ -66,12 +65,11 @@
             "id": "flirt",
             "name": "flirt",
             "description": "MUST be used if affine is a flirt affine",
-            "command-line-flag": "-flirt",
             "type": {
               "id": "flirt",
               "name": "flirt",
               "description": "MUST be used if affine is a flirt affine",
-              "command-line": " [SOURCE_VOLUME] [TARGET_VOLUME]",
+              "command-line": "-flirt [SOURCE_VOLUME] [TARGET_VOLUME]",
               "inputs": [
                 {
                   "id": "source_volume",
@@ -105,12 +103,11 @@
       "id": "affine_series",
       "name": "affine_series",
       "description": "add an independent affine per-frame",
-      "command-line-flag": "-affine-series",
       "type": {
         "id": "affine_series",
         "name": "affine_series",
         "description": "add an independent affine per-frame",
-        "command-line": " [AFFINE_SERIES] [FLIRT]",
+        "command-line": "-affine-series [AFFINE_SERIES] [FLIRT]",
         "inputs": [
           {
             "id": "affine_series",
@@ -124,12 +121,11 @@
             "id": "flirt",
             "name": "flirt",
             "description": "MUST be used if the affines are flirt affines",
-            "command-line-flag": "-flirt",
             "type": {
               "id": "flirt",
               "name": "flirt",
               "description": "MUST be used if the affines are flirt affines",
-              "command-line": " [SOURCE_VOLUME] [TARGET_VOLUME]",
+              "command-line": "-flirt [SOURCE_VOLUME] [TARGET_VOLUME]",
               "inputs": [
                 {
                   "id": "source_volume",
@@ -163,12 +159,11 @@
       "id": "warp",
       "name": "warp",
       "description": "add a nonlinear warpfield transform",
-      "command-line-flag": "-warp",
       "type": {
         "id": "warp",
         "name": "warp",
         "description": "add a nonlinear warpfield transform",
-        "command-line": " [WARPFIELD] [OPT_FNIRT_SOURCE_VOLUME]",
+        "command-line": "-warp [WARPFIELD] [OPT_FNIRT_SOURCE_VOLUME]",
         "inputs": [
           {
             "id": "warpfield",

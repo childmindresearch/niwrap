@@ -31,12 +31,11 @@
       "id": "presmooth",
       "name": "presmooth",
       "description": "smooth the volume before running TFCE",
-      "command-line-flag": "-presmooth",
       "type": {
         "id": "presmooth",
         "name": "presmooth",
         "description": "smooth the volume before running TFCE",
-        "command-line": " [KERNEL] [OPT_FWHM]",
+        "command-line": "-presmooth [KERNEL] [OPT_FWHM]",
         "inputs": [
           {
             "id": "kernel",
@@ -75,12 +74,11 @@
       "id": "parameters",
       "name": "parameters",
       "description": "set parameters for TFCE integral",
-      "command-line-flag": "-parameters",
       "type": {
         "id": "parameters",
         "name": "parameters",
         "description": "set parameters for TFCE integral",
-        "command-line": " [E] [H]",
+        "command-line": "-parameters [E] [H]",
         "inputs": [
           {
             "id": "e",
