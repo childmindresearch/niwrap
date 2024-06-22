@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_INFLATION_METADATA = Metadata(
-    id="9e8a090010468eb1b4a1ab2178e5a3d720f41c8a",
+    id="02f268849949ac7e88f894d9ef651afc14faa7c2",
     name="surface-inflation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -30,7 +30,7 @@ def surface_inflation(
     smoothing_strength: float | int,
     smoothing_iterations: int,
     inflation_factor: float | int,
-    surface_out: InputPathType,
+    surface_out: str,
     runner: Runner = None,
 ) -> SurfaceInflationOutputs:
     """
@@ -64,10 +64,10 @@ def surface_inflation(
     cargs.append(str(smoothing_strength))
     cargs.append(str(smoothing_iterations))
     cargs.append(str(inflation_factor))
-    cargs.append(execution.input_file(surface_out))
+    cargs.append(surface_out)
     ret = SurfaceInflationOutputs(
         root=execution.output_file("."),
-        surface_out=execution.output_file(f"{pathlib.Path(surface_out).name}"),
+        surface_out=execution.output_file(f"{surface_out}"),
     )
     execution.run(cargs)
     return ret

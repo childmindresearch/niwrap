@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_FLIP_NORMALS_METADATA = Metadata(
-    id="42964755965df68270ab6416523dec60defbd12f",
+    id="532a82eba6ff9eb251b52519a538a2d33afd2b17",
     name="surface-flip-normals",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class SurfaceFlipNormalsOutputs(typing.NamedTuple):
 
 def surface_flip_normals(
     surface: InputPathType,
-    surface_out: InputPathType,
+    surface_out: str,
     runner: Runner = None,
 ) -> SurfaceFlipNormalsOutputs:
     """
@@ -53,10 +53,10 @@ def surface_flip_normals(
     cargs.append("wb_command")
     cargs.append("-surface-flip-normals")
     cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(surface_out))
+    cargs.append(surface_out)
     ret = SurfaceFlipNormalsOutputs(
         root=execution.output_file("."),
-        surface_out=execution.output_file(f"{pathlib.Path(surface_out).name}"),
+        surface_out=execution.output_file(f"{surface_out}"),
     )
     execution.run(cargs)
     return ret

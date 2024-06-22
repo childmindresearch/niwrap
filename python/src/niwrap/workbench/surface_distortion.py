@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SURFACE_DISTORTION_METADATA = Metadata(
-    id="fa3ebce6242aca43307d3c4beafc9c221bf8d46d",
+    id="3f5c13f95598fdf3162251baa59637cd5f45fcf4",
     name="surface-distortion",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -58,7 +58,7 @@ class SurfaceDistortionOutputs(typing.NamedTuple):
 def surface_distortion(
     surface_reference: InputPathType,
     surface_distorted: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     smooth: SurfaceDistortionSmooth | None = None,
     opt_caret5_method: bool = False,
     opt_edge_method: bool = False,
@@ -112,7 +112,7 @@ def surface_distortion(
     cargs.append("-surface-distortion")
     cargs.append(execution.input_file(surface_reference))
     cargs.append(execution.input_file(surface_distorted))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if smooth is not None:
         cargs.extend(smooth.run(execution))
     if opt_caret5_method:
@@ -125,7 +125,7 @@ def surface_distortion(
         cargs.append("-log2")
     ret = SurfaceDistortionOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

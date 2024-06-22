@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONVERT_FIBER_ORIENTATIONS_METADATA = Metadata(
-    id="d772248716726ec4bc42367c46f408e44d54ae51",
+    id="79aae76174b1520b91e2f6e92d08d7504002b02b",
     name="convert-fiber-orientations",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -71,7 +71,7 @@ class ConvertFiberOrientationsOutputs(typing.NamedTuple):
 
 def convert_fiber_orientations(
     label_volume: InputPathType,
-    fiber_out: InputPathType,
+    fiber_out: str,
     fiber: list[ConvertFiberOrientationsFiber] = None,
     runner: Runner = None,
 ) -> ConvertFiberOrientationsOutputs:
@@ -133,12 +133,12 @@ def convert_fiber_orientations(
     cargs.append("wb_command")
     cargs.append("-convert-fiber-orientations")
     cargs.append(execution.input_file(label_volume))
-    cargs.append(execution.input_file(fiber_out))
+    cargs.append(fiber_out)
     if fiber is not None:
         cargs.extend([a for c in [s.run(execution) for s in fiber] for a in c])
     ret = ConvertFiberOrientationsOutputs(
         root=execution.output_file("."),
-        fiber_out=execution.output_file(f"{pathlib.Path(fiber_out).name}"),
+        fiber_out=execution.output_file(f"{fiber_out}"),
     )
     execution.run(cargs)
     return ret

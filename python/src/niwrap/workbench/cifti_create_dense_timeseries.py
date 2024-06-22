@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_DENSE_TIMESERIES_METADATA = Metadata(
-    id="05f66fdc90ba00fe23c4b7a16e3c1184aef30cd2",
+    id="9bffd8e3c5fff56449d31cd21355c5549f850db6",
     name="cifti-create-dense-timeseries",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -148,7 +148,7 @@ class CiftiCreateDenseTimeseriesOutputs(typing.NamedTuple):
 
 
 def cifti_create_dense_timeseries(
-    cifti_out: InputPathType,
+    cifti_out: str,
     volume: CiftiCreateDenseTimeseriesVolume | None = None,
     left_metric: CiftiCreateDenseTimeseriesLeftMetric | None = None,
     right_metric: CiftiCreateDenseTimeseriesRightMetric | None = None,
@@ -233,7 +233,7 @@ def cifti_create_dense_timeseries(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-cifti-create-dense-timeseries")
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if volume is not None:
         cargs.extend(volume.run(execution))
     if left_metric is not None:
@@ -250,7 +250,7 @@ def cifti_create_dense_timeseries(
         cargs.extend(["-unit", opt_unit_unit])
     ret = CiftiCreateDenseTimeseriesOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

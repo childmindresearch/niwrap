@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_MATH_METADATA = Metadata(
-    id="949a717e690e93c2e973eaa02d05de4fd9af3898",
+    id="ccf006ecab1c54335d5d0d42482876bc188ed093",
     name="cifti-math",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -94,7 +94,7 @@ class CiftiMathOutputs(typing.NamedTuple):
 
 def cifti_math(
     expression: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_fixnan_replace: float | int | None = None,
     opt_override_mapping_check: bool = False,
     var: list[CiftiMathVar] = None,
@@ -196,7 +196,7 @@ def cifti_math(
     cargs.append("wb_command")
     cargs.append("-cifti-math")
     cargs.append(expression)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_fixnan_replace is not None:
         cargs.extend(["-fixnan", str(opt_fixnan_replace)])
     if opt_override_mapping_check:
@@ -205,7 +205,7 @@ def cifti_math(
         cargs.extend([a for c in [s.run(execution) for s in var] for a in c])
     ret = CiftiMathOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

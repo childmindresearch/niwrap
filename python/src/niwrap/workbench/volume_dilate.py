@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_DILATE_METADATA = Metadata(
-    id="e512d11a4fe60b0e9589139cea8a9f67f23cde02",
+    id="92e12dc3ce81e5c677a6078b22842a4c7d119fd8",
     name="volume-dilate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -59,7 +59,7 @@ def volume_dilate(
     volume: InputPathType,
     distance: float | int,
     method: str,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_exponent_exponent: float | int | None = None,
     opt_bad_voxel_roi_roi_volume: InputPathType | None = None,
     opt_data_roi_roi_volume: InputPathType | None = None,
@@ -125,7 +125,7 @@ def volume_dilate(
     cargs.append(execution.input_file(volume))
     cargs.append(str(distance))
     cargs.append(method)
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_exponent_exponent is not None:
         cargs.extend(["-exponent", str(opt_exponent_exponent)])
     if opt_bad_voxel_roi_roi_volume is not None:
@@ -142,7 +142,7 @@ def volume_dilate(
         cargs.extend(presmooth.run(execution))
     ret = VolumeDilateOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

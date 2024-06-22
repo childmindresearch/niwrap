@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_CURVATURE_METADATA = Metadata(
-    id="cce0bb8c8fcf20cbfd8e49e5616bebb29a0477e9",
+    id="c60931157b33b4af20818930b23f8f24ff9418a1",
     name="surface-curvature",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,8 +27,8 @@ class SurfaceCurvatureOutputs(typing.NamedTuple):
 
 def surface_curvature(
     surface: InputPathType,
-    mean_out: InputPathType,
-    gauss_out: InputPathType,
+    mean_out: str,
+    gauss_out: str,
     opt_mean: bool = False,
     opt_gauss: bool = False,
     runner: Runner = None,
@@ -60,14 +60,14 @@ def surface_curvature(
     cargs.append(execution.input_file(surface))
     if opt_mean:
         cargs.append("-mean")
-    cargs.append(execution.input_file(mean_out))
+    cargs.append(mean_out)
     if opt_gauss:
         cargs.append("-gauss")
-    cargs.append(execution.input_file(gauss_out))
+    cargs.append(gauss_out)
     ret = SurfaceCurvatureOutputs(
         root=execution.output_file("."),
-        mean_out=execution.output_file(f"{pathlib.Path(mean_out).name}"),
-        gauss_out=execution.output_file(f"{pathlib.Path(gauss_out).name}"),
+        mean_out=execution.output_file(f"{mean_out}"),
+        gauss_out=execution.output_file(f"{gauss_out}"),
     )
     execution.run(cargs)
     return ret

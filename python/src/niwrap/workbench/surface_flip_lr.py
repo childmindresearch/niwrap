@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_FLIP_LR_METADATA = Metadata(
-    id="bd4b1d987f55accd41c674badcf89e23350ec215",
+    id="f90d420e1e67b50b007024c48b3ef5aa0fb72c05",
     name="surface-flip-lr",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class SurfaceFlipLrOutputs(typing.NamedTuple):
 
 def surface_flip_lr(
     surface: InputPathType,
-    surface_out: InputPathType,
+    surface_out: str,
     runner: Runner = None,
 ) -> SurfaceFlipLrOutputs:
     """
@@ -52,10 +52,10 @@ def surface_flip_lr(
     cargs.append("wb_command")
     cargs.append("-surface-flip-lr")
     cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(surface_out))
+    cargs.append(surface_out)
     ret = SurfaceFlipLrOutputs(
         root=execution.output_file("."),
-        surface_out=execution.output_file(f"{pathlib.Path(surface_out).name}"),
+        surface_out=execution.output_file(f"{surface_out}"),
     )
     execution.run(cargs)
     return ret

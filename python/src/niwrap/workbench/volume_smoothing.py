@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_SMOOTHING_METADATA = Metadata(
-    id="df34c342d98389005c2fbe860cb92d2eb0e19405",
+    id="d0622706d37246d216a4ccc52e663669eed9926f",
     name="volume-smoothing",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class VolumeSmoothingOutputs(typing.NamedTuple):
 def volume_smoothing(
     volume_in: InputPathType,
     kernel: float | int,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_fwhm: bool = False,
     opt_roi_roivol: InputPathType | None = None,
     opt_fix_zeros: bool = False,
@@ -72,7 +72,7 @@ def volume_smoothing(
     cargs.append("-volume-smoothing")
     cargs.append(execution.input_file(volume_in))
     cargs.append(str(kernel))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_fwhm:
         cargs.append("-fwhm")
     if opt_roi_roivol is not None:
@@ -83,7 +83,7 @@ def volume_smoothing(
         cargs.extend(["-subvolume", opt_subvolume_subvol])
     ret = VolumeSmoothingOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

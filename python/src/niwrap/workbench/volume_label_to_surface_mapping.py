@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_LABEL_TO_SURFACE_MAPPING_METADATA = Metadata(
-    id="0a93a35401e461860067045b8b4862a5b4e5a7f0",
+    id="d3714f7729c0e1050d5601812e04a15c8e125497",
     name="volume-label-to-surface-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -70,7 +70,7 @@ class VolumeLabelToSurfaceMappingOutputs(typing.NamedTuple):
 def volume_label_to_surface_mapping(
     volume: InputPathType,
     surface: InputPathType,
-    label_out: InputPathType,
+    label_out: str,
     ribbon_constrained: VolumeLabelToSurfaceMappingRibbonConstrained | None = None,
     opt_subvol_select_subvol: str | None = None,
     runner: Runner = None,
@@ -115,14 +115,14 @@ def volume_label_to_surface_mapping(
     cargs.append("-volume-label-to-surface-mapping")
     cargs.append(execution.input_file(volume))
     cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(label_out))
+    cargs.append(label_out)
     if ribbon_constrained is not None:
         cargs.extend(ribbon_constrained.run(execution))
     if opt_subvol_select_subvol is not None:
         cargs.extend(["-subvol-select", opt_subvol_select_subvol])
     ret = VolumeLabelToSurfaceMappingOutputs(
         root=execution.output_file("."),
-        label_out=execution.output_file(f"{pathlib.Path(label_out).name}"),
+        label_out=execution.output_file(f"{label_out}"),
     )
     execution.run(cargs)
     return ret

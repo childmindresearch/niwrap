@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_REDUCE_METADATA = Metadata(
-    id="48ce3e50bcfea19442b19b0ac3be2a5a12900250",
+    id="d86ae95e34a241e13640c8079fa80fd299312fde",
     name="cifti-reduce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -57,7 +57,7 @@ class CiftiReduceOutputs(typing.NamedTuple):
 def cifti_reduce(
     cifti_in: InputPathType,
     operation: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_direction_direction: str | None = None,
     exclude_outliers: CiftiReduceExcludeOutliers | None = None,
     opt_only_numeric: bool = False,
@@ -110,7 +110,7 @@ def cifti_reduce(
     cargs.append("-cifti-reduce")
     cargs.append(execution.input_file(cifti_in))
     cargs.append(operation)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_direction_direction is not None:
         cargs.extend(["-direction", opt_direction_direction])
     if exclude_outliers is not None:
@@ -119,7 +119,7 @@ def cifti_reduce(
         cargs.append("-only-numeric")
     ret = CiftiReduceOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

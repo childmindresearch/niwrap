@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 LABEL_ERODE_METADATA = Metadata(
-    id="cd5a470bce0547b7877b4a7c2cf1904e5314a2c7",
+    id="00d117cab4daad308f928d14e3b63d1339e8966d",
     name="label-erode",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def label_erode(
     label: InputPathType,
     surface: InputPathType,
     erode_dist: float | int,
-    label_out: InputPathType,
+    label_out: str,
     opt_roi_roi_metric: InputPathType | None = None,
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
@@ -69,7 +69,7 @@ def label_erode(
     cargs.append(execution.input_file(label))
     cargs.append(execution.input_file(surface))
     cargs.append(str(erode_dist))
-    cargs.append(execution.input_file(label_out))
+    cargs.append(label_out)
     if opt_roi_roi_metric is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_metric)])
     if opt_column_column is not None:
@@ -78,7 +78,7 @@ def label_erode(
         cargs.extend(["-corrected-areas", execution.input_file(opt_corrected_areas_area_metric)])
     ret = LabelErodeOutputs(
         root=execution.output_file("."),
-        label_out=execution.output_file(f"{pathlib.Path(label_out).name}"),
+        label_out=execution.output_file(f"{label_out}"),
     )
     execution.run(cargs)
     return ret

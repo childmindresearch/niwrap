@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_DILATE_METADATA = Metadata(
-    id="6df8dab38c92a25be33b50fd1d2930514948e9ae",
+    id="bf89b3f6da072f027161b3d59cc802751b666df1",
     name="metric-dilate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def metric_dilate(
     metric: InputPathType,
     surface: InputPathType,
     distance: float | int,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_bad_vertex_roi_roi_metric: InputPathType | None = None,
     opt_data_roi_roi_metric: InputPathType | None = None,
     opt_column_column: str | None = None,
@@ -97,7 +97,7 @@ def metric_dilate(
     cargs.append(execution.input_file(metric))
     cargs.append(execution.input_file(surface))
     cargs.append(str(distance))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_bad_vertex_roi_roi_metric is not None:
         cargs.extend(["-bad-vertex-roi", execution.input_file(opt_bad_vertex_roi_roi_metric)])
     if opt_data_roi_roi_metric is not None:
@@ -116,7 +116,7 @@ def metric_dilate(
         cargs.append("-legacy-cutoff")
     ret = MetricDilateOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

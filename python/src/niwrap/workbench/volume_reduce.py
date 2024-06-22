@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_REDUCE_METADATA = Metadata(
-    id="fdf4eba884ff12bea9d957208c2652123a1e08d3",
+    id="9e5b1c43a5b352d4faaa709906adaa10aacafae8",
     name="volume-reduce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -57,7 +57,7 @@ class VolumeReduceOutputs(typing.NamedTuple):
 def volume_reduce(
     volume_in: InputPathType,
     operation: str,
-    volume_out: InputPathType,
+    volume_out: str,
     exclude_outliers: VolumeReduceExcludeOutliers | None = None,
     opt_only_numeric: bool = False,
     runner: Runner = None,
@@ -107,14 +107,14 @@ def volume_reduce(
     cargs.append("-volume-reduce")
     cargs.append(execution.input_file(volume_in))
     cargs.append(operation)
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if exclude_outliers is not None:
         cargs.extend(exclude_outliers.run(execution))
     if opt_only_numeric:
         cargs.append("-only-numeric")
     ret = VolumeReduceOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

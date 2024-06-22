@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_FALSE_CORRELATION_METADATA = Metadata(
-    id="34247ec59637a12760c7dcfbf29cd02ad778c03f",
+    id="c0eada9f39b15fc055896a06cede244b24621c06",
     name="metric-false-correlation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -29,7 +29,7 @@ def metric_false_correlation(
     v_3d_dist: float | int,
     geo_outer: float | int,
     geo_inner: float | int,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_roi_roi_metric: InputPathType | None = None,
     opt_dump_text_text_out: str | None = None,
     runner: Runner = None,
@@ -71,14 +71,14 @@ def metric_false_correlation(
     cargs.append(str(v_3d_dist))
     cargs.append(str(geo_outer))
     cargs.append(str(geo_inner))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_roi_roi_metric is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_metric)])
     if opt_dump_text_text_out is not None:
         cargs.extend(["-dump-text", opt_dump_text_text_out])
     ret = MetricFalseCorrelationOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

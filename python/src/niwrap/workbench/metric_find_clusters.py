@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_FIND_CLUSTERS_METADATA = Metadata(
-    id="3ea53c47222268012e84419e7674af694cdafca0",
+    id="9a07db4e089e1a4c8644b668b7034a7ffb0f2445",
     name="metric-find-clusters",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -28,7 +28,7 @@ def metric_find_clusters(
     metric_in: InputPathType,
     value_threshold: float | int,
     minimum_area: float | int,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_less_than: bool = False,
     opt_roi_roi_metric: InputPathType | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
@@ -85,7 +85,7 @@ def metric_find_clusters(
     cargs.append(execution.input_file(metric_in))
     cargs.append(str(value_threshold))
     cargs.append(str(minimum_area))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_less_than:
         cargs.append("-less-than")
     if opt_roi_roi_metric is not None:
@@ -102,7 +102,7 @@ def metric_find_clusters(
         cargs.extend(["-start", str(opt_start_startval)])
     ret = MetricFindClustersOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

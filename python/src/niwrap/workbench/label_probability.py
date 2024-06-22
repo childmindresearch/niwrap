@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 LABEL_PROBABILITY_METADATA = Metadata(
-    id="25d79bf1b049f288a3d90b70022b5bc194d1a107",
+    id="d89664f90a32fa01c8bc5f8996be02413ae19208",
     name="label-probability",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class LabelProbabilityOutputs(typing.NamedTuple):
 
 def label_probability(
     label_maps: InputPathType,
-    probability_metric_out: InputPathType,
+    probability_metric_out: str,
     opt_exclude_unlabeled: bool = False,
     runner: Runner = None,
 ) -> LabelProbabilityOutputs:
@@ -55,12 +55,12 @@ def label_probability(
     cargs.append("wb_command")
     cargs.append("-label-probability")
     cargs.append(execution.input_file(label_maps))
-    cargs.append(execution.input_file(probability_metric_out))
+    cargs.append(probability_metric_out)
     if opt_exclude_unlabeled:
         cargs.append("-exclude-unlabeled")
     ret = LabelProbabilityOutputs(
         root=execution.output_file("."),
-        probability_metric_out=execution.output_file(f"{pathlib.Path(probability_metric_out).name}"),
+        probability_metric_out=execution.output_file(f"{probability_metric_out}"),
     )
     execution.run(cargs)
     return ret

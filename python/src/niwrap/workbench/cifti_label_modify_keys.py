@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_LABEL_MODIFY_KEYS_METADATA = Metadata(
-    id="7d03ed922e7e005715fcc5b1f3e85d7e0f7050d6",
+    id="27924c8949337f2c008cf83af99fa3aaa7226a2a",
     name="cifti-label-modify-keys",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class CiftiLabelModifyKeysOutputs(typing.NamedTuple):
 def cifti_label_modify_keys(
     cifti_in: InputPathType,
     remap_file: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_column_column: str | None = None,
     runner: Runner = None,
 ) -> CiftiLabelModifyKeysOutputs:
@@ -66,12 +66,12 @@ def cifti_label_modify_keys(
     cargs.append("-cifti-label-modify-keys")
     cargs.append(execution.input_file(cifti_in))
     cargs.append(remap_file)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     ret = CiftiLabelModifyKeysOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

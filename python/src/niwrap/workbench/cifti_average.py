@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_AVERAGE_METADATA = Metadata(
-    id="2298366d749af485c97a2cca3a97c99717664081",
+    id="e0d581097b83389ada38b2219f2866a71a8c9729",
     name="cifti-average",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -86,7 +86,7 @@ class CiftiAverageOutputs(typing.NamedTuple):
 
 
 def cifti_average(
-    cifti_out: InputPathType,
+    cifti_out: str,
     exclude_outliers: CiftiAverageExcludeOutliers | None = None,
     opt_mem_limit_limit_gb: float | int | None = None,
     cifti: list[CiftiAverageCifti] = None,
@@ -120,7 +120,7 @@ def cifti_average(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-cifti-average")
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if exclude_outliers is not None:
         cargs.extend(exclude_outliers.run(execution))
     if opt_mem_limit_limit_gb is not None:
@@ -129,7 +129,7 @@ def cifti_average(
         cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
     ret = CiftiAverageOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

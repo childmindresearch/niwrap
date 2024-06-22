@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_TO_SURFACE_MAPPING_METADATA = Metadata(
-    id="e704b4abb5e9c4519e8bc3bf75b8ed655ccd59bc",
+    id="407f1e0fe7142c3ba67b9be62f12d13563f1020d",
     name="volume-to-surface-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -62,7 +62,7 @@ class VolumeToSurfaceMappingOutputWeights:
     """
     vertex: int
     """the vertex number to get the voxel weights for, 0-based"""
-    weights_out: InputPathType
+    weights_out: str
     """volume to write the weights to"""
     
     def run(
@@ -81,7 +81,7 @@ class VolumeToSurfaceMappingOutputWeights:
         cargs = []
         cargs.append("-output-weights")
         cargs.append(str(self.vertex))
-        cargs.append(execution.input_file(self.weights_out))
+        cargs.append(self.weights_out)
         return cargs
     
     def outputs(
@@ -99,7 +99,7 @@ class VolumeToSurfaceMappingOutputWeights:
         """
         ret = VolumeToSurfaceMappingOutputWeightsOutputs(
             root=execution.output_file("."),
-            weights_out=execution.output_file(f"{pathlib.Path(self.weights_out).name}"),
+            weights_out=execution.output_file(f"{self.weights_out}"),
         )
         return ret
 
@@ -123,7 +123,7 @@ class VolumeToSurfaceMappingRibbonConstrained:
     """the inner surface of the ribbon"""
     outer_surf: InputPathType
     """the outer surface of the ribbon"""
-    roi_out: InputPathType
+    roi_out: str
     """the output metric file of vertices that have no data"""
     volume_roi: VolumeToSurfaceMappingVolumeRoi | None = None
     """use a volume roi"""
@@ -176,7 +176,7 @@ class VolumeToSurfaceMappingRibbonConstrained:
             cargs.extend(["-interpolate", self.opt_interpolate_method])
         if self.opt_bad_vertices_out:
             cargs.append("-bad-vertices-out")
-        cargs.append(execution.input_file(self.roi_out))
+        cargs.append(self.roi_out)
         if self.output_weights is not None:
             cargs.extend(self.output_weights.run(execution))
         if self.opt_output_weights_text_text_out is not None:
@@ -256,7 +256,7 @@ class VolumeToSurfaceMappingOutputs(typing.NamedTuple):
 def volume_to_surface_mapping(
     volume: InputPathType,
     surface: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_trilinear: bool = False,
     opt_enclosing: bool = False,
     opt_cubic: bool = False,
@@ -330,7 +330,7 @@ def volume_to_surface_mapping(
     cargs.append("-volume-to-surface-mapping")
     cargs.append(execution.input_file(volume))
     cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_trilinear:
         cargs.append("-trilinear")
     if opt_enclosing:
@@ -345,7 +345,7 @@ def volume_to_surface_mapping(
         cargs.extend(["-subvol-select", opt_subvol_select_subvol])
     ret = VolumeToSurfaceMappingOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
         ribbon_constrained=ribbon_constrained.outputs(execution) if ribbon_constrained else None,
     )
     execution.run(cargs)

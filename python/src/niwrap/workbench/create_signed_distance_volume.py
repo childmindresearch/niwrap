@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CREATE_SIGNED_DISTANCE_VOLUME_METADATA = Metadata(
-    id="0d3e7431863d648a94f95546a81542beb276a11d",
+    id="a6f027b0d57907d375d12b82607a18434a097db4",
     name="create-signed-distance-volume",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -28,8 +28,8 @@ class CreateSignedDistanceVolumeOutputs(typing.NamedTuple):
 def create_signed_distance_volume(
     surface: InputPathType,
     refspace: str,
-    outvol: InputPathType,
-    roi_vol: InputPathType,
+    outvol: str,
+    roi_vol: str,
     opt_roi_out: bool = False,
     opt_fill_value_value: float | int | None = None,
     opt_exact_limit_dist: float | int | None = None,
@@ -91,10 +91,10 @@ def create_signed_distance_volume(
     cargs.append("-create-signed-distance-volume")
     cargs.append(execution.input_file(surface))
     cargs.append(refspace)
-    cargs.append(execution.input_file(outvol))
+    cargs.append(outvol)
     if opt_roi_out:
         cargs.append("-roi-out")
-    cargs.append(execution.input_file(roi_vol))
+    cargs.append(roi_vol)
     if opt_fill_value_value is not None:
         cargs.extend(["-fill-value", str(opt_fill_value_value)])
     if opt_exact_limit_dist is not None:
@@ -107,8 +107,8 @@ def create_signed_distance_volume(
         cargs.extend(["-winding", opt_winding_method])
     ret = CreateSignedDistanceVolumeOutputs(
         root=execution.output_file("."),
-        outvol=execution.output_file(f"{pathlib.Path(outvol).name}"),
-        roi_vol=execution.output_file(f"{pathlib.Path(roi_vol).name}"),
+        outvol=execution.output_file(f"{outvol}"),
+        roi_vol=execution.output_file(f"{roi_vol}"),
     )
     execution.run(cargs)
     return ret

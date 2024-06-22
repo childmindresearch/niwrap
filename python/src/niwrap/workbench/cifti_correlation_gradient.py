@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CORRELATION_GRADIENT_METADATA = Metadata(
-    id="06bc2742e1c978e3d572dc2936db5c3a2186a2e5",
+    id="a179e2ecd52a68662f989d7a9ba7d99f17d93b8d",
     name="cifti-correlation-gradient",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -160,7 +160,7 @@ class CiftiCorrelationGradientOutputs(typing.NamedTuple):
 
 def cifti_correlation_gradient(
     cifti: InputPathType,
-    cifti_out: InputPathType,
+    cifti_out: str,
     left_surface: CiftiCorrelationGradientLeftSurface | None = None,
     right_surface: CiftiCorrelationGradientRightSurface | None = None,
     cerebellum_surface: CiftiCorrelationGradientCerebellumSurface | None = None,
@@ -222,7 +222,7 @@ def cifti_correlation_gradient(
     cargs.append("wb_command")
     cargs.append("-cifti-correlation-gradient")
     cargs.append(execution.input_file(cifti))
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if left_surface is not None:
         cargs.extend(left_surface.run(execution))
     if right_surface is not None:
@@ -251,7 +251,7 @@ def cifti_correlation_gradient(
         cargs.extend(double_correlation.run(execution))
     ret = CiftiCorrelationGradientOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_LABEL_TO_ROI_METADATA = Metadata(
-    id="2f4b23d78d199707be8be7e3774d7226bd5a28b8",
+    id="6455d59938ce391b3fe3c5e867d9eca3feafe1df",
     name="cifti-label-to-roi",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class CiftiLabelToRoiOutputs(typing.NamedTuple):
 
 def cifti_label_to_roi(
     label_in: InputPathType,
-    scalar_out: InputPathType,
+    scalar_out: str,
     opt_name_label_name: str | None = None,
     opt_key_label_key: int | None = None,
     opt_map_map: str | None = None,
@@ -59,7 +59,7 @@ def cifti_label_to_roi(
     cargs.append("wb_command")
     cargs.append("-cifti-label-to-roi")
     cargs.append(execution.input_file(label_in))
-    cargs.append(execution.input_file(scalar_out))
+    cargs.append(scalar_out)
     if opt_name_label_name is not None:
         cargs.extend(["-name", opt_name_label_name])
     if opt_key_label_key is not None:
@@ -68,7 +68,7 @@ def cifti_label_to_roi(
         cargs.extend(["-map", opt_map_map])
     ret = CiftiLabelToRoiOutputs(
         root=execution.output_file("."),
-        scalar_out=execution.output_file(f"{pathlib.Path(scalar_out).name}"),
+        scalar_out=execution.output_file(f"{scalar_out}"),
     )
     execution.run(cargs)
     return ret

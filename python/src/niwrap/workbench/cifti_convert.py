@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CONVERT_METADATA = Metadata(
-    id="e64077689e732bb7e9877e51a76e783468224e40",
+    id="994dc4ac7b01a8eccd2ad2fa99a0bd846b0dc0ca",
     name="cifti-convert",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -130,7 +130,7 @@ class CiftiConvertFromGiftiExt:
     """
     gifti_in: str
     """the input gifti file"""
-    cifti_out: InputPathType
+    cifti_out: str
     """the output cifti file"""
     reset_timepoints: CiftiConvertResetTimepoints | None = None
     """reset the mapping along rows to timepoints, taking length from the gifti
@@ -159,7 +159,7 @@ class CiftiConvertFromGiftiExt:
         cargs = []
         cargs.append("-from-gifti-ext")
         cargs.append(self.gifti_in)
-        cargs.append(execution.input_file(self.cifti_out))
+        cargs.append(self.cifti_out)
         if self.reset_timepoints is not None:
             cargs.extend(self.reset_timepoints.run(execution))
         if self.opt_reset_scalars:
@@ -185,7 +185,7 @@ class CiftiConvertFromGiftiExt:
         """
         ret = CiftiConvertFromGiftiExtOutputs(
             root=execution.output_file("."),
-            cifti_out=execution.output_file(f"{pathlib.Path(self.cifti_out).name}"),
+            cifti_out=execution.output_file(f"{self.cifti_out}"),
         )
         return ret
 
@@ -207,7 +207,7 @@ class CiftiConvertToNifti:
     """
     cifti_in: InputPathType
     """the input cifti file"""
-    nifti_out: InputPathType
+    nifti_out: str
     """the output nifti file"""
     opt_smaller_file: bool = False
     """use better-fitting dimension lengths"""
@@ -231,7 +231,7 @@ class CiftiConvertToNifti:
         cargs = []
         cargs.append("-to-nifti")
         cargs.append(execution.input_file(self.cifti_in))
-        cargs.append(execution.input_file(self.nifti_out))
+        cargs.append(self.nifti_out)
         if self.opt_smaller_file:
             cargs.append("-smaller-file")
         if self.opt_smaller_dims:
@@ -253,7 +253,7 @@ class CiftiConvertToNifti:
         """
         ret = CiftiConvertToNiftiOutputs(
             root=execution.output_file("."),
-            nifti_out=execution.output_file(f"{pathlib.Path(self.nifti_out).name}"),
+            nifti_out=execution.output_file(f"{self.nifti_out}"),
         )
         return ret
 
@@ -311,7 +311,7 @@ class CiftiConvertFromNifti:
     """the input nifti file"""
     cifti_template: InputPathType
     """a cifti file with the dimension(s) and mapping(s) that should be used"""
-    cifti_out: InputPathType
+    cifti_out: str
     """the output cifti file"""
     reset_timepoints: CiftiConvertResetTimepoints_ | None = None
     """reset the mapping along rows to timepoints, taking length from the nifti
@@ -336,7 +336,7 @@ class CiftiConvertFromNifti:
         cargs.append("-from-nifti")
         cargs.append(execution.input_file(self.nifti_in))
         cargs.append(execution.input_file(self.cifti_template))
-        cargs.append(execution.input_file(self.cifti_out))
+        cargs.append(self.cifti_out)
         if self.reset_timepoints is not None:
             cargs.extend(self.reset_timepoints.run(execution))
         if self.opt_reset_scalars:
@@ -358,7 +358,7 @@ class CiftiConvertFromNifti:
         """
         ret = CiftiConvertFromNiftiOutputs(
             root=execution.output_file("."),
-            cifti_out_=execution.output_file(f"{pathlib.Path(self.cifti_out).name}"),
+            cifti_out_=execution.output_file(f"{self.cifti_out}"),
         )
         return ret
 
@@ -451,7 +451,7 @@ class CiftiConvertFromText:
     """the input text file"""
     cifti_template: InputPathType
     """a cifti file with the dimension(s) and mapping(s) that should be used"""
-    cifti_out: InputPathType
+    cifti_out: str
     """the output cifti file"""
     opt_col_delim_delim_string: str | None = None
     """specify string that is between elements in a row: the string to use
@@ -479,7 +479,7 @@ class CiftiConvertFromText:
         cargs.append("-from-text")
         cargs.append(self.text_in)
         cargs.append(execution.input_file(self.cifti_template))
-        cargs.append(execution.input_file(self.cifti_out))
+        cargs.append(self.cifti_out)
         if self.opt_col_delim_delim_string is not None:
             cargs.extend(["-col-delim", self.opt_col_delim_delim_string])
         if self.reset_timepoints is not None:
@@ -503,7 +503,7 @@ class CiftiConvertFromText:
         """
         ret = CiftiConvertFromTextOutputs(
             root=execution.output_file("."),
-            cifti_out_2=execution.output_file(f"{pathlib.Path(self.cifti_out).name}"),
+            cifti_out_2=execution.output_file(f"{self.cifti_out}"),
         )
         return ret
 

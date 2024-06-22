@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_ERODE_METADATA = Metadata(
-    id="0c57ec48aba3939d10cc4b7ebb0d78cf28d2ef9b",
+    id="e1cb4129f0c3fe7bcb336afacfec9ea9c89e9325",
     name="volume-erode",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class VolumeErodeOutputs(typing.NamedTuple):
 def volume_erode(
     volume: InputPathType,
     distance: float | int,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_roi_roi_volume: InputPathType | None = None,
     opt_subvolume_subvol: str | None = None,
     runner: Runner = None,
@@ -59,14 +59,14 @@ def volume_erode(
     cargs.append("-volume-erode")
     cargs.append(execution.input_file(volume))
     cargs.append(str(distance))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_roi_roi_volume is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_volume)])
     if opt_subvolume_subvol is not None:
         cargs.extend(["-subvolume", opt_subvolume_subvol])
     ret = VolumeErodeOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

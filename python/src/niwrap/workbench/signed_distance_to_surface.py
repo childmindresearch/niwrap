@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SIGNED_DISTANCE_TO_SURFACE_METADATA = Metadata(
-    id="101f856124be8c1c8873ee90748f97dab57cf829",
+    id="c7965505eee57fc7a37989d14281e020b71b1685",
     name="signed-distance-to-surface",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class SignedDistanceToSurfaceOutputs(typing.NamedTuple):
 def signed_distance_to_surface(
     surface_comp: InputPathType,
     surface_ref: InputPathType,
-    metric: InputPathType,
+    metric: str,
     opt_winding_method: str | None = None,
     runner: Runner = None,
 ) -> SignedDistanceToSurfaceOutputs:
@@ -71,12 +71,12 @@ def signed_distance_to_surface(
     cargs.append("-signed-distance-to-surface")
     cargs.append(execution.input_file(surface_comp))
     cargs.append(execution.input_file(surface_ref))
-    cargs.append(execution.input_file(metric))
+    cargs.append(metric)
     if opt_winding_method is not None:
         cargs.extend(["-winding", opt_winding_method])
     ret = SignedDistanceToSurfaceOutputs(
         root=execution.output_file("."),
-        metric=execution.output_file(f"{pathlib.Path(metric).name}"),
+        metric=execution.output_file(f"{metric}"),
     )
     execution.run(cargs)
     return ret

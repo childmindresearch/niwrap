@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_SET_COORDINATES_METADATA = Metadata(
-    id="17ef75db17841a06180fa2bfcb5c4d0d732f2bdc",
+    id="56bec7139bbdc7f84524dcc961d42e936fa40ddd",
     name="surface-set-coordinates",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class SurfaceSetCoordinatesOutputs(typing.NamedTuple):
 def surface_set_coordinates(
     surface_in: InputPathType,
     coord_metric: InputPathType,
-    surface_out: InputPathType,
+    surface_out: str,
     runner: Runner = None,
 ) -> SurfaceSetCoordinatesOutputs:
     """
@@ -55,10 +55,10 @@ def surface_set_coordinates(
     cargs.append("-surface-set-coordinates")
     cargs.append(execution.input_file(surface_in))
     cargs.append(execution.input_file(coord_metric))
-    cargs.append(execution.input_file(surface_out))
+    cargs.append(surface_out)
     ret = SurfaceSetCoordinatesOutputs(
         root=execution.output_file("."),
-        surface_out=execution.output_file(f"{pathlib.Path(surface_out).name}"),
+        surface_out=execution.output_file(f"{surface_out}"),
     )
     execution.run(cargs)
     return ret

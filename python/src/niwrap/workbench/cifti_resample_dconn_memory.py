@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_RESAMPLE_DCONN_MEMORY_METADATA = Metadata(
-    id="fdd4ac8aae700baeba6c339fea90b998fdd3a048",
+    id="807abf064d2d424dead488b959ef303347940df6",
     name="cifti-resample-dconn-memory",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -560,7 +560,7 @@ def cifti_resample_dconn_memory(
     template_direction: str,
     surface_method: str,
     volume_method: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_surface_largest: bool = False,
     volume_predilate: CiftiResampleDconnMemoryVolumePredilate | None = None,
     surface_postdilate: CiftiResampleDconnMemorySurfacePostdilate | None = None,
@@ -636,7 +636,7 @@ def cifti_resample_dconn_memory(
     cargs.append(template_direction)
     cargs.append(surface_method)
     cargs.append(volume_method)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_surface_largest:
         cargs.append("-surface-largest")
     if volume_predilate is not None:
@@ -655,7 +655,7 @@ def cifti_resample_dconn_memory(
         cargs.extend(cerebellum_spheres.run(execution))
     ret = CiftiResampleDconnMemoryOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_SMOOTHING_METADATA = Metadata(
-    id="bb010a9bb677d5deff2034fbbbe17f9a5b0de19b",
+    id="d51b48fa06d682c34e51abeb5fb183b452271612",
     name="cifti-smoothing",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -125,7 +125,7 @@ def cifti_smoothing(
     surface_kernel: float | int,
     volume_kernel: float | int,
     direction: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_fwhm: bool = False,
     left_surface: CiftiSmoothingLeftSurface | None = None,
     right_surface: CiftiSmoothingRightSurface | None = None,
@@ -191,7 +191,7 @@ def cifti_smoothing(
     cargs.append(str(surface_kernel))
     cargs.append(str(volume_kernel))
     cargs.append(direction)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_fwhm:
         cargs.append("-fwhm")
     if left_surface is not None:
@@ -210,7 +210,7 @@ def cifti_smoothing(
         cargs.append("-merged-volume")
     ret = CiftiSmoothingOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

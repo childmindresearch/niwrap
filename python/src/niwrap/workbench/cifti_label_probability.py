@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_LABEL_PROBABILITY_METADATA = Metadata(
-    id="e43d37fd5a640c812f6bd48c8ee4a67decd06f70",
+    id="051abc9202a038e40dee684025f5b539ea1fb6a5",
     name="cifti-label-probability",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class CiftiLabelProbabilityOutputs(typing.NamedTuple):
 
 def cifti_label_probability(
     label_maps: InputPathType,
-    probability_dscalar_out: InputPathType,
+    probability_dscalar_out: str,
     opt_exclude_unlabeled: bool = False,
     runner: Runner = None,
 ) -> CiftiLabelProbabilityOutputs:
@@ -55,12 +55,12 @@ def cifti_label_probability(
     cargs.append("wb_command")
     cargs.append("-cifti-label-probability")
     cargs.append(execution.input_file(label_maps))
-    cargs.append(execution.input_file(probability_dscalar_out))
+    cargs.append(probability_dscalar_out)
     if opt_exclude_unlabeled:
         cargs.append("-exclude-unlabeled")
     ret = CiftiLabelProbabilityOutputs(
         root=execution.output_file("."),
-        probability_dscalar_out=execution.output_file(f"{pathlib.Path(probability_dscalar_out).name}"),
+        probability_dscalar_out=execution.output_file(f"{probability_dscalar_out}"),
     )
     execution.run(cargs)
     return ret

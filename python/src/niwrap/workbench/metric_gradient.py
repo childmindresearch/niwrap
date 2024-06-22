@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_GRADIENT_METADATA = Metadata(
-    id="cedb8deb86d1140fa4a3de5c25249323cf7ffd37",
+    id="ab22a1a4f590f47db5ccb1b337910cf606091374",
     name="metric-gradient",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -91,8 +91,8 @@ class MetricGradientOutputs(typing.NamedTuple):
 def metric_gradient(
     surface: InputPathType,
     metric_in: InputPathType,
-    metric_out: InputPathType,
-    vector_metric_out: InputPathType,
+    metric_out: str,
+    vector_metric_out: str,
     presmooth: MetricGradientPresmooth | None = None,
     roi: MetricGradientRoi | None = None,
     opt_vectors: bool = False,
@@ -160,14 +160,14 @@ def metric_gradient(
     cargs.append("-metric-gradient")
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(metric_in))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if presmooth is not None:
         cargs.extend(presmooth.run(execution))
     if roi is not None:
         cargs.extend(roi.run(execution))
     if opt_vectors:
         cargs.append("-vectors")
-    cargs.append(execution.input_file(vector_metric_out))
+    cargs.append(vector_metric_out)
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     if opt_corrected_areas_area_metric is not None:
@@ -176,8 +176,8 @@ def metric_gradient(
         cargs.append("-average-normals")
     ret = MetricGradientOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
-        vector_metric_out=execution.output_file(f"{pathlib.Path(vector_metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
+        vector_metric_out=execution.output_file(f"{vector_metric_out}"),
     )
     execution.run(cargs)
     return ret

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_LABEL_IMPORT_METADATA = Metadata(
-    id="3b451a2803a443a7b349841387bd4681bcea7d6e",
+    id="9049d12c773cdea9f78ee32a0e57444597ce910e",
     name="metric-label-import",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class MetricLabelImportOutputs(typing.NamedTuple):
 def metric_label_import(
     input_: InputPathType,
     label_list_file: str,
-    output: InputPathType,
+    output: str,
     opt_discard_others: bool = False,
     opt_unlabeled_value_value: int | None = None,
     opt_column_column: str | None = None,
@@ -85,7 +85,7 @@ def metric_label_import(
     cargs.append("-metric-label-import")
     cargs.append(execution.input_file(input_))
     cargs.append(label_list_file)
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     if opt_discard_others:
         cargs.append("-discard-others")
     if opt_unlabeled_value_value is not None:
@@ -96,7 +96,7 @@ def metric_label_import(
         cargs.append("-drop-unused-labels")
     ret = MetricLabelImportOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

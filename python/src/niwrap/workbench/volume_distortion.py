@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_DISTORTION_METADATA = Metadata(
-    id="f2f4a3fb621316ec40b599b567aef29d92d0674b",
+    id="c71d252c19b129d4a879271fd58175c688c9b596",
     name="volume-distortion",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class VolumeDistortionOutputs(typing.NamedTuple):
 
 def volume_distortion(
     warpfield: str,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_fnirt_source_volume: str | None = None,
     opt_circular: bool = False,
     opt_log2: bool = False,
@@ -66,7 +66,7 @@ def volume_distortion(
     cargs.append("wb_command")
     cargs.append("-volume-distortion")
     cargs.append(warpfield)
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_fnirt_source_volume is not None:
         cargs.extend(["-fnirt", opt_fnirt_source_volume])
     if opt_circular:
@@ -75,7 +75,7 @@ def volume_distortion(
         cargs.append("-log2")
     ret = VolumeDistortionOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

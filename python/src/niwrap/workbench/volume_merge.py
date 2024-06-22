@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_MERGE_METADATA = Metadata(
-    id="19d5788f8e36ff96123e1149b833db7a03da4fdd",
+    id="9461057f0c6dac8e997f14b43f800bce50f6344d",
     name="volume-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -118,7 +118,7 @@ class VolumeMergeOutputs(typing.NamedTuple):
 
 
 def volume_merge(
-    volume_out: InputPathType,
+    volume_out: str,
     volume: list[VolumeMergeVolume] = None,
     runner: Runner = None,
 ) -> VolumeMergeOutputs:
@@ -149,12 +149,12 @@ def volume_merge(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-volume-merge")
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if volume is not None:
         cargs.extend([a for c in [s.run(execution) for s in volume] for a in c])
     ret = VolumeMergeOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

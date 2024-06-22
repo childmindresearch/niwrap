@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="268c7ef7d14b79f70aa6a8d31c2b572ca2153713",
+    id="fc4f268bc418f9e02c9dd8408b8965ca733f7414",
     name="cifti-all-labels-to-rois",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class CiftiAllLabelsToRoisOutputs(typing.NamedTuple):
 def cifti_all_labels_to_rois(
     label_in: InputPathType,
     map_: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     runner: Runner = None,
 ) -> CiftiAllLabelsToRoisOutputs:
     """
@@ -56,10 +56,10 @@ def cifti_all_labels_to_rois(
     cargs.append("-cifti-all-labels-to-rois")
     cargs.append(execution.input_file(label_in))
     cargs.append(map_)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     ret = CiftiAllLabelsToRoisOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

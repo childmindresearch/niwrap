@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_AVERAGE_ROI_CORRELATION_METADATA = Metadata(
-    id="83d45c3fc1c7f0bbbc3ca9cf0c910cff3aa7aabd",
+    id="1eb6c7ac36aae1871b5f0db23764dd7e592e5133",
     name="cifti-average-roi-correlation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -83,7 +83,7 @@ class CiftiAverageRoiCorrelationOutputs(typing.NamedTuple):
 
 
 def cifti_average_roi_correlation(
-    cifti_out: InputPathType,
+    cifti_out: str,
     cifti_roi: CiftiAverageRoiCorrelationCiftiRoi | None = None,
     opt_left_roi_roi_metric: InputPathType | None = None,
     opt_right_roi_roi_metric: InputPathType | None = None,
@@ -135,7 +135,7 @@ def cifti_average_roi_correlation(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-cifti-average-roi-correlation")
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if cifti_roi is not None:
         cargs.extend(cifti_roi.run(execution))
     if opt_left_roi_roi_metric is not None:
@@ -156,7 +156,7 @@ def cifti_average_roi_correlation(
         cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
     ret = CiftiAverageRoiCorrelationOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

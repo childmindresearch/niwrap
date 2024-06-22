@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_PARCEL_RESAMPLING_METADATA = Metadata(
-    id="134df61b5648b78888cf108130cd858317ab3da0",
+    id="376706531de016c2979b926deae7b1478d8df498",
     name="volume-parcel-resampling",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -28,7 +28,7 @@ def volume_parcel_resampling(
     cur_parcels: InputPathType,
     new_parcels: InputPathType,
     kernel: float | int,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_fix_zeros: bool = False,
     opt_fwhm: bool = False,
     opt_subvolume_subvol: str | None = None,
@@ -74,7 +74,7 @@ def volume_parcel_resampling(
     cargs.append(execution.input_file(cur_parcels))
     cargs.append(execution.input_file(new_parcels))
     cargs.append(str(kernel))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_fix_zeros:
         cargs.append("-fix-zeros")
     if opt_fwhm:
@@ -83,7 +83,7 @@ def volume_parcel_resampling(
         cargs.extend(["-subvolume", opt_subvolume_subvol])
     ret = VolumeParcelResamplingOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

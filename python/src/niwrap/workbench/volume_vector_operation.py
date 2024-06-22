@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_VECTOR_OPERATION_METADATA = Metadata(
-    id="3b82c58c375a19b1de1d8fa2e188595d84f12b8e",
+    id="ac8d5675b53eaacaf6288f5ca40cf97b85056121",
     name="volume-vector-operation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def volume_vector_operation(
     vectors_a: InputPathType,
     vectors_b: InputPathType,
     operation: str,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_normalize_a: bool = False,
     opt_normalize_b: bool = False,
     opt_normalize_output: bool = False,
@@ -74,7 +74,7 @@ def volume_vector_operation(
     cargs.append(execution.input_file(vectors_a))
     cargs.append(execution.input_file(vectors_b))
     cargs.append(operation)
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_normalize_a:
         cargs.append("-normalize-a")
     if opt_normalize_b:
@@ -85,7 +85,7 @@ def volume_vector_operation(
         cargs.append("-magnitude")
     ret = VolumeVectorOperationOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

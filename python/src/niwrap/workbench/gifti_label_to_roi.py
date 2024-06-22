@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 GIFTI_LABEL_TO_ROI_METADATA = Metadata(
-    id="8ed85b99cf4ebdc19a60f587b8920c782339a1ce",
+    id="f8957a62616930c7c9602d4f31ffab1bee8ebbec",
     name="gifti-label-to-roi",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class GiftiLabelToRoiOutputs(typing.NamedTuple):
 
 def gifti_label_to_roi(
     label_in: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_name_label_name: str | None = None,
     opt_key_label_key: int | None = None,
     opt_map_map: str | None = None,
@@ -59,7 +59,7 @@ def gifti_label_to_roi(
     cargs.append("wb_command")
     cargs.append("-gifti-label-to-roi")
     cargs.append(execution.input_file(label_in))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_name_label_name is not None:
         cargs.extend(["-name", opt_name_label_name])
     if opt_key_label_key is not None:
@@ -68,7 +68,7 @@ def gifti_label_to_roi(
         cargs.extend(["-map", opt_map_map])
     ret = GiftiLabelToRoiOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

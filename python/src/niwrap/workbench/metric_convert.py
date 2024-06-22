@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_CONVERT_METADATA = Metadata(
-    id="66ca3dcb5ac1d5279a1136016078a22479c553f6",
+    id="e88502b4315c60e46ce3b52e03625875db9c7572",
     name="metric-convert",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -31,7 +31,7 @@ class MetricConvertToNifti:
     """
     metric_in: InputPathType
     """the metric to convert"""
-    nifti_out: InputPathType
+    nifti_out: str
     """the output nifti file"""
     
     def run(
@@ -50,7 +50,7 @@ class MetricConvertToNifti:
         cargs = []
         cargs.append("-to-nifti")
         cargs.append(execution.input_file(self.metric_in))
-        cargs.append(execution.input_file(self.nifti_out))
+        cargs.append(self.nifti_out)
         return cargs
     
     def outputs(
@@ -68,7 +68,7 @@ class MetricConvertToNifti:
         """
         ret = MetricConvertToNiftiOutputs(
             root=execution.output_file("."),
-            nifti_out=execution.output_file(f"{pathlib.Path(self.nifti_out).name}"),
+            nifti_out=execution.output_file(f"{self.nifti_out}"),
         )
         return ret
 
@@ -92,7 +92,7 @@ class MetricConvertFromNifti:
     """the nifti file to convert"""
     surface_in: InputPathType
     """surface file to use number of vertices and structure from"""
-    metric_out: InputPathType
+    metric_out: str
     """the output metric file"""
     
     def run(
@@ -112,7 +112,7 @@ class MetricConvertFromNifti:
         cargs.append("-from-nifti")
         cargs.append(execution.input_file(self.nifti_in))
         cargs.append(execution.input_file(self.surface_in))
-        cargs.append(execution.input_file(self.metric_out))
+        cargs.append(self.metric_out)
         return cargs
     
     def outputs(
@@ -130,7 +130,7 @@ class MetricConvertFromNifti:
         """
         ret = MetricConvertFromNiftiOutputs(
             root=execution.output_file("."),
-            metric_out=execution.output_file(f"{pathlib.Path(self.metric_out).name}"),
+            metric_out=execution.output_file(f"{self.metric_out}"),
         )
         return ret
 

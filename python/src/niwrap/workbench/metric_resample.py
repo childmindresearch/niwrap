@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_RESAMPLE_METADATA = Metadata(
-    id="dd0ee0d72e3e3f7a0c56b561db7230a3d8884302",
+    id="bbdab7f5b9dd691702d4ca91adf8b28b857fe149",
     name="metric-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -91,8 +91,8 @@ def metric_resample(
     current_sphere: InputPathType,
     new_sphere: InputPathType,
     method: str,
-    metric_out: InputPathType,
-    roi_out: InputPathType,
+    metric_out: str,
+    roi_out: str,
     area_surfs: MetricResampleAreaSurfs | None = None,
     area_metrics: MetricResampleAreaMetrics | None = None,
     opt_current_roi_roi_metric: InputPathType | None = None,
@@ -162,7 +162,7 @@ def metric_resample(
     cargs.append(execution.input_file(current_sphere))
     cargs.append(execution.input_file(new_sphere))
     cargs.append(method)
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if area_surfs is not None:
         cargs.extend(area_surfs.run(execution))
     if area_metrics is not None:
@@ -171,15 +171,15 @@ def metric_resample(
         cargs.extend(["-current-roi", execution.input_file(opt_current_roi_roi_metric)])
     if opt_valid_roi_out:
         cargs.append("-valid-roi-out")
-    cargs.append(execution.input_file(roi_out))
+    cargs.append(roi_out)
     if opt_largest:
         cargs.append("-largest")
     if opt_bypass_sphere_check:
         cargs.append("-bypass-sphere-check")
     ret = MetricResampleOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
-        roi_out=execution.output_file(f"{pathlib.Path(roi_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
+        roi_out=execution.output_file(f"{roi_out}"),
     )
     execution.run(cargs)
     return ret

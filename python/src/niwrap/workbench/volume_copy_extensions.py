@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_COPY_EXTENSIONS_METADATA = Metadata(
-    id="058f201b7856523c9b46ef6d392b55aa711ab1c9",
+    id="666f239d139ae2adf777ce15ac59933098940c5b",
     name="volume-copy-extensions",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class VolumeCopyExtensionsOutputs(typing.NamedTuple):
 def volume_copy_extensions(
     data_volume: InputPathType,
     extension_volume: InputPathType,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_drop_unknown: bool = False,
     runner: Runner = None,
 ) -> VolumeCopyExtensionsOutputs:
@@ -57,12 +57,12 @@ def volume_copy_extensions(
     cargs.append("-volume-copy-extensions")
     cargs.append(execution.input_file(data_volume))
     cargs.append(execution.input_file(extension_volume))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_drop_unknown:
         cargs.append("-drop-unknown")
     ret = VolumeCopyExtensionsOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_DILATE_METADATA = Metadata(
-    id="c7eeb58bdb557a6a4589faa458e9e1f3cffe8c23",
+    id="15e8b3797db90f2de9e9acf1a0fef9b7403e5a2d",
     name="cifti-dilate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -125,7 +125,7 @@ def cifti_dilate(
     direction: str,
     surface_distance: float | int,
     volume_distance: float | int,
-    cifti_out: InputPathType,
+    cifti_out: str,
     left_surface: CiftiDilateLeftSurface | None = None,
     right_surface: CiftiDilateRightSurface | None = None,
     cerebellum_surface: CiftiDilateCerebellumSurface | None = None,
@@ -186,7 +186,7 @@ def cifti_dilate(
     cargs.append(direction)
     cargs.append(str(surface_distance))
     cargs.append(str(volume_distance))
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if left_surface is not None:
         cargs.extend(left_surface.run(execution))
     if right_surface is not None:
@@ -203,7 +203,7 @@ def cifti_dilate(
         cargs.append("-legacy-mode")
     ret = CiftiDilateOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_MERGE_METADATA = Metadata(
-    id="07b93903156884c571e692d81f9bb8fade3105ee",
+    id="ace7f962596da5b05c428ebe5bbbc9401fcd32f7",
     name="metric-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -118,7 +118,7 @@ class MetricMergeOutputs(typing.NamedTuple):
 
 
 def metric_merge(
-    metric_out: InputPathType,
+    metric_out: str,
     metric: list[MetricMergeMetric] = None,
     runner: Runner = None,
 ) -> MetricMergeOutputs:
@@ -149,12 +149,12 @@ def metric_merge(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-metric-merge")
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if metric is not None:
         cargs.extend([a for c in [s.run(execution) for s in metric] for a in c])
     ret = MetricMergeOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

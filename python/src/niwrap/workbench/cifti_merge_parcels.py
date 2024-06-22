@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_MERGE_PARCELS_METADATA = Metadata(
-    id="8a405856cf70836460d08946786378f72f650d6b",
+    id="f7ad5be715608f488b0a0730e75a53605fc2c15b",
     name="cifti-merge-parcels",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -53,7 +53,7 @@ class CiftiMergeParcelsOutputs(typing.NamedTuple):
 
 def cifti_merge_parcels(
     direction: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     cifti: list[CiftiMergeParcelsCifti] = None,
     runner: Runner = None,
 ) -> CiftiMergeParcelsOutputs:
@@ -81,12 +81,12 @@ def cifti_merge_parcels(
     cargs.append("wb_command")
     cargs.append("-cifti-merge-parcels")
     cargs.append(direction)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if cifti is not None:
         cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
     ret = CiftiMergeParcelsOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

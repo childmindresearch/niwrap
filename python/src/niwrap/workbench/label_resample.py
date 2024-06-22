@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABEL_RESAMPLE_METADATA = Metadata(
-    id="1312739be366d168363473c048715f1d2d37085d",
+    id="af05f7ba2bd5fc37c33894ec69937039ea90c16f",
     name="label-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -91,8 +91,8 @@ def label_resample(
     current_sphere: InputPathType,
     new_sphere: InputPathType,
     method: str,
-    label_out: InputPathType,
-    roi_out: InputPathType,
+    label_out: str,
+    roi_out: str,
     area_surfs: LabelResampleAreaSurfs | None = None,
     area_metrics: LabelResampleAreaMetrics | None = None,
     opt_current_roi_roi_metric: InputPathType | None = None,
@@ -160,7 +160,7 @@ def label_resample(
     cargs.append(execution.input_file(current_sphere))
     cargs.append(execution.input_file(new_sphere))
     cargs.append(method)
-    cargs.append(execution.input_file(label_out))
+    cargs.append(label_out)
     if area_surfs is not None:
         cargs.extend(area_surfs.run(execution))
     if area_metrics is not None:
@@ -169,15 +169,15 @@ def label_resample(
         cargs.extend(["-current-roi", execution.input_file(opt_current_roi_roi_metric)])
     if opt_valid_roi_out:
         cargs.append("-valid-roi-out")
-    cargs.append(execution.input_file(roi_out))
+    cargs.append(roi_out)
     if opt_largest:
         cargs.append("-largest")
     if opt_bypass_sphere_check:
         cargs.append("-bypass-sphere-check")
     ret = LabelResampleOutputs(
         root=execution.output_file("."),
-        label_out=execution.output_file(f"{pathlib.Path(label_out).name}"),
-        roi_out=execution.output_file(f"{pathlib.Path(roi_out).name}"),
+        label_out=execution.output_file(f"{label_out}"),
+        roi_out=execution.output_file(f"{roi_out}"),
     )
     execution.run(cargs)
     return ret

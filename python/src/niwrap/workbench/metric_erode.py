@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_ERODE_METADATA = Metadata(
-    id="f705f463d1a4cd440e8f94540f065810585f1bc4",
+    id="c6d0b09b7b4fe3f4841213b612172d5ec7008f34",
     name="metric-erode",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def metric_erode(
     metric: InputPathType,
     surface: InputPathType,
     distance: float | int,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_roi_roi_metric: InputPathType | None = None,
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
@@ -69,7 +69,7 @@ def metric_erode(
     cargs.append(execution.input_file(metric))
     cargs.append(execution.input_file(surface))
     cargs.append(str(distance))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_roi_roi_metric is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_metric)])
     if opt_column_column is not None:
@@ -78,7 +78,7 @@ def metric_erode(
         cargs.extend(["-corrected-areas", execution.input_file(opt_corrected_areas_area_metric)])
     ret = MetricErodeOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

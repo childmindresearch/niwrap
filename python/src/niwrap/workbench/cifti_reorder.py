@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_REORDER_METADATA = Metadata(
-    id="0524822039be62e4fa7e64df14c1370d49ab9288",
+    id="82621788215f269f947542dda2ac14f40f6322a8",
     name="cifti-reorder",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def cifti_reorder(
     cifti_in: InputPathType,
     direction: str,
     reorder_list: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     runner: Runner = None,
 ) -> CiftiReorderOutputs:
     """
@@ -61,10 +61,10 @@ def cifti_reorder(
     cargs.append(execution.input_file(cifti_in))
     cargs.append(direction)
     cargs.append(reorder_list)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     ret = CiftiReorderOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

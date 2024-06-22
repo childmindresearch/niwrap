@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_VERTEX_AREAS_METADATA = Metadata(
-    id="7633d54a4186e1ae77eedff9e5dde52c9dd4d24b",
+    id="9df3ecefa233171160b65871e3f998ca64717f3e",
     name="surface-vertex-areas",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class SurfaceVertexAreasOutputs(typing.NamedTuple):
 
 def surface_vertex_areas(
     surface: InputPathType,
-    metric: InputPathType,
+    metric: str,
     runner: Runner = None,
 ) -> SurfaceVertexAreasOutputs:
     """
@@ -49,10 +49,10 @@ def surface_vertex_areas(
     cargs.append("wb_command")
     cargs.append("-surface-vertex-areas")
     cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(metric))
+    cargs.append(metric)
     ret = SurfaceVertexAreasOutputs(
         root=execution.output_file("."),
-        metric=execution.output_file(f"{pathlib.Path(metric).name}"),
+        metric=execution.output_file(f"{metric}"),
     )
     execution.run(cargs)
     return ret

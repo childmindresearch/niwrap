@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_ROIS_FROM_EXTREMA_METADATA = Metadata(
-    id="46ea2bd0f404cabfbaccf60ddd003c3025484941",
+    id="dc237a764319553ac8492031cad1d33dfde96370",
     name="cifti-rois-from-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -59,7 +59,7 @@ def cifti_rois_from_extrema(
     surf_limit: float | int,
     vol_limit: float | int,
     direction: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_left_surface_surface: InputPathType | None = None,
     opt_right_surface_surface: InputPathType | None = None,
     opt_cerebellum_surface_surface: InputPathType | None = None,
@@ -112,7 +112,7 @@ def cifti_rois_from_extrema(
     cargs.append(str(surf_limit))
     cargs.append(str(vol_limit))
     cargs.append(direction)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_left_surface_surface is not None:
         cargs.extend(["-left-surface", execution.input_file(opt_left_surface_surface)])
     if opt_right_surface_surface is not None:
@@ -127,7 +127,7 @@ def cifti_rois_from_extrema(
         cargs.append("-merged-volume")
     ret = CiftiRoisFromExtremaOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

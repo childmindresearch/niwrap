@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 LABEL_TO_BORDER_METADATA = Metadata(
-    id="b6c0e96e953c8dd8571ceb1a3fac709a9851e773",
+    id="ca548ead7135be6145a3254af6d0cc0f12154e8b",
     name="label-to-border",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class LabelToBorderOutputs(typing.NamedTuple):
 def label_to_border(
     surface: InputPathType,
     label_in: InputPathType,
-    border_out: InputPathType,
+    border_out: str,
     opt_placement_fraction: float | int | None = None,
     opt_column_column: str | None = None,
     runner: Runner = None,
@@ -59,14 +59,14 @@ def label_to_border(
     cargs.append("-label-to-border")
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(label_in))
-    cargs.append(execution.input_file(border_out))
+    cargs.append(border_out)
     if opt_placement_fraction is not None:
         cargs.extend(["-placement", str(opt_placement_fraction)])
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     ret = LabelToBorderOutputs(
         root=execution.output_file("."),
-        border_out=execution.output_file(f"{pathlib.Path(border_out).name}"),
+        border_out=execution.output_file(f"{border_out}"),
     )
     execution.run(cargs)
     return ret

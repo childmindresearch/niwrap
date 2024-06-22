@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABEL_TO_VOLUME_MAPPING_METADATA = Metadata(
-    id="f84331ca754c571e53fd35003105eb033c14d0b8",
+    id="2bb7dbbce478ebb58d8d3157ffc0d9eab7bf1744",
     name="label-to-volume-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -72,7 +72,7 @@ def label_to_volume_mapping(
     label: InputPathType,
     surface: InputPathType,
     volume_space: InputPathType,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_nearest_vertex_distance: float | int | None = None,
     ribbon_constrained: LabelToVolumeMappingRibbonConstrained | None = None,
     runner: Runner = None,
@@ -109,14 +109,14 @@ def label_to_volume_mapping(
     cargs.append(execution.input_file(label))
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(volume_space))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_nearest_vertex_distance is not None:
         cargs.extend(["-nearest-vertex", str(opt_nearest_vertex_distance)])
     if ribbon_constrained is not None:
         cargs.extend(ribbon_constrained.run(execution))
     ret = LabelToVolumeMappingOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

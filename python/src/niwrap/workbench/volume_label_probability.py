@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_LABEL_PROBABILITY_METADATA = Metadata(
-    id="87d1563a8c992e3b4e82b3c5ba411e45fb0c806a",
+    id="87bada1b4a501eaed05701d01de128235d6302d2",
     name="volume-label-probability",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class VolumeLabelProbabilityOutputs(typing.NamedTuple):
 
 def volume_label_probability(
     label_maps: InputPathType,
-    probability_out: InputPathType,
+    probability_out: str,
     opt_exclude_unlabeled: bool = False,
     runner: Runner = None,
 ) -> VolumeLabelProbabilityOutputs:
@@ -54,12 +54,12 @@ def volume_label_probability(
     cargs.append("wb_command")
     cargs.append("-volume-label-probability")
     cargs.append(execution.input_file(label_maps))
-    cargs.append(execution.input_file(probability_out))
+    cargs.append(probability_out)
     if opt_exclude_unlabeled:
         cargs.append("-exclude-unlabeled")
     ret = VolumeLabelProbabilityOutputs(
         root=execution.output_file("."),
-        probability_out=execution.output_file(f"{pathlib.Path(probability_out).name}"),
+        probability_out=execution.output_file(f"{probability_out}"),
     )
     execution.run(cargs)
     return ret

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_GEODESIC_ROIS_METADATA = Metadata(
-    id="86e64cde691fcb20ef309f142d98021c69d26400",
+    id="36b14de93fdafd8286fc583d8a3a6ea4f273e1b8",
     name="surface-geodesic-rois",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def surface_geodesic_rois(
     surface: InputPathType,
     limit: float | int,
     vertex_list_file: str,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_gaussian_sigma: float | int | None = None,
     opt_overlap_logic_method: str | None = None,
     opt_names_name_list_file: str | None = None,
@@ -79,7 +79,7 @@ def surface_geodesic_rois(
     cargs.append(execution.input_file(surface))
     cargs.append(str(limit))
     cargs.append(vertex_list_file)
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_gaussian_sigma is not None:
         cargs.extend(["-gaussian", str(opt_gaussian_sigma)])
     if opt_overlap_logic_method is not None:
@@ -90,7 +90,7 @@ def surface_geodesic_rois(
         cargs.extend(["-corrected-areas", execution.input_file(opt_corrected_areas_area_metric)])
     ret = SurfaceGeodesicRoisOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 GIFTI_LABEL_ADD_PREFIX_METADATA = Metadata(
-    id="086df4fe0bd65b4bef8c65d70c552e262fefee3b",
+    id="60d9945343fd723a1206c1b5cbc09ca32f229dfd",
     name="gifti-label-add-prefix",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class GiftiLabelAddPrefixOutputs(typing.NamedTuple):
 def gifti_label_add_prefix(
     label_in: InputPathType,
     prefix: str,
-    label_out: InputPathType,
+    label_out: str,
     runner: Runner = None,
 ) -> GiftiLabelAddPrefixOutputs:
     """
@@ -51,10 +51,10 @@ def gifti_label_add_prefix(
     cargs.append("-gifti-label-add-prefix")
     cargs.append(execution.input_file(label_in))
     cargs.append(prefix)
-    cargs.append(execution.input_file(label_out))
+    cargs.append(label_out)
     ret = GiftiLabelAddPrefixOutputs(
         root=execution.output_file("."),
-        label_out=execution.output_file(f"{pathlib.Path(label_out).name}"),
+        label_out=execution.output_file(f"{label_out}"),
     )
     execution.run(cargs)
     return ret

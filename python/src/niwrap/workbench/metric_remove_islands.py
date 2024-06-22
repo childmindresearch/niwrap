@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_REMOVE_ISLANDS_METADATA = Metadata(
-    id="f88e9dbecfbfe9a85b2d4cb697e396405807da72",
+    id="440d12a75637613f30664d272f6058985f089df7",
     name="metric-remove-islands",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class MetricRemoveIslandsOutputs(typing.NamedTuple):
 def metric_remove_islands(
     surface: InputPathType,
     metric_in: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_corrected_areas_area_metric: InputPathType | None = None,
     runner: Runner = None,
 ) -> MetricRemoveIslandsOutputs:
@@ -56,12 +56,12 @@ def metric_remove_islands(
     cargs.append("-metric-remove-islands")
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(metric_in))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_corrected_areas_area_metric is not None:
         cargs.extend(["-corrected-areas", execution.input_file(opt_corrected_areas_area_metric)])
     ret = MetricRemoveIslandsOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

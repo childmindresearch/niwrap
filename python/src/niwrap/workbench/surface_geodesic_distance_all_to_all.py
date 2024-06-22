@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_GEODESIC_DISTANCE_ALL_TO_ALL_METADATA = Metadata(
-    id="2219b9609169d65923740d44c13d54d453987be2",
+    id="8803a609846bf4d6651692449340afa320a10a81",
     name="surface-geodesic-distance-all-to-all",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class SurfaceGeodesicDistanceAllToAllOutputs(typing.NamedTuple):
 
 def surface_geodesic_distance_all_to_all(
     surface: InputPathType,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_roi_roi_metric: InputPathType | None = None,
     opt_limit_limit_mm: float | int | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
@@ -78,7 +78,7 @@ def surface_geodesic_distance_all_to_all(
     cargs.append("wb_command")
     cargs.append("-surface-geodesic-distance-all-to-all")
     cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_roi_roi_metric is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_metric)])
     if opt_limit_limit_mm is not None:
@@ -89,7 +89,7 @@ def surface_geodesic_distance_all_to_all(
         cargs.append("-naive")
     ret = SurfaceGeodesicDistanceAllToAllOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

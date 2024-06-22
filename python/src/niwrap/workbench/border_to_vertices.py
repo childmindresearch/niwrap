@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 BORDER_TO_VERTICES_METADATA = Metadata(
-    id="4a39d7db621ee076c2d8b62581a1a04abfaf5813",
+    id="c18021187d65ed670e0d2f603069c3396d73bfd4",
     name="border-to-vertices",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class BorderToVerticesOutputs(typing.NamedTuple):
 def border_to_vertices(
     surface: InputPathType,
     border_file: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_border_name: str | None = None,
     runner: Runner = None,
 ) -> BorderToVerticesOutputs:
@@ -54,12 +54,12 @@ def border_to_vertices(
     cargs.append("-border-to-vertices")
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(border_file))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_border_name is not None:
         cargs.extend(["-border", opt_border_name])
     ret = BorderToVerticesOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

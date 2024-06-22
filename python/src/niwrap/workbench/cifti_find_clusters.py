@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_FIND_CLUSTERS_METADATA = Metadata(
-    id="0be98fbcd62e1b4aa6d3d29f86e46fb756d82333",
+    id="f07ba30ac3261f3371abc68ab86581c6b5a293f4",
     name="cifti-find-clusters",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -187,7 +187,7 @@ def cifti_find_clusters(
     volume_value_threshold: float | int,
     volume_minimum_size: float | int,
     direction: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_less_than: bool = False,
     left_surface: CiftiFindClustersLeftSurface | None = None,
     right_surface: CiftiFindClustersRightSurface | None = None,
@@ -253,7 +253,7 @@ def cifti_find_clusters(
     cargs.append(str(volume_value_threshold))
     cargs.append(str(volume_minimum_size))
     cargs.append(direction)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_less_than:
         cargs.append("-less-than")
     if left_surface is not None:
@@ -274,7 +274,7 @@ def cifti_find_clusters(
         cargs.extend(["-start", str(opt_start_startval)])
     ret = CiftiFindClustersOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

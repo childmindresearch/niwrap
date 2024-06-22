@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_ERODE_METADATA = Metadata(
-    id="8c37d80eed4e28581f0a93bc7798d680591a6441",
+    id="7388b2cb1115abbcb14e52b240564710b2c6f86a",
     name="cifti-erode",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -125,7 +125,7 @@ def cifti_erode(
     direction: str,
     surface_distance: float | int,
     volume_distance: float | int,
-    cifti_out: InputPathType,
+    cifti_out: str,
     left_surface: CiftiErodeLeftSurface | None = None,
     right_surface: CiftiErodeRightSurface | None = None,
     cerebellum_surface: CiftiErodeCerebellumSurface | None = None,
@@ -170,7 +170,7 @@ def cifti_erode(
     cargs.append(direction)
     cargs.append(str(surface_distance))
     cargs.append(str(volume_distance))
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if left_surface is not None:
         cargs.extend(left_surface.run(execution))
     if right_surface is not None:
@@ -181,7 +181,7 @@ def cifti_erode(
         cargs.append("-merged-volume")
     ret = CiftiErodeOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

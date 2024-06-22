@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_CORTEX_LAYER_METADATA = Metadata(
-    id="dde05e10b4029d582e848ed1f5db28ba0d17b421",
+    id="6a041b109a3dbe6936b952ecb53a3579fd004c3a",
     name="surface-cortex-layer",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -29,8 +29,8 @@ def surface_cortex_layer(
     white_surface: InputPathType,
     pial_surface: InputPathType,
     location: float | int,
-    out_surface: InputPathType,
-    placement_metric: InputPathType,
+    out_surface: str,
+    placement_metric: str,
     opt_placement_out: bool = False,
     runner: Runner = None,
 ) -> SurfaceCortexLayerOutputs:
@@ -66,14 +66,14 @@ def surface_cortex_layer(
     cargs.append(execution.input_file(white_surface))
     cargs.append(execution.input_file(pial_surface))
     cargs.append(str(location))
-    cargs.append(execution.input_file(out_surface))
+    cargs.append(out_surface)
     if opt_placement_out:
         cargs.append("-placement-out")
-    cargs.append(execution.input_file(placement_metric))
+    cargs.append(placement_metric)
     ret = SurfaceCortexLayerOutputs(
         root=execution.output_file("."),
-        out_surface=execution.output_file(f"{pathlib.Path(out_surface).name}"),
-        placement_metric=execution.output_file(f"{pathlib.Path(placement_metric).name}"),
+        out_surface=execution.output_file(f"{out_surface}"),
+        placement_metric=execution.output_file(f"{placement_metric}"),
     )
     execution.run(cargs)
     return ret

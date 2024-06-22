@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_FIND_CLUSTERS_METADATA = Metadata(
-    id="f0a2ffa360304a33ad52bd52826f3187ea71add1",
+    id="8f12aa4ab765548cf110551d6571d3ef8ce60b97",
     name="volume-find-clusters",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def volume_find_clusters(
     volume_in: InputPathType,
     value_threshold: float | int,
     minimum_volume: float | int,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_less_than: bool = False,
     opt_roi_roi_volume: InputPathType | None = None,
     opt_subvolume_subvol: str | None = None,
@@ -80,7 +80,7 @@ def volume_find_clusters(
     cargs.append(execution.input_file(volume_in))
     cargs.append(str(value_threshold))
     cargs.append(str(minimum_volume))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_less_than:
         cargs.append("-less-than")
     if opt_roi_roi_volume is not None:
@@ -95,7 +95,7 @@ def volume_find_clusters(
         cargs.extend(["-start", str(opt_start_startval)])
     ret = VolumeFindClustersOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

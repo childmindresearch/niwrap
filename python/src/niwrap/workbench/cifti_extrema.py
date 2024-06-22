@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_EXTREMA_METADATA = Metadata(
-    id="95b11721be669b18ccbc215995135a46d49a92cc",
+    id="e2347f8f12544ea1ca555953aad610c37be719f5",
     name="cifti-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -59,7 +59,7 @@ def cifti_extrema(
     surface_distance: float | int,
     volume_distance: float | int,
     direction: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_left_surface_surface: InputPathType | None = None,
     opt_right_surface_surface: InputPathType | None = None,
     opt_cerebellum_surface_surface: InputPathType | None = None,
@@ -128,7 +128,7 @@ def cifti_extrema(
     cargs.append(str(surface_distance))
     cargs.append(str(volume_distance))
     cargs.append(direction)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_left_surface_surface is not None:
         cargs.extend(["-left-surface", execution.input_file(opt_left_surface_surface)])
     if opt_right_surface_surface is not None:
@@ -155,7 +155,7 @@ def cifti_extrema(
         cargs.append("-only-minima")
     ret = CiftiExtremaOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

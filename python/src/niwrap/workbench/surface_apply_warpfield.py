@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_APPLY_WARPFIELD_METADATA = Metadata(
-    id="92c9248f62ba1e7f86bf03e4aae2762371217248",
+    id="7e425f3a8f3f9c436978db3980ba2c4bea2843b2",
     name="surface-apply-warpfield",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class SurfaceApplyWarpfieldOutputs(typing.NamedTuple):
 def surface_apply_warpfield(
     in_surf: InputPathType,
     warpfield: str,
-    out_surf: InputPathType,
+    out_surf: str,
     opt_fnirt_forward_warp: str | None = None,
     runner: Runner = None,
 ) -> SurfaceApplyWarpfieldOutputs:
@@ -60,12 +60,12 @@ def surface_apply_warpfield(
     cargs.append("-surface-apply-warpfield")
     cargs.append(execution.input_file(in_surf))
     cargs.append(warpfield)
-    cargs.append(execution.input_file(out_surf))
+    cargs.append(out_surf)
     if opt_fnirt_forward_warp is not None:
         cargs.extend(["-fnirt", opt_fnirt_forward_warp])
     ret = SurfaceApplyWarpfieldOutputs(
         root=execution.output_file("."),
-        out_surf=execution.output_file(f"{pathlib.Path(out_surf).name}"),
+        out_surf=execution.output_file(f"{out_surf}"),
     )
     execution.run(cargs)
     return ret

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_FILL_HOLES_METADATA = Metadata(
-    id="4d7ac9c22920a6808ced9079431f362acbb2a465",
+    id="014b5bd5eda3d69e7277ba9d77104e8f5f42c3f3",
     name="volume-fill-holes",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class VolumeFillHolesOutputs(typing.NamedTuple):
 
 def volume_fill_holes(
     volume_in: InputPathType,
-    volume_out: InputPathType,
+    volume_out: str,
     runner: Runner = None,
 ) -> VolumeFillHolesOutputs:
     """
@@ -49,10 +49,10 @@ def volume_fill_holes(
     cargs.append("wb_command")
     cargs.append("-volume-fill-holes")
     cargs.append(execution.input_file(volume_in))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     ret = VolumeFillHolesOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

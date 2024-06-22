@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_COMPONENTS_TO_FRAMES_METADATA = Metadata(
-    id="e33a704ae3a960fa92f5343717d9bcdf31d2d4b1",
+    id="cc9852bc9b8a317f76daf45396b386d55d4a7d56",
     name="volume-components-to-frames",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class VolumeComponentsToFramesOutputs(typing.NamedTuple):
 
 def volume_components_to_frames(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     runner: Runner = None,
 ) -> VolumeComponentsToFramesOutputs:
     """
@@ -49,10 +49,10 @@ def volume_components_to_frames(
     cargs.append("wb_command")
     cargs.append("-volume-components-to-frames")
     cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = VolumeComponentsToFramesOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

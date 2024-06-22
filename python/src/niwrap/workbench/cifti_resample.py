@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_RESAMPLE_METADATA = Metadata(
-    id="efc6721d51cbb1415622ffadb43abf08388b1317",
+    id="dfe13f02d69ccfdafe27a79d926d05ae4861b36f",
     name="cifti-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -561,7 +561,7 @@ def cifti_resample(
     template_direction: str,
     surface_method: str,
     volume_method: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_surface_largest: bool = False,
     volume_predilate: CiftiResampleVolumePredilate | None = None,
     surface_postdilate: CiftiResampleSurfacePostdilate | None = None,
@@ -644,7 +644,7 @@ def cifti_resample(
     cargs.append(template_direction)
     cargs.append(surface_method)
     cargs.append(volume_method)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_surface_largest:
         cargs.append("-surface-largest")
     if volume_predilate is not None:
@@ -663,7 +663,7 @@ def cifti_resample(
         cargs.extend(cerebellum_spheres.run(execution))
     ret = CiftiResampleOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

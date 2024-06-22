@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_LABEL_METADATA = Metadata(
-    id="9c6daabb307196e1b497a3badeaaabd29ba2989d",
+    id="8b086c6aaf9709ed249a4f3f97a0c7c7f75578fc",
     name="cifti-create-label",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -148,7 +148,7 @@ class CiftiCreateLabelOutputs(typing.NamedTuple):
 
 
 def cifti_create_label(
-    cifti_out: InputPathType,
+    cifti_out: str,
     volume: CiftiCreateLabelVolume | None = None,
     left_label: CiftiCreateLabelLeftLabel | None = None,
     right_label: CiftiCreateLabelRightLabel | None = None,
@@ -223,7 +223,7 @@ def cifti_create_label(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-cifti-create-label")
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if volume is not None:
         cargs.extend(volume.run(execution))
     if left_label is not None:
@@ -234,7 +234,7 @@ def cifti_create_label(
         cargs.extend(cerebellum_label.run(execution))
     ret = CiftiCreateLabelOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

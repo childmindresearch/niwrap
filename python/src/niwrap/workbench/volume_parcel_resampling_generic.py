@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_PARCEL_RESAMPLING_GENERIC_METADATA = Metadata(
-    id="f805f222623a797b6bc33e5af9ada9aee384bce5",
+    id="2d59e55bf5f32ec1b28306be516bbaec72a0a07d",
     name="volume-parcel-resampling-generic",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -28,7 +28,7 @@ def volume_parcel_resampling_generic(
     cur_parcels: InputPathType,
     new_parcels: InputPathType,
     kernel: float | int,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_fwhm: bool = False,
     opt_fix_zeros: bool = False,
     opt_subvolume_subvol: str | None = None,
@@ -73,7 +73,7 @@ def volume_parcel_resampling_generic(
     cargs.append(execution.input_file(cur_parcels))
     cargs.append(execution.input_file(new_parcels))
     cargs.append(str(kernel))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_fwhm:
         cargs.append("-fwhm")
     if opt_fix_zeros:
@@ -82,7 +82,7 @@ def volume_parcel_resampling_generic(
         cargs.extend(["-subvolume", opt_subvolume_subvol])
     ret = VolumeParcelResamplingGenericOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

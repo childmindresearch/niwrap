@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CORRELATION_METADATA = Metadata(
-    id="1fc33acaec4a4ff09aa6f7a50ab993b73a2104ee",
+    id="ea40c5ad544d70e0863556307f65b16367de6a39",
     name="cifti-correlation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -70,7 +70,7 @@ class CiftiCorrelationOutputs(typing.NamedTuple):
 
 def cifti_correlation(
     cifti: InputPathType,
-    cifti_out: InputPathType,
+    cifti_out: str,
     roi_override: CiftiCorrelationRoiOverride | None = None,
     opt_weights_weight_file: str | None = None,
     opt_fisher_z: bool = False,
@@ -122,7 +122,7 @@ def cifti_correlation(
     cargs.append("wb_command")
     cargs.append("-cifti-correlation")
     cargs.append(execution.input_file(cifti))
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if roi_override is not None:
         cargs.extend(roi_override.run(execution))
     if opt_weights_weight_file is not None:
@@ -137,7 +137,7 @@ def cifti_correlation(
         cargs.extend(["-mem-limit", str(opt_mem_limit_limit_gb)])
     ret = CiftiCorrelationOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

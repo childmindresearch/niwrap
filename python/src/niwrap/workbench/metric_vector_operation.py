@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_VECTOR_OPERATION_METADATA = Metadata(
-    id="27bde668dd4a07828ba62ded018123819a06bde1",
+    id="ac518f2d2ee3dde2fcea113d3d560ca395d5fa4b",
     name="metric-vector-operation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def metric_vector_operation(
     vectors_a: InputPathType,
     vectors_b: InputPathType,
     operation: str,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_normalize_a: bool = False,
     opt_normalize_b: bool = False,
     opt_normalize_output: bool = False,
@@ -74,7 +74,7 @@ def metric_vector_operation(
     cargs.append(execution.input_file(vectors_a))
     cargs.append(execution.input_file(vectors_b))
     cargs.append(operation)
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_normalize_a:
         cargs.append("-normalize-a")
     if opt_normalize_b:
@@ -85,7 +85,7 @@ def metric_vector_operation(
         cargs.append("-magnitude")
     ret = MetricVectorOperationOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

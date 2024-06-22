@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SURFACE_APPLY_AFFINE_METADATA = Metadata(
-    id="c175042ecfb2c3b91bfcf1d817f5d4405040180a",
+    id="4cc648397344372fed719da9714309f7ccafa5f5",
     name="surface-apply-affine",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -57,7 +57,7 @@ class SurfaceApplyAffineOutputs(typing.NamedTuple):
 def surface_apply_affine(
     in_surf: InputPathType,
     affine: str,
-    out_surf: InputPathType,
+    out_surf: str,
     flirt: SurfaceApplyAffineFlirt | None = None,
     runner: Runner = None,
 ) -> SurfaceApplyAffineOutputs:
@@ -88,12 +88,12 @@ def surface_apply_affine(
     cargs.append("-surface-apply-affine")
     cargs.append(execution.input_file(in_surf))
     cargs.append(affine)
-    cargs.append(execution.input_file(out_surf))
+    cargs.append(out_surf)
     if flirt is not None:
         cargs.extend(flirt.run(execution))
     ret = SurfaceApplyAffineOutputs(
         root=execution.output_file("."),
-        out_surf=execution.output_file(f"{pathlib.Path(out_surf).name}"),
+        out_surf=execution.output_file(f"{out_surf}"),
     )
     execution.run(cargs)
     return ret

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_ROIS_TO_BORDER_METADATA = Metadata(
-    id="23a7413bb81751dbd270a50cb3d8224e6405bb7a",
+    id="7b3a9607098c4123869ac8218c46f002b28021db",
     name="metric-rois-to-border",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def metric_rois_to_border(
     surface: InputPathType,
     metric: InputPathType,
     class_name: str,
-    border_out: InputPathType,
+    border_out: str,
     opt_placement_fraction: float | int | None = None,
     opt_column_column: str | None = None,
     runner: Runner = None,
@@ -61,14 +61,14 @@ def metric_rois_to_border(
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(metric))
     cargs.append(class_name)
-    cargs.append(execution.input_file(border_out))
+    cargs.append(border_out)
     if opt_placement_fraction is not None:
         cargs.extend(["-placement", str(opt_placement_fraction)])
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     ret = MetricRoisToBorderOutputs(
         root=execution.output_file("."),
-        border_out=execution.output_file(f"{pathlib.Path(border_out).name}"),
+        border_out=execution.output_file(f"{border_out}"),
     )
     execution.run(cargs)
     return ret

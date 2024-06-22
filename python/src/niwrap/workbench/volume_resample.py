@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_RESAMPLE_METADATA = Metadata(
-    id="f1494a29b5262bbca91e4c89de39eed6b7cafc36",
+    id="57064a3bf2f59499fb803a842335fdac6b2d62f6",
     name="volume-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -183,7 +183,7 @@ def volume_resample(
     volume_in: InputPathType,
     volume_space: str,
     method: str,
-    volume_out: InputPathType,
+    volume_out: str,
     affine: list[VolumeResampleAffine] = None,
     affine_series: list[VolumeResampleAffineSeries] = None,
     warp: list[VolumeResampleWarp] = None,
@@ -226,7 +226,7 @@ def volume_resample(
     cargs.append(execution.input_file(volume_in))
     cargs.append(volume_space)
     cargs.append(method)
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if affine is not None:
         cargs.extend([a for c in [s.run(execution) for s in affine] for a in c])
     if affine_series is not None:
@@ -235,7 +235,7 @@ def volume_resample(
         cargs.extend([a for c in [s.run(execution) for s in warp] for a in c])
     ret = VolumeResampleOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret
