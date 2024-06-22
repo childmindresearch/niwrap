@@ -31,10 +31,10 @@
     {
       "id": "mean_out",
       "name": "mean_out",
+      "type": "String",
       "description": "mean curvature metric",
       "optional": false,
-      "value-key": "[MEAN_OUT]",
-      "type": "File"
+      "value-key": "[MEAN_OUT]"
     },
     {
       "id": "opt_gauss",
@@ -48,10 +48,10 @@
     {
       "id": "gauss_out",
       "name": "gauss_out",
+      "type": "String",
       "description": "gaussian curvature metric",
       "optional": false,
-      "value-key": "[GAUSS_OUT]",
-      "type": "File"
+      "value-key": "[GAUSS_OUT]"
     }
   ],
   "output-files": [

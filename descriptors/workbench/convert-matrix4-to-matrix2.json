@@ -22,10 +22,10 @@
     {
       "id": "counts_out",
       "name": "counts_out",
+      "type": "String",
       "description": "the total fiber counts, as a cifti file",
       "optional": false,
-      "value-key": "[COUNTS_OUT]",
-      "type": "File"
+      "value-key": "[COUNTS_OUT]"
     },
     {
       "id": "opt_distances",
@@ -39,10 +39,10 @@
     {
       "id": "distance_out",
       "name": "distance_out",
+      "type": "String",
       "description": "the distances, as a cifti file",
       "optional": false,
-      "value-key": "[DISTANCE_OUT]",
-      "type": "File"
+      "value-key": "[DISTANCE_OUT]"
     },
     {
       "id": "individual_fibers",
@@ -57,26 +57,26 @@
           {
             "id": "fiber_1",
             "name": "fiber_1",
+            "type": "String",
             "description": "output file for first fiber",
             "optional": false,
-            "value-key": "[FIBER_1]",
-            "type": "File"
+            "value-key": "[FIBER_1]"
           },
           {
             "id": "fiber_2",
             "name": "fiber_2",
+            "type": "String",
             "description": "output file for second fiber",
             "optional": false,
-            "value-key": "[FIBER_2]",
-            "type": "File"
+            "value-key": "[FIBER_2]"
           },
           {
             "id": "fiber_3",
             "name": "fiber_3",
+            "type": "String",
             "description": "output file for third fiber",
             "optional": false,
-            "value-key": "[FIBER_3]",
-            "type": "File"
+            "value-key": "[FIBER_3]"
           }
         ],
         "output-files": [

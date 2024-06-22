@@ -22,10 +22,10 @@
     {
       "id": "foci_out",
       "name": "foci_out",
+      "type": "String",
       "description": "the output foci file",
       "optional": false,
-      "value-key": "[FOCI_OUT]",
-      "type": "File"
+      "value-key": "[FOCI_OUT]"
     },
     {
       "id": "left_surfaces",

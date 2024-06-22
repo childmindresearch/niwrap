@@ -22,10 +22,10 @@
     {
       "id": "volume_out",
       "name": "volume_out",
+      "type": "String",
       "description": "the output gradient magnitude volume",
       "optional": false,
-      "value-key": "[VOLUME_OUT]",
-      "type": "File"
+      "value-key": "[VOLUME_OUT]"
     },
     {
       "id": "presmooth",
@@ -82,10 +82,10 @@
     {
       "id": "vector_volume_out",
       "name": "vector_volume_out",
+      "type": "String",
       "description": "the vectors as a volume file",
       "optional": false,
-      "value-key": "[VECTOR_VOLUME_OUT]",
-      "type": "File"
+      "value-key": "[VECTOR_VOLUME_OUT]"
     },
     {
       "id": "opt_subvolume_subvol",

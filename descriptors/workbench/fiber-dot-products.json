@@ -47,18 +47,18 @@
     {
       "id": "dot_metric",
       "name": "dot_metric",
+      "type": "String",
       "description": "the metric of dot products",
       "optional": false,
-      "value-key": "[DOT_METRIC]",
-      "type": "File"
+      "value-key": "[DOT_METRIC]"
     },
     {
       "id": "f_metric",
       "name": "f_metric",
+      "type": "String",
       "description": "a metric of the f values of the fiber distributions",
       "optional": false,
-      "value-key": "[F_METRIC]",
-      "type": "File"
+      "value-key": "[F_METRIC]"
     }
   ],
   "output-files": [

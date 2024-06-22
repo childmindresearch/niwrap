@@ -22,18 +22,18 @@
     {
       "id": "inflated_surface_out",
       "name": "inflated_surface_out",
+      "type": "String",
       "description": "the output inflated surface",
       "optional": false,
-      "value-key": "[INFLATED_SURFACE_OUT]",
-      "type": "File"
+      "value-key": "[INFLATED_SURFACE_OUT]"
     },
     {
       "id": "very_inflated_surface_out",
       "name": "very_inflated_surface_out",
+      "type": "String",
       "description": "the output very inflated surface",
       "optional": false,
-      "value-key": "[VERY_INFLATED_SURFACE_OUT]",
-      "type": "File"
+      "value-key": "[VERY_INFLATED_SURFACE_OUT]"
     },
     {
       "id": "opt_iterations_scale_iterations_scale_value",

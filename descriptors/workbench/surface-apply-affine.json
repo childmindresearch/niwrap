@@ -30,10 +30,10 @@
     {
       "id": "out_surf",
       "name": "out_surf",
+      "type": "String",
       "description": "the output transformed surface",
       "optional": false,
-      "value-key": "[OUT_SURF]",
-      "type": "File"
+      "value-key": "[OUT_SURF]"
     },
     {
       "id": "flirt",

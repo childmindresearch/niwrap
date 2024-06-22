@@ -47,10 +47,10 @@
     {
       "id": "volume_out",
       "name": "volume_out",
+      "type": "String",
       "description": "output volume",
       "optional": false,
-      "value-key": "[VOLUME_OUT]",
-      "type": "File"
+      "value-key": "[VOLUME_OUT]"
     },
     {
       "id": "opt_fwhm",

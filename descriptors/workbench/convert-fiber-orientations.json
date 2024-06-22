@@ -22,10 +22,10 @@
     {
       "id": "fiber_out",
       "name": "fiber_out",
+      "type": "String",
       "description": "the output fiber orientation file",
       "optional": false,
-      "value-key": "[FIBER_OUT]",
-      "type": "File"
+      "value-key": "[FIBER_OUT]"
     },
     {
       "id": "fiber",

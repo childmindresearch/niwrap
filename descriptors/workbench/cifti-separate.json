@@ -40,10 +40,10 @@
           {
             "id": "volume_out",
             "name": "volume_out",
+            "type": "String",
             "description": "the output volume",
             "optional": false,
-            "value-key": "[VOLUME_OUT]",
-            "type": "File"
+            "value-key": "[VOLUME_OUT]"
           },
           {
             "id": "opt_roi",
@@ -57,10 +57,10 @@
           {
             "id": "roi_out",
             "name": "roi_out",
+            "type": "String",
             "description": "the roi output volume",
             "optional": false,
-            "value-key": "[ROI_OUT]",
-            "type": "File"
+            "value-key": "[ROI_OUT]"
           },
           {
             "id": "opt_label",
@@ -74,10 +74,10 @@
           {
             "id": "label_out",
             "name": "label_out",
+            "type": "String",
             "description": "the label output volume",
             "optional": false,
-            "value-key": "[LABEL_OUT]",
-            "type": "File"
+            "value-key": "[LABEL_OUT]"
           },
           {
             "id": "opt_crop",
@@ -138,10 +138,10 @@
           {
             "id": "label_out",
             "name": "label_out",
+            "type": "String",
             "description": "the output label file",
             "optional": false,
-            "value-key": "[LABEL_OUT]",
-            "type": "File"
+            "value-key": "[LABEL_OUT]"
           },
           {
             "id": "opt_roi",
@@ -155,10 +155,10 @@
           {
             "id": "roi_out",
             "name": "roi_out",
+            "type": "String",
             "description": "the roi output metric",
             "optional": false,
-            "value-key": "[ROI_OUT]",
-            "type": "File"
+            "value-key": "[ROI_OUT]"
           }
         ],
         "output-files": [
@@ -203,10 +203,10 @@
           {
             "id": "metric_out",
             "name": "metric_out",
+            "type": "String",
             "description": "the output metric",
             "optional": false,
-            "value-key": "[METRIC_OUT]",
-            "type": "File"
+            "value-key": "[METRIC_OUT]"
           },
           {
             "id": "opt_roi",
@@ -220,10 +220,10 @@
           {
             "id": "roi_out",
             "name": "roi_out",
+            "type": "String",
             "description": "the roi output metric",
             "optional": false,
-            "value-key": "[ROI_OUT]",
-            "type": "File"
+            "value-key": "[ROI_OUT]"
           }
         ],
         "output-files": [
@@ -268,10 +268,10 @@
           {
             "id": "volume_out",
             "name": "volume_out",
+            "type": "String",
             "description": "the output volume",
             "optional": false,
-            "value-key": "[VOLUME_OUT]",
-            "type": "File"
+            "value-key": "[VOLUME_OUT]"
           },
           {
             "id": "opt_roi",
@@ -285,10 +285,10 @@
           {
             "id": "roi_out",
             "name": "roi_out",
+            "type": "String",
             "description": "the roi output volume",
             "optional": false,
-            "value-key": "[ROI_OUT]",
-            "type": "File"
+            "value-key": "[ROI_OUT]"
           },
           {
             "id": "opt_crop",

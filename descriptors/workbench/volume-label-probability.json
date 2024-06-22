@@ -22,10 +22,10 @@
     {
       "id": "probability_out",
       "name": "probability_out",
+      "type": "String",
       "description": "the relative frequencies of each label at each voxel",
       "optional": false,
-      "value-key": "[PROBABILITY_OUT]",
-      "type": "File"
+      "value-key": "[PROBABILITY_OUT]"
     },
     {
       "id": "opt_exclude_unlabeled",

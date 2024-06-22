@@ -22,10 +22,10 @@
     {
       "id": "probability_dscalar_out",
       "name": "probability_dscalar_out",
+      "type": "String",
       "description": "the relative frequencies of each label at each vertex/voxel",
       "optional": false,
-      "value-key": "[PROBABILITY_DSCALAR_OUT]",
-      "type": "File"
+      "value-key": "[PROBABILITY_DSCALAR_OUT]"
     },
     {
       "id": "opt_exclude_unlabeled",

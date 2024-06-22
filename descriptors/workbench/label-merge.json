@@ -14,10 +14,10 @@
     {
       "id": "label_out",
       "name": "label_out",
+      "type": "String",
       "description": "the output label",
       "optional": false,
-      "value-key": "[LABEL_OUT]",
-      "type": "File"
+      "value-key": "[LABEL_OUT]"
     },
     {
       "id": "label",

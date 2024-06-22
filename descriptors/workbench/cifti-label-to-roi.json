@@ -22,10 +22,10 @@
     {
       "id": "scalar_out",
       "name": "scalar_out",
+      "type": "String",
       "description": "the output cifti scalar file",
       "optional": false,
-      "value-key": "[SCALAR_OUT]",
-      "type": "File"
+      "value-key": "[SCALAR_OUT]"
     },
     {
       "id": "opt_name_label_name",

@@ -30,10 +30,10 @@
     {
       "id": "volume_out",
       "name": "volume_out",
+      "type": "String",
       "description": "the output volume",
       "optional": false,
-      "value-key": "[VOLUME_OUT]",
-      "type": "File"
+      "value-key": "[VOLUME_OUT]"
     },
     {
       "id": "opt_drop_unknown",

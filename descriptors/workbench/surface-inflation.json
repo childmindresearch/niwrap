@@ -66,10 +66,10 @@
     {
       "id": "surface_out",
       "name": "surface_out",
+      "type": "String",
       "description": "output surface file",
       "optional": false,
-      "value-key": "[SURFACE_OUT]",
-      "type": "File"
+      "value-key": "[SURFACE_OUT]"
     }
   ],
   "output-files": [

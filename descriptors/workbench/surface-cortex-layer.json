@@ -39,10 +39,10 @@
     {
       "id": "out_surface",
       "name": "out_surface",
+      "type": "String",
       "description": "the output surface",
       "optional": false,
-      "value-key": "[OUT_SURFACE]",
-      "type": "File"
+      "value-key": "[OUT_SURFACE]"
     },
     {
       "id": "opt_placement_out",
@@ -56,10 +56,10 @@
     {
       "id": "placement_metric",
       "name": "placement_metric",
+      "type": "String",
       "description": "output metric",
       "optional": false,
-      "value-key": "[PLACEMENT_METRIC]",
-      "type": "File"
+      "value-key": "[PLACEMENT_METRIC]"
     }
   ],
   "output-files": [

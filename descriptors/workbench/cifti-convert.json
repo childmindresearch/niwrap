@@ -64,10 +64,10 @@
           {
             "id": "cifti_out",
             "name": "cifti_out",
+            "type": "String",
             "description": "the output cifti file",
             "optional": false,
-            "value-key": "[CIFTI_OUT]",
-            "type": "File"
+            "value-key": "[CIFTI_OUT]"
           },
           {
             "id": "reset_timepoints",
@@ -208,10 +208,10 @@
           {
             "id": "nifti_out",
             "name": "nifti_out",
+            "type": "String",
             "description": "the output nifti file",
             "optional": false,
-            "value-key": "[NIFTI_OUT]",
-            "type": "File"
+            "value-key": "[NIFTI_OUT]"
           },
           {
             "id": "opt_smaller_file",
@@ -275,10 +275,10 @@
           {
             "id": "cifti_out",
             "name": "cifti_out",
+            "type": "String",
             "description": "the output cifti file",
             "optional": false,
-            "value-key": "[CIFTI_OUT]",
-            "type": "File"
+            "value-key": "[CIFTI_OUT]"
           },
           {
             "id": "reset_timepoints",
@@ -417,10 +417,10 @@
           {
             "id": "cifti_out",
             "name": "cifti_out",
+            "type": "String",
             "description": "the output cifti file",
             "optional": false,
-            "value-key": "[CIFTI_OUT]",
-            "type": "File"
+            "value-key": "[CIFTI_OUT]"
           },
           {
             "id": "opt_col_delim_delim_string",

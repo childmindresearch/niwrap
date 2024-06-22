@@ -22,10 +22,10 @@
     {
       "id": "cifti_out",
       "name": "cifti_out",
+      "type": "String",
       "description": "single-hemisphere dconn containing the distances",
       "optional": false,
-      "value-key": "[CIFTI_OUT]",
-      "type": "File"
+      "value-key": "[CIFTI_OUT]"
     },
     {
       "id": "opt_roi_roi_metric",

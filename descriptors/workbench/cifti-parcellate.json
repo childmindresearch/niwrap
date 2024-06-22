@@ -38,10 +38,10 @@
     {
       "id": "cifti_out",
       "name": "cifti_out",
+      "type": "String",
       "description": "output cifti file",
       "optional": false,
-      "value-key": "[CIFTI_OUT]",
-      "type": "File"
+      "value-key": "[CIFTI_OUT]"
     },
     {
       "id": "spatial_weights",
@@ -196,10 +196,10 @@
     {
       "id": "mask_out",
       "name": "mask_out",
+      "type": "String",
       "description": "the output mask file",
       "optional": false,
-      "value-key": "[MASK_OUT]",
-      "type": "File"
+      "value-key": "[MASK_OUT]"
     },
     {
       "id": "opt_legacy_mode",

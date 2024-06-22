@@ -30,10 +30,10 @@
     {
       "id": "metric_out",
       "name": "metric_out",
+      "type": "String",
       "description": "the output metric",
       "optional": false,
-      "value-key": "[METRIC_OUT]",
-      "type": "File"
+      "value-key": "[METRIC_OUT]"
     },
     {
       "id": "exclude_outliers",

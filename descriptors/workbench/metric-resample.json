@@ -46,10 +46,10 @@
     {
       "id": "metric_out",
       "name": "metric_out",
+      "type": "String",
       "description": "the output metric",
       "optional": false,
-      "value-key": "[METRIC_OUT]",
-      "type": "File"
+      "value-key": "[METRIC_OUT]"
     },
     {
       "id": "area_surfs",
@@ -136,10 +136,10 @@
     {
       "id": "roi_out",
       "name": "roi_out",
+      "type": "String",
       "description": "the output roi as a metric",
       "optional": false,
-      "value-key": "[ROI_OUT]",
-      "type": "File"
+      "value-key": "[ROI_OUT]"
     },
     {
       "id": "opt_largest",

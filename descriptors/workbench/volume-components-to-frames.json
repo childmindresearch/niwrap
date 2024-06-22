@@ -22,10 +22,10 @@
     {
       "id": "output",
       "name": "output",
+      "type": "String",
       "description": "the input volume converted to multiple frames of scalar type",
       "optional": false,
-      "value-key": "[OUTPUT]",
-      "type": "File"
+      "value-key": "[OUTPUT]"
     }
   ],
   "output-files": [

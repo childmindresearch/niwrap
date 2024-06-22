@@ -30,10 +30,10 @@
     {
       "id": "output",
       "name": "output",
+      "type": "String",
       "description": "the output workbench label volume",
       "optional": false,
-      "value-key": "[OUTPUT]",
-      "type": "File"
+      "value-key": "[OUTPUT]"
     },
     {
       "id": "opt_discard_others",

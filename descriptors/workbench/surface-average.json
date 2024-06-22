@@ -14,10 +14,10 @@
     {
       "id": "surface_out",
       "name": "surface_out",
+      "type": "String",
       "description": "the output averaged surface",
       "optional": false,
-      "value-key": "[SURFACE_OUT]",
-      "type": "File"
+      "value-key": "[SURFACE_OUT]"
     },
     {
       "id": "opt_stddev",
@@ -31,10 +31,10 @@
     {
       "id": "stddev_metric_out",
       "name": "stddev_metric_out",
+      "type": "String",
       "description": "the output metric for 3D sample standard deviation",
       "optional": false,
-      "value-key": "[STDDEV_METRIC_OUT]",
-      "type": "File"
+      "value-key": "[STDDEV_METRIC_OUT]"
     },
     {
       "id": "opt_uncertainty",
@@ -48,10 +48,10 @@
     {
       "id": "uncert_metric_out",
       "name": "uncert_metric_out",
+      "type": "String",
       "description": "the output metric for uncertainty",
       "optional": false,
-      "value-key": "[UNCERT_METRIC_OUT]",
-      "type": "File"
+      "value-key": "[UNCERT_METRIC_OUT]"
     },
     {
       "id": "surf",

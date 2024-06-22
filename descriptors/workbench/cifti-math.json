@@ -22,10 +22,10 @@
     {
       "id": "cifti_out",
       "name": "cifti_out",
+      "type": "String",
       "description": "the output cifti file",
       "optional": false,
-      "value-key": "[CIFTI_OUT]",
-      "type": "File"
+      "value-key": "[CIFTI_OUT]"
     },
     {
       "id": "opt_fixnan_replace",

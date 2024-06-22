@@ -38,10 +38,10 @@
     {
       "id": "border_out",
       "name": "border_out",
+      "type": "String",
       "description": "the output border file",
       "optional": false,
-      "value-key": "[BORDER_OUT]",
-      "type": "File"
+      "value-key": "[BORDER_OUT]"
     },
     {
       "id": "opt_placement_fraction",

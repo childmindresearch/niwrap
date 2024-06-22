@@ -38,10 +38,10 @@
     {
       "id": "dlabel_out",
       "name": "dlabel_out",
+      "type": "String",
       "description": "the output dense label file",
       "optional": false,
-      "value-key": "[DLABEL_OUT]",
-      "type": "File"
+      "value-key": "[DLABEL_OUT]"
     }
   ],
   "output-files": [

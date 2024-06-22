@@ -14,10 +14,10 @@
     {
       "id": "border_file_out",
       "name": "border_file_out",
+      "type": "String",
       "description": "the output border file",
       "optional": false,
-      "value-key": "[BORDER_FILE_OUT]",
-      "type": "File"
+      "value-key": "[BORDER_FILE_OUT]"
     },
     {
       "id": "border",

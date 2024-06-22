@@ -46,10 +46,10 @@
     {
       "id": "surface_out",
       "name": "surface_out",
+      "type": "String",
       "description": "the output surface file",
       "optional": false,
-      "value-key": "[SURFACE_OUT]",
-      "type": "File"
+      "value-key": "[SURFACE_OUT]"
     },
     {
       "id": "area_surfs",

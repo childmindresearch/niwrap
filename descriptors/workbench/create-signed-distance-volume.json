@@ -30,10 +30,10 @@
     {
       "id": "outvol",
       "name": "outvol",
+      "type": "String",
       "description": "the output volume",
       "optional": false,
-      "value-key": "[OUTVOL]",
-      "type": "File"
+      "value-key": "[OUTVOL]"
     },
     {
       "id": "opt_roi_out",
@@ -47,10 +47,10 @@
     {
       "id": "roi_vol",
       "name": "roi_vol",
+      "type": "String",
       "description": "the output roi volume",
       "optional": false,
-      "value-key": "[ROI_VOL]",
-      "type": "File"
+      "value-key": "[ROI_VOL]"
     },
     {
       "id": "opt_fill_value_value",

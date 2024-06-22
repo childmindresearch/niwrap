@@ -30,10 +30,10 @@
     {
       "id": "metric_out",
       "name": "metric_out",
+      "type": "String",
       "description": "the output metric file",
       "optional": false,
-      "value-key": "[METRIC_OUT]",
-      "type": "File"
+      "value-key": "[METRIC_OUT]"
     },
     {
       "id": "opt_trilinear",
@@ -171,10 +171,10 @@
           {
             "id": "roi_out",
             "name": "roi_out",
+            "type": "String",
             "description": "the output metric file of vertices that have no data",
             "optional": false,
-            "value-key": "[ROI_OUT]",
-            "type": "File"
+            "value-key": "[ROI_OUT]"
           },
           {
             "id": "output_weights",
@@ -198,10 +198,10 @@
                 {
                   "id": "weights_out",
                   "name": "weights_out",
+                  "type": "String",
                   "description": "volume to write the weights to",
                   "optional": false,
-                  "value-key": "[WEIGHTS_OUT]",
-                  "type": "File"
+                  "value-key": "[WEIGHTS_OUT]"
                 }
               ],
               "output-files": [

@@ -22,10 +22,10 @@
     {
       "id": "probability_metric_out",
       "name": "probability_metric_out",
+      "type": "String",
       "description": "the relative frequencies of each label at each vertex",
       "optional": false,
-      "value-key": "[PROBABILITY_METRIC_OUT]",
-      "type": "File"
+      "value-key": "[PROBABILITY_METRIC_OUT]"
     },
     {
       "id": "opt_exclude_unlabeled",

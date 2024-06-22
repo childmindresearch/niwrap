@@ -30,10 +30,10 @@
     {
       "id": "dists_out",
       "name": "dists_out",
+      "type": "String",
       "description": "the output distances",
       "optional": false,
-      "value-key": "[DISTS_OUT]",
-      "type": "File"
+      "value-key": "[DISTS_OUT]"
     },
     {
       "id": "opt_vectors",
@@ -47,10 +47,10 @@
     {
       "id": "vectors_out",
       "name": "vectors_out",
+      "type": "String",
       "description": "the output vectors",
       "optional": false,
-      "value-key": "[VECTORS_OUT]",
-      "type": "File"
+      "value-key": "[VECTORS_OUT]"
     }
   ],
   "output-files": [

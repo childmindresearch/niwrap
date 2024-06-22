@@ -31,10 +31,10 @@
     {
       "id": "sphere_out",
       "name": "sphere_out",
+      "type": "String",
       "description": "the output sphere",
       "optional": false,
-      "value-key": "[SPHERE_OUT]",
-      "type": "File"
+      "value-key": "[SPHERE_OUT]"
     },
     {
       "id": "opt_recenter",

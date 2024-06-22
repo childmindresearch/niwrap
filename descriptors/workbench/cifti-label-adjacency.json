@@ -22,10 +22,10 @@
     {
       "id": "adjacency_out",
       "name": "adjacency_out",
+      "type": "String",
       "description": "the output cifti pconn adjacency matrix",
       "optional": false,
-      "value-key": "[ADJACENCY_OUT]",
-      "type": "File"
+      "value-key": "[ADJACENCY_OUT]"
     },
     {
       "id": "opt_left_surface_surface",

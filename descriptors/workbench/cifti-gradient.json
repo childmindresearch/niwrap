@@ -30,10 +30,10 @@
     {
       "id": "cifti_out",
       "name": "cifti_out",
+      "type": "String",
       "description": "the output cifti",
       "optional": false,
-      "value-key": "[CIFTI_OUT]",
-      "type": "File"
+      "value-key": "[CIFTI_OUT]"
     },
     {
       "id": "left_surface",
@@ -184,10 +184,10 @@
     {
       "id": "vectors_out",
       "name": "vectors_out",
+      "type": "String",
       "description": "the vectors, as a dscalar file",
       "optional": false,
-      "value-key": "[VECTORS_OUT]",
-      "type": "File"
+      "value-key": "[VECTORS_OUT]"
     }
   ],
   "output-files": [
