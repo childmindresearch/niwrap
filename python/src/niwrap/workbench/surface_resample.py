@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SURFACE_RESAMPLE_METADATA = Metadata(
-    id="47129f342398ca00809dcd6fa0f6cc6ff68008b8",
+    id="965fda057da0e3dd5d341d246178617000b077e3",
     name="surface-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class SurfaceResampleAreaSurfs:
             
         """
         cargs = []
+        cargs.append("-area-surfs")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -67,6 +68,7 @@ class SurfaceResampleAreaMetrics:
             
         """
         cargs = []
+        cargs.append("-area-metrics")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -145,9 +147,9 @@ def surface_resample(
     cargs.append(method)
     cargs.append(execution.input_file(surface_out))
     if area_surfs is not None:
-        cargs.extend(["-area-surfs", *area_surfs.run(execution)])
+        cargs.extend(area_surfs.run(execution))
     if area_metrics is not None:
-        cargs.extend(["-area-metrics", *area_metrics.run(execution)])
+        cargs.extend(area_metrics.run(execution))
     if opt_bypass_sphere_check:
         cargs.append("-bypass-sphere-check")
     ret = SurfaceResampleOutputs(

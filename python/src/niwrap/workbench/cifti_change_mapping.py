@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CHANGE_MAPPING_METADATA = Metadata(
-    id="c03c6bfc615aec4bf7db753b636f9f351e8e1489",
+    id="930ca577c260a115e14452cf466b373ca2746c0b",
     name="cifti-change-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -40,6 +40,7 @@ class CiftiChangeMappingSeries:
             
         """
         cargs = []
+        cargs.append("-series")
         cargs.append(str(self.step))
         cargs.append(str(self.start))
         if self.opt_unit_unit is not None:
@@ -71,6 +72,7 @@ class CiftiChangeMappingFromCifti:
             
         """
         cargs = []
+        cargs.append("-from-cifti")
         cargs.append(execution.input_file(self.template_cifti))
         cargs.append(self.direction_)
         return cargs
@@ -134,13 +136,13 @@ def cifti_change_mapping(
     cargs.append(direction)
     cargs.append(execution.input_file(cifti_out))
     if series is not None:
-        cargs.extend(["-series", *series.run(execution)])
+        cargs.extend(series.run(execution))
     if opt_scalar:
         cargs.append("-scalar")
     if opt_name_file_file is not None:
         cargs.extend(["-name-file", opt_name_file_file])
     if from_cifti is not None:
-        cargs.extend(["-from-cifti", *from_cifti.run(execution)])
+        cargs.extend(from_cifti.run(execution))
     ret = CiftiChangeMappingOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 BORDER_FILE_EXPORT_TO_CARET5_METADATA = Metadata(
-    id="1d070b7205d7fd68f003efaa045b2d74fcef7973",
+    id="a866b3c84d6773a15ea6817d5181bc813451e178",
     name="border-file-export-to-caret5",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -36,6 +36,7 @@ class BorderFileExportToCaret5Surface:
             
         """
         cargs = []
+        cargs.append("-surface")
         cargs.append(execution.input_file(self.surface_in))
         return cargs
 
@@ -101,7 +102,7 @@ def border_file_export_to_caret5(
     cargs.append(border_file)
     cargs.append(output_file_prefix)
     if surface is not None:
-        cargs.extend(["-surface", *[a for c in [s.run(execution) for s in surface] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in surface] for a in c])
     ret = BorderFileExportToCaret5Outputs(
         root=execution.output_file("."),
     )

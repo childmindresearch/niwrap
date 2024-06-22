@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CORRELATION_METADATA = Metadata(
-    id="9fdc67a993421a2e538978d21e81c244e8c68905",
+    id="1fc33acaec4a4ff09aa6f7a50ab993b73a2104ee",
     name="cifti-correlation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -44,6 +44,7 @@ class CiftiCorrelationRoiOverride:
             
         """
         cargs = []
+        cargs.append("-roi-override")
         if self.opt_left_roi_roi_metric is not None:
             cargs.extend(["-left-roi", execution.input_file(self.opt_left_roi_roi_metric)])
         if self.opt_right_roi_roi_metric is not None:
@@ -123,7 +124,7 @@ def cifti_correlation(
     cargs.append(execution.input_file(cifti))
     cargs.append(execution.input_file(cifti_out))
     if roi_override is not None:
-        cargs.extend(["-roi-override", *roi_override.run(execution)])
+        cargs.extend(roi_override.run(execution))
     if opt_weights_weight_file is not None:
         cargs.extend(["-weights", opt_weights_weight_file])
     if opt_fisher_z:

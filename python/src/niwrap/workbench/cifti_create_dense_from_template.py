@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA = Metadata(
-    id="5d3dfdfa63c39ca98ced130b711225c00178263d",
+    id="fbaa2f73ead2007043e9911c33b5c91af0acadd8",
     name="cifti-create-dense-from-template",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -40,6 +40,7 @@ class CiftiCreateDenseFromTemplateSeries:
             
         """
         cargs = []
+        cargs.append("-series")
         cargs.append(str(self.step))
         cargs.append(str(self.start))
         if self.opt_unit_unit is not None:
@@ -72,6 +73,7 @@ class CiftiCreateDenseFromTemplateVolumeAll:
             
         """
         cargs = []
+        cargs.append("-volume-all")
         cargs.append(execution.input_file(self.volume_in))
         if self.opt_from_cropped:
             cargs.append("-from-cropped")
@@ -100,6 +102,7 @@ class CiftiCreateDenseFromTemplateCifti:
             
         """
         cargs = []
+        cargs.append("-cifti")
         cargs.append(execution.input_file(self.cifti_in))
         return cargs
 
@@ -128,6 +131,7 @@ class CiftiCreateDenseFromTemplateMetric:
             
         """
         cargs = []
+        cargs.append("-metric")
         cargs.append(self.structure)
         cargs.append(execution.input_file(self.metric_in))
         return cargs
@@ -157,6 +161,7 @@ class CiftiCreateDenseFromTemplateLabel:
             
         """
         cargs = []
+        cargs.append("-label")
         cargs.append(self.structure)
         cargs.append(execution.input_file(self.label_in))
         return cargs
@@ -188,6 +193,7 @@ class CiftiCreateDenseFromTemplateVolume:
             
         """
         cargs = []
+        cargs.append("-volume")
         cargs.append(self.structure)
         cargs.append(execution.input_file(self.volume_in))
         if self.opt_from_cropped:
@@ -303,19 +309,19 @@ def cifti_create_dense_from_template(
     cargs.append(execution.input_file(template_cifti))
     cargs.append(execution.input_file(cifti_out))
     if series is not None:
-        cargs.extend(["-series", *series.run(execution)])
+        cargs.extend(series.run(execution))
     if volume_all is not None:
-        cargs.extend(["-volume-all", *volume_all.run(execution)])
+        cargs.extend(volume_all.run(execution))
     if opt_label_collision_action is not None:
         cargs.extend(["-label-collision", opt_label_collision_action])
     if cifti is not None:
-        cargs.extend(["-cifti", *[a for c in [s.run(execution) for s in cifti] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
     if metric is not None:
-        cargs.extend(["-metric", *[a for c in [s.run(execution) for s in metric] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in metric] for a in c])
     if label is not None:
-        cargs.extend(["-label", *[a for c in [s.run(execution) for s in label] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in label] for a in c])
     if volume is not None:
-        cargs.extend(["-volume", *[a for c in [s.run(execution) for s in volume] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in volume] for a in c])
     ret = CiftiCreateDenseFromTemplateOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

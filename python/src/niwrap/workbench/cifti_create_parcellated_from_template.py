@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_PARCELLATED_FROM_TEMPLATE_METADATA = Metadata(
-    id="99175c90184a7e9c1b444f0c70e0e17f2141f011",
+    id="be5d5b3bbaaddfa740407360920c0ad5f46514f9",
     name="cifti-create-parcellated-from-template",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -36,6 +36,7 @@ class CiftiCreateParcellatedFromTemplateCifti:
             
         """
         cargs = []
+        cargs.append("-cifti")
         cargs.append(execution.input_file(self.cifti_in))
         return cargs
 
@@ -94,7 +95,7 @@ def cifti_create_parcellated_from_template(
     if opt_fill_value_value is not None:
         cargs.extend(["-fill-value", str(opt_fill_value_value)])
     if cifti is not None:
-        cargs.extend(["-cifti", *[a for c in [s.run(execution) for s in cifti] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
     ret = CiftiCreateParcellatedFromTemplateOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

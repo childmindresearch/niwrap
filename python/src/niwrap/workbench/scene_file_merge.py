@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SCENE_FILE_MERGE_METADATA = Metadata(
-    id="8737d769834b9f2c20e2416bb47bf33092d9b2cd",
+    id="5416410e289d10f383acd4264930665dff22fe03",
     name="scene-file-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class SceneFileMergeUpTo:
             
         """
         cargs = []
+        cargs.append("-up-to")
         cargs.append(self.last_column)
         if self.opt_reverse:
             cargs.append("-reverse")
@@ -68,9 +69,10 @@ class SceneFileMergeScene:
             
         """
         cargs = []
+        cargs.append("-scene")
         cargs.append(self.scene_)
         if self.up_to is not None:
-            cargs.extend(["-up-to", *self.up_to.run(execution)])
+            cargs.extend(self.up_to.run(execution))
         return cargs
 
 
@@ -98,9 +100,10 @@ class SceneFileMergeSceneFile:
             
         """
         cargs = []
+        cargs.append("-scene-file")
         cargs.append(self.scene_file_)
         if self.scene is not None:
-            cargs.extend(["-scene", *[a for c in [s.run(execution) for s in self.scene] for a in c]])
+            cargs.extend([a for c in [s.run(execution) for s in self.scene] for a in c])
         return cargs
 
 
@@ -145,7 +148,7 @@ def scene_file_merge(
     cargs.append("-scene-file-merge")
     cargs.append(scene_file_out)
     if scene_file is not None:
-        cargs.extend(["-scene-file", *[a for c in [s.run(execution) for s in scene_file] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in scene_file] for a in c])
     ret = SceneFileMergeOutputs(
         root=execution.output_file("."),
     )

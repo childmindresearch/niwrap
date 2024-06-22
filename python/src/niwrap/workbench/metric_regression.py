@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_REGRESSION_METADATA = Metadata(
-    id="61c1c8cf03b5376c8c7d565c0de7ab0cd763ddac",
+    id="8c780f3650bee2118860d89b60107effdd0af09d",
     name="metric-regression",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class MetricRegressionRemove:
             
         """
         cargs = []
+        cargs.append("-remove")
         cargs.append(execution.input_file(self.metric))
         if self.opt_remove_column_column is not None:
             cargs.extend(["-remove-column", self.opt_remove_column_column])
@@ -68,6 +69,7 @@ class MetricRegressionKeep:
             
         """
         cargs = []
+        cargs.append("-keep")
         cargs.append(execution.input_file(self.metric))
         if self.opt_keep_column_column is not None:
             cargs.extend(["-keep-column", self.opt_keep_column_column])
@@ -129,9 +131,9 @@ def metric_regression(
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     if remove is not None:
-        cargs.extend(["-remove", *[a for c in [s.run(execution) for s in remove] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in remove] for a in c])
     if keep is not None:
-        cargs.extend(["-keep", *[a for c in [s.run(execution) for s in keep] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in keep] for a in c])
     ret = MetricRegressionOutputs(
         root=execution.output_file("."),
         metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),

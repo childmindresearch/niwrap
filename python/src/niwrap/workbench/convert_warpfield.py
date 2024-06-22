@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONVERT_WARPFIELD_METADATA = Metadata(
-    id="781d762368981172b34f72ffaaed5fe8a7b49f2b",
+    id="61f82887a0651805fbe8bdf71d053583208799ba",
     name="convert-warpfield",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class ConvertWarpfieldFromWorld:
             
         """
         cargs = []
+        cargs.append("-from-world")
         cargs.append(self.input_)
         if self.opt_absolute:
             cargs.append("-absolute")
@@ -70,6 +71,7 @@ class ConvertWarpfieldFromFnirt:
             
         """
         cargs = []
+        cargs.append("-from-fnirt")
         cargs.append(self.input_)
         cargs.append(self.source_volume)
         if self.opt_absolute:
@@ -101,6 +103,7 @@ class ConvertWarpfieldToFnirt:
             
         """
         cargs = []
+        cargs.append("-to-fnirt")
         cargs.append(self.output)
         cargs.append(self.source_volume)
         return cargs
@@ -160,17 +163,17 @@ def convert_warpfield(
     cargs.append("wb_command")
     cargs.append("-convert-warpfield")
     if from_world is not None:
-        cargs.extend(["-from-world", *from_world.run(execution)])
+        cargs.extend(from_world.run(execution))
     if opt_from_itk_input is not None:
         cargs.extend(["-from-itk", opt_from_itk_input])
     if from_fnirt is not None:
-        cargs.extend(["-from-fnirt", *from_fnirt.run(execution)])
+        cargs.extend(from_fnirt.run(execution))
     if opt_to_world_output is not None:
         cargs.extend(["-to-world", opt_to_world_output])
     if opt_to_itk_output is not None:
         cargs.extend(["-to-itk", opt_to_itk_output])
     if to_fnirt is not None:
-        cargs.extend(["-to-fnirt", *[a for c in [s.run(execution) for s in to_fnirt] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in to_fnirt] for a in c])
     ret = ConvertWarpfieldOutputs(
         root=execution.output_file("."),
     )

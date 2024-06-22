@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_EXPORT_DENSE_MAPPING_METADATA = Metadata(
-    id="4235da653c90ba252988a7ea5520b6d1eca024b7",
+    id="ab21dab4c846c0b8fb3eb710a6d3bff8f5ca1b13",
     name="cifti-export-dense-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -40,6 +40,7 @@ class CiftiExportDenseMappingVolumeAll:
             
         """
         cargs = []
+        cargs.append("-volume-all")
         cargs.append(self.text_out)
         if self.opt_no_cifti_index:
             cargs.append("-no-cifti-index")
@@ -74,6 +75,7 @@ class CiftiExportDenseMappingSurface:
             
         """
         cargs = []
+        cargs.append("-surface")
         cargs.append(self.structure)
         cargs.append(self.text_out)
         if self.opt_no_cifti_index:
@@ -107,6 +109,7 @@ class CiftiExportDenseMappingVolume:
             
         """
         cargs = []
+        cargs.append("-volume")
         cargs.append(self.structure)
         cargs.append(self.text_out)
         if self.opt_no_cifti_index:
@@ -199,11 +202,11 @@ def cifti_export_dense_mapping(
     cargs.append(execution.input_file(cifti))
     cargs.append(direction)
     if volume_all is not None:
-        cargs.extend(["-volume-all", *volume_all.run(execution)])
+        cargs.extend(volume_all.run(execution))
     if surface is not None:
-        cargs.extend(["-surface", *[a for c in [s.run(execution) for s in surface] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in surface] for a in c])
     if volume is not None:
-        cargs.extend(["-volume", *[a for c in [s.run(execution) for s in volume] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in volume] for a in c])
     ret = CiftiExportDenseMappingOutputs(
         root=execution.output_file("."),
     )

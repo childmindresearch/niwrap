@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SCENE_CAPTURE_IMAGE_METADATA = Metadata(
-    id="d9cd77c86d66484a3ac417ddf825166830d1051c",
+    id="d4f4bf1444634fe9893150d2579f8e7d59049b4a",
     name="scene-capture-image",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class SceneCaptureImageSizeWidthHeight:
             
         """
         cargs = []
+        cargs.append("-size-width-height")
         cargs.append(str(self.width))
         cargs.append(str(self.height))
         return cargs
@@ -73,6 +74,7 @@ class SceneCaptureImageResolution:
             
         """
         cargs = []
+        cargs.append("-resolution")
         cargs.append(str(self.number_of_pixels))
         cargs.append(self.units_name)
         return cargs
@@ -103,6 +105,7 @@ class SceneCaptureImageSetMapYoke:
             
         """
         cargs = []
+        cargs.append("-set-map-yoke")
         cargs.append(self.map_yoking_roman_numeral)
         cargs.append(str(self.map_undex))
         return cargs
@@ -132,6 +135,7 @@ class SceneCaptureImageConnDbLogin:
             
         """
         cargs = []
+        cargs.append("-conn-db-login")
         cargs.append(self.username)
         cargs.append(self.password)
         return cargs
@@ -288,7 +292,7 @@ def scene_capture_image(
     if opt_size_capture:
         cargs.append("-size-capture")
     if size_width_height is not None:
-        cargs.extend(["-size-width-height", *size_width_height.run(execution)])
+        cargs.extend(size_width_height.run(execution))
     if opt_size_width_width is not None:
         cargs.extend(["-size-width", str(opt_size_width_width)])
     if opt_size_height_height is not None:
@@ -296,15 +300,15 @@ def scene_capture_image(
     if opt_units_units is not None:
         cargs.extend(["-units", opt_units_units])
     if resolution is not None:
-        cargs.extend(["-resolution", *resolution.run(execution)])
+        cargs.extend(resolution.run(execution))
     if opt_margin_size is not None:
         cargs.extend(["-margin", str(opt_margin_size)])
     if opt_no_scene_colors:
         cargs.append("-no-scene-colors")
     if set_map_yoke is not None:
-        cargs.extend(["-set-map-yoke", *set_map_yoke.run(execution)])
+        cargs.extend(set_map_yoke.run(execution))
     if conn_db_login is not None:
-        cargs.extend(["-conn-db-login", *conn_db_login.run(execution)])
+        cargs.extend(conn_db_login.run(execution))
     if opt_show_capture_settings:
         cargs.append("-show-capture-settings")
     if opt_renderer_renderer is not None:

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_GRADIENT_METADATA = Metadata(
-    id="96c5b3d7d1ef2cc327e2faa7670282fd7b3ed600",
+    id="d037839a482c742e11f5f46ffb5d556b9d280068",
     name="volume-gradient",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class VolumeGradientPresmooth:
             
         """
         cargs = []
+        cargs.append("-presmooth")
         cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
@@ -100,7 +101,7 @@ def volume_gradient(
     cargs.append(execution.input_file(volume_in))
     cargs.append(execution.input_file(volume_out))
     if presmooth is not None:
-        cargs.extend(["-presmooth", *presmooth.run(execution)])
+        cargs.extend(presmooth.run(execution))
     if opt_roi_roi_volume is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_volume)])
     if opt_vectors:

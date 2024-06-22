@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_RESAMPLE_METADATA = Metadata(
-    id="ae22cd6185077a6c012b5c4f312d7305a62c0bc8",
+    id="dd0ee0d72e3e3f7a0c56b561db7230a3d8884302",
     name="metric-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class MetricResampleAreaSurfs:
             
         """
         cargs = []
+        cargs.append("-area-surfs")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -67,6 +68,7 @@ class MetricResampleAreaMetrics:
             
         """
         cargs = []
+        cargs.append("-area-metrics")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -162,9 +164,9 @@ def metric_resample(
     cargs.append(method)
     cargs.append(execution.input_file(metric_out))
     if area_surfs is not None:
-        cargs.extend(["-area-surfs", *area_surfs.run(execution)])
+        cargs.extend(area_surfs.run(execution))
     if area_metrics is not None:
-        cargs.extend(["-area-metrics", *area_metrics.run(execution)])
+        cargs.extend(area_metrics.run(execution))
     if opt_current_roi_roi_metric is not None:
         cargs.extend(["-current-roi", execution.input_file(opt_current_roi_roi_metric)])
     if opt_valid_roi_out:

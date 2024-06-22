@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_REDUCE_METADATA = Metadata(
-    id="de21cd436fb9b3ef7faf8bb5d5106a78559ead5a",
+    id="da2b6eb234fddddaaba242909e830f497ab42677",
     name="metric-reduce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class MetricReduceExcludeOutliers:
             
         """
         cargs = []
+        cargs.append("-exclude-outliers")
         cargs.append(str(self.sigma_below))
         cargs.append(str(self.sigma_above))
         return cargs
@@ -108,7 +109,7 @@ def metric_reduce(
     cargs.append(operation)
     cargs.append(execution.input_file(metric_out))
     if exclude_outliers is not None:
-        cargs.extend(["-exclude-outliers", *exclude_outliers.run(execution)])
+        cargs.extend(exclude_outliers.run(execution))
     if opt_only_numeric:
         cargs.append("-only-numeric")
     ret = MetricReduceOutputs(

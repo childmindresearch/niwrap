@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_EXTREMA_METADATA = Metadata(
-    id="3df21c57f1e096a9d45518970a3c3c2d5472334b",
+    id="95b11721be669b18ccbc215995135a46d49a92cc",
     name="cifti-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiExtremaThreshold:
             
         """
         cargs = []
+        cargs.append("-threshold")
         cargs.append(str(self.low))
         cargs.append(str(self.high))
         return cargs
@@ -141,7 +142,7 @@ def cifti_extrema(
     if opt_presmooth_fwhm:
         cargs.append("-presmooth-fwhm")
     if threshold is not None:
-        cargs.extend(["-threshold", *threshold.run(execution)])
+        cargs.extend(threshold.run(execution))
     if opt_merged_volume:
         cargs.append("-merged-volume")
     if opt_sum_maps:

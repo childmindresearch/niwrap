@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_PALETTE_METADATA = Metadata(
-    id="675218cc857f98c3da740f4666e4b739f9f01a54",
+    id="bb9896a8bf1b7e088d448821186b644d7e74d604",
     name="cifti-palette",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiPalettePosPercent:
             
         """
         cargs = []
+        cargs.append("-pos-percent")
         cargs.append(str(self.pos_min__))
         cargs.append(str(self.pos_max__))
         return cargs
@@ -67,6 +68,7 @@ class CiftiPaletteNegPercent:
             
         """
         cargs = []
+        cargs.append("-neg-percent")
         cargs.append(str(self.neg_min__))
         cargs.append(str(self.neg_max__))
         return cargs
@@ -96,6 +98,7 @@ class CiftiPalettePosUser:
             
         """
         cargs = []
+        cargs.append("-pos-user")
         cargs.append(str(self.pos_min_user))
         cargs.append(str(self.pos_max_user))
         return cargs
@@ -125,6 +128,7 @@ class CiftiPaletteNegUser:
             
         """
         cargs = []
+        cargs.append("-neg-user")
         cargs.append(str(self.neg_min_user))
         cargs.append(str(self.neg_max_user))
         return cargs
@@ -158,6 +162,7 @@ class CiftiPaletteThresholding:
             
         """
         cargs = []
+        cargs.append("-thresholding")
         cargs.append(self.type_)
         cargs.append(self.test)
         cargs.append(str(self.min_))
@@ -311,13 +316,13 @@ def cifti_palette(
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     if pos_percent is not None:
-        cargs.extend(["-pos-percent", *pos_percent.run(execution)])
+        cargs.extend(pos_percent.run(execution))
     if neg_percent is not None:
-        cargs.extend(["-neg-percent", *neg_percent.run(execution)])
+        cargs.extend(neg_percent.run(execution))
     if pos_user is not None:
-        cargs.extend(["-pos-user", *pos_user.run(execution)])
+        cargs.extend(pos_user.run(execution))
     if neg_user is not None:
-        cargs.extend(["-neg-user", *neg_user.run(execution)])
+        cargs.extend(neg_user.run(execution))
     if opt_interpolate_interpolate is not None:
         cargs.extend(["-interpolate", opt_interpolate_interpolate])
     if opt_disp_pos_display is not None:
@@ -329,7 +334,7 @@ def cifti_palette(
     if opt_palette_name_name is not None:
         cargs.extend(["-palette-name", opt_palette_name_name])
     if thresholding is not None:
-        cargs.extend(["-thresholding", *thresholding.run(execution)])
+        cargs.extend(thresholding.run(execution))
     if opt_inversion_type is not None:
         cargs.extend(["-inversion", opt_inversion_type])
     ret = CiftiPaletteOutputs(

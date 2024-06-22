@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_REDUCE_METADATA = Metadata(
-    id="130c189e01820e7c0f35071e91caac5439457c73",
+    id="48ce3e50bcfea19442b19b0ac3be2a5a12900250",
     name="cifti-reduce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiReduceExcludeOutliers:
             
         """
         cargs = []
+        cargs.append("-exclude-outliers")
         cargs.append(str(self.sigma_below))
         cargs.append(str(self.sigma_above))
         return cargs
@@ -113,7 +114,7 @@ def cifti_reduce(
     if opt_direction_direction is not None:
         cargs.extend(["-direction", opt_direction_direction])
     if exclude_outliers is not None:
-        cargs.extend(["-exclude-outliers", *exclude_outliers.run(execution)])
+        cargs.extend(exclude_outliers.run(execution))
     if opt_only_numeric:
         cargs.append("-only-numeric")
     ret = CiftiReduceOutputs(

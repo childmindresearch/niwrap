@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_STATS_METADATA = Metadata(
-    id="a4fe0b0c229b5c7c0b1e9b9e228b4feab95c9e6f",
+    id="36fcbd12067cb582ff07a5b053ae5afa3aecad70",
     name="metric-stats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class MetricStatsRoi:
             
         """
         cargs = []
+        cargs.append("-roi")
         cargs.append(execution.input_file(self.roi_metric))
         if self.opt_match_maps:
             cargs.append("-match-maps")
@@ -120,7 +121,7 @@ def metric_stats(
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     if roi is not None:
-        cargs.extend(["-roi", *roi.run(execution)])
+        cargs.extend(roi.run(execution))
     if opt_show_map_name:
         cargs.append("-show-map-name")
     ret = MetricStatsOutputs(

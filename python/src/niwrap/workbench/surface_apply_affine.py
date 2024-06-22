@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SURFACE_APPLY_AFFINE_METADATA = Metadata(
-    id="bdcb73baf973fcd16b087ffa4996fcfa5d9f0d26",
+    id="c175042ecfb2c3b91bfcf1d817f5d4405040180a",
     name="surface-apply-affine",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class SurfaceApplyAffineFlirt:
             
         """
         cargs = []
+        cargs.append("-flirt")
         cargs.append(self.source_volume)
         cargs.append(self.target_volume)
         return cargs
@@ -89,7 +90,7 @@ def surface_apply_affine(
     cargs.append(affine)
     cargs.append(execution.input_file(out_surf))
     if flirt is not None:
-        cargs.extend(["-flirt", *flirt.run(execution)])
+        cargs.extend(flirt.run(execution))
     ret = SurfaceApplyAffineOutputs(
         root=execution.output_file("."),
         out_surf=execution.output_file(f"{pathlib.Path(out_surf).name}"),

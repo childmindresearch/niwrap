@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FOCI_CREATE_METADATA = Metadata(
-    id="5c4b822366c1575e33484621a6c5124f3294a547",
+    id="6bb3a9a4aa523afe6286a106ac7aff18d5388a32",
     name="foci-create",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -40,6 +40,7 @@ class FociCreateClass:
             
         """
         cargs = []
+        cargs.append("-class")
         cargs.append(self.class_name)
         cargs.append(self.foci_list_file)
         cargs.append(execution.input_file(self.surface))
@@ -99,7 +100,7 @@ def foci_create(
     cargs.append("-foci-create")
     cargs.append(execution.input_file(output))
     if class_ is not None:
-        cargs.extend(["-class", *[a for c in [s.run(execution) for s in class_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in class_] for a in c])
     ret = FociCreateOutputs(
         root=execution.output_file("."),
         output=execution.output_file(f"{pathlib.Path(output).name}"),

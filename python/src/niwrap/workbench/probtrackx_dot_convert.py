@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 PROBTRACKX_DOT_CONVERT_METADATA = Metadata(
-    id="0a89260dd001e016aef1659dcafd80b79dcbc7e8",
+    id="9813399cfc289ccc33c416625842f00c1eb838ad",
     name="probtrackx-dot-convert",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -39,6 +39,7 @@ class ProbtrackxDotConvertRowVoxels:
             
         """
         cargs = []
+        cargs.append("-row-voxels")
         cargs.append(self.voxel_list_file)
         cargs.append(execution.input_file(self.label_vol))
         return cargs
@@ -68,6 +69,7 @@ class ProbtrackxDotConvertRowCifti:
             
         """
         cargs = []
+        cargs.append("-row-cifti")
         cargs.append(execution.input_file(self.cifti))
         cargs.append(self.direction)
         return cargs
@@ -98,6 +100,7 @@ class ProbtrackxDotConvertColVoxels:
             
         """
         cargs = []
+        cargs.append("-col-voxels")
         cargs.append(self.voxel_list_file)
         cargs.append(execution.input_file(self.label_vol))
         return cargs
@@ -127,6 +130,7 @@ class ProbtrackxDotConvertColCifti:
             
         """
         cargs = []
+        cargs.append("-col-cifti")
         cargs.append(execution.input_file(self.cifti))
         cargs.append(self.direction)
         return cargs
@@ -233,17 +237,17 @@ def probtrackx_dot_convert(
     cargs.append(dot_file)
     cargs.append(execution.input_file(cifti_out))
     if row_voxels is not None:
-        cargs.extend(["-row-voxels", *row_voxels.run(execution)])
+        cargs.extend(row_voxels.run(execution))
     if opt_row_surface_roi_metric is not None:
         cargs.extend(["-row-surface", execution.input_file(opt_row_surface_roi_metric)])
     if row_cifti is not None:
-        cargs.extend(["-row-cifti", *row_cifti.run(execution)])
+        cargs.extend(row_cifti.run(execution))
     if col_voxels is not None:
-        cargs.extend(["-col-voxels", *col_voxels.run(execution)])
+        cargs.extend(col_voxels.run(execution))
     if opt_col_surface_roi_metric is not None:
         cargs.extend(["-col-surface", execution.input_file(opt_col_surface_roi_metric)])
     if col_cifti is not None:
-        cargs.extend(["-col-cifti", *col_cifti.run(execution)])
+        cargs.extend(col_cifti.run(execution))
     if opt_transpose:
         cargs.append("-transpose")
     if opt_make_symmetric:

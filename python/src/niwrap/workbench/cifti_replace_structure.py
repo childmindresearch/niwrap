@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_REPLACE_STRUCTURE_METADATA = Metadata(
-    id="f52306965a4da293f41cdb5570587f6669d593e7",
+    id="d64ec923acd4f0272a51d3644f82224c9a244c8d",
     name="cifti-replace-structure",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiReplaceStructureVolumeAll:
             
         """
         cargs = []
+        cargs.append("-volume-all")
         cargs.append(execution.input_file(self.volume_))
         if self.opt_from_cropped:
             cargs.append("-from-cropped")
@@ -68,6 +69,7 @@ class CiftiReplaceStructureLabel:
             
         """
         cargs = []
+        cargs.append("-label")
         cargs.append(self.structure)
         cargs.append(execution.input_file(self.label_))
         return cargs
@@ -97,6 +99,7 @@ class CiftiReplaceStructureMetric:
             
         """
         cargs = []
+        cargs.append("-metric")
         cargs.append(self.structure)
         cargs.append(execution.input_file(self.metric_))
         return cargs
@@ -128,6 +131,7 @@ class CiftiReplaceStructureVolume:
             
         """
         cargs = []
+        cargs.append("-volume")
         cargs.append(self.structure)
         cargs.append(execution.input_file(self.volume_))
         if self.opt_from_cropped:
@@ -229,17 +233,17 @@ def cifti_replace_structure(
     cargs.append(cifti)
     cargs.append(direction)
     if volume_all is not None:
-        cargs.extend(["-volume-all", *volume_all.run(execution)])
+        cargs.extend(volume_all.run(execution))
     if opt_discard_unused_labels:
         cargs.append("-discard-unused-labels")
     if opt_label_collision_action is not None:
         cargs.extend(["-label-collision", opt_label_collision_action])
     if label is not None:
-        cargs.extend(["-label", *[a for c in [s.run(execution) for s in label] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in label] for a in c])
     if metric is not None:
-        cargs.extend(["-metric", *[a for c in [s.run(execution) for s in metric] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in metric] for a in c])
     if volume is not None:
-        cargs.extend(["-volume", *[a for c in [s.run(execution) for s in volume] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in volume] for a in c])
     ret = CiftiReplaceStructureOutputs(
         root=execution.output_file("."),
     )

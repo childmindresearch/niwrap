@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA = Metadata(
-    id="8f439aa7fc81ef8404221133243ee40c4a69361e",
+    id="8b1e085ed8549ee3aaf8a070de76a1f76a089dd1",
     name="convert-matrix4-to-workbench-sparse",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class ConvertMatrix4ToWorkbenchSparseVolumeSeeds:
             
         """
         cargs = []
+        cargs.append("-volume-seeds")
         cargs.append(execution.input_file(self.cifti_template))
         cargs.append(self.direction)
         return cargs
@@ -100,7 +101,7 @@ def convert_matrix4_to_workbench_sparse(
     if opt_surface_seeds_seed_roi is not None:
         cargs.extend(["-surface-seeds", execution.input_file(opt_surface_seeds_seed_roi)])
     if volume_seeds is not None:
-        cargs.extend(["-volume-seeds", *volume_seeds.run(execution)])
+        cargs.extend(volume_seeds.run(execution))
     ret = ConvertMatrix4ToWorkbenchSparseOutputs(
         root=execution.output_file("."),
     )

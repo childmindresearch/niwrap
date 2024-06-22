@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_SMOOTHING_METADATA = Metadata(
-    id="7e5e86df4605136eff6122703c318dd7081ab75f",
+    id="bb010a9bb677d5deff2034fbbbe17f9a5b0de19b",
     name="cifti-smoothing",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -39,6 +39,7 @@ class CiftiSmoothingLeftSurface:
             
         """
         cargs = []
+        cargs.append("-left-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_left_corrected_areas_area_metric is not None:
             cargs.extend(["-left-corrected-areas", execution.input_file(self.opt_left_corrected_areas_area_metric)])
@@ -70,6 +71,7 @@ class CiftiSmoothingRightSurface:
             
         """
         cargs = []
+        cargs.append("-right-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_right_corrected_areas_area_metric is not None:
             cargs.extend(["-right-corrected-areas", execution.input_file(self.opt_right_corrected_areas_area_metric)])
@@ -101,6 +103,7 @@ class CiftiSmoothingCerebellumSurface:
             
         """
         cargs = []
+        cargs.append("-cerebellum-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_cerebellum_corrected_areas_area_metric is not None:
             cargs.extend(["-cerebellum-corrected-areas", execution.input_file(self.opt_cerebellum_corrected_areas_area_metric)])
@@ -192,11 +195,11 @@ def cifti_smoothing(
     if opt_fwhm:
         cargs.append("-fwhm")
     if left_surface is not None:
-        cargs.extend(["-left-surface", *left_surface.run(execution)])
+        cargs.extend(left_surface.run(execution))
     if right_surface is not None:
-        cargs.extend(["-right-surface", *right_surface.run(execution)])
+        cargs.extend(right_surface.run(execution))
     if cerebellum_surface is not None:
-        cargs.extend(["-cerebellum-surface", *cerebellum_surface.run(execution)])
+        cargs.extend(cerebellum_surface.run(execution))
     if opt_cifti_roi_roi_cifti is not None:
         cargs.extend(["-cifti-roi", execution.input_file(opt_cifti_roi_roi_cifti)])
     if opt_fix_zeros_volume:

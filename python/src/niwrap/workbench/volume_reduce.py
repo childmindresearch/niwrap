@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_REDUCE_METADATA = Metadata(
-    id="39ebee5d9fc6160b16b5594a394641eae481d293",
+    id="fdf4eba884ff12bea9d957208c2652123a1e08d3",
     name="volume-reduce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class VolumeReduceExcludeOutliers:
             
         """
         cargs = []
+        cargs.append("-exclude-outliers")
         cargs.append(str(self.sigma_below))
         cargs.append(str(self.sigma_above))
         return cargs
@@ -108,7 +109,7 @@ def volume_reduce(
     cargs.append(operation)
     cargs.append(execution.input_file(volume_out))
     if exclude_outliers is not None:
-        cargs.extend(["-exclude-outliers", *exclude_outliers.run(execution)])
+        cargs.extend(exclude_outliers.run(execution))
     if opt_only_numeric:
         cargs.append("-only-numeric")
     ret = VolumeReduceOutputs(

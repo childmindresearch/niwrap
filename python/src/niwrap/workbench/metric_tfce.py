@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_TFCE_METADATA = Metadata(
-    id="a3794bff67b839f5a10f88ec5058b28190491098",
+    id="b6c1382bb53f649a26e7711b5852c2076fd0f9dc",
     name="metric-tfce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class MetricTfcePresmooth:
             
         """
         cargs = []
+        cargs.append("-presmooth")
         cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
@@ -68,6 +69,7 @@ class MetricTfceParameters:
             
         """
         cargs = []
+        cargs.append("-parameters")
         cargs.append(str(self.e))
         cargs.append(str(self.h))
         return cargs
@@ -149,11 +151,11 @@ def metric_tfce(
     cargs.append(execution.input_file(metric_in))
     cargs.append(execution.input_file(metric_out))
     if presmooth is not None:
-        cargs.extend(["-presmooth", *presmooth.run(execution)])
+        cargs.extend(presmooth.run(execution))
     if opt_roi_roi_metric is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_metric)])
     if parameters is not None:
-        cargs.extend(["-parameters", *parameters.run(execution)])
+        cargs.extend(parameters.run(execution))
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     if opt_corrected_areas_area_metric is not None:

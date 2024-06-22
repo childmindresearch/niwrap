@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_GRADIENT_METADATA = Metadata(
-    id="f70158df5545540517cad4b4ada37d2cfa9db9e9",
+    id="080f45d673bf751e92cc8b5a6b65d8e91addf20a",
     name="cifti-gradient",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -39,6 +39,7 @@ class CiftiGradientLeftSurface:
             
         """
         cargs = []
+        cargs.append("-left-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_left_corrected_areas_area_metric is not None:
             cargs.extend(["-left-corrected-areas", execution.input_file(self.opt_left_corrected_areas_area_metric)])
@@ -70,6 +71,7 @@ class CiftiGradientRightSurface:
             
         """
         cargs = []
+        cargs.append("-right-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_right_corrected_areas_area_metric is not None:
             cargs.extend(["-right-corrected-areas", execution.input_file(self.opt_right_corrected_areas_area_metric)])
@@ -101,6 +103,7 @@ class CiftiGradientCerebellumSurface:
             
         """
         cargs = []
+        cargs.append("-cerebellum-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_cerebellum_corrected_areas_area_metric is not None:
             cargs.extend(["-cerebellum-corrected-areas", execution.input_file(self.opt_cerebellum_corrected_areas_area_metric)])
@@ -177,11 +180,11 @@ def cifti_gradient(
     cargs.append(direction)
     cargs.append(execution.input_file(cifti_out))
     if left_surface is not None:
-        cargs.extend(["-left-surface", *left_surface.run(execution)])
+        cargs.extend(left_surface.run(execution))
     if right_surface is not None:
-        cargs.extend(["-right-surface", *right_surface.run(execution)])
+        cargs.extend(right_surface.run(execution))
     if cerebellum_surface is not None:
-        cargs.extend(["-cerebellum-surface", *cerebellum_surface.run(execution)])
+        cargs.extend(cerebellum_surface.run(execution))
     if opt_surface_presmooth_surface_kernel is not None:
         cargs.extend(["-surface-presmooth", str(opt_surface_presmooth_surface_kernel)])
     if opt_volume_presmooth_volume_kernel is not None:

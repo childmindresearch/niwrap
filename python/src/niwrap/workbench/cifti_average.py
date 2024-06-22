@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_AVERAGE_METADATA = Metadata(
-    id="d1a4221c5b052a97deb2be86d089296d9b12b287",
+    id="2298366d749af485c97a2cca3a97c99717664081",
     name="cifti-average",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiAverageExcludeOutliers:
             
         """
         cargs = []
+        cargs.append("-exclude-outliers")
         cargs.append(str(self.sigma_below))
         cargs.append(str(self.sigma_above))
         return cargs
@@ -67,6 +68,7 @@ class CiftiAverageCifti:
             
         """
         cargs = []
+        cargs.append("-cifti")
         cargs.append(execution.input_file(self.cifti_in))
         if self.opt_weight_weight is not None:
             cargs.extend(["-weight", str(self.opt_weight_weight)])
@@ -120,11 +122,11 @@ def cifti_average(
     cargs.append("-cifti-average")
     cargs.append(execution.input_file(cifti_out))
     if exclude_outliers is not None:
-        cargs.extend(["-exclude-outliers", *exclude_outliers.run(execution)])
+        cargs.extend(exclude_outliers.run(execution))
     if opt_mem_limit_limit_gb is not None:
         cargs.extend(["-mem-limit", str(opt_mem_limit_limit_gb)])
     if cifti is not None:
-        cargs.extend(["-cifti", *[a for c in [s.run(execution) for s in cifti] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
     ret = CiftiAverageOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

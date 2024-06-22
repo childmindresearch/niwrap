@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_TO_SURFACE_MAPPING_METADATA = Metadata(
-    id="8e70e06de91f9911ef63353d8f2c0bec37665804",
+    id="e704b4abb5e9c4519e8bc3bf75b8ed655ccd59bc",
     name="volume-to-surface-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class VolumeToSurfaceMappingVolumeRoi:
             
         """
         cargs = []
+        cargs.append("-volume-roi")
         cargs.append(execution.input_file(self.roi_volume))
         if self.opt_weighted:
             cargs.append("-weighted")
@@ -78,6 +79,7 @@ class VolumeToSurfaceMappingOutputWeights:
             
         """
         cargs = []
+        cargs.append("-output-weights")
         cargs.append(str(self.vertex))
         cargs.append(execution.input_file(self.weights_out))
         return cargs
@@ -159,10 +161,11 @@ class VolumeToSurfaceMappingRibbonConstrained:
             
         """
         cargs = []
+        cargs.append("-ribbon-constrained")
         cargs.append(execution.input_file(self.inner_surf))
         cargs.append(execution.input_file(self.outer_surf))
         if self.volume_roi is not None:
-            cargs.extend(["-volume-roi", *self.volume_roi.run(execution)])
+            cargs.extend(self.volume_roi.run(execution))
         if self.opt_voxel_subdiv_subdiv_num is not None:
             cargs.extend(["-voxel-subdiv", str(self.opt_voxel_subdiv_subdiv_num)])
         if self.opt_thin_columns:
@@ -175,7 +178,7 @@ class VolumeToSurfaceMappingRibbonConstrained:
             cargs.append("-bad-vertices-out")
         cargs.append(execution.input_file(self.roi_out))
         if self.output_weights is not None:
-            cargs.extend(["-output-weights", *self.output_weights.run(execution)])
+            cargs.extend(self.output_weights.run(execution))
         if self.opt_output_weights_text_text_out is not None:
             cargs.extend(["-output-weights-text", self.opt_output_weights_text_text_out])
         return cargs
@@ -229,6 +232,7 @@ class VolumeToSurfaceMappingMyelinStyle:
             
         """
         cargs = []
+        cargs.append("-myelin-style")
         cargs.append(execution.input_file(self.ribbon_roi))
         cargs.append(execution.input_file(self.thickness))
         cargs.append(str(self.sigma))
@@ -334,9 +338,9 @@ def volume_to_surface_mapping(
     if opt_cubic:
         cargs.append("-cubic")
     if ribbon_constrained is not None:
-        cargs.extend(["-ribbon-constrained", *ribbon_constrained.run(execution)])
+        cargs.extend(ribbon_constrained.run(execution))
     if myelin_style is not None:
-        cargs.extend(["-myelin-style", *myelin_style.run(execution)])
+        cargs.extend(myelin_style.run(execution))
     if opt_subvol_select_subvol is not None:
         cargs.extend(["-subvol-select", opt_subvol_select_subvol])
     ret = VolumeToSurfaceMappingOutputs(

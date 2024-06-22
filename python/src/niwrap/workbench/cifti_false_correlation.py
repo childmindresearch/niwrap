@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_FALSE_CORRELATION_METADATA = Metadata(
-    id="739317d59392a3ce7d48a0b8079f66a59f784d90",
+    id="8fab8e79fbb45b20e25f3e85e4ad4ba8ff81eb4a",
     name="cifti-false-correlation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiFalseCorrelationLeftSurface:
             
         """
         cargs = []
+        cargs.append("-left-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_dump_text_text_out is not None:
             cargs.extend(["-dump-text", self.opt_dump_text_text_out])
@@ -68,6 +69,7 @@ class CiftiFalseCorrelationRightSurface:
             
         """
         cargs = []
+        cargs.append("-right-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_dump_text_text_out is not None:
             cargs.extend(["-dump-text", self.opt_dump_text_text_out])
@@ -98,6 +100,7 @@ class CiftiFalseCorrelationCerebellumSurface:
             
         """
         cargs = []
+        cargs.append("-cerebellum-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_dump_text_text_out is not None:
             cargs.extend(["-dump-text", self.opt_dump_text_text_out])
@@ -161,11 +164,11 @@ def cifti_false_correlation(
     cargs.append(str(geo_inner))
     cargs.append(execution.input_file(cifti_out))
     if left_surface is not None:
-        cargs.extend(["-left-surface", *left_surface.run(execution)])
+        cargs.extend(left_surface.run(execution))
     if right_surface is not None:
-        cargs.extend(["-right-surface", *right_surface.run(execution)])
+        cargs.extend(right_surface.run(execution))
     if cerebellum_surface is not None:
-        cargs.extend(["-cerebellum-surface", *cerebellum_surface.run(execution)])
+        cargs.extend(cerebellum_surface.run(execution))
     ret = CiftiFalseCorrelationOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

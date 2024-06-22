@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_CONVERT_METADATA = Metadata(
-    id="51e2736a23385b5143f6c4d04232f5fd1991697f",
+    id="66ca3dcb5ac1d5279a1136016078a22479c553f6",
     name="metric-convert",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -48,6 +48,7 @@ class MetricConvertToNifti:
             
         """
         cargs = []
+        cargs.append("-to-nifti")
         cargs.append(execution.input_file(self.metric_in))
         cargs.append(execution.input_file(self.nifti_out))
         return cargs
@@ -108,6 +109,7 @@ class MetricConvertFromNifti:
             
         """
         cargs = []
+        cargs.append("-from-nifti")
         cargs.append(execution.input_file(self.nifti_in))
         cargs.append(execution.input_file(self.surface_in))
         cargs.append(execution.input_file(self.metric_out))
@@ -172,9 +174,9 @@ def metric_convert(
     cargs.append("wb_command")
     cargs.append("-metric-convert")
     if to_nifti is not None:
-        cargs.extend(["-to-nifti", *to_nifti.run(execution)])
+        cargs.extend(to_nifti.run(execution))
     if from_nifti is not None:
-        cargs.extend(["-from-nifti", *from_nifti.run(execution)])
+        cargs.extend(from_nifti.run(execution))
     ret = MetricConvertOutputs(
         root=execution.output_file("."),
         to_nifti=to_nifti.outputs(execution) if to_nifti else None,

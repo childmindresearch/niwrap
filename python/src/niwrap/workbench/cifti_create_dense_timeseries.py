@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_DENSE_TIMESERIES_METADATA = Metadata(
-    id="1df614be964998b3832ba18f4ec4762a555343b9",
+    id="05f66fdc90ba00fe23c4b7a16e3c1184aef30cd2",
     name="cifti-create-dense-timeseries",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiCreateDenseTimeseriesVolume:
             
         """
         cargs = []
+        cargs.append("-volume")
         cargs.append(execution.input_file(self.volume_data))
         cargs.append(execution.input_file(self.structure_label_volume))
         return cargs
@@ -67,6 +68,7 @@ class CiftiCreateDenseTimeseriesLeftMetric:
             
         """
         cargs = []
+        cargs.append("-left-metric")
         cargs.append(execution.input_file(self.metric))
         if self.opt_roi_left_roi_metric is not None:
             cargs.extend(["-roi-left", execution.input_file(self.opt_roi_left_roi_metric)])
@@ -97,6 +99,7 @@ class CiftiCreateDenseTimeseriesRightMetric:
             
         """
         cargs = []
+        cargs.append("-right-metric")
         cargs.append(execution.input_file(self.metric))
         if self.opt_roi_right_roi_metric is not None:
             cargs.extend(["-roi-right", execution.input_file(self.opt_roi_right_roi_metric)])
@@ -127,6 +130,7 @@ class CiftiCreateDenseTimeseriesCerebellumMetric:
             
         """
         cargs = []
+        cargs.append("-cerebellum-metric")
         cargs.append(execution.input_file(self.metric))
         if self.opt_roi_cerebellum_roi_metric is not None:
             cargs.extend(["-roi-cerebellum", execution.input_file(self.opt_roi_cerebellum_roi_metric)])
@@ -231,13 +235,13 @@ def cifti_create_dense_timeseries(
     cargs.append("-cifti-create-dense-timeseries")
     cargs.append(execution.input_file(cifti_out))
     if volume is not None:
-        cargs.extend(["-volume", *volume.run(execution)])
+        cargs.extend(volume.run(execution))
     if left_metric is not None:
-        cargs.extend(["-left-metric", *left_metric.run(execution)])
+        cargs.extend(left_metric.run(execution))
     if right_metric is not None:
-        cargs.extend(["-right-metric", *right_metric.run(execution)])
+        cargs.extend(right_metric.run(execution))
     if cerebellum_metric is not None:
-        cargs.extend(["-cerebellum-metric", *cerebellum_metric.run(execution)])
+        cargs.extend(cerebellum_metric.run(execution))
     if opt_timestep_interval is not None:
         cargs.extend(["-timestep", str(opt_timestep_interval)])
     if opt_timestart_start is not None:

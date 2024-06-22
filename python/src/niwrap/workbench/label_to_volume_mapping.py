@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABEL_TO_VOLUME_MAPPING_METADATA = Metadata(
-    id="be7301aed515011ae367368ddd9636d55c4a96b8",
+    id="f84331ca754c571e53fd35003105eb033c14d0b8",
     name="label-to-volume-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -46,6 +46,7 @@ class LabelToVolumeMappingRibbonConstrained:
             
         """
         cargs = []
+        cargs.append("-ribbon-constrained")
         cargs.append(execution.input_file(self.inner_surf))
         cargs.append(execution.input_file(self.outer_surf))
         if self.opt_voxel_subdiv_subdiv_num is not None:
@@ -112,7 +113,7 @@ def label_to_volume_mapping(
     if opt_nearest_vertex_distance is not None:
         cargs.extend(["-nearest-vertex", str(opt_nearest_vertex_distance)])
     if ribbon_constrained is not None:
-        cargs.extend(["-ribbon-constrained", *ribbon_constrained.run(execution)])
+        cargs.extend(ribbon_constrained.run(execution))
     ret = LabelToVolumeMappingOutputs(
         root=execution.output_file("."),
         volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),

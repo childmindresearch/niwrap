@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_WEIGHTED_STATS_METADATA = Metadata(
-    id="97bb39ab1ec3b795ef002201a8faf63a0a2ec27e",
+    id="4961a01ab33d44a66f5aac5050bda592a6ce4578",
     name="cifti-weighted-stats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -52,6 +52,7 @@ class CiftiWeightedStatsSpatialWeights:
             
         """
         cargs = []
+        cargs.append("-spatial-weights")
         if self.opt_left_area_surf_left_surf is not None:
             cargs.extend(["-left-area-surf", execution.input_file(self.opt_left_area_surf_left_surf)])
         if self.opt_right_area_surf_right_surf is not None:
@@ -91,6 +92,7 @@ class CiftiWeightedStatsRoi:
             
         """
         cargs = []
+        cargs.append("-roi")
         cargs.append(execution.input_file(self.roi_cifti))
         if self.opt_match_maps:
             cargs.append("-match-maps")
@@ -165,13 +167,13 @@ def cifti_weighted_stats(
     cargs.append("-cifti-weighted-stats")
     cargs.append(execution.input_file(cifti_in))
     if spatial_weights is not None:
-        cargs.extend(["-spatial-weights", *spatial_weights.run(execution)])
+        cargs.extend(spatial_weights.run(execution))
     if opt_cifti_weights_weight_cifti is not None:
         cargs.extend(["-cifti-weights", execution.input_file(opt_cifti_weights_weight_cifti)])
     if opt_column_column is not None:
         cargs.extend(["-column", str(opt_column_column)])
     if roi is not None:
-        cargs.extend(["-roi", *roi.run(execution)])
+        cargs.extend(roi.run(execution))
     if opt_mean:
         cargs.append("-mean")
     if opt_stdev:

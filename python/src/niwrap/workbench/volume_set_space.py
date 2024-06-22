@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_SET_SPACE_METADATA = Metadata(
-    id="2c2c1c285510760f404ff5dec23157bdf745c1e3",
+    id="8b3a0a3239192c254b52010f61938df065d5456c",
     name="volume-set-space",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -49,6 +49,7 @@ class VolumeSetSpacePlumb:
             
         """
         cargs = []
+        cargs.append("-plumb")
         cargs.append(self.axis_order)
         cargs.append(str(self.x_spacing))
         cargs.append(str(self.y_spacing))
@@ -103,6 +104,7 @@ class VolumeSetSpaceSform:
             
         """
         cargs = []
+        cargs.append("-sform")
         cargs.append(str(self.xi_spacing))
         cargs.append(str(self.xj_spacing))
         cargs.append(str(self.xk_spacing))
@@ -142,6 +144,7 @@ class VolumeSetSpaceFile:
             
         """
         cargs = []
+        cargs.append("-file")
         cargs.append(self.volume_ref)
         if self.opt_ignore_dims:
             cargs.append("-ignore-dims")
@@ -192,11 +195,11 @@ def volume_set_space(
     cargs.append(execution.input_file(volume_in))
     cargs.append(volume_out)
     if plumb is not None:
-        cargs.extend(["-plumb", *plumb.run(execution)])
+        cargs.extend(plumb.run(execution))
     if sform is not None:
-        cargs.extend(["-sform", *sform.run(execution)])
+        cargs.extend(sform.run(execution))
     if file is not None:
-        cargs.extend(["-file", *file.run(execution)])
+        cargs.extend(file.run(execution))
     ret = VolumeSetSpaceOutputs(
         root=execution.output_file("."),
     )

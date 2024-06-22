@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_CREATE_METADATA = Metadata(
-    id="d107354466ac717ec5439be6fa940a524706abcc",
+    id="cfb12dbb607392ee57b2e64c1b0e0ac12f9966e0",
     name="volume-create",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -49,6 +49,7 @@ class VolumeCreatePlumb:
             
         """
         cargs = []
+        cargs.append("-plumb")
         cargs.append(self.axis_order)
         cargs.append(str(self.x_spacing))
         cargs.append(str(self.y_spacing))
@@ -103,6 +104,7 @@ class VolumeCreateSform:
             
         """
         cargs = []
+        cargs.append("-sform")
         cargs.append(str(self.xi_spacing))
         cargs.append(str(self.xj_spacing))
         cargs.append(str(self.xk_spacing))
@@ -166,9 +168,9 @@ def volume_create(
     cargs.append(str(k_dim))
     cargs.append(execution.input_file(volume_out))
     if plumb is not None:
-        cargs.extend(["-plumb", *plumb.run(execution)])
+        cargs.extend(plumb.run(execution))
     if sform is not None:
-        cargs.extend(["-sform", *sform.run(execution)])
+        cargs.extend(sform.run(execution))
     ret = VolumeCreateOutputs(
         root=execution.output_file("."),
         volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),

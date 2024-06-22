@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_RESAMPLE_DCONN_MEMORY_METADATA = Metadata(
-    id="373618e6950552579b8fbfce99c3ecfc9141d42f",
+    id="fdd4ac8aae700baeba6c339fea90b998fdd3a048",
     name="cifti-resample-dconn-memory",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -39,6 +39,7 @@ class CiftiResampleDconnMemoryWeighted:
             
         """
         cargs = []
+        cargs.append("-weighted")
         if self.opt_exponent_exponent is not None:
             cargs.extend(["-exponent", str(self.opt_exponent_exponent)])
         if self.opt_legacy_cutoff:
@@ -72,11 +73,12 @@ class CiftiResampleDconnMemoryVolumePredilate:
             
         """
         cargs = []
+        cargs.append("-volume-predilate")
         cargs.append(str(self.dilate_mm))
         if self.opt_nearest:
             cargs.append("-nearest")
         if self.weighted is not None:
-            cargs.extend(["-weighted", *self.weighted.run(execution)])
+            cargs.extend(self.weighted.run(execution))
         return cargs
 
 
@@ -105,6 +107,7 @@ class CiftiResampleDconnMemoryWeighted_:
             
         """
         cargs = []
+        cargs.append("-weighted")
         if self.opt_exponent_exponent is not None:
             cargs.extend(["-exponent", str(self.opt_exponent_exponent)])
         if self.opt_legacy_cutoff:
@@ -140,13 +143,14 @@ class CiftiResampleDconnMemorySurfacePostdilate:
             
         """
         cargs = []
+        cargs.append("-surface-postdilate")
         cargs.append(str(self.dilate_mm))
         if self.opt_nearest:
             cargs.append("-nearest")
         if self.opt_linear:
             cargs.append("-linear")
         if self.weighted is not None:
-            cargs.extend(["-weighted", *self.weighted.run(execution)])
+            cargs.extend(self.weighted.run(execution))
         return cargs
 
 
@@ -174,6 +178,7 @@ class CiftiResampleDconnMemoryFlirt:
             
         """
         cargs = []
+        cargs.append("-flirt")
         cargs.append(self.source_volume)
         cargs.append(self.target_volume)
         return cargs
@@ -203,9 +208,10 @@ class CiftiResampleDconnMemoryAffine:
             
         """
         cargs = []
+        cargs.append("-affine")
         cargs.append(self.affine_file)
         if self.flirt is not None:
-            cargs.extend(["-flirt", *self.flirt.run(execution)])
+            cargs.extend(self.flirt.run(execution))
         return cargs
 
 
@@ -234,6 +240,7 @@ class CiftiResampleDconnMemoryWarpfield:
             
         """
         cargs = []
+        cargs.append("-warpfield")
         cargs.append(self.warpfield_)
         if self.opt_fnirt_source_volume is not None:
             cargs.extend(["-fnirt", self.opt_fnirt_source_volume])
@@ -264,6 +271,7 @@ class CiftiResampleDconnMemoryLeftAreaSurfs:
             
         """
         cargs = []
+        cargs.append("-left-area-surfs")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -293,6 +301,7 @@ class CiftiResampleDconnMemoryLeftAreaMetrics:
             
         """
         cargs = []
+        cargs.append("-left-area-metrics")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -327,12 +336,13 @@ class CiftiResampleDconnMemoryLeftSpheres:
             
         """
         cargs = []
+        cargs.append("-left-spheres")
         cargs.append(execution.input_file(self.current_sphere))
         cargs.append(execution.input_file(self.new_sphere))
         if self.left_area_surfs is not None:
-            cargs.extend(["-left-area-surfs", *self.left_area_surfs.run(execution)])
+            cargs.extend(self.left_area_surfs.run(execution))
         if self.left_area_metrics is not None:
-            cargs.extend(["-left-area-metrics", *self.left_area_metrics.run(execution)])
+            cargs.extend(self.left_area_metrics.run(execution))
         return cargs
 
 
@@ -360,6 +370,7 @@ class CiftiResampleDconnMemoryRightAreaSurfs:
             
         """
         cargs = []
+        cargs.append("-right-area-surfs")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -389,6 +400,7 @@ class CiftiResampleDconnMemoryRightAreaMetrics:
             
         """
         cargs = []
+        cargs.append("-right-area-metrics")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -423,12 +435,13 @@ class CiftiResampleDconnMemoryRightSpheres:
             
         """
         cargs = []
+        cargs.append("-right-spheres")
         cargs.append(execution.input_file(self.current_sphere))
         cargs.append(execution.input_file(self.new_sphere))
         if self.right_area_surfs is not None:
-            cargs.extend(["-right-area-surfs", *self.right_area_surfs.run(execution)])
+            cargs.extend(self.right_area_surfs.run(execution))
         if self.right_area_metrics is not None:
-            cargs.extend(["-right-area-metrics", *self.right_area_metrics.run(execution)])
+            cargs.extend(self.right_area_metrics.run(execution))
         return cargs
 
 
@@ -456,6 +469,7 @@ class CiftiResampleDconnMemoryCerebellumAreaSurfs:
             
         """
         cargs = []
+        cargs.append("-cerebellum-area-surfs")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -485,6 +499,7 @@ class CiftiResampleDconnMemoryCerebellumAreaMetrics:
             
         """
         cargs = []
+        cargs.append("-cerebellum-area-metrics")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -519,12 +534,13 @@ class CiftiResampleDconnMemoryCerebellumSpheres:
             
         """
         cargs = []
+        cargs.append("-cerebellum-spheres")
         cargs.append(execution.input_file(self.current_sphere))
         cargs.append(execution.input_file(self.new_sphere))
         if self.cerebellum_area_surfs is not None:
-            cargs.extend(["-cerebellum-area-surfs", *self.cerebellum_area_surfs.run(execution)])
+            cargs.extend(self.cerebellum_area_surfs.run(execution))
         if self.cerebellum_area_metrics is not None:
-            cargs.extend(["-cerebellum-area-metrics", *self.cerebellum_area_metrics.run(execution)])
+            cargs.extend(self.cerebellum_area_metrics.run(execution))
         return cargs
 
 
@@ -624,19 +640,19 @@ def cifti_resample_dconn_memory(
     if opt_surface_largest:
         cargs.append("-surface-largest")
     if volume_predilate is not None:
-        cargs.extend(["-volume-predilate", *volume_predilate.run(execution)])
+        cargs.extend(volume_predilate.run(execution))
     if surface_postdilate is not None:
-        cargs.extend(["-surface-postdilate", *surface_postdilate.run(execution)])
+        cargs.extend(surface_postdilate.run(execution))
     if affine is not None:
-        cargs.extend(["-affine", *affine.run(execution)])
+        cargs.extend(affine.run(execution))
     if warpfield is not None:
-        cargs.extend(["-warpfield", *warpfield.run(execution)])
+        cargs.extend(warpfield.run(execution))
     if left_spheres is not None:
-        cargs.extend(["-left-spheres", *left_spheres.run(execution)])
+        cargs.extend(left_spheres.run(execution))
     if right_spheres is not None:
-        cargs.extend(["-right-spheres", *right_spheres.run(execution)])
+        cargs.extend(right_spheres.run(execution))
     if cerebellum_spheres is not None:
-        cargs.extend(["-cerebellum-spheres", *cerebellum_spheres.run(execution)])
+        cargs.extend(cerebellum_spheres.run(execution))
     ret = CiftiResampleDconnMemoryOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

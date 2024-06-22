@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_GRADIENT_METADATA = Metadata(
-    id="835550f1affed536876a7c45bc570897c29ae735",
+    id="cedb8deb86d1140fa4a3de5c25249323cf7ffd37",
     name="metric-gradient",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class MetricGradientPresmooth:
             
         """
         cargs = []
+        cargs.append("-presmooth")
         cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
@@ -68,6 +69,7 @@ class MetricGradientRoi:
             
         """
         cargs = []
+        cargs.append("-roi")
         cargs.append(execution.input_file(self.roi_metric))
         if self.opt_match_columns:
             cargs.append("-match-columns")
@@ -160,9 +162,9 @@ def metric_gradient(
     cargs.append(execution.input_file(metric_in))
     cargs.append(execution.input_file(metric_out))
     if presmooth is not None:
-        cargs.extend(["-presmooth", *presmooth.run(execution)])
+        cargs.extend(presmooth.run(execution))
     if roi is not None:
-        cargs.extend(["-roi", *roi.run(execution)])
+        cargs.extend(roi.run(execution))
     if opt_vectors:
         cargs.append("-vectors")
     cargs.append(execution.input_file(vector_metric_out))

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FILE_CONVERT_METADATA = Metadata(
-    id="01473a5246f8539040c3e81b60f8afa6d07c03ec",
+    id="687872e35c50513e715e4cd2960afdf617d22fff",
     name="file-convert",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -43,6 +43,7 @@ class FileConvertBorderVersionConvert:
             
         """
         cargs = []
+        cargs.append("-border-version-convert")
         cargs.append(execution.input_file(self.border_in))
         cargs.append(str(self.out_version))
         cargs.append(self.border_out)
@@ -77,6 +78,7 @@ class FileConvertNiftiVersionConvert:
             
         """
         cargs = []
+        cargs.append("-nifti-version-convert")
         cargs.append(self.input_)
         cargs.append(str(self.version))
         cargs.append(self.output)
@@ -109,6 +111,7 @@ class FileConvertCiftiVersionConvert:
             
         """
         cargs = []
+        cargs.append("-cifti-version-convert")
         cargs.append(execution.input_file(self.cifti_in))
         cargs.append(self.version)
         cargs.append(self.cifti_out)
@@ -150,11 +153,11 @@ def file_convert(
     cargs.append("wb_command")
     cargs.append("-file-convert")
     if border_version_convert is not None:
-        cargs.extend(["-border-version-convert", *border_version_convert.run(execution)])
+        cargs.extend(border_version_convert.run(execution))
     if nifti_version_convert is not None:
-        cargs.extend(["-nifti-version-convert", *nifti_version_convert.run(execution)])
+        cargs.extend(nifti_version_convert.run(execution))
     if cifti_version_convert is not None:
-        cargs.extend(["-cifti-version-convert", *cifti_version_convert.run(execution)])
+        cargs.extend(cifti_version_convert.run(execution))
     ret = FileConvertOutputs(
         root=execution.output_file("."),
     )

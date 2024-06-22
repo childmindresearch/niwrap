@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_DENSE_SCALAR_METADATA = Metadata(
-    id="e241b62e9cbaf917d7820df80a1509d5f16ca0fa",
+    id="613cf7385396ea60b872f82b84a297d05dcea4c3",
     name="cifti-create-dense-scalar",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiCreateDenseScalarVolume:
             
         """
         cargs = []
+        cargs.append("-volume")
         cargs.append(execution.input_file(self.volume_data))
         cargs.append(execution.input_file(self.structure_label_volume))
         return cargs
@@ -67,6 +68,7 @@ class CiftiCreateDenseScalarLeftMetric:
             
         """
         cargs = []
+        cargs.append("-left-metric")
         cargs.append(execution.input_file(self.metric))
         if self.opt_roi_left_roi_metric is not None:
             cargs.extend(["-roi-left", execution.input_file(self.opt_roi_left_roi_metric)])
@@ -97,6 +99,7 @@ class CiftiCreateDenseScalarRightMetric:
             
         """
         cargs = []
+        cargs.append("-right-metric")
         cargs.append(execution.input_file(self.metric))
         if self.opt_roi_right_roi_metric is not None:
             cargs.extend(["-roi-right", execution.input_file(self.opt_roi_right_roi_metric)])
@@ -127,6 +130,7 @@ class CiftiCreateDenseScalarCerebellumMetric:
             
         """
         cargs = []
+        cargs.append("-cerebellum-metric")
         cargs.append(execution.input_file(self.metric))
         if self.opt_roi_cerebellum_roi_metric is not None:
             cargs.extend(["-roi-cerebellum", execution.input_file(self.opt_roi_cerebellum_roi_metric)])
@@ -218,13 +222,13 @@ def cifti_create_dense_scalar(
     cargs.append("-cifti-create-dense-scalar")
     cargs.append(execution.input_file(cifti_out))
     if volume is not None:
-        cargs.extend(["-volume", *volume.run(execution)])
+        cargs.extend(volume.run(execution))
     if left_metric is not None:
-        cargs.extend(["-left-metric", *left_metric.run(execution)])
+        cargs.extend(left_metric.run(execution))
     if right_metric is not None:
-        cargs.extend(["-right-metric", *right_metric.run(execution)])
+        cargs.extend(right_metric.run(execution))
     if cerebellum_metric is not None:
-        cargs.extend(["-cerebellum-metric", *cerebellum_metric.run(execution)])
+        cargs.extend(cerebellum_metric.run(execution))
     if opt_name_file_file is not None:
         cargs.extend(["-name-file", opt_name_file_file])
     ret = CiftiCreateDenseScalarOutputs(

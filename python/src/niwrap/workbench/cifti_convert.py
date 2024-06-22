@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CONVERT_METADATA = Metadata(
-    id="5b3c68d51c69a7f9b9e1d7743f029e5e56ee625c",
+    id="e64077689e732bb7e9877e51a76e783468224e40",
     name="cifti-convert",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiConvertToGiftiExt:
             
         """
         cargs = []
+        cargs.append("-to-gifti-ext")
         cargs.append(execution.input_file(self.cifti_in))
         cargs.append(self.gifti_out)
         return cargs
@@ -69,6 +70,7 @@ class CiftiConvertResetTimepoints:
             
         """
         cargs = []
+        cargs.append("-reset-timepoints")
         cargs.append(str(self.timestep))
         cargs.append(str(self.timestart))
         if self.opt_unit_unit is not None:
@@ -102,6 +104,7 @@ class CiftiConvertReplaceBinary:
             
         """
         cargs = []
+        cargs.append("-replace-binary")
         cargs.append(self.binary_in)
         if self.opt_flip_endian:
             cargs.append("-flip-endian")
@@ -154,16 +157,17 @@ class CiftiConvertFromGiftiExt:
             
         """
         cargs = []
+        cargs.append("-from-gifti-ext")
         cargs.append(self.gifti_in)
         cargs.append(execution.input_file(self.cifti_out))
         if self.reset_timepoints is not None:
-            cargs.extend(["-reset-timepoints", *self.reset_timepoints.run(execution)])
+            cargs.extend(self.reset_timepoints.run(execution))
         if self.opt_reset_scalars:
             cargs.append("-reset-scalars")
         if self.opt_column_reset_scalars:
             cargs.append("-column-reset-scalars")
         if self.replace_binary is not None:
-            cargs.extend(["-replace-binary", *self.replace_binary.run(execution)])
+            cargs.extend(self.replace_binary.run(execution))
         return cargs
     
     def outputs(
@@ -225,6 +229,7 @@ class CiftiConvertToNifti:
             
         """
         cargs = []
+        cargs.append("-to-nifti")
         cargs.append(execution.input_file(self.cifti_in))
         cargs.append(execution.input_file(self.nifti_out))
         if self.opt_smaller_file:
@@ -279,6 +284,7 @@ class CiftiConvertResetTimepoints_:
             
         """
         cargs = []
+        cargs.append("-reset-timepoints")
         cargs.append(str(self.timestep))
         cargs.append(str(self.timestart))
         if self.opt_unit_unit is not None:
@@ -327,11 +333,12 @@ class CiftiConvertFromNifti:
             
         """
         cargs = []
+        cargs.append("-from-nifti")
         cargs.append(execution.input_file(self.nifti_in))
         cargs.append(execution.input_file(self.cifti_template))
         cargs.append(execution.input_file(self.cifti_out))
         if self.reset_timepoints is not None:
-            cargs.extend(["-reset-timepoints", *self.reset_timepoints.run(execution)])
+            cargs.extend(self.reset_timepoints.run(execution))
         if self.opt_reset_scalars:
             cargs.append("-reset-scalars")
         return cargs
@@ -383,6 +390,7 @@ class CiftiConvertToText:
             
         """
         cargs = []
+        cargs.append("-to-text")
         cargs.append(execution.input_file(self.cifti_in))
         cargs.append(self.text_out)
         if self.opt_col_delim_delim_string is not None:
@@ -416,6 +424,7 @@ class CiftiConvertResetTimepoints_2:
             
         """
         cargs = []
+        cargs.append("-reset-timepoints")
         cargs.append(str(self.timestep))
         cargs.append(str(self.timestart))
         if self.opt_unit_unit is not None:
@@ -467,13 +476,14 @@ class CiftiConvertFromText:
             
         """
         cargs = []
+        cargs.append("-from-text")
         cargs.append(self.text_in)
         cargs.append(execution.input_file(self.cifti_template))
         cargs.append(execution.input_file(self.cifti_out))
         if self.opt_col_delim_delim_string is not None:
             cargs.extend(["-col-delim", self.opt_col_delim_delim_string])
         if self.reset_timepoints is not None:
-            cargs.extend(["-reset-timepoints", *self.reset_timepoints.run(execution)])
+            cargs.extend(self.reset_timepoints.run(execution))
         if self.opt_reset_scalars:
             cargs.append("-reset-scalars")
         return cargs
@@ -576,17 +586,17 @@ def cifti_convert(
     cargs.append("wb_command")
     cargs.append("-cifti-convert")
     if to_gifti_ext is not None:
-        cargs.extend(["-to-gifti-ext", *to_gifti_ext.run(execution)])
+        cargs.extend(to_gifti_ext.run(execution))
     if from_gifti_ext is not None:
-        cargs.extend(["-from-gifti-ext", *from_gifti_ext.run(execution)])
+        cargs.extend(from_gifti_ext.run(execution))
     if to_nifti is not None:
-        cargs.extend(["-to-nifti", *to_nifti.run(execution)])
+        cargs.extend(to_nifti.run(execution))
     if from_nifti is not None:
-        cargs.extend(["-from-nifti", *from_nifti.run(execution)])
+        cargs.extend(from_nifti.run(execution))
     if to_text is not None:
-        cargs.extend(["-to-text", *to_text.run(execution)])
+        cargs.extend(to_text.run(execution))
     if from_text is not None:
-        cargs.extend(["-from-text", *from_text.run(execution)])
+        cargs.extend(from_text.run(execution))
     ret = CiftiConvertOutputs(
         root=execution.output_file("."),
         from_gifti_ext=from_gifti_ext.outputs(execution) if from_gifti_ext else None,

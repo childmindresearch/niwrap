@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_SMOOTHING_METADATA = Metadata(
-    id="5b8681a9559fdbca411ea2b9c7048a49f662e6a0",
+    id="55293312ce33bcb81d88041fb7832dbebc2253c9",
     name="metric-smoothing",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class MetricSmoothingRoi:
             
         """
         cargs = []
+        cargs.append("-roi")
         cargs.append(execution.input_file(self.roi_metric))
         if self.opt_match_columns:
             cargs.append("-match-columns")
@@ -148,7 +149,7 @@ def metric_smoothing(
     if opt_fwhm:
         cargs.append("-fwhm")
     if roi is not None:
-        cargs.extend(["-roi", *roi.run(execution)])
+        cargs.extend(roi.run(execution))
     if opt_fix_zeros:
         cargs.append("-fix-zeros")
     if opt_column_column is not None:
