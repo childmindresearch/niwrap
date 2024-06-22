@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_PARCELLATE_METADATA = Metadata(
-    id="93e7e5207755f8a03ea4d8d7803dee413668a431",
+    id="88f57561217c8ab380a84a4a694cc1f4f0c42892",
     name="cifti-parcellate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -52,6 +52,7 @@ class CiftiParcellateSpatialWeights:
             
         """
         cargs = []
+        cargs.append("-spatial-weights")
         if self.opt_left_area_surf_left_surf is not None:
             cargs.extend(["-left-area-surf", execution.input_file(self.opt_left_area_surf_left_surf)])
         if self.opt_right_area_surf_right_surf is not None:
@@ -91,6 +92,7 @@ class CiftiParcellateExcludeOutliers:
             
         """
         cargs = []
+        cargs.append("-exclude-outliers")
         cargs.append(str(self.sigma_below))
         cargs.append(str(self.sigma_above))
         return cargs
@@ -204,13 +206,13 @@ def cifti_parcellate(
     cargs.append(direction)
     cargs.append(execution.input_file(cifti_out))
     if spatial_weights is not None:
-        cargs.extend(["-spatial-weights", *spatial_weights.run(execution)])
+        cargs.extend(spatial_weights.run(execution))
     if opt_cifti_weights_weight_cifti is not None:
         cargs.extend(["-cifti-weights", execution.input_file(opt_cifti_weights_weight_cifti)])
     if opt_method_method is not None:
         cargs.extend(["-method", opt_method_method])
     if exclude_outliers is not None:
-        cargs.extend(["-exclude-outliers", *exclude_outliers.run(execution)])
+        cargs.extend(exclude_outliers.run(execution))
     if opt_only_numeric:
         cargs.append("-only-numeric")
     if opt_fill_value_value is not None:

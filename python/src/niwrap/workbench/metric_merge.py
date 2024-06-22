@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_MERGE_METADATA = Metadata(
-    id="d41500506a82edaa90e6581f346d35a66a0b54d9",
+    id="07b93903156884c571e692d81f9bb8fade3105ee",
     name="metric-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class MetricMergeUpTo:
             
         """
         cargs = []
+        cargs.append("-up-to")
         cargs.append(self.last_column)
         if self.opt_reverse:
             cargs.append("-reverse")
@@ -68,9 +69,10 @@ class MetricMergeColumn:
             
         """
         cargs = []
+        cargs.append("-column")
         cargs.append(self.column_)
         if self.up_to is not None:
-            cargs.extend(["-up-to", *self.up_to.run(execution)])
+            cargs.extend(self.up_to.run(execution))
         return cargs
 
 
@@ -98,9 +100,10 @@ class MetricMergeMetric:
             
         """
         cargs = []
+        cargs.append("-metric")
         cargs.append(execution.input_file(self.metric_in))
         if self.column is not None:
-            cargs.extend(["-column", *[a for c in [s.run(execution) for s in self.column] for a in c]])
+            cargs.extend([a for c in [s.run(execution) for s in self.column] for a in c])
         return cargs
 
 
@@ -148,7 +151,7 @@ def metric_merge(
     cargs.append("-metric-merge")
     cargs.append(execution.input_file(metric_out))
     if metric is not None:
-        cargs.extend(["-metric", *[a for c in [s.run(execution) for s in metric] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in metric] for a in c])
     ret = MetricMergeOutputs(
         root=execution.output_file("."),
         metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),

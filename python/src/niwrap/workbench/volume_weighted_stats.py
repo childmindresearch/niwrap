@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_WEIGHTED_STATS_METADATA = Metadata(
-    id="5d230d844b7d4c4d9f220ededc52b4a79a3e93b4",
+    id="d2e35cace2134b28265e0472b86b6660aadbeae0",
     name="volume-weighted-stats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -39,6 +39,7 @@ class VolumeWeightedStatsWeightVolume:
             
         """
         cargs = []
+        cargs.append("-weight-volume")
         cargs.append(execution.input_file(self.weight_volume_))
         if self.opt_match_maps:
             cargs.append("-match-maps")
@@ -70,6 +71,7 @@ class VolumeWeightedStatsRoi:
             
         """
         cargs = []
+        cargs.append("-roi")
         cargs.append(execution.input_file(self.roi_volume))
         if self.opt_match_maps:
             cargs.append("-match-maps")
@@ -137,11 +139,11 @@ def volume_weighted_stats(
     cargs.append("-volume-weighted-stats")
     cargs.append(execution.input_file(volume_in))
     if weight_volume is not None:
-        cargs.extend(["-weight-volume", *weight_volume.run(execution)])
+        cargs.extend(weight_volume.run(execution))
     if opt_subvolume_subvolume is not None:
         cargs.extend(["-subvolume", opt_subvolume_subvolume])
     if roi is not None:
-        cargs.extend(["-roi", *roi.run(execution)])
+        cargs.extend(roi.run(execution))
     if opt_mean:
         cargs.append("-mean")
     if opt_stdev:

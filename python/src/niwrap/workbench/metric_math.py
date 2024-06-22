@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_MATH_METADATA = Metadata(
-    id="1f6625acd3e32ae587692a73656da29d21030495",
+    id="26b37722b1391b064bb4f0b70b9d988dab70ca5e",
     name="metric-math",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -42,6 +42,7 @@ class MetricMathVar:
             
         """
         cargs = []
+        cargs.append("-var")
         cargs.append(self.name)
         cargs.append(execution.input_file(self.metric))
         if self.opt_column_column is not None:
@@ -163,7 +164,7 @@ def metric_math(
     if opt_fixnan_replace is not None:
         cargs.extend(["-fixnan", str(opt_fixnan_replace)])
     if var is not None:
-        cargs.extend(["-var", *[a for c in [s.run(execution) for s in var] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in var] for a in c])
     ret = MetricMathOutputs(
         root=execution.output_file("."),
         metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),

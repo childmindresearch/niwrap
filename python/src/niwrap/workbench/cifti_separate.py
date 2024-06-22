@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_SEPARATE_METADATA = Metadata(
-    id="ba216e0552364ceb64d66b096e8868eb54e745e7",
+    id="613f9671289865d8fbaf52fa430b5b1444f147ca",
     name="cifti-separate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -61,6 +61,7 @@ class CiftiSeparateVolumeAll:
             
         """
         cargs = []
+        cargs.append("-volume-all")
         cargs.append(execution.input_file(self.volume_out))
         if self.opt_roi:
             cargs.append("-roi")
@@ -134,6 +135,7 @@ class CiftiSeparateLabel:
             
         """
         cargs = []
+        cargs.append("-label")
         cargs.append(self.structure)
         cargs.append(execution.input_file(self.label_out))
         if self.opt_roi:
@@ -202,6 +204,7 @@ class CiftiSeparateMetric:
             
         """
         cargs = []
+        cargs.append("-metric")
         cargs.append(self.structure)
         cargs.append(execution.input_file(self.metric_out))
         if self.opt_roi:
@@ -273,6 +276,7 @@ class CiftiSeparateVolume:
             
         """
         cargs = []
+        cargs.append("-volume")
         cargs.append(self.structure)
         cargs.append(execution.input_file(self.volume_out))
         if self.opt_roi:
@@ -397,13 +401,13 @@ def cifti_separate(
     cargs.append(execution.input_file(cifti_in))
     cargs.append(direction)
     if volume_all is not None:
-        cargs.extend(["-volume-all", *volume_all.run(execution)])
+        cargs.extend(volume_all.run(execution))
     if label is not None:
-        cargs.extend(["-label", *[a for c in [s.run(execution) for s in label] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in label] for a in c])
     if metric is not None:
-        cargs.extend(["-metric", *[a for c in [s.run(execution) for s in metric] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in metric] for a in c])
     if volume is not None:
-        cargs.extend(["-volume", *[a for c in [s.run(execution) for s in volume] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in volume] for a in c])
     ret = CiftiSeparateOutputs(
         root=execution.output_file("."),
         volume_all=volume_all.outputs(execution) if volume_all else None,

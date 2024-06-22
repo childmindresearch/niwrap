@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_LABEL_TO_SURFACE_MAPPING_METADATA = Metadata(
-    id="5c753ede610baf3056a49a9aa0af1c76d829fc83",
+    id="0a93a35401e461860067045b8b4862a5b4e5a7f0",
     name="volume-label-to-surface-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -45,6 +45,7 @@ class VolumeLabelToSurfaceMappingRibbonConstrained:
             
         """
         cargs = []
+        cargs.append("-ribbon-constrained")
         cargs.append(execution.input_file(self.inner_surf))
         cargs.append(execution.input_file(self.outer_surf))
         if self.opt_volume_roi_roi_volume is not None:
@@ -116,7 +117,7 @@ def volume_label_to_surface_mapping(
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(label_out))
     if ribbon_constrained is not None:
-        cargs.extend(["-ribbon-constrained", *ribbon_constrained.run(execution)])
+        cargs.extend(ribbon_constrained.run(execution))
     if opt_subvol_select_subvol is not None:
         cargs.extend(["-subvol-select", opt_subvol_select_subvol])
     ret = VolumeLabelToSurfaceMappingOutputs(

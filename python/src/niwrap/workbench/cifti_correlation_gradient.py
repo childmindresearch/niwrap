@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CORRELATION_GRADIENT_METADATA = Metadata(
-    id="8a10ade42896fd6ac224c7633317951379f935ee",
+    id="06bc2742e1c978e3d572dc2936db5c3a2186a2e5",
     name="cifti-correlation-gradient",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -39,6 +39,7 @@ class CiftiCorrelationGradientLeftSurface:
             
         """
         cargs = []
+        cargs.append("-left-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_left_corrected_areas_area_metric is not None:
             cargs.extend(["-left-corrected-areas", execution.input_file(self.opt_left_corrected_areas_area_metric)])
@@ -70,6 +71,7 @@ class CiftiCorrelationGradientRightSurface:
             
         """
         cargs = []
+        cargs.append("-right-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_right_corrected_areas_area_metric is not None:
             cargs.extend(["-right-corrected-areas", execution.input_file(self.opt_right_corrected_areas_area_metric)])
@@ -101,6 +103,7 @@ class CiftiCorrelationGradientCerebellumSurface:
             
         """
         cargs = []
+        cargs.append("-cerebellum-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_cerebellum_corrected_areas_area_metric is not None:
             cargs.extend(["-cerebellum-corrected-areas", execution.input_file(self.opt_cerebellum_corrected_areas_area_metric)])
@@ -135,6 +138,7 @@ class CiftiCorrelationGradientDoubleCorrelation:
             
         """
         cargs = []
+        cargs.append("-double-correlation")
         if self.opt_fisher_z_first:
             cargs.append("-fisher-z-first")
         if self.opt_no_demean_first:
@@ -220,11 +224,11 @@ def cifti_correlation_gradient(
     cargs.append(execution.input_file(cifti))
     cargs.append(execution.input_file(cifti_out))
     if left_surface is not None:
-        cargs.extend(["-left-surface", *left_surface.run(execution)])
+        cargs.extend(left_surface.run(execution))
     if right_surface is not None:
-        cargs.extend(["-right-surface", *right_surface.run(execution)])
+        cargs.extend(right_surface.run(execution))
     if cerebellum_surface is not None:
-        cargs.extend(["-cerebellum-surface", *cerebellum_surface.run(execution)])
+        cargs.extend(cerebellum_surface.run(execution))
     if opt_surface_presmooth_surface_kernel is not None:
         cargs.extend(["-surface-presmooth", str(opt_surface_presmooth_surface_kernel)])
     if opt_volume_presmooth_volume_kernel is not None:
@@ -244,7 +248,7 @@ def cifti_correlation_gradient(
     if opt_mem_limit_limit_gb is not None:
         cargs.extend(["-mem-limit", str(opt_mem_limit_limit_gb)])
     if double_correlation is not None:
-        cargs.extend(["-double-correlation", *double_correlation.run(execution)])
+        cargs.extend(double_correlation.run(execution))
     ret = CiftiCorrelationGradientOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_AVERAGE_DENSE_ROI_METADATA = Metadata(
-    id="c5627c514f25e444c51504a7cbc6edb5699ede8b",
+    id="1f19fd13916c0bf41d31d7374c223f35e00d53dd",
     name="cifti-average-dense-roi",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiAverageDenseRoiCiftiRoi:
             
         """
         cargs = []
+        cargs.append("-cifti-roi")
         cargs.append(execution.input_file(self.roi_cifti))
         if self.opt_in_memory:
             cargs.append("-in-memory")
@@ -66,6 +67,7 @@ class CiftiAverageDenseRoiCifti:
             
         """
         cargs = []
+        cargs.append("-cifti")
         cargs.append(execution.input_file(self.cifti_in))
         return cargs
 
@@ -133,7 +135,7 @@ def cifti_average_dense_roi(
     cargs.append("-cifti-average-dense-roi")
     cargs.append(execution.input_file(cifti_out))
     if cifti_roi is not None:
-        cargs.extend(["-cifti-roi", *cifti_roi.run(execution)])
+        cargs.extend(cifti_roi.run(execution))
     if opt_left_roi_roi_metric is not None:
         cargs.extend(["-left-roi", execution.input_file(opt_left_roi_roi_metric)])
     if opt_right_roi_roi_metric is not None:
@@ -149,7 +151,7 @@ def cifti_average_dense_roi(
     if opt_cerebellum_area_surf_cerebellum_surf is not None:
         cargs.extend(["-cerebellum-area-surf", execution.input_file(opt_cerebellum_area_surf_cerebellum_surf)])
     if cifti is not None:
-        cargs.extend(["-cifti", *[a for c in [s.run(execution) for s in cifti] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
     ret = CiftiAverageDenseRoiOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 BORDER_MERGE_METADATA = Metadata(
-    id="2a82849e93d0df5be682db26ed6979f73c07ac6a",
+    id="ba5f985e3d652e4ecd792cb35629271e4f04c587",
     name="border-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class BorderMergeUpTo:
             
         """
         cargs = []
+        cargs.append("-up-to")
         cargs.append(self.last_border)
         if self.opt_reverse:
             cargs.append("-reverse")
@@ -68,9 +69,10 @@ class BorderMergeSelect:
             
         """
         cargs = []
+        cargs.append("-select")
         cargs.append(self.border_)
         if self.up_to is not None:
-            cargs.extend(["-up-to", *self.up_to.run(execution)])
+            cargs.extend(self.up_to.run(execution))
         return cargs
 
 
@@ -98,9 +100,10 @@ class BorderMergeBorder:
             
         """
         cargs = []
+        cargs.append("-border")
         cargs.append(execution.input_file(self.border_file_in))
         if self.select_ is not None:
-            cargs.extend(["-select", *[a for c in [s.run(execution) for s in self.select_] for a in c]])
+            cargs.extend([a for c in [s.run(execution) for s in self.select_] for a in c])
         return cargs
 
 
@@ -147,7 +150,7 @@ def border_merge(
     cargs.append("-border-merge")
     cargs.append(execution.input_file(border_file_out))
     if border is not None:
-        cargs.extend(["-border", *[a for c in [s.run(execution) for s in border] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in border] for a in c])
     ret = BorderMergeOutputs(
         root=execution.output_file("."),
         border_file_out=execution.output_file(f"{pathlib.Path(border_file_out).name}"),

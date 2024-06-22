@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_TFCE_METADATA = Metadata(
-    id="f6bc3dd10a3e2f8eb5161a10ac86eef11e2a607c",
+    id="4b79df1dd5ab728a9336c044d0dadc844813c681",
     name="volume-tfce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class VolumeTfcePresmooth:
             
         """
         cargs = []
+        cargs.append("-presmooth")
         cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
@@ -68,6 +69,7 @@ class VolumeTfceParameters:
             
         """
         cargs = []
+        cargs.append("-parameters")
         cargs.append(str(self.e))
         cargs.append(str(self.h))
         return cargs
@@ -137,11 +139,11 @@ def volume_tfce(
     cargs.append(execution.input_file(volume_in))
     cargs.append(execution.input_file(volume_out))
     if presmooth is not None:
-        cargs.extend(["-presmooth", *presmooth.run(execution)])
+        cargs.extend(presmooth.run(execution))
     if opt_roi_roi_volume is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_volume)])
     if parameters is not None:
-        cargs.extend(["-parameters", *parameters.run(execution)])
+        cargs.extend(parameters.run(execution))
     if opt_subvolume_subvolume is not None:
         cargs.extend(["-subvolume", opt_subvolume_subvolume])
     ret = VolumeTfceOutputs(

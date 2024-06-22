@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_LABEL_TO_BORDER_METADATA = Metadata(
-    id="988a1eb7db254d998455fb6a67a5d8219c8c98f4",
+    id="025350a9d1e559838e121f2ae6d7c8a3ac46ed3c",
     name="cifti-label-to-border",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -48,6 +48,7 @@ class CiftiLabelToBorderBorder:
             
         """
         cargs = []
+        cargs.append("-border")
         cargs.append(execution.input_file(self.surface))
         cargs.append(execution.input_file(self.border_out))
         return cargs
@@ -119,7 +120,7 @@ def cifti_label_to_border(
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     if border is not None:
-        cargs.extend(["-border", *[a for c in [s.run(execution) for s in border] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in border] for a in c])
     ret = CiftiLabelToBorderOutputs(
         root=execution.output_file("."),
         border=[i.outputs(execution) for i in border] if border else None,

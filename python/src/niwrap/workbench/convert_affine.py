@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONVERT_AFFINE_METADATA = Metadata(
-    id="94727b63180cd41ac41397ca507b7fbc61049dcb",
+    id="90c666519fc612c937a29d02c0f13ab5fcfd8eb4",
     name="convert-affine",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class ConvertAffineFromWorld:
             
         """
         cargs = []
+        cargs.append("-from-world")
         cargs.append(self.input_)
         if self.opt_inverse:
             cargs.append("-inverse")
@@ -70,6 +71,7 @@ class ConvertAffineFromFlirt:
             
         """
         cargs = []
+        cargs.append("-from-flirt")
         cargs.append(self.input_)
         cargs.append(self.source_volume)
         cargs.append(self.target_volume)
@@ -100,6 +102,7 @@ class ConvertAffineToWorld:
             
         """
         cargs = []
+        cargs.append("-to-world")
         cargs.append(self.output)
         if self.opt_inverse:
             cargs.append("-inverse")
@@ -132,6 +135,7 @@ class ConvertAffineToFlirt:
             
         """
         cargs = []
+        cargs.append("-to-flirt")
         cargs.append(self.output)
         cargs.append(self.source_volume)
         cargs.append(self.target_volume)
@@ -190,17 +194,17 @@ def convert_affine(
     cargs.append("wb_command")
     cargs.append("-convert-affine")
     if from_world is not None:
-        cargs.extend(["-from-world", *from_world.run(execution)])
+        cargs.extend(from_world.run(execution))
     if opt_from_itk_input is not None:
         cargs.extend(["-from-itk", opt_from_itk_input])
     if from_flirt is not None:
-        cargs.extend(["-from-flirt", *from_flirt.run(execution)])
+        cargs.extend(from_flirt.run(execution))
     if to_world is not None:
-        cargs.extend(["-to-world", *to_world.run(execution)])
+        cargs.extend(to_world.run(execution))
     if opt_to_itk_output is not None:
         cargs.extend(["-to-itk", opt_to_itk_output])
     if to_flirt is not None:
-        cargs.extend(["-to-flirt", *[a for c in [s.run(execution) for s in to_flirt] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in to_flirt] for a in c])
     ret = ConvertAffineOutputs(
         root=execution.output_file("."),
     )

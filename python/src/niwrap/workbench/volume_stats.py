@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_STATS_METADATA = Metadata(
-    id="f591822811dfb4f715298bd6b92d975c129a5f8f",
+    id="b9d44e3b15885975938d7fdc7fb2353dca484d1e",
     name="volume-stats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -39,6 +39,7 @@ class VolumeStatsRoi:
             
         """
         cargs = []
+        cargs.append("-roi")
         cargs.append(execution.input_file(self.roi_volume))
         if self.opt_match_maps:
             cargs.append("-match-maps")
@@ -121,7 +122,7 @@ def volume_stats(
     if opt_subvolume_subvolume is not None:
         cargs.extend(["-subvolume", opt_subvolume_subvolume])
     if roi is not None:
-        cargs.extend(["-roi", *roi.run(execution)])
+        cargs.extend(roi.run(execution))
     if opt_show_map_name:
         cargs.append("-show-map-name")
     ret = VolumeStatsOutputs(

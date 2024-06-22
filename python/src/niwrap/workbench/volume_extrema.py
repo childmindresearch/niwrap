@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_EXTREMA_METADATA = Metadata(
-    id="df7209bba52051976095bc652abd31069069df2d",
+    id="6c295fb0cd118c7061f076cf10eec6400dfb8226",
     name="volume-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class VolumeExtremaPresmooth:
             
         """
         cargs = []
+        cargs.append("-presmooth")
         cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
@@ -68,6 +69,7 @@ class VolumeExtremaThreshold:
             
         """
         cargs = []
+        cargs.append("-threshold")
         cargs.append(str(self.low))
         cargs.append(str(self.high))
         return cargs
@@ -153,11 +155,11 @@ def volume_extrema(
     cargs.append(str(distance))
     cargs.append(execution.input_file(volume_out))
     if presmooth is not None:
-        cargs.extend(["-presmooth", *presmooth.run(execution)])
+        cargs.extend(presmooth.run(execution))
     if opt_roi_roi_volume is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_volume)])
     if threshold is not None:
-        cargs.extend(["-threshold", *threshold.run(execution)])
+        cargs.extend(threshold.run(execution))
     if opt_sum_subvols:
         cargs.append("-sum-subvols")
     if opt_consolidate_mode:

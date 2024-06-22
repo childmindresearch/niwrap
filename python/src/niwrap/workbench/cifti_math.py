@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_MATH_METADATA = Metadata(
-    id="9de593f2f4eecbaf67cd257bc3c29aad10cdffe8",
+    id="949a717e690e93c2e973eaa02d05de4fd9af3898",
     name="cifti-math",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -40,6 +40,7 @@ class CiftiMathSelect:
             
         """
         cargs = []
+        cargs.append("-select")
         cargs.append(str(self.dim))
         cargs.append(self.index)
         if self.opt_repeat:
@@ -73,10 +74,11 @@ class CiftiMathVar:
             
         """
         cargs = []
+        cargs.append("-var")
         cargs.append(self.name)
         cargs.append(execution.input_file(self.cifti))
         if self.select_ is not None:
-            cargs.extend(["-select", *[a for c in [s.run(execution) for s in self.select_] for a in c]])
+            cargs.extend([a for c in [s.run(execution) for s in self.select_] for a in c])
         return cargs
 
 
@@ -200,7 +202,7 @@ def cifti_math(
     if opt_override_mapping_check:
         cargs.append("-override-mapping-check")
     if var is not None:
-        cargs.extend(["-var", *[a for c in [s.run(execution) for s in var] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in var] for a in c])
     ret = CiftiMathOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

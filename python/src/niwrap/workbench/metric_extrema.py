@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_EXTREMA_METADATA = Metadata(
-    id="d09f80f4bac85e4e7f616495fc74318c076681c6",
+    id="1292ae2ad67bccefb763116df7b8e418ba992280",
     name="metric-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class MetricExtremaPresmooth:
             
         """
         cargs = []
+        cargs.append("-presmooth")
         cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
@@ -68,6 +69,7 @@ class MetricExtremaThreshold:
             
         """
         cargs = []
+        cargs.append("-threshold")
         cargs.append(str(self.low))
         cargs.append(str(self.high))
         return cargs
@@ -161,11 +163,11 @@ def metric_extrema(
     cargs.append(str(distance))
     cargs.append(execution.input_file(metric_out))
     if presmooth is not None:
-        cargs.extend(["-presmooth", *presmooth.run(execution)])
+        cargs.extend(presmooth.run(execution))
     if opt_roi_roi_metric is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_metric)])
     if threshold is not None:
-        cargs.extend(["-threshold", *threshold.run(execution)])
+        cargs.extend(threshold.run(execution))
     if opt_sum_columns:
         cargs.append("-sum-columns")
     if opt_consolidate_mode:

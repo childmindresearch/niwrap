@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_MATH_METADATA = Metadata(
-    id="c45067badfeffbe464303b65d586035fca1ea1ca",
+    id="dba2b9633a1afc552f663bb6f45ffee3830c639d",
     name="volume-math",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -42,6 +42,7 @@ class VolumeMathVar:
             
         """
         cargs = []
+        cargs.append("-var")
         cargs.append(self.name)
         cargs.append(execution.input_file(self.volume))
         if self.opt_subvolume_subvol is not None:
@@ -162,7 +163,7 @@ def volume_math(
     if opt_fixnan_replace is not None:
         cargs.extend(["-fixnan", str(opt_fixnan_replace)])
     if var is not None:
-        cargs.extend(["-var", *[a for c in [s.run(execution) for s in var] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in var] for a in c])
     ret = VolumeMathOutputs(
         root=execution.output_file("."),
         volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),

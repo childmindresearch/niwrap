@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONVERT_MATRIX4_TO_MATRIX2_METADATA = Metadata(
-    id="daa956f5e14a27f9a3d2c41fefb567999a9fff22",
+    id="8c569654f2785f0a1d5950ca0324126cab941c94",
     name="convert-matrix4-to-matrix2",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -54,6 +54,7 @@ class ConvertMatrix4ToMatrix2IndividualFibers:
             
         """
         cargs = []
+        cargs.append("-individual-fibers")
         cargs.append(execution.input_file(self.fiber_1))
         cargs.append(execution.input_file(self.fiber_2))
         cargs.append(execution.input_file(self.fiber_3))
@@ -135,7 +136,7 @@ def convert_matrix4_to_matrix2(
         cargs.append("-distances")
     cargs.append(execution.input_file(distance_out))
     if individual_fibers is not None:
-        cargs.extend(["-individual-fibers", *individual_fibers.run(execution)])
+        cargs.extend(individual_fibers.run(execution))
     ret = ConvertMatrix4ToMatrix2Outputs(
         root=execution.output_file("."),
         counts_out=execution.output_file(f"{pathlib.Path(counts_out).name}"),

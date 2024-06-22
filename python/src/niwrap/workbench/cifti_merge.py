@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_MERGE_METADATA = Metadata(
-    id="592ceae70c1f127b2d379be3646769ef07c785cc",
+    id="c75c82e03723a8489195149e8fc0cc8ee84844bc",
     name="cifti-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiMergeUpTo:
             
         """
         cargs = []
+        cargs.append("-up-to")
         cargs.append(self.last_index)
         if self.opt_reverse:
             cargs.append("-reverse")
@@ -68,9 +69,10 @@ class CiftiMergeIndex:
             
         """
         cargs = []
+        cargs.append("-index")
         cargs.append(self.index_)
         if self.up_to is not None:
-            cargs.extend(["-up-to", *self.up_to.run(execution)])
+            cargs.extend(self.up_to.run(execution))
         return cargs
 
 
@@ -98,9 +100,10 @@ class CiftiMergeCifti:
             
         """
         cargs = []
+        cargs.append("-cifti")
         cargs.append(execution.input_file(self.cifti_in))
         if self.index is not None:
-            cargs.extend(["-index", *[a for c in [s.run(execution) for s in self.index] for a in c]])
+            cargs.extend([a for c in [s.run(execution) for s in self.index] for a in c])
         return cargs
 
 
@@ -163,7 +166,7 @@ def cifti_merge(
     if opt_mem_limit_limit_gb is not None:
         cargs.extend(["-mem-limit", str(opt_mem_limit_limit_gb)])
     if cifti is not None:
-        cargs.extend(["-cifti", *[a for c in [s.run(execution) for s in cifti] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
     ret = CiftiMergeOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

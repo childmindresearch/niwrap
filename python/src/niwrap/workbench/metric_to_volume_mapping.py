@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_TO_VOLUME_MAPPING_METADATA = Metadata(
-    id="89ed6aac30b45de4cafbd414738f55a3315d78a4",
+    id="dc8690013ce737596a4fa7cfdd84cf9fa897d651",
     name="metric-to-volume-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -46,6 +46,7 @@ class MetricToVolumeMappingRibbonConstrained:
             
         """
         cargs = []
+        cargs.append("-ribbon-constrained")
         cargs.append(execution.input_file(self.inner_surf))
         cargs.append(execution.input_file(self.outer_surf))
         if self.opt_voxel_subdiv_subdiv_num is not None:
@@ -114,7 +115,7 @@ def metric_to_volume_mapping(
     if opt_nearest_vertex_distance is not None:
         cargs.extend(["-nearest-vertex", str(opt_nearest_vertex_distance)])
     if ribbon_constrained is not None:
-        cargs.extend(["-ribbon-constrained", *ribbon_constrained.run(execution)])
+        cargs.extend(ribbon_constrained.run(execution))
     ret = MetricToVolumeMappingOutputs(
         root=execution.output_file("."),
         volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),

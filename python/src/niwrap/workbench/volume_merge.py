@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_MERGE_METADATA = Metadata(
-    id="b6c587f3aa48250438cb9fe23635d1468f3cc913",
+    id="19d5788f8e36ff96123e1149b833db7a03da4fdd",
     name="volume-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class VolumeMergeUpTo:
             
         """
         cargs = []
+        cargs.append("-up-to")
         cargs.append(self.last_subvol)
         if self.opt_reverse:
             cargs.append("-reverse")
@@ -68,9 +69,10 @@ class VolumeMergeSubvolume:
             
         """
         cargs = []
+        cargs.append("-subvolume")
         cargs.append(self.subvol)
         if self.up_to is not None:
-            cargs.extend(["-up-to", *self.up_to.run(execution)])
+            cargs.extend(self.up_to.run(execution))
         return cargs
 
 
@@ -98,9 +100,10 @@ class VolumeMergeVolume:
             
         """
         cargs = []
+        cargs.append("-volume")
         cargs.append(execution.input_file(self.volume_in))
         if self.subvolume is not None:
-            cargs.extend(["-subvolume", *[a for c in [s.run(execution) for s in self.subvolume] for a in c]])
+            cargs.extend([a for c in [s.run(execution) for s in self.subvolume] for a in c])
         return cargs
 
 
@@ -148,7 +151,7 @@ def volume_merge(
     cargs.append("-volume-merge")
     cargs.append(execution.input_file(volume_out))
     if volume is not None:
-        cargs.extend(["-volume", *[a for c in [s.run(execution) for s in volume] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in volume] for a in c])
     ret = VolumeMergeOutputs(
         root=execution.output_file("."),
         volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),

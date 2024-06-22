@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_FIND_CLUSTERS_METADATA = Metadata(
-    id="ca3b9522db0bb81629d336544a6971bb83fb3f03",
+    id="0be98fbcd62e1b4aa6d3d29f86e46fb756d82333",
     name="cifti-find-clusters",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -39,6 +39,7 @@ class CiftiFindClustersLeftSurface:
             
         """
         cargs = []
+        cargs.append("-left-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_corrected_areas_area_metric is not None:
             cargs.extend(["-corrected-areas", execution.input_file(self.opt_corrected_areas_area_metric)])
@@ -70,6 +71,7 @@ class CiftiFindClustersRightSurface:
             
         """
         cargs = []
+        cargs.append("-right-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_corrected_areas_area_metric is not None:
             cargs.extend(["-corrected-areas", execution.input_file(self.opt_corrected_areas_area_metric)])
@@ -101,6 +103,7 @@ class CiftiFindClustersCerebellumSurface:
             
         """
         cargs = []
+        cargs.append("-cerebellum-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_corrected_areas_area_metric is not None:
             cargs.extend(["-corrected-areas", execution.input_file(self.opt_corrected_areas_area_metric)])
@@ -131,6 +134,7 @@ class CiftiFindClustersSizeRatio:
             
         """
         cargs = []
+        cargs.append("-size-ratio")
         cargs.append(str(self.surface_ratio))
         cargs.append(str(self.volume_ratio))
         return cargs
@@ -160,6 +164,7 @@ class CiftiFindClustersDistance:
             
         """
         cargs = []
+        cargs.append("-distance")
         cargs.append(str(self.surface_distance))
         cargs.append(str(self.volume_distance))
         return cargs
@@ -252,19 +257,19 @@ def cifti_find_clusters(
     if opt_less_than:
         cargs.append("-less-than")
     if left_surface is not None:
-        cargs.extend(["-left-surface", *left_surface.run(execution)])
+        cargs.extend(left_surface.run(execution))
     if right_surface is not None:
-        cargs.extend(["-right-surface", *right_surface.run(execution)])
+        cargs.extend(right_surface.run(execution))
     if cerebellum_surface is not None:
-        cargs.extend(["-cerebellum-surface", *cerebellum_surface.run(execution)])
+        cargs.extend(cerebellum_surface.run(execution))
     if opt_cifti_roi_roi_cifti is not None:
         cargs.extend(["-cifti-roi", execution.input_file(opt_cifti_roi_roi_cifti)])
     if opt_merged_volume:
         cargs.append("-merged-volume")
     if size_ratio is not None:
-        cargs.extend(["-size-ratio", *size_ratio.run(execution)])
+        cargs.extend(size_ratio.run(execution))
     if distance is not None:
-        cargs.extend(["-distance", *distance.run(execution)])
+        cargs.extend(distance.run(execution))
     if opt_start_startval is not None:
         cargs.extend(["-start", str(opt_start_startval)])
     ret = CiftiFindClustersOutputs(

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA = Metadata(
-    id="be51aa27f1d9d321462e81b34826550da953ccc4",
+    id="29b48fc5f8ad3eeb89b59fbd5229ca62c3f1cc87",
     name="volume-warpfield-affine-regression",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class VolumeWarpfieldAffineRegressionFlirtOut:
             
         """
         cargs = []
+        cargs.append("-flirt-out")
         cargs.append(self.source_volume)
         cargs.append(self.target_volume)
         return cargs
@@ -98,7 +99,7 @@ def volume_warpfield_affine_regression(
     if opt_fnirt_source_volume is not None:
         cargs.extend(["-fnirt", opt_fnirt_source_volume])
     if flirt_out is not None:
-        cargs.extend(["-flirt-out", *flirt_out.run(execution)])
+        cargs.extend(flirt_out.run(execution))
     ret = VolumeWarpfieldAffineRegressionOutputs(
         root=execution.output_file("."),
     )

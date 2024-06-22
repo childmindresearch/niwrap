@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_LABEL_METADATA = Metadata(
-    id="eb566bf23582013c03c0af76dfd4bc0f97ba176d",
+    id="9c6daabb307196e1b497a3badeaaabd29ba2989d",
     name="cifti-create-label",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiCreateLabelVolume:
             
         """
         cargs = []
+        cargs.append("-volume")
         cargs.append(execution.input_file(self.label_volume))
         cargs.append(execution.input_file(self.structure_label_volume))
         return cargs
@@ -67,6 +68,7 @@ class CiftiCreateLabelLeftLabel:
             
         """
         cargs = []
+        cargs.append("-left-label")
         cargs.append(execution.input_file(self.label))
         if self.opt_roi_left_roi_metric is not None:
             cargs.extend(["-roi-left", execution.input_file(self.opt_roi_left_roi_metric)])
@@ -97,6 +99,7 @@ class CiftiCreateLabelRightLabel:
             
         """
         cargs = []
+        cargs.append("-right-label")
         cargs.append(execution.input_file(self.label))
         if self.opt_roi_right_roi_metric is not None:
             cargs.extend(["-roi-right", execution.input_file(self.opt_roi_right_roi_metric)])
@@ -127,6 +130,7 @@ class CiftiCreateLabelCerebellumLabel:
             
         """
         cargs = []
+        cargs.append("-cerebellum-label")
         cargs.append(execution.input_file(self.label))
         if self.opt_roi_cerebellum_roi_metric is not None:
             cargs.extend(["-roi-cerebellum", execution.input_file(self.opt_roi_cerebellum_roi_metric)])
@@ -221,13 +225,13 @@ def cifti_create_label(
     cargs.append("-cifti-create-label")
     cargs.append(execution.input_file(cifti_out))
     if volume is not None:
-        cargs.extend(["-volume", *volume.run(execution)])
+        cargs.extend(volume.run(execution))
     if left_label is not None:
-        cargs.extend(["-left-label", *left_label.run(execution)])
+        cargs.extend(left_label.run(execution))
     if right_label is not None:
-        cargs.extend(["-right-label", *right_label.run(execution)])
+        cargs.extend(right_label.run(execution))
     if cerebellum_label is not None:
-        cargs.extend(["-cerebellum-label", *cerebellum_label.run(execution)])
+        cargs.extend(cerebellum_label.run(execution))
     ret = CiftiCreateLabelOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

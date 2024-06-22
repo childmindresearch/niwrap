@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FOCI_RESAMPLE_METADATA = Metadata(
-    id="8c93bbc7db76cbeb2257053ffac3e0b5a2107ea7",
+    id="4b70102578c1dfac807127b45031d8d714475a13",
     name="foci-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class FociResampleLeftSurfaces:
             
         """
         cargs = []
+        cargs.append("-left-surfaces")
         cargs.append(execution.input_file(self.current_surf))
         cargs.append(execution.input_file(self.new_surf))
         return cargs
@@ -67,6 +68,7 @@ class FociResampleRightSurfaces:
             
         """
         cargs = []
+        cargs.append("-right-surfaces")
         cargs.append(execution.input_file(self.current_surf))
         cargs.append(execution.input_file(self.new_surf))
         return cargs
@@ -96,6 +98,7 @@ class FociResampleCerebellumSurfaces:
             
         """
         cargs = []
+        cargs.append("-cerebellum-surfaces")
         cargs.append(execution.input_file(self.current_surf))
         cargs.append(execution.input_file(self.new_surf))
         return cargs
@@ -154,11 +157,11 @@ def foci_resample(
     cargs.append(execution.input_file(foci_in))
     cargs.append(execution.input_file(foci_out))
     if left_surfaces is not None:
-        cargs.extend(["-left-surfaces", *left_surfaces.run(execution)])
+        cargs.extend(left_surfaces.run(execution))
     if right_surfaces is not None:
-        cargs.extend(["-right-surfaces", *right_surfaces.run(execution)])
+        cargs.extend(right_surfaces.run(execution))
     if cerebellum_surfaces is not None:
-        cargs.extend(["-cerebellum-surfaces", *cerebellum_surfaces.run(execution)])
+        cargs.extend(cerebellum_surfaces.run(execution))
     if opt_discard_distance_from_surface:
         cargs.append("-discard-distance-from-surface")
     if opt_restore_xyz:

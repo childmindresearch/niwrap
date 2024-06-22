@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_SCALAR_SERIES_METADATA = Metadata(
-    id="8b5bf707da034f5c7699e95b2e4ce6f6c2b6550b",
+    id="53f7833366eaf560f6acd4bdfc756970b56f128c",
     name="cifti-create-scalar-series",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -40,6 +40,7 @@ class CiftiCreateScalarSeriesSeries:
             
         """
         cargs = []
+        cargs.append("-series")
         cargs.append(self.unit)
         cargs.append(str(self.start))
         cargs.append(str(self.step))
@@ -104,7 +105,7 @@ def cifti_create_scalar_series(
     if opt_name_file_file is not None:
         cargs.extend(["-name-file", opt_name_file_file])
     if series is not None:
-        cargs.extend(["-series", *series.run(execution)])
+        cargs.extend(series.run(execution))
     ret = CiftiCreateScalarSeriesOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

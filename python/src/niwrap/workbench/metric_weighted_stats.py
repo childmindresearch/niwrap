@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_WEIGHTED_STATS_METADATA = Metadata(
-    id="709ae638fdaca690892bac15e423f1324ef7c733",
+    id="aa2b6347694fdb952619111f94dfadf74facf06d",
     name="metric-weighted-stats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class MetricWeightedStatsRoi:
             
         """
         cargs = []
+        cargs.append("-roi")
         cargs.append(execution.input_file(self.roi_metric))
         if self.opt_match_maps:
             cargs.append("-match-maps")
@@ -118,7 +119,7 @@ def metric_weighted_stats(
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     if roi is not None:
-        cargs.extend(["-roi", *roi.run(execution)])
+        cargs.extend(roi.run(execution))
     if opt_mean:
         cargs.append("-mean")
     if opt_stdev:

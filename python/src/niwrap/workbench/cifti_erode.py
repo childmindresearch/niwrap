@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_ERODE_METADATA = Metadata(
-    id="10ddc3bacd4b97d6890034d5779af3489a57d23c",
+    id="8c37d80eed4e28581f0a93bc7798d680591a6441",
     name="cifti-erode",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -39,6 +39,7 @@ class CiftiErodeLeftSurface:
             
         """
         cargs = []
+        cargs.append("-left-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_left_corrected_areas_area_metric is not None:
             cargs.extend(["-left-corrected-areas", execution.input_file(self.opt_left_corrected_areas_area_metric)])
@@ -70,6 +71,7 @@ class CiftiErodeRightSurface:
             
         """
         cargs = []
+        cargs.append("-right-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_right_corrected_areas_area_metric is not None:
             cargs.extend(["-right-corrected-areas", execution.input_file(self.opt_right_corrected_areas_area_metric)])
@@ -101,6 +103,7 @@ class CiftiErodeCerebellumSurface:
             
         """
         cargs = []
+        cargs.append("-cerebellum-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_cerebellum_corrected_areas_area_metric is not None:
             cargs.extend(["-cerebellum-corrected-areas", execution.input_file(self.opt_cerebellum_corrected_areas_area_metric)])
@@ -169,11 +172,11 @@ def cifti_erode(
     cargs.append(str(volume_distance))
     cargs.append(execution.input_file(cifti_out))
     if left_surface is not None:
-        cargs.extend(["-left-surface", *left_surface.run(execution)])
+        cargs.extend(left_surface.run(execution))
     if right_surface is not None:
-        cargs.extend(["-right-surface", *right_surface.run(execution)])
+        cargs.extend(right_surface.run(execution))
     if cerebellum_surface is not None:
-        cargs.extend(["-cerebellum-surface", *cerebellum_surface.run(execution)])
+        cargs.extend(cerebellum_surface.run(execution))
     if opt_merged_volume:
         cargs.append("-merged-volume")
     ret = CiftiErodeOutputs(

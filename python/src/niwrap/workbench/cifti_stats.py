@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_STATS_METADATA = Metadata(
-    id="ca61cef74501726c0fa9d6505293ac334724b3e7",
+    id="e57fbe9dd140aa906e12936fa3c388afd3106b24",
     name="cifti-stats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiStatsRoi:
             
         """
         cargs = []
+        cargs.append("-roi")
         cargs.append(execution.input_file(self.roi_cifti))
         if self.opt_match_maps:
             cargs.append("-match-maps")
@@ -120,7 +121,7 @@ def cifti_stats(
     if opt_column_column is not None:
         cargs.extend(["-column", str(opt_column_column)])
     if roi is not None:
-        cargs.extend(["-roi", *roi.run(execution)])
+        cargs.extend(roi.run(execution))
     if opt_show_map_name:
         cargs.append("-show-map-name")
     ret = CiftiStatsOutputs(

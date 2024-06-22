@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 WBSPARSE_MERGE_DENSE_METADATA = Metadata(
-    id="e3cdbfa7032c52bf5e08d597406862772c3bdfc9",
+    id="ba799e581550b63ddcd8563669e6c604bef3c89c",
     name="wbsparse-merge-dense",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -36,6 +36,7 @@ class WbsparseMergeDenseWbsparse:
             
         """
         cargs = []
+        cargs.append("-wbsparse")
         cargs.append(self.wbsparse_in)
         return cargs
 
@@ -79,7 +80,7 @@ def wbsparse_merge_dense(
     cargs.append(direction)
     cargs.append(wbsparse_out)
     if wbsparse is not None:
-        cargs.extend(["-wbsparse", *[a for c in [s.run(execution) for s in wbsparse] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in wbsparse] for a in c])
     ret = WbsparseMergeDenseOutputs(
         root=execution.output_file("."),
     )

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABEL_MERGE_METADATA = Metadata(
-    id="4541ed5d778b1f54a052bff50927eb569086f896",
+    id="43c4c45da0d797449b8ecbcc3859011e471a61bd",
     name="label-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class LabelMergeUpTo:
             
         """
         cargs = []
+        cargs.append("-up-to")
         cargs.append(self.last_column)
         if self.opt_reverse:
             cargs.append("-reverse")
@@ -68,9 +69,10 @@ class LabelMergeColumn:
             
         """
         cargs = []
+        cargs.append("-column")
         cargs.append(self.column_)
         if self.up_to is not None:
-            cargs.extend(["-up-to", *self.up_to.run(execution)])
+            cargs.extend(self.up_to.run(execution))
         return cargs
 
 
@@ -98,9 +100,10 @@ class LabelMergeLabel:
             
         """
         cargs = []
+        cargs.append("-label")
         cargs.append(execution.input_file(self.label_in))
         if self.column is not None:
-            cargs.extend(["-column", *[a for c in [s.run(execution) for s in self.column] for a in c]])
+            cargs.extend([a for c in [s.run(execution) for s in self.column] for a in c])
         return cargs
 
 
@@ -148,7 +151,7 @@ def label_merge(
     cargs.append("-label-merge")
     cargs.append(execution.input_file(label_out))
     if label is not None:
-        cargs.extend(["-label", *[a for c in [s.run(execution) for s in label] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in label] for a in c])
     ret = LabelMergeOutputs(
         root=execution.output_file("."),
         label_out=execution.output_file(f"{pathlib.Path(label_out).name}"),

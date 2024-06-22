@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABEL_RESAMPLE_METADATA = Metadata(
-    id="af6a129caa23453985bcfe18f6682ae38e3e8977",
+    id="1312739be366d168363473c048715f1d2d37085d",
     name="label-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class LabelResampleAreaSurfs:
             
         """
         cargs = []
+        cargs.append("-area-surfs")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -67,6 +68,7 @@ class LabelResampleAreaMetrics:
             
         """
         cargs = []
+        cargs.append("-area-metrics")
         cargs.append(execution.input_file(self.current_area))
         cargs.append(execution.input_file(self.new_area))
         return cargs
@@ -160,9 +162,9 @@ def label_resample(
     cargs.append(method)
     cargs.append(execution.input_file(label_out))
     if area_surfs is not None:
-        cargs.extend(["-area-surfs", *area_surfs.run(execution)])
+        cargs.extend(area_surfs.run(execution))
     if area_metrics is not None:
-        cargs.extend(["-area-metrics", *area_metrics.run(execution)])
+        cargs.extend(area_metrics.run(execution))
     if opt_current_roi_roi_metric is not None:
         cargs.extend(["-current-roi", execution.input_file(opt_current_roi_roi_metric)])
     if opt_valid_roi_out:

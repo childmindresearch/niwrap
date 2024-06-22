@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SURFACE_AVERAGE_METADATA = Metadata(
-    id="826f32a79c3176c6569d2d224ed402dcf0b28755",
+    id="e7efb628b09e6c6c657e0a5825b4bd2c7253a7be",
     name="surface-average",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class SurfaceAverageSurf:
             
         """
         cargs = []
+        cargs.append("-surf")
         cargs.append(execution.input_file(self.surface))
         if self.opt_weight_weight is not None:
             cargs.extend(["-weight", str(self.opt_weight_weight)])
@@ -105,7 +106,7 @@ def surface_average(
         cargs.append("-uncertainty")
     cargs.append(execution.input_file(uncert_metric_out))
     if surf is not None:
-        cargs.extend(["-surf", *[a for c in [s.run(execution) for s in surf] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in surf] for a in c])
     ret = SurfaceAverageOutputs(
         root=execution.output_file("."),
         surface_out=execution.output_file(f"{pathlib.Path(surface_out).name}"),

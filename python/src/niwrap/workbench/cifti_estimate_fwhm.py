@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_ESTIMATE_FWHM_METADATA = Metadata(
-    id="d0492f4d9b38de10d8d5e589cf53d73c874e7ad3",
+    id="3f401199353c91c4fe3b8e2765d5e3f0b7b271e1",
     name="cifti-estimate-fwhm",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiEstimateFwhmSurface:
             
         """
         cargs = []
+        cargs.append("-surface")
         cargs.append(self.structure)
         cargs.append(execution.input_file(self.surface_))
         return cargs
@@ -134,7 +135,7 @@ def cifti_estimate_fwhm(
     if opt_demean:
         cargs.append("-demean")
     if surface is not None:
-        cargs.extend(["-surface", *[a for c in [s.run(execution) for s in surface] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in surface] for a in c])
     ret = CiftiEstimateFwhmOutputs(
         root=execution.output_file("."),
     )

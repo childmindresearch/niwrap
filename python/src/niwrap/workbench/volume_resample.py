@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_RESAMPLE_METADATA = Metadata(
-    id="915434dd7ca93a7f665d5f166a22647f39b90d1c",
+    id="f1494a29b5262bbca91e4c89de39eed6b7cafc36",
     name="volume-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class VolumeResampleFlirt:
             
         """
         cargs = []
+        cargs.append("-flirt")
         cargs.append(self.source_volume)
         cargs.append(self.target_volume)
         return cargs
@@ -67,9 +68,10 @@ class VolumeResampleAffine:
             
         """
         cargs = []
+        cargs.append("-affine")
         cargs.append(self.affine_)
         if self.flirt is not None:
-            cargs.extend(["-flirt", *self.flirt.run(execution)])
+            cargs.extend(self.flirt.run(execution))
         return cargs
 
 
@@ -97,6 +99,7 @@ class VolumeResampleFlirt_:
             
         """
         cargs = []
+        cargs.append("-flirt")
         cargs.append(self.source_volume)
         cargs.append(self.target_volume)
         return cargs
@@ -127,9 +130,10 @@ class VolumeResampleAffineSeries:
             
         """
         cargs = []
+        cargs.append("-affine-series")
         cargs.append(self.affine_series_)
         if self.flirt is not None:
-            cargs.extend(["-flirt", *self.flirt.run(execution)])
+            cargs.extend(self.flirt.run(execution))
         return cargs
 
 
@@ -158,6 +162,7 @@ class VolumeResampleWarp:
             
         """
         cargs = []
+        cargs.append("-warp")
         cargs.append(self.warpfield)
         if self.opt_fnirt_source_volume is not None:
             cargs.extend(["-fnirt", self.opt_fnirt_source_volume])
@@ -223,11 +228,11 @@ def volume_resample(
     cargs.append(method)
     cargs.append(execution.input_file(volume_out))
     if affine is not None:
-        cargs.extend(["-affine", *[a for c in [s.run(execution) for s in affine] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in affine] for a in c])
     if affine_series is not None:
-        cargs.extend(["-affine-series", *[a for c in [s.run(execution) for s in affine_series] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in affine_series] for a in c])
     if warp is not None:
-        cargs.extend(["-warp", *[a for c in [s.run(execution) for s in warp] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in warp] for a in c])
     ret = VolumeResampleOutputs(
         root=execution.output_file("."),
         volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),

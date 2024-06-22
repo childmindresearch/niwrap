@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SCENE_FILE_UPDATE_METADATA = Metadata(
-    id="b05b57e68eb8c8f0ba0200efab683c3e4c70253d",
+    id="c5e4fa57c7b59dd4f2a6a3b6569ec0c40180d14c",
     name="scene-file-update",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -36,6 +36,7 @@ class SceneFileUpdateCopyMapOnePalette:
             
         """
         cargs = []
+        cargs.append("-copy-map-one-palette")
         cargs.append(self.data_file_name_suffix)
         return cargs
 
@@ -68,6 +69,7 @@ class SceneFileUpdateDataFileAdd:
             
         """
         cargs = []
+        cargs.append("-data-file-add")
         cargs.append(self.name_of_data_file)
         return cargs
 
@@ -100,6 +102,7 @@ class SceneFileUpdateDataFileRemove:
             
         """
         cargs = []
+        cargs.append("-data-file-remove")
         cargs.append(self.name_of_data_file)
         return cargs
 
@@ -194,11 +197,11 @@ def scene_file_update(
     if opt_verbose:
         cargs.append("-verbose")
     if copy_map_one_palette is not None:
-        cargs.extend(["-copy-map-one-palette", *[a for c in [s.run(execution) for s in copy_map_one_palette] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in copy_map_one_palette] for a in c])
     if data_file_add is not None:
-        cargs.extend(["-data-file-add", *[a for c in [s.run(execution) for s in data_file_add] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in data_file_add] for a in c])
     if data_file_remove is not None:
-        cargs.extend(["-data-file-remove", *[a for c in [s.run(execution) for s in data_file_remove] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in data_file_remove] for a in c])
     ret = SceneFileUpdateOutputs(
         root=execution.output_file("."),
     )

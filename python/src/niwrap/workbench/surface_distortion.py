@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SURFACE_DISTORTION_METADATA = Metadata(
-    id="1f09b67bcd558e46f200f7c962c5c3ab9c40ea7f",
+    id="fa3ebce6242aca43307d3c4beafc9c221bf8d46d",
     name="surface-distortion",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class SurfaceDistortionSmooth:
             
         """
         cargs = []
+        cargs.append("-smooth")
         cargs.append(str(self.sigma))
         if self.opt_fwhm:
             cargs.append("-fwhm")
@@ -113,7 +114,7 @@ def surface_distortion(
     cargs.append(execution.input_file(surface_distorted))
     cargs.append(execution.input_file(metric_out))
     if smooth is not None:
-        cargs.extend(["-smooth", *smooth.run(execution)])
+        cargs.extend(smooth.run(execution))
     if opt_caret5_method:
         cargs.append("-caret5-method")
     if opt_edge_method:

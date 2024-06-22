@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 ANNOTATION_RESAMPLE_METADATA = Metadata(
-    id="267ea7b4119aeb12fe6426d300f098d0b2d69e66",
+    id="221fd0b917c6721b1765d186d19afe50cd08ce88",
     name="annotation-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -39,6 +39,7 @@ class AnnotationResampleSurfacePair:
             
         """
         cargs = []
+        cargs.append("-surface-pair")
         cargs.append(execution.input_file(self.source_surface))
         cargs.append(execution.input_file(self.target_surface))
         return cargs
@@ -86,7 +87,7 @@ def annotation_resample(
     cargs.append(execution.input_file(annotation_in))
     cargs.append(annotation_out)
     if surface_pair is not None:
-        cargs.extend(["-surface-pair", *[a for c in [s.run(execution) for s in surface_pair] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in surface_pair] for a in c])
     ret = AnnotationResampleOutputs(
         root=execution.output_file("."),
     )

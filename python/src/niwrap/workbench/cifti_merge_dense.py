@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_MERGE_DENSE_METADATA = Metadata(
-    id="bd8b1472ee670b2c438438dc2d0b5f9b9d153905",
+    id="936b05d93b82f4e944978c45bf9e62cb78a8acdf",
     name="cifti-merge-dense",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -36,6 +36,7 @@ class CiftiMergeDenseCifti:
             
         """
         cargs = []
+        cargs.append("-cifti")
         cargs.append(execution.input_file(self.cifti_in))
         return cargs
 
@@ -87,7 +88,7 @@ def cifti_merge_dense(
     if opt_label_collision_action is not None:
         cargs.extend(["-label-collision", opt_label_collision_action])
     if cifti is not None:
-        cargs.extend(["-cifti", *[a for c in [s.run(execution) for s in cifti] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
     ret = CiftiMergeDenseOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),

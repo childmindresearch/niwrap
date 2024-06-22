@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_ROIS_FROM_EXTREMA_METADATA = Metadata(
-    id="14e9924f18969621953fd5d0ee4fbc8716e2a279",
+    id="46ea2bd0f404cabfbaccf60ddd003c3025484941",
     name="cifti-rois-from-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class CiftiRoisFromExtremaGaussian:
             
         """
         cargs = []
+        cargs.append("-gaussian")
         cargs.append(str(self.surf_sigma))
         cargs.append(str(self.vol_sigma))
         return cargs
@@ -119,7 +120,7 @@ def cifti_rois_from_extrema(
     if opt_cerebellum_surface_surface is not None:
         cargs.extend(["-cerebellum-surface", execution.input_file(opt_cerebellum_surface_surface)])
     if gaussian is not None:
-        cargs.extend(["-gaussian", *gaussian.run(execution)])
+        cargs.extend(gaussian.run(execution))
     if opt_overlap_logic_method is not None:
         cargs.extend(["-overlap-logic", opt_overlap_logic_method])
     if opt_merged_volume:

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_DILATE_METADATA = Metadata(
-    id="6c6b5c1507376970df3dd4bddbff745d66af9886",
+    id="e512d11a4fe60b0e9589139cea8a9f67f23cde02",
     name="volume-dilate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class VolumeDilatePresmooth:
             
         """
         cargs = []
+        cargs.append("-presmooth")
         cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
@@ -138,7 +139,7 @@ def volume_dilate(
     if opt_grad_extrapolate:
         cargs.append("-grad-extrapolate")
     if presmooth is not None:
-        cargs.extend(["-presmooth", *presmooth.run(execution)])
+        cargs.extend(presmooth.run(execution))
     ret = VolumeDilateOutputs(
         root=execution.output_file("."),
         volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_DILATE_METADATA = Metadata(
-    id="424f986951d307c9c8524617bd5d5b1d6d34b59f",
+    id="c7eeb58bdb557a6a4589faa458e9e1f3cffe8c23",
     name="cifti-dilate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -39,6 +39,7 @@ class CiftiDilateLeftSurface:
             
         """
         cargs = []
+        cargs.append("-left-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_left_corrected_areas_area_metric is not None:
             cargs.extend(["-left-corrected-areas", execution.input_file(self.opt_left_corrected_areas_area_metric)])
@@ -70,6 +71,7 @@ class CiftiDilateRightSurface:
             
         """
         cargs = []
+        cargs.append("-right-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_right_corrected_areas_area_metric is not None:
             cargs.extend(["-right-corrected-areas", execution.input_file(self.opt_right_corrected_areas_area_metric)])
@@ -101,6 +103,7 @@ class CiftiDilateCerebellumSurface:
             
         """
         cargs = []
+        cargs.append("-cerebellum-surface")
         cargs.append(execution.input_file(self.surface))
         if self.opt_cerebellum_corrected_areas_area_metric is not None:
             cargs.extend(["-cerebellum-corrected-areas", execution.input_file(self.opt_cerebellum_corrected_areas_area_metric)])
@@ -185,11 +188,11 @@ def cifti_dilate(
     cargs.append(str(volume_distance))
     cargs.append(execution.input_file(cifti_out))
     if left_surface is not None:
-        cargs.extend(["-left-surface", *left_surface.run(execution)])
+        cargs.extend(left_surface.run(execution))
     if right_surface is not None:
-        cargs.extend(["-right-surface", *right_surface.run(execution)])
+        cargs.extend(right_surface.run(execution))
     if cerebellum_surface is not None:
-        cargs.extend(["-cerebellum-surface", *cerebellum_surface.run(execution)])
+        cargs.extend(cerebellum_surface.run(execution))
     if opt_bad_brainordinate_roi_roi_cifti is not None:
         cargs.extend(["-bad-brainordinate-roi", execution.input_file(opt_bad_brainordinate_roi_roi_cifti)])
     if opt_nearest:

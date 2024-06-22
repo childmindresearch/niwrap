@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SET_MAP_NAMES_METADATA = Metadata(
-    id="ac8dc0e0f0c553da4ad6f116f12e232d24580490",
+    id="efa721ec9a8a1ad80ac3192074ef6edf636fc1fe",
     name="set-map-names",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,6 +38,7 @@ class SetMapNamesMap:
             
         """
         cargs = []
+        cargs.append("-map")
         cargs.append(str(self.index))
         cargs.append(self.new_name)
         return cargs
@@ -90,7 +91,7 @@ def set_map_names(
     if opt_from_data_file_file is not None:
         cargs.extend(["-from-data-file", opt_from_data_file_file])
     if map_ is not None:
-        cargs.extend(["-map", *[a for c in [s.run(execution) for s in map_] for a in c]])
+        cargs.extend([a for c in [s.run(execution) for s in map_] for a in c])
     ret = SetMapNamesOutputs(
         root=execution.output_file("."),
     )
