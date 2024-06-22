@@ -135,7 +135,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">LABEL_MERGE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4541ed5d778b1f54a052bff50927eb569086f896&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;43c4c45da0d797449b8ecbcc3859011e471a61bd&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;label-merge&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;fcpindi/c-pac:latest&quot;</span><span class="p">,</span>
@@ -166,133 +166,136 @@
 </span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">            </span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_column</span><span class="p">)</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-up-to&quot;</span><span class="p">)</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_column</span><span class="p">)</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="k">class</span> <span class="nc">LabelMergeColumn</span><span class="p">:</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    select a single column to use</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>    <span class="n">column_</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the column number or name&quot;&quot;&quot;</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">LabelMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of columns&quot;&quot;&quot;</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        </span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        Args:</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        Returns:</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">            </span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column_</span><span class="p">)</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="k">class</span> <span class="nc">LabelMergeLabel</span><span class="p">:</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    specify an input label</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">label_in</span><span class="p">:</span> <span class="n">InputPathType</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;a label file to use columns from&quot;&quot;&quot;</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeColumn</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;select a single column to use&quot;&quot;&quot;</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        </span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        Args:</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        Returns:</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            </span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label_in</span><span class="p">))</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-column&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="k">class</span> <span class="nc">LabelMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    Output object returned when calling `label_merge(...)`.</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output label&quot;&quot;&quot;</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="k">def</span> <span class="nf">label_merge</span><span class="p">(</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeLabel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelMergeOutputs</span><span class="p">:</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    label-merge by Washington University School of Medicin.</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">    </span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">    Merge label files into a new file.</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">    </span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">    Takes one or more label files and constructs a new label file by</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">    concatenating columns from them. The input files must have the same number</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">    of vertices and the same structure.</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">    </span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    Example: wb_command -label-merge out.label.gii -label first.label.gii</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    -column 1 -label second.label.gii</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="k">class</span> <span class="nc">LabelMergeColumn</span><span class="p">:</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    select a single column to use</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>    <span class="n">column_</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the column number or name&quot;&quot;&quot;</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">LabelMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of columns&quot;&quot;&quot;</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        </span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        Args:</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        Returns:</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">            </span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-column&quot;</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column_</span><span class="p">)</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="k">class</span> <span class="nc">LabelMergeLabel</span><span class="p">:</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    specify an input label</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">label_in</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;a label file to use columns from&quot;&quot;&quot;</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeColumn</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;select a single column to use&quot;&quot;&quot;</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        </span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        Args:</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        Returns:</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">            </span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label&quot;</span><span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label_in</span><span class="p">))</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="k">class</span> <span class="nc">LabelMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    Output object returned when calling `label_merge(...)`.</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output label&quot;&quot;&quot;</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="k">def</span> <span class="nf">label_merge</span><span class="p">(</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeLabel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelMergeOutputs</span><span class="p">:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">    label-merge by Washington University School of Medicin.</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">    </span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">    Merge label files into a new file.</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">    </span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">    Takes one or more label files and constructs a new label file by</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    concatenating columns from them. The input files must have the same number</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    of vertices and the same structure.</span>
 </span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    </span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    This example would take the first column from first.label.gii and all</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    subvolumes from second.label.gii, and write these to out.label.gii.</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    Example: wb_command -label-merge out.label.gii -label first.label.gii</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    -column 1 -label second.label.gii</span>
 </span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    </span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    Args:</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">        label_out: the output label.</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        label: specify an input label.</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    Returns:</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">        NamedTuple of outputs (described in `LabelMergeOutputs`).</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_MERGE_METADATA</span><span class="p">)</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-merge&quot;</span><span class="p">)</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label_out</span><span class="p">))</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-label&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelMergeOutputs</span><span class="p">(</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">label_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">label_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="p">)</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="s2">&quot;LABEL_MERGE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="s2">&quot;LabelMergeColumn&quot;</span><span class="p">,</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="s2">&quot;LabelMergeLabel&quot;</span><span class="p">,</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="s2">&quot;LabelMergeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="s2">&quot;LabelMergeUpTo&quot;</span><span class="p">,</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="s2">&quot;label_merge&quot;</span><span class="p">,</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="p">]</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    This example would take the first column from first.label.gii and all</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">    subvolumes from second.label.gii, and write these to out.label.gii.</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">    </span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">    Args:</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">        label_out: the output label.</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">        label: specify an input label.</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    Returns:</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">        NamedTuple of outputs (described in `LabelMergeOutputs`).</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_MERGE_METADATA</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-merge&quot;</span><span class="p">)</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label_out</span><span class="p">))</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelMergeOutputs</span><span class="p">(</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">label_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">label_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="p">)</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="s2">&quot;LABEL_MERGE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="s2">&quot;LabelMergeColumn&quot;</span><span class="p">,</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="s2">&quot;LabelMergeLabel&quot;</span><span class="p">,</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="s2">&quot;LabelMergeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="s2">&quot;LabelMergeUpTo&quot;</span><span class="p">,</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="s2">&quot;label_merge&quot;</span><span class="p">,</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -301,7 +304,7 @@
                     <div class="attr variable">
             <span class="name">LABEL_MERGE_METADATA</span>        =
 <input id="LABEL_MERGE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="LABEL_MERGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4541ed5d778b1f54a052bff50927eb569086f896&#39;, name=&#39;label-merge&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="LABEL_MERGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;43c4c45da0d797449b8ecbcc3859011e471a61bd&#39;, name=&#39;label-merge&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -322,34 +325,35 @@
 
     </div>
     <a class="headerlink" href="#LabelMergeColumn"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="LabelMergeColumn-48"><a href="#LabelMergeColumn-48"><span class="linenos">48</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="LabelMergeColumn-49"><a href="#LabelMergeColumn-49"><span class="linenos">49</span></a><span class="k">class</span> <span class="nc">LabelMergeColumn</span><span class="p">:</span>
-</span><span id="LabelMergeColumn-50"><a href="#LabelMergeColumn-50"><span class="linenos">50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="LabelMergeColumn-51"><a href="#LabelMergeColumn-51"><span class="linenos">51</span></a><span class="sd">    select a single column to use</span>
-</span><span id="LabelMergeColumn-52"><a href="#LabelMergeColumn-52"><span class="linenos">52</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="LabelMergeColumn-53"><a href="#LabelMergeColumn-53"><span class="linenos">53</span></a>    <span class="n">column_</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="LabelMergeColumn-54"><a href="#LabelMergeColumn-54"><span class="linenos">54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the column number or name&quot;&quot;&quot;</span>
-</span><span id="LabelMergeColumn-55"><a href="#LabelMergeColumn-55"><span class="linenos">55</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">LabelMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="LabelMergeColumn-56"><a href="#LabelMergeColumn-56"><span class="linenos">56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of columns&quot;&quot;&quot;</span>
-</span><span id="LabelMergeColumn-57"><a href="#LabelMergeColumn-57"><span class="linenos">57</span></a>    
-</span><span id="LabelMergeColumn-58"><a href="#LabelMergeColumn-58"><span class="linenos">58</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="LabelMergeColumn-59"><a href="#LabelMergeColumn-59"><span class="linenos">59</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="LabelMergeColumn-60"><a href="#LabelMergeColumn-60"><span class="linenos">60</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="LabelMergeColumn-61"><a href="#LabelMergeColumn-61"><span class="linenos">61</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="LabelMergeColumn-62"><a href="#LabelMergeColumn-62"><span class="linenos">62</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="LabelMergeColumn-63"><a href="#LabelMergeColumn-63"><span class="linenos">63</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="LabelMergeColumn-64"><a href="#LabelMergeColumn-64"><span class="linenos">64</span></a><span class="sd">        </span>
-</span><span id="LabelMergeColumn-65"><a href="#LabelMergeColumn-65"><span class="linenos">65</span></a><span class="sd">        Args:</span>
-</span><span id="LabelMergeColumn-66"><a href="#LabelMergeColumn-66"><span class="linenos">66</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="LabelMergeColumn-67"><a href="#LabelMergeColumn-67"><span class="linenos">67</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="LabelMergeColumn-68"><a href="#LabelMergeColumn-68"><span class="linenos">68</span></a><span class="sd">        Returns:</span>
-</span><span id="LabelMergeColumn-69"><a href="#LabelMergeColumn-69"><span class="linenos">69</span></a><span class="sd">            </span>
-</span><span id="LabelMergeColumn-70"><a href="#LabelMergeColumn-70"><span class="linenos">70</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="LabelMergeColumn-71"><a href="#LabelMergeColumn-71"><span class="linenos">71</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="LabelMergeColumn-72"><a href="#LabelMergeColumn-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column_</span><span class="p">)</span>
-</span><span id="LabelMergeColumn-73"><a href="#LabelMergeColumn-73"><span class="linenos">73</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="LabelMergeColumn-74"><a href="#LabelMergeColumn-74"><span class="linenos">74</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="LabelMergeColumn-75"><a href="#LabelMergeColumn-75"><span class="linenos">75</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="LabelMergeColumn-49"><a href="#LabelMergeColumn-49"><span class="linenos">49</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="LabelMergeColumn-50"><a href="#LabelMergeColumn-50"><span class="linenos">50</span></a><span class="k">class</span> <span class="nc">LabelMergeColumn</span><span class="p">:</span>
+</span><span id="LabelMergeColumn-51"><a href="#LabelMergeColumn-51"><span class="linenos">51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="LabelMergeColumn-52"><a href="#LabelMergeColumn-52"><span class="linenos">52</span></a><span class="sd">    select a single column to use</span>
+</span><span id="LabelMergeColumn-53"><a href="#LabelMergeColumn-53"><span class="linenos">53</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="LabelMergeColumn-54"><a href="#LabelMergeColumn-54"><span class="linenos">54</span></a>    <span class="n">column_</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="LabelMergeColumn-55"><a href="#LabelMergeColumn-55"><span class="linenos">55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the column number or name&quot;&quot;&quot;</span>
+</span><span id="LabelMergeColumn-56"><a href="#LabelMergeColumn-56"><span class="linenos">56</span></a>    <span class="n">up_to</span><span class="p">:</span> <span class="n">LabelMergeUpTo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="LabelMergeColumn-57"><a href="#LabelMergeColumn-57"><span class="linenos">57</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;use an inclusive range of columns&quot;&quot;&quot;</span>
+</span><span id="LabelMergeColumn-58"><a href="#LabelMergeColumn-58"><span class="linenos">58</span></a>    
+</span><span id="LabelMergeColumn-59"><a href="#LabelMergeColumn-59"><span class="linenos">59</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="LabelMergeColumn-60"><a href="#LabelMergeColumn-60"><span class="linenos">60</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="LabelMergeColumn-61"><a href="#LabelMergeColumn-61"><span class="linenos">61</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="LabelMergeColumn-62"><a href="#LabelMergeColumn-62"><span class="linenos">62</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="LabelMergeColumn-63"><a href="#LabelMergeColumn-63"><span class="linenos">63</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="LabelMergeColumn-64"><a href="#LabelMergeColumn-64"><span class="linenos">64</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="LabelMergeColumn-65"><a href="#LabelMergeColumn-65"><span class="linenos">65</span></a><span class="sd">        </span>
+</span><span id="LabelMergeColumn-66"><a href="#LabelMergeColumn-66"><span class="linenos">66</span></a><span class="sd">        Args:</span>
+</span><span id="LabelMergeColumn-67"><a href="#LabelMergeColumn-67"><span class="linenos">67</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="LabelMergeColumn-68"><a href="#LabelMergeColumn-68"><span class="linenos">68</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="LabelMergeColumn-69"><a href="#LabelMergeColumn-69"><span class="linenos">69</span></a><span class="sd">        Returns:</span>
+</span><span id="LabelMergeColumn-70"><a href="#LabelMergeColumn-70"><span class="linenos">70</span></a><span class="sd">            </span>
+</span><span id="LabelMergeColumn-71"><a href="#LabelMergeColumn-71"><span class="linenos">71</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="LabelMergeColumn-72"><a href="#LabelMergeColumn-72"><span class="linenos">72</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="LabelMergeColumn-73"><a href="#LabelMergeColumn-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-column&quot;</span><span class="p">)</span>
+</span><span id="LabelMergeColumn-74"><a href="#LabelMergeColumn-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column_</span><span class="p">)</span>
+</span><span id="LabelMergeColumn-75"><a href="#LabelMergeColumn-75"><span class="linenos">75</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="LabelMergeColumn-76"><a href="#LabelMergeColumn-76"><span class="linenos">76</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="LabelMergeColumn-77"><a href="#LabelMergeColumn-77"><span class="linenos">77</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -407,24 +411,25 @@
 
     </div>
     <a class="headerlink" href="#LabelMergeColumn.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="LabelMergeColumn.run-58"><a href="#LabelMergeColumn.run-58"><span class="linenos">58</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="LabelMergeColumn.run-59"><a href="#LabelMergeColumn.run-59"><span class="linenos">59</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="LabelMergeColumn.run-60"><a href="#LabelMergeColumn.run-60"><span class="linenos">60</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="LabelMergeColumn.run-61"><a href="#LabelMergeColumn.run-61"><span class="linenos">61</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="LabelMergeColumn.run-62"><a href="#LabelMergeColumn.run-62"><span class="linenos">62</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="LabelMergeColumn.run-63"><a href="#LabelMergeColumn.run-63"><span class="linenos">63</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="LabelMergeColumn.run-64"><a href="#LabelMergeColumn.run-64"><span class="linenos">64</span></a><span class="sd">        </span>
-</span><span id="LabelMergeColumn.run-65"><a href="#LabelMergeColumn.run-65"><span class="linenos">65</span></a><span class="sd">        Args:</span>
-</span><span id="LabelMergeColumn.run-66"><a href="#LabelMergeColumn.run-66"><span class="linenos">66</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="LabelMergeColumn.run-67"><a href="#LabelMergeColumn.run-67"><span class="linenos">67</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="LabelMergeColumn.run-68"><a href="#LabelMergeColumn.run-68"><span class="linenos">68</span></a><span class="sd">        Returns:</span>
-</span><span id="LabelMergeColumn.run-69"><a href="#LabelMergeColumn.run-69"><span class="linenos">69</span></a><span class="sd">            </span>
-</span><span id="LabelMergeColumn.run-70"><a href="#LabelMergeColumn.run-70"><span class="linenos">70</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="LabelMergeColumn.run-71"><a href="#LabelMergeColumn.run-71"><span class="linenos">71</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="LabelMergeColumn.run-72"><a href="#LabelMergeColumn.run-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column_</span><span class="p">)</span>
-</span><span id="LabelMergeColumn.run-73"><a href="#LabelMergeColumn.run-73"><span class="linenos">73</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="LabelMergeColumn.run-74"><a href="#LabelMergeColumn.run-74"><span class="linenos">74</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-up-to&quot;</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="LabelMergeColumn.run-75"><a href="#LabelMergeColumn.run-75"><span class="linenos">75</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="LabelMergeColumn.run-59"><a href="#LabelMergeColumn.run-59"><span class="linenos">59</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="LabelMergeColumn.run-60"><a href="#LabelMergeColumn.run-60"><span class="linenos">60</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="LabelMergeColumn.run-61"><a href="#LabelMergeColumn.run-61"><span class="linenos">61</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="LabelMergeColumn.run-62"><a href="#LabelMergeColumn.run-62"><span class="linenos">62</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="LabelMergeColumn.run-63"><a href="#LabelMergeColumn.run-63"><span class="linenos">63</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="LabelMergeColumn.run-64"><a href="#LabelMergeColumn.run-64"><span class="linenos">64</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="LabelMergeColumn.run-65"><a href="#LabelMergeColumn.run-65"><span class="linenos">65</span></a><span class="sd">        </span>
+</span><span id="LabelMergeColumn.run-66"><a href="#LabelMergeColumn.run-66"><span class="linenos">66</span></a><span class="sd">        Args:</span>
+</span><span id="LabelMergeColumn.run-67"><a href="#LabelMergeColumn.run-67"><span class="linenos">67</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="LabelMergeColumn.run-68"><a href="#LabelMergeColumn.run-68"><span class="linenos">68</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="LabelMergeColumn.run-69"><a href="#LabelMergeColumn.run-69"><span class="linenos">69</span></a><span class="sd">        Returns:</span>
+</span><span id="LabelMergeColumn.run-70"><a href="#LabelMergeColumn.run-70"><span class="linenos">70</span></a><span class="sd">            </span>
+</span><span id="LabelMergeColumn.run-71"><a href="#LabelMergeColumn.run-71"><span class="linenos">71</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="LabelMergeColumn.run-72"><a href="#LabelMergeColumn.run-72"><span class="linenos">72</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="LabelMergeColumn.run-73"><a href="#LabelMergeColumn.run-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-column&quot;</span><span class="p">)</span>
+</span><span id="LabelMergeColumn.run-74"><a href="#LabelMergeColumn.run-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column_</span><span class="p">)</span>
+</span><span id="LabelMergeColumn.run-75"><a href="#LabelMergeColumn.run-75"><span class="linenos">75</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="LabelMergeColumn.run-76"><a href="#LabelMergeColumn.run-76"><span class="linenos">76</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">up_to</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="LabelMergeColumn.run-77"><a href="#LabelMergeColumn.run-77"><span class="linenos">77</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -455,34 +460,35 @@
 
     </div>
     <a class="headerlink" href="#LabelMergeLabel"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="LabelMergeLabel-78"><a href="#LabelMergeLabel-78"><span class="linenos"> 78</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="LabelMergeLabel-79"><a href="#LabelMergeLabel-79"><span class="linenos"> 79</span></a><span class="k">class</span> <span class="nc">LabelMergeLabel</span><span class="p">:</span>
-</span><span id="LabelMergeLabel-80"><a href="#LabelMergeLabel-80"><span class="linenos"> 80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="LabelMergeLabel-81"><a href="#LabelMergeLabel-81"><span class="linenos"> 81</span></a><span class="sd">    specify an input label</span>
-</span><span id="LabelMergeLabel-82"><a href="#LabelMergeLabel-82"><span class="linenos"> 82</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="LabelMergeLabel-83"><a href="#LabelMergeLabel-83"><span class="linenos"> 83</span></a>    <span class="n">label_in</span><span class="p">:</span> <span class="n">InputPathType</span>
-</span><span id="LabelMergeLabel-84"><a href="#LabelMergeLabel-84"><span class="linenos"> 84</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;a label file to use columns from&quot;&quot;&quot;</span>
-</span><span id="LabelMergeLabel-85"><a href="#LabelMergeLabel-85"><span class="linenos"> 85</span></a>    <span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeColumn</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="LabelMergeLabel-86"><a href="#LabelMergeLabel-86"><span class="linenos"> 86</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;select a single column to use&quot;&quot;&quot;</span>
-</span><span id="LabelMergeLabel-87"><a href="#LabelMergeLabel-87"><span class="linenos"> 87</span></a>    
-</span><span id="LabelMergeLabel-88"><a href="#LabelMergeLabel-88"><span class="linenos"> 88</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="LabelMergeLabel-89"><a href="#LabelMergeLabel-89"><span class="linenos"> 89</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="LabelMergeLabel-90"><a href="#LabelMergeLabel-90"><span class="linenos"> 90</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="LabelMergeLabel-91"><a href="#LabelMergeLabel-91"><span class="linenos"> 91</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="LabelMergeLabel-92"><a href="#LabelMergeLabel-92"><span class="linenos"> 92</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="LabelMergeLabel-93"><a href="#LabelMergeLabel-93"><span class="linenos"> 93</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="LabelMergeLabel-94"><a href="#LabelMergeLabel-94"><span class="linenos"> 94</span></a><span class="sd">        </span>
-</span><span id="LabelMergeLabel-95"><a href="#LabelMergeLabel-95"><span class="linenos"> 95</span></a><span class="sd">        Args:</span>
-</span><span id="LabelMergeLabel-96"><a href="#LabelMergeLabel-96"><span class="linenos"> 96</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="LabelMergeLabel-97"><a href="#LabelMergeLabel-97"><span class="linenos"> 97</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="LabelMergeLabel-98"><a href="#LabelMergeLabel-98"><span class="linenos"> 98</span></a><span class="sd">        Returns:</span>
-</span><span id="LabelMergeLabel-99"><a href="#LabelMergeLabel-99"><span class="linenos"> 99</span></a><span class="sd">            </span>
-</span><span id="LabelMergeLabel-100"><a href="#LabelMergeLabel-100"><span class="linenos">100</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="LabelMergeLabel-101"><a href="#LabelMergeLabel-101"><span class="linenos">101</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="LabelMergeLabel-102"><a href="#LabelMergeLabel-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label_in</span><span class="p">))</span>
-</span><span id="LabelMergeLabel-103"><a href="#LabelMergeLabel-103"><span class="linenos">103</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="LabelMergeLabel-104"><a href="#LabelMergeLabel-104"><span class="linenos">104</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-column&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="LabelMergeLabel-105"><a href="#LabelMergeLabel-105"><span class="linenos">105</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="LabelMergeLabel-80"><a href="#LabelMergeLabel-80"><span class="linenos"> 80</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="LabelMergeLabel-81"><a href="#LabelMergeLabel-81"><span class="linenos"> 81</span></a><span class="k">class</span> <span class="nc">LabelMergeLabel</span><span class="p">:</span>
+</span><span id="LabelMergeLabel-82"><a href="#LabelMergeLabel-82"><span class="linenos"> 82</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="LabelMergeLabel-83"><a href="#LabelMergeLabel-83"><span class="linenos"> 83</span></a><span class="sd">    specify an input label</span>
+</span><span id="LabelMergeLabel-84"><a href="#LabelMergeLabel-84"><span class="linenos"> 84</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="LabelMergeLabel-85"><a href="#LabelMergeLabel-85"><span class="linenos"> 85</span></a>    <span class="n">label_in</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="LabelMergeLabel-86"><a href="#LabelMergeLabel-86"><span class="linenos"> 86</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;a label file to use columns from&quot;&quot;&quot;</span>
+</span><span id="LabelMergeLabel-87"><a href="#LabelMergeLabel-87"><span class="linenos"> 87</span></a>    <span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeColumn</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="LabelMergeLabel-88"><a href="#LabelMergeLabel-88"><span class="linenos"> 88</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;select a single column to use&quot;&quot;&quot;</span>
+</span><span id="LabelMergeLabel-89"><a href="#LabelMergeLabel-89"><span class="linenos"> 89</span></a>    
+</span><span id="LabelMergeLabel-90"><a href="#LabelMergeLabel-90"><span class="linenos"> 90</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="LabelMergeLabel-91"><a href="#LabelMergeLabel-91"><span class="linenos"> 91</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="LabelMergeLabel-92"><a href="#LabelMergeLabel-92"><span class="linenos"> 92</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="LabelMergeLabel-93"><a href="#LabelMergeLabel-93"><span class="linenos"> 93</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="LabelMergeLabel-94"><a href="#LabelMergeLabel-94"><span class="linenos"> 94</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="LabelMergeLabel-95"><a href="#LabelMergeLabel-95"><span class="linenos"> 95</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="LabelMergeLabel-96"><a href="#LabelMergeLabel-96"><span class="linenos"> 96</span></a><span class="sd">        </span>
+</span><span id="LabelMergeLabel-97"><a href="#LabelMergeLabel-97"><span class="linenos"> 97</span></a><span class="sd">        Args:</span>
+</span><span id="LabelMergeLabel-98"><a href="#LabelMergeLabel-98"><span class="linenos"> 98</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="LabelMergeLabel-99"><a href="#LabelMergeLabel-99"><span class="linenos"> 99</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="LabelMergeLabel-100"><a href="#LabelMergeLabel-100"><span class="linenos">100</span></a><span class="sd">        Returns:</span>
+</span><span id="LabelMergeLabel-101"><a href="#LabelMergeLabel-101"><span class="linenos">101</span></a><span class="sd">            </span>
+</span><span id="LabelMergeLabel-102"><a href="#LabelMergeLabel-102"><span class="linenos">102</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="LabelMergeLabel-103"><a href="#LabelMergeLabel-103"><span class="linenos">103</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="LabelMergeLabel-104"><a href="#LabelMergeLabel-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label&quot;</span><span class="p">)</span>
+</span><span id="LabelMergeLabel-105"><a href="#LabelMergeLabel-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label_in</span><span class="p">))</span>
+</span><span id="LabelMergeLabel-106"><a href="#LabelMergeLabel-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="LabelMergeLabel-107"><a href="#LabelMergeLabel-107"><span class="linenos">107</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="LabelMergeLabel-108"><a href="#LabelMergeLabel-108"><span class="linenos">108</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -540,24 +546,25 @@
 
     </div>
     <a class="headerlink" href="#LabelMergeLabel.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="LabelMergeLabel.run-88"><a href="#LabelMergeLabel.run-88"><span class="linenos"> 88</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="LabelMergeLabel.run-89"><a href="#LabelMergeLabel.run-89"><span class="linenos"> 89</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="LabelMergeLabel.run-90"><a href="#LabelMergeLabel.run-90"><span class="linenos"> 90</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="LabelMergeLabel.run-91"><a href="#LabelMergeLabel.run-91"><span class="linenos"> 91</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="LabelMergeLabel.run-92"><a href="#LabelMergeLabel.run-92"><span class="linenos"> 92</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="LabelMergeLabel.run-93"><a href="#LabelMergeLabel.run-93"><span class="linenos"> 93</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="LabelMergeLabel.run-94"><a href="#LabelMergeLabel.run-94"><span class="linenos"> 94</span></a><span class="sd">        </span>
-</span><span id="LabelMergeLabel.run-95"><a href="#LabelMergeLabel.run-95"><span class="linenos"> 95</span></a><span class="sd">        Args:</span>
-</span><span id="LabelMergeLabel.run-96"><a href="#LabelMergeLabel.run-96"><span class="linenos"> 96</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="LabelMergeLabel.run-97"><a href="#LabelMergeLabel.run-97"><span class="linenos"> 97</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="LabelMergeLabel.run-98"><a href="#LabelMergeLabel.run-98"><span class="linenos"> 98</span></a><span class="sd">        Returns:</span>
-</span><span id="LabelMergeLabel.run-99"><a href="#LabelMergeLabel.run-99"><span class="linenos"> 99</span></a><span class="sd">            </span>
-</span><span id="LabelMergeLabel.run-100"><a href="#LabelMergeLabel.run-100"><span class="linenos">100</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="LabelMergeLabel.run-101"><a href="#LabelMergeLabel.run-101"><span class="linenos">101</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="LabelMergeLabel.run-102"><a href="#LabelMergeLabel.run-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label_in</span><span class="p">))</span>
-</span><span id="LabelMergeLabel.run-103"><a href="#LabelMergeLabel.run-103"><span class="linenos">103</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="LabelMergeLabel.run-104"><a href="#LabelMergeLabel.run-104"><span class="linenos">104</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-column&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="LabelMergeLabel.run-105"><a href="#LabelMergeLabel.run-105"><span class="linenos">105</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="LabelMergeLabel.run-90"><a href="#LabelMergeLabel.run-90"><span class="linenos"> 90</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="LabelMergeLabel.run-91"><a href="#LabelMergeLabel.run-91"><span class="linenos"> 91</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="LabelMergeLabel.run-92"><a href="#LabelMergeLabel.run-92"><span class="linenos"> 92</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="LabelMergeLabel.run-93"><a href="#LabelMergeLabel.run-93"><span class="linenos"> 93</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="LabelMergeLabel.run-94"><a href="#LabelMergeLabel.run-94"><span class="linenos"> 94</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="LabelMergeLabel.run-95"><a href="#LabelMergeLabel.run-95"><span class="linenos"> 95</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="LabelMergeLabel.run-96"><a href="#LabelMergeLabel.run-96"><span class="linenos"> 96</span></a><span class="sd">        </span>
+</span><span id="LabelMergeLabel.run-97"><a href="#LabelMergeLabel.run-97"><span class="linenos"> 97</span></a><span class="sd">        Args:</span>
+</span><span id="LabelMergeLabel.run-98"><a href="#LabelMergeLabel.run-98"><span class="linenos"> 98</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="LabelMergeLabel.run-99"><a href="#LabelMergeLabel.run-99"><span class="linenos"> 99</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="LabelMergeLabel.run-100"><a href="#LabelMergeLabel.run-100"><span class="linenos">100</span></a><span class="sd">        Returns:</span>
+</span><span id="LabelMergeLabel.run-101"><a href="#LabelMergeLabel.run-101"><span class="linenos">101</span></a><span class="sd">            </span>
+</span><span id="LabelMergeLabel.run-102"><a href="#LabelMergeLabel.run-102"><span class="linenos">102</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="LabelMergeLabel.run-103"><a href="#LabelMergeLabel.run-103"><span class="linenos">103</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="LabelMergeLabel.run-104"><a href="#LabelMergeLabel.run-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label&quot;</span><span class="p">)</span>
+</span><span id="LabelMergeLabel.run-105"><a href="#LabelMergeLabel.run-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label_in</span><span class="p">))</span>
+</span><span id="LabelMergeLabel.run-106"><a href="#LabelMergeLabel.run-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="LabelMergeLabel.run-107"><a href="#LabelMergeLabel.run-107"><span class="linenos">107</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="LabelMergeLabel.run-108"><a href="#LabelMergeLabel.run-108"><span class="linenos">108</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -587,14 +594,14 @@
 
     </div>
     <a class="headerlink" href="#LabelMergeOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="LabelMergeOutputs-108"><a href="#LabelMergeOutputs-108"><span class="linenos">108</span></a><span class="k">class</span> <span class="nc">LabelMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="LabelMergeOutputs-109"><a href="#LabelMergeOutputs-109"><span class="linenos">109</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="LabelMergeOutputs-110"><a href="#LabelMergeOutputs-110"><span class="linenos">110</span></a><span class="sd">    Output object returned when calling `label_merge(...)`.</span>
-</span><span id="LabelMergeOutputs-111"><a href="#LabelMergeOutputs-111"><span class="linenos">111</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="LabelMergeOutputs-112"><a href="#LabelMergeOutputs-112"><span class="linenos">112</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="LabelMergeOutputs-113"><a href="#LabelMergeOutputs-113"><span class="linenos">113</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="LabelMergeOutputs-114"><a href="#LabelMergeOutputs-114"><span class="linenos">114</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="LabelMergeOutputs-115"><a href="#LabelMergeOutputs-115"><span class="linenos">115</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output label&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="LabelMergeOutputs-111"><a href="#LabelMergeOutputs-111"><span class="linenos">111</span></a><span class="k">class</span> <span class="nc">LabelMergeOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="LabelMergeOutputs-112"><a href="#LabelMergeOutputs-112"><span class="linenos">112</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="LabelMergeOutputs-113"><a href="#LabelMergeOutputs-113"><span class="linenos">113</span></a><span class="sd">    Output object returned when calling `label_merge(...)`.</span>
+</span><span id="LabelMergeOutputs-114"><a href="#LabelMergeOutputs-114"><span class="linenos">114</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="LabelMergeOutputs-115"><a href="#LabelMergeOutputs-115"><span class="linenos">115</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="LabelMergeOutputs-116"><a href="#LabelMergeOutputs-116"><span class="linenos">116</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="LabelMergeOutputs-117"><a href="#LabelMergeOutputs-117"><span class="linenos">117</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="LabelMergeOutputs-118"><a href="#LabelMergeOutputs-118"><span class="linenos">118</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output label&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -689,10 +696,11 @@
 </span><span id="LabelMergeUpTo-39"><a href="#LabelMergeUpTo-39"><span class="linenos">39</span></a><span class="sd">            </span>
 </span><span id="LabelMergeUpTo-40"><a href="#LabelMergeUpTo-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="LabelMergeUpTo-41"><a href="#LabelMergeUpTo-41"><span class="linenos">41</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="LabelMergeUpTo-42"><a href="#LabelMergeUpTo-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_column</span><span class="p">)</span>
-</span><span id="LabelMergeUpTo-43"><a href="#LabelMergeUpTo-43"><span class="linenos">43</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
-</span><span id="LabelMergeUpTo-44"><a href="#LabelMergeUpTo-44"><span class="linenos">44</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
-</span><span id="LabelMergeUpTo-45"><a href="#LabelMergeUpTo-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="LabelMergeUpTo-42"><a href="#LabelMergeUpTo-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-up-to&quot;</span><span class="p">)</span>
+</span><span id="LabelMergeUpTo-43"><a href="#LabelMergeUpTo-43"><span class="linenos">43</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_column</span><span class="p">)</span>
+</span><span id="LabelMergeUpTo-44"><a href="#LabelMergeUpTo-44"><span class="linenos">44</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
+</span><span id="LabelMergeUpTo-45"><a href="#LabelMergeUpTo-45"><span class="linenos">45</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
+</span><span id="LabelMergeUpTo-46"><a href="#LabelMergeUpTo-46"><span class="linenos">46</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -764,10 +772,11 @@
 </span><span id="LabelMergeUpTo.run-39"><a href="#LabelMergeUpTo.run-39"><span class="linenos">39</span></a><span class="sd">            </span>
 </span><span id="LabelMergeUpTo.run-40"><a href="#LabelMergeUpTo.run-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="LabelMergeUpTo.run-41"><a href="#LabelMergeUpTo.run-41"><span class="linenos">41</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="LabelMergeUpTo.run-42"><a href="#LabelMergeUpTo.run-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_column</span><span class="p">)</span>
-</span><span id="LabelMergeUpTo.run-43"><a href="#LabelMergeUpTo.run-43"><span class="linenos">43</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
-</span><span id="LabelMergeUpTo.run-44"><a href="#LabelMergeUpTo.run-44"><span class="linenos">44</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
-</span><span id="LabelMergeUpTo.run-45"><a href="#LabelMergeUpTo.run-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="LabelMergeUpTo.run-42"><a href="#LabelMergeUpTo.run-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-up-to&quot;</span><span class="p">)</span>
+</span><span id="LabelMergeUpTo.run-43"><a href="#LabelMergeUpTo.run-43"><span class="linenos">43</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_column</span><span class="p">)</span>
+</span><span id="LabelMergeUpTo.run-44"><a href="#LabelMergeUpTo.run-44"><span class="linenos">44</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_reverse</span><span class="p">:</span>
+</span><span id="LabelMergeUpTo.run-45"><a href="#LabelMergeUpTo.run-45"><span class="linenos">45</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-reverse&quot;</span><span class="p">)</span>
+</span><span id="LabelMergeUpTo.run-46"><a href="#LabelMergeUpTo.run-46"><span class="linenos">46</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -797,47 +806,47 @@
 
     </div>
     <a class="headerlink" href="#label_merge"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="label_merge-118"><a href="#label_merge-118"><span class="linenos">118</span></a><span class="k">def</span> <span class="nf">label_merge</span><span class="p">(</span>
-</span><span id="label_merge-119"><a href="#label_merge-119"><span class="linenos">119</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="label_merge-120"><a href="#label_merge-120"><span class="linenos">120</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeLabel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="label_merge-121"><a href="#label_merge-121"><span class="linenos">121</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="label_merge-122"><a href="#label_merge-122"><span class="linenos">122</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelMergeOutputs</span><span class="p">:</span>
-</span><span id="label_merge-123"><a href="#label_merge-123"><span class="linenos">123</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="label_merge-124"><a href="#label_merge-124"><span class="linenos">124</span></a><span class="sd">    label-merge by Washington University School of Medicin.</span>
-</span><span id="label_merge-125"><a href="#label_merge-125"><span class="linenos">125</span></a><span class="sd">    </span>
-</span><span id="label_merge-126"><a href="#label_merge-126"><span class="linenos">126</span></a><span class="sd">    Merge label files into a new file.</span>
-</span><span id="label_merge-127"><a href="#label_merge-127"><span class="linenos">127</span></a><span class="sd">    </span>
-</span><span id="label_merge-128"><a href="#label_merge-128"><span class="linenos">128</span></a><span class="sd">    Takes one or more label files and constructs a new label file by</span>
-</span><span id="label_merge-129"><a href="#label_merge-129"><span class="linenos">129</span></a><span class="sd">    concatenating columns from them. The input files must have the same number</span>
-</span><span id="label_merge-130"><a href="#label_merge-130"><span class="linenos">130</span></a><span class="sd">    of vertices and the same structure.</span>
-</span><span id="label_merge-131"><a href="#label_merge-131"><span class="linenos">131</span></a><span class="sd">    </span>
-</span><span id="label_merge-132"><a href="#label_merge-132"><span class="linenos">132</span></a><span class="sd">    Example: wb_command -label-merge out.label.gii -label first.label.gii</span>
-</span><span id="label_merge-133"><a href="#label_merge-133"><span class="linenos">133</span></a><span class="sd">    -column 1 -label second.label.gii</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="label_merge-121"><a href="#label_merge-121"><span class="linenos">121</span></a><span class="k">def</span> <span class="nf">label_merge</span><span class="p">(</span>
+</span><span id="label_merge-122"><a href="#label_merge-122"><span class="linenos">122</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="label_merge-123"><a href="#label_merge-123"><span class="linenos">123</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeLabel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="label_merge-124"><a href="#label_merge-124"><span class="linenos">124</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="label_merge-125"><a href="#label_merge-125"><span class="linenos">125</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelMergeOutputs</span><span class="p">:</span>
+</span><span id="label_merge-126"><a href="#label_merge-126"><span class="linenos">126</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="label_merge-127"><a href="#label_merge-127"><span class="linenos">127</span></a><span class="sd">    label-merge by Washington University School of Medicin.</span>
+</span><span id="label_merge-128"><a href="#label_merge-128"><span class="linenos">128</span></a><span class="sd">    </span>
+</span><span id="label_merge-129"><a href="#label_merge-129"><span class="linenos">129</span></a><span class="sd">    Merge label files into a new file.</span>
+</span><span id="label_merge-130"><a href="#label_merge-130"><span class="linenos">130</span></a><span class="sd">    </span>
+</span><span id="label_merge-131"><a href="#label_merge-131"><span class="linenos">131</span></a><span class="sd">    Takes one or more label files and constructs a new label file by</span>
+</span><span id="label_merge-132"><a href="#label_merge-132"><span class="linenos">132</span></a><span class="sd">    concatenating columns from them. The input files must have the same number</span>
+</span><span id="label_merge-133"><a href="#label_merge-133"><span class="linenos">133</span></a><span class="sd">    of vertices and the same structure.</span>
 </span><span id="label_merge-134"><a href="#label_merge-134"><span class="linenos">134</span></a><span class="sd">    </span>
-</span><span id="label_merge-135"><a href="#label_merge-135"><span class="linenos">135</span></a><span class="sd">    This example would take the first column from first.label.gii and all</span>
-</span><span id="label_merge-136"><a href="#label_merge-136"><span class="linenos">136</span></a><span class="sd">    subvolumes from second.label.gii, and write these to out.label.gii.</span>
+</span><span id="label_merge-135"><a href="#label_merge-135"><span class="linenos">135</span></a><span class="sd">    Example: wb_command -label-merge out.label.gii -label first.label.gii</span>
+</span><span id="label_merge-136"><a href="#label_merge-136"><span class="linenos">136</span></a><span class="sd">    -column 1 -label second.label.gii</span>
 </span><span id="label_merge-137"><a href="#label_merge-137"><span class="linenos">137</span></a><span class="sd">    </span>
-</span><span id="label_merge-138"><a href="#label_merge-138"><span class="linenos">138</span></a><span class="sd">    Args:</span>
-</span><span id="label_merge-139"><a href="#label_merge-139"><span class="linenos">139</span></a><span class="sd">        label_out: the output label.</span>
-</span><span id="label_merge-140"><a href="#label_merge-140"><span class="linenos">140</span></a><span class="sd">        label: specify an input label.</span>
-</span><span id="label_merge-141"><a href="#label_merge-141"><span class="linenos">141</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="label_merge-142"><a href="#label_merge-142"><span class="linenos">142</span></a><span class="sd">    Returns:</span>
-</span><span id="label_merge-143"><a href="#label_merge-143"><span class="linenos">143</span></a><span class="sd">        NamedTuple of outputs (described in `LabelMergeOutputs`).</span>
-</span><span id="label_merge-144"><a href="#label_merge-144"><span class="linenos">144</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="label_merge-145"><a href="#label_merge-145"><span class="linenos">145</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="label_merge-146"><a href="#label_merge-146"><span class="linenos">146</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_MERGE_METADATA</span><span class="p">)</span>
-</span><span id="label_merge-147"><a href="#label_merge-147"><span class="linenos">147</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="label_merge-148"><a href="#label_merge-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="label_merge-149"><a href="#label_merge-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-merge&quot;</span><span class="p">)</span>
-</span><span id="label_merge-150"><a href="#label_merge-150"><span class="linenos">150</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label_out</span><span class="p">))</span>
-</span><span id="label_merge-151"><a href="#label_merge-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="label_merge-152"><a href="#label_merge-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-label&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="label_merge-153"><a href="#label_merge-153"><span class="linenos">153</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelMergeOutputs</span><span class="p">(</span>
-</span><span id="label_merge-154"><a href="#label_merge-154"><span class="linenos">154</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="label_merge-155"><a href="#label_merge-155"><span class="linenos">155</span></a>        <span class="n">label_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">label_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
-</span><span id="label_merge-156"><a href="#label_merge-156"><span class="linenos">156</span></a>    <span class="p">)</span>
-</span><span id="label_merge-157"><a href="#label_merge-157"><span class="linenos">157</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="label_merge-158"><a href="#label_merge-158"><span class="linenos">158</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="label_merge-138"><a href="#label_merge-138"><span class="linenos">138</span></a><span class="sd">    This example would take the first column from first.label.gii and all</span>
+</span><span id="label_merge-139"><a href="#label_merge-139"><span class="linenos">139</span></a><span class="sd">    subvolumes from second.label.gii, and write these to out.label.gii.</span>
+</span><span id="label_merge-140"><a href="#label_merge-140"><span class="linenos">140</span></a><span class="sd">    </span>
+</span><span id="label_merge-141"><a href="#label_merge-141"><span class="linenos">141</span></a><span class="sd">    Args:</span>
+</span><span id="label_merge-142"><a href="#label_merge-142"><span class="linenos">142</span></a><span class="sd">        label_out: the output label.</span>
+</span><span id="label_merge-143"><a href="#label_merge-143"><span class="linenos">143</span></a><span class="sd">        label: specify an input label.</span>
+</span><span id="label_merge-144"><a href="#label_merge-144"><span class="linenos">144</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="label_merge-145"><a href="#label_merge-145"><span class="linenos">145</span></a><span class="sd">    Returns:</span>
+</span><span id="label_merge-146"><a href="#label_merge-146"><span class="linenos">146</span></a><span class="sd">        NamedTuple of outputs (described in `LabelMergeOutputs`).</span>
+</span><span id="label_merge-147"><a href="#label_merge-147"><span class="linenos">147</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="label_merge-148"><a href="#label_merge-148"><span class="linenos">148</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="label_merge-149"><a href="#label_merge-149"><span class="linenos">149</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_MERGE_METADATA</span><span class="p">)</span>
+</span><span id="label_merge-150"><a href="#label_merge-150"><span class="linenos">150</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="label_merge-151"><a href="#label_merge-151"><span class="linenos">151</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="label_merge-152"><a href="#label_merge-152"><span class="linenos">152</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-merge&quot;</span><span class="p">)</span>
+</span><span id="label_merge-153"><a href="#label_merge-153"><span class="linenos">153</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label_out</span><span class="p">))</span>
+</span><span id="label_merge-154"><a href="#label_merge-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="label_merge-155"><a href="#label_merge-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="label_merge-156"><a href="#label_merge-156"><span class="linenos">156</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelMergeOutputs</span><span class="p">(</span>
+</span><span id="label_merge-157"><a href="#label_merge-157"><span class="linenos">157</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="label_merge-158"><a href="#label_merge-158"><span class="linenos">158</span></a>        <span class="n">label_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">label_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+</span><span id="label_merge-159"><a href="#label_merge-159"><span class="linenos">159</span></a>    <span class="p">)</span>
+</span><span id="label_merge-160"><a href="#label_merge-160"><span class="linenos">160</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="label_merge-161"><a href="#label_merge-161"><span class="linenos">161</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

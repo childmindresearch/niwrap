@@ -117,7 +117,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CIFTI_AVERAGE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d1a4221c5b052a97deb2be86d089296d9b12b287&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2298366d749af485c97a2cca3a97c99717664081&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cifti-average&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;fcpindi/c-pac:latest&quot;</span><span class="p">,</span>
@@ -148,108 +148,110 @@
 </span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">            </span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_below</span><span class="p">))</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_above</span><span class="p">))</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-exclude-outliers&quot;</span><span class="p">)</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_below</span><span class="p">))</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_above</span><span class="p">))</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="k">class</span> <span class="nc">CiftiAverageCifti</span><span class="p">:</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    specify an input file</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the input cifti file&quot;&quot;&quot;</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>    <span class="n">opt_weight_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;give a weight for this file: the weight to use&quot;&quot;&quot;</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>    
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        </span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        Args:</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        Returns:</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">            </span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cifti_in</span><span class="p">))</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-weight&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span><span class="p">)])</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="k">class</span> <span class="nc">CiftiAverageOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    Output object returned when calling `cifti_average(...)`.</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output cifti file&quot;&quot;&quot;</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="k">def</span> <span class="nf">cifti_average</span><span class="p">(</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">exclude_outliers</span><span class="p">:</span> <span class="n">CiftiAverageExcludeOutliers</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">opt_mem_limit_limit_gb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiAverageCifti</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiAverageOutputs</span><span class="p">:</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    cifti-average by Washington University School of Medicin.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    </span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    Average cifti files.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="k">class</span> <span class="nc">CiftiAverageCifti</span><span class="p">:</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    specify an input file</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the input cifti file&quot;&quot;&quot;</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>    <span class="n">opt_weight_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;give a weight for this file: the weight to use&quot;&quot;&quot;</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        </span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        Args:</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        Returns:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">            </span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti&quot;</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cifti_in</span><span class="p">))</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-weight&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span><span class="p">)])</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="k">class</span> <span class="nc">CiftiAverageOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    Output object returned when calling `cifti_average(...)`.</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output cifti file&quot;&quot;&quot;</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="k">def</span> <span class="nf">cifti_average</span><span class="p">(</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">exclude_outliers</span><span class="p">:</span> <span class="n">CiftiAverageExcludeOutliers</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">opt_mem_limit_limit_gb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiAverageCifti</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiAverageOutputs</span><span class="p">:</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    cifti-average by Washington University School of Medicin.</span>
 </span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">    </span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">    Averages cifti files together. Files without -weight specified are given a</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">    weight of 1. If -exclude-outliers is specified, at each element, the data</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">    across all files is taken as a set, its unweighted mean and sample standard</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    deviation are found, and values outside the specified number of standard</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">    deviations are excluded from the (potentially weighted) average at that</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    element.</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">    </span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    Args:</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        cifti_out: output cifti file.</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        exclude_outliers: exclude outliers by standard deviation of each\</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">            element across files.</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        opt_mem_limit_limit_gb: restrict memory used for file reading\</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">            efficiency: memory limit in gigabytes.</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        cifti: specify an input file.</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    Returns:</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiAverageOutputs`).</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_AVERAGE_METADATA</span><span class="p">)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-average&quot;</span><span class="p">)</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">))</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">exclude_outliers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-exclude-outliers&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">exclude_outliers</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">opt_mem_limit_limit_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-mem-limit&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">opt_mem_limit_limit_gb</span><span class="p">)])</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-cifti&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">cifti</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiAverageOutputs</span><span class="p">(</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="p">)</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="s2">&quot;CIFTI_AVERAGE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="s2">&quot;CiftiAverageCifti&quot;</span><span class="p">,</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="s2">&quot;CiftiAverageExcludeOutliers&quot;</span><span class="p">,</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="s2">&quot;CiftiAverageOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="s2">&quot;cifti_average&quot;</span><span class="p">,</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="p">]</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">    Average cifti files.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">    </span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">    Averages cifti files together. Files without -weight specified are given a</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    weight of 1. If -exclude-outliers is specified, at each element, the data</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">    across all files is taken as a set, its unweighted mean and sample standard</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    deviation are found, and values outside the specified number of standard</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">    deviations are excluded from the (potentially weighted) average at that</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    element.</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    </span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    Args:</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        cifti_out: output cifti file.</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        exclude_outliers: exclude outliers by standard deviation of each\</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">            element across files.</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        opt_mem_limit_limit_gb: restrict memory used for file reading\</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">            efficiency: memory limit in gigabytes.</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        cifti: specify an input file.</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    Returns:</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiAverageOutputs`).</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_AVERAGE_METADATA</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-average&quot;</span><span class="p">)</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">))</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">exclude_outliers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">exclude_outliers</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">opt_mem_limit_limit_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-mem-limit&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">opt_mem_limit_limit_gb</span><span class="p">)])</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">cifti</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiAverageOutputs</span><span class="p">(</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="p">)</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="s2">&quot;CIFTI_AVERAGE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="s2">&quot;CiftiAverageCifti&quot;</span><span class="p">,</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="s2">&quot;CiftiAverageExcludeOutliers&quot;</span><span class="p">,</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="s2">&quot;CiftiAverageOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="s2">&quot;cifti_average&quot;</span><span class="p">,</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -258,7 +260,7 @@
                     <div class="attr variable">
             <span class="name">CIFTI_AVERAGE_METADATA</span>        =
 <input id="CIFTI_AVERAGE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CIFTI_AVERAGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d1a4221c5b052a97deb2be86d089296d9b12b287&#39;, name=&#39;cifti-average&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="CIFTI_AVERAGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2298366d749af485c97a2cca3a97c99717664081&#39;, name=&#39;cifti-average&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -279,34 +281,35 @@
 
     </div>
     <a class="headerlink" href="#CiftiAverageCifti"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiAverageCifti-47"><a href="#CiftiAverageCifti-47"><span class="linenos">47</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="CiftiAverageCifti-48"><a href="#CiftiAverageCifti-48"><span class="linenos">48</span></a><span class="k">class</span> <span class="nc">CiftiAverageCifti</span><span class="p">:</span>
-</span><span id="CiftiAverageCifti-49"><a href="#CiftiAverageCifti-49"><span class="linenos">49</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CiftiAverageCifti-50"><a href="#CiftiAverageCifti-50"><span class="linenos">50</span></a><span class="sd">    specify an input file</span>
-</span><span id="CiftiAverageCifti-51"><a href="#CiftiAverageCifti-51"><span class="linenos">51</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="CiftiAverageCifti-52"><a href="#CiftiAverageCifti-52"><span class="linenos">52</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span>
-</span><span id="CiftiAverageCifti-53"><a href="#CiftiAverageCifti-53"><span class="linenos">53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the input cifti file&quot;&quot;&quot;</span>
-</span><span id="CiftiAverageCifti-54"><a href="#CiftiAverageCifti-54"><span class="linenos">54</span></a>    <span class="n">opt_weight_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="CiftiAverageCifti-55"><a href="#CiftiAverageCifti-55"><span class="linenos">55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;give a weight for this file: the weight to use&quot;&quot;&quot;</span>
-</span><span id="CiftiAverageCifti-56"><a href="#CiftiAverageCifti-56"><span class="linenos">56</span></a>    
-</span><span id="CiftiAverageCifti-57"><a href="#CiftiAverageCifti-57"><span class="linenos">57</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="CiftiAverageCifti-58"><a href="#CiftiAverageCifti-58"><span class="linenos">58</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="CiftiAverageCifti-59"><a href="#CiftiAverageCifti-59"><span class="linenos">59</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="CiftiAverageCifti-60"><a href="#CiftiAverageCifti-60"><span class="linenos">60</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="CiftiAverageCifti-61"><a href="#CiftiAverageCifti-61"><span class="linenos">61</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CiftiAverageCifti-62"><a href="#CiftiAverageCifti-62"><span class="linenos">62</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="CiftiAverageCifti-63"><a href="#CiftiAverageCifti-63"><span class="linenos">63</span></a><span class="sd">        </span>
-</span><span id="CiftiAverageCifti-64"><a href="#CiftiAverageCifti-64"><span class="linenos">64</span></a><span class="sd">        Args:</span>
-</span><span id="CiftiAverageCifti-65"><a href="#CiftiAverageCifti-65"><span class="linenos">65</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="CiftiAverageCifti-66"><a href="#CiftiAverageCifti-66"><span class="linenos">66</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="CiftiAverageCifti-67"><a href="#CiftiAverageCifti-67"><span class="linenos">67</span></a><span class="sd">        Returns:</span>
-</span><span id="CiftiAverageCifti-68"><a href="#CiftiAverageCifti-68"><span class="linenos">68</span></a><span class="sd">            </span>
-</span><span id="CiftiAverageCifti-69"><a href="#CiftiAverageCifti-69"><span class="linenos">69</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="CiftiAverageCifti-70"><a href="#CiftiAverageCifti-70"><span class="linenos">70</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="CiftiAverageCifti-71"><a href="#CiftiAverageCifti-71"><span class="linenos">71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cifti_in</span><span class="p">))</span>
-</span><span id="CiftiAverageCifti-72"><a href="#CiftiAverageCifti-72"><span class="linenos">72</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="CiftiAverageCifti-73"><a href="#CiftiAverageCifti-73"><span class="linenos">73</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-weight&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span><span class="p">)])</span>
-</span><span id="CiftiAverageCifti-74"><a href="#CiftiAverageCifti-74"><span class="linenos">74</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiAverageCifti-48"><a href="#CiftiAverageCifti-48"><span class="linenos">48</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="CiftiAverageCifti-49"><a href="#CiftiAverageCifti-49"><span class="linenos">49</span></a><span class="k">class</span> <span class="nc">CiftiAverageCifti</span><span class="p">:</span>
+</span><span id="CiftiAverageCifti-50"><a href="#CiftiAverageCifti-50"><span class="linenos">50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CiftiAverageCifti-51"><a href="#CiftiAverageCifti-51"><span class="linenos">51</span></a><span class="sd">    specify an input file</span>
+</span><span id="CiftiAverageCifti-52"><a href="#CiftiAverageCifti-52"><span class="linenos">52</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="CiftiAverageCifti-53"><a href="#CiftiAverageCifti-53"><span class="linenos">53</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="CiftiAverageCifti-54"><a href="#CiftiAverageCifti-54"><span class="linenos">54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the input cifti file&quot;&quot;&quot;</span>
+</span><span id="CiftiAverageCifti-55"><a href="#CiftiAverageCifti-55"><span class="linenos">55</span></a>    <span class="n">opt_weight_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="CiftiAverageCifti-56"><a href="#CiftiAverageCifti-56"><span class="linenos">56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;give a weight for this file: the weight to use&quot;&quot;&quot;</span>
+</span><span id="CiftiAverageCifti-57"><a href="#CiftiAverageCifti-57"><span class="linenos">57</span></a>    
+</span><span id="CiftiAverageCifti-58"><a href="#CiftiAverageCifti-58"><span class="linenos">58</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="CiftiAverageCifti-59"><a href="#CiftiAverageCifti-59"><span class="linenos">59</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="CiftiAverageCifti-60"><a href="#CiftiAverageCifti-60"><span class="linenos">60</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="CiftiAverageCifti-61"><a href="#CiftiAverageCifti-61"><span class="linenos">61</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="CiftiAverageCifti-62"><a href="#CiftiAverageCifti-62"><span class="linenos">62</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CiftiAverageCifti-63"><a href="#CiftiAverageCifti-63"><span class="linenos">63</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="CiftiAverageCifti-64"><a href="#CiftiAverageCifti-64"><span class="linenos">64</span></a><span class="sd">        </span>
+</span><span id="CiftiAverageCifti-65"><a href="#CiftiAverageCifti-65"><span class="linenos">65</span></a><span class="sd">        Args:</span>
+</span><span id="CiftiAverageCifti-66"><a href="#CiftiAverageCifti-66"><span class="linenos">66</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="CiftiAverageCifti-67"><a href="#CiftiAverageCifti-67"><span class="linenos">67</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="CiftiAverageCifti-68"><a href="#CiftiAverageCifti-68"><span class="linenos">68</span></a><span class="sd">        Returns:</span>
+</span><span id="CiftiAverageCifti-69"><a href="#CiftiAverageCifti-69"><span class="linenos">69</span></a><span class="sd">            </span>
+</span><span id="CiftiAverageCifti-70"><a href="#CiftiAverageCifti-70"><span class="linenos">70</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CiftiAverageCifti-71"><a href="#CiftiAverageCifti-71"><span class="linenos">71</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="CiftiAverageCifti-72"><a href="#CiftiAverageCifti-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti&quot;</span><span class="p">)</span>
+</span><span id="CiftiAverageCifti-73"><a href="#CiftiAverageCifti-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cifti_in</span><span class="p">))</span>
+</span><span id="CiftiAverageCifti-74"><a href="#CiftiAverageCifti-74"><span class="linenos">74</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="CiftiAverageCifti-75"><a href="#CiftiAverageCifti-75"><span class="linenos">75</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-weight&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span><span class="p">)])</span>
+</span><span id="CiftiAverageCifti-76"><a href="#CiftiAverageCifti-76"><span class="linenos">76</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -364,24 +367,25 @@
 
     </div>
     <a class="headerlink" href="#CiftiAverageCifti.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiAverageCifti.run-57"><a href="#CiftiAverageCifti.run-57"><span class="linenos">57</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="CiftiAverageCifti.run-58"><a href="#CiftiAverageCifti.run-58"><span class="linenos">58</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="CiftiAverageCifti.run-59"><a href="#CiftiAverageCifti.run-59"><span class="linenos">59</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="CiftiAverageCifti.run-60"><a href="#CiftiAverageCifti.run-60"><span class="linenos">60</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="CiftiAverageCifti.run-61"><a href="#CiftiAverageCifti.run-61"><span class="linenos">61</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CiftiAverageCifti.run-62"><a href="#CiftiAverageCifti.run-62"><span class="linenos">62</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="CiftiAverageCifti.run-63"><a href="#CiftiAverageCifti.run-63"><span class="linenos">63</span></a><span class="sd">        </span>
-</span><span id="CiftiAverageCifti.run-64"><a href="#CiftiAverageCifti.run-64"><span class="linenos">64</span></a><span class="sd">        Args:</span>
-</span><span id="CiftiAverageCifti.run-65"><a href="#CiftiAverageCifti.run-65"><span class="linenos">65</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="CiftiAverageCifti.run-66"><a href="#CiftiAverageCifti.run-66"><span class="linenos">66</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="CiftiAverageCifti.run-67"><a href="#CiftiAverageCifti.run-67"><span class="linenos">67</span></a><span class="sd">        Returns:</span>
-</span><span id="CiftiAverageCifti.run-68"><a href="#CiftiAverageCifti.run-68"><span class="linenos">68</span></a><span class="sd">            </span>
-</span><span id="CiftiAverageCifti.run-69"><a href="#CiftiAverageCifti.run-69"><span class="linenos">69</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="CiftiAverageCifti.run-70"><a href="#CiftiAverageCifti.run-70"><span class="linenos">70</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="CiftiAverageCifti.run-71"><a href="#CiftiAverageCifti.run-71"><span class="linenos">71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cifti_in</span><span class="p">))</span>
-</span><span id="CiftiAverageCifti.run-72"><a href="#CiftiAverageCifti.run-72"><span class="linenos">72</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="CiftiAverageCifti.run-73"><a href="#CiftiAverageCifti.run-73"><span class="linenos">73</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-weight&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span><span class="p">)])</span>
-</span><span id="CiftiAverageCifti.run-74"><a href="#CiftiAverageCifti.run-74"><span class="linenos">74</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiAverageCifti.run-58"><a href="#CiftiAverageCifti.run-58"><span class="linenos">58</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="CiftiAverageCifti.run-59"><a href="#CiftiAverageCifti.run-59"><span class="linenos">59</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="CiftiAverageCifti.run-60"><a href="#CiftiAverageCifti.run-60"><span class="linenos">60</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="CiftiAverageCifti.run-61"><a href="#CiftiAverageCifti.run-61"><span class="linenos">61</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="CiftiAverageCifti.run-62"><a href="#CiftiAverageCifti.run-62"><span class="linenos">62</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CiftiAverageCifti.run-63"><a href="#CiftiAverageCifti.run-63"><span class="linenos">63</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="CiftiAverageCifti.run-64"><a href="#CiftiAverageCifti.run-64"><span class="linenos">64</span></a><span class="sd">        </span>
+</span><span id="CiftiAverageCifti.run-65"><a href="#CiftiAverageCifti.run-65"><span class="linenos">65</span></a><span class="sd">        Args:</span>
+</span><span id="CiftiAverageCifti.run-66"><a href="#CiftiAverageCifti.run-66"><span class="linenos">66</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="CiftiAverageCifti.run-67"><a href="#CiftiAverageCifti.run-67"><span class="linenos">67</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="CiftiAverageCifti.run-68"><a href="#CiftiAverageCifti.run-68"><span class="linenos">68</span></a><span class="sd">        Returns:</span>
+</span><span id="CiftiAverageCifti.run-69"><a href="#CiftiAverageCifti.run-69"><span class="linenos">69</span></a><span class="sd">            </span>
+</span><span id="CiftiAverageCifti.run-70"><a href="#CiftiAverageCifti.run-70"><span class="linenos">70</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CiftiAverageCifti.run-71"><a href="#CiftiAverageCifti.run-71"><span class="linenos">71</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="CiftiAverageCifti.run-72"><a href="#CiftiAverageCifti.run-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti&quot;</span><span class="p">)</span>
+</span><span id="CiftiAverageCifti.run-73"><a href="#CiftiAverageCifti.run-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cifti_in</span><span class="p">))</span>
+</span><span id="CiftiAverageCifti.run-74"><a href="#CiftiAverageCifti.run-74"><span class="linenos">74</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="CiftiAverageCifti.run-75"><a href="#CiftiAverageCifti.run-75"><span class="linenos">75</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-weight&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opt_weight_weight</span><span class="p">)])</span>
+</span><span id="CiftiAverageCifti.run-76"><a href="#CiftiAverageCifti.run-76"><span class="linenos">76</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -436,9 +440,10 @@
 </span><span id="CiftiAverageExcludeOutliers-39"><a href="#CiftiAverageExcludeOutliers-39"><span class="linenos">39</span></a><span class="sd">            </span>
 </span><span id="CiftiAverageExcludeOutliers-40"><a href="#CiftiAverageExcludeOutliers-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="CiftiAverageExcludeOutliers-41"><a href="#CiftiAverageExcludeOutliers-41"><span class="linenos">41</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="CiftiAverageExcludeOutliers-42"><a href="#CiftiAverageExcludeOutliers-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_below</span><span class="p">))</span>
-</span><span id="CiftiAverageExcludeOutliers-43"><a href="#CiftiAverageExcludeOutliers-43"><span class="linenos">43</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_above</span><span class="p">))</span>
-</span><span id="CiftiAverageExcludeOutliers-44"><a href="#CiftiAverageExcludeOutliers-44"><span class="linenos">44</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="CiftiAverageExcludeOutliers-42"><a href="#CiftiAverageExcludeOutliers-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-exclude-outliers&quot;</span><span class="p">)</span>
+</span><span id="CiftiAverageExcludeOutliers-43"><a href="#CiftiAverageExcludeOutliers-43"><span class="linenos">43</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_below</span><span class="p">))</span>
+</span><span id="CiftiAverageExcludeOutliers-44"><a href="#CiftiAverageExcludeOutliers-44"><span class="linenos">44</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_above</span><span class="p">))</span>
+</span><span id="CiftiAverageExcludeOutliers-45"><a href="#CiftiAverageExcludeOutliers-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -509,9 +514,10 @@
 </span><span id="CiftiAverageExcludeOutliers.run-39"><a href="#CiftiAverageExcludeOutliers.run-39"><span class="linenos">39</span></a><span class="sd">            </span>
 </span><span id="CiftiAverageExcludeOutliers.run-40"><a href="#CiftiAverageExcludeOutliers.run-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="CiftiAverageExcludeOutliers.run-41"><a href="#CiftiAverageExcludeOutliers.run-41"><span class="linenos">41</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="CiftiAverageExcludeOutliers.run-42"><a href="#CiftiAverageExcludeOutliers.run-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_below</span><span class="p">))</span>
-</span><span id="CiftiAverageExcludeOutliers.run-43"><a href="#CiftiAverageExcludeOutliers.run-43"><span class="linenos">43</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_above</span><span class="p">))</span>
-</span><span id="CiftiAverageExcludeOutliers.run-44"><a href="#CiftiAverageExcludeOutliers.run-44"><span class="linenos">44</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="CiftiAverageExcludeOutliers.run-42"><a href="#CiftiAverageExcludeOutliers.run-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-exclude-outliers&quot;</span><span class="p">)</span>
+</span><span id="CiftiAverageExcludeOutliers.run-43"><a href="#CiftiAverageExcludeOutliers.run-43"><span class="linenos">43</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_below</span><span class="p">))</span>
+</span><span id="CiftiAverageExcludeOutliers.run-44"><a href="#CiftiAverageExcludeOutliers.run-44"><span class="linenos">44</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_above</span><span class="p">))</span>
+</span><span id="CiftiAverageExcludeOutliers.run-45"><a href="#CiftiAverageExcludeOutliers.run-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -541,14 +547,14 @@
 
     </div>
     <a class="headerlink" href="#CiftiAverageOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiAverageOutputs-77"><a href="#CiftiAverageOutputs-77"><span class="linenos">77</span></a><span class="k">class</span> <span class="nc">CiftiAverageOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="CiftiAverageOutputs-78"><a href="#CiftiAverageOutputs-78"><span class="linenos">78</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CiftiAverageOutputs-79"><a href="#CiftiAverageOutputs-79"><span class="linenos">79</span></a><span class="sd">    Output object returned when calling `cifti_average(...)`.</span>
-</span><span id="CiftiAverageOutputs-80"><a href="#CiftiAverageOutputs-80"><span class="linenos">80</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="CiftiAverageOutputs-81"><a href="#CiftiAverageOutputs-81"><span class="linenos">81</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="CiftiAverageOutputs-82"><a href="#CiftiAverageOutputs-82"><span class="linenos">82</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="CiftiAverageOutputs-83"><a href="#CiftiAverageOutputs-83"><span class="linenos">83</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="CiftiAverageOutputs-84"><a href="#CiftiAverageOutputs-84"><span class="linenos">84</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output cifti file&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiAverageOutputs-79"><a href="#CiftiAverageOutputs-79"><span class="linenos">79</span></a><span class="k">class</span> <span class="nc">CiftiAverageOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="CiftiAverageOutputs-80"><a href="#CiftiAverageOutputs-80"><span class="linenos">80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CiftiAverageOutputs-81"><a href="#CiftiAverageOutputs-81"><span class="linenos">81</span></a><span class="sd">    Output object returned when calling `cifti_average(...)`.</span>
+</span><span id="CiftiAverageOutputs-82"><a href="#CiftiAverageOutputs-82"><span class="linenos">82</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="CiftiAverageOutputs-83"><a href="#CiftiAverageOutputs-83"><span class="linenos">83</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="CiftiAverageOutputs-84"><a href="#CiftiAverageOutputs-84"><span class="linenos">84</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="CiftiAverageOutputs-85"><a href="#CiftiAverageOutputs-85"><span class="linenos">85</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="CiftiAverageOutputs-86"><a href="#CiftiAverageOutputs-86"><span class="linenos">86</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output cifti file&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -618,54 +624,54 @@
 
     </div>
     <a class="headerlink" href="#cifti_average"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_average-87"><a href="#cifti_average-87"><span class="linenos"> 87</span></a><span class="k">def</span> <span class="nf">cifti_average</span><span class="p">(</span>
-</span><span id="cifti_average-88"><a href="#cifti_average-88"><span class="linenos"> 88</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="cifti_average-89"><a href="#cifti_average-89"><span class="linenos"> 89</span></a>    <span class="n">exclude_outliers</span><span class="p">:</span> <span class="n">CiftiAverageExcludeOutliers</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_average-90"><a href="#cifti_average-90"><span class="linenos"> 90</span></a>    <span class="n">opt_mem_limit_limit_gb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_average-91"><a href="#cifti_average-91"><span class="linenos"> 91</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiAverageCifti</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_average-92"><a href="#cifti_average-92"><span class="linenos"> 92</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_average-93"><a href="#cifti_average-93"><span class="linenos"> 93</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiAverageOutputs</span><span class="p">:</span>
-</span><span id="cifti_average-94"><a href="#cifti_average-94"><span class="linenos"> 94</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_average-95"><a href="#cifti_average-95"><span class="linenos"> 95</span></a><span class="sd">    cifti-average by Washington University School of Medicin.</span>
-</span><span id="cifti_average-96"><a href="#cifti_average-96"><span class="linenos"> 96</span></a><span class="sd">    </span>
-</span><span id="cifti_average-97"><a href="#cifti_average-97"><span class="linenos"> 97</span></a><span class="sd">    Average cifti files.</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_average-89"><a href="#cifti_average-89"><span class="linenos"> 89</span></a><span class="k">def</span> <span class="nf">cifti_average</span><span class="p">(</span>
+</span><span id="cifti_average-90"><a href="#cifti_average-90"><span class="linenos"> 90</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="cifti_average-91"><a href="#cifti_average-91"><span class="linenos"> 91</span></a>    <span class="n">exclude_outliers</span><span class="p">:</span> <span class="n">CiftiAverageExcludeOutliers</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_average-92"><a href="#cifti_average-92"><span class="linenos"> 92</span></a>    <span class="n">opt_mem_limit_limit_gb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_average-93"><a href="#cifti_average-93"><span class="linenos"> 93</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiAverageCifti</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_average-94"><a href="#cifti_average-94"><span class="linenos"> 94</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_average-95"><a href="#cifti_average-95"><span class="linenos"> 95</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiAverageOutputs</span><span class="p">:</span>
+</span><span id="cifti_average-96"><a href="#cifti_average-96"><span class="linenos"> 96</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_average-97"><a href="#cifti_average-97"><span class="linenos"> 97</span></a><span class="sd">    cifti-average by Washington University School of Medicin.</span>
 </span><span id="cifti_average-98"><a href="#cifti_average-98"><span class="linenos"> 98</span></a><span class="sd">    </span>
-</span><span id="cifti_average-99"><a href="#cifti_average-99"><span class="linenos"> 99</span></a><span class="sd">    Averages cifti files together. Files without -weight specified are given a</span>
-</span><span id="cifti_average-100"><a href="#cifti_average-100"><span class="linenos">100</span></a><span class="sd">    weight of 1. If -exclude-outliers is specified, at each element, the data</span>
-</span><span id="cifti_average-101"><a href="#cifti_average-101"><span class="linenos">101</span></a><span class="sd">    across all files is taken as a set, its unweighted mean and sample standard</span>
-</span><span id="cifti_average-102"><a href="#cifti_average-102"><span class="linenos">102</span></a><span class="sd">    deviation are found, and values outside the specified number of standard</span>
-</span><span id="cifti_average-103"><a href="#cifti_average-103"><span class="linenos">103</span></a><span class="sd">    deviations are excluded from the (potentially weighted) average at that</span>
-</span><span id="cifti_average-104"><a href="#cifti_average-104"><span class="linenos">104</span></a><span class="sd">    element.</span>
-</span><span id="cifti_average-105"><a href="#cifti_average-105"><span class="linenos">105</span></a><span class="sd">    </span>
-</span><span id="cifti_average-106"><a href="#cifti_average-106"><span class="linenos">106</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_average-107"><a href="#cifti_average-107"><span class="linenos">107</span></a><span class="sd">        cifti_out: output cifti file.</span>
-</span><span id="cifti_average-108"><a href="#cifti_average-108"><span class="linenos">108</span></a><span class="sd">        exclude_outliers: exclude outliers by standard deviation of each\</span>
-</span><span id="cifti_average-109"><a href="#cifti_average-109"><span class="linenos">109</span></a><span class="sd">            element across files.</span>
-</span><span id="cifti_average-110"><a href="#cifti_average-110"><span class="linenos">110</span></a><span class="sd">        opt_mem_limit_limit_gb: restrict memory used for file reading\</span>
-</span><span id="cifti_average-111"><a href="#cifti_average-111"><span class="linenos">111</span></a><span class="sd">            efficiency: memory limit in gigabytes.</span>
-</span><span id="cifti_average-112"><a href="#cifti_average-112"><span class="linenos">112</span></a><span class="sd">        cifti: specify an input file.</span>
-</span><span id="cifti_average-113"><a href="#cifti_average-113"><span class="linenos">113</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_average-114"><a href="#cifti_average-114"><span class="linenos">114</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_average-115"><a href="#cifti_average-115"><span class="linenos">115</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiAverageOutputs`).</span>
-</span><span id="cifti_average-116"><a href="#cifti_average-116"><span class="linenos">116</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_average-117"><a href="#cifti_average-117"><span class="linenos">117</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_average-118"><a href="#cifti_average-118"><span class="linenos">118</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_AVERAGE_METADATA</span><span class="p">)</span>
-</span><span id="cifti_average-119"><a href="#cifti_average-119"><span class="linenos">119</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="cifti_average-120"><a href="#cifti_average-120"><span class="linenos">120</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="cifti_average-121"><a href="#cifti_average-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-average&quot;</span><span class="p">)</span>
-</span><span id="cifti_average-122"><a href="#cifti_average-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">))</span>
-</span><span id="cifti_average-123"><a href="#cifti_average-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">exclude_outliers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_average-124"><a href="#cifti_average-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-exclude-outliers&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">exclude_outliers</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="cifti_average-125"><a href="#cifti_average-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">opt_mem_limit_limit_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_average-126"><a href="#cifti_average-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-mem-limit&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">opt_mem_limit_limit_gb</span><span class="p">)])</span>
-</span><span id="cifti_average-127"><a href="#cifti_average-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_average-128"><a href="#cifti_average-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-cifti&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">cifti</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="cifti_average-129"><a href="#cifti_average-129"><span class="linenos">129</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiAverageOutputs</span><span class="p">(</span>
-</span><span id="cifti_average-130"><a href="#cifti_average-130"><span class="linenos">130</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="cifti_average-131"><a href="#cifti_average-131"><span class="linenos">131</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
-</span><span id="cifti_average-132"><a href="#cifti_average-132"><span class="linenos">132</span></a>    <span class="p">)</span>
-</span><span id="cifti_average-133"><a href="#cifti_average-133"><span class="linenos">133</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="cifti_average-134"><a href="#cifti_average-134"><span class="linenos">134</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="cifti_average-99"><a href="#cifti_average-99"><span class="linenos"> 99</span></a><span class="sd">    Average cifti files.</span>
+</span><span id="cifti_average-100"><a href="#cifti_average-100"><span class="linenos">100</span></a><span class="sd">    </span>
+</span><span id="cifti_average-101"><a href="#cifti_average-101"><span class="linenos">101</span></a><span class="sd">    Averages cifti files together. Files without -weight specified are given a</span>
+</span><span id="cifti_average-102"><a href="#cifti_average-102"><span class="linenos">102</span></a><span class="sd">    weight of 1. If -exclude-outliers is specified, at each element, the data</span>
+</span><span id="cifti_average-103"><a href="#cifti_average-103"><span class="linenos">103</span></a><span class="sd">    across all files is taken as a set, its unweighted mean and sample standard</span>
+</span><span id="cifti_average-104"><a href="#cifti_average-104"><span class="linenos">104</span></a><span class="sd">    deviation are found, and values outside the specified number of standard</span>
+</span><span id="cifti_average-105"><a href="#cifti_average-105"><span class="linenos">105</span></a><span class="sd">    deviations are excluded from the (potentially weighted) average at that</span>
+</span><span id="cifti_average-106"><a href="#cifti_average-106"><span class="linenos">106</span></a><span class="sd">    element.</span>
+</span><span id="cifti_average-107"><a href="#cifti_average-107"><span class="linenos">107</span></a><span class="sd">    </span>
+</span><span id="cifti_average-108"><a href="#cifti_average-108"><span class="linenos">108</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_average-109"><a href="#cifti_average-109"><span class="linenos">109</span></a><span class="sd">        cifti_out: output cifti file.</span>
+</span><span id="cifti_average-110"><a href="#cifti_average-110"><span class="linenos">110</span></a><span class="sd">        exclude_outliers: exclude outliers by standard deviation of each\</span>
+</span><span id="cifti_average-111"><a href="#cifti_average-111"><span class="linenos">111</span></a><span class="sd">            element across files.</span>
+</span><span id="cifti_average-112"><a href="#cifti_average-112"><span class="linenos">112</span></a><span class="sd">        opt_mem_limit_limit_gb: restrict memory used for file reading\</span>
+</span><span id="cifti_average-113"><a href="#cifti_average-113"><span class="linenos">113</span></a><span class="sd">            efficiency: memory limit in gigabytes.</span>
+</span><span id="cifti_average-114"><a href="#cifti_average-114"><span class="linenos">114</span></a><span class="sd">        cifti: specify an input file.</span>
+</span><span id="cifti_average-115"><a href="#cifti_average-115"><span class="linenos">115</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_average-116"><a href="#cifti_average-116"><span class="linenos">116</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_average-117"><a href="#cifti_average-117"><span class="linenos">117</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiAverageOutputs`).</span>
+</span><span id="cifti_average-118"><a href="#cifti_average-118"><span class="linenos">118</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_average-119"><a href="#cifti_average-119"><span class="linenos">119</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_average-120"><a href="#cifti_average-120"><span class="linenos">120</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_AVERAGE_METADATA</span><span class="p">)</span>
+</span><span id="cifti_average-121"><a href="#cifti_average-121"><span class="linenos">121</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="cifti_average-122"><a href="#cifti_average-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="cifti_average-123"><a href="#cifti_average-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-average&quot;</span><span class="p">)</span>
+</span><span id="cifti_average-124"><a href="#cifti_average-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">))</span>
+</span><span id="cifti_average-125"><a href="#cifti_average-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">exclude_outliers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_average-126"><a href="#cifti_average-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">exclude_outliers</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_average-127"><a href="#cifti_average-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">opt_mem_limit_limit_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_average-128"><a href="#cifti_average-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-mem-limit&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">opt_mem_limit_limit_gb</span><span class="p">)])</span>
+</span><span id="cifti_average-129"><a href="#cifti_average-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_average-130"><a href="#cifti_average-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">cifti</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="cifti_average-131"><a href="#cifti_average-131"><span class="linenos">131</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiAverageOutputs</span><span class="p">(</span>
+</span><span id="cifti_average-132"><a href="#cifti_average-132"><span class="linenos">132</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="cifti_average-133"><a href="#cifti_average-133"><span class="linenos">133</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+</span><span id="cifti_average-134"><a href="#cifti_average-134"><span class="linenos">134</span></a>    <span class="p">)</span>
+</span><span id="cifti_average-135"><a href="#cifti_average-135"><span class="linenos">135</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="cifti_average-136"><a href="#cifti_average-136"><span class="linenos">136</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

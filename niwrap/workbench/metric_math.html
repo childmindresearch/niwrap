@@ -105,7 +105,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">METRIC_MATH_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1f6625acd3e32ae587692a73656da29d21030495&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;26b37722b1391b064bb4f0b70b9d988dab70ca5e&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;metric-math&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;fcpindi/c-pac:latest&quot;</span><span class="p">,</span>
@@ -140,142 +140,143 @@
 </span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">            </span>
 </span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="p">))</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-column&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span><span class="p">])</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_repeat</span><span class="p">:</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-repeat&quot;</span><span class="p">)</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-var&quot;</span><span class="p">)</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="p">))</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-column&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span><span class="p">])</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_repeat</span><span class="p">:</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-repeat&quot;</span><span class="p">)</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="k">class</span> <span class="nc">MetricMathOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    Output object returned when calling `metric_math(...)`.</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output metric&quot;&quot;&quot;</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="k">class</span> <span class="nc">MetricMathOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    Output object returned when calling `metric_math(...)`.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output metric&quot;&quot;&quot;</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="k">def</span> <span class="nf">metric_math</span><span class="p">(</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MetricMathVar</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricMathOutputs</span><span class="p">:</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    metric-math by Washington University School of Medicin.</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">    </span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    Evaluate expression on metric files.</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    </span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    This command evaluates &lt;expression&gt; at each surface vertex independently.</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    There must be at least one -var option (to get the structure, number of</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    vertices, and number of columns from), even if the &lt;name&gt; specified in it</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    isn&#39;t used in &lt;expression&gt;. All metrics must have the same number of</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    vertices. Filenames are not valid in &lt;expression&gt;, use a variable name and a</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    -var option with matching &lt;name&gt; to specify an input file. If the -column</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    option is given to any -var option, only one column is used from that file.</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    If -repeat is specified, the file must either have only one column, or have</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    the -column option specified. All files that don&#39;t use -repeat must have the</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    same number of columns requested to be used. The format of &lt;expression&gt; is</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    as follows:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    </span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    Expressions consist of constants, variables, operators, parentheses, and</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    functions, in infix notation, such as &#39;exp(-x + 3) * scale&#39;. Variables are</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    strings of any length, using the characters a-z, A-Z, 0-9, and _, but may</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    not take the name of a named constant. Currently, there is only one named</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    constant, PI. The operators are +, -, *, /, ^, &gt;, &lt;, &gt;=, &lt;=, ==, !=, !, &amp;&amp;,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    ||. These behave as in C, except that ^ is exponentiation, i.e. pow(x, y),</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    and takes higher precedence than other binary operators (also, &#39;-3^-4^-5&#39;</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    means &#39;-(3^(-(4^-5)))&#39;). The &lt;=, &gt;=, ==, and != operators are given a small</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    amount of wiggle room, equal to one millionth of the smaller of the absolute</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">    values of the values being compared.</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">    </span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">    Comparison and logical operators return 0 or 1, you can do masking with</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">    expressions like &#39;x * (mask &gt; 0)&#39;. For all logical operators, an input is</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    considered true iff it is greater than 0. The expression &#39;0 &lt; x &lt; 5&#39; is not</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">    syntactically wrong, but it will NOT do what is desired, because it is</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    evaluated left to right, i.e. &#39;((0 &lt; x) &lt; 5)&#39;, which will always return 1,</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">    as both possible results of a comparison are less than 5. A warning is</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    generated if an expression of this type is detected. Use something like &#39;x &gt;</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    0 &amp;&amp; x &lt; 5&#39; to get the desired behavior.</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    </span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    Whitespace between elements is ignored, &#39; sin ( 2 * x ) &#39; is equivalent to</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    &#39;sin(2*x)&#39;, but &#39;s in(2*x)&#39; is an error. Implied multiplication is not</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    allowed, the expression &#39;2x&#39; will be parsed as a variable. Parentheses are</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">    (), do not use [] or {}. Functions require parentheses, the expression &#39;sin</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    x&#39; is an error.</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    </span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    The following functions are supported:</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    </span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    sin: 1 argument, the sine of the argument (units are radians)</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    cos: 1 argument, the cosine of the argument (units are radians)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    tan: 1 argument, the tangent of the argument (units are radians)</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    asin: 1 argument, the inverse of sine of the argument, in radians</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    acos: 1 argument, the inverse of cosine of the argument, in radians</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    atan: 1 argument, the inverse of tangent of the argument, in radians</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    atan2: 2 arguments, atan2(y, x) returns the inverse of tangent of (y/x), in</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    radians, determining quadrant by the sign of both arguments</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">    sinh: 1 argument, the hyperbolic sine of the argument</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">    cosh: 1 argument, the hyperbolic cosine of the argument</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">    tanh: 1 argument, the hyperbolic tangent of the argument</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">    asinh: 1 argument, the inverse hyperbolic sine of the argument</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">    acosh: 1 argument, the inverse hyperbolic cosine of the argument</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">    atanh: 1 argument, the inverse hyperbolic tangent of the argument</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">    sinc: 1 argument, sinc(0) = 1, sin(x) / x otherwise</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    ln: 1 argument, the natural logarithm of the argument</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    exp: 1 argument, the constant e raised to the power of the argument</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    log: 1 argument, the base 10 logarithm of the argument</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    log2: 1 argument, the base 2 logarithm of the argument</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    sqrt: 1 argument, the square root of the argument</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    abs: 1 argument, the absolute value of the argument</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    floor: 1 argument, the largest integer not greater than the argument</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">    round: 1 argument, the nearest integer, with ties rounded away from zero</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">    ceil: 1 argument, the smallest integer not less than the argument</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">    min: 2 arguments, min(x, y) returns y if (x &gt; y), x otherwise</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    max: 2 arguments, max(x, y) returns y if (x &lt; y), x otherwise</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">    mod: 2 arguments, mod(x, y) = x - y * floor(x / y), or 0 if y == 0</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    .</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    </span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    Args:</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">        expression: the expression to evaluate, in quotes.</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">        metric_out: the output metric.</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        opt_fixnan_replace: replace NaN results with a value: value to replace\</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">            NaN with.</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        var: a metric to use as a variable.</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    Returns:</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        NamedTuple of outputs (described in `MetricMathOutputs`).</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_MATH_METADATA</span><span class="p">)</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-math&quot;</span><span class="p">)</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">))</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">opt_fixnan_replace</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-fixnan&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">opt_fixnan_replace</span><span class="p">)])</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-var&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">var</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricMathOutputs</span><span class="p">(</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="p">)</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="k">def</span> <span class="nf">metric_math</span><span class="p">(</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MetricMathVar</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricMathOutputs</span><span class="p">:</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">    metric-math by Washington University School of Medicin.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    </span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    Evaluate expression on metric files.</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    </span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    This command evaluates &lt;expression&gt; at each surface vertex independently.</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    There must be at least one -var option (to get the structure, number of</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    vertices, and number of columns from), even if the &lt;name&gt; specified in it</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    isn&#39;t used in &lt;expression&gt;. All metrics must have the same number of</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    vertices. Filenames are not valid in &lt;expression&gt;, use a variable name and a</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    -var option with matching &lt;name&gt; to specify an input file. If the -column</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    option is given to any -var option, only one column is used from that file.</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    If -repeat is specified, the file must either have only one column, or have</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    the -column option specified. All files that don&#39;t use -repeat must have the</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    same number of columns requested to be used. The format of &lt;expression&gt; is</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    as follows:</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    </span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    Expressions consist of constants, variables, operators, parentheses, and</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    functions, in infix notation, such as &#39;exp(-x + 3) * scale&#39;. Variables are</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    strings of any length, using the characters a-z, A-Z, 0-9, and _, but may</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    not take the name of a named constant. Currently, there is only one named</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    constant, PI. The operators are +, -, *, /, ^, &gt;, &lt;, &gt;=, &lt;=, ==, !=, !, &amp;&amp;,</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    ||. These behave as in C, except that ^ is exponentiation, i.e. pow(x, y),</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    and takes higher precedence than other binary operators (also, &#39;-3^-4^-5&#39;</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    means &#39;-(3^(-(4^-5)))&#39;). The &lt;=, &gt;=, ==, and != operators are given a small</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">    amount of wiggle room, equal to one millionth of the smaller of the absolute</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">    values of the values being compared.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">    </span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">    Comparison and logical operators return 0 or 1, you can do masking with</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    expressions like &#39;x * (mask &gt; 0)&#39;. For all logical operators, an input is</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">    considered true iff it is greater than 0. The expression &#39;0 &lt; x &lt; 5&#39; is not</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    syntactically wrong, but it will NOT do what is desired, because it is</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">    evaluated left to right, i.e. &#39;((0 &lt; x) &lt; 5)&#39;, which will always return 1,</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    as both possible results of a comparison are less than 5. A warning is</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    generated if an expression of this type is detected. Use something like &#39;x &gt;</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    0 &amp;&amp; x &lt; 5&#39; to get the desired behavior.</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    </span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    Whitespace between elements is ignored, &#39; sin ( 2 * x ) &#39; is equivalent to</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    &#39;sin(2*x)&#39;, but &#39;s in(2*x)&#39; is an error. Implied multiplication is not</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">    allowed, the expression &#39;2x&#39; will be parsed as a variable. Parentheses are</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    (), do not use [] or {}. Functions require parentheses, the expression &#39;sin</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    x&#39; is an error.</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    </span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    The following functions are supported:</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    </span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    sin: 1 argument, the sine of the argument (units are radians)</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    cos: 1 argument, the cosine of the argument (units are radians)</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    tan: 1 argument, the tangent of the argument (units are radians)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    asin: 1 argument, the inverse of sine of the argument, in radians</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    acos: 1 argument, the inverse of cosine of the argument, in radians</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    atan: 1 argument, the inverse of tangent of the argument, in radians</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    atan2: 2 arguments, atan2(y, x) returns the inverse of tangent of (y/x), in</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">    radians, determining quadrant by the sign of both arguments</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">    sinh: 1 argument, the hyperbolic sine of the argument</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">    cosh: 1 argument, the hyperbolic cosine of the argument</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">    tanh: 1 argument, the hyperbolic tangent of the argument</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">    asinh: 1 argument, the inverse hyperbolic sine of the argument</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">    acosh: 1 argument, the inverse hyperbolic cosine of the argument</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">    atanh: 1 argument, the inverse hyperbolic tangent of the argument</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    sinc: 1 argument, sinc(0) = 1, sin(x) / x otherwise</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    ln: 1 argument, the natural logarithm of the argument</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    exp: 1 argument, the constant e raised to the power of the argument</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    log: 1 argument, the base 10 logarithm of the argument</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    log2: 1 argument, the base 2 logarithm of the argument</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    sqrt: 1 argument, the square root of the argument</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    abs: 1 argument, the absolute value of the argument</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">    floor: 1 argument, the largest integer not greater than the argument</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">    round: 1 argument, the nearest integer, with ties rounded away from zero</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">    ceil: 1 argument, the smallest integer not less than the argument</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    min: 2 arguments, min(x, y) returns y if (x &gt; y), x otherwise</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">    max: 2 arguments, max(x, y) returns y if (x &lt; y), x otherwise</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    mod: 2 arguments, mod(x, y) = x - y * floor(x / y), or 0 if y == 0</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    .</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    </span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">    Args:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">        expression: the expression to evaluate, in quotes.</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        metric_out: the output metric.</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        opt_fixnan_replace: replace NaN results with a value: value to replace\</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">            NaN with.</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">        var: a metric to use as a variable.</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    Returns:</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">        NamedTuple of outputs (described in `MetricMathOutputs`).</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_MATH_METADATA</span><span class="p">)</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-math&quot;</span><span class="p">)</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">))</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">opt_fixnan_replace</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-fixnan&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">opt_fixnan_replace</span><span class="p">)])</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">var</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricMathOutputs</span><span class="p">(</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="p">)</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="s2">&quot;METRIC_MATH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="s2">&quot;MetricMathOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="s2">&quot;MetricMathVar&quot;</span><span class="p">,</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="s2">&quot;metric_math&quot;</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="p">]</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="s2">&quot;METRIC_MATH_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="s2">&quot;MetricMathOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="s2">&quot;MetricMathVar&quot;</span><span class="p">,</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="s2">&quot;metric_math&quot;</span><span class="p">,</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -284,7 +285,7 @@
                     <div class="attr variable">
             <span class="name">METRIC_MATH_METADATA</span>        =
 <input id="METRIC_MATH_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="METRIC_MATH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1f6625acd3e32ae587692a73656da29d21030495&#39;, name=&#39;metric-math&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="METRIC_MATH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;26b37722b1391b064bb4f0b70b9d988dab70ca5e&#39;, name=&#39;metric-math&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -304,14 +305,14 @@
 
     </div>
     <a class="headerlink" href="#MetricMathOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="MetricMathOutputs-55"><a href="#MetricMathOutputs-55"><span class="linenos">55</span></a><span class="k">class</span> <span class="nc">MetricMathOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="MetricMathOutputs-56"><a href="#MetricMathOutputs-56"><span class="linenos">56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="MetricMathOutputs-57"><a href="#MetricMathOutputs-57"><span class="linenos">57</span></a><span class="sd">    Output object returned when calling `metric_math(...)`.</span>
-</span><span id="MetricMathOutputs-58"><a href="#MetricMathOutputs-58"><span class="linenos">58</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="MetricMathOutputs-59"><a href="#MetricMathOutputs-59"><span class="linenos">59</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="MetricMathOutputs-60"><a href="#MetricMathOutputs-60"><span class="linenos">60</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="MetricMathOutputs-61"><a href="#MetricMathOutputs-61"><span class="linenos">61</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="MetricMathOutputs-62"><a href="#MetricMathOutputs-62"><span class="linenos">62</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output metric&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MetricMathOutputs-56"><a href="#MetricMathOutputs-56"><span class="linenos">56</span></a><span class="k">class</span> <span class="nc">MetricMathOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="MetricMathOutputs-57"><a href="#MetricMathOutputs-57"><span class="linenos">57</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="MetricMathOutputs-58"><a href="#MetricMathOutputs-58"><span class="linenos">58</span></a><span class="sd">    Output object returned when calling `metric_math(...)`.</span>
+</span><span id="MetricMathOutputs-59"><a href="#MetricMathOutputs-59"><span class="linenos">59</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="MetricMathOutputs-60"><a href="#MetricMathOutputs-60"><span class="linenos">60</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="MetricMathOutputs-61"><a href="#MetricMathOutputs-61"><span class="linenos">61</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="MetricMathOutputs-62"><a href="#MetricMathOutputs-62"><span class="linenos">62</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="MetricMathOutputs-63"><a href="#MetricMathOutputs-63"><span class="linenos">63</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output metric&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -410,13 +411,14 @@
 </span><span id="MetricMathVar-43"><a href="#MetricMathVar-43"><span class="linenos">43</span></a><span class="sd">            </span>
 </span><span id="MetricMathVar-44"><a href="#MetricMathVar-44"><span class="linenos">44</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="MetricMathVar-45"><a href="#MetricMathVar-45"><span class="linenos">45</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="MetricMathVar-46"><a href="#MetricMathVar-46"><span class="linenos">46</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-</span><span id="MetricMathVar-47"><a href="#MetricMathVar-47"><span class="linenos">47</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="p">))</span>
-</span><span id="MetricMathVar-48"><a href="#MetricMathVar-48"><span class="linenos">48</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="MetricMathVar-49"><a href="#MetricMathVar-49"><span class="linenos">49</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-column&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span><span class="p">])</span>
-</span><span id="MetricMathVar-50"><a href="#MetricMathVar-50"><span class="linenos">50</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_repeat</span><span class="p">:</span>
-</span><span id="MetricMathVar-51"><a href="#MetricMathVar-51"><span class="linenos">51</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-repeat&quot;</span><span class="p">)</span>
-</span><span id="MetricMathVar-52"><a href="#MetricMathVar-52"><span class="linenos">52</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="MetricMathVar-46"><a href="#MetricMathVar-46"><span class="linenos">46</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-var&quot;</span><span class="p">)</span>
+</span><span id="MetricMathVar-47"><a href="#MetricMathVar-47"><span class="linenos">47</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</span><span id="MetricMathVar-48"><a href="#MetricMathVar-48"><span class="linenos">48</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="p">))</span>
+</span><span id="MetricMathVar-49"><a href="#MetricMathVar-49"><span class="linenos">49</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="MetricMathVar-50"><a href="#MetricMathVar-50"><span class="linenos">50</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-column&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span><span class="p">])</span>
+</span><span id="MetricMathVar-51"><a href="#MetricMathVar-51"><span class="linenos">51</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_repeat</span><span class="p">:</span>
+</span><span id="MetricMathVar-52"><a href="#MetricMathVar-52"><span class="linenos">52</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-repeat&quot;</span><span class="p">)</span>
+</span><span id="MetricMathVar-53"><a href="#MetricMathVar-53"><span class="linenos">53</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -515,13 +517,14 @@
 </span><span id="MetricMathVar.run-43"><a href="#MetricMathVar.run-43"><span class="linenos">43</span></a><span class="sd">            </span>
 </span><span id="MetricMathVar.run-44"><a href="#MetricMathVar.run-44"><span class="linenos">44</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="MetricMathVar.run-45"><a href="#MetricMathVar.run-45"><span class="linenos">45</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="MetricMathVar.run-46"><a href="#MetricMathVar.run-46"><span class="linenos">46</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-</span><span id="MetricMathVar.run-47"><a href="#MetricMathVar.run-47"><span class="linenos">47</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="p">))</span>
-</span><span id="MetricMathVar.run-48"><a href="#MetricMathVar.run-48"><span class="linenos">48</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="MetricMathVar.run-49"><a href="#MetricMathVar.run-49"><span class="linenos">49</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-column&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span><span class="p">])</span>
-</span><span id="MetricMathVar.run-50"><a href="#MetricMathVar.run-50"><span class="linenos">50</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_repeat</span><span class="p">:</span>
-</span><span id="MetricMathVar.run-51"><a href="#MetricMathVar.run-51"><span class="linenos">51</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-repeat&quot;</span><span class="p">)</span>
-</span><span id="MetricMathVar.run-52"><a href="#MetricMathVar.run-52"><span class="linenos">52</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="MetricMathVar.run-46"><a href="#MetricMathVar.run-46"><span class="linenos">46</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-var&quot;</span><span class="p">)</span>
+</span><span id="MetricMathVar.run-47"><a href="#MetricMathVar.run-47"><span class="linenos">47</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</span><span id="MetricMathVar.run-48"><a href="#MetricMathVar.run-48"><span class="linenos">48</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="p">))</span>
+</span><span id="MetricMathVar.run-49"><a href="#MetricMathVar.run-49"><span class="linenos">49</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="MetricMathVar.run-50"><a href="#MetricMathVar.run-50"><span class="linenos">50</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-column&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_column_column</span><span class="p">])</span>
+</span><span id="MetricMathVar.run-51"><a href="#MetricMathVar.run-51"><span class="linenos">51</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_repeat</span><span class="p">:</span>
+</span><span id="MetricMathVar.run-52"><a href="#MetricMathVar.run-52"><span class="linenos">52</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-repeat&quot;</span><span class="p">)</span>
+</span><span id="MetricMathVar.run-53"><a href="#MetricMathVar.run-53"><span class="linenos">53</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -551,115 +554,115 @@
 
     </div>
     <a class="headerlink" href="#metric_math"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="metric_math-65"><a href="#metric_math-65"><span class="linenos"> 65</span></a><span class="k">def</span> <span class="nf">metric_math</span><span class="p">(</span>
-</span><span id="metric_math-66"><a href="#metric_math-66"><span class="linenos"> 66</span></a>    <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="metric_math-67"><a href="#metric_math-67"><span class="linenos"> 67</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="metric_math-68"><a href="#metric_math-68"><span class="linenos"> 68</span></a>    <span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_math-69"><a href="#metric_math-69"><span class="linenos"> 69</span></a>    <span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MetricMathVar</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_math-70"><a href="#metric_math-70"><span class="linenos"> 70</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_math-71"><a href="#metric_math-71"><span class="linenos"> 71</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricMathOutputs</span><span class="p">:</span>
-</span><span id="metric_math-72"><a href="#metric_math-72"><span class="linenos"> 72</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="metric_math-73"><a href="#metric_math-73"><span class="linenos"> 73</span></a><span class="sd">    metric-math by Washington University School of Medicin.</span>
-</span><span id="metric_math-74"><a href="#metric_math-74"><span class="linenos"> 74</span></a><span class="sd">    </span>
-</span><span id="metric_math-75"><a href="#metric_math-75"><span class="linenos"> 75</span></a><span class="sd">    Evaluate expression on metric files.</span>
-</span><span id="metric_math-76"><a href="#metric_math-76"><span class="linenos"> 76</span></a><span class="sd">    </span>
-</span><span id="metric_math-77"><a href="#metric_math-77"><span class="linenos"> 77</span></a><span class="sd">    This command evaluates &lt;expression&gt; at each surface vertex independently.</span>
-</span><span id="metric_math-78"><a href="#metric_math-78"><span class="linenos"> 78</span></a><span class="sd">    There must be at least one -var option (to get the structure, number of</span>
-</span><span id="metric_math-79"><a href="#metric_math-79"><span class="linenos"> 79</span></a><span class="sd">    vertices, and number of columns from), even if the &lt;name&gt; specified in it</span>
-</span><span id="metric_math-80"><a href="#metric_math-80"><span class="linenos"> 80</span></a><span class="sd">    isn&#39;t used in &lt;expression&gt;. All metrics must have the same number of</span>
-</span><span id="metric_math-81"><a href="#metric_math-81"><span class="linenos"> 81</span></a><span class="sd">    vertices. Filenames are not valid in &lt;expression&gt;, use a variable name and a</span>
-</span><span id="metric_math-82"><a href="#metric_math-82"><span class="linenos"> 82</span></a><span class="sd">    -var option with matching &lt;name&gt; to specify an input file. If the -column</span>
-</span><span id="metric_math-83"><a href="#metric_math-83"><span class="linenos"> 83</span></a><span class="sd">    option is given to any -var option, only one column is used from that file.</span>
-</span><span id="metric_math-84"><a href="#metric_math-84"><span class="linenos"> 84</span></a><span class="sd">    If -repeat is specified, the file must either have only one column, or have</span>
-</span><span id="metric_math-85"><a href="#metric_math-85"><span class="linenos"> 85</span></a><span class="sd">    the -column option specified. All files that don&#39;t use -repeat must have the</span>
-</span><span id="metric_math-86"><a href="#metric_math-86"><span class="linenos"> 86</span></a><span class="sd">    same number of columns requested to be used. The format of &lt;expression&gt; is</span>
-</span><span id="metric_math-87"><a href="#metric_math-87"><span class="linenos"> 87</span></a><span class="sd">    as follows:</span>
-</span><span id="metric_math-88"><a href="#metric_math-88"><span class="linenos"> 88</span></a><span class="sd">    </span>
-</span><span id="metric_math-89"><a href="#metric_math-89"><span class="linenos"> 89</span></a><span class="sd">    Expressions consist of constants, variables, operators, parentheses, and</span>
-</span><span id="metric_math-90"><a href="#metric_math-90"><span class="linenos"> 90</span></a><span class="sd">    functions, in infix notation, such as &#39;exp(-x + 3) * scale&#39;. Variables are</span>
-</span><span id="metric_math-91"><a href="#metric_math-91"><span class="linenos"> 91</span></a><span class="sd">    strings of any length, using the characters a-z, A-Z, 0-9, and _, but may</span>
-</span><span id="metric_math-92"><a href="#metric_math-92"><span class="linenos"> 92</span></a><span class="sd">    not take the name of a named constant. Currently, there is only one named</span>
-</span><span id="metric_math-93"><a href="#metric_math-93"><span class="linenos"> 93</span></a><span class="sd">    constant, PI. The operators are +, -, *, /, ^, &gt;, &lt;, &gt;=, &lt;=, ==, !=, !, &amp;&amp;,</span>
-</span><span id="metric_math-94"><a href="#metric_math-94"><span class="linenos"> 94</span></a><span class="sd">    ||. These behave as in C, except that ^ is exponentiation, i.e. pow(x, y),</span>
-</span><span id="metric_math-95"><a href="#metric_math-95"><span class="linenos"> 95</span></a><span class="sd">    and takes higher precedence than other binary operators (also, &#39;-3^-4^-5&#39;</span>
-</span><span id="metric_math-96"><a href="#metric_math-96"><span class="linenos"> 96</span></a><span class="sd">    means &#39;-(3^(-(4^-5)))&#39;). The &lt;=, &gt;=, ==, and != operators are given a small</span>
-</span><span id="metric_math-97"><a href="#metric_math-97"><span class="linenos"> 97</span></a><span class="sd">    amount of wiggle room, equal to one millionth of the smaller of the absolute</span>
-</span><span id="metric_math-98"><a href="#metric_math-98"><span class="linenos"> 98</span></a><span class="sd">    values of the values being compared.</span>
-</span><span id="metric_math-99"><a href="#metric_math-99"><span class="linenos"> 99</span></a><span class="sd">    </span>
-</span><span id="metric_math-100"><a href="#metric_math-100"><span class="linenos">100</span></a><span class="sd">    Comparison and logical operators return 0 or 1, you can do masking with</span>
-</span><span id="metric_math-101"><a href="#metric_math-101"><span class="linenos">101</span></a><span class="sd">    expressions like &#39;x * (mask &gt; 0)&#39;. For all logical operators, an input is</span>
-</span><span id="metric_math-102"><a href="#metric_math-102"><span class="linenos">102</span></a><span class="sd">    considered true iff it is greater than 0. The expression &#39;0 &lt; x &lt; 5&#39; is not</span>
-</span><span id="metric_math-103"><a href="#metric_math-103"><span class="linenos">103</span></a><span class="sd">    syntactically wrong, but it will NOT do what is desired, because it is</span>
-</span><span id="metric_math-104"><a href="#metric_math-104"><span class="linenos">104</span></a><span class="sd">    evaluated left to right, i.e. &#39;((0 &lt; x) &lt; 5)&#39;, which will always return 1,</span>
-</span><span id="metric_math-105"><a href="#metric_math-105"><span class="linenos">105</span></a><span class="sd">    as both possible results of a comparison are less than 5. A warning is</span>
-</span><span id="metric_math-106"><a href="#metric_math-106"><span class="linenos">106</span></a><span class="sd">    generated if an expression of this type is detected. Use something like &#39;x &gt;</span>
-</span><span id="metric_math-107"><a href="#metric_math-107"><span class="linenos">107</span></a><span class="sd">    0 &amp;&amp; x &lt; 5&#39; to get the desired behavior.</span>
-</span><span id="metric_math-108"><a href="#metric_math-108"><span class="linenos">108</span></a><span class="sd">    </span>
-</span><span id="metric_math-109"><a href="#metric_math-109"><span class="linenos">109</span></a><span class="sd">    Whitespace between elements is ignored, &#39; sin ( 2 * x ) &#39; is equivalent to</span>
-</span><span id="metric_math-110"><a href="#metric_math-110"><span class="linenos">110</span></a><span class="sd">    &#39;sin(2*x)&#39;, but &#39;s in(2*x)&#39; is an error. Implied multiplication is not</span>
-</span><span id="metric_math-111"><a href="#metric_math-111"><span class="linenos">111</span></a><span class="sd">    allowed, the expression &#39;2x&#39; will be parsed as a variable. Parentheses are</span>
-</span><span id="metric_math-112"><a href="#metric_math-112"><span class="linenos">112</span></a><span class="sd">    (), do not use [] or {}. Functions require parentheses, the expression &#39;sin</span>
-</span><span id="metric_math-113"><a href="#metric_math-113"><span class="linenos">113</span></a><span class="sd">    x&#39; is an error.</span>
-</span><span id="metric_math-114"><a href="#metric_math-114"><span class="linenos">114</span></a><span class="sd">    </span>
-</span><span id="metric_math-115"><a href="#metric_math-115"><span class="linenos">115</span></a><span class="sd">    The following functions are supported:</span>
-</span><span id="metric_math-116"><a href="#metric_math-116"><span class="linenos">116</span></a><span class="sd">    </span>
-</span><span id="metric_math-117"><a href="#metric_math-117"><span class="linenos">117</span></a><span class="sd">    sin: 1 argument, the sine of the argument (units are radians)</span>
-</span><span id="metric_math-118"><a href="#metric_math-118"><span class="linenos">118</span></a><span class="sd">    cos: 1 argument, the cosine of the argument (units are radians)</span>
-</span><span id="metric_math-119"><a href="#metric_math-119"><span class="linenos">119</span></a><span class="sd">    tan: 1 argument, the tangent of the argument (units are radians)</span>
-</span><span id="metric_math-120"><a href="#metric_math-120"><span class="linenos">120</span></a><span class="sd">    asin: 1 argument, the inverse of sine of the argument, in radians</span>
-</span><span id="metric_math-121"><a href="#metric_math-121"><span class="linenos">121</span></a><span class="sd">    acos: 1 argument, the inverse of cosine of the argument, in radians</span>
-</span><span id="metric_math-122"><a href="#metric_math-122"><span class="linenos">122</span></a><span class="sd">    atan: 1 argument, the inverse of tangent of the argument, in radians</span>
-</span><span id="metric_math-123"><a href="#metric_math-123"><span class="linenos">123</span></a><span class="sd">    atan2: 2 arguments, atan2(y, x) returns the inverse of tangent of (y/x), in</span>
-</span><span id="metric_math-124"><a href="#metric_math-124"><span class="linenos">124</span></a><span class="sd">    radians, determining quadrant by the sign of both arguments</span>
-</span><span id="metric_math-125"><a href="#metric_math-125"><span class="linenos">125</span></a><span class="sd">    sinh: 1 argument, the hyperbolic sine of the argument</span>
-</span><span id="metric_math-126"><a href="#metric_math-126"><span class="linenos">126</span></a><span class="sd">    cosh: 1 argument, the hyperbolic cosine of the argument</span>
-</span><span id="metric_math-127"><a href="#metric_math-127"><span class="linenos">127</span></a><span class="sd">    tanh: 1 argument, the hyperbolic tangent of the argument</span>
-</span><span id="metric_math-128"><a href="#metric_math-128"><span class="linenos">128</span></a><span class="sd">    asinh: 1 argument, the inverse hyperbolic sine of the argument</span>
-</span><span id="metric_math-129"><a href="#metric_math-129"><span class="linenos">129</span></a><span class="sd">    acosh: 1 argument, the inverse hyperbolic cosine of the argument</span>
-</span><span id="metric_math-130"><a href="#metric_math-130"><span class="linenos">130</span></a><span class="sd">    atanh: 1 argument, the inverse hyperbolic tangent of the argument</span>
-</span><span id="metric_math-131"><a href="#metric_math-131"><span class="linenos">131</span></a><span class="sd">    sinc: 1 argument, sinc(0) = 1, sin(x) / x otherwise</span>
-</span><span id="metric_math-132"><a href="#metric_math-132"><span class="linenos">132</span></a><span class="sd">    ln: 1 argument, the natural logarithm of the argument</span>
-</span><span id="metric_math-133"><a href="#metric_math-133"><span class="linenos">133</span></a><span class="sd">    exp: 1 argument, the constant e raised to the power of the argument</span>
-</span><span id="metric_math-134"><a href="#metric_math-134"><span class="linenos">134</span></a><span class="sd">    log: 1 argument, the base 10 logarithm of the argument</span>
-</span><span id="metric_math-135"><a href="#metric_math-135"><span class="linenos">135</span></a><span class="sd">    log2: 1 argument, the base 2 logarithm of the argument</span>
-</span><span id="metric_math-136"><a href="#metric_math-136"><span class="linenos">136</span></a><span class="sd">    sqrt: 1 argument, the square root of the argument</span>
-</span><span id="metric_math-137"><a href="#metric_math-137"><span class="linenos">137</span></a><span class="sd">    abs: 1 argument, the absolute value of the argument</span>
-</span><span id="metric_math-138"><a href="#metric_math-138"><span class="linenos">138</span></a><span class="sd">    floor: 1 argument, the largest integer not greater than the argument</span>
-</span><span id="metric_math-139"><a href="#metric_math-139"><span class="linenos">139</span></a><span class="sd">    round: 1 argument, the nearest integer, with ties rounded away from zero</span>
-</span><span id="metric_math-140"><a href="#metric_math-140"><span class="linenos">140</span></a><span class="sd">    ceil: 1 argument, the smallest integer not less than the argument</span>
-</span><span id="metric_math-141"><a href="#metric_math-141"><span class="linenos">141</span></a><span class="sd">    min: 2 arguments, min(x, y) returns y if (x &gt; y), x otherwise</span>
-</span><span id="metric_math-142"><a href="#metric_math-142"><span class="linenos">142</span></a><span class="sd">    max: 2 arguments, max(x, y) returns y if (x &lt; y), x otherwise</span>
-</span><span id="metric_math-143"><a href="#metric_math-143"><span class="linenos">143</span></a><span class="sd">    mod: 2 arguments, mod(x, y) = x - y * floor(x / y), or 0 if y == 0</span>
-</span><span id="metric_math-144"><a href="#metric_math-144"><span class="linenos">144</span></a><span class="sd">    clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)</span>
-</span><span id="metric_math-145"><a href="#metric_math-145"><span class="linenos">145</span></a><span class="sd">    .</span>
-</span><span id="metric_math-146"><a href="#metric_math-146"><span class="linenos">146</span></a><span class="sd">    </span>
-</span><span id="metric_math-147"><a href="#metric_math-147"><span class="linenos">147</span></a><span class="sd">    Args:</span>
-</span><span id="metric_math-148"><a href="#metric_math-148"><span class="linenos">148</span></a><span class="sd">        expression: the expression to evaluate, in quotes.</span>
-</span><span id="metric_math-149"><a href="#metric_math-149"><span class="linenos">149</span></a><span class="sd">        metric_out: the output metric.</span>
-</span><span id="metric_math-150"><a href="#metric_math-150"><span class="linenos">150</span></a><span class="sd">        opt_fixnan_replace: replace NaN results with a value: value to replace\</span>
-</span><span id="metric_math-151"><a href="#metric_math-151"><span class="linenos">151</span></a><span class="sd">            NaN with.</span>
-</span><span id="metric_math-152"><a href="#metric_math-152"><span class="linenos">152</span></a><span class="sd">        var: a metric to use as a variable.</span>
-</span><span id="metric_math-153"><a href="#metric_math-153"><span class="linenos">153</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="metric_math-154"><a href="#metric_math-154"><span class="linenos">154</span></a><span class="sd">    Returns:</span>
-</span><span id="metric_math-155"><a href="#metric_math-155"><span class="linenos">155</span></a><span class="sd">        NamedTuple of outputs (described in `MetricMathOutputs`).</span>
-</span><span id="metric_math-156"><a href="#metric_math-156"><span class="linenos">156</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="metric_math-157"><a href="#metric_math-157"><span class="linenos">157</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="metric_math-158"><a href="#metric_math-158"><span class="linenos">158</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_MATH_METADATA</span><span class="p">)</span>
-</span><span id="metric_math-159"><a href="#metric_math-159"><span class="linenos">159</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="metric_math-160"><a href="#metric_math-160"><span class="linenos">160</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="metric_math-161"><a href="#metric_math-161"><span class="linenos">161</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-math&quot;</span><span class="p">)</span>
-</span><span id="metric_math-162"><a href="#metric_math-162"><span class="linenos">162</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
-</span><span id="metric_math-163"><a href="#metric_math-163"><span class="linenos">163</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">))</span>
-</span><span id="metric_math-164"><a href="#metric_math-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">opt_fixnan_replace</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="metric_math-165"><a href="#metric_math-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-fixnan&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">opt_fixnan_replace</span><span class="p">)])</span>
-</span><span id="metric_math-166"><a href="#metric_math-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="metric_math-167"><a href="#metric_math-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-var&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">var</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="metric_math-168"><a href="#metric_math-168"><span class="linenos">168</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricMathOutputs</span><span class="p">(</span>
-</span><span id="metric_math-169"><a href="#metric_math-169"><span class="linenos">169</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="metric_math-170"><a href="#metric_math-170"><span class="linenos">170</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
-</span><span id="metric_math-171"><a href="#metric_math-171"><span class="linenos">171</span></a>    <span class="p">)</span>
-</span><span id="metric_math-172"><a href="#metric_math-172"><span class="linenos">172</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="metric_math-173"><a href="#metric_math-173"><span class="linenos">173</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="metric_math-66"><a href="#metric_math-66"><span class="linenos"> 66</span></a><span class="k">def</span> <span class="nf">metric_math</span><span class="p">(</span>
+</span><span id="metric_math-67"><a href="#metric_math-67"><span class="linenos"> 67</span></a>    <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="metric_math-68"><a href="#metric_math-68"><span class="linenos"> 68</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="metric_math-69"><a href="#metric_math-69"><span class="linenos"> 69</span></a>    <span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_math-70"><a href="#metric_math-70"><span class="linenos"> 70</span></a>    <span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MetricMathVar</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_math-71"><a href="#metric_math-71"><span class="linenos"> 71</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_math-72"><a href="#metric_math-72"><span class="linenos"> 72</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricMathOutputs</span><span class="p">:</span>
+</span><span id="metric_math-73"><a href="#metric_math-73"><span class="linenos"> 73</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="metric_math-74"><a href="#metric_math-74"><span class="linenos"> 74</span></a><span class="sd">    metric-math by Washington University School of Medicin.</span>
+</span><span id="metric_math-75"><a href="#metric_math-75"><span class="linenos"> 75</span></a><span class="sd">    </span>
+</span><span id="metric_math-76"><a href="#metric_math-76"><span class="linenos"> 76</span></a><span class="sd">    Evaluate expression on metric files.</span>
+</span><span id="metric_math-77"><a href="#metric_math-77"><span class="linenos"> 77</span></a><span class="sd">    </span>
+</span><span id="metric_math-78"><a href="#metric_math-78"><span class="linenos"> 78</span></a><span class="sd">    This command evaluates &lt;expression&gt; at each surface vertex independently.</span>
+</span><span id="metric_math-79"><a href="#metric_math-79"><span class="linenos"> 79</span></a><span class="sd">    There must be at least one -var option (to get the structure, number of</span>
+</span><span id="metric_math-80"><a href="#metric_math-80"><span class="linenos"> 80</span></a><span class="sd">    vertices, and number of columns from), even if the &lt;name&gt; specified in it</span>
+</span><span id="metric_math-81"><a href="#metric_math-81"><span class="linenos"> 81</span></a><span class="sd">    isn&#39;t used in &lt;expression&gt;. All metrics must have the same number of</span>
+</span><span id="metric_math-82"><a href="#metric_math-82"><span class="linenos"> 82</span></a><span class="sd">    vertices. Filenames are not valid in &lt;expression&gt;, use a variable name and a</span>
+</span><span id="metric_math-83"><a href="#metric_math-83"><span class="linenos"> 83</span></a><span class="sd">    -var option with matching &lt;name&gt; to specify an input file. If the -column</span>
+</span><span id="metric_math-84"><a href="#metric_math-84"><span class="linenos"> 84</span></a><span class="sd">    option is given to any -var option, only one column is used from that file.</span>
+</span><span id="metric_math-85"><a href="#metric_math-85"><span class="linenos"> 85</span></a><span class="sd">    If -repeat is specified, the file must either have only one column, or have</span>
+</span><span id="metric_math-86"><a href="#metric_math-86"><span class="linenos"> 86</span></a><span class="sd">    the -column option specified. All files that don&#39;t use -repeat must have the</span>
+</span><span id="metric_math-87"><a href="#metric_math-87"><span class="linenos"> 87</span></a><span class="sd">    same number of columns requested to be used. The format of &lt;expression&gt; is</span>
+</span><span id="metric_math-88"><a href="#metric_math-88"><span class="linenos"> 88</span></a><span class="sd">    as follows:</span>
+</span><span id="metric_math-89"><a href="#metric_math-89"><span class="linenos"> 89</span></a><span class="sd">    </span>
+</span><span id="metric_math-90"><a href="#metric_math-90"><span class="linenos"> 90</span></a><span class="sd">    Expressions consist of constants, variables, operators, parentheses, and</span>
+</span><span id="metric_math-91"><a href="#metric_math-91"><span class="linenos"> 91</span></a><span class="sd">    functions, in infix notation, such as &#39;exp(-x + 3) * scale&#39;. Variables are</span>
+</span><span id="metric_math-92"><a href="#metric_math-92"><span class="linenos"> 92</span></a><span class="sd">    strings of any length, using the characters a-z, A-Z, 0-9, and _, but may</span>
+</span><span id="metric_math-93"><a href="#metric_math-93"><span class="linenos"> 93</span></a><span class="sd">    not take the name of a named constant. Currently, there is only one named</span>
+</span><span id="metric_math-94"><a href="#metric_math-94"><span class="linenos"> 94</span></a><span class="sd">    constant, PI. The operators are +, -, *, /, ^, &gt;, &lt;, &gt;=, &lt;=, ==, !=, !, &amp;&amp;,</span>
+</span><span id="metric_math-95"><a href="#metric_math-95"><span class="linenos"> 95</span></a><span class="sd">    ||. These behave as in C, except that ^ is exponentiation, i.e. pow(x, y),</span>
+</span><span id="metric_math-96"><a href="#metric_math-96"><span class="linenos"> 96</span></a><span class="sd">    and takes higher precedence than other binary operators (also, &#39;-3^-4^-5&#39;</span>
+</span><span id="metric_math-97"><a href="#metric_math-97"><span class="linenos"> 97</span></a><span class="sd">    means &#39;-(3^(-(4^-5)))&#39;). The &lt;=, &gt;=, ==, and != operators are given a small</span>
+</span><span id="metric_math-98"><a href="#metric_math-98"><span class="linenos"> 98</span></a><span class="sd">    amount of wiggle room, equal to one millionth of the smaller of the absolute</span>
+</span><span id="metric_math-99"><a href="#metric_math-99"><span class="linenos"> 99</span></a><span class="sd">    values of the values being compared.</span>
+</span><span id="metric_math-100"><a href="#metric_math-100"><span class="linenos">100</span></a><span class="sd">    </span>
+</span><span id="metric_math-101"><a href="#metric_math-101"><span class="linenos">101</span></a><span class="sd">    Comparison and logical operators return 0 or 1, you can do masking with</span>
+</span><span id="metric_math-102"><a href="#metric_math-102"><span class="linenos">102</span></a><span class="sd">    expressions like &#39;x * (mask &gt; 0)&#39;. For all logical operators, an input is</span>
+</span><span id="metric_math-103"><a href="#metric_math-103"><span class="linenos">103</span></a><span class="sd">    considered true iff it is greater than 0. The expression &#39;0 &lt; x &lt; 5&#39; is not</span>
+</span><span id="metric_math-104"><a href="#metric_math-104"><span class="linenos">104</span></a><span class="sd">    syntactically wrong, but it will NOT do what is desired, because it is</span>
+</span><span id="metric_math-105"><a href="#metric_math-105"><span class="linenos">105</span></a><span class="sd">    evaluated left to right, i.e. &#39;((0 &lt; x) &lt; 5)&#39;, which will always return 1,</span>
+</span><span id="metric_math-106"><a href="#metric_math-106"><span class="linenos">106</span></a><span class="sd">    as both possible results of a comparison are less than 5. A warning is</span>
+</span><span id="metric_math-107"><a href="#metric_math-107"><span class="linenos">107</span></a><span class="sd">    generated if an expression of this type is detected. Use something like &#39;x &gt;</span>
+</span><span id="metric_math-108"><a href="#metric_math-108"><span class="linenos">108</span></a><span class="sd">    0 &amp;&amp; x &lt; 5&#39; to get the desired behavior.</span>
+</span><span id="metric_math-109"><a href="#metric_math-109"><span class="linenos">109</span></a><span class="sd">    </span>
+</span><span id="metric_math-110"><a href="#metric_math-110"><span class="linenos">110</span></a><span class="sd">    Whitespace between elements is ignored, &#39; sin ( 2 * x ) &#39; is equivalent to</span>
+</span><span id="metric_math-111"><a href="#metric_math-111"><span class="linenos">111</span></a><span class="sd">    &#39;sin(2*x)&#39;, but &#39;s in(2*x)&#39; is an error. Implied multiplication is not</span>
+</span><span id="metric_math-112"><a href="#metric_math-112"><span class="linenos">112</span></a><span class="sd">    allowed, the expression &#39;2x&#39; will be parsed as a variable. Parentheses are</span>
+</span><span id="metric_math-113"><a href="#metric_math-113"><span class="linenos">113</span></a><span class="sd">    (), do not use [] or {}. Functions require parentheses, the expression &#39;sin</span>
+</span><span id="metric_math-114"><a href="#metric_math-114"><span class="linenos">114</span></a><span class="sd">    x&#39; is an error.</span>
+</span><span id="metric_math-115"><a href="#metric_math-115"><span class="linenos">115</span></a><span class="sd">    </span>
+</span><span id="metric_math-116"><a href="#metric_math-116"><span class="linenos">116</span></a><span class="sd">    The following functions are supported:</span>
+</span><span id="metric_math-117"><a href="#metric_math-117"><span class="linenos">117</span></a><span class="sd">    </span>
+</span><span id="metric_math-118"><a href="#metric_math-118"><span class="linenos">118</span></a><span class="sd">    sin: 1 argument, the sine of the argument (units are radians)</span>
+</span><span id="metric_math-119"><a href="#metric_math-119"><span class="linenos">119</span></a><span class="sd">    cos: 1 argument, the cosine of the argument (units are radians)</span>
+</span><span id="metric_math-120"><a href="#metric_math-120"><span class="linenos">120</span></a><span class="sd">    tan: 1 argument, the tangent of the argument (units are radians)</span>
+</span><span id="metric_math-121"><a href="#metric_math-121"><span class="linenos">121</span></a><span class="sd">    asin: 1 argument, the inverse of sine of the argument, in radians</span>
+</span><span id="metric_math-122"><a href="#metric_math-122"><span class="linenos">122</span></a><span class="sd">    acos: 1 argument, the inverse of cosine of the argument, in radians</span>
+</span><span id="metric_math-123"><a href="#metric_math-123"><span class="linenos">123</span></a><span class="sd">    atan: 1 argument, the inverse of tangent of the argument, in radians</span>
+</span><span id="metric_math-124"><a href="#metric_math-124"><span class="linenos">124</span></a><span class="sd">    atan2: 2 arguments, atan2(y, x) returns the inverse of tangent of (y/x), in</span>
+</span><span id="metric_math-125"><a href="#metric_math-125"><span class="linenos">125</span></a><span class="sd">    radians, determining quadrant by the sign of both arguments</span>
+</span><span id="metric_math-126"><a href="#metric_math-126"><span class="linenos">126</span></a><span class="sd">    sinh: 1 argument, the hyperbolic sine of the argument</span>
+</span><span id="metric_math-127"><a href="#metric_math-127"><span class="linenos">127</span></a><span class="sd">    cosh: 1 argument, the hyperbolic cosine of the argument</span>
+</span><span id="metric_math-128"><a href="#metric_math-128"><span class="linenos">128</span></a><span class="sd">    tanh: 1 argument, the hyperbolic tangent of the argument</span>
+</span><span id="metric_math-129"><a href="#metric_math-129"><span class="linenos">129</span></a><span class="sd">    asinh: 1 argument, the inverse hyperbolic sine of the argument</span>
+</span><span id="metric_math-130"><a href="#metric_math-130"><span class="linenos">130</span></a><span class="sd">    acosh: 1 argument, the inverse hyperbolic cosine of the argument</span>
+</span><span id="metric_math-131"><a href="#metric_math-131"><span class="linenos">131</span></a><span class="sd">    atanh: 1 argument, the inverse hyperbolic tangent of the argument</span>
+</span><span id="metric_math-132"><a href="#metric_math-132"><span class="linenos">132</span></a><span class="sd">    sinc: 1 argument, sinc(0) = 1, sin(x) / x otherwise</span>
+</span><span id="metric_math-133"><a href="#metric_math-133"><span class="linenos">133</span></a><span class="sd">    ln: 1 argument, the natural logarithm of the argument</span>
+</span><span id="metric_math-134"><a href="#metric_math-134"><span class="linenos">134</span></a><span class="sd">    exp: 1 argument, the constant e raised to the power of the argument</span>
+</span><span id="metric_math-135"><a href="#metric_math-135"><span class="linenos">135</span></a><span class="sd">    log: 1 argument, the base 10 logarithm of the argument</span>
+</span><span id="metric_math-136"><a href="#metric_math-136"><span class="linenos">136</span></a><span class="sd">    log2: 1 argument, the base 2 logarithm of the argument</span>
+</span><span id="metric_math-137"><a href="#metric_math-137"><span class="linenos">137</span></a><span class="sd">    sqrt: 1 argument, the square root of the argument</span>
+</span><span id="metric_math-138"><a href="#metric_math-138"><span class="linenos">138</span></a><span class="sd">    abs: 1 argument, the absolute value of the argument</span>
+</span><span id="metric_math-139"><a href="#metric_math-139"><span class="linenos">139</span></a><span class="sd">    floor: 1 argument, the largest integer not greater than the argument</span>
+</span><span id="metric_math-140"><a href="#metric_math-140"><span class="linenos">140</span></a><span class="sd">    round: 1 argument, the nearest integer, with ties rounded away from zero</span>
+</span><span id="metric_math-141"><a href="#metric_math-141"><span class="linenos">141</span></a><span class="sd">    ceil: 1 argument, the smallest integer not less than the argument</span>
+</span><span id="metric_math-142"><a href="#metric_math-142"><span class="linenos">142</span></a><span class="sd">    min: 2 arguments, min(x, y) returns y if (x &gt; y), x otherwise</span>
+</span><span id="metric_math-143"><a href="#metric_math-143"><span class="linenos">143</span></a><span class="sd">    max: 2 arguments, max(x, y) returns y if (x &lt; y), x otherwise</span>
+</span><span id="metric_math-144"><a href="#metric_math-144"><span class="linenos">144</span></a><span class="sd">    mod: 2 arguments, mod(x, y) = x - y * floor(x / y), or 0 if y == 0</span>
+</span><span id="metric_math-145"><a href="#metric_math-145"><span class="linenos">145</span></a><span class="sd">    clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)</span>
+</span><span id="metric_math-146"><a href="#metric_math-146"><span class="linenos">146</span></a><span class="sd">    .</span>
+</span><span id="metric_math-147"><a href="#metric_math-147"><span class="linenos">147</span></a><span class="sd">    </span>
+</span><span id="metric_math-148"><a href="#metric_math-148"><span class="linenos">148</span></a><span class="sd">    Args:</span>
+</span><span id="metric_math-149"><a href="#metric_math-149"><span class="linenos">149</span></a><span class="sd">        expression: the expression to evaluate, in quotes.</span>
+</span><span id="metric_math-150"><a href="#metric_math-150"><span class="linenos">150</span></a><span class="sd">        metric_out: the output metric.</span>
+</span><span id="metric_math-151"><a href="#metric_math-151"><span class="linenos">151</span></a><span class="sd">        opt_fixnan_replace: replace NaN results with a value: value to replace\</span>
+</span><span id="metric_math-152"><a href="#metric_math-152"><span class="linenos">152</span></a><span class="sd">            NaN with.</span>
+</span><span id="metric_math-153"><a href="#metric_math-153"><span class="linenos">153</span></a><span class="sd">        var: a metric to use as a variable.</span>
+</span><span id="metric_math-154"><a href="#metric_math-154"><span class="linenos">154</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="metric_math-155"><a href="#metric_math-155"><span class="linenos">155</span></a><span class="sd">    Returns:</span>
+</span><span id="metric_math-156"><a href="#metric_math-156"><span class="linenos">156</span></a><span class="sd">        NamedTuple of outputs (described in `MetricMathOutputs`).</span>
+</span><span id="metric_math-157"><a href="#metric_math-157"><span class="linenos">157</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="metric_math-158"><a href="#metric_math-158"><span class="linenos">158</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="metric_math-159"><a href="#metric_math-159"><span class="linenos">159</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_MATH_METADATA</span><span class="p">)</span>
+</span><span id="metric_math-160"><a href="#metric_math-160"><span class="linenos">160</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="metric_math-161"><a href="#metric_math-161"><span class="linenos">161</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="metric_math-162"><a href="#metric_math-162"><span class="linenos">162</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-math&quot;</span><span class="p">)</span>
+</span><span id="metric_math-163"><a href="#metric_math-163"><span class="linenos">163</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+</span><span id="metric_math-164"><a href="#metric_math-164"><span class="linenos">164</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">))</span>
+</span><span id="metric_math-165"><a href="#metric_math-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">opt_fixnan_replace</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="metric_math-166"><a href="#metric_math-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-fixnan&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">opt_fixnan_replace</span><span class="p">)])</span>
+</span><span id="metric_math-167"><a href="#metric_math-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="metric_math-168"><a href="#metric_math-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">var</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="metric_math-169"><a href="#metric_math-169"><span class="linenos">169</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricMathOutputs</span><span class="p">(</span>
+</span><span id="metric_math-170"><a href="#metric_math-170"><span class="linenos">170</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="metric_math-171"><a href="#metric_math-171"><span class="linenos">171</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+</span><span id="metric_math-172"><a href="#metric_math-172"><span class="linenos">172</span></a>    <span class="p">)</span>
+</span><span id="metric_math-173"><a href="#metric_math-173"><span class="linenos">173</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="metric_math-174"><a href="#metric_math-174"><span class="linenos">174</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

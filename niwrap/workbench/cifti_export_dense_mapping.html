@@ -141,7 +141,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CIFTI_EXPORT_DENSE_MAPPING_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4235da653c90ba252988a7ea5520b6d1eca024b7&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ab21dab4c846c0b8fb3eb710a6d3bff8f5ca1b13&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cifti-export-dense-mapping&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;fcpindi/c-pac:latest&quot;</span><span class="p">,</span>
@@ -174,185 +174,188 @@
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">            </span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_structure</span><span class="p">:</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-structure&quot;</span><span class="p">)</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-all&quot;</span><span class="p">)</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_structure</span><span class="p">:</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-structure&quot;</span><span class="p">)</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingSurface</span><span class="p">:</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    export the the mapping of one surface structure</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    <span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the structure to output&quot;&quot;&quot;</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output - the output text file&quot;&quot;&quot;</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;don&#39;t write the cifti index in the output file&quot;&quot;&quot;</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        </span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        Args:</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        Returns:</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">            </span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingVolume</span><span class="p">:</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    export the the mapping of one volume structure</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the structure to output&quot;&quot;&quot;</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output - the output text file&quot;&quot;&quot;</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;don&#39;t write the cifti index in the output file&quot;&quot;&quot;</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        </span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        Args:</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        Returns:</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">            </span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    Output object returned when calling `cifti_export_dense_mapping(...)`.</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="k">def</span> <span class="nf">cifti_export_dense_mapping</span><span class="p">(</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiExportDenseMappingVolumeAll</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiExportDenseMappingSurface</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiExportDenseMappingVolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiExportDenseMappingOutputs</span><span class="p">:</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    cifti-export-dense-mapping by Washington University School of Medicin.</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    </span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    Write index to element mapping as text.</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    </span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">    This command produces text files that describe the mapping from cifti</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">    indices to surface vertices or voxels. All indices are zero-based. The</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">    default format for -surface is lines of the form:</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    </span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">    &lt;cifti-index&gt; &lt;vertex&gt;</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    </span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    The default format for -volume and -volume-all is lines of the form:</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    </span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    &lt;cifti-index&gt; &lt;i&gt; &lt;j&gt; &lt;k&gt;</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">    </span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    For each &lt;structure&gt; argument, use one of the following strings:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    </span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    CORTEX_LEFT</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">    CORTEX_RIGHT</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">    CEREBELLUM</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    ACCUMBENS_LEFT</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    ALL_GREY_MATTER</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    ALL_WHITE_MATTER</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    AMYGDALA_LEFT</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    AMYGDALA_RIGHT</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    BRAIN_STEM</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    CAUDATE_LEFT</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    CAUDATE_RIGHT</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    CEREBELLUM_LEFT</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    CORTEX</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    INVALID</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    OTHER</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    OTHER_GREY_MATTER</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    PALLIDUM_LEFT</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    PALLIDUM_RIGHT</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    PUTAMEN_LEFT</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    PUTAMEN_RIGHT</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">    THALAMUS_LEFT</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">    THALAMUS_RIGHT.</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">    </span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">    Args:</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        cifti: the cifti file.</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        direction: which direction to export the mapping from, ROW or COLUMN.</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        volume_all: export the the mapping of all voxels.</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">        surface: export the the mapping of one surface structure.</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">        volume: export the the mapping of one volume structure.</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">    Returns:</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiExportDenseMappingOutputs`).</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_EXPORT_DENSE_MAPPING_METADATA</span><span class="p">)</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-export-dense-mapping&quot;</span><span class="p">)</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti</span><span class="p">))</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">volume_all</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-volume-all&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">volume_all</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-surface&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">surface</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-volume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">volume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiExportDenseMappingOutputs</span><span class="p">(</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="p">)</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="s2">&quot;CIFTI_EXPORT_DENSE_MAPPING_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="s2">&quot;CiftiExportDenseMappingOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="s2">&quot;CiftiExportDenseMappingSurface&quot;</span><span class="p">,</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;CiftiExportDenseMappingVolume&quot;</span><span class="p">,</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="s2">&quot;CiftiExportDenseMappingVolumeAll&quot;</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="s2">&quot;cifti_export_dense_mapping&quot;</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="p">]</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingSurface</span><span class="p">:</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    export the the mapping of one surface structure</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the structure to output&quot;&quot;&quot;</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output - the output text file&quot;&quot;&quot;</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;don&#39;t write the cifti index in the output file&quot;&quot;&quot;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        </span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        Args:</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        Returns:</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">            </span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface&quot;</span><span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingVolume</span><span class="p">:</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    export the the mapping of one volume structure</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the structure to output&quot;&quot;&quot;</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output - the output text file&quot;&quot;&quot;</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;don&#39;t write the cifti index in the output file&quot;&quot;&quot;</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        </span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        Args:</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        Returns:</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">            </span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume&quot;</span><span class="p">)</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    Output object returned when calling `cifti_export_dense_mapping(...)`.</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="k">def</span> <span class="nf">cifti_export_dense_mapping</span><span class="p">(</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiExportDenseMappingVolumeAll</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiExportDenseMappingSurface</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiExportDenseMappingVolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiExportDenseMappingOutputs</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    cifti-export-dense-mapping by Washington University School of Medicin.</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">    </span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">    Write index to element mapping as text.</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">    </span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    This command produces text files that describe the mapping from cifti</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">    indices to surface vertices or voxels. All indices are zero-based. The</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    default format for -surface is lines of the form:</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    </span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    &lt;cifti-index&gt; &lt;vertex&gt;</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    </span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">    The default format for -volume and -volume-all is lines of the form:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    </span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    &lt;cifti-index&gt; &lt;i&gt; &lt;j&gt; &lt;k&gt;</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    </span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">    For each &lt;structure&gt; argument, use one of the following strings:</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">    </span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    CORTEX_LEFT</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    CORTEX_RIGHT</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    CEREBELLUM</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    ACCUMBENS_LEFT</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    ALL_GREY_MATTER</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    ALL_WHITE_MATTER</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    AMYGDALA_LEFT</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    AMYGDALA_RIGHT</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    BRAIN_STEM</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    CAUDATE_LEFT</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    CAUDATE_RIGHT</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    CEREBELLUM_LEFT</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    CORTEX</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    INVALID</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    OTHER</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    OTHER_GREY_MATTER</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    PALLIDUM_LEFT</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">    PALLIDUM_RIGHT</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">    PUTAMEN_LEFT</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">    PUTAMEN_RIGHT</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">    THALAMUS_LEFT</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">    THALAMUS_RIGHT.</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">    </span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">    Args:</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">        cifti: the cifti file.</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">        direction: which direction to export the mapping from, ROW or COLUMN.</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">        volume_all: export the the mapping of all voxels.</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">        surface: export the the mapping of one surface structure.</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">        volume: export the the mapping of one volume structure.</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    Returns:</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiExportDenseMappingOutputs`).</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_EXPORT_DENSE_MAPPING_METADATA</span><span class="p">)</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-export-dense-mapping&quot;</span><span class="p">)</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti</span><span class="p">))</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">volume_all</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">volume_all</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">surface</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">volume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiExportDenseMappingOutputs</span><span class="p">(</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="p">)</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;CIFTI_EXPORT_DENSE_MAPPING_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="s2">&quot;CiftiExportDenseMappingOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="s2">&quot;CiftiExportDenseMappingSurface&quot;</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="s2">&quot;CiftiExportDenseMappingVolume&quot;</span><span class="p">,</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="s2">&quot;CiftiExportDenseMappingVolumeAll&quot;</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="s2">&quot;cifti_export_dense_mapping&quot;</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -361,7 +364,7 @@
                     <div class="attr variable">
             <span class="name">CIFTI_EXPORT_DENSE_MAPPING_METADATA</span>        =
 <input id="CIFTI_EXPORT_DENSE_MAPPING_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CIFTI_EXPORT_DENSE_MAPPING_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4235da653c90ba252988a7ea5520b6d1eca024b7&#39;, name=&#39;cifti-export-dense-mapping&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="CIFTI_EXPORT_DENSE_MAPPING_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ab21dab4c846c0b8fb3eb710a6d3bff8f5ca1b13&#39;, name=&#39;cifti-export-dense-mapping&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -381,12 +384,12 @@
 
     </div>
     <a class="headerlink" href="#CiftiExportDenseMappingOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiExportDenseMappingOutputs-118"><a href="#CiftiExportDenseMappingOutputs-118"><span class="linenos">118</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="CiftiExportDenseMappingOutputs-119"><a href="#CiftiExportDenseMappingOutputs-119"><span class="linenos">119</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingOutputs-120"><a href="#CiftiExportDenseMappingOutputs-120"><span class="linenos">120</span></a><span class="sd">    Output object returned when calling `cifti_export_dense_mapping(...)`.</span>
-</span><span id="CiftiExportDenseMappingOutputs-121"><a href="#CiftiExportDenseMappingOutputs-121"><span class="linenos">121</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingOutputs-122"><a href="#CiftiExportDenseMappingOutputs-122"><span class="linenos">122</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="CiftiExportDenseMappingOutputs-123"><a href="#CiftiExportDenseMappingOutputs-123"><span class="linenos">123</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiExportDenseMappingOutputs-121"><a href="#CiftiExportDenseMappingOutputs-121"><span class="linenos">121</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="CiftiExportDenseMappingOutputs-122"><a href="#CiftiExportDenseMappingOutputs-122"><span class="linenos">122</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingOutputs-123"><a href="#CiftiExportDenseMappingOutputs-123"><span class="linenos">123</span></a><span class="sd">    Output object returned when calling `cifti_export_dense_mapping(...)`.</span>
+</span><span id="CiftiExportDenseMappingOutputs-124"><a href="#CiftiExportDenseMappingOutputs-124"><span class="linenos">124</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingOutputs-125"><a href="#CiftiExportDenseMappingOutputs-125"><span class="linenos">125</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="CiftiExportDenseMappingOutputs-126"><a href="#CiftiExportDenseMappingOutputs-126"><span class="linenos">126</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -444,37 +447,38 @@
 
     </div>
     <a class="headerlink" href="#CiftiExportDenseMappingSurface"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiExportDenseMappingSurface-52"><a href="#CiftiExportDenseMappingSurface-52"><span class="linenos">52</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="CiftiExportDenseMappingSurface-53"><a href="#CiftiExportDenseMappingSurface-53"><span class="linenos">53</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingSurface</span><span class="p">:</span>
-</span><span id="CiftiExportDenseMappingSurface-54"><a href="#CiftiExportDenseMappingSurface-54"><span class="linenos">54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingSurface-55"><a href="#CiftiExportDenseMappingSurface-55"><span class="linenos">55</span></a><span class="sd">    export the the mapping of one surface structure</span>
-</span><span id="CiftiExportDenseMappingSurface-56"><a href="#CiftiExportDenseMappingSurface-56"><span class="linenos">56</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingSurface-57"><a href="#CiftiExportDenseMappingSurface-57"><span class="linenos">57</span></a>    <span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="CiftiExportDenseMappingSurface-58"><a href="#CiftiExportDenseMappingSurface-58"><span class="linenos">58</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the structure to output&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingSurface-59"><a href="#CiftiExportDenseMappingSurface-59"><span class="linenos">59</span></a>    <span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="CiftiExportDenseMappingSurface-60"><a href="#CiftiExportDenseMappingSurface-60"><span class="linenos">60</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output - the output text file&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingSurface-61"><a href="#CiftiExportDenseMappingSurface-61"><span class="linenos">61</span></a>    <span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="CiftiExportDenseMappingSurface-62"><a href="#CiftiExportDenseMappingSurface-62"><span class="linenos">62</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;don&#39;t write the cifti index in the output file&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingSurface-63"><a href="#CiftiExportDenseMappingSurface-63"><span class="linenos">63</span></a>    
-</span><span id="CiftiExportDenseMappingSurface-64"><a href="#CiftiExportDenseMappingSurface-64"><span class="linenos">64</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="CiftiExportDenseMappingSurface-65"><a href="#CiftiExportDenseMappingSurface-65"><span class="linenos">65</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="CiftiExportDenseMappingSurface-66"><a href="#CiftiExportDenseMappingSurface-66"><span class="linenos">66</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="CiftiExportDenseMappingSurface-67"><a href="#CiftiExportDenseMappingSurface-67"><span class="linenos">67</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="CiftiExportDenseMappingSurface-68"><a href="#CiftiExportDenseMappingSurface-68"><span class="linenos">68</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingSurface-69"><a href="#CiftiExportDenseMappingSurface-69"><span class="linenos">69</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="CiftiExportDenseMappingSurface-70"><a href="#CiftiExportDenseMappingSurface-70"><span class="linenos">70</span></a><span class="sd">        </span>
-</span><span id="CiftiExportDenseMappingSurface-71"><a href="#CiftiExportDenseMappingSurface-71"><span class="linenos">71</span></a><span class="sd">        Args:</span>
-</span><span id="CiftiExportDenseMappingSurface-72"><a href="#CiftiExportDenseMappingSurface-72"><span class="linenos">72</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="CiftiExportDenseMappingSurface-73"><a href="#CiftiExportDenseMappingSurface-73"><span class="linenos">73</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="CiftiExportDenseMappingSurface-74"><a href="#CiftiExportDenseMappingSurface-74"><span class="linenos">74</span></a><span class="sd">        Returns:</span>
-</span><span id="CiftiExportDenseMappingSurface-75"><a href="#CiftiExportDenseMappingSurface-75"><span class="linenos">75</span></a><span class="sd">            </span>
-</span><span id="CiftiExportDenseMappingSurface-76"><a href="#CiftiExportDenseMappingSurface-76"><span class="linenos">76</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingSurface-77"><a href="#CiftiExportDenseMappingSurface-77"><span class="linenos">77</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="CiftiExportDenseMappingSurface-78"><a href="#CiftiExportDenseMappingSurface-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingSurface-79"><a href="#CiftiExportDenseMappingSurface-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingSurface-80"><a href="#CiftiExportDenseMappingSurface-80"><span class="linenos">80</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
-</span><span id="CiftiExportDenseMappingSurface-81"><a href="#CiftiExportDenseMappingSurface-81"><span class="linenos">81</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingSurface-82"><a href="#CiftiExportDenseMappingSurface-82"><span class="linenos">82</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiExportDenseMappingSurface-53"><a href="#CiftiExportDenseMappingSurface-53"><span class="linenos">53</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="CiftiExportDenseMappingSurface-54"><a href="#CiftiExportDenseMappingSurface-54"><span class="linenos">54</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingSurface</span><span class="p">:</span>
+</span><span id="CiftiExportDenseMappingSurface-55"><a href="#CiftiExportDenseMappingSurface-55"><span class="linenos">55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingSurface-56"><a href="#CiftiExportDenseMappingSurface-56"><span class="linenos">56</span></a><span class="sd">    export the the mapping of one surface structure</span>
+</span><span id="CiftiExportDenseMappingSurface-57"><a href="#CiftiExportDenseMappingSurface-57"><span class="linenos">57</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingSurface-58"><a href="#CiftiExportDenseMappingSurface-58"><span class="linenos">58</span></a>    <span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="CiftiExportDenseMappingSurface-59"><a href="#CiftiExportDenseMappingSurface-59"><span class="linenos">59</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the structure to output&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingSurface-60"><a href="#CiftiExportDenseMappingSurface-60"><span class="linenos">60</span></a>    <span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="CiftiExportDenseMappingSurface-61"><a href="#CiftiExportDenseMappingSurface-61"><span class="linenos">61</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output - the output text file&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingSurface-62"><a href="#CiftiExportDenseMappingSurface-62"><span class="linenos">62</span></a>    <span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="CiftiExportDenseMappingSurface-63"><a href="#CiftiExportDenseMappingSurface-63"><span class="linenos">63</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;don&#39;t write the cifti index in the output file&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingSurface-64"><a href="#CiftiExportDenseMappingSurface-64"><span class="linenos">64</span></a>    
+</span><span id="CiftiExportDenseMappingSurface-65"><a href="#CiftiExportDenseMappingSurface-65"><span class="linenos">65</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="CiftiExportDenseMappingSurface-66"><a href="#CiftiExportDenseMappingSurface-66"><span class="linenos">66</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="CiftiExportDenseMappingSurface-67"><a href="#CiftiExportDenseMappingSurface-67"><span class="linenos">67</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="CiftiExportDenseMappingSurface-68"><a href="#CiftiExportDenseMappingSurface-68"><span class="linenos">68</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="CiftiExportDenseMappingSurface-69"><a href="#CiftiExportDenseMappingSurface-69"><span class="linenos">69</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingSurface-70"><a href="#CiftiExportDenseMappingSurface-70"><span class="linenos">70</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="CiftiExportDenseMappingSurface-71"><a href="#CiftiExportDenseMappingSurface-71"><span class="linenos">71</span></a><span class="sd">        </span>
+</span><span id="CiftiExportDenseMappingSurface-72"><a href="#CiftiExportDenseMappingSurface-72"><span class="linenos">72</span></a><span class="sd">        Args:</span>
+</span><span id="CiftiExportDenseMappingSurface-73"><a href="#CiftiExportDenseMappingSurface-73"><span class="linenos">73</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="CiftiExportDenseMappingSurface-74"><a href="#CiftiExportDenseMappingSurface-74"><span class="linenos">74</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="CiftiExportDenseMappingSurface-75"><a href="#CiftiExportDenseMappingSurface-75"><span class="linenos">75</span></a><span class="sd">        Returns:</span>
+</span><span id="CiftiExportDenseMappingSurface-76"><a href="#CiftiExportDenseMappingSurface-76"><span class="linenos">76</span></a><span class="sd">            </span>
+</span><span id="CiftiExportDenseMappingSurface-77"><a href="#CiftiExportDenseMappingSurface-77"><span class="linenos">77</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingSurface-78"><a href="#CiftiExportDenseMappingSurface-78"><span class="linenos">78</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="CiftiExportDenseMappingSurface-79"><a href="#CiftiExportDenseMappingSurface-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingSurface-80"><a href="#CiftiExportDenseMappingSurface-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingSurface-81"><a href="#CiftiExportDenseMappingSurface-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingSurface-82"><a href="#CiftiExportDenseMappingSurface-82"><span class="linenos">82</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
+</span><span id="CiftiExportDenseMappingSurface-83"><a href="#CiftiExportDenseMappingSurface-83"><span class="linenos">83</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingSurface-84"><a href="#CiftiExportDenseMappingSurface-84"><span class="linenos">84</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -545,25 +549,26 @@
 
     </div>
     <a class="headerlink" href="#CiftiExportDenseMappingSurface.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiExportDenseMappingSurface.run-64"><a href="#CiftiExportDenseMappingSurface.run-64"><span class="linenos">64</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="CiftiExportDenseMappingSurface.run-65"><a href="#CiftiExportDenseMappingSurface.run-65"><span class="linenos">65</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="CiftiExportDenseMappingSurface.run-66"><a href="#CiftiExportDenseMappingSurface.run-66"><span class="linenos">66</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="CiftiExportDenseMappingSurface.run-67"><a href="#CiftiExportDenseMappingSurface.run-67"><span class="linenos">67</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="CiftiExportDenseMappingSurface.run-68"><a href="#CiftiExportDenseMappingSurface.run-68"><span class="linenos">68</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingSurface.run-69"><a href="#CiftiExportDenseMappingSurface.run-69"><span class="linenos">69</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="CiftiExportDenseMappingSurface.run-70"><a href="#CiftiExportDenseMappingSurface.run-70"><span class="linenos">70</span></a><span class="sd">        </span>
-</span><span id="CiftiExportDenseMappingSurface.run-71"><a href="#CiftiExportDenseMappingSurface.run-71"><span class="linenos">71</span></a><span class="sd">        Args:</span>
-</span><span id="CiftiExportDenseMappingSurface.run-72"><a href="#CiftiExportDenseMappingSurface.run-72"><span class="linenos">72</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="CiftiExportDenseMappingSurface.run-73"><a href="#CiftiExportDenseMappingSurface.run-73"><span class="linenos">73</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="CiftiExportDenseMappingSurface.run-74"><a href="#CiftiExportDenseMappingSurface.run-74"><span class="linenos">74</span></a><span class="sd">        Returns:</span>
-</span><span id="CiftiExportDenseMappingSurface.run-75"><a href="#CiftiExportDenseMappingSurface.run-75"><span class="linenos">75</span></a><span class="sd">            </span>
-</span><span id="CiftiExportDenseMappingSurface.run-76"><a href="#CiftiExportDenseMappingSurface.run-76"><span class="linenos">76</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingSurface.run-77"><a href="#CiftiExportDenseMappingSurface.run-77"><span class="linenos">77</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="CiftiExportDenseMappingSurface.run-78"><a href="#CiftiExportDenseMappingSurface.run-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingSurface.run-79"><a href="#CiftiExportDenseMappingSurface.run-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingSurface.run-80"><a href="#CiftiExportDenseMappingSurface.run-80"><span class="linenos">80</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
-</span><span id="CiftiExportDenseMappingSurface.run-81"><a href="#CiftiExportDenseMappingSurface.run-81"><span class="linenos">81</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingSurface.run-82"><a href="#CiftiExportDenseMappingSurface.run-82"><span class="linenos">82</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiExportDenseMappingSurface.run-65"><a href="#CiftiExportDenseMappingSurface.run-65"><span class="linenos">65</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="CiftiExportDenseMappingSurface.run-66"><a href="#CiftiExportDenseMappingSurface.run-66"><span class="linenos">66</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="CiftiExportDenseMappingSurface.run-67"><a href="#CiftiExportDenseMappingSurface.run-67"><span class="linenos">67</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="CiftiExportDenseMappingSurface.run-68"><a href="#CiftiExportDenseMappingSurface.run-68"><span class="linenos">68</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="CiftiExportDenseMappingSurface.run-69"><a href="#CiftiExportDenseMappingSurface.run-69"><span class="linenos">69</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingSurface.run-70"><a href="#CiftiExportDenseMappingSurface.run-70"><span class="linenos">70</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="CiftiExportDenseMappingSurface.run-71"><a href="#CiftiExportDenseMappingSurface.run-71"><span class="linenos">71</span></a><span class="sd">        </span>
+</span><span id="CiftiExportDenseMappingSurface.run-72"><a href="#CiftiExportDenseMappingSurface.run-72"><span class="linenos">72</span></a><span class="sd">        Args:</span>
+</span><span id="CiftiExportDenseMappingSurface.run-73"><a href="#CiftiExportDenseMappingSurface.run-73"><span class="linenos">73</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="CiftiExportDenseMappingSurface.run-74"><a href="#CiftiExportDenseMappingSurface.run-74"><span class="linenos">74</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="CiftiExportDenseMappingSurface.run-75"><a href="#CiftiExportDenseMappingSurface.run-75"><span class="linenos">75</span></a><span class="sd">        Returns:</span>
+</span><span id="CiftiExportDenseMappingSurface.run-76"><a href="#CiftiExportDenseMappingSurface.run-76"><span class="linenos">76</span></a><span class="sd">            </span>
+</span><span id="CiftiExportDenseMappingSurface.run-77"><a href="#CiftiExportDenseMappingSurface.run-77"><span class="linenos">77</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingSurface.run-78"><a href="#CiftiExportDenseMappingSurface.run-78"><span class="linenos">78</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="CiftiExportDenseMappingSurface.run-79"><a href="#CiftiExportDenseMappingSurface.run-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingSurface.run-80"><a href="#CiftiExportDenseMappingSurface.run-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingSurface.run-81"><a href="#CiftiExportDenseMappingSurface.run-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingSurface.run-82"><a href="#CiftiExportDenseMappingSurface.run-82"><span class="linenos">82</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
+</span><span id="CiftiExportDenseMappingSurface.run-83"><a href="#CiftiExportDenseMappingSurface.run-83"><span class="linenos">83</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingSurface.run-84"><a href="#CiftiExportDenseMappingSurface.run-84"><span class="linenos">84</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -594,37 +599,38 @@
 
     </div>
     <a class="headerlink" href="#CiftiExportDenseMappingVolume"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiExportDenseMappingVolume-85"><a href="#CiftiExportDenseMappingVolume-85"><span class="linenos"> 85</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="CiftiExportDenseMappingVolume-86"><a href="#CiftiExportDenseMappingVolume-86"><span class="linenos"> 86</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingVolume</span><span class="p">:</span>
-</span><span id="CiftiExportDenseMappingVolume-87"><a href="#CiftiExportDenseMappingVolume-87"><span class="linenos"> 87</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingVolume-88"><a href="#CiftiExportDenseMappingVolume-88"><span class="linenos"> 88</span></a><span class="sd">    export the the mapping of one volume structure</span>
-</span><span id="CiftiExportDenseMappingVolume-89"><a href="#CiftiExportDenseMappingVolume-89"><span class="linenos"> 89</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingVolume-90"><a href="#CiftiExportDenseMappingVolume-90"><span class="linenos"> 90</span></a>    <span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="CiftiExportDenseMappingVolume-91"><a href="#CiftiExportDenseMappingVolume-91"><span class="linenos"> 91</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the structure to output&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingVolume-92"><a href="#CiftiExportDenseMappingVolume-92"><span class="linenos"> 92</span></a>    <span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="CiftiExportDenseMappingVolume-93"><a href="#CiftiExportDenseMappingVolume-93"><span class="linenos"> 93</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output - the output text file&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingVolume-94"><a href="#CiftiExportDenseMappingVolume-94"><span class="linenos"> 94</span></a>    <span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="CiftiExportDenseMappingVolume-95"><a href="#CiftiExportDenseMappingVolume-95"><span class="linenos"> 95</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;don&#39;t write the cifti index in the output file&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingVolume-96"><a href="#CiftiExportDenseMappingVolume-96"><span class="linenos"> 96</span></a>    
-</span><span id="CiftiExportDenseMappingVolume-97"><a href="#CiftiExportDenseMappingVolume-97"><span class="linenos"> 97</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="CiftiExportDenseMappingVolume-98"><a href="#CiftiExportDenseMappingVolume-98"><span class="linenos"> 98</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="CiftiExportDenseMappingVolume-99"><a href="#CiftiExportDenseMappingVolume-99"><span class="linenos"> 99</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="CiftiExportDenseMappingVolume-100"><a href="#CiftiExportDenseMappingVolume-100"><span class="linenos">100</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="CiftiExportDenseMappingVolume-101"><a href="#CiftiExportDenseMappingVolume-101"><span class="linenos">101</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingVolume-102"><a href="#CiftiExportDenseMappingVolume-102"><span class="linenos">102</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="CiftiExportDenseMappingVolume-103"><a href="#CiftiExportDenseMappingVolume-103"><span class="linenos">103</span></a><span class="sd">        </span>
-</span><span id="CiftiExportDenseMappingVolume-104"><a href="#CiftiExportDenseMappingVolume-104"><span class="linenos">104</span></a><span class="sd">        Args:</span>
-</span><span id="CiftiExportDenseMappingVolume-105"><a href="#CiftiExportDenseMappingVolume-105"><span class="linenos">105</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="CiftiExportDenseMappingVolume-106"><a href="#CiftiExportDenseMappingVolume-106"><span class="linenos">106</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="CiftiExportDenseMappingVolume-107"><a href="#CiftiExportDenseMappingVolume-107"><span class="linenos">107</span></a><span class="sd">        Returns:</span>
-</span><span id="CiftiExportDenseMappingVolume-108"><a href="#CiftiExportDenseMappingVolume-108"><span class="linenos">108</span></a><span class="sd">            </span>
-</span><span id="CiftiExportDenseMappingVolume-109"><a href="#CiftiExportDenseMappingVolume-109"><span class="linenos">109</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingVolume-110"><a href="#CiftiExportDenseMappingVolume-110"><span class="linenos">110</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="CiftiExportDenseMappingVolume-111"><a href="#CiftiExportDenseMappingVolume-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolume-112"><a href="#CiftiExportDenseMappingVolume-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolume-113"><a href="#CiftiExportDenseMappingVolume-113"><span class="linenos">113</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
-</span><span id="CiftiExportDenseMappingVolume-114"><a href="#CiftiExportDenseMappingVolume-114"><span class="linenos">114</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolume-115"><a href="#CiftiExportDenseMappingVolume-115"><span class="linenos">115</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiExportDenseMappingVolume-87"><a href="#CiftiExportDenseMappingVolume-87"><span class="linenos"> 87</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="CiftiExportDenseMappingVolume-88"><a href="#CiftiExportDenseMappingVolume-88"><span class="linenos"> 88</span></a><span class="k">class</span> <span class="nc">CiftiExportDenseMappingVolume</span><span class="p">:</span>
+</span><span id="CiftiExportDenseMappingVolume-89"><a href="#CiftiExportDenseMappingVolume-89"><span class="linenos"> 89</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingVolume-90"><a href="#CiftiExportDenseMappingVolume-90"><span class="linenos"> 90</span></a><span class="sd">    export the the mapping of one volume structure</span>
+</span><span id="CiftiExportDenseMappingVolume-91"><a href="#CiftiExportDenseMappingVolume-91"><span class="linenos"> 91</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingVolume-92"><a href="#CiftiExportDenseMappingVolume-92"><span class="linenos"> 92</span></a>    <span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="CiftiExportDenseMappingVolume-93"><a href="#CiftiExportDenseMappingVolume-93"><span class="linenos"> 93</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the structure to output&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingVolume-94"><a href="#CiftiExportDenseMappingVolume-94"><span class="linenos"> 94</span></a>    <span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="CiftiExportDenseMappingVolume-95"><a href="#CiftiExportDenseMappingVolume-95"><span class="linenos"> 95</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output - the output text file&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingVolume-96"><a href="#CiftiExportDenseMappingVolume-96"><span class="linenos"> 96</span></a>    <span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="CiftiExportDenseMappingVolume-97"><a href="#CiftiExportDenseMappingVolume-97"><span class="linenos"> 97</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;don&#39;t write the cifti index in the output file&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingVolume-98"><a href="#CiftiExportDenseMappingVolume-98"><span class="linenos"> 98</span></a>    
+</span><span id="CiftiExportDenseMappingVolume-99"><a href="#CiftiExportDenseMappingVolume-99"><span class="linenos"> 99</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="CiftiExportDenseMappingVolume-100"><a href="#CiftiExportDenseMappingVolume-100"><span class="linenos">100</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="CiftiExportDenseMappingVolume-101"><a href="#CiftiExportDenseMappingVolume-101"><span class="linenos">101</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="CiftiExportDenseMappingVolume-102"><a href="#CiftiExportDenseMappingVolume-102"><span class="linenos">102</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="CiftiExportDenseMappingVolume-103"><a href="#CiftiExportDenseMappingVolume-103"><span class="linenos">103</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingVolume-104"><a href="#CiftiExportDenseMappingVolume-104"><span class="linenos">104</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="CiftiExportDenseMappingVolume-105"><a href="#CiftiExportDenseMappingVolume-105"><span class="linenos">105</span></a><span class="sd">        </span>
+</span><span id="CiftiExportDenseMappingVolume-106"><a href="#CiftiExportDenseMappingVolume-106"><span class="linenos">106</span></a><span class="sd">        Args:</span>
+</span><span id="CiftiExportDenseMappingVolume-107"><a href="#CiftiExportDenseMappingVolume-107"><span class="linenos">107</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="CiftiExportDenseMappingVolume-108"><a href="#CiftiExportDenseMappingVolume-108"><span class="linenos">108</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="CiftiExportDenseMappingVolume-109"><a href="#CiftiExportDenseMappingVolume-109"><span class="linenos">109</span></a><span class="sd">        Returns:</span>
+</span><span id="CiftiExportDenseMappingVolume-110"><a href="#CiftiExportDenseMappingVolume-110"><span class="linenos">110</span></a><span class="sd">            </span>
+</span><span id="CiftiExportDenseMappingVolume-111"><a href="#CiftiExportDenseMappingVolume-111"><span class="linenos">111</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingVolume-112"><a href="#CiftiExportDenseMappingVolume-112"><span class="linenos">112</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="CiftiExportDenseMappingVolume-113"><a href="#CiftiExportDenseMappingVolume-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolume-114"><a href="#CiftiExportDenseMappingVolume-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolume-115"><a href="#CiftiExportDenseMappingVolume-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolume-116"><a href="#CiftiExportDenseMappingVolume-116"><span class="linenos">116</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
+</span><span id="CiftiExportDenseMappingVolume-117"><a href="#CiftiExportDenseMappingVolume-117"><span class="linenos">117</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolume-118"><a href="#CiftiExportDenseMappingVolume-118"><span class="linenos">118</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -695,25 +701,26 @@
 
     </div>
     <a class="headerlink" href="#CiftiExportDenseMappingVolume.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiExportDenseMappingVolume.run-97"><a href="#CiftiExportDenseMappingVolume.run-97"><span class="linenos"> 97</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
-</span><span id="CiftiExportDenseMappingVolume.run-98"><a href="#CiftiExportDenseMappingVolume.run-98"><span class="linenos"> 98</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="CiftiExportDenseMappingVolume.run-99"><a href="#CiftiExportDenseMappingVolume.run-99"><span class="linenos"> 99</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="CiftiExportDenseMappingVolume.run-100"><a href="#CiftiExportDenseMappingVolume.run-100"><span class="linenos">100</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="CiftiExportDenseMappingVolume.run-101"><a href="#CiftiExportDenseMappingVolume.run-101"><span class="linenos">101</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingVolume.run-102"><a href="#CiftiExportDenseMappingVolume.run-102"><span class="linenos">102</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="CiftiExportDenseMappingVolume.run-103"><a href="#CiftiExportDenseMappingVolume.run-103"><span class="linenos">103</span></a><span class="sd">        </span>
-</span><span id="CiftiExportDenseMappingVolume.run-104"><a href="#CiftiExportDenseMappingVolume.run-104"><span class="linenos">104</span></a><span class="sd">        Args:</span>
-</span><span id="CiftiExportDenseMappingVolume.run-105"><a href="#CiftiExportDenseMappingVolume.run-105"><span class="linenos">105</span></a><span class="sd">            self: The sub-command object.</span>
-</span><span id="CiftiExportDenseMappingVolume.run-106"><a href="#CiftiExportDenseMappingVolume.run-106"><span class="linenos">106</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="CiftiExportDenseMappingVolume.run-107"><a href="#CiftiExportDenseMappingVolume.run-107"><span class="linenos">107</span></a><span class="sd">        Returns:</span>
-</span><span id="CiftiExportDenseMappingVolume.run-108"><a href="#CiftiExportDenseMappingVolume.run-108"><span class="linenos">108</span></a><span class="sd">            </span>
-</span><span id="CiftiExportDenseMappingVolume.run-109"><a href="#CiftiExportDenseMappingVolume.run-109"><span class="linenos">109</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="CiftiExportDenseMappingVolume.run-110"><a href="#CiftiExportDenseMappingVolume.run-110"><span class="linenos">110</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="CiftiExportDenseMappingVolume.run-111"><a href="#CiftiExportDenseMappingVolume.run-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolume.run-112"><a href="#CiftiExportDenseMappingVolume.run-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolume.run-113"><a href="#CiftiExportDenseMappingVolume.run-113"><span class="linenos">113</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
-</span><span id="CiftiExportDenseMappingVolume.run-114"><a href="#CiftiExportDenseMappingVolume.run-114"><span class="linenos">114</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolume.run-115"><a href="#CiftiExportDenseMappingVolume.run-115"><span class="linenos">115</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CiftiExportDenseMappingVolume.run-99"><a href="#CiftiExportDenseMappingVolume.run-99"><span class="linenos"> 99</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="CiftiExportDenseMappingVolume.run-100"><a href="#CiftiExportDenseMappingVolume.run-100"><span class="linenos">100</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="CiftiExportDenseMappingVolume.run-101"><a href="#CiftiExportDenseMappingVolume.run-101"><span class="linenos">101</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="CiftiExportDenseMappingVolume.run-102"><a href="#CiftiExportDenseMappingVolume.run-102"><span class="linenos">102</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="CiftiExportDenseMappingVolume.run-103"><a href="#CiftiExportDenseMappingVolume.run-103"><span class="linenos">103</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingVolume.run-104"><a href="#CiftiExportDenseMappingVolume.run-104"><span class="linenos">104</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="CiftiExportDenseMappingVolume.run-105"><a href="#CiftiExportDenseMappingVolume.run-105"><span class="linenos">105</span></a><span class="sd">        </span>
+</span><span id="CiftiExportDenseMappingVolume.run-106"><a href="#CiftiExportDenseMappingVolume.run-106"><span class="linenos">106</span></a><span class="sd">        Args:</span>
+</span><span id="CiftiExportDenseMappingVolume.run-107"><a href="#CiftiExportDenseMappingVolume.run-107"><span class="linenos">107</span></a><span class="sd">            self: The sub-command object.</span>
+</span><span id="CiftiExportDenseMappingVolume.run-108"><a href="#CiftiExportDenseMappingVolume.run-108"><span class="linenos">108</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="CiftiExportDenseMappingVolume.run-109"><a href="#CiftiExportDenseMappingVolume.run-109"><span class="linenos">109</span></a><span class="sd">        Returns:</span>
+</span><span id="CiftiExportDenseMappingVolume.run-110"><a href="#CiftiExportDenseMappingVolume.run-110"><span class="linenos">110</span></a><span class="sd">            </span>
+</span><span id="CiftiExportDenseMappingVolume.run-111"><a href="#CiftiExportDenseMappingVolume.run-111"><span class="linenos">111</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CiftiExportDenseMappingVolume.run-112"><a href="#CiftiExportDenseMappingVolume.run-112"><span class="linenos">112</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="CiftiExportDenseMappingVolume.run-113"><a href="#CiftiExportDenseMappingVolume.run-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolume.run-114"><a href="#CiftiExportDenseMappingVolume.run-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolume.run-115"><a href="#CiftiExportDenseMappingVolume.run-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolume.run-116"><a href="#CiftiExportDenseMappingVolume.run-116"><span class="linenos">116</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
+</span><span id="CiftiExportDenseMappingVolume.run-117"><a href="#CiftiExportDenseMappingVolume.run-117"><span class="linenos">117</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolume.run-118"><a href="#CiftiExportDenseMappingVolume.run-118"><span class="linenos">118</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -770,12 +777,13 @@
 </span><span id="CiftiExportDenseMappingVolumeAll-41"><a href="#CiftiExportDenseMappingVolumeAll-41"><span class="linenos">41</span></a><span class="sd">            </span>
 </span><span id="CiftiExportDenseMappingVolumeAll-42"><a href="#CiftiExportDenseMappingVolumeAll-42"><span class="linenos">42</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="CiftiExportDenseMappingVolumeAll-43"><a href="#CiftiExportDenseMappingVolumeAll-43"><span class="linenos">43</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="CiftiExportDenseMappingVolumeAll-44"><a href="#CiftiExportDenseMappingVolumeAll-44"><span class="linenos">44</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolumeAll-45"><a href="#CiftiExportDenseMappingVolumeAll-45"><span class="linenos">45</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
-</span><span id="CiftiExportDenseMappingVolumeAll-46"><a href="#CiftiExportDenseMappingVolumeAll-46"><span class="linenos">46</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolumeAll-47"><a href="#CiftiExportDenseMappingVolumeAll-47"><span class="linenos">47</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_structure</span><span class="p">:</span>
-</span><span id="CiftiExportDenseMappingVolumeAll-48"><a href="#CiftiExportDenseMappingVolumeAll-48"><span class="linenos">48</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-structure&quot;</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolumeAll-49"><a href="#CiftiExportDenseMappingVolumeAll-49"><span class="linenos">49</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="CiftiExportDenseMappingVolumeAll-44"><a href="#CiftiExportDenseMappingVolumeAll-44"><span class="linenos">44</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-all&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolumeAll-45"><a href="#CiftiExportDenseMappingVolumeAll-45"><span class="linenos">45</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolumeAll-46"><a href="#CiftiExportDenseMappingVolumeAll-46"><span class="linenos">46</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
+</span><span id="CiftiExportDenseMappingVolumeAll-47"><a href="#CiftiExportDenseMappingVolumeAll-47"><span class="linenos">47</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolumeAll-48"><a href="#CiftiExportDenseMappingVolumeAll-48"><span class="linenos">48</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_structure</span><span class="p">:</span>
+</span><span id="CiftiExportDenseMappingVolumeAll-49"><a href="#CiftiExportDenseMappingVolumeAll-49"><span class="linenos">49</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-structure&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolumeAll-50"><a href="#CiftiExportDenseMappingVolumeAll-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -861,12 +869,13 @@
 </span><span id="CiftiExportDenseMappingVolumeAll.run-41"><a href="#CiftiExportDenseMappingVolumeAll.run-41"><span class="linenos">41</span></a><span class="sd">            </span>
 </span><span id="CiftiExportDenseMappingVolumeAll.run-42"><a href="#CiftiExportDenseMappingVolumeAll.run-42"><span class="linenos">42</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="CiftiExportDenseMappingVolumeAll.run-43"><a href="#CiftiExportDenseMappingVolumeAll.run-43"><span class="linenos">43</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="CiftiExportDenseMappingVolumeAll.run-44"><a href="#CiftiExportDenseMappingVolumeAll.run-44"><span class="linenos">44</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolumeAll.run-45"><a href="#CiftiExportDenseMappingVolumeAll.run-45"><span class="linenos">45</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
-</span><span id="CiftiExportDenseMappingVolumeAll.run-46"><a href="#CiftiExportDenseMappingVolumeAll.run-46"><span class="linenos">46</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolumeAll.run-47"><a href="#CiftiExportDenseMappingVolumeAll.run-47"><span class="linenos">47</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_structure</span><span class="p">:</span>
-</span><span id="CiftiExportDenseMappingVolumeAll.run-48"><a href="#CiftiExportDenseMappingVolumeAll.run-48"><span class="linenos">48</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-structure&quot;</span><span class="p">)</span>
-</span><span id="CiftiExportDenseMappingVolumeAll.run-49"><a href="#CiftiExportDenseMappingVolumeAll.run-49"><span class="linenos">49</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="CiftiExportDenseMappingVolumeAll.run-44"><a href="#CiftiExportDenseMappingVolumeAll.run-44"><span class="linenos">44</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-all&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolumeAll.run-45"><a href="#CiftiExportDenseMappingVolumeAll.run-45"><span class="linenos">45</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_out</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolumeAll.run-46"><a href="#CiftiExportDenseMappingVolumeAll.run-46"><span class="linenos">46</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_no_cifti_index</span><span class="p">:</span>
+</span><span id="CiftiExportDenseMappingVolumeAll.run-47"><a href="#CiftiExportDenseMappingVolumeAll.run-47"><span class="linenos">47</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-cifti-index&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolumeAll.run-48"><a href="#CiftiExportDenseMappingVolumeAll.run-48"><span class="linenos">48</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_structure</span><span class="p">:</span>
+</span><span id="CiftiExportDenseMappingVolumeAll.run-49"><a href="#CiftiExportDenseMappingVolumeAll.run-49"><span class="linenos">49</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-structure&quot;</span><span class="p">)</span>
+</span><span id="CiftiExportDenseMappingVolumeAll.run-50"><a href="#CiftiExportDenseMappingVolumeAll.run-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
 
@@ -896,93 +905,93 @@
 
     </div>
     <a class="headerlink" href="#cifti_export_dense_mapping"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_export_dense_mapping-126"><a href="#cifti_export_dense_mapping-126"><span class="linenos">126</span></a><span class="k">def</span> <span class="nf">cifti_export_dense_mapping</span><span class="p">(</span>
-</span><span id="cifti_export_dense_mapping-127"><a href="#cifti_export_dense_mapping-127"><span class="linenos">127</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="cifti_export_dense_mapping-128"><a href="#cifti_export_dense_mapping-128"><span class="linenos">128</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_export_dense_mapping-129"><a href="#cifti_export_dense_mapping-129"><span class="linenos">129</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiExportDenseMappingVolumeAll</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_export_dense_mapping-130"><a href="#cifti_export_dense_mapping-130"><span class="linenos">130</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiExportDenseMappingSurface</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_export_dense_mapping-131"><a href="#cifti_export_dense_mapping-131"><span class="linenos">131</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiExportDenseMappingVolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_export_dense_mapping-132"><a href="#cifti_export_dense_mapping-132"><span class="linenos">132</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_export_dense_mapping-133"><a href="#cifti_export_dense_mapping-133"><span class="linenos">133</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiExportDenseMappingOutputs</span><span class="p">:</span>
-</span><span id="cifti_export_dense_mapping-134"><a href="#cifti_export_dense_mapping-134"><span class="linenos">134</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_export_dense_mapping-135"><a href="#cifti_export_dense_mapping-135"><span class="linenos">135</span></a><span class="sd">    cifti-export-dense-mapping by Washington University School of Medicin.</span>
-</span><span id="cifti_export_dense_mapping-136"><a href="#cifti_export_dense_mapping-136"><span class="linenos">136</span></a><span class="sd">    </span>
-</span><span id="cifti_export_dense_mapping-137"><a href="#cifti_export_dense_mapping-137"><span class="linenos">137</span></a><span class="sd">    Write index to element mapping as text.</span>
-</span><span id="cifti_export_dense_mapping-138"><a href="#cifti_export_dense_mapping-138"><span class="linenos">138</span></a><span class="sd">    </span>
-</span><span id="cifti_export_dense_mapping-139"><a href="#cifti_export_dense_mapping-139"><span class="linenos">139</span></a><span class="sd">    This command produces text files that describe the mapping from cifti</span>
-</span><span id="cifti_export_dense_mapping-140"><a href="#cifti_export_dense_mapping-140"><span class="linenos">140</span></a><span class="sd">    indices to surface vertices or voxels. All indices are zero-based. The</span>
-</span><span id="cifti_export_dense_mapping-141"><a href="#cifti_export_dense_mapping-141"><span class="linenos">141</span></a><span class="sd">    default format for -surface is lines of the form:</span>
-</span><span id="cifti_export_dense_mapping-142"><a href="#cifti_export_dense_mapping-142"><span class="linenos">142</span></a><span class="sd">    </span>
-</span><span id="cifti_export_dense_mapping-143"><a href="#cifti_export_dense_mapping-143"><span class="linenos">143</span></a><span class="sd">    &lt;cifti-index&gt; &lt;vertex&gt;</span>
-</span><span id="cifti_export_dense_mapping-144"><a href="#cifti_export_dense_mapping-144"><span class="linenos">144</span></a><span class="sd">    </span>
-</span><span id="cifti_export_dense_mapping-145"><a href="#cifti_export_dense_mapping-145"><span class="linenos">145</span></a><span class="sd">    The default format for -volume and -volume-all is lines of the form:</span>
-</span><span id="cifti_export_dense_mapping-146"><a href="#cifti_export_dense_mapping-146"><span class="linenos">146</span></a><span class="sd">    </span>
-</span><span id="cifti_export_dense_mapping-147"><a href="#cifti_export_dense_mapping-147"><span class="linenos">147</span></a><span class="sd">    &lt;cifti-index&gt; &lt;i&gt; &lt;j&gt; &lt;k&gt;</span>
-</span><span id="cifti_export_dense_mapping-148"><a href="#cifti_export_dense_mapping-148"><span class="linenos">148</span></a><span class="sd">    </span>
-</span><span id="cifti_export_dense_mapping-149"><a href="#cifti_export_dense_mapping-149"><span class="linenos">149</span></a><span class="sd">    For each &lt;structure&gt; argument, use one of the following strings:</span>
-</span><span id="cifti_export_dense_mapping-150"><a href="#cifti_export_dense_mapping-150"><span class="linenos">150</span></a><span class="sd">    </span>
-</span><span id="cifti_export_dense_mapping-151"><a href="#cifti_export_dense_mapping-151"><span class="linenos">151</span></a><span class="sd">    CORTEX_LEFT</span>
-</span><span id="cifti_export_dense_mapping-152"><a href="#cifti_export_dense_mapping-152"><span class="linenos">152</span></a><span class="sd">    CORTEX_RIGHT</span>
-</span><span id="cifti_export_dense_mapping-153"><a href="#cifti_export_dense_mapping-153"><span class="linenos">153</span></a><span class="sd">    CEREBELLUM</span>
-</span><span id="cifti_export_dense_mapping-154"><a href="#cifti_export_dense_mapping-154"><span class="linenos">154</span></a><span class="sd">    ACCUMBENS_LEFT</span>
-</span><span id="cifti_export_dense_mapping-155"><a href="#cifti_export_dense_mapping-155"><span class="linenos">155</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
-</span><span id="cifti_export_dense_mapping-156"><a href="#cifti_export_dense_mapping-156"><span class="linenos">156</span></a><span class="sd">    ALL_GREY_MATTER</span>
-</span><span id="cifti_export_dense_mapping-157"><a href="#cifti_export_dense_mapping-157"><span class="linenos">157</span></a><span class="sd">    ALL_WHITE_MATTER</span>
-</span><span id="cifti_export_dense_mapping-158"><a href="#cifti_export_dense_mapping-158"><span class="linenos">158</span></a><span class="sd">    AMYGDALA_LEFT</span>
-</span><span id="cifti_export_dense_mapping-159"><a href="#cifti_export_dense_mapping-159"><span class="linenos">159</span></a><span class="sd">    AMYGDALA_RIGHT</span>
-</span><span id="cifti_export_dense_mapping-160"><a href="#cifti_export_dense_mapping-160"><span class="linenos">160</span></a><span class="sd">    BRAIN_STEM</span>
-</span><span id="cifti_export_dense_mapping-161"><a href="#cifti_export_dense_mapping-161"><span class="linenos">161</span></a><span class="sd">    CAUDATE_LEFT</span>
-</span><span id="cifti_export_dense_mapping-162"><a href="#cifti_export_dense_mapping-162"><span class="linenos">162</span></a><span class="sd">    CAUDATE_RIGHT</span>
-</span><span id="cifti_export_dense_mapping-163"><a href="#cifti_export_dense_mapping-163"><span class="linenos">163</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
-</span><span id="cifti_export_dense_mapping-164"><a href="#cifti_export_dense_mapping-164"><span class="linenos">164</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
-</span><span id="cifti_export_dense_mapping-165"><a href="#cifti_export_dense_mapping-165"><span class="linenos">165</span></a><span class="sd">    CEREBELLUM_LEFT</span>
-</span><span id="cifti_export_dense_mapping-166"><a href="#cifti_export_dense_mapping-166"><span class="linenos">166</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
-</span><span id="cifti_export_dense_mapping-167"><a href="#cifti_export_dense_mapping-167"><span class="linenos">167</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
-</span><span id="cifti_export_dense_mapping-168"><a href="#cifti_export_dense_mapping-168"><span class="linenos">168</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
-</span><span id="cifti_export_dense_mapping-169"><a href="#cifti_export_dense_mapping-169"><span class="linenos">169</span></a><span class="sd">    CORTEX</span>
-</span><span id="cifti_export_dense_mapping-170"><a href="#cifti_export_dense_mapping-170"><span class="linenos">170</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
-</span><span id="cifti_export_dense_mapping-171"><a href="#cifti_export_dense_mapping-171"><span class="linenos">171</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
-</span><span id="cifti_export_dense_mapping-172"><a href="#cifti_export_dense_mapping-172"><span class="linenos">172</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
-</span><span id="cifti_export_dense_mapping-173"><a href="#cifti_export_dense_mapping-173"><span class="linenos">173</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
-</span><span id="cifti_export_dense_mapping-174"><a href="#cifti_export_dense_mapping-174"><span class="linenos">174</span></a><span class="sd">    INVALID</span>
-</span><span id="cifti_export_dense_mapping-175"><a href="#cifti_export_dense_mapping-175"><span class="linenos">175</span></a><span class="sd">    OTHER</span>
-</span><span id="cifti_export_dense_mapping-176"><a href="#cifti_export_dense_mapping-176"><span class="linenos">176</span></a><span class="sd">    OTHER_GREY_MATTER</span>
-</span><span id="cifti_export_dense_mapping-177"><a href="#cifti_export_dense_mapping-177"><span class="linenos">177</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
-</span><span id="cifti_export_dense_mapping-178"><a href="#cifti_export_dense_mapping-178"><span class="linenos">178</span></a><span class="sd">    PALLIDUM_LEFT</span>
-</span><span id="cifti_export_dense_mapping-179"><a href="#cifti_export_dense_mapping-179"><span class="linenos">179</span></a><span class="sd">    PALLIDUM_RIGHT</span>
-</span><span id="cifti_export_dense_mapping-180"><a href="#cifti_export_dense_mapping-180"><span class="linenos">180</span></a><span class="sd">    PUTAMEN_LEFT</span>
-</span><span id="cifti_export_dense_mapping-181"><a href="#cifti_export_dense_mapping-181"><span class="linenos">181</span></a><span class="sd">    PUTAMEN_RIGHT</span>
-</span><span id="cifti_export_dense_mapping-182"><a href="#cifti_export_dense_mapping-182"><span class="linenos">182</span></a><span class="sd">    THALAMUS_LEFT</span>
-</span><span id="cifti_export_dense_mapping-183"><a href="#cifti_export_dense_mapping-183"><span class="linenos">183</span></a><span class="sd">    THALAMUS_RIGHT.</span>
-</span><span id="cifti_export_dense_mapping-184"><a href="#cifti_export_dense_mapping-184"><span class="linenos">184</span></a><span class="sd">    </span>
-</span><span id="cifti_export_dense_mapping-185"><a href="#cifti_export_dense_mapping-185"><span class="linenos">185</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_export_dense_mapping-186"><a href="#cifti_export_dense_mapping-186"><span class="linenos">186</span></a><span class="sd">        cifti: the cifti file.</span>
-</span><span id="cifti_export_dense_mapping-187"><a href="#cifti_export_dense_mapping-187"><span class="linenos">187</span></a><span class="sd">        direction: which direction to export the mapping from, ROW or COLUMN.</span>
-</span><span id="cifti_export_dense_mapping-188"><a href="#cifti_export_dense_mapping-188"><span class="linenos">188</span></a><span class="sd">        volume_all: export the the mapping of all voxels.</span>
-</span><span id="cifti_export_dense_mapping-189"><a href="#cifti_export_dense_mapping-189"><span class="linenos">189</span></a><span class="sd">        surface: export the the mapping of one surface structure.</span>
-</span><span id="cifti_export_dense_mapping-190"><a href="#cifti_export_dense_mapping-190"><span class="linenos">190</span></a><span class="sd">        volume: export the the mapping of one volume structure.</span>
-</span><span id="cifti_export_dense_mapping-191"><a href="#cifti_export_dense_mapping-191"><span class="linenos">191</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_export_dense_mapping-192"><a href="#cifti_export_dense_mapping-192"><span class="linenos">192</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_export_dense_mapping-193"><a href="#cifti_export_dense_mapping-193"><span class="linenos">193</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiExportDenseMappingOutputs`).</span>
-</span><span id="cifti_export_dense_mapping-194"><a href="#cifti_export_dense_mapping-194"><span class="linenos">194</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_export_dense_mapping-195"><a href="#cifti_export_dense_mapping-195"><span class="linenos">195</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_export_dense_mapping-196"><a href="#cifti_export_dense_mapping-196"><span class="linenos">196</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_EXPORT_DENSE_MAPPING_METADATA</span><span class="p">)</span>
-</span><span id="cifti_export_dense_mapping-197"><a href="#cifti_export_dense_mapping-197"><span class="linenos">197</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="cifti_export_dense_mapping-198"><a href="#cifti_export_dense_mapping-198"><span class="linenos">198</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="cifti_export_dense_mapping-199"><a href="#cifti_export_dense_mapping-199"><span class="linenos">199</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-export-dense-mapping&quot;</span><span class="p">)</span>
-</span><span id="cifti_export_dense_mapping-200"><a href="#cifti_export_dense_mapping-200"><span class="linenos">200</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti</span><span class="p">))</span>
-</span><span id="cifti_export_dense_mapping-201"><a href="#cifti_export_dense_mapping-201"><span class="linenos">201</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
-</span><span id="cifti_export_dense_mapping-202"><a href="#cifti_export_dense_mapping-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">volume_all</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_export_dense_mapping-203"><a href="#cifti_export_dense_mapping-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-volume-all&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">volume_all</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)])</span>
-</span><span id="cifti_export_dense_mapping-204"><a href="#cifti_export_dense_mapping-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_export_dense_mapping-205"><a href="#cifti_export_dense_mapping-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-surface&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">surface</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="cifti_export_dense_mapping-206"><a href="#cifti_export_dense_mapping-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_export_dense_mapping-207"><a href="#cifti_export_dense_mapping-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-volume&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">volume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]])</span>
-</span><span id="cifti_export_dense_mapping-208"><a href="#cifti_export_dense_mapping-208"><span class="linenos">208</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiExportDenseMappingOutputs</span><span class="p">(</span>
-</span><span id="cifti_export_dense_mapping-209"><a href="#cifti_export_dense_mapping-209"><span class="linenos">209</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="cifti_export_dense_mapping-210"><a href="#cifti_export_dense_mapping-210"><span class="linenos">210</span></a>    <span class="p">)</span>
-</span><span id="cifti_export_dense_mapping-211"><a href="#cifti_export_dense_mapping-211"><span class="linenos">211</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="cifti_export_dense_mapping-212"><a href="#cifti_export_dense_mapping-212"><span class="linenos">212</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_export_dense_mapping-129"><a href="#cifti_export_dense_mapping-129"><span class="linenos">129</span></a><span class="k">def</span> <span class="nf">cifti_export_dense_mapping</span><span class="p">(</span>
+</span><span id="cifti_export_dense_mapping-130"><a href="#cifti_export_dense_mapping-130"><span class="linenos">130</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="cifti_export_dense_mapping-131"><a href="#cifti_export_dense_mapping-131"><span class="linenos">131</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cifti_export_dense_mapping-132"><a href="#cifti_export_dense_mapping-132"><span class="linenos">132</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiExportDenseMappingVolumeAll</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_export_dense_mapping-133"><a href="#cifti_export_dense_mapping-133"><span class="linenos">133</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiExportDenseMappingSurface</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_export_dense_mapping-134"><a href="#cifti_export_dense_mapping-134"><span class="linenos">134</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiExportDenseMappingVolume</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_export_dense_mapping-135"><a href="#cifti_export_dense_mapping-135"><span class="linenos">135</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_export_dense_mapping-136"><a href="#cifti_export_dense_mapping-136"><span class="linenos">136</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiExportDenseMappingOutputs</span><span class="p">:</span>
+</span><span id="cifti_export_dense_mapping-137"><a href="#cifti_export_dense_mapping-137"><span class="linenos">137</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_export_dense_mapping-138"><a href="#cifti_export_dense_mapping-138"><span class="linenos">138</span></a><span class="sd">    cifti-export-dense-mapping by Washington University School of Medicin.</span>
+</span><span id="cifti_export_dense_mapping-139"><a href="#cifti_export_dense_mapping-139"><span class="linenos">139</span></a><span class="sd">    </span>
+</span><span id="cifti_export_dense_mapping-140"><a href="#cifti_export_dense_mapping-140"><span class="linenos">140</span></a><span class="sd">    Write index to element mapping as text.</span>
+</span><span id="cifti_export_dense_mapping-141"><a href="#cifti_export_dense_mapping-141"><span class="linenos">141</span></a><span class="sd">    </span>
+</span><span id="cifti_export_dense_mapping-142"><a href="#cifti_export_dense_mapping-142"><span class="linenos">142</span></a><span class="sd">    This command produces text files that describe the mapping from cifti</span>
+</span><span id="cifti_export_dense_mapping-143"><a href="#cifti_export_dense_mapping-143"><span class="linenos">143</span></a><span class="sd">    indices to surface vertices or voxels. All indices are zero-based. The</span>
+</span><span id="cifti_export_dense_mapping-144"><a href="#cifti_export_dense_mapping-144"><span class="linenos">144</span></a><span class="sd">    default format for -surface is lines of the form:</span>
+</span><span id="cifti_export_dense_mapping-145"><a href="#cifti_export_dense_mapping-145"><span class="linenos">145</span></a><span class="sd">    </span>
+</span><span id="cifti_export_dense_mapping-146"><a href="#cifti_export_dense_mapping-146"><span class="linenos">146</span></a><span class="sd">    &lt;cifti-index&gt; &lt;vertex&gt;</span>
+</span><span id="cifti_export_dense_mapping-147"><a href="#cifti_export_dense_mapping-147"><span class="linenos">147</span></a><span class="sd">    </span>
+</span><span id="cifti_export_dense_mapping-148"><a href="#cifti_export_dense_mapping-148"><span class="linenos">148</span></a><span class="sd">    The default format for -volume and -volume-all is lines of the form:</span>
+</span><span id="cifti_export_dense_mapping-149"><a href="#cifti_export_dense_mapping-149"><span class="linenos">149</span></a><span class="sd">    </span>
+</span><span id="cifti_export_dense_mapping-150"><a href="#cifti_export_dense_mapping-150"><span class="linenos">150</span></a><span class="sd">    &lt;cifti-index&gt; &lt;i&gt; &lt;j&gt; &lt;k&gt;</span>
+</span><span id="cifti_export_dense_mapping-151"><a href="#cifti_export_dense_mapping-151"><span class="linenos">151</span></a><span class="sd">    </span>
+</span><span id="cifti_export_dense_mapping-152"><a href="#cifti_export_dense_mapping-152"><span class="linenos">152</span></a><span class="sd">    For each &lt;structure&gt; argument, use one of the following strings:</span>
+</span><span id="cifti_export_dense_mapping-153"><a href="#cifti_export_dense_mapping-153"><span class="linenos">153</span></a><span class="sd">    </span>
+</span><span id="cifti_export_dense_mapping-154"><a href="#cifti_export_dense_mapping-154"><span class="linenos">154</span></a><span class="sd">    CORTEX_LEFT</span>
+</span><span id="cifti_export_dense_mapping-155"><a href="#cifti_export_dense_mapping-155"><span class="linenos">155</span></a><span class="sd">    CORTEX_RIGHT</span>
+</span><span id="cifti_export_dense_mapping-156"><a href="#cifti_export_dense_mapping-156"><span class="linenos">156</span></a><span class="sd">    CEREBELLUM</span>
+</span><span id="cifti_export_dense_mapping-157"><a href="#cifti_export_dense_mapping-157"><span class="linenos">157</span></a><span class="sd">    ACCUMBENS_LEFT</span>
+</span><span id="cifti_export_dense_mapping-158"><a href="#cifti_export_dense_mapping-158"><span class="linenos">158</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
+</span><span id="cifti_export_dense_mapping-159"><a href="#cifti_export_dense_mapping-159"><span class="linenos">159</span></a><span class="sd">    ALL_GREY_MATTER</span>
+</span><span id="cifti_export_dense_mapping-160"><a href="#cifti_export_dense_mapping-160"><span class="linenos">160</span></a><span class="sd">    ALL_WHITE_MATTER</span>
+</span><span id="cifti_export_dense_mapping-161"><a href="#cifti_export_dense_mapping-161"><span class="linenos">161</span></a><span class="sd">    AMYGDALA_LEFT</span>
+</span><span id="cifti_export_dense_mapping-162"><a href="#cifti_export_dense_mapping-162"><span class="linenos">162</span></a><span class="sd">    AMYGDALA_RIGHT</span>
+</span><span id="cifti_export_dense_mapping-163"><a href="#cifti_export_dense_mapping-163"><span class="linenos">163</span></a><span class="sd">    BRAIN_STEM</span>
+</span><span id="cifti_export_dense_mapping-164"><a href="#cifti_export_dense_mapping-164"><span class="linenos">164</span></a><span class="sd">    CAUDATE_LEFT</span>
+</span><span id="cifti_export_dense_mapping-165"><a href="#cifti_export_dense_mapping-165"><span class="linenos">165</span></a><span class="sd">    CAUDATE_RIGHT</span>
+</span><span id="cifti_export_dense_mapping-166"><a href="#cifti_export_dense_mapping-166"><span class="linenos">166</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
+</span><span id="cifti_export_dense_mapping-167"><a href="#cifti_export_dense_mapping-167"><span class="linenos">167</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
+</span><span id="cifti_export_dense_mapping-168"><a href="#cifti_export_dense_mapping-168"><span class="linenos">168</span></a><span class="sd">    CEREBELLUM_LEFT</span>
+</span><span id="cifti_export_dense_mapping-169"><a href="#cifti_export_dense_mapping-169"><span class="linenos">169</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
+</span><span id="cifti_export_dense_mapping-170"><a href="#cifti_export_dense_mapping-170"><span class="linenos">170</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
+</span><span id="cifti_export_dense_mapping-171"><a href="#cifti_export_dense_mapping-171"><span class="linenos">171</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
+</span><span id="cifti_export_dense_mapping-172"><a href="#cifti_export_dense_mapping-172"><span class="linenos">172</span></a><span class="sd">    CORTEX</span>
+</span><span id="cifti_export_dense_mapping-173"><a href="#cifti_export_dense_mapping-173"><span class="linenos">173</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
+</span><span id="cifti_export_dense_mapping-174"><a href="#cifti_export_dense_mapping-174"><span class="linenos">174</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
+</span><span id="cifti_export_dense_mapping-175"><a href="#cifti_export_dense_mapping-175"><span class="linenos">175</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
+</span><span id="cifti_export_dense_mapping-176"><a href="#cifti_export_dense_mapping-176"><span class="linenos">176</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
+</span><span id="cifti_export_dense_mapping-177"><a href="#cifti_export_dense_mapping-177"><span class="linenos">177</span></a><span class="sd">    INVALID</span>
+</span><span id="cifti_export_dense_mapping-178"><a href="#cifti_export_dense_mapping-178"><span class="linenos">178</span></a><span class="sd">    OTHER</span>
+</span><span id="cifti_export_dense_mapping-179"><a href="#cifti_export_dense_mapping-179"><span class="linenos">179</span></a><span class="sd">    OTHER_GREY_MATTER</span>
+</span><span id="cifti_export_dense_mapping-180"><a href="#cifti_export_dense_mapping-180"><span class="linenos">180</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
+</span><span id="cifti_export_dense_mapping-181"><a href="#cifti_export_dense_mapping-181"><span class="linenos">181</span></a><span class="sd">    PALLIDUM_LEFT</span>
+</span><span id="cifti_export_dense_mapping-182"><a href="#cifti_export_dense_mapping-182"><span class="linenos">182</span></a><span class="sd">    PALLIDUM_RIGHT</span>
+</span><span id="cifti_export_dense_mapping-183"><a href="#cifti_export_dense_mapping-183"><span class="linenos">183</span></a><span class="sd">    PUTAMEN_LEFT</span>
+</span><span id="cifti_export_dense_mapping-184"><a href="#cifti_export_dense_mapping-184"><span class="linenos">184</span></a><span class="sd">    PUTAMEN_RIGHT</span>
+</span><span id="cifti_export_dense_mapping-185"><a href="#cifti_export_dense_mapping-185"><span class="linenos">185</span></a><span class="sd">    THALAMUS_LEFT</span>
+</span><span id="cifti_export_dense_mapping-186"><a href="#cifti_export_dense_mapping-186"><span class="linenos">186</span></a><span class="sd">    THALAMUS_RIGHT.</span>
+</span><span id="cifti_export_dense_mapping-187"><a href="#cifti_export_dense_mapping-187"><span class="linenos">187</span></a><span class="sd">    </span>
+</span><span id="cifti_export_dense_mapping-188"><a href="#cifti_export_dense_mapping-188"><span class="linenos">188</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_export_dense_mapping-189"><a href="#cifti_export_dense_mapping-189"><span class="linenos">189</span></a><span class="sd">        cifti: the cifti file.</span>
+</span><span id="cifti_export_dense_mapping-190"><a href="#cifti_export_dense_mapping-190"><span class="linenos">190</span></a><span class="sd">        direction: which direction to export the mapping from, ROW or COLUMN.</span>
+</span><span id="cifti_export_dense_mapping-191"><a href="#cifti_export_dense_mapping-191"><span class="linenos">191</span></a><span class="sd">        volume_all: export the the mapping of all voxels.</span>
+</span><span id="cifti_export_dense_mapping-192"><a href="#cifti_export_dense_mapping-192"><span class="linenos">192</span></a><span class="sd">        surface: export the the mapping of one surface structure.</span>
+</span><span id="cifti_export_dense_mapping-193"><a href="#cifti_export_dense_mapping-193"><span class="linenos">193</span></a><span class="sd">        volume: export the the mapping of one volume structure.</span>
+</span><span id="cifti_export_dense_mapping-194"><a href="#cifti_export_dense_mapping-194"><span class="linenos">194</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_export_dense_mapping-195"><a href="#cifti_export_dense_mapping-195"><span class="linenos">195</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_export_dense_mapping-196"><a href="#cifti_export_dense_mapping-196"><span class="linenos">196</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiExportDenseMappingOutputs`).</span>
+</span><span id="cifti_export_dense_mapping-197"><a href="#cifti_export_dense_mapping-197"><span class="linenos">197</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_export_dense_mapping-198"><a href="#cifti_export_dense_mapping-198"><span class="linenos">198</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_export_dense_mapping-199"><a href="#cifti_export_dense_mapping-199"><span class="linenos">199</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_EXPORT_DENSE_MAPPING_METADATA</span><span class="p">)</span>
+</span><span id="cifti_export_dense_mapping-200"><a href="#cifti_export_dense_mapping-200"><span class="linenos">200</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="cifti_export_dense_mapping-201"><a href="#cifti_export_dense_mapping-201"><span class="linenos">201</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="cifti_export_dense_mapping-202"><a href="#cifti_export_dense_mapping-202"><span class="linenos">202</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-export-dense-mapping&quot;</span><span class="p">)</span>
+</span><span id="cifti_export_dense_mapping-203"><a href="#cifti_export_dense_mapping-203"><span class="linenos">203</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti</span><span class="p">))</span>
+</span><span id="cifti_export_dense_mapping-204"><a href="#cifti_export_dense_mapping-204"><span class="linenos">204</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+</span><span id="cifti_export_dense_mapping-205"><a href="#cifti_export_dense_mapping-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">volume_all</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_export_dense_mapping-206"><a href="#cifti_export_dense_mapping-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">volume_all</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_export_dense_mapping-207"><a href="#cifti_export_dense_mapping-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_export_dense_mapping-208"><a href="#cifti_export_dense_mapping-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">surface</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="cifti_export_dense_mapping-209"><a href="#cifti_export_dense_mapping-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_export_dense_mapping-210"><a href="#cifti_export_dense_mapping-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">volume</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="cifti_export_dense_mapping-211"><a href="#cifti_export_dense_mapping-211"><span class="linenos">211</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiExportDenseMappingOutputs</span><span class="p">(</span>
+</span><span id="cifti_export_dense_mapping-212"><a href="#cifti_export_dense_mapping-212"><span class="linenos">212</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="cifti_export_dense_mapping-213"><a href="#cifti_export_dense_mapping-213"><span class="linenos">213</span></a>    <span class="p">)</span>
+</span><span id="cifti_export_dense_mapping-214"><a href="#cifti_export_dense_mapping-214"><span class="linenos">214</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="cifti_export_dense_mapping-215"><a href="#cifti_export_dense_mapping-215"><span class="linenos">215</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
