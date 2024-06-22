@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_MERGE_METADATA = Metadata(
-    id="0da69f9e8121dbd36d067a3055f920605cef6ff8",
+    id="592ceae70c1f127b2d379be3646769ef07c785cc",
     name="cifti-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class CiftiMergeUpTo:
     """
     use an inclusive range of indices
     """
+    last_index: str
+    """the number or name of the last index to include"""
     opt_reverse: bool = False
     """use the range in reverse order"""
     
@@ -36,6 +38,7 @@ class CiftiMergeUpTo:
             
         """
         cargs = []
+        cargs.append(self.last_index)
         if self.opt_reverse:
             cargs.append("-reverse")
         return cargs
@@ -46,6 +49,8 @@ class CiftiMergeIndex:
     """
     select a single index to use
     """
+    index_: str
+    """the index number (starting from 1), or name"""
     up_to: CiftiMergeUpTo | None = None
     """use an inclusive range of indices"""
     
@@ -63,6 +68,7 @@ class CiftiMergeIndex:
             
         """
         cargs = []
+        cargs.append(self.index_)
         if self.up_to is not None:
             cargs.extend(["-up-to", *self.up_to.run(execution)])
         return cargs
@@ -73,6 +79,8 @@ class CiftiMergeCifti:
     """
     specify an input cifti file
     """
+    cifti_in: InputPathType
+    """a cifti file to use data from"""
     index: list[CiftiMergeIndex] = None
     """select a single index to use"""
     
@@ -90,6 +98,7 @@ class CiftiMergeCifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_in))
         if self.index is not None:
             cargs.extend(["-index", *[a for c in [s.run(execution) for s in self.index] for a in c]])
         return cargs

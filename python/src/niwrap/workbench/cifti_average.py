@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_AVERAGE_METADATA = Metadata(
-    id="185ad89a6fdcd3976ce8d726d7453bce3c5bd92e",
+    id="d1a4221c5b052a97deb2be86d089296d9b12b287",
     name="cifti-average",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class CiftiAverageExcludeOutliers:
     """
     exclude outliers by standard deviation of each element across files
     """
+    sigma_below: float | int
+    """number of standard deviations below the mean to include"""
+    sigma_above: float | int
+    """number of standard deviations above the mean to include"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class CiftiAverageExcludeOutliers:
             
         """
         cargs = []
+        cargs.append(str(self.sigma_below))
+        cargs.append(str(self.sigma_above))
         return cargs
 
 
@@ -42,6 +48,8 @@ class CiftiAverageCifti:
     """
     specify an input file
     """
+    cifti_in: InputPathType
+    """the input cifti file"""
     opt_weight_weight: float | int | None = None
     """give a weight for this file: the weight to use"""
     
@@ -59,6 +67,7 @@ class CiftiAverageCifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_in))
         if self.opt_weight_weight is not None:
             cargs.extend(["-weight", str(self.opt_weight_weight)])
         return cargs

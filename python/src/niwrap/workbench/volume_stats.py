@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_STATS_METADATA = Metadata(
-    id="ea35b1900fd506b81acd0cec8f7b3f80f074279c",
+    id="f591822811dfb4f715298bd6b92d975c129a5f8f",
     name="volume-stats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class VolumeStatsRoi:
     """
     only consider data inside an roi
     """
+    roi_volume: InputPathType
+    """the roi, as a volume file"""
     opt_match_maps: bool = False
     """each subvolume of input uses the corresponding subvolume from the roi
     file"""
@@ -37,6 +39,7 @@ class VolumeStatsRoi:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.roi_volume))
         if self.opt_match_maps:
             cargs.append("-match-maps")
         return cargs

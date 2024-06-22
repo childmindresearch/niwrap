@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABEL_RESAMPLE_METADATA = Metadata(
-    id="62135c374b3b1838f951fa32fe0a90d64343e9a8",
+    id="af6a129caa23453985bcfe18f6682ae38e3e8977",
     name="label-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class LabelResampleAreaSurfs:
     """
     specify surfaces to do vertex area correction based on
     """
+    current_area: InputPathType
+    """a relevant anatomical surface with <current-sphere> mesh"""
+    new_area: InputPathType
+    """a relevant anatomical surface with <new-sphere> mesh"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class LabelResampleAreaSurfs:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_area))
+        cargs.append(execution.input_file(self.new_area))
         return cargs
 
 
@@ -42,6 +48,10 @@ class LabelResampleAreaMetrics:
     """
     specify vertex area metrics to do area correction based on
     """
+    current_area: InputPathType
+    """a metric file with vertex areas for <current-sphere> mesh"""
+    new_area: InputPathType
+    """a metric file with vertex areas for <new-sphere> mesh"""
     
     def run(
         self,
@@ -57,6 +67,8 @@ class LabelResampleAreaMetrics:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_area))
+        cargs.append(execution.input_file(self.new_area))
         return cargs
 
 

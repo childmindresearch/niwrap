@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONVERT_AFFINE_METADATA = Metadata(
-    id="a9ccb8a0ce7bc6a1aec93f8022476f82e29ed30a",
+    id="94727b63180cd41ac41397ca507b7fbc61049dcb",
     name="convert-affine",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class ConvertAffineFromWorld:
     """
     input is a NIFTI 'world' affine
     """
+    input_: str
+    """the input affine"""
     opt_inverse: bool = False
     """for files that use 'target to source' convention"""
     
@@ -36,6 +38,7 @@ class ConvertAffineFromWorld:
             
         """
         cargs = []
+        cargs.append(self.input_)
         if self.opt_inverse:
             cargs.append("-inverse")
         return cargs
@@ -46,6 +49,12 @@ class ConvertAffineFromFlirt:
     """
     input is a flirt matrix
     """
+    input_: str
+    """the input affine"""
+    source_volume: str
+    """the source volume used when generating the input affine"""
+    target_volume: str
+    """the target volume used when generating the input affine"""
     
     def run(
         self,
@@ -61,6 +70,9 @@ class ConvertAffineFromFlirt:
             
         """
         cargs = []
+        cargs.append(self.input_)
+        cargs.append(self.source_volume)
+        cargs.append(self.target_volume)
         return cargs
 
 
@@ -69,6 +81,8 @@ class ConvertAffineToWorld:
     """
     write output as a NIFTI 'world' affine
     """
+    output: str
+    """output - the output affine"""
     opt_inverse: bool = False
     """write file using 'target to source' convention"""
     
@@ -86,6 +100,7 @@ class ConvertAffineToWorld:
             
         """
         cargs = []
+        cargs.append(self.output)
         if self.opt_inverse:
             cargs.append("-inverse")
         return cargs
@@ -96,6 +111,12 @@ class ConvertAffineToFlirt:
     """
     write output as a flirt matrix
     """
+    output: str
+    """output - the output affine"""
+    source_volume: str
+    """the volume you want to apply the transform to"""
+    target_volume: str
+    """the target space you want the transformed volume to match"""
     
     def run(
         self,
@@ -111,6 +132,9 @@ class ConvertAffineToFlirt:
             
         """
         cargs = []
+        cargs.append(self.output)
+        cargs.append(self.source_volume)
+        cargs.append(self.target_volume)
         return cargs
 
 

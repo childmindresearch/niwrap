@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_LABEL_TO_BORDER_METADATA = Metadata(
-    id="6a7d1472f72b510ad24775b65efa03b5cc7046ce",
+    id="988a1eb7db254d998455fb6a67a5d8219c8c98f4",
     name="cifti-label-to-border",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -29,6 +29,8 @@ class CiftiLabelToBorderBorder:
     """
     specify output file for a surface structure
     """
+    surface: InputPathType
+    """the surface to use for neighbor and structure information"""
     border_out: InputPathType
     """the output border file"""
     
@@ -46,6 +48,7 @@ class CiftiLabelToBorderBorder:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface))
         cargs.append(execution.input_file(self.border_out))
         return cargs
     

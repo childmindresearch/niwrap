@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_REDUCE_METADATA = Metadata(
-    id="ec96e3deef3a049213ca2b903cb61ddb1545a3b6",
+    id="39ebee5d9fc6160b16b5594a394641eae481d293",
     name="volume-reduce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class VolumeReduceExcludeOutliers:
     """
     exclude non-numeric values and outliers by standard deviation
     """
+    sigma_below: float | int
+    """number of standard deviations below the mean to include"""
+    sigma_above: float | int
+    """number of standard deviations above the mean to include"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class VolumeReduceExcludeOutliers:
             
         """
         cargs = []
+        cargs.append(str(self.sigma_below))
+        cargs.append(str(self.sigma_above))
         return cargs
 
 

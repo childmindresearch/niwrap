@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONVERT_FIBER_ORIENTATIONS_METADATA = Metadata(
-    id="b03dad0ae50bf132140bf9a79b3f9433dc9bcfe1",
+    id="77da9cd5861a3ef33c8300523248f96c2f65221c",
     name="convert-fiber-orientations",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,20 @@ class ConvertFiberOrientationsFiber:
     """
     specify the parameter volumes for a fiber
     """
+    mean_f: InputPathType
+    """mean fiber strength"""
+    stdev_f: InputPathType
+    """standard deviation of fiber strength"""
+    theta: InputPathType
+    """theta angle"""
+    phi: InputPathType
+    """phi angle"""
+    psi: InputPathType
+    """psi angle"""
+    ka: InputPathType
+    """ka bingham parameter"""
+    kb: InputPathType
+    """kb bingham parameter"""
     
     def run(
         self,
@@ -34,6 +48,13 @@ class ConvertFiberOrientationsFiber:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.mean_f))
+        cargs.append(execution.input_file(self.stdev_f))
+        cargs.append(execution.input_file(self.theta))
+        cargs.append(execution.input_file(self.phi))
+        cargs.append(execution.input_file(self.psi))
+        cargs.append(execution.input_file(self.ka))
+        cargs.append(execution.input_file(self.kb))
         return cargs
 
 

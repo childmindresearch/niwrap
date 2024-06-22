@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_REPLACE_STRUCTURE_METADATA = Metadata(
-    id="4187a86944db186eaf128a73ac6bd7d1da26fab0",
+    id="f52306965a4da293f41cdb5570587f6669d593e7",
     name="cifti-replace-structure",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class CiftiReplaceStructureVolumeAll:
     """
     replace the data in all volume components
     """
+    volume_: InputPathType
+    """the input volume"""
     opt_from_cropped: bool = False
     """the input is cropped to the size of the data"""
     
@@ -36,6 +38,7 @@ class CiftiReplaceStructureVolumeAll:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.volume_))
         if self.opt_from_cropped:
             cargs.append("-from-cropped")
         return cargs
@@ -46,6 +49,10 @@ class CiftiReplaceStructureLabel:
     """
     replace the data in a surface label component
     """
+    structure: str
+    """the structure to replace the data of"""
+    label_: InputPathType
+    """the input label file"""
     
     def run(
         self,
@@ -61,6 +68,8 @@ class CiftiReplaceStructureLabel:
             
         """
         cargs = []
+        cargs.append(self.structure)
+        cargs.append(execution.input_file(self.label_))
         return cargs
 
 
@@ -69,6 +78,10 @@ class CiftiReplaceStructureMetric:
     """
     replace the data in a surface component
     """
+    structure: str
+    """the structure to replace the data of"""
+    metric_: InputPathType
+    """the input metric"""
     
     def run(
         self,
@@ -84,6 +97,8 @@ class CiftiReplaceStructureMetric:
             
         """
         cargs = []
+        cargs.append(self.structure)
+        cargs.append(execution.input_file(self.metric_))
         return cargs
 
 
@@ -92,6 +107,10 @@ class CiftiReplaceStructureVolume:
     """
     replace the data in a volume component
     """
+    structure: str
+    """the structure to replace the data of"""
+    volume_: InputPathType
+    """the input volume"""
     opt_from_cropped: bool = False
     """the input is cropped to the size of the component"""
     
@@ -109,6 +128,8 @@ class CiftiReplaceStructureVolume:
             
         """
         cargs = []
+        cargs.append(self.structure)
+        cargs.append(execution.input_file(self.volume_))
         if self.opt_from_cropped:
             cargs.append("-from-cropped")
         return cargs

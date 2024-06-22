@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_FIND_CLUSTERS_METADATA = Metadata(
-    id="a3c9580ffee6eaf0a800fbca5af5173a39729b9d",
+    id="ca3b9522db0bb81629d336544a6971bb83fb3f03",
     name="cifti-find-clusters",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class CiftiFindClustersLeftSurface:
     """
     specify the left surface to use
     """
+    surface: InputPathType
+    """the left surface file"""
     opt_corrected_areas_area_metric: InputPathType | None = None
     """vertex areas to use instead of computing them from the surface: the
     corrected vertex areas, as a metric"""
@@ -37,6 +39,7 @@ class CiftiFindClustersLeftSurface:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface))
         if self.opt_corrected_areas_area_metric is not None:
             cargs.extend(["-corrected-areas", execution.input_file(self.opt_corrected_areas_area_metric)])
         return cargs
@@ -47,6 +50,8 @@ class CiftiFindClustersRightSurface:
     """
     specify the right surface to use
     """
+    surface: InputPathType
+    """the right surface file"""
     opt_corrected_areas_area_metric: InputPathType | None = None
     """vertex areas to use instead of computing them from the surface: the
     corrected vertex areas, as a metric"""
@@ -65,6 +70,7 @@ class CiftiFindClustersRightSurface:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface))
         if self.opt_corrected_areas_area_metric is not None:
             cargs.extend(["-corrected-areas", execution.input_file(self.opt_corrected_areas_area_metric)])
         return cargs
@@ -75,6 +81,8 @@ class CiftiFindClustersCerebellumSurface:
     """
     specify the cerebellum surface to use
     """
+    surface: InputPathType
+    """the cerebellum surface file"""
     opt_corrected_areas_area_metric: InputPathType | None = None
     """vertex areas to use instead of computing them from the surface: the
     corrected vertex areas, as a metric"""
@@ -93,6 +101,7 @@ class CiftiFindClustersCerebellumSurface:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface))
         if self.opt_corrected_areas_area_metric is not None:
             cargs.extend(["-corrected-areas", execution.input_file(self.opt_corrected_areas_area_metric)])
         return cargs
@@ -103,6 +112,10 @@ class CiftiFindClustersSizeRatio:
     """
     ignore clusters smaller than a given fraction of the largest cluster in the structure
     """
+    surface_ratio: float | int
+    """fraction of the structure's largest cluster area"""
+    volume_ratio: float | int
+    """fraction of the structure's largest cluster volume"""
     
     def run(
         self,
@@ -118,6 +131,8 @@ class CiftiFindClustersSizeRatio:
             
         """
         cargs = []
+        cargs.append(str(self.surface_ratio))
+        cargs.append(str(self.volume_ratio))
         return cargs
 
 
@@ -126,6 +141,10 @@ class CiftiFindClustersDistance:
     """
     ignore clusters further than a given distance from the largest cluster in the structure
     """
+    surface_distance: float | int
+    """how far from the largest cluster a cluster can be, edge to edge, in mm"""
+    volume_distance: float | int
+    """how far from the largest cluster a cluster can be, edge to edge, in mm"""
     
     def run(
         self,
@@ -141,6 +160,8 @@ class CiftiFindClustersDistance:
             
         """
         cargs = []
+        cargs.append(str(self.surface_distance))
+        cargs.append(str(self.volume_distance))
         return cargs
 
 

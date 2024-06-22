@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 BORDER_MERGE_METADATA = Metadata(
-    id="b0b82a23299fbadeccaed2ad3a8723228a4ca80e",
+    id="2a82849e93d0df5be682db26ed6979f73c07ac6a",
     name="border-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class BorderMergeUpTo:
     """
     use an inclusive range of borders
     """
+    last_border: str
+    """the number or name of the last column to include"""
     opt_reverse: bool = False
     """use the range in reverse order"""
     
@@ -36,6 +38,7 @@ class BorderMergeUpTo:
             
         """
         cargs = []
+        cargs.append(self.last_border)
         if self.opt_reverse:
             cargs.append("-reverse")
         return cargs
@@ -46,6 +49,8 @@ class BorderMergeSelect:
     """
     select a single border to use
     """
+    border_: str
+    """the border number or name"""
     up_to: BorderMergeUpTo | None = None
     """use an inclusive range of borders"""
     
@@ -63,6 +68,7 @@ class BorderMergeSelect:
             
         """
         cargs = []
+        cargs.append(self.border_)
         if self.up_to is not None:
             cargs.extend(["-up-to", *self.up_to.run(execution)])
         return cargs
@@ -73,6 +79,8 @@ class BorderMergeBorder:
     """
     specify an input border file
     """
+    border_file_in: InputPathType
+    """a border file to use borders from"""
     select_: list[BorderMergeSelect] = None
     """select a single border to use"""
     
@@ -90,6 +98,7 @@ class BorderMergeBorder:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.border_file_in))
         if self.select_ is not None:
             cargs.extend(["-select", *[a for c in [s.run(execution) for s in self.select_] for a in c]])
         return cargs

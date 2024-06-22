@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SCENE_FILE_MERGE_METADATA = Metadata(
-    id="255f84b5d6fd969bf1ef23f3553f3749eb597330",
+    id="8737d769834b9f2c20e2416bb47bf33092d9b2cd",
     name="scene-file-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class SceneFileMergeUpTo:
     """
     use an inclusive range of scenes
     """
+    last_column: str
+    """the number or name of the last scene to include"""
     opt_reverse: bool = False
     """use the range in reverse order"""
     
@@ -36,6 +38,7 @@ class SceneFileMergeUpTo:
             
         """
         cargs = []
+        cargs.append(self.last_column)
         if self.opt_reverse:
             cargs.append("-reverse")
         return cargs
@@ -46,6 +49,8 @@ class SceneFileMergeScene:
     """
     specify a scene to use
     """
+    scene_: str
+    """the scene number or name"""
     up_to: SceneFileMergeUpTo | None = None
     """use an inclusive range of scenes"""
     
@@ -63,6 +68,7 @@ class SceneFileMergeScene:
             
         """
         cargs = []
+        cargs.append(self.scene_)
         if self.up_to is not None:
             cargs.extend(["-up-to", *self.up_to.run(execution)])
         return cargs
@@ -73,6 +79,8 @@ class SceneFileMergeSceneFile:
     """
     specify a scene file to use scenes from
     """
+    scene_file_: str
+    """the input scene file"""
     scene: list[SceneFileMergeScene] = None
     """specify a scene to use"""
     
@@ -90,6 +98,7 @@ class SceneFileMergeSceneFile:
             
         """
         cargs = []
+        cargs.append(self.scene_file_)
         if self.scene is not None:
             cargs.extend(["-scene", *[a for c in [s.run(execution) for s in self.scene] for a in c]])
         return cargs

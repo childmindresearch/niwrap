@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_MERGE_PARCELS_METADATA = Metadata(
-    id="381d900e0db4c2758ec3797e784c65a6ec77c9d0",
+    id="52f348b70a4507b8032e37f154cda1b6d8d6eef0",
     name="cifti-merge-parcels",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class CiftiMergeParcelsCifti:
     """
     specify an input cifti file
     """
+    cifti_in: InputPathType
+    """a cifti file to merge"""
     
     def run(
         self,
@@ -34,6 +36,7 @@ class CiftiMergeParcelsCifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_in))
         return cargs
 
 

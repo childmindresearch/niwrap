@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CORRELATION_GRADIENT_METADATA = Metadata(
-    id="055ddfed290b1a08072215a259579c948b39485e",
+    id="8a10ade42896fd6ac224c7633317951379f935ee",
     name="cifti-correlation-gradient",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class CiftiCorrelationGradientLeftSurface:
     """
     specify the left surface to use
     """
+    surface: InputPathType
+    """the left surface file"""
     opt_left_corrected_areas_area_metric: InputPathType | None = None
     """vertex areas to use instead of computing them from the left surface: the
     corrected vertex areas, as a metric"""
@@ -37,6 +39,7 @@ class CiftiCorrelationGradientLeftSurface:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface))
         if self.opt_left_corrected_areas_area_metric is not None:
             cargs.extend(["-left-corrected-areas", execution.input_file(self.opt_left_corrected_areas_area_metric)])
         return cargs
@@ -47,6 +50,8 @@ class CiftiCorrelationGradientRightSurface:
     """
     specify the right surface to use
     """
+    surface: InputPathType
+    """the right surface file"""
     opt_right_corrected_areas_area_metric: InputPathType | None = None
     """vertex areas to use instead of computing them from the right surface: the
     corrected vertex areas, as a metric"""
@@ -65,6 +70,7 @@ class CiftiCorrelationGradientRightSurface:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface))
         if self.opt_right_corrected_areas_area_metric is not None:
             cargs.extend(["-right-corrected-areas", execution.input_file(self.opt_right_corrected_areas_area_metric)])
         return cargs
@@ -75,6 +81,8 @@ class CiftiCorrelationGradientCerebellumSurface:
     """
     specify the cerebellum surface to use
     """
+    surface: InputPathType
+    """the cerebellum surface file"""
     opt_cerebellum_corrected_areas_area_metric: InputPathType | None = None
     """vertex areas to use instead of computing them from the cerebellum
     surface: the corrected vertex areas, as a metric"""
@@ -93,6 +101,7 @@ class CiftiCorrelationGradientCerebellumSurface:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.surface))
         if self.opt_cerebellum_corrected_areas_area_metric is not None:
             cargs.extend(["-cerebellum-corrected-areas", execution.input_file(self.opt_cerebellum_corrected_areas_area_metric)])
         return cargs

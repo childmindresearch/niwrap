@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_SCALAR_SERIES_METADATA = Metadata(
-    id="45582797e21e64de6cfd7353297e4ebc46f53eeb",
+    id="8b5bf707da034f5c7699e95b2e4ce6f6c2b6550b",
     name="cifti-create-scalar-series",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,12 @@ class CiftiCreateScalarSeriesSeries:
     """
     set the units and values of the series
     """
+    unit: str
+    """the unit to use"""
+    start: float | int
+    """the value at the first series point"""
+    step: float | int
+    """the interval between series points"""
     
     def run(
         self,
@@ -34,6 +40,9 @@ class CiftiCreateScalarSeriesSeries:
             
         """
         cargs = []
+        cargs.append(self.unit)
+        cargs.append(str(self.start))
+        cargs.append(str(self.step))
         return cargs
 
 

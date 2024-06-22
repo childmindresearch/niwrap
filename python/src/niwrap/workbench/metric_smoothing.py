@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_SMOOTHING_METADATA = Metadata(
-    id="ab8d162b251097678bff24a1ba54bf71fbef50d6",
+    id="5b8681a9559fdbca411ea2b9c7048a49f662e6a0",
     name="metric-smoothing",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class MetricSmoothingRoi:
     """
     select a region of interest to smooth
     """
+    roi_metric: InputPathType
+    """the roi to smooth within, as a metric"""
     opt_match_columns: bool = False
     """for each input column, use the corresponding column from the roi"""
     
@@ -36,6 +38,7 @@ class MetricSmoothingRoi:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.roi_metric))
         if self.opt_match_columns:
             cargs.append("-match-columns")
         return cargs

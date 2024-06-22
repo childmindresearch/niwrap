@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 WBSPARSE_MERGE_DENSE_METADATA = Metadata(
-    id="bd404bd66af73c87abf735ee1f81a49687bb0945",
+    id="e3cdbfa7032c52bf5e08d597406862772c3bdfc9",
     name="wbsparse-merge-dense",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class WbsparseMergeDenseWbsparse:
     """
     specify an input wbsparse file
     """
+    wbsparse_in: str
+    """a wbsparse file to merge"""
     
     def run(
         self,
@@ -34,6 +36,7 @@ class WbsparseMergeDenseWbsparse:
             
         """
         cargs = []
+        cargs.append(self.wbsparse_in)
         return cargs
 
 

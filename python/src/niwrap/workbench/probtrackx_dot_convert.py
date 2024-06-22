@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 PROBTRACKX_DOT_CONVERT_METADATA = Metadata(
-    id="161f02d1df620195f8628c7e6bc0db271b9249b3",
+    id="0a89260dd001e016aef1659dcafd80b79dcbc7e8",
     name="probtrackx-dot-convert",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,11 @@ class ProbtrackxDotConvertRowVoxels:
     """
     the output mapping along a row will be voxels
     """
+    voxel_list_file: str
+    """a text file containing IJK indices for the voxels used"""
+    label_vol: InputPathType
+    """a label volume with the dimensions and sform used, with structure
+    labels"""
     
     def run(
         self,
@@ -34,6 +39,8 @@ class ProbtrackxDotConvertRowVoxels:
             
         """
         cargs = []
+        cargs.append(self.voxel_list_file)
+        cargs.append(execution.input_file(self.label_vol))
         return cargs
 
 
@@ -42,6 +49,10 @@ class ProbtrackxDotConvertRowCifti:
     """
     take the mapping along a row from a cifti file
     """
+    cifti: InputPathType
+    """the cifti file to take the mapping from"""
+    direction: str
+    """which dimension to take the mapping along, ROW or COLUMN"""
     
     def run(
         self,
@@ -57,6 +68,8 @@ class ProbtrackxDotConvertRowCifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti))
+        cargs.append(self.direction)
         return cargs
 
 
@@ -65,6 +78,11 @@ class ProbtrackxDotConvertColVoxels:
     """
     the output mapping along a column will be voxels
     """
+    voxel_list_file: str
+    """a text file containing IJK indices for the voxels used"""
+    label_vol: InputPathType
+    """a label volume with the dimensions and sform used, with structure
+    labels"""
     
     def run(
         self,
@@ -80,6 +98,8 @@ class ProbtrackxDotConvertColVoxels:
             
         """
         cargs = []
+        cargs.append(self.voxel_list_file)
+        cargs.append(execution.input_file(self.label_vol))
         return cargs
 
 
@@ -88,6 +108,10 @@ class ProbtrackxDotConvertColCifti:
     """
     take the mapping along a column from a cifti file
     """
+    cifti: InputPathType
+    """the cifti file to take the mapping from"""
+    direction: str
+    """which dimension to take the mapping along, ROW or COLUMN"""
     
     def run(
         self,
@@ -103,6 +127,8 @@ class ProbtrackxDotConvertColCifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti))
+        cargs.append(self.direction)
         return cargs
 
 

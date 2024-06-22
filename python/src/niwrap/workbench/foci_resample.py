@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FOCI_RESAMPLE_METADATA = Metadata(
-    id="5877e1dbf154fcb8f46f76576910a8919aff2038",
+    id="8c93bbc7db76cbeb2257053ffac3e0b5a2107ea7",
     name="foci-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class FociResampleLeftSurfaces:
     """
     the left surfaces for resampling
     """
+    current_surf: InputPathType
+    """the surface the foci are currently projected on"""
+    new_surf: InputPathType
+    """the surface to project the foci onto"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class FociResampleLeftSurfaces:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_surf))
+        cargs.append(execution.input_file(self.new_surf))
         return cargs
 
 
@@ -42,6 +48,10 @@ class FociResampleRightSurfaces:
     """
     the right surfaces for resampling
     """
+    current_surf: InputPathType
+    """the surface the foci are currently projected on"""
+    new_surf: InputPathType
+    """the surface to project the foci onto"""
     
     def run(
         self,
@@ -57,6 +67,8 @@ class FociResampleRightSurfaces:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_surf))
+        cargs.append(execution.input_file(self.new_surf))
         return cargs
 
 
@@ -65,6 +77,10 @@ class FociResampleCerebellumSurfaces:
     """
     the cerebellum surfaces for resampling
     """
+    current_surf: InputPathType
+    """the surface the foci are currently projected on"""
+    new_surf: InputPathType
+    """the surface to project the foci onto"""
     
     def run(
         self,
@@ -80,6 +96,8 @@ class FociResampleCerebellumSurfaces:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_surf))
+        cargs.append(execution.input_file(self.new_surf))
         return cargs
 
 

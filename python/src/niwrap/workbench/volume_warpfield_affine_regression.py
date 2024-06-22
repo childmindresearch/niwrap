@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA = Metadata(
-    id="4e5a45faeb0bf227da96ea49a6138f25ebecd538",
+    id="be51aa27f1d9d321462e81b34826550da953ccc4",
     name="volume-warpfield-affine-regression",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class VolumeWarpfieldAffineRegressionFlirtOut:
     """
     write output as a flirt matrix rather than a world coordinate transform
     """
+    source_volume: str
+    """the volume you want to apply the transform to"""
+    target_volume: str
+    """the target space you want the transformed volume to match"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class VolumeWarpfieldAffineRegressionFlirtOut:
             
         """
         cargs = []
+        cargs.append(self.source_volume)
+        cargs.append(self.target_volume)
         return cargs
 
 

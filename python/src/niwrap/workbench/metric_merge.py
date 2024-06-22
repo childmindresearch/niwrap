@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_MERGE_METADATA = Metadata(
-    id="5bc421b9cea4f41b3f8fcebe2bc55ffc9759944f",
+    id="d41500506a82edaa90e6581f346d35a66a0b54d9",
     name="metric-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class MetricMergeUpTo:
     """
     use an inclusive range of columns
     """
+    last_column: str
+    """the number or name of the last column to include"""
     opt_reverse: bool = False
     """use the range in reverse order"""
     
@@ -36,6 +38,7 @@ class MetricMergeUpTo:
             
         """
         cargs = []
+        cargs.append(self.last_column)
         if self.opt_reverse:
             cargs.append("-reverse")
         return cargs
@@ -46,6 +49,8 @@ class MetricMergeColumn:
     """
     select a single column to use
     """
+    column_: str
+    """the column number or name"""
     up_to: MetricMergeUpTo | None = None
     """use an inclusive range of columns"""
     
@@ -63,6 +68,7 @@ class MetricMergeColumn:
             
         """
         cargs = []
+        cargs.append(self.column_)
         if self.up_to is not None:
             cargs.extend(["-up-to", *self.up_to.run(execution)])
         return cargs
@@ -73,6 +79,8 @@ class MetricMergeMetric:
     """
     specify an input metric
     """
+    metric_in: InputPathType
+    """a metric file to use columns from"""
     column: list[MetricMergeColumn] = None
     """select a single column to use"""
     
@@ -90,6 +98,7 @@ class MetricMergeMetric:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.metric_in))
         if self.column is not None:
             cargs.extend(["-column", *[a for c in [s.run(execution) for s in self.column] for a in c]])
         return cargs

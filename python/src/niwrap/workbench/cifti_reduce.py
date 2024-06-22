@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_REDUCE_METADATA = Metadata(
-    id="a513b4c4c8da1524ddf7ad3816599c7c02f94fd8",
+    id="130c189e01820e7c0f35071e91caac5439457c73",
     name="cifti-reduce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class CiftiReduceExcludeOutliers:
     """
     exclude non-numeric values and outliers by standard deviation
     """
+    sigma_below: float | int
+    """number of standard deviations below the mean to include"""
+    sigma_above: float | int
+    """number of standard deviations above the mean to include"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class CiftiReduceExcludeOutliers:
             
         """
         cargs = []
+        cargs.append(str(self.sigma_below))
+        cargs.append(str(self.sigma_above))
         return cargs
 
 

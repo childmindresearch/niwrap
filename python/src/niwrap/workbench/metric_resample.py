@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_RESAMPLE_METADATA = Metadata(
-    id="f0d6ec1785e93b5d003c1e746ee39078fc1fc903",
+    id="ae22cd6185077a6c012b5c4f312d7305a62c0bc8",
     name="metric-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class MetricResampleAreaSurfs:
     """
     specify surfaces to do vertex area correction based on
     """
+    current_area: InputPathType
+    """a relevant anatomical surface with <current-sphere> mesh"""
+    new_area: InputPathType
+    """a relevant anatomical surface with <new-sphere> mesh"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class MetricResampleAreaSurfs:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_area))
+        cargs.append(execution.input_file(self.new_area))
         return cargs
 
 
@@ -42,6 +48,10 @@ class MetricResampleAreaMetrics:
     """
     specify vertex area metrics to do area correction based on
     """
+    current_area: InputPathType
+    """a metric file with vertex areas for <current-sphere> mesh"""
+    new_area: InputPathType
+    """a metric file with vertex areas for <new-sphere> mesh"""
     
     def run(
         self,
@@ -57,6 +67,8 @@ class MetricResampleAreaMetrics:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.current_area))
+        cargs.append(execution.input_file(self.new_area))
         return cargs
 
 

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA = Metadata(
-    id="6c14ed8c08946c85dda51430bffdb1f4e2cfa097",
+    id="5d3dfdfa63c39ca98ced130b711225c00178263d",
     name="cifti-create-dense-from-template",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class CiftiCreateDenseFromTemplateSeries:
     """
     make a dtseries file instead of a dscalar
     """
+    step: float | int
+    """increment between series points"""
+    start: float | int
+    """start value of the series"""
     opt_unit_unit: str | None = None
     """select unit for series (default SECOND): unit identifier"""
     
@@ -36,6 +40,8 @@ class CiftiCreateDenseFromTemplateSeries:
             
         """
         cargs = []
+        cargs.append(str(self.step))
+        cargs.append(str(self.start))
         if self.opt_unit_unit is not None:
             cargs.extend(["-unit", self.opt_unit_unit])
         return cargs
@@ -46,6 +52,8 @@ class CiftiCreateDenseFromTemplateVolumeAll:
     """
     specify an input volume file for all voxel data
     """
+    volume_in: InputPathType
+    """the input volume file"""
     opt_from_cropped: bool = False
     """the input is cropped to the size of the voxel data in the template
     file"""
@@ -64,6 +72,7 @@ class CiftiCreateDenseFromTemplateVolumeAll:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.volume_in))
         if self.opt_from_cropped:
             cargs.append("-from-cropped")
         return cargs
@@ -74,6 +83,8 @@ class CiftiCreateDenseFromTemplateCifti:
     """
     use input data from a cifti file
     """
+    cifti_in: InputPathType
+    """cifti file containing input data"""
     
     def run(
         self,
@@ -89,6 +100,7 @@ class CiftiCreateDenseFromTemplateCifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_in))
         return cargs
 
 
@@ -97,6 +109,10 @@ class CiftiCreateDenseFromTemplateMetric:
     """
     use input data from a metric file
     """
+    structure: str
+    """which structure to put the metric file into"""
+    metric_in: InputPathType
+    """input metric file"""
     
     def run(
         self,
@@ -112,6 +128,8 @@ class CiftiCreateDenseFromTemplateMetric:
             
         """
         cargs = []
+        cargs.append(self.structure)
+        cargs.append(execution.input_file(self.metric_in))
         return cargs
 
 
@@ -120,6 +138,10 @@ class CiftiCreateDenseFromTemplateLabel:
     """
     use input data from surface label files
     """
+    structure: str
+    """which structure to put the label file into"""
+    label_in: InputPathType
+    """input label file"""
     
     def run(
         self,
@@ -135,6 +157,8 @@ class CiftiCreateDenseFromTemplateLabel:
             
         """
         cargs = []
+        cargs.append(self.structure)
+        cargs.append(execution.input_file(self.label_in))
         return cargs
 
 
@@ -143,6 +167,10 @@ class CiftiCreateDenseFromTemplateVolume:
     """
     use a volume file for a single volume structure's data
     """
+    structure: str
+    """which structure to put the volume file into"""
+    volume_in: InputPathType
+    """the input volume file"""
     opt_from_cropped: bool = False
     """the input is cropped to the size of the volume structure"""
     
@@ -160,6 +188,8 @@ class CiftiCreateDenseFromTemplateVolume:
             
         """
         cargs = []
+        cargs.append(self.structure)
+        cargs.append(execution.input_file(self.volume_in))
         if self.opt_from_cropped:
             cargs.append("-from-cropped")
         return cargs

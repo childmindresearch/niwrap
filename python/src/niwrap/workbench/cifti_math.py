@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_MATH_METADATA = Metadata(
-    id="1fb65f026b9a6c5bc60fe24c5bda11e0fe58f3fb",
+    id="9de593f2f4eecbaf67cd257bc3c29aad10cdffe8",
     name="cifti-math",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class CiftiMathSelect:
     """
     select a single index from a dimension
     """
+    dim: int
+    """the dimension to select from (1-based)"""
+    index: str
+    """the index number (1-based) or map name to use"""
     opt_repeat: bool = False
     """repeat the selected values for each index of output in this dimension"""
     
@@ -36,6 +40,8 @@ class CiftiMathSelect:
             
         """
         cargs = []
+        cargs.append(str(self.dim))
+        cargs.append(self.index)
         if self.opt_repeat:
             cargs.append("-repeat")
         return cargs
@@ -46,6 +52,10 @@ class CiftiMathVar:
     """
     a cifti file to use as a variable
     """
+    name: str
+    """the name of the variable, as used in the expression"""
+    cifti: InputPathType
+    """the cifti file to use as this variable"""
     select_: list[CiftiMathSelect] = None
     """select a single index from a dimension"""
     
@@ -63,6 +73,8 @@ class CiftiMathVar:
             
         """
         cargs = []
+        cargs.append(self.name)
+        cargs.append(execution.input_file(self.cifti))
         if self.select_ is not None:
             cargs.extend(["-select", *[a for c in [s.run(execution) for s in self.select_] for a in c]])
         return cargs

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CHANGE_MAPPING_METADATA = Metadata(
-    id="00393caf40496070f6d614f8e1188b2104b58857",
+    id="c03c6bfc615aec4bf7db753b636f9f351e8e1489",
     name="cifti-change-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class CiftiChangeMappingSeries:
     """
     set the mapping to series
     """
+    step: float | int
+    """increment between series points"""
+    start: float | int
+    """start value of the series"""
     opt_unit_unit: str | None = None
     """select unit for series (default SECOND): unit identifier"""
     
@@ -36,6 +40,8 @@ class CiftiChangeMappingSeries:
             
         """
         cargs = []
+        cargs.append(str(self.step))
+        cargs.append(str(self.start))
         if self.opt_unit_unit is not None:
             cargs.extend(["-unit", self.opt_unit_unit])
         return cargs
@@ -46,6 +52,10 @@ class CiftiChangeMappingFromCifti:
     """
     copy mapping from another cifti file
     """
+    template_cifti: InputPathType
+    """a cifti file containing the desired mapping"""
+    direction_: str
+    """which direction to copy the mapping from"""
     
     def run(
         self,
@@ -61,6 +71,8 @@ class CiftiChangeMappingFromCifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.template_cifti))
+        cargs.append(self.direction_)
         return cargs
 
 

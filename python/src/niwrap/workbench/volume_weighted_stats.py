@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_WEIGHTED_STATS_METADATA = Metadata(
-    id="f04254ac39eb8bffd17a0a1b7a021e67f4680557",
+    id="5d230d844b7d4c4d9f220ededc52b4a79a3e93b4",
     name="volume-weighted-stats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class VolumeWeightedStatsWeightVolume:
     """
     use weights from a volume file
     """
+    weight_volume_: InputPathType
+    """volume file containing the weights"""
     opt_match_maps: bool = False
     """each subvolume of input uses the corresponding subvolume from the weights
     file"""
@@ -37,6 +39,7 @@ class VolumeWeightedStatsWeightVolume:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.weight_volume_))
         if self.opt_match_maps:
             cargs.append("-match-maps")
         return cargs
@@ -47,6 +50,8 @@ class VolumeWeightedStatsRoi:
     """
     only consider data inside an roi
     """
+    roi_volume: InputPathType
+    """the roi, as a volume file"""
     opt_match_maps: bool = False
     """each subvolume of input uses the corresponding subvolume from the roi
     file"""
@@ -65,6 +70,7 @@ class VolumeWeightedStatsRoi:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.roi_volume))
         if self.opt_match_maps:
             cargs.append("-match-maps")
         return cargs

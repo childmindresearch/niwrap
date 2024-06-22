@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SCENE_CAPTURE_IMAGE_METADATA = Metadata(
-    id="a32c62c88c969998ee9412bb828479b81064d5c7",
+    id="d9cd77c86d66484a3ac417ddf825166830d1051c",
     name="scene-capture-image",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class SceneCaptureImageSizeWidthHeight:
     """
     Width and height for output image
     """
+    width: float | int
+    """Width for output image"""
+    height: float | int
+    """Height for output image"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class SceneCaptureImageSizeWidthHeight:
             
         """
         cargs = []
+        cargs.append(str(self.width))
+        cargs.append(str(self.height))
         return cargs
 
 
@@ -43,6 +49,15 @@ class SceneCaptureImageResolution:
     Image resolution (number pixels per size unit)
       Default is 300 PIXELS_PER_INCH
     """
+    number_of_pixels: float | int
+    """number of pixels"""
+    units_name: str
+    """Name of resolution units. Valid resolution unit names are:
+    PIXELS_PER_INCH
+    PIXELS_PER_CENTIMETER
+    PIXELS_PER_METER
+    PIXELS_PER_MILLIMETER
+    """
     
     def run(
         self,
@@ -58,6 +73,8 @@ class SceneCaptureImageResolution:
             
         """
         cargs = []
+        cargs.append(str(self.number_of_pixels))
+        cargs.append(self.units_name)
         return cargs
 
 
@@ -66,6 +83,11 @@ class SceneCaptureImageSetMapYoke:
     """
     Override selected map index for a map yoking group.
     """
+    map_yoking_roman_numeral: str
+    """Roman numeral identifying the map yoking group (I, II, III, IV, V, VI,
+    VII, VIII, IX, X)"""
+    map_undex: int
+    """Map index for yoking group. Indices start at 1 (one)"""
     
     def run(
         self,
@@ -81,6 +103,8 @@ class SceneCaptureImageSetMapYoke:
             
         """
         cargs = []
+        cargs.append(self.map_yoking_roman_numeral)
+        cargs.append(str(self.map_undex))
         return cargs
 
 
@@ -89,6 +113,10 @@ class SceneCaptureImageConnDbLogin:
     """
     Login for scenes with files in Connectome Database.  If this option is not specified, the login and password stored in the user's preferences is used.
     """
+    username: str
+    """Connectome DB Username"""
+    password: str
+    """Connectome DB Password"""
     
     def run(
         self,
@@ -104,6 +132,8 @@ class SceneCaptureImageConnDbLogin:
             
         """
         cargs = []
+        cargs.append(self.username)
+        cargs.append(self.password)
         return cargs
 
 

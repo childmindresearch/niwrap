@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_WEIGHTED_STATS_METADATA = Metadata(
-    id="3d08a8eec40bec1f0dd1101875830affda36510b",
+    id="97bb39ab1ec3b795ef002201a8faf63a0a2ec27e",
     name="cifti-weighted-stats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -72,6 +72,8 @@ class CiftiWeightedStatsRoi:
     """
     only consider data inside an roi
     """
+    roi_cifti: InputPathType
+    """the roi, as a cifti file"""
     opt_match_maps: bool = False
     """each column of input uses the corresponding column from the roi file"""
     
@@ -89,6 +91,7 @@ class CiftiWeightedStatsRoi:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.roi_cifti))
         if self.opt_match_maps:
             cargs.append("-match-maps")
         return cargs

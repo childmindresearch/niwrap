@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA = Metadata(
-    id="a26864aea637ed2645e8d8c927fa1f82e6fe9142",
+    id="8f439aa7fc81ef8404221133243ee40c4a69361e",
     name="convert-matrix4-to-workbench-sparse",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class ConvertMatrix4ToWorkbenchSparseVolumeSeeds:
     """
     specify the volume seed space
     """
+    cifti_template: InputPathType
+    """cifti file to use the volume mappings from"""
+    direction: str
+    """dimension along the cifti file to take the mapping from, ROW or COLUMN"""
     
     def run(
         self,
@@ -34,6 +38,8 @@ class ConvertMatrix4ToWorkbenchSparseVolumeSeeds:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_template))
+        cargs.append(self.direction)
         return cargs
 
 

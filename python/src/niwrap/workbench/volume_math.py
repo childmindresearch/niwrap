@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_MATH_METADATA = Metadata(
-    id="58ee3192dd278e3aeb1b1bc93411172a6b20be67",
+    id="c45067badfeffbe464303b65d586035fca1ea1ca",
     name="volume-math",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,10 @@ class VolumeMathVar:
     """
     a volume file to use as a variable
     """
+    name: str
+    """the name of the variable, as used in the expression"""
+    volume: InputPathType
+    """the volume file to use as this variable"""
     opt_subvolume_subvol: str | None = None
     """select a single subvolume: the subvolume number or name"""
     opt_repeat: bool = False
@@ -38,6 +42,8 @@ class VolumeMathVar:
             
         """
         cargs = []
+        cargs.append(self.name)
+        cargs.append(execution.input_file(self.volume))
         if self.opt_subvolume_subvol is not None:
             cargs.extend(["-subvolume", self.opt_subvolume_subvol])
         if self.opt_repeat:

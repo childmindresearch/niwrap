@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SCENE_FILE_UPDATE_METADATA = Metadata(
-    id="350ea82419dbec1ab7007f1e839a5c83290e55dc",
+    id="b05b57e68eb8c8f0ba0200efab683c3e4c70253d",
     name="scene-file-update",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class SceneFileUpdateCopyMapOnePalette:
     """
     Copy palettes settings from first map to all maps in a data file
     """
+    data_file_name_suffix: str
+    """Name of palette mapped data file (cifti, metric, volume)"""
     
     def run(
         self,
@@ -34,6 +36,7 @@ class SceneFileUpdateCopyMapOnePalette:
             
         """
         cargs = []
+        cargs.append(self.data_file_name_suffix)
         return cargs
 
 
@@ -42,6 +45,14 @@ class SceneFileUpdateDataFileAdd:
     """
     Add a data file to scene's loaded files
     """
+    name_of_data_file: str
+    """Name of data file. If a data file not in the current directory, it is
+    best to use an absolute path (a relative path may work). Instead of a data
+    file, this value may be the name of a text file (must end in ".txt") that
+    contains the names of one or more data files, one per line.
+    Example on UNIX to create a text file containing all CIFTI scalar files in
+    the current directory with absolute paths:
+    ls -d $PWD/*dscalar.nii > file.txt"""
     
     def run(
         self,
@@ -57,6 +68,7 @@ class SceneFileUpdateDataFileAdd:
             
         """
         cargs = []
+        cargs.append(self.name_of_data_file)
         return cargs
 
 
@@ -65,6 +77,14 @@ class SceneFileUpdateDataFileRemove:
     """
     Remove a data file from scene's loaded files
     """
+    name_of_data_file: str
+    """Name of data file. If a data file not in the current directory, it is
+    best to use an absolute path (a relative path may work). Instead of a data
+    file, this value may be the name of a text file (must end in ".txt") that
+    contains the names of one or more data files, one per line.
+    Example on UNIX to create a text file containing all CIFTI scalar files in
+    the current directory with absolute paths:
+    ls -d $PWD/*dscalar.nii > file.txt"""
     
     def run(
         self,
@@ -80,6 +100,7 @@ class SceneFileUpdateDataFileRemove:
             
         """
         cargs = []
+        cargs.append(self.name_of_data_file)
         return cargs
 
 

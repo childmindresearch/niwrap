@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_GRADIENT_METADATA = Metadata(
-    id="fa4fcc68a064d3d7ac1d7fe3288d23a6cc89d0b7",
+    id="96c5b3d7d1ef2cc327e2faa7670282fd7b3ed600",
     name="volume-gradient",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class VolumeGradientPresmooth:
     """
     smooth the volume before computing the gradient
     """
+    kernel: float | int
+    """the size of the gaussian smoothing kernel in mm, as sigma by default"""
     opt_fwhm: bool = False
     """kernel size is FWHM, not sigma"""
     
@@ -36,6 +38,7 @@ class VolumeGradientPresmooth:
             
         """
         cargs = []
+        cargs.append(str(self.kernel))
         if self.opt_fwhm:
             cargs.append("-fwhm")
         return cargs

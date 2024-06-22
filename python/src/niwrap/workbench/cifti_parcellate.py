@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_PARCELLATE_METADATA = Metadata(
-    id="b666a2389bf1c2baf2ebafde4d923ad97e641384",
+    id="93e7e5207755f8a03ea4d8d7803dee413668a431",
     name="cifti-parcellate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -72,6 +72,10 @@ class CiftiParcellateExcludeOutliers:
     """
     exclude non-numeric values and outliers from each parcel by standard deviation
     """
+    sigma_below: float | int
+    """number of standard deviations below the mean to include"""
+    sigma_above: float | int
+    """number of standard deviations above the mean to include"""
     
     def run(
         self,
@@ -87,6 +91,8 @@ class CiftiParcellateExcludeOutliers:
             
         """
         cargs = []
+        cargs.append(str(self.sigma_below))
+        cargs.append(str(self.sigma_above))
         return cargs
 
 

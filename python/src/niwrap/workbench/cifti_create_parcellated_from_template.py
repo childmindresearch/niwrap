@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_PARCELLATED_FROM_TEMPLATE_METADATA = Metadata(
-    id="334c30c3d93c65d1c68760ac6381aa9b67ed7998",
+    id="99175c90184a7e9c1b444f0c70e0e17f2141f011",
     name="cifti-create-parcellated-from-template",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -19,6 +19,8 @@ class CiftiCreateParcellatedFromTemplateCifti:
     """
     specify an input cifti file
     """
+    cifti_in: InputPathType
+    """the input parcellated cifti file"""
     
     def run(
         self,
@@ -34,6 +36,7 @@ class CiftiCreateParcellatedFromTemplateCifti:
             
         """
         cargs = []
+        cargs.append(execution.input_file(self.cifti_in))
         return cargs
 
 
