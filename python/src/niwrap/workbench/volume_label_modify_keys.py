@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_LABEL_MODIFY_KEYS_METADATA = Metadata(
-    id="28c180be0b1b98876ec5e2ee12f9f159ae157d88",
+    id="2062cf51113e72cef7e93ea49d5179eb4718219e",
     name="volume-label-modify-keys",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class VolumeLabelModifyKeysOutputs(typing.NamedTuple):
 def volume_label_modify_keys(
     volume_in: InputPathType,
     remap_file: str,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_subvolume_subvolume: str | None = None,
     runner: Runner = None,
 ) -> VolumeLabelModifyKeysOutputs:
@@ -66,12 +66,12 @@ def volume_label_modify_keys(
     cargs.append("-volume-label-modify-keys")
     cargs.append(execution.input_file(volume_in))
     cargs.append(remap_file)
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_subvolume_subvolume is not None:
         cargs.extend(["-subvolume", opt_subvolume_subvolume])
     ret = VolumeLabelModifyKeysOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_LABEL_ADJACENCY_METADATA = Metadata(
-    id="346f512a02a2d7602031aa1332290b9f7822396a",
+    id="28e64e0900b4901d0876ca01bc7805a67a47440e",
     name="cifti-label-adjacency",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class CiftiLabelAdjacencyOutputs(typing.NamedTuple):
 
 def cifti_label_adjacency(
     label_in: InputPathType,
-    adjacency_out: InputPathType,
+    adjacency_out: str,
     opt_left_surface_surface: InputPathType | None = None,
     opt_right_surface_surface: InputPathType | None = None,
     opt_cerebellum_surface_surface: InputPathType | None = None,
@@ -60,7 +60,7 @@ def cifti_label_adjacency(
     cargs.append("wb_command")
     cargs.append("-cifti-label-adjacency")
     cargs.append(execution.input_file(label_in))
-    cargs.append(execution.input_file(adjacency_out))
+    cargs.append(adjacency_out)
     if opt_left_surface_surface is not None:
         cargs.extend(["-left-surface", execution.input_file(opt_left_surface_surface)])
     if opt_right_surface_surface is not None:
@@ -69,7 +69,7 @@ def cifti_label_adjacency(
         cargs.extend(["-cerebellum-surface", execution.input_file(opt_cerebellum_surface_surface)])
     ret = CiftiLabelAdjacencyOutputs(
         root=execution.output_file("."),
-        adjacency_out=execution.output_file(f"{pathlib.Path(adjacency_out).name}"),
+        adjacency_out=execution.output_file(f"{adjacency_out}"),
     )
     execution.run(cargs)
     return ret

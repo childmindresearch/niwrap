@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 BORDER_RESAMPLE_METADATA = Metadata(
-    id="dcf50944d51a5fcf1cab3e6713921217840d5753",
+    id="9d8a31ac752f478532ef0b6b981876fe20590c36",
     name="border-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def border_resample(
     border_in: InputPathType,
     current_sphere: InputPathType,
     new_sphere: InputPathType,
-    border_out: InputPathType,
+    border_out: str,
     runner: Runner = None,
 ) -> BorderResampleOutputs:
     """
@@ -58,10 +58,10 @@ def border_resample(
     cargs.append(execution.input_file(border_in))
     cargs.append(execution.input_file(current_sphere))
     cargs.append(execution.input_file(new_sphere))
-    cargs.append(execution.input_file(border_out))
+    cargs.append(border_out)
     ret = BorderResampleOutputs(
         root=execution.output_file("."),
-        border_out=execution.output_file(f"{pathlib.Path(border_out).name}"),
+        border_out=execution.output_file(f"{border_out}"),
     )
     execution.run(cargs)
     return ret

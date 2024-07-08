@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_PALETTE_METADATA = Metadata(
-    id="bb9896a8bf1b7e088d448821186b644d7e74d604",
+    id="da8ece89d91c4071087dcd67ae86ed1daa2d7b46",
     name="cifti-palette",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -183,7 +183,7 @@ class CiftiPaletteOutputs(typing.NamedTuple):
 def cifti_palette(
     cifti_in: InputPathType,
     mode: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_column_column: str | None = None,
     pos_percent: CiftiPalettePosPercent | None = None,
     neg_percent: CiftiPaletteNegPercent | None = None,
@@ -312,7 +312,7 @@ def cifti_palette(
     cargs.append("-cifti-palette")
     cargs.append(execution.input_file(cifti_in))
     cargs.append(mode)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     if pos_percent is not None:
@@ -339,7 +339,7 @@ def cifti_palette(
         cargs.extend(["-inversion", opt_inversion_type])
     ret = CiftiPaletteOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

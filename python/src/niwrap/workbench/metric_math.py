@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_MATH_METADATA = Metadata(
-    id="26b37722b1391b064bb4f0b70b9d988dab70ca5e",
+    id="6182d1478df8fd832d529fd57f640374470901d4",
     name="metric-math",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -64,7 +64,7 @@ class MetricMathOutputs(typing.NamedTuple):
 
 def metric_math(
     expression: str,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_fixnan_replace: float | int | None = None,
     var: list[MetricMathVar] = None,
     runner: Runner = None,
@@ -160,14 +160,14 @@ def metric_math(
     cargs.append("wb_command")
     cargs.append("-metric-math")
     cargs.append(expression)
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_fixnan_replace is not None:
         cargs.extend(["-fixnan", str(opt_fixnan_replace)])
     if var is not None:
         cargs.extend([a for c in [s.run(execution) for s in var] for a in c])
     ret = MetricMathOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

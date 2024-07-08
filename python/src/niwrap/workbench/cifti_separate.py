@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_SEPARATE_METADATA = Metadata(
-    id="613f9671289865d8fbaf52fa430b5b1444f147ca",
+    id="ac3ec8e5da3eb6e57f24912e0346a262d89b769b",
     name="cifti-separate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -33,11 +33,11 @@ class CiftiSeparateVolumeAll:
     """
     separate all volume structures into a volume file
     """
-    volume_out: InputPathType
+    volume_out: str
     """the output volume"""
-    roi_out: InputPathType
+    roi_out: str
     """the roi output volume"""
-    label_out: InputPathType
+    label_out: str
     """the label output volume"""
     opt_roi: bool = False
     """also output the roi of which voxels have data"""
@@ -62,13 +62,13 @@ class CiftiSeparateVolumeAll:
         """
         cargs = []
         cargs.append("-volume-all")
-        cargs.append(execution.input_file(self.volume_out))
+        cargs.append(self.volume_out)
         if self.opt_roi:
             cargs.append("-roi")
-        cargs.append(execution.input_file(self.roi_out))
+        cargs.append(self.roi_out)
         if self.opt_label:
             cargs.append("-label")
-        cargs.append(execution.input_file(self.label_out))
+        cargs.append(self.label_out)
         if self.opt_crop:
             cargs.append("-crop")
         return cargs
@@ -88,9 +88,9 @@ class CiftiSeparateVolumeAll:
         """
         ret = CiftiSeparateVolumeAllOutputs(
             root=execution.output_file("."),
-            volume_out=execution.output_file(f"{pathlib.Path(self.volume_out).name}"),
-            roi_out=execution.output_file(f"{pathlib.Path(self.roi_out).name}"),
-            label_out=execution.output_file(f"{pathlib.Path(self.label_out).name}"),
+            volume_out=execution.output_file(f"{self.volume_out}"),
+            roi_out=execution.output_file(f"{self.roi_out}"),
+            label_out=execution.output_file(f"{self.label_out}"),
         )
         return ret
 
@@ -114,9 +114,9 @@ class CiftiSeparateLabel:
     """
     structure: str
     """the structure to output"""
-    label_out: InputPathType
+    label_out: str
     """the output label file"""
-    roi_out: InputPathType
+    roi_out: str
     """the roi output metric"""
     opt_roi: bool = False
     """also output the roi of which vertices have data"""
@@ -137,10 +137,10 @@ class CiftiSeparateLabel:
         cargs = []
         cargs.append("-label")
         cargs.append(self.structure)
-        cargs.append(execution.input_file(self.label_out))
+        cargs.append(self.label_out)
         if self.opt_roi:
             cargs.append("-roi")
-        cargs.append(execution.input_file(self.roi_out))
+        cargs.append(self.roi_out)
         return cargs
     
     def outputs(
@@ -158,8 +158,8 @@ class CiftiSeparateLabel:
         """
         ret = CiftiSeparateLabelOutputs(
             root=execution.output_file("."),
-            label_out_=execution.output_file(f"{pathlib.Path(self.label_out).name}"),
-            roi_out_=execution.output_file(f"{pathlib.Path(self.roi_out).name}"),
+            label_out_=execution.output_file(f"{self.label_out}"),
+            roi_out_=execution.output_file(f"{self.roi_out}"),
         )
         return ret
 
@@ -183,9 +183,9 @@ class CiftiSeparateMetric:
     """
     structure: str
     """the structure to output"""
-    metric_out: InputPathType
+    metric_out: str
     """the output metric"""
-    roi_out: InputPathType
+    roi_out: str
     """the roi output metric"""
     opt_roi: bool = False
     """also output the roi of which vertices have data"""
@@ -206,10 +206,10 @@ class CiftiSeparateMetric:
         cargs = []
         cargs.append("-metric")
         cargs.append(self.structure)
-        cargs.append(execution.input_file(self.metric_out))
+        cargs.append(self.metric_out)
         if self.opt_roi:
             cargs.append("-roi")
-        cargs.append(execution.input_file(self.roi_out))
+        cargs.append(self.roi_out)
         return cargs
     
     def outputs(
@@ -227,8 +227,8 @@ class CiftiSeparateMetric:
         """
         ret = CiftiSeparateMetricOutputs(
             root=execution.output_file("."),
-            metric_out=execution.output_file(f"{pathlib.Path(self.metric_out).name}"),
-            roi_out_2=execution.output_file(f"{pathlib.Path(self.roi_out).name}"),
+            metric_out=execution.output_file(f"{self.metric_out}"),
+            roi_out_2=execution.output_file(f"{self.roi_out}"),
         )
         return ret
 
@@ -252,9 +252,9 @@ class CiftiSeparateVolume:
     """
     structure: str
     """the structure to output"""
-    volume_out: InputPathType
+    volume_out: str
     """the output volume"""
-    roi_out: InputPathType
+    roi_out: str
     """the roi output volume"""
     opt_roi: bool = False
     """also output the roi of which voxels have data"""
@@ -278,10 +278,10 @@ class CiftiSeparateVolume:
         cargs = []
         cargs.append("-volume")
         cargs.append(self.structure)
-        cargs.append(execution.input_file(self.volume_out))
+        cargs.append(self.volume_out)
         if self.opt_roi:
             cargs.append("-roi")
-        cargs.append(execution.input_file(self.roi_out))
+        cargs.append(self.roi_out)
         if self.opt_crop:
             cargs.append("-crop")
         return cargs
@@ -301,8 +301,8 @@ class CiftiSeparateVolume:
         """
         ret = CiftiSeparateVolumeOutputs(
             root=execution.output_file("."),
-            volume_out_=execution.output_file(f"{pathlib.Path(self.volume_out).name}"),
-            roi_out_3=execution.output_file(f"{pathlib.Path(self.roi_out).name}"),
+            volume_out_=execution.output_file(f"{self.volume_out}"),
+            roi_out_3=execution.output_file(f"{self.roi_out}"),
         )
         return ret
 

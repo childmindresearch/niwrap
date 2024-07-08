@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_TRANSPOSE_METADATA = Metadata(
-    id="036b8702c701d8b9e1b9372c1f493051a1af64d9",
+    id="360bda7b2f0ae05ca89a10f80e6452353223adc9",
     name="cifti-transpose",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class CiftiTransposeOutputs(typing.NamedTuple):
 
 def cifti_transpose(
     cifti_in: InputPathType,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_mem_limit_limit_gb: float | int | None = None,
     runner: Runner = None,
 ) -> CiftiTransposeOutputs:
@@ -52,12 +52,12 @@ def cifti_transpose(
     cargs.append("wb_command")
     cargs.append("-cifti-transpose")
     cargs.append(execution.input_file(cifti_in))
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_mem_limit_limit_gb is not None:
         cargs.extend(["-mem-limit", str(opt_mem_limit_limit_gb)])
     ret = CiftiTransposeOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

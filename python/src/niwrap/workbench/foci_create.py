@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FOCI_CREATE_METADATA = Metadata(
-    id="6bb3a9a4aa523afe6286a106ac7aff18d5388a32",
+    id="03cb6a7b70c64f16ff5402206f1895e28a9d5092",
     name="foci-create",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -58,7 +58,7 @@ class FociCreateOutputs(typing.NamedTuple):
 
 
 def foci_create(
-    output: InputPathType,
+    output: str,
     class_: list[FociCreateClass] = None,
     runner: Runner = None,
 ) -> FociCreateOutputs:
@@ -98,12 +98,12 @@ def foci_create(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-foci-create")
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     if class_ is not None:
         cargs.extend([a for c in [s.run(execution) for s in class_] for a in c])
     ret = FociCreateOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

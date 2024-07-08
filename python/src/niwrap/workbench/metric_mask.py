@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_MASK_METADATA = Metadata(
-    id="09c43bbb1f0b5cd23077f6a28ebd30530b5602ef",
+    id="d034793151d718fcfd103f016bf3759e1772b5e7",
     name="metric-mask",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class MetricMaskOutputs(typing.NamedTuple):
 def metric_mask(
     metric: InputPathType,
     mask: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_column_column: str | None = None,
     runner: Runner = None,
 ) -> MetricMaskOutputs:
@@ -56,12 +56,12 @@ def metric_mask(
     cargs.append("-metric-mask")
     cargs.append(execution.input_file(metric))
     cargs.append(execution.input_file(mask))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     ret = MetricMaskOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABEL_MERGE_METADATA = Metadata(
-    id="43c4c45da0d797449b8ecbcc3859011e471a61bd",
+    id="d7b51321c357157a56e0a33d9221afc1e53ec1f1",
     name="label-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -118,7 +118,7 @@ class LabelMergeOutputs(typing.NamedTuple):
 
 
 def label_merge(
-    label_out: InputPathType,
+    label_out: str,
     label: list[LabelMergeLabel] = None,
     runner: Runner = None,
 ) -> LabelMergeOutputs:
@@ -149,12 +149,12 @@ def label_merge(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-label-merge")
-    cargs.append(execution.input_file(label_out))
+    cargs.append(label_out)
     if label is not None:
         cargs.extend([a for c in [s.run(execution) for s in label] for a in c])
     ret = LabelMergeOutputs(
         root=execution.output_file("."),
-        label_out=execution.output_file(f"{pathlib.Path(label_out).name}"),
+        label_out=execution.output_file(f"{label_out}"),
     )
     execution.run(cargs)
     return ret

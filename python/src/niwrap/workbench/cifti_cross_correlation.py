@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_CROSS_CORRELATION_METADATA = Metadata(
-    id="fc07303dcd6b9f08ee2adc8e28f051912664067d",
+    id="fa2de3f1ed3567541076813cc1e2ed0246af14a8",
     name="cifti-cross-correlation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class CiftiCrossCorrelationOutputs(typing.NamedTuple):
 def cifti_cross_correlation(
     cifti_a: InputPathType,
     cifti_b: InputPathType,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_weights_weight_file: str | None = None,
     opt_fisher_z: bool = False,
     opt_mem_limit_limit_gb: float | int | None = None,
@@ -67,7 +67,7 @@ def cifti_cross_correlation(
     cargs.append("-cifti-cross-correlation")
     cargs.append(execution.input_file(cifti_a))
     cargs.append(execution.input_file(cifti_b))
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_weights_weight_file is not None:
         cargs.extend(["-weights", opt_weights_weight_file])
     if opt_fisher_z:
@@ -76,7 +76,7 @@ def cifti_cross_correlation(
         cargs.extend(["-mem-limit", str(opt_mem_limit_limit_gb)])
     ret = CiftiCrossCorrelationOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

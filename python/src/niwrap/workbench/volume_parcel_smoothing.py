@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_PARCEL_SMOOTHING_METADATA = Metadata(
-    id="473bb04cdac613bfc3c44905ff2f6071ecb2ae6e",
+    id="4f5224b27411183a477a83020e90f8855ec462b5",
     name="volume-parcel-smoothing",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def volume_parcel_smoothing(
     data_volume: InputPathType,
     label_volume: InputPathType,
     kernel: float | int,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_fwhm: bool = False,
     opt_fix_zeros: bool = False,
     opt_subvolume_subvol: str | None = None,
@@ -65,7 +65,7 @@ def volume_parcel_smoothing(
     cargs.append(execution.input_file(data_volume))
     cargs.append(execution.input_file(label_volume))
     cargs.append(str(kernel))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_fwhm:
         cargs.append("-fwhm")
     if opt_fix_zeros:
@@ -74,7 +74,7 @@ def volume_parcel_smoothing(
         cargs.extend(["-subvolume", opt_subvolume_subvol])
     ret = VolumeParcelSmoothingOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

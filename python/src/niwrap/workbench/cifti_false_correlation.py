@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_FALSE_CORRELATION_METADATA = Metadata(
-    id="8fab8e79fbb45b20e25f3e85e4ad4ba8ff81eb4a",
+    id="b60a659330c070f9ca8bf5acd8c508446a627cc2",
     name="cifti-false-correlation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -122,7 +122,7 @@ def cifti_false_correlation(
     v_3d_dist: float | int,
     geo_outer: float | int,
     geo_inner: float | int,
-    cifti_out: InputPathType,
+    cifti_out: str,
     left_surface: CiftiFalseCorrelationLeftSurface | None = None,
     right_surface: CiftiFalseCorrelationRightSurface | None = None,
     cerebellum_surface: CiftiFalseCorrelationCerebellumSurface | None = None,
@@ -162,7 +162,7 @@ def cifti_false_correlation(
     cargs.append(str(v_3d_dist))
     cargs.append(str(geo_outer))
     cargs.append(str(geo_inner))
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if left_surface is not None:
         cargs.extend(left_surface.run(execution))
     if right_surface is not None:
@@ -171,7 +171,7 @@ def cifti_false_correlation(
         cargs.extend(cerebellum_surface.run(execution))
     ret = CiftiFalseCorrelationOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SURFACE_AVERAGE_METADATA = Metadata(
-    id="e7efb628b09e6c6c657e0a5825b4bd2c7253a7be",
+    id="c6890e83bf5c9f26037a4d4cc601dd871d64665d",
     name="surface-average",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -60,9 +60,9 @@ class SurfaceAverageOutputs(typing.NamedTuple):
 
 
 def surface_average(
-    surface_out: InputPathType,
-    stddev_metric_out: InputPathType,
-    uncert_metric_out: InputPathType,
+    surface_out: str,
+    stddev_metric_out: str,
+    uncert_metric_out: str,
     opt_stddev: bool = False,
     opt_uncertainty: bool = False,
     surf: list[SurfaceAverageSurf] = None,
@@ -98,20 +98,20 @@ def surface_average(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-surface-average")
-    cargs.append(execution.input_file(surface_out))
+    cargs.append(surface_out)
     if opt_stddev:
         cargs.append("-stddev")
-    cargs.append(execution.input_file(stddev_metric_out))
+    cargs.append(stddev_metric_out)
     if opt_uncertainty:
         cargs.append("-uncertainty")
-    cargs.append(execution.input_file(uncert_metric_out))
+    cargs.append(uncert_metric_out)
     if surf is not None:
         cargs.extend([a for c in [s.run(execution) for s in surf] for a in c])
     ret = SurfaceAverageOutputs(
         root=execution.output_file("."),
-        surface_out=execution.output_file(f"{pathlib.Path(surface_out).name}"),
-        stddev_metric_out=execution.output_file(f"{pathlib.Path(stddev_metric_out).name}"),
-        uncert_metric_out=execution.output_file(f"{pathlib.Path(uncert_metric_out).name}"),
+        surface_out=execution.output_file(f"{surface_out}"),
+        stddev_metric_out=execution.output_file(f"{stddev_metric_out}"),
+        uncert_metric_out=execution.output_file(f"{uncert_metric_out}"),
     )
     execution.run(cargs)
     return ret

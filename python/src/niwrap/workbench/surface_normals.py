@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_NORMALS_METADATA = Metadata(
-    id="740999db43b3a543acba6f1b2ee7990d36d0d980",
+    id="e5edba049b1a222e8e3f9b17a63ac0db98dce59e",
     name="surface-normals",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class SurfaceNormalsOutputs(typing.NamedTuple):
 
 def surface_normals(
     surface: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     runner: Runner = None,
 ) -> SurfaceNormalsOutputs:
     """
@@ -49,10 +49,10 @@ def surface_normals(
     cargs.append("wb_command")
     cargs.append("-surface-normals")
     cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     ret = SurfaceNormalsOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

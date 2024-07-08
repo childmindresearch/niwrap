@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_GEODESIC_DISTANCE_METADATA = Metadata(
-    id="ccb38222d0e63c2f342f7f40bfb8b2264f8dd097",
+    id="b60647202511b479374ed48c2e22f1fe35908450",
     name="surface-geodesic-distance",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class SurfaceGeodesicDistanceOutputs(typing.NamedTuple):
 def surface_geodesic_distance(
     surface: InputPathType,
     vertex: int,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_naive: bool = False,
     opt_limit_limit_mm: float | int | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
@@ -74,7 +74,7 @@ def surface_geodesic_distance(
     cargs.append("-surface-geodesic-distance")
     cargs.append(execution.input_file(surface))
     cargs.append(str(vertex))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_naive:
         cargs.append("-naive")
     if opt_limit_limit_mm is not None:
@@ -83,7 +83,7 @@ def surface_geodesic_distance(
         cargs.extend(["-corrected-areas", execution.input_file(opt_corrected_areas_area_metric)])
     ret = SurfaceGeodesicDistanceOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

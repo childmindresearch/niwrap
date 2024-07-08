@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_LABEL_IMPORT_METADATA = Metadata(
-    id="bb7743f4d5d3cb10594509f9a34cdd9ffe991cd3",
+    id="53d903c8ecc459fa3ac0dc246b9335153a4733f5",
     name="cifti-label-import",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class CiftiLabelImportOutputs(typing.NamedTuple):
 def cifti_label_import(
     input_: InputPathType,
     label_list_file: str,
-    output: InputPathType,
+    output: str,
     opt_discard_others: bool = False,
     opt_unlabeled_value_value: int | None = None,
     opt_drop_unused_labels: bool = False,
@@ -82,7 +82,7 @@ def cifti_label_import(
     cargs.append("-cifti-label-import")
     cargs.append(execution.input_file(input_))
     cargs.append(label_list_file)
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     if opt_discard_others:
         cargs.append("-discard-others")
     if opt_unlabeled_value_value is not None:
@@ -91,7 +91,7 @@ def cifti_label_import(
         cargs.append("-drop-unused-labels")
     ret = CiftiLabelImportOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(f"{pathlib.Path(output).name}"),
+        output=execution.output_file(f"{output}"),
     )
     execution.run(cargs)
     return ret

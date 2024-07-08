@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_ROIS_FROM_EXTREMA_METADATA = Metadata(
-    id="545139f150a5233a43a2da6c4f687e148e0d2446",
+    id="14139494f301e4b37d53ac41cb1d28216f83b065",
     name="volume-rois-from-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class VolumeRoisFromExtremaOutputs(typing.NamedTuple):
 def volume_rois_from_extrema(
     volume_in: InputPathType,
     limit: float | int,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_gaussian_sigma: float | int | None = None,
     opt_roi_roi_volume: InputPathType | None = None,
     opt_overlap_logic_method: str | None = None,
@@ -70,7 +70,7 @@ def volume_rois_from_extrema(
     cargs.append("-volume-rois-from-extrema")
     cargs.append(execution.input_file(volume_in))
     cargs.append(str(limit))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_gaussian_sigma is not None:
         cargs.extend(["-gaussian", str(opt_gaussian_sigma)])
     if opt_roi_roi_volume is not None:
@@ -81,7 +81,7 @@ def volume_rois_from_extrema(
         cargs.extend(["-subvolume", opt_subvolume_subvol])
     ret = VolumeRoisFromExtremaOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

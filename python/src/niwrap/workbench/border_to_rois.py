@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 BORDER_TO_ROIS_METADATA = Metadata(
-    id="a2e3148701d841c39ab8b0b6e50f781a8c8d42fa",
+    id="6ee36e82e47cabee4b99cbae40dacabfa0005a37",
     name="border-to-rois",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class BorderToRoisOutputs(typing.NamedTuple):
 def border_to_rois(
     surface: InputPathType,
     border_file: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_border_name: str | None = None,
     opt_inverse: bool = False,
     opt_include_border: bool = False,
@@ -58,7 +58,7 @@ def border_to_rois(
     cargs.append("-border-to-rois")
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(border_file))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_border_name is not None:
         cargs.extend(["-border", opt_border_name])
     if opt_inverse:
@@ -67,7 +67,7 @@ def border_to_rois(
         cargs.append("-include-border")
     ret = BorderToRoisOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

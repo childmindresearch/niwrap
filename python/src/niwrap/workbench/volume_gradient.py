@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_GRADIENT_METADATA = Metadata(
-    id="d037839a482c742e11f5f46ffb5d556b9d280068",
+    id="3aa54de009f773b6af3db24f165ff7c614a4bbfe",
     name="volume-gradient",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -59,8 +59,8 @@ class VolumeGradientOutputs(typing.NamedTuple):
 
 def volume_gradient(
     volume_in: InputPathType,
-    volume_out: InputPathType,
-    vector_volume_out: InputPathType,
+    volume_out: str,
+    vector_volume_out: str,
     presmooth: VolumeGradientPresmooth | None = None,
     opt_roi_roi_volume: InputPathType | None = None,
     opt_vectors: bool = False,
@@ -99,20 +99,20 @@ def volume_gradient(
     cargs.append("wb_command")
     cargs.append("-volume-gradient")
     cargs.append(execution.input_file(volume_in))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if presmooth is not None:
         cargs.extend(presmooth.run(execution))
     if opt_roi_roi_volume is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_volume)])
     if opt_vectors:
         cargs.append("-vectors")
-    cargs.append(execution.input_file(vector_volume_out))
+    cargs.append(vector_volume_out)
     if opt_subvolume_subvol is not None:
         cargs.extend(["-subvolume", opt_subvolume_subvol])
     ret = VolumeGradientOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
-        vector_volume_out=execution.output_file(f"{pathlib.Path(vector_volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
+        vector_volume_out=execution.output_file(f"{vector_volume_out}"),
     )
     execution.run(cargs)
     return ret

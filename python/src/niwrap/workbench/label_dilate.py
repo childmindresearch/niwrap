@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 LABEL_DILATE_METADATA = Metadata(
-    id="553c9cdc59042dcf72c087b7549d5551831e7256",
+    id="48313482a3491864ad83411673f5abc646ef2cba",
     name="label-dilate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def label_dilate(
     label: InputPathType,
     surface: InputPathType,
     dilate_dist: float | int,
-    label_out: InputPathType,
+    label_out: str,
     opt_bad_vertex_roi_roi_metric: InputPathType | None = None,
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
@@ -69,7 +69,7 @@ def label_dilate(
     cargs.append(execution.input_file(label))
     cargs.append(execution.input_file(surface))
     cargs.append(str(dilate_dist))
-    cargs.append(execution.input_file(label_out))
+    cargs.append(label_out)
     if opt_bad_vertex_roi_roi_metric is not None:
         cargs.extend(["-bad-vertex-roi", execution.input_file(opt_bad_vertex_roi_roi_metric)])
     if opt_column_column is not None:
@@ -78,7 +78,7 @@ def label_dilate(
         cargs.extend(["-corrected-areas", execution.input_file(opt_corrected_areas_area_metric)])
     ret = LabelDilateOutputs(
         root=execution.output_file("."),
-        label_out=execution.output_file(f"{pathlib.Path(label_out).name}"),
+        label_out=execution.output_file(f"{label_out}"),
     )
     execution.run(cargs)
     return ret

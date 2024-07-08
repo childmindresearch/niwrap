@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA = Metadata(
-    id="6bfad3845bc8d36324dcb9e096fe783ed3ef330e",
+    id="11c2cdb2e85e05ac3f140bbbaa705b14a0482ab3",
     name="surface-sphere-project-unproject",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def surface_sphere_project_unproject(
     sphere_in: InputPathType,
     sphere_project_to: InputPathType,
     sphere_unproject_from: InputPathType,
-    sphere_out: InputPathType,
+    sphere_out: str,
     runner: Runner = None,
 ) -> SurfaceSphereProjectUnprojectOutputs:
     """
@@ -108,10 +108,10 @@ def surface_sphere_project_unproject(
     cargs.append(execution.input_file(sphere_in))
     cargs.append(execution.input_file(sphere_project_to))
     cargs.append(execution.input_file(sphere_unproject_from))
-    cargs.append(execution.input_file(sphere_out))
+    cargs.append(sphere_out)
     ret = SurfaceSphereProjectUnprojectOutputs(
         root=execution.output_file("."),
-        sphere_out=execution.output_file(f"{pathlib.Path(sphere_out).name}"),
+        sphere_out=execution.output_file(f"{sphere_out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_PARCELLATED_FROM_TEMPLATE_METADATA = Metadata(
-    id="be5d5b3bbaaddfa740407360920c0ad5f46514f9",
+    id="754f3aa0c946c5cfbe25ac3e564e2cd8edaa60c6",
     name="cifti-create-parcellated-from-template",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -54,7 +54,7 @@ class CiftiCreateParcellatedFromTemplateOutputs(typing.NamedTuple):
 def cifti_create_parcellated_from_template(
     cifti_template: InputPathType,
     modify_direction: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_fill_value_value: float | int | None = None,
     cifti: list[CiftiCreateParcellatedFromTemplateCifti] = None,
     runner: Runner = None,
@@ -91,14 +91,14 @@ def cifti_create_parcellated_from_template(
     cargs.append("-cifti-create-parcellated-from-template")
     cargs.append(execution.input_file(cifti_template))
     cargs.append(modify_direction)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_fill_value_value is not None:
         cargs.extend(["-fill-value", str(opt_fill_value_value)])
     if cifti is not None:
         cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
     ret = CiftiCreateParcellatedFromTemplateOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

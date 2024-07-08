@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_VECTOR_TOWARD_ROI_METADATA = Metadata(
-    id="15c128f2dc9ed57ee38dea19ee2be1c54527783b",
+    id="5b5412454024e638404c07151055439f533ca87d",
     name="metric-vector-toward-roi",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class MetricVectorTowardRoiOutputs(typing.NamedTuple):
 def metric_vector_toward_roi(
     surface: InputPathType,
     target_roi: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_roi_roi_metric: InputPathType | None = None,
     runner: Runner = None,
 ) -> MetricVectorTowardRoiOutputs:
@@ -55,12 +55,12 @@ def metric_vector_toward_roi(
     cargs.append("-metric-vector-toward-roi")
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(target_roi))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_roi_roi_metric is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_metric)])
     ret = MetricVectorTowardRoiOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

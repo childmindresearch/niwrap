@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_CREATE_SPHERE_METADATA = Metadata(
-    id="26a650100823264e2bda8551b43068b46358c62f",
+    id="5a9e1fb8066594280699ff24d851560616ea7e07",
     name="surface-create-sphere",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class SurfaceCreateSphereOutputs(typing.NamedTuple):
 
 def surface_create_sphere(
     num_vertices: int,
-    sphere_out: InputPathType,
+    sphere_out: str,
     runner: Runner = None,
 ) -> SurfaceCreateSphereOutputs:
     """
@@ -58,10 +58,10 @@ def surface_create_sphere(
     cargs.append("wb_command")
     cargs.append("-surface-create-sphere")
     cargs.append(str(num_vertices))
-    cargs.append(execution.input_file(sphere_out))
+    cargs.append(sphere_out)
     ret = SurfaceCreateSphereOutputs(
         root=execution.output_file("."),
-        sphere_out=execution.output_file(f"{pathlib.Path(sphere_out).name}"),
+        sphere_out=execution.output_file(f"{sphere_out}"),
     )
     execution.run(cargs)
     return ret

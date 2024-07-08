@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="1a228c317bc85c474029f5c5ed5bdae11cc081a7",
+    id="8639ce0777fa498aebaa9835e6d07c77a290de56",
     name="volume-all-labels-to-rois",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class VolumeAllLabelsToRoisOutputs(typing.NamedTuple):
 def volume_all_labels_to_rois(
     label_in: InputPathType,
     map_: str,
-    volume_out: InputPathType,
+    volume_out: str,
     runner: Runner = None,
 ) -> VolumeAllLabelsToRoisOutputs:
     """
@@ -53,10 +53,10 @@ def volume_all_labels_to_rois(
     cargs.append("-volume-all-labels-to-rois")
     cargs.append(execution.input_file(label_in))
     cargs.append(map_)
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     ret = VolumeAllLabelsToRoisOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

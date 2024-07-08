@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_GENERATE_INFLATED_METADATA = Metadata(
-    id="c1c87a04abf811cbd213063e906175a55c1fe53c",
+    id="a0efa7dd290155059bcc3939c3a6ac8313075a2d",
     name="surface-generate-inflated",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,8 +27,8 @@ class SurfaceGenerateInflatedOutputs(typing.NamedTuple):
 
 def surface_generate_inflated(
     anatomical_surface_in: InputPathType,
-    inflated_surface_out: InputPathType,
-    very_inflated_surface_out: InputPathType,
+    inflated_surface_out: str,
+    very_inflated_surface_out: str,
     opt_iterations_scale_iterations_scale_value: float | int | None = None,
     runner: Runner = None,
 ) -> SurfaceGenerateInflatedOutputs:
@@ -59,14 +59,14 @@ def surface_generate_inflated(
     cargs.append("wb_command")
     cargs.append("-surface-generate-inflated")
     cargs.append(execution.input_file(anatomical_surface_in))
-    cargs.append(execution.input_file(inflated_surface_out))
-    cargs.append(execution.input_file(very_inflated_surface_out))
+    cargs.append(inflated_surface_out)
+    cargs.append(very_inflated_surface_out)
     if opt_iterations_scale_iterations_scale_value is not None:
         cargs.extend(["-iterations-scale", str(opt_iterations_scale_iterations_scale_value)])
     ret = SurfaceGenerateInflatedOutputs(
         root=execution.output_file("."),
-        inflated_surface_out=execution.output_file(f"{pathlib.Path(inflated_surface_out).name}"),
-        very_inflated_surface_out=execution.output_file(f"{pathlib.Path(very_inflated_surface_out).name}"),
+        inflated_surface_out=execution.output_file(f"{inflated_surface_out}"),
+        very_inflated_surface_out=execution.output_file(f"{very_inflated_surface_out}"),
     )
     execution.run(cargs)
     return ret

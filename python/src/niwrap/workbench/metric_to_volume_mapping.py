@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_TO_VOLUME_MAPPING_METADATA = Metadata(
-    id="dc8690013ce737596a4fa7cfdd84cf9fa897d651",
+    id="7aee0f0473309acab0d4ce669f35e7c434be428c",
     name="metric-to-volume-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -72,7 +72,7 @@ def metric_to_volume_mapping(
     metric: InputPathType,
     surface: InputPathType,
     volume_space: InputPathType,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_nearest_vertex_distance: float | int | None = None,
     ribbon_constrained: MetricToVolumeMappingRibbonConstrained | None = None,
     runner: Runner = None,
@@ -111,14 +111,14 @@ def metric_to_volume_mapping(
     cargs.append(execution.input_file(metric))
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(volume_space))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_nearest_vertex_distance is not None:
         cargs.extend(["-nearest-vertex", str(opt_nearest_vertex_distance)])
     if ribbon_constrained is not None:
         cargs.extend(ribbon_constrained.run(execution))
     ret = MetricToVolumeMappingOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

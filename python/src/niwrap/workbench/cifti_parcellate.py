@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_PARCELLATE_METADATA = Metadata(
-    id="88f57561217c8ab380a84a4a694cc1f4f0c42892",
+    id="ed752d7c0190412c8b425d97ac3c29f55b8b633e",
     name="cifti-parcellate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -114,8 +114,8 @@ def cifti_parcellate(
     cifti_in: InputPathType,
     cifti_label: InputPathType,
     direction: str,
-    cifti_out: InputPathType,
-    mask_out: InputPathType,
+    cifti_out: str,
+    mask_out: str,
     spatial_weights: CiftiParcellateSpatialWeights | None = None,
     opt_cifti_weights_weight_cifti: InputPathType | None = None,
     opt_method_method: str | None = None,
@@ -204,7 +204,7 @@ def cifti_parcellate(
     cargs.append(execution.input_file(cifti_in))
     cargs.append(execution.input_file(cifti_label))
     cargs.append(direction)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if spatial_weights is not None:
         cargs.extend(spatial_weights.run(execution))
     if opt_cifti_weights_weight_cifti is not None:
@@ -219,15 +219,15 @@ def cifti_parcellate(
         cargs.extend(["-fill-value", str(opt_fill_value_value)])
     if opt_nonempty_mask_out:
         cargs.append("-nonempty-mask-out")
-    cargs.append(execution.input_file(mask_out))
+    cargs.append(mask_out)
     if opt_legacy_mode:
         cargs.append("-legacy-mode")
     if opt_include_empty:
         cargs.append("-include-empty")
     ret = CiftiParcellateOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
-        mask_out=execution.output_file(f"{pathlib.Path(mask_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
+        mask_out=execution.output_file(f"{mask_out}"),
     )
     execution.run(cargs)
     return ret

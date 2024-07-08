@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_CUT_RESAMPLE_METADATA = Metadata(
-    id="713a34f533c21a4e43d835b6bef150d1a667bcb3",
+    id="ab69abecbb56e72bf419f11d1d90302c2cb1038d",
     name="surface-cut-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def surface_cut_resample(
     surface_in: InputPathType,
     current_sphere: InputPathType,
     new_sphere: InputPathType,
-    surface_out: InputPathType,
+    surface_out: str,
     runner: Runner = None,
 ) -> SurfaceCutResampleOutputs:
     """
@@ -58,10 +58,10 @@ def surface_cut_resample(
     cargs.append(execution.input_file(surface_in))
     cargs.append(execution.input_file(current_sphere))
     cargs.append(execution.input_file(new_sphere))
-    cargs.append(execution.input_file(surface_out))
+    cargs.append(surface_out)
     ret = SurfaceCutResampleOutputs(
         root=execution.output_file("."),
-        surface_out=execution.output_file(f"{pathlib.Path(surface_out).name}"),
+        surface_out=execution.output_file(f"{surface_out}"),
     )
     execution.run(cargs)
     return ret

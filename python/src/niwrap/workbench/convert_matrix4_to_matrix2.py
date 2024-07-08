@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONVERT_MATRIX4_TO_MATRIX2_METADATA = Metadata(
-    id="8c569654f2785f0a1d5950ca0324126cab941c94",
+    id="dbb3dc999cfd7f96ebf7dfde911ffad9add4cbd1",
     name="convert-matrix4-to-matrix2",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -33,11 +33,11 @@ class ConvertMatrix4ToMatrix2IndividualFibers:
     """
     output files for each fiber direction
     """
-    fiber_1: InputPathType
+    fiber_1: str
     """output file for first fiber"""
-    fiber_2: InputPathType
+    fiber_2: str
     """output file for second fiber"""
-    fiber_3: InputPathType
+    fiber_3: str
     """output file for third fiber"""
     
     def run(
@@ -55,9 +55,9 @@ class ConvertMatrix4ToMatrix2IndividualFibers:
         """
         cargs = []
         cargs.append("-individual-fibers")
-        cargs.append(execution.input_file(self.fiber_1))
-        cargs.append(execution.input_file(self.fiber_2))
-        cargs.append(execution.input_file(self.fiber_3))
+        cargs.append(self.fiber_1)
+        cargs.append(self.fiber_2)
+        cargs.append(self.fiber_3)
         return cargs
     
     def outputs(
@@ -75,9 +75,9 @@ class ConvertMatrix4ToMatrix2IndividualFibers:
         """
         ret = ConvertMatrix4ToMatrix2IndividualFibersOutputs(
             root=execution.output_file("."),
-            fiber_1=execution.output_file(f"{pathlib.Path(self.fiber_1).name}"),
-            fiber_2=execution.output_file(f"{pathlib.Path(self.fiber_2).name}"),
-            fiber_3=execution.output_file(f"{pathlib.Path(self.fiber_3).name}"),
+            fiber_1=execution.output_file(f"{self.fiber_1}"),
+            fiber_2=execution.output_file(f"{self.fiber_2}"),
+            fiber_3=execution.output_file(f"{self.fiber_3}"),
         )
         return ret
 
@@ -98,8 +98,8 @@ class ConvertMatrix4ToMatrix2Outputs(typing.NamedTuple):
 
 def convert_matrix4_to_matrix2(
     matrix4_wbsparse: str,
-    counts_out: InputPathType,
-    distance_out: InputPathType,
+    counts_out: str,
+    distance_out: str,
     opt_distances: bool = False,
     individual_fibers: ConvertMatrix4ToMatrix2IndividualFibers | None = None,
     runner: Runner = None,
@@ -131,16 +131,16 @@ def convert_matrix4_to_matrix2(
     cargs.append("wb_command")
     cargs.append("-convert-matrix4-to-matrix2")
     cargs.append(matrix4_wbsparse)
-    cargs.append(execution.input_file(counts_out))
+    cargs.append(counts_out)
     if opt_distances:
         cargs.append("-distances")
-    cargs.append(execution.input_file(distance_out))
+    cargs.append(distance_out)
     if individual_fibers is not None:
         cargs.extend(individual_fibers.run(execution))
     ret = ConvertMatrix4ToMatrix2Outputs(
         root=execution.output_file("."),
-        counts_out=execution.output_file(f"{pathlib.Path(counts_out).name}"),
-        distance_out=execution.output_file(f"{pathlib.Path(distance_out).name}"),
+        counts_out=execution.output_file(f"{counts_out}"),
+        distance_out=execution.output_file(f"{distance_out}"),
         individual_fibers=individual_fibers.outputs(execution) if individual_fibers else None,
     )
     execution.run(cargs)

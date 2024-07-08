@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_REMOVE_ISLANDS_METADATA = Metadata(
-    id="8da548798edf32ac1baff399a00bbd659acf8ddb",
+    id="028dd77c4c4b8656226529379aa08f7f70c9cf17",
     name="volume-remove-islands",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class VolumeRemoveIslandsOutputs(typing.NamedTuple):
 
 def volume_remove_islands(
     volume_in: InputPathType,
-    volume_out: InputPathType,
+    volume_out: str,
     runner: Runner = None,
 ) -> VolumeRemoveIslandsOutputs:
     """
@@ -49,10 +49,10 @@ def volume_remove_islands(
     cargs.append("wb_command")
     cargs.append("-volume-remove-islands")
     cargs.append(execution.input_file(volume_in))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     ret = VolumeRemoveIslandsOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

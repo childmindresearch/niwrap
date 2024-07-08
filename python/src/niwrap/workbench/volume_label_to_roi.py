@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VOLUME_LABEL_TO_ROI_METADATA = Metadata(
-    id="d909157b7d74800169717407257d32236367f775",
+    id="8417576717078505884b0715db30e5b6acb4a980",
     name="volume-label-to-roi",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class VolumeLabelToRoiOutputs(typing.NamedTuple):
 
 def volume_label_to_roi(
     label_in: InputPathType,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_name_label_name: str | None = None,
     opt_key_label_key: int | None = None,
     opt_map_map: str | None = None,
@@ -59,7 +59,7 @@ def volume_label_to_roi(
     cargs.append("wb_command")
     cargs.append("-volume-label-to-roi")
     cargs.append(execution.input_file(label_in))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_name_label_name is not None:
         cargs.extend(["-name", opt_name_label_name])
     if opt_key_label_key is not None:
@@ -68,7 +68,7 @@ def volume_label_to_roi(
         cargs.extend(["-map", opt_map_map])
     ret = VolumeLabelToRoiOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

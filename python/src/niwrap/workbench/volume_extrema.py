@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_EXTREMA_METADATA = Metadata(
-    id="6c295fb0cd118c7061f076cf10eec6400dfb8226",
+    id="146007faa9ebda8ff261062dd79a67e69a70971b",
     name="volume-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -88,7 +88,7 @@ class VolumeExtremaOutputs(typing.NamedTuple):
 def volume_extrema(
     volume_in: InputPathType,
     distance: float | int,
-    volume_out: InputPathType,
+    volume_out: str,
     presmooth: VolumeExtremaPresmooth | None = None,
     opt_roi_roi_volume: InputPathType | None = None,
     threshold: VolumeExtremaThreshold | None = None,
@@ -153,7 +153,7 @@ def volume_extrema(
     cargs.append("-volume-extrema")
     cargs.append(execution.input_file(volume_in))
     cargs.append(str(distance))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if presmooth is not None:
         cargs.extend(presmooth.run(execution))
     if opt_roi_roi_volume is not None:
@@ -172,7 +172,7 @@ def volume_extrema(
         cargs.extend(["-subvolume", opt_subvolume_subvolume])
     ret = VolumeExtremaOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

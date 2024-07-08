@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 GIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="d1547db7fbb091c87cc381294f4468c7d6ee8259",
+    id="9234cb91a49bbf26646d3a2c976f2c87e9b7bdb7",
     name="gifti-all-labels-to-rois",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class GiftiAllLabelsToRoisOutputs(typing.NamedTuple):
 def gifti_all_labels_to_rois(
     label_in: InputPathType,
     map_: str,
-    metric_out: InputPathType,
+    metric_out: str,
     runner: Runner = None,
 ) -> GiftiAllLabelsToRoisOutputs:
     """
@@ -53,10 +53,10 @@ def gifti_all_labels_to_rois(
     cargs.append("-gifti-all-labels-to-rois")
     cargs.append(execution.input_file(label_in))
     cargs.append(map_)
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     ret = GiftiAllLabelsToRoisOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

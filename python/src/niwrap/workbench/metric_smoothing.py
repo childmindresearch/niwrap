@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_SMOOTHING_METADATA = Metadata(
-    id="55293312ce33bcb81d88041fb7832dbebc2253c9",
+    id="5260eb92f7f3cb2e936af8066d90163f394ebe9c",
     name="metric-smoothing",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -59,7 +59,7 @@ def metric_smoothing(
     surface: InputPathType,
     metric_in: InputPathType,
     smoothing_kernel: float | int,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_fwhm: bool = False,
     roi: MetricSmoothingRoi | None = None,
     opt_fix_zeros: bool = False,
@@ -145,7 +145,7 @@ def metric_smoothing(
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(metric_in))
     cargs.append(str(smoothing_kernel))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_fwhm:
         cargs.append("-fwhm")
     if roi is not None:
@@ -160,7 +160,7 @@ def metric_smoothing(
         cargs.extend(["-method", opt_method_method])
     ret = MetricSmoothingOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

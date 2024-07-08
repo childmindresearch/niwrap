@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FOCI_GET_PROJECTION_VERTEX_METADATA = Metadata(
-    id="48392294beb76d317e86588680c7e466a4e5bea4",
+    id="886357b6f87ebac505a6e44b15f643db94078457",
     name="foci-get-projection-vertex",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class FociGetProjectionVertexOutputs(typing.NamedTuple):
 def foci_get_projection_vertex(
     foci: InputPathType,
     surface: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_name_name: str | None = None,
     runner: Runner = None,
 ) -> FociGetProjectionVertexOutputs:
@@ -55,12 +55,12 @@ def foci_get_projection_vertex(
     cargs.append("-foci-get-projection-vertex")
     cargs.append(execution.input_file(foci))
     cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_name_name is not None:
         cargs.extend(["-name", opt_name_name])
     ret = FociGetProjectionVertexOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

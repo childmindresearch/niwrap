@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_MODIFY_SPHERE_METADATA = Metadata(
-    id="5585f2fa5f02cb2ec81b4f755f0cdd1f4b1f40a6",
+    id="13d798b8fb25c0415154a9512116161dd26eed3e",
     name="surface-modify-sphere",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class SurfaceModifySphereOutputs(typing.NamedTuple):
 def surface_modify_sphere(
     sphere_in: InputPathType,
     radius: float | int,
-    sphere_out: InputPathType,
+    sphere_out: str,
     opt_recenter: bool = False,
     runner: Runner = None,
 ) -> SurfaceModifySphereOutputs:
@@ -60,12 +60,12 @@ def surface_modify_sphere(
     cargs.append("-surface-modify-sphere")
     cargs.append(execution.input_file(sphere_in))
     cargs.append(str(radius))
-    cargs.append(execution.input_file(sphere_out))
+    cargs.append(sphere_out)
     if opt_recenter:
         cargs.append("-recenter")
     ret = SurfaceModifySphereOutputs(
         root=execution.output_file("."),
-        sphere_out=execution.output_file(f"{pathlib.Path(sphere_out).name}"),
+        sphere_out=execution.output_file(f"{sphere_out}"),
     )
     execution.run(cargs)
     return ret

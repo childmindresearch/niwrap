@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 BORDER_MERGE_METADATA = Metadata(
-    id="ba5f985e3d652e4ecd792cb35629271e4f04c587",
+    id="dbdf4fec58061ef026451b8e67123b22a2177ea8",
     name="border-merge",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -118,7 +118,7 @@ class BorderMergeOutputs(typing.NamedTuple):
 
 
 def border_merge(
-    border_file_out: InputPathType,
+    border_file_out: str,
     border: list[BorderMergeBorder] = None,
     runner: Runner = None,
 ) -> BorderMergeOutputs:
@@ -148,12 +148,12 @@ def border_merge(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-border-merge")
-    cargs.append(execution.input_file(border_file_out))
+    cargs.append(border_file_out)
     if border is not None:
         cargs.extend([a for c in [s.run(execution) for s in border] for a in c])
     ret = BorderMergeOutputs(
         root=execution.output_file("."),
-        border_file_out=execution.output_file(f"{pathlib.Path(border_file_out).name}"),
+        border_file_out=execution.output_file(f"{border_file_out}"),
     )
     execution.run(cargs)
     return ret

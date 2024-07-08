@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_MATH_METADATA = Metadata(
-    id="dba2b9633a1afc552f663bb6f45ffee3830c639d",
+    id="9c69ed91f8b2eb623f648a0c98b3c1e6ba2e728f",
     name="volume-math",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -64,7 +64,7 @@ class VolumeMathOutputs(typing.NamedTuple):
 
 def volume_math(
     expression: str,
-    volume_out: InputPathType,
+    volume_out: str,
     opt_fixnan_replace: float | int | None = None,
     var: list[VolumeMathVar] = None,
     runner: Runner = None,
@@ -159,14 +159,14 @@ def volume_math(
     cargs.append("wb_command")
     cargs.append("-volume-math")
     cargs.append(expression)
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if opt_fixnan_replace is not None:
         cargs.extend(["-fixnan", str(opt_fixnan_replace)])
     if var is not None:
         cargs.extend([a for c in [s.run(execution) for s in var] for a in c])
     ret = VolumeMathOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

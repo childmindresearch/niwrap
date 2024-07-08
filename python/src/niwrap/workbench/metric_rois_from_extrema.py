@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_ROIS_FROM_EXTREMA_METADATA = Metadata(
-    id="5ea2d9e893fe62547d5a74a2d8ab70f6d99035be",
+    id="ba9c4f86035ca6b7e55d4625ca5ed2cfe49cfc3c",
     name="metric-rois-from-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def metric_rois_from_extrema(
     surface: InputPathType,
     metric: InputPathType,
     limit: float | int,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_gaussian_sigma: float | int | None = None,
     opt_roi_roi_metric: InputPathType | None = None,
     opt_overlap_logic_method: str | None = None,
@@ -73,7 +73,7 @@ def metric_rois_from_extrema(
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(metric))
     cargs.append(str(limit))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_gaussian_sigma is not None:
         cargs.extend(["-gaussian", str(opt_gaussian_sigma)])
     if opt_roi_roi_metric is not None:
@@ -84,7 +84,7 @@ def metric_rois_from_extrema(
         cargs.extend(["-column", opt_column_column])
     ret = MetricRoisFromExtremaOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

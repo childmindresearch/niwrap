@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_SMOOTHING_METADATA = Metadata(
-    id="b5c34814840a8341b4177335aae09e164d8ce54d",
+    id="4e6814cbca38b30890e35f33999ea1d8c6325f89",
     name="surface-smoothing",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def surface_smoothing(
     surface_in: InputPathType,
     smoothing_strength: float | int,
     smoothing_iterations: int,
-    surface_out: InputPathType,
+    surface_out: str,
     runner: Runner = None,
 ) -> SurfaceSmoothingOutputs:
     """
@@ -55,10 +55,10 @@ def surface_smoothing(
     cargs.append(execution.input_file(surface_in))
     cargs.append(str(smoothing_strength))
     cargs.append(str(smoothing_iterations))
-    cargs.append(execution.input_file(surface_out))
+    cargs.append(surface_out)
     ret = SurfaceSmoothingOutputs(
         root=execution.output_file("."),
-        surface_out=execution.output_file(f"{pathlib.Path(surface_out).name}"),
+        surface_out=execution.output_file(f"{surface_out}"),
     )
     execution.run(cargs)
     return ret

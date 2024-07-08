@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FIBER_DOT_PRODUCTS_METADATA = Metadata(
-    id="932cac44a69aac6e45082689cda03aee39d0fa71",
+    id="560a17eee647d75cea1affa253f0d09839a18ba3",
     name="fiber-dot-products",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -30,8 +30,8 @@ def fiber_dot_products(
     fiber_file: InputPathType,
     max_dist: float | int,
     direction: str,
-    dot_metric: InputPathType,
-    f_metric: InputPathType,
+    dot_metric: str,
+    f_metric: str,
     runner: Runner = None,
 ) -> FiberDotProductsOutputs:
     """
@@ -69,12 +69,12 @@ def fiber_dot_products(
     cargs.append(execution.input_file(fiber_file))
     cargs.append(str(max_dist))
     cargs.append(direction)
-    cargs.append(execution.input_file(dot_metric))
-    cargs.append(execution.input_file(f_metric))
+    cargs.append(dot_metric)
+    cargs.append(f_metric)
     ret = FiberDotProductsOutputs(
         root=execution.output_file("."),
-        dot_metric=execution.output_file(f"{pathlib.Path(dot_metric).name}"),
-        f_metric=execution.output_file(f"{pathlib.Path(f_metric).name}"),
+        dot_metric=execution.output_file(f"{dot_metric}"),
+        f_metric=execution.output_file(f"{f_metric}"),
     )
     execution.run(cargs)
     return ret

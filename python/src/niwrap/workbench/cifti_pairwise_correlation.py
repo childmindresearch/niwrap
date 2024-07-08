@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_PAIRWISE_CORRELATION_METADATA = Metadata(
-    id="0558144d1ff442183f3f2a2ae02b386ae005a017",
+    id="b2d35e150f8304b8cd483b9dbaba69525a4806f2",
     name="cifti-pairwise-correlation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class CiftiPairwiseCorrelationOutputs(typing.NamedTuple):
 def cifti_pairwise_correlation(
     cifti_a: InputPathType,
     cifti_b: InputPathType,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_fisher_z: bool = False,
     opt_override_mapping_check: bool = False,
     runner: Runner = None,
@@ -58,14 +58,14 @@ def cifti_pairwise_correlation(
     cargs.append("-cifti-pairwise-correlation")
     cargs.append(execution.input_file(cifti_a))
     cargs.append(execution.input_file(cifti_b))
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_fisher_z:
         cargs.append("-fisher-z")
     if opt_override_mapping_check:
         cargs.append("-override-mapping-check")
     ret = CiftiPairwiseCorrelationOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

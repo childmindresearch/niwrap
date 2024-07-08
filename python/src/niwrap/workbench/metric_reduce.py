@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_REDUCE_METADATA = Metadata(
-    id="da2b6eb234fddddaaba242909e830f497ab42677",
+    id="b71e03155b24ea2f1f1b9fb835670e4ed07c300c",
     name="metric-reduce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -57,7 +57,7 @@ class MetricReduceOutputs(typing.NamedTuple):
 def metric_reduce(
     metric_in: InputPathType,
     operation: str,
-    metric_out: InputPathType,
+    metric_out: str,
     exclude_outliers: MetricReduceExcludeOutliers | None = None,
     opt_only_numeric: bool = False,
     runner: Runner = None,
@@ -107,14 +107,14 @@ def metric_reduce(
     cargs.append("-metric-reduce")
     cargs.append(execution.input_file(metric_in))
     cargs.append(operation)
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if exclude_outliers is not None:
         cargs.extend(exclude_outliers.run(execution))
     if opt_only_numeric:
         cargs.append("-only-numeric")
     ret = MetricReduceOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

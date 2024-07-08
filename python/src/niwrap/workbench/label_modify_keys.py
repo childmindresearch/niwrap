@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 LABEL_MODIFY_KEYS_METADATA = Metadata(
-    id="d58bb59afff89ddf98a79d1f70964b0a5cab47e0",
+    id="c18c1365a6156f60ad4a4e0699070a74f756e0e2",
     name="label-modify-keys",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class LabelModifyKeysOutputs(typing.NamedTuple):
 def label_modify_keys(
     label_in: InputPathType,
     remap_file: str,
-    label_out: InputPathType,
+    label_out: str,
     opt_column_column: str | None = None,
     runner: Runner = None,
 ) -> LabelModifyKeysOutputs:
@@ -66,12 +66,12 @@ def label_modify_keys(
     cargs.append("-label-modify-keys")
     cargs.append(execution.input_file(label_in))
     cargs.append(remap_file)
-    cargs.append(execution.input_file(label_out))
+    cargs.append(label_out)
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     ret = LabelModifyKeysOutputs(
         root=execution.output_file("."),
-        label_out=execution.output_file(f"{pathlib.Path(label_out).name}"),
+        label_out=execution.output_file(f"{label_out}"),
     )
     execution.run(cargs)
     return ret

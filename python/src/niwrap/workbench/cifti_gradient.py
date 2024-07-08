@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_GRADIENT_METADATA = Metadata(
-    id="080f45d673bf751e92cc8b5a6b65d8e91addf20a",
+    id="ab633ef4cd4a1497d31cd7702aba1ea08dba0a28",
     name="cifti-gradient",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -125,8 +125,8 @@ class CiftiGradientOutputs(typing.NamedTuple):
 def cifti_gradient(
     cifti: InputPathType,
     direction: str,
-    cifti_out: InputPathType,
-    vectors_out: InputPathType,
+    cifti_out: str,
+    vectors_out: str,
     left_surface: CiftiGradientLeftSurface | None = None,
     right_surface: CiftiGradientRightSurface | None = None,
     cerebellum_surface: CiftiGradientCerebellumSurface | None = None,
@@ -178,7 +178,7 @@ def cifti_gradient(
     cargs.append("-cifti-gradient")
     cargs.append(execution.input_file(cifti))
     cargs.append(direction)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if left_surface is not None:
         cargs.extend(left_surface.run(execution))
     if right_surface is not None:
@@ -195,11 +195,11 @@ def cifti_gradient(
         cargs.append("-average-output")
     if opt_vectors:
         cargs.append("-vectors")
-    cargs.append(execution.input_file(vectors_out))
+    cargs.append(vectors_out)
     ret = CiftiGradientOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
-        vectors_out=execution.output_file(f"{pathlib.Path(vectors_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
+        vectors_out=execution.output_file(f"{vectors_out}"),
     )
     execution.run(cargs)
     return ret

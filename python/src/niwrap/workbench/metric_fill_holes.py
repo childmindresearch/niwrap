@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 METRIC_FILL_HOLES_METADATA = Metadata(
-    id="e8f36c2a2a1abd0a92c85dce38eca355263bf9dc",
+    id="0ebbc44beaf6a9dd88c8fb4c0e72cd205dfa2bf9",
     name="metric-fill-holes",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class MetricFillHolesOutputs(typing.NamedTuple):
 def metric_fill_holes(
     surface: InputPathType,
     metric_in: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_corrected_areas_area_metric: InputPathType | None = None,
     runner: Runner = None,
 ) -> MetricFillHolesOutputs:
@@ -56,12 +56,12 @@ def metric_fill_holes(
     cargs.append("-metric-fill-holes")
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(metric_in))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_corrected_areas_area_metric is not None:
         cargs.extend(["-corrected-areas", execution.input_file(opt_corrected_areas_area_metric)])
     ret = MetricFillHolesOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

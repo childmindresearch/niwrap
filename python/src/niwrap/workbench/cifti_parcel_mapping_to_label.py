@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA = Metadata(
-    id="c3a8f182e30d89d3443bff348c9890510b0da2d3",
+    id="9101e5b2d3625d6b195acddfaeeb8b38fb2234d3",
     name="cifti-parcel-mapping-to-label",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def cifti_parcel_mapping_to_label(
     cifti_in: InputPathType,
     direction: str,
     template_cifti: InputPathType,
-    dlabel_out: InputPathType,
+    dlabel_out: str,
     runner: Runner = None,
 ) -> CiftiParcelMappingToLabelOutputs:
     """
@@ -59,10 +59,10 @@ def cifti_parcel_mapping_to_label(
     cargs.append(execution.input_file(cifti_in))
     cargs.append(direction)
     cargs.append(execution.input_file(template_cifti))
-    cargs.append(execution.input_file(dlabel_out))
+    cargs.append(dlabel_out)
     ret = CiftiParcelMappingToLabelOutputs(
         root=execution.output_file("."),
-        dlabel_out=execution.output_file(f"{pathlib.Path(dlabel_out).name}"),
+        dlabel_out=execution.output_file(f"{dlabel_out}"),
     )
     execution.run(cargs)
     return ret

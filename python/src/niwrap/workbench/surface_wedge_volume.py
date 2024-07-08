@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_WEDGE_VOLUME_METADATA = Metadata(
-    id="50763acf7dc582c7512b9e43dcf4678fa008d35d",
+    id="9c9de0e85b0353439f7a299bed43ec6fd12e6aa8",
     name="surface-wedge-volume",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class SurfaceWedgeVolumeOutputs(typing.NamedTuple):
 def surface_wedge_volume(
     inner_surface: InputPathType,
     outer_surface: InputPathType,
-    metric: InputPathType,
+    metric: str,
     runner: Runner = None,
 ) -> SurfaceWedgeVolumeOutputs:
     """
@@ -53,10 +53,10 @@ def surface_wedge_volume(
     cargs.append("-surface-wedge-volume")
     cargs.append(execution.input_file(inner_surface))
     cargs.append(execution.input_file(outer_surface))
-    cargs.append(execution.input_file(metric))
+    cargs.append(metric)
     ret = SurfaceWedgeVolumeOutputs(
         root=execution.output_file("."),
-        metric=execution.output_file(f"{pathlib.Path(metric).name}"),
+        metric=execution.output_file(f"{metric}"),
     )
     execution.run(cargs)
     return ret

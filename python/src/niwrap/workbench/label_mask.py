@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 LABEL_MASK_METADATA = Metadata(
-    id="f59edf2f885ccd7eb20cfdd2bf9bf3c3487d1808",
+    id="cfc22fefcf8de4bacc458b53fda44f8cfb5a87e4",
     name="label-mask",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class LabelMaskOutputs(typing.NamedTuple):
 def label_mask(
     label: InputPathType,
     mask: InputPathType,
-    label_out: InputPathType,
+    label_out: str,
     opt_column_column: str | None = None,
     runner: Runner = None,
 ) -> LabelMaskOutputs:
@@ -56,12 +56,12 @@ def label_mask(
     cargs.append("-label-mask")
     cargs.append(execution.input_file(label))
     cargs.append(execution.input_file(mask))
-    cargs.append(execution.input_file(label_out))
+    cargs.append(label_out)
     if opt_column_column is not None:
         cargs.extend(["-column", opt_column_column])
     ret = LabelMaskOutputs(
         root=execution.output_file("."),
-        label_out=execution.output_file(f"{pathlib.Path(label_out).name}"),
+        label_out=execution.output_file(f"{label_out}"),
     )
     execution.run(cargs)
     return ret

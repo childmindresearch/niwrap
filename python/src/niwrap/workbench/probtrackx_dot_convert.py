@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 PROBTRACKX_DOT_CONVERT_METADATA = Metadata(
-    id="9813399cfc289ccc33c416625842f00c1eb838ad",
+    id="da6bf742890640bcb736d3b11d57e3f5c6289dbd",
     name="probtrackx-dot-convert",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -148,7 +148,7 @@ class ProbtrackxDotConvertOutputs(typing.NamedTuple):
 
 def probtrackx_dot_convert(
     dot_file: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     row_voxels: ProbtrackxDotConvertRowVoxels | None = None,
     opt_row_surface_roi_metric: InputPathType | None = None,
     row_cifti: ProbtrackxDotConvertRowCifti | None = None,
@@ -235,7 +235,7 @@ def probtrackx_dot_convert(
     cargs.append("wb_command")
     cargs.append("-probtrackx-dot-convert")
     cargs.append(dot_file)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if row_voxels is not None:
         cargs.extend(row_voxels.run(execution))
     if opt_row_surface_roi_metric is not None:
@@ -254,7 +254,7 @@ def probtrackx_dot_convert(
         cargs.append("-make-symmetric")
     ret = ProbtrackxDotConvertOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

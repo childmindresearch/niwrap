@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_AVERAGE_DENSE_ROI_METADATA = Metadata(
-    id="1f19fd13916c0bf41d31d7374c223f35e00d53dd",
+    id="449862613e0049f5300e5736a91191a633c438a3",
     name="cifti-average-dense-roi",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -83,7 +83,7 @@ class CiftiAverageDenseRoiOutputs(typing.NamedTuple):
 
 
 def cifti_average_dense_roi(
-    cifti_out: InputPathType,
+    cifti_out: str,
     cifti_roi: CiftiAverageDenseRoiCiftiRoi | None = None,
     opt_left_roi_roi_metric: InputPathType | None = None,
     opt_right_roi_roi_metric: InputPathType | None = None,
@@ -133,7 +133,7 @@ def cifti_average_dense_roi(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-cifti-average-dense-roi")
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if cifti_roi is not None:
         cargs.extend(cifti_roi.run(execution))
     if opt_left_roi_roi_metric is not None:
@@ -154,7 +154,7 @@ def cifti_average_dense_roi(
         cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
     ret = CiftiAverageDenseRoiOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

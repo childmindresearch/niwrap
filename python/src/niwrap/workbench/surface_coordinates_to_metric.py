@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_COORDINATES_TO_METRIC_METADATA = Metadata(
-    id="48c46c3880e1b5252ccc2b576c2747362c23470c",
+    id="6682b45237215db3a76cf1df816c535acdd189bf",
     name="surface-coordinates-to-metric",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class SurfaceCoordinatesToMetricOutputs(typing.NamedTuple):
 
 def surface_coordinates_to_metric(
     surface: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     runner: Runner = None,
 ) -> SurfaceCoordinatesToMetricOutputs:
     """
@@ -48,10 +48,10 @@ def surface_coordinates_to_metric(
     cargs.append("wb_command")
     cargs.append("-surface-coordinates-to-metric")
     cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     ret = SurfaceCoordinatesToMetricOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

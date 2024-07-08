@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_VECTOR_OPERATION_METADATA = Metadata(
-    id="596ebe0b9ad0624f5b7f76e8717a43652e8b09e2",
+    id="59f5f64f2fc6d124337b20a89bd94ae070b22edd",
     name="cifti-vector-operation",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ def cifti_vector_operation(
     vectors_a: InputPathType,
     vectors_b: InputPathType,
     operation: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_normalize_a: bool = False,
     opt_normalize_b: bool = False,
     opt_normalize_output: bool = False,
@@ -74,7 +74,7 @@ def cifti_vector_operation(
     cargs.append(execution.input_file(vectors_a))
     cargs.append(execution.input_file(vectors_b))
     cargs.append(operation)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_normalize_a:
         cargs.append("-normalize-a")
     if opt_normalize_b:
@@ -85,7 +85,7 @@ def cifti_vector_operation(
         cargs.append("-magnitude")
     ret = CiftiVectorOperationOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

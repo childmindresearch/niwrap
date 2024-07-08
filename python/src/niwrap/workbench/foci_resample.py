@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FOCI_RESAMPLE_METADATA = Metadata(
-    id="4b70102578c1dfac807127b45031d8d714475a13",
+    id="3c164fb4c655a4336ec27fb4e3afbe5a2dee7684",
     name="foci-resample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -116,7 +116,7 @@ class FociResampleOutputs(typing.NamedTuple):
 
 def foci_resample(
     foci_in: InputPathType,
-    foci_out: InputPathType,
+    foci_out: str,
     left_surfaces: FociResampleLeftSurfaces | None = None,
     right_surfaces: FociResampleRightSurfaces | None = None,
     cerebellum_surfaces: FociResampleCerebellumSurfaces | None = None,
@@ -155,7 +155,7 @@ def foci_resample(
     cargs.append("wb_command")
     cargs.append("-foci-resample")
     cargs.append(execution.input_file(foci_in))
-    cargs.append(execution.input_file(foci_out))
+    cargs.append(foci_out)
     if left_surfaces is not None:
         cargs.extend(left_surfaces.run(execution))
     if right_surfaces is not None:
@@ -168,7 +168,7 @@ def foci_resample(
         cargs.append("-restore-xyz")
     ret = FociResampleOutputs(
         root=execution.output_file("."),
-        foci_out=execution.output_file(f"{pathlib.Path(foci_out).name}"),
+        foci_out=execution.output_file(f"{foci_out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_EXTREMA_METADATA = Metadata(
-    id="1292ae2ad67bccefb763116df7b8e418ba992280",
+    id="8e7dfe821e407fab6cb44c26f395ece3daefe1b2",
     name="metric-extrema",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -89,7 +89,7 @@ def metric_extrema(
     surface: InputPathType,
     metric_in: InputPathType,
     distance: float | int,
-    metric_out: InputPathType,
+    metric_out: str,
     presmooth: MetricExtremaPresmooth | None = None,
     opt_roi_roi_metric: InputPathType | None = None,
     threshold: MetricExtremaThreshold | None = None,
@@ -161,7 +161,7 @@ def metric_extrema(
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(metric_in))
     cargs.append(str(distance))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if presmooth is not None:
         cargs.extend(presmooth.run(execution))
     if opt_roi_roi_metric is not None:
@@ -180,7 +180,7 @@ def metric_extrema(
         cargs.extend(["-column", opt_column_column])
     ret = MetricExtremaOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

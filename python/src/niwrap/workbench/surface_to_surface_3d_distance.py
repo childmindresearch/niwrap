@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_TO_SURFACE_3D_DISTANCE_METADATA = Metadata(
-    id="429f92cdd3e6df09e7587c5ca538f294c540aace",
+    id="5074938721a51c04a19cea4fff3d5ee34fe2233f",
     name="surface-to-surface-3d-distance",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -28,8 +28,8 @@ class SurfaceToSurface3dDistanceOutputs(typing.NamedTuple):
 def surface_to_surface_3d_distance(
     surface_comp: InputPathType,
     surface_ref: InputPathType,
-    dists_out: InputPathType,
-    vectors_out: InputPathType,
+    dists_out: str,
+    vectors_out: str,
     opt_vectors: bool = False,
     runner: Runner = None,
 ) -> SurfaceToSurface3dDistanceOutputs:
@@ -59,14 +59,14 @@ def surface_to_surface_3d_distance(
     cargs.append("-surface-to-surface-3d-distance")
     cargs.append(execution.input_file(surface_comp))
     cargs.append(execution.input_file(surface_ref))
-    cargs.append(execution.input_file(dists_out))
+    cargs.append(dists_out)
     if opt_vectors:
         cargs.append("-vectors")
-    cargs.append(execution.input_file(vectors_out))
+    cargs.append(vectors_out)
     ret = SurfaceToSurface3dDistanceOutputs(
         root=execution.output_file("."),
-        dists_out=execution.output_file(f"{pathlib.Path(dists_out).name}"),
-        vectors_out=execution.output_file(f"{pathlib.Path(vectors_out).name}"),
+        dists_out=execution.output_file(f"{dists_out}"),
+        vectors_out=execution.output_file(f"{vectors_out}"),
     )
     execution.run(cargs)
     return ret

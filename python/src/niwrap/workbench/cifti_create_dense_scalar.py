@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_DENSE_SCALAR_METADATA = Metadata(
-    id="613cf7385396ea60b872f82b84a297d05dcea4c3",
+    id="9ec20200467480c6c520cd6ffa9a8792ee68b803",
     name="cifti-create-dense-scalar",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -148,7 +148,7 @@ class CiftiCreateDenseScalarOutputs(typing.NamedTuple):
 
 
 def cifti_create_dense_scalar(
-    cifti_out: InputPathType,
+    cifti_out: str,
     volume: CiftiCreateDenseScalarVolume | None = None,
     left_metric: CiftiCreateDenseScalarLeftMetric | None = None,
     right_metric: CiftiCreateDenseScalarRightMetric | None = None,
@@ -220,7 +220,7 @@ def cifti_create_dense_scalar(
     cargs = []
     cargs.append("wb_command")
     cargs.append("-cifti-create-dense-scalar")
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if volume is not None:
         cargs.extend(volume.run(execution))
     if left_metric is not None:
@@ -233,7 +233,7 @@ def cifti_create_dense_scalar(
         cargs.extend(["-name-file", opt_name_file_file])
     ret = CiftiCreateDenseScalarOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VOLUME_TFCE_METADATA = Metadata(
-    id="4b79df1dd5ab728a9336c044d0dadc844813c681",
+    id="263d00f80ced89206d79fbb4027ba4e9c7a5fec7",
     name="volume-tfce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -87,7 +87,7 @@ class VolumeTfceOutputs(typing.NamedTuple):
 
 def volume_tfce(
     volume_in: InputPathType,
-    volume_out: InputPathType,
+    volume_out: str,
     presmooth: VolumeTfcePresmooth | None = None,
     opt_roi_roi_volume: InputPathType | None = None,
     parameters: VolumeTfceParameters | None = None,
@@ -137,7 +137,7 @@ def volume_tfce(
     cargs.append("wb_command")
     cargs.append("-volume-tfce")
     cargs.append(execution.input_file(volume_in))
-    cargs.append(execution.input_file(volume_out))
+    cargs.append(volume_out)
     if presmooth is not None:
         cargs.extend(presmooth.run(execution))
     if opt_roi_roi_volume is not None:
@@ -148,7 +148,7 @@ def volume_tfce(
         cargs.extend(["-subvolume", opt_subvolume_subvolume])
     ret = VolumeTfceOutputs(
         root=execution.output_file("."),
-        volume_out=execution.output_file(f"{pathlib.Path(volume_out).name}"),
+        volume_out=execution.output_file(f"{volume_out}"),
     )
     execution.run(cargs)
     return ret

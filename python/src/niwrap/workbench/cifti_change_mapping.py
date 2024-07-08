@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CHANGE_MAPPING_METADATA = Metadata(
-    id="930ca577c260a115e14452cf466b373ca2746c0b",
+    id="3d65e57490550b81c7a2d6750bfd94b0d1a4811b",
     name="cifti-change-mapping",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -91,7 +91,7 @@ class CiftiChangeMappingOutputs(typing.NamedTuple):
 def cifti_change_mapping(
     data_cifti: InputPathType,
     direction: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     series: CiftiChangeMappingSeries | None = None,
     opt_scalar: bool = False,
     opt_name_file_file: str | None = None,
@@ -134,7 +134,7 @@ def cifti_change_mapping(
     cargs.append("-cifti-change-mapping")
     cargs.append(execution.input_file(data_cifti))
     cargs.append(direction)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if series is not None:
         cargs.extend(series.run(execution))
     if opt_scalar:
@@ -145,7 +145,7 @@ def cifti_change_mapping(
         cargs.extend(from_cifti.run(execution))
     ret = CiftiChangeMappingOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

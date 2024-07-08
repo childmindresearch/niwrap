@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA = Metadata(
-    id="fbaa2f73ead2007043e9911c33b5c91af0acadd8",
+    id="785a5d1646cbdf4439d4e4a2d95b23eb242083ef",
     name="cifti-create-dense-from-template",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -213,7 +213,7 @@ class CiftiCreateDenseFromTemplateOutputs(typing.NamedTuple):
 
 def cifti_create_dense_from_template(
     template_cifti: InputPathType,
-    cifti_out: InputPathType,
+    cifti_out: str,
     series: CiftiCreateDenseFromTemplateSeries | None = None,
     volume_all: CiftiCreateDenseFromTemplateVolumeAll | None = None,
     opt_label_collision_action: str | None = None,
@@ -307,7 +307,7 @@ def cifti_create_dense_from_template(
     cargs.append("wb_command")
     cargs.append("-cifti-create-dense-from-template")
     cargs.append(execution.input_file(template_cifti))
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if series is not None:
         cargs.extend(series.run(execution))
     if volume_all is not None:
@@ -324,7 +324,7 @@ def cifti_create_dense_from_template(
         cargs.extend([a for c in [s.run(execution) for s in volume] for a in c])
     ret = CiftiCreateDenseFromTemplateOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

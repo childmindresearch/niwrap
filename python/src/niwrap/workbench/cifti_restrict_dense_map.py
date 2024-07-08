@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CIFTI_RESTRICT_DENSE_MAP_METADATA = Metadata(
-    id="35c0ca3876581f51bc2ae9c1bb36d52b9ba59507",
+    id="55a25d0adbe5826ae063043e353ad3727292c31c",
     name="cifti-restrict-dense-map",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -26,7 +26,7 @@ class CiftiRestrictDenseMapOutputs(typing.NamedTuple):
 def cifti_restrict_dense_map(
     cifti_in: InputPathType,
     direction: str,
-    cifti_out: InputPathType,
+    cifti_out: str,
     opt_cifti_roi_roi_cifti: InputPathType | None = None,
     opt_left_roi_roi_metric: InputPathType | None = None,
     opt_right_roi_roi_metric: InputPathType | None = None,
@@ -71,7 +71,7 @@ def cifti_restrict_dense_map(
     cargs.append("-cifti-restrict-dense-map")
     cargs.append(execution.input_file(cifti_in))
     cargs.append(direction)
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     if opt_cifti_roi_roi_cifti is not None:
         cargs.extend(["-cifti-roi", execution.input_file(opt_cifti_roi_roi_cifti)])
     if opt_left_roi_roi_metric is not None:
@@ -84,7 +84,7 @@ def cifti_restrict_dense_map(
         cargs.extend(["-vol-roi", execution.input_file(opt_vol_roi_roi_vol)])
     ret = CiftiRestrictDenseMapOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

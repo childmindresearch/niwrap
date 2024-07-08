@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_TFCE_METADATA = Metadata(
-    id="b6c1382bb53f649a26e7711b5852c2076fd0f9dc",
+    id="e1784866bf0cf2e52a31a151d24f7764c43a1098",
     name="metric-tfce",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -88,7 +88,7 @@ class MetricTfceOutputs(typing.NamedTuple):
 def metric_tfce(
     surface: InputPathType,
     metric_in: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     presmooth: MetricTfcePresmooth | None = None,
     opt_roi_roi_metric: InputPathType | None = None,
     parameters: MetricTfceParameters | None = None,
@@ -149,7 +149,7 @@ def metric_tfce(
     cargs.append("-metric-tfce")
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(metric_in))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if presmooth is not None:
         cargs.extend(presmooth.run(execution))
     if opt_roi_roi_metric is not None:
@@ -162,7 +162,7 @@ def metric_tfce(
         cargs.extend(["-corrected-areas", execution.input_file(opt_corrected_areas_area_metric)])
     ret = MetricTfceOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret

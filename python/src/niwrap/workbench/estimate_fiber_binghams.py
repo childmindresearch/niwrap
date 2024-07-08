@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 ESTIMATE_FIBER_BINGHAMS_METADATA = Metadata(
-    id="ac508d970cb1111ad5d8079e820ee7da8c1e9984",
+    id="6dc1b9d43512efe863411eb594444646d4a7dec0",
     name="estimate-fiber-binghams",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -34,7 +34,7 @@ def estimate_fiber_binghams(
     merged_th3samples: InputPathType,
     merged_ph3samples: InputPathType,
     label_volume: InputPathType,
-    cifti_out: InputPathType,
+    cifti_out: str,
     runner: Runner = None,
 ) -> EstimateFiberBinghamsOutputs:
     """
@@ -112,10 +112,10 @@ def estimate_fiber_binghams(
     cargs.append(execution.input_file(merged_th3samples))
     cargs.append(execution.input_file(merged_ph3samples))
     cargs.append(execution.input_file(label_volume))
-    cargs.append(execution.input_file(cifti_out))
+    cargs.append(cifti_out)
     ret = EstimateFiberBinghamsOutputs(
         root=execution.output_file("."),
-        cifti_out=execution.output_file(f"{pathlib.Path(cifti_out).name}"),
+        cifti_out=execution.output_file(f"{cifti_out}"),
     )
     execution.run(cargs)
     return ret

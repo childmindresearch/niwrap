@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 METRIC_REGRESSION_METADATA = Metadata(
-    id="8c780f3650bee2118860d89b60107effdd0af09d",
+    id="3b3de7392bf787c7bd1caf141158a3b9fb08fc1d",
     name="metric-regression",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -88,7 +88,7 @@ class MetricRegressionOutputs(typing.NamedTuple):
 
 def metric_regression(
     metric_in: InputPathType,
-    metric_out: InputPathType,
+    metric_out: str,
     opt_roi_roi_metric: InputPathType | None = None,
     opt_column_column: str | None = None,
     remove: list[MetricRegressionRemove] = None,
@@ -125,7 +125,7 @@ def metric_regression(
     cargs.append("wb_command")
     cargs.append("-metric-regression")
     cargs.append(execution.input_file(metric_in))
-    cargs.append(execution.input_file(metric_out))
+    cargs.append(metric_out)
     if opt_roi_roi_metric is not None:
         cargs.extend(["-roi", execution.input_file(opt_roi_roi_metric)])
     if opt_column_column is not None:
@@ -136,7 +136,7 @@ def metric_regression(
         cargs.extend([a for c in [s.run(execution) for s in keep] for a in c])
     ret = MetricRegressionOutputs(
         root=execution.output_file("."),
-        metric_out=execution.output_file(f"{pathlib.Path(metric_out).name}"),
+        metric_out=execution.output_file(f"{metric_out}"),
     )
     execution.run(cargs)
     return ret
