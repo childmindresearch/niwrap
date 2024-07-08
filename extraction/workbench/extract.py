@@ -86,13 +86,14 @@ def make_param(param, bt_inputs, bt_descriptor):
 def make_output(out, bt_inputs, bt_outputs, bt_descriptor):
     input_id = as_bt_id(out["short_name"])
     value_key = as_value_key(out['short_name'])
-    bt_inputs.append(set_wb_type(out["type"],{
+    bt_inputs.append({
         "id": input_id,
         "name": input_id,
+        "type": "String",
         "description": out["description"],
         "optional": False,
         "value-key": value_key
-    }))
+    })
 
     bt_outputs.append({
         "id": input_id,
@@ -123,7 +124,7 @@ def make_poor(opt, bt_inputs, bt_outputs, bt_descriptor, repeatable=False):
             "id": as_bt_id(opt["option_switch"]),
             "name": as_bt_id(opt["option_switch"]),
             "description": opt["description"],
-            "command-line": "",
+            "command-line": opt["option_switch"],
             "inputs": [],
             "output-files": [],
         }
@@ -131,7 +132,7 @@ def make_poor(opt, bt_inputs, bt_outputs, bt_descriptor, repeatable=False):
             "id": input_id,
             "name": input_id,
             "description": opt["description"],
-            "command-line-flag": opt["option_switch"],
+            #"command-line-flag": opt["option_switch"],
             "type": new_descriptor,
             "optional": True,
             "value-key": value_key,

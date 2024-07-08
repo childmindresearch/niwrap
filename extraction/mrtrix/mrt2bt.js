@@ -50,19 +50,19 @@ function make_descriptor(obj) {
             boutiques_input.type = 'File';
             return false;
         } else if (argument.type == 'file out') {
-            boutiques_input.type = 'File';
+            boutiques_input.type = 'String';
             return true;
         } else if (argument.type == 'directory in') {
             boutiques_input.type = 'File';
             return false;
         } else if (argument.type == 'directory out') {
-            boutiques_input.type = 'File';
+            boutiques_input.type = 'String';
             return true;
         } else if (argument.type == 'image in') {
             boutiques_input.type = 'File';
             return false;
         } else if (argument.type == 'image out') {
-            boutiques_input.type = 'File';
+            boutiques_input.type = 'String';
             return true;
         } else if (argument.type == 'choice') {
             boutiques_input.type = 'String';
@@ -83,7 +83,7 @@ function make_descriptor(obj) {
             boutiques_input.type = 'File';
             return false;
         } else if (argument.type == 'tracks out') {
-            boutiques_input.type = 'File';
+            boutiques_input.type = 'String';
             return true;
         } else if (argument.type == 'various') {
             boutiques_input.type = 'String';
