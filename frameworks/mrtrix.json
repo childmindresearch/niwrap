@@ -28,7 +28,8 @@
       },
       {
         "target": "5ttgen",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/mrtrix/5ttgen.json"
       },
       {
         "target": "afdconnectivity",
@@ -117,7 +118,8 @@
       },
       {
         "target": "dwi2response",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/mrtrix/dwi2response.json"
       },
       {
         "target": "dwi2tensor",
@@ -126,7 +128,8 @@
       },
       {
         "target": "dwibiascorrect",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/mrtrix/dwibiascorrect.json"
       },
       {
         "target": "dwicat",
@@ -416,7 +419,8 @@
       },
       {
         "target": "responsemean",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/mrtrix/responsemean.json"
       },
       {
         "target": "sh2amp",
