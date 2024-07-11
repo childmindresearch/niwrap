@@ -885,7 +885,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">   7</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">   8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">   9</span></a><span class="n">MRVIEW_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">  10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8394d2b93b93dd2e7d2dee50f08a9cf5662871b7&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">  10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8fada772d44176bab54dfdfa868641442aae52d4&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">  11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mrview&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">  12</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">  13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -1080,7 +1080,7 @@
 </span><span id="L-202"><a href="#L-202"><span class="linenos"> 202</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-203"><a href="#L-203"><span class="linenos"> 203</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-204"><a href="#L-204"><span class="linenos"> 204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-voxel&quot;</span><span class="p">)</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos"> 205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_y_z</span><span class="p">))</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos"> 205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_y_z</span><span class="p">)))</span>
 </span><span id="L-206"><a href="#L-206"><span class="linenos"> 206</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-207"><a href="#L-207"><span class="linenos"> 207</span></a>
 </span><span id="L-208"><a href="#L-208"><span class="linenos"> 208</span></a>
@@ -1108,7 +1108,7 @@
 </span><span id="L-230"><a href="#L-230"><span class="linenos"> 230</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-231"><a href="#L-231"><span class="linenos"> 231</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-232"><a href="#L-232"><span class="linenos"> 232</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume&quot;</span><span class="p">)</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos"> 233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">))</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos"> 233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">)))</span>
 </span><span id="L-234"><a href="#L-234"><span class="linenos"> 234</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-235"><a href="#L-235"><span class="linenos"> 235</span></a>
 </span><span id="L-236"><a href="#L-236"><span class="linenos"> 236</span></a>
@@ -1620,7 +1620,7 @@
 </span><span id="L-742"><a href="#L-742"><span class="linenos"> 742</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-743"><a href="#L-743"><span class="linenos"> 743</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-744"><a href="#L-744"><span class="linenos"> 744</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-overlay.colour&quot;</span><span class="p">)</span>
-</span><span id="L-745"><a href="#L-745"><span class="linenos"> 745</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">))</span>
+</span><span id="L-745"><a href="#L-745"><span class="linenos"> 745</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">)))</span>
 </span><span id="L-746"><a href="#L-746"><span class="linenos"> 746</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-747"><a href="#L-747"><span class="linenos"> 747</span></a>
 </span><span id="L-748"><a href="#L-748"><span class="linenos"> 748</span></a>
@@ -2049,7 +2049,7 @@
 </span><span id="L-1171"><a href="#L-1171"><span class="linenos">1171</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-1172"><a href="#L-1172"><span class="linenos">1172</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-1173"><a href="#L-1173"><span class="linenos">1173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-tractography.colour&quot;</span><span class="p">)</span>
-</span><span id="L-1174"><a href="#L-1174"><span class="linenos">1174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">))</span>
+</span><span id="L-1174"><a href="#L-1174"><span class="linenos">1174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">)))</span>
 </span><span id="L-1175"><a href="#L-1175"><span class="linenos">1175</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-1176"><a href="#L-1176"><span class="linenos">1176</span></a>
 </span><span id="L-1177"><a href="#L-1177"><span class="linenos">1177</span></a>
@@ -2848,7 +2848,7 @@
                     <div class="attr variable">
             <span class="name">MRVIEW_METADATA</span>        =
 <input id="MRVIEW_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRVIEW_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8394d2b93b93dd2e7d2dee50f08a9cf5662871b7&#39;, name=&#39;mrview&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;, container_image_index=None, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="MRVIEW_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8fada772d44176bab54dfdfa868641442aae52d4&#39;, name=&#39;mrview&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -5540,7 +5540,7 @@ menu.</p>
 </span><span id="MrviewOverlayColour-743"><a href="#MrviewOverlayColour-743"><span class="linenos">743</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="MrviewOverlayColour-744"><a href="#MrviewOverlayColour-744"><span class="linenos">744</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="MrviewOverlayColour-745"><a href="#MrviewOverlayColour-745"><span class="linenos">745</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-overlay.colour&quot;</span><span class="p">)</span>
-</span><span id="MrviewOverlayColour-746"><a href="#MrviewOverlayColour-746"><span class="linenos">746</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">))</span>
+</span><span id="MrviewOverlayColour-746"><a href="#MrviewOverlayColour-746"><span class="linenos">746</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">)))</span>
 </span><span id="MrviewOverlayColour-747"><a href="#MrviewOverlayColour-747"><span class="linenos">747</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
@@ -5601,7 +5601,7 @@ values</p>
 </span><span id="MrviewOverlayColour.run-743"><a href="#MrviewOverlayColour.run-743"><span class="linenos">743</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="MrviewOverlayColour.run-744"><a href="#MrviewOverlayColour.run-744"><span class="linenos">744</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="MrviewOverlayColour.run-745"><a href="#MrviewOverlayColour.run-745"><span class="linenos">745</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-overlay.colour&quot;</span><span class="p">)</span>
-</span><span id="MrviewOverlayColour.run-746"><a href="#MrviewOverlayColour.run-746"><span class="linenos">746</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">))</span>
+</span><span id="MrviewOverlayColour.run-746"><a href="#MrviewOverlayColour.run-746"><span class="linenos">746</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">)))</span>
 </span><span id="MrviewOverlayColour.run-747"><a href="#MrviewOverlayColour.run-747"><span class="linenos">747</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
@@ -7648,7 +7648,7 @@ that will appear at the centre of the viewing window</p>
 </span><span id="MrviewTractographyColour-1172"><a href="#MrviewTractographyColour-1172"><span class="linenos">1172</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="MrviewTractographyColour-1173"><a href="#MrviewTractographyColour-1173"><span class="linenos">1173</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="MrviewTractographyColour-1174"><a href="#MrviewTractographyColour-1174"><span class="linenos">1174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-tractography.colour&quot;</span><span class="p">)</span>
-</span><span id="MrviewTractographyColour-1175"><a href="#MrviewTractographyColour-1175"><span class="linenos">1175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">))</span>
+</span><span id="MrviewTractographyColour-1175"><a href="#MrviewTractographyColour-1175"><span class="linenos">1175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">)))</span>
 </span><span id="MrviewTractographyColour-1176"><a href="#MrviewTractographyColour-1176"><span class="linenos">1176</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
@@ -7709,7 +7709,7 @@ values</p>
 </span><span id="MrviewTractographyColour.run-1172"><a href="#MrviewTractographyColour.run-1172"><span class="linenos">1172</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="MrviewTractographyColour.run-1173"><a href="#MrviewTractographyColour.run-1173"><span class="linenos">1173</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="MrviewTractographyColour.run-1174"><a href="#MrviewTractographyColour.run-1174"><span class="linenos">1174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-tractography.colour&quot;</span><span class="p">)</span>
-</span><span id="MrviewTractographyColour.run-1175"><a href="#MrviewTractographyColour.run-1175"><span class="linenos">1175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">))</span>
+</span><span id="MrviewTractographyColour.run-1175"><a href="#MrviewTractographyColour.run-1175"><span class="linenos">1175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_g_b</span><span class="p">)))</span>
 </span><span id="MrviewTractographyColour.run-1176"><a href="#MrviewTractographyColour.run-1176"><span class="linenos">1176</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
@@ -8925,7 +8925,7 @@ dropdown menu. Requires -tractography.tsf_load already.</p>
 </span><span id="MrviewVolume-231"><a href="#MrviewVolume-231"><span class="linenos">231</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="MrviewVolume-232"><a href="#MrviewVolume-232"><span class="linenos">232</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="MrviewVolume-233"><a href="#MrviewVolume-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume&quot;</span><span class="p">)</span>
-</span><span id="MrviewVolume-234"><a href="#MrviewVolume-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">))</span>
+</span><span id="MrviewVolume-234"><a href="#MrviewVolume-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">)))</span>
 </span><span id="MrviewVolume-235"><a href="#MrviewVolume-235"><span class="linenos">235</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
@@ -8986,7 +8986,7 @@ of integers.</p>
 </span><span id="MrviewVolume.run-231"><a href="#MrviewVolume.run-231"><span class="linenos">231</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="MrviewVolume.run-232"><a href="#MrviewVolume.run-232"><span class="linenos">232</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="MrviewVolume.run-233"><a href="#MrviewVolume.run-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume&quot;</span><span class="p">)</span>
-</span><span id="MrviewVolume.run-234"><a href="#MrviewVolume.run-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">))</span>
+</span><span id="MrviewVolume.run-234"><a href="#MrviewVolume.run-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">)))</span>
 </span><span id="MrviewVolume.run-235"><a href="#MrviewVolume.run-235"><span class="linenos">235</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
@@ -9043,7 +9043,7 @@ of integers.</p>
 </span><span id="MrviewVoxel-203"><a href="#MrviewVoxel-203"><span class="linenos">203</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="MrviewVoxel-204"><a href="#MrviewVoxel-204"><span class="linenos">204</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="MrviewVoxel-205"><a href="#MrviewVoxel-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-voxel&quot;</span><span class="p">)</span>
-</span><span id="MrviewVoxel-206"><a href="#MrviewVoxel-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_y_z</span><span class="p">))</span>
+</span><span id="MrviewVoxel-206"><a href="#MrviewVoxel-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_y_z</span><span class="p">)))</span>
 </span><span id="MrviewVoxel-207"><a href="#MrviewVoxel-207"><span class="linenos">207</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
@@ -9105,7 +9105,7 @@ comma-separated list of floating-point values.</p>
 </span><span id="MrviewVoxel.run-203"><a href="#MrviewVoxel.run-203"><span class="linenos">203</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="MrviewVoxel.run-204"><a href="#MrviewVoxel.run-204"><span class="linenos">204</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="MrviewVoxel.run-205"><a href="#MrviewVoxel.run-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-voxel&quot;</span><span class="p">)</span>
-</span><span id="MrviewVoxel.run-206"><a href="#MrviewVoxel.run-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_y_z</span><span class="p">))</span>
+</span><span id="MrviewVoxel.run-206"><a href="#MrviewVoxel.run-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_y_z</span><span class="p">)))</span>
 </span><span id="MrviewVoxel.run-207"><a href="#MrviewVoxel.run-207"><span class="linenos">207</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
