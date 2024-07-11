@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRVIEW_METADATA = Metadata(
-    id="8394d2b93b93dd2e7d2dee50f08a9cf5662871b7",
+    id="8fada772d44176bab54dfdfa868641442aae52d4",
     name="mrview",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -202,7 +202,7 @@ class MrviewVoxel:
         """
         cargs = []
         cargs.append("-voxel")
-        cargs.extend(map(str, self.x_y_z))
+        cargs.append(",".join(map(str, self.x_y_z)))
         return cargs
 
 
@@ -230,7 +230,7 @@ class MrviewVolume:
         """
         cargs = []
         cargs.append("-volume")
-        cargs.extend(map(str, self.idx))
+        cargs.append(",".join(map(str, self.idx)))
         return cargs
 
 
@@ -742,7 +742,7 @@ class MrviewOverlayColour:
         """
         cargs = []
         cargs.append("-overlay.colour")
-        cargs.extend(map(str, self.r_g_b))
+        cargs.append(",".join(map(str, self.r_g_b)))
         return cargs
 
 
@@ -1171,7 +1171,7 @@ class MrviewTractographyColour:
         """
         cargs = []
         cargs.append("-tractography.colour")
-        cargs.extend(map(str, self.r_g_b))
+        cargs.append(",".join(map(str, self.r_g_b)))
         return cargs
 
 

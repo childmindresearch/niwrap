@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRFILTER_METADATA = Metadata(
-    id="f422befc807010743eff7ca2a5a43e6a5f36adc5",
+    id="0621af7c7b417bc8eb911cfb7565dfdeab30cb58",
     name="mrfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -188,21 +188,21 @@ def mrfilter(
     if centre_zero:
         cargs.append("-centre_zero")
     if stdev is not None:
-        cargs.extend(["-stdev", *map(str, stdev)])
+        cargs.extend(["-stdev", ",".join(map(str, stdev))])
     if magnitude_:
         cargs.append("-magnitude")
     if scanner:
         cargs.append("-scanner")
     if extent is not None:
-        cargs.extend(["-extent", *map(str, extent)])
+        cargs.extend(["-extent", ",".join(map(str, extent))])
     if extent_ is not None:
-        cargs.extend(["-extent", *map(str, extent_)])
+        cargs.extend(["-extent", ",".join(map(str, extent_))])
     if stdev_ is not None:
-        cargs.extend(["-stdev", *map(str, stdev_)])
+        cargs.extend(["-stdev", ",".join(map(str, stdev_))])
     if fwhm is not None:
-        cargs.extend(["-fwhm", *map(str, fwhm)])
+        cargs.extend(["-fwhm", ",".join(map(str, fwhm))])
     if extent_2 is not None:
-        cargs.extend(["-extent", *map(str, extent_2)])
+        cargs.extend(["-extent", ",".join(map(str, extent_2))])
     if zupper is not None:
         cargs.extend(["-zupper", str(zupper)])
     if zlower is not None:

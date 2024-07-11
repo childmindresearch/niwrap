@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRGRID_METADATA = Metadata(
-    id="22f4b2a2b44656b0fd233806fef186a7cfa936d1",
+    id="2d706a05dc76bbb22322a5b9eb06da741d3bf7c8",
     name="mrgrid",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -254,15 +254,15 @@ def mrgrid(
     if template is not None:
         cargs.extend(["-template", execution.input_file(template)])
     if size is not None:
-        cargs.extend(["-size", *map(str, size)])
+        cargs.extend(["-size", ",".join(map(str, size))])
     if voxel is not None:
-        cargs.extend(["-voxel", *map(str, voxel)])
+        cargs.extend(["-voxel", ",".join(map(str, voxel))])
     if scale is not None:
-        cargs.extend(["-scale", *map(str, scale)])
+        cargs.extend(["-scale", ",".join(map(str, scale))])
     if interp is not None:
         cargs.extend(["-interp", interp])
     if oversample is not None:
-        cargs.extend(["-oversample", *map(str, oversample)])
+        cargs.extend(["-oversample", ",".join(map(str, oversample))])
     if as_ is not None:
         cargs.extend(["-as", execution.input_file(as_)])
     if uniform is not None:

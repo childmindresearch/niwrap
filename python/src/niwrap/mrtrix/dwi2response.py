@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DWI2RESPONSE_METADATA = Metadata(
-    id="40535e71e461d9123133ab4cc6dbe6f84dbe9ef6",
+    id="edddbe80993b644221e1465a2dd0d5c280ed0192",
     name="dwi2response",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -667,9 +667,9 @@ def dwi2response(
     if voxels is not None:
         cargs.extend(["-voxels", voxels])
     if shells is not None:
-        cargs.extend(["-shells", *map(str, shells)])
+        cargs.extend(["-shells", ",".join(map(str, shells))])
     if lmax is not None:
-        cargs.extend(["-lmax", *map(str, lmax)])
+        cargs.extend(["-lmax", ",".join(map(str, lmax))])
     if nocleanup:
         cargs.append("-nocleanup")
     if scratch is not None:

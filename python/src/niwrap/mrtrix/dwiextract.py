@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DWIEXTRACT_METADATA = Metadata(
-    id="e49ff018f438869477f395f289c902c4a59fe2a1",
+    id="0671192cc8b8c9f31703ecba4585dd82f28ae520",
     name="dwiextract",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -307,7 +307,7 @@ def dwiextract(
     if fslgrad is not None:
         cargs.extend(fslgrad.run(execution))
     if shells is not None:
-        cargs.extend(["-shells", *map(str, shells)])
+        cargs.extend(["-shells", ",".join(map(str, shells))])
     if export_grad_mrtrix is not None:
         cargs.extend(["-export_grad_mrtrix", export_grad_mrtrix])
     if export_grad_fsl is not None:
@@ -317,7 +317,7 @@ def dwiextract(
     if import_pe_eddy is not None:
         cargs.extend(import_pe_eddy.run(execution))
     if pe is not None:
-        cargs.extend(["-pe", *map(str, pe)])
+        cargs.extend(["-pe", ",".join(map(str, pe))])
     if strides is not None:
         cargs.extend(["-strides", strides])
     if info:

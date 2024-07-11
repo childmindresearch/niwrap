@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRTRANSFORM_METADATA = Metadata(
-    id="01c6838619553c7833836283e7ca74d5f17f9954",
+    id="45485023475ab46ae64a1151d315b908c9d579c4",
     name="mrtransform",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -362,7 +362,7 @@ def mrtransform(
     if linear is not None:
         cargs.extend(["-linear", execution.input_file(linear)])
     if flip is not None:
-        cargs.extend(["-flip", *map(str, flip)])
+        cargs.extend(["-flip", ",".join(map(str, flip))])
     if inverse:
         cargs.append("-inverse")
     if half:
@@ -378,7 +378,7 @@ def mrtransform(
     if interp is not None:
         cargs.extend(["-interp", interp])
     if oversample is not None:
-        cargs.extend(["-oversample", *map(str, oversample)])
+        cargs.extend(["-oversample", ",".join(map(str, oversample))])
     if warp is not None:
         cargs.extend(["-warp", execution.input_file(warp)])
     if warp_full is not None:

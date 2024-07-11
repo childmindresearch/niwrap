@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKSIFT_METADATA = Metadata(
-    id="e515279056fff4e93aa8acc83108c2f6f3c69983",
+    id="09acae3fadd64e1baed640a1115307f0f8c72d92",
     name="tcksift",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -176,7 +176,7 @@ def tcksift(
     if nofilter:
         cargs.append("-nofilter")
     if output_at_counts is not None:
-        cargs.extend(["-output_at_counts", *map(str, output_at_counts)])
+        cargs.extend(["-output_at_counts", ",".join(map(str, output_at_counts))])
     if proc_mask is not None:
         cargs.extend(["-proc_mask", execution.input_file(proc_mask)])
     if act is not None:

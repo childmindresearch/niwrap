@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DWI2FOD_METADATA = Metadata(
-    id="a66063fab5b0e86b28e801a06b9ce13ad239bfd2",
+    id="117bc926fe935262045a3438c6b148ea44779ec3",
     name="dwi2fod",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -235,11 +235,11 @@ def dwi2fod(
     if fslgrad is not None:
         cargs.extend(fslgrad.run(execution))
     if shells is not None:
-        cargs.extend(["-shells", *map(str, shells)])
+        cargs.extend(["-shells", ",".join(map(str, shells))])
     if directions is not None:
         cargs.extend(["-directions", execution.input_file(directions)])
     if lmax is not None:
-        cargs.extend(["-lmax", *map(str, lmax)])
+        cargs.extend(["-lmax", ",".join(map(str, lmax))])
     if mask is not None:
         cargs.extend(["-mask", execution.input_file(mask)])
     if filter_ is not None:

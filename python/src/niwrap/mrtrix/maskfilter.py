@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MASKFILTER_METADATA = Metadata(
-    id="b4236a43255f8e519cc82f2416070b420b2b95bc",
+    id="6ba4e496d08f1488d97425eefe37ae0112fd3e95",
     name="maskfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -137,7 +137,7 @@ def maskfilter(
     if scale is not None:
         cargs.extend(["-scale", str(scale)])
     if axes is not None:
-        cargs.extend(["-axes", *map(str, axes)])
+        cargs.extend(["-axes", ",".join(map(str, axes))])
     if largest:
         cargs.append("-largest")
     if connectivity:
@@ -145,7 +145,7 @@ def maskfilter(
     if npass is not None:
         cargs.extend(["-npass", str(npass)])
     if extent is not None:
-        cargs.extend(["-extent", *map(str, extent)])
+        cargs.extend(["-extent", ",".join(map(str, extent))])
     if strides is not None:
         cargs.extend(["-strides", strides])
     if info:

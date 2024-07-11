@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKMAP_METADATA = Metadata(
-    id="f4c775dbcb7f1d6d026d8bab63b51da641383f9c",
+    id="5cf50181aab21f71d933c8804d02d522094e66e2",
     name="tckmap",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -212,7 +212,7 @@ def tckmap(
     if template is not None:
         cargs.extend(["-template", execution.input_file(template)])
     if vox is not None:
-        cargs.extend(["-vox", *map(str, vox)])
+        cargs.extend(["-vox", ",".join(map(str, vox))])
     if datatype is not None:
         cargs.extend(["-datatype", datatype])
     if dec:

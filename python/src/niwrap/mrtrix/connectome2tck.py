@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONNECTOME2TCK_METADATA = Metadata(
-    id="5aa08d8bef0c33bd82a419d8f72afed064e96164",
+    id="7220e553e6f6d1ddf13a4147582c4c793d0bad5d",
     name="connectome2tck",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -142,7 +142,7 @@ def connectome2tck(
     cargs = []
     cargs.append("connectome2tck")
     if nodes is not None:
-        cargs.extend(["-nodes", *map(str, nodes)])
+        cargs.extend(["-nodes", ",".join(map(str, nodes))])
     if exclusive:
         cargs.append("-exclusive")
     if files is not None:

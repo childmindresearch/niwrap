@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 AMP2RESPONSE_METADATA = Metadata(
-    id="e50a8cb5f14ceb20493e34316f8a9c579e15a5b5",
+    id="333417acbc4400d2f027a5765d8cc04968437cab",
     name="amp2response",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -150,9 +150,9 @@ def amp2response(
     if directions_ is not None:
         cargs.extend(["-directions", execution.input_file(directions_)])
     if shells is not None:
-        cargs.extend(["-shells", *map(str, shells)])
+        cargs.extend(["-shells", ",".join(map(str, shells))])
     if lmax is not None:
-        cargs.extend(["-lmax", *map(str, lmax)])
+        cargs.extend(["-lmax", ",".join(map(str, lmax))])
     if info:
         cargs.append("-info")
     if quiet:

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKGEN_METADATA = Metadata(
-    id="ed1920c7382874be796f2648e439f45150b46ac6",
+    id="5e47f47421515c25e08b24772671f923e52da011",
     name="tckgen",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -65,7 +65,7 @@ class TckgenSeedSphere:
         """
         cargs = []
         cargs.append("-seed_sphere")
-        cargs.extend(map(str, self.spec))
+        cargs.append(",".join(map(str, self.spec)))
         return cargs
 
 
@@ -768,7 +768,7 @@ def tckgen(
     if seed_unidirectional:
         cargs.append("-seed_unidirectional")
     if seed_direction is not None:
-        cargs.extend(["-seed_direction", *map(str, seed_direction)])
+        cargs.extend(["-seed_direction", ",".join(map(str, seed_direction))])
     if output_seeds is not None:
         cargs.extend(["-output_seeds", output_seeds])
     if include is not None:

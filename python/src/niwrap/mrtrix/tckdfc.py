@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKDFC_METADATA = Metadata(
-    id="a608cde692b2116fab653c32e54fd1be6bfac333",
+    id="328d7d7c486f3637e6ae3afa6e0bed0794bdd59e",
     name="tckdfc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -198,7 +198,7 @@ def tckdfc(
     if template is not None:
         cargs.extend(["-template", execution.input_file(template)])
     if vox is not None:
-        cargs.extend(["-vox", *map(str, vox)])
+        cargs.extend(["-vox", ",".join(map(str, vox))])
     if stat_vox is not None:
         cargs.extend(["-stat_vox", stat_vox])
     if backtrack:

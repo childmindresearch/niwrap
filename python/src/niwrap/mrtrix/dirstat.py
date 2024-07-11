@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DIRSTAT_METADATA = Metadata(
-    id="23d54a9eb34a7b46332442cb22042095b35f0bfc",
+    id="81367cbd380c9eea51f87eee3f809373eef1723f",
     name="dirstat",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -199,7 +199,7 @@ def dirstat(
     if output is not None:
         cargs.extend(["-output", output])
     if shells is not None:
-        cargs.extend(["-shells", *map(str, shells)])
+        cargs.extend(["-shells", ",".join(map(str, shells))])
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad is not None:

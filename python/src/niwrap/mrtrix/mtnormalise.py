@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MTNORMALISE_METADATA = Metadata(
-    id="f9fd855d8196bcbeb515c10676908720175eb482",
+    id="7099c2997a5bf34e86104d8fded9dba661a766c6",
     name="mtnormalise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -169,7 +169,7 @@ def mtnormalise(
     if order is not None:
         cargs.extend(["-order", order])
     if niter is not None:
-        cargs.extend(["-niter", *map(str, niter)])
+        cargs.extend(["-niter", ",".join(map(str, niter))])
     if reference is not None:
         cargs.extend(["-reference", str(reference)])
     if balanced:

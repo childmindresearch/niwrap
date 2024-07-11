@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 AMP2SH_METADATA = Metadata(
-    id="7ab6d8fb5c45ab99b31cd95415d6374ab6d9abc8",
+    id="29d345f18df9637a821eccbb9b76d029a1df7ff0",
     name="amp2sh",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -209,7 +209,7 @@ def amp2sh(
     if fslgrad is not None:
         cargs.extend(fslgrad.run(execution))
     if shells is not None:
-        cargs.extend(["-shells", *map(str, shells)])
+        cargs.extend(["-shells", ",".join(map(str, shells))])
     if strides is not None:
         cargs.extend(["-strides", strides])
     if info:

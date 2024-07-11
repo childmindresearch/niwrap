@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRCOLOUR_METADATA = Metadata(
-    id="c7fe043f079d8f9860d16bf3b5875fea341094d6",
+    id="14881bdc7f250969e2e0709295d75609a10bccf9",
     name="mrcolour",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -128,7 +128,7 @@ def mrcolour(
     if lower is not None:
         cargs.extend(["-lower", str(lower)])
     if colour is not None:
-        cargs.extend(["-colour", *map(str, colour)])
+        cargs.extend(["-colour", ",".join(map(str, colour))])
     if info:
         cargs.append("-info")
     if quiet:

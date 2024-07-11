@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKRESAMPLE_METADATA = Metadata(
-    id="58ba887d55694a38b8affc5a8c5c50a07ce7b7e1",
+    id="92eb43aed1f66b6143f9c1161cf3bd81cec6b574",
     name="tckresample",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -48,8 +48,8 @@ class TckresampleLine:
         cargs = []
         cargs.append("-line")
         cargs.append(str(self.num))
-        cargs.extend(map(str, self.start))
-        cargs.extend(map(str, self.end))
+        cargs.append(",".join(map(str, self.start)))
+        cargs.append(",".join(map(str, self.end)))
         return cargs
 
 
@@ -91,9 +91,9 @@ class TckresampleArc:
         cargs = []
         cargs.append("-arc")
         cargs.append(str(self.num))
-        cargs.extend(map(str, self.start))
-        cargs.extend(map(str, self.mid))
-        cargs.extend(map(str, self.end))
+        cargs.append(",".join(map(str, self.start)))
+        cargs.append(",".join(map(str, self.mid)))
+        cargs.append(",".join(map(str, self.end)))
         return cargs
 
 
