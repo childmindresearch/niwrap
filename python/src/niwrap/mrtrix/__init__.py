@@ -18,6 +18,7 @@ from .dirstat import *
 from .dwi2adc import *
 from .dwi2fod import *
 from .dwi2mask import *
+from .dwi2response import *
 from .dwi2tensor import *
 from .dwibiascorrect import *
 from .dwidenoise import *
