@@ -101,9 +101,7 @@
       "description": "comparison operator to use when applying the threshold; options are: lt,le,ge,gt (default = \"le\" for -bottom; \"ge\" otherwise)",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "choice"
-      ]
+      "value-choices": ["choice"]
     },
     {
       "id": "invert",

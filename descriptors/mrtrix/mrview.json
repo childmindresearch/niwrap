@@ -1010,9 +1010,7 @@
             "description": "The geometry type to use when rendering tractograms (options are: pseudotubes, lines, points)",
             "type": "String",
             "optional": false,
-            "value-choices": [
-              "value"
-            ]
+            "value-choices": ["value"]
           }
         ],
         "output-files": []
