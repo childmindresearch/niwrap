@@ -108,6 +108,7 @@ from .v_5tt2gmwmi import *
 from .v_5tt2vis import *
 from .v_5ttcheck import *
 from .v_5ttedit import *
+from .v_5ttgen import *
 from .vectorstats import *
 from .voxel2fixel import *
 from .voxel2mesh import *
