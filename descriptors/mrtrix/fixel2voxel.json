@@ -25,7 +25,9 @@
       "description": "the operation to apply, one of: mean, sum, product, min, max, absmax, magmax, count, complexity, sf, dec_unit, dec_scaled, none.",
       "type": "String",
       "optional": false,
-      "value-choices": ["operation"]
+      "value-choices": [
+        "operation"
+      ]
     },
     {
       "id": "image_out",

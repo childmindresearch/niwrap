@@ -103,7 +103,8 @@
       "type": "Number",
       "optional": true,
       "integer": false,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "export_grad_mrtrix",
@@ -209,7 +210,8 @@
       "type": "Number",
       "optional": true,
       "integer": false,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "strides",

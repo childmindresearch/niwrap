@@ -43,7 +43,8 @@
       "type": "Number",
       "optional": true,
       "integer": true,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "exclusive",
@@ -62,7 +63,9 @@
       "description": "select how the resulting streamlines will be grouped in output files. Options are: per_edge, per_node, single (default: per_edge)",
       "type": "String",
       "optional": true,
-      "value-choices": ["option"]
+      "value-choices": [
+        "option"
+      ]
     },
     {
       "id": "exemplars",

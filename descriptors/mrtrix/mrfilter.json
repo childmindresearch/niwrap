@@ -25,7 +25,9 @@
       "description": "the type of filter to be applied",
       "type": "String",
       "optional": false,
-      "value-choices": ["filter"]
+      "value-choices": [
+        "filter"
+      ]
     },
     {
       "id": "output",
@@ -82,7 +84,8 @@
       "type": "Number",
       "optional": true,
       "integer": false,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "magnitude",
@@ -111,7 +114,8 @@
       "type": "Number",
       "optional": true,
       "integer": true,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "extent",
@@ -122,7 +126,8 @@
       "type": "Number",
       "optional": true,
       "integer": true,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "stdev",
@@ -133,7 +138,8 @@
       "type": "Number",
       "optional": true,
       "integer": false,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "fwhm",
@@ -144,7 +150,8 @@
       "type": "Number",
       "optional": true,
       "integer": false,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "extent",
@@ -155,7 +162,8 @@
       "type": "Number",
       "optional": true,
       "integer": true,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "zupper",

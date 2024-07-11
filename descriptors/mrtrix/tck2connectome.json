@@ -144,7 +144,9 @@
       "description": "statistic for combining the values from all streamlines in an edge into a single scale value for that edge (options are: sum,mean,min,max; default=sum)",
       "type": "String",
       "optional": true,
-      "value-choices": ["statistic"]
+      "value-choices": [
+        "statistic"
+      ]
     },
     {
       "id": "tck_weights_in",

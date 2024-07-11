@@ -78,7 +78,8 @@
       "type": "Number",
       "optional": true,
       "integer": false,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "lmax",
@@ -89,7 +90,8 @@
       "type": "Number",
       "optional": true,
       "integer": true,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "info",

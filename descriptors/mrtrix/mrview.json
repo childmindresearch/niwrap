@@ -183,7 +183,8 @@
             "type": "Number",
             "optional": false,
             "integer": false,
-            "list": true
+            "list": true,
+            "list-separator": ","
           }
         ],
         "output-files": []
@@ -210,7 +211,8 @@
             "type": "Number",
             "optional": false,
             "integer": true,
-            "list": true
+            "list": true,
+            "list-separator": ","
           }
         ],
         "output-files": []
@@ -716,7 +718,8 @@
             "type": "Number",
             "optional": false,
             "integer": false,
-            "list": true
+            "list": true,
+            "list-separator": ","
           }
         ],
         "output-files": []
@@ -1007,7 +1010,9 @@
             "description": "The geometry type to use when rendering tractograms (options are: pseudotubes, lines, points)",
             "type": "String",
             "optional": false,
-            "value-choices": ["value"]
+            "value-choices": [
+              "value"
+            ]
           }
         ],
         "output-files": []
@@ -1111,7 +1116,8 @@
             "type": "Number",
             "optional": false,
             "integer": false,
-            "list": true
+            "list": true,
+            "list-separator": ","
           }
         ],
         "output-files": []

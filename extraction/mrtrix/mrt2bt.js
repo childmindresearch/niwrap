@@ -34,7 +34,7 @@ function make_descriptor(obj) {
 
     // Options
 
-    function set_type(argument, boutiques_input) {
+    function set_type(argument, boutiques_input, comma_separated = false) {
         if (argument.type == 'integer') {
             boutiques_input.type = 'Number';
             boutiques_input.integer = true;
@@ -73,11 +73,17 @@ function make_descriptor(obj) {
             boutiques_input.type = 'Number';
             boutiques_input.integer = true;
             boutiques_input.list = true;
+            if (comma_separated) {
+                boutiques_input["list-separator"] = ',';
+            }
             return false;
         } else if (argument.type == 'float seq') {
             boutiques_input.type = 'Number';
             boutiques_input.integer = false;
             boutiques_input.list = true;
+            if (comma_separated) {
+                boutiques_input["list-separator"] = ',';
+            }
             return false;
         } else if (argument.type == 'tracks in') {
             boutiques_input.type = 'File';
@@ -148,7 +154,8 @@ function make_descriptor(obj) {
                         input.list = true;
                     }
 
-                    const has_output = set_type(argument, input);
+                    const comma_separated = option.description.includes("comma-separated");
+                    const has_output = set_type(argument, input, comma_separated);
                     subcommand_descriptor['command-line'] += ' ' + template_key;
                     if (has_output) {
                         subcommand_descriptor['output-files'].push({
@@ -178,7 +185,8 @@ function make_descriptor(obj) {
                     throw new Error('Argument "' + argument.id + '" has optional set to true (expected only the option could be optional)');
                 }
 
-                const has_output = set_type(argument, input);
+                const comma_separated = option.description.includes("comma-separated");
+                const has_output = set_type(argument, input, comma_separated);
                 if (has_output) {
                     descriptor['output-files'].push({
                         "id": option.id,
@@ -218,7 +226,8 @@ function make_descriptor(obj) {
             input.list = true;
         }
 
-        const has_output = set_type(argument, input);
+        const comma_separated = obj.description.includes("comma-separated");
+        const has_output = set_type(argument, input, comma_separated);
         descriptor['command-line'] += ' ' + template_key;
         if (has_output) {
             if (input.list) {

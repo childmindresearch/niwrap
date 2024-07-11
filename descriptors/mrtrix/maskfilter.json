@@ -25,7 +25,9 @@
       "description": "the type of filter to be applied (clean, connect, dilate, erode, median)",
       "type": "String",
       "optional": false,
-      "value-choices": ["filter"]
+      "value-choices": [
+        "filter"
+      ]
     },
     {
       "id": "output",
@@ -54,7 +56,8 @@
       "type": "Number",
       "optional": true,
       "integer": true,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "largest",
@@ -93,7 +96,8 @@
       "type": "Number",
       "optional": true,
       "integer": true,
-      "list": true
+      "list": true,
+      "list-separator": ","
     },
     {
       "id": "strides",
