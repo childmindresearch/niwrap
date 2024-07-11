@@ -71,6 +71,7 @@ from .mrview import *
 from .mtnormalise import *
 from .peaks2amp import *
 from .peaks2fixel import *
+from .responsemean import *
 from .sh2amp import *
 from .sh2peaks import *
 from .sh2power import *
