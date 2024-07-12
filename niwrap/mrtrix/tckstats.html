@@ -117,7 +117,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TCKSTATS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6091bf2b02998c7e4929a89bf48b84ae94e830ab&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2e6f7d19387564d069ab548694fef288498b97ad&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tckstats&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -129,7 +129,7 @@
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    output only the field specified. Multiple such options can be supplied if required. Choices are: mean, median, std, min, max, count. Useful for use in scripts.</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="n">field</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="n">field</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output only the field specified. Multiple such options can be supplied if</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="sd">    required. Choices are: mean, median, std, min, max, count. Useful for use in</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="sd">    scripts.&quot;&quot;&quot;</span>
@@ -308,7 +308,7 @@
                     <div class="attr variable">
             <span class="name">TCKSTATS_METADATA</span>        =
 <input id="TCKSTATS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TCKSTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;6091bf2b02998c7e4929a89bf48b84ae94e830ab&#39;, name=&#39;tckstats&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;, container_image_index=None, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="TCKSTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2e6f7d19387564d069ab548694fef288498b97ad&#39;, name=&#39;tckstats&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -466,7 +466,7 @@
 </span><span id="TckstatsOutput-20"><a href="#TckstatsOutput-20"><span class="linenos">20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="TckstatsOutput-21"><a href="#TckstatsOutput-21"><span class="linenos">21</span></a><span class="sd">    output only the field specified. Multiple such options can be supplied if required. Choices are: mean, median, std, min, max, count. Useful for use in scripts.</span>
 </span><span id="TckstatsOutput-22"><a href="#TckstatsOutput-22"><span class="linenos">22</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="TckstatsOutput-23"><a href="#TckstatsOutput-23"><span class="linenos">23</span></a>    <span class="n">field</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]</span>
+</span><span id="TckstatsOutput-23"><a href="#TckstatsOutput-23"><span class="linenos">23</span></a>    <span class="n">field</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="TckstatsOutput-24"><a href="#TckstatsOutput-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output only the field specified. Multiple such options can be supplied if</span>
 </span><span id="TckstatsOutput-25"><a href="#TckstatsOutput-25"><span class="linenos">25</span></a><span class="sd">    required. Choices are: mean, median, std, min, max, count. Useful for use in</span>
 </span><span id="TckstatsOutput-26"><a href="#TckstatsOutput-26"><span class="linenos">26</span></a><span class="sd">    scripts.&quot;&quot;&quot;</span>
@@ -498,7 +498,7 @@
                             <div id="TckstatsOutput.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">TckstatsOutput</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">field</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;field&#39;</span><span class="p">]</span></span>)</span>
+        <span class="name">TckstatsOutput</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">field</span><span class="p">:</span> <span class="nb">str</span></span>)</span>
 
         
     </div>
@@ -509,7 +509,7 @@
                             </div>
                             <div id="TckstatsOutput.field" class="classattr">
                                 <div class="attr variable">
-            <span class="name">field</span><span class="annotation">: Literal[&#39;field&#39;]</span>
+            <span class="name">field</span><span class="annotation">: str</span>
 
         
     </div>

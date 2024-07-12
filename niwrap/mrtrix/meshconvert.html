@@ -117,7 +117,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MESHCONVERT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;cdbce10b9949a8f6986ca8fa55e86fe2916c3120&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;344abcc95b32eaabe4fe4d2f639ad46cf81609a6&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;meshconvert&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -129,7 +129,7 @@
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    transform vertices from one coordinate space to another, based on a template image; options are: first2real, real2first, voxel2real, real2voxel, fs2real</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="n">mode</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;transform vertices from one coordinate space to another, based on a</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="sd">    template image; options are: first2real, real2first, voxel2real, real2voxel,</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="sd">    fs2real&quot;&quot;&quot;</span>
@@ -299,7 +299,7 @@
                     <div class="attr variable">
             <span class="name">MESHCONVERT_METADATA</span>        =
 <input id="MESHCONVERT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MESHCONVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;cdbce10b9949a8f6986ca8fa55e86fe2916c3120&#39;, name=&#39;meshconvert&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;, container_image_index=None, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="MESHCONVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;344abcc95b32eaabe4fe4d2f639ad46cf81609a6&#39;, name=&#39;meshconvert&#39;, container_image_type=&#39;docker&#39;, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -534,7 +534,7 @@
 </span><span id="MeshconvertTransform-20"><a href="#MeshconvertTransform-20"><span class="linenos">20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="MeshconvertTransform-21"><a href="#MeshconvertTransform-21"><span class="linenos">21</span></a><span class="sd">    transform vertices from one coordinate space to another, based on a template image; options are: first2real, real2first, voxel2real, real2voxel, fs2real</span>
 </span><span id="MeshconvertTransform-22"><a href="#MeshconvertTransform-22"><span class="linenos">22</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="MeshconvertTransform-23"><a href="#MeshconvertTransform-23"><span class="linenos">23</span></a>    <span class="n">mode</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span>
+</span><span id="MeshconvertTransform-23"><a href="#MeshconvertTransform-23"><span class="linenos">23</span></a>    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="MeshconvertTransform-24"><a href="#MeshconvertTransform-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;transform vertices from one coordinate space to another, based on a</span>
 </span><span id="MeshconvertTransform-25"><a href="#MeshconvertTransform-25"><span class="linenos">25</span></a><span class="sd">    template image; options are: first2real, real2first, voxel2real, real2voxel,</span>
 </span><span id="MeshconvertTransform-26"><a href="#MeshconvertTransform-26"><span class="linenos">26</span></a><span class="sd">    fs2real&quot;&quot;&quot;</span>
@@ -571,7 +571,7 @@
                             <div id="MeshconvertTransform.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">MeshconvertTransform</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">]</span>, </span><span class="param"><span class="n">image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span>)</span>
+        <span class="name">MeshconvertTransform</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">mode</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span>)</span>
 
         
     </div>
@@ -582,7 +582,7 @@
                             </div>
                             <div id="MeshconvertTransform.mode" class="classattr">
                                 <div class="attr variable">
-            <span class="name">mode</span><span class="annotation">: Literal[&#39;mode&#39;]</span>
+            <span class="name">mode</span><span class="annotation">: str</span>
 
         
     </div>
