@@ -7,11 +7,69 @@ import pathlib
 import typing
 
 DWI2FOD_METADATA = Metadata(
-    id="a88d17e5b0c76105830592b6d7e967c7518342fd",
+    id="5980da20b52fc84cfec9e652fca13e33939bddb1",
     name="dwi2fod",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
+class Dwi2fodResponseOdfOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `Dwi2fodResponseOdf.run(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+    odf: OutputPathType
+    """output ODF image"""
+
+
+@dataclasses.dataclass
+class Dwi2fodResponseOdf:
+    """
+    pairs of input tissue response and output ODF images
+    """
+    response: InputPathType
+    """input tissue response"""
+    odf: str
+    """output ODF image"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            self: The sub-command object.
+            execution: The execution object.
+        Returns:
+            
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.response))
+        cargs.append(self.odf)
+        return cargs
+    
+    def outputs(
+        self,
+        execution: Execution,
+    ) -> Dwi2fodResponseOdfOutputs:
+        """
+        Collect output file paths.
+        
+        Args:
+            self: The sub-command object.
+            execution: The execution object.
+        Returns:
+            NamedTuple of outputs (described in `Dwi2fodResponseOdfOutputs`).
+        """
+        ret = Dwi2fodResponseOdfOutputs(
+            root=execution.output_file("."),
+            odf=execution.output_file(f"{self.odf}"),
+        )
+        return ret
 
 
 @dataclasses.dataclass
@@ -88,12 +146,14 @@ class Dwi2fodOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     predicted_signal: OutputPathType | None
     """output the predicted dwi image. """
+    response_odf: typing.List[Dwi2fodResponseOdfOutputs]
+    """Subcommand outputs"""
 
 
 def dwi2fod(
     algorithm: str,
     dwi: InputPathType,
-    response_odf: list[str],
+    response_odf: list[Dwi2fodResponseOdf],
     grad: InputPathType | None = None,
     fslgrad: Dwi2fodFslgrad | None = None,
     shells: list[float | int] | None = None,
@@ -278,10 +338,11 @@ def dwi2fod(
         cargs.append("-version")
     cargs.append(algorithm)
     cargs.append(execution.input_file(dwi))
-    cargs.extend(response_odf)
+    cargs.extend([a for c in [s.run(execution) for s in response_odf] for a in c])
     ret = Dwi2fodOutputs(
         root=execution.output_file("."),
         predicted_signal=execution.output_file(f"{predicted_signal}") if predicted_signal is not None else None,
+        response_odf=[i.outputs(execution) for i in response_odf],
     )
     execution.run(cargs)
     return ret
@@ -292,5 +353,7 @@ __all__ = [
     "Dwi2fodConfig",
     "Dwi2fodFslgrad",
     "Dwi2fodOutputs",
+    "Dwi2fodResponseOdf",
+    "Dwi2fodResponseOdfOutputs",
     "dwi2fod",
 ]

@@ -7,11 +7,69 @@ import pathlib
 import typing
 
 MTNORMALISE_METADATA = Metadata(
-    id="4cf9cc69722398266490dc75c921f92490a29046",
+    id="3f2c8053a316dd7b7f0318315a1d28f67845229a",
     name="mtnormalise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
+class MtnormaliseInputOutputOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `MtnormaliseInputOutput.run(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+    output: OutputPathType
+    """output normalised tissue compartment image."""
+
+
+@dataclasses.dataclass
+class MtnormaliseInputOutput:
+    """
+    list of all input and output tissue compartment files (see example usage).
+    """
+    input_: InputPathType
+    """input tissue compartment image."""
+    output: str
+    """output normalised tissue compartment image."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            self: The sub-command object.
+            execution: The execution object.
+        Returns:
+            
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.input_))
+        cargs.append(self.output)
+        return cargs
+    
+    def outputs(
+        self,
+        execution: Execution,
+    ) -> MtnormaliseInputOutputOutputs:
+        """
+        Collect output file paths.
+        
+        Args:
+            self: The sub-command object.
+            execution: The execution object.
+        Returns:
+            NamedTuple of outputs (described in `MtnormaliseInputOutputOutputs`).
+        """
+        ret = MtnormaliseInputOutputOutputs(
+            root=execution.output_file("."),
+            output=execution.output_file(f"{self.output}"),
+        )
+        return ret
 
 
 @dataclasses.dataclass
@@ -56,10 +114,12 @@ class MtnormaliseOutputs(typing.NamedTuple):
     """output the final mask used to compute the normalisation. This mask excludes regions identified as outliers by the optimisation process. """
     check_factors: OutputPathType | None
     """output the tissue balance factors computed during normalisation. """
+    input_output: typing.List[MtnormaliseInputOutputOutputs]
+    """Subcommand outputs"""
 
 
 def mtnormalise(
-    input_output: list[str],
+    input_output: list[MtnormaliseInputOutput],
     mask: InputPathType,
     order: str | None = None,
     niter: list[int] | None = None,
@@ -196,12 +256,13 @@ def mtnormalise(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(input_output)
+    cargs.extend([a for c in [s.run(execution) for s in input_output] for a in c])
     ret = MtnormaliseOutputs(
         root=execution.output_file("."),
         check_norm=execution.output_file(f"{check_norm}") if check_norm is not None else None,
         check_mask=execution.output_file(f"{check_mask}") if check_mask is not None else None,
         check_factors=execution.output_file(f"{check_factors}") if check_factors is not None else None,
+        input_output=[i.outputs(execution) for i in input_output],
     )
     execution.run(cargs)
     return ret
@@ -210,6 +271,8 @@ def mtnormalise(
 __all__ = [
     "MTNORMALISE_METADATA",
     "MtnormaliseConfig",
+    "MtnormaliseInputOutput",
+    "MtnormaliseInputOutputOutputs",
     "MtnormaliseOutputs",
     "mtnormalise",
 ]
