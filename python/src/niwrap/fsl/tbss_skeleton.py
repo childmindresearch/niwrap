@@ -35,12 +35,12 @@ class TbssSkeletonOutputs(typing.NamedTuple):
 def tbss_skeleton(
     input_image: InputPathType,
     output_image: str | None = None,
-    skeleton_params: list[str] = None,
+    skeleton_params: list[str] | None = None,
     alt_4d: InputPathType | None = None,
     alt_skeleton: InputPathType | None = None,
     debug_flag: bool = False,
     debug2_flag: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TbssSkeletonOutputs:
     """
     tbss_skeleton by University of Oxford (Stephen Smith).

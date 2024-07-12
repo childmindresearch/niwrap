@@ -63,10 +63,10 @@ def fixelreorient(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[FixelreorientConfig] = None,
+    config: list[FixelreorientConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FixelreorientOutputs:
     """
     fixelreorient by David Raffelt (david.raffelt@florey.edu.au).

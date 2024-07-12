@@ -82,7 +82,7 @@ def melodic(
     debug: bool = False,
     report_maps: str | None = None,
     keep_meanvol: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MelodicOutputs:
     """
     melodic by Christian F. Beckmann, University of Oxford.

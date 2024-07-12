@@ -42,7 +42,7 @@ def fsl_mvlm(
     verbose: bool = False,
     out_data: InputPathType | None = None,
     out_vnscales: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslMvlmOutputs:
     """
     fsl_mvlm by Christian F. Beckmann.

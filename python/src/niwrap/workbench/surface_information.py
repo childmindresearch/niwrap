@@ -23,7 +23,7 @@ class SurfaceInformationOutputs(typing.NamedTuple):
 
 def surface_information(
     surface_file: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceInformationOutputs:
     """
     surface-information by Washington University School of Medicin.

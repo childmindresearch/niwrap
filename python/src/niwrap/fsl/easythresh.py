@@ -32,7 +32,7 @@ def easythresh(
     background_image_input: InputPathType,
     output_root: str,
     mm_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> EasythreshOutputs:
     """
     easythresh by Oxford Centre for Functional MRI of the Brain (FMRIB).

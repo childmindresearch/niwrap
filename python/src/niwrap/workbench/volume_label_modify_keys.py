@@ -28,7 +28,7 @@ def volume_label_modify_keys(
     remap_file: str,
     volume_out: str,
     opt_subvolume_subvolume: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeLabelModifyKeysOutputs:
     """
     volume-label-modify-keys by Washington University School of Medicin.

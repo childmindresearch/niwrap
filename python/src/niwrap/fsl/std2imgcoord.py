@@ -33,7 +33,7 @@ def std2imgcoord(
     output_vox: bool = False,
     verbose: bool = False,
     more_verbose: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Std2imgcoordOutputs:
     """
     std2imgcoord by FMRIB Centre.

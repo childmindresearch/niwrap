@@ -29,7 +29,7 @@ def mccutup(
     output_file: str | None = None,
     param1: str | None = None,
     param2: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MccutupOutputs:
     """
     mccutup by FSL.

@@ -40,7 +40,7 @@ def v_3d_tcorrelate(
     automask: bool = False,
     zcensor: bool = False,
     prefix: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dTcorrelateOutputs:
     """
     3dTCorrelate by RWCox @ AFNI.

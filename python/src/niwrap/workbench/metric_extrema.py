@@ -98,7 +98,7 @@ def metric_extrema(
     opt_only_maxima: bool = False,
     opt_only_minima: bool = False,
     opt_column_column: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricExtremaOutputs:
     """
     metric-extrema by Washington University School of Medicin.

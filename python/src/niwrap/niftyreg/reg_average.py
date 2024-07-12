@@ -24,7 +24,7 @@ class RegAverageOutputs(typing.NamedTuple):
 def reg_average(
     output_file: str,
     input_files: list[InputPathType],
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RegAverageOutputs:
     """
     reg_average by Marc Modat, Pankaj Daga.

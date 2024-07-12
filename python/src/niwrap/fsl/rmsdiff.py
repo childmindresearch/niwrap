@@ -27,7 +27,7 @@ def rmsdiff(
     matrixfile2: InputPathType,
     refvol: InputPathType,
     mask: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RmsdiffOutputs:
     """
     rmsdiff.

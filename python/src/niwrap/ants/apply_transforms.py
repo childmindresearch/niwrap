@@ -546,7 +546,7 @@ def ants_apply_transforms(
     static_cast_for_r: str | None = None,
     float_: typing.Literal[0, 1] | None = None,
     verbose: typing.Literal[0, 1] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> AntsApplyTransformsOutputs:
     """
     antsApplyTransforms by Nipype (interface).

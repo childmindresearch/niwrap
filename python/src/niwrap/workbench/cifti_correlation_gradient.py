@@ -174,7 +174,7 @@ def cifti_correlation_gradient(
     opt_covariance: bool = False,
     opt_mem_limit_limit_gb: float | int | None = None,
     double_correlation: CiftiCorrelationGradientDoubleCorrelation | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiCorrelationGradientOutputs:
     """
     cifti-correlation-gradient by Washington University School of Medicin.

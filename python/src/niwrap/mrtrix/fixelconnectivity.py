@@ -66,10 +66,10 @@ def fixelconnectivity(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[FixelconnectivityConfig] = None,
+    config: list[FixelconnectivityConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FixelconnectivityOutputs:
     """
     fixelconnectivity by Robert E. Smith (robert.smith@florey.edu.au).

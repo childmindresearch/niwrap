@@ -35,7 +35,7 @@ def fslmerge(
     merge_set_tr: bool = False,
     volume_number: float | int | None = None,
     tr_value: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslmergeOutputs:
     """
     fslmerge by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -28,7 +28,7 @@ def nifti_information(
     opt_print_matrix: bool = False,
     opt_print_xml: bool = False,
     opt_version_version: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> NiftiInformationOutputs:
     """
     nifti-information by Washington University School of Medicin.

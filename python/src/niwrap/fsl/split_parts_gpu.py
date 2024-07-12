@@ -33,7 +33,7 @@ def split_parts_gpu(
     total_num_parts: int,
     output_directory: str,
     grad_file: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SplitPartsGpuOutputs:
     """
     split_parts_gpu by Unknown.

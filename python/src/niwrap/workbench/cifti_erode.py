@@ -130,7 +130,7 @@ def cifti_erode(
     right_surface: CiftiErodeRightSurface | None = None,
     cerebellum_surface: CiftiErodeCerebellumSurface | None = None,
     opt_merged_volume: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiErodeOutputs:
     """
     cifti-erode by Washington University School of Medicin.

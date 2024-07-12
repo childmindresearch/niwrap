@@ -27,7 +27,7 @@ def gifti_label_add_prefix(
     label_in: InputPathType,
     prefix: str,
     label_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> GiftiLabelAddPrefixOutputs:
     """
     gifti-label-add-prefix by Washington University School of Medicin.

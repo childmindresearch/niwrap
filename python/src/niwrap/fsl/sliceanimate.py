@@ -26,7 +26,7 @@ class SliceanimateOutputs(typing.NamedTuple):
 def sliceanimate(
     output_file: str,
     input_files: list[InputPathType],
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SliceanimateOutputs:
     """
     sliceanimate by Various Authors (Hans Dinsen-Hansen, Kevin Kadow, Mark

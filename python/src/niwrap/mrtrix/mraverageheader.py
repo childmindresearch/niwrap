@@ -66,10 +66,10 @@ def mraverageheader(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MraverageheaderConfig] = None,
+    config: list[MraverageheaderConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MraverageheaderOutputs:
     """
     mraverageheader by Maximilian Pietsch (maximilian.pietsch@kcl.ac.uk).

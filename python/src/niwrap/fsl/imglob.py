@@ -23,7 +23,7 @@ def imglob(
     input_list: list[str],
     single_extension: bool = False,
     multiple_extensions: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ImglobOutputs:
     """
     imglob by Software Author.

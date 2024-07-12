@@ -32,7 +32,7 @@ def cifti_vector_operation(
     opt_normalize_b: bool = False,
     opt_normalize_output: bool = False,
     opt_magnitude: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiVectorOperationOutputs:
     """
     cifti-vector-operation by Washington University School of Medicin.

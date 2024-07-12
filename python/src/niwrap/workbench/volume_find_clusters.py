@@ -34,7 +34,7 @@ def volume_find_clusters(
     opt_size_ratio_ratio: float | int | None = None,
     opt_distance_distance: float | int | None = None,
     opt_start_startval: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeFindClustersOutputs:
     """
     volume-find-clusters by Washington University School of Medicin.

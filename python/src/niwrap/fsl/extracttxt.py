@@ -29,7 +29,7 @@ def extracttxt(
     file: InputPathType,
     num_trailing_lines: float | int | None = 0,
     relative_start: float | int | None = 0,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ExtracttxtOutputs:
     """
     extracttxt by Oxford Centre for Functional MRI of the Brain (FMRIB).

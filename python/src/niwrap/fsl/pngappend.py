@@ -22,7 +22,7 @@ class PngappendOutputs(typing.NamedTuple):
 def pngappend(
     input_files_and_options: list[str],
     output_file: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PngappendOutputs:
     """
     pngappend by Unknown.

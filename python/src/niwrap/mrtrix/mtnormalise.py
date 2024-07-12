@@ -62,7 +62,7 @@ def mtnormalise(
     input_output: list[str],
     mask: InputPathType,
     order: str | None = None,
-    niter: list[int] = None,
+    niter: list[int] | None = None,
     reference: float | int | None = None,
     balanced: bool = False,
     check_norm: str | None = None,
@@ -73,10 +73,10 @@ def mtnormalise(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MtnormaliseConfig] = None,
+    config: list[MtnormaliseConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MtnormaliseOutputs:
     """
     mtnormalise by Thijs Dhollander (thijs.dhollander@gmail.com), Rami Tabbara

@@ -27,7 +27,7 @@ def volume_label_probability(
     label_maps: InputPathType,
     probability_out: str,
     opt_exclude_unlabeled: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeLabelProbabilityOutputs:
     """
     volume-label-probability by Washington University School of Medicin.

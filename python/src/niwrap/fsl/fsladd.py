@@ -26,7 +26,7 @@ def fsladd(
     volume_list: list[InputPathType],
     mean_flag: bool = False,
     scale_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FsladdOutputs:
     """
     fsladd by Oxford Centre for Functional MRI of the Brain (FMRIB).

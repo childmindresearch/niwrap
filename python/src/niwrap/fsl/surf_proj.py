@@ -34,7 +34,7 @@ def surf_proj(
     direction: float | int | None = None,
     operation: str | None = None,
     surface_output: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfProjOutputs:
     """
     surf_proj by FMRIB Analysis Group, Oxford Centre for Functional MRI of the Brain

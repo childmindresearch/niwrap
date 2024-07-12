@@ -37,13 +37,13 @@ def v_3d_tshift(
     rltplus: bool = False,
     slice_encoding_direction: typing.Literal["k", "k-"] | None = "k",
     slice_timing: InputPathType | None = None,
-    slice_timing_2: list[float | int] = None,
+    slice_timing_2: list[float | int] | None = None,
     tpattern: typing.Literal["alt+z", "altplus", "alt+z2", "alt-z", "altminus", "alt-z2", "seq+z", "seqplus", "seq-z", "seqminus"] | None = None,
     tpattern_2: str | None = None,
     tr: str | None = None,
     tslice: int | None = None,
     tzero: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dTshiftOutputs:
     """
     3dTshift by Nipype (interface).

@@ -30,7 +30,7 @@ def ttologp(
     dof: str,
     outputvol: str | None = "logps",
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TtologpOutputs:
     """
     ttologp by Unknown.

@@ -31,7 +31,7 @@ def systemnoise(
     seed: float | int | None = None,
     verbose_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SystemnoiseOutputs:
     """
     systemnoise by University of Oxford (Mark Jenkinson).

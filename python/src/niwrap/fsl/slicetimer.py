@@ -35,7 +35,7 @@ def slicetimer(
     tcustom_file: InputPathType | None = None,
     tglobal_value: float | int | None = None,
     ocustom_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SlicetimerOutputs:
     """
     slicetimer by University of Oxford, FMRIB.

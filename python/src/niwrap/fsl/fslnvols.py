@@ -24,7 +24,7 @@ class FslnvolsOutputs(typing.NamedTuple):
 
 def fslnvols(
     infile: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslnvolsOutputs:
     """
     fslnvols by FMRIB Centre, University of Oxford.

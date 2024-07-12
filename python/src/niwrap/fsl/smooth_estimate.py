@@ -30,7 +30,7 @@ def smooth_estimate(
     dof: int | None = None,
     residual_fit_file: InputPathType | None = None,
     zstat_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SmoothEstimateOutputs:
     """
     SmoothEstimate by Oxford Centre for Functional MRI of the Brain (FMRIB).

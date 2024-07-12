@@ -26,7 +26,7 @@ def fslcpgeom(
     source_file: InputPathType,
     destination_file: InputPathType,
     dimensions_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslcpgeomOutputs:
     """
     fslcpgeom by FMRIB Centre.

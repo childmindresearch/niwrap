@@ -67,7 +67,7 @@ def volume_dilate(
     opt_legacy_cutoff: bool = False,
     opt_grad_extrapolate: bool = False,
     presmooth: VolumeDilatePresmooth | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeDilateOutputs:
     """
     volume-dilate by Washington University School of Medicin.

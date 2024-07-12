@@ -63,10 +63,10 @@ def mrdump(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrdumpConfig] = None,
+    config: list[MrdumpConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrdumpOutputs:
     """
     mrdump by Robert E. Smith (robert.smith@florey.edu.au).

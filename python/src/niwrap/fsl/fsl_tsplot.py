@@ -41,7 +41,7 @@ def fsl_tsplot(
     sci_flag: bool = False,
     start_col: float | int | None = None,
     end_col: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslTsplotOutputs:
     """
     fsl_tsplot by University of Oxford (Christian F. Beckmann).

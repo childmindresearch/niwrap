@@ -25,7 +25,7 @@ class FslhdOutputs(typing.NamedTuple):
 def fslhd(
     input_file: InputPathType,
     xml_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslhdOutputs:
     """
     fslhd by Oxford Centre for Functional MRI of the Brain (FMRIB).

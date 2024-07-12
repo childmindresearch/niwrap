@@ -35,7 +35,7 @@ def eddy_quad(
     field: InputPathType | None = None,
     slspec: InputPathType | None = None,
     verbose: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> EddyQuadOutputs:
     """
     eddy_quad by FMRIB Software Library.

@@ -58,7 +58,7 @@ def popp(
     verbose_flag: bool = False,
     debug_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PoppOutputs:
     """
     popp by University of Oxford (Mark Jenkinson).

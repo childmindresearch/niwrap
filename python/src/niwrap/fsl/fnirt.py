@@ -47,7 +47,7 @@ def fnirt(
     modulatedref_file: str | None = None,
     refmask_file: InputPathType | None = None,
     warped_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FnirtOutputs:
     """
     fnirt by Oxford Centre for Functional MRI of the Brain (FMRIB).

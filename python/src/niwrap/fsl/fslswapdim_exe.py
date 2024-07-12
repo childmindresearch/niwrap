@@ -31,7 +31,7 @@ def fslswapdim_exe(
     axis_c: str,
     output_file: InputPathType | None = None,
     check_lr_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslswapdimExeOutputs:
     """
     fslswapdim_exe by FMRIB Centre, Oxford University.

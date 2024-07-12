@@ -39,7 +39,7 @@ def fslcreatehd(
     datatype: float | int,
     headername: str,
     nifti_xml_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslcreatehdOutputs:
     """
     fslcreatehd by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -27,7 +27,7 @@ class FslFixTextOutputs(typing.NamedTuple):
 def fsl_fix_text(
     input_text_file: InputPathType,
     output_text_file: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslFixTextOutputs:
     """
     fslFixText by FMRIB Software Library (FSL).

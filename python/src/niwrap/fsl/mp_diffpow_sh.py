@@ -27,7 +27,7 @@ class MpDiffOutputs(typing.NamedTuple):
 def mp_diff(
     reg_file: InputPathType,
     diff_reg_file: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MpDiffOutputs:
     """
     mp_diff by Unknown.

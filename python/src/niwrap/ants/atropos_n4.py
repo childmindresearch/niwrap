@@ -87,7 +87,7 @@ def ants_atropos_n4_sh(
     atropos_segmentation_icm: str | None = None,
     atropos_segmentation_use_euclidean_distance: typing.Literal[0, 1] | None = None,
     test_debug_mode: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> AntsAtroposN4ShOutputs:
     """
     antsAtroposN4.sh by ANTs Developers.

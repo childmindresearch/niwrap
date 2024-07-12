@@ -29,7 +29,7 @@ def convert_xfm(
     fix_scale_skew: InputPathType | None = None,
     invert_xfm: bool = False,
     out_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ConvertXfmOutputs:
     """
     convert_xfm by Oxford Centre for Functional MRI of the Brain (FMRIB).

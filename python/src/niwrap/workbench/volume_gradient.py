@@ -65,7 +65,7 @@ def volume_gradient(
     opt_roi_roi_volume: InputPathType | None = None,
     opt_vectors: bool = False,
     opt_subvolume_subvol: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeGradientOutputs:
     """
     volume-gradient by Washington University School of Medicin.

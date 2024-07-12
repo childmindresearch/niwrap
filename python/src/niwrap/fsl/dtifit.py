@@ -55,7 +55,7 @@ def dtifit(
     xmax: float | int | None = None,
     gradnonlin_file: InputPathType | None = None,
     confound_regressors: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DtifitOutputs:
     """
     dtifit by Oxford Centre for Functional MRI of the Brain (FMRIB).

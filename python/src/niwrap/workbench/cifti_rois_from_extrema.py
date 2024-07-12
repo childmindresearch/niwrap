@@ -66,7 +66,7 @@ def cifti_rois_from_extrema(
     gaussian: CiftiRoisFromExtremaGaussian | None = None,
     opt_overlap_logic_method: str | None = None,
     opt_merged_volume: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiRoisFromExtremaOutputs:
     """
     cifti-rois-from-extrema by Washington University School of Medicin.

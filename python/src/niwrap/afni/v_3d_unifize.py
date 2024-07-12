@@ -36,12 +36,12 @@ def v_3d_unifize(
     num_threads: int | None = 1,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     quiet: bool = False,
-    rbt: list[float | int] = None,
+    rbt: list[float | int] | None = None,
     scale_file: InputPathType | None = None,
     t2: bool = False,
     t2_up: float | int | None = None,
     urad: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dUnifizeOutputs:
     """
     3dUnifize by Nipype (interface).

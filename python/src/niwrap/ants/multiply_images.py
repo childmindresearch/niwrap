@@ -30,7 +30,7 @@ def multiply_images(
     num_threads: int | None = 1,
     second_input: InputPathType | None = None,
     second_input_2: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MultiplyImagesOutputs:
     """
     MultiplyImages by Nipype (interface).

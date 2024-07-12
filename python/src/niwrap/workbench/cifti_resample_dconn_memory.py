@@ -569,7 +569,7 @@ def cifti_resample_dconn_memory(
     left_spheres: CiftiResampleDconnMemoryLeftSpheres | None = None,
     right_spheres: CiftiResampleDconnMemoryRightSpheres | None = None,
     cerebellum_spheres: CiftiResampleDconnMemoryCerebellumSpheres | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiResampleDconnMemoryOutputs:
     """
     cifti-resample-dconn-memory by Washington University School of Medicin.

@@ -64,10 +64,10 @@ def dirmerge(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[DirmergeConfig] = None,
+    config: list[DirmergeConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DirmergeOutputs:
     """
     dirmerge by J-Donald Tournier (jdtournier@gmail.com).

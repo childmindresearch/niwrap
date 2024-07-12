@@ -156,8 +156,8 @@ def convert_affine(
     from_flirt: ConvertAffineFromFlirt | None = None,
     to_world: ConvertAffineToWorld | None = None,
     opt_to_itk_output: str | None = None,
-    to_flirt: list[ConvertAffineToFlirt] = None,
-    runner: Runner = None,
+    to_flirt: list[ConvertAffineToFlirt] | None = None,
+    runner: Runner | None = None,
 ) -> ConvertAffineOutputs:
     """
     convert-affine by Washington University School of Medicin.

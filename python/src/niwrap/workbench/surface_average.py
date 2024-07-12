@@ -65,8 +65,8 @@ def surface_average(
     uncert_metric_out: str,
     opt_stddev: bool = False,
     opt_uncertainty: bool = False,
-    surf: list[SurfaceAverageSurf] = None,
-    runner: Runner = None,
+    surf: list[SurfaceAverageSurf] | None = None,
+    runner: Runner | None = None,
 ) -> SurfaceAverageOutputs:
     """
     surface-average by Washington University School of Medicin.

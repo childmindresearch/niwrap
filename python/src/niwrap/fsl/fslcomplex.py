@@ -27,7 +27,7 @@ def fslcomplex(
     output_type: typing.Literal["-realabs", "-realphase", "-realpolar", "-realcartesian", "-complex", "-complexpolar", "-complexsplit", "-complexmerge", "-copyonly"],
     start_vol: int | None = None,
     end_vol: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslcomplexOutputs:
     """
     fslcomplex by FMRIB Analysis Group, Oxford University, UK.

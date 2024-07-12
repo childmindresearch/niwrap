@@ -25,7 +25,7 @@ def cifti_label_export_table(
     label_in: InputPathType,
     map_: str,
     table_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiLabelExportTableOutputs:
     """
     cifti-label-export-table by Washington University School of Medicin.

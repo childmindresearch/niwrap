@@ -24,7 +24,7 @@ class SpecFileRelocateOutputs(typing.NamedTuple):
 def spec_file_relocate(
     input_spec: str,
     output_spec: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SpecFileRelocateOutputs:
     """
     spec-file-relocate by Washington University School of Medicin.

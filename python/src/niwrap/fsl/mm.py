@@ -40,7 +40,7 @@ def mm(
     phi: float | int | None = None,
     niters: float | int | None = None,
     threshold: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MmOutputs:
     """
     mm by Oxford Centre for Functional MRI of the Brain (FMRIB).

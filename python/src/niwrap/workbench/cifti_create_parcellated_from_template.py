@@ -56,8 +56,8 @@ def cifti_create_parcellated_from_template(
     modify_direction: str,
     cifti_out: str,
     opt_fill_value_value: float | int | None = None,
-    cifti: list[CiftiCreateParcellatedFromTemplateCifti] = None,
-    runner: Runner = None,
+    cifti: list[CiftiCreateParcellatedFromTemplateCifti] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiCreateParcellatedFromTemplateOutputs:
     """
     cifti-create-parcellated-from-template by Washington University School of

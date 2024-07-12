@@ -63,10 +63,10 @@ def label2mesh(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Label2meshConfig] = None,
+    config: list[Label2meshConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Label2meshOutputs:
     """
     label2mesh by Robert E. Smith (robert.smith@florey.edu.au).

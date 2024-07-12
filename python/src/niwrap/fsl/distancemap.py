@@ -39,7 +39,7 @@ def distancemap(
     interpolate_values: InputPathType | None = None,
     verbose_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DistancemapOutputs:
     """
     distancemap by University of Oxford (Mark Jenkinson).

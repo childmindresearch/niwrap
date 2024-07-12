@@ -24,7 +24,7 @@ class ConcatBvarsOutputs(typing.NamedTuple):
 def concat_bvars(
     output_bvars: InputPathType,
     input_bvars: list[InputPathType],
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ConcatBvarsOutputs:
     """
     concat_bvars by Unknown.

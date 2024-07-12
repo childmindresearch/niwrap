@@ -176,10 +176,10 @@ class TckeditOutputs(typing.NamedTuple):
 def tckedit(
     tracks_in: list[InputPathType],
     tracks_out: str,
-    include: list[TckeditInclude] = None,
-    include_ordered: list[TckeditIncludeOrdered] = None,
-    exclude: list[TckeditExclude] = None,
-    mask: list[TckeditMask] = None,
+    include: list[TckeditInclude] | None = None,
+    include_ordered: list[TckeditIncludeOrdered] | None = None,
+    exclude: list[TckeditExclude] | None = None,
+    mask: list[TckeditMask] | None = None,
     maxlength: float | int | None = None,
     minlength: float | int | None = None,
     number: int | None = None,
@@ -195,10 +195,10 @@ def tckedit(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TckeditConfig] = None,
+    config: list[TckeditConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TckeditOutputs:
     """
     tckedit by Robert E. Smith (robert.smith@florey.edu.au).

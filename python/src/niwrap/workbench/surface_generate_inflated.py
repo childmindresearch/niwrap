@@ -30,7 +30,7 @@ def surface_generate_inflated(
     inflated_surface_out: str,
     very_inflated_surface_out: str,
     opt_iterations_scale_iterations_scale_value: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceGenerateInflatedOutputs:
     """
     surface-generate-inflated by Washington University School of Medicin.

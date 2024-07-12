@@ -64,10 +64,10 @@ def fixel2peaks(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Fixel2peaksConfig] = None,
+    config: list[Fixel2peaksConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Fixel2peaksOutputs:
     """
     fixel2peaks by Robert E. Smith (robert.smith@florey.edu.au).

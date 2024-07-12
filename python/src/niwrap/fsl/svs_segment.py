@@ -34,7 +34,7 @@ def svs_segment(
     filename_stem: str | None = None,
     mask_only_flag: bool = False,
     no_clean_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SvsSegmentOutputs:
     """
     svs_segment by FSL Development Team.

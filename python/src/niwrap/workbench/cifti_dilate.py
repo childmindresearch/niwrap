@@ -133,7 +133,7 @@ def cifti_dilate(
     opt_nearest: bool = False,
     opt_merged_volume: bool = False,
     opt_legacy_mode: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiDilateOutputs:
     """
     cifti-dilate by Washington University School of Medicin.

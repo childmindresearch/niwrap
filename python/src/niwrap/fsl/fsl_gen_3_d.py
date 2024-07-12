@@ -27,7 +27,7 @@ class FslGen3DOutputs(typing.NamedTuple):
 def fsl_gen_3_d(
     infile: InputPathType,
     outfile: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslGen3DOutputs:
     """
     fsl_gen_3D by Oxford Centre for Functional MRI of the Brain (FMRIB).

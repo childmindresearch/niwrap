@@ -40,7 +40,7 @@ def siena(
     sienadiff_options: str | None = None,
     ventricle_analysis_flag: bool = False,
     ventricle_mask: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SienaOutputs:
     """
     siena by Oxford Centre for Functional MRI of the Brain (FMRIB).

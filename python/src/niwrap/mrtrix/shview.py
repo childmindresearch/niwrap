@@ -60,10 +60,10 @@ def shview(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[ShviewConfig] = None,
+    config: list[ShviewConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ShviewOutputs:
     """
     shview by J-Donald Tournier (jdtournier@gmail.com).

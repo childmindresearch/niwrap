@@ -30,7 +30,7 @@ def fslreorient2std(
     input_image: InputPathType,
     output_image: InputPathType | None = None,
     matrix_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Fslreorient2stdOutputs:
     """
     fslreorient2std by Oxford Centre for Functional MRI of the Brain (FMRIB).

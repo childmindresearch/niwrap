@@ -32,7 +32,7 @@ def cutoffcalc(
     example_sigma: float | int | None = None,
     verbose_flag: bool = False,
     debug_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CutoffcalcOutputs:
     """
     cutoffcalc by University of Oxford (Mark Jenkinson and Matthew Webster).

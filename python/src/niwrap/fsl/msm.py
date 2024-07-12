@@ -41,7 +41,7 @@ def msm(
     help_: bool = False,
     verbose: bool = False,
     printoptions: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MsmOutputs:
     """
     msm by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -93,7 +93,7 @@ def tckdfc(
     static: bool = False,
     dynamic: TckdfcDynamic | None = None,
     template: InputPathType | None = None,
-    vox: list[float | int] = None,
+    vox: list[float | int] | None = None,
     stat_vox: str | None = None,
     backtrack: bool = False,
     upsample: int | None = None,
@@ -102,10 +102,10 @@ def tckdfc(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TckdfcConfig] = None,
+    config: list[TckdfcConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TckdfcOutputs:
     """
     tckdfc by Robert E. Smith (robert.smith@florey.edu.au).

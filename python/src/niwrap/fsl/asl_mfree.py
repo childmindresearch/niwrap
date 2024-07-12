@@ -46,7 +46,7 @@ def asl_mfree(
     turbo_quasar: bool = False,
     shift_factor: float | int | None = 1,
     verbose: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> AslMfreeOutputs:
     """
     asl_mfree by FMRIB Centre, University of Oxford.

@@ -100,10 +100,10 @@ def dwi2adc(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Dwi2adcConfig] = None,
+    config: list[Dwi2adcConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Dwi2adcOutputs:
     """
     dwi2adc by J-Donald Tournier (jdtournier@gmail.com).

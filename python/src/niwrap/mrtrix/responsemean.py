@@ -27,16 +27,16 @@ def responsemean(
     legacy: bool = False,
     nocleanup: bool = False,
     scratch_dir: InputPathType | None = None,
-    continue_scratch_dir: list[InputPathType] = None,
+    continue_scratch_dir: list[InputPathType] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: float | int | None = None,
-    config: list[str] = None,
+    config: list[str] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ResponsemeanOutputs:
     """
     responsemean by Robert E. Smith (robert.smith@florey.edu.au) & David Raffelt

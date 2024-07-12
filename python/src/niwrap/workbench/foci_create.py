@@ -59,8 +59,8 @@ class FociCreateOutputs(typing.NamedTuple):
 
 def foci_create(
     output: str,
-    class_: list[FociCreateClass] = None,
-    runner: Runner = None,
+    class_: list[FociCreateClass] | None = None,
+    runner: Runner | None = None,
 ) -> FociCreateOutputs:
     """
     foci-create by Washington University School of Medicin.

@@ -27,7 +27,7 @@ def gifti_all_labels_to_rois(
     label_in: InputPathType,
     map_: str,
     metric_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> GiftiAllLabelsToRoisOutputs:
     """
     gifti-all-labels-to-rois by Washington University School of Medicin.

@@ -102,7 +102,7 @@ def convert_matrix4_to_matrix2(
     distance_out: str,
     opt_distances: bool = False,
     individual_fibers: ConvertMatrix4ToMatrix2IndividualFibers | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ConvertMatrix4ToMatrix2Outputs:
     """
     convert-matrix4-to-matrix2 by Washington University School of Medicin.

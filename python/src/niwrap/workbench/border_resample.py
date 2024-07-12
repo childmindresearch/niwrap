@@ -28,7 +28,7 @@ def border_resample(
     current_sphere: InputPathType,
     new_sphere: InputPathType,
     border_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BorderResampleOutputs:
     """
     border-resample by Washington University School of Medicin.

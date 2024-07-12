@@ -44,7 +44,7 @@ def reg_f3d(
     spacing_y: float | int | None = None,
     spacing_z: float | int | None = None,
     bending_energy: float | int | None = None,
-    linear_elasticity: list[float | int] = None,
+    linear_elasticity: list[float | int] | None = None,
     l2_norm_displacement: float | int | None = None,
     jacobian_determinant: float | int | None = None,
     no_approx_jl: bool = False,
@@ -64,7 +64,7 @@ def reg_f3d(
     smooth_gradient: float | int | None = None,
     padding_value: float | int | None = None,
     verbose_off: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RegF3dOutputs:
     """
     reg_f3d by Marc Modat.

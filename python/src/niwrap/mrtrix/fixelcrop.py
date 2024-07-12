@@ -63,10 +63,10 @@ def fixelcrop(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[FixelcropConfig] = None,
+    config: list[FixelcropConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FixelcropOutputs:
     """
     fixelcrop by David Raffelt (david.raffelt@florey.edu.au) & Rami Tabarra

@@ -89,8 +89,8 @@ def cifti_average(
     cifti_out: str,
     exclude_outliers: CiftiAverageExcludeOutliers | None = None,
     opt_mem_limit_limit_gb: float | int | None = None,
-    cifti: list[CiftiAverageCifti] = None,
-    runner: Runner = None,
+    cifti: list[CiftiAverageCifti] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiAverageOutputs:
     """
     cifti-average by Washington University School of Medicin.

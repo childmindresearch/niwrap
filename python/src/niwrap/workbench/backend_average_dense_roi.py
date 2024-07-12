@@ -24,7 +24,7 @@ class BackendAverageDenseRoiOutputs(typing.NamedTuple):
 def backend_average_dense_roi(
     index_list: str,
     out_file: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BackendAverageDenseRoiOutputs:
     """
     backend-average-dense-roi by Washington University School of Medicin.

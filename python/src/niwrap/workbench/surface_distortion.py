@@ -64,7 +64,7 @@ def surface_distortion(
     opt_edge_method: bool = False,
     opt_local_affine_method: bool = False,
     opt_log2: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceDistortionOutputs:
     """
     surface-distortion by Washington University School of Medicin.

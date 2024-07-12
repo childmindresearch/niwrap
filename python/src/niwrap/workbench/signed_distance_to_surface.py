@@ -28,7 +28,7 @@ def signed_distance_to_surface(
     surface_ref: InputPathType,
     metric: str,
     opt_winding_method: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SignedDistanceToSurfaceOutputs:
     """
     signed-distance-to-surface by Washington University School of Medicin.

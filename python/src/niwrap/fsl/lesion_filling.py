@@ -32,7 +32,7 @@ def lesion_filling(
     verbose_flag: bool = False,
     components_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> LesionFillingOutputs:
     """
     lesion_filling by University of Oxford (Mark Jenkinson & Taylor Hanayik).

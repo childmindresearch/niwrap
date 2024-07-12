@@ -92,8 +92,8 @@ def cifti_average_roi_correlation(
     opt_left_area_surf_left_surf: InputPathType | None = None,
     opt_right_area_surf_right_surf: InputPathType | None = None,
     opt_cerebellum_area_surf_cerebellum_surf: InputPathType | None = None,
-    cifti: list[CiftiAverageRoiCorrelationCifti] = None,
-    runner: Runner = None,
+    cifti: list[CiftiAverageRoiCorrelationCifti] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiAverageRoiCorrelationOutputs:
     """
     cifti-average-roi-correlation by Washington University School of Medicin.

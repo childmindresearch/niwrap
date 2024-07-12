@@ -126,7 +126,7 @@ def cifti_false_correlation(
     left_surface: CiftiFalseCorrelationLeftSurface | None = None,
     right_surface: CiftiFalseCorrelationRightSurface | None = None,
     cerebellum_surface: CiftiFalseCorrelationCerebellumSurface | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiFalseCorrelationOutputs:
     """
     cifti-false-correlation by Washington University School of Medicin.

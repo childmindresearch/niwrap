@@ -34,9 +34,9 @@ def overlay(
     out_type: typing.Literal["float", "int"] | None = "float",
     output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
     stat_image2: InputPathType | None = None,
-    stat_thresh2: list[float | int] = None,
+    stat_thresh2: list[float | int] | None = None,
     use_checkerboard: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> OverlayOutputs:
     """
     Overlay by Nipype (interface).

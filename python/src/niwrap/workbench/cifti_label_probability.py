@@ -27,7 +27,7 @@ def cifti_label_probability(
     label_maps: InputPathType,
     probability_dscalar_out: str,
     opt_exclude_unlabeled: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiLabelProbabilityOutputs:
     """
     cifti-label-probability by Washington University School of Medicin.

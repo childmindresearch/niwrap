@@ -28,7 +28,7 @@ def cifti_label_modify_keys(
     remap_file: str,
     cifti_out: str,
     opt_column_column: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiLabelModifyKeysOutputs:
     """
     cifti-label-modify-keys by Washington University School of Medicin.

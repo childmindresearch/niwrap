@@ -165,7 +165,7 @@ def volume_set_space(
     plumb: VolumeSetSpacePlumb | None = None,
     sform: VolumeSetSpaceSform | None = None,
     file: VolumeSetSpaceFile | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeSetSpaceOutputs:
     """
     volume-set-space by Washington University School of Medicin.

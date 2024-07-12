@@ -36,16 +36,16 @@ def fabber_dce(
     describe_params: bool = False,
     list_outputs: bool = False,
     evaluate_model: str | None = None,
-    evaluate_params: list[float | int] = None,
+    evaluate_params: list[float | int] | None = None,
     evaluate_nt: float | int | None = None,
     simple_output: bool = False,
     overwrite: bool = False,
     link_to_latest: bool = False,
     load_models: InputPathType | None = None,
-    multiple_data: list[InputPathType] = None,
+    multiple_data: list[InputPathType] | None = None,
     data_order: str | None = "interleave",
     mask: InputPathType | None = None,
-    masked_time_points: list[float | int] = None,
+    masked_time_points: list[float | int] | None = None,
     supplemental_data: InputPathType | None = None,
     dump_param_names: bool = False,
     save_model_fit: bool = False,
@@ -61,7 +61,7 @@ def fabber_dce(
     save_free_energy: bool = False,
     option_file: InputPathType | None = None,
     debug: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FabberDceOutputs:
     """
     Fabber DCE by FMRIB Analysis Group, University of Oxford.

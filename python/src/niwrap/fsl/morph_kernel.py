@@ -27,7 +27,7 @@ class MorphKernelOutputs(typing.NamedTuple):
 def morph_kernel(
     cube_side_length: float | int,
     sphere_radius: float | int,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MorphKernelOutputs:
     """
     morph_kernel by Author Name.

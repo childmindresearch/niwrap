@@ -25,7 +25,7 @@ def surface_sphere_triangular_patches(
     sphere: InputPathType,
     divisions: int,
     text_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceSphereTriangularPatchesOutputs:
     """
     surface-sphere-triangular-patches by Washington University School of Medicin.

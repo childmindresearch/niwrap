@@ -27,7 +27,7 @@ class PossumPlotOutputs(typing.NamedTuple):
 def possum_plot(
     input_file: InputPathType,
     output_basename: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PossumPlotOutputs:
     """
     possum_plot by Oxford Centre for Functional MRI of the Brain (FMRIB).

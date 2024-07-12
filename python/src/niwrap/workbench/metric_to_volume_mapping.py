@@ -75,7 +75,7 @@ def metric_to_volume_mapping(
     volume_out: str,
     opt_nearest_vertex_distance: float | int | None = None,
     ribbon_constrained: MetricToVolumeMappingRibbonConstrained | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricToVolumeMappingOutputs:
     """
     metric-to-volume-mapping by Washington University School of Medicin.

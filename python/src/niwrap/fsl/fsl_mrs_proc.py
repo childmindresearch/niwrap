@@ -23,7 +23,7 @@ def fsl_mrs_proc(
     subcommand: typing.Literal["coilcombine", "average", "align", "align-diff", "ecc", "remove", "model", "tshift", "truncate", "apodize", "fshift", "unlike", "phase", "fixed_phase", "subtract", "add", "conj"],
     version_flag: bool = False,
     config_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslMrsProcOutputs:
     """
     fsl_mrs_proc by FMRIB Centre, University of Oxford.

@@ -47,7 +47,7 @@ def fslmaths(
     tan_operation: bool = False,
     sqr_operation: bool = False,
     sqrt_operation: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslmathsOutputs:
     """
     fslmaths by FMRIB Analysis Group, Oxford University, UK.

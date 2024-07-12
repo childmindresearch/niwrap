@@ -29,7 +29,7 @@ def cifti_label_to_roi(
     opt_name_label_name: str | None = None,
     opt_key_label_key: int | None = None,
     opt_map_map: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiLabelToRoiOutputs:
     """
     cifti-label-to-roi by Washington University School of Medicin.

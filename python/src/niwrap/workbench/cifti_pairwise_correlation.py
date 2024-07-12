@@ -29,7 +29,7 @@ def cifti_pairwise_correlation(
     cifti_out: str,
     opt_fisher_z: bool = False,
     opt_override_mapping_check: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiPairwiseCorrelationOutputs:
     """
     cifti-pairwise-correlation by Washington University School of Medicin.

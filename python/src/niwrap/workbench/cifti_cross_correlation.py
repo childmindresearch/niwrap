@@ -30,7 +30,7 @@ def cifti_cross_correlation(
     opt_weights_weight_file: str | None = None,
     opt_fisher_z: bool = False,
     opt_mem_limit_limit_gb: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiCrossCorrelationOutputs:
     """
     cifti-cross-correlation by Washington University School of Medicin.

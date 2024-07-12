@@ -39,7 +39,7 @@ def volume_capture_plane(
     top_left_y: float | int,
     top_left_z: float | int,
     image: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeCapturePlaneOutputs:
     """
     volume-capture-plane by Washington University School of Medicin.

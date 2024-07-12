@@ -31,7 +31,7 @@ def prepare_fieldmap(
     out_fieldmap: InputPathType | None = None,
     output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
     scanner: str | None = "SIEMENS",
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PrepareFieldmapOutputs:
     """
     PrepareFieldmap by Nipype (interface).

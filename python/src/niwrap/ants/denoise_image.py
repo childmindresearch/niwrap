@@ -36,7 +36,7 @@ def denoise_image(
     patch_radius: str | None = None,
     search_radius: str | None = None,
     verbose: typing.Literal[0, 1] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DenoiseImageOutputs:
     """
     DenoiseImage by ANTs authors.

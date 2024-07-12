@@ -28,7 +28,7 @@ def cifti_parcel_mapping_to_label(
     direction: str,
     template_cifti: InputPathType,
     dlabel_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiParcelMappingToLabelOutputs:
     """
     cifti-parcel-mapping-to-label by Washington University School of Medicin.

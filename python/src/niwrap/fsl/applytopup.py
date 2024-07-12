@@ -34,7 +34,7 @@ def applytopup(
     interp: typing.Literal["trilinear", "spline"] | None = None,
     datatype: typing.Literal["char", "short", "int", "float", "double"] | None = None,
     verbose: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ApplytopupOutputs:
     """
     applytopup by University of Oxford (Jesper Andersson).

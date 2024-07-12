@@ -29,7 +29,7 @@ def volume_erode(
     volume_out: str,
     opt_roi_roi_volume: InputPathType | None = None,
     opt_subvolume_subvol: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeErodeOutputs:
     """
     volume-erode by Washington University School of Medicin.

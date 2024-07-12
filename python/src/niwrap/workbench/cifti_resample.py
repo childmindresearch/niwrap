@@ -570,7 +570,7 @@ def cifti_resample(
     left_spheres: CiftiResampleLeftSpheres | None = None,
     right_spheres: CiftiResampleRightSpheres | None = None,
     cerebellum_spheres: CiftiResampleCerebellumSpheres | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiResampleOutputs:
     """
     cifti-resample by Washington University School of Medicin.

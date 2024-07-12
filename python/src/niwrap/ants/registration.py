@@ -1322,7 +1322,7 @@ def ants_registration(
     collapse_output_transforms: typing.Literal[1, 0] | None = None,
     initialize_transforms_per_stage: typing.Literal[1, 0] | None = None,
     interpolation: typing.Literal["Linear", "NearestNeighbor", "MultiLabel", "Gaussian", "BSpline", "CosineWindowedSinc", "WelchWindowedSinc", "HammingWindowedSinc", "LanczosWindowedSinc", "GenericLabel"] | None = None,
-    restrict_deformation: list[typing.Literal[0, 1]] = None,
+    restrict_deformation: list[typing.Literal[0, 1]] | None = None,
     initial_fixed_transform: str | None = None,
     initial_moving_transform: typing.Union[AntsRegistrationInitialMovingTransform, AntsRegistrationInitialMovingTransformUseInverse, AntsRegistrationInitialMovingTransformInitializationFeature] | None = None,
     winsorize_image_intensities: AntsRegistrationWinsorizeImageIntensities | None = None,
@@ -1331,7 +1331,7 @@ def ants_registration(
     random_seed: int | None = None,
     verbose: typing.Literal[0, 1] | None = None,
     float_: typing.Literal[0, 1] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> AntsRegistrationOutputs:
     """
     antsRegistration by ANTs authors.

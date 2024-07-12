@@ -67,10 +67,10 @@ def tcksample(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TcksampleConfig] = None,
+    config: list[TcksampleConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TcksampleOutputs:
     """
     tcksample by Robert E. Smith (robert.smith@florey.edu.au).

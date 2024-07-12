@@ -81,7 +81,7 @@ def tensor2metric(
     cs: str | None = None,
     value: str | None = None,
     vector: str | None = None,
-    num: list[int] = None,
+    num: list[int] | None = None,
     modulate: str | None = None,
     mask: InputPathType | None = None,
     info: bool = False,
@@ -89,10 +89,10 @@ def tensor2metric(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Tensor2metricConfig] = None,
+    config: list[Tensor2metricConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Tensor2metricOutputs:
     """
     tensor2metric by Thijs Dhollander (thijs.dhollander@gmail.com) & Ben Jeurissen

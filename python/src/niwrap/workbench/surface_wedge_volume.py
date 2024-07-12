@@ -27,7 +27,7 @@ def surface_wedge_volume(
     inner_surface: InputPathType,
     outer_surface: InputPathType,
     metric: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceWedgeVolumeOutputs:
     """
     surface-wedge-volume by Washington University School of Medicin.

@@ -24,7 +24,7 @@ class FindTheBiggestOutputs(typing.NamedTuple):
 def find_the_biggest(
     volumes_surfaces: list[InputPathType],
     output_index: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FindTheBiggestOutputs:
     """
     find_the_biggest by Unknown.

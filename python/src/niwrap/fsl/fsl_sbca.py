@@ -36,7 +36,7 @@ def fsl_sbca(
     target: InputPathType,
     out: str,
     reg_flag: bool = False,
-    conf_files: list[InputPathType] = None,
+    conf_files: list[InputPathType] | None = None,
     seed_data: InputPathType | None = None,
     binarise_flag: bool = False,
     mean_flag: bool = False,
@@ -48,7 +48,7 @@ def fsl_sbca(
     out_conf_flag: bool = False,
     verbose_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslSbcaOutputs:
     """
     fsl_sbca by Christian F. Beckmann.

@@ -57,7 +57,7 @@ def probtrackx(
     modeuler: bool = False,
     rseed: int | None = None,
     s2tastext: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ProbtrackxOutputs:
     """
     probtrackx by Oxford Centre for Functional MRI of the Brain (FMRIB).

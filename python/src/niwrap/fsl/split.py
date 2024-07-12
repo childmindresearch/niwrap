@@ -27,7 +27,7 @@ def split(
     in_file: InputPathType,
     out_base_name: str | None = None,
     dimension: typing.Literal["t", "x", "y", "z"] = "t",
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SplitOutputs:
     """
     Split by Oxford Centre for Functional MRI of the Brain (FMRIB).

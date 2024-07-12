@@ -38,8 +38,8 @@ def featquery(
     timeseries_flag: bool = False,
     weight_flag: bool = False,
     browser_flag: bool = False,
-    coords: list[float | int] = None,
-    runner: Runner = None,
+    coords: list[float | int] | None = None,
+    runner: Runner | None = None,
 ) -> FeatqueryOutputs:
     """
     featquery by Oxford Centre for Functional MRI of the Brain (FMRIB).

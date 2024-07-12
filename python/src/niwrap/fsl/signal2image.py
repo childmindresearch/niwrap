@@ -40,7 +40,7 @@ def signal2image(
     rolloff: float | int | None = 10,
     save_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Signal2imageOutputs:
     """
     signal2image by University of Oxford (Mark Jenkinson & Ivana Drobnjak).

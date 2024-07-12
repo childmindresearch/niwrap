@@ -26,7 +26,7 @@ def siena_cal(
     input2_file: InputPathType,
     scale: float | int,
     siena_diff_options: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SienaCalOutputs:
     """
     siena_cal.

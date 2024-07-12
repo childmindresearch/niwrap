@@ -34,7 +34,7 @@ def v_3d_degree_centrality(
     polort: int | None = None,
     sparsity: float | int | None = None,
     thresh: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dDegreeCentralityOutputs:
     """
     3dDegreeCentrality by RWCox @ AFNI.

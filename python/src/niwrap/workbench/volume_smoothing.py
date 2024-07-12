@@ -31,7 +31,7 @@ def volume_smoothing(
     opt_roi_roivol: InputPathType | None = None,
     opt_fix_zeros: bool = False,
     opt_subvolume_subvol: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeSmoothingOutputs:
     """
     volume-smoothing by Washington University School of Medicin.

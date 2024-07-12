@@ -23,7 +23,7 @@ def maskdyads(
     dyads: InputPathType,
     fsamples: InputPathType,
     threshold: float | int | None = 0.05,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MaskdyadsOutputs:
     """
     maskdyads by Author Name.

@@ -153,19 +153,19 @@ class MreditOutputs(typing.NamedTuple):
 def mredit(
     input_: InputPathType,
     output: str | None = None,
-    plane: list[MreditPlane] = None,
-    sphere: list[MreditSphere] = None,
-    voxel: list[MreditVoxel] = None,
+    plane: list[MreditPlane] | None = None,
+    sphere: list[MreditSphere] | None = None,
+    voxel: list[MreditVoxel] | None = None,
     scanner: bool = False,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MreditConfig] = None,
+    config: list[MreditConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MreditOutputs:
     """
     mredit by Robert E. Smith (robert.smith@florey.edu.au).

@@ -108,10 +108,10 @@ def warp2metric(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Warp2metricConfig] = None,
+    config: list[Warp2metricConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Warp2metricOutputs:
     """
     warp2metric by David Raffelt (david.raffelt@florey.edu.au).

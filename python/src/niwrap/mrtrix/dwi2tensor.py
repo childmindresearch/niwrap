@@ -112,10 +112,10 @@ def dwi2tensor(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Dwi2tensorConfig] = None,
+    config: list[Dwi2tensorConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Dwi2tensorOutputs:
     """
     dwi2tensor by Ben Jeurissen (ben.jeurissen@uantwerpen.be).

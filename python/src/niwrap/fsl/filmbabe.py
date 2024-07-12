@@ -58,7 +58,7 @@ def filmbabe(
     num_trace_samples: int | None = 0,
     num_trace_samples_alias: int | None = 0,
     temporal_ar_order: int | None = 3,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FilmbabeOutputs:
     """
     filmbabe by FMRIB Analysis Group, Oxford University, UK.

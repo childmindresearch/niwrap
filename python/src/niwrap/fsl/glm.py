@@ -69,7 +69,7 @@ def glm(
     out_z_name: InputPathType | None = None,
     output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
     var_norm: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> GlmOutputs:
     """
     GLM by Nipype (interface).

@@ -33,7 +33,7 @@ def file_information(
     opt_czi: bool = False,
     opt_czi_all_sub_blocks: bool = False,
     opt_czi_xml: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FileInformationOutputs:
     """
     file-information by Washington University School of Medicin.

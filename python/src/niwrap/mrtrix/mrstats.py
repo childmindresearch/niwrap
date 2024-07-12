@@ -86,7 +86,7 @@ class MrstatsOutputs(typing.NamedTuple):
 
 def mrstats(
     image: InputPathType,
-    output: list[MrstatsOutput] = None,
+    output: list[MrstatsOutput] | None = None,
     mask: InputPathType | None = None,
     ignorezero: bool = False,
     allvolumes: bool = False,
@@ -95,10 +95,10 @@ def mrstats(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrstatsConfig] = None,
+    config: list[MrstatsConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrstatsOutputs:
     """
     mrstats by J-Donald Tournier (jdtournier@gmail.com).

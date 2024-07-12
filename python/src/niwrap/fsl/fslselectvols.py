@@ -31,7 +31,7 @@ def fslselectvols(
     output_mean_flag: bool = False,
     output_variance_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslselectvolsOutputs:
     """
     fslselectvols by Oxford Centre for Functional MRI of the Brain (FMRIB).

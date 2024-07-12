@@ -61,10 +61,10 @@ def connectomeedit(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[ConnectomeeditConfig] = None,
+    config: list[ConnectomeeditConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ConnectomeeditOutputs:
     """
     connectomeedit by Matteo Frigo (matteo.frigo@inria.fr).

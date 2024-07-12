@@ -24,7 +24,7 @@ class SceneFileRelocateOutputs(typing.NamedTuple):
 def scene_file_relocate(
     input_scene: str,
     output_scene: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SceneFileRelocateOutputs:
     """
     scene-file-relocate by Washington University School of Medicin.

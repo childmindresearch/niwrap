@@ -34,7 +34,7 @@ def v_3d_lfcd(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     polort: int | None = None,
     thresh: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dLfcdOutputs:
     """
     3dLFCD by Nipype (interface).

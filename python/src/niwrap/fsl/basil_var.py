@@ -25,7 +25,7 @@ class BasilVarOutputs(typing.NamedTuple):
 def basil_var(
     results_dir: str,
     mask_image: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BasilVarOutputs:
     """
     basil_var by FMRIB Software Library (FSL).

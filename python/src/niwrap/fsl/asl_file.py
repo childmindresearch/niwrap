@@ -54,7 +54,7 @@ def asl_file(
     aif: InputPathType | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> AslFileOutputs:
     """
     asl_file by Oxford Centre for Functional MRI of the Brain (FMRIB).

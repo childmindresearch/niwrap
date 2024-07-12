@@ -123,10 +123,10 @@ def scene_file_update(
     opt_remove_missing_files: bool = False,
     opt_error: bool = False,
     opt_verbose: bool = False,
-    copy_map_one_palette: list[SceneFileUpdateCopyMapOnePalette] = None,
-    data_file_add: list[SceneFileUpdateDataFileAdd] = None,
-    data_file_remove: list[SceneFileUpdateDataFileRemove] = None,
-    runner: Runner = None,
+    copy_map_one_palette: list[SceneFileUpdateCopyMapOnePalette] | None = None,
+    data_file_add: list[SceneFileUpdateDataFileAdd] | None = None,
+    data_file_remove: list[SceneFileUpdateDataFileRemove] | None = None,
+    runner: Runner | None = None,
 ) -> SceneFileUpdateOutputs:
     """
     scene-file-update by Washington University School of Medicin.

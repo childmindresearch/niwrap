@@ -33,7 +33,7 @@ def fsl_schurprod(
     mask_file: InputPathType | None = None,
     verbose_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslSchurprodOutputs:
     """
     fsl_schurprod by Christian F. Beckmann.

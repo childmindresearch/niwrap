@@ -25,7 +25,7 @@ def surface_closest_vertex(
     surface: InputPathType,
     coord_list_file: str,
     vertex_list_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceClosestVertexOutputs:
     """
     surface-closest-vertex by Washington University School of Medicin.

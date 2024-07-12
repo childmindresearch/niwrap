@@ -39,7 +39,7 @@ def eddy_combine(
     neg_series_vol: float | int,
     output_path: str,
     only_matched_flag: int,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> EddyCombineOutputs:
     """
     eddy_combine by Oxford Centre for Functional MRI of the Brain (FMRIB).

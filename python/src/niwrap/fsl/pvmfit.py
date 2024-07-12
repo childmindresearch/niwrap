@@ -42,7 +42,7 @@ def pvmfit(
     save_bic: bool = False,
     verbose: bool = False,
     help_: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PvmfitOutputs:
     """
     pvmfit by Oxford Centre for Functional MRI of the Brain (FMRIB).

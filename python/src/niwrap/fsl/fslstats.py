@@ -50,7 +50,7 @@ def fslstats(
     timeseries_flag: bool = False,
     mean_entropy_flag: bool = False,
     nonzero_mean_entropy_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslstatsOutputs:
     """
     fslstats by Oxford Centre for Functional MRI of the Brain (FMRIB).

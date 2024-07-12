@@ -35,7 +35,7 @@ def estimate_fiber_binghams(
     merged_ph3samples: InputPathType,
     label_volume: InputPathType,
     cifti_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> EstimateFiberBinghamsOutputs:
     """
     estimate-fiber-binghams by Washington University School of Medicin.

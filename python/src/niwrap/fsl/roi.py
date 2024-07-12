@@ -34,7 +34,7 @@ def fsl_roi(
     y_size: int | None = None,
     z_min: int | None = None,
     z_size: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslRoiOutputs:
     """
     FSL roi by Oxford Centre for Functional MRI of the Brain (FMRIB).

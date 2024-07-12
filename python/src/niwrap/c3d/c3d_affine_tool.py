@@ -45,7 +45,7 @@ def c3d_affine_tool(
     out_irtk_transform: str | None = None,
     info: bool = False,
     info_full: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> C3dAffineToolOutputs:
     """
     C3dAffineTool by ITK-Snap Team.

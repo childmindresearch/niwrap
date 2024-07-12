@@ -47,12 +47,12 @@ def fsl_deface(
     orig_to_std_mat: str | None = None,
     orig_to_cropped_mat: str | None = None,
     cropped_to_std_mat: str | None = None,
-    shift_nud: list[float | int] = None,
+    shift_nud: list[float | int] | None = None,
     fractional_intensity: float | int | None = None,
     bias_correct_flag: bool = False,
-    center_of_gravity: list[float | int] = None,
+    center_of_gravity: list[float | int] | None = None,
     qc_images: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslDefaceOutputs:
     """
     fsl_deface by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -28,7 +28,7 @@ def surface_sphere_project_unproject(
     sphere_project_to: InputPathType,
     sphere_unproject_from: InputPathType,
     sphere_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceSphereProjectUnprojectOutputs:
     """
     surface-sphere-project-unproject by Washington University School of Medicin.

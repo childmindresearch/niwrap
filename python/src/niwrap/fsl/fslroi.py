@@ -35,7 +35,7 @@ def fslroi(
     zsize: float | int | None = None,
     tmin: float | int | None = None,
     tsize: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslroiOutputs:
     """
     fslroi by Oxford Centre for Functional MRI of the Brain (FMRIB).

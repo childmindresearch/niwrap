@@ -27,7 +27,7 @@ def ftoz(
     dof2: float | int,
     output_file: InputPathType | None = "zstats",
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FtozOutputs:
     """
     ftoz by Unknown.

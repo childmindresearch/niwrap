@@ -27,7 +27,7 @@ class FslvalOutputs(typing.NamedTuple):
 def fslval(
     input_file: InputPathType,
     keyword_: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslvalOutputs:
     """
     fslval by Oxford Centre for Functional MRI of the Brain (FMRIB).

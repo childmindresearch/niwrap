@@ -27,7 +27,7 @@ class FslsliceOutputs(typing.NamedTuple):
 def fslslice(
     volume: InputPathType,
     output_basename: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslsliceOutputs:
     """
     fslslice by Oxford Centre for Functional MRI of the Brain (FMRIB).

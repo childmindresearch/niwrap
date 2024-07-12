@@ -79,7 +79,7 @@ def fabber_asl(
     save_free_energy: bool = False,
     optfile: str | None = None,
     debug: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FabberAslOutputs:
     """
     fabber_asl by Unknown.

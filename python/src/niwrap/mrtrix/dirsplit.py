@@ -64,10 +64,10 @@ def dirsplit(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[DirsplitConfig] = None,
+    config: list[DirsplitConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DirsplitOutputs:
     """
     dirsplit by J-Donald Tournier (jdtournier@gmail.com).

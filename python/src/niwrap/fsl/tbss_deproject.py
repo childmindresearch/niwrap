@@ -27,7 +27,7 @@ def tbss_deproject(
     skeleton_space_input_image: InputPathType,
     final_space_option: int,
     index_image_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TbssDeprojectOutputs:
     """
     tbss_deproject.

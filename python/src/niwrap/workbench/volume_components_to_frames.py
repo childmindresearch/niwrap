@@ -26,7 +26,7 @@ class VolumeComponentsToFramesOutputs(typing.NamedTuple):
 def volume_components_to_frames(
     input_: InputPathType,
     output: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeComponentsToFramesOutputs:
     """
     volume-components-to-frames by Washington University School of Medicin.

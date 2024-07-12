@@ -27,7 +27,7 @@ def slicesmask(
     image: InputPathType,
     mask: InputPathType,
     output: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SlicesmaskOutputs:
     """
     slicesmask by Unknown.

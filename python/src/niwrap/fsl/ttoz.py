@@ -30,7 +30,7 @@ def ttoz(
     dof: int,
     outputvol: str | None = None,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TtozOutputs:
     """
     ttoz.

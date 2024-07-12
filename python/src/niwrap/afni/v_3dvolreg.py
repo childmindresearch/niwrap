@@ -41,7 +41,7 @@ def v_3dvolreg(
     in_file: InputPathType,
     basefile: InputPathType | None = None,
     copyorigin: bool = False,
-    in_weight_volume: list[str] = None,
+    in_weight_volume: list[str] | None = None,
     in_weight_volume_2: InputPathType | None = None,
     interp: typing.Literal["Fourier", "cubic", "heptic", "quintic", "linear"] | None = None,
     num_threads: int | None = 1,
@@ -49,7 +49,7 @@ def v_3dvolreg(
     timeshift: bool = False,
     verbose: bool = False,
     zpad: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dvolregOutputs:
     """
     3dvolreg by Nipype (interface).

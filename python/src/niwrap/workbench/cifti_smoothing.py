@@ -134,7 +134,7 @@ def cifti_smoothing(
     opt_fix_zeros_volume: bool = False,
     opt_fix_zeros_surface: bool = False,
     opt_merged_volume: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiSmoothingOutputs:
     """
     cifti-smoothing by Washington University School of Medicin.

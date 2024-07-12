@@ -29,7 +29,7 @@ class FirstRoiSlicesdirOutputs(typing.NamedTuple):
 def first_roi_slicesdir(
     input_t1_images: str,
     input_label_images: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FirstRoiSlicesdirOutputs:
     """
     first_roi_slicesdir by FMRIB Centre, Oxford University.

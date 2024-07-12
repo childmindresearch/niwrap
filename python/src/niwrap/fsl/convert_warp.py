@@ -42,7 +42,7 @@ def convertwarp(
     shift_in_file: InputPathType | None = None,
     warp1: InputPathType | None = None,
     warp2: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ConvertwarpOutputs:
     """
     convertwarp by Nipype (interface).

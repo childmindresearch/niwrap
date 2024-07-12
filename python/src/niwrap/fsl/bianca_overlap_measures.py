@@ -42,7 +42,7 @@ def bianca_overlap_measures(
     lesion_mask: InputPathType,
     manual_mask: InputPathType,
     output_dir: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BiancaOverlapMeasuresOutputs:
     """
     bianca_overlap_measures by Oxford Centre for Functional MRI of the Brain

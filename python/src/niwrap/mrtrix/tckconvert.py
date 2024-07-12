@@ -72,10 +72,10 @@ def tckconvert(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TckconvertConfig] = None,
+    config: list[TckconvertConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TckconvertOutputs:
     """
     tckconvert by Daan Christiaens (daan.christiaens@kcl.ac.uk), J-Donald Tournier

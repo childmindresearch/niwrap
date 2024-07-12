@@ -58,8 +58,8 @@ def cifti_estimate_fwhm(
     opt_column_column: int | None = None,
     opt_whole_file: bool = False,
     opt_demean: bool = False,
-    surface: list[CiftiEstimateFwhmSurface] = None,
-    runner: Runner = None,
+    surface: list[CiftiEstimateFwhmSurface] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiEstimateFwhmOutputs:
     """
     cifti-estimate-fwhm by Washington University School of Medicin.

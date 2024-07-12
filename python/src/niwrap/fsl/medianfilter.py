@@ -27,7 +27,7 @@ class MedianfilterOutputs(typing.NamedTuple):
 def medianfilter(
     infile: InputPathType,
     outfile: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MedianfilterOutputs:
     """
     medianfilter by Unknown.

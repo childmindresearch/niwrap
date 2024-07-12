@@ -66,8 +66,8 @@ def metric_math(
     expression: str,
     metric_out: str,
     opt_fixnan_replace: float | int | None = None,
-    var: list[MetricMathVar] = None,
-    runner: Runner = None,
+    var: list[MetricMathVar] | None = None,
+    runner: Runner | None = None,
 ) -> MetricMathOutputs:
     """
     metric-math by Washington University School of Medicin.

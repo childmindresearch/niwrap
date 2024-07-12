@@ -25,7 +25,7 @@ def spec_file_merge(
     spec_1: str,
     spec_2: str,
     out_spec: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SpecFileMergeOutputs:
     """
     spec-file-merge by Washington University School of Medicin.

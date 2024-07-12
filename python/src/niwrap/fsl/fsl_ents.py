@@ -29,8 +29,8 @@ def fsl_ents(
     components: list[str],
     outfile: InputPathType | None = None,
     overwrite: bool = False,
-    conffile: list[InputPathType] = None,
-    runner: Runner = None,
+    conffile: list[InputPathType] | None = None,
+    runner: Runner | None = None,
 ) -> FslEntsOutputs:
     """
     fsl_ents.

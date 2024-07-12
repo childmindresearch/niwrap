@@ -36,7 +36,7 @@ def vecreg(
     interp_method: str | None = "trilinear",
     brain_mask: InputPathType | None = None,
     ref_brain_mask: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VecregOutputs:
     """
     vecreg by Oxford Centre for Functional MRI of the Brain (FMRIB).

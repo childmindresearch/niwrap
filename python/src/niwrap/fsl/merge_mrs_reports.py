@@ -30,7 +30,7 @@ def merge_mrs_reports(
     output_folder: str | None = None,
     output_filename: str | None = None,
     delete_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MergeMrsReportsOutputs:
     """
     merge_mrs_reports by FSL.

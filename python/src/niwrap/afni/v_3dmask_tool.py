@@ -39,7 +39,7 @@ def v_3dmask_tool(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     union: bool = False,
     verbose: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dmaskToolOutputs:
     """
     3dmask_tool by Nipype (interface).

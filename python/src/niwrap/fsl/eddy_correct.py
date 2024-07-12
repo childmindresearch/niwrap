@@ -29,7 +29,7 @@ def eddy_correct(
     v_4d_output: str,
     reference_no: int,
     interp_method: typing.Literal["trilinear", "spline"] | None = "trilinear",
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> EddyCorrectOutputs:
     """
     eddy_correct by FMRIB.

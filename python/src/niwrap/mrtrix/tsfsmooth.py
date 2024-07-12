@@ -63,10 +63,10 @@ def tsfsmooth(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TsfsmoothConfig] = None,
+    config: list[TsfsmoothConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TsfsmoothOutputs:
     """
     tsfsmooth by David Raffelt (david.raffelt@florey.edu.au).

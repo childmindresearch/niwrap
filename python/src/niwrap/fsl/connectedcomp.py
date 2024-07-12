@@ -25,7 +25,7 @@ def connectedcomp(
     in_volume: InputPathType,
     output_volume: InputPathType | None = None,
     num_connect: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ConnectedcompOutputs:
     """
     connectedcomp by Unknown.

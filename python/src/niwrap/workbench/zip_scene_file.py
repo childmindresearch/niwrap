@@ -28,7 +28,7 @@ def zip_scene_file(
     opt_base_dir_directory: str | None = None,
     opt_skip_missing: bool = False,
     opt_write_scene_file: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ZipSceneFileOutputs:
     """
     zip-scene-file by Washington University School of Medicin.

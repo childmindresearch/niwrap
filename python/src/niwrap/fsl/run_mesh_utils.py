@@ -42,7 +42,7 @@ def run_mesh_utils(
     inverse: bool = False,
     verbose: bool = False,
     help_: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RunMeshUtilsOutputs:
     """
     run_mesh_utils by University of Oxford (Brian Patenaude).

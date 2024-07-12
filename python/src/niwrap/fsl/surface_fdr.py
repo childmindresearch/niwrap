@@ -27,7 +27,7 @@ class SurfaceFdrOutputs(typing.NamedTuple):
 
 def surface_fdr(
     input_vtk: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceFdrOutputs:
     """
     surface_fdr by Unknown.

@@ -39,7 +39,7 @@ def dual_regression(
     output_directory: str,
     input_files: list[InputPathType],
     thr_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DualRegressionOutputs:
     """
     dual_regression by FMRIB Analysis Group.

@@ -197,7 +197,7 @@ def cifti_find_clusters(
     size_ratio: CiftiFindClustersSizeRatio | None = None,
     distance: CiftiFindClustersDistance | None = None,
     opt_start_startval: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiFindClustersOutputs:
     """
     cifti-find-clusters by Washington University School of Medicin.

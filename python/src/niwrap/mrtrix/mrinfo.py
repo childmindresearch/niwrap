@@ -269,7 +269,7 @@ def mrinfo(
     offset: bool = False,
     multiplier: bool = False,
     transform: bool = False,
-    property_: list[MrinfoProperty] = None,
+    property_: list[MrinfoProperty] | None = None,
     json_keyval: str | None = None,
     json_all: str | None = None,
     grad: InputPathType | None = None,
@@ -290,10 +290,10 @@ def mrinfo(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrinfoConfig] = None,
+    config: list[MrinfoConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrinfoOutputs:
     """
     mrinfo by J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith

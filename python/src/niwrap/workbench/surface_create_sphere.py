@@ -26,7 +26,7 @@ class SurfaceCreateSphereOutputs(typing.NamedTuple):
 def surface_create_sphere(
     num_vertices: int,
     sphere_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceCreateSphereOutputs:
     """
     surface-create-sphere by Washington University School of Medicin.

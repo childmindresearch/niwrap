@@ -22,7 +22,7 @@ class FslSubConfigOutputs(typing.NamedTuple):
 def fsl_sub_config(
     cluster_system: typing.Literal["shell", "sge", "slurm"],
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslSubConfigOutputs:
     """
     fsl_sub_config by FMRIB Software Library (FSL).

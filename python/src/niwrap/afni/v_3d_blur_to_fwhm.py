@@ -33,7 +33,7 @@ def v_3d_blur_to_fwhm(
     fwhmxy: float | int | None = None,
     mask: InputPathType | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dBlurToFwhmOutputs:
     """
     3dBlurToFWHM by Nipype (interface).

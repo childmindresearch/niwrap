@@ -83,7 +83,7 @@ def fabber(
     save_free_energy: bool = False,
     optfile: InputPathType | None = None,
     debug: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FabberOutputs:
     """
     fabber by FMRIB, University of Oxford.

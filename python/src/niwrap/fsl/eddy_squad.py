@@ -30,7 +30,7 @@ def eddy_squad(
     group_db: InputPathType | None = None,
     update_: bool = False,
     output_dir: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> EddySquadOutputs:
     """
     eddy_squad by FMRIB Software Library (FSL).

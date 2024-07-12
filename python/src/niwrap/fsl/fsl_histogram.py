@@ -47,7 +47,7 @@ def fsl_histogram(
     zoom_factor: float | int | None = None,
     zoom_factor_duplicate: float | int | None = None,
     use_gmm_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslHistogramOutputs:
     """
     fsl_histogram by University of Oxford.

@@ -30,7 +30,7 @@ def metric_rois_to_border(
     border_out: str,
     opt_placement_fraction: float | int | None = None,
     opt_column_column: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricRoisToBorderOutputs:
     """
     metric-rois-to-border by Washington University School of Medicin.

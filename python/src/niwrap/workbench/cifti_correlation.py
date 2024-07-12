@@ -77,7 +77,7 @@ def cifti_correlation(
     opt_no_demean: bool = False,
     opt_covariance: bool = False,
     opt_mem_limit_limit_gb: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiCorrelationOutputs:
     """
     cifti-correlation by Washington University School of Medicin.

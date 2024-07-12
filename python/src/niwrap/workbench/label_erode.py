@@ -31,7 +31,7 @@ def label_erode(
     opt_roi_roi_metric: InputPathType | None = None,
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> LabelErodeOutputs:
     """
     label-erode by Washington University School of Medicin.

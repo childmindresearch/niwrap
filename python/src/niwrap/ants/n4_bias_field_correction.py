@@ -38,7 +38,7 @@ def n4_bias_field_correction(
     bspline_fitting: str | None = None,
     histogram_sharpening: str | None = None,
     verbose: typing.Literal[0, 1] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> N4BiasFieldCorrectionOutputs:
     """
     N4BiasFieldCorrection by ANTs authors.

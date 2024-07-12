@@ -83,7 +83,7 @@ class VolumeMergeVolume:
     """
     volume_in: InputPathType
     """a volume file to use subvolumes from"""
-    subvolume: list[VolumeMergeSubvolume] = None
+    subvolume: list[VolumeMergeSubvolume] | None = None
     """select a single subvolume to use"""
     
     def run(
@@ -119,8 +119,8 @@ class VolumeMergeOutputs(typing.NamedTuple):
 
 def volume_merge(
     volume_out: str,
-    volume: list[VolumeMergeVolume] = None,
-    runner: Runner = None,
+    volume: list[VolumeMergeVolume] | None = None,
+    runner: Runner | None = None,
 ) -> VolumeMergeOutputs:
     """
     volume-merge by Washington University School of Medicin.

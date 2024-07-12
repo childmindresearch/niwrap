@@ -92,7 +92,7 @@ def volume_tfce(
     opt_roi_roi_volume: InputPathType | None = None,
     parameters: VolumeTfceParameters | None = None,
     opt_subvolume_subvolume: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeTfceOutputs:
     """
     volume-tfce by Washington University School of Medicin.

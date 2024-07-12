@@ -31,7 +31,7 @@ def pairreg(
     skull2: InputPathType,
     outputmatrix: InputPathType,
     extra_flirt_args: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PairregOutputs:
     """
     pairreg by Oxford Centre for Functional MRI of the Brain (FMRIB).

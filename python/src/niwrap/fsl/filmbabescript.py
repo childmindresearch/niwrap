@@ -25,7 +25,7 @@ class FilmbabescriptOutputs(typing.NamedTuple):
 def filmbabescript(
     feat_dir: str,
     flobs_dir: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FilmbabescriptOutputs:
     """
     filmbabescript by Author Unknown.

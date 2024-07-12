@@ -49,7 +49,7 @@ def possum(
     proc_id: float | int | None = None,
     no_speedup: bool = False,
     rf_average: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PossumOutputs:
     """
     possum by University of Oxford (Ivana Drobnjak).

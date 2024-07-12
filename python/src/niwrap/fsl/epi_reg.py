@@ -63,7 +63,7 @@ def epi_reg(
     pedir: typing.Literal["x", "y", "z", "-x", "-y", "-z"] | None = None,
     weight_image: InputPathType | None = None,
     wmseg: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> EpiRegOutputs:
     """
     epi_reg by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -91,7 +91,7 @@ class DirstatOutputs(typing.NamedTuple):
 def dirstat(
     dirs: InputPathType,
     output: str | None = None,
-    shells: list[float | int] = None,
+    shells: list[float | int] | None = None,
     grad: InputPathType | None = None,
     fslgrad: DirstatFslgrad | None = None,
     info: bool = False,
@@ -99,10 +99,10 @@ def dirstat(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[DirstatConfig] = None,
+    config: list[DirstatConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DirstatOutputs:
     """
     dirstat by J-Donald Tournier (jdtournier@gmail.com).

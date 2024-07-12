@@ -70,10 +70,10 @@ def swe(
     tfce_d: float | int | None = None,
     tfce_e: float | int | None = 0.5,
     tfce_c: float | int | None = 6,
-    voxelwise_ev: list[float | int] = None,
-    voxelwise_evs: list[InputPathType] = None,
+    voxelwise_ev: list[float | int] | None = None,
+    voxelwise_evs: list[InputPathType] | None = None,
     glm_output: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SweOutputs:
     """
     swe by Oxford Centre for Functional MRI of the Brain (FMRIB).

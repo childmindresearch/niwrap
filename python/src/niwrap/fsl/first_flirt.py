@@ -37,7 +37,7 @@ def first_flirt(
     strucweight_mask: InputPathType | None = None,
     cort_flag: bool = False,
     cost_function: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FirstFlirtOutputs:
     """
     first_flirt by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -60,7 +60,7 @@ def metric_reduce(
     metric_out: str,
     exclude_outliers: MetricReduceExcludeOutliers | None = None,
     opt_only_numeric: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricReduceOutputs:
     """
     metric-reduce by Washington University School of Medicin.

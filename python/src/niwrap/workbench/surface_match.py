@@ -25,7 +25,7 @@ def surface_match(
     match_surface_file: InputPathType,
     input_surface_file: InputPathType,
     output_surface_name: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceMatchOutputs:
     """
     surface-match by Washington University School of Medicin.

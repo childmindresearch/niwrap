@@ -26,7 +26,7 @@ def tbss_2_reg(
     use_fmrib58_fa_1mm: bool = False,
     target_image: InputPathType | None = None,
     find_best_target: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Tbss2RegOutputs:
     """
     tbss_2_reg by Oxford Centre for Functional MRI of the Brain (FMRIB).

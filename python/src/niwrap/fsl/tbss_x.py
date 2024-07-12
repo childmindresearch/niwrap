@@ -25,7 +25,7 @@ class TbssXOutputs(typing.NamedTuple):
 def tbss_x(
     scalar_dirs: list[str],
     vector_dirs: list[str],
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TbssXOutputs:
     """
     tbss_x by FMRIB Software Library (FSL).

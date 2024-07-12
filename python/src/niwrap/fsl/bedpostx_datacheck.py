@@ -24,7 +24,7 @@ class BedpostxDatacheckOutputs(typing.NamedTuple):
 
 def bedpostx_datacheck(
     data_dir: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BedpostxDatacheckOutputs:
     """
     bedpostx_datacheck by Oxford Centre for Functional MRI of the Brain (FMRIB).

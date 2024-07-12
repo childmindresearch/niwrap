@@ -26,7 +26,7 @@ def cluster2html(
     featdir: str,
     inroot: str,
     std_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Cluster2htmlOutputs:
     """
     cluster2html by Oxford Centre for Functional MRI of the Brain (FMRIB).

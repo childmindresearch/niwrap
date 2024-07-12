@@ -167,7 +167,7 @@ def scene_capture_image(
     opt_show_capture_settings: bool = False,
     opt_renderer_renderer: str | None = None,
     opt_print_image_info: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SceneCaptureImageOutputs:
     """
     scene-capture-image by Washington University School of Medicin.

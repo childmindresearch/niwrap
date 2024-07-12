@@ -26,7 +26,7 @@ class SurfaceFlipLrOutputs(typing.NamedTuple):
 def surface_flip_lr(
     surface: InputPathType,
     surface_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceFlipLrOutputs:
     """
     surface-flip-lr by Washington University School of Medicin.

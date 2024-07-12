@@ -31,7 +31,7 @@ def surface_to_surface_3d_distance(
     dists_out: str,
     vectors_out: str,
     opt_vectors: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceToSurface3dDistanceOutputs:
     """
     surface-to-surface-3d-distance by Washington University School of Medicin.

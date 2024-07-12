@@ -38,7 +38,7 @@ def sienax(
     regional_flag: bool = False,
     lesion_mask: InputPathType | None = None,
     fast_options: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SienaxOutputs:
     """
     sienax by FMRIB Centre, University of Oxford.

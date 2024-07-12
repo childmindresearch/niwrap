@@ -22,7 +22,7 @@ class ProjThreshOutputs(typing.NamedTuple):
 def proj_thresh(
     input_paths: list[InputPathType],
     threshold: float | int,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ProjThreshOutputs:
     """
     proj_thresh by Unknown.

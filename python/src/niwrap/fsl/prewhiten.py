@@ -24,7 +24,7 @@ class PrewhitenOutputs(typing.NamedTuple):
 def prewhiten(
     feat_directory: str,
     output_directory: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PrewhitenOutputs:
     """
     prewhiten.

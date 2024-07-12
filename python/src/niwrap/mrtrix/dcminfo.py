@@ -89,16 +89,16 @@ def dcminfo(
     all_: bool = False,
     csa: bool = False,
     phoenix: bool = False,
-    tag: list[DcminfoTag] = None,
+    tag: list[DcminfoTag] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[DcminfoConfig] = None,
+    config: list[DcminfoConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DcminfoOutputs:
     """
     dcminfo by J-Donald Tournier (jdtournier@gmail.com).

@@ -28,7 +28,7 @@ def wpng(
     text_flag: bool = False,
     time_flag: bool = False,
     interlace_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> WpngOutputs:
     """
     wpng by Unknown.

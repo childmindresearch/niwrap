@@ -56,7 +56,7 @@ def connectome2tck(
     tracks_in: InputPathType,
     assignments_in: InputPathType,
     prefix_out: str,
-    nodes: list[int] = None,
+    nodes: list[int] | None = None,
     exclusive: bool = False,
     files: str | None = None,
     exemplars: InputPathType | None = None,
@@ -69,10 +69,10 @@ def connectome2tck(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Connectome2tckConfig] = None,
+    config: list[Connectome2tckConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Connectome2tckOutputs:
     """
     connectome2tck by Robert E. Smith (robert.smith@florey.edu.au).

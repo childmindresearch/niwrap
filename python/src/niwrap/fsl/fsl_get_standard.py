@@ -24,7 +24,7 @@ def fsl_get_standard(
     resolution: float | int | None = None,
     verbose_flag: bool = False,
     version_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslGetStandardOutputs:
     """
     fsl_get_standard.

@@ -41,7 +41,7 @@ def betsurf(
     mask_flag: bool = False,
     skull_mask_flag: bool = False,
     increased_precision: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BetsurfOutputs:
     """
     betsurf by FMRIB Analysis Group, Oxford.

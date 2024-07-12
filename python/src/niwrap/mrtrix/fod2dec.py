@@ -60,7 +60,7 @@ def fod2dec(
     mask: InputPathType | None = None,
     contrast: InputPathType | None = None,
     lum: bool = False,
-    lum_coefs: list[float | int] = None,
+    lum_coefs: list[float | int] | None = None,
     lum_gamma: float | int | None = None,
     threshold: float | int | None = None,
     no_weight: bool = False,
@@ -69,10 +69,10 @@ def fod2dec(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Fod2decConfig] = None,
+    config: list[Fod2decConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Fod2decOutputs:
     """
     fod2dec by Thijs Dhollander (thijs.dhollander@gmail.com).

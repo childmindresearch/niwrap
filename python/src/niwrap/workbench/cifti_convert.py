@@ -531,7 +531,7 @@ def cifti_convert(
     from_nifti: CiftiConvertFromNifti | None = None,
     to_text: CiftiConvertToText | None = None,
     from_text: CiftiConvertFromText | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiConvertOutputs:
     """
     cifti-convert by Washington University School of Medicin.

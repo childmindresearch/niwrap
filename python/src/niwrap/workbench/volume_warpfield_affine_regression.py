@@ -58,7 +58,7 @@ def volume_warpfield_affine_regression(
     opt_roi_roi_vol: InputPathType | None = None,
     opt_fnirt_source_volume: str | None = None,
     flirt_out: VolumeWarpfieldAffineRegressionFlirtOut | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeWarpfieldAffineRegressionOutputs:
     """
     volume-warpfield-affine-regression by Washington University School of Medicin.

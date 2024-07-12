@@ -28,7 +28,7 @@ def volume_copy_extensions(
     extension_volume: InputPathType,
     volume_out: str,
     opt_drop_unknown: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeCopyExtensionsOutputs:
     """
     volume-copy-extensions by Washington University School of Medicin.

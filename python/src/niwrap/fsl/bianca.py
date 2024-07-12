@@ -42,7 +42,7 @@ def bianca(
     non_les_pts: str | None = None,
     save_classifier_data: str | None = None,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BiancaOutputs:
     """
     bianca by Oxford Centre for Functional MRI of the Brain (FMRIB).

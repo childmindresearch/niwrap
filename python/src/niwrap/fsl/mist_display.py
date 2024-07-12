@@ -22,7 +22,7 @@ class MistDisplayOutputs(typing.NamedTuple):
 def mist_display(
     mode: typing.Literal["simple", "pvals", "noscalars"],
     help_: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MistDisplayOutputs:
     """
     mist_display by Unknown.

@@ -31,7 +31,7 @@ def siena_diff(
     ignore_z_flow_flag: bool = False,
     apply_std_mask_flag: bool = False,
     segment_options: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SienaDiffOutputs:
     """
     siena_diff by Oxford Centre for Functional MRI of the Brain (FMRIB).

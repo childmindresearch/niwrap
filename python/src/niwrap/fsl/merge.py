@@ -30,7 +30,7 @@ def merge(
     dimension_tr: bool = False,
     tr: float | int | None = None,
     volume_number: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MergeOutputs:
     """
     Merge by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -44,7 +44,7 @@ def convertwarp(
     absout: bool = False,
     relout: bool = False,
     verbose: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ConvertwarpOutputs:
     """
     convertwarp by University of Oxford.

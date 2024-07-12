@@ -28,7 +28,7 @@ def metric_remove_islands(
     metric_in: InputPathType,
     metric_out: str,
     opt_corrected_areas_area_metric: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricRemoveIslandsOutputs:
     """
     metric-remove-islands by Washington University School of Medicin.

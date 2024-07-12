@@ -83,7 +83,7 @@ def fabber_cest(
     save_free_energy: bool = False,
     optfile: InputPathType | None = None,
     debug: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FabberCestOutputs:
     """
     fabber_cest by FMRIB Centre, University of Oxford.

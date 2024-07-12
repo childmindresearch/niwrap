@@ -31,7 +31,7 @@ def volume_label_import(
     opt_unlabeled_value_value: int | None = None,
     opt_subvolume_subvol: str | None = None,
     opt_drop_unused_labels: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeLabelImportOutputs:
     """
     volume-label-import by Washington University School of Medicin.

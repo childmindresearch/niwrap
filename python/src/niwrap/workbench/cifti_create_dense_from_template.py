@@ -217,11 +217,11 @@ def cifti_create_dense_from_template(
     series: CiftiCreateDenseFromTemplateSeries | None = None,
     volume_all: CiftiCreateDenseFromTemplateVolumeAll | None = None,
     opt_label_collision_action: str | None = None,
-    cifti: list[CiftiCreateDenseFromTemplateCifti] = None,
-    metric: list[CiftiCreateDenseFromTemplateMetric] = None,
-    label: list[CiftiCreateDenseFromTemplateLabel] = None,
-    volume: list[CiftiCreateDenseFromTemplateVolume] = None,
-    runner: Runner = None,
+    cifti: list[CiftiCreateDenseFromTemplateCifti] | None = None,
+    metric: list[CiftiCreateDenseFromTemplateMetric] | None = None,
+    label: list[CiftiCreateDenseFromTemplateLabel] | None = None,
+    volume: list[CiftiCreateDenseFromTemplateVolume] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiCreateDenseFromTemplateOutputs:
     """
     cifti-create-dense-from-template by Washington University School of Medicin.

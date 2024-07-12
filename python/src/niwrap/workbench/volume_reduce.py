@@ -60,7 +60,7 @@ def volume_reduce(
     volume_out: str,
     exclude_outliers: VolumeReduceExcludeOutliers | None = None,
     opt_only_numeric: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeReduceOutputs:
     """
     volume-reduce by Washington University School of Medicin.

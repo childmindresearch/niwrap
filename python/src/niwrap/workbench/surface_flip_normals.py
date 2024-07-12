@@ -26,7 +26,7 @@ class SurfaceFlipNormalsOutputs(typing.NamedTuple):
 def surface_flip_normals(
     surface: InputPathType,
     surface_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceFlipNormalsOutputs:
     """
     surface-flip-normals by Washington University School of Medicin.

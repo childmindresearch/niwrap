@@ -32,7 +32,7 @@ def volume_parcel_resampling(
     opt_fix_zeros: bool = False,
     opt_fwhm: bool = False,
     opt_subvolume_subvol: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeParcelResamplingOutputs:
     """
     volume-parcel-resampling by Washington University School of Medicin.

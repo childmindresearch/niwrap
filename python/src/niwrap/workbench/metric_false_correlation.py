@@ -32,7 +32,7 @@ def metric_false_correlation(
     metric_out: str,
     opt_roi_roi_metric: InputPathType | None = None,
     opt_dump_text_text_out: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricFalseCorrelationOutputs:
     """
     metric-false-correlation by Washington University School of Medicin.

@@ -39,7 +39,7 @@ def fslorient(
     force_radiological: bool = False,
     force_neurological: bool = False,
     swap_orient: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslorientOutputs:
     """
     fslorient by Oxford Centre for Functional MRI of the Brain (FMRIB).

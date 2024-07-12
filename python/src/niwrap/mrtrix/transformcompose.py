@@ -61,10 +61,10 @@ def transformcompose(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TransformcomposeConfig] = None,
+    config: list[TransformcomposeConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TransformcomposeOutputs:
     """
     transformcompose by David Raffelt (david.raffelt@florey.edu.au).

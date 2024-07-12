@@ -60,7 +60,7 @@ def fabber_dwi(
     save_free_energy_flag: bool = False,
     optfile: InputPathType | None = None,
     debug_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FabberDwiOutputs:
     """
     fabber_dwi by Release Team.

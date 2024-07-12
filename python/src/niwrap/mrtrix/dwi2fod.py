@@ -96,9 +96,9 @@ def dwi2fod(
     response_odf: list[str],
     grad: InputPathType | None = None,
     fslgrad: Dwi2fodFslgrad | None = None,
-    shells: list[float | int] = None,
+    shells: list[float | int] | None = None,
     directions: InputPathType | None = None,
-    lmax: list[int] = None,
+    lmax: list[int] | None = None,
     mask: InputPathType | None = None,
     filter_: InputPathType | None = None,
     neg_lambda: float | int | None = None,
@@ -114,10 +114,10 @@ def dwi2fod(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Dwi2fodConfig] = None,
+    config: list[Dwi2fodConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Dwi2fodOutputs:
     """
     dwi2fod by J-Donald Tournier (jdtournier@gmail.com) and Ben Jeurissen

@@ -32,7 +32,7 @@ def surf2surf(
     transform: InputPathType | None = None,
     output_type: str | None = None,
     output_values: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Surf2surfOutputs:
     """
     surf2surf by FMRIB Analysis Group, University of Oxford.

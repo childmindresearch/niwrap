@@ -27,7 +27,7 @@ def volume_all_labels_to_rois(
     label_in: InputPathType,
     map_: str,
     volume_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeAllLabelsToRoisOutputs:
     """
     volume-all-labels-to-rois by Washington University School of Medicin.

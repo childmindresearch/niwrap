@@ -87,8 +87,8 @@ def cifti_label_to_border(
     cifti_in: InputPathType,
     opt_placement_fraction: float | int | None = None,
     opt_column_column: str | None = None,
-    border: list[CiftiLabelToBorderBorder] = None,
-    runner: Runner = None,
+    border: list[CiftiLabelToBorderBorder] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiLabelToBorderOutputs:
     """
     cifti-label-to-border by Washington University School of Medicin.

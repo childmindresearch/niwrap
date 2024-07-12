@@ -36,7 +36,7 @@ def susan(
     brightness_threshold1: float | int | None = None,
     usan2: InputPathType | None = None,
     brightness_threshold2: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SusanOutputs:
     """
     susan by Oxford Centre for Functional MRI of the Brain (FMRIB).

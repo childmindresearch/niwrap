@@ -28,7 +28,7 @@ def metric_fill_holes(
     metric_in: InputPathType,
     metric_out: str,
     opt_corrected_areas_area_metric: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricFillHolesOutputs:
     """
     metric-fill-holes by Washington University School of Medicin.

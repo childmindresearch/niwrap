@@ -61,7 +61,7 @@ def avw2fsl(
     context: str | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Avw2fslOutputs:
     """
     avw2fsl by GNU coreutils.

@@ -34,7 +34,7 @@ def run_first_all(
     threestage_flag: bool = False,
     debug_flag: bool = False,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RunFirstAllOutputs:
     """
     run_first_all by FMRIB Software Library (FSL).

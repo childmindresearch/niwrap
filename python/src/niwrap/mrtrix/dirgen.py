@@ -67,10 +67,10 @@ def dirgen(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[DirgenConfig] = None,
+    config: list[DirgenConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DirgenOutputs:
     """
     dirgen by J-Donald Tournier (jdtournier@gmail.com).

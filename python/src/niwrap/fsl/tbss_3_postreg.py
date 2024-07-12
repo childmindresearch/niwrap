@@ -25,7 +25,7 @@ class Tbss3PostregOutputs(typing.NamedTuple):
 def tbss_3_postreg(
     derive_mean_from_study: bool = False,
     use_fmrib58: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Tbss3PostregOutputs:
     """
     tbss_3_postreg by Oxford Centre for Functional MRI of the Brain (FMRIB).

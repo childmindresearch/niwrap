@@ -45,7 +45,7 @@ def apply_vol_transform(
     target_file: InputPathType | None = None,
     transformed_file: InputPathType | None = None,
     xfm_reg_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ApplyVolTransformOutputs:
     """
     ApplyVolTransform by Members of the Laboratories for Computational Neuroimaging

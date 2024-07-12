@@ -30,8 +30,8 @@ def v_3dresample(
     orientation: typing.Literal["AIL", "AIR", "ASL", "ASR", "PIL", "PIR", "PSL", "PSR", "ALI", "ALS", "ARI", "ARS", "PLI", "PLS", "PRI", "PRS", "IAL", "IAR", "IPL", "IPR", "SAL", "SAR", "SPL", "SPR", "ILA", "ILP", "IRA", "IRP", "SLA", "SLP", "SRA", "SRP", "LAI", "LAS", "LPI", "LPS", "RAI", "RAS", "RPI", "RPS", "LIA", "LIP", "LSA", "LSP", "RIA", "RIP", "RSA", "RSP"] | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     resample_mode: typing.Literal["NN", "Li", "Cu", "Bk"] | None = None,
-    voxel_size: list[float | int] = None,
-    runner: Runner = None,
+    voxel_size: list[float | int] | None = None,
+    runner: Runner | None = None,
 ) -> V3dresampleOutputs:
     """
     3dresample by Nipype (interface).

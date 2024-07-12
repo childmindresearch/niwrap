@@ -34,7 +34,7 @@ def reg_resample(
     resampled_blank: str | None = None,
     nearest_neighbor: bool = False,
     linear_interpolation: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RegResampleOutputs:
     """
     reg_resample by Marc Modat.

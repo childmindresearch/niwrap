@@ -35,7 +35,7 @@ def new_invwarp(
     jmax: float | int | None = 100.0,
     debugflag: bool = False,
     verboseflag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> NewInvwarpOutputs:
     """
     new_invwarp by University of Oxford (Jesper Andersson).

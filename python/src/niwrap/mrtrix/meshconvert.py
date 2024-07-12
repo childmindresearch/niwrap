@@ -98,10 +98,10 @@ def meshconvert(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MeshconvertConfig] = None,
+    config: list[MeshconvertConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MeshconvertOutputs:
     """
     meshconvert by Robert E. Smith (robert.smith@florey.edu.au).

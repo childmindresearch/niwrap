@@ -29,12 +29,12 @@ def reg_tools(
     mul_value_or_image: str | None = None,
     div_value_or_image: str | None = None,
     smooth_value: float | int | None = None,
-    smooth_gaussian: list[float | int] = None,
+    smooth_gaussian: list[float | int] | None = None,
     rms_image: InputPathType | None = None,
     binarize: bool = False,
     threshold_value: float | int | None = None,
     nan_mask_image: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RegToolsOutputs:
     """
     reg_tools by Marc Modat.

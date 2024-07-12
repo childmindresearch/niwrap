@@ -30,7 +30,7 @@ def surface_geodesic_distance_all_to_all(
     opt_limit_limit_mm: float | int | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
     opt_naive: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceGeodesicDistanceAllToAllOutputs:
     """
     surface-geodesic-distance-all-to-all by Washington University School of Medicin.

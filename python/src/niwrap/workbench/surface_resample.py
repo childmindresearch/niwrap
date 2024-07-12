@@ -93,7 +93,7 @@ def surface_resample(
     area_surfs: SurfaceResampleAreaSurfs | None = None,
     area_metrics: SurfaceResampleAreaMetrics | None = None,
     opt_bypass_sphere_check: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceResampleOutputs:
     """
     surface-resample by Washington University School of Medicin.

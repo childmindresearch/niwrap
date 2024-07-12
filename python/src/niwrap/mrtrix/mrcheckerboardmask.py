@@ -65,10 +65,10 @@ def mrcheckerboardmask(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrcheckerboardmaskConfig] = None,
+    config: list[MrcheckerboardmaskConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrcheckerboardmaskOutputs:
     """
     mrcheckerboardmask by Max Pietsch (maximilian.pietsch@kcl.ac.uk).

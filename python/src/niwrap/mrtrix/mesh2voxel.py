@@ -63,10 +63,10 @@ def mesh2voxel(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Mesh2voxelConfig] = None,
+    config: list[Mesh2voxelConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Mesh2voxelOutputs:
     """
     mesh2voxel by Robert E. Smith (robert.smith@florey.edu.au).

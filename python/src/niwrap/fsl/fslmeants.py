@@ -28,7 +28,7 @@ def fslmeants(
     input_image: InputPathType,
     output: str | None = None,
     mask: InputPathType | None = None,
-    coordinates: list[float | int] = None,
+    coordinates: list[float | int] | None = None,
     usemm_flag: bool = False,
     showall_flag: bool = False,
     eigenv_flag: bool = False,
@@ -39,7 +39,7 @@ def fslmeants(
     verbose_flag: bool = False,
     help_flag: bool = False,
     weighted_mean_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslmeantsOutputs:
     """
     fslmeants by University of Oxford (Mark Jenkinson, Christian F. Beckmann).

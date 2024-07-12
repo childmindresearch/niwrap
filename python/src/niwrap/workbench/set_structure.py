@@ -26,7 +26,7 @@ def set_structure(
     structure: str,
     opt_surface_type_type: str | None = None,
     opt_surface_secondary_type_secondary_type: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SetStructureOutputs:
     """
     set-structure by Washington University School of Medicin.

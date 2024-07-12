@@ -57,7 +57,7 @@ def fslvbm_3_proc(
     verbose: bool = False,
     version: bool = False,
     config_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Fslvbm3ProcOutputs:
     """
     fslvbm_3_proc by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -57,17 +57,17 @@ class WarpcorrectOutputs(typing.NamedTuple):
 def warpcorrect(
     in_: InputPathType,
     out: str,
-    marker: list[float | int] = None,
+    marker: list[float | int] | None = None,
     tolerance: float | int | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[WarpcorrectConfig] = None,
+    config: list[WarpcorrectConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> WarpcorrectOutputs:
     """
     warpcorrect by David Raffelt (david.raffelt@florey.edu.au) & Max Pietsch

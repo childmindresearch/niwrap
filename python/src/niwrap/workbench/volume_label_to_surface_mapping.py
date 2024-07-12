@@ -73,7 +73,7 @@ def volume_label_to_surface_mapping(
     label_out: str,
     ribbon_constrained: VolumeLabelToSurfaceMappingRibbonConstrained | None = None,
     opt_subvol_select_subvol: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeLabelToSurfaceMappingOutputs:
     """
     volume-label-to-surface-mapping by Washington University School of Medicin.

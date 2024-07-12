@@ -156,7 +156,7 @@ def cifti_create_dense_timeseries(
     opt_timestep_interval: float | int | None = None,
     opt_timestart_start: float | int | None = None,
     opt_unit_unit: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiCreateDenseTimeseriesOutputs:
     """
     cifti-create-dense-timeseries by Washington University School of Medicin.

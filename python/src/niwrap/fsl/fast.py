@@ -46,7 +46,7 @@ def fast(
     init_seg_smooth: float | int | None = 0.02,
     segments: bool = False,
     init_transform: InputPathType | None = None,
-    other_priors: list[InputPathType] = None,
+    other_priors: list[InputPathType] | None = None,
     output_biasfield: bool = False,
     output_biascorrected: bool = False,
     no_bias: bool = False,
@@ -60,7 +60,7 @@ def fast(
     hyper: float | int | None = 0.1,
     verbose: bool = False,
     manual_seg: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FastOutputs:
     """
     FAST by Oxford Centre for Functional MRI of the Brain (FMRIB).

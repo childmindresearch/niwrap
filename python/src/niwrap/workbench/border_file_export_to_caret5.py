@@ -52,8 +52,8 @@ class BorderFileExportToCaret5Outputs(typing.NamedTuple):
 def border_file_export_to_caret5(
     border_file: str,
     output_file_prefix: str,
-    surface: list[BorderFileExportToCaret5Surface] = None,
-    runner: Runner = None,
+    surface: list[BorderFileExportToCaret5Surface] | None = None,
+    runner: Runner | None = None,
 ) -> BorderFileExportToCaret5Outputs:
     """
     border-file-export-to-caret5 by Washington University School of Medicin.

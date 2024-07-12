@@ -27,7 +27,7 @@ def slice_(
     in_file: InputPathType,
     out_base_name: str | None = None,
     output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SliceOutputs:
     """
     Slice by Nipype (interface).

@@ -46,7 +46,7 @@ def make_bianca_mask(
     additional_surfaces_t2: InputPathType | None = None,
     verbose_flag: bool = False,
     debug_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MakeBiancaMaskOutputs:
     """
     make_bianca_mask.

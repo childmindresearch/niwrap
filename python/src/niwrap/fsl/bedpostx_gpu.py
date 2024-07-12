@@ -33,7 +33,7 @@ def bedpostx_gpu(
     sample_every: float | int | None = None,
     deconv_model: float | int | None = None,
     grad_nonlinear: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BedpostxGpuOutputs:
     """
     bedpostx_gpu by FMRIB Software Library (FSL).

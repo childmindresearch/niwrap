@@ -29,7 +29,7 @@ class CheckFeatOutputs(typing.NamedTuple):
 def check_feat(
     report_file: InputPathType,
     report_log_file: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CheckFeatOutputs:
     """
     checkFEAT by YourName.

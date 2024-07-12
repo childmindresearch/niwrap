@@ -26,7 +26,7 @@ class SurfaceVertexAreasOutputs(typing.NamedTuple):
 def surface_vertex_areas(
     surface: InputPathType,
     metric: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceVertexAreasOutputs:
     """
     surface-vertex-areas by Washington University School of Medicin.

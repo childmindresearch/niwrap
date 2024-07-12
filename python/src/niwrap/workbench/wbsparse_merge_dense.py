@@ -52,8 +52,8 @@ class WbsparseMergeDenseOutputs(typing.NamedTuple):
 def wbsparse_merge_dense(
     direction: str,
     wbsparse_out: str,
-    wbsparse: list[WbsparseMergeDenseWbsparse] = None,
-    runner: Runner = None,
+    wbsparse: list[WbsparseMergeDenseWbsparse] | None = None,
+    runner: Runner | None = None,
 ) -> WbsparseMergeDenseOutputs:
     """
     wbsparse-merge-dense by Washington University School of Medicin.

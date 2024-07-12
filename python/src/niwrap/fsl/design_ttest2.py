@@ -24,7 +24,7 @@ def design_ttest2(
     ngroupa: float | int,
     ngroupb: float | int,
     include_mean_contrasts: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DesignTtest2Outputs:
     """
     design_ttest2 by Analysis Group, FMRIB, Oxford, UK.

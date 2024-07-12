@@ -96,7 +96,7 @@ def cifti_change_mapping(
     opt_scalar: bool = False,
     opt_name_file_file: str | None = None,
     from_cifti: CiftiChangeMappingFromCifti | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiChangeMappingOutputs:
     """
     cifti-change-mapping by Washington University School of Medicin.

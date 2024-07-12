@@ -30,7 +30,7 @@ def sigloss(
     slice_direction: typing.Literal["x", "y", "z"] | None = None,
     verbose_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SiglossOutputs:
     """
     sigloss by University of Oxford (Mark Jenkinson).

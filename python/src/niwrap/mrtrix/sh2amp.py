@@ -104,10 +104,10 @@ def sh2amp(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Sh2ampConfig] = None,
+    config: list[Sh2ampConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Sh2ampOutputs:
     """
     sh2amp by David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier

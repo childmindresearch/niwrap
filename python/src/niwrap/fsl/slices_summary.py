@@ -37,7 +37,7 @@ def slices_summary(
     single_slice_flag: bool = False,
     darker_background_flag: bool = False,
     dumb_rule_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SlicesSummaryOutputs:
     """
     slices_summary.

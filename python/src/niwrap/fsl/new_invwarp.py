@@ -35,7 +35,7 @@ def invwarp(
     max_jacobian: float | int | None = 100.0,
     debug_flag: bool = False,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> InvwarpOutputs:
     """
     invwarp by University of Oxford (Jesper Andersson).

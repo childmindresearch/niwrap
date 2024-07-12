@@ -33,7 +33,7 @@ def atropos(
     output: str,
     image_dimensionality: typing.Literal[2, 3, 4] | None = None,
     bspline: str | None = "6,1x1x...,3",
-    partial_volume_label_set: list[str] = None,
+    partial_volume_label_set: list[str] | None = None,
     use_partial_volume_likelihoods: typing.Literal[0, 1] | None = None,
     posterior_formulation: str | None = None,
     convergence: str = "[5,0.001]",
@@ -45,7 +45,7 @@ def atropos(
     use_euclidean_distance: typing.Literal[0, 1] | None = None,
     label_propagation: str | None = None,
     verbose: typing.Literal[0, 1] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> AtroposOutputs:
     """
     Atropos by ANTs authors.

@@ -43,7 +43,7 @@ def fsl_anat(
     nosearch_flag: bool = False,
     bet_f_param: float | int | None = None,
     nocleanup_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslAnatOutputs:
     """
     fsl_anat by FMRIB Software Library (FSL) developers.

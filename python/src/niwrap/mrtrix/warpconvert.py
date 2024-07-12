@@ -66,10 +66,10 @@ def warpconvert(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[WarpconvertConfig] = None,
+    config: list[WarpconvertConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> WarpconvertOutputs:
     """
     warpconvert by David Raffelt (david.raffelt@florey.edu.au).

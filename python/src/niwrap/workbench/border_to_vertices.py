@@ -28,7 +28,7 @@ def border_to_vertices(
     border_file: InputPathType,
     metric_out: str,
     opt_border_name: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BorderToVerticesOutputs:
     """
     border-to-vertices by Washington University School of Medicin.

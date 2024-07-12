@@ -24,7 +24,7 @@ class BackendAverageRoiCorrelationOutputs(typing.NamedTuple):
 def backend_average_roi_correlation(
     index_list: str,
     out_file: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BackendAverageRoiCorrelationOutputs:
     """
     backend-average-roi-correlation by Washington University School of Medicin.

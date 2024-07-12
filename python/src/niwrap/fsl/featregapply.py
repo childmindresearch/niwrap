@@ -32,7 +32,7 @@ def featregapply(
     upsample_spline: InputPathType | None = None,
     standard_space_res: float | int | None = None,
     exclude_filtered_func_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FeatregapplyOutputs:
     """
     featregapply by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -25,10 +25,10 @@ class V3drefitOutputs(typing.NamedTuple):
 
 def v_3drefit(
     in_file: InputPathType,
-    atrcopy: list[str] = None,
-    atrfloat: list[str] = None,
-    atrint: list[str] = None,
-    atrstring: list[str] = None,
+    atrcopy: list[str] | None = None,
+    atrfloat: list[str] | None = None,
+    atrint: list[str] | None = None,
+    atrstring: list[str] | None = None,
     deoblique: bool = False,
     duporigin_file: InputPathType | None = None,
     nosaveatr: bool = False,
@@ -41,7 +41,7 @@ def v_3drefit(
     yorigin: str | None = None,
     zdel: float | int | None = None,
     zorigin: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3drefitOutputs:
     """
     3drefit by Nipype (interface).

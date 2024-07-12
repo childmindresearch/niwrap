@@ -29,7 +29,7 @@ def estnoise(
     spatial_sigma: float | int | None = None,
     temp_hp_sigma: float | int | None = None,
     temp_lp_sigma: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> EstnoiseOutputs:
     """
     estnoise by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -27,7 +27,7 @@ def metadata_string_replace(
     replace_string: str,
     output_file: str,
     opt_case_insensitive: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetadataStringReplaceOutputs:
     """
     metadata-string-replace by Washington University School of Medicin.

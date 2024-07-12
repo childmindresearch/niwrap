@@ -32,7 +32,7 @@ def volume_vector_operation(
     opt_normalize_b: bool = False,
     opt_normalize_output: bool = False,
     opt_magnitude: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeVectorOperationOutputs:
     """
     volume-vector-operation by Washington University School of Medicin.

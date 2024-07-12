@@ -63,7 +63,7 @@ def cifti_create_scalar_series(
     opt_transpose: bool = False,
     opt_name_file_file: str | None = None,
     series: CiftiCreateScalarSeriesSeries | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiCreateScalarSeriesOutputs:
     """
     cifti-create-scalar-series by Washington University School of Medicin.

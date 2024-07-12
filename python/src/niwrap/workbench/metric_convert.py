@@ -150,7 +150,7 @@ class MetricConvertOutputs(typing.NamedTuple):
 def metric_convert(
     to_nifti: MetricConvertToNifti | None = None,
     from_nifti: MetricConvertFromNifti | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricConvertOutputs:
     """
     metric-convert by Washington University School of Medicin.

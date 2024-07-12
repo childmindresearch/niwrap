@@ -42,7 +42,7 @@ def tcalc(
     noise_sigma: float | int | None = None,
     save_flag: bool = False,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TcalcOutputs:
     """
     tcalc by Tejas Pendse.

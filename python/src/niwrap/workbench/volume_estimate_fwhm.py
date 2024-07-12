@@ -27,7 +27,7 @@ def volume_estimate_fwhm(
     opt_subvolume_subvol: str | None = None,
     opt_whole_file: bool = False,
     opt_demean: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeEstimateFwhmOutputs:
     """
     volume-estimate-fwhm by Washington University School of Medicin.

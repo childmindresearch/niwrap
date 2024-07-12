@@ -28,7 +28,7 @@ def label_mask(
     mask: InputPathType,
     label_out: str,
     opt_column_column: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> LabelMaskOutputs:
     """
     label-mask by Washington University School of Medicin.

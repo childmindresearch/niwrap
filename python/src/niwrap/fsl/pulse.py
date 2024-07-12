@@ -50,7 +50,7 @@ def pulse(
     verbose_flag: bool = False,
     kcoord_flag: bool = False,
     cover: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PulseOutputs:
     """
     pulse by University of Oxford (Ivana Drobnjak and Mark Jenkinson).

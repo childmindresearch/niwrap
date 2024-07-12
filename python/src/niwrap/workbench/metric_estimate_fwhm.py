@@ -28,7 +28,7 @@ def metric_estimate_fwhm(
     opt_column_column: str | None = None,
     opt_whole_file: bool = False,
     opt_demean: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricEstimateFwhmOutputs:
     """
     metric-estimate-fwhm by Washington University School of Medicin.

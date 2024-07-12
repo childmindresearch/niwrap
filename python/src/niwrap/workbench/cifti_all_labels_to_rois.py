@@ -27,7 +27,7 @@ def cifti_all_labels_to_rois(
     label_in: InputPathType,
     map_: str,
     cifti_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiAllLabelsToRoisOutputs:
     """
     cifti-all-labels-to-rois by Washington University School of Medicin.

@@ -59,9 +59,9 @@ def flirt(
     ref_weight: InputPathType | None = None,
     rigid2_d: bool = False,
     schedule: InputPathType | None = None,
-    searchr_x: list[int] = None,
-    searchr_y: list[int] = None,
-    searchr_z: list[int] = None,
+    searchr_x: list[int] | None = None,
+    searchr_y: list[int] | None = None,
+    searchr_z: list[int] | None = None,
     sinc_width: int | None = 7,
     sinc_window: typing.Literal["rectangular", "hanning", "blackman"] | None = None,
     uses_qform: bool = False,
@@ -69,7 +69,7 @@ def flirt(
     wm_seg: InputPathType | None = None,
     wmcoords: InputPathType | None = None,
     wmnorms: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FlirtOutputs:
     """
     FLIRT by Oxford Centre for Functional MRI of the Brain (FMRIB).

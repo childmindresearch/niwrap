@@ -26,7 +26,7 @@ class SurfaceNormalsOutputs(typing.NamedTuple):
 def surface_normals(
     surface: InputPathType,
     metric_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceNormalsOutputs:
     """
     surface-normals by Washington University School of Medicin.

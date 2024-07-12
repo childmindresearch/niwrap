@@ -23,7 +23,7 @@ def fsl_sub_report(
     job_id: str,
     subjob_id: str | None = None,
     parseable_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslSubReportOutputs:
     """
     fsl_sub_report by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -26,7 +26,7 @@ class VolumeFillHolesOutputs(typing.NamedTuple):
 def volume_fill_holes(
     volume_in: InputPathType,
     volume_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeFillHolesOutputs:
     """
     volume-fill-holes by Washington University School of Medicin.

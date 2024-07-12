@@ -66,10 +66,10 @@ def fixel2voxel(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Fixel2voxelConfig] = None,
+    config: list[Fixel2voxelConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Fixel2voxelOutputs:
     """
     fixel2voxel by Robert E. Smith (robert.smith@florey.edu.au) & David Raffelt

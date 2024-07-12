@@ -184,10 +184,10 @@ def volume_resample(
     volume_space: str,
     method: str,
     volume_out: str,
-    affine: list[VolumeResampleAffine] = None,
-    affine_series: list[VolumeResampleAffineSeries] = None,
-    warp: list[VolumeResampleWarp] = None,
-    runner: Runner = None,
+    affine: list[VolumeResampleAffine] | None = None,
+    affine_series: list[VolumeResampleAffineSeries] | None = None,
+    warp: list[VolumeResampleWarp] | None = None,
+    runner: Runner | None = None,
 ) -> VolumeResampleOutputs:
     """
     volume-resample by Washington University School of Medicin.

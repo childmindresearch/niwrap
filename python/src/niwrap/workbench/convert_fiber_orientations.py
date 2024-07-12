@@ -72,8 +72,8 @@ class ConvertFiberOrientationsOutputs(typing.NamedTuple):
 def convert_fiber_orientations(
     label_volume: InputPathType,
     fiber_out: str,
-    fiber: list[ConvertFiberOrientationsFiber] = None,
-    runner: Runner = None,
+    fiber: list[ConvertFiberOrientationsFiber] | None = None,
+    runner: Runner | None = None,
 ) -> ConvertFiberOrientationsOutputs:
     """
     convert-fiber-orientations by Washington University School of Medicin.

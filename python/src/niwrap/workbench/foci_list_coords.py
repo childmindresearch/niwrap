@@ -25,7 +25,7 @@ def foci_list_coords(
     foci_file: InputPathType,
     coord_file_out: str,
     opt_names_out_names_file_out: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FociListCoordsOutputs:
     """
     foci-list-coords by Washington University School of Medicin.

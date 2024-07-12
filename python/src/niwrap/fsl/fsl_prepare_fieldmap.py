@@ -31,7 +31,7 @@ def fsl_prepare_fieldmap(
     out_image: str,
     delta_te: float | int,
     nocheck_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslPrepareFieldmapOutputs:
     """
     fsl_prepare_fieldmap by Oxford Centre for Functional MRI of the Brain (FMRIB).

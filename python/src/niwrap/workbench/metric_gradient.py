@@ -99,7 +99,7 @@ def metric_gradient(
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
     opt_average_normals: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricGradientOutputs:
     """
     metric-gradient by Washington University School of Medicin.

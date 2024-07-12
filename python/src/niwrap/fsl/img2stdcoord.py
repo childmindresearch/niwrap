@@ -31,7 +31,7 @@ def img2stdcoord(
     verbose_flag_1: bool = False,
     verbose_flag_2: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Img2stdcoordOutputs:
     """
     img2stdcoord by Oxford Centre for Functional MRI of the Brain (FMRIB).

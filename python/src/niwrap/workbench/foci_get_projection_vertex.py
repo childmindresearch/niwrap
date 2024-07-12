@@ -28,7 +28,7 @@ def foci_get_projection_vertex(
     surface: InputPathType,
     metric_out: str,
     opt_name_name: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FociGetProjectionVertexOutputs:
     """
     foci-get-projection-vertex by Washington University School of Medicin.

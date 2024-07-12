@@ -51,10 +51,10 @@ def fabber_t1(
     method: str,
     model: str,
     data: InputPathType,
-    data_mult: list[InputPathType] = None,
+    data_mult: list[InputPathType] | None = None,
     data_order: str | None = "interleave",
     mask: InputPathType | None = None,
-    masked_time_points: list[float | int] = None,
+    masked_time_points: list[float | int] | None = None,
     supp_data: InputPathType | None = None,
     overwrite: bool = False,
     link_to_latest: bool = False,
@@ -77,7 +77,7 @@ def fabber_t1(
     save_free_energy: bool = False,
     optfile: InputPathType | None = None,
     debug: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FabberT1Outputs:
     """
     fabber_t1 by FMRIB Analysis Group.

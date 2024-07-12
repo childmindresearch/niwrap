@@ -39,7 +39,7 @@ def xtract_blueprint(
     nsamples: float | int | None = 1000,
     res: float | int | None = 3,
     ptx_options: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> XtractBlueprintOutputs:
     """
     xtract_blueprint by Oxford Centre for Functional MRI of the Brain (FMRIB).

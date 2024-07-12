@@ -263,7 +263,7 @@ def volume_to_surface_mapping(
     ribbon_constrained: VolumeToSurfaceMappingRibbonConstrained | None = None,
     myelin_style: VolumeToSurfaceMappingMyelinStyle | None = None,
     opt_subvol_select_subvol: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeToSurfaceMappingOutputs:
     """
     volume-to-surface-mapping by Washington University School of Medicin.

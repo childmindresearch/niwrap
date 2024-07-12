@@ -69,7 +69,7 @@ def eddy(
     dont_peas: bool = False,
     data_is_shelled: bool = False,
     verbose: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> EddyOutputs:
     """
     eddy by Jesper Andersson (University of Oxford).

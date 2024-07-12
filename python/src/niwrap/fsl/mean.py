@@ -44,7 +44,7 @@ def mean(
     prior_mean: float | int | None = None,
     prior_std: float | int | None = None,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MeanOutputs:
     """
     mean by Oxford Centre for Functional MRI of the Brain (FMRIB).

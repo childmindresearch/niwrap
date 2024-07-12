@@ -129,9 +129,9 @@ def cifti_export_dense_mapping(
     cifti: InputPathType,
     direction: str,
     volume_all: CiftiExportDenseMappingVolumeAll | None = None,
-    surface: list[CiftiExportDenseMappingSurface] = None,
-    volume: list[CiftiExportDenseMappingVolume] = None,
-    runner: Runner = None,
+    surface: list[CiftiExportDenseMappingSurface] | None = None,
+    volume: list[CiftiExportDenseMappingVolume] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiExportDenseMappingOutputs:
     """
     cifti-export-dense-mapping by Washington University School of Medicin.

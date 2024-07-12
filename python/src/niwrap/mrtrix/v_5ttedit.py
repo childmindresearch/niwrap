@@ -68,10 +68,10 @@ def v_5ttedit(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[V5tteditConfig] = None,
+    config: list[V5tteditConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V5tteditOutputs:
     """
     5ttedit by Robert E. Smith (robert.smith@florey.edu.au).

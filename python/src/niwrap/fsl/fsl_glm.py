@@ -68,10 +68,10 @@ def fsl_glm(
     output_sigsq: InputPathType | None = None,
     output_data: InputPathType | None = None,
     output_vnscales: InputPathType | None = None,
-    vx_text: list[str] = None,
-    vx_images: list[InputPathType] = None,
+    vx_text: list[str] | None = None,
+    vx_images: list[InputPathType] | None = None,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslGlmOutputs:
     """
     fsl_glm by Christian F. Beckmann.

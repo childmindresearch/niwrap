@@ -68,10 +68,10 @@ def v_5tt2vis(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[V5tt2visConfig] = None,
+    config: list[V5tt2visConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V5tt2visOutputs:
     """
     5tt2vis by Robert E. Smith (robert.smith@florey.edu.au).

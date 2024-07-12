@@ -27,7 +27,7 @@ def label_probability(
     label_maps: InputPathType,
     probability_metric_out: str,
     opt_exclude_unlabeled: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> LabelProbabilityOutputs:
     """
     label-probability by Washington University School of Medicin.

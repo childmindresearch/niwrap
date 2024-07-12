@@ -57,7 +57,7 @@ class CiftiMathVar:
     """the name of the variable, as used in the expression"""
     cifti: InputPathType
     """the cifti file to use as this variable"""
-    select_: list[CiftiMathSelect] = None
+    select_: list[CiftiMathSelect] | None = None
     """select a single index from a dimension"""
     
     def run(
@@ -97,8 +97,8 @@ def cifti_math(
     cifti_out: str,
     opt_fixnan_replace: float | int | None = None,
     opt_override_mapping_check: bool = False,
-    var: list[CiftiMathVar] = None,
-    runner: Runner = None,
+    var: list[CiftiMathVar] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiMathOutputs:
     """
     cifti-math by Washington University School of Medicin.

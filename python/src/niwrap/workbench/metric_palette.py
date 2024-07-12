@@ -193,7 +193,7 @@ def metric_palette(
     opt_palette_name_name: str | None = None,
     thresholding: MetricPaletteThresholding | None = None,
     opt_inversion_type: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricPaletteOutputs:
     """
     metric-palette by Washington University School of Medicin.

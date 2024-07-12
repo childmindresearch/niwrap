@@ -24,7 +24,7 @@ class LabelExportTableOutputs(typing.NamedTuple):
 def label_export_table(
     label_in: InputPathType,
     table_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> LabelExportTableOutputs:
     """
     label-export-table by Washington University School of Medicin.

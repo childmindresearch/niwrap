@@ -130,7 +130,7 @@ def file_convert(
     border_version_convert: FileConvertBorderVersionConvert | None = None,
     nifti_version_convert: FileConvertNiftiVersionConvert | None = None,
     cifti_version_convert: FileConvertCiftiVersionConvert | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FileConvertOutputs:
     """
     file-convert by Washington University School of Medicin.

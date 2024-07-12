@@ -162,7 +162,7 @@ def mrtransform(
     input_: InputPathType,
     output: str,
     linear: InputPathType | None = None,
-    flip: list[int] = None,
+    flip: list[int] | None = None,
     inverse: bool = False,
     half: bool = False,
     replace: InputPathType | None = None,
@@ -170,7 +170,7 @@ def mrtransform(
     template: InputPathType | None = None,
     midway_space: bool = False,
     interp: str | None = None,
-    oversample: list[int] = None,
+    oversample: list[int] | None = None,
     warp: InputPathType | None = None,
     warp_full: InputPathType | None = None,
     from_: int | None = None,
@@ -190,10 +190,10 @@ def mrtransform(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrtransformConfig] = None,
+    config: list[MrtransformConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrtransformOutputs:
     """
     mrtransform by J-Donald Tournier (jdtournier@gmail.com) and David Raffelt

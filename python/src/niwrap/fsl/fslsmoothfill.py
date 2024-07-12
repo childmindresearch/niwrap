@@ -29,7 +29,7 @@ def fslsmoothfill(
     number_of_iterations: int | None = None,
     debug_flag: bool = False,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslsmoothfillOutputs:
     """
     fslsmoothfill by University of Oxford (Mark Jenkinson).

@@ -81,7 +81,7 @@ def fabber(
     list_outputs: bool = False,
     optfile_: InputPathType | None = None,
     old_optfile: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FabberOutputs:
     """
     fabber by FSL Community.

@@ -68,10 +68,10 @@ def sh2response(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Sh2responseConfig] = None,
+    config: list[Sh2responseConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Sh2responseOutputs:
     """
     sh2response by J-Donald Tournier (jdtournier@gmail.com).

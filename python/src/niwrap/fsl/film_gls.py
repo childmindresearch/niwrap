@@ -50,9 +50,9 @@ def film_gls(
     ms: float | int | None = None,
     tukey: float | int | None = None,
     mt: float | int | None = None,
-    ven: list[str] = None,
-    vef: list[InputPathType] = None,
-    runner: Runner = None,
+    ven: list[str] | None = None,
+    vef: list[InputPathType] | None = None,
+    runner: Runner | None = None,
 ) -> FilmGlsOutputs:
     """
     film_gls by Oxford Centre for Functional MRI of the Brain (FMRIB).

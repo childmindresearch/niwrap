@@ -30,7 +30,7 @@ def fslcc(
     nodemean_flag: bool = False,
     threshold: float | int | None = 0.1,
     decimal_places: float | int | None = 2,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslccOutputs:
     """
     fslcc by Oxford Centre for Functional MRI of the Brain (FMRIB).

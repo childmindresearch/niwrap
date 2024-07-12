@@ -28,7 +28,7 @@ def unconfound(
     in4d: InputPathType,
     out4d: str,
     confound_mat: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> UnconfoundOutputs:
     """
     unconfound by Oxford Centre for Functional MRI of the Brain (FMRIB).

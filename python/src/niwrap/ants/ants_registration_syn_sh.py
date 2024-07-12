@@ -29,7 +29,7 @@ def ants_registration_sy_n(
     moving_image: InputPathType,
     output_prefix: str,
     threads: int | None = None,
-    initial_transform: list[str] = None,
+    initial_transform: list[str] | None = None,
     transform_type: typing.Literal["t", "r", "a", "s", "sr", "so", "b", "br", "bo"] | None = None,
     radius: int | None = None,
     spline_distance: int | None = None,
@@ -40,7 +40,7 @@ def ants_registration_sy_n(
     use_repro_mode: typing.Literal[0, 1] | None = None,
     collapse_output_transforms: typing.Literal[0, 1] | None = None,
     random_seed: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> AntsRegistrationSyNOutputs:
     """
     antsRegistrationSyN by Brian B. Avants, Nick Tustison, and Gang Song.

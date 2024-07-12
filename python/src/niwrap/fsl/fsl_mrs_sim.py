@@ -39,7 +39,7 @@ def fsl_mrs_sim(
     output_te: float | int | None = None,
     overwrite_flag: bool = False,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslMrsSimOutputs:
     """
     fsl_mrs_sim by FSL.

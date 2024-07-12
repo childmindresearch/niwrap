@@ -65,7 +65,7 @@ def tcksift(
     in_fod: InputPathType,
     out_tracks: str,
     nofilter: bool = False,
-    output_at_counts: list[int] = None,
+    output_at_counts: list[int] | None = None,
     proc_mask: InputPathType | None = None,
     act: InputPathType | None = None,
     fd_scale_gm: bool = False,
@@ -85,10 +85,10 @@ def tcksift(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TcksiftConfig] = None,
+    config: list[TcksiftConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TcksiftOutputs:
     """
     tcksift by Robert E. Smith (robert.smith@florey.edu.au).

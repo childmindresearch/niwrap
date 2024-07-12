@@ -33,7 +33,7 @@ def img2imgcoord(
     coords_in_mm: bool = False,
     verbose: bool = False,
     help_: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Img2imgcoordOutputs:
     """
     img2imgcoord by Oxford Centre for Functional MRI of the Brain (FMRIB).

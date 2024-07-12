@@ -92,8 +92,8 @@ def cifti_average_dense_roi(
     opt_left_area_surf_left_surf: InputPathType | None = None,
     opt_right_area_surf_right_surf: InputPathType | None = None,
     opt_cerebellum_area_surf_cerebellum_surf: InputPathType | None = None,
-    cifti: list[CiftiAverageDenseRoiCifti] = None,
-    runner: Runner = None,
+    cifti: list[CiftiAverageDenseRoiCifti] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiAverageDenseRoiOutputs:
     """
     cifti-average-dense-roi by Washington University School of Medicin.

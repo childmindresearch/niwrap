@@ -68,7 +68,7 @@ def reg_transform(
     comp_aff_1st: InputPathType | None = None,
     comp_aff_2nd: InputPathType | None = None,
     comp_aff_output: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RegTransformOutputs:
     """
     reg_transform by Marc Modat.

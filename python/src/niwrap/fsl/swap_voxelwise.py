@@ -33,7 +33,7 @@ def swap_voxelwise(
     init_mask: InputPathType | None = None,
     crossing_thresh: float | int | None = 0.1,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SwapVoxelwiseOutputs:
     """
     swap_voxelwise by FMRIB Software Library (FSL).

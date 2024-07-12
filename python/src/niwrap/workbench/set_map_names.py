@@ -56,8 +56,8 @@ def set_map_names(
     data_file: str,
     opt_name_file_file: str | None = None,
     opt_from_data_file_file: str | None = None,
-    map_: list[SetMapNamesMap] = None,
-    runner: Runner = None,
+    map_: list[SetMapNamesMap] | None = None,
+    runner: Runner | None = None,
 ) -> SetMapNamesOutputs:
     """
     set-map-names by Washington University School of Medicin.

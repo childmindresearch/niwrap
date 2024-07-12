@@ -35,7 +35,7 @@ def reg_aladin(
     use_nifti_origin: bool = False,
     percent_block: float | int | None = None,
     percent_inlier: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RegAladinOutputs:
     """
     reg_aladin by Marc Modat, Pankaj Daga.

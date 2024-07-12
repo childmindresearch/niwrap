@@ -29,7 +29,7 @@ def avscale(
     non_reference_volume: InputPathType | None = None,
     allparams_flag: bool = False,
     inverteddies_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> AvscaleOutputs:
     """
     avscale by Unknown.

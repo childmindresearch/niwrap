@@ -28,7 +28,7 @@ def fslanimate(
     input_file: InputPathType,
     output_file: str,
     tmp_dir: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslanimateOutputs:
     """
     fslanimate by Oxford Centre for Functional MRI of the Brain (FMRIB).

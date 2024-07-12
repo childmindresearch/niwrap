@@ -73,10 +73,10 @@ def mrthreshold(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrthresholdConfig] = None,
+    config: list[MrthresholdConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrthresholdOutputs:
     """
     mrthreshold by Robert E. Smith (robert.smith@florey.edu.au) and J-Donald

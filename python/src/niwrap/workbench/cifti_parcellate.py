@@ -125,7 +125,7 @@ def cifti_parcellate(
     opt_nonempty_mask_out: bool = False,
     opt_legacy_mode: bool = False,
     opt_include_empty: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiParcellateOutputs:
     """
     cifti-parcellate by Washington University School of Medicin.

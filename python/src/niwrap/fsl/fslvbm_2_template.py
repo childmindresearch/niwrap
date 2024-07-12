@@ -47,7 +47,7 @@ def fslvbm_2_template(
     project: str | None = None,
     runtime_limit: float | int | None = None,
     job_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Fslvbm2TemplateOutputs:
     """
     fslvbm_2_template by Oxford Centre for Functional MRI of the Brain (FMRIB).

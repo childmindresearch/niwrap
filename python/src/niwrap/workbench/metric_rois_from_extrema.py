@@ -32,7 +32,7 @@ def metric_rois_from_extrema(
     opt_roi_roi_metric: InputPathType | None = None,
     opt_overlap_logic_method: str | None = None,
     opt_column_column: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricRoisFromExtremaOutputs:
     """
     metric-rois-from-extrema by Washington University School of Medicin.

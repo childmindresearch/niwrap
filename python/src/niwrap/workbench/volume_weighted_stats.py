@@ -97,7 +97,7 @@ def volume_weighted_stats(
     opt_percentile_percent: float | int | None = None,
     opt_sum: bool = False,
     opt_show_map_name: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeWeightedStatsOutputs:
     """
     volume-weighted-stats by Washington University School of Medicin.

@@ -60,7 +60,7 @@ def dwidenoise(
     dwi: InputPathType,
     out: str,
     mask: InputPathType | None = None,
-    extent: list[int] = None,
+    extent: list[int] | None = None,
     noise: str | None = None,
     datatype: str | None = None,
     estimator: str | None = None,
@@ -69,10 +69,10 @@ def dwidenoise(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[DwidenoiseConfig] = None,
+    config: list[DwidenoiseConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DwidenoiseOutputs:
     """
     dwidenoise by Daan Christiaens (daan.christiaens@kcl.ac.uk) & Jelle Veraart

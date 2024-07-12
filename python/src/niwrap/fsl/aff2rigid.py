@@ -25,7 +25,7 @@ class Aff2rigidOutputs(typing.NamedTuple):
 def aff2rigid(
     input_transform: InputPathType,
     output_transform: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Aff2rigidOutputs:
     """
     aff2rigid by FMRIB, University of Oxford.

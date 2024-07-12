@@ -66,7 +66,7 @@ def metric_smoothing(
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
     opt_method_method: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricSmoothingOutputs:
     """
     metric-smoothing by Washington University School of Medicin.

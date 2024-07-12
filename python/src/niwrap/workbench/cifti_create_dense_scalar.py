@@ -154,7 +154,7 @@ def cifti_create_dense_scalar(
     right_metric: CiftiCreateDenseScalarRightMetric | None = None,
     cerebellum_metric: CiftiCreateDenseScalarCerebellumMetric | None = None,
     opt_name_file_file: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiCreateDenseScalarOutputs:
     """
     cifti-create-dense-scalar by Washington University School of Medicin.

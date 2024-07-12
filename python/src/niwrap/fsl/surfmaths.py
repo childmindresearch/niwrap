@@ -24,8 +24,8 @@ class SurfmathsOutputs(typing.NamedTuple):
 def surfmaths(
     first_input: InputPathType,
     output: InputPathType,
-    operations_inputs: list[str] = None,
-    runner: Runner = None,
+    operations_inputs: list[str] | None = None,
+    runner: Runner | None = None,
 ) -> SurfmathsOutputs:
     """
     surfmaths.

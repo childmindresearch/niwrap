@@ -31,7 +31,7 @@ def metric_label_import(
     opt_unlabeled_value_value: int | None = None,
     opt_column_column: str | None = None,
     opt_drop_unused_labels: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricLabelImportOutputs:
     """
     metric-label-import by Washington University School of Medicin.

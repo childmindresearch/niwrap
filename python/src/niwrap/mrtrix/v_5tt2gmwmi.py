@@ -63,10 +63,10 @@ def v_5tt2gmwmi(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[V5tt2gmwmiConfig] = None,
+    config: list[V5tt2gmwmiConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V5tt2gmwmiOutputs:
     """
     5tt2gmwmi by Robert E. Smith (robert.smith@florey.edu.au).

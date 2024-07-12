@@ -585,8 +585,8 @@ def dwi2response(
     fslgrad: Dwi2responseFslgrad | None = None,
     mask: InputPathType | None = None,
     voxels: str | None = None,
-    shells: list[int] = None,
-    lmax: list[int] = None,
+    shells: list[int] | None = None,
+    lmax: list[int] | None = None,
     nocleanup: bool = False,
     scratch: str | None = None,
     continue_: str | None = None,
@@ -595,10 +595,10 @@ def dwi2response(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Dwi2responseConfig] = None,
+    config: list[Dwi2responseConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Dwi2responseOutputs:
     """
     dwi2response by Robert E. Smith (robert.smith@florey.edu.au) & Thijs Dhollander

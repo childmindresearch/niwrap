@@ -153,7 +153,7 @@ def cifti_create_label(
     left_label: CiftiCreateLabelLeftLabel | None = None,
     right_label: CiftiCreateLabelRightLabel | None = None,
     cerebellum_label: CiftiCreateLabelCerebellumLabel | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiCreateLabelOutputs:
     """
     cifti-create-label by Washington University School of Medicin.

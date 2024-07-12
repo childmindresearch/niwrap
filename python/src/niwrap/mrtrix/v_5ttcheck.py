@@ -60,10 +60,10 @@ def v_5ttcheck(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[V5ttcheckConfig] = None,
+    config: list[V5ttcheckConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V5ttcheckOutputs:
     """
     5ttcheck by Robert E. Smith (robert.smith@florey.edu.au).

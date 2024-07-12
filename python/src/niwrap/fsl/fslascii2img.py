@@ -35,7 +35,7 @@ def fslascii2img(
     zdim: float | int,
     tr: float | int,
     outfile: str = "output",
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Fslascii2imgOutputs:
     """
     fslascii2img by Oxford Centre for Functional MRI of the Brain (FMRIB).

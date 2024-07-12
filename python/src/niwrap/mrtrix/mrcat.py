@@ -65,10 +65,10 @@ def mrcat(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrcatConfig] = None,
+    config: list[MrcatConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrcatOutputs:
     """
     mrcat by J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith

@@ -27,7 +27,7 @@ def zip_spec_file(
     zip_file: str,
     opt_base_dir_directory: str | None = None,
     opt_skip_missing: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ZipSpecFileOutputs:
     """
     zip-spec-file by Washington University School of Medicin.

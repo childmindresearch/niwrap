@@ -84,7 +84,7 @@ def fabber_qbold(
     save_free_energy: bool = False,
     optfile: InputPathType | None = None,
     debug: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FabberQboldOutputs:
     """
     fabber_qbold by FSL.

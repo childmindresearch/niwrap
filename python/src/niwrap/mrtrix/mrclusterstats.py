@@ -105,7 +105,7 @@ def mrclusterstats(
     variance: InputPathType | None = None,
     ftests: InputPathType | None = None,
     fonly: bool = False,
-    column: list[MrclusterstatsColumn] = None,
+    column: list[MrclusterstatsColumn] | None = None,
     threshold: float | int | None = None,
     connectivity: bool = False,
     info: bool = False,
@@ -113,10 +113,10 @@ def mrclusterstats(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrclusterstatsConfig] = None,
+    config: list[MrclusterstatsConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrclusterstatsOutputs:
     """
     mrclusterstats by David Raffelt (david.raffelt@florey.edu.au).

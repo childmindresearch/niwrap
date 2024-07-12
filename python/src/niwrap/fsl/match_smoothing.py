@@ -24,7 +24,7 @@ def match_smoothing(
     func_smoothing_fwhm: float | int,
     example_structural: InputPathType,
     standard_space_resolution: float | int,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MatchSmoothingOutputs:
     """
     match_smoothing.

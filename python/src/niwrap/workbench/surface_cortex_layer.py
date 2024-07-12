@@ -32,7 +32,7 @@ def surface_cortex_layer(
     out_surface: str,
     placement_metric: str,
     opt_placement_out: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceCortexLayerOutputs:
     """
     surface-cortex-layer by Washington University School of Medicin.

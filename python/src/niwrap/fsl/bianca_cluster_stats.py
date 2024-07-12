@@ -24,7 +24,7 @@ def bianca_cluster_stats(
     threshold: float | int,
     min_cluster_size: float | int,
     mask: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BiancaClusterStatsOutputs:
     """
     bianca_cluster_stats.

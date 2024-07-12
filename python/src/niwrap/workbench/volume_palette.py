@@ -193,7 +193,7 @@ def volume_palette(
     opt_palette_name_name: str | None = None,
     thresholding: VolumePaletteThresholding | None = None,
     opt_inversion_type: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumePaletteOutputs:
     """
     volume-palette by Washington University School of Medicin.

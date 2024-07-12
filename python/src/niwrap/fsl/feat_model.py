@@ -25,7 +25,7 @@ class FeatModelOutputs(typing.NamedTuple):
 def feat_model(
     design_name_root: str,
     confound_matrix: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FeatModelOutputs:
     """
     feat_model by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -34,7 +34,7 @@ def run_first(
     intref_model_name: str | None = None,
     load_bvars: InputPathType | None = None,
     multiple_images_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RunFirstOutputs:
     """
     run_first by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -61,7 +61,7 @@ def prelude(
     verbose_alias: bool = False,
     help_: bool = False,
     help_alias: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PreludeOutputs:
     """
     prelude by University of Oxford (Mark Jenkinson).

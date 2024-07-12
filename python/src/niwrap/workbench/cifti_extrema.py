@@ -72,7 +72,7 @@ def cifti_extrema(
     opt_consolidate_mode: bool = False,
     opt_only_maxima: bool = False,
     opt_only_minima: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiExtremaOutputs:
     """
     cifti-extrema by Washington University School of Medicin.

@@ -28,7 +28,7 @@ def cifti_reorder(
     direction: str,
     reorder_list: str,
     cifti_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiReorderOutputs:
     """
     cifti-reorder by Washington University School of Medicin.

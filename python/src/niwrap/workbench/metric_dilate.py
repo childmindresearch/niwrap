@@ -36,7 +36,7 @@ def metric_dilate(
     opt_exponent_exponent: float | int | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
     opt_legacy_cutoff: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricDilateOutputs:
     """
     metric-dilate by Washington University School of Medicin.

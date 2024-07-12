@@ -26,7 +26,7 @@ def fslmodhd(
     image: InputPathType,
     keyword_: str,
     value: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslmodhdOutputs:
     """
     fslmodhd by Oxford Centre for Functional MRI of the Brain (FMRIB).

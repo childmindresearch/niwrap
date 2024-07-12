@@ -32,7 +32,7 @@ def flirt_average(
     input3: InputPathType | None = None,
     reference_image: InputPathType | None = None,
     flirt_options: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FlirtAverageOutputs:
     """
     flirt_average by FMRIB Analysis Group, Oxford Centre for Functional MRI of the

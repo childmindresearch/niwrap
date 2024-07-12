@@ -37,7 +37,7 @@ def standard_space_roi(
     alt_input: InputPathType | None = None,
     debug_flag: bool = False,
     bet_premask_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> StandardSpaceRoiOutputs:
     """
     standard_space_roi by Oxford Centre for Functional MRI of the Brain (FMRIB).

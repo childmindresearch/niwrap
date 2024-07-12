@@ -33,7 +33,7 @@ def v_3dcalc(
     single_idx: int | None = None,
     start_idx: int | None = None,
     stop_idx: int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dcalcOutputs:
     """
     3dcalc by RWCox @ AFNI.

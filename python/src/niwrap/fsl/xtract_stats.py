@@ -34,7 +34,7 @@ def xtract_stats(
     threshold: float | int | None = None,
     measurements: str | None = None,
     keep_temp_files: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> XtractStatsOutputs:
     """
     xtract_stats by Oxford Centre for Functional MRI of the Brain (FMRIB).

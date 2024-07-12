@@ -56,8 +56,8 @@ class AnnotationResampleOutputs(typing.NamedTuple):
 def annotation_resample(
     annotation_in: InputPathType,
     annotation_out: str,
-    surface_pair: list[AnnotationResampleSurfacePair] = None,
-    runner: Runner = None,
+    surface_pair: list[AnnotationResampleSurfacePair] | None = None,
+    runner: Runner | None = None,
 ) -> AnnotationResampleOutputs:
     """
     annotation-resample by Washington University School of Medicin.

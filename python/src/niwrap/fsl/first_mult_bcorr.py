@@ -31,7 +31,7 @@ def first_mult_bcorr(
     corrected_4d_labels: InputPathType,
     verbose_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FirstMultBcorrOutputs:
     """
     first_mult_bcorr by University of Oxford (Mark Jenkinson).

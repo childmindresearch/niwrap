@@ -64,10 +64,10 @@ def shconv(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[ShconvConfig] = None,
+    config: list[ShconvConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ShconvOutputs:
     """
     shconv by David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier

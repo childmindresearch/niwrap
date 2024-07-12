@@ -31,7 +31,7 @@ def v_3d_tstat(
     num_threads: int | None = 1,
     options: str | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dTstatOutputs:
     """
     3dTstat by Nipype (interface).

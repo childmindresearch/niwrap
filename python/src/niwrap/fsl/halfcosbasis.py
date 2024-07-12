@@ -40,7 +40,7 @@ def halfcosbasis(
     temp_res: float | int | None = 0.05,
     help_flag: bool = False,
     help_flag_long: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> HalfcosbasisOutputs:
     """
     halfcosbasis by Oxford Centre for Functional MRI of the Brain (FMRIB).

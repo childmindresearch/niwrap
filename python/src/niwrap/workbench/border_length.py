@@ -27,7 +27,7 @@ def border_length(
     opt_corrected_areas_area_metric: InputPathType | None = None,
     opt_separate_pieces: bool = False,
     opt_hide_border_name: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BorderLengthOutputs:
     """
     border-length by Washington University School of Medicin.

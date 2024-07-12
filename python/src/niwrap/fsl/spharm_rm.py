@@ -30,7 +30,7 @@ def spharm_rm(
     mask_file: InputPathType | None = None,
     number_of_terms: float | int | None = None,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SpharmRmOutputs:
     """
     spharm_rm by University of Oxford (Mark Jenkinson).

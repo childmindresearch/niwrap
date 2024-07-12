@@ -341,10 +341,10 @@ def v_5ttgen(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[V5ttgenConfig] = None,
+    config: list[V5ttgenConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V5ttgenOutputs:
     """
     5ttgen by Robert E. Smith (robert.smith@florey.edu.au).

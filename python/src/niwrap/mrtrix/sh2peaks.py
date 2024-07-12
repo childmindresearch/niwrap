@@ -90,7 +90,7 @@ def sh2peaks(
     sh: InputPathType,
     output: str,
     num: int | None = None,
-    direction: list[Sh2peaksDirection] = None,
+    direction: list[Sh2peaksDirection] | None = None,
     peaks: InputPathType | None = None,
     threshold: float | int | None = None,
     seeds: InputPathType | None = None,
@@ -101,10 +101,10 @@ def sh2peaks(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Sh2peaksConfig] = None,
+    config: list[Sh2peaksConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Sh2peaksOutputs:
     """
     sh2peaks by J-Donald Tournier (jdtournier@gmail.com).

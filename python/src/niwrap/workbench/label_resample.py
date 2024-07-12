@@ -99,7 +99,7 @@ def label_resample(
     opt_valid_roi_out: bool = False,
     opt_largest: bool = False,
     opt_bypass_sphere_check: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> LabelResampleOutputs:
     """
     label-resample by Washington University School of Medicin.

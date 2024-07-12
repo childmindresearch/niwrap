@@ -25,7 +25,7 @@ def perfusion_subtract(
     four_d_input: InputPathType,
     four_d_output: str,
     control_first_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PerfusionSubtractOutputs:
     """
     perfusion_subtract.

@@ -61,7 +61,7 @@ def convert_matrix4_to_workbench_sparse(
     wb_sparse_out: str,
     opt_surface_seeds_seed_roi: InputPathType | None = None,
     volume_seeds: ConvertMatrix4ToWorkbenchSparseVolumeSeeds | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ConvertMatrix4ToWorkbenchSparseOutputs:
     """
     convert-matrix4-to-workbench-sparse by Washington University School of Medicin.

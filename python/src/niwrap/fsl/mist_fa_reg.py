@@ -26,7 +26,7 @@ def mist_fa_reg(
     s0_volume: InputPathType,
     reference_t1_volume: InputPathType,
     output_filename: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MistFaRegOutputs:
     """
     mist_FA_reg by Unknown.

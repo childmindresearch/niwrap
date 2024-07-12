@@ -83,7 +83,7 @@ class LabelMergeLabel:
     """
     label_in: InputPathType
     """a label file to use columns from"""
-    column: list[LabelMergeColumn] = None
+    column: list[LabelMergeColumn] | None = None
     """select a single column to use"""
     
     def run(
@@ -119,8 +119,8 @@ class LabelMergeOutputs(typing.NamedTuple):
 
 def label_merge(
     label_out: str,
-    label: list[LabelMergeLabel] = None,
-    runner: Runner = None,
+    label: list[LabelMergeLabel] | None = None,
+    runner: Runner | None = None,
 ) -> LabelMergeOutputs:
     """
     label-merge by Washington University School of Medicin.

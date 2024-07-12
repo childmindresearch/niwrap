@@ -28,7 +28,7 @@ def smoothest(
     residual_fit_image: InputPathType | None = None,
     zstat_image: InputPathType | None = None,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SmoothestOutputs:
     """
     smoothest by University of Oxford (Dave Flitney and Mark Jenkinson).

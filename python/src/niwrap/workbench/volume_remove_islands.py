@@ -26,7 +26,7 @@ class VolumeRemoveIslandsOutputs(typing.NamedTuple):
 def volume_remove_islands(
     volume_in: InputPathType,
     volume_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeRemoveIslandsOutputs:
     """
     volume-remove-islands by Washington University School of Medicin.

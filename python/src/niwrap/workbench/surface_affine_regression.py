@@ -25,7 +25,7 @@ def surface_affine_regression(
     source: InputPathType,
     target: InputPathType,
     affine_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceAffineRegressionOutputs:
     """
     surface-affine-regression by Washington University School of Medicin.

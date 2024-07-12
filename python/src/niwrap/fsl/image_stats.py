@@ -30,7 +30,7 @@ def image_stats(
     mask_file: InputPathType | None = None,
     output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
     split_4d: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ImageStatsOutputs:
     """
     ImageStats by Nipype (interface).

@@ -25,7 +25,7 @@ def gifti_convert(
     gifti_encoding: str,
     input_gifti_file: str,
     output_gifti_file: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> GiftiConvertOutputs:
     """
     gifti-convert by Washington University School of Medicin.

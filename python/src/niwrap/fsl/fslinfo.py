@@ -24,7 +24,7 @@ class FslinfoOutputs(typing.NamedTuple):
 
 def fslinfo(
     filename: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslinfoOutputs:
     """
     fslinfo by Oxford Centre for Functional MRI of the Brain (FMRIB).

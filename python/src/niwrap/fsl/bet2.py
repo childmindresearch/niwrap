@@ -35,7 +35,7 @@ def bet__brain_extraction_tool_(
     output_fileroot: str,
     fractional_intensity: float | int | None = None,
     vertical_gradient: float | int | None = None,
-    center_of_gravity: list[float | int] = None,
+    center_of_gravity: list[float | int] | None = None,
     outline_flag: bool = False,
     mask_flag: bool = False,
     skull_flag: bool = False,
@@ -46,7 +46,7 @@ def bet__brain_extraction_tool_(
     threshold_flag: bool = False,
     verbose_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BetBrainExtractionToolOutputs:
     """
     BET (Brain Extraction Tool) by FMRIB Analysis Group, Oxford.

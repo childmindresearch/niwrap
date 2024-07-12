@@ -28,7 +28,7 @@ def metric_vector_toward_roi(
     target_roi: InputPathType,
     metric_out: str,
     opt_roi_roi_metric: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricVectorTowardRoiOutputs:
     """
     metric-vector-toward-roi by Washington University School of Medicin.

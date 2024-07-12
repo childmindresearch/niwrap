@@ -96,14 +96,14 @@ class FslmathsOperation:
     index: bool = False
     """Replace each nonzero voxel with a unique (subject to wrapping) index
     number"""
-    grid: list[float | int] = None
+    grid: list[float | int] | None = None
     """Add a 3D grid of intensity <value> with grid spacing <spacing>"""
     edge: bool = False
     """Edge strength"""
-    tfce: list[float | int] = None
+    tfce: list[float | int] | None = None
     """Enhance with TFCE, e.g. -tfce 2 0.5 6 (maybe change 6 to 26 for
     skeletons)"""
-    tfce_s: list[float | int] = None
+    tfce_s: list[float | int] | None = None
     """Show support area for voxel (X,Y,Z)"""
     nan: bool = False
     """Replace NaNs (improper numbers) with 0"""
@@ -130,7 +130,7 @@ class FslmathsOperation:
     """All voxels in a cube of width <size> mm centered on target voxel"""
     kernel_boxv: float | int | None = None
     """All voxels in a cube of width <size> voxels centered on target voxel"""
-    kernel_boxv3: list[float | int] = None
+    kernel_boxv3: list[float | int] | None = None
     """All voxels in a cuboid of dimensions X x Y x Z centered on target
     voxel"""
     kernel_gauss: float | int | None = None
@@ -222,14 +222,14 @@ class FslmathsOperation:
     """Nth percentile (0-100) of FULL RANGE across Z axis"""
     tar1: bool = False
     """Temporal AR(1) coefficient (use -odt float and probably demean first)"""
-    roi: list[float | int] = None
+    roi: list[float | int] | None = None
     """<xmin> <xsize> <ymin> <ysize> <zmin> <zsize> <tmin> <tsize>. Zero outside
     roi (using voxel coordinates). Inputting -1 for a size will set it to the
     full image extent for that dimension."""
-    bptf: list[float | int] = None
+    bptf: list[float | int] | None = None
     """<lowpass> <highpass>. Bandpass temporal filtering (use -odt float and
     probably demean first)"""
-    roc: list[float | int] = None
+    roc: list[float | int] | None = None
     """<threshold> <output>. ROC analysis"""
     
     def run(
@@ -693,7 +693,7 @@ def fslmaths(
     output: str,
     datatype_internal: typing.Literal["char", "short", "int", "float", "double", "input"] | None = "float",
     output_datatype: typing.Literal["char", "short", "int", "float", "double", "input"] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslmathsOutputs:
     """
     fslmaths by FSL Team.

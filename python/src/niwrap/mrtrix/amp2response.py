@@ -62,17 +62,17 @@ def amp2response(
     isotropic: bool = False,
     noconstraint: bool = False,
     directions_: InputPathType | None = None,
-    shells: list[float | int] = None,
-    lmax: list[int] = None,
+    shells: list[float | int] | None = None,
+    lmax: list[int] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Amp2responseConfig] = None,
+    config: list[Amp2responseConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Amp2responseOutputs:
     """
     amp2response by Robert E. Smith (robert.smith@florey.edu.au) and J-Donald

@@ -123,8 +123,8 @@ def convert_warpfield(
     from_fnirt: ConvertWarpfieldFromFnirt | None = None,
     opt_to_world_output: str | None = None,
     opt_to_itk_output: str | None = None,
-    to_fnirt: list[ConvertWarpfieldToFnirt] = None,
-    runner: Runner = None,
+    to_fnirt: list[ConvertWarpfieldToFnirt] | None = None,
+    runner: Runner | None = None,
 ) -> ConvertWarpfieldOutputs:
     """
     convert-warpfield by Washington University School of Medicin.

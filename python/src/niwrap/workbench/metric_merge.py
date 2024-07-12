@@ -83,7 +83,7 @@ class MetricMergeMetric:
     """
     metric_in: InputPathType
     """a metric file to use columns from"""
-    column: list[MetricMergeColumn] = None
+    column: list[MetricMergeColumn] | None = None
     """select a single column to use"""
     
     def run(
@@ -119,8 +119,8 @@ class MetricMergeOutputs(typing.NamedTuple):
 
 def metric_merge(
     metric_out: str,
-    metric: list[MetricMergeMetric] = None,
-    runner: Runner = None,
+    metric: list[MetricMergeMetric] | None = None,
+    runner: Runner | None = None,
 ) -> MetricMergeOutputs:
     """
     metric-merge by Washington University School of Medicin.

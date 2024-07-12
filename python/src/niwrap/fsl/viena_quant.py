@@ -25,7 +25,7 @@ def viena_quant(
     input1: InputPathType,
     input2: InputPathType,
     ventricle_mask: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VienaQuantOutputs:
     """
     viena_quant by Unknown.

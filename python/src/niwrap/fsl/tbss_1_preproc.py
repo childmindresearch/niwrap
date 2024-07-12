@@ -24,7 +24,7 @@ class Tbss1PreprocOutputs(typing.NamedTuple):
 
 def tbss_1_preproc(
     images: list[InputPathType],
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Tbss1PreprocOutputs:
     """
     tbss_1_preproc by FSL (FMRIB Software Library).

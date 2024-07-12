@@ -25,7 +25,7 @@ class ZeropadOutputs(typing.NamedTuple):
 def zeropad(
     input_number: str,
     output_length: float | int,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ZeropadOutputs:
     """
     zeropad.

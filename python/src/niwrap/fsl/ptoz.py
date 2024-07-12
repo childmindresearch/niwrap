@@ -26,7 +26,7 @@ def ptoz(
     p_value: float | int,
     tail_flag: bool = False,
     grf_flag: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PtozOutputs:
     """
     ptoz by Statistical Parametric Mapping (SPM).

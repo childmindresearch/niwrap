@@ -27,7 +27,7 @@ def cifti_transpose(
     cifti_in: InputPathType,
     cifti_out: str,
     opt_mem_limit_limit_gb: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiTransposeOutputs:
     """
     cifti-transpose by Washington University School of Medicin.

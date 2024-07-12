@@ -62,10 +62,10 @@ def voxel2fixel(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Voxel2fixelConfig] = None,
+    config: list[Voxel2fixelConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Voxel2fixelOutputs:
     """
     voxel2fixel by David Raffelt (david.raffelt@florey.edu.au).

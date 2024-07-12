@@ -34,7 +34,7 @@ def anatomical_average(
     brainsize: float | int | None = None,
     noclean_flag: bool = False,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> AnatomicalAverageOutputs:
     """
     AnatomicalAverage by Brain Imaging Center.

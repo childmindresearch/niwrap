@@ -33,7 +33,7 @@ def robust_fov(
     in_file: InputPathType,
     brainsize: int | None = None,
     output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RobustFovOutputs:
     """
     RobustFOV by Nipype (interface).

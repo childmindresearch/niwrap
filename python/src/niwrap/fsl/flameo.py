@@ -25,7 +25,7 @@ class FlameoOutputs(typing.NamedTuple):
 
 def flameo(
     dummy_input: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FlameoOutputs:
     """
     FLAMEO.

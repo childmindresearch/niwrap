@@ -64,10 +64,10 @@ def dirflip(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[DirflipConfig] = None,
+    config: list[DirflipConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DirflipOutputs:
     """
     dirflip by J-Donald Tournier (jdtournier@gmail.com).

@@ -27,14 +27,14 @@ class TsplotOutputs(typing.NamedTuple):
 def tsplot(
     input_directory: str,
     main_filtered_data: InputPathType | None = None,
-    coordinates: list[float | int] = None,
-    coordinates_output: list[float | int] = None,
+    coordinates: list[float | int] | None = None,
+    coordinates_output: list[float | int] | None = None,
     mask: InputPathType | None = None,
     output_directory: str | None = None,
     no_weight_flag: bool = False,
     prewhiten_flag: bool = False,
     no_raw_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TsplotOutputs:
     """
     tsplot by FMRIB.

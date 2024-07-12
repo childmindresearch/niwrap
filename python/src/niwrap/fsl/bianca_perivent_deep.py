@@ -31,7 +31,7 @@ def bianca_perivent_deep(
     minclustersize: float | int,
     do_stats: int,
     outputdir: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BiancaPeriventDeepOutputs:
     """
     bianca_perivent_deep by BIANCA Development Team.

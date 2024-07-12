@@ -28,7 +28,7 @@ def surface_cut_resample(
     current_sphere: InputPathType,
     new_sphere: InputPathType,
     surface_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceCutResampleOutputs:
     """
     surface-cut-resample by Washington University School of Medicin.

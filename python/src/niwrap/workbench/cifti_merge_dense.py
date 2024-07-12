@@ -55,8 +55,8 @@ def cifti_merge_dense(
     direction: str,
     cifti_out: str,
     opt_label_collision_action: str | None = None,
-    cifti: list[CiftiMergeDenseCifti] = None,
-    runner: Runner = None,
+    cifti: list[CiftiMergeDenseCifti] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiMergeDenseOutputs:
     """
     cifti-merge-dense by Washington University School of Medicin.

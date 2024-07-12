@@ -24,7 +24,7 @@ class ImcpOutputs(typing.NamedTuple):
 def imcp(
     infiles: list[InputPathType],
     output_location: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ImcpOutputs:
     """
     imcp by Unknown.

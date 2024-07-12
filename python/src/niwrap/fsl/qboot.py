@@ -46,7 +46,7 @@ def qboot(
     savemeancoeff_flag: bool = False,
     verbose_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> QbootOutputs:
     """
     qboot by Oxford Centre for Functional MRI of the Brain (FMRIB).

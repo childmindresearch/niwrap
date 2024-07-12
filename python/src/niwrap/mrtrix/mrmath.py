@@ -66,10 +66,10 @@ def mrmath(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrmathConfig] = None,
+    config: list[MrmathConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrmathOutputs:
     """
     mrmath by J-Donald Tournier (jdtournier@gmail.com).

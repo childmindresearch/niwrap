@@ -35,7 +35,7 @@ def mri_synthstrip(
     num_threads: float | int | None = None,
     no_csf_flag: bool = False,
     model_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MriSynthstripOutputs:
     """
     mri_synthstrip by Unknown.

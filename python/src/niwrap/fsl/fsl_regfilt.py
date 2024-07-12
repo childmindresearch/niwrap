@@ -48,7 +48,7 @@ def fsl_regfilt(
     out_data: str | None = None,
     out_mix: str | None = None,
     out_vnscales: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslRegfiltOutputs:
     """
     fsl_regfilt by Christian F. Beckmann.

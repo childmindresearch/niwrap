@@ -28,7 +28,7 @@ def surface_smoothing(
     smoothing_strength: float | int,
     smoothing_iterations: int,
     surface_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceSmoothingOutputs:
     """
     surface-smoothing by Washington University School of Medicin.

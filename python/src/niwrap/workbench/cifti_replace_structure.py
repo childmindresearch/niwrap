@@ -153,10 +153,10 @@ def cifti_replace_structure(
     volume_all: CiftiReplaceStructureVolumeAll | None = None,
     opt_discard_unused_labels: bool = False,
     opt_label_collision_action: str | None = None,
-    label: list[CiftiReplaceStructureLabel] = None,
-    metric: list[CiftiReplaceStructureMetric] = None,
-    volume: list[CiftiReplaceStructureVolume] = None,
-    runner: Runner = None,
+    label: list[CiftiReplaceStructureLabel] | None = None,
+    metric: list[CiftiReplaceStructureMetric] | None = None,
+    volume: list[CiftiReplaceStructureVolume] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiReplaceStructureOutputs:
     """
     cifti-replace-structure by Washington University School of Medicin.

@@ -29,7 +29,7 @@ class OldBetallOutputs(typing.NamedTuple):
 def old_betall(
     t1_filerout: str,
     t2_filerout: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> OldBetallOutputs:
     """
     old_betall by Oxford Centre for Functional MRI of the Brain (FMRIB).

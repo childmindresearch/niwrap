@@ -39,7 +39,7 @@ def ica_aroma(
     mat_file: InputPathType | None = None,
     melodic_dir: InputPathType | None = None,
     out_dir: InputPathType = "out",
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> IcaAromaOutputs:
     """
     ICA_AROMA by Nipype (interface).

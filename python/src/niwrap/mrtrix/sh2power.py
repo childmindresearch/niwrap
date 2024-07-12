@@ -63,10 +63,10 @@ def sh2power(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Sh2powerConfig] = None,
+    config: list[Sh2powerConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Sh2powerOutputs:
     """
     sh2power by J-Donald Tournier (jdtournier@gmail.com).

@@ -30,7 +30,7 @@ def border_to_rois(
     opt_border_name: str | None = None,
     opt_inverse: bool = False,
     opt_include_border: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BorderToRoisOutputs:
     """
     border-to-rois by Washington University School of Medicin.

@@ -21,7 +21,7 @@ class Tbss4PrestatsOutputs(typing.NamedTuple):
 
 def tbss_4_prestats(
     threshold: float | int = 0.2,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Tbss4PrestatsOutputs:
     """
     tbss_4_prestats by FMRIB Software Library.

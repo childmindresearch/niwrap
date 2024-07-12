@@ -29,7 +29,7 @@ def fslinterleave(
     infile2: InputPathType,
     outfile: str,
     reverse_slice_order_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslinterleaveOutputs:
     """
     fslinterleave by FMRIB Software Library (FSL).

@@ -25,7 +25,7 @@ class FeatGmPrepareOutputs(typing.NamedTuple):
 def feat_gm_prepare(
     gm_output: str,
     feat_dirs_list: list[InputPathType],
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FeatGmPrepareOutputs:
     """
     feat_gm_prepare by Oxford Centre for Functional MRI of the Brain (FMRIB).

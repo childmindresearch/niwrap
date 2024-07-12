@@ -28,7 +28,7 @@ def surface_modify_sphere(
     radius: float | int,
     sphere_out: str,
     opt_recenter: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceModifySphereOutputs:
     """
     surface-modify-sphere by Washington University School of Medicin.

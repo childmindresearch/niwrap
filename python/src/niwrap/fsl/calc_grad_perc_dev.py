@@ -27,7 +27,7 @@ def calc_grad_perc_dev(
     out_basename: str,
     verbose_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CalcGradPercDevOutputs:
     """
     calc_grad_perc_dev by Mark Jenkinson, University of Oxford.

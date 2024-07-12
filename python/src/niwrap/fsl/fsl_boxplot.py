@@ -34,7 +34,7 @@ def fsl_boxplot(
     y_label: str | None = None,
     plot_height: float | int | None = 450,
     plot_width: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslBoxplotOutputs:
     """
     fsl_boxplot by University of Oxford (Christian F. Beckmann).

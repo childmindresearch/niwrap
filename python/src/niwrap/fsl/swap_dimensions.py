@@ -32,7 +32,7 @@ def swap_dimensions(
     y_dims_ras: typing.Literal["LR", "RL", "AP", "PA", "SI", "IS"] | None = None,
     z_dims_ras: typing.Literal["LR", "RL", "AP", "PA", "SI", "IS"] | None = None,
     out_file: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SwapDimensionsOutputs:
     """
     SwapDimensions by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -25,7 +25,7 @@ def fslfft(
     input_volume: InputPathType,
     output_volume: InputPathType,
     inverse_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslfftOutputs:
     """
     fslfft by Oxford Centre for Functional MRI of the Brain (FMRIB).

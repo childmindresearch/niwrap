@@ -30,7 +30,7 @@ def surface_geodesic_distance(
     opt_naive: bool = False,
     opt_limit_limit_mm: float | int | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceGeodesicDistanceOutputs:
     """
     surface-geodesic-distance by Washington University School of Medicin.

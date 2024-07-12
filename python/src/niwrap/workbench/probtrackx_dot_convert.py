@@ -157,7 +157,7 @@ def probtrackx_dot_convert(
     col_cifti: ProbtrackxDotConvertColCifti | None = None,
     opt_transpose: bool = False,
     opt_make_symmetric: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ProbtrackxDotConvertOutputs:
     """
     probtrackx-dot-convert by Washington University School of Medicin.

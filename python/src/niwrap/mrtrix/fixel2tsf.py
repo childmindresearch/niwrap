@@ -64,10 +64,10 @@ def fixel2tsf(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Fixel2tsfConfig] = None,
+    config: list[Fixel2tsfConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Fixel2tsfOutputs:
     """
     fixel2tsf by David Raffelt (david.raffelt@florey.edu.au).

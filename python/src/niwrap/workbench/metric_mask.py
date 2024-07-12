@@ -28,7 +28,7 @@ def metric_mask(
     mask: InputPathType,
     metric_out: str,
     opt_column_column: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricMaskOutputs:
     """
     metric-mask by Washington University School of Medicin.

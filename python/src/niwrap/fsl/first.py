@@ -37,7 +37,7 @@ def first(
     bvars: InputPathType | None = None,
     shcond: bool = False,
     loadbvars: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FirstOutputs:
     """
     first by Brian Patenaude, University of Oxford.

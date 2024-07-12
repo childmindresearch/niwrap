@@ -27,7 +27,7 @@ def make_dyadic_vectors(
     output: str,
     mask: InputPathType | None = None,
     perc: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MakeDyadicVectorsOutputs:
     """
     make_dyadic_vectors by Unknown.

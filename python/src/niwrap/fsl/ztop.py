@@ -24,7 +24,7 @@ def ztop(
     tail_flag: bool = False,
     grf_flag: bool = False,
     number_of_resels: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ZtopOutputs:
     """
     ztop.

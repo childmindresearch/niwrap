@@ -38,9 +38,9 @@ def v_3d_roistats(
     num_roi: int | None = None,
     quiet: bool = False,
     roisel: InputPathType | None = None,
-    stat_: list[InputPathType] = None,
+    stat_: list[InputPathType] | None = None,
     zerofill: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dRoistatsOutputs:
     """
     3dROIstats by Nipype (interface).

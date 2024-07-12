@@ -34,7 +34,7 @@ def film_cifti(
     surface_sigma: float | int | None = None,
     surface_extent: float | int | None = None,
     film_options: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FilmCiftiOutputs:
     """
     film_cifti by FSL Community.

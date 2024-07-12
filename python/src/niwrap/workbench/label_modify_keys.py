@@ -28,7 +28,7 @@ def label_modify_keys(
     remap_file: str,
     label_out: str,
     opt_column_column: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> LabelModifyKeysOutputs:
     """
     label-modify-keys by Washington University School of Medicin.

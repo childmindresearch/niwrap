@@ -29,7 +29,7 @@ def invfeatreg(
     reference: InputPathType,
     output_file: str,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> InvfeatregOutputs:
     """
     invfeatreg by Oxford Centre for Functional MRI of the Brain (FMRIB).

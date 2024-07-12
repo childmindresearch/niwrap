@@ -32,7 +32,7 @@ def possum_matrix(
     help_flag: bool = False,
     old_version_flag: bool = False,
     segment_size: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PossumMatrixOutputs:
     """
     possum_matrix by University of Oxford (Ivana Drobnjak).

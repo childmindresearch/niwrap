@@ -23,9 +23,9 @@ def slices(
     primary_input: InputPathType,
     secondary_input: InputPathType | None = None,
     scale_factor: float | int | None = None,
-    intensity_range: list[float | int] = None,
+    intensity_range: list[float | int] | None = None,
     output_gif: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SlicesOutputs:
     """
     slices by Unknown.

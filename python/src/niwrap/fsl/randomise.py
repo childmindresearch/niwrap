@@ -62,7 +62,7 @@ def randomise(
     var_smooth: int | None = None,
     vox_p_values: bool = False,
     x_block_labels: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RandomiseOutputs:
     """
     Randomise by Nipype (interface).

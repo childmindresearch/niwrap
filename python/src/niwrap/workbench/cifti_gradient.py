@@ -135,7 +135,7 @@ def cifti_gradient(
     opt_presmooth_fwhm: bool = False,
     opt_average_output: bool = False,
     opt_vectors: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiGradientOutputs:
     """
     cifti-gradient by Washington University School of Medicin.

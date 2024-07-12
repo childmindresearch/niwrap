@@ -25,7 +25,7 @@ class V3dDespikeOutputs(typing.NamedTuple):
 
 def v_3d_despike(
     in_file: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dDespikeOutputs:
     """
     3dDespike by AFNI.

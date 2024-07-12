@@ -83,7 +83,7 @@ class CiftiMergeCifti:
     """
     cifti_in: InputPathType
     """a cifti file to use data from"""
-    index: list[CiftiMergeIndex] = None
+    index: list[CiftiMergeIndex] | None = None
     """select a single index to use"""
     
     def run(
@@ -121,8 +121,8 @@ def cifti_merge(
     cifti_out: str,
     opt_direction_direction: str | None = None,
     opt_mem_limit_limit_gb: float | int | None = None,
-    cifti: list[CiftiMergeCifti] = None,
-    runner: Runner = None,
+    cifti: list[CiftiMergeCifti] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiMergeOutputs:
     """
     cifti-merge by Washington University School of Medicin.

@@ -37,7 +37,7 @@ def slicer(
     label_slices: bool = False,
     colour_map: InputPathType | None = None,
     scaling: float | int | None = None,
-    intensity_range: list[float | int] = None,
+    intensity_range: list[float | int] | None = None,
     threshold_edges: float | int | None = None,
     dither_edges: bool = False,
     nearest_neighbour: bool = False,
@@ -55,7 +55,7 @@ def slicer(
     output_sample_axial_slices: bool = False,
     output_sample_axial_slices_width: str | None = None,
     output_sample_axial_slices_fname: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SlicerOutputs:
     """
     Slicer by Oxford Centre for Functional MRI of the Brain (FMRIB).

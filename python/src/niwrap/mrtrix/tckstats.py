@@ -87,7 +87,7 @@ class TckstatsOutputs(typing.NamedTuple):
 
 def tckstats(
     tracks_in: InputPathType,
-    output: list[TckstatsOutput] = None,
+    output: list[TckstatsOutput] | None = None,
     histogram: str | None = None,
     dump: str | None = None,
     ignorezero: bool = False,
@@ -97,10 +97,10 @@ def tckstats(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TckstatsConfig] = None,
+    config: list[TckstatsConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TckstatsOutputs:
     """
     tckstats by Robert E. Smith (robert.smith@florey.edu.au).

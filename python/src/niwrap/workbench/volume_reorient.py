@@ -25,7 +25,7 @@ def volume_reorient(
     volume: InputPathType,
     orient_string: str,
     volume_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeReorientOutputs:
     """
     volume-reorient by Washington University School of Medicin.

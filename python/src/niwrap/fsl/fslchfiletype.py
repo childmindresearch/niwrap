@@ -25,7 +25,7 @@ def fslchfiletype(
     filetype: str,
     filename: InputPathType,
     filename2: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslchfiletypeOutputs:
     """
     fslchfiletype by Oxford Centre for Functional MRI of the Brain (FMRIB).

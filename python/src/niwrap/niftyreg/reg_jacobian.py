@@ -33,7 +33,7 @@ def reg_jacobian(
     output_jacobian_matrix: str | None = None,
     output_log_jacobian: str | None = None,
     affine_matrix: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> RegJacobianOutputs:
     """
     reg_jacobian by Marc Modat.

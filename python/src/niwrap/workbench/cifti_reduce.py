@@ -61,7 +61,7 @@ def cifti_reduce(
     opt_direction_direction: str | None = None,
     exclude_outliers: CiftiReduceExcludeOutliers | None = None,
     opt_only_numeric: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiReduceOutputs:
     """
     cifti-reduce by Washington University School of Medicin.

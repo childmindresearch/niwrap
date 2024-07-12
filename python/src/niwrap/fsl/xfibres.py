@@ -52,7 +52,7 @@ def xfibres(
     rstd: float | int | None = None,
     verbose_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> XfibresOutputs:
     """
     xfibres by FMRIB Centre, University of Oxford.

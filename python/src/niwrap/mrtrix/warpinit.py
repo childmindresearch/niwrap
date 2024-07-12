@@ -62,10 +62,10 @@ def warpinit(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[WarpinitConfig] = None,
+    config: list[WarpinitConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> WarpinitOutputs:
     """
     warpinit by J-Donald Tournier (jdtournier@gmail.com).

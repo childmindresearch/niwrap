@@ -29,7 +29,7 @@ def label_to_border(
     border_out: str,
     opt_placement_fraction: float | int | None = None,
     opt_column_column: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> LabelToBorderOutputs:
     """
     label-to-border by Washington University School of Medicin.

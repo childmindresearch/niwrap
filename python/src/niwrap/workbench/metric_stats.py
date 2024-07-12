@@ -60,7 +60,7 @@ def metric_stats(
     opt_column_column: str | None = None,
     roi: MetricStatsRoi | None = None,
     opt_show_map_name: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricStatsOutputs:
     """
     metric-stats by Washington University School of Medicin.

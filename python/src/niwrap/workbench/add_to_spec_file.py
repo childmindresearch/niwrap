@@ -25,7 +25,7 @@ def add_to_spec_file(
     specfile: str,
     structure: str,
     filename: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> AddToSpecFileOutputs:
     """
     add-to-spec-file by Washington University School of Medicin.

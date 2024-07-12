@@ -96,7 +96,7 @@ def tckglobal(
     tracks: str,
     grad: InputPathType | None = None,
     mask: InputPathType | None = None,
-    riso: list[TckglobalRiso] = None,
+    riso: list[TckglobalRiso] | None = None,
     lmax: int | None = None,
     length: float | int | None = None,
     weight: float | int | None = None,
@@ -112,7 +112,7 @@ def tckglobal(
     etrend: str | None = None,
     balance: float | int | None = None,
     density: float | int | None = None,
-    prob: list[float | int] = None,
+    prob: list[float | int] | None = None,
     beta: float | int | None = None,
     lambda_: float | int | None = None,
     info: bool = False,
@@ -120,10 +120,10 @@ def tckglobal(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TckglobalConfig] = None,
+    config: list[TckglobalConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TckglobalOutputs:
     """
     tckglobal by Daan Christiaens (daan.christiaens@kcl.ac.uk).

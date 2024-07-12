@@ -41,7 +41,7 @@ def fast(
     init_seg_smoothness: float | int | None = 0.02,
     segments_flag: bool = False,
     init_priors: InputPathType | None = None,
-    alt_priors: list[InputPathType] = None,
+    alt_priors: list[InputPathType] | None = None,
     nopve_flag: bool = False,
     bias_field_flag: bool = False,
     bias_corrected_flag: bool = False,
@@ -57,7 +57,7 @@ def fast(
     help_flag: bool = False,
     manual_seg: InputPathType | None = None,
     prob_maps_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FastOutputs:
     """
     FAST by University of Oxford.

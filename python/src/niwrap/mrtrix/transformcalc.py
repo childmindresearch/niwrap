@@ -63,10 +63,10 @@ def transformcalc(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TransformcalcConfig] = None,
+    config: list[TransformcalcConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TransformcalcOutputs:
     """
     transformcalc by Max Pietsch (maximilian.pietsch@kcl.ac.uk).

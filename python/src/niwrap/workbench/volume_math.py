@@ -66,8 +66,8 @@ def volume_math(
     expression: str,
     volume_out: str,
     opt_fixnan_replace: float | int | None = None,
-    var: list[VolumeMathVar] = None,
-    runner: Runner = None,
+    var: list[VolumeMathVar] | None = None,
+    runner: Runner | None = None,
 ) -> VolumeMathOutputs:
     """
     volume-math by Washington University School of Medicin.

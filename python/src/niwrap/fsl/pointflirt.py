@@ -32,7 +32,7 @@ def pointflirt(
     vol_input: InputPathType | None = None,
     vol_ref: InputPathType | None = None,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PointflirtOutputs:
     """
     pointflirt by Mark Jenkinson, University of Oxford.

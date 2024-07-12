@@ -23,7 +23,7 @@ class CreateLutOutputs(typing.NamedTuple):
 
 def create_lut(
     output_file_root: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CreateLutOutputs:
     """
     create_lut.

@@ -60,7 +60,7 @@ def fabber_dualecho(
     save_noise_std_flag: bool = False,
     save_free_energy_flag: bool = False,
     debug_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FabberDualechoOutputs:
     """
     fabber_dualecho by FMRIB Analysis Group, University of Oxford.

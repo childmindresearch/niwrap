@@ -122,7 +122,7 @@ def foci_resample(
     cerebellum_surfaces: FociResampleCerebellumSurfaces | None = None,
     opt_discard_distance_from_surface: bool = False,
     opt_restore_xyz: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FociResampleOutputs:
     """
     foci-resample by Washington University School of Medicin.

@@ -43,7 +43,7 @@ def ants_brain_extraction_sh(
     translation_search_params: str | None = None,
     random_seeding: bool = False,
     debug_mode: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> AntsBrainExtractionShOutputs:
     """
     antsBrainExtraction.sh by Advanced Normalization Tools (ANTs) Contributors.

@@ -30,7 +30,7 @@ def mrsi_segment(
     anat_dir: str | None = None,
     output_dir: str | None = None,
     filename: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrsiSegmentOutputs:
     """
     mrsi_segment by FSL Team.

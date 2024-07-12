@@ -27,7 +27,7 @@ def surface_set_coordinates(
     surface_in: InputPathType,
     coord_metric: InputPathType,
     surface_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceSetCoordinatesOutputs:
     """
     surface-set-coordinates by Washington University School of Medicin.

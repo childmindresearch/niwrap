@@ -58,7 +58,7 @@ def tckmap(
     tracks: InputPathType,
     output: str,
     template: InputPathType | None = None,
-    vox: list[float | int] = None,
+    vox: list[float | int] | None = None,
     datatype: str | None = None,
     dec: bool = False,
     dixel: str | None = None,
@@ -80,10 +80,10 @@ def tckmap(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TckmapConfig] = None,
+    config: list[TckmapConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TckmapOutputs:
     """
     tckmap by Robert E. Smith (robert.smith@florey.edu.au) and J-Donald Tournier

@@ -29,7 +29,7 @@ def midtrans(
     separate_basename: str | None = None,
     debug_flag: bool = False,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MidtransOutputs:
     """
     midtrans by University of Oxford (Mark Jenkinson).

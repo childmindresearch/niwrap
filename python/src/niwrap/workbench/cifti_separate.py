@@ -327,10 +327,10 @@ def cifti_separate(
     cifti_in: InputPathType,
     direction: str,
     volume_all: CiftiSeparateVolumeAll | None = None,
-    label: list[CiftiSeparateLabel] = None,
-    metric: list[CiftiSeparateMetric] = None,
-    volume: list[CiftiSeparateVolume] = None,
-    runner: Runner = None,
+    label: list[CiftiSeparateLabel] | None = None,
+    metric: list[CiftiSeparateMetric] | None = None,
+    volume: list[CiftiSeparateVolume] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiSeparateOutputs:
     """
     cifti-separate by Washington University School of Medicin.

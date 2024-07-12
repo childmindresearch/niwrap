@@ -33,7 +33,7 @@ def fsl_reg(
     fnirt_fa_config_flag: bool = False,
     flirt_options: str | None = None,
     fnirt_options: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslRegOutputs:
     """
     fsl_reg by Oxford Centre for Functional MRI of the Brain (FMRIB).

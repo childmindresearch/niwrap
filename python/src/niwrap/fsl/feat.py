@@ -26,7 +26,7 @@ class FeatOutputs(typing.NamedTuple):
 
 def feat(
     design_file: InputPathType,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FeatOutputs:
     """
     feat by Oxford Centre for Functional MRI of the Brain (FMRIB).

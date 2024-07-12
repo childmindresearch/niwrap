@@ -33,7 +33,7 @@ def inv_warp(
     jacobian_min: float | int | None = None,
     noconstraint: bool = False,
     debug: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> InvWarpOutputs:
     """
     InvWarp by Nipype (interface).

@@ -29,7 +29,7 @@ def volume_distortion(
     opt_fnirt_source_volume: str | None = None,
     opt_circular: bool = False,
     opt_log2: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeDistortionOutputs:
     """
     volume-distortion by Washington University School of Medicin.

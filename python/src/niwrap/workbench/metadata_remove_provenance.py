@@ -24,7 +24,7 @@ class MetadataRemoveProvenanceOutputs(typing.NamedTuple):
 def metadata_remove_provenance(
     input_file: str,
     output_file: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetadataRemoveProvenanceOutputs:
     """
     metadata-remove-provenance by Washington University School of Medicin.

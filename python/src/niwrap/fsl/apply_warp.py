@@ -39,7 +39,7 @@ def applywarp(
     superlevel: typing.Literal["a"] | None = None,
     superlevel_2: int | None = None,
     supersample: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ApplywarpOutputs:
     """
     applywarp by Oxford Centre for Functional MRI of the Brain (FMRIB).

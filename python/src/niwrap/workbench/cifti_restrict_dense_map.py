@@ -32,7 +32,7 @@ def cifti_restrict_dense_map(
     opt_right_roi_roi_metric: InputPathType | None = None,
     opt_cerebellum_roi_roi_metric: InputPathType | None = None,
     opt_vol_roi_roi_vol: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiRestrictDenseMapOutputs:
     """
     cifti-restrict-dense-map by Washington University School of Medicin.

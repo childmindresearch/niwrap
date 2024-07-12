@@ -91,9 +91,9 @@ def metric_regression(
     metric_out: str,
     opt_roi_roi_metric: InputPathType | None = None,
     opt_column_column: str | None = None,
-    remove: list[MetricRegressionRemove] = None,
-    keep: list[MetricRegressionKeep] = None,
-    runner: Runner = None,
+    remove: list[MetricRegressionRemove] | None = None,
+    keep: list[MetricRegressionKeep] | None = None,
+    runner: Runner | None = None,
 ) -> MetricRegressionOutputs:
     """
     metric-regression by Washington University School of Medicin.

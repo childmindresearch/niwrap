@@ -46,7 +46,7 @@ def b0calc(
     direct_conv: bool = False,
     verbose_flag: bool = False,
     help_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> B0calcOutputs:
     """
     b0calc by University of Oxford.

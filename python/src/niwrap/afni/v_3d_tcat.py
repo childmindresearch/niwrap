@@ -31,7 +31,7 @@ def v_3d_tcat(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     rlt: typing.Literal["", "+", "++"] | None = None,
     verbose: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dTcatOutputs:
     """
     3dTcat by Nipype (interface).

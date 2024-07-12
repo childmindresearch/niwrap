@@ -29,7 +29,7 @@ def possum_sum(
     output_signal: InputPathType,
     num_processors: int | None = None,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PossumSumOutputs:
     """
     possum_sum by Ivana Drobnjak, University of Oxford.

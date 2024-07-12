@@ -36,7 +36,7 @@ def create_signed_distance_volume(
     opt_approx_limit_dist: float | int | None = None,
     opt_approx_neighborhood_num: int | None = None,
     opt_winding_method: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CreateSignedDistanceVolumeOutputs:
     """
     create-signed-distance-volume by Washington University School of Medicin.

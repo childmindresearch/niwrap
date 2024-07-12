@@ -41,7 +41,7 @@ def fdr(
     conservative_flag: bool = False,
     debug_flag: bool = False,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FdrOutputs:
     """
     fdr by University of Oxford (Mark Jenkinson).

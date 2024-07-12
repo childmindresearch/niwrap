@@ -61,7 +61,7 @@ def volume_stats(
     opt_subvolume_subvolume: str | None = None,
     roi: VolumeStatsRoi | None = None,
     opt_show_map_name: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeStatsOutputs:
     """
     volume-stats by Washington University School of Medicin.

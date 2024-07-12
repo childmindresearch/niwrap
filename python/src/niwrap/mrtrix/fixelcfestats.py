@@ -109,16 +109,16 @@ def fixelcfestats(
     variance: InputPathType | None = None,
     ftests: InputPathType | None = None,
     fonly: bool = False,
-    column: list[FixelcfestatsColumn] = None,
+    column: list[FixelcfestatsColumn] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[FixelcfestatsConfig] = None,
+    config: list[FixelcfestatsConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FixelcfestatsOutputs:
     """
     fixelcfestats by David Raffelt (david.raffelt@florey.edu.au) and Robert E. Smith

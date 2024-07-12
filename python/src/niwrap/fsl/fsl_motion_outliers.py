@@ -44,7 +44,7 @@ def fsl_motion_outliers(
     no_moco_flag: bool = False,
     dummy_scans: float | int | None = None,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslMotionOutliersOutputs:
     """
     fsl_motion_outliers by FMRIB Analysis Group.

@@ -81,10 +81,10 @@ def tck2connectome(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Tck2connectomeConfig] = None,
+    config: list[Tck2connectomeConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Tck2connectomeOutputs:
     """
     tck2connectome by Robert E. Smith (robert.smith@florey.edu.au).

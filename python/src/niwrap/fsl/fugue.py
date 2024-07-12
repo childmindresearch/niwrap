@@ -63,7 +63,7 @@ def fugue(
     unwarp_direction: typing.Literal["x", "y", "z", "x-", "y-", "z-"] | None = None,
     unwarped_file: InputPathType | None = None,
     warped_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FugueOutputs:
     """
     FUGUE by Nipype (interface).

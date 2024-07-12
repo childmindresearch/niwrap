@@ -33,7 +33,7 @@ def v_3d_afnito_nifti(
     denote: bool = False,
     oldid: bool = False,
     newid: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dAfnitoNiftiOutputs:
     """
     3dAFNItoNIFTI by AFNI Team.

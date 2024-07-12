@@ -101,10 +101,10 @@ def dwi2mask(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Dwi2maskConfig] = None,
+    config: list[Dwi2maskConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Dwi2maskOutputs:
     """
     dwi2mask by David Raffelt (david.raffelt@florey.edu.au), Thijs Dhollander

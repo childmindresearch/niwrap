@@ -42,7 +42,7 @@ def v_3d_ecm(
     shift: float | int | None = None,
     sparsity: float | int | None = None,
     thresh: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dEcmOutputs:
     """
     3dECM by Nipype (interface).

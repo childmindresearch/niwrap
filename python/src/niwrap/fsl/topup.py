@@ -55,7 +55,7 @@ def topup(
     scale: bool = False,
     regrid: bool = False,
     verbose: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TopupOutputs:
     """
     topup by University of Oxford.

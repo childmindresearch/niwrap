@@ -85,7 +85,7 @@ def fabber_pet(
     save_free_energy_flag: bool = False,
     optfile_flag: bool = False,
     debug_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FabberPetOutputs:
     """
     fabber_pet by Oxford Centre for Functional MRI of the Brain (FMRIB).

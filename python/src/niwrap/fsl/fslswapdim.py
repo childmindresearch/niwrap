@@ -30,7 +30,7 @@ def fslswapdim(
     axis_b: str,
     axis_c: str,
     output_file: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslswapdimOutputs:
     """
     fslswapdim by Oxford Centre for Functional MRI of the Brain (FMRIB).

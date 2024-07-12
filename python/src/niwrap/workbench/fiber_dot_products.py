@@ -32,7 +32,7 @@ def fiber_dot_products(
     direction: str,
     dot_metric: str,
     f_metric: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FiberDotProductsOutputs:
     """
     fiber-dot-products by Washington University School of Medicin.

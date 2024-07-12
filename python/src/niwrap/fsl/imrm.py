@@ -24,7 +24,7 @@ class ImrmOutputs(typing.NamedTuple):
 
 def imrm(
     images_to_remove: list[str],
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ImrmOutputs:
     """
     imrm by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -34,7 +34,7 @@ def tbss_non_fa(
     concat_auto: bool = False,
     concat_tr: float | int | None = 0,
     volume_number: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TbssNonFaOutputs:
     """
     tbss_non_FA by FMRIB, Oxford Centre for Functional MRI of the Brain.

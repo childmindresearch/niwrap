@@ -31,7 +31,7 @@ def volume_parcel_smoothing(
     opt_fwhm: bool = False,
     opt_fix_zeros: bool = False,
     opt_subvolume_subvol: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VolumeParcelSmoothingOutputs:
     """
     volume-parcel-smoothing by Washington University School of Medicin.

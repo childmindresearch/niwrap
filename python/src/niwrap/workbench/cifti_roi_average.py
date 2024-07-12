@@ -29,7 +29,7 @@ def cifti_roi_average(
     opt_right_roi_roi_metric: InputPathType | None = None,
     opt_cerebellum_roi_roi_metric: InputPathType | None = None,
     opt_vol_roi_roi_vol: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiRoiAverageOutputs:
     """
     cifti-roi-average by Washington University School of Medicin.

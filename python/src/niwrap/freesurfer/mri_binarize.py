@@ -39,7 +39,7 @@ def mri_binarize(
     invert: bool = False,
     mask_file: InputPathType | None = None,
     mask_thresh: float | int | None = None,
-    match: list[int] = None,
+    match: list[int] | None = None,
     max_: float | int | None = None,
     merge_file: InputPathType | None = None,
     min_: float | int | None = None,
@@ -52,7 +52,7 @@ def mri_binarize(
     wm_ven_csf: bool = False,
     zero_edges: bool = False,
     zero_slice_edge: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MriBinarizeOutputs:
     """
     mri binarize by Members of the Laboratories for Computational Neuroimaging (LCN)

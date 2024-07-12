@@ -28,7 +28,7 @@ class V3dDetrendOutputs(typing.NamedTuple):
 def v_3d_detrend(
     in_file: InputPathType,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dDetrendOutputs:
     """
     3dDetrend by Nipype (interface).

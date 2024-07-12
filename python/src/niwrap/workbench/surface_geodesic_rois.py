@@ -32,7 +32,7 @@ def surface_geodesic_rois(
     opt_overlap_logic_method: str | None = None,
     opt_names_name_list_file: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceGeodesicRoisOutputs:
     """
     surface-geodesic-rois by Washington University School of Medicin.

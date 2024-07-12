@@ -57,7 +57,7 @@ class MrdegibbsOutputs(typing.NamedTuple):
 def mrdegibbs(
     in_: InputPathType,
     out: str,
-    axes: list[int] = None,
+    axes: list[int] | None = None,
     nshifts: int | None = None,
     min_w: int | None = None,
     max_w: int | None = None,
@@ -67,10 +67,10 @@ def mrdegibbs(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrdegibbsConfig] = None,
+    config: list[MrdegibbsConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrdegibbsOutputs:
     """
     mrdegibbs by Ben Jeurissen (ben.jeurissen@uantwerpen.be) & J-Donald Tournier

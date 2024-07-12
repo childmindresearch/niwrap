@@ -83,7 +83,7 @@ class SceneFileMergeSceneFile:
     """
     scene_file_: str
     """the input scene file"""
-    scene: list[SceneFileMergeScene] = None
+    scene: list[SceneFileMergeScene] | None = None
     """specify a scene to use"""
     
     def run(
@@ -117,8 +117,8 @@ class SceneFileMergeOutputs(typing.NamedTuple):
 
 def scene_file_merge(
     scene_file_out: str,
-    scene_file: list[SceneFileMergeSceneFile] = None,
-    runner: Runner = None,
+    scene_file: list[SceneFileMergeSceneFile] | None = None,
+    runner: Runner | None = None,
 ) -> SceneFileMergeOutputs:
     """
     scene-file-merge by Washington University School of Medicin.

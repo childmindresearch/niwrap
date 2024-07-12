@@ -25,7 +25,7 @@ def slicesdir(
     outline_image: InputPathType | None = None,
     edge_threshold: float | int | None = None,
     slice_option: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SlicesdirOutputs:
     """
     slicesdir by FMRIB Centre, University of Oxford.

@@ -57,7 +57,7 @@ def mcflirt(
     stats_imgs: bool = False,
     use_contour: bool = False,
     use_gradient: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> McflirtOutputs:
     """
     MCFLIRT by Oxford Centre for Functional MRI of the Brain (FMRIB).

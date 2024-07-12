@@ -29,7 +29,7 @@ class SienaFlirtOutputs(typing.NamedTuple):
 def siena_flirt(
     input1_fileroot: str,
     input2_fileroot: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SienaFlirtOutputs:
     """
     siena_flirt by Oxford Centre for Functional MRI of the Brain (FMRIB).

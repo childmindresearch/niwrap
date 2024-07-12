@@ -35,7 +35,7 @@ def bedpostx(
     sample_every: float | int | None = 25,
     model_type: float | int | None = 2,
     grad_nonlinear: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BedpostxOutputs:
     """
     bedpostx by FMRIB Centre.

@@ -94,7 +94,7 @@ def metric_tfce(
     parameters: MetricTfceParameters | None = None,
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MetricTfceOutputs:
     """
     metric-tfce by Washington University School of Medicin.

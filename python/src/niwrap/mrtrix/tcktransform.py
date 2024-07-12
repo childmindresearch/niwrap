@@ -63,10 +63,10 @@ def tcktransform(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TcktransformConfig] = None,
+    config: list[TcktransformConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TcktransformOutputs:
     """
     tcktransform by J-Donald Tournier (jdtournier@gmail.com).

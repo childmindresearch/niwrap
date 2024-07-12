@@ -26,16 +26,16 @@ class ReconAllOutputs(typing.NamedTuple):
 def recon_all(
     subjects_dir: InputPathType,
     flair_file: InputPathType | None = None,
-    t1_files: list[InputPathType] = None,
+    t1_files: list[InputPathType] | None = None,
     t2_file: InputPathType | None = None,
     big_ventricles: bool = False,
     brainstem: bool = False,
     directive: typing.Literal["all", "autorecon1", "autorecon2", "autorecon2-volonly", "autorecon2-perhemi", "autorecon2-inflate1", "autorecon2-cp", "autorecon2-wm", "autorecon3", "autorecon3-T2pial", "autorecon-pial", "autorecon-hemi", "localGI", "qcache"] | None = "all",
     expert: InputPathType | None = None,
-    flags: list[InputPathType] = None,
+    flags: list[InputPathType] | None = None,
     hemi: typing.Literal["lh", "rh"] | None = None,
     hippocampal_subfields_t1: bool = False,
-    hippocampal_subfields_t2: list[str] = None,
+    hippocampal_subfields_t2: list[str] | None = None,
     hires: bool = False,
     mprage: bool = False,
     openmp: int | None = None,
@@ -45,7 +45,7 @@ def recon_all(
     use_flair: bool = False,
     use_t2: bool = False,
     xopts: typing.Literal["use", "clean", "overwrite"] | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ReconAllOutputs:
     """
     ReconAll by Members of the Laboratories for Computational Neuroimaging (LCN) at

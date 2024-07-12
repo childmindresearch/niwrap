@@ -57,7 +57,7 @@ def fsl_sub(
     verbose: bool = False,
     version: bool = False,
     fileisimage: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslSubOutputs:
     """
     fsl_sub by FMRIB (Oxford University).

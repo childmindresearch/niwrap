@@ -24,7 +24,7 @@ class ImlnOutputs(typing.NamedTuple):
 def imln(
     input_file: InputPathType,
     link_name: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ImlnOutputs:
     """
     imln by Oxford Centre for Functional MRI of the Brain (FMRIB).

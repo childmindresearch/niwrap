@@ -72,7 +72,7 @@ def cluster(
     volume: int | None = None,
     warpfield_file: InputPathType | None = None,
     xfm_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ClusterOutputs:
     """
     Cluster by Nipype (interface).

@@ -62,10 +62,10 @@ def peaks2amp(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Peaks2ampConfig] = None,
+    config: list[Peaks2ampConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Peaks2ampOutputs:
     """
     peaks2amp by J-Donald Tournier (jdtournier@gmail.com).

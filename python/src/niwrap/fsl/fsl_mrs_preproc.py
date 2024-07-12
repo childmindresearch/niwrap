@@ -39,7 +39,7 @@ def fsl_mrs_preproc(
     overwrite: bool = False,
     report: bool = False,
     config: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslMrsPreprocOutputs:
     """
     fsl_mrs_preproc by FMRIB Analysis Group, Oxford University.

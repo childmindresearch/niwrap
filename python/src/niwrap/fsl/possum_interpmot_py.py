@@ -32,7 +32,7 @@ def possum_interpmot(
     nvols: int,
     custom_motion_file: InputPathType,
     output_file: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> PossumInterpmotOutputs:
     """
     possum_interpmot by Oxford Centre for Functional MRI of the Brain (FMRIB).

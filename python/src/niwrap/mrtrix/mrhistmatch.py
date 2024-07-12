@@ -67,10 +67,10 @@ def mrhistmatch(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrhistmatchConfig] = None,
+    config: list[MrhistmatchConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrhistmatchOutputs:
     """
     mrhistmatch by Robert E. Smith (robert.smith@florey.edu.au).

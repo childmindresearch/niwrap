@@ -105,17 +105,17 @@ def connectomestats(
     variance: InputPathType | None = None,
     ftests: InputPathType | None = None,
     fonly: bool = False,
-    column: list[ConnectomestatsColumn] = None,
+    column: list[ConnectomestatsColumn] | None = None,
     threshold: float | int | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[ConnectomestatsConfig] = None,
+    config: list[ConnectomestatsConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ConnectomestatsOutputs:
     """
     connectomestats by Robert E. Smith (robert.smith@florey.edu.au).

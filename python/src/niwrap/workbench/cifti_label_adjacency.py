@@ -29,7 +29,7 @@ def cifti_label_adjacency(
     opt_left_surface_surface: InputPathType | None = None,
     opt_right_surface_surface: InputPathType | None = None,
     opt_cerebellum_surface_surface: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiLabelAdjacencyOutputs:
     """
     cifti-label-adjacency by Washington University School of Medicin.

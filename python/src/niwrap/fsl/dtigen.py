@@ -35,7 +35,7 @@ def dtigen(
     brainmask: InputPathType,
     kurtosis: InputPathType | None = None,
     help_: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DtigenOutputs:
     """
     dtigen by FSL.

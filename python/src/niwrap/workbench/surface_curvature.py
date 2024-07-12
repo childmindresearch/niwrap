@@ -31,7 +31,7 @@ def surface_curvature(
     gauss_out: str,
     opt_mean: bool = False,
     opt_gauss: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceCurvatureOutputs:
     """
     surface-curvature by Washington University School of Medicin.

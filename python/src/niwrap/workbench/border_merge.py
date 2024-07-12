@@ -83,7 +83,7 @@ class BorderMergeBorder:
     """
     border_file_in: InputPathType
     """a border file to use borders from"""
-    select_: list[BorderMergeSelect] = None
+    select_: list[BorderMergeSelect] | None = None
     """select a single border to use"""
     
     def run(
@@ -119,8 +119,8 @@ class BorderMergeOutputs(typing.NamedTuple):
 
 def border_merge(
     border_file_out: str,
-    border: list[BorderMergeBorder] = None,
-    runner: Runner = None,
+    border: list[BorderMergeBorder] | None = None,
+    runner: Runner | None = None,
 ) -> BorderMergeOutputs:
     """
     border-merge by Washington University School of Medicin.

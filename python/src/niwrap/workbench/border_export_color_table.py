@@ -25,7 +25,7 @@ def border_export_color_table(
     border_file: InputPathType,
     table_out: str,
     opt_class_colors: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BorderExportColorTableOutputs:
     """
     border-export-color-table by Washington University School of Medicin.

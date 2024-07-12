@@ -30,7 +30,7 @@ def tbss_fill(
     mean_fa: InputPathType,
     output: str,
     include_negative_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TbssFillOutputs:
     """
     tbss_fill by Oxford Centre for Functional MRI of the Brain (FMRIB).

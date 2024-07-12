@@ -60,7 +60,7 @@ def cifti_stats(
     opt_column_column: int | None = None,
     roi: CiftiStatsRoi | None = None,
     opt_show_map_name: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> CiftiStatsOutputs:
     """
     cifti-stats by Washington University School of Medicin.

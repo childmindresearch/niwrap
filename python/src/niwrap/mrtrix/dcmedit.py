@@ -89,16 +89,16 @@ def dcmedit(
     file: InputPathType,
     anonymise: bool = False,
     id_: str | None = None,
-    tag: list[DcmeditTag] = None,
+    tag: list[DcmeditTag] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[DcmeditConfig] = None,
+    config: list[DcmeditConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> DcmeditOutputs:
     """
     dcmedit by J-Donald Tournier (jdtournier@gmail.com).

@@ -97,16 +97,16 @@ def vectorstats(
     variance: InputPathType | None = None,
     ftests: InputPathType | None = None,
     fonly: bool = False,
-    column: list[VectorstatsColumn] = None,
+    column: list[VectorstatsColumn] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[VectorstatsConfig] = None,
+    config: list[VectorstatsConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> VectorstatsOutputs:
     """
     vectorstats by Robert E. Smith (robert.smith@florey.edu.au).

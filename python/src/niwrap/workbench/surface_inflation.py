@@ -31,7 +31,7 @@ def surface_inflation(
     smoothing_iterations: int,
     inflation_factor: float | int,
     surface_out: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceInflationOutputs:
     """
     surface-inflation by Washington University School of Medicin.

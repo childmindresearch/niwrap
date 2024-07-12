@@ -34,7 +34,7 @@ def v_3d_tcorr1_d(
     pearson: bool = False,
     quadrant: bool = False,
     spearman: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dTcorr1DOutputs:
     """
     3dTcorr1D by Nipype (interface).

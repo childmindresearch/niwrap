@@ -59,7 +59,7 @@ def surface_apply_affine(
     affine: str,
     out_surf: str,
     flirt: SurfaceApplyAffineFlirt | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceApplyAffineOutputs:
     """
     surface-apply-affine by Washington University School of Medicin.

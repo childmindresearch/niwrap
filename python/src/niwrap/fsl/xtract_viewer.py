@@ -24,8 +24,8 @@ def xtract_viewer(
     species: typing.Literal["HUMAN", "MACAQUE"] | None = None,
     brain_image: InputPathType | None = None,
     structures: str | None = None,
-    thresholds: list[float | int] = None,
-    runner: Runner = None,
+    thresholds: list[float | int] | None = None,
+    runner: Runner | None = None,
 ) -> XtractViewerOutputs:
     """
     xtract_viewer by FMRIB Centre, University of Oxford.

@@ -54,8 +54,8 @@ class CiftiMergeParcelsOutputs(typing.NamedTuple):
 def cifti_merge_parcels(
     direction: str,
     cifti_out: str,
-    cifti: list[CiftiMergeParcelsCifti] = None,
-    runner: Runner = None,
+    cifti: list[CiftiMergeParcelsCifti] | None = None,
+    runner: Runner | None = None,
 ) -> CiftiMergeParcelsOutputs:
     """
     cifti-merge-parcels by Washington University School of Medicin.

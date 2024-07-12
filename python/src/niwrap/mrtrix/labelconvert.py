@@ -65,10 +65,10 @@ def labelconvert(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[LabelconvertConfig] = None,
+    config: list[LabelconvertConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> LabelconvertOutputs:
     """
     labelconvert by Robert E. Smith (robert.smith@florey.edu.au).

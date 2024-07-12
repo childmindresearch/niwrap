@@ -57,7 +57,7 @@ def bet(
     maskfile: str = "img_bet",
     fractional_intensity: float | int | None = None,
     vg_fractional_intensity: float | int | None = None,
-    center_of_gravity: list[float | int] = None,
+    center_of_gravity: list[float | int] | None = None,
     overlay: bool = False,
     binary_mask: bool = False,
     approx_skull: bool = False,
@@ -74,7 +74,7 @@ def bet(
     additional_surfaces_t2: InputPathType | None = None,
     verbose: bool = False,
     debug: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BetOutputs:
     """
     bet by Oxford Centre for Functional MRI of the Brain (FMRIB).

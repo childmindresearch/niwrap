@@ -51,7 +51,7 @@ def oxford_asl(
     calibration_image: InputPathType | None = None,
     tr_calibration_data: float | int | None = None,
     calibration_method: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> OxfordAslOutputs:
     """
     oxford_asl by FMRIB Centre, University of Oxford.

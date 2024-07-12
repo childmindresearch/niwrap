@@ -63,10 +63,10 @@ def transformconvert(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TransformconvertConfig] = None,
+    config: list[TransformconvertConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TransformconvertOutputs:
     """
     transformconvert by Max Pietsch (maximilian.pietsch@kcl.ac.uk).

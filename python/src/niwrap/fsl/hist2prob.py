@@ -26,7 +26,7 @@ def hist2prob(
     size: int,
     low_threshold: float | int,
     high_threshold: float | int,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Hist2probOutputs:
     """
     hist2prob.

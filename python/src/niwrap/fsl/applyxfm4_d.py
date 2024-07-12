@@ -33,7 +33,7 @@ def applyxfm4_d(
     single_matrix_flag: bool = False,
     four_digit_flag: bool = False,
     user_prefix: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Applyxfm4DOutputs:
     """
     applyxfm4D by Unknown.

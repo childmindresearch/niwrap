@@ -25,7 +25,7 @@ class ImmvOutputs(typing.NamedTuple):
 def immv(
     source_files: list[InputPathType],
     destination: str,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> ImmvOutputs:
     """
     immv by Unknown.

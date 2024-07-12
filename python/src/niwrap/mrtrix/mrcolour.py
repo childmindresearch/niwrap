@@ -60,16 +60,16 @@ def mrcolour(
     output: str,
     upper: float | int | None = None,
     lower: float | int | None = None,
-    colour: list[float | int] = None,
+    colour: list[float | int] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrcolourConfig] = None,
+    config: list[MrcolourConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> MrcolourOutputs:
     """
     mrcolour by Robert E. Smith (robert.smith@florey.edu.au).

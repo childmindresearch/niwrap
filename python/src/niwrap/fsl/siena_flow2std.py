@@ -24,7 +24,7 @@ def siena_flow2std(
     fileroot2: str,
     sigma: float | int | None = 5,
     debug_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SienaFlow2stdOutputs:
     """
     siena_flow2std by Oxford Centre for Functional MRI of the Brain (FMRIB).

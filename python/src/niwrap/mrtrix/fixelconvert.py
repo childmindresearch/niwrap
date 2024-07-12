@@ -66,10 +66,10 @@ def fixelconvert(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[FixelconvertConfig] = None,
+    config: list[FixelconvertConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FixelconvertOutputs:
     """
     fixelconvert by David Raffelt (david.raffelt@florey.edu.au) and Robert E. Smith

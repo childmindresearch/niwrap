@@ -28,7 +28,7 @@ def whirlgif(
     delay_time: int | None = None,
     disp_flag: typing.Literal["none", "back", "prev", "not"] | None = None,
     list_file: InputPathType | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> WhirlgifOutputs:
     """
     whirlgif by Hans Dinsen-Hansen, Kevin Kadow, Mark Podlipec.

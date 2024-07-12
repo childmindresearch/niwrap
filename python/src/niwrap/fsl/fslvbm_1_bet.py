@@ -26,7 +26,7 @@ def fslvbm_1_bet(
     default_bet: bool = False,
     increased_robustness: bool = False,
     bet_parameters: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Fslvbm1BetOutputs:
     """
     fslvbm_1_bet by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -33,7 +33,7 @@ def gps(
     report: bool = False,
     verbose: bool = False,
     help_: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> GpsOutputs:
     """
     gps by University of Oxford (Jesper Andersson).

@@ -28,7 +28,7 @@ def surface_apply_warpfield(
     warpfield: str,
     out_surf: str,
     opt_fnirt_forward_warp: str | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SurfaceApplyWarpfieldOutputs:
     """
     surface-apply-warpfield by Washington University School of Medicin.

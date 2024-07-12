@@ -99,17 +99,17 @@ def amp2sh(
     rician: InputPathType | None = None,
     grad: InputPathType | None = None,
     fslgrad: Amp2shFslgrad | None = None,
-    shells: list[float | int] = None,
+    shells: list[float | int] | None = None,
     strides: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Amp2shConfig] = None,
+    config: list[Amp2shConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> Amp2shOutputs:
     """
     amp2sh by J-Donald Tournier (jdtournier@gmail.com).

@@ -39,10 +39,10 @@ def v_3d_bandpass(
     normalize: bool = False,
     notrans: bool = False,
     orthogonalize_dset: InputPathType | None = None,
-    orthogonalize_file: list[InputPathType] = None,
+    orthogonalize_file: list[InputPathType] | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     tr: float | int | None = None,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> V3dBandpassOutputs:
     """
     3dBandpass by Nipype (interface).

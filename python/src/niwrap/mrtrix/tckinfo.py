@@ -60,10 +60,10 @@ def tckinfo(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TckinfoConfig] = None,
+    config: list[TckinfoConfig] | None = None,
     help_: bool = False,
     version: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> TckinfoOutputs:
     """
     tckinfo by J-Donald Tournier (jdtournier@gmail.com).

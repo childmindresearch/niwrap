@@ -33,7 +33,7 @@ def baycest(
     ptrain_file: InputPathType,
     spatial_flag: bool = False,
     t12prior_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> BaycestOutputs:
     """
     baycest by Bayesian Analysis Group.

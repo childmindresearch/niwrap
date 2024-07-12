@@ -31,7 +31,7 @@ def fslsplit(
     separation_x: bool = False,
     separation_y: bool = False,
     separation_z: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> FslsplitOutputs:
     """
     fslsplit by Oxford Centre for Functional MRI of the Brain (FMRIB).

@@ -30,7 +30,7 @@ def swap_subjectwise(
     xthresh: float | int | None = None,
     averageonly_flag: bool = False,
     verbose_flag: bool = False,
-    runner: Runner = None,
+    runner: Runner | None = None,
 ) -> SwapSubjectwiseOutputs:
     """
     swap_subjectwise by FMRIB Analysis Group, University of Oxford.
