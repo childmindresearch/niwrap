@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKMAP_METADATA = Metadata(
-    id="5cf50181aab21f71d933c8804d02d522094e66e2",
+    id="3c3f320d9b75d5374e037cb2bc47e400a79deff0",
     name="tckmap",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -59,15 +59,15 @@ def tckmap(
     output: str,
     template: InputPathType | None = None,
     vox: list[float | int] = None,
-    datatype: typing.Literal["spec"] | None = None,
+    datatype: str | None = None,
     dec: bool = False,
     dixel: str | None = None,
     tod: int | None = None,
-    contrast: typing.Literal["type"] | None = None,
+    contrast: str | None = None,
     image: InputPathType | None = None,
     vector_file: InputPathType | None = None,
-    stat_vox: typing.Literal["type"] | None = None,
-    stat_tck: typing.Literal["type"] | None = None,
+    stat_vox: str | None = None,
+    stat_tck: str | None = None,
     fwhm_tck: float | int | None = None,
     map_zero: bool = False,
     backtrack: bool = False,

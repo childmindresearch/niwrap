@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKGEN_METADATA = Metadata(
-    id="5e47f47421515c25e08b24772671f923e52da011",
+    id="4d8fb7caca3792bac0d557cfda72ce533a020f52",
     name="tckgen",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -391,7 +391,7 @@ class TckgenOutputs(typing.NamedTuple):
 def tckgen(
     source: InputPathType,
     tracks: str,
-    algorithm: typing.Literal["name"] | None = None,
+    algorithm: str | None = None,
     select_: int | None = None,
     step: float | int | None = None,
     angle: float | int | None = None,

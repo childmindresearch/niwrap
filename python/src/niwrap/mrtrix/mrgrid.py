@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRGRID_METADATA = Metadata(
-    id="2d706a05dc76bbb22322a5b9eb06da741d3bf7c8",
+    id="bdf0ebfe44a0db3e89c3caabe5463bd16349ccf4",
     name="mrgrid",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -102,13 +102,13 @@ class MrgridOutputs(typing.NamedTuple):
 
 def mrgrid(
     input_: InputPathType,
-    operation: typing.Literal["operation"],
+    operation: str,
     output: str,
     template: InputPathType | None = None,
     size: list[int] = None,
     voxel: list[float | int] = None,
     scale: list[float | int] = None,
-    interp: typing.Literal["method"] | None = None,
+    interp: str | None = None,
     oversample: list[int] = None,
     as_: InputPathType | None = None,
     uniform: int | None = None,
@@ -118,7 +118,7 @@ def mrgrid(
     all_axes: bool = False,
     fill: float | int | None = None,
     strides: str | None = None,
-    datatype: typing.Literal["spec"] | None = None,
+    datatype: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,

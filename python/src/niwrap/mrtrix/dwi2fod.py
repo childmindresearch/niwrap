@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DWI2FOD_METADATA = Metadata(
-    id="117bc926fe935262045a3438c6b148ea44779ec3",
+    id="a88d17e5b0c76105830592b6d7e967c7518342fd",
     name="dwi2fod",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -91,7 +91,7 @@ class Dwi2fodOutputs(typing.NamedTuple):
 
 
 def dwi2fod(
-    algorithm: typing.Literal["algorithm"],
+    algorithm: str,
     dwi: InputPathType,
     response_odf: list[str],
     grad: InputPathType | None = None,

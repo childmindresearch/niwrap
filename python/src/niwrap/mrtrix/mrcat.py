@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRCAT_METADATA = Metadata(
-    id="85fcb6117ac081dd969773034d1097c76ffffb7a",
+    id="21885e76d810f08df4364284639c8ed0bfacf428",
     name="mrcat",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -59,7 +59,7 @@ def mrcat(
     image2: list[InputPathType],
     output: str,
     axis: int | None = None,
-    datatype: typing.Literal["spec"] | None = None,
+    datatype: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,

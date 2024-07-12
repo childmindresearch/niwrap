@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TRANSFORMCONVERT_METADATA = Metadata(
-    id="7976c3a910031003ace0248d2d53752e6939a3f3",
+    id="3a4a3ef4828a481fc9cdaa05890cd0cad5c5f34a",
     name="transformconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class TransformconvertOutputs(typing.NamedTuple):
 
 def transformconvert(
     input_: list[str],
-    operation: typing.Literal["operation"],
+    operation: str,
     output: str,
     info: bool = False,
     quiet: bool = False,

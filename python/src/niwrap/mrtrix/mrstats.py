@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRSTATS_METADATA = Metadata(
-    id="cfe38b38774673daa41e320becef90fb7aa12680",
+    id="d6b6130eadba4cd34c792009b27a777f19edbda6",
     name="mrstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -19,7 +19,7 @@ class MrstatsOutput:
     """
     output only the field specified. Multiple such options can be supplied if required. Choices are: mean, median, std, std_rv, min, max, count. Useful for use in scripts. Both std options refer to the unbiased (sample) standard deviation. For complex data, min, max and std are calculated separately for real and imaginary parts, std_rv is based on the real valued variance (equals sqrt of sum of variances of imaginary and real parts).
     """
-    field: typing.Literal["field"]
+    field: str
     """output only the field specified. Multiple such options can be supplied if
     required. Choices are: mean, median, std, std_rv, min, max, count. Useful
     for use in scripts. Both std options refer to the unbiased (sample) standard

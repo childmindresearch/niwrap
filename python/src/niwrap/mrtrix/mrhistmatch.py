@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRHISTMATCH_METADATA = Metadata(
-    id="66d15f9521ee5effa3a0a1b8b991409e1c5e6bf5",
+    id="8c231ab9b747c81c1c318e1f07f8edfa1b7e8bf8",
     name="mrhistmatch",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -55,7 +55,7 @@ class MrhistmatchOutputs(typing.NamedTuple):
 
 
 def mrhistmatch(
-    type_: typing.Literal["type"],
+    type_: str,
     input_: InputPathType,
     target: InputPathType,
     output: str,

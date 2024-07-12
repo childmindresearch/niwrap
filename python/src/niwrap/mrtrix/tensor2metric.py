@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TENSOR2METRIC_METADATA = Metadata(
-    id="a52be3325be42f53cf78810899f28fe50e50e254",
+    id="a30ad610df4836f7db35faabbd6f28aed9a40034",
     name="tensor2metric",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -82,7 +82,7 @@ def tensor2metric(
     value: str | None = None,
     vector: str | None = None,
     num: list[int] = None,
-    modulate: typing.Literal["choice"] | None = None,
+    modulate: str | None = None,
     mask: InputPathType | None = None,
     info: bool = False,
     quiet: bool = False,

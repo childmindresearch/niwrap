@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 LABELSTATS_METADATA = Metadata(
-    id="286c9fb1bf7805b495acc538d6c090d1834865ce",
+    id="3395924062a69592b23b77fd455f984ac2601a8b",
     name="labelstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -54,7 +54,7 @@ class LabelstatsOutputs(typing.NamedTuple):
 
 def labelstats(
     input_: InputPathType,
-    output: typing.Literal["choice"] | None = None,
+    output: str | None = None,
     voxelspace: bool = False,
     info: bool = False,
     quiet: bool = False,

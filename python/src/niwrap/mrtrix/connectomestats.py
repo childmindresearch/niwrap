@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONNECTOMESTATS_METADATA = Metadata(
-    id="4f12433fa5e94d6b73db3e3d93dbf7e89441971b",
+    id="a133a8de6ede1c498219fbf0a214b2217592e27b",
     name="connectomestats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -84,12 +84,12 @@ class ConnectomestatsOutputs(typing.NamedTuple):
 
 def connectomestats(
     input_: InputPathType,
-    algorithm: typing.Literal["algorithm"],
+    algorithm: str,
     design: InputPathType,
     contrast: InputPathType,
     output: str,
     notest: bool = False,
-    errors: typing.Literal["spec"] | None = None,
+    errors: str | None = None,
     exchange_within: InputPathType | None = None,
     exchange_whole: InputPathType | None = None,
     strong: bool = False,

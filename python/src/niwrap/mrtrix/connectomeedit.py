@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONNECTOMEEDIT_METADATA = Metadata(
-    id="e4127e3c7d0c43b2a34a69be209c72dfe99b280d",
+    id="46d14a97fe46db3a4133300232b730e4fe70c6d0",
     name="connectomeedit",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -54,7 +54,7 @@ class ConnectomeeditOutputs(typing.NamedTuple):
 
 def connectomeedit(
     input_: str,
-    operation: typing.Literal["operation"],
+    operation: str,
     output: str,
     info: bool = False,
     quiet: bool = False,

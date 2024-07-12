@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRCONVERT_METADATA = Metadata(
-    id="71cf346476366ba2a5ff4d1e5cea0a61124f45fc",
+    id="9844e0d267cfd8b4c2122978368305252e39c6f4",
     name="mrconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -397,7 +397,7 @@ def mrconvert(
     append_property: list[MrconvertAppendProperty] = None,
     copy_properties: str | None = None,
     strides: str | None = None,
-    datatype: typing.Literal["spec"] | None = None,
+    datatype: str | None = None,
     grad: InputPathType | None = None,
     fslgrad: MrconvertFslgrad | None = None,
     bvalue_scaling: str | None = None,

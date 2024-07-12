@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SHBASIS_METADATA = Metadata(
-    id="f5015a6fa580efa3089db741e6b2ed5b913d793b",
+    id="707c36ba783241cb02f7ec460fd290130572ea03",
     name="shbasis",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -54,7 +54,7 @@ class ShbasisOutputs(typing.NamedTuple):
 
 def shbasis(
     sh: list[InputPathType],
-    convert: typing.Literal["mode"] | None = None,
+    convert: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,

@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MASKFILTER_METADATA = Metadata(
-    id="6ba4e496d08f1488d97425eefe37ae0112fd3e95",
+    id="64d09e2402719ae6eb1c2a4b1802b4a54c209de9",
     name="maskfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class MaskfilterOutputs(typing.NamedTuple):
 
 def maskfilter(
     input_: InputPathType,
-    filter_: typing.Literal["filter"],
+    filter_: str,
     output: str,
     scale: int | None = None,
     axes: list[int] = None,
