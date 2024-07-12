@@ -83,8 +83,7 @@
       "value-key": "[OPTIONS_RELATING_TO_SHUFFLING_OF_DATA_FOR_NONPARAMETRIC_STATISTICAL_INFERENCE_ERRORS]",
       "description": "specify nature of errors for shuffling; options are: ee,ise,both (default: ee)",
       "type": "String",
-      "optional": true,
-      "value-choices": ["spec"]
+      "optional": true
     },
     {
       "id": "exchange_within",

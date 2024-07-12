@@ -143,8 +143,7 @@
       "value-key": "[OTHER_OPTIONS_FOR_TCK2CONNECTOME_STAT_EDGE]",
       "description": "statistic for combining the values from all streamlines in an edge into a single scale value for that edge (options are: sum,mean,min,max; default=sum)",
       "type": "String",
-      "optional": true,
-      "value-choices": ["statistic"]
+      "optional": true
     },
     {
       "id": "tck_weights_in",

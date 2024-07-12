@@ -24,8 +24,7 @@
       "value-key": "[FILTER]",
       "description": "the filtering operation to perform; options are: connect, smooth",
       "type": "String",
-      "optional": false,
-      "value-choices": ["filter"]
+      "optional": false
     },
     {
       "id": "output",

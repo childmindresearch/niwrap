@@ -26,8 +26,7 @@
       "value-key": "[OPTIONS_CONVERT]",
       "description": "convert the image data in-place to the desired basis; options are: old,new,force_oldtonew,force_newtoold.",
       "type": "String",
-      "optional": true,
-      "value-choices": ["mode"]
+      "optional": true
     },
     {
       "id": "info",

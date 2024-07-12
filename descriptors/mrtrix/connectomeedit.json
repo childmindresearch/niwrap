@@ -24,8 +24,7 @@
       "value-key": "[OPERATION]",
       "description": "the operation to apply, one of: to_symmetric, upper_triangular, lower_triangular, transpose, zero_diagonal.",
       "type": "String",
-      "optional": false,
-      "value-choices": ["operation"]
+      "optional": false
     },
     {
       "id": "output",

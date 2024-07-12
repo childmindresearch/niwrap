@@ -67,7 +67,9 @@ function make_descriptor(obj) {
         } else if (argument.type == 'choice') {
             boutiques_input.type = 'String';
             // split by / to get the choices
-            boutiques_input['value-choices'] = argument.id.split('/');
+            //boutiques_input['value-choices'] = argument.id.split('/');
+            // note: this is not always correct, e.g. dwi2fod algorithm
+            // so lets just keep it as a str for now
             return false;
         } else if (argument.type == 'int seq') {
             boutiques_input.type = 'Number';

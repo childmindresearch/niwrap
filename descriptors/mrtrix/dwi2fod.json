@@ -16,8 +16,7 @@
       "value-key": "[ALGORITHM]",
       "description": "the algorithm to use for FOD estimation. (options are: csd,msmt_csd)",
       "type": "String",
-      "optional": false,
-      "value-choices": ["algorithm"]
+      "optional": false
     },
     {
       "id": "dwi",

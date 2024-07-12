@@ -117,8 +117,7 @@
       "value-key": "[OPTIONS_MODULATE]",
       "description": "specify how to modulate the magnitude of the eigenvectors. Valid choices are: none, FA, eigval (default = FA).",
       "type": "String",
-      "optional": true,
-      "value-choices": ["choice"]
+      "optional": true
     },
     {
       "id": "mask",

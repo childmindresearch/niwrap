@@ -62,8 +62,7 @@
       "value-key": "[OPTIONS_FOR_DETERMINING_THE_CONTENT___FORMAT_OF_OUTPUT_FILES_FILES]",
       "description": "select how the resulting streamlines will be grouped in output files. Options are: per_edge, per_node, single (default: per_edge)",
       "type": "String",
-      "optional": true,
-      "value-choices": ["option"]
+      "optional": true
     },
     {
       "id": "exemplars",

@@ -25,8 +25,7 @@
       "value-key": "[OPERATION]",
       "description": "the operation to perform, one of:\nflirt_import, itk_import",
       "type": "String",
-      "optional": false,
-      "value-choices": ["operation"]
+      "optional": false
     },
     {
       "id": "output",

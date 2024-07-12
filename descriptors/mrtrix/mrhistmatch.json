@@ -16,8 +16,7 @@
       "value-key": "[TYPE]",
       "description": "type of histogram matching to perform; options are: scale,linear,nonlinear",
       "type": "String",
-      "optional": false,
-      "value-choices": ["type"]
+      "optional": false
     },
     {
       "id": "input",

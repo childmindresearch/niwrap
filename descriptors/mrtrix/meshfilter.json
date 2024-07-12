@@ -24,8 +24,7 @@
       "value-key": "[FILTER]",
       "description": "the filter to apply.Options are: smooth",
       "type": "String",
-      "optional": false,
-      "value-choices": ["filter"]
+      "optional": false
     },
     {
       "id": "output",

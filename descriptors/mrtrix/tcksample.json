@@ -41,8 +41,7 @@
       "value-key": "[OPTIONS_STAT_TCK]",
       "description": "compute some statistic from the values along each streamline (options are: mean,median,min,max)",
       "type": "String",
-      "optional": true,
-      "value-choices": ["statistic"]
+      "optional": true
     },
     {
       "id": "nointerp",

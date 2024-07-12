@@ -24,8 +24,7 @@
       "value-key": "[FILTER]",
       "description": "the type of filter to be applied (clean, connect, dilate, erode, median)",
       "type": "String",
-      "optional": false,
-      "value-choices": ["filter"]
+      "optional": false
     },
     {
       "id": "output",

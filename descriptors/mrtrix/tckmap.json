@@ -54,8 +54,7 @@
       "value-key": "[OPTIONS_FOR_THE_HEADER_OF_THE_OUTPUT_IMAGE_DATATYPE]",
       "description": "specify output image data type.",
       "type": "String",
-      "optional": true,
-      "value-choices": ["spec"]
+      "optional": true
     },
     {
       "id": "dec",
@@ -92,8 +91,7 @@
       "value-key": "[OPTIONS_FOR_THE_TWI_IMAGE_CONTRAST_PROPERTIES_CONTRAST]",
       "description": "define the desired form of contrast for the output image\nOptions are: tdi, length, invlength, scalar_map, scalar_map_count, fod_amp, curvature, vector_file (default: tdi)",
       "type": "String",
-      "optional": true,
-      "value-choices": ["type"]
+      "optional": true
     },
     {
       "id": "image",
@@ -120,8 +118,7 @@
       "value-key": "[OPTIONS_FOR_THE_TWI_IMAGE_CONTRAST_PROPERTIES_STAT_VOX]",
       "description": "define the statistic for choosing the final voxel intensities for a given contrast type given the individual values from the tracks passing through each voxel. \nOptions are: sum, min, mean, max (default: sum)",
       "type": "String",
-      "optional": true,
-      "value-choices": ["type"]
+      "optional": true
     },
     {
       "id": "stat_tck",
@@ -130,8 +127,7 @@
       "value-key": "[OPTIONS_FOR_THE_TWI_IMAGE_CONTRAST_PROPERTIES_STAT_TCK]",
       "description": "define the statistic for choosing the contribution to be made by each streamline as a function of the samples taken along their lengths. \nOnly has an effect for 'scalar_map', 'fod_amp' and 'curvature' contrast types. \nOptions are: sum, min, mean, max, median, mean_nonzero, gaussian, ends_min, ends_mean, ends_max, ends_prod (default: mean)",
       "type": "String",
-      "optional": true,
-      "value-choices": ["type"]
+      "optional": true
     },
     {
       "id": "fwhm_tck",
