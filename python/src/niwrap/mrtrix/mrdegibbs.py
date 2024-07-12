@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRDEGIBBS_METADATA = Metadata(
-    id="5abc27144862fca5b537b7f3de1761112223420b",
+    id="c70f7de6a27013ac4607923d82d2016cfc151b82",
     name="mrdegibbs",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -61,7 +61,7 @@ def mrdegibbs(
     nshifts: int | None = None,
     min_w: int | None = None,
     max_w: int | None = None,
-    datatype: typing.Literal["spec"] | None = None,
+    datatype: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,

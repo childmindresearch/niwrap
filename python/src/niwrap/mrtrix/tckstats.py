@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKSTATS_METADATA = Metadata(
-    id="6091bf2b02998c7e4929a89bf48b84ae94e830ab",
+    id="2e6f7d19387564d069ab548694fef288498b97ad",
     name="tckstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -19,7 +19,7 @@ class TckstatsOutput:
     """
     output only the field specified. Multiple such options can be supplied if required. Choices are: mean, median, std, min, max, count. Useful for use in scripts.
     """
-    field: typing.Literal["field"]
+    field: str
     """output only the field specified. Multiple such options can be supplied if
     required. Choices are: mean, median, std, min, max, count. Useful for use in
     scripts."""

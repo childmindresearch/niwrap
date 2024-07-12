@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 CONNECTOME2TCK_METADATA = Metadata(
-    id="7220e553e6f6d1ddf13a4147582c4c793d0bad5d",
+    id="9b8f76e3780a04a62382dbfad738ea0d57198eda",
     name="connectome2tck",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -58,7 +58,7 @@ def connectome2tck(
     prefix_out: str,
     nodes: list[int] = None,
     exclusive: bool = False,
-    files: typing.Literal["option"] | None = None,
+    files: str | None = None,
     exemplars: InputPathType | None = None,
     keep_unassigned: bool = False,
     keep_self: bool = False,

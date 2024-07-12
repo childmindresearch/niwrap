@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 TCKDFC_METADATA = Metadata(
-    id="328d7d7c486f3637e6ae3afa6e0bed0794bdd59e",
+    id="51a5b1e93e640f64e9fa324dd21b00dc35eab082",
     name="tckdfc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -19,7 +19,7 @@ class TckdfcDynamic:
     """
     generate a "dynamic" (4D) output image; must additionally provide the shape and width (in volumes) of the sliding window.
     """
-    shape: typing.Literal["shape"]
+    shape: str
     """generate a "dynamic" (4D) output image; must additionally provide the
     shape and width (in volumes) of the sliding window."""
     width: int
@@ -94,7 +94,7 @@ def tckdfc(
     dynamic: TckdfcDynamic | None = None,
     template: InputPathType | None = None,
     vox: list[float | int] = None,
-    stat_vox: typing.Literal["type"] | None = None,
+    stat_vox: str | None = None,
     backtrack: bool = False,
     upsample: int | None = None,
     info: bool = False,

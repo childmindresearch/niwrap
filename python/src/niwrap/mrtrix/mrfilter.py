@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRFILTER_METADATA = Metadata(
-    id="0621af7c7b417bc8eb911cfb7565dfdeab30cb58",
+    id="3f28178c4dc22fa215b3238a6b8632bc6ae9453f",
     name="mrfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -58,7 +58,7 @@ class MrfilterOutputs(typing.NamedTuple):
 
 def mrfilter(
     input_: InputPathType,
-    filter_: typing.Literal["filter"],
+    filter_: str,
     output: str,
     axes: list[int] = None,
     inverse: bool = False,

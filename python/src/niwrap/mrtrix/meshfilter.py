@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MESHFILTER_METADATA = Metadata(
-    id="814feceb91ae97324a8f77bb41805d6bdd278064",
+    id="ec71318141eed6fc264716fddad90a1fa6d802cf",
     name="meshfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -56,7 +56,7 @@ class MeshfilterOutputs(typing.NamedTuple):
 
 def meshfilter(
     input_: InputPathType,
-    filter_: typing.Literal["filter"],
+    filter_: str,
     output: str,
     smooth_spatial: float | int | None = None,
     smooth_influence: float | int | None = None,

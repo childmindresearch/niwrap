@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 DWIDENOISE_METADATA = Metadata(
-    id="94c1390c6b0173bb45624ca63ad6ab842b7b3c6e",
+    id="ac75ec95a6bf52e9f1d06b0d02179b586926589a",
     name="dwidenoise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -62,8 +62,8 @@ def dwidenoise(
     mask: InputPathType | None = None,
     extent: list[int] = None,
     noise: str | None = None,
-    datatype: typing.Literal["float32", "float64"] | None = None,
-    estimator: typing.Literal["Exp1", "Exp2"] | None = None,
+    datatype: str | None = None,
+    estimator: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,

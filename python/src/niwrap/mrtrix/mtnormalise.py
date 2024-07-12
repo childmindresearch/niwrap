@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MTNORMALISE_METADATA = Metadata(
-    id="7099c2997a5bf34e86104d8fded9dba661a766c6",
+    id="4cf9cc69722398266490dc75c921f92490a29046",
     name="mtnormalise",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -61,7 +61,7 @@ class MtnormaliseOutputs(typing.NamedTuple):
 def mtnormalise(
     input_output: list[str],
     mask: InputPathType,
-    order: typing.Literal["number"] | None = None,
+    order: str | None = None,
     niter: list[int] = None,
     reference: float | int | None = None,
     balanced: bool = False,

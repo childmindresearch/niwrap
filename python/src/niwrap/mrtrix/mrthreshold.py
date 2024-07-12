@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRTHRESHOLD_METADATA = Metadata(
-    id="505a66e50baef15acc3bd93fd79fbbad74d28ccb",
+    id="8568f1089ad54701e2d4499f7f58937f1bed960c",
     name="mrthreshold",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -64,7 +64,7 @@ def mrthreshold(
     allvolumes: bool = False,
     ignorezero: bool = False,
     mask: InputPathType | None = None,
-    comparison: typing.Literal["choice"] | None = None,
+    comparison: str | None = None,
     invert: bool = False,
     out_masked: bool = False,
     nan: bool = False,

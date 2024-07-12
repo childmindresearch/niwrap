@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 SH2AMP_METADATA = Metadata(
-    id="1c234736c393c6ada4cd49718a9f87ea4db3c6c2",
+    id="2d8df4b80229f109b18120d1890e5e8bc125a81b",
     name="sh2amp",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -98,7 +98,7 @@ def sh2amp(
     grad: InputPathType | None = None,
     fslgrad: Sh2ampFslgrad | None = None,
     strides: str | None = None,
-    datatype: typing.Literal["spec"] | None = None,
+    datatype: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,

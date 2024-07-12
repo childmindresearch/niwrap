@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRMETRIC_METADATA = Metadata(
-    id="38abc872e860cbc5e43effb5a5d2f87b369a712b",
+    id="c25b48d0d6d3868ff9ebc87c1b01c90451c93731",
     name="mrmetric",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -55,9 +55,9 @@ class MrmetricOutputs(typing.NamedTuple):
 def mrmetric(
     image1: InputPathType,
     image2: InputPathType,
-    space: typing.Literal["iteration method"] | None = None,
-    interp: typing.Literal["method"] | None = None,
-    metric: typing.Literal["method"] | None = None,
+    space: str | None = None,
+    interp: str | None = None,
+    metric: str | None = None,
     mask1: InputPathType | None = None,
     mask2: InputPathType | None = None,
     nonormalisation: bool = False,

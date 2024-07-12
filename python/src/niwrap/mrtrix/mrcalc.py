@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRCALC_METADATA = Metadata(
-    id="0a433c2d6189801142076f222e9ab90c9183c047",
+    id="dd4d026a9d2fb2d4e9eab3421595f0acad9c9603",
     name="mrcalc",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -1304,7 +1304,7 @@ def mrcalc(
     acosh: list[MrcalcAcosh] = None,
     asinh: list[MrcalcAsinh] = None,
     atanh: list[MrcalcAtanh] = None,
-    datatype: typing.Literal["spec"] | None = None,
+    datatype: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,

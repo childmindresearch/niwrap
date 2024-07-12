@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FIXELFILTER_METADATA = Metadata(
-    id="32244d5feeb02c86d46b0b90b26d0bceabce0b2a",
+    id="c8d0aa7a0b4f28c8cd4f545d783f49ce5f8b2c57",
     name="fixelfilter",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -54,7 +54,7 @@ class FixelfilterOutputs(typing.NamedTuple):
 
 def fixelfilter(
     input_: str,
-    filter_: typing.Literal["filter"],
+    filter_: str,
     output: str,
     matrix: InputPathType,
     threshold_value: float | int | None = None,

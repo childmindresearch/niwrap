@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRVIEW_METADATA = Metadata(
-    id="8fada772d44176bab54dfdfa868641442aae52d4",
+    id="1fc2cb0304540f7aaeda0ab60305b06437541161",
     name="mrview",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -1042,7 +1042,7 @@ class MrviewTractographyGeometry:
     """
     The geometry type to use when rendering tractograms (options are: pseudotubes, lines, points)
     """
-    value: typing.Literal["value"]
+    value: str
     """The geometry type to use when rendering tractograms (options are:
     pseudotubes, lines, points)"""
     

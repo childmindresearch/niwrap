@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MESHCONVERT_METADATA = Metadata(
-    id="cdbce10b9949a8f6986ca8fa55e86fe2916c3120",
+    id="344abcc95b32eaabe4fe4d2f639ad46cf81609a6",
     name="meshconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -19,7 +19,7 @@ class MeshconvertTransform:
     """
     transform vertices from one coordinate space to another, based on a template image; options are: first2real, real2first, voxel2real, real2voxel, fs2real
     """
-    mode: typing.Literal["mode"]
+    mode: str
     """transform vertices from one coordinate space to another, based on a
     template image; options are: first2real, real2first, voxel2real, real2voxel,
     fs2real"""

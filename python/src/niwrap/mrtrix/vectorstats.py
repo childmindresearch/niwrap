@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 VECTORSTATS_METADATA = Metadata(
-    id="c59d55bcec9a6deff12e83476613abf0ca82bcdd",
+    id="be9fccc3c0e65f405594311c49164b4307c526e5",
     name="vectorstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -88,7 +88,7 @@ def vectorstats(
     contrast: InputPathType,
     output: str,
     notest: bool = False,
-    errors: typing.Literal["spec"] | None = None,
+    errors: str | None = None,
     exchange_within: InputPathType | None = None,
     exchange_whole: InputPathType | None = None,
     strong: bool = False,

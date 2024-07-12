@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRCLUSTERSTATS_METADATA = Metadata(
-    id="2d1bf121c95ebadde39fcaeb1d8ad40f709ed98b",
+    id="82c87f74c578c712d0e7eaa04e77402c4dabbebd",
     name="mrclusterstats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -89,7 +89,7 @@ def mrclusterstats(
     mask: InputPathType,
     output: str,
     notest: bool = False,
-    errors: typing.Literal["spec"] | None = None,
+    errors: str | None = None,
     exchange_within: InputPathType | None = None,
     exchange_whole: InputPathType | None = None,
     strong: bool = False,

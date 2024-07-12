@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 FIXELCFESTATS_METADATA = Metadata(
-    id="75a4fa805b68f14a8f6c526d4c9345fe364752eb",
+    id="8e94c44b033e14aaa38e9f2a2be9c4ec4a5bc6e5",
     name="fixelcfestats",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -91,7 +91,7 @@ def fixelcfestats(
     out_fixel_directory: str,
     mask: InputPathType | None = None,
     notest: bool = False,
-    errors: typing.Literal["spec"] | None = None,
+    errors: str | None = None,
     exchange_within: InputPathType | None = None,
     exchange_whole: InputPathType | None = None,
     strong: bool = False,
