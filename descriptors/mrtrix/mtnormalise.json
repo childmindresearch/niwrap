@@ -15,7 +15,38 @@
       "name": "input_output",
       "value-key": "[INPUT_OUTPUT]",
       "description": "list of all input and output tissue compartment files (see example usage).",
-      "type": "String",
+      "type": {
+        "id": "input_output",
+        "name": "input_output",
+        "description": "list of all input and output tissue compartment files (see example usage).",
+        "command-line": "[INPUT] [OUTPUT]",
+        "inputs": [
+          {
+            "id": "input",
+            "name": "input",
+            "value-key": "[INPUT]",
+            "description": "input tissue compartment image.",
+            "type": "File",
+            "optional": false
+          },
+          {
+            "id": "output",
+            "name": "output",
+            "value-key": "[OUTPUT]",
+            "description": "output normalised tissue compartment image.",
+            "type": "String",
+            "optional": false
+          }
+        ],
+        "output-files": [
+          {
+            "id": "output",
+            "name": "output",
+            "path-template": "[OUTPUT]",
+            "description": "output normalised tissue compartment image."
+          }
+        ]
+      },
       "optional": false,
       "list": true
     },

@@ -31,7 +31,38 @@
       "name": "response_odf",
       "value-key": "[RESPONSE_ODF]",
       "description": "pairs of input tissue response and output ODF images",
-      "type": "String",
+      "type": {
+        "id": "response_odf",
+        "name": "response_odf",
+        "description": "pairs of input tissue response and output ODF images",
+        "command-line": "[RESPONSE] [ODF]",
+        "inputs": [
+          {
+            "id": "response",
+            "name": "response",
+            "value-key": "[RESPONSE]",
+            "description": "input tissue response",
+            "type": "File",
+            "optional": false
+          },
+          {
+            "id": "odf",
+            "name": "odf",
+            "value-key": "[ODF]",
+            "description": "output ODF image",
+            "type": "String",
+            "optional": false
+          }
+        ],
+        "output-files": [
+          {
+            "id": "odf",
+            "name": "odf",
+            "path-template": "[ODF]",
+            "description": "output ODF image"
+          }
+        ]
+      },
       "optional": false,
       "list": true
     },

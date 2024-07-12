@@ -277,6 +277,76 @@ for (const file of fs.readdirSync(jsonPath)) {
     // make the descriptor
     const descriptor = make_descriptor(obj);
 
+    // special cases
+    if (descriptor.name === 'dwi2fod') {
+        descriptor.inputs[2].type = {
+            "id": "response_odf",
+            "name": "response_odf",
+            "description": "pairs of input tissue response and output ODF images",
+            "command-line": "[RESPONSE] [ODF]",
+            "inputs": [
+              {
+                "id": "response",
+                "name": "response",
+                "value-key": "[RESPONSE]",
+                "description": "input tissue response",
+                "type": "File",
+                "optional": false
+              },
+              {
+                "id": "odf",
+                "name": "odf",
+                "value-key": "[ODF]",
+                "description": "output ODF image",
+                "type": "String",
+                "optional": false
+              }
+            ],
+            "output-files": [
+              {
+                "id": "odf",
+                "name": "odf",
+                "path-template": "[ODF]",
+                "description": "output ODF image"
+              }
+            ]
+          };
+    }
+    else if (descriptor.name === 'mtnormalise') {
+        descriptor.inputs[0].type = {
+            "id": "input_output",
+            "name": "input_output",
+            "description": "list of all input and output tissue compartment files (see example usage).",
+            "command-line": "[INPUT] [OUTPUT]",
+            "inputs": [
+              {
+                "id": "input",
+                "name": "input",
+                "value-key": "[INPUT]",
+                "description": "input tissue compartment image.",
+                "type": "File",
+                "optional": false
+              },
+              {
+                "id": "output",
+                "name": "output",
+                "value-key": "[OUTPUT]",
+                "description": "output normalised tissue compartment image.",
+                "type": "String",
+                "optional": false
+              }
+            ],
+            "output-files": [
+              {
+                "id": "output",
+                "name": "output",
+                "path-template": "[OUTPUT]",
+                "description": "output normalised tissue compartment image."
+              }
+            ]
+          };
+    }
+
     console.log(" done");
 
     // write the descriptor to a file
