@@ -96,7 +96,7 @@
 </span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="k">def</span> <span class="nf">aff2rigid</span><span class="p">(</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="n">input_transform</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="n">output_transform</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aff2rigidOutputs</span><span class="p">:</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">    aff2rigid by FMRIB, University of Oxford.</span>
@@ -214,7 +214,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">aff2rigid</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_transform</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_transform</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Aff2rigidOutputs">Aff2rigidOutputs</a></span>:</span></span>
+        <span class="name">aff2rigid</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_transform</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_transform</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Aff2rigidOutputs">Aff2rigidOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="aff2rigid-view-source"><span>View Source</span></label>
 
@@ -223,7 +223,7 @@
             <div class="pdoc-code codehilite"><pre><span></span><span id="aff2rigid-26"><a href="#aff2rigid-26"><span class="linenos">26</span></a><span class="k">def</span> <span class="nf">aff2rigid</span><span class="p">(</span>
 </span><span id="aff2rigid-27"><a href="#aff2rigid-27"><span class="linenos">27</span></a>    <span class="n">input_transform</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="aff2rigid-28"><a href="#aff2rigid-28"><span class="linenos">28</span></a>    <span class="n">output_transform</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="aff2rigid-29"><a href="#aff2rigid-29"><span class="linenos">29</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="aff2rigid-29"><a href="#aff2rigid-29"><span class="linenos">29</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="aff2rigid-30"><a href="#aff2rigid-30"><span class="linenos">30</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aff2rigidOutputs</span><span class="p">:</span>
 </span><span id="aff2rigid-31"><a href="#aff2rigid-31"><span class="linenos">31</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="aff2rigid-32"><a href="#aff2rigid-32"><span class="linenos">32</span></a><span class="sd">    aff2rigid by FMRIB, University of Oxford.</span>

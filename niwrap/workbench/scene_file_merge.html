@@ -208,7 +208,7 @@
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">scene_file_</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the input scene file&quot;&quot;&quot;</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeScene</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeScene</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;specify a scene to use&quot;&quot;&quot;</span>
 </span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
@@ -242,8 +242,8 @@
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
 </span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="k">def</span> <span class="nf">scene_file_merge</span><span class="p">(</span>
 </span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">scene_file_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">scene_file</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeSceneFile</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">scene_file</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeSceneFile</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SceneFileMergeOutputs</span><span class="p">:</span>
 </span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">    scene-file-merge by Washington University School of Medicin.</span>
@@ -522,7 +522,7 @@
 </span><span id="SceneFileMergeSceneFile-84"><a href="#SceneFileMergeSceneFile-84"><span class="linenos"> 84</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="SceneFileMergeSceneFile-85"><a href="#SceneFileMergeSceneFile-85"><span class="linenos"> 85</span></a>    <span class="n">scene_file_</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="SceneFileMergeSceneFile-86"><a href="#SceneFileMergeSceneFile-86"><span class="linenos"> 86</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the input scene file&quot;&quot;&quot;</span>
-</span><span id="SceneFileMergeSceneFile-87"><a href="#SceneFileMergeSceneFile-87"><span class="linenos"> 87</span></a>    <span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeScene</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="SceneFileMergeSceneFile-87"><a href="#SceneFileMergeSceneFile-87"><span class="linenos"> 87</span></a>    <span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeScene</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="SceneFileMergeSceneFile-88"><a href="#SceneFileMergeSceneFile-88"><span class="linenos"> 88</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;specify a scene to use&quot;&quot;&quot;</span>
 </span><span id="SceneFileMergeSceneFile-89"><a href="#SceneFileMergeSceneFile-89"><span class="linenos"> 89</span></a>    
 </span><span id="SceneFileMergeSceneFile-90"><a href="#SceneFileMergeSceneFile-90"><span class="linenos"> 90</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
@@ -554,7 +554,7 @@
                             <div id="SceneFileMergeSceneFile.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">SceneFileMergeSceneFile</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">scene_file_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileMergeScene">SceneFileMergeScene</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+        <span class="name">SceneFileMergeSceneFile</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">scene_file_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileMergeScene">SceneFileMergeScene</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
@@ -578,7 +578,7 @@
                             </div>
                             <div id="SceneFileMergeSceneFile.scene" class="classattr">
                                 <div class="attr variable">
-            <span class="name">scene</span><span class="annotation">: list[<a href="#SceneFileMergeScene">SceneFileMergeScene</a>]</span>        =
+            <span class="name">scene</span><span class="annotation">: list[<a href="#SceneFileMergeScene">SceneFileMergeScene</a>] | None</span>        =
 <span class="default_value">None</span>
 
         
@@ -778,7 +778,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_file_merge</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">scene_file_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene_file</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileMergeSceneFile">SceneFileMergeSceneFile</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneFileMergeOutputs">SceneFileMergeOutputs</a></span>:</span></span>
+        <span class="name">scene_file_merge</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">scene_file_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene_file</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileMergeSceneFile">SceneFileMergeSceneFile</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneFileMergeOutputs">SceneFileMergeOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_file_merge-view-source"><span>View Source</span></label>
 
@@ -786,8 +786,8 @@
     <a class="headerlink" href="#scene_file_merge"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="scene_file_merge-119"><a href="#scene_file_merge-119"><span class="linenos">119</span></a><span class="k">def</span> <span class="nf">scene_file_merge</span><span class="p">(</span>
 </span><span id="scene_file_merge-120"><a href="#scene_file_merge-120"><span class="linenos">120</span></a>    <span class="n">scene_file_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="scene_file_merge-121"><a href="#scene_file_merge-121"><span class="linenos">121</span></a>    <span class="n">scene_file</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeSceneFile</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="scene_file_merge-122"><a href="#scene_file_merge-122"><span class="linenos">122</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="scene_file_merge-121"><a href="#scene_file_merge-121"><span class="linenos">121</span></a>    <span class="n">scene_file</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SceneFileMergeSceneFile</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="scene_file_merge-122"><a href="#scene_file_merge-122"><span class="linenos">122</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="scene_file_merge-123"><a href="#scene_file_merge-123"><span class="linenos">123</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SceneFileMergeOutputs</span><span class="p">:</span>
 </span><span id="scene_file_merge-124"><a href="#scene_file_merge-124"><span class="linenos">124</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="scene_file_merge-125"><a href="#scene_file_merge-125"><span class="linenos">125</span></a><span class="sd">    scene-file-merge by Washington University School of Medicin.</span>

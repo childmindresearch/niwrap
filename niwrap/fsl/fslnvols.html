@@ -95,7 +95,7 @@
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>
 </span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="k">def</span> <span class="nf">fslnvols</span><span class="p">(</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="n">infile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FslnvolsOutputs</span><span class="p">:</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">    fslnvols by FMRIB Centre, University of Oxford.</span>
@@ -209,7 +209,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fslnvols</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FslnvolsOutputs">FslnvolsOutputs</a></span>:</span></span>
+        <span class="name">fslnvols</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FslnvolsOutputs">FslnvolsOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="fslnvols-view-source"><span>View Source</span></label>
 
@@ -217,7 +217,7 @@
     <a class="headerlink" href="#fslnvols"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="fslnvols-26"><a href="#fslnvols-26"><span class="linenos">26</span></a><span class="k">def</span> <span class="nf">fslnvols</span><span class="p">(</span>
 </span><span id="fslnvols-27"><a href="#fslnvols-27"><span class="linenos">27</span></a>    <span class="n">infile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="fslnvols-28"><a href="#fslnvols-28"><span class="linenos">28</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fslnvols-28"><a href="#fslnvols-28"><span class="linenos">28</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="fslnvols-29"><a href="#fslnvols-29"><span class="linenos">29</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FslnvolsOutputs</span><span class="p">:</span>
 </span><span id="fslnvols-30"><a href="#fslnvols-30"><span class="linenos">30</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="fslnvols-31"><a href="#fslnvols-31"><span class="linenos">31</span></a><span class="sd">    fslnvols by FMRIB Centre, University of Oxford.</span>

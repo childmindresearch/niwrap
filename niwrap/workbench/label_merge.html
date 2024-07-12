@@ -211,7 +211,7 @@
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">label_in</span><span class="p">:</span> <span class="n">InputPathType</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;a label file to use columns from&quot;&quot;&quot;</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeColumn</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeColumn</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;select a single column to use&quot;&quot;&quot;</span>
 </span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
@@ -247,8 +247,8 @@
 </span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>
 </span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="k">def</span> <span class="nf">label_merge</span><span class="p">(</span>
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeLabel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeLabel</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelMergeOutputs</span><span class="p">:</span>
 </span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">    label-merge by Washington University School of Medicin.</span>
@@ -467,7 +467,7 @@
 </span><span id="LabelMergeLabel-84"><a href="#LabelMergeLabel-84"><span class="linenos"> 84</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="LabelMergeLabel-85"><a href="#LabelMergeLabel-85"><span class="linenos"> 85</span></a>    <span class="n">label_in</span><span class="p">:</span> <span class="n">InputPathType</span>
 </span><span id="LabelMergeLabel-86"><a href="#LabelMergeLabel-86"><span class="linenos"> 86</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;a label file to use columns from&quot;&quot;&quot;</span>
-</span><span id="LabelMergeLabel-87"><a href="#LabelMergeLabel-87"><span class="linenos"> 87</span></a>    <span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeColumn</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="LabelMergeLabel-87"><a href="#LabelMergeLabel-87"><span class="linenos"> 87</span></a>    <span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeColumn</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="LabelMergeLabel-88"><a href="#LabelMergeLabel-88"><span class="linenos"> 88</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;select a single column to use&quot;&quot;&quot;</span>
 </span><span id="LabelMergeLabel-89"><a href="#LabelMergeLabel-89"><span class="linenos"> 89</span></a>    
 </span><span id="LabelMergeLabel-90"><a href="#LabelMergeLabel-90"><span class="linenos"> 90</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
@@ -499,7 +499,7 @@
                             <div id="LabelMergeLabel.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">LabelMergeLabel</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#LabelMergeColumn">LabelMergeColumn</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+        <span class="name">LabelMergeLabel</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#LabelMergeColumn">LabelMergeColumn</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
@@ -523,7 +523,7 @@
                             </div>
                             <div id="LabelMergeLabel.column" class="classattr">
                                 <div class="attr variable">
-            <span class="name">column</span><span class="annotation">: list[<a href="#LabelMergeColumn">LabelMergeColumn</a>]</span>        =
+            <span class="name">column</span><span class="annotation">: list[<a href="#LabelMergeColumn">LabelMergeColumn</a>] | None</span>        =
 <span class="default_value">None</span>
 
         
@@ -800,7 +800,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">label_merge</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#LabelMergeLabel">LabelMergeLabel</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#LabelMergeOutputs">LabelMergeOutputs</a></span>:</span></span>
+        <span class="name">label_merge</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#LabelMergeLabel">LabelMergeLabel</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#LabelMergeOutputs">LabelMergeOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="label_merge-view-source"><span>View Source</span></label>
 
@@ -808,8 +808,8 @@
     <a class="headerlink" href="#label_merge"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="label_merge-121"><a href="#label_merge-121"><span class="linenos">121</span></a><span class="k">def</span> <span class="nf">label_merge</span><span class="p">(</span>
 </span><span id="label_merge-122"><a href="#label_merge-122"><span class="linenos">122</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="label_merge-123"><a href="#label_merge-123"><span class="linenos">123</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeLabel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="label_merge-124"><a href="#label_merge-124"><span class="linenos">124</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="label_merge-123"><a href="#label_merge-123"><span class="linenos">123</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelMergeLabel</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="label_merge-124"><a href="#label_merge-124"><span class="linenos">124</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="label_merge-125"><a href="#label_merge-125"><span class="linenos">125</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelMergeOutputs</span><span class="p">:</span>
 </span><span id="label_merge-126"><a href="#label_merge-126"><span class="linenos">126</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="label_merge-127"><a href="#label_merge-127"><span class="linenos">127</span></a><span class="sd">    label-merge by Washington University School of Medicin.</span>
