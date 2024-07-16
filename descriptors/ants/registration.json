@@ -1497,10 +1497,36 @@
   ],
   "output-files": [
     {
-      "id": "output_transform",
-      "name": "Output transform",
-      "description": "The output transform file.",
-      "path-template": "[OUTPUT_TRANSFORM_PREFIX]"
+      "id": "generic_affine",
+      "name": "Generic affine",
+      "description": "The output is the generic affine transformation matrix.",
+      "path-template": "[OUTPUT_TRANSFORM_PREFIX]0GenericAffine.mat"
+    },
+    {
+      "id": "inverse_warped",
+      "name": "Inverse warped",
+      "description": "The output is the warped fixed image.",
+      "path-template": "[OUTPUT_TRANSFORM_PREFIX]InverseWarped.nii.gz"
+    },
+    {
+      "id": "inverse_warp",
+      "name": "Inverse warp",
+      "description": "The output is the inverse warp field.",
+      "path-template": "[OUTPUT_TRANSFORM_PREFIX]1InverseWarp.nii.gz",
+      "optional": true
+    },
+    {
+      "id": "warped",
+      "name": "Warped",
+      "description": "The output is the warped moving image.",
+      "path-template": "[OUTPUT_TRANSFORM_PREFIX]Warped.nii.gz"
+    },
+    {
+      "id": "warp",
+      "name": "Warp",
+      "description": "The output is the warp field.",
+      "path-template": "[OUTPUT_TRANSFORM_PREFIX]1Warp.nii.gz",
+      "optional": true
     }
   ]
 }
