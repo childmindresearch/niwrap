@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DRESAMPLE_METADATA = Metadata(
-    id="71d456ed68fb0fccec030d2d1bb82c4cfdb4af62",
+    id="00007b34c3b4f7808ab9d091d93e3d895a68a993",
     name="3dresample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -25,7 +25,7 @@ class V3dresampleOutputs(typing.NamedTuple):
 
 def v_3dresample(
     in_file: InputPathType,
-    prefix: str = "out.nii.gz",
+    prefix: str,
     master: InputPathType | None = None,
     orientation: typing.Literal["AIL", "AIR", "ASL", "ASR", "PIL", "PIR", "PSL", "PSR", "ALI", "ALS", "ARI", "ARS", "PLI", "PLS", "PRI", "PRS", "IAL", "IAR", "IPL", "IPR", "SAL", "SAR", "SPL", "SPR", "ILA", "ILP", "IRA", "IRP", "SLA", "SLP", "SRA", "SRP", "LAI", "LAS", "LPI", "LPS", "RAI", "RAS", "RPI", "RPS", "LIA", "LIP", "LSA", "LSP", "RIA", "RIP", "RSA", "RSP"] | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,

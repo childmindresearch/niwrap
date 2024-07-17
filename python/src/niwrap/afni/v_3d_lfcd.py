@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_LFCD_METADATA = Metadata(
-    id="f8392a262919712d6fff2ff2e5f6f62933e4c0c5",
+    id="4609cd197748f09a26fcde69338f6b059c4836bd",
     name="3dLFCD",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -30,7 +30,7 @@ def v_3d_lfcd(
     autoclip: bool = False,
     automask: bool = False,
     mask: InputPathType | None = None,
-    num_threads: int | None = 1,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     polort: int | None = None,
     thresh: float | int | None = None,

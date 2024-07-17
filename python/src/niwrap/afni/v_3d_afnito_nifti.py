@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_AFNITO_NIFTI_METADATA = Metadata(
-    id="3a13b2f4c45a8aa8ca8f5b70399944c96172a06e",
+    id="748e937932f6208ec00a0c2b12c6af43b8dcbbc0",
     name="3dAFNItoNIFTI",
     container_image_type="docker",
     container_image_index="index.docker.io",

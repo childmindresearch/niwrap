@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_ECM_METADATA = Metadata(
-    id="03760cb033635d46fe7bcf4e0e8ea27af7873a8a",
+    id="c6fa57f4f978581d3dadefc82066633b22ed1bb5",
     name="3dECM",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -35,7 +35,7 @@ def v_3d_ecm(
     mask: InputPathType | None = None,
     max_iter: int | None = None,
     memory: float | int | None = None,
-    num_threads: int | None = 1,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     polort: int | None = None,
     scale: float | int | None = None,

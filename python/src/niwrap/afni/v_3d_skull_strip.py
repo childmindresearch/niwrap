@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_SKULL_STRIP_METADATA = Metadata(
-    id="1973a4151cf44233742f22b55012258163e50d92",
+    id="159db9818de007708129d627c7232c2a697d8ec9",
     name="3dSkullStrip",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ class V3dSkullStripOutputs(typing.NamedTuple):
 
 def v_3d_skull_strip(
     in_file: InputPathType,
-    num_threads: int | None = 1,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     runner: Runner | None = None,
 ) -> V3dSkullStripOutputs:

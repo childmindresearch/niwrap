@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DMASKAVE_METADATA = Metadata(
-    id="bdaf71edba8ba07bb4fac16ef3bbf5e2a73026ce",
+    id="418793655cb36124834f591f6b10c47f429a574d",
     name="3dmaskave",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -28,7 +28,7 @@ class V3dmaskaveOutputs(typing.NamedTuple):
 def v_3dmaskave(
     in_file: InputPathType,
     mask: InputPathType | None = None,
-    num_threads: int | None = 1,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     quiet: bool = False,
     runner: Runner | None = None,

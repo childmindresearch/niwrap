@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TSHIFT_METADATA = Metadata(
-    id="2d862076edbb6c5bd54506dc33cbe959d36a53a9",
+    id="438fd04b87b73ab4dd89437f6c0cf3ada061c258",
     name="3dTshift",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -31,11 +31,11 @@ def v_3d_tshift(
     in_file: InputPathType,
     ignore: int | None = None,
     interp: typing.Literal["Fourier", "linear", "cubic", "quintic", "heptic"] | None = None,
-    num_threads: int | None = 1,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     rlt: bool = False,
     rltplus: bool = False,
-    slice_encoding_direction: typing.Literal["k", "k-"] | None = "k",
+    slice_encoding_direction: typing.Literal["k", "k-"] | None = None,
     slice_timing: InputPathType | None = None,
     slice_timing_2: list[float | int] | None = None,
     tpattern: typing.Literal["alt+z", "altplus", "alt+z2", "alt-z", "altminus", "alt-z2", "seq+z", "seqplus", "seq-z", "seqminus"] | None = None,
@@ -90,42 +90,6 @@ def v_3d_tshift(
         NamedTuple of outputs (described in `V3dTshiftOutputs`).
     """
     runner = runner or get_global_runner()
-    if (
-        (slice_timing is not None) +
-        (slice_timing_2 is not None)
-    ) > 1:
-        raise ValueError(
-            "Only one of the following arguments can be specified:\n"
-            "slice_timing,\n"
-            "slice_timing_2"
-        )
-    if (
-        (tpattern is not None) +
-        (tpattern_2 is not None)
-    ) > 1:
-        raise ValueError(
-            "Only one of the following arguments can be specified:\n"
-            "tpattern,\n"
-            "tpattern_2"
-        )
-    if (
-        (tzero is not None) +
-        (tslice is not None)
-    ) > 1:
-        raise ValueError(
-            "Only one of the following arguments can be specified:\n"
-            "tzero,\n"
-            "tslice"
-        )
-    if (
-        (slice_timing is not None) +
-        (tpattern is not None)
-    ) > 1:
-        raise ValueError(
-            "Only one of the following arguments can be specified:\n"
-            "slice_timing,\n"
-            "tpattern"
-        )
     execution = runner.start_execution(V_3D_TSHIFT_METADATA)
     cargs = []
     cargs.append("3dTshift")

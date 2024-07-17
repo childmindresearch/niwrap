@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TPROJECT_METADATA = Metadata(
-    id="6c89567bfec08b5cbc2237c1370d4b9cd4aba847",
+    id="7cfd7b01ffc1f3b69be4593bb6de994e643cb36e",
     name="3dTproject",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -128,15 +128,6 @@ def v_3d_tproject(
         raise ValueError(f"Length of 'bandpass' must be 2 but was {len(bandpass)}")
     if stopband is not None and (len(stopband) != 2): 
         raise ValueError(f"Length of 'stopband' must be 2 but was {len(stopband)}")
-    if (
-        (mask is not None) +
-        automask
-    ) > 1:
-        raise ValueError(
-            "Only one of the following arguments can be specified:\n"
-            "mask,\n"
-            "automask"
-        )
     execution = runner.start_execution(V_3D_TPROJECT_METADATA)
     cargs = []
     cargs.append("3dTproject")

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TCORR1_D_METADATA = Metadata(
-    id="f56b085b1b20538b963f739c7a27ef3ce88bd8c3",
+    id="277e38041b11d536f9e7d22ae826af5199f1db04",
     name="3dTcorr1D",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -29,7 +29,7 @@ def v_3d_tcorr1_d(
     xset: InputPathType,
     y_1d: InputPathType,
     ktaub: bool = False,
-    num_threads: int | None = 1,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     pearson: bool = False,
     quadrant: bool = False,
@@ -59,19 +59,6 @@ def v_3d_tcorr1_d(
         NamedTuple of outputs (described in `V3dTcorr1DOutputs`).
     """
     runner = runner or get_global_runner()
-    if (
-        ktaub +
-        spearman +
-        quadrant +
-        pearson
-    ) > 1:
-        raise ValueError(
-            "Only one of the following arguments can be specified:\n"
-            "ktaub,\n"
-            "spearman,\n"
-            "quadrant,\n"
-            "pearson"
-        )
     execution = runner.start_execution(V_3D_TCORR1_D_METADATA)
     cargs = []
     cargs.append("3dTcorr1D")

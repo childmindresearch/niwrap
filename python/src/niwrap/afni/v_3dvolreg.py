@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DVOLREG_METADATA = Metadata(
-    id="0716c216271a7a81d9300fb7e5d2358b5b1a4567",
+    id="cba19e4eeddc09f77fef7fe0fc961151b916efd4",
     name="3dvolreg",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -44,7 +44,7 @@ def v_3dvolreg(
     in_weight_volume: list[str] | None = None,
     in_weight_volume_2: InputPathType | None = None,
     interp: typing.Literal["Fourier", "cubic", "heptic", "quintic", "linear"] | None = None,
-    num_threads: int | None = 1,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     timeshift: bool = False,
     verbose: bool = False,
@@ -81,15 +81,6 @@ def v_3dvolreg(
         NamedTuple of outputs (described in `V3dvolregOutputs`).
     """
     runner = runner or get_global_runner()
-    if (
-        (in_weight_volume is not None) +
-        (in_weight_volume_2 is not None)
-    ) > 1:
-        raise ValueError(
-            "Only one of the following arguments can be specified:\n"
-            "in_weight_volume,\n"
-            "in_weight_volume_2"
-        )
     execution = runner.start_execution(V_3DVOLREG_METADATA)
     cargs = []
     cargs.append("3dvolreg")
