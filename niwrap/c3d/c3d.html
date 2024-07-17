@@ -730,6 +730,9 @@
                                 <a class="function" href="#C3dHelp.__init__">C3dHelp</a>
                         </li>
                         <li>
+                                <a class="variable" href="#C3dHelp.v__help">v__help</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#C3dHelp.run">run</a>
                         </li>
                 </ul>
@@ -4867,7 +4870,7 @@
 </span><span id="L-2114"><a href="#L-2114"><span class="linenos">2114</span></a>
 </span><span id="L-2115"><a href="#L-2115"><span class="linenos">2115</span></a><span class="sd">    c3d myimage.nii -hesseig 2.0 -oo eig%02d.nii.gz</span>
 </span><span id="L-2116"><a href="#L-2116"><span class="linenos">2116</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-2117"><a href="#L-2117"><span class="linenos">2117</span></a>    <span class="n">_help</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-2117"><a href="#L-2117"><span class="linenos">2117</span></a>    <span class="n">v__help</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-2118"><a href="#L-2118"><span class="linenos">2118</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;-hesseig, -hessian-eigenvalues: Compute eigenvalues of the Hessian matrix</span>
 </span><span id="L-2119"><a href="#L-2119"><span class="linenos">2119</span></a><span class="sd">    </span>
 </span><span id="L-2120"><a href="#L-2120"><span class="linenos">2120</span></a><span class="sd">    Syntax `-hesseig &lt;scale&gt;`</span>
@@ -4895,7 +4898,7 @@
 </span><span id="L-2142"><a href="#L-2142"><span class="linenos">2142</span></a><span class="sd">            </span>
 </span><span id="L-2143"><a href="#L-2143"><span class="linenos">2143</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-2144"><a href="#L-2144"><span class="linenos">2144</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-2145"><a href="#L-2145"><span class="linenos">2145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-h&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_help</span><span class="p">])</span>
+</span><span id="L-2145"><a href="#L-2145"><span class="linenos">2145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-h&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">v__help</span><span class="p">])</span>
 </span><span id="L-2146"><a href="#L-2146"><span class="linenos">2146</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-2147"><a href="#L-2147"><span class="linenos">2147</span></a>
 </span><span id="L-2148"><a href="#L-2148"><span class="linenos">2148</span></a>
@@ -17520,7 +17523,7 @@ smooth the image first before computing the gradient.</p>
 </span><span id="C3dHelp-2115"><a href="#C3dHelp-2115"><span class="linenos">2115</span></a>
 </span><span id="C3dHelp-2116"><a href="#C3dHelp-2116"><span class="linenos">2116</span></a><span class="sd">    c3d myimage.nii -hesseig 2.0 -oo eig%02d.nii.gz</span>
 </span><span id="C3dHelp-2117"><a href="#C3dHelp-2117"><span class="linenos">2117</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="C3dHelp-2118"><a href="#C3dHelp-2118"><span class="linenos">2118</span></a>    <span class="n">_help</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="C3dHelp-2118"><a href="#C3dHelp-2118"><span class="linenos">2118</span></a>    <span class="n">v__help</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="C3dHelp-2119"><a href="#C3dHelp-2119"><span class="linenos">2119</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;-hesseig, -hessian-eigenvalues: Compute eigenvalues of the Hessian matrix</span>
 </span><span id="C3dHelp-2120"><a href="#C3dHelp-2120"><span class="linenos">2120</span></a><span class="sd">    </span>
 </span><span id="C3dHelp-2121"><a href="#C3dHelp-2121"><span class="linenos">2121</span></a><span class="sd">    Syntax `-hesseig &lt;scale&gt;`</span>
@@ -17548,7 +17551,7 @@ smooth the image first before computing the gradient.</p>
 </span><span id="C3dHelp-2143"><a href="#C3dHelp-2143"><span class="linenos">2143</span></a><span class="sd">            </span>
 </span><span id="C3dHelp-2144"><a href="#C3dHelp-2144"><span class="linenos">2144</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="C3dHelp-2145"><a href="#C3dHelp-2145"><span class="linenos">2145</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="C3dHelp-2146"><a href="#C3dHelp-2146"><span class="linenos">2146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-h&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_help</span><span class="p">])</span>
+</span><span id="C3dHelp-2146"><a href="#C3dHelp-2146"><span class="linenos">2146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-h&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">v__help</span><span class="p">])</span>
 </span><span id="C3dHelp-2147"><a href="#C3dHelp-2147"><span class="linenos">2147</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
@@ -17567,13 +17570,37 @@ smooth the image first before computing the gradient.</p>
                             <div id="C3dHelp.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">C3dHelp</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">_help</span><span class="p">:</span> <span class="nb">str</span></span>)</span>
+        <span class="name">C3dHelp</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">v__help</span><span class="p">:</span> <span class="nb">str</span></span>)</span>
 
         
     </div>
     <a class="headerlink" href="#C3dHelp.__init__"></a>
     
     
+
+                            </div>
+                            <div id="C3dHelp.v__help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">v__help</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#C3dHelp.v__help"></a>
+    
+            <div class="docstring"><p>-hesseig, -hessian-eigenvalues: Compute eigenvalues of the Hessian matrix</p>
+
+<p>Syntax <code>-hesseig &lt;scale&gt;</code></p>
+
+<p>Computes the Hessian matrix at every pixel of an image and the eigenvalues
+of the Hessian. Images of the eigenvalues (sorted by value) are placed on
+the stack. These images are useful as texture features. See also the
+'''-steig''' command. The scale determines the amount of Gaussian smoothing
+applied for computing the partial derivatives in the Hessian, and is in
+physical (mm) units.</p>
+
+<p>c3d myimage.nii -hesseig 2.0 -oo eig%02d.nii.gz</p>
+</div>
+
 
                             </div>
                             <div id="C3dHelp.run" class="classattr">
@@ -17601,7 +17628,7 @@ smooth the image first before computing the gradient.</p>
 </span><span id="C3dHelp.run-2143"><a href="#C3dHelp.run-2143"><span class="linenos">2143</span></a><span class="sd">            </span>
 </span><span id="C3dHelp.run-2144"><a href="#C3dHelp.run-2144"><span class="linenos">2144</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="C3dHelp.run-2145"><a href="#C3dHelp.run-2145"><span class="linenos">2145</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="C3dHelp.run-2146"><a href="#C3dHelp.run-2146"><span class="linenos">2146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-h&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_help</span><span class="p">])</span>
+</span><span id="C3dHelp.run-2146"><a href="#C3dHelp.run-2146"><span class="linenos">2146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-h&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">v__help</span><span class="p">])</span>
 </span><span id="C3dHelp.run-2147"><a href="#C3dHelp.run-2147"><span class="linenos">2147</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span></pre></div>
 
