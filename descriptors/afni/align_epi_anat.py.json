@@ -123,10 +123,7 @@
       "command-line-flag": "-anat_has_skull",
       "value-key": "[ANAT_HAS_SKULL]",
       "optional": true,
-      "value-choices": [
-        "yes",
-        "no"
-      ]
+      "value-choices": ["yes", "no"]
     },
     {
       "id": "epi_strip",
@@ -136,11 +133,7 @@
       "command-line-flag": "-epi_strip",
       "value-key": "[EPI_STRIP]",
       "optional": true,
-      "value-choices": [
-        "3dSkullStrip",
-        "3dAutomask",
-        "None"
-      ]
+      "value-choices": ["3dSkullStrip", "3dAutomask", "None"]
     },
     {
       "id": "volreg_method",
@@ -150,11 +143,7 @@
       "command-line-flag": "-volreg_method",
       "value-key": "[VOLREG_METHOD]",
       "optional": true,
-      "value-choices": [
-        "3dvolreg",
-        "3dWarpDrive",
-        "3dAllineate"
-      ]
+      "value-choices": ["3dvolreg", "3dWarpDrive", "3dAllineate"]
     },
     {
       "id": "ex_mode",
@@ -164,12 +153,7 @@
       "command-line-flag": "-ex_mode",
       "value-key": "[EX_MODE]",
       "optional": true,
-      "value-choices": [
-        "quiet",
-        "echo",
-        "dry_run",
-        "script"
-      ]
+      "value-choices": ["quiet", "echo", "dry_run", "script"]
     },
     {
       "id": "overwrite",

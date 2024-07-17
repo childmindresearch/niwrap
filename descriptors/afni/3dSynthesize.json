@@ -63,11 +63,7 @@
       "optional": true,
       "id": "cenfill",
       "name": "Censor fill option",
-      "value-choices": [
-        "zero",
-        "nbhr",
-        "none"
-      ]
+      "value-choices": ["zero", "nbhr", "none"]
     }
   ],
   "schema-version": "0.5"

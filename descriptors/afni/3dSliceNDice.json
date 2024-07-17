@@ -44,13 +44,7 @@
       "optional": true,
       "id": "out_domain",
       "name": "Output domain flag",
-      "value-choices": [
-        "all",
-        "AorB",
-        "AandB",
-        "Amask",
-        "Bmask"
-      ]
+      "value-choices": ["all", "AorB", "AandB", "Amask", "Bmask"]
     },
     {
       "command-line-flag": "-no_cmd_echo",

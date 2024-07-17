@@ -47,13 +47,7 @@
       "command-line-flag": "-blend",
       "id": "blend",
       "name": "Blend Method",
-      "value-choices": [
-        "MODE",
-        "AVG",
-        "AUTO",
-        "SOLID",
-        "SOLID_CLEAN"
-      ]
+      "value-choices": ["MODE", "AVG", "AUTO", "SOLID", "SOLID_CLEAN"]
     },
     {
       "description": "Criterion for considering a zero voxel to be a hole. Can only be used with -blend SOLID.",

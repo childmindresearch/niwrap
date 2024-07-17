@@ -29,10 +29,7 @@
       "optional": false,
       "id": "hemisphere",
       "name": "Hemisphere",
-      "value-choices": [
-        "L",
-        "R"
-      ]
+      "value-choices": ["L", "R"]
     },
     {
       "command-line-flag": "-sv1",

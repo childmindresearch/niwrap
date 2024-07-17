@@ -28,11 +28,7 @@
       "optional": true,
       "id": "datum",
       "name": "Output Datum",
-      "value-choices": [
-        "byte",
-        "short",
-        "float"
-      ]
+      "value-choices": ["byte", "short", "float"]
     },
     {
       "description": "Force scaling of the output to the maximum integer range. This only has effect if the output datum is byte or short (either forced or defaulted). This option is sometimes necessary to eliminate unpleasant truncation artifacts.",

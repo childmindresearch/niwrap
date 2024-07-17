@@ -22,10 +22,7 @@
       "optional": true,
       "id": "data_type",
       "name": "Output data type",
-      "value-choices": [
-        "short",
-        "float"
-      ]
+      "value-choices": ["short", "float"]
     },
     {
       "command-line-flag": "-prefix",
