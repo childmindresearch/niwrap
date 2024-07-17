@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 ANTS_REGISTRATION_METADATA = Metadata(
-    id="48c29ca0889e34053bbfd7b7d735c2354ba8e6e6",
+    id="71d2047854c5ea82cff50d7f97492175891d6f0e",
     name="antsRegistration",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -1306,8 +1306,16 @@ class AntsRegistrationOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_transform: OutputPathType | None
-    """The output transform file."""
+    generic_affine: OutputPathType | None
+    """The output is the generic affine transformation matrix."""
+    inverse_warped: OutputPathType | None
+    """The output is the warped fixed image."""
+    inverse_warp: OutputPathType | None
+    """The output is the inverse warp field."""
+    warped: OutputPathType | None
+    """The output is the warped moving image."""
+    warp: OutputPathType | None
+    """The output is the warp field."""
 
 
 def ants_registration(
@@ -1506,7 +1514,11 @@ def ants_registration(
         cargs.extend(["-v", str(verbose)])
     ret = AntsRegistrationOutputs(
         root=execution.output_file("."),
-        output_transform=execution.output_file(f"{output}") if output is not None else None,
+        generic_affine=execution.output_file(f"{output}0GenericAffine.mat") if output is not None else None,
+        inverse_warped=execution.output_file(f"{output}InverseWarped.nii.gz") if output is not None else None,
+        inverse_warp=execution.output_file(f"{output}1InverseWarp.nii.gz", optional=True) if output is not None else None,
+        warped=execution.output_file(f"{output}Warped.nii.gz") if output is not None else None,
+        warp=execution.output_file(f"{output}1Warp.nii.gz", optional=True) if output is not None else None,
     )
     execution.run(cargs)
     return ret
