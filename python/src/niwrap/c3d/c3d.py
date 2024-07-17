@@ -2114,7 +2114,7 @@ Computes the Hessian matrix at every pixel of an image and the eigenvalues of th
 
     c3d myimage.nii -hesseig 2.0 -oo eig%02d.nii.gz
     """
-    _help: str
+    v__help: str
     """-hesseig, -hessian-eigenvalues: Compute eigenvalues of the Hessian matrix
     
     Syntax `-hesseig <scale>`
@@ -2142,7 +2142,7 @@ Computes the Hessian matrix at every pixel of an image and the eigenvalues of th
             
         """
         cargs = []
-        cargs.extend(["-h", self._help])
+        cargs.extend(["-h", self.v__help])
         return cargs
 
 
