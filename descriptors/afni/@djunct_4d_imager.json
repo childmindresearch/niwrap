@@ -30,10 +30,7 @@
       "optional": true,
       "type": "String",
       "value-key": "[MOVIE_TYPE]",
-      "value-choices": [
-        "MPEG",
-        "AGIF"
-      ]
+      "value-choices": ["MPEG", "AGIF"]
     },
     {
       "command-line-flag": "-no_clean",

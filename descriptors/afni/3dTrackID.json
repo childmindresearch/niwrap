@@ -13,11 +13,7 @@
   "inputs": [
     {
       "description": "The mode of tracking: DET, MINIP, or PROB",
-      "value-choices": [
-        "DET",
-        "MINIP",
-        "PROB"
-      ],
+      "value-choices": ["DET", "MINIP", "PROB"],
       "type": "String",
       "optional": false,
       "id": "mode",
@@ -133,10 +129,7 @@
     },
     {
       "description": "Control logic connections among target ROIs per network",
-      "value-choices": [
-        "OR",
-        "AND"
-      ],
+      "value-choices": ["OR", "AND"],
       "type": "String",
       "optional": false,
       "id": "logic",
@@ -275,12 +268,7 @@
     },
     {
       "description": "Output individual masks of ROI connections",
-      "value-choices": [
-        "DUMP",
-        "AFNI",
-        "BOTH",
-        "AFNI_MAP"
-      ],
+      "value-choices": ["DUMP", "AFNI", "BOTH", "AFNI_MAP"],
       "type": "String",
       "optional": true,
       "id": "dump_rois",

@@ -54,10 +54,7 @@
       "optional": true,
       "id": "constant_type",
       "name": "Constant type",
-      "value-choices": [
-        "cind",
-        "cdep"
-      ],
+      "value-choices": ["cind", "cdep"],
       "command-line-flag": "-c"
     },
     {
@@ -94,10 +91,7 @@
       "optional": true,
       "id": "mode_option",
       "name": "Mode option",
-      "value-choices": [
-        "old",
-        "new"
-      ],
+      "value-choices": ["old", "new"],
       "command-line-flag": "-"
     },
     {

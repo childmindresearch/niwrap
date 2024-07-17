@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TCAT_METADATA = Metadata(
-    id="9ae8518a5c3a87eb21b36cc919499304d5720f81",
+    id="1702c074be14689bd9c18b80684b3ed7250c0610",
     name="3dTcat",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -27,7 +27,7 @@ class V3dTcatOutputs(typing.NamedTuple):
 
 def v_3d_tcat(
     in_files: InputPathType,
-    num_threads: int | None = 1,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     rlt: typing.Literal["", "+", "++"] | None = None,
     verbose: bool = False,

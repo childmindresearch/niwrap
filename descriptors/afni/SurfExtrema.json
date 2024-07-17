@@ -53,11 +53,7 @@
       "id": "gscale",
       "name": "Gradient Scale",
       "command-line-flag": "-gscale",
-      "value-choices": [
-        "NONE",
-        "LMEAN",
-        "GMEAN"
-      ]
+      "value-choices": ["NONE", "LMEAN", "GMEAN"]
     },
     {
       "description": "Find maxima, minima, or extrema. Options are MAX (default), MIN, ABS.",
@@ -67,11 +63,7 @@
       "id": "extype",
       "name": "Extrema Type",
       "command-line-flag": "-extype",
-      "value-choices": [
-        "MAX",
-        "MIN",
-        "ABS"
-      ]
+      "value-choices": ["MAX", "MIN", "ABS"]
     },
     {
       "description": "Prefix for the output datasets.",

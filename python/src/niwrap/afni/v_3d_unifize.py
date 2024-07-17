@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_UNIFIZE_METADATA = Metadata(
-    id="6505f5e836fa618c3fe1f204e6b3c6a0705e2e5e",
+    id="a66141db9ce48669e54bc01d8519b16c378cd245",
     name="3dUnifize",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -33,7 +33,7 @@ def v_3d_unifize(
     epi: bool = False,
     gm: bool = False,
     no_duplo: bool = False,
-    num_threads: int | None = 1,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     quiet: bool = False,
     rbt: list[float | int] | None = None,
@@ -111,15 +111,6 @@ def v_3d_unifize(
     runner = runner or get_global_runner()
     if rbt is not None and (len(rbt) != 3): 
         raise ValueError(f"Length of 'rbt' must be 3 but was {len(rbt)}")
-    if (
-        gm +
-        epi
-    ) > 1:
-        raise ValueError(
-            "Only one of the following arguments can be specified:\n"
-            "gm,\n"
-            "epi"
-        )
     execution = runner.start_execution(V_3D_UNIFIZE_METADATA)
     cargs = []
     cargs.append("3dUnifize")

@@ -82,10 +82,7 @@
       "optional": true,
       "id": "io_functions",
       "name": "IO Functions",
-      "value-choices": [
-        "AFNI",
-        "R"
-      ]
+      "value-choices": ["AFNI", "R"]
     },
     {
       "description": "List the data structure with a header as the first line. Has to occur last in the script.",

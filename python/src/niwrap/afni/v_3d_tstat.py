@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TSTAT_METADATA = Metadata(
-    id="14cac03aa9ac7d95328b653383962807986bbf04",
+    id="91bf80a7476af5dadadcff5fe2483b18728546c3",
     name="3dTstat",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -28,7 +28,7 @@ class V3dTstatOutputs(typing.NamedTuple):
 def v_3d_tstat(
     in_file: InputPathType,
     mask: InputPathType | None = None,
-    num_threads: int | None = 1,
+    num_threads: int | None = None,
     options: str | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     runner: Runner | None = None,

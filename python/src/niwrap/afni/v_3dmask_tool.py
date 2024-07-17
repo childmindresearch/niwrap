@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DMASK_TOOL_METADATA = Metadata(
-    id="35c30df2475c55d064788b3dd7fbfeb7b2fcf90f",
+    id="9d3fd2caa979923fd4a015b6e357ac90e7b33f16",
     name="3dmask_tool",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -35,7 +35,7 @@ def v_3dmask_tool(
     fill_holes: bool = False,
     frac: float | int | None = None,
     inter: bool = False,
-    num_threads: int | None = 1,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     union: bool = False,
     verbose: int | None = None,

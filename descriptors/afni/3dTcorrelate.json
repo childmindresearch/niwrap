@@ -76,11 +76,7 @@
       "command-line-flag": "-Fisher",
       "description": "Apply the Fisher (inverse hyperbolic tangent) transformation to correlation results. Does not make sense with ktaub, covariance, or ycoef.",
       "optional": true,
-      "disables-inputs": [
-        "ktaub",
-        "covariance",
-        "ycoef"
-      ]
+      "disables-inputs": ["ktaub", "covariance", "ycoef"]
     },
     {
       "id": "polort",
@@ -111,9 +107,7 @@
       "command-line-flag": "-autoclip",
       "description": "Clip off low-intensity regions in the two datasets, so that the correlation is only computed between high-intensity (presumably brain) voxels. The intensity level is determined the same way that 3dClipLevel works.",
       "optional": true,
-      "disables-inputs": [
-        "automask"
-      ]
+      "disables-inputs": ["automask"]
     },
     {
       "id": "automask",
@@ -123,9 +117,7 @@
       "command-line-flag": "-automask",
       "description": "Clip off low-intensity regions in the two datasets, so that the correlation is only computed between high-intensity (presumably brain) voxels. The intensity level is determined the same way that 3dClipLevel works.",
       "optional": true,
-      "disables-inputs": [
-        "autoclip"
-      ]
+      "disables-inputs": ["autoclip"]
     },
     {
       "id": "zcensor",
@@ -135,10 +127,7 @@
       "command-line-flag": "-zcensor",
       "description": "Omit (censor out) any time points where the xset volume is all zero OR where the yset volume is all zero (in mask). Please note that using -zcensor with any detrending is unlikely to be useful.",
       "optional": true,
-      "disables-inputs": [
-        "ort",
-        "polort"
-      ]
+      "disables-inputs": ["ort", "polort"]
     },
     {
       "id": "prefix",

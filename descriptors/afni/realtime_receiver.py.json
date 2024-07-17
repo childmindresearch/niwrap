@@ -18,10 +18,7 @@
       "optional": true,
       "id": "show_data",
       "name": "Show Data",
-      "value-choices": [
-        "yes",
-        "no"
-      ]
+      "value-choices": ["yes", "no"]
     },
     {
       "command-line-flag": "-write_text_data",
@@ -40,12 +37,7 @@
       "optional": true,
       "id": "data_choice",
       "name": "Data Choice",
-      "value-choices": [
-        "motion",
-        "motion_norm",
-        "all_extras",
-        "diff_ratio"
-      ]
+      "value-choices": ["motion", "motion_norm", "all_extras", "diff_ratio"]
     },
     {
       "command-line-flag": "-serial_port",
@@ -64,10 +56,7 @@
       "optional": true,
       "id": "show_demo_gui",
       "name": "Show Demo GUI",
-      "value-choices": [
-        "yes",
-        "no"
-      ]
+      "value-choices": ["yes", "no"]
     },
     {
       "command-line-flag": "-dc_params",
@@ -87,10 +76,7 @@
       "optional": true,
       "id": "extras_on_one_line",
       "name": "Extras On One Line",
-      "value-choices": [
-        "yes",
-        "no"
-      ]
+      "value-choices": ["yes", "no"]
     },
     {
       "command-line-flag": "-show_comm_times",

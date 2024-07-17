@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TCORRELATE_METADATA = Metadata(
-    id="b8f4eacf1b550e460e8daf02851bb7bde537653a",
+    id="b60f154f59574999d2a7ed9a1d4d32c2af5cf740",
     name="3dTCorrelate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -34,7 +34,7 @@ def v_3d_tcorrelate(
     partial: InputPathType | None = None,
     ycoef: bool = False,
     fisher: bool = False,
-    polort: int | None = 1,
+    polort: int | None = None,
     ort: InputPathType | None = None,
     autoclip: bool = False,
     automask: bool = False,
@@ -95,25 +95,6 @@ def v_3d_tcorrelate(
     runner = runner or get_global_runner()
     if polort is not None and not (-1 <= polort <= 9): 
         raise ValueError(f"'polort' must be between -1 <= x <= 9 but was {polort}")
-    if (
-        pearson +
-        spearman +
-        quadrant +
-        ktaub +
-        covariance +
-        (partial is not None) +
-        ycoef
-    ) > 1:
-        raise ValueError(
-            "Only one of the following arguments can be specified:\n"
-            "pearson,\n"
-            "spearman,\n"
-            "quadrant,\n"
-            "ktaub,\n"
-            "covariance,\n"
-            "partial,\n"
-            "ycoef"
-        )
     execution = runner.start_execution(V_3D_TCORRELATE_METADATA)
     cargs = []
     cargs.append("3dTCorrelate")

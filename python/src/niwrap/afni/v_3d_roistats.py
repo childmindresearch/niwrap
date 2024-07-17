@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_ROISTATS_METADATA = Metadata(
-    id="3edef68a9e722eb06fba7f1f06ae6c345a0f580e",
+    id="b426d2b6fba6e6385200ac12f81509de33949e62",
     name="3dROIstats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -100,15 +100,6 @@ def v_3d_roistats(
         NamedTuple of outputs (described in `V3dRoistatsOutputs`).
     """
     runner = runner or get_global_runner()
-    if (
-        format1_d +
-        format1_dr
-    ) > 1:
-        raise ValueError(
-            "Only one of the following arguments can be specified:\n"
-            "format1D,\n"
-            "format1DR"
-        )
     execution = runner.start_execution(V_3D_ROISTATS_METADATA)
     cargs = []
     cargs.append("3dROIstats")
