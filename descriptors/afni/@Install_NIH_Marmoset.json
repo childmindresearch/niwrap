@@ -1,0 +1,28 @@
+{
+  "tool-version": "1.0.0",
+  "name": "Install_NIH_Marmoset",
+  "author": "NIH",
+  "description": "Installs the NIH marmoset template and atlases.",
+  "command-line": "@Install_NIH_Marmoset [WGET_FLAG] [CURL_FLAG]",
+  "inputs": [
+    {
+      "command-line-flag": "-wget",
+      "description": "Use wget to download archive. Script chooses by default with preference for curl.",
+      "value-key": "[WGET_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "wget",
+      "name": "Use wget to download"
+    },
+    {
+      "command-line-flag": "-curl",
+      "description": "Use curl to download archive. Script chooses by default with preference for curl.",
+      "value-key": "[CURL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "curl",
+      "name": "Use curl to download"
+    }
+  ],
+  "schema-version": "0.5"
+}

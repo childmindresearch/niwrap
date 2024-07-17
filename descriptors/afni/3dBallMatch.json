@@ -1,0 +1,72 @@
+{
+  "tool-version": "1.0.0",
+  "name": "3dBallMatch",
+  "author": "RWCox",
+  "descriptor-url": "https://example.com/3dBallMatch.json",
+  "description": "A tool to find a good match between a ball (filled sphere) of the given radius and a dataset to determine a crude approximate center of the brain quickly.",
+  "url": "https://example.com/3dBallMatch",
+  "command-line": "3dBallMatch [OPTIONS] [INPUT_DATASET] [RADIUS]",
+  "container-image": {
+    "image": "example/3dballmatch:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset (e.g., Fred.nii)",
+      "value-key": "[INPUT_DATASET]",
+      "type": "File",
+      "optional": false,
+      "id": "input_dataset",
+      "name": "Input Dataset"
+    },
+    {
+      "description": "Radius of the 3D ball to match (in mm)",
+      "value-key": "[RADIUS]",
+      "type": "Number",
+      "optional": true,
+      "id": "radius",
+      "name": "Radius"
+    },
+    {
+      "command-line-flag": "-input",
+      "description": "Specifies the input dataset",
+      "value-key": "[DATASET_OPTION]",
+      "type": "String",
+      "optional": true,
+      "id": "dataset_option",
+      "name": "Dataset option"
+    },
+    {
+      "command-line-flag": "-ball",
+      "description": "Set the radius of the 3D ball to match (mm)",
+      "value-key": "[BALL_RADIUS]",
+      "type": "Number",
+      "optional": true,
+      "id": "ball_radius",
+      "name": "Ball Radius"
+    },
+    {
+      "command-line-flag": "-spheroid",
+      "description": "Match with a spheroid of revolution, with principal axis radius 'a' and secondary axes radii 'b'",
+      "value-key": "[SPHEROID_AXES]",
+      "type": "Number",
+      "list": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2,
+      "optional": true,
+      "id": "spheroid_axes",
+      "name": "Spheroid Axes"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "stdout",
+      "description": "Output containing matching coordinates and related data",
+      "optional": false,
+      "id": "output_stdout",
+      "name": "Output stdout"
+    }
+  ]
+}

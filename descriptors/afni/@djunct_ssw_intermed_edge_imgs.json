@@ -1,0 +1,132 @@
+{
+  "tool-version": "1.0.0",
+  "name": "@djunct_ssw_intermed_edge_imgs",
+  "author": "PA Taylor",
+  "description": "Helper script to generate intermediate edge images for SSW-related processing.",
+  "command-line": "@djunct_ssw_intermed_edge_imgs [OUTPUT_PREFIX] [UNDERLAY] [OVERLAY] [BOX_FOCUS_SLICES] [MONTGAP] [COLORBAR] [ULAY_RANGE] [MONTX] [MONTY] [HELP_VIEW] [HELP_FLAG] [VERSION_FLAG] [NO_CLEAN_FLAG]",
+  "container-image": {
+    "image": "your_docker_image:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Prefix for generated output files",
+      "value-key": "[OUTPUT_PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Output Prefix",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "description": "Underlay dataset",
+      "value-key": "[UNDERLAY]",
+      "type": "File",
+      "optional": false,
+      "id": "ulay",
+      "name": "Underlay File",
+      "command-line-flag": "-ulay"
+    },
+    {
+      "description": "Overlay dataset",
+      "value-key": "[OVERLAY]",
+      "type": "File",
+      "optional": false,
+      "id": "olay",
+      "name": "Overlay File",
+      "command-line-flag": "-olay"
+    },
+    {
+      "description": "Slices of interest for focus box",
+      "value-key": "[BOX_FOCUS_SLICES]",
+      "type": "String",
+      "optional": true,
+      "id": "box_focus_slices",
+      "name": "Box Focus Slices",
+      "command-line-flag": "-box_focus_slices"
+    },
+    {
+      "description": "Gap between montage slices",
+      "value-key": "[MONTGAP]",
+      "type": "String",
+      "optional": true,
+      "id": "montgap",
+      "name": "Montage Gap",
+      "command-line-flag": "-montgap"
+    },
+    {
+      "description": "Color bar specification for AFNI",
+      "value-key": "[COLORBAR]",
+      "type": "String",
+      "optional": true,
+      "id": "cbar",
+      "name": "Color Bar",
+      "command-line-flag": "-cbar"
+    },
+    {
+      "description": "Range for underlay data mapping",
+      "value-key": "[ULAY_RANGE]",
+      "type": "String",
+      "optional": true,
+      "id": "ulay_range",
+      "name": "Underlay Range",
+      "command-line-flag": "-ulay_range"
+    },
+    {
+      "description": "Number of slices along x dimension in montage",
+      "value-key": "[MONTX]",
+      "type": "String",
+      "optional": true,
+      "id": "montx",
+      "name": "Montage X",
+      "command-line-flag": "-montx"
+    },
+    {
+      "description": "Number of slices along y dimension in montage",
+      "value-key": "[MONTY]",
+      "type": "String",
+      "optional": true,
+      "id": "monty",
+      "name": "Montage Y",
+      "command-line-flag": "-monty"
+    },
+    {
+      "description": "View help file in viewer",
+      "value-key": "[HELP_VIEW]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_view",
+      "name": "Help View",
+      "command-line-flag": "-hview"
+    },
+    {
+      "description": "Displays help information",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help",
+      "command-line-flag": "-help"
+    },
+    {
+      "description": "Displays version information",
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version",
+      "command-line-flag": "-ver"
+    },
+    {
+      "description": "Don't clean up intermediate files",
+      "value-key": "[NO_CLEAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_clean",
+      "name": "No Clean",
+      "command-line-flag": "-no_clean"
+    }
+  ],
+  "schema-version": "0.5"
+}

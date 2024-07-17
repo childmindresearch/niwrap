@@ -1,0 +1,87 @@
+{
+  "tool-version": "1.0",
+  "name": "quickspec",
+  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "description": "A quick and dirty way of loading a surface into SUMA or command line programs using a spec file.",
+  "command-line": "quickspec [PARAMS...]",
+  "inputs": [
+    {
+      "command-line-flag": "-tn",
+      "description": "Specify surface type and name.",
+      "value-key": "[TYPE_NAME]",
+      "type": "String",
+      "list": true,
+      "optional": false,
+      "id": "tn",
+      "name": "Type and Name"
+    },
+    {
+      "command-line-flag": "-tsn",
+      "description": "Specify surface type, state, and name.",
+      "value-key": "[TYPE_STATE_NAME]",
+      "type": "String",
+      "list": true,
+      "optional": false,
+      "id": "tsn",
+      "name": "Type, State and Name"
+    },
+    {
+      "command-line-flag": "-tsnad",
+      "description": "Specify surface type, state, name, anatomical correctness, and Local Domain Parent.",
+      "value-key": "[TYPE_STATE_NAME_ANATFLAG_LDP]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "tsnad",
+      "name": "Type, State, Name, Anatomical correctness, and LDP"
+    },
+    {
+      "command-line-flag": "-tsnadm",
+      "description": "Specify surface type, state, name, anatomical correctness, Local Domain Parent, and node marker file.",
+      "value-key": "[TYPE_STATE_NAME_ANATFLAG_LDP_MARKER]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "tsnadm",
+      "name": "Type, State, Name, Anatomical correctness, LDP and node marker"
+    },
+    {
+      "command-line-flag": "-tsnadl",
+      "description": "Specify surface type, state, name, anatomical correctness, Local Domain Parent, and label dataset file.",
+      "value-key": "[TYPE_STATE_NAME_ANATFLAG_LDP_LABELDSET]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "tsnadl",
+      "name": "Type, State, Name, Anatomical correctness, LDP and label dataset"
+    },
+    {
+      "command-line-flag": "-spec",
+      "description": "Name of spec file output. Default is quick.spec.",
+      "value-key": "[SPECFILE]",
+      "type": "String",
+      "optional": true,
+      "id": "spec",
+      "name": "Output spec file"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Display help message.",
+      "value-key": "[HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[SPECFILE]",
+      "description": "The spec file output.",
+      "optional": true,
+      "id": "out_specfile",
+      "name": "Output spec file"
+    }
+  ]
+}

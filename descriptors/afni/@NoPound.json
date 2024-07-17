@@ -1,0 +1,26 @@
+{
+  "tool-version": "1.0",
+  "name": "@NoPound",
+  "author": "AFNI Development Team",
+  "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoPound.html",
+  "description": "Replaces all # characters in AFNI filenames with a -.",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoPound.html",
+  "command-line": "@NoPound [AFNI_FILES]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "List of AFNI files where # characters should be replaced with -.",
+      "value-key": "[AFNI_FILES]",
+      "type": "String",
+      "list": true,
+      "optional": false,
+      "id": "afni_files",
+      "name": "AFNI Files"
+    }
+  ],
+  "schema-version": "0.5"
+}

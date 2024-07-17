@@ -1,0 +1,44 @@
+{
+  "tool-version": "AFNI_23.1.10",
+  "name": "3dsvm_linpredict",
+  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "description": "Linear prediction for weights from 3dsvm",
+  "command-line": "3ddot [MASK] [w] [dset]",
+  "inputs": [
+    {
+      "description": "Weight vector dataset",
+      "value-key": "[w]",
+      "type": "File",
+      "optional": false,
+      "id": "weight_vector",
+      "name": "Weight vector"
+    },
+    {
+      "description": "Input dataset, potentially with sub-brick and/or sub-range selectors",
+      "value-key": "[dset]",
+      "type": "String",
+      "optional": false,
+      "id": "input_dataset",
+      "name": "Input dataset"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Dataset to be used as a mask. Only voxels with nonzero values in 'mset' will be averaged from 'dataset'. The mask dataset and the input dataset must have the same number of voxels.",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask_dataset",
+      "name": "Mask dataset"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "stdout",
+      "description": "The result is a number printed to stdout",
+      "optional": false,
+      "id": "stdout_output",
+      "name": "Standard output"
+    }
+  ]
+}

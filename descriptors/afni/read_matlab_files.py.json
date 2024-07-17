@@ -1,0 +1,78 @@
+{
+  "tool-version": "1.0",
+  "name": "read_matlab_files.py",
+  "author": "R Reynolds",
+  "description": "Describe or convert MATLAB files (.mat) to 1D format",
+  "command-line": "read_matlab_files.py [INPUT_FILES] [PREFIX] [OVERWRITE] [HELP] [HIST] [VER]",
+  "container-image": {
+    "image": "user/read_matlab_files:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input MATLAB files to be processed",
+      "value-key": "[INPUT_FILES]",
+      "type": "String",
+      "list": true,
+      "optional": false,
+      "id": "infiles",
+      "name": "Input files"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Prefix for output file names",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Output file prefix"
+    },
+    {
+      "command-line-flag": "-overwrite",
+      "description": "Overwrite any existing output files",
+      "value-key": "[OVERWRITE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "overwrite",
+      "name": "Overwrite flag"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Show help message",
+      "value-key": "[HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag"
+    },
+    {
+      "command-line-flag": "-hist",
+      "description": "Show revision history",
+      "value-key": "[HIST]",
+      "type": "Flag",
+      "optional": true,
+      "id": "history",
+      "name": "History flag"
+    },
+    {
+      "command-line-flag": "-ver",
+      "description": "Show version number",
+      "value-key": "[VER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX].[INDEX].[KEY].1D",
+      "description": "Converted 1D format file",
+      "optional": true,
+      "id": "converted_1d_file",
+      "name": "Converted 1D file"
+    }
+  ]
+}

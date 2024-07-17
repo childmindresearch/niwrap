@@ -1,0 +1,200 @@
+{
+  "tool-version": "2001/06/24",
+  "name": "rbox",
+  "description": "Generate various point distributions. Default is random in cube.",
+  "command-line": "rbox [NUMBER_POINTS] [DIMENSION] [FLAGS] [BOUNDING_BOX] [OFFSET] [SEED] [POINTS]",
+  "inputs": [
+    {
+      "description": "Number of random points in cube, lens, spiral, sphere or grid",
+      "value-key": "[NUMBER_POINTS]",
+      "type": "String",
+      "optional": false,
+      "id": "number_points",
+      "name": "Number of points"
+    },
+    {
+      "description": "Dimension (e.g., D3 for 3-d)",
+      "value-key": "[DIMENSION]",
+      "type": "String",
+      "optional": true,
+      "id": "dimension",
+      "name": "Dimension"
+    },
+    {
+      "command-line-flag": "c",
+      "description": "Add a unit cube to the output (optional: 'c G2.0' sets size)",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "unit_cube",
+      "name": "Unit cube"
+    },
+    {
+      "command-line-flag": "d",
+      "description": "Add a unit diamond to the output (optional: 'd G2.0' sets size)",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "unit_diamond",
+      "name": "Unit diamond"
+    },
+    {
+      "command-line-flag": "l",
+      "description": "Generate a regular 3-d spiral",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "spiral",
+      "name": "Regular spiral"
+    },
+    {
+      "command-line-flag": "r",
+      "description": "Generate a regular polygon (optional: 'r s Z1 G0.1' makes a cone)",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "regular_polygon",
+      "name": "Regular polygon"
+    },
+    {
+      "command-line-flag": "s",
+      "description": "Generate cospherical points",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "cospherical_points",
+      "name": "Cospherical points"
+    },
+    {
+      "command-line-flag": "x",
+      "description": "Generate random points in simplex, may use 'r' or 'Wn'",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "simplex_points",
+      "name": "Simplex points"
+    },
+    {
+      "command-line-flag": "y",
+      "description": "Same as 'x', plus simplex",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "simplex_plus_points",
+      "name": "Simplex plus points"
+    },
+    {
+      "command-line-flag": "P",
+      "description": "Add point [n,m,r] first, pads with 0",
+      "value-key": "[POINTS]",
+      "type": "String",
+      "optional": true,
+      "id": "add_point",
+      "name": "Add point",
+      "list": true,
+      "min-list-entries": 1
+    },
+    {
+      "command-line-flag": "L",
+      "description": "Lens distribution of radius n. Also 's', 'r', 'G', 'W'.",
+      "value-key": "[FLAGS]",
+      "type": "String",
+      "optional": true,
+      "id": "lens_distribution",
+      "name": "Lens distribution"
+    },
+    {
+      "command-line-flag": "M",
+      "description": "Lattice (Mesh) rotated by [n,-m,0], [m,n,0], [0,0,r], ...",
+      "value-key": "[POINTS]",
+      "type": "String",
+      "optional": true,
+      "id": "mesh_lattice",
+      "name": "Mesh lattice",
+      "list": true,
+      "min-list-entries": 3
+    },
+    {
+      "command-line-flag": "W",
+      "description": "Random distribution within 0.1 of the cube's or sphere's surface",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "random_within",
+      "name": "Random within surface"
+    },
+    {
+      "command-line-flag": "Z",
+      "description": "Random points in a 0.5 disk projected to a sphere, optional gap size (e.g., 'Z0.5 s G0.6')",
+      "value-key": "[FLAGS]",
+      "type": "String",
+      "optional": true,
+      "id": "random_disk",
+      "name": "Random disk points"
+    },
+    {
+      "command-line-flag": "B",
+      "description": "Bounding box coordinates, default 0.5",
+      "value-key": "[BOUNDING_BOX]",
+      "type": "Number",
+      "optional": true,
+      "id": "bounding_box",
+      "name": "Bounding box"
+    },
+    {
+      "command-line-flag": "h",
+      "description": "Output as homogeneous coordinates for cdd",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "homogeneous_coordinates",
+      "name": "Homogeneous coordinates"
+    },
+    {
+      "command-line-flag": "n",
+      "description": "Remove command line from the first line of output",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "remove_command_line",
+      "name": "Remove command line"
+    },
+    {
+      "command-line-flag": "O",
+      "description": "Offset coordinates by n",
+      "value-key": "[OFFSET]",
+      "type": "Number",
+      "optional": true,
+      "id": "offset",
+      "name": "Offset coordinates"
+    },
+    {
+      "command-line-flag": "t",
+      "description": "Use time as the random number seed (default is command line)",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "time_seed",
+      "name": "Random seed by time"
+    },
+    {
+      "command-line-flag": "t",
+      "description": "Use n as the random number seed",
+      "value-key": "[SEED]",
+      "type": "Number",
+      "optional": true,
+      "id": "user_seed",
+      "name": "Random seed by user"
+    },
+    {
+      "command-line-flag": "z",
+      "description": "Print integer coordinates, default 'Bn' is 1e+06",
+      "value-key": "[FLAGS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "integer_coordinates",
+      "name": "Integer coordinates"
+    }
+  ],
+  "schema-version": "0.5"
+}

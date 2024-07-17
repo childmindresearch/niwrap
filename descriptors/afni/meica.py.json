@@ -1,0 +1,100 @@
+{
+  "tool-version": "3.2.0",
+  "name": "meica.py",
+  "author": "The ME-ICA team",
+  "description": "Multi-Echo Independent Component Analysis for fMRI denoising",
+  "url": "https://github.com/ME-ICA/me-ica",
+  "command-line": "meica.py -d [INPUT_FILE] -e [ECHOTIMES] -a [AFFINE] -o [OUTPUT_DIRECTORY] [COMPONENTS_FLAG] [TLRC_FLAG] [THRESHOLD] [DEBUG_FLAG]",
+  "container-image": {
+    "image": "meica/me-ica:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input image dataset (e.g. dataset.nii.gz)",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "description": "Echo times (e.g. 15.0,30.0,45.0)",
+      "value-key": "[ECHOTIMES]",
+      "type": "String",
+      "optional": false,
+      "id": "echo_times",
+      "name": "Echo times"
+    },
+    {
+      "description": "Affine registration matrix",
+      "value-key": "[AFFINE]",
+      "type": "String",
+      "optional": false,
+      "id": "affine",
+      "name": "Affine registration matrix"
+    },
+    {
+      "description": "Output directory",
+      "value-key": "[OUTPUT_DIRECTORY]",
+      "type": "String",
+      "optional": false,
+      "id": "output_directory",
+      "name": "Output directory"
+    },
+    {
+      "command-line-flag": "-c",
+      "description": "Number of components for ICA",
+      "value-key": "[COMPONENTS_FLAG]",
+      "type": "Number",
+      "optional": true,
+      "id": "components",
+      "name": "Number of components"
+    },
+    {
+      "command-line-flag": "-t",
+      "description": "Apply standard Talairach transformation",
+      "value-key": "[TLRC_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "talairach",
+      "name": "Talairach Flag"
+    },
+    {
+      "command-line-flag": "--thresh",
+      "description": "Threshold value for masking",
+      "value-key": "[THRESHOLD]",
+      "type": "Number",
+      "optional": true,
+      "id": "threshold",
+      "name": "Threshold value"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Enable debug mode",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_DIRECTORY]/cleaned_bold.nii.gz",
+      "description": "Cleaned BOLD image after ME-ICA processing",
+      "optional": true,
+      "id": "cleaned_bold",
+      "name": "Cleaned BOLD file"
+    },
+    {
+      "path-template": "[OUTPUT_DIRECTORY]/components.nii.gz",
+      "description": "Independent components result of ICA",
+      "optional": true,
+      "id": "components_output",
+      "name": "Components output file"
+    }
+  ]
+}

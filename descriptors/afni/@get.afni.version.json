@@ -1,0 +1,33 @@
+{
+  "tool-version": "1.0",
+  "name": "@get.afni.version",
+  "author": "RWCox",
+  "description": "Downloads the source code for a specified AFNI version.",
+  "url": "https://github.com/afni/AFNI",
+  "command-line": "@get.afni.version [VERSION]",
+  "container-image": {
+    "image": "mcin/docker-afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "AFNI version number to get (e.g., 16.0.01)",
+      "value-key": "[VERSION]",
+      "type": "String",
+      "optional": false,
+      "id": "version",
+      "name": "Version"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "AFNI_[VERSION]/AFNI/src",
+      "description": "Directory containing the downloaded AFNI source code for the specified version.",
+      "optional": true,
+      "id": "src_dir",
+      "name": "Source Directory"
+    }
+  ]
+}

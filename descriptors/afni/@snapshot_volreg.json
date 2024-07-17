@@ -1,0 +1,51 @@
+{
+  "name": "@snapshot_volreg",
+  "tool-version": "1.0",
+  "description": "Create a JPEG image showing the edges of an EPI dataset overlayed on an anatomical dataset to judge 3D registration quality.",
+  "author": "The Madd Allineator",
+  "command-line": "@snapshot_volreg [ANATdataset] [EPIdataset] [jname] [xdisplay]",
+  "inputs": [
+    {
+      "id": "anatdataset",
+      "name": "Anatomical Dataset",
+      "type": "File",
+      "description": "Anatomical dataset file",
+      "value-key": "[ANATdataset]",
+      "optional": false
+    },
+    {
+      "id": "epidataset",
+      "name": "EPI Dataset",
+      "type": "File",
+      "description": "EPI dataset file",
+      "value-key": "[EPIdataset]",
+      "optional": false
+    },
+    {
+      "id": "jname",
+      "name": "JPEG Filename",
+      "type": "String",
+      "description": "Name for the output JPEG file",
+      "value-key": "[jname]",
+      "optional": true
+    },
+    {
+      "id": "xdisplay",
+      "name": "X Display Number",
+      "type": "String",
+      "description": "Display number of an already running Xvfb instance",
+      "value-key": "[xdisplay]",
+      "optional": true
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "id": "output_jpeg",
+      "name": "Output JPEG File",
+      "description": "JPEG image showing the edges of the EPI dataset overlayed on the anatomical dataset",
+      "path-template": "[jname].jpg",
+      "optional": false
+    }
+  ]
+}

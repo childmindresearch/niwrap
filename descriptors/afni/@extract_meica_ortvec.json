@@ -1,0 +1,79 @@
+{
+  "tool-version": "1.0",
+  "name": "extract_meica_ortvec",
+  "author": "R Reynolds",
+  "description": "Project good MEICA components out of bad ones",
+  "command-line": "@extract_meica_ortvec [PREFIX] [MDIR] [VAL_REJECT_IGNORED] [VAL_REJECT_MIDK] [WDIR] [VERB]",
+  "inputs": [
+    {
+      "description": "Name for output 1D ortvec file",
+      "command-line-flag": "-prefix",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Output 1D ortvec file prefix"
+    },
+    {
+      "description": "Directory for MEICA files",
+      "command-line-flag": "-meica_dir",
+      "value-key": "[MDIR]",
+      "type": "String",
+      "optional": true,
+      "id": "meica_dir",
+      "name": "MEICA directory"
+    },
+    {
+      "description": "Do we reject ignored components (0=keep, 1=reject), default is 0",
+      "command-line-flag": "-reject_ignored",
+      "value-key": "[VAL_REJECT_IGNORED]",
+      "type": "Number",
+      "maximum": 1,
+      "minimum": 0,
+      "integer": true,
+      "optional": true,
+      "id": "reject_ignored",
+      "name": "Reject ignored components"
+    },
+    {
+      "description": "Do we reject midk components (0=keep, 1=reject), default is 1",
+      "command-line-flag": "-reject_midk",
+      "value-key": "[VAL_REJECT_MIDK]",
+      "type": "Number",
+      "maximum": 1,
+      "minimum": 0,
+      "integer": true,
+      "optional": true,
+      "id": "reject_midk",
+      "name": "Reject midk components"
+    },
+    {
+      "description": "Sub-directory for work",
+      "command-line-flag": "-work_dir",
+      "value-key": "[WDIR]",
+      "type": "String",
+      "optional": true,
+      "id": "work_dir",
+      "name": "Work directory"
+    },
+    {
+      "description": "Set verbosity level",
+      "command-line-flag": "-verb",
+      "value-key": "[VERB]",
+      "type": "String",
+      "optional": true,
+      "id": "verbosity",
+      "name": "Verbosity level"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX].1D",
+      "description": "Output 1D ortvec file",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output 1D ortvec file"
+    }
+  ]
+}

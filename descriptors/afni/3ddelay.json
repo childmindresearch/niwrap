@@ -1,0 +1,260 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3ddelay",
+  "author": "Ziad Saad",
+  "description": "Estimates the time delay between each voxel time series in a 3D+time dataset and a reference time series.",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "3ddelay [INPUT_FILE] [REFERENCE_FILE] [SAMPLING_FREQ] [STIM_PERIOD] [PREFIX] [POLORT_ORDER] [NODTRND_FLAG] [UNITS_SECONDS] [UNITS_DEGREES] [UNITS_RADIANS] [PHZWRP_FLAG] [NOPHZWRP_FLAG] [PHZREVERSE_FLAG] [PHASE_SCALE] [BIAS_FLAG] [NOBIAS_FLAG] [DSAMP_FLAG] [NODSAMP_FLAG] [MASK_FILE] [FIRST_IMG] [LAST_IMG] [CCT] [OUTPUT_ASC] [OUTPUT_ASCTS]",
+  "container-image": {
+    "image": "afni/afni",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Filename of the input 3D+time dataset",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input file"
+    },
+    {
+      "description": "Input ideal time series file name",
+      "value-key": "[REFERENCE_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "reference_file",
+      "name": "Reference file"
+    },
+    {
+      "command-line-flag": "-fs",
+      "description": "Sampling frequency in Hz. of data time series (1/TR)",
+      "value-key": "[SAMPLING_FREQ]",
+      "type": "Number",
+      "optional": false,
+      "id": "sampling_freq",
+      "name": "Sampling frequency"
+    },
+    {
+      "command-line-flag": "-T",
+      "description": "Stimulus period in seconds. Set to 0 if stimulus is not periodic",
+      "value-key": "[STIM_PERIOD]",
+      "type": "Number",
+      "optional": false,
+      "id": "stim_period",
+      "name": "Stimulus period"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "The prefix for the results Brick",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Prefix"
+    },
+    {
+      "command-line-flag": "-polort",
+      "description": "Detrend input time series with polynomial of specified order. Default is -1 for auto selection",
+      "value-key": "[POLORT_ORDER]",
+      "type": "Number",
+      "optional": true,
+      "id": "polort",
+      "name": "Polynomial order"
+    },
+    {
+      "command-line-flag": "-nodtrnd",
+      "description": "Remove only the mean (equivalent to polort 0)",
+      "value-key": "[NODTRND_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nodtrnd",
+      "name": "No detrending"
+    },
+    {
+      "command-line-flag": "-uS",
+      "description": "Units for delay estimates in seconds",
+      "value-key": "[UNITS_SECONDS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "units_seconds",
+      "name": "Units in seconds"
+    },
+    {
+      "command-line-flag": "-uD",
+      "description": "Units for delay estimates in degrees. Requires Tstim > 0",
+      "value-key": "[UNITS_DEGREES]",
+      "type": "Flag",
+      "optional": true,
+      "id": "units_degrees",
+      "name": "Units in degrees"
+    },
+    {
+      "command-line-flag": "-uR",
+      "description": "Units for delay estimates in radians. Requires Tstim > 0",
+      "value-key": "[UNITS_RADIANS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "units_radians",
+      "name": "Units in radians"
+    },
+    {
+      "command-line-flag": "-phzwrp",
+      "description": "Wrap delay (or phase) values",
+      "value-key": "[PHZWRP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "phzwrp",
+      "name": "Phase wrap"
+    },
+    {
+      "command-line-flag": "-nophzwrp",
+      "description": "Do not wrap phase (default)",
+      "value-key": "[NOPHZWRP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nophzwrp",
+      "name": "No phase wrap"
+    },
+    {
+      "command-line-flag": "-phzreverse",
+      "description": "Reverse phase such that phase -> (T-phase)",
+      "value-key": "[PHZREVERSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "phzreverse",
+      "name": "Phase reverse"
+    },
+    {
+      "command-line-flag": "-phzscale",
+      "description": "Scale phase: phase -> phase*SC (default no scaling)",
+      "value-key": "[PHASE_SCALE]",
+      "type": "Number",
+      "optional": true,
+      "id": "phzscale",
+      "name": "Phase scale"
+    },
+    {
+      "command-line-flag": "-bias",
+      "description": "Do not correct for the bias in the estimates",
+      "value-key": "[BIAS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "bias",
+      "name": "Bias correction disabled"
+    },
+    {
+      "command-line-flag": "-nobias",
+      "description": "Correct for the bias in the estimates (default)",
+      "value-key": "[NOBIAS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nobias",
+      "name": "Bias correction enabled"
+    },
+    {
+      "command-line-flag": "-dsamp",
+      "description": "Correct for slice timing differences (default)",
+      "value-key": "[DSAMP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dsamp",
+      "name": "Slice timing correction enabled"
+    },
+    {
+      "command-line-flag": "-nodsamp",
+      "description": "Do not correct for slice timing differences",
+      "value-key": "[NODSAMP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nodsamp",
+      "name": "Slice timing correction disabled"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Filename of mask dataset. Only voxels with non-zero values in the mask will be considered",
+      "value-key": "[MASK_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask file"
+    },
+    {
+      "command-line-flag": "-nfirst",
+      "description": "Number of first dataset image to use in the delay estimate",
+      "value-key": "[FIRST_IMG]",
+      "type": "Number",
+      "optional": true,
+      "id": "nfirst",
+      "name": "First image"
+    },
+    {
+      "command-line-flag": "-nlast",
+      "description": "Number of last dataset image to use in the delay estimate",
+      "value-key": "[LAST_IMG]",
+      "type": "Number",
+      "optional": true,
+      "id": "nlast",
+      "name": "Last image"
+    },
+    {
+      "command-line-flag": "-co",
+      "description": "Cross Correlation Coefficient threshold value to limit ascii output",
+      "value-key": "[CCT]",
+      "type": "Number",
+      "optional": true,
+      "id": "co",
+      "name": "Cross Correlation Coefficient threshold"
+    },
+    {
+      "command-line-flag": "-asc",
+      "description": "Write the results to an ascii file for voxels with cross correlation coefficients larger than CCT",
+      "value-key": "[OUTPUT_ASC]",
+      "type": "String",
+      "optional": true,
+      "id": "asc",
+      "name": "Output ASCII file"
+    },
+    {
+      "command-line-flag": "-ascts",
+      "description": "Write the results and time series to an ascii file for voxels with cross correlation coefficients larger than CCT",
+      "value-key": "[OUTPUT_ASCTS]",
+      "type": "String",
+      "optional": true,
+      "id": "ascts",
+      "name": "Output ASCII file with time series"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX].DEL+orig.BRIK",
+      "description": "Primary output results Brick for Delay",
+      "optional": true,
+      "id": "output_brick",
+      "name": "Output Brick"
+    },
+    {
+      "path-template": "[PREFIX].ASC",
+      "description": "Output ASCII file for results",
+      "optional": true,
+      "id": "output_asc",
+      "name": "Output ASCII file"
+    },
+    {
+      "path-template": "[PREFIX].ASC.log",
+      "description": "Log file containing parameter settings and warnings",
+      "optional": true,
+      "id": "output_asc_log",
+      "name": "Output ASCII log file"
+    },
+    {
+      "path-template": "[PREFIX].ASC.ts",
+      "description": "Output ASCII file with time series",
+      "optional": true,
+      "id": "output_asc_ts",
+      "name": "Output ASCII file with time series"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3dIntracranial",
+  "author": "AFNI Development Team",
+  "descriptor-url": "https://github.com/afni/plugins",
+  "description": "Performs automatic segmentation of intracranial region.",
+  "url": "https://afni.nimh.nih.gov",
+  "command-line": "3dIntracranial -anat [INPUT_FILE] -prefix [PREFIX] [MIN_VAL] [MAX_VAL] [MIN_CONN] [MAX_CONN] [NO_SMOOTH_FLAG] [MASK_FLAG] [QUIET_FLAG]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Filename of anat dataset to be segmented",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Anat file"
+    },
+    {
+      "description": "Prefix name for file to contain segmented image",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Prefix for output file"
+    },
+    {
+      "command-line-flag": "-min_val",
+      "description": "Minimum voxel intensity limit. Default is internal PDF estimate for lower bound",
+      "value-key": "[MIN_VAL]",
+      "type": "Number",
+      "optional": true,
+      "id": "min_val",
+      "name": "Minimum voxel intensity"
+    },
+    {
+      "command-line-flag": "-max_val",
+      "description": "Maximum voxel intensity limit. Default is internal PDF estimate for upper bound",
+      "value-key": "[MAX_VAL]",
+      "type": "Number",
+      "optional": true,
+      "id": "max_val",
+      "name": "Maximum voxel intensity"
+    },
+    {
+      "command-line-flag": "-min_conn",
+      "description": "Minimum voxel connectivity to enter. Default is 4",
+      "value-key": "[MIN_CONN]",
+      "type": "Number",
+      "optional": true,
+      "id": "min_conn",
+      "name": "Minimum voxel connectivity"
+    },
+    {
+      "command-line-flag": "-max_conn",
+      "description": "Maximum voxel connectivity to leave. Default is 2",
+      "value-key": "[MAX_CONN]",
+      "type": "Number",
+      "optional": true,
+      "id": "max_conn",
+      "name": "Maximum voxel connectivity"
+    },
+    {
+      "command-line-flag": "-nosmooth",
+      "description": "Suppress spatial smoothing of segmentation mask",
+      "value-key": "[NO_SMOOTH_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_smooth",
+      "name": "No smoothing flag"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Generate functional image mask (complement). Default is to generate anatomical image",
+      "value-key": "[MASK_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mask",
+      "name": "Generate functional image mask"
+    },
+    {
+      "command-line-flag": "-quiet",
+      "description": "Suppress output to screen",
+      "value-key": "[QUIET_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "quiet",
+      "name": "Quiet flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]+orig",
+      "description": "Output file containing segmented image",
+      "optional": false,
+      "id": "segmented_image",
+      "name": "Segmented image file"
+    }
+  ]
+}

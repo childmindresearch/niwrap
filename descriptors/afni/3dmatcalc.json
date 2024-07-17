@@ -1,0 +1,65 @@
+{
+  "tool-version": "AFNI_23.1.10",
+  "name": "3dmatcalc",
+  "author": "Zhark, Emperor",
+  "description": "Apply a matrix to a dataset, voxel-by-voxel, to produce a new dataset.",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "3dmatcalc -input [INPUT_DATASET] -matrix [MATRIX] -prefix [OUTPUT_DATASET] [MASK]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset to be processed.",
+      "value-key": "[INPUT_DATASET]",
+      "type": "File",
+      "optional": false,
+      "id": "input_dataset",
+      "name": "Input Dataset"
+    },
+    {
+      "description": "The matrix to be applied, specified as a .1D file or as an expression in the syntax of 1dmatcalc.",
+      "value-key": "[MATRIX]",
+      "type": "File",
+      "optional": false,
+      "id": "input_matrix",
+      "name": "Input Matrix"
+    },
+    {
+      "description": "Prefix for the output dataset.",
+      "value-key": "[OUTPUT_DATASET]",
+      "type": "String",
+      "optional": false,
+      "id": "output_dataset",
+      "name": "Output Dataset Prefix"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Apply the matrix only to voxels in the mask; other voxels will be set to all zeroes.",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_DATASET]+tlrc.HEAD",
+      "description": "Output dataset header file.",
+      "optional": false,
+      "id": "output_header",
+      "name": "Output Dataset Header File"
+    },
+    {
+      "path-template": "[OUTPUT_DATASET]+tlrc.BRIK",
+      "description": "Output dataset brick file.",
+      "optional": false,
+      "id": "output_brick",
+      "name": "Output Dataset Brick File"
+    }
+  ]
+}

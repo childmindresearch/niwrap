@@ -1,0 +1,50 @@
+{
+  "tool-version": "1.0.0",
+  "name": "DTIStudioFibertoSegments",
+  "author": "DTIStudio Authors",
+  "description": "Convert a DTIStudio Fiber file to a SUMA segment file",
+  "command-line": "DTIStudioFibertoSegments [DATASET] [OUTPUT_FILE] [SWAP_FLAG]",
+  "container-image": {
+    "image": "dti/docker-dtistudio:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset file",
+      "value-key": "[DATASET]",
+      "type": "File",
+      "optional": false,
+      "id": "dataset",
+      "name": "Dataset file"
+    },
+    {
+      "command-line-flag": "-output",
+      "description": "Name of the output file (default is rawxyzseg.dat)",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": true,
+      "id": "output_file",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "-swap",
+      "description": "Swap bytes in data",
+      "value-key": "[SWAP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "swap_flag",
+      "name": "Swap bytes flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Output SUMA segment file",
+      "optional": false,
+      "id": "output_segment_file",
+      "name": "Output segment file"
+    }
+  ]
+}

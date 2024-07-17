@@ -1,0 +1,53 @@
+{
+  "tool-version": "1.0.0",
+  "name": "ScriptChecker",
+  "author": "Your Name or Organization",
+  "description": "Checks scripts for improperly terminated lines and optionally cleans them.",
+  "command-line": "@ScriptCheck [CLEAN_FLAG] [SUFFIX_FLAG] [SUFFIX] [SCRIPTS...]",
+  "inputs": [
+    {
+      "command-line-flag": "-clean",
+      "description": "Clean bad line breaks",
+      "value-key": "[CLEAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "clean",
+      "name": "Clean Flag"
+    },
+    {
+      "command-line-flag": "-suffix",
+      "description": "Rename uncleaned file with specified suffix. Default is .uncln",
+      "value-key": "[SUFFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "suffix",
+      "name": "Suffix"
+    },
+    {
+      "description": "Scripts to be checked for improperly terminated lines",
+      "value-key": "[SCRIPTS...]",
+      "type": "File",
+      "optional": false,
+      "id": "scripts",
+      "name": "Script Files",
+      "list": true
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "{SCRIPT}.uncln",
+      "description": "Uncleaned original file with specified suffix",
+      "optional": true,
+      "id": "uncleaned_file",
+      "name": "Uncleaned File"
+    },
+    {
+      "path-template": "{SCRIPT}",
+      "description": "Cleaned file if -clean option is used",
+      "optional": true,
+      "id": "cleaned_file",
+      "name": "Cleaned File"
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "tool-version": "1.11",
+  "name": "SurfMeasures",
+  "author": "R. Reynolds",
+  "description": "Compute measures from surface dataset(s)",
+  "command-line": "SurfMeasures [OPTIONS] -spec SPEC_FILE -out OUTFILE",
+  "container-image": {
+    "image": "docker-registry.image/surfs:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "SUMA spec file containing a list of related surfaces",
+      "value-key": "[SPEC_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "spec_file",
+      "name": "Spec file",
+      "command-line-flag": "-spec"
+    },
+    {
+      "description": "Surface name (in spec file) for the first surface",
+      "value-key": "[SURF_A]",
+      "type": "String",
+      "optional": false,
+      "id": "surf_A",
+      "name": "Surface A",
+      "command-line-flag": "-surf_A"
+    },
+    {
+      "description": "Surface name (in spec file) for the second surface",
+      "value-key": "[SURF_B]",
+      "type": "String",
+      "optional": true,
+      "id": "surf_B",
+      "name": "Surface B",
+      "command-line-flag": "-surf_B"
+    },
+    {
+      "description": "Output filename in 1D format",
+      "value-key": "[OUTFILE_1D]",
+      "type": "String",
+      "optional": true,
+      "id": "out_1D",
+      "name": "Output 1D file",
+      "command-line-flag": "-out_1D"
+    },
+    {
+      "description": "Output filename with dataset format",
+      "value-key": "[OUTFILE]",
+      "type": "String",
+      "optional": false,
+      "id": "out_dset",
+      "name": "Output dataset file",
+      "command-line-flag": "-out"
+    },
+    {
+      "description": "Measure function to be applied",
+      "value-key": "[FUNC]",
+      "type": "String",
+      "optional": true,
+      "id": "func",
+      "list": true,
+      "name": "Function",
+      "command-line-flag": "-func"
+    },
+    {
+      "description": "AFNI volume dataset associated with the surface",
+      "value-key": "[SURF_VOLUME]",
+      "type": "File",
+      "optional": true,
+      "id": "surf_volume",
+      "name": "Surface Volume",
+      "command-line-flag": "-sv"
+    },
+    {
+      "description": "Restrict nodes with a mask",
+      "value-key": "[CMASK]",
+      "type": "String",
+      "optional": true,
+      "id": "cmask",
+      "name": "Constraint Mask",
+      "command-line-flag": "-cmask"
+    },
+    {
+      "description": "Display extra run-time information with specified debug level (0-5)",
+      "value-key": "[DEBUG_LEVEL]",
+      "type": "Number",
+      "minimum": 0,
+      "maximum": 5,
+      "integer": true,
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Level",
+      "command-line-flag": "-debug"
+    },
+    {
+      "description": "Display extra information for specified node",
+      "value-key": "[NODE]",
+      "type": "Number",
+      "optional": true,
+      "id": "dnode",
+      "name": "Debug Node",
+      "command-line-flag": "-dnode"
+    },
+    {
+      "description": "Restrict output to specific nodes listed in a file",
+      "value-key": "[NODELIST]",
+      "type": "File",
+      "optional": true,
+      "id": "nodes_1D",
+      "name": "Node List",
+      "command-line-flag": "-nodes_1D"
+    },
+    {
+      "description": "Display all final info",
+      "value-key": "[INFO_ALL]",
+      "type": "Flag",
+      "optional": true,
+      "id": "info_all",
+      "name": "Info All",
+      "command-line-flag": "-info_all"
+    },
+    {
+      "description": "Display total area of each triangulated surface",
+      "value-key": "[INFO_AREA]",
+      "type": "Flag",
+      "optional": true,
+      "id": "info_area",
+      "name": "Info Area",
+      "command-line-flag": "-info_area"
+    },
+    {
+      "description": "Display info about the normals",
+      "value-key": "[INFO_NORMALS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "info_norms",
+      "name": "Info Norms",
+      "command-line-flag": "-info_norms"
+    },
+    {
+      "description": "Display minimum and maximum thickness between surfaces",
+      "value-key": "[INFO_THICK]",
+      "type": "Flag",
+      "optional": true,
+      "id": "info_thick",
+      "name": "Info Thickness",
+      "command-line-flag": "-info_thick"
+    },
+    {
+      "description": "Display total computed volume between surfaces",
+      "value-key": "[INFO_VOL]",
+      "type": "Flag",
+      "optional": true,
+      "id": "info_vol",
+      "name": "Info Volume",
+      "command-line-flag": "-info_vol"
+    },
+    {
+      "description": "Display total computed volume estimated via Gauss' theorem",
+      "value-key": "[INFO_VOLG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "info_volg",
+      "name": "Info Volume Gauss",
+      "command-line-flag": "-info_volg"
+    },
+    {
+      "description": "Show program version and compile date",
+      "value-key": "[VER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ver",
+      "name": "Version Information",
+      "command-line-flag": "-ver"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTFILE_1D].1D",
+      "description": "Output in 1D format",
+      "optional": true,
+      "id": "output_1D",
+      "name": "Output 1D File"
+    },
+    {
+      "path-template": "[OUTFILE]",
+      "description": "Output in specified dataset format",
+      "optional": false,
+      "id": "output_dset",
+      "name": "Output Dataset File"
+    }
+  ]
+}

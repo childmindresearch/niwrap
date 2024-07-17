@@ -58,7 +58,13 @@
       "command-line-flag": "-",
       "description": "'fourier' or 'cubic' or 'heptic' or 'quintic' or 'linear'. Spatial interpolation methods [default = heptic].",
       "optional": true,
-      "value-choices": ["Fourier", "cubic", "heptic", "quintic", "linear"]
+      "value-choices": [
+        "Fourier",
+        "cubic",
+        "heptic",
+        "quintic",
+        "linear"
+      ]
     },
     {
       "id": "num_threads",
@@ -67,8 +73,7 @@
       "integer": true,
       "value-key": "[NUM_THREADS]",
       "description": "Set number of threads.",
-      "optional": true,
-      "default-value": 1
+      "optional": true
     },
     {
       "id": "outputtype",
@@ -77,7 +82,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "timeshift",
@@ -172,14 +181,6 @@
       "path-template": "out_file",
       "optional": true,
       "description": "Registered file."
-    }
-  ],
-  "groups": [
-    {
-      "id": "in_weight_volume_group",
-      "name": "In weight volume group",
-      "members": ["in_weight_volume", "in_weight_volume_2"],
-      "mutually-exclusive": true
     }
   ],
   "tool-version": "1.0.0",

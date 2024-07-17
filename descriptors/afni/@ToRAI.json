@@ -1,0 +1,31 @@
+{
+  "tool-version": "1.0",
+  "name": "ToRAI",
+  "author": "Unknown",
+  "description": "Tool to change the ORIENT coordinates to RAI",
+  "command-line": "@ToRAI <-xyz X Y Z> <-or ORIENT>",
+  "inputs": [
+    {
+      "command-line-flag": "-xyz",
+      "description": "Specify the X, Y, and Z coordinates",
+      "value-key": "[X Y Z]",
+      "type": "Number",
+      "list": true,
+      "max-list-entries": 3,
+      "optional": false,
+      "id": "coordinates",
+      "name": "Coordinates",
+      "min-list-entries": 3
+    },
+    {
+      "command-line-flag": "-or",
+      "description": "Specify the orientation",
+      "value-key": "[ORIENT]",
+      "type": "String",
+      "optional": false,
+      "id": "orientation",
+      "name": "Orientation"
+    }
+  ],
+  "schema-version": "0.5"
+}

@@ -1,0 +1,72 @@
+{
+  "tool-version": "23.1.10",
+  "name": "1dgrayplot",
+  "author": "AFNI Development Team",
+  "description": "Graphs the columns of a *.1D type time series file to the screen in grayscale.",
+  "command-line": "1dgrayplot [OPTIONS] [TSFILE]",
+  "inputs": [
+    {
+      "description": "Input time series file (*.1D format)",
+      "value-key": "[TSFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "tsfile",
+      "name": "Input time series file"
+    },
+    {
+      "command-line-flag": "-install",
+      "description": "Install a new X11 colormap (for X11 PseudoColor)",
+      "value-key": "[INSTALL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "install",
+      "name": "Install new X11 colormap flag"
+    },
+    {
+      "command-line-flag": "-ignore",
+      "description": "Skip first 'nn' rows in the input file [default = 0]",
+      "value-key": "[IGNORE]",
+      "type": "Number",
+      "optional": true,
+      "id": "ignore",
+      "name": "Ignore rows"
+    },
+    {
+      "command-line-flag": "-flip",
+      "description": "Plot x and y axes interchanged [default: data columns plotted DOWN the screen]",
+      "value-key": "[FLIP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "flip",
+      "name": "Flip axes flag"
+    },
+    {
+      "command-line-flag": "-sep",
+      "description": "Separate scales for each column",
+      "value-key": "[SEP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sep",
+      "name": "Separate scales flag"
+    },
+    {
+      "command-line-flag": "-use",
+      "description": "Plot 'mm' points [default: all of them]",
+      "value-key": "[USE]",
+      "type": "Number",
+      "optional": true,
+      "id": "use",
+      "name": "Points to plot"
+    },
+    {
+      "command-line-flag": "-ps",
+      "description": "Don't draw plot in a window; write it to stdout in PostScript format.",
+      "value-key": "[PS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ps",
+      "name": "PostScript format flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

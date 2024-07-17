@@ -1,0 +1,51 @@
+{
+  "tool-version": "1.0",
+  "name": "apsearch",
+  "author": "Tool Author Name",
+  "descriptor-url": "https://example.com/apsearch_descriptor.json",
+  "description": "A tool for searching applications.",
+  "url": "https://example.com/apsearch",
+  "command-line": "apsearch [SEARCH_TERM] [FILE_OUTPUT] [VERBOSE]",
+  "container-image": {
+    "image": "example/docker-apsearch:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Term to search",
+      "value-key": "[SEARCH_TERM]",
+      "type": "String",
+      "optional": false,
+      "id": "search_term",
+      "name": "Search Term"
+    },
+    {
+      "description": "File to save the search results",
+      "value-key": "[FILE_OUTPUT]",
+      "type": "File",
+      "optional": true,
+      "id": "file_output",
+      "name": "File Output"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Print detailed information during search",
+      "value-key": "[VERBOSE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[FILE_OUTPUT]",
+      "description": "File containing search results",
+      "optional": true,
+      "id": "output_file",
+      "name": "Output File"
+    }
+  ]
+}

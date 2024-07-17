@@ -1,0 +1,106 @@
+{
+  "tool-version": "1.0",
+  "name": "python_module_test",
+  "author": "R Reynolds",
+  "description": "Test the loading of Python modules, specifically designed to ensure compatibility with AFNI software.",
+  "command-line": "python_module_test.py [FULL_TEST] [PLATFORM_INFO] [PYTHON_VER] [TEST_DEFAULTS] [TEST_MODULES] [VERBOSE] [HELP] [HIST] [SHOW_VALID_OPTS] [VER]",
+  "container-image": {
+    "type": "docker",
+    "index": "index.docker.io",
+    "image": "python:latest"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-full_test",
+      "description": "Perform all of the standard tests",
+      "value-key": "[FULL_TEST]",
+      "type": "Flag",
+      "optional": true,
+      "id": "full_test",
+      "name": "Full Test"
+    },
+    {
+      "command-line-flag": "-platform_info",
+      "description": "Display system information, including OS and version along with the CPU type",
+      "value-key": "[PLATFORM_INFO]",
+      "type": "Flag",
+      "optional": true,
+      "id": "platform_info",
+      "name": "Platform Information"
+    },
+    {
+      "command-line-flag": "-python_ver",
+      "description": "Display the version of Python in use",
+      "value-key": "[PYTHON_VER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "python_ver",
+      "name": "Python Version"
+    },
+    {
+      "command-line-flag": "-test_defaults",
+      "description": "Test the default module list used by AFNI programs",
+      "value-key": "[TEST_DEFAULTS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "test_defaults",
+      "name": "Test Default Modules"
+    },
+    {
+      "command-line-flag": "-test_modules",
+      "description": "Test the specified list of modules",
+      "value-key": "[TEST_MODULES]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "test_modules",
+      "name": "Test Specified Modules"
+    },
+    {
+      "command-line-flag": "-verb",
+      "description": "Specify a verbose level",
+      "value-key": "[VERBOSE]",
+      "type": "Number",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose Level"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Display the help message",
+      "value-key": "[HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    },
+    {
+      "command-line-flag": "-hist",
+      "description": "Display the modification history",
+      "value-key": "[HIST]",
+      "type": "Flag",
+      "optional": true,
+      "id": "hist",
+      "name": "History"
+    },
+    {
+      "command-line-flag": "-show_valid_opts",
+      "description": "Display all valid options in a short format",
+      "value-key": "[SHOW_VALID_OPTS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "show_valid_opts",
+      "name": "Show Valid Options"
+    },
+    {
+      "command-line-flag": "-ver",
+      "description": "Display the version number",
+      "value-key": "[VER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ver",
+      "name": "Version"
+    }
+  ],
+  "schema-version": "0.5"
+}

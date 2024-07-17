@@ -1,0 +1,34 @@
+{
+  "tool-version": "1.0",
+  "name": "@DO.examples",
+  "author": "Ziad S. Saad",
+  "description": "A script to illustrate the use of Displayable Objects in SUMA.",
+  "url": "https://discuss.afni.nimh.nih.gov/",
+  "command-line": "@DO.examples [AUTO_TEST_FLAG]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-auto_test",
+      "description": "Run this script in test mode where user prompts are timed out at 2 seconds, and the command output log is preserved in a file called __testlog.txt",
+      "value-key": "[AUTO_TEST_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "auto_test",
+      "name": "Auto Test Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "__testlog.txt",
+      "description": "Output log file when running in auto test mode",
+      "optional": true,
+      "id": "output_log",
+      "name": "Output Log File"
+    }
+  ]
+}

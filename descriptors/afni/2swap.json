@@ -1,0 +1,28 @@
+{
+  "tool-version": "1.0.0",
+  "name": "2swap",
+  "author": "Author Name",
+  "description": "Swaps byte pairs on the files listed",
+  "command-line": "2swap [QUIET_FLAG] [FILES...]",
+  "inputs": [
+    {
+      "description": "Input files",
+      "value-key": "[FILES...]",
+      "type": "File",
+      "id": "input_files",
+      "name": "Input files",
+      "list": true,
+      "optional": false
+    },
+    {
+      "command-line-flag": "-q",
+      "description": "Work quietly",
+      "value-key": "[QUIET_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "quiet",
+      "name": "Quiet flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

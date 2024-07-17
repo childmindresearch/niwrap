@@ -1,0 +1,75 @@
+{
+  "tool-version": "AFNI_23.1.10",
+  "name": "3dExchange",
+  "author": "AFNI Development Team",
+  "description": "Replaces voxel values using a mapping file with specified columns",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "3dExchange -prefix [PREFIX] -input [DATASET] -map [MAPCOLS_FILE] [VERBOSE_FLAG] [HELP_FLAG]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset. Acceptable data types are byte, short, and floats.",
+      "value-key": "[DATASET]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "description": "Mapping columns. Input values in the first column, output values in the second column",
+      "value-key": "[MAPCOLS_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "mapfile",
+      "name": "Mapping file"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Output prefix",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Output Prefix"
+    },
+    {
+      "command-line-flag": "-ver",
+      "description": "Print author and version info",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version info flag"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Print this help screen",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]+orig.HEAD",
+      "description": "Output HEAD file",
+      "optional": false,
+      "id": "output_head",
+      "name": "Output HEAD file"
+    },
+    {
+      "path-template": "[PREFIX]+orig.BRIK",
+      "description": "Output BRIK file",
+      "optional": false,
+      "id": "output_brik",
+      "name": "Output BRIK file"
+    }
+  ]
+}

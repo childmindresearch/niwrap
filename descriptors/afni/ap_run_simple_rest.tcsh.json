@@ -1,0 +1,135 @@
+{
+  "tool-version": "0.3",
+  "name": "ap_run_simple_rest",
+  "author": "R Reynolds",
+  "description": "Run a quick afni_proc.py analysis for QC",
+  "command-line": "ap_run_simple_rest.tcsh [ANAT] -epi [EPI] [NT_RM] [RUN_AP] [RUN_PROC] [SUBJID] [TEMPLATE] [COMPRESSOR] [VERB] [ECHO]",
+  "container-image": {
+    "image": "afni/afni_container:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "EPI datasets",
+      "value-key": "[EPI]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "epi",
+      "name": "EPI Datasets"
+    },
+    {
+      "command-line-flag": "-anat",
+      "description": "Single anatomical dataset",
+      "value-key": "[ANAT]",
+      "type": "File",
+      "optional": true,
+      "id": "anat",
+      "name": "Anatomical Dataset"
+    },
+    {
+      "command-line-flag": "-nt_rm",
+      "description": "Number of time points to remove from starts of runs",
+      "value-key": "[NT_RM]",
+      "type": "Number",
+      "optional": true,
+      "id": "nt_rm",
+      "name": "Number of Time Points to Remove"
+    },
+    {
+      "command-line-flag": "-run_ap",
+      "description": "Run the afni_proc.py command",
+      "value-key": "[RUN_AP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "run_ap",
+      "name": "Run afni_proc.py Command"
+    },
+    {
+      "command-line-flag": "-run_proc",
+      "description": "Run the proc script from afni_proc.py command",
+      "value-key": "[RUN_PROC]",
+      "type": "Flag",
+      "optional": true,
+      "id": "run_proc",
+      "name": "Run Proc Script"
+    },
+    {
+      "command-line-flag": "-subjid",
+      "description": "Specify subject ID for file names",
+      "value-key": "[SUBJID]",
+      "type": "String",
+      "optional": true,
+      "id": "subjid",
+      "name": "Subject ID"
+    },
+    {
+      "command-line-flag": "-template",
+      "description": "Specify template for standard space",
+      "value-key": "[TEMPLATE]",
+      "type": "File",
+      "optional": true,
+      "id": "template",
+      "name": "Template File"
+    },
+    {
+      "command-line-flag": "-compressor",
+      "description": "Control automatic compression of *.BRIK files",
+      "value-key": "[COMPRESSOR]",
+      "type": "String",
+      "optional": true,
+      "id": "compressor",
+      "name": "Compressor"
+    },
+    {
+      "command-line-flag": "-verb",
+      "description": "Specify verbosity level",
+      "value-key": "[VERB]",
+      "type": "Number",
+      "optional": true,
+      "id": "verb",
+      "name": "Verbosity Level"
+    },
+    {
+      "command-line-flag": "-echo",
+      "description": "Same as verbosity level 3",
+      "value-key": "[ECHO]",
+      "type": "Flag",
+      "optional": true,
+      "id": "echo",
+      "name": "Echo Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "run_ap_[SUBJID]",
+      "description": "afni_proc.py command script",
+      "optional": true,
+      "id": "run_ap_script",
+      "name": "afni_proc.py Command Script"
+    },
+    {
+      "path-template": "proc.[SUBJID]",
+      "description": "proc script (if AP is run)",
+      "optional": true,
+      "id": "proc_script",
+      "name": "Proc Script"
+    },
+    {
+      "path-template": "[SUBJID].results",
+      "description": "proc results directory (if run)",
+      "optional": true,
+      "id": "proc_results_dir",
+      "name": "Proc Results Directory"
+    },
+    {
+      "path-template": "out.*",
+      "description": "Text output files from AP and proc scripts",
+      "optional": true,
+      "id": "text_output_files",
+      "name": "Text Output Files"
+    }
+  ]
+}

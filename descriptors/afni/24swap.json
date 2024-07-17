@@ -1,0 +1,37 @@
+{
+  "tool-version": "1.0.0",
+  "name": "24swap",
+  "author": "Unknown",
+  "description": "Swaps bytes pairs and/or quadruples on the files listed.",
+  "command-line": "24swap [QUIET_FLAG] [PATTERN_OPTION] [INPUT_FILE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input file(s) to swap bytes",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "list": true,
+      "id": "input_files",
+      "name": "Input Files"
+    },
+    {
+      "command-line-flag": "-q",
+      "description": "Operate quietly",
+      "value-key": "[QUIET_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "quiet",
+      "name": "Quiet Flag"
+    },
+    {
+      "command-line-flag": "-pattern",
+      "description": "Pattern that determines the pattern of 2 and 4 byte swaps.",
+      "value-key": "[PATTERN_OPTION]",
+      "type": "String",
+      "optional": true,
+      "id": "pattern",
+      "name": "Byte Swap Pattern"
+    }
+  ]
+}

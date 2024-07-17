@@ -1,0 +1,79 @@
+{
+  "tool-version": "1.0.0",
+  "name": "@make_plug_diff",
+  "author": "AFNI",
+  "description": "Compiles AFNI's diffusion plugin.",
+  "url": "https://afni.nimh.nih.gov",
+  "command-line": "@make_plug_diff -vtk [VTKDIR] -xm [XMDIR] -asrc [ASRCDIR] -abin [ABINDIR] [COMMENTS_FLAG] [LINUX_FLAG] [DIFFDIR]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "-vtk",
+      "description": "Directory where vtk is installed",
+      "value-key": "[VTKDIR]",
+      "type": "String",
+      "optional": false,
+      "id": "vtk_dir",
+      "name": "VTK Directory"
+    },
+    {
+      "command-line-flag": "-xm",
+      "description": "Directory where motif is installed",
+      "value-key": "[XMDIR]",
+      "type": "String",
+      "optional": false,
+      "id": "xm_dir",
+      "name": "Motif Directory"
+    },
+    {
+      "command-line-flag": "-asrc",
+      "description": "Full path to AFNI's src/ directory",
+      "value-key": "[ASRCDIR]",
+      "type": "String",
+      "optional": false,
+      "id": "afni_src_dir",
+      "name": "AFNI Source Directory"
+    },
+    {
+      "command-line-flag": "-abin",
+      "description": "Path, relative to ASRCDIR, to abin",
+      "value-key": "[ABINDIR]",
+      "type": "String",
+      "optional": false,
+      "id": "afni_bin_dir",
+      "name": "AFNI Binary Directory"
+    },
+    {
+      "command-line-flag": "-diff",
+      "description": "Name of directory containing diffusion code",
+      "value-key": "[DIFFDIR]",
+      "type": "String",
+      "optional": false,
+      "id": "diff_dir",
+      "name": "Diffusion Code Directory"
+    },
+    {
+      "command-line-flag": "-comments",
+      "description": "Output comments only",
+      "value-key": "[COMMENTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "comments",
+      "name": "Comments Flag"
+    },
+    {
+      "command-line-flag": "-linux",
+      "description": "Flag for doing linuxy things",
+      "value-key": "[LINUX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "linux",
+      "name": "Linux Flag"
+    }
+  ],
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  }
+}

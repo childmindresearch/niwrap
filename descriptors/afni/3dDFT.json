@@ -1,0 +1,96 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3dDFT",
+  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "description": "Performs Discrete Fourier Transform (DFT) along the time axis of a complex- or float-valued dataset.",
+  "url": "https://afni.nimh.nih.gov",
+  "command-line": "3dDFT [INPUT_FILE] [OUTPUT_PREFIX] [OUTPUT_TYPE] [NFFT] [DETREND_FLAG] [TAPER] [INVERSE_FLAG]",
+  "container-image": {
+    "image": "afni/afni_latest:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset (complex- or float-valued)",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Prefix for the output file",
+      "value-key": "[OUTPUT_PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Output file prefix"
+    },
+    {
+      "command-line-flag": "-abs",
+      "description": "Output float dataset = abs(DFT)",
+      "value-key": "[OUTPUT_TYPE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "abs_output",
+      "name": "Absolute value output flag"
+    },
+    {
+      "command-line-flag": "-nfft",
+      "description": "DFT length (must be >= number of time points)",
+      "value-key": "[NFFT]",
+      "type": "Number",
+      "optional": true,
+      "id": "nfft",
+      "name": "DFT length"
+    },
+    {
+      "command-line-flag": "-detrend",
+      "description": "Least-squares remove linear drift before DFT",
+      "value-key": "[DETREND_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "detrend",
+      "name": "Detrend flag"
+    },
+    {
+      "command-line-flag": "-taper",
+      "description": "Fraction (0 <= f <= 1) of data to taper at ends (Hamming taper)",
+      "value-key": "[TAPER]",
+      "type": "Number",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "optional": true,
+      "id": "taper",
+      "name": "Taper fraction"
+    },
+    {
+      "command-line-flag": "-inverse",
+      "description": "Perform the inverse DFT",
+      "value-key": "[INVERSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "inverse",
+      "name": "Inverse DFT flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_PREFIX]+orig.BRIK",
+      "description": "Output dataset file",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output dataset"
+    },
+    {
+      "path-template": "[OUTPUT_PREFIX]+orig.HEAD",
+      "description": "Output dataset header file",
+      "optional": false,
+      "id": "outheader",
+      "name": "Output dataset header"
+    }
+  ]
+}

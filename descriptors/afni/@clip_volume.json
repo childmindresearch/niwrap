@@ -1,0 +1,199 @@
+{
+  "tool-version": "1.0.0",
+  "name": "clip_volume",
+  "author": "Ziad S. Saad",
+  "description": "A tool to clip regions of a volume in various ways, such as above/below certain coordinates or within a specified box.",
+  "command-line": "@clip_volume -input [INPUT_VOLUME] [CLIPPING_OPTIONS] [LOGIC_OPTIONS] [CROP_OPTIONS] -prefix [OUTPUT_PREFIX]",
+  "container-image": {
+    "image": "some/docker-image:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Volume to clip",
+      "value-key": "[INPUT_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "input_volume",
+      "name": "Input Volume"
+    },
+    {
+      "command-line-flag": "-below",
+      "description": "Set to 0 slices below Zmm",
+      "value-key": "[BELOW_Zmm]",
+      "type": "Number",
+      "optional": true,
+      "id": "below_zmm",
+      "name": "Below Zmm"
+    },
+    {
+      "command-line-flag": "-above",
+      "description": "Set to 0 slices above Zmm",
+      "value-key": "[ABOVE_Zmm]",
+      "type": "Number",
+      "optional": true,
+      "id": "above_zmm",
+      "name": "Above Zmm"
+    },
+    {
+      "command-line-flag": "-left",
+      "description": "Set to 0 slices left of Xmm",
+      "value-key": "[LEFT_Xmm]",
+      "type": "Number",
+      "optional": true,
+      "id": "left_xmm",
+      "name": "Left Xmm"
+    },
+    {
+      "command-line-flag": "-right",
+      "description": "Set to 0 slices right of Xmm",
+      "value-key": "[RIGHT_Xmm]",
+      "type": "Number",
+      "optional": true,
+      "id": "right_xmm",
+      "name": "Right Xmm"
+    },
+    {
+      "command-line-flag": "-anterior",
+      "description": "Set to 0 slices anterior to Ymm",
+      "value-key": "[ANTERIOR_Ymm]",
+      "type": "Number",
+      "optional": true,
+      "id": "anterior_ymm",
+      "name": "Anterior Ymm"
+    },
+    {
+      "command-line-flag": "-posterior",
+      "description": "Set to 0 slices posterior to Ymm",
+      "value-key": "[POSTERIOR_Ymm]",
+      "type": "Number",
+      "optional": true,
+      "id": "posterior_ymm",
+      "name": "Posterior Ymm"
+    },
+    {
+      "command-line-flag": "-box",
+      "description": "Clip the volume to a box centered at Cx, Cy, Cz (RAI mm), and of dimensions Dx Dy Dz (RAI mm).",
+      "value-key": "[BOX]",
+      "type": "Number",
+      "list": true,
+      "max-list-entries": 6,
+      "min-list-entries": 6,
+      "optional": true,
+      "id": "box",
+      "name": "Box Clipping"
+    },
+    {
+      "command-line-flag": "-mask_box",
+      "description": "Set all values inside the box to 1. Box centered at Cx, Cy, Cz (RAI mm), and of dimensions Dx Dy Dz (RAI mm).",
+      "value-key": "[MASK_BOX]",
+      "type": "Number",
+      "list": true,
+      "max-list-entries": 6,
+      "min-list-entries": 6,
+      "optional": true,
+      "id": "mask_box",
+      "name": "Mask Box Clipping"
+    },
+    {
+      "command-line-flag": "-and",
+      "description": "Combine with next clipping planes using 'and'.",
+      "value-key": "[LOGIC_AND]",
+      "type": "Flag",
+      "optional": true,
+      "id": "and_logic",
+      "name": "And Logic"
+    },
+    {
+      "command-line-flag": "-or",
+      "description": "Combine with next clipping planes using 'or'.",
+      "value-key": "[LOGIC_OR]",
+      "type": "Flag",
+      "optional": true,
+      "id": "or_logic",
+      "name": "Or Logic"
+    },
+    {
+      "command-line-flag": "-verb",
+      "description": "Show command details (verbose output).",
+      "value-key": "[VERBOSITY]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbosity",
+      "name": "Verbosity Flag"
+    },
+    {
+      "command-line-flag": "-crop_allzero",
+      "description": "Crop the output volume with 3dAutobox -noclust.",
+      "value-key": "[CROP_ALLZERO]",
+      "type": "Flag",
+      "optional": true,
+      "id": "crop_allzero",
+      "name": "Crop Allzero"
+    },
+    {
+      "command-line-flag": "-crop_greedy",
+      "description": "Crop the output volume with 3dAutobox.",
+      "value-key": "[CROP_GREEDY]",
+      "type": "Flag",
+      "optional": true,
+      "id": "crop_greedy",
+      "name": "Crop Greedy"
+    },
+    {
+      "command-line-flag": "-crop",
+      "description": "Same as -crop_greedy, kept for backward compatibility.",
+      "value-key": "[CROP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "crop",
+      "name": "Crop"
+    },
+    {
+      "command-line-flag": "-crop_npad",
+      "description": "Set 3dAutobox's -npad option to NPAD. NPAD fattens the volume a little after cropping.",
+      "value-key": "[CROP_NPAD]",
+      "type": "Number",
+      "optional": true,
+      "id": "crop_npad",
+      "name": "Crop Npad"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Output prefix for the resultant volume. Default is the input prefix with _clp suffixed to it.",
+      "value-key": "[OUTPUT_PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "output_prefix",
+      "name": "Output Prefix"
+    },
+    {
+      "command-line-flag": "-followers",
+      "description": "Apply the same clipping or cropping treatment to the follower datasets.",
+      "value-key": "[FOLLOWERS]",
+      "type": "File",
+      "list": true,
+      "optional": true,
+      "id": "followers",
+      "name": "Followers"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_PREFIX]_clp.nii.gz",
+      "description": "Output clipped or cropped volume",
+      "optional": false,
+      "id": "output_clipped_volume",
+      "name": "Output Clipped Volume"
+    },
+    {
+      "path-template": "[OUTPUT_PREFIX]_follow_clp.nii.gz",
+      "description": "Output for follower datasets after clipping/cropping",
+      "optional": true,
+      "id": "output_followers",
+      "name": "Output Followers"
+    }
+  ]
+}

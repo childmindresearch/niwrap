@@ -1,0 +1,45 @@
+{
+  "tool-version": "1.0.0",
+  "name": "3dtoXdataset",
+  "author": "Author Name",
+  "description": "Convert input datasets to the format needed for 3dClustSimX",
+  "url": "URL-to-more-information",
+  "command-line": "3dtoXdataset -prefix [PREFIX] [MASK] [INPUT_FILES]",
+  "inputs": [
+    {
+      "description": "Prefix for the output file.",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Prefix"
+    },
+    {
+      "description": "Mask dataset file.",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": false,
+      "id": "mask",
+      "name": "Mask file"
+    },
+    {
+      "description": "Input datasets to be converted.",
+      "value-key": "[INPUT_FILES]",
+      "type": "File",
+      "optional": false,
+      "list": true,
+      "id": "input_files",
+      "name": "Input files"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[PREFIX].sdat",
+      "description": "Output file in .sdat format",
+      "optional": false,
+      "id": "output_sdat",
+      "name": "Output SDAT file"
+    }
+  ],
+  "schema-version": "0.5"
+}

@@ -1,0 +1,84 @@
+{
+  "tool-version": "1.0",
+  "name": "adjunct_make_script_and_rst.py",
+  "author": "Unspecified",
+  "descriptor-url": "local",
+  "description": "Program to take a script with some special markup and turn it into both an RST page and a script for the online Sphinx documentation.",
+  "url": "Unspecified",
+  "command-line": "adjunct_make_script_and_rst.py --input [INPUT_SCRIPT] --prefix_rst [PREFIX_RST] --prefix_script [PREFIX_SCRIPT] --reflink [REFLINK] [EXECUTE_SCRIPT_FLAG]",
+  "container-image": {
+    "image": "python:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input script file with special markup",
+      "value-key": "[INPUT_SCRIPT]",
+      "type": "File",
+      "optional": false,
+      "id": "input_script",
+      "name": "Input script"
+    },
+    {
+      "command-line-flag": "--prefix_rst",
+      "description": "Output filename including any path of the RST/Sphinx file. Must include file extension '.rst'.",
+      "value-key": "[PREFIX_RST]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix_rst",
+      "name": "RST file prefix"
+    },
+    {
+      "command-line-flag": "--prefix_script",
+      "description": "Output filename of the script file. Should include file extension such as '.tcsh'.",
+      "value-key": "[PREFIX_SCRIPT]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix_script",
+      "name": "Script file prefix"
+    },
+    {
+      "command-line-flag": "--reflink",
+      "description": "A string tag that will serve as the subdirectory name holding images for the given demo, and the RST internal reference label.",
+      "value-key": "[REFLINK]",
+      "type": "String",
+      "optional": false,
+      "id": "reflink",
+      "name": "Reference link"
+    },
+    {
+      "command-line-flag": "--execute_script",
+      "description": "Flag to create the RST and script files, and also execute the script.",
+      "value-key": "[EXECUTE_SCRIPT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "execute_script",
+      "name": "Execute script flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX_RST]",
+      "description": "Generated RST documentation file.",
+      "optional": true,
+      "id": "rst_file",
+      "name": "RST output file"
+    },
+    {
+      "path-template": "[PREFIX_SCRIPT]",
+      "description": "Generated script file.",
+      "optional": true,
+      "id": "script_file",
+      "name": "Script output file"
+    },
+    {
+      "path-template": "[PREFIX_RST]/media/[REFLINK]",
+      "description": "Output directory in Sphinx tree.",
+      "optional": true,
+      "id": "output_directory",
+      "name": "Sphinx output directory"
+    }
+  ]
+}

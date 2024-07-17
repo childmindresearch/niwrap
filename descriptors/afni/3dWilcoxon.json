@@ -1,0 +1,70 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3dWilcoxon",
+  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "description": "Nonparametric Wilcoxon signed-rank test for paired comparisons of two samples",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "3dWilcoxon [WORKMEM] [VOXEL] -dset 1 [DS1_X] -dset 2 [DS2_Y] -out [PREFIX]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Data set for X observations. The user must specify 1 and only 1 sub-brick with each -dset command.",
+      "value-key": "[DS1_X]",
+      "type": "File",
+      "list": true,
+      "id": "dset1_x",
+      "optional": false,
+      "name": "Dataset 1 for X observations"
+    },
+    {
+      "description": "Data set for Y observations. The user must specify 1 and only 1 sub-brick with each -dset command.",
+      "value-key": "[DS2_Y]",
+      "type": "File",
+      "list": true,
+      "id": "dset2_y",
+      "optional": false,
+      "name": "Dataset 2 for Y observations"
+    },
+    {
+      "command-line-flag": "-workmem",
+      "description": "Number of megabytes of RAM to use for statistical workspace",
+      "value-key": "[WORKMEM]",
+      "type": "Number",
+      "id": "workmem",
+      "optional": true,
+      "name": "Workspace memory in megabytes"
+    },
+    {
+      "command-line-flag": "-voxel",
+      "description": "Screen output for voxel # num",
+      "value-key": "[VOXEL]",
+      "type": "Number",
+      "id": "voxel",
+      "optional": true,
+      "name": "Output voxel number"
+    },
+    {
+      "command-line-flag": "-out",
+      "description": "Estimated population delta and Wilcoxon signed-rank statistics are written to file",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "id": "output_prefix",
+      "optional": false,
+      "name": "Output file prefix"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]",
+      "description": "Estimated population delta and Wilcoxon signed-rank statistics",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output statistics file"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "tool-version": "latest",
+  "name": "GetAfniDims",
+  "author": "AFNI contributors",
+  "description": "A utility tool to return dimensions of AFNI dataset",
+  "command-line": "GetAfniDims [DSET]",
+  "inputs": [
+    {
+      "description": "Input AFNI dataset",
+      "value-key": "[DSET]",
+      "type": "File",
+      "optional": false,
+      "id": "input_dset",
+      "name": "Input dataset"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "dims_output.txt",
+      "description": "Text file containing the dimensions of the input dataset",
+      "optional": false,
+      "id": "dims_output",
+      "name": "Dimensions output file"
+    }
+  ]
+}

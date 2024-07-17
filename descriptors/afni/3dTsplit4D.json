@@ -1,0 +1,60 @@
+{
+  "tool-version": "AFNI_23.1.10",
+  "name": "3dTsplit4D",
+  "author": "Peter Molfese, UConn",
+  "description": "Convert a 3D+time dataset into multiple 3D single-brick files.",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "3dTsplit4D [PREFIX] [INPUT_FILE] [KEEP_DATUM_FLAG] [DIGITS]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input 3D+time dataset (e.g., epi_r1+orig)",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "description": "Prefix of the output datasets (e.g., out/epi)",
+      "value-key": "[PREFIX]",
+      "command-line-flag": "-prefix",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Output prefix"
+    },
+    {
+      "description": "Output uses original datum (no conversion to float)",
+      "value-key": "[KEEP_DATUM_FLAG]",
+      "command-line-flag": "-keep_datum",
+      "type": "Flag",
+      "optional": true,
+      "id": "keep_datum",
+      "name": "Keep datum flag"
+    },
+    {
+      "description": "Number of digits to use for output filenames",
+      "value-key": "[DIGITS]",
+      "command-line-flag": "-digits",
+      "type": "Number",
+      "optional": true,
+      "id": "digits",
+      "name": "Number of digits"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]*",
+      "description": "Multiple 3D single-brick output files",
+      "optional": false,
+      "id": "outfiles",
+      "name": "Output files"
+    }
+  ]
+}

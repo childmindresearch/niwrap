@@ -1,0 +1,78 @@
+{
+  "tool-version": "23.1.10",
+  "name": "1dnorm",
+  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dnorm.html",
+  "description": "Normalize columns of a 1D file (AFNI ASCII list of numbers)",
+  "url": "https://afni.nimh.nih.gov",
+  "command-line": "1dnorm [OPTION] [INFILE] [OUTFILE]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input AFNI *.1D file (ASCII list of numbers arranged in columns); if '-' input will be read from stdin.",
+      "value-key": "[INFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "description": "Output AFNI *.1D file (normalized); if '-' output will be written to stdout.",
+      "value-key": "[OUTFILE]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "-norm1",
+      "description": "Normalize so sum of absolute values is 1 (L_1 norm)",
+      "value-key": "[NORM1_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "norm1",
+      "name": "L_1 norm flag"
+    },
+    {
+      "command-line-flag": "-normx",
+      "description": "Normalize so that max absolute value is 1 (L_infinity norm)",
+      "value-key": "[NORMX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "normx",
+      "name": "L_infinity norm flag"
+    },
+    {
+      "command-line-flag": "-demean",
+      "description": "Subtract each column's mean before normalizing",
+      "value-key": "[DEMEAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "demean",
+      "name": "Demean flag"
+    },
+    {
+      "command-line-flag": "-demed",
+      "description": "Subtract each column's median before normalizing",
+      "value-key": "[DEMED_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "demed",
+      "name": "Demedian flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTFILE]",
+      "description": "Normalized output AFNI *.1D file",
+      "optional": true,
+      "id": "normalized_output",
+      "name": "Normalized output file"
+    }
+  ]
+}

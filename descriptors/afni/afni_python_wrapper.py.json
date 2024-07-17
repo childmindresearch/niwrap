@@ -1,0 +1,96 @@
+{
+  "tool-version": "1.0",
+  "name": "afni_python_wrapper",
+  "author": "R Reynolds",
+  "description": "Python wrapper to call AFNI functions from the shell",
+  "command-line": "afni_python_wrapper.py [FLAGS] [ARGUMENTS]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Specify the python module to import",
+      "command-line-flag": "-module",
+      "value-key": "[MODULE]",
+      "type": "String",
+      "optional": true,
+      "id": "module",
+      "name": "Module"
+    },
+    {
+      "description": "Show the elements returned by dir()",
+      "command-line-flag": "-module_dir",
+      "value-key": "[MODULE_DIR]",
+      "type": "Flag",
+      "optional": true,
+      "id": "module_dir",
+      "name": "Module dir"
+    },
+    {
+      "description": "Evaluate STRING in context of MODULE",
+      "command-line-flag": "-eval",
+      "value-key": "[EVAL_STRING]",
+      "type": "String",
+      "optional": true,
+      "id": "eval",
+      "name": "Eval string"
+    },
+    {
+      "description": "Execute STRING in context of MODULE",
+      "command-line-flag": "-exec",
+      "value-key": "[EXEC_STRING]",
+      "type": "String",
+      "optional": true,
+      "id": "exec",
+      "name": "Exec string"
+    },
+    {
+      "description": "Print the help for module function FUNC",
+      "command-line-flag": "-funchelp",
+      "value-key": "[FUNC_HELP]",
+      "type": "String",
+      "optional": true,
+      "id": "funchelp",
+      "name": "Func help"
+    },
+    {
+      "description": "Print the result of executing STRING",
+      "command-line-flag": "-print",
+      "value-key": "[PRINT_STRING]",
+      "type": "String",
+      "optional": true,
+      "id": "print",
+      "name": "Print string"
+    },
+    {
+      "description": "Line print: print result list, one element per line",
+      "command-line-flag": "-lprint",
+      "value-key": "[LPRINT_STRING]",
+      "type": "String",
+      "optional": true,
+      "id": "lprint",
+      "name": "Line print string"
+    },
+    {
+      "description": "Execute FUNC(LIST) with sub-options",
+      "command-line-flag": "-listfunc",
+      "value-key": "[LISTFUNC_STRING]",
+      "type": "String",
+      "optional": true,
+      "id": "listfunc",
+      "name": "List function string"
+    },
+    {
+      "description": "Show this help text",
+      "command-line-flag": "-help",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

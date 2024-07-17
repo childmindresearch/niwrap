@@ -1,0 +1,35 @@
+{
+  "tool-version": "1.0",
+  "name": "Install_IBT_DATASETS",
+  "author": "AFNI Team",
+  "descriptor-url": "https://example.com/descriptors/afni_install_ibt_datasets.json",
+  "description": "Installs the demo archive for AFNI's macaque-analysis demo.",
+  "url": "https://afni.nimh.nih.gov",
+  "command-line": "Install_IBT_DATASETS [WGET_FLAG] [CURL_FLAG]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-wget",
+      "description": "Use wget to download archive. Script chooses by default with preference for curl",
+      "value-key": "[WGET_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "wget_flag",
+      "name": "Wget flag"
+    },
+    {
+      "command-line-flag": "-curl",
+      "description": "Use curl to download archive. Script chooses by default with preference for curl",
+      "value-key": "[CURL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "curl_flag",
+      "name": "Curl flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

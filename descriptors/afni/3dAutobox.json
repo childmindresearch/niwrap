@@ -1,0 +1,141 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3dAutobox",
+  "author": "AFNI Team",
+  "description": "Computes size of a box that fits around the volume. Can also be used to crop the volume to that box.",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "3dAutobox [OPTIONS] [INPUT_FILE]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input",
+      "name": "Input dataset"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Crop the input dataset to the size of the box, and write an output dataset with PREFIX for the name. If not used, no new volume is written out.",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Prefix name"
+    },
+    {
+      "command-line-flag": "-input",
+      "description": "An alternate way to specify the input dataset.",
+      "value-key": "[DATASET]",
+      "type": "File",
+      "optional": true,
+      "id": "alt_input",
+      "name": "Alternate input dataset"
+    },
+    {
+      "command-line-flag": "-noclust",
+      "description": "Don't do any clustering to find the box. Any non-zero voxel will be preserved in the cropped volume.",
+      "value-key": "[NOCLUST_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "noclust",
+      "name": "No clustering flag"
+    },
+    {
+      "command-line-flag": "-extent",
+      "description": "Write to standard out the spatial extent of the box.",
+      "value-key": "[EXTENT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "extent",
+      "name": "Extent flag"
+    },
+    {
+      "command-line-flag": "-extent_ijk",
+      "description": "Write out the 6 auto bbox ijk slice numbers to screen: imin imax jmin jmax kmin kmax.",
+      "value-key": "[EXTENT_IJK_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "extent_ijk",
+      "name": "Extent IJK flag"
+    },
+    {
+      "command-line-flag": "-extent_ijk_to_file",
+      "description": "Write out the 6 auto bbox ijk slice numbers to a simple-formatted text file FF: imin imax jmin jmax kmin kmax.",
+      "value-key": "[FF]",
+      "type": "String",
+      "optional": true,
+      "id": "extent_ijk_to_file",
+      "name": "Extent IJK to file"
+    },
+    {
+      "command-line-flag": "-extent_ijk_midslice",
+      "description": "Write out the 3 ijk midslices of the autobox to the screen: imid jmid kmid.",
+      "value-key": "[EXTENT_IJK_MIDSLICE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "extent_ijk_midslice",
+      "name": "Extent IJK midslice flag"
+    },
+    {
+      "command-line-flag": "-extent_ijkord",
+      "description": "Write out the 6 auto bbox ijk slice numbers to screen in a particular order and format. Useful for scripting.",
+      "value-key": "[EXTENT_IJKORD_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "extent_ijkord",
+      "name": "Extent IJKORD flag"
+    },
+    {
+      "command-line-flag": "-extent_ijkord_to_file",
+      "description": "Write out the 6 auto bbox ijk slice numbers to a file in a particular order and format. Useful for 3dcalc expressions.",
+      "value-key": "[FFORRD]",
+      "type": "String",
+      "optional": true,
+      "id": "extent_ijkord_to_file",
+      "name": "Extent IJKORD to file"
+    },
+    {
+      "command-line-flag": "-extent_xyz_to_file",
+      "description": "Write out the 6 auto bbox xyz coordinates to a simple-formatted text file GG: xmin xmax ymin ymax zmin zmax.",
+      "value-key": "[GG]",
+      "type": "String",
+      "optional": true,
+      "id": "extent_xyz_to_file",
+      "name": "Extent XYZ to file"
+    },
+    {
+      "command-line-flag": "-extent_xyz_midslice",
+      "description": "Write out the 3 xyz midslices of the autobox to the screen: xmid ymid zmid.",
+      "value-key": "[EXTENT_XYZ_MIDSLICE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "extent_xyz_midslice",
+      "name": "Extent XYZ midslice flag"
+    },
+    {
+      "command-line-flag": "-npad",
+      "description": "Number of extra voxels to pad on each side of box.",
+      "value-key": "[NNN]",
+      "type": "Number",
+      "optional": true,
+      "id": "npad",
+      "name": "Npad"
+    },
+    {
+      "command-line-flag": "-npad_safety_on",
+      "description": "Constrain npad-ded extents to be within dataset.",
+      "value-key": "[NPAD_SAFETY_ON_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "npad_safety_on",
+      "name": "Npad safety on flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

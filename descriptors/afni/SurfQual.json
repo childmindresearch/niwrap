@@ -1,0 +1,121 @@
+{
+  "tool-version": "1.0",
+  "name": "SurfQual",
+  "author": "SSCC/NIMH/NIH",
+  "description": "A program to check the quality of surfaces.",
+  "command-line": "SurfQual -spec [SpecFile] [SURFACES] -sphere [OPTIONS]",
+  "container-image": {
+    "image": "your-docker-repo/surfqual:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-spec",
+      "description": "Spec file containing input surfaces.",
+      "value-key": "[SpecFile]",
+      "type": "File",
+      "optional": false,
+      "id": "spec_file",
+      "name": "Spec File"
+    },
+    {
+      "command-line-flag": "-surf_A",
+      "description": "Name of input surface A.",
+      "value-key": "[SURFACES]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "surface_a",
+      "name": "Input Surface A"
+    },
+    {
+      "command-line-flag": "-sphere",
+      "description": "Indicates that surfaces read are spherical.",
+      "value-key": "[-sphere]",
+      "type": "Flag",
+      "optional": false,
+      "id": "sphere_flag",
+      "name": "Sphere Flag"
+    },
+    {
+      "command-line-flag": "-summary",
+      "description": "Provide summary of results to stdout.",
+      "value-key": "[SUMMARY]",
+      "type": "Flag",
+      "optional": true,
+      "id": "summary_flag",
+      "name": "Summary Flag"
+    },
+    {
+      "command-line-flag": "-self_intersect",
+      "description": "Check if surface is self intersecting.",
+      "value-key": "[SELF_INTERSECT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "self_intersect_flag",
+      "name": "Self Intersect Flag"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Prefix of output files. Default is the surface's label.",
+      "value-key": "[OUTPREF]",
+      "type": "String",
+      "optional": true,
+      "id": "output_prefix",
+      "name": "Output Prefix"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPREF]_Dist.1D.dset",
+      "description": "File containing distances of nodes from the surface's center.",
+      "optional": true,
+      "id": "dist_output",
+      "name": "Distance Output File"
+    },
+    {
+      "path-template": "[OUTPREF]_Dist.1D.col",
+      "description": "Colorized file containing distances of nodes from the surface's center.",
+      "optional": true,
+      "id": "dist_color_output",
+      "name": "Distance Color Output File"
+    },
+    {
+      "path-template": "[OUTPREF]_BadNodes.1D.dset",
+      "description": "File containing nodes with bad dot product values.",
+      "optional": true,
+      "id": "bad_nodes_output",
+      "name": "Bad Nodes Output File"
+    },
+    {
+      "path-template": "[OUTPREF]_BadNodes.1D.col",
+      "description": "Colorized file containing nodes with bad dot product values.",
+      "optional": true,
+      "id": "bad_nodes_color_output",
+      "name": "Bad Nodes Color Output File"
+    },
+    {
+      "path-template": "[OUTPREF]_dotprod.1D.dset",
+      "description": "File containing dot product values for all nodes.",
+      "optional": true,
+      "id": "dotprod_output",
+      "name": "Dot Product Output File"
+    },
+    {
+      "path-template": "[OUTPREF]_dotprod.1D.col",
+      "description": "Colorized file containing dot product values for all nodes.",
+      "optional": true,
+      "id": "dotprod_color_output",
+      "name": "Dot Product Color Output File"
+    },
+    {
+      "path-template": "[OUTPREF]_IntersNodes.1D.dset",
+      "description": "File containing indices of nodes forming segments that intersect the surface.",
+      "optional": true,
+      "id": "intersect_nodes_output",
+      "name": "Intersect Nodes Output File"
+    }
+  ]
+}

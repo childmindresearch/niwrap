@@ -1,0 +1,76 @@
+{
+  "name": "p2dsetstat",
+  "tool-version": "1.3",
+  "author": "PA Taylor",
+  "description": "Convert a p-value to a statistic of choice with reference to a specific dataset.",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.attributes.html",
+  "command-line": "p2dsetstat -inset [DATASET] -pval [PVAL] [SIDEDNESS] [QUIET]",
+  "inputs": [
+    {
+      "command-line-flag": "-inset",
+      "description": "Specify a dataset DDD and, if it has multiple sub-bricks, the [i]th subbrick with the statistic of interest MUST be selected explicitly; note the use of quotation marks around the brick selector (because of the square-brackets). 'i' can be either a number or a string label selector.",
+      "id": "dataset",
+      "name": "Dataset",
+      "type": "String",
+      "optional": false,
+      "value-key": "[DATASET]"
+    },
+    {
+      "command-line-flag": "-pval",
+      "description": "Input p-value P, which MUST be in the interval [0,1].",
+      "id": "pvalue",
+      "name": "P-Value",
+      "type": "Number",
+      "minimum": 0,
+      "maximum": 1,
+      "optional": false,
+      "value-key": "[PVAL]"
+    },
+    {
+      "command-line-flag": "-bisided",
+      "description": "Two-sided test.",
+      "id": "bisided",
+      "name": "Two-sided",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[SIDEDNESS]"
+    },
+    {
+      "command-line-flag": "-2sided",
+      "description": "Two-sided test.",
+      "id": "twosided",
+      "name": "Two-sided",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[SIDEDNESS]"
+    },
+    {
+      "command-line-flag": "-1sided",
+      "description": "One-sided test.",
+      "id": "onesided",
+      "name": "One-sided",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[SIDEDNESS]"
+    },
+    {
+      "command-line-flag": "-quiet",
+      "description": "Output only the final statistic value.",
+      "id": "quiet",
+      "name": "Quiet",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[QUIET]"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "description": "The converted statistic value.",
+      "id": "stat_value",
+      "name": "Statistic Value",
+      "path-template": "stdout",
+      "optional": false
+    }
+  ]
+}

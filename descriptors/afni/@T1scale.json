@@ -1,0 +1,164 @@
+{
+  "tool-version": "1.0",
+  "name": "T1scale",
+  "author": "Unknown",
+  "description": "Fix bias field shading in T1 by scaling it with PD image. You can also get a decent result even without the PD volume.",
+  "command-line": "@T1scale <-T1 T1vol> <-PD PDvol> [OUTPUT_DIR] [ALIGN_FLAG] [MASK_FILE] [HEAD_MASK_FLAG] [UNMASKED_UNI_FLAG] [MASKED_UNI_FLAG] [ECHO_FLAG] [HELP_FLAG] [H_WEB_FLAG] [H_VIEW_FLAG] [ALL_OPTS_FLAG] [H_FIND_FLAG]",
+  "container-image": {
+    "image": "user/t1scale:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-T1",
+      "description": "The T1 volume",
+      "value-key": "[T1vol]",
+      "type": "File",
+      "optional": false,
+      "id": "t1_volume",
+      "name": "T1 Volume"
+    },
+    {
+      "command-line-flag": "-PD",
+      "description": "The PD volume (aligned to T1)",
+      "value-key": "[PDvol]",
+      "type": "File",
+      "optional": true,
+      "id": "pd_volume",
+      "name": "PD Volume"
+    },
+    {
+      "command-line-flag": "-odir",
+      "description": "Directory where output gets dumped. Default is T1scale/",
+      "value-key": "[ODIR]",
+      "type": "String",
+      "optional": true,
+      "id": "output_directory",
+      "name": "Output Directory"
+    },
+    {
+      "command-line-flag": "-align",
+      "description": "Align PD volume to T1. Without this option, PDvol is assumed in alignment with T1vol.",
+      "value-key": "[ALIGN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "align",
+      "name": "Align PD with T1"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Create mask for the output. If not specified, the script will generate one with 3dAutomask on fattened PDvol.",
+      "value-key": "[MVOL]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask Volume"
+    },
+    {
+      "command-line-flag": "-head_mask",
+      "description": "Create mask using 3dSkullStrip's -head option.",
+      "value-key": "[HEAD_MASK_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "head_mask",
+      "name": "Head Mask"
+    },
+    {
+      "command-line-flag": "-unmasked_uni",
+      "description": "Do not apply masking to uniformized volume (default)",
+      "value-key": "[UNMASKED_UNI_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "unmasked_uni",
+      "name": "Unmasked Uniformized Volume"
+    },
+    {
+      "command-line-flag": "-masked_uni",
+      "description": "Apply masking to uniformized volume",
+      "value-key": "[MASKED_UNI_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "masked_uni",
+      "name": "Masked Uniformized Volume"
+    },
+    {
+      "command-line-flag": "-echo",
+      "description": "Set echo",
+      "value-key": "[ECHO_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "echo",
+      "name": "Echo Flag"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Display this help message and exit",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    },
+    {
+      "command-line-flag": "-h_web",
+      "description": "Open webpage with help for this program",
+      "value-key": "[H_WEB_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "h_web",
+      "name": "Web Help"
+    },
+    {
+      "command-line-flag": "-hview",
+      "description": "Open -help output in a GUI editor",
+      "value-key": "[H_VIEW_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "h_view",
+      "name": "Open Help in GUI"
+    },
+    {
+      "command-line-flag": "-all_opts",
+      "description": "List all of the options for this script",
+      "value-key": "[ALL_OPTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "all_opts",
+      "name": "List All Options"
+    },
+    {
+      "command-line-flag": "-h_find",
+      "description": "Search for lines containing WORD in -help output. Search is approximate.",
+      "value-key": "[H_FIND_FLAG]",
+      "type": "String",
+      "optional": true,
+      "id": "h_find_word",
+      "name": "Find Word in Help"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "T1.uni+orig",
+      "description": "Uniformized T1 volume output file",
+      "optional": true,
+      "id": "uniformized_t1_output",
+      "name": "Uniformized T1 Volume"
+    },
+    {
+      "path-template": "T1_uni_masked+orig",
+      "description": "Masked Uniformized T1 volume output file",
+      "optional": true,
+      "id": "masked_uniformized_t1_output",
+      "name": "Masked Uniformized T1 Volume"
+    },
+    {
+      "path-template": "PD+orig",
+      "description": "Aligned PD volume output file in alignment with T1+orig",
+      "optional": true,
+      "id": "aligned_pd_output",
+      "name": "Aligned PD Volume"
+    }
+  ]
+}

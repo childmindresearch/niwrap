@@ -1,0 +1,70 @@
+{
+  "tool-version": "0.0",
+  "name": "3dmatmult",
+  "author": "R. Reynolds",
+  "description": "Multiply AFNI datasets slice-by-slice as matrices.",
+  "url": "https://afni.nimh.nih.gov",
+  "command-line": "3dmatmult [INPUT_A] [INPUT_B] [PREFIX] [DATUM] [VERB]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-inputA",
+      "description": "Specify first (matrix) dataset",
+      "id": "inputA",
+      "name": "Input dataset A",
+      "type": "File",
+      "value-key": "[INPUT_A]",
+      "optional": false
+    },
+    {
+      "command-line-flag": "-inputB",
+      "description": "Specify second (matrix) dataset",
+      "id": "inputB",
+      "name": "Input dataset B",
+      "type": "File",
+      "value-key": "[INPUT_B]",
+      "optional": false
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Specify output dataset prefix",
+      "id": "prefix",
+      "name": "Prefix for output dataset",
+      "type": "String",
+      "value-key": "[PREFIX]",
+      "optional": false
+    },
+    {
+      "command-line-flag": "-datum",
+      "description": "Specify output data type ('byte', 'short', 'float')",
+      "id": "datum",
+      "name": "Output data type",
+      "type": "String",
+      "value-key": "[DATUM]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-verb",
+      "description": "Specify verbosity level",
+      "id": "verb",
+      "name": "Verbosity level",
+      "type": "Number",
+      "value-key": "[VERB]",
+      "optional": true
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]",
+      "description": "Output dataset from the matrix multiplication",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output file"
+    }
+  ]
+}

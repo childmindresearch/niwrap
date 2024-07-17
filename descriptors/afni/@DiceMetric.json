@@ -1,0 +1,128 @@
+{
+  "tool-version": "1.0",
+  "name": "@DiceMetric",
+  "author": "Ziad Saad (saadz@mail.nih.gov), SSCC/NIMH/ National Institutes of Health, Bethesda Maryland",
+  "description": "Computes Dice Metric between BASE and each of the DSET volumes",
+  "command-line": "@DiceMetric <-base BASE> <-dsets DSET1 [DSET2 ...]> [max_N_roi MAX_ROI] [-keep_tmp] [OPTIONS...]",
+  "inputs": [
+    {
+      "description": "Name of base (reference) segmentation",
+      "value-key": "[BASE]",
+      "command-line-flag": "-base",
+      "type": "File",
+      "optional": false,
+      "id": "base",
+      "name": "Base Segmentation"
+    },
+    {
+      "description": "Data sets for which the Dice Metric with BASE is computed. This should be the last option on the command line.",
+      "value-key": "[DSET1]",
+      "command-line-flag": "-dsets",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "dsets",
+      "name": "Dataset Segmentation"
+    },
+    {
+      "description": "The maximum possible ROI index. Default is 12 or based on LTFILE if specified.",
+      "value-key": "[MAX_ROI]",
+      "command-line-flag": "-max_N_roi",
+      "type": "Number",
+      "optional": true,
+      "id": "max_roi",
+      "name": "Maximum ROI Index"
+    },
+    {
+      "description": "If given, the labeltable is used to set the default MAX_ROI parameter. Also, this option forces an output for each key in the LTFILE.",
+      "value-key": "[LTFILE]",
+      "command-line-flag": "-labeltable",
+      "type": "File",
+      "optional": true,
+      "id": "labeltable",
+      "name": "Label Table File"
+    },
+    {
+      "description": "If given, force output for each class in LTFILE.",
+      "value-key": "[LTFILE]",
+      "command-line-flag": "-forceoutput",
+      "type": "File",
+      "optional": true,
+      "id": "forceoutput",
+      "name": "Force Output File"
+    },
+    {
+      "description": "Set echo.",
+      "value-key": "[-echo]",
+      "command-line-flag": "-echo",
+      "type": "Flag",
+      "optional": true,
+      "id": "echo",
+      "name": "Echo Flag"
+    },
+    {
+      "description": "Save volume showing BASE*equals(BASE,DSET).",
+      "value-key": "[-save_match]",
+      "command-line-flag": "-save_match",
+      "type": "Flag",
+      "optional": true,
+      "id": "save_match",
+      "name": "Save Match Volume"
+    },
+    {
+      "description": "Save volume showing BASE*(1-equals(BASE,DSET)).",
+      "value-key": "[-save_diff]",
+      "command-line-flag": "-save_diff",
+      "type": "Flag",
+      "optional": true,
+      "id": "save_diff",
+      "name": "Save Diff Volume"
+    },
+    {
+      "description": "Do not mask dset by step(base) before computing Dice coefficient.",
+      "value-key": "[-do_not_mask_by_base]",
+      "command-line-flag": "-do_not_mask_by_base",
+      "type": "Flag",
+      "optional": true,
+      "id": "do_not_mask_by_base",
+      "name": "Do Not Mask by Base"
+    },
+    {
+      "description": "Mask dset by the step(base) before computing Dice coefficient.",
+      "value-key": "[-mask_by_base]",
+      "command-line-flag": "-mask_by_base",
+      "type": "Flag",
+      "optional": true,
+      "id": "mask_by_base",
+      "name": "Mask by Base"
+    },
+    {
+      "description": "Use PREFIX for the output table. Default is separate results for each dset to stdout.",
+      "value-key": "[PREFIX]",
+      "command-line-flag": "-prefix",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Output Prefix"
+    },
+    {
+      "description": "Warn if encountering bad scenarios, but do not create a zero entry.",
+      "value-key": "[-ignore_bad]",
+      "command-line-flag": "-ignore_bad",
+      "type": "Flag",
+      "optional": true,
+      "id": "ignore_bad",
+      "name": "Ignore Bad Scenarios"
+    },
+    {
+      "description": "Keep temporary files for debugging. Note that you should delete temporary files before rerunning the script.",
+      "value-key": "[-keep_tmp]",
+      "command-line-flag": "-keep_tmp",
+      "type": "Flag",
+      "optional": true,
+      "id": "keep_tmp",
+      "name": "Keep Temporary Files"
+    }
+  ],
+  "schema-version": "0.5"
+}

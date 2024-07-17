@@ -1,0 +1,44 @@
+{
+  "tool-version": "1.0",
+  "name": "adjunct_slice_space",
+  "author": "PA Taylor (NIMH, NIH, USA)",
+  "description": "A tiny adjunct program for @chauffeur_afni to calculate how to evenly space a number of slices within each view plane of a dataset.",
+  "command-line": "adjunct_slice_space [INPUT_FILE] [NUM_WINDOWS] [HELP_FLAG] [VERSION_FLAG]",
+  "inputs": [
+    {
+      "description": "Name of input dataset",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "inset",
+      "name": "Input dataset"
+    },
+    {
+      "description": "Number of windows (i.e., slices) that you want across each view plane",
+      "value-key": "[NUM_WINDOWS]",
+      "type": "Number",
+      "optional": false,
+      "id": "nwin",
+      "name": "Number of windows"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "See helpfile",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    },
+    {
+      "command-line-flag": "-ver",
+      "description": "See version number",
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version Flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

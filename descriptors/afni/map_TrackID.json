@@ -1,0 +1,92 @@
+{
+  "name": "map_TrackID",
+  "tool-version": "1.0",
+  "description": "Maps the track file (*.trk) output of 3dTrackID to another space using the 1Dmatrix_save info of 3dAllineate.",
+  "author": "PA Taylor",
+  "command-line": "map_TrackID -prefix [PREFIX] -in_trk [IN_TRK] -in_map [IN_MAP] -ref [REFERENCE] [VERBOSE_FLAG] [ORIG_ZERO_FLAG] [LINE_ONLY_NUM_FLAG] [ALREADY_INV_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "afni/afni:latest",
+    "index": "index.docker.io"
+  },
+  "inputs": [
+    {
+      "id": "prefix",
+      "name": "Output prefix",
+      "description": "Prefix for the output track file.",
+      "type": "String",
+      "value-key": "[PREFIX]",
+      "optional": false
+    },
+    {
+      "id": "in_trk",
+      "name": "Input track file",
+      "description": "The name of the *.trk file to be mapped.",
+      "type": "File",
+      "value-key": "[IN_TRK]",
+      "optional": false
+    },
+    {
+      "id": "in_map",
+      "name": "Input map file",
+      "description": "Single line of matrix values for the transformation.",
+      "type": "File",
+      "value-key": "[IN_MAP]",
+      "optional": false
+    },
+    {
+      "id": "reference",
+      "name": "Reference file",
+      "description": "3D data set in the space to which the TRK file is being mapped.",
+      "type": "File",
+      "value-key": "[REFERENCE]",
+      "optional": false
+    },
+    {
+      "id": "verbose",
+      "name": "Verbose output",
+      "description": "Verbose output.",
+      "type": "Flag",
+      "command-line-flag": "-verb",
+      "value-key": "[VERBOSE_FLAG]",
+      "optional": true
+    },
+    {
+      "id": "orig_zero",
+      "name": "Zero origin",
+      "description": "Put (0,0,0) as the origin in the output *.trk file.",
+      "type": "Flag",
+      "command-line-flag": "-orig_zero",
+      "value-key": "[ORIG_ZERO_FLAG]",
+      "optional": true
+    },
+    {
+      "id": "line_only_num",
+      "name": "Line only numbers",
+      "description": "If your 1D_MATR file is just 12 numbers in a row.",
+      "type": "Flag",
+      "command-line-flag": "-line_only_num",
+      "value-key": "[LINE_ONLY_NUM_FLAG]",
+      "optional": true
+    },
+    {
+      "id": "already_inv",
+      "name": "Already inverted transformation",
+      "description": "If you have inverted the mapping or use another program than 3dAllineate.",
+      "type": "Flag",
+      "command-line-flag": "-already_inv",
+      "value-key": "[ALREADY_INV_FLAG]",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_trk_file",
+      "name": "Output track file",
+      "path-template": "[PREFIX].trk",
+      "description": "Mapped track file to new space",
+      "optional": false
+    }
+  ],
+  "schema-version": "0.5"
+}

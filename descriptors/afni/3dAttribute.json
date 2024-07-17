@@ -1,0 +1,95 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3dAttribute",
+  "author": "AFNI Development Team",
+  "description": "Prints the value of the attribute 'aname' from the header of the dataset 'dset'.",
+  "url": "https://afni.nimh.nih.gov",
+  "command-line": "3dAttribute [ALL_FLAG] [NAME_FLAG] [CENTER_FLAG] [SSEP] [SPREP] [QUOTE_FLAG] [ANAME] [DSET]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Attribute name to be printed from the dataset",
+      "value-key": "[ANAME]",
+      "type": "String",
+      "optional": false,
+      "id": "aname",
+      "name": "Attribute name"
+    },
+    {
+      "description": "Dataset from which the attribute value will be printed",
+      "value-key": "[DSET]",
+      "type": "File",
+      "optional": false,
+      "id": "dset",
+      "name": "Dataset"
+    },
+    {
+      "command-line-flag": "-all",
+      "description": "Print all attributes from the dataset",
+      "value-key": "[ALL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "all",
+      "name": "Print all attributes flag"
+    },
+    {
+      "command-line-flag": "-name",
+      "description": "Include attribute name in the output",
+      "value-key": "[NAME_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "name",
+      "name": "Include attribute name flag"
+    },
+    {
+      "command-line-flag": "-center",
+      "description": "Print the center of volume in RAI coordinates",
+      "value-key": "[CENTER_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "center",
+      "name": "Center of volume flag"
+    },
+    {
+      "command-line-flag": "-ssep",
+      "description": "Use string SSEP as a separator between strings for multiple sub-bricks",
+      "value-key": "[SSEP]",
+      "type": "String",
+      "optional": true,
+      "id": "ssep",
+      "name": "String separator"
+    },
+    {
+      "command-line-flag": "-sprep",
+      "description": "Use string SPREP to replace blank space in string attributes",
+      "value-key": "[SPREP]",
+      "type": "String",
+      "optional": true,
+      "id": "sprep",
+      "name": "String blank space replacement"
+    },
+    {
+      "command-line-flag": "-quote",
+      "description": "Use single quote around each string",
+      "value-key": "[QUOTE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "quote",
+      "name": "Use quotes flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "stdout",
+      "description": "Output of the attribute value",
+      "optional": false,
+      "id": "stdout",
+      "name": "Standard output"
+    }
+  ]
+}

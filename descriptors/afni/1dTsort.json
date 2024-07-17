@@ -1,0 +1,65 @@
+{
+  "tool-version": "AFNI_23.1.10",
+  "name": "1dTsort",
+  "author": "AFNI Development Team",
+  "descriptor-url": "https://github.com/afni/afni",
+  "description": "Sorts each column of the input 1D file and writes result to stdout.",
+  "url": "https://afni.nimh.nih.gov/afni",
+  "command-line": "1dTsort [ORDER_OPTION] [TRANSPOSE_FLAG] [COLUMN] [IMODE_FLAG] [INPUT_FILE]",
+  "inputs": [
+    {
+      "description": "Input 1D file to be sorted.",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "command-line-flag": "-inc",
+      "description": "Sort into increasing order [default]",
+      "value-key": "[ORDER_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "inc_order",
+      "name": "Increase Order Flag"
+    },
+    {
+      "command-line-flag": "-dec",
+      "description": "Sort into decreasing order",
+      "value-key": "[ORDER_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dec_order",
+      "name": "Decrease Order Flag"
+    },
+    {
+      "command-line-flag": "-flip",
+      "description": "Transpose the file before output.",
+      "value-key": "[TRANSPOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "transpose",
+      "name": "Transpose Flag"
+    },
+    {
+      "command-line-flag": "-col",
+      "description": "Sort only on column #j (counting starts at 0), and carry the rest of the columns with it.",
+      "value-key": "[COLUMN]",
+      "type": "Number",
+      "optional": true,
+      "id": "column",
+      "name": "Column Number"
+    },
+    {
+      "command-line-flag": "-imode",
+      "description": "Typecast all values to integers, return the mode in the input then exit. No sorting results are returned.",
+      "value-key": "[IMODE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "imode",
+      "name": "Integer Mode Flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

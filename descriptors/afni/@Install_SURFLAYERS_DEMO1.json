@@ -1,0 +1,29 @@
+{
+  "tool-version": "1.0",
+  "name": "SurfLayers Driver Script Installer",
+  "author": "Torrisi, Lauren, Taylor, Park, Feinberg, Glen",
+  "description": "Fetches 6 driver scripts for 3 datasets as demonstrated in the 2021 OHBM poster and demo video about SurfLayers.",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_SURFLAYERS_DEMO1.html",
+  "command-line": "@Install_SURFLAYERS_DEMO1 [WGET_FLAG] [CURL_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "-wget",
+      "description": "Use wget to download archive. Script chooses by default with preference for curl.",
+      "value-key": "[WGET_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "use_wget",
+      "name": "Use wget"
+    },
+    {
+      "command-line-flag": "-curl",
+      "description": "Use curl to download archive. Script chooses by default with preference for curl.",
+      "value-key": "[CURL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "use_curl",
+      "name": "Use curl"
+    }
+  ]
+}

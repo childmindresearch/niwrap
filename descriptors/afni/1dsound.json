@@ -1,0 +1,124 @@
+{
+  "tool-version": "1.0.0",
+  "name": "1dsound",
+  "author": "RWCox",
+  "description": "Program to create a sound file from a 1D file (column of numbers).",
+  "command-line": "1dsound [PREFIXX_OPTION] [ENCODING_OPTION] [TIME_OPTION] [SOUND_OPTION] [NOTES_OPTION] [PLAY_OPTION] [TSFILE]",
+  "container-image": {
+    "type": "docker",
+    "image": "someuser/1dsound:latest",
+    "index": "index.docker.io"
+  },
+  "inputs": [
+    {
+      "id": "tsfile",
+      "name": "Time series file",
+      "description": "The input 1D time series file containing the data to transform into sound.",
+      "type": "File",
+      "value-key": "[TSFILE]",
+      "optional": false
+    },
+    {
+      "id": "prefix",
+      "name": "Output prefix",
+      "description": "Prefix for the output filename, which will have '.au' extension.",
+      "type": "String",
+      "command-line-flag": "-prefix",
+      "value-key": "[PREFIXX_OPTION]",
+      "optional": true
+    },
+    {
+      "id": "encoding_16PCM",
+      "name": "16-bit PCM encoding",
+      "description": "Output in 16-bit linear PCM encoding (uncompressed).",
+      "type": "Flag",
+      "command-line-flag": "-16PCM",
+      "value-key": "[ENCODING_OPTION]",
+      "optional": true
+    },
+    {
+      "id": "encoding_8PCM",
+      "name": "8-bit PCM encoding",
+      "description": "Output in 8-bit linear PCM encoding.",
+      "type": "Flag",
+      "command-line-flag": "-8PCM",
+      "value-key": "[ENCODING_OPTION]",
+      "optional": true
+    },
+    {
+      "id": "encoding_8ulaw",
+      "name": "8-bit mu-law encoding",
+      "description": "Output in 8-bit mu-law encoding.",
+      "type": "Flag",
+      "command-line-flag": "-8ulaw",
+      "value-key": "[ENCODING_OPTION]",
+      "optional": true
+    },
+    {
+      "id": "tper_option",
+      "name": "Time per X-mod",
+      "description": "Time in seconds per time point in 'tsfile'. Allowed range is 0.01 to 1.0 (inclusive). [default is 0.2s]",
+      "type": "Number",
+      "command-line-flag": "-tper",
+      "value-key": "[TIME_OPTION]",
+      "optional": true,
+      "minimum": 0.01,
+      "maximum": 1.0
+    },
+    {
+      "id": "fm_option",
+      "name": "Frequency modulation",
+      "description": "Output sound is frequency modulated between 110 and 1760 Hz from min to max in the input 1D file.",
+      "type": "Flag",
+      "command-line-flag": "-FM",
+      "value-key": "[SOUND_OPTION]",
+      "optional": true
+    },
+    {
+      "id": "notes_option",
+      "name": "Notes option",
+      "description": "Output sound is a sequence of notes, low to high pitch based on min to max in the input 1D file. Uses pentatonic scale.",
+      "type": "Flag",
+      "command-line-flag": "-notes",
+      "value-key": "[SOUND_OPTION]",
+      "optional": true
+    },
+    {
+      "id": "notewave_option",
+      "name": "Note wave shape",
+      "description": "Shape of the notes used. Select from [sine, sqsine, square, triangle].",
+      "type": "String",
+      "command-line-flag": "-notewave",
+      "value-key": "[NOTES_OPTION]",
+      "optional": true
+    },
+    {
+      "id": "despike_option",
+      "name": "Despike",
+      "description": "Apply a simple despiking algorithm to avoid artifacts from large/small values in the input.",
+      "type": "Flag",
+      "command-line-flag": "-despike",
+      "value-key": "[NOTES_OPTION]",
+      "optional": true
+    },
+    {
+      "id": "play_option",
+      "name": "Play",
+      "description": "Plays the sound file after it is written.",
+      "type": "Flag",
+      "command-line-flag": "-play",
+      "value-key": "[PLAY_OPTION]",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[PREFIX].au",
+      "description": "The output audio file.",
+      "optional": true,
+      "id": "output_file",
+      "name": "Output audio file"
+    }
+  ],
+  "schema-version": "0.5"
+}

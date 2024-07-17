@@ -1,0 +1,98 @@
+{
+  "tool-version": "1.0",
+  "name": "SurfMesh",
+  "author": "Jakub Otwinowski, maintained by Ziad S. Saad SSCC/NIMH/NIH",
+  "description": "Surface mesh manipulation tool",
+  "command-line": "SurfMesh <-i_TYPE SURFACE> <-o_TYPE OUTPUT> <-edges FRAC> [-sv SURF_VOL]",
+  "container-image": {
+    "type": "docker",
+    "index": "index.docker.io",
+    "image": "user/surfmesh:latest"
+  },
+  "inputs": [
+    {
+      "description": "Input surface file with specified type",
+      "id": "input_surface",
+      "name": "Input Surface",
+      "type": "String",
+      "command-line-flag": "-i_TYPE",
+      "value-key": "[SURFACE]",
+      "optional": false
+    },
+    {
+      "description": "Output surface file with specified type",
+      "id": "output_surface",
+      "name": "Output Surface",
+      "type": "String",
+      "command-line-flag": "-o_TYPE",
+      "value-key": "[OUTPUT]",
+      "optional": false
+    },
+    {
+      "description": "Fraction of edges to simplify the surface",
+      "id": "edge_fraction",
+      "name": "Edge Fraction",
+      "type": "Number",
+      "command-line-flag": "-edges",
+      "value-key": "[FRAC]",
+      "minimum": 0,
+      "maximum": 1,
+      "optional": false
+    },
+    {
+      "description": "Surface volume file",
+      "id": "surface_volume",
+      "name": "Surface Volume",
+      "type": "File",
+      "command-line-flag": "-sv",
+      "value-key": "[SURF_VOL]",
+      "optional": true
+    },
+    {
+      "description": "Make all input surfaces have the same state",
+      "id": "one_state",
+      "name": "One State",
+      "type": "Flag",
+      "command-line-flag": "-onestate",
+      "optional": true,
+      "value-key": "[ONE_STATE]"
+    },
+    {
+      "description": "Label all input surfaces as anatomically correct",
+      "id": "anatomical_label",
+      "name": "Anatomical Label",
+      "type": "Flag",
+      "command-line-flag": "-anatomical",
+      "optional": true,
+      "value-key": "[ANATOMICAL_LABEL]"
+    },
+    {
+      "description": "Ignore any Rotate, Volreg, Tagalign, or WarpDrive transformations present in the Surface Volume",
+      "id": "no_volume_registration",
+      "name": "No Volume Registration",
+      "type": "Flag",
+      "command-line-flag": "-novolreg",
+      "optional": true,
+      "value-key": "[NO_VOLUME_REGISTRATION]"
+    },
+    {
+      "description": "Set environment variable",
+      "id": "set_env",
+      "name": "Set Environment Variable",
+      "type": "String",
+      "command-line-flag": "-setenv",
+      "value-key": "['ENVname=ENVvalue']",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "description": "Output surface file",
+      "path-template": "[OUTPUT].surface",
+      "id": "output_surface_file",
+      "name": "Output Surface File",
+      "optional": true
+    }
+  ],
+  "schema-version": "0.5"
+}

@@ -1,0 +1,52 @@
+{
+  "tool-version": "1.0",
+  "name": "3dTfilter",
+  "author": "The Programmer with No Name",
+  "description": "3dTfilter filters the time series in each voxel according to the user-specified filter functions.",
+  "command-line": "3dTfilter -input [INPUT_FILE] -prefix [OUTPUT_FILE] [FILTERS]",
+  "inputs": [
+    {
+      "description": "Input dataset",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "inputdataset",
+      "name": "Input File",
+      "command-line-flag": "-input"
+    },
+    {
+      "description": "Output dataset",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "outputdataset",
+      "name": "Output File",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "description": "Filter function(s) to apply",
+      "value-key": "[FILTERS]",
+      "type": "String",
+      "list": true,
+      "optional": false,
+      "id": "filters",
+      "name": "Filters",
+      "command-line-flag": "-filter"
+    }
+  ],
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "yourdockerhubuser/3dtfilter:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Filtered output dataset",
+      "optional": false,
+      "id": "output_dataset",
+      "name": "Output Dataset"
+    }
+  ]
+}

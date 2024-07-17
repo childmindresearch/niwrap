@@ -1,0 +1,164 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3ddot",
+  "author": "AFNI Developers",
+  "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddot.html",
+  "description": "Computes correlation coefficients between sub-brick pairs",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "3ddot [OPTIONS] [DATASET...]",
+  "container-image": {
+    "image": "afni/afni_latest:latest",
+    "index": "hub.docker.com",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "List of input datasets to be used (e.g. img1+orig, img2+orig)",
+      "value-key": "[DATASET...]",
+      "type": "File",
+      "optional": false,
+      "id": "input_datasets",
+      "name": "Input Datasets",
+      "list": true
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Dataset to be used as a mask; only voxels with nonzero values will be averaged",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask Dataset"
+    },
+    {
+      "command-line-flag": "-mrange",
+      "description": "Restrict mask values to those between a and b (inclusive) for masking purposes",
+      "value-key": "[MRANGE]",
+      "type": "Number",
+      "list": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2,
+      "optional": true,
+      "id": "mrange",
+      "name": "Mask Range"
+    },
+    {
+      "command-line-flag": "-demean",
+      "description": "Remove the mean from each volume prior to computing the correlation",
+      "value-key": "[DEMEAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "demean",
+      "name": "Demean Flag"
+    },
+    {
+      "command-line-flag": "-docor",
+      "description": "Return the correlation coefficient (default)",
+      "value-key": "[DOCOR_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "docor",
+      "name": "Correlation Coefficient Flag"
+    },
+    {
+      "command-line-flag": "-dodot",
+      "description": "Return the dot product (unscaled)",
+      "value-key": "[DODOT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dodot",
+      "name": "Dot Product Flag"
+    },
+    {
+      "command-line-flag": "-docoef",
+      "description": "Return the least square fit coefficients {a,b}",
+      "value-key": "[DOCOEF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "docoef",
+      "name": "Least Square Fit Coefficient Flag"
+    },
+    {
+      "command-line-flag": "-dosums",
+      "description": "Return xbar, ybar, variance, covariance, and correlation coefficient",
+      "value-key": "[DOSUMS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dosums",
+      "name": "Statistics Summary Flag"
+    },
+    {
+      "command-line-flag": "-doeta2",
+      "description": "Return eta-squared (Cohen, NeuroImage 2008)",
+      "value-key": "[DOETA2_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "doeta2",
+      "name": "Eta-Squared Flag"
+    },
+    {
+      "command-line-flag": "-dodice",
+      "description": "Return the Dice coefficient (the Sorensen-Dice index)",
+      "value-key": "[DODICE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dodice",
+      "name": "Dice Coefficient Flag"
+    },
+    {
+      "command-line-flag": "-show_labels",
+      "description": "Print sub-brick labels to help identify what is being correlated",
+      "value-key": "[SHOW_LABELS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "show_labels",
+      "name": "Show Labels Flag"
+    },
+    {
+      "command-line-flag": "-upper",
+      "description": "Compute upper triangular matrix",
+      "value-key": "[UPPER_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "upper",
+      "name": "Upper Triangular Matrix Flag"
+    },
+    {
+      "command-line-flag": "-full",
+      "description": "Compute the whole matrix",
+      "value-key": "[FULL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "full",
+      "name": "Full Matrix Flag"
+    },
+    {
+      "command-line-flag": "-1D",
+      "description": "Add comment headings for the 1D format",
+      "value-key": "[1D_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "1D",
+      "name": "1D Format Flag"
+    },
+    {
+      "command-line-flag": "-NIML",
+      "description": "Write output in NIML 1D format",
+      "value-key": "[NIML_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "NIML",
+      "name": "NIML Format Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "stdout",
+      "description": "Resulting coefficient or statistical values printed to stdout",
+      "optional": false,
+      "id": "result",
+      "name": "Output Result"
+    }
+  ]
+}

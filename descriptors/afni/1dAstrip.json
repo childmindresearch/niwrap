@@ -1,0 +1,31 @@
+{
+  "tool-version": "1.0",
+  "name": "1dAstrip",
+  "author": "AFNI Dev Team",
+  "description": "Strips non-numeric characters from a file",
+  "command-line": "1dAstrip <[INPUT_FILE]> [OUTPUT_FILE]",
+  "inputs": [
+    {
+      "description": "Input file from which non-numeric characters will be stripped.",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input File",
+      "command-line-flag": "<",
+      "command-line-flag-separator": " "
+    }
+  ],
+  "output-files": [
+    {
+      "description": "Output file with only numeric characters.",
+      "path-template": "[OUTPUT_FILE]",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output File",
+      "command-line-flag": ">",
+      "command-line-flag-separator": " "
+    }
+  ],
+  "schema-version": "0.5"
+}

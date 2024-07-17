@@ -1,0 +1,51 @@
+{
+  "tool-version": "1.0",
+  "name": "@Install_D99_macaque",
+  "author": "Glen D, Saleem KS",
+  "descriptor-url": "https://sample-url-for-descriptor.com",
+  "description": "Installs the D99 macaque version 2 atlases for subcortical regions in the macaque monkey.",
+  "url": "https://doi.org/10.1016/j.neuroimage.2021.118759",
+  "command-line": "@Install_D99_macaque [WGET_FLAG] [CURL_FLAG]",
+  "container-image": {
+    "image": "docker-image-for-install-d99-macaque:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-wget",
+      "description": "Use wget to download archive. Script chooses by default with preference for curl.",
+      "value-key": "[WGET_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "wget_download",
+      "name": "Wget Download"
+    },
+    {
+      "command-line-flag": "-curl",
+      "description": "Use curl to download archive. Script chooses by default with preference for curl.",
+      "value-key": "[CURL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "curl_download",
+      "name": "Curl Download"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "README.txt",
+      "description": "Readme file with details about the installed atlas.",
+      "optional": true,
+      "id": "readme_file",
+      "name": "Readme File"
+    },
+    {
+      "path-template": "D99_macaque_v2/*",
+      "description": "Installed D99 macaque version 2 atlas files.",
+      "optional": true,
+      "id": "atlas_files",
+      "name": "Atlas Files"
+    }
+  ]
+}

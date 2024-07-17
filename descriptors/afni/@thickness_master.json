@@ -1,0 +1,61 @@
+{
+  "tool-version": "1.0.0",
+  "name": "@thickness_master",
+  "description": "Compute cortical thickness using mask and surface datasets",
+  "command-line": "@thickness_master -maskset [MASKSET] -surfset [SURFSET] -outdir [OUTDIR]",
+  "inputs": [
+    {
+      "description": "Mask dataset to find thickness",
+      "value-key": "[MASKSET]",
+      "type": "File",
+      "optional": false,
+      "id": "maskset",
+      "name": "Mask set"
+    },
+    {
+      "description": "Surface dataset to use for normals into the volume",
+      "value-key": "[SURFSET]",
+      "type": "File",
+      "optional": false,
+      "id": "surfset",
+      "name": "Surface set"
+    },
+    {
+      "description": "Output directory base name. The output will be placed in a directory with thick_base in its name (e.g., mmmm_bb, mmmm_erode, mmmm_in2out)",
+      "value-key": "[OUTDIR]",
+      "type": "String",
+      "optional": true,
+      "id": "outdir",
+      "name": "Output directory base"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTDIR]_bb/",
+      "description": "Output directory for ball and box method",
+      "optional": true,
+      "id": "output_bb_dir",
+      "name": "Ball and Box output directory"
+    },
+    {
+      "path-template": "[OUTDIR]_erode/",
+      "description": "Output directory for erosion method",
+      "optional": true,
+      "id": "output_erode_dir",
+      "name": "Erosion output directory"
+    },
+    {
+      "path-template": "[OUTDIR]_in2out/",
+      "description": "Output directory for in2out method",
+      "optional": true,
+      "id": "output_in2out_dir",
+      "name": "In2out output directory"
+    }
+  ],
+  "container-image": {
+    "image": "your-docker-image:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "schema-version": "0.5"
+}

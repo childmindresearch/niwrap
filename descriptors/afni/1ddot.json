@@ -1,0 +1,97 @@
+{
+  "tool-version": "AFNI_23.1.10",
+  "name": "1ddot",
+  "author": "AFNI Team",
+  "description": "Computes the correlation matrix of the input 1D files and their inverse correlation matrix.",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "1ddot [ONE] [DEM] [COV] [INN] [RANK] [TERSE] [OKZERO] [INPUT_FILES] > stdout.txt",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "hub.docker.com",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input 1D files.",
+      "value-key": "[INPUT_FILES]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "input_files",
+      "name": "Input Files"
+    },
+    {
+      "command-line-flag": "-one",
+      "description": "Make 1st vector be all 1's.",
+      "value-key": "[ONE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "one_flag",
+      "name": "One Flag"
+    },
+    {
+      "command-line-flag": "-dem",
+      "description": "Remove mean from all vectors (conflicts with '-one').",
+      "value-key": "[DEM]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dem_flag",
+      "name": "Dem Flag"
+    },
+    {
+      "command-line-flag": "-cov",
+      "description": "Compute with covariance matrix instead of correlation.",
+      "value-key": "[COV]",
+      "type": "Flag",
+      "optional": true,
+      "id": "cov_flag",
+      "name": "Covariance Flag"
+    },
+    {
+      "command-line-flag": "-inn",
+      "description": "Compute with inner product matrix instead.",
+      "value-key": "[INN]",
+      "type": "Flag",
+      "optional": true,
+      "id": "inn_flag",
+      "name": "Inner Product Flag"
+    },
+    {
+      "command-line-flag": "-rank",
+      "description": "Compute Spearman rank correlation instead (also implies '-terse').",
+      "value-key": "[RANK]",
+      "type": "Flag",
+      "optional": true,
+      "id": "rank_flag",
+      "name": "Rank Correlation Flag"
+    },
+    {
+      "command-line-flag": "-terse",
+      "description": "Output only the correlation or covariance matrix without any garnish.",
+      "value-key": "[TERSE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "terse_flag",
+      "name": "Terse Output Flag"
+    },
+    {
+      "command-line-flag": "-okzero",
+      "description": "Do not quit if a vector is all zeros. The correlation matrix will have 0 where NaNs ought to go.",
+      "value-key": "[OKZERO]",
+      "type": "Flag",
+      "optional": true,
+      "id": "okzero_flag",
+      "name": "OK Zero Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "stdout.txt",
+      "description": "Output correlation or covariance matrix printed to stdout.",
+      "optional": false,
+      "id": "stdout_output",
+      "name": "Standard Output"
+    }
+  ]
+}

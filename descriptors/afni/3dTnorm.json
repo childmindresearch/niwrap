@@ -1,0 +1,97 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3dTnorm",
+  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTnorm.html",
+  "description": "Normalizes each voxel time series by multiplicative scaling",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "3dTnorm [PREFIX] [L2_NORM_FLAG] [SUM_SQUARES_NORM_FLAG] [L1_NORM_FLAG] [MAX_NORM_FLAG] [POLORT] [L1FIT_FLAG] [DATASET]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset (e.g. data.nii)",
+      "value-key": "[DATASET]",
+      "type": "File",
+      "optional": false,
+      "id": "input_dataset",
+      "name": "Input dataset"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Prefix for the output dataset",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Output prefix"
+    },
+    {
+      "command-line-flag": "-norm2",
+      "description": "L2 normalize (sum of squares = 1)",
+      "value-key": "[L2_NORM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "norm2",
+      "name": "L2 normalization flag"
+    },
+    {
+      "command-line-flag": "-normR",
+      "description": "Normalize so sum of squares = number of time points",
+      "value-key": "[SUM_SQUARES_NORM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "normR",
+      "name": "Sum of squares normalization flag"
+    },
+    {
+      "command-line-flag": "-norm1",
+      "description": "L1 normalize (sum of absolute values = 1)",
+      "value-key": "[L1_NORM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "norm1",
+      "name": "L1 normalization flag"
+    },
+    {
+      "command-line-flag": "-normx",
+      "description": "Scale so max absolute value = 1 (L_infinity norm)",
+      "value-key": "[MAX_NORM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "normx",
+      "name": "Max absolute value normalization flag"
+    },
+    {
+      "command-line-flag": "-polort",
+      "description": "Detrend with polynomials of order p before normalizing",
+      "value-key": "[POLORT]",
+      "type": "Number",
+      "optional": true,
+      "id": "polort",
+      "name": "Polynomial order for detrending"
+    },
+    {
+      "command-line-flag": "-L1fit",
+      "description": "Detrend with L1 regression (L2 is default)",
+      "value-key": "[L1FIT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "L1fit",
+      "name": "L1 regression detrending flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX].nii",
+      "description": "Normalized output dataset",
+      "optional": true,
+      "id": "output_dataset",
+      "name": "Output dataset"
+    }
+  ]
+}

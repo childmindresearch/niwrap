@@ -1,0 +1,100 @@
+{
+  "tool-version": "1.0.0",
+  "name": "afni_system_check.py",
+  "author": "R Reynolds",
+  "description": "Perform various system checks for figuring out AFNI installation issues.",
+  "command-line": "afni_system_check.py [TERMINAL_OPTS] [ACTION_OPTS] [OTHER_OPTS]",
+  "inputs": [
+    {
+      "command-line-flag": "-check_all",
+      "description": "Perform all system checks.",
+      "value-key": "[CHECK_ALL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "check_all",
+      "name": "Check All Flag"
+    },
+    {
+      "command-line-flag": "-find_prog",
+      "description": "Search PATH for PROG.",
+      "value-key": "[PROG]",
+      "type": "String",
+      "optional": true,
+      "id": "find_prog",
+      "name": "Find Program"
+    },
+    {
+      "command-line-flag": "-exact",
+      "description": "Search for PROG without wildcards in -find_prog.",
+      "value-key": "[EXACT_FLAG]",
+      "type": "String",
+      "optional": true,
+      "id": "exact",
+      "name": "Exact Flag"
+    },
+    {
+      "command-line-flag": "-disp_num_cpu",
+      "description": "Display number of CPUs available.",
+      "value-key": "[DISP_NUM_CPU_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "disp_num_cpu",
+      "name": "Display Number of CPUs Flag"
+    },
+    {
+      "command-line-flag": "-disp_ver_matplotlib",
+      "description": "Display matplotlib version (else 'None').",
+      "value-key": "[DISP_VER_MATPLOTLIB_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "disp_ver_matplotlib",
+      "name": "Display matplotlib version Flag"
+    },
+    {
+      "command-line-flag": "-dot_file_list",
+      "description": "List all found dot files (startup files).",
+      "value-key": "[DOT_FILE_LIST_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dot_file_list",
+      "name": "Dot File List Flag"
+    },
+    {
+      "command-line-flag": "-dot_file_show",
+      "description": "Display contents of all found dot files.",
+      "value-key": "[DOT_FILE_SHOW_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dot_file_show",
+      "name": "Dot File Show Flag"
+    },
+    {
+      "command-line-flag": "-dot_file_pack",
+      "description": "Create a NAME.tgz package containing dot files.",
+      "value-key": "[NAME]",
+      "type": "String",
+      "optional": true,
+      "id": "dot_file_pack",
+      "name": "Dot File Pack"
+    },
+    {
+      "command-line-flag": "-casematch",
+      "description": "Match case in -find_prog.",
+      "value-key": "[CASEMATCH_FLAG]",
+      "type": "String",
+      "optional": true,
+      "id": "casematch",
+      "name": "Case Match Flag"
+    },
+    {
+      "command-line-flag": "-data_root",
+      "description": "Search for class data under DDIR.",
+      "value-key": "[DDIR]",
+      "type": "String",
+      "optional": true,
+      "id": "data_root",
+      "name": "Data Root Directory"
+    }
+  ],
+  "schema-version": "0.5"
+}

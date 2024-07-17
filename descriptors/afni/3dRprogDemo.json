@@ -1,0 +1,125 @@
+{
+  "tool-version": "1.0",
+  "name": "3dRprogDemo",
+  "author": "AFNI",
+  "descriptor-url": "http://afni.nimh.nih.gov",
+  "description": "Template program to help users write their own R processing routines on MRI volumes.",
+  "url": "http://afni.nimh.nih.gov",
+  "command-line": "3dRprogDemo [INPUT_FILES] [MASK] [SCALE] [PREFIX] [H_ASPX_FLAG] [H_RAW_FLAG] [H_SPX_FLAG] [H_TXT_FLAG] [HELP_FLAG] [SHOW_ALLOWED_OPTIONS_FLAG] [VERBOSITY_LEVEL]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset(s) to be scaled.",
+      "value-key": "[INPUT_FILES]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "input_dsets",
+      "name": "Input Datasets"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Process voxels inside this mask only. Default is no masking.",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask"
+    },
+    {
+      "command-line-flag": "-scale",
+      "description": "Multiply each voxel by SS",
+      "value-key": "[SCALE]",
+      "type": "Number",
+      "optional": false,
+      "id": "scale",
+      "name": "Scale Factor"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Output prefix (just prefix, no view+suffix needed).",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Output Prefix"
+    },
+    {
+      "command-line-flag": "-h_aspx",
+      "description": "Display help message with autolabeling.",
+      "value-key": "[H_ASPX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_aspx",
+      "name": "Help aspx flag"
+    },
+    {
+      "command-line-flag": "-h_raw",
+      "description": "Display raw help message as in the code.",
+      "value-key": "[H_RAW_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_raw",
+      "name": "Help raw flag"
+    },
+    {
+      "command-line-flag": "-h_spx",
+      "description": "Display help message in sphinx format.",
+      "value-key": "[H_SPX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_spx",
+      "name": "Help spx flag"
+    },
+    {
+      "command-line-flag": "-h_txt",
+      "description": "Display help message in simple text.",
+      "value-key": "[H_TXT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_txt",
+      "name": "Help text flag"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Display help message in simple text.",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag"
+    },
+    {
+      "command-line-flag": "-show_allowed_options",
+      "description": "List of allowed options.",
+      "value-key": "[SHOW_ALLOWED_OPTIONS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "show_allowed_options",
+      "name": "Show allowed options flag"
+    },
+    {
+      "command-line-flag": "-verb",
+      "description": "Verbosity level. 0 for quiet (Default). 1 or more: talkative.",
+      "value-key": "[VERBOSITY_LEVEL]",
+      "type": "Number",
+      "optional": true,
+      "id": "verbosity_level",
+      "name": "Verbosity level"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX].nii",
+      "description": "Output file with the specified prefix.",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    }
+  ]
+}

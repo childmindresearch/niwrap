@@ -1,0 +1,152 @@
+{
+  "tool-version": "23.1.10",
+  "name": "afni_open",
+  "author": "AFNI Development Team",
+  "descriptor-url": "https://github.com/afni/afni",
+  "description": "A program to open various AFNI/SUMA files.",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "afni_open [OPTIONS] [FILE1] [FILE2 ...]",
+  "container-image": {
+    "image": "afni/afni",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input file(s) to be opened.",
+      "value-key": "[FILE1]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "files",
+      "name": "Input Files"
+    },
+    {
+      "command-line-flag": "-w",
+      "description": "Method to open files (editor, downloader, browser, afni, suma, 1dplot, ExamineXmat, iviewer, afniweb, readme).",
+      "value-key": "[OPEN_METHOD]",
+      "type": "String",
+      "optional": true,
+      "id": "method",
+      "name": "Open Method"
+    },
+    {
+      "command-line-flag": "-e",
+      "description": "Same as -w editor.",
+      "value-key": "[FLAG_EDITOR]",
+      "type": "Flag",
+      "optional": true,
+      "id": "editor",
+      "name": "Editor Flag"
+    },
+    {
+      "command-line-flag": "-d",
+      "description": "Same as -w downloader.",
+      "value-key": "[FLAG_DOWNLOADER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "downloader",
+      "name": "Downloader Flag"
+    },
+    {
+      "command-line-flag": "-x",
+      "description": "Same as -w ExamineXmat.",
+      "value-key": "[FLAG_EXAMINEXMAT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "examinexmat",
+      "name": "ExamineXmat Flag"
+    },
+    {
+      "command-line-flag": "-b",
+      "description": "Same as -w browser.",
+      "value-key": "[FLAG_BROWSER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "browser",
+      "name": "Browser Flag"
+    },
+    {
+      "command-line-flag": "-r",
+      "description": "Same as -w readme.",
+      "value-key": "[FLAG_README]",
+      "type": "Flag",
+      "optional": true,
+      "id": "readme",
+      "name": "Readme Flag"
+    },
+    {
+      "command-line-flag": "-aw",
+      "description": "Same as -w afniweb.",
+      "value-key": "[FLAG_AFNIWEB]",
+      "type": "Flag",
+      "optional": true,
+      "id": "afniweb",
+      "name": "Afniweb Flag"
+    },
+    {
+      "command-line-flag": "-global_help",
+      "description": "Show help for global options.",
+      "value-key": "[FLAG_GLOBAL_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "global_help",
+      "name": "Global Help Flag"
+    },
+    {
+      "command-line-flag": "-gopts_help",
+      "description": "Show help for global options.",
+      "value-key": "[FLAG_GOPTS_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "gopts_help",
+      "name": "Gopts Help Flag"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "The entire help output.",
+      "value-key": "[FLAG_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Mini help.",
+      "value-key": "[FLAG_MINI_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mini_help",
+      "name": "Mini Help Flag"
+    },
+    {
+      "command-line-flag": "-HELP",
+      "description": "Extreme help.",
+      "value-key": "[FLAG_EXTREME_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "extreme_help",
+      "name": "Extreme Help Flag"
+    },
+    {
+      "command-line-flag": "-h_view",
+      "description": "Open help in text editor.",
+      "value-key": "[FLAG_H_VIEW]",
+      "type": "Flag",
+      "optional": true,
+      "id": "h_view",
+      "name": "View Help in Editor Flag"
+    },
+    {
+      "command-line-flag": "-h_web",
+      "description": "Open help in web browser.",
+      "value-key": "[FLAG_H_WEB]",
+      "type": "Flag",
+      "optional": true,
+      "id": "h_web",
+      "name": "View Help in Browser Flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

@@ -1,0 +1,36 @@
+{
+  "tool-version": "1.0",
+  "name": "@NoExt",
+  "author": "Ziad Saad",
+  "description": "Tool for removing specified extensions from filenames",
+  "command-line": "@NoExt <inputfile> [extensions...]",
+  "inputs": [
+    {
+      "description": "Input file name with extension",
+      "value-key": "[<inputfile>]",
+      "type": "String",
+      "optional": false,
+      "id": "inputfile",
+      "name": "Input file"
+    },
+    {
+      "description": "Extensions to be removed",
+      "value-key": "[extensions...]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "extensions",
+      "name": "Extensions"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "output",
+      "description": "File name with specified extensions removed",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file"
+    }
+  ]
+}

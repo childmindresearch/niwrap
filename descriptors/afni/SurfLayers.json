@@ -1,0 +1,129 @@
+{
+  "tool-version": "1.0",
+  "name": "SurfLayers",
+  "author": "Salvatore (Sam) Torrisi, Daniel Glen",
+  "description": "Compute intermediate equi-distant surfaces between two boundary surfaces.",
+  "url": "mailto:torrisi@berkeley.edu",
+  "command-line": "SurfLayers [SPEC_DSET] [OUTDIR] [STATES] [HEMI] [N_INTERMED_SURFS] [SURF_A] [SURF_B] [SURF_INTERMED_PREF] [ECHO_FLAG] [NO_CLEAN_FLAG]",
+  "container-image": {
+    "image": "custom/surflayers:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-spec",
+      "description": "Dataset that is the SUMA specification file describing input surfaces",
+      "value-key": "[SPEC_DSET]",
+      "type": "File",
+      "optional": true,
+      "id": "spec_dset",
+      "name": "Specification dataset"
+    },
+    {
+      "command-line-flag": "-outdir",
+      "description": "New directory for output (default: surflayers)",
+      "value-key": "[OUTDIR]",
+      "type": "String",
+      "optional": true,
+      "id": "outdir",
+      "name": "Output directory"
+    },
+    {
+      "command-line-flag": "-states",
+      "description": "Typically smoothwm, pial states to describe inner and outer surfaces (default: 'smoothwm pial')",
+      "value-key": "[STATES]",
+      "type": "String",
+      "optional": true,
+      "id": "states",
+      "name": "States"
+    },
+    {
+      "command-line-flag": "-hemi",
+      "description": "Choose hemisphere: 'lh', 'rh', or 'lh rh' (for both)",
+      "value-key": "[HEMI]",
+      "type": "String",
+      "optional": true,
+      "id": "hemi",
+      "name": "Hemisphere"
+    },
+    {
+      "command-line-flag": "-n_intermed_surfs",
+      "description": "Total number of intermediate surfaces to create",
+      "value-key": "[N_INTERMED_SURFS]",
+      "type": "Number",
+      "optional": true,
+      "id": "n_intermed_surfs",
+      "name": "Number of intermediate surfaces"
+    },
+    {
+      "command-line-flag": "-surf_A",
+      "description": "Inner boundary surface by filename (e.g., smoothwm.gii)",
+      "value-key": "[SURF_A]",
+      "type": "File",
+      "optional": true,
+      "id": "surf_a",
+      "name": "Inner boundary surface"
+    },
+    {
+      "command-line-flag": "-surf_B",
+      "description": "Outer boundary surface by filename (e.g., pial.gii)",
+      "value-key": "[SURF_B]",
+      "type": "File",
+      "optional": true,
+      "id": "surf_b",
+      "name": "Outer boundary surface"
+    },
+    {
+      "command-line-flag": "-surf_intermed_pref",
+      "description": "Name for interpolated surfaces (default: isurf)",
+      "value-key": "[SURF_INTERMED_PREF]",
+      "type": "String",
+      "optional": true,
+      "id": "surf_intermed_pref",
+      "name": "Interpolated surfaces prefix"
+    },
+    {
+      "command-line-flag": "-echo",
+      "description": "Run script with 'set echo' (i.e., verbosely)",
+      "value-key": "[ECHO_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "echo",
+      "name": "Echo flag"
+    },
+    {
+      "command-line-flag": "-no_clean",
+      "description": "Do not remove temp files (probably just for testing)",
+      "value-key": "[NO_CLEAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_clean",
+      "name": "No clean flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTDIR]/isurf.[HEMI].*.gii",
+      "description": "Interpolated surfaces files",
+      "optional": true,
+      "id": "interpolated_surfaces",
+      "name": "Interpolated Surfaces"
+    },
+    {
+      "path-template": "[OUTDIR]/*",
+      "description": "Additional files if -spec option was used",
+      "optional": true,
+      "id": "additional_spec_files",
+      "name": "Additional Spec Files"
+    },
+    {
+      "path-template": "[OUTDIR]/run*tcsh",
+      "description": "Run script to view output directly",
+      "optional": true,
+      "id": "run_view_script",
+      "name": "Run View Script"
+    }
+  ]
+}

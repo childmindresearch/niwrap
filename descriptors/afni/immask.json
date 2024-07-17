@@ -1,0 +1,62 @@
+{
+  "tool-version": "1.0",
+  "name": "immask",
+  "author": "Your Name or Institution",
+  "description": "Masks the input image based on specified criteria and produces the output image",
+  "command-line": "immask [THRESHOLD] [MASK_IMG] [POSITIVE_ONLY] [INPUT_IMG] [OUTPUT_IMG]",
+  "inputs": [
+    {
+      "description": "Input image to be masked",
+      "value-key": "[INPUT_IMG]",
+      "type": "File",
+      "optional": false,
+      "id": "input_image",
+      "name": "Input Image"
+    },
+    {
+      "description": "Output image after masking",
+      "value-key": "[OUTPUT_IMG]",
+      "type": "String",
+      "optional": false,
+      "id": "output_image",
+      "name": "Output Image"
+    },
+    {
+      "command-line-flag": "-thresh",
+      "description": "Threshold value; all pixels with absolute value below this will be set to zero in the output image",
+      "value-key": "[THRESHOLD]",
+      "type": "Number",
+      "optional": true,
+      "id": "threshold",
+      "name": "Threshold Value"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Mask image; only locations that are nonzero in the mask image will be nonzero in the output image",
+      "value-key": "[MASK_IMG]",
+      "type": "File",
+      "optional": true,
+      "id": "mask_image",
+      "name": "Mask Image"
+    },
+    {
+      "command-line-flag": "-pos",
+      "description": "Use only positive pixels from input image",
+      "value-key": "[POSITIVE_ONLY]",
+      "type": "Flag",
+      "optional": true,
+      "id": "positive_only",
+      "name": "Positive Only Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_IMG]",
+      "description": "Masked output image",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output Image File"
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "name": "@djunct_edgy_align_check",
+  "description": "Helper script for various tasks, heavily modeled on RW Cox's '@snapshot_volreg' script",
+  "command-line": "@djunct_edgy_align_check [ULAY] [OLAY] [PREFIX] [XX,YY,ZZ] [DSET_BFS] [MG] [MC] [CBAR] [FTYPE] [UF] [MX] [MY] [INTERP] [LM] [help_flag] [ver_flag] [echo_flag] [sharpen_ulay_off_flag] [mask_olay_edges_flag] [no_cor_flag] [no_sag_flag] [no_axi_flag] [no_clean_flag] [ULAY_RANGE] [ULAY_RANGE_NZ] [ULAY_RANGE_AM]",
+  "tool-version": "1.0",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "ULAY",
+      "name": "ULAY",
+      "type": "String",
+      "description": "ULAY dataset",
+      "value-key": "[ULAY]",
+      "optional": false
+    },
+    {
+      "id": "OLAY",
+      "name": "OLAY",
+      "type": "String",
+      "description": "OLAY dataset",
+      "value-key": "[OLAY]",
+      "optional": false
+    },
+    {
+      "id": "PREFIX",
+      "name": "Output Prefix",
+      "type": "String",
+      "description": "Prefix for output files",
+      "value-key": "[PREFIX]",
+      "optional": false
+    },
+    {
+      "id": "set_dicom_xyz",
+      "name": "DICOM Coordinates",
+      "type": "Number",
+      "description": "DICOM coordinates {XX YY ZZ}",
+      "list": true,
+      "value-key": "[XX,YY,ZZ]",
+      "optional": true,
+      "min-list-entries": 3,
+      "max-list-entries": 3
+    },
+    {
+      "id": "box_focus_slices",
+      "name": "Focus Slices Dataset",
+      "type": "String",
+      "description": "Dataset to focus slices",
+      "value-key": "[DSET_BFS]",
+      "optional": true
+    },
+    {
+      "id": "montgap",
+      "name": "Montage Gap",
+      "type": "Number",
+      "description": "Gap between slices in montage",
+      "value-key": "[MG]",
+      "optional": true
+    },
+    {
+      "id": "montcolor",
+      "name": "Montage Color",
+      "type": "String",
+      "description": "Color for montage",
+      "value-key": "[MC]",
+      "optional": true
+    },
+    {
+      "id": "cbar",
+      "name": "Color Bar",
+      "type": "String",
+      "description": "Color bar for overlay",
+      "value-key": "[CBAR]",
+      "optional": true
+    },
+    {
+      "id": "save_ftype",
+      "name": "Save File Type",
+      "type": "String",
+      "description": "File type to save",
+      "value-key": "[FTYPE]",
+      "optional": true
+    },
+    {
+      "id": "umin_fac",
+      "name": "Underlay Min Factor",
+      "type": "Number",
+      "description": "Scaling factor for underlay minimum",
+      "value-key": "[UF]",
+      "optional": true
+    },
+    {
+      "id": "montx",
+      "name": "Montage X Slices",
+      "type": "Number",
+      "description": "Number of slices in X-direction for montage",
+      "value-key": "[MX]",
+      "optional": true
+    },
+    {
+      "id": "monty",
+      "name": "Montage Y Slices",
+      "type": "Number",
+      "description": "Number of slices in Y-direction for montage",
+      "value-key": "[MY]",
+      "optional": true
+    },
+    {
+      "id": "use_olay_grid",
+      "name": "Overlay Grid Interpolation",
+      "type": "String",
+      "description": "Grid interpolation method for overlay",
+      "value-key": "[INTERP]",
+      "optional": true
+    },
+    {
+      "id": "label_mode",
+      "name": "Label Mode",
+      "type": "String",
+      "description": "Mode for labeling",
+      "value-key": "[LM]",
+      "optional": true
+    },
+    {
+      "id": "ulay_range",
+      "name": "Underlay Range",
+      "type": "Number",
+      "description": "Range for underlay {umin umax}",
+      "list": true,
+      "value-key": "[ULAY_RANGE]",
+      "optional": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2
+    },
+    {
+      "id": "ulay_range_nz",
+      "name": "Non-zero Underlay Range",
+      "type": "Number",
+      "description": "Range for non-zero underlay {umin umax}",
+      "list": true,
+      "value-key": "[ULAY_RANGE_NZ]",
+      "optional": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2
+    },
+    {
+      "id": "ulay_range_am",
+      "name": "Auto-mask Underlay Range",
+      "type": "Number",
+      "description": "Range for auto-mask underlay {umin umax}",
+      "list": true,
+      "value-key": "[ULAY_RANGE_AM]",
+      "optional": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2
+    },
+    {
+      "id": "help_flag",
+      "name": "Help",
+      "type": "Flag",
+      "description": "Display help message",
+      "command-line-flag": "-help",
+      "optional": true,
+      "value-key": "[HELP_FLAG]"
+    },
+    {
+      "id": "ver_flag",
+      "name": "Version",
+      "type": "Flag",
+      "description": "Show version",
+      "command-line-flag": "-ver",
+      "optional": true,
+      "value-key": "[VER_FLAG]"
+    },
+    {
+      "id": "echo_flag",
+      "name": "Echo",
+      "type": "Flag",
+      "description": "Echo commands",
+      "command-line-flag": "-echo",
+      "optional": true,
+      "value-key": "[ECHO_FLAG]"
+    },
+    {
+      "id": "sharpen_ulay_off_flag",
+      "name": "Sharpen Underlay Off",
+      "type": "Flag",
+      "description": "Disable underlay sharpening",
+      "command-line-flag": "-sharpen_ulay_off",
+      "optional": true,
+      "value-key": "[SHARPEN_ULAY_OFF_FLAG]"
+    },
+    {
+      "id": "mask_olay_edges_flag",
+      "name": "Mask Overlay Edges",
+      "type": "Flag",
+      "description": "Mask overlay edges",
+      "command-line-flag": "-mask_olay_edges",
+      "optional": true,
+      "value-key": "[MASK_OLAY_EDGES_FLAG]"
+    },
+    {
+      "id": "no_cor_flag",
+      "name": "No Coronal",
+      "type": "Flag",
+      "description": "Exclude coronal plane",
+      "command-line-flag": "-no_cor",
+      "optional": true,
+      "value-key": "[NO_COR_FLAG]"
+    },
+    {
+      "id": "no_sag_flag",
+      "name": "No Sagittal",
+      "type": "Flag",
+      "description": "Exclude sagittal plane",
+      "command-line-flag": "-no_sag",
+      "optional": true,
+      "value-key": "[NO_SAG_FLAG]"
+    },
+    {
+      "id": "no_axi_flag",
+      "name": "No Axial",
+      "type": "Flag",
+      "description": "Exclude axial plane",
+      "command-line-flag": "-no_axi",
+      "optional": true,
+      "value-key": "[NO_AXI_FLAG]"
+    },
+    {
+      "id": "no_clean_flag",
+      "name": "No Clean",
+      "type": "Flag",
+      "description": "Disable cleaning temporary files",
+      "command-line-flag": "-no_clean",
+      "optional": true,
+      "value-key": "[NO_CLEAN_FLAG]"
+    }
+  ]
+}

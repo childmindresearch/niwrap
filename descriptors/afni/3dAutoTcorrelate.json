@@ -1,0 +1,155 @@
+{
+  "tool-version": "AFNI_23.1.10",
+  "name": "3dAutoTcorrelate",
+  "author": "RWCox",
+  "description": "Computes the correlation coefficient between the time series of each pair of voxels in the input dataset",
+  "command-line": "3dAutoTcorrelate [OPTIONS] [DATASET]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset",
+      "value-key": "[DATASET]",
+      "type": "File",
+      "optional": false,
+      "id": "input_dataset",
+      "name": "Input Dataset"
+    },
+    {
+      "command-line-flag": "-pearson",
+      "description": "Correlation is the normal Pearson (product moment) correlation coefficient [default]",
+      "value-key": "[PEARSON_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "pearson",
+      "name": "Pearson Correlation Flag"
+    },
+    {
+      "command-line-flag": "-eta2",
+      "description": "Output is eta^2 measure from Cohen et al., NeuroImage, 2008",
+      "value-key": "[ETA2_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "eta2",
+      "name": "Eta^2 Measure Flag"
+    },
+    {
+      "command-line-flag": "-polort",
+      "description": "Remove polynomial trend of order 'm', for m=-1..3.",
+      "value-key": "[POLORT_M]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "polort",
+      "name": "Polynomial Trend Removal Order"
+    },
+    {
+      "command-line-flag": "-autoclip",
+      "description": "Clip off low-intensity regions in the dataset",
+      "value-key": "[AUTOCLIP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "autoclip",
+      "name": "Autoclip Flag"
+    },
+    {
+      "command-line-flag": "-automask",
+      "description": "Apply automask to the dataset",
+      "value-key": "[AUTOMASK_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "automask",
+      "name": "Automask Flag"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Mask of both 'source' and 'target' voxels",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask File"
+    },
+    {
+      "command-line-flag": "-mask_only_targets",
+      "description": "Provide output for all voxels",
+      "value-key": "[MASK_ONLY_TARGETS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mask_only_targets",
+      "name": "Mask Only Targets Flag"
+    },
+    {
+      "command-line-flag": "-mask_source",
+      "description": "Provide output for voxels only in specified mask",
+      "value-key": "[MASK_SOURCE]",
+      "type": "File",
+      "optional": true,
+      "id": "mask_source",
+      "name": "Mask Source"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Save output into dataset with specified prefix",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Output Prefix"
+    },
+    {
+      "command-line-flag": "-out1D",
+      "description": "Save output in a text file in 1D format",
+      "value-key": "[OUT1D_FILE]",
+      "type": "String",
+      "optional": true,
+      "id": "out1d",
+      "name": "Output 1D File"
+    },
+    {
+      "command-line-flag": "-time",
+      "description": "Mark output as a 3D+time dataset",
+      "value-key": "[TIME_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "time",
+      "name": "Time Dataset Flag"
+    },
+    {
+      "command-line-flag": "-mmap",
+      "description": "Write .BRIK results to disk directly using Unix mmap()",
+      "value-key": "[MMAP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mmap",
+      "name": "Mmap Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX].BRIK",
+      "description": "Main output dataset",
+      "optional": false,
+      "id": "output_brick",
+      "name": "Output Dataset BRIK"
+    },
+    {
+      "path-template": "[PREFIX].HEAD",
+      "description": "Header information for main output dataset",
+      "optional": false,
+      "id": "output_head",
+      "name": "Output Dataset HEAD"
+    },
+    {
+      "path-template": "[OUT1D_FILE]",
+      "description": "Output in 1D text format",
+      "optional": true,
+      "id": "out1d_file",
+      "name": "Output 1D File"
+    }
+  ]
+}

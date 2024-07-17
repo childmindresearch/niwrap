@@ -1,0 +1,84 @@
+{
+  "tool-version": "1.0.0",
+  "name": "imrotate",
+  "author": "Image Processing Tools",
+  "descriptor-url": "https://example.com/descriptors/imrotate.json",
+  "description": "Shifts and rotates an image",
+  "url": "https://example.com/imrotate",
+  "command-line": "imrotate [INTERPOLATION_METHOD] [DX] [DY] [PHI] [INPUT_IMAGE] [OUTPUT_IMAGE]",
+  "container-image": {
+    "image": "example/docker-imrotate:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input image file",
+      "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_image",
+      "name": "Input Image"
+    },
+    {
+      "description": "Output image file",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "output_image",
+      "name": "Output Image"
+    },
+    {
+      "description": "Pixels to shift rightwards (can be non-integer)",
+      "value-key": "[DX]",
+      "type": "Number",
+      "optional": false,
+      "id": "dx",
+      "name": "Dx"
+    },
+    {
+      "description": "Pixels to shift downwards (can be non-integer)",
+      "value-key": "[DY]",
+      "type": "Number",
+      "optional": false,
+      "id": "dy",
+      "name": "Dy"
+    },
+    {
+      "description": "Degrees to rotate clockwise",
+      "value-key": "[PHI]",
+      "type": "Number",
+      "optional": false,
+      "id": "phi",
+      "name": "Phi"
+    },
+    {
+      "command-line-flag": "-linear",
+      "description": "Use bilinear interpolation (default is bicubic)",
+      "value-key": "[INTERPOLATION_METHOD]",
+      "type": "Flag",
+      "optional": true,
+      "id": "linear_interpolation",
+      "name": "Linear Interpolation"
+    },
+    {
+      "command-line-flag": "-Fourier",
+      "description": "Use Fourier interpolation",
+      "value-key": "[INTERPOLATION_METHOD]",
+      "type": "Flag",
+      "optional": true,
+      "id": "fourier_interpolation",
+      "name": "Fourier Interpolation"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_IMAGE]",
+      "description": "Path to the output image file",
+      "optional": false,
+      "id": "output_image_file",
+      "name": "Output Image"
+    }
+  ]
+}

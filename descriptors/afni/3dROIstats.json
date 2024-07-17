@@ -130,7 +130,9 @@
       "command-line-flag": "-zerofill",
       "description": "For roi labels not found, use the provided string instead of a '0' in the output file. only active if `num_roi` is enabled.",
       "optional": true,
-      "requires-inputs": ["num_roi"]
+      "requires-inputs": [
+        "num_roi"
+      ]
     }
   ],
   "output-files": [
@@ -149,14 +151,6 @@
       "path-template": "out_file",
       "optional": true,
       "description": "Output tab-separated values file."
-    }
-  ],
-  "groups": [
-    {
-      "id": "mutex_group",
-      "name": "Mutex group",
-      "members": ["format1D", "format1DR"],
-      "mutually-exclusive": true
     }
   ],
   "tool-version": "1.0.0",

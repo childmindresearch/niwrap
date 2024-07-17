@@ -1,0 +1,76 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3dRowFillin",
+  "author": "AFNI",
+  "description": "Fills in blank regions in 1D rows extracted from a 3D dataset",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRowFillin.html",
+  "command-line": "3dRowFillin [MAX_GAP] [DIRECTION] [BINARY_FLAG] [PREFIX] [INPUT_DATASET]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input 3D dataset (e.g., dataset+orig)",
+      "value-key": "[INPUT_DATASET]",
+      "type": "File",
+      "optional": false,
+      "id": "input_dataset",
+      "name": "Input Dataset"
+    },
+    {
+      "command-line-flag": "-maxgap",
+      "description": "Set the maximum length of a blank region that will be filled in",
+      "value-key": "[MAX_GAP]",
+      "type": "Number",
+      "optional": true,
+      "id": "maxgap",
+      "name": "Maximum Gap"
+    },
+    {
+      "command-line-flag": "-dir",
+      "description": "Set the direction of fill, e.g., A-P, P-A, I-S, S-I, L-R, R-L, x, y, z, XYZ.OR, XYZ.AND",
+      "value-key": "[DIRECTION]",
+      "type": "String",
+      "optional": true,
+      "id": "dir",
+      "name": "Direction of Fill"
+    },
+    {
+      "command-line-flag": "-binary",
+      "description": "Turn input dataset to binary (0 and 1) before filling in. Output will also be binary.",
+      "value-key": "[BINARY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "binary",
+      "name": "Binary Flag"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Set the prefix for the output dataset",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Output Prefix"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]+orig.BRIK",
+      "description": "Output dataset in BRIK format",
+      "optional": false,
+      "id": "output_brik",
+      "name": "Output Dataset BRIK"
+    },
+    {
+      "path-template": "[PREFIX]+orig.HEAD",
+      "description": "Output dataset in HEAD format",
+      "optional": false,
+      "id": "output_head",
+      "name": "Output Dataset HEAD"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "tool-version": "4.30",
+  "name": "Dimon",
+  "author": "R. Reynolds",
+  "description": "Monitor real-time acquisition of DICOM image files",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "Dimon [OPTIONS] -infile_prefix [PREFIX] -infile_pattern [PATTERN] -infile_list [FILES.txt] -rt_cmd [RT_COMMAND] -host [HOSTNAME] -drive_afni [DRIVE_AFNI_COMMAND] -drive_wait [DRIVE_WAIT_COMMAND] -te_list [TE_LIST] -sort_method [METHOD]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Prefix matching input files",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "infile_prefix",
+      "command-line-flag": "-infile_prefix",
+      "name": "Input file prefix"
+    },
+    {
+      "description": "Pattern for input files",
+      "value-key": "[PATTERN]",
+      "type": "String",
+      "optional": true,
+      "id": "infile_pattern",
+      "command-line-flag": "-infile_pattern",
+      "name": "Input file pattern"
+    },
+    {
+      "description": "List of filenames",
+      "value-key": "[FILES.txt]",
+      "type": "File",
+      "optional": true,
+      "id": "infile_list",
+      "command-line-flag": "-infile_list",
+      "name": "Input file list"
+    },
+    {
+      "description": "Send COMMAND(s) to realtime plugin",
+      "value-key": "[RT_COMMAND]",
+      "type": "String",
+      "optional": true,
+      "id": "rt_cmd",
+      "command-line-flag": "-rt_cmd",
+      "name": "Real-time command"
+    },
+    {
+      "description": "Specify the host for afni communication",
+      "value-key": "[HOSTNAME]",
+      "type": "String",
+      "optional": true,
+      "id": "host",
+      "command-line-flag": "-host",
+      "name": "Host name"
+    },
+    {
+      "description": "Send 'drive afni' command, CMND",
+      "value-key": "[DRIVE_AFNI_COMMAND]",
+      "type": "String",
+      "optional": true,
+      "id": "drive_afni",
+      "command-line-flag": "-drive_afni",
+      "name": "Drive AFNI command"
+    },
+    {
+      "description": "Send delayed 'drive afni' command, CMND",
+      "value-key": "[DRIVE_WAIT_COMMAND]",
+      "type": "String",
+      "optional": true,
+      "id": "drive_wait",
+      "command-line-flag": "-drive_wait",
+      "name": "Drive wait command"
+    },
+    {
+      "description": "Specify a list of echo times",
+      "value-key": "[TE_LIST]",
+      "type": "String",
+      "optional": true,
+      "id": "te_list",
+      "command-line-flag": "-te_list",
+      "name": "Echo time list"
+    },
+    {
+      "description": "Apply sorting method to image structures",
+      "value-key": "[METHOD]",
+      "type": "String",
+      "optional": true,
+      "id": "sort_method",
+      "command-line-flag": "-sort_method",
+      "name": "Sort method"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]*",
+      "description": "Sorted input files with specified prefix",
+      "optional": true,
+      "id": "sorted_files",
+      "name": "Sorted Input Files"
+    },
+    {
+      "path-template": "[FILES.txt]_details",
+      "description": "Details about sorted files",
+      "optional": true,
+      "id": "sorted_files_details",
+      "name": "Sorted Files Details"
+    }
+  ]
+}

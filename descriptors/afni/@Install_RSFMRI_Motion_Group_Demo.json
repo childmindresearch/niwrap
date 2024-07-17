@@ -1,0 +1,28 @@
+{
+  "tool-version": "1.0",
+  "name": "Install_RSFMRI_Motion_Group_Demo",
+  "author": "AFNI Team",
+  "description": "Installs and sets up an AFNI InstaCorr demo archive, based on 190 Cambridge subjects from FCON_1000.",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "@Install_RSFMRI_Motion_Group_Demo [OUTPUT_DIR]",
+  "inputs": [
+    {
+      "description": "Directory where the AFNI_Demo_Motion_Groups will be set up.",
+      "value-key": "[OUTPUT_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "output_dir",
+      "name": "Output Directory"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_DIR]/AFNI_Demo_Motion_Groups",
+      "description": "Directory where the demo data and scripts are set up.",
+      "optional": false,
+      "id": "afni_demo_dir",
+      "name": "AFNI Demo Directory"
+    }
+  ]
+}

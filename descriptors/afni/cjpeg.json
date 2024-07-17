@@ -1,0 +1,87 @@
+{
+  "tool-version": "1.0",
+  "name": "cjpeg",
+  "author": "Independent JPEG Group",
+  "description": "Compresses an image file to a JPEG file",
+  "command-line": "cjpeg [QUALITY] [GRAYSCALE] [OPTIMIZE] [BASENAME] [PROGRESSIVE] [OUTPUT_FILE] [INPUT_FILE]",
+  "container-image": {
+    "image": "jrottenberg/ffmpeg:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input image file",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "description": "Output JPEG file",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "-quality",
+      "description": "Quality of JPEG image (0-100)",
+      "value-key": "[QUALITY]",
+      "type": "Number",
+      "minimum": 0,
+      "maximum": 100,
+      "optional": true,
+      "id": "quality",
+      "name": "Quality"
+    },
+    {
+      "command-line-flag": "-grayscale",
+      "description": "Create a grayscale JPEG file",
+      "value-key": "[GRAYSCALE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "grayscale",
+      "name": "Grayscale"
+    },
+    {
+      "command-line-flag": "-optimize",
+      "description": "Optimize Huffman table",
+      "value-key": "[OPTIMIZE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "optimize",
+      "name": "Optimize"
+    },
+    {
+      "command-line-flag": "-baseline",
+      "description": "Create a baseline JPEG file",
+      "value-key": "[BASENAME]",
+      "type": "Flag",
+      "optional": true,
+      "id": "baseline",
+      "name": "Baseline"
+    },
+    {
+      "command-line-flag": "-progressive",
+      "description": "Create a progressive JPEG file",
+      "value-key": "[PROGRESSIVE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "progressive",
+      "name": "Progressive"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "The output JPEG file",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file"
+    }
+  ]
+}

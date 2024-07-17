@@ -84,14 +84,6 @@
     }
   ],
   "schema-version": "0.5",
-  "groups": [
-    {
-      "description": "Options affecting the contents of the AFNI extension field.",
-      "id": "afni_extension_options",
-      "members": ["pure", "denote", "oldid", "newid"],
-      "name": "AFNI Extension Options"
-    }
-  ],
   "output-files": [
     {
       "path-template": "[PREFIX].nii",

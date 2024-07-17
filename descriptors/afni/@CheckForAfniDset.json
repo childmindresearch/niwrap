@@ -1,0 +1,32 @@
+{
+  "name": "@CheckForAfniDset",
+  "tool-version": "1.0",
+  "description": "Check for the existence of AFNI datasets.",
+  "author": "Ziad Saad (saadz@mail.nih.gov), SSCC/NIMH/ National Institutes of Health, Bethesda Maryland",
+  "command-line": "@CheckForAfniDset [NAME]",
+  "container-image": {
+    "type": "docker",
+    "image": "afni/afni_latest",
+    "index": "index.docker.io"
+  },
+  "inputs": [
+    {
+      "id": "dataset_name",
+      "name": "Dataset Name",
+      "type": "String",
+      "value-key": "[NAME]",
+      "description": "Path to the AFNI dataset (e.g., /Data/stuff/Hello+orig.HEAD)",
+      "optional": false
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_status",
+      "name": "Output Status",
+      "path-template": "[NAME]_status.txt",
+      "description": "Text file containing the status code of the dataset",
+      "optional": true
+    }
+  ],
+  "schema-version": "0.5"
+}

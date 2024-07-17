@@ -1,0 +1,156 @@
+{
+  "tool-version": "4.1.4",
+  "name": "3dMVM",
+  "author": "Gang Chen",
+  "descriptor-url": "#",
+  "description": "AFNI Group Analysis Program with Multi-Variate Modeling Approach",
+  "url": "https://afni.nimh.nih.gov/MVM",
+  "command-line": "3dMVM [PARAM_FLAGS] -prefix [PREFIX] -jobs [JOBS] -mask [MASK] -bsVars [BSVARS] -wsVars [WSVARS] -qVars [QVARS] -qVarCenters [Q_VAR_CENTERS] -num_glt [NUM_GLT] -gltLabel [GLT_LABEL] -gltCode [GLT_CODE] -num_glf [NUM_GLF] -glfLabel [GLF_LABEL] -glfCode [GLF_CODE] -dataTable [DATA_TABLE]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Output file name prefix",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Output prefix"
+    },
+    {
+      "description": "Number of jobs for parallel processing",
+      "value-key": "[JOBS]",
+      "type": "Number",
+      "optional": true,
+      "integer": true,
+      "id": "jobs",
+      "name": "Number of jobs"
+    },
+    {
+      "description": "Only process voxels inside this mask",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask file"
+    },
+    {
+      "description": "Formula for between-subjects variables",
+      "value-key": "[BSVARS]",
+      "type": "String",
+      "optional": false,
+      "id": "bsVars",
+      "name": "Between-subjects variables"
+    },
+    {
+      "description": "Formula for within-subjects variables",
+      "value-key": "[WSVARS]",
+      "type": "String",
+      "optional": true,
+      "id": "wsVars",
+      "name": "Within-subjects variables"
+    },
+    {
+      "description": "Comma-separated list of quantitative variables (covariates)",
+      "value-key": "[QVARS]",
+      "type": "String",
+      "optional": true,
+      "id": "qVars",
+      "name": "Quantitative variables"
+    },
+    {
+      "description": "Comma-separated centering values for quantitative variables",
+      "value-key": "[Q_VAR_CENTERS]",
+      "type": "String",
+      "optional": true,
+      "id": "qVarCenters",
+      "name": "Quantitative variable centers"
+    },
+    {
+      "description": "Number of general linear t-tests (GLTs)",
+      "value-key": "[NUM_GLT]",
+      "type": "Number",
+      "optional": true,
+      "integer": true,
+      "id": "num_glt",
+      "name": "Number of GLTs"
+    },
+    {
+      "description": "Label for each general linear t-test (GLT)",
+      "value-key": "[GLT_LABEL]",
+      "type": "String",
+      "optional": true,
+      "id": "gltLabel",
+      "name": "GLT Label"
+    },
+    {
+      "description": "Coding for each general linear t-test (GLT)",
+      "value-key": "[GLT_CODE]",
+      "type": "String",
+      "optional": true,
+      "id": "gltCode",
+      "name": "GLT Code"
+    },
+    {
+      "description": "Number of general linear F-tests (GLFs)",
+      "value-key": "[NUM_GLF]",
+      "type": "Number",
+      "optional": true,
+      "integer": true,
+      "id": "num_glf",
+      "name": "Number of GLFs"
+    },
+    {
+      "description": "Label for each general linear F-test (GLF)",
+      "value-key": "[GLF_LABEL]",
+      "type": "String",
+      "optional": true,
+      "id": "glfLabel",
+      "name": "GLF Label"
+    },
+    {
+      "description": "Coding for each general linear F-test (GLF)",
+      "value-key": "[GLF_CODE]",
+      "type": "String",
+      "optional": true,
+      "id": "glfCode",
+      "name": "GLF Code"
+    },
+    {
+      "description": "Data table for analysis",
+      "value-key": "[DATA_TABLE]",
+      "type": "String",
+      "optional": false,
+      "id": "dataTable",
+      "name": "Data table"
+    },
+    {
+      "description": "Enable R to save parameters in a file for debugging",
+      "value-key": "[PARAM_FLAGS]",
+      "type": "String",
+      "optional": true,
+      "id": "dbgArgs",
+      "name": "Debug Arguments"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]+tlrc.HEAD",
+      "description": "Output HEAD file in AFNI format",
+      "optional": false,
+      "id": "outfile_head",
+      "name": "Output HEAD file"
+    },
+    {
+      "path-template": "[PREFIX]+tlrc.BRIK",
+      "description": "Output BRIK file in AFNI format",
+      "optional": false,
+      "id": "outfile_brik",
+      "name": "Output BRIK file"
+    }
+  ]
+}

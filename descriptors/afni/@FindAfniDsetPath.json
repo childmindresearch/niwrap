@@ -1,0 +1,45 @@
+{
+  "tool-version": "2018.10.15",
+  "name": "FindAfniDsetPath",
+  "author": "Jason W. Bacon, Medical College of Wisconsin",
+  "description": "Searches various AFNI directories for a specified dataset and returns its path.",
+  "command-line": "@FindAfniDsetPath [DSETNAME] [APPEND_FILE] [FULL_PATH_FLAG] [HELP_FLAG]",
+  "inputs": [
+    {
+      "description": "Name of the dataset to search for",
+      "value-key": "[DSETNAME]",
+      "type": "String",
+      "optional": false,
+      "id": "dsetname",
+      "name": "Dataset name"
+    },
+    {
+      "command-line-flag": "-append_file",
+      "description": "Show the file appended to (even with atlas name)",
+      "value-key": "[APPEND_FILE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "append_file",
+      "name": "Append file flag"
+    },
+    {
+      "command-line-flag": "-full_path",
+      "description": "Print full path instead of '.'",
+      "value-key": "[FULL_PATH_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "full_path",
+      "name": "Full path flag"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Display help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

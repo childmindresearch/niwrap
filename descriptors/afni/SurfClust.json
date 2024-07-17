@@ -1,0 +1,398 @@
+{
+  "tool-version": "1.0.0",
+  "name": "SurfClust",
+  "author": "SSCC/NIMH/NIH",
+  "description": "A program to perform clustering analysis surfaces",
+  "command-line": "SurfClust [SPEC_SURF] [SPEC_FILE] [INPUT_SURFACE] [INPUT_SURF_NAME] [INPUT_DSET] [DATA_COL_INDEX] [RMM] [AMM] [MIN_NODES] [PREFIX] [OUT_CLUST] [OUT_ROI] [OUT_FULL] [SORTING_OPT] [THRESH_COL] [THRESH] [ATHRESH] [IR_RANGE] [EX_RANGE] [PREPEND_NODE] [UPDATE] [NO_CENT] [CENT] [NOVOLREG] [NOXFORM] [SET_ENV] [TRACE] [TRACE_EXTREME] [NO_MEMORY_TRACE] [YES_MEMORY_TRACE] [GLOBAL_HELP]",
+  "container-image": {
+    "image": "custom/surfclust:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-spec",
+      "description": "The surface spec file",
+      "value-key": "[SPEC_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "specfile",
+      "name": "Spec file"
+    },
+    {
+      "command-line-flag": "-surf_A",
+      "description": "The input surface name",
+      "value-key": "[INPUT_SURFACE]",
+      "type": "String",
+      "optional": true,
+      "id": "input_surface",
+      "name": "Input surface name"
+    },
+    {
+      "command-line-flag": "-i",
+      "description": "Full name of the input surface",
+      "value-key": "[INPUT_SURF_NAME]",
+      "type": "File",
+      "optional": true,
+      "id": "input_surf_name",
+      "name": "Input surface file"
+    },
+    {
+      "command-line-flag": "-input",
+      "description": "The input dataset and the index of the datacolumn to use (index 0 for 1st column). Values of 0 indicate inactive nodes.",
+      "value-key": "[INPUT_DSET]",
+      "type": "File",
+      "optional": false,
+      "id": "input_dataset",
+      "name": "Input dataset",
+      "list": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2
+    },
+    {
+      "command-line-flag": "-rmm",
+      "description": "Maximum distance between an activated node and the cluster to which it belongs.",
+      "value-key": "[RMM]",
+      "type": "Number",
+      "optional": false,
+      "id": "rmm",
+      "name": "RMM radius"
+    },
+    {
+      "command-line-flag": "-amm2",
+      "description": "Minimum area for clusters",
+      "value-key": "[AMM]",
+      "type": "Number",
+      "optional": true,
+      "id": "amm2",
+      "name": "Minimum area"
+    },
+    {
+      "command-line-flag": "-n",
+      "description": "Minimum nodes for clusters",
+      "value-key": "[MIN_NODES]",
+      "type": "Number",
+      "optional": true,
+      "id": "min_nodes",
+      "name": "Minimum nodes"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Prefix for output. Default is the prefix of the input dataset.",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Output prefix"
+    },
+    {
+      "command-line-flag": "-out_clusterdset",
+      "description": "Output a clustered version of input dataset",
+      "value-key": "[OUT_CLUST]",
+      "type": "Flag",
+      "optional": true,
+      "id": "out_clusterdset",
+      "name": "Output clustered dataset"
+    },
+    {
+      "command-line-flag": "-out_roidset",
+      "description": "Output an ROI dataset with the rank of its cluster",
+      "value-key": "[OUT_ROI]",
+      "type": "Flag",
+      "optional": true,
+      "id": "out_roidset",
+      "name": "Output ROI dataset"
+    },
+    {
+      "command-line-flag": "-out_fulllist",
+      "description": "Output a value for all nodes of input surface",
+      "value-key": "[OUT_FULL]",
+      "type": "Flag",
+      "optional": true,
+      "id": "out_fulllist",
+      "name": "Output full list"
+    },
+    {
+      "command-line-flag": "-sort_none",
+      "description": "No sorting of ROI clusters",
+      "value-key": "[SORTING_OPT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sort_none",
+      "name": "Sort none"
+    },
+    {
+      "command-line-flag": "-sort_n_nodes",
+      "description": "Sorting based on number of nodes in cluster",
+      "value-key": "[SORTING_OPT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sort_n_nodes",
+      "name": "Sort by number of nodes"
+    },
+    {
+      "command-line-flag": "-sort_area",
+      "description": "Sorting based on area of clusters (default)",
+      "value-key": "[SORTING_OPT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sort_area",
+      "name": "Sort by area"
+    },
+    {
+      "command-line-flag": "-thresh_col",
+      "description": "Index of thresholding column. Default is column 0.",
+      "value-key": "[THRESH_COL]",
+      "type": "Number",
+      "optional": true,
+      "id": "thresh_col",
+      "name": "Threshold column index"
+    },
+    {
+      "command-line-flag": "-thresh",
+      "description": "Apply thresholding prior to clustering.",
+      "value-key": "[THRESH]",
+      "type": "Number",
+      "optional": true,
+      "id": "thresh",
+      "name": "Threshold value"
+    },
+    {
+      "command-line-flag": "-athresh",
+      "description": "Apply absolute thresholding prior to clustering",
+      "value-key": "[ATHRESH]",
+      "type": "Number",
+      "optional": true,
+      "id": "athresh",
+      "name": "Absolute threshold value"
+    },
+    {
+      "command-line-flag": "-ir_range",
+      "description": "Apply thresholding in range. A node n is considered if thresh_col[n] >= R0 && thresh_col[n] <= R1",
+      "value-key": "[IR_RANGE]",
+      "type": "Number",
+      "optional": true,
+      "id": "ir_range",
+      "name": "In range threshold",
+      "list": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2
+    },
+    {
+      "command-line-flag": "-ex_range",
+      "description": "Apply thresholding outside of range. A node n is considered if thresh_col[n] < R0 || thresh_col[n] > R1",
+      "value-key": "[EX_RANGE]",
+      "type": "Number",
+      "optional": true,
+      "id": "ex_range",
+      "name": "Out of range threshold",
+      "list": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2
+    },
+    {
+      "command-line-flag": "-prepend_node_index",
+      "description": "Force the output dataset to have node indices in column 0 of output.",
+      "value-key": "[PREPEND_NODE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "prepend_node_index",
+      "name": "Prepend node index"
+    },
+    {
+      "command-line-flag": "-update",
+      "description": "Pacify me when perc of the data have been processed. perc is between 1% and 50%. Default is no update.",
+      "value-key": "[UPDATE]",
+      "type": "Number",
+      "optional": true,
+      "id": "update",
+      "name": "Update percentage"
+    },
+    {
+      "command-line-flag": "-no_cent",
+      "description": "Do not find the central nodes",
+      "value-key": "[NO_CENT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_cent",
+      "name": "Do not find central nodes"
+    },
+    {
+      "command-line-flag": "-cent",
+      "description": "Do find the central nodes (default)",
+      "value-key": "[CENT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "cent",
+      "name": "Find central nodes"
+    },
+    {
+      "command-line-flag": "-novolreg",
+      "description": "Ignore any Rotate, Volreg, Tagalign, or WarpDrive transformations present in the Surface Volume.",
+      "value-key": "[NOVOLREG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "novolreg",
+      "name": "Ignore volume registrations"
+    },
+    {
+      "command-line-flag": "-noxform",
+      "description": "Same as -novolreg",
+      "value-key": "[NOXFORM]",
+      "type": "Flag",
+      "optional": true,
+      "id": "noxform",
+      "name": "Ignore transformations"
+    },
+    {
+      "command-line-flag": "-setenv",
+      "description": "Set environment variable ENVname to be ENVvalue. Quotes are necessary.",
+      "value-key": "[SET_ENV]",
+      "type": "String",
+      "optional": true,
+      "id": "set_env",
+      "name": "Set environment variable"
+    },
+    {
+      "command-line-flag": "-trace",
+      "description": "Turns on In/Out debug and Memory tracing.",
+      "value-key": "[TRACE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "trace",
+      "name": "Trace"
+    },
+    {
+      "command-line-flag": "-TRACE",
+      "description": "Turns on extreme tracing.",
+      "value-key": "[TRACE_EXTREME]",
+      "type": "Flag",
+      "optional": true,
+      "id": "trace_extreme",
+      "name": "Extreme trace"
+    },
+    {
+      "command-line-flag": "-nomall",
+      "description": "Turn off memory tracing.",
+      "value-key": "[NO_MEMORY_TRACE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_memory_trace",
+      "name": "Turn off memory tracing"
+    },
+    {
+      "command-line-flag": "-yesmall",
+      "description": "Turn on memory tracing (default).",
+      "value-key": "[YES_MEMORY_TRACE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "yes_memory_trace",
+      "name": "Turn on memory tracing"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Mini help, same as -help in many cases.",
+      "value-key": "[GLOBAL_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mini_help",
+      "name": "Mini help"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "The entire help output.",
+      "value-key": "[GLOBAL_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    },
+    {
+      "command-line-flag": "-HELP",
+      "description": "Extreme help, same as -help in majority of cases.",
+      "value-key": "[GLOBAL_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "extreme_help",
+      "name": "Extreme help"
+    },
+    {
+      "command-line-flag": "-h_view",
+      "description": "Open help in text editor. AFNI will try to find a GUI editor on your machine. You can control which it should use by setting environment variable AFNI_GUI_EDITOR.",
+      "value-key": "[GLOBAL_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "view_help",
+      "name": "Open help in editor"
+    },
+    {
+      "command-line-flag": "-h_web",
+      "description": "Open help in web browser. AFNI will try to find a browser. You can control which it should use by setting environment variable AFNI_GUI_EDITOR.",
+      "value-key": "[GLOBAL_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "web_help",
+      "name": "Open help in web browser"
+    },
+    {
+      "command-line-flag": "-h_find",
+      "description": "Look for lines in this program's -help output that match (approximately) the given word.",
+      "value-key": "[GLOBAL_HELP]",
+      "type": "String",
+      "optional": true,
+      "id": "find_help",
+      "name": "Find help keyword"
+    },
+    {
+      "command-line-flag": "-h_raw",
+      "description": "Help string unedited.",
+      "value-key": "[GLOBAL_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "raw_help",
+      "name": "Raw help string"
+    },
+    {
+      "command-line-flag": "-h_spx",
+      "description": "Help string in sphinx format, but do not try to autoformat.",
+      "value-key": "[GLOBAL_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "spx_help",
+      "name": "Sphinx help"
+    },
+    {
+      "command-line-flag": "-h_aspx",
+      "description": "Help string in sphinx format with autoformatting of options.",
+      "value-key": "[GLOBAL_HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "aspx_help",
+      "name": "Autoformat sphinx help"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[PREFIX]_ClstTable_rXX_aXX.1D",
+      "description": "Cluster table output",
+      "optional": true,
+      "id": "cluster_table",
+      "name": "Cluster table"
+    },
+    {
+      "path-template": "[PREFIX]_Clustered_rXX_aXX.dset",
+      "description": "Clustered version of input dataset",
+      "optional": true,
+      "id": "clustered_dataset",
+      "name": "Clustered dataset"
+    },
+    {
+      "path-template": "[PREFIX]_ClstMsk_rXX_aXX.dset",
+      "description": "ROI dataset with rank of clusters",
+      "optional": true,
+      "id": "roi_dataset",
+      "name": "ROI dataset"
+    }
+  ],
+  "schema-version": "0.5"
+}

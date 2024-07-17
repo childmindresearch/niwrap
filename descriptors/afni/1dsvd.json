@@ -1,0 +1,118 @@
+{
+  "tool-version": "23.1.10",
+  "name": "1dsvd",
+  "author": "Zhark the Algebraical (Linear)",
+  "description": "Computes SVD of the matrix formed by the 1D file(s) and outputs the result on stdout.",
+  "command-line": "1dsvd [ONE_FLAG] [VMEAN_FLAG] [VNORM_FLAG] [COND_FLAG] [SING_FLAG] [SORT_FLAG] [NOSORT_FLAG] [ASORT_FLAG] [LEFT_EIGENVECTORS_FLAG] [NUM_EIGENVECTORS] [INPUT_FILE]",
+  "inputs": [
+    {
+      "description": "Input 1D file(s) for SVD computation",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "list": true,
+      "id": "input_files",
+      "name": "Input 1D files"
+    },
+    {
+      "command-line-flag": "-one",
+      "description": "Make 1st vector be all 1's",
+      "value-key": "[ONE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "one",
+      "name": "One flag"
+    },
+    {
+      "command-line-flag": "-vmean",
+      "description": "Remove mean from each vector (cannot be used with -one)",
+      "value-key": "[VMEAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "vmean",
+      "name": "Vmean flag"
+    },
+    {
+      "command-line-flag": "-vnorm",
+      "description": "Make L2-norm of each vector = 1 before SVD",
+      "value-key": "[VNORM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "vnorm",
+      "name": "Vnorm flag"
+    },
+    {
+      "command-line-flag": "-cond",
+      "description": "Only print condition number (ratio of extremes)",
+      "value-key": "[COND_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "cond",
+      "name": "Cond flag"
+    },
+    {
+      "command-line-flag": "-sing",
+      "description": "Only print singular values",
+      "value-key": "[SING_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sing",
+      "name": "Sing flag"
+    },
+    {
+      "command-line-flag": "-sort",
+      "description": "Sort singular values in descending order (default)",
+      "value-key": "[SORT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sort",
+      "name": "Sort flag"
+    },
+    {
+      "command-line-flag": "-nosort",
+      "description": "Don't sort singular values",
+      "value-key": "[NOSORT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nosort",
+      "name": "Nosort flag"
+    },
+    {
+      "command-line-flag": "-asort",
+      "description": "Sort singular values in ascending order",
+      "value-key": "[ASORT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "asort",
+      "name": "Asort flag"
+    },
+    {
+      "command-line-flag": "-1Dleft",
+      "description": "Only output left eigenvectors in .1D format",
+      "value-key": "[LEFT_EIGENVECTORS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "left_eigenvectors",
+      "name": "Left eigenvectors flag"
+    },
+    {
+      "command-line-flag": "-nev",
+      "description": "Specify number of left eigenvectors to output",
+      "value-key": "[NUM_EIGENVECTORS]",
+      "type": "String",
+      "optional": true,
+      "id": "num_eigenvectors",
+      "name": "Number of Eigenvectors"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "stdout",
+      "description": "Output of the SVD computation",
+      "optional": true,
+      "id": "stdout",
+      "name": "Standard Output"
+    }
+  ]
+}

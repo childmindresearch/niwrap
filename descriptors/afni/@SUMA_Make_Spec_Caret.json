@@ -1,0 +1,92 @@
+{
+  "tool-version": "1.0",
+  "name": "@SUMA_Make_Spec_Caret",
+  "author": "R. Reynolds (rickr@codon.nih.gov), Z. Saad (saadz@mail.nih.gov)",
+  "description": "Prepare surfaces for viewing in SUMA, tested with Caret-5.2 surfaces.",
+  "url": "https://afni.nimh.nih.gov/ssc/ziad/SUMA/SUMA_doc.htm",
+  "command-line": "@SUMA_Make_Spec_Caret [OPTIONS] -sid [SUBJECT_ID]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-sid",
+      "description": "Subject ID for file naming",
+      "value-key": "[SUBJECT_ID]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_id",
+      "name": "Subject ID"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Show help information",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    },
+    {
+      "command-line-flag": "-debug",
+      "description": "Print debug information along the way",
+      "value-key": "[DEBUG_LEVEL]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Level",
+      "minimum": 0,
+      "maximum": 2
+    },
+    {
+      "command-line-flag": "-echo",
+      "description": "Turn shell echo on",
+      "value-key": "[ECHO_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "echo",
+      "name": "Echo Flag"
+    },
+    {
+      "command-line-flag": "-sfpath",
+      "description": "Path to directory containing 'SURFACES' and AFNI volume used in creating the surfaces",
+      "value-key": "[SURFACE_PATH]",
+      "type": "String",
+      "optional": true,
+      "id": "surface_path",
+      "name": "Surface Path"
+    },
+    {
+      "command-line-flag": "-side_labels_style",
+      "description": "Naming style for Left, Right sides. Allowed values: 1 for L R LR style (default), 2 for LEFT RIGHT LR style, 3 for A B AB",
+      "value-key": "[SIDE_LABELS_STYLE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "side_labels_style",
+      "name": "Side Labels Style",
+      "minimum": 1,
+      "maximum": 3
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[SUBJECT_ID]_lh.spec",
+      "description": "Output spec file for the left hemisphere",
+      "optional": true,
+      "id": "left_hemisphere_spec",
+      "name": "Left Hemisphere Spec File"
+    },
+    {
+      "path-template": "[SUBJECT_ID]_rh.spec",
+      "description": "Output spec file for the right hemisphere",
+      "optional": true,
+      "id": "right_hemisphere_spec",
+      "name": "Right Hemisphere Spec File"
+    }
+  ]
+}

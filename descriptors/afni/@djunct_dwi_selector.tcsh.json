@@ -1,0 +1,47 @@
+{
+  "name": "@djunct_dwi_selector",
+  "tool-version": "latest",
+  "description": "Selects DWI data and creates a representative image.",
+  "command-line": "/opt/afni/src/../install/@djunct_dwi_selector.tcsh [DWI] [PNG] [OUTFILE]",
+  "container-image": {
+    "type": "docker",
+    "image": "afni/afni:latest",
+    "index": "index.docker.io"
+  },
+  "inputs": [
+    {
+      "id": "dwi",
+      "name": "DWI Input",
+      "type": "File",
+      "value-key": "[DWI]",
+      "description": "Input DWI file",
+      "optional": false
+    },
+    {
+      "id": "png",
+      "name": "PNG Image",
+      "type": "File",
+      "value-key": "[PNG]",
+      "description": "Output PNG image",
+      "optional": false
+    },
+    {
+      "id": "outfile",
+      "name": "Output File",
+      "type": "String",
+      "value-key": "[OUTFILE]",
+      "description": "Path to the output file",
+      "optional": false
+    }
+  ],
+  "output-files": [
+    {
+      "id": "outfile",
+      "name": "Output File",
+      "path-template": "[OUTFILE]",
+      "description": "The main output file",
+      "optional": false
+    }
+  ],
+  "schema-version": "0.5"
+}

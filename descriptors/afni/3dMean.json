@@ -1,0 +1,196 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3dMean",
+  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "description": "Takes the voxel-by-voxel mean of all input datasets; designed to be faster than 3dcalc.",
+  "url": "https://afni.nimh.nih.gov/afni",
+  "command-line": "3dMean [INPUT_FILES] [VERBOSE_FLAG] [PREFIX] [DATUM] [FORCE_SCALE_FLAG] [GLOBAL_SCALE_FLAG] [NO_SCALE_FLAG] [NON_ZERO_FLAG] [STANDARD_DEVIATION_FLAG] [AVERAGE_SQUARES_FLAG] [SUM_FLAG] [COUNT_FLAG] [MAX_FLAG] [MIN_FLAG] [ABS_MAX_FLAG] [SIGNED_ABS_MAX_FLAG] [MASK_INTER_FLAG] [MASK_UNION_FLAG] [WEIGHTSET]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input datasets",
+      "value-key": "[INPUT_FILES]",
+      "type": "File",
+      "optional": false,
+      "list": true,
+      "id": "input_files",
+      "name": "Input Files"
+    },
+    {
+      "command-line-flag": "-verbose",
+      "description": "Print out some information along the way",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose Flag"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Sets the prefix of the output dataset",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Prefix"
+    },
+    {
+      "command-line-flag": "-datum",
+      "description": "Sets the datum of the output dataset",
+      "value-key": "[DATUM]",
+      "type": "String",
+      "optional": true,
+      "id": "datum",
+      "name": "Datum"
+    },
+    {
+      "command-line-flag": "-fscale",
+      "description": "Force scaling of the output to the maximum integer range",
+      "value-key": "[FORCE_SCALE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "fscale",
+      "name": "Force Scale Flag"
+    },
+    {
+      "command-line-flag": "-gscale",
+      "description": "Force scaling of the output to the maximum integer range, with uniform scaling factor for each sub-brick",
+      "value-key": "[GLOBAL_SCALE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "gscale",
+      "name": "Global Scale Flag"
+    },
+    {
+      "command-line-flag": "-nscale",
+      "description": "Don't do any scaling on output to byte or short datasets. Only use if you want the output dataset to be integer-valued.",
+      "value-key": "[NO_SCALE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nscale",
+      "name": "No Scale Flag"
+    },
+    {
+      "command-line-flag": "-non_zero",
+      "description": "Use only non-zero values for calculation of mean, min, max, sum, squares",
+      "value-key": "[NON_ZERO_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "non_zero",
+      "name": "Non-zero Values Flag"
+    },
+    {
+      "command-line-flag": "-sd",
+      "description": "Calculate the standard deviation, sqrt(variance), instead of the mean (cannot be used with -sqr, -sum or -non_zero)",
+      "value-key": "[STANDARD_DEVIATION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "stdev",
+      "name": "Standard Deviation Flag"
+    },
+    {
+      "command-line-flag": "-sqr",
+      "description": "Average the squares, instead of the values",
+      "value-key": "[AVERAGE_SQUARES_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sqr",
+      "name": "Average Squares Flag"
+    },
+    {
+      "command-line-flag": "-sum",
+      "description": "Just take the sum (don't divide by number of datasets)",
+      "value-key": "[SUM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sum",
+      "name": "Sum Flag"
+    },
+    {
+      "command-line-flag": "-count",
+      "description": "Compute only the count of non-zero voxels",
+      "value-key": "[COUNT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "count",
+      "name": "Count Flag"
+    },
+    {
+      "command-line-flag": "-max",
+      "description": "Find the maximum at each voxel",
+      "value-key": "[MAX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "max",
+      "name": "Max Flag"
+    },
+    {
+      "command-line-flag": "-min",
+      "description": "Find the minimum at each voxel",
+      "value-key": "[MIN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "min",
+      "name": "Min Flag"
+    },
+    {
+      "command-line-flag": "-absmax",
+      "description": "Find maximum absolute value at each voxel",
+      "value-key": "[ABS_MAX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "absmax",
+      "name": "Absolute Max Flag"
+    },
+    {
+      "command-line-flag": "-signed_absmax",
+      "description": "Find extremes with maximum absolute value but preserve sign",
+      "value-key": "[SIGNED_ABS_MAX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "signed_absmax",
+      "name": "Signed Absolute Max Flag"
+    },
+    {
+      "command-line-flag": "-mask_inter",
+      "description": "Create a simple intersection mask",
+      "value-key": "[MASK_INTER_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mask_inter",
+      "name": "Intersection Mask Flag"
+    },
+    {
+      "command-line-flag": "-mask_union",
+      "description": "Create a simple union mask",
+      "value-key": "[MASK_UNION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mask_union",
+      "name": "Union Mask Flag"
+    },
+    {
+      "command-line-flag": "-weightset",
+      "description": "Sum of N dsets will be weighted by N volume WSET. This weight dataset must be of type float.",
+      "value-key": "[WEIGHTSET]",
+      "type": "File",
+      "optional": true,
+      "id": "weightset",
+      "name": "Weightset"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]<+optional_extension>",
+      "description": "Output dataset",
+      "optional": true,
+      "id": "output_file",
+      "name": "Output File"
+    }
+  ]
+}

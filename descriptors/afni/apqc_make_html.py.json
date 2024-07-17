@@ -1,0 +1,17 @@
+{
+  "tool-version": "0.1",
+  "name": "apqc_make_html",
+  "description": "Tool to generate HTML reports",
+  "command-line": "apqc_make_html.py -qc_dir [QC_DIR]",
+  "inputs": [
+    {
+      "description": "Directory where QC files will be saved",
+      "value-key": "[QC_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "qc_dir",
+      "name": "QC Directory"
+    }
+  ],
+  "schema-version": "0.5"
+}

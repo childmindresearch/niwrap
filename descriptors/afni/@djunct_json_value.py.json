@@ -1,0 +1,48 @@
+{
+  "tool-version": "1.0",
+  "name": "adjunct_json_value",
+  "author": "Paul Taylor, PTaylor@nih.gov",
+  "description": "A supplementary tool for manipulating JSON values in conjunction with AFNI's apqc_py.",
+  "command-line": "adjunct_json_value [JSON_FILE] [KEY] [VALUE]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input JSON file",
+      "value-key": "[JSON_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "json_file",
+      "name": "JSON file"
+    },
+    {
+      "description": "Key in the JSON object to be modified",
+      "value-key": "[KEY]",
+      "type": "String",
+      "optional": false,
+      "id": "key",
+      "name": "JSON key"
+    },
+    {
+      "description": "Value to be set for the given key",
+      "value-key": "[VALUE]",
+      "type": "String",
+      "optional": false,
+      "id": "value",
+      "name": "JSON value"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[JSON_FILE]",
+      "description": "Modified JSON file",
+      "optional": false,
+      "id": "modified_json_file",
+      "name": "Modified JSON file"
+    }
+  ]
+}

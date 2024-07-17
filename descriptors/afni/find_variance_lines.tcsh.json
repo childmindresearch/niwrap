@@ -1,0 +1,193 @@
+{
+  "tool-version": "0.4",
+  "name": "find_variance_lines",
+  "author": "R Reynolds, P Taylor, D Glen",
+  "description": "Look for bars of high variance that might suggest scanner interference in EPI datasets.",
+  "command-line": "find_variance_lines.tcsh [INPUT_FILES] [OPTIONS]",
+  "container-image": {
+    "image": "find_variance_lines:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input EPI datasets",
+      "value-key": "[INPUT_FILES]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "input_files",
+      "name": "Input Files"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Mask for computations (default=AUTO)",
+      "value-key": "[MASK_VAL]",
+      "type": "String",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask"
+    },
+    {
+      "command-line-flag": "-min_cvox",
+      "description": "Minimum voxels for valid mask column (default=5)",
+      "value-key": "[MIN_CVOX_VAL]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "min_cvox",
+      "name": "Min Voxels"
+    },
+    {
+      "command-line-flag": "-min_nt",
+      "description": "Minimum number of time points required (default=10)",
+      "value-key": "[MIN_NT_VAL]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "min_nt",
+      "name": "Min Time Points"
+    },
+    {
+      "command-line-flag": "-nerode",
+      "description": "How much to erode input or auto-mask (default=0)",
+      "value-key": "[NERODE_VAL]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "nerode",
+      "name": "Erode Levels"
+    },
+    {
+      "command-line-flag": "-nfirst",
+      "description": "Discard the first VAL time points (default=0)",
+      "value-key": "[NFIRST_VAL]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "nfirst",
+      "name": "Discard Initial Time Points"
+    },
+    {
+      "command-line-flag": "-perc",
+      "description": "Percentile of variance values to scale to (default=90)",
+      "value-key": "[PERC_VAL]",
+      "type": "Number",
+      "integer": true,
+      "maximum": 99,
+      "minimum": 0,
+      "optional": true,
+      "id": "percentile",
+      "name": "Variance Percentile"
+    },
+    {
+      "command-line-flag": "-polort",
+      "description": "Polynomial detrending degree (default=A)",
+      "value-key": "[POLORT_VAL]",
+      "type": "String",
+      "optional": true,
+      "id": "polort",
+      "name": "Polynomial Detrending"
+    },
+    {
+      "command-line-flag": "-rdir",
+      "description": "Name of the output directory (default=vlines.result)",
+      "value-key": "[RDIR_VAL]",
+      "type": "String",
+      "optional": true,
+      "id": "output_dir",
+      "name": "Output Directory"
+    },
+    {
+      "command-line-flag": "-do_clean",
+      "description": "Do we clean up a little? (default=1)",
+      "value-key": "[DO_CLEAN_VAL]",
+      "type": "Number",
+      "integer": true,
+      "maximum": 1,
+      "minimum": 0,
+      "optional": true,
+      "id": "do_clean",
+      "name": "Clean Up"
+    },
+    {
+      "command-line-flag": "-do_img",
+      "description": "Make vline images? (default=1)",
+      "value-key": "[DO_IMG_VAL]",
+      "type": "Number",
+      "integer": true,
+      "maximum": 1,
+      "minimum": 0,
+      "optional": true,
+      "id": "do_img",
+      "name": "Generate Images"
+    },
+    {
+      "command-line-flag": "-echo",
+      "description": "Run script with shell 'echo' set (default=no)",
+      "value-key": "[ECHO_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "echo",
+      "name": "Shell Echo"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Show this help",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    },
+    {
+      "command-line-flag": "-hist",
+      "description": "Show the version history",
+      "value-key": "[HIST_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "hist",
+      "name": "History"
+    },
+    {
+      "command-line-flag": "-ver",
+      "description": "Show the current version",
+      "value-key": "[VER_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ver",
+      "name": "Version"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_DIR]/variance_map_run*.nii.gz",
+      "description": "Variance maps per run",
+      "optional": false,
+      "id": "variance_maps",
+      "name": "Variance Maps"
+    },
+    {
+      "path-template": "[OUTPUT_DIR]/scaled_variance_map_run*.nii.gz",
+      "description": "Scaled variance maps per run",
+      "optional": false,
+      "id": "scaled_variance_maps",
+      "name": "Scaled Variance Maps"
+    },
+    {
+      "path-template": "[OUTPUT_DIR]/cluster_report_run*.txt",
+      "description": "Cluster reports",
+      "optional": false,
+      "id": "cluster_reports",
+      "name": "Cluster Reports"
+    },
+    {
+      "path-template": "[OUTPUT_DIR]/*.jpg",
+      "description": "JPEG images showing locations of high variance",
+      "optional": true,
+      "id": "jpeg_images",
+      "name": "JPEG Images"
+    }
+  ]
+}

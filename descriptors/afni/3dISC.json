@@ -1,0 +1,118 @@
+{
+  "tool-version": "1.0.4",
+  "name": "3dISC - Voxelwise Inter-Subject Correlation Analysis",
+  "author": "Gang Chen (gangchen@mail.nih.gov)",
+  "descriptor-url": "https://example.com/3dISC_descriptor.json",
+  "description": "Program for Voxelwise Inter-Subject Correlation (ISC) Analysis using linear mixed-effects modeling.",
+  "url": "https://example.com/3dISC_tool",
+  "command-line": "3dISC [PREFIX_FLAG] [JOBS_FLAG] [MASK_FLAG] [MODEL_FLAG] [QVAR_CENTERS_FLAG] [QVARS_FLAG] [R2Z_FLAG] [CIO_FLAG] [DATA_TABLE_FLAG]",
+  "container-image": {
+    "image": "my_registry/3disc:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Output file name. For AFNI format, provide prefix only, with no view+suffix needed.",
+      "value-key": "[PREFIX_FLAG]",
+      "command-line-flag": "-prefix",
+      "type": "String",
+      "optional": false,
+      "id": "outfile_prefix",
+      "name": "Output file prefix"
+    },
+    {
+      "description": "Specify the number of jobs to run concurrently. Choose 1 for a single-processor computer.",
+      "value-key": "[JOBS_FLAG]",
+      "command-line-flag": "-jobs",
+      "type": "Number",
+      "optional": true,
+      "id": "num_jobs",
+      "name": "Number of jobs"
+    },
+    {
+      "description": "Process voxels inside this mask only. Default is no masking.",
+      "value-key": "[MASK_FLAG]",
+      "command-line-flag": "-mask",
+      "type": "File",
+      "optional": true,
+      "id": "mask_file",
+      "name": "Mask file"
+    },
+    {
+      "description": "Specify the model structure for all the variables. The expression FORMULA with more than one variable has to be surrounded within quotes.",
+      "value-key": "[MODEL_FLAG]",
+      "command-line-flag": "-model",
+      "type": "String",
+      "optional": false,
+      "id": "model_structure",
+      "name": "Model structure formula"
+    },
+    {
+      "description": "Specify centering values for quantitative variables identified under -qVars. Multiple centers are separated by commas without spaces and should be within quotes.",
+      "value-key": "[QVAR_CENTERS_FLAG]",
+      "command-line-flag": "-qVarCenters",
+      "type": "String",
+      "optional": true,
+      "id": "qvar_centers",
+      "name": "Quantitative variable centers"
+    },
+    {
+      "description": "Identify quantitative variables (or covariates). The list should be comma-separated and within quotes.",
+      "value-key": "[QVARS_FLAG]",
+      "command-line-flag": "-qVars",
+      "type": "String",
+      "optional": true,
+      "id": "quantitative_vars",
+      "name": "Quantitative variables"
+    },
+    {
+      "description": "Perform Fisher transformation on the response variable (input files) if it is a correlation value.",
+      "value-key": "[R2Z_FLAG]",
+      "command-line-flag": "-r2z",
+      "type": "Flag",
+      "optional": true,
+      "id": "fisher_transform",
+      "name": "Fisher transformation flag"
+    },
+    {
+      "description": "Use AFNI's C io functions (default) or R's io functions.",
+      "value-key": "[CIO_FLAG]",
+      "command-line-flag": "-cio",
+      "type": "String",
+      "optional": true,
+      "id": "io_functions",
+      "name": "IO Functions",
+      "value-choices": [
+        "AFNI",
+        "R"
+      ]
+    },
+    {
+      "description": "List the data structure with a header as the first line. Has to occur last in the script.",
+      "value-key": "[DATA_TABLE_FLAG]",
+      "command-line-flag": "-dataTable",
+      "type": "String",
+      "optional": false,
+      "id": "data_table",
+      "name": "Data table"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX_FLAG]_ISC.nii",
+      "description": "Main output ISC file",
+      "optional": false,
+      "id": "isc_output",
+      "name": "ISC Output File"
+    },
+    {
+      "path-template": "[PREFIX_FLAG]_tstat.nii",
+      "description": "T-statistic of ISC",
+      "optional": true,
+      "id": "tstat_output",
+      "name": "T-statistic Output File"
+    }
+  ]
+}

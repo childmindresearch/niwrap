@@ -1,0 +1,272 @@
+{
+  "name": "3dLME",
+  "tool-version": "2.1.3",
+  "description": "AFNI Group Analysis Program with Linear Mixed-Effects Modeling Approach",
+  "author": "Gang Chen (gangchen@mail.nih.gov)",
+  "url": "https://afni.nimh.nih.gov/sscc/gangc/lme.html",
+  "command-line": "3dLME -prefix [PREFIX] -model [MODEL] -dataTable [DATA_TABLE] -bounds [BOUNDS] -cio [CIO_FLAG] -corStr [COR_STR] -cutoff [CUTOFF] -dbgArgs [DBG_ARGS_FLAG] -jobs [JOBS] -gltCode [GLT_CODE] -gltLabel [GLT_LABEL] -glfLabel [GLF_LABEL] -glfCode [GLF_CODE] -ICC [ICC_FLAG] -ICCb [ICCB_FLAG] -logLik [LOG_LIK_FLAG] -LOGIT [LOGIT_FLAG] -ml [ML_FLAG] -qVarsCenters [QVARS_CENTERS] -qVars [QVARS] -ranEff [RANEFF] -mask [MASK] -num_glf [NUM_GLF] -num_glt [NUM_GLT] -resid [RESID] -RE [RE] -REprefix [REPREFIX] -RIO [RIO_FLAG] -show_allowed_options [SHOW_OPTIONS_FLAG] -SS_type [SS_TYPE]",
+  "inputs": [
+    {
+      "description": "Prefix for output files",
+      "id": "PREFIX",
+      "name": "Output Prefix",
+      "type": "String",
+      "value-key": "[PREFIX]",
+      "optional": false
+    },
+    {
+      "description": "Model formula describing the fixed effects",
+      "id": "MODEL",
+      "name": "Model Formula",
+      "type": "String",
+      "value-key": "[MODEL]",
+      "optional": false
+    },
+    {
+      "description": "Data table description",
+      "id": "DATA_TABLE",
+      "name": "Data Table",
+      "type": "String",
+      "value-key": "[DATA_TABLE]",
+      "optional": false
+    },
+    {
+      "description": "Lower and upper bounds for outlier removal",
+      "id": "BOUNDS",
+      "name": "Outlier Bounds",
+      "type": "Number",
+      "min-list-entries": 2,
+      "max-list-entries": 2,
+      "list": true,
+      "value-key": "[BOUNDS]",
+      "optional": true
+    },
+    {
+      "description": "Use AFNI's C io functions (default) or R's io functions with -Rio",
+      "id": "CIO_FLAG",
+      "name": "CIO Flag",
+      "type": "Flag",
+      "value-key": "[CIO_FLAG]",
+      "optional": true,
+      "command-line-flag": "-cio"
+    },
+    {
+      "description": "Specify the correlation structure of the residuals",
+      "id": "COR_STR",
+      "name": "Correlation Structure",
+      "type": "String",
+      "value-key": "[COR_STR]",
+      "optional": true
+    },
+    {
+      "description": "Specify the cutoff value for accuracy in logistic regression analysis",
+      "id": "CUTOFF",
+      "name": "Cutoff Value",
+      "type": "Number",
+      "value-key": "[CUTOFF]",
+      "optional": true
+    },
+    {
+      "description": "Enable saving parameters for debugging",
+      "id": "DBG_ARGS_FLAG",
+      "name": "Debug Args Flag",
+      "type": "Flag",
+      "value-key": "[DBG_ARGS_FLAG]",
+      "optional": true,
+      "command-line-flag": "-dbgArgs"
+    },
+    {
+      "description": "Number of jobs for parallel computing",
+      "id": "JOBS",
+      "name": "Number of Jobs",
+      "type": "Number",
+      "value-key": "[JOBS]",
+      "optional": true
+    },
+    {
+      "description": "General linear test coding",
+      "id": "GLT_CODE",
+      "name": "GLT Code",
+      "type": "String",
+      "value-key": "[GLT_CODE]",
+      "optional": true
+    },
+    {
+      "description": "Label for general linear test",
+      "id": "GLT_LABEL",
+      "name": "GLT Label",
+      "type": "String",
+      "value-key": "[GLT_LABEL]",
+      "optional": true
+    },
+    {
+      "description": "Label for general linear F-test",
+      "id": "GLF_LABEL",
+      "name": "GLF Label",
+      "type": "String",
+      "value-key": "[GLF_LABEL]",
+      "optional": true
+    },
+    {
+      "description": "General linear F-test coding",
+      "id": "GLF_CODE",
+      "name": "GLF Code",
+      "type": "String",
+      "value-key": "[GLF_CODE]",
+      "optional": true
+    },
+    {
+      "description": "Compute voxel-wise intra-class correlation",
+      "id": "ICC_FLAG",
+      "name": "ICC Flag",
+      "type": "Flag",
+      "value-key": "[ICC_FLAG]",
+      "optional": true,
+      "command-line-flag": "-ICC"
+    },
+    {
+      "description": "Compute voxel-wise intra-class correlation with Bayesian approach",
+      "id": "ICCB_FLAG",
+      "name": "ICCb Flag",
+      "type": "Flag",
+      "value-key": "[ICCB_FLAG]",
+      "optional": true,
+      "command-line-flag": "-ICCb"
+    },
+    {
+      "description": "Include voxel-wise log likelihood in the output",
+      "id": "LOG_LIK_FLAG",
+      "name": "Log Likelihood Flag",
+      "type": "Flag",
+      "value-key": "[LOG_LIK_FLAG]",
+      "optional": true,
+      "command-line-flag": "-logLik"
+    },
+    {
+      "description": "Perform voxel-wise logistic modeling",
+      "id": "LOGIT_FLAG",
+      "name": "Logit Flag",
+      "type": "Flag",
+      "value-key": "[LOGIT_FLAG]",
+      "optional": true,
+      "command-line-flag": "-LOGIT"
+    },
+    {
+      "description": "Use Maximum Likelihood estimation instead of REML",
+      "id": "ML_FLAG",
+      "name": "ML Flag",
+      "type": "Flag",
+      "value-key": "[ML_FLAG]",
+      "optional": true,
+      "command-line-flag": "-ML"
+    },
+    {
+      "description": "Centering values for quantitative variables",
+      "id": "QVARS_CENTERS",
+      "name": "QVars Centers",
+      "type": "String",
+      "value-key": "[QVARS_CENTERS]",
+      "optional": true
+    },
+    {
+      "description": "Identify quantitative variables (or covariates)",
+      "id": "QVARS",
+      "name": "Quantitative Variables",
+      "type": "String",
+      "value-key": "[QVARS]",
+      "optional": true
+    },
+    {
+      "description": "Specify the random effects",
+      "id": "RANEFF",
+      "name": "Random Effects",
+      "type": "String",
+      "value-key": "[RANEFF]",
+      "optional": true
+    },
+    {
+      "description": "Mask file for voxel processing",
+      "id": "MASK",
+      "name": "Mask File",
+      "type": "File",
+      "value-key": "[MASK]",
+      "optional": true
+    },
+    {
+      "description": "Number of general linear F-tests",
+      "id": "NUM_GLF",
+      "name": "Number of GLFs",
+      "type": "Number",
+      "value-key": "[NUM_GLF]",
+      "optional": true
+    },
+    {
+      "description": "Number of general linear t-tests",
+      "id": "NUM_GLT",
+      "name": "Number of GLTs",
+      "type": "Number",
+      "value-key": "[NUM_GLT]",
+      "optional": true
+    },
+    {
+      "description": "Prefix for residuals output file",
+      "id": "RESID",
+      "name": "Residuals Prefix",
+      "type": "String",
+      "value-key": "[RESID]",
+      "optional": true
+    },
+    {
+      "description": "List of variables whose random effects are saved in the output",
+      "id": "RE",
+      "name": "Random Effects Variables",
+      "type": "String",
+      "value-key": "[RE]",
+      "optional": true
+    },
+    {
+      "description": "Prefix for random effects output file",
+      "id": "REPREFIX",
+      "name": "Random Effects Prefix",
+      "type": "String",
+      "value-key": "[REPREFIX]",
+      "optional": true
+    },
+    {
+      "description": "Use R's io functions instead of AFNI's C io functions",
+      "id": "RIO_FLAG",
+      "name": "RIO Flag",
+      "type": "Flag",
+      "value-key": "[RIO_FLAG]",
+      "optional": true,
+      "command-line-flag": "-Rio"
+    },
+    {
+      "description": "List of allowed options",
+      "id": "SHOW_OPTIONS_FLAG",
+      "name": "Show Allowed Options Flag",
+      "type": "Flag",
+      "value-key": "[SHOW_OPTIONS_FLAG]",
+      "optional": true,
+      "command-line-flag": "-show_allowed_options"
+    },
+    {
+      "description": "Specify the type for sums of squares in the F-statistics",
+      "id": "SS_TYPE",
+      "name": "Sums of Squares Type",
+      "type": "Number",
+      "value-key": "[SS_TYPE]",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[PREFIX].nii",
+      "description": "Output file in NIfTI format",
+      "optional": false,
+      "name": "Output NIfTI File",
+      "id": "output_nifti"
+    }
+  ],
+  "schema-version": "0.5"
+}

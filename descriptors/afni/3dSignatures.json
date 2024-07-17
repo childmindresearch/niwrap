@@ -1,0 +1,80 @@
+{
+  "tool-version": "1.0.0",
+  "name": "3dSignatures",
+  "author": "3dSignatures Inc.",
+  "description": "3dSignatures analysis tool for 3D genome organization",
+  "url": "https://3dsignatures.com",
+  "command-line": "3dSignatures [INPUT_FILE] [OUTPUT_FILE] [SEGMENTATION_FLAG] [FILTER_FLAG] [THRESHOLD] [SMOOTHING]",
+  "container-image": {
+    "image": "docker.io/3dsignatures/tool:1.0.0",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input file containing 3D genome data (e.g. genome_data.txt)",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "description": "Output file to store analysis results (e.g. analysis_results.txt)",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "--segmentation",
+      "description": "Flag to apply genome segmentation",
+      "value-key": "[SEGMENTATION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "segmentation",
+      "name": "Segmentation flag"
+    },
+    {
+      "command-line-flag": "--filter",
+      "description": "Flag to apply data filtering",
+      "value-key": "[FILTER_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "filter",
+      "name": "Filter flag"
+    },
+    {
+      "command-line-flag": "--threshold",
+      "description": "Threshold level for data filtering; default=0.5",
+      "value-key": "[THRESHOLD]",
+      "type": "Number",
+      "maximum": 1,
+      "minimum": 0,
+      "integer": false,
+      "optional": true,
+      "id": "threshold",
+      "name": "Threshold"
+    },
+    {
+      "command-line-flag": "--smoothing",
+      "description": "Apply smoothing with specified kernel size",
+      "value-key": "[SMOOTHING]",
+      "type": "Number",
+      "optional": true,
+      "id": "smoothing",
+      "name": "Smoothing kernel size"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE].txt",
+      "description": "Main analysis results file",
+      "optional": false,
+      "id": "results_file",
+      "name": "Results file"
+    }
+  ]
+}

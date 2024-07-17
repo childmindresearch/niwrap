@@ -1,0 +1,173 @@
+{
+  "tool-version": "1.0",
+  "name": "1dSEM",
+  "author": "Gang Chen, Daniel R. Glen, Jason L. Stein, Andreas S. Meyer-Lindenberg, Ziad S. Saad, Robert W. Cox",
+  "descriptor-url": "https://afni.nimh.nih.gov/sscc/gangc/PathAna.html",
+  "description": "Computes path coefficients for connection matrix in Structural Equation Modeling (SEM).",
+  "url": "https://afni.nimh.nih.gov/sscc/gangc/PathAna.html",
+  "command-line": "1dSEM -theta [THETA_FILE] -C [CORRELATION_MATRIX] -psi [RESIDUAL_VARIANCE] -DF [DEGREES_OF_FREEDOM] [OPTIONS]",
+  "container-image": {
+    "image": "your-container-image:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Connection matrix 1D file with initial representation",
+      "value-key": "[THETA_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "theta",
+      "name": "Theta File"
+    },
+    {
+      "description": "Correlation matrix 1D file",
+      "value-key": "[CORRELATION_MATRIX]",
+      "type": "File",
+      "optional": false,
+      "id": "correlation_matrix",
+      "name": "Correlation Matrix"
+    },
+    {
+      "description": "Residual variance vector 1D file",
+      "value-key": "[RESIDUAL_VARIANCE]",
+      "type": "File",
+      "optional": false,
+      "id": "residual_variance",
+      "name": "Residual Variance"
+    },
+    {
+      "description": "Degrees of freedom",
+      "value-key": "[DEGREES_OF_FREEDOM]",
+      "type": "Number",
+      "optional": false,
+      "id": "degrees_of_freedom",
+      "name": "Degrees of Freedom"
+    },
+    {
+      "command-line-flag": "-max_iter",
+      "description": "Maximum number of iterations for convergence (Default=10000). Values can range from 1 to any positive integer less than 10000.",
+      "value-key": "[MAX_ITER]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "max_iterations",
+      "name": "Maximum Iterations"
+    },
+    {
+      "command-line-flag": "-nrand",
+      "description": "Number of random trials before optimization (Default = 100).",
+      "value-key": "[NRAND]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "number_random_trials",
+      "name": "Random Trials"
+    },
+    {
+      "command-line-flag": "-limits",
+      "description": "Lower and upper limits for connection coefficients (Default = -1.0 to 1.0)",
+      "value-key": "[LIMITS]",
+      "type": "Number",
+      "list": true,
+      "max-list-entries": 2,
+      "optional": true,
+      "id": "limits",
+      "min-list-entries": 2,
+      "name": "Limits"
+    },
+    {
+      "command-line-flag": "-calccost",
+      "description": "No modeling at all, just calculate the cost function for the coefficients as given in the theta file.",
+      "value-key": "[CALC_COST]",
+      "type": "Flag",
+      "optional": true,
+      "id": "calculate_cost",
+      "name": "Calculate Cost Flag"
+    },
+    {
+      "command-line-flag": "-verbose",
+      "description": "Print info every nnnnn steps",
+      "value-key": "[VERBOSE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose"
+    },
+    {
+      "command-line-flag": "-tree_growth",
+      "description": "Search for best model by growing a model for one additional coefficient from the previous model for n-1 coefficients.",
+      "value-key": "[TREE_GROWTH]",
+      "type": "Flag",
+      "optional": true,
+      "id": "tree_growth",
+      "name": "Tree Growth Flag"
+    },
+    {
+      "command-line-flag": "-model_search",
+      "description": "Search for best model by growing a model for one additional coefficient from the previous model for n-1 coefficients.",
+      "value-key": "[MODEL_SEARCH]",
+      "type": "Flag",
+      "optional": true,
+      "id": "model_search",
+      "name": "Model Search Flag"
+    },
+    {
+      "command-line-flag": "-max_paths",
+      "description": "Maximum number of paths to include (Default = 1000).",
+      "value-key": "[MAX_PATHS]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "max_paths",
+      "name": "Maximum Paths"
+    },
+    {
+      "command-line-flag": "-stop_cost",
+      "description": "Stop searching for paths when cost function is below this value (Default = 0.1).",
+      "value-key": "[STOP_COST]",
+      "type": "Number",
+      "optional": true,
+      "id": "stop_cost",
+      "name": "Stop Cost"
+    },
+    {
+      "command-line-flag": "-forest_growth",
+      "description": "Search over all possible models by comparing models at incrementally increasing number of path coefficients.",
+      "value-key": "[FOREST_GROWTH]",
+      "type": "Flag",
+      "optional": true,
+      "id": "forest_growth",
+      "name": "Forest Growth Flag"
+    },
+    {
+      "command-line-flag": "-grow_all",
+      "description": "Search over all possible models by comparing models at incrementally increasing number of path coefficients.",
+      "value-key": "[GROW_ALL]",
+      "type": "Flag",
+      "optional": true,
+      "id": "grow_all",
+      "name": "Grow All Flag"
+    },
+    {
+      "command-line-flag": "-leafpicker",
+      "description": "Expands the search optimization to look at multiple paths to avoid local minimum. This method is the default technique for tree growth and standard coefficient searches.",
+      "value-key": "[LEAFPICKER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "leafpicker",
+      "name": "Leafpicker Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "output.txt",
+      "description": "Output printed to the terminal. This file may be redirected.",
+      "optional": true,
+      "id": "output_file",
+      "name": "Output File"
+    }
+  ]
+}

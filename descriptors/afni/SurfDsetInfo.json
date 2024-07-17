@@ -1,0 +1,184 @@
+{
+  "tool-version": "Jun 30 2023",
+  "name": "SurfDsetInfo",
+  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "description": "Provides information about surface datasets (DSET).",
+  "command-line": "SurfDsetInfo [OPTIONS] [DATASETS]",
+  "inputs": [
+    {
+      "description": "Input dataset",
+      "value-key": "[DSET]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "input_dsets",
+      "name": "Input Datasets",
+      "command-line-flag": "-input"
+    },
+    {
+      "description": "Debug level. If DBG = 2, show full dataset information in NIML form.",
+      "command-line-flag": "-debug",
+      "value-key": "[DBG_LEVEL]",
+      "type": "Number",
+      "optional": true,
+      "id": "debug_level",
+      "name": "Debug Level",
+      "integer": true,
+      "minimum": 0
+    },
+    {
+      "description": "Ignore any Rotate, Volreg, Tagalign, or WarpDrive transformations",
+      "command-line-flag": "-novolreg",
+      "value-key": "[NOVOLREG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "novolreg",
+      "name": "Ignore Volume Registration Transformations"
+    },
+    {
+      "description": "Same as -novolreg",
+      "command-line-flag": "-noxform",
+      "value-key": "[NOXFORM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "noxform",
+      "name": "No Transformations"
+    },
+    {
+      "description": "Set environment variable",
+      "command-line-flag": "-setenv",
+      "value-key": "[ENVIRONMENT_VARIABLE]",
+      "type": "String",
+      "optional": true,
+      "id": "setenv",
+      "name": "Set Environment Variable"
+    },
+    {
+      "description": "Turns on In/Out debug and Memory tracing",
+      "command-line-flag": "-trace",
+      "value-key": "[TRACE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "trace",
+      "name": "IO and Memory Tracing"
+    },
+    {
+      "description": "Turns on extreme tracing",
+      "command-line-flag": "-TRACE",
+      "value-key": "[EXTREME_TRACE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "extreme_trace",
+      "name": "Extreme Tracing"
+    },
+    {
+      "description": "Turn off memory tracing",
+      "command-line-flag": "-nomall",
+      "value-key": "[NOMALL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nomall",
+      "name": "Turn Off Memory Tracing"
+    },
+    {
+      "description": "Turn on memory tracing (default)",
+      "command-line-flag": "-yesmall",
+      "value-key": "[YESMALL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "yesmall",
+      "name": "Turn On Memory Tracing"
+    },
+    {
+      "description": "Mini help",
+      "command-line-flag": "-h",
+      "value-key": "[MINI_HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mini_help",
+      "name": "Mini Help"
+    },
+    {
+      "description": "Show entire help output",
+      "command-line-flag": "-help",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    },
+    {
+      "description": "Show extreme help",
+      "command-line-flag": "-HELP",
+      "value-key": "[EXTREME_HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "extreme_help",
+      "name": "Extreme Help"
+    },
+    {
+      "description": "Open help in text editor",
+      "command-line-flag": "-h_view",
+      "value-key": "[HELP_VIEW_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_view",
+      "name": "Help View"
+    },
+    {
+      "description": "Open help in web browser",
+      "command-line-flag": "-h_web",
+      "value-key": "[HELP_WEB_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_web",
+      "name": "Help Web"
+    },
+    {
+      "description": "Look for lines in help output that match the specified word",
+      "command-line-flag": "-h_find",
+      "value-key": "[HELP_FIND_WORD]",
+      "type": "String",
+      "optional": true,
+      "id": "help_find",
+      "name": "Help Find Word"
+    },
+    {
+      "description": "Show unedited help string",
+      "command-line-flag": "-h_raw",
+      "value-key": "[HELP_RAW_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_raw",
+      "name": "Help Raw"
+    },
+    {
+      "description": "Show help string in sphinx format, but do not autoformat",
+      "command-line-flag": "-h_spx",
+      "value-key": "[HELP_SPX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_spx",
+      "name": "Help SPX"
+    },
+    {
+      "description": "Show help string in sphinx with autoformatting",
+      "command-line-flag": "-h_aspx",
+      "value-key": "[HELP_ASPX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_aspx",
+      "name": "Help ASPX"
+    },
+    {
+      "description": "Attempt to identify all options for the program from the help output",
+      "command-line-flag": "-all_opts",
+      "value-key": "[ALL_OPTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "all_opts",
+      "name": "All Options"
+    }
+  ],
+  "schema-version": "0.5"
+}

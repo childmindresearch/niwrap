@@ -1,0 +1,32 @@
+{
+  "tool-version": "1.0",
+  "name": "@GetAfniPrefix",
+  "author": "Ziad Saad",
+  "description": "A tool to extract AFNI prefix from a given file path",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniPrefix.html",
+  "command-line": "@GetAfniPrefix [NAME] [SUFFIX]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "hub.docker.com",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input file path for which the AFNI prefix will be extracted",
+      "value-key": "[NAME]",
+      "type": "File",
+      "optional": false,
+      "id": "name",
+      "name": "Input file path"
+    },
+    {
+      "description": "Suffix string to append to the returned prefix",
+      "value-key": "[SUFFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "suffix",
+      "name": "Suffix"
+    }
+  ],
+  "schema-version": "0.5"
+}

@@ -1,0 +1,69 @@
+{
+  "tool-version": "1.0",
+  "name": "unWarpEPI.py",
+  "author": "Vinai Roopchansingh and Daniel Glen",
+  "description": "Routine to unwarp EPI data set using another data set with opposite polarity",
+  "command-line": "unWarpEPI.py -f [FORWARD] -r [REVERSE] -a [ANAT4WARP] -d [DATA] -s [SUBJID] [GIANT_MOVE_FLAG]",
+  "container-image": {
+    "image": "neurodocker_image/unwarpepi:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Calibration matching data to be corrected",
+      "id": "forward",
+      "name": "Forward",
+      "type": "File",
+      "value-key": "[FORWARD]",
+      "command-line-flag": "-f",
+      "optional": false
+    },
+    {
+      "description": "Calibration with opposing polarity to data to be corrected",
+      "id": "reverse",
+      "name": "Reverse",
+      "type": "File",
+      "value-key": "[REVERSE]",
+      "command-line-flag": "-r",
+      "optional": false
+    },
+    {
+      "description": "Reference anatomical dataset",
+      "id": "anat4warp",
+      "name": "Anat4warp",
+      "type": "File",
+      "value-key": "[ANAT4WARP]",
+      "command-line-flag": "-a",
+      "optional": false
+    },
+    {
+      "description": "Data to be corrected (same polarity as forward calibration data). Separate with commas if specifying multiple datasets.",
+      "id": "data",
+      "name": "Data",
+      "type": "String",
+      "value-key": "[DATA]",
+      "command-line-flag": "-d",
+      "optional": false
+    },
+    {
+      "description": "ID of subject to be corrected",
+      "id": "subjID",
+      "name": "SubjID",
+      "type": "String",
+      "value-key": "[SUBJID]",
+      "command-line-flag": "-s",
+      "optional": false
+    },
+    {
+      "description": "Set giant_move option for align_epi_anat if final align of anatomy to corrected EPI fails if datasets are far apart in space.",
+      "id": "giant_move",
+      "name": "Giant Move",
+      "type": "Flag",
+      "value-key": "[GIANT_MOVE_FLAG]",
+      "command-line-flag": "-g",
+      "optional": true
+    }
+  ],
+  "schema-version": "0.5"
+}

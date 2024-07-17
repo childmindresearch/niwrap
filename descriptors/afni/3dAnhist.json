@@ -1,0 +1,102 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3dAnhist",
+  "author": "RWCox",
+  "description": "Tool to analyze histogram peaks in a T1-weighted high-res brain image dataset.",
+  "command-line": "3dAnhist [DATASET] [QUIET_FLAG] [DUMP_HISTOGRAM_FLAG] [NO_SCURVE_FLAG] [WINSORIZE] [TOP_2PEAKS_FLAG] [LABEL] [FILENAME]",
+  "container-image": {
+    "type": "docker",
+    "index": "index.docker.io",
+    "image": "afni/afni:latest"
+  },
+  "inputs": [
+    {
+      "id": "dataset",
+      "name": "Input Dataset",
+      "type": "File",
+      "value-key": "[DATASET]",
+      "optional": false,
+      "description": "Input dataset, should be T1-weighted high-res brain image (shorts only)."
+    },
+    {
+      "id": "quiet",
+      "name": "Quiet Flag",
+      "type": "Flag",
+      "command-line-flag": "-q",
+      "value-key": "[QUIET_FLAG]",
+      "optional": true,
+      "description": "Suppress progress reports."
+    },
+    {
+      "id": "dump_histogram",
+      "name": "Dump Histogram Flag",
+      "type": "Flag",
+      "command-line-flag": "-h",
+      "value-key": "[DUMP_HISTOGRAM_FLAG]",
+      "optional": true,
+      "description": "Dump histogram data to Anhist.1D and plot to Anhist.ps."
+    },
+    {
+      "id": "no_scurve",
+      "name": "No Scurve Flag",
+      "type": "Flag",
+      "command-line-flag": "-F",
+      "value-key": "[NO_SCURVE_FLAG]",
+      "optional": true,
+      "description": "Do not fit histogram with curves."
+    },
+    {
+      "id": "winsorize",
+      "name": "Winsorize",
+      "type": "String",
+      "command-line-flag": "-w",
+      "value-key": "[WINSORIZE]",
+      "optional": true,
+      "description": "Apply Winsorizing filter prior to histogram scan. Can specify number of times (e.g., -w7)."
+    },
+    {
+      "id": "top_2peaks",
+      "name": "Analyze Top 2 Peaks Flag",
+      "type": "Flag",
+      "command-line-flag": "-2",
+      "value-key": "[TOP_2PEAKS_FLAG]",
+      "optional": true,
+      "description": "Analyze top 2 peaks only, for overlap, etc."
+    },
+    {
+      "id": "label",
+      "name": "Label",
+      "type": "String",
+      "command-line-flag": "-label",
+      "value-key": "[LABEL]",
+      "optional": true,
+      "description": "Use specified label for Anhist.ps plot file instead of the input dataset filename."
+    },
+    {
+      "id": "filename",
+      "name": "Filename",
+      "type": "String",
+      "command-line-flag": "-fname",
+      "value-key": "[FILENAME]",
+      "optional": true,
+      "description": "Use specified filename instead of 'Anhist'."
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "Anhist.1D",
+      "description": "Dumped histogram data",
+      "optional": true,
+      "id": "output_1D",
+      "name": "Output 1D"
+    },
+    {
+      "path-template": "Anhist.ps",
+      "description": "Plot of histogram data",
+      "optional": true,
+      "id": "output_ps",
+      "name": "Output PS"
+    }
+  ]
+}

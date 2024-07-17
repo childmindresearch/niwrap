@@ -1,0 +1,27 @@
+{
+  "command-line": "imdump [INPUT_IMAGE]",
+  "tool-version": "1.0.0",
+  "name": "imdump",
+  "description": "Prints out nonzero pixels in an image",
+  "author": "Unknown",
+  "inputs": [
+    {
+      "id": "input_image",
+      "name": "Input Image",
+      "type": "File",
+      "optional": false,
+      "value-key": "[INPUT_IMAGE]",
+      "description": "Input image file to be processed."
+    }
+  ],
+  "output-files": [
+    {
+      "id": "stdout",
+      "name": "Standard Output",
+      "path-template": "stdout.txt",
+      "description": "Nonzero pixels in the format: x-index y-index value, one pixel per line.",
+      "optional": true
+    }
+  ],
+  "schema-version": "0.5"
+}

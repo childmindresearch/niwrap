@@ -1,0 +1,87 @@
+{
+  "tool-version": "1.0.0",
+  "name": "afni_R_package_install",
+  "author": "Justin Rajendra",
+  "description": "Helper script to install R packages for various afni-ish purposes.",
+  "command-line": "@afni_R_package_install [AFNI_FLAG] [SHINY_FLAG] [BAYES_VIEW_FLAG] [CIRCOS_FLAG] [CUSTOM_PACKAGES] [MIRROR] [HELP_FLAG]",
+  "container-image": {
+    "image": "afni/afni_container:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-afni",
+      "description": "Install AFNI related R packages.",
+      "value-key": "[AFNI_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "afni",
+      "name": "AFNI Packages"
+    },
+    {
+      "command-line-flag": "-shiny",
+      "description": "Install AFNI related shiny app packages.",
+      "value-key": "[SHINY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "shiny",
+      "name": "Shiny App Packages"
+    },
+    {
+      "command-line-flag": "-bayes_view",
+      "description": "Install R packages for bayes_view.",
+      "value-key": "[BAYES_VIEW_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "bayes_view",
+      "name": "bayes_view Packages"
+    },
+    {
+      "command-line-flag": "-circos",
+      "description": "Install OmicCircos for FATCAT_matplot.",
+      "value-key": "[CIRCOS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "circos",
+      "name": "CIRCOS Packages"
+    },
+    {
+      "command-line-flag": "-custom",
+      "description": "Install custom R packages (space-separated list). Must start and end with double quotes.",
+      "value-key": "[CUSTOM_PACKAGES]",
+      "type": "String",
+      "optional": true,
+      "id": "custom_packages",
+      "name": "Custom Packages"
+    },
+    {
+      "command-line-flag": "-mirror",
+      "description": "Set the CRAN mirror to a custom URL.",
+      "value-key": "[MIRROR]",
+      "type": "String",
+      "optional": true,
+      "id": "mirror",
+      "name": "CRAN Mirror"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Show help message.",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "R_packages_installed.txt",
+      "description": "A log file listing all installed R packages.",
+      "optional": true,
+      "id": "install_log",
+      "name": "Installation Log"
+    }
+  ]
+}

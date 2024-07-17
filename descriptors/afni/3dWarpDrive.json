@@ -1,0 +1,370 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3dWarpDrive",
+  "author": "RWCox",
+  "description": "Warp a dataset to match another one (the base) using an affine transformation.",
+  "command-line": "3dWarpDrive [TRANSFORM_OPTION] [INTERPOLATION_OPTION] -base [BASE_DATASET] -prefix [PREFIX] [TECHNICAL_OPTIONS] [dataset]",
+  "container-image": {
+    "image": "your-docker-image:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset",
+      "value-key": "[dataset]",
+      "type": "File",
+      "optional": false,
+      "id": "dataset",
+      "name": "Input dataset"
+    },
+    {
+      "command-line-flag": "-base",
+      "description": "Load dataset as the base to which the input dataset will be matched. This is a mandatory option.",
+      "value-key": "[BASE_DATASET]",
+      "type": "File",
+      "optional": false,
+      "id": "base_dataset",
+      "name": "Base dataset"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Sets the prefix of the output dataset. If 'NULL', no output dataset is written.",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Output prefix"
+    },
+    {
+      "command-line-flag": "-shift_only",
+      "description": "3 parameters (shifts)",
+      "value-key": "[TRANSFORM_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "shift_only",
+      "name": "Shift Only"
+    },
+    {
+      "command-line-flag": "-shift_rotate",
+      "description": "6 parameters (shifts + angles)",
+      "value-key": "[TRANSFORM_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "shift_rotate",
+      "name": "Shift and Rotate"
+    },
+    {
+      "command-line-flag": "-shift_rotate_scale",
+      "description": "9 parameters (shifts + angles + scale factors)",
+      "value-key": "[TRANSFORM_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "shift_rotate_scale",
+      "name": "Shift, Rotate, and Scale"
+    },
+    {
+      "command-line-flag": "-affine_general",
+      "description": "12 parameters (3 shifts + 3x3 matrix)",
+      "value-key": "[TRANSFORM_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "affine_general",
+      "name": "Affine General"
+    },
+    {
+      "command-line-flag": "-bilinear_general",
+      "description": "39 parameters (3 + 3x3 + 3x3x3). Not implemented and will never be.",
+      "value-key": "[TRANSFORM_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "bilinear_general",
+      "name": "Bilinear General"
+    },
+    {
+      "command-line-flag": "-linear",
+      "description": "Linear interpolation method",
+      "value-key": "[INTERPOLATION_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "linear",
+      "name": "Linear interpolation"
+    },
+    {
+      "command-line-flag": "-cubic",
+      "description": "Cubic interpolation method",
+      "value-key": "[INTERPOLATION_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "cubic",
+      "name": "Cubic interpolation"
+    },
+    {
+      "command-line-flag": "-NN",
+      "description": "Nearest neighbor interpolation method [default]",
+      "value-key": "[INTERPOLATION_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "NN",
+      "name": "Nearest Neighbor interpolation"
+    },
+    {
+      "command-line-flag": "-quintic",
+      "description": "Quintic interpolation method",
+      "value-key": "[INTERPOLATION_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "quintic",
+      "name": "Quintic interpolation"
+    },
+    {
+      "command-line-flag": "-input",
+      "description": "Specify the input dataset anywhere in the command line option list.",
+      "value-key": "[INPUT_DATASET]",
+      "type": "File",
+      "optional": true,
+      "id": "input_dataset",
+      "name": "Input dataset (alternative option)"
+    },
+    {
+      "command-line-flag": "-verb",
+      "description": "Print out lots of information along the way.",
+      "value-key": "[VERB]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbosity_flag",
+      "name": "Verbose Flag"
+    },
+    {
+      "command-line-flag": "-summ",
+      "description": "Save summary of calculations into text file. If value is '-', summary goes to stdout.",
+      "value-key": "[SUMMARY]",
+      "type": "String",
+      "optional": true,
+      "id": "summary_file",
+      "name": "Summary file"
+    },
+    {
+      "command-line-flag": "-maxite",
+      "description": "Allow up to 'm' iterations for convergence.",
+      "value-key": "[MAX_ITE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "max_iterations",
+      "name": "Max Iterations"
+    },
+    {
+      "command-line-flag": "-delta",
+      "description": "Distance, in voxel size, used to compute image derivatives using finite differences. [Default=1.0]",
+      "value-key": "[DELTA]",
+      "type": "Number",
+      "optional": true,
+      "id": "delta",
+      "name": "Delta for Finite Differences"
+    },
+    {
+      "command-line-flag": "-weight",
+      "description": "Set the weighting applied to each voxel proportional to the brick specified here. [Default=computed by program from base]",
+      "value-key": "[WEIGHT]",
+      "type": "String",
+      "optional": true,
+      "id": "weight",
+      "name": "Weight Dataset"
+    },
+    {
+      "command-line-flag": "-thresh",
+      "description": "Set the convergence parameter to be RMS 't' voxels movement between iterations. [Default=0.03]",
+      "value-key": "[THRESH]",
+      "type": "Number",
+      "optional": true,
+      "id": "convergence_thresh",
+      "name": "Convergence Threshold"
+    },
+    {
+      "command-line-flag": "-twopass",
+      "description": "Do the parameter estimation in two passes, coarse-but-fast first, then fine-but-slow second.",
+      "value-key": "[TWOPASS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "twopass",
+      "name": "Two-Pass Estimation"
+    },
+    {
+      "command-line-flag": "-final",
+      "description": "Set the final warp to be interpolated using 'mode'.",
+      "value-key": "[FINAL_MODE]",
+      "type": "String",
+      "optional": true,
+      "id": "final_mode",
+      "name": "Final Interpolation Mode"
+    },
+    {
+      "command-line-flag": "-parfix",
+      "description": "Fix the n'th parameter of the warp model to the value 'v'. More than one -parfix option can be used.",
+      "value-key": "[PARFIX]",
+      "type": "String",
+      "optional": true,
+      "list": true,
+      "id": "parfix",
+      "name": "Fix Parameters"
+    },
+    {
+      "command-line-flag": "-1Dfile",
+      "description": "Write out the warping parameters to this file.",
+      "value-key": "[1DFILE]",
+      "type": "File",
+      "optional": true,
+      "id": "oned_file",
+      "name": "Warping Parameters File"
+    },
+    {
+      "command-line-flag": "-float",
+      "description": "Write output dataset in float format, even if input dataset is short or byte.",
+      "value-key": "[FLOAT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "float_format",
+      "name": "Float Format Output"
+    },
+    {
+      "command-line-flag": "-coarserot",
+      "description": "Initialize shift+rotation parameters by a brute force coarse search.",
+      "value-key": "[COARSEROT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "coarserot_init",
+      "name": "Coarse Rotation Initialization"
+    },
+    {
+      "command-line-flag": "-1Dmatrix_save",
+      "description": "Save base-to-input transformation matrices in specified file. If the file does not end in '.1D', the program will append '.aff12.1D'.",
+      "value-key": "[1DMATRIX_SAVE]",
+      "type": "File",
+      "optional": true,
+      "id": "oned_matrix_save",
+      "name": "Transformation Matrices File"
+    },
+    {
+      "command-line-flag": "-SDU",
+      "description": "Set the order of the matrix multiplication for the affine transformations (S=triangular shear, D=diagonal scaling matrix, U=rotation matrix).",
+      "value-key": "[MATRIX_ORDER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sdu_order",
+      "name": "Matrix Order SDU"
+    },
+    {
+      "command-line-flag": "-SUD",
+      "description": "Set the order of the matrix multiplication for the affine transformations (S=triangular shear, U=rotation matrix, D=diagonal scaling matrix).",
+      "value-key": "[MATRIX_ORDER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sud_order",
+      "name": "Matrix Order SUD"
+    },
+    {
+      "command-line-flag": "-DSU",
+      "description": "Set the order of the matrix multiplication for the affine transformations (D=diagonal scaling matrix, S=triangular shear, U=rotation matrix).",
+      "value-key": "[MATRIX_ORDER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dsu_order",
+      "name": "Matrix Order DSU"
+    },
+    {
+      "command-line-flag": "-DUS",
+      "description": "Set the order of the matrix multiplication for the affine transformations (D=diagonal scaling matrix, U=rotation matrix, S=triangular shear).",
+      "value-key": "[MATRIX_ORDER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dus_order",
+      "name": "Matrix Order DUS"
+    },
+    {
+      "command-line-flag": "-USD",
+      "description": "Set the order of the matrix multiplication for the affine transformations (U=rotation matrix, S=triangular shear, D=diagonal scaling matrix).",
+      "value-key": "[MATRIX_ORDER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "usd_order",
+      "name": "Matrix Order USD"
+    },
+    {
+      "command-line-flag": "-UDS",
+      "description": "Set the order of the matrix multiplication for the affine transformations (U=rotation matrix, D=diagonal scaling matrix, S=triangular shear).",
+      "value-key": "[MATRIX_ORDER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "uds_order",
+      "name": "Matrix Order UDS"
+    },
+    {
+      "command-line-flag": "-Supper",
+      "description": "Set the S matrix to be upper triangular.",
+      "value-key": "[S_MATRIX]",
+      "type": "Flag",
+      "optional": true,
+      "id": "supper_s_matrix",
+      "name": "Upper Triangular S Matrix"
+    },
+    {
+      "command-line-flag": "-Slower",
+      "description": "Set the S matrix to be lower triangular.",
+      "value-key": "[S_MATRIX]",
+      "type": "Flag",
+      "optional": true,
+      "id": "slower_s_matrix",
+      "name": "Lower Triangular S Matrix"
+    },
+    {
+      "command-line-flag": "-ashift",
+      "description": "Apply the shift parameters after the matrix transformation.",
+      "value-key": "[SHIFT_ORDER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ashift",
+      "name": "Shift After Transformation"
+    },
+    {
+      "command-line-flag": "-bshift",
+      "description": "Apply the shift parameters before the matrix transformation.",
+      "value-key": "[SHIFT_ORDER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "bshift",
+      "name": "Shift Before Transformation"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[PREFIX]+orig",
+      "description": "Warped dataset output",
+      "optional": true,
+      "id": "output_dataset",
+      "name": "Output Dataset"
+    },
+    {
+      "path-template": "[SUMMARY]",
+      "description": "Summary of calculations",
+      "optional": true,
+      "id": "output_summary",
+      "name": "Summary File"
+    },
+    {
+      "path-template": "[1DFILE]",
+      "description": "File with warping parameters",
+      "optional": true,
+      "id": "oned_output_file",
+      "name": "Warping Parameters File"
+    },
+    {
+      "path-template": "[1DMATRIX_SAVE]",
+      "description": "File with transformation matrices",
+      "optional": true,
+      "id": "matrix_output_file",
+      "name": "Transformation Matrices File"
+    }
+  ],
+  "schema-version": "0.5"
+}

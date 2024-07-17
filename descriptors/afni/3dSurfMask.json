@@ -1,0 +1,104 @@
+{
+  "tool-version": "latest",
+  "name": "3dSurfMask",
+  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "description": "Creates volumetric datasets marking voxels based on their location relative to a surface",
+  "url": "https://afni.nimh.nih.gov",
+  "command-line": "3dSurfMask <-i_TYPE SURFACE> <-prefix PREFIX> <-grid_parent GRID_VOL> [<fill_method> <SURF_VOL> <mask_only> <flip_orientation> <no_dist>]",
+  "inputs": [
+    {
+      "description": "Specify input surface.",
+      "value-key": "[i_TYPE]",
+      "type": "String",
+      "optional": false,
+      "id": "surface_type",
+      "name": "Surface Type"
+    },
+    {
+      "description": "Specify input surface filename.",
+      "value-key": "[SURFACE]",
+      "type": "File",
+      "optional": false,
+      "id": "surface_file",
+      "name": "Surface File"
+    },
+    {
+      "description": "Prefix of output dataset.",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Prefix"
+    },
+    {
+      "description": "Specifies the grid for the output volume.",
+      "value-key": "[GRID_VOL]",
+      "type": "File",
+      "optional": false,
+      "id": "grid_parent",
+      "name": "Grid Parent"
+    },
+    {
+      "command-line-flag": "-fill_method",
+      "description": "Fill method: SLOW or FAST (default: FAST).",
+      "value-key": "[METH]",
+      "type": "String",
+      "optional": true,
+      "id": "fill_method",
+      "name": "Fill Method"
+    },
+    {
+      "command-line-flag": "-sv",
+      "description": "Specify the surface volume.",
+      "value-key": "[SURF_VOL]",
+      "type": "File",
+      "optional": true,
+      "id": "surface_volume",
+      "name": "Surface Volume"
+    },
+    {
+      "command-line-flag": "-mask_only",
+      "description": "Produce an output dataset where voxels are 1 inside the surface and 0 outside.",
+      "value-key": "[MASK_ONLY]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mask_only",
+      "name": "Mask Only"
+    },
+    {
+      "command-line-flag": "-flip_orientation",
+      "description": "Flip triangle winding of surface mesh.",
+      "value-key": "[FLIP_ORIENTATION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "flip_orientation",
+      "name": "Flip Orientation"
+    },
+    {
+      "command-line-flag": "-no_dist",
+      "description": "Do not compute the distances, just the mask from the first step.",
+      "value-key": "[NO_DIST]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_distance",
+      "name": "No Distance"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX].m+orig.BRIK",
+      "description": "Main output mask dataset.",
+      "optional": false,
+      "id": "output_mask",
+      "name": "Output Mask"
+    },
+    {
+      "path-template": "[PREFIX].d+orig.BRIK",
+      "description": "Dataset reflecting voxel shortest distances to the surface.",
+      "optional": true,
+      "id": "distance_dataset",
+      "name": "Distance Dataset"
+    }
+  ]
+}

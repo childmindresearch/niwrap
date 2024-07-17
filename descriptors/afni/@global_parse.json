@@ -1,0 +1,42 @@
+{
+  "tool-version": "1.0",
+  "name": "global_parse",
+  "author": "Anonymous",
+  "description": "Script to parse global help options for other scripts",
+  "url": "https://example.com/global_parse",
+  "command-line": "global_parse [PROGRAM_NAME] [OPTIONS]",
+  "container-image": {
+    "image": "example/global-parse:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "The name of the program whose help output is sought",
+      "value-key": "[PROGRAM_NAME]",
+      "type": "String",
+      "optional": false,
+      "id": "program_name",
+      "name": "Program Name"
+    },
+    {
+      "description": "Options to be passed to the specified program",
+      "value-key": "[OPTIONS]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "options",
+      "name": "Program Options"
+    },
+    {
+      "command-line-flag": "-gopts_help",
+      "description": "Global help options",
+      "value-key": "[GLOBAL_HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "global_help",
+      "name": "Global Help Flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

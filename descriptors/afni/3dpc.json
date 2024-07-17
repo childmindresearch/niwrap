@@ -1,0 +1,191 @@
+{
+  "tool-version": "AFNI_23.1.10",
+  "name": "3dpc",
+  "author": "AFNI Development Team",
+  "description": "Principal Component Analysis of 3D Datasets",
+  "command-line": "3dpc [OPTIONS] [INPUT_DATASETS...]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset(s) with sub-brick selector list support",
+      "value-key": "[INPUT_DATASETS]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "datasets",
+      "name": "Input datasets"
+    },
+    {
+      "command-line-flag": "-dmean",
+      "description": "Remove the mean from each input brick (across space)",
+      "value-key": "[DMEAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dmean",
+      "name": "Demean across space flag"
+    },
+    {
+      "command-line-flag": "-vmean",
+      "description": "Remove the mean from each input voxel (across bricks)",
+      "value-key": "[VMEAN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "vmean",
+      "name": "Demean across bricks flag"
+    },
+    {
+      "command-line-flag": "-vnorm",
+      "description": "L2 normalize each input voxel time series",
+      "value-key": "[VNORM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "vnorm",
+      "name": "Voxel normalization flag"
+    },
+    {
+      "command-line-flag": "-normalize",
+      "description": "L2 normalize each input brick (after mean subtraction)",
+      "value-key": "[NORMALIZE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "normalize",
+      "name": "Brick normalization flag"
+    },
+    {
+      "command-line-flag": "-nscale",
+      "description": "Scale the covariance matrix by the number of samples",
+      "value-key": "[NSCALE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nscale",
+      "name": "Scale covariance matrix flag"
+    },
+    {
+      "command-line-flag": "-pcsave",
+      "description": "'sss' is the number of components to save in the output",
+      "value-key": "[PCSAVE]",
+      "type": "String",
+      "optional": true,
+      "id": "pcsave",
+      "name": "Save components"
+    },
+    {
+      "command-line-flag": "-reduce",
+      "description": "Compute a dimensionally reduced dataset with top 'r' eigenvalues and write to disk in dataset 'pp'",
+      "value-key": "[REDUCE_ARP_FILE]",
+      "type": "String",
+      "list": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2,
+      "optional": true,
+      "id": "reduce",
+      "name": "Dimensionally reduced output"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Name for the output dataset",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Prefix for output dataset"
+    },
+    {
+      "command-line-flag": "-1ddum",
+      "description": "Add 'ddd' dummy lines to the top of each *.1D file",
+      "value-key": "[DUMMY_LINES]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "id": "dummy_lines",
+      "name": "Number of dummy lines"
+    },
+    {
+      "command-line-flag": "-verbose",
+      "description": "Print progress reports during the computations",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose flag"
+    },
+    {
+      "command-line-flag": "-quiet",
+      "description": "Don't print progress reports",
+      "value-key": "[QUIET_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "quiet",
+      "name": "Quiet flag"
+    },
+    {
+      "command-line-flag": "-eigonly",
+      "description": "Only compute eigenvalues, write them to 'pname'_eig.1D, then stop",
+      "value-key": "[EIGONLY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "eigonly",
+      "name": "Eigenvalues only flag"
+    },
+    {
+      "command-line-flag": "-float",
+      "description": "Save eigen-bricks as floats (default = shorts)",
+      "value-key": "[FLOAT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "float",
+      "name": "Store eigen-bricks as floats"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Use the 0 sub-brick of dataset 'mset' as a mask indicating which voxels to analyze",
+      "value-key": "[MASK_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask file"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]+orig.BRIK",
+      "description": "Output dataset file",
+      "optional": true,
+      "id": "output_dataset",
+      "name": "Output BRIK file"
+    },
+    {
+      "path-template": "[PREFIX]+orig.HEAD",
+      "description": "Output dataset header file",
+      "optional": true,
+      "id": "output_header",
+      "name": "Output HEAD file"
+    },
+    {
+      "path-template": "[PREFIX]_eig.1D",
+      "description": "File with computed eigenvalues",
+      "optional": true,
+      "id": "output_eig",
+      "name": "Eigenvalues file"
+    },
+    {
+      "path-template": "[PREFIX]_vec.1D",
+      "description": "File with all eigen-timeseries",
+      "optional": true,
+      "id": "output_vec",
+      "name": "Eigen-timeseries file"
+    },
+    {
+      "path-template": "[PREFIX][NN].1D",
+      "description": "File with individual eigenvalue timeseries",
+      "optional": true,
+      "id": "output_individual_vec",
+      "name": "Individual eigen-timeseries file"
+    }
+  ]
+}

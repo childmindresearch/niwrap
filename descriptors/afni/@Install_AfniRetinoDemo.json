@@ -1,0 +1,33 @@
+{
+  "tool-version": "1.0",
+  "name": "@Install_AfniRetinoDemo",
+  "author": "AFNI Development Team",
+  "description": "Installs and runs demo script for the retinotopy pipeline demo.",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "@Install_AfniRetinoDemo [OUTPUT_DIR]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Output directory where the demo will be installed and run",
+      "value-key": "[OUTPUT_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "output_dir",
+      "name": "Output directory"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_DIR]/AfniRetinoDemo",
+      "description": "Output directory where the demo files are installed",
+      "optional": false,
+      "id": "retino_demo_dir",
+      "name": "Retinotopy Demo Directory"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "tool-version": "1.0.0",
+  "name": "@SkullStrip_TouchUp",
+  "author": "Justin Rajendra",
+  "description": "Helper program to touch up failed skull stripping by resampling data, allowing manual edits, and outputting corrected data.",
+  "command-line": "@SkullStrip_TouchUp -prefix [PREFIX] -brain [BRAIN_DATASET] -head [HEAD_DATASET] [MASK_OUT_FLAG] [ORIG_DIM_FLAG]",
+  "container-image": {
+    "image": "your-dockerhub-repo/SkullStrip_TouchUp:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Output file and folder name",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Prefix"
+    },
+    {
+      "description": "Skull stripped data set to touch up",
+      "value-key": "[BRAIN_DATASET]",
+      "type": "File",
+      "optional": false,
+      "id": "brain_dataset",
+      "name": "Brain Dataset"
+    },
+    {
+      "description": "Whole head anatomical data set",
+      "value-key": "[HEAD_DATASET]",
+      "type": "File",
+      "optional": false,
+      "id": "head_dataset",
+      "name": "Head Dataset"
+    },
+    {
+      "command-line-flag": "-mask_out",
+      "description": "Output a binary mask in addition to actual data",
+      "value-key": "[MASK_OUT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mask_out",
+      "name": "Mask Out Flag"
+    },
+    {
+      "command-line-flag": "-orig_dim",
+      "description": "Edit in the original image dimensions",
+      "value-key": "[ORIG_DIM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "orig_dim",
+      "name": "Original Dimensions Flag"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Show this help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]_SS_touch_up",
+      "description": "Output folder containing the touch-up results",
+      "optional": false,
+      "id": "output_folder",
+      "name": "Output Folder"
+    },
+    {
+      "path-template": "[PREFIX]_mask.nii.gz",
+      "description": "Output binary mask (if -mask_out flag is used)",
+      "optional": true,
+      "id": "output_mask",
+      "name": "Output Mask"
+    }
+  ]
+}

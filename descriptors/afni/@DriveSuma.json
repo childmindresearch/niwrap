@@ -1,0 +1,107 @@
+{
+  "tool-version": "1.0",
+  "name": "@DriveSuma",
+  "author": "Ziad S. Saad",
+  "descriptor-url": "http://example.com",
+  "description": "A script to demonstrate how to drive suma from the command line.",
+  "url": "https://discuss.afni.nimh.nih.gov/",
+  "command-line": "@DriveSuma [GLOBAL_HELP_OPTION]",
+  "container-image": {
+    "image": "example/image:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-h_web",
+      "description": "Open webpage with help for this program",
+      "value-key": "[GLOBAL_HELP_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "h_web",
+      "name": "-h_web"
+    },
+    {
+      "command-line-flag": "-hweb",
+      "description": "Same as -h_web",
+      "value-key": "[GLOBAL_HELP_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "hweb",
+      "name": "-hweb"
+    },
+    {
+      "command-line-flag": "-h_view",
+      "description": "Open -help output in a GUI editor",
+      "value-key": "[GLOBAL_HELP_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "h_view",
+      "name": "-h_view"
+    },
+    {
+      "command-line-flag": "-hview",
+      "description": "Same as -h_view",
+      "value-key": "[GLOBAL_HELP_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "hview",
+      "name": "-hview"
+    },
+    {
+      "command-line-flag": "-all_opts",
+      "description": "List all of the options for this script",
+      "value-key": "[GLOBAL_HELP_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "all_opts",
+      "name": "-all_opts"
+    },
+    {
+      "command-line-flag": "-h_find",
+      "description": "Search for lines containing WORD in -help output. Search is approximate.",
+      "value-key": "[GLOBAL_HELP_OPTION]",
+      "type": "String",
+      "optional": true,
+      "id": "h_find",
+      "name": "-h_find"
+    },
+    {
+      "command-line-flag": "-h_raw",
+      "description": "Raw help string",
+      "value-key": "[GLOBAL_HELP_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "h_raw",
+      "name": "-h_raw"
+    },
+    {
+      "command-line-flag": "-h_txt",
+      "description": "Text formatted help string",
+      "value-key": "[GLOBAL_HELP_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "h_txt",
+      "name": "-h_txt"
+    },
+    {
+      "command-line-flag": "-h_spx",
+      "description": "Sphinx formatted help string",
+      "value-key": "[GLOBAL_HELP_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "h_spx",
+      "name": "-h_spx"
+    },
+    {
+      "command-line-flag": "-h_aspx",
+      "description": "Sphinx formatted help string with auto tagging of options",
+      "value-key": "[GLOBAL_HELP_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "h_aspx",
+      "name": "-h_aspx"
+    }
+  ],
+  "schema-version": "0.5"
+}

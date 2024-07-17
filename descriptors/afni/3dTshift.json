@@ -31,7 +31,13 @@
       "command-line-flag": "-",
       "description": "'fourier' or 'linear' or 'cubic' or 'quintic' or 'heptic'. Different interpolation methods (see 3dtshift for details) default = fourier.",
       "optional": true,
-      "value-choices": ["Fourier", "linear", "cubic", "quintic", "heptic"]
+      "value-choices": [
+        "Fourier",
+        "linear",
+        "cubic",
+        "quintic",
+        "heptic"
+      ]
     },
     {
       "id": "num_threads",
@@ -40,8 +46,7 @@
       "integer": true,
       "value-key": "[NUM_THREADS]",
       "description": "Set number of threads.",
-      "optional": true,
-      "default-value": 1
+      "optional": true
     },
     {
       "id": "outputtype",
@@ -50,7 +55,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "rlt",
@@ -77,8 +86,10 @@
       "value-key": "[SLICE_ENCODING_DIRECTION]",
       "description": "'k' or 'k-'. Direction in which slice_timing is specified (default: k). if negative,slice_timing is defined in reverse order, that is, the first entry corresponds to the slice with the largest index, and the final entry corresponds to slice index zero. only in effect when slice_timing is passed as list, not when it is passed as file.",
       "optional": true,
-      "default-value": "k",
-      "value-choices": ["k", "k-"]
+      "value-choices": [
+        "k",
+        "k-"
+      ]
     },
     {
       "id": "slice_timing",
@@ -181,32 +192,6 @@
       "path-template": "timing_file",
       "optional": true,
       "description": "Afni formatted timing file, if ``slice_timing`` is a list."
-    }
-  ],
-  "groups": [
-    {
-      "id": "slice_timing_group",
-      "name": "Slice timing group",
-      "members": ["slice_timing", "slice_timing_2"],
-      "mutually-exclusive": true
-    },
-    {
-      "id": "tpattern_group",
-      "name": "Tpattern group",
-      "members": ["tpattern", "tpattern_2"],
-      "mutually-exclusive": true
-    },
-    {
-      "id": "mutex_group",
-      "name": "Mutex group",
-      "members": ["tzero", "tslice"],
-      "mutually-exclusive": true
-    },
-    {
-      "id": "mutex_group_2",
-      "name": "Mutex group 2",
-      "members": ["slice_timing", "tpattern"],
-      "mutually-exclusive": true
     }
   ],
   "tool-version": "1.0.0",

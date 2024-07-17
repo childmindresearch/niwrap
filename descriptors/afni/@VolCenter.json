@@ -1,0 +1,28 @@
+{
+  "tool-version": "1.0",
+  "name": "@VolCenter",
+  "author": "Example Author",
+  "description": "Tool to return the center of volume for a given dataset",
+  "command-line": "@VolCenter <-dset DSET> [-or ORIENT]",
+  "inputs": [
+    {
+      "description": "Input volume dataset",
+      "value-key": "[DSET]",
+      "type": "File",
+      "optional": false,
+      "id": "dset",
+      "name": "Input Dataset",
+      "command-line-flag": "-dset"
+    },
+    {
+      "description": "Output coordinate system orientation (e.g., RAI)",
+      "value-key": "[ORIENT]",
+      "type": "String",
+      "optional": true,
+      "id": "orient",
+      "name": "Orientation",
+      "command-line-flag": "-or"
+    }
+  ],
+  "schema-version": "0.5"
+}

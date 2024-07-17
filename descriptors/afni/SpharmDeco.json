@@ -1,0 +1,123 @@
+{
+  "tool-version": "2023.6",
+  "name": "SpharmDeco",
+  "author": "Ziad S. Saad, SSCC/NIMH/NIH",
+  "description": "Spherical Harmonics Decomposition of a surface's coordinates or data",
+  "url": "http://www.stat.wisc.edu/~mchung/papers/TR1122.2006.pdf",
+  "command-line": "SpharmDeco <-i_TYPE S> -unit_sph UNIT_SPH_LABEL> <-l L> [<-i_TYPE SD> ... | <-data D>] [-bases_prefix BASES] [<-prefix PREFIX>] [<-o_TYPE SDR> ...] [-debug DBG] [-sigma s]",
+  "container-image": {
+    "image": "myregistry/spharmdeco:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Unit sphere, isotopic to the surface domain over which the data to be decomposed is defined.",
+      "value-key": "[<-i_TYPE S>]",
+      "type": "File",
+      "optional": false,
+      "id": "i_type_s",
+      "name": "Input type S"
+    },
+    {
+      "description": "Label of the unit sphere.",
+      "value-key": "[<-unit_sph UNIT_SPH_LABEL>]",
+      "type": "String",
+      "optional": false,
+      "id": "unit_sph_label",
+      "name": "Unit sphere label"
+    },
+    {
+      "description": "Decomposition order.",
+      "value-key": "[<-l L>]",
+      "type": "Number",
+      "optional": false,
+      "id": "order_l",
+      "name": "Decomposition order L"
+    },
+    {
+      "description": "A surface whose node coordinates provide data vectors (X, Y, Z) to be decomposed or a dataset whose columns are to be individually decomposed. You can specify multiple surfaces to be processed.",
+      "value-key": "[<-i_TYPE SD>]",
+      "type": "File",
+      "list": true,
+      "optional": true,
+      "id": "i_type_sd",
+      "name": "Input type SD"
+    },
+    {
+      "description": "Data vectors to be decomposed.",
+      "value-key": "[<-data D>]",
+      "type": "File",
+      "optional": true,
+      "id": "data_d",
+      "name": "Input data D"
+    },
+    {
+      "description": "Save the basis functions under the prefix BASES_PREFIX.",
+      "value-key": "[-bases_prefix BASES]",
+      "type": "String",
+      "optional": true,
+      "id": "bases_prefix",
+      "name": "Bases prefix"
+    },
+    {
+      "description": "Write out the reconstructed data into dataset PREFIX and write the beta coefficients for each processed data column.",
+      "value-key": "[-prefix PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Output prefix"
+    },
+    {
+      "description": "Write out a new surface with reconstructed coordinates.",
+      "value-key": "[-o_TYPE SDR]",
+      "type": "File",
+      "list": true,
+      "optional": true,
+      "id": "o_type_sdr",
+      "name": "Output type SDR"
+    },
+    {
+      "command-line-flag": "-debug",
+      "description": "Debug levels (1-3)",
+      "value-key": "[DBG]",
+      "type": "Number",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug level"
+    },
+    {
+      "command-line-flag": "-sigma",
+      "description": "Smoothing parameter (0 .. 0.001) which weighs down the contribution of higher order harmonics.",
+      "value-key": "[s]",
+      "type": "Number",
+      "optional": true,
+      "id": "sigma",
+      "name": "Smoothing sigma"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "BASES_PREFIX.sph*.1D",
+      "description": "File for harmonics of each order l.",
+      "optional": true,
+      "id": "harmonics_file",
+      "name": "Harmonics File"
+    },
+    {
+      "path-template": "PREFIX.beta.col*.1D.dset",
+      "description": "Beta coefficients for each data column.",
+      "optional": true,
+      "id": "beta_coefficients",
+      "name": "Beta Coefficients File"
+    },
+    {
+      "path-template": "<PREFIX>_reconstructed",
+      "description": "Reconstructed data or surface files named based on PREFIX.",
+      "optional": true,
+      "id": "reconstructed_data",
+      "name": "Reconstructed Data File"
+    }
+  ]
+}

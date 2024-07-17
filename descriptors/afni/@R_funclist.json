@@ -1,0 +1,20 @@
+{
+  "tool-version": "1.0.0",
+  "name": "R_funclist",
+  "author": "AFNI team",
+  "description": "A quick list of functions defined in AFNI's .R files",
+  "url": "https://afni.nimh.nih.gov/afni",
+  "command-line": "@R_funclist [R_FILES]",
+  "inputs": [
+    {
+      "description": "R file(s) to be processed. If no files are specified, all .R files in afni's bin directory are processed.",
+      "value-key": "[R_FILES]",
+      "type": "File",
+      "list": true,
+      "optional": true,
+      "id": "r_files",
+      "name": "R files"
+    }
+  ],
+  "schema-version": "0.5"
+}

@@ -1,0 +1,24 @@
+{
+  "tool-version": "0.1",
+  "name": "uber_proc",
+  "author": "Anonymous",
+  "description": "Uber processing tool - work in progress",
+  "url": "https://example.com/uber_proc",
+  "command-line": "uber_proc.py [RESULTS_DIR]",
+  "inputs": [
+    {
+      "description": "Directory where results will be placed. Default is a new 'uber_results' directory in the current working directory.",
+      "value-key": "[RESULTS_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "results_dir",
+      "name": "Results Directory"
+    }
+  ],
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "mydockerhub/uber_proc:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "tool-version": "Jun 30 2023",
+  "name": "3dBRAIN_VOYAGERtoAFNI",
+  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "description": "Converts a BrainVoyager vmr dataset to AFNI's BRIK format based on information from BrainVoyager's website.",
+  "url": "www.brainvoyager.com",
+  "command-line": "3dBRAIN_VOYAGERtoAFNI --input [INPUT_FILE] [FORCE_BYTE_SWAP_FLAG] [BVQX_FLAG] [TLRC_FLAG] [ACPC_FLAG] [ORIG_FLAG] [PREFIX] [NOVOLREG_FLAG] [NOXFORM_FLAG] [SETENV] [TRACE_FLAG] [TRACE_EXTREME_FLAG] [NOMALL_FLAG] [YESMALL_FLAG] [HELP_FLAG] [HELP_EXTREME_FLAG] [HELP_MINI_FLAG] [H_VIEW_FLAG] [H_WEB_FLAG] [H_FIND] [H_RAW_FLAG] [H_SPHINX_FLAG] [H_ASPHINX_FLAG] [ALL_OPTS_FLAG]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "--input",
+      "description": "Input BrainVoyager VMR file",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input File"
+    },
+    {
+      "command-line-flag": "-bs",
+      "description": "Force byte swapping",
+      "value-key": "[FORCE_BYTE_SWAP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "force_byte_swap",
+      "name": "Force Byte Swap"
+    },
+    {
+      "command-line-flag": "-qx",
+      "description": ".vmr file is from BrainVoyager QX",
+      "value-key": "[BVQX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "brainvoyager_qx",
+      "name": "BrainVoyager QX"
+    },
+    {
+      "command-line-flag": "-tlrc",
+      "description": "Dset in tlrc space",
+      "value-key": "[TLRC_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "tlrc_space",
+      "name": "TLRC Space"
+    },
+    {
+      "command-line-flag": "-acpc",
+      "description": "Dset in acpc-aligned space",
+      "value-key": "[ACPC_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "acpc_space",
+      "name": "ACPC Space"
+    },
+    {
+      "command-line-flag": "-orig",
+      "description": "Dset in orig space",
+      "value-key": "[ORIG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "orig_space",
+      "name": "Orig Space"
+    },
+    {
+      "command-line-flag": "--prefix",
+      "description": "Prefix for output files",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "prefix",
+      "name": "Prefix"
+    },
+    {
+      "command-line-flag": "-novolreg",
+      "description": "Ignore any Rotate, Volreg, Tagalign, or WarpDrive transformations present in the Surface Volume.",
+      "value-key": "[NOVOLREG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "novolreg",
+      "name": "Ignore Volreg Transformations"
+    },
+    {
+      "command-line-flag": "-noxform",
+      "description": "Same as -novolreg",
+      "value-key": "[NOXFORM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "noxform",
+      "name": "Ignore Transformations"
+    },
+    {
+      "command-line-flag": "-setenv",
+      "description": "Set environment variable ENVname to be ENVvalue. Quotes are necessary.",
+      "value-key": "[SETENV]",
+      "type": "String",
+      "optional": true,
+      "id": "set_environment",
+      "name": "Set Environment Variable"
+    },
+    {
+      "command-line-flag": "-trace",
+      "description": "Turns on In/Out debug and Memory tracing.",
+      "value-key": "[TRACE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "trace_debugging",
+      "name": "Trace Debugging"
+    },
+    {
+      "command-line-flag": "-TRACE",
+      "description": "Turns on extreme tracing.",
+      "value-key": "[TRACE_EXTREME_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "trace_extreme_debugging",
+      "name": "Extreme Trace Debugging"
+    },
+    {
+      "command-line-flag": "-nomall",
+      "description": "Turn off memory tracing.",
+      "value-key": "[NOMALL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "turn_off_memory_tracing",
+      "name": "Turn Off Memory Tracing"
+    },
+    {
+      "command-line-flag": "-yesmall",
+      "description": "Turn on memory tracing (default).",
+      "value-key": "[YESMALL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "turn_on_memory_tracing",
+      "name": "Turn On Memory Tracing"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "output.BRIK",
+      "description": "Output BRIK file",
+      "optional": false,
+      "id": "output_brik_file",
+      "name": "Output BRIK File"
+    },
+    {
+      "path-template": "output.HEAD",
+      "description": "Output HEAD file",
+      "optional": false,
+      "id": "output_head_file",
+      "name": "Output HEAD File"
+    }
+  ]
+}

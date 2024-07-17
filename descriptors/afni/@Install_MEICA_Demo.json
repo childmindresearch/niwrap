@@ -1,0 +1,33 @@
+{
+  "tool-version": "1.0",
+  "name": "Install_MEICA_Demo",
+  "author": "Prantik Kundu",
+  "description": "Installs the demo archive for Prantik Kundu MEICA denoising tools. After the archive is downloaded and unpacked, see its README.txt for details.",
+  "url": "https://example.com/meica_demo",
+  "command-line": "Install_MEICA_Demo [DEMO_ARCHIVE]",
+  "container-image": {
+    "image": "mcin/docker-meica:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Demo archive to install (e.g. meica_demo.zip)",
+      "value-key": "[DEMO_ARCHIVE]",
+      "type": "File",
+      "optional": false,
+      "id": "demo_archive",
+      "name": "Demo Archive"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "README.txt",
+      "description": "Details of the demo archive",
+      "optional": true,
+      "id": "readme_file",
+      "name": "README File"
+    }
+  ]
+}

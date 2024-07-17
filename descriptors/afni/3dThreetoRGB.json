@@ -1,0 +1,101 @@
+{
+  "tool-version": "23.1.10",
+  "name": "3dThreetoRGB",
+  "author": "RWCox",
+  "description": "Converts 3 sub-bricks of input to an RGB-valued dataset.",
+  "command-line": "3dThreetoRGB [PREFIX] [SCALE] [MASK] [FIM_FLAG] [ANAT_FLAG] [DATASET] [DATASET1] [DATASET2] [DATASET3]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset or first dataset if three datasets are provided",
+      "value-key": "[DATASET]",
+      "type": "File",
+      "optional": false,
+      "id": "input_dataset",
+      "name": "Input dataset"
+    },
+    {
+      "description": "Second dataset, required only if three datasets are provided",
+      "value-key": "[DATASET2]",
+      "type": "File",
+      "optional": true,
+      "id": "input_dataset2",
+      "name": "Second input dataset"
+    },
+    {
+      "description": "Third dataset, required only if three datasets are provided",
+      "value-key": "[DATASET3]",
+      "type": "File",
+      "optional": true,
+      "id": "input_dataset3",
+      "name": "Third input dataset"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Write output into dataset with specified prefix",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "output_prefix",
+      "name": "Output prefix"
+    },
+    {
+      "command-line-flag": "-scale",
+      "description": "Multiply input values by this factor before using as RGB",
+      "value-key": "[SCALE]",
+      "type": "Number",
+      "integer": false,
+      "optional": true,
+      "id": "scale_factor",
+      "name": "Scale factor"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Only output nonzero values where the mask dataset is nonzero",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask_dataset",
+      "name": "Mask dataset"
+    },
+    {
+      "command-line-flag": "-fim",
+      "description": "Write result as a 'fim' type dataset (default behavior)",
+      "value-key": "[FIM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "fim",
+      "name": "FIM flag"
+    },
+    {
+      "command-line-flag": "-anat",
+      "description": "Write result as a anatomical type dataset",
+      "value-key": "[ANAT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "anat",
+      "name": "Anatomical flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX]+rgb.HEAD",
+      "description": "RGB-valued dataset output",
+      "optional": false,
+      "id": "output_dataset_head",
+      "name": "Output dataset (HEAD)"
+    },
+    {
+      "path-template": "[PREFIX]+rgb.BRIK",
+      "description": "RGB-valued dataset output",
+      "optional": false,
+      "id": "output_dataset_brik",
+      "name": "Output dataset (BRIK)"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "tool-version": "1.0",
+  "name": "@Spharm.examples",
+  "author": "Ziad S. Saad (SSCC/NIMH/NIH)",
+  "description": "A script to demonstrate the usage of spherical harmonics decomposition with SUMA",
+  "descriptor-url": "https://github.com/afni/afni",
+  "url": "https://afni.nimh.nih.gov",
+  "command-line": "@Spharm.examples [GLOBAL_HELP_OPTION]",
+  "container-image": {
+    "image": "afni/afni_container:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-h_web",
+      "description": "Open webpage with help for this program",
+      "value-key": "[HELP_WEB_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_web",
+      "name": "Help Web Flag"
+    },
+    {
+      "command-line-flag": "-hweb",
+      "description": "Same as -h_web",
+      "value-key": "[HELP_WEB_ALIAS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_web_alias",
+      "name": "Help Web Alias Flag"
+    },
+    {
+      "command-line-flag": "-h_view",
+      "description": "Open -help output in a GUI editor",
+      "value-key": "[HELP_VIEW_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_view",
+      "name": "Help View Flag"
+    },
+    {
+      "command-line-flag": "-hview",
+      "description": "Same as -h_view",
+      "value-key": "[HELP_VIEW_ALIAS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_view_alias",
+      "name": "Help View Alias Flag"
+    },
+    {
+      "command-line-flag": "-all_opts",
+      "description": "List all of the options for this script",
+      "value-key": "[ALL_OPTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "all_opts",
+      "name": "All Options Flag"
+    },
+    {
+      "command-line-flag": "-h_find",
+      "description": "Search for lines containing WORD in -help output. Search is approximate.",
+      "value-key": "[HELP_FIND]",
+      "type": "String",
+      "optional": true,
+      "id": "help_find",
+      "name": "Help Find"
+    }
+  ],
+  "schema-version": "0.5"
+}

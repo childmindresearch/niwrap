@@ -1,0 +1,35 @@
+{
+  "tool-version": "1.0.0",
+  "name": "Install_MACAQUE_DEMO",
+  "author": "AFNI Developers",
+  "descriptor-url": "https://example.com/Install_MACAQUE_DEMO_descriptor.json",
+  "description": "Installs the demo archive for AFNI's macaque-analysis demo",
+  "url": "https://afni.nimh.nih.gov",
+  "command-line": "Install_MACAQUE_DEMO [WGET_FLAG] [CURL_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "afni/afni:latest",
+    "index": "index.docker.io"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-wget",
+      "description": "Use wget to download archive. Script chooses by default with preference for curl",
+      "value-key": "[WGET_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "wget",
+      "name": "Use wget"
+    },
+    {
+      "command-line-flag": "-curl",
+      "description": "Use curl to download archive. Script chooses by default with preference for curl",
+      "value-key": "[CURL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "curl",
+      "name": "Use curl"
+    }
+  ],
+  "schema-version": "0.5"
+}

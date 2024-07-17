@@ -1,0 +1,17 @@
+{
+  "tool-version": "1.0.0",
+  "name": "FullPath",
+  "description": "Changes relative path to absolute one.",
+  "command-line": "@FullPath [FILE]",
+  "inputs": [
+    {
+      "description": "Input file with relative path",
+      "value-key": "[FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input file"
+    }
+  ],
+  "schema-version": "0.5"
+}

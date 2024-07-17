@@ -1,0 +1,50 @@
+{
+  "tool-version": "Jun 30 2023",
+  "name": "3dConvolve",
+  "author": "AFNI Development Team",
+  "description": "3dConvolve is no longer supported in AFNI",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "3dConvolve [INPUT_FILE] [OUTPUT_FILE] [OPTIONS]",
+  "container-image": {
+    "type": "docker",
+    "image": "afni/afni:latest",
+    "index": "index.docker.io"
+  },
+  "inputs": [
+    {
+      "description": "Input file for 3dConvolve",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "description": "Output file for 3dConvolve",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "-options",
+      "description": "Additional options for 3dConvolve",
+      "value-key": "[OPTIONS]",
+      "type": "String",
+      "optional": true,
+      "id": "options",
+      "name": "Options"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Main output file of 3dConvolve",
+      "optional": true,
+      "id": "outfile",
+      "name": "Output file"
+    }
+  ]
+}

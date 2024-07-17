@@ -1,0 +1,50 @@
+{
+  "tool-version": "AFNI_23.1.10",
+  "name": "3dAFNItoNIML",
+  "author": "RWCox",
+  "description": "Dumps AFNI dataset header information to stdout in NIML format. Mostly for debugging and testing purposes!",
+  "command-line": "3dAFNItoNIML [OPTIONS] [DSET]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "AFNI dataset",
+      "value-key": "[DSET]",
+      "type": "File",
+      "optional": false,
+      "id": "dset",
+      "name": "Dataset"
+    },
+    {
+      "command-line-flag": "-data",
+      "description": "Also put the data into the output (will be huge).",
+      "value-key": "[DATA_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "data",
+      "name": "Data flag"
+    },
+    {
+      "command-line-flag": "-ascii",
+      "description": "Format in ASCII, not binary (even huger).",
+      "value-key": "[ASCII_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ascii",
+      "name": "ASCII flag"
+    },
+    {
+      "command-line-flag": "-tcp",
+      "description": "Instead of stdout, send the dataset to a socket. Implies '-data' as well.",
+      "value-key": "[TCP]",
+      "type": "String",
+      "optional": true,
+      "id": "tcp",
+      "name": "TCP host:port"
+    }
+  ],
+  "schema-version": "0.5"
+}

@@ -1,0 +1,36 @@
+{
+  "tool-version": "1.0",
+  "name": "GLTsymtest",
+  "author": "RWCox",
+  "description": "A tool to test the validity of '-gltsym' strings for use with 3dDeconvolve or 3dREMLfit.",
+  "command-line": "GLTsymtest [BADONLY_FLAG] [VARS] [EXPR]",
+  "inputs": [
+    {
+      "description": "A flag to only output BAD messages rather than all messages",
+      "command-line-flag": "-badonly",
+      "type": "Flag",
+      "id": "badonly",
+      "name": "Badonly Flag",
+      "value-key": "[BADONLY_FLAG]",
+      "optional": true
+    },
+    {
+      "description": "A list of allowed variable names in the expression, separated by commas, semicolons, and/or spaces",
+      "type": "String",
+      "id": "varlist",
+      "name": "Variable List",
+      "value-key": "[VARS]",
+      "optional": false
+    },
+    {
+      "description": "GLT symbolic expression(s), enclosed in quotes",
+      "type": "String",
+      "id": "expr",
+      "name": "Expression",
+      "list": true,
+      "value-key": "[EXPR]",
+      "optional": false
+    }
+  ],
+  "schema-version": "0.5"
+}

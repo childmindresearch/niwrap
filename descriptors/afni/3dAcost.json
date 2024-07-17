@@ -1,0 +1,67 @@
+{
+  "tool-version": "1.0",
+  "name": "3dAllineate",
+  "author": "AFNI Development Team",
+  "description": "Allineate dataset to a base dataset",
+  "url": "https://afni.nimh.nih.gov/afni",
+  "command-line": "3dAllineate [INPUT_FILE] -base [BASE_FILE] -prefix [OUTPUT_ALIGN] [OTHER_OPTIONS]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input dataset for allineation",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "command-line-flag": "-base",
+      "description": "Base dataset for allineation",
+      "value-key": "[BASE_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "basefile",
+      "name": "Base file"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Prefix for the output dataset",
+      "value-key": "[OUTPUT_ALIGN]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output file prefix"
+    },
+    {
+      "command-line-flag": "-allcostX",
+      "description": "Prints all alignment cost metrics",
+      "value-key": "[ALL_COST]",
+      "type": "Flag",
+      "optional": true,
+      "id": "all_cost",
+      "name": "Print all alignment cost metrics"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_ALIGN]+orig.HEAD",
+      "description": "Output aligned dataset (HEAD file)",
+      "optional": false,
+      "id": "output_head",
+      "name": "Output HEAD file"
+    },
+    {
+      "path-template": "[OUTPUT_ALIGN]+orig.BRIK",
+      "description": "Output aligned dataset (BRIK file)",
+      "optional": false,
+      "id": "output_brik",
+      "name": "Output BRIK file"
+    }
+  ]
+}

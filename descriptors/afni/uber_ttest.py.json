@@ -1,0 +1,203 @@
+{
+  "tool-version": "latest",
+  "name": "uber_ttest",
+  "author": "R Reynolds",
+  "description": "GUI for group t-test analysis",
+  "command-line": "uber_ttest.py [QT_OPTS] [HELP] [HELP_GUI] [HIST] [SHOW_VALID_OPTS] [VER] [NO_GUI] [PROGRAM] [PRINT_SCRIPT] [SAVE_SCRIPT] [MASK] [SET_NAME_A] [SET_NAME_B] [DSETS_A] [DSETS_B] [BETA_A] [BETA_B] [TSTAT_A] [TSTAT_B] [RESULTS_DIR]",
+  "container-image": {
+    "image": "neurodocker:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Pass PyQt4 options directly to the GUI",
+      "value-key": "[QT_OPTS]",
+      "type": "String",
+      "optional": true,
+      "id": "qt_opts",
+      "name": "Qt Options"
+    },
+    {
+      "command-line-flag": "-help",
+      "description": "Display help information",
+      "value-key": "[HELP]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help"
+    },
+    {
+      "command-line-flag": "-help_gui",
+      "description": "Display help information for the GUI",
+      "value-key": "[HELP_GUI]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_gui",
+      "name": "Help GUI"
+    },
+    {
+      "command-line-flag": "-hist",
+      "description": "Display the history",
+      "value-key": "[HIST]",
+      "type": "Flag",
+      "optional": true,
+      "id": "hist",
+      "name": "History"
+    },
+    {
+      "command-line-flag": "-show_valid_opts",
+      "description": "Show valid options",
+      "value-key": "[SHOW_VALID_OPTS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "show_valid_opts",
+      "name": "Show Valid Options"
+    },
+    {
+      "command-line-flag": "-ver",
+      "description": "Display the version information",
+      "value-key": "[VER]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ver",
+      "name": "Version"
+    },
+    {
+      "command-line-flag": "-no_gui",
+      "description": "Run without the GUI",
+      "value-key": "[NO_GUI]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_gui",
+      "name": "No GUI"
+    },
+    {
+      "command-line-flag": "-program",
+      "description": "Specify the program to use",
+      "value-key": "[PROGRAM]",
+      "type": "String",
+      "optional": true,
+      "id": "program",
+      "name": "Program"
+    },
+    {
+      "command-line-flag": "-print_script",
+      "description": "Print the script",
+      "value-key": "[PRINT_SCRIPT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "print_script",
+      "name": "Print Script"
+    },
+    {
+      "command-line-flag": "-save_script",
+      "description": "Save the script to a file",
+      "value-key": "[SAVE_SCRIPT]",
+      "type": "String",
+      "optional": true,
+      "id": "save_script",
+      "name": "Save Script"
+    },
+    {
+      "command-line-flag": "-mask",
+      "description": "Specify the mask file",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Mask File"
+    },
+    {
+      "command-line-flag": "-set_name_A",
+      "description": "Set name for group A",
+      "value-key": "[SET_NAME_A]",
+      "type": "String",
+      "optional": true,
+      "id": "set_name_A",
+      "name": "Set Name A"
+    },
+    {
+      "command-line-flag": "-set_name_B",
+      "description": "Set name for group B",
+      "value-key": "[SET_NAME_B]",
+      "type": "String",
+      "optional": true,
+      "id": "set_name_B",
+      "name": "Set Name B"
+    },
+    {
+      "command-line-flag": "-dsets_A",
+      "description": "Datasets for group A",
+      "value-key": "[DSETS_A]",
+      "type": "String",
+      "optional": true,
+      "id": "dsets_A",
+      "name": "Datasets A"
+    },
+    {
+      "command-line-flag": "-dsets_B",
+      "description": "Datasets for group B",
+      "value-key": "[DSETS_B]",
+      "type": "String",
+      "optional": true,
+      "id": "dsets_B",
+      "name": "Datasets B"
+    },
+    {
+      "command-line-flag": "-beta_A",
+      "description": "Beta values for group A",
+      "value-key": "[BETA_A]",
+      "type": "Number",
+      "optional": true,
+      "id": "beta_A",
+      "name": "Beta A"
+    },
+    {
+      "command-line-flag": "-beta_B",
+      "description": "Beta values for group B",
+      "value-key": "[BETA_B]",
+      "type": "Number",
+      "optional": true,
+      "id": "beta_B",
+      "name": "Beta B"
+    },
+    {
+      "command-line-flag": "-tstat_A",
+      "description": "T-statistic values for group A",
+      "value-key": "[TSTAT_A]",
+      "type": "Number",
+      "optional": true,
+      "id": "tstat_A",
+      "name": "T-statistic A"
+    },
+    {
+      "command-line-flag": "-tstat_B",
+      "description": "T-statistic values for group B",
+      "value-key": "[TSTAT_B]",
+      "type": "Number",
+      "optional": true,
+      "id": "tstat_B",
+      "name": "T-statistic B"
+    },
+    {
+      "command-line-flag": "-results_dir",
+      "description": "Directory for saving results",
+      "value-key": "[RESULTS_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "results_dir",
+      "name": "Results Directory"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[SAVE_SCRIPT]",
+      "description": "Script file generated by the non-GUI option",
+      "optional": true,
+      "id": "output_script",
+      "name": "Output Script File"
+    }
+  ]
+}

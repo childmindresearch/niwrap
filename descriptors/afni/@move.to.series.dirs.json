@@ -1,0 +1,86 @@
+{
+  "tool-version": "1.0.0",
+  "name": "@move.to.series.dirs",
+  "author": "R Reynolds",
+  "description": "Partition DICOM files into series directories by copying or moving them to new series directories.",
+  "command-line": "@move.to.series.dirs [OPTIONS] DICOM_FILES",
+  "inputs": [
+    {
+      "description": "Specify action to perform: copy or move. Default is copy.",
+      "value-key": "[ACTION]",
+      "type": "String",
+      "command-line-flag": "-action",
+      "optional": true,
+      "id": "action",
+      "name": "Action",
+      "value-choices": [
+        "copy",
+        "move"
+      ]
+    },
+    {
+      "description": "Specify directory root for output series directories. Default is current directory.",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "command-line-flag": "-dprefix",
+      "optional": true,
+      "id": "dprefix",
+      "name": "Directory Prefix"
+    },
+    {
+      "description": "Specify the DICOM tag to use for partitioning. Default is 0020,0011 (REL Series Number).",
+      "value-key": "[TAG]",
+      "type": "String",
+      "command-line-flag": "-tag",
+      "optional": true,
+      "id": "tag",
+      "name": "DICOM Tag"
+    },
+    {
+      "description": "Run in test mode, only show what would be done without actually moving any files.",
+      "command-line-flag": "-test",
+      "value-key": "[TEST_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "test",
+      "name": "Test Flag"
+    },
+    {
+      "description": "Show help information.",
+      "command-line-flag": "-help",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    },
+    {
+      "description": "Show modification history.",
+      "command-line-flag": "-hist",
+      "value-key": "[HIST_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "hist",
+      "name": "History Flag"
+    },
+    {
+      "description": "Show version number.",
+      "command-line-flag": "-ver",
+      "value-key": "[VER_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ver",
+      "name": "Version Flag"
+    },
+    {
+      "description": "Specify input DICOM files (e.g., IMG*)",
+      "value-key": "[DICOM_FILES]",
+      "type": "File",
+      "optional": false,
+      "id": "dicom_files",
+      "name": "DICOM Files",
+      "list": true
+    }
+  ],
+  "schema-version": "0.5"
+}

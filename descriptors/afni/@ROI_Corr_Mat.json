@@ -1,0 +1,121 @@
+{
+  "tool-version": "1.0",
+  "name": "ROI_Corr_Mat",
+  "author": "Hang Joon Jo, Modified by Ziad S. Saad",
+  "description": "Script to produce an NxN ROI correlation matrix of N ROIs",
+  "command-line": "@ROI_Corr_Mat <-ts TimeSeriesVol> <-roi ROIVol> <-prefix output> [<-roisel ROISEL>] [-zval] [-mat FULL, TRI, TRI_ND] [-verb] [-dirty]",
+  "container-image": {
+    "image": "your-docker-image:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Time series volume",
+      "value-key": "[TimeSeriesVol]",
+      "type": "File",
+      "optional": false,
+      "id": "ts_vol",
+      "name": "TimeSeriesVol",
+      "command-line-flag": "-ts"
+    },
+    {
+      "description": "ROI volume",
+      "value-key": "[ROIVol]",
+      "type": "File",
+      "optional": false,
+      "id": "roi_vol",
+      "name": "ROIVol",
+      "command-line-flag": "-roi"
+    },
+    {
+      "description": "Use output for a prefix",
+      "value-key": "[output]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Output Prefix",
+      "command-line-flag": "-prefix"
+    },
+    {
+      "description": "Force processing of ROI label (integers) listed in ROISEL 1D file",
+      "value-key": "[ROISEL]",
+      "type": "File",
+      "optional": true,
+      "id": "roisel",
+      "name": "ROISEL",
+      "command-line-flag": "-roisel"
+    },
+    {
+      "description": "Output a zscore version of the correlation matrix",
+      "value-key": "[zval_flag]",
+      "type": "Flag",
+      "optional": true,
+      "id": "zval",
+      "name": "Z-Value Flag",
+      "command-line-flag": "-zval"
+    },
+    {
+      "description": "Output matrix in different manners",
+      "value-key": "[OPT]",
+      "type": "String",
+      "optional": true,
+      "id": "mat_opt",
+      "name": "Matrix Output Option",
+      "command-line-flag": "-mat"
+    },
+    {
+      "description": "Keep temporary files",
+      "value-key": "[dirty_flag]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dirty",
+      "name": "Dirty Flag",
+      "command-line-flag": "-dirty"
+    },
+    {
+      "description": "Keep temporary files",
+      "value-key": "[keep_tmp_flag]",
+      "type": "Flag",
+      "optional": true,
+      "id": "keep_tmp",
+      "name": "Keep Temporary Files Flag",
+      "command-line-flag": "-keep_tmp"
+    },
+    {
+      "description": "Set echo (echo all commands to screen)",
+      "value-key": "[echo_flag]",
+      "type": "Flag",
+      "optional": true,
+      "id": "echo",
+      "name": "Echo Flag",
+      "command-line-flag": "-echo"
+    },
+    {
+      "description": "Verbose flag",
+      "value-key": "[verb_flag]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verb",
+      "name": "Verbose Flag",
+      "command-line-flag": "-verb"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[output]_matrix.1D",
+      "description": "Correlation matrix in .1D format",
+      "optional": true,
+      "id": "matrix_1d",
+      "name": "Output 1D Matrix"
+    },
+    {
+      "path-template": "[output]_matrix.BRIK",
+      "description": "Correlation matrix in .BRIK format",
+      "optional": true,
+      "id": "matrix_brick",
+      "name": "Output BRIK Matrix"
+    }
+  ]
+}

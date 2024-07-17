@@ -1,0 +1,81 @@
+{
+  "tool-version": "1.0",
+  "name": "Shift_Volume",
+  "author": "Ziad Saad",
+  "description": "Tool to shift a dataset in the RAI coordinate system or between MNI anatomical space and MNI space.",
+  "command-line": "@Shift_Volume [RAI_SHIFT_VECTOR] [MNI_ANAT_TO_MNI] [MNI_TO_MNI_ANAT] [DSET] [NO_CP_FLAG] [OUTPUT_PREFIX]",
+  "container-image": {
+    "image": "mcin/docker",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "command-line-flag": "-rai_shift",
+      "description": "Move dataset by dR, dA, dI mm (RAI coordinate system)",
+      "value-key": "[RAI_SHIFT_VECTOR]",
+      "type": "Number",
+      "list": true,
+      "max-list-entries": 3,
+      "min-list-entries": 3,
+      "optional": true,
+      "id": "rai_shift_vector",
+      "name": "RAI Shift Vector"
+    },
+    {
+      "command-line-flag": "-MNI_Anat_to_MNI",
+      "description": "Move dataset from MNI Anatomical space to MNI space (equivalent to -rai_shift 0 -4 -5)",
+      "value-key": "[MNI_ANAT_TO_MNI]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mni_anat_to_mni",
+      "name": "MNI Anatomical to MNI Space"
+    },
+    {
+      "command-line-flag": "-MNI_to_MNI_Anat",
+      "description": "Move dataset from MNI space to MNI Anatomical space (equivalent to -rai_shift 0 4 5)",
+      "value-key": "[MNI_TO_MNI_ANAT]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mni_to_mni_anat",
+      "name": "MNI to MNI Anatomical Space"
+    },
+    {
+      "command-line-flag": "-dset",
+      "description": "Input dataset, typically an anatomical dataset to be aligned to BASE.",
+      "value-key": "[DSET]",
+      "type": "File",
+      "optional": false,
+      "id": "dset",
+      "name": "Input Dataset"
+    },
+    {
+      "command-line-flag": "-no_cp",
+      "description": "Do not create new data, shift the existing ones (use with caution).",
+      "value-key": "[NO_CP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_cp",
+      "name": "No Copy Flag"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Prefix for the output dataset.",
+      "value-key": "[OUTPUT_PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Output Prefix"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_PREFIX].nii.gz",
+      "description": "Shifted output dataset.",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    }
+  ]
+}

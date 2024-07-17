@@ -1,0 +1,18 @@
+{
+  "tool-version": "1.0",
+  "name": "escape",
+  "description": "A hypothetical command line tool for escaping sequences.",
+  "command-line": "escape [HELP_FLAG]",
+  "inputs": [
+    {
+      "command-line-flag": "-help",
+      "description": "Display the help message",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    }
+  ],
+  "schema-version": "0.5"
+}

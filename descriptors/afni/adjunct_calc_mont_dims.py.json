@@ -1,0 +1,24 @@
+{
+  "tool-version": "latest",
+  "name": "adjunct_calc_mont_dims",
+  "author": "AFNI",
+  "description": "A helper function for the fat_proc* scripts",
+  "command-line": "/opt/afni/src/../install/adjunct_calc_mont_dims.py [HELP_FLAG]",
+  "inputs": [
+    {
+      "command-line-flag": "-help",
+      "description": "Display help information",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  }
+}

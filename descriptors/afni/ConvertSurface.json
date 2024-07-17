@@ -1,0 +1,109 @@
+{
+  "tool-version": "latest",
+  "name": "ConvertSurface",
+  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "description": "Reads in a surface and writes it out in another format. Only fields pertinent to SUMA are preserved.",
+  "command-line": "ConvertSurface [INPUT_FILE] [OUTPUT_FILE] [SURFACE_VOLUME_OPTION] [TAL_OPTIONS] [MNI_OPTIONS] [AFFINE_TRANSFORM_OPTIONS] [CONFIG_OPTIONS]",
+  "inputs": [
+    {
+      "command-line-flag": "-i",
+      "description": "Specifies the input surface.",
+      "id": "input_surface",
+      "name": "Input Surface",
+      "type": "String",
+      "value-key": "[INPUT_FILE]",
+      "optional": false
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Specifies the output surface.",
+      "id": "output_surface",
+      "name": "Output Surface",
+      "type": "String",
+      "value-key": "[OUTPUT_FILE]",
+      "optional": false
+    },
+    {
+      "command-line-flag": "-sv",
+      "description": "Specifies a surface volume.",
+      "id": "surface_volume",
+      "name": "Surface Volume",
+      "type": "String",
+      "value-key": "[SURFACE_VOLUME_OPTION]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-tlrc",
+      "description": "Apply Talairach transform.",
+      "id": "transform_tlrc",
+      "name": "Talairach Transform",
+      "type": "Flag",
+      "value-key": "[TAL_OPTIONS]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-MNI_rai",
+      "description": "Turn AFNI tlrc coordinates (RAI) into MNI coord space in RAI.",
+      "id": "mni_rai",
+      "name": "MNI RAI",
+      "type": "Flag",
+      "value-key": "[MNI_OPTIONS]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-MNI_lpi",
+      "description": "Turn AFNI tlrc coordinates (RAI) into MNI coord space in LPI.",
+      "id": "mni_lpi",
+      "name": "MNI LPI",
+      "type": "Flag",
+      "value-key": "[MNI_OPTIONS]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-xmat_1D",
+      "description": "Apply transformation specified in 1D file.",
+      "id": "xmat_1D",
+      "name": "1D Transformation Matrix",
+      "type": "String",
+      "value-key": "[AFFINE_TRANSFORM_OPTIONS]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-ixmat_1D",
+      "description": "Apply inverse transformation specified in 1D file.",
+      "id": "ixmat_1D",
+      "name": "Inverse 1D Transformation Matrix",
+      "type": "String",
+      "value-key": "[AFFINE_TRANSFORM_OPTIONS]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-seed",
+      "description": "Specify SEED to seed the random number generator for random matrix generation.",
+      "id": "seed",
+      "name": "Random Seed",
+      "type": "String",
+      "value-key": "[CONFIG_OPTIONS]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-native",
+      "description": "Write the output surface in the coordinate system native to its format.",
+      "id": "native",
+      "name": "Native Coordinate System",
+      "type": "Flag",
+      "value-key": "[CONFIG_OPTIONS]",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "The converted output surface file.",
+      "optional": false,
+      "id": "output_surface_file",
+      "name": "Output Surface File"
+    }
+  ],
+  "schema-version": "0.5"
+}

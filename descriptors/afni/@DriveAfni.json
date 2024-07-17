@@ -1,0 +1,33 @@
+{
+  "tool-version": "1.0",
+  "name": "DriveAfni",
+  "author": "AFNI Development Team",
+  "description": "A demo program for driving 'afni' from a script",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "DriveAfni",
+  "container-image": {
+    "type": "docker",
+    "image": "afni/afni_latest",
+    "index": "index.docker.io"
+  },
+  "inputs": [
+    {
+      "description": "AFNI_data6 class data directory which the script requires for execution. This review requires the script to be positioned such that 'ls' command should include 'AFNI_data6' in the output.",
+      "value-key": "[DATA_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "data_dir",
+      "name": "Data Directory"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "./SavedAxiale.jpg",
+      "description": "Output file created by the DriveAfni script",
+      "optional": false,
+      "id": "output_jpg",
+      "name": "Saved Axiale Output"
+    }
+  ]
+}

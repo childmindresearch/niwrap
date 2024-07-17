@@ -1,0 +1,122 @@
+{
+  "name": "3dTsort",
+  "tool-version": "Unknown",
+  "description": "Sorts each voxel in a dataset and produces a new dataset.",
+  "author": "AFNI Developers",
+  "command-line": "3dTsort [INPUT_FILE] [PREFIX] [DIRECTION_FLAG] [RANK_FLAG] [INDEX_FLAG] [VALUE_FLAG] [RANDOM_FLAG] [RANFFT_FLAG] [RANDDFT_FLAG] [DATUM_TYPE]",
+  "container-image": {
+    "type": "docker",
+    "index": "index.docker.io",
+    "image": "afni/afni_latest"
+  },
+  "inputs": [
+    {
+      "id": "input_file",
+      "name": "Input dataset",
+      "type": "File",
+      "optional": false,
+      "value-key": "[INPUT_FILE]",
+      "description": "Input dataset to be sorted"
+    },
+    {
+      "id": "prefix",
+      "name": "Output prefix",
+      "type": "String",
+      "optional": true,
+      "value-key": "[PREFIX]",
+      "command-line-flag": "-prefix",
+      "description": "Prefix for the output dataset"
+    },
+    {
+      "id": "inc",
+      "name": "Sort increasing",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[DIRECTION_FLAG]",
+      "command-line-flag": "-inc",
+      "description": "Sort into increasing order (default)"
+    },
+    {
+      "id": "dec",
+      "name": "Sort decreasing",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[DIRECTION_FLAG]",
+      "command-line-flag": "-dec",
+      "description": "Sort into decreasing order"
+    },
+    {
+      "id": "rank",
+      "name": "Output rank",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[RANK_FLAG]",
+      "command-line-flag": "-rank",
+      "description": "Output rank instead of sorted values; ranks range from 1 to Nvals"
+    },
+    {
+      "id": "ind",
+      "name": "Output sorting index",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[INDEX_FLAG]",
+      "command-line-flag": "-ind",
+      "description": "Output sorting index (0 to Nvals -1)"
+    },
+    {
+      "id": "val",
+      "name": "Output sorted values",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[VALUE_FLAG]",
+      "command-line-flag": "-val",
+      "description": "Output sorted values (default)"
+    },
+    {
+      "id": "random",
+      "name": "Random shuffle",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[RANDOM_FLAG]",
+      "command-line-flag": "-random",
+      "description": "Randomly shuffle (permute) the time points in each voxel"
+    },
+    {
+      "id": "ranfft",
+      "name": "Randomize FFT",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[RANFFT_FLAG]",
+      "command-line-flag": "-ranFFT",
+      "description": "Randomize each time series by scrambling the FFT phase"
+    },
+    {
+      "id": "randft",
+      "name": "Randomize DFT",
+      "type": "Flag",
+      "optional": true,
+      "value-key": "[RANDDFT_FLAG]",
+      "command-line-flag": "-ranDFT",
+      "description": "Randomize each time series by scrambling the DFT phase"
+    },
+    {
+      "id": "datum",
+      "name": "Datum type",
+      "type": "String",
+      "optional": true,
+      "value-key": "[DATUM_TYPE]",
+      "command-line-flag": "-datum",
+      "description": "Coerce the output data to be stored as the given type (byte, short, or float)"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_dataset",
+      "name": "Output dataset",
+      "path-template": "[PREFIX].nii.gz",
+      "description": "Main default output of 3dTsort",
+      "optional": false
+    }
+  ],
+  "schema-version": "0.5"
+}

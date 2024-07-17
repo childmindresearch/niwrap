@@ -1,0 +1,43 @@
+{
+  "tool-version": "1.0",
+  "name": "@GetAfniOrient",
+  "author": "Ziad Saad (saadz@mail.nih.gov)",
+  "descriptor-url": "https://afni.nimh.nih.gov/",
+  "description": "Returns the orient code of AFNI datasets",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "@GetAfniOrient [EXPLORATORY_FLAG] [INPUT_FILE]",
+  "container-image": {
+    "image": "afni/afni_latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input AFNI dataset (e.g. Hello+orig.HEAD)",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input file"
+    },
+    {
+      "command-line-flag": "-exp",
+      "description": "Exploratory flag for additional functionalities",
+      "value-key": "[EXPLORATORY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "exploratory",
+      "name": "Exploratory flag"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[INPUT_FILE]_orient_code.txt",
+      "description": "File containing the orientation code",
+      "optional": true,
+      "id": "output_orient_code",
+      "name": "Orientation Code File"
+    }
+  ]
+}

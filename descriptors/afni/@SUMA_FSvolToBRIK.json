@@ -1,0 +1,47 @@
+{
+  "tool-version": "1.0",
+  "name": "SUMA_FSvolToBRIK",
+  "author": "FreeSurfer Development Team",
+  "description": "A script to convert COR- or .mgz files from FreeSurfer to BRIK format",
+  "command-line": "@SUMA_FSvolToBRIK [FSVOL] [PREFIX]",
+  "container-image": {
+    "image": "freesurfer/freesurfer:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input FreeSurfer volume data (e.g. COR- images or .mgz volume)",
+      "value-key": "[FSVOL]",
+      "type": "File",
+      "optional": false,
+      "id": "fs_vol_data",
+      "name": "FreeSurfer Volume Data"
+    },
+    {
+      "description": "Prefix for output BRIK volume",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "prefix",
+      "name": "Output Prefix"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX].BRIK",
+      "description": "Output BRIK volume converted from FreeSurfer data",
+      "optional": false,
+      "id": "out_brik",
+      "name": "Output BRIK file"
+    },
+    {
+      "path-template": "[PREFIX].HEAD",
+      "description": "Header file for the output BRIK volume",
+      "optional": false,
+      "id": "out_head",
+      "name": "Output HEAD file"
+    }
+  ]
+}

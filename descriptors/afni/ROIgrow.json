@@ -1,0 +1,101 @@
+{
+  "tool-version": "latest",
+  "name": "ROIgrow",
+  "author": "Ziad S. Saad, SSCC/NIMH/NIH",
+  "descriptor-url": "https://github.com/afni/afni/tree/master/src/ROIgrow",
+  "description": "A program to expand an ROI on the surface.",
+  "url": "https://afni.nimh.nih.gov/",
+  "command-line": "ROIgrow <-i_TYPE SURF> <-roi_labels ROI_LABELS> <-lim LIM> [-prefix PREFIX] [FULL_LIST_FLAG] [GROW_FROM_EDGE_FLAG] [INSPHERE_DIA] [INBOX_EDGES]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Specify input surface. You can also use -t* and -spec and -surf methods to input surfaces.",
+      "value-key": "[SURF]",
+      "type": "String",
+      "optional": false,
+      "command-line-flag": "-i_TYPE",
+      "id": "input_surface",
+      "name": "Input Surface"
+    },
+    {
+      "description": "Data column containing integer labels of ROIs. Each integer label gets grown separately.",
+      "value-key": "[ROI_LABELS]",
+      "type": "String",
+      "optional": false,
+      "command-line-flag": "-roi_labels",
+      "id": "roi_labels",
+      "name": "ROI Labels"
+    },
+    {
+      "description": "Distance to cover from each node. The units of LIM are those of the surface's node coordinates. Distances are calculated along the surface's mesh.",
+      "value-key": "[LIM]",
+      "type": "Number",
+      "optional": false,
+      "command-line-flag": "-lim",
+      "id": "lim_distance",
+      "name": "Limit Distance"
+    },
+    {
+      "description": "Prefix of 1D output dataset. Default is ROIgrow",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "-prefix",
+      "id": "output_prefix",
+      "name": "Output Prefix"
+    },
+    {
+      "description": "Output a row for each node on the surface. Nodes not in the grown ROI, receive a 0 for a label. This option is ONLY for use with -roi_labels.",
+      "value-key": "[FULL_LIST_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "command-line-flag": "-full_list",
+      "id": "full_list",
+      "name": "Full List Flag"
+    },
+    {
+      "description": "Grow ROIs from their edges rather than the brute force default. This might make the program faster on large ROIs and large surfaces.",
+      "value-key": "[GROW_FROM_EDGE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "command-line-flag": "-grow_from_edge",
+      "id": "grow_from_edge",
+      "name": "Grow From Edge Flag"
+    },
+    {
+      "description": "Diameter of the sphere inside which nodes are added instead of growing along the surface.",
+      "value-key": "[INSPHERE_DIA]",
+      "type": "Number",
+      "optional": true,
+      "command-line-flag": "-insphere",
+      "id": "insphere_diameter",
+      "name": "Insphere Diameter"
+    },
+    {
+      "description": "Use a box of edge widths E1, E2, E3 instead of DIA.",
+      "value-key": "[INBOX_EDGES]",
+      "type": "Number",
+      "optional": true,
+      "command-line-flag": "-inbox",
+      "list": true,
+      "max-list-entries": 3,
+      "min-list-entries": 3,
+      "id": "inbox_edges",
+      "name": "Inbox Edges"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[PREFIX].1D",
+      "description": "1D output dataset.",
+      "optional": true,
+      "id": "output_file",
+      "name": "Output Dataset"
+    }
+  ]
+}

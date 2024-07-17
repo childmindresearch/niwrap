@@ -1,0 +1,71 @@
+{
+  "tool-version": "1.0",
+  "name": "@NoisySkullStrip",
+  "author": "Ziad S. Saad",
+  "description": "Strips the skull of anatomical datasets with low SNR.",
+  "command-line": "@NoisySkullStrip -input [ANAT] [KEEP_TMP_FLAG] [SKULLSTRIP_OPTS]",
+  "container-image": {
+    "image": "YOUR_DOCKER_IMAGE:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "The anatomical dataset",
+      "value-key": "[ANAT]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input File"
+    },
+    {
+      "command-line-flag": "-keep_tmp",
+      "description": "Do not erase temporary files at the end.",
+      "value-key": "[KEEP_TMP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "keep_tmp",
+      "name": "Keep Temporary Files"
+    },
+    {
+      "command-line-flag": "-3dSkullStrip_opts",
+      "description": "Anything following this option is passed to 3dSkullStrip",
+      "value-key": "[SKULLSTRIP_OPTS]",
+      "type": "String",
+      "optional": true,
+      "id": "3dskullstrip_opts",
+      "name": "3dSkullStrip Options"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "[ANAT].ns",
+      "description": "Skull stripped version of ANAT",
+      "optional": false,
+      "id": "anat_ns",
+      "name": "Stripped Anatomical Dataset"
+    },
+    {
+      "path-template": "[ANAT].air",
+      "description": "Special mask output - air",
+      "optional": true,
+      "id": "anat_air",
+      "name": "Air Mask"
+    },
+    {
+      "path-template": "[ANAT].skl",
+      "description": "Special mask output - skull",
+      "optional": true,
+      "id": "anat_skl",
+      "name": "Skull Mask"
+    },
+    {
+      "path-template": "[ANAT].lsp",
+      "description": "Volume used to threshold 'air' out of the volume to be stripped",
+      "optional": true,
+      "id": "anat_lsp",
+      "name": "Air Threshold Volume"
+    }
+  ]
+}

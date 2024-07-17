@@ -1,0 +1,167 @@
+{
+  "tool-version": "1.0",
+  "name": "IsoSurface",
+  "author": "Ziad S. Saad, SSCC/NIMH/NIH",
+  "description": "A program to perform isosurface extraction from a volume.",
+  "command-line": "IsoSurface [MANDATORY_PARAMS] [ISO_SURFACE_OPTION] [OPTIONAL_PARAMS] [SMOOTHING_PARAMS] [DEBUG_OPTION]",
+  "container-image": {
+    "image": "myregistry.com/isosurface:latest",
+    "index": "dockerhub.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "Input volume file.",
+      "value-key": "[MANDATORY_PARAMS]",
+      "type": "File",
+      "optional": true,
+      "id": "input_vol",
+      "name": "Input Volume",
+      "command-line-flag": "-input"
+    },
+    {
+      "description": "Built-in shape specification.",
+      "value-key": "[MANDATORY_PARAMS]",
+      "type": "String",
+      "optional": true,
+      "id": "shape_spec",
+      "name": "Shape Specification",
+      "command-line-flag": "-shape",
+      "list": true
+    },
+    {
+      "description": "Create isosurface for each unique value in the input volume.",
+      "value-key": "[ISO_SURFACE_OPTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "isorois",
+      "name": "Isosurface for unique values",
+      "command-line-flag": "-isorois"
+    },
+    {
+      "description": "Create isosurface where volume = V.",
+      "value-key": "[ISO_SURFACE_OPTION]",
+      "type": "String",
+      "optional": true,
+      "id": "isoval",
+      "name": "Isoval",
+      "command-line-flag": "-isoval"
+    },
+    {
+      "description": "Create isosurface where V0 <= volume < V1.",
+      "value-key": "[ISO_SURFACE_OPTION]",
+      "type": "String",
+      "optional": true,
+      "id": "isorange",
+      "name": "Isorange",
+      "command-line-flag": "-isorange",
+      "list": true
+    },
+    {
+      "description": "Create isosurface where MASK_COM != 0.",
+      "value-key": "[ISO_SURFACE_OPTION]",
+      "type": "String",
+      "optional": true,
+      "id": "isocmask",
+      "name": "Isocmask",
+      "command-line-flag": "-isocmask"
+    },
+    {
+      "description": "Prefix of output surface file.",
+      "value-key": "[OPTIONAL_PARAMS]",
+      "type": "String",
+      "optional": true,
+      "id": "output_prefix",
+      "name": "Output Prefix",
+      "command-line-flag": "-o_TYPE"
+    },
+    {
+      "description": "Smooth resultant surface using Taubin smoothing with parameters KPB and NITER.",
+      "value-key": "[SMOOTHING_PARAMS]",
+      "type": "String",
+      "optional": true,
+      "id": "tsmooth",
+      "name": "Taubin Smoothing",
+      "command-line-flag": "-Tsmooth",
+      "list": true
+    },
+    {
+      "description": "Debug levels of 0 (default), 1, 2, 3.",
+      "value-key": "[DEBUG_OPTION]",
+      "type": "String",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug",
+      "command-line-flag": "-debug"
+    },
+    {
+      "description": "Crop input volume before extraction.",
+      "value-key": "[OPTIONAL_PARAMS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "autocrop",
+      "name": "Autocrop",
+      "command-line-flag": "-autocrop"
+    },
+    {
+      "description": "Remesh the surface(s).",
+      "value-key": "[OPTIONAL_PARAMS]",
+      "type": "String",
+      "optional": true,
+      "id": "remesh",
+      "name": "Remesh",
+      "command-line-flag": "-remesh"
+    },
+    {
+      "description": "Transform to apply to volume values before extracting.",
+      "value-key": "[OPTIONAL_PARAMS]",
+      "type": "String",
+      "optional": true,
+      "id": "xform",
+      "name": "Transform",
+      "command-line-flag": "-xform"
+    },
+    {
+      "description": "Ignore any Rotate, Volreg, Tagalign, or WarpDrive transformations.",
+      "value-key": "[OPTIONAL_PARAMS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "novolreg",
+      "name": "No Volreg Transform",
+      "command-line-flag": "-novolreg"
+    },
+    {
+      "description": "Same as -novolreg.",
+      "value-key": "[OPTIONAL_PARAMS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "noxform",
+      "name": "No Transform",
+      "command-line-flag": "-noxform"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[MASK]_surf.ply",
+      "description": "Output isosurface in PLY format.",
+      "optional": true,
+      "id": "output_surface_ply",
+      "name": "Output Surface PLY"
+    },
+    {
+      "path-template": "[MASK]_surf.gii",
+      "description": "Output isosurface in GIFTI format.",
+      "optional": true,
+      "id": "output_surface_gii",
+      "name": "Output Surface GIFTI"
+    },
+    {
+      "path-template": "[MASK]_surf.stl",
+      "description": "Output isosurface in STL format.",
+      "optional": true,
+      "id": "output_surface_stl",
+      "name": "Output Surface STL"
+    }
+  ],
+  "schema-version": "0.5"
+}

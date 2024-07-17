@@ -1,0 +1,41 @@
+{
+  "tool-version": "1.0",
+  "name": "3dMVM_validator",
+  "author": "Justin Rajendra",
+  "description": "Launch the 3dMVM model validation shiny app in a web browser.",
+  "command-line": "3dMVM_validator [DATA_TABLE] [SHINY_FOLDER]",
+  "container-image": {
+    "image": "afni/afni:latest",
+    "index": "index.docker.io",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "description": "A file containing a data table formatted like the 3dMVM \"-dataTable\".",
+      "value-key": "[DATA_TABLE]",
+      "type": "File",
+      "optional": false,
+      "id": "datatable",
+      "name": "Data Table"
+    },
+    {
+      "command-line-flag": "-ShinyFolder",
+      "description": "Use a custom shiny folder (for testing purposes).",
+      "value-key": "[SHINY_FOLDER]",
+      "type": "String",
+      "optional": true,
+      "id": "shinyfolder",
+      "name": "Shiny Folder"
+    }
+  ],
+  "schema-version": "0.5",
+  "output-files": [
+    {
+      "path-template": "__*_3dMVM_validator_temp_delete",
+      "description": "Temporary folder created during the shiny app session.",
+      "optional": true,
+      "id": "temp_folder",
+      "name": "Temporary Folder"
+    }
+  ]
+}
