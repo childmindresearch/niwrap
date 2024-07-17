@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SUMA_FSVOL_TO_BRIK_METADATA = Metadata(
-    id="bd67e81af7783e6908b04ffac362172ecac2f806",
+    id="675c763b3b615e9ab38c4f865226b01b907f8823",
     name="SUMA_FSvolToBRIK",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="freesurfer/freesurfer:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,9 +31,12 @@ def suma_fsvol_to_brik(
     runner: Runner | None = None,
 ) -> SumaFsvolToBrikOutputs:
     """
-    SUMA_FSvolToBRIK by FreeSurfer Development Team.
+    SUMA_FSvolToBRIK by AFNI Team.
     
     A script to convert COR- or .mgz files from FreeSurfer to BRIK format.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_FSvolToBRIK.html
     
     Args:
         fs_vol_data: Input FreeSurfer volume data (e.g. COR- images or .mgz\

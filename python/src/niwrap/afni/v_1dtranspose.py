@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1DTRANSPOSE_METADATA = Metadata(
-    id="1f6ac89b1fd4fc611cd4c2ce399218fd8fe49f6a",
+    id="490908fb1ab0565fcc9b26277953a01e7c0892f0",
     name="1dtranspose",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,11 +29,12 @@ def v_1dtranspose(
     runner: Runner | None = None,
 ) -> V1dtransposeOutputs:
     """
-    1dtranspose by AFNI Development Team.
+    1dtranspose by AFNI Team.
     
     Transpose an AFNI *.1D file (ASCII list of numbers arranged in columns).
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dtranspose.html
     
     Args:
         infile: Input file (e.g. data.1D).

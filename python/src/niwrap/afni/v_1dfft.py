@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1DFFT_METADATA = Metadata(
-    id="6c8339489efdb50497df2e4bdf118da584543f22",
+    id="b280762e31c046f661dd2cf98dd1d9c4408d1f9f",
     name="1dfft",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,9 +36,12 @@ def v_1dfft(
     runner: Runner | None = None,
 ) -> V1dfftOutputs:
     """
-    1dfft by AFNI Development Team.
+    1dfft by AFNI Team.
     
     Compute the absolute value of the FFT of input columns from an AFNI 1D file.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dfft.html
     
     Args:
         infile: Input .1D file containing an ASCII list of numbers arranged in\

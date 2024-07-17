@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AUTO_WARP_METADATA = Metadata(
-    id="498dc7c3fdbb83a609198b1f52fdd3b485398c92",
+    id="58d5c96cf23bee5b8c9cab9060bd5bf39b573935",
     name="auto_warp",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -59,9 +58,12 @@ def auto_warp(
     runner: Runner | None = None,
 ) -> AutoWarpOutputs:
     """
-    auto_warp by AFNI.
+    auto_warp by AFNI Team.
     
     Nonlinear registration tool.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/auto_warp.py.html
     
     Args:
         base: Name of reference or template volume.

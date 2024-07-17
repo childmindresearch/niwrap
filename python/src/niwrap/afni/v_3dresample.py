@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DRESAMPLE_METADATA = Metadata(
-    id="00007b34c3b4f7808ab9d091d93e3d895a68a993",
+    id="c30265de1dee3966945af48d5416d96b7c64599c",
     name="3dresample",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -34,7 +34,7 @@ def v_3dresample(
     runner: Runner | None = None,
 ) -> V3dresampleOutputs:
     """
-    3dresample by Nipype (interface).
+    3dresample by AFNI Team.
     
     Resample or reorient an image using AFNI 3dresample command.
     

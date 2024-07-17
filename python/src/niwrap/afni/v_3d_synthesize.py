@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_SYNTHESIZE_METADATA = Metadata(
-    id="5c45400c28a77bcadaa31de3d07635ff3233424c",
+    id="2114f9664df6acaf070036b6be59b37008a2b9aa",
     name="3dSynthesize",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,10 +32,13 @@ def v_3d_synthesize(
     runner: Runner | None = None,
 ) -> V3dSynthesizeOutputs:
     """
-    3dSynthesize by RWCox.
+    3dSynthesize by AFNI Team.
     
     Reads a '-cbucket' dataset and a '.xmat.1D' matrix from 3dDeconvolve, and
     synthesizes a fit dataset using selected sub-bricks and matrix columns.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSynthesize.html
     
     Args:
         c_bucket: Input dataset from 3dDeconvolve via the '-cbucket' option.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SUMA_ALIGN_TO_EXPERIMENT_METADATA = Metadata(
-    id="3d96cf8fab0fa88e3fb55a9294b1d97afe5757a5",
+    id="0c4071b2f2b071ae9084d5a06a826979d1aed8cc",
     name="SUMA_AlignToExperiment",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-suma:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,12 +49,13 @@ def suma_align_to_experiment(
     runner: Runner | None = None,
 ) -> SumaAlignToExperimentOutputs:
     """
-    SUMA_AlignToExperiment by Ziad Saad (saadz@mail.nih.gov).
+    SUMA_AlignToExperiment by AFNI Team.
     
     Creates a version of Surface Anatomy that is registered to Experiment
     Anatomy.
     
-    More information: https://afni.nimh.nih.gov/ssc/ziad/SUMA/SUMA_doc.htm
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_AlignToExperiment.html
     
     Args:
         exp_anat: Name of high resolution anatomical data set in register with\

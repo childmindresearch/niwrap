@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_MVM_GRIDCONV_PY_METADATA = Metadata(
-    id="c4fc5401287a25cac44a638bc27fdfebc36c4438",
+    id="eecd1f397dde32b17075d82618195d08c8de57b4",
     name="fat_mvm_gridconv.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,9 +29,12 @@ def fat_mvm_gridconv_py(
     runner: Runner | None = None,
 ) -> FatMvmGridconvPyOutputs:
     """
-    fat_mvm_gridconv.py by PA Taylor.
+    fat_mvm_gridconv.py by AFNI Team.
     
     Preprocess 'old school' *.grid files for statistical modeling using 3dMVM.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mvm_gridconv.py.html
     
     Args:
         matrix_files: Provide the set of matrix (*.grid) files as a searchable\

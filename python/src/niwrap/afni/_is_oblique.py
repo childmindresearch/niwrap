@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _IS_OBLIQUE_METADATA = Metadata(
-    id="f5ddb8aeae2209fb8e59f1557cf1e126e8b6163c",
+    id="b4c4efc1dde8a1f7284f71e50f9c7006dd457c42",
     name="@isOblique",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your_docker_image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,12 @@ def _is_oblique(
     runner: Runner | None = None,
 ) -> IsObliqueOutputs:
     """
-    @isOblique by Ziad Saad.
+    @isOblique by AFNI Team.
     
     Determine if a file is oblique or plumb.
     
-    More information: mailto:saadz@mail.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@isOblique.html
     
     Args:
         infile: Input file (e.g., Hello+orig.HEAD).

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SHIFT_VOLUME_METADATA = Metadata(
-    id="d36217298e8e5843fbbfe6d97324f64beb2ec148",
+    id="235c425e3a1eab8c8b4f4eebe4efe823f7e7634a",
     name="Shift_Volume",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,10 +33,13 @@ def shift_volume(
     runner: Runner | None = None,
 ) -> ShiftVolumeOutputs:
     """
-    Shift_Volume by Ziad Saad.
+    Shift_Volume by AFNI Team.
     
     Tool to shift a dataset in the RAI coordinate system or between MNI
     anatomical space and MNI space.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Shift_Volume.html
     
     Args:
         dset: Input dataset, typically an anatomical dataset to be aligned to\

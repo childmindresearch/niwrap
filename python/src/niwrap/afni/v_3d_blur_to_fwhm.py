@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_BLUR_TO_FWHM_METADATA = Metadata(
-    id="b74d8dad86f9296cef1dc402fc45ddf7394da7c7",
+    id="ec3f866f5f06805b2ae0710948b622a0f90891ca",
     name="3dBlurToFWHM",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -36,7 +36,7 @@ def v_3d_blur_to_fwhm(
     runner: Runner | None = None,
 ) -> V3dBlurToFwhmOutputs:
     """
-    3dBlurToFWHM by Nipype (interface).
+    3dBlurToFWHM by AFNI Team.
     
     Blurs a 'master' dataset until it reaches a specified FWHM smoothness
     (approximately).

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_JSON_VALUE_METADATA = Metadata(
-    id="4024c9ab0ac89728642e1e1ac7a02b840be97523",
+    id="3cfbdd156e8781aa4ae0f134b2f5af59c7d718e6",
     name="adjunct_json_value",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,10 +30,13 @@ def adjunct_json_value(
     runner: Runner | None = None,
 ) -> AdjunctJsonValueOutputs:
     """
-    adjunct_json_value by Paul Taylor, PTaylor@nih.gov.
+    adjunct_json_value by AFNI Team.
     
     A supplementary tool for manipulating JSON values in conjunction with AFNI's
     apqc_py.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_json_value.py.html
     
     Args:
         json_file: Input JSON file.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1D_BANDPASS_METADATA = Metadata(
-    id="532563f769d969b66fd5d36037c486131932956b",
+    id="c43105f92af7c38f324923d7bad47edff1d76e40",
     name="1dBandpass",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,9 +32,12 @@ def v_1d_bandpass(
     runner: Runner | None = None,
 ) -> V1dBandpassOutputs:
     """
-    1dBandpass by RWCox.
+    1dBandpass by AFNI Team.
     
     Bandpass filtering of time series data in AFNI *.1D files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dBandpass.html
     
     Args:
         fbot: Lowest frequency in the passband, in Hz (must be greater than or\

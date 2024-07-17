@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ANHIST_METADATA = Metadata(
-    id="0430631c22e2c460b85236ba43aa3328a7535294",
+    id="2e31823ea09cf9a9ac3c4100abe019fceab46ff5",
     name="3dAnhist",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,10 +37,13 @@ def v_3d_anhist(
     runner: Runner | None = None,
 ) -> V3dAnhistOutputs:
     """
-    3dAnhist by RWCox.
+    3dAnhist by AFNI Team.
     
     Tool to analyze histogram peaks in a T1-weighted high-res brain image
     dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAnhist.html
     
     Args:
         dataset: Input dataset, should be T1-weighted high-res brain image\

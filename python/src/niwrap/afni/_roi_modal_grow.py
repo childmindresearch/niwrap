@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ROI_MODAL_GROW_METADATA = Metadata(
-    id="7367cad51af711c7813f31542c0ee74bc9cfa26e",
+    id="9651c1f897d81177505109f3794afda9155e85cb",
     name="ROI_modal_grow",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="unknown",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,10 +33,13 @@ def roi_modal_grow(
     runner: Runner | None = None,
 ) -> RoiModalGrowOutputs:
     """
-    ROI_modal_grow by Unknown.
+    ROI_modal_grow by AFNI Team.
     
     Script to grow a set of regions in a volumetric dataset using modal
     smoothing.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_modal_grow.html
     
     Args:
         input_dset: Required input dataset. This dataset should be a set of\

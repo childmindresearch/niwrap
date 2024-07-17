@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _REORDER_METADATA = Metadata(
-    id="ffe8738d074fad51ebbb2634dbd36246f5da8ccc",
+    id="b3b957ac8582a3fa40896e252014b575bd146149",
     name="@Reorder",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,12 +34,13 @@ def _reorder(
     runner: Runner | None = None,
 ) -> ReorderOutputs:
     """
-    @Reorder by R Reynolds (for J Bjork).
+    @Reorder by AFNI Team.
     
     Reorder sub-bricks of a dataset based on event mapping. Works similarly to
     the Reorder plugin.
     
-    More information: http://example.com/reorder_plugin_help
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Reorder.html
     
     Args:
         input_dataset: Input dataset to reorder (e.g. EPI+tlrc).

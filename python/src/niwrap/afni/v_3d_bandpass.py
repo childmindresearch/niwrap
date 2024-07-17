@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_BANDPASS_METADATA = Metadata(
-    id="03d13bfe43614af52f4b2cb52d525729073909c7",
+    id="62534251efec8b16d0062676e377d06bda2624b1",
     name="3dBandpass",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -45,7 +45,7 @@ def v_3d_bandpass(
     runner: Runner | None = None,
 ) -> V3dBandpassOutputs:
     """
-    3dBandpass by Nipype (interface).
+    3dBandpass by AFNI Team.
     
     Program to lowpass and/or highpass each voxel time series in a dataset,
     offering more/different options than Fourier.

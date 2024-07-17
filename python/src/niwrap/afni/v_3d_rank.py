@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_RANK_METADATA = Metadata(
-    id="50907da088f09252bfcd4e31e3acc8ac05771cf2",
+    id="e3bc8e0a69dec5f5ebdc6de646dbe12ae38ef142",
     name="3dRank",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,7 +35,7 @@ def v_3d_rank(
     runner: Runner | None = None,
 ) -> V3dRankOutputs:
     """
-    3dRank by AFNI Development Team.
+    3dRank by AFNI Team.
     
     Replaces voxel values by their rank in the set of values collected over all
     voxels in all input datasets.

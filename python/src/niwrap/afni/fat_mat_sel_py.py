@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_MAT_SEL_PY_METADATA = Metadata(
-    id="1adbe938406cec7fd8a0e541e2e0ee129a52d9e0",
+    id="03d2ba2523f7f02d120e0dc843a8b4a93677ebdd",
     name="fat_mat_sel.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your_docker_image_here",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -55,10 +54,13 @@ def fat_mat_sel_py(
     runner: Runner | None = None,
 ) -> FatMatSelPyOutputs:
     """
-    fat_mat_sel.py by PA Taylor (UCT/AIMS).
+    fat_mat_sel.py by AFNI Team.
     
     Perform simple matrix plotting operations from outputs of FATCAT programs
     3dNetCorr and 3dTrackID.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat_sel.py.html
     
     Args:
         parameters: Supply names of parameters, separated by whitespace, for\

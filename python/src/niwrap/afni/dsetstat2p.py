@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 DSETSTAT2P_METADATA = Metadata(
-    id="6983800b039a4e48b10f7148db735976a03942b5",
+    id="a3bde6fe1b20354d9ee116637050a30132ed4ea8",
     name="dsetstat2p",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,12 +33,12 @@ def dsetstat2p(
     runner: Runner | None = None,
 ) -> Dsetstat2pOutputs:
     """
-    dsetstat2p by PA Taylor.
+    dsetstat2p by AFNI Team.
     
     Converts a statistic to a p-value with reference to a particular dataset.
     
     More information:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.attributes.html
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/dsetstat2p.html
     
     Args:
         dataset: Specify a dataset DDD and, if it has multiple sub-bricks, the\

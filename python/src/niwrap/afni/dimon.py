@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DIMON_METADATA = Metadata(
-    id="20b9122e2a1d23b26b840c7abd675907d81c3676",
+    id="35cf3adb56bb92ca5bc2d17ded280b62608333cf",
     name="Dimon",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,11 +38,12 @@ def dimon(
     runner: Runner | None = None,
 ) -> DimonOutputs:
     """
-    Dimon by R. Reynolds.
+    Dimon by AFNI Team.
     
     Monitor real-time acquisition of DICOM image files.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/Dimon.html
     
     Args:
         infile_prefix: Prefix matching input files.

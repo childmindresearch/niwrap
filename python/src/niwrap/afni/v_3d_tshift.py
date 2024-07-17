@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TSHIFT_METADATA = Metadata(
-    id="438fd04b87b73ab4dd89437f6c0cf3ada061c258",
+    id="ae3eac68bd5962b0fe249f42757c87f6a26d57fd",
     name="3dTshift",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -46,7 +46,7 @@ def v_3d_tshift(
     runner: Runner | None = None,
 ) -> V3dTshiftOutputs:
     """
-    3dTshift by Nipype (interface).
+    3dTshift by AFNI Team.
     
     Shifts voxel time series from input so that separate slices are aligned to
     the same temporal origin.

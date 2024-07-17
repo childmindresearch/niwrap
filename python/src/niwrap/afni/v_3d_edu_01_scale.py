@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_EDU_01_SCALE_METADATA = Metadata(
-    id="ddda63f799b4a68504525775627e0180559490d5",
+    id="ce7d535f0c9acb6bde53f8f956bcb3576bbda790",
     name="3dEdu_01_scale",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,10 +31,13 @@ def v_3d_edu_01_scale(
     runner: Runner | None = None,
 ) -> V3dEdu01ScaleOutputs:
     """
-    3dEdu_01_scale by PA Taylor.
+    3dEdu_01_scale by AFNI Team.
     
     Educational program to create a new AFNI program. Scales and masks dataset
     volumes.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dEdu_01_scale.html
     
     Args:
         input_: Input dataset.

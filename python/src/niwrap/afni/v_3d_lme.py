@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_LME_METADATA = Metadata(
-    id="9e1c7f58e629eb384b22472e67091c3a3cd08ee4",
+    id="98472d4aded4e044084cf0fd784474f09569e02c",
     name="3dLME",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -55,11 +57,12 @@ def v_3d_lme(
     runner: Runner | None = None,
 ) -> V3dLmeOutputs:
     """
-    3dLME by Gang Chen (gangchen@mail.nih.gov).
+    3dLME by AFNI Team.
     
     AFNI Group Analysis Program with Linear Mixed-Effects Modeling Approach.
     
-    More information: https://afni.nimh.nih.gov/sscc/gangc/lme.html
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLME.html
     
     Args:
         prefix: Prefix for output files.

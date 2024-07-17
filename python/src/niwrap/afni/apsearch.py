@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 APSEARCH_METADATA = Metadata(
-    id="50b5ec47557fadaf89f9b20ffc67986cfa7b79b9",
+    id="4ed466c74c5f1a05e7556a8ab824ab3af191b857",
     name="apsearch",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/docker-apsearch:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,11 +30,12 @@ def apsearch(
     runner: Runner | None = None,
 ) -> ApsearchOutputs:
     """
-    apsearch by Tool Author Name.
+    apsearch by AFNI Team.
     
     A tool for searching applications.
     
-    More information: https://example.com/apsearch
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/apsearch.html
     
     Args:
         search_term: Term to search.

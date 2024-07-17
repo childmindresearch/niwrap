@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AFNI_RUN_R_METADATA = Metadata(
-    id="95d82b2fb81458260770b3c003f5fcb01a770dd7",
+    id="7592c47db94b5bbd2a7361de44c34b673e6ded70",
     name="afni_run_R",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,11 +27,12 @@ def afni_run_r(
     runner: Runner | None = None,
 ) -> AfniRunROutputs:
     """
-    afni_run_R by AFNI Developers.
+    afni_run_R by AFNI Team.
     
     Run an R script with the specified arguments.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_run_R.html
     
     Args:
         r_script: R script to be executed.

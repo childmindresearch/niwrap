@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TCAT_METADATA = Metadata(
-    id="1702c074be14689bd9c18b80684b3ed7250c0610",
+    id="93ff7675ef03cabe6adedb798eb8c7987a90c017",
     name="3dTcat",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -34,7 +34,7 @@ def v_3d_tcat(
     runner: Runner | None = None,
 ) -> V3dTcatOutputs:
     """
-    3dTcat by Nipype (interface).
+    3dTcat by AFNI Team.
     
     Concatenate sub-bricks from input datasets into one big 3D+time dataset.
     TODO Replace InputMultiPath in_files with Traits.List, if possible. Current

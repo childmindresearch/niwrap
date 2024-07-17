@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 P2DSETSTAT_METADATA = Metadata(
-    id="4d47dbd5c06fd1a678d71efcef8f672853e1d8c2",
+    id="b6b0a2e0f001073b8c2fe20c07c32193d6633cad",
     name="p2dsetstat",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,13 +33,13 @@ def p2dsetstat(
     runner: Runner | None = None,
 ) -> P2dsetstatOutputs:
     """
-    p2dsetstat by PA Taylor.
+    p2dsetstat by AFNI Team.
     
     Convert a p-value to a statistic of choice with reference to a specific
     dataset.
     
     More information:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.attributes.html
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/p2dsetstat.html
     
     Args:
         dataset: Specify a dataset DDD and, if it has multiple sub-bricks, the\

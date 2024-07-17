@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TTO1_D_METADATA = Metadata(
-    id="72a7a6b1c7ab90e970655a9469f2e756e42f299f",
+    id="4f4ffe02947ba31c0d6544a3b04fe80aa946cda2",
     name="3dTto1D",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,9 +33,12 @@ def v_3d_tto1_d(
     runner: Runner | None = None,
 ) -> V3dTto1DOutputs:
     """
-    3dTto1D by R Reynolds.
+    3dTto1D by AFNI Team.
     
     Collapse a 4D time series to a 1D time series.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTto1D.html
     
     Args:
         input_dataset: Specify input dataset. This should be a set of 3D time\

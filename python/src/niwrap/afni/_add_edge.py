@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _ADD_EDGE_METADATA = Metadata(
-    id="5f21a43173d208e4f8d32341285f6895f7f8c2aa",
+    id="fdbcbffedbf443d8fb87054de91e5c8d6b473736",
     name="@AddEdge",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,12 +48,13 @@ def _add_edge(
     runner: Runner | None = None,
 ) -> AddEdgeOutputs:
     """
-    @AddEdge by Author Unknown.
+    @AddEdge by AFNI Team.
     
     A script to create composite edge-enhanced datasets and drive the AFNI
     interface to display the results.
     
-    More information: URL not provided
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@AddEdge.html
     
     Args:
         input_files: Input datasets.

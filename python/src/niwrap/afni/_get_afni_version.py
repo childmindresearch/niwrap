@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _GET_AFNI_VERSION_METADATA = Metadata(
-    id="dc2f253b4426c36898a7ad72e9c3267097daeeb0",
+    id="d6294f0f263143ec10e4fd4fc8a6df1d4bb64bf6",
     name="@get.afni.version",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,12 @@ def _get_afni_version(
     runner: Runner | None = None,
 ) -> GetAfniVersionOutputs:
     """
-    @get.afni.version by RWCox.
+    @get.afni.version by AFNI Team.
     
     Downloads the source code for a specified AFNI version.
     
-    More information: https://github.com/afni/AFNI
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@get.afni.version.html
     
     Args:
         version: AFNI version number to get (e.g., 16.0.01).

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_ROISTATS_METADATA = Metadata(
-    id="b426d2b6fba6e6385200ac12f81509de33949e62",
+    id="b9af86ba8912e29473f1f7452d469083f2f294a9",
     name="3dROIstats",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -43,7 +43,7 @@ def v_3d_roistats(
     runner: Runner | None = None,
 ) -> V3dRoistatsOutputs:
     """
-    3dROIstats by Nipype (interface).
+    3dROIstats by AFNI Team.
     
     Display statistics over masked regions.
     

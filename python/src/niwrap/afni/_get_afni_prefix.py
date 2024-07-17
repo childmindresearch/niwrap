@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _GET_AFNI_PREFIX_METADATA = Metadata(
-    id="44ef5cc72fb89d74dd895b167cbf05f68fd48f15",
+    id="f240807052175dee3155ef70ae01255e30ea2534",
     name="@GetAfniPrefix",
     container_image_type="docker",
-    container_image_index="hub.docker.com",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,7 +27,7 @@ def _get_afni_prefix(
     runner: Runner | None = None,
 ) -> GetAfniPrefixOutputs:
     """
-    @GetAfniPrefix by Ziad Saad.
+    @GetAfniPrefix by AFNI Team.
     
     A tool to extract AFNI prefix from a given file path.
     

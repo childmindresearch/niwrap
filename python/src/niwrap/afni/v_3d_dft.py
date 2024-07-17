@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_DFT_METADATA = Metadata(
-    id="9afe56284a8d58ba867b060165da4744ae42094f",
+    id="1f3c907e9349251724f755a698e5ef1d0c5d20dc",
     name="3dDFT",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,12 +36,13 @@ def v_3d_dft(
     runner: Runner | None = None,
 ) -> V3dDftOutputs:
     """
-    3dDFT by AFNI (Analysis of Functional NeuroImages).
+    3dDFT by AFNI Team.
     
     Performs Discrete Fourier Transform (DFT) along the time axis of a complex-
     or float-valued dataset.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDFT.html
     
     Args:
         infile: Input dataset (complex- or float-valued).

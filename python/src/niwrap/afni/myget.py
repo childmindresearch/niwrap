@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 MYGET_METADATA = Metadata(
-    id="eb1c30697cd3ec02c5b09b07fbf2667e12dfd4b1",
+    id="f9fc7a49d8e5e92d0a98f1a50b5a3bf4b8753513",
     name="myget",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,9 +29,12 @@ def myget(
     runner: Runner | None = None,
 ) -> MygetOutputs:
     """
-    myget.
+    myget by AFNI Team.
     
     A simple file downloader from a URL.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/myget.html
     
     Args:
         url: The URL to download the file from.

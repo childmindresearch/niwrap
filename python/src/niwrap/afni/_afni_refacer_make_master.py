@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _AFNI_REFACER_MAKE_MASTER_METADATA = Metadata(
-    id="5c2b18b66d8d4751cbe63686151fec0a649e30dc",
+    id="7e6ac7ad9e731151a33c461f5c124ca5341af742",
     name="@afni_refacer_make_master",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,13 @@ def _afni_refacer_make_master(
     runner: Runner | None = None,
 ) -> AfniRefacerMakeMasterOutputs:
     """
-    @afni_refacer_make_master by The Face of Imperial Zhark, Who is Terrible to
-    Behold!.
+    @afni_refacer_make_master by AFNI Team.
     
     This script makes a new mask/shell dataset for use with @afni_refacer_run by
     averaging 'faces' (non-brain tissue) from input datasets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_make_master.html
     
     Args:
         input_datasets: List of T1-weighted datasets that have NOT been\

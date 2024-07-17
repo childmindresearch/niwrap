@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _CLUST_EXP_RUN_SHINY_METADATA = Metadata(
-    id="fc5d2aad7ba0296b6f99dafcd717f7caaf8aae6e",
+    id="05a3aa0a07b923ccc33d0cb46548c6a1dfe6bcb9",
     name="@ClustExp_run_shiny",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="yourdockerhubusername/clustexp_run_shiny:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,11 +27,12 @@ def _clust_exp_run_shiny(
     runner: Runner | None = None,
 ) -> ClustExpRunShinyOutputs:
     """
-    @ClustExp_run_shiny by Justin Rajendra.
+    @ClustExp_run_shiny by AFNI Team.
     
     Launch a shiny app that was created by ClustExp_StatParse.py.
     
-    More information: https://example.com/clustexp_run_shiny
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ClustExp_run_shiny.html
     
     Args:
         directory: Folder created by ClustExp_StatParse.py.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 QDELAUNAY_METADATA = Metadata(
-    id="7682b94401cead5f9fa6cd17456c0c79968cae54",
+    id="9869f0333280bcb7be3be93e96e70d709a2bc71a",
     name="qdelaunay",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -56,11 +58,12 @@ def qdelaunay(
     runner: Runner | None = None,
 ) -> QdelaunayOutputs:
     """
-    qdelaunay by Qhull Project.
+    qdelaunay by AFNI Team.
     
     Compute the Delaunay triangulation using Qhull.
     
-    More information: http://www.qhull.org
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/qdelaunay.html
     
     Args:
         input_file: Input file containing point coordinates.

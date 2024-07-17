@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_PROC_CONVERT_DCM_DWIS_METADATA = Metadata(
-    id="fc2a726496fdd4acbcbe04f46bf3d50462686fde",
+    id="7f33106a46c812f0022cc7b3e2edadb8a7e0a4b3",
     name="fat_proc_convert_dcm_dwis",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -56,13 +55,14 @@ def fat_proc_convert_dcm_dwis(
     runner: Runner | None = None,
 ) -> FatProcConvertDcmDwisOutputs:
     """
-    fat_proc_convert_dcm_dwis by PA Taylor.
+    fat_proc_convert_dcm_dwis by AFNI Team.
     
     Convert sets of DWIs in DICOM format into 'nicer' volume+grad format,
     reorient volumetric data, and glue together multiple sessions/directories of
     data.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_convert_dcm_dwis.html
     
     Args:
         dicom_dir: Directory of DICOM files of the DWI data with 'AP' phase\

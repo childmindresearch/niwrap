@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SLOW_SURF_CLUSTSIM_PY_METADATA = Metadata(
-    id="61ca0dabfd041ff860dc4d82209b8b630943d7a9",
+    id="b50edd606f1480620f1070d30997d45b4421b95e",
     name="slow_surf_clustsim.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,9 +36,12 @@ def slow_surf_clustsim_py(
     runner: Runner | None = None,
 ) -> SlowSurfClustsimPyOutputs:
     """
-    slow_surf_clustsim.py by R Reynolds.
+    slow_surf_clustsim.py by AFNI Team.
     
     Generate a tcsh script to run clustsim on surface.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/slow_surf_clustsim.py.html
     
     Args:
         on_surface: Start from noise on the surface (so no volume data is\

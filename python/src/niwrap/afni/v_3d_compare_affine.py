@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_COMPARE_AFFINE_METADATA = Metadata(
-    id="848c982592a9276c001ccbdf810fbbc7fdfffca5",
+    id="e60f9cf65b751e5f6d51d1348f9d18b1103b2e2a",
     name="3dCompareAffine",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your_docker_image_repository/your_image_name:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,10 +30,13 @@ def v_3d_compare_affine(
     runner: Runner | None = None,
 ) -> V3dCompareAffineOutputs:
     """
-    3dCompareAffine by RWCox - Mar 2020 at the Tulsa bootcamp.
+    3dCompareAffine by AFNI Team.
     
     Compares two (or more) affine spatial transformations on a dataset and
     outputs measurements of their differences in spatial displacements.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCompareAffine.html
     
     Args:
         mask: Dataset containing non-zero voxels used as the region over which\

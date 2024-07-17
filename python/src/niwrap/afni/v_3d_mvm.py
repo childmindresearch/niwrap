@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_MVM_METADATA = Metadata(
-    id="5676cc7b1ec6838f20ad7edc185e4bc23c4c10ef",
+    id="bf376f168ba6961d71708b0368d86cc733bfd983",
     name="3dMVM",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -45,11 +44,12 @@ def v_3d_mvm(
     runner: Runner | None = None,
 ) -> V3dMvmOutputs:
     """
-    3dMVM by Gang Chen.
+    3dMVM by AFNI Team.
     
     AFNI Group Analysis Program with Multi-Variate Modeling Approach.
     
-    More information: https://afni.nimh.nih.gov/MVM
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMVM.html
     
     Args:
         prefix: Output file name prefix.

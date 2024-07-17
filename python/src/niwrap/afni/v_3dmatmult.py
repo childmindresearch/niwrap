@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DMATMULT_METADATA = Metadata(
-    id="56e3abf9500221c2678f71b06a21357c80ae3923",
+    id="b0403f3583c32fcce165812afa6ff2fc1aa6d6df",
     name="3dmatmult",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,11 +32,12 @@ def v_3dmatmult(
     runner: Runner | None = None,
 ) -> V3dmatmultOutputs:
     """
-    3dmatmult by R. Reynolds.
+    3dmatmult by AFNI Team.
     
     Multiply AFNI datasets slice-by-slice as matrices.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmatmult.html
     
     Args:
         input_a: Specify first (matrix) dataset.

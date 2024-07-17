@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_PROC_DECMAP_METADATA = Metadata(
-    id="a41d6c1a5ed49d75f5b9399c2f92d59e5d4d298f",
+    id="5aa5378d33b0791dc219d5c1908366f85e23cd2b",
     name="fat_proc_decmap",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -49,11 +48,12 @@ def fat_proc_decmap(
     runner: Runner | None = None,
 ) -> FatProcDecmapOutputs:
     """
-    fat_proc_decmap by PA Taylor.
+    fat_proc_decmap by AFNI Team.
     
     This program makes a directionally encoded color (DEC) map for DTI results.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_decmap.html
     
     Args:
         in_fa: Input FA (scalar) map.

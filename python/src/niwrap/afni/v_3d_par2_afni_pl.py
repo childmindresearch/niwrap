@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_PAR2_AFNI_METADATA = Metadata(
-    id="3ed827ee1d593d41b0afc59e9abc7fa506c1a462",
+    id="da390f7a62397b27327c15255bd2013d51035362",
     name="3dPAR2AFNI",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="relevant-docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,9 +37,12 @@ def v_3d_par2_afni(
     runner: Runner | None = None,
 ) -> V3dPar2AfniOutputs:
     """
-    3dPAR2AFNI by Unknown.
+    3dPAR2AFNI by AFNI Team.
     
     Convert Philips PAR/REC files to AFNI's BRIK/HEAD, NIfTI, or ANALYZE format.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPAR2AFNI.pl.html
     
     Args:
         input_file: Input PAR file (e.g., subject1.PAR).

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_MASK_TO_ASCII_METADATA = Metadata(
-    id="937166d0db4275d2a8744376ec4055782f12b9da",
+    id="b850d6d473bbf3763cf436e175726b9f36196b22",
     name="3dMaskToASCII",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,11 +29,12 @@ def v_3d_mask_to_ascii(
     runner: Runner | None = None,
 ) -> V3dMaskToAsciiOutputs:
     """
-    3dMaskToASCII by AFNI (Analysis of Functional NeuroImages) Development Team.
+    3dMaskToASCII by AFNI Team.
     
     Converts a byte-valued 0/1 dataset into an ASCII string, or vice versa.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMaskToASCII.html
     
     Args:
         dataset: Input dataset (e.g. mask.nii.gz).

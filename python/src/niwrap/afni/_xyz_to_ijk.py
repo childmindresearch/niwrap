@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 XYZ_TO_IJK_METADATA = Metadata(
-    id="d6d2552244fd134eef7dbf23c61ff72d7de94e77",
+    id="3e9343f139d0defe33841347c54faca4132d8d29",
     name="xyz_to_ijk",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,10 +32,13 @@ def xyz_to_ijk(
     runner: Runner | None = None,
 ) -> XyzToIjkOutputs:
     """
-    xyz_to_ijk by PA Taylor.
+    xyz_to_ijk by AFNI Team.
     
     Helper script to convert (x, y, z) coordinates to (i, j, k) indices for a
     volumetric dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@xyz_to_ijk.html
     
     Args:
         inset: Volumetric file name (e.g. FILE.nii.gz).

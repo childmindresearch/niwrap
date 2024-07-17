@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _DJUNCT_SSW_INTERMED_EDGE_IMGS_METADATA = Metadata(
-    id="a161f94c02e5318659c3652fbff10efebb6fecb0",
+    id="f365c13ac94cb724065eeb8dd3bb1ec0e5daaff4",
     name="@djunct_ssw_intermed_edge_imgs",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your_docker_image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,10 +38,13 @@ def _djunct_ssw_intermed_edge_imgs(
     runner: Runner | None = None,
 ) -> DjunctSswIntermedEdgeImgsOutputs:
     """
-    @djunct_ssw_intermed_edge_imgs by PA Taylor.
+    @djunct_ssw_intermed_edge_imgs by AFNI Team.
     
     Helper script to generate intermediate edge images for SSW-related
     processing.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_ssw_intermed_edge_imgs.html
     
     Args:
         prefix: Prefix for generated output files.

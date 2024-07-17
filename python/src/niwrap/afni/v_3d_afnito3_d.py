@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_AFNITO3_D_METADATA = Metadata(
-    id="2e6e0384b1977d2d73e565f7190a7470ad6928a3",
+    id="9b75f7e484d5a74ae5262ea84822922d585970d4",
     name="3dAFNIto3D",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,9 +31,12 @@ def v_3d_afnito3_d(
     runner: Runner | None = None,
 ) -> V3dAfnito3DOutputs:
     """
-    3dAFNIto3D by AFNI Development Team.
+    3dAFNIto3D by AFNI Team.
     
     Reads in an AFNI dataset, and writes it out as a 3D file.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNIto3D.html
     
     Args:
         dataset: AFNI dataset to be converted.

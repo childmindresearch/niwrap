@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SURF_PATCH_METADATA = Metadata(
-    id="e024bc8c25f0d2a70f20d0b2e2cf178638c5a7c9",
+    id="afa09ee96a9e7bdaa07578c41cbb15e5e4b4e28a",
     name="SurfPatch",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/suma:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -53,10 +52,13 @@ def surf_patch(
     runner: Runner | None = None,
 ) -> SurfPatchOutputs:
     """
-    SurfPatch by Ziad S. Saad, SSCC/NIMH/NIH.
+    SurfPatch by AFNI Team.
     
     Creates a patch of surface formed by nodes in a nodefile and optionally
     calculates the volume between the same patch on two isotopic surfaces.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfPatch.html
     
     Args:
         spec_file: Spec file containing input surfaces.

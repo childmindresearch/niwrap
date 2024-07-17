@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _MEASURE_EROSION_THICK_METADATA = Metadata(
-    id="b84121b54105222c021af4a9838ae998969c8e24",
+    id="08bbe58cf8e82ea14a0cfac71408a86258bdcdf9",
     name="@measure_erosion_thick",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -51,9 +53,12 @@ def _measure_erosion_thick(
     runner: Runner | None = None,
 ) -> MeasureErosionThickOutputs:
     """
-    @measure_erosion_thick by N/A.
+    @measure_erosion_thick by AFNI Team.
     
     Compute thickness of mask using erosion method.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@measure_erosion_thick.html
     
     Args:
         maskset: Mask dataset for input.

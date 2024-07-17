@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_LOCALSTAT_METADATA = Metadata(
-    id="3710221734416296f5ef283260734abe2e33fb32",
+    id="cb77e9873af63b1329db358b4409f15d01c6b592",
     name="3dLocalstat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,10 +47,13 @@ def v_3d_localstat(
     runner: Runner | None = None,
 ) -> V3dLocalstatOutputs:
     """
-    3dLocalstat by RWCox, ZSSaad.
+    3dLocalstat by AFNI Team.
     
     This program computes statistics at each voxel, based on a local
     neighborhood of that voxel.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalstat.html
     
     Args:
         dataset: Input dataset.

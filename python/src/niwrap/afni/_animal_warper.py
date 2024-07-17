@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _ANIMAL_WARPER_METADATA = Metadata(
-    id="c45debf2ea75850d60320ceb72615dfca588edb1",
+    id="bc5bda3af8fd5a33b4a428acd68695ce87d4d5ec",
     name="@animal_warper",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -72,13 +71,13 @@ def _animal_warper(
     runner: Runner | None = None,
 ) -> AnimalWarperOutputs:
     """
-    @animal_warper by D Glen and PA Taylor (SSCC, NIMH, NIH, USA).
+    @animal_warper by AFNI Team.
     
     Align a subject structural dataset to a template and perform several
     post-alignment operations.
     
     More information:
-    https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/nonhuman/macaque_demos/main_toc.html
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@animal_warper.html
     
     Args:
         input_file: input dataset to align to base template.

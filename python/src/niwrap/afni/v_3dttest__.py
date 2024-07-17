@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3DTTEST___METADATA = Metadata(
-    id="5b0b14fbd5b0b1266c9d737dab9d9226e9d1898f",
+    id="33a898457760fd3e5996a7102c5222527b95b998",
     name="3dttest++",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,7 +50,7 @@ def v_3dttest__(
     runner: Runner | None = None,
 ) -> V3dttestOutputs:
     """
-    3dttest++ by RW Cox.
+    3dttest++ by AFNI Team.
     
     Gosset (Student) t-test of sets of 3D datasets in AFNI.
     

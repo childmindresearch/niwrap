@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FAT_MVM_SCRIPTER_PY_METADATA = Metadata(
-    id="cca0d10481b4cedd8fdaa71b28f05b24b99467af",
+    id="92a3b9da20574f8cd349cab0c55e918677053cb4",
     name="fat_mvm_scripter.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,9 +42,12 @@ def fat_mvm_scripter_py(
     runner: Runner | None = None,
 ) -> FatMvmScripterPyOutputs:
     """
-    fat_mvm_scripter.py by PA Taylor.
+    fat_mvm_scripter.py by AFNI Team.
     
     Automated tool to create command scripts for 3dMVM statistical modeling.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mvm_scripter.py.html
     
     Args:
         prefix: Output prefix for the script file, which will ultimately create\

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _DEMO_PROMPT_METADATA = Metadata(
-    id="e5a10e50755fc485f577306751bee4172cd63e06",
+    id="1f2a2594bcd160adedfff6a3b27fa11d4492311f",
     name="@demo_prompt",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,9 +28,12 @@ def _demo_prompt(
     runner: Runner | None = None,
 ) -> DemoPromptOutputs:
     """
-    @demo_prompt by Unknown.
+    @demo_prompt by AFNI Team.
     
     Prompts user with a message and waits for acknowledgment.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@demo_prompt.html
     
     Args:
         message: The message to display in the prompt.

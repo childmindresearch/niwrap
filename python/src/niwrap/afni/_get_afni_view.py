@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _GET_AFNI_VIEW_METADATA = Metadata(
-    id="182196a4d6a5fcbde37e11c7ba0fc95d76a76518",
+    id="abf57728a848ed879380f140718963c0d6f76b0d",
     name="@GetAfniView",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,12 @@ def _get_afni_view(
     runner: Runner | None = None,
 ) -> GetAfniViewOutputs:
     """
-    @GetAfniView by Ziad Saad.
+    @GetAfniView by AFNI Team.
     
     A tool to retrieve the AFNI view of a given dataset name.
     
-    More information: https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/index.html
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniView.html
     
     Args:
         dataset_name: Name of the dataset (including path) from which to\

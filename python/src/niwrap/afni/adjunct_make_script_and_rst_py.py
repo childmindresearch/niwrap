@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_MAKE_SCRIPT_AND_RST_PY_METADATA = Metadata(
-    id="fde95f51c27024080f1b05cef437c3ba77a491fe",
+    id="db73c8154d3443463fa0971af96cbef0d74d2ef1",
     name="adjunct_make_script_and_rst.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="python:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,12 +36,13 @@ def adjunct_make_script_and_rst_py(
     runner: Runner | None = None,
 ) -> AdjunctMakeScriptAndRstPyOutputs:
     """
-    adjunct_make_script_and_rst.py by Unspecified.
+    adjunct_make_script_and_rst.py by AFNI Team.
     
     Program to take a script with some special markup and turn it into both an
     RST page and a script for the online Sphinx documentation.
     
-    More information: Unspecified
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_make_script_and_rst.py.html
     
     Args:
         input_script: Input script file with special markup.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_INTRACRANIAL_METADATA = Metadata(
-    id="6466b8d63fd1ed7313aadc8bbcdb799e2f025204",
+    id="a828b71b47b81c5a46cc2484a4464f34ab5a2e3c",
     name="3dIntracranial",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,11 +36,12 @@ def v_3d_intracranial(
     runner: Runner | None = None,
 ) -> V3dIntracranialOutputs:
     """
-    3dIntracranial by AFNI Development Team.
+    3dIntracranial by AFNI Team.
     
     Performs automatic segmentation of intracranial region.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dIntracranial.html
     
     Args:
         infile: Filename of anat dataset to be segmented.

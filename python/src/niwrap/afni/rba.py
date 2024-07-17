@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 RBA_METADATA = Metadata(
-    id="00cd862a060ee6daa258ff88170684550aab503a",
+    id="1fe0589eadbcad27bc8a92dfe499c99862145dff",
     name="RBA",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="docker_image_name",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -56,11 +55,12 @@ def rba(
     runner: Runner | None = None,
 ) -> RbaOutputs:
     """
-    RBA by Gang Chen.
+    RBA by AFNI Team.
     
     Region-Based Analysis Program through Bayesian Multilevel Modeling.
     
-    More information: https://afni.nimh.nih.gov/gangchen_homepage
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/RBA.html
     
     Args:
         prefix: Prefix for output file names.

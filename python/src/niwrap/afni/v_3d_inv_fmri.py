@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_INV_FMRI_METADATA = Metadata(
-    id="0bfb2737fc38170995b0e4033b8ba1b5fff4f594",
+    id="a48a3f8f1d473b7c1c1a06867cd14530adb564cb",
     name="3dInvFMRI",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,10 +38,13 @@ def v_3d_inv_fmri(
     runner: Runner | None = None,
 ) -> V3dInvFmriOutputs:
     """
-    3dInvFMRI by RWCox - purely for experimental purposes!.
+    3dInvFMRI by AFNI Team.
     
     Program to compute stimulus time series, given a 3D+time dataset and an
     activation map (the inverse of the usual FMRI analysis problem).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dInvFMRI.html
     
     Args:
         input_file: Input 3D+time dataset.

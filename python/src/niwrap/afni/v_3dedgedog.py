@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DEDGEDOG_METADATA = Metadata(
-    id="78bd18b5cfb4ad1fd95b9012cb78e3b8dc268b08",
+    id="2d5e38939e751eb6882967a264ef3823e9efcbb2",
     name="3dedgedog",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/docker-3dedgedog:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,12 +47,13 @@ def v_3dedgedog(
     runner: Runner | None = None,
 ) -> V3dedgedogOutputs:
     """
-    3dedgedog by PA Taylor and DR Glen (SSCC, NIMH, NIH).
+    3dedgedog by AFNI Team.
     
     Calculate edges in an image using the Difference of Gaussians (DOG) method
     with extensions/tweaks of the Marr-Hildreth algorithm.
     
-    More information: https://example.com/3dedgedog
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dedgedog.html
     
     Args:
         input_: Input dataset.

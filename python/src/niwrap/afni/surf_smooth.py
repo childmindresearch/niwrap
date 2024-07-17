@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SURF_SMOOTH_METADATA = Metadata(
-    id="d4b684aa341e4bb9cd1078572e0283d254501cd6",
+    id="9f38528daf941d0dc477c25d451c4ff59b3101c4",
     name="SurfSmooth",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,9 +43,12 @@ def surf_smooth(
     runner: Runner | None = None,
 ) -> SurfSmoothOutputs:
     """
-    SurfSmooth by SSCC/NIMH/NIH.
+    SurfSmooth by AFNI Team.
     
     Tool for smoothing data on surfaces using various methods.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfSmooth.html
     
     Args:
         surface: Option for specifying the surface to smooth or the domain over\

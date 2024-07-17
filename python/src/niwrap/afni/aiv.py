@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AIV_METADATA = Metadata(
-    id="20c3c63bb77aacc60732c20390709a3989c92768",
+    id="578b6d8b42b586e61d17c91fc62ad157cd5c12cf",
     name="aiv",
     container_image_type="docker",
-    container_image_index="hub.docker.com",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,10 +31,13 @@ def aiv(
     runner: Runner | None = None,
 ) -> AivOutputs:
     """
-    aiv by RW Cox and DR Glen.
+    aiv by AFNI Team.
     
     AFNI Image Viewer program. Shows the 2D images on the command line in an
     AFNI-like image viewer.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/aiv.html
     
     Args:
         input_images: Input image files (e.g., img1.jpg, img2.bmp).

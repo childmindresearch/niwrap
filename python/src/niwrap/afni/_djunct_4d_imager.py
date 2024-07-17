@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DJUNCT_4D_IMAGER_METADATA = Metadata(
-    id="754e8dff0404bbe8bf301642886b94bf551ef9fc",
+    id="e9742979d8ca04c378a5d26a201a87ec7c1adbb4",
     name="djunct_4d_imager",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,12 +41,13 @@ def djunct_4d_imager(
     runner: Runner | None = None,
 ) -> Djunct4dImagerOutputs:
     """
-    djunct_4d_imager by PA Taylor (NIMH, NIH, USA).
+    djunct_4d_imager by AFNI Team.
     
     The program is useful for viewing the same slice across the 'time' dimension
     of a 4D data set.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_4d_imager.html
     
     Args:
         inset: ULay dataset, probably 4D (required).

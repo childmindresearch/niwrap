@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _RENAME_PANGA_METADATA = Metadata(
-    id="3e10abfce53f52ca6398e52887253ad6f91fdc68",
+    id="2174cb3b7768947f49f0ccd01e9bfd8de687a2c2",
     name="@RenamePanga",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,11 +41,12 @@ def _rename_panga(
     runner: Runner | None = None,
 ) -> RenamePangaOutputs:
     """
-    @RenamePanga by Ziad Saad.
+    @RenamePanga by AFNI Team.
     
     Creates AFNI bricks from RealTime GE EPI series.
     
-    More information: mailto:saadz@mail.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@RenamePanga.html
     
     Args:
         dir_number: The directory number where the first image of the series is\

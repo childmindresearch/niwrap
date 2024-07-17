@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1DGRAYPLOT_METADATA = Metadata(
-    id="57a9708c24ff94eec7f4cf00218259ece5397e8e",
+    id="c9c54b4f4c955678553f1bde775145e0b7ebb3bb",
     name="1dgrayplot",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,10 +32,13 @@ def v_1dgrayplot(
     runner: Runner | None = None,
 ) -> V1dgrayplotOutputs:
     """
-    1dgrayplot by AFNI Development Team.
+    1dgrayplot by AFNI Team.
     
     Graphs the columns of a *.1D type time series file to the screen in
     grayscale.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dgrayplot.html
     
     Args:
         tsfile: Input time series file (*.1D format).

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_SURF_MASK_METADATA = Metadata(
-    id="ee807bb100a942f98e8d68b5c6bb0070fbe405d7",
+    id="193cfbe86177c2e59f981d82cc4cdbc7636aea67",
     name="3dSurfMask",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,12 +38,13 @@ def v_3d_surf_mask(
     runner: Runner | None = None,
 ) -> V3dSurfMaskOutputs:
     """
-    3dSurfMask by Ziad S. Saad SSCC/NIMH/NIH.
+    3dSurfMask by AFNI Team.
     
     Creates volumetric datasets marking voxels based on their location relative
     to a surface.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSurfMask.html
     
     Args:
         surface_type: Specify input surface.

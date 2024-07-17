@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ATTRIBUTE_METADATA = Metadata(
-    id="eae7a5bea611d2cdf3a13f716d6fc9015de86705",
+    id="8ed7dfef6d8fde76eb3cece93b10156f9ab2f79a",
     name="3dAttribute",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,12 +35,13 @@ def v_3d_attribute(
     runner: Runner | None = None,
 ) -> V3dAttributeOutputs:
     """
-    3dAttribute by AFNI Development Team.
+    3dAttribute by AFNI Team.
     
     Prints the value of the attribute 'aname' from the header of the dataset
     'dset'.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAttribute.html
     
     Args:
         aname: Attribute name to be printed from the dataset.

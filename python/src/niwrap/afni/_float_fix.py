@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _FLOAT_FIX_METADATA = Metadata(
-    id="c2eaea29a910aae1188280911225bba330f85610",
+    id="e1af50bec7bc31ecfa19a15fa8cdbbd230f36c05",
     name="@float_fix",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/float_fix:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,12 +26,13 @@ def _float_fix(
     runner: Runner | None = None,
 ) -> FloatFixOutputs:
     """
-    @float_fix by Gang Chen, Ziad Saad.
+    @float_fix by AFNI Team.
     
     Check whether the input files have any IEEE floating point numbers for
     illegal values: infinities and not-a-number (NaN) values.
     
-    More information: https://example.com/float_fix_tool
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@float_fix.html
     
     Args:
         input_files: Input files to be checked for illegal IEEE floating point\

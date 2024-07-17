@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SURF_MESH_METADATA = Metadata(
-    id="3d5e733be2ff494861e48de4eba7edc3c02ead0a",
+    id="5baa91c253f605181d47f78912ab75bb0132f63f",
     name="SurfMesh",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="user/surfmesh:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,9 +35,12 @@ def surf_mesh(
     runner: Runner | None = None,
 ) -> SurfMeshOutputs:
     """
-    SurfMesh by Jakub Otwinowski, maintained by Ziad S. Saad SSCC/NIMH/NIH.
+    SurfMesh by AFNI Team.
     
     Surface mesh manipulation tool.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfMesh.html
     
     Args:
         input_surface: Input surface file with specified type.

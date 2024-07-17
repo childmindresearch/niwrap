@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DMASK_SVD_METADATA = Metadata(
-    id="defe7c7978f157b6006581c072939424b8b2b77b",
+    id="befb278fb0ea3598cbac3ecadbabb48616183c88",
     name="3dmaskSVD",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,12 +36,13 @@ def v_3dmask_svd(
     runner: Runner | None = None,
 ) -> V3dmaskSvdOutputs:
     """
-    3dmaskSVD by Zhark the Gloriously Singular.
+    3dmaskSVD by AFNI Team.
     
     Computes the principal singular vector of the time series vectors extracted
     from the input dataset over the input mask.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskSVD.html
     
     Args:
         input_dataset: Input dataset.

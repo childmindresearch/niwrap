@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_AW_TABLEIZE_ROI_INFO_PY_METADATA = Metadata(
-    id="93445600123ba495ff244eeee6990066b9750b77",
+    id="9716c5ce6171eb298e4b8a92beeb95085df54b86",
     name="adjunct_aw_tableize_roi_info.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,10 +33,13 @@ def adjunct_aw_tableize_roi_info_py(
     runner: Runner | None = None,
 ) -> AdjunctAwTableizeRoiInfoPyOutputs:
     """
-    adjunct_aw_tableize_roi_info.py by PA Taylor (NIMH, NIH).
+    adjunct_aw_tableize_roi_info.py by AFNI Team.
     
     A simple helper function for the fat_proc scripts that generates a text file
     containing ROI count/size information based on provided atlases and masks.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_aw_tableize_roi_info.py.html
     
     Args:
         output_file: Output file name.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 TO_RAI_METADATA = Metadata(
-    id="29f84848df78362516269d6b386a4ebe7db63fa6",
+    id="34e0002d16b00614c28481d7eff7e366098df21d",
     name="ToRAI",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,9 +27,12 @@ def to_rai(
     runner: Runner | None = None,
 ) -> ToRaiOutputs:
     """
-    ToRAI by Unknown.
+    ToRAI by AFNI Team.
     
     Tool to change the ORIENT coordinates to RAI.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ToRAI.html
     
     Args:
         coordinates: Specify the X, Y, and Z coordinates.

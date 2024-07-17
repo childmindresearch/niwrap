@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_ABOVERLAP_METADATA = Metadata(
-    id="875de921ae82dfcec4c7b260fabe77c1c0b95413",
+    id="17581d48cced7a375038a1860fb32373be01f131",
     name="3dABoverlap",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +35,8 @@ def v_3d_aboverlap(
     Counts various metrics about how the automasks of datasets A and B overlap
     or don't overlap.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dABoverlap.html
     
     Args:
         dataset_a: First input dataset.

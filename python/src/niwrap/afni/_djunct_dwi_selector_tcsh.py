@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _DJUNCT_DWI_SELECTOR_METADATA = Metadata(
-    id="3b240d8b7391fb635e1eca2e0f6b7951f0f7123d",
+    id="6e71309d6c1fc8b0197c4b8778444d59f2a5a61c",
     name="@djunct_dwi_selector",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,9 +30,12 @@ def _djunct_dwi_selector(
     runner: Runner | None = None,
 ) -> DjunctDwiSelectorOutputs:
     """
-    @djunct_dwi_selector.
+    @djunct_dwi_selector by AFNI Team.
     
     Selects DWI data and creates a representative image.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_dwi_selector.tcsh.html
     
     Args:
         dwi: Input DWI file.

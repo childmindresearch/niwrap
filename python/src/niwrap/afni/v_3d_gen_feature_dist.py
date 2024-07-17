@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_GEN_FEATURE_DIST_METADATA = Metadata(
-    id="02f47bc050522dba4e8ceb0f9dc777ceacc4403d",
+    id="4397a0a4540dbf1c3fb61c17a27ce745a13d6085",
     name="3dGenFeatureDist",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,9 +39,12 @@ def v_3d_gen_feature_dist(
     runner: Runner | None = None,
 ) -> V3dGenFeatureDistOutputs:
     """
-    3dGenFeatureDist.
+    3dGenFeatureDist by AFNI Team.
     
     3dGenFeatureDist produces histogram volume (hives) from input data.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGenFeatureDist.html
     
     Args:
         features_string: FEATURES_STRING is a semicolon delimited string of\

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DMERGE_METADATA = Metadata(
-    id="e7a282764d7a6e6ae054ebe204be1ed53430ac95",
+    id="9f01ea10771b0203e54683725aa61c74654978d7",
     name="3dmerge",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,7 +39,7 @@ def v_3dmerge(
     runner: Runner | None = None,
 ) -> V3dmergeOutputs:
     """
-    3dmerge by AFNI Development Team.
+    3dmerge by AFNI Team.
     
     3dmerge edits and merges 3D datasets by applying various operations like
     thresholding, blurring, clustering, and more.

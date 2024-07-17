@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_CALC_MONT_DIMS_METADATA = Metadata(
-    id="2c290a61e9284e31b6e45a45da02965b7aed0d90",
+    id="05166abb4d496fe4fcc2fbce0336fd8583d131c0",
     name="adjunct_calc_mont_dims",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,9 +26,12 @@ def adjunct_calc_mont_dims(
     runner: Runner | None = None,
 ) -> AdjunctCalcMontDimsOutputs:
     """
-    adjunct_calc_mont_dims by AFNI.
+    adjunct_calc_mont_dims by AFNI Team.
     
     A helper function for the fat_proc* scripts.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_calc_mont_dims.py.html
     
     Args:
         help_: Display help information.

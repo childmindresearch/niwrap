@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_MAT2D_PLOT_PY_METADATA = Metadata(
-    id="75f1fbd87e1c894061007584dd4f693329caeb08",
+    id="afe78ad28795f98d32461c989335602e6012223a",
     name="fat_mat2d_plot.py",
     container_image_type="docker",
-    container_image_index="docker.io",
-    container_image_tag="python:3.x",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -53,10 +52,13 @@ def fat_mat2d_plot_py(
     runner: Runner | None = None,
 ) -> FatMat2dPlotPyOutputs:
     """
-    fat_mat2d_plot.py by PA Taylor.
+    fat_mat2d_plot.py by AFNI Team.
     
     Plots simple matrices output from 3dNetCorr (*.netcc) and 3dTrackID
     (*.grid).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat2d_plot.py.html
     
     Args:
         input_file: Name of *.netcc or *.grid file with matrices to be plotted.

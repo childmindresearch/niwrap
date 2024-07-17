@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_DETREND_METADATA = Metadata(
-    id="5843dc9a52bd3d47e5736c6d132e36b82fcc346f",
+    id="adf20780c3a881f15017d520cb4a210467d39020",
     name="3dDetrend",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -31,7 +31,7 @@ def v_3d_detrend(
     runner: Runner | None = None,
 ) -> V3dDetrendOutputs:
     """
-    3dDetrend by Nipype (interface).
+    3dDetrend by AFNI Team.
     
     This program removes components from voxel time series using linear least
     squares.

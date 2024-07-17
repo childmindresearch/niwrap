@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 BRAIN_SKIN_METADATA = Metadata(
-    id="c70d60f7b1860325305abb0f677bfd6d17fa6ee2",
+    id="7b8dfd18121d1553dd7c190dc3af25cbec26c157",
     name="BrainSkin",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="docker:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -61,12 +60,13 @@ def brain_skin(
     runner: Runner | None = None,
 ) -> BrainSkinOutputs:
     """
-    BrainSkin by Ziad S. Saad, SSCC/NIMH/NIH.
+    BrainSkin by AFNI Team.
     
     A program to create an unfolded surface that wraps the brain (skin) and
     Gyrification Indices.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/BrainSkin.html
     
     Args:
         surface: Surface to smooth or the domain over which DSET is defined.

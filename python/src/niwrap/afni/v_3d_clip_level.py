@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_CLIP_LEVEL_METADATA = Metadata(
-    id="ccd328e949ab10354563133b625761ac85dd9f6a",
+    id="4c3a3f238117592b0e42e0da0f35eec4bb95c81d",
     name="3dClipLevel",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,7 +29,7 @@ def v_3d_clip_level(
     runner: Runner | None = None,
 ) -> V3dClipLevelOutputs:
     """
-    3dClipLevel by Emperor Zhark.
+    3dClipLevel by AFNI Team.
     
     Estimates the value at which to clip the anatomical dataset so that
     background regions are set to zero.

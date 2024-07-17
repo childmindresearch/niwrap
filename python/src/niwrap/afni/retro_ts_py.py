@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 RETRO_TS_PY_METADATA = Metadata(
-    id="4a3358daf38613cc5e8fa7f1afcda33b2cc6b6fa",
+    id="7376600eb11c99927f16af7b8e0d2f9d1cc717cc",
     name="RetroTS.py",
     container_image_type="docker",
-    container_image_index="hub.docker.com",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -53,13 +52,14 @@ def retro_ts_py(
     runner: Runner | None = None,
 ) -> RetroTsPyOutputs:
     """
-    RetroTS.py by AFNI.
+    RetroTS.py by AFNI Team.
     
     Creates slice-based regressors for regressing out components of heart rate,
     respiration, and respiration volume per time using independent data files or
     BIDS formatted files.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/RetroTS.py.html
     
     Args:
         num_slices: Number of slices.

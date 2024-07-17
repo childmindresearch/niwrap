@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 CONVEX_HULL_TRIANGULATION_METADATA = Metadata(
-    id="66340eefe4c016769c4490299f17fd2893c1a362",
+    id="9c0d1e43b0b5b3de829da04526c06acd2145aed5",
     name="ConvexHullTriangulation",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_container:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,12 +43,13 @@ def convex_hull_triangulation(
     runner: Runner | None = None,
 ) -> ConvexHullTriangulationOutputs:
     """
-    ConvexHullTriangulation by Ziad S. Saad.
+    ConvexHullTriangulation by AFNI Team.
     
     A program to find the convex hull, or perform a Delaunay triangulation of a
     set of points.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ConvexHull.html
     
     Args:
         vol: Input AFNI (or AFNI readable) volume.

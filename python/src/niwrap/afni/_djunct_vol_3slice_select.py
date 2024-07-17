@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_VOL_3SLICE_SELECT_METADATA = Metadata(
-    id="7a891d62f2b944ec8b0ee0336d0a60ebf84096c2",
+    id="9d2e316549deea2f5e976b40728b81fb4fa220f4",
     name="adjunct_vol_3slice_select",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,13 +31,14 @@ def adjunct_vol_3slice_select(
     runner: Runner | None = None,
 ) -> AdjunctVol3sliceSelectOutputs:
     """
-    adjunct_vol_3slice_select by User.
+    adjunct_vol_3slice_select by AFNI Team.
     
     Helper script to convert (x, y, z) coordinates to (i, j, k) indices for a
     dataset. It will return an error if any indices are outside the dataset's
     matrix.
     
-    More information: https://example.com/adjunct_vol_3slice_select
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_vol_3slice_select.html
     
     Args:
         dataset_file: The name of the dataset file.

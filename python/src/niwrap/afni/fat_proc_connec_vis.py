@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_PROC_CONNEC_VIS_METADATA = Metadata(
-    id="9f36fb56962bacbd7a2e7de215a8d84b812b3c61",
+    id="b957960c6032ddd4be1b636c4e8b5e9afa55420b",
     name="fat_proc_connec_vis",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="bioimagesuiteweb/bisweb:1.2.1",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,12 +42,15 @@ def fat_proc_connec_vis(
     runner: Runner | None = None,
 ) -> FatProcConnecVisOutputs:
     """
-    fat_proc_connec_vis by PA Taylor.
+    fat_proc_connec_vis by AFNI Team.
     
     This program is for visualizing the volumetric output of tracking, mainly
     for the '-dump_rois ...' from 3dTrackID. It creates surface-ized views of
     the separate white matter connection maps (WMCs) which can be viewed
     simultaneously in 3D with SUMA.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_connec_vis.html
     
     Args:
         in_rois: List of separate files, each with a single ROI volume mask;\

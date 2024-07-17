@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TORTOISETO_HERE_METADATA = Metadata(
-    id="92331a30f2ae69140967ca628f30c04a9e55879c",
+    id="8b3760371fe58b98b143d73ddbb580ecc5153b20",
     name="3dTORTOISEtoHere",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,12 +33,13 @@ def v_3d_tortoiseto_here(
     runner: Runner | None = None,
 ) -> V3dTortoisetoHereOutputs:
     """
-    3dTORTOISEtoHere by Taylor PA, Saad ZS.
+    3dTORTOISEtoHere by AFNI Team.
     
     Convert standard TORTOISE DTs (diagonal-first format) to standard AFNI
     (lower triangular, row-wise) format.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTORTOISEtoHere.html
     
     Args:
         dt_tort: Diffusion tensor file with six bricks of DT components ordered\

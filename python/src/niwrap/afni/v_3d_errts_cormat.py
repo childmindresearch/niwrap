@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_ERRTS_CORMAT_METADATA = Metadata(
-    id="6fff0f2e0c150f2cc6970f938e2987fa1dc1c10d",
+    id="749e5d0eee181db2fd596d40a0e81c9f35777f6b",
     name="3dErrtsCormat",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,7 +33,7 @@ def v_3d_errts_cormat(
     runner: Runner | None = None,
 ) -> V3dErrtsCormatOutputs:
     """
-    3dErrtsCormat by RWCox.
+    3dErrtsCormat by AFNI Team.
     
     Computes the correlation matrix corresponding to the residual (or error)
     time series in 'dset'.

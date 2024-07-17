@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 R_PKGS_INSTALL_METADATA = Metadata(
-    id="0224d918b96b4a76b7c916cb353decfca123c332",
+    id="d1edf6a7d296aa8e85844771af872bd37c29a627",
     name="rPkgsInstall",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/rpkgsinstall:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,11 +32,12 @@ def r_pkgs_install(
     runner: Runner | None = None,
 ) -> RPkgsInstallOutputs:
     """
-    rPkgsInstall by Gang Chen (gangchen@mail.nih.gov).
+    rPkgsInstall by AFNI Team.
     
     A tool for installing, checking, updating, or removing R packages for AFNI.
     
-    More information: https://afni.nimh.nih.gov/gangchen_homepage
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/rPkgsInstall.html
     
     Args:
         packages: List of R packages to install, update, or remove. Use 'ALL'\

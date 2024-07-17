@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _PARSE_AFNI_NAME_METADATA = Metadata(
-    id="c36dfd07526b01bebd4f7bcd64bb6f6b74551ed5",
+    id="02098a914dc0b8a7bd33a33958804cc790e11c4f",
     name="@parse_afni_name",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,12 +34,13 @@ def _parse_afni_name(
     runner: Runner | None = None,
 ) -> ParseAfniNameOutputs:
     """
-    @parse_afni_name by AFNI Developers.
+    @parse_afni_name by AFNI Team.
     
     A script to parse an AFNI name, outputting the path, prefix, view, and
     sub-brick selection string.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@parse_afni_name.html
     
     Args:
         afni_name: The AFNI name to be parsed.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DDOT_METADATA = Metadata(
-    id="1ef86536104576a2c9d225d8b7197b4ecd3afdf4",
+    id="debf6cb85802a4a8ec51b6321fe32b4c15ed75f0",
     name="3ddot",
     container_image_type="docker",
-    container_image_index="hub.docker.com",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,11 +42,12 @@ def v_3ddot(
     runner: Runner | None = None,
 ) -> V3ddotOutputs:
     """
-    3ddot by AFNI Developers.
+    3ddot by AFNI Team.
     
     Computes correlation coefficients between sub-brick pairs.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddot.html
     
     Args:
         input_datasets: List of input datasets to be used (e.g. img1+orig,\

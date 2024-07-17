@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_SIMPLIFY_COST_METADATA = Metadata(
-    id="5c1ad9c9b7fb6bb8b5a017c52cc51dbc3745d031",
+    id="9ceb316965ea70dfde20160b7459ad7eab0fc14f",
     name="adjunct_simplify_cost",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -24,10 +26,13 @@ def adjunct_simplify_cost(
     runner: Runner | None = None,
 ) -> AdjunctSimplifyCostOutputs:
     """
-    adjunct_simplify_cost by SSwarper.
+    adjunct_simplify_cost by AFNI Team.
     
     Simplifies a cost function name by removing the '+' and anything following
     it.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_simplify_cost.py.html
     
     Args:
         cost_function: The cost function name to be simplified.

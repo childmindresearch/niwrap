@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _INSTALL_D99_MACAQUE_METADATA = Metadata(
-    id="b0ddb7afae95a9c75a2dd153091ab86e5eddb6b8",
+    id="026f9857534ab285e688283f3be2563144e7b8b2",
     name="@Install_D99_macaque",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="docker-image-for-install-d99-macaque:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,12 +31,13 @@ def _install_d99_macaque(
     runner: Runner | None = None,
 ) -> InstallD99MacaqueOutputs:
     """
-    @Install_D99_macaque by Glen D, Saleem KS.
+    @Install_D99_macaque by AFNI Team.
     
     Installs the D99 macaque version 2 atlases for subcortical regions in the
     macaque monkey.
     
-    More information: https://doi.org/10.1016/j.neuroimage.2021.118759
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_D99_macaque.html
     
     Args:
         wget_download: Use wget to download archive. Script chooses by default\

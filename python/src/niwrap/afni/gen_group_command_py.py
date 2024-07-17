@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 GEN_GROUP_COMMAND_METADATA = Metadata(
-    id="63c84ab639bd044eb2207ab73ddda525e9103a89",
+    id="2ebb721317a8cebcf04835f234571b279f97b15f",
     name="gen_group_command",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,13 +39,13 @@ def gen_group_command(
     runner: Runner | None = None,
 ) -> GenGroupCommandOutputs:
     """
-    gen_group_command by R Reynolds.
+    gen_group_command by AFNI Team.
     
     Generate group analysis command scripts by parsing wildcard-based lists of
     input datasets.
     
     More information:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_group_command.html
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_group_command.py.html
     
     Args:
         command_name: Resulting command, such as 3dttest++.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SURF_LOCAL_STAT_METADATA = Metadata(
-    id="402c1dfe3b5a59b61adc71ea3800f504707c6670",
+    id="cf68eaaed9665fef0721ac5a7f805845dfbd60a4",
     name="SurfLocalStat",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,11 +33,12 @@ def surf_local_stat(
     runner: Runner | None = None,
 ) -> SurfLocalStatOutputs:
     """
-    SurfLocalStat by SSCC/NIMH/NIH.
+    SurfLocalStat by AFNI Team.
     
     Compute local statistics on a surface mesh.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfLocalstat.html
     
     Args:
         prefix: Prefix of output data set.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SURFACE_METRICS_METADATA = Metadata(
-    id="4d36eb8b1799e71c46dc89276e016da1cbed3e7f",
+    id="9c7c68750ba7fdd75cdb0aab145fa2f084713b18",
     name="SurfaceMetrics",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,9 +48,12 @@ def surface_metrics(
     runner: Runner | None = None,
 ) -> SurfaceMetricsOutputs:
     """
-    SurfaceMetrics by Ziad S. Saad SSCC/NIMH/NIH.
+    SurfaceMetrics by AFNI Team.
     
     Outputs information about a surface's mesh.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfaceMetrics.html
     
     Args:
         surf1: Specifies the input surface.

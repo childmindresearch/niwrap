@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MAP_TRACK_ID_METADATA = Metadata(
-    id="8e9027863803d4430ebe56905ae1e68bee7d6404",
+    id="3dcbc1ab82cac830ccbf8df654ac1c032c5df607",
     name="map_TrackID",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,10 +35,13 @@ def map_track_id(
     runner: Runner | None = None,
 ) -> MapTrackIdOutputs:
     """
-    map_TrackID by PA Taylor.
+    map_TrackID by AFNI Team.
     
     Maps the track file (*.trk) output of 3dTrackID to another space using the
     1Dmatrix_save info of 3dAllineate.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/map_TrackID.html
     
     Args:
         prefix: Prefix for the output track file.

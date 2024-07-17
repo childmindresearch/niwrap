@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 AFNI_SYSTEM_CHECK_PY_METADATA = Metadata(
-    id="ede84091161bee31e49e30c0c5d2f2938a14421c",
+    id="e0985a91d76491809a46edfaec398aa39eb03ae8",
     name="afni_system_check.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,9 +35,12 @@ def afni_system_check_py(
     runner: Runner | None = None,
 ) -> AfniSystemCheckPyOutputs:
     """
-    afni_system_check.py by R Reynolds.
+    afni_system_check.py by AFNI Team.
     
     Perform various system checks for figuring out AFNI installation issues.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_system_check.py.html
     
     Args:
         check_all: Perform all system checks.

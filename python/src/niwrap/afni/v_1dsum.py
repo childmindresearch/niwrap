@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1DSUM_METADATA = Metadata(
-    id="a494f2e97101ef6ee8d18a75c28daf130eb0a457",
+    id="4f283576416dcd71cd46d26b559abcfd886268b8",
     name="1dsum",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,12 +33,13 @@ def v_1dsum(
     runner: Runner | None = None,
 ) -> V1dsumOutputs:
     """
-    1dsum by AFNI.
+    1dsum by AFNI Team.
     
     Sum or average columns of ASCII files with numbers arranged in rows and
     columns.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dsum.html
     
     Args:
         input_files: Input ASCII files with numbers arranged in rows and\

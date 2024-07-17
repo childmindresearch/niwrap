@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_ROI_ROW_METADATA = Metadata(
-    id="85fec594f2d9a9b0d0aa42b84df93dee1b651681",
+    id="86e4252d661ee3d3e5e311ee9d1408e0a12db027",
     name="fat_roi_row",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="author/fat_roi_row:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,10 +31,13 @@ def fat_roi_row(
     runner: Runner | None = None,
 ) -> FatRoiRowOutputs:
     """
-    fat_roi_row by PA Taylor.
+    fat_roi_row by AFNI Team.
     
     Select a single ROI's row out of a connectivity matrix file (*.grid or
     *.netcc) for viewing and/or further analysis.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_roi_row.py.html
     
     Args:
         roi: Specify which ROI's row of connectivity you want to select out. If\

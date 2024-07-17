@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 CREATE_ICOSAHEDRON_METADATA = Metadata(
-    id="f3dc9892c9128e05a04b01ad1773de8e62f699ff",
+    id="440fcdd002e5d641735eb6701121c23d5ac7b544",
     name="CreateIcosahedron",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,9 +35,12 @@ def create_icosahedron(
     runner: Runner | None = None,
 ) -> CreateIcosahedronOutputs:
     """
-    CreateIcosahedron by Brenna D. Argall LBC/NIMH/NIH, Ziad S. Saad SSC/NIMH/NIH.
+    CreateIcosahedron by AFNI Team.
     
     Tool to create an icosahedron with optional tessellation.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/CreateIcosahedron.html
     
     Args:
         rad: Size of icosahedron.

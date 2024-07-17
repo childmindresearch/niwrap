@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 BAYES_VIEW_METADATA = Metadata(
-    id="88b3858da2c6c2a92655c7db21f4af974bccfa1e",
+    id="bd9788dfbde83a99d82545776c42a54e2c387ee4",
     name="bayes_view",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="rbase/latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,10 +28,13 @@ def bayes_view(
     runner: Runner | None = None,
 ) -> BayesViewOutputs:
     """
-    bayes_view by Justin Rajendra.
+    bayes_view by AFNI Team.
     
     Launch a shiny app to visualize RBA output files. The files must have the
     .RData extension.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/bayes_view.html
     
     Args:
         input_folder: Path to a folder containing .RData files.

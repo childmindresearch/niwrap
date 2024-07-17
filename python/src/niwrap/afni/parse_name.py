@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PARSE_NAME_METADATA = Metadata(
-    id="4b5bf3ac7345097ee30a97c39d88a450143df393",
+    id="f2fca43e72ebbbe55dd71701837afcbff9f18f9a",
     name="ParseName",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni_container:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,11 +31,12 @@ def parse_name(
     runner: Runner | None = None,
 ) -> ParseNameOutputs:
     """
-    ParseName by Ziad S. Saad, SSCC/NIMH/NIH.
+    ParseName by AFNI Team.
     
     Parses filename into components useful for AFNI.
     
-    More information: https://afni.nimh.nih.gov/afni
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ParseName.html
     
     Args:
         filename: File name to be parsed.

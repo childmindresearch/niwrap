@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_FRIEDMAN_METADATA = Metadata(
-    id="2047ad5a70b29cd6d9c0e8221da570d7509b298a",
+    id="b85c7f2e9a9d31f06fb2e61a2f2545d5a4481dab",
     name="3dFriedman",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,10 +32,13 @@ def v_3d_friedman(
     runner: Runner | None = None,
 ) -> V3dFriedmanOutputs:
     """
-    3dFriedman by AFNI.
+    3dFriedman by AFNI Team.
     
     Performs nonparametric Friedman test for randomized complete block design
     experiments.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFriedman.html
     
     Args:
         levels: Number of treatments.

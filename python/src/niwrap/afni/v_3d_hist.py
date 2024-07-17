@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_HIST_METADATA = Metadata(
-    id="d5547562509b156b74a39dd2ecef24dec86bbbc7",
+    id="ac67d7c02f6b7b8603b281b73a5329fb6285a4ec",
     name="3dHist",
     container_image_type="docker",
-    container_image_index="hub.docker.com",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,11 +45,12 @@ def v_3d_hist(
     runner: Runner | None = None,
 ) -> V3dHistOutputs:
     """
-    3dHist by AFNI Development Team.
+    3dHist by AFNI Team.
     
     Computes histograms using functions for generating priors.
     
-    More information: https://afni.nimh.nih.gov/afni
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dHist.html
     
     Args:
         input_: Dataset providing values for histogram.

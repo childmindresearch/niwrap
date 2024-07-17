@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_BRAIN_SYNC_METADATA = Metadata(
-    id="92e47dcd32d3a288f6b6ab55e10bb978c73313d4",
+    id="b8f6cbc63b7602b8c65d39241740822392ca4db4",
     name="3dBrainSync",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,10 +42,13 @@ def v_3d_brain_sync(
     runner: Runner | None = None,
 ) -> V3dBrainSyncOutputs:
     """
-    3dBrainSync by RWCox.
+    3dBrainSync by AFNI Team.
     
     'Synchronizes' the -inset2 dataset to match the -inset1 dataset, using
     orthogonal or permutation transformation.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBrainSync.html
     
     Args:
         inset1: Reference dataset.

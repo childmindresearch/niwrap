@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_SUMA_FS_ROI_INFO_METADATA = Metadata(
-    id="7648737824c277d57b8f2607105958bfa9816416",
+    id="c7a53ffbc0d7a61bee79f3569f937329d8341ad5",
     name="adjunct_suma_fs_roi_info",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,10 +38,13 @@ def adjunct_suma_fs_roi_info(
     runner: Runner | None = None,
 ) -> AdjunctSumaFsRoiInfoOutputs:
     """
-    adjunct_suma_fs_roi_info by PA Taylor.
+    adjunct_suma_fs_roi_info by AFNI Team.
     
     Script for making ROI stats for the SUMA/ directory created by
     @SUMA_Make_Spec_FS after running FreeSurfer's recon-all.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_suma_fs_roi_info.html
     
     Args:
         subject_id: Subject ID.

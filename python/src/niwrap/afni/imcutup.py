@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 IMCUTUP_METADATA = Metadata(
-    id="13289f1c1987082383c547336157c8050be73017",
+    id="ac8ea541e69b28f8c0a2fa636bb213aaa542755c",
     name="imcutup",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,9 +35,12 @@ def imcutup(
     runner: Runner | None = None,
 ) -> ImcutupOutputs:
     """
-    imcutup by Unknown.
+    imcutup by AFNI Team.
     
     Breaks up larger images into smaller image files of user-defined size.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcutup.html
     
     Args:
         nx: Number of pixels along the x-dimension for the smaller images.

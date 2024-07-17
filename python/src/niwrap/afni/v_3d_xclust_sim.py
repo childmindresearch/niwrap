@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_XCLUST_SIM_METADATA = Metadata(
-    id="3f94c648b56e451a106b7753ae1300be443b5f42",
+    id="c55ad068d6232d9ddd5f8b40583f510b109fb4d1",
     name="3dXClustSim",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,9 +45,12 @@ def v_3d_xclust_sim(
     runner: Runner | None = None,
 ) -> V3dXclustSimOutputs:
     """
-    3dXClustSim by Lamont Cranston (The Shadow).
+    3dXClustSim by AFNI Team.
     
     ETAC processing tool to find cluster figure of merit (FOM) thresholds.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dXClustSim.html
     
     Args:
         inset: Mask sdata file (from 3dtoXdataset or 3dttest++).

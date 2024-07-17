@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 GIFTI_TOOL_METADATA = Metadata(
-    id="e817ba2081abf88d97b135d73a5f6aa8b8951c79",
+    id="405f86dc69641589b7ee6c6633639b7a69774f42",
     name="gifti_tool",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -47,11 +49,12 @@ def gifti_tool(
     runner: Runner | None = None,
 ) -> GiftiToolOutputs:
     """
-    gifti_tool by R. Reynolds, National Institutes of Health.
+    gifti_tool by AFNI Team.
     
     Tool for creating, displaying, modifying, or comparing GIFTI datasets.
     
-    More information: http://www.nitrc.org/projects/gifti
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/gifti_tool.html
     
     Args:
         infile: Specify one or more GIFTI datasets as input.

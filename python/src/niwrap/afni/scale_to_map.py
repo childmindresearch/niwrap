@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SCALE_TO_MAP_METADATA = Metadata(
-    id="d980e97925a58372907b0e78c9c12144ae6f4eb0",
+    id="6157ff4a2c2b113c867e495b50d10c4ae4df1fc6",
     name="ScaleToMap",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -53,9 +55,12 @@ def scale_to_map(
     runner: Runner | None = None,
 ) -> ScaleToMapOutputs:
     """
-    ScaleToMap by Ziad S. Saad SSCC/NIMH/NIH.
+    ScaleToMap by AFNI Team.
     
     Tool to scale values to a color map.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ScaleToMap.html
     
     Args:
         input_file: Input file in 1D formatted ascii containing node values.

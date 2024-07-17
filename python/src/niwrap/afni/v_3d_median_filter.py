@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_MEDIAN_FILTER_METADATA = Metadata(
-    id="03fe583d5ca506d200acf2d57e8f7be59f6d284c",
+    id="330f8a3019a8ce987c14d95e30b507b3ee9df21c",
     name="3dMedianFilter",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,12 +35,13 @@ def v_3d_median_filter(
     runner: Runner | None = None,
 ) -> V3dMedianFilterOutputs:
     """
-    3dMedianFilter by RWCox.
+    3dMedianFilter by AFNI Team.
     
     Computes the median in a spherical neighborhood around each point in the
     input to produce the output.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMedianFilter.html
     
     Args:
         dataset: Input dataset.

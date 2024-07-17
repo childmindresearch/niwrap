@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SFIM_METADATA = Metadata(
-    id="7577939029ce40ffedf67974aa6b8127be033ba6",
+    id="7d907353bfcbd4bba5e790eccb3031aedcc7f45b",
     name="sfim",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="someserver/sfim:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,9 +32,12 @@ def sfim(
     runner: Runner | None = None,
 ) -> SfimOutputs:
     """
-    sfim by RW Cox.
+    sfim by AFNI Team.
     
     Stepwise Functional IMages.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/sfim.html
     
     Args:
         input_images: Input image files in formats accepted by AFNI.

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DCALC_METADATA = Metadata(
-    id="51d63664df19d5ce9cfa8fe819a3a96c79c6650c",
+    id="101b04456a07e8a2fba46cc57c0d949dba739d45",
     name="3dcalc",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -36,7 +36,7 @@ def v_3dcalc(
     runner: Runner | None = None,
 ) -> V3dcalcOutputs:
     """
-    3dcalc by RWCox @ AFNI.
+    3dcalc by AFNI Team.
     
     AFNI's calculator program.
     

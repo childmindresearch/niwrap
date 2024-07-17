@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _COMPUTE_GCOR_METADATA = Metadata(
-    id="5b93b5838abd63baa42d419ddf7080c165141f38",
+    id="9edffe7e6664387e6668dcb72018a59747de55e5",
     name="@compute_gcor",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,11 +36,12 @@ def _compute_gcor(
     runner: Runner | None = None,
 ) -> ComputeGcorOutputs:
     """
-    @compute_gcor by R Reynolds.
+    @compute_gcor by AFNI Team.
     
     Compute GCOR, the global correlation.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@compute_gcor.html
     
     Args:
         input_: Specify input dataset to compute the GCOR over.

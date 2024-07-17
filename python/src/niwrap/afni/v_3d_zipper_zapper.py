@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ZIPPER_ZAPPER_METADATA = Metadata(
-    id="f8ff7d7eaace3d462332cdb6fad2afecde9e1fbf",
+    id="314458e1ca9f7cc715e7ef23fd6686cec0f76593",
     name="3dZipperZapper",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -52,10 +51,13 @@ def v_3d_zipper_zapper(
     runner: Runner | None = None,
 ) -> V3dZipperZapperOutputs:
     """
-    3dZipperZapper by PA Taylor.
+    3dZipperZapper by AFNI Team.
     
     A basic program to highlight problematic volumes in data sets, especially
     EPI/DWI data sets with interleaved acquisition.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZipperZapper.html
     
     Args:
         input_file: Input 3D+time file of DWIs or EPIs.

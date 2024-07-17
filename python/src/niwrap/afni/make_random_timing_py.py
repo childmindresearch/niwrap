@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 MAKE_RANDOM_TIMING_PY_METADATA = Metadata(
-    id="46ef0cdd466350c89992dba55283c802b99e9f91",
+    id="167622fa6607e6dbad775bde91c2fa2f3b1324ef",
     name="make_random_timing.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,11 +52,12 @@ def make_random_timing_py(
     runner: Runner | None = None,
 ) -> MakeRandomTimingPyOutputs:
     """
-    make_random_timing.py by R Reynolds.
+    make_random_timing.py by AFNI Team.
     
     Create random stimulus timing files for use with AFNI 3dDeconvolve.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/make_random_timing.py.html
     
     Args:
         num_runs: Set the number of runs.

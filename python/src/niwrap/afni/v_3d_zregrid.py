@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ZREGRID_METADATA = Metadata(
-    id="6bef16a0b5fc79f763c0de5630b1b04e3e19c804",
+    id="e52f72f25bc48de1d5eeb812346766565ae997ae",
     name="3dZregrid",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +35,12 @@ def v_3d_zregrid(
     runner: Runner | None = None,
 ) -> V3dZregridOutputs:
     """
-    3dZregrid by AFNI (Analysis of Functional NeuroImages).
+    3dZregrid by AFNI Team.
     
     Alters the input dataset's slice thickness and/or number.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZregrid.html
     
     Args:
         infile: Input dataset.

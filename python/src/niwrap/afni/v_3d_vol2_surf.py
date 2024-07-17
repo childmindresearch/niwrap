@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_VOL2_SURF_METADATA = Metadata(
-    id="26cf7cda8bf500a49e3c0d9ad8a518d4bc40695e",
+    id="0748dfbb6f6859c82a3bb6afcf5174967dad9b3e",
     name="3dVol2Surf",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -74,11 +73,12 @@ def v_3d_vol2_surf(
     runner: Runner | None = None,
 ) -> V3dVol2SurfOutputs:
     """
-    3dVol2Surf by R. Reynolds.
+    3dVol2Surf by AFNI Team.
     
     Map data from a volume domain to a surface domain.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dVol2Surf.html
     
     Args:
         spec_file: SUMA spec file.

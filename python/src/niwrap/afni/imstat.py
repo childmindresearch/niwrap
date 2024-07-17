@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 IMSTAT_METADATA = Metadata(
-    id="904c7d96fc1d6522fef390109d11d969e42d37a3",
+    id="b9be114b2b3c5fb54ece698b7c389a7115f3d9fc",
     name="imstat",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,9 +33,12 @@ def imstat(
     runner: Runner | None = None,
 ) -> ImstatOutputs:
     """
-    imstat by Unknown.
+    imstat by AFNI Team.
     
     Calculation of statistics of one or more images.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/imstat.html
     
     Args:
         image_files: Input image file(s).

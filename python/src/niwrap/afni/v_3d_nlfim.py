@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_NLFIM_METADATA = Metadata(
-    id="87057dcf6f2be8d44a167411098ca734fb09a824",
+    id="3fe29140fbfa9087a97f35534db01060957dbd9a",
     name="3dNLfim",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -91,11 +90,12 @@ def v_3d_nlfim(
     runner: Runner | None = None,
 ) -> V3dNlfimOutputs:
     """
-    3dNLfim by AFNI Development Team.
+    3dNLfim by AFNI Team.
     
     Nonlinear regression for each voxel of the input AFNI 3d+time data set.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNLfim.html
     
     Args:
         input_file: Filename of 3d+time data file for input.

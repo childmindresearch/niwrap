@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ISC___VOXELWISE_INTER_SUBJECT_CORRELATION_ANALYSIS_METADATA = Metadata(
-    id="4d4013790dcaabfa29e4a81535fe3607805ed21d",
+    id="5448278573a62576b1e10cadc9938751ba7be38f",
     name="3dISC - Voxelwise Inter-Subject Correlation Analysis",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="my_registry/3disc:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,13 +38,13 @@ def v_3d_isc___voxelwise_inter_subject_correlation_analysis(
     runner: Runner | None = None,
 ) -> V3dIscVoxelwiseInterSubjectCorrelationAnalysisOutputs:
     """
-    3dISC - Voxelwise Inter-Subject Correlation Analysis by Gang Chen
-    (gangchen@mail.nih.gov).
+    3dISC - Voxelwise Inter-Subject Correlation Analysis by AFNI Team.
     
     Program for Voxelwise Inter-Subject Correlation (ISC) Analysis using linear
     mixed-effects modeling.
     
-    More information: https://example.com/3dISC_tool
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dISC.html
     
     Args:
         outfile_prefix: Output file name. For AFNI format, provide prefix only,\

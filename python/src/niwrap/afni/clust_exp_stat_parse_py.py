@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 CLUST_EXP_STAT_PARSE_METADATA = Metadata(
-    id="7599dfcab0d0c0e06f11a8343fcc2f73707a4117",
+    id="2e796ccd9d89807477dc19e9cd6c284b329ddfdc",
     name="ClustExp_StatParse",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -52,10 +54,13 @@ def clust_exp_stat_parse(
     runner: Runner | None = None,
 ) -> ClustExpStatParseOutputs:
     """
-    ClustExp_StatParse by Justin Rajendra.
+    ClustExp_StatParse by AFNI Team.
     
     Parser for statistical data sets and subject data sets, generating several
     outputs for further analysis.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ClustExp_StatParse.py.html
     
     Args:
         statdset: Statistics dataset.

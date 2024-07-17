@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 IMAND_METADATA = Metadata(
-    id="8ef999a7769534a3851b5839706df3b37ac67e54",
+    id="9a01923483a418fa83dbd967d10ee3c07e0df1cc",
     name="imand",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="author/imand:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,10 +30,13 @@ def imand(
     runner: Runner | None = None,
 ) -> ImandOutputs:
     """
-    imand by Unknown.
+    imand by AFNI Team.
     
     Image AND operation tool. Only pixels nonzero in all input images (and above
     the threshold, if given) will be output.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/imand.html
     
     Args:
         input_images: Input images to be processed. Multiple input images can\

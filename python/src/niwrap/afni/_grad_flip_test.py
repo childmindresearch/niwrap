@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _GRAD_FLIP_TEST_METADATA = Metadata(
-    id="768260bf3206d1761ec15d9e81149ddb2deb0426",
+    id="10adf8ad2bcc40020d20ddfc1dc096e347ba17f2",
     name="@GradFlipTest",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,12 +43,12 @@ def _grad_flip_test(
     runner: Runner | None = None,
 ) -> GradFlipTestOutputs:
     """
-    @GradFlipTest by PA Taylor (NIH).
+    @GradFlipTest by AFNI Team.
     
     Script to test the correct flip for a data set when using 1dDW_Grad_o_Mat++.
     
     More information:
-    https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/programs/@GradFlipTest_sphx.html
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GradFlipTest.html
     
     Args:
         dwi: Set of DWIs (N total volumes).

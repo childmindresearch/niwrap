@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ABIDS_JSON_TOOL_METADATA = Metadata(
-    id="13018dea4de4b7402ea139e104a8ab47c54de236",
+    id="fafad902f464c0bb9da3c54bc3fbd0b2e65963e7",
     name="abids_json_tool",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,9 +38,12 @@ def abids_json_tool(
     runner: Runner | None = None,
 ) -> AbidsJsonToolOutputs:
     """
-    abids_json_tool by Justin Rajendra.
+    abids_json_tool by AFNI Team.
     
     This script helps to manipulate json files in various ways.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_json_tool.py.html
     
     Args:
         input_file: One file to convert. Enter NULL with -add_json to create\

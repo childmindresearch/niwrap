@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FAT_PROC_DWI_TO_DT_METADATA = Metadata(
-    id="85038a440ee8a28ea45ba5efd4b99e7acb4a2bad",
+    id="b3a5b00e4883e5e38b54da0e71ba701a11ac5b86",
     name="fat_proc_dwi_to_dt",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -54,10 +56,13 @@ def fat_proc_dwi_to_dt(
     runner: Runner | None = None,
 ) -> FatProcDwiToDtOutputs:
     """
-    fat_proc_dwi_to_dt by PA Taylor.
+    fat_proc_dwi_to_dt by AFNI Team.
     
     This program fits tensors and DT parameters, as well as the uncertainty of
     DT parameters needed for tractography.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_dwi_to_dt.html
     
     Args:
         in_dwi: 4D volume of N DWIs. Required.

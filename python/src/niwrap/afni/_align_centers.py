@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _ALIGN_CENTERS_METADATA = Metadata(
-    id="1e276c9e2b0616b22a6c6912db536d516b98e6f4",
+    id="dbc4e6990b2638b4840b24709ee5d940b7e64e82",
     name="@Align_Centers",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,10 +45,13 @@ def _align_centers(
     runner: Runner | None = None,
 ) -> AlignCentersOutputs:
     """
-    @Align_Centers by AFNI Community.
+    @Align_Centers by AFNI Team.
     
     Moves the center of a dataset (DSET) to the center of a base volume (BASE)
     and optionally creates a transform matrix.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Align_Centers.html
     
     Args:
         base: Base volume, typically a template. Can also specify RAI\

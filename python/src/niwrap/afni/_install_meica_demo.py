@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INSTALL_MEICA_DEMO_METADATA = Metadata(
-    id="4de44851f781bb47f98326384051c9c295031d55",
+    id="b18481bec43a36fe4dc072240890046c735892ff",
     name="Install_MEICA_Demo",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-meica:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,12 +28,13 @@ def install_meica_demo(
     runner: Runner | None = None,
 ) -> InstallMeicaDemoOutputs:
     """
-    Install_MEICA_Demo by Prantik Kundu.
+    Install_MEICA_Demo by AFNI Team.
     
     Installs the demo archive for Prantik Kundu MEICA denoising tools. After the
     archive is downloaded and unpacked, see its README.txt for details.
     
-    More information: https://example.com/meica_demo
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_MEICA_Demo.html
     
     Args:
         demo_archive: Demo archive to install (e.g. meica_demo.zip).

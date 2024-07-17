@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INSTALL_3D_PFM_DEMO_METADATA = Metadata(
-    id="be8ed1d6b1db10576785436475d3f26baf8b96f0",
+    id="eee949a22334c9cd763bb1acd0d5e3e7918b016d",
     name="Install_3dPFM_Demo",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/3dpfm-demo:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,12 @@ def install_3d_pfm_demo(
     runner: Runner | None = None,
 ) -> Install3dPfmDemoOutputs:
     """
-    Install_3dPFM_Demo by Your Name.
+    Install_3dPFM_Demo by AFNI Team.
     
     Installs the demo archive for the 3dPFM function.
     
-    More information: http://example.com/Install_3dPFM_Demo
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_3dPFM_Demo.html
     
     Args:
         output_directory: Output directory where the demo archive will be\

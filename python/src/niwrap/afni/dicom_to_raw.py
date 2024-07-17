@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 DICOM_TO_RAW_METADATA = Metadata(
-    id="cfbd7e4cf1f49d5f73c4aa7696c47f8a4cb4456a",
+    id="396e9c2761351d014db7d547d4758c9e39ab070d",
     name="dicom_to_raw",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,9 +28,12 @@ def dicom_to_raw(
     runner: Runner | None = None,
 ) -> DicomToRawOutputs:
     """
-    dicom_to_raw by Unknown.
+    dicom_to_raw by AFNI Team.
     
     Reads images from DICOM file and writes them to raw file(s).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/dicom_to_raw.html
     
     Args:
         input_dicom: Input DICOM file.

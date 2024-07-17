@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_LOCAL_ACF_METADATA = Metadata(
-    id="9845b49f08a92a770ee2edd9d4b87ef3549d4c8e",
+    id="094cded0efef3b7559949d0f09a20f4361673f6d",
     name="3dLocalACF",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="brainsia/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +32,7 @@ def v_3d_local_acf(
     runner: Runner | None = None,
 ) -> V3dLocalAcfOutputs:
     """
-    3dLocalACF by The AFNI Team.
+    3dLocalACF by AFNI Team.
     
     Estimate the spatial AutoCorrelation Function (ACF) locally in a
     neighborhood around each voxel.

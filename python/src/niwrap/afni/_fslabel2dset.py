@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _FSLABEL2DSET_METADATA = Metadata(
-    id="76790a04b0bed94704e8177a2d2ec9a459c9d30a",
+    id="8456c935d6aa68a380d3d63cd9e63252b98daa22",
     name="@FSlabel2dset",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,10 +30,13 @@ def _fslabel2dset(
     runner: Runner | None = None,
 ) -> Fslabel2dsetOutputs:
     """
-    @FSlabel2dset by SUMA Development Team.
+    @FSlabel2dset by AFNI Team.
     
     A script to convert a FreeSurfer ASCII label file into a SUMA dataset and a
     SUMA ROI.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FSlabel2dset.html
     
     Args:
         fs_label_file: Specify the ASCII label file from FreeSurfer.

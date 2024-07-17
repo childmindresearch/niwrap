@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 APQC_MAKE_HTML_METADATA = Metadata(
-    id="8435db2448649c8d9b893cadcc35d2450fae07f7",
+    id="f1e9cb639beecd39332892967b0f58c7dddf9b81",
     name="apqc_make_html",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -24,9 +26,12 @@ def apqc_make_html(
     runner: Runner | None = None,
 ) -> ApqcMakeHtmlOutputs:
     """
-    apqc_make_html.
+    apqc_make_html by AFNI Team.
     
     Tool to generate HTML reports.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/apqc_make_html.py.html
     
     Args:
         qc_dir: Directory where QC files will be saved.

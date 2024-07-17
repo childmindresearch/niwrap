@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAST_ROI_METADATA = Metadata(
-    id="a31feb749ad1a691dd4549c55302c798ba18b1ee",
+    id="b6e122739f384037fbca7b6ca4a5725273fb4914",
     name="fast_roi",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,6 +41,9 @@ def fast_roi(
     
     Creates Atlas-based ROI masked in ANAT's original space. The script executes
     rapidly for realtime fMRI applications.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@fast_roi.html
     
     Args:
         region: Symbolic atlas-based region name. Use repeated instances to\

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ROIGROW_METADATA = Metadata(
-    id="035b9d14f087063209b500b66b76b826151518f1",
+    id="4bdd538e5abcecd43fd21c32330e81a8e1ad71b1",
     name="ROIgrow",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +35,12 @@ def roigrow(
     runner: Runner | None = None,
 ) -> RoigrowOutputs:
     """
-    ROIgrow by Ziad S. Saad, SSCC/NIMH/NIH.
+    ROIgrow by AFNI Team.
     
     A program to expand an ROI on the surface.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ROIgrow.html
     
     Args:
         input_surface: Specify input surface. You can also use -t* and -spec\

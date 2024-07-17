@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SUMA_REPREFIXIZE_SPEC_METADATA = Metadata(
-    id="ca8045d66e0a5b590352968d63cb399e8a57bb92",
+    id="ec636783d53fb1561aa982b1e33279b81f573eee",
     name="suma_reprefixize_spec",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="suma/suma_reprefixize:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,9 +32,12 @@ def suma_reprefixize_spec(
     runner: Runner | None = None,
 ) -> SumaReprefixizeSpecOutputs:
     """
-    suma_reprefixize_spec by Suma Development Team.
+    suma_reprefixize_spec by AFNI Team.
     
     A tool for prefixing and working with SUMA specification files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@suma_reprefixize_spec.html
     
     Args:
         input_file: Input SUMA specification file.

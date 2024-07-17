@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_AFNITO_RAW_METADATA = Metadata(
-    id="f94b78cbf4a4749d24ca17862de44da808eea0c6",
+    id="a68ed26016e67ff0f42a19dd3096b76088ad83da",
     name="3dAFNItoRaw",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,10 +28,13 @@ def v_3d_afnito_raw(
     runner: Runner | None = None,
 ) -> V3dAfnitoRawOutputs:
     """
-    3dAFNItoRaw by AFNI Development Team.
+    3dAFNItoRaw by AFNI Team.
     
     Convert an AFNI brik file with multiple sub-briks to a raw file with each
     sub-brik voxel concatenated voxel-wise.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoRaw.html
     
     Args:
         dataset: Input AFNI dataset with possible modifiers for sub-brick and\

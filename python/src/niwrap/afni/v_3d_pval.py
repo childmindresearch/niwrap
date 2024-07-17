@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_PVAL_METADATA = Metadata(
-    id="db151b4ec596f12ab961f442961fee946a58a5cc",
+    id="411e49edb65f18c97d2c196d09d24aff8379c76d",
     name="3dPval",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +33,7 @@ def v_3d_pval(
     runner: Runner | None = None,
 ) -> V3dPvalOutputs:
     """
-    3dPval by The Man With The Golden p < 0.000001.
+    3dPval by AFNI Team.
     
     Convert a dataset's statistical sub-bricks to p-values or other statistical
     representations.

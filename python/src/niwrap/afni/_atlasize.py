@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _ATLASIZE_METADATA = Metadata(
-    id="483bdad1090c674b90ceeba07ec9ecf6a59c7a28",
+    id="9b723346f011b74edd9ef81b380db940a60c0c2f",
     name="@Atlasize",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,9 +45,12 @@ def _atlasize(
     runner: Runner | None = None,
 ) -> AtlasizeOutputs:
     """
-    @Atlasize by AFNI development team.
+    @Atlasize by AFNI Team.
     
     Script to turn a volumetric dataset into an AFNI atlas.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Atlasize.html
     
     Args:
         dset: Make DSET an atlas.

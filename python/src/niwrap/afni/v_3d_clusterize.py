@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_CLUSTERIZE_METADATA = Metadata(
-    id="6eea95d3e0f0cc79983496205e85ed7fc1f1a2f4",
+    id="852bf7841788f4bbfb195a8d465c039bee88ef38",
     name="3dClusterize",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -56,11 +55,12 @@ def v_3d_clusterize(
     runner: Runner | None = None,
 ) -> V3dClusterizeOutputs:
     """
-    3dClusterize by PA Taylor, NIMH, NIH.
+    3dClusterize by AFNI Team.
     
     A tool for voxelwise thresholding and clusterizing of datasets.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClusterize.html
     
     Args:
         inset: Load in a dataset for thresholding and clusterizing.

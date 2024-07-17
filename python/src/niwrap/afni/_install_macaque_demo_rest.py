@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INSTALL_MACAQUE_DEMO_REST_METADATA = Metadata(
-    id="c2b9db907bf80789df12c2968cc8e903e7ac1f3d",
+    id="de2b7d59b5065cb9e914456497be49fdcca96e02",
     name="Install_MACAQUE_DEMO_REST",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,12 +30,13 @@ def install_macaque_demo_rest(
     runner: Runner | None = None,
 ) -> InstallMacaqueDemoRestOutputs:
     """
-    Install_MACAQUE_DEMO_REST by AFNI Developers.
+    Install_MACAQUE_DEMO_REST by AFNI Team.
     
     Installs the demo archive for AFNI's resting state FMRI macaque-analysis
     demo.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_MACAQUE_DEMO_REST.html
     
     Args:
         wget_flag: Use wget to download archive. Script chooses by default with\

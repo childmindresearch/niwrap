@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SURF_DIST_METADATA = Metadata(
-    id="050397e1c2ad3f29eb1870a62cc348942d1c0b3a",
+    id="64734b24b6511134261a4f149b84d909cf13f56f",
     name="SurfDist",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,11 +35,12 @@ def surf_dist(
     runner: Runner | None = None,
 ) -> SurfDistOutputs:
     """
-    SurfDist by Ziad S. Saad SSCC/NIMH/NIH.
+    SurfDist by AFNI Team.
     
     Calculate shortest distance between node pairs on a surface mesh.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfDist.html
     
     Args:
         surface: Surface on which distances are computed.

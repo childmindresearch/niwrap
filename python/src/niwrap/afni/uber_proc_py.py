@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 UBER_PROC_METADATA = Metadata(
-    id="d67103a5c3d7459858ce08975451fe12aea6e863",
+    id="d8616be06db959497936d4c7bfc78b695fa7a732",
     name="uber_proc",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mydockerhub/uber_proc:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,11 +26,12 @@ def uber_proc(
     runner: Runner | None = None,
 ) -> UberProcOutputs:
     """
-    uber_proc by Anonymous.
+    uber_proc by AFNI Team.
     
     Uber processing tool - work in progress.
     
-    More information: https://example.com/uber_proc
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_proc.py.html
     
     Args:
         results_dir: Directory where results will be placed. Default is a new\

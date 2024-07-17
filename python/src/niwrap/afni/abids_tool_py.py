@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ABIDS_TOOL_METADATA = Metadata(
-    id="93e1eee50f0f7c43ec7e99897028f2cf7ad3e95a",
+    id="8f305cf62984f76712f9473b7294b450a484313b",
     name="abids_tool",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,11 +31,14 @@ def abids_tool(
     runner: Runner | None = None,
 ) -> AbidsToolOutputs:
     """
-    abids_tool by Justin Rajendra.
+    abids_tool by AFNI Team.
     
     A tool to work with BIDS formatted datasets created with dcm2niix_afni or
     dcm2niix, mainly to pull information from the matching JSON file and refit
     the input dataset using 3drefit.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_tool.py.html
     
     Args:
         input_files: At least one 3d+time dataset in NIFTI format.

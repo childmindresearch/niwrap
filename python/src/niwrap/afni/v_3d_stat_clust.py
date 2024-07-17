@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_STAT_CLUST_METADATA = Metadata(
-    id="6b9e3fcbae6f02415cbb74c9622ab891768154e5",
+    id="636f74236ddad61a1a74ec1c0fe67fdae25d2d31",
     name="3dStatClust",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,11 +38,14 @@ def v_3d_stat_clust(
     runner: Runner | None = None,
 ) -> V3dStatClustOutputs:
     """
-    3dStatClust by AFNI Development Team.
+    3dStatClust by AFNI Team.
     
     Perform agglomerative hierarchical clustering for user specified parameter
     sub-bricks, for all voxels whose threshold statistic is above a user
     specified value.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dStatClust.html
     
     Args:
         thresh: Threshold statistic from file tname. Only voxels whose\

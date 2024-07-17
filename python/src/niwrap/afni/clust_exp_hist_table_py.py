@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 CLUST_EXP_HIST_TABLE_PY_METADATA = Metadata(
-    id="c630832042b14ce863093a51dfc98d9be13de3e0",
+    id="e66412ea704b9bdc270310ea837b3e01815111fc",
     name="ClustExp_HistTable.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,10 +31,13 @@ def clust_exp_hist_table_py(
     runner: Runner | None = None,
 ) -> ClustExpHistTablePyOutputs:
     """
-    ClustExp_HistTable.py by Justin Rajendra.
+    ClustExp_HistTable.py by AFNI Team.
     
     Script to extract the data table from history of datasets from 3dttest++,
     3dMVM, or 3dLME.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ClustExp_HistTable.py.html
     
     Args:
         stat_dset: Statistics dataset.

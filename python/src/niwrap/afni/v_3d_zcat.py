@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ZCAT_METADATA = Metadata(
-    id="2674323aed0a11797aed378f7a1bbc21c980c285",
+    id="efac51c86e82360905a0bb204fedd4b5b3ba897b",
     name="3dZcat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,11 +36,12 @@ def v_3d_zcat(
     runner: Runner | None = None,
 ) -> V3dZcatOutputs:
     """
-    3dZcat by AFNI Developers.
+    3dZcat by AFNI Team.
     
     Concatenates datasets in the slice (z) direction.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZcat.html
     
     Args:
         input_files: Input datasets.

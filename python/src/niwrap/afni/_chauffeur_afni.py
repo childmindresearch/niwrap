@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _CHAUFFEUR_AFNI_METADATA = Metadata(
-    id="4435650fe5828d91dddbdb5d5d6ffeff6779b158",
+    id="e7900e8be3172fb7f5f31466dce984b2d6c5262a",
     name="@chauffeur_afni",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,12 +49,12 @@ def _chauffeur_afni(
     runner: Runner | None = None,
 ) -> ChauffeurAfniOutputs:
     """
-    @chauffeur_afni by PA Taylor (NIMH, NIH, USA).
+    @chauffeur_afni by AFNI Team.
     
     Automated QC snapshots generator in AFNI.
     
     More information:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.driver.html
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@chauffeur_afni.html
     
     Args:
         ulay: Name of underlay dataset (required); can be 3D or 4D set.

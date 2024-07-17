@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DMASKAVE_METADATA = Metadata(
-    id="418793655cb36124834f591f6b10c47f429a574d",
+    id="79af65dabd3ad60ca6a56ea693ba7f8e34816586",
     name="3dmaskave",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -34,7 +34,7 @@ def v_3dmaskave(
     runner: Runner | None = None,
 ) -> V3dmaskaveOutputs:
     """
-    3dmaskave by Nipype (interface).
+    3dmaskave by AFNI Team.
     
     Computes average of all voxels in the input dataset which satisfy the
     criterion in the options list.

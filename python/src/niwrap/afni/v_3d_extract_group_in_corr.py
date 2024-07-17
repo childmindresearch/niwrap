@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_EXTRACT_GROUP_IN_CORR_METADATA = Metadata(
-    id="2ad5126a01b1aa3a6770ad0441466aa60e097a05",
+    id="7d627f47796794ab13953b2bad45cd1eccc904aa",
     name="3dExtractGroupInCorr",
     container_image_type="docker",
-    container_image_index="docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,10 +29,13 @@ def v_3d_extract_group_in_corr(
     runner: Runner | None = None,
 ) -> V3dExtractGroupInCorrOutputs:
     """
-    3dExtractGroupInCorr by RWCox.
+    3dExtractGroupInCorr by AFNI Team.
     
     This program breaks the collection of images from a GroupInCorr file back
     into individual AFNI 3D+time datasets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dExtractGroupInCorr.html
     
     Args:
         group_in_corr_file: GroupInCorr file to extract datasets from (e.g.\

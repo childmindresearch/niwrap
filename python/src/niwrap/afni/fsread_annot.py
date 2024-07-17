@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FSREAD_ANNOT_METADATA = Metadata(
-    id="fc615c2ec76bac957306db24569e7e95eaa33d64",
+    id="dc3bb10415597395151891557a14b7903da0da01",
     name="FSread_annot",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,10 +44,13 @@ def fsread_annot(
     runner: Runner | None = None,
 ) -> FsreadAnnotOutputs:
     """
-    FSread_annot by Ziad S. Saad SSCC/NIMH/NIH.
+    FSread_annot by AFNI Team.
     
     Reads a FreeSurfer annotation file and outputs an equivalent ROI file and/or
     a colormap file for use with SUMA.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/FSread_annot.html
     
     Args:
         infile: Binary formatted FreeSurfer annotation file.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _INSTALL_APMULTI_DEMO1_REST_METADATA = Metadata(
-    id="cc7507e3f06417a6d63d8075a80f88de548a09a6",
+    id="1e5951200123168fab5d120c64216f0abfea7dae",
     name="@Install_APMULTI_Demo1_rest",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,10 +27,13 @@ def _install_apmulti_demo1_rest(
     runner: Runner | None = None,
 ) -> InstallApmultiDemo1RestOutputs:
     """
-    @Install_APMULTI_Demo1_rest.
+    @Install_APMULTI_Demo1_rest by AFNI Team.
     
     This script fetches the demo data and scripts corresponding to AFNI's Demo
     #1 for processing multi-echo FMRI data (rest).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_APMULTI_Demo1_rest.html
     
     Args:
         wget: Use wget to download archive. Script chooses by default with\

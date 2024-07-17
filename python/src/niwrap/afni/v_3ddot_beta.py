@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DDOT_BETA_METADATA = Metadata(
-    id="b4b6465184d908920cea2b950ef838a8030e152f",
+    id="dc724c4bff988982a6dec0af6bacc448eb5251cf",
     name="3ddot_beta",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,12 +31,13 @@ def v_3ddot_beta(
     runner: Runner | None = None,
 ) -> V3ddotBetaOutputs:
     """
-    3ddot_beta by AFNI Development Team.
+    3ddot_beta by AFNI Team.
     
     Beta version of updating 3ddot, currently only performing eta2 tests and
     outputting a full matrix to a text file.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddot_beta.html
     
     Args:
         input_file: Input file with N bricks.

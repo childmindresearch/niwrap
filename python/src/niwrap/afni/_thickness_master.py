@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _THICKNESS_MASTER_METADATA = Metadata(
-    id="aa0ef908aa48b3504e403b8bd7397a162e291e07",
+    id="72bbc09ca8b1738ab2adf9e5678877d0ab39d258",
     name="@thickness_master",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,9 +34,12 @@ def _thickness_master(
     runner: Runner | None = None,
 ) -> ThicknessMasterOutputs:
     """
-    @thickness_master.
+    @thickness_master by AFNI Team.
     
     Compute cortical thickness using mask and surface datasets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@thickness_master.html
     
     Args:
         maskset: Mask dataset to find thickness.

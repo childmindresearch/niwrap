@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 GEN_SS_REVIEW_TABLE_METADATA = Metadata(
-    id="7ec132d9cbb6ea4092f6a554ba9b8b681bb4deb9",
+    id="e1c806d05fee2bc90e4d361e327609a0658f95a4",
     name="gen_ss_review_table",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,9 +43,12 @@ def gen_ss_review_table(
     runner: Runner | None = None,
 ) -> GenSsReviewTableOutputs:
     """
-    gen_ss_review_table by R Reynolds.
+    gen_ss_review_table by AFNI Team.
     
     Generate a table from ss_review_basic output files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_ss_review_table.py.html
     
     Args:
         infiles: Input ss_review_basic output text files to process.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_EXCHANGE_METADATA = Metadata(
-    id="3df272771f657f98bbe8e299fbc974fdb18eb966",
+    id="0065855d5b0be38ddbd4c513a04f3517a90a5587",
     name="3dExchange",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,11 +34,12 @@ def v_3d_exchange(
     runner: Runner | None = None,
 ) -> V3dExchangeOutputs:
     """
-    3dExchange by AFNI Development Team.
+    3dExchange by AFNI Team.
     
     Replaces voxel values using a mapping file with specified columns.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dExchange.html
     
     Args:
         infile: Input dataset. Acceptable data types are byte, short, and\

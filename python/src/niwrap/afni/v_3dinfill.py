@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DINFILL_METADATA = Metadata(
-    id="61327133cb76705dfae6ce1c65d13de99638bccb",
+    id="05a98372de2f3dfdf249924232f145557b248949",
     name="3dinfill",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/3dinfill:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,11 +37,12 @@ def v_3dinfill(
     runner: Runner | None = None,
 ) -> V3dinfillOutputs:
     """
-    3dinfill by Author Name.
+    3dinfill by AFNI Team.
     
     A program to fill holes in volumes.
     
-    More information: https://example.com/3dinfill
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dinfill.html
     
     Args:
         input_: Fill volume dataset.

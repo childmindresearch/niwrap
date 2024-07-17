@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _DEBLANK_FILE_NAMES_METADATA = Metadata(
-    id="037e8504a76d03844cb09dc0dad656f071af0f74",
+    id="1c25b85649e46fcbee2f22c262e79ba2e1c3e105",
     name="@DeblankFileNames",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,10 +31,13 @@ def _deblank_file_names(
     runner: Runner | None = None,
 ) -> DeblankFileNamesOutputs:
     """
-    @DeblankFileNames by Unknown.
+    @DeblankFileNames by AFNI Team.
     
     A script to remove blanks and other annoying characters ([], ()) from
     filenames.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DeblankFileNames.html
     
     Args:
         move: Actually rename the files (opposite of -dry_run).

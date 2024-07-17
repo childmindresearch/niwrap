@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _DJUNCT_ANONYMIZE_METADATA = Metadata(
-    id="ce990869db6da10de714d0cd7b50cda811c08c5f",
+    id="2999f94bf9f1bceaa19ffa11b3e03884d8e3fd47",
     name="@djunct_anonymize",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,9 +29,12 @@ def _djunct_anonymize(
     runner: Runner | None = None,
 ) -> DjunctAnonymizeOutputs:
     """
-    @djunct_anonymize by PA Taylor.
+    @djunct_anonymize by AFNI Team.
     
     Helper program to anonymize files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_anonymize.html
     
     Args:
         input_: Input dataset.

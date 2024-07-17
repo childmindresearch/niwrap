@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1D_FLAG_MOTION_METADATA = Metadata(
-    id="54804efdaa7bef5e91b76bff4eef177384f6d666",
+    id="a01fd158ea1f9386a468696c6c7b79cbf0bb34aa",
     name="1dFlagMotion",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,10 +30,13 @@ def v_1d_flag_motion(
     runner: Runner | None = None,
 ) -> V1dFlagMotionOutputs:
     """
-    1dFlagMotion by AFNI Development Team.
+    1dFlagMotion by AFNI Team.
     
     Produces a list of time points with excessive motion relative to the
     previous time point.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dFlagMotion.html
     
     Args:
         input_motion_file: Input file with EXACTLY 6 columns: roll pitch yaw\

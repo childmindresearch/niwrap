@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SURF_LAYERS_DRIVER_SCRIPT_INSTALLER_METADATA = Metadata(
-    id="cb2388cccc67be94a596fc499a8b3040faebf274",
+    id="adb99e47963d9c49e265a3e2e5d4275c367f9335",
     name="SurfLayers Driver Script Installer",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,8 +27,7 @@ def surf_layers_driver_script_installer(
     runner: Runner | None = None,
 ) -> SurfLayersDriverScriptInstallerOutputs:
     """
-    SurfLayers Driver Script Installer by Torrisi, Lauren, Taylor, Park, Feinberg,
-    Glen.
+    SurfLayers Driver Script Installer by AFNI Team.
     
     Fetches 6 driver scripts for 3 datasets as demonstrated in the 2021 OHBM
     poster and demo video about SurfLayers.

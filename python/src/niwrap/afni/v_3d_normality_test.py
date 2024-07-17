@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_NORMALITY_TEST_METADATA = Metadata(
-    id="fb76fe92ed8e98142f9271144c390c3138eb6b75",
+    id="72a24d63ab18a544fbd81e699322a2cfcfa03de1",
     name="3dNormalityTest",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,12 +31,13 @@ def v_3d_normality_test(
     runner: Runner | None = None,
 ) -> V3dNormalityTestOutputs:
     """
-    3dNormalityTest by The Ghost of Carl Friedrich Gauss.
+    3dNormalityTest by AFNI Team.
     
     This program tests the input values at each voxel for normality using the
     Anderson-Darling method.
     
-    More information: http://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNormalityTest.html
     
     Args:
         input_: Specifies the input dataset.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 GLTSYMTEST_METADATA = Metadata(
-    id="14642d91e7a7cbf0ce4e5101325c1aba7af0d4c5",
+    id="111559b879985876df56e5d64b9c55b4a89af6bb",
     name="GLTsymtest",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,10 +28,13 @@ def gltsymtest(
     runner: Runner | None = None,
 ) -> GltsymtestOutputs:
     """
-    GLTsymtest by RWCox.
+    GLTsymtest by AFNI Team.
     
     A tool to test the validity of '-gltsym' strings for use with 3dDeconvolve
     or 3dREMLfit.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/GLTsymtest.html
     
     Args:
         varlist: A list of allowed variable names in the expression, separated\

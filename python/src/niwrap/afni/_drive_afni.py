@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DRIVE_AFNI_METADATA = Metadata(
-    id="fad24861cc560db406c6f9d5be51cdcce681c75a",
+    id="c6d87606bb42a049e229667ccd46880a42a4840d",
     name="DriveAfni",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,12 @@ def drive_afni(
     runner: Runner | None = None,
 ) -> DriveAfniOutputs:
     """
-    DriveAfni by AFNI Development Team.
+    DriveAfni by AFNI Team.
     
     A demo program for driving 'afni' from a script.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DriveAfni.html
     
     Args:
         data_dir: AFNI_data6 class data directory which the script requires for\

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_ENTROPY_METADATA = Metadata(
-    id="993b0bb98ae8aa57167ddfe5a6d2489bd5a4ee28",
+    id="6551d5cfe8e3280c9f67aad37a4b887e3eac534c",
     name="3dEntropy",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,11 +27,12 @@ def v_3d_entropy(
     runner: Runner | None = None,
 ) -> V3dEntropyOutputs:
     """
-    3dEntropy by AFNI Development Team.
+    3dEntropy by AFNI Team.
     
     Computes entropy for a 3D dataset.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dEntropy.html
     
     Args:
         input_dataset: Input dataset (stored as 16 bit shorts).

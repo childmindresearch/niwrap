@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 NSIZE_METADATA = Metadata(
-    id="a1a88cb4d2adbef0685efb2b9593f35008a38b70",
+    id="8d3ddcfa6f14f561aab2595cc7caf39642d3d921",
     name="nsize",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,11 +29,12 @@ def nsize(
     runner: Runner | None = None,
 ) -> NsizeOutputs:
     """
-    nsize by Unknown.
+    nsize by AFNI Team.
     
     Zero pads an input image to the nearest larger NxN dimensions.
     
-    More information: https://example.com/nsize
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/nsize.html
     
     Args:
         image_in: Input image file.

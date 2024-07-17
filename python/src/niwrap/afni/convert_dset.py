@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 CONVERT_DSET_METADATA = Metadata(
-    id="adb86474eb07d762a2e017655ea129d8417f8ff2",
+    id="2ab311f33719c698bfe9a89ea408fd9d6da717a0",
     name="ConvertDset",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,9 +48,12 @@ def convert_dset(
     runner: Runner | None = None,
 ) -> ConvertDsetOutputs:
     """
-    ConvertDset by Ziad S. Saad SSCC/NIMH/NIH.
+    ConvertDset by AFNI Team.
     
     Converts a surface dataset from one format to another.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ConvertDset.html
     
     Args:
         output_type: Type of output datasets.

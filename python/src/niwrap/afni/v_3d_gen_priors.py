@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_GEN_PRIORS_METADATA = Metadata(
-    id="5c37f22a1aaf219d462d237bf774331f3dbd95b0",
+    id="e1105fd983d74fc6e4ee6fd6f3d1edcb9ddc8375",
     name="3dGenPriors",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -56,11 +55,12 @@ def v_3d_gen_priors(
     runner: Runner | None = None,
 ) -> V3dGenPriorsOutputs:
     """
-    3dGenPriors by National Institute of Mental Health (NIMH).
+    3dGenPriors by AFNI Team.
     
     Produces classification priors based on voxel signatures.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGenPriors.html
     
     Args:
         sigs: Signatures dataset. A dataset with F features per voxel.

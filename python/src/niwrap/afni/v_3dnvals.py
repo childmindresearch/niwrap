@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3DNVALS_METADATA = Metadata(
-    id="faec4e4aff03ee276c5bc420f0ab234faca97907",
+    id="9a4c88d2e8108f0f35d4d4e777886e4b37df6a4e",
     name="3dnvals",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,11 +28,12 @@ def v_3dnvals(
     runner: Runner | None = None,
 ) -> V3dnvalsOutputs:
     """
-    3dnvals by AFNI.
+    3dnvals by AFNI Team.
     
     Tool to print the number of sub-bricks in a 3D dataset.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dnvals.html
     
     Args:
         datasets: Input 3D dataset(s).

@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 V_3D_QWARP_METADATA = Metadata(
-    id="6f830c301ec3b62232771d6951ef51ac5136d7aa",
+    id="5e3cb2b3d8dc9912ccf94935462de07abc0e4840",
     name="3dQwarp",
     container_image_type="docker",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -51,10 +51,13 @@ def v_3d_qwarp(
     runner: Runner | None = None,
 ) -> V3dQwarpOutputs:
     """
-    3dQwarp by Zhark the Warped.
+    3dQwarp by AFNI Team.
     
     Computes a nonlinearly warped version of source_dataset to match
     base_dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dQwarp.html
     
     Args:
         base_dataset: Base dataset.

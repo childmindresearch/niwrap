@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_PROC_AXIALIZE_ANAT_METADATA = Metadata(
-    id="50b6816dc7a4a0e57efa12fa442ad066ea9762ff",
+    id="3967d5c757100a14bbab72eac386e2b404ce9ba8",
     name="fat_proc_axialize_anat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -52,12 +51,13 @@ def fat_proc_axialize_anat(
     runner: Runner | None = None,
 ) -> FatProcAxializeAnatOutputs:
     """
-    fat_proc_axialize_anat by PA Taylor.
+    fat_proc_axialize_anat by AFNI Team.
     
     Helps align the major axes of an anatomical volume to those of the
     volumetric field of view.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_axialize_anat.html
     
     Args:
         in_file: Input anatomical volume full name.

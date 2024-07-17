@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 WHIRLGIF_METADATA = Metadata(
-    id="43e470f33ff251e58dcbdd08f8bdbb447f21a88f",
+    id="951aee9fda4adb703ad7d7c9529758cc8c5666ea",
     name="whirlgif",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="whirlgif:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,12 +34,13 @@ def whirlgif(
     runner: Runner | None = None,
 ) -> WhirlgifOutputs:
     """
-    whirlgif by Kevin Kadow, Mark Podlipec.
+    whirlgif by AFNI Team.
     
     A quick program that reads a series of GIF files and produces a single GIF
     file composed of those images.
     
-    More information: https://www.freshports.org/graphics/whirlgif/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/whirlgif.html
     
     Args:
         gif_files: Input GIF files to be combined into a single GIF file.

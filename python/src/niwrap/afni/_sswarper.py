@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _SSWARPER_METADATA = Metadata(
-    id="9d42376738784f0965491de65ea136af17108125",
+    id="5760ae5493ec6e6345390327a44b8ff45a1e60af",
     name="@SSwarper",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -77,13 +76,14 @@ def _sswarper(
     runner: Runner | None = None,
 ) -> SswarperOutputs:
     """
-    @SSwarper by Bob, Bob, there is one Bob, He spells it B-O-B..
+    @SSwarper by AFNI Team.
     
     Dual purposes for processing a given subject's anatomical volume:
     skull-strip the brain and calculate the warp to a reference
     template/standard space.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SSwarper.html
     
     Args:
         input_file: An anatomical dataset, not skull-stripped, with about 1 mm\

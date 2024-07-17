@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 GEN_SS_REVIEW_SCRIPTS_METADATA = Metadata(
-    id="d6fcf5e826da9594fe7769892129d75e2e2aa6d1",
+    id="e10b0c94f1ed545af27fa8782998068e3663c12d",
     name="gen_ss_review_scripts",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -51,9 +50,12 @@ def gen_ss_review_scripts(
     runner: Runner | None = None,
 ) -> GenSsReviewScriptsOutputs:
     """
-    gen_ss_review_scripts by R Reynolds.
+    gen_ss_review_scripts by AFNI Team.
     
     Generate single subject analysis review scripts.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_ss_review_scripts.py.html
     
     Args:
         subject_id: Subject ID.

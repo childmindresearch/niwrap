@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SCALE_VOLUME_METADATA = Metadata(
-    id="a44c4e964b3b355b95dd004d48b2cec3aea7826f",
+    id="b9c9ea3d721f6ffe5246ba53a763fa2d1205318c",
     name="ScaleVolume",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,9 +35,12 @@ def scale_volume(
     runner: Runner | None = None,
 ) -> ScaleVolumeOutputs:
     """
-    ScaleVolume by Author Name.
+    ScaleVolume by AFNI Team.
     
     A tool to scale the volume of datasets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ScaleVolume.html
     
     Args:
         input_dset: Dataset to scale.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_NWARP_CAT_METADATA = Metadata(
-    id="73dc0f3185918d5896bda5b8d62d64c9c80a842d",
+    id="a336dce6ca7c46c7d6f9831d32f76a4e8089e4a7",
     name="3dNwarpCat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,11 +38,12 @@ def v_3d_nwarp_cat(
     runner: Runner | None = None,
 ) -> V3dNwarpCatOutputs:
     """
-    3dNwarpCat by RWCox.
+    3dNwarpCat by AFNI Team.
     
     Catenates (composes) 3D warps defined on a grid or via a matrix.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpCat.html
     
     Args:
         output_prefix: Prefix name for the output dataset that holds the warp.

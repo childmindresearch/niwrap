@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DJUNCT_MODAL_SMOOTHING_WITH_REP_METADATA = Metadata(
-    id="15ee3deeac82f8bb3f7573fe64c63b6bd8da2cd9",
+    id="252b9a5e4f3d6d3fd284531b46fd71c53dda8f26",
     name="djunct_modal_smoothing_with_rep",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="djunct/modal:smoothing",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,11 +37,14 @@ def djunct_modal_smoothing_with_rep(
     runner: Runner | None = None,
 ) -> DjunctModalSmoothingWithRepOutputs:
     """
-    djunct_modal_smoothing_with_rep by PA Taylor.
+    djunct_modal_smoothing_with_rep by AFNI Team.
     
     A script to perform modal smoothing of ROI maps and check for eliminated
     ROIs. If any ROIs are eliminated during smoothing, they are restored,
     potentially in a degraded form.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_modal_smoothing_with_rep.html
     
     Args:
         input_file: Input dataset (assumes < 10^5 subbricks).

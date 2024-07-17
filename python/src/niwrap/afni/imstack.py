@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 IMSTACK_METADATA = Metadata(
-    id="0e717d15194798b44497338ef9aad800b5754ee6",
+    id="0b64ae08b24b469a2c1c73101d04e4171b55c105",
     name="imstack",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,9 +32,12 @@ def imstack(
     runner: Runner | None = None,
 ) -> ImstackOutputs:
     """
-    imstack by Unknown.
+    imstack by AFNI Team.
     
     Stacks up a set of 2D images into one big file (a la MGH).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/imstack.html
     
     Args:
         image_files: Input image filenames.

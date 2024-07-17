@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _AFNI_REFACER_MAKE_ONEBIG_A12_METADATA = Metadata(
-    id="08f61dc396e09c464ee3e584bbc6145594f3c4f6",
+    id="f333abd3f2327025fd4bba049bf71d844b0709cd",
     name="@afni_refacer_make_onebigA12",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,13 @@ def _afni_refacer_make_onebig_a12(
     runner: Runner | None = None,
 ) -> AfniRefacerMakeOnebigA12Outputs:
     """
-    @afni_refacer_make_onebigA12 by The Face of Imperial Zhark, Who is Terrible to
-    Behold!.
+    @afni_refacer_make_onebigA12 by AFNI Team.
     
     Script to align a single T1w dataset to the MNI template and expand it to a
     'big' grid.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_make_onebigA12.html
     
     Args:
         t1w_dataset: Input T1w dataset name.

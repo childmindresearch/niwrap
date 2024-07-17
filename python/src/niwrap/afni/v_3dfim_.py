@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DFIM__METADATA = Metadata(
-    id="edba206fa3d94b05869b47f76c534b19853decc2",
+    id="e013e7d22669dfd53d92c26cc31d82a59c244c96",
     name="3dfim+",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,12 +45,13 @@ def v_3dfim_(
     runner: Runner | None = None,
 ) -> V3dfimOutputs:
     """
-    3dfim+ by AFNI.
+    3dfim+ by AFNI Team.
     
     Program to calculate the cross-correlation of an ideal reference waveform
     with the measured FMRI time series for each voxel.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dfim+.html
     
     Args:
         infile: Filename of input 3d+time dataset.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_CONVOLVE_METADATA = Metadata(
-    id="8440377fd0be096e086a70127c499111f81e2654",
+    id="d8440d19a16dca77c6727e625001c56a872d31dc",
     name="3dConvolve",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,11 +30,12 @@ def v_3d_convolve(
     runner: Runner | None = None,
 ) -> V3dConvolveOutputs:
     """
-    3dConvolve by AFNI Development Team.
+    3dConvolve by AFNI Team.
     
     3dConvolve is no longer supported in AFNI.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dConvolve.html
     
     Args:
         infile: Input file for 3dConvolve.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 NP_METADATA = Metadata(
-    id="b799d11cf166eb3977c6aecb35d8226d8472ded1",
+    id="7296f817388ca420d7f7ecef862c576230bbd67c",
     name="np",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,12 +28,15 @@ def np(
     runner: Runner | None = None,
 ) -> NpOutputs:
     """
-    np.
+    np by AFNI Team.
     
     Finds an appropriate new prefix to use, given the files you already have in
     your directory. It automatically creates a valid prefix when you are
     repeatedly running similar commands but do not want to delete previous
     output.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@np.html
     
     Args:
         prefix: The prefix to be checked.

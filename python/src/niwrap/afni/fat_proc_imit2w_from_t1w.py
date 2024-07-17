@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_PROC_IMIT2W_FROM_T1W_METADATA = Metadata(
-    id="c7b621622d62b9ae4462cb800aa59ffe462c3fb0",
+    id="49f809f5a6de8bf2daf9a0b5a6eaff2da5b1db03",
     name="fat_proc_imit2w_from_t1w",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,9 +41,12 @@ def fat_proc_imit2w_from_t1w(
     runner: Runner | None = None,
 ) -> FatProcImit2wFromT1wOutputs:
     """
-    fat_proc_imit2w_from_t1w by PA Taylor.
+    fat_proc_imit2w_from_t1w by AFNI Team.
     
     Process T1w anatomical images to generate an imitation T2w-contrast image.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_imit2w_from_t1w.html
     
     Args:
         t1_file: Full name of the input T1w volume.

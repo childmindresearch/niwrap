@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SPHARM_DECO_METADATA = Metadata(
-    id="cdb54bd8be8ae55f77c98cfa211b1977c42b7aa3",
+    id="736cc426b32afa9f45af45a7cf3d0b090c27d0b8",
     name="SpharmDeco",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="myregistry/spharmdeco:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,11 +41,12 @@ def spharm_deco(
     runner: Runner | None = None,
 ) -> SpharmDecoOutputs:
     """
-    SpharmDeco by Ziad S. Saad, SSCC/NIMH/NIH.
+    SpharmDeco by AFNI Team.
     
     Spherical Harmonics Decomposition of a surface's coordinates or data.
     
-    More information: http://www.stat.wisc.edu/~mchung/papers/TR1122.2006.pdf
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SpharmDeco.html
     
     Args:
         i_type_s: Unit sphere, isotopic to the surface domain over which the\

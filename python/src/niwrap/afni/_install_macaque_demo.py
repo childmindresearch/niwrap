@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INSTALL_MACAQUE_DEMO_METADATA = Metadata(
-    id="d8dc3091787ec1a31a056cf9b5031fd50714791d",
+    id="27dfc1405a1cd794a578d1fa32bd6946647281da",
     name="Install_MACAQUE_DEMO",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,11 +27,12 @@ def install_macaque_demo(
     runner: Runner | None = None,
 ) -> InstallMacaqueDemoOutputs:
     """
-    Install_MACAQUE_DEMO by AFNI Developers.
+    Install_MACAQUE_DEMO by AFNI Team.
     
     Installs the demo archive for AFNI's macaque-analysis demo.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_MACAQUE_DEMO.html
     
     Args:
         wget: Use wget to download archive. Script chooses by default with\

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 UN_WARP_EPI_PY_METADATA = Metadata(
-    id="2b7496a07ac5435161a2af450057976bf2dad4a2",
+    id="e4fd23a18bcd39d85c3ce820bf2ec1cc6ba41ead",
     name="unWarpEPI.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="neurodocker_image/unwarpepi:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,10 +31,13 @@ def un_warp_epi_py(
     runner: Runner | None = None,
 ) -> UnWarpEpiPyOutputs:
     """
-    unWarpEPI.py by Vinai Roopchansingh and Daniel Glen.
+    unWarpEPI.py by AFNI Team.
     
     Routine to unwarp EPI data set using another data set with opposite
     polarity.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/unWarpEPI.py.html
     
     Args:
         forward: Calibration matching data to be corrected.

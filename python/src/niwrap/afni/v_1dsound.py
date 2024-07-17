@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1DSOUND_METADATA = Metadata(
-    id="b2439a05ac5227938ac9491cb8da0a64b68b690f",
+    id="c02013cabb916283bbc9e306365a78ac2263a711",
     name="1dsound",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="someuser/1dsound:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,9 +38,12 @@ def v_1dsound(
     runner: Runner | None = None,
 ) -> V1dsoundOutputs:
     """
-    1dsound by RWCox.
+    1dsound by AFNI Team.
     
     Program to create a sound file from a 1D file (column of numbers).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dsound.html
     
     Args:
         tsfile: The input 1D time series file containing the data to transform\

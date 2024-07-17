@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DMASKDUMP_METADATA = Metadata(
-    id="58b12da9fcb9780a65964c0186d4d5eadac53433",
+    id="a73457eb66e133c401e2bc4027f8902f1b6b5453",
     name="3dmaskdump",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,7 +47,7 @@ def v_3dmaskdump(
     runner: Runner | None = None,
 ) -> V3dmaskdumpOutputs:
     """
-    3dmaskdump by AFNI (Analysis of Functional NeuroImages).
+    3dmaskdump by AFNI Team.
     
     Outputs voxel values from AFNI datasets satisfying mask criteria to an ASCII
     file.

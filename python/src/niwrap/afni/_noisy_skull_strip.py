@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _NOISY_SKULL_STRIP_METADATA = Metadata(
-    id="8a4a27cb41ad67398bc61aa3f26329620ba2229b",
+    id="218e177b783c87f71467c5fa72eeac090660310d",
     name="@NoisySkullStrip",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="YOUR_DOCKER_IMAGE:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,9 +36,12 @@ def _noisy_skull_strip(
     runner: Runner | None = None,
 ) -> NoisySkullStripOutputs:
     """
-    @NoisySkullStrip by Ziad S. Saad.
+    @NoisySkullStrip by AFNI Team.
     
     Strips the skull of anatomical datasets with low SNR.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoisySkullStrip.html
     
     Args:
         input_file: The anatomical dataset.

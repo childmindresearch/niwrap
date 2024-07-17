@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_MANN_WHITNEY_METADATA = Metadata(
-    id="744d28091afcd56b8ecdf117984935766afe4105",
+    id="68b3f80632e7a5671831bd8a3edb1be2a0b66a4b",
     name="3dMannWhitney",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,9 +32,12 @@ def v_3d_mann_whitney(
     runner: Runner | None = None,
 ) -> V3dMannWhitneyOutputs:
     """
-    3dMannWhitney by AFNI.
+    3dMannWhitney by AFNI Team.
     
     Performs nonparametric Mann-Whitney two-sample test.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMannWhitney.html
     
     Args:
         dset1_x: Data set for X observations. Must specify 1 and only 1\

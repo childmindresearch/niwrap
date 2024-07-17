@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_ICC_METADATA = Metadata(
-    id="8ff7f742055734d6ec1c36afde9bdd4a6e8c531c",
+    id="805e92e9201e769e4c5adf609b1c54de60d8946b",
     name="3dICC",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,9 +41,12 @@ def v_3d_icc(
     runner: Runner | None = None,
 ) -> V3dIccOutputs:
     """
-    3dICC by Gang Chen.
+    3dICC by AFNI Team.
     
     AFNI Program for IntraClass Correlatin (ICC) Analysis.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dICC.html
     
     Args:
         prefix: Name of output file. For AFNI format, provide prefix only, with\

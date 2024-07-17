@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 BALLOON_METADATA = Metadata(
-    id="be49618dbd66df732e286f8be74bae3ac69dde93",
+    id="ecff915c688fc606704d8689dfceaf0e26e6c52f",
     name="balloon",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="docker.io/simulation/balloon:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,10 +31,13 @@ def balloon(
     runner: Runner | None = None,
 ) -> BalloonOutputs:
     """
-    balloon by MK Belmonte.
+    balloon by AFNI Team.
     
     Simulation of haemodynamic response using the balloon model. Based on the
     theoretical model proposed by Buxton et al. (1998).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/balloon.html
     
     Args:
         tr: Scan repetition time in seconds (TR), the interval at which the\

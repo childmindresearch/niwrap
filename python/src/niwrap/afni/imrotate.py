@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 IMROTATE_METADATA = Metadata(
-    id="f409080ac56f955f4016bfe5b17008f976db7879",
+    id="33c43f4c908a8b75b70c06ccb4160c1e8fddc87d",
     name="imrotate",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/docker-imrotate:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,11 +34,12 @@ def imrotate(
     runner: Runner | None = None,
 ) -> ImrotateOutputs:
     """
-    imrotate by Image Processing Tools.
+    imrotate by AFNI Team.
     
     Shifts and rotates an image.
     
-    More information: https://example.com/imrotate
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/imrotate.html
     
     Args:
         input_image: Input image file.

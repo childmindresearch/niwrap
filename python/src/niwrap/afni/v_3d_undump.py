@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_UNDUMP_METADATA = Metadata(
-    id="3982f5fc1ab386b46b629516b43b2dff4692eedd",
+    id="ba67e37ed0eb3ffbc5f367f402a1159b9f23e0fa",
     name="3dUndump",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,10 +43,13 @@ def v_3d_undump(
     runner: Runner | None = None,
 ) -> V3dUndumpOutputs:
     """
-    3dUndump by RWCox.
+    3dUndump by AFNI Team.
     
     Assembles a 3D dataset from an ASCII list of coordinates and optionally
     values.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dUndump.html
     
     Args:
         input_files: Input ASCII file(s), with one voxel specification per\

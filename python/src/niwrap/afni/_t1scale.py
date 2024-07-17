@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 T1SCALE_METADATA = Metadata(
-    id="dec254737b5505df919d67aff1de883e1cfda75f",
+    id="2ef6264a377793753c0cd8a874bb655f59ef9e34",
     name="T1scale",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="user/t1scale:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,10 +45,13 @@ def t1scale(
     runner: Runner | None = None,
 ) -> T1scaleOutputs:
     """
-    T1scale by Unknown.
+    T1scale by AFNI Team.
     
     Fix bias field shading in T1 by scaling it with PD image. You can also get a
     decent result even without the PD volume.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@T1scale.html
     
     Args:
         t1_volume: The T1 volume.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _SUMA_MAKE_SPEC_CARET_METADATA = Metadata(
-    id="f6a4f87581d06dc79e2f765d7e4484536afd247b",
+    id="51ff878f5f2952a5ca43b33050e7b7c540ec84d6",
     name="@SUMA_Make_Spec_Caret",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,12 +35,12 @@ def _suma_make_spec_caret(
     runner: Runner | None = None,
 ) -> SumaMakeSpecCaretOutputs:
     """
-    @SUMA_Make_Spec_Caret by R. Reynolds (rickr@codon.nih.gov), Z. Saad
-    (saadz@mail.nih.gov).
+    @SUMA_Make_Spec_Caret by AFNI Team.
     
     Prepare surfaces for viewing in SUMA, tested with Caret-5.2 surfaces.
     
-    More information: https://afni.nimh.nih.gov/ssc/ziad/SUMA/SUMA_doc.htm
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_Make_Spec_Caret.html
     
     Args:
         subject_id: Subject ID for file naming.

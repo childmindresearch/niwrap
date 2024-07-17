@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1DCAT_METADATA = Metadata(
-    id="51152e820733876e8bf6195b587067e4783477de",
+    id="9af96f5a182c0cba2a60dec446df1651e25840c8",
     name="1dcat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,11 +36,12 @@ def v_1dcat(
     runner: Runner | None = None,
 ) -> V1dcatOutputs:
     """
-    1dcat by AFNI developers.
+    1dcat by AFNI Team.
     
     Concatenates columns of multiple 1D or TSV/CSV files.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dcat.html
     
     Args:
         input_files: Input 1D or TSV/CSV files to concatenate.

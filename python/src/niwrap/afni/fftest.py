@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FFTEST_METADATA = Metadata(
-    id="c05c6f01c2d4d466ac0f62fd63e49f9f85adeae0",
+    id="ce6ba9bfe8fc105e767d57335a343e80526236dd",
     name="fftest",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,9 +29,12 @@ def fftest(
     runner: Runner | None = None,
 ) -> FftestOutputs:
     """
-    fftest by Unknown.
+    fftest by AFNI Team.
     
     A command line tool for testing purposes.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fftest.html
     
     Args:
         length: Length of the test.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_EMPTY_METADATA = Metadata(
-    id="132e685d0d86e55bedd97f83b1ca0310470c62de",
+    id="53cb2500681f0df1b616204c5cbe0016fcb96f41",
     name="3dEmpty",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,7 +35,8 @@ def v_3d_empty(
     
     Tool to create an 'empty' dataset .HEAD file.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dEmpty.html
     
     Args:
         prefix: Prefix name for output file (default = 'Empty').

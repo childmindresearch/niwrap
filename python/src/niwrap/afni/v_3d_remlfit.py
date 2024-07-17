@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_REMLFIT_METADATA = Metadata(
-    id="677999b614f56650a9b177a4cbb4b19fb54901db",
+    id="733577f9cb92eed5e58609e4e14962d3808fb912",
     name="3dREMLfit",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -53,13 +52,13 @@ def v_3d_remlfit(
     runner: Runner | None = None,
 ) -> V3dRemlfitOutputs:
     """
-    3dREMLfit by RWCox.
+    3dREMLfit by AFNI Team.
     
     Generalized least squares time series fit, with REML estimation of the
     temporal auto-correlation structure.
     
     More information:
-    https://afni.nimh.nih.gov/pub/dist/doc/misc/3dREMLfit/3dREMLfit_mathnotes.pdf
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dREMLfit.html
     
     Args:
         input_file: Read time series dataset.

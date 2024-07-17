@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_SETUP_GROUP_IN_CORR_METADATA = Metadata(
-    id="4d31eff193cd9d797260cb30022cbd9c0a2ee35f",
+    id="686135cdef40615c63eed51710e0648564c568ea",
     name="3dSetupGroupInCorr",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,10 +38,13 @@ def v_3d_setup_group_in_corr(
     runner: Runner | None = None,
 ) -> V3dSetupGroupInCorrOutputs:
     """
-    3dSetupGroupInCorr by RWCox.
+    3dSetupGroupInCorr by AFNI Team.
     
     Pre-process a collection of AFNI 3D+time datasets for use with Group
     InstaCorr.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSetupGroupInCorr.html
     
     Args:
         datasets: AFNI 3D+time datasets to be processed.

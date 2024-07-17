@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 GET_AFNI_DIMS_METADATA = Metadata(
-    id="3dc514f9f98b19943d4fd8a5bd2d692ccdc1024d",
+    id="d4aa613276f477177933c3632275b0c35fbb36cb",
     name="GetAfniDims",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,9 +28,12 @@ def get_afni_dims(
     runner: Runner | None = None,
 ) -> GetAfniDimsOutputs:
     """
-    GetAfniDims by AFNI contributors.
+    GetAfniDims by AFNI Team.
     
     A utility tool to return dimensions of AFNI dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniDims.html
     
     Args:
         input_dset: Input AFNI dataset.

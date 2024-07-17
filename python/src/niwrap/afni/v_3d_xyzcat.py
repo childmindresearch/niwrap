@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_XYZCAT_METADATA = Metadata(
-    id="baf493bd157da1cbd10655c8eff3555b42a8f9ee",
+    id="cfb867848443e742ad4c9c6204647a17300f0428",
     name="3dXYZcat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +33,7 @@ def v_3d_xyzcat(
     runner: Runner | None = None,
 ) -> V3dXyzcatOutputs:
     """
-    3dXYZcat by RW Cox.
+    3dXYZcat by AFNI Team.
     
     Catenates datasets spatially.
     

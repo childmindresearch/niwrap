@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 HELP_FORMAT_METADATA = Metadata(
-    id="549ff7dfec4d36f3418f69489e6a52f6dd8008ed",
+    id="94a8ca9630967c536e2f2bc2dfbd0fa19cb662a9",
     name="help_format",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="unknown",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,9 +28,12 @@ def help_format(
     runner: Runner | None = None,
 ) -> HelpFormatOutputs:
     """
-    help_format by Unknown.
+    help_format by AFNI Team.
     
     Formats text by converting URLs into HTML hyperlinks.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/help_format.html
     
     Args:
         stdin: Standard input text to be formatted.

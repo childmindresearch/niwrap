@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ROI_DECLUSTER_METADATA = Metadata(
-    id="ca1707bc1d6ffb4befbd1e40030bcf468f59de01",
+    id="2b34867ec8afa95019eb814e39e7dfffcdefeb37",
     name="ROI decluster",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/roi-decluster:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,10 +33,13 @@ def roi_decluster(
     runner: Runner | None = None,
 ) -> RoiDeclusterOutputs:
     """
-    ROI decluster.
+    ROI decluster by AFNI Team.
     
     Script to remove small clusters or standalone voxels from an ROI/atlas
     dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_decluster.html
     
     Args:
         input_dset: Required input dataset. This dataset should be set of\

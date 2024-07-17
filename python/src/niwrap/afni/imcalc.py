@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 IMCALC_METADATA = Metadata(
-    id="6d10ee7a9d879ceb86126d153ca3d07d639f65c6",
+    id="8aa18128a1cdbdd9d1dd3f0840eefbf37de0dc6a",
     name="imcalc",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/imcalc:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,9 +31,12 @@ def imcalc(
     runner: Runner | None = None,
 ) -> ImcalcOutputs:
     """
-    imcalc by Example Author.
+    imcalc by AFNI Team.
     
     Tool for arithmetic operations on 2D images, pixel-by-pixel.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcalc.html
     
     Args:
         expression: Apply the expression within quotes to the input images, one\

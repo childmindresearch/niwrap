@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_LOCAL_BISTAT_METADATA = Metadata(
-    id="1a0acfa598bf2f052ea982d34f06a717faaeb468",
+    id="1c70d75614ee364244fb4604f1b032e762cbf5dc",
     name="3dLocalBistat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,10 +41,13 @@ def v_3d_local_bistat(
     runner: Runner | None = None,
 ) -> V3dLocalBistatOutputs:
     """
-    3dLocalBistat by RWCox.
+    3dLocalBistat by AFNI Team.
     
     Compute statistics between 2 datasets at each voxel based on a local
     neighborhood.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalBistat.html
     
     Args:
         dataset1: The first input dataset (e.g. data1.nii).

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_POLYFIT_METADATA = Metadata(
-    id="9c71ceea0a86d1079e2a513e76e8e4297976c5db",
+    id="b7c18b53209c5b576a9e99de98dd12c3ac9486f4",
     name="3dPolyfit",
     container_image_type="docker",
-    container_image_index="hub.docker.com",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,12 +45,13 @@ def v_3d_polyfit(
     runner: Runner | None = None,
 ) -> V3dPolyfitOutputs:
     """
-    3dPolyfit by RWCox.
+    3dPolyfit by AFNI Team.
     
     Fits a polynomial in space to the input dataset and outputs that fitted
     dataset. You can also add your own basis datasets to the fitting mix.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPolyfit.html
     
     Args:
         input_dataset: Input dataset (e.g., data.nii.gz).

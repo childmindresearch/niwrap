@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_LOCAL_UNIFIZE_METADATA = Metadata(
-    id="2e818eb4f27db1363ad7ac6fd3f6017a8541b552",
+    id="174d5353a164f29ddb062909ba372afebd8f20ce",
     name="3dLocalUnifize",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,11 +36,14 @@ def v_3d_local_unifize(
     runner: Runner | None = None,
 ) -> V3dLocalUnifizeOutputs:
     """
-    3dLocalUnifize by PA Taylor (SSCC, NIMH, NIH).
+    3dLocalUnifize by AFNI Team.
     
     This program generates a 'unifized' output volume by estimating the median
     in the local neighborhood of each voxel and using that to scale each voxel's
     brightness.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalUnifize.html
     
     Args:
         input_: Input dataset.

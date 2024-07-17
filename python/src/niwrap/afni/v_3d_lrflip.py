@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_LRFLIP_METADATA = Metadata(
-    id="45be5f6427491ba4227e4943fa229a06c3bb9fc8",
+    id="f40a6fcdc3a3daf5efa03fb37a609a7e32d731be",
     name="3dLRflip",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,10 +35,13 @@ def v_3d_lrflip(
     runner: Runner | None = None,
 ) -> V3dLrflipOutputs:
     """
-    3dLRflip by AFNI Developers.
+    3dLRflip by AFNI Team.
     
     Flips the rows of a dataset along one of the three axes to correct dataset
     direction labeling errors.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLRflip.html
     
     Args:
         datasets: Datasets to flip.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_MEAN_METADATA = Metadata(
-    id="5fc6d3a2f7cf82fb33958c7920f51358161e66c5",
+    id="2468b8896c16da6ff307d6db4b2b19bb29959ec4",
     name="3dMean",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -47,12 +46,13 @@ def v_3d_mean(
     runner: Runner | None = None,
 ) -> V3dMeanOutputs:
     """
-    3dMean by AFNI (Analysis of Functional NeuroImages).
+    3dMean by AFNI Team.
     
     Takes the voxel-by-voxel mean of all input datasets; designed to be faster
     than 3dcalc.
     
-    More information: https://afni.nimh.nih.gov/afni
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMean.html
     
     Args:
         input_files: Input datasets.

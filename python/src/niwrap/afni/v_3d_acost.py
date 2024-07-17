@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ALLINEATE_METADATA = Metadata(
-    id="f6586500319d1a174fe4fbe20254ff0adb0cf73e",
+    id="7c35d8a9c0b16fa42accd6769557ff7f8ddf4d29",
     name="3dAllineate",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,11 +33,12 @@ def v_3d_allineate(
     runner: Runner | None = None,
 ) -> V3dAllineateOutputs:
     """
-    3dAllineate by AFNI Development Team.
+    3dAllineate by AFNI Team.
     
     Allineate dataset to a base dataset.
     
-    More information: https://afni.nimh.nih.gov/afni
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAcost.html
     
     Args:
         infile: Input dataset for allineation.

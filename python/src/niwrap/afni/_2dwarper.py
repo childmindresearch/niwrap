@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_2DWARPER_METADATA = Metadata(
-    id="32bcf4b37025569c2d7d52f91eb79c4865746009",
+    id="2df9a3e1b0c9d6549197e80b9108c69084b0feac",
     name="2dwarper",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,9 +28,12 @@ def v_2dwarper(
     runner: Runner | None = None,
 ) -> V2dwarperOutputs:
     """
-    2dwarper by Unknown.
+    2dwarper by AFNI Team.
     
     2D image warping tool.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@2dwarper.html
     
     Args:
         input_dataset: Input dataset (e.g., image to be warped).

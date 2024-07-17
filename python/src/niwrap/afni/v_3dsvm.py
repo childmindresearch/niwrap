@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DSVM_METADATA = Metadata(
-    id="b22c80ab79ebd9a4223631b4b45492b2cce31226",
+    id="1707b36bed4b0bab589778bd20a40b26511a08a5",
     name="3dsvm",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="neurodocker/ants:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -61,12 +60,12 @@ def v_3dsvm(
     runner: Runner | None = None,
 ) -> V3dsvmOutputs:
     """
-    3dsvm by Jeff W. Prescott, William A. Curtis, Ziad Saad, Rick Reynolds, R.
-    Cameron Craddock, Jonathan M. Lisinski, and Stephen M. LaConte.
+    3dsvm by AFNI Team.
     
     Support vector machine analysis of brain data using the SVM-light package.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dsvm.html
     
     Args:
         model: The basename for the model brik containing the SVM model during\

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 UBER_ALIGN_TEST_PY_METADATA = Metadata(
-    id="8e7e722b0615d2c6ea3d9458fcd5b2b2dc2d7a6c",
+    id="39746acaf2e85ac7fc7dc8fc54961bf8dc1407b3",
     name="uber_align_test.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,9 +35,12 @@ def uber_align_test_py(
     runner: Runner | None = None,
 ) -> UberAlignTestPyOutputs:
     """
-    uber_align_test.py by R Reynolds.
+    uber_align_test.py by AFNI Team.
     
     Generate script to test anatomical/EPI alignment.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_align_test.py.html
     
     Args:
         no_gui: Run without the graphical user interface (GUI).

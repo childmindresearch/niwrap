@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _DICE_METRIC_METADATA = Metadata(
-    id="ba89fc243934d727ab9c0ef8d4460d55afad4ba4",
+    id="02454d6067b4a4327f43f73c720bc9635a3e4821",
     name="@DiceMetric",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,10 +38,12 @@ def _dice_metric(
     runner: Runner | None = None,
 ) -> DiceMetricOutputs:
     """
-    @DiceMetric by Ziad Saad (saadz@mail.nih.gov), SSCC/NIMH/ National Institutes of
-    Health, Bethesda Maryland.
+    @DiceMetric by AFNI Team.
     
     Computes Dice Metric between BASE and each of the DSET volumes.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DiceMetric.html
     
     Args:
         base: Name of base (reference) segmentation.

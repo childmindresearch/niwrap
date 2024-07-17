@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ADWARP_METADATA = Metadata(
-    id="58db0bd5a057cf982e2bad67473dfc68aa090970",
+    id="53159c05926d61effdaeb80731ed168e4e00043f",
     name="adwarp",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,10 +38,13 @@ def adwarp(
     runner: Runner | None = None,
 ) -> AdwarpOutputs:
     """
-    adwarp by AFNI Development Team.
+    adwarp by AFNI Team.
     
     Resamples a 'data parent' dataset to the grid defined by an 'anat parent'
     dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adwarp.html
     
     Args:
         apar: Set the anat parent dataset (nonoptional).

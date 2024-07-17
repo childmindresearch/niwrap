@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_AUTOBOX_METADATA = Metadata(
-    id="bc33e0258f15b3aa7f6e0b7031b3a1190d4adb56",
+    id="05a381e828f751e8b899fb2e7b2ec31c98fe94db",
     name="3dAutobox",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -45,7 +44,8 @@ def v_3d_autobox(
     Computes size of a box that fits around the volume. Can also be used to crop
     the volume to that box.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutobox.html
     
     Args:
         input_: Input dataset.

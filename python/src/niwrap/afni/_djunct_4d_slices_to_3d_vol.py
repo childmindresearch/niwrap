@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _DJUNCT_4D_SLICES_TO_3D_VOL_METADATA = Metadata(
-    id="c816da754d2a6f0fb9247cd3a25ef22de3abcff7",
+    id="46ce9791cf78d5a01d1b630632ea02cc97d237a2",
     name="@djunct_4d_slices_to_3d_vol",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,12 @@ def _djunct_4d_slices_to_3d_vol(
     runner: Runner | None = None,
 ) -> Djunct4dSlicesTo3dVolOutputs:
     """
-    @djunct_4d_slices_to_3d_vol by Author Name.
+    @djunct_4d_slices_to_3d_vol by AFNI Team.
     
     Tool description goes here.
     
-    More information: http://example.com/@djunct_4d_slices_to_3d_vol
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_4d_slices_to_3d_vol.html
     
     Args:
         do_something: Do something really useful.

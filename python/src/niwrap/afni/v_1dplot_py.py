@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1DPLOT_PY_METADATA = Metadata(
-    id="3240f260395ccebf84fceae81985087b89aabeb8",
+    id="af0d5999d24bbc6f3961a4d20bd4b38860891d74",
     name="1dplot.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="python:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -60,12 +59,13 @@ def v_1dplot_py(
     runner: Runner | None = None,
 ) -> V1dplotPyOutputs:
     """
-    1dplot.py by PA Taylor (NIMH, NIH, USA).
+    1dplot.py by AFNI Team.
     
     This program is for making images to visualize columns of numbers from 1D
     text files. It uses Python, particularly matplotlib, to create plots.
     
-    More information: N/A
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dplot.py.html
     
     Args:
         infiles: One or more file names of text files. Each column in this file\

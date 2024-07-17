@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INSTALL_IBT_DATASETS_METADATA = Metadata(
-    id="3d67d678bafea3f3b94f396ab58541ac7aeae3fa",
+    id="8609c9fc71946a34e7ce07736528cb9c1bfa9094",
     name="Install_IBT_DATASETS",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,7 +31,8 @@ def install_ibt_datasets(
     
     Installs the demo archive for AFNI's macaque-analysis demo.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_IBT_DATASETS.html
     
     Args:
         wget_flag: Use wget to download archive. Script chooses by default with\

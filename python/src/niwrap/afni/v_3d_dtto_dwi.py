@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_DTTO_DWI_METADATA = Metadata(
-    id="e4d267cdbe32c1ab0f44d402ec5c2c8a1f9ad023",
+    id="47b03136c4feea3116b001b3cbcae0eb66d44866",
     name="3dDTtoDWI",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,10 +35,13 @@ def v_3d_dtto_dwi(
     runner: Runner | None = None,
 ) -> V3dDttoDwiOutputs:
     """
-    3dDTtoDWI by AFNI Development Team.
+    3dDTtoDWI by AFNI Team.
     
     Tool to compute multiple gradient images from tensors and gradient vector
     coordinates applied to the I0-dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDTtoDWI.html
     
     Args:
         gradient_file: 1D file containing the gradient vectors (ASCII floats)\

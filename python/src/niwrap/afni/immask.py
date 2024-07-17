@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 IMMASK_METADATA = Metadata(
-    id="fca55d7762c3259beeb9f832f1fa90c11c8b823c",
+    id="86504f652c99d44226f59ecf6081fc213a1b97e4",
     name="immask",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,10 +32,13 @@ def immask(
     runner: Runner | None = None,
 ) -> ImmaskOutputs:
     """
-    immask by Your Name or Institution.
+    immask by AFNI Team.
     
     Masks the input image based on specified criteria and produces the output
     image.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/immask.html
     
     Args:
         input_image: Input image to be masked.

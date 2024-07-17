@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 PROMPT_USER_METADATA = Metadata(
-    id="d0a97e75d28e2f9902e547edc15f06bcf31c0829",
+    id="84ca4a5455f405ce5b18c80b437afb8257383e6d",
     name="prompt_user",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,9 +28,12 @@ def prompt_user(
     runner: Runner | None = None,
 ) -> PromptUserOutputs:
     """
-    prompt_user by Ziad S. Saad SSCC/NIMH/NIH.
+    prompt_user by AFNI Team.
     
     Tool that prompts a window requesting user input with a custom message.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/prompt_user.html
     
     Args:
         pause_message: Pops a window prompting the user with MESSAGE. If\

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _BUILD_AFNI_XLIB_METADATA = Metadata(
-    id="989c6bea230976e79dc13656c5fcd5b6c32f0965",
+    id="a0b1f50f70b5a5aed2f363d01a1a7255fc7c7000",
     name="@build_afni_Xlib",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,6 +34,9 @@ def _build_afni_xlib(
     @build_afni_Xlib by AFNI Team.
     
     Compile and install lesstif, openmotif, and/or libXt.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@build_afni_Xlib.html
     
     Args:
         packages: Packages to compile and install (e.g., lesstif, openmotif,\

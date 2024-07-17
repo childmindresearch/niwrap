@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 DICOM_HINFO_METADATA = Metadata(
-    id="d8b01eb185e896dba048cf92f952f1405c240efb",
+    id="e0f7a86ee8dcf6a15248d5935a4c254bcd6994c2",
     name="dicom_hinfo",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,9 +31,12 @@ def dicom_hinfo(
     runner: Runner | None = None,
 ) -> DicomHinfoOutputs:
     """
-    dicom_hinfo by RWCox.
+    dicom_hinfo by AFNI Team.
     
     Prints selected information from one or more DICOM files to stdout.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/dicom_hinfo.html
     
     Args:
         tag: Specify one or more DICOM tags to print, in the format aaaa,bbbb\

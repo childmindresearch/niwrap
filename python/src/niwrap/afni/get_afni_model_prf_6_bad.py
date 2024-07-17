@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 GET_AFNI_MODEL_PRF_6_BAD_METADATA = Metadata(
-    id="8ee5b85510dd886faf968c2d1a846bb6cc08a200",
+    id="47e7a1fe0037fc4a0dd5881f2d3d8f8bee2365ef",
     name="get_afni_model_PRF_6_BAD",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,11 +31,12 @@ def get_afni_model_prf_6_bad(
     runner: Runner | None = None,
 ) -> GetAfniModelPrf6BadOutputs:
     """
-    get_afni_model_PRF_6_BAD by AFNI.
+    get_afni_model_PRF_6_BAD by AFNI Team.
     
     Command line tool for obtaining AFNI pRF model.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF_6_BAD.html
     
     Args:
         amplitude: Amplitude parameter A.

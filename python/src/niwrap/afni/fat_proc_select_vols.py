@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_PROC_SELECT_VOLS_METADATA = Metadata(
-    id="bc1b4f7a942b120197e927f3b598e48522298361",
+    id="eb386ad9f422322fe2bd6b01868aac79816fa9ea",
     name="fat_proc_select_vols",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="index.docker.io/biocontainers/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,9 +35,12 @@ def fat_proc_select_vols(
     runner: Runner | None = None,
 ) -> FatProcSelectVolsOutputs:
     """
-    fat_proc_select_vols by PA Taylor.
+    fat_proc_select_vols by AFNI Team.
     
     Tool for building a selector string for AFNI subbricks and/or 1D text files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_select_vols.html
     
     Args:
         dwi_input: Input DWI dataset.

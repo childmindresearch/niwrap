@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FIND_VARIANCE_LINES_METADATA = Metadata(
-    id="e1040739fd00544462b2b0f576dc8f7d64c6cf79",
+    id="070b4ae01ad6db47144832edcb787f0ae727bb4e",
     name="find_variance_lines",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="find_variance_lines:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -49,10 +48,13 @@ def find_variance_lines(
     runner: Runner | None = None,
 ) -> FindVarianceLinesOutputs:
     """
-    find_variance_lines by R Reynolds, P Taylor, D Glen.
+    find_variance_lines by AFNI Team.
     
     Look for bars of high variance that might suggest scanner interference in
     EPI datasets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/find_variance_lines.tcsh.html
     
     Args:
         input_files: Input EPI datasets.

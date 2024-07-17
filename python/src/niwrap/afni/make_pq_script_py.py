@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 MAKE_PQ_SCRIPT_METADATA = Metadata(
-    id="79721a2365bb7654b0aedb149599438f5650c667",
+    id="e4426b276f6a8ad1ef7c78bf1084b54c5115f496",
     name="make_pq_script",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,9 +31,12 @@ def make_pq_script(
     runner: Runner | None = None,
 ) -> MakePqScriptOutputs:
     """
-    make_pq_script by R Reynolds.
+    make_pq_script by AFNI Team.
     
     Creates a script to compute p-value and q-value curves.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/make_pq_script.py.html
     
     Args:
         dataset: Input dataset (no sub-brick selectors).

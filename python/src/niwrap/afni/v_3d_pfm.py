@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 V_3D_PFM_METADATA = Metadata(
-    id="566fccf227151ac39767c4a6b8f70abb0f7d0fa7",
+    id="23a5f5ab98320a96038c74ff60cd8f658a21898f",
     name="3dPFM",
     container_image_type="docker",
-    container_image_tag="index.docker.io/mcin/docker-fsl:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -92,10 +92,13 @@ def v_3d_pfm(
     runner: Runner | None = None,
 ) -> V3dPfmOutputs:
     """
-    3dPFM by C. Caballero Gaudes.
+    3dPFM by AFNI Team.
     
     Program for identifying brief BOLD events in fMRI time series using Paradigm
     Free Mapping.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPFM.html
     
     Args:
         input_: Specify the dataset to analyze (e.g., epi.nii).

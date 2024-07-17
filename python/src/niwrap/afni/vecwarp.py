@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 VECWARP_METADATA = Metadata(
-    id="8b1b3dab96ed6d33762bda7570672766ce4cb515",
+    id="30ab7139d05f9c56d92fc176625f5aee50439323",
     name="Vecwarp",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,10 +34,13 @@ def vecwarp(
     runner: Runner | None = None,
 ) -> VecwarpOutputs:
     """
-    Vecwarp by RWCox.
+    Vecwarp by AFNI Team.
     
     Transforms (warps) a list of 3-vectors into another list of 3-vectors
     according to the specified options.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/Vecwarp.html
     
     Args:
         apar: Use the AFNI dataset 'aaa' as the source of the transformation;\

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _NO_EXT_METADATA = Metadata(
-    id="4c72f31cc394fb70b3c1751a7053410201303e90",
+    id="5fc116f2a7f9a0d99f2e7c94f1ebc4ddf50d79c3",
     name="@NoExt",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,9 +29,12 @@ def _no_ext(
     runner: Runner | None = None,
 ) -> NoExtOutputs:
     """
-    @NoExt by Ziad Saad.
+    @NoExt by AFNI Team.
     
     Tool for removing specified extensions from filenames.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoExt.html
     
     Args:
         inputfile: Input file name with extension.

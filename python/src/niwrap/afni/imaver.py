@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 IMAVER_METADATA = Metadata(
-    id="afddf56a8f0e6dd2b5e03c86245e924a6d684293",
+    id="ca4fef03a7382c5d7c0c0e5cac4141eab5ffcbc0",
     name="imaver",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,10 +32,13 @@ def imaver(
     runner: Runner | None = None,
 ) -> ImaverOutputs:
     """
-    imaver by Unknown.
+    imaver by AFNI Team.
     
     Computes the mean and standard deviation, pixel-by-pixel, of a whole bunch
     of images.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/imaver.html
     
     Args:
         input_images: Input image files for processing.

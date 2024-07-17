@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 IMDUMP_METADATA = Metadata(
-    id="30286d0502fba63d60232f7077221ec51eafc7ef",
+    id="4e73bdbaee3494f5caf94b9758fe364072faee80",
     name="imdump",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,9 +28,12 @@ def imdump(
     runner: Runner | None = None,
 ) -> ImdumpOutputs:
     """
-    imdump by Unknown.
+    imdump by AFNI Team.
     
     Prints out nonzero pixels in an image.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/imdump.html
     
     Args:
         input_image: Input image file to be processed.

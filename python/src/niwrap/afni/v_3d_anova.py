@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ANOVA_METADATA = Metadata(
-    id="7eb34193b2cd4d538cad4e23c074cb94199a9621",
+    id="2ce442013c35d44af2a082bd7a7d06a3519bc1d3",
     name="3dANOVA",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -60,7 +59,7 @@ def v_3d_anova(
     runner: Runner | None = None,
 ) -> V3dAnovaOutputs:
     """
-    3dANOVA by AFNI (Analysis of Functional NeuroImages).
+    3dANOVA by AFNI Team.
     
     Performs single-factor Analysis of Variance (ANOVA) on 3D datasets.
     

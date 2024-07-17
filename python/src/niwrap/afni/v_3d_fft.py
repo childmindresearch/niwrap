@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_FFT_METADATA = Metadata(
-    id="0e755bc53e13a5a7734c22467a080ffc9f656806",
+    id="d1e30aaf7ac894e4722c0d8bbf43a2fb45c6cded",
     name="3dFFT",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -45,7 +44,8 @@ def v_3d_fft(
     Performs the FFT of the input dataset in 3 directions (x, y, z) and produces
     the output dataset.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFFT.html
     
     Args:
         dataset: Input dataset (e.g., dataset.nii).

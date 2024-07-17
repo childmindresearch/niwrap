@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SURF_TO_SURF_METADATA = Metadata(
-    id="851484f9e88530172b87eda8288d63de71ec6105",
+    id="7ea5720d005f8ca36112681007b6c97602751bc5",
     name="SurfToSurf",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="nimh-afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,9 +40,12 @@ def surf_to_surf(
     runner: Runner | None = None,
 ) -> SurfToSurfOutputs:
     """
-    SurfToSurf by Ziad S. Saad, Shruti Japee.
+    SurfToSurf by AFNI Team.
     
     Interpolate data from one surface to another.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfToSurf.html
     
     Args:
         input_surface_1: First input surface file (S1).

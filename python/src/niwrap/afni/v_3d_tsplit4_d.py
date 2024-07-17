@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TSPLIT4_D_METADATA = Metadata(
-    id="5acb152d6d7751ef5355abbcf8d39ab2a22676bd",
+    id="68c654f6af940146b357053f934591e3e528d54b",
     name="3dTsplit4D",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,11 +31,12 @@ def v_3d_tsplit4_d(
     runner: Runner | None = None,
 ) -> V3dTsplit4DOutputs:
     """
-    3dTsplit4D by Peter Molfese, UConn.
+    3dTsplit4D by AFNI Team.
     
     Convert a 3D+time dataset into multiple 3D single-brick files.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTsplit4D.html
     
     Args:
         infile: Input 3D+time dataset (e.g., epi_r1+orig).

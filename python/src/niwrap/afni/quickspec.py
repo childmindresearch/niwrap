@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 QUICKSPEC_METADATA = Metadata(
-    id="59db236f7e9f5f24b0e6d46147ba93d8655150d6",
+    id="0c9f3d2bdc2440dc331863abcff23630b3201a5d",
     name="quickspec",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,10 +34,13 @@ def quickspec(
     runner: Runner | None = None,
 ) -> QuickspecOutputs:
     """
-    quickspec by Ziad S. Saad SSCC/NIMH/NIH.
+    quickspec by AFNI Team.
     
     A quick and dirty way of loading a surface into SUMA or command line
     programs using a spec file.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/quickspec.html
     
     Args:
         tn: Specify surface type and name.

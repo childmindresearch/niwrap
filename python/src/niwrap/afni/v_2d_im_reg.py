@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_2D_IM_REG_METADATA = Metadata(
-    id="fba9dc129622c45cef523765c1de161c8a41a790",
+    id="4bf6b59ee7aec9803b578fdf0053034c71952a6e",
     name="2dImReg",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -47,12 +49,13 @@ def v_2d_im_reg(
     runner: Runner | None = None,
 ) -> V2dImRegOutputs:
     """
-    2dImReg by Author Unknown.
+    2dImReg by AFNI Team.
     
     2D image registration tool for 3D+time datasets, aligning images on a
     slice-by-slice basis to a specified base image.
     
-    More information: http://example.url/2dImReg
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/2dImReg.html
     
     Args:
         input_file: Filename of input 3d+time dataset to process.

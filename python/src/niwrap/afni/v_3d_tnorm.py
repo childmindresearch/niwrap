@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TNORM_METADATA = Metadata(
-    id="a3811e1e6e0917ecb1458921735e7dde41058f33",
+    id="8f6fca5ff448969653f833bbe04335be86ac6c0a",
     name="3dTnorm",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +35,12 @@ def v_3d_tnorm(
     runner: Runner | None = None,
 ) -> V3dTnormOutputs:
     """
-    3dTnorm by AFNI (Analysis of Functional NeuroImages).
+    3dTnorm by AFNI Team.
     
     Normalizes each voxel time series by multiplicative scaling.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTnorm.html
     
     Args:
         input_dataset: Input dataset (e.g. data.nii).

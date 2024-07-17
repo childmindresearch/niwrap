@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SURF_SMOOTH_METADATA = Metadata(
-    id="f589b24658cd3dd0d19aac14b5e26e8f6766f7a4",
+    id="6514ad97f25a967bcd709581a559b54c2a61aa6c",
     name="SurfSmooth",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:v20.2.16",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,11 +26,12 @@ def surf_smooth(
     runner: Runner | None = None,
 ) -> SurfSmoothOutputs:
     """
-    SurfSmooth by AFNI.
+    SurfSmooth by AFNI Team.
     
     A script to illustrate controlled blurring of data on the surface.
     
-    More information: https://afni.nimh.nih.gov/pub/dist/edu/data/SUMA_demo.tgz
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SurfSmooth.HEAT_07.examples.html
     
     Args:
         path_to_suma_demo: Path to SUMA demo directory.

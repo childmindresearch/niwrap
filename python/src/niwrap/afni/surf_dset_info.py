@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SURF_DSET_INFO_METADATA = Metadata(
-    id="41838166ab002bf7dc6cb42a9270ce0bb8e2f467",
+    id="2b46ccc09c63c606837792d9c566cff918aa38b9",
     name="SurfDsetInfo",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,9 +44,12 @@ def surf_dset_info(
     runner: Runner | None = None,
 ) -> SurfDsetInfoOutputs:
     """
-    SurfDsetInfo by Ziad S. Saad SSCC/NIMH/NIH.
+    SurfDsetInfo by AFNI Team.
     
     Provides information about surface datasets (DSET).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfDsetInfo.html
     
     Args:
         input_dsets: Input dataset.

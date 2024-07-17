@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 XMAT_TOOL_PY_METADATA = Metadata(
-    id="eced17964ca086c14f29725b4ca5b20639d05cea",
+    id="941d3413a7db2141d43b6c9e3751913777901b48",
     name="xmat_tool.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -49,9 +48,12 @@ def xmat_tool_py(
     runner: Runner | None = None,
 ) -> XmatToolPyOutputs:
     """
-    xmat_tool.py by R Reynolds.
+    xmat_tool.py by AFNI Team.
     
     A tool for evaluating an AFNI X-matrix.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/xmat_tool.py.html
     
     Args:
         no_gui: Do not start the GUI.

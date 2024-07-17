@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _INSTALL_AFNI_RETINO_DEMO_METADATA = Metadata(
-    id="224bfcb407587326e50170a53d6a34e093c517d9",
+    id="41a7eeaa9e3e236a63754a9ae47de88c10cf848b",
     name="@Install_AfniRetinoDemo",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,12 @@ def _install_afni_retino_demo(
     runner: Runner | None = None,
 ) -> InstallAfniRetinoDemoOutputs:
     """
-    @Install_AfniRetinoDemo by AFNI Development Team.
+    @Install_AfniRetinoDemo by AFNI Team.
     
     Installs and runs demo script for the retinotopy pipeline demo.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_AfniRetinoDemo.html
     
     Args:
         output_dir: Output directory where the demo will be installed and run.

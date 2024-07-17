@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _FIX_FSSPHERE_METADATA = Metadata(
-    id="562366f0e1751b624c37f952f68eaf166d6837d7",
+    id="22439f8b6f8027a3d078c6f8e58e5eb187e31050",
     name="@fix_FSsphere",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,9 +33,12 @@ def _fix_fssphere(
     runner: Runner | None = None,
 ) -> FixFssphereOutputs:
     """
-    @fix_FSsphere by Unknown.
+    @fix_FSsphere by AFNI Team.
     
     Tool for fixing errors in FreeSurfer spherical surfaces.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@fix_FSsphere.html
     
     Args:
         spec_file: Spec file.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_UPSAMPLE_METADATA = Metadata(
-    id="2e2ab92754ba78f5827085e6ef106a60b92e31aa",
+    id="cecd3921fe1f855a9674c3b8c149339935ecb3c6",
     name="3dUpsample",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,9 +35,12 @@ def v_3d_upsample(
     runner: Runner | None = None,
 ) -> V3dUpsampleOutputs:
     """
-    3dUpsample by RW Cox.
+    3dUpsample by AFNI Team.
     
     Upsamples a 3D+time dataset in the time direction by a specified factor.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dUpsample.html
     
     Args:
         upsample_factor: Upsampling factor; must be between 2 and 320\

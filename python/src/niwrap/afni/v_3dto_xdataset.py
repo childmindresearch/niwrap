@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3DTO_XDATASET_METADATA = Metadata(
-    id="2890f856fc4cc0a9490a69880a9e52c6fd65ca27",
+    id="70a5468c88f08d3cefa21702fad29ffcbc95ec9a",
     name="3dtoXdataset",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,11 +30,12 @@ def v_3dto_xdataset(
     runner: Runner | None = None,
 ) -> V3dtoXdatasetOutputs:
     """
-    3dtoXdataset by Author Name.
+    3dtoXdataset by AFNI Team.
     
     Convert input datasets to the format needed for 3dClustSimX.
     
-    More information: URL-to-more-information
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dtoXdataset.html
     
     Args:
         prefix: Prefix for the output file.

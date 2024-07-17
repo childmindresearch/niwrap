@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_DEPTH_MAP_METADATA = Metadata(
-    id="6cf51c71248a153777c8b51f370e2d4399d0f7f2",
+    id="b233ee4e021593abd64b14159cf1522976fa8baa",
     name="3dDepthMap",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,11 +40,14 @@ def v_3d_depth_map(
     runner: Runner | None = None,
 ) -> V3dDepthMapOutputs:
     """
-    3dDepthMap by PA Taylor and P Lauren (SSCC, NIMH, NIH).
+    3dDepthMap by AFNI Team.
     
     Calculates the Euclidean Distance Transform (EDT) for 3D volumes, allowing
     computation of ROI depth maps and applying various adjustments like masking
     and rimification.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDepthMap.html
     
     Args:
         input_dataset: Input dataset.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_APQC_TSNR_GENERAL_METADATA = Metadata(
-    id="7d5647c5711c738984f7c69f446b306de2e997f0",
+    id="cc30f8074e086c96e5cfea20ed33ef80b0074b2f",
     name="adjunct_apqc_tsnr_general",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,9 +48,12 @@ def adjunct_apqc_tsnr_general(
     runner: Runner | None = None,
 ) -> AdjunctApqcTsnrGeneralOutputs:
     """
-    adjunct_apqc_tsnr_general by PA Taylor.
+    adjunct_apqc_tsnr_general by AFNI Team.
     
     An adjunct program for making TSNR plots for APQC.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_apqc_tsnr_general.html
     
     Args:
         montgap: Specify montage gap.

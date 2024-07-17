@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 RTFEEDME_METADATA = Metadata(
-    id="ee6f32406dc3abf52b8ab4a80770a986bf7f225f",
+    id="a0ef4cb49b545bf74279792ff7d85ddf55c16151",
     name="rtfeedme",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,9 +36,12 @@ def rtfeedme(
     runner: Runner | None = None,
 ) -> RtfeedmeOutputs:
     """
-    rtfeedme.
+    rtfeedme by AFNI Team.
     
     Test the real-time plugin by sending all the bricks in 'dataset' to AFNI.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/rtfeedme.html
     
     Args:
         datasets: List of datasets to send to AFNI, specified as paths to\

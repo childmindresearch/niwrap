@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _FS_ROI_LABEL_METADATA = Metadata(
-    id="c2ca275b06cef6a150a7b8448d1af8538bb92b0c",
+    id="33ed9677c3f16b954d259c156fd5c1c4bc788aa8",
     name="@FS_roi_label",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="freesurfer/freesurfer:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,12 +34,13 @@ def _fs_roi_label(
     runner: Runner | None = None,
 ) -> FsRoiLabelOutputs:
     """
-    @FS_roi_label by FreeSurfer.
+    @FS_roi_label by AFNI Team.
     
     Tool to get labels associated with FreeSurfer's parcellation and annotation
     files.
     
-    More information: https://surfer.nmr.mgh.harvard.edu/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FS_roi_label.html
     
     Args:
         label_int: Integer labeled area in FreeSurfer's parcellation.

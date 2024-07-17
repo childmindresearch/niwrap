@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 AFNI_ORIENT_SIGN_METADATA = Metadata(
-    id="16c1e8e365767059060e9828e8a744cb33a6307f",
+    id="c20bfe8a6225bde4b3a62cc7c1779ae18cceeba2",
     name="AfniOrientSign",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,11 +28,12 @@ def afni_orient_sign(
     runner: Runner | None = None,
 ) -> AfniOrientSignOutputs:
     """
-    AfniOrientSign by AFNI Developers.
+    AfniOrientSign by AFNI Team.
     
     A tool within the AFNI suite to determine the orientation signs of datasets.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@AfniOrientSign.html
     
     Args:
         infile: Input image file to determine orientation.

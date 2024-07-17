@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 CONVERT_SURFACE_METADATA = Metadata(
-    id="c10a06b35b9d460c3e84feb6ce384d505c8e087e",
+    id="39673a316b600ba234b2c1ce484429acf840262c",
     name="ConvertSurface",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,10 +37,13 @@ def convert_surface(
     runner: Runner | None = None,
 ) -> ConvertSurfaceOutputs:
     """
-    ConvertSurface by Ziad S. Saad SSCC/NIMH/NIH.
+    ConvertSurface by AFNI Team.
     
     Reads in a surface and writes it out in another format. Only fields
     pertinent to SUMA are preserved.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ConvertSurface.html
     
     Args:
         input_surface: Specifies the input surface.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_AFNITO_ANALYZE_METADATA = Metadata(
-    id="71c9f7cf4431ab09130144637e809fd2a74d3e2c",
+    id="09db85c4337cad319057173c572ec25b0f1949ac",
     name="3dAFNItoANALYZE",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,6 +40,9 @@ def v_3d_afnito_analyze(
     3dAFNItoANALYZE by AFNI Team.
     
     Writes AFNI dataset to ANALYZE 7.5 format .hdr/.img file pairs.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoANALYZE.html
     
     Args:
         output_name: Output ANALYZE file base name (e.g., aname).

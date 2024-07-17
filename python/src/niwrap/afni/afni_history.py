@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AFNI_HISTORY_METADATA = Metadata(
-    id="be123cc455fe81349d34226be3c0563d686e59f0",
+    id="0e5ba13dd26e71c5594c4d9a695c26f20e753d0b",
     name="afni_history",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -47,11 +46,12 @@ def afni_history(
     runner: Runner | None = None,
 ) -> AfniHistoryOutputs:
     """
-    afni_history by Rick Reynolds.
+    afni_history by AFNI Team.
     
     Show AFNI updates per user, dates, or levels.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_history.html
     
     Args:
         verb_level: Request verbose output (LEVEL is from 0-6).

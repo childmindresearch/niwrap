@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _QUIET_TALKERS_METADATA = Metadata(
-    id="be2cf9a10d3a3a6102821a3bee36e4f3e8e1300d",
+    id="4e4b2854af68f2789084a083c9af42a086ef0ff6",
     name="@Quiet_Talkers",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +33,7 @@ def _quiet_talkers(
     runner: Runner | None = None,
 ) -> QuietTalkersOutputs:
     """
-    @Quiet_Talkers by Ziad S. Saad.
+    @Quiet_Talkers by AFNI Team.
     
     A script to find and kill AFNI processes.
     

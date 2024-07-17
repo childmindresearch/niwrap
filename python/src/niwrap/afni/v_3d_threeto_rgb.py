@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_THREETO_RGB_METADATA = Metadata(
-    id="6982ec958451163a320e4c7914790e815630e7e3",
+    id="620a160adb25c226a8eae14f8a7dfe20abae0fe2",
     name="3dThreetoRGB",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,9 +37,12 @@ def v_3d_threeto_rgb(
     runner: Runner | None = None,
 ) -> V3dThreetoRgbOutputs:
     """
-    3dThreetoRGB by RWCox.
+    3dThreetoRGB by AFNI Team.
     
     Converts 3 sub-bricks of input to an RGB-valued dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dThreetoRGB.html
     
     Args:
         input_dataset: Input dataset or first dataset if three datasets are\

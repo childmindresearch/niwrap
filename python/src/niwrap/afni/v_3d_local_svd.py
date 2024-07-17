@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_LOCAL_SVD_METADATA = Metadata(
-    id="a2b63dcdce00acb409b198e87fc96ef1c36991f2",
+    id="e97613398607a0cd7904712ae0f0562e669540a4",
     name="3dLocalSVD",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,9 +33,12 @@ def v_3d_local_svd(
     runner: Runner | None = None,
 ) -> V3dLocalSvdOutputs:
     """
-    3dLocalSVD by National Institutes of Health (NIH).
+    3dLocalSVD by AFNI Team.
     
     Computes the SVD of time series from a neighborhood of each voxel.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalSVD.html
     
     Args:
         input_file: Input time series dataset file.

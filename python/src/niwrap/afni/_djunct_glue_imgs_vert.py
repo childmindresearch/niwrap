@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_GLUE_IMGS_VERT_METADATA = Metadata(
-    id="c9dc9b348480710af17954c9d4760d2deeb29b04",
+    id="ed275b14ddcd58ece3fa9f50d325e76035bdbdf0",
     name="adjunct_glue_imgs_vert",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,9 +33,12 @@ def adjunct_glue_imgs_vert(
     runner: Runner | None = None,
 ) -> AdjunctGlueImgsVertOutputs:
     """
-    adjunct_glue_imgs_vert by PA Taylor.
+    adjunct_glue_imgs_vert by AFNI Team.
     
     This script helps in gluing two images together vertically.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_glue_imgs_vert.html
     
     Args:
         bottom_image: Bottom image file.

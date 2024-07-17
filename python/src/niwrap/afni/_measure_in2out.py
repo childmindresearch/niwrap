@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _MEASURE_IN2OUT_METADATA = Metadata(
-    id="b53db8cb322e0e8117b106c1813d8e5af25e19a8",
+    id="ed2c9684d7e9c13f6316d050f1f2cc31fd9bf230",
     name="@measure_in2out",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="unknown",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -54,11 +53,12 @@ def _measure_in2out(
     runner: Runner | None = None,
 ) -> MeasureIn2outOutputs:
     """
-    @measure_in2out by unknown.
+    @measure_in2out by AFNI Team.
     
     Compute thickness of mask using in2out method.
     
-    More information: unknown
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@measure_in2out.html
     
     Args:
         maskset: Mask dataset for input.

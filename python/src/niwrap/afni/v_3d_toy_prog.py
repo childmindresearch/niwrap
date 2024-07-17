@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TOY_PROG_METADATA = Metadata(
-    id="92c21394694110b7a20bb2f4200e6486e823543c",
+    id="91a09126a29c7cc2599819cbf304f7c146b4d459",
     name="3dToyProg",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,10 +39,13 @@ def v_3d_toy_prog(
     runner: Runner | None = None,
 ) -> V3dToyProgOutputs:
     """
-    3dToyProg by AFNI (Analysis of Functional NeuroImages) Development Team.
+    3dToyProg by AFNI Team.
     
     A program to illustrate dataset creation and manipulation in C using AFNI's
     API.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dToyProg.html
     
     Args:
         input_dataset: Reference dataset.

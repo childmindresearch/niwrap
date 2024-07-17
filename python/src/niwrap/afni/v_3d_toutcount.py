@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TOUTCOUNT_METADATA = Metadata(
-    id="aa76abfbf5601880536682ad943732c27a98b957",
+    id="c36b1ad750d019209399efeb222cdbd3213201f8",
     name="3dToutcount",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,11 +39,12 @@ def v_3d_toutcount(
     runner: Runner | None = None,
 ) -> V3dToutcountOutputs:
     """
-    3dToutcount by AFNI Development Team.
+    3dToutcount by AFNI Team.
     
     Calculates the number of 'outliers' in a 3D+time dataset at each time point.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dToutcount.html
     
     Args:
         input_dataset: Input 3D+time dataset (e.g. dataset+orig).

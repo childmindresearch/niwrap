@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_AUTO_TCORRELATE_METADATA = Metadata(
-    id="5e5755aae40fc467f0bd0b267d16e7b981bff8ff",
+    id="161ed90571de4b91083a0d7c2db4f33bed959f92",
     name="3dAutoTcorrelate",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -45,10 +44,13 @@ def v_3d_auto_tcorrelate(
     runner: Runner | None = None,
 ) -> V3dAutoTcorrelateOutputs:
     """
-    3dAutoTcorrelate by RWCox.
+    3dAutoTcorrelate by AFNI Team.
     
     Computes the correlation coefficient between the time series of each pair of
     voxels in the input dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutoTcorrelate.html
     
     Args:
         input_dataset: Input dataset.

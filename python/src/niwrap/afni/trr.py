@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 TRR_METADATA = Metadata(
-    id="eed5816d3810a65049e6e45e30f6ae60f92da413",
+    id="c9e189df3cc8d0f545179ef379b73902d4d4c049",
     name="TRR",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-r:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,11 +49,12 @@ def trr(
     runner: Runner | None = None,
 ) -> TrrOutputs:
     """
-    TRR by Gang Chen.
+    TRR by AFNI Team.
     
     Test-Retest Reliability Program through Bayesian Multilevel Modeling.
     
-    More information: https://afni.nimh.nih.gov/gangchen_homepage
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/TRR.html
     
     Args:
         prefix: Prefix for output file names.

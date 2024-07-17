@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 AFNI_PROC_PY_METADATA = Metadata(
-    id="443287a854a17577233ff5ecd77bf3c5d029ee43",
+    id="2aa3dc1b7de004f5521e16a909c44f31bd458aac",
     name="afni_proc.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +38,12 @@ def afni_proc_py(
     runner: Runner | None = None,
 ) -> AfniProcPyOutputs:
     """
-    afni_proc.py by AFNI (Analysis of Functional NeuroImages) Development Team.
+    afni_proc.py by AFNI Team.
     
     Generate a tcsh script for an AFNI single subject processing stream.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_proc.py.html
     
     Args:
         dsets: Specify the EPI dataset files. (e.g. epi_run1+orig,\

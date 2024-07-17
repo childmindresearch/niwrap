@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_PROC_MAP_TO_DTI_METADATA = Metadata(
-    id="3534af34742b07e2ca2019b34dba1e9df0af51d6",
+    id="31652e133c779f0f46323811e20978839fef739e",
     name="fat_proc_map_to_dti",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,12 +37,13 @@ def fat_proc_map_to_dti(
     runner: Runner | None = None,
 ) -> FatProcMapToDtiOutputs:
     """
-    fat_proc_map_to_dti by PA Taylor.
+    fat_proc_map_to_dti by AFNI Team.
     
     A program for mapping data sets into DWI space, suitable for aligning
     anatomical ROI maps or EPI data to a DWI reference volume.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_map_to_dti.html
     
     Args:
         source: T1w volume file (source volume).

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MEASURE_BB_THICK_METADATA = Metadata(
-    id="a45ff92c8eadc7a19616b156650a008498931be6",
+    id="887ca507dc67ddd80384e9ad5b09d9358e6502a7",
     name="measure_bb_thick",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="docker/measure_bb_thick:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -56,9 +55,12 @@ def measure_bb_thick(
     runner: Runner | None = None,
 ) -> MeasureBbThickOutputs:
     """
-    measure_bb_thick by Author Unknown.
+    measure_bb_thick by AFNI Team.
     
     Compute thickness of mask using ball and box method.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@measure_bb_thick.html
     
     Args:
         maskset: Mask dataset for input.

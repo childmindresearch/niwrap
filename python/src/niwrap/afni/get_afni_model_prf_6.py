@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 GET_AFNI_MODEL_PRF_6_METADATA = Metadata(
-    id="037eb053e1f8110ab1633fd86b23a18ff0b00a11",
+    id="44074bc38a290ca03ae3f58b04aa119b0e4287ac",
     name="get_afni_model_PRF_6",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,6 +35,9 @@ def get_afni_model_prf_6(
     get_afni_model_PRF_6 by AFNI Team.
     
     A command to invoke AFNI's population receptive field (pRF) model.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF_6.html
     
     Args:
         nt_: Number of time points of the stimulus dataset.

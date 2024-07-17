@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_PROC_CONVERT_DCM_ANAT_METADATA = Metadata(
-    id="b4b8baa90a6922d461e426cdc7475a73f1498e17",
+    id="7951b73888f19470fef8855e904dbbbc4d0d9690",
     name="fat_proc_convert_dcm_anat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,10 +37,13 @@ def fat_proc_convert_dcm_anat(
     runner: Runner | None = None,
 ) -> FatProcConvertDcmAnatOutputs:
     """
-    fat_proc_convert_dcm_anat by PA Taylor.
+    fat_proc_convert_dcm_anat by AFNI Team.
     
     Converts an anatomical dataset from DICOM files into a volume, specifically
     designed to fit in line with other processing such as DTI analysis.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_convert_dcm_anat.html
     
     Args:
         prefix: Set prefix (and path) for output data.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _SKULL_STRIP_TOUCH_UP_METADATA = Metadata(
-    id="a9ca1bd253cf609df8632dcbe7528e6b450dd954",
+    id="56e714d56057c417f7a6b1cccb9f4c0277a3e33e",
     name="@SkullStrip_TouchUp",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-dockerhub-repo/SkullStrip_TouchUp:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,10 +35,13 @@ def _skull_strip_touch_up(
     runner: Runner | None = None,
 ) -> SkullStripTouchUpOutputs:
     """
-    @SkullStrip_TouchUp by Justin Rajendra.
+    @SkullStrip_TouchUp by AFNI Team.
     
     Helper program to touch up failed skull stripping by resampling data,
     allowing manual edits, and outputting corrected data.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SkullStrip_TouchUp.html
     
     Args:
         prefix: Output file and folder name.

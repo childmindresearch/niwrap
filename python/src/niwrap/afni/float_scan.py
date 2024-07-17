@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FLOAT_SCAN_METADATA = Metadata(
-    id="c6eeb1567984c95672a94a38aaaf95daaa65ef5b",
+    id="39ad2ac95a58c97c8d8b88925214ad8327a81dfb",
     name="float_scan",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,10 +31,13 @@ def float_scan(
     runner: Runner | None = None,
 ) -> FloatScanOutputs:
     """
-    float_scan by Author Unknown.
+    float_scan by AFNI Team.
     
     Scans the input file of IEEE floating point numbers for illegal values:
     infinities and not-a-number (NaN) values.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/float_scan.html
     
     Args:
         input_file: Input file containing IEEE floating point numbers.

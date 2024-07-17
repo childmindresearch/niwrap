@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_DWITO_DT_METADATA = Metadata(
-    id="d2751d6a23b8e1c59f853af975736e6675f95527",
+    id="28357e5c4de61ec6831cc8a882edb42b7e95b2c7",
     name="3dDWItoDT",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -54,12 +53,13 @@ def v_3d_dwito_dt(
     runner: Runner | None = None,
 ) -> V3dDwitoDtOutputs:
     """
-    3dDWItoDT by AFNI Development Team.
+    3dDWItoDT by AFNI Team.
     
     Computes 6 principal direction tensors from multiple gradient vectors and
     corresponding DTI image volumes.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDWItoDT.html
     
     Args:
         gradient_file: A 1D file of the gradient vectors with lines of ASCII\

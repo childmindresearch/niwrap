@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _CHECK_FOR_AFNI_DSET_METADATA = Metadata(
-    id="e591c9435c009f8bdf1c6fe5610937b7d16c7bc5",
+    id="de568a2e4a2052162b1e844df9f909bd936bf28e",
     name="@CheckForAfniDset",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,10 +28,12 @@ def _check_for_afni_dset(
     runner: Runner | None = None,
 ) -> CheckForAfniDsetOutputs:
     """
-    @CheckForAfniDset by Ziad Saad (saadz@mail.nih.gov), SSCC/NIMH/ National
-    Institutes of Health, Bethesda Maryland.
+    @CheckForAfniDset by AFNI Team.
     
     Check for the existence of AFNI datasets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@CheckForAfniDset.html
     
     Args:
         dataset_name: Path to the AFNI dataset (e.g.,\

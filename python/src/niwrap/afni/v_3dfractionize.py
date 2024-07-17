@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DFRACTIONIZE_METADATA = Metadata(
-    id="913e6a628ab24081c46878de38fdaff671af2832",
+    id="37f58eec13c830ca996027ca9751f46805708e60",
     name="3dfractionize",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,10 +34,13 @@ def v_3dfractionize(
     runner: Runner | None = None,
 ) -> V3dfractionizeOutputs:
     """
-    3dfractionize by RWCox.
+    3dfractionize by AFNI Team.
     
     For each voxel in the output dataset, computes the fraction of it that is
     occupied by nonzero voxels from the input.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dfractionize.html
     
     Args:
         template: Use dataset as a template for the output. The output dataset\

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_CM_METADATA = Metadata(
-    id="116228898e0274859234fff77b625c890f6e1405",
+    id="298738935051c7b797c79b458694e4be34654252",
     name="3dCM",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,9 +36,12 @@ def v_3d_cm(
     runner: Runner | None = None,
 ) -> V3dCmOutputs:
     """
-    3dCM by AFNI.
+    3dCM by AFNI Team.
     
     Tool for computing the center of mass of a dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCM.html
     
     Args:
         dset: Input dataset.

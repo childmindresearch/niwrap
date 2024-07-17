@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 QUICK_ALPHA_VALS_PY_METADATA = Metadata(
-    id="73dc84a867f3790133678e7d6a3cb6f86ec4f4d4",
+    id="a02d8b48e4b639b6d866edfe5a0cbfa329f388c8",
     name="quick.alpha.vals.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,11 +29,12 @@ def quick_alpha_vals_py(
     runner: Runner | None = None,
 ) -> QuickAlphaValsPyOutputs:
     """
-    quick.alpha.vals.py by R Reynolds.
+    quick.alpha.vals.py by AFNI Team.
     
     Generate an alpha table from slow_surf_clustsim.py results.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/quick.alpha.vals.py.html
     
     Args:
         max_file: File containing maximum z values.

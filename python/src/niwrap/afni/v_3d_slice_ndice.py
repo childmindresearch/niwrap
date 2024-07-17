@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_SLICE_NDICE_METADATA = Metadata(
-    id="e1fbe90af3cf0c3b633c9cbb46f3cd5b3a5e04d3",
+    id="f287e470f54e6787d77892d9aa3b7a5e9af9879e",
     name="3dSliceNDice",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,12 +36,13 @@ def v_3d_slice_ndice(
     runner: Runner | None = None,
 ) -> V3dSliceNdiceOutputs:
     """
-    3dSliceNDice by PA Taylor (NIMH, NIH).
+    3dSliceNDice by AFNI Team.
     
     Calculates the Dice coefficient between two volumes on a slice-by-slice
     basis.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSliceNDice.html
     
     Args:
         infile_a: Input dataset A (e.g. mask_1.nii.gz).

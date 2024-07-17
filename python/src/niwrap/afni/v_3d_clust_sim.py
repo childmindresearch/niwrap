@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_CLUST_SIM_METADATA = Metadata(
-    id="976020da68a316631107fb86056b5093281803d2",
+    id="f4e892f23644e1ef9eff0e1a8786af8755bbfe17",
     name="3dClustSim",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_linux_xorg7_64:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -68,11 +67,12 @@ def v_3d_clust_sim(
     runner: Runner | None = None,
 ) -> V3dClustSimOutputs:
     """
-    3dClustSim by AFNI (Analysis of Functional NeuroImages).
+    3dClustSim by AFNI Team.
     
     Program to estimate the probability of false positive (noise-only) clusters.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClustSim.html
     
     Args:
         nxyz: Size of 3D grid to use for simulation.

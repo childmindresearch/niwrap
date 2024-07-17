@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_REG_ANA_METADATA = Metadata(
-    id="ed00a6f9c2dce9ff022fc6f8b55b48113473270f",
+    id="2ebb2382db2e0b33efa4575aba29ebe467ad91fc",
     name="3dRegAna",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,11 +50,12 @@ def v_3d_reg_ana(
     runner: Runner | None = None,
 ) -> V3dRegAnaOutputs:
     """
-    3dRegAna by AFNI (Analysis of Functional NeuroImages) Development Team.
+    3dRegAna by AFNI Team.
     
     Multiple linear regression analysis for AFNI datasets.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRegAna.html
     
     Args:
         rows: Number of input datasets.

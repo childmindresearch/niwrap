@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_DEGREE_CENTRALITY_METADATA = Metadata(
-    id="ed259d22b5331de010f683c90fb01c0fcb129871",
+    id="2a8cfc4296982c7583a62ea4aaaf84e024d61b3e",
     name="3dDegreeCentrality",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -37,7 +37,7 @@ def v_3d_degree_centrality(
     runner: Runner | None = None,
 ) -> V3dDegreeCentralityOutputs:
     """
-    3dDegreeCentrality by RWCox @ AFNI.
+    3dDegreeCentrality by AFNI Team.
     
     Computes voxelwise weighted and binary degree centrality and stores the
     result in a new 3D bucket dataset as floats to preserve their values. Degree

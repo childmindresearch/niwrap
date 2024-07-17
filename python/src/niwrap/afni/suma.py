@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SUMA_METADATA = Metadata(
-    id="c106091bed062058a8781e3c2d3f907a6c28a7d9",
+    id="24c0f17694eda4e1b08986c3f35a5c820340e0dd",
     name="suma",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -51,7 +50,7 @@ def suma(
     runner: Runner | None = None,
 ) -> SumaOutputs:
     """
-    suma by Ziad S. Saad, Peter D. Lauren SSCC/NIMH/NIH.
+    suma by AFNI Team.
     
     SUMA: Surface Mapper for visualization and analysis of brain data.
     

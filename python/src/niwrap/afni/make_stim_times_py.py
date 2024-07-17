@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MAKE_STIM_TIMES_METADATA = Metadata(
-    id="91d5e266d76455957ed4cc72445d423bf05802b9",
+    id="4dac08daf66f45f098c27d26cf4b0ce9f3f67437",
     name="make_stim_times",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="myregistry/make_stim_times:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,12 +43,13 @@ def make_stim_times(
     runner: Runner | None = None,
 ) -> MakeStimTimesOutputs:
     """
-    make_stim_times by R Reynolds.
+    make_stim_times by AFNI Team.
     
     Convert a set of 0/1 stim files into a set of stim_times files, or convert
     real-valued files into those for use with -stim_times_AM2.
     
-    More information: https://example.com/make_stim_times
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/make_stim_times.py.html
     
     Args:
         files: Specify stim files.

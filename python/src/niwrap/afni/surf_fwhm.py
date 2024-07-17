@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SURFACE_FWHM_CALCULATOR_METADATA = Metadata(
-    id="99abe72defba057d724a558d05063d3b367a982b",
+    id="bc2f76bd91b66d16734202d1c3680da6ab6d1ca6",
     name="Surface FWHM Calculator",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/surffwhm-calculator:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,9 +47,12 @@ def surface_fwhm_calculator(
     runner: Runner | None = None,
 ) -> SurfaceFwhmCalculatorOutputs:
     """
-    Surface FWHM Calculator by Ziad S. Saad SSCC/NIMH/NIH.
+    Surface FWHM Calculator by AFNI Team.
     
     A program for calculating local and global FWHM.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfFWHM.html
     
     Args:
         input_file: Dataset for which the FWHM is to be calculated.

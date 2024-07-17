@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_LOCAL_PV_METADATA = Metadata(
-    id="5833da86540aa85589997409c5085be4343cd63b",
+    id="0cb6e733f7ffa5acb38dfcf135c48030f442bc96",
     name="3dLocalPV",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,13 +42,14 @@ def v_3d_local_pv(
     runner: Runner | None = None,
 ) -> V3dLocalPvOutputs:
     """
-    3dLocalPV by AFNI Development Team.
+    3dLocalPV by AFNI Team.
     
     Computes the Singular Value Decomposition (SVD) of the time series from a
     neighborhood of each voxel in a 3D+time dataset, which serves as a smoothing
     method for the dataset.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalPV.html
     
     Args:
         input_dataset: Input time series dataset.

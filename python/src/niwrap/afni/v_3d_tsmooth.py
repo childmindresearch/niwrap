@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TSMOOTH_METADATA = Metadata(
-    id="7b0eccd9a8761d045fb74ab509c6766b5788bfda",
+    id="2ac2c27cdf9d39791435937d2b638cd69d6adddd",
     name="3dTsmooth",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,12 +41,13 @@ def v_3d_tsmooth(
     runner: Runner | None = None,
 ) -> V3dTsmoothOutputs:
     """
-    3dTsmooth by AFNI (Analysis of Functional NeuroImages).
+    3dTsmooth by AFNI Team.
     
     Smooths each voxel time series in a 3D+time dataset and produces as output a
     new 3D+time dataset (e.g., lowpass filter in time).
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTsmooth.html
     
     Args:
         input_dataset: The input 3D+time dataset.

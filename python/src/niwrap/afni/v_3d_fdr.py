@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_FDR_METADATA = Metadata(
-    id="419e3986cd6be37b188afa4f3ffac204365df959",
+    id="4bfbf2f5c5c59af79ad942a16135a99b018e8090",
     name="3dFDR",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,12 +45,13 @@ def v_3d_fdr(
     runner: Runner | None = None,
 ) -> V3dFdrOutputs:
     """
-    3dFDR by AFNI Development Team.
+    3dFDR by AFNI Team.
     
     A tool for applying False Discovery Rate (FDR) thresholding to voxelwise
     statistics in 3D functional datasets.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFDR.html
     
     Args:
         input_file: Input 3D functional dataset filename.

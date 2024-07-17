@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 GET_AFNI_MODEL_PRF_METADATA = Metadata(
-    id="da5e63876855c957c353570e1e71dbe5d5b5ce38",
+    id="91088b21ea9fd7aae9d54016087260cce43e67ff",
     name="get_afni_model_PRF",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,9 +29,12 @@ def get_afni_model_prf(
     runner: Runner | None = None,
 ) -> GetAfniModelPrfOutputs:
     """
-    get_afni_model_PRF by AFNI Development Team.
+    get_afni_model_PRF by AFNI Team.
     
     A tool to get AFNI model parameters assuming a PRF framework.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF.html
     
     Args:
         amplitude: Amplitude for the AFNI model.

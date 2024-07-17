@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _SIMULATE_MOTION_METADATA = Metadata(
-    id="6102ae0ed4e293fe072c873d3b33e0de8d80fd92",
+    id="ff23f79d9e9d758e462f69afa5728a053964345f",
     name="@simulate_motion",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,10 +43,13 @@ def _simulate_motion(
     runner: Runner | None = None,
 ) -> SimulateMotionOutputs:
     """
-    @simulate_motion by R Reynolds.
+    @simulate_motion by AFNI Team.
     
     Create simulated motion time series in an EPI dataset based on the provided
     motion parameters and an input volume.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@simulate_motion.html
     
     Args:
         epi: Input EPI volume or time series (only a volreg base is needed,\

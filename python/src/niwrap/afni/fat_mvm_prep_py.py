@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_MVM_PREP_METADATA = Metadata(
-    id="39a1a068be971c41ae010e1812ab8186bfb4d85d",
+    id="2e300288a939cddd217acc3ad33ab7d354860e29",
     name="fat_mvm_prep",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,9 +36,12 @@ def fat_mvm_prep(
     runner: Runner | None = None,
 ) -> FatMvmPrepOutputs:
     """
-    fat_mvm_prep by PA Taylor.
+    fat_mvm_prep by AFNI Team.
     
     Combine FATCAT output with CSV data for statistical modeling.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mvm_prep.py.html
     
     Args:
         prefix: Prefix for output files.

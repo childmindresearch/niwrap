@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 COLUMN_CAT_METADATA = Metadata(
-    id="9c61ea7b571963e70b114650d3d34e53b33afc5b",
+    id="c2458e1e0fc386f5ede39a07ebde46c3795cbe8a",
     name="column_cat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-column_cat:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,11 +30,14 @@ def column_cat(
     runner: Runner | None = None,
 ) -> ColumnCatOutputs:
     """
-    column_cat by R Reynolds.
+    column_cat by AFNI Team.
     
     Catenate files horizontally. Each line of output is the concatenation of
     each current line from the input files, all on the same line, separated by a
     space or a user-defined separator.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/column_cat.html
     
     Args:
         input_files: Input files to be concatenated.

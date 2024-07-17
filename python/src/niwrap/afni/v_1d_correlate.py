@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1D_CORRELATE_METADATA = Metadata(
-    id="4d4086999cc4439b9eccd86d797a14553955c416",
+    id="fff4e8147741f246df930fdd3dadbfead6a4b58c",
     name="1dCorrelate",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,10 +34,13 @@ def v_1d_correlate(
     runner: Runner | None = None,
 ) -> V1dCorrelateOutputs:
     """
-    1dCorrelate by RWCox (AKA Zhark the Mad Correlator).
+    1dCorrelate by AFNI Team.
     
     1dCorrelate calculates the correlation coefficients between columns of input
     1D files along with confidence intervals via a bootstrap procedure.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dCorrelate.html
     
     Args:
         input_files: Input 1D files.

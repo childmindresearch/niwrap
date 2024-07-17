@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SURF_CLUST_METADATA = Metadata(
-    id="21efeb8b5d9ffd6cecce8d716066ae8c1752f385",
+    id="7d5084b224ad2bbcdcc1509a12129bdb70b5d881",
     name="SurfClust",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="custom/surfclust:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -71,9 +70,12 @@ def surf_clust(
     runner: Runner | None = None,
 ) -> SurfClustOutputs:
     """
-    SurfClust by SSCC/NIMH/NIH.
+    SurfClust by AFNI Team.
     
     A program to perform clustering analysis surfaces.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfClust.html
     
     Args:
         input_dataset: The input dataset and the index of the datacolumn to use\

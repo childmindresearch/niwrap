@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1D_MARRY_METADATA = Metadata(
-    id="62ff457439ef8a44447f7a4aca2a183a6edd6511",
+    id="614f23ecff626d7acb69fdb8466df11a076f330c",
     name="1dMarry",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,13 +34,14 @@ def v_1d_marry(
     runner: Runner | None = None,
 ) -> V1dMarryOutputs:
     """
-    1dMarry by RWCox.
+    1dMarry by AFNI Team.
     
     Joins together 2 (or more) ragged-right .1D files, for use with 3dDeconvolve
     -stim_times_AM2, or breaks up 1 married file into 2 (or more) single-valued
     files.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dMarry.html
     
     Args:
         files: Input file(s) to be married or divorced.

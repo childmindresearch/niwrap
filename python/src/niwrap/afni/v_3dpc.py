@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DPC_METADATA = Metadata(
-    id="88d9ed72b9a92e7dea21581f0c168b52f087b6a2",
+    id="1aaf246230de8df45df717d2b7a8df17d756b702",
     name="3dpc",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -51,9 +50,12 @@ def v_3dpc(
     runner: Runner | None = None,
 ) -> V3dpcOutputs:
     """
-    3dpc by AFNI Development Team.
+    3dpc by AFNI Team.
     
     Principal Component Analysis of 3D Datasets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dpc.html
     
     Args:
         datasets: Input dataset(s) with sub-brick selector list support.

@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 _SUMA_RENUMBER_FS_METADATA = Metadata(
-    id="255d129265156924f3ca4fb47df70eeb3d1076c9",
+    id="7fb6a766483fe0e3be051963f8852dae6a06b5d8",
     name="@SUMA_renumber_FS",
     container_image_type="docker",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,10 +48,13 @@ def _suma_renumber_fs(
     runner: Runner | None = None,
 ) -> SumaRenumberFsOutputs:
     """
-    @SUMA_renumber_FS by PA Taylor (NIMH, NIH).
+    @SUMA_renumber_FS by AFNI Team.
     
     This script processes FreeSurfer-generated parcellation files and produces
     various derived datasets and segmentation maps.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_renumber_FS.html
     
     Args:
         sumadir: Path to the 'SUMA/' directory created by @SUMA_Make_Spec_FS.

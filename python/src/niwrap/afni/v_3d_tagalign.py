@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TAGALIGN_METADATA = Metadata(
-    id="c887c70864c257de7c77ac2f061c3a9610767ad0",
+    id="d0d98776f6e670d47e556fb3fb7a481181fd42bd",
     name="3dTagalign",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -47,10 +46,13 @@ def v_3d_tagalign(
     runner: Runner | None = None,
 ) -> V3dTagalignOutputs:
     """
-    3dTagalign by RWCox.
+    3dTagalign by AFNI Team.
     
     Rotates/translates dataset 'dset' to be aligned with the master using the
     tagsets embedded in their .HEAD files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTagalign.html
     
     Args:
         input_dataset: Input dataset to align.

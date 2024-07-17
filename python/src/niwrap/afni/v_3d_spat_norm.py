@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_SPAT_NORM_METADATA = Metadata(
-    id="9469f1153e23add722a910c6b976c24adfd6b4f1",
+    id="8d7db75f92933be52b0cbbed3f0d36b77707ffef",
     name="3dSpatNorm",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,11 +38,12 @@ def v_3d_spat_norm(
     runner: Runner | None = None,
 ) -> V3dSpatNormOutputs:
     """
-    3dSpatNorm by AFNI.
+    3dSpatNorm by AFNI Team.
     
     An obsolete tool for spatial normalization.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSpatNorm.html
     
     Args:
         dataset: Input dataset.

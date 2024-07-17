@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DHISTOG_METADATA = Metadata(
-    id="c1b28a3424b40d593cf20591a830a2fb777ba0bd",
+    id="2279c1786ad69d2a883d24cf0ff51ee859b209c3",
     name="3dhistog",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,11 +45,12 @@ def v_3dhistog(
     runner: Runner | None = None,
 ) -> V3dhistogOutputs:
     """
-    3dhistog by RW Cox, V Roopchansingh, and ZS Saad.
+    3dhistog by AFNI Team.
     
     Compute histogram of a 3D dataset.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dhistog.html
     
     Args:
         dataset: Input dataset.

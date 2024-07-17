@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SUMA_GLXDINO_METADATA = Metadata(
-    id="8a07f2c94c5e220c712409e8f22261b8c47b9690",
+    id="38cef385749e1ce6d47c18e57ec4d943b270379a",
     name="SUMA_glxdino",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/docker-suma_glxdino:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,12 +26,13 @@ def suma_glxdino(
     runner: Runner | None = None,
 ) -> SumaGlxdinoOutputs:
     """
-    SUMA_glxdino by Mark J. Kilgard.
+    SUMA_glxdino by AFNI Team.
     
     A simple openGL test program using GLX. If it does not run, then SUMA
     certainly won't.
     
-    More information: https://example.com
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SUMA_glxdino.html
     
     Args:
         verbose: Switch on diagnostic messages.

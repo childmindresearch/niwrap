@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1D_UPSAMPLE_METADATA = Metadata(
-    id="6f41f59cf5032f56c445a4744a64898457ba6194",
+    id="18022a2c74b1202fca6440648cf3ceb4bd831495",
     name="1dUpsample",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,9 +30,12 @@ def v_1d_upsample(
     runner: Runner | None = None,
 ) -> V1dUpsampleOutputs:
     """
-    1dUpsample by Unknown.
+    1dUpsample by AFNI Team.
     
     Upsamples a 1D time series to a finer time grid.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dUpsample.html
     
     Args:
         upsample_factor: Upsample factor (integer from 2..32).

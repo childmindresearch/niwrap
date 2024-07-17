@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 EG_MAIN_CHRONO_METADATA = Metadata(
-    id="83729ca4ed0f857257382aa2c87c873d59b9b177",
+    id="fd725cbf515fb7e38624bc73f5b238a959070b67",
     name="eg_main_chrono",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="python:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,9 +30,12 @@ def eg_main_chrono(
     runner: Runner | None = None,
 ) -> EgMainChronoOutputs:
     """
-    eg_main_chrono by R Reynolds.
+    eg_main_chrono by AFNI Team.
     
     A sample main Python program to run on top of some library.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/eg_main_chrono.py.html
     
     Args:
         help_: Show help message.
