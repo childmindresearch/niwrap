@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SUMA_ACKNOWLEDGE_METADATA = Metadata(
-    id="d102033a15a5c2b47d6ea9245867031803d2dcce",
+    id="afac6b80b0b63a805ba02eb8c320d05cb1c14aab",
     name="suma_acknowledge",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="unknown",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,12 +34,13 @@ def suma_acknowledge(
     runner: Runner | None = None,
 ) -> SumaAcknowledgeOutputs:
     """
-    suma_acknowledge by Unknown.
+    suma_acknowledge by AFNI Team.
     
     Demo script to create a graph dataset to show names of individuals and
     groups, potentially useful for acknowledgements in a talk.
     
-    More information: https://example.com/suma_acknowledge
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@suma_acknowledge.html
     
     Args:
         input_file: Required input text file with format for each line: first\

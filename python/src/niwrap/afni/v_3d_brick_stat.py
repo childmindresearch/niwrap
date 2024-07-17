@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_BRICK_STAT_METADATA = Metadata(
-    id="b6cfada5677faa0590beb41506633a0faad5925a",
+    id="7ed7c9007f85a9c43f5cb74dd46274fad38036a6",
     name="3dBrickStat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -62,7 +61,8 @@ def v_3d_brick_stat(
     
     Compute voxel statistics of an input dataset.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBrickStat.html
     
     Args:
         dataset: Input dataset.

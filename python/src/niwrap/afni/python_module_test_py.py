@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PYTHON_MODULE_TEST_METADATA = Metadata(
-    id="c7f264181a3b961ccc6e32e61cd195def11ddf06",
+    id="2108b81599aebbfb6fe8067de9ea821ce1e30b2c",
     name="python_module_test",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="python:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,10 +35,13 @@ def python_module_test(
     runner: Runner | None = None,
 ) -> PythonModuleTestOutputs:
     """
-    python_module_test by R Reynolds.
+    python_module_test by AFNI Team.
     
     Test the loading of Python modules, specifically designed to ensure
     compatibility with AFNI software.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/python_module_test.py.html
     
     Args:
         full_test: Perform all of the standard tests.

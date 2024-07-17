@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 NEURO_DECONVOLVE_PY_METADATA = Metadata(
-    id="f28d1a4d7025700f60e8a72b9cef88596cfde189",
+    id="e423d2565f82e92da98f8466ae0d823e312c2795",
     name="neuro_deconvolve.py",
     container_image_type="docker",
-    container_image_tag="index.docker.io/neuro_deconvolve:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,10 +41,13 @@ def neuro_deconvolve_py(
     runner: Runner | None = None,
 ) -> NeuroDeconvolvePyOutputs:
     """
-    neuro_deconvolve.py by R Reynolds.
+    neuro_deconvolve.py by AFNI Team.
     
     Generate a script to apply 3dTfitter to deconvolve an MRI signal (BOLD
     response curve) into a neuro response curve.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/neuro_deconvolve.py.html
     
     Args:
         input_file: Set the data to deconvolve.

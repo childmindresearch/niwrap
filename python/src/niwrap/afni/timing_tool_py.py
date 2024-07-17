@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 TIMING_TOOL_PY_METADATA = Metadata(
-    id="a48aee7b70ef9812772fbf3a7677d2261c6a61b4",
+    id="d78a4318e06ce3bcf2c99989375e9e9feeb5c89a",
     name="timing_tool.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,9 +48,12 @@ def timing_tool_py(
     runner: Runner | None = None,
 ) -> TimingToolPyOutputs:
     """
-    timing_tool.py by R Reynolds.
+    timing_tool.py by AFNI Team.
     
     Tool for manipulating and evaluating stimulus timing files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/timing_tool.py.html
     
     Args:
         timing_file: Specify a stimulus timing file to load.

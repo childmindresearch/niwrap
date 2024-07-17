@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_DECONVOLVE_METADATA = Metadata(
-    id="27c43d2e98ff9ed8a0cdea0f047500ad13e16c29",
+    id="cfe510d7f86fa3306adc4ec9cc1331ee38021c0b",
     name="3dDeconvolve",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -51,10 +50,13 @@ def v_3d_deconvolve(
     runner: Runner | None = None,
 ) -> V3dDeconvolveOutputs:
     """
-    3dDeconvolve by AFNI - Analysis of Functional NeuroImages.
+    3dDeconvolve by AFNI Team.
     
     Program to calculate the deconvolution of a measurement 3D+time dataset with
     a specified input stimulus time series.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDeconvolve.html
     
     Args:
         input_dataset: Filename of 3D+time input dataset.

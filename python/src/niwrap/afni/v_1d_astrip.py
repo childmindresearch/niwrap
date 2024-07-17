@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1D_ASTRIP_METADATA = Metadata(
-    id="ddee8c5aa89c51104620ecb54002443adf419876",
+    id="893d69d4801d7291a98501503d719f2518e3168d",
     name="1dAstrip",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,9 +28,12 @@ def v_1d_astrip(
     runner: Runner | None = None,
 ) -> V1dAstripOutputs:
     """
-    1dAstrip by AFNI Dev Team.
+    1dAstrip by AFNI Team.
     
     Strips non-numeric characters from a file.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dAstrip.html
     
     Args:
         infile: Input file from which non-numeric characters will be stripped.

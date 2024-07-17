@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _SPHARM_EXAMPLES_METADATA = Metadata(
-    id="de9ca52923fe89505118cff5b980d40667aaa5bb",
+    id="7574d40156286dcf242dd7f2b9bbe9e4bb15d576",
     name="@Spharm.examples",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_container:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,12 +31,13 @@ def _spharm_examples(
     runner: Runner | None = None,
 ) -> SpharmExamplesOutputs:
     """
-    @Spharm.examples by Ziad S. Saad (SSCC/NIMH/NIH).
+    @Spharm.examples by AFNI Team.
     
     A script to demonstrate the usage of spherical harmonics decomposition with
     SUMA.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Spharm.examples.html
     
     Args:
         help_web: Open webpage with help for this program.

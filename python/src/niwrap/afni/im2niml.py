@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 IM2NIML_METADATA = Metadata(
-    id="cd30c191fe7d8a9599e0620470f0606cb41e6379",
+    id="1c277947634c9951683af052380da51d28540e5b",
     name="im2niml",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,10 +28,13 @@ def im2niml(
     runner: Runner | None = None,
 ) -> Im2nimlOutputs:
     """
-    im2niml by RW Cox.
+    im2niml by AFNI Team.
     
     Converts the input image(s) to a text-based NIML element and writes the
     result to stdout.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/im2niml.html
     
     Args:
         input_files: Input image file(s) (e.g. image.jpg).

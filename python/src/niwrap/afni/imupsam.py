@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 IMUPSAM_METADATA = Metadata(
-    id="750174321d00cef93b8b2f27f470bed81413ed0d",
+    id="9286f3f7518042c2bd3883a0415335d2383e812d",
     name="imupsam",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="upsa-tool:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,9 +31,12 @@ def imupsam(
     runner: Runner | None = None,
 ) -> ImupsamOutputs:
     """
-    imupsam by RW Cox.
+    imupsam by AFNI Team.
     
     Upsamples a 2D image by a specified factor.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/imupsam.html
     
     Args:
         factor: Upsampling factor; must be an integer in the range 2 to 30.

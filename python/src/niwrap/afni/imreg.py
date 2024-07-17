@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 IMREG_METADATA = Metadata(
-    id="1295943489a72d32a6a7f0d79370d5e05aec1f55",
+    id="e1bf4222aefbd8c1d156a0935322d90f8002a747",
     name="imreg",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -54,9 +53,12 @@ def imreg(
     runner: Runner | None = None,
 ) -> ImregOutputs:
     """
-    imreg by Unknown.
+    imreg by AFNI Team.
     
     Registers each 2D image in 'image_sequence' to 'base_image'.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/imreg.html
     
     Args:
         base_image: Base image or method to determine base image ('+AVER' or\

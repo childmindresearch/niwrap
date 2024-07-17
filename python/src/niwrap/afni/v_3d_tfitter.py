@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TFITTER_METADATA = Metadata(
-    id="5793d3aec200e3757d1304e5e9d84644e9db12fd",
+    id="8e17add006b1df2e1eade4150a6057e1d8c16d2b",
     name="3dTfitter",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,7 +49,7 @@ def v_3d_tfitter(
     runner: Runner | None = None,
 ) -> V3dTfitterOutputs:
     """
-    3dTfitter.
+    3dTfitter by AFNI Team.
     
     * At each voxel, assembles and solves a set of linear equations.
     ++ The matrix at each voxel may be the same or may be different.
@@ -59,6 +58,9 @@ def v_3d_tfitter(
     ++ Another distinguishing feature is that 3dTfitter allows for
     L2, L1, and L2+L1 (LASSO) regression solvers, and allows you
     to impose sign constraints on the solution parameters.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTfitter.html
     
     Args:
         rhs: Specifies the right-hand-side 3D+time dataset. ('rset' can also be\

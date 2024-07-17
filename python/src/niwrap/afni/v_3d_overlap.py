@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_OVERLAP_METADATA = Metadata(
-    id="ba884e0f6c89996eeec188d5abcc3b386ec6460c",
+    id="080fa1f253e1fd652f6d023f571ec3023a3f5882",
     name="3dOverlap",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +32,7 @@ def v_3d_overlap(
     runner: Runner | None = None,
 ) -> V3dOverlapOutputs:
     """
-    3dOverlap by AFNI Development Team.
+    3dOverlap by AFNI Team.
     
     Counts the number of voxels that are nonzero in all input datasets.
     

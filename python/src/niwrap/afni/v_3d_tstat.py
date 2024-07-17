@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TSTAT_METADATA = Metadata(
-    id="91bf80a7476af5dadadcff5fe2483b18728546c3",
+    id="9de91f7f4abdac70f81125d00379ae3754addf88",
     name="3dTstat",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -34,7 +34,7 @@ def v_3d_tstat(
     runner: Runner | None = None,
 ) -> V3dTstatOutputs:
     """
-    3dTstat by Nipype (interface).
+    3dTstat by AFNI Team.
     
     Compute voxel-wise statistics using AFNI 3dTstat command.
     

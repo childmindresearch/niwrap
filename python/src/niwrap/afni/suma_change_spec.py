@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SUMA_CHANGE_SPEC_METADATA = Metadata(
-    id="02016a6ac2fe93a1c3562e5f3e941c678165ed98",
+    id="7e52f4b71eb0a75929cdf8c5f82f99767d04274a",
     name="suma_change_spec",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,11 +35,12 @@ def suma_change_spec(
     runner: Runner | None = None,
 ) -> SumaChangeSpecOutputs:
     """
-    suma_change_spec by SUMA Developers.
+    suma_change_spec by AFNI Team.
     
     This program changes SUMA's surface specification (Spec) files.
     
-    More information: https://afni.nimh.nih.gov/SUMA
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/suma_change_spec.html
     
     Args:
         input_: SUMA Spec file to change.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_MATCH_METADATA = Metadata(
-    id="fbccaeb52f3fe2839e46e0c6c568d6a7ab6ce380",
+    id="92925c9bf5fc2708f661f74eb1723370ac43e65a",
     name="3dMatch",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,7 +42,7 @@ def v_3d_match(
     runner: Runner | None = None,
 ) -> V3dMatchOutputs:
     """
-    3dMatch by PA Taylor.
+    3dMatch by AFNI Team.
     
     Find similar subbricks and rearrange order to ease comparison. Part of
     FATCAT in AFNI.

@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 FAT_PROC_FILTER_DWIS_METADATA = Metadata(
-    id="55bd2888e0f9fdf78073149ae1bcbe203232728b",
+    id="c9931517dbf1eae552d1e8d6403cc886c1ac19aa",
     name="fat_proc_filter_dwis",
     container_image_type="docker",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,9 +42,12 @@ def fat_proc_filter_dwis(
     runner: Runner | None = None,
 ) -> FatProcFilterDwisOutputs:
     """
-    fat_proc_filter_dwis by PA Taylor.
+    fat_proc_filter_dwis by AFNI Team.
     
     Filter out user-found and user-defined bad volumes from DWI data sets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_filter_dwis.html
     
     Args:
         input_dwi: Name of a 4D file of DWIs (required).

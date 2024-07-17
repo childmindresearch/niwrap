@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MAKE_COLOR_MAP_METADATA = Metadata(
-    id="064d1eb4179e91c01d248248dfa29726fd51d4c4",
+    id="d9f1323a29c95c3ae450140667c486481d83f18c",
     name="MakeColorMap",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="custom/makecolormap:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,10 +49,13 @@ def make_color_map(
     runner: Runner | None = None,
 ) -> MakeColorMapOutputs:
     """
-    MakeColorMap by Ziad S. Saad & Rick R. Reynolds SSCC/NIMH/NIH.
+    MakeColorMap by AFNI Team.
     
     Utility for creating and modifying colormaps with various formats and
     fiducial points.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/MakeColorMap.html
     
     Args:
         fiducials_ncol: Fiducial colors and their indices in the color map are\

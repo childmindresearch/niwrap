@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_DIFF_METADATA = Metadata(
-    id="00cbdf590dde02fc18cc8f7d46ddfd8652e733fc",
+    id="d28b3d1855b401c8f2f5b8573b9629e2facc0992",
     name="3dDiff",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +35,12 @@ def v_3d_diff(
     runner: Runner | None = None,
 ) -> V3dDiffOutputs:
     """
-    3dDiff by JB Teves.
+    3dDiff by AFNI Team.
     
     A program to examine element-wise differences between two images.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDiff.html
     
     Args:
         dataset_a: First input dataset for comparison.

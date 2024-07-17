@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAT_PROC_ALIGN_ANAT_PAIR_METADATA = Metadata(
-    id="5db9a4f1136eaf954e5195330170fd26b78e5543",
+    id="ad77f4d9e2a279f3c0861144622ac4c10410cf56",
     name="fat_proc_align_anat_pair",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,12 +43,13 @@ def fat_proc_align_anat_pair(
     runner: Runner | None = None,
 ) -> FatProcAlignAnatPairOutputs:
     """
-    fat_proc_align_anat_pair by PA Taylor.
+    fat_proc_align_anat_pair by AFNI Team.
     
     A tool for aligning a T1w anatomical image to a T2w anatomical image using
     solid-body parameters (translation and rotation).
     
-    More information: https://example.com/tool-url
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_align_anat_pair.html
     
     Args:
         input_t1w: T1-weighted volume.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 NIFTI_TOOL_METADATA = Metadata(
-    id="f0ecd05ff98220d1e33127accc8340f5134fe99c",
+    id="f3847f858b58b107014c2a6fce26ff2c52cc827d",
     name="nifti_tool",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="nifti/nifti_tool:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,11 +39,12 @@ def nifti_tool(
     runner: Runner | None = None,
 ) -> NiftiToolOutputs:
     """
-    nifti_tool by R. Reynolds.
+    nifti_tool by AFNI Team.
     
     Display, modify, or compare nifti headers.
     
-    More information: https://nifti.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/nifti_tool.html
     
     Args:
         action: Action type that defines what nifti_tool will do.

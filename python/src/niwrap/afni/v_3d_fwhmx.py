@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_FWHMX_METADATA = Metadata(
-    id="b17dd2c0515dba056a7067ca8a0008ddbe97beee",
+    id="547e4dbe790636f5635f53fd7e3368f8b4d428a8",
     name="3dFWHMx",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,12 +42,13 @@ def v_3d_fwhmx(
     runner: Runner | None = None,
 ) -> V3dFwhmxOutputs:
     """
-    3dFWHMx by AFNI Development Team.
+    3dFWHMx by AFNI Team.
     
     Compute Full Width at Half Maximum (FWHM) for FMRI datasets using
     AutoCorrelation Function (ACF).
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFWHMx.html
     
     Args:
         infile: Input dataset.

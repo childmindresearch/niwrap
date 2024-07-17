@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _MAKE_LABEL_TABLE_METADATA = Metadata(
-    id="3dd415adddbcd6c99ab972e1908e39513e5f6375",
+    id="ee526767bed17f30f39378ca2f41fe19db1d4c36",
     name="@MakeLabelTable",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -69,12 +68,12 @@ def _make_label_table(
     runner: Runner | None = None,
 ) -> MakeLabelTableOutputs:
     """
-    @MakeLabelTable by AFNI Development Team.
+    @MakeLabelTable by AFNI Team.
     
     Script used to create, modify, and transform label tables.
     
     More information:
-    https://afni.nimh.nih.gov/afni/community/board/read.php?1,77948,77948
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@MakeLabelTable.html
     
     Args:
         labeltable: Name of output label table.

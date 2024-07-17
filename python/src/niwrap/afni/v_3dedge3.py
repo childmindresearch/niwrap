@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DEDGE3_METADATA = Metadata(
-    id="2dc20a1e4ae1dcd6f1d2161f4f99d071a9eae070",
+    id="0432779795db18a4dfa86745a1f8dc2d6ecfe4c7",
     name="3dedge3",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,11 +36,12 @@ def v_3dedge3(
     runner: Runner | None = None,
 ) -> V3dedge3Outputs:
     """
-    3dedge3 by Gregoire Malandain.
+    3dedge3 by AFNI Team.
     
     Does 3D Edge detection using the library 3DEdge.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dedge3.html
     
     Args:
         input_file: Input dataset.

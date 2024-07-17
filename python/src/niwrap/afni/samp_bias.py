@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SAMP_BIAS_METADATA = Metadata(
-    id="473aebd2d0ffada3d7073befcb9e1a87d76130ed",
+    id="8caa085b249873d3818d3a0935d6ec7ab32b4ff6",
     name="SampBias",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="sampbias/latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,10 +36,13 @@ def samp_bias(
     runner: Runner | None = None,
 ) -> SampBiasOutputs:
     """
-    SampBias by Ziad S. Saad, SSCC/NIMH/NIH.
+    SampBias by AFNI Team.
     
     SampBias is a tool for sampling bias resultant segments between paired nodes
     on anatomical surfaces.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SampBias.html
     
     Args:
         specfile: Spec file containing input surfaces.

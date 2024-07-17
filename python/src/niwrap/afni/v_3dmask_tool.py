@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DMASK_TOOL_METADATA = Metadata(
-    id="9d3fd2caa979923fd4a015b6e357ac90e7b33f16",
+    id="6238ef08d1c97c347a5ab64e16d9820599ef2847",
     name="3dmask_tool",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -42,12 +42,12 @@ def v_3dmask_tool(
     runner: Runner | None = None,
 ) -> V3dmaskToolOutputs:
     """
-    3dmask_tool by Nipype (interface).
+    3dmask_tool by AFNI Team.
     
     3dmask_tool - for combining/dilating/eroding/filling masks.
     
     More information:
-    https://afni.nimh.nih.gov/pub../pub/dist/doc/program_help/3dmask_tool.html
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmask_tool.html
     
     Args:
         in_file: Input file to 3dmask_tool.

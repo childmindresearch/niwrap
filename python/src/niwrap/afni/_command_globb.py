@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _COMMAND_GLOBB_METADATA = Metadata(
-    id="a9848c63fd4bd4652327b43d975f9da1a5bc109a",
+    id="19a7c96d36250663b4e4d52cd10d647c539d560d",
     name="@CommandGlobb",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,10 +31,13 @@ def _command_globb(
     runner: Runner | None = None,
 ) -> CommandGlobbOutputs:
     """
-    @CommandGlobb by Ziad S. Saad.
+    @CommandGlobb by AFNI Team.
     
     A command-line tool to execute a specified program command line on a list of
     input bricks.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@CommandGlobb.html
     
     Args:
         program_command: The entire command line for the program desired. The\

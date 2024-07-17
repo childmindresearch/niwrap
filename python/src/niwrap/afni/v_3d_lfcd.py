@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_LFCD_METADATA = Metadata(
-    id="4609cd197748f09a26fcde69338f6b059c4836bd",
+    id="3672a0a73f110863db06bed2e4d2f42fdd86772c",
     name="3dLFCD",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -37,7 +37,7 @@ def v_3d_lfcd(
     runner: Runner | None = None,
 ) -> V3dLfcdOutputs:
     """
-    3dLFCD by Nipype (interface).
+    3dLFCD by AFNI Team.
     
     Performs degree centrality on a dataset using a given maskfile via the
     3dLFCD command.

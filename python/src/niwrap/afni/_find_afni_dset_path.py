@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FIND_AFNI_DSET_PATH_METADATA = Metadata(
-    id="f4e005c8766bdf081a9563abf27c34fc079404d3",
+    id="83e59e6d19bf3259642b4cb4d1c4322d8eb41c4e",
     name="FindAfniDsetPath",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,10 +29,13 @@ def find_afni_dset_path(
     runner: Runner | None = None,
 ) -> FindAfniDsetPathOutputs:
     """
-    FindAfniDsetPath by Jason W. Bacon, Medical College of Wisconsin.
+    FindAfniDsetPath by AFNI Team.
     
     Searches various AFNI directories for a specified dataset and returns its
     path.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FindAfniDsetPath.html
     
     Args:
         dsetname: Name of the dataset to search for.

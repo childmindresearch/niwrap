@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AFNI_METADATA = Metadata(
-    id="08a70c82e1b72b1fa97d222c9bce26b8e93c9bdd",
+    id="2977c6bcc62d3f1d2d34d8ff25df04ef51a921ab",
     name="afni",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -53,11 +52,12 @@ def afni(
     runner: Runner | None = None,
 ) -> AfniOutputs:
     """
-    afni by NIMH AFNI Team.
+    afni by AFNI Team.
     
     Tool for reading in sessions of 3D datasets and visualizing them.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni.html
     
     Args:
         session_directories: Input session directories containing the datasets.

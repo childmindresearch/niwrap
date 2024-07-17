@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 QUICKSPEC_SL_METADATA = Metadata(
-    id="2e6bcb4b61fc77771b4a83f0583e0d9095c4bb84",
+    id="b4e3873bc3b17772726857d2712fe45c3949f4bb",
     name="quickspecSL",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="quickspecSL:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +35,14 @@ def quickspec_sl(
     runner: Runner | None = None,
 ) -> QuickspecSlOutputs:
     """
-    quickspecSL by S. Torrisi, D. Glen.
+    quickspecSL by AFNI Team.
     
     This program makes a *.spec file after a set of intermediate surfaces have
     been generated with SurfLayers. It can also make a *.spec file that relates
     inflated surfaces to anatomically-correct surfaces.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/quickspecSL.html
     
     Args:
         surf_a: Inner (anatomically-correct) boundary surface dataset (e.g.\

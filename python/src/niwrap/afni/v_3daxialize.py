@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DAXIALIZE_METADATA = Metadata(
-    id="11f0b319ccf53aef3066cfdfe970885b7847bb41",
+    id="fa2a7cf5db36c1360ca9797fce7619dd7f01f693",
     name="3daxialize",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,12 +35,13 @@ def v_3daxialize(
     runner: Runner | None = None,
 ) -> V3daxializeOutputs:
     """
-    3daxialize by AFNI Development Team.
+    3daxialize by AFNI Team.
     
     Read and write dataset as new dataset with data brick oriented as axial
     slices.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3daxialize.html
     
     Args:
         infile: Dataset to be axially oriented.

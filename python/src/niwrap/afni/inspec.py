@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 INSPEC_METADATA = Metadata(
-    id="587e8019da034caf5e5c1aafb2c3aaa1cebf511e",
+    id="b496aeb23cf80c0734db76871d9ce2b4972344ec",
     name="inspec",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,9 +32,12 @@ def inspec(
     runner: Runner | None = None,
 ) -> InspecOutputs:
     """
-    inspec by Ziad S. Saad SSCC/NIMH/NIH.
+    inspec by AFNI Team.
     
     Outputs information found from specfile.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/inspec.html
     
     Args:
         specfile: Spec file to be read.

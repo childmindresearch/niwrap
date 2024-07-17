@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ANOVA3_METADATA = Metadata(
-    id="d050f465b59715ec17b6571e722f4f1e66b94b3f",
+    id="a5caef09918798b903d5940784f2c0366e5b2960",
     name="3dANOVA3",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -77,11 +76,12 @@ def v_3d_anova3(
     runner: Runner | None = None,
 ) -> V3dAnova3Outputs:
     """
-    3dANOVA3 by AFNI.
+    3dANOVA3 by AFNI Team.
     
     Performs three-factor ANOVA on 3D data sets.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dANOVA3.html
     
     Args:
         type_: Type of ANOVA model to be used. k = 1: A,B,C fixed; AxBxC, k =\

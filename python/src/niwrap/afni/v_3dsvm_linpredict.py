@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3DSVM_LINPREDICT_METADATA = Metadata(
-    id="7ea97d12341f70e54c98a00dfdb185529c8ff52f",
+    id="1ddb0dc8e16e9b23dcb1221f38ee122418dcc3ff",
     name="3dsvm_linpredict",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,9 +30,12 @@ def v_3dsvm_linpredict(
     runner: Runner | None = None,
 ) -> V3dsvmLinpredictOutputs:
     """
-    3dsvm_linpredict by AFNI (Analysis of Functional NeuroImages).
+    3dsvm_linpredict by AFNI Team.
     
     Linear prediction for weights from 3dsvm.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dsvm_linpredict.html
     
     Args:
         weight_vector: Weight vector dataset.

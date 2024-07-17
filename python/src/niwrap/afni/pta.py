@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PTA_METADATA = Metadata(
-    id="35ec814148c0f395aac72042f68d0106977ad2da",
+    id="80817940f6d7bbdd4cdcd67ed8ea85a7ed487933",
     name="PTA",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-pta:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,12 +37,13 @@ def pta(
     runner: Runner | None = None,
 ) -> PtaOutputs:
     """
-    PTA by Gang Chen (gangchen@mail.nih.gov).
+    PTA by AFNI Team.
     
     Program for Profile Tracking Analysis - estimates nonlinear trajectories
     through smoothing splines.
     
-    More information: https://afni.nimh.nih.gov/gangchen_homepage
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/PTA.html
     
     Args:
         prefix: Prefix for output files.

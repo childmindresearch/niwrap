@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 UBER_TTEST_METADATA = Metadata(
-    id="616bda5da91a0a3ef34dd8ee0ed536ec9010d4f4",
+    id="255356f2c0551408281c157177760b29171deda5",
     name="uber_ttest",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="neurodocker:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,9 +47,12 @@ def uber_ttest(
     runner: Runner | None = None,
 ) -> UberTtestOutputs:
     """
-    uber_ttest by R Reynolds.
+    uber_ttest by AFNI Team.
     
     GUI for group t-test analysis.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_ttest.py.html
     
     Args:
         qt_opts: Pass PyQt4 options directly to the GUI.

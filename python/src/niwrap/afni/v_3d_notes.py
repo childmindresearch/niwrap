@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_NOTES_METADATA = Metadata(
-    id="7367e1a959fd886cf9b6dca21e252558ae5f26ea",
+    id="a69d4dd3ed3f503fa0071dfd108d4622397297be",
     name="3dNotes",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,9 +32,12 @@ def v_3d_notes(
     runner: Runner | None = None,
 ) -> V3dNotesOutputs:
     """
-    3dNotes by T. Ross.
+    3dNotes by AFNI Team.
     
     A program to add, delete and show notes for AFNI datasets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNotes.html
     
     Args:
         dataset: AFNI compatible dataset [required].

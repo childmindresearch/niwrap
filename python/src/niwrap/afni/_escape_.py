@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ESCAPE_METADATA = Metadata(
-    id="5c60eb23f29cbdb1bec57bb67b45fb24d9640089",
+    id="0c56bacef50379e547647a21ec2e6cd4e0a22916",
     name="escape",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -24,9 +26,12 @@ def escape(
     runner: Runner | None = None,
 ) -> EscapeOutputs:
     """
-    escape.
+    escape by AFNI Team.
     
     A hypothetical command line tool for escaping sequences.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@escape-.html
     
     Args:
         help_: Display the help message.

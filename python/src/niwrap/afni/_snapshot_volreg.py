@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _SNAPSHOT_VOLREG_METADATA = Metadata(
-    id="0672ebdbfd8609e4b7ea57446c3c7051709f36ac",
+    id="de57989a9b16d233a1c93f121bdb599525f7b3de",
     name="@snapshot_volreg",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,10 +31,13 @@ def _snapshot_volreg(
     runner: Runner | None = None,
 ) -> SnapshotVolregOutputs:
     """
-    @snapshot_volreg by The Madd Allineator.
+    @snapshot_volreg by AFNI Team.
     
     Create a JPEG image showing the edges of an EPI dataset overlayed on an
     anatomical dataset to judge 3D registration quality.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@snapshot_volreg.html
     
     Args:
         anatdataset: Anatomical dataset file.

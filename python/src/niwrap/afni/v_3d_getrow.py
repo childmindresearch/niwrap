@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_GETROW_METADATA = Metadata(
-    id="fef7e59d6307ba74b0ebbacb21e4b27de52e7494",
+    id="9699826c45243ed2bd6f40150cb37f496b921d5c",
     name="3dGetrow",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,11 +32,12 @@ def v_3d_getrow(
     runner: Runner | None = None,
 ) -> V3dGetrowOutputs:
     """
-    3dGetrow by AFNI (Analysis of Functional NeuroImages).
+    3dGetrow by AFNI Team.
     
     Program to extract 1 row from a dataset and write it as a .1D file.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGetrow.html
     
     Args:
         xrow: Extract row along the x-direction at fixed y-index of j and fixed\

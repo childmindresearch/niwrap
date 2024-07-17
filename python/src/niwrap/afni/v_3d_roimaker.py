@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ROIMAKER_METADATA = Metadata(
-    id="a487898fee8d2bed71ced06d8fd7ecae351dd0bb",
+    id="2b86aa2a4f9ef8845c7e327a7f2f8b88a188510c",
     name="ROIMaker",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="brainlife/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,7 +49,7 @@ def roimaker(
     runner: Runner | None = None,
 ) -> RoimakerOutputs:
     """
-    ROIMaker by PA Taylor.
+    ROIMaker by AFNI Team.
     
     Create a labelled set of ROIs from input data, useful in combining
     functional and tractographic/structural data.

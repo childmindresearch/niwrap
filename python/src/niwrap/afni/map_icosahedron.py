@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 MAP_ICOSAHEDRON_METADATA = Metadata(
-    id="76d4b23079beb4cc7a223423bdfafac9dd8c363b",
+    id="7b5613e068758f60512d81bd807662763219e569",
     name="MapIcosahedron",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,12 +36,13 @@ def map_icosahedron(
     runner: Runner | None = None,
 ) -> MapIcosahedronOutputs:
     """
-    MapIcosahedron by Brenna D. Argall LBC/NIMH/NIH, Ziad S. Saad SSC/NIMH/NIH.
+    MapIcosahedron by AFNI Team.
     
     Creates new versions of original-mesh surfaces using the mesh of an
     icosahedron.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/MapIcosahedron.html
     
     Args:
         spec_file: Spec file containing original-mesh surfaces.

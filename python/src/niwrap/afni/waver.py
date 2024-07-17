@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 WAVER_METADATA = Metadata(
-    id="0c3c25e2763d2f9df391b5baba4b4ae0d48682d4",
+    id="b6fd6949b1d59ce1539e360dd742c32c18323c3d",
     name="waver",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="some_docker_repo/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,9 +49,12 @@ def waver(
     runner: Runner | None = None,
 ) -> WaverOutputs:
     """
-    waver by Rick Reynolds.
+    waver by AFNI Team.
     
     Creates an ideal waveform timeseries file.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/waver.html
     
     Args:
         wav: Sets waveform to Cox special [default].

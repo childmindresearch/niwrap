@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_NET_CORR_METADATA = Metadata(
-    id="a09ce39bda8a55ccfe7d656766919270e2baa961",
+    id="e4c012914d42661c13f09b2b1046eff10fa7e2a7",
     name="3dNetCorr",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -60,11 +59,12 @@ def v_3d_net_corr(
     runner: Runner | None = None,
 ) -> V3dNetCorrOutputs:
     """
-    3dNetCorr by PA Taylor.
+    3dNetCorr by AFNI Team.
     
     Compute correlation matrix of a set of ROIs based on mean time series.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNetCorr.html
     
     Args:
         prefix: Output file name prefix.

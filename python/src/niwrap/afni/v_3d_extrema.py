@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_EXTREMA_METADATA = Metadata(
-    id="baa48085e777f22d5d5b811772468df232b4e5c4",
+    id="67a0d5c6b1ce48fc17fd9adc657b679f5a17d10f",
     name="3dExtrema",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="neurodocker:0.7.0",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,11 +49,12 @@ def v_3d_extrema(
     runner: Runner | None = None,
 ) -> V3dExtremaOutputs:
     """
-    3dExtrema by AFNI (Analysis of Functional NeuroImages).
+    3dExtrema by AFNI Team.
     
     Find local extrema (minima or maxima) in 3D datasets.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dExtrema.html
     
     Args:
         input_dataset: Input dataset (e.g. dataset+tlrc'[sub-brick]').

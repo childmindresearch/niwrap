@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 RMZ_METADATA = Metadata(
-    id="54a69805c2bd8ba4e75e0afdfb0df1ea6ae74579",
+    id="7a3a349c38d62224b5c5bd5af606e35d3bb67170",
     name="rmz",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,9 +29,12 @@ def rmz(
     runner: Runner | None = None,
 ) -> RmzOutputs:
     """
-    rmz by Author Name.
+    rmz by AFNI Team.
     
     Zeros out files before removing them.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/rmz.html
     
     Args:
         filenames: Files to zero out and remove.

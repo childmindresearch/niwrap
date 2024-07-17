@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_AFNITO_NIML_METADATA = Metadata(
-    id="eb53445b479b1ace904cfacf2510ba202f9b77d6",
+    id="af04a895b41e7b000b029da7e8325c1a8326825b",
     name="3dAFNItoNIML",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,10 +29,13 @@ def v_3d_afnito_niml(
     runner: Runner | None = None,
 ) -> V3dAfnitoNimlOutputs:
     """
-    3dAFNItoNIML by RWCox.
+    3dAFNItoNIML by AFNI Team.
     
     Dumps AFNI dataset header information to stdout in NIML format. Mostly for
     debugging and testing purposes!.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoNIML.html
     
     Args:
         dset: AFNI dataset.

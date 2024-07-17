@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ROI2DATASET_METADATA = Metadata(
-    id="d5d9cb6cbeaac872e3c0a31bd2508f55bbaad7a3",
+    id="79f509dbae00db9dd651a0181347643e79e51931",
     name="ROI2dataset",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,11 +36,12 @@ def roi2dataset(
     runner: Runner | None = None,
 ) -> Roi2datasetOutputs:
     """
-    ROI2dataset by Ziad S. Saad, SSCC/NIMH/NIH.
+    ROI2dataset by AFNI Team.
     
     Transforms a series of ROI files to a node dataset.
     
-    More information: mailto:saadz@mail.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ROI2dataset.html
     
     Args:
         prefix: Prefix of output dataset.

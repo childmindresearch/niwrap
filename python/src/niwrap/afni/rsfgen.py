@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 RSFGEN_METADATA = Metadata(
-    id="8d7d361b355145573b2107331b69bc5342bf57de",
+    id="3e10293f876893016ce4d89042532f11786cb67f",
     name="RSFgen",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,11 +40,12 @@ def rsfgen(
     runner: Runner | None = None,
 ) -> RsfgenOutputs:
     """
-    RSFgen by Author Name.
+    RSFgen by AFNI Team.
     
     Program to generate random stimulus functions.
     
-    More information: URL to the tool
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/RSFgen.html
     
     Args:
         length: Length of time series.

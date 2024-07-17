@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FATCAT_MATPLOT_METADATA = Metadata(
-    id="bae2726e5e0fe4270f437b491dfbd4ee491cc219",
+    id="7f404852f322ecb660b36f0c63595b909d540a1f",
     name="FATCAT_matplot",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/fatcat_matplot:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,9 +27,12 @@ def fatcat_matplot(
     runner: Runner | None = None,
 ) -> FatcatMatplotOutputs:
     """
-    FATCAT_matplot by Justin Rajendra.
+    FATCAT_matplot by AFNI Team.
     
     Launch a shiny app to visualize .netcc and/or .grid files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/FATCAT_matplot.html
     
     Args:
         directory: Path to a folder containing .netcc and/or .grid files.

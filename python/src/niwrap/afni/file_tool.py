@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FILE_TOOL_METADATA = Metadata(
-    id="84aaae0092352a22016a0cb45d2c466445ebd57a",
+    id="0a078667c1d0108aa0005fc8d2ba5cbd2b71d1c2",
     name="file_tool",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -67,11 +69,12 @@ def file_tool(
     runner: Runner | None = None,
 ) -> FileToolOutputs:
     """
-    file_tool by R Reynolds.
+    file_tool by AFNI Team.
     
     Program to display or modify sections of a file.
     
-    More information: N/A
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/file_tool.html
     
     Args:
         infiles: Specify input files to display or modify.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TRFIX_METADATA = Metadata(
-    id="6bb6f0e5de25aff054bf0a9d1f0a07a8b5a4927b",
+    id="0b9a9cb44e86fe219ef6d5ca723c118a193e8824",
     name="3dTRfix",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,13 +34,13 @@ def v_3d_trfix(
     runner: Runner | None = None,
 ) -> V3dTrfixOutputs:
     """
-    3dTRfix by Zhark the Fixer.
+    3dTRfix by AFNI Team.
     
     Re-sample dataset with irregular time grid to regular time grid via linear
     interpolation.
     
     More information:
-    https://afni.nimh.nih.gov/pub/dist/bin/linux_ubuntu_16_64/README.package.afni
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTRfix.html
     
     Args:
         input_file: Input dataset.

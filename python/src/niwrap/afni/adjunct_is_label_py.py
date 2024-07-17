@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_IS_LABEL_PY_METADATA = Metadata(
-    id="fa51f1a77a7caad0fa003894322155d719b68686",
+    id="9c02e8166f5bc48f6a288ab4b76f9c7573d685c3",
     name="adjunct_is_label.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,9 +27,12 @@ def adjunct_is_label_py(
     runner: Runner | None = None,
 ) -> AdjunctIsLabelPyOutputs:
     """
-    adjunct_is_label.py by @chauffeur_afni.
+    adjunct_is_label.py by AFNI Team.
     
     A subsidiary script of the chauffeur_afni suite for label functionalities.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_is_label.py.html
     
     Args:
         infile: Input file for the adjunct_is_label script.

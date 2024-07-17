@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SHOW_DYNAMIC_RANGE_METADATA = Metadata(
-    id="c598df0511bbb06e5c829888f7ccf8acbd91615e",
+    id="f34839af57c3d17f58780b9b65b097a95f48303f",
     name="ShowDynamicRange",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,10 +30,13 @@ def show_dynamic_range(
     runner: Runner | None = None,
 ) -> ShowDynamicRangeOutputs:
     """
-    ShowDynamicRange by AFNI.
+    ShowDynamicRange by AFNI Team.
     
     The script checks the dynamic range of the time series data at locations
     inside the brain.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ShowDynamicRange.html
     
     Args:
         infile: Input EPI time series dataset (e.g. epi.nii.gz).

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ABIDS_JSON_INFO_METADATA = Metadata(
-    id="303ec942c2f06ae4e126630a8b9a8004e60c9b71",
+    id="a32b9d2fbcb6512f832038e4d9d8bf14b8f189e2",
     name="abids_json_info",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,9 +33,12 @@ def abids_json_info(
     runner: Runner | None = None,
 ) -> AbidsJsonInfoOutputs:
     """
-    abids_json_info by Justin Rajendra.
+    abids_json_info by AFNI Team.
     
     A tool to extract information from BIDS formatted json files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_json_info.py.html
     
     Args:
         json_files: Specify .json file(s).

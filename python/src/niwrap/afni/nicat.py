@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 NICAT_METADATA = Metadata(
-    id="a949df40337fdf2a83f7c3179c4d2cd769c2cef7",
+    id="df6d8c839aaa949e51bb2576c3c17808b4fbc256",
     name="nicat",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,9 +29,12 @@ def nicat(
     runner: Runner | None = None,
 ) -> NicatOutputs:
     """
-    nicat by NIML.
+    nicat by AFNI Team.
     
     Copies stdin to the NIML stream, which will be opened for writing.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/nicat.html
     
     Args:
         stream_spec: Stream specification (e.g., tcp:localhost:4444).

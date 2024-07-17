@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 QHULL_METADATA = Metadata(
-    id="5b74a762e5fd07fdc9dc4699d583ae008a69655e",
+    id="b132d50e05aa63af1c8988eaaa09fbfdccc9c0a1",
     name="qhull",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="qhull/convex_hull:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -49,11 +48,12 @@ def qhull(
     runner: Runner | None = None,
 ) -> QhullOutputs:
     """
-    qhull by C.B. Barber and H. Huhdanpaa.
+    qhull by AFNI Team.
     
     Tool to compute convex hulls and related structures.
     
-    More information: http://www.qhull.org/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/qhull.html
     
     Args:
         input_coords: Dimension, number of points, and point coordinates\

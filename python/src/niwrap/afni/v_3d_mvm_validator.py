@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_MVM_VALIDATOR_METADATA = Metadata(
-    id="c4c69db9a85451b6d72b915286b87867af274159",
+    id="185a48cae3218ca602c469b04765af407973578d",
     name="3dMVM_validator",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,9 +29,12 @@ def v_3d_mvm_validator(
     runner: Runner | None = None,
 ) -> V3dMvmValidatorOutputs:
     """
-    3dMVM_validator by Justin Rajendra.
+    3dMVM_validator by AFNI Team.
     
     Launch the 3dMVM model validation shiny app in a web browser.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMVM_validator.html
     
     Args:
         datatable: A file containing a data table formatted like the 3dMVM\

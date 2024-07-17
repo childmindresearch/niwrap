@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SERIAL_HELPER_METADATA = Metadata(
-    id="705162585b05cbd8b6b077a0b1d2147191d45171",
+    id="27e089f52098f6bcb4aef37c8661dcd5aff10942",
     name="serial_helper",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,9 +37,12 @@ def serial_helper(
     runner: Runner | None = None,
 ) -> SerialHelperOutputs:
     """
-    serial_helper by R. Reynolds, T. Ross.
+    serial_helper by AFNI Team.
     
     Passes motion parameters from socket to serial port.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/serial_helper.html
     
     Args:
         serial_port: Output serial port filename.

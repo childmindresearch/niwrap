@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_MEMA_METADATA = Metadata(
-    id="31054185aaf87514b6d1c6535d8190d8678823b5",
+    id="97969fdb372af36923982348d4e84cdcf6664827",
     name="3dMEMA",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -55,12 +54,13 @@ def v_3d_mema(
     runner: Runner | None = None,
 ) -> V3dMemaOutputs:
     """
-    3dMEMA by AFNI (Analysis of Functional NeuroImages).
+    3dMEMA by AFNI Team.
     
     3dMEMA is a program for performing Mixed Effects Meta Analysis at group
     level that models both within- and across-subjects variability.
     
-    More information: https://afni.nimh.nih.gov/sscc/gangc/MEMA.html
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMEMA.html
     
     Args:
         prefix: Output prefix (just prefix, no view+suffix needed).

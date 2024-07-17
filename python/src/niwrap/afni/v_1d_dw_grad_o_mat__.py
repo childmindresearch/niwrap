@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1D_DW_GRAD_O_MAT___METADATA = Metadata(
-    id="4d0c6812de6747b70fc62216554538617e0b62ad",
+    id="c4cd1bb94007c9de05d7535b73db2a30863d1e5c",
     name="1dDW_Grad_o_Mat++",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -53,12 +52,13 @@ def v_1d_dw_grad_o_mat__(
     runner: Runner | None = None,
 ) -> V1dDwGradOMatOutputs:
     """
-    1dDW_Grad_o_Mat++ by Taylor PA, Saad ZS.
+    1dDW_Grad_o_Mat++ by AFNI Team.
     
     Manipulation of diffusion-weighted (DW) gradient vector files, b-value
     files, and b- or g-matrices with various input and output configurations.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dDW_Grad_o_Mat++.html
     
     Args:
         in_row_vec: Input file of 3 rows of gradients (e.g., dcm2nii-format\

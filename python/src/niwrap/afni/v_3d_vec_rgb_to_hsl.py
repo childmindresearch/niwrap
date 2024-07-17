@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_VEC_RGBTO_HSL_METADATA = Metadata(
-    id="82fadcc1a51cbbb49d9afc1b4618ad2a517017c3",
+    id="8b8b0e9dee858c096d0e8ad6d90695c2f2a091db",
     name="3dVecRGBtoHSL",
     container_image_type="docker",
-    container_image_index="docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,12 +31,13 @@ def v_3d_vec_rgbto_hsl(
     runner: Runner | None = None,
 ) -> V3dVecRgbtoHslOutputs:
     """
-    3dVecRGBtoHSL by PA Taylor.
+    3dVecRGBtoHSL by AFNI Team.
     
     Convert a 3-brick RGB (red, green, blue) data set to an HSL (hue,
     saturation, luminance) one.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dVecRGB_to_HSL.html
     
     Args:
         prefix: Output file name part.

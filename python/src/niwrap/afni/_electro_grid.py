@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ELECTRO_GRID_METADATA = Metadata(
-    id="25e97283f52534206655fa2de268af93b4c2b4cc",
+    id="a17b1e16989f787aaad3a2ec35c0c37f5b0469f1",
     name="ElectroGrid",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,11 +33,12 @@ def electro_grid(
     runner: Runner | None = None,
 ) -> ElectroGridOutputs:
     """
-    ElectroGrid by Ziad Saad (SSCC/NIMH/ National Institutes of Health).
+    ElectroGrid by AFNI Team.
     
     Creates a mesh representation of an electrode grid for use with SUMA.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ElectroGrid.html
     
     Args:
         strip: Make an Nx strip (array) of electrodes.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 GEN_EPI_REVIEW_METADATA = Metadata(
-    id="2eff282cf71aaf137ce8f8ec72dca983d2368078",
+    id="2f62502bf3ac29e0f478fa955db07cf611d2a72f",
     name="gen_epi_review",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,9 +35,12 @@ def gen_epi_review(
     runner: Runner | None = None,
 ) -> GenEpiReviewOutputs:
     """
-    gen_epi_review by R Reynolds.
+    gen_epi_review by AFNI Team.
     
     Generate an AFNI processing script to review EPI data.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_epi_review.py.html
     
     Args:
         datasets: Specify input datasets for processing.

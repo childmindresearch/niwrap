@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DNEWID_METADATA = Metadata(
-    id="60c90dd7614de32fb6cf22a94c5c0f56f76a9308",
+    id="a8d2609a0db389ccc4f9bf365ca16d509085634d",
     name="3dnewid",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,12 +31,13 @@ def v_3dnewid(
     runner: Runner | None = None,
 ) -> V3dnewidOutputs:
     """
-    3dnewid by AFNI (Analysis of Functional NeuroImages).
+    3dnewid by AFNI Team.
     
     Assigns a new ID code to a dataset, ensuring internal ID codes remain
     unique.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dnewid.html
     
     Args:
         datasets: Input datasets to assign new ID codes.

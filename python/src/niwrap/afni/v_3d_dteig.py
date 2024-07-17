@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_DTEIG_METADATA = Metadata(
-    id="147b76fcc0786f0fd6a8ae9e9981ccccb8a722ce",
+    id="9bf56f738bce68222b99863b196269165e86a9b2",
     name="3dDTeig",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:23.1.10",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,11 +40,12 @@ def v_3d_dteig(
     runner: Runner | None = None,
 ) -> V3dDteigOutputs:
     """
-    3dDTeig by AFNI Developers.
+    3dDTeig by AFNI Team.
     
     Computes eigenvalues and eigenvectors for an input dataset of tensors.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDTeig.html
     
     Args:
         input_dataset: Input dataset of Dxx, Dxy, Dyy, Dxz, Dyz, Dzz sub-bricks.

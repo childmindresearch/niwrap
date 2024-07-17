@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_RE_HO_METADATA = Metadata(
-    id="aefee4472257dbf669b1ab0847dbfb80ca5019e8",
+    id="288478f5e7035882c1f110b6caf7c953caaad827",
     name="3dReHo",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,7 +47,7 @@ def v_3d_re_ho(
     runner: Runner | None = None,
 ) -> V3dReHoOutputs:
     """
-    3dReHo by PA Taylor.
+    3dReHo by AFNI Team.
     
     3dReHo calculates Kendall's W per voxel using neighborhood voxels from 4D
     time series data set.

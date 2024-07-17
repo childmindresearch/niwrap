@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ANALYZE_TRACE_METADATA = Metadata(
-    id="a53039294138a46c8ab585e7247bfbd8f066fa8a",
+    id="ed47a7f83dcf15fced73ccd7d24856d93e3037fb",
     name="AnalyzeTrace",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,10 +36,13 @@ def analyze_trace(
     runner: Runner | None = None,
 ) -> AnalyzeTraceOutputs:
     """
-    AnalyzeTrace by Ziad S. Saad SSCC/NIMH/NIH.
+    AnalyzeTrace by AFNI Team.
     
     A program to analyze SUMA (and AFNI's perhaps) stack output for functions
     that return with RETURN without bothering to go on the stack.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/AnalyzeTrace.html
     
     Args:
         tracefile: Trace output file obtained by redirecting the program’s\

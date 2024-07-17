@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 STATAUXCODE_METADATA = Metadata(
-    id="94ddcb37a2e40e93015b63108e984e7f5ff6579f",
+    id="1501ef9f8afe99fea3e168eee380a6cd08f1ca4e",
     name="statauxcode",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,9 +28,12 @@ def statauxcode(
     runner: Runner | None = None,
 ) -> StatauxcodeOutputs:
     """
-    statauxcode by Example Author.
+    statauxcode by AFNI Team.
     
     Returns the name or number of a statistics code based on specified mappings.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@statauxcode.html
     
     Args:
         code_: The statistical code or its numerical equivalent to be\

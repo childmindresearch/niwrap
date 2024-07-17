@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AFNI_SKELETON_METADATA = Metadata(
-    id="eff4c988b945b34af96ac7de313acc57d26b62ae",
+    id="ab4e79edb3939aa0447453db786ba4369738dfeb",
     name="afni_skeleton",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,9 +29,12 @@ def afni_skeleton(
     runner: Runner | None = None,
 ) -> AfniSkeletonOutputs:
     """
-    afni_skeleton by R Reynolds.
+    afni_skeleton by AFNI Team.
     
     Skeleton of a basic python program example.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_skeleton.py.html
     
     Args:
         infiles: Specify input files.

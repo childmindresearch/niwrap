@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TQUAL_METADATA = Metadata(
-    id="6237d5f61fdfaeae8013ae54cf1d7f034bcbfa71",
+    id="54a1c965dec649efb49f0eed9e2ace11d0cd69d5",
     name="3dTqual",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,7 +35,7 @@ def v_3d_tqual(
     runner: Runner | None = None,
 ) -> V3dTqualOutputs:
     """
-    3dTqual by RWCox.
+    3dTqual by AFNI Team.
     
     Computes a quality index for each sub-brick in a 3D+time dataset.
     

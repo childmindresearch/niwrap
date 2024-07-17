@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _AFNI_REFACER_RUN_METADATA = Metadata(
-    id="1258b11b679ddbfa80b7ddc6a508b8bad8218b60",
+    id="599fd7b091de100cfef0d32ba0b7a2fc5720da5a",
     name="@afni_refacer_run",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_cont_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -49,11 +48,13 @@ def _afni_refacer_run(
     runner: Runner | None = None,
 ) -> AfniRefacerRunOutputs:
     """
-    @afni_refacer_run by The Face of Imperial Zhark, Who is Terrible to Behold!,
-    Modifier - PA Taylor.
+    @afni_refacer_run by AFNI Team.
     
     This script re-faces one input dataset, using a master shell dataset to
     write over the subject's 'face' region.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_run.html
     
     Args:
         input_file: Name of input dataset; can contain path information.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MEICA_PY_METADATA = Metadata(
-    id="5c37942b4672eb2faea41d2cabce3f92a5ad675e",
+    id="ff7cba835180280916a3a52015ff9414ebf8e12f",
     name="meica.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="meica/me-ica:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,11 +37,12 @@ def meica_py(
     runner: Runner | None = None,
 ) -> MeicaPyOutputs:
     """
-    meica.py by The ME-ICA team.
+    meica.py by AFNI Team.
     
     Multi-Echo Independent Component Analysis for fMRI denoising.
     
-    More information: https://github.com/ME-ICA/me-ica
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/meica.py.html
     
     Args:
         infile: Input image dataset (e.g. dataset.nii.gz).

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 TEDANA_WRAPPER_METADATA = Metadata(
-    id="aa27fb0fbe80bc26ea7e73f0072d3b5c409ddd7c",
+    id="e97a5a8532dc23c51bff41e66e12c62a8f98d31b",
     name="tedana_wrapper",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/tedana:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,9 +42,12 @@ def tedana_wrapper(
     runner: Runner | None = None,
 ) -> TedanaWrapperOutputs:
     """
-    tedana_wrapper by Justin Rajendra.
+    tedana_wrapper by AFNI Team.
     
     Internal wrapper to run tedana.py, typically used within afni_proc.py.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/tedana_wrapper.py.html
     
     Args:
         input_files: 4D dataset for each echo.

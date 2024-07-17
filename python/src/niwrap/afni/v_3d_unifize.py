@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_UNIFIZE_METADATA = Metadata(
-    id="a66141db9ce48669e54bc01d8519b16c378cd245",
+    id="e1529bb2cf200b8c77c7466921cb003d8622f980",
     name="3dUnifize",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -44,7 +44,7 @@ def v_3d_unifize(
     runner: Runner | None = None,
 ) -> V3dUnifizeOutputs:
     """
-    3dUnifize by Nipype (interface).
+    3dUnifize by AFNI Team.
     
     3dUnifize - for uniformizing image intensity
     * The input dataset is supposed to be a T1-weighted volume, possibly already

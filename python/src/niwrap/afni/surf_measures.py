@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SURF_MEASURES_METADATA = Metadata(
-    id="7027bb31979f083709bb184581c8da1da4411653",
+    id="e450e11a2d159ec1721c8f2777cf985473e5421d",
     name="SurfMeasures",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="docker-registry.image/surfs:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,9 +47,12 @@ def surf_measures(
     runner: Runner | None = None,
 ) -> SurfMeasuresOutputs:
     """
-    SurfMeasures by R. Reynolds.
+    SurfMeasures by AFNI Team.
     
     Compute measures from surface dataset(s).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfMeasures.html
     
     Args:
         spec_file: SUMA spec file containing a list of related surfaces.

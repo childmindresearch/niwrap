@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_LSS_METADATA = Metadata(
-    id="f3f4529971f623b14273a6839b1eb73a07d3ee23",
+    id="693a1475ddc6ecf782a257e16ff0134339f983ea",
     name="3dLSS",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/domain:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,10 +37,13 @@ def v_3d_lss(
     runner: Runner | None = None,
 ) -> V3dLssOutputs:
     """
-    3dLSS by RWCox.
+    3dLSS by AFNI Team.
     
     Least-Squares-Sum (LSS) estimation tool from a -stim_times_IM matrix for
     multivoxel pattern classification analyses.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLSS.html
     
     Args:
         matrix: Read the matrix 'mmm', which should have been output from\

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 BUILD_AFNI_PY_METADATA = Metadata(
-    id="7531b826fb7d38702c971ea827a2489a6f2e3bec",
+    id="1431d3090595ab0d8fddc25b853a7cd1f4d39994",
     name="build_afni.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,9 +45,12 @@ def build_afni_py(
     runner: Runner | None = None,
 ) -> BuildAfniPyOutputs:
     """
-    build_afni.py by R Reynolds.
+    build_afni.py by AFNI Team.
     
     Compile an AFNI package from the git repository.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/build_afni.py.html
     
     Args:
         build_root: Root directory to use for git and building.

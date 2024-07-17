@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_BRAIN_VOYAGERTO_AFNI_METADATA = Metadata(
-    id="4a966789a8049b7f8207f21e4668d9ba274df576",
+    id="63c57924f0b2cb81df03778abc072c65d585d0c9",
     name="3dBRAIN_VOYAGERtoAFNI",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,12 +43,13 @@ def v_3d_brain_voyagerto_afni(
     runner: Runner | None = None,
 ) -> V3dBrainVoyagertoAfniOutputs:
     """
-    3dBRAIN_VOYAGERtoAFNI by Ziad S. Saad SSCC/NIMH/NIH.
+    3dBRAIN_VOYAGERtoAFNI by AFNI Team.
     
     Converts a BrainVoyager vmr dataset to AFNI's BRIK format based on
     information from BrainVoyager's website.
     
-    More information: www.brainvoyager.com
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBRAIN_VOYAGERtoAFNI.html
     
     Args:
         input_file: Input BrainVoyager VMR file.

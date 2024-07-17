@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PLUGOUT_TTA_METADATA = Metadata(
-    id="ce4cc71b926e58538abe2e84a03cc3ef98cd58dc",
+    id="e1321f0fb4dace393d21e7158de634597d7771e0",
     name="plugout_tta",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="docker-afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +35,14 @@ def plugout_tta(
     runner: Runner | None = None,
 ) -> PlugoutTtaOutputs:
     """
-    plugout_tta by AFNI (Analysis of Functional NeuroImages).
+    plugout_tta by AFNI Team.
     
     Connects to AFNI and receives notification whenever the user changes
     Talairach coordinates, then drives Netscape to display the closest figures
     from the Talairach-Tournoux atlas.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/plugout_tta.html
     
     Args:
         host: Connect to AFNI running on the specified computer using TCP/IP.\

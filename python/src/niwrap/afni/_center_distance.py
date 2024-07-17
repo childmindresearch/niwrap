@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _CENTER_DISTANCE_METADATA = Metadata(
-    id="b877d612ef8a3146ed8f374f79c55aaf086f92c8",
+    id="b3113fa600a410855b411750fb0391ea1c4c8404",
     name="@Center_Distance",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,9 +29,12 @@ def _center_distance(
     runner: Runner | None = None,
 ) -> CenterDistanceOutputs:
     """
-    @Center_Distance by Unknown.
+    @Center_Distance by AFNI Team.
     
     Tool to calculate the distance between the centers of two datasets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Center_Distance.html
     
     Args:
         dset1: First dataset file (e.g. file1.nii.gz).

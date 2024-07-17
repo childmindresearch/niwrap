@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 STRBLAST_METADATA = Metadata(
-    id="9e31059a1af883855dfe6a5f4084c05bd7147e6f",
+    id="7ddd88547125dcb844ee7f06e4439fc5470f2937",
     name="strblast",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,12 +32,13 @@ def strblast(
     runner: Runner | None = None,
 ) -> StrblastOutputs:
     """
-    strblast by Unknown.
+    strblast by AFNI Team.
     
     Finds exact copies of the target string in each of the input files, and
     replaces all characters with some junk string.
     
-    More information: https://example.com/strblast
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/strblast.html
     
     Args:
         targetstring: Target string to search for in the input files.

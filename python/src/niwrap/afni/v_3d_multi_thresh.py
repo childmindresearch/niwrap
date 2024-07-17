@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_MULTI_THRESH_METADATA = Metadata(
-    id="acb34a38d6b464daa7428fb44b2418ad3fccd628",
+    id="2cb86089440bb474def6d5df178235a96b08bfa4",
     name="3dMultiThresh",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="medical-imaging-tools/3dmultithresh:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,9 +42,12 @@ def v_3d_multi_thresh(
     runner: Runner | None = None,
 ) -> V3dMultiThreshOutputs:
     """
-    3dMultiThresh by RWCox.
+    3dMultiThresh by AFNI Team.
     
     Program to apply a multi-threshold (mthresh) dataset to an input dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMultiThresh.html
     
     Args:
         mthresh_file: Multi-threshold dataset from 3dXClustSim, usually via\

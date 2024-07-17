@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _DRIVE_SUMA_METADATA = Metadata(
-    id="fa83ce72fe64edf9cb1735c64c39a808c9f792be",
+    id="0edd4f09572a71b96709ab4ac60976e4939b3f9f",
     name="@DriveSuma",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +35,12 @@ def _drive_suma(
     runner: Runner | None = None,
 ) -> DriveSumaOutputs:
     """
-    @DriveSuma by Ziad S. Saad.
+    @DriveSuma by AFNI Team.
     
     A script to demonstrate how to drive suma from the command line.
     
-    More information: https://discuss.afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DriveSuma.html
     
     Args:
         h_web: Open webpage with help for this program.

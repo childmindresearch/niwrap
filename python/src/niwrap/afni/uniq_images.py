@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 UNIQ_IMAGES_METADATA = Metadata(
-    id="1464e07e8c631f2dc982dd9125de52b95c581c1f",
+    id="a17e0745a1ac2f5b3c80cb86edb8b3948635aec1",
     name="uniq_images",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,11 +28,14 @@ def uniq_images(
     runner: Runner | None = None,
 ) -> UniqImagesOutputs:
     """
-    uniq_images by Zhark the Comparator.
+    uniq_images by AFNI Team.
     
     Simple program to read in a list of image filenames, determine which files
     have unique images inside, and echo out only a list of the filenames with
     unique images.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/uniq_images.html
     
     Args:
         input_files: List of image filenames to be processed.

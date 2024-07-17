@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_AUTOMASK_METADATA = Metadata(
-    id="f0077d5e9af7a4a3f601f1a88fca77676c2363bb",
+    id="2b9f7ed7efa3ae06333fc8feab3d5095020b5aa6",
     name="3dAutomask",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -38,7 +38,7 @@ def v_3d_automask(
     runner: Runner | None = None,
 ) -> V3dAutomaskOutputs:
     """
-    3dAutomask by Nipype (interface).
+    3dAutomask by AFNI Team.
     
     Create a brain-only mask of the image using AFNI 3dAutomask command.
     

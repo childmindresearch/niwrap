@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DVOLREG_METADATA = Metadata(
-    id="cba19e4eeddc09f77fef7fe0fc961151b916efd4",
+    id="4c98bf006279a0cdf0515fff60f16b64b25edd0f",
     name="3dvolreg",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -52,7 +52,7 @@ def v_3dvolreg(
     runner: Runner | None = None,
 ) -> V3dvolregOutputs:
     """
-    3dvolreg by Nipype (interface).
+    3dvolreg by AFNI Team.
     
     Register input volumes to a base volume using AFNI 3dvolreg command.
     

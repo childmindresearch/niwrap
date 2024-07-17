@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_NWARP_XYZ_METADATA = Metadata(
-    id="879b8eeabb83eabf5c04d0d5afda34111cf7e0b5",
+    id="1adb02d0ea87ff964733a83e00c569ddb18d3155",
     name="3dNwarpXYZ",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,12 +30,13 @@ def v_3d_nwarp_xyz(
     runner: Runner | None = None,
 ) -> V3dNwarpXyzOutputs:
     """
-    3dNwarpXYZ by Zhark the Coordinated.
+    3dNwarpXYZ by AFNI Team.
     
     Transforms the DICOM xyz coordinates in the input XYZfile.1D based on
     specified warp.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpXYZ.html
     
     Args:
         xyzfile: XYZ coordinate file containing 3 columns.

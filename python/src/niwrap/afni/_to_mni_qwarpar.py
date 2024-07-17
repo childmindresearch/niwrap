@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _TO_MNI_QWARPAR_METADATA = Metadata(
-    id="8b70213e8759061a231fd2ad0c138986d0808a8e",
+    id="1ef5d6f1fb1e02bb6da071aa6647473a679ffd3d",
     name="@toMNI_Qwarpar",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="custom/docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,10 +29,13 @@ def _to_mni_qwarpar(
     runner: Runner | None = None,
 ) -> ToMniQwarparOutputs:
     """
-    @toMNI_Qwarpar by Author Name.
+    @toMNI_Qwarpar by AFNI Team.
     
     Transforms datasets to MNI space, then collectively re-transforms them to
     produce a refined average.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@toMNI_Qwarpar.html
     
     Args:
         numcpu: TOTAL NUMBER OF CPUS TO USE; should not exceed the number of\

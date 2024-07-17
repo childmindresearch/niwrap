@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _RETINO_PROC_METADATA = Metadata(
-    id="8a9dc739d781101c449655a0c7545dd41d89b943",
+    id="00eb394d00dbae2589b361d3e0e1e448afbbeb48",
     name="@RetinoProc",
     container_image_type="docker",
-    container_image_index="docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -66,12 +65,13 @@ def _retino_proc(
     runner: Runner | None = None,
 ) -> RetinoProcOutputs:
     """
-    @RetinoProc by Ziad S. Saad.
+    @RetinoProc by AFNI Team.
     
     A script to process retinotopic FMRI data, using AFNI's 3dRetinoPhase and
     SurfRetinMap.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@RetinoProc.html
     
     Args:
         tr: TR, in seconds, of retinotopic scans.

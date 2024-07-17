@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 GLOBAL_PARSE_METADATA = Metadata(
-    id="921c1e82c2732fd426efc363a14230c7e0fecd5f",
+    id="337c652e6be64d8c505b322096826b80f196db26",
     name="global_parse",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/global-parse:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,12 @@ def global_parse(
     runner: Runner | None = None,
 ) -> GlobalParseOutputs:
     """
-    global_parse by Anonymous.
+    global_parse by AFNI Team.
     
     Script to parse global help options for other scripts.
     
-    More information: https://example.com/global_parse
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@global_parse.html
     
     Args:
         program_name: The name of the program whose help output is sought.

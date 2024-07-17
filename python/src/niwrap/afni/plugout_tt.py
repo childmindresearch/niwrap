@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PLUGOUT_TT_METADATA = Metadata(
-    id="e836718ea480cf76b8dbbb685e79f92284ff6998",
+    id="57cdae44df6d77cc63ff680b6d50b88c1aa97f99",
     name="plugout_tt",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,12 +37,13 @@ def plugout_tt(
     runner: Runner | None = None,
 ) -> PlugoutTtOutputs:
     """
-    plugout_tt by AFNI developers.
+    plugout_tt by AFNI Team.
     
     This program connects to AFNI and receives notification whenever the user
     changes Talairach coordinates.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/plugout_tt.html
     
     Args:
         host: Name of the host computer to connect to AFNI on. The default is\

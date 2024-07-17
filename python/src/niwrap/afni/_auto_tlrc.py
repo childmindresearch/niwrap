@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _AUTO_TLRC_METADATA = Metadata(
-    id="38e060c8112b9cab9afd0bbc8d762c36d4cec2fe",
+    id="f307aae917fd73a76718200344ba0ecf1814b810",
     name="@auto_tlrc",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -66,13 +68,14 @@ def _auto_tlrc(
     runner: Runner | None = None,
 ) -> AutoTlrcOutputs:
     """
-    @auto_tlrc by Ziad S. Saad.
+    @auto_tlrc by AFNI Team.
     
     A script to transform an anatomical dataset to align with some standard
     space template and to apply the same TLRC transform obtained with @auto_tlrc
     in Usage 1 mode to other datasets.
     
-    More information: https://afni.nimh.nih.gov/afni/suma
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@auto_tlrc.html
     
     Args:
         base_template: Reference anatomical volume. Usually this volume is in\

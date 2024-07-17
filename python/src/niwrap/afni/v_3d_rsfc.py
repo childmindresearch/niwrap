@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_RSFC_METADATA = Metadata(
-    id="e020759235d6965e1ee988a91b76d8b9b6b7ec7a",
+    id="f1d35055279f0d50637821729455f8aecddf55a2",
     name="3dRSFC",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -54,12 +53,13 @@ def v_3d_rsfc(
     runner: Runner | None = None,
 ) -> V3dRsfcOutputs:
     """
-    3dRSFC by Paul A. Taylor, Richard W. Cox, Ziad Saad.
+    3dRSFC by AFNI Team.
     
     Program to calculate common resting state functional connectivity (RSFC)
     parameters.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRSFC.html
     
     Args:
         input_dataset: Input dataset (3D+time sequence of volumes).

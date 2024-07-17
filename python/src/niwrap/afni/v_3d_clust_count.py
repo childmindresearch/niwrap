@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_CLUST_COUNT_METADATA = Metadata(
-    id="11082b84484ff3734da2a112b78f1f40fa0d7128",
+    id="f3afa47cd7f85d29f70e2a82fb0ec3cce6d5b71b",
     name="3dClustCount",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,12 +35,13 @@ def v_3d_clust_count(
     runner: Runner | None = None,
 ) -> V3dClustCountOutputs:
     """
-    3dClustCount by RW Cox.
+    3dClustCount by AFNI Team.
     
     This program takes as input 1 or more datasets, thresholds them at various
     levels, and counts up the number of clusters of various sizes.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClustCount.html
     
     Args:
         datasets: Input datasets to be processed.

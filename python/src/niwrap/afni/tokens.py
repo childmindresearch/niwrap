@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 TOKENS_METADATA = Metadata(
-    id="be774e84a0427e3544bd722cce85217d4a8a72bf",
+    id="5fb7124f19d181ab8cc146095dd8decdcfe3daaa",
     name="tokens",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,9 +27,12 @@ def tokens(
     runner: Runner | None = None,
 ) -> TokensOutputs:
     """
-    tokens by R. Reynolds.
+    tokens by AFNI Team.
     
     Token counting tool.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/tokens.html
     
     Args:
         infile: Specify input file (stdin if none).

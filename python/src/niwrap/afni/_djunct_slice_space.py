@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_SLICE_SPACE_METADATA = Metadata(
-    id="03347c46a857cb678e0301d91f0c2e114b39a536",
+    id="c4cff5e36abe3e8d7d2d5700a50f574e7be7c27f",
     name="adjunct_slice_space",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,10 +29,13 @@ def adjunct_slice_space(
     runner: Runner | None = None,
 ) -> AdjunctSliceSpaceOutputs:
     """
-    adjunct_slice_space by PA Taylor (NIMH, NIH, USA).
+    adjunct_slice_space by AFNI Team.
     
     A tiny adjunct program for @chauffeur_afni to calculate how to evenly space
     a number of slices within each view plane of a dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_slice_space.html
     
     Args:
         inset: Name of input dataset.

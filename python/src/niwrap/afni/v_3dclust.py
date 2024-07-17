@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DCLUST_METADATA = Metadata(
-    id="4bce9a2be075038bd02dca016f876987ca2663f0",
+    id="ad3577b90c03ae2b6eb9851710874912c06904c2",
     name="3dclust",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,9 +49,12 @@ def v_3dclust(
     runner: Runner | None = None,
 ) -> V3dclustOutputs:
     """
-    3dclust by RW Cox et alii.
+    3dclust by AFNI Team.
     
     Performs simple-minded cluster detection in 3D datasets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dclust.html
     
     Args:
         datasets: Input dataset(s). More than one allowed, but only the first\

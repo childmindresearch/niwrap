@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _GRAYPLOT_METADATA = Metadata(
-    id="08a37d86381bdc7c2da7496ffbe85cbc2d78ae4f",
+    id="2d8af8df845fbb60cb7c112562424a57ea883df7",
     name="@grayplot",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,13 +32,14 @@ def _grayplot(
     runner: Runner | None = None,
 ) -> GrayplotOutputs:
     """
-    @grayplot by RWCox.
+    @grayplot by AFNI Team.
     
     Script to read files from an afni_proc.py results directory and produce a
     grayplot from the errts dataset(s), combined with a motion magnitude
     indicator graph.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@grayplot.html
     
     Args:
         dirname: Directory containing afni_proc.py results.

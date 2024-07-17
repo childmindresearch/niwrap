@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_SKULL_STRIP_METADATA = Metadata(
-    id="159db9818de007708129d627c7232c2a697d8ec9",
+    id="b30e5235e2031f04515577752da6c50d43b67667",
     name="3dSkullStrip",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -32,7 +32,7 @@ def v_3d_skull_strip(
     runner: Runner | None = None,
 ) -> V3dSkullStripOutputs:
     """
-    3dSkullStrip by AFNI.
+    3dSkullStrip by AFNI Team.
     
     A program to extract the brain from surrounding tissue from MRI T1-weighted
     images.

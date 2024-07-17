@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _ANATICOR_METADATA = Metadata(
-    id="df0558c7023bd23c5900cfa634ab1b6b85dd8d8c",
+    id="06beb3c65db936c71ae43bd66cd9f319e2db01e6",
     name="@ANATICOR",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,11 +41,12 @@ def _anaticor(
     runner: Runner | None = None,
 ) -> AnaticorOutputs:
     """
-    @ANATICOR by Hang Joon Jo.
+    @ANATICOR by AFNI Team.
     
     Script to produce a residual time series cleaned by ANATICOR model.
     
-    More information: http://dx.doi.org/10.1016/j.neuroimage.2010.04.246
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ANATICOR.html
     
     Args:
         ts: Time series volume which should have already undergone\

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 CAT_MATVEC_METADATA = Metadata(
-    id="df3a0ff41d3fbad292327527bfc454707a43e57d",
+    id="b48e124bb64b3f9e7012737747d7ca2f6ebc0ddd",
     name="cat_matvec",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,11 +29,12 @@ def cat_matvec(
     runner: Runner | None = None,
 ) -> CatMatvecOutputs:
     """
-    cat_matvec by Author Name.
+    cat_matvec by AFNI Team.
     
     Catenates 3D rotation+shift matrix+vector transformations.
     
-    More information: example.com
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/cat_matvec.html
     
     Args:
         matvec_spec: Specifies the matrix transformation. Can take forms\

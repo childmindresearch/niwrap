@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 REALTIME_RECEIVER_METADATA = Metadata(
-    id="4c287e3aa9835145a0fded1d066031892497bb35",
+    id="6c54a3288c044ff24b27d6a2e5e4ff4416991346",
     name="realtime_receiver",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/realtime_receiver:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,11 +37,12 @@ def realtime_receiver(
     runner: Runner | None = None,
 ) -> RealtimeReceiverOutputs:
     """
-    realtime_receiver by R Reynolds.
+    realtime_receiver by AFNI Team.
     
     Program to receive and display real-time plugin data from AFNI.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/realtime_receiver.py.html
     
     Args:
         show_data: Display incoming data in terminal window.

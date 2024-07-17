@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FAT_MAT_TABLEIZE_METADATA = Metadata(
-    id="89427454858c13a129c156597b40c928eba78020",
+    id="8009d72550df10b0dec058526e028fa5cea57ab3",
     name="fat_mat_tableize",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,11 +39,14 @@ def fat_mat_tableize(
     runner: Runner | None = None,
 ) -> FatMatTableizeOutputs:
     """
-    fat_mat_tableize by PA Taylor.
+    fat_mat_tableize by AFNI Team.
     
     Make tables for AFNI group analysis programs from 3dNetCorr (*.netcc) and
     3dTrackID (*.grid) outputs, with optional additional subject information
     from CSV files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat_tableize.py.html
     
     Args:
         input_matrices: Names of *.netcc or *.grid files with matrices to be\

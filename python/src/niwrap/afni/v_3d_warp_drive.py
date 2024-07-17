@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_WARP_DRIVE_METADATA = Metadata(
-    id="8f83d827a638274ca724256cf87b99333ecd5bfb",
+    id="bbc8f9081b71a14240f17eec55ffe4e225ee3f79",
     name="3dWarpDrive",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -70,10 +69,13 @@ def v_3d_warp_drive(
     runner: Runner | None = None,
 ) -> V3dWarpDriveOutputs:
     """
-    3dWarpDrive by RWCox.
+    3dWarpDrive by AFNI Team.
     
     Warp a dataset to match another one (the base) using an affine
     transformation.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWarpDrive.html
     
     Args:
         dataset: Input dataset.

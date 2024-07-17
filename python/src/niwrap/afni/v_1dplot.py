@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1DPLOT_METADATA = Metadata(
-    id="61b4f0ffdeb02d6f05c8da51271de77093c949ea",
+    id="fc4163f683186d0408789fe9373492cf03ce9d68",
     name="1dplot",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -77,12 +79,13 @@ def v_1dplot(
     runner: Runner | None = None,
 ) -> V1dplotOutputs:
     """
-    1dplot by RW Cox.
+    1dplot by AFNI Team.
     
     Graphs the columns of a *.1D time series file to the X11 screen, or to an
     image file (.jpg or .png).
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dplot.html
     
     Args:
         tsfiles: Input time series files (*.1D) to be plotted.

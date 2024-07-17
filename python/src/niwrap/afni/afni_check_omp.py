@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 AFNI_CHECK_OMP_METADATA = Metadata(
-    id="5ee6191136005e933144917a13abee6bb789b4e9",
+    id="73e8f2ead808aa5285807aea328c74f7155b5129",
     name="afni_check_omp",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -24,7 +26,7 @@ def afni_check_omp(
     runner: Runner | None = None,
 ) -> AfniCheckOmpOutputs:
     """
-    afni_check_omp by AFNI Development Team.
+    afni_check_omp by AFNI Team.
     
     Tool to check the OpenMP multi-threading environment for AFNI.
     

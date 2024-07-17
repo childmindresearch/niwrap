@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TCORR1_D_METADATA = Metadata(
-    id="277e38041b11d536f9e7d22ae826af5199f1db04",
+    id="3b96df01846b82c5c5c3d30c4232cbe1617a4a06",
     name="3dTcorr1D",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -37,7 +37,7 @@ def v_3d_tcorr1_d(
     runner: Runner | None = None,
 ) -> V3dTcorr1DOutputs:
     """
-    3dTcorr1D by Nipype (interface).
+    3dTcorr1D by AFNI Team.
     
     Computes the correlation coefficient between each voxel time series in the
     input 3D+time dataset.

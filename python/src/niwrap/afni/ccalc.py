@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 CCALC_METADATA = Metadata(
-    id="ee45554e01c31e5c53a7bbabb3553465a0061ffd",
+    id="0e8a14e8d51acb0d16d01266157f407bfb13414a",
     name="ccalc",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,11 +27,12 @@ def ccalc(
     runner: Runner | None = None,
 ) -> CcalcOutputs:
     """
-    ccalc by Unknown.
+    ccalc by AFNI Team.
     
     Command line calculator with formatted output options.
     
-    More information: https://example.com/ccalc
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ccalc.html
     
     Args:
         expr: Evaluate an expression specified on command line, return answer\

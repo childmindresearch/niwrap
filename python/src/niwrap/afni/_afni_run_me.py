@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _AFNI_RUN_ME_METADATA = Metadata(
-    id="98996bae396e41bc98eaa9308f3d0becebda71fb",
+    id="f53ea975be48684eb226ef5dee3840314ae33a03",
     name="@afni.run.me",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,9 +28,12 @@ def _afni_run_me(
     runner: Runner | None = None,
 ) -> AfniRunMeOutputs:
     """
-    @afni.run.me by AFNI Tools Authors.
+    @afni.run.me by AFNI Team.
     
     A tool to execute a specific command.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni.run.me.html
     
     Args:
         help_: Show help message.

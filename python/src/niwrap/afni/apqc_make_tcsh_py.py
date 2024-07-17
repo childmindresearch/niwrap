@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 APQC_MAKE_TCSH_PY_METADATA = Metadata(
-    id="131191d543237694cf7a367dc8bc6237ad94b77d",
+    id="8fcca63c2c3568b6ddc9e9982d804d3b7e550688",
     name="apqc_make_tcsh.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,13 +32,14 @@ def apqc_make_tcsh_py(
     runner: Runner | None = None,
 ) -> ApqcMakeTcshPyOutputs:
     """
-    apqc_make_tcsh.py by AFNI Development Team.
+    apqc_make_tcsh.py by AFNI Team.
     
     This program creates the single subject (ss) HTML review script
     '@ss_review_html' which generates images and text for the afni_proc.py
     quality control (APQC) HTML.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/apqc_make_tcsh.py.html
     
     Args:
         uvar_json: Text file of user variables created by gen_ss_review.py that\

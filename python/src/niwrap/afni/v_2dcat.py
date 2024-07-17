@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_2DCAT_METADATA = Metadata(
-    id="3693ed36000c9147574fd2adeeee15edf2b05a24",
+    id="45473291ac5d44dcdcc4d0c691b40e4d4c4d28b3",
     name="2dcat",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -52,7 +54,7 @@ def v_2dcat(
     runner: Runner | None = None,
 ) -> V2dcatOutputs:
     """
-    2dcat by AFNI Development Team.
+    2dcat by AFNI Team.
     
     Puts a set of images into an image matrix montage of NX by NY images.
     

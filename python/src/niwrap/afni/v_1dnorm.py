@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1DNORM_METADATA = Metadata(
-    id="951354f5de345505d19fb779fcdc7a5144403323",
+    id="a002426dd8bb9a491d0dc5a5726276c33958ad9e",
     name="1dnorm",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,11 +33,12 @@ def v_1dnorm(
     runner: Runner | None = None,
 ) -> V1dnormOutputs:
     """
-    1dnorm by AFNI (Analysis of Functional NeuroImages).
+    1dnorm by AFNI Team.
     
     Normalize columns of a 1D file (AFNI ASCII list of numbers).
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dnorm.html
     
     Args:
         infile: Input AFNI *.1D file (ASCII list of numbers arranged in\

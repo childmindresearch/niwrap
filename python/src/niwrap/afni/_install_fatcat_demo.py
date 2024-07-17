@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INSTALL_FATCAT_DEMO_METADATA = Metadata(
-    id="10f2d2179a286726aa5145582d7ebb9f6e9dc741",
+    id="4e2f00871061ceb957a1c5091a8ea85f08239eb1",
     name="Install_FATCAT_DEMO",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,12 +27,12 @@ def install_fatcat_demo(
     runner: Runner | None = None,
 ) -> InstallFatcatDemoOutputs:
     """
-    Install_FATCAT_DEMO by Paul Taylor.
+    Install_FATCAT_DEMO by AFNI Team.
     
     Installs the demo archive for Paul Taylor's tractography tools.
     
     More information:
-    https://afni.nimh.nih.gov/pub/dist/doc/misc/fatcat_taylor.pdf
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_FATCAT_DEMO.html
     
     Args:
         wget: Use wget to download archive. Script chooses by default with\

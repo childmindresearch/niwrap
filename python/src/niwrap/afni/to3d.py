@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 TO3D_METADATA = Metadata(
-    id="15b8be8d89dfd1fcd02ff00ae00c500833f6ecda",
+    id="122c5076857e9f119b49436b90ac469c99a02dae",
     name="to3d",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -72,9 +71,12 @@ def to3d(
     runner: Runner | None = None,
 ) -> To3dOutputs:
     """
-    to3d by Medical College of Wisconsin.
+    to3d by AFNI Team.
     
     Creates 3D datasets for use with AFNI from 2D image files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/to3d.html
     
     Args:
         input_files: Input 2D image files.

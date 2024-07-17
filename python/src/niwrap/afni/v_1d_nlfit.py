@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1D_NLFIT_METADATA = Metadata(
-    id="daed81f773bcdbd49a85f5b88bdfe2e69574dbec",
+    id="fdccc19b1224a00431c197e74cec298ffa830265",
     name="1dNLfit",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,10 +32,13 @@ def v_1d_nlfit(
     runner: Runner | None = None,
 ) -> V1dNlfitOutputs:
     """
-    1dNLfit by Zhark the Well-Fitted.
+    1dNLfit by AFNI Team.
     
     Program to fit a model to a vector of data. The model is given by a symbolic
     expression, with parameters to be estimated.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dNLfit.html
     
     Args:
         expression: The expression for the fit. It must contain one symbol from\

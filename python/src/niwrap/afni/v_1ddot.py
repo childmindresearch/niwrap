@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1DDOT_METADATA = Metadata(
-    id="6fa91124fe7f10aa1a350125cab2e560d205e6ba",
+    id="f49c33c5b74497b86251401fa248f61c71383e67",
     name="1ddot",
     container_image_type="docker",
-    container_image_index="hub.docker.com",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,7 +40,8 @@ def v_1ddot(
     Computes the correlation matrix of the input 1D files and their inverse
     correlation matrix.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1ddot.html
     
     Args:
         input_files: Input 1D files.

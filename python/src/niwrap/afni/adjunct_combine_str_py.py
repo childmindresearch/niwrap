@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_COMBINE_STR_PY_METADATA = Metadata(
-    id="3454b97df7fb8cb3e36573716bc8478c34fb19b0",
+    id="fd97336f40bb633027085aedee51887ccb728352",
     name="adjunct_combine_str.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,10 +30,13 @@ def adjunct_combine_str_py(
     runner: Runner | None = None,
 ) -> AdjunctCombineStrPyOutputs:
     """
-    adjunct_combine_str.py by PA Taylor (NIMH, NIH).
+    adjunct_combine_str.py by AFNI Team.
     
     A simple helper function for fat_proc* scripts that processes string
     selectors and outputs a new string selector.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_combine_str.py.html
     
     Args:
         output_file: An output file name.

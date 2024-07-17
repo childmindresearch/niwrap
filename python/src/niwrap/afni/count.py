@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 COUNT_METADATA = Metadata(
-    id="04ca189c06aebfd7d39da9cb3d50ae098760a33c",
+    id="c4231bafed0c6aeb0249898858ab79e2e23ed778",
     name="count",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="custom/count-tool:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,10 +39,13 @@ def count(
     runner: Runner | None = None,
 ) -> CountOutputs:
     """
-    count by RWCox.
+    count by AFNI Team.
     
     Numbered copies generator with custom format support and random sequence
     options.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/count.html
     
     Args:
         bot: Starting number or character.

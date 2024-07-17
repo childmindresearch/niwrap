@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_GRAYPLOT_METADATA = Metadata(
-    id="396d5fc88e2a8700f1ba71414061014943699e52",
+    id="86953453682f81ec7a6602db14e1538725d52f70",
     name="3dGrayplot",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,10 +41,13 @@ def v_3d_grayplot(
     runner: Runner | None = None,
 ) -> V3dGrayplotOutputs:
     """
-    3dGrayplot by AFNI (Analysis of Functional NeuroImages).
+    3dGrayplot by AFNI Team.
     
     Make a grayplot from a 3D+time dataset, like a carpet plot. Result is saved
     to a PNG image.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGrayplot.html
     
     Args:
         input_: Input dataset.

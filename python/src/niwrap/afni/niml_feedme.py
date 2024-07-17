@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 NIML_FEEDME_METADATA = Metadata(
-    id="d9271e732674ebd4ae80a5177db3df840519cc46",
+    id="23663cf53d4823ff642f7ddb0b1d228a321f193f",
     name="niml_feedme",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,7 +32,7 @@ def niml_feedme(
     runner: Runner | None = None,
 ) -> NimlFeedmeOutputs:
     """
-    niml_feedme by RW Cox.
+    niml_feedme by AFNI Team.
     
     Sends volumes from the dataset to AFNI via the NIML socket interface.
     

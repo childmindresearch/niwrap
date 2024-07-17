@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_LOMB_SCARGLE_METADATA = Metadata(
-    id="6389e4cf03c7df75cdcba6fa547aceea4f424c4f",
+    id="fc7f59e3c90bfed8a9e7f914db08b48d033dceaa",
     name="3dLombScargle",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,7 +41,7 @@ def v_3d_lomb_scargle(
     runner: Runner | None = None,
 ) -> V3dLombScargleOutputs:
     """
-    3dLombScargle by PA Taylor.
+    3dLombScargle by AFNI Team.
     
     Make a periodogram or amplitude-spectrum of a time series that has a
     non-constant sampling rate.

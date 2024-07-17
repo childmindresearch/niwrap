@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1D_SEM_METADATA = Metadata(
-    id="bb886ee79d5c64aabe77f5b0d3475ae5316bd264",
+    id="a13cc37aed7943063bbc8f15d64c62a62a0acaad",
     name="1dSEM",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-container-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,13 +43,13 @@ def v_1d_sem(
     runner: Runner | None = None,
 ) -> V1dSemOutputs:
     """
-    1dSEM by Gang Chen, Daniel R. Glen, Jason L. Stein, Andreas S. Meyer-Lindenberg,
-    Ziad S. Saad, Robert W. Cox.
+    1dSEM by AFNI Team.
     
     Computes path coefficients for connection matrix in Structural Equation
     Modeling (SEM).
     
-    More information: https://afni.nimh.nih.gov/sscc/gangc/PathAna.html
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dSEM.html
     
     Args:
         theta: Connection matrix 1D file with initial representation.

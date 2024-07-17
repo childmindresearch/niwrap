@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_ECM_METADATA = Metadata(
-    id="c6fa57f4f978581d3dadefc82066633b22ed1bb5",
+    id="66a7187d36ac1401b986aeb4deef78e5cc8f8f0b",
     name="3dECM",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -45,7 +45,7 @@ def v_3d_ecm(
     runner: Runner | None = None,
 ) -> V3dEcmOutputs:
     """
-    3dECM by Nipype (interface).
+    3dECM by AFNI Team.
     
     Performs degree centrality on a dataset using a given maskfile via the 3dECM
     command.

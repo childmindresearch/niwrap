@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_WILCOXON_METADATA = Metadata(
-    id="38137c226ae7ff3bfa2bbab8c96115ecffdaa36f",
+    id="ce0c420bb4ac2506405a1bdb318fed52f0dc7840",
     name="3dWilcoxon",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,12 +32,13 @@ def v_3d_wilcoxon(
     runner: Runner | None = None,
 ) -> V3dWilcoxonOutputs:
     """
-    3dWilcoxon by AFNI (Analysis of Functional NeuroImages).
+    3dWilcoxon by AFNI Team.
     
     Nonparametric Wilcoxon signed-rank test for paired comparisons of two
     samples.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWilcoxon.html
     
     Args:
         dset1_x: Data set for X observations. The user must specify 1 and only\

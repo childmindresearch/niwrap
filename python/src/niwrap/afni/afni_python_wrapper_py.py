@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AFNI_PYTHON_WRAPPER_METADATA = Metadata(
-    id="a88df47e02873d810dd3cddab5b92bf1e1bc84f6",
+    id="5ffd5cc3c5257951f3f725493b07d4eb50bff09e",
     name="afni_python_wrapper",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,9 +34,12 @@ def afni_python_wrapper(
     runner: Runner | None = None,
 ) -> AfniPythonWrapperOutputs:
     """
-    afni_python_wrapper by R Reynolds.
+    afni_python_wrapper by AFNI Team.
     
     Python wrapper to call AFNI functions from the shell.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_python_wrapper.py.html
     
     Args:
         module: Specify the python module to import.

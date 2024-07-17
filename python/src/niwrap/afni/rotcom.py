@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ROTCOM_METADATA = Metadata(
-    id="7c1f0710e04c11bbbf98ee767851512aaea1b19d",
+    id="3acebcd7176defc88b7ac74b094be7f45a9f9443",
     name="rotcom",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,10 +29,13 @@ def rotcom(
     runner: Runner | None = None,
 ) -> RotcomOutputs:
     """
-    rotcom by RWCox.
+    rotcom by AFNI Team.
     
     Prints to stdout the 4x3 transformation matrix+vector that would be applied
     by 3drotate to the given dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/rotcom.html
     
     Args:
         rotate_ashift: Combination of rotate and ashift options in a single\

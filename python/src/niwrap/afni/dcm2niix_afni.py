@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DCM2NIIX_AFNI_METADATA = Metadata(
-    id="dd16f06a22de89a07cbb5f6b9d654892456f766d",
+    id="dc4c0d293a5127c7633d4dcbe8370fd6febf5287",
     name="dcm2niix_afni",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-dcm2niix:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -57,9 +56,12 @@ def dcm2niix_afni(
     runner: Runner | None = None,
 ) -> Dcm2niixAfniOutputs:
     """
-    dcm2niix_afni by Chris Rorden.
+    dcm2niix_afni by AFNI Team.
     
     DICOM to NIfTI converter optimized for AFNI.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/dcm2niix_afni.html
     
     Args:
         input_folder: Folder containing DICOM files.

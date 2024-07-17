@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _MOVE_TO_SERIES_DIRS_METADATA = Metadata(
-    id="52c45bedb9e866d595dfca481b8e7d9e738ba89f",
+    id="724830750ffbe82224b0ca6d89c61329a782e57c",
     name="@move.to.series.dirs",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,10 +33,13 @@ def _move_to_series_dirs(
     runner: Runner | None = None,
 ) -> MoveToSeriesDirsOutputs:
     """
-    @move.to.series.dirs by R Reynolds.
+    @move.to.series.dirs by AFNI Team.
     
     Partition DICOM files into series directories by copying or moving them to
     new series directories.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@move.to.series.dirs.html
     
     Args:
         dicom_files: Specify input DICOM files (e.g., IMG*).

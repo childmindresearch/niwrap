@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TSORT_METADATA = Metadata(
-    id="fb34675945e77b3fdf2d105b9fa861fe12ed01c9",
+    id="1349e5ba814d3f41f186f20a1d03ee818d8792d9",
     name="3dTsort",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,9 +38,12 @@ def v_3d_tsort(
     runner: Runner | None = None,
 ) -> V3dTsortOutputs:
     """
-    3dTsort by AFNI Developers.
+    3dTsort by AFNI Team.
     
     Sorts each voxel in a dataset and produces a new dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTsort.html
     
     Args:
         input_file: Input dataset to be sorted.

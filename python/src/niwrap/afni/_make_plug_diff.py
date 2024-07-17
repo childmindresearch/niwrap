@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _MAKE_PLUG_DIFF_METADATA = Metadata(
-    id="9b98f6c899cb907b229f903a55d51eed0ec85776",
+    id="ab1a1599e368533473394b97e2e6173fe6d5c85b",
     name="@make_plug_diff",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,11 +32,12 @@ def _make_plug_diff(
     runner: Runner | None = None,
 ) -> MakePlugDiffOutputs:
     """
-    @make_plug_diff by AFNI.
+    @make_plug_diff by AFNI Team.
     
     Compiles AFNI's diffusion plugin.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@make_plug_diff.html
     
     Args:
         vtk_dir: Directory where vtk is installed.

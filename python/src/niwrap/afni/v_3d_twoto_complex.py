@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TWOTO_COMPLEX_METADATA = Metadata(
-    id="d4ba5b6cbfa3c4396c25f2f78d2e4533ed6f9ed8",
+    id="b7b2cf3dcb325b26c4374f9f6b22b6dd5fbb247a",
     name="3dTwotoComplex",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,9 +35,12 @@ def v_3d_twoto_complex(
     runner: Runner | None = None,
 ) -> V3dTwotoComplexOutputs:
     """
-    3dTwotoComplex by R. W. Cox.
+    3dTwotoComplex by AFNI Team.
     
     Converts 2 sub-bricks of input to a complex-valued dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTwotoComplex.html
     
     Args:
         dataset1: Input dataset (either as 1 dataset with 2 sub-bricks or 2\

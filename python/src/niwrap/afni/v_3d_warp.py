@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_WARP_METADATA = Metadata(
-    id="8bc70204d490cbecc5e33784f4db423662032e79",
+    id="596ed74ea429713ba4b99a676c769adae11fc2b4",
     name="3dWarp",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,9 +47,12 @@ def v_3d_warp(
     runner: Runner | None = None,
 ) -> V3dWarpOutputs:
     """
-    3dWarp by AFNI.
+    3dWarp by AFNI Team.
     
     Warp (spatially transform) one 3D dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWarp.html
     
     Args:
         dataset: Input dataset to be warped.

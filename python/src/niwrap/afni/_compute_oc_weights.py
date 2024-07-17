@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _COMPUTE_OC_WEIGHTS_METADATA = Metadata(
-    id="072b1472373871103959311c4257ef22385d9d6c",
+    id="f2afd179f11acd332f806fb035599389c09d5e26",
     name="@compute_OC_weights",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,11 +37,12 @@ def _compute_oc_weights(
     runner: Runner | None = None,
 ) -> ComputeOcWeightsOutputs:
     """
-    @compute_OC_weights by R Reynolds.
+    @compute_OC_weights by AFNI Team.
     
     Compute optimal combined weights dataset for multi-echo EPI data.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@compute_OC_weights.html
     
     Args:
         echo_dsets: Specify one run of multi-echo EPI data.

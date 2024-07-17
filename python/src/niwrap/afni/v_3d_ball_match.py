@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_BALL_MATCH_METADATA = Metadata(
-    id="3557523a60884c94ea8e3984c704dafd15f4a19c",
+    id="c24500534e5ede8367f0ddbab301c741e32d904c",
     name="3dBallMatch",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/3dballmatch:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,13 +32,14 @@ def v_3d_ball_match(
     runner: Runner | None = None,
 ) -> V3dBallMatchOutputs:
     """
-    3dBallMatch by RWCox.
+    3dBallMatch by AFNI Team.
     
     A tool to find a good match between a ball (filled sphere) of the given
     radius and a dataset to determine a crude approximate center of the brain
     quickly.
     
-    More information: https://example.com/3dBallMatch
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBallMatch.html
     
     Args:
         input_dataset: Input dataset (e.g., Fred.nii).

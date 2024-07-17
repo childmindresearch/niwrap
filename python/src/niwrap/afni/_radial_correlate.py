@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _RADIAL_CORRELATE_METADATA = Metadata(
-    id="dcd43809e2c4c9460d164e4808a93c1017323b50",
+    id="e65d9665c01b39d36f94af526f2028608f70a9f2",
     name="@radial_correlate",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -45,9 +47,12 @@ def _radial_correlate(
     runner: Runner | None = None,
 ) -> RadialCorrelateOutputs:
     """
-    @radial_correlate by R Reynolds.
+    @radial_correlate by AFNI Team.
     
     Check datasets for correlation artifacts.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@radial_correlate.html
     
     Args:
         input_files: A list of EPI datasets.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 PLUGOUT_DRIVE_METADATA = Metadata(
-    id="221cc59ab796d9f61b7bb69841ce40fa2ee8463d",
+    id="e276e46d3bac8927acd9735095a5b4fefd890e48",
     name="plugout_drive",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,10 +40,13 @@ def plugout_drive(
     runner: Runner | None = None,
 ) -> PlugoutDriveOutputs:
     """
-    plugout_drive by AFNI Development Team.
+    plugout_drive by AFNI Team.
     
     This program connects to AFNI and sends commands that the user specifies
     interactively or on command line over to AFNI to be executed.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/plugout_drive.html
     
     Args:
         host: Connect to AFNI running on the specified host using TCP/IP.\

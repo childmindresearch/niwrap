@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_2SWAP_METADATA = Metadata(
-    id="318fc7e5530c302eb55edc76915530b7315ea479",
+    id="4512cc17b343225898fb40181f3a7c602db7fe44",
     name="2swap",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,9 +27,12 @@ def v_2swap(
     runner: Runner | None = None,
 ) -> V2swapOutputs:
     """
-    2swap by Author Name.
+    2swap by AFNI Team.
     
     Swaps byte pairs on the files listed.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/2swap.html
     
     Args:
         input_files: Input files.

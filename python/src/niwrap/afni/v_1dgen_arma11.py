@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1DGEN_ARMA11_METADATA = Metadata(
-    id="47c50a4029021e31bbbd815948a827ea5cd22a17",
+    id="1f240adb39589c98a823c6a4041f2972ce1b8892",
     name="1dgenARMA11",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,10 +39,13 @@ def v_1dgen_arma11(
     runner: Runner | None = None,
 ) -> V1dgenArma11Outputs:
     """
-    1dgenARMA11 by RWCox.
+    1dgenARMA11 by AFNI Team.
     
     Program to generate an ARMA(1,1) time series, for simulation studies.
     Results are written to stdout.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dgenARMA11.html
     
     Args:
         length: Specify the length of the time series vector to generate\

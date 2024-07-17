@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _DJUNCT_MONTAGE_COORDINATOR_METADATA = Metadata(
-    id="169b3a3fb4adbe0a20fcd359028d265acee28bee",
+    id="af5ce0db077f10a9328b5046c23ada37caf0c8db",
     name="@djunct_montage_coordinator",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -32,10 +34,13 @@ def _djunct_montage_coordinator(
     runner: Runner | None = None,
 ) -> DjunctMontageCoordinatorOutputs:
     """
-    @djunct_montage_coordinator by PA Taylor (NIMH, NIH, USA).
+    @djunct_montage_coordinator by AFNI Team.
     
     Small program to calculate how to evenly space a certain number of slices
     within each view plane of a dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_montage_coordinator.html
     
     Args:
         input_file: Name of input dataset.

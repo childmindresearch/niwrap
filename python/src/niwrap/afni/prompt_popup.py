@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 PROMPT_POPUP_METADATA = Metadata(
-    id="a297e936a9d53b4336d29ac38ff0b7128605f23f",
+    id="98bd167ed596604ba119f7fa728f43bd7b70ddef",
     name="prompt_popup",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,10 +31,13 @@ def prompt_popup(
     runner: Runner | None = None,
 ) -> PromptPopupOutputs:
     """
-    prompt_popup by Justin Rajendra.
+    prompt_popup by AFNI Team.
     
     A command-line tool that pops up a window prompting user interaction with a
     message and buttons.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/prompt_popup.html
     
     Args:
         message: Pops a window prompting the user with MESSAGE. If MESSAGE is\

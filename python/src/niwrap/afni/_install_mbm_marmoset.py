@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INSTALL_MBM_MARMOSET_METADATA = Metadata(
-    id="ee86a773ea7cd1d9834bb49f7cbb4c0164393671",
+    id="2327a5e2de45f4f986bd00b298d6a23ede32654a",
     name="Install_MBM_Marmoset",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-marmoset:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,9 +27,12 @@ def install_mbm_marmoset(
     runner: Runner | None = None,
 ) -> InstallMbmMarmosetOutputs:
     """
-    Install_MBM_Marmoset by NIH.
+    Install_MBM_Marmoset by AFNI Team.
     
     Installs the NIH marmoset template and atlases.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_MBM_Marmoset.html
     
     Args:
         wget: Use wget to download archive. Script chooses by default with\

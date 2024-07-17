@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 UPDATE_AFNI_BINARIES_METADATA = Metadata(
-    id="694ef556a4a7d92ae1d9134f812e9f782b04a5af",
+    id="16fa58a4e29b4d1649355dc7537a40d077ded408",
     name="update.afni.binaries",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,11 +49,12 @@ def update_afni_binaries(
     runner: Runner | None = None,
 ) -> UpdateAfniBinariesOutputs:
     """
-    update.afni.binaries by AFNI Developers.
+    update.afni.binaries by AFNI Team.
     
     Install or update AFNI binaries.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@update.afni.binaries.html
     
     Args:
         defaults_flag: Install current package into abin.

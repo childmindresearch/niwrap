@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_4SWAP_METADATA = Metadata(
-    id="53393060ed3cedb1841bf9d574691cb39abd3cf4",
+    id="2131a79b261c3d3784d36177cf77b8ff550c0aa7",
     name="4swap",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,9 +27,12 @@ def v_4swap(
     runner: Runner | None = None,
 ) -> V4swapOutputs:
     """
-    4swap by Unknown.
+    4swap by AFNI Team.
     
     Swaps byte quadruples on the listed files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/4swap.html
     
     Args:
         files: List of files to process.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DICOM_HDR_METADATA = Metadata(
-    id="a284867e26ac3b09feb99bd0fff8bbca940391dc",
+    id="7940d1c952c1985b31235192fa73e53002e6d4f9",
     name="dicom_hdr",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-dicom-tools:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,9 +35,12 @@ def dicom_hdr(
     runner: Runner | None = None,
 ) -> DicomHdrOutputs:
     """
-    dicom_hdr by Mallinckrodt Institute of Radiology.
+    dicom_hdr by AFNI Team.
     
     A tool to print DICOM file information to stdout.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/dicom_hdr.html
     
     Args:
         files: DICOM file(s) to read.

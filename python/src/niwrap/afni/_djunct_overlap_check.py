@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 _DJUNCT_OVERLAP_CHECK_METADATA = Metadata(
-    id="b1809795f7fbfbff8dfdca8b5203b003ed9cdc63",
+    id="742d5817fdc45fe04e551d642aaef270989eb4e2",
     name="@djunct_overlap_check",
     container_image_type="docker",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -49,9 +49,12 @@ def _djunct_overlap_check(
     runner: Runner | None = None,
 ) -> DjunctOverlapCheckOutputs:
     """
-    @djunct_overlap_check by PA Taylor.
+    @djunct_overlap_check by AFNI Team.
     
     A helper script for visualizing overlap between datasets in AFNI.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_overlap_check.html
     
     Args:
         ulay: Dataset to use as the underlay (background).

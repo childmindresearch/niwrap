@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_TSGEN_METADATA = Metadata(
-    id="b728bc885bd947f5c2ec0323555de5513dc9a139",
+    id="545f783fe3767b08911fc8a96bde6ffc77cf46ef",
     name="3dTSgen",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,6 +42,9 @@ def v_3d_tsgen(
     
     This program generates an AFNI 3d+time data set based on user-specified
     signal and noise models for each voxel.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTSgen.html
     
     Args:
         input_file: Filename of prototype 3d + time data file.

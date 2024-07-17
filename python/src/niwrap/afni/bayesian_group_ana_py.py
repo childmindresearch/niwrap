@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 BAYESIAN_GROUP_ANA_METADATA = Metadata(
-    id="53daa2439e1c640237772cddc19c731ba60de3ac",
+    id="701201b8538d448e2c12a0e2c4a3b39d10b50095",
     name="BayesianGroupAna",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -45,13 +47,14 @@ def bayesian_group_ana(
     runner: Runner | None = None,
 ) -> BayesianGroupAnaOutputs:
     """
-    BayesianGroupAna by Justin Rajendra.
+    BayesianGroupAna by AFNI Team.
     
     This program conducts Bayesian Group Analysis (BGA) on a list of regions of
     interest (ROIs). Compared to the conventional univariate GLM, BGA pools and
     shares the information across the ROIs in a multilevel system.
     
-    More information: https://www.example.com
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/BayesianGroupAna.py.html
     
     Args:
         data_table: Input text file containing the data table.

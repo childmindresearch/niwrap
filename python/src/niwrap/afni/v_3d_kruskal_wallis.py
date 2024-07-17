@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_KRUSKAL_WALLIS_METADATA = Metadata(
-    id="9f0d0fcbf82afbc8e1259e9cf3edf1708b9f11b3",
+    id="f03a8fb01f95dd0755f6ee679f88d2802de4bb24",
     name="3dKruskalWallis",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_container:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,12 +32,13 @@ def v_3d_kruskal_wallis(
     runner: Runner | None = None,
 ) -> V3dKruskalWallisOutputs:
     """
-    3dKruskalWallis by AFNI Development Team.
+    3dKruskalWallis by AFNI Team.
     
     This program performs nonparametric Kruskal-Wallis test for comparison of
     multiple treatments.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dKruskalWallis.html
     
     Args:
         levels: Number of treatments.

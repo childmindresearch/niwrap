@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 CJPEG_METADATA = Metadata(
-    id="6adc1d4318ee18e04c08171d0b8c6ac652dacf14",
+    id="164adf9df19327dd321b88e1cbb7402d667396ef",
     name="cjpeg",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="jrottenberg/ffmpeg:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,9 +34,12 @@ def cjpeg(
     runner: Runner | None = None,
 ) -> CjpegOutputs:
     """
-    cjpeg by Independent JPEG Group.
+    cjpeg by AFNI Team.
     
     Compresses an image file to a JPEG file.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/cjpeg.html
     
     Args:
         infile: Input image file.

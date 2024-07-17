@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_MSS_METADATA = Metadata(
-    id="1e11fd7dcc2067122d60ec0758f72257bd0957d3",
+    id="705be3c9a9dd3456752c4fb24e8a6615eb6d6ac5",
     name="3dMSS",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,11 +45,12 @@ def v_3d_mss(
     runner: Runner | None = None,
 ) -> V3dMssOutputs:
     """
-    3dMSS by Gang Chen.
+    3dMSS by AFNI Team.
     
     Voxelwise Multilevel Smoothing Spline (MSS) Analysis.
     
-    More information: https://afni.nimh.nih.gov/gangchen_homepage
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMSS.html
     
     Args:
         prefix: Output file name. For AFNI format, provide prefix only, with no\

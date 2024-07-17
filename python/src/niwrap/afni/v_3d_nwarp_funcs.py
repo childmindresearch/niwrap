@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_NWARP_FUNCS_METADATA = Metadata(
-    id="de70d0bf66d194e6f535ec135c210015bf3a45e6",
+    id="06f5d93900bb791a4c4526f40c403bbfd24380ac",
     name="3dNwarpFuncs",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,10 +33,13 @@ def v_3d_nwarp_funcs(
     runner: Runner | None = None,
 ) -> V3dNwarpFuncsOutputs:
     """
-    3dNwarpFuncs by RWCox.
+    3dNwarpFuncs by AFNI Team.
     
     Compute functions of 3D warp displacements, such as bulk volume change,
     shear energy, and vorticity energy.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpFuncs.html
     
     Args:
         input_warp: 'www' is the name of the 3D warp dataset (mandatory\

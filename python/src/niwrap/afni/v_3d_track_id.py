@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TRACK_ID_METADATA = Metadata(
-    id="732a8c7c4adc6505625ce519c2daf16504416182",
+    id="5cf38d09f658de902f96f871914d246c66fcdb31",
     name="3dTrackID",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -88,11 +87,12 @@ def v_3d_track_id(
     runner: Runner | None = None,
 ) -> V3dTrackIdOutputs:
     """
-    3dTrackID by PA Taylor and ZS Saad.
+    3dTrackID by AFNI Team.
     
     FACTID-based tractography code for AFNI, part of FATCAT.
     
-    More information: https://afni.nimh.nih.gov/AFNI_2011-12-29_64bit
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTrackID.html
     
     Args:
         mode: The mode of tracking: DET, MINIP, or PROB.

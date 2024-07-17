@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DMAXDISP_METADATA = Metadata(
-    id="3f6889523421b40bb807ec2109206729b95549ea",
+    id="f43c66735d941596c417c4b7d4ad6b1b4f1e4608",
     name="3dmaxdisp",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="braininst/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,11 +30,14 @@ def v_3dmaxdisp(
     runner: Runner | None = None,
 ) -> V3dmaxdispOutputs:
     """
-    3dmaxdisp by Zhark the Displacer (AKA Bob the Inverted).
+    3dmaxdisp by AFNI Team.
     
     Reads in a 3D dataset and a DICOM-based affine matrix to output the average
     and maximum displacement applied to the edge voxels of the 3D dataset's
     automask.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaxdisp.html
     
     Args:
         inset: Input dataset file used to form the mask over which\

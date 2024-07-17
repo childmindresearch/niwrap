@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_24SWAP_METADATA = Metadata(
-    id="b106e59fb064c34a69fb60fd9bdbfa1f887e1ad5",
+    id="c3d0dee2da6aafff847232a1bdc2f4c11415b1b0",
     name="24swap",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,9 +28,12 @@ def v_24swap(
     runner: Runner | None = None,
 ) -> V24swapOutputs:
     """
-    24swap by Unknown.
+    24swap by AFNI Team.
     
     Swaps bytes pairs and/or quadruples on the files listed.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/24swap.html
     
     Args:
         input_files: Input file(s) to swap bytes.

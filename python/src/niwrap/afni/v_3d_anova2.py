@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ANOVA2_METADATA = Metadata(
-    id="961bc47c4a70cdb5bcc7b55b10f65ad807857909",
+    id="73feb9fbb7db784de04ccb1af1518ae3c0f400fd",
     name="3dANOVA2",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="brainlife/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -78,7 +77,7 @@ def v_3d_anova2(
     runner: Runner | None = None,
 ) -> V3dAnova2Outputs:
     """
-    3dANOVA2 by AFNI (Analysis of Functional NeuroImages).
+    3dANOVA2 by AFNI Team.
     
     This program performs a two-factor Analysis of Variance (ANOVA) on 3D
     datasets.

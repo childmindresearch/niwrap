@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _ISO_MASKS_METADATA = Metadata(
-    id="920610186c58e96fc14c6720b6c8de5ab38e621c",
+    id="b1a7810eaa66f8ef3b9bbd589fd8f9776b091baa",
     name="@IsoMasks",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,9 +27,12 @@ def _iso_masks(
     runner: Runner | None = None,
 ) -> IsoMasksOutputs:
     """
-    @IsoMasks by unknown.
+    @IsoMasks by AFNI Team.
     
     Creates isosurfaces from isovolume envelopes.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@IsoMasks.html
     
     Args:
         input_dataset: Input dataset for creating isosurfaces.

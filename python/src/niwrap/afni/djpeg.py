@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DJPEG_METADATA = Metadata(
-    id="1364461d80ca4aa7716f4a758e0a7f1b99de2ec5",
+    id="289c3c33dfcbec3d18383f4bad10dff256c5ad3a",
     name="djpeg",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="jrottenberg/ffmpeg:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,11 +34,12 @@ def djpeg(
     runner: Runner | None = None,
 ) -> DjpegOutputs:
     """
-    djpeg by Independent JPEG Group.
+    djpeg by AFNI Team.
     
     Decompress a JPEG file to an image file.
     
-    More information: http://jpegclub.org/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/djpeg.html
     
     Args:
         input_file: Input JPEG file (e.g. image.jpg).

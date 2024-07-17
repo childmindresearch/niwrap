@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_2DCAT_METADATA = Metadata(
-    id="344fad5896c105a98f5df3d67d3397b9ff5c873f",
+    id="404fbdfb2c6737579bfb7f9f4e5ee69d81b7849a",
     name="2dcat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -53,12 +52,13 @@ def v_2dcat(
     runner: Runner | None = None,
 ) -> V2dcatOutputs:
     """
-    2dcat by Unknown.
+    2dcat by AFNI Team.
     
     Assembles a set of images into an image matrix (IM) montage of NX by NY
     images.
     
-    More information: https://example.com/2dcat
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcat.html
     
     Args:
         input_files: Input image files.

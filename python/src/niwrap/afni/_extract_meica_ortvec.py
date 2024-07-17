@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 EXTRACT_MEICA_ORTVEC_METADATA = Metadata(
-    id="0cc9ebe6ff42c36c7d42cccbf849c0d4291590d9",
+    id="a671cb438065711f82ee6e3e85b878446c918599",
     name="extract_meica_ortvec",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,9 +33,12 @@ def extract_meica_ortvec(
     runner: Runner | None = None,
 ) -> ExtractMeicaOrtvecOutputs:
     """
-    extract_meica_ortvec by R Reynolds.
+    extract_meica_ortvec by AFNI Team.
     
     Project good MEICA components out of bad ones.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@extract_meica_ortvec.html
     
     Args:
         prefix: Name for output 1D ortvec file.

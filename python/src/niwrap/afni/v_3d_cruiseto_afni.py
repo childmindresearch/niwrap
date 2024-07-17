@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_CRUISETO_AFNI_METADATA = Metadata(
-    id="dd6ac7962a22baf1a03bcb9453bc0efa1e74443e",
+    id="aa27069f79ebd01d0cd08296304db8fdafb902f3",
     name="3dCRUISEtoAFNI",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,9 +35,12 @@ def v_3d_cruiseto_afni(
     runner: Runner | None = None,
 ) -> V3dCruisetoAfniOutputs:
     """
-    3dCRUISEtoAFNI by Ziad S. Saad.
+    3dCRUISEtoAFNI by AFNI Team.
     
     Converts a CRUISE dataset defined by a header in OpenDX format.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCRUISEtoAFNI.html
     
     Args:
         input_: Input CRUISE header file in OpenDX format.

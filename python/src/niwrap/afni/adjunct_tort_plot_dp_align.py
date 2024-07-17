@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_TORT_PLOT_DP_ALIGN_METADATA = Metadata(
-    id="499dd43a6fa61cf53a6d3618ebd69fd0833bb08d",
+    id="02a4c0f7dae2c543345995a94df891c01e61e51d",
     name="adjunct_tort_plot_dp_align",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,10 +38,13 @@ def adjunct_tort_plot_dp_align(
     runner: Runner | None = None,
 ) -> AdjunctTortPlotDpAlignOutputs:
     """
-    adjunct_tort_plot_dp_align by PA Taylor (NIMH, NIH, USA).
+    adjunct_tort_plot_dp_align by AFNI Team.
     
     Tool to display the rigid-body alignment parameters from TORTOISE's
     DIFFPREP, useful for analyzing subject motion in DWI data.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_tort_plot_dp_align.html
     
     Args:
         input_file: Name of DIFFPREP-produced file to parse, probably ending in\

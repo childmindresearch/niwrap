@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TFILTER_METADATA = Metadata(
-    id="590c9bcb9572f39891c00ff8d6a5cee7d0b49d1f",
+    id="e9be2d225ca5d76c7219c941b0c94dac21e049cb",
     name="3dTfilter",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="yourdockerhubuser/3dtfilter:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,10 +30,13 @@ def v_3d_tfilter(
     runner: Runner | None = None,
 ) -> V3dTfilterOutputs:
     """
-    3dTfilter by The Programmer with No Name.
+    3dTfilter by AFNI Team.
     
     3dTfilter filters the time series in each voxel according to the
     user-specified filter functions.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTfilter.html
     
     Args:
         inputdataset: Input dataset.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1D_RPLOT_METADATA = Metadata(
-    id="5c6badf38203e1ac506cbc2622f772fcf08dfaf6",
+    id="563de597144e9f7c7ff166ac3722dd396521b524",
     name="1dRplot",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -47,9 +46,12 @@ def v_1d_rplot(
     runner: Runner | None = None,
 ) -> V1dRplotOutputs:
     """
-    1dRplot by AFNI.
+    1dRplot by AFNI Team.
     
     Program for plotting a 1D file.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dRplot.html
     
     Args:
         input_file: Input 1D file to plot.

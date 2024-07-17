@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FULL_PATH_METADATA = Metadata(
-    id="6f563dff60cc1d0d4ab3053ec36d8667fa933de3",
+    id="3601683f3034633af99d080d2eedbd34ddc49db3",
     name="FullPath",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -24,9 +26,12 @@ def full_path(
     runner: Runner | None = None,
 ) -> FullPathOutputs:
     """
-    FullPath.
+    FullPath by AFNI Team.
     
     Changes relative path to absolute one.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FullPath.html
     
     Args:
         input_file: Input file with relative path.

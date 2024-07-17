@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 TIME_DIFF_METADATA = Metadata(
-    id="d89e8dbd119f1280bf94698716240a60c5081c07",
+    id="81616227a405b7d61c222cd761885e16d078694b",
     name="TimeDiff",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,9 +27,12 @@ def time_diff(
     runner: Runner | None = None,
 ) -> TimeDiffOutputs:
     """
-    TimeDiff by Your Name.
+    TimeDiff by AFNI Team.
     
     A tool to compare the modification times of two files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@TimeDiff.html
     
     Args:
         file1: First file to compare (e.g., file1.txt).

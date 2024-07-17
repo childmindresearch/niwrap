@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 CONVERT_CDIFLIST_TO_GRADS_METADATA = Metadata(
-    id="56f7f51a2f82da8128a1aef84f599a9dc97b5437",
+    id="6b7abd92d0c28a3a5b6d2c4e7354b63f714680cf",
     name="convert_cdiflist_to_grads",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,10 +38,13 @@ def convert_cdiflist_to_grads(
     runner: Runner | None = None,
 ) -> ConvertCdiflistToGradsOutputs:
     """
-    convert_cdiflist_to_grads by PA Taylor.
+    convert_cdiflist_to_grads by AFNI Team.
     
     This program reads in a GE cdiflist and outputs gradient file and file of
     bvalues for subsequent processing.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/convert_cdiflist_to_grads.py.html
     
     Args:
         cdiflist: Name(s) of cdiflist text file output by GE scanners when\

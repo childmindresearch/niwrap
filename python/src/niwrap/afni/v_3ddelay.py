@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DDELAY_METADATA = Metadata(
-    id="0d0dd5bbf32418b918fe8bb33c871541396fb11d",
+    id="dd234d0079cf9434c4078a93a8e0c7da54f6217c",
     name="3ddelay",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -58,12 +57,13 @@ def v_3ddelay(
     runner: Runner | None = None,
 ) -> V3ddelayOutputs:
     """
-    3ddelay by Ziad Saad.
+    3ddelay by AFNI Team.
     
     Estimates the time delay between each voxel time series in a 3D+time dataset
     and a reference time series.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddelay.html
     
     Args:
         input_file: Filename of the input 3D+time dataset.

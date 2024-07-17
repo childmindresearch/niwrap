@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _ALIGN_PARTIAL_OBLIQUE_METADATA = Metadata(
-    id="2ff55e391cd7aa4d8072c317bef53c329492c29c",
+    id="0a0c77aea4a3fab1e30fcc095770d4fd0410a589",
     name="@align_partial_oblique",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,11 +36,14 @@ def _align_partial_oblique(
     runner: Runner | None = None,
 ) -> AlignPartialObliqueOutputs:
     """
-    @align_partial_oblique by Ziad S. Saad.
+    @align_partial_oblique by AFNI Team.
     
     A script to align a full coverage T1 weighted non-oblique dataset to match a
     partial coverage T1 weighted non-oblique dataset. Alignment is done with a
     rotation and shift (6 parameters) transform only.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@align_partial_oblique.html
     
     Args:
         base: Reference anatomical full coverage volume.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _PURIFY_1_D_METADATA = Metadata(
-    id="3c80eecbaf9d4be0f0cfc4e8867e730ca20224ae",
+    id="2a4d33555e50e9862ec6124813f1e8a4fb6de40c",
     name="@Purify_1D",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,9 +28,12 @@ def _purify_1_d(
     runner: Runner | None = None,
 ) -> Purify1DOutputs:
     """
-    @Purify_1D by Ziad S. Saad.
+    @Purify_1D by AFNI Team.
     
     Purifies a series of 1D files for faster I/O into matlab.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Purify_1D.html
     
     Args:
         input_files: Input 1D dataset files.

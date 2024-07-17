@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_NWARP_APPLY_METADATA = Metadata(
-    id="2110301b4d170a3e3413ceb376b052de90e57200",
+    id="7bd3eb638e92710733d0efdae19f67cb613a32f5",
     name="3dNwarpApply",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,7 +43,7 @@ def v_3d_nwarp_apply(
     runner: Runner | None = None,
 ) -> V3dNwarpApplyOutputs:
     """
-    3dNwarpApply by AFNI Developers.
+    3dNwarpApply by AFNI Team.
     
     Program to apply a nonlinear 3D warp saved from 3dQwarp (or 3dNwarpCat,
     etc.) to a 3D dataset, to produce a warped version of the source dataset.

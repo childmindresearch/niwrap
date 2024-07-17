@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TPROJECT_METADATA = Metadata(
-    id="7cfd7b01ffc1f3b69be4593bb6de994e643cb36e",
+    id="603530292cf09e79f01c369c42e0ecb9f73e0ddc",
     name="3dTproject",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -43,7 +43,7 @@ def v_3d_tproject(
     runner: Runner | None = None,
 ) -> V3dTprojectOutputs:
     """
-    3dTproject by RWCox @ AFNI.
+    3dTproject by AFNI Team.
     
     This program projects (detrends) out various 'nuisance' time series from
     each voxel in the input dataset. Note that all the projections are done via

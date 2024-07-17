@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _DJUNCT_EDGY_ALIGN_CHECK_METADATA = Metadata(
-    id="7e080747e2b4c5a6e5f96126419d0e5e8ee55117",
+    id="de10a64638e686d6f660c768d557660449ebd614",
     name="@djunct_edgy_align_check",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -49,10 +51,13 @@ def _djunct_edgy_align_check(
     runner: Runner | None = None,
 ) -> DjunctEdgyAlignCheckOutputs:
     """
-    @djunct_edgy_align_check.
+    @djunct_edgy_align_check by AFNI Team.
     
     Helper script for various tasks, heavily modeled on RW Cox's
     '@snapshot_volreg' script.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_edgy_align_check.html
     
     Args:
         ulay: ULAY dataset.

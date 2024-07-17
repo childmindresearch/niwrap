@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _SUMA_MAKE_SPEC_SF_METADATA = Metadata(
-    id="73b9cbdb7c10a3694766daeecd4d9f250cd70c2b",
+    id="d6e9e6c424ac5ceb1bca141e1643dd0c57eee2ae",
     name="@SUMA_Make_Spec_SF",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,12 +30,12 @@ def _suma_make_spec_sf(
     runner: Runner | None = None,
 ) -> SumaMakeSpecSfOutputs:
     """
-    @SUMA_Make_Spec_SF by R. Reynolds (rickr@codon.nih.gov), Z. Saad
-    (saadz@mail.nih.gov).
+    @SUMA_Make_Spec_SF by AFNI Team.
     
     Prepare for surface viewing in SUMA.
     
-    More information: https://afni.nimh.nih.gov/ssc/ziad/SUMA/SUMA_doc.htm
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_Make_Spec_SF.html
     
     Args:
         subject_id: Required subject ID for file naming.

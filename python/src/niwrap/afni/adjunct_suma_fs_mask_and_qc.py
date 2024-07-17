@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_SUMA_FS_MASK_AND_QC_METADATA = Metadata(
-    id="f1fef8381e99d03700e92d12f628ab1376c499a9",
+    id="be68721834549a4617da651e85709820e5feddac",
     name="adjunct_suma_fs_mask_and_qc",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,12 +45,13 @@ def adjunct_suma_fs_mask_and_qc(
     runner: Runner | None = None,
 ) -> AdjunctSumaFsMaskAndQcOutputs:
     """
-    adjunct_suma_fs_mask_and_qc by PA Taylor.
+    adjunct_suma_fs_mask_and_qc by AFNI Team.
     
     Script for quickly making some QC images for the SUMA/ directory created by
     @SUMA_Make_Spec_FS after running FreeSurfer's recon-all.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_suma_fs_mask_and_qc.html
     
     Args:
         subj_id: Subject ID.

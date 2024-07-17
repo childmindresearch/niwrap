@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_RPROG_DEMO_METADATA = Metadata(
-    id="59405f00bcfaf1391f67a4035124bd347d657c8f",
+    id="f784b1b04640dba84da97c7aa465115849daea46",
     name="3dRprogDemo",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,12 +38,13 @@ def v_3d_rprog_demo(
     runner: Runner | None = None,
 ) -> V3dRprogDemoOutputs:
     """
-    3dRprogDemo by AFNI.
+    3dRprogDemo by AFNI Team.
     
     Template program to help users write their own R processing routines on MRI
     volumes.
     
-    More information: http://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRprogDemo.html
     
     Args:
         input_dsets: Input dataset(s) to be scaled.

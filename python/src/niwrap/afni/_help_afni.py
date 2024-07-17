@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _HELP_AFNI_METADATA = Metadata(
-    id="c9c699eef1341ac9b5b3f407359029efe99ff6e2",
+    id="6b183c9d5b20f45e430f79fb170107114c8c03a5",
     name="@help.AFNI",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,9 +31,12 @@ def _help_afni(
     runner: Runner | None = None,
 ) -> HelpAfniOutputs:
     """
-    @help.AFNI by AFNI Development Team.
+    @help.AFNI by AFNI Team.
     
     A script to retrieve and search AFNI's help page for all programs.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@help.AFNI.html
     
     Args:
         match: Looks for occurrence of each word in the list in the help file.\

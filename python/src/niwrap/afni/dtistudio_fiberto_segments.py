@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DTISTUDIO_FIBERTO_SEGMENTS_METADATA = Metadata(
-    id="0706fa6c0affdc622107696c902089fb4dd5af22",
+    id="cba23a47fc87e1e3c65e3674b69b29815f2435e8",
     name="DTIStudioFibertoSegments",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="dti/docker-dtistudio:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,9 +30,12 @@ def dtistudio_fiberto_segments(
     runner: Runner | None = None,
 ) -> DtistudioFibertoSegmentsOutputs:
     """
-    DTIStudioFibertoSegments by DTIStudio Authors.
+    DTIStudioFibertoSegments by AFNI Team.
     
     Convert a DTIStudio Fiber file to a SUMA segment file.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/DTIStudioFibertoSegments.html
     
     Args:
         dataset: Input dataset file.

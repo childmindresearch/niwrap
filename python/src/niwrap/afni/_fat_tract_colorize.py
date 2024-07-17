@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _FAT_TRACT_COLORIZE_METADATA = Metadata(
-    id="e9eb2493b0c40d26f372f3083c9384f2f0a1f975",
+    id="2d06c87ef769d0fb7d05c3c7d9cba84ef7c472cd",
     name="@fat_tract_colorize",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,12 +40,13 @@ def _fat_tract_colorize(
     runner: Runner | None = None,
 ) -> FatTractColorizeOutputs:
     """
-    @fat_tract_colorize by AFNI Development Team.
+    @fat_tract_colorize by AFNI Team.
     
     Visualize tractographic output from 3dTrackID, particularly in probabilistic
     mode.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@fat_tract_colorize.html
     
     Args:
         in_fa: FA values of the DT fitting, used to modulate the brightness of\

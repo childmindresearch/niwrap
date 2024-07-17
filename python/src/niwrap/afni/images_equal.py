@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 IMAGES_EQUAL_METADATA = Metadata(
-    id="4183c7904a95de5fb84440995e8972f654640cc9",
+    id="5d848125965228e6aeeca953e79f6b9a8ba6832b",
     name="images_equal",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,9 +30,12 @@ def images_equal(
     runner: Runner | None = None,
 ) -> ImagesEqualOutputs:
     """
-    images_equal by Zhark the Comparator.
+    images_equal by AFNI Team.
     
     A simple program to test if two 2D images are identical.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/images_equal.html
     
     Args:
         file_a: First image file to compare.

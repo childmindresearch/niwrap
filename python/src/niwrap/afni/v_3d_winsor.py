@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_WINSOR_METADATA = Metadata(
-    id="fa675ff63347be4eb5c5f40956bccffff1c07d96",
+    id="074695a74f3c85c4333be4a448275c193336df53",
     name="3dWinsor",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +38,12 @@ def v_3d_winsor(
     runner: Runner | None = None,
 ) -> V3dWinsorOutputs:
     """
-    3dWinsor by AFNI Development Team.
+    3dWinsor by AFNI Team.
     
     Apply a 3D 'Winsorizing' filter to a short-valued dataset.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWinsor.html
     
     Args:
         dataset: Input dataset to apply the filter on.

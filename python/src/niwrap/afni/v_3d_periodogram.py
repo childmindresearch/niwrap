@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_PERIODOGRAM_METADATA = Metadata(
-    id="efceb8f8115e8f1b91b6356ace8cb8ca503d4b9c",
+    id="dc8a9f789b7c2bed3cade4f730ed9bf8e7477dd4",
     name="3dPeriodogram",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,7 +33,7 @@ def v_3d_periodogram(
     runner: Runner | None = None,
 ) -> V3dPeriodogramOutputs:
     """
-    3dPeriodogram by RWCox.
+    3dPeriodogram by AFNI Team.
     
     Computes the periodogram of each voxel time series. The periodogram is a
     crude estimate of the power spectrum.

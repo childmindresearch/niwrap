@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1D_TSORT_METADATA = Metadata(
-    id="67afdd65962e241251f0ead3805a257c9ea1d2d9",
+    id="518137b6c8c716236740741bbb50a2f65d5f7ea2",
     name="1dTsort",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +31,12 @@ def v_1d_tsort(
     runner: Runner | None = None,
 ) -> V1dTsortOutputs:
     """
-    1dTsort by AFNI Development Team.
+    1dTsort by AFNI Team.
     
     Sorts each column of the input 1D file and writes result to stdout.
     
-    More information: https://afni.nimh.nih.gov/afni
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dTsort.html
     
     Args:
         infile: Input 1D file to be sorted.

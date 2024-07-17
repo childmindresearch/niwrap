@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FROM3D_METADATA = Metadata(
-    id="107c9f90167b5cef1a008bfad6a57ca0bbf6b2e5",
+    id="f4e29fd0c67c8d4818b9f35fe9eed8e9223d08d4",
     name="from3d",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,11 +37,12 @@ def from3d(
     runner: Runner | None = None,
 ) -> From3dOutputs:
     """
-    from3d by AFNI Developers.
+    from3d by AFNI Team.
     
     Extract 2D image files from a 3D AFNI dataset.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/from3d.html
     
     Args:
         input_: Read 3D dataset from file 'fname'.

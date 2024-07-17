@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 GET_AFNI_RES_METADATA = Metadata(
-    id="155ff6922202df2702e45aae75eeb71fd3915235",
+    id="84dac8b1d9d3e831f84482e8184f5235b4c71f2e",
     name="GetAfniRes",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,11 +27,12 @@ def get_afni_res(
     runner: Runner | None = None,
 ) -> GetAfniResOutputs:
     """
-    GetAfniRes by AFNI Developers.
+    GetAfniRes by AFNI Team.
     
     Tool to return the voxel resolution of a dataset.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniRes.html
     
     Args:
         input_dataset: Input dataset.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1D_BPORT_METADATA = Metadata(
-    id="901e49cbd6e07fa5bd6f65eedd339082f09ebc12",
+    id="76ac7dbf386d85c041f3dba8e63c75c6f5192534",
     name="1dBport",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,10 +37,13 @@ def v_1d_bport(
     runner: Runner | None = None,
 ) -> V1dBportOutputs:
     """
-    1dBport by RWCox.
+    1dBport by AFNI Team.
     
     Creates a set of columns of sines and cosines for bandpassing via
     regression.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dBport.html
     
     Args:
         band: Specify lowest and highest frequencies in the passband.

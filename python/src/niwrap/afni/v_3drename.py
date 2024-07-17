@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DRENAME_METADATA = Metadata(
-    id="4a1415088e45ad70d69d6092b85e79ba8a4f3fe9",
+    id="02af8161cb34ab10e0d6103d28ca31fe9ed15581",
     name="3drename",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,9 +27,12 @@ def v_3drename(
     runner: Runner | None = None,
 ) -> V3drenameOutputs:
     """
-    3drename by AFNI developers.
+    3drename by AFNI Team.
     
     Tool to rename AFNI datasets by changing the dataset prefix.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drename.html
     
     Args:
         old_prefix: Old prefix of the datasets to rename.

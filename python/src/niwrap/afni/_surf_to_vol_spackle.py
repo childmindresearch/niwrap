@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _SURF_TO_VOL_SPACKLE_METADATA = Metadata(
-    id="84514d49922187b8e5825105ac897079904a011d",
+    id="7818002a5794996ad9d1e05a4ffc98c8c3855c0c",
     name="@surf_to_vol_spackle",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,10 +41,13 @@ def _surf_to_vol_spackle(
     runner: Runner | None = None,
 ) -> SurfToVolSpackleOutputs:
     """
-    @surf_to_vol_spackle by Author Name.
+    @surf_to_vol_spackle by AFNI Team.
     
     Project data from a surface dataset into a volume primarily using 3dSurf2Vol
     but then filling any holes with an iterative smoothing procedure.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@surf_to_vol_spackle.html
     
     Args:
         maskset: Mask dataset in which to project surface measures.

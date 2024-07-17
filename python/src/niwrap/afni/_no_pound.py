@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _NO_POUND_METADATA = Metadata(
-    id="c22f5fc56c0ed441e547cbe5f199b3a479e1080e",
+    id="50e340c470ff874935bc5c4fad0d9c99230493d4",
     name="@NoPound",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,7 +26,7 @@ def _no_pound(
     runner: Runner | None = None,
 ) -> NoPoundOutputs:
     """
-    @NoPound by AFNI Development Team.
+    @NoPound by AFNI Team.
     
     Replaces all # characters in AFNI filenames with a -.
     

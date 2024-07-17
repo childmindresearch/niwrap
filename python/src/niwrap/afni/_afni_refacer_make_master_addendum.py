@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AFNI_REFACER_MAKE_MASTER_ADDENDUM_METADATA = Metadata(
-    id="c3f50dc2ea5961ba49f8bf81df8a8b1571997f5c",
+    id="101a8a288f4df4fc5c66dacf5a80168e79ddf3b7",
     name="afni_refacer_make_master_addendum",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example_image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,9 +27,12 @@ def afni_refacer_make_master_addendum(
     runner: Runner | None = None,
 ) -> AfniRefacerMakeMasterAddendumOutputs:
     """
-    afni_refacer_make_master_addendum by PA Taylor.
+    afni_refacer_make_master_addendum by AFNI Team.
     
     Adjunct program for AFNI refacer, takes no command line arguments.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_make_master_addendum.html
     
     Args:
         help_: Display the help message.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_SELECT_STR_PY_METADATA = Metadata(
-    id="a8eb4e3c52655ae4b174b47ba1e9bc9bcde5112b",
+    id="3e765fab892401a817982ff0d0bc3b1760cc317e",
     name="adjunct_select_str.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -26,9 +28,12 @@ def adjunct_select_str_py(
     runner: Runner | None = None,
 ) -> AdjunctSelectStrPyOutputs:
     """
-    adjunct_select_str.py by PA Taylor (NIMH, NIH).
+    adjunct_select_str.py by AFNI Team.
     
     A simple helper function for the fat_proc* scripts.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_select_str.py.html
     
     Args:
         input_file: File containing a list of integers.

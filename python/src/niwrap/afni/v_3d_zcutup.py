@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ZCUTUP_METADATA = Metadata(
-    id="d3a7aaaac0529a877c929c821f851a95fb792d7e",
+    id="4acd4850d9032c0dbd63b04da2b00bc69664b6bd",
     name="3dZcutup",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,11 +32,12 @@ def v_3d_zcutup(
     runner: Runner | None = None,
 ) -> V3dZcutupOutputs:
     """
-    3dZcutup by AFNI Developers.
+    3dZcutup by AFNI Team.
     
     Cut slices off a dataset in its z-direction and write a new dataset.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZcutup.html
     
     Args:
         dataset: The input dataset (e.g., epi07+orig). You can use a sub-brick\

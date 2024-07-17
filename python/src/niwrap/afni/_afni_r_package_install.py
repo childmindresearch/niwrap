@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AFNI_R_PACKAGE_INSTALL_METADATA = Metadata(
-    id="724f083876a48abf8de20e3c431b08b2f4f08911",
+    id="98b19d9eb5b437ac72ddfdfbf3c832c5513c5154",
     name="afni_R_package_install",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_container:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,9 +34,12 @@ def afni_r_package_install(
     runner: Runner | None = None,
 ) -> AfniRPackageInstallOutputs:
     """
-    afni_R_package_install by Justin Rajendra.
+    afni_R_package_install by AFNI Team.
     
     Helper script to install R packages for various afni-ish purposes.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_R_package_install.html
     
     Args:
         afni: Install AFNI related R packages.

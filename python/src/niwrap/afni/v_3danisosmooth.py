@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DANISOSMOOTH_METADATA = Metadata(
-    id="7e3fb2e3f688565e64372a9fd611e09cc7f6c7f3",
+    id="9e7900e8c0f3ee921e7ad7598786b9e3a00cdbcb",
     name="3danisosmooth",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -66,11 +65,12 @@ def v_3danisosmooth(
     runner: Runner | None = None,
 ) -> V3danisosmoothOutputs:
     """
-    3danisosmooth by AFNI Development Team.
+    3danisosmooth by AFNI Team.
     
     Smooths a dataset using an anisotropic smoothing technique.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3danisosmooth.html
     
     Args:
         input_dataset: Input dataset to be smoothed.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INSTALL_DBSPROC_METADATA = Metadata(
-    id="ad9b1c1ff5bdee560b6525d93ce8d8cee3e9b847",
+    id="f7b32ca77b7f5cb669673ca0d4343cb5872a98cc",
     name="Install_DBSproc",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-dbproc:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,12 +27,12 @@ def install_dbsproc(
     runner: Runner | None = None,
 ) -> InstallDbsprocOutputs:
     """
-    Install_DBSproc by Lauro PM, Vanegas-Arroyave N, Huang L, Taylor PA, Zaghloul
-    KA, Lungu C, Saad ZS, Horovitz SG.
+    Install_DBSproc by AFNI Team.
     
     Installs the demo archive for DBS processing tools.
     
-    More information: https://dx.doi.org/10.1002/hbm.23039
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_DBSproc.html
     
     Args:
         use_wget: Use wget to download archive. Script chooses by default with\

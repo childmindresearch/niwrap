@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_DTTO_NOISY_DWI_METADATA = Metadata(
-    id="81fa538653e9c536e83c7d1854c427fbd7d61d1d",
+    id="5e13dfd3027b3c2b8e1845ee32671c96b40a92b6",
     name="3dDTtoNoisyDWI",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,13 +35,14 @@ def v_3d_dtto_noisy_dwi(
     runner: Runner | None = None,
 ) -> V3dDttoNoisyDwiOutputs:
     """
-    3dDTtoNoisyDWI by Taylor PA, Saad ZS.
+    3dDTtoNoisyDWI by AFNI Team.
     
     Generate a synthetic set of DWI measures with a given SNR from an AFNI-style
     DT file and a set of gradients. This can be useful for simulations and
     testing.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDTtoNoisyDWI.html
     
     Args:
         dt_file: Diffusion tensor file with six bricks of DT components ordered\

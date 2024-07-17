@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FDRVAL_METADATA = Metadata(
-    id="5a1bdd1d84e066a49ae2540ede81f513806514c9",
+    id="bda5984e1f07d7f607289aed015783607e466e1d",
     name="fdrval",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,12 +35,12 @@ def fdrval(
     runner: Runner | None = None,
 ) -> FdrvalOutputs:
     """
-    fdrval by RWCox.
+    fdrval by AFNI Team.
     
     Computes q-values from FDR curve data stored in dataset headers.
     
     More information:
-    https://afni.nimh.nih.gov/pub/dist/doc/misc/FDR/FDR_Jan2008.pdf
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fdrval.html
     
     Args:
         dset: Input dataset.

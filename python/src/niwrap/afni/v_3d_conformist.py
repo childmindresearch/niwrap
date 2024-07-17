@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_CONFORMIST_METADATA = Metadata(
-    id="62761669671569aadc7a575f05353f619e198887",
+    id="5e9076879c0dd63ed26e34aa942466a7983ce46c",
     name="3dConformist",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,10 +28,13 @@ def v_3d_conformist(
     runner: Runner | None = None,
 ) -> V3dConformistOutputs:
     """
-    3dConformist by AFNI.
+    3dConformist by AFNI Team.
     
     Program to conform a collection of datasets to the same size by zero
     padding.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dConformist.html
     
     Args:
         input_files: Input datasets to be zero padded to the same size.

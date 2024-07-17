@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_DWUNCERT_METADATA = Metadata(
-    id="a527fa0e86c3ade3a07922fb3229987feeeb6118",
+    id="50d6b9b422cb750d1c640fdc83543599a273ca75",
     name="3dDWUncert",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,13 +36,13 @@ def v_3d_dwuncert(
     runner: Runner | None = None,
 ) -> V3dDwuncertOutputs:
     """
-    3dDWUncert by Taylor PA, Saad ZS, Oxford Centre. for Functional MRI of the Brain
-    (FMRIB).
+    3dDWUncert by AFNI Team.
     
     Use jackknifing to estimate uncertainty of DTI parameters, important for
     probabilistic tractography.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDWUncert.html
     
     Args:
         input_file: Input file with b0 and DWI subbricks.

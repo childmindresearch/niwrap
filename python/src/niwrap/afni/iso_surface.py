@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ISO_SURFACE_METADATA = Metadata(
-    id="c65984bb34abefb3c657840f9cc7def55707820e",
+    id="247d1da6b4dcba8dae89a23e79219d3c4d530675",
     name="IsoSurface",
     container_image_type="docker",
-    container_image_index="dockerhub.io",
-    container_image_tag="myregistry.com/isosurface:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,9 +45,12 @@ def iso_surface(
     runner: Runner | None = None,
 ) -> IsoSurfaceOutputs:
     """
-    IsoSurface by Ziad S. Saad, SSCC/NIMH/NIH.
+    IsoSurface by AFNI Team.
     
     A program to perform isosurface extraction from a volume.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/IsoSurface.html
     
     Args:
         input_vol: Input volume file.

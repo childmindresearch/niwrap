@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 CIFTI_TOOL_METADATA = Metadata(
-    id="4a98c315b33986a30d92da60a782dc56a46556ef",
+    id="8931357090b0f9b0f01c122ff4382c0aa2842469",
     name="cifti_tool",
     container_image_type="docker",
-    container_image_tag="index.docker.io/cifti_tool:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,9 +36,12 @@ def cifti_tool(
     runner: Runner | None = None,
 ) -> CiftiToolOutputs:
     """
-    cifti_tool by CIFTI Developers.
+    cifti_tool by AFNI Team.
     
     Example tool for reading/writing CIFTI-2 datasets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/cifti_tool.html
     
     Args:
         input_file: Specify input dataset.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _AFNI_ENV_METADATA = Metadata(
-    id="24bd8feca9f377d38062fceee848ad9b1d5ee512",
+    id="14c0b36a6dd3115e1ec5f82a5084c03ad2f59d70",
     name="@AfniEnv",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_dev:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +35,12 @@ def _afni_env(
     runner: Runner | None = None,
 ) -> AfniEnvOutputs:
     """
-    @AfniEnv by AFNI Development Team.
+    @AfniEnv by AFNI Team.
     
     Script to set or unset an AFNI environment variable in your .afnirc file.
     
-    More information: https://afni.nimh.nih.gov/sscc/staff/rwcox/#scripts
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@AfniEnv.html
     
     Args:
         set_flag: Set environment variable NAME to value VALUE.

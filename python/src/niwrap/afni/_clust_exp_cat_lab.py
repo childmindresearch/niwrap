@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _CLUST_EXP_CAT_LAB_METADATA = Metadata(
-    id="073c8d6b5ebdca48f19ef4c8442758a0e48449db",
+    id="8ecc54cb064c50334006b888e74483d361e8305d",
     name="@ClustExp_CatLab",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your_docker_image_here:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,9 +30,12 @@ def _clust_exp_cat_lab(
     runner: Runner | None = None,
 ) -> ClustExpCatLabOutputs:
     """
-    @ClustExp_CatLab by Justin Rajendra.
+    @ClustExp_CatLab by AFNI Team.
     
     Helper script to concatenate and label a group of data sets.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ClustExp_CatLab.html
     
     Args:
         prefix: Output file name.

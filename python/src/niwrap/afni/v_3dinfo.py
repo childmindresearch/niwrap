@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DINFO_METADATA = Metadata(
-    id="1e9f54af2452085d04154d04d68b884a2c99b252",
+    id="5f5391bee04bbe037531c169ac3542c6411f9e71",
     name="3dinfo",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,9 +43,12 @@ def v_3dinfo(
     runner: Runner | None = None,
 ) -> V3dinfoOutputs:
     """
-    3dinfo by AFNI Developers.
+    3dinfo by AFNI Team.
     
     Prints out sort-of-useful information from a 3D dataset's header.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dinfo.html
     
     Args:
         dataset: Datasets to retrieve information from.

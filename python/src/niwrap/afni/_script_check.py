@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SCRIPT_CHECKER_METADATA = Metadata(
-    id="dc73444e71e5cffaab95e341699be286e52e09b8",
+    id="261b3c423e15ed9d72d7e1aacacea66ebe98e73b",
     name="ScriptChecker",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,9 +32,12 @@ def script_checker(
     runner: Runner | None = None,
 ) -> ScriptCheckerOutputs:
     """
-    ScriptChecker by Your Name or Organization.
+    ScriptChecker by AFNI Team.
     
     Checks scripts for improperly terminated lines and optionally cleans them.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ScriptCheck.html
     
     Args:
         scripts: Scripts to be checked for improperly terminated lines.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_2PERM_METADATA = Metadata(
-    id="c07df3b2350cc458c2ad1d00082bde8b9ae447ed",
+    id="6a8df98c1103f9bb4e763f85c6628c97760f69ff",
     name="2perm",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="local/2perm:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,9 +35,12 @@ def v_2perm(
     runner: Runner | None = None,
 ) -> V2permOutputs:
     """
-    2perm by Anonymous.
+    2perm by AFNI Team.
     
     Generates two random non-overlapping subsets of a given set of integers.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/2perm.html
     
     Args:
         bottom_int: Bottom integer of the range.

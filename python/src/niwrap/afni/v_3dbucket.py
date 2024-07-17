@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DBUCKET_METADATA = Metadata(
-    id="40e86801793f2bcf9df59b39cb9e5d8e137d2b2c",
+    id="a63897762d76a235a0b00744a09578e4f6f0d443",
     name="3dbucket",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +35,12 @@ def v_3dbucket(
     runner: Runner | None = None,
 ) -> V3dbucketOutputs:
     """
-    3dbucket by AFNI.
+    3dbucket by AFNI Team.
     
     Concatenate sub-bricks from input datasets into one big bucket dataset.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dbucket.html
     
     Args:
         input_files: Input datasets with optional sub-brick selection.

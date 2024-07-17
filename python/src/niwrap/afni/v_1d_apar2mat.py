@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 V_1D_APAR2MAT_METADATA = Metadata(
-    id="121d33919dc3f45e1e67aecef147af48298fa13e",
+    id="260e03a84b8f1c1f918a4f17a93bb26f89a35430",
     name="1dApar2mat",
     container_image_type="docker",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,10 +37,13 @@ def v_1d_apar2mat(
     runner: Runner | None = None,
 ) -> V1dApar2matOutputs:
     """
-    1dApar2mat by Zhark the Most Affine and Sublime.
+    1dApar2mat by AFNI Team.
     
     Computes the affine transformation matrix from the set of 3dAllineate
     parameters.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dApar2mat.html
     
     Args:
         x_shift: x-shift in mm.

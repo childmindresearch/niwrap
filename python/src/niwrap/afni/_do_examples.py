@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _DO_EXAMPLES_METADATA = Metadata(
-    id="717f4c6aaa54f74c785cc8b16a8b6b0b1b0db825",
+    id="9011d0cbeb1753c6a98db210a9a32ffe7deb1ff4",
     name="@DO.examples",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,12 @@ def _do_examples(
     runner: Runner | None = None,
 ) -> DoExamplesOutputs:
     """
-    @DO.examples by Ziad S. Saad.
+    @DO.examples by AFNI Team.
     
     A script to illustrate the use of Displayable Objects in SUMA.
     
-    More information: https://discuss.afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DO.examples.html
     
     Args:
         auto_test: Run this script in test mode where user prompts are timed\

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_AMP_TO_RSFC_METADATA = Metadata(
-    id="ddfc0bb1568dacd0611ed1d3ea9f783ee3f39875",
+    id="7fe24ca4b682ef0ab3fc8c99aa5d83b1df4c4740",
     name="3dAmpToRSFC",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/docker-3dAmpToRSFC:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,9 +43,12 @@ def v_3d_amp_to_rsfc(
     runner: Runner | None = None,
 ) -> V3dAmpToRsfcOutputs:
     """
-    3dAmpToRSFC by Author Name.
+    3dAmpToRSFC by AFNI Team.
     
     Convert spectral amplitudes into standard RSFC parameters.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAmpToRSFC.html
     
     Args:
         prefix: Output file prefix; file names will be: PREFIX_ALFF,\

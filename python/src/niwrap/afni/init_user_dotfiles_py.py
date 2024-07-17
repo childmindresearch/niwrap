@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INIT_USER_DOTFILES_PY_METADATA = Metadata(
-    id="fee9a649d235f21bfa6d034e6639f39b6a364a80",
+    id="6892b9c374633edc040e907bc4f4acab693d7254",
     name="init_user_dotfiles.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="init_user_dotfiles_image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,12 +42,13 @@ def init_user_dotfiles_py(
     runner: Runner | None = None,
 ) -> InitUserDotfilesPyOutputs:
     """
-    init_user_dotfiles.py by R Reynolds.
+    init_user_dotfiles.py by AFNI Team.
     
     Initialize or evaluate user dot files (.cshrc, .bashrc, ...) for system
     settings.
     
-    More information: https://example.com/init_user_dotfiles
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/init_user_dotfiles.py.html
     
     Args:
         help_: Show this help.

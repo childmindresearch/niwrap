@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INSTALL_NMT_METADATA = Metadata(
-    id="590abf9b1103d3391e3cfc0134d2fffcf6d5084b",
+    id="a5768d5fca94796db29fb14e23fbef82fdf7f0fc",
     name="Install_NMT",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="nimh/install_nmt:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,10 +32,13 @@ def install_nmt(
     runner: Runner | None = None,
 ) -> InstallNmtOutputs:
     """
-    Install_NMT by NIMH.
+    Install_NMT by AFNI Team.
     
     Installs the NIMH Macaque Template (NMT) with the accompanying Cortical
     Hierarchy Atlas of the Rhesus Macaque (CHARM).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_NMT.html
     
     Args:
         install_dir: The install location for the NMT.

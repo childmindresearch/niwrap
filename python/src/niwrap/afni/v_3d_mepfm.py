@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_MEPFM_METADATA = Metadata(
-    id="2b46d65569c3fd41b8f294716945ae47a23eeb95",
+    id="452144bdfb1ae8491d18931af09ee896a7fafb38",
     name="3dMEPFM",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="neurodocker:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,13 +42,14 @@ def v_3d_mepfm(
     runner: Runner | None = None,
 ) -> V3dMepfmOutputs:
     """
-    3dMEPFM by C Caballero-Gaudes.
+    3dMEPFM by AFNI Team.
     
     Voxelwise deconvolution of Multiecho fMRI data to yield time-varying
     estimates of changes in transverse relaxation (DR2*) and optionally, net
     magnetization (DS0).
     
-    More information: https://afni.nimh.nih.gov/afni/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMEPFM.html
     
     Args:
         input_files: Dataset to analyze with Multiecho Paradigm Free Mapping,\

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_MSE_METADATA = Metadata(
-    id="fb8ca27bac74552387aa1f375b85970088f3ca5c",
+    id="dba17aa21b373306032032408555d54f9a9bb92f",
     name="3dMSE",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="brainlife/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,11 +38,12 @@ def v_3d_mse(
     runner: Runner | None = None,
 ) -> V3dMseOutputs:
     """
-    3dMSE by RWCox, Cameron Craddock.
+    3dMSE by AFNI Team.
     
     Computes voxelwise multi-scale entropy.
     
-    More information: https://afni.nimh.nih.gov/pub/dist/doc/misc/OpenMP.html
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMSE.html
     
     Args:
         dset: Input dataset (e.g., dset.nii.gz).

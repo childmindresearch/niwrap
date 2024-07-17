@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 EPI_B0_CORRECT_METADATA = Metadata(
-    id="8ab453e811d4d439325cca5d165c261a97571bab",
+    id="06b47df472739ed658d7a9b6c1e3ba6d288278ea",
     name="epi_b0_correct",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -60,11 +59,12 @@ def epi_b0_correct(
     runner: Runner | None = None,
 ) -> EpiB0CorrectOutputs:
     """
-    epi_b0_correct by Vinai Roopchansingh (NIMH, NIH).
+    epi_b0_correct by AFNI Team.
     
     B0 distortion correction tool using an acquired frequency (phase) image.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/epi_b0_correct.py.html
     
     Args:
         prefix: Prefix of output files; can include path.

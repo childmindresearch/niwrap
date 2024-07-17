@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 GET_AFNI_ID_METADATA = Metadata(
-    id="64f7920632ebde6fce6d2c1f8cbc50733d5a8731",
+    id="6b658fe42ff0526b16617838d33ca9be119eab76",
     name="GetAfniID",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,11 +28,12 @@ def get_afni_id(
     runner: Runner | None = None,
 ) -> GetAfniIdOutputs:
     """
-    GetAfniID by AFNI Development Team.
+    GetAfniID by AFNI Team.
     
     Returns the unique identifier of a dataset.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniID.html
     
     Args:
         dset: Dataset for which the unique identifier is to be returned.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SURF_LAYERS_METADATA = Metadata(
-    id="6d433faabca9a7a5fa90ece9a0db7fadaea87bcb",
+    id="cf771f3e087b4cb4de93a3ed904c7d6b53fb02cc",
     name="SurfLayers",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="custom/surflayers:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,11 +41,12 @@ def surf_layers(
     runner: Runner | None = None,
 ) -> SurfLayersOutputs:
     """
-    SurfLayers by Salvatore (Sam) Torrisi, Daniel Glen.
+    SurfLayers by AFNI Team.
     
     Compute intermediate equi-distant surfaces between two boundary surfaces.
     
-    More information: mailto:torrisi@berkeley.edu
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfLayers.html
     
     Args:
         spec_dset: Dataset that is the SUMA specification file describing input\

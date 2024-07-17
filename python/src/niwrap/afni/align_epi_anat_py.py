@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ALIGN_EPI_ANAT_METADATA = Metadata(
-    id="7d7b760ba6f3e59720d93b7739ec4e3234ced535",
+    id="7c5ebfafa9397922348831041c3f229a6d5dc5c9",
     name="align_epi_anat",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,7 +46,7 @@ def align_epi_anat(
     runner: Runner | None = None,
 ) -> AlignEpiAnatOutputs:
     """
-    align_epi_anat by AFNI team.
+    align_epi_anat by AFNI Team.
     
     Align EPI to anatomical datasets or vice versa.
     

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 EXAMINE_GEN_FEAT_DISTS_METADATA = Metadata(
-    id="48717050e5f432cea68c6d39e5c09881a2002362",
+    id="d8d1a76867255f9db977eaae8518ca1ff676d20f",
     name="ExamineGenFeatDists",
     container_image_type="docker",
-    container_image_index="unknown",
-    container_image_tag="unknown",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,9 +34,12 @@ def examine_gen_feat_dists(
     runner: Runner | None = None,
 ) -> ExamineGenFeatDistsOutputs:
     """
-    ExamineGenFeatDists by Unknown.
+    ExamineGenFeatDists by AFNI Team.
     
     Examine histograms produced by 3dGenFeatDists.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ExamineGenFeatDists.html
     
     Args:
         features_dir: Output directory of 3dGenFeatDists.

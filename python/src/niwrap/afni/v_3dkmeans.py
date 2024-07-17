@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DKMEANS_METADATA = Metadata(
-    id="f749acd2f9c0acc2dc265aca357160b4f868e5e6",
+    id="82051ad50367309d63f1f638a14edc23645b7da6",
     name="3dkmeans",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-cli:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -59,9 +58,12 @@ def v_3dkmeans(
     runner: Runner | None = None,
 ) -> V3dkmeansOutputs:
     """
-    3dkmeans by Michiel Jan Laurens de Hoon.
+    3dkmeans by AFNI Team.
     
     3d+t Clustering segmentation based on The C clustering library.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dkmeans.html
     
     Args:
         input_: Input data to be clustered. You can specify multiple filenames\

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_SEG_METADATA = Metadata(
-    id="d4da428108350017f716576ed68bd10e988902f9",
+    id="63ad34c87ddb712be14d2a7a985584aa16e90e17",
     name="3dSeg",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -51,7 +50,7 @@ def v_3d_seg(
     runner: Runner | None = None,
 ) -> V3dSegOutputs:
     """
-    3dSeg by AFNI.
+    3dSeg by AFNI Team.
     
     Segments brain volumes into tissue classes with optional global and
     voxelwise priors.

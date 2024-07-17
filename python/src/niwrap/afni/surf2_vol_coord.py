@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SURF2_VOL_COORD_METADATA = Metadata(
-    id="e7c1fc56ac2c18dc1f262d32f57462937251922e",
+    id="eee7b43a9da1ac2397d3f30fe1545a13e174d6d8",
     name="Surf2VolCoord",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/suma:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,7 +38,7 @@ def surf2_vol_coord(
     runner: Runner | None = None,
 ) -> Surf2VolCoordOutputs:
     """
-    Surf2VolCoord by Ziad S. Saad, SSCC/NIMH/NIH.
+    Surf2VolCoord by AFNI Team.
     
     Relates node indices to coordinates given x y z coordinates and returns the
     nodes closest to them.

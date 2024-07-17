@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ADJUNCT_TORT_READ_DP_ALIGN_METADATA = Metadata(
-    id="5e52f177121315f43b026e62c12d51b45eb02132",
+    id="ef820c645e1842337c00e9e4b38a02d6f1dc63e6",
     name="adjunct_tort_read_dp_align",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,10 +29,13 @@ def adjunct_tort_read_dp_align(
     runner: Runner | None = None,
 ) -> AdjunctTortReadDpAlignOutputs:
     """
-    adjunct_tort_read_dp_align by PA Taylor.
+    adjunct_tort_read_dp_align by AFNI Team.
     
     Extract the 3 translation (in mm) and 3 rotation (in deg) parameters
     estimated by TORTOISE's DIFF_PREP tool during DWI processing.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_tort_read_dp_align.py.html
     
     Args:
         input_file: Input *_transformations.txt file output by TORTOISE's\

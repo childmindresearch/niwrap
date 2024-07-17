@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_PVMAP_METADATA = Metadata(
-    id="c9c0f7bdcef01d199fecf0d69a9e74341706ea9a",
+    id="15e21128f71db524c14f4073dcca4ba161046a9a",
     name="3dPVmap",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,11 +35,14 @@ def v_3d_pvmap(
     runner: Runner | None = None,
 ) -> V3dPvmapOutputs:
     """
-    3dPVmap by Zhark the Unprincipaled.
+    3dPVmap by AFNI Team.
     
     Computes the first two principal component vectors of a time series dataset,
     then outputs the R-squared coefficient of each voxel time series with these
     first two components.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPVmap.html
     
     Args:
         inputdataset: Input dataset (e.g., fred.nii).

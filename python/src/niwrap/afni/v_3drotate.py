@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DROTATE_METADATA = Metadata(
-    id="1bf414b513b815c067159736ed23ec443c2bb63e",
+    id="c37f146959e11d16ab80613b1c99b99573057246",
     name="3drotate",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -55,11 +54,12 @@ def v_3drotate(
     runner: Runner | None = None,
 ) -> V3drotateOutputs:
     """
-    3drotate by AFNI (Analysis of Functional NeuroImages).
+    3drotate by AFNI Team.
     
     Rotates and/or translates all bricks from an AFNI dataset.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drotate.html
     
     Args:
         dataset: Input AFNI dataset, may contain a sub-brick selector list.

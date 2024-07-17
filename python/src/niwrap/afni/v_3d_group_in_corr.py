@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_GROUP_IN_CORR_METADATA = Metadata(
-    id="ea9d9378fce4a5948ebf823e78cedfd884b02591",
+    id="494cb5b5d59b2264a2ef671b4756fcdcdd14e389",
     name="3dGroupInCorr",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -56,11 +55,12 @@ def v_3d_group_in_corr(
     runner: Runner | None = None,
 ) -> V3dGroupInCorrOutputs:
     """
-    3dGroupInCorr by Bob Cox and Ziad Saad.
+    3dGroupInCorr by AFNI Team.
     
     Functional connectivity analysis in group of subjects.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGroupInCorr.html
     
     Args:
         set_a: Setup file describing the first dataset collection.

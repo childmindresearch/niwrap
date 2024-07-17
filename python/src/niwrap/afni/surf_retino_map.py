@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 SURF_RETINO_MAP_METADATA = Metadata(
-    id="61a51b6d9a555b4b1413ff6c8fbe17cb78be0291",
+    id="ec1b0e191b03919f3ab0af64d9930a48ec7ddd78",
     name="SurfRetinoMap",
     container_image_type="docker",
-    container_image_tag="neurodocker:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,9 +34,12 @@ def surf_retino_map(
     runner: Runner | None = None,
 ) -> SurfRetinoMapOutputs:
     """
-    SurfRetinoMap by Ziad S. Saad, SSCC/NIMH/NIH.
+    SurfRetinoMap by AFNI Team.
     
     Tool for retinotopic mapping on cortical surfaces.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfRetinoMap.html
     
     Args:
         surface: Surface on which distances are computed. See 'Specifying input\

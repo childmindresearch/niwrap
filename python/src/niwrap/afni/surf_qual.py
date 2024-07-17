@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SURF_QUAL_METADATA = Metadata(
-    id="a4fd8551505869ea034a3c1708dfb8bec29f0b1e",
+    id="e7d81c0fc865a820a56f39c12f64a4c1d12bcd9c",
     name="SurfQual",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-repo/surfqual:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -46,9 +45,12 @@ def surf_qual(
     runner: Runner | None = None,
 ) -> SurfQualOutputs:
     """
-    SurfQual by SSCC/NIMH/NIH.
+    SurfQual by AFNI Team.
     
     A program to check the quality of surfaces.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfQual.html
     
     Args:
         spec_file: Spec file containing input surfaces.

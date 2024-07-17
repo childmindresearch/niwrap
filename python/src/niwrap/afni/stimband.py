@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 STIMBAND_METADATA = Metadata(
-    id="195d334fb770bcd0400c07f238da38f00f9eaeb7",
+    id="315c2371380e4c86483c19d5c3e7490c0171d51b",
     name="stimband",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,10 +33,13 @@ def stimband(
     runner: Runner | None = None,
 ) -> StimbandOutputs:
     """
-    stimband by RWCox.
+    stimband by AFNI Team.
     
     Determines frequency band covering at least 90% of the 'power' (|FFT|^2) of
     stimulus columns from X.nocensor.xmat.1D files.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/stimband.html
     
     Args:
         matrixfiles: Path to matrix files.

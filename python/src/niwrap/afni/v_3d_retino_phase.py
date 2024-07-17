@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_RETINO_PHASE_METADATA = Metadata(
-    id="2cb9a0ab03b466d846b73e90ab233c75040f74c0",
+    id="8b7823c7b1893b982c57dcc65247e792c8ca2653",
     name="3dRetinoPhase",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -50,12 +49,13 @@ def v_3d_retino_phase(
     runner: Runner | None = None,
 ) -> V3dRetinoPhaseOutputs:
     """
-    3dRetinoPhase by RW Cox.
+    3dRetinoPhase by AFNI Team.
     
     Process time series from retinotopy stimuli to create phase datasets and
     visual field angle datasets.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRetinoPhase.html
     
     Args:
         prefix: Prefix of output datasets.

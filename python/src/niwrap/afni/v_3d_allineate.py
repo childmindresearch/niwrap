@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ALLINEATE_METADATA = Metadata(
-    id="4d404310ff50ba3b49bddab89fdb5bd436d5f083",
+    id="ab3fb01c14bb6b30555b963629081ed71ff8b709",
     name="3dAllineate",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,10 +47,13 @@ def v_3d_allineate(
     runner: Runner | None = None,
 ) -> V3dAllineateOutputs:
     """
-    3dAllineate.
+    3dAllineate by AFNI Team.
     
     Program to align one dataset (the 'source') to a 'base' dataset using an
     affine (matrix) transformation of space.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAllineate.html
     
     Args:
         source: Source dataset file.

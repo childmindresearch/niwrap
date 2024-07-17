@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1DEVAL_METADATA = Metadata(
-    id="85746f16464c1cf7f5b18c6ee2681d2b46ccf2fb",
+    id="8228e6b2cc75f072e881f661e5ad5a5d2892aab2",
     name="1deval",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="brainlife/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,12 +35,13 @@ def v_1deval(
     runner: Runner | None = None,
 ) -> V1devalOutputs:
     """
-    1deval by RW Cox.
+    1deval by AFNI Team.
     
     Evaluates an expression that may include columns of data from one or more
     text files and writes the result to stdout.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1deval.html
     
     Args:
         expression: Expression to evaluate.

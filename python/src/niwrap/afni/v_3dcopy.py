@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DCOPY_METADATA = Metadata(
-    id="2bfbaf87c253c75ddefe16dd5e1d09f652c1cbbb",
+    id="704aa4dd284cad8a33a958833fe1909e2e0439c0",
     name="3dcopy",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,7 +30,7 @@ def v_3dcopy(
     runner: Runner | None = None,
 ) -> V3dcopyOutputs:
     """
-    3dcopy by AFNI Developers.
+    3dcopy by AFNI Team.
     
     3dcopy copies datasets with or without altering prefixes and converting
     formats.

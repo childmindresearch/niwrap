@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_NWARP_ADJUST_METADATA = Metadata(
-    id="cad5797941b0edad7307db39734fd1238bc7a5d5",
+    id="4944f7957472bbbb2822eeb5fcdac376d54906ba",
     name="3dNwarpAdjust",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -33,13 +32,14 @@ def v_3d_nwarp_adjust(
     runner: Runner | None = None,
 ) -> V3dNwarpAdjustOutputs:
     """
-    3dNwarpAdjust by AFNI Development Team.
+    3dNwarpAdjust by AFNI Team.
     
     Program to adjust 3D warp datasets by composing them with the inverse of
     their average, optionally warping input datasets and generating an output
     mean dataset.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpAdjust.html
     
     Args:
         input_warps: List of input 3D warp datasets (at least 5).

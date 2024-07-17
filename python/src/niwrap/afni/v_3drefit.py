@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3DREFIT_METADATA = Metadata(
-    id="13f5b136c3dc5d8409a5fe765d3cbe9249866baf",
+    id="f99caa735b5f1d7c0301c3c51ae6a4a0a4573446",
     name="3drefit",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -44,7 +44,7 @@ def v_3drefit(
     runner: Runner | None = None,
 ) -> V3drefitOutputs:
     """
-    3drefit by Nipype (interface).
+    3drefit by AFNI Team.
     
     Changes some of the information inside a 3D dataset's header.
     

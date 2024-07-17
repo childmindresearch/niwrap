@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3DRETROICOR_METADATA = Metadata(
-    id="2b0d21e80d92dcc686540b1f64e52ce117a7af3b",
+    id="a4dfe4401ac6e19545ac1cd2e19534215c5202d4",
     name="3dretroicor",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,10 +40,13 @@ def v_3dretroicor(
     runner: Runner | None = None,
 ) -> V3dretroicorOutputs:
     """
-    3dretroicor by Fred Tam.
+    3dretroicor by AFNI Team.
     
     Performs Retrospective Image Correction for physiological motion effects
     using a modified RETROICOR algorithm.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dretroicor.html
     
     Args:
         dataset: 3D+time dataset to process.

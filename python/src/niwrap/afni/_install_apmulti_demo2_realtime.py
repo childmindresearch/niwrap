@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _INSTALL_APMULTI_DEMO2_REALTIME_METADATA = Metadata(
-    id="af53b3a7554ce542002c99643d52de57e8764aa6",
+    id="6a2fa2ea12b3b49a497b6bc2f21a9e66468ec99e",
     name="@Install_APMULTI_Demo2_realtime",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,12 +27,13 @@ def _install_apmulti_demo2_realtime(
     runner: Runner | None = None,
 ) -> InstallApmultiDemo2RealtimeOutputs:
     """
-    @Install_APMULTI_Demo2_realtime by AFNI Development Team.
+    @Install_APMULTI_Demo2_realtime by AFNI Team.
     
     Fetches the demo data and scripts corresponding to AFNI's Demo #2 for
     experimenting with AFNI's real-time system.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_APMULTI_Demo2_realtime.html
     
     Args:
         wget: Use wget to download the archive. By default, the script prefers\

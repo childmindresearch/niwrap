@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AP_RUN_SIMPLE_REST_METADATA = Metadata(
-    id="cb50d7e59281e57c0c3faedf30f06470d5bea7c3",
+    id="8bff1455bdc7bc20fdb01ec2ad66c4fa78340eb8",
     name="ap_run_simple_rest",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_container:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,9 +43,12 @@ def ap_run_simple_rest(
     runner: Runner | None = None,
 ) -> ApRunSimpleRestOutputs:
     """
-    ap_run_simple_rest by R Reynolds.
+    ap_run_simple_rest by AFNI Team.
     
     Run a quick afni_proc.py analysis for QC.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ap_run_simple_rest.tcsh.html
     
     Args:
         epi: EPI datasets.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _VOL_CENTER_METADATA = Metadata(
-    id="328e0db67af7ce902436e1975dd0d03ecaf396be",
+    id="f002ad42baa635e8ffc0f31d96d3b3410181eb68",
     name="@VolCenter",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -25,9 +27,12 @@ def _vol_center(
     runner: Runner | None = None,
 ) -> VolCenterOutputs:
     """
-    @VolCenter by Example Author.
+    @VolCenter by AFNI Team.
     
     Tool to return the center of volume for a given dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@VolCenter.html
     
     Args:
         dset: Input volume dataset.

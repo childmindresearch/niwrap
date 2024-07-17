@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 TFIM_METADATA = Metadata(
-    id="3e8c882d3e6b683630a778c715f9af62c4a81f6e",
+    id="13ac87055bbd77c0dfe3877e0d0e3152f347d146",
     name="tfim",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-tfim:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,9 +38,12 @@ def tfim(
     runner: Runner | None = None,
 ) -> TfimOutputs:
     """
-    tfim by RW Cox.
+    tfim by AFNI Team.
     
     MCW TFIM: t-tests on sets of functional images.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/tfim.html
     
     Args:
         set1_images: First set of image files.

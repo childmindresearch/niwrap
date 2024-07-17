@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AFNI_OPEN_METADATA = Metadata(
-    id="872e9deafa34c4fb15ed3d4499b6e160ebd10b37",
+    id="c204ac2a414ae07f2b5bdf31b8511905a0a9c417",
     name="afni_open",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,11 +40,12 @@ def afni_open(
     runner: Runner | None = None,
 ) -> AfniOpenOutputs:
     """
-    afni_open by AFNI Development Team.
+    afni_open by AFNI Team.
     
     A program to open various AFNI/SUMA files.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_open.html
     
     Args:
         files: Input file(s) to be opened.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 PARSE_FS_LT_LOG_PY_METADATA = Metadata(
-    id="1d8878eb3a42b9b292a877738e5130d06004af0a",
+    id="461a7f3353df9377e3262853687d63af58ecd6d3",
     name="parse_fs_lt_log.py",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,9 +30,12 @@ def parse_fs_lt_log_py(
     runner: Runner | None = None,
 ) -> ParseFsLtLogPyOutputs:
     """
-    parse_fs_lt_log.py by R Reynolds.
+    parse_fs_lt_log.py by AFNI Team.
     
     Parses FreeSurfer labeltable log file and retrieves labeltable indices.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/parse_fs_lt_log.py.html
     
     Args:
         logfile: Specify rank log file.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 COMPARE_SURFACES_METADATA = Metadata(
-    id="a89bec82adb4d1a11af1d0d51627a494d85a6899",
+    id="d991678463f274df72557a54dee9180376d96288",
     name="CompareSurfaces",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -45,12 +44,13 @@ def compare_surfaces(
     runner: Runner | None = None,
 ) -> CompareSurfacesOutputs:
     """
-    CompareSurfaces by Shruti Japee (LBC/NIMH/NIH), Ziad S. Saad (SSSC/NIMH/NIH).
+    CompareSurfaces by AFNI Team.
     
     Calculates distance at each node in Surface 1 (S1) to Surface 2 (S2) along
     the local surface normal at each node in S1. Superseded by SurfToSurf.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/CompareSurfaces.html
     
     Args:
         spec_file: File containing surface specification.

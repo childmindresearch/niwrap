@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 PARSE_NAME_METADATA = Metadata(
-    id="b2c9b489be13297414c93eb45ed3280d59362ffe",
+    id="fec643048eb67396904f612fcc609c4629cf2b6c",
     name="parse_name",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,9 +32,12 @@ def parse_name(
     runner: Runner | None = None,
 ) -> ParseNameOutputs:
     """
-    parse_name by Example Author.
+    parse_name by AFNI Team.
     
     A script to parse a filename into path, prefix, and extension strings.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@parse_name.html
     
     Args:
         name: The filename to parse.

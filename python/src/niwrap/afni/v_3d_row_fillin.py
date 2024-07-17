@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ROW_FILLIN_METADATA = Metadata(
-    id="795f26e9cd63e232f27890eef138282040717fe5",
+    id="9b95a35c02918750c1ae17e8e318aa5995490681",
     name="3dRowFillin",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,7 +34,7 @@ def v_3d_row_fillin(
     runner: Runner | None = None,
 ) -> V3dRowFillinOutputs:
     """
-    3dRowFillin by AFNI.
+    3dRowFillin by AFNI Team.
     
     Fills in blank regions in 1D rows extracted from a 3D dataset.
     

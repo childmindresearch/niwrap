@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _DIFF_TREE_METADATA = Metadata(
-    id="3d7fb95ae6e9eccc5db2ba1b003474d2f01e2aef",
+    id="18348c7f19e3cadb6f38cc92186f06c973d2ba01",
     name="@diff.tree",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,9 +43,12 @@ def _diff_tree(
     runner: Runner | None = None,
 ) -> DiffTreeOutputs:
     """
-    @diff.tree by R Reynolds.
+    @diff.tree by AFNI Team.
     
     Show file differences between 2 directories.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@diff.tree.html
     
     Args:
         new_dir: New directory to compare.

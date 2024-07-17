@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SPHERICAL_HARMONICS_RECONSTRUCTION_METADATA = Metadata(
-    id="e40eb5e4ba6564e4e2c01c705280696246a473cb",
+    id="7da19c5ebb52604e9cdc5777c59f3cd138dded03",
     name="Spherical Harmonics Reconstruction",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,10 +33,13 @@ def spherical_harmonics_reconstruction(
     runner: Runner | None = None,
 ) -> SphericalHarmonicsReconstructionOutputs:
     """
-    Spherical Harmonics Reconstruction by Ziad S. Saad.
+    Spherical Harmonics Reconstruction by AFNI Team.
     
     Spherical Harmonics Reconstruction from a set of harmonics and their
     corresponding coefficients.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SpharmReco.html
     
     Args:
         input_surface: Surface that provides the topology of the mesh (nodes'\

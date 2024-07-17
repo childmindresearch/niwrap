@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _DIFF_FILES_METADATA = Metadata(
-    id="724861b14f2d64bcb8661bd7414a9c48edd7b8b4",
+    id="acab637caceb2bb4e32e189d8d77df967444671a",
     name="@diff.files",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,10 +36,13 @@ def _diff_files(
     runner: Runner | None = None,
 ) -> DiffFilesOutputs:
     """
-    @diff.files by R Reynolds.
+    @diff.files by AFNI Team.
     
     Show file differences (between specified files and those in another
     directory).
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@diff.files.html
     
     Args:
         files: List of files to compare.

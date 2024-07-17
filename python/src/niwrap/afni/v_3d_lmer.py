@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_LMER_METADATA = Metadata(
-    id="530425ef273f5b25eb355814eef54fe6ce31a4fc",
+    id="e9110753e9b45d291e612788a73cc5352c61aa69",
     name="3dLMEr",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -52,11 +51,12 @@ def v_3d_lmer(
     runner: Runner | None = None,
 ) -> V3dLmerOutputs:
     """
-    3dLMEr by Gang Chen.
+    3dLMEr by AFNI Team.
     
     Program for Voxelwise Linear Mixed-Effects (LME) Analysis.
     
-    More information: https://afni.nimh.nih.gov/gangchen_homepage
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLMEr.html
     
     Args:
         data_table: List the data structure with a header as the first line.

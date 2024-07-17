@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 UBER_SUBJECT_PY_METADATA = Metadata(
-    id="b17bb7f24557f85c2de44985542070ad66772c2f",
+    id="5fc47a6e79687e4fcf65b257c1df6aef017c2d16",
     name="uber_subject.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -69,9 +68,12 @@ def uber_subject_py(
     runner: Runner | None = None,
 ) -> UberSubjectPyOutputs:
     """
-    uber_subject.py by R Reynolds.
+    uber_subject.py by AFNI Team.
     
     Graphical interface to afni_proc.py.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_subject.py.html
     
     Args:
         qt_opts: Pass options to PyQt4.

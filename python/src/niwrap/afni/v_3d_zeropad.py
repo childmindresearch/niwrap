@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_ZEROPAD_METADATA = Metadata(
-    id="e60cc0378f3e9c2de62e60440b02cab1cb7c1a38",
+    id="89b57cae1500d60d81ab1eb191c2415cbf411ff1",
     name="3dZeropad",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -45,10 +44,13 @@ def v_3d_zeropad(
     runner: Runner | None = None,
 ) -> V3dZeropadOutputs:
     """
-    3dZeropad by RWCox.
+    3dZeropad by AFNI Team.
     
     Adds planes of zeros to a dataset (i.e., pads it out). Negative 'add' count
     means to cut a dataset down in size.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZeropad.html
     
     Args:
         dataset: Input dataset.

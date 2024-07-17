@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_3D_RANKIZER_METADATA = Metadata(
-    id="621c82481d05d35722b236007f9486c0ef885d7c",
+    id="02a24acb7252cea4f3caac760b427edb414bac4b",
     name="3dRankizer",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,10 +33,13 @@ def v_3d_rankizer(
     runner: Runner | None = None,
 ) -> V3dRankizerOutputs:
     """
-    3dRankizer by RW Cox.
+    3dRankizer by AFNI Team.
     
     Tool to rank each voxel as sorted into increasing value. Ties get the
     average rank.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRankizer.html
     
     Args:
         dataset: Input MRI dataset.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 RBOX_METADATA = Metadata(
-    id="4a95fe277a2eeb4e1d40b09f17696f0834550003",
+    id="1022ff262e52355c6d23e916c7b2ebef2c15364f",
     name="rbox",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -44,9 +46,12 @@ def rbox(
     runner: Runner | None = None,
 ) -> RboxOutputs:
     """
-    rbox.
+    rbox by AFNI Team.
     
     Generate various point distributions. Default is random in cube.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/rbox.html
     
     Args:
         number_points: Number of random points in cube, lens, spiral, sphere or\

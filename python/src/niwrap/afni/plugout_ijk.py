@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 PLUGOUT_IJK_METADATA = Metadata(
-    id="3a6afc3c1836f9c09a9ff1be75e0e0b4ba68d0da",
+    id="11bb801675e3a4b22ec93f9e4abe5020f89831c6",
     name="plugout_ijk",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,9 +36,12 @@ def plugout_ijk(
     runner: Runner | None = None,
 ) -> PlugoutIjkOutputs:
     """
-    plugout_ijk by AFNI Development Team.
+    plugout_ijk by AFNI Team.
     
     Connects to AFNI and sends (i,j,k) dataset indices to control the viewpoint.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/plugout_ijk.html
     
     Args:
         host: Connect to AFNI running on the specified computer using TCP/IP.

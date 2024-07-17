@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_SIGNATURES_METADATA = Metadata(
-    id="d259139390acf20af4cf81829522468fc671e968",
+    id="a9ba73d5314969095f3971122b54dba10f583413",
     name="3dSignatures",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="docker.io/3dsignatures/tool:1.0.0",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,11 +33,12 @@ def v_3d_signatures(
     runner: Runner | None = None,
 ) -> V3dSignaturesOutputs:
     """
-    3dSignatures by 3dSignatures Inc..
+    3dSignatures by AFNI Team.
     
     3dSignatures analysis tool for 3D genome organization.
     
-    More information: https://3dsignatures.com
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSignatures.html
     
     Args:
         infile: Input file containing 3D genome data (e.g. genome_data.txt).

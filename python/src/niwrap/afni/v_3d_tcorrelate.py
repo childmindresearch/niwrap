@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_TCORRELATE_METADATA = Metadata(
-    id="b60f154f59574999d2a7ed9a1d4d32c2af5cf740",
+    id="afd587c27b0c2e6037e9309343568724a3a52b72",
     name="3dTCorrelate",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -43,7 +43,7 @@ def v_3d_tcorrelate(
     runner: Runner | None = None,
 ) -> V3dTcorrelateOutputs:
     """
-    3dTCorrelate by RWCox @ AFNI.
+    3dTCorrelate by AFNI Team.
     
     3dTCorrelate. Computes the correlation coefficient between corresponding
     voxel time series in two input 3D+time datasets 'xset' and 'yset'.

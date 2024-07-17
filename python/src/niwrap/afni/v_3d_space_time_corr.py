@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_SPACE_TIME_CORR_METADATA = Metadata(
-    id="0ffbbb9ad0a6997d9fec29ce525d992244de5820",
+    id="bef538cd3f7b16f9149b6002e3f4cc2698125dee",
     name="3dSpaceTimeCorr",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/docker-3dspacetimecorr:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -35,12 +34,13 @@ def v_3d_space_time_corr(
     runner: Runner | None = None,
 ) -> V3dSpaceTimeCorrOutputs:
     """
-    3dSpaceTimeCorr by PA Taylor.
+    3dSpaceTimeCorr by AFNI Team.
     
     Calculates correlation coefficients between two 4D datasets using space+time
     patterns.
     
-    More information: https://example.com/3dSpaceTimeCorr_tool
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSpaceTimeCorr.html
     
     Args:
         inset_a: First 4D data set.

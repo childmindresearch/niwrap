@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 V_3D_DESPIKE_METADATA = Metadata(
-    id="f26825d96f198db6575668ac21d15d5619826051",
+    id="cda6a7cf466d22bb6d9beb6892d4e524b2679920",
     name="3dDespike",
     container_image_type="docker",
     container_image_tag="fcpindi/c-pac:latest",
@@ -28,7 +28,7 @@ def v_3d_despike(
     runner: Runner | None = None,
 ) -> V3dDespikeOutputs:
     """
-    3dDespike by AFNI.
+    3dDespike by AFNI Team.
     
     Removes 'spikes' from the 3D+time input dataset and writes a new dataset
     with the spike values replaced by something more pleasing to the eye.

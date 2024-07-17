@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 _GET_AFNI_ORIENT_METADATA = Metadata(
-    id="794be3db9b9a380180fa8bf19bc6a2ba5602e059",
+    id="6aeb16aa28781e5b4982e7cc092248302d14798d",
     name="@GetAfniOrient",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,11 +29,12 @@ def _get_afni_orient(
     runner: Runner | None = None,
 ) -> GetAfniOrientOutputs:
     """
-    @GetAfniOrient by Ziad Saad (saadz@mail.nih.gov).
+    @GetAfniOrient by AFNI Team.
     
     Returns the orient code of AFNI datasets.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniOrient.html
     
     Args:
         infile: Input AFNI dataset (e.g. Hello+orig.HEAD).

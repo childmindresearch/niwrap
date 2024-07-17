@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AFNI_BATCH_R_METADATA = Metadata(
-    id="ae7b758d6942c9d3753251f8a6ce570ede4e49af",
+    id="623e842ac9ae76fd2fe10ab70cefe7b8599aaae7",
     name="AFNI_Batch_R",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,11 +30,12 @@ def afni_batch_r(
     runner: Runner | None = None,
 ) -> AfniBatchROutputs:
     """
-    AFNI_Batch_R by AFNI Developers.
+    AFNI_Batch_R by AFNI Team.
     
     Batch mode for executing R scripts in the AFNI environment.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/AFNI_Batch_R.html
     
     Args:
         no_restore: Do not restore anything in the R workspace at startup.

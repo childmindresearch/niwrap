@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 NICCC_METADATA = Metadata(
-    id="7de8367e0443d40cad5040d210e09014a777fbef",
+    id="54cd6e449fab075d36fbe4d750534db80194c6d5",
     name="niccc",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,10 +39,13 @@ def niccc(
     runner: Runner | None = None,
 ) -> NicccOutputs:
     """
-    niccc by NIML Developers.
+    niccc by AFNI Team.
     
     A program for conducting certain NIML tests on input from streamspec and
     write the results to stderr.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/niccc.html
     
     Args:
         streamspec: A string defining a NIML stream.

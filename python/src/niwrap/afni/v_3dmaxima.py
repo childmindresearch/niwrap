@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DMAXIMA_METADATA = Metadata(
-    id="135dc5292ce09d0c1f645355d93f6ce24f5e6f5a",
+    id="82616d8a280323fcef76190466496287506f80fd",
     name="3dmaxima",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-container-image",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,9 +47,12 @@ def v_3dmaxima(
     runner: Runner | None = None,
 ) -> V3dmaximaOutputs:
     """
-    3dmaxima by R Reynolds.
+    3dmaxima by AFNI Team.
     
     Locate extrema in a functional dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaxima.html
     
     Args:
         input_dataset: Specify input dataset (e.g. func+orig'[7]').

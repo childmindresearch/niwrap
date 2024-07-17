@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_BLUR_IN_MASK_METADATA = Metadata(
-    id="f0f0e7b84b77e06573abd71f5e745f118198c690",
+    id="431d35050cc5bb482fdcbc3aafdcf364c2c9bc0e",
     name="3dBlurInMask",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -39,11 +38,12 @@ def v_3d_blur_in_mask(
     runner: Runner | None = None,
 ) -> V3dBlurInMaskOutputs:
     """
-    3dBlurInMask by AFNI.
+    3dBlurInMask by AFNI Team.
     
     Blurs a dataset spatially inside a mask.
     
-    More information: https://afni.nimh.nih.gov/pub/dist/doc/misc/OpenMP.html
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurInMask.html
     
     Args:
         input_file: Dataset to be smoothed and output.

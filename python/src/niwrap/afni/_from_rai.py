@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FROM_RAI_METADATA = Metadata(
-    id="11d663bb98167431ae73471adeb59a82bd342c4e",
+    id="c267f878628e42907a2d26cda01b63ccba65d5be",
     name="FromRAI",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="some-docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,9 +27,12 @@ def from_rai(
     runner: Runner | None = None,
 ) -> FromRaiOutputs:
     """
-    FromRAI by Unknown.
+    FromRAI by AFNI Team.
     
     Changes the RAI coordinates to the specified orientation.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FromRAI.html
     
     Args:
         rai_coordinates: RAI coordinates X, Y, and Z.

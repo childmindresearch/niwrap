@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_TCORR_MAP_METADATA = Metadata(
-    id="996743d3abb4daf032f91a62f020ff1c466a269d",
+    id="7bd206a1d4a50c204e453541a4d42e8429f33f3a",
     name="3dTcorrMap",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -43,11 +42,12 @@ def v_3d_tcorr_map(
     runner: Runner | None = None,
 ) -> V3dTcorrMapOutputs:
     """
-    3dTcorrMap by RWCox.
+    3dTcorrMap by AFNI Team.
     
     AFNI program to compute correlation maps of input time series data.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorrMap.html
     
     Args:
         input_: Read 3D+time dataset 'dd'. This provides the time series to be\

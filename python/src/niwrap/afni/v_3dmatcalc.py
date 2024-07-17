@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3DMATCALC_METADATA = Metadata(
-    id="ee86f8282019b5c0b17ef984abcc6bb8f3b66a7d",
+    id="f663419e27dcd9c56d96a9f1743537c00341e812",
     name="3dmatcalc",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,11 +33,12 @@ def v_3dmatcalc(
     runner: Runner | None = None,
 ) -> V3dmatcalcOutputs:
     """
-    3dmatcalc by Zhark, Emperor.
+    3dmatcalc by AFNI Team.
     
     Apply a matrix to a dataset, voxel-by-voxel, to produce a new dataset.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmatcalc.html
     
     Args:
         input_dataset: Input dataset to be processed.

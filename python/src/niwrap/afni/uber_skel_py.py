@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 UBER_SKEL_METADATA = Metadata(
-    id="5dea833d3f9e13046b827b700c1a4841d24d0e13",
+    id="41786034a9fa11a1fc1239958a2c4ce04eb1e6f4",
     name="uber_skel",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="some/docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -37,10 +36,13 @@ def uber_skel(
     runner: Runner | None = None,
 ) -> UberSkelOutputs:
     """
-    uber_skel by R Reynolds.
+    uber_skel by AFNI Team.
     
     Sample uber processing program for initializing user and control variables,
     with options for both GUI and non-GUI modes.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_skel.py.html
     
     Args:
         qt_options: Pass PyQt4 options directly to the GUI.

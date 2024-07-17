@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FIRDESIGN_METADATA = Metadata(
-    id="ff265fa55469437206f529906cbd23e0a409b702",
+    id="b59dbb417f2a88efcc58befa175dcdcc3b4527b9",
     name="FIRdesign",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -29,14 +31,14 @@ def firdesign(
     runner: Runner | None = None,
 ) -> FirdesignOutputs:
     """
-    FIRdesign by RWCox.
+    FIRdesign by AFNI Team.
     
     Uses the Remez algorithm to calculate the FIR filter weights for a bandpass
     filter; results are written to stdout in an unadorned (no header) column of
     numbers.
     
     More information:
-    http://en.wikipedia.org/wiki/Parks-McClellan_filter_design_algorithm
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/FIRdesign.html
     
     Args:
         fbot: Lowest frequency in the pass band.

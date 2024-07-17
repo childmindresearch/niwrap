@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FIM2_METADATA = Metadata(
-    id="8d3b3c79cb007dafcb62e2862adf7d2b74a01d65",
+    id="e30f33f949a5efca13859e78a1eb5027bf0381cc",
     name="fim2",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="example/container-fim2:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -61,11 +60,12 @@ def fim2(
     runner: Runner | None = None,
 ) -> Fim2Outputs:
     """
-    fim2 by Author Name.
+    fim2 by AFNI Team.
     
     Functional Imaging Mapping Tool.
     
-    More information: https://example.com/fim2
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fim2.html
     
     Args:
         image_files: Input MRI image files.

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 QUOTIZE_METADATA = Metadata(
-    id="cf1a00b93da220d722cc0c10a92020649860476a",
+    id="f4263645362c9aa556370eaecc4ab84237970530",
     name="quotize",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,10 +30,13 @@ def quotize(
     runner: Runner | None = None,
 ) -> QuotizeOutputs:
     """
-    quotize by AFNI Development Team.
+    quotize by AFNI Team.
     
     Turns a text file into a C array of strings initialized into an array 'char
     *name[]'.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/quotize.html
     
     Args:
         name: The name to be used for the array of strings.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_SHARPEN_METADATA = Metadata(
-    id="b7cde717065fa070dd0f4cc4855029e0f66a2f4d",
+    id="b059c2c61a44a4c848328597e8e15c3c0f61861f",
     name="3dSharpen",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,10 +30,13 @@ def v_3d_sharpen(
     runner: Runner | None = None,
 ) -> V3dSharpenOutputs:
     """
-    3dSharpen by RWCox.
+    3dSharpen by AFNI Team.
     
     Applies a simple 3D sharpening filter to the positive values in the #0
     volume of the input dataset, and writes out a new dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSharpen.html
     
     Args:
         input_dataset: Input dataset (e.g., input.nii.gz).

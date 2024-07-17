@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _AFNI_ORIENT2_RAIMAP_METADATA = Metadata(
-    id="875ee54959b8849af9be729f75c1194dc64dba1e",
+    id="312077afbd35f0623cd9b3f832712459b08ac15f",
     name="@AfniOrient2RAImap",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -24,9 +26,12 @@ def _afni_orient2_raimap(
     runner: Runner | None = None,
 ) -> AfniOrient2RaimapOutputs:
     """
-    @AfniOrient2RAImap by Ziad Saad (saadz@mail.nih.gov).
+    @AfniOrient2RAImap by AFNI Team.
     
     Returns the index map for the RAI directions.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@AfniOrient2RAImap.html
     
     Args:
         orientation_code: Orientation code (e.g., RAI, LSP).

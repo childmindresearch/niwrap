@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_EIGS_TO_DT_METADATA = Metadata(
-    id="98b84d719a888cbd2dac99e875b46da6e2d809e9",
+    id="0c4286c53a3425e292042f364a2921143dae56cd",
     name="3dEigsToDT",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,7 +37,7 @@ def v_3d_eigs_to_dt(
     runner: Runner | None = None,
 ) -> V3dEigsToDtOutputs:
     """
-    3dEigsToDT by Taylor PA, Saad ZS.
+    3dEigsToDT by AFNI Team.
     
     Convert set of DTI eigenvectors and eigenvalues to a diffusion tensor, with
     optional value-scaling and vector-flipping.

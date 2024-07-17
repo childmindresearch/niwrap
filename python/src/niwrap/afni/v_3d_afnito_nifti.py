@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_AFNITO_NIFTI_METADATA = Metadata(
-    id="748e937932f6208ec00a0c2b12c6af43b8dcbbc0",
+    id="ae6bf0c333b8313427a705e5e97258598caf2323",
     name="3dAFNItoNIFTI",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,7 +39,8 @@ def v_3d_afnito_nifti(
     
     Converts an AFNI dataset to a NIfTI-1.1 file.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoNIFTI.html
     
     Args:
         input_dataset: Input AFNI dataset.

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INSTALL_INSTA_CORR_DEMO_METADATA = Metadata(
-    id="435a6c61f1df7cf90577c9178d401e62b84157dd",
+    id="69f2ef2c2aa0f0888fd35a3196f5abaa998a6655",
     name="Install_InstaCorr_Demo",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_container:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -30,9 +29,12 @@ def install_insta_corr_demo(
     runner: Runner | None = None,
 ) -> InstallInstaCorrDemoOutputs:
     """
-    Install_InstaCorr_Demo by AFNI Development Team.
+    Install_InstaCorr_Demo by AFNI Team.
     
     Installs and sets up AFNI's InstaCorr demo archive.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_InstaCorr_Demo.html
     
     Args:
         wget: Use wget to download archive. Script chooses by default with\

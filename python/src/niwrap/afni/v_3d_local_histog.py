@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_3D_LOCAL_HISTOG_METADATA = Metadata(
-    id="bef22bef1dab99f94637ce52f317625cb9fa3f39",
+    id="b660a7fce0314f96af48dc779a9f19beae27f400",
     name="3dLocalHistog",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni_latest:23.1.10",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -42,7 +41,7 @@ def v_3d_local_histog(
     runner: Runner | None = None,
 ) -> V3dLocalHistogOutputs:
     """
-    3dLocalHistog by RWCox.
+    3dLocalHistog by AFNI Team.
     
     This program computes a local histogram at each voxel in the input datasets.
     

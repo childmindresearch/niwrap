@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ROI_CORR_MAT_METADATA = Metadata(
-    id="6366a6e18271641cb5e934aa1db3294d796e847a",
+    id="91bac0506bf3240099589fe71e983e19e3deb671",
     name="ROI_Corr_Mat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -40,9 +39,12 @@ def roi_corr_mat(
     runner: Runner | None = None,
 ) -> RoiCorrMatOutputs:
     """
-    ROI_Corr_Mat by Hang Joon Jo, Modified by Ziad S. Saad.
+    ROI_Corr_Mat by AFNI Team.
     
     Script to produce an NxN ROI correlation matrix of N ROIs.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_Corr_Mat.html
     
     Args:
         ts_vol: Time series volume.

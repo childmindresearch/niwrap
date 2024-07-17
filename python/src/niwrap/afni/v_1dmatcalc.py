@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 V_1DMATCALC_METADATA = Metadata(
-    id="9bf60ba746a345e2030b30d8f23058cc9fd57536",
+    id="5f909b5811834b5a31ad8ac22d731cc2b46983d0",
     name="1dmatcalc",
     container_image_type="docker",
-    container_image_tag="afni/afni_latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -28,7 +28,7 @@ def v_1dmatcalc(
     runner: Runner | None = None,
 ) -> V1dmatcalcOutputs:
     """
-    1dmatcalc by AFNI (Analysis of Functional NeuroImages).
+    1dmatcalc by AFNI Team.
     
     A tool to evaluate space-delimited RPN (Reverse Polish Notation)
     matrix-valued expressions.

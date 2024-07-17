@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 READ_MATLAB_FILES_PY_METADATA = Metadata(
-    id="b34e2e9b5df6071d7e2783b94fae016158adf9fd",
+    id="03422b34d2ebcdb61134bb2fcb6d2dd928f5f16b",
     name="read_matlab_files.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="user/read_matlab_files:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -34,9 +33,12 @@ def read_matlab_files_py(
     runner: Runner | None = None,
 ) -> ReadMatlabFilesPyOutputs:
     """
-    read_matlab_files.py by R Reynolds.
+    read_matlab_files.py by AFNI Team.
     
     Describe or convert MATLAB files (.mat) to 1D format.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/read_matlab_files.py.html
     
     Args:
         infiles: Input MATLAB files to be processed.

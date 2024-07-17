@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SURF_INFO_METADATA = Metadata(
-    id="c9463aec07c88b23b2f01eca70a34e228766aecb",
+    id="8a002fac981bd9a7b8e1ac8f422fb5f6564400ad",
     name="SurfInfo",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -45,11 +47,12 @@ def surf_info(
     runner: Runner | None = None,
 ) -> SurfInfoOutputs:
     """
-    SurfInfo by Ziad S. Saad SSCC/NIMH/NIH.
+    SurfInfo by AFNI Team.
     
     Tool to gather information about surface files.
     
-    More information: https://afni.nimh.nih.gov
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfInfo.html
     
     Args:
         surface: Input surface file.

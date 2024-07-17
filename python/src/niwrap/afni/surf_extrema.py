@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SURF_EXTREMA_METADATA = Metadata(
-    id="b63dfa40d78e0acc21b073d440c1d31e726bb28a",
+    id="d5e3ef40e02e29577f4e8655289c398631c27ad2",
     name="SurfExtrema",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -38,9 +37,12 @@ def surf_extrema(
     runner: Runner | None = None,
 ) -> SurfExtremaOutputs:
     """
-    SurfExtrema by Ziad S. Saad SSCC/NIMH/NIH.
+    SurfExtrema by AFNI Team.
     
     A program finding the local extrema in a dataset.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfExtrema.html
     
     Args:
         prefix: Prefix for the output datasets.

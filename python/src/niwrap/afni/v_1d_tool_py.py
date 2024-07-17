@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 V_1D_TOOL_PY_METADATA = Metadata(
-    id="84c70b153679c88e3aabe522b1fe8a517034734a",
+    id="bfca62b90ddbc005a8f27ce270b0022157b674b1",
     name="1d_tool.py",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/afni:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -41,7 +40,7 @@ def v_1d_tool_py(
     runner: Runner | None = None,
 ) -> V1dToolPyOutputs:
     """
-    1d_tool.py by R Reynolds.
+    1d_tool.py by AFNI Team.
     
     A tool for manipulating and evaluating 1D files.
     

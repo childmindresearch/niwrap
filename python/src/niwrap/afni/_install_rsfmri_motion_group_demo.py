@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 INSTALL_RSFMRI_MOTION_GROUP_DEMO_METADATA = Metadata(
-    id="8ae5a1bd0567f409a4c6da6d752d0c37febbaa75",
+    id="1fd4bbd6d74e1c74ad1acd94788e011092383ec2",
     name="Install_RSFMRI_Motion_Group_Demo",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -31,7 +33,8 @@ def install_rsfmri_motion_group_demo(
     Installs and sets up an AFNI InstaCorr demo archive, based on 190 Cambridge
     subjects from FCON_1000.
     
-    More information: https://afni.nimh.nih.gov/
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_RSFMRI_Motion_Group_Demo.html
     
     Args:
         output_dir: Directory where the AFNI_Demo_Motion_Groups will be set up.

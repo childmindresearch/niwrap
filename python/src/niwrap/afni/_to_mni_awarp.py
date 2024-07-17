@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 _TO_MNI_AWARP_METADATA = Metadata(
-    id="3575da853ba877c6272349ab2a7fd74568b22bc8",
+    id="7bca51fccec52aa109fadb88b6e96434caf278eb",
     name="@toMNI_Awarp",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -27,10 +29,13 @@ def _to_mni_awarp(
     runner: Runner | None = None,
 ) -> ToMniAwarpOutputs:
     """
-    @toMNI_Awarp by Author Not Specified.
+    @toMNI_Awarp by AFNI Team.
     
     Transforms skull-stripped datasets to 1x1x1 mm MNI space using an affine
     transformation.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@toMNI_Awarp.html
     
     Args:
         directory: Name of the directory to be created where results will be\

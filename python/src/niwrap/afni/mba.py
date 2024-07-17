@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MBA_METADATA = Metadata(
-    id="18d6b71609252212a60c18d3c9e6fa87b450e44a",
+    id="acd55ce6f99bc93fc96ffbe5f64fa4c475c231cf",
     name="MBA",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="afni/mba:1.0.7",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -47,11 +46,12 @@ def mba(
     runner: Runner | None = None,
 ) -> MbaOutputs:
     """
-    MBA by Gang Chen.
+    MBA by AFNI Team.
     
     Matrix-Based Analysis Program through Bayesian Multilevel Modeling.
     
-    More information: https://afni.nimh.nih.gov/gangchen_homepage
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/MBA.html
     
     Args:
         prefix: Prefix for output file names.

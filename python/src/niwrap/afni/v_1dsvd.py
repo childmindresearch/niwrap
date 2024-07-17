@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 V_1DSVD_METADATA = Metadata(
-    id="5fe0099ec8141e5d6329aafb206f3c7b832f7519",
+    id="164f69b0c434b544d5fa02424e645ffe777e333d",
     name="1dsvd",
+    container_image_type="docker",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -36,10 +38,13 @@ def v_1dsvd(
     runner: Runner | None = None,
 ) -> V1dsvdOutputs:
     """
-    1dsvd by Zhark the Algebraical (Linear).
+    1dsvd by AFNI Team.
     
     Computes SVD of the matrix formed by the 1D file(s) and outputs the result
     on stdout.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dsvd.html
     
     Args:
         input_files: Input 1D file(s) for SVD computation.

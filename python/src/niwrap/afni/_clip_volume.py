@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 CLIP_VOLUME_METADATA = Metadata(
-    id="0f85cb73e5b4d1c8fc70c2d2617e10e83b9f9ed8",
+    id="f9717e49f3689ed5839a33ee255084da10884db8",
     name="clip_volume",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="some/docker-image:latest",
+    container_image_tag="fcpindi/c-pac:latest",
 )
 
 
@@ -48,10 +47,13 @@ def clip_volume(
     runner: Runner | None = None,
 ) -> ClipVolumeOutputs:
     """
-    clip_volume by Ziad S. Saad.
+    clip_volume by AFNI Team.
     
     A tool to clip regions of a volume in various ways, such as above/below
     certain coordinates or within a specified box.
+    
+    More information:
+    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@clip_volume.html
     
     Args:
         input_volume: Volume to clip.
