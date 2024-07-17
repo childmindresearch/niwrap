@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0.0",
   "name": "@fat_tract_colorize",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "descriptor-url": "https://example.com/afni_fat_tract_colorize.json",
   "description": "Visualize tractographic output from 3dTrackID, particularly in probabilistic mode.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@fat_tract_colorize.html",
   "command-line": "@fat_tract_colorize -in_fa [FILE_FA] -in_v1 [FILE_V1] -in_tracts [FILE_TR] -prefix [PREFIX] [IN_ULAY] [NO_VIEW_FLAG] [ONLY_VIEW_FLAG]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

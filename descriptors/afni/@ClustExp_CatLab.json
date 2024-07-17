@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "@ClustExp_CatLab",
-  "author": "Justin Rajendra",
+  "author": "AFNI Team",
   "description": "Helper script to concatenate and label a group of data sets.",
   "command-line": "@ClustExp_CatLab -prefix [PREFIX] -input [INPUT_FILE] [HELP_FLAG]",
   "container-image": {
-    "image": "your_docker_image_here:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -47,5 +46,6 @@
       "id": "output_file",
       "name": "Output file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ClustExp_CatLab.html"
 }

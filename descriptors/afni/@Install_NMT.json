@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "Install_NMT",
-  "author": "NIMH",
+  "author": "AFNI Team",
   "description": "Installs the NIMH Macaque Template (NMT) with the accompanying Cortical Hierarchy Atlas of the Rhesus Macaque (CHARM).",
   "command-line": "Install_NMT [INSTALL_DIR] [VERSION] [VARIANT] [OVERWRITE_FLAG] [WGET_FLAG] [CURL_FLAG] [HELP_FLAG]",
   "container-image": {
-    "image": "nimh/install_nmt:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -73,5 +72,6 @@
       "name": "Help Flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_NMT.html"
 }

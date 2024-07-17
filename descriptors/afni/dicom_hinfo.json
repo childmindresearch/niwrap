@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "dicom_hinfo",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Prints selected information from one or more DICOM files to stdout.",
   "command-line": "dicom_hinfo [TAG] [FILE_SEPARATOR] [FULL_ENTRY_FLAG] [NO_NAME_FLAG] [NAME_LAST_FLAG] [FILES...]",
   "inputs": [
@@ -61,5 +61,10 @@
       "name": "Input Files"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/dicom_hinfo.html"
 }

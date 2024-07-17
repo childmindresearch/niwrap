@@ -1,14 +1,13 @@
 {
   "tool-version": "4.1.4",
   "name": "3dMVM",
-  "author": "Gang Chen",
+  "author": "AFNI Team",
   "descriptor-url": "#",
   "description": "AFNI Group Analysis Program with Multi-Variate Modeling Approach",
-  "url": "https://afni.nimh.nih.gov/MVM",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMVM.html",
   "command-line": "3dMVM [PARAM_FLAGS] -prefix [PREFIX] -jobs [JOBS] -mask [MASK] -bsVars [BSVARS] -wsVars [WSVARS] -qVars [QVARS] -qVarCenters [Q_VAR_CENTERS] -num_glt [NUM_GLT] -gltLabel [GLT_LABEL] -gltCode [GLT_CODE] -num_glf [NUM_GLF] -glfLabel [GLF_LABEL] -glfCode [GLF_CODE] -dataTable [DATA_TABLE]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

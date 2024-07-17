@@ -1,13 +1,12 @@
 {
   "tool-version": "beta",
   "name": "3ddot_beta",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Beta version of updating 3ddot, currently only performing eta2 tests and outputting a full matrix to a text file.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddot_beta.html",
   "command-line": "3ddot_beta -input [INPUT_FILE] -prefix [PREFIX] [DOETA2_FLAG] [MASK]",
   "container-image": {
-    "image": "afni/afni_latest:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

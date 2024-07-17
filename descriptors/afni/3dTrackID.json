@@ -1,14 +1,13 @@
 {
   "tool-version": "2.1",
   "name": "3dTrackID",
-  "author": "PA Taylor and ZS Saad",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/src/other/3dTrackID/3dTrackID.help",
   "description": "FACTID-based tractography code for AFNI, part of FATCAT",
-  "url": "https://afni.nimh.nih.gov/AFNI_2011-12-29_64bit",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTrackID.html",
   "command-line": "3dTrackID -mode {DET | MINIP | PROB} [ALL_REQUIRED_OPTIONS] [MODEL_SPECIFIC_OPTIONS] [MODE_SPECIFIC_OPTIONS] [OTHER_OPTIONS]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

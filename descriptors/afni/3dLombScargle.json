@@ -1,13 +1,12 @@
 {
   "tool-version": "1.4",
   "name": "3dLombScargle",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Make a periodogram or amplitude-spectrum of a time series that has a non-constant sampling rate",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLombScargle.html",
   "command-line": "3dLombScargle -prefix [PREFIX] -inset [INPUT_FILE] [CENSOR_FILE] [CENSOR_STRING] [MASK_FILE] [OUT_POW_SPEC_FLAG] [NYQUIST_MULTIPLIER] [NIFTI_FLAG]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

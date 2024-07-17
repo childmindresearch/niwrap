@@ -1,13 +1,12 @@
 {
   "tool-version": "3.2",
   "name": "@RenamePanga",
-  "author": "Ziad Saad",
+  "author": "AFNI Team",
   "description": "Creates AFNI bricks from RealTime GE EPI series.",
-  "url": "mailto:saadz@mail.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@RenamePanga.html",
   "command-line": "@RenamePanga [DIR_NUMBER] [FIRST_IMAGE_NUMBER] [NUM_SLICES] [NUM_REPS] [OUTPUT_ROOT] [KEEP_PREFIX_FLAG] [INTERACTIVE_FLAG] [OUTLIERS_CHECK_FLAG] [SLICE_PATTERN] [OUTPUT_DIRECTORY]",
   "container-image": {
-    "image": "afni/afni_latest:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "afni_python_wrapper",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Python wrapper to call AFNI functions from the shell",
   "command-line": "afni_python_wrapper.py [FLAGS] [ARGUMENTS]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -92,5 +91,6 @@
       "name": "Help flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_python_wrapper.py.html"
 }

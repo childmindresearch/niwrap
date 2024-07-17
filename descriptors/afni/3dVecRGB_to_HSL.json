@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "3dVecRGBtoHSL",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Convert a 3-brick RGB (red, green, blue) data set to an HSL (hue, saturation, luminance) one.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dVecRGB_to_HSL.html",
   "command-line": "3dVecRGBtoHSL [PREFIX] [IN_VEC] [MASK] [IN_SCAL]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

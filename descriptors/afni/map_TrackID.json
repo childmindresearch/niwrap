@@ -2,12 +2,11 @@
   "name": "map_TrackID",
   "tool-version": "1.0",
   "description": "Maps the track file (*.trk) output of 3dTrackID to another space using the 1Dmatrix_save info of 3dAllineate.",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "command-line": "map_TrackID -prefix [PREFIX] -in_trk [IN_TRK] -in_map [IN_MAP] -ref [REFERENCE] [VERBOSE_FLAG] [ORIG_ZERO_FLAG] [LINE_ONLY_NUM_FLAG] [ALREADY_INV_FLAG]",
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni:latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {
@@ -88,5 +87,6 @@
       "optional": false
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/map_TrackID.html"
 }

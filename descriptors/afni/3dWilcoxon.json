@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dWilcoxon",
-  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "author": "AFNI Team",
   "description": "Nonparametric Wilcoxon signed-rank test for paired comparisons of two samples",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWilcoxon.html",
   "command-line": "3dWilcoxon [WORKMEM] [VOXEL] -dset 1 [DS1_X] -dset 2 [DS2_Y] -out [PREFIX]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

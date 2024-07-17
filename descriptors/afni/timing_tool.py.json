@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "timing_tool.py",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Tool for manipulating and evaluating stimulus timing files",
   "command-line": "timing_tool.py [COMMANDS]",
   "schema-version": "0.5",
@@ -196,5 +196,10 @@
       "description": "Output 1D formatted stimulus data",
       "optional": true
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/timing_tool.py.html"
 }

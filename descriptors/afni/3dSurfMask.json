@@ -1,9 +1,9 @@
 {
   "tool-version": "latest",
   "name": "3dSurfMask",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Creates volumetric datasets marking voxels based on their location relative to a surface",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSurfMask.html",
   "command-line": "3dSurfMask <-i_TYPE SURFACE> <-prefix PREFIX> <-grid_parent GRID_VOL> [<fill_method> <SURF_VOL> <mask_only> <flip_orientation> <no_dist>]",
   "inputs": [
     {
@@ -100,5 +100,9 @@
       "id": "distance_dataset",
       "name": "Distance Dataset"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

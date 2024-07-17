@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "get_afni_model_PRF",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "A tool to get AFNI model parameters assuming a PRF framework",
   "command-line": "get_afni_model_PRF [A] [X] [Y] [SIGMA]",
   "inputs": [
@@ -38,5 +38,10 @@
       "name": "Sigma"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF.html"
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "@SUMA_renumber_FS",
-  "author": "PA Taylor (NIMH, NIH)",
+  "author": "AFNI Team",
   "description": "This script processes FreeSurfer-generated parcellation files and produces various derived datasets and segmentation maps.",
   "command-line": "@SUMA_renumber_FS [SUMA_DIR]",
   "inputs": [
@@ -95,7 +95,8 @@
     }
   ],
   "container-image": {
-    "image": "afni/afni:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
-  }
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_renumber_FS.html"
 }

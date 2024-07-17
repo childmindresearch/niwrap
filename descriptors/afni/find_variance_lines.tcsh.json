@@ -1,12 +1,11 @@
 {
   "tool-version": "0.4",
   "name": "find_variance_lines",
-  "author": "R Reynolds, P Taylor, D Glen",
+  "author": "AFNI Team",
   "description": "Look for bars of high variance that might suggest scanner interference in EPI datasets.",
   "command-line": "find_variance_lines.tcsh [INPUT_FILES] [OPTIONS]",
   "container-image": {
-    "image": "find_variance_lines:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -189,5 +188,6 @@
       "id": "jpeg_images",
       "name": "JPEG Images"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/find_variance_lines.tcsh.html"
 }

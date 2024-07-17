@@ -1,13 +1,12 @@
 {
   "tool-version": "latest",
   "name": "afni_run_R",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "description": "Run an R script with the specified arguments",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_run_R.html",
   "command-line": "afni_run_R [R_SCRIPT] [R_ARGS]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,13 +1,12 @@
 {
   "tool-version": "2.6",
   "name": "@SSwarper",
-  "author": "Bob, Bob, there is one Bob, He spells it B-O-B.",
+  "author": "AFNI Team",
   "description": "Dual purposes for processing a given subject's anatomical volume: skull-strip the brain and calculate the warp to a reference template/standard space.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SSwarper.html",
   "command-line": "@SSwarper -input [INPUT_FILE] -base [BASE_TEMPLATE] -subid [SUBJECT_ID] [OUTPUT_DIR] [MIN_PATCH_SIZE] [NO_LITE_FLAG] [SKIP_WARP_FLAG] [UNIFIZE_OFF_FLAG] [INIT_SKULLSTRIP_OFF_FLAG] [EXTRA_QC_OFF_FLAG] [JUMP_TO_EXTRA_QC_FLAG] [COST_NL_INIT] [COST_NL_FINAL] [DEOBLIQUE_FLAG] [DEOBLIQUE_REFITLY_FLAG] [WARP_SCALE] [SSOPT_FLAG] [ANISO_OFF_FLAG] [CEIL_OFF_FLAG] [TMP_NAME_NICE_FLAG] [ECHO_FLAG] [VERBOSE_FLAG] [NOCLEAN_FLAG]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

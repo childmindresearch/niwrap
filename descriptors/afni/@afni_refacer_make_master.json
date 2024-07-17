@@ -2,7 +2,7 @@
   "name": "@afni_refacer_make_master",
   "tool-version": "1.0",
   "description": "This script makes a new mask/shell dataset for use with @afni_refacer_run by averaging 'faces' (non-brain tissue) from input datasets.",
-  "author": "The Face of Imperial Zhark, Who is Terrible to Behold!",
+  "author": "AFNI Team",
   "command-line": "@afni_refacer_make_master [INPUT_DATASETS]",
   "inputs": [
     {
@@ -16,9 +16,8 @@
     }
   ],
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni_latest:latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "schema-version": "0.5",
   "output-files": [
@@ -29,5 +28,6 @@
       "id": "output_shell_dataset",
       "optional": false
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_make_master.html"
 }

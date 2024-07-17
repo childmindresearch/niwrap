@@ -1,7 +1,7 @@
 {
   "tool-version": "1.62",
   "name": "adjunct_aw_tableize_roi_info.py",
-  "author": "PA Taylor (NIMH, NIH)",
+  "author": "AFNI Team",
   "description": "A simple helper function for the fat_proc scripts that generates a text file containing ROI count/size information based on provided atlases and masks.",
   "command-line": "/opt/afni/src/../install/adjunct_aw_tableize_roi_info.py [OUTPUT_FILE] [WARPED_ATLAS] [WARPED_MASK] [REFERENCE_ATLAS] [REFERENCE_MASK] [MODESMOOTH_VALUE]",
   "inputs": [
@@ -63,5 +63,10 @@
       "id": "outfile",
       "name": "Output file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_aw_tableize_roi_info.py.html"
 }

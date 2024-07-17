@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dClustCount",
-  "author": "RW Cox",
+  "author": "AFNI Team",
   "description": "This program takes as input 1 or more datasets, thresholds them at various levels, and counts up the number of clusters of various sizes.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClustCount.html",
   "command-line": "3dClustCount [OPTIONS] DATASETS",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "schema-version": "0.5",

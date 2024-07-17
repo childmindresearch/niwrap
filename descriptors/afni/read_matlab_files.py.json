@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "read_matlab_files.py",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Describe or convert MATLAB files (.mat) to 1D format",
   "command-line": "read_matlab_files.py [INPUT_FILES] [PREFIX] [OVERWRITE] [HELP] [HIST] [VER]",
   "container-image": {
-    "image": "user/read_matlab_files:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -74,5 +73,6 @@
       "id": "converted_1d_file",
       "name": "Converted 1D file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/read_matlab_files.py.html"
 }

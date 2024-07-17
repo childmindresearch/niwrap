@@ -1,12 +1,11 @@
 {
   "tool-version": "23.1.10",
   "name": "3dThreetoRGB",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Converts 3 sub-bricks of input to an RGB-valued dataset.",
   "command-line": "3dThreetoRGB [PREFIX] [SCALE] [MASK] [FIM_FLAG] [ANAT_FLAG] [DATASET] [DATASET1] [DATASET2] [DATASET3]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -97,5 +96,6 @@
       "id": "output_dataset_brik",
       "name": "Output dataset (BRIK)"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dThreetoRGB.html"
 }

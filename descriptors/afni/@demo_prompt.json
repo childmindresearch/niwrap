@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "@demo_prompt",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Prompts user with a message and waits for acknowledgment",
   "command-line": "@demo_prompt [MESSAGE]",
   "inputs": [
@@ -23,5 +23,10 @@
       "id": "status",
       "name": "Status"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@demo_prompt.html"
 }

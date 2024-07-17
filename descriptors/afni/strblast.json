@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0",
   "name": "strblast",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Finds exact copies of the target string in each of the input files, and replaces all characters with some junk string.",
-  "url": "https://example.com/strblast",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/strblast.html",
   "command-line": "strblast [OPTIONS] TARGETSTRING [INPUT_FILES...]",
   "inputs": [
     {
@@ -69,5 +69,9 @@
       "name": "Help Flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

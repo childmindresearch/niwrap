@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3dedge3",
-  "author": "Gregoire Malandain",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dedge3.html",
   "description": "Does 3D Edge detection using the library 3DEdge",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dedge3.html",
   "command-line": "3dedge3 [INPUT_FILE] [VERBOSE_FLAG] [PREFIX] [DATUM] [FSCALE_FLAG] [GSCALE_FLAG] [NSCALE_FLAG] [SCALE_FLOATS] [AUTOMASK_FLAG]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

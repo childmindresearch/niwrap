@@ -1,12 +1,11 @@
 {
   "tool-version": "0.1",
   "name": "3dCompareAffine",
-  "author": "RWCox - Mar 2020 at the Tulsa bootcamp",
+  "author": "AFNI Team",
   "description": "Compares two (or more) affine spatial transformations on a dataset and outputs measurements of their differences in spatial displacements.",
   "command-line": "3dCompareAffine [OPTIONS]",
   "container-image": {
-    "image": "your_docker_image_repository/your_image_name:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -48,5 +47,6 @@
       "id": "outfile",
       "name": "Output Comparison File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCompareAffine.html"
 }

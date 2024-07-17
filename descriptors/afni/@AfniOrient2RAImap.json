@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "@AfniOrient2RAImap",
-  "author": "Ziad Saad (saadz@mail.nih.gov)",
+  "author": "AFNI Team",
   "description": "Returns the index map for the RAI directions",
   "command-line": "@AfniOrient2RAImap [ORIENTATION_CODE]",
   "inputs": [
@@ -14,5 +14,10 @@
       "name": "Orientation code"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@AfniOrient2RAImap.html"
 }

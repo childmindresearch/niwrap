@@ -4,11 +4,10 @@
   "author": "AFNI Team",
   "descriptor-url": "https://example.com/descriptors/afni_install_ibt_datasets.json",
   "description": "Installs the demo archive for AFNI's macaque-analysis demo.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_IBT_DATASETS.html",
   "command-line": "Install_IBT_DATASETS [WGET_FLAG] [CURL_FLAG]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

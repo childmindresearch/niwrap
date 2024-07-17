@@ -1,11 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "@djunct_overlap_check",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "A helper script for visualizing overlap between datasets in AFNI",
   "command-line": "@djunct_overlap_check [ULAY] [OLAY] [PREFIX] [DSET_BFS] [MG] [MC] [CBAR] [OPA] [ZC] [XX] [YY] [ZZ] [umin] [umax] [MX] [MY] [MX2] [MY2] [LM] [PBOFF] [EDGY_ULAY] [SET_DICOM_XYZ_OFF] [NO_COR] [NO_AXI] [NO_SAG] [NO_CLEAN]",
   "container-image": {
-    "image": "afni/afni_latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -231,5 +231,6 @@
       "name": "No clean"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_overlap_check.html"
 }

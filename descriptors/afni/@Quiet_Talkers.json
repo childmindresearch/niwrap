@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0",
   "name": "@Quiet_Talkers",
-  "author": "Ziad S. Saad",
+  "author": "AFNI Team",
   "description": "A script to find and kill AFNI processes",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Quiet_Talkers.html",
   "command-line": "@Quiet_Talkers [SUDO_FLAG] [PROGRAMS] [NPB_VALS] [NPB_RANGE] [PIF_KEY] [NO_NPB_FLAG] [LIST_FLAG] [QUIET_FLAG]",
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni:latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {

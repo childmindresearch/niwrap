@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3dANOVA3",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dANOVA3.html",
   "description": "Performs three-factor ANOVA on 3D data sets.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dANOVA3.html",
   "command-line": "3dANOVA3 -type [TYPE] -alevels [ALEVELS] -blevels [BLEVELS] -clevels [CLEVELS] [DSETS] [VOXEL_NUM] [DISKSPACE] [MASK] [OUTFILES] [ANOVA_OPTIONS]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

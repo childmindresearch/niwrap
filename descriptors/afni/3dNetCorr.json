@@ -1,13 +1,12 @@
 {
   "tool-version": "latest",
   "name": "3dNetCorr",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Compute correlation matrix of a set of ROIs based on mean time series",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNetCorr.html",
   "command-line": "3dNetCorr -prefix [PREFIX] -inset [FILE] -in_rois [INROIS] [MASK_OPTION] [FISH_Z_FLAG] [PART_CORR_FLAG] [TS_OUT_FLAG] [TS_LABEL_FLAG] [TS_INDIV_FLAG] [TS_WB_CORR_FLAG] [TS_WB_Z_FLAG] [WEIGHT_TS] [WEIGHT_CORR] [TS_WB_STRLABEL_FLAG] [NIFTI_FLAG] [OUTPUT_MASK_NONNULL_FLAG] [PUSH_THRU_MANY_ZEROS_FLAG] [ALLOW_ROI_ZEROS_FLAG] [AUTOMASK_OFF_FLAG] [IGNORE_LT_FLAG]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

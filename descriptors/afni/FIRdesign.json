@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0",
   "name": "FIRdesign",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Uses the Remez algorithm to calculate the FIR filter weights for a bandpass filter; results are written to stdout in an unadorned (no header) column of numbers.",
-  "url": "http://en.wikipedia.org/wiki/Parks-McClellan_filter_design_algorithm",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/FIRdesign.html",
   "command-line": "FIRdesign [OPTIONS] [FBOT] [FTOP] [NTAP]",
   "inputs": [
     {
@@ -66,5 +66,9 @@
       "name": "Alternative Number of Taps"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

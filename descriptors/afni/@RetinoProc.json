@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "@RetinoProc",
-  "author": "Ziad S. Saad",
+  "author": "AFNI Team",
   "description": "A script to process retinotopic FMRI data, using AFNI's 3dRetinoPhase and SurfRetinMap.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@RetinoProc.html",
   "command-line": "@RetinoProc [INPUT_FILES] [OPTIONS]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

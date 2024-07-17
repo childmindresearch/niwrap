@@ -1,14 +1,13 @@
 {
   "tool-version": "latest",
   "name": "@SUMA_Make_Spec_SF",
-  "author": "R. Reynolds (rickr@codon.nih.gov), Z. Saad (saadz@mail.nih.gov)",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/ssc/ziad/SUMA/SUMA_doc.htm",
   "description": "Prepare for surface viewing in SUMA",
-  "url": "https://afni.nimh.nih.gov/ssc/ziad/SUMA/SUMA_doc.htm",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_Make_Spec_SF.html",
   "command-line": "@SUMA_Make_Spec_SF [DEBUG_LEVEL] [SURFACE_PATH] -sid [SUBJECT_ID]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

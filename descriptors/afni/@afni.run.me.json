@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "@afni.run.me",
-  "author": "AFNI Tools Authors",
+  "author": "AFNI Team",
   "description": "A tool to execute a specific command",
   "command-line": "@afni.run.me [GO_FLAG] [CURL_FLAG] [HELP_FLAG]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -38,5 +37,6 @@
       "name": "Curl Flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni.run.me.html"
 }

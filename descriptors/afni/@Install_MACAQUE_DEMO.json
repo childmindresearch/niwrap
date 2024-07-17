@@ -1,15 +1,14 @@
 {
   "tool-version": "1.0.0",
   "name": "Install_MACAQUE_DEMO",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "descriptor-url": "https://example.com/Install_MACAQUE_DEMO_descriptor.json",
   "description": "Installs the demo archive for AFNI's macaque-analysis demo",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_MACAQUE_DEMO.html",
   "command-line": "Install_MACAQUE_DEMO [WGET_FLAG] [CURL_FLAG]",
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni:latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {

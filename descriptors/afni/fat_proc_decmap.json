@@ -1,13 +1,12 @@
 {
   "tool-version": "3.31",
   "name": "fat_proc_decmap",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "This program makes a directionally encoded color (DEC) map for DTI results.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_decmap.html",
   "command-line": "fat_proc_decmap -in_fa [IFA] -in_v1 [IV1] -prefix [PREFIX] [MASK] [FA_THR] [FA_SCA] [WORKDIR] [NO_CLEAN] [QC_PREFIX] [NO_CMD_OUT] [NO_QC_VIEW]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

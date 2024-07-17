@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3dREMLfit",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "descriptor-url": "https://github.com/aces/3dREMLfit.json",
   "description": "Generalized least squares time series fit, with REML estimation of the temporal auto-correlation structure",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/misc/3dREMLfit/3dREMLfit_mathnotes.pdf",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dREMLfit.html",
   "command-line": "3dREMLfit [INPUT_FILE] [REGRESSION_MATRIX] [BASELINE_FILES] [SORT_NODS] [TEMP_STORAGE] [MASK] [OUTPUT_PREFIX] [FLAGS] [EST_PARAM] [GRID_PARAM] [CORRELATION_OPTIONS]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

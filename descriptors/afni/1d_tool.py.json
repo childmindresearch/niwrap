@@ -1,14 +1,13 @@
 {
   "tool-version": "latest",
   "name": "1d_tool.py",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1d_tool.py.html",
   "description": "A tool for manipulating and evaluating 1D files",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1d_tool.py.html",
   "command-line": "1d_tool.py [OPTIONS]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

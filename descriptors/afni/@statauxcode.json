@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "statauxcode",
-  "author": "Example Author",
+  "author": "AFNI Team",
   "description": "Returns the name or number of a statistics code based on specified mappings.",
   "command-line": "@statauxcode [CODE]",
   "inputs": [
@@ -23,5 +23,10 @@
       "id": "output",
       "name": "Output File"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@statauxcode.html"
 }

@@ -1,9 +1,9 @@
 {
   "tool-version": "23.1.10",
   "name": "1dplot",
-  "author": "RW Cox",
+  "author": "AFNI Team",
   "description": "Graphs the columns of a *.1D time series file to the X11 screen, or to an image file (.jpg or .png).",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dplot.html",
   "command-line": "1dplot [OPTIONS] [TSFILES]",
   "schema-version": "0.5",
   "inputs": [
@@ -495,5 +495,9 @@
       "optional": true,
       "value-key": "[LINE_OPTIONS]"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

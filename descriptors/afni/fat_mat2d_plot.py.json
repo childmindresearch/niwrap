@@ -1,12 +1,11 @@
 {
   "tool-version": "1.14",
   "name": "fat_mat2d_plot.py",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Plots simple matrices output from 3dNetCorr (*.netcc) and 3dTrackID (*.grid).",
   "command-line": "fat_mat2d_plot.py [INPUT_FILE] [MATRICES] [PREFIX] [FILE_TYPE] [DPI] [MIN_COLORBAR] [MAX_COLORBAR] [FS_X_TICKS] [FS_Y_TICKS] [FS_TITLE] [FS_COLORBAR] [CBAR_N_INTERVALS] [CBAR_NAME] [CBAR_WIDTH] [NO_COLORBAR_FLAG] [FIGSIZE_X] [FIGSIZE_Y] [HOLD_IMAGE_FLAG] [TIGHT_LAYOUT_FLAG] [NO_X_TICKS_FLAG] [NO_Y_TICKS_FLAG] [VERSION_FLAG] [DATE_FLAG] [HELP_FLAG] [HELP_VIEW_FLAG]",
   "container-image": {
-    "image": "python:3.x",
-    "index": "docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -230,5 +229,6 @@
       "id": "output_files",
       "name": "Output Image Files"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat2d_plot.py.html"
 }

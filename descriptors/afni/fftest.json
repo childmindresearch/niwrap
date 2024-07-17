@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "fftest",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "A command line tool for testing purposes",
   "command-line": "fftest [-q] [LEN] [NUM] [NVEC]",
   "inputs": [
@@ -39,5 +39,10 @@
       "name": "Quiet Mode"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fftest.html"
 }

@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "3dmaxdisp",
-  "author": "Zhark the Displacer (AKA Bob the Inverted)",
+  "author": "AFNI Team",
   "description": "Reads in a 3D dataset and a DICOM-based affine matrix to output the average and maximum displacement applied to the edge voxels of the 3D dataset's automask.",
   "command-line": "3dmaxdisp [INPUT_DATASET] [MATRIX_FILE] [VERBOSE_FLAG]",
   "container-image": {
-    "image": "braininst/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -47,5 +46,6 @@
       "id": "displacement_output",
       "name": "Displacement Output"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaxdisp.html"
 }

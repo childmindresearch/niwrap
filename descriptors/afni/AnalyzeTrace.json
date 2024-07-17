@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "AnalyzeTrace",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "A program to analyze SUMA (and AFNI's perhaps) stack output for functions that return with RETURN without bothering to go on the stack.",
   "command-line": "AnalyzeTrace [OPTIONAL_PARAMETERS] FILE",
   "inputs": [
@@ -106,5 +106,10 @@
       "name": "Enable memory tracing"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/AnalyzeTrace.html"
 }

@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "DTIStudioFibertoSegments",
-  "author": "DTIStudio Authors",
+  "author": "AFNI Team",
   "description": "Convert a DTIStudio Fiber file to a SUMA segment file",
   "command-line": "DTIStudioFibertoSegments [DATASET] [OUTPUT_FILE] [SWAP_FLAG]",
   "container-image": {
-    "image": "dti/docker-dtistudio:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -46,5 +45,6 @@
       "id": "output_segment_file",
       "name": "Output segment file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/DTIStudioFibertoSegments.html"
 }

@@ -1,12 +1,11 @@
 {
   "tool-version": "latest",
   "name": "uber_ttest",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "GUI for group t-test analysis",
   "command-line": "uber_ttest.py [QT_OPTS] [HELP] [HELP_GUI] [HIST] [SHOW_VALID_OPTS] [VER] [NO_GUI] [PROGRAM] [PRINT_SCRIPT] [SAVE_SCRIPT] [MASK] [SET_NAME_A] [SET_NAME_B] [DSETS_A] [DSETS_B] [BETA_A] [BETA_B] [TSTAT_A] [TSTAT_B] [RESULTS_DIR]",
   "container-image": {
-    "image": "neurodocker:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -199,5 +198,6 @@
       "id": "output_script",
       "name": "Output Script File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_ttest.py.html"
 }

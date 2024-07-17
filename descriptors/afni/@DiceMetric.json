@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "@DiceMetric",
-  "author": "Ziad Saad (saadz@mail.nih.gov), SSCC/NIMH/ National Institutes of Health, Bethesda Maryland",
+  "author": "AFNI Team",
   "description": "Computes Dice Metric between BASE and each of the DSET volumes",
   "command-line": "@DiceMetric <-base BASE> <-dsets DSET1 [DSET2 ...]> [max_N_roi MAX_ROI] [-keep_tmp] [OPTIONS...]",
   "inputs": [
@@ -124,5 +124,10 @@
       "name": "Keep Temporary Files"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DiceMetric.html"
 }

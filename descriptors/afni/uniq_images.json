@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "uniq_images",
-  "author": "Zhark the Comparator",
+  "author": "AFNI Team",
   "description": "Simple program to read in a list of image filenames, determine which files have unique images inside, and echo out only a list of the filenames with unique images.",
   "command-line": "uniq_images [INPUT_FILES]",
   "inputs": [
@@ -24,5 +24,10 @@
       "id": "unique_files_list",
       "name": "Unique images list"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/uniq_images.html"
 }

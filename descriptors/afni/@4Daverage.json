@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "@4Daverage",
-  "author": "Ziad Saad",
+  "author": "AFNI Team",
   "description": "Script for computing average 3D+time bricks using 3Dcalc",
   "command-line": "@4Daverage [OUTPUT_PREFIX] [INPUT_FILES...]",
   "inputs": [
@@ -23,5 +23,10 @@
       "name": "Input Files"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@4Daverage.html"
 }

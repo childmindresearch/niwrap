@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "3dSharpen",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Applies a simple 3D sharpening filter to the positive values in the #0 volume of the input dataset, and writes out a new dataset.",
   "command-line": "3dSharpen [SHARPENING_FACTOR] [INPUT_DATASET] [OUTPUT_PREFIX]",
   "container-image": {
-    "image": "your-docker-image",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -49,5 +48,6 @@
       "id": "output_dataset",
       "name": "Output dataset"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSharpen.html"
 }

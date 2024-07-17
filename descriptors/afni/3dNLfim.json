@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3dNLfim",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "descriptor-url": "N/A",
   "description": "Nonlinear regression for each voxel of the input AFNI 3d+time data set",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNLfim.html",
   "command-line": "3dNLfim -input [INPUT_FILE] -signal [SIGNAL_MODEL] -noise [NOISE_MODEL] [ADDITIONAL_OPTIONS]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

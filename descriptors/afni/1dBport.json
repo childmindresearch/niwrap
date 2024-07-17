@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "1dBport",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Creates a set of columns of sines and cosines for bandpassing via regression.",
   "command-line": "1dBport [BAND] [INVERT_FLAG] [NOZERO_FLAG] [QUAD_FLAG] [INPUT_DATASET] [INPUT_1D_FILE] [NODATA_OPTION] [TR_VALUE] [CONCAT_FILE]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -116,5 +115,6 @@
       "id": "stdout",
       "name": "Output file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dBport.html"
 }

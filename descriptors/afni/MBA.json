@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0.7",
   "name": "MBA",
-  "author": "Gang Chen",
+  "author": "AFNI Team",
   "descriptor-url": "https://github.com/afni/mba_descriptor.json",
   "description": "Matrix-Based Analysis Program through Bayesian Multilevel Modeling",
-  "url": "https://afni.nimh.nih.gov/gangchen_homepage",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/MBA.html",
   "command-line": "MBA [PREFIX] [CHAINS] [ITERATIONS] [MODEL] [EOI] [DATA_TABLE] [CVARS] [QVARS] [QCVAR] [STDZ] [WCP] [DISTY] [SE] [RPREFIX] [DBARGS] [HELP]",
   "container-image": {
-    "image": "afni/mba:1.0.7",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,13 +1,12 @@
 {
   "tool-version": "latest",
   "name": "@animal_warper",
-  "author": "D Glen and PA Taylor (SSCC, NIMH, NIH, USA)",
+  "author": "AFNI Team",
   "description": "Align a subject structural dataset to a template and perform several post-alignment operations",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/nonhuman/macaque_demos/main_toc.html",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@animal_warper.html",
   "command-line": "animal_warper [INPUT_FILE] [BASE_TEMPLATE] [OUTPUT_DIR] [BRAINMASK] [ATLAS] [ATLAS_FOLLOWERS] [SEG_FOLLOWERS] [TEMPLATE_FOLLOWERS] [DSET_FOLLOWERS] [ROIDSET_FOLLOWERS] [INPUT_ABBREV] [BASE_ABBREV] [ATLAS_ABBREVS] [TEMPLATE_ABBREVS] [SEG_ABBREVS] [DSET_ABBREVS] [ROIDSET_ABBREVS] [ALIGN_CENTERS_METHOD] [AFFINE_MOVE_OPT] [COST] [MAX_LEV] [NO_SURFACES_FLAG] [FEATURE_SIZE] [SUPERSIZE_FLAG] [INIT_SCALE] [MODE_SMOOTH_SIZE] [MODE_SMOOTH_REPLACEMENT_OFF] [CENTER_OUT] [ALIGN_TYPE] [EXTRA_QW_OPTS] [KEEP_TEMP_FLAG] [VER_FLAG] [OK_TO_EXIST_FLAG] [ECHO_FLAG]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

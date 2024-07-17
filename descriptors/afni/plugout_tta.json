@@ -1,12 +1,11 @@
 {
   "tool-version": "latest",
   "name": "plugout_tta",
-  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "author": "AFNI Team",
   "description": "Connects to AFNI and receives notification whenever the user changes Talairach coordinates, then drives Netscape to display the closest figures from the Talairach-Tournoux atlas.",
   "command-line": "plugout_tta [HOST] [PORT] [VERBOSE_FLAG] [PORT_OFFSET] [PORT_OFFSET_QUIET] [PORT_OFFSET_BLOC] [MAX_PORT_BLOC] [MAX_PORT_BLOC_QUIET] [NUM_ASSIGNED_PORTS] [NUM_ASSIGNED_PORTS_QUIET]",
   "container-image": {
-    "image": "docker-afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -105,5 +104,6 @@
       "name": "Number of Assigned Ports Quiet"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/plugout_tta.html"
 }

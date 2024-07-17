@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "imcutup",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Breaks up larger images into smaller image files of user-defined size.",
   "command-line": "imcutup [PREFIX_FLAG] [XYNUM_FLAG] [YXNUM_FLAG] [X_YNUM_FLAG] [Y_XNUM_FLAG] [NX] [NY] [INPUT_FILE]",
   "inputs": [
@@ -86,5 +86,10 @@
       "id": "output_files",
       "name": "Output files"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcutup.html"
 }

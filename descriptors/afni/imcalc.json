@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "imcalc",
-  "author": "Example Author",
+  "author": "AFNI Team",
   "description": "Tool for arithmetic operations on 2D images, pixel-by-pixel",
   "command-line": "imcalc [DATUM_TYPE] [IMAGE_INPUTS] [EXPRESSION] [OUTPUT_NAME]",
   "container-image": {
-    "image": "example/imcalc:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -57,5 +56,6 @@
       "id": "output_image",
       "name": "Output Image File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcalc.html"
 }

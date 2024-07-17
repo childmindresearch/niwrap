@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "3dretroicor",
-  "author": "Fred Tam",
+  "author": "AFNI Team",
   "description": "Performs Retrospective Image Correction for physiological motion effects using a modified RETROICOR algorithm",
   "command-line": "3dretroicor [IGNORE] [PREFIX] [CARD] [CARDPHASE] [THRESHOLD] [RESP] [RESPPHASE] [ORDER] [DATASET]",
   "inputs": [
@@ -109,5 +109,10 @@
       "id": "output_resp_phase",
       "name": "Respiratory Phase Output"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dretroicor.html"
 }

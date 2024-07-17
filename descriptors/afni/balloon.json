@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "balloon",
-  "author": "MK Belmonte",
+  "author": "AFNI Team",
   "description": "Simulation of haemodynamic response using the balloon model. Based on the theoretical model proposed by Buxton et al. (1998).",
   "command-line": "balloon [TR] [N] [EVENT_TIMES] [HAEMODYNAMIC_PARAMETERS]",
   "container-image": {
-    "image": "docker.io/simulation/balloon:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -67,5 +66,6 @@
       "max-list-entries": 1
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/balloon.html"
 }

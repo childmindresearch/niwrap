@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "1dplot.py",
-  "author": "PA Taylor (NIMH, NIH, USA)",
+  "author": "AFNI Team",
   "description": "This program is for making images to visualize columns of numbers from 1D text files. It uses Python, particularly matplotlib, to create plots.",
-  "url": "N/A",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dplot.py.html",
   "command-line": "1dplot.py [INPUT_FILES] [PREFIX] [OTHER_OPTIONS]",
   "container-image": {
-    "image": "python:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

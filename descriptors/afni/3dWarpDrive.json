@@ -1,12 +1,11 @@
 {
   "tool-version": "23.1.10",
   "name": "3dWarpDrive",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Warp a dataset to match another one (the base) using an affine transformation.",
   "command-line": "3dWarpDrive [TRANSFORM_OPTION] [INTERPOLATION_OPTION] -base [BASE_DATASET] -prefix [PREFIX] [TECHNICAL_OPTIONS] [dataset]",
   "container-image": {
-    "image": "your-docker-image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -366,5 +365,6 @@
       "name": "Transformation Matrices File"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWarpDrive.html"
 }

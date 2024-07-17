@@ -1,12 +1,11 @@
 {
   "tool-version": "0.3",
   "name": "ap_run_simple_rest",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Run a quick afni_proc.py analysis for QC",
   "command-line": "ap_run_simple_rest.tcsh [ANAT] -epi [EPI] [NT_RM] [RUN_AP] [RUN_PROC] [SUBJID] [TEMPLATE] [COMPRESSOR] [VERB] [ECHO]",
   "container-image": {
-    "image": "afni/afni_container:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -131,5 +130,6 @@
       "id": "text_output_files",
       "name": "Text Output Files"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ap_run_simple_rest.tcsh.html"
 }

@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "help_format",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Formats text by converting URLs into HTML hyperlinks",
   "command-line": "help_format",
   "container-image": {
-    "image": "unknown",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -28,5 +27,6 @@
       "id": "formatted_output",
       "name": "Formatted Output"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/help_format.html"
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "23.1.10",
   "name": "3dSynthesize",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Reads a '-cbucket' dataset and a '.xmat.1D' matrix from 3dDeconvolve, and synthesizes a fit dataset using selected sub-bricks and matrix columns.",
   "command-line": "3dSynthesize -cbucket [C_BUCKET] -matrix [MATRIX] -select [SELECT] -prefix [PREFIX] [DRY_FLAG] [TR] [CENFILL]",
   "inputs": [
@@ -70,5 +70,10 @@
       ]
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSynthesize.html"
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "suma_reprefixize_spec",
-  "author": "Suma Development Team",
+  "author": "AFNI Team",
   "description": "A tool for prefixing and working with SUMA specification files.",
   "command-line": "suma_reprefixize_spec [INPUT_FILE] [PREFIX] [OUTPUT_DIR] [WORK_DIR] [NO_CLEAN_FLAG]",
   "inputs": [
@@ -53,8 +53,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "suma/suma_reprefixize:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "output-files": [
@@ -65,5 +64,6 @@
       "id": "prefixed_spec_files",
       "name": "Prefixed Specification Files"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@suma_reprefixize_spec.html"
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dFriedman",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "description": "Performs nonparametric Friedman test for randomized complete block design experiments",
   "command-line": "3dFriedman [LEVELS] [DATASETS] [WORKMEM] [VOXEL_NUM] [OUTPUT_PREFIX]",
   "schema-version": "0.5",
@@ -65,8 +65,8 @@
     }
   ],
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
-  }
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFriedman.html"
 }

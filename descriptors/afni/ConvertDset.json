@@ -1,7 +1,7 @@
 {
   "tool-version": "Jun 30 2023",
   "name": "ConvertDset",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Converts a surface dataset from one format to another.",
   "command-line": "ConvertDset [OUTPUT_TYPE] -input [INPUT_DATASET] [INPUT_TYPE] [OUTPUT_PREFIX] [MANDATORY_PARAMS] [OPTIONAL_PARAMS]",
   "inputs": [
@@ -230,5 +230,10 @@
       "name": "Converted Dataset"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ConvertDset.html"
 }

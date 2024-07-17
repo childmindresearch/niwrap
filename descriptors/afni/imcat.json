@@ -1,13 +1,12 @@
 {
   "tool-version": "latest",
   "name": "2dcat",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Assembles a set of images into an image matrix (IM) montage of NX by NY images.",
-  "url": "https://example.com/2dcat",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcat.html",
   "command-line": "2dcat [SCALE_IMAGE] [SCALE_PIX] [SCALE_INTENSITY_FLAG] [GSCLAE] [RGB_OUT_FLAG] [RES_IN] [RESPAD_IN] [PAD_VAL] [CROP] [AUTOCROP_CTOL] [AUTOCROP_ATOL] [AUTOCROP_FLAG] [ZERO_WRAP_FLAG] [WHITE_WRAP_FLAG] [GRAY_WRAP] [IMAGE_WRAP_FLAG] [RAND_WRAP_FLAG] [PREFIX] [MATRIX] [NX] [NY] [MATRIX_FROM_SCALE_FLAG] [GAP] [GAP_COL] [INPUT_FILES...]",
   "container-image": {
-    "image": "your-docker-image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

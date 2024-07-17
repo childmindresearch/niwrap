@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "@NoExt",
-  "author": "Ziad Saad",
+  "author": "AFNI Team",
   "description": "Tool for removing specified extensions from filenames",
   "command-line": "@NoExt <inputfile> [extensions...]",
   "inputs": [
@@ -32,5 +32,10 @@
       "id": "outfile",
       "name": "Output file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoExt.html"
 }

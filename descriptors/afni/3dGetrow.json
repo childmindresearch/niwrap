@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3dGetrow",
-  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGetrow.html",
   "description": "Program to extract 1 row from a dataset and write it as a .1D file",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGetrow.html",
   "command-line": "3dGetrow [DIRECTION_FLAG] [INPUT_FILE] [OUTPUT_FILE]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

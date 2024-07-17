@@ -1,7 +1,7 @@
 {
   "tool-version": "3.21",
   "name": "fat_proc_dwi_to_dt",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "This program fits tensors and DT parameters, as well as the uncertainty of DT parameters needed for tractography.",
   "command-line": "fat_proc_dwi_to_dt -in_dwi [INPUT_DWI] [GRADIENT_MATRIX] -prefix [OUTPUT_PREFIX] [OPTIONAL_PARAMETERS]",
   "inputs": [
@@ -275,5 +275,10 @@
       "name": "Output Files"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_dwi_to_dt.html"
 }

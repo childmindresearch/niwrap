@@ -1,13 +1,12 @@
 {
   "tool-version": "2010.1",
   "name": "qhull",
-  "author": "C.B. Barber and H. Huhdanpaa",
+  "author": "AFNI Team",
   "description": "Tool to compute convex hulls and related structures.",
-  "url": "http://www.qhull.org/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/qhull.html",
   "command-line": "qhull [OPTIONS] [OUTPUT_OPTIONS]",
   "container-image": {
-    "image": "qhull/convex_hull:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

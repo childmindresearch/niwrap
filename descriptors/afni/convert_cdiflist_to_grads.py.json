@@ -1,7 +1,7 @@
 {
   "tool-version": "0.4",
   "name": "convert_cdiflist_to_grads",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "This program reads in a GE cdiflist and outputs gradient file and file of bvalues for subsequent processing.",
   "command-line": "convert_cdiflist_to_grads.py -cdiflist [CDIFLIST] -bval_max [BVAL_MAX] -prefix [PREFIX] [VER_FLAG] [DATE_FLAG] [HELP_FLAG] [HVIEW_FLAG]",
   "inputs": [
@@ -92,5 +92,10 @@
       "id": "output_cvec",
       "name": "Column gradient file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/convert_cdiflist_to_grads.py.html"
 }

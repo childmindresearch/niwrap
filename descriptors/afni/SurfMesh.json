@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "SurfMesh",
-  "author": "Jakub Otwinowski, maintained by Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Surface mesh manipulation tool",
   "command-line": "SurfMesh <-i_TYPE SURFACE> <-o_TYPE OUTPUT> <-edges FRAC> [-sv SURF_VOL]",
   "container-image": {
-    "type": "docker",
-    "index": "index.docker.io",
-    "image": "user/surfmesh:latest"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {
@@ -94,5 +93,6 @@
       "optional": true
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfMesh.html"
 }

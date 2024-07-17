@@ -1,7 +1,7 @@
 {
   "tool-version": "2021.08",
   "name": "@radial_correlate",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Check datasets for correlation artifacts",
   "command-line": "@radial_correlate [INPUT_FILES] [OPTIONS]",
   "inputs": [
@@ -195,5 +195,10 @@
       "name": "Correlation volumes directory"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@radial_correlate.html"
 }

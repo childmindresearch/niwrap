@@ -1,9 +1,9 @@
 {
   "tool-version": "3.19",
   "name": "file_tool",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Program to display or modify sections of a file",
-  "url": "N/A",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/file_tool.html",
   "command-line": "file_tool [OPTIONS] -infiles [INPUT_FILES...]",
   "schema-version": "0.5",
   "inputs": [
@@ -395,5 +395,9 @@
       "description": "The modified output file",
       "optional": true
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

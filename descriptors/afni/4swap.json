@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "4swap",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Swaps byte quadruples on the listed files.",
   "command-line": "4swap [-q] [FILES...]",
   "inputs": [
@@ -24,5 +24,10 @@
       "name": "Quiet Flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/4swap.html"
 }

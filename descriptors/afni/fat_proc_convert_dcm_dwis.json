@@ -1,13 +1,12 @@
 {
   "tool-version": "3.4",
   "name": "fat_proc_convert_dcm_dwis",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Convert sets of DWIs in DICOM format into 'nicer' volume+grad format, reorient volumetric data, and glue together multiple sessions/directories of data.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_convert_dcm_dwis.html",
   "command-line": "fat_proc_convert_dcm_dwis -indir [DICOM_DIR] -prefix [OUTPUT_PREFIX] -innii [NIFTI_FILES] -inbvec [BVEC_FILES] -inbval [BVAL_FILES] -workdir [WORK_DIR] -orient [ORIENTATION] -origin_xyz [ORIGIN_X] [ORIGIN_Y] [ORIGIN_Z] -flip_x [FLIP_X] -flip_y [FLIP_Y] -flip_z [FLIP_Z] -no_flip [NO_FLIP] -qc_prefix [QC_PREFIX] -reorig_reorient_off [REORIENT_OFF_FLAG] -no_clean [NO_CLEAN_FLAG] -no_cmd_out [NO_CMD_OUT_FLAG] -no_qc_view [NO_QC_VIEW_FLAG] -do_movie [MOVIE_FORMAT]",
   "container-image": {
-    "image": "afni/afni_latest:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

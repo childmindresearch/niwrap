@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "@Install_AfniRetinoDemo",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Installs and runs demo script for the retinotopy pipeline demo.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_AfniRetinoDemo.html",
   "command-line": "@Install_AfniRetinoDemo [OUTPUT_DIR]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,9 +1,9 @@
 {
   "tool-version": "latest",
   "name": "gifti_tool",
-  "author": "R. Reynolds, National Institutes of Health",
+  "author": "AFNI Team",
   "description": "Tool for creating, displaying, modifying, or comparing GIFTI datasets.",
-  "url": "http://www.nitrc.org/projects/gifti",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/gifti_tool.html",
   "command-line": "gifti_tool [ARGS]",
   "inputs": [
     {
@@ -222,5 +222,9 @@
       "name": "Output GIFTI File"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

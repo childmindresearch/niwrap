@@ -108,8 +108,8 @@
     }
   ],
   "container-image": {
-    "type": "docker",
-    "index": "index.docker.io",
-    "image": "afni/afni:latest"
-  }
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@fast_roi.html"
 }

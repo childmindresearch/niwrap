@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dMSE",
-  "author": "RWCox, Cameron Craddock",
+  "author": "AFNI Team",
   "description": "Computes voxelwise multi-scale entropy",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/misc/OpenMP.html",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMSE.html",
   "command-line": "3dMSE [POLYNOMIAL_ORDER] [AUTOCLIP_FLAG] [AUTOMASK_FLAG] [MASK] [PREFIX] [SCALES] [ENTWIN] [RTHRESH] [DSET]",
   "container-image": {
-    "image": "brainlife/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

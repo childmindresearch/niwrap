@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "SampBias",
-  "author": "Ziad S. Saad, SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "SampBias is a tool for sampling bias resultant segments between paired nodes on anatomical surfaces.",
   "command-line": "SampBias [SPECFILE] [SURFNAME] [PLIMIT] [DLIMIT] [OUT_FILE] [PREFIX]",
   "inputs": [
@@ -70,9 +70,8 @@
     }
   ],
   "container-image": {
-    "type": "docker",
-    "image": "sampbias/latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "schema-version": "0.5",
   "output-files": [
@@ -90,5 +89,6 @@
       "id": "out_prefix",
       "name": "Surface-based Dataset"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SampBias.html"
 }

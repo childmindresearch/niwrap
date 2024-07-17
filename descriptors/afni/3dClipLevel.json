@@ -1,7 +1,7 @@
 {
   "tool-version": "23.1.10",
   "name": "3dClipLevel",
-  "author": "Emperor Zhark",
+  "author": "AFNI Team",
   "description": "Estimates the value at which to clip the anatomical dataset so that background regions are set to zero.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClipLevel.html",
   "command-line": "3dClipLevel [options] [DATASET]",
@@ -42,5 +42,9 @@
       "id": "grad",
       "name": "Gradual clip level prefix"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

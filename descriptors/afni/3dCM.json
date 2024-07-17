@@ -1,12 +1,11 @@
 {
   "tool-version": "23.1.10",
   "name": "3dCM",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "description": "Tool for computing the center of mass of a dataset",
   "command-line": "3dCM [OPTIONS] [DATASET]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -104,5 +103,6 @@
       "id": "center_of_mass",
       "name": "Center of mass"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCM.html"
 }

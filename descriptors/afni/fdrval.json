@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "fdrval",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "descriptor-url": "https://github.com/afni/fdrval",
   "description": "Computes q-values from FDR curve data stored in dataset headers",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/misc/FDR/FDR_Jan2008.pdf",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fdrval.html",
   "command-line": "fdrval [OPTIONS] [DSET] [SUB] [VAL_LIST]",
   "container-image": {
-    "image": "afni/afni_latest:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,7 +1,7 @@
 {
   "name": "3dTshift",
   "command-line": "3dTshift [IN_FILE] [IGNORE] [INTERP] [OUT_FILE] [OUTPUTTYPE] [RLT] [RLTPLUS] [SLICE_ENCODING_DIRECTION] [SLICE_TIMING] [TPATTERN] [TR] [TSLICE] [TZERO]",
-  "author": "Nipype (interface)",
+  "author": "AFNI Team",
   "description": "Shifts voxel time series from input so that separate slices are aligned to the same temporal origin.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTshift.html",
   "inputs": [

@@ -1,7 +1,7 @@
 {
   "name": "3dDegreeCentrality",
   "command-line": "3dDegreeCentrality [IN_FILE] [AUTOCLIP] [AUTOMASK] [MASK] [ONED_FILE] [OUT_FILE] [POLORT] [SPARSITY] [THRESH]",
-  "author": "RWCox @ AFNI",
+  "author": "AFNI Team",
   "description": "Computes voxelwise weighted and binary degree centrality and stores the result in a new 3D bucket dataset as floats to preserve their values. Degree centrality reflects the strength and extent of the correlation of a voxel with every other voxel in the brain. ",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html",
   "inputs": [

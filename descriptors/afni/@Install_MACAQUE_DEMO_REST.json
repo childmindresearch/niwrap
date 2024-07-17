@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0.0",
   "name": "Install_MACAQUE_DEMO_REST",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "description": "Installs the demo archive for AFNI's resting state FMRI macaque-analysis demo.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_MACAQUE_DEMO_REST.html",
   "command-line": "Install_MACAQUE_DEMO_REST [WGET_FLAG] [CURL_FLAG] [LITE_VERSION_FLAG]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

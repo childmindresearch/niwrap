@@ -1,14 +1,13 @@
 {
   "tool-version": "latest",
   "name": "afni",
-  "author": "NIMH AFNI Team",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/index.html",
   "description": "Tool for reading in sessions of 3D datasets and visualizing them",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni.html",
   "command-line": "afni [OPTIONS] [SESSION_DIRECTORIES]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

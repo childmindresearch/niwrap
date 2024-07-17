@@ -1,7 +1,7 @@
 {
   "tool-version": "v1.0.0",
   "name": "CreateIcosahedron",
-  "author": "Brenna D. Argall LBC/NIMH/NIH, Ziad S. Saad SSC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Tool to create an icosahedron with optional tessellation.",
   "command-line": "CreateIcosahedron [-rad r] [-rd recDepth] [-ld linDepth] [-ctr ctr] [-prefix fout] [-min_nodes MIN_NODES] [-nums] [-nums_quiet] [-tosphere] [-help]",
   "inputs": [
@@ -99,5 +99,10 @@
       "name": "Help Flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/CreateIcosahedron.html"
 }

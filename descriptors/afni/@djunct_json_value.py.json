@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "adjunct_json_value",
-  "author": "Paul Taylor, PTaylor@nih.gov",
+  "author": "AFNI Team",
   "description": "A supplementary tool for manipulating JSON values in conjunction with AFNI's apqc_py.",
   "command-line": "adjunct_json_value [JSON_FILE] [KEY] [VALUE]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -44,5 +43,6 @@
       "id": "modified_json_file",
       "name": "Modified JSON file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_json_value.py.html"
 }

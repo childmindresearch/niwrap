@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "abids_tool",
-  "author": "Justin Rajendra",
+  "author": "AFNI Team",
   "description": "A tool to work with BIDS formatted datasets created with dcm2niix_afni or dcm2niix, mainly to pull information from the matching JSON file and refit the input dataset using 3drefit.",
   "command-line": "abids_tool [INPUT_FILES] [TASKS]",
   "container-image": {
-    "image": "afni/afni_latest:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -66,5 +65,6 @@
       "name": "Help Flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_tool.py.html"
 }

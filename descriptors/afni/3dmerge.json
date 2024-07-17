@@ -1,13 +1,12 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dmerge",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "3dmerge edits and merges 3D datasets by applying various operations like thresholding, blurring, clustering, and more.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmerge.html",
   "command-line": "3dmerge [INPUT_FILES] [EDITING_OPTIONS] [MERGING_OPTIONS] -prefix [OUTPUT_FILE]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dBlurInMask",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "description": "Blurs a dataset spatially inside a mask",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/misc/OpenMP.html",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurInMask.html",
   "command-line": "3dBlurInMask [INPUT_FILE] [OUTPUT_PREFIX] [FWHM] [FWHM_DATASET] [MASK] [MULTI_MASK] [AUTO_MASK_FLAG] [PRESERVE_FLAG] [QUIET_FLAG] [FLOAT_FLAG] [FWHM_XYZ]",
   "container-image": {
-    "image": "afni/afni_latest:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

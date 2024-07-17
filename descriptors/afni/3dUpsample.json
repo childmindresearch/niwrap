@@ -1,12 +1,11 @@
 {
   "tool-version": "23.1.10",
   "name": "3dUpsample",
-  "author": "RW Cox",
+  "author": "AFNI Team",
   "description": "Upsamples a 3D+time dataset in the time direction by a specified factor.",
   "command-line": "3dUpsample [N] [DATASET] [LINEAR_FLAG] [PREFIX] [VERBOSE_FLAG] [DATATYPE]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -84,5 +83,6 @@
       "id": "output_head",
       "name": "Output HEAD File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dUpsample.html"
 }

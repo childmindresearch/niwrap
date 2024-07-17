@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0.0",
   "name": "MakeColorMap",
-  "author": "Ziad S. Saad & Rick R. Reynolds SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "descriptor-url": "none",
   "description": "Utility for creating and modifying colormaps with various formats and fiducial points",
   "command-line": "MakeColorMap [OPTIONS]",
   "container-image": {
-    "image": "custom/makecolormap:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -211,5 +210,6 @@
       "id": "palette_file_output",
       "name": "Example Palette File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/MakeColorMap.html"
 }

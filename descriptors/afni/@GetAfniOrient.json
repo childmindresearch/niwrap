@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0",
   "name": "@GetAfniOrient",
-  "author": "Ziad Saad (saadz@mail.nih.gov)",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/",
   "description": "Returns the orient code of AFNI datasets",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniOrient.html",
   "command-line": "@GetAfniOrient [EXPLORATORY_FLAG] [INPUT_FILE]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

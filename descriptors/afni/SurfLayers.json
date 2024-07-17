@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "SurfLayers",
-  "author": "Salvatore (Sam) Torrisi, Daniel Glen",
+  "author": "AFNI Team",
   "description": "Compute intermediate equi-distant surfaces between two boundary surfaces.",
-  "url": "mailto:torrisi@berkeley.edu",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfLayers.html",
   "command-line": "SurfLayers [SPEC_DSET] [OUTDIR] [STATES] [HEMI] [N_INTERMED_SURFS] [SURF_A] [SURF_B] [SURF_INTERMED_PREF] [ECHO_FLAG] [NO_CLEAN_FLAG]",
   "container-image": {
-    "image": "custom/surflayers:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

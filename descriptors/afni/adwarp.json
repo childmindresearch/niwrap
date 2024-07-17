@@ -1,12 +1,11 @@
 {
   "tool-version": "23.1.10",
   "name": "adwarp",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Resamples a 'data parent' dataset to the grid defined by an 'anat parent' dataset.",
   "command-line": "adwarp [APAR] [DPAR] [PREFIX] [DXYZ] [VERBOSE] [FORCE] [RESAM] [THR] [FUNC]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -108,5 +107,6 @@
       "id": "brick_output",
       "name": "Output BRIK file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adwarp.html"
 }

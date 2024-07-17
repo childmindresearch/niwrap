@@ -1,12 +1,11 @@
 {
   "tool-version": "latest",
   "name": "xmat_tool.py",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "A tool for evaluating an AFNI X-matrix",
   "command-line": "xmat_tool.py [NO_GUI] [LOAD_XMAT] [LOAD_1D] [CHOOSE_COLS] [CHOOSE_NONZERO_COLS] [CHRONO] [CORMAT_CUTOFF] [COSMAT_CUTOFF] [COSMAT_MOTION] [VERB] [SHOW_COL_TYPES] [SHOW_CONDS] [SHOW_CORMAT] [SHOW_CORMAT_WARNINGS] [SHOW_COSMAT] [SHOW_COSMAT_WARNINGS] [SHOW_FIT_BETAS] [SHOW_FIT_TS] [SHOW_XMAT] [SHOW_1D] [GUI_PLOT_XMAT_AS_ONE]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -209,5 +208,6 @@
       "id": "output_fitts",
       "name": "Fitts 1D File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/xmat_tool.py.html"
 }

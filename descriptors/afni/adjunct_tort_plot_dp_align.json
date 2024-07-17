@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "adjunct_tort_plot_dp_align",
-  "author": "PA Taylor (NIMH, NIH, USA)",
+  "author": "AFNI Team",
   "description": "Tool to display the rigid-body alignment parameters from TORTOISE's DIFFPREP, useful for analyzing subject motion in DWI data.",
   "command-line": "adjunct_tort_plot_dp_align -input [INPUT_FILE] -prefix [OUTPUT_PREFIX] -enorm_max [ENORM_MAX] -enorm_hline [ENORM_HLINE] [NO_SVG_FLAG]",
   "inputs": [
@@ -77,5 +77,10 @@
       "optional": true
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_tort_plot_dp_align.html"
 }

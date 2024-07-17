@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3dLocalACF",
-  "author": "The AFNI Team",
+  "author": "AFNI Team",
   "descriptor-url": "https://github.com/afni/afni",
   "description": "Estimate the spatial AutoCorrelation Function (ACF) locally in a neighborhood around each voxel",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalACF.html",
   "command-line": "3dLocalACF [PREFIX] [INPUT_FILE] [NEIGHBORHOOD] [MASK_FILE] [AUTO_MASK_FLAG]",
   "container-image": {
-    "image": "brainsia/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

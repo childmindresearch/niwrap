@@ -2,7 +2,7 @@
   "name": "3dPFM",
   "tool-version": "1.0",
   "description": "Program for identifying brief BOLD events in fMRI time series using Paradigm Free Mapping",
-  "author": "C. Caballero Gaudes",
+  "author": "AFNI Team",
   "command-line": "3dPFM [PARAMETERS]",
   "schema-version": "0.5",
   "inputs": [
@@ -354,7 +354,8 @@
     }
   ],
   "container-image": {
-    "type": "docker",
-    "image": "index.docker.io/mcin/docker-fsl:latest"
-  }
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPFM.html"
 }

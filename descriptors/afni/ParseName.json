@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "ParseName",
-  "author": "Ziad S. Saad, SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Parses filename into components useful for AFNI",
-  "url": "https://afni.nimh.nih.gov/afni",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ParseName.html",
   "command-line": "ParseName [OPTIONAL_PARAMETERS] <FName>",
   "container-image": {
-    "image": "afni_container:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

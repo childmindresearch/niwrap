@@ -2,9 +2,9 @@
   "command-line": "@djunct_4d_imager [INPUT_FILE] [PREFIX] [MOVIE_TYPE] [NO_CLEAN_FLAG]",
   "tool-version": "1.0",
   "name": "djunct_4d_imager",
-  "author": "PA Taylor (NIMH, NIH, USA)",
+  "author": "AFNI Team",
   "description": "The program is useful for viewing the same slice across the 'time' dimension of a 4D data set.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_4d_imager.html",
   "inputs": [
     {
       "description": "ULay dataset, probably 4D (required)",
@@ -91,8 +91,7 @@
     }
   ],
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni_latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   }
 }

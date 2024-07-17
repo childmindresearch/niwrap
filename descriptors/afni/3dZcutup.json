@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3dZcutup",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZcutup.html",
   "description": "Cut slices off a dataset in its z-direction and write a new dataset",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZcutup.html",
   "command-line": "3dZcutup -keep [KEEP_SLICES] -prefix [PREFIX] [DATASET]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

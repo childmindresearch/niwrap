@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "im2niml",
-  "author": "RW Cox",
+  "author": "AFNI Team",
   "description": "Converts the input image(s) to a text-based NIML element and writes the result to stdout.",
   "command-line": "im2niml [INPUT_FILE] [MORE_INPUT_FILES]",
   "inputs": [
@@ -24,5 +24,10 @@
       "id": "niml_output",
       "name": "NIML output"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/im2niml.html"
 }

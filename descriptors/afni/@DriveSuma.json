@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0",
   "name": "@DriveSuma",
-  "author": "Ziad S. Saad",
+  "author": "AFNI Team",
   "descriptor-url": "http://example.com",
   "description": "A script to demonstrate how to drive suma from the command line.",
-  "url": "https://discuss.afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DriveSuma.html",
   "command-line": "@DriveSuma [GLOBAL_HELP_OPTION]",
   "container-image": {
-    "image": "example/image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

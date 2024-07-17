@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0",
   "name": "SUMA_AlignToExperiment",
-  "author": "Ziad Saad (saadz@mail.nih.gov)",
+  "author": "AFNI Team",
   "description": "Creates a version of Surface Anatomy that is registered to Experiment Anatomy.",
-  "url": "https://afni.nimh.nih.gov/ssc/ziad/SUMA/SUMA_doc.htm",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_AlignToExperiment.html",
   "command-line": "@SUMA_AlignToExperiment <-exp_anat $$exp_anat$$> <-surf_anat $$surf_anat$$> $$dxyz$$ $$wd$$ $$prefix$$ $$EA_clip_below$$ $$align_centers$$ $$ok_change_view$$ $$strip_skull$$",
   "container-image": {
-    "type": "docker",
-    "index": "index.docker.io",
-    "image": "mcin/docker-suma:latest"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {

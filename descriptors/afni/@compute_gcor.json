@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0",
   "name": "@compute_gcor",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Compute GCOR, the global correlation",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@compute_gcor.html",
   "command-line": "@compute_gcor [INPUT_FILE] [MASK] [CORR_VOL_PREF] [INITIAL_TRS] [NO_DEMEAN_FLAG] [SAVE_TMP_FLAG] [VERBOSE_LEVEL]",
   "inputs": [
     {
@@ -86,5 +86,9 @@
       "id": "corr_vol_head",
       "name": "Correlation Volume HEAD"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

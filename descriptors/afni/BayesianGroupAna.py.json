@@ -2,9 +2,9 @@
   "name": "BayesianGroupAna",
   "tool-version": "1.0",
   "description": "This program conducts Bayesian Group Analysis (BGA) on a list of regions of interest (ROIs). Compared to the conventional univariate GLM, BGA pools and shares the information across the ROIs in a multilevel system.",
-  "author": "Justin Rajendra",
+  "author": "AFNI Team",
   "command-line": "/opt/afni/src/../install/BayesianGroupAna.py -dataTable [DATATABLE] -y [VAR] [OPTIONS]",
-  "url": "https://www.example.com",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/BayesianGroupAna.py.html",
   "inputs": [
     {
       "id": "dataTable",
@@ -163,5 +163,9 @@
       "optional": true
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

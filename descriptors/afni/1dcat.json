@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "1dcat",
-  "author": "AFNI developers",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dcat.html",
   "description": "Concatenates columns of multiple 1D or TSV/CSV files",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dcat.html",
   "command-line": "1dcat [OPTIONS] [INPUT_FILES]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

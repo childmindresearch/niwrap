@@ -1,10 +1,10 @@
 {
   "tool-version": "1.0",
   "name": "@Reorder",
-  "author": "R Reynolds (for J Bjork)",
+  "author": "AFNI Team",
   "descriptor-url": "http://example.com/reorder_descriptor.json",
   "description": "Reorder sub-bricks of a dataset based on event mapping. Works similarly to the Reorder plugin.",
-  "url": "http://example.com/reorder_plugin_help",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Reorder.html",
   "command-line": "@Reorder [INPUT] [MAPFILE] [PREFIX] [OFFSET] [SAVE_WORK_FLAG] [TEST_FLAG]",
   "schema-version": "0.5",
   "inputs": [
@@ -77,5 +77,9 @@
       "id": "output_dataset",
       "name": "Output Dataset"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0.0",
   "name": "imreg",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Registers each 2D image in 'image_sequence' to 'base_image'",
   "command-line": "imreg [BASE_IMAGE] [IMAGE_SEQUENCE] [NOWRITE] [PREFIX] [SUFFIX] [START] [STEP] [FLIM] [KEEPSIZE] [QUIET] [DEBUG] [DPREFIX] [BILINEAR] [MODES] [MLCF] [WTIM] [DFSPACE] [CMASS] [FINE] [NOFINE]",
   "container-image": {
-    "type": "docker",
-    "index": "index.docker.io",
-    "image": "your-docker-image:latest"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {
@@ -223,5 +222,6 @@
       "id": "phi_file",
       "name": "Phi File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imreg.html"
 }

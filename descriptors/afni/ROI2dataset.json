@@ -1,10 +1,10 @@
 {
   "tool-version": "2023-06-30",
   "name": "ROI2dataset",
-  "author": "Ziad S. Saad, SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "descriptor-url": "https://example.com/ROI2dataset-boutiques",
   "description": "Transforms a series of ROI files to a node dataset",
-  "url": "mailto:saadz@mail.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ROI2dataset.html",
   "command-line": "ROI2dataset -prefix [PREFIX] [INPUT_ROIS] [SEPARATE_FLAG] [NODELIST_FLAG] [NODELIST_NODUPS_FLAG] [NODELIST_WITH_ROI_FLAG] [LABEL_DSET] [OUTPUT_FORMAT] [DOMAIN_PARENT_ID] [PAD_TO_NODE] [PAD_LABEL]",
   "inputs": [
     {
@@ -106,5 +106,9 @@
       "name": "Pad label"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

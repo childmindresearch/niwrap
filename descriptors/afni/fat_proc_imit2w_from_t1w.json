@@ -1,12 +1,11 @@
 {
   "tool-version": "2.31",
   "name": "fat_proc_imit2w_from_t1w",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Process T1w anatomical images to generate an imitation T2w-contrast image",
   "command-line": "fat_proc_imit2w_from_t1w [T1_FILE] [PREFIX] [WORKDIR] [MASK] [SS_BLUR_FWHM] [NO_CLEAN] [NO_QC_VIEW] [QC_PREFIX]",
   "container-image": {
-    "image": "your-docker-image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -113,5 +112,6 @@
       "id": "qc_images",
       "name": "QC Images"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_imit2w_from_t1w.html"
 }

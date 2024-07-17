@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0.0",
   "name": "1dsound",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Program to create a sound file from a 1D file (column of numbers).",
   "command-line": "1dsound [PREFIXX_OPTION] [ENCODING_OPTION] [TIME_OPTION] [SOUND_OPTION] [NOTES_OPTION] [PLAY_OPTION] [TSFILE]",
   "container-image": {
-    "type": "docker",
-    "image": "someuser/1dsound:latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {
@@ -120,5 +119,6 @@
       "name": "Output audio file"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dsound.html"
 }

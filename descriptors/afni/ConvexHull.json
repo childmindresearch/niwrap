@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0.0",
   "name": "ConvexHullTriangulation",
-  "author": "Ziad S. Saad",
+  "author": "AFNI Team",
   "description": "A program to find the convex hull, or perform a Delaunay triangulation of a set of points.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ConvexHull.html",
   "command-line": "<main_flags> <volume_flags> <surface_flags> <triangulation_flags> <output_flags> <debug_flags> <global_flags>",
   "schema-version": "0.5",
   "inputs": [
@@ -165,8 +165,7 @@
     }
   ],
   "container-image": {
-    "image": "afni/afni_container:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   }
 }

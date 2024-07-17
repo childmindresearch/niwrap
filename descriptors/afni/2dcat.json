@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "2dcat",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Puts a set of images into an image matrix montage of NX by NY images.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/2dcat.html",
   "command-line": "2dcat [OPTIONS] [FILENAMES]",
@@ -267,5 +267,9 @@
       "id": "output_1D",
       "name": "Output 1D File"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

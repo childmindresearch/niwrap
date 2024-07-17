@@ -1,14 +1,13 @@
 {
   "tool-version": "Latest",
   "name": "suma",
-  "author": "Ziad S. Saad, Peter D. Lauren SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "descriptor-url": "https://github.com/afni/afni/blob/master/src/suma1/SUMA.c",
   "description": "SUMA: Surface Mapper for visualization and analysis of brain data.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/suma.html",
   "command-line": "suma [MODE] [OPTIONS]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

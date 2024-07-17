@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "Shift_Volume",
-  "author": "Ziad Saad",
+  "author": "AFNI Team",
   "description": "Tool to shift a dataset in the RAI coordinate system or between MNI anatomical space and MNI space.",
   "command-line": "@Shift_Volume [RAI_SHIFT_VECTOR] [MNI_ANAT_TO_MNI] [MNI_TO_MNI_ANAT] [DSET] [NO_CP_FLAG] [OUTPUT_PREFIX]",
   "container-image": {
-    "image": "mcin/docker",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -77,5 +76,6 @@
       "id": "output_file",
       "name": "Output File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Shift_Volume.html"
 }

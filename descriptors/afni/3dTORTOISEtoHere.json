@@ -1,14 +1,13 @@
 {
   "tool-version": "latest",
   "name": "3dTORTOISEtoHere",
-  "author": "Taylor PA, Saad ZS",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTORTOISEtoHere.html",
   "description": "Convert standard TORTOISE DTs (diagonal-first format) to standard AFNI (lower triangular, row-wise) format.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTORTOISEtoHere.html",
   "command-line": "3dTORTOISEtoHere -dt_tort [DTFILE] -prefix [PREFIX] [SCALE_FACTOR] [FLIP_X] [FLIP_Y] [FLIP_Z]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

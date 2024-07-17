@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0",
   "name": "@Install_APMULTI_Demo2_realtime",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Fetches the demo data and scripts corresponding to AFNI's Demo #2 for experimenting with AFNI's real-time system.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_APMULTI_Demo2_realtime.html",
   "command-line": "@Install_APMULTI_Demo2_realtime [DOWNLOAD_TOOL]",
   "inputs": [
     {
@@ -25,5 +25,9 @@
       "name": "Use curl"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

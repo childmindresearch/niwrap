@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "images_equal",
-  "author": "Zhark the Comparator",
+  "author": "AFNI Team",
   "description": "A simple program to test if two 2D images are identical.",
   "command-line": "images_equal [OPTIONS] [FILE_A] [FILE_B]",
   "inputs": [
@@ -40,5 +40,10 @@
       "id": "comparison_result",
       "name": "Comparison Result"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/images_equal.html"
 }

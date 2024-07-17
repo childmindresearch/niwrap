@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "quotize",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Turns a text file into a C array of strings initialized into an array 'char *name[]'.",
   "command-line": "quotize [NAME] < [INPUT_FILE] > [OUTPUT_FILE]",
   "inputs": [
@@ -39,5 +39,10 @@
       "id": "array_output",
       "name": "Output C array file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/quotize.html"
 }

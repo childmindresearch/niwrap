@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "@diff.files",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Show file differences (between specified files and those in another directory)",
   "command-line": "@diff.files [OPTIONS] [FILES] [OLD_DIR]",
   "inputs": [
@@ -106,5 +106,10 @@
       "maximum": 3
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@diff.files.html"
 }

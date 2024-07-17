@@ -1,10 +1,10 @@
 {
   "tool-version": "23.1.10",
   "name": "3dhistog",
-  "author": "RW Cox, V Roopchansingh, and ZS Saad",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dhistog.html",
   "description": "Compute histogram of a 3D dataset",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dhistog.html",
   "command-line": "3dhistog [EDITING_OPTIONS] [HISTOGRAM_OPTIONS] [DATASET]",
   "inputs": [
     {
@@ -181,8 +181,7 @@
     }
   ],
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "schema-version": "0.5"

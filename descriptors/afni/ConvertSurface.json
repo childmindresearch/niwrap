@@ -1,7 +1,7 @@
 {
   "tool-version": "latest",
   "name": "ConvertSurface",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Reads in a surface and writes it out in another format. Only fields pertinent to SUMA are preserved.",
   "command-line": "ConvertSurface [INPUT_FILE] [OUTPUT_FILE] [SURFACE_VOLUME_OPTION] [TAL_OPTIONS] [MNI_OPTIONS] [AFFINE_TRANSFORM_OPTIONS] [CONFIG_OPTIONS]",
   "inputs": [
@@ -105,5 +105,10 @@
       "name": "Output Surface File"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ConvertSurface.html"
 }

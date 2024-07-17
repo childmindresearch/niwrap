@@ -1,9 +1,9 @@
 {
   "tool-version": "23.1.10",
   "name": "3dEntropy",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Computes entropy for a 3D dataset",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dEntropy.html",
   "command-line": "3dEntropy [ZSKIP_FLAG] [INPUT_FILE]",
   "inputs": [
     {
@@ -24,5 +24,9 @@
       "name": "Skip zero values flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

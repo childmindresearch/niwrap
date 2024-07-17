@@ -1,9 +1,9 @@
 {
   "tool-version": "3.1",
   "name": "@GradFlipTest",
-  "author": "PA Taylor (NIH)",
+  "author": "AFNI Team",
   "description": "Script to test the correct flip for a data set when using 1dDW_Grad_o_Mat++.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/programs/@GradFlipTest_sphx.html",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GradFlipTest.html",
   "command-line": "@GradFlipTest [DWI] [GRAD_FILE] [GRAD_FILE] [GRAD_FILE] [GRAD_FILE] [MASK] [BVALS] [THRESH_FA] [THRESH_LEN] [PREFIX] [CHECK_ABS_MIN] [SCALE_OUT_1000] [WDIR] [DO_CLEAN]",
   "inputs": [
     {
@@ -149,5 +149,9 @@
       "id": "temp_directory",
       "name": "Temporary Working Directory"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

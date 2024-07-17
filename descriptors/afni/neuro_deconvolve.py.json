@@ -1,11 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "neuro_deconvolve.py",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Generate a script to apply 3dTfitter to deconvolve an MRI signal (BOLD response curve) into a neuro response curve.",
   "command-line": "neuro_deconvolve.py [INPUT_FILE] [OUTPUT_PREFIX] [SCRIPT_NAME] [KERNEL] [KERNEL_FILE] [MASK_DSET] [OLD_STYLE] [TR] [TR_NUP] [VERBOSITY]",
   "container-image": {
-    "image": "index.docker.io/neuro_deconvolve:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -120,5 +120,6 @@
       "id": "kernel_file_out",
       "name": "Kernel file output"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/neuro_deconvolve.py.html"
 }

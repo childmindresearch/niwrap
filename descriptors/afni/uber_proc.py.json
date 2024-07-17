@@ -1,9 +1,9 @@
 {
   "tool-version": "0.1",
   "name": "uber_proc",
-  "author": "Anonymous",
+  "author": "AFNI Team",
   "description": "Uber processing tool - work in progress",
-  "url": "https://example.com/uber_proc",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_proc.py.html",
   "command-line": "uber_proc.py [RESULTS_DIR]",
   "inputs": [
     {
@@ -17,8 +17,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "mydockerhub/uber_proc:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   }
 }

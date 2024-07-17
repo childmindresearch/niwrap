@@ -1,7 +1,7 @@
 {
   "tool-version": "Jun 30 2023",
   "name": "3dCRUISEtoAFNI",
-  "author": "Ziad S. Saad",
+  "author": "AFNI Team",
   "description": "Converts a CRUISE dataset defined by a header in OpenDX format.",
   "command-line": "3dCRUISEtoAFNI -input [INPUT_FILE] [IGNORE_VOLREG_FLAG] [NO_XFORM_FLAG] [SETENV] [TRACE_FLAG] [TRACE_EXTREME_FLAG] [NO_MALL_FLAG] [YES_MALL_FLAG] [HELP_FLAG] [MINI_HELP]",
   "inputs": [
@@ -95,5 +95,10 @@
       "name": "Mini Help"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCRUISEtoAFNI.html"
 }

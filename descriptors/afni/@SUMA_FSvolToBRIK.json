@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "SUMA_FSvolToBRIK",
-  "author": "FreeSurfer Development Team",
+  "author": "AFNI Team",
   "description": "A script to convert COR- or .mgz files from FreeSurfer to BRIK format",
   "command-line": "@SUMA_FSvolToBRIK [FSVOL] [PREFIX]",
   "container-image": {
-    "image": "freesurfer/freesurfer:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -43,5 +42,6 @@
       "id": "out_head",
       "name": "Output HEAD file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_FSvolToBRIK.html"
 }

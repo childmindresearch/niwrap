@@ -1,7 +1,7 @@
 {
   "tool-version": "May, 2013",
   "name": "@simulate_motion",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Create simulated motion time series in an EPI dataset based on the provided motion parameters and an input volume.",
   "command-line": "@simulate_motion [options] -epi [EPI_DSET] -motion_file [MOTION_PARAMS]",
   "inputs": [
@@ -159,5 +159,10 @@
       "id": "simulated_motion_output",
       "name": "Simulated motion output"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@simulate_motion.html"
 }

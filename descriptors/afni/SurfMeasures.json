@@ -1,12 +1,11 @@
 {
   "tool-version": "1.11",
   "name": "SurfMeasures",
-  "author": "R. Reynolds",
+  "author": "AFNI Team",
   "description": "Compute measures from surface dataset(s)",
   "command-line": "SurfMeasures [OPTIONS] -spec SPEC_FILE -out OUTFILE",
   "container-image": {
-    "image": "docker-registry.image/surfs:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -193,5 +192,6 @@
       "id": "output_dset",
       "name": "Output Dataset File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfMeasures.html"
 }

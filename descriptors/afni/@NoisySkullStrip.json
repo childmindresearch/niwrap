@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "@NoisySkullStrip",
-  "author": "Ziad S. Saad",
+  "author": "AFNI Team",
   "description": "Strips the skull of anatomical datasets with low SNR.",
   "command-line": "@NoisySkullStrip -input [ANAT] [KEEP_TMP_FLAG] [SKULLSTRIP_OPTS]",
   "container-image": {
-    "image": "YOUR_DOCKER_IMAGE:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -67,5 +66,6 @@
       "id": "anat_lsp",
       "name": "Air Threshold Volume"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoisySkullStrip.html"
 }

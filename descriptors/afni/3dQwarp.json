@@ -1,11 +1,11 @@
 {
   "tool-version": "2023.10",
   "name": "3dQwarp",
-  "author": "Zhark the Warped",
+  "author": "AFNI Team",
   "description": "Computes a nonlinearly warped version of source_dataset to match base_dataset.",
   "command-line": "3dQwarp -base [BASE_DATASET] -source [SOURCE_DATASET] -prefix [PREFIX] [OPTIONS]",
   "container-image": {
-    "image": "afni/afni:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -210,5 +210,6 @@
       "name": "Inverse Warp Dataset"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dQwarp.html"
 }

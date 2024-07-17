@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "serial_helper",
-  "author": "R. Reynolds, T. Ross",
+  "author": "AFNI Team",
   "description": "Passes motion parameters from socket to serial port",
   "command-line": "serial_helper [OPTIONS]",
   "inputs": [
@@ -114,5 +114,10 @@
       "value-key": "[VERSION]"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/serial_helper.html"
 }

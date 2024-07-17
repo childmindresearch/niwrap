@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "dicom_to_raw",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Reads images from DICOM file and writes them to raw file(s).",
   "command-line": "dicom_to_raw [INPUT_DICOM]",
   "inputs": [
@@ -23,5 +23,10 @@
       "name": "Output raw file(s)"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/dicom_to_raw.html"
 }

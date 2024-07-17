@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "@ClustExp_run_shiny",
-  "author": "Justin Rajendra",
+  "author": "AFNI Team",
   "description": "Launch a shiny app that was created by ClustExp_StatParse.py",
-  "url": "https://example.com/clustexp_run_shiny",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ClustExp_run_shiny.html",
   "command-line": "@ClustExp_run_shiny [DIRECTORY] [HELP_FLAG]",
   "container-image": {
-    "image": "yourdockerhubusername/clustexp_run_shiny:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0.0",
   "name": "suma_acknowledge",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Demo script to create a graph dataset to show names of individuals and groups, potentially useful for acknowledgements in a talk.",
-  "url": "https://example.com/suma_acknowledge",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@suma_acknowledge.html",
   "command-line": "@suma_acknowledge -input [INPUT_FILE] -surf [SURFACE_FILE] -prefix [OUTPUT_PREFIX] [CENTER_FLAG] [SUBSURF_FILE] [SCALE_FACTOR] [REDUCE_FACTOR]",
   "container-image": {
-    "image": "unknown",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

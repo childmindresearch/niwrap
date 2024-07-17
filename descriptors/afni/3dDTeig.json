@@ -1,14 +1,13 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dDTeig",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "descriptor-url": "https://example.com/3dDTeig",
   "description": "Computes eigenvalues and eigenvectors for an input dataset of tensors",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDTeig.html",
   "command-line": "3dDTeig [OPTIONS] [DATASET]",
   "container-image": {
-    "image": "afni/afni_latest:23.1.10",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

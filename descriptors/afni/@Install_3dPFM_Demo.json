@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "Install_3dPFM_Demo",
-  "author": "Your Name",
+  "author": "AFNI Team",
   "description": "Installs the demo archive for the 3dPFM function",
-  "url": "http://example.com/Install_3dPFM_Demo",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_3dPFM_Demo.html",
   "command-line": "Install_3dPFM_Demo [OUTPUT_DIRECTORY]",
   "container-image": {
-    "image": "mcin/3dpfm-demo:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

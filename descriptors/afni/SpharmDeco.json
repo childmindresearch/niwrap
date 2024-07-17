@@ -1,13 +1,12 @@
 {
   "tool-version": "2023.6",
   "name": "SpharmDeco",
-  "author": "Ziad S. Saad, SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Spherical Harmonics Decomposition of a surface's coordinates or data",
-  "url": "http://www.stat.wisc.edu/~mchung/papers/TR1122.2006.pdf",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SpharmDeco.html",
   "command-line": "SpharmDeco <-i_TYPE S> -unit_sph UNIT_SPH_LABEL> <-l L> [<-i_TYPE SD> ... | <-data D>] [-bases_prefix BASES] [<-prefix PREFIX>] [<-o_TYPE SDR> ...] [-debug DBG] [-sigma s]",
   "container-image": {
-    "image": "myregistry/spharmdeco:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

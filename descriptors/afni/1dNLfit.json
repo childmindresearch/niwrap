@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "1dNLfit",
-  "author": "Zhark the Well-Fitted",
+  "author": "AFNI Team",
   "description": "Program to fit a model to a vector of data. The model is given by a symbolic expression, with parameters to be estimated.",
   "command-line": "1dNLfit [EXPRESSION] [INDEPENDENT_VAR] [PARAMETERS] [DEPENDENT_DATA] [METHOD_FLAG]",
   "inputs": [
@@ -62,5 +62,10 @@
       "id": "fit_results",
       "name": "Fit Results"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dNLfit.html"
 }

@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "abids_json_info",
-  "author": "Justin Rajendra",
+  "author": "AFNI Team",
   "description": "A tool to extract information from BIDS formatted json files.",
   "command-line": "/opt/afni/src/../install/abids_json_info.py [JSON_FILES] [TR_FLAG] [TE_FLAG] [TE_SEC_FLAG] [MATCH_NII_FLAG] [FIELD_LIST] [LIST_FIELDS_FLAG] [HELP_FLAG]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -84,5 +83,6 @@
       "name": "Help flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_json_info.py.html"
 }

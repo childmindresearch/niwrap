@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "IsoSurface",
-  "author": "Ziad S. Saad, SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "A program to perform isosurface extraction from a volume.",
   "command-line": "IsoSurface [MANDATORY_PARAMS] [ISO_SURFACE_OPTION] [OPTIONAL_PARAMS] [SMOOTHING_PARAMS] [DEBUG_OPTION]",
   "container-image": {
-    "image": "myregistry.com/isosurface:latest",
-    "index": "dockerhub.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -163,5 +162,6 @@
       "name": "Output Surface STL"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/IsoSurface.html"
 }

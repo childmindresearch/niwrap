@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3dRetinoPhase",
-  "author": "RW Cox",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/tgz/AfniRetinoDemo.tgz",
   "description": "Process time series from retinotopy stimuli to create phase datasets and visual field angle datasets",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRetinoPhase.html",
   "command-line": "3dRetinoPhase [PRE] [DATASET] [OPTIONS]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

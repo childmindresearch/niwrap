@@ -1,13 +1,12 @@
 {
   "tool-version": "3.2.0",
   "name": "meica.py",
-  "author": "The ME-ICA team",
+  "author": "AFNI Team",
   "description": "Multi-Echo Independent Component Analysis for fMRI denoising",
-  "url": "https://github.com/ME-ICA/me-ica",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/meica.py.html",
   "command-line": "meica.py -d [INPUT_FILE] -e [ECHOTIMES] -a [AFFINE] -o [OUTPUT_DIRECTORY] [COMPONENTS_FLAG] [TLRC_FLAG] [THRESHOLD] [DEBUG_FLAG]",
   "container-image": {
-    "image": "meica/me-ica:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

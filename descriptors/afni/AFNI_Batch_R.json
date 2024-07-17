@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0.0",
   "name": "AFNI_Batch_R",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "description": "Batch mode for executing R scripts in the AFNI environment",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/AFNI_Batch_R.html",
   "command-line": "/opt/afni/src/../install/AFNI_Batch_R R CMD BATCH [NO_RESTORE] [SAVE] [NO_READLINE] [VANILLA] --args [HELP]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

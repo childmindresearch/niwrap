@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "afni_R_package_install",
-  "author": "Justin Rajendra",
+  "author": "AFNI Team",
   "description": "Helper script to install R packages for various afni-ish purposes.",
   "command-line": "@afni_R_package_install [AFNI_FLAG] [SHINY_FLAG] [BAYES_VIEW_FLAG] [CIRCOS_FLAG] [CUSTOM_PACKAGES] [MIRROR] [HELP_FLAG]",
   "container-image": {
-    "image": "afni/afni_container:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -83,5 +82,6 @@
       "id": "install_log",
       "name": "Installation Log"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_R_package_install.html"
 }

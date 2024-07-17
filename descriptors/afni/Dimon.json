@@ -1,13 +1,12 @@
 {
   "tool-version": "4.30",
   "name": "Dimon",
-  "author": "R. Reynolds",
+  "author": "AFNI Team",
   "description": "Monitor real-time acquisition of DICOM image files",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/Dimon.html",
   "command-line": "Dimon [OPTIONS] -infile_prefix [PREFIX] -infile_pattern [PATTERN] -infile_list [FILES.txt] -rt_cmd [RT_COMMAND] -host [HOSTNAME] -drive_afni [DRIVE_AFNI_COMMAND] -drive_wait [DRIVE_WAIT_COMMAND] -te_list [TE_LIST] -sort_method [METHOD]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

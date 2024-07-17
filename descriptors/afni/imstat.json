@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "imstat",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Calculation of statistics of one or more images",
   "command-line": "imstat [NO_LABEL_FLAG] [QUIET_FLAG] [PIXSTAT_PREFIX] [IMAGE_FILE]",
   "inputs": [
@@ -58,5 +58,10 @@
       "id": "sdev_output",
       "name": "Standard Deviation Output File"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imstat.html"
 }

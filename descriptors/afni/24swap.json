@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "24swap",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Swaps bytes pairs and/or quadruples on the files listed.",
   "command-line": "24swap [QUIET_FLAG] [PATTERN_OPTION] [INPUT_FILE]",
   "schema-version": "0.5",
@@ -33,5 +33,10 @@
       "id": "pattern",
       "name": "Byte Swap Pattern"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/24swap.html"
 }

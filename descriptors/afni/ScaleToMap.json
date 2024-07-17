@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "ScaleToMap",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Tool to scale values to a color map",
   "command-line": "ScaleToMap [INPUT_FILE] [ICOL] [VCOL] [OPTIONAL_PARAMETERS]",
   "inputs": [
@@ -282,5 +282,10 @@
       "value-key": "[YESMALL]"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ScaleToMap.html"
 }

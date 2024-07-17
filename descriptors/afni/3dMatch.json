@@ -1,7 +1,7 @@
 {
   "tool-version": "Nov 2012",
   "name": "3dMatch",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Find similar subbricks and rearrange order to ease comparison. Part of FATCAT in AFNI.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMatch.html",
   "command-line": "3dMatch [INSET] [REFSET] [MASK] [IN_MIN] [IN_MAX] [REF_MIN] [REF_MAX] [PREFIX] [ONLY_DICE_THR]",
@@ -118,5 +118,9 @@
       "name": "Output IN coefficients file"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

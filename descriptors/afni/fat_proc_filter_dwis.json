@@ -1,7 +1,7 @@
 {
   "tool-version": "3.8",
   "name": "fat_proc_filter_dwis",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Filter out user-found and user-defined bad volumes from DWI data sets.",
   "command-line": "fat_proc_filter_dwis -in_dwi [INPUT_DWI] [INPUT_GRADIENT] -select '[SELECT_STRING]' -prefix [OUTPUT_PREFIX] [OPTIONAL_PARAMS]",
   "inputs": [
@@ -134,7 +134,8 @@
     }
   ],
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni:latest"
-  }
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_filter_dwis.html"
 }

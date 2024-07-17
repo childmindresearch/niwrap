@@ -1,14 +1,13 @@
 {
   "tool-version": "0.0.3",
   "name": "PTA",
-  "author": "Gang Chen (gangchen@mail.nih.gov)",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov",
   "description": "Program for Profile Tracking Analysis - estimates nonlinear trajectories through smoothing splines.",
-  "url": "https://afni.nimh.nih.gov/gangchen_homepage",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/PTA.html",
   "command-line": "PTA [PREFIX] [INPUT_FILE] [MODEL_FORMULA] [VT_FORMULATION] [PREDICTION_TABLE] [VERBOSITY_LEVEL] [RESPONSE_VAR] [DBG_ARGS]",
   "container-image": {
-    "image": "mcin/docker-pta:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

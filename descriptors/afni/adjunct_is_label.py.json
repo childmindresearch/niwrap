@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "adjunct_is_label.py",
-  "author": "@chauffeur_afni",
+  "author": "AFNI Team",
   "description": "A subsidiary script of the chauffeur_afni suite for label functionalities.",
   "command-line": "adjunct_is_label.py [INPUT_FILE] [OUTPUT_LABEL]",
   "inputs": [
@@ -22,5 +22,10 @@
       "name": "Output Label"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_is_label.py.html"
 }

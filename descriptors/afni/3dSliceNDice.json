@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0",
   "name": "3dSliceNDice",
-  "author": "PA Taylor (NIMH, NIH)",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/3dSliceNDice",
   "description": "Calculates the Dice coefficient between two volumes on a slice-by-slice basis.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSliceNDice.html",
   "command-line": "3dSliceNDice -insetA [INPUT_FILE_A] -insetB [INPUT_FILE_B] -prefix [OUTPUT_PREFIX] [OUT_DOMAIN_FLAG] [NO_CMD_ECHO_FLAG]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

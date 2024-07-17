@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "@Align_Centers",
-  "author": "AFNI Community",
+  "author": "AFNI Team",
   "description": "Moves the center of a dataset (DSET) to the center of a base volume (BASE) and optionally creates a transform matrix.",
   "command-line": "@Align_Centers <-base BASE> <-dset DSET> [ADD_CHILDREN] [ECHO_FLAG] [OVERWRITE_FLAG] [PREFIX_PARAM] [MATRIX_ONLY_FLAG] [MATRIX_ONLY_NO_DSET_FLAG] [NO_CP_FLAG] [CENTER_GRID_FLAG] [CENTER_CM_FLAG] [CENTER_CM_NO_AMASK_FLAG] [SHIFT_XFORM_PARAM] [SHIFT_XFORM_INV_PARAM]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -159,5 +158,6 @@
       "id": "shifted_child_dsets",
       "name": "Shifted Child Datasets File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Align_Centers.html"
 }

@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "tfim",
-  "author": "RW Cox",
+  "author": "AFNI Team",
   "description": "MCW TFIM: t-tests on sets of functional images",
   "command-line": "tfim [OPTIONS] -set1 [SET1_IMAGES] -set2 [SET2_IMAGES] -base1 [BASE1_VALUE]",
   "container-image": {
-    "image": "mcin/docker-tfim:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -102,5 +101,6 @@
       "id": "corr_output",
       "name": "Correlation Statistic Output"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/tfim.html"
 }

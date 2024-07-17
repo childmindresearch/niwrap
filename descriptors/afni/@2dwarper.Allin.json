@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "@2dwarper.Allin",
-  "author": "RWC",
+  "author": "AFNI Team",
   "description": "Perform 2D registration on each slice of a 3D+time dataset, and combine the results.",
   "command-line": "@2dwarper.Allin [OPTIONS] [INPUT_PREFIX]",
   "container-image": {
-    "type": "docker",
-    "index": "index.docker.io",
-    "image": "afni/afni:latest"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {
@@ -53,5 +52,6 @@
       "path-template": "[OUTPUT_PREFIX]_param_*.1D",
       "optional": true
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@2dwarper.Allin.html"
 }

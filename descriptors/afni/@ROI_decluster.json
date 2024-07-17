@@ -73,8 +73,9 @@
     }
   ],
   "container-image": {
-    "type": "docker",
-    "image": "example/roi-decluster:latest",
-    "index": "index.docker.io"
-  }
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "author": "AFNI Team",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_decluster.html"
 }

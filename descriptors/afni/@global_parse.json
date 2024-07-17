@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "global_parse",
-  "author": "Anonymous",
+  "author": "AFNI Team",
   "description": "Script to parse global help options for other scripts",
-  "url": "https://example.com/global_parse",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@global_parse.html",
   "command-line": "global_parse [PROGRAM_NAME] [OPTIONS]",
   "container-image": {
-    "image": "example/global-parse:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

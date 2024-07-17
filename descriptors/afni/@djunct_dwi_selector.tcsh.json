@@ -4,9 +4,8 @@
   "description": "Selects DWI data and creates a representative image.",
   "command-line": "/opt/afni/src/../install/@djunct_dwi_selector.tcsh [DWI] [PNG] [OUTFILE]",
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni:latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {
@@ -43,5 +42,7 @@
       "optional": false
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "author": "AFNI Team",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_dwi_selector.tcsh.html"
 }

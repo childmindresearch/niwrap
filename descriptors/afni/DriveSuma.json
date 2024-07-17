@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "DriveSuma",
-  "author": "Ziad S. Saad",
+  "author": "AFNI Team",
   "description": "A program to drive suma from the command line.",
   "command-line": "DriveSuma [INPUT_FILE] -com [COM] [ADDITIONAL_OPTIONS]",
   "container-image": {
-    "image": "suma/drive:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -289,5 +288,6 @@
       "optional": true
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/DriveSuma.html"
 }

@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0.4",
   "name": "3dISC - Voxelwise Inter-Subject Correlation Analysis",
-  "author": "Gang Chen (gangchen@mail.nih.gov)",
+  "author": "AFNI Team",
   "descriptor-url": "https://example.com/3dISC_descriptor.json",
   "description": "Program for Voxelwise Inter-Subject Correlation (ISC) Analysis using linear mixed-effects modeling.",
-  "url": "https://example.com/3dISC_tool",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dISC.html",
   "command-line": "3dISC [PREFIX_FLAG] [JOBS_FLAG] [MASK_FLAG] [MODEL_FLAG] [QVAR_CENTERS_FLAG] [QVARS_FLAG] [R2Z_FLAG] [CIO_FLAG] [DATA_TABLE_FLAG]",
   "container-image": {
-    "image": "my_registry/3disc:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

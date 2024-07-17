@@ -1,10 +1,10 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "1dTsort",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "descriptor-url": "https://github.com/afni/afni",
   "description": "Sorts each column of the input 1D file and writes result to stdout.",
-  "url": "https://afni.nimh.nih.gov/afni",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dTsort.html",
   "command-line": "1dTsort [ORDER_OPTION] [TRANSPOSE_FLAG] [COLUMN] [IMODE_FLAG] [INPUT_FILE]",
   "inputs": [
     {
@@ -61,5 +61,9 @@
       "name": "Integer Mode Flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

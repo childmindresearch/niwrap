@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dRowFillin",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "description": "Fills in blank regions in 1D rows extracted from a 3D dataset",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRowFillin.html",
   "command-line": "3dRowFillin [MAX_GAP] [DIRECTION] [BINARY_FLAG] [PREFIX] [INPUT_DATASET]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

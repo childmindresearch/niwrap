@@ -1,13 +1,12 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dmaskSVD",
-  "author": "Zhark the Gloriously Singular",
+  "author": "AFNI Team",
   "description": "Computes the principal singular vector of the time series vectors extracted from the input dataset over the input mask",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskSVD.html",
   "command-line": "3dmaskSVD [OPTIONS] [INPUT_DATASET]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

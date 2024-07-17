@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "ScriptChecker",
-  "author": "Your Name or Organization",
+  "author": "AFNI Team",
   "description": "Checks scripts for improperly terminated lines and optionally cleans them.",
   "command-line": "@ScriptCheck [CLEAN_FLAG] [SUFFIX_FLAG] [SUFFIX] [SCRIPTS...]",
   "inputs": [
@@ -49,5 +49,10 @@
       "id": "cleaned_file",
       "name": "Cleaned File"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ScriptCheck.html"
 }

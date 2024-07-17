@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0",
   "name": "3dDWUncert",
-  "author": "Taylor PA, Saad ZS, Oxford Centre. for Functional MRI of the Brain (FMRIB)",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDWUncert.html",
   "description": "Use jackknifing to estimate uncertainty of DTI parameters, important for probabilistic tractography.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDWUncert.html",
   "command-line": "3dDWUncert -inset [INPUT_FILE] -input [INPUT_PREFIX] -prefix [OUTPUT_PREFIX] -grads [GRAD_FILE] -bmatrix_FULL [BMATRIX_FILE] -iters [NUM_ITERS] -mask [MASK_FILE] -calc_thr_FA [CALC_THR_FA] -csf_fa [CSF_FA]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0.0",
   "name": "@float_fix",
-  "author": "Gang Chen, Ziad Saad",
+  "author": "AFNI Team",
   "description": "Check whether the input files have any IEEE floating point numbers for illegal values: infinities and not-a-number (NaN) values.",
-  "url": "https://example.com/float_fix_tool",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@float_fix.html",
   "command-line": "@float_fix [INPUT_FILES]",
   "inputs": [
     {
@@ -18,8 +18,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "example/float_fix:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   }
 }

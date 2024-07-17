@@ -22,5 +22,11 @@
       "id": "outfile",
       "name": "Output file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "author": "AFNI Team",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@np.html"
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "2018.10.15",
   "name": "FindAfniDsetPath",
-  "author": "Jason W. Bacon, Medical College of Wisconsin",
+  "author": "AFNI Team",
   "description": "Searches various AFNI directories for a specified dataset and returns its path.",
   "command-line": "@FindAfniDsetPath [DSETNAME] [APPEND_FILE] [FULL_PATH_FLAG] [HELP_FLAG]",
   "inputs": [
@@ -41,5 +41,10 @@
       "name": "Help flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FindAfniDsetPath.html"
 }

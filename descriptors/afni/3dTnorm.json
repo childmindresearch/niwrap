@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3dTnorm",
-  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTnorm.html",
   "description": "Normalizes each voxel time series by multiplicative scaling",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTnorm.html",
   "command-line": "3dTnorm [PREFIX] [L2_NORM_FLAG] [SUM_SQUARES_NORM_FLAG] [L1_NORM_FLAG] [MAX_NORM_FLAG] [POLORT] [L1FIT_FLAG] [DATASET]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -2,12 +2,11 @@
   "name": "@CheckForAfniDset",
   "tool-version": "1.0",
   "description": "Check for the existence of AFNI datasets.",
-  "author": "Ziad Saad (saadz@mail.nih.gov), SSCC/NIMH/ National Institutes of Health, Bethesda Maryland",
+  "author": "AFNI Team",
   "command-line": "@CheckForAfniDset [NAME]",
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni_latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {
@@ -28,5 +27,6 @@
       "optional": true
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@CheckForAfniDset.html"
 }

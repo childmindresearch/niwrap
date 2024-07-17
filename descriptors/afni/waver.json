@@ -1,12 +1,11 @@
 {
   "tool-version": "23.1.10",
   "name": "waver",
-  "author": "Rick Reynolds",
+  "author": "AFNI Team",
   "description": "Creates an ideal waveform timeseries file.",
   "command-line": "waver [WAVEFORM_OPTION] [OPTIONS] > [OUTPUT_FILENAME]",
   "container-image": {
-    "image": "some_docker_repo/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -229,5 +228,6 @@
       "path-template": "output_filename"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/waver.html"
 }

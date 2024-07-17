@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0.0",
   "name": "GetAfniRes",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "description": "Tool to return the voxel resolution of a dataset",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniRes.html",
   "command-line": "@GetAfniRes [OUTPUT_TYPE] [DSET]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3dPval",
-  "author": "The Man With The Golden p < 0.000001",
+  "author": "AFNI Team",
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/afni_3dPval.json",
   "description": "Convert a dataset's statistical sub-bricks to p-values or other statistical representations.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPval.html",
   "command-line": "3dPval [INPUT_DATASET] [ZSCORE_FLAG] [LOG2_FLAG] [LOG10_FLAG] [QVAL_FLAG] -prefix [PREFIX]",
   "container-image": {
-    "image": "afni/afni_latest:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

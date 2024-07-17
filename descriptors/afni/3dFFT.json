@@ -3,11 +3,10 @@
   "name": "3dFFT",
   "author": "AFNI Team",
   "description": "Performs the FFT of the input dataset in 3 directions (x, y, z) and produces the output dataset.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFFT.html",
   "command-line": "3dFFT [--abs] [--phase] [--complex] [--inverse] [--Lx X_LENGTH] [--Ly Y_LENGTH] [--Lz Z_LENGTH] [--altIN] [--altOUT] [--input INPUT_FILE] [--prefix PREFIX] [DATASET]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

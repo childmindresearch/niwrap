@@ -1,12 +1,11 @@
 {
   "tool-version": "2.4",
   "name": "@afni_refacer_run",
-  "author": "The Face of Imperial Zhark, Who is Terrible to Behold!, Modifier - PA Taylor",
+  "author": "AFNI Team",
   "description": "This script re-faces one input dataset, using a master shell dataset to write over the subject's 'face' region.",
   "command-line": "@afni_refacer_run -input [INPUT_FILE] [MODE] -prefix [PREFIX] [ANONYMIZE_FLAG] [COST_FUNCTION] [SHELL_OPTION] [NO_CLEAN_FLAG] [NO_IMAGES_FLAG] [OVERWRITE_FLAG] [VERBOSE_FLAG]",
   "container-image": {
-    "image": "afni/afni_cont_latest:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -164,5 +163,6 @@
       "id": "output_face_plus",
       "name": "Output Face Plus File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_run.html"
 }

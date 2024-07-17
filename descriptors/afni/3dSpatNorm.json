@@ -1,15 +1,14 @@
 {
   "tool-version": "23.1.10",
   "name": "3dSpatNorm",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "description": "An obsolete tool for spatial normalization",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSpatNorm.html",
   "command-line": "3dSpatNorm [DATASET] [PREFIX] [ORIG_SPACE_FLAG] [VERBOSE_FLAG] [MONKEY_FLAG] [MARMOT_FLAG] [RAT_FLAG] [HUMAN_FLAG] [BOTTOM_CUTS]",
   "schema-version": "0.5",
   "container-image": {
-    "type": "docker",
-    "index": "index.docker.io",
-    "image": "afni/afni:latest"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {

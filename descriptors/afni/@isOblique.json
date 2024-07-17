@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0",
   "name": "@isOblique",
-  "author": "Ziad Saad",
+  "author": "AFNI Team",
   "description": "Determine if a file is oblique or plumb",
-  "url": "mailto:saadz@mail.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@isOblique.html",
   "command-line": "@isOblique [INPUT_FILE]",
   "schema-version": "0.5",
   "inputs": [
@@ -26,8 +26,7 @@
     }
   ],
   "container-image": {
-    "image": "your_docker_image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   }
 }

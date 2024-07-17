@@ -176,9 +176,8 @@
     }
   ],
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni:latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "output-files": [
     {
@@ -202,5 +201,7 @@
       "path-template": "[ERRSUM].nii.gz",
       "optional": true
     }
-  ]
+  ],
+  "author": "AFNI Team",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTfitter.html"
 }

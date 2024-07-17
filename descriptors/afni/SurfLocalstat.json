@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0.0",
   "name": "SurfLocalStat",
-  "author": "SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Compute local statistics on a surface mesh",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfLocalstat.html",
   "command-line": "SurfLocalstat [HOOD] [NBHD_RAD] [PREFIX] [STAT] [INPUT] [SURFACE]",
   "inputs": [
     {
@@ -77,5 +77,9 @@
       "id": "output_file",
       "name": "Output file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

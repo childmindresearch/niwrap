@@ -1,12 +1,11 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dinfo",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "description": "Prints out sort-of-useful information from a 3D dataset's header",
   "command-line": "3dinfo [OPTIONS] DATASET [DATASET...]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -173,5 +172,6 @@
       "name": "Sub-brick Info"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dinfo.html"
 }

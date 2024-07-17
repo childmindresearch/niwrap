@@ -1,9 +1,9 @@
 {
   "tool-version": "Jun 30 2023",
   "name": "SurfInfo",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Tool to gather information about surface files.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfInfo.html",
   "command-line": "SurfInfo [options] [SURFACE] [SPECIFIED_PARAMS] [DEBUG_LEVEL] [DETAIL_LEVEL] [QUIET] [SEPARATOR] [INPUT_TYPE] [SPEC_STATE] [SV] [SPEC]",
   "inputs": [
     {
@@ -195,5 +195,9 @@
       "id": "metrics_output",
       "name": "Metrics output file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

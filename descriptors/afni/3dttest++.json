@@ -1,7 +1,7 @@
 {
   "tool-version": "23.1.10",
   "name": "3dttest++",
-  "author": "RW Cox",
+  "author": "AFNI Team",
   "description": "Gosset (Student) t-test of sets of 3D datasets in AFNI",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dttest++.html",
   "command-line": "3dttest++ [INPUTS] [OPTIONS] [MASK_OPTIONS] [ETAC_OPTIONS] [OTHER_OPTIONS]",
@@ -222,5 +222,9 @@
       "id": "residuals",
       "name": "Residuals output"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "@toMNI_Qwarpar",
-  "author": "Author Name",
+  "author": "AFNI Team",
   "description": "Transforms datasets to MNI space, then collectively re-transforms them to produce a refined average.",
   "command-line": "@toMNI_Qwarpar",
   "inputs": [
@@ -32,9 +32,9 @@
     }
   ],
   "container-image": {
-    "image": "custom/docker-image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@toMNI_Qwarpar.html"
 }

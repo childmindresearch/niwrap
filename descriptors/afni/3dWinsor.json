@@ -1,9 +1,9 @@
 {
   "tool-version": "23.1.10",
   "name": "3dWinsor",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Apply a 3D 'Winsorizing' filter to a short-valued dataset.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWinsor.html",
   "command-line": "3dWinsor [IRAD] [CBOT] [CTOP] [NREP] [KEEPZERO_FLAG] [CLIP] [PREFIX] [MASK] [DATASET]",
   "inputs": [
     {
@@ -103,5 +103,9 @@
       "id": "outfile_brik",
       "name": "Output dataset BRIK"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

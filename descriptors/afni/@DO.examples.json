@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "@DO.examples",
-  "author": "Ziad S. Saad",
+  "author": "AFNI Team",
   "description": "A script to illustrate the use of Displayable Objects in SUMA.",
-  "url": "https://discuss.afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DO.examples.html",
   "command-line": "@DO.examples [AUTO_TEST_FLAG]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -4,8 +4,7 @@
   "description": "Program to align one dataset (the 'source') to a 'base' dataset using an affine (matrix) transformation of space.",
   "command-line": "3dAllineate [INPUT_FILE] [BASE_FILE] [PREFIX] [OPTIONS]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -165,5 +164,7 @@
       "id": "out_matrix_save",
       "name": "Saved matrix file"
     }
-  ]
+  ],
+  "author": "AFNI Team",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAllineate.html"
 }

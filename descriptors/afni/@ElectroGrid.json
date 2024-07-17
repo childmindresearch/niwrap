@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0",
   "name": "ElectroGrid",
-  "author": "Ziad Saad (SSCC/NIMH/ National Institutes of Health)",
+  "author": "AFNI Team",
   "description": "Creates a mesh representation of an electrode grid for use with SUMA",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ElectroGrid.html",
   "command-line": "@ElectroGrid [[-strip Nx] | [-grid Nx Ny]] [-prefix PREFIX] [-coords XYZ.1D] [-with_markers] [-echo]",
   "schema-version": "0.5",
   "inputs": [
@@ -75,5 +75,9 @@
       "id": "output_surface",
       "name": "Output surface"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

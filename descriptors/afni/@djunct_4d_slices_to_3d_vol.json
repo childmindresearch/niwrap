@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0.0",
   "name": "@djunct_4d_slices_to_3d_vol",
-  "author": "Author Name",
+  "author": "AFNI Team",
   "description": "Tool description goes here",
-  "url": "http://example.com/@djunct_4d_slices_to_3d_vol",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_4d_slices_to_3d_vol.html",
   "command-line": "@djunct_4d_slices_to_3d_vol [VERBOSE_FLAG]",
   "container-image": {
-    "image": "example/docker-image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

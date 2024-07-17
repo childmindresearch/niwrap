@@ -3,11 +3,10 @@
   "name": "3dAutobox",
   "author": "AFNI Team",
   "description": "Computes size of a box that fits around the volume. Can also be used to crop the volume to that box.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutobox.html",
   "command-line": "3dAutobox [OPTIONS] [INPUT_FILE]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

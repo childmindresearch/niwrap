@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "SurfQual",
-  "author": "SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "A program to check the quality of surfaces.",
   "command-line": "SurfQual -spec [SpecFile] [SURFACES] -sphere [OPTIONS]",
   "container-image": {
-    "image": "your-docker-repo/surfqual:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -117,5 +116,6 @@
       "id": "intersect_nodes_output",
       "name": "Intersect Nodes Output File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfQual.html"
 }

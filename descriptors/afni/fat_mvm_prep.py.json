@@ -1,12 +1,11 @@
 {
   "tool-version": "2014",
   "name": "fat_mvm_prep",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Combine FATCAT output with CSV data for statistical modeling.",
   "command-line": "fat_mvm_prep.py -p [PREFIX] -c [CSV_FILE] [MATRIX_OPTION]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -90,5 +89,6 @@
       "id": "mvmprep_log",
       "name": "Output MVM Prep Log"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mvm_prep.py.html"
 }

@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "dicom_hdr",
-  "author": "Mallinckrodt Institute of Radiology",
+  "author": "AFNI Team",
   "description": "A tool to print DICOM file information to stdout.",
   "command-line": "dicom_hdr [OPTIONS] [FILES...]",
   "container-image": {
-    "image": "mcin/docker-dicom-tools:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -101,5 +100,6 @@
       "name": "Siemens CSA data flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/dicom_hdr.html"
 }

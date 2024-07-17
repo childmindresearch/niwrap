@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "python_module_test",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Test the loading of Python modules, specifically designed to ensure compatibility with AFNI software.",
   "command-line": "python_module_test.py [FULL_TEST] [PLATFORM_INFO] [PYTHON_VER] [TEST_DEFAULTS] [TEST_MODULES] [VERBOSE] [HELP] [HIST] [SHOW_VALID_OPTS] [VER]",
   "container-image": {
-    "type": "docker",
-    "index": "index.docker.io",
-    "image": "python:latest"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {
@@ -102,5 +101,6 @@
       "name": "Version"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/python_module_test.py.html"
 }

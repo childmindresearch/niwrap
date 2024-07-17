@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3drotate",
-  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "author": "AFNI Team",
   "description": "Rotates and/or translates all bricks from an AFNI dataset.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drotate.html",
   "command-line": "3drotate [OPTIONS] [DATASET]",
   "container-image": {
-    "type": "docker",
-    "index": "index.docker.io",
-    "image": "afni/afni:latest"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {

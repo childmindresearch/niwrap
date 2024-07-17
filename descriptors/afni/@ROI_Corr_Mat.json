@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "ROI_Corr_Mat",
-  "author": "Hang Joon Jo, Modified by Ziad S. Saad",
+  "author": "AFNI Team",
   "description": "Script to produce an NxN ROI correlation matrix of N ROIs",
   "command-line": "@ROI_Corr_Mat <-ts TimeSeriesVol> <-roi ROIVol> <-prefix output> [<-roisel ROISEL>] [-zval] [-mat FULL, TRI, TRI_ND] [-verb] [-dirty]",
   "container-image": {
-    "image": "your-docker-image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -117,5 +116,6 @@
       "id": "matrix_brick",
       "name": "Output BRIK Matrix"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_Corr_Mat.html"
 }

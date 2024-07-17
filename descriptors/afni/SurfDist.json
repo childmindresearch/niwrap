@@ -1,9 +1,9 @@
 {
   "tool-version": "Latest",
   "name": "SurfDist",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Calculate shortest distance between node pairs on a surface mesh.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfDist.html",
   "command-line": "SurfDist [SURFACE] [NODEPAIRS] [NODE_PATH_DO] [DISTANCE_FLAG]",
   "inputs": [
     {
@@ -86,5 +86,9 @@
       "id": "distances",
       "name": "Distances file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

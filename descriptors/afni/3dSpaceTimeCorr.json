@@ -1,14 +1,13 @@
 {
   "tool-version": "1.2",
   "name": "3dSpaceTimeCorr",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "descriptor-url": "https://example.com/cbrain_task_descriptors/3dSpaceTimeCorr.json",
   "description": "Calculates correlation coefficients between two 4D datasets using space+time patterns",
-  "url": "https://example.com/3dSpaceTimeCorr_tool",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSpaceTimeCorr.html",
   "command-line": "3dSpaceTimeCorr [INPUT_FILE_A] [INPUT_FILE_B] [OUTPUT_PREFIX] [MASK] [OUT_ZCORR] [FREEZE_IJK] [FREEZE_XYZ]",
   "container-image": {
-    "image": "example/docker-3dspacetimecorr:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

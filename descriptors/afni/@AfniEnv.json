@@ -1,13 +1,12 @@
 {
   "tool-version": "AFNI current version",
   "name": "@AfniEnv",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Script to set or unset an AFNI environment variable in your .afnirc file",
-  "url": "https://afni.nimh.nih.gov/sscc/staff/rwcox/#scripts",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@AfniEnv.html",
   "command-line": "@AfniEnv [SET_FLAG] [UNSET_FLAG] [GET_FLAG] [HELP_FLAG] [HELP_WEB_FLAG] [HELP_VIEW_FLAG] [ALL_OPTS_FLAG] [HELP_FIND_FLAG]",
   "container-image": {
-    "image": "afni/afni_dev:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

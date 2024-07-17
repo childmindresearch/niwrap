@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0",
   "name": "@ANATICOR",
-  "author": "Hang Joon Jo",
+  "author": "AFNI Team",
   "description": "Script to produce a residual time series cleaned by ANATICOR model",
-  "url": "http://dx.doi.org/10.1016/j.neuroimage.2010.04.246",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ANATICOR.html",
   "command-line": "@ANATICOR [TIME_SERIES_VOL] [POLORT] [MOTION] [ASEG] [OUTPUT] [RADIUS] [VIEW] [NUISANCE] [NO_VENTRICLES] [RSQ_WME] [COVERAGE] [VERB] [DIRTY] [ECHO]",
   "inputs": [
     {
@@ -140,5 +140,9 @@
       "id": "output_files",
       "name": "Output Files"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

@@ -1,9 +1,9 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dNormalityTest",
-  "author": "The Ghost of Carl Friedrich Gauss",
+  "author": "AFNI Team",
   "description": "This program tests the input values at each voxel for normality using the Anderson-Darling method.",
-  "url": "http://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNormalityTest.html",
   "command-line": "3dNormalityTest [INPUT] -prefix [PREFIX] [NOEXP] [PVAL]",
   "schema-version": "0.5",
   "inputs": [
@@ -53,8 +53,7 @@
     }
   ],
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   }
 }

@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3danisosmooth",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Smooths a dataset using an anisotropic smoothing technique.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3danisosmooth.html",
   "command-line": "3danisosmooth [OPTIONS] [DATASET]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

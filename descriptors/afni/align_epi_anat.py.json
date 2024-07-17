@@ -2,7 +2,7 @@
   "name": "align_epi_anat",
   "tool-version": "1.63",
   "description": "Align EPI to anatomical datasets or vice versa",
-  "author": "AFNI team",
+  "author": "AFNI Team",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/align_epi_anat.py.html",
   "command-line": "align_epi_anat.py [EPIDATASET] [ANATDATASET] [EPIBASE] [OUTPUT_OPTIONS] [ALIGNMENT_OPTIONS] [PREPROCESSING_OPTIONS]",
   "schema-version": "0.5",
@@ -196,5 +196,9 @@
       "path-template": "[EPI]+orig",
       "optional": true
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

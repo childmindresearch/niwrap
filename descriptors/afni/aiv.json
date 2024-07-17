@@ -1,12 +1,11 @@
 {
   "tool-version": "23.1.10",
   "name": "aiv",
-  "author": "RW Cox and DR Glen",
+  "author": "AFNI Team",
   "description": "AFNI Image Viewer program. Shows the 2D images on the command line in an AFNI-like image viewer.",
   "command-line": "aiv [VERBOSE_FLAG] [QUIET_FLAG] [TITLE] [PORT] [PAD] [INPUT_IMAGES]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "hub.docker.com",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -67,5 +66,6 @@
       "name": "Input Images"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/aiv.html"
 }

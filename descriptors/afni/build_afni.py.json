@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "build_afni.py",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Compile an AFNI package from the git repository.",
   "command-line": "build_afni.py -build_root [BUILD_ROOT] [CLEAN_ROOT_FLAG] [GIT_BRANCH] [GIT_TAG] [GIT_UPDATE_FLAG] [MAKE_TARGET] [MAKEFILE] [PACKAGE] [PREP_ONLY_FLAG] [RUN_CMAKE_FLAG] [RUN_MAKE_FLAG] [VERBOSE_LEVEL_FLAG] [TERMINAL_OPTION]",
   "schema-version": "0.5",
@@ -165,5 +165,10 @@
       "id": "screen_output_history",
       "name": "Screen Output History File"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/build_afni.py.html"
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "23.1.10",
   "name": "3dRankizer",
-  "author": "RW Cox",
+  "author": "AFNI Team",
   "description": "Tool to rank each voxel as sorted into increasing value. Ties get the average rank.",
   "command-line": "3dRankizer [OPTIONS] [DATASET]",
   "schema-version": "0.5",
@@ -68,5 +68,10 @@
       "id": "output_dataset",
       "name": "Output dataset"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRankizer.html"
 }

@@ -1,13 +1,12 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dExchange",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Replaces voxel values using a mapping file with specified columns",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dExchange.html",
   "command-line": "3dExchange -prefix [PREFIX] -input [DATASET] -map [MAPCOLS_FILE] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

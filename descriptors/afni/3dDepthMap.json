@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "3dDepthMap",
-  "author": "PA Taylor and P Lauren (SSCC, NIMH, NIH)",
+  "author": "AFNI Team",
   "description": "Calculates the Euclidean Distance Transform (EDT) for 3D volumes, allowing computation of ROI depth maps and applying various adjustments like masking and rimification.",
   "command-line": "3dDepthMap [OPTIONS] -prefix [PREFIX] -input [INPUT_DATASET]",
   "schema-version": "0.5",
@@ -131,5 +131,10 @@
       "path-template": "[PREFIX].nii.gz",
       "description": "Main output file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDepthMap.html"
 }

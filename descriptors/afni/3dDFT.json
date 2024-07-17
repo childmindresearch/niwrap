@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dDFT",
-  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "author": "AFNI Team",
   "description": "Performs Discrete Fourier Transform (DFT) along the time axis of a complex- or float-valued dataset.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDFT.html",
   "command-line": "3dDFT [INPUT_FILE] [OUTPUT_PREFIX] [OUTPUT_TYPE] [NFFT] [DETREND_FLAG] [TAPER] [INVERSE_FLAG]",
   "container-image": {
-    "image": "afni/afni_latest:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

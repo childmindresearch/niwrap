@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "@help.AFNI",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "A script to retrieve and search AFNI's help page for all programs",
   "command-line": "@help.AFNI [OPTIONS]",
   "inputs": [
@@ -60,5 +60,10 @@
       "name": "No view flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@help.AFNI.html"
 }

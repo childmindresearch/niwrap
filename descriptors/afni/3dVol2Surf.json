@@ -1,13 +1,12 @@
 {
   "tool-version": "6.12",
   "name": "3dVol2Surf",
-  "author": "R. Reynolds",
+  "author": "AFNI Team",
   "description": "Map data from a volume domain to a surface domain",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dVol2Surf.html",
   "command-line": "3dVol2Surf [SPEC_FILE] [SURF_VOL] [GRID_PARENT] [MAP_FUNC] [SURF_A] [SURF_B] [OUT_1D] [OUT_NIML] [USE_NORMS] [NORM_LEN] [FIRST_NODE] [LAST_NODE] [DEBUG_LEVEL] [DNODE] [F_STEPS] [F_INDEX] [F_P1_MM] [F_PN_MM] [F_P1_FR] [F_PN_FR] [SKIP_COL_NODES] [SKIP_COL_1DINDEX] [SKIP_COL_I] [SKIP_COL_J] [SKIP_COL_K] [SKIP_COL_VALS] [NO_HEADERS] [SAVE_SEG_COORDS] [CMASK] [GP_INDEX] [OOB_INDEX] [OOB_VALUE] [OOM_VALUE] [OUTCOLS_AFNI_NSD] [OUTCOLS_1_RESULT] [OUTCOLS_RESULTS] [OUTCOLS_NSD_FORMAT] [HELP] [HIST] [VERSION] [KEEP_NORM_DIR] [REVERSE_NORM_DIR]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

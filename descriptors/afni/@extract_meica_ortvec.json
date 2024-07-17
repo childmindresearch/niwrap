@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "extract_meica_ortvec",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Project good MEICA components out of bad ones",
   "command-line": "@extract_meica_ortvec [PREFIX] [MDIR] [VAL_REJECT_IGNORED] [VAL_REJECT_MIDK] [WDIR] [VERB]",
   "inputs": [
@@ -75,5 +75,10 @@
       "id": "outfile",
       "name": "Output 1D ortvec file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@extract_meica_ortvec.html"
 }

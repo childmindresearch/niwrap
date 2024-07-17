@@ -1,9 +1,9 @@
 {
   "name": "SurfSmooth",
   "tool-version": "HEAT_07",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "description": "A script to illustrate controlled blurring of data on the surface.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/edu/data/SUMA_demo.tgz",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SurfSmooth.HEAT_07.examples.html",
   "command-line": "@SurfSmooth.HEAT_07.examples [SUMA_DEMO_PATH]",
   "inputs": [
     {
@@ -17,8 +17,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "afni/afni_latest:v20.2.16",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   }
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "latest",
   "name": "GetAfniDims",
-  "author": "AFNI contributors",
+  "author": "AFNI Team",
   "description": "A utility tool to return dimensions of AFNI dataset",
   "command-line": "GetAfniDims [DSET]",
   "inputs": [
@@ -23,5 +23,10 @@
       "id": "dims_output",
       "name": "Dimensions output file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniDims.html"
 }

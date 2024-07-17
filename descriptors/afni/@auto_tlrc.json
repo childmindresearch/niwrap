@@ -1,9 +1,9 @@
 {
   "tool-version": "0.1",
   "name": "@auto_tlrc",
-  "author": "Ziad S. Saad",
+  "author": "AFNI Team",
   "description": "A script to transform an anatomical dataset to align with some standard space template and to apply the same TLRC transform obtained with @auto_tlrc in Usage 1 mode to other datasets.",
-  "url": "https://afni.nimh.nih.gov/afni/suma",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@auto_tlrc.html",
   "command-line": "@auto_tlrc [OPTIONS] <-base template> <-input anat>",
   "inputs": [
     {
@@ -374,5 +374,9 @@
       "id": "transform_file",
       "name": "Transformation File"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

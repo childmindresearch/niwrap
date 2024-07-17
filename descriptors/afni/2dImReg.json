@@ -1,8 +1,8 @@
 {
   "name": "2dImReg",
-  "author": "Author Unknown",
+  "author": "AFNI Team",
   "description": "2D image registration tool for 3D+time datasets, aligning images on a slice-by-slice basis to a specified base image.",
-  "url": "http://example.url/2dImReg",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/2dImReg.html",
   "command-line": "2dImReg [INPUT_FILE] [BASE_FILE] [BASE] [NO_FINE] [FINE_BLUR] [FINE_DXY] [FINE_DPHI] [PREFIX] [DPREFIX] [DMM_FLAG] [RPREFIX] [DEBUG_FLAG]",
   "tool-version": "1.0",
   "schema-version": "0.5",
@@ -150,5 +150,9 @@
       "path-template": "[RPREFIX].newrms",
       "optional": true
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

@@ -1,9 +1,9 @@
 {
   "tool-version": "latest",
   "name": "AfniOrientSign",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "description": "A tool within the AFNI suite to determine the orientation signs of datasets",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@AfniOrientSign.html",
   "command-line": "3dinfo -orient [INPUT_FILE]",
   "inputs": [
     {
@@ -24,5 +24,9 @@
       "id": "outfile",
       "name": "Orientation output file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

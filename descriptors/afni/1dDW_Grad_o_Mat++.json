@@ -1,14 +1,13 @@
 {
   "tool-version": "2.0",
   "name": "1dDW_Grad_o_Mat++",
-  "author": "Taylor PA, Saad ZS",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/bin/misc_help/1dDW_Grad_o_Mat++.html",
   "description": "Manipulation of diffusion-weighted (DW) gradient vector files, b-value files, and b- or g-matrices with various input and output configurations.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dDW_Grad_o_Mat++.html",
   "command-line": "1dDW_Grad_o_Mat++ [INPUT_OPTION] INFILE [FLIP_OPTION] [OUTPUT_OPTION] OUTFILE [ADDITIONAL_OPTIONS]",
   "container-image": {
-    "image": "afni/afni_latest:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

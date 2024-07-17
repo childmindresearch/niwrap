@@ -1,13 +1,12 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dNwarpApply",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "description": "Program to apply a nonlinear 3D warp saved from 3dQwarp (or 3dNwarpCat, etc.) to a 3D dataset, to produce a warped version of the source dataset.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpApply.html",
   "command-line": "3dNwarpApply [OPTIONS]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

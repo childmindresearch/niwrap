@@ -1,13 +1,12 @@
 {
   "tool-version": "4.32",
   "name": "fat_proc_axialize_anat",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Helps align the major axes of an anatomical volume to those of the volumetric field of view.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_axialize_anat.html",
   "command-line": "fat_proc_axialize_anat -inset [INPUT_FILE] -refset [REFERENCE_FILE] [T2W_MODE_FLAG] [T1W_MODE_FLAG] -prefix [OUTPUT_PREFIX] [WORK_DIR] [OUT_MATCH_REF_FLAG] [CEIL_OUT_FLAG] [EXTRA_WT_MASK] [EXTRA_COST] [EXTRA_OPTS] [FOCUS_MASK] [FOCUS_BY_SS_FLAG] [REMOVE_INF_SLICE] [PRE_ALIGN_CM_FLAG] [PRE_CM_FLAG] [POST_LR_SYMM_FLAG] [NO_PRE_LR_SYM_FLAG] [NO_CLEAN_FLAG] [QC_ULAY_RANGE_MIN] [QC_ULAY_RANGE_MAX] [NO_QC_FLAG] [QC_PREFIX]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

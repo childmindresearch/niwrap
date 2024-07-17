@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "3dZipperZapper",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "A basic program to highlight problematic volumes in data sets, especially EPI/DWI data sets with interleaved acquisition.",
   "command-line": "3dZipperZapper -input [INPUT_FILE] -prefix [OUTPUT_PREFIX] [MASK] [MIN_SLICE_NVOX] [MIN_STREAK_LEN] [DO_OUT_SLICE_PARAM_FLAG] [NO_OUT_BAD_MASK_FLAG] [NO_OUT_TEXT_VALS_FLAG] [DONT_USE_STREAK_FLAG] [DONT_USE_DROP_FLAG] [DONT_USE_CORR_FLAG] [MIN_STREAK_VAL] [MIN_DROP_FRAC] [MIN_DROP_DIFF] [MIN_CORR_LEN] [MIN_CORR_CORR]",
   "container-image": {
-    "image": "your-docker-image",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -190,5 +189,6 @@
       "id": "good_volumes_selector",
       "name": "Good Volumes Selector"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZipperZapper.html"
 }

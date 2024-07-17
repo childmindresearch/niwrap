@@ -1,12 +1,11 @@
 {
   "tool-version": "23.1.10",
   "name": "3dUndump",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Assembles a 3D dataset from an ASCII list of coordinates and optionally values.",
   "command-line": "3dUndump [INPUT_FILE] [PREFIX] [MASTER] [DIMENSIONS] [MASK] [DATATYPE] [DVAL] [FVAL] [COORD_TYPE] [SPHERE_RADIUS] [CUBE_MODE] [ORIENT] [HEAD_ONLY] [ROIMASK] [ALLOW_NAN]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -166,5 +165,6 @@
       "id": "outfile",
       "name": "Output dataset"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dUndump.html"
 }

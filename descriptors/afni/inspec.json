@@ -1,7 +1,7 @@
 {
   "tool-version": "Jun 30 2023",
   "name": "inspec",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Outputs information found from specfile.",
   "command-line": "inspec [SPEC_FILE] [NEW_SPEC_NAME] [DETAIL] [LEFT_SPEC] [RIGHT_SPEC] [STATE_RM] [HELP]",
   "inputs": [
@@ -71,5 +71,10 @@
       "command-line-flag": "-help"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/inspec.html"
 }

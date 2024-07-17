@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "FromRAI",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Changes the RAI coordinates to the specified orientation",
   "command-line": "@FromRAI [XYZ_COORDINATES] [ORIENTATION]",
   "container-image": {
-    "image": "some-docker-image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -32,5 +31,6 @@
       "name": "Orientation"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FromRAI.html"
 }

@@ -1,7 +1,7 @@
 {
   "name": "3dcalc",
   "command-line": "3dcalc [IN_FILE_A] [IN_FILE_B] [IN_FILE_C] -expr \"[EXPR]\" [OTHER] [OUT_FILE] [OVERWRITE] [SINGLE_IDX] [START_IDX] [STOP_IDX]",
-  "author": "RWCox @ AFNI",
+  "author": "AFNI Team",
   "description": "AFNI's calculator program.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcalc.html",
   "inputs": [

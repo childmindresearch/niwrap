@@ -1,11 +1,11 @@
 {
   "tool-version": "latest",
   "name": "SurfRetinoMap",
-  "author": "Ziad S. Saad, SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Tool for retinotopic mapping on cortical surfaces.",
   "command-line": "SurfRetinoMap [SURFACE] -input [POLAR] [ECCENTRICITY] [--prefix PREFIX] [--node_dbg NODE]",
   "container-image": {
-    "image": "neurodocker:latest",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -68,5 +68,6 @@
       "id": "threshold_max_output",
       "name": "Threshold Max Output"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfRetinoMap.html"
 }

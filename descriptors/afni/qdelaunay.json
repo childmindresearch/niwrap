@@ -1,10 +1,10 @@
 {
   "tool-version": "2010.1",
   "name": "qdelaunay",
-  "author": "Qhull Project",
+  "author": "AFNI Team",
   "descriptor-url": "http://www.qhull.org",
   "description": "Compute the Delaunay triangulation using Qhull.",
-  "url": "http://www.qhull.org",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/qdelaunay.html",
   "command-line": "qdelaunay [OPTION_FLAGS] < [INPUT_FILE]",
   "inputs": [
     {
@@ -305,5 +305,9 @@
       "name": "Summary flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

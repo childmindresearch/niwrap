@@ -1,14 +1,13 @@
 {
   "tool-version": "latest",
   "name": "3dPeriodogram",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "descriptor-url": "https://github.com/afni/afni",
   "description": "Computes the periodogram of each voxel time series. The periodogram is a crude estimate of the power spectrum.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPeriodogram.html",
   "command-line": "3dPeriodogram [PREFIX_OPTION] [TAPER_OPTION] [NFFT_OPTION] [DATASET]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0.0",
   "name": "realtime_receiver",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Program to receive and display real-time plugin data from AFNI.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/realtime_receiver.py.html",
   "command-line": "realtime_receiver.py [SHOW_DATA] [WRITE_TEXT_DATA] [DATA_CHOICE] [SERIAL_PORT] [SHOW_DEMO_GUI] [DC_PARAMS] [EXTRAS_ON_ONE_LINE] [SHOW_COMM_TIMES] [SHOW_DEMO_DATA] [SWAP] [TCP_PORT] [VERBOSITY_LEVEL]",
   "container-image": {
-    "image": "afni/realtime_receiver:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

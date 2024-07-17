@@ -1,13 +1,12 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dHist",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Computes histograms using functions for generating priors",
-  "url": "https://afni.nimh.nih.gov/afni",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dHist.html",
   "command-line": "3dHist [INPUT_FILE] [MASK_DSET] [MASK_RANGE] [CMASK_EXPR] [HIST_FILE] [PREFIX] [EQUALIZED] [NBIN] [MIN] [MAX] [BINWIDTH] [IGNORE_OUT] [RANGE_HIST] [SHOWHIST] [AT_VAL] [GET_PARAMS] [VOXVOL] [VAL_AT] [QUIET]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "hub.docker.com",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -3,7 +3,7 @@
   "name": "Install_RSFMRI_Motion_Group_Demo",
   "author": "AFNI Team",
   "description": "Installs and sets up an AFNI InstaCorr demo archive, based on 190 Cambridge subjects from FCON_1000.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_RSFMRI_Motion_Group_Demo.html",
   "command-line": "@Install_RSFMRI_Motion_Group_Demo [OUTPUT_DIR]",
   "inputs": [
     {
@@ -24,5 +24,9 @@
       "id": "afni_demo_dir",
       "name": "AFNI Demo Directory"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "ToRAI",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Tool to change the ORIENT coordinates to RAI",
   "command-line": "@ToRAI <-xyz X Y Z> <-or ORIENT>",
   "inputs": [
@@ -27,5 +27,10 @@
       "name": "Orientation"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ToRAI.html"
 }

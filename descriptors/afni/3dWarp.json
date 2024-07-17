@@ -1,12 +1,11 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dWarp",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "description": "Warp (spatially transform) one 3D dataset.",
   "command-line": "3dWarp [OPTIONS] [DATASET]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -208,5 +207,6 @@
       "optional": true
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWarp.html"
 }

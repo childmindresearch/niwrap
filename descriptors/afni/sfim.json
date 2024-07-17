@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "sfim",
-  "author": "RW Cox",
+  "author": "AFNI Team",
   "description": "Stepwise Functional IMages",
   "command-line": "sfim [SFINT] [BASELINE] [LOCAL_BASE] [PREFIX] [INPUT_FILES...]",
   "container-image": {
-    "image": "someserver/sfim:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -65,5 +64,6 @@
       "id": "output_files",
       "name": "Output image files"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/sfim.html"
 }

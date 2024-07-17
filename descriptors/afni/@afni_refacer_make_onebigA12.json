@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "@afni_refacer_make_onebigA12",
-  "author": "The Face of Imperial Zhark, Who is Terrible to Behold!",
+  "author": "AFNI Team",
   "description": "Script to align a single T1w dataset to the MNI template and expand it to a 'big' grid.",
   "command-line": "@afni_refacer_make_onebigA12 [T1W_DATASET_NAME]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -28,5 +27,6 @@
       "id": "aligned_output",
       "name": "Aligned T1w Dataset"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_make_onebigA12.html"
 }

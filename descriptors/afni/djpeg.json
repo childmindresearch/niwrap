@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "djpeg",
-  "author": "Independent JPEG Group",
+  "author": "AFNI Team",
   "description": "Decompress a JPEG file to an image file",
-  "url": "http://jpegclub.org/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/djpeg.html",
   "command-line": "djpeg [INPUT_FILE] [OUTPUT_FILE] [GRAY_FLAG] [FAST_DCT_FLAG] [ONE_PIXEL_HEIGHT_FLAG] [PSEUDO_PIXEL_RATIO_FLAG] [CROP_REGION]",
   "container-image": {
-    "image": "jrottenberg/ffmpeg:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

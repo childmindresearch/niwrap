@@ -5,8 +5,7 @@
   "description": "Writes AFNI dataset to ANALYZE 7.5 format .hdr/.img file pairs.",
   "command-line": "3dAFNItoANALYZE [4D_FLAG] [ORIENT_FLAG] [OUTPUT_NAME] [DSET]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -75,5 +74,6 @@
       "id": "output_4d_img_file",
       "name": "Output 4D image file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoANALYZE.html"
 }

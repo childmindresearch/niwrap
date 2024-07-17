@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "@FSlabel2dset",
-  "author": "SUMA Development Team",
+  "author": "AFNI Team",
   "description": "A script to convert a FreeSurfer ASCII label file into a SUMA dataset and a SUMA ROI",
   "command-line": "@FSlabel2dset -fs [FS_LABEL_FILE] -val [VAL] [HELP_FLAG] [ECHO_FLAG] [KEEP_TMP_FLAG]",
   "inputs": [
@@ -51,5 +51,10 @@
       "name": "Keep Temporary Files Flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FSlabel2dset.html"
 }

@@ -1,14 +1,13 @@
 {
   "tool-version": "2.13",
   "name": "nifti_tool",
-  "author": "R. Reynolds",
+  "author": "AFNI Team",
   "description": "Display, modify, or compare nifti headers",
-  "url": "https://nifti.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/nifti_tool.html",
   "command-line": "nifti_tool [ACTION] [INPUT_FILES] [OPTIONS]",
   "container-image": {
-    "type": "docker",
-    "image": "nifti/nifti_tool:latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {

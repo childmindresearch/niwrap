@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "1dRplot",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "description": "Program for plotting a 1D file",
   "command-line": "1dRplot [INPUT] [OPTIONS]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -213,5 +212,6 @@
       "id": "output_plot",
       "name": "Output Plot File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dRplot.html"
 }

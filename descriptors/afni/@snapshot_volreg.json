@@ -2,7 +2,7 @@
   "name": "@snapshot_volreg",
   "tool-version": "1.0",
   "description": "Create a JPEG image showing the edges of an EPI dataset overlayed on an anatomical dataset to judge 3D registration quality.",
-  "author": "The Madd Allineator",
+  "author": "AFNI Team",
   "command-line": "@snapshot_volreg [ANATdataset] [EPIdataset] [jname] [xdisplay]",
   "inputs": [
     {
@@ -47,5 +47,10 @@
       "path-template": "[jname].jpg",
       "optional": false
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@snapshot_volreg.html"
 }

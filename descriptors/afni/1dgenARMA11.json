@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "1dgenARMA11",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Program to generate an ARMA(1,1) time series, for simulation studies. Results are written to stdout.",
   "command-line": "1dgenARMA11 [LENGTH_OPTION] [NUM_SERIES] [PARAM_A] [PARAM_B] [PARAM_LAM] [STD_DEV] [NORMALIZE_FLAG] [SEED] [CORCUT] [ARMA31] [ARMA51]",
   "inputs": [
@@ -123,5 +123,10 @@
       "id": "output",
       "name": "Output time series"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dgenARMA11.html"
 }

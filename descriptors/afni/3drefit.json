@@ -1,7 +1,7 @@
 {
   "name": "3drefit",
   "command-line": "3drefit [IN_FILE] [ATRCOPY] [ATRFLOAT] [ATRINT] [ATRSTRING] [DEOBLIQUE] [DUPORIGIN_FILE] [NOSAVEATR] [SAVEATR] [SPACE] [XDEL] [XORIGIN] [XYZSCALE] [YDEL] [YORIGIN] [ZDEL] [ZORIGIN]",
-  "author": "Nipype (interface)",
+  "author": "AFNI Team",
   "description": "Changes some of the information inside a 3D dataset's header",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drefit.html",
   "inputs": [

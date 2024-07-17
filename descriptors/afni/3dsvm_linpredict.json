@@ -1,7 +1,7 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dsvm_linpredict",
-  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "author": "AFNI Team",
   "description": "Linear prediction for weights from 3dsvm",
   "command-line": "3ddot [MASK] [w] [dset]",
   "inputs": [
@@ -40,5 +40,10 @@
       "id": "stdout_output",
       "name": "Standard output"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dsvm_linpredict.html"
 }

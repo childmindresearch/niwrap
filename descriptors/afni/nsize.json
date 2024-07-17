@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0.0",
   "name": "nsize",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Zero pads an input image to the nearest larger NxN dimensions",
-  "url": "https://example.com/nsize",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/nsize.html",
   "command-line": "nsize [IMAGE_IN] [IMAGE_OUT]",
   "inputs": [
     {
@@ -32,5 +32,9 @@
       "id": "image_out_file",
       "name": "Output Image File"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

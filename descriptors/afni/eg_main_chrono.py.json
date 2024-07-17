@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "eg_main_chrono",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "A sample main Python program to run on top of some library.",
   "command-line": "eg_main_chrono.py [HELP] [HISTORY] [SHOW_VALID_OPTS] [VERSION] [VERBOSE_LEVEL]",
   "container-image": {
-    "image": "python:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -56,5 +55,6 @@
       "name": "Verbosity Level"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/eg_main_chrono.py.html"
 }

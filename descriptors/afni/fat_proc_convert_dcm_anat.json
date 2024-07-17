@@ -1,13 +1,12 @@
 {
   "tool-version": "3.52",
   "name": "fat_proc_convert_dcm_anat",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Converts an anatomical dataset from DICOM files into a volume, specifically designed to fit in line with other processing such as DTI analysis.",
   "command-line": "fat_proc_convert_dcm_anat [INPUT_OPTION] -prefix [PREFIX] [WORKDIR] [ORIENT] [NO_CLEAN_FLAG] [REORIG_REORIENT_OFF_FLAG] [QC_PREFIX] [NO_CMD_OUT_FLAG] [NO_QC_VIEW_FLAG]",
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni:latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {
@@ -110,5 +109,6 @@
       "id": "output_volume",
       "name": "Output Volume File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_convert_dcm_anat.html"
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "@djunct_montage_coordinator",
-  "author": "PA Taylor (NIMH, NIH, USA)",
+  "author": "AFNI Team",
   "description": "Small program to calculate how to evenly space a certain number of slices within each view plane of a dataset.",
   "command-line": "@djunct_montage_coordinator [INPUT_FILE] [MONTX] [MONTY] [OUT_COORDS] [HELP_FLAG] [VERSION_FLAG]",
   "inputs": [
@@ -78,5 +78,10 @@
       "id": "output_coords",
       "name": "Output Coordinates"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_montage_coordinator.html"
 }

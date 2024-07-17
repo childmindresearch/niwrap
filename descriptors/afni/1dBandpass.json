@@ -1,7 +1,7 @@
 {
   "tool-version": "23.1.10",
   "name": "1dBandpass",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Bandpass filtering of time series data in AFNI *.1D files",
   "command-line": "1dBandpass [OPTIONS] [FBOT] [FTOP] [INFILE]",
   "inputs": [
@@ -67,5 +67,10 @@
       "name": "Normalize"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dBandpass.html"
 }

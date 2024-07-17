@@ -1,9 +1,9 @@
 {
   "tool-version": "1.3",
   "name": "dsetstat2p",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Converts a statistic to a p-value with reference to a particular dataset",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.attributes.html",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/dsetstat2p.html",
   "command-line": "dsetstat2p [DATASET] [STATVAL] [SIDEDNESS] [QUIET_FLAG]",
   "schema-version": "0.5",
   "inputs": [
@@ -70,5 +70,9 @@
       "id": "output_file",
       "name": "Output file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

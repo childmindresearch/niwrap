@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "ScaleVolume",
-  "author": "Author Name",
+  "author": "AFNI Team",
   "description": "A tool to scale the volume of datasets",
   "command-line": "@ScaleVolume <-input DSET> <-prefix PREFIX> [-perc_clip P0 P1] [-val_clip V0 V1] [-scale_by_mean] [-scale_by_median] [-norm] [-mask MSET]",
   "inputs": [
@@ -91,5 +91,10 @@
       "name": "Output File"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ScaleVolume.html"
 }

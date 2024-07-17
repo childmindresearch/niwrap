@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "@fix_FSsphere",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Tool for fixing errors in FreeSurfer spherical surfaces",
   "command-line": "@fix_FSsphere <-spec SPEC> <-sphere SPHERE.asc> [-niter NITER] [-lim LIM] [-keep_temp] [-project_first]",
   "inputs": [
@@ -70,5 +70,10 @@
       "id": "corrected_surface",
       "name": "Corrected Surface File"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@fix_FSsphere.html"
 }

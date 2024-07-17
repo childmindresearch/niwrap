@@ -1,13 +1,12 @@
 {
   "tool-version": "Jun 30 2023",
   "name": "3dBRAIN_VOYAGERtoAFNI",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Converts a BrainVoyager vmr dataset to AFNI's BRIK format based on information from BrainVoyager's website.",
-  "url": "www.brainvoyager.com",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBRAIN_VOYAGERtoAFNI.html",
   "command-line": "3dBRAIN_VOYAGERtoAFNI --input [INPUT_FILE] [FORCE_BYTE_SWAP_FLAG] [BVQX_FLAG] [TLRC_FLAG] [ACPC_FLAG] [ORIG_FLAG] [PREFIX] [NOVOLREG_FLAG] [NOXFORM_FLAG] [SETENV] [TRACE_FLAG] [TRACE_EXTREME_FLAG] [NOMALL_FLAG] [YESMALL_FLAG] [HELP_FLAG] [HELP_EXTREME_FLAG] [HELP_MINI_FLAG] [H_VIEW_FLAG] [H_WEB_FLAG] [H_FIND] [H_RAW_FLAG] [H_SPHINX_FLAG] [H_ASPHINX_FLAG] [ALL_OPTS_FLAG]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

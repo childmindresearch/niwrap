@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "fat_mvm_gridconv.py",
-  "author": "PA Taylor",
+  "author": "AFNI Team",
   "description": "Preprocess 'old school' *.grid files for statistical modeling using 3dMVM.",
   "command-line": "fat_mvm_gridconv.py [MATR_FILES] [LIST]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -38,5 +37,6 @@
       "id": "converted_grid_files",
       "name": "Converted grid files"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mvm_gridconv.py.html"
 }

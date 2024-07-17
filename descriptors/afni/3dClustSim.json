@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dClustSim",
-  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "author": "AFNI Team",
   "description": "Program to estimate the probability of false positive (noise-only) clusters.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClustSim.html",
   "command-line": "3dClustSim [OPTIONS]",
   "container-image": {
-    "image": "afni/afni_linux_xorg7_64:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

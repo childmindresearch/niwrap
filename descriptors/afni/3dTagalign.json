@@ -1,12 +1,11 @@
 {
   "tool-version": "23.1.10",
   "name": "3dTagalign",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Rotates/translates dataset 'dset' to be aligned with the master using the tagsets embedded in their .HEAD files",
   "command-line": "3dTagalign [MASTER] [TAGSET] [NO_KEEPTAGS_FLAG] [MATVEC] [ROTATE_FLAG] [AFFINE_FLAG] [ROTSCL_FLAG] [PREFIX] [VERBOSE_FLAG] [DUMMY_FLAG] [INTERPOLATION_METHOD] [INPUT_FILE]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -168,5 +167,6 @@
       "id": "output_matvec_file",
       "name": "Output transformation matrix and vector file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTagalign.html"
 }

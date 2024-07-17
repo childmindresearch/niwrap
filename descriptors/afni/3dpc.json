@@ -1,12 +1,11 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dpc",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Principal Component Analysis of 3D Datasets",
   "command-line": "3dpc [OPTIONS] [INPUT_DATASETS...]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -187,5 +186,6 @@
       "id": "output_individual_vec",
       "name": "Individual eigen-timeseries file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dpc.html"
 }

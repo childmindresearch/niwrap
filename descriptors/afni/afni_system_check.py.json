@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "afni_system_check.py",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Perform various system checks for figuring out AFNI installation issues.",
   "command-line": "afni_system_check.py [TERMINAL_OPTS] [ACTION_OPTS] [OTHER_OPTS]",
   "inputs": [
@@ -96,5 +96,10 @@
       "name": "Data Root Directory"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_system_check.py.html"
 }

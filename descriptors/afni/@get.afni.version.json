@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "@get.afni.version",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "Downloads the source code for a specified AFNI version.",
-  "url": "https://github.com/afni/AFNI",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@get.afni.version.html",
   "command-line": "@get.afni.version [VERSION]",
   "container-image": {
-    "image": "mcin/docker-afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0.0",
   "name": "3dBallMatch",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "descriptor-url": "https://example.com/3dBallMatch.json",
   "description": "A tool to find a good match between a ball (filled sphere) of the given radius and a dataset to determine a crude approximate center of the brain quickly.",
-  "url": "https://example.com/3dBallMatch",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBallMatch.html",
   "command-line": "3dBallMatch [OPTIONS] [INPUT_DATASET] [RADIUS]",
   "container-image": {
-    "image": "example/3dballmatch:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

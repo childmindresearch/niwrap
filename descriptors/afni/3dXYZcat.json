@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dXYZcat",
-  "author": "RW Cox",
+  "author": "AFNI Team",
   "description": "Catenates datasets spatially.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dXYZcat.html",
   "command-line": "3dXYZcat [DIRECTION] [PREFIX] [VERBOSE] [DATASET+]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dKruskalWallis",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "This program performs nonparametric Kruskal-Wallis test for comparison of multiple treatments.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dKruskalWallis.html",
   "command-line": "3dKruskalWallis [LEVELS] [DATASETS] [WORKMEM] [VOXEL] [OUTPUT]",
   "container-image": {
-    "image": "afni/afni_container:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

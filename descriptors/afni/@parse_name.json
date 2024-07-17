@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "parse_name",
-  "author": "Example Author",
+  "author": "AFNI Team",
   "description": "A script to parse a filename into path, prefix, and extension strings.",
   "command-line": "@parse_name [NAME]",
   "inputs": [
@@ -37,5 +37,10 @@
       "id": "output_extension",
       "name": "Extension"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@parse_name.html"
 }

@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dDeconvolve",
-  "author": "AFNI - Analysis of Functional NeuroImages",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDeconvolve.html",
   "description": "Program to calculate the deconvolution of a measurement 3D+time dataset with a specified input stimulus time series.",
   "command-line": "3dDeconvolve [INPUT_DATASET] [MASK_DATASET] [OPTIONS...]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -186,5 +185,6 @@
       "id": "x1d_file",
       "name": "X-matrix Output File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDeconvolve.html"
 }

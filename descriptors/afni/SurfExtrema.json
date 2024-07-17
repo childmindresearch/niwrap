@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "SurfExtrema",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "A program finding the local extrema in a dataset.",
   "command-line": "SurfExtrema [INPUT_FILE] [NEIGHBORHOOD] [THRESHOLD] [GRADIENT_THRESHOLD] [GRADIENT_SCALE] [EXTREME_TYPE] [PREFIX] [TABLE]",
   "container-image": {
-    "image": "your-docker-image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -109,5 +108,6 @@
       "id": "output_ext",
       "name": "Extrema Nodes Output File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfExtrema.html"
 }

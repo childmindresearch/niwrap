@@ -1,12 +1,11 @@
 {
   "tool-version": "Unknown",
   "name": "3dGrayplot",
-  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "author": "AFNI Team",
   "description": "Make a grayplot from a 3D+time dataset, like a carpet plot. Result is saved to a PNG image.",
   "command-line": "3dGrayplot [OVERLAY_FLAG] [INPUT_DATASET] [MASK] [OUTPUT_FILE] [DIMENSIONS] [RESAMPLE_METHOD] [POLORT] [FWHM] [ORDER_METHOD] [RANGE] [PERCENT] [RAW_WITH_BOUNDS]",
   "container-image": {
-    "image": "afni/afni_latest:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -151,5 +150,6 @@
       "id": "grayplot_img",
       "name": "Grayplot image"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGrayplot.html"
 }

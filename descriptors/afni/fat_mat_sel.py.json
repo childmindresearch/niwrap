@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "fat_mat_sel.py",
-  "author": "PA Taylor (UCT/AIMS)",
+  "author": "AFNI Team",
   "description": "Perform simple matrix plotting operations from outputs of FATCAT programs 3dNetCorr and 3dTrackID.",
   "command-line": "fat_mat_sel.py [--Pars=Pars] [--matr_in=MATR_FILES] [--list_match=LIST] [--out_ind_matr] [--Out_ind_1ddset] [--Hold_image] [--ExternLabsNo] [--type_file=TYPE] [--dpi_file=DPI] [--xlen_file=LX] [--ylen_file=LY] [--Tight_layout_on] [--Fig_off] [--Size_font=S] [--Lab_size_font=S] [--A_plotmin=MIN] [--B_plotmax=MAX] [--Cbar_off] [--Map_of_colors=MAP] [--cbar_int_num=N] [--width_cbar_perc=W] [--specifier=STR] [--Xtick_lab_off]",
   "container-image": {
-    "image": "your_docker_image_here",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -241,5 +240,6 @@
       "id": "1D_dsets",
       "name": "1D Dataset Files"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat_sel.py.html"
 }

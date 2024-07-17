@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0.0",
   "name": "3dedgedog",
-  "author": "PA Taylor and DR Glen (SSCC, NIMH, NIH)",
+  "author": "AFNI Team",
   "descriptor-url": "https://example.com/3dedgedog.json",
   "description": "Calculate edges in an image using the Difference of Gaussians (DOG) method with extensions/tweaks of the Marr-Hildreth algorithm.",
-  "url": "https://example.com/3dedgedog",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dedgedog.html",
   "command-line": "3dedgedog [INPUT] [PREFIX] [MASK] [AUTOMASK] [SIGMA_RAD] [SIGMA_NVOX] [RATIO_SIGMA] [OUTPUT_INTERMED] [EDGE_BND_NN] [EDGE_BND_SIDE] [EDGE_BND_SCALE] [ONLY2D]",
   "container-image": {
-    "image": "example/docker-3dedgedog:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

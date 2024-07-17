@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0.0",
   "name": "imrotate",
-  "author": "Image Processing Tools",
+  "author": "AFNI Team",
   "descriptor-url": "https://example.com/descriptors/imrotate.json",
   "description": "Shifts and rotates an image",
-  "url": "https://example.com/imrotate",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imrotate.html",
   "command-line": "imrotate [INTERPOLATION_METHOD] [DX] [DY] [PHI] [INPUT_IMAGE] [OUTPUT_IMAGE]",
   "container-image": {
-    "image": "example/docker-imrotate:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

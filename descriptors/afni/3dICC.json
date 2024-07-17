@@ -1,7 +1,7 @@
 {
   "tool-version": "0.1.12",
   "name": "3dICC",
-  "author": "Gang Chen",
+  "author": "AFNI Team",
   "description": "AFNI Program for IntraClass Correlatin (ICC) Analysis",
   "command-line": "3dICC [MODEL] -prefix [PREFIX] -mask [MASK] -dataTable [DATA_TABLE] [OPTIONS]",
   "inputs": [
@@ -140,5 +140,10 @@
       "id": "output_file",
       "name": "Output File"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dICC.html"
 }

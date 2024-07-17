@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dFWHMx",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Compute Full Width at Half Maximum (FWHM) for FMRI datasets using AutoCorrelation Function (ACF)",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFWHMx.html",
   "command-line": "3dFWHMx [MASK] [AUTOMASK_FLAG] [DEM_SEXT_FLAG] [UNIF_NORMALIZE_FLAG] [DETREND_FLAG] [DTPREFIX] [GEOM_FLAG] [ARITH_FLAG] [COMBINE_FLAG] [OUT_FILE] [COMPAT_FLAG] [ACF] [INPUT_FILE]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

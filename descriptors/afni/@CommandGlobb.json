@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "@CommandGlobb",
-  "author": "Ziad S. Saad",
+  "author": "AFNI Team",
   "description": "A command-line tool to execute a specified program command line on a list of input bricks.",
   "command-line": "@CommandGlobb -com '[PROGRAM_COMMAND]' -session '[OUTPUT_DIR]' -newxt '[EXTENSION]' -list [BRICK_LIST]",
   "inputs": [
@@ -48,5 +48,10 @@
       "id": "output_files",
       "name": "Output Files"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@CommandGlobb.html"
 }

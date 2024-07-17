@@ -1,13 +1,12 @@
 {
   "tool-version": "latest",
   "name": "3dAmpToRSFC",
-  "author": "Author Name",
+  "author": "AFNI Team",
   "description": "Convert spectral amplitudes into standard RSFC parameters.",
   "command-line": "3dAmpToRSFC { -in_amp [INPUT_AMPS] | -in_pow [INPUT_POWS] } -prefix [PREFIX] -band [FBOT] [FTOP] { -mask [MASK] } { -nifti }",
   "container-image": {
-    "type": "docker",
-    "image": "example/docker-3dAmpToRSFC:latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {
@@ -112,5 +111,6 @@
       "id": "output_frsfa",
       "name": "fRSFA Output"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAmpToRSFC.html"
 }

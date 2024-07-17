@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "1dnorm",
-  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dnorm.html",
   "description": "Normalize columns of a 1D file (AFNI ASCII list of numbers)",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dnorm.html",
   "command-line": "1dnorm [OPTION] [INFILE] [OUTFILE]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

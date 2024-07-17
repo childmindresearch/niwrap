@@ -234,5 +234,11 @@
       "optional": true,
       "value-key": "[NO_CLEAN_FLAG]"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "author": "AFNI Team",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_edgy_align_check.html"
 }

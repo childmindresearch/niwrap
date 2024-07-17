@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "abids_json_tool",
-  "author": "Justin Rajendra",
+  "author": "AFNI Team",
   "description": "This script helps to manipulate json files in various ways.",
   "command-line": "/opt/afni/src/../install/abids_json_tool.py -input [INPUT_FILE] -prefix [PREFIX] [TASK] [OPTIONS]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -128,5 +127,6 @@
       "name": "Values Stay String"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_json_tool.py.html"
 }

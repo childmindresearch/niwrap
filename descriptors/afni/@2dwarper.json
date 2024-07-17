@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0",
   "name": "2dwarper",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "2D image warping tool",
   "command-line": "2dwarper [DATASET]",
   "inputs": [
@@ -23,5 +23,10 @@
       "id": "output_file",
       "name": "Warped output file"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@2dwarper.html"
 }

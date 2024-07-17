@@ -1,12 +1,11 @@
 {
   "tool-version": "latest",
   "name": "Install_InstaCorr_Demo",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Installs and sets up AFNI's InstaCorr demo archive",
   "command-line": "@Install_InstaCorr_Demo [WGET_FLAG] [CURL_FLAG] [FULL_FLAG] [MINI_FLAG]",
   "container-image": {
-    "image": "afni/afni_container:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -47,5 +46,6 @@
       "name": "Install mini version"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_InstaCorr_Demo.html"
 }

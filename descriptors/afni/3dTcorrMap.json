@@ -1,13 +1,12 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dTcorrMap",
-  "author": "RWCox",
+  "author": "AFNI Team",
   "description": "AFNI program to compute correlation maps of input time series data",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorrMap.html",
   "command-line": "3dTcorrMap [INPUT] [SEED] [MASK] [AUTOMASK] [MEAN] [ZMEAN] [QMEAN] [PMEAN] [THRESH] [VARTHRESH] [NORM_VARTHRESH] [CORRMAP] [CORRMASK] [AEXPR] [CEXPR] [SEXPR] [HIST]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

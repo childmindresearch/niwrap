@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "@diff.tree",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Show file differences between 2 directories",
   "command-line": "@diff.tree [OPTIONS] new_dir old_dir",
   "inputs": [
@@ -166,5 +166,10 @@
       "name": "X Option"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@diff.tree.html"
 }

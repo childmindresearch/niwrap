@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dZcat",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "description": "Concatenates datasets in the slice (z) direction",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZcat.html",
   "command-line": "3dZcat [PREFIX] [DATUM] [FSCALE] [NSCALE] [VERB] [FRUGAL] [INPUT_FILES...]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

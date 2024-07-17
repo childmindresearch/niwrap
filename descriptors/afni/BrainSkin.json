@@ -1,13 +1,12 @@
 {
   "tool-version": "latest",
   "name": "BrainSkin",
-  "author": "Ziad S. Saad, SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "A program to create an unfolded surface that wraps the brain (skin) and Gyrification Indices.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/BrainSkin.html",
   "command-line": "BrainSkin [SURF] [VOL] [PREFIX] [PLIM] [DLIM] [SEGDO] [VOXMETH] [INFILLMETH] [FILE] [MASK] [NO_ZERO_ATTRACTION] [N]",
   "container-image": {
-    "image": "docker:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

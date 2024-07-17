@@ -134,7 +134,11 @@
     }
   ],
   "tool-version": "1.0",
-  "author": "Author Name",
+  "author": "AFNI Team",
   "descriptor-url": "URL to this Boutiques descriptor",
-  "url": "URL to the tool"
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/RSFgen.html",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

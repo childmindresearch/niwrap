@@ -1,9 +1,9 @@
 {
   "tool-version": "Jun 30 2023",
   "name": "MapIcosahedron",
-  "author": "Brenna D. Argall LBC/NIMH/NIH, Ziad S. Saad SSC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Creates new versions of original-mesh surfaces using the mesh of an icosahedron.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/MapIcosahedron.html",
   "command-line": "MapIcosahedron [SPEC_FILE] [REC_DEPTH] [LIN_DEPTH] [MORPH_SURF] [NUM_IT] [PREFIX] [NN_DSET] [DSET] [FIX_CUT_SURFACES] [VERB] [HELP]",
   "inputs": [
     {
@@ -105,5 +105,9 @@
       "name": "Help"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "Surface FWHM Calculator",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "A program for calculating local and global FWHM.",
   "command-line": "SurfFWHM [INPUT_FILE] [MASK] [SURF_1] [SURF_SPHERE] [CLEAN] [DETREND] [DETPOLY] [DETPREFIX] [PREFIX] [VOX_SIZE] [NEIGBORHOOD] [OK_WARN] [EXAMPLES] [SLICE] [TALK_SUMA_OPTIONS] [NIML_OPTIONS] [DEBUG_OPTIONS] [HELP_OPTIONS]",
   "container-image": {
-    "image": "afni/surffwhm-calculator:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -166,5 +165,6 @@
       "name": "Mask output"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfFWHM.html"
 }

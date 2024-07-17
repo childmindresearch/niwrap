@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0.0",
   "name": "get_afni_model_PRF_6_BAD",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "description": "Command line tool for obtaining AFNI pRF model",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF_6_BAD.html",
   "command-line": "get_afni_model_PRF_6_BAD [AMPLITUDE] [X_COORD] [Y_COORD] [SIGMA] [SIGRAT] [THETA]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

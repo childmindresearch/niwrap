@@ -1,12 +1,11 @@
 {
   "tool-version": "23.1.10",
   "name": "3dTwotoComplex",
-  "author": "R. W. Cox",
+  "author": "AFNI Team",
   "description": "Converts 2 sub-bricks of input to a complex-valued dataset",
   "command-line": "3dTwotoComplex [OPTIONS] [DATASET1] [DATASET2]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -79,5 +78,6 @@
       "id": "out_head",
       "name": "Output HEAD file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTwotoComplex.html"
 }

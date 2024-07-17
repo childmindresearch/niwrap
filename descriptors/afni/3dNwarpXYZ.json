@@ -1,9 +1,9 @@
 {
   "tool-version": "23.1.10",
   "name": "3dNwarpXYZ",
-  "author": "Zhark the Coordinated",
+  "author": "AFNI Team",
   "description": "Transforms the DICOM xyz coordinates in the input XYZfile.1D based on specified warp.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpXYZ.html",
   "command-line": "3dNwarpXYZ [OPTIONS] -nwarp '[WARP_SPEC]' [XYZFILE] > [OUTPUT_FILE]",
   "inputs": [
     {
@@ -42,5 +42,9 @@
       "name": "Output XYZ file"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

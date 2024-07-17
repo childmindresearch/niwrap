@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3ddot",
-  "author": "AFNI Developers",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddot.html",
   "description": "Computes correlation coefficients between sub-brick pairs",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddot.html",
   "command-line": "3ddot [OPTIONS] [DATASET...]",
   "container-image": {
-    "image": "afni/afni_latest:latest",
-    "index": "hub.docker.com",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

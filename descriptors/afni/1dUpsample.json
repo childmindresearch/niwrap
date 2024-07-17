@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "1dUpsample",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Upsamples a 1D time series to a finer time grid.",
   "command-line": "1dUpsample [UPSAMPLE_FACTOR] [INPUT_FILE] [INTERPOLATION]",
   "inputs": [
@@ -41,5 +41,10 @@
       "id": "output_file",
       "name": "Output File"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dUpsample.html"
 }

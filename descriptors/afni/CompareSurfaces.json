@@ -1,15 +1,14 @@
 {
   "tool-version": "latest",
   "name": "CompareSurfaces",
-  "author": "Shruti Japee (LBC/NIMH/NIH), Ziad S. Saad (SSSC/NIMH/NIH)",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/SUMA/main_toc.html",
   "description": "Calculates distance at each node in Surface 1 (S1) to Surface 2 (S2) along the local surface normal at each node in S1. Superseded by SurfToSurf.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/CompareSurfaces.html",
   "command-line": "CompareSurfaces [SPEC_FILE] [HEMISPHERE] [SV1] [SV2] [FILE_PREFIX] [ONE_NODE] [NODE_RANGE] [NO_CONS] [NO_VOLREG] [NO_XFORM] [ENVIRONMENT_VAR] [TRACE] [EXTREME_TRACE] [NO_MEMORY_TRACE] [YES_MEMORY_TRACE]",
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni_latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {

@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "Install_MEICA_Demo",
-  "author": "Prantik Kundu",
+  "author": "AFNI Team",
   "description": "Installs the demo archive for Prantik Kundu MEICA denoising tools. After the archive is downloaded and unpacked, see its README.txt for details.",
-  "url": "https://example.com/meica_demo",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_MEICA_Demo.html",
   "command-line": "Install_MEICA_Demo [DEMO_ARCHIVE]",
   "container-image": {
-    "image": "mcin/docker-meica:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

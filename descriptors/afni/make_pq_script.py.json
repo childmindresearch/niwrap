@@ -1,7 +1,7 @@
 {
   "tool-version": "1.0.0",
   "name": "make_pq_script",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Creates a script to compute p-value and q-value curves.",
   "command-line": "make_pq_script.py [DATASET] [BRICK_INDEX] [MASK] [OUT_SCRIPT]",
   "inputs": [
@@ -47,5 +47,10 @@
       "id": "script",
       "name": "Output script"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/make_pq_script.py.html"
 }

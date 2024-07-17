@@ -1,12 +1,11 @@
 {
   "tool-version": "23.1.10",
   "name": "3dclust",
-  "author": "RW Cox et alii",
+  "author": "AFNI Team",
   "description": "Performs simple-minded cluster detection in 3D datasets",
   "command-line": "3dclust [EDITING_OPTIONS] [OTHER_OPTIONS] [CLUSTERING_TYPE] [INPUT_DATASETS]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -205,5 +204,6 @@
       "id": "ordered_mask_output",
       "name": "Ordered mask output dataset"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dclust.html"
 }

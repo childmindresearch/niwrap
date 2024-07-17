@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "FATCAT_matplot",
-  "author": "Justin Rajendra",
+  "author": "AFNI Team",
   "description": "Launch a shiny app to visualize .netcc and/or .grid files.",
   "command-line": "FATCAT_matplot [DIRECTORY] [SHINY_FOLDER_FLAG]",
   "container-image": {
-    "image": "example/fatcat_matplot:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -28,5 +27,6 @@
       "name": "Shiny Folder Flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/FATCAT_matplot.html"
 }

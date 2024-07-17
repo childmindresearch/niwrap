@@ -1,7 +1,7 @@
 {
   "name": "3dTcat",
   "command-line": "3dTcat [RLT] [IN_FILES] [OUT_FILE] [OUTPUTTYPE] [VERBOSE]",
-  "author": "Nipype (interface)",
+  "author": "AFNI Team",
   "description": "Concatenate sub-bricks from input datasets into one big 3D+time dataset.\nTODO Replace InputMultiPath in_files with Traits.List, if possible. Current version adds extra whitespace.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcat.html",
   "inputs": [

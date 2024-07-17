@@ -1,6 +1,6 @@
 {
   "name": "3dMannWhitney",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "description": "Performs nonparametric Mann-Whitney two-sample test.",
   "command-line": "3dMannWhitney [INPUT_DATASET_X] [INPUT_DATASET_Y] [OUTPUT_PREFIX] [WORKMEM] [VOXEL_NUM]",
   "schema-version": "0.5",
@@ -66,8 +66,8 @@
     }
   ],
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni_latest",
-    "index": "index.docker.io"
-  }
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMannWhitney.html"
 }

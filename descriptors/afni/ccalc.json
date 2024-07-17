@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0",
   "name": "ccalc",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Command line calculator with formatted output options",
-  "url": "https://example.com/ccalc",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ccalc.html",
   "command-line": "ccalc [FORMAT] -eval [EXPR]",
   "schema-version": "0.5",
   "inputs": [
@@ -25,5 +25,9 @@
       "name": "Expression",
       "command-line-flag": "-eval"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

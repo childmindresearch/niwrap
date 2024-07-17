@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0.2",
   "name": "3dLMEr",
-  "author": "Gang Chen",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/gangchen_homepage",
   "description": "Program for Voxelwise Linear Mixed-Effects (LME) Analysis",
-  "url": "https://afni.nimh.nih.gov/gangchen_homepage",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLMEr.html",
   "command-line": "3dLMEr [BOUND_LOWER] [BOUND_UPPER] [USE_CIO] [INPUT_DATA_TABLE] [DEBUG_ARGS] [GLF_CODE] [GLT_CODE] [HELP] [INPUT_FILE_COLUMN] [JOBS] [MASK] [MODEL] [PREFIX] [QVAR_CENTERS] [QVARS] [RESID] [USE_RIO] [SHOW_OPTIONS] [SS_TYPE] [TRR] [VVAR_CENTERS] [VVARS]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

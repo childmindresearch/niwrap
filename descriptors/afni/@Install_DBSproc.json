@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0.0",
   "name": "Install_DBSproc",
-  "author": "Lauro PM, Vanegas-Arroyave N, Huang L, Taylor PA, Zaghloul KA, Lungu C, Saad ZS, Horovitz SG",
+  "author": "AFNI Team",
   "description": "Installs the demo archive for DBS processing tools",
-  "url": "https://dx.doi.org/10.1002/hbm.23039",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_DBSproc.html",
   "command-line": "Install_DBSproc [USE_WGET] [USE_CURL]",
   "container-image": {
-    "image": "mcin/docker-dbproc:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0",
   "name": "3dSeg",
-  "author": "AFNI",
+  "author": "AFNI Team",
   "descriptor-url": "https://github.com/afni/3dSeg",
   "description": "Segments brain volumes into tissue classes with optional global and voxelwise priors.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSeg.html",
   "command-line": "3dSeg -anat [ANAT] -mask [MASK] -blur_meth [BLUR_METH] -bias_fwhm [BIAS_FWHM] -classes [CLASSES] -Bmrf [BMRF] -bias_classes [BIAS_CLASSES] -prefix [PREFIX] -overwrite [OVERWRITE] -debug [DEBUG] -mixfrac [MIXFRAC] -mixfloor [MIXFLOOR] -gold [GOLD] -gold_bias [GOLD_BIAS] -main_N [MAIN_N] -cset [CSET] -labeltable [LABEL_TABLE] -vox_debug [VOX_DEBUG] -vox_debug_file [VOX_DEBUG_FILE]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

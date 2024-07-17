@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "imupsam",
-  "author": "RW Cox",
+  "author": "AFNI Team",
   "description": "Upsamples a 2D image by a specified factor",
   "command-line": "imupsam [ASCII_FLAG] [FACTOR] [INPUT_IMAGE] [OUTPUT_IMAGE]",
   "container-image": {
-    "image": "upsa-tool:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -56,5 +55,6 @@
       "id": "output_image_file",
       "name": "Output image file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imupsam.html"
 }

@@ -1,13 +1,12 @@
 {
   "tool-version": "1.0",
   "name": "@chauffeur_afni",
-  "author": "PA Taylor (NIMH, NIH, USA)",
+  "author": "AFNI Team",
   "description": "Automated QC snapshots generator in AFNI",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.driver.html",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@chauffeur_afni.html",
   "command-line": "@chauffeur_afni [ULAY] [OLAY] -prefix [PREFIX] [options]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

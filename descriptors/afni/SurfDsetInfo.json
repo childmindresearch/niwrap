@@ -1,7 +1,7 @@
 {
   "tool-version": "Jun 30 2023",
   "name": "SurfDsetInfo",
-  "author": "Ziad S. Saad SSCC/NIMH/NIH",
+  "author": "AFNI Team",
   "description": "Provides information about surface datasets (DSET).",
   "command-line": "SurfDsetInfo [OPTIONS] [DATASETS]",
   "inputs": [
@@ -180,5 +180,10 @@
       "name": "All Options"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfDsetInfo.html"
 }

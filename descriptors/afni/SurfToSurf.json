@@ -1,12 +1,11 @@
 {
   "tool-version": "latest",
   "name": "SurfToSurf",
-  "author": "Ziad S. Saad, Shruti Japee",
+  "author": "AFNI Team",
   "description": "Interpolate data from one surface to another",
   "command-line": "SurfToSurf <-i_TYPE S1> [<-sv SV1>] <-i_TYPE S2> [<-sv SV1>] [<-prefix PREFIX>] [<-output_params PARAM_LIST>] [<-node_indices NODE_INDICES>] [<-proj_dir PROJ_DIR>] [<-data DATA>] [<-node_debug NODE>] [<-debug DBG_LEVEL>] [-make_consistent] [<-dset DSET>] [<-mapfile MAP_INFO>]",
   "container-image": {
-    "image": "nimh-afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -135,5 +134,6 @@
       "id": "output_file",
       "name": "Output File"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfToSurf.html"
 }

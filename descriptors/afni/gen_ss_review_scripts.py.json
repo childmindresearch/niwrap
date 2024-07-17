@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "gen_ss_review_scripts",
-  "author": "R Reynolds",
+  "author": "AFNI Team",
   "description": "Generate single subject analysis review scripts",
   "command-line": "gen_ss_review_scripts.py [INPUT_FILES] [OPTIONS]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -205,5 +204,6 @@
       "id": "driver_commands",
       "name": "Driver commands script output"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_ss_review_scripts.py.html"
 }

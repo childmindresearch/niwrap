@@ -1,12 +1,11 @@
 {
   "tool-version": "AFNI_23.1.10:linux_ubuntu_16_64_glw_local_shared",
   "name": "3dStatClust",
-  "author": "AFNI Development Team",
+  "author": "AFNI Team",
   "description": "Perform agglomerative hierarchical clustering for user specified parameter sub-bricks, for all voxels whose threshold statistic is above a user specified value.",
   "command-line": "3dStatClust [PREFIX] [SESSION_DIR] [VERBOSE_FLAG] [DISTANCE_OPTION] [THRESHOLD] [NCLUST] [DATASETS]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -108,5 +107,6 @@
       "id": "output_brick",
       "name": "Output BRIK file"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dStatClust.html"
 }

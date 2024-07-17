@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0.0",
   "name": "fim2",
-  "author": "Author Name",
+  "author": "AFNI Team",
   "descriptor-url": "https://example.com/fim2_descriptor.json",
   "description": "Functional Imaging Mapping Tool",
-  "url": "https://example.com/fim2",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fim2.html",
   "command-line": "fim2 [OPTIONS] [IMAGE_FILES]",
   "container-image": {
-    "image": "example/container-fim2:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

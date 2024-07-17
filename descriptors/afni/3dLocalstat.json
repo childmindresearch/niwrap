@@ -1,12 +1,11 @@
 {
   "tool-version": "AFNI_23.1.10",
   "name": "3dLocalstat",
-  "author": "RWCox, ZSSaad",
+  "author": "AFNI Team",
   "description": "This program computes statistics at each voxel, based on a local neighborhood of that voxel",
   "command-line": "3dLocalstat [OPTIONS] [DATASET]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -206,5 +205,6 @@
       "optional": false,
       "id": "outfile"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalstat.html"
 }

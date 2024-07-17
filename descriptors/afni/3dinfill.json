@@ -1,14 +1,13 @@
 {
   "tool-version": "1.0.0",
   "name": "3dinfill",
-  "author": "Author Name",
+  "author": "AFNI Team",
   "descriptor-url": "https://example.com/3dinfill_descriptor",
   "description": "A program to fill holes in volumes.",
-  "url": "https://example.com/3dinfill",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dinfill.html",
   "command-line": "3dinfill [INPUT] [PREFIX] [NITER] [BLEND] [MINHITS] [ED_VALUES] [MASK] [MASK_RANGE] [MRANGE] [CMASK]",
   "container-image": {
-    "image": "example/3dinfill:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

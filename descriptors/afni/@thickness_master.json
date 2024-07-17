@@ -53,9 +53,10 @@
     }
   ],
   "container-image": {
-    "image": "your-docker-image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "author": "AFNI Team",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@thickness_master.html"
 }

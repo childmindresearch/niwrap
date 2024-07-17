@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "ExamineGenFeatDists",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Examine histograms produced by 3dGenFeatDists",
   "command-line": "@ExamineGenFeatDists -fdir [FEATURES_DIR] -fwild [WILDCARDS] -suffix [SUFFIX] -exfeat [EXCLUDE_FEATURES] -exclass [EXCLUDE_CLASSES] -odir [OUTPUT_DIR] -nx [NX] -echo [ECHO] -help [HELP]",
   "container-image": {
-    "image": "unknown",
-    "index": "unknown",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -95,5 +94,6 @@
       "name": "Display Help"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ExamineGenFeatDists.html"
 }

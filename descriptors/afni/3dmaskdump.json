@@ -1,15 +1,14 @@
 {
   "tool-version": "23.1.10",
   "name": "3dmaskdump",
-  "author": "AFNI (Analysis of Functional NeuroImages)",
+  "author": "AFNI Team",
   "description": "Outputs voxel values from AFNI datasets satisfying mask criteria to an ASCII file.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskdump.html",
   "command-line": "3dmaskdump [MASK_OPTIONS] [OUTPUT_OPTIONS] [POSITION_OPTIONS] [SET_OPTIONS] [INPUT_FILES]",
   "schema-version": "0.5",
   "container-image": {
-    "type": "docker",
-    "image": "afni/afni_latest",
-    "index": "index.docker.io"
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
   },
   "inputs": [
     {

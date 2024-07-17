@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0.0",
   "name": "@1dDiffMag",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Computes a magnitude estimate of the first differences of a 1D file.",
   "command-line": "@1dDiffMag [INPUT_FILE]",
   "container-image": {
-    "image": "some_image:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -28,5 +27,6 @@
       "id": "result_stdout",
       "name": "Result Stdout"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@1dDiffMag.html"
 }

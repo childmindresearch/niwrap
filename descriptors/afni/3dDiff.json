@@ -1,13 +1,12 @@
 {
   "tool-version": "23.1.10",
   "name": "3dDiff",
-  "author": "JB Teves",
+  "author": "AFNI Team",
   "description": "A program to examine element-wise differences between two images.",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDiff.html",
   "command-line": "3dDiff [display_opt] [-tol TOLERANCE] [-mask MASK] -a [DSET_1] -b [DSET_2]",
   "container-image": {
-    "image": "afni/afni_latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

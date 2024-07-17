@@ -1,10 +1,10 @@
 {
   "tool-version": "latest",
   "name": "afni_proc.py",
-  "author": "AFNI (Analysis of Functional NeuroImages) Development Team",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/index.html",
   "description": "Generate a tcsh script for an AFNI single subject processing stream",
-  "url": "https://afni.nimh.nih.gov",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_proc.py.html",
   "command-line": "afni_proc.py [INPUT_FILES] [SUBJ_ID] [OUT_DIR] [BLOCKS] [ANAT] [ECHO_TIMES] [STIM_TIMES] [STIM_FILES] [COPY_FILES] [COPY_ANAT] [REGRESS_PARAMS]",
   "inputs": [
     {
@@ -113,5 +113,9 @@
       "id": "output_files",
       "name": "Output Files"
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  }
 }

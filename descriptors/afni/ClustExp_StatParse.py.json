@@ -4,7 +4,7 @@
   "command-line": "ClustExp_StatParse.py [STATDSET] [MEANBK] [THRESHBK] [SUBJDSET] [SUBJTABLE] [MASTER] [PREFIX] [PVAL] [MINVOX] [ATLAS] [SESSION] [NOSHINY_FLAG] [OVERWRITE_FLAG]",
   "schema-version": "0.5",
   "tool-version": "1.0",
-  "author": "Justin Rajendra",
+  "author": "AFNI Team",
   "inputs": [
     {
       "id": "statdset",
@@ -181,5 +181,10 @@
       "path-template": "[PREFIX]_master.nii.gz",
       "optional": true
     }
-  ]
+  ],
+  "container-image": {
+    "image": "fcpindi/c-pac:latest",
+    "type": "docker"
+  },
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ClustExp_StatParse.py.html"
 }

@@ -1,14 +1,13 @@
 {
   "tool-version": "23.1.10",
   "name": "3dRSFC",
-  "author": "Paul A. Taylor, Richard W. Cox, Ziad Saad",
+  "author": "AFNI Team",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRSFC.html",
   "description": "Program to calculate common resting state functional connectivity (RSFC) parameters.",
-  "url": "https://afni.nimh.nih.gov/",
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRSFC.html",
   "command-line": "3dRSFC [OPTIONS] [FBOT] [FTOP] [DATASET]",
   "container-image": {
-    "image": "afni/afni:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [

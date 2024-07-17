@@ -1,12 +1,11 @@
 {
   "tool-version": "1.0",
   "name": "T1scale",
-  "author": "Unknown",
+  "author": "AFNI Team",
   "description": "Fix bias field shading in T1 by scaling it with PD image. You can also get a decent result even without the PD volume.",
   "command-line": "@T1scale <-T1 T1vol> <-PD PDvol> [OUTPUT_DIR] [ALIGN_FLAG] [MASK_FILE] [HEAD_MASK_FLAG] [UNMASKED_UNI_FLAG] [MASKED_UNI_FLAG] [ECHO_FLAG] [HELP_FLAG] [H_WEB_FLAG] [H_VIEW_FLAG] [ALL_OPTS_FLAG] [H_FIND_FLAG]",
   "container-image": {
-    "image": "user/t1scale:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -160,5 +159,6 @@
       "id": "aligned_pd_output",
       "name": "Aligned PD Volume"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@T1scale.html"
 }

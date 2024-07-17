@@ -1,12 +1,11 @@
 {
   "tool-version": "v1.0.20211006",
   "name": "dcm2niix_afni",
-  "author": "Chris Rorden",
+  "author": "AFNI Team",
   "description": "DICOM to NIfTI converter optimized for AFNI",
   "command-line": "dcm2niix_afni [OPTIONS] <INPUT_FOLDER>",
   "container-image": {
-    "image": "mcin/docker-dcm2niix:latest",
-    "index": "index.docker.io",
+    "image": "fcpindi/c-pac:latest",
     "type": "docker"
   },
   "inputs": [
@@ -285,5 +284,6 @@
       "id": "nifti_files",
       "name": "NIfTI Files"
     }
-  ]
+  ],
+  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/dcm2niix_afni.html"
 }
