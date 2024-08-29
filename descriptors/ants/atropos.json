@@ -1,14 +1,14 @@
 {
   "name": "Atropos",
   "command-line": "Atropos [IMAGE_DIMENSIONALITY] [INTENSITY_IMAGE] [BSPLINE] [INITIALIZATION] [PARTIAL_VOLUME_LABEL_SET] [USE_PARTIAL_VOLUME_LIKELIHOODS] [POSTERIOR_FORMULATION] [MASK_IMAGE] [CONVERGENCE] [LIKELIHOOD_MODEL] [MRF] [ICM] [USE_RANDOM_SEED] [OUTPUT] [MINIMIZE_MEMORY_USAGE] [WINSORIZE_OUTLIERS] [USE_EUCLIDEAN_DISTANCE] [LABEL_PROPAGATION] [VERBOSE]",
+  "author": "Advanced Normalization Tools (ANTs) Contributors",
   "description": "A finite mixture modeling (FMM) segmentation approach with possibilities for specifying prior constraints. These prior constraints include the specification of a prior label image, prior probability images (one for each class), and/or an MRF prior to enforce spatial smoothing of the labels. All segmentation images including priors and masks must be in the same voxel and physical space. Similar algorithms include FAST and SPM.",
-  "author": "ANTs authors",
   "url": "https://github.com/ANTsX/ANTs",
-  "tool-version": "latest",
+  "tool-version": "2.5.3",
   "schema-version": "0.5",
   "container-image": {
     "type": "docker",
-    "image": "fcpindi/c-pac:latest"
+    "image": "antsx/ants:v2.5.3"
   },
   "inputs": [
     {

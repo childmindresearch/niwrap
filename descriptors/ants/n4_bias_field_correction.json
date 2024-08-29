@@ -1,10 +1,15 @@
 {
   "name": "N4BiasFieldCorrection",
   "command-line": "N4BiasFieldCorrection [IMAGE_DIMENSIONALITY] [SHRINK_FACTOR] [MASK_IMAGE] [RESCALE_INTENSITIES] [WEIGHT_IMAGE] [CONVERGENCE] [BSPLINE_FITTING] [HISTOGRAM_SHARPENING] [VERBOSE] [INPUT_IMAGE] --output [[CORRECTED_IMAGE],[BIAS_FIELD]]",
-  "author": "ANTs authors",
+  "author": "Advanced Normalization Tools (ANTs) Contributors",
   "description": "N4 is a variant of the popular N3 (nonparameteric nonuniform normalization) retrospective bias correction algorithm. Based on the assumption that the corruption of the low frequency bias field can be modeled as a convolution of the intensity histogram by a Gaussian, the basic algorithmic protocol is to iterate between deconvolving the intensity histogram by a Gaussian, remapping the intensities, and then spatially smoothing this result by a B-spline modeling of the bias field itself. The modifications from and improvements obtained over the original N3 algorithm are described in the following paper: N. Tustison et al., N4ITK: Improved N3 Bias Correction, IEEE Transactions on Medical Imaging, 29(6):1310-1320, June 2010.",
   "url": "https://github.com/ANTsX/ANTs/wiki/N4BiasFieldCorrection",
-  "tool-version": "v2.4.3-gcaa60eb",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  },
   "inputs": [
     {
       "id": "image_dimensionality",
@@ -138,11 +143,6 @@
       "optional": false
     }
   ],
-  "schema-version": "0.5",
-  "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
-  },
   "tags": {
     "domain": "neuroinformatics"
   }
