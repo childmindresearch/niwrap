@@ -4,6 +4,10 @@
   "author": "Unknown",
   "description": "Tool to find the largest volume or surface from a set of inputs",
   "command-line": "find_the_biggest [VOLUMES_SURFACES] [OUTPUT]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "List of input volumes or surfaces",

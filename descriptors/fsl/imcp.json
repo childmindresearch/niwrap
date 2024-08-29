@@ -4,6 +4,10 @@
   "author": "Unknown",
   "description": "Copy images from one location to another",
   "command-line": "imcp [INPUT_FILES] [OUTPUT_LOCATION]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Input image files (e.g. img1.nii.gz, img2.nii.gz)",

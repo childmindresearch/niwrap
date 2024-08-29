@@ -4,6 +4,10 @@
   "author": "Analysis Group, FMRIB, Oxford, UK",
   "description": "Command for generating group mean contrasts for a two-sample t-test design.",
   "command-line": "design_ttest2 [DESIGN_FILES_ROOTNAME] [NGROUPA] [NGROUPB] [INCLUDE_MEAN_CONTRASTS]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Root name for design files",

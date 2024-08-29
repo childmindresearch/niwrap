@@ -5,6 +5,10 @@
   "description": "Tool for adding or averaging multiple input volumes.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
   "command-line": "fsladd [OUTPUT_FILE] [MEAN_FLAG] [SCALE_FLAG] [VOLUME_LIST]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Output volume file",

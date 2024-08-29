@@ -4,6 +4,10 @@
   "author": "Unknown",
   "description": "Tool for registering FA volumes to a reference T1 volume",
   "command-line": "mist_FA_reg [FA_VOLUME] [S0_VOLUME] [REFERENCE_T1_VOLUME] [OUTPUT_FILENAME]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "The FA volume to be registered.",

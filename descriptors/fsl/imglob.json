@@ -4,6 +4,10 @@
   "author": "Software Author",
   "description": "Tool for generating image lists with specific extensions.",
   "command-line": "imglob [EXTENSION_OPTION] [INPUT_LIST]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "List of image names or file paths",

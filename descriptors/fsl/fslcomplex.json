@@ -5,6 +5,10 @@
   "description": "Tool for manipulating complex-valued MR data",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
   "command-line": "fslcomplex <outputtype> <input> <output> [startvol [endvol]]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Input volume (e.g. complexvol.nii.gz)",

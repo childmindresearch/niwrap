@@ -4,6 +4,10 @@
   "author": "BIANCA Development Team",
   "description": "Separates WMH into periventricular and deep WMH, saves two separate binary images, and calculates volume of total and separate WMHs.",
   "command-line": "bianca_perivent_deep [THRESH_BINARIZED_WMH_MAP] [VENTRICLES_MASK] [MINCLUSTERSIZE] [DO_STATS] [OUTPUTDIR]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Thresholded and binarized WMH map (output of BIANCA thresholded and binarized)",

@@ -3,6 +3,10 @@
   "name": "create_lut",
   "description": "A tool to create lookup tables",
   "command-line": "create_lut [OUTPUT_FILE_ROOT]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "The root name of the output file to be generated",

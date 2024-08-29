@@ -4,6 +4,10 @@
   "author": "Unknown",
   "description": "A tool to apply a threshold to either volumes or surfaces.",
   "command-line": "proj_thresh [INPUT_PATHS] [THRESHOLD]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Paths to volume or surface files. Please use either volumes or surfaces but not both.",

@@ -4,6 +4,10 @@
   "author": "Unknown",
   "description": "Append PNG files horizontally and/or vertically into a new PNG (or GIF) file",
   "command-line": "pngappend [INPUT_FILES_AND_OPTIONS] [OUTPUT_FILE]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "List of input files and options for appending (e.g., file1.png +3 file2.png -2 file3.png)",

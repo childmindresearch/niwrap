@@ -6,6 +6,10 @@
   "url": "https://fsl.fmrib.ox.ac.uk",
   "command-line": "xtract_blueprint -bpx [BEDPOSTX] -out [OUTPUT_FOLDER] -xtract [XTRACT_FOLDER] -seeds [SEEDS] -warps [REF] [XTRACT2DIFF] [DIFF2XTRACT] [STAGE] [GPU_FLAG] [SAVETXT_FLAG] [PREFIX] [ROIS] [STOPS] [WTSTOPS] [TRACT_LIST] [THR] [NSAMPLES] [RES] [PTX_OPTIONS]",
   "schema-version": "0.5",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Path to bedpostx folder",

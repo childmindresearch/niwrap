@@ -4,6 +4,10 @@
   "author": "Author Name",
   "description": "Tool to mask dyads with threshold",
   "command-line": "maskdyads [DYADS] [FSAMPLES] [THR]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Input dyads file",

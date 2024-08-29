@@ -4,6 +4,10 @@
   "author": "Unknown",
   "description": "Automated brain ventricle quantification tool",
   "command-line": "viena_quant [INPUT1] [INPUT2] [VENTRICLEMASK]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Input image 1 (e.g. img1.nii.gz)",

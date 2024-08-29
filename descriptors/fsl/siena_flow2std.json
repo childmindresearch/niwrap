@@ -4,6 +4,10 @@
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Convert edge flow to standard space",
   "command-line": "siena_flow2std [FILEROUT1] [FILEROUT2] [SIGMA] [DEBUG_FLAG]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Input file root 1",

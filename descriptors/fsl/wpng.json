@@ -4,6 +4,10 @@
   "author": "Unknown",
   "description": "Simple PGM/PPM/PAM to PNG Converter",
   "command-line": "wpng [GAMMA] [BGCOLOR] [TEXT_FLAG] [TIME_FLAG] [INTERLACE_FLAG] [INPUT_FILE]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Input PNM file (binary PGM 'P5', PPM 'P6' or PAM 'P8')",
