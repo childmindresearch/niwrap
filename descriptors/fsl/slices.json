@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "slices",
   "author": "Unknown",
   "description": "Generate a set of slices from an image, possibly with some scaling and intensity range options, and save as a GIF.",

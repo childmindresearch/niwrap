@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fsl_mrs_sim",
   "author": "FSL",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/fsl_mrs",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/fsl_mrs",
   "command-line": "fsl_mrs_sim [SEQUENCE] [METAB] [METAB_FILE] [CUSTOM_SPINSYS] [OUTPUT_FOLDER] [RAW_FLAG] [JMRUI_FLAG] [ADDREF_FLAG] [AUTOPHASE_PPM] [LCM_LOC] [MM_JSON] [OUTPUT_TE] [OVERWRITE_FLAG] [VERBOSE_FLAG]",
   "container-image": {
-    "image": "fsl:fsl_mrs_sim",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslnvols",
   "author": "FMRIB Centre, University of Oxford",
   "description": "Retrieve the number of volumes in a 4D NIfTI file",
   "command-line": "fslnvols [INPUT_FILE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

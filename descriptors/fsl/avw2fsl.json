@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "avw2fsl",
   "author": "GNU coreutils",
   "descriptor-url": "https://example.com/avw2fsl.json",
@@ -7,8 +7,7 @@
   "url": "http://www.gnu.org/software/coreutils/",
   "command-line": "/bin/cp [OPTIONS] [SOURCE DEST]",
   "container-image": {
-    "image": "gnu/coreutils:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

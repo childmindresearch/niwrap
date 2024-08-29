@@ -1,12 +1,11 @@
 {
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "name": "possum_sum",
   "author": "Ivana Drobnjak, University of Oxford",
   "description": "Sum of output signals from multiple possum processors",
   "command-line": "possum_sum [INPUT_SIGNAL] [OUTPUT_SIGNAL] [NUM_PROCESSORS] [VERBOSE_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

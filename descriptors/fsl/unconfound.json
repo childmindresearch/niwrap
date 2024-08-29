@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "unconfound",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Removing confounds from 4D fMRI data",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL",
   "command-line": "unconfound [IN4D] [OUT4D] [CONFOUND_MAT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

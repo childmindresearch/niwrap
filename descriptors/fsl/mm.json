@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MM",
   "command-line": "mm [SPATIAL_DATA_FILE] [MASK_FILE] [VERBOSE_FLAG] [DEBUG_LEVEL] [TIMING_FLAG] [EXAMPLE_EPI_FILE] [LOG_DIRECTORY] [NONSPATIAL_FLAG] [FIX_MRF_PREC_FLAG] [MRF_PREC_START] [MRF_PREC_MULTIPLIER] [INIT_MULTIPLIER] [NO_UPDATE_THETA_FLAG] [ZFSTAT_FLAG] [PHI] [NITERS] [THRESHOLD]",
   "container-image": {
-    "image": "mcin/docker-fsl:6.0.5",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

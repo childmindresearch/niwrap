@@ -1,11 +1,11 @@
 {
-  "tool-version": "3.04",
+  "tool-version": "6.0.5",
   "name": "sliceanimate",
   "author": "Various Authors (Hans Dinsen-Hansen, Kevin Kadow, Mark Podlipec)",
   "description": "A tool for animating slices of an image using whirlgif",
   "command-line": "sliceanimate [OUTPUT_FILE] -- [INPUT_FILES]",
   "container-image": {
-    "image": "custom/sliceanimate:latest",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

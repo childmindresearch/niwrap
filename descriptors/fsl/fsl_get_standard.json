@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fsl_get_standard",
   "description": "Generate paths to FSL standard space images",
   "command-line": "fsl_get_standard [IMAGE_TYPE] [RESOLUTION] [VERBOSE_FLAG] [VERSION_FLAG]",

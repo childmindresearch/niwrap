@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "name": "msm",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MSM",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MSM",
   "command-line": "msm [INPUT_MESH] --out [OUTPUT_BASENAME] [REFERENCE_MESH] [INPUT_DATA] [REFERENCE_DATA] [TRANSFORMED_SOURCE] [INPUT_MESH_REGISTER] [INPUT_WEIGHT] [REFERENCE_WEIGHT] [OUTPUT_FORMAT] [CONFIG_FILE] [RESOLUTION_LEVELS] [OUTPUT_SMOOTHING] [HELP_FLAG] [VERBOSE_FLAG] [PRINT_OPTIONS_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

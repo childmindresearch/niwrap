@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fsl_anat",
   "author": "FMRIB Software Library (FSL) developers",
   "descriptor-url": "https://example.com/fsl_anat_descriptor.json",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/fsl_anat",
   "command-line": "fsl_anat [PARAMS] -i [STRUCTURAL_IMAGE] -d [EXISTING_ANAT_DIR]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

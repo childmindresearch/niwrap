@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "possum_interpmot",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Position Interpolation for Movers and Shakers",
   "url": "https://fsl.fmrib.ox.ac.uk",
   "command-line": "/usr/local/fsl/bin/possum_interpmot.py [MOTION_TYPE] [TR] [TR_SLICE] [NSLICES] [NVOLS] [CUSTOM_MOTION_FILE] [OUTPUT_FILE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

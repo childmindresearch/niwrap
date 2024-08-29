@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "split_parts_gpu",
   "author": "Unknown",
   "description": "Splits parts of data for GPU processing",
   "command-line": "split_parts_gpu [DATAFILE] [MASKFILE] [BVALS_FILE] [BEVCS_FILE] [GRAD_FILE] [USE_GRAD_FILE] [TOTAL_NUM_PARTS] [OUTPUT_DIRECTORY]",
   "container-image": {
-    "image": "some/docker-repo:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

@@ -1,12 +1,11 @@
 {
   "name": "makerot",
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "author": "Mark Jenkinson, University of Oxford",
   "description": "Tool to create a rotation matrix for a given angle and axis of rotation.",
   "command-line": "makerot [AXIS] [COV] [CENTER] [OUTPUT_FILE] [VERBOSE_FLAG] [HELP_FLAG] [THETA]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

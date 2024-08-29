@@ -1,12 +1,11 @@
 {
-  "tool-version": "build 509",
+  "tool-version": "6.0.5",
   "name": "topup",
   "author": "University of Oxford",
   "description": "topup is part of FSL and is used to estimate and correct for susceptibility-induced distortions in echo planar imaging (EPI) data.",
   "command-line": "topup [IMAIN] [DATAIN] [OUT] [FOUT] [IOUT] [LOGOUT] [WARPres] [SUBSAMP] [FWHM] [CONFIG] [MITER] [LAMBDA] [SSQLAMBDA] [REGMOD] [ESTMOV] [MINMET] [SPLINEORDER] [NUMPREC] [INTERP] [SCALE] [REGRID] [VERBOSE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "bianca",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "BIANCA: Brain Intensity AbNormality Classification Algorithm",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BIANCA",
   "command-line": "/usr/local/fsl/bin/bianca --singlefile=[MASTER_FILE] --labelfeaturenum=[LABEL_FEATURE_NUM] --brainmaskfeaturenum=[BRAIN_MASK_FEATURE_NUM] --querysubjectnum=[QUERY_SUBJECT_NUM] [FEATURE_SUBSET] [MAT_FEATURE_NUM] [SPATIAL_WEIGHT] [PATCH_SIZES] [PATCH_3D] [SELECT_PTS] [TRAINING_PTS] [NON_LES_PTS] [SAVE_CLASSIFIER_DATA] [VERBOSE_FLAG] -o [OUT_NAME]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

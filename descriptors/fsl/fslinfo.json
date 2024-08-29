@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslinfo",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Display information about NIFTI-1 image file",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
   "command-line": "fslinfo [FILENAME]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

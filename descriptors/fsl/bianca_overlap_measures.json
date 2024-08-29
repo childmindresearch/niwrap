@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "bianca_overlap_measures",
   "description": "BIANCA overlap measures script for FSL",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "command-line": "/usr/local/fsl/bin/bianca_overlap_measures [LESION_MASK] [MANUAL_MASK] [OUTPUT_DIR]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

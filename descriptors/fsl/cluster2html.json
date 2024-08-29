@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "cluster2html",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Generates an HTML report from cluster-based FEAT analysis",
   "command-line": "cluster2html [FEATDIR] [INROOT] [STD_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

@@ -6,8 +6,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
   "command-line": "signal2image [PULSE_SEQUENCE] [INPUT_SIGNAL] [OUTPUT_IMAGE] [KSPACE_COORDINATES] [OUTPUT_KSPACE] [ABS_FLAG] [HOMODYNE_FLAG] [VERBOSE_FLAG] [APODIZE_FLAG] [CUTOFF] [ROLLOFF] [SAVE_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

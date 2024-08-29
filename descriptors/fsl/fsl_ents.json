@@ -1,6 +1,6 @@
 {
   "name": "fsl_ents",
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "description": "Extract component time series from a MELODIC .ica directory",
   "command-line": "fsl_ents [ICADIR] [COMPONENTS] [OUTFILE] [OVERWRITE] [CONFFILE] [-h]",
   "inputs": [
@@ -69,7 +69,7 @@
   ],
   "container-image": {
     "type": "docker",
-    "image": "mcin/docker-fsl:latest",
+    "image": "mcin/fsl:6.0.5",
     "index": "index.docker.io"
   }
 }

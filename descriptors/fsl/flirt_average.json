@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "flirt_average",
   "author": "FMRIB Analysis Group, Oxford Centre for Functional MRI of the Brain",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT",
   "command-line": "flirt_average [NINPUTS] [INPUT_FILE1] [INPUT_FILE2] ... [OUTPUT_FILE] [REFERENCE] [FLIRT_OPTIONS]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

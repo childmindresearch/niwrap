@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "name": "fsl_glm",
   "author": "Christian F. Beckmann",
   "descriptor-url": "N/A",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM",
   "command-line": "fsl_glm -i [INPUT_FILE] -d [DESIGN] -o [OUTPUT_FILE] [CONTRASTS] [MASK] [DOF] [DES_NORM_FLAG] [DAT_NORM_FLAG] [VN_FLAG] [DEMEAN_FLAG] [OUT_COPE] [OUT_Z] [OUT_T] [OUT_P] [OUT_F] [OUT_PF] [OUT_RESIDUALS] [OUT_VARCB] [OUT_SIGSQ] [OUT_DATA] [OUT_VNSCALES] [VX_TEXT] [VX_IMAGES] [HELP_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

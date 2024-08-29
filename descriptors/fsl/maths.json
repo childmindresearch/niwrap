@@ -1,12 +1,12 @@
 {
   "name": "fslmaths",
-  "tool-version": "6.0",
+  "tool-version": "6.0.5",
   "description": "FSL utility for image arithmetic, statistics, and mathematical operations",
   "command-line": "fslmaths [DATATYPE_INTERNAL] [INPUTS] [OPERATIONS] [OUTPUT] [OUTPUT_DATATYPE]",
   "author": "FSL Team",
   "container-image": {
-    "type": "docker",
-    "image": "fcpindi/c-pac:latest"
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
   },
   "schema-version": "0.5",
   "inputs": [

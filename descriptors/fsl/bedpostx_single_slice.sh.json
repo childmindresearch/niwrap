@@ -1,11 +1,10 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "zeropad",
   "description": "Add leading zeros to a number up to the specified length.",
   "command-line": "zeropad [INPUT_NUMBER] [OUTPUT_LENGTH]",
   "container-image": {
-    "image": "local/zeropad:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

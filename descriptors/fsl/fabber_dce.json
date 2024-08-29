@@ -1,5 +1,5 @@
 {
-  "tool-version": "4.0.10",
+  "tool-version": "6.0.5",
   "name": "Fabber DCE",
   "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://example.com/fabber_dce_descriptor.json",
@@ -7,8 +7,7 @@
   "url": "https://fabber-core.readthedocs.io/",
   "command-line": "fabber [MODEL] [METHOD] [DATA] --output [OUTPUT_DIR] [OPTIONS]",
   "container-image": {
-    "image": "example/fabber_dce:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

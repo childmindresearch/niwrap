@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslfft",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "A tool to compute the Fourier transform of an input volume and save the result in an output volume.",

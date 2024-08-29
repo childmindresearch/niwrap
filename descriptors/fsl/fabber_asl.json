@@ -1,13 +1,12 @@
 {
-  "tool-version": "4.0.10-dirty",
+  "tool-version": "6.0.5",
   "name": "fabber_asl",
   "author": "Unknown",
   "description": "Fabber is a tool for automated model fitting of time series data.",
   "url": "https://fabber_tool.website",
   "command-line": "fabber [--listmethods] [--listmodels] [--listparams] [--descparams] [--listoutputs] [--evaluate] [--evaluate-params] [--evaluate-nt] [--simple-output] [--output] [--overwrite] [--link-to-latest] [--method] [--model] [--loadmodels] [--data] [--mask] [--suppdata] [--dump-param-names] [--save-model-fit] [--save-residuals] [--save-model-extras] [--save-mvn] [--save-mean] [--save-std] [--save-var] [--save-zstat] [--save-noise-mean] [--save-noise-std] [--save-free-energy] [--optfile] [--debug]",
   "container-image": {
-    "image": "docker-fabber_asl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

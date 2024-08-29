@@ -169,10 +169,10 @@
       "description": "Warped image."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "schema-version": "0.5",
   "container-image": {
-    "image": "container/image",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "tags": {

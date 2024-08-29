@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "tbss_4_prestats",
   "author": "FMRIB Software Library",
   "description": "A tool for thresholding the Mean FA Skeleton in TBSS analysis",

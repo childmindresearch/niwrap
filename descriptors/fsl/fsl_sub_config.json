@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fsl_sub_config",
   "author": "FMRIB Software Library (FSL)",
   "description": "FSL cluster submission configuration examples",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fsladd",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Tool for adding or averaging multiple input volumes.",

@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "6.0.5",
   "name": "fsl_schurprod",
   "author": "Christian F. Beckmann",
   "description": "Generates element-wise matrix products or product of matrices against vectors from 4D data",
   "command-line": "fsl_schurprod -i [INPUT_FILE] -d [DESIGN_FILE] -o [OUTPUT_FILE] [REGRESSION_FLAG] [INDEX] [MASK_FILE] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

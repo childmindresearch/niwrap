@@ -1,12 +1,12 @@
 {
   "name": "FLAMEO",
-  "tool-version": "1.0",
+  "tool-version": "6.0.5",
   "description": "Automatic nipype2boutiques conversion failed.",
   "command-line": "dummy",
   "schema-version": "0.5",
   "container-image": {
-    "type": "docker",
-    "image": "fcpindi/c-pac:latest"
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
   },
   "inputs": [
     {

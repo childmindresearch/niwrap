@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "morph_kernel",
   "author": "Author Name",
   "description": "Tool to generate morphological kernels",
   "command-line": "morph_kernel [CUBE_SIDE_LENGTH] [SPHERE_RADIUS]",
   "container-image": {
-    "image": "yourdockerhub/morph_kernel:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

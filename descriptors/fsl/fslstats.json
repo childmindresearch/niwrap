@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslstats",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "descriptor-url": "https://example.com/fslstats-descriptor.json",

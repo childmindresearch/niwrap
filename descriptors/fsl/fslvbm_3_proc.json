@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslvbm_3_proc",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Pipeline for voxel-based morphometry analysis using FSL tools",
   "command-line": "fsl_sub [ARCH] [COPROCESSOR] [COPROCESSOR_MULTI] [COPROCESSOR_CLASS_STRICT] [COPROCESSOR_TOOLKIT] [JOBHOLD] [ARRAY_HOLD] [LOGDIR] [MAILOPTIONS] [MAILTO] [NAME] [PRIORITY] [QUEUE] [RESOURCE] [DELETE_JOB] [GB] [PARALLELENV] [THREADS] [ARRAY_TASK] [ARRAY_NATIVE] [NUMBER] [COPROCESSOR_NAME] [PROJECT] [MINUTES] [CONFIG_FILE] [COMMAND]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "schema-version": "0.5",

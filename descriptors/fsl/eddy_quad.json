@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0.3",
+  "tool-version": "6.0.5",
   "name": "eddy_quad",
   "author": "FMRIB Software Library",
   "description": "QUality Assessment for DMRI",
   "command-line": "eddy_quad <eddyBase> --eddyIdx <eddyIndex> --eddyParams <eddyParams> --mask <mask> --bvals <bvals> [OPTIONS]",
   "container-image": {
-    "type": "docker",
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io"
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
   },
   "inputs": [
     {

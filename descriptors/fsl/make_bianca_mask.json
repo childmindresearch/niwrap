@@ -1,11 +1,10 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "make_bianca_mask",
   "description": "A script for generating BIANCA masks",
   "command-line": "/usr/local/fsl/bin/make_bianca_mask <Usage:> <Main bet2 options> <Variations on default bet2 functionality (mutually exclusive options):> <Miscellaneous options:>",
   "container-image": {
-    "image": "fsl-make-bianca-mask:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "AnatomicalAverage",
   "author": "Brain Imaging Center",
   "descriptor-url": "https://example.com/anatomicalaverage.json",
@@ -7,8 +7,7 @@
   "url": "https://example.com/anatomicalaverage",
   "command-line": "AnatomicalAverage [OPTIONAL_ARGS] -o [OUTPUT_BASENAME] [IMAGES]",
   "container-image": {
-    "image": "brainimagingcenter/anatomicalaverage:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

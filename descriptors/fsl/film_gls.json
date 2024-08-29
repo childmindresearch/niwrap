@@ -1,13 +1,12 @@
 {
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "name": "film_gls",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "General Linear Model fitting with autocorrelation in FMRI",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FILM",
   "command-line": "film_gls [INPUT_FILE] [AC_FLAG] [THRESHOLD] [AR_FLAG] [NOEST_FLAG] [OUTPUT_PW_FLAG] [PAVA_FLAG] [SA_FLAG] [VERBOSE_FLAG] [RESULTS_DIR] [MODE] [INPUT_SURFACE] [MEAN_FUNC_FILE] [MIN_TIMEPOINT_FILE] [PARADIGM_FILE] [T_CONTRASTS_FILE] [F_CONTRASTS_FILE] [EPITH] [MS] [TUKEY] [MT] [VEN] [VEF]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

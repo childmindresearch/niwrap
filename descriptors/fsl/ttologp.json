@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "ttologp",
   "author": "Unknown",
   "description": "Tool for computing logp",
   "command-line": "ttologp [OPTIONS] [VARSFILE] [CBSFILE] [DOF]",
   "container-image": {
-    "image": "some-docker-repo/ttologp:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

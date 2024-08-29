@@ -6,8 +6,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
   "command-line": "midtrans [OPTIONS] [TRANSFORM1] [TRANSFORM2] ... [TRANSFORMN]",
   "container-image": {
-    "image": "mcin/docker-fsl:6.0.5",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

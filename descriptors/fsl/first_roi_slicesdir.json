@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "first_roi_slicesdir",
   "author": "FMRIB Centre, Oxford University",
   "description": "A utility for generating slice directories for FIRST-ROI.",
   "command-line": "first_roi_slicesdir [INPUT_T1_IMAGES] [INPUT_LABEL_IMAGES]",
   "container-image": {
-    "image": "fsl/first:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

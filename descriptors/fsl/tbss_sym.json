@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.03",
+  "tool-version": "6.0.5",
   "name": "tbss_skeleton",
   "author": "University of Oxford (Stephen Smith)",
   "descriptor-url": "https://github.com/fsl/fsl/blob/master/doc/fsl/tbss_skeleton.txt",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide#Step_4:_tbss_skeleton",
   "command-line": "tbss_skeleton [INPUT_IMAGE] [SKEL_THRESHOLD] [DISTANCE_MAP] [SEARCH_RULE_MASK] [4DDATA] [PROJECTED_4DDATA] [ALT_4DDATA] [ALT_SKELETON] [OUTPUT_IMAGE] [HELP_FLAG] [DEBUG_FLAG] [SKELPOINTS]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

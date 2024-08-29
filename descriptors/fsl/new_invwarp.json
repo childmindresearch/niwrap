@@ -1,13 +1,12 @@
 {
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "name": "invwarp",
   "author": "University of Oxford (Jesper Andersson)",
   "description": "Tool for inverting warp fields in FSL",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT/UserGuide#Using_invwarp",
   "command-line": "invwarp --warp [WARP_FILE] --out [OUT_FILE] --ref [REF_FILE] [RELATIVE_WARP_FLAG] [ABSOLUTE_WARP_FLAG] [NO_CONSTRAINT_FLAG] [MIN_JACOBIAN] [MAX_JACOBIAN] [DEBUG_FLAG] [VERBOSE_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

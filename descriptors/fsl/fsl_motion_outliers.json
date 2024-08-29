@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fsl_motion_outliers",
   "author": "FMRIB Analysis Group",
   "descriptor-url": "https://example.com/fsl_motion_outliers_descriptor.json",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLMotionOutliers",
   "command-line": "fsl_motion_outliers -i [INPUT_4D_IMAGE] -o [OUTPUT_CONFOUND_FILE] [MASK_IMAGE] [SAVE_METRIC_FILE] [SAVE_METRIC_PLOT] [TEMP_PATH] [REFFRMS_FLAG] [DVARS_FLAG] [REFMSE_FLAG] [FD_FLAG] [FDRMS_FLAG] [ABS_THRESH] [NO_MOCO_FLAG] [DUMMY_SCANS] [VERBOSE_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

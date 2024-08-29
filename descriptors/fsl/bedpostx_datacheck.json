@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "bedpostx_datacheck",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Check the data directory for BEDPOSTX compatibility",
   "command-line": "/usr/local/fsl/bin/bedpostx_datacheck [DATA_DIR]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

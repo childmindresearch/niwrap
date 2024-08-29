@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "medianfilter",
   "author": "Unknown",
   "description": "A tool to perform 26 neighbourhood median filtering on an input image.",
   "command-line": "medianfilter [INPUT_FILE] [OUTPUT_FILE]",
   "container-image": {
-    "image": "your-default-docker-image:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

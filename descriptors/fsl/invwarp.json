@@ -1,13 +1,12 @@
 {
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "name": "new_invwarp",
   "author": "University of Oxford (Jesper Andersson)",
   "description": "Inverse warp tool from FSL suite",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT",
   "command-line": "invwarp -w [WARP_VOL] -o [OUT_VOL] -r [REF_VOL] [REL_FLAG] [ABS_FLAG] [NOCONSTRAINT_FLAG] [JMIN] [JMAX] [DEBUG_FLAG] [VERBOSE_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

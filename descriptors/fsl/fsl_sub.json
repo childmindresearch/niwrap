@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fsl_sub",
   "author": "FMRIB (Oxford University)",
   "description": "FSL cluster submission tool",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslSub",
   "command-line": "fsl_sub [OPTIONS]",
   "container-image": {
-    "image": "fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "design_ttest2",
   "author": "Analysis Group, FMRIB, Oxford, UK",
   "description": "Command for generating group mean contrasts for a two-sample t-test design.",

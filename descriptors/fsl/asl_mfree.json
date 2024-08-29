@@ -1,12 +1,11 @@
 {
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "name": "asl_mfree",
   "author": "FMRIB Centre, University of Oxford",
   "description": "ASL model-free analysis tool",
   "command-line": "asl_mfree [DATA] [MASK] [OUT] [AIF] [DT] [METRIC] [MTHRESH] [TCORRECT] [BATA] [BATT] [BAT] [BAT_GRAD_THR] [T1] [FA] [STD] [NWB] [TURBO_QUASAR] [SHIFT_FACTOR] --verbose",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

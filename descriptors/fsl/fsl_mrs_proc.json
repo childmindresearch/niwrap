@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fsl_mrs_proc",
   "author": "FMRIB Centre, University of Oxford",
   "description": "FSL Magnetic Resonance Spectroscopy - Preprocessing",
