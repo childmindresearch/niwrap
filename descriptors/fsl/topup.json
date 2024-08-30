@@ -11,6 +11,7 @@
   "inputs": [
     {
       "command-line-flag": "--imain",
+      "command-line-flag-separator": "=",
       "description": "Name of 4D file with images",
       "value-key": "[IMAIN]",
       "type": "File",
@@ -20,6 +21,7 @@
     },
     {
       "command-line-flag": "--datain",
+      "command-line-flag-separator": "=",
       "description": "Name of text file with PE directions/times",
       "value-key": "[DATAIN]",
       "type": "File",
@@ -29,6 +31,7 @@
     },
     {
       "command-line-flag": "--out",
+      "command-line-flag-separator": "=",
       "description": "Base-name of output files (spline coefficients (Hz) and movement parameters)",
       "value-key": "[OUT]",
       "type": "String",
@@ -38,6 +41,7 @@
     },
     {
       "command-line-flag": "--fout",
+      "command-line-flag-separator": "=",
       "description": "Name of image file with field (Hz)",
       "value-key": "[FOUT]",
       "type": "String",
@@ -47,6 +51,7 @@
     },
     {
       "command-line-flag": "--iout",
+      "command-line-flag-separator": "=",
       "description": "Name of 4D image file with unwarped images",
       "value-key": "[IOUT]",
       "type": "String",
@@ -56,6 +61,7 @@
     },
     {
       "command-line-flag": "--logout",
+      "command-line-flag-separator": "=",
       "description": "Name of log-file",
       "value-key": "[LOGOUT]",
       "type": "String",
@@ -65,6 +71,7 @@
     },
     {
       "command-line-flag": "--warpres",
+      "command-line-flag-separator": "=",
       "description": "(Approximate) resolution (in mm) of warp basis for the different sub-sampling levels, default 10",
       "value-key": "[WARPres]",
       "type": "Number",
@@ -74,6 +81,7 @@
     },
     {
       "command-line-flag": "--subsamp",
+      "command-line-flag-separator": "=",
       "description": "Sub-sampling scheme, default 1",
       "value-key": "[SUBSAMP]",
       "type": "Number",
@@ -83,6 +91,7 @@
     },
     {
       "command-line-flag": "--fwhm",
+      "command-line-flag-separator": "=",
       "description": "FWHM (in mm) of gaussian smoothing kernel, default 8",
       "value-key": "[FWHM]",
       "type": "Number",
@@ -92,6 +101,7 @@
     },
     {
       "command-line-flag": "--config",
+      "command-line-flag-separator": "=",
       "description": "Name of config file specifying command line arguments",
       "value-key": "[CONFIG]",
       "type": "File",
@@ -101,6 +111,7 @@
     },
     {
       "command-line-flag": "--miter",
+      "command-line-flag-separator": "=",
       "description": "Max # of non-linear iterations, default 5",
       "value-key": "[MITER]",
       "type": "Number",
@@ -110,6 +121,7 @@
     },
     {
       "command-line-flag": "--lambda",
+      "command-line-flag-separator": "=",
       "description": "Weight of regularisation, default depending on --ssqlambda and --regmod switches. See user documentation.",
       "value-key": "[LAMBDA]",
       "type": "Number",
@@ -128,6 +140,7 @@
     },
     {
       "command-line-flag": "--regmod",
+      "command-line-flag-separator": "=",
       "description": "Model for regularisation of warp-field [membrane_energy bending_energy], default bending_energy",
       "value-key": "[REGMOD]",
       "type": "String",
@@ -147,6 +160,7 @@
     },
     {
       "command-line-flag": "--minmet",
+      "command-line-flag-separator": "=",
       "description": "Minimisation method 0=Levenberg-Marquardt, 1=Scaled Conjugate Gradient, default 0 (LM)",
       "value-key": "[MINMET]",
       "type": "Number",
@@ -158,6 +172,7 @@
     },
     {
       "command-line-flag": "--splineorder",
+      "command-line-flag-separator": "=",
       "description": "Order of spline, 2=Quadratic spline, 3=Cubic spline. Default=3",
       "value-key": "[SPLINEORDER]",
       "type": "Number",
@@ -169,6 +184,7 @@
     },
     {
       "command-line-flag": "--numprec",
+      "command-line-flag-separator": "=",
       "description": "Precision for representing Hessian, double or float. Default double",
       "value-key": "[NUMPREC]",
       "type": "String",
@@ -179,6 +195,7 @@
     },
     {
       "command-line-flag": "--interp",
+      "command-line-flag-separator": "=",
       "description": "Image interpolation model, linear or spline. Default spline",
       "value-key": "[INTERP]",
       "type": "String",
@@ -206,7 +223,7 @@
       "name": "Regrid calculations"
     },
     {
-      "command-line-flag": "-v",
+      "command-line-flag": "--verbose",
       "description": "Print diagnostic information while running",
       "value-key": "[VERBOSE]",
       "type": "Flag",
