@@ -7,7 +7,7 @@
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
-  },  
+  },
   "inputs": [
     {
       "description": "Filename containing coordinates. If '-' is used, coordinates are read from standard input.",
