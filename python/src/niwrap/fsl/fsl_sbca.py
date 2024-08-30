@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_SBCA_METADATA = Metadata(
-    id="f62c5b7be7b5e5c8c92b1088ae048b786d426386",
+    id="9a0539cce0afbdc0ad35f76430d92a4e08805154",
     name="fsl_sbca",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

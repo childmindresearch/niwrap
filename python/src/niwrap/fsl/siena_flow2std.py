@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SIENA_FLOW2STD_METADATA = Metadata(
-    id="edf1574a13de40836bdcfa90e50ceeab775ed2cf",
+    id="9800bf8c1c6cb1b35fe156c8ed39801e0ae8b64e",
     name="siena_flow2std",
 )
 

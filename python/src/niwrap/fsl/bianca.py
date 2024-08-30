@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 BIANCA_METADATA = Metadata(
-    id="13866c00abaab58fff532241d5de1e8e8d96e044",
+    id="0e70dfbfa086d1857390f82e5d31ccf312ee0d3b",
     name="bianca",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

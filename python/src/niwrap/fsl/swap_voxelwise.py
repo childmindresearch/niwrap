@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SWAP_VOXELWISE_METADATA = Metadata(
-    id="3181f032b1d5b6e6fd8d89341a7948678491746a",
+    id="9b5cc90d920f5944b09401fde0c03e77da02a373",
     name="swap_voxelwise",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

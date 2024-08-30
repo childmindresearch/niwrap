@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SPLIT_PARTS_GPU_METADATA = Metadata(
-    id="00b714fa921e54d037c335bc4f5aa9c0f8f9733e",
+    id="71e2866ff20511dbd2491b8e598c537de5bba7fb",
     name="split_parts_gpu",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="some/docker-repo:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

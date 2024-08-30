@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 BIANCA_CLUSTER_STATS_METADATA = Metadata(
-    id="7f9a8255ac89779d801698c65022956c5b2c8ca5",
+    id="84f8b686482f76e4cb4b1d2c959611638a58c94b",
     name="bianca_cluster_stats",
 )
 

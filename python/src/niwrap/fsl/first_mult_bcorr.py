@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FIRST_MULT_BCORR_METADATA = Metadata(
-    id="af9371457f95552148d70cec441f6a9de9707688",
+    id="4dac584773c01eaae0963dfff244a6a9305be125",
     name="first_mult_bcorr",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

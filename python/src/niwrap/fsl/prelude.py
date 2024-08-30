@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PRELUDE_METADATA = Metadata(
-    id="fd9cde043bdaf94f2cf06ab8738d94f91bf7460b",
+    id="0867c14affae753235846fc390d99d8e1894bfa4",
     name="prelude",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

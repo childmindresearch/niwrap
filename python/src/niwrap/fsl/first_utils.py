@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FIRT_UTILS_METADATA = Metadata(
-    id="157eac23eedcc140d30aa1cf77cfa1c2dec0733b",
+    id="b02bf2fd1a20e732e337f3dc8247dd0f23734ca2",
     name="firt_utils",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

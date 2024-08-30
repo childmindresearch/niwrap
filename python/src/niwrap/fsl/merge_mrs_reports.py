@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MERGE_MRS_REPORTS_METADATA = Metadata(
-    id="8fbcb7a07a605e31c1bd215f45edc0302e2184f9",
+    id="46e7fcc93e4f7333a7cd394c4e03c2819a40016b",
     name="merge_mrs_reports",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl/merge-mrs-reports:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

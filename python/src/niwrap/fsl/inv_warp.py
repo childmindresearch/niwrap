@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 INV_WARP_METADATA = Metadata(
-    id="ef3b1bef7e701e4967ab676b3a228c5251f7dcbf",
+    id="b44df521b7ca6e413a9ebb15b3214c7d7eb648bd",
     name="InvWarp",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

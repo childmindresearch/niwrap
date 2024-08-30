@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CREATE_LUT_METADATA = Metadata(
-    id="4a7fe184ac66dc32afeb15877b17b5febaf434bb",
+    id="ca4a9df03dface8a3de15bd1e67ce7458828d737",
     name="create_lut",
 )
 

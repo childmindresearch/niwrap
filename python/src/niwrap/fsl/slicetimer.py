@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SLICETIMER_METADATA = Metadata(
-    id="2b409c00e1e7f61468553b21bd3524a5aed51472",
+    id="4720d9135dcde74cc0db05cf9e44c6a1d33e2f76",
     name="slicetimer",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

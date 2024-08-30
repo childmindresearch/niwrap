@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLINTERLEAVE_METADATA = Metadata(
-    id="ad06d6676a703667d4c6f6dc36c304bdfd49c5a9",
+    id="0233ea4118d65eb47c310757e7da308f61ff294e",
     name="fslinterleave",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

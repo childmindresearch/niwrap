@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MP_DIFF_METADATA = Metadata(
-    id="a56dd56c016f1594f2c4552f87b8ba60856ab58c",
+    id="b9fb35064a1aa1d56c72652cc56c283ce72ac177",
     name="mp_diff",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-repo/mp_diff:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

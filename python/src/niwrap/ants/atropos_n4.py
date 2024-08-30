@@ -7,10 +7,10 @@ import pathlib
 import typing
 
 ANTS_ATROPOS_N4_SH_METADATA = Metadata(
-    id="78247b6bd8797a4da3ecf2d152b2a8516eb9297b",
+    id="e0a917d4895ca884fd4793321914cc8bd03feab3",
     name="antsAtroposN4.sh",
     container_image_type="docker",
-    container_image_tag="antsx/ants:v2.5.2",
+    container_image_tag="antsx/ants:v2.5.3",
 )
 
 
@@ -90,7 +90,7 @@ def ants_atropos_n4_sh(
     runner: Runner | None = None,
 ) -> AntsAtroposN4ShOutputs:
     """
-    antsAtroposN4.sh by ANTs Developers.
+    antsAtroposN4.sh by Advanced Normalization Tools (ANTs) Contributors.
     
     Iterates between N4 <-> Atropos to improve segmentation results.
     

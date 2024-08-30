@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 SLICER_METADATA = Metadata(
-    id="e29bda2d3989ff405f9246f4f13b3294b6506919",
+    id="f271d4a101ecc58a66bc771b7e382dfeb187365e",
     name="Slicer",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

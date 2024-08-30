@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 EDDY_QUAD_METADATA = Metadata(
-    id="58178ebe94bc2a426dfb0d388e3e49a548b9ad4f",
+    id="55c16aa046b6af53dd6839c56b18fd79a0c73855",
     name="eddy_quad",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

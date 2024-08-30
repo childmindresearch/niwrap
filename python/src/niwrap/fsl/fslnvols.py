@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLNVOLS_METADATA = Metadata(
-    id="c22c4accd56834e986d210fe0eff08eba6971654",
+    id="3a2d3f7f4ac51c2cdbc37faf865b81554d950f93",
     name="fslnvols",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

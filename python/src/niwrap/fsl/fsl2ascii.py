@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL2ASCII_METADATA = Metadata(
-    id="bc71eb318348cf8d60f9da8a70e55b1024a564fb",
+    id="4148252e7c8dae4324e50749f3366f693fc6020c",
     name="fsl2ascii",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 POSSUM_SUM_METADATA = Metadata(
-    id="f1abc7dc7fb85cd93e109ef573627b312b3ee57f",
+    id="df02755d9fffb908d0384df82b32a7f5dac53aaa",
     name="possum_sum",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

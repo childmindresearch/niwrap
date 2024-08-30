@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 OXFORD_ASL_METADATA = Metadata(
-    id="15f5db12a26405139618faef826afabb82fef564",
+    id="a76c647cb7aa478db4693deedb6e3fe2bc1083b7",
     name="oxford_asl",
 )
 

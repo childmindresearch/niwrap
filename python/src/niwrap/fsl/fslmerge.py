@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLMERGE_METADATA = Metadata(
-    id="b8617d0d3b90cca3d6ad99d8535a2ae1e85525b5",
+    id="ef048ed2cfafa159d4abdde743e604efb694c7e4",
     name="fslmerge",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

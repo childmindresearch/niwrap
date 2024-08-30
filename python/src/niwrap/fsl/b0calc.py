@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 B0CALC_METADATA = Metadata(
-    id="5c6e6293eb09efa71410f03633aab4698727a978",
+    id="1372960ea266d118a26cbc4c615737ea241423e2",
     name="b0calc",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

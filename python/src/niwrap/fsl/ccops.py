@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 CCOPS_METADATA = Metadata(
-    id="3698356e93c79d27cd5563e599353e7d1a6a03be",
+    id="d13d3a936916df026552bbb1fd6cbd9626c410f8",
     name="ccops",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

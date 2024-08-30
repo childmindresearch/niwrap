@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 STD2IMGCOORD_METADATA = Metadata(
-    id="7be566a68eee07d5b0e2af03e9e33ed5e33be910",
+    id="688ec9ae6fa7e109f9dc1fbdb79eff77f4309cdf",
     name="std2imgcoord",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

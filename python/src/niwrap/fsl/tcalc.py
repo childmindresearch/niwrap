@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 TCALC_METADATA = Metadata(
-    id="e56e37a68d36f10479f279575f325cac47436e0b",
+    id="5d8a0e08306a2d60d3c1d38bcdb8857d6fff4a86",
     name="tcalc",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

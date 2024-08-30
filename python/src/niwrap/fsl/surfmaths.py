@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFMATHS_METADATA = Metadata(
-    id="475c9dce376d5d1c7770296cb98d52d4ee724d36",
+    id="fede1f4bdd07944bf4e3c0dabbfd82ab28a16373",
     name="surfmaths",
 )
 

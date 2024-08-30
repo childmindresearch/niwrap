@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MAKE_BIANCA_MASK_METADATA = Metadata(
-    id="60db3fe7fc0be5506fcb5e6d6ae8d7066ddd76ec",
+    id="5197c8d961d270d79b99c4f3dfe3006dbc6c90ae",
     name="make_bianca_mask",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl-make-bianca-mask:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

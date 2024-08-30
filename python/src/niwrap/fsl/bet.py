@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 BET_METADATA = Metadata(
-    id="4da6f8ca1a6b603e95b06c65fba95b14c369efb9",
+    id="0a7819f0c98ae5620097d3a5297b51a33edc1d6e",
     name="bet",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

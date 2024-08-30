@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SIENA_CAL_METADATA = Metadata(
-    id="412fb22df44167ed5a9995e2cbef1ed5fac928d4",
+    id="8346466ee1db769eead94732af566d4523a22aad",
     name="siena_cal",
 )
 

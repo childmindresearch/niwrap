@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FABBER_QBOLD_METADATA = Metadata(
-    id="b61189b4f75286ddaf90831238c383013e79e44b",
+    id="790aded0ed85b0dafc8a88514179c6783ce215e6",
     name="fabber_qbold",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl/fabber:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

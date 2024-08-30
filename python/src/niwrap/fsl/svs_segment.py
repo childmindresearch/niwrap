@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SVS_SEGMENT_METADATA = Metadata(
-    id="1bfa7d5c70dcad5ba10e9a79957ecc2f9dcdea6c",
+    id="e55c5368e033ea1e2bc461214bfcbbcca79268de",
     name="svs_segment",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ESTNOISE_METADATA = Metadata(
-    id="95101a6cbc8442338f8f27a7827383378e6a137a",
+    id="2c8a4ee6ccd87d75e1631dbf9205191f803cbb5f",
     name="estnoise",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

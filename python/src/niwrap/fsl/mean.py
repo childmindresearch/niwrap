@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MEAN_METADATA = Metadata(
-    id="a143c18b03ad7a56cfd0ac17f16ec8167ee2bf4c",
+    id="1424870e91d19288bcbeea39891f90d34a006af4",
     name="mean",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

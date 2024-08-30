@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 TTOZ_METADATA = Metadata(
-    id="75b7180978be3a91228a6ea6a467d63621d1e79c",
+    id="a909a0eee6e1f0850e3a86e6e4ffa8ff91713090",
     name="ttoz",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-docker-image:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

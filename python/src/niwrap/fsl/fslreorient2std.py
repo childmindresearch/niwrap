@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLREORIENT2STD_METADATA = Metadata(
-    id="bf49df41de0c1927e8c99952b551f6bba38ff2db",
+    id="98ad860c6642382747cdb3cc314cb5e47d03ab96",
     name="fslreorient2std",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PULSE_METADATA = Metadata(
-    id="5fd32e85eaac71412c384fa108df01143f5cf12b",
+    id="c8f4c651eec9c8bbc074a1e1452ba93dbd7c213f",
     name="pulse",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

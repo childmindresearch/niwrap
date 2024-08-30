@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SMOOTHEST_METADATA = Metadata(
-    id="ac17f2b1956c58ec16205b000f705f1d0ae662cc",
+    id="fb498b95a3c31c8c8d35f61d5b89cff969e10b95",
     name="smoothest",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

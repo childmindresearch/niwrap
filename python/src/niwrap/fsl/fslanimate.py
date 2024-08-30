@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLANIMATE_METADATA = Metadata(
-    id="f86303b7ac0b9dd68a014e3bfa1af7c5a6ad7771",
+    id="0c9b52cf6ff1f6b9170640b9650385ae43ab9954",
     name="fslanimate",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

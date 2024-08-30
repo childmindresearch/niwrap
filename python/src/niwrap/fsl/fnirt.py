@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 FNIRT_METADATA = Metadata(
-    id="d1491d495030412d180d0709226cf8d346e62753",
+    id="7ec7fbf4a7475816c652cbd66bc1bba77609c146",
     name="fnirt",
     container_image_type="docker",
-    container_image_tag="container/image",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

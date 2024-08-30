@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 CALC_GRAD_PERC_DEV_METADATA = Metadata(
-    id="f73e146ad3794876a8ac28bac89fb80e81b9447d",
+    id="16979532631004861113867ebe6ead184c684005",
     name="calc_grad_perc_dev",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

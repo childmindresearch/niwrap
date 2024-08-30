@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FDR_METADATA = Metadata(
-    id="5b6b2db6e51b0609d2379637df25f3975260d983",
+    id="2a1c4a9f5cb4a550c5161a4d2b7bef57ce14f259",
     name="fdr",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

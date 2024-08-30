@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FLIRT_AVERAGE_METADATA = Metadata(
-    id="a4ca5908b5b6fca536c19df2fa885d897d7e6c95",
+    id="62d2397bf5aa779cedf7bb8e4fa2e04058e106f8",
     name="flirt_average",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

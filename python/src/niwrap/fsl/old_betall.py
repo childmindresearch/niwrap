@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 OLD_BETALL_METADATA = Metadata(
-    id="3be3935a0e297717121020cd2a7c5f8220d542c0",
+    id="0d125dc9864a4d2198c262c8290fdf39973062f4",
     name="old_betall",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

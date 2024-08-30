@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SPHARM_RM_METADATA = Metadata(
-    id="b4842a29b615463339a14bae3a375a717c520ec4",
+    id="3471ff0ec6dbd4a22174fb3104b742b5fc9fd86b",
     name="spharm_rm",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

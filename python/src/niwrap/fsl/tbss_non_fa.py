@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 TBSS_NON_FA_METADATA = Metadata(
-    id="a0088890dcf1b6d2d1266176267e880674efa875",
+    id="42842b80c786bb821cbe4b3edd83c464130f2f3f",
     name="tbss_non_FA",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

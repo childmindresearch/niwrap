@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 BEDPOSTX_METADATA = Metadata(
-    id="c441a0460393aea21d90b605563458acf109d63e",
+    id="e158f79c10af9acc81b8a87118987a2fd47fc3ec",
     name="bedpostx",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

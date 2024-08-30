@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 CUTOFFCALC_METADATA = Metadata(
-    id="0357a0d17b71fb80045f1bb75e3696ed716cf3a6",
+    id="9714ed35004136e0a3b4c57d222df3ed14bb182c",
     name="cutoffcalc",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SIENA_FLIRT_METADATA = Metadata(
-    id="226bbd1538c7c284d4a2d403df48ec1378075930",
+    id="43c7f5fc0eb419d283af74ab74f219134df428d4",
     name="siena_flirt",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

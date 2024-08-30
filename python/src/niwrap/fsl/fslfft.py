@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FSLFFT_METADATA = Metadata(
-    id="ad11bfba23bb1392789a9fc677fd5e4e09fc9ac2",
+    id="29351b9aa290a980ce02870440babc7ddf70e77d",
     name="fslfft",
 )
 

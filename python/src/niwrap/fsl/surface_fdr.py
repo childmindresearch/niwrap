@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SURFACE_FDR_METADATA = Metadata(
-    id="a2224f1a128b37bf01d3a17004716f5e3c52c9b4",
+    id="31a062104599d7480e7d63292f0becaf39059e33",
     name="surface_fdr",
 )
 

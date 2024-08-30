@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 APPLYWARP_METADATA = Metadata(
-    id="fefcac37cbcbd7863664493533af8c0129a2ea98",
+    id="feff959ede39bc32c46956ed391232146e709478",
     name="applywarp",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

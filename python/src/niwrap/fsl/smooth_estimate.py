@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 SMOOTH_ESTIMATE_METADATA = Metadata(
-    id="9c582d4acc84adc255ff88503899d7c04ce755ac",
+    id="db35730728549b322353980c7c4f80e9b60ca48e",
     name="SmoothEstimate",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

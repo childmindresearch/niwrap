@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLCREATEHD_METADATA = Metadata(
-    id="24d1508758f881eefeb658ce22dcdef637a5127b",
+    id="7dcf72c3aee92c0bb2c1d638cd3df70d10c15b39",
     name="fslcreatehd",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

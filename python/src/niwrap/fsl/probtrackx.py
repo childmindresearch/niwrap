@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PROBTRACKX_METADATA = Metadata(
-    id="837c0df452b7a5504fb600df04336642a9bdf6f2",
+    id="d8ed864f3f248f7a0c5824b61c7b149bf1b81041",
     name="probtrackx",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

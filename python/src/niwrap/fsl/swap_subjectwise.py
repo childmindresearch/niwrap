@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SWAP_SUBJECTWISE_METADATA = Metadata(
-    id="a9c5e3552ba7a75ad1b9fd7e2a986209391d8554",
+    id="f5e42521ce2540eedd0f0af2e09e4dae876c0955",
     name="swap_subjectwise",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

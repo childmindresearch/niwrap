@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 MATCH_SMOOTHING_METADATA = Metadata(
-    id="38ea5638b8043dc1f37738e3400206ed1ff26be6",
+    id="54eb17225dafa071cecff985916a00d21a4caa0d",
     name="match_smoothing",
 )
 

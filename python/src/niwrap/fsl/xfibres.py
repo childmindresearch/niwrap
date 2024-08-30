@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 XFIBRES_METADATA = Metadata(
-    id="8f84a39481bb32bd2ebffc5c546042b3ecb3b3a7",
+    id="41dc3f88f6c683ba17bd5db120e425e73f5ccbf8",
     name="xfibres",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

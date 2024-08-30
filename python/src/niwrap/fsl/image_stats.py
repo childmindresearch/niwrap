@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 IMAGE_STATS_METADATA = Metadata(
-    id="f764a7c021354040cc7d42a36aa10e23a2f3233f",
+    id="2a596ffe70bc0ce00860ebb112f1c55c1e5cd531",
     name="ImageStats",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

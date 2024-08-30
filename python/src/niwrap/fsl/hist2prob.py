@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 HIST2PROB_METADATA = Metadata(
-    id="bdb318afb24e21d5e9bff5aa960f64e490e6ea10",
+    id="44e7fb3b0411bc47192d48888dbe984aa899dd92",
     name="hist2prob",
 )
 

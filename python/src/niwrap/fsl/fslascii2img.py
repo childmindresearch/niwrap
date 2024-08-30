@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLASCII2IMG_METADATA = Metadata(
-    id="76d40b3bf870abcd67eb8364aa4fbfb11ac47c36",
+    id="05f4f1fe8989e2b97f3ccc41cb0004a9c7d240be",
     name="fslascii2img",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

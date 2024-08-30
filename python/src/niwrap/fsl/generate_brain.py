@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FAST_METADATA = Metadata(
-    id="610a419af574f07cdaf9348aff9fe484c6b50610",
+    id="3540b5c8ae5dee97ebaff624c6f1cab3c9f6c105",
     name="FAST",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FILMBABE_METADATA = Metadata(
-    id="b7f67b61c76f5a151e2b97933c0c59e032455f98",
+    id="5aeaa63a2b4af0df1c495362f58a31832031b867",
     name="filmbabe",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

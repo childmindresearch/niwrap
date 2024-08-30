@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PNM_EVS_METADATA = Metadata(
-    id="e218c133d590c5065c78a6d28821915e90a2a335",
+    id="415a4b0e63f6c87fa510da1a15528fc5136f88c7",
     name="pnm_evs",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FEAT_METADATA = Metadata(
-    id="fde02aa50f7871479c3c6193af5fdd2b04bc04ad",
+    id="fca63626fe460177f422bd26f22e7798537ed128",
     name="feat",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

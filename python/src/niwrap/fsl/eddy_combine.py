@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 EDDY_COMBINE_METADATA = Metadata(
-    id="d43d2c876e1270fc8f5861e6ea631567b20b0180",
+    id="db7603668c046fb6fd5779660a9255000bc5c8af",
     name="eddy_combine",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

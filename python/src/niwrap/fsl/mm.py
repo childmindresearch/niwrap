@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MM_METADATA = Metadata(
-    id="1b187ac83cb000cb3b9814d3c1f8ae04b0944a0f",
+    id="9036076571a84b7a198c22c99e9cf365ec2ae3a2",
     name="mm",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

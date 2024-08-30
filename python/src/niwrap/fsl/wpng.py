@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 WPNG_METADATA = Metadata(
-    id="dd95d5c9953d753a616b57dafba4a2490df31e17",
+    id="ad290aefc6408fd798911837c48bcbba17b8f2b4",
     name="wpng",
 )
 

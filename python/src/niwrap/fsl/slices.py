@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 SLICES_METADATA = Metadata(
-    id="73d5a02e6472d952aeae112091415b456c22f364",
+    id="71f88b18422e36ae884b7781304d33161e6096ad",
     name="slices",
 )
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MIDTRANS_METADATA = Metadata(
-    id="dcf83387c94b8f4775ed130c01d8ab836c9bbc9a",
+    id="b39eff2ab1a7b0607739374c3b6c7f807e455f79",
     name="midtrans",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

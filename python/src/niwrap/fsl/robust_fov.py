@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 ROBUST_FOV_METADATA = Metadata(
-    id="0169c09dbf20519f4ff464e2364a2ba28e878213",
+    id="c5aa535c7f52df9e1d12799f0c9bc7927f51f788",
     name="RobustFOV",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

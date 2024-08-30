@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CONCAT_BVARS_METADATA = Metadata(
-    id="1884e50fce359968cb75693475d3d6d38e2489cb",
+    id="56a39573ccea41331a7b1c4376d406aa4f23fe43",
     name="concat_bvars",
 )
 

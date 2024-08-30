@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_MOTION_OUTLIERS_METADATA = Metadata(
-    id="35463169b495ffdca9d59c8ee0dd176dc6110e33",
+    id="eeaf3a58a08372c2bc62e13b7e1e8c46742557a1",
     name="fsl_motion_outliers",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

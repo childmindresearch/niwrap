@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 HALFCOSBASIS_METADATA = Metadata(
-    id="f64ff890aab5877ba4922f672dac8f3255b37c49",
+    id="dd4f8ba7f704df6d44cb6defab93127cf525dbd0",
     name="halfcosbasis",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

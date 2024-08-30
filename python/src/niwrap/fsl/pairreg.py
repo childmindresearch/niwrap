@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PAIRREG_METADATA = Metadata(
-    id="fc7dc231703ed556f0a5c79b4e13052ceacca7e1",
+    id="8107f07a5a681ee7ce20b9004ac2037129388509",
     name="pairreg",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

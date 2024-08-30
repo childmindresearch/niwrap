@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FABBER_ASL_METADATA = Metadata(
-    id="bac00e2c8512e191b40e2b70509f856f047996ef",
+    id="3feb317ebcb270f8e44dc9109123683428afcb5f",
     name="fabber_asl",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="docker-fabber_asl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

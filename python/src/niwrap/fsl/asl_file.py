@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ASL_FILE_METADATA = Metadata(
-    id="c11d9e14e30189e2b62f082af560bb0efca692b3",
+    id="28db3b82c65c8920bf2c0aca64477d1ff9c01fbc",
     name="asl_file",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

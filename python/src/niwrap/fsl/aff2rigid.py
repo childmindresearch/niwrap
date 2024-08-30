@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AFF2RIGID_METADATA = Metadata(
-    id="ef756e973bf00d7b0acb122e2c4bffc01ce55350",
+    id="6a4fe2b1580c1e86111e4b2f175216d1182a533d",
     name="aff2rigid",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

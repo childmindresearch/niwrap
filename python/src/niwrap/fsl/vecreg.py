@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 VECREG_METADATA = Metadata(
-    id="bad52391d90e6a06c0d75f9c2ac492166fbf45b2",
+    id="6c7d48cef02fef3fe66c2282a3eb56099599fdb5",
     name="vecreg",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

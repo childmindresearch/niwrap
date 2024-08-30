@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 CONNECTEDCOMP_METADATA = Metadata(
-    id="368936b76e64d34d98a5dfc88f86e3d3824b4923",
+    id="bc96a741fe8c4365db1a9f9e198e500adcafe5af",
     name="connectedcomp",
 )
 

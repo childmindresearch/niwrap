@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLCPGEOM_METADATA = Metadata(
-    id="1994a0b404d8a4e67b02aeddc1322f37f2e05b08",
+    id="c5f07d9dca882853adfb9fb5f5f1643eba0a60f1",
     name="fslcpgeom",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

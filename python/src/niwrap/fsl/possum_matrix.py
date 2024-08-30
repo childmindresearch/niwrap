@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 POSSUM_MATRIX_METADATA = Metadata(
-    id="9935aeab25a1e5b48e3ade64a5c36ff606fb74fa",
+    id="56cc1f935af40890ed7af2d0f4171e791e0df5cb",
     name="possum_matrix",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

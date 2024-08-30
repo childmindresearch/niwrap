@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ZEROPAD_METADATA = Metadata(
-    id="1b8a4fe549da02c8b09a23d661165bcba26477eb",
+    id="70d016a19a43d5893cca2a8dd04325e119d08e1b",
     name="zeropad",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="local/zeropad:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

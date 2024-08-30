@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 GPS_METADATA = Metadata(
-    id="09432276236e99e168fd27090a0762ca05e0c14d",
+    id="ffc05ee9eb9b555ac41dd5f033c00b8438e33e25",
     name="gps",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

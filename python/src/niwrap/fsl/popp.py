@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 POPP_METADATA = Metadata(
-    id="237a9da8573aa7fc7906318f07b71b94c513f270",
+    id="96625b73bbe6f0d1df4a3577607528c52c89e842",
     name="popp",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

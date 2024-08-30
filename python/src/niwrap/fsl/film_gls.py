@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FILM_GLS_METADATA = Metadata(
-    id="32d2d29f2358012f2366f7a7e89860c2840706b7",
+    id="13325ae4e46130f047acd6b312c79334f8766b7b",
     name="film_gls",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

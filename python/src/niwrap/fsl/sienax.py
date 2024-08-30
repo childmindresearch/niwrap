@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SIENAX_METADATA = Metadata(
-    id="66f162dde9d8b2da52e61573621a74169d2f5022",
+    id="931f38e911c30e3bcdcfd92c1fbcde8da5cd8b46",
     name="sienax",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

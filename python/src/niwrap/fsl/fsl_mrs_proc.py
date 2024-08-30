@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FSL_MRS_PROC_METADATA = Metadata(
-    id="48424f2a1f316e7700e67a4502d6dd0fafca6203",
+    id="5fd108d3b19ebf7c9e48acb899701457a3805385",
     name="fsl_mrs_proc",
 )
 

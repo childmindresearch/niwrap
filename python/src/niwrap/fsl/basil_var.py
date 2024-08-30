@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 BASIL_VAR_METADATA = Metadata(
-    id="dbad0f561e04c1b6ad685a18bfffc13d1e96e10a",
+    id="d964c408698f9386bc268a5bbac3e26eba78054e",
     name="basil_var",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FSL_GET_STANDARD_METADATA = Metadata(
-    id="11477c85326fcd13c2ec9e9d80ff45d5231efc93",
+    id="aa3bc1d678c160cc1878c7b8303df833472f3e43",
     name="fsl_get_standard",
 )
 

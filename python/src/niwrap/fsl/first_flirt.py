@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FIRST_FLIRT_METADATA = Metadata(
-    id="ac2f20ea9a7f965574ece6b5d5933c46688276f3",
+    id="8e66c0e39113bc613121a2c1d40e021e8d142ec8",
     name="first_flirt",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 INVFEATREG_METADATA = Metadata(
-    id="d524366fae6064e2e671690de2d9f08ddb89b220",
+    id="ec6c695b85ee8f30eca8a86da04b682aec916c23",
     name="invfeatreg",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

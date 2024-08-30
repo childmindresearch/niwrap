@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DUAL_REGRESSION_METADATA = Metadata(
-    id="6cf95a3362111b55364acce14199c5e4d99afffd",
+    id="95f84773f4d62fa0b64c509d5010765d2f9809b3",
     name="dual_regression",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fmrib/fsl",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

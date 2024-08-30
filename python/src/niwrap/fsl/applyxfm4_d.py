@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 APPLYXFM4_D_METADATA = Metadata(
-    id="e23b3d7680990ca17bc457d7c3c766a1e5b11934",
+    id="589ce1a495f4b6b5b1c9c49ad166dfe4742dc738",
     name="applyxfm4D",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

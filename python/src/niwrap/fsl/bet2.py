@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 BET__BRAIN_EXTRACTION_TOOL__METADATA = Metadata(
-    id="25ed36a15e271a1815f0f3943fb62e1f2873552c",
+    id="e01a862713a20f39d5d54f5fd62d97d1eb709c7e",
     name="BET (Brain Extraction Tool)",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

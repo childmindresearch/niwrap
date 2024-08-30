@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 OVERLAY_METADATA = Metadata(
-    id="08c461a1c1364a71fb120c4215e9f751f4996e20",
+    id="b628731b1dd415d13fac7dfd0a548c099f7c8926",
     name="Overlay",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

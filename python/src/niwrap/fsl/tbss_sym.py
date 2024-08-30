@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 TBSS_SKELETON_METADATA = Metadata(
-    id="b7cc100b31dab2dc2749169d03876d80618788b8",
+    id="067566e485db6bbbe908c01e358e3dfa11690ade",
     name="tbss_skeleton",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

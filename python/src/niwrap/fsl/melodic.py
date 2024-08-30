@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MELODIC_METADATA = Metadata(
-    id="2e0b0310f74af57e75efe6beb42411cb502f1806",
+    id="2c68a935ac51b21b711ab7051890886497749b64",
     name="melodic",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

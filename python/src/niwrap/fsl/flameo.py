@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 FLAMEO_METADATA = Metadata(
-    id="5e27bb366f2f7207fc4a014aa45ef5c5dea0c053",
+    id="3aa190083717981ae59a72b24eb07fc29346770e",
     name="FLAMEO",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

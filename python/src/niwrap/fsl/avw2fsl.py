@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AVW2FSL_METADATA = Metadata(
-    id="4d6055b49ac62b898968c56715c6fdf1662f148b",
+    id="3110b2aae1aa53c6a38d7d7ec34da42b9d6614c8",
     name="avw2fsl",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="gnu/coreutils:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

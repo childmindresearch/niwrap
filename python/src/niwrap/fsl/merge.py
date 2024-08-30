@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 MERGE_METADATA = Metadata(
-    id="f2741a6793083f114232e821972234f922edfe01",
+    id="a3d578d60d0ba6605cbb203ead006c07e9103a74",
     name="Merge",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

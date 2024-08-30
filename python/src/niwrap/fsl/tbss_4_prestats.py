@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 TBSS_4_PRESTATS_METADATA = Metadata(
-    id="4b2eaec9e09e49969016af6c91a904e6f4e4f53a",
+    id="6528300663fe7670c76b1fc174f15fbdeeb3cde9",
     name="tbss_4_prestats",
 )
 

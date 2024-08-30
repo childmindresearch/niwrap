@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DTIGEN_METADATA = Metadata(
-    id="2ffe8781a0abbb56da46d18aa68a24c668a3a78c",
+    id="31555654262ada785889f37cdfaee9a64450483a",
     name="dtigen",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 N4_BIAS_FIELD_CORRECTION_METADATA = Metadata(
-    id="a973cb16a85a643a60a114d99f426720945ad6c8",
+    id="dec1dec9f990d85f2d409c47633867f53318935d",
     name="N4BiasFieldCorrection",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="antsx/ants:v2.5.3",
 )
 
 
@@ -41,7 +41,7 @@ def n4_bias_field_correction(
     runner: Runner | None = None,
 ) -> N4BiasFieldCorrectionOutputs:
     """
-    N4BiasFieldCorrection by ANTs authors.
+    N4BiasFieldCorrection by Advanced Normalization Tools (ANTs) Contributors.
     
     N4 is a variant of the popular N3 (nonparameteric nonuniform normalization)
     retrospective bias correction algorithm. Based on the assumption that the

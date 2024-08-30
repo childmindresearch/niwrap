@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PVMFIT_METADATA = Metadata(
-    id="10efe2c44c92e9a75ee7554398147e8e619f5197",
+    id="5a8e526ca13ed2dae6d5a4c185e4c029ff2b448b",
     name="pvmfit",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

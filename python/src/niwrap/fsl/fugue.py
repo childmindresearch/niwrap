@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 FUGUE_METADATA = Metadata(
-    id="a1dd8e49120d2008d3547a7732e9b31202118809",
+    id="43b69a2bab9418241dbdb1a364bc32119a800495",
     name="FUGUE",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

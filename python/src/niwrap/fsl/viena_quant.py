@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 VIENA_QUANT_METADATA = Metadata(
-    id="b972f833d89f8dcbaabd9d992553bdd05813b35a",
+    id="89958d558f1dcfaab82b6941000ea0ccb77a644c",
     name="viena_quant",
 )
 

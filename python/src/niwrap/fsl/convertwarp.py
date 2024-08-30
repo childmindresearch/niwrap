@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 CONVERTWARP_METADATA = Metadata(
-    id="b47267c8d1e817208fd24edef0eaf0538481bf55",
+    id="2d9e60f0bf0074c2cec4c35779d066edab826f9b",
     name="convertwarp",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

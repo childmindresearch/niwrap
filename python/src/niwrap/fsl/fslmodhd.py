@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLMODHD_METADATA = Metadata(
-    id="eb0deff0098b27bf9c858dbd893a7a6f05e87df0",
+    id="c377516716e63434edaaade17d503b4291aee0c5",
     name="fslmodhd",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

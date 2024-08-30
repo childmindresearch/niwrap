@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 MAKE_DYADIC_VECTORS_METADATA = Metadata(
-    id="753b356d88f65edcb00b291c51691addef333ed9",
+    id="ffe97ad1866d2a51591e41eb27c710c7d2d7ef38",
     name="make_dyadic_vectors",
 )
 

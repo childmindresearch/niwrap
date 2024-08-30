@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 SPLIT_METADATA = Metadata(
-    id="cf36dea6bdf65684cffa0415751f7699357f5aea",
+    id="2ec178f81b0b24045f415bcb92c5d398ac335c3d",
     name="Split",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

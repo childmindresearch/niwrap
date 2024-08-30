@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 POINTFLIRT_METADATA = Metadata(
-    id="94037386fe5071981ce12a42ddd34b0d33fb1edb",
+    id="ee1b22cf597ec9ee03dbc9e66058c8eb17f83276",
     name="pointflirt",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

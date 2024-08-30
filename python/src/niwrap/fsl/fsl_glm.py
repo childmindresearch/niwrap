@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_GLM_METADATA = Metadata(
-    id="f27d3fe22256d2bc00c307ebedad021b632edeca",
+    id="1c4d05f5c199ab578b87cdb2f914668e6d4d8a2e",
     name="fsl_glm",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

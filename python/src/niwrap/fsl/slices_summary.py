@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SLICES_SUMMARY_METADATA = Metadata(
-    id="685d4f55827e642f301ebe4bad6b91087dbae71c",
+    id="bcfb859e6121ad5b718e68a1d1cc66158c82e918",
     name="slices_summary",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MORPH_KERNEL_METADATA = Metadata(
-    id="a0ca5c0aa4fca3d1d713ddb2da14353999b1aa5c",
+    id="5db7dcc534478f0d7a3d9cd9d56ec7cf51322eb3",
     name="morph_kernel",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="yourdockerhub/morph_kernel:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

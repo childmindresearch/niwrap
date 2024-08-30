@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 SWAP_DIMENSIONS_METADATA = Metadata(
-    id="33d08885dfdcaa07b997128f89ff9b23447bb9dd",
+    id="41636f5594c716d08e051c447a3f2258ff49c1fb",
     name="SwapDimensions",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MCFLIRT_METADATA = Metadata(
-    id="c3e4c3ae27d26e48c70cea714c10eac0d4ffbf44",
+    id="c0d08df419189940a76fe2a17ae13e9229615d1d",
     name="MCFLIRT",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

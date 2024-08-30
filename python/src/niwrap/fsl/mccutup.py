@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MCCUTUP_METADATA = Metadata(
-    id="c81cbc917b8577f52dfd5b7d82a0002855a8041c",
+    id="38f27698b0fd81106186cbbb3524e89f2b2da116",
     name="mccutup",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl_image",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

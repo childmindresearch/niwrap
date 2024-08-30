@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DTIFIT_METADATA = Metadata(
-    id="8633895e67c4b026dbff9fe61fb19cb8d7204e7c",
+    id="858641733e0be47decba4ee39f2f398f251415c6",
     name="dtifit",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

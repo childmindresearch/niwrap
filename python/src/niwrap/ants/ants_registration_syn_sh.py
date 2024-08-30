@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 ANTS_REGISTRATION_SY_N_METADATA = Metadata(
-    id="75b34c651ba38038bbd35ebdc302c8b65fe56765",
+    id="56101e119ba21b64270dd5d9348152936b089d9c",
     name="antsRegistrationSyN",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="antsx/ants:v2.5.3",
 )
 
 

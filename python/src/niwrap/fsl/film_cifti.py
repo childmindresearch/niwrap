@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FILM_CIFTI_METADATA = Metadata(
-    id="a7dec809cf272ee884a62acdfe4c0a20e6d04dde",
+    id="22269a4481a2fb1ccfa0138931cf5367c9b75cbc",
     name="film_cifti",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

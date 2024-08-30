@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 RUN_MESH_UTILS_METADATA = Metadata(
-    id="ed628e4865d678ceabd646a47f2b22f9411f596c",
+    id="81dd15d0b8d878045c3e7c5b559acdbb407ac87f",
     name="run_mesh_utils",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

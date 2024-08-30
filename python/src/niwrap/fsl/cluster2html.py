@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 CLUSTER2HTML_METADATA = Metadata(
-    id="4292a0f6d7200000c17c39c524a37c14aae5bbd4",
+    id="b70bb6520b5d33f9d586ec00acad339b7b15f08c",
     name="cluster2html",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

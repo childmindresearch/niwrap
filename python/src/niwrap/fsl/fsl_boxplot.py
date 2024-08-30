@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_BOXPLOT_METADATA = Metadata(
-    id="ea82cf09c03945a423c0cc912445ec3cda51b7d9",
+    id="4746059f6bffa2c7da480b65c8879ee373bfee04",
     name="fsl_boxplot",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

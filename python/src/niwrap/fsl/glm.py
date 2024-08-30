@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 GLM_METADATA = Metadata(
-    id="49f39f62107ec8ef0c8ea373492e82111791d870",
+    id="ee99f13d278ffb37373faa26fa4f6ee6fe6e3805",
     name="GLM",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

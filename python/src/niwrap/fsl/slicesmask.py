@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 SLICESMASK_METADATA = Metadata(
-    id="76acccedb1d6279aedc6be03597a5ac32816d0d6",
+    id="640ba5ea73920106e5860ec2243290d406631e43",
     name="slicesmask",
     container_image_type="docker",
-    container_image_tag="unknown",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

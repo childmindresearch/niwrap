@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 IMRM_METADATA = Metadata(
-    id="9ac843bdac39040cdf7f53718543f9fee87d5b83",
+    id="4baaab2f1f3694642eaa2ba934022c444a043ffa",
     name="imrm",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

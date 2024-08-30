@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 ATROPOS_METADATA = Metadata(
-    id="461f623601de4d7882dbcbd9b13783a260d3fe2d",
+    id="143b0818b2970613ebdf10557f44b7056edbc7d7",
     name="Atropos",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="antsx/ants:v2.5.3",
 )
 
 
@@ -48,7 +48,7 @@ def atropos(
     runner: Runner | None = None,
 ) -> AtroposOutputs:
     """
-    Atropos by ANTs authors.
+    Atropos by Advanced Normalization Tools (ANTs) Contributors.
     
     A finite mixture modeling (FMM) segmentation approach with possibilities for
     specifying prior constraints. These prior constraints include the

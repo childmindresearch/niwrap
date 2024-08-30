@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLSMOOTHFILL_METADATA = Metadata(
-    id="844657671532fdacfd763df51ba079b1564af719",
+    id="b3282d7b9bef7977695fb57d86ac3897b13dc5f0",
     name="fslsmoothfill",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

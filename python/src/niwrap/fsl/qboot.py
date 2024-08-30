@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 QBOOT_METADATA = Metadata(
-    id="42b603b9b7d4473879c09a97c7b7ca9b861b57c9",
+    id="719956ac6e06444e87fb8bebc3ba3438af528fd3",
     name="qboot",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

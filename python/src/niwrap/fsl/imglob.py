@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 IMGLOB_METADATA = Metadata(
-    id="29838e0b15373b5dabb2c3c1f512b877c72b74fd",
+    id="5c518f436cd6a1353a3855b86c6d64b8537a8276",
     name="imglob",
 )
 

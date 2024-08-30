@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SIGNAL2IMAGE_METADATA = Metadata(
-    id="26c76ebb3f8dad098e8904cf79c05b52a591f605",
+    id="ee51e599579afe1ad9e1eb37382cd7781755836a",
     name="signal2image",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_GEN_3_D_METADATA = Metadata(
-    id="de1c37f06d7139d3ee161a655d5dee0afa53da81",
+    id="d6a1b04c2539278c0b8f6aab60e709c659b6127a",
     name="fsl_gen_3D",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

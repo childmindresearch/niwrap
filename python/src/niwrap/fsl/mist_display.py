@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 MIST_DISPLAY_METADATA = Metadata(
-    id="17035def68d34c733d767b6f38e0c3d7561bba30",
+    id="3eeeab2e3cad1974825ed4ff6296e35ee4296d1e",
     name="mist_display",
 )
 

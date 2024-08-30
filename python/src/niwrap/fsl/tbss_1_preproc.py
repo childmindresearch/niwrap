@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 TBSS_1_PREPROC_METADATA = Metadata(
-    id="f76d4b1376fdbeb5efe826480805b7a90b94d549",
+    id="f2dd0c380c6872e5ea77ebe7d1faadb8f4e92824",
     name="tbss_1_preproc",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

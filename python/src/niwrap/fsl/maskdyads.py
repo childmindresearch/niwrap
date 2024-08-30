@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 MASKDYADS_METADATA = Metadata(
-    id="7deb86df8a71dc412aba41d644fe118f6acaec3d",
+    id="085bd08314a5144d8e8cd814b9d9228772f317dd",
     name="maskdyads",
 )
 

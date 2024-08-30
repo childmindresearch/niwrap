@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLSWAPDIM_METADATA = Metadata(
-    id="2073e53151fd9f2ea94a307a6ce4171d47e2fb20",
+    id="3a2f4f099d72c1eac28d03d542e8eff1c68e2239",
     name="fslswapdim",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

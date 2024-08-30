@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 BAYCEST_METADATA = Metadata(
-    id="ae3b42b963b4c243d395709910b8502ef7829164",
+    id="795753b1e84a6fd7866195155e777c5b4987a6c0",
     name="baycest",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="baycest/baycest:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MEDIANFILTER_METADATA = Metadata(
-    id="eb3ef93f1100c3353ba46099d77c2e2452efa1e6",
+    id="9bff8d4194c7d3b94129c2b9f5d6d9444cf980b8",
     name="medianfilter",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="your-default-docker-image:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

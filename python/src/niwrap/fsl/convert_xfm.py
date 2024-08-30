@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 CONVERT_XFM_METADATA = Metadata(
-    id="48d9ebaa0f317be0039ff6ce316c83701317a1be",
+    id="33725cbe84b723f9171fabf007a4747024370859",
     name="convert_xfm",
     container_image_type="docker",
-    container_image_tag="fcp-indi/c-pac:nightly",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

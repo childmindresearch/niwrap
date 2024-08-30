@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ATLASQUERY_METADATA = Metadata(
-    id="e39b479cf4eea1c2e6f84cc30cf81de9a4f36cdb",
+    id="01942ea09300720e7fb04693272806c8ad89763b",
     name="atlasquery",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -7,10 +7,10 @@ import pathlib
 import typing
 
 FSLMATHS_METADATA = Metadata(
-    id="9df99322110fade52cf95cfd6bb59da632a223ef",
+    id="a47c11680059cf929d2235fc331b9f353c8eb026",
     name="fslmaths",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

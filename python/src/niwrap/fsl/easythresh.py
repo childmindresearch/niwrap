@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 EASYTHRESH_METADATA = Metadata(
-    id="72dd007b0175d91a8fde131249d71559db99fb83",
+    id="32b5ee8e8b0a64ace7242c55a2fa378fc76a967b",
     name="easythresh",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

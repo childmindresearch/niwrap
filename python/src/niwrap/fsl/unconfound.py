@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 UNCONFOUND_METADATA = Metadata(
-    id="3c5df1bbe5cc2bbb0f42f0f6ab2c98984ef13737",
+    id="15eb9fd545daea054e512faf9fe43e4f920e55e0",
     name="unconfound",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

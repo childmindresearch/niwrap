@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_MRSI_METADATA = Metadata(
-    id="34193d6e96896802d533ed74733ece4a95b92639",
+    id="f461c421877519ddf8d20249fc983f727dc48f55",
     name="fsl_mrsi",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fmrib/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

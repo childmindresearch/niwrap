@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SWE_METADATA = Metadata(
-    id="c30edf38be75b28c06c1590286305a8aeb1e5edc",
+    id="890402fb30c936b580dc288da72eed8929f08db8",
     name="swe",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl/swe:1.0.3",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

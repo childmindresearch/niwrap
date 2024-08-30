@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ASL_MFREE_METADATA = Metadata(
-    id="2446fd62ae26564ce3c77701d5e321b99701561d",
+    id="3df5c70b713c669c2cd52fa754362efc300e770e",
     name="asl_mfree",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

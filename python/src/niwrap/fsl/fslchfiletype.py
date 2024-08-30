@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FSLCHFILETYPE_METADATA = Metadata(
-    id="b796a4134ee7e7faeb0fac0f84a85018c8685e3b",
+    id="8c28cb818d19673145fdd4f839c4fdb45e169339",
     name="fslchfiletype",
 )
 

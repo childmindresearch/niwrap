@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 PROJ_THRESH_METADATA = Metadata(
-    id="d433b7b38b1bca3728c07db0bfce71d86483f89c",
+    id="7a764ff62c3ee162c2362d7b6187ea6e5e0185a2",
     name="proj_thresh",
 )
 

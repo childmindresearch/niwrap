@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SIENA_DIFF_METADATA = Metadata(
-    id="043834445985efa378faf45e950db34e257a9b7b",
+    id="216bf3ce45f1e54242617d4b44133c1c163b5360",
     name="siena_diff",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

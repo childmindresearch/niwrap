@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 STANDARD_SPACE_ROI_METADATA = Metadata(
-    id="88a41a4f2e060219dffe073faf422dc1690147bd",
+    id="0e4bc0475c3d908f6485b3e846641167457b47e3",
     name="standard_space_roi",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

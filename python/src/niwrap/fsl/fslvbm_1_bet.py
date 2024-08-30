@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLVBM_1_BET_METADATA = Metadata(
-    id="9688f37f436626cef1d1ad412c9017033fd6d449",
+    id="ff01cd0bf1ddb86e2118893dad969cdff93f5a82",
     name="fslvbm_1_bet",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FABBER_METADATA = Metadata(
-    id="2967719cadaa0d2a78daf3a18d80062818cbf970",
+    id="2ebf33c12c5fd4190199b5bb1dacb7045e47fca3",
     name="fabber",
 )
 

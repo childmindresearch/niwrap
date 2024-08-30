@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 RANDOMISE_METADATA = Metadata(
-    id="02b587cd55ca38e1221ffdfbf100a2a50f6f058d",
+    id="e79f744baf01b5fada5d9f1db3e56c890f624683",
     name="Randomise",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

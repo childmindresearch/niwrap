@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_MRS_PREPROC_METADATA = Metadata(
-    id="7a79f97775572bbd9f9a0a068010017a5746f2a9",
+    id="0f0110662e5f9a2d36ffc142dea1f2713f975785",
     name="fsl_mrs_preproc",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

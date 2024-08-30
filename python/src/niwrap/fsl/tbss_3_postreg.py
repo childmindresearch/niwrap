@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 TBSS_3_POSTREG_METADATA = Metadata(
-    id="3c5334c9ce8b20040564096b7966a15d4acc10dc",
+    id="c19a16710795ec146e134573826a707599f9e887",
     name="tbss_3_postreg",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

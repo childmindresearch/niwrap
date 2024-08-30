@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 EXTRACTTXT_METADATA = Metadata(
-    id="5cd990a3d02c22e3a4e1e068ed42a20e350d83dc",
+    id="e05d836b193dfad17142ca596860e221c5181d48",
     name="extracttxt",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

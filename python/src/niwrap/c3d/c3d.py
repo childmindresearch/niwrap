@@ -7,8 +7,10 @@ import pathlib
 import typing
 
 C3D_METADATA = Metadata(
-    id="f1732790635348d98955440a3cbeaf174f186242",
+    id="b3dcd40ff0dc5bc8e5095c2ebe1c422a79737d9e",
     name="c3d",
+    container_image_type="docker",
+    container_image_tag="pyushkevich/itksnap:v3.8.2",
 )
 
 
@@ -7751,7 +7753,7 @@ def c3d(
     runner: Runner | None = None,
 ) -> C3dOutputs:
     """
-    c3d.
+    c3d by ITK-Snap Team.
     
     C3D is a command-line tool for medical image processing.
     

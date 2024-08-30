@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 FABBER_DWI_METADATA = Metadata(
-    id="c6fb0677289f0f9d529d971c354d2bda8966519e",
+    id="2ab697cea205122397d315705e8906f76b67636d",
     name="fabber_dwi",
     container_image_type="docker",
-    container_image_tag="docker.io/fmrib/fabber_dwi:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

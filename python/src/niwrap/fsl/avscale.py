@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 AVSCALE_METADATA = Metadata(
-    id="9434a53d1790fc0b88b3bbff7b8ba5a8b78ff929",
+    id="8bd76f70c784fda5a69e220aece68818a17d6b2c",
     name="avscale",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mydockerhubuser/avscale:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

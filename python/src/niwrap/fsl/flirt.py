@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 FLIRT_METADATA = Metadata(
-    id="daedb1ca8cb8ef1d8c1c7c7e7e5669f9a7b7da62",
+    id="e0de8af14ddd7cd44046822c27ab00b478eb985e",
     name="FLIRT",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

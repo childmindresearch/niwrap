@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 ANTS_BRAIN_EXTRACTION_SH_METADATA = Metadata(
-    id="aeb4e3b5028565ef400879172e4e869d39ad85ea",
+    id="ca3041d6babf173fade41799bd55fb9cdb79c2aa",
     name="antsBrainExtraction.sh",
     container_image_type="docker",
-    container_image_tag="antsx/ants",
+    container_image_tag="antsx/ants:v2.5.3",
 )
 
 
@@ -76,9 +76,6 @@ def ants_brain_extraction_sh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_BRAIN_EXTRACTION_SH_METADATA)
     cargs = []
-    cargs.append("export")
-    cargs.append("PATH=$PATH:/opt/ants/bin")
-    cargs.append("&&")
     cargs.append("antsBrainExtraction.sh")
     cargs.append("-d")
     cargs.append(str(image_dimension))

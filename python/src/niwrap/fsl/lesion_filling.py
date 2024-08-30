@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 LESION_FILLING_METADATA = Metadata(
-    id="c456a3cba760f1dc8235c3023931caf8ff50ef5d",
+    id="78bb5280744f758c0c0f77125c36ae42ccd208cb",
     name="lesion_filling",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

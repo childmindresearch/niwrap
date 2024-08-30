@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLROI_METADATA = Metadata(
-    id="0c3f4e8996b417d8b36c2d1d89abe5a943373a69",
+    id="1a43cdbac23b3c8516c756db039e660882a2daba",
     name="fslroi",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 EPI_REG_METADATA = Metadata(
-    id="ee79285d198e01081af9b39a0df8f3c6c8438ad5",
+    id="34fef22f93551d0f4b6ff6e880c97fd91c9d9107",
     name="epi_reg",
     container_image_type="docker",
-    container_image_tag="fcp-indi/c-pac:nightly",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_TSPLOT_METADATA = Metadata(
-    id="fe940ff5dca67877c4846a5b81709d056f02534e",
+    id="37113a4977b8132fb2f361cd4579cba1b0b1c6d5",
     name="fsl_tsplot",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 ICA_AROMA_METADATA = Metadata(
-    id="bf8384733cdfc543a5805a7b686ef0b0129a9188",
+    id="f5d8206ce8e4ffeacbd030baed96b3ff03221baa",
     name="ICA_AROMA",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

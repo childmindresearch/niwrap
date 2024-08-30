@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SYSTEMNOISE_METADATA = Metadata(
-    id="912d0213fe2927098265fb0d8c25a1bae5ff42df",
+    id="342f5f005f89ccb84419c01a8e3c010a5933be2a",
     name="systemnoise",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

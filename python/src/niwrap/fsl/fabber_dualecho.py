@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FABBER_DUALECHO_METADATA = Metadata(
-    id="b930a40c67d1af3dca8e5b8a5d3b0b61696541a7",
+    id="5c2326924038c0979ee7f34535218a21f50eb2ea",
     name="fabber_dualecho",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl/fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 XTRACT_BLUEPRINT_METADATA = Metadata(
-    id="d46ca4a0b7fd5fecfd318331eb681722aa0ef1d3",
+    id="c4864210a15b35f7a67b2977a42117d1eda9de6b",
     name="xtract_blueprint",
 )
 

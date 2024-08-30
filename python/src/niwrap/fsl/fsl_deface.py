@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_DEFACE_METADATA = Metadata(
-    id="5eec63c48503c23890d916d32aab216e05596afd",
+    id="b6261c9135b3623f1c6872f0eb75a11a6c82ea31",
     name="fsl_deface",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

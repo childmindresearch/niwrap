@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 MULTIPLY_IMAGES_METADATA = Metadata(
-    id="caea37918e8cd3ce060ab9e00b19c02e344bf21e",
+    id="07a0cf2f70ba316f304bac73e0b1224b44034aba",
     name="MultiplyImages",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="antsx/ants:v2.5.3",
 )
 
 
@@ -33,9 +33,13 @@ def multiply_images(
     runner: Runner | None = None,
 ) -> MultiplyImagesOutputs:
     """
-    MultiplyImages by Nipype (interface).
+    MultiplyImages by Advanced Normalization Tools (ANTs) Contributors.
     
-    No description provided.
+    Multiply 2 images; 2nd image file may also be floating point numerical
+    value, and program will act accordingly -- i.e. read as a number. Program
+    handles vector and tensor images as well.
+    
+    More information: https://github.com/ANTsX/ANTs
     
     Args:
         dimension: 3 or 2. Image dimension (2 or 3).

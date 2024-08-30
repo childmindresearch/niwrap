@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FABBER_PET_METADATA = Metadata(
-    id="9813c4c217dfd081f628dc19866a3d27521b4481",
+    id="46f5abb89eb6fa6d38c0da06d9a7cd2f69e1cd75",
     name="fabber_pet",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fabber:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

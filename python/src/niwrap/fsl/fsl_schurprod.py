@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_SCHURPROD_METADATA = Metadata(
-    id="b5dfdf912cf5e623ee1137abf930fb7a25ecbb5d",
+    id="b6df5ac8adcff7ee9b0b2fb96144e8303530b6c3",
     name="fsl_schurprod",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

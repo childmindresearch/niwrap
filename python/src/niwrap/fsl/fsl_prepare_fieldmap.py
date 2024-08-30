@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_PREPARE_FIELDMAP_METADATA = Metadata(
-    id="bad0fe87c5035d76733442307435e8af2bdd62b8",
+    id="6b22511c0f991a159ff6fb3ceff68a57bc1d3fe6",
     name="fsl_prepare_fieldmap",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

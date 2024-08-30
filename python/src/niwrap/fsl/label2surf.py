@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 LABEL2SURF_METADATA = Metadata(
-    id="7114accac7c7fb450d6d23243c7f6ad67ef3eadc",
+    id="315ef032b1536f62bbbd41475d45ef54234a6d4e",
     name="label2surf",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

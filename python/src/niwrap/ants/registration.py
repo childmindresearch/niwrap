@@ -7,10 +7,10 @@ import pathlib
 import typing
 
 ANTS_REGISTRATION_METADATA = Metadata(
-    id="71d2047854c5ea82cff50d7f97492175891d6f0e",
+    id="c36a254569506468345c2cd181126e2439afecde",
     name="antsRegistration",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="antsx/ants:v2.5.3",
 )
 
 
@@ -1342,7 +1342,7 @@ def ants_registration(
     runner: Runner | None = None,
 ) -> AntsRegistrationOutputs:
     """
-    antsRegistration by ANTs authors.
+    antsRegistration by Advanced Normalization Tools (ANTs) Contributors.
     
     This program is a user-level registration application meant to utilize
     classes in ITK v4.0 and later. The user can specify any number of "stages"

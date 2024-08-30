@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 PTOZ_METADATA = Metadata(
-    id="e4fc1ae7a2db14a20f16ef71c261bb1f39199c0b",
+    id="83cf3188521a93de48419a7ce77e274ee8127ed5",
     name="ptoz",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="spm/spm12:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

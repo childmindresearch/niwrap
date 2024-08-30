@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 IMG2STDCOORD_METADATA = Metadata(
-    id="7d27cd722b1e8630d9075db79a45b36cc5d9c448",
+    id="1960a762fadb169aa80713dfe27f600493a685c4",
     name="img2stdcoord",
 )
 

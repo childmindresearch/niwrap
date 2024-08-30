@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FIRST_ROI_SLICESDIR_METADATA = Metadata(
-    id="b7a8b65a1ccf1a008b6cff09792b2a3becb972f4",
+    id="e88bcb78f430d93578062447bcf9710d9aaf9023",
     name="first_roi_slicesdir",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl/first:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 WHIRLGIF_METADATA = Metadata(
-    id="0946b5b9f88febd25529a80b1f9cc38c6be9eb0b",
+    id="32a2b9ec1b540e9a52df629324b69018fd76f479",
     name="whirlgif",
 )
 

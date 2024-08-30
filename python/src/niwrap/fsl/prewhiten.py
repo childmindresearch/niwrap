@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 PREWHITEN_METADATA = Metadata(
-    id="771948bf099f8d69dd1b9965f5bd69a48d3c2873",
+    id="2fa03a2bc467521b4c0f9f8c27087bef598cf830",
     name="prewhiten",
 )
 

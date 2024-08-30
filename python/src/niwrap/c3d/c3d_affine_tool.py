@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 C3D_AFFINE_TOOL_METADATA = Metadata(
-    id="8d8ee864fd8cb9cd3fa4f3747a017ca95294bc58",
+    id="8511e7b2d9c9371bb8d64e52ff4a18c92b43a509",
     name="C3dAffineTool",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="pyushkevich/itksnap:v3.8.2",
 )
 
 

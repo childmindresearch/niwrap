@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLSPLIT_METADATA = Metadata(
-    id="6b510a54f0a3945dad20c810310f5fdfe65d9847",
+    id="0437d7a80ec1e0e35ca9e21fabd9655c69b443b2",
     name="fslsplit",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

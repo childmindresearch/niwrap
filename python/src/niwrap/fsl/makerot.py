@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MAKEROT_METADATA = Metadata(
-    id="553caff8b5501977e1f24e815bcbb2940e14d8b5",
+    id="9a981a11e2223cd905b1614487915c846c532dcf",
     name="makerot",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

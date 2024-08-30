@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FTOZ_METADATA = Metadata(
-    id="a6e03e73697eb48ecf8672316a4b3ceeed9e2dbd",
+    id="76cfc0dbfbf74693bcd33da5b1e25a4417be82b1",
     name="ftoz",
 )
 

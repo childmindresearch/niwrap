@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FIND_THE_BIGGEST_METADATA = Metadata(
-    id="41a509e0fce8f1dadbc348857176d2eac36ebc66",
+    id="6aa7f07dd475d72086a19e05325ce12cde68074d",
     name="find_the_biggest",
 )
 

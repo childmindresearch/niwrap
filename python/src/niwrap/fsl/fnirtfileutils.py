@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FNIRTFILEUTILS_METADATA = Metadata(
-    id="4264c2e5a962cfa328f037268823f68befeb27d2",
+    id="131118713d967308bf86031ae825e470b7a7a8a5",
     name="fnirtfileutils",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

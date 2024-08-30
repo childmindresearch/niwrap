@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 SIGLOSS_METADATA = Metadata(
-    id="f70105ba28657c6115700f6a513062c37631da87",
+    id="a3785476c0878982dcb302a4852172d4266c3be5",
     name="sigloss",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

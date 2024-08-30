@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 SLICE_METADATA = Metadata(
-    id="14acbc34a5d5d43ae4d856ed7b69003552bebed3",
+    id="9bb3500c48eb190211fa707bd9f7f488ab0d5bea",
     name="Slice",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

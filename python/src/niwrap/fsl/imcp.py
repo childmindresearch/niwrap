@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 IMCP_METADATA = Metadata(
-    id="b466c0d803c6e1b2b3b58f1ff6ec00b6ffb02ea0",
+    id="d0a1b88141662ba74e5c276703b5945baec8f9b6",
     name="imcp",
 )
 

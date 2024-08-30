@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MRSI_SEGMENT_METADATA = Metadata(
-    id="e3dd5e555c5831e8b1a5d8947e393fd8ddfdd05a",
+    id="68c36b893349987e43bfd6044eeb59ccd2b7cef2",
     name="mrsi_segment",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl/fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 RUN_FIRST_ALL_METADATA = Metadata(
-    id="9c2db8dee01a3490c7f86aef804a9b8ae867a61e",
+    id="3ff68b6fa9e7b0f99ef830ac8b11ae006c1452c2",
     name="run_first_all",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

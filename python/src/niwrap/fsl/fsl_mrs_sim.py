@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSL_MRS_SIM_METADATA = Metadata(
-    id="bee8d10203daae31150784cec576bf37b8f7b7a9",
+    id="d8751192080281b952d5e68a6abe3ed8ca8d7fdd",
     name="fsl_mrs_sim",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="fsl:fsl_mrs_sim",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

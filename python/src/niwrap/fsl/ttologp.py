@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 TTOLOGP_METADATA = Metadata(
-    id="875f86be454a0e19773210b752ed455d2664838e",
+    id="ec7bd326f37ef20eb7460f2d41957799c29390d3",
     name="ttologp",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="some-docker-repo/ttologp:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

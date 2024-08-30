@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 XTRACT_VIEWER_METADATA = Metadata(
-    id="ab0e907c70c763565af18ad5ccbc103da833657b",
+    id="04e1c0e8b7bdff58f6e6215d9cdfb8f9fead4027",
     name="xtract_viewer",
 )
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 MSM_METADATA = Metadata(
-    id="a34e0c872d65a329a33eb734e3c21a4c34109b4f",
+    id="5610be5b5ab6ee9fca03d6770ef7f566c0f406d4",
     name="msm",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

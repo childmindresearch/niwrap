@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 XTRACT_STATS_METADATA = Metadata(
-    id="104ffa024af9b0b0cc5e66c9c6e2e2aafab5b0a7",
+    id="f4e5e97bb4e53d159170f50f0562556e5349aa95",
     name="xtract_stats",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 CLUSTER_METADATA = Metadata(
-    id="e7684e1f87a871bd106b15aa007a39ffbebfffb6",
+    id="754261b5c945cd88813dd579c569c921a134590d",
     name="Cluster",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

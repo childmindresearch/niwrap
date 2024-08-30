@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 SLICEANIMATE_METADATA = Metadata(
-    id="9e48c4cfb01a266503ab00e3e77a82ae436fa60b",
+    id="099af2c06ac54016e7c1bbb4fcea54e66d3d7c2d",
     name="sliceanimate",
     container_image_type="docker",
-    container_image_tag="custom/sliceanimate:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

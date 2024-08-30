@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 PREPARE_FIELDMAP_METADATA = Metadata(
-    id="c105e3dffd80ded0d15c0f07eb79f49e03fcd325",
+    id="a569aedce4cc243da931fd06a84a4422e0b750a6",
     name="PrepareFieldmap",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

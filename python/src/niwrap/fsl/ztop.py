@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 ZTOP_METADATA = Metadata(
-    id="075fb55e3c3346830e1929515e5fd8cd0057632b",
+    id="4aa142083a05bef53f63196013c6684db3412a40",
     name="ztop",
 )
 

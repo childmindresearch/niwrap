@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 PNGAPPEND_METADATA = Metadata(
-    id="0826d549e6f47e4dc3cffced77ae55ffba4ec916",
+    id="e4d2f11aae2779ff8a0ce1b09ba80f71df2f4988",
     name="pngappend",
 )
 

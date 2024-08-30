@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FEATREGAPPLY_METADATA = Metadata(
-    id="5262490489b1d99599c503de01b6543cb9ff852f",
+    id="ecc4d8bc1420977ba4ea6155fcc9948cbb914005",
     name="featregapply",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

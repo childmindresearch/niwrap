@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 DESIGN_TTEST2_METADATA = Metadata(
-    id="a28b1a2f2bba947ad4f553cb5d07efe84794693e",
+    id="86984ceb86ba9ff4c213ef02c5b7ff79d885fa0e",
     name="design_ttest2",
 )
 

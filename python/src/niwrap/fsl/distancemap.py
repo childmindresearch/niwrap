@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 DISTANCEMAP_METADATA = Metadata(
-    id="5f6cde3f6945359262869c798e41dd631bf056fe",
+    id="dba579c3fbd3d6218ecbc9a45322438109192f08",
     name="distancemap",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

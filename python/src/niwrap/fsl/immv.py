@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 IMMV_METADATA = Metadata(
-    id="95a9db3e6c7df5852f5123476e267e31308d183b",
+    id="36c60ed06eb8cb00f4d31f9c69cf56412092ddb0",
     name="immv",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="docker/immv:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

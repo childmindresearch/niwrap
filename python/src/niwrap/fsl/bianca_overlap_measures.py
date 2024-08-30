@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 BIANCA_OVERLAP_MEASURES_METADATA = Metadata(
-    id="affc13938fb461b4dabef46f4ef653416fe1632f",
+    id="f7c829d009f21c015e3d92bf615b7727e0971a20",
     name="bianca_overlap_measures",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 APPLYTOPUP_METADATA = Metadata(
-    id="9351040d516e40d391172d1c29d310306c2e148d",
+    id="d03e8f10119ff62b3575e63332c90766eba7af42",
     name="applytopup",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

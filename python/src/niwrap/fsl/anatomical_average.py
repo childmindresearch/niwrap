@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ANATOMICAL_AVERAGE_METADATA = Metadata(
-    id="782e6403c6c941da7c074df3059e57b5316836fd",
+    id="4d1ca27f9d946d87c62899d1b8d9e62d2557220d",
     name="AnatomicalAverage",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="brainimagingcenter/anatomicalaverage:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

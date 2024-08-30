@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 BEDPOSTX_GPU_METADATA = Metadata(
-    id="75ec1c598ed469efaf2e96c3aa032e12e72bbd4a",
+    id="1b7bc98054c569d66c0ab265626948c131ff30cd",
     name="bedpostx_gpu",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-bedpostx:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

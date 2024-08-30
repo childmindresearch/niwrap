@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 TBSS_DEPROJECT_METADATA = Metadata(
-    id="90b3ffcd511a7c7b451e7bc42c967bfac81db190",
+    id="3541b8666f1a060a0595dceba5a9f5529015e2ab",
     name="tbss_deproject",
 )
 

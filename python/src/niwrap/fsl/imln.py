@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 IMLN_METADATA = Metadata(
-    id="ab95f38ac5064977cf3a96f488f9a0b50ce20ec5",
+    id="53e341991d1619dc24b418013b3be4975b4fd73a",
     name="imln",
 )
 

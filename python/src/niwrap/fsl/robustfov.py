@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 ROBUSTFOV_METADATA = Metadata(
-    id="4748ebf41e5bc98b6fea40ded641766863a078b5",
+    id="ba96504ba58594a00f41b8ac2107f15c773bd4a9",
     name="robustfov",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:6.0.5",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,10 +6,10 @@ import pathlib
 import typing
 
 DENOISE_IMAGE_METADATA = Metadata(
-    id="de8e9758a56524d9e370be3d8b0536aae5a932b5",
+    id="8bb10fab73c085e45af9d7ba7ba0f7855ff1b0ef",
     name="DenoiseImage",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="antsx/ants:v2.5.3",
 )
 
 
@@ -39,7 +39,7 @@ def denoise_image(
     runner: Runner | None = None,
 ) -> DenoiseImageOutputs:
     """
-    DenoiseImage by ANTs authors.
+    DenoiseImage by Advanced Normalization Tools (ANTs) Contributors.
     
     Denoise an image using a spatially adaptive filter originally described in
     J. V. Manjon, P. Coupe, Luis Marti-Bonmati, D. L. Collins, and M. Robles.

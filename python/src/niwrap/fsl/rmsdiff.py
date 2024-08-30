@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 RMSDIFF_METADATA = Metadata(
-    id="804d7c3a563c7927252788ae829e1c7d9390ceba",
+    id="86bb049e323d6e902f9becb2e66f142557ef308b",
     name="rmsdiff",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

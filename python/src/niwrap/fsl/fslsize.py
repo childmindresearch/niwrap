@@ -6,11 +6,10 @@ import pathlib
 import typing
 
 FSLSIZE_METADATA = Metadata(
-    id="ff3e20689fe951d053ef5d2fb601d5c64f066339",
+    id="0aa7e6fbb81dbdb0e85b1f0d56cc9743a42d862e",
     name="fslsize",
     container_image_type="docker",
-    container_image_index="index.docker.io",
-    container_image_tag="mcin/docker-fsl:latest",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 
