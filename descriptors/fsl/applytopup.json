@@ -16,6 +16,7 @@
       "value-key": "[IMAIN]",
       "type": "String",
       "list": true,
+      "list-separator": ",",
       "optional": false,
       "id": "imain",
       "name": "Input images"
@@ -37,6 +38,7 @@
       "value-key": "[ININDEX]",
       "type": "String",
       "list": true,
+      "list-separator": ",",
       "optional": false,
       "id": "inindex",
       "name": "Input index"
