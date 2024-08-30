@@ -80,78 +80,77 @@
 </span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="n">EASYTHRESH_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;72dd007b0175d91a8fde131249d71559db99fb83&quot;</span><span class="p">,</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;32b5ee8e8b0a64ace7242c55a2fa378fc76a967b&quot;</span><span class="p">,</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;easythresh&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">container_image_index</span><span class="o">=</span><span class="s2">&quot;index.docker.io&quot;</span><span class="p">,</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/docker-fsl:latest&quot;</span><span class="p">,</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="p">)</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="p">)</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="k">class</span> <span class="nc">EasythreshOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">    Output object returned when calling `easythresh(...)`.</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">output_thresh_image</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output thresholded image&quot;&quot;&quot;</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="k">class</span> <span class="nc">EasythreshOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">    Output object returned when calling `easythresh(...)`.</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>    <span class="n">output_thresh_image</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output thresholded image&quot;&quot;&quot;</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>
 </span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="k">def</span> <span class="nf">easythresh</span><span class="p">(</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="n">raw_zstat_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>    <span class="n">brain_mask_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="n">cluster_z_thresh_input</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="n">cluster_prob_thresh_input</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="n">background_image_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="n">output_root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="n">mm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EasythreshOutputs</span><span class="p">:</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    easythresh by Oxford Centre for Functional MRI of the Brain (FMRIB).</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    Cluster-based statistical thresholding tool from FSL.</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    </span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Easythresh</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    </span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        raw_zstat_input: Input raw z-statistics image.</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        brain_mask_input: Brain mask image.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        cluster_z_thresh_input: Cluster z-threshold.</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        cluster_prob_thresh_input: Cluster probability threshold.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        background_image_input: Background image for thresholding.</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        output_root: Root of output file names.</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        mm_flag: Flag to indicate the use of mm (millimeters).</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">    Returns:</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        NamedTuple of outputs (described in `EasythreshOutputs`).</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">EASYTHRESH_METADATA</span><span class="p">)</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;easythresh&quot;</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">raw_zstat_input</span><span class="p">))</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brain_mask_input</span><span class="p">))</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cluster_z_thresh_input</span><span class="p">))</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cluster_prob_thresh_input</span><span class="p">))</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">background_image_input</span><span class="p">))</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_root</span><span class="p">)</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">mm_flag</span><span class="p">:</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mm&quot;</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">EasythreshOutputs</span><span class="p">(</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="n">output_thresh_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_root</span><span class="si">}</span><span class="s2">_thresh.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="p">)</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="k">def</span> <span class="nf">easythresh</span><span class="p">(</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="n">raw_zstat_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="n">brain_mask_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>    <span class="n">cluster_z_thresh_input</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="n">cluster_prob_thresh_input</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="n">background_image_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="n">output_root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="n">mm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EasythreshOutputs</span><span class="p">:</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    easythresh by Oxford Centre for Functional MRI of the Brain (FMRIB).</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    </span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Cluster-based statistical thresholding tool from FSL.</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    </span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Easythresh</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        raw_zstat_input: Input raw z-statistics image.</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        brain_mask_input: Brain mask image.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        cluster_z_thresh_input: Cluster z-threshold.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        cluster_prob_thresh_input: Cluster probability threshold.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        background_image_input: Background image for thresholding.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        output_root: Root of output file names.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        mm_flag: Flag to indicate the use of mm (millimeters).</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">    Returns:</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        NamedTuple of outputs (described in `EasythreshOutputs`).</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">EASYTHRESH_METADATA</span><span class="p">)</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;easythresh&quot;</span><span class="p">)</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">raw_zstat_input</span><span class="p">))</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brain_mask_input</span><span class="p">))</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cluster_z_thresh_input</span><span class="p">))</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cluster_prob_thresh_input</span><span class="p">))</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">background_image_input</span><span class="p">))</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_root</span><span class="p">)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="k">if</span> <span class="n">mm_flag</span><span class="p">:</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mm&quot;</span><span class="p">)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">EasythreshOutputs</span><span class="p">(</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">output_thresh_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_root</span><span class="si">}</span><span class="s2">_thresh.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>
 </span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="s2">&quot;EASYTHRESH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="s2">&quot;EasythreshOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="s2">&quot;easythresh&quot;</span><span class="p">,</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a><span class="p">]</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="s2">&quot;EASYTHRESH_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="s2">&quot;EasythreshOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="s2">&quot;easythresh&quot;</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -160,7 +159,7 @@
                     <div class="attr variable">
             <span class="name">EASYTHRESH_METADATA</span>        =
 <input id="EASYTHRESH_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="EASYTHRESH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;72dd007b0175d91a8fde131249d71559db99fb83&#39;, name=&#39;easythresh&#39;, package=None, citations=None, container_image_type=&#39;docker&#39;, container_image_tag=&#39;mcin/docker-fsl:latest&#39;, container_image_index=&#39;index.docker.io&#39;, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="EASYTHRESH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;32b5ee8e8b0a64ace7242c55a2fa378fc76a967b&#39;, name=&#39;easythresh&#39;, package=None, citations=None, container_image_type=&#39;docker&#39;, container_image_tag=&#39;mcin/fsl:6.0.5&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -180,14 +179,14 @@
 
     </div>
     <a class="headerlink" href="#EasythreshOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="EasythreshOutputs-18"><a href="#EasythreshOutputs-18"><span class="linenos">18</span></a><span class="k">class</span> <span class="nc">EasythreshOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="EasythreshOutputs-19"><a href="#EasythreshOutputs-19"><span class="linenos">19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="EasythreshOutputs-20"><a href="#EasythreshOutputs-20"><span class="linenos">20</span></a><span class="sd">    Output object returned when calling `easythresh(...)`.</span>
-</span><span id="EasythreshOutputs-21"><a href="#EasythreshOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="EasythreshOutputs-22"><a href="#EasythreshOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="EasythreshOutputs-23"><a href="#EasythreshOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="EasythreshOutputs-24"><a href="#EasythreshOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_thresh_image</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="EasythreshOutputs-25"><a href="#EasythreshOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output thresholded image&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="EasythreshOutputs-17"><a href="#EasythreshOutputs-17"><span class="linenos">17</span></a><span class="k">class</span> <span class="nc">EasythreshOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="EasythreshOutputs-18"><a href="#EasythreshOutputs-18"><span class="linenos">18</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="EasythreshOutputs-19"><a href="#EasythreshOutputs-19"><span class="linenos">19</span></a><span class="sd">    Output object returned when calling `easythresh(...)`.</span>
+</span><span id="EasythreshOutputs-20"><a href="#EasythreshOutputs-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="EasythreshOutputs-21"><a href="#EasythreshOutputs-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="EasythreshOutputs-22"><a href="#EasythreshOutputs-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="EasythreshOutputs-23"><a href="#EasythreshOutputs-23"><span class="linenos">23</span></a>    <span class="n">output_thresh_image</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="EasythreshOutputs-24"><a href="#EasythreshOutputs-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output thresholded image&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -257,53 +256,53 @@
 
     </div>
     <a class="headerlink" href="#easythresh"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="easythresh-28"><a href="#easythresh-28"><span class="linenos">28</span></a><span class="k">def</span> <span class="nf">easythresh</span><span class="p">(</span>
-</span><span id="easythresh-29"><a href="#easythresh-29"><span class="linenos">29</span></a>    <span class="n">raw_zstat_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="easythresh-30"><a href="#easythresh-30"><span class="linenos">30</span></a>    <span class="n">brain_mask_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="easythresh-31"><a href="#easythresh-31"><span class="linenos">31</span></a>    <span class="n">cluster_z_thresh_input</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="easythresh-32"><a href="#easythresh-32"><span class="linenos">32</span></a>    <span class="n">cluster_prob_thresh_input</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="easythresh-33"><a href="#easythresh-33"><span class="linenos">33</span></a>    <span class="n">background_image_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="easythresh-34"><a href="#easythresh-34"><span class="linenos">34</span></a>    <span class="n">output_root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="easythresh-35"><a href="#easythresh-35"><span class="linenos">35</span></a>    <span class="n">mm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="easythresh-36"><a href="#easythresh-36"><span class="linenos">36</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="easythresh-37"><a href="#easythresh-37"><span class="linenos">37</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EasythreshOutputs</span><span class="p">:</span>
-</span><span id="easythresh-38"><a href="#easythresh-38"><span class="linenos">38</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="easythresh-39"><a href="#easythresh-39"><span class="linenos">39</span></a><span class="sd">    easythresh by Oxford Centre for Functional MRI of the Brain (FMRIB).</span>
-</span><span id="easythresh-40"><a href="#easythresh-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="easythresh-41"><a href="#easythresh-41"><span class="linenos">41</span></a><span class="sd">    Cluster-based statistical thresholding tool from FSL.</span>
-</span><span id="easythresh-42"><a href="#easythresh-42"><span class="linenos">42</span></a><span class="sd">    </span>
-</span><span id="easythresh-43"><a href="#easythresh-43"><span class="linenos">43</span></a><span class="sd">    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Easythresh</span>
-</span><span id="easythresh-44"><a href="#easythresh-44"><span class="linenos">44</span></a><span class="sd">    </span>
-</span><span id="easythresh-45"><a href="#easythresh-45"><span class="linenos">45</span></a><span class="sd">    Args:</span>
-</span><span id="easythresh-46"><a href="#easythresh-46"><span class="linenos">46</span></a><span class="sd">        raw_zstat_input: Input raw z-statistics image.</span>
-</span><span id="easythresh-47"><a href="#easythresh-47"><span class="linenos">47</span></a><span class="sd">        brain_mask_input: Brain mask image.</span>
-</span><span id="easythresh-48"><a href="#easythresh-48"><span class="linenos">48</span></a><span class="sd">        cluster_z_thresh_input: Cluster z-threshold.</span>
-</span><span id="easythresh-49"><a href="#easythresh-49"><span class="linenos">49</span></a><span class="sd">        cluster_prob_thresh_input: Cluster probability threshold.</span>
-</span><span id="easythresh-50"><a href="#easythresh-50"><span class="linenos">50</span></a><span class="sd">        background_image_input: Background image for thresholding.</span>
-</span><span id="easythresh-51"><a href="#easythresh-51"><span class="linenos">51</span></a><span class="sd">        output_root: Root of output file names.</span>
-</span><span id="easythresh-52"><a href="#easythresh-52"><span class="linenos">52</span></a><span class="sd">        mm_flag: Flag to indicate the use of mm (millimeters).</span>
-</span><span id="easythresh-53"><a href="#easythresh-53"><span class="linenos">53</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="easythresh-54"><a href="#easythresh-54"><span class="linenos">54</span></a><span class="sd">    Returns:</span>
-</span><span id="easythresh-55"><a href="#easythresh-55"><span class="linenos">55</span></a><span class="sd">        NamedTuple of outputs (described in `EasythreshOutputs`).</span>
-</span><span id="easythresh-56"><a href="#easythresh-56"><span class="linenos">56</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="easythresh-57"><a href="#easythresh-57"><span class="linenos">57</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="easythresh-58"><a href="#easythresh-58"><span class="linenos">58</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">EASYTHRESH_METADATA</span><span class="p">)</span>
-</span><span id="easythresh-59"><a href="#easythresh-59"><span class="linenos">59</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="easythresh-60"><a href="#easythresh-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;easythresh&quot;</span><span class="p">)</span>
-</span><span id="easythresh-61"><a href="#easythresh-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">raw_zstat_input</span><span class="p">))</span>
-</span><span id="easythresh-62"><a href="#easythresh-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brain_mask_input</span><span class="p">))</span>
-</span><span id="easythresh-63"><a href="#easythresh-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cluster_z_thresh_input</span><span class="p">))</span>
-</span><span id="easythresh-64"><a href="#easythresh-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cluster_prob_thresh_input</span><span class="p">))</span>
-</span><span id="easythresh-65"><a href="#easythresh-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">background_image_input</span><span class="p">))</span>
-</span><span id="easythresh-66"><a href="#easythresh-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_root</span><span class="p">)</span>
-</span><span id="easythresh-67"><a href="#easythresh-67"><span class="linenos">67</span></a>    <span class="k">if</span> <span class="n">mm_flag</span><span class="p">:</span>
-</span><span id="easythresh-68"><a href="#easythresh-68"><span class="linenos">68</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mm&quot;</span><span class="p">)</span>
-</span><span id="easythresh-69"><a href="#easythresh-69"><span class="linenos">69</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">EasythreshOutputs</span><span class="p">(</span>
-</span><span id="easythresh-70"><a href="#easythresh-70"><span class="linenos">70</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="easythresh-71"><a href="#easythresh-71"><span class="linenos">71</span></a>        <span class="n">output_thresh_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_root</span><span class="si">}</span><span class="s2">_thresh.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="easythresh-72"><a href="#easythresh-72"><span class="linenos">72</span></a>    <span class="p">)</span>
-</span><span id="easythresh-73"><a href="#easythresh-73"><span class="linenos">73</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="easythresh-74"><a href="#easythresh-74"><span class="linenos">74</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="easythresh-27"><a href="#easythresh-27"><span class="linenos">27</span></a><span class="k">def</span> <span class="nf">easythresh</span><span class="p">(</span>
+</span><span id="easythresh-28"><a href="#easythresh-28"><span class="linenos">28</span></a>    <span class="n">raw_zstat_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="easythresh-29"><a href="#easythresh-29"><span class="linenos">29</span></a>    <span class="n">brain_mask_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="easythresh-30"><a href="#easythresh-30"><span class="linenos">30</span></a>    <span class="n">cluster_z_thresh_input</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="easythresh-31"><a href="#easythresh-31"><span class="linenos">31</span></a>    <span class="n">cluster_prob_thresh_input</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="easythresh-32"><a href="#easythresh-32"><span class="linenos">32</span></a>    <span class="n">background_image_input</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="easythresh-33"><a href="#easythresh-33"><span class="linenos">33</span></a>    <span class="n">output_root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="easythresh-34"><a href="#easythresh-34"><span class="linenos">34</span></a>    <span class="n">mm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="easythresh-35"><a href="#easythresh-35"><span class="linenos">35</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="easythresh-36"><a href="#easythresh-36"><span class="linenos">36</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EasythreshOutputs</span><span class="p">:</span>
+</span><span id="easythresh-37"><a href="#easythresh-37"><span class="linenos">37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="easythresh-38"><a href="#easythresh-38"><span class="linenos">38</span></a><span class="sd">    easythresh by Oxford Centre for Functional MRI of the Brain (FMRIB).</span>
+</span><span id="easythresh-39"><a href="#easythresh-39"><span class="linenos">39</span></a><span class="sd">    </span>
+</span><span id="easythresh-40"><a href="#easythresh-40"><span class="linenos">40</span></a><span class="sd">    Cluster-based statistical thresholding tool from FSL.</span>
+</span><span id="easythresh-41"><a href="#easythresh-41"><span class="linenos">41</span></a><span class="sd">    </span>
+</span><span id="easythresh-42"><a href="#easythresh-42"><span class="linenos">42</span></a><span class="sd">    More information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Easythresh</span>
+</span><span id="easythresh-43"><a href="#easythresh-43"><span class="linenos">43</span></a><span class="sd">    </span>
+</span><span id="easythresh-44"><a href="#easythresh-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
+</span><span id="easythresh-45"><a href="#easythresh-45"><span class="linenos">45</span></a><span class="sd">        raw_zstat_input: Input raw z-statistics image.</span>
+</span><span id="easythresh-46"><a href="#easythresh-46"><span class="linenos">46</span></a><span class="sd">        brain_mask_input: Brain mask image.</span>
+</span><span id="easythresh-47"><a href="#easythresh-47"><span class="linenos">47</span></a><span class="sd">        cluster_z_thresh_input: Cluster z-threshold.</span>
+</span><span id="easythresh-48"><a href="#easythresh-48"><span class="linenos">48</span></a><span class="sd">        cluster_prob_thresh_input: Cluster probability threshold.</span>
+</span><span id="easythresh-49"><a href="#easythresh-49"><span class="linenos">49</span></a><span class="sd">        background_image_input: Background image for thresholding.</span>
+</span><span id="easythresh-50"><a href="#easythresh-50"><span class="linenos">50</span></a><span class="sd">        output_root: Root of output file names.</span>
+</span><span id="easythresh-51"><a href="#easythresh-51"><span class="linenos">51</span></a><span class="sd">        mm_flag: Flag to indicate the use of mm (millimeters).</span>
+</span><span id="easythresh-52"><a href="#easythresh-52"><span class="linenos">52</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="easythresh-53"><a href="#easythresh-53"><span class="linenos">53</span></a><span class="sd">    Returns:</span>
+</span><span id="easythresh-54"><a href="#easythresh-54"><span class="linenos">54</span></a><span class="sd">        NamedTuple of outputs (described in `EasythreshOutputs`).</span>
+</span><span id="easythresh-55"><a href="#easythresh-55"><span class="linenos">55</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="easythresh-56"><a href="#easythresh-56"><span class="linenos">56</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="easythresh-57"><a href="#easythresh-57"><span class="linenos">57</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">EASYTHRESH_METADATA</span><span class="p">)</span>
+</span><span id="easythresh-58"><a href="#easythresh-58"><span class="linenos">58</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="easythresh-59"><a href="#easythresh-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;easythresh&quot;</span><span class="p">)</span>
+</span><span id="easythresh-60"><a href="#easythresh-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">raw_zstat_input</span><span class="p">))</span>
+</span><span id="easythresh-61"><a href="#easythresh-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brain_mask_input</span><span class="p">))</span>
+</span><span id="easythresh-62"><a href="#easythresh-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cluster_z_thresh_input</span><span class="p">))</span>
+</span><span id="easythresh-63"><a href="#easythresh-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cluster_prob_thresh_input</span><span class="p">))</span>
+</span><span id="easythresh-64"><a href="#easythresh-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">background_image_input</span><span class="p">))</span>
+</span><span id="easythresh-65"><a href="#easythresh-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_root</span><span class="p">)</span>
+</span><span id="easythresh-66"><a href="#easythresh-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">mm_flag</span><span class="p">:</span>
+</span><span id="easythresh-67"><a href="#easythresh-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mm&quot;</span><span class="p">)</span>
+</span><span id="easythresh-68"><a href="#easythresh-68"><span class="linenos">68</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">EasythreshOutputs</span><span class="p">(</span>
+</span><span id="easythresh-69"><a href="#easythresh-69"><span class="linenos">69</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="easythresh-70"><a href="#easythresh-70"><span class="linenos">70</span></a>        <span class="n">output_thresh_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_root</span><span class="si">}</span><span class="s2">_thresh.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="easythresh-71"><a href="#easythresh-71"><span class="linenos">71</span></a>    <span class="p">)</span>
+</span><span id="easythresh-72"><a href="#easythresh-72"><span class="linenos">72</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="easythresh-73"><a href="#easythresh-73"><span class="linenos">73</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
