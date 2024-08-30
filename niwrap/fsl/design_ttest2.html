@@ -77,61 +77,63 @@
 </span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="n">DESIGN_TTEST2_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;86984ceb86ba9ff4c213ef02c5b7ff79d885fa0e&quot;</span><span class="p">,</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1aac8635c8fa937d56e12e982bc15b5f166c599f&quot;</span><span class="p">,</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;design_ttest2&quot;</span><span class="p">,</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="p">)</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="k">class</span> <span class="nc">DesignTtest2Outputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">    Output object returned when calling `design_ttest2(...)`.</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="k">def</span> <span class="nf">design_ttest2</span><span class="p">(</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">design_files_rootname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>    <span class="n">ngroupa</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">ngroupb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="n">include_mean_contrasts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DesignTtest2Outputs</span><span class="p">:</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">    design_ttest2 by Analysis Group, FMRIB, Oxford, UK.</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">    </span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">    Command for generating group mean contrasts for a two-sample t-test design.</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="p">)</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="k">class</span> <span class="nc">DesignTtest2Outputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">    Output object returned when calling `design_ttest2(...)`.</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="k">def</span> <span class="nf">design_ttest2</span><span class="p">(</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">design_files_rootname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="n">ngroupa</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="n">ngroupb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="n">include_mean_contrasts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DesignTtest2Outputs</span><span class="p">:</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">    design_ttest2 by Analysis Group, FMRIB, Oxford, UK.</span>
 </span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">    </span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">    Args:</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">        design_files_rootname: Root name for design files.</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">        ngroupa: Number of subjects in group A.</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">        ngroupb: Number of subjects in group B.</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">        include_mean_contrasts: Include individual group mean contrasts.</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    Returns:</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        NamedTuple of outputs (described in `DesignTtest2Outputs`).</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DESIGN_TTEST2_METADATA</span><span class="p">)</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;design_ttest2&quot;</span><span class="p">)</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">design_files_rootname</span><span class="p">)</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ngroupa</span><span class="p">))</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ngroupb</span><span class="p">))</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="k">if</span> <span class="n">include_mean_contrasts</span><span class="p">:</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DesignTtest2Outputs</span><span class="p">(</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="p">)</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="s2">&quot;DESIGN_TTEST2_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="s2">&quot;DesignTtest2Outputs&quot;</span><span class="p">,</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="s2">&quot;design_ttest2&quot;</span><span class="p">,</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="p">]</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">    Command for generating group mean contrasts for a two-sample t-test design.</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    </span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    Args:</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">        design_files_rootname: Root name for design files.</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">        ngroupa: Number of subjects in group A.</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">        ngroupb: Number of subjects in group B.</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">        include_mean_contrasts: Include individual group mean contrasts.</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    Returns:</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        NamedTuple of outputs (described in `DesignTtest2Outputs`).</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DESIGN_TTEST2_METADATA</span><span class="p">)</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;design_ttest2&quot;</span><span class="p">)</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">design_files_rootname</span><span class="p">)</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ngroupa</span><span class="p">))</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ngroupb</span><span class="p">))</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="k">if</span> <span class="n">include_mean_contrasts</span><span class="p">:</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">)</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DesignTtest2Outputs</span><span class="p">(</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="p">)</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="s2">&quot;DESIGN_TTEST2_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="s2">&quot;DesignTtest2Outputs&quot;</span><span class="p">,</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="s2">&quot;design_ttest2&quot;</span><span class="p">,</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -140,7 +142,7 @@
                     <div class="attr variable">
             <span class="name">DESIGN_TTEST2_METADATA</span>        =
 <input id="DESIGN_TTEST2_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="DESIGN_TTEST2_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;86984ceb86ba9ff4c213ef02c5b7ff79d885fa0e&#39;, name=&#39;design_ttest2&#39;, package=None, citations=None, container_image_type=None, container_image_tag=None, container_image_index=None, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="DESIGN_TTEST2_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1aac8635c8fa937d56e12e982bc15b5f166c599f&#39;, name=&#39;design_ttest2&#39;, package=None, citations=None, container_image_type=&#39;docker&#39;, container_image_tag=&#39;mcin/fsl:6.0.5&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -160,12 +162,12 @@
 
     </div>
     <a class="headerlink" href="#DesignTtest2Outputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="DesignTtest2Outputs-15"><a href="#DesignTtest2Outputs-15"><span class="linenos">15</span></a><span class="k">class</span> <span class="nc">DesignTtest2Outputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="DesignTtest2Outputs-16"><a href="#DesignTtest2Outputs-16"><span class="linenos">16</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="DesignTtest2Outputs-17"><a href="#DesignTtest2Outputs-17"><span class="linenos">17</span></a><span class="sd">    Output object returned when calling `design_ttest2(...)`.</span>
-</span><span id="DesignTtest2Outputs-18"><a href="#DesignTtest2Outputs-18"><span class="linenos">18</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="DesignTtest2Outputs-19"><a href="#DesignTtest2Outputs-19"><span class="linenos">19</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="DesignTtest2Outputs-20"><a href="#DesignTtest2Outputs-20"><span class="linenos">20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="DesignTtest2Outputs-17"><a href="#DesignTtest2Outputs-17"><span class="linenos">17</span></a><span class="k">class</span> <span class="nc">DesignTtest2Outputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="DesignTtest2Outputs-18"><a href="#DesignTtest2Outputs-18"><span class="linenos">18</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="DesignTtest2Outputs-19"><a href="#DesignTtest2Outputs-19"><span class="linenos">19</span></a><span class="sd">    Output object returned when calling `design_ttest2(...)`.</span>
+</span><span id="DesignTtest2Outputs-20"><a href="#DesignTtest2Outputs-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="DesignTtest2Outputs-21"><a href="#DesignTtest2Outputs-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="DesignTtest2Outputs-22"><a href="#DesignTtest2Outputs-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -222,41 +224,41 @@
 
     </div>
     <a class="headerlink" href="#design_ttest2"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="design_ttest2-23"><a href="#design_ttest2-23"><span class="linenos">23</span></a><span class="k">def</span> <span class="nf">design_ttest2</span><span class="p">(</span>
-</span><span id="design_ttest2-24"><a href="#design_ttest2-24"><span class="linenos">24</span></a>    <span class="n">design_files_rootname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="design_ttest2-25"><a href="#design_ttest2-25"><span class="linenos">25</span></a>    <span class="n">ngroupa</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="design_ttest2-26"><a href="#design_ttest2-26"><span class="linenos">26</span></a>    <span class="n">ngroupb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="design_ttest2-27"><a href="#design_ttest2-27"><span class="linenos">27</span></a>    <span class="n">include_mean_contrasts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="design_ttest2-28"><a href="#design_ttest2-28"><span class="linenos">28</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="design_ttest2-29"><a href="#design_ttest2-29"><span class="linenos">29</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DesignTtest2Outputs</span><span class="p">:</span>
-</span><span id="design_ttest2-30"><a href="#design_ttest2-30"><span class="linenos">30</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="design_ttest2-31"><a href="#design_ttest2-31"><span class="linenos">31</span></a><span class="sd">    design_ttest2 by Analysis Group, FMRIB, Oxford, UK.</span>
-</span><span id="design_ttest2-32"><a href="#design_ttest2-32"><span class="linenos">32</span></a><span class="sd">    </span>
-</span><span id="design_ttest2-33"><a href="#design_ttest2-33"><span class="linenos">33</span></a><span class="sd">    Command for generating group mean contrasts for a two-sample t-test design.</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="design_ttest2-25"><a href="#design_ttest2-25"><span class="linenos">25</span></a><span class="k">def</span> <span class="nf">design_ttest2</span><span class="p">(</span>
+</span><span id="design_ttest2-26"><a href="#design_ttest2-26"><span class="linenos">26</span></a>    <span class="n">design_files_rootname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="design_ttest2-27"><a href="#design_ttest2-27"><span class="linenos">27</span></a>    <span class="n">ngroupa</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="design_ttest2-28"><a href="#design_ttest2-28"><span class="linenos">28</span></a>    <span class="n">ngroupb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="design_ttest2-29"><a href="#design_ttest2-29"><span class="linenos">29</span></a>    <span class="n">include_mean_contrasts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="design_ttest2-30"><a href="#design_ttest2-30"><span class="linenos">30</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="design_ttest2-31"><a href="#design_ttest2-31"><span class="linenos">31</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DesignTtest2Outputs</span><span class="p">:</span>
+</span><span id="design_ttest2-32"><a href="#design_ttest2-32"><span class="linenos">32</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="design_ttest2-33"><a href="#design_ttest2-33"><span class="linenos">33</span></a><span class="sd">    design_ttest2 by Analysis Group, FMRIB, Oxford, UK.</span>
 </span><span id="design_ttest2-34"><a href="#design_ttest2-34"><span class="linenos">34</span></a><span class="sd">    </span>
-</span><span id="design_ttest2-35"><a href="#design_ttest2-35"><span class="linenos">35</span></a><span class="sd">    Args:</span>
-</span><span id="design_ttest2-36"><a href="#design_ttest2-36"><span class="linenos">36</span></a><span class="sd">        design_files_rootname: Root name for design files.</span>
-</span><span id="design_ttest2-37"><a href="#design_ttest2-37"><span class="linenos">37</span></a><span class="sd">        ngroupa: Number of subjects in group A.</span>
-</span><span id="design_ttest2-38"><a href="#design_ttest2-38"><span class="linenos">38</span></a><span class="sd">        ngroupb: Number of subjects in group B.</span>
-</span><span id="design_ttest2-39"><a href="#design_ttest2-39"><span class="linenos">39</span></a><span class="sd">        include_mean_contrasts: Include individual group mean contrasts.</span>
-</span><span id="design_ttest2-40"><a href="#design_ttest2-40"><span class="linenos">40</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="design_ttest2-41"><a href="#design_ttest2-41"><span class="linenos">41</span></a><span class="sd">    Returns:</span>
-</span><span id="design_ttest2-42"><a href="#design_ttest2-42"><span class="linenos">42</span></a><span class="sd">        NamedTuple of outputs (described in `DesignTtest2Outputs`).</span>
-</span><span id="design_ttest2-43"><a href="#design_ttest2-43"><span class="linenos">43</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="design_ttest2-44"><a href="#design_ttest2-44"><span class="linenos">44</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="design_ttest2-45"><a href="#design_ttest2-45"><span class="linenos">45</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DESIGN_TTEST2_METADATA</span><span class="p">)</span>
-</span><span id="design_ttest2-46"><a href="#design_ttest2-46"><span class="linenos">46</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="design_ttest2-47"><a href="#design_ttest2-47"><span class="linenos">47</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;design_ttest2&quot;</span><span class="p">)</span>
-</span><span id="design_ttest2-48"><a href="#design_ttest2-48"><span class="linenos">48</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">design_files_rootname</span><span class="p">)</span>
-</span><span id="design_ttest2-49"><a href="#design_ttest2-49"><span class="linenos">49</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ngroupa</span><span class="p">))</span>
-</span><span id="design_ttest2-50"><a href="#design_ttest2-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ngroupb</span><span class="p">))</span>
-</span><span id="design_ttest2-51"><a href="#design_ttest2-51"><span class="linenos">51</span></a>    <span class="k">if</span> <span class="n">include_mean_contrasts</span><span class="p">:</span>
-</span><span id="design_ttest2-52"><a href="#design_ttest2-52"><span class="linenos">52</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">)</span>
-</span><span id="design_ttest2-53"><a href="#design_ttest2-53"><span class="linenos">53</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DesignTtest2Outputs</span><span class="p">(</span>
-</span><span id="design_ttest2-54"><a href="#design_ttest2-54"><span class="linenos">54</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="design_ttest2-55"><a href="#design_ttest2-55"><span class="linenos">55</span></a>    <span class="p">)</span>
-</span><span id="design_ttest2-56"><a href="#design_ttest2-56"><span class="linenos">56</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="design_ttest2-57"><a href="#design_ttest2-57"><span class="linenos">57</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="design_ttest2-35"><a href="#design_ttest2-35"><span class="linenos">35</span></a><span class="sd">    Command for generating group mean contrasts for a two-sample t-test design.</span>
+</span><span id="design_ttest2-36"><a href="#design_ttest2-36"><span class="linenos">36</span></a><span class="sd">    </span>
+</span><span id="design_ttest2-37"><a href="#design_ttest2-37"><span class="linenos">37</span></a><span class="sd">    Args:</span>
+</span><span id="design_ttest2-38"><a href="#design_ttest2-38"><span class="linenos">38</span></a><span class="sd">        design_files_rootname: Root name for design files.</span>
+</span><span id="design_ttest2-39"><a href="#design_ttest2-39"><span class="linenos">39</span></a><span class="sd">        ngroupa: Number of subjects in group A.</span>
+</span><span id="design_ttest2-40"><a href="#design_ttest2-40"><span class="linenos">40</span></a><span class="sd">        ngroupb: Number of subjects in group B.</span>
+</span><span id="design_ttest2-41"><a href="#design_ttest2-41"><span class="linenos">41</span></a><span class="sd">        include_mean_contrasts: Include individual group mean contrasts.</span>
+</span><span id="design_ttest2-42"><a href="#design_ttest2-42"><span class="linenos">42</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="design_ttest2-43"><a href="#design_ttest2-43"><span class="linenos">43</span></a><span class="sd">    Returns:</span>
+</span><span id="design_ttest2-44"><a href="#design_ttest2-44"><span class="linenos">44</span></a><span class="sd">        NamedTuple of outputs (described in `DesignTtest2Outputs`).</span>
+</span><span id="design_ttest2-45"><a href="#design_ttest2-45"><span class="linenos">45</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="design_ttest2-46"><a href="#design_ttest2-46"><span class="linenos">46</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="design_ttest2-47"><a href="#design_ttest2-47"><span class="linenos">47</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DESIGN_TTEST2_METADATA</span><span class="p">)</span>
+</span><span id="design_ttest2-48"><a href="#design_ttest2-48"><span class="linenos">48</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="design_ttest2-49"><a href="#design_ttest2-49"><span class="linenos">49</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;design_ttest2&quot;</span><span class="p">)</span>
+</span><span id="design_ttest2-50"><a href="#design_ttest2-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">design_files_rootname</span><span class="p">)</span>
+</span><span id="design_ttest2-51"><a href="#design_ttest2-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ngroupa</span><span class="p">))</span>
+</span><span id="design_ttest2-52"><a href="#design_ttest2-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ngroupb</span><span class="p">))</span>
+</span><span id="design_ttest2-53"><a href="#design_ttest2-53"><span class="linenos">53</span></a>    <span class="k">if</span> <span class="n">include_mean_contrasts</span><span class="p">:</span>
+</span><span id="design_ttest2-54"><a href="#design_ttest2-54"><span class="linenos">54</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">)</span>
+</span><span id="design_ttest2-55"><a href="#design_ttest2-55"><span class="linenos">55</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DesignTtest2Outputs</span><span class="p">(</span>
+</span><span id="design_ttest2-56"><a href="#design_ttest2-56"><span class="linenos">56</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="design_ttest2-57"><a href="#design_ttest2-57"><span class="linenos">57</span></a>    <span class="p">)</span>
+</span><span id="design_ttest2-58"><a href="#design_ttest2-58"><span class="linenos">58</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="design_ttest2-59"><a href="#design_ttest2-59"><span class="linenos">59</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
