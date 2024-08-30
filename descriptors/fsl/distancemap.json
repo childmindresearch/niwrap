@@ -1,5 +1,5 @@
 {
-  "tool-version": "2.0",
+  "tool-version": "6.0.5",
   "name": "distancemap",
   "author": "University of Oxford (Mark Jenkinson)",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL",
   "command-line": "distancemap [OPTIONS]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

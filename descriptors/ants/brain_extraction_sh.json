@@ -1,12 +1,14 @@
 {
-  "tool-version": "1.0.0",
   "name": "antsBrainExtraction.sh",
+  "command-line": "antsBrainExtraction.sh -d [DIMENSION] -a [ANATOMICAL_IMAGE] -e [BRAIN_EXTRACTION_TEMPLATE] -m [BRAIN_EXTRACTION_PROBABILITY_MASK] [TISSUE_CLASSIFICATION] [BRAIN_EXTRACTION_REGISTRATION_MASK] [KEEP_TEMP] [SINGLE_FLOAT_PRECISION] [INITIAL_MOVING_TRANSFORM] [ROTATION_SEARCH] [IMAGE_SUFFIX] [TRANSLATION_SEARCH] [RANDOM_SEEDING] [DEBUG_MODE] -o [OUTPUT_PREFIX]",
   "author": "Advanced Normalization Tools (ANTs) Contributors",
+  "description": "antsBrainExtraction.sh is a script from Advanced Normalization Tools (ANTs) for template-based brain extraction.",
   "url": "https://github.com/ANTsX/ANTs",
-  "command-line": "export PATH=$PATH:/opt/ants/bin && antsBrainExtraction.sh -d [DIMENSION] -a [ANATOMICAL_IMAGE] -e [BRAIN_EXTRACTION_TEMPLATE] -m [BRAIN_EXTRACTION_PROBABILITY_MASK] [TISSUE_CLASSIFICATION] [BRAIN_EXTRACTION_REGISTRATION_MASK] [KEEP_TEMP] [SINGLE_FLOAT_PRECISION] [INITIAL_MOVING_TRANSFORM] [ROTATION_SEARCH] [IMAGE_SUFFIX] [TRANSLATION_SEARCH] [RANDOM_SEEDING] [DEBUG_MODE] -o [OUTPUT_PREFIX]",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
   "container-image": {
-    "image": "antsx/ants",
-    "type": "docker"
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
   },
   "inputs": [
     {
@@ -163,8 +165,6 @@
       "path-template": "[OUTPUT_PREFIX]BrainExtractionPrior0GenericAffine.mat"
     }
   ],
-  "schema-version": "0.5",
-  "description": "antsBrainExtraction.sh is a script from Advanced Normalization Tools (ANTs) for template-based brain extraction.",
   "tags": {
     "domain": ["neuroinformatics", "mri", "brain extraction"]
   }

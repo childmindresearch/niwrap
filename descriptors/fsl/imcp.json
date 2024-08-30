@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "imcp",
   "author": "Unknown",
   "description": "Copy images from one location to another",

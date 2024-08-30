@@ -21,13 +21,12 @@
     }
   ],
   "schema-version": "0.5",
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "author": "YourName",
   "descriptor-url": "http://example.com/checkFEAT_descriptor.json",
   "url": "http://example.com/checkFEAT",
   "container-image": {
-    "image": "example/checkfeat:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "output-files": [

@@ -6,8 +6,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FAST",
   "command-line": "fast [CLASS_NUMBER] [ITER_NUMBER] [LOWPASS_EXTENT] [IMAGE_TYPE] [INITIAL_SEG_SMOOTHNESS] [SEGMENTS_FLAG] [INIT_PRIORS] [ALT_PRIORS] [NOPRIOR_FLAG] [BIAS_FIELD_FLAG] [B_CORRECTED_FLAG] [NO_BIAS_FLAG] [CHANNELS_NUMBER] [OUTPUT_BASE] [USE_PRIOR_FLAG] [SEG_INIT_ITERS] [MIXEL_SMOOTHNESS] [FIXED_ITERS] [SEG_SMOOTHNESS] [VERBOSE_FLAG] [HELP_FLAG] [MANUAL_SEG] [PROB_MAPS_FLAG] [INPUT_FILE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

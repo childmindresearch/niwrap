@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "match_smoothing",
   "description": "Computes the smoothing sigma needed to be applied to structural data to match a given functional data smoothing level.",
   "command-line": "match_smoothing <example_func> <func_smoothing_FWHM_in_mm> <example_structural> <standard_space_resolution>",

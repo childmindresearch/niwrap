@@ -5,8 +5,7 @@
   "description": "Utilities for handling FIRST's input and output files",
   "command-line": "first_utils [OPTIONAL_ARGS] -i [INPUT] -o [OUTPUT]",
   "container-image": {
-    "image": "mcin/docker-fsl:6.0.5",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

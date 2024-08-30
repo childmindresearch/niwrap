@@ -5,8 +5,7 @@
   "description": "A tool for various mesh operations as part of FSL.",
   "command-line": "run_mesh_utils [BASE_MESH] [OUTPUT_IMAGE] [INPUT_IMAGE] [SECOND_INPUT_IMAGE] [WEIGHTING_IMAGE_FORCE] [OPTIONAL_PARAMS...]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

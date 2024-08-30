@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslvbm_2_template",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLVBM",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLVBM",
   "command-line": "fslvbm_2_template [ARCH] [COPROCESSOR] [COPROCESSOR_MULTI] [COPROCESSOR_CLASS] [COPROCESSOR_TOOLKIT] [JOBHOLD] [ARRAY_HOLD] [LOGDIR] [MAILOPTIONS] [MAILTO] [NAME] [PRIORITY] [QUEUE] [RESOURCE] [DELETE_JOB] [GB] [PARALLELENV] [THREADS] [ARRAY_TASK] [ARRAY_NATIVE] [NUMBER] [COPROCESSOR_NAME] [PROJECT] [MINUTES] [JOB_FILE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

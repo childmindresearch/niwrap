@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "make_dyadic_vectors",
   "author": "Unknown",
   "description": "Generate dyadic vectors from theta and phi volumes.",

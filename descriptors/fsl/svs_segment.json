@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "svs_segment",
   "author": "FSL Development Team",
   "description": "FSL Magnetic Resonance Spectroscopy tool to construct mask in T1 space of an SVS voxel and generate a tissue segmentation file.",
   "command-line": "svs_segment [SVS] [T1] [ANAT] [OUTPUT] [FILENAME] [MASK_ONLY_FLAG] [NO_CLEAN_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

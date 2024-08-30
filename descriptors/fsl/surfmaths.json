@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "surfmaths",
   "description": "A command-line tool for performing various mathematical operations on surface files.",
   "command-line": "surfmaths [FIRST_INPUT] [OPERATIONS_INPUTS] [OUTPUT]",

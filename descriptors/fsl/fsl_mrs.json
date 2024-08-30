@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fsl_mrs",
   "author": "FMRIB Centre, University of Oxford",
   "description": "FSL Magnetic Resonance Spectroscopy Wrapper Script",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
   "command-line": "fsl_mrs [DATA] [BASIS] [OUTPUT] [ALGO] [IGNORE_METAB] [KEEP_METAB] [COMBINE_METAB] [PPMLIM] [H2O_FILE] [BASELINE_ORDER] [METAB_GROUPS] [ADD_MM_FLAG] [ADD_MM_MEGA_FLAG] [LORENTZIAN_FLAG] [IND_SCALE] [DISABLE_MH_PRIORS_FLAG] [T1_IMAGE] [TE] [TR] [TISSUE_FRAC] [INTERNAL_REF] [WREF_METABOLITE] [REF_PROTONS] [REF_INT_LIMITS] [H2O_SCALE] [REPORT_FLAG] [VERBOSE_FLAG] [OVERWRITE_FLAG] [CONJ_FID] [NO_CONJ_FID] [CONJ_BASIS] [NO_CONJ_BASIS] [NO_RESCALE] [CONFIG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

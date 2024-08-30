@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "slicesmask",
   "author": "Unknown",
   "description": "Tool for masking slices from an image using a mask",
   "command-line": "slicesmask [IMAGE] [MASK] [OUTPUT]",
   "container-image": {
-    "image": "unknown",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

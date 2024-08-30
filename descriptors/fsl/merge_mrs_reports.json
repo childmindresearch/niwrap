@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "merge_mrs_reports",
   "author": "FSL",
   "description": "FSL Magnetic Resonance Spectroscopy - Merge HTML reports based on filename in directory.",
   "command-line": "merge_mrs_reports [INPUT_FILES] --description [DESCRIPTION] [OUTPUT_DIR] [OUTPUT_FILENAME] [DELETE_FLAG]",
   "container-image": {
-    "image": "fsl/merge-mrs-reports:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

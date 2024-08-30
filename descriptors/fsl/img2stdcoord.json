@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "img2stdcoord",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Transforms image coordinates using standard space transformations.",

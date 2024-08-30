@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "siena_flow2std",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Convert edge flow to standard space",

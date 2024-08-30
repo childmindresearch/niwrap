@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fsl_reg",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Image registration using FSL tools",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT",
   "command-line": "fsl_reg [INPUT_FILE] [REFERENCE_FILE] [OUTPUT_FILE] [ESTIMATE_ONLY_FLAG] [AFFINE_ONLY_FLAG] [FNIRT_FA_CONFIG_FLAG] [FLIRT_OPTIONS] [FNIRT_OPTIONS]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

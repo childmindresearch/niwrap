@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "viena_quant",
   "author": "Unknown",
   "description": "Automated brain ventricle quantification tool",

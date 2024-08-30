@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "find_the_biggest",
   "author": "Unknown",
   "description": "Tool to find the largest volume or surface from a set of inputs",

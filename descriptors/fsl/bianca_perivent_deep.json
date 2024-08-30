@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "bianca_perivent_deep",
   "author": "BIANCA Development Team",
   "description": "Separates WMH into periventricular and deep WMH, saves two separate binary images, and calculates volume of total and separate WMHs.",

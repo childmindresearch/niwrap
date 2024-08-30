@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "ptoz",
   "author": "Statistical Parametric Mapping (SPM)",
   "description": "Convert p-values to z-values",
   "command-line": "ptoz [P_VALUE] [TAIL_FLAG] [GRF_FLAG]",
   "container-image": {
-    "image": "spm/spm12:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

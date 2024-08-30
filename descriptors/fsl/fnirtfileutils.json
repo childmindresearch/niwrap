@@ -5,8 +5,7 @@
   "description": "FNIRT file utilities for FSL - Converts FNIRT warp field coefficients to other formats",
   "command-line": "fnirtfileutils [INPUT_COEFS] [REFERENCE_MASK] [FIELD_OUTPUT] [OUTPUT_FORMAT] [WARP_RES] [KNOT_SPACE] [JACOBIAN_OUTPUT] [JACOBIAN_MATRIX] [WITH_AFF] [VERBOSE] [HELP]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

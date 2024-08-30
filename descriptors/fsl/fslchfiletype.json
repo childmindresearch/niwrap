@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslchfiletype",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Tool to change the file type of an image file or copy it to a new file.",

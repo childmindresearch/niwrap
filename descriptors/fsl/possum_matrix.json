@@ -1,5 +1,5 @@
 {
-  "tool-version": "2.0",
+  "tool-version": "6.0.5",
   "name": "possum_matrix",
   "author": "University of Oxford (Ivana Drobnjak)",
   "descriptor-url": "https://example.com/path/to/possum_matrix_descriptor.json",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM",
   "command-line": "possum_matrix -p [PULSE_SEQUENCE] -m [MOTION_MATRIX] -o [OUTPUT_MATRIX] [VERBOSE_FLAG] [HELP_FLAG] [OLD_VERSION_FLAG] [SEGMENT_SIZE]",
   "container-image": {
-    "image": "fsl:6.0.5",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

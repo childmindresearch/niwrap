@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "extracttxt",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Extracts text from a file based on a search word",
   "command-line": "/usr/local/fsl/bin/extracttxt [SEARCH_WORD] [FILE] [NUM_TRAILING_LINES] [RELATIVE_START]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

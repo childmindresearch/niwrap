@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "name": "swap_voxelwise",
   "author": "FMRIB Software Library (FSL)",
   "descriptor-url": "https://example.com/swap_voxelwise_descriptor.json",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT",
   "command-line": "swap_voxelwise -v [VECTORS_FILE_LIST] -s [SCALARS_FILE_LIST] -m [MASK] -b [OUTPUT_BASE_NAME] --mode [REORDER_MODE] --initmask [INIT_MASK] --xthresh [CROSSING_THRESH] -V",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

@@ -1,12 +1,12 @@
 {
-  "tool-version": "4.0.10",
+  "tool-version": "6.0.5",
   "name": "fabber_dwi",
   "author": "Release Team",
   "description": "Fabber diffusion-weighted imaging tool for model-based analysis using forward models and different inference methods.",
   "url": "https://www.fmrib.ox.ac.uk/fabber_dwi",
   "command-line": "fabber [PARAMS]",
   "container-image": {
-    "image": "docker.io/fmrib/fabber_dwi:latest",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

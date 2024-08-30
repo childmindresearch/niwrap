@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslmaths",
   "author": "FMRIB Analysis Group, Oxford University, UK",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
   "command-line": "fslmaths [INPUT_FILE] [OPERATIONS] [OUTPUT_FILE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

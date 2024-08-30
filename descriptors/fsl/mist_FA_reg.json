@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "mist_FA_reg",
   "author": "Unknown",
   "description": "Tool for registering FA volumes to a reference T1 volume",

@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "6.0.5",
   "name": "gps",
   "author": "University of Oxford (Jesper Andersson)",
   "description": "Generate set of diffusion gradient directions",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL",
   "command-line": "gps [NDIR] [OPTIMIZE_WHOLE_SPHERE] [OUTPUT] [RANSEED] [INIT] [REPORT] [VERBOSE] [HELP]",
   "container-image": {
-    "image": "mcin/docker-fsl:6.0.5",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

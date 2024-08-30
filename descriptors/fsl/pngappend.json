@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "pngappend",
   "author": "Unknown",
   "description": "Append PNG files horizontally and/or vertically into a new PNG (or GIF) file",

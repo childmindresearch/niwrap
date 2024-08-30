@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "6.0.5",
   "name": "fslsmoothfill",
   "author": "University of Oxford (Mark Jenkinson)",
   "description": "Smoothfill is a tool designed to fill in holes in images by smoothly interpolating the pixel values.",
   "command-line": "smoothfill -i [INPUT_IMAGE] -m [MASK_IMAGE] -o [OUTPUT_IMAGE] [NUMBER_OF_ITERATIONS] [DEBUG_FLAG] [VERBOSE_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:6.0.5",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

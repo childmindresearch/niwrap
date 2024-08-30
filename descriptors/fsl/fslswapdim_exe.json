@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslswapdim_exe",
   "author": "FMRIB Centre, Oxford University",
   "description": "Tool to swap the x, y, z axes dimensions of an image",
   "command-line": "fslswapdim_exe [INPUT_FILE] [AXIS_A] [AXIS_B] [AXIS_C] [OUTPUT_FILE] [CHECK_LR_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

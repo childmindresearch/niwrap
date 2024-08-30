@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "standard_space_roi",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Masks input and/or reduces its FOV based on a standard space image or mask, transformed into the space of the input image.",
   "command-line": "standard_space_roi [INPUT_FILE] [OUTPUT_FILE] [MASK_FOV_FLAG] [MASK_MASK] [MASK_NONE_FLAG] [ROI_FOV_FLAG] [ROI_MASK] [ROI_NONE_FLAG] [SS_REF] [ALT_INPUT] [DEBUG_FLAG] [BET_PREMASK_FLAG] [FLIRT_OPTIONS]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

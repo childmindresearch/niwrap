@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "zeropad",
   "author": "Unknown",
   "description": "Tool for zero-padding numbers to a specified length",
   "url": "Unknown",
   "command-line": "zeropad [INPUT_NUMBER] [LENGTH]",
   "container-image": {
-    "image": "zeropad:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

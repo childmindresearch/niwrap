@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslslice",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Tool to extract all slices from a 3D volume and store as 2D images",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
   "command-line": "fslslice [VOLUME] [OUTPUT_BASENAME]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

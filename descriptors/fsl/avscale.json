@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "avscale",
   "author": "Unknown",
   "description": "A command line tool for computing affine transformations.",
   "command-line": "avscale [ALLPARAMS_FLAG] [INVERTED_DDIES_FLAG] [MATRIX_FILE] [NON_REFERENCE_VOLUME] > output.txt",
   "container-image": {
-    "image": "mydockerhubuser/avscale:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

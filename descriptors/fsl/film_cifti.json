@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "film_cifti",
   "author": "FSL Community",
   "description": "A tool for statistical analysis of CIFTI files using FILM.",
   "command-line": "film_cifti -i [INPUT_FILENAME] -o [BASENAME] -l [LEFT_SURFACE] -r [RIGHT_SURFACE] [SUSAN_THRESHOLD] [SUSAN_EXTENT] [SURFACE_SIGMA] [SURFACE_EXTENT] [FILM_OPTIONS]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

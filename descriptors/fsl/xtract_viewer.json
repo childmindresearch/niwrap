@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "xtract_viewer",
   "author": "FMRIB Centre, University of Oxford",
   "description": "Viewer tool for XTRACT output",

@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "siena_flirt",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Wrapper for FLIRT image registration within the SIENA framework.",
   "command-line": "siena_flirt [INPUT1_FILEROOT] [INPUT2_FILEROOT]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

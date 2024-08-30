@@ -3,14 +3,13 @@
   "name": "possum",
   "description": "Positron emission tomography (PET) simulation tool as part of FSL suite",
   "schema-version": "0.5",
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "author": "University of Oxford (Ivana Drobnjak)",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM",
   "container-image": {
-    "type": "docker",
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io"
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
   },
   "inputs": [
     {

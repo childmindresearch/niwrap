@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslcomplex",
   "author": "FMRIB Analysis Group, Oxford University, UK",
   "description": "Tool for manipulating complex-valued MR data",

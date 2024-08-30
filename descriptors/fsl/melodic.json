@@ -1,13 +1,12 @@
 {
-  "tool-version": "3.15",
+  "tool-version": "6.0.5",
   "name": "melodic",
   "author": "Christian F. Beckmann, University of Oxford",
   "description": "Multivariate Exploratory Linear Optimised Decomposition into Independent Components",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MELODIC",
   "command-line": "melodic [INFILE] [OUTDIR] [MASK] [DIM] [APPROACH] [VN] [REPORT] [CIFTI] [NOMASK] [UPDATE_MASK] [NOBET] [BGTHRESHOLD] [DIMEST] [SEP_VN] [DISABLE_MIGP] [MIGP_N] [MIGP_SHUFFLE] [MIGP_FACTOR] [NUM_ICS] [NL] [COVARWEIGHT] [EPS_RANK1] [EPS] [MAXIT] [MAXRESTART] [MMTHRESH] [NO_MM] [ICS] [MIX] [SMODE] [FILTER] [BGIMAGE] [TR] [LOGPOWER] [TDES] [TCON] [SDES] [SCON] [OUNMIX] [OSTATS] [OPCA] [OWHITE] [OORIG] [OMEAN] [VERSION] [COPYRIGHT] [DEBUG] [REPORT_MAPS] [KEEP_MEANVOL]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

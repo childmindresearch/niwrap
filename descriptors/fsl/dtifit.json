@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide#DTIFIT",
   "command-line": "dtifit [DATA_FILE] [OUTPUT_BASENAME] [MASK_FILE] [BVEC_FILE] [BVAL_FILE] [VERBOSE_FLAG] [SE_FLAG] [WLS_FLAG] [KURT_FLAG] [KURTDIR_FLAG] [LITTLEBIT_FLAG] [SAVE_TENSOR_FLAG] [ZMIN] [ZMAX] [YMIN] [YMAX] [XMIN] [XMAX] [GRADNONLIN_FILE] [CONFOUND_REGRESSORS]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

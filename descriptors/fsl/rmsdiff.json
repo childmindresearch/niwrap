@@ -1,11 +1,10 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "rmsdiff",
   "description": "Outputs RMS deviation between matrices (in mm)",
   "command-line": "rmsdiff [MATRIXFILE1] [MATRIXFILE2] [REFVOL] [MASK]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

@@ -1,12 +1,11 @@
 {
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "name": "dtigen",
   "author": "FSL",
   "description": "Generate diffusion data using tensor model",
   "command-line": "dtigen [TENSOR] [S0] [OUTPUT_DATA] [BVECS] [BVALS] [BRAINMASK] [KURTOSIS] [HELP]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

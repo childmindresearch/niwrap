@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.3",
+  "tool-version": "6.0.5",
   "name": "swe",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "descriptor-url": "https://example.com/descriptors/fsl_swe.json",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
   "command-line": "swe -i [INPUT_FILE] -o [OUTPUT_ROOT] -d [DESIGN_MAT] -t [DESIGN_CON] -s [DESIGN_SUB] [MASK] [FCON] [MODIFIED] [WB] [LOGP] [NBOOT] [CORRP] [FONLY] [TFCE] [TFCE2] [CLUSTER_T] [CLUSTER_T_MASS] [CLUSTER_F] [CLUSTER_F_MASS] [QUIET] [RAW] [EQUIV] [DOF] [UNCORR_P] [NULL_DIST] [NO_RC_MASK] [SEED] [TFCE_HEIGHT] [TFCE_DELTA] [TFCE_EXTENT] [TFCE_CONN] [VOXELWISE_EV] [VOXELWISE_EVS] [GLM_OUTPUT]",
   "container-image": {
-    "image": "fsl/swe:1.0.3",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

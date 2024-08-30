@@ -1,13 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "tbss_x",
   "author": "FMRIB Software Library (FSL)",
   "description": "TBSS cross-subject script for processing scalar and vector directories.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS",
   "command-line": "tbss_x [SCALAR_DIRS] [VECTOR_DIRS]",
   "container-image": {
-    "image": "fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

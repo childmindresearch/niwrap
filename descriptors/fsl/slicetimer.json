@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5:9e026117",
+  "tool-version": "6.0.5",
   "name": "slicetimer",
   "author": "University of Oxford, FMRIB",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Slicetimer",
@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Slicetimer",
   "command-line": "slicetimer -i [INPUT_FILE] [-o OUTPUT_FILE] [--down] [-r TR_VALUE] [-d DIRECTION] [--odd] [--tcustom TCUSTOM_FILE] [--tglobal TGLOBAL_VALUE] [--ocustom OCUSTOM_FILE] [-v]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

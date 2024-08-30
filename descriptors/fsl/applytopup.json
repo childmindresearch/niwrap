@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "6.0.5",
   "name": "applytopup",
   "author": "University of Oxford (Jesper Andersson)",
   "description": "applytopup applies corrections to images using the field estimates produced by topup.",
   "command-line": "applytopup [IMAIN] [DATAIN] [ININDEX] [TOPUP] [OUT] [METHOD] [INTERP] [DATATYPE] [VERBOSE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

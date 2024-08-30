@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "fslFixText",
   "author": "FMRIB Software Library (FSL)",
   "description": "Ensures standard UNIX line endings in the output text file",
   "command-line": "fslFixText [INPUT_TEXT_FILE] [OUTPUT_TEXT_FILE]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

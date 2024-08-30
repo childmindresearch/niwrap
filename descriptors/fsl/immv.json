@@ -1,12 +1,11 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "immv",
   "author": "Unknown",
   "description": "Moves images from one file or directory to another.",
   "command-line": "immv [SOURCE_FILES] [DESTINATION]",
   "container-image": {
-    "image": "docker/immv:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "xtract_blueprint",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Blueprint extraction tool using XTRACT and bedpostx folders",

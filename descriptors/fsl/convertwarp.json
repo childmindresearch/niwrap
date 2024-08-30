@@ -7,8 +7,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk",
   "command-line": "convertwarp [OUTPUT_FILE] [REFERENCE] [PREMAT] [WARP1] [MIDMAT] [WARP2] [POSTMAT] [SHIFT_MAP] [SHIFT_DIR] [JACOBIAN_FLAG] [JSTATS_FLAG] [CONSTRAINJ_FLAG] [JMIN] [JMAX] [ABS_FLAG] [REL_FLAG] [ABSOUT_FLAG] [RELOUT_FLAG] [VERBOSE_FLAG]",
   "container-image": {
-    "image": "mcin/docker-fsl:latest",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [

@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "6.0.5",
   "name": "concat_bvars",
   "author": "Unknown",
   "description": "Concatenate multiple .bvars files into a single .bvars file",

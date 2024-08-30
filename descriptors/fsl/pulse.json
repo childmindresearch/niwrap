@@ -6,8 +6,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Pulse",
   "command-line": "pulse -i [INPUT_FILE] -o [OUTPUT_BASE] [SEQ] [ANGLE] [TE] [TR] [TRSLC] [NX] [NY] [DX] [DY] [MAXG] [RISET] [BW] [NUMVOL] [NUMSLC] [SLCTHK] [GAP] [ZSTART] [SLCDIR] [PHASEDIR] [READDIR] [VERBOSE_FLAG] [KCOORD_FLAG] [COVER]",
   "container-image": {
-    "image": "mcin/docker-fsl:6.0.5",
-    "index": "index.docker.io",
+    "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [
