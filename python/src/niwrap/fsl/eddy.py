@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 EDDY_METADATA = Metadata(
-    id="5689e9c35bb33ec968bd87963a3539a5308fe0d1",
+    id="ce709a7ad4031c620e969a2cba36e6dd9d2fc3f0",
     name="eddy",
     container_image_type="docker",
     container_image_tag="mcin/fsl:6.0.5",
@@ -155,41 +155,41 @@ def eddy(
         implementation +
         ""
     )
-    cargs.extend(["--imain", execution.input_file(imain)])
-    cargs.extend(["--mask", execution.input_file(mask)])
-    cargs.extend(["--index", execution.input_file(index)])
-    cargs.extend(["--acqp", execution.input_file(acqp)])
-    cargs.extend(["--bvecs", execution.input_file(bvecs)])
-    cargs.extend(["--bvals", execution.input_file(bvals)])
-    cargs.extend(["--out", out])
+    cargs.append(("--imain=" + execution.input_file(imain)))
+    cargs.append(("--mask=" + execution.input_file(mask)))
+    cargs.append(("--index=" + execution.input_file(index)))
+    cargs.append(("--acqp=" + execution.input_file(acqp)))
+    cargs.append(("--bvecs=" + execution.input_file(bvecs)))
+    cargs.append(("--bvals=" + execution.input_file(bvals)))
+    cargs.append(("--out=" + out))
     if mb is not None:
-        cargs.extend(["--mb", str(mb)])
+        cargs.append(("--mb=" + str(mb)))
     if mb_offs is not None:
-        cargs.extend(["--mb_offs", str(mb_offs)])
+        cargs.append(("--mb_offs=" + str(mb_offs)))
     if slspec is not None:
-        cargs.extend(["--slspec", execution.input_file(slspec)])
+        cargs.append(("--slspec=" + execution.input_file(slspec)))
     if json_ is not None:
-        cargs.extend(["--json", execution.input_file(json_)])
+        cargs.append(("--json=" + execution.input_file(json_)))
     if mporder is not None:
-        cargs.extend(["--mporder", str(mporder)])
+        cargs.append(("--mporder=" + str(mporder)))
     if s2v_lambda is not None:
-        cargs.extend(["--s2v_lambda", str(s2v_lambda)])
+        cargs.append(("--s2v_lambda=" + str(s2v_lambda)))
     if topup is not None:
-        cargs.extend(["--topup", topup])
+        cargs.append(("--topup=" + topup))
     if field is not None:
-        cargs.extend(["--field", execution.input_file(field)])
+        cargs.append(("--field=" + execution.input_file(field)))
     if field_mat is not None:
-        cargs.extend(["--field_mat", execution.input_file(field_mat)])
+        cargs.append(("--field_mat=" + execution.input_file(field_mat)))
     if flm is not None:
-        cargs.extend(["--flm", flm])
+        cargs.append(("--flm=" + flm))
     if slm is not None:
-        cargs.extend(["--slm", slm])
+        cargs.append(("--slm=" + slm))
     if fwhm is not None:
-        cargs.extend(["--fwhm", str(fwhm)])
+        cargs.append(("--fwhm=" + str(fwhm)))
     if niter is not None:
-        cargs.extend(["--niter", str(niter)])
+        cargs.append(("--niter=" + str(niter)))
     if s2v_niter is not None:
-        cargs.extend(["--s2v_niter", str(s2v_niter)])
+        cargs.append(("--s2v_niter=" + str(s2v_niter)))
     if cnr_maps:
         cargs.append("--cnr_maps")
     if residuals:
@@ -197,25 +197,25 @@ def eddy(
     if fep:
         cargs.append("--fep")
     if interp is not None:
-        cargs.extend(["--interp", interp])
+        cargs.append(("--interp=" + interp))
     if s2v_interp is not None:
-        cargs.extend(["--s2v_interp", s2v_interp])
+        cargs.append(("--s2v_interp=" + s2v_interp))
     if resamp is not None:
-        cargs.extend(["--resamp", resamp])
+        cargs.append(("--resamp=" + resamp))
     if nvoxhp is not None:
-        cargs.extend(["--nvoxhp", str(nvoxhp)])
+        cargs.append(("--nvoxhp=" + str(nvoxhp)))
     if initrand is not None:
-        cargs.extend(["--initrand", str(initrand)])
+        cargs.append(("--initrand=" + str(initrand)))
     if ff is not None:
-        cargs.extend(["--ff", str(ff)])
+        cargs.append(("--ff=" + str(ff)))
     if repol:
         cargs.append("--repol")
     if ol_nstd is not None:
-        cargs.extend(["--ol_nstd", str(ol_nstd)])
+        cargs.append(("--ol_nstd=" + str(ol_nstd)))
     if ol_nvox is not None:
-        cargs.extend(["--ol_nvox", str(ol_nvox)])
+        cargs.append(("--ol_nvox=" + str(ol_nvox)))
     if ol_type is not None:
-        cargs.extend(["--ol_type", ol_type])
+        cargs.append(("--ol_type=" + ol_type))
     if ol_pos:
         cargs.append("--ol_pos")
     if ol_sqr:
@@ -223,11 +223,11 @@ def eddy(
     if estimate_move_by_susceptibility:
         cargs.append("--estimate_move_by_susceptibility")
     if mbs_niter is not None:
-        cargs.extend(["--mbs_niter", str(mbs_niter)])
+        cargs.append(("--mbs_niter=" + str(mbs_niter)))
     if mbs_lambda is not None:
-        cargs.extend(["--mbs_lambda", str(mbs_lambda)])
+        cargs.append(("--mbs_lambda=" + str(mbs_lambda)))
     if mbs_ksp is not None:
-        cargs.extend(["--mbs_ksp", str(mbs_ksp)])
+        cargs.append(("--mbs_ksp=" + str(mbs_ksp)))
     if dont_sep_offs_move:
         cargs.append("--dont_sep_offs_move")
     if dont_peas:
@@ -235,7 +235,7 @@ def eddy(
     if data_is_shelled:
         cargs.append("--data_is_shelled")
     if verbose:
-        cargs.append("-v")
+        cargs.append("--verbose")
     ret = EddyOutputs(
         root=execution.output_file("."),
         out=execution.output_file(f"{out}.nii.gz"),

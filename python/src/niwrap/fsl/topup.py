@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 TOPUP_METADATA = Metadata(
-    id="f428ace671eec40beebfde9d1fe06786d21f052b",
+    id="cdbf76a7e558a086c2cb4771c8b164f24396f311",
     name="topup",
     container_image_type="docker",
     container_image_tag="mcin/fsl:6.0.5",
@@ -102,48 +102,48 @@ def topup(
     execution = runner.start_execution(TOPUP_METADATA)
     cargs = []
     cargs.append("topup")
-    cargs.extend(["--imain", execution.input_file(imain)])
-    cargs.extend(["--datain", execution.input_file(datain)])
+    cargs.append(("--imain=" + execution.input_file(imain)))
+    cargs.append(("--datain=" + execution.input_file(datain)))
     if out is not None:
-        cargs.extend(["--out", out])
+        cargs.append(("--out=" + out))
     if fout is not None:
-        cargs.extend(["--fout", fout])
+        cargs.append(("--fout=" + fout))
     if iout is not None:
-        cargs.extend(["--iout", iout])
+        cargs.append(("--iout=" + iout))
     if logout is not None:
-        cargs.extend(["--logout", logout])
+        cargs.append(("--logout=" + logout))
     if warpres is not None:
-        cargs.extend(["--warpres", str(warpres)])
+        cargs.append(("--warpres=" + str(warpres)))
     if subsamp is not None:
-        cargs.extend(["--subsamp", str(subsamp)])
+        cargs.append(("--subsamp=" + str(subsamp)))
     if fwhm is not None:
-        cargs.extend(["--fwhm", str(fwhm)])
+        cargs.append(("--fwhm=" + str(fwhm)))
     if config is not None:
-        cargs.extend(["--config", execution.input_file(config)])
+        cargs.append(("--config=" + execution.input_file(config)))
     if miter is not None:
-        cargs.extend(["--miter", str(miter)])
+        cargs.append(("--miter=" + str(miter)))
     if lambda_ is not None:
-        cargs.extend(["--lambda", str(lambda_)])
+        cargs.append(("--lambda=" + str(lambda_)))
     if ssqlambda:
         cargs.append("--ssqlambda")
     if regmod is not None:
-        cargs.extend(["--regmod", regmod])
+        cargs.append(("--regmod=" + regmod))
     if estmov:
         cargs.append("--estmov")
     if minmet is not None:
-        cargs.extend(["--minmet", str(minmet)])
+        cargs.append(("--minmet=" + str(minmet)))
     if splineorder is not None:
-        cargs.extend(["--splineorder", str(splineorder)])
+        cargs.append(("--splineorder=" + str(splineorder)))
     if numprec is not None:
-        cargs.extend(["--numprec", numprec])
+        cargs.append(("--numprec=" + numprec))
     if interp is not None:
-        cargs.extend(["--interp", interp])
+        cargs.append(("--interp=" + interp))
     if scale:
         cargs.append("--scale")
     if regrid:
         cargs.append("--regrid")
     if verbose:
-        cargs.append("-v")
+        cargs.append("--verbose")
     ret = TopupOutputs(
         root=execution.output_file("."),
         fieldcoef=execution.output_file(f"{out}_fieldcoef.nii.gz", optional=True) if out is not None else None,
