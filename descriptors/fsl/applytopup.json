@@ -10,7 +10,8 @@
   },
   "inputs": [
     {
-      "command-line-flag": "-i",
+      "command-line-flag": "--imain",
+      "command-line-flag-separator": "=",
       "description": "Comma separated list of names of input image (to be corrected)",
       "value-key": "[IMAIN]",
       "type": "String",
@@ -20,7 +21,8 @@
       "name": "Input images"
     },
     {
-      "command-line-flag": "-a",
+      "command-line-flag": "--datain",
+      "command-line-flag-separator": "=",
       "description": "Name of text file with PE directions/times",
       "value-key": "[DATAIN]",
       "type": "File",
@@ -29,7 +31,8 @@
       "name": "PE directions/times file"
     },
     {
-      "command-line-flag": "-x",
+      "command-line-flag": "--inindex",
+      "command-line-flag-separator": "=",
       "description": "Comma separated list of indices into --datain of the input image (to be corrected)",
       "value-key": "[ININDEX]",
       "type": "String",
@@ -39,7 +42,8 @@
       "name": "Input index"
     },
     {
-      "command-line-flag": "-t",
+      "command-line-flag": "--topup",
+      "command-line-flag-separator": "=",
       "description": "Name of field/movements (from topup)",
       "value-key": "[TOPUP]",
       "type": "File",
@@ -48,7 +52,8 @@
       "name": "Topup file"
     },
     {
-      "command-line-flag": "-o",
+      "command-line-flag": "--out",
+      "command-line-flag-separator": "=",
       "description": "Basename for output (warped) image",
       "value-key": "[OUT]",
       "type": "String",
@@ -57,7 +62,8 @@
       "name": "Output basename"
     },
     {
-      "command-line-flag": "-m",
+      "command-line-flag": "--method",
+      "command-line-flag-separator": "=",
       "description": "Use jacobian modulation (jac) or least-squares resampling (lsr), default=lsr.",
       "value-key": "[METHOD]",
       "type": "String",
@@ -67,7 +73,8 @@
       "value-choices": ["jac", "lsr"]
     },
     {
-      "command-line-flag": "-n",
+      "command-line-flag": "--interp",
+      "command-line-flag-separator": "=",
       "description": "Interpolation method {trilinear, spline}, default=spline",
       "value-key": "[INTERP]",
       "type": "String",
@@ -77,7 +84,8 @@
       "value-choices": ["trilinear", "spline"]
     },
     {
-      "command-line-flag": "-d",
+      "command-line-flag": "--datatype",
+      "command-line-flag-separator": "=",
       "description": "Force output data type [char short int float double]",
       "value-key": "[DATATYPE]",
       "type": "String",
@@ -87,7 +95,7 @@
       "value-choices": ["char", "short", "int", "float", "double"]
     },
     {
-      "command-line-flag": "-v",
+      "command-line-flag": "--verbose",
       "description": "Switch on diagnostic messages",
       "value-key": "[VERBOSE]",
       "type": "Flag",
