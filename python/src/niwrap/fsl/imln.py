@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 IMLN_METADATA = Metadata(
-    id="53e341991d1619dc24b418013b3be4975b4fd73a",
+    id="595162825bdbaad5d60b6891e218c10788288793",
     name="imln",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

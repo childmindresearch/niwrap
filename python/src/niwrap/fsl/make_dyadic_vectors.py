@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 MAKE_DYADIC_VECTORS_METADATA = Metadata(
-    id="ffe97ad1866d2a51591e41eb27c710c7d2d7ef38",
+    id="b4de8521b0d728a2cfd51b34e8ee2f002547c807",
     name="make_dyadic_vectors",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

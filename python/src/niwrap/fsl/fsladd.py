@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FSLADD_METADATA = Metadata(
-    id="907045f0ac60c86119bc8fe3bd4229d3744d33f9",
+    id="296fc8cd9627bd33d78bcb09e3e55336f873c087",
     name="fsladd",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

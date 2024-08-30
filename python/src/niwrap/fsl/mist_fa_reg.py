@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 MIST_FA_REG_METADATA = Metadata(
-    id="829599099bf13b6d9ba25e9e772b164cb5d21c80",
+    id="a9f1bc288265f12b7ebca035eb5d80204b814136",
     name="mist_FA_reg",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

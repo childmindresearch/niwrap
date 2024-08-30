@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 PREWHITEN_METADATA = Metadata(
-    id="2fa03a2bc467521b4c0f9f8c27087bef598cf830",
+    id="93a98add87a31c04e0e49053a0e4eb6908676f51",
     name="prewhiten",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

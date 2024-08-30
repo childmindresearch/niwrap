@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 CONCAT_BVARS_METADATA = Metadata(
-    id="56a39573ccea41331a7b1c4376d406aa4f23fe43",
+    id="6a9bf9f25c132f92894f26ddadc2707ebb8f44eb",
     name="concat_bvars",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

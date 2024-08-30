@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 CREATE_LUT_METADATA = Metadata(
-    id="ca4a9df03dface8a3de15bd1e67ce7458828d737",
+    id="9f5316c7886385051e5fff290fb582380333101b",
     name="create_lut",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

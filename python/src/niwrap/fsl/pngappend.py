@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 PNGAPPEND_METADATA = Metadata(
-    id="e4d2f11aae2779ff8a0ce1b09ba80f71df2f4988",
+    id="4411b6d37915e58f561527f34913fc3b997e325e",
     name="pngappend",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

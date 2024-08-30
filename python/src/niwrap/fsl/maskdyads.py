@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 MASKDYADS_METADATA = Metadata(
-    id="085bd08314a5144d8e8cd814b9d9228772f317dd",
+    id="70afa57ee8266eb294a4d388bcf8ef82305bc603",
     name="maskdyads",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

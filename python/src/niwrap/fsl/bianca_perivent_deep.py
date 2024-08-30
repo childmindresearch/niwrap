@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 BIANCA_PERIVENT_DEEP_METADATA = Metadata(
-    id="d53313beeff2f6de09d0daa7a060866151ecf2a9",
+    id="b4075edf8e76b937e80559712e3fd8686875ca35",
     name="bianca_perivent_deep",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 IMCP_METADATA = Metadata(
-    id="d0a1b88141662ba74e5c276703b5945baec8f9b6",
+    id="4c8d6b3e7e8e931e5a4519149846c8c8c3901d6a",
     name="imcp",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

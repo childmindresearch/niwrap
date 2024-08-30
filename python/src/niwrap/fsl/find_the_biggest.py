@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FIND_THE_BIGGEST_METADATA = Metadata(
-    id="6aa7f07dd475d72086a19e05325ce12cde68074d",
+    id="4223284ffaa6be319c644e5d1daaee7e360a61dc",
     name="find_the_biggest",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

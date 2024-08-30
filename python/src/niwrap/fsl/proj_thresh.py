@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 PROJ_THRESH_METADATA = Metadata(
-    id="7a764ff62c3ee162c2362d7b6187ea6e5e0185a2",
+    id="e3776dfaa76fb62791a030b9053716c89b7c328b",
     name="proj_thresh",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

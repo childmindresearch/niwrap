@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 WHIRLGIF_METADATA = Metadata(
-    id="32a2b9ec1b540e9a52df629324b69018fd76f479",
+    id="02193ac52a0ec72f0e559460a3928eea0e8579e6",
     name="whirlgif",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

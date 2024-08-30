@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 XTRACT_BLUEPRINT_METADATA = Metadata(
-    id="c4864210a15b35f7a67b2977a42117d1eda9de6b",
+    id="ba39ba249f8c307b2d42d56510e04db2a384a01f",
     name="xtract_blueprint",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

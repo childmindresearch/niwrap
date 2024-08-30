@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 OXFORD_ASL_METADATA = Metadata(
-    id="a76c647cb7aa478db4693deedb6e3fe2bc1083b7",
+    id="1225d433fbe151420738b535aab2a7687f83e294",
     name="oxford_asl",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

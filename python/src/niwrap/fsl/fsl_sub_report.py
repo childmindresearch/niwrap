@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FSL_SUB_REPORT_METADATA = Metadata(
-    id="9c3b90b512bfc153ebdc1088afec509bba38ea2d",
+    id="ce23ba4c898e3d66ad396a3b3d4a8c8a30299bd7",
     name="fsl_sub_report",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

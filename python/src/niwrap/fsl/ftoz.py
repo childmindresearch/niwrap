@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FTOZ_METADATA = Metadata(
-    id="76cfc0dbfbf74693bcd33da5b1e25a4417be82b1",
+    id="f01afa9b8431b1163d41919afd62f2c7b9f742dd",
     name="ftoz",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

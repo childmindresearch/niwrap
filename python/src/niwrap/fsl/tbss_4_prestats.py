@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 TBSS_4_PRESTATS_METADATA = Metadata(
-    id="6528300663fe7670c76b1fc174f15fbdeeb3cde9",
+    id="6d72a9e868ac4e6fa0f862c6199672dd62007438",
     name="tbss_4_prestats",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

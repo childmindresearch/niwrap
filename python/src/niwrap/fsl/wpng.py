@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 WPNG_METADATA = Metadata(
-    id="ad290aefc6408fd798911837c48bcbba17b8f2b4",
+    id="e13f41c54e797426555b18e8ee2168e2d22fafd2",
     name="wpng",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

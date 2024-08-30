@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 VIENA_QUANT_METADATA = Metadata(
-    id="89958d558f1dcfaab82b6941000ea0ccb77a644c",
+    id="6554e85f79dd801fb966ca52ff7b8589fc6ea6b4",
     name="viena_quant",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

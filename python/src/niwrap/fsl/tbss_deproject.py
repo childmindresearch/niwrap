@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 TBSS_DEPROJECT_METADATA = Metadata(
-    id="3541b8666f1a060a0595dceba5a9f5529015e2ab",
+    id="071338a9ae1e4f6e137a3571842bc4372b0d81e3",
     name="tbss_deproject",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

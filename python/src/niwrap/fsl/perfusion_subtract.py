@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 PERFUSION_SUBTRACT_METADATA = Metadata(
-    id="e976a2eace66e5162b7b3ab70e97d3b887a4a3d1",
+    id="72b1727c444d9ce207028e9b06eb26a5a5d3c2b1",
     name="perfusion_subtract",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

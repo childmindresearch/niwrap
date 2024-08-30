@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SURFACE_FDR_METADATA = Metadata(
-    id="31a062104599d7480e7d63292f0becaf39059e33",
+    id="e3f2716c2c747715a5066abd81fbb3a10e2b7040",
     name="surface_fdr",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

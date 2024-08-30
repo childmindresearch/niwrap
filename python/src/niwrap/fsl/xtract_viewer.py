@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 XTRACT_VIEWER_METADATA = Metadata(
-    id="04e1c0e8b7bdff58f6e6215d9cdfb8f9fead4027",
+    id="bd76f729ac54b26b22e247a3422cd7082ceff910",
     name="xtract_viewer",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

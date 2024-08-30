@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 HIST2PROB_METADATA = Metadata(
-    id="44e7fb3b0411bc47192d48888dbe984aa899dd92",
+    id="0e330ba8ae70a3d2b120d37dc884ef9aca2c5f3a",
     name="hist2prob",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

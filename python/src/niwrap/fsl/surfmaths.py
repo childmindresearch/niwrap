@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SURFMATHS_METADATA = Metadata(
-    id="fede1f4bdd07944bf4e3c0dabbfd82ab28a16373",
+    id="b8ae24d5ed4caf90d6715b600edc707e3ecce266",
     name="surfmaths",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

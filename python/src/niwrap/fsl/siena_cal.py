@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SIENA_CAL_METADATA = Metadata(
-    id="8346466ee1db769eead94732af566d4523a22aad",
+    id="2cf194de913172fc9e47db4e96bd27ad4a38dbe1",
     name="siena_cal",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 MATCH_SMOOTHING_METADATA = Metadata(
-    id="54eb17225dafa071cecff985916a00d21a4caa0d",
+    id="20a70dcd32bab58a0d1eb3bf58ebd82cb6e4b303",
     name="match_smoothing",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

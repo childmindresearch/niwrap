@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 MIST_DISPLAY_METADATA = Metadata(
-    id="3eeeab2e3cad1974825ed4ff6296e35ee4296d1e",
+    id="a3dfab2cb8ff840618615f7b6468256b6544fad3",
     name="mist_display",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 BIANCA_CLUSTER_STATS_METADATA = Metadata(
-    id="84f8b686482f76e4cb4b1d2c959611638a58c94b",
+    id="423d2c0db4c16353a60f313d20a887bcdbff6e8b",
     name="bianca_cluster_stats",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

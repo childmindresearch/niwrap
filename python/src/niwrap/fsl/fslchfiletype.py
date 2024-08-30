@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 FSLCHFILETYPE_METADATA = Metadata(
-    id="8c28cb818d19673145fdd4f839c4fdb45e169339",
+    id="1d31f3c460cabb5d7f9442a7a8923cfcb593ed4f",
     name="fslchfiletype",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

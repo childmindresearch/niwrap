@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 ZTOP_METADATA = Metadata(
-    id="4aa142083a05bef53f63196013c6684db3412a40",
+    id="e4c30ece98812c62571d5c880c34f6fd9b46b17f",
     name="ztop",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

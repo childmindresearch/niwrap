@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 IMGLOB_METADATA = Metadata(
-    id="5c518f436cd6a1353a3855b86c6d64b8537a8276",
+    id="04388dd1ed84da67a1aac9da7d9b7d85a0f8a49c",
     name="imglob",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

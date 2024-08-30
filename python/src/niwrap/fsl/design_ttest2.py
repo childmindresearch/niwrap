@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 DESIGN_TTEST2_METADATA = Metadata(
-    id="86984ceb86ba9ff4c213ef02c5b7ff79d885fa0e",
+    id="1aac8635c8fa937d56e12e982bc15b5f166c599f",
     name="design_ttest2",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

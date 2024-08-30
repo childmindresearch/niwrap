@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SIENA_FLOW2STD_METADATA = Metadata(
-    id="9800bf8c1c6cb1b35fe156c8ed39801e0ae8b64e",
+    id="5c1a16e6112cdc424ccf2cc9d634a11727d98160",
     name="siena_flow2std",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

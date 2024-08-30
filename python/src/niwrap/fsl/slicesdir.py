@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 SLICESDIR_METADATA = Metadata(
-    id="709dcaaa4b57f73c4d2b0ed9d93b822c60c473cd",
+    id="d0d33e48a4c39100315cb0c896f14f3ba8c38489",
     name="slicesdir",
+    container_image_type="docker",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 
