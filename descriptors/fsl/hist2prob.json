@@ -3,6 +3,10 @@
   "name": "hist2prob",
   "description": "Converts a histogram image to a probability map based on specified thresholds",
   "command-line": "hist2prob [IMAGE] [SIZE] [LOW_THRESH] [HIGH_THRESH]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Input histogram image",

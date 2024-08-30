@@ -4,6 +4,10 @@
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Transforms image coordinates using standard space transformations.",
   "command-line": "img2stdcoord [OPTIONS] <FILENAME>",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },  
   "inputs": [
     {
       "description": "Filename containing coordinates. If '-' is used, coordinates are read from standard input.",

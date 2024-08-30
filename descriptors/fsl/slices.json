@@ -4,6 +4,10 @@
   "author": "Unknown",
   "description": "Generate a set of slices from an image, possibly with some scaling and intensity range options, and save as a GIF.",
   "command-line": "slices [INPUT_FILE] [SECONDARY_INPUT_FILE] -s [SCALE] -i [INTMIN] [INTMAX] -o [OUTPUT_GIF]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Primary input image file (e.g. img1.nii.gz)",

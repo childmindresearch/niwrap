@@ -5,6 +5,10 @@
   "description": "GIF animation tool",
   "url": "http://members.aol.com/royalef/gifanim.htm",
   "command-line": "whirlgif [OUTFILE] [LOOP_COUNT] [DELAY_TIME] [DISP_FLAG] [LIST_FILE] [FILES]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "command-line-flag": "-o",

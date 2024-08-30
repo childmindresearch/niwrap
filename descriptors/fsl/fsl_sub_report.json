@@ -4,6 +4,10 @@
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "FSL cluster job reporting tool",
   "command-line": "fsl_sub_report [JOB_ID] [SUBJOB_ID_FLAG] [SUBJOB_ID] [PARSEABLE_FLAG]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Report job details for this job ID",

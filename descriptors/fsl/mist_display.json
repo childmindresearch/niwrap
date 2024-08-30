@@ -5,6 +5,10 @@
   "descriptor-url": "http://example.com",
   "description": "Tool to show scalars on mesh",
   "command-line": "mist_display [MODE] [--help]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Mode for displaying scalars on mesh",

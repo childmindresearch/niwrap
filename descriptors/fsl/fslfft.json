@@ -5,6 +5,10 @@
   "description": "A tool to compute the Fourier transform of an input volume and save the result in an output volume.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FT",
   "command-line": "fslfft [INPUT_VOLUME] [OUTPUT_VOLUME] [INVERSE_FLAG]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "Input volume file (e.g. invol.nii.gz)",

@@ -4,6 +4,10 @@
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Creates a link (called file2) to file1",
   "command-line": "/usr/local/fsl/bin/imln [INPUT_FILE] [LINK_NAME]",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
   "inputs": [
     {
       "description": "The source file (file1) to create a link to",
