@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 TOPUP_METADATA = Metadata(
-    id="cdbf76a7e558a086c2cb4771c8b164f24396f311",
+    id="d2018874d8c39fcdb4d692dff1529e2ea871e2a5",
     name="topup",
     container_image_type="docker",
     container_image_tag="mcin/fsl:6.0.5",
@@ -53,6 +53,7 @@ def topup(
     interp: typing.Literal["linear", "spline"] | None = None,
     scale: bool = False,
     regrid: bool = False,
+    nthr: float | int | None = None,
     verbose: bool = False,
     runner: Runner | None = None,
 ) -> TopupOutputs:
@@ -93,6 +94,8 @@ def topup(
             mean, default 0 (false).
         regrid: If set (=1), the calculations are done in a different grid,\
             default 1 (true).
+        nthr: Number of threads to use (cannot be greater than numbers of\
+            hardware cores), default 1.
         verbose: Print diagnostic information while running.
         runner: Command runner.
     Returns:
@@ -142,6 +145,8 @@ def topup(
         cargs.append("--scale")
     if regrid:
         cargs.append("--regrid")
+    if nthr is not None:
+        cargs.append(("--nthr=" + str(nthr)))
     if verbose:
         cargs.append("--verbose")
     ret = TopupOutputs(

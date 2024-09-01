@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 APPLYTOPUP_METADATA = Metadata(
-    id="a6a037f7155e78fc451a484e89186a2bc7b31145",
+    id="90103a8f823a05db811d05016a5cf1c3007aa3c9",
     name="applytopup",
     container_image_type="docker",
     container_image_tag="mcin/fsl:6.0.5",
@@ -27,7 +27,7 @@ def applytopup(
     imain: list[str],
     datain: InputPathType,
     inindex: list[str],
-    topup: InputPathType,
+    topup: str,
     out: str,
     method: typing.Literal["jac", "lsr"] | None = None,
     interp: typing.Literal["trilinear", "spline"] | None = None,
@@ -64,7 +64,7 @@ def applytopup(
     cargs.append(("--imain=" + ",".join(imain)))
     cargs.append(("--datain=" + execution.input_file(datain)))
     cargs.append(("--inindex=" + ",".join(inindex)))
-    cargs.append(("--topup=" + execution.input_file(topup)))
+    cargs.append(("--topup=" + topup))
     cargs.append(("--out=" + out))
     if method is not None:
         cargs.append(("--method=" + method))
