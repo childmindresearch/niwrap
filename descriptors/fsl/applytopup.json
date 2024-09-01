@@ -14,7 +14,7 @@
       "command-line-flag-separator": "=",
       "description": "Comma separated list of names of input image (to be corrected)",
       "value-key": "[IMAIN]",
-      "type": "String",
+      "type": "File",
       "list": true,
       "list-separator": ",",
       "optional": false,
