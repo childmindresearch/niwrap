@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 APPLYTOPUP_METADATA = Metadata(
-    id="90103a8f823a05db811d05016a5cf1c3007aa3c9",
+    id="aec797dcb0b04047b29b2ebf96bc40e45b01edd2",
     name="applytopup",
     container_image_type="docker",
     container_image_tag="mcin/fsl:6.0.5",
@@ -24,7 +24,7 @@ class ApplytopupOutputs(typing.NamedTuple):
 
 
 def applytopup(
-    imain: list[str],
+    imain: list[InputPathType],
     datain: InputPathType,
     inindex: list[str],
     topup: str,
@@ -61,7 +61,7 @@ def applytopup(
     execution = runner.start_execution(APPLYTOPUP_METADATA)
     cargs = []
     cargs.append("applytopup")
-    cargs.append(("--imain=" + ",".join(imain)))
+    cargs.append(("--imain=" + ",".join([execution.input_file(f) for f in imain])))
     cargs.append(("--datain=" + execution.input_file(datain)))
     cargs.append(("--inindex=" + ",".join(inindex)))
     cargs.append(("--topup=" + topup))
