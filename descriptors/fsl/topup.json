@@ -3,7 +3,7 @@
   "name": "topup",
   "author": "University of Oxford",
   "description": "topup is part of FSL and is used to estimate and correct for susceptibility-induced distortions in echo planar imaging (EPI) data.",
-  "command-line": "topup [IMAIN] [DATAIN] [OUT] [FOUT] [IOUT] [LOGOUT] [WARPres] [SUBSAMP] [FWHM] [CONFIG] [MITER] [LAMBDA] [SSQLAMBDA] [REGMOD] [ESTMOV] [MINMET] [SPLINEORDER] [NUMPREC] [INTERP] [SCALE] [REGRID] [VERBOSE]",
+  "command-line": "topup [IMAIN] [DATAIN] [OUT] [FOUT] [IOUT] [LOGOUT] [WARPres] [SUBSAMP] [FWHM] [CONFIG] [MITER] [LAMBDA] [SSQLAMBDA] [REGMOD] [ESTMOV] [MINMET] [SPLINEORDER] [NUMPREC] [INTERP] [SCALE] [REGRID] [NTHR] [VERBOSE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -221,6 +221,16 @@
       "optional": true,
       "id": "regrid",
       "name": "Regrid calculations"
+    },
+    {
+      "command-line-flag": "--nthr",
+      "command-line-flag-separator": "=",
+      "description": "Number of threads to use (cannot be greater than numbers of hardware cores), default 1",
+      "value-key": "[NTHR]",
+      "type": "Number",
+      "optional": true,
+      "id": "nthr",
+      "name": "Number of threads"
     },
     {
       "command-line-flag": "--verbose",
