@@ -109,7 +109,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUT]_abswarp.nii.gz",
+      "path-template": "[OUT]",
       "description": "The output warped image.",
       "optional": false,
       "id": "output_file",
