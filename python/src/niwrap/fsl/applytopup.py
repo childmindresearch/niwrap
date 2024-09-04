@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 APPLYTOPUP_METADATA = Metadata(
-    id="aec797dcb0b04047b29b2ebf96bc40e45b01edd2",
+    id="e0ca451a3bdcfb2cf4ebc0cf2da854e9b64cfc5e",
     name="applytopup",
     container_image_type="docker",
     container_image_tag="mcin/fsl:6.0.5",
@@ -76,7 +76,7 @@ def applytopup(
         cargs.append("--verbose")
     ret = ApplytopupOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(f"{out}_abswarp.nii.gz"),
+        output_file=execution.output_file(f"{out}"),
     )
     execution.run(cargs)
     return ret
