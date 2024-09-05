@@ -16,8 +16,9 @@
       "value-key": "[INPUT]",
       "description": "The input image to process.",
       "type": "File",
-      "command-line-flag": "-i",
-      "optional": false
+      "optional": false,
+      "list": true,
+      "list-separator": " "
     },
     {
       "id": "output",
