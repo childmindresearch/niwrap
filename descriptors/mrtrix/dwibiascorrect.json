@@ -6,6 +6,10 @@
   "url": "http://www.mrtrix.org/",
   "command-line": "dwibiascorrect [ALGORITHM] [INPUT_IMAGE] [OUTPUT_IMAGE] [GRAD] [FSLGRAD_BVECS] [MASK_IMAGE] [BIAS_IMAGE] [NOCLEANUP] [SCRATCH] [CONTINUE_SCRATCH] [INFO] [QUIET] [DEBUG] [FORCE] [NTHREADS] [CONFIG] [HELP] [VERSION] [ANTS_B] [ANTS_C] [ANTS_S]",
   "schema-version": "0.5",
+  "container-image": {
+    "image": "mrtrix3/mrtrix3:3.0.4",
+    "type": "docker"
+  },
   "inputs": [
     {
       "id": "algorithm",
