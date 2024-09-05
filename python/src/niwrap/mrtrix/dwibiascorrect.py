@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 DWIBIASCORRECT_METADATA = Metadata(
-    id="e53841a7612ab1400659b55ff341cda5fae090ad",
+    id="3dcdc909a55767d497fe7e8b7f1ebd517b0ffa66",
     name="dwibiascorrect",
+    container_image_type="docker",
+    container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
 
 

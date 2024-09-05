@@ -6,8 +6,10 @@ import pathlib
 import typing
 
 RESPONSEMEAN_METADATA = Metadata(
-    id="cfe795c7c30a41aa86ab4d81e869f8c11b4896ec",
+    id="a646b9ed3033e9f04553d4f8bb569118b11d0eba",
     name="responsemean",
+    container_image_type="docker",
+    container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
 
 
