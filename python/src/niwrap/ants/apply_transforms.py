@@ -7,10 +7,10 @@ import pathlib
 import typing
 
 ANTS_APPLY_TRANSFORMS_METADATA = Metadata(
-    id="0c6fa951a055b8a31c90ee449813ff74f023bf3a",
+    id="8331b428e62da61c6ce4a5518cec9ebe3aa42ef9",
     name="antsApplyTransforms",
     container_image_type="docker",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="antsx/ants:v2.5.3",
 )
 
 
@@ -549,7 +549,7 @@ def ants_apply_transforms(
     runner: Runner | None = None,
 ) -> AntsApplyTransformsOutputs:
     """
-    antsApplyTransforms by Nipype (interface).
+    antsApplyTransforms by Advanced Normalization Tools (ANTs) Contributors.
     
     antsApplyTransforms, applied to an input image, transforms it according to a
     reference image and a transform (or a set of transforms).
