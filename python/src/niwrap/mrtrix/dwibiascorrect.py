@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 DWIBIASCORRECT_METADATA = Metadata(
-    id="3dcdc909a55767d497fe7e8b7f1ebd517b0ffa66",
+    id="a41dd6564a5ed99b11770e8281efcabfda76fbca",
     name="dwibiascorrect",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -28,7 +28,7 @@ class DwibiascorrectOutputs(typing.NamedTuple):
 def dwibiascorrect(
     algorithm: str,
     input_image: InputPathType,
-    output_image: InputPathType,
+    output_image: str,
     grad: InputPathType | None = None,
     fslgrad_bvecs: list[InputPathType] | None = None,
     mask_image: InputPathType | None = None,
@@ -101,7 +101,7 @@ def dwibiascorrect(
     cargs.append("dwibiascorrect")
     cargs.append(algorithm)
     cargs.append(execution.input_file(input_image))
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     if grad is not None:
         cargs.extend(["-grad", execution.input_file(grad)])
     if fslgrad_bvecs is not None:
@@ -140,7 +140,7 @@ def dwibiascorrect(
         cargs.extend(["-ants.s", ants_s])
     ret = DwibiascorrectOutputs(
         root=execution.output_file("."),
-        output_image_file=execution.output_file(f"{pathlib.Path(output_image).name}"),
+        output_image_file=execution.output_file(f"{output_image}"),
         bias_image_file=execution.output_file(f"{pathlib.Path(bias_image).name}", optional=True) if bias_image is not None else None,
     )
     execution.run(cargs)
