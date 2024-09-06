@@ -30,7 +30,7 @@
     {
       "id": "output_image",
       "name": "Output Image",
-      "type": "File",
+      "type": "String",
       "value-key": "[OUTPUT_IMAGE]",
       "description": "The output corrected image series",
       "optional": false
