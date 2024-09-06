@@ -1,8 +1,14 @@
 {
   "name": "antsApplyTransforms",
   "command-line": "antsApplyTransforms [DIMENSION] [INPUT_IMAGE_TYPE] [INPUT_IMAGE] [REFERENCE_IMAGE] [OUTPUT] [INTERPOLATION] [OUTPUT_DATA_TYPE] [TRANSFORM] [DEFAULT_VALUE] [STATIC_CAST_FOR_R] [FLOAT] [VERBOSE]",
-  "author": "Nipype (interface)",
+  "author": "Advanced Normalization Tools (ANTs) Contributors",
   "description": "antsApplyTransforms, applied to an input image, transforms it according to a reference image and a transform (or a set of transforms).",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  },
   "inputs": [
     {
       "id": "dimensionality",
@@ -386,14 +392,7 @@
       "integer": true
     }
   ],
-  "tool-version": "1.0.0",
-  "schema-version": "0.5",
-  "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
-  },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   }
 }
