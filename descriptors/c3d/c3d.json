@@ -24,7 +24,7 @@
       "name": "Output image",
       "value-key": "[OUTPUT]",
       "description": "The output image.",
-      "type": "File",
+      "type": "String",
       "command-line-flag": "-o",
       "optional": false
     },
