@@ -1,6 +1,6 @@
 {
   "name": "C3dAffineTool",
-  "command-line": "c3d_affine_tool [REFERENCE_FILE] [SOURCE_FILE] [TRANSFORM_FILE] [SFORM_FILE] [OUT_MATFILE] [FSL2RAS] [RAS2FSL] [INV] [DET] [MULT] [SQRT] [ITK_TRANSFORM] [OUT_ITK_TRANSFORM] [IRTK_TRANSFORM] [OUT_IRTK_TRANSFORM] [INFO] [INFO_FULL]",
+  "command-line": "c3d_affine_tool [REFERENCE_FILE] [SOURCE_FILE] [SFORM_FILE] [INV] [DET] [MULT] [SQRT] [ITK_TRANSFORM] [IRTK_TRANSFORM] [FSL2RAS] [RAS2FSL] [OUT_ITK_TRANSFORM] [OUT_IRTK_TRANSFORM] [OUT_MATFILE] [INFO] [INFO_FULL]",
   "author": "ITK-Snap Team",
   "description": "RAS affine transform tool",
   "tool-version": "1.1.0",
@@ -27,14 +27,6 @@
       "command-line-flag": "-src",
       "description": "Set source (moving) image - only for -fsl2ras and -ras2fsl.",
       "optional": true
-    },
-    {
-      "id": "transform_file",
-      "name": "Transform file",
-      "type": "File",
-      "value-key": "[TRANSFORM_FILE]",
-      "description": "file or string representing the transform.",
-      "optional": false
     },
     {
       "id": "fsl2ras",
@@ -167,21 +159,21 @@
     {
       "name": "Output ITK transform",
       "id": "itk_transform_outfile",
-      "path-template": "[OUT_ITK_TRANSFORM].txt",
+      "path-template": "[OUT_ITK_TRANSFORM]",
       "optional": true,
       "description": "Output ITK transform file."
     },
     {
       "name": "Output ITK transform",
       "id": "irtk_transform_outfile",
-      "path-template": "[OUT_IRTK_TRANSFORM].dof",
+      "path-template": "[OUT_IRTK_TRANSFORM]",
       "optional": true,
       "description": "Output IRTK transform file."
     },
     {
       "name": "Output ITK transform",
       "id": "matrix_transform_outfile",
-      "path-template": "[OUT_MATFILE].mat",
+      "path-template": "[OUT_MATFILE]",
       "optional": true,
       "description": "Write output matrix."
     }
