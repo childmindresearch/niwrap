@@ -336,10 +336,10 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">typing</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">ANTS_APPLY_TRANSFORMS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;0c6fa951a055b8a31c90ee449813ff74f023bf3a&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8331b428e62da61c6ce4a5518cec9ebe3aa42ef9&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;antsApplyTransforms&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">container_image_type</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;fcpindi/c-pac:latest&quot;</span><span class="p">,</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;antsx/ants:v2.5.3&quot;</span><span class="p">,</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="p">)</span>
 </span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a>
 </span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a>
@@ -878,7 +878,7 @@
 </span><span id="L-549"><a href="#L-549"><span class="linenos">549</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-550"><a href="#L-550"><span class="linenos">550</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntsApplyTransformsOutputs</span><span class="p">:</span>
 </span><span id="L-551"><a href="#L-551"><span class="linenos">551</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a><span class="sd">    antsApplyTransforms by Nipype (interface).</span>
+</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a><span class="sd">    antsApplyTransforms by Advanced Normalization Tools (ANTs) Contributors.</span>
 </span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a><span class="sd">    </span>
 </span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a><span class="sd">    antsApplyTransforms, applied to an input image, transforms it according to a</span>
 </span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a><span class="sd">    reference image and a transform (or a set of transforms).</span>
@@ -996,7 +996,7 @@
                     <div class="attr variable">
             <span class="name">ANTS_APPLY_TRANSFORMS_METADATA</span>        =
 <input id="ANTS_APPLY_TRANSFORMS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="ANTS_APPLY_TRANSFORMS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;0c6fa951a055b8a31c90ee449813ff74f023bf3a&#39;, name=&#39;antsApplyTransforms&#39;, package=None, citations=None, container_image_type=&#39;docker&#39;, container_image_tag=&#39;fcpindi/c-pac:latest&#39;, container_image_index=None, container_image_opts=None)</span>
+            <label class="view-value-button pdoc-button" for="ANTS_APPLY_TRANSFORMS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8331b428e62da61c6ce4a5518cec9ebe3aa42ef9&#39;, name=&#39;antsApplyTransforms&#39;, package=None, citations=None, container_image_type=&#39;docker&#39;, container_image_tag=&#39;antsx/ants:v2.5.3&#39;, container_image_index=None, container_image_opts=None)</span>
 
         
     </div>
@@ -3220,7 +3220,7 @@
 </span><span id="ants_apply_transforms-550"><a href="#ants_apply_transforms-550"><span class="linenos">550</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="ants_apply_transforms-551"><a href="#ants_apply_transforms-551"><span class="linenos">551</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntsApplyTransformsOutputs</span><span class="p">:</span>
 </span><span id="ants_apply_transforms-552"><a href="#ants_apply_transforms-552"><span class="linenos">552</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="ants_apply_transforms-553"><a href="#ants_apply_transforms-553"><span class="linenos">553</span></a><span class="sd">    antsApplyTransforms by Nipype (interface).</span>
+</span><span id="ants_apply_transforms-553"><a href="#ants_apply_transforms-553"><span class="linenos">553</span></a><span class="sd">    antsApplyTransforms by Advanced Normalization Tools (ANTs) Contributors.</span>
 </span><span id="ants_apply_transforms-554"><a href="#ants_apply_transforms-554"><span class="linenos">554</span></a><span class="sd">    </span>
 </span><span id="ants_apply_transforms-555"><a href="#ants_apply_transforms-555"><span class="linenos">555</span></a><span class="sd">    antsApplyTransforms, applied to an input image, transforms it according to a</span>
 </span><span id="ants_apply_transforms-556"><a href="#ants_apply_transforms-556"><span class="linenos">556</span></a><span class="sd">    reference image and a transform (or a set of transforms).</span>
@@ -3308,7 +3308,7 @@
 </span></pre></div>
 
 
-            <div class="docstring"><p>antsApplyTransforms by Nipype (interface).</p>
+            <div class="docstring"><p>antsApplyTransforms by Advanced Normalization Tools (ANTs) Contributors.</p>
 
 <p>antsApplyTransforms, applied to an input image, transforms it according to a
 reference image and a transform (or a set of transforms).</p>
