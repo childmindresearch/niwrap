@@ -67,7 +67,7 @@
             {
               "id": "warpedOutputFileName",
               "name": "Warped output file name",
-              "type": "File",
+              "type": "String",
               "value-key": "[OUTPUT]",
               "description": "Output file name."
             }
@@ -90,7 +90,7 @@
             {
               "id": "compositeDisplacementField",
               "name": "Warped output file name",
-              "type": "File",
+              "type": "String",
               "value-key": "[OUTPUT]",
               "description": "Output file name."
             },
@@ -125,7 +125,7 @@
             {
               "id": "genericAffineTransformFile",
               "name": "Generic affine transform file",
-              "type": "File",
+              "type": "String",
               "value-key": "[OUTPUT]",
               "description": "Output file name."
             },
