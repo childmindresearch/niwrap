@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 ANTS_APPLY_TRANSFORMS_METADATA = Metadata(
-    id="8331b428e62da61c6ce4a5518cec9ebe3aa42ef9",
+    id="8b24792e2ce91409759be6f8cdccf6bea327048e",
     name="antsApplyTransforms",
     container_image_type="docker",
     container_image_tag="antsx/ants:v2.5.3",
@@ -29,7 +29,7 @@ class AntsApplyTransformsWarpedOutput:
     """
     Output the warped image.
     """
-    warped_output_file_name: InputPathType
+    warped_output_file_name: str
     """Output file name."""
     
     def run(
@@ -46,7 +46,7 @@ class AntsApplyTransformsWarpedOutput:
             
         """
         cargs = []
-        cargs.append(execution.input_file(self.warped_output_file_name))
+        cargs.append(self.warped_output_file_name)
         return cargs
     
     def outputs(
@@ -64,7 +64,7 @@ class AntsApplyTransformsWarpedOutput:
         """
         ret = AntsApplyTransformsWarpedOutputOutputs(
             root=execution.output_file("."),
-            output_image_outfile=execution.output_file(f"{pathlib.Path(self.warped_output_file_name).name}"),
+            output_image_outfile=execution.output_file(f"{self.warped_output_file_name}"),
         )
         return ret
 
@@ -84,7 +84,7 @@ class AntsApplyTransformsCompositeDisplacementFieldOutput:
     """
     Print out the displacement field based on the composite transform and the reference image.
     """
-    composite_displacement_field: InputPathType
+    composite_displacement_field: str
     """Output file name."""
     print_out_composite_warp_file: typing.Literal[0, 1] | None = None
     """Output a composite warp file instead of a transformed image."""
@@ -105,7 +105,7 @@ class AntsApplyTransformsCompositeDisplacementFieldOutput:
         cargs = []
         cargs.append(
             "[" +
-            execution.input_file(self.composite_displacement_field) +
+            self.composite_displacement_field +
             ((",printOutCompositeWarpFile=" + str(self.print_out_composite_warp_file)) if self.print_out_composite_warp_file is not None else "") +
             "]"
         )
@@ -126,7 +126,7 @@ class AntsApplyTransformsCompositeDisplacementFieldOutput:
         """
         ret = AntsApplyTransformsCompositeDisplacementFieldOutputOutputs(
             root=execution.output_file("."),
-            output_image_outfile_=execution.output_file(f"{pathlib.Path(self.composite_displacement_field).name}"),
+            output_image_outfile_=execution.output_file(f"{self.composite_displacement_field}"),
         )
         return ret
 
@@ -146,7 +146,7 @@ class AntsApplyTransformsGenericAffineTransformOutput:
     """
     Compose all affine transforms and (if boolean is set) calculate its inverse which is then written to an ITK file.
     """
-    generic_affine_transform_file: InputPathType
+    generic_affine_transform_file: str
     """Output file name."""
     calculate_inverse: typing.Literal[0, 1] | None = None
     """Calculate the inverse of the affine transform."""
@@ -167,7 +167,7 @@ class AntsApplyTransformsGenericAffineTransformOutput:
         cargs = []
         cargs.append(
             "Linear[" +
-            execution.input_file(self.generic_affine_transform_file) +
+            self.generic_affine_transform_file +
             ((",calculateInverse=" + str(self.calculate_inverse)) if self.calculate_inverse is not None else "") +
             "]"
         )
@@ -188,7 +188,7 @@ class AntsApplyTransformsGenericAffineTransformOutput:
         """
         ret = AntsApplyTransformsGenericAffineTransformOutputOutputs(
             root=execution.output_file("."),
-            output_image_outfile_2=execution.output_file(f"{pathlib.Path(self.generic_affine_transform_file).name}"),
+            output_image_outfile_2=execution.output_file(f"{self.generic_affine_transform_file}"),
         )
         return ret
 
