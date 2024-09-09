@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 N4_BIAS_FIELD_CORRECTION_METADATA = Metadata(
-    id="584edd8c731dcd530cd4432003ea1b25fefff0de",
+    id="bead743325d69574c42fd1acfe77effb97b9087b",
     name="N4BiasFieldCorrection",
     container_image_type="docker",
     container_image_tag="antsx/ants:v2.5.3",
@@ -125,14 +125,13 @@ class N4BiasFieldCorrectionOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     corrected_image: OutputPathType
     """The bias corrected version of the input image."""
-    bias_field: OutputPathType
+    bias_field: OutputPathType | None
     """Estimated bias field image."""
 
 
 def n4_bias_field_correction(
     input_image: InputPathType,
     corrected_image_path: str,
-    bias_field_path: str,
     image_dimensionality: typing.Literal[2, 3, 4] | None = None,
     shrink_factor: int | None = None,
     mask_image: InputPathType | None = None,
@@ -142,6 +141,7 @@ def n4_bias_field_correction(
     bspline_fitting: N4BiasFieldCorrectionBsplineFitting | None = None,
     histogram_sharpening: N4BiasFieldCorrectionHistogramSharpening | None = None,
     verbose: typing.Literal[0, 1] | None = None,
+    bias_field_path: str | None = None,
     runner: Runner | None = None,
 ) -> N4BiasFieldCorrectionOutputs:
     """
@@ -166,7 +166,6 @@ def n4_bias_field_correction(
             intensities, negative values or values close to zero should be\
             processed prior to correction.
         corrected_image_path: The bias corrected version of the input image.
-        bias_field_path: Estimated bias field image.
         image_dimensionality: -d, --image-dimensionality 2/3/4. This option\
             forces the image to be treated as a specified-dimensional image. If not\
             specified, N4 tries to infer the dimensionality from the input image.
@@ -230,6 +229,7 @@ def n4_bias_field_correction(
             deconvolution step parameters described in the original N3 algorithm.\
             The default values have been shown to work fairly well.
         verbose: Verbose output.
+        bias_field_path: Estimated bias field image.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `N4BiasFieldCorrectionOutputs`).
@@ -261,13 +261,13 @@ def n4_bias_field_correction(
     cargs.append(
         "[" +
         corrected_image_path +
-        ("," + bias_field_path) +
+        (("," + bias_field_path) if bias_field_path is not None else "") +
         "]"
     )
     ret = N4BiasFieldCorrectionOutputs(
         root=execution.output_file("."),
         corrected_image=execution.output_file(f"{corrected_image_path}"),
-        bias_field=execution.output_file(f"{bias_field_path}", optional=True),
+        bias_field=execution.output_file(f"{bias_field_path}", optional=True) if bias_field_path is not None else None,
     )
     execution.run(cargs)
     return ret
