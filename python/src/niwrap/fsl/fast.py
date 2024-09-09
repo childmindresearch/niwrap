@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FAST_METADATA = Metadata(
-    id="119556ba826c6d2abe9f11e0192835e2a2ae8ded",
+    id="c4e924e5cc30ed695e5fe60fd76040f39867c5b6",
     name="FAST",
     container_image_type="docker",
     container_image_tag="mcin/fsl:6.0.5",
@@ -42,7 +42,7 @@ def fast(
     number_classes: int | None = None,
     bias_iters: int | None = None,
     bias_lowpass: float | int | None = None,
-    img_type: typing.Literal[1, 2, 3] | None = 1,
+    img_type: typing.Literal[1, 2, 3] | None = None,
     init_seg_smooth: float | int | None = None,
     segments: bool = False,
     init_transform: InputPathType | None = None,
@@ -54,10 +54,10 @@ def fast(
     out_basename: str | None = "BrainExtractionBrain",
     use_priors: bool = False,
     no_pve: bool = False,
-    segment_iters: int | None = 15,
-    mixel_smooth: float | int | None = 0.3,
-    iters_afterbias: int | None = 4,
-    hyper: float | int | None = 0.1,
+    segment_iters: int | None = None,
+    mixel_smooth: float | int | None = None,
+    iters_afterbias: int | None = None,
+    hyper: float | int | None = None,
     verbose: bool = False,
     manual_seg: InputPathType | None = None,
     runner: Runner | None = None,
@@ -119,10 +119,8 @@ def fast(
         raise ValueError(f"'bias_lowpass' must be greater than 0 <= x but was {bias_lowpass}")
     if segment_iters is not None and not (1 <= segment_iters): 
         raise ValueError(f"'segment_iters' must be greater than 1 <= x but was {segment_iters}")
-    if mixel_smooth is not None and not (0.0 <= mixel_smooth <= 1.0): 
-        raise ValueError(f"'mixel_smooth' must be between 0.0 <= x <= 1.0 but was {mixel_smooth}")
-    if iters_afterbias is not None and not (1 <= iters_afterbias <= 20): 
-        raise ValueError(f"'iters_afterbias' must be between 1 <= x <= 20 but was {iters_afterbias}")
+    if iters_afterbias is not None and not (1 <= iters_afterbias): 
+        raise ValueError(f"'iters_afterbias' must be greater than 1 <= x but was {iters_afterbias}")
     if hyper is not None and not (0.0 <= hyper <= 1.0): 
         raise ValueError(f"'hyper' must be between 0.0 <= x <= 1.0 but was {hyper}")
     execution = runner.start_execution(FAST_METADATA)
