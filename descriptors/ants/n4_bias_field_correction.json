@@ -206,7 +206,7 @@
       "command-line-flag": ",",
       "command-line-flag-separator": "",
       "type": "String",
-      "optional": false,
+      "optional": true,
       "description": "Estimated bias field image."
     }
   ],
