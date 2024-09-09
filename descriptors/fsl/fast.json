@@ -46,8 +46,7 @@
       "command-line-flag": "-t",
       "optional": true,
       "integer": true,
-      "value-choices": [1, 2, 3],
-      "default-value": 1
+      "value-choices": [1, 2, 3]
     },
     {
       "name": "Init seg smooth",
@@ -160,7 +159,6 @@
       "description": "number of segmentation-initialisation iterations; default=15",
       "integer": true,
       "minimum": 1,
-      "default-value": 15,
       "command-line-flag": "-W",
       "optional": true
     },
@@ -170,9 +168,6 @@
       "type": "Number",
       "value-key": "[MIXEL_SMOOTH]",
       "description": "spatial smoothness for mixeltype; default=0.3",
-      "minimum": 0.0,
-      "maximum": 1.0,
-      "default-value": 0.3,
       "command-line-flag": "-R",
       "optional": true
     },
@@ -183,8 +178,6 @@
       "value-key": "[ITERS_AFTERBIAS]",
       "description": "number of main-loop iterations after bias-field removal; default=4",
       "minimum": 1,
-      "maximum": 20,
-      "default-value": 4,
       "integer": true,
       "command-line-flag": "-O",
       "optional": true
@@ -197,7 +190,6 @@
       "description": "0.0 <= a floating point number <= 1.0. segmentation spatial smoothness; default=0.1",
       "minimum": 0.0,
       "maximum": 1.0,
-      "default-value": 0.1,
       "command-line-flag": "-H",
       "optional": true
     },
