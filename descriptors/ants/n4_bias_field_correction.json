@@ -1,6 +1,6 @@
 {
   "name": "N4BiasFieldCorrection",
-  "command-line": "N4BiasFieldCorrection [IMAGE_DIMENSIONALITY] [SHRINK_FACTOR] [MASK_IMAGE] [RESCALE_INTENSITIES] [WEIGHT_IMAGE] [CONVERGENCE] [BSPLINE_FITTING] [HISTOGRAM_SHARPENING] [VERBOSE] [INPUT_IMAGE] --output [[CORRECTED_IMAGE],[BIAS_FIELD]]",
+  "command-line": "N4BiasFieldCorrection [IMAGE_DIMENSIONALITY] [SHRINK_FACTOR] [MASK_IMAGE] [RESCALE_INTENSITIES] [WEIGHT_IMAGE] [CONVERGENCE] [BSPLINE_FITTING] [HISTOGRAM_SHARPENING] [VERBOSE] [INPUT_IMAGE] --output [[CORRECTED_IMAGE][BIAS_FIELD]]",
   "author": "Advanced Normalization Tools (ANTs) Contributors",
   "description": "N4 is a variant of the popular N3 (nonparameteric nonuniform normalization) retrospective bias correction algorithm. Based on the assumption that the corruption of the low frequency bias field can be modeled as a convolution of the intensity histogram by a Gaussian, the basic algorithmic protocol is to iterate between deconvolving the intensity histogram by a Gaussian, remapping the intensities, and then spatially smoothing this result by a B-spline modeling of the bias field itself. The modifications from and improvements obtained over the original N3 algorithm are described in the following paper: N. Tustison et al., N4ITK: Improved N3 Bias Correction, IEEE Transactions on Medical Imaging, 29(6):1310-1320, June 2010.",
   "url": "https://github.com/ANTsX/ANTs/wiki/N4BiasFieldCorrection",
@@ -29,7 +29,6 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [1, 2, 3, 4],
       "command-line-flag": "--shrink-factor",
       "description": "-s, --shrink-factor 1/2/3/(4)/... Running N4 on large images can be time consuming. To lessen computation time, the input image can be resampled. The shrink factor, specified as a single integer, describes this resampling. Shrink factors <= 4 are commonly used. Note that the shrink factor is only applied to the first two or three dimensions which we assume are spatial."
     },
@@ -67,7 +66,32 @@
       "id": "convergence",
       "name": "Convergence",
       "value-key": "[CONVERGENCE]",
-      "type": "String",
+      "type": {
+        "id": "convergence",
+        "name": "Convergence",
+        "command-line": "[[NUMBER_OF_ITERATIONS][CONVERGENCE_THRESHOLD]]",
+        "inputs": [
+          {
+            "id": "convergence",
+            "name": "Convergence",
+            "value-key": "[NUMBER_OF_ITERATIONS]",
+            "type": "Number",
+            "integer": true,
+            "list": true,
+            "list-separator": "x",
+            "optional": false
+          },
+          {
+            "id": "convergence_threshold",
+            "name": "Convergence threshold",
+            "value-key": "[CONVERGENCE_THRESHOLD]",
+            "command-line-flag": ",",
+            "command-line-flag-separator": "",
+            "type": "Number",
+            "optional": true
+          }
+        ]
+      },
       "optional": true,
       "command-line-flag": "--convergence",
       "description": "-c, --convergence [<numberOfIterations=50x50x50x50>,<convergenceThreshold=0.0>]. Convergence is determined by calculating the coefficient of variation between subsequent iterations. When this value is less than the specified threshold from the previous iteration or the maximum number of iterations is exceeded the program terminates. Multiple resolutions can be specified by using 'x' between the number of iterations at each resolution, e.g. 100x50x50."
@@ -76,7 +100,32 @@
       "id": "bspline_fitting",
       "name": "Bspline fitting",
       "value-key": "[BSPLINE_FITTING]",
-      "type": "String",
+      "type": {
+        "id": "bspline_fitting",
+        "name": "Bspline fitting",
+        "command-line": "[[SPLINE_DISTANCE][SPLINE_ORDER]]",
+        "inputs": [
+          {
+            "id": "spline_distance",
+            "name": "Spline distance",
+            "value-key": "[SPLINE_DISTANCE]",
+            "type": "Number",
+            "list": true,
+            "list-separator": "x",
+            "optional": false
+          },
+          {
+            "id": "spline_order",
+            "name": "Spline order",
+            "value-key": "[SPLINE_ORDER]",
+            "type": "Number",
+            "command-line-flag": ",",
+            "command-line-flag-separator": "",
+            "integer": true,
+            "optional": true
+          }
+        ]
+      },
       "optional": true,
       "command-line-flag": "--bspline-fitting",
       "description": "-b, --bspline-fitting [splineDistance,<splineOrder=3>]. These options describe the b-spline fitting parameters. The initial b-spline mesh at the coarsest resolution is specified either as the number of elements in each dimension, e.g. 2x2x3 for 3-D images, or it can be specified as a single scalar parameter which describes the isotropic sizing of the mesh elements. The latter option is typically preferred. For each subsequent level, the spline distance decreases in half, or equivalently, the number of mesh elements doubles Cubic splines (order = 3) are typically used. The default setting is to employ a single mesh element over the entire domain, i.e., -b [1x1x1,3]."
@@ -85,7 +134,39 @@
       "id": "histogram_sharpening",
       "name": "Histogram sharpening",
       "value-key": "[HISTOGRAM_SHARPENING]",
-      "type": "String",
+      "type": {
+        "id": "histogram_sharpening",
+        "name": "Histogram sharpening",
+        "command-line": "[[FWHM][WIENER_NOISE][NUMBER_OF_HISTOGRAM_BINS]]",
+        "inputs": [
+          {
+            "id": "fwhm",
+            "name": "FWHM",
+            "value-key": "[FWHM]",
+            "type": "Number",
+            "optional": true
+          },
+          {
+            "id": "wiener_noise",
+            "name": "Wiener noise",
+            "value-key": "[WIENER_NOISE]",
+            "type": "Number",
+            "command-line-flag": ",",
+            "command-line-flag-separator": "",
+            "optional": true
+          },
+          {
+            "id": "number_of_histogram_bins",
+            "name": "Number of histogram bins",
+            "value-key": "[NUMBER_OF_HISTOGRAM_BINS]",
+            "type": "Number",
+            "command-line-flag": ",",
+            "command-line-flag-separator": "",
+            "optional": true,
+            "integer": true
+          }
+        ]
+      },
       "optional": true,
       "command-line-flag": "--histogram-sharpening",
       "description": "-t, --histogram-sharpening [<FWHM=0.15>,<wienerNoise=0.01>,<numberOfHistogramBins=200>]. These options describe the histogram sharpening parameters, i.e. the deconvolution step parameters described in the original N3 algorithm. The default values have been shown to work fairly well."
@@ -122,6 +203,8 @@
       "id": "bias_field_path",
       "name": "Bias field path",
       "value-key": "[BIAS_FIELD]",
+      "command-line-flag": ",",
+      "command-line-flag-separator": "",
       "type": "String",
       "optional": false,
       "description": "Estimated bias field image."
@@ -140,7 +223,7 @@
       "name": "Bias field",
       "path-template": "[BIAS_FIELD]",
       "description": "Estimated bias field image.",
-      "optional": false
+      "optional": true
     }
   ],
   "tags": {
