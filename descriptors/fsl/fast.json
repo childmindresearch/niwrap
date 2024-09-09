@@ -12,7 +12,6 @@
       "value-key": "[NUMBER_CLASSES]",
       "description": "number of tissue-type classes; default=3",
       "minimum": 1,
-      "default-value": 3,
       "integer": true,
       "command-line-flag": "-n",
       "optional": true
@@ -24,7 +23,6 @@
       "value-key": "[BIAS_ITERS]",
       "description": "number of main-loop iterations during bias-field removal; default=4",
       "minimum": 1,
-      "default-value": 3,
       "integer": true,
       "command-line-flag": "-I",
       "optional": true
@@ -36,7 +34,6 @@
       "value-key": "[BIAS_LOWPASS]",
       "description": "bias field smoothing extent (FWHM) in mm; default=20",
       "minimum": 0,
-      "default-value": 20,
       "command-line-flag": "-l",
       "optional": true
     },
@@ -58,9 +55,6 @@
       "type": "Number",
       "value-key": "[INIT_SEG_SMOOTH]",
       "description": "initial segmentation spatial smoothness (during bias field estimation); default=0.02",
-      "default-value": 0.02,
-      "minimum": 0.0001,
-      "maximum": 0.1,
       "command-line-flag": "-f",
       "optional": true
     },
@@ -126,15 +120,13 @@
       "value-key": "[CHANNELS]",
       "description": "number of input images (channels); default 1",
       "command-line-flag": "-S",
-      "minimum": 1,
-      "default-value": 1,
       "integer": true,
       "optional": true
     },
     {
       "name": "Out basename",
       "id": "out_basename",
-      "type": "File",
+      "type": "String",
       "value-key": "[OUT_BASENAME]",
       "description": "Base name of output files.",
       "command-line-flag": "-o",
