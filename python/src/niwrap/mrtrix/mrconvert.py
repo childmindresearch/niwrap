@@ -7,7 +7,7 @@ import pathlib
 import typing
 
 MRCONVERT_METADATA = Metadata(
-    id="9844e0d267cfd8b4c2122978368305252e39c6f4",
+    id="bbc290e9da0cf0c8176c0247f73ecbe29ff60e51",
     name="mrconvert",
     container_image_type="docker",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -556,7 +556,7 @@ def mrconvert(
     if vox is not None:
         cargs.extend(["-vox", *map(str, vox)])
     if axes is not None:
-        cargs.extend(["-axes", *map(str, axes)])
+        cargs.extend(["-axes", ",".join(map(str, axes))])
     if scaling is not None:
         cargs.extend(["-scaling", *map(str, scaling)])
     if json_import is not None:
