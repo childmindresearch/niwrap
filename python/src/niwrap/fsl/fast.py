@@ -6,8 +6,8 @@ import pathlib
 import typing
 
 FAST_METADATA = Metadata(
-    id="9f54f95bc0a57202fea879944cc2b0fa110c6b69",
-    name="FAST",
+    id="d94fbd811651e9f62d28694534e7db875d113d45",
+    name="fast",
     container_image_type="docker",
     container_image_tag="mcin/fsl:6.0.5",
 )
@@ -47,7 +47,7 @@ def fast(
     output_biascorrected: bool = False,
     no_bias: bool = False,
     channels: int | None = None,
-    out_basename: str | None = "BrainExtractionBrain",
+    out_basename: str | None = "fast_out",
     use_priors: bool = False,
     no_pve: bool = False,
     segment_iters: int | None = None,
@@ -59,7 +59,7 @@ def fast(
     runner: Runner | None = None,
 ) -> FastOutputs:
     """
-    FAST by Oxford Centre for Functional MRI of the Brain (FMRIB).
+    fast by Oxford Centre for Functional MRI of the Brain (FMRIB).
     
     FAST (FMRIB's Automated Segmentation Tool) segments a 3D image of the brain
     into different tissue types (Grey Matter, White Matter, CSF, etc.), whilst
@@ -121,7 +121,7 @@ def fast(
         raise ValueError(f"'hyper' must be between 0.0 <= x <= 1.0 but was {hyper}")
     execution = runner.start_execution(FAST_METADATA)
     cargs = []
-    cargs.append("FAST")
+    cargs.append("fast")
     if number_classes is not None:
         cargs.extend(["-n", str(number_classes)])
     if bias_iters is not None:
@@ -164,7 +164,6 @@ def fast(
         cargs.extend(["-s", execution.input_file(manual_seg)])
     if iters_afterbias is not None:
         cargs.extend(["-O", str(iters_afterbias)])
-    cargs.append("[PROBABILITY_MAPS]")
     cargs.extend([execution.input_file(f) for f in in_files])
     ret = FastOutputs(
         root=execution.output_file("."),
