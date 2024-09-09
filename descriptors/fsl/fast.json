@@ -253,14 +253,6 @@
       "description": "Path/name of partial volume file _pveseg."
     },
     {
-      "name": "Probability maps",
-      "id": "probability_maps_outfile",
-      "path-template": "[OUT_BASENAME]_prob_*.nii.gz",
-      "optional": true,
-      "description": "No description provided.",
-      "list": true
-    },
-    {
       "name": "Restored image",
       "id": "restored_image",
       "path-template": "[OUT_BASENAME]_restore.nii.gz",
