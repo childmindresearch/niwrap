@@ -261,14 +261,6 @@
       "list": true
     },
     {
-      "name": "Tissue class files",
-      "id": "tissue_class_files",
-      "path-template": "[OUT_BASENAME]_seg_*.nii.gz",
-      "optional": true,
-      "description": "No description provided.",
-      "list": true
-    },
-    {
       "name": "Tissue class map",
       "id": "tissue_class_map",
       "path-template": "[OUT_BASENAME]_seg.nii.gz",
