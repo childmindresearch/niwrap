@@ -1,6 +1,6 @@
 {
-  "name": "FAST",
-  "command-line": "FAST [NUMBER_CLASSES] [BIAS_ITERS] [BIAS_LOWPASS] [IMG_TYPE] [INIT_SEG_SMOOTH] [SEGMENTS] [INIT_TRANSFORM] [OTHER_PRIORS] [OUTPUT_BIASFIELD] [OUTPUT_BIASCORRECTED] [NO_BIAS] [CHANNELS] [OUT_BASENAME] [USE_PRIORS] [NO_PVE] [SEGMENT_ITERS] [MIXEL_SMOOTH] [HYPER] [VERBOSE] [MANUAL_SEG] [ITERS_AFTERBIAS] [PROBABILITY_MAPS] [IN_FILES]",
+  "name": "fast",
+  "command-line": "fast [NUMBER_CLASSES] [BIAS_ITERS] [BIAS_LOWPASS] [IMG_TYPE] [INIT_SEG_SMOOTH] [SEGMENTS] [INIT_TRANSFORM] [OTHER_PRIORS] [OUTPUT_BIASFIELD] [OUTPUT_BIASCORRECTED] [NO_BIAS] [CHANNELS] [OUT_BASENAME] [USE_PRIORS] [NO_PVE] [SEGMENT_ITERS] [MIXEL_SMOOTH] [HYPER] [VERBOSE] [MANUAL_SEG] [ITERS_AFTERBIAS] [IN_FILES]",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "FAST (FMRIB's Automated Segmentation Tool) segments a 3D image of the brain into different tissue types (Grey Matter, White Matter, CSF, etc.), whilst also correcting for spatial intensity variations (also known as bias field or RF inhomogeneities). The underlying method is based on a hidden Markov random field model and an associated Expectation-Maximization algorithm. The whole process is fully automated and can also produce a bias field-corrected input image and a probabilistic and/or partial volume tissue segmentation. It is robust and reliable, compared to most finite mixture model-based methods, which are sensitive to noise.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FAST",
@@ -129,7 +129,7 @@
       "value-key": "[OUT_BASENAME]",
       "description": "Base name of output files.",
       "command-line-flag": "-o",
-      "default-value": "BrainExtractionBrain",
+      "default-value": "fast_out",
       "optional": true
     },
     {
