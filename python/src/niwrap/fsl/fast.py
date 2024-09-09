@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FAST_METADATA = Metadata(
-    id="c4e924e5cc30ed695e5fe60fd76040f39867c5b6",
+    id="609d877369b5465edd5a267cffd1d0fdc4b963ca",
     name="FAST",
     container_image_type="docker",
     container_image_tag="mcin/fsl:6.0.5",
@@ -27,8 +27,6 @@ class FastOutputs(typing.NamedTuple):
     """No description provided."""
     partial_volume_map: OutputPathType | None
     """Path/name of partial volume file _pveseg."""
-    probability_maps_outfile: OutputPathType | None
-    """No description provided."""
     restored_image: OutputPathType | None
     """No description provided."""
     tissue_class_files: OutputPathType | None
@@ -176,7 +174,6 @@ def fast(
         bias_field=execution.output_file(f"{out_basename}_bias.nii.gz", optional=True) if out_basename is not None else None,
         partial_volume_files=execution.output_file(f"{out_basename}_pve_*.nii.gz", optional=True) if out_basename is not None else None,
         partial_volume_map=execution.output_file(f"{out_basename}_pveseg.nii.gz", optional=True) if out_basename is not None else None,
-        probability_maps_outfile=execution.output_file(f"{out_basename}_prob_*.nii.gz", optional=True) if out_basename is not None else None,
         restored_image=execution.output_file(f"{out_basename}_restore.nii.gz", optional=True) if out_basename is not None else None,
         tissue_class_files=execution.output_file(f"{out_basename}_seg_*.nii.gz", optional=True) if out_basename is not None else None,
         tissue_class_map=execution.output_file(f"{out_basename}_seg.nii.gz", optional=True) if out_basename is not None else None,
