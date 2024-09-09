@@ -6,7 +6,7 @@ import pathlib
 import typing
 
 FAST_METADATA = Metadata(
-    id="cc07d0facd23be9e2a15742c1b8c840d94dda944",
+    id="119556ba826c6d2abe9f11e0192835e2a2ae8ded",
     name="FAST",
     container_image_type="docker",
     container_image_tag="mcin/fsl:6.0.5",
@@ -39,19 +39,19 @@ class FastOutputs(typing.NamedTuple):
 
 def fast(
     in_files: list[InputPathType],
-    number_classes: int | None = 3,
-    bias_iters: int | None = 3,
-    bias_lowpass: float | int | None = 20,
+    number_classes: int | None = None,
+    bias_iters: int | None = None,
+    bias_lowpass: float | int | None = None,
     img_type: typing.Literal[1, 2, 3] | None = 1,
-    init_seg_smooth: float | int | None = 0.02,
+    init_seg_smooth: float | int | None = None,
     segments: bool = False,
     init_transform: InputPathType | None = None,
     other_priors: list[InputPathType] | None = None,
     output_biasfield: bool = False,
     output_biascorrected: bool = False,
     no_bias: bool = False,
-    channels: int | None = 1,
-    out_basename: InputPathType | None = "BrainExtractionBrain",
+    channels: int | None = None,
+    out_basename: str | None = "BrainExtractionBrain",
     use_priors: bool = False,
     no_pve: bool = False,
     segment_iters: int | None = 15,
@@ -117,10 +117,6 @@ def fast(
         raise ValueError(f"'bias_iters' must be greater than 1 <= x but was {bias_iters}")
     if bias_lowpass is not None and not (0 <= bias_lowpass): 
         raise ValueError(f"'bias_lowpass' must be greater than 0 <= x but was {bias_lowpass}")
-    if init_seg_smooth is not None and not (0.0001 <= init_seg_smooth <= 0.1): 
-        raise ValueError(f"'init_seg_smooth' must be between 0.0001 <= x <= 0.1 but was {init_seg_smooth}")
-    if channels is not None and not (1 <= channels): 
-        raise ValueError(f"'channels' must be greater than 1 <= x but was {channels}")
     if segment_iters is not None and not (1 <= segment_iters): 
         raise ValueError(f"'segment_iters' must be greater than 1 <= x but was {segment_iters}")
     if mixel_smooth is not None and not (0.0 <= mixel_smooth <= 1.0): 
@@ -157,7 +153,7 @@ def fast(
     if channels is not None:
         cargs.extend(["-S", str(channels)])
     if out_basename is not None:
-        cargs.extend(["-o", execution.input_file(out_basename)])
+        cargs.extend(["-o", out_basename])
     if use_priors:
         cargs.append("-P")
     if no_pve:
@@ -178,14 +174,14 @@ def fast(
     cargs.extend([execution.input_file(f) for f in in_files])
     ret = FastOutputs(
         root=execution.output_file("."),
-        mixeltype=execution.output_file(f"{pathlib.Path(out_basename).name}_mixeltype.nii.gz", optional=True) if out_basename is not None else None,
-        bias_field=execution.output_file(f"{pathlib.Path(out_basename).name}_bias.nii.gz", optional=True) if out_basename is not None else None,
-        partial_volume_files=execution.output_file(f"{pathlib.Path(out_basename).name}_pve_*.nii.gz", optional=True) if out_basename is not None else None,
-        partial_volume_map=execution.output_file(f"{pathlib.Path(out_basename).name}_pveseg.nii.gz", optional=True) if out_basename is not None else None,
-        probability_maps_outfile=execution.output_file(f"{pathlib.Path(out_basename).name}_prob_*.nii.gz", optional=True) if out_basename is not None else None,
-        restored_image=execution.output_file(f"{pathlib.Path(out_basename).name}_restore.nii.gz", optional=True) if out_basename is not None else None,
-        tissue_class_files=execution.output_file(f"{pathlib.Path(out_basename).name}_seg_*.nii.gz", optional=True) if out_basename is not None else None,
-        tissue_class_map=execution.output_file(f"{pathlib.Path(out_basename).name}_seg.nii.gz", optional=True) if out_basename is not None else None,
+        mixeltype=execution.output_file(f"{out_basename}_mixeltype.nii.gz", optional=True) if out_basename is not None else None,
+        bias_field=execution.output_file(f"{out_basename}_bias.nii.gz", optional=True) if out_basename is not None else None,
+        partial_volume_files=execution.output_file(f"{out_basename}_pve_*.nii.gz", optional=True) if out_basename is not None else None,
+        partial_volume_map=execution.output_file(f"{out_basename}_pveseg.nii.gz", optional=True) if out_basename is not None else None,
+        probability_maps_outfile=execution.output_file(f"{out_basename}_prob_*.nii.gz", optional=True) if out_basename is not None else None,
+        restored_image=execution.output_file(f"{out_basename}_restore.nii.gz", optional=True) if out_basename is not None else None,
+        tissue_class_files=execution.output_file(f"{out_basename}_seg_*.nii.gz", optional=True) if out_basename is not None else None,
+        tissue_class_map=execution.output_file(f"{out_basename}_seg.nii.gz", optional=True) if out_basename is not None else None,
     )
     execution.run(cargs)
     return ret
