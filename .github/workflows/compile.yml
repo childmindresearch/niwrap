@@ -43,7 +43,7 @@ jobs:
         run: |
             rm -rf python/src/
             mkdir -p python/src/niwrap/
-            poetry run python build.py
+            poetry --directory styx python build.py
             git add python/
             git diff --quiet HEAD || git commit -m "Compile"
             git push
