@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERTWARP_METADATA = Metadata(
-    id="2d9e60f0bf0074c2cec4c35779d066edab826f9b.boutiques",
+    id="72b8c95c9bb70bd2c1483db87cbd13ddbdf4d26c.boutiques",
     name="convertwarp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -26,19 +26,19 @@ class ConvertwarpOutputs(typing.NamedTuple):
 
 def convertwarp(
     output_warp: str,
-    refvol: str,
-    premat: str | None = None,
-    warp1: str | None = None,
-    midmat: str | None = None,
-    warp2: str | None = None,
-    postmat: str | None = None,
-    shiftmap: str | None = None,
-    shiftdir: str | None = None,
+    refvol: InputPathType,
+    premat: InputPathType | None = None,
+    warp1: InputPathType | None = None,
+    midmat: InputPathType | None = None,
+    warp2: InputPathType | None = None,
+    postmat: InputPathType | None = None,
+    shiftmap: InputPathType | None = None,
+    shiftdir: typing.Literal["x", "y", "z", "x-", "y-", "z-"] | None = None,
     jacobian: bool = False,
     jstats: bool = False,
     constrainj: bool = False,
-    jmin: float | None = 0.01,
-    jmax: float | None = 100.0,
+    jmin: float | None = None,
+    jmax: float | None = None,
     abs_: bool = False,
     rel: bool = False,
     absout: bool = False,
@@ -90,37 +90,37 @@ def convertwarp(
     ])
     cargs.extend([
         "-r",
-        refvol
+        execution.input_file(refvol)
     ])
     if premat is not None:
         cargs.extend([
             "-m",
-            premat
+            execution.input_file(premat)
         ])
     if warp1 is not None:
         cargs.extend([
             "-w",
-            warp1
+            execution.input_file(warp1)
         ])
     if midmat is not None:
         cargs.extend([
             "--midmat",
-            midmat
+            execution.input_file(midmat)
         ])
     if warp2 is not None:
         cargs.extend([
             "--warp2",
-            warp2
+            execution.input_file(warp2)
         ])
     if postmat is not None:
         cargs.extend([
             "--postmat",
-            postmat
+            execution.input_file(postmat)
         ])
     if shiftmap is not None:
         cargs.extend([
             "-s",
-            shiftmap
+            execution.input_file(shiftmap)
         ])
     if shiftdir is not None:
         cargs.extend([
