@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 C3D_AFFINE_TOOL_METADATA = Metadata(
-    id="2f4b3a54d41e5ca256b67fc5e7d1e774b8d441f9.boutiques",
+    id="7ea823a818cb74f4dad96d412b2cbb7f6bb4c5f1.boutiques",
     name="c3d_affine_tool",
     package="c3d",
     container_image_tag="pyushkevich/itksnap:v3.8.2",
@@ -29,6 +29,7 @@ class C3dAffineToolOutputs(typing.NamedTuple):
 
 
 def c3d_affine_tool(
+    transform_file: InputPathType | None = None,
     reference_file: InputPathType | None = None,
     source_file: InputPathType | None = None,
     sform_file: InputPathType | None = None,
@@ -53,6 +54,7 @@ def c3d_affine_tool(
     Author: ITK-Snap Team
     
     Args:
+        transform_file: file or string representing the transform.
         reference_file: Set reference (fixed) image - only for -fsl2ras and\
             -ras2fsl.
         source_file: Set source (moving) image - only for -fsl2ras and\
@@ -79,6 +81,8 @@ def c3d_affine_tool(
     execution = runner.start_execution(C3D_AFFINE_TOOL_METADATA)
     cargs = []
     cargs.append("c3d_affine_tool")
+    if transform_file is not None:
+        cargs.append(execution.input_file(transform_file))
     if reference_file is not None:
         cargs.extend([
             "-ref",
