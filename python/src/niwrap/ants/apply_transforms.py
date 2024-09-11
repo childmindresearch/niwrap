@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APPLY_TRANSFORMS_METADATA = Metadata(
-    id="7fd520e682643e27e86843050bef636c0a6b1d36.boutiques",
+    id="af0ab7e47649587aa2226c23dbebd40492471a49.boutiques",
     name="apply_transforms",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -493,11 +493,11 @@ def apply_transforms(
     input_image: InputPathType,
     reference_image: InputPathType,
     output: typing.Union[ApplyTransformsWarpedOutput, ApplyTransformsCompositeDisplacementFieldOutput, ApplyTransformsGenericAffineTransformOutput],
-    transform: list[typing.Union[ApplyTransformsTransformFileName, ApplyTransformsUseInverse]],
     dimensionality: typing.Literal[2, 3, 4] | None = None,
     input_image_type: typing.Literal[0, 1, 2, 3, 4, 5] | None = None,
     interpolation: typing.Union[ApplyTransformsLinear, ApplyTransformsNearestNeighbor, ApplyTransformsMultiLabel, ApplyTransformsGaussian, ApplyTransformsBspline, ApplyTransformsCosineWindowedSinc, ApplyTransformsWelchWindowedSinc, ApplyTransformsHammingWindowedSinc, ApplyTransformsLanczosWindowedSinc, ApplyTransformsGenericLabel] | None = None,
     output_data_type: typing.Literal["char", "uchar", "short", "int", "float", "double", "default"] | None = None,
+    transform: list[typing.Union[ApplyTransformsTransformFileName, ApplyTransformsUseInverse]] | None = None,
     default_value: float | None = None,
     static_cast_for_r: str | None = None,
     float_: typing.Literal[0, 1] | None = None,
@@ -521,18 +521,6 @@ def apply_transforms(
             transform and the reference image. A third option is to compose all\
             affine transforms and (if boolean is set) calculate its inverse which\
             is then written to an ITK file.
-        transform: Several transform options are supported including all those\
-            defined in the ITK library in addition to a deformation field\
-            transform. The ordering of the transformations follows the ordering\
-            specified on the command line. An identity transform is pushed onto the\
-            transformation stack. Each new transform encountered on the command\
-            line is also pushed onto the transformation stack. Then, to warp the\
-            input object, each point comprising the input object is warped first\
-            according to the last transform pushed onto the stack followed by the\
-            second to last transform, etc. until the last transform encountered\
-            which is the identity transform. Also, it should be noted that the\
-            inverse transform can be accommodated with the usual caveat that such\
-            an inverse must be defined by the specified transform class.
         dimensionality: This option forces the image to be treated as a\
             specified-dimensional image. if not specified, antswarp tries to infer\
             the dimensionality from the input image.
@@ -549,6 +537,18 @@ def apply_transforms(
             WARNING: Outputs will be incorrect (overflowed/reinterpreted) if values\
             exceed the range allowed by your choice. Note that some pixel types are\
             not supported by some image formats. e.g. int is not supported by jpg.
+        transform: Several transform options are supported including all those\
+            defined in the ITK library in addition to a deformation field\
+            transform. The ordering of the transformations follows the ordering\
+            specified on the command line. An identity transform is pushed onto the\
+            transformation stack. Each new transform encountered on the command\
+            line is also pushed onto the transformation stack. Then, to warp the\
+            input object, each point comprising the input object is warped first\
+            according to the last transform pushed onto the stack followed by the\
+            second to last transform, etc. until the last transform encountered\
+            which is the identity transform. Also, it should be noted that the\
+            inverse transform can be accommodated with the usual caveat that such\
+            an inverse must be defined by the specified transform class.
         default_value: Default voxel value to be used with input images only.\
             Specifies the voxel value when the input point maps outside the output\
             domain. With tensor input images, specifies the default voxel\
@@ -596,10 +596,11 @@ def apply_transforms(
             "--output-data-type",
             output_data_type
         ])
-    cargs.extend([
-        "--transform",
-        *[a for c in [s.run(execution) for s in transform] for a in c]
-    ])
+    if transform is not None:
+        cargs.extend([
+            "--transform",
+            *[a for c in [s.run(execution) for s in transform] for a in c]
+        ])
     if default_value is not None:
         cargs.extend([
             "--default-value",
