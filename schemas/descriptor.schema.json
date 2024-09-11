@@ -226,6 +226,11 @@
                     "$id": "http://github.com/boutiques/boutiques-schema/input/uses-absolute-path",
                     "description": "Specifies that this input must be given as an absolute path. Only specifiable for File type inputs.",
                     "type": "boolean"
+                },
+                "resolve-parent": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/resolve-parent",
+                    "description": "Specifies that the full parent directory of this file needs to be visible to the tool. Only specifiable for File type inputs.",
+                    "type": "boolean"
                 }
             },
             "required": [
