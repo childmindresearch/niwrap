@@ -50,6 +50,8 @@ def aiv(
     Returns:
         NamedTuple of outputs (described in `AivOutputs`).
     """
+    if port is not None and not (1024 <= port <= 65535): 
+        raise ValueError(f"'port' must be between 1024 <= x <= 65535 but was {port}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(AIV_METADATA)
     cargs = []

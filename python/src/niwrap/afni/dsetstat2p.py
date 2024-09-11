@@ -55,6 +55,8 @@ def dsetstat2p(
     Returns:
         NamedTuple of outputs (described in `Dsetstat2pOutputs`).
     """
+    if not (0 <= statval): 
+        raise ValueError(f"'statval' must be greater than 0 <= x but was {statval}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(DSETSTAT2P_METADATA)
     cargs = []

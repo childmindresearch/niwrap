@@ -66,6 +66,12 @@ def susan(
     Returns:
         NamedTuple of outputs (described in `SusanOutputs`).
     """
+    if not (2 <= dimensionality <= 3): 
+        raise ValueError(f"'dimensionality' must be between 2 <= x <= 3 but was {dimensionality}")
+    if not (0 <= use_median_filter <= 1): 
+        raise ValueError(f"'use_median_filter' must be between 0 <= x <= 1 but was {use_median_filter}")
+    if not (0 <= n_usans <= 2): 
+        raise ValueError(f"'n_usans' must be between 0 <= x <= 2 but was {n_usans}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(SUSAN_METADATA)
     cargs = []

@@ -77,6 +77,10 @@ def v_3d_xclust_sim(
     Returns:
         NamedTuple of outputs (described in `V3dXclustSimOutputs`).
     """
+    if fpr is not None and not (2 <= fpr <= 9): 
+        raise ValueError(f"'fpr' must be between 2 <= x <= 9 but was {fpr}")
+    if splitfrac is not None and not (0.2 <= splitfrac <= 0.8): 
+        raise ValueError(f"'splitfrac' must be between 0.2 <= x <= 0.8 but was {splitfrac}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_XCLUST_SIM_METADATA)
     cargs = []

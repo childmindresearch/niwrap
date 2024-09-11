@@ -81,6 +81,10 @@ def v_3dfim_(
     Returns:
         NamedTuple of outputs (described in `V3dfimOutputs`).
     """
+    if threshold is not None and not (0 <= threshold <= 1): 
+        raise ValueError(f"'threshold' must be between 0 <= x <= 1 but was {threshold}")
+    if cdisp_value is not None and not (0 <= cdisp_value <= 1): 
+        raise ValueError(f"'cdisp_value' must be between 0 <= x <= 1 but was {cdisp_value}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DFIM__METADATA)
     cargs = []

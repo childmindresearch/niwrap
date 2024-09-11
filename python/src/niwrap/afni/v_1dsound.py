@@ -58,6 +58,8 @@ def v_1dsound(
     Returns:
         NamedTuple of outputs (described in `V1dsoundOutputs`).
     """
+    if tper_option is not None and not (0.01 <= tper_option <= 1.0): 
+        raise ValueError(f"'tper_option' must be between 0.01 <= x <= 1.0 but was {tper_option}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DSOUND_METADATA)
     cargs = []

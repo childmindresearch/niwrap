@@ -70,6 +70,8 @@ def ccops(
     Returns:
         NamedTuple of outputs (described in `CcopsOutputs`).
     """
+    if connexity_constraint is not None and not (0 <= connexity_constraint <= 1): 
+        raise ValueError(f"'connexity_constraint' must be between 0 <= x <= 1 but was {connexity_constraint}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(CCOPS_METADATA)
     cargs = []

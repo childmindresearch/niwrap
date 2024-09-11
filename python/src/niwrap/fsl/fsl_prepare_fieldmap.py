@@ -53,6 +53,8 @@ def fsl_prepare_fieldmap(
     Returns:
         NamedTuple of outputs (described in `FslPrepareFieldmapOutputs`).
     """
+    if not (0 <= delta_te): 
+        raise ValueError(f"'delta_te' must be greater than 0 <= x but was {delta_te}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_PREPARE_FIELDMAP_METADATA)
     cargs = []

@@ -50,6 +50,8 @@ def v_3d_periodogram(
     Returns:
         NamedTuple of outputs (described in `V3dPeriodogramOutputs`).
     """
+    if taper is not None and not (0 <= taper <= 1): 
+        raise ValueError(f"'taper' must be between 0 <= x <= 1 but was {taper}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_PERIODOGRAM_METADATA)
     cargs = []

@@ -46,6 +46,8 @@ def v_1d_upsample(
     Returns:
         NamedTuple of outputs (described in `V1dUpsampleOutputs`).
     """
+    if not (2 <= upsample_factor <= 32): 
+        raise ValueError(f"'upsample_factor' must be between 2 <= x <= 32 but was {upsample_factor}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_UPSAMPLE_METADATA)
     cargs = []

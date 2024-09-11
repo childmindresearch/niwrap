@@ -67,6 +67,8 @@ def v_3d_toutcount(
     Returns:
         NamedTuple of outputs (described in `V3dToutcountOutputs`).
     """
+    if q_threshold is not None and not (0 <= q_threshold <= 1): 
+        raise ValueError(f"'q_threshold' must be between 0 <= x <= 1 but was {q_threshold}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TOUTCOUNT_METADATA)
     cargs = []

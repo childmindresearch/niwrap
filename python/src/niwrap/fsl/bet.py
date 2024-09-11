@@ -141,6 +141,10 @@ def bet(
     Returns:
         NamedTuple of outputs (described in `BetOutputs`).
     """
+    if fractional_intensity is not None and not (0 <= fractional_intensity <= 1): 
+        raise ValueError(f"'fractional_intensity' must be between 0 <= x <= 1 but was {fractional_intensity}")
+    if vg_fractional_intensity is not None and not (-1 <= vg_fractional_intensity <= 1): 
+        raise ValueError(f"'vg_fractional_intensity' must be between -1 <= x <= 1 but was {vg_fractional_intensity}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(BET_METADATA)
     cargs = []

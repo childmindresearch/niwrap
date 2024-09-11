@@ -111,8 +111,12 @@ def fast(
         raise ValueError(f"'number_classes' must be greater than 1 <= x but was {number_classes}")
     if bias_iters is not None and not (1 <= bias_iters): 
         raise ValueError(f"'bias_iters' must be greater than 1 <= x but was {bias_iters}")
+    if bias_lowpass is not None and not (0 <= bias_lowpass): 
+        raise ValueError(f"'bias_lowpass' must be greater than 0 <= x but was {bias_lowpass}")
     if segment_iters is not None and not (1 <= segment_iters): 
         raise ValueError(f"'segment_iters' must be greater than 1 <= x but was {segment_iters}")
+    if hyper is not None and not (0.0 <= hyper <= 1.0): 
+        raise ValueError(f"'hyper' must be between 0.0 <= x <= 1.0 but was {hyper}")
     if iters_afterbias is not None and not (1 <= iters_afterbias): 
         raise ValueError(f"'iters_afterbias' must be greater than 1 <= x but was {iters_afterbias}")
     runner = runner or get_global_runner()

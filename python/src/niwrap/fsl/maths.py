@@ -244,6 +244,22 @@ class MathsOperation:
         Returns:
             Command line arguments
         """
+        if thrp is not None and not (0 <= thrp <= 100): 
+            raise ValueError(f"'thrp' must be between 0 <= x <= 100 but was {thrp}")
+        if thr_p is not None and not (0 <= thr_p <= 100): 
+            raise ValueError(f"'thr_p' must be between 0 <= x <= 100 but was {thr_p}")
+        if uthrp is not None and not (0 <= uthrp <= 100): 
+            raise ValueError(f"'uthrp' must be between 0 <= x <= 100 but was {uthrp}")
+        if uthr_p is not None and not (0 <= uthr_p <= 100): 
+            raise ValueError(f"'uthr_p' must be between 0 <= x <= 100 but was {uthr_p}")
+        if tperc is not None and not (0 <= tperc <= 100): 
+            raise ValueError(f"'tperc' must be between 0 <= x <= 100 but was {tperc}")
+        if xperc is not None and not (0 <= xperc <= 100): 
+            raise ValueError(f"'xperc' must be between 0 <= x <= 100 but was {xperc}")
+        if yperc is not None and not (0 <= yperc <= 100): 
+            raise ValueError(f"'yperc' must be between 0 <= x <= 100 but was {yperc}")
+        if zperc is not None and not (0 <= zperc <= 100): 
+            raise ValueError(f"'zperc' must be between 0 <= x <= 100 but was {zperc}")
         cargs = []
         if self.add is not None:
             cargs.extend([

@@ -123,6 +123,8 @@ def v__sswarper(
     Returns:
         NamedTuple of outputs (described in `VSswarperOutputs`).
     """
+    if warp_scale is not None and not (0.1 <= warp_scale <= 1.0): 
+        raise ValueError(f"'warp_scale' must be between 0.1 <= x <= 1.0 but was {warp_scale}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SSWARPER_METADATA)
     cargs = []

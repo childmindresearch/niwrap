@@ -129,6 +129,8 @@ def v__animal_warper(
     Returns:
         NamedTuple of outputs (described in `VAnimalWarperOutputs`).
     """
+    if maxlev is not None and not (0 <= maxlev <= 11): 
+        raise ValueError(f"'maxlev' must be between 0 <= x <= 11 but was {maxlev}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ANIMAL_WARPER_METADATA)
     cargs = []

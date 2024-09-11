@@ -65,6 +65,8 @@ def examine_xmat(
     Returns:
         NamedTuple of outputs (described in `ExamineXmatOutputs`).
     """
+    if verbosity is not None and not (0 <= verbosity): 
+        raise ValueError(f"'verbosity' must be greater than 0 <= x but was {verbosity}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(EXAMINE_XMAT_METADATA)
     cargs = []
