@@ -52,6 +52,8 @@ def v_3d_signatures(
     Returns:
         NamedTuple of outputs (described in `V3dSignaturesOutputs`).
     """
+    if threshold is not None and not (0 <= threshold <= 1): 
+        raise ValueError(f"'threshold' must be between 0 <= x <= 1 but was {threshold}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SIGNATURES_METADATA)
     cargs = []

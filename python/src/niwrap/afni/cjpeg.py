@@ -53,6 +53,8 @@ def cjpeg(
     Returns:
         NamedTuple of outputs (described in `CjpegOutputs`).
     """
+    if quality is not None and not (0 <= quality <= 100): 
+        raise ValueError(f"'quality' must be between 0 <= x <= 100 but was {quality}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(CJPEG_METADATA)
     cargs = []

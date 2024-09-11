@@ -56,6 +56,8 @@ def v_3d_dft(
     Returns:
         NamedTuple of outputs (described in `V3dDftOutputs`).
     """
+    if taper is not None and not (0.0 <= taper <= 1.0): 
+        raise ValueError(f"'taper' must be between 0.0 <= x <= 1.0 but was {taper}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DFT_METADATA)
     cargs = []

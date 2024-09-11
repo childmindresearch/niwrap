@@ -430,6 +430,8 @@ class RegistrationMetricAntsNeighbourhoodCrossCorrelation:
         Returns:
             Command line arguments
         """
+        if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
+            raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
         if self.radius is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
             cargs.append("CC[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.radius) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
@@ -458,6 +460,8 @@ class RegistrationMetricMutualInformation:
         Returns:
             Command line arguments
         """
+        if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
+            raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
         if self.number_of_bins is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
             cargs.append("MI[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.number_of_bins) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
@@ -486,6 +490,8 @@ class RegistrationMetricMattes:
         Returns:
             Command line arguments
         """
+        if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
+            raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
         if self.number_of_bins is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
             cargs.append("Mattes[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.number_of_bins) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
@@ -514,6 +520,8 @@ class RegistrationMetricMeanSquares:
         Returns:
             Command line arguments
         """
+        if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
+            raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
         if self.radius is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
             cargs.append("MeanSquares[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.radius) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
@@ -542,6 +550,8 @@ class RegistrationMetricDemons:
         Returns:
             Command line arguments
         """
+        if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
+            raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
         if self.number_of_bins is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
             cargs.append("Demons[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.number_of_bins) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
@@ -570,6 +580,8 @@ class RegistrationMetricGlobalCorrelation:
         Returns:
             Command line arguments
         """
+        if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
+            raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
         if self.radius is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
             cargs.append("GC[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.radius) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
@@ -596,6 +608,8 @@ class RegistrationMetricEuclideanIcp:
         Returns:
             Command line arguments
         """
+        if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
+            raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
         if self.sampling_percentage is not None and self.boundary_points_only is not None:
             cargs.append("ICP[" + self.fixed_point_set + "," + self.moving_point_set + "," + str(self.metric_weight) + "," + str(self.sampling_percentage) + "," + self.boundary_points_only + "]")
@@ -620,6 +634,8 @@ class RegistrationMetricPointSetExpectation:
         Returns:
             Command line arguments
         """
+        if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
+            raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
         if self.point_set_sigma is not None and self.sampling_percentage is not None:
             cargs.append("PSE[[FIXED_IMAGE],[MOVING_IMAGE]," + str(self.metric_weight) + "," + "," + str(self.point_set_sigma) + "[SAMPLING_STRATEGY]" + "," + str(self.sampling_percentage) + "[USE_GRADIENT_FILTER]]")
@@ -648,6 +664,8 @@ class RegistrationMetricJensenHavrdaCharvetTsallis:
         Returns:
             Command line arguments
         """
+        if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
+            raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
         if self.sampling_percentage is not None and self.boundary_points_only is not None and self.point_set_sigma is not None and self.k_neighborhood is not None:
             cargs.append("JHCT[" + self.fixed_point_set + "," + self.moving_point_set + "," + str(self.metric_weight) + "," + str(self.sampling_percentage) + "," + self.boundary_points_only + "," + str(self.point_set_sigma) + "," + str(self.k_neighborhood) + "]")

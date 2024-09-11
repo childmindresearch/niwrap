@@ -48,6 +48,8 @@ def v_1d_correlate(
     Returns:
         NamedTuple of outputs (described in `V1dCorrelateOutputs`).
     """
+    if alpha is not None and not (1 <= alpha <= 20): 
+        raise ValueError(f"'alpha' must be between 1 <= x <= 20 but was {alpha}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_CORRELATE_METADATA)
     cargs = []

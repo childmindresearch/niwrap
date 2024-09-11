@@ -53,6 +53,8 @@ def stimband(
     Returns:
         NamedTuple of outputs (described in `StimbandOutputs`).
     """
+    if min_pow is not None and not (50 <= min_pow <= 99): 
+        raise ValueError(f"'min_pow' must be between 50 <= x <= 99 but was {min_pow}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(STIMBAND_METADATA)
     cargs = []

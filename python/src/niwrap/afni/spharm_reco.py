@@ -62,6 +62,8 @@ def spharm_reco(
     """
     if not (1 <= len(coefficients)): 
         raise ValueError(f"Length of 'coefficients' must be greater than 1 but was {len(coefficients)}")
+    if smoothing is not None and not (0 <= smoothing <= 0.001): 
+        raise ValueError(f"'smoothing' must be between 0 <= x <= 0.001 but was {smoothing}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPHARM_RECO_METADATA)
     cargs = []

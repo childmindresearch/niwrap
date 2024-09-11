@@ -54,6 +54,8 @@ def inspec(
     Returns:
         NamedTuple of outputs (described in `InspecOutputs`).
     """
+    if detail is not None and not (0 <= detail <= 3): 
+        raise ValueError(f"'detail' must be between 0 <= x <= 3 but was {detail}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(INSPEC_METADATA)
     cargs = []

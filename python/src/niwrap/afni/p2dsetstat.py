@@ -51,6 +51,8 @@ def p2dsetstat(
     Returns:
         NamedTuple of outputs (described in `P2dsetstatOutputs`).
     """
+    if not (0 <= pvalue <= 1): 
+        raise ValueError(f"'pvalue' must be between 0 <= x <= 1 but was {pvalue}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(P2DSETSTAT_METADATA)
     cargs = []

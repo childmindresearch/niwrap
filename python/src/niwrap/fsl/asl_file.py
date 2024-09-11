@@ -102,6 +102,10 @@ def asl_file(
     Returns:
         NamedTuple of outputs (described in `AslFileOutputs`).
     """
+    if neighbour is not None and not (3 <= neighbour <= 9): 
+        raise ValueError(f"'neighbour' must be between 3 <= x <= 9 but was {neighbour}")
+    if kernel is not None and not (3 <= kernel <= 9): 
+        raise ValueError(f"'kernel' must be between 3 <= x <= 9 but was {kernel}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(ASL_FILE_METADATA)
     cargs = []

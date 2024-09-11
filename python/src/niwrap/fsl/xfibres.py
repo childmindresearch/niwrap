@@ -98,6 +98,8 @@ def xfibres(
     Returns:
         NamedTuple of outputs (described in `XfibresOutputs`).
     """
+    if rmean is not None and not (rmean <= 0.5): 
+        raise ValueError(f"'rmean' must be less than x <= 0.5 but was {rmean}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(XFIBRES_METADATA)
     cargs = []

@@ -64,6 +64,10 @@ def plugout_ijk(
     Returns:
         NamedTuple of outputs (described in `PlugoutIjkOutputs`).
     """
+    if port_offset is not None and not (1025 <= port_offset <= 65500): 
+        raise ValueError(f"'port_offset' must be between 1025 <= x <= 65500 but was {port_offset}")
+    if port_bloc_offset is not None and not (port_bloc_offset <= 4000): 
+        raise ValueError(f"'port_bloc_offset' must be less than x <= 4000 but was {port_bloc_offset}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(PLUGOUT_IJK_METADATA)
     cargs = []

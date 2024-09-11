@@ -55,6 +55,8 @@ def v__compute_gcor(
     Returns:
         NamedTuple of outputs (described in `VComputeGcorOutputs`).
     """
+    if verbose is not None and not (0 <= verbose <= 3): 
+        raise ValueError(f"'verbose' must be between 0 <= x <= 3 but was {verbose}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__COMPUTE_GCOR_METADATA)
     cargs = []

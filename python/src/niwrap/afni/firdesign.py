@@ -47,6 +47,12 @@ def firdesign(
     Returns:
         NamedTuple of outputs (described in `FirdesignOutputs`).
     """
+    if not (0 <= fbot): 
+        raise ValueError(f"'fbot' must be greater than 0 <= x but was {fbot}")
+    if not (0 <= ftop): 
+        raise ValueError(f"'ftop' must be greater than 0 <= x but was {ftop}")
+    if not (8 <= ntap <= 2000): 
+        raise ValueError(f"'ntap' must be between 8 <= x <= 2000 but was {ntap}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIRDESIGN_METADATA)
     cargs = []

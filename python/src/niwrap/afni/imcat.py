@@ -106,6 +106,10 @@ def imcat(
     Returns:
         NamedTuple of outputs (described in `ImcatOutputs`).
     """
+    if pad_val is not None and not (0 <= pad_val <= 255): 
+        raise ValueError(f"'pad_val' must be between 0 <= x <= 255 but was {pad_val}")
+    if gray_wrap is not None and not (0.0 <= gray_wrap <= 1.0): 
+        raise ValueError(f"'gray_wrap' must be between 0.0 <= x <= 1.0 but was {gray_wrap}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMCAT_METADATA)
     cargs = []

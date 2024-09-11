@@ -97,6 +97,8 @@ def pulse(
     Returns:
         NamedTuple of outputs (described in `PulseOutputs`).
     """
+    if cover is not None and not (50 <= cover <= 100): 
+        raise ValueError(f"'cover' must be between 50 <= x <= 100 but was {cover}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(PULSE_METADATA)
     cargs = []

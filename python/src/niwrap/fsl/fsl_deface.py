@@ -84,6 +84,8 @@ def fsl_deface(
     Returns:
         NamedTuple of outputs (described in `FslDefaceOutputs`).
     """
+    if fractional_intensity is not None and not (0 <= fractional_intensity <= 1): 
+        raise ValueError(f"'fractional_intensity' must be between 0 <= x <= 1 but was {fractional_intensity}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_DEFACE_METADATA)
     cargs = []

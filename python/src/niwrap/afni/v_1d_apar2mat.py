@@ -62,6 +62,18 @@ def v_1d_apar2mat(
     Returns:
         NamedTuple of outputs (described in `V1dApar2matOutputs`).
     """
+    if not (0.1 <= x_scale <= 10.0): 
+        raise ValueError(f"'x_scale' must be between 0.1 <= x <= 10.0 but was {x_scale}")
+    if not (0.1 <= y_scale <= 10.0): 
+        raise ValueError(f"'y_scale' must be between 0.1 <= x <= 10.0 but was {y_scale}")
+    if not (0.1 <= z_scale <= 10.0): 
+        raise ValueError(f"'z_scale' must be between 0.1 <= x <= 10.0 but was {z_scale}")
+    if not (-0.3333 <= y_x_shear <= 0.3333): 
+        raise ValueError(f"'y_x_shear' must be between -0.3333 <= x <= 0.3333 but was {y_x_shear}")
+    if not (-0.3333 <= z_x_shear <= 0.3333): 
+        raise ValueError(f"'z_x_shear' must be between -0.3333 <= x <= 0.3333 but was {z_x_shear}")
+    if not (-0.3333 <= z_y_shear <= 0.3333): 
+        raise ValueError(f"'z_y_shear' must be between -0.3333 <= x <= 0.3333 but was {z_y_shear}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_APAR2MAT_METADATA)
     cargs = []

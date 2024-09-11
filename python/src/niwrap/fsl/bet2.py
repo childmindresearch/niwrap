@@ -85,6 +85,10 @@ def bet2(
     Returns:
         NamedTuple of outputs (described in `Bet2Outputs`).
     """
+    if fractional_intensity is not None and not (0 <= fractional_intensity <= 1): 
+        raise ValueError(f"'fractional_intensity' must be between 0 <= x <= 1 but was {fractional_intensity}")
+    if vertical_gradient is not None and not (-1 <= vertical_gradient <= 1): 
+        raise ValueError(f"'vertical_gradient' must be between -1 <= x <= 1 but was {vertical_gradient}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(BET2_METADATA)
     cargs = []

@@ -45,6 +45,8 @@ def v_1d_bandpass(
     Returns:
         NamedTuple of outputs (described in `V1dBandpassOutputs`).
     """
+    if not (0 <= fbot): 
+        raise ValueError(f"'fbot' must be greater than 0 <= x but was {fbot}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_BANDPASS_METADATA)
     cargs = []

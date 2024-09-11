@@ -48,6 +48,8 @@ def v_3d_sharpen(
     Returns:
         NamedTuple of outputs (described in `V3dSharpenOutputs`).
     """
+    if sharpening_factor is not None and not (0.1 <= sharpening_factor <= 0.9): 
+        raise ValueError(f"'sharpening_factor' must be between 0.1 <= x <= 0.9 but was {sharpening_factor}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SHARPEN_METADATA)
     cargs = []
