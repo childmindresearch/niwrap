@@ -133,58 +133,60 @@
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)):</span> 
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length of &#39;coefficients&#39; must be greater than 1 but was </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SPHARM_RECO_METADATA</span><span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SpharmReco&quot;</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="s2">&quot;-i_TYPE&quot;</span><span class="p">,</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="n">input_surface</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="p">])</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="s2">&quot;-l&quot;</span><span class="p">,</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">decomposition_order</span><span class="p">)</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="p">])</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="s2">&quot;-bases_prefix&quot;</span><span class="p">,</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="n">bases_prefix</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="p">])</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="s2">&quot;-coef&quot;</span><span class="p">,</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">coefficients</span><span class="p">]</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="p">])</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="n">output_prefix</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">output_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>            <span class="s2">&quot;-o_TYPE&quot;</span><span class="p">,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="o">*</span><span class="n">output_surface</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="p">])</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">debug</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;-debug&quot;</span><span class="p">,</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">debug</span><span class="p">)</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">smoothing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="s2">&quot;-sigma&quot;</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">smoothing</span><span class="p">)</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="p">])</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SpharmRecoOutputs</span><span class="p">(</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="p">)</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="s2">&quot;SPHARM_RECO_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="s2">&quot;SpharmRecoOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="s2">&quot;spharm_reco&quot;</span><span class="p">,</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="p">]</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="k">if</span> <span class="n">smoothing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">smoothing</span> <span class="o">&lt;=</span> <span class="mf">0.001</span><span class="p">):</span> 
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;smoothing&#39; must be between 0 &lt;= x &lt;= 0.001 but was </span><span class="si">{</span><span class="n">smoothing</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SPHARM_RECO_METADATA</span><span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SpharmReco&quot;</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="s2">&quot;-i_TYPE&quot;</span><span class="p">,</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="n">input_surface</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="p">])</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="s2">&quot;-l&quot;</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">decomposition_order</span><span class="p">)</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="p">])</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="s2">&quot;-bases_prefix&quot;</span><span class="p">,</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="n">bases_prefix</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="p">])</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="s2">&quot;-coef&quot;</span><span class="p">,</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">coefficients</span><span class="p">]</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="p">])</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="n">output_prefix</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">output_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="s2">&quot;-o_TYPE&quot;</span><span class="p">,</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="o">*</span><span class="n">output_surface</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="p">])</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">debug</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;-debug&quot;</span><span class="p">,</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">debug</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="p">])</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">smoothing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="s2">&quot;-sigma&quot;</span><span class="p">,</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">smoothing</span><span class="p">)</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="p">])</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SpharmRecoOutputs</span><span class="p">(</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="p">)</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="s2">&quot;SPHARM_RECO_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="s2">&quot;SpharmRecoOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="s2">&quot;spharm_reco&quot;</span><span class="p">,</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -315,51 +317,53 @@
 </span><span id="spharm_reco-63"><a href="#spharm_reco-63"><span class="linenos"> 63</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="spharm_reco-64"><a href="#spharm_reco-64"><span class="linenos"> 64</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)):</span> 
 </span><span id="spharm_reco-65"><a href="#spharm_reco-65"><span class="linenos"> 65</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length of &#39;coefficients&#39; must be greater than 1 but was </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="spharm_reco-66"><a href="#spharm_reco-66"><span class="linenos"> 66</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="spharm_reco-67"><a href="#spharm_reco-67"><span class="linenos"> 67</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SPHARM_RECO_METADATA</span><span class="p">)</span>
-</span><span id="spharm_reco-68"><a href="#spharm_reco-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="spharm_reco-69"><a href="#spharm_reco-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SpharmReco&quot;</span><span class="p">)</span>
-</span><span id="spharm_reco-70"><a href="#spharm_reco-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="spharm_reco-71"><a href="#spharm_reco-71"><span class="linenos"> 71</span></a>        <span class="s2">&quot;-i_TYPE&quot;</span><span class="p">,</span>
-</span><span id="spharm_reco-72"><a href="#spharm_reco-72"><span class="linenos"> 72</span></a>        <span class="n">input_surface</span>
-</span><span id="spharm_reco-73"><a href="#spharm_reco-73"><span class="linenos"> 73</span></a>    <span class="p">])</span>
-</span><span id="spharm_reco-74"><a href="#spharm_reco-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="spharm_reco-75"><a href="#spharm_reco-75"><span class="linenos"> 75</span></a>        <span class="s2">&quot;-l&quot;</span><span class="p">,</span>
-</span><span id="spharm_reco-76"><a href="#spharm_reco-76"><span class="linenos"> 76</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">decomposition_order</span><span class="p">)</span>
-</span><span id="spharm_reco-77"><a href="#spharm_reco-77"><span class="linenos"> 77</span></a>    <span class="p">])</span>
-</span><span id="spharm_reco-78"><a href="#spharm_reco-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="spharm_reco-79"><a href="#spharm_reco-79"><span class="linenos"> 79</span></a>        <span class="s2">&quot;-bases_prefix&quot;</span><span class="p">,</span>
-</span><span id="spharm_reco-80"><a href="#spharm_reco-80"><span class="linenos"> 80</span></a>        <span class="n">bases_prefix</span>
-</span><span id="spharm_reco-81"><a href="#spharm_reco-81"><span class="linenos"> 81</span></a>    <span class="p">])</span>
-</span><span id="spharm_reco-82"><a href="#spharm_reco-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="spharm_reco-83"><a href="#spharm_reco-83"><span class="linenos"> 83</span></a>        <span class="s2">&quot;-coef&quot;</span><span class="p">,</span>
-</span><span id="spharm_reco-84"><a href="#spharm_reco-84"><span class="linenos"> 84</span></a>        <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">coefficients</span><span class="p">]</span>
-</span><span id="spharm_reco-85"><a href="#spharm_reco-85"><span class="linenos"> 85</span></a>    <span class="p">])</span>
-</span><span id="spharm_reco-86"><a href="#spharm_reco-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="spharm_reco-87"><a href="#spharm_reco-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="spharm_reco-88"><a href="#spharm_reco-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="spharm_reco-89"><a href="#spharm_reco-89"><span class="linenos"> 89</span></a>            <span class="n">output_prefix</span>
-</span><span id="spharm_reco-90"><a href="#spharm_reco-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="spharm_reco-91"><a href="#spharm_reco-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">output_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="spharm_reco-92"><a href="#spharm_reco-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="spharm_reco-93"><a href="#spharm_reco-93"><span class="linenos"> 93</span></a>            <span class="s2">&quot;-o_TYPE&quot;</span><span class="p">,</span>
-</span><span id="spharm_reco-94"><a href="#spharm_reco-94"><span class="linenos"> 94</span></a>            <span class="o">*</span><span class="n">output_surface</span>
-</span><span id="spharm_reco-95"><a href="#spharm_reco-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
-</span><span id="spharm_reco-96"><a href="#spharm_reco-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">debug</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="spharm_reco-97"><a href="#spharm_reco-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="spharm_reco-98"><a href="#spharm_reco-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;-debug&quot;</span><span class="p">,</span>
-</span><span id="spharm_reco-99"><a href="#spharm_reco-99"><span class="linenos"> 99</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">debug</span><span class="p">)</span>
-</span><span id="spharm_reco-100"><a href="#spharm_reco-100"><span class="linenos">100</span></a>        <span class="p">])</span>
-</span><span id="spharm_reco-101"><a href="#spharm_reco-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">smoothing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="spharm_reco-102"><a href="#spharm_reco-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="spharm_reco-103"><a href="#spharm_reco-103"><span class="linenos">103</span></a>            <span class="s2">&quot;-sigma&quot;</span><span class="p">,</span>
-</span><span id="spharm_reco-104"><a href="#spharm_reco-104"><span class="linenos">104</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">smoothing</span><span class="p">)</span>
-</span><span id="spharm_reco-105"><a href="#spharm_reco-105"><span class="linenos">105</span></a>        <span class="p">])</span>
-</span><span id="spharm_reco-106"><a href="#spharm_reco-106"><span class="linenos">106</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SpharmRecoOutputs</span><span class="p">(</span>
-</span><span id="spharm_reco-107"><a href="#spharm_reco-107"><span class="linenos">107</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="spharm_reco-108"><a href="#spharm_reco-108"><span class="linenos">108</span></a>    <span class="p">)</span>
-</span><span id="spharm_reco-109"><a href="#spharm_reco-109"><span class="linenos">109</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="spharm_reco-110"><a href="#spharm_reco-110"><span class="linenos">110</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="spharm_reco-66"><a href="#spharm_reco-66"><span class="linenos"> 66</span></a>    <span class="k">if</span> <span class="n">smoothing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">smoothing</span> <span class="o">&lt;=</span> <span class="mf">0.001</span><span class="p">):</span> 
+</span><span id="spharm_reco-67"><a href="#spharm_reco-67"><span class="linenos"> 67</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;smoothing&#39; must be between 0 &lt;= x &lt;= 0.001 but was </span><span class="si">{</span><span class="n">smoothing</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="spharm_reco-68"><a href="#spharm_reco-68"><span class="linenos"> 68</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="spharm_reco-69"><a href="#spharm_reco-69"><span class="linenos"> 69</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SPHARM_RECO_METADATA</span><span class="p">)</span>
+</span><span id="spharm_reco-70"><a href="#spharm_reco-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="spharm_reco-71"><a href="#spharm_reco-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SpharmReco&quot;</span><span class="p">)</span>
+</span><span id="spharm_reco-72"><a href="#spharm_reco-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="spharm_reco-73"><a href="#spharm_reco-73"><span class="linenos"> 73</span></a>        <span class="s2">&quot;-i_TYPE&quot;</span><span class="p">,</span>
+</span><span id="spharm_reco-74"><a href="#spharm_reco-74"><span class="linenos"> 74</span></a>        <span class="n">input_surface</span>
+</span><span id="spharm_reco-75"><a href="#spharm_reco-75"><span class="linenos"> 75</span></a>    <span class="p">])</span>
+</span><span id="spharm_reco-76"><a href="#spharm_reco-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="spharm_reco-77"><a href="#spharm_reco-77"><span class="linenos"> 77</span></a>        <span class="s2">&quot;-l&quot;</span><span class="p">,</span>
+</span><span id="spharm_reco-78"><a href="#spharm_reco-78"><span class="linenos"> 78</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">decomposition_order</span><span class="p">)</span>
+</span><span id="spharm_reco-79"><a href="#spharm_reco-79"><span class="linenos"> 79</span></a>    <span class="p">])</span>
+</span><span id="spharm_reco-80"><a href="#spharm_reco-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="spharm_reco-81"><a href="#spharm_reco-81"><span class="linenos"> 81</span></a>        <span class="s2">&quot;-bases_prefix&quot;</span><span class="p">,</span>
+</span><span id="spharm_reco-82"><a href="#spharm_reco-82"><span class="linenos"> 82</span></a>        <span class="n">bases_prefix</span>
+</span><span id="spharm_reco-83"><a href="#spharm_reco-83"><span class="linenos"> 83</span></a>    <span class="p">])</span>
+</span><span id="spharm_reco-84"><a href="#spharm_reco-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="spharm_reco-85"><a href="#spharm_reco-85"><span class="linenos"> 85</span></a>        <span class="s2">&quot;-coef&quot;</span><span class="p">,</span>
+</span><span id="spharm_reco-86"><a href="#spharm_reco-86"><span class="linenos"> 86</span></a>        <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">coefficients</span><span class="p">]</span>
+</span><span id="spharm_reco-87"><a href="#spharm_reco-87"><span class="linenos"> 87</span></a>    <span class="p">])</span>
+</span><span id="spharm_reco-88"><a href="#spharm_reco-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="spharm_reco-89"><a href="#spharm_reco-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="spharm_reco-90"><a href="#spharm_reco-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="spharm_reco-91"><a href="#spharm_reco-91"><span class="linenos"> 91</span></a>            <span class="n">output_prefix</span>
+</span><span id="spharm_reco-92"><a href="#spharm_reco-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
+</span><span id="spharm_reco-93"><a href="#spharm_reco-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">output_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="spharm_reco-94"><a href="#spharm_reco-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="spharm_reco-95"><a href="#spharm_reco-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;-o_TYPE&quot;</span><span class="p">,</span>
+</span><span id="spharm_reco-96"><a href="#spharm_reco-96"><span class="linenos"> 96</span></a>            <span class="o">*</span><span class="n">output_surface</span>
+</span><span id="spharm_reco-97"><a href="#spharm_reco-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
+</span><span id="spharm_reco-98"><a href="#spharm_reco-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">debug</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="spharm_reco-99"><a href="#spharm_reco-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="spharm_reco-100"><a href="#spharm_reco-100"><span class="linenos">100</span></a>            <span class="s2">&quot;-debug&quot;</span><span class="p">,</span>
+</span><span id="spharm_reco-101"><a href="#spharm_reco-101"><span class="linenos">101</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">debug</span><span class="p">)</span>
+</span><span id="spharm_reco-102"><a href="#spharm_reco-102"><span class="linenos">102</span></a>        <span class="p">])</span>
+</span><span id="spharm_reco-103"><a href="#spharm_reco-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">smoothing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="spharm_reco-104"><a href="#spharm_reco-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="spharm_reco-105"><a href="#spharm_reco-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-sigma&quot;</span><span class="p">,</span>
+</span><span id="spharm_reco-106"><a href="#spharm_reco-106"><span class="linenos">106</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">smoothing</span><span class="p">)</span>
+</span><span id="spharm_reco-107"><a href="#spharm_reco-107"><span class="linenos">107</span></a>        <span class="p">])</span>
+</span><span id="spharm_reco-108"><a href="#spharm_reco-108"><span class="linenos">108</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SpharmRecoOutputs</span><span class="p">(</span>
+</span><span id="spharm_reco-109"><a href="#spharm_reco-109"><span class="linenos">109</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="spharm_reco-110"><a href="#spharm_reco-110"><span class="linenos">110</span></a>    <span class="p">)</span>
+</span><span id="spharm_reco-111"><a href="#spharm_reco-111"><span class="linenos">111</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="spharm_reco-112"><a href="#spharm_reco-112"><span class="linenos">112</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

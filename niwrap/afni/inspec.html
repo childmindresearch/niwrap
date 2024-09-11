@@ -125,53 +125,55 @@
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    Returns:</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        NamedTuple of outputs (described in `InspecOutputs`).</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INSPEC_METADATA</span><span class="p">)</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;inspec&quot;</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>        <span class="s2">&quot;-spec&quot;</span><span class="p">,</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">specfile</span><span class="p">)</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="p">])</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="k">if</span> <span class="n">newspecname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>            <span class="n">newspecname</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="p">])</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="k">if</span> <span class="n">detail</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>            <span class="s2">&quot;-detail&quot;</span><span class="p">,</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="p">])</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="k">if</span> <span class="n">leftspec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>            <span class="s2">&quot;-LRmerge&quot;</span><span class="p">,</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">leftspec</span><span class="p">)</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="p">])</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="k">if</span> <span class="n">rightspec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="s2">&quot;-LRmerge&quot;</span><span class="p">,</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">rightspec</span><span class="p">)</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="p">])</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">state_rm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;-remove_state&quot;</span><span class="p">,</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="n">state_rm</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">InspecOutputs</span><span class="p">(</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="s2">&quot;INSPEC_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="s2">&quot;InspecOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="s2">&quot;inspec&quot;</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="p">]</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="k">if</span> <span class="n">detail</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">detail</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">):</span> 
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;detail&#39; must be between 0 &lt;= x &lt;= 3 but was </span><span class="si">{</span><span class="n">detail</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INSPEC_METADATA</span><span class="p">)</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;inspec&quot;</span><span class="p">)</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="s2">&quot;-spec&quot;</span><span class="p">,</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">specfile</span><span class="p">)</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="p">])</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="k">if</span> <span class="n">newspecname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>            <span class="n">newspecname</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="p">])</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="k">if</span> <span class="n">detail</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>            <span class="s2">&quot;-detail&quot;</span><span class="p">,</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="p">])</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="k">if</span> <span class="n">leftspec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>            <span class="s2">&quot;-LRmerge&quot;</span><span class="p">,</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">leftspec</span><span class="p">)</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="p">])</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">rightspec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="s2">&quot;-LRmerge&quot;</span><span class="p">,</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">rightspec</span><span class="p">)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="p">])</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">state_rm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;-remove_state&quot;</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="n">state_rm</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">InspecOutputs</span><span class="p">(</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="p">)</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="s2">&quot;INSPEC_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="s2">&quot;InspecOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="s2">&quot;inspec&quot;</span><span class="p">,</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -294,46 +296,48 @@
 </span><span id="inspec-55"><a href="#inspec-55"><span class="linenos">55</span></a><span class="sd">    Returns:</span>
 </span><span id="inspec-56"><a href="#inspec-56"><span class="linenos">56</span></a><span class="sd">        NamedTuple of outputs (described in `InspecOutputs`).</span>
 </span><span id="inspec-57"><a href="#inspec-57"><span class="linenos">57</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="inspec-58"><a href="#inspec-58"><span class="linenos">58</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="inspec-59"><a href="#inspec-59"><span class="linenos">59</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INSPEC_METADATA</span><span class="p">)</span>
-</span><span id="inspec-60"><a href="#inspec-60"><span class="linenos">60</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="inspec-61"><a href="#inspec-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;inspec&quot;</span><span class="p">)</span>
-</span><span id="inspec-62"><a href="#inspec-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="inspec-63"><a href="#inspec-63"><span class="linenos">63</span></a>        <span class="s2">&quot;-spec&quot;</span><span class="p">,</span>
-</span><span id="inspec-64"><a href="#inspec-64"><span class="linenos">64</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">specfile</span><span class="p">)</span>
-</span><span id="inspec-65"><a href="#inspec-65"><span class="linenos">65</span></a>    <span class="p">])</span>
-</span><span id="inspec-66"><a href="#inspec-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">newspecname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="inspec-67"><a href="#inspec-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="inspec-68"><a href="#inspec-68"><span class="linenos">68</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="inspec-69"><a href="#inspec-69"><span class="linenos">69</span></a>            <span class="n">newspecname</span>
-</span><span id="inspec-70"><a href="#inspec-70"><span class="linenos">70</span></a>        <span class="p">])</span>
-</span><span id="inspec-71"><a href="#inspec-71"><span class="linenos">71</span></a>    <span class="k">if</span> <span class="n">detail</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="inspec-72"><a href="#inspec-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="inspec-73"><a href="#inspec-73"><span class="linenos">73</span></a>            <span class="s2">&quot;-detail&quot;</span><span class="p">,</span>
-</span><span id="inspec-74"><a href="#inspec-74"><span class="linenos">74</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span>
-</span><span id="inspec-75"><a href="#inspec-75"><span class="linenos">75</span></a>        <span class="p">])</span>
-</span><span id="inspec-76"><a href="#inspec-76"><span class="linenos">76</span></a>    <span class="k">if</span> <span class="n">leftspec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="inspec-77"><a href="#inspec-77"><span class="linenos">77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="inspec-78"><a href="#inspec-78"><span class="linenos">78</span></a>            <span class="s2">&quot;-LRmerge&quot;</span><span class="p">,</span>
-</span><span id="inspec-79"><a href="#inspec-79"><span class="linenos">79</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">leftspec</span><span class="p">)</span>
-</span><span id="inspec-80"><a href="#inspec-80"><span class="linenos">80</span></a>        <span class="p">])</span>
-</span><span id="inspec-81"><a href="#inspec-81"><span class="linenos">81</span></a>    <span class="k">if</span> <span class="n">rightspec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="inspec-82"><a href="#inspec-82"><span class="linenos">82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="inspec-83"><a href="#inspec-83"><span class="linenos">83</span></a>            <span class="s2">&quot;-LRmerge&quot;</span><span class="p">,</span>
-</span><span id="inspec-84"><a href="#inspec-84"><span class="linenos">84</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">rightspec</span><span class="p">)</span>
-</span><span id="inspec-85"><a href="#inspec-85"><span class="linenos">85</span></a>        <span class="p">])</span>
-</span><span id="inspec-86"><a href="#inspec-86"><span class="linenos">86</span></a>    <span class="k">if</span> <span class="n">state_rm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="inspec-87"><a href="#inspec-87"><span class="linenos">87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="inspec-88"><a href="#inspec-88"><span class="linenos">88</span></a>            <span class="s2">&quot;-remove_state&quot;</span><span class="p">,</span>
-</span><span id="inspec-89"><a href="#inspec-89"><span class="linenos">89</span></a>            <span class="n">state_rm</span>
-</span><span id="inspec-90"><a href="#inspec-90"><span class="linenos">90</span></a>        <span class="p">])</span>
-</span><span id="inspec-91"><a href="#inspec-91"><span class="linenos">91</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="inspec-92"><a href="#inspec-92"><span class="linenos">92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="inspec-93"><a href="#inspec-93"><span class="linenos">93</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">InspecOutputs</span><span class="p">(</span>
-</span><span id="inspec-94"><a href="#inspec-94"><span class="linenos">94</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="inspec-95"><a href="#inspec-95"><span class="linenos">95</span></a>    <span class="p">)</span>
-</span><span id="inspec-96"><a href="#inspec-96"><span class="linenos">96</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="inspec-97"><a href="#inspec-97"><span class="linenos">97</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="inspec-58"><a href="#inspec-58"><span class="linenos">58</span></a>    <span class="k">if</span> <span class="n">detail</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">detail</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">):</span> 
+</span><span id="inspec-59"><a href="#inspec-59"><span class="linenos">59</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;detail&#39; must be between 0 &lt;= x &lt;= 3 but was </span><span class="si">{</span><span class="n">detail</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="inspec-60"><a href="#inspec-60"><span class="linenos">60</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="inspec-61"><a href="#inspec-61"><span class="linenos">61</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INSPEC_METADATA</span><span class="p">)</span>
+</span><span id="inspec-62"><a href="#inspec-62"><span class="linenos">62</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="inspec-63"><a href="#inspec-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;inspec&quot;</span><span class="p">)</span>
+</span><span id="inspec-64"><a href="#inspec-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="inspec-65"><a href="#inspec-65"><span class="linenos">65</span></a>        <span class="s2">&quot;-spec&quot;</span><span class="p">,</span>
+</span><span id="inspec-66"><a href="#inspec-66"><span class="linenos">66</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">specfile</span><span class="p">)</span>
+</span><span id="inspec-67"><a href="#inspec-67"><span class="linenos">67</span></a>    <span class="p">])</span>
+</span><span id="inspec-68"><a href="#inspec-68"><span class="linenos">68</span></a>    <span class="k">if</span> <span class="n">newspecname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="inspec-69"><a href="#inspec-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="inspec-70"><a href="#inspec-70"><span class="linenos">70</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="inspec-71"><a href="#inspec-71"><span class="linenos">71</span></a>            <span class="n">newspecname</span>
+</span><span id="inspec-72"><a href="#inspec-72"><span class="linenos">72</span></a>        <span class="p">])</span>
+</span><span id="inspec-73"><a href="#inspec-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">detail</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="inspec-74"><a href="#inspec-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="inspec-75"><a href="#inspec-75"><span class="linenos">75</span></a>            <span class="s2">&quot;-detail&quot;</span><span class="p">,</span>
+</span><span id="inspec-76"><a href="#inspec-76"><span class="linenos">76</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span>
+</span><span id="inspec-77"><a href="#inspec-77"><span class="linenos">77</span></a>        <span class="p">])</span>
+</span><span id="inspec-78"><a href="#inspec-78"><span class="linenos">78</span></a>    <span class="k">if</span> <span class="n">leftspec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="inspec-79"><a href="#inspec-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="inspec-80"><a href="#inspec-80"><span class="linenos">80</span></a>            <span class="s2">&quot;-LRmerge&quot;</span><span class="p">,</span>
+</span><span id="inspec-81"><a href="#inspec-81"><span class="linenos">81</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">leftspec</span><span class="p">)</span>
+</span><span id="inspec-82"><a href="#inspec-82"><span class="linenos">82</span></a>        <span class="p">])</span>
+</span><span id="inspec-83"><a href="#inspec-83"><span class="linenos">83</span></a>    <span class="k">if</span> <span class="n">rightspec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="inspec-84"><a href="#inspec-84"><span class="linenos">84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="inspec-85"><a href="#inspec-85"><span class="linenos">85</span></a>            <span class="s2">&quot;-LRmerge&quot;</span><span class="p">,</span>
+</span><span id="inspec-86"><a href="#inspec-86"><span class="linenos">86</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">rightspec</span><span class="p">)</span>
+</span><span id="inspec-87"><a href="#inspec-87"><span class="linenos">87</span></a>        <span class="p">])</span>
+</span><span id="inspec-88"><a href="#inspec-88"><span class="linenos">88</span></a>    <span class="k">if</span> <span class="n">state_rm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="inspec-89"><a href="#inspec-89"><span class="linenos">89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="inspec-90"><a href="#inspec-90"><span class="linenos">90</span></a>            <span class="s2">&quot;-remove_state&quot;</span><span class="p">,</span>
+</span><span id="inspec-91"><a href="#inspec-91"><span class="linenos">91</span></a>            <span class="n">state_rm</span>
+</span><span id="inspec-92"><a href="#inspec-92"><span class="linenos">92</span></a>        <span class="p">])</span>
+</span><span id="inspec-93"><a href="#inspec-93"><span class="linenos">93</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="inspec-94"><a href="#inspec-94"><span class="linenos">94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="inspec-95"><a href="#inspec-95"><span class="linenos">95</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">InspecOutputs</span><span class="p">(</span>
+</span><span id="inspec-96"><a href="#inspec-96"><span class="linenos">96</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="inspec-97"><a href="#inspec-97"><span class="linenos">97</span></a>    <span class="p">)</span>
+</span><span id="inspec-98"><a href="#inspec-98"><span class="linenos">98</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="inspec-99"><a href="#inspec-99"><span class="linenos">99</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

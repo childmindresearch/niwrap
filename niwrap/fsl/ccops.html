@@ -144,80 +144,82 @@
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    Returns:</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        NamedTuple of outputs (described in `CcopsOutputs`).</span>
 </span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CCOPS_METADATA</span><span class="p">)</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ccops&quot;</span><span class="p">)</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="s2">&quot;--basename&quot;</span><span class="p">,</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="n">basename</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="p">])</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">infile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;--in&quot;</span><span class="p">,</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="p">])</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">tract_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;--dir&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">tract_dir</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">exclusion_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="s2">&quot;-x&quot;</span><span class="p">,</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exclusion_mask</span><span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">reorder_seedspace</span><span class="p">:</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--r1&quot;</span><span class="p">)</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">reorder_tractspace</span><span class="p">:</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--r2&quot;</span><span class="p">)</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">tract_reord</span><span class="p">:</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--tractreord&quot;</span><span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">connexity_constraint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="s2">&quot;--con&quot;</span><span class="p">,</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">connexity_constraint</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="p">])</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">binarise_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="s2">&quot;--bin&quot;</span><span class="p">,</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">binarise_val</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="p">])</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">matrix_power</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="s2">&quot;--power&quot;</span><span class="p">,</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">matrix_power</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="p">])</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">brain_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="s2">&quot;--mask&quot;</span><span class="p">,</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brain_mask</span><span class="p">)</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="p">])</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">scheme</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>            <span class="s2">&quot;--scheme&quot;</span><span class="p">,</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>            <span class="n">scheme</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="p">])</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">nclusters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>            <span class="s2">&quot;--nclusters&quot;</span><span class="p">,</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nclusters</span><span class="p">)</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="p">])</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CcopsOutputs</span><span class="p">(</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_output.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="p">)</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="s2">&quot;CCOPS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="s2">&quot;CcopsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="s2">&quot;ccops&quot;</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="p">]</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="k">if</span> <span class="n">connexity_constraint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">connexity_constraint</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">):</span> 
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;connexity_constraint&#39; must be between 0 &lt;= x &lt;= 1 but was </span><span class="si">{</span><span class="n">connexity_constraint</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CCOPS_METADATA</span><span class="p">)</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ccops&quot;</span><span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="s2">&quot;--basename&quot;</span><span class="p">,</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="n">basename</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="p">])</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">infile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="s2">&quot;--in&quot;</span><span class="p">,</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="p">])</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">tract_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;--dir&quot;</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="n">tract_dir</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">exclusion_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;-x&quot;</span><span class="p">,</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exclusion_mask</span><span class="p">)</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">reorder_seedspace</span><span class="p">:</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--r1&quot;</span><span class="p">)</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">reorder_tractspace</span><span class="p">:</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--r2&quot;</span><span class="p">)</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">tract_reord</span><span class="p">:</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--tractreord&quot;</span><span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">connexity_constraint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="s2">&quot;--con&quot;</span><span class="p">,</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">connexity_constraint</span><span class="p">)</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="p">])</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">binarise_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="s2">&quot;--bin&quot;</span><span class="p">,</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">binarise_val</span><span class="p">)</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="p">])</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">matrix_power</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="s2">&quot;--power&quot;</span><span class="p">,</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">matrix_power</span><span class="p">)</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="p">])</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">brain_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="s2">&quot;--mask&quot;</span><span class="p">,</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brain_mask</span><span class="p">)</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="p">])</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">scheme</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="s2">&quot;--scheme&quot;</span><span class="p">,</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="n">scheme</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="p">])</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">nclusters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="s2">&quot;--nclusters&quot;</span><span class="p">,</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nclusters</span><span class="p">)</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="p">])</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CcopsOutputs</span><span class="p">(</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_output.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="p">)</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="s2">&quot;CCOPS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="s2">&quot;CcopsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="s2">&quot;ccops&quot;</span><span class="p">,</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -369,73 +371,75 @@
 </span><span id="ccops-71"><a href="#ccops-71"><span class="linenos"> 71</span></a><span class="sd">    Returns:</span>
 </span><span id="ccops-72"><a href="#ccops-72"><span class="linenos"> 72</span></a><span class="sd">        NamedTuple of outputs (described in `CcopsOutputs`).</span>
 </span><span id="ccops-73"><a href="#ccops-73"><span class="linenos"> 73</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="ccops-74"><a href="#ccops-74"><span class="linenos"> 74</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="ccops-75"><a href="#ccops-75"><span class="linenos"> 75</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CCOPS_METADATA</span><span class="p">)</span>
-</span><span id="ccops-76"><a href="#ccops-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="ccops-77"><a href="#ccops-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ccops&quot;</span><span class="p">)</span>
-</span><span id="ccops-78"><a href="#ccops-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="ccops-79"><a href="#ccops-79"><span class="linenos"> 79</span></a>        <span class="s2">&quot;--basename&quot;</span><span class="p">,</span>
-</span><span id="ccops-80"><a href="#ccops-80"><span class="linenos"> 80</span></a>        <span class="n">basename</span>
-</span><span id="ccops-81"><a href="#ccops-81"><span class="linenos"> 81</span></a>    <span class="p">])</span>
-</span><span id="ccops-82"><a href="#ccops-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">infile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ccops-83"><a href="#ccops-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="ccops-84"><a href="#ccops-84"><span class="linenos"> 84</span></a>            <span class="s2">&quot;--in&quot;</span><span class="p">,</span>
-</span><span id="ccops-85"><a href="#ccops-85"><span class="linenos"> 85</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
-</span><span id="ccops-86"><a href="#ccops-86"><span class="linenos"> 86</span></a>        <span class="p">])</span>
-</span><span id="ccops-87"><a href="#ccops-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">tract_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ccops-88"><a href="#ccops-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="ccops-89"><a href="#ccops-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;--dir&quot;</span><span class="p">,</span>
-</span><span id="ccops-90"><a href="#ccops-90"><span class="linenos"> 90</span></a>            <span class="n">tract_dir</span>
-</span><span id="ccops-91"><a href="#ccops-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
-</span><span id="ccops-92"><a href="#ccops-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">exclusion_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ccops-93"><a href="#ccops-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="ccops-94"><a href="#ccops-94"><span class="linenos"> 94</span></a>            <span class="s2">&quot;-x&quot;</span><span class="p">,</span>
-</span><span id="ccops-95"><a href="#ccops-95"><span class="linenos"> 95</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exclusion_mask</span><span class="p">)</span>
-</span><span id="ccops-96"><a href="#ccops-96"><span class="linenos"> 96</span></a>        <span class="p">])</span>
-</span><span id="ccops-97"><a href="#ccops-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">reorder_seedspace</span><span class="p">:</span>
-</span><span id="ccops-98"><a href="#ccops-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--r1&quot;</span><span class="p">)</span>
-</span><span id="ccops-99"><a href="#ccops-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">reorder_tractspace</span><span class="p">:</span>
-</span><span id="ccops-100"><a href="#ccops-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--r2&quot;</span><span class="p">)</span>
-</span><span id="ccops-101"><a href="#ccops-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">tract_reord</span><span class="p">:</span>
-</span><span id="ccops-102"><a href="#ccops-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--tractreord&quot;</span><span class="p">)</span>
-</span><span id="ccops-103"><a href="#ccops-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">connexity_constraint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ccops-104"><a href="#ccops-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="ccops-105"><a href="#ccops-105"><span class="linenos">105</span></a>            <span class="s2">&quot;--con&quot;</span><span class="p">,</span>
-</span><span id="ccops-106"><a href="#ccops-106"><span class="linenos">106</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">connexity_constraint</span><span class="p">)</span>
-</span><span id="ccops-107"><a href="#ccops-107"><span class="linenos">107</span></a>        <span class="p">])</span>
-</span><span id="ccops-108"><a href="#ccops-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">binarise_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ccops-109"><a href="#ccops-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="ccops-110"><a href="#ccops-110"><span class="linenos">110</span></a>            <span class="s2">&quot;--bin&quot;</span><span class="p">,</span>
-</span><span id="ccops-111"><a href="#ccops-111"><span class="linenos">111</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">binarise_val</span><span class="p">)</span>
-</span><span id="ccops-112"><a href="#ccops-112"><span class="linenos">112</span></a>        <span class="p">])</span>
-</span><span id="ccops-113"><a href="#ccops-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">matrix_power</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ccops-114"><a href="#ccops-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="ccops-115"><a href="#ccops-115"><span class="linenos">115</span></a>            <span class="s2">&quot;--power&quot;</span><span class="p">,</span>
-</span><span id="ccops-116"><a href="#ccops-116"><span class="linenos">116</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">matrix_power</span><span class="p">)</span>
-</span><span id="ccops-117"><a href="#ccops-117"><span class="linenos">117</span></a>        <span class="p">])</span>
-</span><span id="ccops-118"><a href="#ccops-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">brain_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ccops-119"><a href="#ccops-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="ccops-120"><a href="#ccops-120"><span class="linenos">120</span></a>            <span class="s2">&quot;--mask&quot;</span><span class="p">,</span>
-</span><span id="ccops-121"><a href="#ccops-121"><span class="linenos">121</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brain_mask</span><span class="p">)</span>
-</span><span id="ccops-122"><a href="#ccops-122"><span class="linenos">122</span></a>        <span class="p">])</span>
-</span><span id="ccops-123"><a href="#ccops-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">scheme</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ccops-124"><a href="#ccops-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="ccops-125"><a href="#ccops-125"><span class="linenos">125</span></a>            <span class="s2">&quot;--scheme&quot;</span><span class="p">,</span>
-</span><span id="ccops-126"><a href="#ccops-126"><span class="linenos">126</span></a>            <span class="n">scheme</span>
-</span><span id="ccops-127"><a href="#ccops-127"><span class="linenos">127</span></a>        <span class="p">])</span>
-</span><span id="ccops-128"><a href="#ccops-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">nclusters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ccops-129"><a href="#ccops-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="ccops-130"><a href="#ccops-130"><span class="linenos">130</span></a>            <span class="s2">&quot;--nclusters&quot;</span><span class="p">,</span>
-</span><span id="ccops-131"><a href="#ccops-131"><span class="linenos">131</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nclusters</span><span class="p">)</span>
-</span><span id="ccops-132"><a href="#ccops-132"><span class="linenos">132</span></a>        <span class="p">])</span>
-</span><span id="ccops-133"><a href="#ccops-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="ccops-134"><a href="#ccops-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
-</span><span id="ccops-135"><a href="#ccops-135"><span class="linenos">135</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CcopsOutputs</span><span class="p">(</span>
-</span><span id="ccops-136"><a href="#ccops-136"><span class="linenos">136</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="ccops-137"><a href="#ccops-137"><span class="linenos">137</span></a>        <span class="n">outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_output.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="ccops-138"><a href="#ccops-138"><span class="linenos">138</span></a>    <span class="p">)</span>
-</span><span id="ccops-139"><a href="#ccops-139"><span class="linenos">139</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="ccops-140"><a href="#ccops-140"><span class="linenos">140</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="ccops-74"><a href="#ccops-74"><span class="linenos"> 74</span></a>    <span class="k">if</span> <span class="n">connexity_constraint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">connexity_constraint</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">):</span> 
+</span><span id="ccops-75"><a href="#ccops-75"><span class="linenos"> 75</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;connexity_constraint&#39; must be between 0 &lt;= x &lt;= 1 but was </span><span class="si">{</span><span class="n">connexity_constraint</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="ccops-76"><a href="#ccops-76"><span class="linenos"> 76</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="ccops-77"><a href="#ccops-77"><span class="linenos"> 77</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CCOPS_METADATA</span><span class="p">)</span>
+</span><span id="ccops-78"><a href="#ccops-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="ccops-79"><a href="#ccops-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ccops&quot;</span><span class="p">)</span>
+</span><span id="ccops-80"><a href="#ccops-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="ccops-81"><a href="#ccops-81"><span class="linenos"> 81</span></a>        <span class="s2">&quot;--basename&quot;</span><span class="p">,</span>
+</span><span id="ccops-82"><a href="#ccops-82"><span class="linenos"> 82</span></a>        <span class="n">basename</span>
+</span><span id="ccops-83"><a href="#ccops-83"><span class="linenos"> 83</span></a>    <span class="p">])</span>
+</span><span id="ccops-84"><a href="#ccops-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">infile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ccops-85"><a href="#ccops-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="ccops-86"><a href="#ccops-86"><span class="linenos"> 86</span></a>            <span class="s2">&quot;--in&quot;</span><span class="p">,</span>
+</span><span id="ccops-87"><a href="#ccops-87"><span class="linenos"> 87</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+</span><span id="ccops-88"><a href="#ccops-88"><span class="linenos"> 88</span></a>        <span class="p">])</span>
+</span><span id="ccops-89"><a href="#ccops-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">tract_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ccops-90"><a href="#ccops-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="ccops-91"><a href="#ccops-91"><span class="linenos"> 91</span></a>            <span class="s2">&quot;--dir&quot;</span><span class="p">,</span>
+</span><span id="ccops-92"><a href="#ccops-92"><span class="linenos"> 92</span></a>            <span class="n">tract_dir</span>
+</span><span id="ccops-93"><a href="#ccops-93"><span class="linenos"> 93</span></a>        <span class="p">])</span>
+</span><span id="ccops-94"><a href="#ccops-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">exclusion_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ccops-95"><a href="#ccops-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="ccops-96"><a href="#ccops-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;-x&quot;</span><span class="p">,</span>
+</span><span id="ccops-97"><a href="#ccops-97"><span class="linenos"> 97</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exclusion_mask</span><span class="p">)</span>
+</span><span id="ccops-98"><a href="#ccops-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
+</span><span id="ccops-99"><a href="#ccops-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">reorder_seedspace</span><span class="p">:</span>
+</span><span id="ccops-100"><a href="#ccops-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--r1&quot;</span><span class="p">)</span>
+</span><span id="ccops-101"><a href="#ccops-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">reorder_tractspace</span><span class="p">:</span>
+</span><span id="ccops-102"><a href="#ccops-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--r2&quot;</span><span class="p">)</span>
+</span><span id="ccops-103"><a href="#ccops-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">tract_reord</span><span class="p">:</span>
+</span><span id="ccops-104"><a href="#ccops-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--tractreord&quot;</span><span class="p">)</span>
+</span><span id="ccops-105"><a href="#ccops-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">connexity_constraint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ccops-106"><a href="#ccops-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="ccops-107"><a href="#ccops-107"><span class="linenos">107</span></a>            <span class="s2">&quot;--con&quot;</span><span class="p">,</span>
+</span><span id="ccops-108"><a href="#ccops-108"><span class="linenos">108</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">connexity_constraint</span><span class="p">)</span>
+</span><span id="ccops-109"><a href="#ccops-109"><span class="linenos">109</span></a>        <span class="p">])</span>
+</span><span id="ccops-110"><a href="#ccops-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">binarise_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ccops-111"><a href="#ccops-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="ccops-112"><a href="#ccops-112"><span class="linenos">112</span></a>            <span class="s2">&quot;--bin&quot;</span><span class="p">,</span>
+</span><span id="ccops-113"><a href="#ccops-113"><span class="linenos">113</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">binarise_val</span><span class="p">)</span>
+</span><span id="ccops-114"><a href="#ccops-114"><span class="linenos">114</span></a>        <span class="p">])</span>
+</span><span id="ccops-115"><a href="#ccops-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">matrix_power</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ccops-116"><a href="#ccops-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="ccops-117"><a href="#ccops-117"><span class="linenos">117</span></a>            <span class="s2">&quot;--power&quot;</span><span class="p">,</span>
+</span><span id="ccops-118"><a href="#ccops-118"><span class="linenos">118</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">matrix_power</span><span class="p">)</span>
+</span><span id="ccops-119"><a href="#ccops-119"><span class="linenos">119</span></a>        <span class="p">])</span>
+</span><span id="ccops-120"><a href="#ccops-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">brain_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ccops-121"><a href="#ccops-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="ccops-122"><a href="#ccops-122"><span class="linenos">122</span></a>            <span class="s2">&quot;--mask&quot;</span><span class="p">,</span>
+</span><span id="ccops-123"><a href="#ccops-123"><span class="linenos">123</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brain_mask</span><span class="p">)</span>
+</span><span id="ccops-124"><a href="#ccops-124"><span class="linenos">124</span></a>        <span class="p">])</span>
+</span><span id="ccops-125"><a href="#ccops-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">scheme</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ccops-126"><a href="#ccops-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="ccops-127"><a href="#ccops-127"><span class="linenos">127</span></a>            <span class="s2">&quot;--scheme&quot;</span><span class="p">,</span>
+</span><span id="ccops-128"><a href="#ccops-128"><span class="linenos">128</span></a>            <span class="n">scheme</span>
+</span><span id="ccops-129"><a href="#ccops-129"><span class="linenos">129</span></a>        <span class="p">])</span>
+</span><span id="ccops-130"><a href="#ccops-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">nclusters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ccops-131"><a href="#ccops-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="ccops-132"><a href="#ccops-132"><span class="linenos">132</span></a>            <span class="s2">&quot;--nclusters&quot;</span><span class="p">,</span>
+</span><span id="ccops-133"><a href="#ccops-133"><span class="linenos">133</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nclusters</span><span class="p">)</span>
+</span><span id="ccops-134"><a href="#ccops-134"><span class="linenos">134</span></a>        <span class="p">])</span>
+</span><span id="ccops-135"><a href="#ccops-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="ccops-136"><a href="#ccops-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
+</span><span id="ccops-137"><a href="#ccops-137"><span class="linenos">137</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CcopsOutputs</span><span class="p">(</span>
+</span><span id="ccops-138"><a href="#ccops-138"><span class="linenos">138</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="ccops-139"><a href="#ccops-139"><span class="linenos">139</span></a>        <span class="n">outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;_output.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="ccops-140"><a href="#ccops-140"><span class="linenos">140</span></a>    <span class="p">)</span>
+</span><span id="ccops-141"><a href="#ccops-141"><span class="linenos">141</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="ccops-142"><a href="#ccops-142"><span class="linenos">142</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

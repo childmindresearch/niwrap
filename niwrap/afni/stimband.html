@@ -127,42 +127,44 @@
 </span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">    Returns:</span>
 </span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        NamedTuple of outputs (described in `StimbandOutputs`).</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">STIMBAND_METADATA</span><span class="p">)</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;stimband&quot;</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[MATRIXFILES...]&quot;</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[ADDITIONAL_MATRIXFILES...]&quot;</span><span class="p">)</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="k">if</span> <span class="n">min_freq</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>            <span class="s2">&quot;-min_freq&quot;</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_freq</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="p">])</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="k">if</span> <span class="n">min_bwidth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>            <span class="s2">&quot;-min_bwidth&quot;</span><span class="p">,</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_bwidth</span><span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>        <span class="p">])</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">min_pow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>            <span class="s2">&quot;-min_pow&quot;</span><span class="p">,</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_pow</span><span class="p">)</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="p">])</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">StimbandOutputs</span><span class="p">(</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>        <span class="n">output_band</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;stdout&quot;</span><span class="p">),</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>
-</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>
-</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>    <span class="s2">&quot;STIMBAND_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>    <span class="s2">&quot;StimbandOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>    <span class="s2">&quot;stimband&quot;</span><span class="p">,</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a><span class="p">]</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="k">if</span> <span class="n">min_pow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">50</span> <span class="o">&lt;=</span> <span class="n">min_pow</span> <span class="o">&lt;=</span> <span class="mi">99</span><span class="p">):</span> 
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;min_pow&#39; must be between 50 &lt;= x &lt;= 99 but was </span><span class="si">{</span><span class="n">min_pow</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">STIMBAND_METADATA</span><span class="p">)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;stimband&quot;</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[MATRIXFILES...]&quot;</span><span class="p">)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[ADDITIONAL_MATRIXFILES...]&quot;</span><span class="p">)</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">min_freq</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>            <span class="s2">&quot;-min_freq&quot;</span><span class="p">,</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_freq</span><span class="p">)</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="p">])</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="k">if</span> <span class="n">min_bwidth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>            <span class="s2">&quot;-min_bwidth&quot;</span><span class="p">,</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_bwidth</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="p">])</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="k">if</span> <span class="n">min_pow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>            <span class="s2">&quot;-min_pow&quot;</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_pow</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="p">])</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">StimbandOutputs</span><span class="p">(</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="n">output_band</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;stdout&quot;</span><span class="p">),</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    <span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>    <span class="s2">&quot;STIMBAND_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>    <span class="s2">&quot;StimbandOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>    <span class="s2">&quot;stimband&quot;</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -298,35 +300,37 @@ columns.</p>
 </span><span id="stimband-54"><a href="#stimband-54"><span class="linenos">54</span></a><span class="sd">    Returns:</span>
 </span><span id="stimband-55"><a href="#stimband-55"><span class="linenos">55</span></a><span class="sd">        NamedTuple of outputs (described in `StimbandOutputs`).</span>
 </span><span id="stimband-56"><a href="#stimband-56"><span class="linenos">56</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="stimband-57"><a href="#stimband-57"><span class="linenos">57</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="stimband-58"><a href="#stimband-58"><span class="linenos">58</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">STIMBAND_METADATA</span><span class="p">)</span>
-</span><span id="stimband-59"><a href="#stimband-59"><span class="linenos">59</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="stimband-60"><a href="#stimband-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;stimband&quot;</span><span class="p">)</span>
-</span><span id="stimband-61"><a href="#stimband-61"><span class="linenos">61</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
-</span><span id="stimband-62"><a href="#stimband-62"><span class="linenos">62</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
-</span><span id="stimband-63"><a href="#stimband-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[MATRIXFILES...]&quot;</span><span class="p">)</span>
-</span><span id="stimband-64"><a href="#stimband-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[ADDITIONAL_MATRIXFILES...]&quot;</span><span class="p">)</span>
-</span><span id="stimband-65"><a href="#stimband-65"><span class="linenos">65</span></a>    <span class="k">if</span> <span class="n">min_freq</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="stimband-66"><a href="#stimband-66"><span class="linenos">66</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="stimband-67"><a href="#stimband-67"><span class="linenos">67</span></a>            <span class="s2">&quot;-min_freq&quot;</span><span class="p">,</span>
-</span><span id="stimband-68"><a href="#stimband-68"><span class="linenos">68</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_freq</span><span class="p">)</span>
-</span><span id="stimband-69"><a href="#stimband-69"><span class="linenos">69</span></a>        <span class="p">])</span>
-</span><span id="stimband-70"><a href="#stimband-70"><span class="linenos">70</span></a>    <span class="k">if</span> <span class="n">min_bwidth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="stimband-71"><a href="#stimband-71"><span class="linenos">71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="stimband-72"><a href="#stimband-72"><span class="linenos">72</span></a>            <span class="s2">&quot;-min_bwidth&quot;</span><span class="p">,</span>
-</span><span id="stimband-73"><a href="#stimband-73"><span class="linenos">73</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_bwidth</span><span class="p">)</span>
-</span><span id="stimband-74"><a href="#stimband-74"><span class="linenos">74</span></a>        <span class="p">])</span>
-</span><span id="stimband-75"><a href="#stimband-75"><span class="linenos">75</span></a>    <span class="k">if</span> <span class="n">min_pow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="stimband-76"><a href="#stimband-76"><span class="linenos">76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="stimband-77"><a href="#stimband-77"><span class="linenos">77</span></a>            <span class="s2">&quot;-min_pow&quot;</span><span class="p">,</span>
-</span><span id="stimband-78"><a href="#stimband-78"><span class="linenos">78</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_pow</span><span class="p">)</span>
-</span><span id="stimband-79"><a href="#stimband-79"><span class="linenos">79</span></a>        <span class="p">])</span>
-</span><span id="stimband-80"><a href="#stimband-80"><span class="linenos">80</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">StimbandOutputs</span><span class="p">(</span>
-</span><span id="stimband-81"><a href="#stimband-81"><span class="linenos">81</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="stimband-82"><a href="#stimband-82"><span class="linenos">82</span></a>        <span class="n">output_band</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;stdout&quot;</span><span class="p">),</span>
-</span><span id="stimband-83"><a href="#stimband-83"><span class="linenos">83</span></a>    <span class="p">)</span>
-</span><span id="stimband-84"><a href="#stimband-84"><span class="linenos">84</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="stimband-85"><a href="#stimband-85"><span class="linenos">85</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="stimband-57"><a href="#stimband-57"><span class="linenos">57</span></a>    <span class="k">if</span> <span class="n">min_pow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">50</span> <span class="o">&lt;=</span> <span class="n">min_pow</span> <span class="o">&lt;=</span> <span class="mi">99</span><span class="p">):</span> 
+</span><span id="stimband-58"><a href="#stimband-58"><span class="linenos">58</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;min_pow&#39; must be between 50 &lt;= x &lt;= 99 but was </span><span class="si">{</span><span class="n">min_pow</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="stimband-59"><a href="#stimband-59"><span class="linenos">59</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="stimband-60"><a href="#stimband-60"><span class="linenos">60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">STIMBAND_METADATA</span><span class="p">)</span>
+</span><span id="stimband-61"><a href="#stimband-61"><span class="linenos">61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="stimband-62"><a href="#stimband-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;stimband&quot;</span><span class="p">)</span>
+</span><span id="stimband-63"><a href="#stimband-63"><span class="linenos">63</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
+</span><span id="stimband-64"><a href="#stimband-64"><span class="linenos">64</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
+</span><span id="stimband-65"><a href="#stimband-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[MATRIXFILES...]&quot;</span><span class="p">)</span>
+</span><span id="stimband-66"><a href="#stimband-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[ADDITIONAL_MATRIXFILES...]&quot;</span><span class="p">)</span>
+</span><span id="stimband-67"><a href="#stimband-67"><span class="linenos">67</span></a>    <span class="k">if</span> <span class="n">min_freq</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="stimband-68"><a href="#stimband-68"><span class="linenos">68</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="stimband-69"><a href="#stimband-69"><span class="linenos">69</span></a>            <span class="s2">&quot;-min_freq&quot;</span><span class="p">,</span>
+</span><span id="stimband-70"><a href="#stimband-70"><span class="linenos">70</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_freq</span><span class="p">)</span>
+</span><span id="stimband-71"><a href="#stimband-71"><span class="linenos">71</span></a>        <span class="p">])</span>
+</span><span id="stimband-72"><a href="#stimband-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">min_bwidth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="stimband-73"><a href="#stimband-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="stimband-74"><a href="#stimband-74"><span class="linenos">74</span></a>            <span class="s2">&quot;-min_bwidth&quot;</span><span class="p">,</span>
+</span><span id="stimband-75"><a href="#stimband-75"><span class="linenos">75</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_bwidth</span><span class="p">)</span>
+</span><span id="stimband-76"><a href="#stimband-76"><span class="linenos">76</span></a>        <span class="p">])</span>
+</span><span id="stimband-77"><a href="#stimband-77"><span class="linenos">77</span></a>    <span class="k">if</span> <span class="n">min_pow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="stimband-78"><a href="#stimband-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="stimband-79"><a href="#stimband-79"><span class="linenos">79</span></a>            <span class="s2">&quot;-min_pow&quot;</span><span class="p">,</span>
+</span><span id="stimband-80"><a href="#stimband-80"><span class="linenos">80</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_pow</span><span class="p">)</span>
+</span><span id="stimband-81"><a href="#stimband-81"><span class="linenos">81</span></a>        <span class="p">])</span>
+</span><span id="stimband-82"><a href="#stimband-82"><span class="linenos">82</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">StimbandOutputs</span><span class="p">(</span>
+</span><span id="stimband-83"><a href="#stimband-83"><span class="linenos">83</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="stimband-84"><a href="#stimband-84"><span class="linenos">84</span></a>        <span class="n">output_band</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;stdout&quot;</span><span class="p">),</span>
+</span><span id="stimband-85"><a href="#stimband-85"><span class="linenos">85</span></a>    <span class="p">)</span>
+</span><span id="stimband-86"><a href="#stimband-86"><span class="linenos">86</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="stimband-87"><a href="#stimband-87"><span class="linenos">87</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
