@@ -1,0 +1,15 @@
+{
+  "id": "greedy",
+  "name": "Greedy",
+  "url": "https://sites.google.com/view/greedyreg/about",
+  "approach": "Manual",
+  "status": "In progress",
+  "api": {
+    "endpoints": [
+      {
+        "target": "greedy",
+        "status": "missing"
+      }
+    ]
+  }
+}

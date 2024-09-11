@@ -1,0 +1,178 @@
+{
+  "name": "greedy",
+  "tool-version": "1.0.1",
+  "description": "Paul's greedy diffeomorphic registration implementation",
+  "command-line": "greedy [THREADS] [DIMENSIONS] [METRIC] [AFFINE] [AFFINE_DOF] [AFFINE_IDENTITY] [ITERATIONS] [FIXED_MASK] [MOVING_MASK] [INPUTS] [OUTPUT] [RESLICE_INPUT_IMG] [RESLICE_MOVING_IMAGE] [RESLICE_OUTPUT_IMAGE] [RESLICE] [VERBOSE]",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "pyushkevich/itksnap:v3.8.2",
+    "type": "docker"
+  },
+  "inputs": [
+    {
+      "id": "affine",
+      "name": "Affine",
+      "type": "Flag",
+      "command-line-flag": "-a",
+      "value-key": "[AFFINE]",
+      "optional": true,
+      "description": "Perform affine registration and save to output (-o)"
+    },
+    {
+      "id": "reslice",
+      "name": "Reslice",
+      "type": "File",
+      "command-line-flag": "-r",
+      "value-key": "[RESLICE]",
+      "optional": true,
+      "description": "Reslice images instead of doing registration"
+    },
+    {
+      "id": "input_images",
+      "name": "Input Images",
+      "type": "File",
+      "list": true,
+      "command-line-flag": "-i",
+      "value-key": "[INPUTS]",
+      "optional": true,
+      "description": "Image pair (may be repeated)"
+    },
+    {
+      "id": "output",
+      "name": "Output",
+      "type": "String",
+      "command-line-flag": "-o",
+      "value-key": "[OUTPUT]",
+      "optional": true,
+      "description": "Output file"
+    },
+    {
+      "id": "dimensions",
+      "name": "Dimensions",
+      "type": "Number",
+      "integer": true,
+      "command-line-flag": "-d",
+      "value-key": "[DIMENSIONS]",
+      "optional": false,
+      "description": "Number of image dimensions"
+    },
+    {
+      "id": "metric",
+      "name": "Metric",
+      "type": "String",
+      "value-key": "[METRIC]",
+      "command-line-flag": "-m",
+      "value-choices": ["SSD", "MI", "NMI", "NCC", "MAHAL"],
+      "optional": true,
+      "description": "Metric for the entire registration"
+    },
+    {
+      "id": "iterations",
+      "name": "Iterations",
+      "type": "String",
+      "value-key": "[ITERATIONS]",
+      "command-line-flag": "-n",
+      "optional": true,
+      "description": "Number of iterations per level of multi-res"
+    },
+    {
+      "id": "threads",
+      "name": "Threads",
+      "type": "Number",
+      "value-key": "[THREADS]",
+      "integer": true,
+      "command-line-flag": "-threads",
+      "optional": true,
+      "description": "Number of allowed concurrent threads"
+    },
+    {
+      "id": "fixed_mask",
+      "name": "Fixed Image Mask",
+      "type": "File",
+      "value-key": "[FIXED_MASK]",
+      "command-line-flag": "-gm",
+      "optional": true,
+      "description": "Fixed image mask"
+    },
+    {
+      "id": "moving_mask",
+      "name": "Moving Image Mask",
+      "type": "File",
+      "value-key": "[MOVING_MASK]",
+      "command-line-flag": "-mm",
+      "optional": true,
+      "description": "Moving image mask"
+    },
+    {
+      "id": "affine_dof",
+      "name": "Affine Degrees of Freedom",
+      "type": "Number",
+      "value-key": "[AFFINE_DOF]",
+      "integer": true,
+      "command-line-flag": "-dof",
+      "optional": true,
+      "description": "Degrees of freedom for affine registration"
+    },
+    {
+      "id": "ia_identity",
+      "name": "Nifti Header Affine intialization",
+      "type": "Flag",
+      "value-key": "[AFFINE_IDENTITY]",
+      "command-line-flag": "-ia-identity",
+      "optional": true,
+      "description": "initialize affine matrix based on NIFTI headers"
+    },
+    {
+      "id": "fixed_reslicing_image",
+      "name": "Reslice Fixed Image",
+      "type": "File",
+      "value-key": "[RESLICE_INPUT_IMG]",
+      "command-line-flag": "-rf",
+      "optional": true,
+      "description": "fixed image for reslicing"
+    },
+    {
+      "id": "reslice_moving_image",
+      "name": "Reslice Moving Image",
+      "value-key": "[RESLICE_MOVING_IMAGE]",
+      "type": "File",
+      "command-line-flag": "-rm",
+      "optional": true,
+      "description": "Moving image reslice file"
+    },
+    {
+      "id": "reslice_output_image",
+      "name": "Reslice Output Image",
+      "type": "String",
+      "value-key": "[RESLICE_OUTPUT_IMAGE]",
+      "optional": true,
+      "description": "Output image reslice file"
+    },
+    {
+      "id": "verbosity",
+      "name": "Verbosity",
+      "type": "Number",
+      "value-key": "[VERBOSE]",
+      "integer": true,
+      "command-line-flag": "-V",
+      "optional": true,
+      "description": "Verbosity level"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_file",
+      "name": "Output File",
+      "path-template": "[OUTPUT]",
+      "optional": true,
+      "description": "Output file from affine"
+    },
+    {
+      "id": "reslice_output_file",
+      "name": "Output string",
+      "path-template": "[RESLICE_OUTPUT_IMAGE]",
+      "optional": true,
+      "description": "Resliced output image"
+    }
+  ]
+}
