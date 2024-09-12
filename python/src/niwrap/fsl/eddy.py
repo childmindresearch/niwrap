@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EDDY_METADATA = Metadata(
-    id="ce709a7ad4031c620e969a2cba36e6dd9d2fc3f0.boutiques",
+    id="f2dd23d70ac60a5fd678ef452b8ec840c1f43303.boutiques",
     name="eddy",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -39,7 +39,7 @@ def eddy(
     json_: InputPathType | None = None,
     mporder: float | None = None,
     s2v_lambda: float | None = None,
-    topup_: str | None = None,
+    topup_: InputPathType | None = None,
     field: InputPathType | None = None,
     field_mat: InputPathType | None = None,
     flm: typing.Literal["movement", "linear", "quadratic", "cubic"] | None = None,
@@ -172,7 +172,7 @@ def eddy(
     if s2v_lambda is not None:
         cargs.append("--s2v_lambda=" + str(s2v_lambda))
     if topup_ is not None:
-        cargs.append("--topup=" + topup_)
+        cargs.append("--topup=" + execution.input_file(topup_, resolve_parent=True))
     if field is not None:
         cargs.append("--field=" + execution.input_file(field))
     if field_mat is not None:

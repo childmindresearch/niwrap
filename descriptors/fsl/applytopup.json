@@ -48,8 +48,9 @@
       "command-line-flag-separator": "=",
       "description": "Name of field/movements (from topup)",
       "value-key": "[TOPUP]",
-      "type": "String",
+      "type": "File",
       "optional": false,
+      "resolve-parent": true,
       "id": "topup",
       "name": "Topup prefix"
     },

@@ -47,7 +47,7 @@ def v_3d_group_in_corr(
     port_offset: float | None = None,
     port_offset_quiet: float | None = None,
     port_bloc: float | None = None,
-    suma: bool = False,
+    suma_: bool = False,
     quiet: bool = False,
     verbose: bool = False,
     very_verbose: bool = False,
@@ -91,7 +91,7 @@ def v_3d_group_in_corr(
         port_offset: Provide a port offset.
         port_offset_quiet: Provide a port offset, with less verbose output.
         port_bloc: Provide a port offset bloc.
-        suma: Talk to SUMA instead of AFNI.
+        suma_: Talk to SUMA instead of AFNI.
         quiet: Suppress informational messages.
         verbose: Print extra informational messages.
         very_verbose: Print even more detailed informational messages.
@@ -185,7 +185,7 @@ def v_3d_group_in_corr(
             "-npb",
             str(port_bloc)
         ])
-    if suma:
+    if suma_:
         cargs.append("-suma")
     if quiet:
         cargs.append("-quiet")

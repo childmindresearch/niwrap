@@ -166,7 +166,8 @@
       "command-line-flag-separator": "=",
       "value-key": "[TOPUP]",
       "description": "Base name for output files from topup",
-      "type": "String",
+      "type": "File",
+      "resolve-parent": true,
       "optional": true
     },
     {

@@ -174,5 +174,12 @@
       "optional": true,
       "description": "Resliced output image"
     }
+  ],
+  "groups": [
+    {
+      "id": "reslice_group",
+      "name": "Reslice moving / output group",
+      "members": ["reslice_moving_image", "reslice_output_image"]
+    }
   ]
 }

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GREEDY_METADATA = Metadata(
-    id="9a63269091269f8439d17bcdf80df2d69928814c.boutiques",
+    id="fa0c2cc85074ae69ac2d7bc0d952e7394fbf5077.boutiques",
     name="greedy",
     package="greedy",
     container_image_tag="pyushkevich/itksnap:v3.8.2",
