@@ -50,6 +50,7 @@
       "value-key": "[TOPUP]",
       "type": "String",
       "optional": false,
+      "resolve-parent": true,
       "id": "topup",
       "name": "Topup prefix"
     },

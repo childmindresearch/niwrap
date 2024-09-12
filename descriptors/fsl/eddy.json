@@ -167,6 +167,7 @@
       "value-key": "[TOPUP]",
       "description": "Base name for output files from topup",
       "type": "String",
+      "resolve-parent": true,
       "optional": true
     },
     {
