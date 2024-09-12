@@ -19,10 +19,11 @@ jobs:
       run: pipx install poetry
     - uses: actions/setup-python@v5
       with:
-        python-version-file: pyproject.toml
+        python-version-file: python/pyproject.toml
         cache: poetry
     - name: Install dependencies and build
       run: |
+        cd python || exit
         poetry install
         poetry build
 
@@ -33,4 +34,4 @@ jobs:
         user: __token__
         password: ${{ secrets.PYPI_TOKEN }}
         verbose: true
-        packages-dir: python
+        packages-dir: python/dist
