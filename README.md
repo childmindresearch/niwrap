@@ -1,12 +1,17 @@
 
 # NiWrap <img src="logo.png" align="right" width="25%"/>
 
-NiWrap is an extensive collection of neuroimaging command line tool metadata used for generating modern, ideomatic Python wrappers.
+🧠 Modern Python wrappers for neuroimaging tools
 
-Metadata is partly hand-written and partly extracted from the source code of the tools themselves.
-NiWrap is based on the [Boutiques Descriptor Schema](https://github.com/boutiques/boutiques) and powered by the [Styx Boutiques-to-Python compiler](https://github.com/childmindresearch/styx).
 
-## Supported packages
+## 🚀 Features
+
+- Extensive collection of neuroimaging command line tool metadata
+- Generates idiomatic Python wrappers for popular neuroimaging tools
+- Based on [Boutiques Descriptor Schema](https://github.com/boutiques/boutiques)
+- Powered by [Styx compiler](https://github.com/childmindresearch/styx)
+
+## 🧰 Supported Packages
 
 <!-- START_PACKAGES_TABLE -->
 
@@ -24,25 +29,46 @@ NiWrap is based on the [Boutiques Descriptor Schema](https://github.com/boutique
 
 <!-- END_PACKAGES_TABLE -->
 
-> [!NOTE] 
-> *API Coverage* is defined as the percentage of individual binaries for which a descriptor is available in NiWrap. This is not a measure of the completeness of the descriptors themselves nor is reaching 100% strictly necessary as e.g. FSL and AFNI contain many small utilities for which Python offers much easier standard library functions. One way to increase coverage is to mark known-irrelevant binaries as `"status": "ignore"` in `packages/`.
+> 📊 **API Coverage Explained**
+> - Represents the percentage of tool binaries with available NiWrap descriptors
+> - Does not indicate descriptor completeness
+> - 100% coverage isn't always necessary (e.g., some FSL/AFNI utilities have Python stdlib equivalents)
+> - To improve coverage:
+>   - Add missing descriptor in `descriptors/`
+>   - Mark irrelevant binaries as `"status": "ignore"` in `packages/`
 
-## Repository structure
+## 🗂 Repository Structure
 
-| Directory | Description |
-| --- | --- |
-| `/descriptors` | Boutiques descriptors |
-| `/schemas` | JSON schema for Boutiques descriptors |
-| `/python` | Generated `niwrap` Python package |
-| `/extraction` | Source metadata extraction |
-| `/packages` | Package-specific metadata |
+```
+niwrap/
+├── descriptors/    # Boutiques descriptors
+├── schemas/        # JSON schema for Boutiques descriptors
+├── python/         # Generated niwrap Python package
+├── extraction/     # Source metadata extraction
+└── packages/       # Package-specific metadata
+```
 
-## Python package
+## 🐍 [Python Package](https://github.com/childmindresearch/niwrap/blob/main/python/README.md)
 
-Install the `niwrap` Python package to use the generated Python wrappers.
+Install the `niwrap` Python package to use the generated wrappers:
 
-See the [niwrap Python package README](./python/README.md) for installation instructions and usage information.
+```bash
+pip install niwrap
+```
 
-## Contributing
+See the [NiWrap Python package readme](https://github.com/childmindresearch/niwrap/blob/main/python/README.md) for more details.
 
-See the [CONTRIBUTING.md](./CONTRIBUTING.md) file for information on how to contribute to NiWrap.
+## 🤝 Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for ways to get started.
+
+
+## 📄 License
+
+The NiWrap project itself, including all metadata and generated Python wrappers, is licensed under the MIT License. See the LICENSE file for details.
+
+> **⚠️ Important**: The neuroimaging tools wrapped by NiWrap each have their own licenses. Using NiWrap does not grant any rights to use these tools beyond what their respective licenses allow. Users are responsible for complying with the licenses of the underlying tools they use through NiWrap.
+
+## 🙋‍♀️ Support
+
+For support, please open an issue in the [GitHub issue tracker](https://github.com/childmindresearch/niwrap/issues).
