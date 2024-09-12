@@ -78,54 +78,55 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">FSL_MRS_PROC_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5fd108d3b19ebf7c9e48acb899701457a3805385.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;fb3a400f171c0088382986998ebb6b0485571ba6.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fsl_mrs_proc&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="p">)</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="p">)</span>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="k">class</span> <span class="nc">FslMrsProcOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">    Output object returned when calling `fsl_mrs_proc(...)`.</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="k">class</span> <span class="nc">FslMrsProcOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">    Output object returned when calling `fsl_mrs_proc(...)`.</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="k">def</span> <span class="nf">fsl_mrs_proc</span><span class="p">(</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FslMrsProcOutputs</span><span class="p">:</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">    FSL Magnetic Resonance Spectroscopy - Preprocessing.</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">    </span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">    Author: FMRIB Centre, University of Oxford</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">    </span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">    </span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">    Args:</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    Returns:</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">        NamedTuple of outputs (described in `FslMrsProcOutputs`).</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSL_MRS_PROC_METADATA</span><span class="p">)</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fsl_mrs_proc&quot;</span><span class="p">)</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[GLOBAL_OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;subcommand&gt;&quot;</span><span class="p">)</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[SUBCOMMAND_OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslMrsProcOutputs</span><span class="p">(</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="p">)</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="k">def</span> <span class="nf">fsl_mrs_proc</span><span class="p">(</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FslMrsProcOutputs</span><span class="p">:</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">    FSL Magnetic Resonance Spectroscopy - Preprocessing.</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">    </span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">    Author: FMRIB Centre, University of Oxford</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">    </span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">    </span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    Args:</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    Returns:</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">        NamedTuple of outputs (described in `FslMrsProcOutputs`).</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSL_MRS_PROC_METADATA</span><span class="p">)</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fsl_mrs_proc&quot;</span><span class="p">)</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[GLOBAL_OPTIONS]&quot;</span><span class="p">)</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;subcommand&gt;&quot;</span><span class="p">)</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[SUBCOMMAND_OPTIONS]&quot;</span><span class="p">)</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslMrsProcOutputs</span><span class="p">(</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="p">)</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="s2">&quot;FSL_MRS_PROC_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="s2">&quot;FslMrsProcOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="s2">&quot;fsl_mrs_proc&quot;</span><span class="p">,</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="p">]</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="s2">&quot;FSL_MRS_PROC_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="s2">&quot;FslMrsProcOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="s2">&quot;fsl_mrs_proc&quot;</span><span class="p">,</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -134,7 +135,7 @@
                     <div class="attr variable">
             <span class="name">FSL_MRS_PROC_METADATA</span>        =
 <input id="FSL_MRS_PROC_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FSL_MRS_PROC_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5fd108d3b19ebf7c9e48acb899701457a3805385.boutiques&#39;, name=&#39;fsl_mrs_proc&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=None)</span>
+            <label class="view-value-button pdoc-button" for="FSL_MRS_PROC_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;fb3a400f171c0088382986998ebb6b0485571ba6.boutiques&#39;, name=&#39;fsl_mrs_proc&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
 
         
     </div>
@@ -154,12 +155,12 @@
 
     </div>
     <a class="headerlink" href="#FslMrsProcOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FslMrsProcOutputs-17"><a href="#FslMrsProcOutputs-17"><span class="linenos">17</span></a><span class="k">class</span> <span class="nc">FslMrsProcOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="FslMrsProcOutputs-18"><a href="#FslMrsProcOutputs-18"><span class="linenos">18</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="FslMrsProcOutputs-19"><a href="#FslMrsProcOutputs-19"><span class="linenos">19</span></a><span class="sd">    Output object returned when calling `fsl_mrs_proc(...)`.</span>
-</span><span id="FslMrsProcOutputs-20"><a href="#FslMrsProcOutputs-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="FslMrsProcOutputs-21"><a href="#FslMrsProcOutputs-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="FslMrsProcOutputs-22"><a href="#FslMrsProcOutputs-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FslMrsProcOutputs-18"><a href="#FslMrsProcOutputs-18"><span class="linenos">18</span></a><span class="k">class</span> <span class="nc">FslMrsProcOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="FslMrsProcOutputs-19"><a href="#FslMrsProcOutputs-19"><span class="linenos">19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FslMrsProcOutputs-20"><a href="#FslMrsProcOutputs-20"><span class="linenos">20</span></a><span class="sd">    Output object returned when calling `fsl_mrs_proc(...)`.</span>
+</span><span id="FslMrsProcOutputs-21"><a href="#FslMrsProcOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="FslMrsProcOutputs-22"><a href="#FslMrsProcOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="FslMrsProcOutputs-23"><a href="#FslMrsProcOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -216,33 +217,33 @@
 
     </div>
     <a class="headerlink" href="#fsl_mrs_proc"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="fsl_mrs_proc-25"><a href="#fsl_mrs_proc-25"><span class="linenos">25</span></a><span class="k">def</span> <span class="nf">fsl_mrs_proc</span><span class="p">(</span>
-</span><span id="fsl_mrs_proc-26"><a href="#fsl_mrs_proc-26"><span class="linenos">26</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fsl_mrs_proc-27"><a href="#fsl_mrs_proc-27"><span class="linenos">27</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FslMrsProcOutputs</span><span class="p">:</span>
-</span><span id="fsl_mrs_proc-28"><a href="#fsl_mrs_proc-28"><span class="linenos">28</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="fsl_mrs_proc-29"><a href="#fsl_mrs_proc-29"><span class="linenos">29</span></a><span class="sd">    FSL Magnetic Resonance Spectroscopy - Preprocessing.</span>
-</span><span id="fsl_mrs_proc-30"><a href="#fsl_mrs_proc-30"><span class="linenos">30</span></a><span class="sd">    </span>
-</span><span id="fsl_mrs_proc-31"><a href="#fsl_mrs_proc-31"><span class="linenos">31</span></a><span class="sd">    Author: FMRIB Centre, University of Oxford</span>
-</span><span id="fsl_mrs_proc-32"><a href="#fsl_mrs_proc-32"><span class="linenos">32</span></a><span class="sd">    </span>
-</span><span id="fsl_mrs_proc-33"><a href="#fsl_mrs_proc-33"><span class="linenos">33</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/</span>
-</span><span id="fsl_mrs_proc-34"><a href="#fsl_mrs_proc-34"><span class="linenos">34</span></a><span class="sd">    </span>
-</span><span id="fsl_mrs_proc-35"><a href="#fsl_mrs_proc-35"><span class="linenos">35</span></a><span class="sd">    Args:</span>
-</span><span id="fsl_mrs_proc-36"><a href="#fsl_mrs_proc-36"><span class="linenos">36</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fsl_mrs_proc-37"><a href="#fsl_mrs_proc-37"><span class="linenos">37</span></a><span class="sd">    Returns:</span>
-</span><span id="fsl_mrs_proc-38"><a href="#fsl_mrs_proc-38"><span class="linenos">38</span></a><span class="sd">        NamedTuple of outputs (described in `FslMrsProcOutputs`).</span>
-</span><span id="fsl_mrs_proc-39"><a href="#fsl_mrs_proc-39"><span class="linenos">39</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fsl_mrs_proc-40"><a href="#fsl_mrs_proc-40"><span class="linenos">40</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fsl_mrs_proc-41"><a href="#fsl_mrs_proc-41"><span class="linenos">41</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSL_MRS_PROC_METADATA</span><span class="p">)</span>
-</span><span id="fsl_mrs_proc-42"><a href="#fsl_mrs_proc-42"><span class="linenos">42</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fsl_mrs_proc-43"><a href="#fsl_mrs_proc-43"><span class="linenos">43</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fsl_mrs_proc&quot;</span><span class="p">)</span>
-</span><span id="fsl_mrs_proc-44"><a href="#fsl_mrs_proc-44"><span class="linenos">44</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[GLOBAL_OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="fsl_mrs_proc-45"><a href="#fsl_mrs_proc-45"><span class="linenos">45</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;subcommand&gt;&quot;</span><span class="p">)</span>
-</span><span id="fsl_mrs_proc-46"><a href="#fsl_mrs_proc-46"><span class="linenos">46</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[SUBCOMMAND_OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="fsl_mrs_proc-47"><a href="#fsl_mrs_proc-47"><span class="linenos">47</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslMrsProcOutputs</span><span class="p">(</span>
-</span><span id="fsl_mrs_proc-48"><a href="#fsl_mrs_proc-48"><span class="linenos">48</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fsl_mrs_proc-49"><a href="#fsl_mrs_proc-49"><span class="linenos">49</span></a>    <span class="p">)</span>
-</span><span id="fsl_mrs_proc-50"><a href="#fsl_mrs_proc-50"><span class="linenos">50</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fsl_mrs_proc-51"><a href="#fsl_mrs_proc-51"><span class="linenos">51</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="fsl_mrs_proc-26"><a href="#fsl_mrs_proc-26"><span class="linenos">26</span></a><span class="k">def</span> <span class="nf">fsl_mrs_proc</span><span class="p">(</span>
+</span><span id="fsl_mrs_proc-27"><a href="#fsl_mrs_proc-27"><span class="linenos">27</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fsl_mrs_proc-28"><a href="#fsl_mrs_proc-28"><span class="linenos">28</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FslMrsProcOutputs</span><span class="p">:</span>
+</span><span id="fsl_mrs_proc-29"><a href="#fsl_mrs_proc-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="fsl_mrs_proc-30"><a href="#fsl_mrs_proc-30"><span class="linenos">30</span></a><span class="sd">    FSL Magnetic Resonance Spectroscopy - Preprocessing.</span>
+</span><span id="fsl_mrs_proc-31"><a href="#fsl_mrs_proc-31"><span class="linenos">31</span></a><span class="sd">    </span>
+</span><span id="fsl_mrs_proc-32"><a href="#fsl_mrs_proc-32"><span class="linenos">32</span></a><span class="sd">    Author: FMRIB Centre, University of Oxford</span>
+</span><span id="fsl_mrs_proc-33"><a href="#fsl_mrs_proc-33"><span class="linenos">33</span></a><span class="sd">    </span>
+</span><span id="fsl_mrs_proc-34"><a href="#fsl_mrs_proc-34"><span class="linenos">34</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/</span>
+</span><span id="fsl_mrs_proc-35"><a href="#fsl_mrs_proc-35"><span class="linenos">35</span></a><span class="sd">    </span>
+</span><span id="fsl_mrs_proc-36"><a href="#fsl_mrs_proc-36"><span class="linenos">36</span></a><span class="sd">    Args:</span>
+</span><span id="fsl_mrs_proc-37"><a href="#fsl_mrs_proc-37"><span class="linenos">37</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fsl_mrs_proc-38"><a href="#fsl_mrs_proc-38"><span class="linenos">38</span></a><span class="sd">    Returns:</span>
+</span><span id="fsl_mrs_proc-39"><a href="#fsl_mrs_proc-39"><span class="linenos">39</span></a><span class="sd">        NamedTuple of outputs (described in `FslMrsProcOutputs`).</span>
+</span><span id="fsl_mrs_proc-40"><a href="#fsl_mrs_proc-40"><span class="linenos">40</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fsl_mrs_proc-41"><a href="#fsl_mrs_proc-41"><span class="linenos">41</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fsl_mrs_proc-42"><a href="#fsl_mrs_proc-42"><span class="linenos">42</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSL_MRS_PROC_METADATA</span><span class="p">)</span>
+</span><span id="fsl_mrs_proc-43"><a href="#fsl_mrs_proc-43"><span class="linenos">43</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fsl_mrs_proc-44"><a href="#fsl_mrs_proc-44"><span class="linenos">44</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fsl_mrs_proc&quot;</span><span class="p">)</span>
+</span><span id="fsl_mrs_proc-45"><a href="#fsl_mrs_proc-45"><span class="linenos">45</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[GLOBAL_OPTIONS]&quot;</span><span class="p">)</span>
+</span><span id="fsl_mrs_proc-46"><a href="#fsl_mrs_proc-46"><span class="linenos">46</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;subcommand&gt;&quot;</span><span class="p">)</span>
+</span><span id="fsl_mrs_proc-47"><a href="#fsl_mrs_proc-47"><span class="linenos">47</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[SUBCOMMAND_OPTIONS]&quot;</span><span class="p">)</span>
+</span><span id="fsl_mrs_proc-48"><a href="#fsl_mrs_proc-48"><span class="linenos">48</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslMrsProcOutputs</span><span class="p">(</span>
+</span><span id="fsl_mrs_proc-49"><a href="#fsl_mrs_proc-49"><span class="linenos">49</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fsl_mrs_proc-50"><a href="#fsl_mrs_proc-50"><span class="linenos">50</span></a>    <span class="p">)</span>
+</span><span id="fsl_mrs_proc-51"><a href="#fsl_mrs_proc-51"><span class="linenos">51</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fsl_mrs_proc-52"><a href="#fsl_mrs_proc-52"><span class="linenos">52</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
