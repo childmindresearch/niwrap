@@ -46,7 +46,9 @@ def stream_descriptors():
             }
             
             package_docs = Documentation(
-                title=package["name"], urls=[package["url"]]
+                title=package["name"], 
+                urls=[package["url"]],
+                description=package["description"]
             )
             yield from_boutiques(descriptor, package["id"], package_docs)
 
