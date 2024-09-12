@@ -1,0 +1,36 @@
+name: Publish to PyPi
+
+permissions:
+  actions: write
+
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+  pypi-release:
+    name: PyPi Release
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install poetry
+      run: pipx install poetry
+    - uses: actions/setup-python@v5
+      with:
+        python-version-file: pyproject.toml
+        cache: poetry
+    - name: Install dependencies and build
+      run: |
+        poetry install
+        poetry build
+
+    - name: Publish to PyPi
+      id: pypi_publish
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_TOKEN }}
+        verbose: true
+        packages-dir: python
