@@ -5,6 +5,7 @@
   "approach": "Manual",
   "status": "In progress",
   "container": "mcin/fsl:6.0.5",
+  "version": "6.0.5",
   "api": {
     "endpoints": [
       {

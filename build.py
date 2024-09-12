@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 from shutil import rmtree
 
-from styx.backend.python import to_python
+from styx.backend.python import to_python, styxdefs_compat
 from styx.frontend.boutiques import from_boutiques
 from styx.ir.core import Documentation
 
@@ -61,11 +61,62 @@ def compile_wrappers():
 
 
 # =============================================================================
+# |                           UPDATE PYTHON METADATA                          |
+# =============================================================================
+
+
+def update_styxdefs_version():
+    import re
+    file_path = PATH_OUTPUT / "../../pyproject.toml"
+    new_version = styxdefs_compat()
+    with open(file_path, 'r') as file:
+        content = file.read()
+    pattern = r'(styxdefs\s*=\s*")[^"]+"'
+    updated_content = re.sub(pattern, f'\\1{new_version}"', content)
+    with open(file_path, 'w') as file:
+        file.write(updated_content)
+
+
+def update_python_metadata():
+    print("Create package __init__.py")
+    PATH_MAIN_INIT = PATH_OUTPUT / "__init__.py"
+    PATH_MAIN_INIT.write_text('""".. include:: ../../README.md"""\n', encoding="utf-8")
+    
+    print("Update package readme")
+    patch_section(
+        file=PATH_OUTPUT / "../../README.md",
+        replacement=build_package_overview_table(),
+        token="PACKAGES_TABLE"
+    )
+
+    print("Update package styxdefs version")
+    update_styxdefs_version()
+
+
+# =============================================================================
 # |                           UPDATE README                                   |
 # =============================================================================
 
 
-def update_readme():
+def patch_section(file, replacement, token):
+    # Replace text in file between <!-- START_{token} --> and <!-- END_{token} -->
+    TOKEN_START = f'<!-- START_{token} -->'
+    TOKEN_END = f'<!-- END_{token} -->'
+
+    with open(file, 'r') as f:
+        readme = f.read()
+        start = readme.find(TOKEN_START) + len(TOKEN_START)
+        end = readme.find(TOKEN_END)
+        assert start >= 0
+        assert end >= 0
+        assert start < end
+        new_readme = readme[:start] + "\n\n" + replacement + "\n" + readme[end:]
+
+    with open(file, 'w', encoding="utf-8") as f:
+        f.write(new_readme)
+
+
+def build_package_overview_table():
     packages = sorted([package for _, package in iter_packages()], key=lambda x: x['name'])
 
     buf = "| Package | Status | Version | API Coverage |\n"
@@ -95,32 +146,21 @@ def update_readme():
 
         container_tag = package.get('container')
         if container_tag:
-            docker_image, docker_tag = package['container'].split(':')
+            docker_image, _ = package['container'].split(':')
             docker_hub = f"https://hub.docker.com/r/{docker_image}"
-            container = f"[`{docker_tag}`]({docker_hub})"
+            container = f"[`{package['version']}`]({docker_hub})"
 
         buf += f"| {name_link} | {package['status']} | {container if container_tag else '?'} | {coverage} |\n"
+    return buf
 
 
-    # Replace text in README.md between <!-- START_PACKAGES_TABLE --> and <!-- END_PACKAGES_TABLE -->
-    TOKEN_START = '<!-- START_PACKAGES_TABLE -->'
-    TOKEN_END = '<!-- END_PACKAGES_TABLE -->'
-
-    PATH_README = Path('README.md')
-
-    with open(PATH_README, 'r') as f:
-        readme = f.read()
-        start = readme.find(TOKEN_START) + len(TOKEN_START)
-        end = readme.find(TOKEN_END)
-        assert start >= 0
-        assert end >= 0
-        assert start < end
-        new_readme = readme[:start] + "\n\n" + buf + "\n" + readme[end:]
-
-    with open(PATH_README, 'w', encoding="utf-8") as f:
-        f.write(new_readme)
-        f.write("\n")
-        print("Updated README.md")
+def update_readme():
+    print("Update repo readme")
+    patch_section(
+        file=Path("README.md"),
+        replacement=build_package_overview_table(),
+        token="PACKAGES_TABLE"
+    )
 
 
 if __name__ == "__main__":
@@ -129,6 +169,9 @@ if __name__ == "__main__":
 
     print("=== COMPILE WRAPPERS ===")
     compile_wrappers()
+
+    print("=== UPDATE PYTHON METADATA ===")
+    update_python_metadata()
 
     print("=== UPDATE README ===")
     update_readme()

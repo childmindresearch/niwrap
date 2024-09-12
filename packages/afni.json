@@ -5,6 +5,7 @@
   "approach": "Manual",
   "status": "In progress",
   "container": "afni/afni_make_build:AFNI_24.2.06",
+  "version": "24.2.06",
   "api": {
     "endpoints": [
       {

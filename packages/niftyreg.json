@@ -5,6 +5,7 @@
   "approach": "Manual",
   "status": "In progress",
   "container": "vnmd/niftyreg_1.4.0:20220819",
+  "version": "1.4.0",
   "api": {
     "endpoints": [
       {

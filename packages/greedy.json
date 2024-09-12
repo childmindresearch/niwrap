@@ -5,6 +5,7 @@
   "approach": "Manual",
   "status": "In progress",
   "container": "pyushkevich/itksnap:v3.8.2",
+  "version": "1.0.1",
   "api": {
     "endpoints": [
       {
