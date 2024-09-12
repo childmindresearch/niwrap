@@ -4,6 +4,7 @@
   "url": "https://www.mrtrix.org/",
   "approach": "Source extraction",
   "status": "Testing",
+  "container": "mrtrix3/mrtrix3:3.0.4",
   "api": {
     "endpoints": [
       {

@@ -4,6 +4,7 @@
   "url": "https://github.com/Washington-University/workbench",
   "approach": "Source extraction",
   "status": "Testing",
+  "container": "brainlife/connectome_workbench:1.5.0-freesurfer-update",
   "api": {
     "endpoints": [
       {

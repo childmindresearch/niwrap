@@ -4,6 +4,7 @@
   "url": "https://github.com/freesurfer/freesurfer",
   "approach": "Manual",
   "status": "In progress",
+  "container": "freesurfer/freesurfer:7.4.1",
   "api": {
     "endpoints": [
       {

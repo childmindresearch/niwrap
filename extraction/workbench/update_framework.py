@@ -1,14 +1,14 @@
-# Update frameworks/workbench.json api endpoint list from out_commands.txt
+# Update packages/workbench.json api endpoint list from out_commands.txt
 
 import json
 import os
 
 # set wd to the root of the project
 os.chdir(os.path.join(os.path.dirname(__file__), "../.."))
-assert os.path.exists('frameworks/workbench.json')
+assert os.path.exists('packages/workbench.json')
 
 # Load the current workbench.json
-with open('frameworks/workbench.json', 'r') as f:
+with open('packages/workbench.json', 'r') as f:
     workbench = json.load(f)
 
 workbench["api"]["endpoints"] = []
@@ -25,6 +25,6 @@ with open('extraction/workbench/out_commands.txt', 'r') as f:
 
 # Write the updated workbench.json
 
-with open('frameworks/workbench.json', 'w') as f:
+with open('packages/workbench.json', 'w') as f:
     json.dump(workbench, f, indent=2)
     f.write("\n")

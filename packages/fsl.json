@@ -4,7 +4,7 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "approach": "Manual",
   "status": "In progress",
-  "container": "fnndsc/fsl:6.0.5.1-cuda9.1",
+  "container": "mcin/fsl:6.0.5",
   "api": {
     "endpoints": [
       {

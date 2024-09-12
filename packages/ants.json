@@ -4,7 +4,7 @@
   "url": "https://github.com/ANTsX/ANTs",
   "approach": "Manual",
   "status": "In progress",
-  "container": "antsx/ants",
+  "container": "antsx/ants:v2.5.3",
   "api": {
     "endpoints": [
       {

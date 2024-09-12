@@ -4,6 +4,7 @@
   "url": "http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D",
   "approach": "Manual",
   "status": "In progress",
+  "container": "pyushkevich/itksnap:v3.8.2",
   "api": {
     "endpoints": [
       {

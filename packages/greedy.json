@@ -4,11 +4,13 @@
   "url": "https://sites.google.com/view/greedyreg/about",
   "approach": "Manual",
   "status": "In progress",
+  "container": "pyushkevich/itksnap:v3.8.2",
   "api": {
     "endpoints": [
       {
         "target": "greedy",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/greedy/greedy.json"
       }
     ]
   }

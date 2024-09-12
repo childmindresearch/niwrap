@@ -4,6 +4,7 @@
   "url": "http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg",
   "approach": "Manual",
   "status": "In progress",
+  "container": "vnmd/niftyreg_1.4.0:20220819",
   "api": {
     "endpoints": [
       {
