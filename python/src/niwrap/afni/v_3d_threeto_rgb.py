@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_THREETO_RGB_METADATA = Metadata(
-    id="620a160adb25c226a8eae14f8a7dfe20abae0fe2.boutiques",
+    id="0abd4702361734556eb2c268434532c58629b34a.boutiques",
     name="3dThreetoRGB",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

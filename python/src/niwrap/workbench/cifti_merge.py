@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_MERGE_METADATA = Metadata(
-    id="7e0e83aa1d5176f363e27964805e2df7526a1b2a.boutiques",
+    id="c568c787cebc1c7c46fadef250499da718cf4302.boutiques",
     name="cifti-merge",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

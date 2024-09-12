@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CLIP_LEVEL_METADATA = Metadata(
-    id="4c3a3f238117592b0e42e0da0f35eec4bb95c81d.boutiques",
+    id="c23a579dad9a9581f23ce9b71593013c72c41021.boutiques",
     name="3dClipLevel",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

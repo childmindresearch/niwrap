@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__THICKNESS_MASTER_METADATA = Metadata(
-    id="72bbc09ca8b1738ab2adf9e5678877d0ab39d258.boutiques",
+    id="20b162e688278463f4b5c90904b0af9c799c8222.boutiques",
     name="@thickness_master",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

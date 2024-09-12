@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__COMMAND_GLOBB_METADATA = Metadata(
-    id="19a7c96d36250663b4e4d52cd10d647c539d560d.boutiques",
+    id="fe166d4e4facdfa0bbed6bb9048b39209678fa1b.boutiques",
     name="@CommandGlobb",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

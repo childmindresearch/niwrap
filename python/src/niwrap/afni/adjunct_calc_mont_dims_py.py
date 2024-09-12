@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_CALC_MONT_DIMS_PY_METADATA = Metadata(
-    id="fc0aca42e8ba7b9cc0836dd2ab44dbe7f8cbdd83.boutiques",
+    id="b47976f68d1c8a61f474bfd14af72f3d4b864a63.boutiques",
     name="adjunct_calc_mont_dims.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 IMMASK_METADATA = Metadata(
-    id="86504f652c99d44226f59ecf6081fc213a1b97e4.boutiques",
+    id="736fb27ce6a63e852c9e158e0972076796e4fb0a.boutiques",
     name="immask",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

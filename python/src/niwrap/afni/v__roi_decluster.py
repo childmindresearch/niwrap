@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__ROI_DECLUSTER_METADATA = Metadata(
-    id="e5146a4fb61823b218044004fa9b8598646d7f24.boutiques",
+    id="9f3d049396f0d326df99a0da9701f22c54f456e3.boutiques",
     name="@ROI_decluster",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

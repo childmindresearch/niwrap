@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1DSVD_METADATA = Metadata(
-    id="164f69b0c434b544d5fa02424e645ffe777e333d.boutiques",
+    id="1e845a4ea67d4f4390b3cc2a7cdf74c42dcccaf5.boutiques",
     name="1dsvd",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

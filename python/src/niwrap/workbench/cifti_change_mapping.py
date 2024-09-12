@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CHANGE_MAPPING_METADATA = Metadata(
-    id="3d65e57490550b81c7a2d6750bfd94b0d1a4811b.boutiques",
+    id="da339d3c08d4279ef6a380aa5740bde17635dae4.boutiques",
     name="cifti-change-mapping",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

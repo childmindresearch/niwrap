@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__TO_MNI_AWARP_METADATA = Metadata(
-    id="7bca51fccec52aa109fadb88b6e96434caf278eb.boutiques",
+    id="ffebc7ffeb996641e6fb0d40d8564f7f6f556946.boutiques",
     name="@toMNI_Awarp",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

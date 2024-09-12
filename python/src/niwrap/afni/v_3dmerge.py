@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DMERGE_METADATA = Metadata(
-    id="9f01ea10771b0203e54683725aa61c74654978d7.boutiques",
+    id="5e134d12632bbad5de1440df1dc412be8fda7b4f.boutiques",
     name="3dmerge",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

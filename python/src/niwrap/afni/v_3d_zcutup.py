@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZCUTUP_METADATA = Metadata(
-    id="4acd4850d9032c0dbd63b04da2b00bc69664b6bd.boutiques",
+    id="c61d24783be1adbc79d37ee978ea155b21a463fd.boutiques",
     name="3dZcutup",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

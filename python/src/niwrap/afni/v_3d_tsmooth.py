@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSMOOTH_METADATA = Metadata(
-    id="2ac2c27cdf9d39791435937d2b638cd69d6adddd.boutiques",
+    id="13bf91f18e7446955f1c082671ec122a2283b13e.boutiques",
     name="3dTsmooth",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

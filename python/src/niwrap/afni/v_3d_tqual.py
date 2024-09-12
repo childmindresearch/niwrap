@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TQUAL_METADATA = Metadata(
-    id="54a1c965dec649efb49f0eed9e2ace11d0cd69d5.boutiques",
+    id="051d67f70aafe97588824602cd1ef05d741f17f4.boutiques",
     name="3dTqual",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

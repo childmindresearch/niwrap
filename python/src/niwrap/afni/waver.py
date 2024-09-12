@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 WAVER_METADATA = Metadata(
-    id="b6fd6949b1d59ce1539e360dd742c32c18323c3d.boutiques",
+    id="96b50e0c8292a4fbc3bac32ca89083846b0e7918.boutiques",
     name="waver",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 TIMING_TOOL_PY_METADATA = Metadata(
-    id="d78a4318e06ce3bcf2c99989375e9e9feeb5c89a.boutiques",
+    id="44a18ee84951e77612dd8bc063de7bce71b77863.boutiques",
     name="timing_tool.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

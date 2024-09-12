@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_LABEL_MODIFY_KEYS_METADATA = Metadata(
-    id="2062cf51113e72cef7e93ea49d5179eb4718219e.boutiques",
+    id="3e9e975ebe915117d571b9514f44747025005713.boutiques",
     name="volume-label-modify-keys",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

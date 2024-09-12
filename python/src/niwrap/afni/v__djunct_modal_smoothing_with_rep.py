@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_MODAL_SMOOTHING_WITH_REP_METADATA = Metadata(
-    id="5cb94e732c72cfe6c357eb2cb83a5b94d4db2300.boutiques",
+    id="2faf7d13316ca3bfda4900c3c3c8b6ff3feb68f8.boutiques",
     name="@djunct_modal_smoothing_with_rep",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

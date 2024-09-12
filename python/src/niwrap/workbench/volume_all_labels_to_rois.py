@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="8639ce0777fa498aebaa9835e6d07c77a290de56.boutiques",
+    id="0f6ea8b27a35d05248ce7cf9e5b3318c7359a543.boutiques",
     name="volume-all-labels-to-rois",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

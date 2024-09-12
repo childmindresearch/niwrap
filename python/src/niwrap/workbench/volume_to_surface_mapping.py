@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_TO_SURFACE_MAPPING_METADATA = Metadata(
-    id="407f1e0fe7142c3ba67b9be62f12d13563f1020d.boutiques",
+    id="82c18c63d4c8c2982d7b26a1537225793cbb2729.boutiques",
     name="volume-to-surface-mapping",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

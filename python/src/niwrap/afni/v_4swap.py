@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_4SWAP_METADATA = Metadata(
-    id="2131a79b261c3d3784d36177cf77b8ff550c0aa7.boutiques",
+    id="e5570d9e2ac4432fc7c28c15ab79f0523c5a5345.boutiques",
     name="4swap",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

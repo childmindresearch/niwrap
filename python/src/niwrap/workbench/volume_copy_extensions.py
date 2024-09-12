@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_COPY_EXTENSIONS_METADATA = Metadata(
-    id="666f239d139ae2adf777ce15ac59933098940c5b.boutiques",
+    id="672195e2565d266a45ebc56d42331bbbda2f500d.boutiques",
     name="volume-copy-extensions",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

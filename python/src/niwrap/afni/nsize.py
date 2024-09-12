@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 NSIZE_METADATA = Metadata(
-    id="8d3ddcfa6f14f561aab2595cc7caf39642d3d921.boutiques",
+    id="9fbb08b5d158aa769d7d4e342aa51ddd8254e7ed.boutiques",
     name="nsize",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

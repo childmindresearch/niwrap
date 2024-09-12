@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BAYES_VIEW_METADATA = Metadata(
-    id="bd9788dfbde83a99d82545776c42a54e2c387ee4.boutiques",
+    id="96c15bb399c588707c5490ad8979f968cc5aa7c4.boutiques",
     name="bayes_view",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

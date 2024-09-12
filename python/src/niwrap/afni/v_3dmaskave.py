@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DMASKAVE_METADATA = Metadata(
-    id="79af65dabd3ad60ca6a56ea693ba7f8e34816586.boutiques",
+    id="446e73c657f36ef33a56f578da18151dd5c0f61b.boutiques",
     name="3dmaskave",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

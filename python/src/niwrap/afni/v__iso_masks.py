@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__ISO_MASKS_METADATA = Metadata(
-    id="b1a7810eaa66f8ef3b9bbd589fd8f9776b091baa.boutiques",
+    id="5e08bfc1c4611e9acd94b8f91b895e983973e1ef.boutiques",
     name="@IsoMasks",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

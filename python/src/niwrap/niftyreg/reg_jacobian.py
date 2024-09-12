@@ -7,9 +7,10 @@ from styxdefs import *
 import dataclasses
 
 REG_JACOBIAN_METADATA = Metadata(
-    id="6999f3e094e17f4579ff830c8aa3c43d03a6ee79.boutiques",
+    id="e0b54148f03bbce672bfc24966b15e2f4a38745b.boutiques",
     name="reg_jacobian",
     package="niftyreg",
+    container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
 
 

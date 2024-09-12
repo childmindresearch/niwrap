@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CURVATURE_METADATA = Metadata(
-    id="c60931157b33b4af20818930b23f8f24ff9418a1.boutiques",
+    id="2504b15bc1ec1bebe9f157d99ecaf66b1f5987f8.boutiques",
     name="surface-curvature",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

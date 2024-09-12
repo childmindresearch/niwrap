@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 NEURO_DECONVOLVE_PY_METADATA = Metadata(
-    id="e423d2565f82e92da98f8466ae0d823e312c2795.boutiques",
+    id="ea023431386088245b3e959a0753d9b2581057ac.boutiques",
     name="neuro_deconvolve.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

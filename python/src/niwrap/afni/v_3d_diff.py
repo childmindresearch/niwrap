@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DIFF_METADATA = Metadata(
-    id="d28b3d1855b401c8f2f5b8573b9629e2facc0992.boutiques",
+    id="9e9ee8f4e790b360b9a145fdfd02de7adec621c8.boutiques",
     name="3dDiff",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

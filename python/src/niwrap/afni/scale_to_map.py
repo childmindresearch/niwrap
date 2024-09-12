@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SCALE_TO_MAP_METADATA = Metadata(
-    id="6157ff4a2c2b113c867e495b50d10c4ae4df1fc6.boutiques",
+    id="61d30c2310aeeb2b815339618faadb24ade782f8.boutiques",
     name="ScaleToMap",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

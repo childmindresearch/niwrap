@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DANISOSMOOTH_METADATA = Metadata(
-    id="9e7900e8c0f3ee921e7ad7598786b9e3a00cdbcb.boutiques",
+    id="f9ebe5fa3b013bdcb909e178c9093254c20aada2.boutiques",
     name="3danisosmooth",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

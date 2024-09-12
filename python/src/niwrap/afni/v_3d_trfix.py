@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TRFIX_METADATA = Metadata(
-    id="0b9a9cb44e86fe219ef6d5ca723c118a193e8824.boutiques",
+    id="92993d180d096fd8c02ca5246a1f6bcc8544e559.boutiques",
     name="3dTRfix",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

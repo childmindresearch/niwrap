@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MAP_TRACK_ID_METADATA = Metadata(
-    id="3dcbc1ab82cac830ccbf8df654ac1c032c5df607.boutiques",
+    id="fdc74c47b97b026a45eb5a2e8e2ac8080fcc1087.boutiques",
     name="map_TrackID",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

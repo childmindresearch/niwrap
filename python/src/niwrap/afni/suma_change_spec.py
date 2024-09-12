@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SUMA_CHANGE_SPEC_METADATA = Metadata(
-    id="7e52f4b71eb0a75929cdf8c5f82f99767d04274a.boutiques",
+    id="2f1f46eccd2cdbc80832dbdd7c28c2bc7b4896ca.boutiques",
     name="suma_change_spec",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

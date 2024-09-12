@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_NIH_MARMOSET_METADATA = Metadata(
-    id="43d98538c0e763cc1b2bc30caceeca6a26381d7f.boutiques",
+    id="bed80736e5fa98273f7fc03539dabc839ff0dee7.boutiques",
     name="@Install_NIH_Marmoset",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SUMA_METADATA = Metadata(
-    id="24c0f17694eda4e1b08986c3f35a5c820340e0dd.boutiques",
+    id="ab82cac109ef47be190dcdcd83a806490c935c41.boutiques",
     name="suma",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

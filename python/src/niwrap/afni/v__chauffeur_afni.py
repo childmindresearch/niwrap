@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__CHAUFFEUR_AFNI_METADATA = Metadata(
-    id="e7900e8be3172fb7f5f31466dce984b2d6c5262a.boutiques",
+    id="156b32bc2ae285398a04b90d562966dd0cfac2d3.boutiques",
     name="@chauffeur_afni",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 IMCUTUP_METADATA = Metadata(
-    id="ac8ea541e69b28f8c0a2fa636bb213aaa542755c.boutiques",
+    id="ae7436cecf52feb92be9f38fea9b36005b397005.boutiques",
     name="imcutup",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

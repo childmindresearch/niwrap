@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__CLUST_EXP_RUN_SHINY_METADATA = Metadata(
-    id="05a3aa0a07b923ccc33d0cb46548c6a1dfe6bcb9.boutiques",
+    id="964dd45dcb23038010a4e9b76e280522facd2af6.boutiques",
     name="@ClustExp_run_shiny",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

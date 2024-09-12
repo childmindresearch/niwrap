@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 APQC_MAKE_TCSH_PY_METADATA = Metadata(
-    id="8fcca63c2c3568b6ddc9e9982d804d3b7e550688.boutiques",
+    id="91be2a7730e3b24b6c82f3600552fd6ab87466dc.boutiques",
     name="apqc_make_tcsh.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

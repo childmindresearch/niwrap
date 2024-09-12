@@ -7,9 +7,10 @@ from styxdefs import *
 import dataclasses
 
 REG_ALADIN_METADATA = Metadata(
-    id="434ce5ca058b2c32e192487c330ca6b8badb72bb.boutiques",
+    id="1227cc0a0d5e046b2918bf100a840232317434d0.boutiques",
     name="reg_aladin",
     package="niftyreg",
+    container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
 
 

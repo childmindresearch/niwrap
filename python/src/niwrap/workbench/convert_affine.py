@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_AFFINE_METADATA = Metadata(
-    id="90c666519fc612c937a29d02c0f13ab5fcfd8eb4.boutiques",
+    id="7a81c98e6ffb9e99458da7102f3f7f507d10fe49.boutiques",
     name="convert-affine",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CONVERT_METADATA = Metadata(
-    id="994dc4ac7b01a8eccd2ad2fa99a0bd846b0dc0ca.boutiques",
+    id="f620818fd4e7449f16b3a3864a16b31df547c1e9.boutiques",
     name="cifti-convert",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

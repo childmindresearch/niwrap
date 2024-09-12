@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 DTISTUDIO_FIBERTO_SEGMENTS_METADATA = Metadata(
-    id="cba23a47fc87e1e3c65e3674b69b29815f2435e8.boutiques",
+    id="3af004da7dceeafdf7d648e011b0d4788bfd2bd3.boutiques",
     name="DTIStudioFibertoSegments",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SAMP_BIAS_METADATA = Metadata(
-    id="8caa085b249873d3818d3a0935d6ec7ab32b4ff6.boutiques",
+    id="9480cbad7a38a99f1c7cad718271beff5166df8e.boutiques",
     name="SampBias",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

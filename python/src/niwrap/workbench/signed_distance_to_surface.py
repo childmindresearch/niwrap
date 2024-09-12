@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SIGNED_DISTANCE_TO_SURFACE_METADATA = Metadata(
-    id="c7965505eee57fc7a37989d14281e020b71b1685.boutiques",
+    id="ca080327da573762030330c67e81844f7c3c6d74.boutiques",
     name="signed-distance-to-surface",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

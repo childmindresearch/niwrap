@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AUTOMASK_METADATA = Metadata(
-    id="2b9f7ed7efa3ae06333fc8feab3d5095020b5aa6.boutiques",
+    id="4c4dea39415d0dfa3511b858d1bcbcf03ec341e6.boutiques",
     name="3dAutomask",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

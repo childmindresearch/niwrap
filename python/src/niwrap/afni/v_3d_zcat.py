@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZCAT_METADATA = Metadata(
-    id="efac51c86e82360905a0bb204fedd4b5b3ba897b.boutiques",
+    id="5a8abd78aa9efb4d4321a916d41abd9d3a68a8da.boutiques",
     name="3dZcat",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

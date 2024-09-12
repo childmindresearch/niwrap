@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__DIFF_TREE_METADATA = Metadata(
-    id="18348c7f19e3cadb6f38cc92186f06c973d2ba01.boutiques",
+    id="24b1cfac6f49e5c4ce8deeb925305286098b7e84.boutiques",
     name="@diff.tree",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

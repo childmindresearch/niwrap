@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SLICE_NDICE_METADATA = Metadata(
-    id="f287e470f54e6787d77892d9aa3b7a5e9af9879e.boutiques",
+    id="8ccf047f16d1ba8b1a3d47de84307e15981d5c06.boutiques",
     name="3dSliceNDice",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__GRAD_FLIP_TEST_METADATA = Metadata(
-    id="10adf8ad2bcc40020d20ddfc1dc096e347ba17f2.boutiques",
+    id="9d0fc0de1e554a35c574767a25f1d88ddcf067e2.boutiques",
     name="@GradFlipTest",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

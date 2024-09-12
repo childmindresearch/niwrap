@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__ELECTRO_GRID_METADATA = Metadata(
-    id="6b8041470a22f27b77362ae6b78895222381700b.boutiques",
+    id="318e5f8b11b5381c4129ef2a10c897b952d8d454.boutiques",
     name="@ElectroGrid",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

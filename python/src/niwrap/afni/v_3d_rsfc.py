@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RSFC_METADATA = Metadata(
-    id="f1d35055279f0d50637821729455f8aecddf55a2.boutiques",
+    id="fa2a2e88a32d0866032d1e3102d72ccee5a0fdad.boutiques",
     name="3dRSFC",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

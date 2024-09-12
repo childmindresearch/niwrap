@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_CDIFLIST_TO_GRADS_PY_METADATA = Metadata(
-    id="416f259e511caa38be324177fb07033b41d9cbf1.boutiques",
+    id="3af0782a4a10f77f0152928db451c26a4a27a4b6.boutiques",
     name="convert_cdiflist_to_grads.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

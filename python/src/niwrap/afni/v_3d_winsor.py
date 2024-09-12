@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_WINSOR_METADATA = Metadata(
-    id="074695a74f3c85c4333be4a448275c193336df53.boutiques",
+    id="14eef9e3bbd704e0f76d5d49b3f5be8c610834d1.boutiques",
     name="3dWinsor",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

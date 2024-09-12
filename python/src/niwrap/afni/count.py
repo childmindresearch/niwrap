@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 COUNT_METADATA = Metadata(
-    id="c4231bafed0c6aeb0249898858ab79e2e23ed778.boutiques",
+    id="3836250f08dfeed6fcad0e888310644533ee13db.boutiques",
     name="count",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

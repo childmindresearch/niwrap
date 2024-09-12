@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_ESTIMATE_FWHM_METADATA = Metadata(
-    id="a5a800df95fdc292e5a236c6ad888630a0b434a0.boutiques",
+    id="57f1cf3d50223eccac1e8b093a8e04564691f4d4.boutiques",
     name="volume-estimate-fwhm",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

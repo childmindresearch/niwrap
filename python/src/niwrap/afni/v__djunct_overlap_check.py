@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_OVERLAP_CHECK_METADATA = Metadata(
-    id="742d5817fdc45fe04e551d642aaef270989eb4e2.boutiques",
+    id="5a3ff9825a771bbe02b810c67a43c3b36c9999ab.boutiques",
     name="@djunct_overlap_check",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

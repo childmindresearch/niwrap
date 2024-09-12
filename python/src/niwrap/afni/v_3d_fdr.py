@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_FDR_METADATA = Metadata(
-    id="4bfbf2f5c5c59af79ad942a16135a99b018e8090.boutiques",
+    id="455e991e6fc8b7d57aae157ffd2294a4ca4ed068.boutiques",
     name="3dFDR",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

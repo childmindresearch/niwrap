@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CLUSTERIZE_METADATA = Metadata(
-    id="852bf7841788f4bbfb195a8d465c039bee88ef38.boutiques",
+    id="5bc26198ecd1ed079d05ba6875036e96b7ea8faf.boutiques",
     name="3dClusterize",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SHARPEN_METADATA = Metadata(
-    id="b059c2c61a44a4c848328597e8e15c3c0f61861f.boutiques",
+    id="d3cfa1f87b784b7ee4fdb186b74a1433beba4a22.boutiques",
     name="3dSharpen",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

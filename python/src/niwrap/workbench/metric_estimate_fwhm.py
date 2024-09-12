@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_ESTIMATE_FWHM_METADATA = Metadata(
-    id="0979a6909806aedc9eb064754b10178d219e3382.boutiques",
+    id="742556a08415c28c3256b8b5211382b5fcb3d725.boutiques",
     name="metric-estimate-fwhm",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

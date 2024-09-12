@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DECONVOLVE_METADATA = Metadata(
-    id="cfe510d7f86fa3306adc4ec9cc1331ee38021c0b.boutiques",
+    id="5e4431741fecb6d1d8debcf228eba178f6aa57f6.boutiques",
     name="3dDeconvolve",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

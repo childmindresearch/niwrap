@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_GRADIENT_METADATA = Metadata(
-    id="3aa54de009f773b6af3db24f165ff7c614a4bbfe.boutiques",
+    id="c972908adbaf99c093acf2f28d161ea3ff7c2d96.boutiques",
     name="volume-gradient",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

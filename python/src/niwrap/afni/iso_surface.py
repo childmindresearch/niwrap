@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ISO_SURFACE_METADATA = Metadata(
-    id="247d1da6b4dcba8dae89a23e79219d3c4d530675.boutiques",
+    id="963f593b2c76bfdce6ea0f5187e403a695b0e643.boutiques",
     name="IsoSurface",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

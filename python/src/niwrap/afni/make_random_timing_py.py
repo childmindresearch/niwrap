@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MAKE_RANDOM_TIMING_PY_METADATA = Metadata(
-    id="167622fa6607e6dbad775bde91c2fa2f3b1324ef.boutiques",
+    id="b4d28915fbea90096e2020dbc606016af5151ee2.boutiques",
     name="make_random_timing.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

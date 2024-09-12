@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_FILTER_DWIS_METADATA = Metadata(
-    id="c9931517dbf1eae552d1e8d6403cc886c1ac19aa.boutiques",
+    id="357671a27361138fb75b7f697cceebf0bdad33a5.boutiques",
     name="fat_proc_filter_dwis",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 GEN_GROUP_COMMAND_PY_METADATA = Metadata(
-    id="e6d5d7e6f5fa7dfe47424e9d9b36ef6f234c6461.boutiques",
+    id="51c3095191f9344439630ab4bd49fe90d933b15f.boutiques",
     name="gen_group_command.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

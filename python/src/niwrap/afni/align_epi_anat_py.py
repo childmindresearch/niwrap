@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ALIGN_EPI_ANAT_PY_METADATA = Metadata(
-    id="950ee15ab0ff82fde109bdb6781edc6e57a40a8c.boutiques",
+    id="cbd28c0cb9cd06edf98debca6a2d69094dae119d.boutiques",
     name="align_epi_anat.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

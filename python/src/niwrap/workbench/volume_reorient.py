@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_REORIENT_METADATA = Metadata(
-    id="30b762a32e3b61cc03d012be0fbeb6d571564759.boutiques",
+    id="1afac12c05724e2c743ea9a8c888ea025d603263.boutiques",
     name="volume-reorient",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

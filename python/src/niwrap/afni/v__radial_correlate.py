@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__RADIAL_CORRELATE_METADATA = Metadata(
-    id="e65d9665c01b39d36f94af526f2028608f70a9f2.boutiques",
+    id="b1a552cc3d34915cce72bfbd9edfd04ef85c61b5.boutiques",
     name="@radial_correlate",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

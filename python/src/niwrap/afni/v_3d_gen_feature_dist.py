@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GEN_FEATURE_DIST_METADATA = Metadata(
-    id="4397a0a4540dbf1c3fb61c17a27ce745a13d6085.boutiques",
+    id="199bdb69edfe9e06ea3902546ede4dde87cb2831.boutiques",
     name="3dGenFeatureDist",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

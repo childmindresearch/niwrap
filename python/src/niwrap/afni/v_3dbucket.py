@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DBUCKET_METADATA = Metadata(
-    id="a63897762d76a235a0b00744a09578e4f6f0d443.boutiques",
+    id="4d9ab6014d4c5897e74c03e8431120785a6e5125.boutiques",
     name="3dbucket",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

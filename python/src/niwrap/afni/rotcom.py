@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ROTCOM_METADATA = Metadata(
-    id="3acebcd7176defc88b7ac74b094be7f45a9f9443.boutiques",
+    id="82b02b85ea72d222e3f150bd7d5de9edb4b1ec75.boutiques",
     name="rotcom",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

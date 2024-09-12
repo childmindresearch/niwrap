@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__CLIP_VOLUME_METADATA = Metadata(
-    id="bda555156807096282bbe08895523e042aacf8d6.boutiques",
+    id="34b4f197f772d15d186d100183958d1eb07e4783.boutiques",
     name="@clip_volume",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

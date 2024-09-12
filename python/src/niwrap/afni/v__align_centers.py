@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__ALIGN_CENTERS_METADATA = Metadata(
-    id="dbc4e6990b2638b4840b24709ee5d940b7e64e82.boutiques",
+    id="107a4388ae669c9160b87353ef679d93c527c325.boutiques",
     name="@Align_Centers",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

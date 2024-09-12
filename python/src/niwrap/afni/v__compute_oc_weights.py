@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__COMPUTE_OC_WEIGHTS_METADATA = Metadata(
-    id="f2afd179f11acd332f806fb035599389c09d5e26.boutiques",
+    id="5e3f682a30f5996c6391430edd011c5417a938ae.boutiques",
     name="@compute_OC_weights",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

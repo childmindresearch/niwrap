@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 IMAVER_METADATA = Metadata(
-    id="ca4fef03a7382c5d7c0c0e5cac4141eab5ffcbc0.boutiques",
+    id="3251542a62df461a6a7151ca506b64c9358fa1cf.boutiques",
     name="imaver",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

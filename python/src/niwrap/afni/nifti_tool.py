@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 NIFTI_TOOL_METADATA = Metadata(
-    id="f3847f858b58b107014c2a6fce26ff2c52cc827d.boutiques",
+    id="d9f2616434f053b6e238d0eace87c16ce9d36fe0.boutiques",
     name="nifti_tool",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

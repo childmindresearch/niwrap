@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 DICOM_HINFO_METADATA = Metadata(
-    id="e0f7a86ee8dcf6a15248d5935a4c254bcd6994c2.boutiques",
+    id="5ea1bb33f7ee89c2be57f4fd42ad48d1af53ccde.boutiques",
     name="dicom_hinfo",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

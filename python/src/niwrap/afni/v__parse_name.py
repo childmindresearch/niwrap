@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__PARSE_NAME_METADATA = Metadata(
-    id="13dfc337b7d1998ec4aeaf243495e72d60cba65a.boutiques",
+    id="dc595da5a1d86ec673a1a5f7595c19d7c38fd4ad.boutiques",
     name="@parse_name",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

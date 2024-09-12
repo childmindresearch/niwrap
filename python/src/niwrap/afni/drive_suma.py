@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 DRIVE_SUMA_METADATA = Metadata(
-    id="e5f1811430bc009b10015e957fca46c776728e69.boutiques",
+    id="8732e38f8accb3657c2bb8658171028fb32be588.boutiques",
     name="DriveSuma",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

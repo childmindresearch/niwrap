@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_FATCAT_DEMO_METADATA = Metadata(
-    id="21b36b99e0deaa3d89bb135f28465053e322de58.boutiques",
+    id="26d953b29408de10d52434e402c521276810822d.boutiques",
     name="@Install_FATCAT_DEMO",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

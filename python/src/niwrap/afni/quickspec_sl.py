@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 QUICKSPEC_SL_METADATA = Metadata(
-    id="b4e3873bc3b17772726857d2712fe45c3949f4bb.boutiques",
+    id="59a0575a50ec6f6d664ffdaa52b5bc20a12a51c6.boutiques",
     name="quickspecSL",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

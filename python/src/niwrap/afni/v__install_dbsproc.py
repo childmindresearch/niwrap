@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_DBSPROC_METADATA = Metadata(
-    id="fb3e0d22889ddb9e3f38f3270d121fa857df43cf.boutiques",
+    id="7ea799e46dd0c117ef48ef903424d2da68c9470f.boutiques",
     name="@Install_DBSproc",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

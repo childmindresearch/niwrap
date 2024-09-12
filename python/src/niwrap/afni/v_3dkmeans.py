@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DKMEANS_METADATA = Metadata(
-    id="82051ad50367309d63f1f638a14edc23645b7da6.boutiques",
+    id="3a4bcacba0796e3087ac57c6df380dbd644dc61d.boutiques",
     name="3dkmeans",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

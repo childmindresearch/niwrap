@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__FLOAT_FIX_METADATA = Metadata(
-    id="e1af50bec7bc31ecfa19a15fa8cdbbd230f36c05.boutiques",
+    id="38e670c67a4f335c69819469b6c1f05a91fb5331.boutiques",
     name="@float_fix",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

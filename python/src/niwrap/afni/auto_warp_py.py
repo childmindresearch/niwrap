@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 AUTO_WARP_PY_METADATA = Metadata(
-    id="e93679e57d4a9afb2db3b3d6cddfe72444f1bee6.boutiques",
+    id="991ef18315e37d7887a5bb0048caaf474cfd252d.boutiques",
     name="auto_warp.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

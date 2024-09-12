@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 UN_WARP_EPI_PY_METADATA = Metadata(
-    id="e4fd23a18bcd39d85c3ce820bf2ec1cc6ba41ead.boutiques",
+    id="108a1f73f3e184e54f69ea8ebe47acc68251fc95.boutiques",
     name="unWarpEPI.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CROSS_CORRELATION_METADATA = Metadata(
-    id="fa2de3f1ed3567541076813cc1e2ed0246af14a8.boutiques",
+    id="4c7c2681bca3ea30eea358f6794f230da3a4e6da.boutiques",
     name="cifti-cross-correlation",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

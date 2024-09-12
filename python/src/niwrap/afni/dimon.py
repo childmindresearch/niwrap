@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 DIMON_METADATA = Metadata(
-    id="35cf3adb56bb92ca5bc2d17ded280b62608333cf.boutiques",
+    id="5ef8a3022999b10db220d5116b141d4d78108df6.boutiques",
     name="Dimon",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1DNORM_METADATA = Metadata(
-    id="a002426dd8bb9a491d0dc5a5726276c33958ad9e.boutiques",
+    id="ca9071bf1196c49108dfaa8149e0784b241bd37a.boutiques",
     name="1dnorm",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

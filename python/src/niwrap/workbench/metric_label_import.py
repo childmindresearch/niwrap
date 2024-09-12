@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_LABEL_IMPORT_METADATA = Metadata(
-    id="9049d12c773cdea9f78ee32a0e57444597ce910e.boutiques",
+    id="80c7113c196b19fff26c8b6cb6ea6f43139d6154.boutiques",
     name="metric-label-import",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

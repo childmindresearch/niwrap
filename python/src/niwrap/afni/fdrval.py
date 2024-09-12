@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FDRVAL_METADATA = Metadata(
-    id="bda5984e1f07d7f607289aed015783607e466e1d.boutiques",
+    id="d7b752bd6acda76625f2e0880f59f3c2a7a453be.boutiques",
     name="fdrval",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__SHIFT_VOLUME_METADATA = Metadata(
-    id="6ac1301549922f484501f7924a11229d4ec8ab36.boutiques",
+    id="22729680f97e05968bc3bacf5f6a64f5cdb46567.boutiques",
     name="@Shift_Volume",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

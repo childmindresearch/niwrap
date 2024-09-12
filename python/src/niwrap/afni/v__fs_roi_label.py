@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__FS_ROI_LABEL_METADATA = Metadata(
-    id="33ed9677c3f16b954d259c156fd5c1c4bc788aa8.boutiques",
+    id="bb0f29897218abed7c1d1903fa1a1efea589bbc6.boutiques",
     name="@FS_roi_label",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

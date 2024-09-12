@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__2DWARPER_ALLIN_METADATA = Metadata(
-    id="64095ff567d9798a760745ed7b9d281ed44596cf.boutiques",
+    id="1186f25edac5de25b0b8ece18c7371b9a97b6abb.boutiques",
     name="@2dwarper.Allin",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

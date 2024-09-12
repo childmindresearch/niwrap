@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BAYESIAN_GROUP_ANA_PY_METADATA = Metadata(
-    id="db94a9baf849869e651d770782b8c95df573de99.boutiques",
+    id="a95fea359998077d6c6c35fbe277ea325c90fec4.boutiques",
     name="BayesianGroupAna.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

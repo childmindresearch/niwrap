@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 RMZ_METADATA = Metadata(
-    id="7a3a349c38d62224b5c5bd5af606e35d3bb67170.boutiques",
+    id="6b7bfd257d51dec2f12da456189674a0ac1ddd7e.boutiques",
     name="rmz",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

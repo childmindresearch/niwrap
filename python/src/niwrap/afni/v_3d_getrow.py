@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GETROW_METADATA = Metadata(
-    id="9699826c45243ed2bd6f40150cb37f496b921d5c.boutiques",
+    id="d8d7567b5d985de78a1fd73e1344abdc1903d6f4.boutiques",
     name="3dGetrow",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

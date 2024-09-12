@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 NICAT_METADATA = Metadata(
-    id="df6d8c839aaa949e51bb2576c3c17808b4fbc256.boutiques",
+    id="046a40e8fda5b8e729e3e9be296b7a8a9112b449.boutiques",
     name="nicat",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

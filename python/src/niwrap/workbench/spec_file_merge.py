@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SPEC_FILE_MERGE_METADATA = Metadata(
-    id="534a333d9adb5732bcea94cfa3f3d2a762a1d111.boutiques",
+    id="f0e3e9bb1efb3e9b587c3e4d1c09c8775e48d3a6.boutiques",
     name="spec-file-merge",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

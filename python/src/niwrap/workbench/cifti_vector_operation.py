@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_VECTOR_OPERATION_METADATA = Metadata(
-    id="59f5f64f2fc6d124337b20a89bd94ae070b22edd.boutiques",
+    id="7c1f405bd1a985d92bb063f6eae91a16ce69cc85.boutiques",
     name="cifti-vector-operation",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

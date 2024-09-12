@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__1D_DIFF_MAG_METADATA = Metadata(
-    id="81adbe89c874289e18c47bdf00cb762c737f3d36.boutiques",
+    id="bd7e56bef2922c77f7836179b5ca66d811594b02.boutiques",
     name="@1dDiffMag",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 QHULL_METADATA = Metadata(
-    id="b132d50e05aa63af1c8988eaaa09fbfdccc9c0a1.boutiques",
+    id="668aff173881084f61d492e13c45a93cb6ecbcb7.boutiques",
     name="qhull",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

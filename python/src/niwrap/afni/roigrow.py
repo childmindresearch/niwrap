@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ROIGROW_METADATA = Metadata(
-    id="4bdd538e5abcecd43fd21c32330e81a8e1ad71b1.boutiques",
+    id="23565f80bef0896060c03352b094c4ed57329a14.boutiques",
     name="ROIgrow",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TWOTO_COMPLEX_METADATA = Metadata(
-    id="b7b2cf3dcb325b26c4374f9f6b22b6dd5fbb247a.boutiques",
+    id="2126ac62a795afd70a77d06700e04ae618138d23.boutiques",
     name="3dTwotoComplex",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

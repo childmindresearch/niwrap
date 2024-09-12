@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SCENE_CAPTURE_IMAGE_METADATA = Metadata(
-    id="d4f4bf1444634fe9893150d2579f8e7d59049b4a.boutiques",
+    id="55d87fcc4b6adbb55baa0675a7b66817d03985d7.boutiques",
     name="scene-capture-image",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

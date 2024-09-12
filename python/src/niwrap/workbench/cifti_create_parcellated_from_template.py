@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_PARCELLATED_FROM_TEMPLATE_METADATA = Metadata(
-    id="754f3aa0c946c5cfbe25ac3e564e2cd8edaa60c6.boutiques",
+    id="657532228e4ff9b257d004b5fcf11301a8580011.boutiques",
     name="cifti-create-parcellated-from-template",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

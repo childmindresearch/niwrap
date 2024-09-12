@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_WARPFIELD_METADATA = Metadata(
-    id="61f82887a0651805fbe8bdf71d053583208799ba.boutiques",
+    id="9768c5b8a2b0b93c74f620913899953ee44d703c.boutiques",
     name="convert-warpfield",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

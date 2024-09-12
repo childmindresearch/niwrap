@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_MACAQUE_DEMO_REST_METADATA = Metadata(
-    id="9fadd7b7894ebf991df50ec015a8ba84a67ab40b.boutiques",
+    id="10a53ef31c17c86242b50300d965aee0155a9142.boutiques",
     name="@Install_MACAQUE_DEMO_REST",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

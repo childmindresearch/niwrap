@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EXTRACT_GROUP_IN_CORR_METADATA = Metadata(
-    id="7d627f47796794ab13953b2bad45cd1eccc904aa.boutiques",
+    id="b8b23d33ef8a1a71fb2a203bde388bdc12a7bbe9.boutiques",
     name="3dExtractGroupInCorr",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

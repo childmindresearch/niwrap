@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1D_TSORT_METADATA = Metadata(
-    id="518137b6c8c716236740741bbb50a2f65d5f7ea2.boutiques",
+    id="310e5cf7cdd899aa9f25717a2f61e86e6223b21c.boutiques",
     name="1dTsort",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

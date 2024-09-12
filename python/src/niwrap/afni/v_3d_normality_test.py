@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NORMALITY_TEST_METADATA = Metadata(
-    id="72a24d63ab18a544fbd81e699322a2cfcfa03de1.boutiques",
+    id="0c4fc6300ae871742266f64fa61a03d97788ba70.boutiques",
     name="3dNormalityTest",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

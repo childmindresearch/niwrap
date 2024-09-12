@@ -7,9 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CONNECTEDCOMP_METADATA = Metadata(
-    id="bc96a741fe8c4365db1a9f9e198e500adcafe5af.boutiques",
+    id="4d630a5c9dd96234ed4b80fc339005c5f4b78137.boutiques",
     name="connectedcomp",
     package="fsl",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

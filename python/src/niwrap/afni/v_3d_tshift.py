@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSHIFT_METADATA = Metadata(
-    id="ae3eac68bd5962b0fe249f42757c87f6a26d57fd.boutiques",
+    id="d6d42b9573d502c11aac28110cfde9d96f82477d.boutiques",
     name="3dTshift",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

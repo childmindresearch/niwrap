@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RETINO_PHASE_METADATA = Metadata(
-    id="8b7823c7b1893b982c57dcc65247e792c8ca2653.boutiques",
+    id="3fcf125ca005c8d78e8e888d9df0d963f73cc8fb.boutiques",
     name="3dRetinoPhase",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

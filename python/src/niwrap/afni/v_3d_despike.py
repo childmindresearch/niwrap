@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DESPIKE_METADATA = Metadata(
-    id="cda6a7cf466d22bb6d9beb6892d4e524b2679920.boutiques",
+    id="3963b4a51ef25ad42794c6077f4c3e3027cc9721.boutiques",
     name="3dDespike",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

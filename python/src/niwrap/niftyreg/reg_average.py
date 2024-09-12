@@ -7,9 +7,10 @@ from styxdefs import *
 import dataclasses
 
 REG_AVERAGE_METADATA = Metadata(
-    id="d364e4b16049efecf6a9fdfe7a2a70adacd14fe9.boutiques",
+    id="1f7c3b11cba221df2cf597e36ec48fc51c2e4500.boutiques",
     name="reg_average",
     package="niftyreg",
+    container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VECWARP_METADATA = Metadata(
-    id="30ab7139d05f9c56d92fc176625f5aee50439323.boutiques",
+    id="6c6580748aa2429883f7174bbcdc1a5eed33de73.boutiques",
     name="Vecwarp",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

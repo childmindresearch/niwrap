@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__STATAUXCODE_METADATA = Metadata(
-    id="94c30096796551cf8bfc4d45b7e7e9355ebd1cd5.boutiques",
+    id="6684228b34c86f8889eec8a941e2b73507ea349a.boutiques",
     name="@statauxcode",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SURF_MASK_METADATA = Metadata(
-    id="193cfbe86177c2e59f981d82cc4cdbc7636aea67.boutiques",
+    id="b8441ef0584a7bf83b118f6db3b81eb258eacb78.boutiques",
     name="3dSurfMask",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ABIDS_JSON_INFO_PY_METADATA = Metadata(
-    id="c68e2f0df9e121f91ecba2e47014708e824bb489.boutiques",
+    id="af16c18f9f9b1daa2858e579259df2258f4f8966.boutiques",
     name="abids_json_info.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

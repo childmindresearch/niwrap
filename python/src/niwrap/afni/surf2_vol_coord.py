@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURF2_VOL_COORD_METADATA = Metadata(
-    id="eee7b43a9da1ac2397d3f30fe1545a13e174d6d8.boutiques",
+    id="f5047300ff7846a53a9f52a981cf4cfdfe8e90e7.boutiques",
     name="Surf2VolCoord",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

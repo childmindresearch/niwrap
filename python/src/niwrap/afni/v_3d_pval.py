@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_PVAL_METADATA = Metadata(
-    id="411e49edb65f18c97d2c196d09d24aff8379c76d.boutiques",
+    id="e9df4660b4c38e2a7270c77e7a3b30cc69937000.boutiques",
     name="3dPval",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

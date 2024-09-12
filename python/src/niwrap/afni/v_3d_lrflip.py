@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LRFLIP_METADATA = Metadata(
-    id="f40a6fcdc3a3daf5efa03fb37a609a7e32d731be.boutiques",
+    id="c3f6b742b4b8f6c12d86c2d85c9ab1073114c0a3.boutiques",
     name="3dLRflip",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

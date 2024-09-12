@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_APQC_TSNR_GENERAL_METADATA = Metadata(
-    id="cc30f8074e086c96e5cfea20ed33ef80b0074b2f.boutiques",
+    id="48c52de6decf19ca4c3c5da02857ce697534bc6d.boutiques",
     name="adjunct_apqc_tsnr_general",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

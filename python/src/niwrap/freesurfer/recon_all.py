@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 RECON_ALL_METADATA = Metadata(
-    id="b36cee31261b91703db95c349b2b9ec0ab4e87ed.boutiques",
+    id="2741c59ff003776c6a30db6e9975e9ee4602373d.boutiques",
     name="recon_all",
     package="freesurfer",
-    container_image_tag="container/image",
+    container_image_tag="freesurfer/freesurfer:7.4.1",
 )
 
 

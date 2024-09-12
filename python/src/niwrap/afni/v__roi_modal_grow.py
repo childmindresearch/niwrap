@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__ROI_MODAL_GROW_METADATA = Metadata(
-    id="60b46b49ad85e74183eb28fa78e8ef6b176a5c54.boutiques",
+    id="eb7da9504bf359fb52dcc3d3fa134727cdad77cb.boutiques",
     name="@ROI_modal_grow",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

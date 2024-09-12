@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_PALETTE_METADATA = Metadata(
-    id="da8ece89d91c4071087dcd67ae86ed1daa2d7b46.boutiques",
+    id="f570bc0703eb6b0341b022b06117dc2175ee23ae.boutiques",
     name="cifti-palette",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

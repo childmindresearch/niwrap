@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ANALYZE_TRACE_METADATA = Metadata(
-    id="ed47a7f83dcf15fced73ccd7d24856d93e3037fb.boutiques",
+    id="5a0be7a1c9bbf28c16fb460bf4438ddbf2b839e8.boutiques",
     name="AnalyzeTrace",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

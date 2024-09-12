@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DRETROICOR_METADATA = Metadata(
-    id="a4dfe4401ac6e19545ac1cd2e19534215c5202d4.boutiques",
+    id="a27ef36b6b1d7b90090bd7a13abba8443b822898.boutiques",
     name="3dretroicor",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

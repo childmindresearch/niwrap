@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_PV_METADATA = Metadata(
-    id="0cb6e733f7ffa5acb38dfcf135c48030f442bc96.boutiques",
+    id="5df8cc09196eb6e730189ac4f20e1ba919667117.boutiques",
     name="3dLocalPV",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

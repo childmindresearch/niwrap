@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 WBSPARSE_MERGE_DENSE_METADATA = Metadata(
-    id="ba799e581550b63ddcd8563669e6c604bef3c89c.boutiques",
+    id="6eb20685f4c22c6b65becfd09a6b95edde9c4769.boutiques",
     name="wbsparse-merge-dense",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

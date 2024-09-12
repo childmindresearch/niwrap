@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SCENE_FILE_UPDATE_METADATA = Metadata(
-    id="c5e4fa57c7b59dd4f2a6a3b6569ec0c40180d14c.boutiques",
+    id="2d9e50fb08f67a4b590bfd4ee5c042bed31e3408.boutiques",
     name="scene-file-update",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

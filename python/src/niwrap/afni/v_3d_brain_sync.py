@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BRAIN_SYNC_METADATA = Metadata(
-    id="b8f6cbc63b7602b8c65d39241740822392ca4db4.boutiques",
+    id="ba6e60b063ee8001bca1b94f5e8ff01809cb325a.boutiques",
     name="3dBrainSync",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

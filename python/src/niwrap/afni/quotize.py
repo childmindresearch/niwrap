@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 QUOTIZE_METADATA = Metadata(
-    id="f4263645362c9aa556370eaecc4ab84237970530.boutiques",
+    id="93af064dd7cd0278549e21976a1175303256c727.boutiques",
     name="quotize",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

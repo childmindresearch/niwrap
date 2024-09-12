@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 WHIRLGIF_METADATA = Metadata(
-    id="951aee9fda4adb703ad7d7c9529758cc8c5666ea.boutiques",
+    id="6846a97a6c952eb63e8583cf75ede7ff7cf53f9e.boutiques",
     name="whirlgif",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

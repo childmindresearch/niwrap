@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_PALETTE_METADATA = Metadata(
-    id="8ef21839245d8392415b18db0209c772abc4fd46.boutiques",
+    id="2014a34ebb156bc2c6f5e682060664c5a4f430b5.boutiques",
     name="metric-palette",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

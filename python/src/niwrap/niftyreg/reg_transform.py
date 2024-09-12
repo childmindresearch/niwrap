@@ -7,9 +7,10 @@ from styxdefs import *
 import dataclasses
 
 REG_TRANSFORM_METADATA = Metadata(
-    id="056064e1a05ea59a3628d701f5818d4dc74807fc.boutiques",
+    id="6c64fbb5ab15f44e615628373fe6cb0c895c027d.boutiques",
     name="reg_transform",
     package="niftyreg",
+    container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
 
 

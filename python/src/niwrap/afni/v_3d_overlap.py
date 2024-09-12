@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_OVERLAP_METADATA = Metadata(
-    id="080fa1f253e1fd652f6d023f571ec3023a3f5882.boutiques",
+    id="c493562e25ba20b204f5212fbc903c89024431d5.boutiques",
     name="3dOverlap",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RE_HO_METADATA = Metadata(
-    id="288478f5e7035882c1f110b6caf7c953caaad827.boutiques",
+    id="4907b9dfed49d3b0df7f50cea93389d02339c14e.boutiques",
     name="3dReHo",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

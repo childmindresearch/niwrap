@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="fc4f268bc418f9e02c9dd8408b8965ca733f7414.boutiques",
+    id="2d16c8760004aef52593ed5e3781e8eefcf45fca.boutiques",
     name="cifti-all-labels-to-rois",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

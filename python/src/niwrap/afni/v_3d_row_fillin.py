@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ROW_FILLIN_METADATA = Metadata(
-    id="9b95a35c02918750c1ae17e8e318aa5995490681.boutiques",
+    id="158fd7d95663e5c19513977841919692e17daad5.boutiques",
     name="3dRowFillin",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

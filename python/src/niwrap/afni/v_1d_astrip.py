@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1D_ASTRIP_METADATA = Metadata(
-    id="893d69d4801d7291a98501503d719f2518e3168d.boutiques",
+    id="9068ca7039fa3defb693625b26ce4071a91d5347.boutiques",
     name="1dAstrip",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

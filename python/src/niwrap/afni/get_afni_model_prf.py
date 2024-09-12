@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 GET_AFNI_MODEL_PRF_METADATA = Metadata(
-    id="91088b21ea9fd7aae9d54016087260cce43e67ff.boutiques",
+    id="ce67383da69c27834bac935d2fc73a96701ca109.boutiques",
     name="get_afni_model_PRF",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

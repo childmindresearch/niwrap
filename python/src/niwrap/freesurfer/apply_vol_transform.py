@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 APPLY_VOL_TRANSFORM_METADATA = Metadata(
-    id="11769f2d28f739bacbfbbfe047b6d5bdabcff50a.boutiques",
+    id="a82b808f6b4e768b499b6b610c1ffe9a7fcd19a1.boutiques",
     name="apply_vol_transform",
     package="freesurfer",
-    container_image_tag="container/image",
+    container_image_tag="freesurfer/freesurfer:7.4.1",
 )
 
 

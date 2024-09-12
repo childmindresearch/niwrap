@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_REG_ANA_METADATA = Metadata(
-    id="2ebb2382db2e0b33efa4575aba29ebe467ad91fc.boutiques",
+    id="bab7e1ba4329b0bad7cda3bc45885b0f26b38196.boutiques",
     name="3dRegAna",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

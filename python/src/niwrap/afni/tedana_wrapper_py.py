@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 TEDANA_WRAPPER_PY_METADATA = Metadata(
-    id="1f0adf5014885feafee5e19aa392dc0973f033d9.boutiques",
+    id="d6c5a3ec49020146985dd43c3c2921059545cbf9.boutiques",
     name="tedana_wrapper.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

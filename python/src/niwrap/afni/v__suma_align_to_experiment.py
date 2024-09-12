@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__SUMA_ALIGN_TO_EXPERIMENT_METADATA = Metadata(
-    id="85b4de1e683fecc43c29f0dd4ae4d04351a7a1fa.boutiques",
+    id="f2f26937329becfebaa8846f69efba5bc54af24c.boutiques",
     name="@SUMA_AlignToExperiment",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

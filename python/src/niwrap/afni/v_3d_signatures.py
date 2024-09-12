@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SIGNATURES_METADATA = Metadata(
-    id="a9ba73d5314969095f3971122b54dba10f583413.boutiques",
+    id="2b341af415f403aafe08628a486de9e313d26e1f.boutiques",
     name="3dSignatures",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

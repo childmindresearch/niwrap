@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__RETINO_PROC_METADATA = Metadata(
-    id="00eb394d00dbae2589b361d3e0e1e448afbbeb48.boutiques",
+    id="68decbff812b0a172bd91c6f856d4c4c196ae1d0.boutiques",
     name="@RetinoProc",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

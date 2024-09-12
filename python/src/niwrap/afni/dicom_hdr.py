@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 DICOM_HDR_METADATA = Metadata(
-    id="7940d1c952c1985b31235192fa73e53002e6d4f9.boutiques",
+    id="761c97ea8d89c4844c459d04c4ca44b9f1f1e25e.boutiques",
     name="dicom_hdr",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

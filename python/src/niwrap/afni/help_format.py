@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 HELP_FORMAT_METADATA = Metadata(
-    id="94a8ca9630967c536e2f2bc2dfbd0fa19cb662a9.boutiques",
+    id="f2876c9c6e57454575ec781f8f9f74ddd1ae5b21.boutiques",
     name="help_format",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

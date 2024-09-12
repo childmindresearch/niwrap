@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__NOISY_SKULL_STRIP_METADATA = Metadata(
-    id="218e177b783c87f71467c5fa72eeac090660310d.boutiques",
+    id="424a8e2725cafc4259973f4b7671d5998718c27d.boutiques",
     name="@NoisySkullStrip",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

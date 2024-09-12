@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA = Metadata(
-    id="11c2cdb2e85e05ac3f140bbbaa705b14a0482ab3.boutiques",
+    id="aa4f9643dc31da16347181ca07c1e4031d1a62f5.boutiques",
     name="surface-sphere-project-unproject",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

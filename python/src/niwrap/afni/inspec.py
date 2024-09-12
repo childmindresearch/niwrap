@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 INSPEC_METADATA = Metadata(
-    id="b496aeb23cf80c0734db76871d9ce2b4972344ec.boutiques",
+    id="8b4982198616126758279eb8952fb78096cd1ed7.boutiques",
     name="inspec",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_SURFACE_METADATA = Metadata(
-    id="39673a316b600ba234b2c1ce484429acf840262c.boutiques",
+    id="d45984417fcb26ca16b592c2cc24823134cda49d.boutiques",
     name="ConvertSurface",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

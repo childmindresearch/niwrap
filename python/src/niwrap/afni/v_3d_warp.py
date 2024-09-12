@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_WARP_METADATA = Metadata(
-    id="596ed74ea429713ba4b99a676c769adae11fc2b4.boutiques",
+    id="274373e4ce98f7b2884dd886fb6749d0dbd8381d.boutiques",
     name="3dWarp",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

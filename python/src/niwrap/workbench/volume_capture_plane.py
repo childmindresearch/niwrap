@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_CAPTURE_PLANE_METADATA = Metadata(
-    id="b53d829e4db960f9d28fcbcc7ceb929f96dff997.boutiques",
+    id="f3289e179c140d1b4b5deb27330886589e31b536.boutiques",
     name="volume-capture-plane",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1DSUM_METADATA = Metadata(
-    id="4f283576416dcd71cd46d26b559abcfd886268b8.boutiques",
+    id="b7285695a2ae3b620b57d991f8488c79f4e12c53.boutiques",
     name="1dsum",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

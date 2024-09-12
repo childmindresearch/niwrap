@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_GEODESIC_DISTANCE_ALL_TO_ALL_METADATA = Metadata(
-    id="8803a609846bf4d6651692449340afa320a10a81.boutiques",
+    id="9ebeeaaa7f4da3c0a194b342c7714766f5945f4d.boutiques",
     name="surface-geodesic-distance-all-to-all",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

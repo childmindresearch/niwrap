@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BORDER_EXPORT_COLOR_TABLE_METADATA = Metadata(
-    id="83f77bfaf4b9dff368b5d94b9fa01021dc6bda4c.boutiques",
+    id="731f1fc5b0c0ca46d740510ab287e981975ddd70.boutiques",
     name="border-export-color-table",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

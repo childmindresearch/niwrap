@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_SMOOTHING_METADATA = Metadata(
-    id="4e6814cbca38b30890e35f33999ea1d8c6325f89.boutiques",
+    id="319b96fa1a49eafcf799a92cf9d29e576ce50d4e.boutiques",
     name="surface-smoothing",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 UNIQ_IMAGES_METADATA = Metadata(
-    id="a17e0745a1ac2f5b3c80cb86edb8b3948635aec1.boutiques",
+    id="670d22d3017ad96917743645ee4b5352db443373.boutiques",
     name="uniq_images",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

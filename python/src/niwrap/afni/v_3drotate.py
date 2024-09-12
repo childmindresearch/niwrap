@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DROTATE_METADATA = Metadata(
-    id="c37f146959e11d16ab80613b1c99b99573057246.boutiques",
+    id="1e89e84da477d0e0cc5664a7752ca7af732ad786.boutiques",
     name="3drotate",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

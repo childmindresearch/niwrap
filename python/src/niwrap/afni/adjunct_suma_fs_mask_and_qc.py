@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_SUMA_FS_MASK_AND_QC_METADATA = Metadata(
-    id="be68721834549a4617da651e85709820e5feddac.boutiques",
+    id="a4c82b241b36b54438771cd4deddcd1b90cbd554.boutiques",
     name="adjunct_suma_fs_mask_and_qc",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

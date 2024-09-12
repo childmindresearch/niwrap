@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TRACK_ID_METADATA = Metadata(
-    id="5cf38d09f658de902f96f871914d246c66fcdb31.boutiques",
+    id="c068f5e1d98a8b27b5e0160adf46079d9d5304f8.boutiques",
     name="3dTrackID",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_SIMPLIFY_COST_PY_METADATA = Metadata(
-    id="ec5453dd32ee20023f9444df84bd83ddc18ba73d.boutiques",
+    id="28763ae4c27632e0897a1ce4d2b959e057a6e685.boutiques",
     name="adjunct_simplify_cost.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

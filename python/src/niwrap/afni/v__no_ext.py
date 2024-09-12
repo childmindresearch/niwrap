@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__NO_EXT_METADATA = Metadata(
-    id="5fc116f2a7f9a0d99f2e7c94f1ebc4ddf50d79c3.boutiques",
+    id="84fa9021525d936ebb2ee226e0c7d91875883fdc.boutiques",
     name="@NoExt",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

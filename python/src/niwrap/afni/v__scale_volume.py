@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__SCALE_VOLUME_METADATA = Metadata(
-    id="639e86c7c0bb97fdc4c82b2692a080c0bd9f37fc.boutiques",
+    id="703709f4d288b4dc526dfb3555e60357899a9633.boutiques",
     name="@ScaleVolume",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

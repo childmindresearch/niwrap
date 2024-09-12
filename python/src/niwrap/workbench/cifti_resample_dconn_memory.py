@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_RESAMPLE_DCONN_MEMORY_METADATA = Metadata(
-    id="807abf064d2d424dead488b959ef303347940df6.boutiques",
+    id="213b1ea57fe176bbedf4a979b2355dc46730e5f4.boutiques",
     name="cifti-resample-dconn-memory",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

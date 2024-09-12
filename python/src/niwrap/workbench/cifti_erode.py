@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_ERODE_METADATA = Metadata(
-    id="7388b2cb1115abbcb14e52b240564710b2c6f86a.boutiques",
+    id="d3b8b44bdde6181bba5681dd1a66c8288edb477e.boutiques",
     name="cifti-erode",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

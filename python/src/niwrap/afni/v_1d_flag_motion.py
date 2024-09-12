@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1D_FLAG_MOTION_METADATA = Metadata(
-    id="a01fd158ea1f9386a468696c6c7b79cbf0bb34aa.boutiques",
+    id="12ffa6b4e618d89798e3c857043643e105256e61.boutiques",
     name="1dFlagMotion",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

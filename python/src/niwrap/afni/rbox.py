@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 RBOX_METADATA = Metadata(
-    id="1022ff262e52355c6d23e916c7b2ebef2c15364f.boutiques",
+    id="8ee67e27b639db12dcf69b7fcd70c8699ae8a6f6.boutiques",
     name="rbox",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

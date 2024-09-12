@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__AUTO_TLRC_METADATA = Metadata(
-    id="f307aae917fd73a76718200344ba0ecf1814b810.boutiques",
+    id="f82082ae0a2d8a6159b5e2fd4df475fad6592653.boutiques",
     name="@auto_tlrc",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

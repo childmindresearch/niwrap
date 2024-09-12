@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 NIML_FEEDME_METADATA = Metadata(
-    id="23663cf53d4823ff642f7ddb0b1d228a321f193f.boutiques",
+    id="7f483849f0f83a7dd1b4a3421d219ca448a0fa5f.boutiques",
     name="niml_feedme",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

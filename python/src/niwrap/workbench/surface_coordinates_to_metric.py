@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_COORDINATES_TO_METRIC_METADATA = Metadata(
-    id="6682b45237215db3a76cf1df816c535acdd189bf.boutiques",
+    id="b5f9d857e4da9eaee4f4d47edd03a799151c7100.boutiques",
     name="surface-coordinates-to-metric",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

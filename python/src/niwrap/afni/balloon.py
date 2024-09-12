@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BALLOON_METADATA = Metadata(
-    id="ecff915c688fc606704d8689dfceaf0e26e6c52f.boutiques",
+    id="620bcacf21b1e78ebeb89d8125cf748ada8652bf.boutiques",
     name="balloon",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

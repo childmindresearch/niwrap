@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BRICK_STAT_METADATA = Metadata(
-    id="7ed7c9007f85a9c43f5cb74dd46274fad38036a6.boutiques",
+    id="cd1278790e5222b357489bd257cf57d97ce7fdbf.boutiques",
     name="3dBrickStat",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

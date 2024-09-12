@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_ERODE_METADATA = Metadata(
-    id="c6d0b09b7b4fe3f4841213b612172d5ec7008f34.boutiques",
+    id="7cdb17adaebb86dbc53994e44de30f4ce1b3fbd6.boutiques",
     name="metric-erode",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

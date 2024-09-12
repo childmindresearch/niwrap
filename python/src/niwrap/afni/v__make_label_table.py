@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__MAKE_LABEL_TABLE_METADATA = Metadata(
-    id="ee526767bed17f30f39378ca2f41fe19db1d4c36.boutiques",
+    id="ba501279943e273e6d9544d2c74cff547830260c.boutiques",
     name="@MakeLabelTable",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

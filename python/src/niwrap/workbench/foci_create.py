@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FOCI_CREATE_METADATA = Metadata(
-    id="03cb6a7b70c64f16ff5402206f1895e28a9d5092.boutiques",
+    id="29a375b1d213f296c96bdcb440571f2935012540.boutiques",
     name="foci-create",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

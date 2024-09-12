@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_CONNEC_VIS_METADATA = Metadata(
-    id="b957960c6032ddd4be1b636c4e8b5e9afa55420b.boutiques",
+    id="b1bc18b7b682b800fdd69b9ca77f86dc0c61bdab.boutiques",
     name="fat_proc_connec_vis",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

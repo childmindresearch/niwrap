@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BRAIN_VOYAGERTO_AFNI_METADATA = Metadata(
-    id="63c57924f0b2cb81df03778abc072c65d585d0c9.boutiques",
+    id="5d5cc8a86b7568d260e0630ce59dd774a116e190.boutiques",
     name="3dBRAIN_VOYAGERtoAFNI",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

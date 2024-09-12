@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 TFIM_METADATA = Metadata(
-    id="13ac87055bbd77c0dfe3877e0d0e3152f347d146.boutiques",
+    id="e2647e37a1429074565987a0998548003c59d175.boutiques",
     name="tfim",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

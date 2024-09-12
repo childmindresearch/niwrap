@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA = Metadata(
-    id="785a5d1646cbdf4439d4e4a2d95b23eb242083ef.boutiques",
+    id="ba32a6697b9193077ca2d238347c41df5b88a8ab.boutiques",
     name="cifti-create-dense-from-template",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

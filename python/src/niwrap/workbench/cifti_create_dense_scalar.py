@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_DENSE_SCALAR_METADATA = Metadata(
-    id="9ec20200467480c6c520cd6ffa9a8792ee68b803.boutiques",
+    id="9b8cd37bb018039e267d697f4e368abc03ba2233.boutiques",
     name="cifti-create-dense-scalar",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

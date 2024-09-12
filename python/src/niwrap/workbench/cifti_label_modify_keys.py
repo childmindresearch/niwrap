@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_LABEL_MODIFY_KEYS_METADATA = Metadata(
-    id="27924c8949337f2c008cf83af99fa3aaa7226a2a.boutiques",
+    id="00850cda6744d4909ec98ffb63aa4182f407d2a9.boutiques",
     name="cifti-label-modify-keys",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

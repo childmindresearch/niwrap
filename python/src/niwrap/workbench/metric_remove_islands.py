@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_REMOVE_ISLANDS_METADATA = Metadata(
-    id="440d12a75637613f30664d272f6058985f089df7.boutiques",
+    id="ccfb20f350c974adee896baa3f5aa1a71a238a25.boutiques",
     name="metric-remove-islands",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

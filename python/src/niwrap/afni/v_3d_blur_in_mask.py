@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BLUR_IN_MASK_METADATA = Metadata(
-    id="431d35050cc5bb482fdcbc3aafdcf364c2c9bc0e.boutiques",
+    id="10eaa7f7c0bc988ac314b0241fd6fd1313a5502d.boutiques",
     name="3dBlurInMask",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

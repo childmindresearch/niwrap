@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_GRADIENT_METADATA = Metadata(
-    id="ab22a1a4f590f47db5ccb1b337910cf606091374.boutiques",
+    id="e6d7b3765c937638ae5184fba532a06fbd8adccd.boutiques",
     name="metric-gradient",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

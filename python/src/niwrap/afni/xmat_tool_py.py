@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 XMAT_TOOL_PY_METADATA = Metadata(
-    id="941d3413a7db2141d43b6c9e3751913777901b48.boutiques",
+    id="4b94463278ab4a58788f4e96808b817f9c5901eb.boutiques",
     name="xmat_tool.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_EDGY_ALIGN_CHECK_METADATA = Metadata(
-    id="de10a64638e686d6f660c768d557660449ebd614.boutiques",
+    id="c032b5b574d793a5fef13dcf90b64d32e86d71c1.boutiques",
     name="@djunct_edgy_align_check",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

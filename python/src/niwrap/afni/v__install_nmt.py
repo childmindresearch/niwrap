@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_NMT_METADATA = Metadata(
-    id="f6ecd090caffc4070d1e9cd838215218bd27e349.boutiques",
+    id="633471699f3ec0b5e1dba7c99d8f03be3987c8b8.boutiques",
     name="@Install_NMT",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_MATH_METADATA = Metadata(
-    id="6182d1478df8fd832d529fd57f640374470901d4.boutiques",
+    id="dc07516afa612a64f752715f1bdec0c3ee8f33a2.boutiques",
     name="metric-math",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

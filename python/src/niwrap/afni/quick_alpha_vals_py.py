@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 QUICK_ALPHA_VALS_PY_METADATA = Metadata(
-    id="a02d8b48e4b639b6d866edfe5a0cbfa329f388c8.boutiques",
+    id="ed5c29d1849d5d08aef7cc64a2336c02bab2e572.boutiques",
     name="quick.alpha.vals.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

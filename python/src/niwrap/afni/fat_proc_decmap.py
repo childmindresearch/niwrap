@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_DECMAP_METADATA = Metadata(
-    id="5aa5378d33b0791dc219d5c1908366f85e23cd2b.boutiques",
+    id="160ec619653edbedd5d71497f683c40fb1bb99a1.boutiques",
     name="fat_proc_decmap",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

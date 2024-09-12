@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_DSET_METADATA = Metadata(
-    id="2ab311f33719c698bfe9a89ea408fd9d6da717a0.boutiques",
+    id="c8a3a3600863809bdcfbd75d710a1a9b340b7a80.boutiques",
     name="ConvertDset",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_SELECT_STR_PY_METADATA = Metadata(
-    id="3e765fab892401a817982ff0d0bc3b1760cc317e.boutiques",
+    id="edf90a625a50ba02dc94acf4f7ed5a86797fc178.boutiques",
     name="adjunct_select_str.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

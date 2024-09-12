@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 RSFGEN_METADATA = Metadata(
-    id="3e10293f876893016ce4d89042532f11786cb67f.boutiques",
+    id="63dc6b208f20ff51a3f9e49017f8e567a26eda71.boutiques",
     name="RSFgen",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

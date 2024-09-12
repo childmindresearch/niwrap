@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_2PERM_METADATA = Metadata(
-    id="6a8df98c1103f9bb4e763f85c6628c97760f69ff.boutiques",
+    id="1f3ac057af6953120bc3c77e4df34915e0c80018.boutiques",
     name="2perm",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

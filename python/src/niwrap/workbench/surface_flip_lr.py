@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_FLIP_LR_METADATA = Metadata(
-    id="f90d420e1e67b50b007024c48b3ef5aa0fb72c05.boutiques",
+    id="be7ac8c956bb50120ee359df4df51ce488e5b406.boutiques",
     name="surface-flip-lr",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

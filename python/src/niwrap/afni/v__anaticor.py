@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__ANATICOR_METADATA = Metadata(
-    id="06beb3c65db936c71ae43bd66cd9f319e2db01e6.boutiques",
+    id="3db66aed89c32fcb65e127aa5c1e9c35942e3278.boutiques",
     name="@ANATICOR",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

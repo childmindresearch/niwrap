@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__SPHARM_EXAMPLES_METADATA = Metadata(
-    id="7574d40156286dcf242dd7f2b9bbe9e4bb15d576.boutiques",
+    id="af6af6754468e947ee22c70cc2ee55297a55529a.boutiques",
     name="@Spharm.examples",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

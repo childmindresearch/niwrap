@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_INSTA_CORR_DEMO_METADATA = Metadata(
-    id="ace39464fcb270820e79a18a5801adc0f03e15b4.boutiques",
+    id="7f4f6b252fff2b3ada398e7114eeff68065918dd.boutiques",
     name="@Install_InstaCorr_Demo",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

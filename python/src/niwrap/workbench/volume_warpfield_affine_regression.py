@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA = Metadata(
-    id="29b48fc5f8ad3eeb89b59fbd5229ca62c3f1cc87.boutiques",
+    id="c63f9b0bec7114ce88d8f37926dbe8b308501be2.boutiques",
     name="volume-warpfield-affine-regression",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

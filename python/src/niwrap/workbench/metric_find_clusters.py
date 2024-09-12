@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_FIND_CLUSTERS_METADATA = Metadata(
-    id="9a07db4e089e1a4c8644b668b7034a7ffb0f2445.boutiques",
+    id="f1ed2685fac54f7a72182b79108c33d27b255c24.boutiques",
     name="metric-find-clusters",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

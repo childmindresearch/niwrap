@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_GLUE_IMGS_VERT_METADATA = Metadata(
-    id="689dbca683f75270560a014423bcc1374df05275.boutiques",
+    id="0680308ab9507fccff69a60f790ac39934121936.boutiques",
     name="@djunct_glue_imgs_vert",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

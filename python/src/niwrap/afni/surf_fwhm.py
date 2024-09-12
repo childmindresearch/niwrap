@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURF_FWHM_METADATA = Metadata(
-    id="38ee071393557c4bb9fb51cb714515a65d518635.boutiques",
+    id="34840e1bbf88f386954becc95ba3a4074cff6110.boutiques",
     name="SurfFWHM",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

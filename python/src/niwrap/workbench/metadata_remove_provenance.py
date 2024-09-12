@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METADATA_REMOVE_PROVENANCE_METADATA = Metadata(
-    id="44f98a54a9edff1763ec9491c845b2141c304315.boutiques",
+    id="c5bc75037043254e1dde58120d23c4681f39cbe2.boutiques",
     name="metadata-remove-provenance",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

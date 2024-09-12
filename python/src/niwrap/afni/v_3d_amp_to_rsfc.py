@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AMP_TO_RSFC_METADATA = Metadata(
-    id="7fe24ca4b682ef0ab3fc8c99aa5d83b1df4c4740.boutiques",
+    id="b9bf49dca1e5d2a5e6ce2f0549030ff5861c63de.boutiques",
     name="3dAmpToRSFC",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

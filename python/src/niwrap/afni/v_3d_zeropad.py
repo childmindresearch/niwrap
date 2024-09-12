@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZEROPAD_METADATA = Metadata(
-    id="89b57cae1500d60d81ab1eb191c2415cbf411ff1.boutiques",
+    id="dd740982a38ee3310ad83f304a2f70e43d5230f3.boutiques",
     name="3dZeropad",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

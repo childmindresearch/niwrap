@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_FALSE_CORRELATION_METADATA = Metadata(
-    id="c0eada9f39b15fc055896a06cede244b24621c06.boutiques",
+    id="eb6fa73dd94811c09e9340bc49b135265141f29b.boutiques",
     name="metric-false-correlation",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

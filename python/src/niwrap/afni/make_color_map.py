@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MAKE_COLOR_MAP_METADATA = Metadata(
-    id="d9f1323a29c95c3ae450140667c486481d83f18c.boutiques",
+    id="5b3d8115e0e545706bcf37b8ac3fc6319d6fe5d0.boutiques",
     name="MakeColorMap",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

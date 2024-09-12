@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__AFNI_ORIENT_SIGN_METADATA = Metadata(
-    id="c2bfe3a088598e710512e27b79c5c32abde786b6.boutiques",
+    id="2146e9a9bc1ba484adb2e8e109f4145d6d471630.boutiques",
     name="@AfniOrientSign",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

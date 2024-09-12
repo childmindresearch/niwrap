@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_VEC_RGB_TO_HSL_METADATA = Metadata(
-    id="e972d0a512f14fc315125910c7acba61b454f6b2.boutiques",
+    id="9bd7d5be67d0b333dca8898a8d70c130d3545628.boutiques",
     name="3dVecRGB_to_HSL",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

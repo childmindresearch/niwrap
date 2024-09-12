@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_SET_SPACE_METADATA = Metadata(
-    id="8b3a0a3239192c254b52010f61938df065d5456c.boutiques",
+    id="644c144fc79521282c1695ea02e9c2099bb1ae50.boutiques",
     name="volume-set-space",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

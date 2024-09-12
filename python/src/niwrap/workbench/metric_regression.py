@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_REGRESSION_METADATA = Metadata(
-    id="3b3de7392bf787c7bd1caf141158a3b9fb08fc1d.boutiques",
+    id="5295042a0973d8e0d26bd6976ece94daeb907e50.boutiques",
     name="metric-regression",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

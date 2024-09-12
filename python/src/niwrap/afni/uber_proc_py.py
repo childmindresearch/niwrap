@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 UBER_PROC_PY_METADATA = Metadata(
-    id="fe1a1c7c9130b97238b63a79b62fcd9dee0b8dd8.boutiques",
+    id="36e6d5db2ea98de96052bdf63be621bc71fbff06.boutiques",
     name="uber_proc.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

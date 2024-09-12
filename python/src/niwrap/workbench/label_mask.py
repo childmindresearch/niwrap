@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 LABEL_MASK_METADATA = Metadata(
-    id="cfc22fefcf8de4bacc458b53fda44f8cfb5a87e4.boutiques",
+    id="c800dbf5e18e0d79c62bcbe9addf92ea1b420b84.boutiques",
     name="label-mask",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ADWARP_METADATA = Metadata(
-    id="53159c05926d61effdaeb80731ed168e4e00043f.boutiques",
+    id="6eb2fb61fb45950fe888ea103e9b10e689eec21e.boutiques",
     name="adwarp",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

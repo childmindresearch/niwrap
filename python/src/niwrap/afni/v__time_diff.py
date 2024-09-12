@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__TIME_DIFF_METADATA = Metadata(
-    id="74278a149bfa29970b3135c6ca4b356b2c2c542b.boutiques",
+    id="b38252f9c6c0c4ee87e2811d53f4e7a593acdab2.boutiques",
     name="@TimeDiff",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

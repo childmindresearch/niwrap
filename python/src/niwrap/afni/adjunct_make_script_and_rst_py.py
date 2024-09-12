@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_MAKE_SCRIPT_AND_RST_PY_METADATA = Metadata(
-    id="db73c8154d3443463fa0971af96cbef0d74d2ef1.boutiques",
+    id="a90c364d18d38ed1214007f21054f30fed769d7f.boutiques",
     name="adjunct_make_script_and_rst.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

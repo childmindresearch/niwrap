@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_AVERAGE_METADATA = Metadata(
-    id="c6890e83bf5c9f26037a4d4cc601dd871d64665d.boutiques",
+    id="a25b902d43dd15de7365d1cee60e024b418193a8.boutiques",
     name="surface-average",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

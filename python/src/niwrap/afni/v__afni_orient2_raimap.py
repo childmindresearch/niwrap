@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__AFNI_ORIENT2_RAIMAP_METADATA = Metadata(
-    id="312077afbd35f0623cd9b3f832712459b08ac15f.boutiques",
+    id="e92e9346aeccdf0f687d1075a453b85d55530442.boutiques",
     name="@AfniOrient2RAImap",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

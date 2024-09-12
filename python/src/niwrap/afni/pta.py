@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 PTA_METADATA = Metadata(
-    id="80817940f6d7bbdd4cdcd67ed8ea85a7ed487933.boutiques",
+    id="d9f63e36aafd8371cada695ede0d9af6d689a660.boutiques",
     name="PTA",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

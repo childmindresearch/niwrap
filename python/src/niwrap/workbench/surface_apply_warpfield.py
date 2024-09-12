@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_APPLY_WARPFIELD_METADATA = Metadata(
-    id="7e425f3a8f3f9c436978db3980ba2c4bea2843b2.boutiques",
+    id="67ba61243171e08e3d07b2b4b11b13a3e9115358.boutiques",
     name="surface-apply-warpfield",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

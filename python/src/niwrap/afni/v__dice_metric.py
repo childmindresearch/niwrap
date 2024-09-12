@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__DICE_METRIC_METADATA = Metadata(
-    id="02454d6067b4a4327f43f73c720bc9635a3e4821.boutiques",
+    id="1e8709949dd1f81bc9b0adf1a50b0355570f9576.boutiques",
     name="@DiceMetric",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FLOAT_SCAN_METADATA = Metadata(
-    id="39ad2ac95a58c97c8d8b88925214ad8327a81dfb.boutiques",
+    id="ff43e34ccfb6d75bca9b732f0b330b522d1218c2.boutiques",
     name="float_scan",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

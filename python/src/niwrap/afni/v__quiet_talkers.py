@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__QUIET_TALKERS_METADATA = Metadata(
-    id="4e4b2854af68f2789084a083c9af42a086ef0ff6.boutiques",
+    id="06f1546c117f6a9365c579c884ad4811af88db65.boutiques",
     name="@Quiet_Talkers",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

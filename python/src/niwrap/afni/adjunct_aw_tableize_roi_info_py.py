@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_AW_TABLEIZE_ROI_INFO_PY_METADATA = Metadata(
-    id="9716c5ce6171eb298e4b8a92beeb95085df54b86.boutiques",
+    id="f3b1d8f86fae63b736e5c4974abc3020bd5bced1.boutiques",
     name="adjunct_aw_tableize_roi_info.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1D_BPORT_METADATA = Metadata(
-    id="76ac7dbf386d85c041f3dba8e63c75c6f5192534.boutiques",
+    id="01b482fa8f60ea7e37aea665b40cbc47eab52f74.boutiques",
     name="1dBport",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

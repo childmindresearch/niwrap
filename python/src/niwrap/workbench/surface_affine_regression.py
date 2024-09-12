@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_AFFINE_REGRESSION_METADATA = Metadata(
-    id="47261813cd35b9b8c56f490f6ec5d42e44da03a9.boutiques",
+    id="8628d865acfbc050b0c5c40cd99459fb70408626.boutiques",
     name="surface-affine-regression",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

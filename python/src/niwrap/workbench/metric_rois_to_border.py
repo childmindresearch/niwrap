@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_ROIS_TO_BORDER_METADATA = Metadata(
-    id="7b3a9607098c4123869ac8218c46f002b28021db.boutiques",
+    id="8d400be39afd206112c3a44682f93602ade1198f.boutiques",
     name="metric-rois-to-border",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

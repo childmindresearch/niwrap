@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__4_DAVERAGE_METADATA = Metadata(
-    id="3a01b98e94b0362957a63ac3f5a3eee9eb2f39c4.boutiques",
+    id="ba3901e216b33f7527ed78d8041df8aa00991c26.boutiques",
     name="@4Daverage",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

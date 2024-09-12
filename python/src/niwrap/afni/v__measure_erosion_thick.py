@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__MEASURE_EROSION_THICK_METADATA = Metadata(
-    id="08bbe58cf8e82ea14a0cfac71408a86258bdcdf9.boutiques",
+    id="b6a8c4aa07127613bf960024c046b21cc74c0f1f.boutiques",
     name="@measure_erosion_thick",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

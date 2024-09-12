@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MAKE_PQ_SCRIPT_PY_METADATA = Metadata(
-    id="525fe3ccf89aa68707679d15c68c0ae3ef2cf9a2.boutiques",
+    id="2e44222ffa661bbbd3fe92eb28fb4f0520058b65.boutiques",
     name="make_pq_script.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

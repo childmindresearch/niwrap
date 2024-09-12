@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 STIMBAND_METADATA = Metadata(
-    id="315c2371380e4c86483c19d5c3e7490c0171d51b.boutiques",
+    id="7bd05876dcbc4bbd12d354c3223c5e1a586e364f.boutiques",
     name="stimband",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

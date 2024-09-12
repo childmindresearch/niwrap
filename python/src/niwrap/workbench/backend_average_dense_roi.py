@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BACKEND_AVERAGE_DENSE_ROI_METADATA = Metadata(
-    id="74fb9930a431b065bf26022dec1298f67f6cfc8f.boutiques",
+    id="6b2e34efffe465091e8b7e6ed3878b97dc25248e.boutiques",
     name="backend-average-dense-roi",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

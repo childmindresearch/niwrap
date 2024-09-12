@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 IMSTAT_METADATA = Metadata(
-    id="b9be114b2b3c5fb54ece698b7c389a7115f3d9fc.boutiques",
+    id="5a2fc627e7cf8c4aa28c0a21abd32f066d07dc79.boutiques",
     name="imstat",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

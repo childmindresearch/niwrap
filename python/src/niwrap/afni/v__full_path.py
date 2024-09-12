@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__FULL_PATH_METADATA = Metadata(
-    id="8850133a2e2e0efae89672ef283b0801f46dc497.boutiques",
+    id="55bb0db57c89c2fd7e600f678ea6686fbb3e35f7.boutiques",
     name="@FullPath",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

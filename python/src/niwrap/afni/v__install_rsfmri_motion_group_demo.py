@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_RSFMRI_MOTION_GROUP_DEMO_METADATA = Metadata(
-    id="039345714a946d3fcfabc64a034469460c6068ff.boutiques",
+    id="2bc3003582dfbea0e9f77aa8215552906ad0cb34.boutiques",
     name="@Install_RSFMRI_Motion_Group_Demo",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

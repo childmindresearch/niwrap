@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__VOL_CENTER_METADATA = Metadata(
-    id="f002ad42baa635e8ffc0f31d96d3b3410181eb68.boutiques",
+    id="a55edd73353ee6ea229d9c2d2e391abafbaeb107.boutiques",
     name="@VolCenter",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_DILATE_METADATA = Metadata(
-    id="15e8b3797db90f2de9e9acf1a0fef9b7403e5a2d.boutiques",
+    id="4f892acd3a820a270e25b98c3fd28edcaee9017e.boutiques",
     name="cifti-dilate",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

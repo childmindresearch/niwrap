@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BORDER_TO_VERTICES_METADATA = Metadata(
-    id="c18021187d65ed670e0d2f603069c3396d73bfd4.boutiques",
+    id="ef85d72b651123aaab1303a1b2178fe6a4152b01.boutiques",
     name="border-to-vertices",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

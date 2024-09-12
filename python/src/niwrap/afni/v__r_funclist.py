@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__R_FUNCLIST_METADATA = Metadata(
-    id="35712d7227d0b0c0ea1a32857122fe8a2005ab3e.boutiques",
+    id="9490879edb062904e83247c8917c8d58d72e0fd5.boutiques",
     name="@R_funclist",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

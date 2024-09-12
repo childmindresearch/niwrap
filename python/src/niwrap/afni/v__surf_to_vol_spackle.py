@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__SURF_TO_VOL_SPACKLE_METADATA = Metadata(
-    id="7818002a5794996ad9d1e05a4ffc98c8c3855c0c.boutiques",
+    id="736d03c526aac5fe42e84164c37cd8561fee460d.boutiques",
     name="@surf_to_vol_spackle",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

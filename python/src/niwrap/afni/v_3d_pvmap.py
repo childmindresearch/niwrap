@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_PVMAP_METADATA = Metadata(
-    id="15e21128f71db524c14f4073dcca4ba161046a9a.boutiques",
+    id="ca326adf1dd7d41638d78bfdc3c00db26775efb9.boutiques",
     name="3dPVmap",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

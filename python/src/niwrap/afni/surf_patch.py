@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURF_PATCH_METADATA = Metadata(
-    id="afa09ee96a9e7bdaa07578c41cbb15e5e4b4e28a.boutiques",
+    id="bf694ee441e47bf6b816bf09ad6bc2d315d5f013.boutiques",
     name="SurfPatch",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

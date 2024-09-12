@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METADATA_STRING_REPLACE_METADATA = Metadata(
-    id="56e2c0327e4cb96ca30d791200c9946f31e857cf.boutiques",
+    id="1e9a9700045983874866c60a6a64cc275614b03c.boutiques",
     name="metadata-string-replace",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

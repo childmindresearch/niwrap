@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_TORT_PLOT_DP_ALIGN_METADATA = Metadata(
-    id="02a4c0f7dae2c543345995a94df891c01e61e51d.boutiques",
+    id="618d7b822054094255c11f8d40e4e17ed180621a.boutiques",
     name="adjunct_tort_plot_dp_align",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

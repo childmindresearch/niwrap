@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 METRIC_SMOOTHING_METADATA = Metadata(
-    id="5260eb92f7f3cb2e936af8066d90163f394ebe9c.boutiques",
+    id="53cd9fec297a09fa4da27a74fc01e46d28ae22ee.boutiques",
     name="metric-smoothing",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

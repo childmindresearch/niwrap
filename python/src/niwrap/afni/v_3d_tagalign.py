@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TAGALIGN_METADATA = Metadata(
-    id="d0d98776f6e670d47e556fb3fb7a481181fd42bd.boutiques",
+    id="3a36837ea87f9f5e5e1558ec63e13590efe2e614.boutiques",
     name="3dTagalign",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

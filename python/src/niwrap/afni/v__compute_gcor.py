@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__COMPUTE_GCOR_METADATA = Metadata(
-    id="9edffe7e6664387e6668dcb72018a59747de55e5.boutiques",
+    id="b94ef87dbf1368c4e5a1039cde31a45efb508360.boutiques",
     name="@compute_gcor",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

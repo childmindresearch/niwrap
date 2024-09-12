@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CONVEX_HULL_METADATA = Metadata(
-    id="12b659ad10c8e6ad3e14c1231865d0a03fab2d23.boutiques",
+    id="e2f6d3358ed3ed3eeaa4c4f04b358f8c691f43a3.boutiques",
     name="ConvexHull",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

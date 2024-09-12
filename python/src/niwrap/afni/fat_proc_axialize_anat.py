@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_AXIALIZE_ANAT_METADATA = Metadata(
-    id="3967d5c757100a14bbab72eac386e2b404ce9ba8.boutiques",
+    id="a48c3b651a436a8583174469aa922aea5343ea2f.boutiques",
     name="fat_proc_axialize_anat",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

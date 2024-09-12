@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 NIFTI_INFORMATION_METADATA = Metadata(
-    id="1983c034cd57becf410baf69211fa8dc122217c3.boutiques",
+    id="3670afb5bf0423fff751f00b9b31c3bc3363791f.boutiques",
     name="nifti-information",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

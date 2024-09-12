@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_MEICA_DEMO_METADATA = Metadata(
-    id="571f64fcafb31840f0824e44d2b75e88a017321a.boutiques",
+    id="097156093c1a5e931817d9a774ed678044201473.boutiques",
     name="@Install_MEICA_Demo",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

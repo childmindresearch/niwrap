@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_PERIODOGRAM_METADATA = Metadata(
-    id="dc8a9f789b7c2bed3cade4f730ed9bf8e7477dd4.boutiques",
+    id="55241a6d873d3c17ce9b9bd2b05e34541dafe1a3.boutiques",
     name="3dPeriodogram",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

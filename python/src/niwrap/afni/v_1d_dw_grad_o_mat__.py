@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1D_DW_GRAD_O_MAT___METADATA = Metadata(
-    id="c4cd1bb94007c9de05d7535b73db2a30863d1e5c.boutiques",
+    id="1b134b48311299bc6a0c83db7d4184e0a750ef98.boutiques",
     name="1dDW_Grad_o_Mat++",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

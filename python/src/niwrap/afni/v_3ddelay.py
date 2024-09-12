@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DDELAY_METADATA = Metadata(
-    id="dd234d0079cf9434c4078a93a8e0c7da54f6217c.boutiques",
+    id="7507c9110b505056676cecc587845fd4335d9ef8.boutiques",
     name="3ddelay",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

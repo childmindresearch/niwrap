@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ANNOTATION_RESAMPLE_METADATA = Metadata(
-    id="221fd0b917c6721b1765d186d19afe50cd08ce88.boutiques",
+    id="97a1012c1e236672dd4a3e38c6d31fbee2a10f0f.boutiques",
     name="annotation-resample",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

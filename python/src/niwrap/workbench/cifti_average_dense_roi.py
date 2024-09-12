@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_AVERAGE_DENSE_ROI_METADATA = Metadata(
-    id="449862613e0049f5300e5736a91191a633c438a3.boutiques",
+    id="c4e840874826cfe093198a63d8044f319d7c2e7e.boutiques",
     name="cifti-average-dense-roi",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

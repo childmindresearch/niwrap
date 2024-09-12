@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_FIND_CLUSTERS_METADATA = Metadata(
-    id="f07ba30ac3261f3371abc68ab86581c6b5a293f4.boutiques",
+    id="0bded5a79750b4b6439b0a638ace9eb0194bb652.boutiques",
     name="cifti-find-clusters",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

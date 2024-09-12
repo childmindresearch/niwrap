@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 INIT_USER_DOTFILES_PY_METADATA = Metadata(
-    id="6892b9c374633edc040e907bc4f4acab693d7254.boutiques",
+    id="46bf1c58977e7bced1c1fbd2f6c4642aa3fe2ecd.boutiques",
     name="init_user_dotfiles.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

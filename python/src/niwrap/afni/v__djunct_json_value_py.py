@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_JSON_VALUE_PY_METADATA = Metadata(
-    id="491e7b0874eea14a969065169cd54028ad79c1bd.boutiques",
+    id="b47495fb5ed30256cde903666f72bd8e6155f2a1.boutiques",
     name="@djunct_json_value.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

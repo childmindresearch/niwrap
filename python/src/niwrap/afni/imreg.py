@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 IMREG_METADATA = Metadata(
-    id="e1bf4222aefbd8c1d156a0935322d90f8002a747.boutiques",
+    id="9eb7e2d86ad67ffd9b28c2a3619d573a48d1975b.boutiques",
     name="imreg",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

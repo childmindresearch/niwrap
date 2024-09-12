@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_IBT_DATASETS_METADATA = Metadata(
-    id="855985e73a6a2d576cab9a14cdac4b2747b123f9.boutiques",
+    id="62a4759b15ff3c40ab34f0a774c8db4548a18840.boutiques",
     name="@Install_IBT_DATASETS",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

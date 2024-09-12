@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA = Metadata(
-    id="9101e5b2d3625d6b195acddfaeeb8b38fb2234d3.boutiques",
+    id="32140024ca7b96c0d11ae8c7eb35cc233f5f818a.boutiques",
     name="cifti-parcel-mapping-to-label",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

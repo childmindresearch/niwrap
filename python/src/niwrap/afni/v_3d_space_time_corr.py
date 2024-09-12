@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SPACE_TIME_CORR_METADATA = Metadata(
-    id="bef538cd3f7b16f9149b6002e3f4cc2698125dee.boutiques",
+    id="b0ec9131465906bbbb276caa42352d6789463dbb.boutiques",
     name="3dSpaceTimeCorr",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

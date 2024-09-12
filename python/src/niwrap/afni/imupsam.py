@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 IMUPSAM_METADATA = Metadata(
-    id="9286f3f7518042c2bd3883a0415335d2383e812d.boutiques",
+    id="45e930f339f99778bb5f8aa271d0f6a4e2746405.boutiques",
     name="imupsam",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

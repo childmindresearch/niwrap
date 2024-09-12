@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AUTOBOX_METADATA = Metadata(
-    id="05a381e828f751e8b899fb2e7b2ec31c98fe94db.boutiques",
+    id="ecb09df00b41a530e66f1496b998bf28f67fb02d.boutiques",
     name="3dAutobox",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

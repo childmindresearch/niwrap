@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DAXIALIZE_METADATA = Metadata(
-    id="fa2a7cf5db36c1360ca9797fce7619dd7f01f693.boutiques",
+    id="4a31bcf01d5f3abdd670e6d35ef8f5e3b5aec53c.boutiques",
     name="3daxialize",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURF_RETINO_MAP_METADATA = Metadata(
-    id="ec1b0e191b03919f3ab0af64d9930a48ec7ddd78.boutiques",
+    id="6301d3d7b1303735f00712af4498f12f7c0c05f4.boutiques",
     name="SurfRetinoMap",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

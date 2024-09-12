@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DMATMULT_METADATA = Metadata(
-    id="b0403f3583c32fcce165812afa6ff2fc1aa6d6df.boutiques",
+    id="dff1864113c4b4b6bff1ac3ff99294dd454bf75c.boutiques",
     name="3dmatmult",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

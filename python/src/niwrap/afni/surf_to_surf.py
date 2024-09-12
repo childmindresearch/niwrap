@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURF_TO_SURF_METADATA = Metadata(
-    id="7ea5720d005f8ca36112681007b6c97602751bc5.boutiques",
+    id="6b2cd55fafe712416f2f72d25f8e8c236eaf75c1.boutiques",
     name="SurfToSurf",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

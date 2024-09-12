@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1D_CORRELATE_METADATA = Metadata(
-    id="fff4e8147741f246df930fdd3dadbfead6a4b58c.boutiques",
+    id="bc0a1b16f11fccd44b88079e012921935b8dc003.boutiques",
     name="1dCorrelate",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

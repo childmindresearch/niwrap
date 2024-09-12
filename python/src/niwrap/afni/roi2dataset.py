@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ROI2DATASET_METADATA = Metadata(
-    id="79f509dbae00db9dd651a0181347643e79e51931.boutiques",
+    id="7cfcfa37193185cb6fd3e236878fe1b564de3263.boutiques",
     name="ROI2dataset",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

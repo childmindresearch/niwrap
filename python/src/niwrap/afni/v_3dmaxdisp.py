@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DMAXDISP_METADATA = Metadata(
-    id="f43c66735d941596c417c4b7d4ad6b1b4f1e4608.boutiques",
+    id="93f9379f1dcd0849d53a93c3567a7f4855883383.boutiques",
     name="3dmaxdisp",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

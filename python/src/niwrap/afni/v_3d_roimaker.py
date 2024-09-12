@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ROIMAKER_METADATA = Metadata(
-    id="468259990fc821abf542ec1a0a3677169b6c6b2e.boutiques",
+    id="90c36c57d1a08f7a2c44e241478a7d77cd70b456.boutiques",
     name="3dROIMaker",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

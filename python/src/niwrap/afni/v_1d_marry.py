@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1D_MARRY_METADATA = Metadata(
-    id="614f23ecff626d7acb69fdb8466df11a076f330c.boutiques",
+    id="21678eac5c4a4fb600e56bb53d02f9bbffcc95d4.boutiques",
     name="1dMarry",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

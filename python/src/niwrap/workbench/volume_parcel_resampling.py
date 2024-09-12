@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_PARCEL_RESAMPLING_METADATA = Metadata(
-    id="376706531de016c2979b926deae7b1478d8df498.boutiques",
+    id="3a64f15234617b08fd43ca4d964fd2b1aa355b36.boutiques",
     name="volume-parcel-resampling",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

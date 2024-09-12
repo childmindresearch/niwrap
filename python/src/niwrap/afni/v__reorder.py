@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__REORDER_METADATA = Metadata(
-    id="b3b957ac8582a3fa40896e252014b575bd146149.boutiques",
+    id="ee3a36bbe53e8a1533ae673f6e2bcde12fb19bcc.boutiques",
     name="@Reorder",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

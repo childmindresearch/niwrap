@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FAT_ROI_ROW_PY_METADATA = Metadata(
-    id="8f9bce2b455368fd75725b0c730833f27a1e1b97.boutiques",
+    id="cada95873436e89bd665259b6c2d18bfee6eb649.boutiques",
     name="fat_roi_row.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

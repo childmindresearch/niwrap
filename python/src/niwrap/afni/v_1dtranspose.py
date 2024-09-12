@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1DTRANSPOSE_METADATA = Metadata(
-    id="490908fb1ab0565fcc9b26277953a01e7c0892f0.boutiques",
+    id="fc94a17e9915d6fe592d2778f8c12462cf246455.boutiques",
     name="1dtranspose",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

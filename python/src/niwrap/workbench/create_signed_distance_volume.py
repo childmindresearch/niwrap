@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CREATE_SIGNED_DISTANCE_VOLUME_METADATA = Metadata(
-    id="a6f027b0d57907d375d12b82607a18434a097db4.boutiques",
+    id="409d5bc1e76d84b983e4f6bc7abab2d2ed04fbe6.boutiques",
     name="create-signed-distance-volume",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

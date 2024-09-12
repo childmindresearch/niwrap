@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MULTI_THRESH_METADATA = Metadata(
-    id="2cb86089440bb474def6d5df178235a96b08bfa4.boutiques",
+    id="8a808dea67d973d1eec80bc82de6c89937172058.boutiques",
     name="3dMultiThresh",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

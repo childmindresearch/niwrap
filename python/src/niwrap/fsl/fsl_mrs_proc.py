@@ -7,9 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FSL_MRS_PROC_METADATA = Metadata(
-    id="5fd108d3b19ebf7c9e48acb899701457a3805385.boutiques",
+    id="fb3a400f171c0088382986998ebb6b0485571ba6.boutiques",
     name="fsl_mrs_proc",
     package="fsl",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

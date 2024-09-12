@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FIND_VARIANCE_LINES_TCSH_METADATA = Metadata(
-    id="8b68d9c11dddcac4fbebf595eb8e3de8162a42e2.boutiques",
+    id="d945d03baa65a3eb582f1efc1233dd5c40de2056.boutiques",
     name="find_variance_lines.tcsh",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

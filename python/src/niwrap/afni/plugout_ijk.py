@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 PLUGOUT_IJK_METADATA = Metadata(
-    id="11bb801675e3a4b22ec93f9e4abe5020f89831c6.boutiques",
+    id="c25d669b8dde195841464a671bfb4b0ce72d2647.boutiques",
     name="plugout_ijk",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

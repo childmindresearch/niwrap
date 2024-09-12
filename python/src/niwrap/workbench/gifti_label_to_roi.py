@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 GIFTI_LABEL_TO_ROI_METADATA = Metadata(
-    id="f8957a62616930c7c9602d4f31ffab1bee8ebbec.boutiques",
+    id="402716cee6e734704e8f8623a552690053fb85be.boutiques",
     name="gifti-label-to-roi",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

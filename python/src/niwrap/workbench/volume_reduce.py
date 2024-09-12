@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_REDUCE_METADATA = Metadata(
-    id="9e5b1c43a5b352d4faaa709906adaa10aacafae8.boutiques",
+    id="2d36c37c9f388a1ce675c711774b23b7d1f31511.boutiques",
     name="volume-reduce",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

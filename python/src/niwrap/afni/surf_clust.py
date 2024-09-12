@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURF_CLUST_METADATA = Metadata(
-    id="7d5084b224ad2bbcdcc1509a12129bdb70b5d881.boutiques",
+    id="7af342fb99cac6939cdfd3e99fef85850723e4f0.boutiques",
     name="SurfClust",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

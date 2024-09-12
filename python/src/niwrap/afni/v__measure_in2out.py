@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__MEASURE_IN2OUT_METADATA = Metadata(
-    id="ed2c9684d7e9c13f6316d050f1f2cc31fd9bf230.boutiques",
+    id="e686c3d1def3136323009906869a206046303967.boutiques",
     name="@measure_in2out",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

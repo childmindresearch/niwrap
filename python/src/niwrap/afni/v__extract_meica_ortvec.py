@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__EXTRACT_MEICA_ORTVEC_METADATA = Metadata(
-    id="8c025b037f2f85a5a7f3a6b1ead831118fcdc316.boutiques",
+    id="9f778c740cfff0a23c70061f3c0c887ed2766f95.boutiques",
     name="@extract_meica_ortvec",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

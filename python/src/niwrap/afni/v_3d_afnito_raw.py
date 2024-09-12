@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AFNITO_RAW_METADATA = Metadata(
-    id="a68ed26016e67ff0f42a19dd3096b76088ad83da.boutiques",
+    id="0fed16039678c03357db0062a25a6814aa7acf53.boutiques",
     name="3dAFNItoRaw",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

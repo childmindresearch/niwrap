@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_WILCOXON_METADATA = Metadata(
-    id="ce0c420bb4ac2506405a1bdb318fed52f0dc7840.boutiques",
+    id="1ddbc2035d19f145ab6100e67855886ee6882f0b.boutiques",
     name="3dWilcoxon",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

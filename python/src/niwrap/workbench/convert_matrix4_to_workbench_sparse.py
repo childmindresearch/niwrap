@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA = Metadata(
-    id="8b1e085ed8549ee3aaf8a070de76a1f76a089dd1.boutiques",
+    id="0d93062b100e7eda194ad45e1addcb3124867191.boutiques",
     name="convert-matrix4-to-workbench-sparse",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

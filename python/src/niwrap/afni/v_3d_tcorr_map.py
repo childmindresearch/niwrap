@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TCORR_MAP_METADATA = Metadata(
-    id="7bd206a1d4a50c204e453541a4d42e8429f33f3a.boutiques",
+    id="263e3c987f63bd1d708f95aefeebc26e3bbe7c0b.boutiques",
     name="3dTcorrMap",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

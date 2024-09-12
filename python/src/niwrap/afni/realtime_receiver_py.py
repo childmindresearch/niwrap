@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 REALTIME_RECEIVER_PY_METADATA = Metadata(
-    id="c028c2bb62fa18eab1bfae87e031fb553bc1e8b6.boutiques",
+    id="9de2be43370c85b484b9455706b62a276bf1580c.boutiques",
     name="realtime_receiver.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

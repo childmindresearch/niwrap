@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__SIMULATE_MOTION_METADATA = Metadata(
-    id="ff23f79d9e9d758e462f69afa5728a053964345f.boutiques",
+    id="29610b1a1e2e528bee711b23ea7ec7ab12c28c38.boutiques",
     name="@simulate_motion",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

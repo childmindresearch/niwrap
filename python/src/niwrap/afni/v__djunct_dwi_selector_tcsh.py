@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_DWI_SELECTOR_TCSH_METADATA = Metadata(
-    id="f9a0294e17489c2fcd8591f7d30357568e555368.boutiques",
+    id="9b9b139284ac47200b7f4939472d4e18345a05e3.boutiques",
     name="@djunct_dwi_selector.tcsh",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

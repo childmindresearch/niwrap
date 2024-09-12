@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__DRIVE_AFNI_METADATA = Metadata(
-    id="52bb109924531c72d150011d964cb713d0fdb290.boutiques",
+    id="189b3cf933c3ef7aadb2f61deba82c51cdb891cb.boutiques",
     name="@DriveAfni",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

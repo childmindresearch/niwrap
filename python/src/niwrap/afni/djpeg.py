@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 DJPEG_METADATA = Metadata(
-    id="289c3c33dfcbec3d18383f4bad10dff256c5ad3a.boutiques",
+    id="b7ffa6abde3ae2a7b55c06d37e3a20293d2ead2a.boutiques",
     name="djpeg",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

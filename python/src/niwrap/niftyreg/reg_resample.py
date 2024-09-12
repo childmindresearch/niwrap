@@ -7,9 +7,10 @@ from styxdefs import *
 import dataclasses
 
 REG_RESAMPLE_METADATA = Metadata(
-    id="50f0da9e2bc6ab8122fa0747723f0f1cd6f03dbc.boutiques",
+    id="c8dab446c9ba4372528994e3d9d6d042ba9089bb.boutiques",
     name="reg_resample",
     package="niftyreg",
+    container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
 
 

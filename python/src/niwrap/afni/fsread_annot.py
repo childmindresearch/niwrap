@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FSREAD_ANNOT_METADATA = Metadata(
-    id="dc3bb10415597395151891557a14b7903da0da01.boutiques",
+    id="98488125e95a3c2435c82935272f0f494eccefca.boutiques",
     name="FSread_annot",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

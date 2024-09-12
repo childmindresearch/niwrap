@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_GENERATE_INFLATED_METADATA = Metadata(
-    id="a0efa7dd290155059bcc3939c3a6ac8313075a2d.boutiques",
+    id="17e8da7db349737a98da21aa71b658ec556dbf86.boutiques",
     name="surface-generate-inflated",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

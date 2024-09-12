@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CM_METADATA = Metadata(
-    id="298738935051c7b797c79b458694e4be34654252.boutiques",
+    id="7736e53f66b944167dbd4d619f8ddc3f036d05f9.boutiques",
     name="3dCM",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

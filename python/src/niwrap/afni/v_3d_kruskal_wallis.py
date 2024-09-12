@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_KRUSKAL_WALLIS_METADATA = Metadata(
-    id="f03a8fb01f95dd0755f6ee679f88d2802de4bb24.boutiques",
+    id="5080047819136bf7ee4c9b16179180cf5ae64cf2.boutiques",
     name="3dKruskalWallis",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

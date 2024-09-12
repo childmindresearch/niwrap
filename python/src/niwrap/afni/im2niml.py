@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 IM2NIML_METADATA = Metadata(
-    id="1c277947634c9951683af052380da51d28540e5b.boutiques",
+    id="9aec6e5f13d575d160f3f2349dd1282b7d91249b.boutiques",
     name="im2niml",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

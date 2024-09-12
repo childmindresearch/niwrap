@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__SUMA_FSVOL_TO_BRIK_METADATA = Metadata(
-    id="616783ae1844e767ae03d9ae4596ad446e383bd3.boutiques",
+    id="c95b0ff71eb80c3b21c122f82a7b2fdfe47ddedd.boutiques",
     name="@SUMA_FSvolToBRIK",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

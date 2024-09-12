@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MRI_BINARIZE_METADATA = Metadata(
-    id="1b768e6102f9a31c388facb8905562ef7df1cc51.boutiques",
+    id="5a17786daecf5b4f2b98046ba560ad683943319d.boutiques",
     name="mri_binarize",
     package="freesurfer",
-    container_image_tag="container/image",
+    container_image_tag="freesurfer/freesurfer:7.4.1",
 )
 
 

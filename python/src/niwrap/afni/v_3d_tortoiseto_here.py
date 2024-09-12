@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TORTOISETO_HERE_METADATA = Metadata(
-    id="8b3760371fe58b98b143d73ddbb580ecc5153b20.boutiques",
+    id="face4ad09f678714416dfda6cb399110cbb37e83.boutiques",
     name="3dTORTOISEtoHere",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

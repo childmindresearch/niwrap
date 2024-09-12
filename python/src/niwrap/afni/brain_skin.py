@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BRAIN_SKIN_METADATA = Metadata(
-    id="7b8dfd18121d1553dd7c190dc3af25cbec26c157.boutiques",
+    id="415edd6d3850d9f5c9473cdb97d435d17cef3bb4.boutiques",
     name="BrainSkin",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

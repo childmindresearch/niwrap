@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 PLUGOUT_TTA_METADATA = Metadata(
-    id="e1321f0fb4dace393d21e7158de634597d7771e0.boutiques",
+    id="eed1ec955438438ba757fc77c80cf0639ea64da3.boutiques",
     name="plugout_tta",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

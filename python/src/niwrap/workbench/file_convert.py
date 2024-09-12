@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FILE_CONVERT_METADATA = Metadata(
-    id="687872e35c50513e715e4cd2960afdf617d22fff.boutiques",
+    id="a181c8fc965358072253814b8c8623961abda904.boutiques",
     name="file-convert",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

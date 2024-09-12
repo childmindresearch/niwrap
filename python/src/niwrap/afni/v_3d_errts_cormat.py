@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ERRTS_CORMAT_METADATA = Metadata(
-    id="749e5d0eee181db2fd596d40a0e81c9f35777f6b.boutiques",
+    id="041ce1cbe7030e9af02420caf899590e04d99081.boutiques",
     name="3dErrtsCormat",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

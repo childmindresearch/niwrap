@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SERIAL_HELPER_METADATA = Metadata(
-    id="27e089f52098f6bcb4aef37c8661dcd5aff10942.boutiques",
+    id="74624be5b2d9de440d18ab39c983e9f94542342d.boutiques",
     name="serial_helper",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

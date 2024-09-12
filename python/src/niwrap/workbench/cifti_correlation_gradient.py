@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CORRELATION_GRADIENT_METADATA = Metadata(
-    id="a179e2ecd52a68662f989d7a9ba7d99f17d93b8d.boutiques",
+    id="4171e64612cc538935b4cf5882de626312159abb.boutiques",
     name="cifti-correlation-gradient",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

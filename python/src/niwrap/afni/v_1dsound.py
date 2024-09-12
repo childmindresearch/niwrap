@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_1DSOUND_METADATA = Metadata(
-    id="c02013cabb916283bbc9e306365a78ac2263a711.boutiques",
+    id="f44e57b50ed08b06652bace730d6a8f1c13f54cd.boutiques",
     name="1dsound",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

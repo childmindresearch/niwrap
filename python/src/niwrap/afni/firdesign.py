@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FIRDESIGN_METADATA = Metadata(
-    id="b59dbb417f2a88efcc58befa175dcdcc3b4527b9.boutiques",
+    id="f49bb30a7acca5ca76111edd30083bdff49133e5.boutiques",
     name="FIRdesign",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

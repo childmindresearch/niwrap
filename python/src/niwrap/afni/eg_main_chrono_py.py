@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 EG_MAIN_CHRONO_PY_METADATA = Metadata(
-    id="903f2db9b09a99481b2c96887e4e78b03c984ee8.boutiques",
+    id="0b65e95e874d7a0a8d6d43a4d6a2803648fb76e7.boutiques",
     name="eg_main_chrono.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

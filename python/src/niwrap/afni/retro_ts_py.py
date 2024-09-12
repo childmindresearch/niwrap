@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 RETRO_TS_PY_METADATA = Metadata(
-    id="7376600eb11c99927f16af7b8e0d2f9d1cc717cc.boutiques",
+    id="3a8f942af6b333e80cee0dd94a9b9a446d4fee85.boutiques",
     name="RetroTS.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

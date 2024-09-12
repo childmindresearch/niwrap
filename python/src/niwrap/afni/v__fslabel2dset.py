@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__FSLABEL2DSET_METADATA = Metadata(
-    id="8456c935d6aa68a380d3d63cd9e63252b98daa22.boutiques",
+    id="cb2261fa9de6873de2dded9da7bf8a398f3eebe4.boutiques",
     name="@FSlabel2dset",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

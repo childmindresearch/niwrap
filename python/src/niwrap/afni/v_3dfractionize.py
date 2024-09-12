@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3DFRACTIONIZE_METADATA = Metadata(
-    id="37f58eec13c830ca996027ca9751f46805708e60.boutiques",
+    id="9acaac469a33da6b65a1a097f14422f59f763c36.boutiques",
     name="3dfractionize",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

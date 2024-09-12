@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 IMAND_METADATA = Metadata(
-    id="9a01923483a418fa83dbd967d10ee3c07e0df1cc.boutiques",
+    id="7e28460aace134af85c4b4bfdbb0625baab1cd47.boutiques",
     name="imand",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

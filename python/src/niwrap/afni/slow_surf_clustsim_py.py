@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SLOW_SURF_CLUSTSIM_PY_METADATA = Metadata(
-    id="b50edd606f1480620f1070d30997d45b4421b95e.boutiques",
+    id="02c04d297739789391184ee70d481a01f91215f0.boutiques",
     name="slow_surf_clustsim.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

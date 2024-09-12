@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__ATLASIZE_METADATA = Metadata(
-    id="9b723346f011b74edd9ef81b380db940a60c0c2f.boutiques",
+    id="92a5f64f5c4f1d01138a6ae2a38488993fd99734.boutiques",
     name="@Atlasize",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DWUNCERT_METADATA = Metadata(
-    id="50d6b9b422cb750d1c640fdc83543599a273ca75.boutiques",
+    id="b37f117e6159da25d2b3d2d220475028e7d5a176.boutiques",
     name="3dDWUncert",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

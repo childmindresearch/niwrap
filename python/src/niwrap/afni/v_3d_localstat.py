@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCALSTAT_METADATA = Metadata(
-    id="cb77e9873af63b1329db358b4409f15d01c6b592.boutiques",
+    id="a6bb8c497247542d7677319c765a6651871d8ea2.boutiques",
     name="3dLocalstat",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

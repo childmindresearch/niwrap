@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GRAYPLOT_METADATA = Metadata(
-    id="86953453682f81ec7a6602db14e1538725d52f70.boutiques",
+    id="0102c26004dffd6977ae2aa8c8afc67268e4069e.boutiques",
     name="3dGrayplot",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

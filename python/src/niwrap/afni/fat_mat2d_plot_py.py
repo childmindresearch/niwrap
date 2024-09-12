@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FAT_MAT2D_PLOT_PY_METADATA = Metadata(
-    id="afe78ad28795f98d32461c989335602e6012223a.boutiques",
+    id="909f20f2f2c0d68f80b7d1baec761751f15c9fc6.boutiques",
     name="fat_mat2d_plot.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

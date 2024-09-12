@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_SLICE_SPACE_METADATA = Metadata(
-    id="38798f7f74568320051b624b944bf3198d5554d7.boutiques",
+    id="887a29726cf9eb734174135e87b08da1b9b5138c.boutiques",
     name="@djunct_slice_space",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

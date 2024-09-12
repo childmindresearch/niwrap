@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_COMPARE_AFFINE_METADATA = Metadata(
-    id="e60f9cf65b751e5f6d51d1348f9d18b1103b2e2a.boutiques",
+    id="7cfd722adbb4499de1713f354b48d813f3064d41.boutiques",
     name="3dCompareAffine",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

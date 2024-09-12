@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 GIFTI_CONVERT_METADATA = Metadata(
-    id="64b5c25d1d0477979b18c155f79730fd46afbb4f.boutiques",
+    id="818658fd0bfdb72a8ab808a5c9f52e8dcc19f1bc.boutiques",
     name="gifti-convert",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

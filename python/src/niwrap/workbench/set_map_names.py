@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SET_MAP_NAMES_METADATA = Metadata(
-    id="efa721ec9a8a1ad80ac3192074ef6edf636fc1fe.boutiques",
+    id="b84e64ed99a4d53eca7499a7b67fae1ad3f6a9af.boutiques",
     name="set-map-names",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

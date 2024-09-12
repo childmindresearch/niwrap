@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__ROI_CORR_MAT_METADATA = Metadata(
-    id="00995f042ee3ea0c3268be63b8baf6ad3c680507.boutiques",
+    id="93306081b2aa4d941532f5a06e179689e35bced4.boutiques",
     name="@ROI_Corr_Mat",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

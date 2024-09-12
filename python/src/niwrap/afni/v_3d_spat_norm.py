@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SPAT_NORM_METADATA = Metadata(
-    id="8d7db75f92933be52b0cbbed3f0d36b77707ffef.boutiques",
+    id="2caf2eaf6542260133d8c92873986b520046151b.boutiques",
     name="3dSpatNorm",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

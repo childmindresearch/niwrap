@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_WEIGHTED_STATS_METADATA = Metadata(
-    id="d2e35cace2134b28265e0472b86b6660aadbeae0.boutiques",
+    id="c06596379628abdee63db6d79768d43568386f38.boutiques",
     name="volume-weighted-stats",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

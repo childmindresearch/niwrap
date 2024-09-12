@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_GRADIENT_METADATA = Metadata(
-    id="ab633ef4cd4a1497d31cd7702aba1ea08dba0a28.boutiques",
+    id="216ceddd1af371fb04990774f70565f6d76255a0.boutiques",
     name="cifti-gradient",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

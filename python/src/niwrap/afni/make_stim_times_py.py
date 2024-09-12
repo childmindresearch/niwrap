@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MAKE_STIM_TIMES_PY_METADATA = Metadata(
-    id="7bbdaef6750c66049070f616d1d66b8b6d4662b8.boutiques",
+    id="10a9a0b8255c3a6827c96f89181ab95d17e57c15.boutiques",
     name="make_stim_times.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

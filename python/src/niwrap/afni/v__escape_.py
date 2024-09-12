@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__ESCAPE__METADATA = Metadata(
-    id="90d11c1d536ba49cf6bac669a1740fc4485c08e9.boutiques",
+    id="f4258390d4b527039de0584cb728849422db04e3.boutiques",
     name="@escape-",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

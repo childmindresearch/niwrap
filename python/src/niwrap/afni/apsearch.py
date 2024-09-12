@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 APSEARCH_METADATA = Metadata(
-    id="4ed466c74c5f1a05e7556a8ab824ab3af191b857.boutiques",
+    id="c8e28de39b4ea46a3190b75b8d6dca022d6d597d.boutiques",
     name="apsearch",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

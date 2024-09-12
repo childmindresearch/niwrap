@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MANN_WHITNEY_METADATA = Metadata(
-    id="68b3f80632e7a5671831bd8a3edb1be2a0b66a4b.boutiques",
+    id="bc4e85f7d5f25d592e756262956031e23953be5a.boutiques",
     name="3dMannWhitney",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

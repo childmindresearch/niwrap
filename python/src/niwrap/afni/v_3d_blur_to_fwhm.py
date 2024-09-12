@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BLUR_TO_FWHM_METADATA = Metadata(
-    id="ec3f866f5f06805b2ae0710948b622a0f90891ca.boutiques",
+    id="84a2f4ff72731bca1e97bcf0c381632082538a2c.boutiques",
     name="3dBlurToFWHM",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

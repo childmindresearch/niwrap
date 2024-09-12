@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EIGS_TO_DT_METADATA = Metadata(
-    id="0c4286c53a3425e292042f364a2921143dae56cd.boutiques",
+    id="121ef3bfc3e25286f4257322744aad85b76dc8ef.boutiques",
     name="3dEigsToDT",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

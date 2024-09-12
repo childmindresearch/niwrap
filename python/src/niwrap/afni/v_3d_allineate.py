@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ALLINEATE_METADATA = Metadata(
-    id="ab3fb01c14bb6b30555b963629081ed71ff8b709.boutiques",
+    id="2805815dd8dbceb7916da4052ea862dc05a5fa87.boutiques",
     name="3dAllineate",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

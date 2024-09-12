@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 P2DSETSTAT_METADATA = Metadata(
-    id="b6b0a2e0f001073b8c2fe20c07c32193d6633cad.boutiques",
+    id="6ab79ed0457127d627c12768478d8bf910fecb25.boutiques",
     name="p2dsetstat",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

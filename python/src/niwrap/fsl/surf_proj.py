@@ -7,9 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURF_PROJ_METADATA = Metadata(
-    id="5becd46d13227dddb6e12affa6700ba53c1941a8.boutiques",
+    id="2a6272192f85292c974216d3be1022d72c56f3ad.boutiques",
     name="surf_proj",
     package="fsl",
+    container_image_tag="mcin/fsl:6.0.5",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MEDIAN_FILTER_METADATA = Metadata(
-    id="330f8a3019a8ce987c14d95e30b507b3ee9df21c.boutiques",
+    id="fd3886bd6ff2fda6a99026dc98c4ccdf74daec27.boutiques",
     name="3dMedianFilter",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

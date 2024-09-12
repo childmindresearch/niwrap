@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__SHOW_DYNAMIC_RANGE_METADATA = Metadata(
-    id="37e737e53c93faac205a4c31de23b2a2e921083f.boutiques",
+    id="69464ac71cb4cac834968e5f06305f333f69ade9.boutiques",
     name="@ShowDynamicRange",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

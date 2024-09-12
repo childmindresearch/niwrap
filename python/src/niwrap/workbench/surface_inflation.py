@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_INFLATION_METADATA = Metadata(
-    id="02f268849949ac7e88f894d9ef651afc14faa7c2.boutiques",
+    id="e150331abc2dc987286543f4111c1444aa76fe0d.boutiques",
     name="surface-inflation",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

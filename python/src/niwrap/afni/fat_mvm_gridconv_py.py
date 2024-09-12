@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FAT_MVM_GRIDCONV_PY_METADATA = Metadata(
-    id="eecd1f397dde32b17075d82618195d08c8de57b4.boutiques",
+    id="ef7d5d60f4e5e8e6153631aaf3edcfce1478c2fd.boutiques",
     name="fat_mvm_gridconv.py",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

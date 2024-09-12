@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RANK_METADATA = Metadata(
-    id="e3bc8e0a69dec5f5ebdc6de646dbe12ae38ef142.boutiques",
+    id="3003fb7861d0366b3de9ce16dec83be8cdbe44e5.boutiques",
     name="3dRank",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

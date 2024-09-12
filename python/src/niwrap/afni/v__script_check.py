@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 V__SCRIPT_CHECK_METADATA = Metadata(
-    id="a217b48c0fb3a5ecf833082b1e406a94dd7cb4de.boutiques",
+    id="5545e4317d4b1d759b3e8c38e387264935f82b0f.boutiques",
     name="@ScriptCheck",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

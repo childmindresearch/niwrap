@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BORDER_MERGE_METADATA = Metadata(
-    id="dbdf4fec58061ef026451b8e67123b22a2177ea8.boutiques",
+    id="1d200d400a3bde437012659361326bb4479ca32b.boutiques",
     name="border-merge",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

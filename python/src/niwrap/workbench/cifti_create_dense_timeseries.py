@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_DENSE_TIMESERIES_METADATA = Metadata(
-    id="9bffd8e3c5fff56449d31cd21355c5549f850db6.boutiques",
+    id="5456f1c9282ce73af081351a9260762fc07d7440.boutiques",
     name="cifti-create-dense-timeseries",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

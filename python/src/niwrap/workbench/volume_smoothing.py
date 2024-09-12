@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_SMOOTHING_METADATA = Metadata(
-    id="d0622706d37246d216a4ccc52e663669eed9926f.boutiques",
+    id="851dd3843d1be827eaf3ed7ed82c046936b9a10d.boutiques",
     name="volume-smoothing",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

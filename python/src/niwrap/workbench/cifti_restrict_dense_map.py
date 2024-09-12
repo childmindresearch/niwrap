@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_RESTRICT_DENSE_MAP_METADATA = Metadata(
-    id="55a25d0adbe5826ae063043e353ad3727292c31c.boutiques",
+    id="0096271236e57f87ae0d3c7cfa277102d1b81283.boutiques",
     name="cifti-restrict-dense-map",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 

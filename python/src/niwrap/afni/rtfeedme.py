@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 RTFEEDME_METADATA = Metadata(
-    id="a0ef4cb49b545bf74279792ff7d85ddf55c16151.boutiques",
+    id="8ce4b7e02ec3a8cc807004a99f95d7b3f104ab5c.boutiques",
     name="rtfeedme",
     package="afni",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 

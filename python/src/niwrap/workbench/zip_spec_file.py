@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ZIP_SPEC_FILE_METADATA = Metadata(
-    id="31589ac899c3dda0868712af0f1d5390ddfb5543.boutiques",
+    id="b648eb124c037c04f29cb50aa9718436909680bc.boutiques",
     name="zip-spec-file",
     package="workbench",
-    container_image_tag="fcpindi/c-pac:latest",
+    container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
 
 
