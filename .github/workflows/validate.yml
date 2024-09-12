@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Validate JSON
-        uses: GrantBirki/json-yaml-validate@v2.7.1
+        uses: GrantBirki/json-yaml-validate@v3.2.1
         with:
           mode: warn
           base_dir: descriptors
