@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APPLYTOPUP_METADATA = Metadata(
-    id="9818d64ecfcf08d8df2e5526475be998579c6190.boutiques",
+    id="796c87a5699f7d6e7a6f4c3d38e953899925bbd6.boutiques",
     name="applytopup",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -28,7 +28,7 @@ def applytopup(
     imain: list[InputPathType],
     datain: InputPathType,
     inindex: list[str],
-    topup_: str,
+    topup_: InputPathType,
     out: str,
     method: typing.Literal["jac", "lsr"] | None = None,
     interp: typing.Literal["trilinear", "spline"] | None = None,
@@ -65,7 +65,7 @@ def applytopup(
     cargs.append("--imain=" + ",".join([execution.input_file(f) for f in imain]))
     cargs.append("--datain=" + execution.input_file(datain))
     cargs.append("--inindex=" + ",".join(inindex))
-    cargs.append("--topup=" + topup_)
+    cargs.append("--topup=" + execution.input_file(topup_, resolve_parent=True))
     cargs.append("--out=" + out)
     if method is not None:
         cargs.append("--method=" + method)

@@ -8,8 +8,8 @@ URL: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
 
 from .reg_aladin import *
 from .reg_average import *
-from .reg_jacobian import *
-from .reg_resample import *
-from .reg_tools import *
 from .reg_f3d import *
 from .reg_transform import *
+from .reg_jacobian import *
+from .reg_tools import *
+from .reg_resample import *
