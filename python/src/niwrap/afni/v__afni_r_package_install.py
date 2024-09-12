@@ -25,9 +25,9 @@ class VAfniRPackageInstallOutputs(typing.NamedTuple):
 
 
 def v__afni_r_package_install(
-    afni_2: bool = False,
+    afni_: bool = False,
     shiny: bool = False,
-    bayes_view: bool = False,
+    bayes_view_: bool = False,
     circos: bool = False,
     custom_packages: str | None = None,
     mirror: str | None = None,
@@ -43,9 +43,9 @@ def v__afni_r_package_install(
     https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_R_package_install.html
     
     Args:
-        afni_2: Install AFNI related R packages.
+        afni_: Install AFNI related R packages.
         shiny: Install AFNI related shiny app packages.
-        bayes_view: Install R packages for bayes_view.
+        bayes_view_: Install R packages for bayes_view.
         circos: Install OmicCircos for FATCAT_matplot.
         custom_packages: Install custom R packages (space-separated list). Must\
             start and end with double quotes.
@@ -59,11 +59,11 @@ def v__afni_r_package_install(
     execution = runner.start_execution(V__AFNI_R_PACKAGE_INSTALL_METADATA)
     cargs = []
     cargs.append("@afni_R_package_install")
-    if afni_2:
+    if afni_:
         cargs.append("-afni")
     if shiny:
         cargs.append("-shiny")
-    if bayes_view:
+    if bayes_view_:
         cargs.append("-bayes_view")
     if circos:
         cargs.append("-circos")

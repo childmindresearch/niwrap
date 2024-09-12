@@ -46,7 +46,7 @@ def v_3d_lmer(
     rio: bool = False,
     show_options: bool = False,
     ss_type: float | None = None,
-    trr: bool = False,
+    trr_: bool = False,
     vvar_centers: str | None = None,
     vvars: str | None = None,
     runner: Runner | None = None,
@@ -80,7 +80,7 @@ def v_3d_lmer(
         rio: Use R's io functions.
         show_options: List of allowed options.
         ss_type: Specify the type for sums of squares in the F-statistics.
-        trr: Perform test-retest reliability analysis.
+        trr_: Perform test-retest reliability analysis.
         vvar_centers: Specify centering values for voxel-wise covariates.
         vvars: Identify voxel-wise covariates.
         runner: Command runner.
@@ -162,7 +162,7 @@ def v_3d_lmer(
             "-SS_type",
             str(ss_type)
         ])
-    if trr:
+    if trr_:
         cargs.append("-TRR")
     if vvar_centers is not None:
         cargs.extend([

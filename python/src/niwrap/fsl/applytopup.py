@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APPLYTOPUP_METADATA = Metadata(
-    id="e0ca451a3bdcfb2cf4ebc0cf2da854e9b64cfc5e.boutiques",
+    id="9818d64ecfcf08d8df2e5526475be998579c6190.boutiques",
     name="applytopup",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
