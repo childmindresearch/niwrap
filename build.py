@@ -39,6 +39,12 @@ def stream_descriptors():
             if file_descriptor.stem != descriptor["name"]:
                 print("Patching name...")
                 descriptor["name"] = file_descriptor.stem
+
+            descriptor["container-image"] = {
+                "image": package["container"],
+                "type": "docker"
+            }
+            
             package_docs = Documentation(
                 title=package["name"], urls=[package["url"]]
             )
