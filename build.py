@@ -19,7 +19,7 @@ def iter_packages():
 
 
 def iter_descriptors(package):
-    for filename_descriptor in (PATH_DESCRIPTORS / package["id"]).glob("**/*.json"):
+    for filename_descriptor in sorted((PATH_DESCRIPTORS / package["id"]).glob("**/*.json")):
         with open(filename_descriptor) as filehandle_descriptor:
             yield filename_descriptor, json.load(filehandle_descriptor)
 
