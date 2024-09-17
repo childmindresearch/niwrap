@@ -58,7 +58,7 @@ def bet(
     fractional_intensity: float | None = None,
     vg_fractional_intensity: float | None = None,
     center_of_gravity: list[float] | None = None,
-    overlay_: bool = False,
+    overlay: bool = False,
     binary_mask: bool = False,
     approx_skull: bool = False,
     no_seg_output: bool = False,
@@ -94,7 +94,7 @@ def bet(
         center_of_gravity: The xyz coordinates of the center of gravity\
             (voxels, not mm) of initial mesh surface. Must have exactly three\
             numerical entries in the list (3-vector).
-        overlay_: Generate brain surface outline overlaid onto original image.
+        overlay: Generate brain surface outline overlaid onto original image.
         binary_mask: Generate binary brain mask.
         approx_skull: Generate rough skull image (not as clean as betsurf).
         no_seg_output: Don't generate segmented brain image output.
@@ -166,7 +166,7 @@ def bet(
             "-c",
             *map(str, center_of_gravity)
         ])
-    if overlay_:
+    if overlay:
         cargs.append("-o")
     if binary_mask:
         cargs.append("-m")
