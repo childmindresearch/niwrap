@@ -1,0 +1,53 @@
+name: 🐛 Report Problem with Descriptor
+description: Report an issue with a specific Boutiques descriptor in NiWrap.
+title: "[Descriptor Issue]: "
+labels: bug, descriptor
+body:
+  - type: select
+    id: package_name
+    attributes:
+      label: Package
+      description: "Select the package the tool is part of."
+      options:
+        - AFNI
+        - ANTs
+        - Connectome Workbench
+        - Convert3D
+        - FSL
+        - FreeSurfer
+        - Greedy
+        - MRTrix3
+        - NiftyReg
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: tool_name
+    attributes:
+      label: Tool Name
+      description: "Which tool is this problem related to?"
+      placeholder: "Enter tool name (or link to file)"
+    validations:
+      required: true
+  - type: input
+    id: problem
+    attributes:
+      label: Problem Description
+      description: "Describe the issue with the descriptor."
+      placeholder: "Enter description of the problem"
+    validations:
+      required: true
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: "Describe how to reproduce the problem."
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: "Add any relevant logs or error messages."
+    validations:
+      required: false
