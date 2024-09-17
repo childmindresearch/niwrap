@@ -3,7 +3,7 @@
   "name": "CreateIcosahedron",
   "author": "AFNI Team",
   "description": "Tool to create an icosahedron with optional tessellation.",
-  "command-line": "CreateIcosahedron [-rad r] [-rd recDepth] [-ld linDepth] [-ctr ctr] [-prefix fout] [-min_nodes MIN_NODES] [-nums] [-nums_quiet] [-tosphere] [-help]",
+  "command-line": "CreateIcosahedron [RAD] [RECURSIVE_DEPTH] [LINEAR_DEPTH] [MIN_NODES] [NUMS_FLAG] [NUMS_QUIET_FLAG] [CTR] [TOSPHERE_FLAG] [OUTPUT_PREFIX] [HELP_FLAG]",
   "inputs": [
     {
       "description": "Size of icosahedron.",

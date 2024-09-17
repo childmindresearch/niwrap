@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Replaces voxel values by their rank in the set of values collected over all voxels in all input datasets.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRank.html",
-  "command-line": "3dRank [-prefix PREFIX] <-input DATASET1 [DATASET2 ...]>",
+  "command-line": "3dRank [DATASETS] [PREFIX] [VERSION_FLAG] [HELP_FLAG]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

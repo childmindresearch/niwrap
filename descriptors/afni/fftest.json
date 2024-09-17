@@ -3,7 +3,7 @@
   "name": "fftest",
   "author": "AFNI Team",
   "description": "A command line tool for testing purposes",
-  "command-line": "fftest [-q] [LEN] [NUM] [NVEC]",
+  "command-line": "fftest [LEN] [NUM] [NVEC] [quiet]",
   "inputs": [
     {
       "description": "Length of the test",

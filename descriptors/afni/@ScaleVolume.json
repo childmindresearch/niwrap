@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0.0",
-  "name": "ScaleVolume",
+  "name": "@ScaleVolume",
   "author": "AFNI Team",
   "description": "A tool to scale the volume of datasets",
-  "command-line": "@ScaleVolume <-input DSET> <-prefix PREFIX> [-perc_clip P0 P1] [-val_clip V0 V1] [-scale_by_mean] [-scale_by_median] [-norm] [-mask MSET]",
+  "command-line": "@ScaleVolume [<-input DSET>] [<-prefix PREFIX>] [VAL_CLIP] [PERC_CLIP] [SCALE_BY_MEAN_FLAG] [SCALE_BY_MEDIAN_FLAG] [NORM_FLAG] [MASK]",
   "inputs": [
     {
       "description": "Dataset to scale",

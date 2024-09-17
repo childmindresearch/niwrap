@@ -3,7 +3,7 @@
   "name": "SurfaceMetrics",
   "author": "AFNI Team",
   "description": "Outputs information about a surface's mesh",
-  "command-line": "SurfaceMetrics <METRIC> -SURF_1 [-tlrc] [-prefix PREFIX]",
+  "command-line": "SurfaceMetrics [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [SURF_1] [TLRC] [PREFIX]",
   "inputs": [
     {
       "command-line-flag": "-vol",

@@ -3,7 +3,7 @@
   "name": "SurfMesh",
   "author": "AFNI Team",
   "description": "Surface mesh manipulation tool",
-  "command-line": "SurfMesh <-i_TYPE SURFACE> <-o_TYPE OUTPUT> <-edges FRAC> [-sv SURF_VOL]",
+  "command-line": "SurfMesh [SURFACE] [OUTPUT] [FRAC] [SURF_VOL] [ONE_STATE] [ANATOMICAL_LABEL] [NO_VOLUME_REGISTRATION] ['ENVname=ENVvalue']",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

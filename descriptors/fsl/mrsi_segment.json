@@ -3,7 +3,7 @@
   "tool-version": "6.0.5",
   "author": "FSL Team",
   "description": "FSL Magnetic Resonance Spectroscopy - register fast segmentation to MRSI.",
-  "command-line": "mrsi_segment [MRSI] [--t1 T1] [--anat ANAT] [--output OUTPUT] [--filename FILENAME]",
+  "command-line": "mrsi_segment [MRSI] [--t1] [--anat] [--output] [--filename]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

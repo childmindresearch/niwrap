@@ -5,7 +5,7 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Slicetimer",
   "description": "FMRIB's Interpolation for Slice Timing",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Slicetimer",
-  "command-line": "slicetimer -i [INPUT_FILE] [-o OUTPUT_FILE] [--down] [-r TR_VALUE] [-d DIRECTION] [--odd] [--tcustom TCUSTOM_FILE] [--tglobal TGLOBAL_VALUE] [--ocustom OCUSTOM_FILE] [-v]",
+  "command-line": "slicetimer [INPUT_FILE] [OUTPUT_FILE] [VERBOSE_FLAG] [DOWN_FLAG] [TR_VALUE] [DIRECTION] [ODD_FLAG] [TCUSTOM_FILE] [TGLOBAL_VALUE] [OCUSTOM_FILE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

@@ -1,10 +1,10 @@
 {
   "tool-version": "1.0",
-  "name": "ElectroGrid",
+  "name": "@ElectroGrid",
   "author": "AFNI Team",
   "description": "Creates a mesh representation of an electrode grid for use with SUMA",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ElectroGrid.html",
-  "command-line": "@ElectroGrid [[-strip Nx] | [-grid Nx Ny]] [-prefix PREFIX] [-coords XYZ.1D] [-with_markers] [-echo]",
+  "command-line": "@ElectroGrid [STRIP_NX] [GRID_NX] [GRID_NY] [PREFIX] [XYZ_COORDS] [WITH_MARKERS] [ECHO]",
   "schema-version": "0.5",
   "inputs": [
     {

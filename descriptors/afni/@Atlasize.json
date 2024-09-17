@@ -3,7 +3,7 @@
   "name": "@Atlasize",
   "author": "AFNI Team",
   "description": "Script to turn a volumetric dataset into an AFNI atlas",
-  "command-line": "@Atlasize [-dset DSET] [-space SPACE] [-lab_file FILE cLAB cVAL] [-lab_file_delim COL_DELIM] [-longnames cLONGNAME] [-last_longname_col cLASTLONGNAME] [-atlas_type TP] [-atlas_description DESCRP] [-atlas_name NAME] [-auto_backup] [-centers] [-centertype TYPE] [-centermask DSET] [-skip_novoxels] [-h_web] [-hweb] [-h_view] [-hview] [-all_opts] [-h_find WORD]",
+  "command-line": "@Atlasize [DSET] [SPACE] [LAB_FILE] [LAB_FILE_DELIM] [LONGNAMES] [LAST_LONGNAME_COL] [ATLAS_TYPE] [ATLAS_DESCRIPTION] [ATLAS_NAME] [AUTO_BACKUP] [CENTERS] [CENTERTYPE] [CENTERMASK] [SKIP_NOVOXELS] [H_WEB] [H_VIEW] [ALL_OPTS] [H_FIND_WORD]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-lab_file",
       "description": "Labels and keys are in text file FILE. cLAB is the index of column containing labels, vVAL is the index of column containing keys (1st column is indexed at 0)",
-      "value-key": "[LAB_FILE] [C_LAB] [C_VAL]",
+      "value-key": "[LAB_FILE]",
       "type": "String",
       "list": true,
       "max-list-entries": 3,

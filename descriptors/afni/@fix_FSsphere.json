@@ -3,7 +3,7 @@
   "name": "@fix_FSsphere",
   "author": "AFNI Team",
   "description": "Tool for fixing errors in FreeSurfer spherical surfaces",
-  "command-line": "@fix_FSsphere <-spec SPEC> <-sphere SPHERE.asc> [-niter NITER] [-lim LIM] [-keep_temp] [-project_first]",
+  "command-line": "@fix_FSsphere [SPEC] [SPHERE.asc] [NITER] [LIM] [PROJECT_FIRST] [KEEP_TEMP]",
   "inputs": [
     {
       "command-line-flag": "-spec",

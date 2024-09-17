@@ -3,7 +3,7 @@
   "name": "ScaleToMap",
   "author": "AFNI Team",
   "description": "Tool to scale values to a color map",
-  "command-line": "ScaleToMap [INPUT_FILE] [ICOL] [VCOL] [OPTIONAL_PARAMETERS]",
+  "command-line": "ScaleToMap [INPUT_FILE] [ICOL] [VCOL] [MAP_TYPE] [MAPFILE] [PALFILE] [FRF] [CLP_RANGE] [PERC_CLP_RANGE] [APR_RANGE] [ANR_RANGE] [INTERP] [NOINTERP] [DIRECT] [MSK_ZERO] [MSK_RANGE] [MSK_COLOR] [NOMSK_COL] [BRIGHT_FACT] [HELP] [VERBOSE] [SHOWMAP] [SHOWDB] [NOVOLREG] [NOXFORM] [SETENV] [TRACE] [TRACE] [NOMALL] [YESMALL]",
   "inputs": [
     {
       "description": "Input file in 1D formatted ascii containing node values",

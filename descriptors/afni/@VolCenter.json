@@ -3,7 +3,7 @@
   "name": "@VolCenter",
   "author": "AFNI Team",
   "description": "Tool to return the center of volume for a given dataset",
-  "command-line": "@VolCenter <-dset DSET> [-or ORIENT]",
+  "command-line": "@VolCenter [DSET] [ORIENT]",
   "inputs": [
     {
       "description": "Input volume dataset",

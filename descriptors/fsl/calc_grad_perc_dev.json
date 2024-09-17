@@ -5,7 +5,7 @@
   "descriptor-url": "http://example.com/descriptor-url",
   "description": "Compute the gradient percent deviation based on a full warp image from gradient_unwarp.py",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation",
-  "command-line": "calc_grad_perc_dev [FULLWARP_IMAGE] [OUT_BASENAME] [--verbose] [--help]",
+  "command-line": "calc_grad_perc_dev [FULLWARP_IMAGE] [OUT_BASENAME] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

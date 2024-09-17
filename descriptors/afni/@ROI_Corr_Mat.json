@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0",
-  "name": "ROI_Corr_Mat",
+  "name": "@ROI_Corr_Mat",
   "author": "AFNI Team",
   "description": "Script to produce an NxN ROI correlation matrix of N ROIs",
-  "command-line": "@ROI_Corr_Mat <-ts TimeSeriesVol> <-roi ROIVol> <-prefix output> [<-roisel ROISEL>] [-zval] [-mat FULL, TRI, TRI_ND] [-verb] [-dirty]",
+  "command-line": "@ROI_Corr_Mat [TimeSeriesVol] [ROIVol] [output] [ROISEL] [zval_flag] [OPT] [dirty_flag] [keep_tmp_flag] [echo_flag] [verb_flag]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

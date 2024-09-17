@@ -3,7 +3,7 @@
   "name": "SurfRetinoMap",
   "author": "AFNI Team",
   "description": "Tool for retinotopic mapping on cortical surfaces.",
-  "command-line": "SurfRetinoMap [SURFACE] -input [POLAR] [ECCENTRICITY] [--prefix PREFIX] [--node_dbg NODE]",
+  "command-line": "SurfRetinoMap [SURFACE] [POLAR] [ECCENTRICITY] [PREFIX] [NODE]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

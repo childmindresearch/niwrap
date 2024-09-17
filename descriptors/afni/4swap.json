@@ -3,7 +3,7 @@
   "name": "4swap",
   "author": "AFNI Team",
   "description": "Swaps byte quadruples on the listed files.",
-  "command-line": "4swap [-q] [FILES...]",
+  "command-line": "4swap [FILES] [QUIET_FLAG]",
   "inputs": [
     {
       "description": "List of files to process.",

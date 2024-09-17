@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "A program to examine element-wise differences between two images.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDiff.html",
-  "command-line": "3dDiff [display_opt] [-tol TOLERANCE] [-mask MASK] -a [DSET_1] -b [DSET_2]",
+  "command-line": "3dDiff [DSET_1] [DSET_2] [TOLERANCE] [MASK] [QUIET_FLAG] [TABULAR_FLAG] [BRUTALIST_FLAG] [LONG_REPORT_FLAG]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

@@ -3,7 +3,7 @@
   "name": "fat_proc_connec_vis",
   "author": "AFNI Team",
   "description": "This program is for visualizing the volumetric output of tracking, mainly for the '-dump_rois ...' from 3dTrackID. It creates surface-ized views of the separate white matter connection maps (WMCs) which can be viewed simultaneously in 3D with SUMA.",
-  "command-line": "fat_proc_connec_vis -in_rois [NETROIS] -prefix [PPP] [--prefix_file FFF] [--tsmoo_kpb KPB] [--tsmoo_niter NITER] [--iso_opt ISO_OPT] [--trackid_no_or] [--output_tcat] [--output_tstat] [--wdir WWW] [--no_clean]",
+  "command-line": "fat_proc_connec_vis [NETROIS] [PPP] [FFF] [KPB] [NITER] [ISO_OPT] [TRACKID_NO_OR] [OUTPUT_TCAT] [OUTPUT_TSTAT] [WWW] [NO_CLEAN]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
