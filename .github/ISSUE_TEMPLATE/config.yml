@@ -6,3 +6,15 @@ contact_links:
   - name: Request New/Missing Tool
     url: /issues/new?template=request-new-descriptor.yml
     about: "Request a new or missing Boutiques descriptor for a neuroimaging tool."
+  - name: Help Request
+    url: /issues/new?template=help-request.yml
+    about: "Request help with using NiWrap or neuroimaging tools."
+  - name: Ask a Question
+    url: /issues/new?template=question.yml
+    about: "Ask a question about NiWrap or neuroimaging tools."
+  - name: Provide Feedback
+    url: /issues/new?template=feedback.yml
+    about: "Provide feedback or suggestions for NiWrap."
+  - name: Other Issue
+    url: /issues/new?template=other-issue.yml
+    about: "Report other types of issues."
