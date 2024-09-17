@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FIX_FSSPHERE_METADATA = Metadata(
-    id="d809b1d459bb69ca3f96b857c3d048611b3b21a7.boutiques",
+    id="c8f38636ede92f2d0bdae37f2700ebff3881774e.boutiques",
     name="@fix_FSsphere",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,12 @@ class VFixFssphereOutputs(typing.NamedTuple):
 
 
 def v__fix_fssphere(
+    spec_file: InputPathType,
+    sphere_file: InputPathType,
+    num_iterations: int | None = None,
+    extent_lim: float | None = None,
+    project_first: bool = False,
+    keep_temp: bool = False,
     runner: Runner | None = None,
 ) -> VFixFssphereOutputs:
     """
@@ -35,6 +41,13 @@ def v__fix_fssphere(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@fix_FSsphere.html
     
     Args:
+        spec_file: Spec file.
+        sphere_file: SPHERE.asc is the sphere to be used.
+        num_iterations: Number of local smoothing operations. Default is 3000.
+        extent_lim: Extent, in mm, by which troubled sections are fattened.\
+            Default is 6.
+        project_first: Project to a sphere, before smoothing. Default is 0.
+        keep_temp: Keep temporary files.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VFixFssphereOutputs`).
@@ -43,16 +56,28 @@ def v__fix_fssphere(
     execution = runner.start_execution(V__FIX_FSSPHERE_METADATA)
     cargs = []
     cargs.append("@fix_FSsphere")
-    cargs.append("<-spec")
-    cargs.append("SPEC>")
-    cargs.append("<-sphere")
-    cargs.append("SPHERE.asc>")
-    cargs.append("[-niter")
-    cargs.append("NITER]")
-    cargs.append("[-lim")
-    cargs.append("LIM]")
-    cargs.append("[-keep_temp]")
-    cargs.append("[-project_first]")
+    cargs.extend([
+        "-spec",
+        execution.input_file(spec_file)
+    ])
+    cargs.extend([
+        "-sphere",
+        execution.input_file(sphere_file)
+    ])
+    if num_iterations is not None:
+        cargs.extend([
+            "-niter",
+            str(num_iterations)
+        ])
+    if extent_lim is not None:
+        cargs.extend([
+            "-lim",
+            str(extent_lim)
+        ])
+    if project_first:
+        cargs.append("-project_first")
+    if keep_temp:
+        cargs.append("-keep_temp")
     ret = VFixFssphereOutputs(
         root=execution.output_file("."),
         corrected_surface=execution.output_file("[SPHERE]_fxd.asc"),

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICETIMER_METADATA = Metadata(
-    id="4720d9135dcde74cc0db05cf9e44c6a1d33e2f76.boutiques",
+    id="c87f6c6c3ff9550c72ebcc20d0eff16d365e1524.boutiques",
     name="slicetimer",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -20,12 +20,21 @@ class SlicetimerOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_timeseries: OutputPathType
+    output_timeseries: OutputPathType | None
     """Output timeseries"""
 
 
 def slicetimer(
     infile: InputPathType,
+    outfile: InputPathType | None = None,
+    verbose_flag: bool = False,
+    down_flag: bool = False,
+    tr_value: float | None = None,
+    direction: str | None = None,
+    odd_flag: bool = False,
+    tcustom_file: InputPathType | None = None,
+    tglobal_value: float | None = None,
+    ocustom_file: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> SlicetimerOutputs:
     """
@@ -37,6 +46,18 @@ def slicetimer(
     
     Args:
         infile: Filename of input timeseries.
+        outfile: Filename of output timeseries.
+        verbose_flag: Switch on diagnostic messages.
+        down_flag: Reverse slice indexing (default is: slices were acquired\
+            bottom-up).
+        tr_value: Specify TR of data - default is 3s.
+        direction: Direction of slice acquisition (x=1,y=2,z=3) - default is z.
+        odd_flag: Use interleaved acquisition.
+        tcustom_file: Filename of single-column slice timings, in fractions of\
+            TR, +ve values shift slices forward in time.
+        tglobal_value: Global shift in fraction of TR, (default is 0).
+        ocustom_file: Filename of single-column custom interleave order file\
+            (first slice is referred to as 1 not 0).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SlicetimerOutputs`).
@@ -45,29 +66,49 @@ def slicetimer(
     execution = runner.start_execution(SLICETIMER_METADATA)
     cargs = []
     cargs.append("slicetimer")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(infile)
     ])
-    cargs.append("[-o")
-    cargs.append("OUTPUT_FILE]")
-    cargs.append("[--down]")
-    cargs.append("[-r")
-    cargs.append("TR_VALUE]")
-    cargs.append("[-d")
-    cargs.append("DIRECTION]")
-    cargs.append("[--odd]")
-    cargs.append("[--tcustom")
-    cargs.append("TCUSTOM_FILE]")
-    cargs.append("[--tglobal")
-    cargs.append("TGLOBAL_VALUE]")
-    cargs.append("[--ocustom")
-    cargs.append("OCUSTOM_FILE]")
-    cargs.append("[-v]")
+    if outfile is not None:
+        cargs.extend([
+            "-o",
+            execution.input_file(outfile)
+        ])
+    if verbose_flag:
+        cargs.append("-v")
+    if down_flag:
+        cargs.append("--down")
+    if tr_value is not None:
+        cargs.extend([
+            "-r",
+            str(tr_value)
+        ])
+    if direction is not None:
+        cargs.extend([
+            "-d",
+            direction
+        ])
+    if odd_flag:
+        cargs.append("--odd")
+    if tcustom_file is not None:
+        cargs.extend([
+            "--tcustom",
+            execution.input_file(tcustom_file)
+        ])
+    if tglobal_value is not None:
+        cargs.extend([
+            "--tglobal",
+            str(tglobal_value)
+        ])
+    if ocustom_file is not None:
+        cargs.extend([
+            "--ocustom",
+            execution.input_file(ocustom_file)
+        ])
     ret = SlicetimerOutputs(
         root=execution.output_file("."),
-        output_timeseries=execution.output_file("[OUTPUT_FILE]"),
+        output_timeseries=execution.output_file(pathlib.Path(outfile).name) if (outfile is not None) else None,
     )
     execution.run(cargs)
     return ret

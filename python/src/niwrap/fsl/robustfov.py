@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROBUSTFOV_METADATA = Metadata(
-    id="ba96504ba58594a00f41b8ac2107f15c773bd4a9.boutiques",
+    id="f0859328905103a6cc4cc54519c975ca102ba333.boutiques",
     name="robustfov",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -20,14 +20,19 @@ class RobustfovOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_roi_volume: OutputPathType
+    output_roi_volume: OutputPathType | None
     """ROI volume output"""
-    output_matrix_file: OutputPathType
+    output_matrix_file: OutputPathType | None
     """Matrix output (ROI to full FOV)"""
 
 
 def robustfov(
     input_file: InputPathType,
+    output_image: InputPathType | None = None,
+    brain_size: float | None = None,
+    matrix_output: str | None = None,
+    debug_flag: bool = False,
+    verbose_flag: bool = False,
     runner: Runner | None = None,
 ) -> RobustfovOutputs:
     """
@@ -39,6 +44,11 @@ def robustfov(
     
     Args:
         input_file: Input image file.
+        output_image: ROI volume output name.
+        brain_size: Size of the brain in z-dimension (default 170mm).
+        matrix_output: Matrix output name (ROI to full FOV).
+        debug_flag: Turn on debugging output.
+        verbose_flag: Switch on diagnostic messages.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RobustfovOutputs`).
@@ -47,18 +57,33 @@ def robustfov(
     execution = runner.start_execution(ROBUSTFOV_METADATA)
     cargs = []
     cargs.append("robustfov")
-    cargs.append("[OPTIONS]")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(input_file)
     ])
-    cargs.append("[-r")
-    cargs.append("OUTPUT_IMAGE]")
+    if output_image is not None:
+        cargs.extend([
+            "-r",
+            execution.input_file(output_image)
+        ])
+    if brain_size is not None:
+        cargs.extend([
+            "-b",
+            str(brain_size)
+        ])
+    if matrix_output is not None:
+        cargs.extend([
+            "-m",
+            matrix_output
+        ])
+    if debug_flag:
+        cargs.append("--debug")
+    if verbose_flag:
+        cargs.append("--verbose")
     ret = RobustfovOutputs(
         root=execution.output_file("."),
-        output_roi_volume=execution.output_file("[OUTPUT_IMAGE].nii.gz"),
-        output_matrix_file=execution.output_file("[MATRIX_OUTPUT].txt"),
+        output_roi_volume=execution.output_file(pathlib.Path(output_image).name + ".nii.gz") if (output_image is not None) else None,
+        output_matrix_file=execution.output_file(matrix_output + ".txt") if (matrix_output is not None) else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ELECTRO_GRID_METADATA = Metadata(
-    id="318e5f8b11b5381c4129ef2a10c897b952d8d454.boutiques",
+    id="bf09a24f5704598a36346c756e33aa0bf726eea6.boutiques",
     name="@ElectroGrid",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,11 +20,16 @@ class VElectroGridOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_surface: OutputPathType
+    output_surface: OutputPathType | None
     """Output surface file"""
 
 
 def v__electro_grid(
+    strip: int | None = None,
+    prefix: str | None = None,
+    coords: InputPathType | None = None,
+    with_markers: bool = False,
+    echo: bool = False,
     runner: Runner | None = None,
 ) -> VElectroGridOutputs:
     """
@@ -35,6 +40,13 @@ def v__electro_grid(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ElectroGrid.html
     
     Args:
+        strip: Make an Nx strip (array) of electrodes.
+        prefix: Use PREFIX for the output surface.
+        coords: Specify the coordinates of the nodes on the grid, or the array.\
+            XYZ.1D should have three columns, with each row specifying the\
+            coordinates of one node.
+        with_markers: Add markers to the surface at each electrode.
+        echo: Set echo.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VElectroGridOutputs`).
@@ -43,21 +55,30 @@ def v__electro_grid(
     execution = runner.start_execution(V__ELECTRO_GRID_METADATA)
     cargs = []
     cargs.append("@ElectroGrid")
-    cargs.append("[[-strip")
-    cargs.append("Nx]")
-    cargs.append("|")
-    cargs.append("[-grid")
-    cargs.append("Nx")
-    cargs.append("Ny]]")
-    cargs.append("[-prefix")
-    cargs.append("PREFIX]")
-    cargs.append("[-coords")
-    cargs.append("XYZ.1D]")
-    cargs.append("[-with_markers]")
-    cargs.append("[-echo]")
+    if strip is not None:
+        cargs.extend([
+            "-strip",
+            str(strip)
+        ])
+    cargs.append("[GRID_NX]")
+    cargs.append("[GRID_NY]")
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if coords is not None:
+        cargs.extend([
+            "-coords",
+            execution.input_file(coords)
+        ])
+    if with_markers:
+        cargs.append("-with_markers")
+    if echo:
+        cargs.append("-echo")
     ret = VElectroGridOutputs(
         root=execution.output_file("."),
-        output_surface=execution.output_file("[PREFIX].gii"),
+        output_surface=execution.output_file(prefix + ".gii") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

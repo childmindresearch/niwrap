@@ -28,7 +28,7 @@ class V3dmaskToolOutputs(typing.NamedTuple):
 
 def v_3dmask_tool(
     in_file: InputPathType,
-    count: bool = False,
+    count_: bool = False,
     datum: typing.Literal["byte", "short", "float"] | None = None,
     dilate_inputs: str | None = None,
     dilate_results: str | None = None,
@@ -50,7 +50,7 @@ def v_3dmask_tool(
     
     Args:
         in_file: Input file to 3dmask_tool.
-        count: Instead of created a binary 0/1 mask dataset, create one with\
+        count_: Instead of created a binary 0/1 mask dataset, create one with\
             counts of voxel overlap, i.e., each voxel will contain the number of\
             masks that it is set in.
         datum: 'byte' or 'short' or 'float'. Specify data type for output.
@@ -78,7 +78,7 @@ def v_3dmask_tool(
     execution = runner.start_execution(V_3DMASK_TOOL_METADATA)
     cargs = []
     cargs.append("3dmask_tool")
-    if count:
+    if count_:
         cargs.append("-count")
     cargs.extend([
         "-input",

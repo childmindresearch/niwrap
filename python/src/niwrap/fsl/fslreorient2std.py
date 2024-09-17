@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLREORIENT2STD_METADATA = Metadata(
-    id="98ad860c6642382747cdb3cc314cb5e47d03ab96.boutiques",
+    id="111a2d3413d8ad09c994fd1edf0fb83b0242e096.boutiques",
     name="fslreorient2std",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -22,13 +22,14 @@ class Fslreorient2stdOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_image: OutputPathType | None
     """Reoriented output image (NIfTI format)"""
-    matrix_output: OutputPathType
+    matrix_output: OutputPathType | None
     """File to save the transformation matrix"""
 
 
 def fslreorient2std(
     input_image: InputPathType,
     output_image: InputPathType | None = None,
+    matrix_file: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> Fslreorient2stdOutputs:
     """
@@ -45,6 +46,7 @@ def fslreorient2std(
         output_image: Output image with the reoriented result (NIfTI format,\
             e.g. reoriented_img.nii.gz). If not provided, transformation matrix is\
             output to standard output.
+        matrix_file: File to save the transformation matrix.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Fslreorient2stdOutputs`).
@@ -56,12 +58,15 @@ def fslreorient2std(
     cargs.append(execution.input_file(input_image))
     if output_image is not None:
         cargs.append(execution.input_file(output_image))
-    cargs.append("[-m")
-    cargs.append("MATRIX_FILE]")
+    if matrix_file is not None:
+        cargs.extend([
+            "-m",
+            execution.input_file(matrix_file)
+        ])
     ret = Fslreorient2stdOutputs(
         root=execution.output_file("."),
         output_image=execution.output_file(pathlib.Path(output_image).name) if (output_image is not None) else None,
-        matrix_output=execution.output_file("[MATRIX_FILE]"),
+        matrix_output=execution.output_file(pathlib.Path(matrix_file).name) if (matrix_file is not None) else None,
     )
     execution.run(cargs)
     return ret

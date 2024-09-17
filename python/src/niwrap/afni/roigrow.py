@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROIGROW_METADATA = Metadata(
-    id="23565f80bef0896060c03352b094c4ed57329a14.boutiques",
+    id="007840d4a74054aef08cec624f60f28b6fc4d9ba.boutiques",
     name="ROIgrow",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,11 +20,15 @@ class RoigrowOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_file: OutputPathType
+    output_file: OutputPathType | None
     """1D output dataset."""
 
 
 def roigrow(
+    input_surface: str,
+    roi_labels: str,
+    lim_distance: float,
+    output_prefix: str | None = None,
     full_list: bool = False,
     grow_from_edge: bool = False,
     insphere_diameter: float | None = None,
@@ -39,6 +43,14 @@ def roigrow(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/ROIgrow.html
     
     Args:
+        input_surface: Specify input surface. You can also use -t* and -spec\
+            and -surf methods to input surfaces.
+        roi_labels: Data column containing integer labels of ROIs. Each integer\
+            label gets grown separately.
+        lim_distance: Distance to cover from each node. The units of LIM are\
+            those of the surface's node coordinates. Distances are calculated along\
+            the surface's mesh.
+        output_prefix: Prefix of 1D output dataset. Default is ROIgrow.
         full_list: Output a row for each node on the surface. Nodes not in the\
             grown ROI, receive a 0 for a label. This option is ONLY for use with\
             -roi_labels.
@@ -56,14 +68,23 @@ def roigrow(
     execution = runner.start_execution(ROIGROW_METADATA)
     cargs = []
     cargs.append("ROIgrow")
-    cargs.append("<-i_TYPE")
-    cargs.append("SURF>")
-    cargs.append("<-roi_labels")
-    cargs.append("ROI_LABELS>")
-    cargs.append("<-lim")
-    cargs.append("LIM>")
-    cargs.append("[-prefix")
-    cargs.append("PREFIX]")
+    cargs.extend([
+        "-i_TYPE",
+        input_surface
+    ])
+    cargs.extend([
+        "-roi_labels",
+        roi_labels
+    ])
+    cargs.extend([
+        "-lim",
+        str(lim_distance)
+    ])
+    if output_prefix is not None:
+        cargs.extend([
+            "-prefix",
+            output_prefix
+        ])
     if full_list:
         cargs.append("-full_list")
     if grow_from_edge:
@@ -80,7 +101,7 @@ def roigrow(
         ])
     ret = RoigrowOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[PREFIX].1D"),
+        output_file=execution.output_file(output_prefix + ".1D") if (output_prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

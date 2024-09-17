@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ROI_CORR_MAT_METADATA = Metadata(
-    id="93306081b2aa4d941532f5a06e179689e35bced4.boutiques",
+    id="e16851a35d38405e8a0cce3c6874be2c5dcbd52a.boutiques",
     name="@ROI_Corr_Mat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -27,6 +27,16 @@ class VRoiCorrMatOutputs(typing.NamedTuple):
 
 
 def v__roi_corr_mat(
+    ts_vol: InputPathType,
+    roi_vol: InputPathType,
+    prefix: str,
+    roisel: InputPathType | None = None,
+    zval: bool = False,
+    mat_opt: str | None = None,
+    dirty: bool = False,
+    keep_tmp: bool = False,
+    echo: bool = False,
+    verb: bool = False,
     runner: Runner | None = None,
 ) -> VRoiCorrMatOutputs:
     """
@@ -37,6 +47,17 @@ def v__roi_corr_mat(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_Corr_Mat.html
     
     Args:
+        ts_vol: Time series volume.
+        roi_vol: ROI volume.
+        prefix: Use output for a prefix.
+        roisel: Force processing of ROI label (integers) listed in ROISEL 1D\
+            file.
+        zval: Output a zscore version of the correlation matrix.
+        mat_opt: Output matrix in different manners.
+        dirty: Keep temporary files.
+        keep_tmp: Keep temporary files.
+        echo: Set echo (echo all commands to screen).
+        verb: Verbose flag.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VRoiCorrMatOutputs`).
@@ -45,25 +66,42 @@ def v__roi_corr_mat(
     execution = runner.start_execution(V__ROI_CORR_MAT_METADATA)
     cargs = []
     cargs.append("@ROI_Corr_Mat")
-    cargs.append("<-ts")
-    cargs.append("TimeSeriesVol>")
-    cargs.append("<-roi")
-    cargs.append("ROIVol>")
-    cargs.append("<-prefix")
-    cargs.append("output>")
-    cargs.append("[<-roisel")
-    cargs.append("ROISEL>]")
-    cargs.append("[-zval]")
-    cargs.append("[-mat")
-    cargs.append("FULL,")
-    cargs.append("TRI,")
-    cargs.append("TRI_ND]")
-    cargs.append("[-verb]")
-    cargs.append("[-dirty]")
+    cargs.extend([
+        "-ts",
+        execution.input_file(ts_vol)
+    ])
+    cargs.extend([
+        "-roi",
+        execution.input_file(roi_vol)
+    ])
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
+    if roisel is not None:
+        cargs.extend([
+            "-roisel",
+            execution.input_file(roisel)
+        ])
+    if zval:
+        cargs.append("-zval")
+    if mat_opt is not None:
+        cargs.extend([
+            "-mat",
+            mat_opt
+        ])
+    if dirty:
+        cargs.append("-dirty")
+    if keep_tmp:
+        cargs.append("-keep_tmp")
+    if echo:
+        cargs.append("-echo")
+    if verb:
+        cargs.append("-verb")
     ret = VRoiCorrMatOutputs(
         root=execution.output_file("."),
-        matrix_1d=execution.output_file("[output]_matrix.1D"),
-        matrix_brick=execution.output_file("[output]_matrix.BRIK"),
+        matrix_1d=execution.output_file(prefix + "_matrix.1D"),
+        matrix_brick=execution.output_file(prefix + "_matrix.BRIK"),
     )
     execution.run(cargs)
     return ret

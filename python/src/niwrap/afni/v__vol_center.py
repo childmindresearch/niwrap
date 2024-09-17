@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__VOL_CENTER_METADATA = Metadata(
-    id="a55edd73353ee6ea229d9c2d2e391abafbaeb107.boutiques",
+    id="9937026b44a9f1b535cc79485b75a3fad96b7a74.boutiques",
     name="@VolCenter",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,8 @@ class VVolCenterOutputs(typing.NamedTuple):
 
 
 def v__vol_center(
+    dset: InputPathType,
+    orient: str | None = None,
     runner: Runner | None = None,
 ) -> VVolCenterOutputs:
     """
@@ -33,6 +35,8 @@ def v__vol_center(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@VolCenter.html
     
     Args:
+        dset: Input volume dataset.
+        orient: Output coordinate system orientation (e.g., RAI).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VVolCenterOutputs`).
@@ -41,10 +45,15 @@ def v__vol_center(
     execution = runner.start_execution(V__VOL_CENTER_METADATA)
     cargs = []
     cargs.append("@VolCenter")
-    cargs.append("<-dset")
-    cargs.append("DSET>")
-    cargs.append("[-or")
-    cargs.append("ORIENT]")
+    cargs.extend([
+        "-dset",
+        execution.input_file(dset)
+    ])
+    if orient is not None:
+        cargs.extend([
+            "-or",
+            orient
+        ])
     ret = VVolCenterOutputs(
         root=execution.output_file("."),
     )

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRSI_SEGMENT_METADATA = Metadata(
-    id="68c36b893349987e43bfd6044eeb59ccd2b7cef2.boutiques",
+    id="fb0ac4f550284449e091dede3fcdb75946018a99.boutiques",
     name="mrsi_segment",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -20,12 +20,16 @@ class MrsiSegmentOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_file: OutputPathType
+    output_file: OutputPathType | None
     """Output file name"""
 
 
 def mrsi_segment(
     mrsi_file: InputPathType,
+    t1_file: InputPathType | None = None,
+    anat_dir: str | None = None,
+    output_dir: str | None = None,
+    filename: str | None = None,
     runner: Runner | None = None,
 ) -> MrsiSegmentOutputs:
     """
@@ -35,6 +39,10 @@ def mrsi_segment(
     
     Args:
         mrsi_file: MRSI nifti file.
+        t1_file: T1 nifti file.
+        anat_dir: fsl_anat output directory.
+        output_dir: Output directory.
+        filename: Output file name.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrsiSegmentOutputs`).
@@ -44,17 +52,29 @@ def mrsi_segment(
     cargs = []
     cargs.append("mrsi_segment")
     cargs.append(execution.input_file(mrsi_file))
-    cargs.append("[--t1")
-    cargs.append("T1]")
-    cargs.append("[--anat")
-    cargs.append("ANAT]")
-    cargs.append("[--output")
-    cargs.append("OUTPUT]")
-    cargs.append("[--filename")
-    cargs.append("FILENAME]")
+    if t1_file is not None:
+        cargs.extend([
+            "--t1",
+            execution.input_file(t1_file)
+        ])
+    if anat_dir is not None:
+        cargs.extend([
+            "--anat",
+            anat_dir
+        ])
+    if output_dir is not None:
+        cargs.extend([
+            "--output",
+            output_dir
+        ])
+    if filename is not None:
+        cargs.extend([
+            "--filename",
+            filename
+        ])
     ret = MrsiSegmentOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[--output]/[--filename]"),
+        output_file=execution.output_file(output_dir + "/" + filename) if (output_dir is not None and filename is not None) else None,
     )
     execution.run(cargs)
     return ret

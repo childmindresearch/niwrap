@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_CONNEC_VIS_METADATA = Metadata(
-    id="b1bc18b7b682b800fdd69b9ca77f86dc0c61bdab.boutiques",
+    id="5cb061de52c85e54896564a2d20e0fe712ad6b8c.boutiques",
     name="fat_proc_connec_vis",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,6 +32,15 @@ class FatProcConnecVisOutputs(typing.NamedTuple):
 def fat_proc_connec_vis(
     in_rois: str,
     prefix: str,
+    prefix_file: str | None = None,
+    tsmoo_kpb: float | None = None,
+    tsmoo_niter: float | None = None,
+    iso_opt: str | None = None,
+    trackid_no_or: bool = False,
+    output_tcat: bool = False,
+    output_tstat: bool = False,
+    wdir: str | None = None,
+    no_clean: bool = False,
     runner: Runner | None = None,
 ) -> FatProcConnecVisOutputs:
     """
@@ -52,6 +61,35 @@ def fat_proc_connec_vis(
             files such as *.gii and *.niml.dset; the namebase of files within this\
             directory will be the default for the program, 'wmc'. The value PPP can\
             contain parts of a path in it.
+        prefix_file: Prefix for the output files: *cmd.txt and surface files\
+            such as *.gii and *.niml.dset; can include path steps; and can make one\
+            level of a new directory. For example, if FFF were 'A/B', then the\
+            program could make a new directory called 'A' if it didn't exist\
+            already and populate it with individual files having the same prefix\
+            'B'.
+        tsmoo_kpb: 'KPB' parameter in IsoSurface program; default value is\
+            0.01.
+        tsmoo_niter: 'NITER' parameter in IsoSurface program; default value is\
+            6.
+        iso_opt: Input one of the 'iso* options' from IsoSurface program, such\
+            as 'isorois+dsets', 'mergerois', etc. Quotations around the entry may\
+            be needed, especially if something like the '-mergerois [LAB_OUT]'\
+            route is being followed. Default: isorois+dsets.
+        trackid_no_or: Use this option to have the program recognize the naming\
+            convention of 3dTrackID output and to ignore the OR-logic ROIs,\
+            including only the AND-logic (AKA pairwise) connections.
+        output_tcat: Flag to output the multibrick file of concatenated ROI\
+            masks; note that the [0]th brick will be all zeros (it is just a\
+            placeholder). So, if there are N ROI maps concatenated, there will be\
+            N+1 bricks in the output dataset, which has the name PPP_tcat.nii.gz.
+        output_tstat: Flag to output the single brick file from the 3dTstat\
+            operation on the tcat dataset. If there were N ROI maps concatenated,\
+            then the largest value should be N. The output file's name will be\
+            PPP_tstat.nii.gz.
+        wdir: Working directory prefix. The format is '__WDIR_connec_vis_PPP',\
+            where PPP is the input prefix.
+        no_clean: Optional switch to NOT remove the working directory (default\
+            is to remove the working directory).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FatProcConnecVisOutputs`).
@@ -60,24 +98,41 @@ def fat_proc_connec_vis(
     execution = runner.start_execution(FAT_PROC_CONNEC_VIS_METADATA)
     cargs = []
     cargs.append("fat_proc_connec_vis")
-    cargs.append("-in_rois")
     cargs.append(in_rois)
-    cargs.append("-prefix")
     cargs.append(prefix)
-    cargs.append("[--prefix_file")
-    cargs.append("FFF]")
-    cargs.append("[--tsmoo_kpb")
-    cargs.append("KPB]")
-    cargs.append("[--tsmoo_niter")
-    cargs.append("NITER]")
-    cargs.append("[--iso_opt")
-    cargs.append("ISO_OPT]")
-    cargs.append("[--trackid_no_or]")
-    cargs.append("[--output_tcat]")
-    cargs.append("[--output_tstat]")
-    cargs.append("[--wdir")
-    cargs.append("WWW]")
-    cargs.append("[--no_clean]")
+    if prefix_file is not None:
+        cargs.extend([
+            "-prefix_file",
+            prefix_file
+        ])
+    if tsmoo_kpb is not None:
+        cargs.extend([
+            "-tsmoo_kpb",
+            str(tsmoo_kpb)
+        ])
+    if tsmoo_niter is not None:
+        cargs.extend([
+            "-tsmoo_niter",
+            str(tsmoo_niter)
+        ])
+    if iso_opt is not None:
+        cargs.extend([
+            "-iso_opt",
+            iso_opt
+        ])
+    if trackid_no_or:
+        cargs.append("-trackid_no_or")
+    if output_tcat:
+        cargs.append("-output_tcat")
+    if output_tstat:
+        cargs.append("-output_tstat")
+    if wdir is not None:
+        cargs.extend([
+            "-wdir",
+            wdir
+        ])
+    if no_clean:
+        cargs.append("-no_clean")
     ret = FatProcConnecVisOutputs(
         root=execution.output_file("."),
         cmd_txt=execution.output_file(prefix + "_cmd.txt"),

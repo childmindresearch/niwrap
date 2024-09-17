@@ -44,7 +44,7 @@ def asl_file(
     pvwm: InputPathType | None = None,
     kernel: float | None = None,
     outblockform: typing.Literal["rpt", "tis"] | None = None,
-    mean: bool = False,
+    mean_: bool = False,
     split: str | None = None,
     epoch: bool = False,
     epoch_length: float | None = None,
@@ -87,7 +87,7 @@ def asl_file(
         kernel: Kernel size (in voxels) of partial volume correction, must be\
             an odd number between 3 and 9. Default: 5.
         outblockform: Output block format.
-        mean: Output ASL data having taken mean at each TI to file.
+        mean_: Output ASL data having taken mean at each TI to file.
         split: Split data into separate files for each TI, specify filename\
             root.
         epoch: Output epochs of ASL data (takes mean at each TI within the\
@@ -177,7 +177,7 @@ def asl_file(
             "--obf",
             outblockform
         ])
-    if mean:
+    if mean_:
         cargs.append("--mean")
     if split is not None:
         cargs.extend([

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_ICOSAHEDRON_METADATA = Metadata(
-    id="e53f40ccc9791a6287b72adf8bd45877deb824ec.boutiques",
+    id="1eef39b3e34b28503111a2db48cdd364d34121c1.boutiques",
     name="CreateIcosahedron",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,16 @@ class CreateIcosahedronOutputs(typing.NamedTuple):
 
 
 def create_icosahedron(
+    rad: float | None = None,
+    rec_depth: float | None = None,
+    lin_depth: float | None = None,
+    min_nodes: float | None = None,
+    nums: bool = False,
+    nums_quiet: bool = False,
+    center_coordinates: list[float] | None = None,
+    to_sphere: bool = False,
+    output_prefix: str | None = None,
+    help_: bool = False,
     runner: Runner | None = None,
 ) -> CreateIcosahedronOutputs:
     """
@@ -34,6 +44,18 @@ def create_icosahedron(
     https://afni.nimh.nih.gov/pub/dist/doc/program_help/CreateIcosahedron.html
     
     Args:
+        rad: Size of icosahedron.
+        rec_depth: Recursive tessellation depth for icosahedron.
+        lin_depth: Number of edge divides for linear icosahedron tessellation.
+        min_nodes: Automatically select the -ld value which produces an\
+            icosahedron of at least MIN_NODES nodes.
+        nums: Output the number of nodes (vertices), triangles, edges, total\
+            volume, and total area then quit.
+        nums_quiet: Output numbers in a less verbose manner.
+        center_coordinates: Coordinates of the center of the icosahedron.
+        to_sphere: Project nodes to sphere.
+        output_prefix: Prefix for output files.
+        help_: Display help message.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CreateIcosahedronOutputs`).
@@ -42,22 +64,44 @@ def create_icosahedron(
     execution = runner.start_execution(CREATE_ICOSAHEDRON_METADATA)
     cargs = []
     cargs.append("CreateIcosahedron")
-    cargs.append("[-rad")
-    cargs.append("r]")
-    cargs.append("[-rd")
-    cargs.append("recDepth]")
-    cargs.append("[-ld")
-    cargs.append("linDepth]")
-    cargs.append("[-ctr")
-    cargs.append("ctr]")
-    cargs.append("[-prefix")
-    cargs.append("fout]")
-    cargs.append("[-min_nodes")
-    cargs.append("MIN_NODES]")
-    cargs.append("[-nums]")
-    cargs.append("[-nums_quiet]")
-    cargs.append("[-tosphere]")
-    cargs.append("[-help]")
+    if rad is not None:
+        cargs.extend([
+            "-rad",
+            str(rad)
+        ])
+    if rec_depth is not None:
+        cargs.extend([
+            "-rd",
+            str(rec_depth)
+        ])
+    if lin_depth is not None:
+        cargs.extend([
+            "-ld",
+            str(lin_depth)
+        ])
+    if min_nodes is not None:
+        cargs.extend([
+            "-min_nodes",
+            str(min_nodes)
+        ])
+    if nums:
+        cargs.append("-nums")
+    if nums_quiet:
+        cargs.append("-nums_quiet")
+    if center_coordinates is not None:
+        cargs.extend([
+            "-ctr",
+            *map(str, center_coordinates)
+        ])
+    if to_sphere:
+        cargs.append("-tosphere")
+    if output_prefix is not None:
+        cargs.extend([
+            "-prefix",
+            output_prefix
+        ])
+    if help_:
+        cargs.append("-help")
     ret = CreateIcosahedronOutputs(
         root=execution.output_file("."),
     )

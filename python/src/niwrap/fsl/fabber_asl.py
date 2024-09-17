@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_ASL_METADATA = Metadata(
-    id="3feb317ebcb270f8e44dc9109123683428afcb5f.boutiques",
+    id="95a1fbbed1b207edac9e7706f2d8b5b822b79f62.boutiques",
     name="fabber_asl",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -145,7 +145,7 @@ def fabber_asl(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_ASL_METADATA)
     cargs = []
-    cargs.append("fabber")
+    cargs.append("fabber_asl")
     if listmethods:
         cargs.append("--listmethods")
     if listmodels:

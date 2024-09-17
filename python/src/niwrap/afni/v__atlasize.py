@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ATLASIZE_METADATA = Metadata(
-    id="92a5f64f5c4f1d01138a6ae2a38488993fd99734.boutiques",
+    id="bc4f70e692b7a16b78622accb0dbe28ae536eace.boutiques",
     name="@Atlasize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,11 +20,29 @@ class VAtlasizeOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    niml_file: OutputPathType
+    niml_file: OutputPathType | None
     """Generated NIML file for the atlas"""
 
 
 def v__atlasize(
+    dset: InputPathType | None = None,
+    space: str | None = None,
+    lab_file: list[str] | None = None,
+    lab_file_delim: str | None = None,
+    longnames: float | None = None,
+    last_longname_col: float | None = None,
+    atlas_type: str | None = None,
+    atlas_description: str | None = None,
+    atlas_name: str | None = None,
+    auto_backup: bool = False,
+    centers: bool = False,
+    centertype: str | None = None,
+    centermask: InputPathType | None = None,
+    skip_novoxels: bool = False,
+    h_web: bool = False,
+    h_view: bool = False,
+    all_opts: bool = False,
+    h_find: str | None = None,
     runner: Runner | None = None,
 ) -> VAtlasizeOutputs:
     """
@@ -35,51 +53,121 @@ def v__atlasize(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Atlasize.html
     
     Args:
+        dset: Make DSET an atlas.
+        space: Mark DSET as being in space SPACE.
+        lab_file: Labels and keys are in text file FILE. cLAB is the index of\
+            column containing labels, vVAL is the index of column containing keys\
+            (1st column is indexed at 0).
+        lab_file_delim: Set column delimiter for -lab_file option. Default is '\
+            ' (space), but you can set your own. ';' for example.
+        longnames: Additionally, allow for another column of long names for\
+            regions, e.g., amygdala for AMY. cLONGNAME is the starting column for\
+            the long name continuing to the last name of the output.
+        last_longname_col: Limit long names to nth column.
+        atlas_type: Set the atlas type where TP is 'S' for subject-based and\
+            'G' for group-based atlases, respectively.
+        atlas_description: A description for the atlas. Default is 'My Atlas'.
+        atlas_name: Name for the atlas. Default name is based on prefix of\
+            DSET.
+        auto_backup: Back up the dataset if it already exists in the custom\
+            atlas directory and allows an overwrite.
+        centers: Add center of mass coordinates to atlas.
+        centertype: Choose Icent, Dcent, or cm for different ways to compute\
+            centers.
+        centermask: Calculate center of mass locations for each ROI using a\
+            subset of voxels. Useful for atlases with identical labels in both\
+            hemispheres.
+        skip_novoxels: Skip regions without any voxels in the dataset.
+        h_web: Open webpage with help for this program.
+        h_view: Open -help output in a GUI editor.
+        all_opts: List all of the options for this script.
+        h_find: Search for lines containing WORD in -help output. Search is\
+            approximate.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VAtlasizeOutputs`).
     """
+    if lab_file is not None and not (len(lab_file) <= 3): 
+        raise ValueError(f"Length of 'lab_file' must be less than 3 but was {len(lab_file)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ATLASIZE_METADATA)
     cargs = []
     cargs.append("@Atlasize")
-    cargs.append("[-dset")
-    cargs.append("DSET]")
-    cargs.append("[-space")
-    cargs.append("SPACE]")
-    cargs.append("[-lab_file")
-    cargs.append("FILE")
-    cargs.append("cLAB")
-    cargs.append("cVAL]")
-    cargs.append("[-lab_file_delim")
-    cargs.append("COL_DELIM]")
-    cargs.append("[-longnames")
-    cargs.append("cLONGNAME]")
-    cargs.append("[-last_longname_col")
-    cargs.append("cLASTLONGNAME]")
-    cargs.append("[-atlas_type")
-    cargs.append("TP]")
-    cargs.append("[-atlas_description")
-    cargs.append("DESCRP]")
-    cargs.append("[-atlas_name")
-    cargs.append("NAME]")
-    cargs.append("[-auto_backup]")
-    cargs.append("[-centers]")
-    cargs.append("[-centertype")
-    cargs.append("TYPE]")
-    cargs.append("[-centermask")
-    cargs.append("DSET]")
-    cargs.append("[-skip_novoxels]")
-    cargs.append("[-h_web]")
-    cargs.append("[-hweb]")
-    cargs.append("[-h_view]")
-    cargs.append("[-hview]")
-    cargs.append("[-all_opts]")
-    cargs.append("[-h_find")
-    cargs.append("WORD]")
+    if dset is not None:
+        cargs.extend([
+            "-dset",
+            execution.input_file(dset)
+        ])
+    if space is not None:
+        cargs.extend([
+            "-space",
+            space
+        ])
+    if lab_file is not None:
+        cargs.extend([
+            "-lab_file",
+            *lab_file
+        ])
+    if lab_file_delim is not None:
+        cargs.extend([
+            "-lab_file_delim",
+            lab_file_delim
+        ])
+    if longnames is not None:
+        cargs.extend([
+            "-longnames",
+            str(longnames)
+        ])
+    if last_longname_col is not None:
+        cargs.extend([
+            "-last_longname_col",
+            str(last_longname_col)
+        ])
+    if atlas_type is not None:
+        cargs.extend([
+            "-atlas_type",
+            atlas_type
+        ])
+    if atlas_description is not None:
+        cargs.extend([
+            "-atlas_description",
+            atlas_description
+        ])
+    if atlas_name is not None:
+        cargs.extend([
+            "-atlas_name",
+            atlas_name
+        ])
+    if auto_backup:
+        cargs.append("-auto_backup")
+    if centers:
+        cargs.append("-centers")
+    if centertype is not None:
+        cargs.extend([
+            "-centertype",
+            centertype
+        ])
+    if centermask is not None:
+        cargs.extend([
+            "-centermask",
+            execution.input_file(centermask)
+        ])
+    if skip_novoxels:
+        cargs.append("-skip_novoxels")
+    if h_web:
+        cargs.append("-h_web")
+    if h_view:
+        cargs.append("-h_view")
+    if all_opts:
+        cargs.append("-all_opts")
+    if h_find is not None:
+        cargs.extend([
+            "-h_find",
+            h_find
+        ])
     ret = VAtlasizeOutputs(
         root=execution.output_file("."),
-        niml_file=execution.output_file("[DSET].niml"),
+        niml_file=execution.output_file(pathlib.Path(dset).name + ".niml") if (dset is not None) else None,
     )
     execution.run(cargs)
     return ret

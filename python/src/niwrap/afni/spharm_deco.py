@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPHARM_DECO_METADATA = Metadata(
-    id="5814a4c4423b527f8f11948bcabb27dfbbb8d0d4.boutiques",
+    id="51591fb6b3a75858245dc4c93223e8af9df669a7.boutiques",
     name="SpharmDeco",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,6 +29,8 @@ class SpharmDecoOutputs(typing.NamedTuple):
 
 
 def spharm_deco(
+    debug: float | None = None,
+    sigma: float | None = None,
     runner: Runner | None = None,
 ) -> SpharmDecoOutputs:
     """
@@ -39,6 +41,9 @@ def spharm_deco(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SpharmDeco.html
     
     Args:
+        debug: Debug levels (1-3).
+        sigma: Smoothing parameter (0 .. 0.001) which weighs down the\
+            contribution of higher order harmonics.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SpharmDecoOutputs`).
@@ -47,29 +52,32 @@ def spharm_deco(
     execution = runner.start_execution(SPHARM_DECO_METADATA)
     cargs = []
     cargs.append("SpharmDeco")
-    cargs.append("<-i_TYPE")
-    cargs.append("S>")
-    cargs.append("-unit_sph")
-    cargs.append("UNIT_SPH_LABEL>")
-    cargs.append("<-l")
-    cargs.append("L>")
     cargs.append("[<-i_TYPE")
-    cargs.append("SD>")
-    cargs.append("...")
-    cargs.append("|")
-    cargs.append("<-data")
+    cargs.append("S>]")
+    cargs.append("[<-unit_sph")
+    cargs.append("UNIT_SPH_LABEL>]")
+    cargs.append("[<-l")
+    cargs.append("L>]")
+    cargs.append("[<-i_TYPE")
+    cargs.append("SD>]")
+    cargs.append("[<-data")
     cargs.append("D>]")
     cargs.append("[-bases_prefix")
     cargs.append("BASES]")
-    cargs.append("[<-prefix")
-    cargs.append("PREFIX>]")
-    cargs.append("[<-o_TYPE")
-    cargs.append("SDR>")
-    cargs.append("...]")
-    cargs.append("[-debug")
-    cargs.append("DBG]")
-    cargs.append("[-sigma")
-    cargs.append("s]")
+    cargs.append("[-prefix")
+    cargs.append("PREFIX]")
+    cargs.append("[-o_TYPE")
+    cargs.append("SDR]")
+    if debug is not None:
+        cargs.extend([
+            "-debug",
+            str(debug)
+        ])
+    if sigma is not None:
+        cargs.extend([
+            "-sigma",
+            str(sigma)
+        ])
     ret = SpharmDecoOutputs(
         root=execution.output_file("."),
         harmonics_file=execution.output_file("BASES_PREFIX.sph*.1D"),

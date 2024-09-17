@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DICE_METRIC_METADATA = Metadata(
-    id="1e8709949dd1f81bc9b0adf1a50b0355570f9576.boutiques",
+    id="9bbb98dbfac0b58d3a256ec8e465d90648872857.boutiques",
     name="@DiceMetric",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,18 @@ class VDiceMetricOutputs(typing.NamedTuple):
 
 
 def v__dice_metric(
+    base: InputPathType,
+    dsets: list[InputPathType],
+    max_roi: float | None = None,
+    forceoutput: InputPathType | None = None,
+    forceoutput_: InputPathType | None = None,
+    echo: bool = False,
+    save_match: bool = False,
+    save_diff: bool = False,
+    do_not_mask_by_base: bool = False,
+    mask_by_base: bool = False,
+    prefix: str | None = None,
+    ignore_bad: bool = False,
     keep_tmp: bool = False,
     runner: Runner | None = None,
 ) -> VDiceMetricOutputs:
@@ -34,6 +46,24 @@ def v__dice_metric(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DiceMetric.html
     
     Args:
+        base: Name of base (reference) segmentation.
+        dsets: Data sets for which the Dice Metric with BASE is computed. This\
+            should be the last option on the command line.
+        max_roi: The maximum possible ROI index. Default is 12 or based on\
+            LTFILE if specified.
+        forceoutput: If given, force output for each class in LTFILE.
+        forceoutput_: If given, force output for each class in LTFILE.
+        echo: Set echo.
+        save_match: Save volume showing BASE*equals(BASE,DSET).
+        save_diff: Save volume showing BASE*(1-equals(BASE,DSET)).
+        do_not_mask_by_base: Do not mask dset by step(base) before computing\
+            Dice coefficient.
+        mask_by_base: Mask dset by the step(base) before computing Dice\
+            coefficient.
+        prefix: Use PREFIX for the output table. Default is separate results\
+            for each dset to stdout.
+        ignore_bad: Warn if encountering bad scenarios, but do not create a\
+            zero entry.
         keep_tmp: Keep temporary files for debugging. Note that you should\
             delete temporary files before rerunning the script.
         runner: Command runner.
@@ -44,17 +74,48 @@ def v__dice_metric(
     execution = runner.start_execution(V__DICE_METRIC_METADATA)
     cargs = []
     cargs.append("@DiceMetric")
-    cargs.append("<-base")
-    cargs.append("BASE>")
-    cargs.append("<-dsets")
-    cargs.append("DSET1")
-    cargs.append("[DSET2")
-    cargs.append("...]>")
-    cargs.append("[max_N_roi")
-    cargs.append("MAX_ROI]")
+    cargs.extend([
+        "-base",
+        execution.input_file(base)
+    ])
+    cargs.extend([
+        "-dsets",
+        *[execution.input_file(f) for f in dsets]
+    ])
+    if max_roi is not None:
+        cargs.extend([
+            "-max_N_roi",
+            str(max_roi)
+        ])
+    if forceoutput is not None:
+        cargs.extend([
+            "-forceoutput",
+            execution.input_file(forceoutput)
+        ])
+    if forceoutput_ is not None:
+        cargs.extend([
+            "-forceoutput",
+            execution.input_file(forceoutput_)
+        ])
+    if echo:
+        cargs.append("-echo")
+    if save_match:
+        cargs.append("-save_match")
+    if save_diff:
+        cargs.append("-save_diff")
+    if do_not_mask_by_base:
+        cargs.append("-do_not_mask_by_base")
+    if mask_by_base:
+        cargs.append("-mask_by_base")
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if ignore_bad:
+        cargs.append("-ignore_bad")
     if keep_tmp:
         cargs.append("-keep_tmp")
-    cargs.append("[OPTIONS...]")
     ret = VDiceMetricOutputs(
         root=execution.output_file("."),
     )

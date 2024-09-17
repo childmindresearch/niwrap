@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_4SWAP_METADATA = Metadata(
-    id="e5570d9e2ac4432fc7c28c15ab79f0523c5a5345.boutiques",
+    id="de1fab95c80baec88325f4b441eaa797236f84a6.boutiques",
     name="4swap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,8 @@ class V4swapOutputs(typing.NamedTuple):
 
 
 def v_4swap(
+    files: list[InputPathType],
+    quiet: bool = False,
     runner: Runner | None = None,
 ) -> V4swapOutputs:
     """
@@ -33,6 +35,8 @@ def v_4swap(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/4swap.html
     
     Args:
+        files: List of files to process.
+        quiet: Work quietly; suppress output messages.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V4swapOutputs`).
@@ -41,8 +45,9 @@ def v_4swap(
     execution = runner.start_execution(V_4SWAP_METADATA)
     cargs = []
     cargs.append("4swap")
-    cargs.append("[-q]")
-    cargs.append("[FILES...]")
+    cargs.extend([execution.input_file(f) for f in files])
+    if quiet:
+        cargs.append("-q")
     ret = V4swapOutputs(
         root=execution.output_file("."),
     )

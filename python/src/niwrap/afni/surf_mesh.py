@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_MESH_METADATA = Metadata(
-    id="17456ade2fbfcd3f3f36958eec099db8f2e90864.boutiques",
+    id="8f6010c715df3fc7c13389fed6af4e1cefaf90a2.boutiques",
     name="SurfMesh",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,13 @@ class SurfMeshOutputs(typing.NamedTuple):
 
 
 def surf_mesh(
+    input_surface: str,
+    output_surface: str,
+    edge_fraction: float,
+    surface_volume: InputPathType | None = None,
+    one_state: bool = False,
+    anatomical_label: bool = False,
+    no_volume_registration: bool = False,
     runner: Runner | None = None,
 ) -> SurfMeshOutputs:
     """
@@ -35,25 +42,51 @@ def surf_mesh(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfMesh.html
     
     Args:
+        input_surface: Input surface file with specified type.
+        output_surface: Output surface file with specified type.
+        edge_fraction: Fraction of edges to simplify the surface.
+        surface_volume: Surface volume file.
+        one_state: Make all input surfaces have the same state.
+        anatomical_label: Label all input surfaces as anatomically correct.
+        no_volume_registration: Ignore any Rotate, Volreg, Tagalign, or\
+            WarpDrive transformations present in the Surface Volume.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfMeshOutputs`).
     """
+    if not (0 <= edge_fraction <= 1): 
+        raise ValueError(f"'edge_fraction' must be between 0 <= x <= 1 but was {edge_fraction}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_MESH_METADATA)
     cargs = []
     cargs.append("SurfMesh")
-    cargs.append("<-i_TYPE")
-    cargs.append("SURFACE>")
-    cargs.append("<-o_TYPE")
-    cargs.append("OUTPUT>")
-    cargs.append("<-edges")
-    cargs.append("FRAC>")
-    cargs.append("[-sv")
-    cargs.append("SURF_VOL]")
+    cargs.extend([
+        "-i_TYPE",
+        input_surface
+    ])
+    cargs.extend([
+        "-o_TYPE",
+        output_surface
+    ])
+    cargs.extend([
+        "-edges",
+        str(edge_fraction)
+    ])
+    if surface_volume is not None:
+        cargs.extend([
+            "-sv",
+            execution.input_file(surface_volume)
+        ])
+    if one_state:
+        cargs.append("-onestate")
+    if anatomical_label:
+        cargs.append("-anatomical")
+    if no_volume_registration:
+        cargs.append("-novolreg")
+    cargs.append("[ENVname=ENVvalue]")
     ret = SurfMeshOutputs(
         root=execution.output_file("."),
-        output_surface_file=execution.output_file("[OUTPUT].surface"),
+        output_surface_file=execution.output_file(output_surface + ".surface"),
     )
     execution.run(cargs)
     return ret

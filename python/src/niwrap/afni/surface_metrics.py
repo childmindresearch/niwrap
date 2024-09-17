@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_METRICS_METADATA = Metadata(
-    id="f8b017306eb69e262fc909f3128e1463d124c4e8.boutiques",
+    id="c59049c739f9ba7662814f7553a8e090a7ea63aa.boutiques",
     name="SurfaceMetrics",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,29 @@ class SurfaceMetricsOutputs(typing.NamedTuple):
 
 
 def surface_metrics(
+    surf1: str,
+    internal_nodes: bool = False,
+    internal_nodes_: bool = False,
+    internal_nodes_2: bool = False,
+    internal_nodes_3: bool = False,
+    internal_nodes_4: bool = False,
+    internal_nodes_5: bool = False,
+    internal_nodes_6: bool = False,
+    internal_nodes_7: bool = False,
+    internal_nodes_8: bool = False,
+    internal_nodes_9: bool = False,
+    internal_nodes_10: bool = False,
+    internal_nodes_11: bool = False,
+    internal_nodes_12: bool = False,
+    internal_nodes_13: bool = False,
+    internal_nodes_14: bool = False,
+    internal_nodes_15: bool = False,
+    internal_nodes_16: bool = False,
+    internal_nodes_17: bool = False,
+    internal_nodes_18: bool = False,
+    internal_nodes_19: bool = False,
+    tlrc: bool = False,
+    prefix: str | None = None,
     runner: Runner | None = None,
 ) -> SurfaceMetricsOutputs:
     """
@@ -33,6 +56,29 @@ def surface_metrics(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfaceMetrics.html
     
     Args:
+        surf1: Specifies the input surface.
+        internal_nodes: Output nodes that are not a boundary.
+        internal_nodes_: Output nodes that are not a boundary.
+        internal_nodes_2: Output nodes that are not a boundary.
+        internal_nodes_3: Output nodes that are not a boundary.
+        internal_nodes_4: Output nodes that are not a boundary.
+        internal_nodes_5: Output nodes that are not a boundary.
+        internal_nodes_6: Output nodes that are not a boundary.
+        internal_nodes_7: Output nodes that are not a boundary.
+        internal_nodes_8: Output nodes that are not a boundary.
+        internal_nodes_9: Output nodes that are not a boundary.
+        internal_nodes_10: Output nodes that are not a boundary.
+        internal_nodes_11: Output nodes that are not a boundary.
+        internal_nodes_12: Output nodes that are not a boundary.
+        internal_nodes_13: Output nodes that are not a boundary.
+        internal_nodes_14: Output nodes that are not a boundary.
+        internal_nodes_15: Output nodes that are not a boundary.
+        internal_nodes_16: Output nodes that are not a boundary.
+        internal_nodes_17: Output nodes that are not a boundary.
+        internal_nodes_18: Output nodes that are not a boundary.
+        internal_nodes_19: Output nodes that are not a boundary.
+        tlrc: Apply Talairach transform to surface.
+        prefix: Use prefix for output files.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceMetricsOutputs`).
@@ -41,11 +87,57 @@ def surface_metrics(
     execution = runner.start_execution(SURFACE_METRICS_METADATA)
     cargs = []
     cargs.append("SurfaceMetrics")
-    cargs.append("<METRIC>")
-    cargs.append("-SURF_1")
-    cargs.append("[-tlrc]")
-    cargs.append("[-prefix")
-    cargs.append("PREFIX]")
+    if internal_nodes:
+        cargs.append("-internal_nodes")
+    if internal_nodes_:
+        cargs.append("-internal_nodes")
+    if internal_nodes_2:
+        cargs.append("-internal_nodes")
+    if internal_nodes_3:
+        cargs.append("-internal_nodes")
+    if internal_nodes_4:
+        cargs.append("-internal_nodes")
+    if internal_nodes_5:
+        cargs.append("-internal_nodes")
+    if internal_nodes_6:
+        cargs.append("-internal_nodes")
+    if internal_nodes_7:
+        cargs.append("-internal_nodes")
+    if internal_nodes_8:
+        cargs.append("-internal_nodes")
+    if internal_nodes_9:
+        cargs.append("-internal_nodes")
+    if internal_nodes_10:
+        cargs.append("-internal_nodes")
+    if internal_nodes_11:
+        cargs.append("-internal_nodes")
+    if internal_nodes_12:
+        cargs.append("-internal_nodes")
+    if internal_nodes_13:
+        cargs.append("-internal_nodes")
+    if internal_nodes_14:
+        cargs.append("-internal_nodes")
+    if internal_nodes_15:
+        cargs.append("-internal_nodes")
+    if internal_nodes_16:
+        cargs.append("-internal_nodes")
+    if internal_nodes_17:
+        cargs.append("-internal_nodes")
+    if internal_nodes_18:
+        cargs.append("-internal_nodes")
+    if internal_nodes_19:
+        cargs.append("-internal_nodes")
+    cargs.extend([
+        "-SURF_1",
+        surf1
+    ])
+    if tlrc:
+        cargs.append("-tlrc")
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
     ret = SurfaceMetricsOutputs(
         root=execution.output_file("."),
     )

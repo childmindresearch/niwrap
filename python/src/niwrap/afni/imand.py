@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAND_METADATA = Metadata(
-    id="7e28460aace134af85c4b4bfdbb0625baab1cd47.boutiques",
+    id="8174e8640bed07d6b502d4469223b8e978cb29b1.boutiques",
     name="imand",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -27,6 +27,7 @@ class ImandOutputs(typing.NamedTuple):
 def imand(
     input_images: list[InputPathType],
     output_image: InputPathType,
+    threshold: float | None = None,
     runner: Runner | None = None,
 ) -> ImandOutputs:
     """
@@ -41,6 +42,8 @@ def imand(
         input_images: Input images to be processed. Multiple input images can\
             be specified.
         output_image: Output image file.
+        threshold: Threshold value; only pixels above this value will be\
+            output. Optional.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ImandOutputs`).
@@ -49,8 +52,11 @@ def imand(
     execution = runner.start_execution(IMAND_METADATA)
     cargs = []
     cargs.append("imand")
-    cargs.append("[--thresh")
-    cargs.append("THRESHOLD]")
+    if threshold is not None:
+        cargs.extend([
+            "--thresh",
+            str(threshold)
+        ])
     cargs.extend([execution.input_file(f) for f in input_images])
     cargs.append(execution.input_file(output_image))
     ret = ImandOutputs(

@@ -36,7 +36,7 @@ def v_3d_mean(
     stdev: bool = False,
     sqr: bool = False,
     sum_: bool = False,
-    count: bool = False,
+    count_: bool = False,
     max_: bool = False,
     min_: bool = False,
     absmax: bool = False,
@@ -70,7 +70,7 @@ def v_3d_mean(
             mean (cannot be used with -sqr, -sum or -non_zero).
         sqr: Average the squares, instead of the values.
         sum_: Just take the sum (don't divide by number of datasets).
-        count: Compute only the count of non-zero voxels.
+        count_: Compute only the count of non-zero voxels.
         max_: Find the maximum at each voxel.
         min_: Find the minimum at each voxel.
         absmax: Find maximum absolute value at each voxel.
@@ -115,7 +115,7 @@ def v_3d_mean(
         cargs.append("-sqr")
     if sum_:
         cargs.append("-sum")
-    if count:
+    if count_:
         cargs.append("-count")
     if max_:
         cargs.append("-max")

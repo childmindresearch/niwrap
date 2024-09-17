@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_MAT_TABLEIZE_PY_METADATA = Metadata(
-    id="087a0494cbbc551153bb18291702595477bae363.boutiques",
+    id="1ad3bf2d5e1f5164a09b7cbaf0cdcd23b8a0aac5.boutiques",
     name="fat_mat_tableize.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -28,6 +28,16 @@ class FatMatTableizePyOutputs(typing.NamedTuple):
 
 
 def fat_mat_tableize_py(
+    input_matrices: list[str],
+    output_prefix: str,
+    input_csv: InputPathType | None = None,
+    input_list: InputPathType | None = None,
+    parameters: list[str] | None = None,
+    version: bool = False,
+    date: bool = False,
+    help_: bool = False,
+    help_short: bool = False,
+    help_view: bool = False,
     runner: Runner | None = None,
 ) -> FatMatTableizePyOutputs:
     """
@@ -41,6 +51,21 @@ def fat_mat_tableize_py(
     https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat_tableize.py.html
     
     Args:
+        input_matrices: Names of *.netcc or *.grid files with matrices to be\
+            used to make table; can be provided using wildcard chars.
+        output_prefix: Output basename for the table and log files. Suffix and\
+            file extensions will be added for the outputs.
+        input_csv: Name of a CSV file to include in the table. The first column\
+            must have subject ID labels that match with the input matrix files.
+        input_list: File containing paths to subject matrices and optionally\
+            CSV IDs for matching.
+        parameters: List of matrices to be included in the table, identified by\
+            their parameter name.
+        version: Display current version.
+        date: Display release/editing date of current version.
+        help_: Display help in terminal.
+        help_short: Display help in terminal (short flag).
+        help_view: Display help in a separate text editor.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FatMatTableizePyOutputs`).
@@ -48,26 +73,44 @@ def fat_mat_tableize_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_MAT_TABLEIZE_PY_METADATA)
     cargs = []
-    cargs.append("fat_mat_tableize.py")
-    cargs.append("[-in_mat")
-    cargs.append("INPUT_MATRICES]")
-    cargs.append("[-in_csv")
-    cargs.append("INPUT_CSV]")
-    cargs.append("[-in_listfile")
-    cargs.append("INPUT_LIST]")
-    cargs.append("[-prefix")
-    cargs.append("OUTPUT_PREFIX]")
-    cargs.append("[-pars")
-    cargs.append("PARAMETERS]")
-    cargs.append("[-ver]")
-    cargs.append("[-date]")
-    cargs.append("[-help]")
-    cargs.append("[-h]")
-    cargs.append("[-hview]")
+    cargs.append("fat_mat_tableize")
+    cargs.extend([
+        "-in_mat",
+        *input_matrices
+    ])
+    if input_csv is not None:
+        cargs.extend([
+            "-in_csv",
+            execution.input_file(input_csv)
+        ])
+    if input_list is not None:
+        cargs.extend([
+            "-in_listfile",
+            execution.input_file(input_list)
+        ])
+    cargs.extend([
+        "-prefix",
+        output_prefix
+    ])
+    if parameters is not None:
+        cargs.extend([
+            "-pars",
+            *parameters
+        ])
+    if version:
+        cargs.append("-ver")
+    if date:
+        cargs.append("-date")
+    if help_:
+        cargs.append("-help")
+    if help_short:
+        cargs.append("-h")
+    if help_view:
+        cargs.append("-hview")
     ret = FatMatTableizePyOutputs(
         root=execution.output_file("."),
-        output_table=execution.output_file("[OUTPUT_PREFIX]_tbl.txt"),
-        output_log=execution.output_file("[OUTPUT_PREFIX]_prep.log"),
+        output_table=execution.output_file(output_prefix + "_tbl.txt"),
+        output_log=execution.output_file(output_prefix + "_prep.log"),
     )
     execution.run(cargs)
     return ret

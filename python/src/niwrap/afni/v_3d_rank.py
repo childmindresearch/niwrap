@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RANK_METADATA = Metadata(
-    id="3003fb7861d0366b3de9ce16dec83be8cdbe44e5.boutiques",
+    id="57ff9c12b996e33fc3f13d508aa4bc4e55ce74fd.boutiques",
     name="3dRank",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,16 +20,20 @@ class V3dRankOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_dataset_head: OutputPathType
+    output_dataset_head: OutputPathType | None
     """Main output dataset in AFNI format (.HEAD file)"""
-    output_dataset_brik: OutputPathType
+    output_dataset_brik: OutputPathType | None
     """Main output dataset in AFNI format (.BRIK file)"""
-    rank_map_file: OutputPathType
+    rank_map_file: OutputPathType | None
     """Rank map 1D file showing the mapping from the rank to the integral values
     in the input dataset"""
 
 
 def v_3d_rank(
+    input_datasets: list[InputPathType],
+    output_prefix: str | None = None,
+    version_info: bool = False,
+    help_info: bool = False,
     runner: Runner | None = None,
 ) -> V3dRankOutputs:
     """
@@ -41,6 +45,13 @@ def v_3d_rank(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRank.html
     
     Args:
+        input_datasets: Input datasets. Acceptable data types are: byte, short,\
+            and floats.
+        output_prefix: Output prefix. If you have multiple datasets on input,\
+            the prefix is preceded by r00., r01., etc. If no prefix is given, the\
+            default is rank.DATASET1, rank.DATASET2, etc.
+        version_info: Print author and version info.
+        help_info: Print this help screen.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dRankOutputs`).
@@ -49,17 +60,21 @@ def v_3d_rank(
     execution = runner.start_execution(V_3D_RANK_METADATA)
     cargs = []
     cargs.append("3dRank")
-    cargs.append("[-prefix")
-    cargs.append("PREFIX]")
-    cargs.append("<-input")
-    cargs.append("DATASET1")
-    cargs.append("[DATASET2")
-    cargs.append("...]>")
+    cargs.extend([execution.input_file(f) for f in input_datasets])
+    if output_prefix is not None:
+        cargs.extend([
+            "-prefix",
+            output_prefix
+        ])
+    if version_info:
+        cargs.append("-ver")
+    if help_info:
+        cargs.append("-help")
     ret = V3dRankOutputs(
         root=execution.output_file("."),
-        output_dataset_head=execution.output_file("[PREFIX]*.HEAD"),
-        output_dataset_brik=execution.output_file("[PREFIX]*.BRIK"),
-        rank_map_file=execution.output_file("[PREFIX]*.1D"),
+        output_dataset_head=execution.output_file(output_prefix + "*.HEAD") if (output_prefix is not None) else None,
+        output_dataset_brik=execution.output_file(output_prefix + "*.BRIK") if (output_prefix is not None) else None,
+        rank_map_file=execution.output_file(output_prefix + "*.1D") if (output_prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

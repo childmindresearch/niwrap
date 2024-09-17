@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SCALE_VOLUME_METADATA = Metadata(
-    id="703709f4d288b4dc526dfb3555e60357899a9633.boutiques",
+    id="1b124f97989c7d3cf8a57b1ad749fc7f7c70f43e.boutiques",
     name="@ScaleVolume",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,12 @@ class VScaleVolumeOutputs(typing.NamedTuple):
 
 
 def v__scale_volume(
+    val_clip: list[float] | None = None,
+    perc_clip: list[float] | None = None,
+    scale_by_mean: bool = False,
+    scale_by_median: bool = False,
+    norm: bool = False,
+    mask: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> VScaleVolumeOutputs:
     """
@@ -35,6 +41,13 @@ def v__scale_volume(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ScaleVolume.html
     
     Args:
+        val_clip: Min and Max of output dataset. Default V0 = 0 and V1 = 255.
+        perc_clip: Set lowest P0 percentile to Min and highest P1 percentile to\
+            Max. Default P0 = 2 and P1 = 98.
+        scale_by_mean: Divide each sub-brick by mean of non-zero voxels.
+        scale_by_median: Divide each sub-brick by median of non-zero voxels.
+        norm: For each time series T, Tnorm = (T - mean(T)) / stdev(T).
+        mask: Restrict to non-zero values of given mask dataset.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VScaleVolumeOutputs`).
@@ -43,21 +56,31 @@ def v__scale_volume(
     execution = runner.start_execution(V__SCALE_VOLUME_METADATA)
     cargs = []
     cargs.append("@ScaleVolume")
-    cargs.append("<-input")
-    cargs.append("DSET>")
-    cargs.append("<-prefix")
-    cargs.append("PREFIX>")
-    cargs.append("[-perc_clip")
-    cargs.append("P0")
-    cargs.append("P1]")
-    cargs.append("[-val_clip")
-    cargs.append("V0")
-    cargs.append("V1]")
-    cargs.append("[-scale_by_mean]")
-    cargs.append("[-scale_by_median]")
-    cargs.append("[-norm]")
-    cargs.append("[-mask")
-    cargs.append("MSET]")
+    cargs.append("[<-input")
+    cargs.append("DSET>]")
+    cargs.append("[<-prefix")
+    cargs.append("PREFIX>]")
+    if val_clip is not None:
+        cargs.extend([
+            "-val_clip",
+            *map(str, val_clip)
+        ])
+    if perc_clip is not None:
+        cargs.extend([
+            "-perc_clip",
+            *map(str, perc_clip)
+        ])
+    if scale_by_mean:
+        cargs.append("-scale_by_mean")
+    if scale_by_median:
+        cargs.append("-scale_by_median")
+    if norm:
+        cargs.append("-norm")
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
     ret = VScaleVolumeOutputs(
         root=execution.output_file("."),
         output_file=execution.output_file("<-prefix PREFIX>_scaled"),

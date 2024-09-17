@@ -28,7 +28,7 @@ def applytopup(
     imain: list[InputPathType],
     datain: InputPathType,
     inindex: list[str],
-    topup: InputPathType,
+    topup_: InputPathType,
     out: str,
     method: typing.Literal["jac", "lsr"] | None = None,
     interp: typing.Literal["trilinear", "spline"] | None = None,
@@ -47,7 +47,7 @@ def applytopup(
         datain: Name of text file with PE directions/times.
         inindex: Comma separated list of indices into --datain of the input\
             image (to be corrected).
-        topup: Name of field/movements (from topup).
+        topup_: Name of field/movements (from topup).
         out: Basename for output (warped) image.
         method: Use jacobian modulation (jac) or least-squares resampling\
             (lsr), default=lsr.
@@ -65,7 +65,7 @@ def applytopup(
     cargs.append("--imain=" + ",".join([execution.input_file(f) for f in imain]))
     cargs.append("--datain=" + execution.input_file(datain))
     cargs.append("--inindex=" + ",".join(inindex))
-    cargs.append("--topup=" + execution.input_file(topup, resolve_parent=True))
+    cargs.append("--topup=" + execution.input_file(topup_, resolve_parent=True))
     cargs.append("--out=" + out)
     if method is not None:
         cargs.append("--method=" + method)

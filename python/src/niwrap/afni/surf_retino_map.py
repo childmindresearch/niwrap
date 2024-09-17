@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_RETINO_MAP_METADATA = Metadata(
-    id="6301d3d7b1303735f00712af4498f12f7c0c05f4.boutiques",
+    id="aff6b86a9d314504b57fccc1c8f1fdd5cad6213c.boutiques",
     name="SurfRetinoMap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,9 +20,9 @@ class SurfRetinoMapOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    vfr_output: OutputPathType
+    vfr_output: OutputPathType | None
     """Output Visual Field Ratio (VFR) dataset."""
-    threshold_max_output: OutputPathType
+    threshold_max_output: OutputPathType | None
     """Maximum threshold at each node in the input datasets."""
 
 
@@ -30,6 +30,8 @@ def surf_retino_map(
     surface: str,
     polar: str,
     eccentricity: str,
+    prefix: str | None = None,
+    node_debug: float | None = None,
     runner: Runner | None = None,
 ) -> SurfRetinoMapOutputs:
     """
@@ -44,6 +46,9 @@ def surf_retino_map(
             surfaces' section for syntax.
         polar: Retinotopic dataset: polar angle dataset.
         eccentricity: Retinotopic dataset: eccentricity angle dataset.
+        prefix: Prefix for output datasets.
+        node_debug: Index of node number for which debugging information is\
+            output.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfRetinoMapOutputs`).
@@ -53,17 +58,22 @@ def surf_retino_map(
     cargs = []
     cargs.append("SurfRetinoMap")
     cargs.append(surface)
-    cargs.append("-input")
     cargs.append(polar)
     cargs.append(eccentricity)
-    cargs.append("[--prefix")
-    cargs.append("PREFIX]")
-    cargs.append("[--node_dbg")
-    cargs.append("NODE]")
+    if prefix is not None:
+        cargs.extend([
+            "--prefix",
+            prefix
+        ])
+    if node_debug is not None:
+        cargs.extend([
+            "--node_dbg",
+            str(node_debug)
+        ])
     ret = SurfRetinoMapOutputs(
         root=execution.output_file("."),
-        vfr_output=execution.output_file("[PREFIX]_VFR.nii.gz"),
-        threshold_max_output=execution.output_file("[PREFIX]_threshold_max.nii.gz"),
+        vfr_output=execution.output_file(prefix + "_VFR.nii.gz") if (prefix is not None) else None,
+        threshold_max_output=execution.output_file(prefix + "_threshold_max.nii.gz") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret
