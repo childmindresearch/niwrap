@@ -28,7 +28,7 @@ def from3d(
     input_: InputPathType,
     prefix: str,
     verbose: bool = False,
-    nsize_: bool = False,
+    nsize: bool = False,
     raw: bool = False,
     float_: bool = False,
     zfirst: float | None = None,
@@ -48,7 +48,7 @@ def from3d(
         input_: Read 3D dataset from file 'fname'.
         prefix: Write 2D images using prefix 'rname'.
         verbose: Print out verbose information during the run.
-        nsize_: Adjust size of 2D data file to be NxN, by padding with zeros,\
+        nsize: Adjust size of 2D data file to be NxN, by padding with zeros,\
             where N is a power of 2.
         raw: Write images in 'raw' format (just the data bytes). There will be\
             no header information saying what the image dimensions are.
@@ -72,7 +72,7 @@ def from3d(
     cargs.append("from3d")
     if verbose:
         cargs.append("-v")
-    if nsize_:
+    if nsize:
         cargs.append("-nsize")
     if raw:
         cargs.append("-raw")
