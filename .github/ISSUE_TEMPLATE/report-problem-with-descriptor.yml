@@ -3,7 +3,7 @@ description: Report an issue with a specific tool / interface.
 title: "[Descriptor Issue]: "
 labels: bug, descriptor
 body:
-  - type: select
+  - type: dropdown
     id: package_name
     attributes:
       label: Package

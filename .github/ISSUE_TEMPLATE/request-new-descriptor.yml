@@ -11,7 +11,7 @@ body:
       placeholder: "Enter tool name (or URL)"
     validations:
       required: true
-  - type: select
+  - type: dropdown
     id: package_name
     attributes:
       label: Package
