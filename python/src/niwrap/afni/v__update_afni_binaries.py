@@ -26,7 +26,7 @@ def v__update_afni_binaries(
     defaults_flag: bool = False,
     help_flag: bool = False,
     help_sys_progs_flag: bool = False,
-    apsearch: str | None = None,
+    apsearch_: str | None = None,
     bindir: str | None = None,
     curl_flag: bool = False,
     do_dotfiles_flag: bool = False,
@@ -61,7 +61,7 @@ def v__update_afni_binaries(
         defaults_flag: Install current package into abin.
         help_flag: Show this help.
         help_sys_progs_flag: List system programs that block update.
-        apsearch: Specify getting apsearch updates.
+        apsearch_: Specify getting apsearch updates.
         bindir: Set AFNI binary directory to ABIN.
         curl_flag: Default to curl instead of wget.
         do_dotfiles_flag: Try to initialize dot files if needed.
@@ -97,10 +97,10 @@ def v__update_afni_binaries(
         cargs.append("-help")
     if help_sys_progs_flag:
         cargs.append("-help_sys_progs")
-    if apsearch is not None:
+    if apsearch_ is not None:
         cargs.extend([
             "-apsearch",
-            apsearch
+            apsearch_
         ])
     if bindir is not None:
         cargs.extend([

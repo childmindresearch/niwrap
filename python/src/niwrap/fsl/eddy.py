@@ -39,7 +39,7 @@ def eddy(
     json_: InputPathType | None = None,
     mporder: float | None = None,
     s2v_lambda: float | None = None,
-    topup_: InputPathType | None = None,
+    topup: InputPathType | None = None,
     field: InputPathType | None = None,
     field_mat: InputPathType | None = None,
     flm: typing.Literal["movement", "linear", "quadratic", "cubic"] | None = None,
@@ -100,7 +100,7 @@ def eddy(
             vol-to-vol.
         s2v_lambda: Regularisation weight for slice-to-vol movement. (default\
             1, reasonable range 1--10).
-        topup_: Base name for output files from topup.
+        topup: Base name for output files from topup.
         field: Name of file with susceptibility field (in Hz).
         field_mat: Name of rigid body transform for susceptibility field.
         flm: First level EC model (movement/linear/quadratic/cubic, default\
@@ -171,8 +171,8 @@ def eddy(
         cargs.append("--mporder=" + str(mporder))
     if s2v_lambda is not None:
         cargs.append("--s2v_lambda=" + str(s2v_lambda))
-    if topup_ is not None:
-        cargs.append("--topup=" + execution.input_file(topup_, resolve_parent=True))
+    if topup is not None:
+        cargs.append("--topup=" + execution.input_file(topup, resolve_parent=True))
     if field is not None:
         cargs.append("--field=" + execution.input_file(field))
     if field_mat is not None:
