@@ -1,4 +1,4 @@
-name: ✨ Request New/Missing Tool
+name: ✨ Request New / Report Missing Tool or Package
 description: Request a new or missing tool interface / descriptor.
 title: "[Descriptor Request]: "
 labels: enhancement, descriptor
@@ -6,16 +6,16 @@ body:
   - type: input
     id: tool_name
     attributes:
-      label: Tool Name
-      description: "Tool Name (or URL)"
-      placeholder: "Enter tool name (or URL)"
+      label: Tool / Package Name
+      description: "Tool / Package Name (or URL)"
+      placeholder: "Enter tool / package name (or URL)"
     validations:
       required: true
   - type: dropdown
     id: package_name
     attributes:
-      label: Package
-      description: "(Optional) If you are reporting a missing descriptor from a package we already support, select the package the tool is part of."
+      label: Associated Package
+      description: "If you are reporting a missing descriptor from a package we already support, select the package the tool is part of."
       options:
         - AFNI
         - ANTs
@@ -32,7 +32,7 @@ body:
     id: version
     attributes:
       label: Tool Version
-      description: "Enter the version of the tool."
+      description: "Enter the version of the tool if relevant."
       placeholder: "Enter version"
     validations:
       required: false
@@ -40,6 +40,6 @@ body:
     id: additional_info
     attributes:
       label: Additional Information
-      description: "Provide any relevant context or details for the new descriptor."
+      description: "Provide any relevant context or details for why we should consider adding support for this tool / package."
     validations:
       required: false

@@ -29,7 +29,7 @@ body:
       placeholder: "Enter tool name (or URL)"
     validations:
       required: true
-  - type: input
+  - type: textarea
     id: problem
     attributes:
       label: Problem Description
