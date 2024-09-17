@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report Problem with Tool
+    url: /issues/new?template=report-problem-with-descriptor.yml
+    about: "Report an issue with a specific Boutiques descriptor in NiWrap."
+  - name: Request New/Missing Tool
+    url: /issues/new?template=request-new-descriptor.yml
+    about: "Request a new or missing Boutiques descriptor for a neuroimaging tool."

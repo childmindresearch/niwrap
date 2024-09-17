@@ -1,5 +1,5 @@
-name: 🐛 Report Problem with Descriptor
-description: Report an issue with a specific Boutiques descriptor in NiWrap.
+name: 🐛 Report Problem with Tool
+description: Report an issue with a specific tool / interface.
 title: "[Descriptor Issue]: "
 labels: bug, descriptor
 body:
@@ -25,8 +25,8 @@ body:
     id: tool_name
     attributes:
       label: Tool Name
-      description: "Which tool is this problem related to?"
-      placeholder: "Enter tool name (or link to file)"
+      description: "Tool name (or URL)"
+      placeholder: "Enter tool name (or URL)"
     validations:
       required: true
   - type: input

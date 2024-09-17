@@ -1,5 +1,5 @@
-name: ✨ Request Missing/New Descriptor
-description: Request a new or missing Boutiques descriptor for a neuroimaging tool.
+name: ✨ Request New/Missing Tool
+description: Request a new or missing tool interface / descriptor.
 title: "[Descriptor Request]: "
 labels: enhancement, descriptor
 body:
@@ -7,8 +7,8 @@ body:
     id: tool_name
     attributes:
       label: Tool Name
-      description: "Which neuroimaging tool needs a descriptor?"
-      placeholder: "Enter tool name"
+      description: "Tool Name (or URL)"
+      placeholder: "Enter tool name (or URL)"
     validations:
       required: true
   - type: select
