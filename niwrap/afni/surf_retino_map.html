@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">SURF_RETINO_MAP_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6301d3d7b1303735f00712af4498f12f7c0c05f4.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;aff6b86a9d314504b57fccc1c8f1fdd5cad6213c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SurfRetinoMap&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -97,9 +97,9 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">vfr_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">vfr_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output Visual Field Ratio (VFR) dataset.&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">threshold_max_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">threshold_max_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum threshold at each node in the input datasets.&quot;&quot;&quot;</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>
 </span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>
@@ -107,50 +107,60 @@
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="n">polar</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="n">eccentricity</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfRetinoMapOutputs</span><span class="p">:</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    Tool for retinotopic mapping on cortical surfaces.</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    </span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="n">node_debug</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfRetinoMapOutputs</span><span class="p">:</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    Tool for retinotopic mapping on cortical surfaces.</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfRetinoMap.html</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    Author: AFNI Team</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    </span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    Args:</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        surface: Surface on which distances are computed. See &#39;Specifying input\</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">            surfaces&#39; section for syntax.</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        polar: Retinotopic dataset: polar angle dataset.</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        eccentricity: Retinotopic dataset: eccentricity angle dataset.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">    Returns:</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        NamedTuple of outputs (described in `SurfRetinoMapOutputs`).</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURF_RETINO_MAP_METADATA</span><span class="p">)</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SurfRetinoMap&quot;</span><span class="p">)</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface</span><span class="p">)</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-input&quot;</span><span class="p">)</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">polar</span><span class="p">)</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">eccentricity</span><span class="p">)</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[--prefix&quot;</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;PREFIX]&quot;</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[--node_dbg&quot;</span><span class="p">)</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NODE]&quot;</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfRetinoMapOutputs</span><span class="p">(</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="n">vfr_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]_VFR.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">threshold_max_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]_threshold_max.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="s2">&quot;SURF_RETINO_MAP_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="s2">&quot;SurfRetinoMapOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="s2">&quot;surf_retino_map&quot;</span><span class="p">,</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a><span class="p">]</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfRetinoMap.html</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    </span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        surface: Surface on which distances are computed. See &#39;Specifying input\</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">            surfaces&#39; section for syntax.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        polar: Retinotopic dataset: polar angle dataset.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        eccentricity: Retinotopic dataset: eccentricity angle dataset.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        prefix: Prefix for output datasets.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        node_debug: Index of node number for which debugging information is\</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">            output.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">    Returns:</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        NamedTuple of outputs (described in `SurfRetinoMapOutputs`).</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURF_RETINO_MAP_METADATA</span><span class="p">)</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SurfRetinoMap&quot;</span><span class="p">)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface</span><span class="p">)</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">polar</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">eccentricity</span><span class="p">)</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>            <span class="s2">&quot;--prefix&quot;</span><span class="p">,</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>            <span class="n">prefix</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="p">])</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="k">if</span> <span class="n">node_debug</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>            <span class="s2">&quot;--node_dbg&quot;</span><span class="p">,</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">node_debug</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="p">])</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfRetinoMapOutputs</span><span class="p">(</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="n">vfr_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_VFR.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="n">threshold_max_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_threshold_max.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="p">)</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="s2">&quot;SURF_RETINO_MAP_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    <span class="s2">&quot;SurfRetinoMapOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="s2">&quot;surf_retino_map&quot;</span><span class="p">,</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -159,7 +169,7 @@
                     <div class="attr variable">
             <span class="name">SURF_RETINO_MAP_METADATA</span>        =
 <input id="SURF_RETINO_MAP_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SURF_RETINO_MAP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;6301d3d7b1303735f00712af4498f12f7c0c05f4.boutiques&#39;, name=&#39;SurfRetinoMap&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SURF_RETINO_MAP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;aff6b86a9d314504b57fccc1c8f1fdd5cad6213c.boutiques&#39;, name=&#39;SurfRetinoMap&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -185,9 +195,9 @@
 </span><span id="SurfRetinoMapOutputs-21"><a href="#SurfRetinoMapOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="SurfRetinoMapOutputs-22"><a href="#SurfRetinoMapOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="SurfRetinoMapOutputs-23"><a href="#SurfRetinoMapOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="SurfRetinoMapOutputs-24"><a href="#SurfRetinoMapOutputs-24"><span class="linenos">24</span></a>    <span class="n">vfr_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="SurfRetinoMapOutputs-24"><a href="#SurfRetinoMapOutputs-24"><span class="linenos">24</span></a>    <span class="n">vfr_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="SurfRetinoMapOutputs-25"><a href="#SurfRetinoMapOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output Visual Field Ratio (VFR) dataset.&quot;&quot;&quot;</span>
-</span><span id="SurfRetinoMapOutputs-26"><a href="#SurfRetinoMapOutputs-26"><span class="linenos">26</span></a>    <span class="n">threshold_max_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="SurfRetinoMapOutputs-26"><a href="#SurfRetinoMapOutputs-26"><span class="linenos">26</span></a>    <span class="n">threshold_max_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="SurfRetinoMapOutputs-27"><a href="#SurfRetinoMapOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum threshold at each node in the input datasets.&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -199,7 +209,7 @@
                             <div id="SurfRetinoMapOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">SurfRetinoMapOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">vfr_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">threshold_max_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
+        <span class="name">SurfRetinoMapOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">vfr_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold_max_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
@@ -225,7 +235,7 @@
                             </div>
                             <div id="SurfRetinoMapOutputs.vfr_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">vfr_output</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">vfr_output</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
@@ -238,7 +248,7 @@
                             </div>
                             <div id="SurfRetinoMapOutputs.threshold_max_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">threshold_max_output</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">threshold_max_output</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
@@ -265,7 +275,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">surf_retino_map</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">polar</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">eccentricity</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SurfRetinoMapOutputs">SurfRetinoMapOutputs</a></span>:</span></span>
+        <span class="name">surf_retino_map</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">polar</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">eccentricity</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">node_debug</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SurfRetinoMapOutputs">SurfRetinoMapOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="surf_retino_map-view-source"><span>View Source</span></label>
 
@@ -275,43 +285,53 @@
 </span><span id="surf_retino_map-31"><a href="#surf_retino_map-31"><span class="linenos">31</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="surf_retino_map-32"><a href="#surf_retino_map-32"><span class="linenos">32</span></a>    <span class="n">polar</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="surf_retino_map-33"><a href="#surf_retino_map-33"><span class="linenos">33</span></a>    <span class="n">eccentricity</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="surf_retino_map-34"><a href="#surf_retino_map-34"><span class="linenos">34</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="surf_retino_map-35"><a href="#surf_retino_map-35"><span class="linenos">35</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfRetinoMapOutputs</span><span class="p">:</span>
-</span><span id="surf_retino_map-36"><a href="#surf_retino_map-36"><span class="linenos">36</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="surf_retino_map-37"><a href="#surf_retino_map-37"><span class="linenos">37</span></a><span class="sd">    Tool for retinotopic mapping on cortical surfaces.</span>
-</span><span id="surf_retino_map-38"><a href="#surf_retino_map-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="surf_retino_map-39"><a href="#surf_retino_map-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="surf_retino_map-34"><a href="#surf_retino_map-34"><span class="linenos">34</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surf_retino_map-35"><a href="#surf_retino_map-35"><span class="linenos">35</span></a>    <span class="n">node_debug</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surf_retino_map-36"><a href="#surf_retino_map-36"><span class="linenos">36</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surf_retino_map-37"><a href="#surf_retino_map-37"><span class="linenos">37</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfRetinoMapOutputs</span><span class="p">:</span>
+</span><span id="surf_retino_map-38"><a href="#surf_retino_map-38"><span class="linenos">38</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="surf_retino_map-39"><a href="#surf_retino_map-39"><span class="linenos">39</span></a><span class="sd">    Tool for retinotopic mapping on cortical surfaces.</span>
 </span><span id="surf_retino_map-40"><a href="#surf_retino_map-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="surf_retino_map-41"><a href="#surf_retino_map-41"><span class="linenos">41</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfRetinoMap.html</span>
+</span><span id="surf_retino_map-41"><a href="#surf_retino_map-41"><span class="linenos">41</span></a><span class="sd">    Author: AFNI Team</span>
 </span><span id="surf_retino_map-42"><a href="#surf_retino_map-42"><span class="linenos">42</span></a><span class="sd">    </span>
-</span><span id="surf_retino_map-43"><a href="#surf_retino_map-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
-</span><span id="surf_retino_map-44"><a href="#surf_retino_map-44"><span class="linenos">44</span></a><span class="sd">        surface: Surface on which distances are computed. See &#39;Specifying input\</span>
-</span><span id="surf_retino_map-45"><a href="#surf_retino_map-45"><span class="linenos">45</span></a><span class="sd">            surfaces&#39; section for syntax.</span>
-</span><span id="surf_retino_map-46"><a href="#surf_retino_map-46"><span class="linenos">46</span></a><span class="sd">        polar: Retinotopic dataset: polar angle dataset.</span>
-</span><span id="surf_retino_map-47"><a href="#surf_retino_map-47"><span class="linenos">47</span></a><span class="sd">        eccentricity: Retinotopic dataset: eccentricity angle dataset.</span>
-</span><span id="surf_retino_map-48"><a href="#surf_retino_map-48"><span class="linenos">48</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="surf_retino_map-49"><a href="#surf_retino_map-49"><span class="linenos">49</span></a><span class="sd">    Returns:</span>
-</span><span id="surf_retino_map-50"><a href="#surf_retino_map-50"><span class="linenos">50</span></a><span class="sd">        NamedTuple of outputs (described in `SurfRetinoMapOutputs`).</span>
-</span><span id="surf_retino_map-51"><a href="#surf_retino_map-51"><span class="linenos">51</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="surf_retino_map-52"><a href="#surf_retino_map-52"><span class="linenos">52</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="surf_retino_map-53"><a href="#surf_retino_map-53"><span class="linenos">53</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURF_RETINO_MAP_METADATA</span><span class="p">)</span>
-</span><span id="surf_retino_map-54"><a href="#surf_retino_map-54"><span class="linenos">54</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="surf_retino_map-55"><a href="#surf_retino_map-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SurfRetinoMap&quot;</span><span class="p">)</span>
-</span><span id="surf_retino_map-56"><a href="#surf_retino_map-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface</span><span class="p">)</span>
-</span><span id="surf_retino_map-57"><a href="#surf_retino_map-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-input&quot;</span><span class="p">)</span>
-</span><span id="surf_retino_map-58"><a href="#surf_retino_map-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">polar</span><span class="p">)</span>
-</span><span id="surf_retino_map-59"><a href="#surf_retino_map-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">eccentricity</span><span class="p">)</span>
-</span><span id="surf_retino_map-60"><a href="#surf_retino_map-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[--prefix&quot;</span><span class="p">)</span>
-</span><span id="surf_retino_map-61"><a href="#surf_retino_map-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;PREFIX]&quot;</span><span class="p">)</span>
-</span><span id="surf_retino_map-62"><a href="#surf_retino_map-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[--node_dbg&quot;</span><span class="p">)</span>
-</span><span id="surf_retino_map-63"><a href="#surf_retino_map-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NODE]&quot;</span><span class="p">)</span>
-</span><span id="surf_retino_map-64"><a href="#surf_retino_map-64"><span class="linenos">64</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfRetinoMapOutputs</span><span class="p">(</span>
-</span><span id="surf_retino_map-65"><a href="#surf_retino_map-65"><span class="linenos">65</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="surf_retino_map-66"><a href="#surf_retino_map-66"><span class="linenos">66</span></a>        <span class="n">vfr_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]_VFR.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="surf_retino_map-67"><a href="#surf_retino_map-67"><span class="linenos">67</span></a>        <span class="n">threshold_max_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]_threshold_max.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="surf_retino_map-68"><a href="#surf_retino_map-68"><span class="linenos">68</span></a>    <span class="p">)</span>
-</span><span id="surf_retino_map-69"><a href="#surf_retino_map-69"><span class="linenos">69</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="surf_retino_map-70"><a href="#surf_retino_map-70"><span class="linenos">70</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="surf_retino_map-43"><a href="#surf_retino_map-43"><span class="linenos">43</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfRetinoMap.html</span>
+</span><span id="surf_retino_map-44"><a href="#surf_retino_map-44"><span class="linenos">44</span></a><span class="sd">    </span>
+</span><span id="surf_retino_map-45"><a href="#surf_retino_map-45"><span class="linenos">45</span></a><span class="sd">    Args:</span>
+</span><span id="surf_retino_map-46"><a href="#surf_retino_map-46"><span class="linenos">46</span></a><span class="sd">        surface: Surface on which distances are computed. See &#39;Specifying input\</span>
+</span><span id="surf_retino_map-47"><a href="#surf_retino_map-47"><span class="linenos">47</span></a><span class="sd">            surfaces&#39; section for syntax.</span>
+</span><span id="surf_retino_map-48"><a href="#surf_retino_map-48"><span class="linenos">48</span></a><span class="sd">        polar: Retinotopic dataset: polar angle dataset.</span>
+</span><span id="surf_retino_map-49"><a href="#surf_retino_map-49"><span class="linenos">49</span></a><span class="sd">        eccentricity: Retinotopic dataset: eccentricity angle dataset.</span>
+</span><span id="surf_retino_map-50"><a href="#surf_retino_map-50"><span class="linenos">50</span></a><span class="sd">        prefix: Prefix for output datasets.</span>
+</span><span id="surf_retino_map-51"><a href="#surf_retino_map-51"><span class="linenos">51</span></a><span class="sd">        node_debug: Index of node number for which debugging information is\</span>
+</span><span id="surf_retino_map-52"><a href="#surf_retino_map-52"><span class="linenos">52</span></a><span class="sd">            output.</span>
+</span><span id="surf_retino_map-53"><a href="#surf_retino_map-53"><span class="linenos">53</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="surf_retino_map-54"><a href="#surf_retino_map-54"><span class="linenos">54</span></a><span class="sd">    Returns:</span>
+</span><span id="surf_retino_map-55"><a href="#surf_retino_map-55"><span class="linenos">55</span></a><span class="sd">        NamedTuple of outputs (described in `SurfRetinoMapOutputs`).</span>
+</span><span id="surf_retino_map-56"><a href="#surf_retino_map-56"><span class="linenos">56</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="surf_retino_map-57"><a href="#surf_retino_map-57"><span class="linenos">57</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="surf_retino_map-58"><a href="#surf_retino_map-58"><span class="linenos">58</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURF_RETINO_MAP_METADATA</span><span class="p">)</span>
+</span><span id="surf_retino_map-59"><a href="#surf_retino_map-59"><span class="linenos">59</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="surf_retino_map-60"><a href="#surf_retino_map-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SurfRetinoMap&quot;</span><span class="p">)</span>
+</span><span id="surf_retino_map-61"><a href="#surf_retino_map-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface</span><span class="p">)</span>
+</span><span id="surf_retino_map-62"><a href="#surf_retino_map-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">polar</span><span class="p">)</span>
+</span><span id="surf_retino_map-63"><a href="#surf_retino_map-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">eccentricity</span><span class="p">)</span>
+</span><span id="surf_retino_map-64"><a href="#surf_retino_map-64"><span class="linenos">64</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surf_retino_map-65"><a href="#surf_retino_map-65"><span class="linenos">65</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surf_retino_map-66"><a href="#surf_retino_map-66"><span class="linenos">66</span></a>            <span class="s2">&quot;--prefix&quot;</span><span class="p">,</span>
+</span><span id="surf_retino_map-67"><a href="#surf_retino_map-67"><span class="linenos">67</span></a>            <span class="n">prefix</span>
+</span><span id="surf_retino_map-68"><a href="#surf_retino_map-68"><span class="linenos">68</span></a>        <span class="p">])</span>
+</span><span id="surf_retino_map-69"><a href="#surf_retino_map-69"><span class="linenos">69</span></a>    <span class="k">if</span> <span class="n">node_debug</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surf_retino_map-70"><a href="#surf_retino_map-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surf_retino_map-71"><a href="#surf_retino_map-71"><span class="linenos">71</span></a>            <span class="s2">&quot;--node_dbg&quot;</span><span class="p">,</span>
+</span><span id="surf_retino_map-72"><a href="#surf_retino_map-72"><span class="linenos">72</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">node_debug</span><span class="p">)</span>
+</span><span id="surf_retino_map-73"><a href="#surf_retino_map-73"><span class="linenos">73</span></a>        <span class="p">])</span>
+</span><span id="surf_retino_map-74"><a href="#surf_retino_map-74"><span class="linenos">74</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfRetinoMapOutputs</span><span class="p">(</span>
+</span><span id="surf_retino_map-75"><a href="#surf_retino_map-75"><span class="linenos">75</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="surf_retino_map-76"><a href="#surf_retino_map-76"><span class="linenos">76</span></a>        <span class="n">vfr_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_VFR.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surf_retino_map-77"><a href="#surf_retino_map-77"><span class="linenos">77</span></a>        <span class="n">threshold_max_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_threshold_max.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surf_retino_map-78"><a href="#surf_retino_map-78"><span class="linenos">78</span></a>    <span class="p">)</span>
+</span><span id="surf_retino_map-79"><a href="#surf_retino_map-79"><span class="linenos">79</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="surf_retino_map-80"><a href="#surf_retino_map-80"><span class="linenos">80</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -327,6 +347,8 @@
 <li><strong>surface:</strong>  Surface on which distances are computed. See 'Specifying input            surfaces' section for syntax.</li>
 <li><strong>polar:</strong>  Retinotopic dataset: polar angle dataset.</li>
 <li><strong>eccentricity:</strong>  Retinotopic dataset: eccentricity angle dataset.</li>
+<li><strong>prefix:</strong>  Prefix for output datasets.</li>
+<li><strong>node_debug:</strong>  Index of node number for which debugging information is            output.</li>
 <li><strong>runner:</strong>  Command runner.</li>
 </ul>
 

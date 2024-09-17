@@ -114,7 +114,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FABBER_ASL_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3feb317ebcb270f8e44dc9109123683428afcb5f.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;95a1fbbed1b207edac9e7706f2d8b5b822b79f62.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fabber_asl&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
@@ -252,7 +252,7 @@
 </span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FABBER_ASL_METADATA</span><span class="p">)</span>
 </span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fabber&quot;</span><span class="p">)</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fabber_asl&quot;</span><span class="p">)</span>
 </span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">listmethods</span><span class="p">:</span>
 </span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--listmethods&quot;</span><span class="p">)</span>
 </span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">listmodels</span><span class="p">:</span>
@@ -345,7 +345,7 @@
                     <div class="attr variable">
             <span class="name">FABBER_ASL_METADATA</span>        =
 <input id="FABBER_ASL_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FABBER_ASL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3feb317ebcb270f8e44dc9109123683428afcb5f.boutiques&#39;, name=&#39;fabber_asl&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FABBER_ASL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;95a1fbbed1b207edac9e7706f2d8b5b822b79f62.boutiques&#39;, name=&#39;fabber_asl&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
 
         
     </div>
@@ -706,7 +706,7 @@
 </span><span id="fabber_asl-146"><a href="#fabber_asl-146"><span class="linenos">146</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="fabber_asl-147"><a href="#fabber_asl-147"><span class="linenos">147</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FABBER_ASL_METADATA</span><span class="p">)</span>
 </span><span id="fabber_asl-148"><a href="#fabber_asl-148"><span class="linenos">148</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fabber_asl-149"><a href="#fabber_asl-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fabber&quot;</span><span class="p">)</span>
+</span><span id="fabber_asl-149"><a href="#fabber_asl-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fabber_asl&quot;</span><span class="p">)</span>
 </span><span id="fabber_asl-150"><a href="#fabber_asl-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">listmethods</span><span class="p">:</span>
 </span><span id="fabber_asl-151"><a href="#fabber_asl-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--listmethods&quot;</span><span class="p">)</span>
 </span><span id="fabber_asl-152"><a href="#fabber_asl-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">listmodels</span><span class="p">:</span>
