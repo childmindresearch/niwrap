@@ -173,10 +173,22 @@
   ],
   "output-files": [
     {
-      "id": "output_transform",
-      "name": "Output Transform",
-      "description": "The output transform files.",
-      "path-template": "[OUTPUT_PREFIX]*"
+      "id": "affine_transform",
+      "name": "Affine Transform",
+      "description": "Affine transformation matrix for registration",
+      "path-template": "[OUTPUT_PREFIX]0GenericAffine.mat"
+    },
+    {
+      "id": "inverse_warp",
+      "name": "Inverse Warp",
+      "description": "Inverse warp field for registration",
+      "path-template": "[OUTPUT_PREFIX]1InverseWarp.nii.gz"
+    },
+    {
+      "id": "forward_warp",
+      "name": "Forward Warp",
+      "description": "Forward warp field for registration",
+      "path-template": "[OUTPUT_PREFIX]1Warp.nii.gz"
     }
   ]
 }
