@@ -45,16 +45,36 @@
       "optional": true
     },
     {
-      "id": "fslgrad_bvecs",
-      "name": "Gradient Table (FSL bvecs format)",
-      "type": "File",
-      "value-key": "[FSLGRAD_BVECS]",
-      "command-line-flag": "-fslgrad",
-      "description": "Provide the diffusion gradient table in FSL bvecs format",
-      "optional": true,
-      "list": true,
-      "min-list-entries": 2,
-      "max-list-entries": 2
+      "id": "fslgrad",
+      "name": "fslgrad",
+      "value-key": "[DW_GRADIENT_TABLE_IMPORT_OPTIONS_FSLGRAD]",
+      "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
+      "type": {
+        "id": "fslgrad",
+        "name": "fslgrad",
+        "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
+        "command-line": "-fslgrad [BVECS] [BVALS]",
+        "inputs": [
+          {
+            "id": "bvecs",
+            "name": "bvecs",
+            "value-key": "[BVECS]",
+            "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
+            "type": "File",
+            "optional": false
+          },
+          {
+            "id": "bvals",
+            "name": "bvals",
+            "value-key": "[BVALS]",
+            "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
+            "type": "File",
+            "optional": false
+          }
+        ],
+        "output-files": []
+      },
+      "optional": true
     },
     {
       "id": "mask_image",
