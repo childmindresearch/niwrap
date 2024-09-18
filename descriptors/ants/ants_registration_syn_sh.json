@@ -65,9 +65,9 @@
       "value-key": "[INITIAL_TRANSFORM]",
       "type": "String",
       "list": true,
+      "list-separator": ",",
       "optional": true,
       "command-line-flag": "-i",
-      "command-line-flag-separator": ",",
       "description": "Initial transform(s) --- order specified on the command line matters"
     },
     {
