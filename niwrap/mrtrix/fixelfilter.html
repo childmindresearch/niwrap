@@ -64,6 +64,66 @@
 
             </li>
             <li>
+                    <a class="class" href="#FixelfilterVariousFile">FixelfilterVariousFile</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#FixelfilterVariousFile.__init__">FixelfilterVariousFile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterVariousFile.obj">obj</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#FixelfilterVariousFile.run">run</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FixelfilterVariousFile_">FixelfilterVariousFile_</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#FixelfilterVariousFile_.__init__">FixelfilterVariousFile_</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterVariousFile_.obj">obj</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#FixelfilterVariousFile_.run">run</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FixelfilterVariousString">FixelfilterVariousString</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#FixelfilterVariousString.__init__">FixelfilterVariousString</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterVariousString.obj">obj</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#FixelfilterVariousString.run">run</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FixelfilterVariousString_">FixelfilterVariousString_</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#FixelfilterVariousString_.__init__">FixelfilterVariousString_</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterVariousString_.obj">obj</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#FixelfilterVariousString_.run">run</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="function" href="#fixelfilter">fixelfilter</a>
             </li>
     </ul>
@@ -96,7 +156,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FIXELFILTER_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;c8d0aa7a0b4f28c8cd4f545d783f49ce5f8b2c57.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;78842b51be89a3840bbb410c2b7545b0ffec7a31.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fixelfilter&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -132,154 +192,246 @@
 </span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="k">class</span> <span class="nc">FixelfilterOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    Output object returned when calling `fixelfilter(...)`.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="k">def</span> <span class="nf">fixelfilter</span><span class="p">(</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>    <span class="n">matrix</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">threshold_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">threshold_connectivity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">minweight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">FixelfilterConfig</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FixelfilterOutputs</span><span class="p">:</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    Perform filtering operations on fixel-based data.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    </span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    If the first input to the command is a specific fixel data file, then a</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    filtered version of only that file will be generated by the command.</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    Alternatively, if the input is the location of a fixel directory, then the</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    command will create a duplicate of the fixel directory, and apply the</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    specified filter operation to all fixel data files within the directory.</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    </span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    References:</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    </span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    .</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    </span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    </span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    URL:</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelfilter.html</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    </span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    Args:</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        matrix: provide a fixel-fixel connectivity matrix for filtering\</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">            operations that require it.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        input_: the input: either a fixel data file, or a fixel directory (see\</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">            Description).</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        filter_: the filtering operation to perform; options are: connect,\</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            smooth.</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        output: the output: either a fixel data file, or a fixel directory (see\</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">            Description).</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        threshold_value: specify a threshold for the input fixel data file\</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            values (default = 0.5).</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        threshold_connectivity: specify a fixel-fixel connectivity threshold\</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">            for connected-component analysis (default = 0.10000000000000001).</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        fwhm: the full-width half-maximum (FWHM) of the spatial component of\</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">            the smoothing filter (default = 10mm).</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        minweight: apply a minimum threshold to smoothing weights (default =\</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">            0.01).</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        mask: only perform smoothing within a specified binary fixel mask.</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    Returns:</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        NamedTuple of outputs (described in `FixelfilterOutputs`).</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELFILTER_METADATA</span><span class="p">)</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelfilter&quot;</span><span class="p">)</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="s2">&quot;-matrix&quot;</span><span class="p">,</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="p">])</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">threshold_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="s2">&quot;-threshold_value&quot;</span><span class="p">,</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_value</span><span class="p">)</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="p">])</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">threshold_connectivity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="s2">&quot;-threshold_connectivity&quot;</span><span class="p">,</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_connectivity</span><span class="p">)</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="p">])</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>            <span class="s2">&quot;-fwhm&quot;</span><span class="p">,</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="p">])</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">minweight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>            <span class="s2">&quot;-minweight&quot;</span><span class="p">,</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">minweight</span><span class="p">)</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="p">])</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="p">])</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="p">])</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelfilterOutputs</span><span class="p">(</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="p">)</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="s2">&quot;FIXELFILTER_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="s2">&quot;FixelfilterConfig&quot;</span><span class="p">,</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="s2">&quot;FixelfilterOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="s2">&quot;fixelfilter&quot;</span><span class="p">,</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="p">]</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="k">class</span> <span class="nc">FixelfilterVariousString</span><span class="p">:</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>    <span class="n">obj</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;String object.&quot;&quot;&quot;</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>    
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        </span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        Args:</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        Returns:</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">            Command line arguments</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="k">class</span> <span class="nc">FixelfilterVariousFile</span><span class="p">:</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">obj</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File object.&quot;&quot;&quot;</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        </span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        Args:</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        Returns:</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">            Command line arguments</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">))</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="k">class</span> <span class="nc">FixelfilterVariousString_</span><span class="p">:</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">obj</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;String object.&quot;&quot;&quot;</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        </span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        Args:</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        Returns:</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">            Command line arguments</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="k">class</span> <span class="nc">FixelfilterVariousFile_</span><span class="p">:</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">obj</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File object.&quot;&quot;&quot;</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        </span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        Args:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        Returns:</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">            Command line arguments</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">))</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="k">class</span> <span class="nc">FixelfilterOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    Output object returned when calling `fixelfilter(...)`.</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="k">def</span> <span class="nf">fixelfilter</span><span class="p">(</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="n">matrix</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">FixelfilterVariousString</span><span class="p">,</span> <span class="n">FixelfilterVariousFile</span><span class="p">],</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">output</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">FixelfilterVariousString_</span><span class="p">,</span> <span class="n">FixelfilterVariousFile_</span><span class="p">],</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">threshold_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">threshold_connectivity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">minweight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">FixelfilterConfig</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FixelfilterOutputs</span><span class="p">:</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    Perform filtering operations on fixel-based data.</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    </span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    If the first input to the command is a specific fixel data file, then a</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    filtered version of only that file will be generated by the command.</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    Alternatively, if the input is the location of a fixel directory, then the</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    command will create a duplicate of the fixel directory, and apply the</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    specified filter operation to all fixel data files within the directory.</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    </span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    References:</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    </span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    .</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    </span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    </span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    URL:</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelfilter.html</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    </span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    Args:</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        matrix: provide a fixel-fixel connectivity matrix for filtering\</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">            operations that require it.</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        input_: the input: either a fixel data file, or a fixel directory (see\</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">            Description).</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        filter_: the filtering operation to perform; options are: connect,\</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">            smooth.</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        output: the output: either a fixel data file, or a fixel directory (see\</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">            Description).</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">        threshold_value: specify a threshold for the input fixel data file\</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">            values (default = 0.5).</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">        threshold_connectivity: specify a fixel-fixel connectivity threshold\</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">            for connected-component analysis (default = 0.10000000000000001).</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">        fwhm: the full-width half-maximum (FWHM) of the spatial component of\</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">            the smoothing filter (default = 10mm).</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">        minweight: apply a minimum threshold to smoothing weights (default =\</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">            0.01).</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        mask: only perform smoothing within a specified binary fixel mask.</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    Returns:</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">        NamedTuple of outputs (described in `FixelfilterOutputs`).</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELFILTER_METADATA</span><span class="p">)</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelfilter&quot;</span><span class="p">)</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="s2">&quot;-matrix&quot;</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="p">])</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="k">if</span> <span class="n">threshold_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>            <span class="s2">&quot;-threshold_value&quot;</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_value</span><span class="p">)</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="p">])</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="k">if</span> <span class="n">threshold_connectivity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>            <span class="s2">&quot;-threshold_connectivity&quot;</span><span class="p">,</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_connectivity</span><span class="p">)</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="p">])</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>            <span class="s2">&quot;-fwhm&quot;</span><span class="p">,</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="p">])</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">minweight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>            <span class="s2">&quot;-minweight&quot;</span><span class="p">,</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">minweight</span><span class="p">)</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>        <span class="p">])</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="p">])</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>        <span class="p">])</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelfilterOutputs</span><span class="p">(</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="p">)</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="s2">&quot;FIXELFILTER_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;FixelfilterConfig&quot;</span><span class="p">,</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;FixelfilterOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;FixelfilterVariousFile&quot;</span><span class="p">,</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="s2">&quot;FixelfilterVariousFile_&quot;</span><span class="p">,</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="s2">&quot;FixelfilterVariousString&quot;</span><span class="p">,</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="s2">&quot;FixelfilterVariousString_&quot;</span><span class="p">,</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="s2">&quot;fixelfilter&quot;</span><span class="p">,</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -288,7 +440,7 @@
                     <div class="attr variable">
             <span class="name">FIXELFILTER_METADATA</span>        =
 <input id="FIXELFILTER_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FIXELFILTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;c8d0aa7a0b4f28c8cd4f545d783f49ce5f8b2c57.boutiques&#39;, name=&#39;fixelfilter&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FIXELFILTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;78842b51be89a3840bbb410c2b7545b0ffec7a31.boutiques&#39;, name=&#39;fixelfilter&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -441,12 +593,12 @@
 
     </div>
     <a class="headerlink" href="#FixelfilterOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FixelfilterOutputs-47"><a href="#FixelfilterOutputs-47"><span class="linenos">47</span></a><span class="k">class</span> <span class="nc">FixelfilterOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="FixelfilterOutputs-48"><a href="#FixelfilterOutputs-48"><span class="linenos">48</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="FixelfilterOutputs-49"><a href="#FixelfilterOutputs-49"><span class="linenos">49</span></a><span class="sd">    Output object returned when calling `fixelfilter(...)`.</span>
-</span><span id="FixelfilterOutputs-50"><a href="#FixelfilterOutputs-50"><span class="linenos">50</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="FixelfilterOutputs-51"><a href="#FixelfilterOutputs-51"><span class="linenos">51</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="FixelfilterOutputs-52"><a href="#FixelfilterOutputs-52"><span class="linenos">52</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FixelfilterOutputs-135"><a href="#FixelfilterOutputs-135"><span class="linenos">135</span></a><span class="k">class</span> <span class="nc">FixelfilterOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="FixelfilterOutputs-136"><a href="#FixelfilterOutputs-136"><span class="linenos">136</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FixelfilterOutputs-137"><a href="#FixelfilterOutputs-137"><span class="linenos">137</span></a><span class="sd">    Output object returned when calling `fixelfilter(...)`.</span>
+</span><span id="FixelfilterOutputs-138"><a href="#FixelfilterOutputs-138"><span class="linenos">138</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="FixelfilterOutputs-139"><a href="#FixelfilterOutputs-139"><span class="linenos">139</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="FixelfilterOutputs-140"><a href="#FixelfilterOutputs-140"><span class="linenos">140</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -492,149 +644,585 @@
                                 </dl>
                             </div>
                 </section>
+                <section id="FixelfilterVariousFile">
+                            <input id="FixelfilterVariousFile-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+                    <div class="decorator">@dataclasses.dataclass</div>
+
+    <span class="def">class</span>
+    <span class="name">FixelfilterVariousFile</span>:
+
+                <label class="view-source-button" for="FixelfilterVariousFile-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFile"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FixelfilterVariousFile-69"><a href="#FixelfilterVariousFile-69"><span class="linenos">69</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="FixelfilterVariousFile-70"><a href="#FixelfilterVariousFile-70"><span class="linenos">70</span></a><span class="k">class</span> <span class="nc">FixelfilterVariousFile</span><span class="p">:</span>
+</span><span id="FixelfilterVariousFile-71"><a href="#FixelfilterVariousFile-71"><span class="linenos">71</span></a>    <span class="n">obj</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="FixelfilterVariousFile-72"><a href="#FixelfilterVariousFile-72"><span class="linenos">72</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File object.&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousFile-73"><a href="#FixelfilterVariousFile-73"><span class="linenos">73</span></a>    
+</span><span id="FixelfilterVariousFile-74"><a href="#FixelfilterVariousFile-74"><span class="linenos">74</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="FixelfilterVariousFile-75"><a href="#FixelfilterVariousFile-75"><span class="linenos">75</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="FixelfilterVariousFile-76"><a href="#FixelfilterVariousFile-76"><span class="linenos">76</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="FixelfilterVariousFile-77"><a href="#FixelfilterVariousFile-77"><span class="linenos">77</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="FixelfilterVariousFile-78"><a href="#FixelfilterVariousFile-78"><span class="linenos">78</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousFile-79"><a href="#FixelfilterVariousFile-79"><span class="linenos">79</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="FixelfilterVariousFile-80"><a href="#FixelfilterVariousFile-80"><span class="linenos">80</span></a><span class="sd">        </span>
+</span><span id="FixelfilterVariousFile-81"><a href="#FixelfilterVariousFile-81"><span class="linenos">81</span></a><span class="sd">        Args:</span>
+</span><span id="FixelfilterVariousFile-82"><a href="#FixelfilterVariousFile-82"><span class="linenos">82</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="FixelfilterVariousFile-83"><a href="#FixelfilterVariousFile-83"><span class="linenos">83</span></a><span class="sd">        Returns:</span>
+</span><span id="FixelfilterVariousFile-84"><a href="#FixelfilterVariousFile-84"><span class="linenos">84</span></a><span class="sd">            Command line arguments</span>
+</span><span id="FixelfilterVariousFile-85"><a href="#FixelfilterVariousFile-85"><span class="linenos">85</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousFile-86"><a href="#FixelfilterVariousFile-86"><span class="linenos">86</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="FixelfilterVariousFile-87"><a href="#FixelfilterVariousFile-87"><span class="linenos">87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">))</span>
+</span><span id="FixelfilterVariousFile-88"><a href="#FixelfilterVariousFile-88"><span class="linenos">88</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+    
+
+                            <div id="FixelfilterVariousFile.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">FixelfilterVariousFile</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFile.__init__"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterVariousFile.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: pathlib.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFile.obj"></a>
+    
+            <div class="docstring"><p>File object.</p>
+</div>
+
+
+                            </div>
+                            <div id="FixelfilterVariousFile.run" class="classattr">
+                                        <input id="FixelfilterVariousFile.run-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">run</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">execution</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Execution</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
+
+                <label class="view-source-button" for="FixelfilterVariousFile.run-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFile.run"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FixelfilterVariousFile.run-74"><a href="#FixelfilterVariousFile.run-74"><span class="linenos">74</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="FixelfilterVariousFile.run-75"><a href="#FixelfilterVariousFile.run-75"><span class="linenos">75</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="FixelfilterVariousFile.run-76"><a href="#FixelfilterVariousFile.run-76"><span class="linenos">76</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="FixelfilterVariousFile.run-77"><a href="#FixelfilterVariousFile.run-77"><span class="linenos">77</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="FixelfilterVariousFile.run-78"><a href="#FixelfilterVariousFile.run-78"><span class="linenos">78</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousFile.run-79"><a href="#FixelfilterVariousFile.run-79"><span class="linenos">79</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="FixelfilterVariousFile.run-80"><a href="#FixelfilterVariousFile.run-80"><span class="linenos">80</span></a><span class="sd">        </span>
+</span><span id="FixelfilterVariousFile.run-81"><a href="#FixelfilterVariousFile.run-81"><span class="linenos">81</span></a><span class="sd">        Args:</span>
+</span><span id="FixelfilterVariousFile.run-82"><a href="#FixelfilterVariousFile.run-82"><span class="linenos">82</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="FixelfilterVariousFile.run-83"><a href="#FixelfilterVariousFile.run-83"><span class="linenos">83</span></a><span class="sd">        Returns:</span>
+</span><span id="FixelfilterVariousFile.run-84"><a href="#FixelfilterVariousFile.run-84"><span class="linenos">84</span></a><span class="sd">            Command line arguments</span>
+</span><span id="FixelfilterVariousFile.run-85"><a href="#FixelfilterVariousFile.run-85"><span class="linenos">85</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousFile.run-86"><a href="#FixelfilterVariousFile.run-86"><span class="linenos">86</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="FixelfilterVariousFile.run-87"><a href="#FixelfilterVariousFile.run-87"><span class="linenos">87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">))</span>
+</span><span id="FixelfilterVariousFile.run-88"><a href="#FixelfilterVariousFile.run-88"><span class="linenos">88</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build command line arguments. This method is called by the main command.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>execution:</strong>  The execution object.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Command line arguments</p>
+</blockquote>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="FixelfilterVariousFile_">
+                            <input id="FixelfilterVariousFile_-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+                    <div class="decorator">@dataclasses.dataclass</div>
+
+    <span class="def">class</span>
+    <span class="name">FixelfilterVariousFile_</span>:
+
+                <label class="view-source-button" for="FixelfilterVariousFile_-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFile_"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FixelfilterVariousFile_-113"><a href="#FixelfilterVariousFile_-113"><span class="linenos">113</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="FixelfilterVariousFile_-114"><a href="#FixelfilterVariousFile_-114"><span class="linenos">114</span></a><span class="k">class</span> <span class="nc">FixelfilterVariousFile_</span><span class="p">:</span>
+</span><span id="FixelfilterVariousFile_-115"><a href="#FixelfilterVariousFile_-115"><span class="linenos">115</span></a>    <span class="n">obj</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="FixelfilterVariousFile_-116"><a href="#FixelfilterVariousFile_-116"><span class="linenos">116</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File object.&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousFile_-117"><a href="#FixelfilterVariousFile_-117"><span class="linenos">117</span></a>    
+</span><span id="FixelfilterVariousFile_-118"><a href="#FixelfilterVariousFile_-118"><span class="linenos">118</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="FixelfilterVariousFile_-119"><a href="#FixelfilterVariousFile_-119"><span class="linenos">119</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="FixelfilterVariousFile_-120"><a href="#FixelfilterVariousFile_-120"><span class="linenos">120</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="FixelfilterVariousFile_-121"><a href="#FixelfilterVariousFile_-121"><span class="linenos">121</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="FixelfilterVariousFile_-122"><a href="#FixelfilterVariousFile_-122"><span class="linenos">122</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousFile_-123"><a href="#FixelfilterVariousFile_-123"><span class="linenos">123</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="FixelfilterVariousFile_-124"><a href="#FixelfilterVariousFile_-124"><span class="linenos">124</span></a><span class="sd">        </span>
+</span><span id="FixelfilterVariousFile_-125"><a href="#FixelfilterVariousFile_-125"><span class="linenos">125</span></a><span class="sd">        Args:</span>
+</span><span id="FixelfilterVariousFile_-126"><a href="#FixelfilterVariousFile_-126"><span class="linenos">126</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="FixelfilterVariousFile_-127"><a href="#FixelfilterVariousFile_-127"><span class="linenos">127</span></a><span class="sd">        Returns:</span>
+</span><span id="FixelfilterVariousFile_-128"><a href="#FixelfilterVariousFile_-128"><span class="linenos">128</span></a><span class="sd">            Command line arguments</span>
+</span><span id="FixelfilterVariousFile_-129"><a href="#FixelfilterVariousFile_-129"><span class="linenos">129</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousFile_-130"><a href="#FixelfilterVariousFile_-130"><span class="linenos">130</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="FixelfilterVariousFile_-131"><a href="#FixelfilterVariousFile_-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">))</span>
+</span><span id="FixelfilterVariousFile_-132"><a href="#FixelfilterVariousFile_-132"><span class="linenos">132</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+    
+
+                            <div id="FixelfilterVariousFile_.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">FixelfilterVariousFile_</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFile_.__init__"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterVariousFile_.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: pathlib.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFile_.obj"></a>
+    
+            <div class="docstring"><p>File object.</p>
+</div>
+
+
+                            </div>
+                            <div id="FixelfilterVariousFile_.run" class="classattr">
+                                        <input id="FixelfilterVariousFile_.run-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">run</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">execution</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Execution</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
+
+                <label class="view-source-button" for="FixelfilterVariousFile_.run-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFile_.run"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FixelfilterVariousFile_.run-118"><a href="#FixelfilterVariousFile_.run-118"><span class="linenos">118</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="FixelfilterVariousFile_.run-119"><a href="#FixelfilterVariousFile_.run-119"><span class="linenos">119</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="FixelfilterVariousFile_.run-120"><a href="#FixelfilterVariousFile_.run-120"><span class="linenos">120</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="FixelfilterVariousFile_.run-121"><a href="#FixelfilterVariousFile_.run-121"><span class="linenos">121</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="FixelfilterVariousFile_.run-122"><a href="#FixelfilterVariousFile_.run-122"><span class="linenos">122</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousFile_.run-123"><a href="#FixelfilterVariousFile_.run-123"><span class="linenos">123</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="FixelfilterVariousFile_.run-124"><a href="#FixelfilterVariousFile_.run-124"><span class="linenos">124</span></a><span class="sd">        </span>
+</span><span id="FixelfilterVariousFile_.run-125"><a href="#FixelfilterVariousFile_.run-125"><span class="linenos">125</span></a><span class="sd">        Args:</span>
+</span><span id="FixelfilterVariousFile_.run-126"><a href="#FixelfilterVariousFile_.run-126"><span class="linenos">126</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="FixelfilterVariousFile_.run-127"><a href="#FixelfilterVariousFile_.run-127"><span class="linenos">127</span></a><span class="sd">        Returns:</span>
+</span><span id="FixelfilterVariousFile_.run-128"><a href="#FixelfilterVariousFile_.run-128"><span class="linenos">128</span></a><span class="sd">            Command line arguments</span>
+</span><span id="FixelfilterVariousFile_.run-129"><a href="#FixelfilterVariousFile_.run-129"><span class="linenos">129</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousFile_.run-130"><a href="#FixelfilterVariousFile_.run-130"><span class="linenos">130</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="FixelfilterVariousFile_.run-131"><a href="#FixelfilterVariousFile_.run-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">))</span>
+</span><span id="FixelfilterVariousFile_.run-132"><a href="#FixelfilterVariousFile_.run-132"><span class="linenos">132</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build command line arguments. This method is called by the main command.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>execution:</strong>  The execution object.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Command line arguments</p>
+</blockquote>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="FixelfilterVariousString">
+                            <input id="FixelfilterVariousString-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+                    <div class="decorator">@dataclasses.dataclass</div>
+
+    <span class="def">class</span>
+    <span class="name">FixelfilterVariousString</span>:
+
+                <label class="view-source-button" for="FixelfilterVariousString-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousString"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FixelfilterVariousString-47"><a href="#FixelfilterVariousString-47"><span class="linenos">47</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="FixelfilterVariousString-48"><a href="#FixelfilterVariousString-48"><span class="linenos">48</span></a><span class="k">class</span> <span class="nc">FixelfilterVariousString</span><span class="p">:</span>
+</span><span id="FixelfilterVariousString-49"><a href="#FixelfilterVariousString-49"><span class="linenos">49</span></a>    <span class="n">obj</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="FixelfilterVariousString-50"><a href="#FixelfilterVariousString-50"><span class="linenos">50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;String object.&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousString-51"><a href="#FixelfilterVariousString-51"><span class="linenos">51</span></a>    
+</span><span id="FixelfilterVariousString-52"><a href="#FixelfilterVariousString-52"><span class="linenos">52</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="FixelfilterVariousString-53"><a href="#FixelfilterVariousString-53"><span class="linenos">53</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="FixelfilterVariousString-54"><a href="#FixelfilterVariousString-54"><span class="linenos">54</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="FixelfilterVariousString-55"><a href="#FixelfilterVariousString-55"><span class="linenos">55</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="FixelfilterVariousString-56"><a href="#FixelfilterVariousString-56"><span class="linenos">56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousString-57"><a href="#FixelfilterVariousString-57"><span class="linenos">57</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="FixelfilterVariousString-58"><a href="#FixelfilterVariousString-58"><span class="linenos">58</span></a><span class="sd">        </span>
+</span><span id="FixelfilterVariousString-59"><a href="#FixelfilterVariousString-59"><span class="linenos">59</span></a><span class="sd">        Args:</span>
+</span><span id="FixelfilterVariousString-60"><a href="#FixelfilterVariousString-60"><span class="linenos">60</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="FixelfilterVariousString-61"><a href="#FixelfilterVariousString-61"><span class="linenos">61</span></a><span class="sd">        Returns:</span>
+</span><span id="FixelfilterVariousString-62"><a href="#FixelfilterVariousString-62"><span class="linenos">62</span></a><span class="sd">            Command line arguments</span>
+</span><span id="FixelfilterVariousString-63"><a href="#FixelfilterVariousString-63"><span class="linenos">63</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousString-64"><a href="#FixelfilterVariousString-64"><span class="linenos">64</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="FixelfilterVariousString-65"><a href="#FixelfilterVariousString-65"><span class="linenos">65</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+</span><span id="FixelfilterVariousString-66"><a href="#FixelfilterVariousString-66"><span class="linenos">66</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+    
+
+                            <div id="FixelfilterVariousString.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">FixelfilterVariousString</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousString.__init__"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterVariousString.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousString.obj"></a>
+    
+            <div class="docstring"><p>String object.</p>
+</div>
+
+
+                            </div>
+                            <div id="FixelfilterVariousString.run" class="classattr">
+                                        <input id="FixelfilterVariousString.run-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">run</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">execution</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Execution</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
+
+                <label class="view-source-button" for="FixelfilterVariousString.run-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousString.run"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FixelfilterVariousString.run-52"><a href="#FixelfilterVariousString.run-52"><span class="linenos">52</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="FixelfilterVariousString.run-53"><a href="#FixelfilterVariousString.run-53"><span class="linenos">53</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="FixelfilterVariousString.run-54"><a href="#FixelfilterVariousString.run-54"><span class="linenos">54</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="FixelfilterVariousString.run-55"><a href="#FixelfilterVariousString.run-55"><span class="linenos">55</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="FixelfilterVariousString.run-56"><a href="#FixelfilterVariousString.run-56"><span class="linenos">56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousString.run-57"><a href="#FixelfilterVariousString.run-57"><span class="linenos">57</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="FixelfilterVariousString.run-58"><a href="#FixelfilterVariousString.run-58"><span class="linenos">58</span></a><span class="sd">        </span>
+</span><span id="FixelfilterVariousString.run-59"><a href="#FixelfilterVariousString.run-59"><span class="linenos">59</span></a><span class="sd">        Args:</span>
+</span><span id="FixelfilterVariousString.run-60"><a href="#FixelfilterVariousString.run-60"><span class="linenos">60</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="FixelfilterVariousString.run-61"><a href="#FixelfilterVariousString.run-61"><span class="linenos">61</span></a><span class="sd">        Returns:</span>
+</span><span id="FixelfilterVariousString.run-62"><a href="#FixelfilterVariousString.run-62"><span class="linenos">62</span></a><span class="sd">            Command line arguments</span>
+</span><span id="FixelfilterVariousString.run-63"><a href="#FixelfilterVariousString.run-63"><span class="linenos">63</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousString.run-64"><a href="#FixelfilterVariousString.run-64"><span class="linenos">64</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="FixelfilterVariousString.run-65"><a href="#FixelfilterVariousString.run-65"><span class="linenos">65</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+</span><span id="FixelfilterVariousString.run-66"><a href="#FixelfilterVariousString.run-66"><span class="linenos">66</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build command line arguments. This method is called by the main command.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>execution:</strong>  The execution object.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Command line arguments</p>
+</blockquote>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="FixelfilterVariousString_">
+                            <input id="FixelfilterVariousString_-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+                    <div class="decorator">@dataclasses.dataclass</div>
+
+    <span class="def">class</span>
+    <span class="name">FixelfilterVariousString_</span>:
+
+                <label class="view-source-button" for="FixelfilterVariousString_-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousString_"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FixelfilterVariousString_-91"><a href="#FixelfilterVariousString_-91"><span class="linenos"> 91</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="FixelfilterVariousString_-92"><a href="#FixelfilterVariousString_-92"><span class="linenos"> 92</span></a><span class="k">class</span> <span class="nc">FixelfilterVariousString_</span><span class="p">:</span>
+</span><span id="FixelfilterVariousString_-93"><a href="#FixelfilterVariousString_-93"><span class="linenos"> 93</span></a>    <span class="n">obj</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="FixelfilterVariousString_-94"><a href="#FixelfilterVariousString_-94"><span class="linenos"> 94</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;String object.&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousString_-95"><a href="#FixelfilterVariousString_-95"><span class="linenos"> 95</span></a>    
+</span><span id="FixelfilterVariousString_-96"><a href="#FixelfilterVariousString_-96"><span class="linenos"> 96</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="FixelfilterVariousString_-97"><a href="#FixelfilterVariousString_-97"><span class="linenos"> 97</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="FixelfilterVariousString_-98"><a href="#FixelfilterVariousString_-98"><span class="linenos"> 98</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="FixelfilterVariousString_-99"><a href="#FixelfilterVariousString_-99"><span class="linenos"> 99</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="FixelfilterVariousString_-100"><a href="#FixelfilterVariousString_-100"><span class="linenos">100</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousString_-101"><a href="#FixelfilterVariousString_-101"><span class="linenos">101</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="FixelfilterVariousString_-102"><a href="#FixelfilterVariousString_-102"><span class="linenos">102</span></a><span class="sd">        </span>
+</span><span id="FixelfilterVariousString_-103"><a href="#FixelfilterVariousString_-103"><span class="linenos">103</span></a><span class="sd">        Args:</span>
+</span><span id="FixelfilterVariousString_-104"><a href="#FixelfilterVariousString_-104"><span class="linenos">104</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="FixelfilterVariousString_-105"><a href="#FixelfilterVariousString_-105"><span class="linenos">105</span></a><span class="sd">        Returns:</span>
+</span><span id="FixelfilterVariousString_-106"><a href="#FixelfilterVariousString_-106"><span class="linenos">106</span></a><span class="sd">            Command line arguments</span>
+</span><span id="FixelfilterVariousString_-107"><a href="#FixelfilterVariousString_-107"><span class="linenos">107</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousString_-108"><a href="#FixelfilterVariousString_-108"><span class="linenos">108</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="FixelfilterVariousString_-109"><a href="#FixelfilterVariousString_-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+</span><span id="FixelfilterVariousString_-110"><a href="#FixelfilterVariousString_-110"><span class="linenos">110</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+    
+
+                            <div id="FixelfilterVariousString_.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">FixelfilterVariousString_</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousString_.__init__"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterVariousString_.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousString_.obj"></a>
+    
+            <div class="docstring"><p>String object.</p>
+</div>
+
+
+                            </div>
+                            <div id="FixelfilterVariousString_.run" class="classattr">
+                                        <input id="FixelfilterVariousString_.run-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">run</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">execution</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Execution</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
+
+                <label class="view-source-button" for="FixelfilterVariousString_.run-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousString_.run"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FixelfilterVariousString_.run-96"><a href="#FixelfilterVariousString_.run-96"><span class="linenos"> 96</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="FixelfilterVariousString_.run-97"><a href="#FixelfilterVariousString_.run-97"><span class="linenos"> 97</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="FixelfilterVariousString_.run-98"><a href="#FixelfilterVariousString_.run-98"><span class="linenos"> 98</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="FixelfilterVariousString_.run-99"><a href="#FixelfilterVariousString_.run-99"><span class="linenos"> 99</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="FixelfilterVariousString_.run-100"><a href="#FixelfilterVariousString_.run-100"><span class="linenos">100</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousString_.run-101"><a href="#FixelfilterVariousString_.run-101"><span class="linenos">101</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="FixelfilterVariousString_.run-102"><a href="#FixelfilterVariousString_.run-102"><span class="linenos">102</span></a><span class="sd">        </span>
+</span><span id="FixelfilterVariousString_.run-103"><a href="#FixelfilterVariousString_.run-103"><span class="linenos">103</span></a><span class="sd">        Args:</span>
+</span><span id="FixelfilterVariousString_.run-104"><a href="#FixelfilterVariousString_.run-104"><span class="linenos">104</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="FixelfilterVariousString_.run-105"><a href="#FixelfilterVariousString_.run-105"><span class="linenos">105</span></a><span class="sd">        Returns:</span>
+</span><span id="FixelfilterVariousString_.run-106"><a href="#FixelfilterVariousString_.run-106"><span class="linenos">106</span></a><span class="sd">            Command line arguments</span>
+</span><span id="FixelfilterVariousString_.run-107"><a href="#FixelfilterVariousString_.run-107"><span class="linenos">107</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FixelfilterVariousString_.run-108"><a href="#FixelfilterVariousString_.run-108"><span class="linenos">108</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="FixelfilterVariousString_.run-109"><a href="#FixelfilterVariousString_.run-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+</span><span id="FixelfilterVariousString_.run-110"><a href="#FixelfilterVariousString_.run-110"><span class="linenos">110</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build command line arguments. This method is called by the main command.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>execution:</strong>  The execution object.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Command line arguments</p>
+</blockquote>
+</div>
+
+
+                            </div>
+                </section>
                 <section id="fixelfilter">
                             <input id="fixelfilter-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixelfilter</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">threshold_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold_connectivity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">minweight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#FixelfilterConfig">FixelfilterConfig</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FixelfilterOutputs">FixelfilterOutputs</a></span>:</span></span>
+        <span class="name">fixelfilter</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#FixelfilterVariousString">FixelfilterVariousString</a></span><span class="p">,</span> <span class="n"><a href="#FixelfilterVariousFile">FixelfilterVariousFile</a></span><span class="p">]</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#FixelfilterVariousString_">FixelfilterVariousString_</a></span><span class="p">,</span> <span class="n"><a href="#FixelfilterVariousFile_">FixelfilterVariousFile_</a></span><span class="p">]</span>,</span><span class="param">	<span class="n">threshold_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold_connectivity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">minweight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#FixelfilterConfig">FixelfilterConfig</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FixelfilterOutputs">FixelfilterOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixelfilter-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#fixelfilter"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="fixelfilter-55"><a href="#fixelfilter-55"><span class="linenos"> 55</span></a><span class="k">def</span> <span class="nf">fixelfilter</span><span class="p">(</span>
-</span><span id="fixelfilter-56"><a href="#fixelfilter-56"><span class="linenos"> 56</span></a>    <span class="n">matrix</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="fixelfilter-57"><a href="#fixelfilter-57"><span class="linenos"> 57</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="fixelfilter-58"><a href="#fixelfilter-58"><span class="linenos"> 58</span></a>    <span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="fixelfilter-59"><a href="#fixelfilter-59"><span class="linenos"> 59</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="fixelfilter-60"><a href="#fixelfilter-60"><span class="linenos"> 60</span></a>    <span class="n">threshold_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixelfilter-61"><a href="#fixelfilter-61"><span class="linenos"> 61</span></a>    <span class="n">threshold_connectivity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixelfilter-62"><a href="#fixelfilter-62"><span class="linenos"> 62</span></a>    <span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixelfilter-63"><a href="#fixelfilter-63"><span class="linenos"> 63</span></a>    <span class="n">minweight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixelfilter-64"><a href="#fixelfilter-64"><span class="linenos"> 64</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixelfilter-65"><a href="#fixelfilter-65"><span class="linenos"> 65</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixelfilter-66"><a href="#fixelfilter-66"><span class="linenos"> 66</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixelfilter-67"><a href="#fixelfilter-67"><span class="linenos"> 67</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixelfilter-68"><a href="#fixelfilter-68"><span class="linenos"> 68</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixelfilter-69"><a href="#fixelfilter-69"><span class="linenos"> 69</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixelfilter-70"><a href="#fixelfilter-70"><span class="linenos"> 70</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">FixelfilterConfig</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixelfilter-71"><a href="#fixelfilter-71"><span class="linenos"> 71</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixelfilter-72"><a href="#fixelfilter-72"><span class="linenos"> 72</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixelfilter-73"><a href="#fixelfilter-73"><span class="linenos"> 73</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixelfilter-74"><a href="#fixelfilter-74"><span class="linenos"> 74</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FixelfilterOutputs</span><span class="p">:</span>
-</span><span id="fixelfilter-75"><a href="#fixelfilter-75"><span class="linenos"> 75</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="fixelfilter-76"><a href="#fixelfilter-76"><span class="linenos"> 76</span></a><span class="sd">    Perform filtering operations on fixel-based data.</span>
-</span><span id="fixelfilter-77"><a href="#fixelfilter-77"><span class="linenos"> 77</span></a><span class="sd">    </span>
-</span><span id="fixelfilter-78"><a href="#fixelfilter-78"><span class="linenos"> 78</span></a><span class="sd">    If the first input to the command is a specific fixel data file, then a</span>
-</span><span id="fixelfilter-79"><a href="#fixelfilter-79"><span class="linenos"> 79</span></a><span class="sd">    filtered version of only that file will be generated by the command.</span>
-</span><span id="fixelfilter-80"><a href="#fixelfilter-80"><span class="linenos"> 80</span></a><span class="sd">    Alternatively, if the input is the location of a fixel directory, then the</span>
-</span><span id="fixelfilter-81"><a href="#fixelfilter-81"><span class="linenos"> 81</span></a><span class="sd">    command will create a duplicate of the fixel directory, and apply the</span>
-</span><span id="fixelfilter-82"><a href="#fixelfilter-82"><span class="linenos"> 82</span></a><span class="sd">    specified filter operation to all fixel data files within the directory.</span>
-</span><span id="fixelfilter-83"><a href="#fixelfilter-83"><span class="linenos"> 83</span></a><span class="sd">    </span>
-</span><span id="fixelfilter-84"><a href="#fixelfilter-84"><span class="linenos"> 84</span></a><span class="sd">    References:</span>
-</span><span id="fixelfilter-85"><a href="#fixelfilter-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
-</span><span id="fixelfilter-86"><a href="#fixelfilter-86"><span class="linenos"> 86</span></a><span class="sd">    .</span>
-</span><span id="fixelfilter-87"><a href="#fixelfilter-87"><span class="linenos"> 87</span></a><span class="sd">    </span>
-</span><span id="fixelfilter-88"><a href="#fixelfilter-88"><span class="linenos"> 88</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
-</span><span id="fixelfilter-89"><a href="#fixelfilter-89"><span class="linenos"> 89</span></a><span class="sd">    </span>
-</span><span id="fixelfilter-90"><a href="#fixelfilter-90"><span class="linenos"> 90</span></a><span class="sd">    URL:</span>
-</span><span id="fixelfilter-91"><a href="#fixelfilter-91"><span class="linenos"> 91</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelfilter.html</span>
-</span><span id="fixelfilter-92"><a href="#fixelfilter-92"><span class="linenos"> 92</span></a><span class="sd">    </span>
-</span><span id="fixelfilter-93"><a href="#fixelfilter-93"><span class="linenos"> 93</span></a><span class="sd">    Args:</span>
-</span><span id="fixelfilter-94"><a href="#fixelfilter-94"><span class="linenos"> 94</span></a><span class="sd">        matrix: provide a fixel-fixel connectivity matrix for filtering\</span>
-</span><span id="fixelfilter-95"><a href="#fixelfilter-95"><span class="linenos"> 95</span></a><span class="sd">            operations that require it.</span>
-</span><span id="fixelfilter-96"><a href="#fixelfilter-96"><span class="linenos"> 96</span></a><span class="sd">        input_: the input: either a fixel data file, or a fixel directory (see\</span>
-</span><span id="fixelfilter-97"><a href="#fixelfilter-97"><span class="linenos"> 97</span></a><span class="sd">            Description).</span>
-</span><span id="fixelfilter-98"><a href="#fixelfilter-98"><span class="linenos"> 98</span></a><span class="sd">        filter_: the filtering operation to perform; options are: connect,\</span>
-</span><span id="fixelfilter-99"><a href="#fixelfilter-99"><span class="linenos"> 99</span></a><span class="sd">            smooth.</span>
-</span><span id="fixelfilter-100"><a href="#fixelfilter-100"><span class="linenos">100</span></a><span class="sd">        output: the output: either a fixel data file, or a fixel directory (see\</span>
-</span><span id="fixelfilter-101"><a href="#fixelfilter-101"><span class="linenos">101</span></a><span class="sd">            Description).</span>
-</span><span id="fixelfilter-102"><a href="#fixelfilter-102"><span class="linenos">102</span></a><span class="sd">        threshold_value: specify a threshold for the input fixel data file\</span>
-</span><span id="fixelfilter-103"><a href="#fixelfilter-103"><span class="linenos">103</span></a><span class="sd">            values (default = 0.5).</span>
-</span><span id="fixelfilter-104"><a href="#fixelfilter-104"><span class="linenos">104</span></a><span class="sd">        threshold_connectivity: specify a fixel-fixel connectivity threshold\</span>
-</span><span id="fixelfilter-105"><a href="#fixelfilter-105"><span class="linenos">105</span></a><span class="sd">            for connected-component analysis (default = 0.10000000000000001).</span>
-</span><span id="fixelfilter-106"><a href="#fixelfilter-106"><span class="linenos">106</span></a><span class="sd">        fwhm: the full-width half-maximum (FWHM) of the spatial component of\</span>
-</span><span id="fixelfilter-107"><a href="#fixelfilter-107"><span class="linenos">107</span></a><span class="sd">            the smoothing filter (default = 10mm).</span>
-</span><span id="fixelfilter-108"><a href="#fixelfilter-108"><span class="linenos">108</span></a><span class="sd">        minweight: apply a minimum threshold to smoothing weights (default =\</span>
-</span><span id="fixelfilter-109"><a href="#fixelfilter-109"><span class="linenos">109</span></a><span class="sd">            0.01).</span>
-</span><span id="fixelfilter-110"><a href="#fixelfilter-110"><span class="linenos">110</span></a><span class="sd">        mask: only perform smoothing within a specified binary fixel mask.</span>
-</span><span id="fixelfilter-111"><a href="#fixelfilter-111"><span class="linenos">111</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="fixelfilter-112"><a href="#fixelfilter-112"><span class="linenos">112</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="fixelfilter-113"><a href="#fixelfilter-113"><span class="linenos">113</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="fixelfilter-114"><a href="#fixelfilter-114"><span class="linenos">114</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="fixelfilter-115"><a href="#fixelfilter-115"><span class="linenos">115</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="fixelfilter-116"><a href="#fixelfilter-116"><span class="linenos">116</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="fixelfilter-117"><a href="#fixelfilter-117"><span class="linenos">117</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="fixelfilter-118"><a href="#fixelfilter-118"><span class="linenos">118</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="fixelfilter-119"><a href="#fixelfilter-119"><span class="linenos">119</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="fixelfilter-120"><a href="#fixelfilter-120"><span class="linenos">120</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="fixelfilter-121"><a href="#fixelfilter-121"><span class="linenos">121</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="fixelfilter-122"><a href="#fixelfilter-122"><span class="linenos">122</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="fixelfilter-123"><a href="#fixelfilter-123"><span class="linenos">123</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fixelfilter-124"><a href="#fixelfilter-124"><span class="linenos">124</span></a><span class="sd">    Returns:</span>
-</span><span id="fixelfilter-125"><a href="#fixelfilter-125"><span class="linenos">125</span></a><span class="sd">        NamedTuple of outputs (described in `FixelfilterOutputs`).</span>
-</span><span id="fixelfilter-126"><a href="#fixelfilter-126"><span class="linenos">126</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fixelfilter-127"><a href="#fixelfilter-127"><span class="linenos">127</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fixelfilter-128"><a href="#fixelfilter-128"><span class="linenos">128</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELFILTER_METADATA</span><span class="p">)</span>
-</span><span id="fixelfilter-129"><a href="#fixelfilter-129"><span class="linenos">129</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fixelfilter-130"><a href="#fixelfilter-130"><span class="linenos">130</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelfilter&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-131"><a href="#fixelfilter-131"><span class="linenos">131</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-132"><a href="#fixelfilter-132"><span class="linenos">132</span></a>        <span class="s2">&quot;-matrix&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-133"><a href="#fixelfilter-133"><span class="linenos">133</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-</span><span id="fixelfilter-134"><a href="#fixelfilter-134"><span class="linenos">134</span></a>    <span class="p">])</span>
-</span><span id="fixelfilter-135"><a href="#fixelfilter-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">threshold_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-136"><a href="#fixelfilter-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-137"><a href="#fixelfilter-137"><span class="linenos">137</span></a>            <span class="s2">&quot;-threshold_value&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-138"><a href="#fixelfilter-138"><span class="linenos">138</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_value</span><span class="p">)</span>
-</span><span id="fixelfilter-139"><a href="#fixelfilter-139"><span class="linenos">139</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-140"><a href="#fixelfilter-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">threshold_connectivity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-141"><a href="#fixelfilter-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-142"><a href="#fixelfilter-142"><span class="linenos">142</span></a>            <span class="s2">&quot;-threshold_connectivity&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-143"><a href="#fixelfilter-143"><span class="linenos">143</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_connectivity</span><span class="p">)</span>
-</span><span id="fixelfilter-144"><a href="#fixelfilter-144"><span class="linenos">144</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-145"><a href="#fixelfilter-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-146"><a href="#fixelfilter-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-147"><a href="#fixelfilter-147"><span class="linenos">147</span></a>            <span class="s2">&quot;-fwhm&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-148"><a href="#fixelfilter-148"><span class="linenos">148</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
-</span><span id="fixelfilter-149"><a href="#fixelfilter-149"><span class="linenos">149</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-150"><a href="#fixelfilter-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">minweight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-151"><a href="#fixelfilter-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-152"><a href="#fixelfilter-152"><span class="linenos">152</span></a>            <span class="s2">&quot;-minweight&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-153"><a href="#fixelfilter-153"><span class="linenos">153</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">minweight</span><span class="p">)</span>
-</span><span id="fixelfilter-154"><a href="#fixelfilter-154"><span class="linenos">154</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-155"><a href="#fixelfilter-155"><span class="linenos">155</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-156"><a href="#fixelfilter-156"><span class="linenos">156</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-157"><a href="#fixelfilter-157"><span class="linenos">157</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-158"><a href="#fixelfilter-158"><span class="linenos">158</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="fixelfilter-159"><a href="#fixelfilter-159"><span class="linenos">159</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-160"><a href="#fixelfilter-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="fixelfilter-161"><a href="#fixelfilter-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-162"><a href="#fixelfilter-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="fixelfilter-163"><a href="#fixelfilter-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-164"><a href="#fixelfilter-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="fixelfilter-165"><a href="#fixelfilter-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-166"><a href="#fixelfilter-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="fixelfilter-167"><a href="#fixelfilter-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-168"><a href="#fixelfilter-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-169"><a href="#fixelfilter-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-170"><a href="#fixelfilter-170"><span class="linenos">170</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-171"><a href="#fixelfilter-171"><span class="linenos">171</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="fixelfilter-172"><a href="#fixelfilter-172"><span class="linenos">172</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-173"><a href="#fixelfilter-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-174"><a href="#fixelfilter-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="fixelfilter-175"><a href="#fixelfilter-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="fixelfilter-176"><a href="#fixelfilter-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-177"><a href="#fixelfilter-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="fixelfilter-178"><a href="#fixelfilter-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-179"><a href="#fixelfilter-179"><span class="linenos">179</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
-</span><span id="fixelfilter-180"><a href="#fixelfilter-180"><span class="linenos">180</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span>
-</span><span id="fixelfilter-181"><a href="#fixelfilter-181"><span class="linenos">181</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="fixelfilter-182"><a href="#fixelfilter-182"><span class="linenos">182</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelfilterOutputs</span><span class="p">(</span>
-</span><span id="fixelfilter-183"><a href="#fixelfilter-183"><span class="linenos">183</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fixelfilter-184"><a href="#fixelfilter-184"><span class="linenos">184</span></a>    <span class="p">)</span>
-</span><span id="fixelfilter-185"><a href="#fixelfilter-185"><span class="linenos">185</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fixelfilter-186"><a href="#fixelfilter-186"><span class="linenos">186</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="fixelfilter-143"><a href="#fixelfilter-143"><span class="linenos">143</span></a><span class="k">def</span> <span class="nf">fixelfilter</span><span class="p">(</span>
+</span><span id="fixelfilter-144"><a href="#fixelfilter-144"><span class="linenos">144</span></a>    <span class="n">matrix</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="fixelfilter-145"><a href="#fixelfilter-145"><span class="linenos">145</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">FixelfilterVariousString</span><span class="p">,</span> <span class="n">FixelfilterVariousFile</span><span class="p">],</span>
+</span><span id="fixelfilter-146"><a href="#fixelfilter-146"><span class="linenos">146</span></a>    <span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="fixelfilter-147"><a href="#fixelfilter-147"><span class="linenos">147</span></a>    <span class="n">output</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">FixelfilterVariousString_</span><span class="p">,</span> <span class="n">FixelfilterVariousFile_</span><span class="p">],</span>
+</span><span id="fixelfilter-148"><a href="#fixelfilter-148"><span class="linenos">148</span></a>    <span class="n">threshold_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixelfilter-149"><a href="#fixelfilter-149"><span class="linenos">149</span></a>    <span class="n">threshold_connectivity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixelfilter-150"><a href="#fixelfilter-150"><span class="linenos">150</span></a>    <span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixelfilter-151"><a href="#fixelfilter-151"><span class="linenos">151</span></a>    <span class="n">minweight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixelfilter-152"><a href="#fixelfilter-152"><span class="linenos">152</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixelfilter-153"><a href="#fixelfilter-153"><span class="linenos">153</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixelfilter-154"><a href="#fixelfilter-154"><span class="linenos">154</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixelfilter-155"><a href="#fixelfilter-155"><span class="linenos">155</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixelfilter-156"><a href="#fixelfilter-156"><span class="linenos">156</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixelfilter-157"><a href="#fixelfilter-157"><span class="linenos">157</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixelfilter-158"><a href="#fixelfilter-158"><span class="linenos">158</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">FixelfilterConfig</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixelfilter-159"><a href="#fixelfilter-159"><span class="linenos">159</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixelfilter-160"><a href="#fixelfilter-160"><span class="linenos">160</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixelfilter-161"><a href="#fixelfilter-161"><span class="linenos">161</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixelfilter-162"><a href="#fixelfilter-162"><span class="linenos">162</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FixelfilterOutputs</span><span class="p">:</span>
+</span><span id="fixelfilter-163"><a href="#fixelfilter-163"><span class="linenos">163</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="fixelfilter-164"><a href="#fixelfilter-164"><span class="linenos">164</span></a><span class="sd">    Perform filtering operations on fixel-based data.</span>
+</span><span id="fixelfilter-165"><a href="#fixelfilter-165"><span class="linenos">165</span></a><span class="sd">    </span>
+</span><span id="fixelfilter-166"><a href="#fixelfilter-166"><span class="linenos">166</span></a><span class="sd">    If the first input to the command is a specific fixel data file, then a</span>
+</span><span id="fixelfilter-167"><a href="#fixelfilter-167"><span class="linenos">167</span></a><span class="sd">    filtered version of only that file will be generated by the command.</span>
+</span><span id="fixelfilter-168"><a href="#fixelfilter-168"><span class="linenos">168</span></a><span class="sd">    Alternatively, if the input is the location of a fixel directory, then the</span>
+</span><span id="fixelfilter-169"><a href="#fixelfilter-169"><span class="linenos">169</span></a><span class="sd">    command will create a duplicate of the fixel directory, and apply the</span>
+</span><span id="fixelfilter-170"><a href="#fixelfilter-170"><span class="linenos">170</span></a><span class="sd">    specified filter operation to all fixel data files within the directory.</span>
+</span><span id="fixelfilter-171"><a href="#fixelfilter-171"><span class="linenos">171</span></a><span class="sd">    </span>
+</span><span id="fixelfilter-172"><a href="#fixelfilter-172"><span class="linenos">172</span></a><span class="sd">    References:</span>
+</span><span id="fixelfilter-173"><a href="#fixelfilter-173"><span class="linenos">173</span></a><span class="sd">    </span>
+</span><span id="fixelfilter-174"><a href="#fixelfilter-174"><span class="linenos">174</span></a><span class="sd">    .</span>
+</span><span id="fixelfilter-175"><a href="#fixelfilter-175"><span class="linenos">175</span></a><span class="sd">    </span>
+</span><span id="fixelfilter-176"><a href="#fixelfilter-176"><span class="linenos">176</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="fixelfilter-177"><a href="#fixelfilter-177"><span class="linenos">177</span></a><span class="sd">    </span>
+</span><span id="fixelfilter-178"><a href="#fixelfilter-178"><span class="linenos">178</span></a><span class="sd">    URL:</span>
+</span><span id="fixelfilter-179"><a href="#fixelfilter-179"><span class="linenos">179</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelfilter.html</span>
+</span><span id="fixelfilter-180"><a href="#fixelfilter-180"><span class="linenos">180</span></a><span class="sd">    </span>
+</span><span id="fixelfilter-181"><a href="#fixelfilter-181"><span class="linenos">181</span></a><span class="sd">    Args:</span>
+</span><span id="fixelfilter-182"><a href="#fixelfilter-182"><span class="linenos">182</span></a><span class="sd">        matrix: provide a fixel-fixel connectivity matrix for filtering\</span>
+</span><span id="fixelfilter-183"><a href="#fixelfilter-183"><span class="linenos">183</span></a><span class="sd">            operations that require it.</span>
+</span><span id="fixelfilter-184"><a href="#fixelfilter-184"><span class="linenos">184</span></a><span class="sd">        input_: the input: either a fixel data file, or a fixel directory (see\</span>
+</span><span id="fixelfilter-185"><a href="#fixelfilter-185"><span class="linenos">185</span></a><span class="sd">            Description).</span>
+</span><span id="fixelfilter-186"><a href="#fixelfilter-186"><span class="linenos">186</span></a><span class="sd">        filter_: the filtering operation to perform; options are: connect,\</span>
+</span><span id="fixelfilter-187"><a href="#fixelfilter-187"><span class="linenos">187</span></a><span class="sd">            smooth.</span>
+</span><span id="fixelfilter-188"><a href="#fixelfilter-188"><span class="linenos">188</span></a><span class="sd">        output: the output: either a fixel data file, or a fixel directory (see\</span>
+</span><span id="fixelfilter-189"><a href="#fixelfilter-189"><span class="linenos">189</span></a><span class="sd">            Description).</span>
+</span><span id="fixelfilter-190"><a href="#fixelfilter-190"><span class="linenos">190</span></a><span class="sd">        threshold_value: specify a threshold for the input fixel data file\</span>
+</span><span id="fixelfilter-191"><a href="#fixelfilter-191"><span class="linenos">191</span></a><span class="sd">            values (default = 0.5).</span>
+</span><span id="fixelfilter-192"><a href="#fixelfilter-192"><span class="linenos">192</span></a><span class="sd">        threshold_connectivity: specify a fixel-fixel connectivity threshold\</span>
+</span><span id="fixelfilter-193"><a href="#fixelfilter-193"><span class="linenos">193</span></a><span class="sd">            for connected-component analysis (default = 0.10000000000000001).</span>
+</span><span id="fixelfilter-194"><a href="#fixelfilter-194"><span class="linenos">194</span></a><span class="sd">        fwhm: the full-width half-maximum (FWHM) of the spatial component of\</span>
+</span><span id="fixelfilter-195"><a href="#fixelfilter-195"><span class="linenos">195</span></a><span class="sd">            the smoothing filter (default = 10mm).</span>
+</span><span id="fixelfilter-196"><a href="#fixelfilter-196"><span class="linenos">196</span></a><span class="sd">        minweight: apply a minimum threshold to smoothing weights (default =\</span>
+</span><span id="fixelfilter-197"><a href="#fixelfilter-197"><span class="linenos">197</span></a><span class="sd">            0.01).</span>
+</span><span id="fixelfilter-198"><a href="#fixelfilter-198"><span class="linenos">198</span></a><span class="sd">        mask: only perform smoothing within a specified binary fixel mask.</span>
+</span><span id="fixelfilter-199"><a href="#fixelfilter-199"><span class="linenos">199</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="fixelfilter-200"><a href="#fixelfilter-200"><span class="linenos">200</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="fixelfilter-201"><a href="#fixelfilter-201"><span class="linenos">201</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="fixelfilter-202"><a href="#fixelfilter-202"><span class="linenos">202</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="fixelfilter-203"><a href="#fixelfilter-203"><span class="linenos">203</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="fixelfilter-204"><a href="#fixelfilter-204"><span class="linenos">204</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="fixelfilter-205"><a href="#fixelfilter-205"><span class="linenos">205</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="fixelfilter-206"><a href="#fixelfilter-206"><span class="linenos">206</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="fixelfilter-207"><a href="#fixelfilter-207"><span class="linenos">207</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="fixelfilter-208"><a href="#fixelfilter-208"><span class="linenos">208</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="fixelfilter-209"><a href="#fixelfilter-209"><span class="linenos">209</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="fixelfilter-210"><a href="#fixelfilter-210"><span class="linenos">210</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="fixelfilter-211"><a href="#fixelfilter-211"><span class="linenos">211</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fixelfilter-212"><a href="#fixelfilter-212"><span class="linenos">212</span></a><span class="sd">    Returns:</span>
+</span><span id="fixelfilter-213"><a href="#fixelfilter-213"><span class="linenos">213</span></a><span class="sd">        NamedTuple of outputs (described in `FixelfilterOutputs`).</span>
+</span><span id="fixelfilter-214"><a href="#fixelfilter-214"><span class="linenos">214</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fixelfilter-215"><a href="#fixelfilter-215"><span class="linenos">215</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fixelfilter-216"><a href="#fixelfilter-216"><span class="linenos">216</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELFILTER_METADATA</span><span class="p">)</span>
+</span><span id="fixelfilter-217"><a href="#fixelfilter-217"><span class="linenos">217</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fixelfilter-218"><a href="#fixelfilter-218"><span class="linenos">218</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelfilter&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-219"><a href="#fixelfilter-219"><span class="linenos">219</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-220"><a href="#fixelfilter-220"><span class="linenos">220</span></a>        <span class="s2">&quot;-matrix&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-221"><a href="#fixelfilter-221"><span class="linenos">221</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+</span><span id="fixelfilter-222"><a href="#fixelfilter-222"><span class="linenos">222</span></a>    <span class="p">])</span>
+</span><span id="fixelfilter-223"><a href="#fixelfilter-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">threshold_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-224"><a href="#fixelfilter-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-225"><a href="#fixelfilter-225"><span class="linenos">225</span></a>            <span class="s2">&quot;-threshold_value&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-226"><a href="#fixelfilter-226"><span class="linenos">226</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_value</span><span class="p">)</span>
+</span><span id="fixelfilter-227"><a href="#fixelfilter-227"><span class="linenos">227</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-228"><a href="#fixelfilter-228"><span class="linenos">228</span></a>    <span class="k">if</span> <span class="n">threshold_connectivity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-229"><a href="#fixelfilter-229"><span class="linenos">229</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-230"><a href="#fixelfilter-230"><span class="linenos">230</span></a>            <span class="s2">&quot;-threshold_connectivity&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-231"><a href="#fixelfilter-231"><span class="linenos">231</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_connectivity</span><span class="p">)</span>
+</span><span id="fixelfilter-232"><a href="#fixelfilter-232"><span class="linenos">232</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-233"><a href="#fixelfilter-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-234"><a href="#fixelfilter-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-235"><a href="#fixelfilter-235"><span class="linenos">235</span></a>            <span class="s2">&quot;-fwhm&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-236"><a href="#fixelfilter-236"><span class="linenos">236</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
+</span><span id="fixelfilter-237"><a href="#fixelfilter-237"><span class="linenos">237</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-238"><a href="#fixelfilter-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">minweight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-239"><a href="#fixelfilter-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-240"><a href="#fixelfilter-240"><span class="linenos">240</span></a>            <span class="s2">&quot;-minweight&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-241"><a href="#fixelfilter-241"><span class="linenos">241</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">minweight</span><span class="p">)</span>
+</span><span id="fixelfilter-242"><a href="#fixelfilter-242"><span class="linenos">242</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-243"><a href="#fixelfilter-243"><span class="linenos">243</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-244"><a href="#fixelfilter-244"><span class="linenos">244</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-245"><a href="#fixelfilter-245"><span class="linenos">245</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-246"><a href="#fixelfilter-246"><span class="linenos">246</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="fixelfilter-247"><a href="#fixelfilter-247"><span class="linenos">247</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-248"><a href="#fixelfilter-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="fixelfilter-249"><a href="#fixelfilter-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-250"><a href="#fixelfilter-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="fixelfilter-251"><a href="#fixelfilter-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-252"><a href="#fixelfilter-252"><span class="linenos">252</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="fixelfilter-253"><a href="#fixelfilter-253"><span class="linenos">253</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-254"><a href="#fixelfilter-254"><span class="linenos">254</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="fixelfilter-255"><a href="#fixelfilter-255"><span class="linenos">255</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-256"><a href="#fixelfilter-256"><span class="linenos">256</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-257"><a href="#fixelfilter-257"><span class="linenos">257</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-258"><a href="#fixelfilter-258"><span class="linenos">258</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-259"><a href="#fixelfilter-259"><span class="linenos">259</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="fixelfilter-260"><a href="#fixelfilter-260"><span class="linenos">260</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-261"><a href="#fixelfilter-261"><span class="linenos">261</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-262"><a href="#fixelfilter-262"><span class="linenos">262</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="fixelfilter-263"><a href="#fixelfilter-263"><span class="linenos">263</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="fixelfilter-264"><a href="#fixelfilter-264"><span class="linenos">264</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-265"><a href="#fixelfilter-265"><span class="linenos">265</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="fixelfilter-266"><a href="#fixelfilter-266"><span class="linenos">266</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-267"><a href="#fixelfilter-267"><span class="linenos">267</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="fixelfilter-268"><a href="#fixelfilter-268"><span class="linenos">268</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span>
+</span><span id="fixelfilter-269"><a href="#fixelfilter-269"><span class="linenos">269</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="fixelfilter-270"><a href="#fixelfilter-270"><span class="linenos">270</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelfilterOutputs</span><span class="p">(</span>
+</span><span id="fixelfilter-271"><a href="#fixelfilter-271"><span class="linenos">271</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fixelfilter-272"><a href="#fixelfilter-272"><span class="linenos">272</span></a>    <span class="p">)</span>
+</span><span id="fixelfilter-273"><a href="#fixelfilter-273"><span class="linenos">273</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fixelfilter-274"><a href="#fixelfilter-274"><span class="linenos">274</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

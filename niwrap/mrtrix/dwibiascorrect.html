@@ -34,6 +34,24 @@
                     <a class="variable" href="#DWIBIASCORRECT_METADATA">DWIBIASCORRECT_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#DwibiascorrectFslgrad">DwibiascorrectFslgrad</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#DwibiascorrectFslgrad.__init__">DwibiascorrectFslgrad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectFslgrad.bvecs">bvecs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectFslgrad.bvals">bvals</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#DwibiascorrectFslgrad.run">run</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#DwibiascorrectOutputs">DwibiascorrectOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -84,185 +102,222 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">DWIBIASCORRECT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a41dd6564a5ed99b11770e8281efcabfda76fbca.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;88e757ea770edcd39a486a4232696e9152b5005d.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dwibiascorrect&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="p">)</span>
 </span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a>
 </span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a>
-</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="k">class</span> <span class="nc">DwibiascorrectOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="sd">    Output object returned when calling `dwibiascorrect(...)`.</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">output_image_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File containing the corrected image series&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">bias_image_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File containing the estimated bias field&quot;&quot;&quot;</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>
-</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>
-</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a><span class="k">def</span> <span class="nf">dwibiascorrect</span><span class="p">(</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>    <span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>    <span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>    <span class="n">fslgrad_bvecs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>    <span class="n">mask_image</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>    <span class="n">bias_image</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>    <span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>    <span class="n">scratch_dir</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>    <span class="n">continue_scratch_dir</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>    <span class="n">ants_b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>    <span class="n">ants_c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>    <span class="n">ants_s</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DwibiascorrectOutputs</span><span class="p">:</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    Perform B1 field inhomogeneity correction for a DWI volume series using either</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    ANTs or FSL.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    </span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    Author: Robert E. Smith</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    </span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    URL: http://www.mrtrix.org/</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    </span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    Args:</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        algorithm: Select the algorithm to be used for bias correction. Options\</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            are: ants, fsl.</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        input_image: The input image series to be corrected.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        output_image: The output corrected image series.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        grad: Provide the diffusion gradient table in MRtrix format.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        fslgrad_bvecs: Provide the diffusion gradient table in FSL bvecs format.</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        mask_image: Manually provide a mask image for bias field estimation.</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        bias_image: Output the estimated bias field.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        nocleanup: Do not delete intermediate files during script execution,\</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">            and do not delete scratch directory at script completion.</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        scratch_dir: Manually specify the path in which to generate the scratch\</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">            directory.</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        continue_scratch_dir: Continue the script from a previous execution;\</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">            must provide the scratch directory path.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        info: Display information messages.</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        quiet: Do not display information messages or progress status.</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        debug: Display debugging messages.</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        force: Force overwrite of output files.</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        nthreads: Use this number of threads in multi-threaded applications\</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        config: Temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        help_: Display help information and exit.</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        version: Display version information and exit.</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        ants_b: N4BiasFieldCorrection option -b (initial mesh resolution in mm,\</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">            spline order).</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        ants_c: N4BiasFieldCorrection option -c (number of iterations,\</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">            convergence threshold).</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        ants_s: N4BiasFieldCorrection option -s (shrink-factor applied to\</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">            spatial dimensions).</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    Returns:</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        NamedTuple of outputs (described in `DwibiascorrectOutputs`).</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">fslgrad_bvecs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fslgrad_bvecs</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">):</span> 
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length of &#39;fslgrad_bvecs&#39; must be 2 but was </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">fslgrad_bvecs</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">continue_scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">continue_scratch_dir</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">):</span> 
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length of &#39;continue_scratch_dir&#39; must be 2 but was </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">continue_scratch_dir</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWIBIASCORRECT_METADATA</span><span class="p">)</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dwibiascorrect&quot;</span><span class="p">)</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">))</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="p">])</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">fslgrad_bvecs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="s2">&quot;-fslgrad&quot;</span><span class="p">,</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fslgrad_bvecs</span><span class="p">]</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="p">])</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">mask_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_image</span><span class="p">)</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="p">])</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">bias_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>            <span class="s2">&quot;-bias&quot;</span><span class="p">,</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bias_image</span><span class="p">)</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="p">])</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">nocleanup</span><span class="p">:</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nocleanup&quot;</span><span class="p">)</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="s2">&quot;-scratch&quot;</span><span class="p">,</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scratch_dir</span><span class="p">)</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="p">])</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">continue_scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="s2">&quot;-continue&quot;</span><span class="p">,</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">continue_scratch_dir</span><span class="p">]</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="p">])</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="p">])</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>            <span class="s2">&quot;-config&quot;</span><span class="p">,</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>            <span class="o">*</span><span class="n">config</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="p">])</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">ants_b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>            <span class="s2">&quot;-ants.b&quot;</span><span class="p">,</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>            <span class="n">ants_b</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="p">])</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">ants_c</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>            <span class="s2">&quot;-ants.c&quot;</span><span class="p">,</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>            <span class="n">ants_c</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="p">])</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">ants_s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>            <span class="s2">&quot;-ants.s&quot;</span><span class="p">,</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>            <span class="n">ants_s</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>        <span class="p">])</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DwibiascorrectOutputs</span><span class="p">(</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="n">output_image_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_image</span><span class="p">),</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="n">bias_image_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">bias_image</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">bias_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="p">)</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="s2">&quot;DWIBIASCORRECT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="s2">&quot;DwibiascorrectOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="s2">&quot;dwibiascorrect&quot;</span><span class="p">,</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="p">]</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="k">class</span> <span class="nc">DwibiascorrectFslgrad</span><span class="p">:</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    Provide the diffusion-weighted gradient scheme used in the acquisition in</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="sd">    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="sd">    the input image header, the data provided with this option will be instead</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="sd">    used.</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">bvecs</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Provide the diffusion-weighted gradient scheme used in the acquisition in</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a><span class="sd">    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="sd">    the input image header, the data provided with this option will be instead</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a><span class="sd">    used.&quot;&quot;&quot;</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>    <span class="n">bvals</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Provide the diffusion-weighted gradient scheme used in the acquisition in</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="sd">    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="sd">    the input image header, the data provided with this option will be instead</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">    used.&quot;&quot;&quot;</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>    
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">        </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">        Args:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">        Returns:</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">            Command line arguments</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fslgrad&quot;</span><span class="p">)</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bvecs</span><span class="p">))</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bvals</span><span class="p">))</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="k">class</span> <span class="nc">DwibiascorrectOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    Output object returned when calling `dwibiascorrect(...)`.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">output_image_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File containing the corrected image series&quot;&quot;&quot;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">bias_image_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File containing the estimated bias field&quot;&quot;&quot;</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="k">def</span> <span class="nf">dwibiascorrect</span><span class="p">(</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">DwibiascorrectFslgrad</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">mask_image</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">bias_image</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">scratch_dir</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">continue_scratch_dir</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">ants_b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">ants_c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">ants_s</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DwibiascorrectOutputs</span><span class="p">:</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    Perform B1 field inhomogeneity correction for a DWI volume series using either</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    ANTs or FSL.</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    </span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    Author: Robert E. Smith</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    </span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">    URL: http://www.mrtrix.org/</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">    </span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">    Args:</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        algorithm: Select the algorithm to be used for bias correction. Options\</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">            are: ants, fsl.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        input_image: The input image series to be corrected.</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        output_image: The output corrected image series.</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        grad: Provide the diffusion gradient table in MRtrix format.</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        mask_image: Manually provide a mask image for bias field estimation.</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        bias_image: Output the estimated bias field.</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        nocleanup: Do not delete intermediate files during script execution,\</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">            and do not delete scratch directory at script completion.</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        scratch_dir: Manually specify the path in which to generate the scratch\</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">            directory.</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">        continue_scratch_dir: Continue the script from a previous execution;\</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">            must provide the scratch directory path.</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        info: Display information messages.</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">        quiet: Do not display information messages or progress status.</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        debug: Display debugging messages.</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">        force: Force overwrite of output files.</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">        nthreads: Use this number of threads in multi-threaded applications\</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        config: Temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        help_: Display help information and exit.</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        version: Display version information and exit.</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        ants_b: N4BiasFieldCorrection option -b (initial mesh resolution in mm,\</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">            spline order).</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        ants_c: N4BiasFieldCorrection option -c (number of iterations,\</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">            convergence threshold).</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        ants_s: N4BiasFieldCorrection option -s (shrink-factor applied to\</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">            spatial dimensions).</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    Returns:</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">        NamedTuple of outputs (described in `DwibiascorrectOutputs`).</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">continue_scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">continue_scratch_dir</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">):</span> 
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length of &#39;continue_scratch_dir&#39; must be 2 but was </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">continue_scratch_dir</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWIBIASCORRECT_METADATA</span><span class="p">)</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dwibiascorrect&quot;</span><span class="p">)</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">))</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="p">])</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">fslgrad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fslgrad</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">mask_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_image</span><span class="p">)</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="p">])</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">bias_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>            <span class="s2">&quot;-bias&quot;</span><span class="p">,</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bias_image</span><span class="p">)</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="p">])</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">nocleanup</span><span class="p">:</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nocleanup&quot;</span><span class="p">)</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>            <span class="s2">&quot;-scratch&quot;</span><span class="p">,</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scratch_dir</span><span class="p">)</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="p">])</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">continue_scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>            <span class="s2">&quot;-continue&quot;</span><span class="p">,</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">continue_scratch_dir</span><span class="p">]</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="p">])</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="p">])</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>            <span class="s2">&quot;-config&quot;</span><span class="p">,</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>            <span class="o">*</span><span class="n">config</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="p">])</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="k">if</span> <span class="n">ants_b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>            <span class="s2">&quot;-ants.b&quot;</span><span class="p">,</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="n">ants_b</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="p">])</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">ants_c</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>            <span class="s2">&quot;-ants.c&quot;</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>            <span class="n">ants_c</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="p">])</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">ants_s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>            <span class="s2">&quot;-ants.s&quot;</span><span class="p">,</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>            <span class="n">ants_s</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="p">])</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DwibiascorrectOutputs</span><span class="p">(</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="n">output_image_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_image</span><span class="p">),</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="n">bias_image_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">bias_image</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">bias_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="p">)</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="s2">&quot;DWIBIASCORRECT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="s2">&quot;DwibiascorrectFslgrad&quot;</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="s2">&quot;DwibiascorrectOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="s2">&quot;dwibiascorrect&quot;</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -271,7 +326,7 @@
                     <div class="attr variable">
             <span class="name">DWIBIASCORRECT_METADATA</span>        =
 <input id="DWIBIASCORRECT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="DWIBIASCORRECT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a41dd6564a5ed99b11770e8281efcabfda76fbca.boutiques&#39;, name=&#39;dwibiascorrect&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="DWIBIASCORRECT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;88e757ea770edcd39a486a4232696e9152b5005d.boutiques&#39;, name=&#39;dwibiascorrect&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -279,6 +334,157 @@
     
     
 
+                </section>
+                <section id="DwibiascorrectFslgrad">
+                            <input id="DwibiascorrectFslgrad-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+                    <div class="decorator">@dataclasses.dataclass</div>
+
+    <span class="def">class</span>
+    <span class="name">DwibiascorrectFslgrad</span>:
+
+                <label class="view-source-button" for="DwibiascorrectFslgrad-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#DwibiascorrectFslgrad"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="DwibiascorrectFslgrad-18"><a href="#DwibiascorrectFslgrad-18"><span class="linenos">18</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="DwibiascorrectFslgrad-19"><a href="#DwibiascorrectFslgrad-19"><span class="linenos">19</span></a><span class="k">class</span> <span class="nc">DwibiascorrectFslgrad</span><span class="p">:</span>
+</span><span id="DwibiascorrectFslgrad-20"><a href="#DwibiascorrectFslgrad-20"><span class="linenos">20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectFslgrad-21"><a href="#DwibiascorrectFslgrad-21"><span class="linenos">21</span></a><span class="sd">    Provide the diffusion-weighted gradient scheme used in the acquisition in</span>
+</span><span id="DwibiascorrectFslgrad-22"><a href="#DwibiascorrectFslgrad-22"><span class="linenos">22</span></a><span class="sd">    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in</span>
+</span><span id="DwibiascorrectFslgrad-23"><a href="#DwibiascorrectFslgrad-23"><span class="linenos">23</span></a><span class="sd">    the input image header, the data provided with this option will be instead</span>
+</span><span id="DwibiascorrectFslgrad-24"><a href="#DwibiascorrectFslgrad-24"><span class="linenos">24</span></a><span class="sd">    used.</span>
+</span><span id="DwibiascorrectFslgrad-25"><a href="#DwibiascorrectFslgrad-25"><span class="linenos">25</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectFslgrad-26"><a href="#DwibiascorrectFslgrad-26"><span class="linenos">26</span></a>    <span class="n">bvecs</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="DwibiascorrectFslgrad-27"><a href="#DwibiascorrectFslgrad-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Provide the diffusion-weighted gradient scheme used in the acquisition in</span>
+</span><span id="DwibiascorrectFslgrad-28"><a href="#DwibiascorrectFslgrad-28"><span class="linenos">28</span></a><span class="sd">    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in</span>
+</span><span id="DwibiascorrectFslgrad-29"><a href="#DwibiascorrectFslgrad-29"><span class="linenos">29</span></a><span class="sd">    the input image header, the data provided with this option will be instead</span>
+</span><span id="DwibiascorrectFslgrad-30"><a href="#DwibiascorrectFslgrad-30"><span class="linenos">30</span></a><span class="sd">    used.&quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectFslgrad-31"><a href="#DwibiascorrectFslgrad-31"><span class="linenos">31</span></a>    <span class="n">bvals</span><span class="p">:</span> <span class="n">InputPathType</span>
+</span><span id="DwibiascorrectFslgrad-32"><a href="#DwibiascorrectFslgrad-32"><span class="linenos">32</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Provide the diffusion-weighted gradient scheme used in the acquisition in</span>
+</span><span id="DwibiascorrectFslgrad-33"><a href="#DwibiascorrectFslgrad-33"><span class="linenos">33</span></a><span class="sd">    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in</span>
+</span><span id="DwibiascorrectFslgrad-34"><a href="#DwibiascorrectFslgrad-34"><span class="linenos">34</span></a><span class="sd">    the input image header, the data provided with this option will be instead</span>
+</span><span id="DwibiascorrectFslgrad-35"><a href="#DwibiascorrectFslgrad-35"><span class="linenos">35</span></a><span class="sd">    used.&quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectFslgrad-36"><a href="#DwibiascorrectFslgrad-36"><span class="linenos">36</span></a>    
+</span><span id="DwibiascorrectFslgrad-37"><a href="#DwibiascorrectFslgrad-37"><span class="linenos">37</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="DwibiascorrectFslgrad-38"><a href="#DwibiascorrectFslgrad-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="DwibiascorrectFslgrad-39"><a href="#DwibiascorrectFslgrad-39"><span class="linenos">39</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="DwibiascorrectFslgrad-40"><a href="#DwibiascorrectFslgrad-40"><span class="linenos">40</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="DwibiascorrectFslgrad-41"><a href="#DwibiascorrectFslgrad-41"><span class="linenos">41</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectFslgrad-42"><a href="#DwibiascorrectFslgrad-42"><span class="linenos">42</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="DwibiascorrectFslgrad-43"><a href="#DwibiascorrectFslgrad-43"><span class="linenos">43</span></a><span class="sd">        </span>
+</span><span id="DwibiascorrectFslgrad-44"><a href="#DwibiascorrectFslgrad-44"><span class="linenos">44</span></a><span class="sd">        Args:</span>
+</span><span id="DwibiascorrectFslgrad-45"><a href="#DwibiascorrectFslgrad-45"><span class="linenos">45</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="DwibiascorrectFslgrad-46"><a href="#DwibiascorrectFslgrad-46"><span class="linenos">46</span></a><span class="sd">        Returns:</span>
+</span><span id="DwibiascorrectFslgrad-47"><a href="#DwibiascorrectFslgrad-47"><span class="linenos">47</span></a><span class="sd">            Command line arguments</span>
+</span><span id="DwibiascorrectFslgrad-48"><a href="#DwibiascorrectFslgrad-48"><span class="linenos">48</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectFslgrad-49"><a href="#DwibiascorrectFslgrad-49"><span class="linenos">49</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="DwibiascorrectFslgrad-50"><a href="#DwibiascorrectFslgrad-50"><span class="linenos">50</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fslgrad&quot;</span><span class="p">)</span>
+</span><span id="DwibiascorrectFslgrad-51"><a href="#DwibiascorrectFslgrad-51"><span class="linenos">51</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bvecs</span><span class="p">))</span>
+</span><span id="DwibiascorrectFslgrad-52"><a href="#DwibiascorrectFslgrad-52"><span class="linenos">52</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bvals</span><span class="p">))</span>
+</span><span id="DwibiascorrectFslgrad-53"><a href="#DwibiascorrectFslgrad-53"><span class="linenos">53</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Provide the diffusion-weighted gradient scheme used in the acquisition in
+FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
+the input image header, the data provided with this option will be instead
+used.</p>
+</div>
+
+
+                            <div id="DwibiascorrectFslgrad.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">DwibiascorrectFslgrad</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>, </span><span class="param"><span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectFslgrad.__init__"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectFslgrad.bvecs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvecs</span><span class="annotation">: pathlib.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectFslgrad.bvecs"></a>
+    
+            <div class="docstring"><p>Provide the diffusion-weighted gradient scheme used in the acquisition in
+FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
+the input image header, the data provided with this option will be instead
+used.</p>
+</div>
+
+
+                            </div>
+                            <div id="DwibiascorrectFslgrad.bvals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvals</span><span class="annotation">: pathlib.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectFslgrad.bvals"></a>
+    
+            <div class="docstring"><p>Provide the diffusion-weighted gradient scheme used in the acquisition in
+FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
+the input image header, the data provided with this option will be instead
+used.</p>
+</div>
+
+
+                            </div>
+                            <div id="DwibiascorrectFslgrad.run" class="classattr">
+                                        <input id="DwibiascorrectFslgrad.run-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">run</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">execution</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Execution</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
+
+                <label class="view-source-button" for="DwibiascorrectFslgrad.run-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#DwibiascorrectFslgrad.run"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="DwibiascorrectFslgrad.run-37"><a href="#DwibiascorrectFslgrad.run-37"><span class="linenos">37</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="DwibiascorrectFslgrad.run-38"><a href="#DwibiascorrectFslgrad.run-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="DwibiascorrectFslgrad.run-39"><a href="#DwibiascorrectFslgrad.run-39"><span class="linenos">39</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="DwibiascorrectFslgrad.run-40"><a href="#DwibiascorrectFslgrad.run-40"><span class="linenos">40</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="DwibiascorrectFslgrad.run-41"><a href="#DwibiascorrectFslgrad.run-41"><span class="linenos">41</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectFslgrad.run-42"><a href="#DwibiascorrectFslgrad.run-42"><span class="linenos">42</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="DwibiascorrectFslgrad.run-43"><a href="#DwibiascorrectFslgrad.run-43"><span class="linenos">43</span></a><span class="sd">        </span>
+</span><span id="DwibiascorrectFslgrad.run-44"><a href="#DwibiascorrectFslgrad.run-44"><span class="linenos">44</span></a><span class="sd">        Args:</span>
+</span><span id="DwibiascorrectFslgrad.run-45"><a href="#DwibiascorrectFslgrad.run-45"><span class="linenos">45</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="DwibiascorrectFslgrad.run-46"><a href="#DwibiascorrectFslgrad.run-46"><span class="linenos">46</span></a><span class="sd">        Returns:</span>
+</span><span id="DwibiascorrectFslgrad.run-47"><a href="#DwibiascorrectFslgrad.run-47"><span class="linenos">47</span></a><span class="sd">            Command line arguments</span>
+</span><span id="DwibiascorrectFslgrad.run-48"><a href="#DwibiascorrectFslgrad.run-48"><span class="linenos">48</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectFslgrad.run-49"><a href="#DwibiascorrectFslgrad.run-49"><span class="linenos">49</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="DwibiascorrectFslgrad.run-50"><a href="#DwibiascorrectFslgrad.run-50"><span class="linenos">50</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fslgrad&quot;</span><span class="p">)</span>
+</span><span id="DwibiascorrectFslgrad.run-51"><a href="#DwibiascorrectFslgrad.run-51"><span class="linenos">51</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bvecs</span><span class="p">))</span>
+</span><span id="DwibiascorrectFslgrad.run-52"><a href="#DwibiascorrectFslgrad.run-52"><span class="linenos">52</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bvals</span><span class="p">))</span>
+</span><span id="DwibiascorrectFslgrad.run-53"><a href="#DwibiascorrectFslgrad.run-53"><span class="linenos">53</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build command line arguments. This method is called by the main command.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>execution:</strong>  The execution object.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Command line arguments</p>
+</blockquote>
+</div>
+
+
+                            </div>
                 </section>
                 <section id="DwibiascorrectOutputs">
                             <input id="DwibiascorrectOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -291,16 +497,16 @@
 
     </div>
     <a class="headerlink" href="#DwibiascorrectOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="DwibiascorrectOutputs-18"><a href="#DwibiascorrectOutputs-18"><span class="linenos">18</span></a><span class="k">class</span> <span class="nc">DwibiascorrectOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="DwibiascorrectOutputs-19"><a href="#DwibiascorrectOutputs-19"><span class="linenos">19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="DwibiascorrectOutputs-20"><a href="#DwibiascorrectOutputs-20"><span class="linenos">20</span></a><span class="sd">    Output object returned when calling `dwibiascorrect(...)`.</span>
-</span><span id="DwibiascorrectOutputs-21"><a href="#DwibiascorrectOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="DwibiascorrectOutputs-22"><a href="#DwibiascorrectOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="DwibiascorrectOutputs-23"><a href="#DwibiascorrectOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="DwibiascorrectOutputs-24"><a href="#DwibiascorrectOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_image_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="DwibiascorrectOutputs-25"><a href="#DwibiascorrectOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File containing the corrected image series&quot;&quot;&quot;</span>
-</span><span id="DwibiascorrectOutputs-26"><a href="#DwibiascorrectOutputs-26"><span class="linenos">26</span></a>    <span class="n">bias_image_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
-</span><span id="DwibiascorrectOutputs-27"><a href="#DwibiascorrectOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File containing the estimated bias field&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="DwibiascorrectOutputs-56"><a href="#DwibiascorrectOutputs-56"><span class="linenos">56</span></a><span class="k">class</span> <span class="nc">DwibiascorrectOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="DwibiascorrectOutputs-57"><a href="#DwibiascorrectOutputs-57"><span class="linenos">57</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectOutputs-58"><a href="#DwibiascorrectOutputs-58"><span class="linenos">58</span></a><span class="sd">    Output object returned when calling `dwibiascorrect(...)`.</span>
+</span><span id="DwibiascorrectOutputs-59"><a href="#DwibiascorrectOutputs-59"><span class="linenos">59</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectOutputs-60"><a href="#DwibiascorrectOutputs-60"><span class="linenos">60</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="DwibiascorrectOutputs-61"><a href="#DwibiascorrectOutputs-61"><span class="linenos">61</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectOutputs-62"><a href="#DwibiascorrectOutputs-62"><span class="linenos">62</span></a>    <span class="n">output_image_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="DwibiascorrectOutputs-63"><a href="#DwibiascorrectOutputs-63"><span class="linenos">63</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File containing the corrected image series&quot;&quot;&quot;</span>
+</span><span id="DwibiascorrectOutputs-64"><a href="#DwibiascorrectOutputs-64"><span class="linenos">64</span></a>    <span class="n">bias_image_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="DwibiascorrectOutputs-65"><a href="#DwibiascorrectOutputs-65"><span class="linenos">65</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File containing the estimated bias field&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -377,165 +583,163 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwibiascorrect</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad_bvecs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scratch_dir</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">continue_scratch_dir</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ants_b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_s</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#DwibiascorrectOutputs">DwibiascorrectOutputs</a></span>:</span></span>
+        <span class="name">dwibiascorrect</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#DwibiascorrectFslgrad">DwibiascorrectFslgrad</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scratch_dir</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">continue_scratch_dir</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ants_b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_s</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#DwibiascorrectOutputs">DwibiascorrectOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwibiascorrect-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#dwibiascorrect"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dwibiascorrect-30"><a href="#dwibiascorrect-30"><span class="linenos"> 30</span></a><span class="k">def</span> <span class="nf">dwibiascorrect</span><span class="p">(</span>
-</span><span id="dwibiascorrect-31"><a href="#dwibiascorrect-31"><span class="linenos"> 31</span></a>    <span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="dwibiascorrect-32"><a href="#dwibiascorrect-32"><span class="linenos"> 32</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="dwibiascorrect-33"><a href="#dwibiascorrect-33"><span class="linenos"> 33</span></a>    <span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="dwibiascorrect-34"><a href="#dwibiascorrect-34"><span class="linenos"> 34</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-35"><a href="#dwibiascorrect-35"><span class="linenos"> 35</span></a>    <span class="n">fslgrad_bvecs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-36"><a href="#dwibiascorrect-36"><span class="linenos"> 36</span></a>    <span class="n">mask_image</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-37"><a href="#dwibiascorrect-37"><span class="linenos"> 37</span></a>    <span class="n">bias_image</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-38"><a href="#dwibiascorrect-38"><span class="linenos"> 38</span></a>    <span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwibiascorrect-39"><a href="#dwibiascorrect-39"><span class="linenos"> 39</span></a>    <span class="n">scratch_dir</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-40"><a href="#dwibiascorrect-40"><span class="linenos"> 40</span></a>    <span class="n">continue_scratch_dir</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-41"><a href="#dwibiascorrect-41"><span class="linenos"> 41</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwibiascorrect-42"><a href="#dwibiascorrect-42"><span class="linenos"> 42</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwibiascorrect-43"><a href="#dwibiascorrect-43"><span class="linenos"> 43</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwibiascorrect-44"><a href="#dwibiascorrect-44"><span class="linenos"> 44</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwibiascorrect-45"><a href="#dwibiascorrect-45"><span class="linenos"> 45</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-46"><a href="#dwibiascorrect-46"><span class="linenos"> 46</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-47"><a href="#dwibiascorrect-47"><span class="linenos"> 47</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwibiascorrect-48"><a href="#dwibiascorrect-48"><span class="linenos"> 48</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwibiascorrect-49"><a href="#dwibiascorrect-49"><span class="linenos"> 49</span></a>    <span class="n">ants_b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-50"><a href="#dwibiascorrect-50"><span class="linenos"> 50</span></a>    <span class="n">ants_c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-51"><a href="#dwibiascorrect-51"><span class="linenos"> 51</span></a>    <span class="n">ants_s</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-52"><a href="#dwibiascorrect-52"><span class="linenos"> 52</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-53"><a href="#dwibiascorrect-53"><span class="linenos"> 53</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DwibiascorrectOutputs</span><span class="p">:</span>
-</span><span id="dwibiascorrect-54"><a href="#dwibiascorrect-54"><span class="linenos"> 54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dwibiascorrect-55"><a href="#dwibiascorrect-55"><span class="linenos"> 55</span></a><span class="sd">    Perform B1 field inhomogeneity correction for a DWI volume series using either</span>
-</span><span id="dwibiascorrect-56"><a href="#dwibiascorrect-56"><span class="linenos"> 56</span></a><span class="sd">    ANTs or FSL.</span>
-</span><span id="dwibiascorrect-57"><a href="#dwibiascorrect-57"><span class="linenos"> 57</span></a><span class="sd">    </span>
-</span><span id="dwibiascorrect-58"><a href="#dwibiascorrect-58"><span class="linenos"> 58</span></a><span class="sd">    Author: Robert E. Smith</span>
-</span><span id="dwibiascorrect-59"><a href="#dwibiascorrect-59"><span class="linenos"> 59</span></a><span class="sd">    </span>
-</span><span id="dwibiascorrect-60"><a href="#dwibiascorrect-60"><span class="linenos"> 60</span></a><span class="sd">    URL: http://www.mrtrix.org/</span>
-</span><span id="dwibiascorrect-61"><a href="#dwibiascorrect-61"><span class="linenos"> 61</span></a><span class="sd">    </span>
-</span><span id="dwibiascorrect-62"><a href="#dwibiascorrect-62"><span class="linenos"> 62</span></a><span class="sd">    Args:</span>
-</span><span id="dwibiascorrect-63"><a href="#dwibiascorrect-63"><span class="linenos"> 63</span></a><span class="sd">        algorithm: Select the algorithm to be used for bias correction. Options\</span>
-</span><span id="dwibiascorrect-64"><a href="#dwibiascorrect-64"><span class="linenos"> 64</span></a><span class="sd">            are: ants, fsl.</span>
-</span><span id="dwibiascorrect-65"><a href="#dwibiascorrect-65"><span class="linenos"> 65</span></a><span class="sd">        input_image: The input image series to be corrected.</span>
-</span><span id="dwibiascorrect-66"><a href="#dwibiascorrect-66"><span class="linenos"> 66</span></a><span class="sd">        output_image: The output corrected image series.</span>
-</span><span id="dwibiascorrect-67"><a href="#dwibiascorrect-67"><span class="linenos"> 67</span></a><span class="sd">        grad: Provide the diffusion gradient table in MRtrix format.</span>
-</span><span id="dwibiascorrect-68"><a href="#dwibiascorrect-68"><span class="linenos"> 68</span></a><span class="sd">        fslgrad_bvecs: Provide the diffusion gradient table in FSL bvecs format.</span>
-</span><span id="dwibiascorrect-69"><a href="#dwibiascorrect-69"><span class="linenos"> 69</span></a><span class="sd">        mask_image: Manually provide a mask image for bias field estimation.</span>
-</span><span id="dwibiascorrect-70"><a href="#dwibiascorrect-70"><span class="linenos"> 70</span></a><span class="sd">        bias_image: Output the estimated bias field.</span>
-</span><span id="dwibiascorrect-71"><a href="#dwibiascorrect-71"><span class="linenos"> 71</span></a><span class="sd">        nocleanup: Do not delete intermediate files during script execution,\</span>
-</span><span id="dwibiascorrect-72"><a href="#dwibiascorrect-72"><span class="linenos"> 72</span></a><span class="sd">            and do not delete scratch directory at script completion.</span>
-</span><span id="dwibiascorrect-73"><a href="#dwibiascorrect-73"><span class="linenos"> 73</span></a><span class="sd">        scratch_dir: Manually specify the path in which to generate the scratch\</span>
-</span><span id="dwibiascorrect-74"><a href="#dwibiascorrect-74"><span class="linenos"> 74</span></a><span class="sd">            directory.</span>
-</span><span id="dwibiascorrect-75"><a href="#dwibiascorrect-75"><span class="linenos"> 75</span></a><span class="sd">        continue_scratch_dir: Continue the script from a previous execution;\</span>
-</span><span id="dwibiascorrect-76"><a href="#dwibiascorrect-76"><span class="linenos"> 76</span></a><span class="sd">            must provide the scratch directory path.</span>
-</span><span id="dwibiascorrect-77"><a href="#dwibiascorrect-77"><span class="linenos"> 77</span></a><span class="sd">        info: Display information messages.</span>
-</span><span id="dwibiascorrect-78"><a href="#dwibiascorrect-78"><span class="linenos"> 78</span></a><span class="sd">        quiet: Do not display information messages or progress status.</span>
-</span><span id="dwibiascorrect-79"><a href="#dwibiascorrect-79"><span class="linenos"> 79</span></a><span class="sd">        debug: Display debugging messages.</span>
-</span><span id="dwibiascorrect-80"><a href="#dwibiascorrect-80"><span class="linenos"> 80</span></a><span class="sd">        force: Force overwrite of output files.</span>
-</span><span id="dwibiascorrect-81"><a href="#dwibiascorrect-81"><span class="linenos"> 81</span></a><span class="sd">        nthreads: Use this number of threads in multi-threaded applications\</span>
-</span><span id="dwibiascorrect-82"><a href="#dwibiascorrect-82"><span class="linenos"> 82</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="dwibiascorrect-83"><a href="#dwibiascorrect-83"><span class="linenos"> 83</span></a><span class="sd">        config: Temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="dwibiascorrect-84"><a href="#dwibiascorrect-84"><span class="linenos"> 84</span></a><span class="sd">        help_: Display help information and exit.</span>
-</span><span id="dwibiascorrect-85"><a href="#dwibiascorrect-85"><span class="linenos"> 85</span></a><span class="sd">        version: Display version information and exit.</span>
-</span><span id="dwibiascorrect-86"><a href="#dwibiascorrect-86"><span class="linenos"> 86</span></a><span class="sd">        ants_b: N4BiasFieldCorrection option -b (initial mesh resolution in mm,\</span>
-</span><span id="dwibiascorrect-87"><a href="#dwibiascorrect-87"><span class="linenos"> 87</span></a><span class="sd">            spline order).</span>
-</span><span id="dwibiascorrect-88"><a href="#dwibiascorrect-88"><span class="linenos"> 88</span></a><span class="sd">        ants_c: N4BiasFieldCorrection option -c (number of iterations,\</span>
-</span><span id="dwibiascorrect-89"><a href="#dwibiascorrect-89"><span class="linenos"> 89</span></a><span class="sd">            convergence threshold).</span>
-</span><span id="dwibiascorrect-90"><a href="#dwibiascorrect-90"><span class="linenos"> 90</span></a><span class="sd">        ants_s: N4BiasFieldCorrection option -s (shrink-factor applied to\</span>
-</span><span id="dwibiascorrect-91"><a href="#dwibiascorrect-91"><span class="linenos"> 91</span></a><span class="sd">            spatial dimensions).</span>
-</span><span id="dwibiascorrect-92"><a href="#dwibiascorrect-92"><span class="linenos"> 92</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="dwibiascorrect-93"><a href="#dwibiascorrect-93"><span class="linenos"> 93</span></a><span class="sd">    Returns:</span>
-</span><span id="dwibiascorrect-94"><a href="#dwibiascorrect-94"><span class="linenos"> 94</span></a><span class="sd">        NamedTuple of outputs (described in `DwibiascorrectOutputs`).</span>
-</span><span id="dwibiascorrect-95"><a href="#dwibiascorrect-95"><span class="linenos"> 95</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="dwibiascorrect-96"><a href="#dwibiascorrect-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">fslgrad_bvecs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fslgrad_bvecs</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">):</span> 
-</span><span id="dwibiascorrect-97"><a href="#dwibiascorrect-97"><span class="linenos"> 97</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length of &#39;fslgrad_bvecs&#39; must be 2 but was </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">fslgrad_bvecs</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="dwibiascorrect-98"><a href="#dwibiascorrect-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">continue_scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">continue_scratch_dir</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">):</span> 
-</span><span id="dwibiascorrect-99"><a href="#dwibiascorrect-99"><span class="linenos"> 99</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length of &#39;continue_scratch_dir&#39; must be 2 but was </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">continue_scratch_dir</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="dwibiascorrect-100"><a href="#dwibiascorrect-100"><span class="linenos">100</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="dwibiascorrect-101"><a href="#dwibiascorrect-101"><span class="linenos">101</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWIBIASCORRECT_METADATA</span><span class="p">)</span>
-</span><span id="dwibiascorrect-102"><a href="#dwibiascorrect-102"><span class="linenos">102</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="dwibiascorrect-103"><a href="#dwibiascorrect-103"><span class="linenos">103</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dwibiascorrect&quot;</span><span class="p">)</span>
-</span><span id="dwibiascorrect-104"><a href="#dwibiascorrect-104"><span class="linenos">104</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
-</span><span id="dwibiascorrect-105"><a href="#dwibiascorrect-105"><span class="linenos">105</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">))</span>
-</span><span id="dwibiascorrect-106"><a href="#dwibiascorrect-106"><span class="linenos">106</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span>
-</span><span id="dwibiascorrect-107"><a href="#dwibiascorrect-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwibiascorrect-108"><a href="#dwibiascorrect-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwibiascorrect-109"><a href="#dwibiascorrect-109"><span class="linenos">109</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
-</span><span id="dwibiascorrect-110"><a href="#dwibiascorrect-110"><span class="linenos">110</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
-</span><span id="dwibiascorrect-111"><a href="#dwibiascorrect-111"><span class="linenos">111</span></a>        <span class="p">])</span>
-</span><span id="dwibiascorrect-112"><a href="#dwibiascorrect-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">fslgrad_bvecs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwibiascorrect-113"><a href="#dwibiascorrect-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwibiascorrect-114"><a href="#dwibiascorrect-114"><span class="linenos">114</span></a>            <span class="s2">&quot;-fslgrad&quot;</span><span class="p">,</span>
-</span><span id="dwibiascorrect-115"><a href="#dwibiascorrect-115"><span class="linenos">115</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fslgrad_bvecs</span><span class="p">]</span>
-</span><span id="dwibiascorrect-116"><a href="#dwibiascorrect-116"><span class="linenos">116</span></a>        <span class="p">])</span>
-</span><span id="dwibiascorrect-117"><a href="#dwibiascorrect-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">mask_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwibiascorrect-118"><a href="#dwibiascorrect-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwibiascorrect-119"><a href="#dwibiascorrect-119"><span class="linenos">119</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="dwibiascorrect-120"><a href="#dwibiascorrect-120"><span class="linenos">120</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_image</span><span class="p">)</span>
-</span><span id="dwibiascorrect-121"><a href="#dwibiascorrect-121"><span class="linenos">121</span></a>        <span class="p">])</span>
-</span><span id="dwibiascorrect-122"><a href="#dwibiascorrect-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">bias_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwibiascorrect-123"><a href="#dwibiascorrect-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwibiascorrect-124"><a href="#dwibiascorrect-124"><span class="linenos">124</span></a>            <span class="s2">&quot;-bias&quot;</span><span class="p">,</span>
-</span><span id="dwibiascorrect-125"><a href="#dwibiascorrect-125"><span class="linenos">125</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bias_image</span><span class="p">)</span>
-</span><span id="dwibiascorrect-126"><a href="#dwibiascorrect-126"><span class="linenos">126</span></a>        <span class="p">])</span>
-</span><span id="dwibiascorrect-127"><a href="#dwibiascorrect-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">nocleanup</span><span class="p">:</span>
-</span><span id="dwibiascorrect-128"><a href="#dwibiascorrect-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nocleanup&quot;</span><span class="p">)</span>
-</span><span id="dwibiascorrect-129"><a href="#dwibiascorrect-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwibiascorrect-130"><a href="#dwibiascorrect-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwibiascorrect-131"><a href="#dwibiascorrect-131"><span class="linenos">131</span></a>            <span class="s2">&quot;-scratch&quot;</span><span class="p">,</span>
-</span><span id="dwibiascorrect-132"><a href="#dwibiascorrect-132"><span class="linenos">132</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scratch_dir</span><span class="p">)</span>
-</span><span id="dwibiascorrect-133"><a href="#dwibiascorrect-133"><span class="linenos">133</span></a>        <span class="p">])</span>
-</span><span id="dwibiascorrect-134"><a href="#dwibiascorrect-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">continue_scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwibiascorrect-135"><a href="#dwibiascorrect-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwibiascorrect-136"><a href="#dwibiascorrect-136"><span class="linenos">136</span></a>            <span class="s2">&quot;-continue&quot;</span><span class="p">,</span>
-</span><span id="dwibiascorrect-137"><a href="#dwibiascorrect-137"><span class="linenos">137</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">continue_scratch_dir</span><span class="p">]</span>
-</span><span id="dwibiascorrect-138"><a href="#dwibiascorrect-138"><span class="linenos">138</span></a>        <span class="p">])</span>
-</span><span id="dwibiascorrect-139"><a href="#dwibiascorrect-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="dwibiascorrect-140"><a href="#dwibiascorrect-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="dwibiascorrect-141"><a href="#dwibiascorrect-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="dwibiascorrect-142"><a href="#dwibiascorrect-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="dwibiascorrect-143"><a href="#dwibiascorrect-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="dwibiascorrect-144"><a href="#dwibiascorrect-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="dwibiascorrect-145"><a href="#dwibiascorrect-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="dwibiascorrect-146"><a href="#dwibiascorrect-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="dwibiascorrect-147"><a href="#dwibiascorrect-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwibiascorrect-148"><a href="#dwibiascorrect-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwibiascorrect-149"><a href="#dwibiascorrect-149"><span class="linenos">149</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="dwibiascorrect-150"><a href="#dwibiascorrect-150"><span class="linenos">150</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="dwibiascorrect-151"><a href="#dwibiascorrect-151"><span class="linenos">151</span></a>        <span class="p">])</span>
-</span><span id="dwibiascorrect-152"><a href="#dwibiascorrect-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwibiascorrect-153"><a href="#dwibiascorrect-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwibiascorrect-154"><a href="#dwibiascorrect-154"><span class="linenos">154</span></a>            <span class="s2">&quot;-config&quot;</span><span class="p">,</span>
-</span><span id="dwibiascorrect-155"><a href="#dwibiascorrect-155"><span class="linenos">155</span></a>            <span class="o">*</span><span class="n">config</span>
-</span><span id="dwibiascorrect-156"><a href="#dwibiascorrect-156"><span class="linenos">156</span></a>        <span class="p">])</span>
-</span><span id="dwibiascorrect-157"><a href="#dwibiascorrect-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="dwibiascorrect-158"><a href="#dwibiascorrect-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="dwibiascorrect-159"><a href="#dwibiascorrect-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="dwibiascorrect-160"><a href="#dwibiascorrect-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="dwibiascorrect-161"><a href="#dwibiascorrect-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">ants_b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwibiascorrect-162"><a href="#dwibiascorrect-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwibiascorrect-163"><a href="#dwibiascorrect-163"><span class="linenos">163</span></a>            <span class="s2">&quot;-ants.b&quot;</span><span class="p">,</span>
-</span><span id="dwibiascorrect-164"><a href="#dwibiascorrect-164"><span class="linenos">164</span></a>            <span class="n">ants_b</span>
-</span><span id="dwibiascorrect-165"><a href="#dwibiascorrect-165"><span class="linenos">165</span></a>        <span class="p">])</span>
-</span><span id="dwibiascorrect-166"><a href="#dwibiascorrect-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">ants_c</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwibiascorrect-167"><a href="#dwibiascorrect-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwibiascorrect-168"><a href="#dwibiascorrect-168"><span class="linenos">168</span></a>            <span class="s2">&quot;-ants.c&quot;</span><span class="p">,</span>
-</span><span id="dwibiascorrect-169"><a href="#dwibiascorrect-169"><span class="linenos">169</span></a>            <span class="n">ants_c</span>
-</span><span id="dwibiascorrect-170"><a href="#dwibiascorrect-170"><span class="linenos">170</span></a>        <span class="p">])</span>
-</span><span id="dwibiascorrect-171"><a href="#dwibiascorrect-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">ants_s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwibiascorrect-172"><a href="#dwibiascorrect-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwibiascorrect-173"><a href="#dwibiascorrect-173"><span class="linenos">173</span></a>            <span class="s2">&quot;-ants.s&quot;</span><span class="p">,</span>
-</span><span id="dwibiascorrect-174"><a href="#dwibiascorrect-174"><span class="linenos">174</span></a>            <span class="n">ants_s</span>
-</span><span id="dwibiascorrect-175"><a href="#dwibiascorrect-175"><span class="linenos">175</span></a>        <span class="p">])</span>
-</span><span id="dwibiascorrect-176"><a href="#dwibiascorrect-176"><span class="linenos">176</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DwibiascorrectOutputs</span><span class="p">(</span>
-</span><span id="dwibiascorrect-177"><a href="#dwibiascorrect-177"><span class="linenos">177</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="dwibiascorrect-178"><a href="#dwibiascorrect-178"><span class="linenos">178</span></a>        <span class="n">output_image_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_image</span><span class="p">),</span>
-</span><span id="dwibiascorrect-179"><a href="#dwibiascorrect-179"><span class="linenos">179</span></a>        <span class="n">bias_image_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">bias_image</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">bias_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwibiascorrect-180"><a href="#dwibiascorrect-180"><span class="linenos">180</span></a>    <span class="p">)</span>
-</span><span id="dwibiascorrect-181"><a href="#dwibiascorrect-181"><span class="linenos">181</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="dwibiascorrect-182"><a href="#dwibiascorrect-182"><span class="linenos">182</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dwibiascorrect-68"><a href="#dwibiascorrect-68"><span class="linenos"> 68</span></a><span class="k">def</span> <span class="nf">dwibiascorrect</span><span class="p">(</span>
+</span><span id="dwibiascorrect-69"><a href="#dwibiascorrect-69"><span class="linenos"> 69</span></a>    <span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="dwibiascorrect-70"><a href="#dwibiascorrect-70"><span class="linenos"> 70</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="dwibiascorrect-71"><a href="#dwibiascorrect-71"><span class="linenos"> 71</span></a>    <span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="dwibiascorrect-72"><a href="#dwibiascorrect-72"><span class="linenos"> 72</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-73"><a href="#dwibiascorrect-73"><span class="linenos"> 73</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">DwibiascorrectFslgrad</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-74"><a href="#dwibiascorrect-74"><span class="linenos"> 74</span></a>    <span class="n">mask_image</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-75"><a href="#dwibiascorrect-75"><span class="linenos"> 75</span></a>    <span class="n">bias_image</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-76"><a href="#dwibiascorrect-76"><span class="linenos"> 76</span></a>    <span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwibiascorrect-77"><a href="#dwibiascorrect-77"><span class="linenos"> 77</span></a>    <span class="n">scratch_dir</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-78"><a href="#dwibiascorrect-78"><span class="linenos"> 78</span></a>    <span class="n">continue_scratch_dir</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-79"><a href="#dwibiascorrect-79"><span class="linenos"> 79</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwibiascorrect-80"><a href="#dwibiascorrect-80"><span class="linenos"> 80</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwibiascorrect-81"><a href="#dwibiascorrect-81"><span class="linenos"> 81</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwibiascorrect-82"><a href="#dwibiascorrect-82"><span class="linenos"> 82</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwibiascorrect-83"><a href="#dwibiascorrect-83"><span class="linenos"> 83</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-84"><a href="#dwibiascorrect-84"><span class="linenos"> 84</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-85"><a href="#dwibiascorrect-85"><span class="linenos"> 85</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwibiascorrect-86"><a href="#dwibiascorrect-86"><span class="linenos"> 86</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwibiascorrect-87"><a href="#dwibiascorrect-87"><span class="linenos"> 87</span></a>    <span class="n">ants_b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-88"><a href="#dwibiascorrect-88"><span class="linenos"> 88</span></a>    <span class="n">ants_c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-89"><a href="#dwibiascorrect-89"><span class="linenos"> 89</span></a>    <span class="n">ants_s</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-90"><a href="#dwibiascorrect-90"><span class="linenos"> 90</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-91"><a href="#dwibiascorrect-91"><span class="linenos"> 91</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DwibiascorrectOutputs</span><span class="p">:</span>
+</span><span id="dwibiascorrect-92"><a href="#dwibiascorrect-92"><span class="linenos"> 92</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dwibiascorrect-93"><a href="#dwibiascorrect-93"><span class="linenos"> 93</span></a><span class="sd">    Perform B1 field inhomogeneity correction for a DWI volume series using either</span>
+</span><span id="dwibiascorrect-94"><a href="#dwibiascorrect-94"><span class="linenos"> 94</span></a><span class="sd">    ANTs or FSL.</span>
+</span><span id="dwibiascorrect-95"><a href="#dwibiascorrect-95"><span class="linenos"> 95</span></a><span class="sd">    </span>
+</span><span id="dwibiascorrect-96"><a href="#dwibiascorrect-96"><span class="linenos"> 96</span></a><span class="sd">    Author: Robert E. Smith</span>
+</span><span id="dwibiascorrect-97"><a href="#dwibiascorrect-97"><span class="linenos"> 97</span></a><span class="sd">    </span>
+</span><span id="dwibiascorrect-98"><a href="#dwibiascorrect-98"><span class="linenos"> 98</span></a><span class="sd">    URL: http://www.mrtrix.org/</span>
+</span><span id="dwibiascorrect-99"><a href="#dwibiascorrect-99"><span class="linenos"> 99</span></a><span class="sd">    </span>
+</span><span id="dwibiascorrect-100"><a href="#dwibiascorrect-100"><span class="linenos">100</span></a><span class="sd">    Args:</span>
+</span><span id="dwibiascorrect-101"><a href="#dwibiascorrect-101"><span class="linenos">101</span></a><span class="sd">        algorithm: Select the algorithm to be used for bias correction. Options\</span>
+</span><span id="dwibiascorrect-102"><a href="#dwibiascorrect-102"><span class="linenos">102</span></a><span class="sd">            are: ants, fsl.</span>
+</span><span id="dwibiascorrect-103"><a href="#dwibiascorrect-103"><span class="linenos">103</span></a><span class="sd">        input_image: The input image series to be corrected.</span>
+</span><span id="dwibiascorrect-104"><a href="#dwibiascorrect-104"><span class="linenos">104</span></a><span class="sd">        output_image: The output corrected image series.</span>
+</span><span id="dwibiascorrect-105"><a href="#dwibiascorrect-105"><span class="linenos">105</span></a><span class="sd">        grad: Provide the diffusion gradient table in MRtrix format.</span>
+</span><span id="dwibiascorrect-106"><a href="#dwibiascorrect-106"><span class="linenos">106</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="dwibiascorrect-107"><a href="#dwibiascorrect-107"><span class="linenos">107</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="dwibiascorrect-108"><a href="#dwibiascorrect-108"><span class="linenos">108</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="dwibiascorrect-109"><a href="#dwibiascorrect-109"><span class="linenos">109</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="dwibiascorrect-110"><a href="#dwibiascorrect-110"><span class="linenos">110</span></a><span class="sd">        mask_image: Manually provide a mask image for bias field estimation.</span>
+</span><span id="dwibiascorrect-111"><a href="#dwibiascorrect-111"><span class="linenos">111</span></a><span class="sd">        bias_image: Output the estimated bias field.</span>
+</span><span id="dwibiascorrect-112"><a href="#dwibiascorrect-112"><span class="linenos">112</span></a><span class="sd">        nocleanup: Do not delete intermediate files during script execution,\</span>
+</span><span id="dwibiascorrect-113"><a href="#dwibiascorrect-113"><span class="linenos">113</span></a><span class="sd">            and do not delete scratch directory at script completion.</span>
+</span><span id="dwibiascorrect-114"><a href="#dwibiascorrect-114"><span class="linenos">114</span></a><span class="sd">        scratch_dir: Manually specify the path in which to generate the scratch\</span>
+</span><span id="dwibiascorrect-115"><a href="#dwibiascorrect-115"><span class="linenos">115</span></a><span class="sd">            directory.</span>
+</span><span id="dwibiascorrect-116"><a href="#dwibiascorrect-116"><span class="linenos">116</span></a><span class="sd">        continue_scratch_dir: Continue the script from a previous execution;\</span>
+</span><span id="dwibiascorrect-117"><a href="#dwibiascorrect-117"><span class="linenos">117</span></a><span class="sd">            must provide the scratch directory path.</span>
+</span><span id="dwibiascorrect-118"><a href="#dwibiascorrect-118"><span class="linenos">118</span></a><span class="sd">        info: Display information messages.</span>
+</span><span id="dwibiascorrect-119"><a href="#dwibiascorrect-119"><span class="linenos">119</span></a><span class="sd">        quiet: Do not display information messages or progress status.</span>
+</span><span id="dwibiascorrect-120"><a href="#dwibiascorrect-120"><span class="linenos">120</span></a><span class="sd">        debug: Display debugging messages.</span>
+</span><span id="dwibiascorrect-121"><a href="#dwibiascorrect-121"><span class="linenos">121</span></a><span class="sd">        force: Force overwrite of output files.</span>
+</span><span id="dwibiascorrect-122"><a href="#dwibiascorrect-122"><span class="linenos">122</span></a><span class="sd">        nthreads: Use this number of threads in multi-threaded applications\</span>
+</span><span id="dwibiascorrect-123"><a href="#dwibiascorrect-123"><span class="linenos">123</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="dwibiascorrect-124"><a href="#dwibiascorrect-124"><span class="linenos">124</span></a><span class="sd">        config: Temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="dwibiascorrect-125"><a href="#dwibiascorrect-125"><span class="linenos">125</span></a><span class="sd">        help_: Display help information and exit.</span>
+</span><span id="dwibiascorrect-126"><a href="#dwibiascorrect-126"><span class="linenos">126</span></a><span class="sd">        version: Display version information and exit.</span>
+</span><span id="dwibiascorrect-127"><a href="#dwibiascorrect-127"><span class="linenos">127</span></a><span class="sd">        ants_b: N4BiasFieldCorrection option -b (initial mesh resolution in mm,\</span>
+</span><span id="dwibiascorrect-128"><a href="#dwibiascorrect-128"><span class="linenos">128</span></a><span class="sd">            spline order).</span>
+</span><span id="dwibiascorrect-129"><a href="#dwibiascorrect-129"><span class="linenos">129</span></a><span class="sd">        ants_c: N4BiasFieldCorrection option -c (number of iterations,\</span>
+</span><span id="dwibiascorrect-130"><a href="#dwibiascorrect-130"><span class="linenos">130</span></a><span class="sd">            convergence threshold).</span>
+</span><span id="dwibiascorrect-131"><a href="#dwibiascorrect-131"><span class="linenos">131</span></a><span class="sd">        ants_s: N4BiasFieldCorrection option -s (shrink-factor applied to\</span>
+</span><span id="dwibiascorrect-132"><a href="#dwibiascorrect-132"><span class="linenos">132</span></a><span class="sd">            spatial dimensions).</span>
+</span><span id="dwibiascorrect-133"><a href="#dwibiascorrect-133"><span class="linenos">133</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="dwibiascorrect-134"><a href="#dwibiascorrect-134"><span class="linenos">134</span></a><span class="sd">    Returns:</span>
+</span><span id="dwibiascorrect-135"><a href="#dwibiascorrect-135"><span class="linenos">135</span></a><span class="sd">        NamedTuple of outputs (described in `DwibiascorrectOutputs`).</span>
+</span><span id="dwibiascorrect-136"><a href="#dwibiascorrect-136"><span class="linenos">136</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="dwibiascorrect-137"><a href="#dwibiascorrect-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">continue_scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">continue_scratch_dir</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">):</span> 
+</span><span id="dwibiascorrect-138"><a href="#dwibiascorrect-138"><span class="linenos">138</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length of &#39;continue_scratch_dir&#39; must be 2 but was </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">continue_scratch_dir</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="dwibiascorrect-139"><a href="#dwibiascorrect-139"><span class="linenos">139</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="dwibiascorrect-140"><a href="#dwibiascorrect-140"><span class="linenos">140</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWIBIASCORRECT_METADATA</span><span class="p">)</span>
+</span><span id="dwibiascorrect-141"><a href="#dwibiascorrect-141"><span class="linenos">141</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="dwibiascorrect-142"><a href="#dwibiascorrect-142"><span class="linenos">142</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dwibiascorrect&quot;</span><span class="p">)</span>
+</span><span id="dwibiascorrect-143"><a href="#dwibiascorrect-143"><span class="linenos">143</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+</span><span id="dwibiascorrect-144"><a href="#dwibiascorrect-144"><span class="linenos">144</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">))</span>
+</span><span id="dwibiascorrect-145"><a href="#dwibiascorrect-145"><span class="linenos">145</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span>
+</span><span id="dwibiascorrect-146"><a href="#dwibiascorrect-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwibiascorrect-147"><a href="#dwibiascorrect-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwibiascorrect-148"><a href="#dwibiascorrect-148"><span class="linenos">148</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
+</span><span id="dwibiascorrect-149"><a href="#dwibiascorrect-149"><span class="linenos">149</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+</span><span id="dwibiascorrect-150"><a href="#dwibiascorrect-150"><span class="linenos">150</span></a>        <span class="p">])</span>
+</span><span id="dwibiascorrect-151"><a href="#dwibiascorrect-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">fslgrad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwibiascorrect-152"><a href="#dwibiascorrect-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fslgrad</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="dwibiascorrect-153"><a href="#dwibiascorrect-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">mask_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwibiascorrect-154"><a href="#dwibiascorrect-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwibiascorrect-155"><a href="#dwibiascorrect-155"><span class="linenos">155</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="dwibiascorrect-156"><a href="#dwibiascorrect-156"><span class="linenos">156</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_image</span><span class="p">)</span>
+</span><span id="dwibiascorrect-157"><a href="#dwibiascorrect-157"><span class="linenos">157</span></a>        <span class="p">])</span>
+</span><span id="dwibiascorrect-158"><a href="#dwibiascorrect-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">bias_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwibiascorrect-159"><a href="#dwibiascorrect-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwibiascorrect-160"><a href="#dwibiascorrect-160"><span class="linenos">160</span></a>            <span class="s2">&quot;-bias&quot;</span><span class="p">,</span>
+</span><span id="dwibiascorrect-161"><a href="#dwibiascorrect-161"><span class="linenos">161</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bias_image</span><span class="p">)</span>
+</span><span id="dwibiascorrect-162"><a href="#dwibiascorrect-162"><span class="linenos">162</span></a>        <span class="p">])</span>
+</span><span id="dwibiascorrect-163"><a href="#dwibiascorrect-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">nocleanup</span><span class="p">:</span>
+</span><span id="dwibiascorrect-164"><a href="#dwibiascorrect-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nocleanup&quot;</span><span class="p">)</span>
+</span><span id="dwibiascorrect-165"><a href="#dwibiascorrect-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwibiascorrect-166"><a href="#dwibiascorrect-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwibiascorrect-167"><a href="#dwibiascorrect-167"><span class="linenos">167</span></a>            <span class="s2">&quot;-scratch&quot;</span><span class="p">,</span>
+</span><span id="dwibiascorrect-168"><a href="#dwibiascorrect-168"><span class="linenos">168</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scratch_dir</span><span class="p">)</span>
+</span><span id="dwibiascorrect-169"><a href="#dwibiascorrect-169"><span class="linenos">169</span></a>        <span class="p">])</span>
+</span><span id="dwibiascorrect-170"><a href="#dwibiascorrect-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">continue_scratch_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwibiascorrect-171"><a href="#dwibiascorrect-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwibiascorrect-172"><a href="#dwibiascorrect-172"><span class="linenos">172</span></a>            <span class="s2">&quot;-continue&quot;</span><span class="p">,</span>
+</span><span id="dwibiascorrect-173"><a href="#dwibiascorrect-173"><span class="linenos">173</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">continue_scratch_dir</span><span class="p">]</span>
+</span><span id="dwibiascorrect-174"><a href="#dwibiascorrect-174"><span class="linenos">174</span></a>        <span class="p">])</span>
+</span><span id="dwibiascorrect-175"><a href="#dwibiascorrect-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="dwibiascorrect-176"><a href="#dwibiascorrect-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="dwibiascorrect-177"><a href="#dwibiascorrect-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="dwibiascorrect-178"><a href="#dwibiascorrect-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="dwibiascorrect-179"><a href="#dwibiascorrect-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="dwibiascorrect-180"><a href="#dwibiascorrect-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="dwibiascorrect-181"><a href="#dwibiascorrect-181"><span class="linenos">181</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="dwibiascorrect-182"><a href="#dwibiascorrect-182"><span class="linenos">182</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="dwibiascorrect-183"><a href="#dwibiascorrect-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwibiascorrect-184"><a href="#dwibiascorrect-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwibiascorrect-185"><a href="#dwibiascorrect-185"><span class="linenos">185</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="dwibiascorrect-186"><a href="#dwibiascorrect-186"><span class="linenos">186</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="dwibiascorrect-187"><a href="#dwibiascorrect-187"><span class="linenos">187</span></a>        <span class="p">])</span>
+</span><span id="dwibiascorrect-188"><a href="#dwibiascorrect-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwibiascorrect-189"><a href="#dwibiascorrect-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwibiascorrect-190"><a href="#dwibiascorrect-190"><span class="linenos">190</span></a>            <span class="s2">&quot;-config&quot;</span><span class="p">,</span>
+</span><span id="dwibiascorrect-191"><a href="#dwibiascorrect-191"><span class="linenos">191</span></a>            <span class="o">*</span><span class="n">config</span>
+</span><span id="dwibiascorrect-192"><a href="#dwibiascorrect-192"><span class="linenos">192</span></a>        <span class="p">])</span>
+</span><span id="dwibiascorrect-193"><a href="#dwibiascorrect-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="dwibiascorrect-194"><a href="#dwibiascorrect-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="dwibiascorrect-195"><a href="#dwibiascorrect-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="dwibiascorrect-196"><a href="#dwibiascorrect-196"><span class="linenos">196</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="dwibiascorrect-197"><a href="#dwibiascorrect-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">ants_b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwibiascorrect-198"><a href="#dwibiascorrect-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwibiascorrect-199"><a href="#dwibiascorrect-199"><span class="linenos">199</span></a>            <span class="s2">&quot;-ants.b&quot;</span><span class="p">,</span>
+</span><span id="dwibiascorrect-200"><a href="#dwibiascorrect-200"><span class="linenos">200</span></a>            <span class="n">ants_b</span>
+</span><span id="dwibiascorrect-201"><a href="#dwibiascorrect-201"><span class="linenos">201</span></a>        <span class="p">])</span>
+</span><span id="dwibiascorrect-202"><a href="#dwibiascorrect-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">ants_c</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwibiascorrect-203"><a href="#dwibiascorrect-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwibiascorrect-204"><a href="#dwibiascorrect-204"><span class="linenos">204</span></a>            <span class="s2">&quot;-ants.c&quot;</span><span class="p">,</span>
+</span><span id="dwibiascorrect-205"><a href="#dwibiascorrect-205"><span class="linenos">205</span></a>            <span class="n">ants_c</span>
+</span><span id="dwibiascorrect-206"><a href="#dwibiascorrect-206"><span class="linenos">206</span></a>        <span class="p">])</span>
+</span><span id="dwibiascorrect-207"><a href="#dwibiascorrect-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">ants_s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwibiascorrect-208"><a href="#dwibiascorrect-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwibiascorrect-209"><a href="#dwibiascorrect-209"><span class="linenos">209</span></a>            <span class="s2">&quot;-ants.s&quot;</span><span class="p">,</span>
+</span><span id="dwibiascorrect-210"><a href="#dwibiascorrect-210"><span class="linenos">210</span></a>            <span class="n">ants_s</span>
+</span><span id="dwibiascorrect-211"><a href="#dwibiascorrect-211"><span class="linenos">211</span></a>        <span class="p">])</span>
+</span><span id="dwibiascorrect-212"><a href="#dwibiascorrect-212"><span class="linenos">212</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DwibiascorrectOutputs</span><span class="p">(</span>
+</span><span id="dwibiascorrect-213"><a href="#dwibiascorrect-213"><span class="linenos">213</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="dwibiascorrect-214"><a href="#dwibiascorrect-214"><span class="linenos">214</span></a>        <span class="n">output_image_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_image</span><span class="p">),</span>
+</span><span id="dwibiascorrect-215"><a href="#dwibiascorrect-215"><span class="linenos">215</span></a>        <span class="n">bias_image_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">bias_image</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">bias_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwibiascorrect-216"><a href="#dwibiascorrect-216"><span class="linenos">216</span></a>    <span class="p">)</span>
+</span><span id="dwibiascorrect-217"><a href="#dwibiascorrect-217"><span class="linenos">217</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="dwibiascorrect-218"><a href="#dwibiascorrect-218"><span class="linenos">218</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -553,7 +757,7 @@ ANTs or FSL.</p>
 <li><strong>input_image:</strong>  The input image series to be corrected.</li>
 <li><strong>output_image:</strong>  The output corrected image series.</li>
 <li><strong>grad:</strong>  Provide the diffusion gradient table in MRtrix format.</li>
-<li><strong>fslgrad_bvecs:</strong>  Provide the diffusion gradient table in FSL bvecs format.</li>
+<li><strong>fslgrad:</strong>  Provide the diffusion-weighted gradient scheme used in the            acquisition in FSL bvecs/bvals format files. If a diffusion gradient            scheme is present in the input image header, the data provided with            this option will be instead used.</li>
 <li><strong>mask_image:</strong>  Manually provide a mask image for bias field estimation.</li>
 <li><strong>bias_image:</strong>  Output the estimated bias field.</li>
 <li><strong>nocleanup:</strong>  Do not delete intermediate files during script execution,            and do not delete scratch directory at script completion.</li>
