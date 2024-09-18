@@ -47,7 +47,7 @@
     {
       "id": "fslgrad",
       "name": "fslgrad",
-      "value-key": "[DW_GRADIENT_TABLE_IMPORT_OPTIONS_FSLGRAD]",
+      "value-key": "[FSLGRAD_BVECS]",
       "description": "Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.",
       "type": {
         "id": "fslgrad",
