@@ -7,11 +7,49 @@ from styxdefs import *
 import dataclasses
 
 DWIBIASCORRECT_METADATA = Metadata(
-    id="6dc96b65d8c0c8005c3fe4ec42e19966b7db95f7.boutiques",
+    id="88e757ea770edcd39a486a4232696e9152b5005d.boutiques",
     name="dwibiascorrect",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
+@dataclasses.dataclass
+class DwibiascorrectFslgrad:
+    """
+    Provide the diffusion-weighted gradient scheme used in the acquisition in
+    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
+    the input image header, the data provided with this option will be instead
+    used.
+    """
+    bvecs: InputPathType
+    """Provide the diffusion-weighted gradient scheme used in the acquisition in
+    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
+    the input image header, the data provided with this option will be instead
+    used."""
+    bvals: InputPathType
+    """Provide the diffusion-weighted gradient scheme used in the acquisition in
+    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
+    the input image header, the data provided with this option will be instead
+    used."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-fslgrad")
+        cargs.append(execution.input_file(self.bvecs))
+        cargs.append(execution.input_file(self.bvals))
+        return cargs
 
 
 class DwibiascorrectOutputs(typing.NamedTuple):
@@ -31,6 +69,7 @@ def dwibiascorrect(
     input_image: InputPathType,
     output_image: str,
     grad: InputPathType | None = None,
+    fslgrad: DwibiascorrectFslgrad | None = None,
     mask_image: InputPathType | None = None,
     bias_image: InputPathType | None = None,
     nocleanup: bool = False,
@@ -63,6 +102,10 @@ def dwibiascorrect(
         input_image: The input image series to be corrected.
         output_image: The output corrected image series.
         grad: Provide the diffusion gradient table in MRtrix format.
+        fslgrad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
         mask_image: Manually provide a mask image for bias field estimation.
         bias_image: Output the estimated bias field.
         nocleanup: Do not delete intermediate files during script execution,\
@@ -104,7 +147,8 @@ def dwibiascorrect(
             "-grad",
             execution.input_file(grad)
         ])
-    cargs.append("[FSLGRAD_BVECS]")
+    if fslgrad is not None:
+        cargs.extend(fslgrad.run(execution))
     if mask_image is not None:
         cargs.extend([
             "-mask",
@@ -175,6 +219,7 @@ def dwibiascorrect(
 
 __all__ = [
     "DWIBIASCORRECT_METADATA",
+    "DwibiascorrectFslgrad",
     "DwibiascorrectOutputs",
     "dwibiascorrect",
 ]
