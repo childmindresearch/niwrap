@@ -1,6 +1,6 @@
 {
   "name": "antsRegistrationSyN",
-  "command-line": "antsRegistrationSyN.sh [IMAGE_DIMENSION] [FIXED_IMAGE] [MOVING_IMAGE] [OUTPUT_PREFIX] [THREADS] [INITIAL_TRANSFORM] [TRANSFORM_TYPE] [RADIUS] [SPLINE_DISTANCE] [GRADIENT_STEP] [MASKS] [PRECISION_TYPE] [USE_HISTOGRAM_MATCHING] [USE_REPRO_MODE] [COLLAPSE_OUTPUT_TRANSFORMS] [RANDOM_SEED]",
+  "command-line": "antsRegistrationSyN.sh [IMAGE_DIMENSION] [FIXED_IMAGE] [MOVING_IMAGE] [OUTPUT_PREFIX] [THREADS] [[INITIAL_TRANSFORM]] [TRANSFORM_TYPE] [RADIUS] [SPLINE_DISTANCE] [GRADIENT_STEP] [MASKS] [PRECISION_TYPE] [USE_HISTOGRAM_MATCHING] [USE_REPRO_MODE] [COLLAPSE_OUTPUT_TRANSFORMS] [RANDOM_SEED]",
   "author": "Brian B. Avants, Nick Tustison, and Gang Song",
   "description": "This script performs image registration using the SyN transform from the ANTs suite. The user can specify the dimensionality of the images, the fixed and moving images, and the output prefix. It supports various types of transformations and optional parameters such as initial transforms, gradient step size, mask usage, and more.",
   "url": "https://github.com/ANTsX/ANTs/",
@@ -67,6 +67,7 @@
       "list": true,
       "optional": true,
       "command-line-flag": "-i",
+      "command-line-flag-separator": ",",
       "description": "Initial transform(s) --- order specified on the command line matters"
     },
     {
