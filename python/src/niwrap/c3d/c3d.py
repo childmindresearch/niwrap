@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 C3D_METADATA = Metadata(
-    id="db6e417f06d941414c3d7eb43b166b3cdaa1491d.boutiques",
+    id="67101ed80d02d789566ea3f6b68e9b7d66d04728.boutiques",
     name="c3d",
     package="c3d",
     container_image_tag="pyushkevich/itksnap:v3.8.2",
@@ -4397,6 +4397,16 @@ class C3dNospm:
         return cargs
 
 
+class C3dOutputOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `C3dOutput(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+    output: OutputPathType
+    """The output"""
+
+
 @dataclasses.dataclass
 class C3dOutput:
     """
@@ -4452,6 +4462,24 @@ class C3dOutput:
             self.output
         ])
         return cargs
+    
+    def outputs(
+        self,
+        execution: Execution,
+    ) -> C3dOutputOutputs:
+        """
+        Collect output file paths.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            NamedTuple of outputs (described in `C3dOutputOutputs`).
+        """
+        ret = C3dOutputOutputs(
+            root=execution.output_file("."),
+            output=execution.output_file(self.output),
+        )
+        return ret
 
 
 @dataclasses.dataclass
@@ -8762,6 +8790,8 @@ class C3dOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
+    operations: typing.Union[C3dOutputOutputs]
+    """Outputs from `C3dOutput`."""
 
 
 def c3d_(
@@ -8795,6 +8825,7 @@ def c3d_(
     ])
     ret = C3dOutputs(
         root=execution.output_file("."),
+        operations=operations.outputs(execution),
     )
     execution.run(cargs)
     return ret
@@ -8906,6 +8937,7 @@ __all__ = [
     "C3dOutputMulticomponent",
     "C3dOutputMultiple",
     "C3dOutputMultipleMulticomponent",
+    "C3dOutputOutputs",
     "C3dOutputs",
     "C3dOverlap",
     "C3dOverlayLabelImage",
