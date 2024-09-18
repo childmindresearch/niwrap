@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKCONVERT_METADATA = Metadata(
-    id="ba4f3995bed0c0902ec8af62c1dd4affcb553184.boutiques",
+    id="1497f8a28932c6eece4197131a420ab0d6b5258e.boutiques",
     name="tckconvert",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -43,6 +43,50 @@ class TckconvertConfig:
         return cargs
 
 
+@dataclasses.dataclass
+class TckconvertVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class TckconvertVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
 class TckconvertOutputs(typing.NamedTuple):
     """
     Output object returned when calling `tckconvert(...)`.
@@ -54,7 +98,7 @@ class TckconvertOutputs(typing.NamedTuple):
 
 
 def tckconvert(
-    input_: str,
+    input_: typing.Union[TckconvertVariousString, TckconvertVariousFile],
     output: str,
     scanner2voxel: InputPathType | None = None,
     scanner2image: InputPathType | None = None,
@@ -205,7 +249,7 @@ def tckconvert(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.append(input_)
+    cargs.extend(input_.run(execution))
     cargs.append(output)
     ret = TckconvertOutputs(
         root=execution.output_file("."),
@@ -219,5 +263,7 @@ __all__ = [
     "TCKCONVERT_METADATA",
     "TckconvertConfig",
     "TckconvertOutputs",
+    "TckconvertVariousFile",
+    "TckconvertVariousString",
     "tckconvert",
 ]

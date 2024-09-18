@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXELCONVERT_METADATA = Metadata(
-    id="0e7ea546c541bbf330a629a52875c59d0e036cc9.boutiques",
+    id="1ac7ab9c001179ea88e0999f4923d5c38edae521.boutiques",
     name="fixelconvert",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -43,6 +43,94 @@ class FixelconvertConfig:
         return cargs
 
 
+@dataclasses.dataclass
+class FixelconvertVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class FixelconvertVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
+@dataclasses.dataclass
+class FixelconvertVariousString_:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class FixelconvertVariousFile_:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
 class FixelconvertOutputs(typing.NamedTuple):
     """
     Output object returned when calling `fixelconvert(...)`.
@@ -52,8 +140,8 @@ class FixelconvertOutputs(typing.NamedTuple):
 
 
 def fixelconvert(
-    fixel_in: str,
-    fixel_out: str,
+    fixel_in: typing.Union[FixelconvertVariousString, FixelconvertVariousFile],
+    fixel_out: typing.Union[FixelconvertVariousString_, FixelconvertVariousFile_],
     name: str | None = None,
     nii: bool = False,
     out_size: bool = False,
@@ -162,8 +250,8 @@ def fixelconvert(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.append(fixel_in)
-    cargs.append(fixel_out)
+    cargs.extend(fixel_in.run(execution))
+    cargs.extend(fixel_out.run(execution))
     ret = FixelconvertOutputs(
         root=execution.output_file("."),
     )
@@ -175,5 +263,9 @@ __all__ = [
     "FIXELCONVERT_METADATA",
     "FixelconvertConfig",
     "FixelconvertOutputs",
+    "FixelconvertVariousFile",
+    "FixelconvertVariousFile_",
+    "FixelconvertVariousString",
+    "FixelconvertVariousString_",
     "fixelconvert",
 ]

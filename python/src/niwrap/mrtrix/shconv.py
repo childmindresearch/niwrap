@@ -7,11 +7,55 @@ from styxdefs import *
 import dataclasses
 
 SHCONV_METADATA = Metadata(
-    id="bcc096fd4f109658143a916a6b1e28d4492319a4.boutiques",
+    id="2763ad6db27e39a7c0eb5218740b8885f1a762a3.boutiques",
     name="shconv",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
+@dataclasses.dataclass
+class ShconvVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class ShconvVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
 
 
 @dataclasses.dataclass
@@ -57,7 +101,7 @@ def shconv(
     odf_response: list[str],
     sh_out: str,
     datatype: str | None = None,
-    strides: str | None = None,
+    strides: typing.Union[ShconvVariousString, ShconvVariousFile] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -140,7 +184,7 @@ def shconv(
     if strides is not None:
         cargs.extend([
             "-strides",
-            strides
+            *strides.run(execution)
         ])
     if info:
         cargs.append("-info")
@@ -175,5 +219,7 @@ __all__ = [
     "SHCONV_METADATA",
     "ShconvConfig",
     "ShconvOutputs",
+    "ShconvVariousFile",
+    "ShconvVariousString",
     "shconv",
 ]

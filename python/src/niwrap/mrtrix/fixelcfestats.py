@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXELCFESTATS_METADATA = Metadata(
-    id="8e94c44b033e14aaa38e9f2a2be9c4ec4a5bc6e5.boutiques",
+    id="ee3bb73a1251abf2131550881e972d6232152783.boutiques",
     name="fixelcfestats",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -75,6 +75,50 @@ class FixelcfestatsConfig:
         return cargs
 
 
+@dataclasses.dataclass
+class FixelcfestatsVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class FixelcfestatsVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
 class FixelcfestatsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `fixelcfestats(...)`.
@@ -88,7 +132,7 @@ def fixelcfestats(
     subjects: InputPathType,
     design: InputPathType,
     contrast: InputPathType,
-    connectivity: str,
+    connectivity: typing.Union[FixelcfestatsVariousString, FixelcfestatsVariousFile],
     out_fixel_directory: str,
     mask: InputPathType | None = None,
     notest: bool = False,
@@ -366,7 +410,7 @@ def fixelcfestats(
     cargs.append(execution.input_file(subjects))
     cargs.append(execution.input_file(design))
     cargs.append(execution.input_file(contrast))
-    cargs.append(connectivity)
+    cargs.extend(connectivity.run(execution))
     cargs.append(out_fixel_directory)
     ret = FixelcfestatsOutputs(
         root=execution.output_file("."),
@@ -380,5 +424,7 @@ __all__ = [
     "FixelcfestatsColumn",
     "FixelcfestatsConfig",
     "FixelcfestatsOutputs",
+    "FixelcfestatsVariousFile",
+    "FixelcfestatsVariousString",
     "fixelcfestats",
 ]

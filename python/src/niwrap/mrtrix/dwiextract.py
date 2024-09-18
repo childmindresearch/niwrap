@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DWIEXTRACT_METADATA = Metadata(
-    id="0671192cc8b8c9f31703ecba4585dd82f28ae520.boutiques",
+    id="523b6b7652a8696dd8707ee5f35400e2f15e5a2a.boutiques",
     name="dwiextract",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -150,6 +150,50 @@ class DwiextractImportPeEddy:
 
 
 @dataclasses.dataclass
+class DwiextractVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class DwiextractVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
+@dataclasses.dataclass
 class DwiextractConfig:
     """
     temporarily set the value of an MRtrix config file entry.
@@ -206,7 +250,7 @@ def dwiextract(
     import_pe_table: InputPathType | None = None,
     import_pe_eddy: DwiextractImportPeEddy | None = None,
     pe: list[float] | None = None,
-    strides: str | None = None,
+    strides: typing.Union[DwiextractVariousString, DwiextractVariousFile] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -339,7 +383,7 @@ def dwiextract(
     if strides is not None:
         cargs.extend([
             "-strides",
-            strides
+            *strides.run(execution)
         ])
     if info:
         cargs.append("-info")
@@ -380,5 +424,7 @@ __all__ = [
     "DwiextractFslgrad",
     "DwiextractImportPeEddy",
     "DwiextractOutputs",
+    "DwiextractVariousFile",
+    "DwiextractVariousString",
     "dwiextract",
 ]

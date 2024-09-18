@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TRANSFORMCOMPOSE_METADATA = Metadata(
-    id="4a1fa00a64521e89c78077507af058c9f9ff7feb.boutiques",
+    id="a2fc6d9d3b3dd64b855cd95ce39872475de0addc.boutiques",
     name="transformcompose",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -43,6 +43,50 @@ class TransformcomposeConfig:
         return cargs
 
 
+@dataclasses.dataclass
+class TransformcomposeVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class TransformcomposeVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
 class TransformcomposeOutputs(typing.NamedTuple):
     """
     Output object returned when calling `transformcompose(...)`.
@@ -53,7 +97,7 @@ class TransformcomposeOutputs(typing.NamedTuple):
 
 def transformcompose(
     input_: list[InputPathType],
-    output: str,
+    output: typing.Union[TransformcomposeVariousString, TransformcomposeVariousFile],
     template: InputPathType | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -145,7 +189,7 @@ def transformcompose(
     if version:
         cargs.append("-version")
     cargs.extend([execution.input_file(f) for f in input_])
-    cargs.append(output)
+    cargs.extend(output.run(execution))
     ret = TransformcomposeOutputs(
         root=execution.output_file("."),
     )
@@ -157,5 +201,7 @@ __all__ = [
     "TRANSFORMCOMPOSE_METADATA",
     "TransformcomposeConfig",
     "TransformcomposeOutputs",
+    "TransformcomposeVariousFile",
+    "TransformcomposeVariousString",
     "transformcompose",
 ]

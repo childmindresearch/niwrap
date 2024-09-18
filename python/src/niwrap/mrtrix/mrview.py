@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRVIEW_METADATA = Metadata(
-    id="1fc2cb0304540f7aaeda0ab60305b06437541161.boutiques",
+    id="4ce7d35747ee662736f728a44e85b943c9b0c0a1.boutiques",
     name="mrview",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -118,13 +118,57 @@ class MrviewFov:
 
 
 @dataclasses.dataclass
+class MrviewVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class MrviewVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
+@dataclasses.dataclass
 class MrviewFocus:
     """
     Either set the position of the crosshairs in scanner coordinates, with the
     new position supplied as a comma-separated list of floating-point values or
     show or hide the focus cross hair using a boolean value as argument.
     """
-    x_y_z_or_boolean: str
+    x_y_z_or_boolean: typing.Union[MrviewVariousString, MrviewVariousFile]
     """Either set the position of the crosshairs in scanner coordinates, with
     the new position supplied as a comma-separated list of floating-point values
     or show or hide the focus cross hair using a boolean value as argument."""
@@ -143,7 +187,7 @@ class MrviewFocus:
         """
         cargs = []
         cargs.append("-focus")
-        cargs.append(self.x_y_z_or_boolean)
+        cargs.extend(self.x_y_z_or_boolean.run(execution))
         return cargs
 
 
@@ -1921,6 +1965,8 @@ __all__ = [
     "MrviewTractographyTsfLoad",
     "MrviewTractographyTsfRange",
     "MrviewTractographyTsfThresh",
+    "MrviewVariousFile",
+    "MrviewVariousString",
     "MrviewVolume",
     "MrviewVoxel",
     "MrviewVoxelinfo",

@@ -7,11 +7,55 @@ from styxdefs import *
 import dataclasses
 
 MRFILTER_METADATA = Metadata(
-    id="3f28178c4dc22fa215b3238a6b8632bc6ae9453f.boutiques",
+    id="0a5130f18b4c89a425a5f41a84a9ceaf901da40c.boutiques",
     name="mrfilter",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
+@dataclasses.dataclass
+class MrfilterVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class MrfilterVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
 
 
 @dataclasses.dataclass
@@ -77,7 +121,7 @@ def mrfilter(
     bridge: int | None = None,
     maskin: InputPathType | None = None,
     maskout: str | None = None,
-    strides: str | None = None,
+    strides: typing.Union[MrfilterVariousString, MrfilterVariousFile] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -252,7 +296,7 @@ def mrfilter(
     if strides is not None:
         cargs.extend([
             "-strides",
-            strides
+            *strides.run(execution)
         ])
     if info:
         cargs.append("-info")
@@ -289,5 +333,7 @@ __all__ = [
     "MRFILTER_METADATA",
     "MrfilterConfig",
     "MrfilterOutputs",
+    "MrfilterVariousFile",
+    "MrfilterVariousString",
     "mrfilter",
 ]

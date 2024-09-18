@@ -7,11 +7,55 @@ from styxdefs import *
 import dataclasses
 
 TCKEDIT_METADATA = Metadata(
-    id="cd40d2e3c8767f7171bda0ed685c6efb24bb6199.boutiques",
+    id="e0d60a64ebd5a2f43651dde2df0b76a52029e94f.boutiques",
     name="tckedit",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
+@dataclasses.dataclass
+class TckeditVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class TckeditVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
 
 
 @dataclasses.dataclass
@@ -21,7 +65,7 @@ class TckeditInclude:
     as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must
     traverse ALL inclusion regions to be accepted.
     """
-    spec: str
+    spec: typing.Union[TckeditVariousString, TckeditVariousFile]
     """specify an inclusion region of interest, as either a binary mask image,
     or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines
     must traverse ALL inclusion regions to be accepted."""
@@ -40,7 +84,7 @@ class TckeditInclude:
         """
         cargs = []
         cargs.append("-include")
-        cargs.append(self.spec)
+        cargs.extend(self.spec.run(execution))
         return cargs
 
 
@@ -77,13 +121,57 @@ class TckeditIncludeOrdered:
 
 
 @dataclasses.dataclass
+class TckeditVariousString_:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class TckeditVariousFile_:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
+@dataclasses.dataclass
 class TckeditExclude:
     """
     specify an exclusion region of interest, as either a binary mask image, or
     as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that
     enter ANY exclude region will be discarded.
     """
-    spec: str
+    spec: typing.Union[TckeditVariousString_, TckeditVariousFile_]
     """specify an exclusion region of interest, as either a binary mask image,
     or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines
     that enter ANY exclude region will be discarded."""
@@ -102,7 +190,51 @@ class TckeditExclude:
         """
         cargs = []
         cargs.append("-exclude")
-        cargs.append(self.spec)
+        cargs.extend(self.spec.run(execution))
+        return cargs
+
+
+@dataclasses.dataclass
+class TckeditVariousString_2:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class TckeditVariousFile_2:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
         return cargs
 
 
@@ -113,7 +245,7 @@ class TckeditMask:
     sphere using 4 comma-separared values (x,y,z,radius). If defined,
     streamlines exiting the mask will be truncated.
     """
-    spec: str
+    spec: typing.Union[TckeditVariousString_2, TckeditVariousFile_2]
     """specify a masking region of interest, as either a binary mask image, or
     as a sphere using 4 comma-separared values (x,y,z,radius). If defined,
     streamlines exiting the mask will be truncated."""
@@ -132,7 +264,7 @@ class TckeditMask:
         """
         cargs = []
         cargs.append("-mask")
-        cargs.append(self.spec)
+        cargs.extend(self.spec.run(execution))
         return cargs
 
 
@@ -366,5 +498,11 @@ __all__ = [
     "TckeditIncludeOrdered",
     "TckeditMask",
     "TckeditOutputs",
+    "TckeditVariousFile",
+    "TckeditVariousFile_",
+    "TckeditVariousFile_2",
+    "TckeditVariousString",
+    "TckeditVariousString_",
+    "TckeditVariousString_2",
     "tckedit",
 ]

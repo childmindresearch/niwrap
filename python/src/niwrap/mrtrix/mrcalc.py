@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRCALC_METADATA = Metadata(
-    id="dd4d026a9d2fb2d4e9eab3421595f0acad9c9603.boutiques",
+    id="e7890e4db04dced212f653ea298129a9d4812d5e.boutiques",
     name="mrcalc",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -1200,6 +1200,50 @@ class MrcalcConfig:
         return cargs
 
 
+@dataclasses.dataclass
+class MrcalcVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class MrcalcVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
 class MrcalcOutputs(typing.NamedTuple):
     """
     Output object returned when calling `mrcalc(...)`.
@@ -1209,7 +1253,7 @@ class MrcalcOutputs(typing.NamedTuple):
 
 
 def mrcalc(
-    operand: list[str],
+    operand: list[typing.Union[MrcalcVariousString, MrcalcVariousFile]],
     abs_: list[MrcalcAbs] | None = None,
     neg: list[MrcalcNeg] | None = None,
     add: list[MrcalcAdd] | None = None,
@@ -1518,7 +1562,7 @@ def mrcalc(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.extend(operand)
+    cargs.extend([a for c in [s.run(execution) for s in operand] for a in c])
     ret = MrcalcOutputs(
         root=execution.output_file("."),
     )
@@ -1579,6 +1623,8 @@ __all__ = [
     "MrcalcSubtract",
     "MrcalcTan",
     "MrcalcTanh",
+    "MrcalcVariousFile",
+    "MrcalcVariousString",
     "MrcalcXor",
     "mrcalc",
 ]

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXEL2PEAKS_METADATA = Metadata(
-    id="98ed9c18cf276e5b938d70b66727959cf8643284.boutiques",
+    id="3776190660e082114fdd340db7d9713f2022095c.boutiques",
     name="fixel2peaks",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -43,6 +43,50 @@ class Fixel2peaksConfig:
         return cargs
 
 
+@dataclasses.dataclass
+class Fixel2peaksVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class Fixel2peaksVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
 class Fixel2peaksOutputs(typing.NamedTuple):
     """
     Output object returned when calling `fixel2peaks(...)`.
@@ -54,7 +98,7 @@ class Fixel2peaksOutputs(typing.NamedTuple):
 
 
 def fixel2peaks(
-    in_: str,
+    in_: typing.Union[Fixel2peaksVariousString, Fixel2peaksVariousFile],
     out: str,
     number: int | None = None,
     nan: bool = False,
@@ -137,7 +181,7 @@ def fixel2peaks(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.append(in_)
+    cargs.extend(in_.run(execution))
     cargs.append(out)
     ret = Fixel2peaksOutputs(
         root=execution.output_file("."),
@@ -151,5 +195,7 @@ __all__ = [
     "FIXEL2PEAKS_METADATA",
     "Fixel2peaksConfig",
     "Fixel2peaksOutputs",
+    "Fixel2peaksVariousFile",
+    "Fixel2peaksVariousString",
     "fixel2peaks",
 ]

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRTRANSFORM_METADATA = Metadata(
-    id="4fa7138ba25581d107c96e81b25f3d9b6521ba8c.boutiques",
+    id="c8a1d4f0f23f656d6f96e7e6321ab03d23181518.boutiques",
     name="mrtransform",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -118,6 +118,50 @@ class MrtransformExportGradFsl:
 
 
 @dataclasses.dataclass
+class MrtransformVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class MrtransformVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
+@dataclasses.dataclass
 class MrtransformConfig:
     """
     temporarily set the value of an MRtrix config file entry.
@@ -184,7 +228,7 @@ def mrtransform(
     export_grad_mrtrix: str | None = None,
     export_grad_fsl: MrtransformExportGradFsl | None = None,
     datatype: str | None = None,
-    strides: str | None = None,
+    strides: typing.Union[MrtransformVariousString, MrtransformVariousFile] | None = None,
     nan: bool = False,
     no_reorientation: bool = False,
     info: bool = False,
@@ -451,7 +495,7 @@ def mrtransform(
     if strides is not None:
         cargs.extend([
             "-strides",
-            strides
+            *strides.run(execution)
         ])
     if nan:
         cargs.append("-nan")
@@ -495,5 +539,7 @@ __all__ = [
     "MrtransformExportGradFslOutputs",
     "MrtransformFslgrad",
     "MrtransformOutputs",
+    "MrtransformVariousFile",
+    "MrtransformVariousString",
     "mrtransform",
 ]

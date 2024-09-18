@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DWI2FOD_METADATA = Metadata(
-    id="5980da20b52fc84cfec9e652fca13e33939bddb1.boutiques",
+    id="9087cff6223dc77b02d41f6884e9988ef1646226.boutiques",
     name="dwi2fod",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -49,6 +49,50 @@ class Dwi2fodFslgrad:
         cargs.append("-fslgrad")
         cargs.append(execution.input_file(self.bvecs))
         cargs.append(execution.input_file(self.bvals))
+        return cargs
+
+
+@dataclasses.dataclass
+class Dwi2fodVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class Dwi2fodVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
         return cargs
 
 
@@ -168,7 +212,7 @@ def dwi2fod(
     norm_lambda_: float | None = None,
     neg_lambda_: float | None = None,
     predicted_signal: str | None = None,
-    strides: str | None = None,
+    strides: typing.Union[Dwi2fodVariousString, Dwi2fodVariousFile] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -359,7 +403,7 @@ def dwi2fod(
     if strides is not None:
         cargs.extend([
             "-strides",
-            strides
+            *strides.run(execution)
         ])
     if info:
         cargs.append("-info")
@@ -399,5 +443,7 @@ __all__ = [
     "Dwi2fodOutputs",
     "Dwi2fodResponseOdf",
     "Dwi2fodResponseOdfOutputs",
+    "Dwi2fodVariousFile",
+    "Dwi2fodVariousString",
     "dwi2fod",
 ]

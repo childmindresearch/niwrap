@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRCONVERT_METADATA = Metadata(
-    id="bbc290e9da0cf0c8176c0247f73ecbe29ff60e51.boutiques",
+    id="852b1bbfb4bbbdaacefbe39fd16e3b09b7b9dd6c.boutiques",
     name="mrconvert",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -133,6 +133,94 @@ class MrconvertAppendProperty:
         cargs.append("-append_property")
         cargs.append(self.key)
         cargs.append(self.value)
+        return cargs
+
+
+@dataclasses.dataclass
+class MrconvertVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class MrconvertVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
+@dataclasses.dataclass
+class MrconvertVariousString_:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class MrconvertVariousFile_:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
         return cargs
 
 
@@ -396,8 +484,8 @@ def mrconvert(
     clear_property: list[MrconvertClearProperty] | None = None,
     set_property: list[MrconvertSetProperty] | None = None,
     append_property: list[MrconvertAppendProperty] | None = None,
-    copy_properties: str | None = None,
-    strides: str | None = None,
+    copy_properties: typing.Union[MrconvertVariousString, MrconvertVariousFile] | None = None,
+    strides: typing.Union[MrconvertVariousString_, MrconvertVariousFile_] | None = None,
     datatype: str | None = None,
     grad: InputPathType | None = None,
     fslgrad: MrconvertFslgrad | None = None,
@@ -562,7 +650,7 @@ def mrconvert(
     if axes is not None:
         cargs.extend([
             "-axes",
-            ",".join(map(str, axes))
+            *map(str, axes)
         ])
     if scaling is not None:
         cargs.extend([
@@ -588,12 +676,12 @@ def mrconvert(
     if copy_properties is not None:
         cargs.extend([
             "-copy_properties",
-            copy_properties
+            *copy_properties.run(execution)
         ])
     if strides is not None:
         cargs.extend([
             "-strides",
-            strides
+            *strides.run(execution)
         ])
     if datatype is not None:
         cargs.extend([
@@ -681,5 +769,9 @@ __all__ = [
     "MrconvertImportPeEddy",
     "MrconvertOutputs",
     "MrconvertSetProperty",
+    "MrconvertVariousFile",
+    "MrconvertVariousFile_",
+    "MrconvertVariousString",
+    "MrconvertVariousString_",
     "mrconvert",
 ]

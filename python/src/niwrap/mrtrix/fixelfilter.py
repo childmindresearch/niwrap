@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXELFILTER_METADATA = Metadata(
-    id="c8d0aa7a0b4f28c8cd4f545d783f49ce5f8b2c57.boutiques",
+    id="78842b51be89a3840bbb410c2b7545b0ffec7a31.boutiques",
     name="fixelfilter",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -43,6 +43,94 @@ class FixelfilterConfig:
         return cargs
 
 
+@dataclasses.dataclass
+class FixelfilterVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class FixelfilterVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
+@dataclasses.dataclass
+class FixelfilterVariousString_:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class FixelfilterVariousFile_:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
 class FixelfilterOutputs(typing.NamedTuple):
     """
     Output object returned when calling `fixelfilter(...)`.
@@ -53,9 +141,9 @@ class FixelfilterOutputs(typing.NamedTuple):
 
 def fixelfilter(
     matrix: InputPathType,
-    input_: str,
+    input_: typing.Union[FixelfilterVariousString, FixelfilterVariousFile],
     filter_: str,
-    output: str,
+    output: typing.Union[FixelfilterVariousString_, FixelfilterVariousFile_],
     threshold_value: float | None = None,
     threshold_connectivity: float | None = None,
     fwhm: float | None = None,
@@ -175,9 +263,9 @@ def fixelfilter(
         cargs.append("-help")
     if version:
         cargs.append("-version")
-    cargs.append(input_)
+    cargs.extend(input_.run(execution))
     cargs.append(filter_)
-    cargs.append(output)
+    cargs.extend(output.run(execution))
     ret = FixelfilterOutputs(
         root=execution.output_file("."),
     )
@@ -189,5 +277,9 @@ __all__ = [
     "FIXELFILTER_METADATA",
     "FixelfilterConfig",
     "FixelfilterOutputs",
+    "FixelfilterVariousFile",
+    "FixelfilterVariousFile_",
+    "FixelfilterVariousString",
+    "FixelfilterVariousString_",
     "fixelfilter",
 ]

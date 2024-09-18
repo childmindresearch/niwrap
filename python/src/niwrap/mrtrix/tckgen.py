@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKGEN_METADATA = Metadata(
-    id="4d8fb7caca3792bac0d557cfda72ce533a020f52.boutiques",
+    id="e047044bf2af6d7a9beff7adbb5b8dfd89665967.boutiques",
     name="tckgen",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -195,13 +195,57 @@ class TckgenSeedGmwmi:
 
 
 @dataclasses.dataclass
+class TckgenVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class TckgenVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
+@dataclasses.dataclass
 class TckgenInclude:
     """
     specify an inclusion region of interest, as either a binary mask image, or
     as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must
     traverse ALL inclusion regions to be accepted.
     """
-    spec: str
+    spec: typing.Union[TckgenVariousString, TckgenVariousFile]
     """specify an inclusion region of interest, as either a binary mask image,
     or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines
     must traverse ALL inclusion regions to be accepted."""
@@ -220,7 +264,7 @@ class TckgenInclude:
         """
         cargs = []
         cargs.append("-include")
-        cargs.append(self.spec)
+        cargs.extend(self.spec.run(execution))
         return cargs
 
 
@@ -257,13 +301,57 @@ class TckgenIncludeOrdered:
 
 
 @dataclasses.dataclass
+class TckgenVariousString_:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class TckgenVariousFile_:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
+@dataclasses.dataclass
 class TckgenExclude:
     """
     specify an exclusion region of interest, as either a binary mask image, or
     as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that
     enter ANY exclude region will be discarded.
     """
-    spec: str
+    spec: typing.Union[TckgenVariousString_, TckgenVariousFile_]
     """specify an exclusion region of interest, as either a binary mask image,
     or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines
     that enter ANY exclude region will be discarded."""
@@ -282,7 +370,51 @@ class TckgenExclude:
         """
         cargs = []
         cargs.append("-exclude")
-        cargs.append(self.spec)
+        cargs.extend(self.spec.run(execution))
+        return cargs
+
+
+@dataclasses.dataclass
+class TckgenVariousString_2:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class TckgenVariousFile_2:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
         return cargs
 
 
@@ -293,7 +425,7 @@ class TckgenMask:
     sphere using 4 comma-separared values (x,y,z,radius). If defined,
     streamlines exiting the mask will be truncated.
     """
-    spec: str
+    spec: typing.Union[TckgenVariousString_2, TckgenVariousFile_2]
     """specify a masking region of interest, as either a binary mask image, or
     as a sphere using 4 comma-separared values (x,y,z,radius). If defined,
     streamlines exiting the mask will be truncated."""
@@ -312,7 +444,7 @@ class TckgenMask:
         """
         cargs = []
         cargs.append("-mask")
-        cargs.append(self.spec)
+        cargs.extend(self.spec.run(execution))
         return cargs
 
 
@@ -901,5 +1033,11 @@ __all__ = [
     "TckgenSeedRandomPerVoxel",
     "TckgenSeedRejection",
     "TckgenSeedSphere",
+    "TckgenVariousFile",
+    "TckgenVariousFile_",
+    "TckgenVariousFile_2",
+    "TckgenVariousString",
+    "TckgenVariousString_",
+    "TckgenVariousString_2",
     "tckgen",
 ]

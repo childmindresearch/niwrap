@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SH2AMP_METADATA = Metadata(
-    id="2d8df4b80229f109b18120d1890e5e8bc125a81b.boutiques",
+    id="392ae46eb2d92b24d451f55d682e80b44763c820.boutiques",
     name="sh2amp",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -49,6 +49,50 @@ class Sh2ampFslgrad:
         cargs.append("-fslgrad")
         cargs.append(execution.input_file(self.bvecs))
         cargs.append(execution.input_file(self.bvals))
+        return cargs
+
+
+@dataclasses.dataclass
+class Sh2ampVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class Sh2ampVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
         return cargs
 
 
@@ -99,7 +143,7 @@ def sh2amp(
     nonnegative: bool = False,
     grad: InputPathType | None = None,
     fslgrad: Sh2ampFslgrad | None = None,
-    strides: str | None = None,
+    strides: typing.Union[Sh2ampVariousString, Sh2ampVariousFile] | None = None,
     datatype: str | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -213,7 +257,7 @@ def sh2amp(
     if strides is not None:
         cargs.extend([
             "-strides",
-            strides
+            *strides.run(execution)
         ])
     if datatype is not None:
         cargs.extend([
@@ -255,5 +299,7 @@ __all__ = [
     "Sh2ampConfig",
     "Sh2ampFslgrad",
     "Sh2ampOutputs",
+    "Sh2ampVariousFile",
+    "Sh2ampVariousString",
     "sh2amp",
 ]

@@ -7,11 +7,55 @@ from styxdefs import *
 import dataclasses
 
 TCKMAP_METADATA = Metadata(
-    id="3c3f320d9b75d5374e037cb2bc47e400a79deff0.boutiques",
+    id="fb4285e4f154fff35ba48c7c3829ab7115453547.boutiques",
     name="tckmap",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
+@dataclasses.dataclass
+class TckmapVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class TckmapVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
 
 
 @dataclasses.dataclass
@@ -60,7 +104,7 @@ def tckmap(
     vox: list[float] | None = None,
     datatype: str | None = None,
     dec: bool = False,
-    dixel: str | None = None,
+    dixel: typing.Union[TckmapVariousString, TckmapVariousFile] | None = None,
     tod: int | None = None,
     contrast: str | None = None,
     image: InputPathType | None = None,
@@ -227,7 +271,7 @@ def tckmap(
     if dixel is not None:
         cargs.extend([
             "-dixel",
-            dixel
+            *dixel.run(execution)
         ])
     if tod is not None:
         cargs.extend([
@@ -315,5 +359,7 @@ __all__ = [
     "TCKMAP_METADATA",
     "TckmapConfig",
     "TckmapOutputs",
+    "TckmapVariousFile",
+    "TckmapVariousString",
     "tckmap",
 ]

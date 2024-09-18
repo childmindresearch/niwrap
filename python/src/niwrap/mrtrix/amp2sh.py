@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AMP2SH_METADATA = Metadata(
-    id="29d345f18df9637a821eccbb9b76d029a1df7ff0.boutiques",
+    id="1795ac527db5a4193030be4d9cd638dba2f20f3f.boutiques",
     name="amp2sh",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -49,6 +49,50 @@ class Amp2shFslgrad:
         cargs.append("-fslgrad")
         cargs.append(execution.input_file(self.bvecs))
         cargs.append(execution.input_file(self.bvals))
+        return cargs
+
+
+@dataclasses.dataclass
+class Amp2shVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class Amp2shVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
         return cargs
 
 
@@ -101,7 +145,7 @@ def amp2sh(
     grad: InputPathType | None = None,
     fslgrad: Amp2shFslgrad | None = None,
     shells: list[float] | None = None,
-    strides: str | None = None,
+    strides: typing.Union[Amp2shVariousString, Amp2shVariousFile] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -228,7 +272,7 @@ def amp2sh(
     if strides is not None:
         cargs.extend([
             "-strides",
-            strides
+            *strides.run(execution)
         ])
     if info:
         cargs.append("-info")
@@ -264,5 +308,7 @@ __all__ = [
     "Amp2shConfig",
     "Amp2shFslgrad",
     "Amp2shOutputs",
+    "Amp2shVariousFile",
+    "Amp2shVariousString",
     "amp2sh",
 ]

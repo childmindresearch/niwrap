@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRGRID_METADATA = Metadata(
-    id="bdf0ebfe44a0db3e89c3caabe5463bd16349ccf4.boutiques",
+    id="f87015bd670e2dd0d7821f4cc2428e1b4c2148b3.boutiques",
     name="mrgrid",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -68,6 +68,50 @@ class MrgridAxis:
 
 
 @dataclasses.dataclass
+class MrgridVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class MrgridVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
+
+
+@dataclasses.dataclass
 class MrgridConfig:
     """
     temporarily set the value of an MRtrix config file entry.
@@ -123,7 +167,7 @@ def mrgrid(
     axis: list[MrgridAxis] | None = None,
     all_axes: bool = False,
     fill: float | None = None,
-    strides: str | None = None,
+    strides: typing.Union[MrgridVariousString, MrgridVariousFile] | None = None,
     datatype: str | None = None,
     info: bool = False,
     quiet: bool = False,
@@ -315,7 +359,7 @@ def mrgrid(
     if strides is not None:
         cargs.extend([
             "-strides",
-            strides
+            *strides.run(execution)
         ])
     if datatype is not None:
         cargs.extend([
@@ -357,5 +401,7 @@ __all__ = [
     "MrgridAxis",
     "MrgridConfig",
     "MrgridOutputs",
+    "MrgridVariousFile",
+    "MrgridVariousString",
     "mrgrid",
 ]

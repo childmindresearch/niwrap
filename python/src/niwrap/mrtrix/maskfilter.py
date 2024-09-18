@@ -7,11 +7,55 @@ from styxdefs import *
 import dataclasses
 
 MASKFILTER_METADATA = Metadata(
-    id="64d09e2402719ae6eb1c2a4b1802b4a54c209de9.boutiques",
+    id="f16e59f20a14c709055886bfe4283083d9ab7079.boutiques",
     name="maskfilter",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
+@dataclasses.dataclass
+class MaskfilterVariousString:
+    obj: str
+    """String object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(self.obj)
+        return cargs
+
+
+@dataclasses.dataclass
+class MaskfilterVariousFile:
+    obj: InputPathType
+    """File object."""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append(execution.input_file(self.obj))
+        return cargs
 
 
 @dataclasses.dataclass
@@ -63,7 +107,7 @@ def maskfilter(
     connectivity: bool = False,
     npass: int | None = None,
     extent: list[int] | None = None,
-    strides: str | None = None,
+    strides: typing.Union[MaskfilterVariousString, MaskfilterVariousFile] | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
@@ -160,7 +204,7 @@ def maskfilter(
     if strides is not None:
         cargs.extend([
             "-strides",
-            strides
+            *strides.run(execution)
         ])
     if info:
         cargs.append("-info")
@@ -196,5 +240,7 @@ __all__ = [
     "MASKFILTER_METADATA",
     "MaskfilterConfig",
     "MaskfilterOutputs",
+    "MaskfilterVariousFile",
+    "MaskfilterVariousString",
     "maskfilter",
 ]
